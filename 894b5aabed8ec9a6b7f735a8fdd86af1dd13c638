@@ -22,6 +22,30 @@
       },
       "revId": "894b5aabed8ec9a6b7f735a8fdd86af1dd13c638",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "257ff8da_275c200c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_crash_early.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2022-08-10T00:30:18Z",
+      "side": 1,
+      "message": "Ya, originally I had that as *crash.RegexesNotFound, and it didn\u0027t work. It didn\u0027t panic but errors.As returned false.\n\nI think because https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/crash/crash.go;l\u003d445;drc\u003d455300d97ebbdd549af4ab1341283697246cd3d4 returns *regexesNotFoundError, so it\u0027s a RegexesNotFound instead of a *RegexesNotFound. \n\nBut anyways, since WaitForCrashFiles promises to return RegexesNotFound, not something that wraps RegexesNotFound, I think errors.As is overkill. Just do a cast.",
+      "parentUuid": "fb88d521_3d5037f4",
+      "range": {
+        "startLine": 142,
+        "startChar": 26,
+        "endLine": 142,
+        "endChar": 48
+      },
+      "revId": "894b5aabed8ec9a6b7f735a8fdd86af1dd13c638",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
