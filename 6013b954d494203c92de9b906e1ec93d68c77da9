@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd89c405_e183d9bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/multi_function_printer.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2022-08-10T22:53:23Z",
+      "side": 1,
+      "message": "I replaced the bare strings with constants.  Doing callbacks seems like overkill unless we end up needing complicated verification logic later.",
+      "parentUuid": "0bd18ef4_65137728",
+      "range": {
+        "startLine": 54,
+        "startChar": 7,
+        "endLine": 54,
+        "endChar": 14
+      },
+      "revId": "6013b954d494203c92de9b906e1ec93d68c77da9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3ba8db89_61515604",
@@ -41,6 +65,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cccb161f_a7ef0542",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/multi_function_printer.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2022-08-10T22:53:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3ba8db89_61515604",
+      "revId": "6013b954d494203c92de9b906e1ec93d68c77da9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0645433b_309a2d81",
@@ -54,6 +96,30 @@
       "writtenOn": "2022-08-10T08:43:20Z",
       "side": 1,
       "message": "hwo about testexec.DumpLogOnError?",
+      "range": {
+        "startLine": 181,
+        "startChar": 2,
+        "endLine": 181,
+        "endChar": 19
+      },
+      "revId": "6013b954d494203c92de9b906e1ec93d68c77da9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "37162864_efe4d8a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/multi_function_printer.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2022-08-10T22:53:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0645433b_309a2d81",
       "range": {
         "startLine": 181,
         "startChar": 2,
