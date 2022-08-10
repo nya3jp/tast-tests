@@ -39,19 +39,22 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{
-			Name: "legal_help_page",
+			Name:    "legal_help_page",
+			Fixture: "chromeLoggedInWithOsFeedback",
 			Val: testParam{
 				linkName:    "Legal Help page",
 				linkAddress: "support.google.com/legal/answer/3110420",
 			},
 		}, {
-			Name: "privacy_policy",
+			Name:    "privacy_policy",
+			Fixture: "chromeLoggedInWithOsFeedback",
 			Val: testParam{
 				linkName:    "Privacy Policy",
 				linkAddress: "policies.google.com/privacy",
 			},
 		}, {
-			Name: "terms_of_service",
+			Name:    "terms_of_service",
+			Fixture: "chromeLoggedInWithOsFeedback",
 			Val: testParam{
 				linkName:    "Terms of Service",
 				linkAddress: "policies.google.com/terms",
@@ -62,16 +65,11 @@ func init() {
 
 // ViewPolicy verifies the user is able to view policy, legal help and terms of service.
 func ViewPolicy(ctx context.Context, s *testing.State) {
+	cr := s.FixtValue().(*chrome.Chrome)
+
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
 	defer cancel()
-
-	s.Log("Setting up chrome")
-	cr, err := chrome.New(ctx, chrome.EnableFeatures("OsFeedback"))
-	if err != nil {
-		s.Fatal("Failed to start Chrome: ", err)
-	}
-	defer cr.Close(cleanupCtx)
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
