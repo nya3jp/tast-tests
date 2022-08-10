@@ -7,9 +7,13 @@ package bluetooth
 import (
 	"context"
 	"fmt"
+	"path/filepath"
+	"regexp"
 	"strings"
 	"time"
 
+	"chromiumos/tast/remote/dbus"
+	"chromiumos/tast/remote/wificell/fileutil"
 	"google.golang.org/protobuf/types/known/emptypb"
 
 	btc "chromiumos/tast/common/bluetooth"
@@ -34,6 +38,7 @@ const (
 	setUpTimeout    = 20 * time.Second
 	resetTimeout    = 5 * time.Second
 	tearDownTimeout = 10 * time.Second
+	postTestTimeout = 1 * time.Second
 
 	// btpeerTimeoutBuffer is added to fixture per btpeer expected to give
 	// additional time to manage each btpeer.
@@ -54,6 +59,7 @@ func init() {
 		SetUpTimeout:    setUpTimeout,
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: tearDownTimeout,
+		PostTestTimeout: postTestTimeout,
 		ServiceDeps:     []string{serviceDepBTTestService},
 	})
 	testing.AddFixture(&testing.Fixture{
@@ -69,6 +75,7 @@ func init() {
 		SetUpTimeout:    setUpTimeout,
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: tearDownTimeout,
+		PostTestTimeout: postTestTimeout,
 		ServiceDeps:     []string{serviceDepBTTestService},
 	})
 	testing.AddFixture(&testing.Fixture{
@@ -85,6 +92,7 @@ func init() {
 		SetUpTimeout:    setUpTimeout,
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: tearDownTimeout,
+		PostTestTimeout: postTestTimeout,
 		ServiceDeps:     []string{serviceDepBTTestService},
 	})
 	testing.AddFixture(&testing.Fixture{
@@ -103,6 +111,7 @@ func init() {
 		SetUpTimeout:    setUpTimeout + btpeerTimeoutBuffer,
 		ResetTimeout:    resetTimeout + btpeerTimeoutBuffer,
 		TearDownTimeout: tearDownTimeout + btpeerTimeoutBuffer,
+		PostTestTimeout: postTestTimeout,
 		ServiceDeps:     []string{serviceDepBTTestService},
 	})
 	testing.AddFixture(&testing.Fixture{
@@ -121,6 +130,7 @@ func init() {
 		SetUpTimeout:    setUpTimeout + 2*btpeerTimeoutBuffer,
 		ResetTimeout:    resetTimeout + 2*btpeerTimeoutBuffer,
 		TearDownTimeout: tearDownTimeout + 2*btpeerTimeoutBuffer,
+		PostTestTimeout: postTestTimeout,
 		ServiceDeps:     []string{serviceDepBTTestService},
 	})
 	testing.AddFixture(&testing.Fixture{
@@ -139,6 +149,7 @@ func init() {
 		SetUpTimeout:    setUpTimeout + 3*btpeerTimeoutBuffer,
 		ResetTimeout:    resetTimeout + 3*btpeerTimeoutBuffer,
 		TearDownTimeout: tearDownTimeout + 3*btpeerTimeoutBuffer,
+		PostTestTimeout: postTestTimeout,
 		ServiceDeps:     []string{serviceDepBTTestService},
 	})
 	testing.AddFixture(&testing.Fixture{
@@ -157,6 +168,7 @@ func init() {
 		SetUpTimeout:    setUpTimeout + 4*btpeerTimeoutBuffer,
 		ResetTimeout:    resetTimeout + 4*btpeerTimeoutBuffer,
 		TearDownTimeout: tearDownTimeout + 4*btpeerTimeoutBuffer,
+		PostTestTimeout: postTestTimeout,
 		ServiceDeps:     []string{serviceDepBTTestService},
 	})
 }
@@ -197,8 +209,9 @@ type FixtValue struct {
 }
 
 type fixture struct {
-	features *fixtureFeatures
-	fv       *FixtValue
+	features         *fixtureFeatures
+	fv               *FixtValue
+	dbusMonitorBluez *dbus.Monitor
 }
 
 func newFixture(features *fixtureFeatures) *fixture {
@@ -236,11 +249,23 @@ func (tf *fixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} 
 		s.Fatal("Failed to log into chrome on DUT: ", err)
 	}
 
+	// Start capturing bluez D-Bus messages.
+	dbusMonitorBluez, err := dbus.StartMonitor(ctx, s.DUT().Conn(), "--system", "destination='org.bluez'")
+	if err != nil {
+		s.Fatal("Failed to start dbus-monitor listening to bluez messages: ", err)
+	}
+	tf.dbusMonitorBluez = dbusMonitorBluez
+
 	// Enable bluetooth adapter.
 	if tf.features.BluetoothAdapterEnabled {
 		if _, err := tf.fv.BTS.EnableBluetoothAdapter(ctx, &emptypb.Empty{}); err != nil {
 			s.Fatal("Failed to enable bluetooth adapter on DUT: ", err)
 		}
+	}
+
+	// Save collected bluez D-Bus messages collected thus far.
+	if err := tf.logDBusMonitorBluezMessages(ctx, "SetUp"); err != nil {
+		s.Fatal("Failed to collect dbus-monitor bluez logs: ", err)
 	}
 	return tf.fv
 }
@@ -277,7 +302,9 @@ func (tf *fixture) PreTest(ctx context.Context, s *testing.FixtTestState) {
 //
 // This is necessary to implement testing.FixtureImpl.
 func (tf *fixture) PostTest(ctx context.Context, s *testing.FixtTestState) {
-	// No-op.
+	if err := tf.logDBusMonitorBluezMessages(ctx, "PostTest"); err != nil {
+		s.Fatal("Failed to collect dbus-monitor bluez logs: ", err)
+	}
 }
 
 // TearDown is called by the framework to tear down the environment SetUp set
@@ -305,6 +332,14 @@ func (tf *fixture) TearDown(ctx context.Context, s *testing.FixtState) {
 	// Reset btpeers to original state.
 	if err := tf.resetBTPeers(ctx); err != nil {
 		s.Error("Failed to reset all btpeers: ", err)
+	}
+
+	// Stop dbus-monitor.
+	if err := tf.logDBusMonitorBluezMessages(ctx, "TearDown"); err != nil {
+		s.Fatal("Failed to collect dbus-monitor bluez logs: ", err)
+	}
+	if err := tf.dbusMonitorBluez.Close(); err != nil {
+		s.Fatal("Failed to close dbus-monitor: ", err)
 	}
 }
 
@@ -370,4 +405,37 @@ func (tf *fixture) resetBTPeers(ctx context.Context) (firstErr error) {
 		}
 	}
 	return firstErr
+}
+
+func (tf *fixture) logDBusMonitorBluezMessages(ctx context.Context, logName string) error {
+	ctx, st := timing.Start(ctx, "logDBusMonitorBluezMessages")
+	defer st.End()
+	// Prepare output file.
+	dstLogFilename := buildLogFilename(logName)
+	dstFilePath := filepath.Join("dbus_monitor_bluez", dstLogFilename)
+	f, err := fileutil.PrepareOutDirFile(ctx, dstFilePath)
+	if err != nil {
+		return errors.Wrapf(err, "failed to prepare output dir file %q", dstFilePath)
+	}
+	// Dump buffer of collected logs to file.
+	if err := tf.dbusMonitorBluez.Dump(f); err != nil {
+		return errors.Wrapf(err, "failed to dump dbus-monitor logs to %q", dstFilePath)
+	}
+	return nil
+}
+
+// buildLogFilename builds a log filename with a minimal timestamp prefix, all
+// the name parts in the middle delimited by "_" with non-word characters
+// replaced with underscores, and a ".log" file extension.
+//
+// Example result: "20220523-122753_dbus_bluez_PostTest"
+func buildLogFilename(nameParts ...string) string {
+	// Build timestamp prefix.
+	timestamp := time.Now().Format("20060102-150405")
+	// Join and sanitize name parts.
+	name := strings.Join(nameParts, "_")
+	name = regexp.MustCompile("\\W").ReplaceAllString(name, "_")
+	name = regexp.MustCompile("_+").ReplaceAllString(name, "_")
+	// Combine timestamp, name, and extension.
+	return fmt.Sprintf("%s_%s.log", timestamp, name)
 }
