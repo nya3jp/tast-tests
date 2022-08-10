@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa03da85_02115403",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/common_metrics.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-08-10T16:20:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a3e86582_acb7b006",
+      "range": {
+        "startLine": 165,
+        "startChar": 41,
+        "endLine": 165,
+        "endChar": 47
+      },
+      "revId": "7fb986f5a016d62c40653350cc4f679026273948",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f989ed57_fd2bc132",
@@ -81,6 +105,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e32019c_5bcbbdf2",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/common_metrics.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-08-10T16:20:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f989ed57_fd2bc132",
+      "range": {
+        "startLine": 164,
+        "startChar": 0,
+        "endLine": 172,
+        "endChar": 0
+      },
+      "revId": "7fb986f5a016d62c40653350cc4f679026273948",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a1819601_5c7c76f3",
@@ -94,6 +142,30 @@
       "writtenOn": "2022-08-10T00:53:12Z",
       "side": 1,
       "message": "nit: These Lacros common metrics belong before the Lacros AnyChrome common metrics (lines 249-251), for consistency, because the Ash common metrics (lines 239-241) are before the Ash AnyChrome common metrics (lines 245-247).",
+      "range": {
+        "startLine": 252,
+        "startChar": 0,
+        "endLine": 254,
+        "endChar": 3
+      },
+      "revId": "7fb986f5a016d62c40653350cc4f679026273948",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9c6e0e7_0f19a092",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/recorder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-08-10T16:20:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a1819601_5c7c76f3",
       "range": {
         "startLine": 252,
         "startChar": 0,
