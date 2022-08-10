@@ -8,7 +8,7 @@ import (
 	"context"
 	"time"
 
-	"chromiumos/tast/local/bluetooth"
+	"chromiumos/tast/local/bluetooth/bluez"
 	"chromiumos/tast/testing"
 )
 
@@ -20,6 +20,7 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Vars:         []string{"bluetooth.monoHeadset"},
 		Fixture:      "chromeLoggedIn",
+		LacrosStatus: testing.LacrosVariantUnknown,
 	})
 }
 
@@ -27,7 +28,7 @@ func init() {
 func BTPairMonoheadset(ctx context.Context, s *testing.State) {
 	monoHeadset := s.RequiredVar("bluetooth.monoHeadset")
 
-	adapters, err := bluetooth.Adapters(ctx)
+	adapters, err := bluez.Adapters(ctx)
 	if err != nil {
 		s.Fatal("Failed to get bluetooth adapters: ", err)
 	}
@@ -48,9 +49,9 @@ func BTPairMonoheadset(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to enable discovery: ", err)
 	}
 
-	var btDevice *bluetooth.Device
+	var btDevice *bluez.Device
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		btDevice, err = bluetooth.DeviceByAlias(ctx, monoHeadset)
+		btDevice, err = bluez.DeviceByAlias(ctx, monoHeadset)
 		if err != nil {
 			return err
 		}

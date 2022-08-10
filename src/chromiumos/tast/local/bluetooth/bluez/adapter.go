@@ -2,9 +2,9 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-// Package bluetooth contains helpers to interact with the system's bluetooth
+// Package bluez contains helpers to interact with the system's bluetooth bluez
 // adapters.
-package bluetooth
+package bluez
 
 import (
 	"context"
@@ -20,155 +20,86 @@ import (
 // Adapter contains helper functions for getting and setting bluetooth adapter
 // state.
 type Adapter struct {
-	obj  dbus.BusObject
-	path dbus.ObjectPath
-}
-
-const service = "org.bluez"
-const adapterIface = service + ".Adapter1"
-
-// Adapters creates an Adapter for all bluetooth adapters in the system.
-func Adapters(ctx context.Context) ([]*Adapter, error) {
-	var adapters []*Adapter
-	_, obj, err := dbusutil.Connect(ctx, service, "/")
-	if err != nil {
-		return nil, err
-	}
-	managed, err := dbusutil.ManagedObjects(ctx, obj)
-	if err != nil {
-		return nil, err
-	}
-	for _, path := range managed[adapterIface] {
-		adapter, err := NewAdapter(ctx, path)
-		if err != nil {
-			return nil, err
-		}
-		adapters = append(adapters, adapter)
-	}
-	return adapters, nil
+	dbus *dbusutil.DBusObject
 }
 
 // NewAdapter creates a new bluetooth Adapter from the passed D-Bus object path.
 func NewAdapter(ctx context.Context, path dbus.ObjectPath) (*Adapter, error) {
-	_, obj, err := dbusutil.Connect(ctx, service, path)
+	obj, err := NewBluezDBusObject(ctx, bluezAdapterIface, path)
 	if err != nil {
 		return nil, err
 	}
-	return &Adapter{obj, path}, nil
+	a := &Adapter{
+		dbus: obj,
+	}
+	return a, nil
 }
 
-// Path gets the D-Bus path this adapter was created from.
-func (a *Adapter) Path() dbus.ObjectPath {
-	return a.path
+// Adapters creates an Adapter for all bluetooth adapters in the system.
+func Adapters(ctx context.Context) ([]*Adapter, error) {
+	paths, err := collectExistingBluezObjectPaths(ctx, bluezAdapterIface)
+	if err != nil {
+		return nil, err
+	}
+	adapters := make([]*Adapter, len(paths))
+	for i, path := range paths {
+		adapter, err := NewAdapter(ctx, path)
+		if err != nil {
+			return nil, err
+		}
+		adapters[i] = adapter
+	}
+	return adapters, nil
 }
 
-const poweredProp = adapterIface + ".Powered"
+// DBusObject returns the D-Bus object wrapper for this object.
+func (a *Adapter) DBusObject() *dbusutil.DBusObject {
+	return a.dbus
+}
 
 // SetPowered turns a bluetooth adapter on or off
 func (a *Adapter) SetPowered(ctx context.Context, powered bool) error {
-	return dbusutil.SetProperty(ctx, a.obj, poweredProp, powered)
+	return a.dbus.SetProperty(ctx, "Powered", powered)
 }
 
 // Powered returns whether a bluetooth adapter is powered on.
 func (a *Adapter) Powered(ctx context.Context) (bool, error) {
-	value, err := dbusutil.Property(ctx, a.obj, poweredProp)
-	if err != nil {
-		return false, err
-	}
-	powered, ok := value.(bool)
-	if !ok {
-		return false, errors.New("powered property not a bool")
-	}
-	return powered, nil
+	return a.dbus.PropertyBool(ctx, "Powered")
 }
 
 // Address returns the MAC address of the adapter.
 func (a *Adapter) Address(ctx context.Context) (string, error) {
-	const prop = adapterIface + ".Address"
-	value, err := dbusutil.Property(ctx, a.obj, prop)
-	if err != nil {
-		return "", err
-	}
-	address, ok := value.(string)
-	if !ok {
-		return "", errors.New("address property not a string")
-	}
-	return address, nil
+	return a.dbus.PropertyString(ctx, "Address")
 }
 
 // Name returns the name of the adapter.
 func (a *Adapter) Name(ctx context.Context) (string, error) {
-	const prop = adapterIface + ".Name"
-	value, err := dbusutil.Property(ctx, a.obj, prop)
-	if err != nil {
-		return "", err
-	}
-	name, ok := value.(string)
-	if !ok {
-		return "", errors.New("name property not a string")
-	}
-	return name, nil
+	return a.dbus.PropertyString(ctx, "Name")
 }
 
-// Discoverable returns the discoverable of the adapter.
+// Discoverable returns the discoverable property of the adapter.
 func (a *Adapter) Discoverable(ctx context.Context) (bool, error) {
-	const prop = adapterIface + ".Discoverable"
-	value, err := dbusutil.Property(ctx, a.obj, prop)
-	if err != nil {
-		return false, err
-	}
-	discoverable, ok := value.(bool)
-	if !ok {
-		return false, errors.New("discoverable property not a bool")
-	}
-	return discoverable, nil
+	return a.dbus.PropertyBool(ctx, "Discoverable")
 }
 
 // Discovering returns the discovering of the adapter.
 func (a *Adapter) Discovering(ctx context.Context) (bool, error) {
-	const prop = adapterIface + ".Discovering"
-	value, err := dbusutil.Property(ctx, a.obj, prop)
-	if err != nil {
-		return false, err
-	}
-	discovering, ok := value.(bool)
-	if !ok {
-		return false, errors.New("discovering property not a bool")
-	}
-	return discovering, nil
+	return a.dbus.PropertyBool(ctx, "Discovering")
 }
 
 // UUIDs returns the uuids of the adapter.
 func (a *Adapter) UUIDs(ctx context.Context) ([]string, error) {
-	const prop = adapterIface + ".UUIDs"
-	value, err := dbusutil.Property(ctx, a.obj, prop)
-	if err != nil {
-		return []string{}, err
-	}
-	uuids, ok := value.([]string)
-	if !ok {
-		return []string{}, errors.New("uuids property not a string slice")
-	}
-	return uuids, nil
+	return a.dbus.PropertyStrings(ctx, "UUIDs")
 }
 
 // Modalias returns the modalias of the adapter.
 func (a *Adapter) Modalias(ctx context.Context) (string, error) {
-	const prop = adapterIface + ".Modalias"
-	value, err := dbusutil.Property(ctx, a.obj, prop)
-	if err != nil {
-		return "", err
-	}
-	modalias, ok := value.(string)
-	if !ok {
-		return "", errors.New("modalias property not a string")
-	}
-	return modalias, nil
+	return a.dbus.PropertyString(ctx, "Modalias")
 }
 
 // StartDiscovery starts a discovery on the adapter.
 func (a *Adapter) StartDiscovery(ctx context.Context) error {
-	c := a.obj.CallWithContext(ctx, adapterIface+".StartDiscovery", 0)
+	c := a.dbus.Call(ctx, "StartDiscovery")
 	if c.Err != nil {
 		return errors.Wrap(c.Err, "failed to start discovery")
 	}
@@ -177,9 +108,18 @@ func (a *Adapter) StartDiscovery(ctx context.Context) error {
 
 // StopDiscovery stops the discovery on the adapter.
 func (a *Adapter) StopDiscovery(ctx context.Context) error {
-	c := a.obj.CallWithContext(ctx, adapterIface+".StopDiscovery", 0)
+	c := a.dbus.Call(ctx, "StopDiscovery")
 	if c.Err != nil {
 		return errors.Wrap(c.Err, "failed to stop discovery")
+	}
+	return nil
+}
+
+// RemoveDevice removes the device with the specified path.
+func (a *Adapter) RemoveDevice(ctx context.Context, devicePath dbus.ObjectPath) error {
+	c := a.dbus.Call(ctx, "RemoveDevice", devicePath)
+	if c.Err != nil {
+		return errors.Wrapf(c.Err, "failed to remove device with path %q", devicePath)
 	}
 	return nil
 }
@@ -236,7 +176,7 @@ func PollForBTDisabled(ctx context.Context) error {
 	return PollForAdapterState(ctx, false)
 }
 
-//PollForAdapterState polls bluetooth adapter state until expected state is received or  timeout occurs.
+// PollForAdapterState polls bluetooth adapter state until expected state is received or timeout occurs.
 func PollForAdapterState(ctx context.Context, exp bool) error {
 	return testing.Poll(ctx, func(ctx context.Context) error {
 		status, err := IsEnabled(ctx)

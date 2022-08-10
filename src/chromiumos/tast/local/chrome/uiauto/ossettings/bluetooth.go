@@ -7,7 +7,7 @@ package ossettings
 import (
 	"context"
 
-	"chromiumos/tast/local/bluetooth"
+	"chromiumos/tast/local/bluetooth/bluez"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
@@ -37,7 +37,7 @@ func NavigateToBluetoothSettingsPage(ctx context.Context, tconn *chrome.TestConn
 		return app, err
 	}
 
-	if err := bluetooth.Enable(ctx); err != nil {
+	if err := bluez.Enable(ctx); err != nil {
 		return app, err
 	}
 

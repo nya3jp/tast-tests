@@ -7,7 +7,7 @@ package bluetooth
 import (
 	"context"
 
-	"chromiumos/tast/local/bluetooth"
+	"chromiumos/tast/local/bluetooth/bluez"
 	"chromiumos/tast/local/bluetooth/mojo"
 	"chromiumos/tast/testing"
 )
@@ -53,7 +53,7 @@ func ToggleBluetoothUsingMojo(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to toggle Bluetooth state via mojo: ", err)
 		}
 
-		if err := bluetooth.PollForAdapterState(ctx, isEnabled); err != nil {
+		if err := bluez.PollForAdapterState(ctx, isEnabled); err != nil {
 			s.Fatal("Bluetooth state not as expected: ", err)
 		}
 

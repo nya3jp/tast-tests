@@ -40,7 +40,7 @@ func WaitForHermesIdle(ctx context.Context, timeout time.Duration) error {
 // CheckProperty reads a DBus property on a DBusObject. Returns an error if the value does not match the expected value
 func CheckProperty(ctx context.Context, o *dbusutil.DBusObject, prop string, expected interface{}) error {
 	var actual interface{}
-	if err := o.Get(ctx, prop, &actual); err != nil {
+	if err := o.Property(ctx, prop, &actual); err != nil {
 		return errors.Wrap(err, "failed to check property")
 	}
 	if reflect.TypeOf(actual) != reflect.TypeOf(expected) {
@@ -54,12 +54,13 @@ func CheckProperty(ctx context.Context, o *dbusutil.DBusObject, prop string, exp
 }
 
 // CheckNumInstalledProfiles checks installed profiles count matches expected profiles count.
-func CheckNumInstalledProfiles(ctx context.Context, s *testing.State, euicc *EUICC, expected int) {
+func CheckNumInstalledProfiles(ctx context.Context, euicc *EUICC, expected int) error {
 	installedProfiles, err := euicc.InstalledProfiles(ctx, false)
 	if err != nil {
-		s.Fatal("Failed to get installed profiles: ", err)
+		return errors.Wrap(err, "failed to get installed profiles")
 	}
 	if len(installedProfiles) != expected {
-		s.Fatalf("Unexpected number of installed profiles, got: %d, want: %d", len(installedProfiles), expected)
+		return errors.Errorf("unexpected number of installed profiles, got: %d, want: %d", len(installedProfiles), expected)
 	}
+	return nil
 }

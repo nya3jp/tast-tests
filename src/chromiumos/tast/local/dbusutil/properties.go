@@ -27,7 +27,7 @@ func NewProperties(p map[string]interface{}) *Properties {
 // The dbus call may fail with DBusErrorUnknownObject if the DBusObject is not valid.
 // Callers can us IsDBusError to test for that case.
 func NewDBusProperties(ctx context.Context, d *DBusObject) (*Properties, error) {
-	props, err := d.GetAll(ctx)
+	props, err := d.AllProperties(ctx)
 	if err != nil {
 		return nil, errors.Wrapf(err, "failed getting all properties of %v", d)
 	}
