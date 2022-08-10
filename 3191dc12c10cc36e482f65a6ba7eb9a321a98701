@@ -98,6 +98,24 @@
       "parentUuid": "a403f79d_7a1dcd91",
       "revId": "3191dc12c10cc36e482f65a6ba7eb9a321a98701",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "86516b34_e65c73a3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-08-10T04:39:15Z",
+      "side": 1,
+      "message": "Yes, you still need tast-owners@. (That process will probably assign me back as a shadow reviewer for this patch)",
+      "parentUuid": "63dab5d0_940b28fd",
+      "revId": "3191dc12c10cc36e482f65a6ba7eb9a321a98701",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
