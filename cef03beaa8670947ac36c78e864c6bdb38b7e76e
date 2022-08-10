@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a9e48286_b3f7dcf8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390217
+      },
+      "writtenOn": "2022-08-10T03:35:15Z",
+      "side": 1,
+      "message": "+1 to reach out to TAST team, since it affects other teams as well.\n\nI know that we run Ash vs. Lacros comparison of the metrics, especially during Lacros enablement phase, so we can potentially pick it up.",
+      "parentUuid": "58b20966_526b3114",
+      "revId": "cef03beaa8670947ac36c78e864c6bdb38b7e76e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6b110ee2_29af1651",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/youtube_web.go",
         "patchSetId": 1
