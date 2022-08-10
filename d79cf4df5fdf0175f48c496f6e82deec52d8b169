@@ -52,6 +52,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7505211_2738c6b6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-08-10T17:44:30Z",
+      "side": 1,
+      "message": "This looks like an end to end app compatibility test for Youtube, that right now happens to be VP9 and 4k video. It isn\u0027t really a test for video.\n\nAlso it would expect to fail on Chromebooks that can\u0027t decode VP9 or handle 4K. Not spent enough time to see if it enforces hardware or if software is good enough (which would drop a lot of frames).\n\nSo how would Intel fix ARM Chromebooks that start failing this test?",
+      "revId": "d79cf4df5fdf0175f48c496f6e82deec52d8b169",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4dfe6eeb_db5d9f3a",
