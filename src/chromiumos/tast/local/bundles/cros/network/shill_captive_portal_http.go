@@ -70,6 +70,13 @@ func init() {
 				HTTPResponseHandler:  noContentHandler,
 				HTTPSResponseHandler: noContentHandler,
 			},
+		}, {
+			Name: "noconnectivity",
+			Val: &params{
+				ServiceState:         shillconst.ServiceStateNoConnectivity,
+				HTTPResponseHandler:  nil,
+				HTTPSResponseHandler: nil,
+			},
 		}},
 	})
 }
