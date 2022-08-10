@@ -78,4 +78,12 @@ func DisplayPageURL(ctx context.Context, s *testing.State) {
 	if err := ui.WaitUntilExists(urlText)(ctx); err != nil {
 		s.Fatal("Failed to find element: ", err)
 	}
+
+	// Verify share url checkbox is checked by default
+	checkboxAncestor := nodewith.NameContaining("Share URL").Role(
+		role.GenericContainer).Ancestor(feedbackRootNode)
+	checkbox := nodewith.Role(role.CheckBox).Ancestor(checkboxAncestor)
+	if err := ui.WaitUntilExists(checkbox.Attribute("checked", "true"))(ctx); err != nil {
+		s.Fatal("Failed to find checked share url checkbox: ", err)
+	}
 }
