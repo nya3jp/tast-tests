@@ -15,7 +15,8 @@ data_sources: {
         name: "track_event"
         target_buffer: 0
         track_event_config {
-            enabled_categories: "hal_adapter"
+            enabled_categories: "camera.hal_adapter"
+            disabled_categories: "*"
         }
     }
 }
