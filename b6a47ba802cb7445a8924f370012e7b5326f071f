@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0acb38c8_0f5f7eff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/view_policy.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-08-11T00:21:59Z",
+      "side": 1,
+      "message": "nit: move Fixture to common attrs outside Params.",
+      "range": {
+        "startLine": 50,
+        "startChar": 13,
+        "endLine": 50,
+        "endChar": 41
+      },
+      "revId": "b6a47ba802cb7445a8924f370012e7b5326f071f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
