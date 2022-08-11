@@ -36,20 +36,12 @@ func init() {
 		Attr: []string{"group:mainline", "informational"},
 		Params: []testing.Param{{
 			Name:    "productivity_launcher_clamshell_mode",
-			Val:     launcher.TestCase{ProductivityLauncher: true, TabletMode: false},
+			Val:     launcher.TestCase{TabletMode: false},
 			Fixture: "chromeLoggedInWith100FakeAppsProductivityLauncher",
-		}, {
-			Name:    "clamshell_mode",
-			Val:     launcher.TestCase{ProductivityLauncher: false, TabletMode: false},
-			Fixture: "chromeLoggedInWith100FakeAppsLegacyLauncher",
 		}, {
 			Name:    "productivity_launcher_tablet_mode",
-			Val:     launcher.TestCase{ProductivityLauncher: true, TabletMode: true},
+			Val:     launcher.TestCase{TabletMode: true},
 			Fixture: "chromeLoggedInWith100FakeAppsProductivityLauncher",
-		}, {
-			Name:    "tablet_mode",
-			Val:     launcher.TestCase{ProductivityLauncher: false, TabletMode: true},
-			Fixture: "chromeLoggedInWith100FakeAppsLegacyLauncher",
 		}},
 	})
 }
@@ -69,9 +61,9 @@ func AppDragAndDrop(ctx context.Context, s *testing.State) {
 
 	testCase := s.Param().(launcher.TestCase)
 	tabletMode := testCase.TabletMode
-	productivityLauncher := testCase.ProductivityLauncher
 
-	cleanup, err := launcher.SetUpLauncherTest(ctx, tconn, tabletMode, productivityLauncher, true /*stabilizeAppCount*/)
+	cleanup, err := launcher.SetUpLauncherTest(
+		ctx, tconn, tabletMode, true /*productivityLauncher*/, true /*stabilizeAppCount*/)
 	if err != nil {
 		s.Fatal("Failed to set up launcher test case: ", err)
 	}
@@ -87,7 +79,7 @@ func AppDragAndDrop(ctx context.Context, s *testing.State) {
 	// startPage defines which page starts testing.
 	startPage := 2
 	ui := uiauto.New(tconn)
-	usingBubbleLauncher := productivityLauncher && !tabletMode
+	usingBubbleLauncher := !tabletMode
 	if !usingBubbleLauncher {
 		if err := switchToPage(ui, startPage)(ctx); err != nil {
 			s.Fatal("Failed to switch to second page for test: ", err)
@@ -106,7 +98,7 @@ func AppDragAndDrop(ctx context.Context, s *testing.State) {
 		}
 	}
 
-	if err := dragIconToIcon(ctx, tconn, ui, firstItem, productivityLauncher); err != nil {
+	if err := dragIconToIcon(ctx, tconn, ui, tabletMode, firstItem); err != nil {
 		s.Fatal("Failed to drag the first icon to the second icon: ", err)
 	}
 
@@ -128,13 +120,21 @@ func AppDragAndDrop(ctx context.Context, s *testing.State) {
 
 // dragIconToIcon drags an app list item at firstItem index in the current app list page to an item at index firstItem + 2, creating a folder.
 // It then removes all items from the folder, and verifies the original item gets dropped into a different location.
-// productivityLauncher indicates whether the test is run for productivityLauncher, which subtly changes folder interfactions.
-func dragIconToIcon(ctx context.Context, tconn *chrome.TestConn, ui *uiauto.Context, firstItem int, productivityLauncher bool) error {
+// tabletMode is used to determine which apps grid view to search for app icons.
+func dragIconToIcon(ctx context.Context, tconn *chrome.TestConn, ui *uiauto.Context, tabletMode bool, firstItem int) error {
 	srcInfo, err := ui.Info(ctx, nodewith.HasClass(launcher.ExpandedItemsClass).Nth(firstItem))
 	if err != nil {
 		return errors.Wrap(err, "failed to get information of first icon")
 	}
-	src := launcher.AppItemViewFinder(srcInfo.Name)
+	// Because the launcher views are cached on first show, both apps grid views
+	// may exist if chrome doesn't restart between two launcher tests.
+	var ancestorNode *nodewith.Finder
+	if tabletMode {
+		ancestorNode = nodewith.ClassName(launcher.PagedAppsGridViewClass)
+	} else {
+		ancestorNode = nodewith.ClassName(launcher.BubbleAppsGridViewClass)
+	}
+	src := launcher.AppItemViewFinder(srcInfo.Name).Ancestor(ancestorNode)
 
 	locBefore, err := ui.Location(ctx, src)
 	if err != nil {
@@ -148,22 +148,18 @@ func dragIconToIcon(ctx context.Context, tconn *chrome.TestConn, ui *uiauto.Cont
 		return errors.Wrap(err, "failed to drag the first icon to the third icon")
 	}
 
-	// For productivity launcher, folders get automatically opened after getting created by dragging - make sure the created folder gets closed.
-	if productivityLauncher {
-		if err := launcher.CloseFolderView(ctx, tconn); err != nil {
-			return errors.Wrap(err, "failed to close the folder")
-		}
+	// Folders get automatically opened after getting created by dragging - make sure the created folder gets closed.
+	if err := launcher.CloseFolderView(ctx, tconn); err != nil {
+		return errors.Wrap(err, "failed to close the folder")
 	}
 
 	if err := launcher.RemoveIconFromFolder(tconn, launcher.UnnamedFolderFinder)(ctx); err != nil {
 		return errors.Wrap(err, "failed to drag out the icon from folder")
 	}
 
-	// Productivity launcher supports single-item folders, so the folder should still exist after removing second to last item.
-	if productivityLauncher {
-		if err := launcher.RemoveIconFromFolder(tconn, launcher.UnnamedFolderFinder)(ctx); err != nil {
-			return errors.Wrap(err, "failed to drag out the icon from single-item folder")
-		}
+	// Launcher supports single-item folders, so the folder should still exist after removing second to last item.
+	if err := launcher.RemoveIconFromFolder(tconn, launcher.UnnamedFolderFinder)(ctx); err != nil {
+		return errors.Wrap(err, "failed to drag out the icon from single-item folder")
 	}
 
 	locAfter, err := ui.Location(ctx, src)

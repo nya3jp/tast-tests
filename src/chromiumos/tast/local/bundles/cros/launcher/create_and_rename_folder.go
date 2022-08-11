@@ -32,17 +32,10 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{
 			Name: "productivity_launcher_clamshell_mode",
-			Val:  launcher.TestCase{ProductivityLauncher: true, TabletMode: false},
-		}, {
-			Name: "clamshell_mode",
-			Val:  launcher.TestCase{ProductivityLauncher: false, TabletMode: false},
+			Val:  launcher.TestCase{TabletMode: false},
 		}, {
 			Name:              "productivity_launcher_tablet_mode",
-			Val:               launcher.TestCase{ProductivityLauncher: true, TabletMode: true},
-			ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
-		}, {
-			Name:              "tablet_mode",
-			Val:               launcher.TestCase{ProductivityLauncher: false, TabletMode: true},
+			Val:               launcher.TestCase{TabletMode: true},
 			ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		}},
 	})
@@ -56,15 +49,8 @@ func CreateAndRenameFolder(ctx context.Context, s *testing.State) {
 
 	testCase := s.Param().(launcher.TestCase)
 	tabletMode := testCase.TabletMode
-	productivityLauncher := testCase.ProductivityLauncher
-	var opt chrome.Option
-	if productivityLauncher {
-		opt = chrome.EnableFeatures("ProductivityLauncher")
-	} else {
-		opt = chrome.DisableFeatures("ProductivityLauncher")
-	}
 
-	cr, err := chrome.New(ctx, opt)
+	cr, err := chrome.New(ctx)
 	if err != nil {
 		s.Fatal("Chrome login failed: ", err)
 	}
@@ -81,7 +67,7 @@ func CreateAndRenameFolder(ctx context.Context, s *testing.State) {
 	}
 	defer kb.Close()
 
-	cleanup, err := launcher.SetUpLauncherTest(ctx, tconn, tabletMode, productivityLauncher, true /*stabilizeAppCount*/)
+	cleanup, err := launcher.SetUpLauncherTest(ctx, tconn, tabletMode, true /*productivityLauncher*/, true /*stabilizeAppCount*/)
 	if err != nil {
 		s.Fatal("Failed to set up launcher test case: ", err)
 	}
@@ -89,7 +75,7 @@ func CreateAndRenameFolder(ctx context.Context, s *testing.State) {
 
 	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
 
-	if err := launcher.CreateFolder(ctx, tconn, productivityLauncher); err != nil {
+	if err := launcher.CreateFolder(ctx, tconn, true /*productivityLauncher*/); err != nil {
 		s.Fatal("Failed to create folder app: ", err)
 	}
 

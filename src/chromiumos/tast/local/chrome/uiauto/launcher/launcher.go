@@ -71,6 +71,7 @@ var SearchResultListLabelFinder = nodewith.ClassName("Label")
 var ReorderEducationNudgeFinder = nodewith.ClassName("Label").Name("Sort your apps by name or color")
 
 // TestCase describes modes in which the launcher UI can be shown, and by which launcher test should generally be parameterized.
+// TODO(crbug.com/1351225): Remove this when all legacy launcher tests are removed.
 type TestCase struct {
 	ProductivityLauncher bool // Whether productivity launcher feature should be enabled
 	TabletMode           bool // Whether the test runs in tablet mode
@@ -153,6 +154,9 @@ func WaitForCategorizedResult(tconn *chrome.TestConn, category, result string) u
 //		s.Fatal("Test setup failed: ", err)
 //	}
 //	defer cleanup(ctx)
+//
+// TODO(crbug.com/1351225): Remove argument productivityLauncher when all
+// legacy launcher tests are removed.
 func SetUpLauncherTest(ctx context.Context, tconn *chrome.TestConn, tabletMode, productivityLauncher, stabilizeAppCount bool) (func(ctx context.Context), error) {
 	cleanupTabletMode, err := ash.EnsureTabletModeEnabled(ctx, tconn, tabletMode)
 	if err != nil {
@@ -741,6 +745,7 @@ func CloseFolderView(ctx context.Context, tconn *chrome.TestConn) error {
 
 // CreateFolder is a helper function to create a folder by dragging the first non-folder item on top of the second non-folder item.
 // folderOpensOnCreation indicates whether the folder view expected to get opened after creation (with no extra user input).
+// TODO(crbug.com/1351225): Remove "folderOpensOnCreation" when all legacy launcher tests are removed, as the parameter will always be true.
 func CreateFolder(ctx context.Context, tconn *chrome.TestConn, folderOpensOnCreation bool) error {
 	// When productivity launcher is enabled, first row of items in the app list will be recent apps, which are not draggable, and cannot
 	// be used for tests that create folder.
