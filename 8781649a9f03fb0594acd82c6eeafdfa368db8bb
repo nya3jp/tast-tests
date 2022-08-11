@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c823fe0c_752a3d1c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/write_protect.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1427718
+      },
+      "writtenOn": "2022-08-11T06:27:14Z",
+      "side": 1,
+      "message": "This file now gets saved to the temp directory created above and deleted in that defer as well.",
+      "parentUuid": "9ffe55e9_a9a04882",
+      "revId": "8781649a9f03fb0594acd82c6eeafdfa368db8bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a371750c_cb5a0d76",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-07-26T19:48:15Z",
       "side": 1,
       "message": "Likewise for this one.",
+      "revId": "8781649a9f03fb0594acd82c6eeafdfa368db8bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "617febf6_acb30776",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/write_protect.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1427718
+      },
+      "writtenOn": "2022-08-11T06:27:14Z",
+      "side": 1,
+      "message": "Same as previous.",
+      "parentUuid": "a371750c_cb5a0d76",
       "revId": "8781649a9f03fb0594acd82c6eeafdfa368db8bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

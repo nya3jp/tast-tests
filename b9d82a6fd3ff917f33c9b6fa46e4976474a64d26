@@ -22,6 +22,30 @@
       },
       "revId": "b9d82a6fd3ff917f33c9b6fa46e4976474a64d26",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c963111b_3532a289",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/write_protect.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1427718
+      },
+      "writtenOn": "2022-08-11T06:27:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b167b2f5_cafae6f5",
+      "range": {
+        "startLine": 365,
+        "startChar": 1,
+        "endLine": 365,
+        "endChar": 2
+      },
+      "revId": "b9d82a6fd3ff917f33c9b6fa46e4976474a64d26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
