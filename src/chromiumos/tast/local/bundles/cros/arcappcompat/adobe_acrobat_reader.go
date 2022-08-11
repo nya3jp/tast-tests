@@ -34,51 +34,51 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Functional test for AdobeAcrobatReader that installs the app also verifies it is logged in and that the main page is open, checks AdobeAcrobatReader correctly changes the window state in both clamshell and touchview mode",
 		Contacts:     []string{"mthiyagarajan@chromium.org", "cros-appcompat-test-team@google.com"},
-		Attr:         []string{"group:appcompat", "appcompat_smoke", "appcompat_top_apps"},
+		Attr:         []string{"group:appcompat", "appcompat_top_apps"},
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{
-			Name: "clamshell_mode_default",
+			Name: "clamshell_mode_smoke",
 			Val: testutil.TestParams{
 				LaunchTests: clamshellLaunchForAdobeAcrobatReader,
-				CommonTests: testutil.ClamshellCommonTests,
+				CommonTests: testutil.ClamshellSmokeTests,
 			},
-			ExtraAttr:         []string{"appcompat_default"},
+			ExtraAttr:         []string{"appcompat_smoke"},
 			ExtraSoftwareDeps: []string{"android_p"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
 			// Skip on tablet only models.
 			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(testutil.TabletOnlyModels...)),
 			Pre:               pre.AppCompatBooted,
 		}, {
-			Name: "tablet_mode_default",
+			Name: "tablet_mode_smoke",
 			Val: testutil.TestParams{
 				LaunchTests: touchviewLaunchForAdobeAcrobatReader,
-				CommonTests: testutil.TouchviewCommonTests,
+				CommonTests: testutil.TouchviewSmokeTests,
 			},
-			ExtraAttr:         []string{"appcompat_default"},
+			ExtraAttr:         []string{"appcompat_smoke"},
 			ExtraSoftwareDeps: []string{"android_p"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
 			// Skip on clamshell only models.
 			ExtraHardwareDeps: hwdep.D(hwdep.TouchScreen(), hwdep.SkipOnModel(testutil.ClamshellOnlyModels...)),
 			Pre:               pre.AppCompatBootedInTabletMode,
 		}, {
-			Name: "vm_clamshell_mode_default",
+			Name: "vm_clamshell_mode_smoke",
 			Val: testutil.TestParams{
 				LaunchTests: clamshellLaunchForAdobeAcrobatReader,
-				CommonTests: testutil.ClamshellCommonTests,
+				CommonTests: testutil.ClamshellSmokeTests,
 			},
-			ExtraAttr:         []string{"appcompat_default"},
+			ExtraAttr:         []string{"appcompat_smoke"},
 			ExtraSoftwareDeps: []string{"android_vm"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
 			// Skip on tablet only models.
 			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(testutil.TabletOnlyModels...)),
 			Pre:               pre.AppCompatBooted,
 		}, {
-			Name: "vm_tablet_mode_default",
+			Name: "vm_tablet_mode_smoke",
 			Val: testutil.TestParams{
 				LaunchTests: touchviewLaunchForAdobeAcrobatReader,
-				CommonTests: testutil.TouchviewCommonTests,
+				CommonTests: testutil.TouchviewSmokeTests,
 			},
-			ExtraAttr:         []string{"appcompat_default"},
+			ExtraAttr:         []string{"appcompat_smoke"},
 			ExtraSoftwareDeps: []string{"android_vm"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
 			// Skip on clamshell only models.
