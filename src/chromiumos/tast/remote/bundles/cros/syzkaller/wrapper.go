@@ -57,8 +57,11 @@ var boardArchMapping = map[string]string{
 	"trogdor":   "arm",
 	"strongbad": "arm",
 	// syzkaller binaries built for Mediatek platforms are 32 bit.
-	"kukui":  "arm",
-	"cherry": "arm",
+	"kukui": "arm",
+	// b/242131739: Jacuzzi and Cherry are for local testing at the moment.
+	// The test is not enabled in the lab yet.
+	"jacuzzi": "arm",
+	"cherry":  "arm",
 }
 
 // dutConfig represents information related to the DUT configuration;
