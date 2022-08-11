@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6fd183c5_d501b219",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/faillog/screenshot.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-08-11T07:18:45Z",
+      "side": 1,
+      "message": "if previous TestAPIConn returns a nil tconn, this function might throw out nil pointer error.\n\nIt should not be called if tconn initialise failed. Can you restructure the code?",
+      "range": {
+        "startLine": 44,
+        "startChar": 43,
+        "endLine": 44,
+        "endChar": 48
+      },
+      "revId": "8683e3a452d425dd99cbd808f5cf7a3d226484e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
