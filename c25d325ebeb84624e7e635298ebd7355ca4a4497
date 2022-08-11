@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb35e9ec_ad78aecb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_guest.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1003214
+      },
+      "writtenOn": "2022-08-11T07:01:55Z",
+      "side": 1,
+      "message": "Not easily without some tast side changes, see crbug.com/1296437",
+      "parentUuid": "2ecc4940_cce234bc",
+      "range": {
+        "startLine": 25,
+        "startChar": 17,
+        "endLine": 25,
+        "endChar": 33
+      },
+      "revId": "c25d325ebeb84624e7e635298ebd7355ca4a4497",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8ad4f634_b8febcff",
@@ -41,6 +65,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb95e5d0_88f14a65",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_guest.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1003214
+      },
+      "writtenOn": "2022-08-11T07:01:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8ad4f634_b8febcff",
+      "revId": "c25d325ebeb84624e7e635298ebd7355ca4a4497",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6e22eadb_0ae55b90",
@@ -54,6 +96,30 @@
       "writtenOn": "2022-08-11T03:50:18Z",
       "side": 1,
       "message": "nit: As TODO stated above, could we move the logic into cryptohome.UserPath()?",
+      "range": {
+        "startLine": 880,
+        "startChar": 14,
+        "endLine": 880,
+        "endChar": 33
+      },
+      "revId": "c25d325ebeb84624e7e635298ebd7355ca4a4497",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78113eeb_66ca69ce",
+        "filename": "src/chromiumos/tast/local/camera/cca/cca.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 880,
+      "author": {
+        "id": 1003214
+      },
+      "writtenOn": "2022-08-11T07:01:55Z",
+      "side": 1,
+      "message": "I\u0027m not sure if this is better handled in the tast part or in the cryptohome-path helper. msalomao@ any advice?",
+      "parentUuid": "6e22eadb_0ae55b90",
       "range": {
         "startLine": 880,
         "startChar": 14,
