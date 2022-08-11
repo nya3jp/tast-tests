@@ -262,6 +262,21 @@ func ECLaptopMode(ctx context.Context, s *testing.State) {
 			}
 			// Close chrome instance at the end of the test.
 			defer screenLockService.CloseChrome(ctx, &empty.Empty{})
+
+			// lockScreen calls the js function 'chrome.autotestPrivate.lockScreen()'.
+			// While this function locked the screen, it also turned the display off.
+			// If display was off, send a tap on the power button to bring it on before
+			// continuing the rest of the test.
+			if err := checkDisplay(ctx); err != nil {
+				if strings.Contains(err.Error(), "CRTC not found. Is the screen on?") {
+					s.Log("Display turned off at lock screen. Sending a tap on power button")
+					if err := h.Servo.KeypressWithDuration(ctx, servo.PowerKey, servo.DurTab); err != nil {
+						s.Fatal("Failed to send a tap on power button: ", err)
+					}
+				} else {
+					s.Fatal("Failed to check for display: ", err)
+				}
+			}
 		}
 
 		// Wait for some delay for display to fully settle down,
