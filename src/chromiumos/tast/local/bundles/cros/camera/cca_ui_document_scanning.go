@@ -44,13 +44,45 @@ func init() {
 				},
 			},
 		}, {
+			Name:    "multi_page",
+			Fixture: "ccaTestBridgeReadyForMultiPageDocScan",
+			Val: []documentScanSubTest{
+				{
+					name: "testSavePhoto",
+					run: func(ctx context.Context, app *cca.App, cr *chrome.Chrome) error {
+						return testMultiplePageSavePhoto(ctx, app)
+					},
+				}, {
+					name: "testSavePdf",
+					run: func(ctx context.Context, app *cca.App, cr *chrome.Chrome) error {
+						return testMultiplePageSavePdf(ctx, app)
+					},
+				}, {
+					name: "testUIChangeWithDifferentPageCount",
+					run: func(ctx context.Context, app *cca.App, cr *chrome.Chrome) error {
+						return testMultiPageUIChangeWithDifferentPageCount(ctx, app)
+					},
+				},
+			},
+		}, {
 			Name:    "manual_crop",
-			Fixture: "ccaTestBridgeReadyForDocumentManualCrop",
+			Fixture: "ccaTestBridgeReadyWithFakeCamera",
 			Val: []documentScanSubTest{
 				{
 					name: "testFixCropArea",
 					run: func(ctx context.Context, app *cca.App, cr *chrome.Chrome) error {
 						return testFixCropArea(ctx, app, cr)
+					},
+				},
+			},
+		}, {
+			Name:    "manual_crop_multi_page",
+			Fixture: "ccaTestBridgeReadyForMultiPageDocScan",
+			Val: []documentScanSubTest{
+				{
+					name: "testFixCropArea",
+					run: func(ctx context.Context, app *cca.App, cr *chrome.Chrome) error {
+						return testMultiPageFixCropArea(ctx, app, cr)
 					},
 				},
 			},
@@ -173,6 +205,14 @@ func enterDocumentMode(ctx context.Context, app *cca.App) error {
 	} else if !checked {
 		return errors.New("failed to land on document mode by default")
 	}
+
+	// TODO(b/239642965): Remove this check. Document dialog will always show after the fixes for b/238403258.
+	if err := app.WaitForVisibleState(ctx, cca.DocumentDialogButton, true); err == nil {
+		if err := app.Click(ctx, cca.DocumentDialogButton); err != nil {
+			return errors.Wrap(err, "failed to click the document dialog button")
+		}
+	}
+
 	return nil
 }
 
@@ -251,17 +291,165 @@ func runTakeDocumentPhoto(ctx context.Context, app *cca.App, reviewChoices []rev
 	return nil
 }
 
-func testFixCropArea(ctx context.Context, app *cca.App, cr *chrome.Chrome) error {
+// testMultiplePageSavePhoto tests if CCA can take a document photo and save the file as JPG correctly in multi-page UI.
+func testMultiplePageSavePhoto(ctx context.Context, app *cca.App) (retErr error) {
 	if err := enterDocumentMode(ctx, app); err != nil {
 		return errors.Wrap(err, "failed to enter document mode")
 	}
 
-	err := app.WaitForVisibleState(ctx, cca.DocumentDialogButton, true)
-	// TODO(b/239642965): Remove this check. Document dialog will always show after the fixes for b/238403258.
-	if err == nil {
-		if err := app.Click(ctx, cca.DocumentDialogButton); err != nil {
-			return errors.Wrap(err, "failed to click the document dialog button")
-		}
+	if err := app.ClickShutter(ctx); err != nil {
+		return errors.Wrap(err, "failed to click the shutter button")
+	}
+
+	if err := app.WaitForVisibleState(ctx, cca.DocumentReview, true); err != nil {
+		return errors.Wrap(err, "failed to wait for review UI to show")
+	}
+
+	start := time.Now()
+
+	dir, err := app.SavedDir(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to get CCA default saved path")
+	}
+
+	if err := app.Click(ctx, cca.DocumentSaveAsPhotoButton); err != nil {
+		return errors.Wrap(err, "failed to click save as photo button")
+	}
+
+	if _, err := app.WaitForFileSaved(ctx, dir, cca.DocumentPhotoPattern, start); err != nil {
+		return errors.Wrap(err, "failed to wait for the photo")
+	}
+
+	return nil
+}
+
+// testMultiplePageSavePdf tests if CCA can take document photos and save the file as PDF correctly in multi-page UI.
+func testMultiplePageSavePdf(ctx context.Context, app *cca.App) (retErr error) {
+	if err := enterDocumentMode(ctx, app); err != nil {
+		return errors.Wrap(err, "failed to enter document mode")
+	}
+
+	if err := app.ClickShutter(ctx); err != nil {
+		return errors.Wrap(err, "failed to click the shutter button")
+	}
+
+	if err := app.WaitForVisibleState(ctx, cca.DocumentReview, true); err != nil {
+		return errors.Wrap(err, "failed to wait for review UI to show")
+	}
+
+	if err := app.Click(ctx, cca.DocumentAddPageButton); err != nil {
+		return errors.Wrap(err, "failed to click the add page button")
+	}
+
+	if err := app.WaitForState(ctx, "camera-configuring", false); err != nil {
+		return errors.Wrap(err, "failed to wait for camera-configuring state to turn off")
+	}
+
+	if err := app.ClickShutter(ctx); err != nil {
+		return errors.Wrap(err, "failed to click the shutter button")
+	}
+
+	if err := app.WaitForVisibleState(ctx, cca.DocumentReview, true); err != nil {
+		return errors.Wrap(err, "failed to wait for review UI to show")
+	}
+
+	start := time.Now()
+
+	dir, err := app.SavedDir(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to get CCA default saved path")
+	}
+
+	if err := app.Click(ctx, cca.DocumentSaveAsPdfButton); err != nil {
+		return errors.Wrap(err, "failed to click save as PDF button")
+	}
+
+	if _, err := app.WaitForFileSaved(ctx, dir, cca.DocumentPDFPattern, start); err != nil {
+		return errors.Wrap(err, "failed to wait for the PDF file")
+	}
+
+	return nil
+}
+
+// testMultiPageUIChangeWithDifferentPageCount tests if CCA shows or hides the UI components correctly during different page counts in multi-page UI.
+func testMultiPageUIChangeWithDifferentPageCount(ctx context.Context, app *cca.App) (retErr error) {
+	if err := enterDocumentMode(ctx, app); err != nil {
+		return errors.Wrap(err, "failed to enter document mode")
+	}
+
+	// 1 page
+	if err := app.ClickShutter(ctx); err != nil {
+		return errors.Wrap(err, "failed to click the shutter button")
+	}
+
+	if err := app.WaitForVisibleState(ctx, cca.DocumentReview, true); err != nil {
+		return errors.Wrap(err, "failed to wait for review UI to show")
+	}
+
+	if err := app.Click(ctx, cca.DocumentAddPageButton); err != nil {
+		return errors.Wrap(err, "failed to click the add page button")
+	}
+
+	if err := app.WaitForVisibleState(ctx, cca.DocumentReview, false); err != nil {
+		return errors.Wrap(err, "failed to wait for review UI to hide")
+	}
+
+	if err := app.Click(ctx, cca.DocumentResumeButton); err != nil {
+		return errors.Wrap(err, "failed to click the resume button")
+	}
+
+	if err := app.WaitForVisibleState(ctx, cca.DocumentReview, true); err != nil {
+		return errors.Wrap(err, "failed to wait for review UI to show")
+	}
+
+	if err := app.CheckVisible(ctx, cca.DocumentSaveAsPhotoButton, true); err != nil {
+		return errors.Wrap(err, "failed to check visibility of save as photo button")
+	}
+
+	if err := app.Click(ctx, cca.DocumentAddPageButton); err != nil {
+		return errors.Wrap(err, "failed to click the add page button")
+	}
+
+	if err := app.WaitForVisibleState(ctx, cca.DocumentReview, false); err != nil {
+		return errors.Wrap(err, "failed to wait for review UI to show up")
+	}
+
+	if err := app.WaitForState(ctx, "camera-configuring", false); err != nil {
+		return errors.Wrap(err, "failed to wait for state camera-configuring to turn off")
+	}
+
+	// 2 pages
+	if err := app.ClickShutter(ctx); err != nil {
+		return errors.Wrap(err, "failed to click the shutter button")
+	}
+
+	if err := app.WaitForVisibleState(ctx, cca.DocumentReview, true); err != nil {
+		return errors.Wrap(err, "failed to wait for review UI to show")
+	}
+
+	if err := app.CheckVisible(ctx, cca.DocumentSaveAsPhotoButton, false); err != nil {
+		return errors.Wrap(err, "failed to check visibility of save as photo button")
+	}
+
+	// 0 pages
+	if err := app.Click(ctx, cca.DocumentRetakeButton); err != nil {
+		return errors.Wrap(err, "failed to click the retake button")
+	}
+
+	if err := app.WaitForVisibleState(ctx, cca.DocumentReview, false); err != nil {
+		return errors.Wrap(err, "failed to wait for review UI to hide")
+	}
+
+	if err := app.CheckVisible(ctx, cca.DocumentResumeButton, false); err != nil {
+		return errors.Wrap(err, "failed to check visibility of resume button")
+	}
+
+	return nil
+}
+
+func testFixCropArea(ctx context.Context, app *cca.App, cr *chrome.Chrome) error {
+	if err := enterDocumentMode(ctx, app); err != nil {
+		return errors.Wrap(err, "failed to enter document mode")
 	}
 
 	if err := app.ClickShutter(ctx); err != nil {
@@ -359,6 +547,128 @@ func testFixCropArea(ctx context.Context, app *cca.App, cr *chrome.Chrome) error
 	}
 	if reviewElSize.Width >= reviewElSize.Height {
 		return errors.Errorf("should crop the longer document after fix crop area, got document width: %v, height: %v", reviewElSize.Width, reviewElSize.Height)
+	}
+
+	return nil
+}
+
+func testMultiPageFixCropArea(ctx context.Context, app *cca.App, cr *chrome.Chrome) error {
+	if err := enterDocumentMode(ctx, app); err != nil {
+		return errors.Wrap(err, "failed to enter document mode")
+	}
+
+	if err := app.ClickShutter(ctx); err != nil {
+		return errors.Wrap(err, "failed to click the shutter button")
+	}
+
+	if err := app.WaitForVisibleState(ctx, cca.DocumentReview, true); err != nil {
+		return errors.Wrap(err, "failed to wait for review UI to show up")
+	}
+
+	if exist, err := app.Exist(ctx, cca.DocumentPreviewModeImage); err != nil {
+		return errors.Wrap(err, "failed to check if preview mode image exists")
+	} else if !exist {
+		return errors.New("preview mode image does not exist")
+	}
+
+	imageElSize, err := app.Size(ctx, cca.DocumentPreviewModeImage)
+	if err != nil {
+		return errors.Wrap(err, "failed to get review size at initial scan")
+	}
+
+	if imageElSize.Width <= imageElSize.Height {
+		return errors.Errorf("should crop the shorter document at initial scan, got document width: %v, height: %v", imageElSize.Width, imageElSize.Height)
+	}
+
+	if err := app.Click(ctx, cca.DocumentFixButton); err != nil {
+		return errors.Wrap(err, "failed to click the fix button")
+	}
+
+	if err := app.WaitForExist(ctx, cca.DocumentFixModeImage); err != nil {
+		return errors.Wrap(err, "failed to wait for fix mode image to show up")
+	}
+
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		return err
+	}
+
+	// poll the check of positions of corners since fix mode UI may resize after showing
+	err = testing.Poll(ctx, func(ctx context.Context) error {
+		var corners [4]docCorner
+
+		imageElSize, err := app.Size(ctx, cca.DocumentFixModeImage)
+
+		if err != nil {
+			return testing.PollBreak(err)
+		}
+
+		imageElScreenXY, err := app.ScreenXYWithIndex(ctx, cca.DocumentFixModeImage, 0)
+
+		if err != nil {
+			return testing.PollBreak(err)
+		}
+
+		dotElSize, err := app.Size(ctx, cca.DocumentFixModeCorner)
+
+		if err != nil {
+			return testing.PollBreak(err)
+		}
+
+		for i := range corners {
+			pt, err := app.ScreenXYWithIndex(ctx, cca.DocumentFixModeCorner, i)
+			if err != nil {
+				return err
+			}
+			pt.X += dotElSize.Width / 2
+			pt.Y += dotElSize.Height / 2
+			corners[i] = docCorner{
+				float64(pt.X-imageElScreenXY.X) / float64(imageElSize.Width),
+				float64(pt.Y-imageElScreenXY.Y) / float64(imageElSize.Height)}
+		}
+
+		initialDocArea := &docArea{corners}
+		if err := doc1Area.checkSimilar(initialDocArea); err != nil {
+			return errors.Wrap(err, "Mismatch document corner coordinate at initial scan")
+		}
+
+		// Drag corners to longer doc on right side. Drag must be done in
+		// clockwise order to prevent hitting any checking convex constraint.
+		for i := len(doc2Area.corners) - 1; i >= 0; i-- {
+			toScreenPt := func(corn docCorner) coords.Point {
+				return coords.NewPoint(
+					int(corn.x*float64(imageElSize.Width))+imageElScreenXY.X,
+					int(corn.y*float64(imageElSize.Height))+imageElScreenXY.Y,
+				)
+			}
+			if err := mouse.Drag(
+				tconn, toScreenPt(initialDocArea.corners[i]), toScreenPt(doc2Area.corners[i]),
+				300*time.Millisecond)(ctx); err != nil {
+				return testing.PollBreak(errors.Wrap(err, "failed to drag corner"))
+			}
+		}
+
+		return nil
+	}, &testing.PollOptions{Timeout: 5 * time.Second})
+
+	if err != nil {
+		return err
+	}
+
+	if err := app.Click(ctx, cca.DocumentDoneFixButton); err != nil {
+		return errors.Wrap(err, "failed to click the done button")
+	}
+
+	if err := app.WaitForExist(ctx, cca.DocumentPreviewModeImage); err != nil {
+		return errors.Wrap(err, "failed to wait for preview mode image to show up")
+	}
+
+	imageElSize, err = app.Size(ctx, cca.DocumentPreviewModeImage)
+	if err != nil {
+		return err
+	}
+	if imageElSize.Width >= imageElSize.Height {
+		return errors.Errorf("should crop the longer document after fix crop area, got document width: %v, height: %v", imageElSize.Width, imageElSize.Height)
 	}
 
 	return nil

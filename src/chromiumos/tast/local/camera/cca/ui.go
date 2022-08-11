@@ -125,7 +125,7 @@ var (
 	// ReviewView is the review view after taking a photo under document mode.
 	ReviewView = UIComponent{"document review view", []string{"#view-review"}}
 	// ReviewImage is the image to be reviewed.
-	ReviewImage = UIComponent{"reivew image", []string{"#view-review .review-image"}}
+	ReviewImage = UIComponent{"review image", []string{"#view-review .review-image"}}
 	// SaveAsPDFButton is the button to save document as PDF.
 	SaveAsPDFButton = UIComponent{"save document as pdf button", []string{"#view-review button[i18n-text=label_save_pdf_document]"}}
 	// SaveAsPhotoButton is the button to save document as photo.
@@ -150,6 +150,28 @@ var (
 		"#preview-document-corner-overlay"}}
 	// DocumentDialogButton is the confirmation button of new feature dialog for document mode.
 	DocumentDialogButton = UIComponent{"document feature dialog button", []string{"#view-document-mode-dialog button[i18n-text=document_mode_dialog_got_it]"}}
+	// DocumentReview is the review view for multi-page document mode.
+	DocumentReview = UIComponent{"document review view", []string{"#view-document-review"}}
+	// DocumentPreviewModeImage is the preview image of preview mode in multi-page document mode.
+	DocumentPreviewModeImage = UIComponent{"document preview mode image", []string{".document-preview-mode .image"}}
+	// DocumentFixModeImage is the preview image of fix mode in multi-page document mode.
+	DocumentFixModeImage = UIComponent{"document fix mode image", []string{".document-fix-mode .image"}}
+	// DocumentFixButton is the entry button of fix mode in multi-page document mode.
+	DocumentFixButton = UIComponent{"document enter fix mode button", []string{".document-preview-mode button[i18n-aria=label_fix_document]"}}
+	// DocumentFixModeCorner is the crop area dragging point in fix mode in multi-page document mode.
+	DocumentFixModeCorner = UIComponent{"document corner dragging point", []string{".document-fix-mode .dot"}}
+	// DocumentDoneFixButton is the exit button of fix mode in multi-page document mode.
+	DocumentDoneFixButton = UIComponent{"document exit fix mode button", []string{".document-fix-mode button[i18n-text=label_crop_done]"}}
+	// DocumentRetakeButton is the retake button in multi-page document mode.
+	DocumentRetakeButton = UIComponent{"document retake button", []string{".document-preview-mode button[i18n-text=label_retake]"}}
+	// DocumentResumeButton is the resume button to show review UI for multi-page document mode.
+	DocumentResumeButton = UIComponent{"document resume button", []string{"#review-document"}}
+	// DocumentAddPageButton is the exit button of fix mode in multi-page document mode.
+	DocumentAddPageButton = UIComponent{"document add page button", []string{".document-preview-mode button[i18n-aria=add_new_page_button]"}}
+	// DocumentSaveAsPhotoButton is the button to save as a photo in multi-page document mode.
+	DocumentSaveAsPhotoButton = UIComponent{"document save as photo button", []string{".document-preview-mode button[i18n-text=label_save_photo_document]"}}
+	// DocumentSaveAsPdfButton is the button save as a PDF file in multi-page document mode.
+	DocumentSaveAsPdfButton = UIComponent{"document save as PDF button", []string{".document-preview-mode button[i18n-text=label_save_pdf_document]"}}
 
 	// GifRecordingOption is the radio button to toggle gif recording option.
 	GifRecordingOption = UIComponent{"gif recording button", []string{
@@ -288,6 +310,20 @@ func (a *App) Exist(ctx context.Context, ui UIComponent) (bool, error) {
 // OptionExist returns if the option exists.
 func (a *App) OptionExist(ctx context.Context, option Option) (bool, error) {
 	return a.Exist(ctx, option.ui)
+}
+
+// WaitForExist waits until the ui exists.
+func (a *App) WaitForExist(ctx context.Context, ui UIComponent) error {
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		exist, err := a.Exist(ctx, ui)
+		if err != nil {
+			return testing.PollBreak(err)
+		}
+		if !exist {
+			return errors.Errorf("failed to wait existence for %v", ui.Name)
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 5 * time.Second})
 }
 
 // Visible returns whether a UI component is visible on the screen.
