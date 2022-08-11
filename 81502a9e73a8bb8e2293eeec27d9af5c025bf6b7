@@ -56,6 +56,30 @@
       },
       "revId": "81502a9e73a8bb8e2293eeec27d9af5c025bf6b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5a59c10_8d268557",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ad/kerberos_daemon.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1541513
+      },
+      "writtenOn": "2022-08-11T16:24:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "89130cc8_b8d29775",
+      "range": {
+        "startLine": 89,
+        "startChar": 1,
+        "endLine": 96,
+        "endChar": 2
+      },
+      "revId": "81502a9e73a8bb8e2293eeec27d9af5c025bf6b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
