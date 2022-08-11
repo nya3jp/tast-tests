@@ -16,6 +16,92 @@
       "message": "PTAL",
       "revId": "9936045984eb9730758bd1c14a813b0f881a3180",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e6d2c68_61e92630",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-08-11T08:15:22Z",
+      "side": 1,
+      "message": "LGTM with a question: The fixtures all have the same logic regarding tape. Wouldn\u0027t it make sense to have a fixture just for that and derive the others from it to avoid code duplication, or does that not work for some reason?",
+      "revId": "9936045984eb9730758bd1c14a813b0f881a3180",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "275d16e0_fea629de",
+        "filename": "src/chromiumos/tast/local/vdi/fixtures/vdi.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-08-11T08:15:22Z",
+      "side": 1,
+      "message": "used",
+      "range": {
+        "startLine": 120,
+        "startChar": 26,
+        "endLine": 120,
+        "endChar": 30
+      },
+      "revId": "9936045984eb9730758bd1c14a813b0f881a3180",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c2d410e_26918b11",
+        "filename": "src/chromiumos/tast/local/vdi/fixtures/vdi_kiosk.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-08-11T08:15:22Z",
+      "side": 1,
+      "message": "used",
+      "range": {
+        "startLine": 117,
+        "startChar": 26,
+        "endLine": 117,
+        "endChar": 30
+      },
+      "revId": "9936045984eb9730758bd1c14a813b0f881a3180",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9aa4aa53_5a4afeff",
+        "filename": "src/chromiumos/tast/local/vdi/fixtures/vdi_mgs.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-08-11T08:15:22Z",
+      "side": 1,
+      "message": "used",
+      "range": {
+        "startLine": 115,
+        "startChar": 26,
+        "endLine": 115,
+        "endChar": 30
+      },
+      "revId": "9936045984eb9730758bd1c14a813b0f881a3180",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
