@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c0032b0_1e45c851",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-08-11T17:24:02Z",
+      "side": 1,
+      "message": "Just nits. Thanks!",
+      "revId": "46b7d4da3a6fd402b0c99e37040a000b45f3435d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c0e8919_c120a137",
+        "filename": "src/chromiumos/tast/local/bundles/cros/personalization/select_rainbow_mode.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-08-11T17:24:02Z",
+      "side": 1,
+      "message": "nit: I think it\u0027s probably better for these names to be descriptive rather than exactly matching the constants in `rgbkbd/constants.h`, as this is used in the logs.",
+      "range": {
+        "startLine": 60,
+        "startChar": 20,
+        "endLine": 60,
+        "endChar": 34
+      },
+      "revId": "46b7d4da3a6fd402b0c99e37040a000b45f3435d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b487dbf8_b00aa294",
+        "filename": "src/chromiumos/tast/local/bundles/cros/personalization/select_rainbow_mode.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-08-11T17:24:02Z",
+      "side": 1,
+      "message": "nit: `\"...got %d, want %d\", count, tc.ExpectedLogLen)`",
+      "range": {
+        "startLine": 133,
+        "startChar": 52,
+        "endLine": 133,
+        "endChar": 107
+      },
+      "revId": "46b7d4da3a6fd402b0c99e37040a000b45f3435d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
