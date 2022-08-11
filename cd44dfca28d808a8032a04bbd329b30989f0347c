@@ -89,6 +89,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d511350_226e3658",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ap_ro_bootability_performance.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1518728
+      },
+      "writtenOn": "2022-08-11T10:26:34Z",
+      "side": 1,
+      "message": "Thank you very much.",
+      "parentUuid": "295ec1b7_cac81609",
+      "range": {
+        "startLine": 60,
+        "startChar": 43,
+        "endLine": 60,
+        "endChar": 62
+      },
+      "revId": "cd44dfca28d808a8032a04bbd329b30989f0347c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "09229984_acc7ecba",
