@@ -53,6 +53,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c06ccfab_feeb89b1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-08-11T23:26:27Z",
+      "side": 1,
+      "message": "I discussed with Po-Hsien on how to not expand the variables in the test declarations by the generator. That will make the generated tests more readable, as they should not change (much).",
+      "revId": "101bc71aad1edd3932e92a322be2ffa6055de661",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "695c0319_6661c907",
