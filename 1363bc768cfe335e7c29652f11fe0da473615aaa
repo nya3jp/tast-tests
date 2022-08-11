@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b6c129c_281b552b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1527527
+      },
+      "writtenOn": "2022-08-11T13:33:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6612e8f4_c8c4fadf",
+      "revId": "1363bc768cfe335e7c29652f11fe0da473615aaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "382dd2a4_61bcbbac",
@@ -52,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d07141d_ef906ed8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nacl/pnacl.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1527527
+      },
+      "writtenOn": "2022-08-11T13:33:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "382dd2a4_61bcbbac",
+      "revId": "1363bc768cfe335e7c29652f11fe0da473615aaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "999cd93e_a6927b41",
@@ -65,6 +101,30 @@
       "writtenOn": "2022-08-09T16:13:55Z",
       "side": 1,
       "message": "Could we use `Launch()` if we don\u0027t use the URL here?",
+      "range": {
+        "startLine": 101,
+        "startChar": 19,
+        "endLine": 101,
+        "endChar": 59
+      },
+      "revId": "1363bc768cfe335e7c29652f11fe0da473615aaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a826cf92_1d4b1179",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nacl/pnacl.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1527527
+      },
+      "writtenOn": "2022-08-11T13:33:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "999cd93e_a6927b41",
       "range": {
         "startLine": 101,
         "startChar": 19,
