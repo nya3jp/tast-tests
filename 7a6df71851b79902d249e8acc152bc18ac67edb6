@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae48c695_86ef6317",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-08-11T16:57:06Z",
+      "side": 1,
+      "message": "Due to a merge conflict, I had to move the certs package to where the rest of the virtualnet package moved. This removed the CR votes.",
+      "revId": "7a6df71851b79902d249e8acc152bc18ac67edb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

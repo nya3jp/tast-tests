@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1901ba9c_15c8a02d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/certs/certs.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-08-11T16:57:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d0e30e5c_3be3939c",
+      "range": {
+        "startLine": 35,
+        "startChar": 1,
+        "endLine": 38,
+        "endChar": 42
+      },
+      "revId": "11b374d157ae8a5181c0e153114e9e81b46ab815",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fb0279c4_07678472",
@@ -58,6 +82,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "94f41c0c_b329802d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/certs/certs.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-08-11T16:57:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fb0279c4_07678472",
+      "revId": "11b374d157ae8a5181c0e153114e9e81b46ab815",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0144a944_9d552f54",
@@ -71,6 +113,30 @@
       "writtenOn": "2022-08-11T00:59:33Z",
       "side": 1,
       "message": "tiny nit: I think it\u0027s more common style to keep cleanup function assignments and their deferred calls close to one another. Maybe move this above L87 so `defer cleanupCerts(cleanupCtx)` is right after the error handling for `httpsCerts.InstallTestCerts`",
+      "range": {
+        "startLine": 93,
+        "startChar": 3,
+        "endLine": 95,
+        "endChar": 17
+      },
+      "revId": "11b374d157ae8a5181c0e153114e9e81b46ab815",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "026d2cfc_656b944b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/httpserver/httpserver.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-08-11T16:57:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0144a944_9d552f54",
       "range": {
         "startLine": 93,
         "startChar": 3,
