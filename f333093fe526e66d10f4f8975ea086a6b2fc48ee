@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c666b86_1812a1a2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/intel/touch_basics_check.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-08-11T06:34:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a504f70b_e581675b",
+      "range": {
+        "startLine": 126,
+        "startChar": 0,
+        "endLine": 127,
+        "endChar": 69
+      },
+      "revId": "f333093fe526e66d10f4f8975ea086a6b2fc48ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7450403e_b12848b3",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-08-08T16:59:18Z",
       "side": 1,
       "message": "this should also account for `ctx` expiring, right?",
+      "range": {
+        "startLine": 158,
+        "startChar": 0,
+        "endLine": 167,
+        "endChar": 2
+      },
+      "revId": "f333093fe526e66d10f4f8975ea086a6b2fc48ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "999eadb5_6d0b7056",
+        "filename": "src/chromiumos/tast/local/bundles/cros/intel/touch_basics_check.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-08-11T06:34:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7450403e_b12848b3",
       "range": {
         "startLine": 158,
         "startChar": 0,
