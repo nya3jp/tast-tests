@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18923d6e_90a899a3",
+        "filename": "src/chromiumos/tast/remote/wificell/tethering/config.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-08-11T19:04:41Z",
+      "side": 1,
+      "message": "Can you move Config declaration to line 84 just on top of NewConfig function?",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 123,
+        "endChar": 1
+      },
+      "revId": "1c0025e72bf59b5acaa72a5891e2b605e918e9fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
