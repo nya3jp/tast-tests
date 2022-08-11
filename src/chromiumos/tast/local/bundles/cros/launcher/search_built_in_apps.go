@@ -33,22 +33,13 @@ func init() {
 		Params: []testing.Param{{
 			Name:    "productivity_launcher_clamshell_mode",
 			Fixture: "chromeLoggedInWith100FakeAppsProductivityLauncher",
-			Val:     launcher.TestCase{ProductivityLauncher: true, TabletMode: false},
+			Val:     launcher.TestCase{TabletMode: false},
 			// b/229135388
 			ExtraAttr: []string{"informational"},
 		}, {
-			Name:    "clamshell_mode",
-			Fixture: "chromeLoggedInWith100FakeAppsLegacyLauncher",
-			Val:     launcher.TestCase{ProductivityLauncher: false, TabletMode: false},
-		}, {
 			Name:              "productivity_launcher_tablet_mode",
 			Fixture:           "chromeLoggedInWith100FakeAppsProductivityLauncher",
-			Val:               launcher.TestCase{ProductivityLauncher: true, TabletMode: true},
-			ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
-		}, {
-			Name:              "tablet_mode",
-			Fixture:           "chromeLoggedInWith100FakeAppsLegacyLauncher",
-			Val:               launcher.TestCase{ProductivityLauncher: false, TabletMode: true},
+			Val:               launcher.TestCase{TabletMode: true},
 			ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		}},
 	})
@@ -75,7 +66,7 @@ func SearchBuiltInApps(ctx context.Context, s *testing.State) {
 	defer kb.Close()
 
 	testCase := s.Param().(launcher.TestCase)
-	cleanup, err := launcher.SetUpLauncherTest(ctx, tconn, testCase.TabletMode, testCase.ProductivityLauncher, false /*stabilizeAppCount*/)
+	cleanup, err := launcher.SetUpLauncherTest(ctx, tconn, testCase.TabletMode, true /*productivityLauncher*/, false /*stabilizeAppCount*/)
 	if err != nil {
 		s.Fatal("Failed to set up launcher test case: ", err)
 	}

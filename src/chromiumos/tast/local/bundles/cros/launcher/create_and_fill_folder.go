@@ -32,17 +32,10 @@ func init() {
 		Timeout:      4 * time.Minute,
 		Params: []testing.Param{{
 			Name: "productivity_launcher_clamshell_mode",
-			Val:  launcher.TestCase{ProductivityLauncher: true, TabletMode: false},
-		}, {
-			Name: "clamshell_mode",
-			Val:  launcher.TestCase{ProductivityLauncher: false, TabletMode: false},
+			Val:  launcher.TestCase{TabletMode: false},
 		}, {
 			Name:              "productivity_launcher_tablet_mode",
-			Val:               launcher.TestCase{ProductivityLauncher: true, TabletMode: true},
-			ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
-		}, {
-			Name:              "tablet_mode",
-			Val:               launcher.TestCase{ProductivityLauncher: false, TabletMode: true},
+			Val:               launcher.TestCase{TabletMode: true},
 			ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		}},
 	})
@@ -66,14 +59,6 @@ func CreateAndFillFolder(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create 50 fake apps")
 	}
 
-	testCase := s.Param().(launcher.TestCase)
-	productivityLauncher := testCase.ProductivityLauncher
-	if productivityLauncher {
-		opts = append(opts, chrome.EnableFeatures("ProductivityLauncher"))
-	} else {
-		opts = append(opts, chrome.DisableFeatures("ProductivityLauncher"))
-	}
-
 	// Creating fake apps and logging into a new session in this test ensures that enough apps will be available to folder.
 	cr, err := chrome.New(ctx, opts...)
 	if err != nil {
@@ -86,22 +71,21 @@ func CreateAndFillFolder(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect to test API: ", err)
 	}
 
+	testCase := s.Param().(launcher.TestCase)
 	tabletMode := testCase.TabletMode
 
-	cleanup, err := launcher.SetUpLauncherTest(ctx, tconn, tabletMode, productivityLauncher, true /*stabilizeAppCount*/)
+	cleanup, err := launcher.SetUpLauncherTest(ctx, tconn, tabletMode, true /*productivityLauncher*/, true /*stabilizeAppCount*/)
 	if err != nil {
 		s.Fatal("Failed to set up launcher test case: ", err)
 	}
 	defer cleanup(cleanupCtx)
 
-	if err := launcher.CreateFolder(ctx, tconn, productivityLauncher); err != nil {
+	if err := launcher.CreateFolder(ctx, tconn, true /*productivityLauncher*/); err != nil {
 		s.Fatal("Failed to create folder app: ", err)
 	}
 
-	usingBubbleLauncher := !tabletMode && productivityLauncher
-
 	// The folder already has 2 items. Add 46 more items to get to the maximum folder size of 48 apps.
-	if err := launcher.AddItemsToFolder(ctx, tconn, launcher.UnnamedFolderFinder, 46, !usingBubbleLauncher); err != nil {
+	if err := launcher.AddItemsToFolder(ctx, tconn, launcher.UnnamedFolderFinder, 46, tabletMode); err != nil {
 		s.Fatal("Failed to add items to folder: ", err)
 	}
 
@@ -115,7 +99,7 @@ func CreateAndFillFolder(ctx context.Context, s *testing.State) {
 	}
 
 	// Attempt to add one more item to the folder.
-	if err := launcher.AddItemsToFolder(ctx, tconn, launcher.UnnamedFolderFinder, 1, !usingBubbleLauncher); err != nil {
+	if err := launcher.AddItemsToFolder(ctx, tconn, launcher.UnnamedFolderFinder, 1, tabletMode); err != nil {
 		s.Fatal("Failed to add items to folder: ", err)
 	}
 

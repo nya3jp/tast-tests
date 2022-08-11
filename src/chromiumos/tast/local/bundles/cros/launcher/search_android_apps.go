@@ -36,37 +36,19 @@ func init() {
 		Params: []testing.Param{{
 			Name:              "productivity_launcher_clamshell_mode",
 			ExtraSoftwareDeps: []string{"android_p"},
-			Val:               launcher.TestCase{ProductivityLauncher: true, TabletMode: false},
-		}, {
-			Name:              "clamshell_mode",
-			ExtraSoftwareDeps: []string{"android_p"},
-			Val:               launcher.TestCase{ProductivityLauncher: false, TabletMode: false},
+			Val:               launcher.TestCase{TabletMode: false},
 		}, {
 			Name:              "productivity_launcher_tablet_mode",
-			Val:               launcher.TestCase{ProductivityLauncher: true, TabletMode: true},
-			ExtraSoftwareDeps: []string{"android_p"},
-			ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
-		}, {
-			Name:              "tablet_mode",
-			Val:               launcher.TestCase{ProductivityLauncher: false, TabletMode: true},
+			Val:               launcher.TestCase{TabletMode: true},
 			ExtraSoftwareDeps: []string{"android_p"},
 			ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		}, {
 			Name:              "productivity_launcher_clamshell_mode_vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
-			Val:               launcher.TestCase{ProductivityLauncher: true, TabletMode: false},
-		}, {
-			Name:              "clamshell_mode_vm",
-			ExtraSoftwareDeps: []string{"android_vm"},
-			Val:               launcher.TestCase{ProductivityLauncher: false, TabletMode: false},
+			Val:               launcher.TestCase{TabletMode: false},
 		}, {
 			Name:              "productivity_launcher_tablet_mode_vm",
-			Val:               launcher.TestCase{ProductivityLauncher: true, TabletMode: true},
-			ExtraSoftwareDeps: []string{"android_vm"},
-			ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
-		}, {
-			Name:              "tablet_mode_vm",
-			Val:               launcher.TestCase{ProductivityLauncher: false, TabletMode: true},
+			Val:               launcher.TestCase{TabletMode: true},
 			ExtraSoftwareDeps: []string{"android_vm"},
 			ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		}},
@@ -83,19 +65,10 @@ func SearchAndroidApps(ctx context.Context, s *testing.State) {
 	testCase := s.Param().(launcher.TestCase)
 	tabletMode := testCase.TabletMode
 
-	productivityLauncher := testCase.ProductivityLauncher
-	var launcherFeatureOpt chrome.Option
-	if productivityLauncher {
-		launcherFeatureOpt = chrome.EnableFeatures("ProductivityLauncher")
-	} else {
-		launcherFeatureOpt = chrome.DisableFeatures("ProductivityLauncher")
-	}
-
 	cr, err := chrome.New(ctx,
 		chrome.GAIALoginPool(s.RequiredVar("ui.gaiaPoolDefault")),
 		chrome.ARCSupported(),
-		chrome.ExtraArgs(arc.DisableSyncFlags()...),
-		launcherFeatureOpt)
+		chrome.ExtraArgs(arc.DisableSyncFlags()...))
 	if err != nil {
 		s.Fatal("Failed to start Chrome: ", err)
 	}
@@ -125,7 +98,7 @@ func SearchAndroidApps(ctx context.Context, s *testing.State) {
 	}
 	defer kb.Close()
 
-	cleanup, err := launcher.SetUpLauncherTest(ctx, tconn, tabletMode, productivityLauncher, false /*stabilizeAppCount*/)
+	cleanup, err := launcher.SetUpLauncherTest(ctx, tconn, tabletMode, true /*productivityLauncher*/, false /*stabilizeAppCount*/)
 	if err != nil {
 		s.Fatal("Failed to set up launcher test case: ", err)
 	}
