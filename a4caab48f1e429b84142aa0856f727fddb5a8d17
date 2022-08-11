@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15b30002_4dab185a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1263546
+      },
+      "writtenOn": "2022-08-11T15:53:25Z",
+      "side": 1,
+      "message": "s/GSC/GCS",
+      "revId": "a4caab48f1e429b84142aa0856f727fddb5a8d17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "833502f1_03175757",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1263546
+      },
+      "writtenOn": "2022-08-11T15:53:25Z",
+      "side": 1,
+      "message": "Thanks!",
+      "revId": "a4caab48f1e429b84142aa0856f727fddb5a8d17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
