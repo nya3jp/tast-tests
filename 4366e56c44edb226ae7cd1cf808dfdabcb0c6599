@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "380c568f_4828cb02",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/verify_screenshot_checkbox_state_change.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-08-11T12:21:07Z",
+      "side": 1,
+      "message": "I think `LeftClick` is a bit flakey, I\u0027d suggest using `DoDefault()` instead.",
+      "range": {
+        "startLine": 72,
+        "startChar": 5,
+        "endLine": 72,
+        "endChar": 14
+      },
+      "revId": "4366e56c44edb226ae7cd1cf808dfdabcb0c6599",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
