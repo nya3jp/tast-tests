@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f46a4ef_22063e2f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/perfetto/camera_config.pbtxt",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2022-08-11T08:20:14Z",
+      "side": 1,
+      "message": "Dumb question: Where do we add `camera.` prefix?\nI only see \"hal_adapter\" here:\nhttps://source.corp.google.com/chromeos_public/src/platform2/camera/include/cros-camera/tracing.h;rcl\u003d12a8d083f711ceb3a6ab9f0808f90568320d89a8;l\u003d25",
+      "range": {
+        "startLine": 18,
+        "startChar": 33,
+        "endLine": 18,
+        "endChar": 40
+      },
+      "revId": "0eb00d45746901618b1d12b642baafcfdb96dcb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
