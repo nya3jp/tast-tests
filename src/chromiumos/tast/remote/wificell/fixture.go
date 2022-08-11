@@ -18,7 +18,6 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/policyutil"
 	"chromiumos/tast/remote/wificell/router/common/support"
-	"chromiumos/tast/remote/wificell/wifiutil"
 	"chromiumos/tast/rpc"
 	"chromiumos/tast/services/cros/policy"
 	"chromiumos/tast/services/cros/wifi"
@@ -28,14 +27,12 @@ import (
 // Timeout for methods of Tast fixture.
 const (
 	// Give long enough timeout for SetUp() and TearDown() as they might need
-	// to reboot a broken DUT.
-	setUpTimeout    = 7 * time.Minute
+	// to reboot a broken DUT. SetUp() and Reset() have additional time allotted
+	// to reboot routers as well.
+	setUpTimeout    = 17 * time.Minute
 	tearDownTimeout = 5 * time.Minute
-	resetTimeout    = 10 * time.Second
+	resetTimeout    = 11 * time.Minute
 	postTestTimeout = 5 * time.Second
-
-	// Give time to reboot all routers.
-	preTestTimeout = 11 * time.Minute
 )
 
 func init() {
@@ -48,7 +45,6 @@ func init() {
 		Impl:            newTastFixture(TFFeaturesNone),
 		SetUpTimeout:    setUpTimeout,
 		ResetTimeout:    resetTimeout,
-		PreTestTimeout:  preTestTimeout,
 		PostTestTimeout: postTestTimeout,
 		TearDownTimeout: tearDownTimeout,
 		ServiceDeps:     []string{TFServiceName},
@@ -63,7 +59,6 @@ func init() {
 		Impl:            newTastFixture(TFFeaturesCapture),
 		SetUpTimeout:    setUpTimeout,
 		ResetTimeout:    resetTimeout,
-		PreTestTimeout:  preTestTimeout,
 		PostTestTimeout: postTestTimeout,
 		TearDownTimeout: tearDownTimeout,
 		ServiceDeps:     []string{TFServiceName},
@@ -78,7 +73,6 @@ func init() {
 		Impl:            newTastFixture(TFFeaturesCapture | TFFeaturesRouterAsCapture),
 		SetUpTimeout:    setUpTimeout,
 		ResetTimeout:    resetTimeout,
-		PreTestTimeout:  preTestTimeout,
 		PostTestTimeout: postTestTimeout,
 		TearDownTimeout: tearDownTimeout,
 		ServiceDeps:     []string{TFServiceName},
@@ -93,7 +87,6 @@ func init() {
 		Impl:            newTastFixture(TFFeaturesRouters),
 		SetUpTimeout:    setUpTimeout,
 		ResetTimeout:    resetTimeout,
-		PreTestTimeout:  preTestTimeout,
 		PostTestTimeout: postTestTimeout,
 		TearDownTimeout: tearDownTimeout,
 		ServiceDeps:     []string{TFServiceName},
@@ -108,7 +101,6 @@ func init() {
 		Impl:            newTastFixture(TFFeaturesRouters | TFFeaturesAttenuator),
 		SetUpTimeout:    setUpTimeout,
 		ResetTimeout:    resetTimeout,
-		PreTestTimeout:  preTestTimeout,
 		PostTestTimeout: postTestTimeout,
 		TearDownTimeout: tearDownTimeout,
 		ServiceDeps:     []string{TFServiceName},
@@ -123,7 +115,6 @@ func init() {
 		Impl:            newTastFixture(TFFeaturesEnroll),
 		SetUpTimeout:    10 * time.Minute,
 		ResetTimeout:    resetTimeout,
-		PreTestTimeout:  preTestTimeout,
 		PostTestTimeout: postTestTimeout,
 		TearDownTimeout: 8 * time.Minute,
 		ServiceDeps: []string{
@@ -142,7 +133,6 @@ func init() {
 		Impl:            newTastFixture(TFFeaturesCompanionDUT),
 		SetUpTimeout:    setUpTimeout,
 		ResetTimeout:    resetTimeout,
-		PreTestTimeout:  preTestTimeout,
 		PostTestTimeout: postTestTimeout,
 		TearDownTimeout: tearDownTimeout,
 		ServiceDeps:     []string{TFServiceName},
@@ -445,19 +435,14 @@ func (f *tastFixtureImpl) TearDown(ctx context.Context, s *testing.FixtState) {
 }
 
 func (f *tastFixtureImpl) Reset(ctx context.Context) error {
-	var firstErr error
-	// Light-weight health check here. SetUp/TearDown will try to recover
-	// the DUT when anything goes wrong.
-	if _, err := f.tf.WifiClient().HealthCheck(ctx, &empty.Empty{}); err != nil {
-		wifiutil.CollectFirstErr(ctx, &firstErr, err)
+	if err := f.tf.Reinit(ctx); err != nil {
+		return errors.Wrap(err, "failed to reinit test fixture")
 	}
-	return firstErr
+	return nil
 }
 
 func (f *tastFixtureImpl) PreTest(ctx context.Context, s *testing.FixtTestState) {
-	if err := f.tf.Reinit(ctx); err != nil {
-		s.Fatal("Failed to reinit test fixture, err: ", err)
-	}
+	// No-op.
 }
 
 func (f *tastFixtureImpl) PostTest(ctx context.Context, s *testing.FixtTestState) {
