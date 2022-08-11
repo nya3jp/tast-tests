@@ -70,6 +70,26 @@ func (sess *Session) RunMetrics(ctx context.Context, traceProcessorPath string, 
 	return tbm, nil
 }
 
+// RunQueryString processes the trace data with a SQL query string and returns the query csv result as [][]string.
+func (sess *Session) RunQueryString(ctx context.Context, traceProcessorPath, query string) ([][]string, error) {
+	// trace_processor_shell accepts the SQL query as a file. Create a temp query file.
+	queryFile, err := ioutil.TempFile("", "trace_processor_query_*.sql")
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create the temp SQL query file")
+	}
+	defer func() {
+		if err := os.Remove(queryFile.Name()); err != nil {
+			log.Printf("failed to remove the temporary trace result file: %v", err)
+		}
+	}()
+
+	if _, err := queryFile.WriteString(query); err != nil {
+		return nil, errors.Wrap(err, "failed to create the temp SQL query file")
+	}
+
+	return sess.RunQuery(ctx, traceProcessorPath, queryFile.Name())
+}
+
 // RunQuery processes the trace data with a SQL query and returns the query csv result as [][]string.
 func (sess *Session) RunQuery(ctx context.Context, traceProcessorPath, queryPath string) ([][]string, error) {
 	cmd := testexec.CommandContext(ctx, traceProcessorPath, sess.TraceResultFile.Name(), "-q", queryPath)
