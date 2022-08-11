@@ -6,6 +6,7 @@ package ui
 
 import (
 	"context"
+	"strconv"
 	"time"
 
 	"chromiumos/tast/common/cros/ui/setup"
@@ -35,7 +36,8 @@ func init() {
 		SoftwareDeps: []string{"chrome", "arc", "wifi"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		Vars: []string{
-			"ui.cuj_mode", // Optional. Expecting "tablet" or "clamshell".
+			"ui.cuj_mode",                 // Optional. Expecting "tablet" or "clamshell".
+			"ui.QuickCheckCUJ2_wait_time", // Optional. Given time for the system to stablize in seconds.
 			"ui.QuickCheckCUJ2_wifissid",
 			"ui.QuickCheckCUJ2_wifipassword",
 		},
@@ -103,6 +105,20 @@ func init() {
 
 // QuickCheckCUJ2 measures the system performance after login or wakeup by checking common apps
 func QuickCheckCUJ2(ctx context.Context, s *testing.State) {
+	// The system may be unstable after login, causing suspending DUT operations to fail on some models.
+	// Therefore, use a variable to control the startup delay time and find out the estimated time required by the model.
+	// See b/234115114 for details.
+	if wt, ok := s.Var("ui.QuickCheckCUJ2_wait_time"); ok {
+		waitTime, err := strconv.Atoi(wt)
+		if err != nil {
+			s.Fatal("Failed to convert the ui.QuickCheckCUJ2_wait_time to integer: ", err)
+		}
+		s.Logf("Given %d seconds for the system to stablize", waitTime)
+		if err := testing.Sleep(ctx, time.Duration(waitTime)*time.Second); err != nil {
+			s.Fatalf("Failed to sleep for %d seconds: %v", waitTime, err)
+		}
+	}
+
 	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
