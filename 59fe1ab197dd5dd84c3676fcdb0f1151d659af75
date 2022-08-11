@@ -16,6 +16,24 @@
       "message": "Hello Jeremy, \nThe CLs required to create the new firmware_trial suite have all been merged. \nShould we merge and queue this test for lab runs?\nThank you in advance. ",
       "revId": "59fe1ab197dd5dd84c3676fcdb0f1151d659af75",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a918d08_48f4a958",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-08-11T14:59:59Z",
+      "side": 1,
+      "message": "Yes. do it.",
+      "parentUuid": "bbe1e6e5_5056dd2d",
+      "revId": "59fe1ab197dd5dd84c3676fcdb0f1151d659af75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
