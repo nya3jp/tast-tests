@@ -16,6 +16,24 @@
       "message": "This downgrades the old test to \"informational\" as well, which is not what we want.\n\nI think you can use this as an example of making a single sub-test informational: http://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/crostini/restart_icon.go;l\u003d34;rcl\u003d79d7cd2e40793338262d41524493c8b7eb9fb0df",
       "revId": "920dc06c43180de38766f18f8f90fc62214a4ac8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e435093_3bfcf55d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nacl/pnacl.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1527527
+      },
+      "writtenOn": "2022-08-11T13:42:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "214bdf34_b76f2b16",
+      "revId": "920dc06c43180de38766f18f8f90fc62214a4ac8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
