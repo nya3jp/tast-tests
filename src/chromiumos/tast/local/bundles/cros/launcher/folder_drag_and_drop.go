@@ -36,22 +36,13 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{
 			Name:    "productivity_launcher_clamshell_mode",
-			Val:     launcher.TestCase{ProductivityLauncher: true, TabletMode: false},
+			Val:     launcher.TestCase{TabletMode: false},
 			Fixture: "chromeLoggedInWith100FakeAppsProductivityLauncher",
 		}, {
-			Name:    "clamshell_mode",
-			Val:     launcher.TestCase{ProductivityLauncher: false, TabletMode: false},
-			Fixture: "chromeLoggedInWith100FakeAppsLegacyLauncher",
-		}, {
 			Name:              "productivity_launcher_tablet_mode",
-			Val:               launcher.TestCase{ProductivityLauncher: true, TabletMode: true},
+			Val:               launcher.TestCase{TabletMode: true},
 			ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 			Fixture:           "chromeLoggedInWith100FakeAppsProductivityLauncher",
-		}, {
-			Name:              "tablet_mode",
-			Val:               launcher.TestCase{ProductivityLauncher: false, TabletMode: true},
-			ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
-			Fixture:           "chromeLoggedInWith100FakeAppsLegacyLauncher",
 		}},
 	})
 }
@@ -77,9 +68,8 @@ func FolderDragAndDrop(ctx context.Context, s *testing.State) {
 
 	testCase := s.Param().(launcher.TestCase)
 	tabletMode := testCase.TabletMode
-	productivityLauncher := testCase.ProductivityLauncher
 
-	cleanup, err := launcher.SetUpLauncherTest(ctx, tconn, tabletMode, productivityLauncher, true /*stabilizeAppCount*/)
+	cleanup, err := launcher.SetUpLauncherTest(ctx, tconn, tabletMode, true /*productivityLauncher*/, true /*stabilizeAppCount*/)
 	if err != nil {
 		s.Fatal("Failed to set up launcher test case: ", err)
 	}
@@ -88,8 +78,7 @@ func FolderDragAndDrop(ctx context.Context, s *testing.State) {
 	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
 
 	ui := uiauto.New(tconn)
-	usingBubbleLauncher := productivityLauncher && !tabletMode
-	if !usingBubbleLauncher {
+	if tabletMode {
 		pageSwitcher := nodewith.ClassName("IconButton").Ancestor(nodewith.ClassName("PageSwitcher"))
 		if err := ui.WithTimeout(5 * time.Second).LeftClick(pageSwitcher.Nth(0))(ctx); err != nil {
 			s.Fatal("Failed to switch launcher to first page: ", err)
@@ -97,11 +86,11 @@ func FolderDragAndDrop(ctx context.Context, s *testing.State) {
 	}
 
 	// Create a folder that will be dragged around in the test.
-	if err := launcher.CreateFolder(ctx, tconn, productivityLauncher); err != nil {
+	if err := launcher.CreateFolder(ctx, tconn, true /*productivityLauncher*/); err != nil {
 		s.Fatal("Failed to create a folder item: ", err)
 	}
 
-	folderName := fmt.Sprintf("FolderDnD %t %t", productivityLauncher, tabletMode)
+	folderName := fmt.Sprintf("FolderDnD %t", tabletMode)
 	if err := launcher.RenameFolder(tconn, kb, launcher.UnnamedFolderFinder.First(), folderName)(ctx); err != nil {
 		s.Fatal("Failed to rename test folder")
 	}
@@ -114,7 +103,7 @@ func FolderDragAndDrop(ctx context.Context, s *testing.State) {
 
 	// For paged launcher, start by dragging the folder to the second page - when productivity launcher is disabled,
 	// the first page contains only default apps, and may not have enough items to test drag within the current page.
-	if !usingBubbleLauncher {
+	if tabletMode {
 		if err := launcher.DragIconToNextPage(tconn, folderFinder)(ctx); err != nil {
 			s.Fatal("Failed to drag folder to the next page: ", err)
 		}
@@ -176,7 +165,7 @@ func FolderDragAndDrop(ctx context.Context, s *testing.State) {
 	}
 
 	// If launcher is paginated, test dragging the folder to the previous page.
-	if !usingBubbleLauncher {
+	if tabletMode {
 		if err := launcher.DragIconToNeighbourPage(tconn, folderFinder, false /*next*/)(ctx); err != nil {
 			s.Fatal("Failed to drag folder to previous page: ", err)
 		}
@@ -201,7 +190,7 @@ func FolderDragAndDrop(ctx context.Context, s *testing.State) {
 	}
 
 	// For bubble launcher, that apps grid can be scrolled by dragging the folder.
-	if usingBubbleLauncher {
+	if !tabletMode {
 		if err := dragFolderAndScrollContainer(ctx, tconn, ui, folderFinder, false /*up*/); err != nil {
 			s.Fatal("Failed to drag the first icon to bottom of scrollable container: ", err)
 		}
@@ -226,10 +215,8 @@ func FolderDragAndDrop(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to drag out the icon from folder: ", err)
 	}
 
-	if productivityLauncher {
-		if err := launcher.RemoveIconFromFolder(tconn, folderFinder)(ctx); err != nil {
-			s.Fatal("Failed to drag out the icon from single-item folder: ", err)
-		}
+	if err := launcher.RemoveIconFromFolder(tconn, folderFinder)(ctx); err != nil {
+		s.Fatal("Failed to drag out the icon from single-item folder: ", err)
 	}
 
 	// Make sure that the folder has closed.

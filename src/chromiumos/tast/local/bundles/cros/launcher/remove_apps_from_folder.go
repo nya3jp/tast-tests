@@ -32,17 +32,10 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{
 			Name: "productivity_launcher_clamshell_mode",
-			Val:  launcher.TestCase{ProductivityLauncher: true, TabletMode: false},
-		}, {
-			Name: "clamshell_mode",
-			Val:  launcher.TestCase{ProductivityLauncher: false, TabletMode: false},
+			Val:  launcher.TestCase{TabletMode: false},
 		}, {
 			Name:              "productivity_launcher_tablet_mode",
-			Val:               launcher.TestCase{ProductivityLauncher: true, TabletMode: true},
-			ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
-		}, {
-			Name:              "tablet_mode",
-			Val:               launcher.TestCase{ProductivityLauncher: false, TabletMode: true},
+			Val:               launcher.TestCase{TabletMode: true},
 			ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		}},
 	})
@@ -66,14 +59,6 @@ func RemoveAppsFromFolder(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create 10 fake apps")
 	}
 
-	testCase := s.Param().(launcher.TestCase)
-	productivityLauncher := testCase.ProductivityLauncher
-	if productivityLauncher {
-		opts = append(opts, chrome.EnableFeatures("ProductivityLauncher"))
-	} else {
-		opts = append(opts, chrome.DisableFeatures("ProductivityLauncher"))
-	}
-
 	// Creating fake apps and logging into a new session in this test ensures that enough apps will be available to folder.
 	cr, err := chrome.New(ctx, opts...)
 	if err != nil {
@@ -86,21 +71,21 @@ func RemoveAppsFromFolder(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect to test API: ", err)
 	}
 
+	testCase := s.Param().(launcher.TestCase)
 	tabletMode := testCase.TabletMode
 
-	cleanup, err := launcher.SetUpLauncherTest(ctx, tconn, tabletMode, productivityLauncher, true /*stabilizeAppCount*/)
+	cleanup, err := launcher.SetUpLauncherTest(ctx, tconn, tabletMode, true /*productivityLauncher*/, true /*stabilizeAppCount*/)
 	if err != nil {
 		s.Fatal("Failed to set up launcher test case: ", err)
 	}
 	defer cleanup(cleanupCtx)
 
-	if err := launcher.CreateFolder(ctx, tconn, productivityLauncher); err != nil {
+	if err := launcher.CreateFolder(ctx, tconn, true /*productivityLauncher*/); err != nil {
 		s.Fatal("Failed to create folder app: ", err)
 	}
 
 	// Add 5 app items to the folder.
-	usingBubbleLauncher := productivityLauncher && !tabletMode
-	if err := launcher.AddItemsToFolder(ctx, tconn, launcher.UnnamedFolderFinder, 5, !usingBubbleLauncher); err != nil {
+	if err := launcher.AddItemsToFolder(ctx, tconn, launcher.UnnamedFolderFinder, 5, tabletMode); err != nil {
 		s.Fatal("Failed to add items to folder: ", err)
 	}
 
@@ -136,11 +121,9 @@ func RemoveAppsFromFolder(ctx context.Context, s *testing.State) {
 		}
 	}
 
-	// With productivity launcher enabled, launcher does not delete single-item folders, so the folder should be around until the last item is dragged out.
-	if productivityLauncher {
-		if err := launcher.RemoveIconFromFolder(tconn, launcher.UnnamedFolderFinder)(ctx); err != nil {
-			s.Fatal("Failed to remove last icon from folder: ", err)
-		}
+	// Launcher does not delete single-item folders, so the folder should be around until the last item is dragged out.
+	if err := launcher.RemoveIconFromFolder(tconn, launcher.UnnamedFolderFinder)(ctx); err != nil {
+		s.Fatal("Failed to remove last icon from folder: ", err)
 	}
 
 	// Check that there is no longer a folder.
