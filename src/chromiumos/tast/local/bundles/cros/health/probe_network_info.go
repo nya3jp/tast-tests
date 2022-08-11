@@ -14,16 +14,23 @@ import (
 	"chromiumos/tast/testing"
 )
 
+type signalStrengthStats struct {
+	Average   float32 `json:"average"`
+	Deviation float32 `json:"deviation"`
+	Samples   []uint8 `json:"samples"`
+}
+
 type networkInfo struct {
-	PortalState    string            `json:"portal_state"`
-	State          string            `json:"state"`
-	Type           string            `json:"type"`
-	GUID           *string           `json:"guid"`
-	Ipv4Address    *string           `json:"ipv4_address"`
-	Ipv6Addresses  *string           `json:"ipv6_addresses"`
-	MacAddress     *string           `json:"mac_address"`
-	Name           *string           `json:"name"`
-	SignalStrength *jsontypes.Uint32 `json:"signal_strength"`
+	PortalState         string               `json:"portal_state"`
+	State               string               `json:"state"`
+	Type                string               `json:"type"`
+	GUID                *string              `json:"guid"`
+	Ipv4Address         *string              `json:"ipv4_address"`
+	Ipv6Addresses       *string              `json:"ipv6_addresses"`
+	MacAddress          *string              `json:"mac_address"`
+	Name                *string              `json:"name"`
+	SignalStrength      *jsontypes.Uint32    `json:"signal_strength"`
+	SignalStrengthStats *signalStrengthStats `json:"signal_strength_stats"`
 }
 
 type networkResult struct {
