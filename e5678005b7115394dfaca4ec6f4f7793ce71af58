@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7541dbb4_bbb26bd6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-08-11T16:41:15Z",
+      "side": 1,
+      "message": "Please address the comments left by Yamaguchi-san",
+      "revId": "e5678005b7115394dfaca4ec6f4f7793ce71af58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c2ac4af6_5b652f0a",
