@@ -18,7 +18,6 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/policyutil"
 	"chromiumos/tast/remote/wificell/router/common/support"
-	"chromiumos/tast/remote/wificell/wifiutil"
 	"chromiumos/tast/rpc"
 	"chromiumos/tast/services/cros/policy"
 	"chromiumos/tast/services/cros/wifi"
@@ -445,19 +444,14 @@ func (f *tastFixtureImpl) TearDown(ctx context.Context, s *testing.FixtState) {
 }
 
 func (f *tastFixtureImpl) Reset(ctx context.Context) error {
-	var firstErr error
-	// Light-weight health check here. SetUp/TearDown will try to recover
-	// the DUT when anything goes wrong.
-	if _, err := f.tf.WifiClient().HealthCheck(ctx, &empty.Empty{}); err != nil {
-		wifiutil.CollectFirstErr(ctx, &firstErr, err)
+	if err := f.tf.Reinit(ctx); err != nil {
+		return errors.Wrap(err, "failed to reinit test fixture")
 	}
-	return firstErr
+	return nil
 }
 
 func (f *tastFixtureImpl) PreTest(ctx context.Context, s *testing.FixtTestState) {
-	if err := f.tf.Reinit(ctx); err != nil {
-		s.Fatal("Failed to reinit test fixture, err: ", err)
-	}
+	// No-op.
 }
 
 func (f *tastFixtureImpl) PostTest(ctx context.Context, s *testing.FixtTestState) {
