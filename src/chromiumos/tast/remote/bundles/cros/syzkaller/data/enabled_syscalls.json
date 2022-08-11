@@ -795,7 +795,7 @@
 	},
 	{
 		"driver": "virtio-net(CONFIG_VIRTIO_NET)",
-		"exclude_boards": ["kukui", "cherry"],
+		"exclude_boards": ["kukui", "jacuzzi", "cherry"],
 		"syscalls": [
 			"openat$vnet",
 			"openat$vsock",
@@ -833,7 +833,7 @@
 	},
 	{
 		"driver": "virtio-net-vmsockets(CONFIG_VIRTIO_NET)",
-		"exclude_boards": ["octopus", "kukui", "cherry", "dedede"],
+		"exclude_boards": ["octopus", "kukui", "jacuzzi", "cherry", "dedede"],
 		"syscalls": [
 			"setsockopt$SO_VM_SOCKETS_BUFFER_SIZE",
 			"setsockopt$SO_VM_SOCKETS_BUFFER_MAX_SIZE",
