@@ -1,0 +1,141 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0ea7e5e_2af677ce",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 17
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-08-11T17:16:06Z",
+      "side": 1,
+      "message": "Mostly looks good",
+      "revId": "cfb176ebbfcec58666f573f069198490681ef50f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4151d2f2_7acb5eac",
+        "filename": "src/chromiumos/tast/remote/cellular/callbox/iperf/callbox_client.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-08-11T17:16:06Z",
+      "side": 1,
+      "message": "Could this be confused with CallboxManagerClient, or other potential clients in the future?",
+      "range": {
+        "startLine": 19,
+        "startChar": 5,
+        "endLine": 19,
+        "endChar": 18
+      },
+      "revId": "cfb176ebbfcec58666f573f069198490681ef50f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e05f0ab0_4f278602",
+        "filename": "src/chromiumos/tast/remote/cellular/callbox/iperf/callbox_client.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-08-11T17:16:06Z",
+      "side": 1,
+      "message": "any reason not to calculate the duration from endTime - the start time instead of reconstructing it here?",
+      "revId": "cfb176ebbfcec58666f573f069198490681ef50f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59adb240_618af1bd",
+        "filename": "src/chromiumos/tast/remote/cellular/callbox/iperf/callbox_client.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-08-11T17:16:06Z",
+      "side": 1,
+      "message": "is this just using sampleCount as a number of seconds here?",
+      "revId": "cfb176ebbfcec58666f573f069198490681ef50f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81c1680d_4086897a",
+        "filename": "src/chromiumos/tast/remote/cellular/callbox/iperf/callbox_server.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-08-11T17:16:06Z",
+      "side": 1,
+      "message": "if you want each one to take at most `commandTimeoutMargin` then making two separate contexts is fine here, otherwise you might end up with a case where one takes a long time to complete and the other is unnecessarily canceled anyway",
+      "revId": "cfb176ebbfcec58666f573f069198490681ef50f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c4cb21a_4f05bdf8",
+        "filename": "src/chromiumos/tast/remote/cellular/callbox/iperf/test_manager.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-08-11T17:16:06Z",
+      "side": 1,
+      "message": "These two blocks look basically the same except for the line where `client` is constructed; can we refactor this so the if-statement is only changing that behavior?",
+      "range": {
+        "startLine": 129,
+        "startChar": 0,
+        "endLine": 158,
+        "endChar": 2
+      },
+      "revId": "cfb176ebbfcec58666f573f069198490681ef50f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4326659_a5927f5a",
+        "filename": "src/chromiumos/tast/remote/cellular/callbox/manager/client.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-08-11T17:16:06Z",
+      "side": 1,
+      "message": "Do we need to escape quotes in the JSON here, or is that already done for us?",
+      "range": {
+        "startLine": 88,
+        "startChar": 69,
+        "endLine": 88,
+        "endChar": 71
+      },
+      "revId": "cfb176ebbfcec58666f573f069198490681ef50f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
