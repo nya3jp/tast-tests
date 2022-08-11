@@ -62,17 +62,8 @@ func KerberosDaemon(ctx context.Context, s *testing.State) {
 		s.Fatalf("AddAccount failed unexpectedly with error %q", addResp.Error.String())
 	}
 
-	// Set a valid config on the account.
-	setResp, err := k.SetConfig(ctx, user, validConfig)
-	if err != nil {
-		s.Fatal("SetConfig failed. D-Bus error: ", err)
-	}
-	if *setResp.Error != kp.ErrorType_ERROR_NONE {
-		s.Fatalf("SetConfig failed unexpectedly with error %q", setResp.Error.String())
-	}
-
 	// Set an invalid config on the account.
-	setResp, err = k.SetConfig(ctx, user, invalidConfig)
+	setResp, err := k.SetConfig(ctx, user, invalidConfig)
 	if err != nil {
 		s.Fatal("SetConfig failed. D-Bus error: ", err)
 	}
@@ -97,6 +88,15 @@ func KerberosDaemon(ctx context.Context, s *testing.State) {
 
 	if diff := cmp.Diff(validateResp, expectedResp, protocmp.Transform()); diff != "" {
 		s.Fatal("ValidateConfigResponse message mismatch (-got +want): ", diff)
+	}
+
+	// Set a valid config on the account.
+	setResp, err = k.SetConfig(ctx, user, validConfig)
+	if err != nil {
+		s.Fatal("SetConfig failed. D-Bus error: ", err)
+	}
+	if *setResp.Error != kp.ErrorType_ERROR_NONE {
+		s.Fatalf("SetConfig failed unexpectedly with error %q", setResp.Error.String())
 	}
 
 	// Acquire a Kerberos ticket.
