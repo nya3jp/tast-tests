@@ -16,6 +16,24 @@
       "message": "Add `.` at the end of the comment.",
       "revId": "43165ef4d9b5a2667dc8786802cd5128dc9c27b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b99dc9dd_bcd66b33",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/display_checkbox_and_page_url.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1538417
+      },
+      "writtenOn": "2022-08-11T17:20:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6c186b46_fc83a83a",
+      "revId": "43165ef4d9b5a2667dc8786802cd5128dc9c27b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
