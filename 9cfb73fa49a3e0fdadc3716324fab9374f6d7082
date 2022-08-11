@@ -33,6 +33,24 @@
       "message": "nit:\n\nif !tf.features.BluetoothAdapterEnabled {\n    return tf.fv\n}",
       "revId": "9cfb73fa49a3e0fdadc3716324fab9374f6d7082",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3fdcc743_b0a8d96b",
+        "filename": "src/chromiumos/tast/remote/bluetooth/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-08-11T20:11:44Z",
+      "side": 1,
+      "message": "I\u0027d rather have `return tf.fv` at the bottom of the function as that will always need to happen, even if `tf.features.BluetoothAdapterEnabled \u003d\u003d true`, and perhaps latter more things will be added after the bluetooth adapter enablement.",
+      "parentUuid": "f8f94e5a_0a151880",
+      "revId": "9cfb73fa49a3e0fdadc3716324fab9374f6d7082",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
