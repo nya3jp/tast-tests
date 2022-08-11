@@ -176,6 +176,30 @@
       },
       "revId": "c25d325ebeb84624e7e635298ebd7355ca4a4497",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb9677d8_8c29205d",
+        "filename": "src/chromiumos/tast/local/camera/cca/cca.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 880,
+      "author": {
+        "id": 1524909
+      },
+      "writtenOn": "2022-08-11T23:33:22Z",
+      "side": 1,
+      "message": "The code I wrote above feels very hacky. Maybe this should be abstracted away by `cryptohome.UserPath`, having it simply return `path` as `\"/home/chronos/user\"` when the active user session is a guest user session.",
+      "parentUuid": "78113eeb_66ca69ce",
+      "range": {
+        "startLine": 880,
+        "startChar": 14,
+        "endLine": 880,
+        "endChar": 33
+      },
+      "revId": "c25d325ebeb84624e7e635298ebd7355ca4a4497",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
