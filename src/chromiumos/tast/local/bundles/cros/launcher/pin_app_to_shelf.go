@@ -39,17 +39,10 @@ func init() {
 		Fixture:      "install2Apps",
 		Params: []testing.Param{{
 			Name: "productivity_launcher_clamshell_mode",
-			Val:  launcher.TestCase{ProductivityLauncher: true, TabletMode: false},
-		}, {
-			Name: "clamshell_mode",
-			Val:  launcher.TestCase{ProductivityLauncher: false, TabletMode: false},
+			Val:  launcher.TestCase{TabletMode: false},
 		}, {
 			Name:              "productivity_launcher_tablet_mode",
-			Val:               launcher.TestCase{ProductivityLauncher: true, TabletMode: true},
-			ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
-		}, {
-			Name:              "tablet_mode",
-			Val:               launcher.TestCase{ProductivityLauncher: false, TabletMode: true},
+			Val:               launcher.TestCase{TabletMode: true},
 			ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		}},
 	})
@@ -63,14 +56,9 @@ func PinAppToShelf(ctx context.Context, s *testing.State) {
 
 	testCase := s.Param().(launcher.TestCase)
 	tabletMode := testCase.TabletMode
-	productivityLauncher := testCase.ProductivityLauncher
-	var opts = s.FixtValue().([]chrome.Option)
-	if productivityLauncher {
-		opts = append(opts, chrome.EnableFeatures("ProductivityLauncher"))
-	} else {
-		opts = append(opts, chrome.DisableFeatures("ProductivityLauncher"))
-	}
+	opts := s.FixtValue().([]chrome.Option)
 
+	// Start a new chrome to get a fresh app list and shelf.
 	cr, err := chrome.New(ctx, opts...)
 	if err != nil {
 		s.Fatal("Failed to start chrome: ", err)
@@ -81,7 +69,7 @@ func PinAppToShelf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create Test API connection: ", err)
 	}
 
-	cleanup, err := launcher.SetUpLauncherTest(ctx, tconn, tabletMode, productivityLauncher, true /*stabilizeAppCount*/)
+	cleanup, err := launcher.SetUpLauncherTest(ctx, tconn, tabletMode, true /*productivityLauncher*/, true /*stabilizeAppCount*/)
 	if err != nil {
 		s.Fatal("Failed to set up launcher test case: ", err)
 	}
@@ -96,10 +84,10 @@ func PinAppToShelf(ctx context.Context, s *testing.State) {
 	app5 := apps.Help
 
 	var container *nodewith.Finder
-	if productivityLauncher && !tabletMode {
-		container = nodewith.ClassName(launcher.BubbleAppsGridViewClass)
-	} else {
+	if tabletMode {
 		container = nodewith.ClassName(launcher.PagedAppsGridViewClass)
+	} else {
+		container = nodewith.ClassName(launcher.BubbleAppsGridViewClass)
 	}
 	// Pin three apps from the launcher by select "Pin to shelf" on the context menu but do not open them.
 	// Then, verify all three applications is on the shelf and existing pinned apps go to the left.
