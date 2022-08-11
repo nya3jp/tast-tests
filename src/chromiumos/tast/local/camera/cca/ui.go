@@ -125,7 +125,7 @@ var (
 	// ReviewView is the review view after taking a photo under document mode.
 	ReviewView = UIComponent{"document review view", []string{"#view-review"}}
 	// ReviewImage is the image to be reviewed.
-	ReviewImage = UIComponent{"reivew image", []string{"#view-review .review-image"}}
+	ReviewImage = UIComponent{"review image", []string{"#view-review .review-image"}}
 	// SaveAsPDFButton is the button to save document as PDF.
 	SaveAsPDFButton = UIComponent{"save document as pdf button", []string{"#view-review button[i18n-text=label_save_pdf_document]"}}
 	// SaveAsPhotoButton is the button to save document as photo.
@@ -150,6 +150,18 @@ var (
 		"#preview-document-corner-overlay"}}
 	// DocumentDialogButton is the confirmation button of new feature dialog for document mode.
 	DocumentDialogButton = UIComponent{"document feature dialog button", []string{"#view-document-mode-dialog button[i18n-text=document_mode_dialog_got_it]"}}
+	// DocumentReview is the review view for multi-page document mode.
+	DocumentReview = UIComponent{"document review view", []string{"#view-document-review"}}
+	// DocumentPreviewModeImage is the preview image of preview mode in multi-page document mode.
+	DocumentPreviewModeImage = UIComponent{"document preview mode image", []string{".document-preview-mode .image"}}
+	// DocumentFixModeImage is the preview image of fix mode in multi-page document mode.
+	DocumentFixModeImage = UIComponent{"document fix mode image", []string{".document-fix-mode .image"}}
+	// DocumentFixButton is the entry button of fix mode in multi-page document mode.
+	DocumentFixButton = UIComponent{"document enter fix mode button", []string{".document-preview-mode button[i18n-aria=label_fix_document]"}}
+	// DocumentFixModeCorner is the crop area dragging point in fix mode in multi-page document mode.
+	DocumentFixModeCorner = UIComponent{"document corner dragging point", []string{".document-fix-mode .dot"}}
+	// DocumentDoneButton is the exit button of fix mode in multi-page document mode.
+	DocumentDoneButton = UIComponent{"document exit fix mode button", []string{".document-fix-mode button[i18n-text=label_crop_done]"}}
 
 	// GifRecordingOption is the radio button to toggle gif recording option.
 	GifRecordingOption = UIComponent{"gif recording button", []string{

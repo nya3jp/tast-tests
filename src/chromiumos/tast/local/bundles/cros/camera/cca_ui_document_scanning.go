@@ -45,12 +45,23 @@ func init() {
 			},
 		}, {
 			Name:    "manual_crop",
-			Fixture: "ccaTestBridgeReadyForDocumentManualCrop",
+			Fixture: "ccaTestBridgeReadyWithFakeCamera",
 			Val: []documentScanSubTest{
 				{
 					name: "testFixCropArea",
 					run: func(ctx context.Context, app *cca.App, cr *chrome.Chrome) error {
 						return testFixCropArea(ctx, app, cr)
+					},
+				},
+			},
+		}, {
+			Name:    "multi_page_manual_crop",
+			Fixture: "ccaTestBridgeReadyForMultiPageDocScanManualCrop",
+			Val: []documentScanSubTest{
+				{
+					name: "testFixCropArea",
+					run: func(ctx context.Context, app *cca.App, cr *chrome.Chrome) error {
+						return testMultiPageFixCropArea(ctx, app, cr)
 					},
 				},
 			},
@@ -359,6 +370,123 @@ func testFixCropArea(ctx context.Context, app *cca.App, cr *chrome.Chrome) error
 	}
 	if reviewElSize.Width >= reviewElSize.Height {
 		return errors.Errorf("should crop the longer document after fix crop area, got document width: %v, height: %v", reviewElSize.Width, reviewElSize.Height)
+	}
+
+	return nil
+}
+
+func testMultiPageFixCropArea(ctx context.Context, app *cca.App, cr *chrome.Chrome) error {
+	if err := enterDocumentMode(ctx, app); err != nil {
+		return errors.Wrap(err, "failed to enter document mode")
+	}
+
+	err := app.WaitForVisibleState(ctx, cca.DocumentDialogButton, true)
+	// TODO(b/239642965): Remove this check. Document dialog will always show after the fixes for b/238403258.
+	if err == nil {
+		if err := app.Click(ctx, cca.DocumentDialogButton); err != nil {
+			return errors.Wrap(err, "failed to click the document dialog button")
+		}
+	}
+
+	if err := app.ClickShutter(ctx); err != nil {
+		return errors.Wrap(err, "failed to click the shutter button")
+	}
+
+	if err := app.WaitForVisibleState(ctx, cca.DocumentReview, true); err != nil {
+		return errors.Wrap(err, "failed to wait for review UI to show up")
+	}
+
+	if err := app.WaitForVisibleState(ctx, cca.DocumentPreviewModeImage, true); err != nil {
+		return errors.Wrap(err, "failed to wait for preview mode image to show up")
+	}
+
+	imageElSize, err := app.Size(ctx, cca.DocumentPreviewModeImage)
+	if err != nil {
+		return errors.Wrap(err, "failed to get review size at initial scan")
+	}
+
+	if imageElSize.Width <= imageElSize.Height {
+		return errors.Errorf("should crop the shorter document at initial scan, got document width: %v, height: %v", imageElSize.Width, imageElSize.Height)
+	}
+
+	if err := app.Click(ctx, cca.DocumentFixButton); err != nil {
+		return errors.Wrap(err, "failed to click the fix button")
+	}
+
+	if err := app.WaitForVisibleState(ctx, cca.DocumentFixModeImage, true); err != nil {
+		return errors.Wrap(err, "failed to wait for fix mode image to show up")
+	}
+
+	imageElSize, err = app.Size(ctx, cca.DocumentFixModeImage)
+	if err != nil {
+		return err
+	}
+
+	imageElScreenXY, err := app.ScreenXYWithIndex(ctx, cca.DocumentFixModeImage, 0)
+	if err != nil {
+		return err
+	}
+
+	dotElSize, err := app.Size(ctx, cca.DocumentFixModeCorner)
+	if err != nil {
+		return err
+	}
+
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		return err
+	}
+
+	var corners [4]docCorner
+	for i := range corners {
+		pt, err := app.ScreenXYWithIndex(ctx, cca.DocumentFixModeCorner, i)
+		if err != nil {
+			return err
+		}
+		pt.X += dotElSize.Width / 2
+		pt.Y += dotElSize.Height / 2
+		corners[i] = docCorner{
+			float64(pt.X-imageElScreenXY.X) / float64(imageElSize.Width),
+			float64(pt.Y-imageElScreenXY.Y) / float64(imageElSize.Height)}
+	}
+	initialDocArea := &docArea{corners}
+	if err := doc1Area.checkSimilar(initialDocArea); err != nil {
+		return errors.Wrap(err, "Mismatch document corner coordinate at initial scan")
+	}
+
+	// Drag corners to longer doc on right side. Drag must be done in
+	// clockwise order to prevent hitting any checking convex constraint.
+	for i := len(doc2Area.corners) - 1; i >= 0; i-- {
+		toScreenPt := func(corn docCorner) coords.Point {
+			return coords.NewPoint(
+				int(corn.x*float64(imageElSize.Width))+imageElScreenXY.X,
+				int(corn.y*float64(imageElSize.Height))+imageElScreenXY.Y,
+			)
+		}
+		if err := mouse.Drag(
+			tconn, toScreenPt(initialDocArea.corners[i]), toScreenPt(doc2Area.corners[i]),
+			300*time.Millisecond)(ctx); err != nil {
+			return errors.Wrap(err, "failed to drag corner")
+		}
+	}
+	if err := app.Click(ctx, cca.DocumentDoneButton); err != nil {
+		return errors.Wrap(err, "failed to click the done button")
+	}
+
+	if err := app.WaitForVisibleState(ctx, cca.DocumentFixModeImage, false); err != nil {
+		return errors.Wrap(err, "failed to wait for fix mode image to be invisible")
+	}
+
+	if err := app.WaitForVisibleState(ctx, cca.DocumentPreviewModeImage, true); err != nil {
+		return errors.Wrap(err, "failed to wait for preview mode image to show up")
+	}
+
+	imageElSize, err = app.Size(ctx, cca.DocumentPreviewModeImage)
+	if err != nil {
+		return err
+	}
+	if imageElSize.Width >= imageElSize.Height {
+		return errors.Errorf("should crop the longer document after fix crop area, got document width: %v, height: %v", imageElSize.Width, imageElSize.Height)
 	}
 
 	return nil
