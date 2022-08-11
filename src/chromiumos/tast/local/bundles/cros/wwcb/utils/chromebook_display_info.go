@@ -19,6 +19,13 @@ import (
 	"chromiumos/tast/testing"
 )
 
+// ExternalDisplay returns a display which is not internal
+func ExternalDisplay(ctx context.Context, tconn *chrome.TestConn) (*display.Info, error) {
+	return display.FindInfo(ctx, tconn, func(info *display.Info) bool {
+		return !info.IsInternal
+	})
+}
+
 // GetInternalAndExternalDisplays returns internal and external display info.
 func GetInternalAndExternalDisplays(ctx context.Context, tconn *chrome.TestConn) (result DisplayLayout, err error) {
 	infos, err := display.GetInfo(ctx, tconn)
@@ -46,28 +53,29 @@ func GetInternalAndExternalDisplays(ctx context.Context, tconn *chrome.TestConn)
 	return result, err
 }
 
-// EnsureDisplayPrimary checks whether the given display is in requested display property. If not, make sure to set display property to the requested display property.
-func EnsureDisplayPrimary(ctx context.Context, tconn *chrome.TestConn, disp *display.Info) error {
+// EnsureDisplayIsPrimary if the display is not primary, then set properties & check
+func EnsureDisplayIsPrimary(ctx context.Context, tconn *chrome.TestConn, disp *display.Info) error {
+	// check prop at first
 	if disp.IsPrimary {
 		return nil
 	}
 
 	testing.ContextLogf(ctx, "Setting display [%s,%s] to be primary", disp.ID, disp.Name)
 
-	// Set the display to primary.
+	// set the display to primary
 	isPrimary := true
 	if err := display.SetDisplayProperties(ctx, tconn, disp.ID, display.DisplayProperties{IsPrimary: &isPrimary}); err != nil {
-		return errors.Wrap(err, "failed to set display properties")
+		return errors.Wrap(err, "failed to make internal display become primary")
 	}
 
-	// Expect the display is primary. Return err after poll timeout.
+	// check prop in the end
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		primaryInfo, err := display.GetPrimaryInfo(ctx, tconn)
 		if err != nil {
-			return errors.Wrap(err, "failed to get primary display info")
+			return errors.Wrap(err, "failed to get primary display info ")
 		}
 		if primaryInfo.ID != disp.ID {
-			return errors.New("unable to set display as primary")
+			return errors.New("failed to set want display to be primary: ")
 		}
 		return nil
 	}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
