@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b1c0193_9ae32428",
+        "filename": "src/chromiumos/tast/local/bundles/cros/rgbkbd/capslock_color_change_prevented_for_zoned_keyboards.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-08-11T23:31:57Z",
+      "side": 1,
+      "message": "does it really need 10 mins?",
+      "range": {
+        "startLine": 32,
+        "startChar": 16,
+        "endLine": 32,
+        "endChar": 18
+      },
+      "revId": "363f957e26f47f4bf08c01c8a9bfd72cbe009613",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
