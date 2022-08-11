@@ -38,19 +38,8 @@ func init() {
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
-		Params: []testing.Param{
-			{
-				Name:    "clamshell_mode",
-				Val:     false,
-				Fixture: "chromeLoggedInWith100FakeAppsLegacyLauncher",
-			},
-			{
-				Name:    "tablet_mode",
-				Val:     true,
-				Fixture: "chromeLoggedInWith100FakeApps",
-			},
-		},
-		Timeout: 3 * time.Minute,
+		Fixture:      "chromeLoggedInWith100FakeApps",
+		Timeout:      3 * time.Minute,
 	})
 }
 
@@ -68,38 +57,21 @@ func LauncherPageSwitchPerf(ctx context.Context, s *testing.State) {
 	}
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
-	inTabletMode := s.Param().(bool)
-
-	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, inTabletMode)
+	// Pages only exist in the tablet mode launcher.
+	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, true)
 	if err != nil {
-		s.Fatal("Failed to ensure in clamshell mode: ", err)
+		s.Fatal("Failed to ensure in tablet mode: ", err)
 	}
 	defer cleanup(ctx)
 
 	var pc pointer.Context
-	if inTabletMode {
-		var err error
-		if pc, err = pointer.NewTouch(ctx, tconn); err != nil {
-			s.Fatal("Failed to create a touch controller")
-		}
-	} else {
-		pc = pointer.NewMouse(tconn)
+	if pc, err = pointer.NewTouch(ctx, tconn); err != nil {
+		s.Fatal("Failed to create a touch controller")
 	}
 	defer pc.Close()
 
 	if err := ash.CreateWindows(ctx, tconn, cr, ui.PerftestURL, 2); err != nil {
 		s.Fatal("Failed to create windows: ", err)
-	}
-	if !inTabletMode {
-		// In clamshell mode, turn all windows into normal state, so the desktop
-		// under the app-launcher has the combination of window and wallpaper. This
-		// is not the case of the tablet mode (since windows are always maximized in
-		// the tablet mode).
-		if err := ash.ForEachWindow(ctx, tconn, func(w *ash.Window) error {
-			return ash.SetWindowStateAndWait(ctx, tconn, w.ID, ash.WindowStateNormal)
-		}); err != nil {
-			s.Fatal("Failed to set all windows to normal: ", err)
-		}
 	}
 
 	// Currently tast test may show a couple of notifications like "sign-in error"
@@ -111,24 +83,16 @@ func LauncherPageSwitchPerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to open/close the quick settings: ", err)
 	}
 
-	// Search or Shift-Search key to show the apps grid in fullscreen.
+	// Press "Search" to hide open windows and show the home launcher.
 	kw, err := input.Keyboard(ctx)
 	if err != nil {
 		s.Fatal("Failed to obtain the keyboard")
 	}
 	defer kw.Close()
 
-	accel := "Shift+Search"
-	if inTabletMode {
-		accel = "Search"
-	}
+	accel := "Search"
 	if err := kw.Accel(ctx, accel); err != nil {
 		s.Fatalf("Failed to type %s: %v", accel, err)
-	}
-	if !inTabletMode {
-		// Press the search key to close the app-list at the end. This is not
-		// necessary on tablet mode.
-		defer kw.Accel(ctx, "Search")
 	}
 
 	// Wait for the launcher state change.
@@ -150,11 +114,6 @@ func LauncherPageSwitchPerf(ctx context.Context, s *testing.State) {
 		s.Fatalf("There are too few pages (%d), want more than 2 pages", len(buttonsInfo))
 	}
 
-	suffix := "ClamshellMode"
-	if inTabletMode {
-		suffix = "TabletMode"
-	}
-
 	runner := perfutil.NewRunner(cr.Browser())
 
 	const pageSwitchTimeout = 2 * time.Second
@@ -171,7 +130,7 @@ func LauncherPageSwitchPerf(ctx context.Context, s *testing.State) {
 		clickPageButtonAndWait(0),
 		clickPageButtonAndWait(len(buttonsInfo)-1),
 		clickPageButtonAndWait(0),
-	), "Apps.PaginationTransition.AnimationSmoothness."+suffix),
+	), "Apps.PaginationTransition.AnimationSmoothness.TabletMode"),
 		perfutil.StoreSmoothness)
 
 	// Second: scroll by drags. This involves two types of operations, drag-up
@@ -223,8 +182,8 @@ func LauncherPageSwitchPerf(ctx context.Context, s *testing.State) {
 		// Drag-down operation.
 		ac.WaitForEvent(pageSwitcher, event.Alert, pc.Drag(dragDownStart, pc.DragTo(dragDownEnd, dragDuration))),
 	),
-		"Apps.PaginationTransition.DragScroll.PresentationTime."+suffix,
-		"Apps.PaginationTransition.DragScroll.PresentationTime.MaxLatency."+suffix),
+		"Apps.PaginationTransition.DragScroll.PresentationTime.TabletMode",
+		"Apps.PaginationTransition.DragScroll.PresentationTime.MaxLatency.TabletMode"),
 		perfutil.StoreLatency)
 
 	if err := runner.Values().Save(ctx, s.OutDir()); err != nil {
