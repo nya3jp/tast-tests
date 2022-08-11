@@ -38,7 +38,7 @@ const (
 // A global runtime variable to indicate the test is running locally.
 var isLocal = testing.RegisterVarString(
 	"syzkaller.isLocal",
-	"",
+	"false",
 	"A variable to indicate the test is running locally.",
 )
 
@@ -204,7 +204,7 @@ func Wrapper(ctx context.Context, s *testing.State) {
 	if err := os.Mkdir(syzkallerWorkdir, 0755); err != nil {
 		s.Fatal("Unable to create temp workdir: ", err)
 	}
-	if isLocal.Value() != "" {
+	if isLocal.Value() != "true" {
 		if err := loadCorpus(
 			ctx,
 			s.RequiredVar("syzkaller.Wrapper.botoCredSection"),
@@ -357,7 +357,7 @@ func Wrapper(ctx context.Context, s *testing.State) {
 	if err := cmd.Run(); err != nil {
 		s.Fatal("Failed to copy syzkaller logfile: ", err)
 	}
-	if isLocal.Value() != "" {
+	if isLocal.Value() != "true" {
 		if err := saveCorpus(
 			ctx,
 			s.RequiredVar("syzkaller.Wrapper.botoCredSection"),
