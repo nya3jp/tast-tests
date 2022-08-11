@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5e2cb11_436f7795",
+        "filename": "src/chromiumos/tast/local/bundles/cros/notifications/web_page_download.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-08-11T11:00:58Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "3b1057f6_aac9b765",
+      "range": {
+        "startLine": 38,
+        "startChar": 50,
+        "endLine": 38,
+        "endChar": 95
+      },
+      "revId": "63779669b11ef7327f16fd90c3cf545ff75ce5d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5add0ff9_a1086e81",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a756c295_a1f873dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/notifications/web_page_download.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-08-11T11:00:58Z",
+      "side": 1,
+      "message": "Fixed, one more step added to verify the notification will autohide after cancellation.",
+      "parentUuid": "5add0ff9_a1086e81",
+      "range": {
+        "startLine": 383,
+        "startChar": 1,
+        "endLine": 383,
+        "endChar": 116
+      },
+      "revId": "63779669b11ef7327f16fd90c3cf545ff75ce5d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "22c809e0_a524a1a1",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-08-09T19:40:22Z",
       "side": 1,
       "message": "Shouldn\u0027t the notification still be dismissable? Can we verify that?",
+      "range": {
+        "startLine": 400,
+        "startChar": 0,
+        "endLine": 400,
+        "endChar": 119
+      },
+      "revId": "63779669b11ef7327f16fd90c3cf545ff75ce5d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "97f4c988_b8a4b8f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/notifications/web_page_download.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-08-11T11:00:58Z",
+      "side": 1,
+      "message": "Fixed, one more step added to verify it, if the HoldingSpaceInProgressNotification is enabled.\nWe also added a few more comments to explain the details.",
+      "parentUuid": "22c809e0_a524a1a1",
       "range": {
         "startLine": 400,
         "startChar": 0,
@@ -95,6 +167,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "806f6ac4_06f4815a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/notifications/web_page_download.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 430,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-08-11T11:00:58Z",
+      "side": 1,
+      "message": "No, all fields are identical, including the ancestor.\nThis is the page looks like on the UI tree, [node id\u003d62] is the target.\n```\nnode id\u003d4 role\u003dlist\n    node id\u003d5 role\u003dlistItem\n        node id\u003d6 role\u003dlistMarker name\u003d1.\n        node id\u003d49 role\u003dstaticText name\u003dShould show a phishing warning for realtime-enabled users: \n            node id\u003d52 role\u003dinlineTextBox name\u003dShould show a phishing warning for realtime-enabled users: \n        node id\u003d50 role\u003dlink name\u003dlink\n            node id\u003d53 role\u003dstaticText name\u003dlink\n                node id\u003d54 role\u003dinlineTextBox name\u003dlink\n    node id\u003d7 role\u003dlistItem\n        node id\u003d8 role\u003dlistMarker name\u003d2.\n        node id\u003d55 role\u003dstaticText name\u003dShould show the old warning: \n            node id\u003d58 role\u003dinlineTextBox name\u003dShould show the old warning: \n        node id\u003d56 role\u003dlink name\u003dlink\n            node id\u003d59 role\u003dstaticText name\u003dlink\n                node id\u003d60 role\u003dinlineTextBox name\u003dlink\n    node id\u003d9 role\u003dlistItem\n        node id\u003d10 role\u003dlistMarker name\u003d3. \n        node id\u003d61 role\u003dstaticText name\u003dShould show a \"malicious\" warning:\n            node id\u003d64 role\u003dinlineTextBox state\u003d{} parentID\u003d61 childIds\u003d[] name\u003dShould show a \"malicious\" warning: \n        node id\u003d62 role\u003dlink name\u003dlink\n            node id\u003d65 role\u003dstaticText name\u003dlink\n                node id\u003d66 role\u003dinlineTextBox name\u003dlink\n```\nIt has unique siblings however. \n\nWe could get the sibling node\u0027s info and use the text of listMarker as index(Nth) to find the target node, but it will be more complex. \nIs the above approach generally recommended?",
+      "parentUuid": "2cfdde62_b17bbcd6",
+      "range": {
+        "startLine": 430,
+        "startChar": 0,
+        "endLine": 430,
+        "endChar": 44
+      },
+      "revId": "63779669b11ef7327f16fd90c3cf545ff75ce5d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "90d380d1_3da4cc64",
         "filename": "src/chromiumos/tast/local/bundles/cros/notifications/web_page_download.go",
         "patchSetId": 9
@@ -106,6 +202,30 @@
       "writtenOn": "2022-08-09T19:40:22Z",
       "side": 1,
       "message": "What is `notiString`?",
+      "range": {
+        "startLine": 492,
+        "startChar": 1,
+        "endLine": 492,
+        "endChar": 11
+      },
+      "revId": "63779669b11ef7327f16fd90c3cf545ff75ce5d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a1dbad2_e0415998",
+        "filename": "src/chromiumos/tast/local/bundles/cros/notifications/web_page_download.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 492,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-08-11T11:00:58Z",
+      "side": 1,
+      "message": "Sorry for the confusion, the node has been renamed.",
+      "parentUuid": "90d380d1_3da4cc64",
       "range": {
         "startLine": 492,
         "startChar": 1,
@@ -129,6 +249,30 @@
       "writtenOn": "2022-08-09T19:40:22Z",
       "side": 1,
       "message": "This test suite shouldn\u0027t interact w/ holding space (Tote); cancellation should instead be performed via system UI notification or browser UI (e.g. chrome://downloads).",
+      "range": {
+        "startLine": 517,
+        "startChar": 0,
+        "endLine": 528,
+        "endChar": 2
+      },
+      "revId": "63779669b11ef7327f16fd90c3cf545ff75ce5d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "918bcf73_1f9631c0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/notifications/web_page_download.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 528,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-08-11T11:00:58Z",
+      "side": 1,
+      "message": "Fixed, the cancellation will be processed without interact with the holding space.",
+      "parentUuid": "182c11e6_13f6335b",
       "range": {
         "startLine": 517,
         "startChar": 0,
