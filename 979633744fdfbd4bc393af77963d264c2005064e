@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e76f9938_3976882f",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/faillog/screenshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2022-08-11T04:27:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a631af82_14e6152c",
+      "range": {
+        "startLine": 35,
+        "startChar": 1,
+        "endLine": 39,
+        "endChar": 2
+      },
+      "revId": "979633744fdfbd4bc393af77963d264c2005064e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f7e477e4_dbca7663",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-08-10T02:34:20Z",
       "side": 1,
       "message": "Any reason to remove the suffix? I would hope this is not changed since it is not clear who uses this public function.",
+      "range": {
+        "startLine": 26,
+        "startChar": 56,
+        "endLine": 26,
+        "endChar": 66
+      },
+      "revId": "979633744fdfbd4bc393af77963d264c2005064e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "51e55d66_9094ac11",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/faillog/ui_tree.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2022-08-11T04:27:43Z",
+      "side": 1,
+      "message": "It will append \".png\" in SaveScreenshotToFileOnError",
+      "parentUuid": "f7e477e4_dbca7663",
       "range": {
         "startLine": 26,
         "startChar": 56,
