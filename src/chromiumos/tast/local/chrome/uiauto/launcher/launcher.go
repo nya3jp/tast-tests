@@ -349,7 +349,7 @@ func SearchAndLaunchWithQuery(tconn *chrome.TestConn, kb *input.KeyboardEventWri
 		Open(tconn),
 		Search(tconn, kb, query),
 		func(ctx context.Context) error {
-			return ui.WithInterval(1 * time.Second).LeftClick(CreateAppSearchFinder(ctx, tconn, appName))(ctx)
+			return ui.WithInterval(time.Second).DoDefault(CreateAppSearchFinder(ctx, tconn, appName))(ctx)
 		},
 	)
 }
