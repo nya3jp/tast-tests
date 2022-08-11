@@ -46,6 +46,30 @@
       },
       "revId": "0eb00d45746901618b1d12b642baafcfdb96dcb6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ca7f311_c6482c09",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/perfetto/camera_config.pbtxt",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2022-08-11T08:29:48Z",
+      "side": 1,
+      "message": "Ah, I see the Cq-Depend now. Thanks for the explanation.",
+      "parentUuid": "661a0c1b_5face1ca",
+      "range": {
+        "startLine": 18,
+        "startChar": 33,
+        "endLine": 18,
+        "endChar": 40
+      },
+      "revId": "0eb00d45746901618b1d12b642baafcfdb96dcb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
