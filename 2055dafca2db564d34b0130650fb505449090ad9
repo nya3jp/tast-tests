@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e68b94b_557f60e8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_sysfs_vpd.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-08-11T16:48:37Z",
+      "side": 1,
+      "message": "These could be changed to s.Log and remove the %s",
+      "range": {
+        "startLine": 156,
+        "startChar": 1,
+        "endLine": 157,
+        "endChar": 61
+      },
+      "revId": "2055dafca2db564d34b0130650fb505449090ad9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0ef9cf4_6fe8647f",
+        "filename": "src/chromiumos/tast/services/cros/firmware/bios_service.proto",
+        "patchSetId": 7
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-08-11T16:48:37Z",
+      "side": 1,
+      "message": "Proto style would be PROGRAMMER_UNDEFINED \u003d 0; https://developers.google.com/protocol-buffers/docs/style#enums\n\nAll the enums here are violating the style guide, but let\u0027s at least fix the 0 ones to match.",
+      "range": {
+        "startLine": 70,
+        "startChar": 2,
+        "endLine": 70,
+        "endChar": 11
+      },
+      "revId": "2055dafca2db564d34b0130650fb505449090ad9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d31f5bd9_e385d488",
+        "filename": "src/chromiumos/tast/services/cros/firmware/bios_service.proto",
+        "patchSetId": 7
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-08-11T16:48:37Z",
+      "side": 1,
+      "message": "Proto fields are snake_case: https://developers.google.com/protocol-buffers/docs/style#message_and_field_names",
+      "range": {
+        "startLine": 123,
+        "startChar": 1,
+        "endLine": 128,
+        "endChar": 29
+      },
+      "revId": "2055dafca2db564d34b0130650fb505449090ad9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
