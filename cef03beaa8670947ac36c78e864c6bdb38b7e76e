@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8d148973_d6b51a2b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-08-11T04:32:32Z",
+      "side": 1,
+      "message": "What I learned from Xibin offline is that this metric NavigationToLargestContentfulPaint2 measures the data from page load to first action on the video. In that case, I think this change involves too many irrelevant changes. e.g. The click action is moved to earlier step, etc. I would love to see a video / snapshot of data changes from simply changing DoDefault -\u003e LeftClick.",
+      "parentUuid": "11830ccc_d03a65e6",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 12
+      },
+      "revId": "cef03beaa8670947ac36c78e864c6bdb38b7e76e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "58b20966_526b3114",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
