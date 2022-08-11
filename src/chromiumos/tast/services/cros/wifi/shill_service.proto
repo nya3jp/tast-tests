@@ -196,6 +196,12 @@ service ShillService {
   // Note that it sends back an empty response first to notify the caller that
   // the D-Bus watcher is ready.
   rpc WatchDarkResume(google.protobuf.Empty) returns (stream WatchDarkResumeResponse) {}
+
+  // StartTethering attempts to start a tethering session.
+  rpc StartTethering(TetheringRequest) returns (TetheringResponse) {}
+
+  // StopTethering attempts to stop the tethering session.
+  rpc StopTethering(google.protobuf.Empty) returns (google.protobuf.Empty) {}
 }
 
 message ConnectRequest {
@@ -546,4 +552,19 @@ message CheckLastWakeReasonRequest {
 
 message WatchDarkResumeResponse {
   uint32 count = 1;
+}
+
+message TetheringRequest {
+  bool no_uplink = 1;
+  uint32 auto_disable_minute = 2;
+  bytes ssid = 3;
+  string band = 4;
+  string security = 5;
+  string psk = 6;
+}
+
+message TetheringResponse {
+  string uplink_tech = 1;
+  string downlink_tech = 2;
+  uint32 channel = 3;
 }
