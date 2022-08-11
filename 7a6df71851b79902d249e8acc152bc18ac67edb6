@@ -16,6 +16,29 @@
       "message": "Due to a merge conflict, I had to move the certs package to where the rest of the virtualnet package moved. This removed the CR votes.",
       "revId": "7a6df71851b79902d249e8acc152bc18ac67edb6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49156ce1_4b9f68c6",
+        "filename": "src/chromiumos/tast/local/network/virtualnet/certs/certs.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-08-11T17:29:51Z",
+      "side": 1,
+      "message": "probably don\u0027t need to filepath.Join this one (sorry for bad comment range). Either just `/tmp` is fine, or `os.TempDir` https://pkg.go.dev/os#TempDir.",
+      "range": {
+        "startLine": 36,
+        "startChar": 1,
+        "endLine": 36,
+        "endChar": 43
+      },
+      "revId": "7a6df71851b79902d249e8acc152bc18ac67edb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
