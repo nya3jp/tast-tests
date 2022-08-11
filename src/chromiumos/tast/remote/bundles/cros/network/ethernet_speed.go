@@ -9,6 +9,7 @@ import (
 	"io/ioutil"
 	"os"
 	"path/filepath"
+	"regexp"
 	"strings"
 	"time"
 
@@ -23,6 +24,10 @@ import (
 	"chromiumos/tast/testing"
 )
 
+type ethernet struct {
+	ethType string
+}
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         EthernetSpeed,
@@ -34,11 +39,32 @@ func init() {
 		ServiceDeps:  []string{"tast.cros.network.EthernetService", "tast.cros.wifi.ShillService"},
 		Contacts:     []string{"ambalavanan.m.m@intel.com", "intel-chrome-system-automation-team@intel.com"},
 		Fixture:      fixture.NormalMode,
+		Params: []testing.Param{{
+			Name: "native",
+			Val:  ethernet{ethType: "native"},
+		}, {
+			Name: "type_a",
+			Val:  ethernet{ethType: "typeA"},
+		}},
 	})
 }
 
 func EthernetSpeed(ctx context.Context, s *testing.State) {
 	h := s.FixtValue().(*fixture.Value).Helper
+
+	testOpts := s.Param().(ethernet)
+
+	if testOpts.ethType == "typeA" {
+		usbDetectionRe := regexp.MustCompile(`Class=.*(480M|5000M|10G|20G)`)
+		out, err := h.DUT.Conn().CommandContext(ctx, "lsusb", "-t").Output()
+		if err != nil {
+			s.Fatal("Failed to execute lsusb command: ", err)
+		}
+
+		if !usbDetectionRe.MatchString(string(out)) {
+			s.Fatal("Failed: ethernet is not connected to DUT using Type-A adapter")
+		}
+	}
 
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
