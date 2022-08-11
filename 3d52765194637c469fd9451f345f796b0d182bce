@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "731ec64d_1501a271",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-08-11T17:09:10Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "3d52765194637c469fd9451f345f796b0d182bce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6aac1895_7fc757b8",
+        "filename": "src/chromiumos/tast/remote/policyutil/enrolled_fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-08-11T17:09:10Z",
+      "side": 1,
+      "message": "nit: wdyt about folder structure like\n\nout/enrollment_attempt_{triesStr}/Chrome\nout/enrollment_attempt_{triesStr}/FakeDMS\n\n?",
+      "range": {
+        "startLine": 188,
+        "startChar": 39,
+        "endLine": 188,
+        "endChar": 55
+      },
+      "revId": "3d52765194637c469fd9451f345f796b0d182bce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "562db58a_f95ceb2b",
+        "filename": "src/chromiumos/tast/remote/policyutil/enrolled_fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-08-11T17:09:10Z",
+      "side": 1,
+      "message": "nit: maybe 0600 or 06444 will be enough?",
+      "range": {
+        "startLine": 189,
+        "startChar": 33,
+        "endLine": 189,
+        "endChar": 37
+      },
+      "revId": "3d52765194637c469fd9451f345f796b0d182bce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e409ecb2_765755fc",
+        "filename": "src/chromiumos/tast/remote/policyutil/enrolled_fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-08-11T17:09:10Z",
+      "side": 1,
+      "message": "nit: i\u0027d pass ctx explicitly here",
+      "range": {
+        "startLine": 205,
+        "startChar": 3,
+        "endLine": 205,
+        "endChar": 5
+      },
+      "revId": "3d52765194637c469fd9451f345f796b0d182bce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
