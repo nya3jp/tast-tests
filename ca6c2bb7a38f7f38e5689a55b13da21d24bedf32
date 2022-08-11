@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c390c91b_720fe817",
+        "filename": "src/chromiumos/tast/local/bundles/cros/rgbkbd/capslock_color_change_prevented_for_zoned_keyboards.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-08-11T23:20:05Z",
+      "side": 1,
+      "message": "remove these?",
+      "range": {
+        "startLine": 90,
+        "startChar": 1,
+        "endLine": 91,
+        "endChar": 28
+      },
+      "revId": "ca6c2bb7a38f7f38e5689a55b13da21d24bedf32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
