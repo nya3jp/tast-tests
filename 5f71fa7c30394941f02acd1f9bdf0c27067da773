@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a27df3ec_0f29e825",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/shill_service.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 2903,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-08-11T16:54:27Z",
+      "side": 1,
+      "message": "Thank you for your reminder. It is better to use the existing function.",
+      "parentUuid": "3b65f30d_4389a68c",
+      "range": {
+        "startLine": 2901,
+        "startChar": 2,
+        "endLine": 2903,
+        "endChar": 3
+      },
+      "revId": "5f71fa7c30394941f02acd1f9bdf0c27067da773",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e149efb2_33eb30a8",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5fcf0acf_505ec3df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/shill_service.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 2909,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-08-11T16:54:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e149efb2_33eb30a8",
+      "range": {
+        "startLine": 2907,
+        "startChar": 1,
+        "endLine": 2909,
+        "endChar": 2
+      },
+      "revId": "5f71fa7c30394941f02acd1f9bdf0c27067da773",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a890a57a_d552ea05",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-08-09T20:45:54Z",
       "side": 1,
       "message": "nit: Detection",
+      "range": {
+        "startLine": 43,
+        "startChar": 22,
+        "endLine": 43,
+        "endChar": 29
+      },
+      "revId": "5f71fa7c30394941f02acd1f9bdf0c27067da773",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a4f298c_52d60fa7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/captive_portal_http.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-08-11T16:54:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a890a57a_d552ea05",
       "range": {
         "startLine": 43,
         "startChar": 22,
@@ -106,6 +178,30 @@
       "writtenOn": "2022-08-09T20:45:54Z",
       "side": 1,
       "message": "Just for my understanding, this is not a command that runs forever. We just send the script and it runs forever on the remote server, correct?",
+      "range": {
+        "startLine": 122,
+        "startChar": 1,
+        "endLine": 124,
+        "endChar": 2
+      },
+      "revId": "5f71fa7c30394941f02acd1f9bdf0c27067da773",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6096708d_5b41f118",
+        "filename": "src/chromiumos/tast/remote/wificell/http/server.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-08-11T16:54:27Z",
+      "side": 1,
+      "message": "Yes. I create a command object by `cmd :\u003d d.host.CommandContext()` so it will be executed on the remote router. Moreover, `Start()` executes the command and does not wait for it to complete, so it won\u0027t be blocked here. The script will be run when I configure the AP and be terminated by the `pkill` command after the test is complete.",
+      "parentUuid": "e3d14887_b79bc721",
       "range": {
         "startLine": 122,
         "startChar": 1,
