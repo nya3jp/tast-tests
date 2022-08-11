@@ -16,6 +16,46 @@
       "message": "small ordering change, please take a look",
       "revId": "81502a9e73a8bb8e2293eeec27d9af5c025bf6b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a04d388_5119017d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1365228
+      },
+      "writtenOn": "2022-08-11T16:20:29Z",
+      "side": 1,
+      "message": "LGTM with a nit.",
+      "revId": "81502a9e73a8bb8e2293eeec27d9af5c025bf6b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89130cc8_b8d29775",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ad/kerberos_daemon.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1365228
+      },
+      "writtenOn": "2022-08-11T16:20:29Z",
+      "side": 1,
+      "message": "nit: Move this new block below the `if diff :\u003d cmp.Diff(` check below.",
+      "range": {
+        "startLine": 89,
+        "startChar": 1,
+        "endLine": 96,
+        "endChar": 2
+      },
+      "revId": "81502a9e73a8bb8e2293eeec27d9af5c025bf6b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
