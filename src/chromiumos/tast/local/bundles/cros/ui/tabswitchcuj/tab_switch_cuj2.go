@@ -303,11 +303,12 @@ var allTargets = []struct {
 	{cuj.RedditAppleURL, newPageInfo(Plus, reddit, `/r/apple/hot/`, `/r/apple/new/`)},
 	{cuj.RedditBrooklynURL, newPageInfo(Premium, reddit, `/r/brooklynninenine/hot/`, `/r/brooklynninenine/new/`)},
 
-	{cuj.MediumBusinessURL, newPageInfo(Basic, medium, `/business`, `/entrepreneurship`)},
-	{cuj.MediumStartupURL, newPageInfo(Basic, medium, `/startup`, `/leadership`)},
-	{cuj.MediumWorkURL, newPageInfo(Plus, medium, `/work`, `/productivity`)},
-	{cuj.MediumSoftwareURL, newPageInfo(Premium, medium, `/software-engineering`, `/programming`)},
-	{cuj.MediumAIURL, newPageInfo(Premium, medium, `/artificial-intelligence`, `/technology`)},
+	// Since "Medium" sites change content frequently, add an alternate tag link pattern.
+	{cuj.MediumBusinessURL, newPageInfo(Basic, medium, `/business`, `/economy`, `/money`, `/marketing`)},
+	{cuj.MediumStartupURL, newPageInfo(Basic, medium, `/startup`, `/leadership`, `/marketing`, `/business`)},
+	{cuj.MediumWorkURL, newPageInfo(Plus, medium, `/work`, `/productivity`, `/careers`, `/business`)},
+	{cuj.MediumSoftwareURL, newPageInfo(Premium, medium, `/software-engineering`, `/programming`, `/coding`, `/technology`)},
+	{cuj.MediumAIURL, newPageInfo(Premium, medium, `/artificial-intelligence`, `/data-science`, `/software-engineering`, `/programming`)},
 
 	{cuj.YahooUsURL, newPageInfo(Basic, yahooNews, `/us/`, `/politics/`)},
 	{cuj.YahooWorldURL, newPageInfo(Basic, yahooNews, `/world/`, `/health/`)},
