@@ -341,11 +341,11 @@ var allTargets = []struct {
 	{cuj.RedditBrooklynURL, newPageInfo(Premium, reddit, `/r/brooklynninenine/hot/`, `/r/brooklynninenine/new/`)},
 
 	// Since "Medium" sites change content frequently, add an alternate tag link pattern.
-	{cuj.MediumBusinessURL, newPageInfo(Basic, medium, `/business`, `/entrepreneurship`, `/money`)},
-	{cuj.MediumStartupURL, newPageInfo(Basic, medium, `/startup`, `/technology`, `/leadership`)},
-	{cuj.MediumWorkURL, newPageInfo(Plus, medium, `/work`, `/productivity`, `/careers`)},
-	{cuj.MediumSoftwareURL, newPageInfo(Premium, medium, `/software-engineering`, `/programming`, `/coding`)},
-	{cuj.MediumAIURL, newPageInfo(Premium, medium, `/artificial-intelligence`, `/technology`, `/ai`)},
+	{cuj.MediumBusinessURL, newPageInfo(Basic, medium, `/business`, `/economy`, `/money`, `/marketing`)},
+	{cuj.MediumStartupURL, newPageInfo(Basic, medium, `/startup`, `/leadership`, `/marketing`, `/business`)},
+	{cuj.MediumWorkURL, newPageInfo(Plus, medium, `/work`, `/productivity`, `/careers`, `/business`)},
+	{cuj.MediumSoftwareURL, newPageInfo(Premium, medium, `/software-engineering`, `/programming`, `/coding`, `/technology`)},
+	{cuj.MediumAIURL, newPageInfo(Premium, medium, `/artificial-intelligence`, `/data-science`, `/software-engineering`, `/programming`)},
 
 	// Since "Yahoo" sites change content frequently, add an alternate tag link pattern.
 	{cuj.YahooUsURL, newPageInfo(Basic, yahooNews, `/us/`, `/politics/`, `/world/`)},
