@@ -33,6 +33,75 @@
       "message": "sorry for the delay Jason! I will review this first thing tomorrow",
       "revId": "6106ee45acb233bff57c1889a68aed5b69642e65",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f29eb06_216c4479",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cellular_policy_connection.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-08-11T17:44:29Z",
+      "side": 1,
+      "message": "you don\u0027t need to repeat the finder, this can just be `managedNetworkWithBuildingIcon :\u003d managedNetworksWithBuildingIcon.Nth(...)`\n\nalso considering changing this name to make the distinction clearer (hard to tell them apart since the difference is just one \"s\")",
+      "range": {
+        "startLine": 132,
+        "startChar": 3,
+        "endLine": 132,
+        "endChar": 173
+      },
+      "revId": "6106ee45acb233bff57c1889a68aed5b69642e65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4371194_6f825df1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cellular_policy_connection.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-08-11T17:44:29Z",
+      "side": 1,
+      "message": "I think it would be better to move these closer to where they are used",
+      "range": {
+        "startLine": 134,
+        "startChar": 3,
+        "endLine": 135,
+        "endChar": 119
+      },
+      "revId": "6106ee45acb233bff57c1889a68aed5b69642e65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee6702f9_a42d7b2f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cellular_policy_connection.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-08-11T17:44:29Z",
+      "side": 1,
+      "message": "this pattern is a bit confusing to me since it allows two possible outcomes (either roaming toggle exists and we continue, or it doesn\u0027t and we return to the other page and continue). is there a way to make this clearer?",
+      "range": {
+        "startLine": 145,
+        "startChar": 3,
+        "endLine": 150,
+        "endChar": 4
+      },
+      "revId": "6106ee45acb233bff57c1889a68aed5b69642e65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
