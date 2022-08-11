@@ -503,6 +503,11 @@ func NewTestFixture(fullCtx, daemonCtx context.Context, d *dut.DUT, rpcHint *tes
 
 	// Seed the random as we have some randomization. e.g. default SSID.
 	rand.Seed(time.Now().UnixNano())
+
+	// Reinitialize state of routers.
+	if err := tf.ReinitRouters(ctx); err != nil {
+		return nil, err
+	}
 	return tf, nil
 }
 
@@ -595,7 +600,7 @@ func (tf *TestFixture) Close(ctx context.Context) error {
 		router := tf.routers[i]
 		if router.object != nil {
 			if err := router.object.Close(ctx); err != nil {
-				wifiutil.CollectFirstErr(ctx, &firstErr, errors.Wrapf(err, "failed to close rotuer %s", router.target))
+				wifiutil.CollectFirstErr(ctx, &firstErr, errors.Wrapf(err, "failed to close router %s", router.target))
 			}
 		}
 		router.object = nil
@@ -629,22 +634,45 @@ func (tf *TestFixture) Close(ctx context.Context) error {
 	return firstErr
 }
 
-// Reinit reinitialize the TestFixture. This can be used in precondition or between
-// testcases to guarantee a cleaner state.
+// Reinit re-initializes the TestFixture by calling both ReinitDUT and
+// ReinitRouters. This can be used in precondition or between testcases to
+// guarantee a cleaner state.
 func (tf *TestFixture) Reinit(ctx context.Context) error {
 	ctx, t := timing.Start(ctx, "Reinit")
 	defer t.End()
-	ctx, cancel := context.WithTimeout(ctx, 11*time.Minute)
-	defer cancel()
-
-	if _, err := tf.WifiClient().ReinitTestState(ctx, &empty.Empty{}); err != nil {
+	if err := tf.ReinitDUT(ctx); err != nil {
 		return errors.Wrap(err, "failed to reinit DUT")
 	}
+	if err := tf.ReinitRouters(ctx); err != nil {
+		return errors.Wrap(err, "failed to reinit routers")
+	}
+	return nil
+}
 
+// ReinitDUT re-initializes the DUT.
+func (tf *TestFixture) ReinitDUT(ctx context.Context) error {
+	ctx, t := timing.Start(ctx, "ReinitDUT")
+	defer t.End()
+	ctx, cancel := context.WithTimeout(ctx, 30*time.Second)
+	defer cancel()
+	if _, err := tf.WifiClient().HealthCheck(ctx, &empty.Empty{}); err != nil {
+		return errors.Wrap(err, "failed to pass wifi client health check")
+	}
+	if _, err := tf.WifiClient().ReinitTestState(ctx, &empty.Empty{}); err != nil {
+		return errors.Wrap(err, "failed to reinit wifi client test state")
+	}
+	return nil
+}
+
+// ReinitRouters re-initializes the routers.
+func (tf *TestFixture) ReinitRouters(ctx context.Context) error {
+	ctx, t := timing.Start(ctx, "ReinitRouters")
+	defer t.End()
+	ctx, cancel := context.WithTimeout(ctx, 10*time.Minute)
+	defer cancel()
 	if err := tf.DeconfigAllAPs(ctx); err != nil {
 		return errors.Wrap(err, "failed to deconfig all APs")
 	}
-
 	// Reboot all OpenWrt routers and reconnect to them.
 	for _, rd := range tf.routers {
 		if rd.object.RouterType() != support.OpenWrtT {
