@@ -16,6 +16,24 @@
       "message": "This needs to merge before I fully remove the deprecated avatar settings page or else this test will start failing. Since Personalization Hub has launched, user_avatar_image_pers_hub should be the defacto tast test for this case now.",
       "revId": "4ebc884a336c09eb96b35e9ae13bbfd6c11473ce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9bc143bd_d1944200",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1537587
+      },
+      "writtenOn": "2022-08-11T05:12:27Z",
+      "side": 1,
+      "message": "SGTM. Adding mgawad@ for his opinion.",
+      "parentUuid": "5648a352_5db63e0c",
+      "revId": "4ebc884a336c09eb96b35e9ae13bbfd6c11473ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
