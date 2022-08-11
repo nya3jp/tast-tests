@@ -38,7 +38,7 @@ const (
 type feature string
 
 const (
-	manualCrop feature = "CameraAppDocumentManualCrop"
+	multiPageDocScan feature = "CameraAppMultiPageDocScan"
 )
 
 func init() {
@@ -150,14 +150,14 @@ func init() {
 	})
 
 	testing.AddFixture(&testing.Fixture{
-		Name:     "ccaTestBridgeReadyForDocumentManualCrop",
+		Name:     "ccaTestBridgeReadyForMultiPageDocScanManualCrop",
 		Desc:     "Set up test bridge for CCA and chrome for testing document manual crop",
 		Contacts: []string{"chuhsuan@chromium.org"},
 		Data:     []string{"cca_ui.js"},
 		Impl: &fixture{
 			fakeCamera: true,
 			fakeScene:  true,
-			features:   []feature{manualCrop},
+			features:   []feature{multiPageDocScan},
 		},
 		SetUpTimeout:    setUpTimeout,
 		ResetTimeout:    testBridgeSetUpTimeout,
