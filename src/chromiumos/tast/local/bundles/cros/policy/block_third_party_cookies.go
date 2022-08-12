@@ -215,7 +215,9 @@ func BlockThirdPartyCookies(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to setup chrome: ", err)
 			}
 			defer closeBrowser(cleanupCtx)
-			https.ConfigureChromeToAcceptCertificate(ctx, localhostConfiguration, cr, br, tconn)
+			if err := https.ConfigureChromeToAcceptCertificate(ctx, localhostConfiguration, cr, br, tconn); err != nil {
+				s.Fatal("Failed to set certificate: ", err)
+			}
 
 			defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "ui_tree_"+param.name)
 
