@@ -72,6 +72,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d2b568c_a1dd7ffd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-08-12T23:54:34Z",
+      "side": 1,
+      "message": "Sorry, I probably am leaving for today too. In the chroot, run \n`tast run \u003cDUT\u003e ui.MeetCUJ.2p ui.MeetCUJ.4p_present_notes_split`\nOnce it finishes running, you\u0027ll see a folder path at the bottom (i.e `/tmp/tast/results/20220812-230740/`). If you open\n`/tmp/tast/results/20220812-230740/tests/ui.MeetCUJ.2p/results-chart.json` (with the right folder path that was outputted), you should see a list of all our collected metrics for 2p in this example. Navigating to `/tmp/tast/results/20220812-230740/tests/ui.MeetCUJ.4p_present_notes_split/results-chart.json` would show you `4p_present_notes_split data`.\n\nFor ui.MeetCUJ.2p we expect mouse data, and for 4p_present_notes_split we expect key press data.",
+      "parentUuid": "6d2068a6_88f82f75",
+      "revId": "608bea5bd8bedda2a19d396079d5e03f06868746",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "4ae480f1_13036ed3",
