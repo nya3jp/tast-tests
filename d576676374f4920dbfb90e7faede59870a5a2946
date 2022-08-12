@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "96c5ab44_bd87b0cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ipv6_connectivity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-08-12T02:09:07Z",
+      "side": 1,
+      "message": "Yeah that\u0027s a good point. I think it can potentially fail if the ARC kernel has not configured the interface on RA reception, but quite unlikely.\n\n\u003e And is it possible that the IPv6 connectivity of the physical network can affect the result?\n\nYou need at least routing to be configured on the host.",
+      "parentUuid": "924e9c42_7e5eb268",
+      "range": {
+        "startLine": 51,
+        "startChar": 1,
+        "endLine": 51,
+        "endChar": 118
+      },
+      "revId": "d576676374f4920dbfb90e7faede59870a5a2946",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "31ff287d_c98c02cf",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/ipv6_connectivity.go",
         "patchSetId": 2
