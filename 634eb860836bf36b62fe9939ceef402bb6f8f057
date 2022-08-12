@@ -280,6 +280,24 @@
       "parentUuid": "9ffcfaa5_0b6e3572",
       "revId": "634eb860836bf36b62fe9939ceef402bb6f8f057",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e48351e_efa44d9f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/squid.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-08-12T23:07:16Z",
+      "side": 1,
+      "message": "Next time in similar situation. Please try to split CLs by sets of files instead of different stage of changes of the same set of files. Then, I don\u0027t need to look at your NEXT CL in order to get the full picture. Thanks.",
+      "parentUuid": "3487de40_dfb5ae6b",
+      "revId": "634eb860836bf36b62fe9939ceef402bb6f8f057",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
