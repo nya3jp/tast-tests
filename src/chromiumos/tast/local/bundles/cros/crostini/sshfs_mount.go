@@ -12,6 +12,7 @@ import (
 	"path/filepath"
 	"time"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/vm"
@@ -70,10 +71,16 @@ func SSHFSMount(ctx context.Context, s *testing.State) {
 	}
 	sshfsMountDir := fmt.Sprintf("/media/fuse/crostini_%s_%s_%s", ownerID, vm.DefaultVMName, vm.DefaultContainerName)
 
-	if stat, err := os.Stat(sshfsMountDir); err != nil {
-		s.Fatalf("Didn't find sshfs mount %v: %v", sshfsMountDir, err)
-	} else if !stat.IsDir() {
-		s.Fatal("Didn't get directory for sshfs mount ", sshfsMountDir)
+	checkSshfs := func(ctx context.Context) error {
+		if stat, err := os.Stat(sshfsMountDir); err != nil {
+			return errors.Wrapf(err, "didn't find sshfs mount %v:", sshfsMountDir)
+		} else if !stat.IsDir() {
+			return errors.Errorf("didn't get directory for sshfs mount %v", sshfsMountDir)
+		}
+		return nil
+	}
+	if err := testing.Poll(ctx, checkSshfs, nil); err != nil {
+		s.Fatal("Timed out waiting for sshfs mount: ", err)
 	}
 
 	// Verify mount works for writing a file.
