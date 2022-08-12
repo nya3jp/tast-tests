@@ -109,6 +109,7 @@ var prePackages = []string{
 	"chromiumos/tast/local/bundles/cros/inputs/fixture",
 	"chromiumos/tast/local/bundles/cros/inputs/pre",
 	"chromiumos/tast/local/bundles/crosint/arc",
+	"chromiumos/tast/local/bundles/crosint/camera/fixtures",
 	"chromiumos/tast/local/bundles/crosint/pita/pre",
 	"chromiumos/tast/local/bundles/pita/pita/pre",
 	"chromiumos/tast/local/chrome",
