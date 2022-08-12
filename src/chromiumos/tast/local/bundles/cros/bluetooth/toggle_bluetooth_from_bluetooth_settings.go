@@ -33,7 +33,13 @@ func init() {
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
-		Fixture:      "chromeLoggedInWithBluetoothEnabled",
+		Params: []testing.Param{{
+			Name:    "floss_disabled",
+			Fixture: "chromeLoggedInWithBluetoothEnabled",
+		}, {
+			Name:    "floss_enabled",
+			Fixture: "chromeLoggedInWithFlossAndBluetoothEnabled",
+		}},
 	})
 }
 
