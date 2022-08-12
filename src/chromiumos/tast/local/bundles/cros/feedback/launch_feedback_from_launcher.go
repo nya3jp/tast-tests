@@ -73,7 +73,7 @@ func LaunchFeedbackFromLauncher(ctx context.Context, s *testing.State) {
 	}
 
 	// Verify essential elements exist.
-	issueDescriptionInput := nodewith.Role(role.TextField)
+	issueDescriptionInput := nodewith.Name("Description").Role(role.TextField)
 	button := nodewith.Name("Continue").Role(role.Button)
 
 	if err := uiauto.Combine("Verify essential elements exist",
