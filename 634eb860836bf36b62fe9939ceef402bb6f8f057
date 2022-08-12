@@ -69,6 +69,60 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "afbbea2a_052e823a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2022-08-12T22:48:59Z",
+      "side": 1,
+      "message": "sure. Thanks for sharing",
+      "parentUuid": "f64fe5a3_d0413dd5",
+      "revId": "634eb860836bf36b62fe9939ceef402bb6f8f057",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "91957472_02673360",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2022-08-12T22:48:59Z",
+      "side": 1,
+      "message": "yes, I did run tast unit using the command fast_build.sh -T and it went through well.",
+      "parentUuid": "c45f9de8_5fce4e72",
+      "revId": "634eb860836bf36b62fe9939ceef402bb6f8f057",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5fd51d08_7acc6fe4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2022-08-12T22:48:59Z",
+      "side": 1,
+      "message": "yes, I did make this CL depend on crrev.com/c/3830207.",
+      "parentUuid": "4a99e15d_f621aaa3",
+      "revId": "634eb860836bf36b62fe9939ceef402bb6f8f057",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "95c10f93_50980745",
@@ -86,6 +140,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3fcd8e4e_5ef6e677",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/roblox.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2022-08-12T22:48:59Z",
+      "side": 1,
+      "message": "Removal of \"clamshell_mode\" for squid and other apps are taken in respective related CLs, please find, https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3828741/1/src/chromiumos/tast/local/bundles/cros/arcappcompat/squid.go.",
+      "parentUuid": "95c10f93_50980745",
+      "revId": "634eb860836bf36b62fe9939ceef402bb6f8f057",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cd273a09_fa5aeffc",
@@ -99,6 +171,24 @@
       "writtenOn": "2022-08-12T22:41:46Z",
       "side": 1,
       "message": "What is the difference between clamshell_mode_default and clamshell_mode? Is clamshell_mode for the release?\n\nclamshell_mode_default\n\t\tLaunchTests: clamshellLaunchForSquid,\n\t\tCommonTests: testutil.ClamshellCommonTests,\n\t\t\n\t\t\nclamshell_mode\n\t\tLaunchTests: clamshellLaunchForSquid,\n\t\tCommonTests: testutil.ClamshellCommonTests,\n\t\t\nThey look the same to me.",
+      "revId": "634eb860836bf36b62fe9939ceef402bb6f8f057",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ffcfaa5_0b6e3572",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/squid.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2022-08-12T22:48:59Z",
+      "side": 1,
+      "message": "Hi Seewai, Removal of \"clamshell_mode\" for squid and other apps are taken in respective related CLs, please find, https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3828741/1/src/chromiumos/tast/local/bundles/cros/arcappcompat/squid.go.",
+      "parentUuid": "cd273a09_fa5aeffc",
       "revId": "634eb860836bf36b62fe9939ceef402bb6f8f057",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
