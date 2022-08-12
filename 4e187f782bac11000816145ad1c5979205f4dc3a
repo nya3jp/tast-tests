@@ -33,6 +33,46 @@
       "message": "Hello, please help me review this change. Thank you.",
       "revId": "4e187f782bac11000816145ad1c5979205f4dc3a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed060ade_ae68b87a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-08-12T06:54:15Z",
+      "side": 1,
+      "message": "+2 for Tast Review",
+      "revId": "4e187f782bac11000816145ad1c5979205f4dc3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31f78af2_96a21423",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-08-12T06:54:15Z",
+      "side": 1,
+      "message": "Consider rolling these into an options struct to make the signature and invocation more ergonomic and less likely to confuse arguments.\n\nE.g. type ImportPrivateKeyOptions struct{\n   Path string\n   Slot int\n   Username string\n   ...\n}\n\nfunc (p *Chaps) ImportPrivateKeyBySlot(ctx context.Context, opts ImportPrivateKeyOptions) {\n   ...\n}",
+      "range": {
+        "startLine": 337,
+        "startChar": 60,
+        "endLine": 337,
+        "endChar": 138
+      },
+      "revId": "4e187f782bac11000816145ad1c5979205f4dc3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
