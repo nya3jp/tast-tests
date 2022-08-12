@@ -62,6 +62,14 @@ func LaunchFeedbackFromAboutChromeOS(ctx context.Context, s *testing.State) {
 		s.Fatal("Settings app did not appear in shelf after launch: ", err)
 	}
 
+	// Handle narrow screen. Click menu button if it exists.
+	menuButton := nodewith.Name("Main menu").Role(role.Button)
+	defaultPolling := testing.PollOptions{Interval: time.Second, Timeout: 20 * time.Second}
+	if err := uiauto.IfSuccessThen(ui.WaitUntilExists(menuButton),
+		ui.WithPollOpts(defaultPolling).LeftClick(menuButton))(ctx); err != nil {
+		s.Fatal("Failed to click menu button: ", err)
+	}
+
 	// Click About ChromeOS tab.
 	aboutCrOSTab := nodewith.NameContaining("About ChromeOS").Role(role.StaticText)
 	if err := ui.DoDefault(aboutCrOSTab)(ctx); err != nil {
