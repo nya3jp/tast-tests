@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d07214af_0a602e08",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cert_settings_page.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1175129
+      },
+      "writtenOn": "2022-08-12T06:05:02Z",
+      "side": 1,
+      "message": "Have you actually seen this in test runs?\n\nCould we also attempt to retry 3 times until we get ERR_BAD_SSL_CLIENT_AUTH_CERT ?\n\nIf I\u0027d have to guess I\u0027d assume that ERR_SOCKET_NOT_CONNECTED comes up because when modifying the cert store, the network service is told to \"flush the socket pool\" and that surfaces back to the UI; the actual error we should get when talking to the server but not being able to present a client cert that it wants in the handshake *should be* ERR_BAD_SSL_CLIENT_AUTH_CERT IIUC.",
+      "range": {
+        "startLine": 56,
+        "startChar": 33,
+        "endLine": 56,
+        "endChar": 57
+      },
+      "revId": "13f65feff42da4410a69c785e6dece8141f28c2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf58101a_bcda3b60",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cert_settings_page.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1175129
+      },
+      "writtenOn": "2022-08-12T06:05:02Z",
+      "side": 1,
+      "message": "WDYT about\n\n- try without anything -\u003e expect invalid CA error\n (import CA cert)\n- try only with CA cert -\u003e expect invalid client cert error\n (import client cert)\n- try with both CA and client cert -\u003e expect success\n (delete client cert)\n .. continue as we\u0027re already doing it ..\n \n \nOr in words, about also testing that the CA cert import becomes effective in isolation?",
+      "range": {
+        "startLine": 410,
+        "startChar": 0,
+        "endLine": 410,
+        "endChar": 78
+      },
+      "revId": "13f65feff42da4410a69c785e6dece8141f28c2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
