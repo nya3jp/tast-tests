@@ -130,12 +130,12 @@ func (f *diagnosticsPrepFixture) PreTest(ctx context.Context, s *testing.FixtTes
 }
 
 func (f *diagnosticsPrepFixture) PostTest(ctx context.Context, s *testing.FixtTestState) {
-	if err := diagnosticsapp.Close(ctx, f.tconn); err != nil {
-		s.Log("Failed to close diagnostics app: ", err)
-	}
-
 	if err := f.api.Release(ctx); err != nil {
 		s.Log("Error releasing systemDataProvider mojo API: ", err)
+	}
+
+	if err := diagnosticsapp.Close(ctx, f.tconn); err != nil {
+		s.Log("Failed to close diagnostics app: ", err)
 	}
 
 	f.api = nil
