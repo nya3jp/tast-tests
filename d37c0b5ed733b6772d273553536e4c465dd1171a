@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a188dfb_25a19457",
+        "filename": "src/chromiumos/tast/common/chameleon/chameleond.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 823,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-08-12T01:52:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd8b3dcc_08fa44c1",
+      "revId": "d37c0b5ed733b6772d273553536e4c465dd1171a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "06b38e2e_35dd2b5d",
@@ -48,6 +66,24 @@
       "writtenOn": "2022-08-10T00:47:19Z",
       "side": 1,
       "message": "iirc append works on nil slices, so I think you don\u0027t need this conditional",
+      "revId": "d37c0b5ed733b6772d273553536e4c465dd1171a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1d3fa35_c98074fb",
+        "filename": "src/chromiumos/tast/common/chameleon/chameleond.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1405,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-08-12T01:52:40Z",
+      "side": 1,
+      "message": "Ah yes, that\u0027s nicer. It\u0027s one of those Go things I\u0027ve got to get used to as most other languages don\u0027t handle that.",
+      "parentUuid": "06b38e2e_35dd2b5d",
       "revId": "d37c0b5ed733b6772d273553536e4c465dd1171a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -69,6 +105,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1e64c27_32384627",
+        "filename": "src/chromiumos/tast/common/chameleon/chameleond.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1430,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-08-12T01:52:40Z",
+      "side": 1,
+      "message": "While it\u0027s simpler, it\u0027s slower. Though after doing some more research on the topic for Go it seems negligible and I like simplicity more so I\u0027ve switched it to append. A few nanoseconds is not going to make or break our tests that use this API, which will already have to account for network delay.",
+      "parentUuid": "d3eff37b_28f24b4c",
+      "revId": "d37c0b5ed733b6772d273553536e4c465dd1171a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f7c6c3d4_6a03d66b",
@@ -86,6 +140,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d5c32bd_5c1f73d3",
+        "filename": "src/chromiumos/tast/common/chameleon/chameleond.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1454,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-08-12T01:52:40Z",
+      "side": 1,
+      "message": "I agree, and have updated it to break instead. It\u0027s also slightly faster. I\u0027ve got a habit of forgetting break is a thing since I\u0027m usually in languages that don\u0027t allow it.",
+      "parentUuid": "f7c6c3d4_6a03d66b",
+      "revId": "d37c0b5ed733b6772d273553536e4c465dd1171a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2b77d369_d6987f4f",
@@ -99,6 +171,24 @@
       "writtenOn": "2022-08-10T00:47:19Z",
       "side": 1,
       "message": "nit, optional: directly using len(portIDs) seems clearer",
+      "revId": "d37c0b5ed733b6772d273553536e4c465dd1171a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7816baa1_1f334aff",
+        "filename": "src/chromiumos/tast/common/chameleon/chameleond.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1463,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-08-12T01:52:40Z",
+      "side": 1,
+      "message": "Since I used the length a few times right after one another I put it in a variable, but it _is_ easer to read as `len(portIDs)`. I\u0027ve updated it to do that, as there is no real reason to optimize an error return anyways.",
+      "parentUuid": "2b77d369_d6987f4f",
       "revId": "d37c0b5ed733b6772d273553536e4c465dd1171a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
