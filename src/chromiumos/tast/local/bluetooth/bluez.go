@@ -17,15 +17,34 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// Adapter contains helper functions for getting and setting bluetooth adapter
-// state.
+// Adapter contains helper functions for getting and setting bluetooth adapter state.
 type Adapter struct {
 	obj  dbus.BusObject
 	path dbus.ObjectPath
 }
 
+// BlueZ provides an implementation of the Bluetooth interface used by
+// Bluetooth tests so that we can ensure coverage using BlueZ.
+type BlueZ struct {
+}
+
 const service = "org.bluez"
 const adapterIface = service + ".Adapter1"
+
+// Enable powers on the adapter.
+func (b *BlueZ) Enable(ctx context.Context) error {
+	return Enable(ctx)
+}
+
+// PollForAdapterState polls the bluetooth adapter state until expected state is received or a timeout occurs.
+func (b *BlueZ) PollForAdapterState(ctx context.Context, exp bool) error {
+	return PollForAdapterState(ctx, exp)
+}
+
+// PollForEnabled polls the bluetooth adapter state until the adapter is powered on.
+func (b *BlueZ) PollForEnabled(ctx context.Context) error {
+	return PollForBTEnabled(ctx)
+}
 
 // Adapters creates an Adapter for all bluetooth adapters in the system.
 func Adapters(ctx context.Context) ([]*Adapter, error) {
@@ -236,7 +255,7 @@ func PollForBTDisabled(ctx context.Context) error {
 	return PollForAdapterState(ctx, false)
 }
 
-//PollForAdapterState polls bluetooth adapter state until expected state is received or  timeout occurs.
+// PollForAdapterState polls bluetooth adapter state until expected state is received or  timeout occurs.
 func PollForAdapterState(ctx context.Context, exp bool) error {
 	return testing.Poll(ctx, func(ctx context.Context) error {
 		status, err := IsEnabled(ctx)
