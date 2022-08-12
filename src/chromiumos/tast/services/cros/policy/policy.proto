@@ -84,6 +84,7 @@ message GAIAEnrollForReportingRequest{
   string reporting_server_url = 4;
   string enabled_features = 5;
   string extra_args = 6;
+  bool skip_login = 7;
 }
 
 message CreateFakeDMSDirRequest {
