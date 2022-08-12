@@ -39,6 +39,7 @@ type arcMediaScanPerfParams struct {
 	waitForVolumeMount   func(ctx context.Context, a *arc.ARC) error
 	waitForVolumeUnmount func(ctx context.Context, a *arc.ARC) error
 	volumeURISuffix      string
+	useSDCardPartition   bool
 }
 
 func init() {
@@ -61,6 +62,7 @@ func init() {
 				waitForVolumeMount:   arc.WaitForARCSDCardVolumeMount,
 				waitForVolumeUnmount: arc.WaitForARCSDCardVolumeUnmount,
 				volumeURISuffix:      "emulated/0",
+				useSDCardPartition:   true,
 			},
 		}, {
 			Name:              "myfiles_vm",
@@ -71,6 +73,7 @@ func init() {
 				waitForVolumeMount:   arc.WaitForARCMyFilesVolumeMount,
 				waitForVolumeUnmount: arc.WaitForARCMyFilesVolumeUnmount,
 				volumeURISuffix:      arc.MyFilesUUID,
+				useSDCardPartition:   false,
 			},
 		}},
 	})
@@ -235,6 +238,23 @@ func startMeasureMediaScanPerfWithApp(ctx context.Context, a *arc.ARC, tconn *ch
 	return act.Close, nil
 }
 
+// maybeWrapWithSSHFSMountAndUnmount wraps a function call with SSHFS mount and unmount only when
+// useSSHFS is true.
+func maybeWrapWithSSHFSMountAndUnmount(ctx context.Context, user string, useSSHFS bool, f func() error) error {
+	if useSSHFS {
+		if err := arc.MountSDCardPartitionOnHostWithSSHFS(ctx, user); err != nil {
+			return errors.Wrap(err, "failed to mount Android's SDCard partition on host")
+		}
+	}
+	err := f()
+	if useSSHFS {
+		if err := arc.UnmountSDCardPartitionFromHost(ctx, user); err != nil {
+			return errors.Wrap(err, "failed to unmount Android's SDCard partition from host")
+		}
+	}
+	return err
+}
+
 func MediaScanPerf(ctx context.Context, s *testing.State) {
 	a := s.FixtValue().(*arc.PreData).ARC
 	cr := s.FixtValue().(*arc.PreData).Chrome
@@ -251,10 +271,28 @@ func MediaScanPerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get the path to target: ", err)
 	}
 
-	err = createFileCopiesUnderTargetPath(s, targetDirPath)
+	// In devices without virtio-blk /data, Android's /data directory is available from the host at
+	// /home/root/<hash>/android-data/data. In virtio-blk /data enabled devices, this is not the case,
+	// so in order to access Android's SDCard partition (/data/media/0) from tast tests, we need to
+	// manually expose it to the host using SSHFS.
+	useSSHFS := false
+	if param.useSDCardPartition {
+		useSSHFS, err = a.IsVirtioBlkDataEnabled(ctx)
+		if err != nil {
+			s.Fatal("Failed to check if virtio-blk /data is enabled: ", err)
+		}
+	}
+	err = maybeWrapWithSSHFSMountAndUnmount(ctx, cr.NormalizedUser(), useSSHFS, func() error {
+		return createFileCopiesUnderTargetPath(s, targetDirPath)
+	})
 	// Cleanup should be called even if err is returned because some files might have been created.
 	defer func() {
-		if err := os.RemoveAll(targetDirPath); err != nil {
+		// Since the SSHFS mount does not persist through the SDCard volume remount, we need to
+		// mount the SDCard partition again for the cleanup.
+		err := maybeWrapWithSSHFSMountAndUnmount(ctx, cr.NormalizedUser(), useSSHFS, func() error {
+			return os.RemoveAll(targetDirPath)
+		})
+		if err != nil {
 			s.Fatalf("Failed to remove the target directory %v: %v", targetDirPath, err)
 		}
 	}()
