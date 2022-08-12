@@ -22,6 +22,30 @@
       },
       "revId": "f711ed96fbf0423dc043daa0ad24ca3e389fb412",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5762cf15_c76d0215",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/faillog/screenshot.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2022-08-12T08:04:20Z",
+      "side": 1,
+      "message": "Sorry, I misunderstood what you meant.\nI got it. Thank you for the explanation.",
+      "parentUuid": "8c3e2875_d5fcd47a",
+      "range": {
+        "startLine": 38,
+        "startChar": 2,
+        "endLine": 38,
+        "endChar": 8
+      },
+      "revId": "f711ed96fbf0423dc043daa0ad24ca3e389fb412",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
