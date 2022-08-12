@@ -24,8 +24,27 @@ type Adapter struct {
 	path dbus.ObjectPath
 }
 
+// BlueZ ...
+type BlueZ struct {
+}
+
 const service = "org.bluez"
 const adapterIface = service + ".Adapter1"
+
+// Enable ...
+func (b *BlueZ) Enable(ctx context.Context) error {
+	return Enable(ctx)
+}
+
+// PollForAdapterState ...
+func (b *BlueZ) PollForAdapterState(ctx context.Context, exp bool) error {
+	return PollForAdapterState(ctx, exp)
+}
+
+// PollForEnabled ...
+func (b *BlueZ) PollForEnabled(ctx context.Context) error {
+	return PollForBTEnabled(ctx)
+}
 
 // Adapters creates an Adapter for all bluetooth adapters in the system.
 func Adapters(ctx context.Context) ([]*Adapter, error) {
@@ -236,7 +255,7 @@ func PollForBTDisabled(ctx context.Context) error {
 	return PollForAdapterState(ctx, false)
 }
 
-//PollForAdapterState polls bluetooth adapter state until expected state is received or  timeout occurs.
+// PollForAdapterState polls bluetooth adapter state until expected state is received or  timeout occurs.
 func PollForAdapterState(ctx context.Context, exp bool) error {
 	return testing.Poll(ctx, func(ctx context.Context) error {
 		status, err := IsEnabled(ctx)

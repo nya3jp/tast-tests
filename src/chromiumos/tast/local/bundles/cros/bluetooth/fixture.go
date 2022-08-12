@@ -9,6 +9,7 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bluetooth"
+	"chromiumos/tast/local/bluetooth/floss"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
 )
@@ -21,7 +22,19 @@ func init() {
 			"chadduffin@chromium.org",
 			"cros-connectivity@google.com",
 		},
-		Impl:            ChromeLoggedInWithBluetoothRevamp(true),
+		Impl:            chromeLoggedInWithFeatures([]string{"BluetoothRevamp"}, []string{}),
+		SetUpTimeout:    chrome.LoginTimeout,
+		ResetTimeout:    chrome.ResetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+	})
+	testing.AddFixture(&testing.Fixture{
+		Name: "chromeLoggedInWithFlossEnabled",
+		Desc: "Logs into a user session with the BluetoothRevamp and Floss feature flags enabled",
+		Contacts: []string{
+			"chadduffin@chromium.org",
+			"cros-connectivity@google.com",
+		},
+		Impl:            chromeLoggedInWithFeatures([]string{"BluetoothRevamp", "BluetoothUseFloss"}, []string{}),
 		SetUpTimeout:    chrome.LoginTimeout,
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
@@ -33,7 +46,7 @@ func init() {
 			"chadduffin@chromium.org",
 			"cros-connectivity@google.com",
 		},
-		Impl:            ChromeLoggedInWithBluetoothRevamp(false),
+		Impl:            chromeLoggedInWithFeatures([]string{}, []string{"BluetoothRevamp"}),
 		SetUpTimeout:    chrome.LoginTimeout,
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
@@ -45,51 +58,66 @@ func init() {
 			"chadduffin@chromium.org",
 			"cros-connectivity@google.com",
 		},
-		Impl:            &chromeLoggedInWithBluetoothEnabled{},
+		Impl:            &ChromeLoggedInWithBluetoothEnabled{Impl: &bluetooth.BlueZ{}},
 		Parent:          "chromeLoggedInWithBluetoothRevampEnabled",
+		SetUpTimeout:    chrome.LoginTimeout,
+		ResetTimeout:    chrome.ResetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+	})
+	testing.AddFixture(&testing.Fixture{
+		Name: "chromeLoggedInWithFlossAndBluetoothEnabled",
+		Desc: "Logs into a user session and enables Bluetooth during set up and tear down",
+		Contacts: []string{
+			"chadduffin@chromium.org",
+			"cros-connectivity@google.com",
+		},
+		Impl:            &ChromeLoggedInWithBluetoothEnabled{Impl: &floss.Floss{}},
+		Parent:          "chromeLoggedInWithFlossEnabled",
 		SetUpTimeout:    chrome.LoginTimeout,
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
 	})
 }
 
-// ChromeLoggedInWithBluetoothRevamp returns a fixture implementation that
-// builds on the existing chromeLoggedIn fixture to also enable or disable the
-// BluetoothRevamp feature flag.
-func ChromeLoggedInWithBluetoothRevamp(enabled bool) testing.FixtureImpl {
+func chromeLoggedInWithFeatures(enableFeatures, disableFeatures []string) testing.FixtureImpl {
 	return chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
-		if enabled {
-			return []chrome.Option{chrome.EnableFeatures("BluetoothRevamp")}, nil
-		}
-		return []chrome.Option{chrome.DisableFeatures("BluetoothRevamp")}, nil
+		return []chrome.Option{
+			chrome.EnableFeatures(enableFeatures...), chrome.DisableFeatures(disableFeatures...),
+		}, nil
 	})
 }
 
-type chromeLoggedInWithBluetoothEnabled struct {
+// ChromeLoggedInWithBluetoothEnabled provides an interface for Bluetooth tests
+// that provides both access to the Chrome session and a Bluetooth
+// implementation.
+type ChromeLoggedInWithBluetoothEnabled struct {
+	Chrome *chrome.Chrome
+	Impl   bluetooth.Bluetooth
 }
 
-func (*chromeLoggedInWithBluetoothEnabled) Reset(ctx context.Context) error {
-	if err := bluetooth.Enable(ctx); err != nil {
+func (f *ChromeLoggedInWithBluetoothEnabled) Reset(ctx context.Context) error {
+	if err := f.Impl.Enable(ctx); err != nil {
 		return errors.Wrap(err, "failed to enable Bluetooth")
 	}
 	return nil
 }
 
-func (*chromeLoggedInWithBluetoothEnabled) PreTest(ctx context.Context, s *testing.FixtTestState) {
+func (*ChromeLoggedInWithBluetoothEnabled) PreTest(ctx context.Context, s *testing.FixtTestState) {
 }
 
-func (*chromeLoggedInWithBluetoothEnabled) PostTest(ctx context.Context, s *testing.FixtTestState) {
+func (*ChromeLoggedInWithBluetoothEnabled) PostTest(ctx context.Context, s *testing.FixtTestState) {
 }
 
-func (*chromeLoggedInWithBluetoothEnabled) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
-	if err := bluetooth.Enable(ctx); err != nil {
+func (f *ChromeLoggedInWithBluetoothEnabled) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
+	f.Chrome = s.ParentValue().(*chrome.Chrome)
+	if err := f.Impl.Enable(ctx); err != nil {
 		s.Fatal("Failed to enable Bluetooth: ", err)
 	}
-	return s.ParentValue()
+	return f
 }
 
-func (*chromeLoggedInWithBluetoothEnabled) TearDown(ctx context.Context, s *testing.FixtState) {
-	if err := bluetooth.Enable(ctx); err != nil {
+func (f *ChromeLoggedInWithBluetoothEnabled) TearDown(ctx context.Context, s *testing.FixtState) {
+	if err := f.Impl.Enable(ctx); err != nil {
 		s.Fatal("Failed to enable Bluetooth: ", err)
 	}
 }
