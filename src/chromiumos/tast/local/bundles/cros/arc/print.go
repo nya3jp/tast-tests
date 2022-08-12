@@ -23,7 +23,6 @@ import (
 	"chromiumos/tast/local/printing/printer"
 	"chromiumos/tast/local/printing/usbprinter"
 	"chromiumos/tast/testing"
-	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -45,14 +44,6 @@ func init() {
 		Timeout:      4 * time.Minute,
 		Params: []testing.Param{{
 			Val:               "arc_print_ippusb_golden.pdf",
-			ExtraHardwareDeps: hwdep.D(hwdep.Model(stableModels...)),
-			ExtraSoftwareDeps: []string{"android_p"},
-			ExtraData:         []string{"arc_print_ippusb_golden.pdf"},
-		}, {
-			Name:              "unstable",
-			Val:               "arc_print_ippusb_golden.pdf",
-			ExtraAttr:         []string{"informational"},
-			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(stableModels...)),
 			ExtraSoftwareDeps: []string{"android_p"},
 			ExtraData:         []string{"arc_print_ippusb_golden.pdf"},
 		}, {
@@ -63,136 +54,6 @@ func init() {
 			ExtraData:         []string{"arc_print_vm_ippusb_golden.pdf"},
 		}},
 	})
-}
-
-// stableModels is a list of models stable enough for the CQ.
-var stableModels = []string{
-	"caroline",
-	"chell",
-
-	// dedede:
-	"boten",
-	"drawlat",
-	"magolor",
-
-	"drallion",
-	"drallion360",
-	"elm",
-	"gandof",
-
-	// grunt:
-	"aleena",
-	"barla",
-	"careena",
-	"kasumi",
-	"kasumi360",
-	"liara",
-	"treeya",
-	"treeya360",
-
-	"hana",
-
-	// hatch:
-	"akemi",
-	"dratini",
-	"jinlon",
-	"kindred",
-
-	// jacuzzi:
-	"burnet",
-	"cozmo",
-	"damu",
-	"esche",
-	"fennel",
-	"fennel14",
-	"juniper",
-	"kappa",
-	"kenzo",
-	"pico",
-	"pico6",
-	"willow",
-
-	// kalista:
-	"karma",
-
-	"kevin",
-
-	// kukui:
-	"kakadu",
-	"katsu",
-	"krane",
-
-	// nami:
-	"akali",
-	"akali360",
-	"bard",
-	"ekko",
-	"pantheon",
-	"sona",
-	"syndra",
-	"vayne",
-
-	// octopus:
-	"blooguard",
-	"blorb",
-	"bobba360",
-	"casta",
-	"droid",
-	"foob",
-	"garfour",
-	"grabbiter",
-	"meep",
-	"nospike",
-	"phaser",
-	"sparky360",
-	"vortininja",
-
-	// puff:
-	"duffy",
-	"puff",
-	"wyvern",
-
-	"reks",
-	"relm",
-	"samus",
-
-	// sarien:
-	"arcada",
-
-	"soraka",
-
-	// strongbad:
-	"coachz",
-	"homestar",
-	"mrbland",
-	"quackingstick",
-	"wormdingler",
-
-	// trogdor:
-	"lazor",
-	"limozeen",
-	"pazquel",
-	"pompom",
-	"kingoftown",
-
-	"sentry",
-	"ultima",
-
-	// volteer:
-	"delbin",
-	"eldrid",
-	"voxel",
-
-	// zork:
-	"berknip",
-	"dirinboz",
-	"jelboz",
-	"jelboz360",
-	"morphius",
-	"vilboz",
-	"vilboz14",
-	"vilboz360",
-	"woomax",
 }
 
 func Print(ctx context.Context, s *testing.State) {
