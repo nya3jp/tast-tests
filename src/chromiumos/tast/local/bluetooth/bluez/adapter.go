@@ -17,8 +17,7 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// Adapter contains helper functions for getting and setting bluetooth adapter
-// state.
+// Adapter contains helper functions for getting and setting bluetooth adapter state.
 type Adapter struct {
 	dbus *dbusutil.DBusObject
 }
@@ -173,7 +172,7 @@ func PollForBTDisabled(ctx context.Context) error {
 	return PollForAdapterState(ctx, false)
 }
 
-// PollForAdapterState polls bluetooth adapter state until expected state is received or timeout occurs.
+// PollForAdapterState polls bluetooth adapter state until expected state is received or a timeout occurs.
 func PollForAdapterState(ctx context.Context, exp bool) error {
 	return testing.Poll(ctx, func(ctx context.Context) error {
 		status, err := IsEnabled(ctx)

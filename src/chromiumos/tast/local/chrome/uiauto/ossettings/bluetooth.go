@@ -7,7 +7,7 @@ package ossettings
 import (
 	"context"
 
-	"chromiumos/tast/local/bluetooth/bluez"
+	"chromiumos/tast/local/bluetooth"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
@@ -31,13 +31,13 @@ var BluetoothPairNewDeviceModal = nodewith.NameContaining("Pair new device").Rol
 // NavigateToBluetoothSettingsPage will navigate to the Bluetooth sub-page
 // within the OS Settings by clicking the sub-page button. This is safe to call
 // when the OS Settings are already open.
-func NavigateToBluetoothSettingsPage(ctx context.Context, tconn *chrome.TestConn) (*OSSettings, error) {
+func NavigateToBluetoothSettingsPage(ctx context.Context, tconn *chrome.TestConn, bt bluetooth.Bluetooth) (*OSSettings, error) {
 	app, err := Launch(ctx, tconn)
 	if err != nil {
 		return app, err
 	}
 
-	if err := bluez.Enable(ctx); err != nil {
+	if err := bt.Enable(ctx); err != nil {
 		return app, err
 	}
 
