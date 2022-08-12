@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "69c2d13f_40e61927",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-08-12T01:33:03Z",
+      "side": 1,
+      "message": "There are two blockers to get this test fully migrated but I\u0027m sending for a review to see at least crbug/1290987 could be addressed.",
+      "revId": "0f7f1f4bee3a52c0b72999d8d626b38fbe5b62ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29d38399_ef5ec498",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/nodewith/nodewith.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-08-12T01:33:03Z",
+      "side": 1,
+      "message": "Hidehiko, I found that this change seems to get `ac.NodesInfo` working to find the lacros tabs. Otherwise it fails.\nDoes it look okay to you?\nor should your WIP CL (https://crrev.com/c/3823638) be applied here as well?",
+      "range": {
+        "startLine": 173,
+        "startChar": 0,
+        "endLine": 175,
+        "endChar": 0
+      },
+      "revId": "0f7f1f4bee3a52c0b72999d8d626b38fbe5b62ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
