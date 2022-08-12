@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "947f1906_4f362b5c",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/faillog/screenshot.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-08-12T09:34:50Z",
+      "side": 1,
+      "message": "if idx \u003d\u003d 0 {\n    continue\n}\n\nscreenshotFile \u003d fmt.Sprintf(\"%s/%s-display-%d-%s.png\", dir, fileName, idx, info.ID)\n\ntesting.ContextLogf(ctx, \"Saving extended display %d screenshot to %s\", idx, screenshotFile)\nif err :\u003d screenshot.CaptureChromeForDisplay(ctx, cr, info.ID, screenshotFile); err !\u003d nil {\n    testing.ContextLogf(ctx, \"Failed to capture screenshot for display ID %q: %v\", info.ID, err)\n}\n\n// I assume the internal display index is 0. It is already saved.",
+      "range": {
+        "startLine": 59,
+        "startChar": 2,
+        "endLine": 65,
+        "endChar": 3
+      },
+      "revId": "64ac042d858bc1f41de2778d0feb48e7846f784c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
