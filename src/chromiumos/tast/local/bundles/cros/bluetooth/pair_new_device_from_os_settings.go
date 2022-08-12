@@ -7,8 +7,7 @@ package bluetooth
 import (
 	"context"
 
-	"chromiumos/tast/local/bluetooth/bluez"
-	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/bluetooth"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/ossettings"
 	"chromiumos/tast/testing"
@@ -16,23 +15,26 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: PairNewDeviceFromOSSettings,
-		Desc: "Checks that the pairing dialog can be opened from the OS Settings",
+		Func:         PairNewDeviceFromOSSettings,
+		LacrosStatus: testing.LacrosVariantUnneeded,
+		Desc:         "Checks that the pairing dialog can be opened from the OS Settings",
 		Contacts: []string{
 			"chadduffin@chromium.org",
 			"cros-connectivity@google.com",
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
-		Fixture:      "chromeLoggedInWithBluetoothEnabled",
-		LacrosStatus: testing.LacrosVariantUnknown,
+		Params: []testing.Param{{
+			Name:    "floss_disabled",
+			Fixture: "chromeLoggedInWithBluetoothEnabled",
+		}},
 	})
 }
 
 // PairNewDeviceFromOSSettings tests that a user can successfully open the
 // pairing dialog from the "Pair new device" button on the OS Settings page.
 func PairNewDeviceFromOSSettings(ctx context.Context, s *testing.State) {
-	cr := s.FixtValue().(*chrome.Chrome)
+	cr := s.FixtValue().(*bluetooth.ChromeLoggedInWithBluetoothEnabled).Chrome
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
@@ -46,7 +48,9 @@ func PairNewDeviceFromOSSettings(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to launch OS Settings: ", err)
 	}
 
-	if err := bluez.Enable(ctx); err != nil {
+	bt := s.FixtValue().(*bluetooth.ChromeLoggedInWithBluetoothEnabled).Impl
+
+	if err := bt.Enable(ctx); err != nil {
 		s.Fatal("Failed to enable Bluetooth: ", err)
 	}
 

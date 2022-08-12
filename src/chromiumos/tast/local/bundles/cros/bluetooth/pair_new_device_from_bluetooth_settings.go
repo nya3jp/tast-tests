@@ -9,7 +9,7 @@ import (
 	"time"
 
 	"chromiumos/tast/ctxutil"
-	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/bluetooth"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/ossettings"
@@ -18,15 +18,19 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: PairNewDeviceFromBluetoothSettings,
-		Desc: "Checks that the pairing dialog can be opened from the Bluetooth Settings sub-page",
+		Func:         PairNewDeviceFromBluetoothSettings,
+		LacrosStatus: testing.LacrosVariantUnneeded,
+		Desc:         "Checks that the pairing dialog can be opened from the Bluetooth Settings sub-page",
 		Contacts: []string{
 			"chadduffin@chromium.org",
 			"cros-connectivity@google.com",
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
-		Fixture:      "chromeLoggedInWithBluetoothEnabled",
+		Params: []testing.Param{{
+			Name:    "floss_disabled",
+			Fixture: "chromeLoggedInWithBluetoothEnabled",
+		}},
 	})
 }
 
@@ -34,7 +38,7 @@ func init() {
 // the pairing dialog from the "Pair new device" button on the Bluetooth
 // Settings sub-page.
 func PairNewDeviceFromBluetoothSettings(ctx context.Context, s *testing.State) {
-	cr := s.FixtValue().(*chrome.Chrome)
+	cr := s.FixtValue().(*bluetooth.ChromeLoggedInWithBluetoothEnabled).Chrome
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
@@ -46,7 +50,9 @@ func PairNewDeviceFromBluetoothSettings(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
 
-	app, err := ossettings.NavigateToBluetoothSettingsPage(ctx, tconn)
+	bt := s.FixtValue().(*bluetooth.ChromeLoggedInWithBluetoothEnabled).Impl
+
+	app, err := ossettings.NavigateToBluetoothSettingsPage(ctx, tconn, bt)
 	defer app.Close(cleanupCtx)
 
 	defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "ui_tree")

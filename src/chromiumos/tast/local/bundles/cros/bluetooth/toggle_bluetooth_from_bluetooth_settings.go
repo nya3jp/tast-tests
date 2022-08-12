@@ -9,8 +9,7 @@ import (
 	"time"
 
 	"chromiumos/tast/ctxutil"
-	"chromiumos/tast/local/bluetooth/bluez"
-	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/bluetooth"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
@@ -25,7 +24,7 @@ var bluetoothSettingsBluetoothToggleButton = nodewith.NameContaining("Bluetooth"
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ToggleBluetoothFromBluetoothSettings,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Checks that Bluetooth can be enabled and disabled from the Bluetooth Settings sub-page",
 		Contacts: []string{
 			"chadduffin@chromium.org",
@@ -33,7 +32,10 @@ func init() {
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
-		Fixture:      "chromeLoggedInWithBluetoothEnabled",
+		Params: []testing.Param{{
+			Name:    "floss_disabled",
+			Fixture: "chromeLoggedInWithBluetoothEnabled",
+		}},
 	})
 }
 
@@ -41,7 +43,7 @@ func init() {
 // toggle the Bluetooth state using the Bluetooth toggle within the
 // Bluetooth Settings sub-page.
 func ToggleBluetoothFromBluetoothSettings(ctx context.Context, s *testing.State) {
-	cr := s.FixtValue().(*chrome.Chrome)
+	cr := s.FixtValue().(*bluetooth.ChromeLoggedInWithBluetoothEnabled).Chrome
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
@@ -53,7 +55,9 @@ func ToggleBluetoothFromBluetoothSettings(ctx context.Context, s *testing.State)
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
 
-	app, err := ossettings.NavigateToBluetoothSettingsPage(ctx, tconn)
+	bt := s.FixtValue().(*bluetooth.ChromeLoggedInWithBluetoothEnabled).Impl
+
+	app, err := ossettings.NavigateToBluetoothSettingsPage(ctx, tconn, bt)
 	defer app.Close(cleanupCtx)
 
 	defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "ui_tree")
@@ -76,7 +80,7 @@ func ToggleBluetoothFromBluetoothSettings(ctx context.Context, s *testing.State)
 		if err := ui.LeftClick(bluetoothSettingsBluetoothToggleButton)(ctx); err != nil {
 			s.Fatal("Failed to click the Bluetooth toggle: ", err)
 		}
-		if err := bluez.PollForAdapterState(ctx, state); err != nil {
+		if err := bt.PollForAdapterState(ctx, state); err != nil {
 			s.Fatal("Failed to toggle Bluetooth state: ", err)
 		}
 		state = !state
