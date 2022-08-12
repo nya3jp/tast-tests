@@ -12,6 +12,7 @@ import (
 	"path/filepath"
 	"regexp"
 	"strconv"
+	"strings"
 	"time"
 
 	"chromiumos/tast/common/android/ui"
@@ -39,6 +40,7 @@ type arcMediaScanPerfParams struct {
 	waitForVolumeMount   func(ctx context.Context, a *arc.ARC) error
 	waitForVolumeUnmount func(ctx context.Context, a *arc.ARC) error
 	volumeURISuffix      string
+	useSSHFS             bool
 }
 
 func init() {
@@ -54,13 +56,25 @@ func init() {
 		Timeout:      20 * time.Minute,
 		Params: []testing.Param{{
 			Name:              "sdcard_vm",
-			ExtraSoftwareDeps: []string{"android_vm"},
+			ExtraSoftwareDeps: []string{"android_vm", "no_arcvm_virtio_blk_data"},
 			Val: arcMediaScanPerfParams{
 				targetDir:            sdCardTargetDir,
 				volumeID:             arc.SDCardVolumeID,
 				waitForVolumeMount:   arc.WaitForARCSDCardVolumeMount,
 				waitForVolumeUnmount: arc.WaitForARCSDCardVolumeUnmount,
 				volumeURISuffix:      "emulated/0",
+				useSSHFS:             false,
+			},
+		}, {
+			Name:              "sdcard_vm_virtio_blk_data",
+			ExtraSoftwareDeps: []string{"android_vm", "arcvm_virtio_blk_data"},
+			Val: arcMediaScanPerfParams{
+				targetDir:            sdCardTargetDir,
+				volumeID:             arc.SDCardVolumeID,
+				waitForVolumeMount:   arc.WaitForARCSDCardVolumeMount,
+				waitForVolumeUnmount: arc.WaitForARCSDCardVolumeUnmount,
+				volumeURISuffix:      "emulated/0",
+				useSSHFS:             true,
 			},
 		}, {
 			Name:              "myfiles_vm",
@@ -71,6 +85,7 @@ func init() {
 				waitForVolumeMount:   arc.WaitForARCMyFilesVolumeMount,
 				waitForVolumeUnmount: arc.WaitForARCMyFilesVolumeUnmount,
 				volumeURISuffix:      arc.MyFilesUUID,
+				useSSHFS:             false,
 			},
 		}},
 	})
@@ -235,6 +250,72 @@ func startMeasureMediaScanPerfWithApp(ctx context.Context, a *arc.ARC, tconn *ch
 	return act.Close, nil
 }
 
+// getARCVMCID returns the CID of ARCVM.
+func getARCVMCID(ctx context.Context, user string) (int, error) {
+	hash, err := cryptohome.UserHash(ctx, user)
+	if err != nil {
+		return 0, err
+	}
+	out, err := testexec.CommandContext(
+		ctx, "concierge_client", "--get_vm_cid", "--name=arcvm",
+		fmt.Sprintf("--cryptohome_id=%s", hash)).Output(testexec.DumpLogOnError)
+	if err != nil {
+		return 0, err
+	}
+	cid, err := strconv.Atoi(strings.TrimSpace(string(out)))
+	if err != nil {
+		return 0, err
+	}
+	return cid, nil
+}
+
+// mountExternalStorageOnHost mounts the external storage /sdcard/emulated/0 on the host
+// at /home/root/<hash>/android-data/data/media/0 using SSHFS.
+func mountExternalStorageOnHost(ctx context.Context, user string) error {
+	androidDataDir, err := arc.AndroidDataDir(ctx, user)
+	if err != nil {
+		return errors.Wrap(err, "failed to get Android data dir")
+	}
+	cid, err := getARCVMCID(ctx, user)
+	if err != nil {
+		return errors.Wrap(err, "failed to get ARCVM CID")
+	}
+	// On the guest side, arc-sftp-server-launcher starts SFTP server for /storage/emulated/0 at
+	// port 7780 on ARC startup.
+	cmd := testexec.CommandContext(
+		// Use nonempty option since /data/media/0 usually has an empty Download directory.
+		ctx, "sshfs", "-o", fmt.Sprintf("nonempty,vsock=%d:7780", cid), "unused:",
+		filepath.Join(androidDataDir, "/data/media/0"))
+	return cmd.Run(testexec.DumpLogOnError)
+}
+
+// unmountExternalStorageFromHost unmounts the external storage from the host.
+func unmountExternalStorageFromHost(ctx context.Context, user string) error {
+	androidDataDir, err := arc.AndroidDataDir(ctx, user)
+	if err != nil {
+		return errors.Wrap(err, "failed to get Android data dir")
+	}
+	cmd := testexec.CommandContext(ctx, "umount", filepath.Join(androidDataDir, "/data/media/0"))
+	return cmd.Run(testexec.DumpLogOnError)
+}
+
+// maybeWrapWithSSHFSMountAndUnmount wraps a function call with SSHFS mount and unmount only when
+// useSSHFS is true.
+func maybeWrapWithSSHFSMountAndUnmount(ctx context.Context, user string, useSSHFS bool, f func() error) error {
+	if useSSHFS {
+		if err := mountExternalStorageOnHost(ctx, user); err != nil {
+			return errors.Wrap(err, "failed to mount /data/media/0 on host")
+		}
+	}
+	err := f()
+	if useSSHFS {
+		if err := unmountExternalStorageFromHost(ctx, user); err != nil {
+			return errors.Wrap(err, "failed to unmount /data/media/0 from host")
+		}
+	}
+	return err
+}
+
 func MediaScanPerf(ctx context.Context, s *testing.State) {
 	a := s.FixtValue().(*arc.PreData).ARC
 	cr := s.FixtValue().(*arc.PreData).Chrome
@@ -251,10 +332,17 @@ func MediaScanPerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get the path to target: ", err)
 	}
 
-	err = createFileCopiesUnderTargetPath(s, targetDirPath)
+	// In virtio-blk /data enabled devices, Android /data directory is not available from the host
+	// at /home/root/<hash>/android-data/data, so use SSHFS to expose the external storage to the host.
+	err = maybeWrapWithSSHFSMountAndUnmount(ctx, cr.NormalizedUser(), param.useSSHFS, func() error {
+		return createFileCopiesUnderTargetPath(s, targetDirPath)
+	})
 	// Cleanup should be called even if err is returned because some files might have been created.
 	defer func() {
-		if err := os.RemoveAll(targetDirPath); err != nil {
+		err := maybeWrapWithSSHFSMountAndUnmount(ctx, cr.NormalizedUser(), param.useSSHFS, func() error {
+			return os.RemoveAll(targetDirPath)
+		})
+		if err != nil {
 			s.Fatalf("Failed to remove the target directory %v: %v", targetDirPath, err)
 		}
 	}()
