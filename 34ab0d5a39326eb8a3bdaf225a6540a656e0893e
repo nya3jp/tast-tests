@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db246d31_0d4d4d8b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/sshfs_mount.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-08-12T06:11:58Z",
+      "side": 1,
+      "message": "if the timeout is not specified, it uses the timeout for the whole test (~7 mins in this case) for polling. \n\nJust want to check if it is intended.",
+      "range": {
+        "startLine": 82,
+        "startChar": 41,
+        "endLine": 82,
+        "endChar": 44
+      },
+      "revId": "34ab0d5a39326eb8a3bdaf225a6540a656e0893e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
