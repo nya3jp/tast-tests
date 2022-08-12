@@ -275,6 +275,21 @@ func MediaScanPerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to clear MediaStore database: ", err)
 	}
 
+	// "sm unmount" often fails for the enumated volume when the MyFiles volume is
+	// mounted. Unmount the MyFiles volume before unmounting the emulated volume.
+	if param.volumeURISuffix == "emulated/0" {
+		myFilesVolumeID, err := arc.MyFilesVolumeID(ctx, a)
+		if err != nil {
+			s.Fatal("Failed to get MyFiles volume ID: ", err)
+		}
+		if err := unmountDirectory(ctx, a, cr, myFilesVolumeID); err != nil {
+			s.Fatal("Failed to unmount MyFiles volume: ", err)
+		}
+		if err := arc.WaitForARCMyFilesVolumeUnmount(ctx, a); err != nil {
+			s.Fatal("Failed to wait for MyFiles volume to be unmounted: ", err)
+		}
+	}
+
 	volumeID, err := param.volumeID(ctx, a)
 	if err != nil {
 		s.Fatal("Failed to get volume ID: ", err)
