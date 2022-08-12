@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1f6e278_81c7c648",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1426782
+      },
+      "writtenOn": "2022-08-12T06:43:27Z",
+      "side": 1,
+      "message": "This will unblock core 72, but what is the fix plan for this ?",
+      "revId": "3675ace114278b2a4f06c0c6bbc4c783bc6a911e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
