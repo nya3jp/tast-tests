@@ -14,7 +14,6 @@ import (
 	"chromiumos/tast/local/modemfwd"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
-	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -24,12 +23,8 @@ func init() {
 		Contacts:     []string{"andrewlassalle@google.com", "chromeos-cellular-team@google.com"},
 		Attr:         []string{"group:cellular", "cellular_sim_active", "cellular_unstable"},
 		Fixture:      "cellular",
-		SoftwareDeps: []string{"modemfwd"},
+		SoftwareDeps: []string{"modemfwd", "cellular_variant_present"},
 		Timeout:      20 * time.Second,
-		HardwareDeps: hwdep.D(hwdep.SkipOnPlatform(
-			// Skip this test on devices without a firmware-variant value.
-			"drallion", "nautilus", "sarien",
-		)),
 	})
 }
 

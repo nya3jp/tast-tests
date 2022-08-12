@@ -18,7 +18,6 @@ import (
 	"chromiumos/tast/local/modemfwd"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
-	"chromiumos/tast/testing/hwdep"
 	"chromiumos/tast/timing"
 )
 
@@ -29,17 +28,8 @@ func init() {
 		Contacts:     []string{"andrewlassalle@google.com", "chromeos-cellular-team@google.com"},
 		Attr:         []string{"group:cellular", "cellular_sim_active", "cellular_unstable"},
 		Fixture:      "cellular",
-		SoftwareDeps: []string{"modemfwd"},
+		SoftwareDeps: []string{"modemfwd", "cellular_modem_dlcs_present"},
 		Timeout:      1 * time.Minute,
-		HardwareDeps: hwdep.D(hwdep.SkipOnPlatform(
-			// List of existing cellular boards in which we never want to run this test.
-			"coral", "dedede", "drallion", "hatch", "nautilus", "octopus", "sarien", "zork",
-			// Disable on brya until b/231903139 is fixed.
-			"brya",
-			// List of boards which have their FW in DLCs, but no longer have them in the rootfs.
-			// When the FWs are removed from the rootfs, add that board to the list to skip this test.
-			// "guybrush"
-		)),
 	})
 }
 
