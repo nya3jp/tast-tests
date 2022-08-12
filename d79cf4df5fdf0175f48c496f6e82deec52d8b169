@@ -69,6 +69,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1841d0c1_e92f6dfb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-08-12T11:45:02Z",
+      "side": 1,
+      "message": "Added hwdep.X86() to ensure that this test is executed only on Intel boards.",
+      "parentUuid": "c7505211_2738c6b6",
+      "revId": "d79cf4df5fdf0175f48c496f6e82deec52d8b169",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4dfe6eeb_db5d9f3a",
@@ -82,6 +100,24 @@
       "writtenOn": "2022-08-09T20:35:59Z",
       "side": 1,
       "message": "Thanks for the CL!\n\nI have a few concerns:\n\n1) Is `https://www.youtube.com/watch?v\u003dLXb3EKWsInQ` guaranteed to remain VP9?\n\n2) What class of bugs do you expect this test to catch that are not caught by existing tests? For example, there\u0027s already `video.Play.vp9`.\n\nAlso adding ihf@ for possible additional feedback.",
+      "revId": "d79cf4df5fdf0175f48c496f6e82deec52d8b169",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2b08e90_4855262e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/vp9_video_decoder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-08-12T11:45:02Z",
+      "side": 1,
+      "message": "Here, we are playing 4K youtube video by setting video to 4K resolution and validating codecs along with resolution through \u0027Stats for nerds\u0027. In default script they are playing vp9 local video and checking H/W codecs with devtools helpers.",
+      "parentUuid": "4dfe6eeb_db5d9f3a",
       "revId": "d79cf4df5fdf0175f48c496f6e82deec52d8b169",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
