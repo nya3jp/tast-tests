@@ -22,6 +22,30 @@
       },
       "revId": "bb9f82fe3d2cd40797d3b90b9c6070dc64db503c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "53bf2273_ed68c4d0",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 666,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-08-12T01:22:20Z",
+      "side": 1,
+      "message": "Oh my bad I forgot to re-adjust that now that they are separated. The router one needs to be long enough for all routers to reboot, which could add up if there is more than one router. I\u0027ve updated timeouts as needed.",
+      "parentUuid": "49a82f50_2c034894",
+      "range": {
+        "startLine": 666,
+        "startChar": 41,
+        "endLine": 666,
+        "endChar": 43
+      },
+      "revId": "bb9f82fe3d2cd40797d3b90b9c6070dc64db503c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
