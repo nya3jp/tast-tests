@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f8d2363_2eda75ea",
+        "filename": "src/chromiumos/tast/remote/cellular/callbox/iperf/callbox_client.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1541462
+      },
+      "writtenOn": "2022-08-12T21:56:40Z",
+      "side": 1,
+      "message": "Renamed to CallboxIperfClient to help differentiate.",
+      "parentUuid": "4151d2f2_7acb5eac",
+      "range": {
+        "startLine": 19,
+        "startChar": 5,
+        "endLine": 19,
+        "endChar": 18
+      },
+      "revId": "cfb176ebbfcec58666f573f069198490681ef50f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e05f0ab0_4f278602",
@@ -54,6 +78,24 @@
       "writtenOn": "2022-08-11T17:16:06Z",
       "side": 1,
       "message": "any reason not to calculate the duration from endTime - the start time instead of reconstructing it here?",
+      "revId": "cfb176ebbfcec58666f573f069198490681ef50f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c3e30e0_bd5ab2a8",
+        "filename": "src/chromiumos/tast/remote/cellular/callbox/iperf/callbox_client.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1541462
+      },
+      "writtenOn": "2022-08-12T21:56:40Z",
+      "side": 1,
+      "message": "`endTime - startTime` would give the duration of the polling, which is different from the test time (the polling includes an additional margin). Each sample from the callbox API is the throughput averaged over the previous 1 second interval. \n\nThis should always be the same as the `config.TestTime` though, I\u0027ll add a check to enforce that and use that value instead.",
+      "parentUuid": "e05f0ab0_4f278602",
       "revId": "cfb176ebbfcec58666f573f069198490681ef50f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -75,6 +117,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5939dfe_00fd5f2c",
+        "filename": "src/chromiumos/tast/remote/cellular/callbox/iperf/callbox_client.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1541462
+      },
+      "writtenOn": "2022-08-12T21:56:40Z",
+      "side": 1,
+      "message": "The throughput returned by the callbox API is already in bit/s this is just an average of the samples taken. I renamed the variable to `averageThroughput`for clarity.",
+      "parentUuid": "59adb240_618af1bd",
+      "revId": "cfb176ebbfcec58666f573f069198490681ef50f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "81c1680d_4086897a",
@@ -88,6 +148,24 @@
       "writtenOn": "2022-08-11T17:16:06Z",
       "side": 1,
       "message": "if you want each one to take at most `commandTimeoutMargin` then making two separate contexts is fine here, otherwise you might end up with a case where one takes a long time to complete and the other is unnecessarily canceled anyway",
+      "revId": "cfb176ebbfcec58666f573f069198490681ef50f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc6e2d74_ec8b3abd",
+        "filename": "src/chromiumos/tast/remote/cellular/callbox/iperf/callbox_server.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1541462
+      },
+      "writtenOn": "2022-08-12T21:56:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "81c1680d_4086897a",
       "revId": "cfb176ebbfcec58666f573f069198490681ef50f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -117,6 +195,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "02efd396_d6d6672d",
+        "filename": "src/chromiumos/tast/remote/cellular/callbox/iperf/test_manager.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1541462
+      },
+      "writtenOn": "2022-08-12T21:56:40Z",
+      "side": 1,
+      "message": "The lines where the `cfg` and `server` are constructed are also different. The line where `session` is created could be pulled out but would end up requiring more code overall to do it.",
+      "parentUuid": "2c4cb21a_4f05bdf8",
+      "range": {
+        "startLine": 129,
+        "startChar": 0,
+        "endLine": 158,
+        "endChar": 2
+      },
+      "revId": "cfb176ebbfcec58666f573f069198490681ef50f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d4326659_a5927f5a",
         "filename": "src/chromiumos/tast/remote/cellular/callbox/manager/client.go",
         "patchSetId": 17
@@ -128,6 +230,30 @@
       "writtenOn": "2022-08-11T17:16:06Z",
       "side": 1,
       "message": "Do we need to escape quotes in the JSON here, or is that already done for us?",
+      "range": {
+        "startLine": 88,
+        "startChar": 69,
+        "endLine": 88,
+        "endChar": 71
+      },
+      "revId": "cfb176ebbfcec58666f573f069198490681ef50f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd0923d7_32611fb5",
+        "filename": "src/chromiumos/tast/remote/cellular/callbox/manager/client.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1541462
+      },
+      "writtenOn": "2022-08-12T21:56:40Z",
+      "side": 1,
+      "message": "The JSON itself is already escaped. This is just logging the exact request used, I\u0027ll add the request into the error message rather logging it separately.",
+      "parentUuid": "d4326659_a5927f5a",
       "range": {
         "startLine": 88,
         "startChar": 69,
