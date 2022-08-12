@@ -73,7 +73,9 @@ func init() {
 			// Skip on tablet only models.
 			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(testutil.TabletOnlyModels...)),
 			Pre:               pre.AppCompatBootedUsingTestAccountPool,
-		}, {
+		},
+		/* Disabled due to <1% pass rate over 30 days. See b/241944094
+		{
 			Name: "vm_tablet_mode",
 			Val: testutil.TestParams{
 				LaunchTests: touchviewLaunchForKhanacademyKids,
@@ -84,7 +86,9 @@ func init() {
 			// Skip on clamshell only models.
 			ExtraHardwareDeps: hwdep.D(hwdep.TouchScreen(), hwdep.SkipOnModel(testutil.ClamshellOnlyModels...)),
 			Pre:               pre.AppCompatBootedInTabletModeUsingTestAccountPool,
-		}},
+		}
+		*/
+		},
 		Timeout: 20 * time.Minute,
 		Vars:    []string{"arcappcompat.gaiaPoolDefault"},
 		VarDeps: []string{"arcappcompat.KhanacademyKids.emailid", "arcappcompat.KhanacademyKids.password"},

@@ -37,7 +37,9 @@ func init() {
 		Attr:         []string{"group:appcompat"},
 		SoftwareDeps: []string{"chrome"},
 		HardwareDeps: hwdep.D(hwdep.SkipOnModel("careena")),
-		Params: []testing.Param{{
+		Params: []testing.Param{
+		/* Disabled due to <1% pass rate over 30 days. See b/241944094
+		{
 			Name: "clamshell_mode",
 			Val: testutil.TestParams{
 				LaunchTests: clamshellLaunchForMyscriptNebo,
@@ -48,7 +50,10 @@ func init() {
 			// Skip on tablet only models.
 			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(testutil.TabletOnlyModels...)),
 			Pre:               pre.AppCompatBootedForMyscriptNebo,
-		}, {
+		},
+		*/
+		/* Disabled due to <1% pass rate over 30 days. See b/241944094
+		{
 			Name: "tablet_mode",
 			Val: testutil.TestParams{
 				LaunchTests: touchviewLaunchForMyscriptNebo,
@@ -59,7 +64,10 @@ func init() {
 			// Skip on clamshell only models.
 			ExtraHardwareDeps: hwdep.D(hwdep.TouchScreen(), hwdep.SkipOnModel(testutil.ClamshellOnlyModels...)),
 			Pre:               pre.AppCompatBootedInTabletModeForMyscriptNebo,
-		}, {
+		},
+		*/
+		/* Disabled due to <1% pass rate over 30 days. See b/241944094
+		{
 			Name: "vm_clamshell_mode",
 			Val: testutil.TestParams{
 				LaunchTests: clamshellLaunchForMyscriptNebo,
@@ -70,7 +78,10 @@ func init() {
 			// Skip on tablet only models.
 			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(testutil.TabletOnlyModels...)),
 			Pre:               pre.AppCompatBootedForMyscriptNebo,
-		}, {
+		},
+		*/
+		/* Disabled due to <1% pass rate over 30 days. See b/241944094
+		{
 			Name: "vm_tablet_mode",
 			Val: testutil.TestParams{
 				LaunchTests: touchviewLaunchForMyscriptNebo,
@@ -81,7 +92,9 @@ func init() {
 			// Skip on clamshell only models.
 			ExtraHardwareDeps: hwdep.D(hwdep.TouchScreen(), hwdep.SkipOnModel(testutil.ClamshellOnlyModels...)),
 			Pre:               pre.AppCompatBootedInTabletModeForMyscriptNebo,
-		}},
+		}
+		*/
+		},
 		Timeout: 10 * time.Minute,
 		VarDeps: []string{"arcappcompat.MyscriptNebo.username", "arcappcompat.MyscriptNebo.password"},
 	})

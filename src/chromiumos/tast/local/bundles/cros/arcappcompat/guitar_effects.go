@@ -58,7 +58,9 @@ func init() {
 			// Skip on clamshell only models.
 			ExtraHardwareDeps: hwdep.D(hwdep.TouchScreen(), hwdep.SkipOnModel(testutil.ClamshellOnlyModels...)),
 			Pre:               pre.AppCompatBootedInTabletModeUsingTestAccountPool,
-		}, {
+		},
+		/* Disabled due to <1% pass rate over 30 days. See b/241944094
+		{
 			Name: "vm_clamshell_mode",
 			Val: testutil.TestParams{
 				LaunchTests: clamshellLaunchForGuitarEffects,
@@ -69,7 +71,10 @@ func init() {
 			// Skip on tablet only models.
 			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(testutil.TabletOnlyModels...)),
 			Pre:               pre.AppCompatBootedUsingTestAccountPool,
-		}, {
+		},
+		*/
+		/* Disabled due to <1% pass rate over 30 days. See b/241944094
+		{
 			Name: "vm_tablet_mode",
 			Val: testutil.TestParams{
 				LaunchTests: touchviewLaunchForGuitarEffects,
@@ -80,7 +85,9 @@ func init() {
 			// Skip on clamshell only models.
 			ExtraHardwareDeps: hwdep.D(hwdep.TouchScreen(), hwdep.SkipOnModel(testutil.ClamshellOnlyModels...)),
 			Pre:               pre.AppCompatBootedInTabletModeUsingTestAccountPool,
-		}},
+		}
+		*/
+		},
 		Timeout: 10 * time.Minute,
 		Vars:    []string{"arcappcompat.gaiaPoolDefault"},
 	})

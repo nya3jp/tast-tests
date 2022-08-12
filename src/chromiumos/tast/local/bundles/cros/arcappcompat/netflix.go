@@ -50,7 +50,9 @@ func init() {
 		// TODO(b/186611037): Add Netflix to "appcompat_smoke" suite once the issue mentioned in the comment #5 is resolved.
 		Attr:         []string{"group:appcompat", "appcompat_top_apps"},
 		SoftwareDeps: []string{"chrome"},
-		Params: []testing.Param{{
+		Params: []testing.Param{
+		/* Disabled due to <1% pass rate over 30 days. See b/241944094
+		{
 			Name: "clamshell_mode",
 			Val: testutil.TestParams{
 				LaunchTests:      clamshellLaunchForNetflix,
@@ -62,7 +64,10 @@ func init() {
 			// Skip on tablet only models.
 			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(testutil.TabletOnlyModels...)),
 			Pre:               pre.AppCompatBootedUsingTestAccountPool,
-		}, {
+		},
+		*/
+		/* Disabled due to <1% pass rate over 30 days. See b/241944094
+		{
 			Name: "tablet_mode",
 			Val: testutil.TestParams{
 				LaunchTests:      touchviewLaunchForNetflix,
@@ -74,7 +79,10 @@ func init() {
 			// Skip on clamshell only models.
 			ExtraHardwareDeps: hwdep.D(hwdep.TouchScreen(), hwdep.SkipOnModel(testutil.ClamshellOnlyModels...)),
 			Pre:               pre.AppCompatBootedInTabletModeUsingTestAccountPool,
-		}, {
+		},
+		*/
+		/* Disabled due to <1% pass rate over 30 days. See b/241944094
+		{
 			Name: "vm_clamshell_mode",
 			Val: testutil.TestParams{
 				LaunchTests:      clamshellLaunchForNetflix,
@@ -86,7 +94,10 @@ func init() {
 			// Skip on tablet only models.
 			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(testutil.TabletOnlyModels...)),
 			Pre:               pre.AppCompatBootedUsingTestAccountPool,
-		}, {
+		},
+		*/
+		/* Disabled due to <1% pass rate over 30 days. See b/241944094
+		{
 			Name: "vm_tablet_mode",
 			Val: testutil.TestParams{
 				LaunchTests:      touchviewLaunchForNetflix,
@@ -98,7 +109,9 @@ func init() {
 			// Skip on clamshell only models.
 			ExtraHardwareDeps: hwdep.D(hwdep.TouchScreen(), hwdep.SkipOnModel(testutil.ClamshellOnlyModels...)),
 			Pre:               pre.AppCompatBootedInTabletModeUsingTestAccountPool,
-		}},
+		}
+		*/
+		},
 		Timeout: 20 * time.Minute,
 		Vars:    []string{"arcappcompat.gaiaPoolDefault"},
 		VarDeps: []string{"arcappcompat.Netflix.emailid", "arcappcompat.Netflix.password"},

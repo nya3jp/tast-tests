@@ -36,7 +36,9 @@ func init() {
 		Contacts:     []string{"mthiyagarajan@chromium.org", "cros-appcompat-test-team@google.com"},
 		Attr:         []string{"group:appcompat"},
 		SoftwareDeps: []string{"chrome"},
-		Params: []testing.Param{{
+		Params: []testing.Param{
+		/* Disabled due to <1% pass rate over 30 days. See b/241944094
+		{
 			Name: "clamshell_mode",
 			Val: testutil.TestParams{
 				LaunchTests: clamshellLaunchForDropbox,
@@ -47,7 +49,9 @@ func init() {
 			// Skip on tablet only models.
 			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(testutil.TabletOnlyModels...)),
 			Pre:               pre.AppCompatBootedUsingTestAccountPool,
-		}, {
+		},
+		*/
+		{
 			Name: "tablet_mode",
 			Val: testutil.TestParams{
 				LaunchTests: touchviewLaunchForDropbox,
