@@ -34,7 +34,7 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Functional test for GooglePhotos that installs the app also verifies it is logged in and that the main page is open, checks GooglePhotos correctly changes the window state in both clamshell and touchview mode",
 		Contacts:     []string{"mthiyagarajan@chromium.org", "cros-appcompat-test-team@google.com"},
-		Attr:         []string{"group:appcompat", "appcompat_top_apps"},
+		Attr:         []string{"group:appcompat"},
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{
 			Name: "clamshell_mode_default",
@@ -133,44 +133,48 @@ func init() {
 			ExtraHardwareDeps: hwdep.D(hwdep.TouchScreen(), hwdep.SkipOnModel(testutil.ClamshellOnlyModels...)),
 			Pre:               pre.AppCompatBootedInTabletModeUsingTestAccountPool,
 		}, {
-			Name: "clamshell_mode",
+			Name: "clamshell_mode_top_apps",
 			Val: testutil.TestParams{
-				LaunchTests:  clamshellLaunchForGooglePhotos,
-				ReleaseTests: testutil.ClamshellSmokeTests,
+				LaunchTests: clamshellLaunchForGooglePhotos,
+				TopAppTests: testutil.ClamshellTopAppTests,
 			},
+			ExtraAttr:         []string{"appcompat_top_apps"},
 			ExtraSoftwareDeps: []string{"android_p"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
 			// Skip on tablet only models.
 			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(testutil.TabletOnlyModels...)),
 			Pre:               pre.AppCompatBootedUsingTestAccountPool,
 		}, {
-			Name: "tablet_mode",
+			Name: "tablet_mode_top_apps",
 			Val: testutil.TestParams{
-				LaunchTests:  touchviewLaunchForGooglePhotos,
-				ReleaseTests: testutil.TouchviewSmokeTests,
+				LaunchTests: touchviewLaunchForGooglePhotos,
+				TopAppTests: testutil.TouchviewTopAppTests,
 			},
+			ExtraAttr:         []string{"appcompat_top_apps"},
 			ExtraSoftwareDeps: []string{"android_p"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
 			// Skip on clamshell only models.
 			ExtraHardwareDeps: hwdep.D(hwdep.TouchScreen(), hwdep.SkipOnModel(testutil.ClamshellOnlyModels...)),
 			Pre:               pre.AppCompatBootedInTabletModeUsingTestAccountPool,
 		}, {
-			Name: "vm_clamshell_mode",
+			Name: "vm_clamshell_mode_top_apps",
 			Val: testutil.TestParams{
-				LaunchTests:  clamshellLaunchForGooglePhotos,
-				ReleaseTests: testutil.ClamshellSmokeTests,
+				LaunchTests: clamshellLaunchForGooglePhotos,
+				TopAppTests: testutil.ClamshellTopAppTests,
 			},
+			ExtraAttr:         []string{"appcompat_top_apps"},
 			ExtraSoftwareDeps: []string{"android_vm"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
 			// Skip on tablet only models.
 			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(testutil.TabletOnlyModels...)),
 			Pre:               pre.AppCompatBootedInTabletModeUsingTestAccountPool,
 		}, {
-			Name: "vm_tablet_mode",
+			Name: "vm_tablet_mode_top_apps",
 			Val: testutil.TestParams{
-				LaunchTests:  touchviewLaunchForGooglePhotos,
-				ReleaseTests: testutil.TouchviewSmokeTests,
+				LaunchTests: touchviewLaunchForGooglePhotos,
+				TopAppTests: testutil.TouchviewTopAppTests,
 			},
+			ExtraAttr:         []string{"appcompat_top_apps"},
 			ExtraSoftwareDeps: []string{"android_vm"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
 			// Skip on clamshell only models.
