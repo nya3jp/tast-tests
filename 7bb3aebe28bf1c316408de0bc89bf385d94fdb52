@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "76974588_3751790c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-08-12T01:30:21Z",
+      "side": 1,
+      "message": "Hi,\n\ndo I understand correctly that crashes that used to go to /home/chronos/user/crash now go to somewhere else?\n\ntast/local/crash/crash.go still contains the following code and comments:\n\n[...]\n\t// UserCrashDir is the directory where crash reports of currently logged in user go.\n\tUserCrashDir \u003d \"/home/chronos/user/crash\"\n\n[...]\n// DefaultDirs returns all standard directories to which crashes are written.\nfunc DefaultDirs() []string {\n    return []string{SystemCrashDir, LocalCrashDir, UserCrashDir}\n}\n\nThere are tests that use these exports but will no longer find crashes there (e.g. lacros.Basic). Am I missing something?\n\nThanks!",
+      "revId": "7bb3aebe28bf1c316408de0bc89bf385d94fdb52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
