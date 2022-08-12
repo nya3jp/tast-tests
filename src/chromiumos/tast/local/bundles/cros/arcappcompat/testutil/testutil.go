@@ -63,6 +63,7 @@ type TestParams struct {
 	LaunchTests      []TestCase
 	CommonTests      []TestCase
 	ReleaseTests     []TestCase
+	TopAppTests      []TestCase
 	AppSpecificTests []TestCase
 }
 
@@ -107,6 +108,21 @@ var ClamshellReleaseTests = []TestCase{
 
 // TouchviewReleaseTests is a list of touchview tests common to apps in appcompat_release suite.
 var TouchviewReleaseTests = []TestCase{
+	{Name: "Touchview: Minimise and Restore", Fn: MinimizeRestoreApp},
+	{Name: "Touchview: Reopen app", Fn: ReOpenWindow},
+}
+
+// ClamshellTopAppTests is a list of clamshell tests common to apps in appcompat_top_apps suite.
+var ClamshellTopAppTests = []TestCase{
+	{Name: "Clamshell: Fullscreen app", Fn: ClamshellFullscreenApp},
+	{Name: "Clamshell: Minimise and Restore", Fn: MinimizeRestoreApp},
+	{Name: "Clamshell: Resize window", Fn: ClamshellResizeWindow},
+	{Name: "Clamshell: Reopen app", Fn: ReOpenWindow},
+}
+
+// TouchviewTopAppTests is a list of touchview tests common to apps in appcompat_top_apps suite.
+var TouchviewTopAppTests = []TestCase{
+	{Name: "Touchview: Rotate", Fn: TouchviewRotate},
 	{Name: "Touchview: Minimise and Restore", Fn: MinimizeRestoreApp},
 	{Name: "Touchview: Reopen app", Fn: ReOpenWindow},
 }
