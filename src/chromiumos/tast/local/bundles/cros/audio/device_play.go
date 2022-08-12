@@ -23,7 +23,7 @@ func init() {
 		// TODO(b/240269271): remove "octopus" and "hatch" when b/240269271 is fixed.
 		// TODO(b/240271671): remove "nocturne" when b/240271671 is fixed.
 		HardwareDeps: hwdep.D(hwdep.Speaker(), hwdep.SkipOnModel("octopus", "hatch", "nocturne")),
-		Attr:         []string{"group:mainline"},
+		Attr:         []string{"group:mainline", "informational"},
 	})
 }
 
