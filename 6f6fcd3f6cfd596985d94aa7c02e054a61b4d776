@@ -16,6 +16,24 @@
       "message": "Is it same as clamshell_mode? Why do you need 2?",
       "revId": "6f6fcd3f6cfd596985d94aa7c02e054a61b4d776",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9550dae7_568db2d1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/google_duo.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2022-08-12T22:55:52Z",
+      "side": 1,
+      "message": "This is different from \"clamshell_mode\". \"clamshell_mode\" runs different set of test cases and \"clamshell_mode_smoke\" runs another different set of test cases.",
+      "parentUuid": "d555e7af_8aa12b35",
+      "revId": "6f6fcd3f6cfd596985d94aa7c02e054a61b4d776",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
