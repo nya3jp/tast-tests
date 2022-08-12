@@ -71,7 +71,9 @@ func init() {
 			// Skip on tablet only models.
 			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(testutil.TabletOnlyModels...), hwdep.SkipOnModel(gruntBoardOnly...)),
 			Pre:               pre.AppCompatBooted,
-		}, {
+		},
+		/* Disabled due to <1% pass rate over 30 days. See b/241944094
+		{
 			Name: "vm_tablet_mode",
 			Val: testutil.TestParams{
 				LaunchTests: touchviewLaunchForTiktok,
@@ -82,7 +84,9 @@ func init() {
 			// Skip on clamshell only models.
 			ExtraHardwareDeps: hwdep.D(hwdep.TouchScreen(), hwdep.SkipOnModel(testutil.ClamshellOnlyModels...)),
 			Pre:               pre.AppCompatBootedInTabletMode,
-		}},
+		}
+		*/
+		},
 		Timeout: 10 * time.Minute,
 		VarDeps: []string{"arcappcompat.username", "arcappcompat.password"},
 	})

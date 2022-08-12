@@ -36,51 +36,61 @@ func init() {
 		Contacts:     []string{"mthiyagarajan@chromium.org", "cros-appcompat-test-team@google.com"},
 		Attr:         []string{"group:appcompat"},
 		SoftwareDeps: []string{"chrome"},
-		Params: []testing.Param{{
-			Name: "clamshell_mode",
-			Val: testutil.TestParams{
-				LaunchTests: clamshellLaunchForPhotolemur,
-				CommonTests: testutil.ClamshellCommonTests,
+		Params: []testing.Param{
+			/* Disabled due to <1% pass rate over 30 days. See b/241944094
+			{
+				Name: "clamshell_mode",
+				Val: testutil.TestParams{
+					LaunchTests: clamshellLaunchForPhotolemur,
+					CommonTests: testutil.ClamshellCommonTests,
+				},
+				ExtraSoftwareDeps: []string{"android_p", "no_arc_x86", "lacros"},
+				// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
+				// Skip on tablet only models.
+				ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(testutil.TabletOnlyModels...)),
+				Pre:               pre.AppCompatBootedForPhotolemur,
 			},
-			ExtraSoftwareDeps: []string{"android_p", "no_arc_x86", "lacros"},
-			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
-			// Skip on tablet only models.
-			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(testutil.TabletOnlyModels...)),
-			Pre:               pre.AppCompatBootedForPhotolemur,
-		}, {
-			Name: "tablet_mode",
-			Val: testutil.TestParams{
-				LaunchTests: touchviewLaunchForPhotolemur,
-				CommonTests: testutil.TouchviewCommonTests,
+			*/
+			/* Disabled due to <1% pass rate over 30 days. See b/241944094
+			{
+				Name: "tablet_mode",
+				Val: testutil.TestParams{
+					LaunchTests: touchviewLaunchForPhotolemur,
+					CommonTests: testutil.TouchviewCommonTests,
+				},
+				ExtraSoftwareDeps: []string{"android_p", "no_arc_x86", "lacros"},
+				// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
+				// Skip on clamshell only models.
+				ExtraHardwareDeps: hwdep.D(hwdep.TouchScreen(), hwdep.SkipOnModel(testutil.ClamshellOnlyModels...)),
+				Pre:               pre.AppCompatBootedInTabletModeForPhotolemur,
 			},
-			ExtraSoftwareDeps: []string{"android_p", "no_arc_x86", "lacros"},
-			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
-			// Skip on clamshell only models.
-			ExtraHardwareDeps: hwdep.D(hwdep.TouchScreen(), hwdep.SkipOnModel(testutil.ClamshellOnlyModels...)),
-			Pre:               pre.AppCompatBootedInTabletModeForPhotolemur,
-		}, {
-			Name: "vm_clamshell_mode",
-			Val: testutil.TestParams{
-				LaunchTests: clamshellLaunchForPhotolemur,
-				CommonTests: testutil.ClamshellCommonTests,
+			*/
+			/* Disabled due to <1% pass rate over 30 days. See b/241944094
+			{
+				Name: "vm_clamshell_mode",
+				Val: testutil.TestParams{
+					LaunchTests: clamshellLaunchForPhotolemur,
+					CommonTests: testutil.ClamshellCommonTests,
+				},
+				ExtraSoftwareDeps: []string{"android_vm", "no_arc_x86", "lacros"},
+				// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
+				// Skip on tablet only models.
+				ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(testutil.TabletOnlyModels...)),
+				Pre:               pre.AppCompatBootedForPhotolemur,
 			},
-			ExtraSoftwareDeps: []string{"android_vm", "no_arc_x86", "lacros"},
-			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
-			// Skip on tablet only models.
-			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(testutil.TabletOnlyModels...)),
-			Pre:               pre.AppCompatBootedForPhotolemur,
-		}, {
-			Name: "vm_tablet_mode",
-			Val: testutil.TestParams{
-				LaunchTests: touchviewLaunchForPhotolemur,
-				CommonTests: testutil.TouchviewCommonTests,
-			},
-			ExtraSoftwareDeps: []string{"android_vm", "no_arc_x86", "lacros"},
-			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
-			// Skip on clamshell only models.
-			ExtraHardwareDeps: hwdep.D(hwdep.TouchScreen(), hwdep.SkipOnModel(testutil.ClamshellOnlyModels...)),
-			Pre:               pre.AppCompatBootedInTabletModeForPhotolemur,
-		}},
+			*/
+			{
+				Name: "vm_tablet_mode",
+				Val: testutil.TestParams{
+					LaunchTests: touchviewLaunchForPhotolemur,
+					CommonTests: testutil.TouchviewCommonTests,
+				},
+				ExtraSoftwareDeps: []string{"android_vm", "no_arc_x86", "lacros"},
+				// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
+				// Skip on clamshell only models.
+				ExtraHardwareDeps: hwdep.D(hwdep.TouchScreen(), hwdep.SkipOnModel(testutil.ClamshellOnlyModels...)),
+				Pre:               pre.AppCompatBootedInTabletModeForPhotolemur,
+			}},
 		Timeout: 10 * time.Minute,
 		VarDeps: []string{"arcappcompat.Photolemur.username", "arcappcompat.Photolemur.password"},
 	})

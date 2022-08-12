@@ -11,7 +11,6 @@ import (
 
 	"chromiumos/tast/common/android/ui"
 	"chromiumos/tast/local/arc"
-	"chromiumos/tast/local/bundles/cros/arcappcompat/pre"
 	"chromiumos/tast/local/bundles/cros/arcappcompat/testutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
@@ -37,51 +36,64 @@ func init() {
 		Attr:         []string{"group:appcompat"},
 		SoftwareDeps: []string{"chrome"},
 		HardwareDeps: hwdep.D(hwdep.SkipOnModel("careena")),
-		Params: []testing.Param{{
-			Name: "clamshell_mode",
-			Val: testutil.TestParams{
-				LaunchTests: clamshellLaunchForMyscriptNebo,
-				CommonTests: testutil.ClamshellCommonTests,
+		Params:       []testing.Param{
+			/* Disabled due to <1% pass rate over 30 days. See b/241944094
+			{
+				Name: "clamshell_mode",
+				Val: testutil.TestParams{
+					LaunchTests: clamshellLaunchForMyscriptNebo,
+					CommonTests: testutil.ClamshellCommonTests,
+				},
+				ExtraSoftwareDeps: []string{"android_p"},
+				// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
+				// Skip on tablet only models.
+				ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(testutil.TabletOnlyModels...)),
+				Pre:               pre.AppCompatBootedForMyscriptNebo,
 			},
-			ExtraSoftwareDeps: []string{"android_p"},
-			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
-			// Skip on tablet only models.
-			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(testutil.TabletOnlyModels...)),
-			Pre:               pre.AppCompatBootedForMyscriptNebo,
-		}, {
-			Name: "tablet_mode",
-			Val: testutil.TestParams{
-				LaunchTests: touchviewLaunchForMyscriptNebo,
-				CommonTests: testutil.TouchviewCommonTests,
+			*/
+			/* Disabled due to <1% pass rate over 30 days. See b/241944094
+			{
+				Name: "tablet_mode",
+				Val: testutil.TestParams{
+					LaunchTests: touchviewLaunchForMyscriptNebo,
+					CommonTests: testutil.TouchviewCommonTests,
+				},
+				ExtraSoftwareDeps: []string{"android_p"},
+				// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
+				// Skip on clamshell only models.
+				ExtraHardwareDeps: hwdep.D(hwdep.TouchScreen(), hwdep.SkipOnModel(testutil.ClamshellOnlyModels...)),
+				Pre:               pre.AppCompatBootedInTabletModeForMyscriptNebo,
 			},
-			ExtraSoftwareDeps: []string{"android_p"},
-			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
-			// Skip on clamshell only models.
-			ExtraHardwareDeps: hwdep.D(hwdep.TouchScreen(), hwdep.SkipOnModel(testutil.ClamshellOnlyModels...)),
-			Pre:               pre.AppCompatBootedInTabletModeForMyscriptNebo,
-		}, {
-			Name: "vm_clamshell_mode",
-			Val: testutil.TestParams{
-				LaunchTests: clamshellLaunchForMyscriptNebo,
-				CommonTests: testutil.ClamshellCommonTests,
+			*/
+			/* Disabled due to <1% pass rate over 30 days. See b/241944094
+			{
+				Name: "vm_clamshell_mode",
+				Val: testutil.TestParams{
+					LaunchTests: clamshellLaunchForMyscriptNebo,
+					CommonTests: testutil.ClamshellCommonTests,
+				},
+				ExtraSoftwareDeps: []string{"android_vm"},
+				// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
+				// Skip on tablet only models.
+				ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(testutil.TabletOnlyModels...)),
+				Pre:               pre.AppCompatBootedForMyscriptNebo,
 			},
-			ExtraSoftwareDeps: []string{"android_vm"},
-			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
-			// Skip on tablet only models.
-			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(testutil.TabletOnlyModels...)),
-			Pre:               pre.AppCompatBootedForMyscriptNebo,
-		}, {
-			Name: "vm_tablet_mode",
-			Val: testutil.TestParams{
-				LaunchTests: touchviewLaunchForMyscriptNebo,
-				CommonTests: testutil.TouchviewCommonTests,
-			},
-			ExtraSoftwareDeps: []string{"android_vm"},
-			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
-			// Skip on clamshell only models.
-			ExtraHardwareDeps: hwdep.D(hwdep.TouchScreen(), hwdep.SkipOnModel(testutil.ClamshellOnlyModels...)),
-			Pre:               pre.AppCompatBootedInTabletModeForMyscriptNebo,
-		}},
+			*/
+			/* Disabled due to <1% pass rate over 30 days. See b/241944094
+			{
+				Name: "vm_tablet_mode",
+				Val: testutil.TestParams{
+					LaunchTests: touchviewLaunchForMyscriptNebo,
+					CommonTests: testutil.TouchviewCommonTests,
+				},
+				ExtraSoftwareDeps: []string{"android_vm"},
+				// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
+				// Skip on clamshell only models.
+				ExtraHardwareDeps: hwdep.D(hwdep.TouchScreen(), hwdep.SkipOnModel(testutil.ClamshellOnlyModels...)),
+				Pre:               pre.AppCompatBootedInTabletModeForMyscriptNebo,
+			}
+			*/
+		},
 		Timeout: 10 * time.Minute,
 		VarDeps: []string{"arcappcompat.MyscriptNebo.username", "arcappcompat.MyscriptNebo.password"},
 	})

@@ -12,12 +12,10 @@ import (
 	"chromiumos/tast/common/android/ui"
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/local/arc"
-	"chromiumos/tast/local/bundles/cros/arcappcompat/pre"
 	"chromiumos/tast/local/bundles/cros/arcappcompat/testutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/testing"
-	"chromiumos/tast/testing/hwdep"
 )
 
 // clamshellLaunchForHulu launches Hulu in clamshell mode.
@@ -50,55 +48,68 @@ func init() {
 		Contacts:     []string{"mthiyagarajan@chromium.org", "cros-appcompat-test-team@google.com"},
 		Attr:         []string{"group:appcompat", "appcompat_top_apps"},
 		SoftwareDeps: []string{"chrome"},
-		Params: []testing.Param{{
-			Name: "clamshell_mode",
-			Val: testutil.TestParams{
-				LaunchTests:      clamshellLaunchForHulu,
-				CommonTests:      testutil.ClamshellCommonTests,
-				AppSpecificTests: clamshellAppSpecificTestsForHulu,
+		Params:       []testing.Param{
+			/* Disabled due to <1% pass rate over 30 days. See b/241944094
+			{
+				Name: "clamshell_mode",
+				Val: testutil.TestParams{
+					LaunchTests:      clamshellLaunchForHulu,
+					CommonTests:      testutil.ClamshellCommonTests,
+					AppSpecificTests: clamshellAppSpecificTestsForHulu,
+				},
+				ExtraSoftwareDeps: []string{"android_p"},
+				// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
+				// Skip on tablet only models.
+				ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(testutil.TabletOnlyModels...)),
+				Pre:               pre.AppCompatBootedUsingTestAccountPool,
 			},
-			ExtraSoftwareDeps: []string{"android_p"},
-			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
-			// Skip on tablet only models.
-			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(testutil.TabletOnlyModels...)),
-			Pre:               pre.AppCompatBootedUsingTestAccountPool,
-		}, {
-			Name: "tablet_mode",
-			Val: testutil.TestParams{
-				LaunchTests:      touchviewLaunchForHulu,
-				CommonTests:      testutil.TouchviewCommonTests,
-				AppSpecificTests: touchviewAppSpecificTestsForHulu,
+			*/
+			/* Disabled due to <1% pass rate over 30 days. See b/241944094
+			{
+				Name: "tablet_mode",
+				Val: testutil.TestParams{
+					LaunchTests:      touchviewLaunchForHulu,
+					CommonTests:      testutil.TouchviewCommonTests,
+					AppSpecificTests: touchviewAppSpecificTestsForHulu,
+				},
+				ExtraSoftwareDeps: []string{"android_p"},
+				// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
+				// Skip on clamshell only models.
+				ExtraHardwareDeps: hwdep.D(hwdep.TouchScreen(), hwdep.SkipOnModel(testutil.ClamshellOnlyModels...)),
+				Pre:               pre.AppCompatBootedInTabletModeUsingTestAccountPool,
 			},
-			ExtraSoftwareDeps: []string{"android_p"},
-			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
-			// Skip on clamshell only models.
-			ExtraHardwareDeps: hwdep.D(hwdep.TouchScreen(), hwdep.SkipOnModel(testutil.ClamshellOnlyModels...)),
-			Pre:               pre.AppCompatBootedInTabletModeUsingTestAccountPool,
-		}, {
-			Name: "vm_clamshell_mode",
-			Val: testutil.TestParams{
-				LaunchTests:      clamshellLaunchForHulu,
-				CommonTests:      testutil.ClamshellCommonTests,
-				AppSpecificTests: clamshellAppSpecificTestsForHulu,
+			*/
+			/* Disabled due to <1% pass rate over 30 days. See b/241944094
+			{
+				Name: "vm_clamshell_mode",
+				Val: testutil.TestParams{
+					LaunchTests:      clamshellLaunchForHulu,
+					CommonTests:      testutil.ClamshellCommonTests,
+					AppSpecificTests: clamshellAppSpecificTestsForHulu,
+				},
+				ExtraSoftwareDeps: []string{"android_vm"},
+				// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
+				// Skip on tablet only models.
+				ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(testutil.TabletOnlyModels...)),
+				Pre:               pre.AppCompatBootedUsingTestAccountPool,
 			},
-			ExtraSoftwareDeps: []string{"android_vm"},
-			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
-			// Skip on tablet only models.
-			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(testutil.TabletOnlyModels...)),
-			Pre:               pre.AppCompatBootedUsingTestAccountPool,
-		}, {
-			Name: "vm_tablet_mode",
-			Val: testutil.TestParams{
-				LaunchTests:      touchviewLaunchForHulu,
-				CommonTests:      testutil.TouchviewCommonTests,
-				AppSpecificTests: touchviewAppSpecificTestsForHulu,
-			},
-			ExtraSoftwareDeps: []string{"android_vm"},
-			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
-			// Skip on clamshell only models.
-			ExtraHardwareDeps: hwdep.D(hwdep.TouchScreen(), hwdep.SkipOnModel(testutil.ClamshellOnlyModels...)),
-			Pre:               pre.AppCompatBootedInTabletModeUsingTestAccountPool,
-		}},
+			*/
+			/* Disabled due to <1% pass rate over 30 days. See b/241944094
+			{
+				Name: "vm_tablet_mode",
+				Val: testutil.TestParams{
+					LaunchTests:      touchviewLaunchForHulu,
+					CommonTests:      testutil.TouchviewCommonTests,
+					AppSpecificTests: touchviewAppSpecificTestsForHulu,
+				},
+				ExtraSoftwareDeps: []string{"android_vm"},
+				// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
+				// Skip on clamshell only models.
+				ExtraHardwareDeps: hwdep.D(hwdep.TouchScreen(), hwdep.SkipOnModel(testutil.ClamshellOnlyModels...)),
+				Pre:               pre.AppCompatBootedInTabletModeUsingTestAccountPool,
+			}
+			*/
+		},
 		Timeout: 20 * time.Minute,
 		Vars:    []string{"arcappcompat.gaiaPoolDefault"},
 		VarDeps: []string{"arcappcompat.Hulu.emailid", "arcappcompat.Hulu.password"},
