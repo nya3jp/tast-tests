@@ -99,14 +99,26 @@ func Print(ctx context.Context, s *testing.State) {
 	}
 	defer kb.Close()
 
-	if err := uiauto.Combine("click Settings Printer entry, save printer, and open Print Preview with shortcut Ctrl+P",
+	if err := uiauto.Combine("click Settings Printer entry, save printer",
 		ui.LeftClick(entryFinder),
 		ui.LeftClick(savePrinterButton),
+		ui.WithTimeout(time.Minute).WaitUntilExists(editPrinterButton),
+	)(ctx); err != nil {
+		s.Fatal("Failed to save virtual USB printer and open Print Preview: ", err)
+	}
+
+	// Launch Print Management app.
+	printManagementApp, err := printmanagementapp.Launch(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to launch Print Management app: ", err)
+	}
+
+	if err := uiauto.Combine("open Print Preview with shortcut Ctrl+P",
 		ui.WithTimeout(time.Minute).WaitUntilExists(editPrinterButton),
 		kb.AccelAction("Ctrl+P"),
 		printpreview.WaitForPrintPreview(tconn),
 	)(ctx); err != nil {
-		s.Fatal("Failed to save virtual USB printer and open Print Preview: ", err)
+		s.Fatal("Failed to open Print Preview: ", err)
 	}
 
 	// Select printer and click Print button.
@@ -136,12 +148,6 @@ func Print(ctx context.Context, s *testing.State) {
 		return nil
 	}, nil); err != nil {
 		s.Fatal("Print job failed to complete: ", err)
-	}
-
-	// Launch Print Management app.
-	printManagementApp, err := printmanagementapp.Launch(ctx, tconn)
-	if err != nil {
-		s.Fatal("Failed to launch Print Management app: ", err)
 	}
 
 	if err := uiauto.Combine("Verify print job",
