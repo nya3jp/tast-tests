@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25f4eed0_095700a0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/captive_portal_http.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-08-12T16:24:35Z",
+      "side": 1,
+      "message": "Add a cleanupCtx for more time to cleanup the two defer functions to make sure the cleanup has enough time to happen\n\n```\ncleanupCtx :\u003d ctx\nctx, cancel :\u003d ctxutil.Shorten(ctx, 10*time.Second)\ndefer cancel()\n```\n\nThe 10 seconds was what I just copied, feel free to adjust to whatever you think is best",
+      "range": {
+        "startLine": 35,
+        "startChar": 12,
+        "endLine": 35,
+        "endChar": 15
+      },
+      "revId": "1b1293e80b4c8e94f41375e60d7279dc51cca8dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "482c4deb_0c9b84b4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/captive_portal_http.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-08-12T16:24:35Z",
+      "side": 1,
+      "message": "Is it safe to assume that Portal Detection is completely disabled at the start of this test? This will disable portal detection on all technologies, which may affect later tests.\n\nMaybe check what the current portal detection state is and return it to that. Unless there is something I am missing.",
+      "range": {
+        "startLine": 80,
+        "startChar": 1,
+        "endLine": 83,
+        "endChar": 2
+      },
+      "revId": "1b1293e80b4c8e94f41375e60d7279dc51cca8dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13988855_f30ab52f",
+        "filename": "src/chromiumos/tast/remote/wificell/ap_iface.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-08-12T16:24:35Z",
+      "side": 1,
+      "message": "nit: httpRedirectStatusCode\n\nalso you can pull this directly from the http package, like here:\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_http.go;rcl\u003da30b5764f9454d000ac0c4848a0b6973f1fdc433;l\u003d38",
+      "range": {
+        "startLine": 51,
+        "startChar": 1,
+        "endLine": 51,
+        "endChar": 15
+      },
+      "revId": "1b1293e80b4c8e94f41375e60d7279dc51cca8dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
