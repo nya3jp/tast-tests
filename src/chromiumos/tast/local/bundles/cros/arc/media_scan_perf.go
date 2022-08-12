@@ -30,7 +30,7 @@ const (
 	// numberOfCopies is the number of files to be copied to the target directory to be scanned.
 	// The number should be large enough to get stable results. To clarify the difference
 	// in elapsed time due to performance we need to create a lot of files under the target directory.
-	numberOfCopies = 10000
+	numberOfCopies = 100
 )
 
 type arcMediaScanPerfParams struct {
@@ -273,6 +273,19 @@ func MediaScanPerf(ctx context.Context, s *testing.State) {
 	// them and the elapsed time will be shorter than expected.
 	if err := clearMediaStoreDB(ctx, a); err != nil {
 		s.Fatal("Failed to clear MediaStore database: ", err)
+	}
+
+	if param.volumeURISuffix == "emulated/0" {
+		myFilesVolumeID, err := arc.MyFilesVolumeID(ctx, a)
+		if err != nil {
+			s.Fatal("Failed to get MyFiles volume ID: ", err)
+		}
+		if err := unmountDirectory(ctx, a, cr, myFilesVolumeID); err != nil {
+			s.Fatal("Failed tu unmount MyFiles volume: ", err)
+		}
+		if err := arc.WaitForARCMyFilesVolumeUnmount(ctx, a); err != nil {
+			s.Fatal("Failed to wait for MyFiles to be unmounted: ", err)
+		}
 	}
 
 	volumeID, err := param.volumeID(ctx, a)
