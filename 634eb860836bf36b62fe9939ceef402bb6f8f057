@@ -33,6 +33,23 @@
       "message": "Please also run tast unit test: fast_build.sh -T\nThen, add this line to the commit long:\nTEST\u003dtast unit test passed.",
       "revId": "634eb860836bf36b62fe9939ceef402bb6f8f057",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a99e15d_f621aaa3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-08-12T22:26:34Z",
+      "side": 1,
+      "message": "Let\u0027s make this CL and https://chromium-review.googlesource.com/c/chromiumos/third_party/autotest/+/3830207 depending on each other so we can make sure they go in today.\n",
+      "revId": "634eb860836bf36b62fe9939ceef402bb6f8f057",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
