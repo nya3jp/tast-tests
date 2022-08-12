@@ -28,10 +28,14 @@ func init() {
 		Data:         inputlatency.AndroidData(),
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
-		}, {
+		},
+		/* Disabled due to <1% pass rate over 30 days. See b/241943132
+		{
 			Name:              "vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
-		}},
+		}
+		*/
+		},
 		Fixture: "arcBooted",
 		Timeout: 2 * time.Minute,
 	})
