@@ -62,6 +62,7 @@ type TestCase struct {
 type TestParams struct {
 	LaunchTests      []TestCase
 	CommonTests      []TestCase
+	TopAppTests      []TestCase
 	AppSpecificTests []TestCase
 }
 
@@ -96,7 +97,22 @@ var TouchviewCommonTests = []TestCase{
 	{Name: "Touchview: Reopen app", Fn: ReOpenWindow},
 }
 
-// ClamshellSmokeTests is a list of clamshell tests common to apps in appcompat_smoke suite.
+// ClamshellTopAppTests is a list of clamshell tests common to apps in appcompat_top_apps suite.
+var ClamshellTopAppTests = []TestCase{
+	{Name: "Clamshell: Fullscreen app", Fn: ClamshellFullscreenApp},
+	{Name: "Clamshell: Minimise and Restore", Fn: MinimizeRestoreApp},
+	{Name: "Clamshell: Resize window", Fn: ClamshellResizeWindow},
+	{Name: "Clamshell: Reopen app", Fn: ReOpenWindow},
+}
+
+// TouchviewTopAppTests is a list of touchview tests common to apps in appcompat_top_apps suite.
+var TouchviewTopAppTests = []TestCase{
+	{Name: "Touchview: Rotate", Fn: TouchviewRotate},
+	{Name: "Touchview: Minimise and Restore", Fn: MinimizeRestoreApp},
+	{Name: "Touchview: Reopen app", Fn: ReOpenWindow},
+}
+
+// ClamshellSmokeTests is a list of clamshell tests common to apps in appcompat_top_apps suite.
 var ClamshellSmokeTests = []TestCase{
 	{Name: "Clamshell: Touchscreen Scroll", Fn: TouchScreenScroll},
 	{Name: "Clamshell: Physical Keyboard", Fn: TouchAndTextInputs},
