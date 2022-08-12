@@ -176,6 +176,60 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ce5753d_d1f2cf3c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2022-08-12T23:39:47Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "129a7509_ac145a36",
+      "revId": "634eb860836bf36b62fe9939ceef402bb6f8f057",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "82e9a42b_c1eb8244",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2022-08-12T23:39:47Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0b890fbb_cd5b1b74",
+      "revId": "634eb860836bf36b62fe9939ceef402bb6f8f057",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "00402cbf_51ea1aad",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2022-08-12T23:39:47Z",
+      "side": 1,
+      "message": "yes, I did add David as a reviewer for this CL.",
+      "parentUuid": "c79308cf_d7f30488",
+      "revId": "634eb860836bf36b62fe9939ceef402bb6f8f057",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "95c10f93_50980745",
@@ -296,6 +350,24 @@
       "side": 1,
       "message": "Next time in similar situation. Please try to split CLs by sets of files instead of different stage of changes of the same set of files. Then, I don\u0027t need to look at your NEXT CL in order to get the full picture. Thanks.",
       "parentUuid": "3487de40_dfb5ae6b",
+      "revId": "634eb860836bf36b62fe9939ceef402bb6f8f057",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6ddb31c_3230d354",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/squid.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2022-08-12T23:39:47Z",
+      "side": 1,
+      "message": "Related the CL\u0027s to avoid code duplication.",
+      "parentUuid": "9e48351e_efa44d9f",
       "revId": "634eb860836bf36b62fe9939ceef402bb6f8f057",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
