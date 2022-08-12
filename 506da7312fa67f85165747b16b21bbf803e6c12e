@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a13c838_b67d0579",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2022-08-12T02:49:19Z",
+      "side": 1,
+      "message": "I\u0027m not familiar with this use case, but is this inconsistent behavior something that end users would run into? If so, it sounds more like a bug than something WAI that should be accepted by the tests",
+      "range": {
+        "startLine": 10,
+        "startChar": 14,
+        "endLine": 11,
+        "endChar": 39
+      },
+      "revId": "506da7312fa67f85165747b16b21bbf803e6c12e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52dd063d_370d4dbe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/wmputils/wm.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2022-08-12T02:49:19Z",
+      "side": 1,
+      "message": "Although go doesn\u0027t have strict line length limits, it\u0027s still recommended to keep comments \u003c80 characters: go/go-style/decisions#comment-line-length. Can you wrap this and the other long comments in this CL?",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 314
+      },
+      "revId": "506da7312fa67f85165747b16b21bbf803e6c12e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "411cccd3_cb877291",
+        "filename": "src/chromiumos/tast/local/chrome/ash/desks.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2022-08-12T02:49:19Z",
+      "side": 1,
+      "message": "This function is deprecated [1].\n\n[1] https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/uiauto/nodewith/nodewith.go;rcl\u003d108db64c6b03e9620dca9faf54a0991196c22ee6;l\u003d590",
+      "range": {
+        "startLine": 407,
+        "startChar": 31,
+        "endLine": 407,
+        "endChar": 40
+      },
+      "revId": "506da7312fa67f85165747b16b21bbf803e6c12e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "406f96eb_92fe9a2a",
+        "filename": "src/chromiumos/tast/local/chrome/ash/desks.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2022-08-12T02:49:19Z",
+      "side": 1,
+      "message": "This isn\u0027t checking anything.",
+      "range": {
+        "startLine": 415,
+        "startChar": 0,
+        "endLine": 417,
+        "endChar": 2
+      },
+      "revId": "506da7312fa67f85165747b16b21bbf803e6c12e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
