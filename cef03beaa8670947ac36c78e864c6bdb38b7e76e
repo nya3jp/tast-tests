@@ -257,6 +257,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "46cbe48a_9b3e3916",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/youtube_web.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-08-12T07:12:36Z",
+      "side": 1,
+      "message": "https://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform/tast-tests/src/chromiumos/tast/local/input/keyboard.go;l\u003d240\n\nkb.Accel is used to inject hot keys, while Type is for normal key presses. Though \"k\" is a shortcut to the web page, it is not some thing special to the keyboard.",
+      "parentUuid": "284a7de9_fcc54b6a",
+      "range": {
+        "startLine": 105,
+        "startChar": 7,
+        "endLine": 105,
+        "endChar": 18
+      },
+      "revId": "cef03beaa8670947ac36c78e864c6bdb38b7e76e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "07be880d_9bf317ca",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/youtube_web.go",
         "patchSetId": 1
