@@ -152,7 +152,7 @@ func PlayStorePersistent(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get initial PlayStore PID: ", err)
 	}
 
-	s.Log("Wating for daily hygiene done")
+	s.Log("Waiting for daily hygiene done")
 	ok, err := waitForDailyHygieneDone(ctx, a, cr.NormalizedUser())
 	if err != nil {
 		if out, rerr := readFinskyPrefs(ctx, a, cr.NormalizedUser()); rerr != nil {
@@ -174,7 +174,7 @@ func PlayStorePersistent(ctx context.Context, s *testing.State) {
 	// Daily hygiene may start the self-update flow and now system is busy. This waiting just waits
 	// everything is stabilized. That means new Play Store is installed if self-update flow was
 	// started.
-	s.Log("Wating for CPU idle")
+	s.Log("Waiting for CPU idle")
 	if err := cpu.WaitUntilIdle(ctx); err != nil {
 		s.Fatal("Failed to wait CPU is idle: ", err)
 	}

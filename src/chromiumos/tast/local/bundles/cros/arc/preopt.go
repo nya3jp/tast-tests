@@ -62,7 +62,7 @@ func performBootAndWaitForIdle(ctx context.Context, outDir string) error {
 
 	// Wait for CPU is idle once dex2oat is heavy operation and idle CPU would
 	// indicate that heavy boot operations are done.
-	testing.ContextLog(ctx, "Wating for CPU idle")
+	testing.ContextLog(ctx, "Waiting for CPU idle")
 	if err := cpu.WaitUntilIdle(ctx); err != nil {
 		return errors.Wrap(err, "failed to wait CPU is idle")
 	}

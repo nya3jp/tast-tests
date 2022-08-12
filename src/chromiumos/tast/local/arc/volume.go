@@ -125,7 +125,7 @@ func WaitForARCMyFilesVolumeUnmount(ctx context.Context, a *ARC) error {
 // WaitForARCSDCardVolumeUnmount waits for the sdcard volume to be unmounted
 // inside ARC.
 func WaitForARCSDCardVolumeUnmount(ctx context.Context, a *ARC) error {
-	testing.ContextLog(ctx, "Waiting for the sdcard volume to be mounted in ARC")
+	testing.ContextLog(ctx, "Waiting for the sdcard volume to be unmounted in ARC")
 
 	return waitForARCVolumeUnmount(ctx, a, sdCardVolumeIDRegex, "null")
 }
