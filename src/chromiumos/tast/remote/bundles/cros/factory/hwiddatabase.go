@@ -14,6 +14,13 @@ import (
 	"chromiumos/tast/testing/hwdep"
 )
 
+type extraCmdParams struct {
+	extraBuildParams []string
+}
+
+// These devices will be supported by runtime probe, the progress is tracked in b/230576848.
+var storageNotProbable = []string{"anahera", "bobba", "chronicler", "dewatt", "kohaku", "pico6"}
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         HWIDDatabase,
@@ -26,12 +33,34 @@ func init() {
 		// Skip "nyan_kitty" due to slow reboot speed.
 		HardwareDeps: hwdep.D(hwdep.SkipOnModel("kitty")),
 		SoftwareDeps: append([]string{"factory_flow"}, fixture.EnsureToolkitSoftwareDeps...),
+		Params: []testing.Param{
+			testing.Param{
+				Name:              "probe_by_default",
+				ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel("kitty"), hwdep.SkipOnModel(storageNotProbable...)),
+				Val:               extraCmdParams{},
+			},
+			testing.Param{
+				Name:              "allow_probe_no_storage",
+				ExtraHardwareDeps: hwdep.D(hwdep.Model(storageNotProbable...)),
+				Val: extraCmdParams{
+					extraBuildParams: []string{
+						"--auto-decline-essential-prompt",
+						"storage",
+					},
+				},
+			},
+		},
 	})
 }
 
 func HWIDDatabase(ctx context.Context, s *testing.State) {
+	testExtraCmdParams := s.Param().(extraCmdParams)
+
 	conn := s.DUT().Conn()
-	buildDatabaseCmd := conn.CommandContext(ctx, "hwid", "build-database")
+
+	buildArgs := []string{"build-database"}
+	buildArgs = append(buildArgs, testExtraCmdParams.extraBuildParams...)
+	buildDatabaseCmd := conn.CommandContext(ctx, "hwid", buildArgs...)
 	if err := buildDatabaseCmd.Run(ssh.DumpLogOnError); err != nil {
 		s.Fatal("Failed to build the HWID database: ", err)
 	}
