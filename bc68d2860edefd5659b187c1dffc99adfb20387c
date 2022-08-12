@@ -33,6 +33,23 @@
       "message": "PTAL.",
       "revId": "bc68d2860edefd5659b187c1dffc99adfb20387c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0119fe8_11067af5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2022-08-12T20:13:00Z",
+      "side": 1,
+      "message": "Assuming we are waiting for Jao-ke. If you need +2 to land the change, let me know.",
+      "revId": "bc68d2860edefd5659b187c1dffc99adfb20387c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
