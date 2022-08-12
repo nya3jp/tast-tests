@@ -16,6 +16,23 @@
       "message": "OK. Done with not expanding the variables.",
       "revId": "bc68d2860edefd5659b187c1dffc99adfb20387c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f20672f_ac9b5da4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-08-12T00:32:03Z",
+      "side": 1,
+      "message": "PTAL.",
+      "revId": "bc68d2860edefd5659b187c1dffc99adfb20387c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
