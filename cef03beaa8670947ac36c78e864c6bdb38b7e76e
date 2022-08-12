@@ -207,6 +207,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "284a7de9_fcc54b6a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/youtube_web.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2022-08-12T06:55:44Z",
+      "side": 1,
+      "message": "\"k\" is a shortcut to play and pause videos on YouTube pages.\nSo we don\u0027t use TypeAction here.",
+      "parentUuid": "6b110ee2_29af1651",
+      "range": {
+        "startLine": 105,
+        "startChar": 7,
+        "endLine": 105,
+        "endChar": 18
+      },
+      "revId": "cef03beaa8670947ac36c78e864c6bdb38b7e76e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "07be880d_9bf317ca",
@@ -220,6 +244,24 @@
       "writtenOn": "2022-08-10T10:18:59Z",
       "side": 1,
       "message": "why 2 sec sleep is needed? Could you wait for some condition to be satisified within 2 sec, instead?",
+      "revId": "cef03beaa8670947ac36c78e864c6bdb38b7e76e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dcff2856_1d8f933a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/youtube_web.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2022-08-12T06:55:44Z",
+      "side": 1,
+      "message": "Changed to use validation to wait for pause and play.",
+      "parentUuid": "07be880d_9bf317ca",
       "revId": "cef03beaa8670947ac36c78e864c6bdb38b7e76e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
