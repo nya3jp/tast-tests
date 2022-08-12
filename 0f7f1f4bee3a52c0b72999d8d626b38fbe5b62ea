@@ -39,6 +39,30 @@
       },
       "revId": "0f7f1f4bee3a52c0b72999d8d626b38fbe5b62ea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0eb52278_e83df19d",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/nodewith/nodewith.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-08-12T14:51:44Z",
+      "side": 1,
+      "message": "Good point.\nActually, there are more chrome.automation.getDesktop invocations.\nProbably, we should unify all callers to avoid mistakes, maybe into tast\u0027s member,\nthen maybe add tast-lint not to directly use chrome.automation.getDesktop().",
+      "parentUuid": "29d38399_ef5ec498",
+      "range": {
+        "startLine": 173,
+        "startChar": 0,
+        "endLine": 175,
+        "endChar": 0
+      },
+      "revId": "0f7f1f4bee3a52c0b72999d8d626b38fbe5b62ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
