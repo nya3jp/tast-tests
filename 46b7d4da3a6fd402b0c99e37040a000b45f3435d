@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "71816f2d_f3776188",
+        "filename": "src/chromiumos/tast/local/bundles/cros/personalization/select_rainbow_mode.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1445142
+      },
+      "writtenOn": "2022-08-12T21:50:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3c0e8919_c120a137",
+      "range": {
+        "startLine": 60,
+        "startChar": 20,
+        "endLine": 60,
+        "endChar": 34
+      },
+      "revId": "46b7d4da3a6fd402b0c99e37040a000b45f3435d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b487dbf8_b00aa294",
@@ -71,6 +95,30 @@
       "writtenOn": "2022-08-11T17:24:02Z",
       "side": 1,
       "message": "nit: `\"...got %d, want %d\", count, tc.ExpectedLogLen)`",
+      "range": {
+        "startLine": 133,
+        "startChar": 52,
+        "endLine": 133,
+        "endChar": 107
+      },
+      "revId": "46b7d4da3a6fd402b0c99e37040a000b45f3435d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b70cb066_6a080e2d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/personalization/select_rainbow_mode.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1445142
+      },
+      "writtenOn": "2022-08-12T21:50:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b487dbf8_b00aa294",
       "range": {
         "startLine": 133,
         "startChar": 52,
