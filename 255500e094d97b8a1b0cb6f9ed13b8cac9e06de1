@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "204e1bac_80254b63",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1394700
+      },
+      "writtenOn": "2022-08-12T00:43:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e2f2f20c_3eac359d",
+      "range": {
+        "startLine": 16,
+        "startChar": 9,
+        "endLine": 16,
+        "endChar": 59
+      },
+      "revId": "255500e094d97b8a1b0cb6f9ed13b8cac9e06de1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3c5308b7_92b7771b",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-08-10T23:36:56Z",
       "side": 1,
       "message": "Nit: Should this be `@google.com`?",
+      "range": {
+        "startLine": 19,
+        "startChar": 17,
+        "endLine": 19,
+        "endChar": 29
+      },
+      "revId": "255500e094d97b8a1b0cb6f9ed13b8cac9e06de1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd272936_ac00802c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1394700
+      },
+      "writtenOn": "2022-08-12T00:43:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3c5308b7_92b7771b",
       "range": {
         "startLine": 19,
         "startChar": 17,
@@ -81,6 +129,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "545ba350_19d40e7d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1394700
+      },
+      "writtenOn": "2022-08-12T00:43:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b937e678_be955c03",
+      "revId": "255500e094d97b8a1b0cb6f9ed13b8cac9e06de1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "86749109_87c3c51e",
@@ -94,6 +160,24 @@
       "writtenOn": "2022-08-10T23:36:56Z",
       "side": 1,
       "message": "Could we add\n\n    // Reserve ten seconds for cleanup.\n    cleanupCtx :\u003d ctx\n    ctx, cancel :\u003d ctxutil.Shorten(ctx, 10*time.Second)\n    defer cancel()\n\nhere, and provide `cleanupCtx` to `faillog.DumpUITreeOnError` so that we have a little buffer time after failing to make sure we get the UI tree logs?",
+      "revId": "255500e094d97b8a1b0cb6f9ed13b8cac9e06de1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fdc7398a_ad21c754",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/toggle_wifi_from_network_quick_settings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1394700
+      },
+      "writtenOn": "2022-08-12T00:43:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "86749109_87c3c51e",
       "revId": "255500e094d97b8a1b0cb6f9ed13b8cac9e06de1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -121,6 +205,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6d2e488_06339025",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/toggle_wifi_from_network_quick_settings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1394700
+      },
+      "writtenOn": "2022-08-12T00:43:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "62a8453b_d9b556be",
+      "range": {
+        "startLine": 59,
+        "startChar": 1,
+        "endLine": 59,
+        "endChar": 68
+      },
+      "revId": "255500e094d97b8a1b0cb6f9ed13b8cac9e06de1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f1acd64d_95002016",
@@ -134,6 +242,30 @@
       "writtenOn": "2022-08-10T23:36:56Z",
       "side": 1,
       "message": "Nit: Consider rewording to mention that we did check the status but it was unexpected,\n\n    \"WiFi has a different status than expected: got %t, want %t\"",
+      "range": {
+        "startLine": 114,
+        "startChar": 24,
+        "endLine": 114,
+        "endChar": 69
+      },
+      "revId": "255500e094d97b8a1b0cb6f9ed13b8cac9e06de1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "58bbb652_dd3b1033",
+        "filename": "src/chromiumos/tast/local/shill/wifi.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1394700
+      },
+      "writtenOn": "2022-08-12T00:43:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f1acd64d_95002016",
       "range": {
         "startLine": 114,
         "startChar": 24,
