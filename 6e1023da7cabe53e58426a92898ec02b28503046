@@ -1,0 +1,130 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9da7d0b_9dc9d370",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-08-12T23:43:26Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "6e1023da7cabe53e58426a92898ec02b28503046",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf7fd8b6_e48716b7",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_client.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1040,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-08-12T23:43:26Z",
+      "side": 1,
+      "message": "nit: Typo in \"unrecognized\".",
+      "range": {
+        "startLine": 1040,
+        "startChar": 60,
+        "endLine": 1040,
+        "endChar": 72
+      },
+      "revId": "6e1023da7cabe53e58426a92898ec02b28503046",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17856ca7_1ed4d931",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/add_remove_factors.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-08-12T23:43:26Z",
+      "side": 1,
+      "message": "nit: Maybe just \"with_vK\" and \"with_uss\"? These names are appended to the test name, which already is \"AddRemoveFactors\".",
+      "range": {
+        "startLine": 35,
+        "startChar": 10,
+        "endLine": 35,
+        "endChar": 36
+      },
+      "revId": "6e1023da7cabe53e58426a92898ec02b28503046",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6685ca1b_1ff4f24b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/add_remove_factors.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-08-12T23:43:26Z",
+      "side": 1,
+      "message": "nit: Update the copy-pasted message.",
+      "range": {
+        "startLine": 115,
+        "startChar": 21,
+        "endLine": 115,
+        "endChar": 43
+      },
+      "revId": "6e1023da7cabe53e58426a92898ec02b28503046",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e20c2ab_a38f49a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/add_remove_factors.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-08-12T23:43:26Z",
+      "side": 1,
+      "message": "nit: Let\u0027s add a bit more context here, so that this log message differs from others and it\u0027s clear which exactly stage failed.\n\nE.g., \"Failed to list auth factors after adding password\".",
+      "range": {
+        "startLine": 121,
+        "startChar": 11,
+        "endLine": 121,
+        "endChar": 38
+      },
+      "revId": "6e1023da7cabe53e58426a92898ec02b28503046",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6098b1b5_a07625b2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/add_remove_factors.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-08-12T23:43:26Z",
+      "side": 1,
+      "message": "nit: Maybe extract this into some kind of a helper function? So that we don\u0027t need to repeat all this code, and also the test becomes easier to read.",
+      "revId": "6e1023da7cabe53e58426a92898ec02b28503046",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
