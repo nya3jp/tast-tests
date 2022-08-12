@@ -21,7 +21,19 @@ func init() {
 			"chadduffin@chromium.org",
 			"cros-connectivity@google.com",
 		},
-		Impl:            ChromeLoggedInWithBluetoothRevamp(true),
+		Impl:            ChromeLoggedInWithFeatures([]string{"BluetoothRevamp"}, []string{}),
+		SetUpTimeout:    chrome.LoginTimeout,
+		ResetTimeout:    chrome.ResetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+	})
+	testing.AddFixture(&testing.Fixture{
+		Name: "chromeLoggedInWithFlossEnabled",
+		Desc: "Logs into a user session with the BluetoothRevamp and Floss feature flags enabled",
+		Contacts: []string{
+			"chadduffin@chromium.org",
+			"cros-connectivity@google.com",
+		},
+		Impl:            ChromeLoggedInWithFeatures([]string{"BluetoothRevamp", "BluetoothUseFloss"}, []string{}),
 		SetUpTimeout:    chrome.LoginTimeout,
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
@@ -33,7 +45,7 @@ func init() {
 			"chadduffin@chromium.org",
 			"cros-connectivity@google.com",
 		},
-		Impl:            ChromeLoggedInWithBluetoothRevamp(false),
+		Impl:            ChromeLoggedInWithFeatures([]string{}, []string{"BluetoothRevamp"}),
 		SetUpTimeout:    chrome.LoginTimeout,
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
@@ -51,17 +63,29 @@ func init() {
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
 	})
+	testing.AddFixture(&testing.Fixture{
+		Name: "chromeLoggedInWithFlossAndBluetoothEnabled",
+		Desc: "Logs into a user session and enables Bluetooth during set up and tear down",
+		Contacts: []string{
+			"chadduffin@chromium.org",
+			"cros-connectivity@google.com",
+		},
+		Impl:            &chromeLoggedInWithBluetoothEnabled{},
+		Parent:          "chromeLoggedInWithFlossEnabled",
+		SetUpTimeout:    chrome.LoginTimeout,
+		ResetTimeout:    chrome.ResetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+	})
 }
 
-// ChromeLoggedInWithBluetoothRevamp returns a fixture implementation that
-// builds on the existing chromeLoggedIn fixture to also enable or disable the
+// ChromeLoggedInWithFeatures returns a fixture implementation that builds on
+// the existing chromeLoggedIn fixture to also enable or disable the
 // BluetoothRevamp feature flag.
-func ChromeLoggedInWithBluetoothRevamp(enabled bool) testing.FixtureImpl {
+func ChromeLoggedInWithFeatures(enableFeatures, disableFeatures []string) testing.FixtureImpl {
 	return chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
-		if enabled {
-			return []chrome.Option{chrome.EnableFeatures("BluetoothRevamp")}, nil
-		}
-		return []chrome.Option{chrome.DisableFeatures("BluetoothRevamp")}, nil
+		return []chrome.Option{
+			chrome.EnableFeatures(enableFeatures...), chrome.DisableFeatures(disableFeatures...),
+		}, nil
 	})
 }
 
