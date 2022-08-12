@@ -22,10 +22,16 @@ import (
 )
 
 // ReportingPoliciesDisabledUser is the path to the secert username for the policies disabled OU.
-const ReportingPoliciesDisabledUser = "policy.reporting_policies_disabled_usename"
+const ReportingPoliciesDisabledUser = "policy.reporting_policies_disabled_username"
 
 // ReportingPoliciesDisabledPassword is the path to the secert password for the policies disabled OU.
 const ReportingPoliciesDisabledPassword = "policy.reporting_policies_disabled_password"
+
+// ReportingPoliciesEnabledUser is the path to the secert username for the policies enabled OU.
+const ReportingPoliciesEnabledUser = "policy.reporting_policies_enabled_username"
+
+// ReportingPoliciesEnabledPassword is the path to the secert password for the policies enabled OU.
+const ReportingPoliciesEnabledPassword = "policy.reporting_policies_enabled_password"
 
 // ManagedChromeCustomerIDPath is the path to the secret customer ID var for managedchrome.
 const ManagedChromeCustomerIDPath = "policy.managedchrome_obfuscated_customer_id"
@@ -65,13 +71,23 @@ type WrappedEncryptedData struct {
 
 // MetricData mirrors the metricData JSON field.
 type MetricData struct {
-	Time     string    `json:"timestampMs"`
-	InfoData *InfoData `json:"infoData"`
+	Time          string         `json:"timestampMs"`
+	InfoData      *InfoData      `json:"infoData"`
+	TelemetryData *TelemetryData `json:"telemetryData"`
 }
 
 // InfoData mirrors the infoData JSON field.
 type InfoData struct {
-	MemoryInfo *MemoryInfo `json:"memoryInfo"`
+	MemoryInfo  *MemoryInfo  `json:"memoryInfo"`
+	NetworkInfo *NetworkInfo `json:"networksInfo"`
+	CpuInfo     *CpuInfo     `json:"cpuInfo"`
+}
+
+// TelemetryData mirrors the telemetryData JSON field.
+type TelemetryData struct {
+	AudioTelemetry       *AudioTelemetry       `json:"audioTelemetry"`
+	NetworkTelemetry     *NetworkTelemetry     `json:"networksTelemetry"`
+	PeripheralsTelemetry *PeripheralsTelemetry `json:"peripheralsTelemetry"`
 }
 
 // MemoryInfo mirrors the memoryInfo JSON field.
@@ -85,6 +101,59 @@ type TMEInfo struct {
 	MaxKeys                   string `json:"maxKeys"`
 	KeyLength                 string `json:"keyLength"`
 	MemoryEncryptionAlgorithm string `json:"encryptionAlgorithm"`
+}
+
+type NetworkInfo struct {
+	NetworkInterfaces *NetworkInterfaces `json:"networkInterfaces"`
+}
+
+type NetworkInterfaces struct {
+	Type       string `json:"type"`
+	MacAddress string `json:"macAddress"`
+	DevicePath string `json:"devicePath"`
+}
+
+type CpuInfo struct {
+	KeyLockerInfo *KeyLockerInfo `json:"keyLockerInfo"`
+}
+
+type KeyLockerInfo struct {
+	Supported  bool `json:"supported"`
+	Configured bool `json:"configured"`
+}
+
+// AudioTelemetry mirrors the audioTelemetry JSON field.
+type AudioTelemetry struct {
+	OutputMute       bool   `json:"outputMute"`
+	InputMute        bool   `json:"inputMute"`
+	OutputVolume     int32  `json:"outputVolume"`
+	OutputDeviceName string `json:"outputDeviceName"`
+	InputGain        int32  `json:"inputGain"`
+	InputDeviceName  string `json:"inputDeviceName"`
+}
+
+// NetworkTelemetry mirrors the audioTelemetry JSON field.
+type NetworkTelemetry struct {
+	BandwithData *BandwithData `json:"bandwidthData"`
+}
+
+type BandwithData struct {
+	DownloadSpeedKbps int32 `json:"downloadSpeedKbps"`
+}
+
+// PeripheralsTelemetry mirrors the peripheralsTelemetry JSON field.
+type PeripheralsTelemetry struct {
+	UsbTelemetry *UsbTelemetry `json:"usbTelemetry"`
+}
+
+// UsbTelemetry mirrors the usbTelemetry JSON field.
+type UsbTelemetry struct {
+	Vendor     string `json:"vendor"`
+	Name       string `json:"name"`
+	Vid        int32  `json:"vid"`
+	Pid        int32  `json:"pid"`
+	ClassId    int32  `json:"classId"`
+	SubclassId int32  `json:"subclassId"`
 }
 
 type inputEventsResponse struct {
