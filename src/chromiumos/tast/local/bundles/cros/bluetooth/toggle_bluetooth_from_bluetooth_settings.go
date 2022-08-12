@@ -9,8 +9,6 @@ import (
 	"time"
 
 	"chromiumos/tast/ctxutil"
-	"chromiumos/tast/local/bluetooth"
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
@@ -33,7 +31,13 @@ func init() {
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
-		Fixture:      "chromeLoggedInWithBluetoothEnabled",
+		Params: []testing.Param{{
+			Name:    "floss_disabled",
+			Fixture: "chromeLoggedInWithBluetoothEnabled",
+		}, {
+			Name:    "floss_enabled",
+			Fixture: "chromeLoggedInWithFlossAndBluetoothEnabled",
+		}},
 	})
 }
 
@@ -41,7 +45,7 @@ func init() {
 // toggle the Bluetooth state using the Bluetooth toggle within the
 // Bluetooth Settings sub-page.
 func ToggleBluetoothFromBluetoothSettings(ctx context.Context, s *testing.State) {
-	cr := s.FixtValue().(*chrome.Chrome)
+	cr := s.FixtValue().(*ChromeLoggedInWithBluetoothEnabled).Chrome
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
@@ -52,6 +56,8 @@ func ToggleBluetoothFromBluetoothSettings(ctx context.Context, s *testing.State)
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
+
+	bt := s.FixtValue().(*ChromeLoggedInWithBluetoothEnabled).Impl
 
 	app, err := ossettings.NavigateToBluetoothSettingsPage(ctx, tconn)
 	defer app.Close(cleanupCtx)
@@ -76,7 +82,7 @@ func ToggleBluetoothFromBluetoothSettings(ctx context.Context, s *testing.State)
 		if err := ui.LeftClick(bluetoothSettingsBluetoothToggleButton)(ctx); err != nil {
 			s.Fatal("Failed to click the Bluetooth toggle: ", err)
 		}
-		if err := bluetooth.PollForAdapterState(ctx, state); err != nil {
+		if err := bt.PollForAdapterState(ctx, state); err != nil {
 			s.Fatal("Failed to toggle Bluetooth state: ", err)
 		}
 		state = !state
