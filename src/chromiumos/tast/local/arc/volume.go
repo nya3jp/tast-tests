@@ -102,7 +102,7 @@ func WaitForARCSDCardVolumeMount(ctx context.Context, a *ARC) error {
 
 // waitForARCVolumeUnmount waits for a volume to be unmounted inside ARC.
 func waitForARCVolumeUnmount(ctx context.Context, a *ARC, id, uuid string) error {
-	_, err := waitForARCVolumeStatusAndGetVolumeID(ctx, a, id, "unmounted", uuid)
+	_, err := waitForARCVolumeStatusAndGetVolumeID(ctx, a, id, "(unmounted|checking)", uuid)
 	return err
 }
 
