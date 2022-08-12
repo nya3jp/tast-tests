@@ -16,6 +16,69 @@
       "message": "I\u0027ve done most of them, but got one problem.\nPlease help me. Thank you.",
       "revId": "3e590c3da37dff58aed9c0a63ff3e23e91a8448e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1bc2acab_71b3b3ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/dock2_persistent_settings.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-12T15:59:28Z",
+      "side": 1,
+      "message": "Nix `All rights reserved.`",
+      "range": {
+        "startLine": 1,
+        "startChar": 42,
+        "endLine": 1,
+        "endChar": 63
+      },
+      "revId": "3e590c3da37dff58aed9c0a63ff3e23e91a8448e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec76f9b5_fdd60b3a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/dock2_persistent_settings.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-12T15:59:28Z",
+      "side": 1,
+      "message": "There should be no space, just `ChromiumOS`",
+      "range": {
+        "startLine": 1,
+        "startChar": 30,
+        "endLine": 1,
+        "endChar": 31
+      },
+      "revId": "3e590c3da37dff58aed9c0a63ff3e23e91a8448e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58dd4a28_07e134b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/dock2_persistent_settings.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-12T15:59:28Z",
+      "side": 1,
+      "message": "Please do this:\n\tctx, cancel :\u003d ctxutil.Shorten(ctx, 10*time.Second)\n\tdefer cancel()\nThis establishes a shortened timeout for the rest of the test, reserving 10 seconds for `cleanup` and `utils.DumpScreenshotOnError`.",
+      "revId": "3e590c3da37dff58aed9c0a63ff3e23e91a8448e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
