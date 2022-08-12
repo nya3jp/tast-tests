@@ -22,6 +22,30 @@
       },
       "revId": "f734e026f7cd93ff0900725551c9f7b40cb4c688",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "40826bb8_6b8d7f37",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/drag_tab_in_clamshell_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-08-12T18:10:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b993feeb_0979ce34",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 118,
+        "endChar": 36
+      },
+      "revId": "f734e026f7cd93ff0900725551c9f7b40cb4c688",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

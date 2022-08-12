@@ -63,6 +63,30 @@
       },
       "revId": "0f7f1f4bee3a52c0b72999d8d626b38fbe5b62ea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d9729fc_dad463ed",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/nodewith/nodewith.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-08-12T18:10:34Z",
+      "side": 1,
+      "message": "Either a guide to tast-owner@ or tast-lint sounds a good idea. I\u0027ll be holding off on this until your CL gets in to fix getDesktop. Leaving as WIP for now.",
+      "parentUuid": "0eb52278_e83df19d",
+      "range": {
+        "startLine": 173,
+        "startChar": 0,
+        "endLine": 175,
+        "endChar": 0
+      },
+      "revId": "0f7f1f4bee3a52c0b72999d8d626b38fbe5b62ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
