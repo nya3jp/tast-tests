@@ -33,6 +33,29 @@
       "message": "LGTM",
       "revId": "668970e01dc8ba493f763e97a759bcb31c6df557",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "134959b8_997efe29",
+        "filename": "src/chromiumos/tast/remote/wificell/router/common/common.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-08-12T06:51:37Z",
+      "side": 1,
+      "message": "nit: is the length of time the context deadline should be shortened by to reserve time for r.CloseFrameSender() to run.",
+      "range": {
+        "startLine": 37,
+        "startChar": 49,
+        "endLine": 37,
+        "endChar": 52
+      },
+      "revId": "668970e01dc8ba493f763e97a759bcb31c6df557",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
