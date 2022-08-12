@@ -34,52 +34,52 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Functional test for Concepts  that installs the app also verifies it is logged in and that the main page is open, checks Gmail correctly changes the window state in both clamshell and touchview mode",
 		Contacts:     []string{"mthiyagarajan@chromium.org", "cros-appcompat-test-team@google.com"},
-		Attr:         []string{"group:appcompat", "appcompat_smoke"},
+		Attr:         []string{"group:appcompat", "appcompat_smoke", "appcompat_top_apps"},
 		SoftwareDeps: []string{"chrome"},
 		HardwareDeps: hwdep.D(hwdep.SkipOnModel("elm")),
 		Params: []testing.Param{{
-			Name: "clamshell_mode_top_apps",
+			Name: "clamshell_mode_release",
 			Val: testutil.TestParams{
-				LaunchTests: clamshellLaunchForConcepts,
-				TopAppTests: testutil.ClamshellTopAppTests,
+				LaunchTests:  clamshellLaunchForConcepts,
+				ReleaseTests: testutil.ClamshellReleaseTests,
 			},
-			ExtraAttr:         []string{"appcompat_top_apps"},
+			ExtraAttr:         []string{"appcompat_release"},
 			ExtraSoftwareDeps: []string{"android_p"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
 			// Skip on tablet only models.
 			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(testutil.TabletOnlyModels...)),
 			Pre:               pre.AppCompatBootedUsingTestAccountPool,
 		}, {
-			Name: "tablet_mode_top_apps",
+			Name: "tablet_mode_release",
 			Val: testutil.TestParams{
-				LaunchTests: touchviewLaunchForConcepts,
-				TopAppTests: testutil.TouchviewTopAppTests,
+				LaunchTests:  touchviewLaunchForConcepts,
+				ReleaseTests: testutil.TouchviewReleaseTests,
 			},
-			ExtraAttr:         []string{"appcompat_top_apps"},
+			ExtraAttr:         []string{"appcompat_release"},
 			ExtraSoftwareDeps: []string{"android_p"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
 			// Skip on clamshell only models.
 			ExtraHardwareDeps: hwdep.D(hwdep.TouchScreen(), hwdep.SkipOnModel(testutil.ClamshellOnlyModels...)),
 			Pre:               pre.AppCompatBootedInTabletModeUsingTestAccountPool,
 		}, {
-			Name: "vm_clamshell_mode_top_apps",
+			Name: "vm_clamshell_mode_release",
 			Val: testutil.TestParams{
-				LaunchTests: clamshellLaunchForConcepts,
-				TopAppTests: testutil.ClamshellTopAppTests,
+				LaunchTests:  clamshellLaunchForConcepts,
+				ReleaseTests: testutil.ClamshellReleaseTests,
 			},
-			ExtraAttr:         []string{"appcompat_top_apps"},
+			ExtraAttr:         []string{"appcompat_release"},
 			ExtraSoftwareDeps: []string{"android_vm"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
 			// Skip on tablet only models.
 			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(testutil.TabletOnlyModels...)),
 			Pre:               pre.AppCompatBootedUsingTestAccountPool,
 		}, {
-			Name: "vm_tablet_mode_top_apps",
+			Name: "vm_tablet_mode_release",
 			Val: testutil.TestParams{
-				LaunchTests: touchviewLaunchForConcepts,
-				TopAppTests: testutil.TouchviewTopAppTests,
+				LaunchTests:  touchviewLaunchForConcepts,
+				ReleaseTests: testutil.TouchviewReleaseTests,
 			},
-			ExtraAttr:         []string{"appcompat_top_apps"},
+			ExtraAttr:         []string{"appcompat_release"},
 			ExtraSoftwareDeps: []string{"android_vm"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
 			// Skip on clamshell only models.
