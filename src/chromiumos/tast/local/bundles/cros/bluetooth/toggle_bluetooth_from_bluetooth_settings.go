@@ -33,7 +33,15 @@ func init() {
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
-		Fixture:      "chromeLoggedInWithBluetoothEnabled",
+		Params: []testing.Param{{
+			Name:    "floss_disabled",
+			Fixture: "chromeLoggedInWithBluetoothEnabled",
+			Val:     bluetooth.TestParams{Impl: &bluetooth.BlueZ{}},
+		}, {
+			Name:    "floss_enabled",
+			Fixture: "chromeLoggedInWithFlossAndBluetoothEnabled",
+			Val:     bluetooth.TestParams{Impl: &bluetooth.Floss{}},
+		}},
 	})
 }
 
@@ -52,6 +60,8 @@ func ToggleBluetoothFromBluetoothSettings(ctx context.Context, s *testing.State)
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
+
+	bt := s.Param().(bluetooth.TestParams).Impl
 
 	app, err := ossettings.NavigateToBluetoothSettingsPage(ctx, tconn)
 	defer app.Close(cleanupCtx)
@@ -76,7 +86,7 @@ func ToggleBluetoothFromBluetoothSettings(ctx context.Context, s *testing.State)
 		if err := ui.LeftClick(bluetoothSettingsBluetoothToggleButton)(ctx); err != nil {
 			s.Fatal("Failed to click the Bluetooth toggle: ", err)
 		}
-		if err := bluetooth.PollForAdapterState(ctx, state); err != nil {
+		if err := bt.PollForAdapterState(ctx, state); err != nil {
 			s.Fatal("Failed to toggle Bluetooth state: ", err)
 		}
 		state = !state
