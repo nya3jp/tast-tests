@@ -176,12 +176,18 @@ func RunTestCases(ctx context.Context, s *testing.State, appPkgName, appActivity
 	}
 	s.Log("Successfully tested launching and closing the app")
 
-	// AllTests will have LaunchTests, CommonTests and AppSpecificTests.
+	// AllTests will have LaunchTests, CommonTests, ReleaseTests, TopAppTests and AppSpecificTests.
 	var AllTests = []TestCase{}
 	for _, curTest := range testCases.LaunchTests {
 		AllTests = append(AllTests, curTest)
 	}
 	for _, curTest := range testCases.CommonTests {
+		AllTests = append(AllTests, curTest)
+	}
+	for _, curTest := range testCases.ReleaseTests {
+		AllTests = append(AllTests, curTest)
+	}
+	for _, curTest := range testCases.TopAppTests {
 		AllTests = append(AllTests, curTest)
 	}
 	for _, curTest := range testCases.AppSpecificTests {
