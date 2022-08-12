@@ -22,6 +22,30 @@
       },
       "revId": "34ab0d5a39326eb8a3bdaf225a6540a656e0893e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4eaf333c_bcc66bee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/sshfs_mount.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2022-08-12T14:03:04Z",
+      "side": 1,
+      "message": "Yeah. It should be much quicker but I don\u0027t actually know how long it takes so figure we can start with this and shorten later.",
+      "parentUuid": "db246d31_0d4d4d8b",
+      "range": {
+        "startLine": 82,
+        "startChar": 41,
+        "endLine": 82,
+        "endChar": 44
+      },
+      "revId": "34ab0d5a39326eb8a3bdaf225a6540a656e0893e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
