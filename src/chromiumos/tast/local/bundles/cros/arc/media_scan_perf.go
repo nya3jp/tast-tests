@@ -235,6 +235,20 @@ func startMeasureMediaScanPerfWithApp(ctx context.Context, a *arc.ARC, tconn *ch
 	return act.Close, nil
 }
 
+func unmountMyFilesVolume(ctx context.Context, a *arc.ARC, cr *chrome.Chrome) error {
+	myFilesVolumeID, err := arc.MyFilesVolumeID(ctx, a)
+	if err != nil {
+		return errors.Wrap(err, "failed to get MyFiles volume ID")
+	}
+	if err := unmountDirectory(ctx, a, cr, myFilesVolumeID); err != nil {
+		return errors.Wrap(err, "failed to unmount MyFiles volume")
+	}
+	if err := arc.WaitForARCMyFilesVolumeUnmount(ctx, a); err != nil {
+		return errors.Wrap(err, "failed to wait for MyFiles volume to be unmounted")
+	}
+	return nil
+}
+
 func MediaScanPerf(ctx context.Context, s *testing.State) {
 	a := s.FixtValue().(*arc.PreData).ARC
 	cr := s.FixtValue().(*arc.PreData).Chrome
@@ -273,6 +287,14 @@ func MediaScanPerf(ctx context.Context, s *testing.State) {
 	// them and the elapsed time will be shorter than expected.
 	if err := clearMediaStoreDB(ctx, a); err != nil {
 		s.Fatal("Failed to clear MediaStore database: ", err)
+	}
+
+	// "sm unmount" often fails for the enumated volume when the MyFiles volume is
+	// mounted. Unmount the MyFiles volume before unmounting the emulated volume.
+	if param.volumeURISuffix == "emulated/0" {
+		if err := unmountMyFilesVolume(ctx, a, cr); err != nil {
+			s.Fatal("Failed to unmount MyFiles volume: ", err)
+		}
 	}
 
 	volumeID, err := param.volumeID(ctx, a)
