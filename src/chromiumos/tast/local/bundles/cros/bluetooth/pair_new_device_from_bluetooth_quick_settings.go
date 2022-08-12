@@ -7,7 +7,6 @@ package bluetooth
 import (
 	"context"
 
-	"chromiumos/tast/local/bluetooth"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/quicksettings"
@@ -20,7 +19,7 @@ const bluetoothPairingDialogURL = "chrome://bluetooth-pairing/"
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         PairNewDeviceFromBluetoothQuickSettings,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Checks that the pairing dialog can be opened from within the Bluetooth Quick Settings",
 		Contacts: []string{
 			"chadduffin@chromium.org",
@@ -28,7 +27,10 @@ func init() {
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
-		Fixture:      "chromeLoggedInWithBluetoothEnabled",
+		Params: []testing.Param{{
+			Name:    "floss_disabled",
+			Fixture: "chromeLoggedInWithBluetoothEnabled",
+		}},
 	})
 }
 
@@ -36,7 +38,7 @@ func init() {
 // open the pairing dialog from the "Pair new device" button in the detailed
 // Bluetooth view within the Quick Settings.
 func PairNewDeviceFromBluetoothQuickSettings(ctx context.Context, s *testing.State) {
-	cr := s.FixtValue().(*chrome.Chrome)
+	cr := s.FixtValue().(*ChromeLoggedInWithBluetoothEnabled).Chrome
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
@@ -47,7 +49,9 @@ func PairNewDeviceFromBluetoothQuickSettings(ctx context.Context, s *testing.Sta
 		s.Fatal("Failed to navigate to the detailed Bluetooth view: ", err)
 	}
 
-	if err := bluetooth.PollForBTEnabled(ctx); err != nil {
+	bt := s.FixtValue().(*ChromeLoggedInWithBluetoothEnabled).Impl
+
+	if err := bt.PollForEnabled(ctx); err != nil {
 		s.Fatal("Expected Bluetooth to be enabled: ", err)
 	}
 
