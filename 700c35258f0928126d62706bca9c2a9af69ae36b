@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3376d86_1b4d3749",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-08-12T23:44:32Z",
+      "side": 1,
+      "message": "There is a lot of overlap with existing tests.  Maybe what you want is a new attribute \"firmware_golden\" and then mark specific reliable tests with that, then you can run them with `tast run $D \u0027(\"group:firmware\" \u0026\u0026 firmware_golden)\u0027` or make a new control file \u0026 autotest suite for them.",
+      "revId": "700c35258f0928126d62706bca9c2a9af69ae36b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7e48cd4_7132d47d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_golden.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-08-12T23:44:32Z",
+      "side": 1,
+      "message": "Booting to recovery requires attr \"firmware_usb\" above.",
+      "range": {
+        "startLine": 75,
+        "startChar": 32,
+        "endLine": 75,
+        "endChar": 57
+      },
+      "revId": "700c35258f0928126d62706bca9c2a9af69ae36b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
