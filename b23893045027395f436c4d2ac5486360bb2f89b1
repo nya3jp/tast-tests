@@ -16,6 +16,23 @@
       "message": "Toni, please take a look. There\u0027s also an assistant test for launcher_to_peeking_animation_perf.go I might delete in a follow-up. I\u0027ve got email out to the assistant team to ask if they want to fix it and keep it.",
       "revId": "b23893045027395f436c4d2ac5486360bb2f89b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c484d315_c6adec51",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_page_switch_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-08-12T15:43:26Z",
+      "side": 1,
+      "message": "nit:\nPress \"Search\" to hide open windows, and show the home launcher.\n\n(or if you prefer, just s/since/because/)",
+      "revId": "b23893045027395f436c4d2ac5486360bb2f89b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
