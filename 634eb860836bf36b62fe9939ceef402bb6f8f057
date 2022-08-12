@@ -16,6 +16,23 @@
       "message": "I think Derek may be also changing some of the files here. CC him so that he is aware of the change.",
       "revId": "634eb860836bf36b62fe9939ceef402bb6f8f057",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7314ad3_701ab427",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-08-12T22:20:11Z",
+      "side": 1,
+      "message": "Please also run tast unit test: fast_build.sh -T\nThen, add this line to the commit long:\nTEST\u003dtast unit test passed.",
+      "revId": "634eb860836bf36b62fe9939ceef402bb6f8f057",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
