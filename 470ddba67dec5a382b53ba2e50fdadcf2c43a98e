@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1bee15b9_aa3416a1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/dev_mode_fw_screen.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1511666
+      },
+      "writtenOn": "2022-08-12T09:57:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bb6e8ef2_34d3d741",
+      "range": {
+        "startLine": 28,
+        "startChar": 43,
+        "endLine": 28,
+        "endChar": 57
+      },
+      "revId": "470ddba67dec5a382b53ba2e50fdadcf2c43a98e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8c39f9b6_b9e03dc8",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-08-11T16:16:18Z",
       "side": 1,
       "message": "You don\u0027t need to do this, the fixture resets these at the end of the test already.",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 0
+      },
+      "revId": "470ddba67dec5a382b53ba2e50fdadcf2c43a98e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0970331_de4e7fdb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/dev_mode_fw_screen.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1511666
+      },
+      "writtenOn": "2022-08-12T09:57:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8c39f9b6_b9e03dc8",
       "range": {
         "startLine": 46,
         "startChar": 0,
