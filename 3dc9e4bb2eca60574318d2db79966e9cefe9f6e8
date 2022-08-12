@@ -51,6 +51,24 @@
       "parentUuid": "087fa784_8516698c",
       "revId": "3dc9e4bb2eca60574318d2db79966e9cefe9f6e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ed3af4d_fd796c37",
+        "filename": "src/chromiumos/tast/local/bundles/cros/meta/local_poll.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1550176
+      },
+      "writtenOn": "2022-08-12T11:26:44Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "050fb84a_8ab2602d",
+      "revId": "3dc9e4bb2eca60574318d2db79966e9cefe9f6e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
