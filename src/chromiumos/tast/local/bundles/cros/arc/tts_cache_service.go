@@ -57,7 +57,7 @@ func (c *TTSCacheService) Generate(ctx context.Context, request *arcpb.TTSCacheR
 	cr, a, err := cache.OpenSession(ctx, args, targetDir)
 	if err != nil {
 		os.RemoveAll(targetDir)
-		return nil, errors.Wrap(err, "failed to generage TTS cache")
+		return nil, errors.Wrap(err, "failed to generate TTS cache")
 	}
 
 	defer cr.Close(ctx)
@@ -65,7 +65,7 @@ func (c *TTSCacheService) Generate(ctx context.Context, request *arcpb.TTSCacheR
 
 	if err := cache.CopyTTSCache(ctx, a, targetDir); err != nil {
 		os.RemoveAll(targetDir)
-		return nil, errors.Wrap(err, "failed to generage TTS cache")
+		return nil, errors.Wrap(err, "failed to generate TTS cache")
 	}
 
 	pregenCacheFileName := cache.PregeneratedTTSStateCache
@@ -76,7 +76,7 @@ func (c *TTSCacheService) Generate(ctx context.Context, request *arcpb.TTSCacheR
 		pregenCacheFileName = ""
 	}
 
-	testing.ContextLog(ctx, "Wating for TTS engine to be loaded")
+	testing.ContextLog(ctx, "Waiting for TTS engine to be loaded")
 	if err := a.WaitIntentHelper(ctx); err != nil {
 		return nil, errors.Wrap(err, "failed to wait for ARC Intent Helper")
 	}
