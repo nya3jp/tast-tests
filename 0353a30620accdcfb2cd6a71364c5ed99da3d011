@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ed31d1f_34d1a070",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/check_intel_fw_dump.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-08-12T06:34:58Z",
+      "side": 1,
+      "message": "\u003e \"witht\" is a possible misspelling of \"with\".\n\nPlease fix.",
+      "parentUuid": "94311c72_9b3af376",
+      "range": {
+        "startLine": 33,
+        "startChar": 5,
+        "endLine": 33,
+        "endChar": 10
+      },
+      "revId": "0353a30620accdcfb2cd6a71364c5ed99da3d011",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
