@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "0feed4dc_7019dada",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-08-12T21:43:42Z",
+      "side": 1,
+      "message": "Do you have fully set up ChromiumOS checkout? setting up chromiumOS[1] and running tast tests[2] can be found at the links below. Although, it might be more work than what its worth. I can download your CL and verify we see the data for you.\n\n[1] https://g3doc.corp.google.com/chrome/chromeos/system_services_team/dev_instructions/g3doc/setup_checkout_chromeos.md?cl\u003dhead\n[2] https://g3doc.corp.google.com/chrome/chromeos/system_services_team/dev_instructions/g3doc/e2e_tests.md?cl\u003dhead\n\nLmk if me verifying your CL would be preferable.",
+      "parentUuid": "65fa3188_1cc0d002",
+      "revId": "608bea5bd8bedda2a19d396079d5e03f06868746",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "4ae480f1_13036ed3",
