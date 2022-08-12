@@ -34,6 +34,41 @@
       "parentUuid": "f987c8ff_d08407b4",
       "revId": "cc623fd272fcb73cb996e54a26c2513ac444232d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "14040f64_52ae6574",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1542954
+      },
+      "writtenOn": "2022-08-12T16:36:26Z",
+      "side": 1,
+      "message": "At this point crrev.com/c/3816685 has landed, which helped to solve failures related to debugd. The coral-kernelnext failures remains due to failure starting the ui, which has nothing to do with these tasts.",
+      "parentUuid": "af1ef449_24e1aece",
+      "revId": "cc623fd272fcb73cb996e54a26c2513ac444232d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f3bea62_8d865221",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1542954
+      },
+      "writtenOn": "2022-08-12T16:36:26Z",
+      "side": 1,
+      "message": "printer.add* tests are passing in the latest build now, see tastboard at https://tastboard.corp.google.com/test?contact\u0026testname\u003dprinter.Add\nprinter.proxyadd tests are always reliable passing, see tastboard at https://tastboard.corp.google.com/test?contact\u0026testname\u003dprinter.ProxyAdd",
+      "revId": "cc623fd272fcb73cb996e54a26c2513ac444232d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
