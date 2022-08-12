@@ -29,7 +29,7 @@ func init() {
 		Contacts:     []string{"pf@semihalf.com", "chromeos-firmware@google.com"},
 		Attr:         []string{"group:firmware", "firmware_experimental", "firmware_usb"},
 		HardwareDeps: hwdep.D(hwdep.ChromeEC()),
-		Timeout:      20 * time.Minute,
+		Timeout:      50 * time.Minute,
 		Vars:         []string{"firmware.skipFlashUSB"},
 		SoftwareDeps: []string{"crossystem", "flashrom"},
 		ServiceDeps:  []string{"tast.cros.firmware.BiosService", "tast.cros.firmware.UtilsService"},
@@ -64,7 +64,7 @@ func CorruptBothFWBodyAB(ctx context.Context, s *testing.State) {
 	}
 
 	cleanupContext := ctx
-	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Minute)
+	ctx, cancel := ctxutil.Shorten(ctx, 15*time.Minute)
 	defer cancel()
 	s.Log("Backup firmware A/B body")
 	FWBodyABkp, err := h.BiosServiceClient.BackupImageSection(ctx, &pb.FWBackUpSection{Section: pb.ImageSection_FWBodyAImageSection, Programmer: pb.Programmer_BIOSProgrammer})
@@ -154,7 +154,7 @@ func CorruptBothFWBodyAB(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to get backup files to DUT from Host")
 		}
 
-		s.Log("Restore firmware bodys")
+		s.Log("Restore firmware bodies")
 		if _, err := h.BiosServiceClient.RestoreImageSection(ctx, FWBodyABkp); err != nil {
 			s.Fatal("Failed to restore FW Body A: ", err)
 		}
@@ -162,7 +162,7 @@ func CorruptBothFWBodyAB(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to restore FW Body B: ", err)
 		}
 
-		if err := ms.ModeAwareReboot(ctx, firmware.WarmReset, firmware.AssumeRecoveryMode); err != nil {
+		if err := ms.ModeAwareReboot(ctx, firmware.WarmReset, firmware.AssumeRecoveryMode, firmware.SkipModeCheckAfterReboot); err != nil {
 			s.Fatal("Failed to perform mode aware reboot: ", err)
 		}
 
