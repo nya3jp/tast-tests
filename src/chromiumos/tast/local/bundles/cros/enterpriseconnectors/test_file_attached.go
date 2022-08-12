@@ -6,6 +6,7 @@ package enterpriseconnectors
 
 import (
 	"context"
+	"fmt"
 	"io/ioutil"
 	"net/http"
 	"net/http/httptest"
@@ -26,6 +27,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/policyutil"
+	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/testing"
 )
 
@@ -300,8 +302,13 @@ func testFileAttachedForBrowserAndFile(
 	)(ctx); err != nil {
 		s.Fatal("Failed to open file: ", err)
 	}
-	if err := ui.WithInterval(20 * time.Millisecond).WaitUntilGone(nodewith.Name("Files").HasClass("WebContentsViewAura"))(ctx); err != nil {
-		s.Error("Failed to wait for File picker to close: ", err)
+	if err := ui.WithInterval(20 * time.Millisecond).WithTimeout(time.Second).WaitUntilGone(nodewith.Name("Files").HasClass("WebContentsViewAura"))(ctx); err != nil {
+		cr := s.FixtValue().(chrome.HasChrome).Chrome()
+		path := filepath.Join(s.OutDir(), fmt.Sprintf("screenshot-failed-to-close-file-picker-%s.png", params.TestName))
+		if err := screenshot.CaptureChrome(ctx, cr, path); err != nil {
+			s.Log("Failed to capture screenshot: ", err)
+		}
+		s.Fatal("Failed to wait for File picker to close: ", err)
 	}
 
 	verifyUIForFileAttached(ctx, shouldBlockUpload, params, testParams, br, s, server, testDirPath, ui, tconn)
