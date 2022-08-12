@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "5829986b_ef5cc78c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-08-12T19:59:25Z",
+      "side": 1,
+      "message": "Should we test this on a CUJ to ensure the new metrics are being loaded (verify non zero numbers in results-chart.json)? if you\u0027ve tested it in another CL then that\u0027s ok too. As long as the metrics themselves are correctly collected, our CUJs should properly record them if they are in this file.\n\nA couple example CUJs would be ui.MeetCUJ.2p (for mouse data) and ui.MeetCUJ.4p_present_notes_split (for key press data)\n\nNot sure a good test for touch.",
+      "revId": "608bea5bd8bedda2a19d396079d5e03f06868746",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "4ae480f1_13036ed3",
