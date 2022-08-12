@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "14c40fb3_70997a07",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cellular_policy_connection.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1516042
+      },
+      "writtenOn": "2022-08-12T21:47:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6f29eb06_216c4479",
+      "range": {
+        "startLine": 132,
+        "startChar": 3,
+        "endLine": 132,
+        "endChar": 173
+      },
+      "revId": "6106ee45acb233bff57c1889a68aed5b69642e65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c4371194_6f825df1",
@@ -81,6 +105,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5cbde6fb_45a9882a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cellular_policy_connection.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1516042
+      },
+      "writtenOn": "2022-08-12T21:47:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c4371194_6f825df1",
+      "range": {
+        "startLine": 134,
+        "startChar": 3,
+        "endLine": 135,
+        "endChar": 119
+      },
+      "revId": "6106ee45acb233bff57c1889a68aed5b69642e65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ee6702f9_a42d7b2f",
@@ -94,6 +142,30 @@
       "writtenOn": "2022-08-11T17:44:29Z",
       "side": 1,
       "message": "this pattern is a bit confusing to me since it allows two possible outcomes (either roaming toggle exists and we continue, or it doesn\u0027t and we return to the other page and continue). is there a way to make this clearer?",
+      "range": {
+        "startLine": 145,
+        "startChar": 3,
+        "endLine": 150,
+        "endChar": 4
+      },
+      "revId": "6106ee45acb233bff57c1889a68aed5b69642e65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "abd3898e_05263020",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cellular_policy_connection.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1516042
+      },
+      "writtenOn": "2022-08-12T21:47:13Z",
+      "side": 1,
+      "message": "Yeah, if it\u0027s the first time connecting the network from the network detail page, it may get back to the network subpage, so if the roaming toggle doesn\u0027t appear, which means it get back the network subpage, we will re-enter the detail page to continue the test. I tried to add some logs to make it clear. 😊",
+      "parentUuid": "ee6702f9_a42d7b2f",
       "range": {
         "startLine": 145,
         "startChar": 3,
