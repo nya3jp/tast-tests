@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "748eb1d6_d2a9cda9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2022-08-12T04:48:53Z",
+      "side": 1,
+      "message": "Hi, Jun. \nI updated in b/240998447 about simply changing DoDefault -\u003e LeftClick.\nIs this the information you want?\nPlease check, thank you!",
+      "parentUuid": "8d148973_d6b51a2b",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 12
+      },
+      "revId": "cef03beaa8670947ac36c78e864c6bdb38b7e76e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "58b20966_526b3114",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
