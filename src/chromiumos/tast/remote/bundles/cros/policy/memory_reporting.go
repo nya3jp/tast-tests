@@ -198,6 +198,7 @@ func MemoryReporting(ctx context.Context, s *testing.State) {
 		DmserverUrl:        reportingutil.DmServerURL,
 		ReportingServerUrl: reportingutil.ReportingServerURL,
 		EnabledFeatures:    "EncryptedReportingPipeline",
+		SkipLogin:          true,
 	}); err != nil {
 		s.Fatal("Failed to enroll using chrome: ", err)
 	}
