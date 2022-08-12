@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2cf81e48_8a63784f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/multi_function_printer.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2022-08-12T15:38:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0a98be0d_4c54f3f1",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 32
+      },
+      "revId": "948e119ed0999d96db4256cfd9d5212d19330183",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2a823c7a_85e7e76b",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-08-12T15:28:47Z",
       "side": 1,
       "message": "pls use special value you defined.",
+      "range": {
+        "startLine": 84,
+        "startChar": 25,
+        "endLine": 84,
+        "endChar": 31
+      },
+      "revId": "948e119ed0999d96db4256cfd9d5212d19330183",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa4dff2a_86945e4a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/multi_function_printer.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2022-08-12T15:38:10Z",
+      "side": 1,
+      "message": "Oops, missed that one.  Done.",
+      "parentUuid": "2a823c7a_85e7e76b",
       "range": {
         "startLine": 84,
         "startChar": 25,
