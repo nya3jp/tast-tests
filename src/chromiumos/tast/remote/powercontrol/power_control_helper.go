@@ -20,6 +20,7 @@ import (
 	"chromiumos/tast/remote/firmware"
 	"chromiumos/tast/rpc"
 	"chromiumos/tast/services/cros/security"
+	"chromiumos/tast/ssh"
 	"chromiumos/tast/ssh/linuxssh"
 	"chromiumos/tast/testing"
 )
@@ -182,4 +183,22 @@ func SlpAndC10PackageValues(ctx context.Context, dut *dut.DUT) (int, string, err
 	pkgOpSetValue := matchSetValue[1]
 
 	return slpOpSetValue, pkgOpSetValue, nil
+}
+
+// VerifyPowerdConfigSuspendValue verifies whether DUT is in expected suspend state
+// with given expectedConfigValue.
+func VerifyPowerdConfigSuspendValue(ctx context.Context, dut *dut.DUT, expectedConfigValue int) error {
+	powerdConfigCmd := "check_powerd_config --suspend_to_idle; echo $?"
+	configValue, err := dut.Conn().CommandContext(ctx, "bash", "-c", powerdConfigCmd).Output(ssh.DumpLogOnError)
+	if err != nil {
+		return errors.Wrap(err, "failed to execute power config check command")
+	}
+	got, err := strconv.Atoi(strings.TrimSpace(string(configValue)))
+	if err != nil {
+		return errors.Wrap(err, "failed to convert string to integer")
+	}
+	if want := expectedConfigValue; got != want {
+		return errors.Errorf("unexpected suspend state value: got %d, want %d", got, want)
+	}
+	return nil
 }
