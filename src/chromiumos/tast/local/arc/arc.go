@@ -51,6 +51,8 @@ const (
 	ARCPath = "/opt/google/containers/android"
 	//ARCVMPath is the pather where the VM images are installed in the rootfs.
 	ARCVMPath = "/opt/google/vms/android"
+
+	virtioBlkDataPropName = "ro.boot.arcvm_virtio_blk_data"
 )
 
 // DisableSyncFlags is the default flags for disabling ARC content sync and background activities when using GAIA accounts.
@@ -546,6 +548,15 @@ func isPlayStoreEnabled(ctx context.Context) (bool, error) {
 		}
 	}
 	return true, nil
+}
+
+// IsVirtioBlkDataEnabled returns whether ARCVM virtio-blk /data is enabled on the device.
+func (a *ARC) IsVirtioBlkDataEnabled(ctx context.Context) (bool, error) {
+	out, err := a.GetProp(ctx, virtioBlkDataPropName)
+	if err != nil {
+		return false, errors.Wrap(err, "failed to get prop for arcvm_virtio_blk_data")
+	}
+	return out == "1", nil
 }
 
 // chromeArgs returns command line arguments of the Chrome browser process.
