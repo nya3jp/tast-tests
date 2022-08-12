@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce6b020c_4ab9038c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/sshfs_mount.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-08-12T06:00:34Z",
+      "side": 1,
+      "message": "also need to handle the return error of polling:\n```\nif err:\u003dtesting.Poll(...); err!\u003dnil {\n    s.Fatal(...)\n}\n```",
+      "range": {
+        "startLine": 74,
+        "startChar": 9,
+        "endLine": 74,
+        "endChar": 13
+      },
+      "revId": "c5f5103b6f7083c1f51395665a7772c38eb07cd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9a280cc_69a3efe7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/sshfs_mount.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-08-12T06:00:34Z",
+      "side": 1,
+      "message": "no need to use `else`. Just `return nil` (go style thing http://go/go-style/decisions#indent-error-flow)",
+      "range": {
+        "startLine": 79,
+        "startChar": 4,
+        "endLine": 81,
+        "endChar": 3
+      },
+      "revId": "c5f5103b6f7083c1f51395665a7772c38eb07cd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
