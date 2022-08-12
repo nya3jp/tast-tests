@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef14ad2e_41f0ea31",
+        "filename": "src/chromiumos/tast/local/bluetooth/bluez.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-08-12T19:03:28Z",
+      "side": 1,
+      "message": "Will Floss have a similar Adapter implementation? If so it could be a good candidate to have an interface for this too. If not, the way this CL wraps things needed for tests in `Bluetooth` also LGTM!",
+      "revId": "9b2d02f9106c3e00d73c0e78b93ad457fbffa027",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
