@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6656b0d6_7821a351",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cert_settings_page.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1357438
+      },
+      "writtenOn": "2022-08-12T13:06:49Z",
+      "side": 1,
+      "message": "Yes, I\u0027ve seen it.\nAs discussed offline, we can just add a comment.",
+      "parentUuid": "d07214af_0a602e08",
+      "range": {
+        "startLine": 56,
+        "startChar": 33,
+        "endLine": 56,
+        "endChar": 57
+      },
+      "revId": "13f65feff42da4410a69c785e6dece8141f28c2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bf58101a_bcda3b60",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-08-12T06:05:02Z",
       "side": 1,
       "message": "WDYT about\n\n- try without anything -\u003e expect invalid CA error\n (import CA cert)\n- try only with CA cert -\u003e expect invalid client cert error\n (import client cert)\n- try with both CA and client cert -\u003e expect success\n (delete client cert)\n .. continue as we\u0027re already doing it ..\n \n \nOr in words, about also testing that the CA cert import becomes effective in isolation?",
+      "range": {
+        "startLine": 410,
+        "startChar": 0,
+        "endLine": 410,
+        "endChar": 78
+      },
+      "revId": "13f65feff42da4410a69c785e6dece8141f28c2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b879a201_c9c723e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cert_settings_page.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1357438
+      },
+      "writtenOn": "2022-08-12T13:06:49Z",
+      "side": 1,
+      "message": "I thought about it and the problem is the call to waitForClientCert().\nIt also kind of waits for the CA cert to start working.\nSo if I try to fish for a CA error right after importCACert, that\u0027s quite flaky.\nAnd the CA cert is not in chaps, so I cannot simply copypaste the wait function for it.\nDiscussed offline, resovling.",
+      "parentUuid": "bf58101a_bcda3b60",
       "range": {
         "startLine": 410,
         "startChar": 0,
