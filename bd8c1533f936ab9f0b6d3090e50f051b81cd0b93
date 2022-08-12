@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "493621a4_52b636f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quick_check_cuj2.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2022-08-12T01:03:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5c826239_b409d3c1",
+      "range": {
+        "startLine": 110,
+        "startChar": 8,
+        "endLine": 110,
+        "endChar": 19
+      },
+      "revId": "bd8c1533f936ab9f0b6d3090e50f051b81cd0b93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7b28a895_eb6a1184",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f90c0795_634764a3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quick_check_cuj2.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2022-08-12T01:03:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b28a895_eb6a1184",
+      "range": {
+        "startLine": 114,
+        "startChar": 5,
+        "endLine": 114,
+        "endChar": 10
+      },
+      "revId": "bd8c1533f936ab9f0b6d3090e50f051b81cd0b93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3db6a90d_ebfec42f",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-08-12T00:59:19Z",
       "side": 1,
       "message": "nit: please do not omit the err message in log.",
+      "range": {
+        "startLine": 118,
+        "startChar": 5,
+        "endLine": 118,
+        "endChar": 11
+      },
+      "revId": "bd8c1533f936ab9f0b6d3090e50f051b81cd0b93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d0df037_992f100b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quick_check_cuj2.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2022-08-12T01:03:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3db6a90d_ebfec42f",
       "range": {
         "startLine": 118,
         "startChar": 5,
