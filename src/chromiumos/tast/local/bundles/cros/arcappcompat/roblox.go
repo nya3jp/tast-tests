@@ -34,51 +34,51 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Functional test for Roblox that installs the app also verifies it is logged in and that the main page is open, checks Roblox correctly changes the window state in both clamshell and touchview mode",
 		Contacts:     []string{"mthiyagarajan@chromium.org", "cros-appcompat-test-team@google.com"},
-		Attr:         []string{"group:appcompat", "appcompat_release", "appcompat_top_apps"},
+		Attr:         []string{"group:appcompat", "appcompat_top_apps"},
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{
-			Name: "clamshell_mode_default",
+			Name: "clamshell_mode_release",
 			Val: testutil.TestParams{
-				LaunchTests: clamshellLaunchForRoblox,
-				CommonTests: testutil.ClamshellCommonTests,
+				LaunchTests:  clamshellLaunchForRoblox,
+				ReleaseTests: testutil.ClamshellReleaseTests,
 			},
-			ExtraAttr:         []string{"appcompat_default"},
+			ExtraAttr:         []string{"appcompat_release"},
 			ExtraSoftwareDeps: []string{"android_p"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
 			// Skip on tablet only models.
 			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(testutil.TabletOnlyModels...)),
 			Pre:               pre.AppCompatBootedUsingTestAccountPool,
 		}, {
-			Name: "tablet_mode_default",
+			Name: "tablet_mode_release",
 			Val: testutil.TestParams{
-				LaunchTests: touchviewLaunchForRoblox,
-				CommonTests: testutil.TouchviewCommonTests,
+				LaunchTests:  touchviewLaunchForRoblox,
+				ReleaseTests: testutil.TouchviewReleaseTests,
 			},
-			ExtraAttr:         []string{"appcompat_default"},
+			ExtraAttr:         []string{"appcompat_release"},
 			ExtraSoftwareDeps: []string{"android_p"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
 			// Skip on clamshell only models.
 			ExtraHardwareDeps: hwdep.D(hwdep.TouchScreen(), hwdep.SkipOnModel(testutil.ClamshellOnlyModels...)),
 			Pre:               pre.AppCompatBootedInTabletModeUsingTestAccountPool,
 		}, {
-			Name: "vm_clamshell_mode_default",
+			Name: "vm_clamshell_mode_release",
 			Val: testutil.TestParams{
-				LaunchTests: clamshellLaunchForRoblox,
-				CommonTests: testutil.ClamshellCommonTests,
+				LaunchTests:  clamshellLaunchForRoblox,
+				ReleaseTests: testutil.ClamshellReleaseTests,
 			},
-			ExtraAttr:         []string{"appcompat_default"},
+			ExtraAttr:         []string{"appcompat_release"},
 			ExtraSoftwareDeps: []string{"android_vm"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
 			// Skip on tablet only models.
 			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(testutil.TabletOnlyModels...)),
 			Pre:               pre.AppCompatBootedUsingTestAccountPool,
 		}, {
-			Name: "vm_tablet_mode_default",
+			Name: "vm_tablet_mode_release",
 			Val: testutil.TestParams{
-				LaunchTests: touchviewLaunchForRoblox,
-				CommonTests: testutil.TouchviewCommonTests,
+				LaunchTests:  touchviewLaunchForRoblox,
+				ReleaseTests: testutil.TouchviewReleaseTests,
 			},
-			ExtraAttr:         []string{"appcompat_default"},
+			ExtraAttr:         []string{"appcompat_release"},
 			ExtraSoftwareDeps: []string{"android_vm"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
 			// Skip on clamshell only models.

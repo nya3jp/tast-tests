@@ -46,55 +46,55 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Functional test for Youtube that installs the app also verifies it is logged in and that the main page is open, checks Gmail correctly changes the window state in both clamshell and touchview mode",
 		Contacts:     []string{"mthiyagarajan@chromium.org", "cros-appcompat-test-team@google.com"},
-		Attr:         []string{"group:appcompat", "appcompat_release"},
+		Attr:         []string{"group:appcompat", "appcompat_top_apps"},
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{
-			Name: "clamshell_mode_top_apps",
+			Name: "clamshell_mode_release",
 			Val: testutil.TestParams{
 				LaunchTests:      clamshellLaunchForYoutube,
-				TopAppTests:      testutil.ClamshellTopAppTests,
+				ReleaseTests:     testutil.ClamshellReleaseTests,
 				AppSpecificTests: clamshellAppSpecificTestsForYoutube,
 			},
-			ExtraAttr:         []string{"appcompat_top_apps"},
+			ExtraAttr:         []string{"appcompat_release"},
 			ExtraSoftwareDeps: []string{"android_p"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
 			// Skip on tablet only models.
 			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(testutil.TabletOnlyModels...)),
 			Pre:               pre.AppCompatBootedUsingTestAccountPool,
 		}, {
-			Name: "tablet_mode_top_apps",
+			Name: "tablet_mode_release",
 			Val: testutil.TestParams{
 				LaunchTests:      touchviewLaunchForYoutube,
-				TopAppTests:      testutil.TouchviewTopAppTests,
+				ReleaseTests:     testutil.TouchviewReleaseTests,
 				AppSpecificTests: touchviewAppSpecificTestsForYoutube,
 			},
-			ExtraAttr:         []string{"appcompat_top_apps"},
+			ExtraAttr:         []string{"appcompat_release"},
 			ExtraSoftwareDeps: []string{"android_p"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
 			// Skip on clamshell only models.
 			ExtraHardwareDeps: hwdep.D(hwdep.TouchScreen(), hwdep.SkipOnModel(testutil.ClamshellOnlyModels...)),
 			Pre:               pre.AppCompatBootedInTabletModeUsingTestAccountPool,
 		}, {
-			Name: "vm_clamshell_mode_top_apps",
+			Name: "vm_clamshell_mode_release",
 			Val: testutil.TestParams{
 				LaunchTests:      clamshellLaunchForYoutube,
-				TopAppTests:      testutil.ClamshellTopAppTests,
+				ReleaseTests:     testutil.ClamshellReleaseTests,
 				AppSpecificTests: clamshellAppSpecificTestsForYoutube,
 			},
-			ExtraAttr:         []string{"appcompat_top_apps"},
+			ExtraAttr:         []string{"appcompat_release"},
 			ExtraSoftwareDeps: []string{"android_vm"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
 			// Skip on tablet only models.
 			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(testutil.TabletOnlyModels...)),
 			Pre:               pre.AppCompatBootedUsingTestAccountPool,
 		}, {
-			Name: "vm_tablet_mode_top_apps",
+			Name: "vm_tablet_mode_release",
 			Val: testutil.TestParams{
 				LaunchTests:      touchviewLaunchForYoutube,
-				TopAppTests:      testutil.TouchviewTopAppTests,
+				ReleaseTests:     testutil.TouchviewReleaseTests,
 				AppSpecificTests: touchviewAppSpecificTestsForYoutube,
 			},
-			ExtraAttr:         []string{"appcompat_top_apps"},
+			ExtraAttr:         []string{"appcompat_release"},
 			ExtraSoftwareDeps: []string{"android_vm"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
 			// Skip on clamshell only models.
