@@ -10,6 +10,7 @@ import (
 	"strings"
 	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/lacros/lacrosfaillog"
@@ -51,14 +52,17 @@ func crashFiles() ([]string, error) {
 }
 
 func Basic(ctx context.Context, s *testing.State) {
-	// Fail if crashes are reported during the test.
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 30*time.Second)
+	defer cancel()
+
 	crashFilesBefore, err := crashFiles()
 	if err != nil {
 		s.Fatal("Failed to read crash directory: ", err)
 	}
-	defer func() {
+	failIfCrashesWereReported := func() {
 		// Wait a few seconds for any reports to get written to disk.
-		if err := testing.Sleep(ctx, 5*time.Second); err != nil {
+		if err := testing.Sleep(cleanupCtx, 5*time.Second); err != nil {
 			s.Fatal("Failed to sleep: ", err)
 		}
 		crashFilesAfter, err := crashFiles()
@@ -69,7 +73,7 @@ func Basic(ctx context.Context, s *testing.State) {
 		if len(newCrashFiles) != 0 {
 			s.Fatal("Detected new crash reports (see the \"crashes\" directory in the Tast results):\n\t" + strings.Join(newCrashFiles, "\n\t"))
 		}
-	}()
+	}
 
 	tconn, err := s.FixtValue().(chrome.HasChrome).Chrome().TestAPIConn(ctx)
 	if err != nil {
@@ -77,14 +81,15 @@ func Basic(ctx context.Context, s *testing.State) {
 	}
 
 	l, err := lacros.Launch(ctx, tconn)
-	defer lacrosfaillog.SaveIf(ctx, tconn, s.HasError)
 	if err != nil {
 		s.Fatal("Failed to launch lacros-chrome: ", err)
 	}
-	defer l.Close(ctx)
+	defer lacrosfaillog.SaveIf(cleanupCtx, tconn, s.HasError)
+	defer failIfCrashesWereReported()
+	defer l.Close(cleanupCtx)
 
 	// Test that a new blank tab can be opened.
-	conn, err := l.NewConn(ctx, "about:blank")
+	conn, err := l.NewConn(ctx, chrome.BlankURL)
 	if err != nil {
 		s.Fatal("Failed to open new tab: ", err)
 	}
