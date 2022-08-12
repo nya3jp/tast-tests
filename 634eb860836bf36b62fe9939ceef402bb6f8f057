@@ -123,6 +123,59 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c79308cf_d7f30488",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-08-12T23:05:04Z",
+      "side": 1,
+      "message": "Please see my comment. I am going to give this CL a +1. Please have somebody familiar with this project to review it and give you a +2.",
+      "revId": "634eb860836bf36b62fe9939ceef402bb6f8f057",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b890fbb_cd5b1b74",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-08-12T23:05:04Z",
+      "side": 1,
+      "message": "No, you didn\u0027t.\n\nYou only have \n```\nCq-Depend: chromium:3817407\n```\n\nI meant\n```\nCq-Depend: chromium:3817407\nCq-Depend: chromium:3830207\n```",
+      "parentUuid": "5fd51d08_7acc6fe4",
+      "revId": "634eb860836bf36b62fe9939ceef402bb6f8f057",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "129a7509_ac145a36",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-08-12T23:05:04Z",
+      "side": 1,
+      "message": "Then add this line to you commit log\n```\nTEST\u003dtast unit test passed\n```\nThanks.",
+      "parentUuid": "91957472_02673360",
+      "revId": "634eb860836bf36b62fe9939ceef402bb6f8f057",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "95c10f93_50980745",
@@ -158,6 +211,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "770b628d_186fe05a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/roblox.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-08-12T23:05:04Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3fcd8e4e_5ef6e677",
+      "revId": "634eb860836bf36b62fe9939ceef402bb6f8f057",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cd273a09_fa5aeffc",
@@ -189,6 +260,24 @@
       "side": 1,
       "message": "Hi Seewai, Removal of \"clamshell_mode\" for squid and other apps are taken in respective related CLs, please find, https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3828741/1/src/chromiumos/tast/local/bundles/cros/arcappcompat/squid.go.",
       "parentUuid": "cd273a09_fa5aeffc",
+      "revId": "634eb860836bf36b62fe9939ceef402bb6f8f057",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3487de40_dfb5ae6b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/squid.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-08-12T23:05:04Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9ffcfaa5_0b6e3572",
       "revId": "634eb860836bf36b62fe9939ceef402bb6f8f057",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
