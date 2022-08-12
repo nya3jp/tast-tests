@@ -16,6 +16,29 @@
       "message": "Toni, please take a look. What do you think of me landing this now? I could also wait until after the branch next Thursday. Or I could put back launcher.Smoke and delete the rest now, and Smoke after the branch. WDYT?\n",
       "revId": "af80f54008f8df414bbbd99fdc3f5a86fc52264e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9acd2b88_f6a6c25f",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-08-12T15:39:07Z",
+      "side": 1,
+      "message": "super nit: I\u0027d move todo up to type TestCase (we don\u0027t need a struct to wrap a single bool :) )",
+      "range": {
+        "startLine": 75,
+        "startChar": 19,
+        "endLine": 75,
+        "endChar": 26
+      },
+      "revId": "af80f54008f8df414bbbd99fdc3f5a86fc52264e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
