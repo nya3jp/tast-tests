@@ -167,7 +167,7 @@ func ConfigureChromeToAcceptCertificate(ctx context.Context, config ServerConfig
 	authTabText := nodewith.Name("You have certificates on file that identify these certificate authorities").Role(role.StaticText)
 	importButton := nodewith.Name("Import").Role(role.Button)
 	certFileItem := nodewith.Name(caCertFileName).Role(role.ListBoxOption)
-	openButton := nodewith.Name("Open").Role(role.Button)
+	openButton := nodewith.Name("Open").Role(role.Button).State("focusable", true)
 	trust1Checkbox := nodewith.NameContaining("Trust this certificate for identifying websites").Role(role.CheckBox)
 	trust2Checkbox := nodewith.NameContaining("Trust this certificate for identifying email users").Role(role.CheckBox)
 	trust3Checkbox := nodewith.NameContaining("Trust this certificate for identifying software makers").Role(role.CheckBox)
@@ -180,7 +180,7 @@ func ConfigureChromeToAcceptCertificate(ctx context.Context, config ServerConfig
 		ui.WaitUntilExists(importButton),
 		ui.DoDefault(importButton),
 		ui.WaitUntilExists(certFileItem),
-		ui.LeftClick(certFileItem),
+		ui.DoDefault(certFileItem),
 		ui.WaitUntilExists(openButton),
 		ui.DoDefault(openButton),
 		ui.WaitUntilExists(trust1Checkbox),
