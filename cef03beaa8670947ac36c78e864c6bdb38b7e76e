@@ -98,6 +98,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a11e1df7_a7018b31",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-08-12T07:07:58Z",
+      "side": 1,
+      "message": "Thanks for the information. I do not have any good suggestion at the moment. I am happy to approve the CL to land first. One more question, since you use KEY `k` to play and pause video, can you make it the common approach for all in the test? It does not look good that it uses multiple methods: LeftClick, DoDefault, Keyboard. I can see them in this test.",
+      "parentUuid": "748eb1d6_d2a9cda9",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 12
+      },
+      "revId": "cef03beaa8670947ac36c78e864c6bdb38b7e76e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "58b20966_526b3114",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
