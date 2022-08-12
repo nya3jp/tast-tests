@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9269c83c_a14a0f8f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-08-12T07:00:10Z",
+      "side": 1,
+      "message": "+2 for Tast Review",
+      "revId": "c82a6ad6411f9bd0a20ccde8a89e5681365b608f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "222ca9bf_01286f25",
+        "filename": "src/chromiumos/tast/local/chrome/cuj/get_test_doc_url.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-08-12T07:00:10Z",
+      "side": 1,
+      "message": "optional: probably don\u0027t need this (code is functionally the same without)",
+      "range": {
+        "startLine": 19,
+        "startChar": 9,
+        "endLine": 19,
+        "endChar": 11
+      },
+      "revId": "c82a6ad6411f9bd0a20ccde8a89e5681365b608f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
