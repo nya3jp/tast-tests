@@ -22,6 +22,30 @@
       },
       "revId": "363f957e26f47f4bf08c01c8a9bfd72cbe009613",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8b271fc_410278e1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/rgbkbd/capslock_color_change_prevented_for_zoned_keyboards.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1445142
+      },
+      "writtenOn": "2022-08-12T15:35:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b1c0193_9ae32428",
+      "range": {
+        "startLine": 32,
+        "startChar": 16,
+        "endLine": 32,
+        "endChar": 18
+      },
+      "revId": "363f957e26f47f4bf08c01c8a9bfd72cbe009613",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
