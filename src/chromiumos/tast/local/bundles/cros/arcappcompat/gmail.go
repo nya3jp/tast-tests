@@ -37,6 +37,54 @@ func init() {
 		Attr:         []string{"group:appcompat", "appcompat_smoke", "appcompat_top_apps"},
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{
+			Name: "clamshell_mode_release",
+			Val: testutil.TestParams{
+				LaunchTests:  clamshellLaunchForGmail,
+				ReleaseTests: testutil.ClamshellReleaseTests,
+			},
+			ExtraAttr:         []string{"appcompat_release"},
+			ExtraSoftwareDeps: []string{"android_p"},
+			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
+			// Skip on tablet only models.
+			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(testutil.TabletOnlyModels...)),
+			Pre:               pre.AppCompatBootedUsingTestAccountPool,
+		}, {
+			Name: "tablet_mode_release",
+			Val: testutil.TestParams{
+				LaunchTests:  touchviewLaunchForGmail,
+				ReleaseTests: testutil.TouchviewReleaseTests,
+			},
+			ExtraAttr:         []string{"appcompat_release"},
+			ExtraSoftwareDeps: []string{"android_p"},
+			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
+			// Skip on clamshell only models.
+			ExtraHardwareDeps: hwdep.D(hwdep.TouchScreen(), hwdep.SkipOnModel(testutil.ClamshellOnlyModels...)),
+			Pre:               pre.AppCompatBootedInTabletModeUsingTestAccountPool,
+		}, {
+			Name: "vm_clamshell_mode_release",
+			Val: testutil.TestParams{
+				LaunchTests:  clamshellLaunchForGmail,
+				ReleaseTests: testutil.ClamshellReleaseTests,
+			},
+			ExtraAttr:         []string{"appcompat_release"},
+			ExtraSoftwareDeps: []string{"android_vm"},
+			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
+			// Skip on tablet only models.
+			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(testutil.TabletOnlyModels...)),
+			Pre:               pre.AppCompatBootedUsingTestAccountPool,
+		}, {
+			Name: "vm_tablet_mode_release",
+			Val: testutil.TestParams{
+				LaunchTests:  touchviewLaunchForGmail,
+				ReleaseTests: testutil.TouchviewReleaseTests,
+			},
+			ExtraAttr:         []string{"appcompat_release"},
+			ExtraSoftwareDeps: []string{"android_vm"},
+			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
+			// Skip on clamshell only models.
+			ExtraHardwareDeps: hwdep.D(hwdep.TouchScreen(), hwdep.SkipOnModel(testutil.ClamshellOnlyModels...)),
+			Pre:               pre.AppCompatBootedInTabletModeUsingTestAccountPool,
+		}, {
 			Name: "clamshell_mode",
 			Val: testutil.TestParams{
 				LaunchTests: clamshellLaunchForGmail,
