@@ -6,9 +6,13 @@ package arc
 
 import (
 	"context"
+	"fmt"
 	"os"
 	"path/filepath"
+	"strconv"
+	"strings"
 
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/cryptohome"
 )
@@ -109,4 +113,55 @@ func (a *ARC) TempDir(ctx context.Context) (string, error) {
 // The path must be abspath.
 func (a *ARC) RemoveAll(ctx context.Context, path string) error {
 	return a.device.RemoveAll(ctx, path)
+}
+
+// getARCVMCID returns the CID of ARCVM.
+func getARCVMCID(ctx context.Context, user string) (int, error) {
+	hash, err := cryptohome.UserHash(ctx, user)
+	if err != nil {
+		return 0, err
+	}
+	out, err := testexec.CommandContext(
+		ctx, "concierge_client", "--get_vm_cid", "--name=arcvm",
+		fmt.Sprintf("--cryptohome_id=%s", hash)).Output(testexec.DumpLogOnError)
+	if err != nil {
+		return 0, err
+	}
+	cid, err := strconv.Atoi(strings.TrimSpace(string(out)))
+	if err != nil {
+		return 0, err
+	}
+	return cid, nil
+}
+
+// MountExternalStorageOnHostWithSSHFS mounts Android's external storage directory /storage/emulated/0
+// on the host's /home/root/<hash>/android-data/data/media/0 using SSHFS.
+func MountExternalStorageOnHostWithSSHFS(ctx context.Context, user string) error {
+	androidDataDir, err := AndroidDataDir(ctx, user)
+	if err != nil {
+		return errors.Wrap(err, "failed to get Android data dir")
+	}
+	cid, err := getARCVMCID(ctx, user)
+	if err != nil {
+		return errors.Wrap(err, "failed to get ARCVM CID")
+	}
+	// On the guest side, arc-sftp-server-launcher starts SFTP server for /storage/emulated/0 at
+	// port 7780 on ARC startup.
+	cmd := testexec.CommandContext(
+		// Use nonempty option since /home/root/<hash>/android-data/data/media/0 usually has
+		// an empty Download directory.
+		ctx, "sshfs", "-o", fmt.Sprintf("nonempty,vsock=%d:7780", cid), "unused:",
+		filepath.Join(androidDataDir, "/data/media/0"))
+	return cmd.Run(testexec.DumpLogOnError)
+}
+
+// UnmountExternalStorageFromHost unmounts Android's external storage from the host's
+// /home/root/<hash>/android-data/data/media/0.
+func UnmountExternalStorageFromHost(ctx context.Context, user string) error {
+	androidDataDir, err := AndroidDataDir(ctx, user)
+	if err != nil {
+		return errors.Wrap(err, "failed to get Android data dir")
+	}
+	cmd := testexec.CommandContext(ctx, "umount", filepath.Join(androidDataDir, "/data/media/0"))
+	return cmd.Run(testexec.DumpLogOnError)
 }
