@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c63e1cf_7eae4c71",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 22
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1545162
+      },
+      "writtenOn": "2022-08-12T02:02:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "605745d9_d719e6ae",
+      "range": {
+        "startLine": 7,
+        "startChar": 9,
+        "endLine": 7,
+        "endChar": 12
+      },
+      "revId": "aaa0a4f5e6787896af2e4c82d6713bb79fcaf3e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4962d87e_a67b6b36",
@@ -70,6 +94,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca5359c4_23a46a1e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 22
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1545162
+      },
+      "writtenOn": "2022-08-12T02:02:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ce0c6f3b_2ba2a846",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 96
+      },
+      "revId": "aaa0a4f5e6787896af2e4c82d6713bb79fcaf3e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "78269c6e_b8fb4f27",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 22
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1545162
+      },
+      "writtenOn": "2022-08-12T02:02:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4962d87e_a67b6b36",
+      "range": {
+        "startLine": 9,
+        "startChar": 74,
+        "endLine": 9,
+        "endChar": 77
+      },
+      "revId": "aaa0a4f5e6787896af2e4c82d6713bb79fcaf3e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e2ee6db5_b2d19b9c",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-08-09T18:31:20Z",
       "side": 1,
       "message": "`explanation`",
+      "range": {
+        "startLine": 10,
+        "startChar": 24,
+        "endLine": 10,
+        "endChar": 36
+      },
+      "revId": "aaa0a4f5e6787896af2e4c82d6713bb79fcaf3e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae866e50_bc78925c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 22
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1545162
+      },
+      "writtenOn": "2022-08-12T02:02:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e2ee6db5_b2d19b9c",
       "range": {
         "startLine": 10,
         "startChar": 24,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8309148_cf92706c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 22
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1545162
+      },
+      "writtenOn": "2022-08-12T02:02:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8c7e1ba6_a193b4dc",
+      "range": {
+        "startLine": 12,
+        "startChar": 36,
+        "endLine": 12,
+        "endChar": 43
+      },
+      "revId": "aaa0a4f5e6787896af2e4c82d6713bb79fcaf3e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c5953233_f6228e25",
@@ -129,6 +249,30 @@
       "writtenOn": "2022-08-09T18:31:20Z",
       "side": 1,
       "message": "`controls`",
+      "range": {
+        "startLine": 13,
+        "startChar": 39,
+        "endLine": 13,
+        "endChar": 46
+      },
+      "revId": "aaa0a4f5e6787896af2e4c82d6713bb79fcaf3e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "33c0be2d_0d500b75",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 22
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1545162
+      },
+      "writtenOn": "2022-08-12T02:02:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c5953233_f6228e25",
       "range": {
         "startLine": 13,
         "startChar": 39,
@@ -162,6 +306,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f1bb584_46fd0294",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 22
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1545162
+      },
+      "writtenOn": "2022-08-12T02:02:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ff6dd562_f53c2b0d",
+      "range": {
+        "startLine": 14,
+        "startChar": 39,
+        "endLine": 14,
+        "endChar": 46
+      },
+      "revId": "aaa0a4f5e6787896af2e4c82d6713bb79fcaf3e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4066d44d_a1c59844",
@@ -175,6 +343,30 @@
       "writtenOn": "2022-08-09T18:31:20Z",
       "side": 1,
       "message": "Please heed the preupload hooks.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 63
+      },
+      "revId": "aaa0a4f5e6787896af2e4c82d6713bb79fcaf3e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9d97736_c678e984",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/dock2_persistent_settings.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1545162
+      },
+      "writtenOn": "2022-08-12T02:02:16Z",
+      "side": 1,
+      "message": "I do not understand this problem, could you explain more?",
+      "parentUuid": "4066d44d_a1c59844",
       "range": {
         "startLine": 1,
         "startChar": 0,
@@ -231,6 +423,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c76a206c_5e11d01b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/dock2_persistent_settings.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1545162
+      },
+      "writtenOn": "2022-08-12T02:02:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7cebe775_360d6180",
+      "range": {
+        "startLine": 77,
+        "startChar": 105,
+        "endLine": 77,
+        "endChar": 107
+      },
+      "revId": "aaa0a4f5e6787896af2e4c82d6713bb79fcaf3e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "166c3bdb_b66f3270",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/dock2_persistent_settings.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1545162
+      },
+      "writtenOn": "2022-08-12T02:02:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e82df306_52b6a8e1",
+      "range": {
+        "startLine": 77,
+        "startChar": 83,
+        "endLine": 77,
+        "endChar": 86
+      },
+      "revId": "aaa0a4f5e6787896af2e4c82d6713bb79fcaf3e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9cd950b0_49bed10a",
@@ -244,6 +484,24 @@
       "writtenOn": "2022-08-09T18:31:20Z",
       "side": 1,
       "message": "This test also needs\n\t\tHardwareDeps: hwdep.D(hwdep.InternalDisplay()),\nbecause of Step 8.",
+      "revId": "aaa0a4f5e6787896af2e4c82d6713bb79fcaf3e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "35cd71b1_0b4cc3a1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/dock2_persistent_settings.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1545162
+      },
+      "writtenOn": "2022-08-12T02:02:16Z",
+      "side": 1,
+      "message": "Done. Also do the same on dock1.",
+      "parentUuid": "9cd950b0_49bed10a",
       "revId": "aaa0a4f5e6787896af2e4c82d6713bb79fcaf3e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -294,6 +552,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff34309f_928be49b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/dock2_persistent_settings.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1545162
+      },
+      "writtenOn": "2022-08-12T02:02:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "10f1ba2c_0314fa79",
+      "range": {
+        "startLine": 108,
+        "startChar": 1,
+        "endLine": 108,
+        "endChar": 25
+      },
+      "revId": "aaa0a4f5e6787896af2e4c82d6713bb79fcaf3e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "75f55aa0_df18a905",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/dock2_persistent_settings.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1545162
+      },
+      "writtenOn": "2022-08-12T02:02:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "757604df_5e9832f0",
+      "range": {
+        "startLine": 108,
+        "startChar": 0,
+        "endLine": 108,
+        "endChar": 56
+      },
+      "revId": "aaa0a4f5e6787896af2e4c82d6713bb79fcaf3e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9e30a1b1_164d6f36",
@@ -307,6 +613,30 @@
       "writtenOn": "2022-08-09T18:31:20Z",
       "side": 1,
       "message": "Should be:\n\t\treturn ash.ForEachWindow(ctx, tconn, func(w *ash.Window) error {\n\t\t\tif err :\u003d w.ActivateWindow(ctx, tconn); err !\u003d nil {\n\t\t\t\treturn err\n\t\t\t}\n\t\t\treturn utils.SwitchWindowToDisplay(ctx, tconn, kb, true)(ctx)\n\t\t})",
+      "range": {
+        "startLine": 183,
+        "startChar": 0,
+        "endLine": 195,
+        "endChar": 12
+      },
+      "revId": "aaa0a4f5e6787896af2e4c82d6713bb79fcaf3e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "598008b9_6bf8244f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/dock2_persistent_settings.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1545162
+      },
+      "writtenOn": "2022-08-12T02:02:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9e30a1b1_164d6f36",
       "range": {
         "startLine": 183,
         "startChar": 0,
@@ -340,6 +670,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d22f7ed_b5cd5cba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/dock2_persistent_settings.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1545162
+      },
+      "writtenOn": "2022-08-12T02:02:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1c0e9236_32f1ffec",
+      "range": {
+        "startLine": 265,
+        "startChar": 4,
+        "endLine": 265,
+        "endChar": 10
+      },
+      "revId": "aaa0a4f5e6787896af2e4c82d6713bb79fcaf3e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "972bdb88_ac68c871",
@@ -353,6 +707,30 @@
       "writtenOn": "2022-08-09T18:31:20Z",
       "side": 1,
       "message": "Should be:\n\treturn testing.Poll(ctx, func(ctx context.Context) error {\n\t\t...\n\t}, \u0026testing.PollOptions{Timeout: 30 * time.Second, Interval: 2 * time.Second})",
+      "range": {
+        "startLine": 266,
+        "startChar": 0,
+        "endLine": 293,
+        "endChar": 11
+      },
+      "revId": "aaa0a4f5e6787896af2e4c82d6713bb79fcaf3e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b912a702_0e1c242b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/dock2_persistent_settings.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1545162
+      },
+      "writtenOn": "2022-08-12T02:02:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "972bdb88_ac68c871",
       "range": {
         "startLine": 266,
         "startChar": 0,
