@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c3e2875_d5fcd47a",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/faillog/screenshot.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-08-12T07:17:15Z",
+      "side": 1,
+      "message": "It returns the whole function without screenshot if creating tconn failed. Can you please read my code? It does everything first the same as in the past, then trying to create tconn, fetching extended displays to dump screenshots.",
+      "range": {
+        "startLine": 38,
+        "startChar": 2,
+        "endLine": 38,
+        "endChar": 8
+      },
+      "revId": "f711ed96fbf0423dc043daa0ad24ca3e389fb412",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
