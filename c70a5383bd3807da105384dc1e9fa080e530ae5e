@@ -16,6 +16,24 @@
       "message": "can you just append below code to the original implementation:\n\ntconn, err :\u003d cr.TestAPIConn(ctx)\nif err !\u003d nil {\n\ttesting.ContextLog(ctx, \"Failed to obtain test API conn to dump UI tree: \", err)\n\treturn\n}\n\ndisplayInfos, err \u003d display.GetInfo(ctx, tconn)\nif err !\u003d nil {\n\ttesting.ContextLog(ctx, \"Failed to get display info: \", err)\n\treturn\n}\n\nfor idx, info :\u003d range displayInfos {\n\tif idx \u003e 0 {\n\t\tpath \u003d fmt.Sprintf(\"%s/%s-display-%d-%s.png\", dir, fileName, idx, info.ID)\n\t}\n\ttesting.ContextLogf(ctx, \"Saving extended display %d screenshot to \", idx, path)\n\tif err :\u003d screenshot.CaptureChromeForDisplay(ctx, cr, info.ID, path); err !\u003d nil {\n\t\ttesting.ContextLogf(ctx, \"Failed to capture screenshot for display ID %q: %v\", info.ID, err)\n\t}\n}",
       "revId": "c70a5383bd3807da105384dc1e9fa080e530ae5e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c176f5a1_caeec5b4",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/faillog/screenshot.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2022-08-12T06:19:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "424e257c_a79d5769",
+      "revId": "c70a5383bd3807da105384dc1e9fa080e530ae5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
