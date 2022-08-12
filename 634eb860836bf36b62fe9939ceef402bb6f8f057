@@ -50,6 +50,57 @@
       "message": "Let\u0027s make this CL and https://chromium-review.googlesource.com/c/chromiumos/third_party/autotest/+/3830207 depending on each other so we can make sure they go in today.\n",
       "revId": "634eb860836bf36b62fe9939ceef402bb6f8f057",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c45f9de8_5fce4e72",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-08-12T22:41:46Z",
+      "side": 1,
+      "message": "In general, this CL is very large so I can\u0027t do a thorough code review for this. I do have questions regarding paremeterized tests looking like duplicating each other. I did not comment this on every occurance. Please examine all occurances.\n\nAlso, please run tast unit tests. Thanks.",
+      "revId": "634eb860836bf36b62fe9939ceef402bb6f8f057",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95c10f93_50980745",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/roblox.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-08-12T22:41:46Z",
+      "side": 1,
+      "message": "Please see my comment in \nsrc/chromiumos/tast/local/bundles/cros/arcappcompat/squid.go",
+      "revId": "634eb860836bf36b62fe9939ceef402bb6f8f057",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd273a09_fa5aeffc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/squid.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-08-12T22:41:46Z",
+      "side": 1,
+      "message": "What is the difference between clamshell_mode_default and clamshell_mode? Is clamshell_mode for the release?\n\nclamshell_mode_default\n\t\tLaunchTests: clamshellLaunchForSquid,\n\t\tCommonTests: testutil.ClamshellCommonTests,\n\t\t\n\t\t\nclamshell_mode\n\t\tLaunchTests: clamshellLaunchForSquid,\n\t\tCommonTests: testutil.ClamshellCommonTests,\n\t\t\nThey look the same to me.",
+      "revId": "634eb860836bf36b62fe9939ceef402bb6f8f057",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
