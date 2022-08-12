@@ -3,6 +3,97 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "20393bf0_4ceb7f1c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/shill_service.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-08-12T18:07:33Z",
+      "side": 1,
+      "message": "why did you change this?",
+      "revId": "1b1293e80b4c8e94f41375e60d7279dc51cca8dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1bef71c0_99cb8ccd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/shill_service.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 2909,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-08-12T18:07:33Z",
+      "side": 1,
+      "message": "let\u0027s do this as \"check initial state, enable if not enabled, return to initial state if necessary\" instead.",
+      "range": {
+        "startLine": 2900,
+        "startChar": 0,
+        "endLine": 2909,
+        "endChar": 2
+      },
+      "revId": "1b1293e80b4c8e94f41375e60d7279dc51cca8dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7cb84fa2_79274571",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/captive_portal_http.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-08-12T18:07:33Z",
+      "side": 1,
+      "message": "\"Ensures that the service state transitions to the expected portal state based on the configured HTTP[S] probe response.\"",
+      "revId": "1b1293e80b4c8e94f41375e60d7279dc51cca8dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc219428_69e2116e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/captive_portal_http.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-08-12T18:07:33Z",
+      "side": 1,
+      "message": "wificell_unstable",
+      "revId": "1b1293e80b4c8e94f41375e60d7279dc51cca8dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ea9eaaf_482304ee",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/captive_portal_http.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-08-12T18:07:33Z",
+      "side": 1,
+      "message": "Can you include a step by step description of the test? e.g.:\n\n1. Configure an AP with DNS and HTTP functionality\n2. ...",
+      "revId": "1b1293e80b4c8e94f41375e60d7279dc51cca8dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "25f4eed0_095700a0",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/captive_portal_http.go",
         "patchSetId": 10
@@ -49,6 +140,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5e845567_47293aba",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/captive_portal_http.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-08-12T18:07:33Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "482c4deb_0c9b84b4",
+      "range": {
+        "startLine": 80,
+        "startChar": 1,
+        "endLine": 83,
+        "endChar": 2
+      },
+      "revId": "1b1293e80b4c8e94f41375e60d7279dc51cca8dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "13988855_f30ab52f",
         "filename": "src/chromiumos/tast/remote/wificell/ap_iface.go",
         "patchSetId": 10
@@ -66,6 +181,142 @@
         "endLine": 51,
         "endChar": 15
       },
+      "revId": "1b1293e80b4c8e94f41375e60d7279dc51cca8dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73d8d7cb_39b4b1bc",
+        "filename": "src/chromiumos/tast/remote/wificell/dhcp/server.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-08-12T18:07:33Z",
+      "side": 1,
+      "message": "I\u0027m wondering if it makes more sense to make this a pointer so that we can do a nil check and preserve existing functionality.",
+      "revId": "1b1293e80b4c8e94f41375e60d7279dc51cca8dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2babd245_3fdeaf5c",
+        "filename": "src/chromiumos/tast/remote/wificell/dhcp/server.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-08-12T18:07:33Z",
+      "side": 1,
+      "message": "nit: add comment for opt. Maybe rename to dnsOpt",
+      "revId": "1b1293e80b4c8e94f41375e60d7279dc51cca8dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da57ee61_f3b2df16",
+        "filename": "src/chromiumos/tast/remote/wificell/dhcp/server.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-08-12T18:07:33Z",
+      "side": 1,
+      "message": "We shouldn\u0027t be doing any of this if dnsOpt isn\u0027t set right? Does this change any existing functionality?",
+      "revId": "1b1293e80b4c8e94f41375e60d7279dc51cca8dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ef99875_43982068",
+        "filename": "src/chromiumos/tast/remote/wificell/http/server.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-08-12T18:07:33Z",
+      "side": 1,
+      "message": "It seems like bad practice to copy something from your workstation like this, but I\u0027m not sure. For example, will this still work if you run it from a different directory? Will it work when this is being remotely scheduled? I\u0027ll defer to Tast Owners here, but you should also check to see if other tests do something similar.",
+      "revId": "1b1293e80b4c8e94f41375e60d7279dc51cca8dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f030bf25_a076847e",
+        "filename": "src/chromiumos/tast/remote/wificell/router/legacy/router.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 511,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-08-12T18:07:33Z",
+      "side": 1,
+      "message": "It could be better to just pass a DNSOption object into this function.",
+      "revId": "1b1293e80b4c8e94f41375e60d7279dc51cca8dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b04b877_8adfa652",
+        "filename": "src/chromiumos/tast/remote/wificell/router/openwrt/router.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-08-12T18:07:33Z",
+      "side": 1,
+      "message": "Have you tested this at all on openwrt? If not, it might be better to leave most of this unimplemented.",
+      "revId": "1b1293e80b4c8e94f41375e60d7279dc51cca8dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17b40ceb_8d4f76f1",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 687,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-08-12T18:07:33Z",
+      "side": 1,
+      "message": "any reason for these changes?",
+      "revId": "1b1293e80b4c8e94f41375e60d7279dc51cca8dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d8e0a79_bd23f23a",
+        "filename": "src/chromiumos/tast/services/cros/wifi/iwlwifi_pci_rescan.pb.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-08-12T18:07:33Z",
+      "side": 1,
+      "message": "any reason for this change?",
       "revId": "1b1293e80b4c8e94f41375e60d7279dc51cca8dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
