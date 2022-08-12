@@ -69,6 +69,24 @@
       "parentUuid": "050fb84a_8ab2602d",
       "revId": "3dc9e4bb2eca60574318d2db79966e9cefe9f6e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "53783ba8_a2068af3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/meta/local_poll.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-08-12T15:48:02Z",
+      "side": 1,
+      "message": "Just a suggestion. I am ok either way.",
+      "parentUuid": "2ed3af4d_fd796c37",
+      "revId": "3dc9e4bb2eca60574318d2db79966e9cefe9f6e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
