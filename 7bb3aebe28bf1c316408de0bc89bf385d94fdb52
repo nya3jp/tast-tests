@@ -34,6 +34,24 @@
       "parentUuid": "76974588_3751790c",
       "revId": "7bb3aebe28bf1c316408de0bc89bf385d94fdb52",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b2c877f_52621720",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-08-12T04:59:35Z",
+      "side": 1,
+      "message": "Thanks for the pointers.\n\nMy concern is not only for the documentation but also the existing tests using UserCrashDir or DefaultDirs. They are now broken in some sense.\n\nI only found out about the change by coincidence when seeing the fix for https://b.corp.google.com/issues/220472409.",
+      "parentUuid": "f278eb1e_554b9ed3",
+      "revId": "7bb3aebe28bf1c316408de0bc89bf385d94fdb52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
