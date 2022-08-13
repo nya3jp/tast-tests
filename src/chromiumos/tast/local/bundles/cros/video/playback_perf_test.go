@@ -7,6 +7,7 @@ package video
 import (
 	"fmt"
 	"sort"
+	"strings"
 	"testing"
 
 	"chromiumos/tast/common/genparams"
@@ -116,7 +117,7 @@ func genPlaybackParam(codec, file string, resolution, fps int, dec, nameSuffix, 
 	}
 
 	brwType := "browser.TypeAsh"
-	if nameSuffix == "lacros" {
+	if strings.Contains(nameSuffix, "lacros") {
 		brwType = "browser.TypeLacros"
 	}
 	deps := genPlaybackPerfSwDeps(codec, resolution, fps, dec)
@@ -191,6 +192,32 @@ func TestPlaybackPerfParams(t *testing.T) {
 			param.HardwareDeps = "hwdep.SkipOnModel(\"hana\", \"elm\"), hwdep.InternalDisplay()"
 			param.MeasureRoughness = true
 			params = append(params, param)
+		}
+	}
+
+	// Out-of-process video decoding (ash-chrome).
+	for _, resolution := range []int{720, 1080, 2160} {
+		fpss := []int{30}
+		if resolution >= 1080 {
+			fpss = append(fpss, 60)
+		}
+		for _, fps := range fpss {
+			params = append(params,
+				genPlaybackParam("h264", genPlaybackPerfDataPath("h264", resolution, fps),
+					resolution, fps, "hw", "oopvd", "chromeVideoOOPVD", []string{}))
+		}
+	}
+
+	// Out-of-process video decoding (lacros-chrome).
+	for _, resolution := range []int{720, 1080, 2160} {
+		fpss := []int{30}
+		if resolution >= 1080 {
+			fpss = append(fpss, 60)
+		}
+		for _, fps := range fpss {
+			params = append(params,
+				genPlaybackParam("h264", genPlaybackPerfDataPath("h264", resolution, fps),
+					resolution, fps, "hw", "lacros_oopvd", "chromeVideoLacrosOOPVD", []string{"lacros"}))
 		}
 	}
 
