@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2334754_6de159da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/shill_service.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-08-13T04:28:07Z",
+      "side": 1,
+      "message": "This is similar to the case of `test_fixture.go` below, if I don\u0027t modify it following the correct rule, the error will appear when I execute `repo upload` to upload the code\n```\n[FAILED] chromiumos/platform/tast-tests: tast_lint                           \n    Hook script \"../tast-tests/tools/run_lint.sh -commit\u003d${PRESUBMIT_COMMIT}\" failed with code 1:\n      Following errors can be automatically modified:\n        src/chromiumos/tast/local/bundles/cros/wifi/shill_service.go:181:12: Use errors.Wrap(err, \"\u003cmsg\u003e\") instead of errors.Wrapf(err, \"\u003cmsg\u003e: %v\", err)\n        src/chromiumos/tast/local/bundles/cros/wifi/shill_service.go:184:12: Use errors.Wrap(err, \"\u003cmsg\u003e\") instead of errors.Wrapf(err, \"\u003cmsg\u003e: %v\", err)\n      \n        Refer the following documents for details:\n         https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#error-construction\n      \n        You can run `/mnt/host/source/src/platform/tast/bin/tast-lint -fix -commit\u003d15750b87b47be25154a24c1dcf8e66de36481846` to fix this\n\nFATAL: Preupload failed due to above error(s).\n```",
+      "parentUuid": "20393bf0_4ceb7f1c",
+      "revId": "1b1293e80b4c8e94f41375e60d7279dc51cca8dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1bef71c0_99cb8ccd",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-08-12T18:07:33Z",
       "side": 1,
       "message": "let\u0027s do this as \"check initial state, enable if not enabled, return to initial state if necessary\" instead.",
+      "range": {
+        "startLine": 2900,
+        "startChar": 0,
+        "endLine": 2909,
+        "endChar": 2
+      },
+      "revId": "1b1293e80b4c8e94f41375e60d7279dc51cca8dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dcdd6b98_9403465d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/shill_service.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 2909,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-08-13T04:28:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1bef71c0_99cb8ccd",
       "range": {
         "startLine": 2900,
         "startChar": 0,
@@ -58,6 +100,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "795e1ae1_2334dcc6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/captive_portal_http.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-08-13T04:28:07Z",
+      "side": 1,
+      "message": "thank you for your better suggestion!",
+      "parentUuid": "7cb84fa2_79274571",
+      "revId": "1b1293e80b4c8e94f41375e60d7279dc51cca8dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cc219428_69e2116e",
@@ -71,6 +131,24 @@
       "writtenOn": "2022-08-12T18:07:33Z",
       "side": 1,
       "message": "wificell_unstable",
+      "revId": "1b1293e80b4c8e94f41375e60d7279dc51cca8dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0eb0bc35_f4a189af",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/captive_portal_http.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-08-13T04:28:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cc219428_69e2116e",
       "revId": "1b1293e80b4c8e94f41375e60d7279dc51cca8dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -92,6 +170,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "44bb506e_e110819e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/captive_portal_http.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-08-13T04:28:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ea9eaaf_482304ee",
+      "revId": "1b1293e80b4c8e94f41375e60d7279dc51cca8dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "25f4eed0_095700a0",
@@ -105,6 +201,30 @@
       "writtenOn": "2022-08-12T16:24:35Z",
       "side": 1,
       "message": "Add a cleanupCtx for more time to cleanup the two defer functions to make sure the cleanup has enough time to happen\n\n```\ncleanupCtx :\u003d ctx\nctx, cancel :\u003d ctxutil.Shorten(ctx, 10*time.Second)\ndefer cancel()\n```\n\nThe 10 seconds was what I just copied, feel free to adjust to whatever you think is best",
+      "range": {
+        "startLine": 35,
+        "startChar": 12,
+        "endLine": 35,
+        "endChar": 15
+      },
+      "revId": "1b1293e80b4c8e94f41375e60d7279dc51cca8dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c90623c6_a8c05d6a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/captive_portal_http.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-08-13T04:28:07Z",
+      "side": 1,
+      "message": "In my understanding, `ReserveForDisconnect()` and `ReserveForDeconfigAP()` are used to get a shorter ctx for subsequent operation. Because most WiFi tests use this method, for consistency, I also used the reserve function to get the shortened ctx.",
+      "parentUuid": "25f4eed0_095700a0",
       "range": {
         "startLine": 35,
         "startChar": 12,
@@ -162,6 +282,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f684815_f8397850",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/captive_portal_http.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-08-13T04:28:07Z",
+      "side": 1,
+      "message": "It has been modified according to the process instructed by Matthew, thank you for your suggestions!",
+      "parentUuid": "5e845567_47293aba",
+      "range": {
+        "startLine": 80,
+        "startChar": 1,
+        "endLine": 83,
+        "endChar": 2
+      },
+      "revId": "1b1293e80b4c8e94f41375e60d7279dc51cca8dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "13988855_f30ab52f",
@@ -175,6 +319,30 @@
       "writtenOn": "2022-08-12T16:24:35Z",
       "side": 1,
       "message": "nit: httpRedirectStatusCode\n\nalso you can pull this directly from the http package, like here:\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_http.go;rcl\u003da30b5764f9454d000ac0c4848a0b6973f1fdc433;l\u003d38",
+      "range": {
+        "startLine": 51,
+        "startChar": 1,
+        "endLine": 51,
+        "endChar": 15
+      },
+      "revId": "1b1293e80b4c8e94f41375e60d7279dc51cca8dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "85f8dabb_e0225f06",
+        "filename": "src/chromiumos/tast/remote/wificell/ap_iface.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-08-13T04:28:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "13988855_f30ab52f",
       "range": {
         "startLine": 51,
         "startChar": 1,
@@ -202,6 +370,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d5d260a_98bff19b",
+        "filename": "src/chromiumos/tast/remote/wificell/dhcp/server.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-08-13T04:28:07Z",
+      "side": 1,
+      "message": "Great idea! I have set this field as a pointer. if this field is nil, keep the original logic below. It is more convenient to check if we should enable the DNS functionality.",
+      "parentUuid": "73d8d7cb_39b4b1bc",
+      "revId": "1b1293e80b4c8e94f41375e60d7279dc51cca8dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2babd245_3fdeaf5c",
@@ -215,6 +401,24 @@
       "writtenOn": "2022-08-12T18:07:33Z",
       "side": 1,
       "message": "nit: add comment for opt. Maybe rename to dnsOpt",
+      "revId": "1b1293e80b4c8e94f41375e60d7279dc51cca8dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5623809_8207293f",
+        "filename": "src/chromiumos/tast/remote/wificell/dhcp/server.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-08-13T04:28:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2babd245_3fdeaf5c",
       "revId": "1b1293e80b4c8e94f41375e60d7279dc51cca8dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -236,6 +440,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3caa4cbb_029b23f8",
+        "filename": "src/chromiumos/tast/remote/wificell/dhcp/server.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-08-13T04:28:07Z",
+      "side": 1,
+      "message": "As mentioned above, if `dnsOpt` is nil, the port will be 0, so the DNS functionality will be disabled. The previous logic will not be affected.",
+      "parentUuid": "da57ee61_f3b2df16",
+      "revId": "1b1293e80b4c8e94f41375e60d7279dc51cca8dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2ef99875_43982068",
@@ -253,6 +475,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a267c03c_625366c4",
+        "filename": "src/chromiumos/tast/remote/wificell/http/server.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-08-13T04:28:07Z",
+      "side": 1,
+      "message": "I refer to the solution of the following package: https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/remote/bundles/cros/camera/pre/its_pre.go\n\nI created a data folder under `wifi`, and associated the data folder with test: `CaptivePortalHTTP`, use `s.DataPath()` to get the script path: `http/httpserver.py`, and then pass it to the `http` package.",
+      "parentUuid": "2ef99875_43982068",
+      "revId": "1b1293e80b4c8e94f41375e60d7279dc51cca8dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f030bf25_a076847e",
@@ -266,6 +506,24 @@
       "writtenOn": "2022-08-12T18:07:33Z",
       "side": 1,
       "message": "It could be better to just pass a DNSOption object into this function.",
+      "revId": "1b1293e80b4c8e94f41375e60d7279dc51cca8dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "617088a4_6114f4cb",
+        "filename": "src/chromiumos/tast/remote/wificell/router/legacy/router.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 511,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-08-13T04:28:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f030bf25_a076847e",
       "revId": "1b1293e80b4c8e94f41375e60d7279dc51cca8dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -289,6 +547,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5cdddd7e_eb75bb9f",
+        "filename": "src/chromiumos/tast/remote/wificell/router/openwrt/router.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-08-13T04:28:07Z",
+      "side": 1,
+      "message": "My router type is legacy so I haven\u0027t tested it on openwrt routers. I deleted all HTTP implementations in `openwrt/router.go`. However, if others execute StartAPIface() or StartHTTP() on the openwrt router, there will be an error. Is this result expected? Or should I just leave empty functions in `openwrt/router.go` and do nothing when run HTTP logic?",
+      "parentUuid": "8b04b877_8adfa652",
+      "revId": "1b1293e80b4c8e94f41375e60d7279dc51cca8dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "17b40ceb_8d4f76f1",
         "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
         "patchSetId": 10
@@ -300,6 +576,24 @@
       "writtenOn": "2022-08-12T18:07:33Z",
       "side": 1,
       "message": "any reason for these changes?",
+      "revId": "1b1293e80b4c8e94f41375e60d7279dc51cca8dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "12b03da4_371a7338",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 687,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-08-13T04:28:07Z",
+      "side": 1,
+      "message": "This function is not written by me, but if I don\u0027t modify it, the following error will appear when I execute `repo upload` to upload the code, so I need to modify it to meet the requirements.\n\n```\nHook script \"../tast-tests/tools/run_lint.sh -commit\u003d${PRESUBMIT_COMMIT}\" failed with code 1:\n      Following errors should be modified by yourself:\n        src/chromiumos/tast/remote/wificell/test_fixture.go:689:9: if block ends with a return statement, so drop this else and outdent its block (move short variable declaration to its own line if necessary)\n        src/chromiumos/tast/remote/wificell/test_fixture.go:695:9: if block ends with a return statement, so drop this else and outdent its block (move short variable declaration to its own line if necessary)\n      \n        Refer the following documents for details:\n         https://golang.org/wiki/CodeReviewComments#indent-error-flow\n```",
+      "parentUuid": "17b40ceb_8d4f76f1",
       "revId": "1b1293e80b4c8e94f41375e60d7279dc51cca8dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -317,6 +611,24 @@
       "writtenOn": "2022-08-12T18:07:33Z",
       "side": 1,
       "message": "any reason for this change?",
+      "revId": "1b1293e80b4c8e94f41375e60d7279dc51cca8dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3630c42d_772dbe64",
+        "filename": "src/chromiumos/tast/services/cros/wifi/iwlwifi_pci_rescan.pb.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-08-13T04:28:07Z",
+      "side": 1,
+      "message": "I run the command `~/trunk/src/platform/tast/tools/go.sh generate chromiumos/tast/services/cros/wifi` according to the file `tast-tests/src/chromiumos/tast/services/cros/wifi/gen.go` and this file was changed automatically. Do I need to restore it manually?",
+      "parentUuid": "9d8e0a79_bd23f23a",
       "revId": "1b1293e80b4c8e94f41375e60d7279dc51cca8dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
