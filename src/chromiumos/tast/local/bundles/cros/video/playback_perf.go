@@ -73,6 +73,17 @@ func init() {
 				Fixture:           "chromeVideoWithSWDecoding",
 			},
 			{
+				Name: "h264_720p_30fps_oop_vd_hw",
+				Val: playbackPerfParams{
+					fileName:    "perf/h264/720p_30fps_300frames.h264.mp4",
+					decoderType: 0,
+					browserType: browser.TypeAsh,
+				},
+				ExtraSoftwareDeps: []string{"proprietary_codecs", "autotest-capability:hw_dec_h264_1080_30"},
+				ExtraData:         []string{"perf/h264/720p_30fps_300frames.h264.mp4"},
+				Fixture:           "chromeVideoOOPVD",
+			},
+			{
 				Name: "h264_1080p_30fps_hw",
 				Val: playbackPerfParams{
 					fileName:    "perf/h264/1080p_30fps_300frames.h264.mp4",
@@ -159,6 +170,17 @@ func init() {
 				ExtraSoftwareDeps: []string{"proprietary_codecs"},
 				ExtraData:         []string{"perf/h264/2160p_60fps_600frames.h264.mp4"},
 				Fixture:           "chromeVideoWithSWDecoding",
+			},
+			{
+				Name: "h264_2160p_60fps_oopvd_hw",
+				Val: playbackPerfParams{
+					fileName:    "perf/h264/2160p_60fps_600frames.h264.mp4",
+					decoderType: 0,
+					browserType: browser.TypeAsh,
+				},
+				ExtraSoftwareDeps: []string{"proprietary_codecs", "autotest-capability:hw_dec_h264_2160_60"},
+				ExtraData:         []string{"perf/h264/2160p_60fps_600frames.h264.mp4"},
+				Fixture:           "chromeVideoOOPVD",
 			},
 			{
 				Name: "vp8_720p_30fps_hw",
@@ -762,6 +784,39 @@ func init() {
 				ExtraSoftwareDeps: []string{"proprietary_codecs", "autotest-capability:hw_dec_h264_1080_30", "lacros"},
 				ExtraData:         []string{"perf/h264/720p_30fps_300frames.h264.mp4"},
 				Fixture:           "chromeVideoLacros",
+			},
+			{
+				Name: "h264_720p_30fps_oopvd_hw_lacros",
+				Val: playbackPerfParams{
+					fileName:    "perf/h264/720p_30fps_300frames.h264.mp4",
+					decoderType: 0,
+					browserType: browser.TypeLacros,
+				},
+				ExtraSoftwareDeps: []string{"proprietary_codecs", "autotest-capability:hw_dec_h264_1080_30", "lacros"},
+				ExtraData:         []string{"perf/h264/720p_30fps_300frames.h264.mp4"},
+				Fixture:           "chromeVideoLacrosOOPVD",
+			},
+			{
+				Name: "h264_2160p_60fps_hw_lacros",
+				Val: playbackPerfParams{
+					fileName:    "perf/h264/2160p_60fps_600frames.h264.mp4",
+					decoderType: 0,
+					browserType: browser.TypeLacros,
+				},
+				ExtraSoftwareDeps: []string{"proprietary_codecs", "autotest-capability:hw_dec_h264_2160_60", "lacros"},
+				ExtraData:         []string{"perf/h264/2160p_60fps_600frames.h264.mp4"},
+				Fixture:           "chromeVideoLacros",
+			},
+			{
+				Name: "h264_2160p_60fps_oopvd_hw_lacros",
+				Val: playbackPerfParams{
+					fileName:    "perf/h264/2160p_60fps_600frames.h264.mp4",
+					decoderType: 0,
+					browserType: browser.TypeLacros,
+				},
+				ExtraSoftwareDeps: []string{"proprietary_codecs", "autotest-capability:hw_dec_h264_2160_60", "lacros"},
+				ExtraData:         []string{"perf/h264/2160p_60fps_600frames.h264.mp4"},
+				Fixture:           "chromeVideoLacrosOOPVD",
 			},
 			{
 				Name: "vp9_720p_30fps_hw_lacros",
