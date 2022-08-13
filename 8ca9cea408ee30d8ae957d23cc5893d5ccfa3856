@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76c6b44c_8519e30c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/nl80211_station_information.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2022-08-13T00:49:24Z",
+      "side": 1,
+      "message": "For unstable test case, add the test author. You can remove the author once the test is promoted to stable.",
+      "revId": "8ca9cea408ee30d8ae957d23cc5893d5ccfa3856",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a96ecb85_fb516b6a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/nl80211_station_information.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2022-08-13T00:49:24Z",
+      "side": 1,
+      "message": "I know you connect the DUT to AP so there are some packet exchanges. However, without any transmission/reception, can the lower bound for rx/tx bytes and rx/tx packets be 0?",
+      "revId": "8ca9cea408ee30d8ae957d23cc5893d5ccfa3856",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc4158e2_bedae864",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/nl80211_station_information.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2022-08-13T00:49:24Z",
+      "side": 1,
+      "message": "Please correct this comment.",
+      "revId": "8ca9cea408ee30d8ae957d23cc5893d5ccfa3856",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60ab410f_5486bff6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/nl80211_station_information.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2022-08-13T00:49:24Z",
+      "side": 1,
+      "message": "typo: beacon",
+      "revId": "8ca9cea408ee30d8ae957d23cc5893d5ccfa3856",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
