@@ -111,7 +111,7 @@ func DocsCUJ(ctx context.Context, s *testing.State) {
 					conn, _, _, cleanup, err := lacrosperf.SetupLacrosTestWithPage(ctx, cr, url, lacrosperf.StabilizeAfterOpeningURL)
 					return cr, conn, cleanup, err
 				}); err != nil {
-					s.Error("Failed to run lacros-chrome benchmark: ", err)
+					s.Fatal("Failed to run lacros-chrome benchmark: ", err)
 				} else {
 					appendPerfValues(ctx, variantPv, "lacros", pv, singleMetrics)
 				}
@@ -120,7 +120,7 @@ func DocsCUJ(ctx context.Context, s *testing.State) {
 					conn, cleanup, err := lacrosperf.SetupCrosTestWithPage(ctx, cr, url, lacrosperf.StabilizeAfterOpeningURL)
 					return cr, conn, cleanup, err
 				}); err != nil {
-					s.Error("Failed to run ash-chrome benchmark: ", err)
+					s.Fatal("Failed to run ash-chrome benchmark: ", err)
 				} else {
 					appendPerfValues(ctx, variantPv, "ash", pv, singleMetrics)
 				}
