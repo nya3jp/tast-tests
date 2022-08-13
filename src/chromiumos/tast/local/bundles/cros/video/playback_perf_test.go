@@ -194,6 +194,38 @@ func TestPlaybackPerfParams(t *testing.T) {
 		}
 	}
 
+	// Out-of-process video decoding (ash-chrome).
+	for _, resolution := range []int{720, 1080, 2160} {
+		fpss := []int{30}
+		if resolution >= 1080 {
+			fpss = append(fpss, 60)
+		}
+		decs := []string{"hw"}
+		for _, fps := range fpss {
+			for _, dec := range decs {
+				params = append(params,
+					genPlaybackParam("h264", genPlaybackPerfDataPath("h264", resolution, fps),
+						resolution, fps, dec, "oopvd", "chromeVideoOOPVD", []string{}))
+			}
+		}
+	}
+
+	// Out-of-process video decoding (lacros-chrome).
+	for _, resolution := range []int{720, 1080, 2160} {
+		fpss := []int{30}
+		if resolution >= 1080 {
+			fpss = append(fpss, 60)
+		}
+		decs := []string{"hw"}
+		for _, fps := range fpss {
+			for _, dec := range decs {
+				params = append(params,
+					genPlaybackParam("h264", genPlaybackPerfDataPath("h264", resolution, fps),
+						resolution, fps, dec, "lacros_oopvd", "chromeVideoLacrosOOPVD", []string{"lacros"}))
+			}
+		}
+	}
+
 	// grid
 	// TODO(b/234643665): Reduce these to 2x2 1080p (as many pixels as 4K).
 	for _, codec := range []string{"h264", "vp8", "vp9", "av1"} {
