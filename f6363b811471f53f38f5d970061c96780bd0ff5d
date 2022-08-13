@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa195933_2b58b7fe",
+        "filename": "src/chromiumos/tast/remote/cellular/callbox/iperf/server_result_poller.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1541462
+      },
+      "writtenOn": "2022-08-13T00:10:00Z",
+      "side": 1,
+      "message": "Added an additional channel to store errors in and raise later in fetchResult.",
+      "parentUuid": "2c32f279_41809cf8",
+      "revId": "f6363b811471f53f38f5d970061c96780bd0ff5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a1c87edf_95a4bb28",
@@ -41,6 +59,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "26ef5c98_a8943987",
+        "filename": "src/chromiumos/tast/remote/cellular/callbox/iperf/server_result_poller.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1541462
+      },
+      "writtenOn": "2022-08-13T00:10:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a1c87edf_95a4bb28",
+      "range": {
+        "startLine": 134,
+        "startChar": 0,
+        "endLine": 144,
+        "endChar": 3
+      },
+      "revId": "f6363b811471f53f38f5d970061c96780bd0ff5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "240aa2b8_48fd0b8e",
@@ -54,6 +96,24 @@
       "writtenOn": "2022-08-11T19:24:25Z",
       "side": 1,
       "message": "I think it would be better to just set the `Stdout` for the `cmd` you create below on L84, and then leave the iperf command as is rather than shelling out to get redirection. You can even set it to a buffer stored in `c` and just use that directly later in `FetchResult`.\n\nThen you also don\u0027t need the `shPath` and other such stuff.",
+      "revId": "f6363b811471f53f38f5d970061c96780bd0ff5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "58258381_ffeddd5f",
+        "filename": "src/chromiumos/tast/remote/network/iperf/remote_server.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1541462
+      },
+      "writtenOn": "2022-08-13T00:10:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "240aa2b8_48fd0b8e",
       "revId": "f6363b811471f53f38f5d970061c96780bd0ff5d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
