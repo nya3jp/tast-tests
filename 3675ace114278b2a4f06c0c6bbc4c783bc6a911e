@@ -16,6 +16,24 @@
       "message": "This will unblock core 72, but what is the fix plan for this ?",
       "revId": "3675ace114278b2a4f06c0c6bbc4c783bc6a911e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f19399dc_52af87ce",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-08-13T00:34:57Z",
+      "side": 1,
+      "message": "Intel provided a new fw extractor that I need to check and use it to update the Tast version, then move this test to stable after that.",
+      "parentUuid": "d1f6e278_81c7c648",
+      "revId": "3675ace114278b2a4f06c0c6bbc4c783bc6a911e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
