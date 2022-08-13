@@ -67,6 +67,23 @@
       "message": "Shorter and easier to read! Thank you.",
       "revId": "bc68d2860edefd5659b187c1dffc99adfb20387c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c40a6af6_b2f2967a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2022-08-13T01:04:12Z",
+      "side": 1,
+      "message": "Thank you!",
+      "revId": "bc68d2860edefd5659b187c1dffc99adfb20387c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
