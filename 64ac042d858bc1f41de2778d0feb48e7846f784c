@@ -46,6 +46,30 @@
       },
       "revId": "64ac042d858bc1f41de2778d0feb48e7846f784c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8087ac2b_ebcf652b",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/faillog/screenshot.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1527578
+      },
+      "writtenOn": "2022-08-14T16:50:15Z",
+      "side": 1,
+      "message": "Thanks for the correction!",
+      "parentUuid": "afbc1ec1_9ec53aae",
+      "range": {
+        "startLine": 59,
+        "startChar": 2,
+        "endLine": 65,
+        "endChar": 3
+      },
+      "revId": "64ac042d858bc1f41de2778d0feb48e7846f784c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
