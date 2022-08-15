@@ -46,6 +46,30 @@
       },
       "revId": "8d0245d924952b3ac626e7566c145e97d2e38f73",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ca33d8f_b2584c6a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/meta/run_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1390217
+      },
+      "writtenOn": "2022-08-15T05:59:18Z",
+      "side": 1,
+      "message": "8 is the number provided by Aings as the minimum, so let\u0027s start with this. Once we have enough data, we could empirically prove that we can do well with less.",
+      "parentUuid": "927728a2_1610270f",
+      "range": {
+        "startLine": 36,
+        "startChar": 21,
+        "endLine": 36,
+        "endChar": 22
+      },
+      "revId": "8d0245d924952b3ac626e7566c145e97d2e38f73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
