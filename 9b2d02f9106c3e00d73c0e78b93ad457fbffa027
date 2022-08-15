@@ -16,6 +16,64 @@
       "message": "Will Floss have a similar Adapter implementation? If so it could be a good candidate to have an interface for this too. If not, the way this CL wraps things needed for tests in `Bluetooth` also LGTM!",
       "revId": "9b2d02f9106c3e00d73c0e78b93ad457fbffa027",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c79f205_4f040301",
+        "filename": "src/chromiumos/tast/local/bluetooth/bluez.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1525637
+      },
+      "writtenOn": "2022-08-15T04:56:41Z",
+      "side": 1,
+      "message": "On Floss side we only need the manager object to enable adapters and check adapter status, thus we don\u0027t need to hold the object path for every adapters at least for now.",
+      "parentUuid": "ef14ad2e_41f0ea31",
+      "revId": "9b2d02f9106c3e00d73c0e78b93ad457fbffa027",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e22813e5_675577f8",
+        "filename": "src/chromiumos/tast/local/bluetooth/floss.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1525637
+      },
+      "writtenOn": "2022-08-15T04:56:41Z",
+      "side": 1,
+      "message": "I\u0027d lean to placing these Floss implementation in another package (how about bluetooth/floss/ ?). There will be naming conflicts such as: bluetooth.Enable vs bluetooth.Bluez{}.Enable vs bluetooth.Floss{}.Enable. It is confusing because the first two are the same while the last one is not.",
+      "revId": "9b2d02f9106c3e00d73c0e78b93ad457fbffa027",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "825c74ce_c2cd6c4a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1525637
+      },
+      "writtenOn": "2022-08-15T04:56:41Z",
+      "side": 1,
+      "message": "It always calls Bluez\u0027s Enable(). Is it possible to init a bluetooth.TestParams in the parent fixture and get/use it from this fixture? The test body may call the bluetooth methods with the same approach then.",
+      "range": {
+        "startLine": 96,
+        "startChar": 11,
+        "endLine": 96,
+        "endChar": 27
+      },
+      "revId": "9b2d02f9106c3e00d73c0e78b93ad457fbffa027",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
