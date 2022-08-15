@@ -24,7 +24,6 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/chrome/uiauto/state"
 	"chromiumos/tast/testing"
-	"chromiumos/tast/testing/hwdep"
 )
 
 type basicLayoutSubTests int
@@ -48,9 +47,6 @@ func init() {
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
-		// TODO(b/200064362): Remove HardwareDeps when the bug is fixed.
-		// Battery icon will be missing on ARM-based DUTs, hence, we use hwdep to exclude those DUTs for now.
-		HardwareDeps: hwdep.D(hwdep.X86()),
 		Fixture:      "chromeLoggedIn",
 		Params: []testing.Param{
 			{
