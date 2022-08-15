@@ -126,6 +126,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e1a7720_10e2f842",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/admin_templates_launch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-08-15T17:07:51Z",
+      "side": 1,
+      "message": "Marking as resolved. As Matthew suggested, adding `WaitUntilNoEvent(nodewith.Root(), event.LocationChanged)` after SetOverviewModeAndWait seems to fix this issue. I believe SetOverviewModeAndWait waits for the mode to be on but not for individual windows to be visible which sounds like two independent events to be waited on.",
+      "parentUuid": "3acea465_9621c7e3",
+      "revId": "841357aa0b7f1130bbff55841235a11421f31dec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "60bb6562_8228c1c3",
