@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "677a793b_268708ef",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2022-08-15T17:42:22Z",
+      "side": 1,
+      "message": "Pilar, Hidehiko: PTAL\n\nHiro: FYI",
+      "revId": "cac92174a23dd1069ea685d5c60ab8e49b7cefc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
