@@ -452,6 +452,7 @@ func init() {
 				},
 				Timeout: 1 * time.Minute,
 			},
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "api_get_kernel_arg_info_compatibility",
 				Val: oclctsTest{
@@ -461,7 +462,9 @@ func init() {
 					buganizer:    "b/227134903",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "api_get_kernel_arg_info",
 				Val: oclctsTest{
@@ -471,7 +474,8 @@ func init() {
 					buganizer:    "b/227134903",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
 			{
 				Name: "api_get_kernel_info",
 				Val: oclctsTest{
@@ -760,6 +764,7 @@ func init() {
 				},
 				Timeout: 1 * time.Minute,
 			},
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "api_min_max_image_buffer_size",
 				Val: oclctsTest{
@@ -769,7 +774,8 @@ func init() {
 					buganizer:    "b/227133131",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
 			{
 				Name: "api_min_max_kernel_preferred_work_group_size_multiple",
 				Val: oclctsTest{
@@ -896,6 +902,7 @@ func init() {
 				},
 				Timeout: 1 * time.Minute,
 			},
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "api_null_buffer_arg",
 				Val: oclctsTest{
@@ -905,7 +912,8 @@ func init() {
 					buganizer:    "b/227134903",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
 			{
 				Name: "api_pipe_properties_queries",
 				Val: oclctsTest{
@@ -1751,6 +1759,7 @@ func init() {
 				},
 				Timeout: 1 * time.Minute,
 			},
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "basic_kernel_call_kernel_function",
 				Val: oclctsTest{
@@ -1760,7 +1769,8 @@ func init() {
 					buganizer:    "b/227134178",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
 			{
 				Name: "basic_kernel_limit_constants",
 				Val: oclctsTest{
@@ -1770,6 +1780,7 @@ func init() {
 				},
 				Timeout: 1 * time.Minute,
 			},
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "basic_kernel_memory_alignment_constant",
 				Val: oclctsTest{
@@ -1779,7 +1790,9 @@ func init() {
 					buganizer:    "b/227134903",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "basic_kernel_memory_alignment_global",
 				Val: oclctsTest{
@@ -1789,7 +1802,9 @@ func init() {
 					buganizer:    "b/227134903",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "basic_kernel_memory_alignment_local",
 				Val: oclctsTest{
@@ -1799,7 +1814,9 @@ func init() {
 					buganizer:    "b/227134903",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "basic_kernel_memory_alignment_private",
 				Val: oclctsTest{
@@ -1809,7 +1826,8 @@ func init() {
 					buganizer:    "b/227134903",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
 			{
 				Name: "basic_kernel_numeric_constants",
 				Val: oclctsTest{
@@ -1828,6 +1846,7 @@ func init() {
 				},
 				Timeout: 1 * time.Minute,
 			},
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "basic_local_arg_def",
 				Val: oclctsTest{
@@ -1837,7 +1856,9 @@ func init() {
 					buganizer:    "b/227133185",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "basic_local_kernel_def",
 				Val: oclctsTest{
@@ -1847,7 +1868,8 @@ func init() {
 					buganizer:    "b/227133185",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
 			{
 				Name: "basic_local_kernel_scope",
 				Val: oclctsTest{
@@ -1893,6 +1915,7 @@ func init() {
 				},
 				Timeout: 1 * time.Minute,
 			},
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "basic_parameter_types",
 				Val: oclctsTest{
@@ -1902,7 +1925,8 @@ func init() {
 					buganizer:    "b/227134906",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
 			{
 				Name: "basic_pointer_cast",
 				Val: oclctsTest{
@@ -2183,6 +2207,7 @@ func init() {
 				},
 				Timeout: 1 * time.Minute,
 			},
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "bruteforce_acosh",
 				Val: oclctsTest{
@@ -2192,7 +2217,9 @@ func init() {
 					buganizer:    "b/227133190",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "bruteforce_acospi",
 				Val: oclctsTest{
@@ -2202,7 +2229,9 @@ func init() {
 					buganizer:    "b/227133190",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "bruteforce_acos",
 				Val: oclctsTest{
@@ -2212,7 +2241,8 @@ func init() {
 					buganizer:    "b/227133190",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
 			{
 				Name: "bruteforce_add",
 				Val: oclctsTest{
@@ -2231,6 +2261,7 @@ func init() {
 				},
 				Timeout: 1 * time.Minute,
 			},
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "bruteforce_asinpi",
 				Val: oclctsTest{
@@ -2240,7 +2271,9 @@ func init() {
 					buganizer:    "b/227133190",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "bruteforce_asin",
 				Val: oclctsTest{
@@ -2250,7 +2283,8 @@ func init() {
 					buganizer:    "b/227133190",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
 			{
 				Name: "bruteforce_assignment",
 				Val: oclctsTest{
@@ -2332,6 +2366,7 @@ func init() {
 				},
 				Timeout: 1 * time.Minute,
 			},
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "bruteforce_cosh",
 				Val: oclctsTest{
@@ -2341,7 +2376,9 @@ func init() {
 					buganizer:    "b/227133190",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "bruteforce_cospi",
 				Val: oclctsTest{
@@ -2351,7 +2388,9 @@ func init() {
 					buganizer:    "b/227133190",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "bruteforce_cos",
 				Val: oclctsTest{
@@ -2361,7 +2400,8 @@ func init() {
 					buganizer:    "b/227133190",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
 			{
 				Name: "bruteforce_divide_cr",
 				Val: oclctsTest{
@@ -2371,6 +2411,7 @@ func init() {
 				},
 				Timeout: 1 * time.Minute,
 			},
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "bruteforce_divide",
 				Val: oclctsTest{
@@ -2380,7 +2421,9 @@ func init() {
 					buganizer:    "b/227133190",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "bruteforce_exp10",
 				Val: oclctsTest{
@@ -2390,7 +2433,8 @@ func init() {
 					buganizer:    "b/227133190",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
 			{
 				Name: "bruteforce_exp2",
 				Val: oclctsTest{
@@ -2400,6 +2444,7 @@ func init() {
 				},
 				Timeout: 1 * time.Minute,
 			},
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "bruteforce_expm1",
 				Val: oclctsTest{
@@ -2409,7 +2454,9 @@ func init() {
 					buganizer:    "b/227133190",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "bruteforce_exp",
 				Val: oclctsTest{
@@ -2419,7 +2466,8 @@ func init() {
 					buganizer:    "b/227133190",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
 			{
 				Name: "bruteforce_fabs",
 				Val: oclctsTest{
@@ -2502,6 +2550,7 @@ func init() {
 				},
 				Timeout: 1 * time.Minute,
 			},
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "bruteforce_half_cos",
 				Val: oclctsTest{
@@ -2511,7 +2560,9 @@ func init() {
 					buganizer:    "b/227133190",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "bruteforce_half_divide",
 				Val: oclctsTest{
@@ -2521,7 +2572,8 @@ func init() {
 					buganizer:    "b/227133190",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
 			{
 				Name: "bruteforce_half_exp10",
 				Val: oclctsTest{
@@ -2604,6 +2656,7 @@ func init() {
 				},
 				Timeout: 1 * time.Minute,
 			},
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "bruteforce_half_sin",
 				Val: oclctsTest{
@@ -2613,7 +2666,8 @@ func init() {
 					buganizer:    "b/227133190",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
 			{
 				Name: "bruteforce_half_sqrt",
 				Val: oclctsTest{
@@ -2623,6 +2677,7 @@ func init() {
 				},
 				Timeout: 1 * time.Minute,
 			},
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "bruteforce_half_tan",
 				Val: oclctsTest{
@@ -2632,7 +2687,8 @@ func init() {
 					buganizer:    "b/227133190",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
 			{
 				Name: "bruteforce_hypot",
 				Val: oclctsTest{
@@ -2777,6 +2833,7 @@ func init() {
 				},
 				Timeout: 1 * time.Minute,
 			},
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "bruteforce_lgamma_r",
 				Val: oclctsTest{
@@ -2786,7 +2843,9 @@ func init() {
 					buganizer:    "b/227133190",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "bruteforce_lgamma",
 				Val: oclctsTest{
@@ -2796,7 +2855,9 @@ func init() {
 					buganizer:    "b/227133190",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "bruteforce_log10",
 				Val: oclctsTest{
@@ -2806,7 +2867,9 @@ func init() {
 					buganizer:    "b/227133190",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "bruteforce_log1p",
 				Val: oclctsTest{
@@ -2816,7 +2879,9 @@ func init() {
 					buganizer:    "b/227133190",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "bruteforce_log2",
 				Val: oclctsTest{
@@ -2826,7 +2891,8 @@ func init() {
 					buganizer:    "b/227133190",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
 			{
 				Name: "bruteforce_logb",
 				Val: oclctsTest{
@@ -2836,6 +2902,7 @@ func init() {
 				},
 				Timeout: 1 * time.Minute,
 			},
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "bruteforce_log",
 				Val: oclctsTest{
@@ -2845,7 +2912,8 @@ func init() {
 					buganizer:    "b/227133190",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
 			{
 				Name: "bruteforce_mad",
 				Val: oclctsTest{
@@ -2918,6 +2986,7 @@ func init() {
 				},
 				Timeout: 1 * time.Minute,
 			},
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "bruteforce_pown",
 				Val: oclctsTest{
@@ -2927,7 +2996,9 @@ func init() {
 					buganizer:    "b/227133190",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "bruteforce_powr",
 				Val: oclctsTest{
@@ -2937,7 +3008,9 @@ func init() {
 					buganizer:    "b/227133190",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "bruteforce_pow",
 				Val: oclctsTest{
@@ -2947,7 +3020,8 @@ func init() {
 					buganizer:    "b/227133190",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
 			{
 				Name: "bruteforce_remainder",
 				Val: oclctsTest{
@@ -3011,6 +3085,7 @@ func init() {
 				},
 				Timeout: 1 * time.Minute,
 			},
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "bruteforce_sincos",
 				Val: oclctsTest{
@@ -3020,7 +3095,9 @@ func init() {
 					buganizer:    "b/227133190",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "bruteforce_sinh",
 				Val: oclctsTest{
@@ -3030,7 +3107,9 @@ func init() {
 					buganizer:    "b/227133190",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "bruteforce_sinpi",
 				Val: oclctsTest{
@@ -3040,7 +3119,9 @@ func init() {
 					buganizer:    "b/227133190",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "bruteforce_sin",
 				Val: oclctsTest{
@@ -3050,7 +3131,8 @@ func init() {
 					buganizer:    "b/227133190",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
 			{
 				Name: "bruteforce_sqrt_cr",
 				Val: oclctsTest{
@@ -3087,6 +3169,7 @@ func init() {
 				},
 				Timeout: 1 * time.Minute,
 			},
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "bruteforce_tanpi",
 				Val: oclctsTest{
@@ -3096,7 +3179,9 @@ func init() {
 					buganizer:    "b/227133190",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "bruteforce_tan",
 				Val: oclctsTest{
@@ -3106,7 +3191,8 @@ func init() {
 					buganizer:    "b/227133190",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
 			{
 				Name: "bruteforce_trunc",
 				Val: oclctsTest{
@@ -7625,6 +7711,7 @@ func init() {
 				},
 				Timeout: 1 * time.Minute,
 			},
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "compiler_compile_and_link_status_options_log",
 				Val: oclctsTest{
@@ -7634,7 +7721,8 @@ func init() {
 					buganizer:    "b/227136133",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
 			{
 				Name: "compiler_compiler_defines_for_extensions",
 				Val: oclctsTest{
@@ -7644,6 +7732,7 @@ func init() {
 				},
 				Timeout: 1 * time.Minute,
 			},
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "compiler_execute_after_embedded_header_link",
 				Val: oclctsTest{
@@ -7653,7 +7742,9 @@ func init() {
 					buganizer:    "b/227136133",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "compiler_execute_after_included_header_link",
 				Val: oclctsTest{
@@ -7663,7 +7754,9 @@ func init() {
 					buganizer:    "b/227136133",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "compiler_execute_after_serialize_reload_library",
 				Val: oclctsTest{
@@ -7673,7 +7766,9 @@ func init() {
 					buganizer:    "b/227136133",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "compiler_execute_after_serialize_reload_object",
 				Val: oclctsTest{
@@ -7683,7 +7778,8 @@ func init() {
 					buganizer:    "b/227136133",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
 			{
 				Name: "compiler_execute_after_simple_compile_and_link_no_device_info",
 				Val: oclctsTest{
@@ -7720,6 +7816,7 @@ func init() {
 				},
 				Timeout: 1 * time.Minute,
 			},
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "compiler_execute_after_simple_library_with_link",
 				Val: oclctsTest{
@@ -7729,7 +7826,9 @@ func init() {
 					buganizer:    "b/227136133",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "compiler_execute_after_two_file_link",
 				Val: oclctsTest{
@@ -7739,7 +7838,8 @@ func init() {
 					buganizer:    "b/227136133",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
 			{
 				Name: "compiler_features_macro",
 				Val: oclctsTest{
@@ -7857,6 +7957,7 @@ func init() {
 				},
 				Timeout: 1 * time.Minute,
 			},
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "compiler_multi_file_libraries",
 				Val: oclctsTest{
@@ -7866,7 +7967,9 @@ func init() {
 					buganizer:    "b/227136133",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "compiler_multiple_embedded_headers",
 				Val: oclctsTest{
@@ -7876,7 +7979,9 @@ func init() {
 					buganizer:    "b/227136133",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "compiler_multiple_files",
 				Val: oclctsTest{
@@ -7886,7 +7991,9 @@ func init() {
 					buganizer:    "b/227136133",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "compiler_multiple_files_multiple_libraries",
 				Val: oclctsTest{
@@ -7896,7 +8003,9 @@ func init() {
 					buganizer:    "b/227136133",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "compiler_multiple_libraries",
 				Val: oclctsTest{
@@ -7906,7 +8015,8 @@ func init() {
 					buganizer:    "b/227136133",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
 			{
 				Name: "compiler_opencl_c_versions",
 				Val: oclctsTest{
@@ -7952,6 +8062,7 @@ func init() {
 				},
 				Timeout: 1 * time.Minute,
 			},
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "compiler_options_include_directory",
 				Val: oclctsTest{
@@ -7961,7 +8072,8 @@ func init() {
 					buganizer:    "b/227136133",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
 			{
 				Name: "compiler_pragma_unroll",
 				Val: oclctsTest{
@@ -7980,6 +8092,7 @@ func init() {
 				},
 				Timeout: 1 * time.Minute,
 			},
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "compiler_preprocessor_include",
 				Val: oclctsTest{
@@ -7989,7 +8102,8 @@ func init() {
 					buganizer:    "b/227136133",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
 			{
 				Name: "compiler_preprocessor_line_error",
 				Val: oclctsTest{
@@ -8008,6 +8122,7 @@ func init() {
 				},
 				Timeout: 1 * time.Minute,
 			},
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "compiler_program_binary_type",
 				Val: oclctsTest{
@@ -8017,7 +8132,8 @@ func init() {
 					buganizer:    "b/227136133",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
 			{
 				Name: "compiler_simple_compile_only",
 				Val: oclctsTest{
@@ -8036,6 +8152,7 @@ func init() {
 				},
 				Timeout: 1 * time.Minute,
 			},
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "compiler_simple_embedded_header_compile",
 				Val: oclctsTest{
@@ -8045,7 +8162,9 @@ func init() {
 					buganizer:    "b/227136133",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "compiler_simple_embedded_header_link",
 				Val: oclctsTest{
@@ -8055,7 +8174,8 @@ func init() {
 					buganizer:    "b/227136133",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
 			{
 				Name: "compiler_simple_extern_compile_only",
 				Val: oclctsTest{
@@ -8084,6 +8204,7 @@ func init() {
 				},
 				Timeout: 1 * time.Minute,
 			},
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "compiler_simple_library_with_link",
 				Val: oclctsTest{
@@ -8093,7 +8214,8 @@ func init() {
 					buganizer:    "b/227136133",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
 			{
 				Name: "compiler_simple_link_only",
 				Val: oclctsTest{
@@ -8122,6 +8244,7 @@ func init() {
 				},
 				Timeout: 1 * time.Minute,
 			},
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "compiler_two_file_link",
 				Val: oclctsTest{
@@ -8131,7 +8254,8 @@ func init() {
 					buganizer:    "b/227136133",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
 			{
 				Name: "compiler_two_file_regular_function_access",
 				Val: oclctsTest{
@@ -8168,6 +8292,7 @@ func init() {
 				},
 				Timeout: 1 * time.Minute,
 			},
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "compiler_unload_build_threaded",
 				Val: oclctsTest{
@@ -8177,7 +8302,9 @@ func init() {
 					buganizer:    "b/227133178",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "compiler_unload_build_unload_create_kernel",
 				Val: oclctsTest{
@@ -8187,7 +8314,9 @@ func init() {
 					buganizer:    "b/227133178",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "compiler_unload_compile_unload_link",
 				Val: oclctsTest{
@@ -8197,7 +8326,9 @@ func init() {
 					buganizer:    "b/227133178",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "compiler_unload_link_different",
 				Val: oclctsTest{
@@ -8207,7 +8338,8 @@ func init() {
 					buganizer:    "b/227136133",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
 			{
 				Name: "compiler_unload_program_binaries",
 				Val: oclctsTest{
@@ -8217,6 +8349,7 @@ func init() {
 				},
 				Timeout: 1 * time.Minute,
 			},
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "compiler_unload_repeated",
 				Val: oclctsTest{
@@ -8226,7 +8359,8 @@ func init() {
 					buganizer:    "b/227133178",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
 			{
 				Name: "compiler_unload_valid",
 				Val: oclctsTest{
@@ -8380,6 +8514,7 @@ func init() {
 				},
 				Timeout: 1 * time.Minute,
 			},
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "contractions_contractions_float_4",
 				Val: oclctsTest{
@@ -8389,7 +8524,9 @@ func init() {
 					buganizer:    "b/227133190",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "contractions_contractions_float_5",
 				Val: oclctsTest{
@@ -8399,7 +8536,9 @@ func init() {
 					buganizer:    "b/227133190",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "contractions_contractions_float_6",
 				Val: oclctsTest{
@@ -8409,7 +8548,9 @@ func init() {
 					buganizer:    "b/227133190",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "contractions_contractions_float_7",
 				Val: oclctsTest{
@@ -8419,7 +8560,8 @@ func init() {
 					buganizer:    "b/227133190",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
 			{
 				Name: "conversions_char_char",
 				Val: oclctsTest{
@@ -9509,6 +9651,7 @@ func init() {
 				},
 				Timeout: 1 * time.Minute,
 			},
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "half_vstorea_half_rtn",
 				Val: oclctsTest{
@@ -9518,7 +9661,9 @@ func init() {
 					buganizer:    "b/227136713",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "half_vstorea_half_rtp",
 				Val: oclctsTest{
@@ -9528,7 +9673,9 @@ func init() {
 					buganizer:    "b/227136713",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "half_vstorea_half_rtz",
 				Val: oclctsTest{
@@ -9538,7 +9685,8 @@ func init() {
 					buganizer:    "b/227136713",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
 			{
 				Name: "half_vstorea_half",
 				Val: oclctsTest{
@@ -9557,6 +9705,7 @@ func init() {
 				},
 				Timeout: 1 * time.Minute,
 			},
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "half_vstore_half_rtn",
 				Val: oclctsTest{
@@ -9566,7 +9715,9 @@ func init() {
 					buganizer:    "b/227136713",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "half_vstore_half_rtp",
 				Val: oclctsTest{
@@ -9576,7 +9727,9 @@ func init() {
 					buganizer:    "b/227136713",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "half_vstore_half_rtz",
 				Val: oclctsTest{
@@ -9586,7 +9739,8 @@ func init() {
 					buganizer:    "b/227136713",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
 			{
 				Name: "half_vstore_half",
 				Val: oclctsTest{
@@ -11158,6 +11312,7 @@ func init() {
 				},
 				Timeout: 10 * time.Minute,
 			},
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "kernel_image_methods_1darray_cl_float",
 				Val: oclctsTest{
@@ -11167,7 +11322,9 @@ func init() {
 					buganizer:    "b/227136793",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "kernel_image_methods_1darray_cl_half_float",
 				Val: oclctsTest{
@@ -11177,7 +11334,9 @@ func init() {
 					buganizer:    "b/227136793",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "kernel_image_methods_1darray_cl_signed_int16",
 				Val: oclctsTest{
@@ -11187,7 +11346,9 @@ func init() {
 					buganizer:    "b/227136793",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "kernel_image_methods_1darray_cl_signed_int32",
 				Val: oclctsTest{
@@ -11197,7 +11358,9 @@ func init() {
 					buganizer:    "b/227136793",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "kernel_image_methods_1darray_cl_signed_int8",
 				Val: oclctsTest{
@@ -11207,7 +11370,9 @@ func init() {
 					buganizer:    "b/227136793",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "kernel_image_methods_1darray_cl_snorm_int16",
 				Val: oclctsTest{
@@ -11217,7 +11382,9 @@ func init() {
 					buganizer:    "b/227136793",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "kernel_image_methods_1darray_cl_snorm_int8",
 				Val: oclctsTest{
@@ -11227,7 +11394,8 @@ func init() {
 					buganizer:    "b/227136793",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
 			{
 				Name: "kernel_image_methods_1darray_cl_unorm_int_101010",
 				Val: oclctsTest{
@@ -11237,6 +11405,7 @@ func init() {
 				},
 				Timeout: 1 * time.Minute,
 			},
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "kernel_image_methods_1darray_cl_unorm_int16",
 				Val: oclctsTest{
@@ -11246,7 +11415,9 @@ func init() {
 					buganizer:    "b/227136793",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "kernel_image_methods_1darray_cl_unorm_int8",
 				Val: oclctsTest{
@@ -11256,7 +11427,8 @@ func init() {
 					buganizer:    "b/227136793",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
 			{
 				Name: "kernel_image_methods_1darray_cl_unorm_short_555",
 				Val: oclctsTest{
@@ -11266,6 +11438,7 @@ func init() {
 				},
 				Timeout: 1 * time.Minute,
 			},
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "kernel_image_methods_1darray_cl_unorm_short_565",
 				Val: oclctsTest{
@@ -11275,7 +11448,9 @@ func init() {
 					buganizer:    "b/227136793",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "kernel_image_methods_1darray_cl_unsigned_int16",
 				Val: oclctsTest{
@@ -11285,7 +11460,9 @@ func init() {
 					buganizer:    "b/227136793",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "kernel_image_methods_1darray_cl_unsigned_int32",
 				Val: oclctsTest{
@@ -11295,7 +11472,9 @@ func init() {
 					buganizer:    "b/227136793",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "kernel_image_methods_1darray_cl_unsigned_int8",
 				Val: oclctsTest{
@@ -11305,7 +11484,9 @@ func init() {
 					buganizer:    "b/227136793",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "kernel_image_methods_1d_cl_float",
 				Val: oclctsTest{
@@ -11315,7 +11496,9 @@ func init() {
 					buganizer:    "b/227136793",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "kernel_image_methods_1d_cl_half_float",
 				Val: oclctsTest{
@@ -11325,7 +11508,9 @@ func init() {
 					buganizer:    "b/227136793",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "kernel_image_methods_1d_cl_signed_int16",
 				Val: oclctsTest{
@@ -11335,7 +11520,9 @@ func init() {
 					buganizer:    "b/227136793",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "kernel_image_methods_1d_cl_signed_int32",
 				Val: oclctsTest{
@@ -11345,7 +11532,9 @@ func init() {
 					buganizer:    "b/227136793",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "kernel_image_methods_1d_cl_signed_int8",
 				Val: oclctsTest{
@@ -11355,7 +11544,9 @@ func init() {
 					buganizer:    "b/227136793",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "kernel_image_methods_1d_cl_snorm_int16",
 				Val: oclctsTest{
@@ -11365,7 +11556,9 @@ func init() {
 					buganizer:    "b/227136793",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "kernel_image_methods_1d_cl_snorm_int8",
 				Val: oclctsTest{
@@ -11375,7 +11568,8 @@ func init() {
 					buganizer:    "b/227136793",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
 			{
 				Name: "kernel_image_methods_1d_cl_unorm_int_101010",
 				Val: oclctsTest{
@@ -11385,6 +11579,7 @@ func init() {
 				},
 				Timeout: 1 * time.Minute,
 			},
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "kernel_image_methods_1d_cl_unorm_int16",
 				Val: oclctsTest{
@@ -11394,7 +11589,9 @@ func init() {
 					buganizer:    "b/227136793",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "kernel_image_methods_1d_cl_unorm_int8",
 				Val: oclctsTest{
@@ -11404,7 +11601,8 @@ func init() {
 					buganizer:    "b/227136793",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
 			{
 				Name: "kernel_image_methods_1d_cl_unorm_short_555",
 				Val: oclctsTest{
@@ -11414,6 +11612,7 @@ func init() {
 				},
 				Timeout: 1 * time.Minute,
 			},
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "kernel_image_methods_1d_cl_unorm_short_565",
 				Val: oclctsTest{
@@ -11423,7 +11622,9 @@ func init() {
 					buganizer:    "b/227136793",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "kernel_image_methods_1d_cl_unsigned_int16",
 				Val: oclctsTest{
@@ -11433,7 +11634,9 @@ func init() {
 					buganizer:    "b/227136793",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "kernel_image_methods_1d_cl_unsigned_int32",
 				Val: oclctsTest{
@@ -11443,7 +11646,9 @@ func init() {
 					buganizer:    "b/227136793",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "kernel_image_methods_1d_cl_unsigned_int8",
 				Val: oclctsTest{
@@ -11453,7 +11658,9 @@ func init() {
 					buganizer:    "b/227136793",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "kernel_image_methods_2darray_cl_float",
 				Val: oclctsTest{
@@ -11463,7 +11670,9 @@ func init() {
 					buganizer:    "b/227136793",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "kernel_image_methods_2darray_cl_half_float",
 				Val: oclctsTest{
@@ -11473,7 +11682,9 @@ func init() {
 					buganizer:    "b/227136793",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "kernel_image_methods_2darray_cl_signed_int16",
 				Val: oclctsTest{
@@ -11483,7 +11694,9 @@ func init() {
 					buganizer:    "b/227136793",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "kernel_image_methods_2darray_cl_signed_int32",
 				Val: oclctsTest{
@@ -11493,7 +11706,9 @@ func init() {
 					buganizer:    "b/227136793",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "kernel_image_methods_2darray_cl_signed_int8",
 				Val: oclctsTest{
@@ -11503,7 +11718,9 @@ func init() {
 					buganizer:    "b/227136793",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "kernel_image_methods_2darray_cl_snorm_int16",
 				Val: oclctsTest{
@@ -11513,7 +11730,9 @@ func init() {
 					buganizer:    "b/227136793",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "kernel_image_methods_2darray_cl_snorm_int8",
 				Val: oclctsTest{
@@ -11523,7 +11742,8 @@ func init() {
 					buganizer:    "b/227136793",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
 			{
 				Name: "kernel_image_methods_2darray_cl_unorm_int_101010",
 				Val: oclctsTest{
@@ -11533,6 +11753,7 @@ func init() {
 				},
 				Timeout: 1 * time.Minute,
 			},
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "kernel_image_methods_2darray_cl_unorm_int16",
 				Val: oclctsTest{
@@ -11542,7 +11763,9 @@ func init() {
 					buganizer:    "b/227136793",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "kernel_image_methods_2darray_cl_unorm_int8",
 				Val: oclctsTest{
@@ -11552,7 +11775,8 @@ func init() {
 					buganizer:    "b/227136793",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
 			{
 				Name: "kernel_image_methods_2darray_cl_unorm_short_555",
 				Val: oclctsTest{
@@ -11562,6 +11786,7 @@ func init() {
 				},
 				Timeout: 1 * time.Minute,
 			},
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "kernel_image_methods_2darray_cl_unorm_short_565",
 				Val: oclctsTest{
@@ -11571,7 +11796,9 @@ func init() {
 					buganizer:    "b/227136793",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "kernel_image_methods_2darray_cl_unsigned_int16",
 				Val: oclctsTest{
@@ -11581,7 +11808,9 @@ func init() {
 					buganizer:    "b/227136793",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "kernel_image_methods_2darray_cl_unsigned_int32",
 				Val: oclctsTest{
@@ -11591,7 +11820,9 @@ func init() {
 					buganizer:    "b/227136793",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "kernel_image_methods_2darray_cl_unsigned_int8",
 				Val: oclctsTest{
@@ -11601,7 +11832,9 @@ func init() {
 					buganizer:    "b/227136793",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "kernel_image_methods_2d_cl_float",
 				Val: oclctsTest{
@@ -11611,7 +11844,9 @@ func init() {
 					buganizer:    "b/227136793",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "kernel_image_methods_2d_cl_half_float",
 				Val: oclctsTest{
@@ -11621,7 +11856,9 @@ func init() {
 					buganizer:    "b/227136793",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "kernel_image_methods_2d_cl_signed_int16",
 				Val: oclctsTest{
@@ -11631,7 +11868,9 @@ func init() {
 					buganizer:    "b/227136793",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "kernel_image_methods_2d_cl_signed_int32",
 				Val: oclctsTest{
@@ -11641,7 +11880,9 @@ func init() {
 					buganizer:    "b/227136793",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "kernel_image_methods_2d_cl_signed_int8",
 				Val: oclctsTest{
@@ -11651,7 +11892,9 @@ func init() {
 					buganizer:    "b/227136793",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "kernel_image_methods_2d_cl_snorm_int16",
 				Val: oclctsTest{
@@ -11661,7 +11904,9 @@ func init() {
 					buganizer:    "b/227136793",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "kernel_image_methods_2d_cl_snorm_int8",
 				Val: oclctsTest{
@@ -11671,7 +11916,8 @@ func init() {
 					buganizer:    "b/227136793",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
 			{
 				Name: "kernel_image_methods_2d_cl_unorm_int_101010",
 				Val: oclctsTest{
@@ -11681,6 +11927,7 @@ func init() {
 				},
 				Timeout: 1 * time.Minute,
 			},
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "kernel_image_methods_2d_cl_unorm_int16",
 				Val: oclctsTest{
@@ -11690,7 +11937,9 @@ func init() {
 					buganizer:    "b/227136793",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "kernel_image_methods_2d_cl_unorm_int8",
 				Val: oclctsTest{
@@ -11700,7 +11949,8 @@ func init() {
 					buganizer:    "b/227136793",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
 			{
 				Name: "kernel_image_methods_2d_cl_unorm_short_555",
 				Val: oclctsTest{
@@ -11710,6 +11960,7 @@ func init() {
 				},
 				Timeout: 1 * time.Minute,
 			},
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "kernel_image_methods_2d_cl_unorm_short_565",
 				Val: oclctsTest{
@@ -11719,7 +11970,9 @@ func init() {
 					buganizer:    "b/227136793",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "kernel_image_methods_2d_cl_unsigned_int16",
 				Val: oclctsTest{
@@ -11729,7 +11982,9 @@ func init() {
 					buganizer:    "b/227136793",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "kernel_image_methods_2d_cl_unsigned_int32",
 				Val: oclctsTest{
@@ -11739,7 +11994,9 @@ func init() {
 					buganizer:    "b/227136793",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "kernel_image_methods_2d_cl_unsigned_int8",
 				Val: oclctsTest{
@@ -11749,7 +12006,9 @@ func init() {
 					buganizer:    "b/227136793",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "kernel_image_methods_3d_cl_float",
 				Val: oclctsTest{
@@ -11759,7 +12018,9 @@ func init() {
 					buganizer:    "b/227136793",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "kernel_image_methods_3d_cl_half_float",
 				Val: oclctsTest{
@@ -11769,7 +12030,9 @@ func init() {
 					buganizer:    "b/227136793",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "kernel_image_methods_3d_cl_signed_int16",
 				Val: oclctsTest{
@@ -11779,7 +12042,9 @@ func init() {
 					buganizer:    "b/227136793",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "kernel_image_methods_3d_cl_signed_int32",
 				Val: oclctsTest{
@@ -11789,7 +12054,9 @@ func init() {
 					buganizer:    "b/227136793",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "kernel_image_methods_3d_cl_signed_int8",
 				Val: oclctsTest{
@@ -11799,7 +12066,9 @@ func init() {
 					buganizer:    "b/227136793",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "kernel_image_methods_3d_cl_snorm_int16",
 				Val: oclctsTest{
@@ -11809,7 +12078,9 @@ func init() {
 					buganizer:    "b/227136793",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "kernel_image_methods_3d_cl_snorm_int8",
 				Val: oclctsTest{
@@ -11819,7 +12090,8 @@ func init() {
 					buganizer:    "b/227136793",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
 			{
 				Name: "kernel_image_methods_3d_cl_unorm_int_101010",
 				Val: oclctsTest{
@@ -11829,6 +12101,7 @@ func init() {
 				},
 				Timeout: 1 * time.Minute,
 			},
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "kernel_image_methods_3d_cl_unorm_int16",
 				Val: oclctsTest{
@@ -11838,7 +12111,9 @@ func init() {
 					buganizer:    "b/227136793",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "kernel_image_methods_3d_cl_unorm_int8",
 				Val: oclctsTest{
@@ -11848,7 +12123,8 @@ func init() {
 					buganizer:    "b/227136793",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
 			{
 				Name: "kernel_image_methods_3d_cl_unorm_short_555",
 				Val: oclctsTest{
@@ -11858,6 +12134,7 @@ func init() {
 				},
 				Timeout: 1 * time.Minute,
 			},
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "kernel_image_methods_3d_cl_unorm_short_565",
 				Val: oclctsTest{
@@ -11867,7 +12144,9 @@ func init() {
 					buganizer:    "b/227136793",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "kernel_image_methods_3d_cl_unsigned_int16",
 				Val: oclctsTest{
@@ -11877,7 +12156,9 @@ func init() {
 					buganizer:    "b/227136793",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "kernel_image_methods_3d_cl_unsigned_int32",
 				Val: oclctsTest{
@@ -11887,7 +12168,9 @@ func init() {
 					buganizer:    "b/227136793",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "kernel_image_methods_3d_cl_unsigned_int8",
 				Val: oclctsTest{
@@ -11897,7 +12180,8 @@ func init() {
 					buganizer:    "b/227136793",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
 			{
 				Name: "mem_host_flags_mem_host_no_access_buffer",
 				Val: oclctsTest{
@@ -11934,6 +12218,7 @@ func init() {
 				},
 				Timeout: 1 * time.Minute,
 			},
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "mem_host_flags_mem_host_read_only_image",
 				Val: oclctsTest{
@@ -11943,7 +12228,8 @@ func init() {
 					buganizer:    "b/227134903",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
 			{
 				Name: "mem_host_flags_mem_host_read_only_subbuffer",
 				Val: oclctsTest{
@@ -11962,6 +12248,7 @@ func init() {
 				},
 				Timeout: 1 * time.Minute,
 			},
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "mem_host_flags_mem_host_write_only_image",
 				Val: oclctsTest{
@@ -11971,7 +12258,8 @@ func init() {
 					buganizer:    "b/227134903",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
 			{
 				Name: "mem_host_flags_mem_host_write_only_subbuffer",
 				Val: oclctsTest{
@@ -12080,6 +12368,7 @@ func init() {
 				},
 				Timeout: 1 * time.Minute,
 			},
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "profiling_execute",
 				Val: oclctsTest{
@@ -12089,7 +12378,8 @@ func init() {
 					buganizer:    "b/227133185",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
 			{
 				Name: "profiling_read_array_char",
 				Val: oclctsTest{
@@ -12612,6 +12902,7 @@ func init() {
 				},
 				Timeout: 1 * time.Minute,
 			},
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "samplerless_reads_1d_cl_float",
 				Val: oclctsTest{
@@ -12621,7 +12912,9 @@ func init() {
 					buganizer:    "b/227136137",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "samplerless_reads_1d_cl_half_float",
 				Val: oclctsTest{
@@ -12631,7 +12924,9 @@ func init() {
 					buganizer:    "b/227136137",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "samplerless_reads_1d_cl_signed_int16",
 				Val: oclctsTest{
@@ -12641,7 +12936,9 @@ func init() {
 					buganizer:    "b/227136137",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "samplerless_reads_1d_cl_signed_int32",
 				Val: oclctsTest{
@@ -12651,7 +12948,9 @@ func init() {
 					buganizer:    "b/227136137",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "samplerless_reads_1d_cl_signed_int8",
 				Val: oclctsTest{
@@ -12661,7 +12960,9 @@ func init() {
 					buganizer:    "b/227136137",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "samplerless_reads_1d_cl_snorm_int16",
 				Val: oclctsTest{
@@ -12671,7 +12972,9 @@ func init() {
 					buganizer:    "b/227136137",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "samplerless_reads_1d_cl_snorm_int8",
 				Val: oclctsTest{
@@ -12681,7 +12984,8 @@ func init() {
 					buganizer:    "b/227136137",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
 			{
 				Name: "samplerless_reads_1d_cl_unorm_int_101010",
 				Val: oclctsTest{
@@ -12691,6 +12995,7 @@ func init() {
 				},
 				Timeout: 1 * time.Minute,
 			},
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "samplerless_reads_1d_cl_unorm_int16",
 				Val: oclctsTest{
@@ -12700,7 +13005,9 @@ func init() {
 					buganizer:    "b/227136137",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "samplerless_reads_1d_cl_unorm_int8",
 				Val: oclctsTest{
@@ -12710,7 +13017,8 @@ func init() {
 					buganizer:    "b/227136137",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
 			{
 				Name: "samplerless_reads_1d_cl_unorm_short_555",
 				Val: oclctsTest{
@@ -12721,6 +13029,7 @@ func init() {
 				},
 				Timeout: 1 * time.Minute,
 			},
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "samplerless_reads_1d_cl_unorm_short_565",
 				Val: oclctsTest{
@@ -12730,7 +13039,9 @@ func init() {
 					buganizer:    "b/227136137",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "samplerless_reads_1d_cl_unsigned_int16",
 				Val: oclctsTest{
@@ -12740,7 +13051,9 @@ func init() {
 					buganizer:    "b/227136137",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "samplerless_reads_1d_cl_unsigned_int32",
 				Val: oclctsTest{
@@ -12750,7 +13063,9 @@ func init() {
 					buganizer:    "b/227136137",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "samplerless_reads_1d_cl_unsigned_int8",
 				Val: oclctsTest{
@@ -12760,7 +13075,8 @@ func init() {
 					buganizer:    "b/227136137",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
 			{
 				Name: "samplerless_reads_2darray_cl_float",
 				Val: oclctsTest{
@@ -13492,6 +13808,7 @@ func init() {
 				},
 				Timeout: 1 * time.Minute,
 			},
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "vectors_vec_align_array",
 				Val: oclctsTest{
@@ -13501,7 +13818,9 @@ func init() {
 					buganizer:    "b/227134903",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "vectors_vec_align_packed_struct_arr",
 				Val: oclctsTest{
@@ -13511,7 +13830,9 @@ func init() {
 					buganizer:    "b/227134903",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "vectors_vec_align_packed_struct",
 				Val: oclctsTest{
@@ -13521,7 +13842,9 @@ func init() {
 					buganizer:    "b/227134903",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "vectors_vec_align_struct_arr",
 				Val: oclctsTest{
@@ -13531,7 +13854,9 @@ func init() {
 					buganizer:    "b/227134903",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
+			/* Disabled due to <1% pass rate over 30 days. See b/241943553
 			{
 				Name: "vectors_vec_align_struct",
 				Val: oclctsTest{
@@ -13541,7 +13866,8 @@ func init() {
 					buganizer:    "b/227134903",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
 		},
 	},
 	)
