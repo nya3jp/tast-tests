@@ -16,6 +16,29 @@
       "message": "lgtm for Tast review.\nPlease obtain CR+2 from a team member who is familiar with the domain",
       "revId": "7d0d674ada25bb0cd8ed86e0d42e487177bd7ada",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc598f26_11cc1e70",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 654,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2022-08-15T17:58:01Z",
+      "side": 1,
+      "message": "should this be an early return or should we just log error?",
+      "range": {
+        "startLine": 654,
+        "startChar": 0,
+        "endLine": 654,
+        "endChar": 68
+      },
+      "revId": "7d0d674ada25bb0cd8ed86e0d42e487177bd7ada",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
