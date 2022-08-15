@@ -136,6 +136,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "495585f5_5112aa59",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1541210
+      },
+      "writtenOn": "2022-08-15T10:43:13Z",
+      "side": 1,
+      "message": "I see, sorry for the confusion.",
+      "parentUuid": "bc17e378_e239732c",
+      "range": {
+        "startLine": 70,
+        "startChar": 3,
+        "endLine": 70,
+        "endChar": 20
+      },
+      "revId": "c590a2f76762def87d99f4a768d1d5b1603d47a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "39009d01_56f316e1",
@@ -221,6 +245,30 @@
       "side": 1,
       "message": "Or possibly defer the umount command here, and mount SSHFS again after the SDCard volume is unmounted and mounted?",
       "parentUuid": "0f84226b_f56cdc5d",
+      "range": {
+        "startLine": 302,
+        "startChar": 0,
+        "endLine": 308,
+        "endChar": 3
+      },
+      "revId": "c590a2f76762def87d99f4a768d1d5b1603d47a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d7fc324_271c7b50",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1541210
+      },
+      "writtenOn": "2022-08-15T10:43:13Z",
+      "side": 1,
+      "message": "\u003e maybe the unmount code should be moved to somewhere in between [...] so that it\u0027s executed even when  createFileCopiesUnderTargetPath  fails?\nRight, thanks!\n\n\u003e Do we need to mount and unmount SSHFS before and after os.RemoveAll\nI also overlooked this (as os.RemoveAll doesn\u0027t fail for nonexistent paths), thanks for pointing this out as well!\n\n\u003e Or possibly defer the umount command here, and mount SSHFS again after the SDCard volume is unmounted and mounted?\nDo you mean to allow SSHFS to be automatically unmounted when we unmount the SDCard volume? Although that will be one less unmount needed, probably the code will be easier to understand if we always wrap with mount and unmount the parts of the code that accesses `/home/root/\u003chash\u003e/android-data/data` ?",
+      "parentUuid": "1ee149fc_607f849c",
       "range": {
         "startLine": 302,
         "startChar": 0,
