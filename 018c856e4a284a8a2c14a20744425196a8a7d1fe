@@ -70,6 +70,30 @@
       },
       "revId": "018c856e4a284a8a2c14a20744425196a8a7d1fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "43e5a42a_eb69555d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/run_oci.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1171009
+      },
+      "writtenOn": "2022-08-15T20:29:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0811c16d_ffb354e1",
+      "range": {
+        "startLine": 115,
+        "startChar": 3,
+        "endLine": 115,
+        "endChar": 56
+      },
+      "revId": "018c856e4a284a8a2c14a20744425196a8a7d1fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
