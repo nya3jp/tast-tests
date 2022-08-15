@@ -41,12 +41,16 @@ func init() {
 		Params: []testing.Param{{
 			Fixture: fixture.ChromePolicyLoggedIn,
 			Val:     browser.TypeAsh,
-		}, {
+		},
+		/* Disabled due to <1% pass rate over 30 days. See b/241942929
+		{
 			Name:              "lacros",
 			ExtraSoftwareDeps: []string{"lacros"},
 			Fixture:           fixture.LacrosPolicyLoggedIn,
 			Val:               browser.TypeLacros,
-		}},
+		}
+		*/
+		},
 	})
 }
 
