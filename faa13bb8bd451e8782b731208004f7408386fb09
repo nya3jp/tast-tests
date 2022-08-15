@@ -16,6 +16,24 @@
       "message": "were you able to repro the failure without this change?",
       "revId": "faa13bb8bd451e8782b731208004f7408386fb09",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f5d1ebf_20440ca1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-08-15T19:12:02Z",
+      "side": 1,
+      "message": "No I was not able to. But I was able to show that the test still passed if the state that we verified against was \u0027no-connectivity\u0027. Because of this, I made the change to verify against any connected state, since that seems to be really what we care about.",
+      "parentUuid": "11197cda_da326886",
+      "revId": "faa13bb8bd451e8782b731208004f7408386fb09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
