@@ -16,7 +16,6 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/launcher"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
-	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -35,12 +34,16 @@ func init() {
 			Name:    "productivity_launcher_clamshell_mode",
 			Fixture: "chromeLoggedInWithProductivityLauncher",
 			Val:     launcher.TestCase{TabletMode: false},
-		}, {
+		},
+		/* Disabled due to <1% pass rate over 30 days. See b/241943050
+		{
 			Name:              "productivity_launcher_tablet_mode",
 			Fixture:           "chromeLoggedInWithProductivityLauncher",
 			Val:               launcher.TestCase{TabletMode: true},
 			ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
-		}},
+		}
+		*/
+		},
 	})
 }
 
