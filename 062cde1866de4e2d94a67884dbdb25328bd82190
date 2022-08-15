@@ -54,6 +54,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "fad68547_895fe774",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/tpm_kernel_version.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1518072
+      },
+      "writtenOn": "2022-08-15T22:22:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "28c0d289_5ae4bbe7",
+      "revId": "062cde1866de4e2d94a67884dbdb25328bd82190",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "ce5c003a_37f786d9",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/tpm_kernel_version.go",
         "patchSetId": 1
@@ -98,6 +116,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "00a184df_f8403c63",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/tpm_kernel_version.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1518072
+      },
+      "writtenOn": "2022-08-15T22:22:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e5effa7b_2de6e9e0",
+      "range": {
+        "startLine": 50,
+        "startChar": 58,
+        "endLine": 50,
+        "endChar": 67
+      },
+      "revId": "062cde1866de4e2d94a67884dbdb25328bd82190",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f9a99d11_03f7f0eb",
@@ -121,6 +163,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a87824bd_50913f37",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/tpm_kernel_version.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1518072
+      },
+      "writtenOn": "2022-08-15T22:22:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f9a99d11_03f7f0eb",
+      "range": {
+        "startLine": 65,
+        "startChar": 4,
+        "endLine": 65,
+        "endChar": 10
+      },
+      "revId": "062cde1866de4e2d94a67884dbdb25328bd82190",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "43bea944_2243f63e",
@@ -134,6 +200,30 @@
       "writtenOn": "2022-08-10T04:43:12Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 69,
+        "startChar": 4,
+        "endLine": 69,
+        "endChar": 10
+      },
+      "revId": "062cde1866de4e2d94a67884dbdb25328bd82190",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "486105d5_94de6e30",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/tpm_kernel_version.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1518072
+      },
+      "writtenOn": "2022-08-15T22:22:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "43bea944_2243f63e",
       "range": {
         "startLine": 69,
         "startChar": 4,
