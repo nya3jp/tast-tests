@@ -43,13 +43,19 @@ func init() {
 				action:       testWrongPassword,
 				expectReport: false,
 			},
-		}, {
+		},
+		/* Disabled due to <1% pass rate over 30 days. See b/241943008
+		/* Disabled due to <1% pass rate over 30 days. See b/241943008
+		{
 			Name: "actual_error",
 			Val: mountVaultFailureTestVal{
 				action:       testActualError,
 				expectReport: true,
 			},
-		}},
+		}
+		*/
+		*/
+		},
 	})
 }
 
