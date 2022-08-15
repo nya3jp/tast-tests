@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ba00a3f_d9aa21c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/multivm/memory_allocation_canary_health_perf.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1528219
+      },
+      "writtenOn": "2022-08-15T05:34:22Z",
+      "side": 1,
+      "message": "nit: Naming. What is this a limit for?\nAlso, can you somehow make this dynamic based on the number of memory allocators? What happens if there are more than 4096?",
+      "range": {
+        "startLine": 72,
+        "startChar": 6,
+        "endLine": 72,
+        "endChar": 20
+      },
+      "revId": "64ea5b2cac3035c5ea81e7b9b7265961d7cb2086",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a244e2aa_83528a3c",
+        "filename": "src/chromiumos/tast/local/memory/memoryuser/canary.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1528219
+      },
+      "writtenOn": "2022-08-15T05:34:22Z",
+      "side": 1,
+      "message": "nit: typo",
+      "range": {
+        "startLine": 82,
+        "startChar": 35,
+        "endLine": 82,
+        "endChar": 41
+      },
+      "revId": "64ea5b2cac3035c5ea81e7b9b7265961d7cb2086",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db51bb5c_a3fe5075",
+        "filename": "src/chromiumos/tast/local/memory/memoryuser/canary.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1528219
+      },
+      "writtenOn": "2022-08-15T05:34:22Z",
+      "side": 1,
+      "message": "nit: indentation",
+      "range": {
+        "startLine": 95,
+        "startChar": 13,
+        "endLine": 95,
+        "endChar": 14
+      },
+      "revId": "64ea5b2cac3035c5ea81e7b9b7265961d7cb2086",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f08ce901_1424eeaa",
+        "filename": "src/chromiumos/tast/local/memory/memoryuser/canary.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1528219
+      },
+      "writtenOn": "2022-08-15T05:34:22Z",
+      "side": 1,
+      "message": "nit: this is kind of a strange API. Would it be possible to split this into \n`NewArcCanary` and `NewChromeCanary`? That would clean up the function body quite a bit and you can remove the two optional params.",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 146
+      },
+      "revId": "64ea5b2cac3035c5ea81e7b9b7265961d7cb2086",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
