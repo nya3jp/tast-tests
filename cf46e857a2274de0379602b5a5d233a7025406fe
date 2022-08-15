@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7e2aa1d_ae68be31",
+        "filename": "src/chromiumos/tast/remote/cellular/callbox/iperf/server_result_poller.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-08-15T15:20:51Z",
+      "side": 1,
+      "message": "nit: comma after \"samples\"",
+      "range": {
+        "startLine": 176,
+        "startChar": 86,
+        "endLine": 176,
+        "endChar": 93
+      },
+      "revId": "cf46e857a2274de0379602b5a5d233a7025406fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
