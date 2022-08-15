@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4962caf5_579c5279",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/intel/usb_device_hotplug_during_sleep.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2022-08-15T02:50:47Z",
+      "side": 1,
+      "message": "Why is this used for some commands but not others?",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 29
+      },
+      "revId": "c75b3acd3b335a0e84587c8c8ebb8b9f7879ccf6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f15e2829_7eff17de",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/intel/usb_device_hotplug_during_sleep.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2022-08-15T02:50:47Z",
+      "side": 1,
+      "message": "I think inlining these commands would be more readable than using constants. Also, I\u0027m pretty sure these will work without the `bash -c` prefix.",
+      "range": {
+        "startLine": 57,
+        "startChar": 1,
+        "endLine": 57,
+        "endChar": 8
+      },
+      "revId": "c75b3acd3b335a0e84587c8c8ebb8b9f7879ccf6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86a6493a_08c8acf5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/intel/usb_device_hotplug_during_sleep.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2022-08-15T02:50:47Z",
+      "side": 1,
+      "message": "Is there a reason that `bash` is used sometimes and `sh` is used sometimes?",
+      "range": {
+        "startLine": 69,
+        "startChar": 44,
+        "endLine": 69,
+        "endChar": 46
+      },
+      "revId": "c75b3acd3b335a0e84587c8c8ebb8b9f7879ccf6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "690bdff9_64e1fb7b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/intel/usb_device_hotplug_during_sleep.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2022-08-15T02:50:47Z",
+      "side": 1,
+      "message": "Can you add a comment explaining why we\u0027re ignoring this error?",
+      "range": {
+        "startLine": 170,
+        "startChar": 135,
+        "endLine": 170,
+        "endChar": 179
+      },
+      "revId": "c75b3acd3b335a0e84587c8c8ebb8b9f7879ccf6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a987d163_b6d06f0e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/intel/usb_device_hotplug_during_sleep.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2022-08-15T02:50:47Z",
+      "side": 1,
+      "message": "Nit: can you use a more descriptive name for this variable - at least it\u0027s not clear to me what `sd` means.",
+      "range": {
+        "startLine": 174,
+        "startChar": 1,
+        "endLine": 174,
+        "endChar": 6
+      },
+      "revId": "c75b3acd3b335a0e84587c8c8ebb8b9f7879ccf6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
