@@ -112,6 +112,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc17e378_e239732c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2022-08-15T09:57:58Z",
+      "side": 1,
+      "message": "Ah,sorry. I confused SSHFS mount with host-side virtio-blk /data mount when I looked at the CL in Cq-Depend...",
+      "parentUuid": "39839b83_086f6f2d",
+      "range": {
+        "startLine": 70,
+        "startChar": 3,
+        "endLine": 70,
+        "endChar": 20
+      },
+      "revId": "c590a2f76762def87d99f4a768d1d5b1603d47a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "39009d01_56f316e1",
@@ -149,6 +173,30 @@
       "side": 1,
       "message": "Looks like /home/root/\u003chash\u003e/android-data/data/media/0 is already unmounted at the end of the test. Probably it\u0027s unmounted when we unmount the SDCard volume. So if we need to do it, I think it should be before unmounting the SDCard volume.",
       "parentUuid": "39009d01_56f316e1",
+      "range": {
+        "startLine": 302,
+        "startChar": 0,
+        "endLine": 308,
+        "endChar": 3
+      },
+      "revId": "c590a2f76762def87d99f4a768d1d5b1603d47a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f84226b_f56cdc5d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2022-08-15T09:57:58Z",
+      "side": 1,
+      "message": "Thanks for checking! If that\u0027s the case, maybe the unmount code should be moved to somewhere in between\n```\nerr \u003d createFileCopiesUnderTargetPath(s, targetDirPath)\n```\nand\n```\nif err !\u003d nil {\n\ts.Fatalf(\"Failed to create copies of %s under %v: %v\", capybaraFileName, targetDirPath, err)\n}\n```\nso that it\u0027s executed even when `createFileCopiesUnderTargetPath` fails?\nAlso I wonder whether the defered `os.RemoveAll(targetDirPath)` has any effect if SSHFS is already unmounted. Do we need to mount and unmount SSHFS before and after `os.RemoveAll` so that the created files are always removed?",
+      "parentUuid": "a1cc6fe9_9c88f36e",
       "range": {
         "startLine": 302,
         "startChar": 0,
