@@ -16,6 +16,24 @@
       "message": "Double check, is the deletion of this test and launcher.Smoke intentional? If so, Can you also mention it in the commit message?",
       "revId": "e01086b1c8c82663342da10b5998e54b3d5cc618",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b81c3c76_8a0474af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/search_results.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1000045
+      },
+      "writtenOn": "2022-08-15T15:50:14Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "c6fd8252_42c55096",
+      "revId": "e01086b1c8c82663342da10b5998e54b3d5cc618",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
