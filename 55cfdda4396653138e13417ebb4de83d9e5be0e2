@@ -16,6 +16,24 @@
       "message": "This is needed to support tests that want to wait for app window to become visible after apps.Launch(). See https://crrev.com/c/3819062.\nFYI it is different from ash.WaitForApp in that it checks if the app appears on the shelf, but not in the a11y tree, which is not the same verification.",
       "revId": "55cfdda4396653138e13417ebb4de83d9e5be0e2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6179e63_3286b687",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-08-15T08:52:40Z",
+      "side": 1,
+      "message": "Oops, sorry I overlooked your initial comment here.\nMaybe we should rename ash.WaitForApp to ash.WaitForShelfAppIcon, and\nmove rename WaitForAppVIsible to WaitForAppWindow then move to wm.go?",
+      "parentUuid": "fb9e4615_d2520172",
+      "revId": "55cfdda4396653138e13417ebb4de83d9e5be0e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

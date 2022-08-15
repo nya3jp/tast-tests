@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "691b16ec_38a921c6",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 635,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-08-15T08:52:40Z",
+      "side": 1,
+      "message": "Oops, sorry I overlooked you initial comment. Please feel free to ignore this.",
+      "parentUuid": "8d3ec503_b6a78aa4",
+      "revId": "d8d75b71176394f2588210f06cafe9cd7921bc8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ba2a8a6b_ccbefd98",
