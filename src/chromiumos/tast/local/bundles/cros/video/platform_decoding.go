@@ -580,6 +580,7 @@ func init() {
 				ExtraData:         []string{"test_vectors/av1/aom/av1-1-b8-05-mv.ivf", "test_vectors/av1/aom/av1-1-b8-05-mv.ivf.json", "test_vectors/av1/aom/av1-1-b8-06-mfmv.ivf", "test_vectors/av1/aom/av1-1-b8-06-mfmv.ivf.json"},
 				ExtraAttr:         []string{"graphics_video_av1"},
 			},
+			/* Disabled due to <1% pass rate over 30 days. See b/241943013
 			{
 				Name: "vaapi_hevc_main",
 				Val: platformDecodingParams{
@@ -591,7 +592,8 @@ func init() {
 				ExtraSoftwareDeps: []string{"vaapi", "autotest-capability:hw_dec_hevc_1080_30"},
 				ExtraData:         []string{"test_vectors/hevc/main/AMP_A_Samsung_7.hevc", "test_vectors/hevc/main/AMP_A_Samsung_7.hevc.json", "test_vectors/hevc/main/AMP_B_Samsung_7.hevc", "test_vectors/hevc/main/AMP_B_Samsung_7.hevc.json", "test_vectors/hevc/main/AMP_D_Hisilicon.hevc", "test_vectors/hevc/main/AMP_D_Hisilicon.hevc.json", "test_vectors/hevc/main/AMP_E_Hisilicon.hevc", "test_vectors/hevc/main/AMP_E_Hisilicon.hevc.json", "test_vectors/hevc/main/AMP_F_Hisilicon_3.hevc", "test_vectors/hevc/main/AMP_F_Hisilicon_3.hevc.json", "test_vectors/hevc/main/AMVP_A_MTK_4.hevc", "test_vectors/hevc/main/AMVP_A_MTK_4.hevc.json", "test_vectors/hevc/main/AMVP_B_MTK_4.hevc", "test_vectors/hevc/main/AMVP_B_MTK_4.hevc.json", "test_vectors/hevc/main/AMVP_C_Samsung_7.hevc", "test_vectors/hevc/main/AMVP_C_Samsung_7.hevc.json", "test_vectors/hevc/main/BUMPING_A_ericsson_1.hevc", "test_vectors/hevc/main/BUMPING_A_ericsson_1.hevc.json", "test_vectors/hevc/main/CAINIT_A_SHARP_4.hevc", "test_vectors/hevc/main/CAINIT_A_SHARP_4.hevc.json", "test_vectors/hevc/main/CAINIT_B_SHARP_4.hevc", "test_vectors/hevc/main/CAINIT_B_SHARP_4.hevc.json", "test_vectors/hevc/main/CAINIT_C_SHARP_3.hevc", "test_vectors/hevc/main/CAINIT_C_SHARP_3.hevc.json", "test_vectors/hevc/main/CAINIT_D_SHARP_3.hevc", "test_vectors/hevc/main/CAINIT_D_SHARP_3.hevc.json", "test_vectors/hevc/main/CAINIT_E_SHARP_3.hevc", "test_vectors/hevc/main/CAINIT_E_SHARP_3.hevc.json", "test_vectors/hevc/main/CAINIT_F_SHARP_3.hevc", "test_vectors/hevc/main/CAINIT_F_SHARP_3.hevc.json", "test_vectors/hevc/main/CAINIT_G_SHARP_3.hevc", "test_vectors/hevc/main/CAINIT_G_SHARP_3.hevc.json", "test_vectors/hevc/main/CAINIT_H_SHARP_3.hevc", "test_vectors/hevc/main/CAINIT_H_SHARP_3.hevc.json", "test_vectors/hevc/main/CIP_A_Panasonic_3.hevc", "test_vectors/hevc/main/CIP_A_Panasonic_3.hevc.json", "test_vectors/hevc/main/cip_B_NEC_3.hevc", "test_vectors/hevc/main/cip_B_NEC_3.hevc.json", "test_vectors/hevc/main/CIP_C_Panasonic_2.hevc", "test_vectors/hevc/main/CIP_C_Panasonic_2.hevc.json", "test_vectors/hevc/main/CONFWIN_A_Sony_1.hevc", "test_vectors/hevc/main/CONFWIN_A_Sony_1.hevc.json", "test_vectors/hevc/main/DBLK_A_SONY_3.hevc", "test_vectors/hevc/main/DBLK_A_SONY_3.hevc.json", "test_vectors/hevc/main/DBLK_B_SONY_3.hevc", "test_vectors/hevc/main/DBLK_B_SONY_3.hevc.json", "test_vectors/hevc/main/DBLK_C_SONY_3.hevc", "test_vectors/hevc/main/DBLK_C_SONY_3.hevc.json", "test_vectors/hevc/main/DBLK_D_VIXS_2.hevc", "test_vectors/hevc/main/DBLK_D_VIXS_2.hevc.json", "test_vectors/hevc/main/DBLK_E_VIXS_2.hevc", "test_vectors/hevc/main/DBLK_E_VIXS_2.hevc.json", "test_vectors/hevc/main/DBLK_F_VIXS_2.hevc", "test_vectors/hevc/main/DBLK_F_VIXS_2.hevc.json", "test_vectors/hevc/main/DBLK_G_VIXS_2.hevc", "test_vectors/hevc/main/DBLK_G_VIXS_2.hevc.json", "test_vectors/hevc/main/DELTAQP_A_BRCM_4.hevc", "test_vectors/hevc/main/DELTAQP_A_BRCM_4.hevc.json", "test_vectors/hevc/main/DELTAQP_B_SONY_3.hevc", "test_vectors/hevc/main/DELTAQP_B_SONY_3.hevc.json", "test_vectors/hevc/main/DELTAQP_C_SONY_3.hevc", "test_vectors/hevc/main/DELTAQP_C_SONY_3.hevc.json", "test_vectors/hevc/main/DSLICE_A_HHI_5.hevc", "test_vectors/hevc/main/DSLICE_A_HHI_5.hevc.json", "test_vectors/hevc/main/DSLICE_B_HHI_5.hevc", "test_vectors/hevc/main/DSLICE_B_HHI_5.hevc.json", "test_vectors/hevc/main/DSLICE_C_HHI_5.hevc", "test_vectors/hevc/main/DSLICE_C_HHI_5.hevc.json", "test_vectors/hevc/main/ENTP_A_Qualcomm_1.hevc", "test_vectors/hevc/main/ENTP_A_Qualcomm_1.hevc.json", "test_vectors/hevc/main/ENTP_B_Qualcomm_1.hevc", "test_vectors/hevc/main/ENTP_B_Qualcomm_1.hevc.json", "test_vectors/hevc/main/ENTP_C_Qualcomm_1.hevc", "test_vectors/hevc/main/ENTP_C_Qualcomm_1.hevc.json", "test_vectors/hevc/main/EXT_A_ericsson_4.hevc", "test_vectors/hevc/main/EXT_A_ericsson_4.hevc.json", "test_vectors/hevc/main/FILLER_A_Sony_1.hevc", "test_vectors/hevc/main/FILLER_A_Sony_1.hevc.json", "test_vectors/hevc/main/HRD_A_Fujitsu_3.hevc", "test_vectors/hevc/main/HRD_A_Fujitsu_3.hevc.json", "test_vectors/hevc/main/INITQP_A_Sony_1.hevc", "test_vectors/hevc/main/INITQP_A_Sony_1.hevc.json", "test_vectors/hevc/main/ipcm_A_NEC_3.hevc", "test_vectors/hevc/main/ipcm_A_NEC_3.hevc.json", "test_vectors/hevc/main/ipcm_B_NEC_3.hevc", "test_vectors/hevc/main/ipcm_B_NEC_3.hevc.json", "test_vectors/hevc/main/ipcm_C_NEC_3.hevc", "test_vectors/hevc/main/ipcm_C_NEC_3.hevc.json", "test_vectors/hevc/main/ipcm_D_NEC_3.hevc", "test_vectors/hevc/main/ipcm_D_NEC_3.hevc.json", "test_vectors/hevc/main/ipcm_E_NEC_2.hevc", "test_vectors/hevc/main/ipcm_E_NEC_2.hevc.json", "test_vectors/hevc/main/IPRED_A_docomo_2.hevc", "test_vectors/hevc/main/IPRED_A_docomo_2.hevc.json", "test_vectors/hevc/main/IPRED_C_Mitsubishi_3.hevc", "test_vectors/hevc/main/IPRED_C_Mitsubishi_3.hevc.json", "test_vectors/hevc/main/LS_A_Orange_2.hevc", "test_vectors/hevc/main/LS_A_Orange_2.hevc.json", "test_vectors/hevc/main/LS_B_Orange_4.hevc", "test_vectors/hevc/main/LS_B_Orange_4.hevc.json", "test_vectors/hevc/main/LTRPSPS_A_Qualcomm_1.hevc", "test_vectors/hevc/main/LTRPSPS_A_Qualcomm_1.hevc.json", "test_vectors/hevc/main/MAXBINS_A_TI_5.hevc", "test_vectors/hevc/main/MAXBINS_A_TI_5.hevc.json", "test_vectors/hevc/main/MAXBINS_B_TI_5.hevc", "test_vectors/hevc/main/MAXBINS_B_TI_5.hevc.json", "test_vectors/hevc/main/MAXBINS_C_TI_5.hevc", "test_vectors/hevc/main/MAXBINS_C_TI_5.hevc.json", "test_vectors/hevc/main/MERGE_A_TI_3.hevc", "test_vectors/hevc/main/MERGE_A_TI_3.hevc.json", "test_vectors/hevc/main/MERGE_B_TI_3.hevc", "test_vectors/hevc/main/MERGE_B_TI_3.hevc.json", "test_vectors/hevc/main/MERGE_C_TI_3.hevc", "test_vectors/hevc/main/MERGE_C_TI_3.hevc.json", "test_vectors/hevc/main/MERGE_D_TI_3.hevc", "test_vectors/hevc/main/MERGE_D_TI_3.hevc.json", "test_vectors/hevc/main/MERGE_E_TI_3.hevc", "test_vectors/hevc/main/MERGE_E_TI_3.hevc.json", "test_vectors/hevc/main/MERGE_F_MTK_4.hevc", "test_vectors/hevc/main/MERGE_F_MTK_4.hevc.json", "test_vectors/hevc/main/MERGE_G_HHI_4.hevc", "test_vectors/hevc/main/MERGE_G_HHI_4.hevc.json", "test_vectors/hevc/main/MVCLIP_A_qualcomm_3.hevc", "test_vectors/hevc/main/MVCLIP_A_qualcomm_3.hevc.json", "test_vectors/hevc/main/MVDL1ZERO_A_docomo_4.hevc", "test_vectors/hevc/main/MVDL1ZERO_A_docomo_4.hevc.json", "test_vectors/hevc/main/MVEDGE_A_qualcomm_3.hevc", "test_vectors/hevc/main/MVEDGE_A_qualcomm_3.hevc.json", "test_vectors/hevc/main/NoOutPrior_A_Qualcomm_1.hevc", "test_vectors/hevc/main/NoOutPrior_A_Qualcomm_1.hevc.json", "test_vectors/hevc/main/NoOutPrior_B_Qualcomm_1.hevc", "test_vectors/hevc/main/NoOutPrior_B_Qualcomm_1.hevc.json", "test_vectors/hevc/main/NUT_A_ericsson_5.hevc", "test_vectors/hevc/main/NUT_A_ericsson_5.hevc.json", "test_vectors/hevc/main/OPFLAG_A_Qualcomm_1.hevc", "test_vectors/hevc/main/OPFLAG_A_Qualcomm_1.hevc.json", "test_vectors/hevc/main/OPFLAG_B_Qualcomm_1.hevc", "test_vectors/hevc/main/OPFLAG_B_Qualcomm_1.hevc.json", "test_vectors/hevc/main/OPFLAG_C_Qualcomm_1.hevc", "test_vectors/hevc/main/OPFLAG_C_Qualcomm_1.hevc.json", "test_vectors/hevc/main/PMERGE_A_TI_3.hevc", "test_vectors/hevc/main/PMERGE_A_TI_3.hevc.json", "test_vectors/hevc/main/PMERGE_B_TI_3.hevc", "test_vectors/hevc/main/PMERGE_B_TI_3.hevc.json", "test_vectors/hevc/main/PMERGE_C_TI_3.hevc", "test_vectors/hevc/main/PMERGE_C_TI_3.hevc.json", "test_vectors/hevc/main/PMERGE_D_TI_3.hevc", "test_vectors/hevc/main/PMERGE_D_TI_3.hevc.json", "test_vectors/hevc/main/PMERGE_E_TI_3.hevc", "test_vectors/hevc/main/PMERGE_E_TI_3.hevc.json", "test_vectors/hevc/main/POC_A_Bossen_3.hevc", "test_vectors/hevc/main/POC_A_Bossen_3.hevc.json", "test_vectors/hevc/main/PPS_A_qualcomm_7.hevc", "test_vectors/hevc/main/PPS_A_qualcomm_7.hevc.json", "test_vectors/hevc/main/PS_B_VIDYO_3.hevc", "test_vectors/hevc/main/PS_B_VIDYO_3.hevc.json", "test_vectors/hevc/main/RAP_A_docomo_6.hevc", "test_vectors/hevc/main/RAP_A_docomo_6.hevc.json", "test_vectors/hevc/main/RAP_B_Bossen_2.hevc", "test_vectors/hevc/main/RAP_B_Bossen_2.hevc.json", "test_vectors/hevc/main/RPLM_A_qualcomm_4.hevc", "test_vectors/hevc/main/RPLM_A_qualcomm_4.hevc.json", "test_vectors/hevc/main/RPLM_B_qualcomm_4.hevc", "test_vectors/hevc/main/RPLM_B_qualcomm_4.hevc.json", "test_vectors/hevc/main/RPS_A_docomo_5.hevc", "test_vectors/hevc/main/RPS_A_docomo_5.hevc.json", "test_vectors/hevc/main/RPS_B_qualcomm_5.hevc", "test_vectors/hevc/main/RPS_B_qualcomm_5.hevc.json", "test_vectors/hevc/main/RPS_C_ericsson_5.hevc", "test_vectors/hevc/main/RPS_C_ericsson_5.hevc.json", "test_vectors/hevc/main/RPS_D_ericsson_6.hevc", "test_vectors/hevc/main/RPS_D_ericsson_6.hevc.json", "test_vectors/hevc/main/RPS_E_qualcomm_5.hevc", "test_vectors/hevc/main/RPS_E_qualcomm_5.hevc.json", "test_vectors/hevc/main/RPS_F_docomo_2.hevc", "test_vectors/hevc/main/RPS_F_docomo_2.hevc.json", "test_vectors/hevc/main/RQT_A_HHI_4.hevc", "test_vectors/hevc/main/RQT_A_HHI_4.hevc.json", "test_vectors/hevc/main/RQT_B_HHI_4.hevc", "test_vectors/hevc/main/RQT_B_HHI_4.hevc.json", "test_vectors/hevc/main/RQT_C_HHI_4.hevc", "test_vectors/hevc/main/RQT_C_HHI_4.hevc.json", "test_vectors/hevc/main/RQT_D_HHI_4.hevc", "test_vectors/hevc/main/RQT_D_HHI_4.hevc.json", "test_vectors/hevc/main/RQT_E_HHI_4.hevc", "test_vectors/hevc/main/RQT_E_HHI_4.hevc.json", "test_vectors/hevc/main/RQT_F_HHI_4.hevc", "test_vectors/hevc/main/RQT_F_HHI_4.hevc.json", "test_vectors/hevc/main/RQT_G_HHI_4.hevc", "test_vectors/hevc/main/RQT_G_HHI_4.hevc.json", "test_vectors/hevc/main/SAO_A_MediaTek_4.hevc", "test_vectors/hevc/main/SAO_A_MediaTek_4.hevc.json", "test_vectors/hevc/main/SAO_B_MediaTek_5.hevc", "test_vectors/hevc/main/SAO_B_MediaTek_5.hevc.json", "test_vectors/hevc/main/SAO_C_Samsung_5.hevc", "test_vectors/hevc/main/SAO_C_Samsung_5.hevc.json", "test_vectors/hevc/main/SAODBLK_A_MainConcept_4.hevc", "test_vectors/hevc/main/SAODBLK_A_MainConcept_4.hevc.json", "test_vectors/hevc/main/SAODBLK_B_MainConcept_4.hevc", "test_vectors/hevc/main/SAODBLK_B_MainConcept_4.hevc.json", "test_vectors/hevc/main/SAO_D_Samsung_5.hevc", "test_vectors/hevc/main/SAO_D_Samsung_5.hevc.json", "test_vectors/hevc/main/SAO_E_Canon_4.hevc", "test_vectors/hevc/main/SAO_E_Canon_4.hevc.json", "test_vectors/hevc/main/SAO_F_Canon_3.hevc", "test_vectors/hevc/main/SAO_F_Canon_3.hevc.json", "test_vectors/hevc/main/SAO_G_Canon_3.hevc", "test_vectors/hevc/main/SAO_G_Canon_3.hevc.json", "test_vectors/hevc/main/SAO_H_Parabola_1.hevc", "test_vectors/hevc/main/SAO_H_Parabola_1.hevc.json", "test_vectors/hevc/main/SDH_A_Orange_4.hevc", "test_vectors/hevc/main/SDH_A_Orange_4.hevc.json", "test_vectors/hevc/main/SLICES_A_Rovi_3.hevc", "test_vectors/hevc/main/SLICES_A_Rovi_3.hevc.json", "test_vectors/hevc/main/SLIST_A_Sony_5.hevc", "test_vectors/hevc/main/SLIST_A_Sony_5.hevc.json", "test_vectors/hevc/main/SLIST_B_Sony_9.hevc", "test_vectors/hevc/main/SLIST_B_Sony_9.hevc.json", "test_vectors/hevc/main/SLIST_C_Sony_4.hevc", "test_vectors/hevc/main/SLIST_C_Sony_4.hevc.json", "test_vectors/hevc/main/SLIST_D_Sony_9.hevc", "test_vectors/hevc/main/SLIST_D_Sony_9.hevc.json", "test_vectors/hevc/main/SLPPLP_A_VIDYO_2.hevc", "test_vectors/hevc/main/SLPPLP_A_VIDYO_2.hevc.json", "test_vectors/hevc/main/STRUCT_A_Samsung_7.hevc", "test_vectors/hevc/main/STRUCT_A_Samsung_7.hevc.json", "test_vectors/hevc/main/STRUCT_B_Samsung_7.hevc", "test_vectors/hevc/main/STRUCT_B_Samsung_7.hevc.json", "test_vectors/hevc/main/TILES_A_Cisco_2.hevc", "test_vectors/hevc/main/TILES_A_Cisco_2.hevc.json", "test_vectors/hevc/main/TILES_B_Cisco_1.hevc", "test_vectors/hevc/main/TILES_B_Cisco_1.hevc.json", "test_vectors/hevc/main/TMVP_A_MS_3.hevc", "test_vectors/hevc/main/TMVP_A_MS_3.hevc.json", "test_vectors/hevc/main/TSCL_A_VIDYO_5.hevc", "test_vectors/hevc/main/TSCL_A_VIDYO_5.hevc.json", "test_vectors/hevc/main/TSCL_B_VIDYO_4.hevc", "test_vectors/hevc/main/TSCL_B_VIDYO_4.hevc.json", "test_vectors/hevc/main/TSKIP_A_MS_3.hevc", "test_vectors/hevc/main/TSKIP_A_MS_3.hevc.json", "test_vectors/hevc/main/TUSIZE_A_Samsung_1.hevc", "test_vectors/hevc/main/TUSIZE_A_Samsung_1.hevc.json", "test_vectors/hevc/main/VPSID_A_VIDYO_2.hevc", "test_vectors/hevc/main/VPSID_A_VIDYO_2.hevc.json", "test_vectors/hevc/main/VPSSPSPPS_A_MainConcept_1.hevc", "test_vectors/hevc/main/VPSSPSPPS_A_MainConcept_1.hevc.json", "test_vectors/hevc/main/WP_A_Toshiba_3.hevc", "test_vectors/hevc/main/WP_A_Toshiba_3.hevc.json", "test_vectors/hevc/main/WP_B_Toshiba_3.hevc", "test_vectors/hevc/main/WP_B_Toshiba_3.hevc.json", "test_vectors/hevc/main/WPP_A_ericsson_MAIN_2.hevc", "test_vectors/hevc/main/WPP_A_ericsson_MAIN_2.hevc.json", "test_vectors/hevc/main/WPP_B_ericsson_MAIN_2.hevc", "test_vectors/hevc/main/WPP_B_ericsson_MAIN_2.hevc.json", "test_vectors/hevc/main/WPP_C_ericsson_MAIN_2.hevc", "test_vectors/hevc/main/WPP_C_ericsson_MAIN_2.hevc.json", "test_vectors/hevc/main/WPP_D_ericsson_MAIN_2.hevc", "test_vectors/hevc/main/WPP_D_ericsson_MAIN_2.hevc.json", "test_vectors/hevc/main/WPP_E_ericsson_MAIN_2.hevc", "test_vectors/hevc/main/WPP_E_ericsson_MAIN_2.hevc.json", "test_vectors/hevc/main/WPP_F_ericsson_MAIN_2.hevc", "test_vectors/hevc/main/WPP_F_ericsson_MAIN_2.hevc.json", "test_vectors/hevc/main_still_picture/IPRED_B_Nokia_3.hevc", "test_vectors/hevc/main_still_picture/IPRED_B_Nokia_3.hevc.json"},
 				ExtraAttr:         []string{"graphics_video_hevc"},
-			},
+			}
+			*/
 			{
 				Name: "vaapi_vp8_inter",
 				Val: platformDecodingParams{
@@ -777,6 +779,7 @@ func init() {
 				ExtraData:         []string{"test_vectors/vp9/Profile_0_8bit/buf/crowd_run_256X144_fr15_bd8_8buf_l1.ivf", "test_vectors/vp9/Profile_0_8bit/buf/crowd_run_256X144_fr15_bd8_8buf_l1.ivf.json", "test_vectors/vp9/Profile_0_8bit/buf/grass_1_256X144_fr15_bd8_8buf_l1.ivf", "test_vectors/vp9/Profile_0_8bit/buf/grass_1_256X144_fr15_bd8_8buf_l1.ivf.json", "test_vectors/vp9/Profile_0_8bit/buf/street1_1_256X144_fr15_bd8_8buf_l1.ivf", "test_vectors/vp9/Profile_0_8bit/buf/street1_1_256X144_fr15_bd8_8buf_l1.ivf.json", "test_vectors/vp9/Profile_0_8bit/buf/crowd_run_384X192_fr30_bd8_8buf_l11.ivf", "test_vectors/vp9/Profile_0_8bit/buf/crowd_run_384X192_fr30_bd8_8buf_l11.ivf.json", "test_vectors/vp9/Profile_0_8bit/buf/grass_1_384X192_fr30_bd8_8buf_l11.ivf", "test_vectors/vp9/Profile_0_8bit/buf/grass_1_384X192_fr30_bd8_8buf_l11.ivf.json", "test_vectors/vp9/Profile_0_8bit/buf/street1_1_384X192_fr30_bd8_8buf_l11.ivf", "test_vectors/vp9/Profile_0_8bit/buf/street1_1_384X192_fr30_bd8_8buf_l11.ivf.json"},
 				ExtraAttr:         []string{"graphics_video_vp9"},
 			},
+			/* Disabled due to <1% pass rate over 30 days. See b/241943013
 			{
 				Name: "v4l2_vp9_0_group1_frm_resize",
 				Val: platformDecodingParams{
@@ -789,7 +792,8 @@ func init() {
 				ExtraSoftwareDeps: []string{"v4l2_codec", "autotest-capability:hw_dec_vp9_1080_30"},
 				ExtraData:         []string{"test_vectors/vp9/Profile_0_8bit/frm_resize/crowd_run_256X144_fr15_bd8_frm_resize_l1.ivf", "test_vectors/vp9/Profile_0_8bit/frm_resize/crowd_run_256X144_fr15_bd8_frm_resize_l1.ivf.json", "test_vectors/vp9/Profile_0_8bit/frm_resize/grass_1_256X144_fr15_bd8_frm_resize_l1.ivf", "test_vectors/vp9/Profile_0_8bit/frm_resize/grass_1_256X144_fr15_bd8_frm_resize_l1.ivf.json", "test_vectors/vp9/Profile_0_8bit/frm_resize/street1_1_256X144_fr15_bd8_frm_resize_l1.ivf", "test_vectors/vp9/Profile_0_8bit/frm_resize/street1_1_256X144_fr15_bd8_frm_resize_l1.ivf.json", "test_vectors/vp9/Profile_0_8bit/frm_resize/crowd_run_384X192_fr30_bd8_frm_resize_l11.ivf", "test_vectors/vp9/Profile_0_8bit/frm_resize/crowd_run_384X192_fr30_bd8_frm_resize_l11.ivf.json", "test_vectors/vp9/Profile_0_8bit/frm_resize/grass_1_384X192_fr30_bd8_frm_resize_l11.ivf", "test_vectors/vp9/Profile_0_8bit/frm_resize/grass_1_384X192_fr30_bd8_frm_resize_l11.ivf.json", "test_vectors/vp9/Profile_0_8bit/frm_resize/street1_1_384X192_fr30_bd8_frm_resize_l11.ivf", "test_vectors/vp9/Profile_0_8bit/frm_resize/street1_1_384X192_fr30_bd8_frm_resize_l11.ivf.json"},
 				ExtraAttr:         []string{"graphics_video_vp9"},
-			},
+			}
+			*/
 			{
 				Name: "v4l2_vp9_0_group1_gf_dist",
 				Val: platformDecodingParams{
@@ -829,6 +833,7 @@ func init() {
 				ExtraData:         []string{"test_vectors/vp9/Profile_0_8bit/sub8X8/crowd_run_256X144_fr15_bd8_sub8X8_l1.ivf", "test_vectors/vp9/Profile_0_8bit/sub8X8/crowd_run_256X144_fr15_bd8_sub8X8_l1.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8X8/grass_1_256X144_fr15_bd8_sub8X8_l1.ivf", "test_vectors/vp9/Profile_0_8bit/sub8X8/grass_1_256X144_fr15_bd8_sub8X8_l1.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8X8/street1_1_256X144_fr15_bd8_sub8X8_l1.ivf", "test_vectors/vp9/Profile_0_8bit/sub8X8/street1_1_256X144_fr15_bd8_sub8X8_l1.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8X8/crowd_run_384X192_fr30_bd8_sub8X8_l11.ivf", "test_vectors/vp9/Profile_0_8bit/sub8X8/crowd_run_384X192_fr30_bd8_sub8X8_l11.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8X8/grass_1_384X192_fr30_bd8_sub8X8_l11.ivf", "test_vectors/vp9/Profile_0_8bit/sub8X8/grass_1_384X192_fr30_bd8_sub8X8_l11.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8X8/street1_1_384X192_fr30_bd8_sub8X8_l11.ivf", "test_vectors/vp9/Profile_0_8bit/sub8X8/street1_1_384X192_fr30_bd8_sub8X8_l11.ivf.json"},
 				ExtraAttr:         []string{"graphics_video_vp9"},
 			},
+			/* Disabled due to <1% pass rate over 30 days. See b/241943013
 			{
 				Name: "v4l2_vp9_0_group1_sub8x8_sf",
 				Val: platformDecodingParams{
@@ -841,7 +846,8 @@ func init() {
 				ExtraSoftwareDeps: []string{"v4l2_codec", "autotest-capability:hw_dec_vp9_1080_30"},
 				ExtraData:         []string{"test_vectors/vp9/Profile_0_8bit/sub8x8_sf/crowd_run_256X144_fr15_bd8_sub8x8_sf_l1.ivf", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/crowd_run_256X144_fr15_bd8_sub8x8_sf_l1.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/grass_1_256X144_fr15_bd8_sub8x8_sf_l1.ivf", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/grass_1_256X144_fr15_bd8_sub8x8_sf_l1.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/street1_1_256X144_fr15_bd8_sub8x8_sf_l1.ivf", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/street1_1_256X144_fr15_bd8_sub8x8_sf_l1.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/crowd_run_384X192_fr30_bd8_sub8x8_sf_l11.ivf", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/crowd_run_384X192_fr30_bd8_sub8x8_sf_l11.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/grass_1_384X192_fr30_bd8_sub8x8_sf_l11.ivf", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/grass_1_384X192_fr30_bd8_sub8x8_sf_l11.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/street1_1_384X192_fr30_bd8_sub8x8_sf_l11.ivf", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/street1_1_384X192_fr30_bd8_sub8x8_sf_l11.ivf.json"},
 				ExtraAttr:         []string{"graphics_video_vp9"},
-			},
+			}
+			*/
 			{
 				Name: "v4l2_vp9_0_group2_buf",
 				Val: platformDecodingParams{
@@ -855,6 +861,7 @@ func init() {
 				ExtraData:         []string{"test_vectors/vp9/Profile_0_8bit/buf/crowd_run_480X256_fr30_bd8_8buf_l2.ivf", "test_vectors/vp9/Profile_0_8bit/buf/crowd_run_480X256_fr30_bd8_8buf_l2.ivf.json", "test_vectors/vp9/Profile_0_8bit/buf/grass_1_480X256_fr30_bd8_8buf_l2.ivf", "test_vectors/vp9/Profile_0_8bit/buf/grass_1_480X256_fr30_bd8_8buf_l2.ivf.json", "test_vectors/vp9/Profile_0_8bit/buf/street1_1_480X256_fr30_bd8_8buf_l2.ivf", "test_vectors/vp9/Profile_0_8bit/buf/street1_1_480X256_fr30_bd8_8buf_l2.ivf.json", "test_vectors/vp9/Profile_0_8bit/buf/crowd_run_640X384_fr30_bd8_8buf_l21.ivf", "test_vectors/vp9/Profile_0_8bit/buf/crowd_run_640X384_fr30_bd8_8buf_l21.ivf.json", "test_vectors/vp9/Profile_0_8bit/buf/grass_1_640X384_fr30_bd8_8buf_l21.ivf", "test_vectors/vp9/Profile_0_8bit/buf/grass_1_640X384_fr30_bd8_8buf_l21.ivf.json", "test_vectors/vp9/Profile_0_8bit/buf/street1_1_640X384_fr30_bd8_8buf_l21.ivf", "test_vectors/vp9/Profile_0_8bit/buf/street1_1_640X384_fr30_bd8_8buf_l21.ivf.json"},
 				ExtraAttr:         []string{"graphics_video_vp9"},
 			},
+			/* Disabled due to <1% pass rate over 30 days. See b/241943013
 			{
 				Name: "v4l2_vp9_0_group2_frm_resize",
 				Val: platformDecodingParams{
@@ -867,7 +874,8 @@ func init() {
 				ExtraSoftwareDeps: []string{"v4l2_codec", "autotest-capability:hw_dec_vp9_1080_30"},
 				ExtraData:         []string{"test_vectors/vp9/Profile_0_8bit/frm_resize/crowd_run_480X256_fr30_bd8_frm_resize_l2.ivf", "test_vectors/vp9/Profile_0_8bit/frm_resize/crowd_run_480X256_fr30_bd8_frm_resize_l2.ivf.json", "test_vectors/vp9/Profile_0_8bit/frm_resize/grass_1_480X256_fr30_bd8_frm_resize_l2.ivf", "test_vectors/vp9/Profile_0_8bit/frm_resize/grass_1_480X256_fr30_bd8_frm_resize_l2.ivf.json", "test_vectors/vp9/Profile_0_8bit/frm_resize/street1_1_480X256_fr30_bd8_frm_resize_l2.ivf", "test_vectors/vp9/Profile_0_8bit/frm_resize/street1_1_480X256_fr30_bd8_frm_resize_l2.ivf.json", "test_vectors/vp9/Profile_0_8bit/frm_resize/crowd_run_640X384_fr30_bd8_frm_resize_l21.ivf", "test_vectors/vp9/Profile_0_8bit/frm_resize/crowd_run_640X384_fr30_bd8_frm_resize_l21.ivf.json", "test_vectors/vp9/Profile_0_8bit/frm_resize/grass_1_640X384_fr30_bd8_frm_resize_l21.ivf", "test_vectors/vp9/Profile_0_8bit/frm_resize/grass_1_640X384_fr30_bd8_frm_resize_l21.ivf.json", "test_vectors/vp9/Profile_0_8bit/frm_resize/street1_1_640X384_fr30_bd8_frm_resize_l21.ivf", "test_vectors/vp9/Profile_0_8bit/frm_resize/street1_1_640X384_fr30_bd8_frm_resize_l21.ivf.json"},
 				ExtraAttr:         []string{"graphics_video_vp9"},
-			},
+			}
+			*/
 			{
 				Name: "v4l2_vp9_0_group2_gf_dist",
 				Val: platformDecodingParams{
@@ -907,6 +915,7 @@ func init() {
 				ExtraData:         []string{"test_vectors/vp9/Profile_0_8bit/sub8X8/crowd_run_480X256_fr30_bd8_sub8X8_l2.ivf", "test_vectors/vp9/Profile_0_8bit/sub8X8/crowd_run_480X256_fr30_bd8_sub8X8_l2.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8X8/grass_1_480X256_fr30_bd8_sub8X8_l2.ivf", "test_vectors/vp9/Profile_0_8bit/sub8X8/grass_1_480X256_fr30_bd8_sub8X8_l2.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8X8/street1_1_480X256_fr30_bd8_sub8X8_l2.ivf", "test_vectors/vp9/Profile_0_8bit/sub8X8/street1_1_480X256_fr30_bd8_sub8X8_l2.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8X8/crowd_run_640X384_fr30_bd8_sub8X8_l21.ivf", "test_vectors/vp9/Profile_0_8bit/sub8X8/crowd_run_640X384_fr30_bd8_sub8X8_l21.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8X8/grass_1_640X384_fr30_bd8_sub8X8_l21.ivf", "test_vectors/vp9/Profile_0_8bit/sub8X8/grass_1_640X384_fr30_bd8_sub8X8_l21.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8X8/street1_1_640X384_fr30_bd8_sub8X8_l21.ivf", "test_vectors/vp9/Profile_0_8bit/sub8X8/street1_1_640X384_fr30_bd8_sub8X8_l21.ivf.json"},
 				ExtraAttr:         []string{"graphics_video_vp9"},
 			},
+			/* Disabled due to <1% pass rate over 30 days. See b/241943013
 			{
 				Name: "v4l2_vp9_0_group2_sub8x8_sf",
 				Val: platformDecodingParams{
@@ -919,7 +928,8 @@ func init() {
 				ExtraSoftwareDeps: []string{"v4l2_codec", "autotest-capability:hw_dec_vp9_1080_30"},
 				ExtraData:         []string{"test_vectors/vp9/Profile_0_8bit/sub8x8_sf/crowd_run_480X256_fr30_bd8_sub8x8_sf_l2.ivf", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/crowd_run_480X256_fr30_bd8_sub8x8_sf_l2.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/grass_1_480X256_fr30_bd8_sub8x8_sf_l2.ivf", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/grass_1_480X256_fr30_bd8_sub8x8_sf_l2.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/street1_1_480X256_fr30_bd8_sub8x8_sf_l2.ivf", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/street1_1_480X256_fr30_bd8_sub8x8_sf_l2.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/crowd_run_640X384_fr30_bd8_sub8x8_sf_l21.ivf", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/crowd_run_640X384_fr30_bd8_sub8x8_sf_l21.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/grass_1_640X384_fr30_bd8_sub8x8_sf_l21.ivf", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/grass_1_640X384_fr30_bd8_sub8x8_sf_l21.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/street1_1_640X384_fr30_bd8_sub8x8_sf_l21.ivf", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/street1_1_640X384_fr30_bd8_sub8x8_sf_l21.ivf.json"},
 				ExtraAttr:         []string{"graphics_video_vp9"},
-			},
+			}
+			*/
 			{
 				Name: "v4l2_vp9_0_group3_buf",
 				Val: platformDecodingParams{
@@ -933,6 +943,7 @@ func init() {
 				ExtraData:         []string{"test_vectors/vp9/Profile_0_8bit/buf/crowd_run_1080X512_fr30_bd8_8buf_l3.ivf", "test_vectors/vp9/Profile_0_8bit/buf/crowd_run_1080X512_fr30_bd8_8buf_l3.ivf.json", "test_vectors/vp9/Profile_0_8bit/buf/grass_1_1080X512_fr30_bd8_8buf_l3.ivf", "test_vectors/vp9/Profile_0_8bit/buf/grass_1_1080X512_fr30_bd8_8buf_l3.ivf.json", "test_vectors/vp9/Profile_0_8bit/buf/street1_1_1080X512_fr30_bd8_8buf_l3.ivf", "test_vectors/vp9/Profile_0_8bit/buf/street1_1_1080X512_fr30_bd8_8buf_l3.ivf.json", "test_vectors/vp9/Profile_0_8bit/buf/crowd_run_1280X768_fr30_bd8_8buf_l31.ivf", "test_vectors/vp9/Profile_0_8bit/buf/crowd_run_1280X768_fr30_bd8_8buf_l31.ivf.json", "test_vectors/vp9/Profile_0_8bit/buf/grass_1_1280X768_fr30_bd8_8buf_l31.ivf", "test_vectors/vp9/Profile_0_8bit/buf/grass_1_1280X768_fr30_bd8_8buf_l31.ivf.json", "test_vectors/vp9/Profile_0_8bit/buf/street1_1_1280X768_fr30_bd8_8buf_l31.ivf", "test_vectors/vp9/Profile_0_8bit/buf/street1_1_1280X768_fr30_bd8_8buf_l31.ivf.json"},
 				ExtraAttr:         []string{"graphics_video_vp9"},
 			},
+			/* Disabled due to <1% pass rate over 30 days. See b/241943013
 			{
 				Name: "v4l2_vp9_0_group3_frm_resize",
 				Val: platformDecodingParams{
@@ -945,7 +956,8 @@ func init() {
 				ExtraSoftwareDeps: []string{"v4l2_codec", "autotest-capability:hw_dec_vp9_1080_30"},
 				ExtraData:         []string{"test_vectors/vp9/Profile_0_8bit/frm_resize/crowd_run_1080X512_fr30_bd8_frm_resize_l3.ivf", "test_vectors/vp9/Profile_0_8bit/frm_resize/crowd_run_1080X512_fr30_bd8_frm_resize_l3.ivf.json", "test_vectors/vp9/Profile_0_8bit/frm_resize/grass_1_1080X512_fr30_bd8_frm_resize_l3.ivf", "test_vectors/vp9/Profile_0_8bit/frm_resize/grass_1_1080X512_fr30_bd8_frm_resize_l3.ivf.json", "test_vectors/vp9/Profile_0_8bit/frm_resize/street1_1_1080X512_fr30_bd8_frm_resize_l3.ivf", "test_vectors/vp9/Profile_0_8bit/frm_resize/street1_1_1080X512_fr30_bd8_frm_resize_l3.ivf.json", "test_vectors/vp9/Profile_0_8bit/frm_resize/crowd_run_1280X768_fr30_bd8_frm_resize_l31.ivf", "test_vectors/vp9/Profile_0_8bit/frm_resize/crowd_run_1280X768_fr30_bd8_frm_resize_l31.ivf.json", "test_vectors/vp9/Profile_0_8bit/frm_resize/grass_1_1280X768_fr30_bd8_frm_resize_l31.ivf", "test_vectors/vp9/Profile_0_8bit/frm_resize/grass_1_1280X768_fr30_bd8_frm_resize_l31.ivf.json", "test_vectors/vp9/Profile_0_8bit/frm_resize/street1_1_1280X768_fr30_bd8_frm_resize_l31.ivf", "test_vectors/vp9/Profile_0_8bit/frm_resize/street1_1_1280X768_fr30_bd8_frm_resize_l31.ivf.json"},
 				ExtraAttr:         []string{"graphics_video_vp9"},
-			},
+			}
+			*/
 			{
 				Name: "v4l2_vp9_0_group3_gf_dist",
 				Val: platformDecodingParams{
@@ -985,6 +997,7 @@ func init() {
 				ExtraData:         []string{"test_vectors/vp9/Profile_0_8bit/sub8X8/crowd_run_1080X512_fr30_bd8_sub8X8_l3.ivf", "test_vectors/vp9/Profile_0_8bit/sub8X8/crowd_run_1080X512_fr30_bd8_sub8X8_l3.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8X8/grass_1_1080X512_fr30_bd8_sub8X8_l3.ivf", "test_vectors/vp9/Profile_0_8bit/sub8X8/grass_1_1080X512_fr30_bd8_sub8X8_l3.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8X8/street1_1_1080X512_fr30_bd8_sub8X8_l3.ivf", "test_vectors/vp9/Profile_0_8bit/sub8X8/street1_1_1080X512_fr30_bd8_sub8X8_l3.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8X8/crowd_run_1280X768_fr30_bd8_sub8X8_l31.ivf", "test_vectors/vp9/Profile_0_8bit/sub8X8/crowd_run_1280X768_fr30_bd8_sub8X8_l31.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8X8/grass_1_1280X768_fr30_bd8_sub8X8_l31.ivf", "test_vectors/vp9/Profile_0_8bit/sub8X8/grass_1_1280X768_fr30_bd8_sub8X8_l31.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8X8/street1_1_1280X768_fr30_bd8_sub8X8_l31.ivf", "test_vectors/vp9/Profile_0_8bit/sub8X8/street1_1_1280X768_fr30_bd8_sub8X8_l31.ivf.json"},
 				ExtraAttr:         []string{"graphics_video_vp9"},
 			},
+			/* Disabled due to <1% pass rate over 30 days. See b/241943013
 			{
 				Name: "v4l2_vp9_0_group3_sub8x8_sf",
 				Val: platformDecodingParams{
@@ -997,7 +1010,8 @@ func init() {
 				ExtraSoftwareDeps: []string{"v4l2_codec", "autotest-capability:hw_dec_vp9_1080_30"},
 				ExtraData:         []string{"test_vectors/vp9/Profile_0_8bit/sub8x8_sf/crowd_run_1080X512_fr30_bd8_sub8x8_sf_l3.ivf", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/crowd_run_1080X512_fr30_bd8_sub8x8_sf_l3.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/grass_1_1080X512_fr30_bd8_sub8x8_sf_l3.ivf", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/grass_1_1080X512_fr30_bd8_sub8x8_sf_l3.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/street1_1_1080X512_fr30_bd8_sub8x8_sf_l3.ivf", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/street1_1_1080X512_fr30_bd8_sub8x8_sf_l3.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/crowd_run_1280X768_fr30_bd8_sub8x8_sf_l31.ivf", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/crowd_run_1280X768_fr30_bd8_sub8x8_sf_l31.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/grass_1_1280X768_fr30_bd8_sub8x8_sf_l31.ivf", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/grass_1_1280X768_fr30_bd8_sub8x8_sf_l31.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/street1_1_1280X768_fr30_bd8_sub8x8_sf_l31.ivf", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/street1_1_1280X768_fr30_bd8_sub8x8_sf_l31.ivf.json"},
 				ExtraAttr:         []string{"graphics_video_vp9"},
-			},
+			}
+			*/
 			{
 				Name: "v4l2_vp9_0_group4_buf",
 				Val: platformDecodingParams{
@@ -1011,6 +1025,7 @@ func init() {
 				ExtraData:         []string{"test_vectors/vp9/Profile_0_8bit/buf/crowd_run_2048X1088_fr30_bd8_8buf_l4.ivf", "test_vectors/vp9/Profile_0_8bit/buf/crowd_run_2048X1088_fr30_bd8_8buf_l4.ivf.json", "test_vectors/vp9/Profile_0_8bit/buf/grass_1_2048X1088_fr30_bd8_8buf_l4.ivf", "test_vectors/vp9/Profile_0_8bit/buf/grass_1_2048X1088_fr30_bd8_8buf_l4.ivf.json", "test_vectors/vp9/Profile_0_8bit/buf/street1_1_2048X1088_fr30_bd8_8buf_l4.ivf", "test_vectors/vp9/Profile_0_8bit/buf/street1_1_2048X1088_fr30_bd8_8buf_l4.ivf.json", "test_vectors/vp9/Profile_0_8bit/buf/crowd_run_2048X1088_fr60_bd8_6buf_l41.ivf", "test_vectors/vp9/Profile_0_8bit/buf/crowd_run_2048X1088_fr60_bd8_6buf_l41.ivf.json", "test_vectors/vp9/Profile_0_8bit/buf/grass_1_2048X1088_fr60_bd8_6buf_l41.ivf", "test_vectors/vp9/Profile_0_8bit/buf/grass_1_2048X1088_fr60_bd8_6buf_l41.ivf.json", "test_vectors/vp9/Profile_0_8bit/buf/street1_1_2048X1088_fr60_bd8_6buf_l41.ivf", "test_vectors/vp9/Profile_0_8bit/buf/street1_1_2048X1088_fr60_bd8_6buf_l41.ivf.json"},
 				ExtraAttr:         []string{"graphics_video_vp9"},
 			},
+			/* Disabled due to <1% pass rate over 30 days. See b/241943013
 			{
 				Name: "v4l2_vp9_0_group4_frm_resize",
 				Val: platformDecodingParams{
@@ -1023,7 +1038,8 @@ func init() {
 				ExtraSoftwareDeps: []string{"v4l2_codec", "autotest-capability:hw_dec_vp9_1080_30"},
 				ExtraData:         []string{"test_vectors/vp9/Profile_0_8bit/frm_resize/crowd_run_2048X1088_fr30_bd8_frm_resize_l4.ivf", "test_vectors/vp9/Profile_0_8bit/frm_resize/crowd_run_2048X1088_fr30_bd8_frm_resize_l4.ivf.json", "test_vectors/vp9/Profile_0_8bit/frm_resize/grass_1_2048X1088_fr30_bd8_frm_resize_l4.ivf", "test_vectors/vp9/Profile_0_8bit/frm_resize/grass_1_2048X1088_fr30_bd8_frm_resize_l4.ivf.json", "test_vectors/vp9/Profile_0_8bit/frm_resize/street1_1_2048X1088_fr30_bd8_frm_resize_l4.ivf", "test_vectors/vp9/Profile_0_8bit/frm_resize/street1_1_2048X1088_fr30_bd8_frm_resize_l4.ivf.json", "test_vectors/vp9/Profile_0_8bit/frm_resize/crowd_run_2048X1088_fr60_bd8_frm_resize_l41.ivf", "test_vectors/vp9/Profile_0_8bit/frm_resize/crowd_run_2048X1088_fr60_bd8_frm_resize_l41.ivf.json", "test_vectors/vp9/Profile_0_8bit/frm_resize/grass_1_2048X1088_fr60_bd8_frm_resize_l41.ivf", "test_vectors/vp9/Profile_0_8bit/frm_resize/grass_1_2048X1088_fr60_bd8_frm_resize_l41.ivf.json", "test_vectors/vp9/Profile_0_8bit/frm_resize/street1_1_2048X1088_fr60_bd8_frm_resize_l41.ivf", "test_vectors/vp9/Profile_0_8bit/frm_resize/street1_1_2048X1088_fr60_bd8_frm_resize_l41.ivf.json"},
 				ExtraAttr:         []string{"graphics_video_vp9"},
-			},
+			}
+			*/
 			{
 				Name: "v4l2_vp9_0_group4_gf_dist",
 				Val: platformDecodingParams{
@@ -1050,6 +1066,7 @@ func init() {
 				ExtraData:         []string{"test_vectors/vp9/Profile_0_8bit/odd_size/crowd_run_2040X1080_fr30_bd8_odd_size_l4.ivf", "test_vectors/vp9/Profile_0_8bit/odd_size/crowd_run_2040X1080_fr30_bd8_odd_size_l4.ivf.json", "test_vectors/vp9/Profile_0_8bit/odd_size/grass_1_2040X1080_fr30_bd8_odd_size_l4.ivf", "test_vectors/vp9/Profile_0_8bit/odd_size/grass_1_2040X1080_fr30_bd8_odd_size_l4.ivf.json", "test_vectors/vp9/Profile_0_8bit/odd_size/street1_1_2040X1080_fr30_bd8_odd_size_l4.ivf", "test_vectors/vp9/Profile_0_8bit/odd_size/street1_1_2040X1080_fr30_bd8_odd_size_l4.ivf.json", "test_vectors/vp9/Profile_0_8bit/odd_size/crowd_run_2040X1080_fr60_bd8_odd_size_l41.ivf", "test_vectors/vp9/Profile_0_8bit/odd_size/crowd_run_2040X1080_fr60_bd8_odd_size_l41.ivf.json", "test_vectors/vp9/Profile_0_8bit/odd_size/grass_1_2040X1080_fr60_bd8_odd_size_l41.ivf", "test_vectors/vp9/Profile_0_8bit/odd_size/grass_1_2040X1080_fr60_bd8_odd_size_l41.ivf.json", "test_vectors/vp9/Profile_0_8bit/odd_size/street1_1_2040X1080_fr60_bd8_odd_size_l41.ivf", "test_vectors/vp9/Profile_0_8bit/odd_size/street1_1_2040X1080_fr60_bd8_odd_size_l41.ivf.json"},
 				ExtraAttr:         []string{"graphics_video_vp9"},
 			},
+			/* Disabled due to <1% pass rate over 30 days. See b/241943013
 			{
 				Name: "v4l2_vp9_0_group4_sub8x8",
 				Val: platformDecodingParams{
@@ -1062,7 +1079,9 @@ func init() {
 				ExtraSoftwareDeps: []string{"v4l2_codec", "autotest-capability:hw_dec_vp9_1080_30"},
 				ExtraData:         []string{"test_vectors/vp9/Profile_0_8bit/sub8X8/crowd_run_2048X1088_fr30_bd8_sub8X8_l4.ivf", "test_vectors/vp9/Profile_0_8bit/sub8X8/crowd_run_2048X1088_fr30_bd8_sub8X8_l4.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8X8/grass_1_2048X1088_fr30_bd8_sub8X8_l4.ivf", "test_vectors/vp9/Profile_0_8bit/sub8X8/grass_1_2048X1088_fr30_bd8_sub8X8_l4.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8X8/street1_1_2048X1088_fr30_bd8_sub8X8_l4.ivf", "test_vectors/vp9/Profile_0_8bit/sub8X8/street1_1_2048X1088_fr30_bd8_sub8X8_l4.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8X8/crowd_run_2048X1088_fr60_bd8_sub8X8_l41.ivf", "test_vectors/vp9/Profile_0_8bit/sub8X8/crowd_run_2048X1088_fr60_bd8_sub8X8_l41.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8X8/grass_1_2048X1088_fr60_bd8_sub8X8_l41.ivf", "test_vectors/vp9/Profile_0_8bit/sub8X8/grass_1_2048X1088_fr60_bd8_sub8X8_l41.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8X8/street1_1_2048X1088_fr60_bd8_sub8X8_l41.ivf", "test_vectors/vp9/Profile_0_8bit/sub8X8/street1_1_2048X1088_fr60_bd8_sub8X8_l41.ivf.json"},
 				ExtraAttr:         []string{"graphics_video_vp9"},
-			},
+			}
+			*/
+			/* Disabled due to <1% pass rate over 30 days. See b/241943013
 			{
 				Name: "v4l2_vp9_0_group4_sub8x8_sf",
 				Val: platformDecodingParams{
@@ -1075,7 +1094,8 @@ func init() {
 				ExtraSoftwareDeps: []string{"v4l2_codec", "autotest-capability:hw_dec_vp9_1080_30"},
 				ExtraData:         []string{"test_vectors/vp9/Profile_0_8bit/sub8x8_sf/crowd_run_2048X1088_fr30_bd8_sub8x8_sf_l4.ivf", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/crowd_run_2048X1088_fr30_bd8_sub8x8_sf_l4.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/grass_1_2048X1088_fr30_bd8_sub8x8_sf_l4.ivf", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/grass_1_2048X1088_fr30_bd8_sub8x8_sf_l4.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/street1_1_2048X1088_fr30_bd8_sub8x8_sf_l4.ivf", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/street1_1_2048X1088_fr30_bd8_sub8x8_sf_l4.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/crowd_run_2048X1088_fr60_bd8_sub8x8_sf_l41.ivf", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/crowd_run_2048X1088_fr60_bd8_sub8x8_sf_l41.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/grass_1_2048X1088_fr60_bd8_sub8x8_sf_l41.ivf", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/grass_1_2048X1088_fr60_bd8_sub8x8_sf_l41.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/street1_1_2048X1088_fr60_bd8_sub8x8_sf_l41.ivf", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/street1_1_2048X1088_fr60_bd8_sub8x8_sf_l41.ivf.json"},
 				ExtraAttr:         []string{"graphics_video_vp9"},
-			},
+			}
+			*/
 			{
 				Name: "v4l2_vp9_0_level5_0_buf",
 				Val: platformDecodingParams{
@@ -1089,6 +1109,7 @@ func init() {
 				ExtraData:         []string{"test_vectors/vp9/Profile_0_8bit/buf/crowd_run_4096X2176_fr30_bd8_4buf_l5.ivf", "test_vectors/vp9/Profile_0_8bit/buf/crowd_run_4096X2176_fr30_bd8_4buf_l5.ivf.json", "test_vectors/vp9/Profile_0_8bit/buf/grass_1_4096X2176_fr30_bd8_4buf_l5.ivf", "test_vectors/vp9/Profile_0_8bit/buf/grass_1_4096X2176_fr30_bd8_4buf_l5.ivf.json", "test_vectors/vp9/Profile_0_8bit/buf/street1_1_4096X2176_fr30_bd8_4buf_l5.ivf", "test_vectors/vp9/Profile_0_8bit/buf/street1_1_4096X2176_fr30_bd8_4buf_l5.ivf.json"},
 				ExtraAttr:         []string{"graphics_video_vp9"},
 			},
+			/* Disabled due to <1% pass rate over 30 days. See b/241943013
 			{
 				Name: "v4l2_vp9_0_level5_0_frm_resize",
 				Val: platformDecodingParams{
@@ -1101,7 +1122,8 @@ func init() {
 				ExtraSoftwareDeps: []string{"v4l2_codec", "autotest-capability:hw_dec_vp9_2160_30"},
 				ExtraData:         []string{"test_vectors/vp9/Profile_0_8bit/frm_resize/crowd_run_4096X2176_fr30_bd8_frm_resize_l5.ivf", "test_vectors/vp9/Profile_0_8bit/frm_resize/crowd_run_4096X2176_fr30_bd8_frm_resize_l5.ivf.json", "test_vectors/vp9/Profile_0_8bit/frm_resize/grass_1_4096X2176_fr30_bd8_frm_resize_l5.ivf", "test_vectors/vp9/Profile_0_8bit/frm_resize/grass_1_4096X2176_fr30_bd8_frm_resize_l5.ivf.json", "test_vectors/vp9/Profile_0_8bit/frm_resize/street1_1_4096X2176_fr30_bd8_frm_resize_l5.ivf", "test_vectors/vp9/Profile_0_8bit/frm_resize/street1_1_4096X2176_fr30_bd8_frm_resize_l5.ivf.json"},
 				ExtraAttr:         []string{"graphics_video_vp9"},
-			},
+			}
+			*/
 			{
 				Name: "v4l2_vp9_0_level5_0_gf_dist",
 				Val: platformDecodingParams{
@@ -1141,6 +1163,7 @@ func init() {
 				ExtraData:         []string{"test_vectors/vp9/Profile_0_8bit/sub8X8/crowd_run_4096X2176_fr30_bd8_sub8X8_l5.ivf", "test_vectors/vp9/Profile_0_8bit/sub8X8/crowd_run_4096X2176_fr30_bd8_sub8X8_l5.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8X8/grass_1_4096X2176_fr30_bd8_sub8X8_l5.ivf", "test_vectors/vp9/Profile_0_8bit/sub8X8/grass_1_4096X2176_fr30_bd8_sub8X8_l5.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8X8/street1_1_4096X2176_fr30_bd8_sub8X8_l5.ivf", "test_vectors/vp9/Profile_0_8bit/sub8X8/street1_1_4096X2176_fr30_bd8_sub8X8_l5.ivf.json"},
 				ExtraAttr:         []string{"graphics_video_vp9"},
 			},
+			/* Disabled due to <1% pass rate over 30 days. See b/241943013
 			{
 				Name: "v4l2_vp9_0_level5_0_sub8x8_sf",
 				Val: platformDecodingParams{
@@ -1153,7 +1176,8 @@ func init() {
 				ExtraSoftwareDeps: []string{"v4l2_codec", "autotest-capability:hw_dec_vp9_2160_30"},
 				ExtraData:         []string{"test_vectors/vp9/Profile_0_8bit/sub8x8_sf/crowd_run_4096X2176_fr30_bd8_sub8x8_sf_l5.ivf", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/crowd_run_4096X2176_fr30_bd8_sub8x8_sf_l5.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/grass_1_4096X2176_fr30_bd8_sub8x8_sf_l5.ivf", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/grass_1_4096X2176_fr30_bd8_sub8x8_sf_l5.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/street1_1_4096X2176_fr30_bd8_sub8x8_sf_l5.ivf", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/street1_1_4096X2176_fr30_bd8_sub8x8_sf_l5.ivf.json"},
 				ExtraAttr:         []string{"graphics_video_vp9"},
-			},
+			}
+			*/
 			{
 				Name: "v4l2_vp9_0_level5_1_buf",
 				Val: platformDecodingParams{
@@ -1245,6 +1269,7 @@ func init() {
 				ExtraData:         []string{"test_vectors/vp9/Profile_0_8bit/buf/crowd_run_256X144_fr15_bd8_8buf_l1.ivf", "test_vectors/vp9/Profile_0_8bit/buf/crowd_run_256X144_fr15_bd8_8buf_l1.ivf.json", "test_vectors/vp9/Profile_0_8bit/buf/grass_1_256X144_fr15_bd8_8buf_l1.ivf", "test_vectors/vp9/Profile_0_8bit/buf/grass_1_256X144_fr15_bd8_8buf_l1.ivf.json", "test_vectors/vp9/Profile_0_8bit/buf/street1_1_256X144_fr15_bd8_8buf_l1.ivf", "test_vectors/vp9/Profile_0_8bit/buf/street1_1_256X144_fr15_bd8_8buf_l1.ivf.json", "test_vectors/vp9/Profile_0_8bit/buf/crowd_run_384X192_fr30_bd8_8buf_l11.ivf", "test_vectors/vp9/Profile_0_8bit/buf/crowd_run_384X192_fr30_bd8_8buf_l11.ivf.json", "test_vectors/vp9/Profile_0_8bit/buf/grass_1_384X192_fr30_bd8_8buf_l11.ivf", "test_vectors/vp9/Profile_0_8bit/buf/grass_1_384X192_fr30_bd8_8buf_l11.ivf.json", "test_vectors/vp9/Profile_0_8bit/buf/street1_1_384X192_fr30_bd8_8buf_l11.ivf", "test_vectors/vp9/Profile_0_8bit/buf/street1_1_384X192_fr30_bd8_8buf_l11.ivf.json"},
 				ExtraAttr:         []string{"graphics_video_vp9"},
 			},
+			/* Disabled due to <1% pass rate over 30 days. See b/241943013
 			{
 				Name: "v4l2_stateless_vp9_0_group1_frm_resize",
 				Val: platformDecodingParams{
@@ -1257,7 +1282,8 @@ func init() {
 				ExtraSoftwareDeps: []string{"v4l2_codec", "autotest-capability:hw_dec_vp9_1080_30"},
 				ExtraData:         []string{"test_vectors/vp9/Profile_0_8bit/frm_resize/crowd_run_256X144_fr15_bd8_frm_resize_l1.ivf", "test_vectors/vp9/Profile_0_8bit/frm_resize/crowd_run_256X144_fr15_bd8_frm_resize_l1.ivf.json", "test_vectors/vp9/Profile_0_8bit/frm_resize/grass_1_256X144_fr15_bd8_frm_resize_l1.ivf", "test_vectors/vp9/Profile_0_8bit/frm_resize/grass_1_256X144_fr15_bd8_frm_resize_l1.ivf.json", "test_vectors/vp9/Profile_0_8bit/frm_resize/street1_1_256X144_fr15_bd8_frm_resize_l1.ivf", "test_vectors/vp9/Profile_0_8bit/frm_resize/street1_1_256X144_fr15_bd8_frm_resize_l1.ivf.json", "test_vectors/vp9/Profile_0_8bit/frm_resize/crowd_run_384X192_fr30_bd8_frm_resize_l11.ivf", "test_vectors/vp9/Profile_0_8bit/frm_resize/crowd_run_384X192_fr30_bd8_frm_resize_l11.ivf.json", "test_vectors/vp9/Profile_0_8bit/frm_resize/grass_1_384X192_fr30_bd8_frm_resize_l11.ivf", "test_vectors/vp9/Profile_0_8bit/frm_resize/grass_1_384X192_fr30_bd8_frm_resize_l11.ivf.json", "test_vectors/vp9/Profile_0_8bit/frm_resize/street1_1_384X192_fr30_bd8_frm_resize_l11.ivf", "test_vectors/vp9/Profile_0_8bit/frm_resize/street1_1_384X192_fr30_bd8_frm_resize_l11.ivf.json"},
 				ExtraAttr:         []string{"graphics_video_vp9"},
-			},
+			}
+			*/
 			{
 				Name: "v4l2_stateless_vp9_0_group1_gf_dist",
 				Val: platformDecodingParams{
@@ -1297,6 +1323,7 @@ func init() {
 				ExtraData:         []string{"test_vectors/vp9/Profile_0_8bit/sub8X8/crowd_run_256X144_fr15_bd8_sub8X8_l1.ivf", "test_vectors/vp9/Profile_0_8bit/sub8X8/crowd_run_256X144_fr15_bd8_sub8X8_l1.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8X8/grass_1_256X144_fr15_bd8_sub8X8_l1.ivf", "test_vectors/vp9/Profile_0_8bit/sub8X8/grass_1_256X144_fr15_bd8_sub8X8_l1.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8X8/street1_1_256X144_fr15_bd8_sub8X8_l1.ivf", "test_vectors/vp9/Profile_0_8bit/sub8X8/street1_1_256X144_fr15_bd8_sub8X8_l1.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8X8/crowd_run_384X192_fr30_bd8_sub8X8_l11.ivf", "test_vectors/vp9/Profile_0_8bit/sub8X8/crowd_run_384X192_fr30_bd8_sub8X8_l11.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8X8/grass_1_384X192_fr30_bd8_sub8X8_l11.ivf", "test_vectors/vp9/Profile_0_8bit/sub8X8/grass_1_384X192_fr30_bd8_sub8X8_l11.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8X8/street1_1_384X192_fr30_bd8_sub8X8_l11.ivf", "test_vectors/vp9/Profile_0_8bit/sub8X8/street1_1_384X192_fr30_bd8_sub8X8_l11.ivf.json"},
 				ExtraAttr:         []string{"graphics_video_vp9"},
 			},
+			/* Disabled due to <1% pass rate over 30 days. See b/241943013
 			{
 				Name: "v4l2_stateless_vp9_0_group1_sub8x8_sf",
 				Val: platformDecodingParams{
@@ -1309,7 +1336,8 @@ func init() {
 				ExtraSoftwareDeps: []string{"v4l2_codec", "autotest-capability:hw_dec_vp9_1080_30"},
 				ExtraData:         []string{"test_vectors/vp9/Profile_0_8bit/sub8x8_sf/crowd_run_256X144_fr15_bd8_sub8x8_sf_l1.ivf", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/crowd_run_256X144_fr15_bd8_sub8x8_sf_l1.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/grass_1_256X144_fr15_bd8_sub8x8_sf_l1.ivf", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/grass_1_256X144_fr15_bd8_sub8x8_sf_l1.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/street1_1_256X144_fr15_bd8_sub8x8_sf_l1.ivf", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/street1_1_256X144_fr15_bd8_sub8x8_sf_l1.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/crowd_run_384X192_fr30_bd8_sub8x8_sf_l11.ivf", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/crowd_run_384X192_fr30_bd8_sub8x8_sf_l11.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/grass_1_384X192_fr30_bd8_sub8x8_sf_l11.ivf", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/grass_1_384X192_fr30_bd8_sub8x8_sf_l11.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/street1_1_384X192_fr30_bd8_sub8x8_sf_l11.ivf", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/street1_1_384X192_fr30_bd8_sub8x8_sf_l11.ivf.json"},
 				ExtraAttr:         []string{"graphics_video_vp9"},
-			},
+			}
+			*/
 			{
 				Name: "v4l2_stateless_vp9_0_group2_buf",
 				Val: platformDecodingParams{
@@ -1323,6 +1351,7 @@ func init() {
 				ExtraData:         []string{"test_vectors/vp9/Profile_0_8bit/buf/crowd_run_480X256_fr30_bd8_8buf_l2.ivf", "test_vectors/vp9/Profile_0_8bit/buf/crowd_run_480X256_fr30_bd8_8buf_l2.ivf.json", "test_vectors/vp9/Profile_0_8bit/buf/grass_1_480X256_fr30_bd8_8buf_l2.ivf", "test_vectors/vp9/Profile_0_8bit/buf/grass_1_480X256_fr30_bd8_8buf_l2.ivf.json", "test_vectors/vp9/Profile_0_8bit/buf/street1_1_480X256_fr30_bd8_8buf_l2.ivf", "test_vectors/vp9/Profile_0_8bit/buf/street1_1_480X256_fr30_bd8_8buf_l2.ivf.json", "test_vectors/vp9/Profile_0_8bit/buf/crowd_run_640X384_fr30_bd8_8buf_l21.ivf", "test_vectors/vp9/Profile_0_8bit/buf/crowd_run_640X384_fr30_bd8_8buf_l21.ivf.json", "test_vectors/vp9/Profile_0_8bit/buf/grass_1_640X384_fr30_bd8_8buf_l21.ivf", "test_vectors/vp9/Profile_0_8bit/buf/grass_1_640X384_fr30_bd8_8buf_l21.ivf.json", "test_vectors/vp9/Profile_0_8bit/buf/street1_1_640X384_fr30_bd8_8buf_l21.ivf", "test_vectors/vp9/Profile_0_8bit/buf/street1_1_640X384_fr30_bd8_8buf_l21.ivf.json"},
 				ExtraAttr:         []string{"graphics_video_vp9"},
 			},
+			/* Disabled due to <1% pass rate over 30 days. See b/241943013
 			{
 				Name: "v4l2_stateless_vp9_0_group2_frm_resize",
 				Val: platformDecodingParams{
@@ -1335,7 +1364,8 @@ func init() {
 				ExtraSoftwareDeps: []string{"v4l2_codec", "autotest-capability:hw_dec_vp9_1080_30"},
 				ExtraData:         []string{"test_vectors/vp9/Profile_0_8bit/frm_resize/crowd_run_480X256_fr30_bd8_frm_resize_l2.ivf", "test_vectors/vp9/Profile_0_8bit/frm_resize/crowd_run_480X256_fr30_bd8_frm_resize_l2.ivf.json", "test_vectors/vp9/Profile_0_8bit/frm_resize/grass_1_480X256_fr30_bd8_frm_resize_l2.ivf", "test_vectors/vp9/Profile_0_8bit/frm_resize/grass_1_480X256_fr30_bd8_frm_resize_l2.ivf.json", "test_vectors/vp9/Profile_0_8bit/frm_resize/street1_1_480X256_fr30_bd8_frm_resize_l2.ivf", "test_vectors/vp9/Profile_0_8bit/frm_resize/street1_1_480X256_fr30_bd8_frm_resize_l2.ivf.json", "test_vectors/vp9/Profile_0_8bit/frm_resize/crowd_run_640X384_fr30_bd8_frm_resize_l21.ivf", "test_vectors/vp9/Profile_0_8bit/frm_resize/crowd_run_640X384_fr30_bd8_frm_resize_l21.ivf.json", "test_vectors/vp9/Profile_0_8bit/frm_resize/grass_1_640X384_fr30_bd8_frm_resize_l21.ivf", "test_vectors/vp9/Profile_0_8bit/frm_resize/grass_1_640X384_fr30_bd8_frm_resize_l21.ivf.json", "test_vectors/vp9/Profile_0_8bit/frm_resize/street1_1_640X384_fr30_bd8_frm_resize_l21.ivf", "test_vectors/vp9/Profile_0_8bit/frm_resize/street1_1_640X384_fr30_bd8_frm_resize_l21.ivf.json"},
 				ExtraAttr:         []string{"graphics_video_vp9"},
-			},
+			}
+			*/
 			{
 				Name: "v4l2_stateless_vp9_0_group2_gf_dist",
 				Val: platformDecodingParams{
@@ -1375,6 +1405,7 @@ func init() {
 				ExtraData:         []string{"test_vectors/vp9/Profile_0_8bit/sub8X8/crowd_run_480X256_fr30_bd8_sub8X8_l2.ivf", "test_vectors/vp9/Profile_0_8bit/sub8X8/crowd_run_480X256_fr30_bd8_sub8X8_l2.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8X8/grass_1_480X256_fr30_bd8_sub8X8_l2.ivf", "test_vectors/vp9/Profile_0_8bit/sub8X8/grass_1_480X256_fr30_bd8_sub8X8_l2.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8X8/street1_1_480X256_fr30_bd8_sub8X8_l2.ivf", "test_vectors/vp9/Profile_0_8bit/sub8X8/street1_1_480X256_fr30_bd8_sub8X8_l2.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8X8/crowd_run_640X384_fr30_bd8_sub8X8_l21.ivf", "test_vectors/vp9/Profile_0_8bit/sub8X8/crowd_run_640X384_fr30_bd8_sub8X8_l21.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8X8/grass_1_640X384_fr30_bd8_sub8X8_l21.ivf", "test_vectors/vp9/Profile_0_8bit/sub8X8/grass_1_640X384_fr30_bd8_sub8X8_l21.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8X8/street1_1_640X384_fr30_bd8_sub8X8_l21.ivf", "test_vectors/vp9/Profile_0_8bit/sub8X8/street1_1_640X384_fr30_bd8_sub8X8_l21.ivf.json"},
 				ExtraAttr:         []string{"graphics_video_vp9"},
 			},
+			/* Disabled due to <1% pass rate over 30 days. See b/241943013
 			{
 				Name: "v4l2_stateless_vp9_0_group2_sub8x8_sf",
 				Val: platformDecodingParams{
@@ -1387,7 +1418,8 @@ func init() {
 				ExtraSoftwareDeps: []string{"v4l2_codec", "autotest-capability:hw_dec_vp9_1080_30"},
 				ExtraData:         []string{"test_vectors/vp9/Profile_0_8bit/sub8x8_sf/crowd_run_480X256_fr30_bd8_sub8x8_sf_l2.ivf", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/crowd_run_480X256_fr30_bd8_sub8x8_sf_l2.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/grass_1_480X256_fr30_bd8_sub8x8_sf_l2.ivf", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/grass_1_480X256_fr30_bd8_sub8x8_sf_l2.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/street1_1_480X256_fr30_bd8_sub8x8_sf_l2.ivf", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/street1_1_480X256_fr30_bd8_sub8x8_sf_l2.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/crowd_run_640X384_fr30_bd8_sub8x8_sf_l21.ivf", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/crowd_run_640X384_fr30_bd8_sub8x8_sf_l21.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/grass_1_640X384_fr30_bd8_sub8x8_sf_l21.ivf", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/grass_1_640X384_fr30_bd8_sub8x8_sf_l21.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/street1_1_640X384_fr30_bd8_sub8x8_sf_l21.ivf", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/street1_1_640X384_fr30_bd8_sub8x8_sf_l21.ivf.json"},
 				ExtraAttr:         []string{"graphics_video_vp9"},
-			},
+			}
+			*/
 			{
 				Name: "v4l2_stateless_vp9_0_group3_buf",
 				Val: platformDecodingParams{
@@ -1401,6 +1433,7 @@ func init() {
 				ExtraData:         []string{"test_vectors/vp9/Profile_0_8bit/buf/crowd_run_1080X512_fr30_bd8_8buf_l3.ivf", "test_vectors/vp9/Profile_0_8bit/buf/crowd_run_1080X512_fr30_bd8_8buf_l3.ivf.json", "test_vectors/vp9/Profile_0_8bit/buf/grass_1_1080X512_fr30_bd8_8buf_l3.ivf", "test_vectors/vp9/Profile_0_8bit/buf/grass_1_1080X512_fr30_bd8_8buf_l3.ivf.json", "test_vectors/vp9/Profile_0_8bit/buf/street1_1_1080X512_fr30_bd8_8buf_l3.ivf", "test_vectors/vp9/Profile_0_8bit/buf/street1_1_1080X512_fr30_bd8_8buf_l3.ivf.json", "test_vectors/vp9/Profile_0_8bit/buf/crowd_run_1280X768_fr30_bd8_8buf_l31.ivf", "test_vectors/vp9/Profile_0_8bit/buf/crowd_run_1280X768_fr30_bd8_8buf_l31.ivf.json", "test_vectors/vp9/Profile_0_8bit/buf/grass_1_1280X768_fr30_bd8_8buf_l31.ivf", "test_vectors/vp9/Profile_0_8bit/buf/grass_1_1280X768_fr30_bd8_8buf_l31.ivf.json", "test_vectors/vp9/Profile_0_8bit/buf/street1_1_1280X768_fr30_bd8_8buf_l31.ivf", "test_vectors/vp9/Profile_0_8bit/buf/street1_1_1280X768_fr30_bd8_8buf_l31.ivf.json"},
 				ExtraAttr:         []string{"graphics_video_vp9"},
 			},
+			/* Disabled due to <1% pass rate over 30 days. See b/241943013
 			{
 				Name: "v4l2_stateless_vp9_0_group3_frm_resize",
 				Val: platformDecodingParams{
@@ -1413,7 +1446,8 @@ func init() {
 				ExtraSoftwareDeps: []string{"v4l2_codec", "autotest-capability:hw_dec_vp9_1080_30"},
 				ExtraData:         []string{"test_vectors/vp9/Profile_0_8bit/frm_resize/crowd_run_1080X512_fr30_bd8_frm_resize_l3.ivf", "test_vectors/vp9/Profile_0_8bit/frm_resize/crowd_run_1080X512_fr30_bd8_frm_resize_l3.ivf.json", "test_vectors/vp9/Profile_0_8bit/frm_resize/grass_1_1080X512_fr30_bd8_frm_resize_l3.ivf", "test_vectors/vp9/Profile_0_8bit/frm_resize/grass_1_1080X512_fr30_bd8_frm_resize_l3.ivf.json", "test_vectors/vp9/Profile_0_8bit/frm_resize/street1_1_1080X512_fr30_bd8_frm_resize_l3.ivf", "test_vectors/vp9/Profile_0_8bit/frm_resize/street1_1_1080X512_fr30_bd8_frm_resize_l3.ivf.json", "test_vectors/vp9/Profile_0_8bit/frm_resize/crowd_run_1280X768_fr30_bd8_frm_resize_l31.ivf", "test_vectors/vp9/Profile_0_8bit/frm_resize/crowd_run_1280X768_fr30_bd8_frm_resize_l31.ivf.json", "test_vectors/vp9/Profile_0_8bit/frm_resize/grass_1_1280X768_fr30_bd8_frm_resize_l31.ivf", "test_vectors/vp9/Profile_0_8bit/frm_resize/grass_1_1280X768_fr30_bd8_frm_resize_l31.ivf.json", "test_vectors/vp9/Profile_0_8bit/frm_resize/street1_1_1280X768_fr30_bd8_frm_resize_l31.ivf", "test_vectors/vp9/Profile_0_8bit/frm_resize/street1_1_1280X768_fr30_bd8_frm_resize_l31.ivf.json"},
 				ExtraAttr:         []string{"graphics_video_vp9"},
-			},
+			}
+			*/
 			{
 				Name: "v4l2_stateless_vp9_0_group3_gf_dist",
 				Val: platformDecodingParams{
@@ -1453,6 +1487,7 @@ func init() {
 				ExtraData:         []string{"test_vectors/vp9/Profile_0_8bit/sub8X8/crowd_run_1080X512_fr30_bd8_sub8X8_l3.ivf", "test_vectors/vp9/Profile_0_8bit/sub8X8/crowd_run_1080X512_fr30_bd8_sub8X8_l3.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8X8/grass_1_1080X512_fr30_bd8_sub8X8_l3.ivf", "test_vectors/vp9/Profile_0_8bit/sub8X8/grass_1_1080X512_fr30_bd8_sub8X8_l3.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8X8/street1_1_1080X512_fr30_bd8_sub8X8_l3.ivf", "test_vectors/vp9/Profile_0_8bit/sub8X8/street1_1_1080X512_fr30_bd8_sub8X8_l3.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8X8/crowd_run_1280X768_fr30_bd8_sub8X8_l31.ivf", "test_vectors/vp9/Profile_0_8bit/sub8X8/crowd_run_1280X768_fr30_bd8_sub8X8_l31.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8X8/grass_1_1280X768_fr30_bd8_sub8X8_l31.ivf", "test_vectors/vp9/Profile_0_8bit/sub8X8/grass_1_1280X768_fr30_bd8_sub8X8_l31.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8X8/street1_1_1280X768_fr30_bd8_sub8X8_l31.ivf", "test_vectors/vp9/Profile_0_8bit/sub8X8/street1_1_1280X768_fr30_bd8_sub8X8_l31.ivf.json"},
 				ExtraAttr:         []string{"graphics_video_vp9"},
 			},
+			/* Disabled due to <1% pass rate over 30 days. See b/241943013
 			{
 				Name: "v4l2_stateless_vp9_0_group3_sub8x8_sf",
 				Val: platformDecodingParams{
@@ -1465,7 +1500,8 @@ func init() {
 				ExtraSoftwareDeps: []string{"v4l2_codec", "autotest-capability:hw_dec_vp9_1080_30"},
 				ExtraData:         []string{"test_vectors/vp9/Profile_0_8bit/sub8x8_sf/crowd_run_1080X512_fr30_bd8_sub8x8_sf_l3.ivf", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/crowd_run_1080X512_fr30_bd8_sub8x8_sf_l3.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/grass_1_1080X512_fr30_bd8_sub8x8_sf_l3.ivf", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/grass_1_1080X512_fr30_bd8_sub8x8_sf_l3.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/street1_1_1080X512_fr30_bd8_sub8x8_sf_l3.ivf", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/street1_1_1080X512_fr30_bd8_sub8x8_sf_l3.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/crowd_run_1280X768_fr30_bd8_sub8x8_sf_l31.ivf", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/crowd_run_1280X768_fr30_bd8_sub8x8_sf_l31.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/grass_1_1280X768_fr30_bd8_sub8x8_sf_l31.ivf", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/grass_1_1280X768_fr30_bd8_sub8x8_sf_l31.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/street1_1_1280X768_fr30_bd8_sub8x8_sf_l31.ivf", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/street1_1_1280X768_fr30_bd8_sub8x8_sf_l31.ivf.json"},
 				ExtraAttr:         []string{"graphics_video_vp9"},
-			},
+			}
+			*/
 			{
 				Name: "v4l2_stateless_vp9_0_group4_buf",
 				Val: platformDecodingParams{
@@ -1479,6 +1515,7 @@ func init() {
 				ExtraData:         []string{"test_vectors/vp9/Profile_0_8bit/buf/crowd_run_2048X1088_fr30_bd8_8buf_l4.ivf", "test_vectors/vp9/Profile_0_8bit/buf/crowd_run_2048X1088_fr30_bd8_8buf_l4.ivf.json", "test_vectors/vp9/Profile_0_8bit/buf/grass_1_2048X1088_fr30_bd8_8buf_l4.ivf", "test_vectors/vp9/Profile_0_8bit/buf/grass_1_2048X1088_fr30_bd8_8buf_l4.ivf.json", "test_vectors/vp9/Profile_0_8bit/buf/street1_1_2048X1088_fr30_bd8_8buf_l4.ivf", "test_vectors/vp9/Profile_0_8bit/buf/street1_1_2048X1088_fr30_bd8_8buf_l4.ivf.json", "test_vectors/vp9/Profile_0_8bit/buf/crowd_run_2048X1088_fr60_bd8_6buf_l41.ivf", "test_vectors/vp9/Profile_0_8bit/buf/crowd_run_2048X1088_fr60_bd8_6buf_l41.ivf.json", "test_vectors/vp9/Profile_0_8bit/buf/grass_1_2048X1088_fr60_bd8_6buf_l41.ivf", "test_vectors/vp9/Profile_0_8bit/buf/grass_1_2048X1088_fr60_bd8_6buf_l41.ivf.json", "test_vectors/vp9/Profile_0_8bit/buf/street1_1_2048X1088_fr60_bd8_6buf_l41.ivf", "test_vectors/vp9/Profile_0_8bit/buf/street1_1_2048X1088_fr60_bd8_6buf_l41.ivf.json"},
 				ExtraAttr:         []string{"graphics_video_vp9"},
 			},
+			/* Disabled due to <1% pass rate over 30 days. See b/241943013
 			{
 				Name: "v4l2_stateless_vp9_0_group4_frm_resize",
 				Val: platformDecodingParams{
@@ -1491,7 +1528,8 @@ func init() {
 				ExtraSoftwareDeps: []string{"v4l2_codec", "autotest-capability:hw_dec_vp9_1080_30"},
 				ExtraData:         []string{"test_vectors/vp9/Profile_0_8bit/frm_resize/crowd_run_2048X1088_fr30_bd8_frm_resize_l4.ivf", "test_vectors/vp9/Profile_0_8bit/frm_resize/crowd_run_2048X1088_fr30_bd8_frm_resize_l4.ivf.json", "test_vectors/vp9/Profile_0_8bit/frm_resize/grass_1_2048X1088_fr30_bd8_frm_resize_l4.ivf", "test_vectors/vp9/Profile_0_8bit/frm_resize/grass_1_2048X1088_fr30_bd8_frm_resize_l4.ivf.json", "test_vectors/vp9/Profile_0_8bit/frm_resize/street1_1_2048X1088_fr30_bd8_frm_resize_l4.ivf", "test_vectors/vp9/Profile_0_8bit/frm_resize/street1_1_2048X1088_fr30_bd8_frm_resize_l4.ivf.json", "test_vectors/vp9/Profile_0_8bit/frm_resize/crowd_run_2048X1088_fr60_bd8_frm_resize_l41.ivf", "test_vectors/vp9/Profile_0_8bit/frm_resize/crowd_run_2048X1088_fr60_bd8_frm_resize_l41.ivf.json", "test_vectors/vp9/Profile_0_8bit/frm_resize/grass_1_2048X1088_fr60_bd8_frm_resize_l41.ivf", "test_vectors/vp9/Profile_0_8bit/frm_resize/grass_1_2048X1088_fr60_bd8_frm_resize_l41.ivf.json", "test_vectors/vp9/Profile_0_8bit/frm_resize/street1_1_2048X1088_fr60_bd8_frm_resize_l41.ivf", "test_vectors/vp9/Profile_0_8bit/frm_resize/street1_1_2048X1088_fr60_bd8_frm_resize_l41.ivf.json"},
 				ExtraAttr:         []string{"graphics_video_vp9"},
-			},
+			}
+			*/
 			{
 				Name: "v4l2_stateless_vp9_0_group4_gf_dist",
 				Val: platformDecodingParams{
@@ -1531,6 +1569,7 @@ func init() {
 				ExtraData:         []string{"test_vectors/vp9/Profile_0_8bit/sub8X8/crowd_run_2048X1088_fr30_bd8_sub8X8_l4.ivf", "test_vectors/vp9/Profile_0_8bit/sub8X8/crowd_run_2048X1088_fr30_bd8_sub8X8_l4.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8X8/grass_1_2048X1088_fr30_bd8_sub8X8_l4.ivf", "test_vectors/vp9/Profile_0_8bit/sub8X8/grass_1_2048X1088_fr30_bd8_sub8X8_l4.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8X8/street1_1_2048X1088_fr30_bd8_sub8X8_l4.ivf", "test_vectors/vp9/Profile_0_8bit/sub8X8/street1_1_2048X1088_fr30_bd8_sub8X8_l4.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8X8/crowd_run_2048X1088_fr60_bd8_sub8X8_l41.ivf", "test_vectors/vp9/Profile_0_8bit/sub8X8/crowd_run_2048X1088_fr60_bd8_sub8X8_l41.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8X8/grass_1_2048X1088_fr60_bd8_sub8X8_l41.ivf", "test_vectors/vp9/Profile_0_8bit/sub8X8/grass_1_2048X1088_fr60_bd8_sub8X8_l41.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8X8/street1_1_2048X1088_fr60_bd8_sub8X8_l41.ivf", "test_vectors/vp9/Profile_0_8bit/sub8X8/street1_1_2048X1088_fr60_bd8_sub8X8_l41.ivf.json"},
 				ExtraAttr:         []string{"graphics_video_vp9"},
 			},
+			/* Disabled due to <1% pass rate over 30 days. See b/241943013
 			{
 				Name: "v4l2_stateless_vp9_0_group4_sub8x8_sf",
 				Val: platformDecodingParams{
@@ -1543,7 +1582,8 @@ func init() {
 				ExtraSoftwareDeps: []string{"v4l2_codec", "autotest-capability:hw_dec_vp9_1080_30"},
 				ExtraData:         []string{"test_vectors/vp9/Profile_0_8bit/sub8x8_sf/crowd_run_2048X1088_fr30_bd8_sub8x8_sf_l4.ivf", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/crowd_run_2048X1088_fr30_bd8_sub8x8_sf_l4.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/grass_1_2048X1088_fr30_bd8_sub8x8_sf_l4.ivf", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/grass_1_2048X1088_fr30_bd8_sub8x8_sf_l4.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/street1_1_2048X1088_fr30_bd8_sub8x8_sf_l4.ivf", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/street1_1_2048X1088_fr30_bd8_sub8x8_sf_l4.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/crowd_run_2048X1088_fr60_bd8_sub8x8_sf_l41.ivf", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/crowd_run_2048X1088_fr60_bd8_sub8x8_sf_l41.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/grass_1_2048X1088_fr60_bd8_sub8x8_sf_l41.ivf", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/grass_1_2048X1088_fr60_bd8_sub8x8_sf_l41.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/street1_1_2048X1088_fr60_bd8_sub8x8_sf_l41.ivf", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/street1_1_2048X1088_fr60_bd8_sub8x8_sf_l41.ivf.json"},
 				ExtraAttr:         []string{"graphics_video_vp9"},
-			},
+			}
+			*/
 			{
 				Name: "v4l2_stateless_vp9_0_level5_0_buf",
 				Val: platformDecodingParams{
@@ -1557,6 +1597,7 @@ func init() {
 				ExtraData:         []string{"test_vectors/vp9/Profile_0_8bit/buf/crowd_run_4096X2176_fr30_bd8_4buf_l5.ivf", "test_vectors/vp9/Profile_0_8bit/buf/crowd_run_4096X2176_fr30_bd8_4buf_l5.ivf.json", "test_vectors/vp9/Profile_0_8bit/buf/grass_1_4096X2176_fr30_bd8_4buf_l5.ivf", "test_vectors/vp9/Profile_0_8bit/buf/grass_1_4096X2176_fr30_bd8_4buf_l5.ivf.json", "test_vectors/vp9/Profile_0_8bit/buf/street1_1_4096X2176_fr30_bd8_4buf_l5.ivf", "test_vectors/vp9/Profile_0_8bit/buf/street1_1_4096X2176_fr30_bd8_4buf_l5.ivf.json"},
 				ExtraAttr:         []string{"graphics_video_vp9"},
 			},
+			/* Disabled due to <1% pass rate over 30 days. See b/241943013
 			{
 				Name: "v4l2_stateless_vp9_0_level5_0_frm_resize",
 				Val: platformDecodingParams{
@@ -1569,7 +1610,8 @@ func init() {
 				ExtraSoftwareDeps: []string{"v4l2_codec", "autotest-capability:hw_dec_vp9_2160_30"},
 				ExtraData:         []string{"test_vectors/vp9/Profile_0_8bit/frm_resize/crowd_run_4096X2176_fr30_bd8_frm_resize_l5.ivf", "test_vectors/vp9/Profile_0_8bit/frm_resize/crowd_run_4096X2176_fr30_bd8_frm_resize_l5.ivf.json", "test_vectors/vp9/Profile_0_8bit/frm_resize/grass_1_4096X2176_fr30_bd8_frm_resize_l5.ivf", "test_vectors/vp9/Profile_0_8bit/frm_resize/grass_1_4096X2176_fr30_bd8_frm_resize_l5.ivf.json", "test_vectors/vp9/Profile_0_8bit/frm_resize/street1_1_4096X2176_fr30_bd8_frm_resize_l5.ivf", "test_vectors/vp9/Profile_0_8bit/frm_resize/street1_1_4096X2176_fr30_bd8_frm_resize_l5.ivf.json"},
 				ExtraAttr:         []string{"graphics_video_vp9"},
-			},
+			}
+			*/
 			{
 				Name: "v4l2_stateless_vp9_0_level5_0_gf_dist",
 				Val: platformDecodingParams{
@@ -1609,6 +1651,7 @@ func init() {
 				ExtraData:         []string{"test_vectors/vp9/Profile_0_8bit/sub8X8/crowd_run_4096X2176_fr30_bd8_sub8X8_l5.ivf", "test_vectors/vp9/Profile_0_8bit/sub8X8/crowd_run_4096X2176_fr30_bd8_sub8X8_l5.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8X8/grass_1_4096X2176_fr30_bd8_sub8X8_l5.ivf", "test_vectors/vp9/Profile_0_8bit/sub8X8/grass_1_4096X2176_fr30_bd8_sub8X8_l5.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8X8/street1_1_4096X2176_fr30_bd8_sub8X8_l5.ivf", "test_vectors/vp9/Profile_0_8bit/sub8X8/street1_1_4096X2176_fr30_bd8_sub8X8_l5.ivf.json"},
 				ExtraAttr:         []string{"graphics_video_vp9"},
 			},
+			/* Disabled due to <1% pass rate over 30 days. See b/241943013
 			{
 				Name: "v4l2_stateless_vp9_0_level5_0_sub8x8_sf",
 				Val: platformDecodingParams{
@@ -1621,7 +1664,8 @@ func init() {
 				ExtraSoftwareDeps: []string{"v4l2_codec", "autotest-capability:hw_dec_vp9_2160_30"},
 				ExtraData:         []string{"test_vectors/vp9/Profile_0_8bit/sub8x8_sf/crowd_run_4096X2176_fr30_bd8_sub8x8_sf_l5.ivf", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/crowd_run_4096X2176_fr30_bd8_sub8x8_sf_l5.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/grass_1_4096X2176_fr30_bd8_sub8x8_sf_l5.ivf", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/grass_1_4096X2176_fr30_bd8_sub8x8_sf_l5.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/street1_1_4096X2176_fr30_bd8_sub8x8_sf_l5.ivf", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/street1_1_4096X2176_fr30_bd8_sub8x8_sf_l5.ivf.json"},
 				ExtraAttr:         []string{"graphics_video_vp9"},
-			},
+			}
+			*/
 			{
 				Name: "v4l2_stateless_vp9_0_level5_1_buf",
 				Val: platformDecodingParams{
@@ -1700,6 +1744,7 @@ func init() {
 				ExtraData:         []string{"test_vectors/vp9/Profile_0_8bit/sub8x8_sf/crowd_run_4096X2176_fr60_bd8_sub8X8_l51.ivf", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/crowd_run_4096X2176_fr60_bd8_sub8X8_l51.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/grass_1_4096X2176_fr60_bd8_sub8x8_sf_l51.ivf", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/grass_1_4096X2176_fr60_bd8_sub8x8_sf_l51.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/street1_1_4096X2176_fr60_bd8_sub8x8_sf_l51.ivf", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/street1_1_4096X2176_fr60_bd8_sub8x8_sf_l51.ivf.json"},
 				ExtraAttr:         []string{"graphics_video_vp9"},
 			},
+			/* Disabled due to <1% pass rate over 30 days. See b/241943013
 			{
 				Name: "v4l2_vp9_0_svc",
 				Val: platformDecodingParams{
@@ -1712,7 +1757,8 @@ func init() {
 				ExtraSoftwareDeps: []string{"v4l2_codec", "autotest-capability:hw_dec_vp9_1080_30"},
 				ExtraData:         []string{"test_vectors/vp9/kSVC/ksvc_3sl_3tl_key100.ivf", "test_vectors/vp9/kSVC/ksvc_3sl_3tl_key100.ivf.json"},
 				ExtraAttr:         []string{"graphics_video_vp9"},
-			},
+			}
+			*/
 			{
 				Name: "v4l2_vp8_inter",
 				Val: platformDecodingParams{
@@ -1816,6 +1862,7 @@ func init() {
 				ExtraData:         []string{"test_vectors/vp9/Profile_0_8bit/buf/crowd_run_256X144_fr15_bd8_8buf_l1.ivf", "test_vectors/vp9/Profile_0_8bit/buf/crowd_run_256X144_fr15_bd8_8buf_l1.ivf.json", "test_vectors/vp9/Profile_0_8bit/buf/grass_1_256X144_fr15_bd8_8buf_l1.ivf", "test_vectors/vp9/Profile_0_8bit/buf/grass_1_256X144_fr15_bd8_8buf_l1.ivf.json", "test_vectors/vp9/Profile_0_8bit/buf/street1_1_256X144_fr15_bd8_8buf_l1.ivf", "test_vectors/vp9/Profile_0_8bit/buf/street1_1_256X144_fr15_bd8_8buf_l1.ivf.json", "test_vectors/vp9/Profile_0_8bit/buf/crowd_run_384X192_fr30_bd8_8buf_l11.ivf", "test_vectors/vp9/Profile_0_8bit/buf/crowd_run_384X192_fr30_bd8_8buf_l11.ivf.json", "test_vectors/vp9/Profile_0_8bit/buf/grass_1_384X192_fr30_bd8_8buf_l11.ivf", "test_vectors/vp9/Profile_0_8bit/buf/grass_1_384X192_fr30_bd8_8buf_l11.ivf.json", "test_vectors/vp9/Profile_0_8bit/buf/street1_1_384X192_fr30_bd8_8buf_l11.ivf", "test_vectors/vp9/Profile_0_8bit/buf/street1_1_384X192_fr30_bd8_8buf_l11.ivf.json"},
 				ExtraAttr:         []string{"graphics_video_vp9"},
 			},
+			/* Disabled due to <1% pass rate over 30 days. See b/241943013
 			{
 				Name: "ffmpeg_vaapi_vp9_0_group1_frm_resize",
 				Val: platformDecodingParams{
@@ -1827,7 +1874,8 @@ func init() {
 				ExtraSoftwareDeps: []string{"vaapi", "autotest-capability:hw_dec_vp9_1080_30"},
 				ExtraData:         []string{"test_vectors/vp9/Profile_0_8bit/frm_resize/crowd_run_256X144_fr15_bd8_frm_resize_l1.ivf", "test_vectors/vp9/Profile_0_8bit/frm_resize/crowd_run_256X144_fr15_bd8_frm_resize_l1.ivf.json", "test_vectors/vp9/Profile_0_8bit/frm_resize/grass_1_256X144_fr15_bd8_frm_resize_l1.ivf", "test_vectors/vp9/Profile_0_8bit/frm_resize/grass_1_256X144_fr15_bd8_frm_resize_l1.ivf.json", "test_vectors/vp9/Profile_0_8bit/frm_resize/street1_1_256X144_fr15_bd8_frm_resize_l1.ivf", "test_vectors/vp9/Profile_0_8bit/frm_resize/street1_1_256X144_fr15_bd8_frm_resize_l1.ivf.json", "test_vectors/vp9/Profile_0_8bit/frm_resize/crowd_run_384X192_fr30_bd8_frm_resize_l11.ivf", "test_vectors/vp9/Profile_0_8bit/frm_resize/crowd_run_384X192_fr30_bd8_frm_resize_l11.ivf.json", "test_vectors/vp9/Profile_0_8bit/frm_resize/grass_1_384X192_fr30_bd8_frm_resize_l11.ivf", "test_vectors/vp9/Profile_0_8bit/frm_resize/grass_1_384X192_fr30_bd8_frm_resize_l11.ivf.json", "test_vectors/vp9/Profile_0_8bit/frm_resize/street1_1_384X192_fr30_bd8_frm_resize_l11.ivf", "test_vectors/vp9/Profile_0_8bit/frm_resize/street1_1_384X192_fr30_bd8_frm_resize_l11.ivf.json"},
 				ExtraAttr:         []string{"graphics_video_vp9"},
-			},
+			}
+			*/
 			{
 				Name: "ffmpeg_vaapi_vp9_0_group1_gf_dist",
 				Val: platformDecodingParams{
@@ -1864,6 +1912,7 @@ func init() {
 				ExtraData:         []string{"test_vectors/vp9/Profile_0_8bit/sub8X8/crowd_run_256X144_fr15_bd8_sub8X8_l1.ivf", "test_vectors/vp9/Profile_0_8bit/sub8X8/crowd_run_256X144_fr15_bd8_sub8X8_l1.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8X8/grass_1_256X144_fr15_bd8_sub8X8_l1.ivf", "test_vectors/vp9/Profile_0_8bit/sub8X8/grass_1_256X144_fr15_bd8_sub8X8_l1.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8X8/street1_1_256X144_fr15_bd8_sub8X8_l1.ivf", "test_vectors/vp9/Profile_0_8bit/sub8X8/street1_1_256X144_fr15_bd8_sub8X8_l1.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8X8/crowd_run_384X192_fr30_bd8_sub8X8_l11.ivf", "test_vectors/vp9/Profile_0_8bit/sub8X8/crowd_run_384X192_fr30_bd8_sub8X8_l11.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8X8/grass_1_384X192_fr30_bd8_sub8X8_l11.ivf", "test_vectors/vp9/Profile_0_8bit/sub8X8/grass_1_384X192_fr30_bd8_sub8X8_l11.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8X8/street1_1_384X192_fr30_bd8_sub8X8_l11.ivf", "test_vectors/vp9/Profile_0_8bit/sub8X8/street1_1_384X192_fr30_bd8_sub8X8_l11.ivf.json"},
 				ExtraAttr:         []string{"graphics_video_vp9"},
 			},
+			/* Disabled due to <1% pass rate over 30 days. See b/241943013
 			{
 				Name: "ffmpeg_vaapi_vp9_0_group1_sub8x8_sf",
 				Val: platformDecodingParams{
@@ -1875,7 +1924,8 @@ func init() {
 				ExtraSoftwareDeps: []string{"vaapi", "autotest-capability:hw_dec_vp9_1080_30"},
 				ExtraData:         []string{"test_vectors/vp9/Profile_0_8bit/sub8x8_sf/crowd_run_256X144_fr15_bd8_sub8x8_sf_l1.ivf", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/crowd_run_256X144_fr15_bd8_sub8x8_sf_l1.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/grass_1_256X144_fr15_bd8_sub8x8_sf_l1.ivf", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/grass_1_256X144_fr15_bd8_sub8x8_sf_l1.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/street1_1_256X144_fr15_bd8_sub8x8_sf_l1.ivf", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/street1_1_256X144_fr15_bd8_sub8x8_sf_l1.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/crowd_run_384X192_fr30_bd8_sub8x8_sf_l11.ivf", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/crowd_run_384X192_fr30_bd8_sub8x8_sf_l11.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/grass_1_384X192_fr30_bd8_sub8x8_sf_l11.ivf", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/grass_1_384X192_fr30_bd8_sub8x8_sf_l11.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/street1_1_384X192_fr30_bd8_sub8x8_sf_l11.ivf", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/street1_1_384X192_fr30_bd8_sub8x8_sf_l11.ivf.json"},
 				ExtraAttr:         []string{"graphics_video_vp9"},
-			},
+			}
+			*/
 			{
 				Name: "ffmpeg_vaapi_vp9_0_group2_buf",
 				Val: platformDecodingParams{
@@ -1888,6 +1938,7 @@ func init() {
 				ExtraData:         []string{"test_vectors/vp9/Profile_0_8bit/buf/crowd_run_480X256_fr30_bd8_8buf_l2.ivf", "test_vectors/vp9/Profile_0_8bit/buf/crowd_run_480X256_fr30_bd8_8buf_l2.ivf.json", "test_vectors/vp9/Profile_0_8bit/buf/grass_1_480X256_fr30_bd8_8buf_l2.ivf", "test_vectors/vp9/Profile_0_8bit/buf/grass_1_480X256_fr30_bd8_8buf_l2.ivf.json", "test_vectors/vp9/Profile_0_8bit/buf/street1_1_480X256_fr30_bd8_8buf_l2.ivf", "test_vectors/vp9/Profile_0_8bit/buf/street1_1_480X256_fr30_bd8_8buf_l2.ivf.json", "test_vectors/vp9/Profile_0_8bit/buf/crowd_run_640X384_fr30_bd8_8buf_l21.ivf", "test_vectors/vp9/Profile_0_8bit/buf/crowd_run_640X384_fr30_bd8_8buf_l21.ivf.json", "test_vectors/vp9/Profile_0_8bit/buf/grass_1_640X384_fr30_bd8_8buf_l21.ivf", "test_vectors/vp9/Profile_0_8bit/buf/grass_1_640X384_fr30_bd8_8buf_l21.ivf.json", "test_vectors/vp9/Profile_0_8bit/buf/street1_1_640X384_fr30_bd8_8buf_l21.ivf", "test_vectors/vp9/Profile_0_8bit/buf/street1_1_640X384_fr30_bd8_8buf_l21.ivf.json"},
 				ExtraAttr:         []string{"graphics_video_vp9"},
 			},
+			/* Disabled due to <1% pass rate over 30 days. See b/241943013
 			{
 				Name: "ffmpeg_vaapi_vp9_0_group2_frm_resize",
 				Val: platformDecodingParams{
@@ -1899,7 +1950,8 @@ func init() {
 				ExtraSoftwareDeps: []string{"vaapi", "autotest-capability:hw_dec_vp9_1080_30"},
 				ExtraData:         []string{"test_vectors/vp9/Profile_0_8bit/frm_resize/crowd_run_480X256_fr30_bd8_frm_resize_l2.ivf", "test_vectors/vp9/Profile_0_8bit/frm_resize/crowd_run_480X256_fr30_bd8_frm_resize_l2.ivf.json", "test_vectors/vp9/Profile_0_8bit/frm_resize/grass_1_480X256_fr30_bd8_frm_resize_l2.ivf", "test_vectors/vp9/Profile_0_8bit/frm_resize/grass_1_480X256_fr30_bd8_frm_resize_l2.ivf.json", "test_vectors/vp9/Profile_0_8bit/frm_resize/street1_1_480X256_fr30_bd8_frm_resize_l2.ivf", "test_vectors/vp9/Profile_0_8bit/frm_resize/street1_1_480X256_fr30_bd8_frm_resize_l2.ivf.json", "test_vectors/vp9/Profile_0_8bit/frm_resize/crowd_run_640X384_fr30_bd8_frm_resize_l21.ivf", "test_vectors/vp9/Profile_0_8bit/frm_resize/crowd_run_640X384_fr30_bd8_frm_resize_l21.ivf.json", "test_vectors/vp9/Profile_0_8bit/frm_resize/grass_1_640X384_fr30_bd8_frm_resize_l21.ivf", "test_vectors/vp9/Profile_0_8bit/frm_resize/grass_1_640X384_fr30_bd8_frm_resize_l21.ivf.json", "test_vectors/vp9/Profile_0_8bit/frm_resize/street1_1_640X384_fr30_bd8_frm_resize_l21.ivf", "test_vectors/vp9/Profile_0_8bit/frm_resize/street1_1_640X384_fr30_bd8_frm_resize_l21.ivf.json"},
 				ExtraAttr:         []string{"graphics_video_vp9"},
-			},
+			}
+			*/
 			{
 				Name: "ffmpeg_vaapi_vp9_0_group2_gf_dist",
 				Val: platformDecodingParams{
@@ -1936,6 +1988,7 @@ func init() {
 				ExtraData:         []string{"test_vectors/vp9/Profile_0_8bit/sub8X8/crowd_run_480X256_fr30_bd8_sub8X8_l2.ivf", "test_vectors/vp9/Profile_0_8bit/sub8X8/crowd_run_480X256_fr30_bd8_sub8X8_l2.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8X8/grass_1_480X256_fr30_bd8_sub8X8_l2.ivf", "test_vectors/vp9/Profile_0_8bit/sub8X8/grass_1_480X256_fr30_bd8_sub8X8_l2.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8X8/street1_1_480X256_fr30_bd8_sub8X8_l2.ivf", "test_vectors/vp9/Profile_0_8bit/sub8X8/street1_1_480X256_fr30_bd8_sub8X8_l2.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8X8/crowd_run_640X384_fr30_bd8_sub8X8_l21.ivf", "test_vectors/vp9/Profile_0_8bit/sub8X8/crowd_run_640X384_fr30_bd8_sub8X8_l21.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8X8/grass_1_640X384_fr30_bd8_sub8X8_l21.ivf", "test_vectors/vp9/Profile_0_8bit/sub8X8/grass_1_640X384_fr30_bd8_sub8X8_l21.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8X8/street1_1_640X384_fr30_bd8_sub8X8_l21.ivf", "test_vectors/vp9/Profile_0_8bit/sub8X8/street1_1_640X384_fr30_bd8_sub8X8_l21.ivf.json"},
 				ExtraAttr:         []string{"graphics_video_vp9"},
 			},
+			/* Disabled due to <1% pass rate over 30 days. See b/241943013
 			{
 				Name: "ffmpeg_vaapi_vp9_0_group2_sub8x8_sf",
 				Val: platformDecodingParams{
@@ -1947,7 +2000,8 @@ func init() {
 				ExtraSoftwareDeps: []string{"vaapi", "autotest-capability:hw_dec_vp9_1080_30"},
 				ExtraData:         []string{"test_vectors/vp9/Profile_0_8bit/sub8x8_sf/crowd_run_480X256_fr30_bd8_sub8x8_sf_l2.ivf", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/crowd_run_480X256_fr30_bd8_sub8x8_sf_l2.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/grass_1_480X256_fr30_bd8_sub8x8_sf_l2.ivf", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/grass_1_480X256_fr30_bd8_sub8x8_sf_l2.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/street1_1_480X256_fr30_bd8_sub8x8_sf_l2.ivf", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/street1_1_480X256_fr30_bd8_sub8x8_sf_l2.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/crowd_run_640X384_fr30_bd8_sub8x8_sf_l21.ivf", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/crowd_run_640X384_fr30_bd8_sub8x8_sf_l21.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/grass_1_640X384_fr30_bd8_sub8x8_sf_l21.ivf", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/grass_1_640X384_fr30_bd8_sub8x8_sf_l21.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/street1_1_640X384_fr30_bd8_sub8x8_sf_l21.ivf", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/street1_1_640X384_fr30_bd8_sub8x8_sf_l21.ivf.json"},
 				ExtraAttr:         []string{"graphics_video_vp9"},
-			},
+			}
+			*/
 			{
 				Name: "ffmpeg_vaapi_vp9_0_group3_buf",
 				Val: platformDecodingParams{
@@ -1960,6 +2014,7 @@ func init() {
 				ExtraData:         []string{"test_vectors/vp9/Profile_0_8bit/buf/crowd_run_1080X512_fr30_bd8_8buf_l3.ivf", "test_vectors/vp9/Profile_0_8bit/buf/crowd_run_1080X512_fr30_bd8_8buf_l3.ivf.json", "test_vectors/vp9/Profile_0_8bit/buf/grass_1_1080X512_fr30_bd8_8buf_l3.ivf", "test_vectors/vp9/Profile_0_8bit/buf/grass_1_1080X512_fr30_bd8_8buf_l3.ivf.json", "test_vectors/vp9/Profile_0_8bit/buf/street1_1_1080X512_fr30_bd8_8buf_l3.ivf", "test_vectors/vp9/Profile_0_8bit/buf/street1_1_1080X512_fr30_bd8_8buf_l3.ivf.json", "test_vectors/vp9/Profile_0_8bit/buf/crowd_run_1280X768_fr30_bd8_8buf_l31.ivf", "test_vectors/vp9/Profile_0_8bit/buf/crowd_run_1280X768_fr30_bd8_8buf_l31.ivf.json", "test_vectors/vp9/Profile_0_8bit/buf/grass_1_1280X768_fr30_bd8_8buf_l31.ivf", "test_vectors/vp9/Profile_0_8bit/buf/grass_1_1280X768_fr30_bd8_8buf_l31.ivf.json", "test_vectors/vp9/Profile_0_8bit/buf/street1_1_1280X768_fr30_bd8_8buf_l31.ivf", "test_vectors/vp9/Profile_0_8bit/buf/street1_1_1280X768_fr30_bd8_8buf_l31.ivf.json"},
 				ExtraAttr:         []string{"graphics_video_vp9"},
 			},
+			/* Disabled due to <1% pass rate over 30 days. See b/241943013
 			{
 				Name: "ffmpeg_vaapi_vp9_0_group3_frm_resize",
 				Val: platformDecodingParams{
@@ -1971,7 +2026,8 @@ func init() {
 				ExtraSoftwareDeps: []string{"vaapi", "autotest-capability:hw_dec_vp9_1080_30"},
 				ExtraData:         []string{"test_vectors/vp9/Profile_0_8bit/frm_resize/crowd_run_1080X512_fr30_bd8_frm_resize_l3.ivf", "test_vectors/vp9/Profile_0_8bit/frm_resize/crowd_run_1080X512_fr30_bd8_frm_resize_l3.ivf.json", "test_vectors/vp9/Profile_0_8bit/frm_resize/grass_1_1080X512_fr30_bd8_frm_resize_l3.ivf", "test_vectors/vp9/Profile_0_8bit/frm_resize/grass_1_1080X512_fr30_bd8_frm_resize_l3.ivf.json", "test_vectors/vp9/Profile_0_8bit/frm_resize/street1_1_1080X512_fr30_bd8_frm_resize_l3.ivf", "test_vectors/vp9/Profile_0_8bit/frm_resize/street1_1_1080X512_fr30_bd8_frm_resize_l3.ivf.json", "test_vectors/vp9/Profile_0_8bit/frm_resize/crowd_run_1280X768_fr30_bd8_frm_resize_l31.ivf", "test_vectors/vp9/Profile_0_8bit/frm_resize/crowd_run_1280X768_fr30_bd8_frm_resize_l31.ivf.json", "test_vectors/vp9/Profile_0_8bit/frm_resize/grass_1_1280X768_fr30_bd8_frm_resize_l31.ivf", "test_vectors/vp9/Profile_0_8bit/frm_resize/grass_1_1280X768_fr30_bd8_frm_resize_l31.ivf.json", "test_vectors/vp9/Profile_0_8bit/frm_resize/street1_1_1280X768_fr30_bd8_frm_resize_l31.ivf", "test_vectors/vp9/Profile_0_8bit/frm_resize/street1_1_1280X768_fr30_bd8_frm_resize_l31.ivf.json"},
 				ExtraAttr:         []string{"graphics_video_vp9"},
-			},
+			}
+			*/
 			{
 				Name: "ffmpeg_vaapi_vp9_0_group3_gf_dist",
 				Val: platformDecodingParams{
@@ -2008,6 +2064,7 @@ func init() {
 				ExtraData:         []string{"test_vectors/vp9/Profile_0_8bit/sub8X8/crowd_run_1080X512_fr30_bd8_sub8X8_l3.ivf", "test_vectors/vp9/Profile_0_8bit/sub8X8/crowd_run_1080X512_fr30_bd8_sub8X8_l3.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8X8/grass_1_1080X512_fr30_bd8_sub8X8_l3.ivf", "test_vectors/vp9/Profile_0_8bit/sub8X8/grass_1_1080X512_fr30_bd8_sub8X8_l3.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8X8/street1_1_1080X512_fr30_bd8_sub8X8_l3.ivf", "test_vectors/vp9/Profile_0_8bit/sub8X8/street1_1_1080X512_fr30_bd8_sub8X8_l3.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8X8/crowd_run_1280X768_fr30_bd8_sub8X8_l31.ivf", "test_vectors/vp9/Profile_0_8bit/sub8X8/crowd_run_1280X768_fr30_bd8_sub8X8_l31.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8X8/grass_1_1280X768_fr30_bd8_sub8X8_l31.ivf", "test_vectors/vp9/Profile_0_8bit/sub8X8/grass_1_1280X768_fr30_bd8_sub8X8_l31.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8X8/street1_1_1280X768_fr30_bd8_sub8X8_l31.ivf", "test_vectors/vp9/Profile_0_8bit/sub8X8/street1_1_1280X768_fr30_bd8_sub8X8_l31.ivf.json"},
 				ExtraAttr:         []string{"graphics_video_vp9"},
 			},
+			/* Disabled due to <1% pass rate over 30 days. See b/241943013
 			{
 				Name: "ffmpeg_vaapi_vp9_0_group3_sub8x8_sf",
 				Val: platformDecodingParams{
@@ -2019,7 +2076,8 @@ func init() {
 				ExtraSoftwareDeps: []string{"vaapi", "autotest-capability:hw_dec_vp9_1080_30"},
 				ExtraData:         []string{"test_vectors/vp9/Profile_0_8bit/sub8x8_sf/crowd_run_1080X512_fr30_bd8_sub8x8_sf_l3.ivf", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/crowd_run_1080X512_fr30_bd8_sub8x8_sf_l3.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/grass_1_1080X512_fr30_bd8_sub8x8_sf_l3.ivf", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/grass_1_1080X512_fr30_bd8_sub8x8_sf_l3.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/street1_1_1080X512_fr30_bd8_sub8x8_sf_l3.ivf", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/street1_1_1080X512_fr30_bd8_sub8x8_sf_l3.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/crowd_run_1280X768_fr30_bd8_sub8x8_sf_l31.ivf", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/crowd_run_1280X768_fr30_bd8_sub8x8_sf_l31.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/grass_1_1280X768_fr30_bd8_sub8x8_sf_l31.ivf", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/grass_1_1280X768_fr30_bd8_sub8x8_sf_l31.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/street1_1_1280X768_fr30_bd8_sub8x8_sf_l31.ivf", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/street1_1_1280X768_fr30_bd8_sub8x8_sf_l31.ivf.json"},
 				ExtraAttr:         []string{"graphics_video_vp9"},
-			},
+			}
+			*/
 			{
 				Name: "ffmpeg_vaapi_vp9_0_group4_buf",
 				Val: platformDecodingParams{
@@ -2032,6 +2090,7 @@ func init() {
 				ExtraData:         []string{"test_vectors/vp9/Profile_0_8bit/buf/crowd_run_2048X1088_fr30_bd8_8buf_l4.ivf", "test_vectors/vp9/Profile_0_8bit/buf/crowd_run_2048X1088_fr30_bd8_8buf_l4.ivf.json", "test_vectors/vp9/Profile_0_8bit/buf/grass_1_2048X1088_fr30_bd8_8buf_l4.ivf", "test_vectors/vp9/Profile_0_8bit/buf/grass_1_2048X1088_fr30_bd8_8buf_l4.ivf.json", "test_vectors/vp9/Profile_0_8bit/buf/street1_1_2048X1088_fr30_bd8_8buf_l4.ivf", "test_vectors/vp9/Profile_0_8bit/buf/street1_1_2048X1088_fr30_bd8_8buf_l4.ivf.json", "test_vectors/vp9/Profile_0_8bit/buf/crowd_run_2048X1088_fr60_bd8_6buf_l41.ivf", "test_vectors/vp9/Profile_0_8bit/buf/crowd_run_2048X1088_fr60_bd8_6buf_l41.ivf.json", "test_vectors/vp9/Profile_0_8bit/buf/grass_1_2048X1088_fr60_bd8_6buf_l41.ivf", "test_vectors/vp9/Profile_0_8bit/buf/grass_1_2048X1088_fr60_bd8_6buf_l41.ivf.json", "test_vectors/vp9/Profile_0_8bit/buf/street1_1_2048X1088_fr60_bd8_6buf_l41.ivf", "test_vectors/vp9/Profile_0_8bit/buf/street1_1_2048X1088_fr60_bd8_6buf_l41.ivf.json"},
 				ExtraAttr:         []string{"graphics_video_vp9"},
 			},
+			/* Disabled due to <1% pass rate over 30 days. See b/241943013
 			{
 				Name: "ffmpeg_vaapi_vp9_0_group4_frm_resize",
 				Val: platformDecodingParams{
@@ -2043,7 +2102,8 @@ func init() {
 				ExtraSoftwareDeps: []string{"vaapi", "autotest-capability:hw_dec_vp9_1080_30"},
 				ExtraData:         []string{"test_vectors/vp9/Profile_0_8bit/frm_resize/crowd_run_2048X1088_fr30_bd8_frm_resize_l4.ivf", "test_vectors/vp9/Profile_0_8bit/frm_resize/crowd_run_2048X1088_fr30_bd8_frm_resize_l4.ivf.json", "test_vectors/vp9/Profile_0_8bit/frm_resize/grass_1_2048X1088_fr30_bd8_frm_resize_l4.ivf", "test_vectors/vp9/Profile_0_8bit/frm_resize/grass_1_2048X1088_fr30_bd8_frm_resize_l4.ivf.json", "test_vectors/vp9/Profile_0_8bit/frm_resize/street1_1_2048X1088_fr30_bd8_frm_resize_l4.ivf", "test_vectors/vp9/Profile_0_8bit/frm_resize/street1_1_2048X1088_fr30_bd8_frm_resize_l4.ivf.json", "test_vectors/vp9/Profile_0_8bit/frm_resize/crowd_run_2048X1088_fr60_bd8_frm_resize_l41.ivf", "test_vectors/vp9/Profile_0_8bit/frm_resize/crowd_run_2048X1088_fr60_bd8_frm_resize_l41.ivf.json", "test_vectors/vp9/Profile_0_8bit/frm_resize/grass_1_2048X1088_fr60_bd8_frm_resize_l41.ivf", "test_vectors/vp9/Profile_0_8bit/frm_resize/grass_1_2048X1088_fr60_bd8_frm_resize_l41.ivf.json", "test_vectors/vp9/Profile_0_8bit/frm_resize/street1_1_2048X1088_fr60_bd8_frm_resize_l41.ivf", "test_vectors/vp9/Profile_0_8bit/frm_resize/street1_1_2048X1088_fr60_bd8_frm_resize_l41.ivf.json"},
 				ExtraAttr:         []string{"graphics_video_vp9"},
-			},
+			}
+			*/
 			{
 				Name: "ffmpeg_vaapi_vp9_0_group4_gf_dist",
 				Val: platformDecodingParams{
@@ -2080,6 +2140,7 @@ func init() {
 				ExtraData:         []string{"test_vectors/vp9/Profile_0_8bit/sub8X8/crowd_run_2048X1088_fr30_bd8_sub8X8_l4.ivf", "test_vectors/vp9/Profile_0_8bit/sub8X8/crowd_run_2048X1088_fr30_bd8_sub8X8_l4.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8X8/grass_1_2048X1088_fr30_bd8_sub8X8_l4.ivf", "test_vectors/vp9/Profile_0_8bit/sub8X8/grass_1_2048X1088_fr30_bd8_sub8X8_l4.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8X8/street1_1_2048X1088_fr30_bd8_sub8X8_l4.ivf", "test_vectors/vp9/Profile_0_8bit/sub8X8/street1_1_2048X1088_fr30_bd8_sub8X8_l4.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8X8/crowd_run_2048X1088_fr60_bd8_sub8X8_l41.ivf", "test_vectors/vp9/Profile_0_8bit/sub8X8/crowd_run_2048X1088_fr60_bd8_sub8X8_l41.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8X8/grass_1_2048X1088_fr60_bd8_sub8X8_l41.ivf", "test_vectors/vp9/Profile_0_8bit/sub8X8/grass_1_2048X1088_fr60_bd8_sub8X8_l41.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8X8/street1_1_2048X1088_fr60_bd8_sub8X8_l41.ivf", "test_vectors/vp9/Profile_0_8bit/sub8X8/street1_1_2048X1088_fr60_bd8_sub8X8_l41.ivf.json"},
 				ExtraAttr:         []string{"graphics_video_vp9"},
 			},
+			/* Disabled due to <1% pass rate over 30 days. See b/241943013
 			{
 				Name: "ffmpeg_vaapi_vp9_0_group4_sub8x8_sf",
 				Val: platformDecodingParams{
@@ -2091,7 +2152,8 @@ func init() {
 				ExtraSoftwareDeps: []string{"vaapi", "autotest-capability:hw_dec_vp9_1080_30"},
 				ExtraData:         []string{"test_vectors/vp9/Profile_0_8bit/sub8x8_sf/crowd_run_2048X1088_fr30_bd8_sub8x8_sf_l4.ivf", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/crowd_run_2048X1088_fr30_bd8_sub8x8_sf_l4.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/grass_1_2048X1088_fr30_bd8_sub8x8_sf_l4.ivf", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/grass_1_2048X1088_fr30_bd8_sub8x8_sf_l4.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/street1_1_2048X1088_fr30_bd8_sub8x8_sf_l4.ivf", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/street1_1_2048X1088_fr30_bd8_sub8x8_sf_l4.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/crowd_run_2048X1088_fr60_bd8_sub8x8_sf_l41.ivf", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/crowd_run_2048X1088_fr60_bd8_sub8x8_sf_l41.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/grass_1_2048X1088_fr60_bd8_sub8x8_sf_l41.ivf", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/grass_1_2048X1088_fr60_bd8_sub8x8_sf_l41.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/street1_1_2048X1088_fr60_bd8_sub8x8_sf_l41.ivf", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/street1_1_2048X1088_fr60_bd8_sub8x8_sf_l41.ivf.json"},
 				ExtraAttr:         []string{"graphics_video_vp9"},
-			},
+			}
+			*/
 			{
 				Name: "ffmpeg_vaapi_vp9_0_level5_0_buf",
 				Val: platformDecodingParams{
@@ -2104,6 +2166,7 @@ func init() {
 				ExtraData:         []string{"test_vectors/vp9/Profile_0_8bit/buf/crowd_run_4096X2176_fr30_bd8_4buf_l5.ivf", "test_vectors/vp9/Profile_0_8bit/buf/crowd_run_4096X2176_fr30_bd8_4buf_l5.ivf.json", "test_vectors/vp9/Profile_0_8bit/buf/grass_1_4096X2176_fr30_bd8_4buf_l5.ivf", "test_vectors/vp9/Profile_0_8bit/buf/grass_1_4096X2176_fr30_bd8_4buf_l5.ivf.json", "test_vectors/vp9/Profile_0_8bit/buf/street1_1_4096X2176_fr30_bd8_4buf_l5.ivf", "test_vectors/vp9/Profile_0_8bit/buf/street1_1_4096X2176_fr30_bd8_4buf_l5.ivf.json"},
 				ExtraAttr:         []string{"graphics_video_vp9"},
 			},
+			/* Disabled due to <1% pass rate over 30 days. See b/241943013
 			{
 				Name: "ffmpeg_vaapi_vp9_0_level5_0_frm_resize",
 				Val: platformDecodingParams{
@@ -2115,7 +2178,8 @@ func init() {
 				ExtraSoftwareDeps: []string{"vaapi", "autotest-capability:hw_dec_vp9_2160_30"},
 				ExtraData:         []string{"test_vectors/vp9/Profile_0_8bit/frm_resize/crowd_run_4096X2176_fr30_bd8_frm_resize_l5.ivf", "test_vectors/vp9/Profile_0_8bit/frm_resize/crowd_run_4096X2176_fr30_bd8_frm_resize_l5.ivf.json", "test_vectors/vp9/Profile_0_8bit/frm_resize/grass_1_4096X2176_fr30_bd8_frm_resize_l5.ivf", "test_vectors/vp9/Profile_0_8bit/frm_resize/grass_1_4096X2176_fr30_bd8_frm_resize_l5.ivf.json", "test_vectors/vp9/Profile_0_8bit/frm_resize/street1_1_4096X2176_fr30_bd8_frm_resize_l5.ivf", "test_vectors/vp9/Profile_0_8bit/frm_resize/street1_1_4096X2176_fr30_bd8_frm_resize_l5.ivf.json"},
 				ExtraAttr:         []string{"graphics_video_vp9"},
-			},
+			}
+			*/
 			{
 				Name: "ffmpeg_vaapi_vp9_0_level5_0_gf_dist",
 				Val: platformDecodingParams{
@@ -2152,6 +2216,7 @@ func init() {
 				ExtraData:         []string{"test_vectors/vp9/Profile_0_8bit/sub8X8/crowd_run_4096X2176_fr30_bd8_sub8X8_l5.ivf", "test_vectors/vp9/Profile_0_8bit/sub8X8/crowd_run_4096X2176_fr30_bd8_sub8X8_l5.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8X8/grass_1_4096X2176_fr30_bd8_sub8X8_l5.ivf", "test_vectors/vp9/Profile_0_8bit/sub8X8/grass_1_4096X2176_fr30_bd8_sub8X8_l5.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8X8/street1_1_4096X2176_fr30_bd8_sub8X8_l5.ivf", "test_vectors/vp9/Profile_0_8bit/sub8X8/street1_1_4096X2176_fr30_bd8_sub8X8_l5.ivf.json"},
 				ExtraAttr:         []string{"graphics_video_vp9"},
 			},
+			/* Disabled due to <1% pass rate over 30 days. See b/241943013
 			{
 				Name: "ffmpeg_vaapi_vp9_0_level5_0_sub8x8_sf",
 				Val: platformDecodingParams{
@@ -2163,7 +2228,8 @@ func init() {
 				ExtraSoftwareDeps: []string{"vaapi", "autotest-capability:hw_dec_vp9_2160_30"},
 				ExtraData:         []string{"test_vectors/vp9/Profile_0_8bit/sub8x8_sf/crowd_run_4096X2176_fr30_bd8_sub8x8_sf_l5.ivf", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/crowd_run_4096X2176_fr30_bd8_sub8x8_sf_l5.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/grass_1_4096X2176_fr30_bd8_sub8x8_sf_l5.ivf", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/grass_1_4096X2176_fr30_bd8_sub8x8_sf_l5.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/street1_1_4096X2176_fr30_bd8_sub8x8_sf_l5.ivf", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/street1_1_4096X2176_fr30_bd8_sub8x8_sf_l5.ivf.json"},
 				ExtraAttr:         []string{"graphics_video_vp9"},
-			},
+			}
+			*/
 			{
 				Name: "ffmpeg_vaapi_vp9_0_level5_1_buf",
 				Val: platformDecodingParams{
@@ -2177,6 +2243,7 @@ func init() {
 				ExtraData:         []string{"test_vectors/vp9/Profile_0_8bit/buf/crowd_run_4096X2176_fr60_bd8_4buf_l51.ivf", "test_vectors/vp9/Profile_0_8bit/buf/crowd_run_4096X2176_fr60_bd8_4buf_l51.ivf.json", "test_vectors/vp9/Profile_0_8bit/buf/grass_1_4096X2176_fr60_bd8_4buf_l51.ivf", "test_vectors/vp9/Profile_0_8bit/buf/grass_1_4096X2176_fr60_bd8_4buf_l51.ivf.json", "test_vectors/vp9/Profile_0_8bit/buf/street1_1_4096X2176_fr60_bd8_4buf_l51.ivf", "test_vectors/vp9/Profile_0_8bit/buf/street1_1_4096X2176_fr60_bd8_4buf_l51.ivf.json"},
 				ExtraAttr:         []string{"graphics_video_vp9"},
 			},
+			/* Disabled due to <1% pass rate over 30 days. See b/241943013
 			{
 				Name: "ffmpeg_vaapi_vp9_0_level5_1_frm_resize",
 				Val: platformDecodingParams{
@@ -2189,7 +2256,8 @@ func init() {
 				ExtraSoftwareDeps: []string{"vaapi", "autotest-capability:hw_dec_vp9_2160_60"},
 				ExtraData:         []string{"test_vectors/vp9/Profile_0_8bit/frm_resize/crowd_run_4096X2176_fr60_bd8_frm_resize_l51.ivf", "test_vectors/vp9/Profile_0_8bit/frm_resize/crowd_run_4096X2176_fr60_bd8_frm_resize_l51.ivf.json", "test_vectors/vp9/Profile_0_8bit/frm_resize/grass_1_4096X2176_fr60_bd8_frm_resize_l51.ivf", "test_vectors/vp9/Profile_0_8bit/frm_resize/grass_1_4096X2176_fr60_bd8_frm_resize_l51.ivf.json", "test_vectors/vp9/Profile_0_8bit/frm_resize/street1_1_4096X2176_fr60_bd8_frm_resize_l51.ivf", "test_vectors/vp9/Profile_0_8bit/frm_resize/street1_1_4096X2176_fr60_bd8_frm_resize_l51.ivf.json"},
 				ExtraAttr:         []string{"graphics_video_vp9"},
-			},
+			}
+			*/
 			{
 				Name: "ffmpeg_vaapi_vp9_0_level5_1_gf_dist",
 				Val: platformDecodingParams{
@@ -2229,6 +2297,7 @@ func init() {
 				ExtraData:         []string{"test_vectors/vp9/Profile_0_8bit/sub8X8/crowd_run_4096X2176_fr60_bd8_sub8X8_l51.ivf", "test_vectors/vp9/Profile_0_8bit/sub8X8/crowd_run_4096X2176_fr60_bd8_sub8X8_l51.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8X8/grass_1_4096X2176_fr60_bd8_sub8X8_l51.ivf", "test_vectors/vp9/Profile_0_8bit/sub8X8/grass_1_4096X2176_fr60_bd8_sub8X8_l51.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8X8/street1_1_4096X2176_fr60_bd8_sub8X8_l51.ivf", "test_vectors/vp9/Profile_0_8bit/sub8X8/street1_1_4096X2176_fr60_bd8_sub8X8_l51.ivf.json"},
 				ExtraAttr:         []string{"graphics_video_vp9"},
 			},
+			/* Disabled due to <1% pass rate over 30 days. See b/241943013
 			{
 				Name: "ffmpeg_vaapi_vp9_0_level5_1_sub8x8_sf",
 				Val: platformDecodingParams{
@@ -2241,7 +2310,8 @@ func init() {
 				ExtraSoftwareDeps: []string{"vaapi", "autotest-capability:hw_dec_vp9_2160_60"},
 				ExtraData:         []string{"test_vectors/vp9/Profile_0_8bit/sub8x8_sf/crowd_run_4096X2176_fr60_bd8_sub8X8_l51.ivf", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/crowd_run_4096X2176_fr60_bd8_sub8X8_l51.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/grass_1_4096X2176_fr60_bd8_sub8x8_sf_l51.ivf", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/grass_1_4096X2176_fr60_bd8_sub8x8_sf_l51.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/street1_1_4096X2176_fr60_bd8_sub8x8_sf_l51.ivf", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/street1_1_4096X2176_fr60_bd8_sub8x8_sf_l51.ivf.json"},
 				ExtraAttr:         []string{"graphics_video_vp9"},
-			},
+			}
+			*/
 			{
 				Name: "ffmpeg_vaapi_av1",
 				Val: platformDecodingParams{
@@ -2314,6 +2384,7 @@ func init() {
 				ExtraData:         []string{"test_vectors/av1/aom/av1-1-b8-05-mv.ivf", "test_vectors/av1/aom/av1-1-b8-05-mv.ivf.json", "test_vectors/av1/aom/av1-1-b8-06-mfmv.ivf", "test_vectors/av1/aom/av1-1-b8-06-mfmv.ivf.json"},
 				ExtraAttr:         []string{"graphics_video_av1"},
 			},
+			/* Disabled due to <1% pass rate over 30 days. See b/241943013
 			{
 				Name: "ffmpeg_vaapi_vp8_inter",
 				Val: platformDecodingParams{
@@ -2325,7 +2396,8 @@ func init() {
 				ExtraSoftwareDeps: []string{"vaapi", "autotest-capability:hw_dec_vp8_1080_30"},
 				ExtraData:         []string{"test_vectors/vp8/inter/vp80-02-inter-1402.ivf", "test_vectors/vp8/inter/vp80-02-inter-1402.ivf.json", "test_vectors/vp8/inter/vp80-02-inter-1412.ivf", "test_vectors/vp8/inter/vp80-02-inter-1412.ivf.json", "test_vectors/vp8/inter/vp80-02-inter-1418.ivf", "test_vectors/vp8/inter/vp80-02-inter-1418.ivf.json", "test_vectors/vp8/inter/vp80-02-inter-1424.ivf", "test_vectors/vp8/inter/vp80-02-inter-1424.ivf.json", "test_vectors/vp8/inter/vp80-03-segmentation-1403.ivf", "test_vectors/vp8/inter/vp80-03-segmentation-1403.ivf.json", "test_vectors/vp8/inter/vp80-03-segmentation-1425.ivf", "test_vectors/vp8/inter/vp80-03-segmentation-1425.ivf.json", "test_vectors/vp8/inter/vp80-03-segmentation-1426.ivf", "test_vectors/vp8/inter/vp80-03-segmentation-1426.ivf.json", "test_vectors/vp8/inter/vp80-03-segmentation-1427.ivf", "test_vectors/vp8/inter/vp80-03-segmentation-1427.ivf.json", "test_vectors/vp8/inter/vp80-03-segmentation-1432.ivf", "test_vectors/vp8/inter/vp80-03-segmentation-1432.ivf.json", "test_vectors/vp8/inter/vp80-03-segmentation-1435.ivf", "test_vectors/vp8/inter/vp80-03-segmentation-1435.ivf.json", "test_vectors/vp8/inter/vp80-03-segmentation-1436.ivf", "test_vectors/vp8/inter/vp80-03-segmentation-1436.ivf.json", "test_vectors/vp8/inter/vp80-03-segmentation-1437.ivf", "test_vectors/vp8/inter/vp80-03-segmentation-1437.ivf.json", "test_vectors/vp8/inter/vp80-03-segmentation-1441.ivf", "test_vectors/vp8/inter/vp80-03-segmentation-1441.ivf.json", "test_vectors/vp8/inter/vp80-03-segmentation-1442.ivf", "test_vectors/vp8/inter/vp80-03-segmentation-1442.ivf.json", "test_vectors/vp8/inter/vp80-05-sharpness-1428.ivf", "test_vectors/vp8/inter/vp80-05-sharpness-1428.ivf.json", "test_vectors/vp8/inter/vp80-05-sharpness-1429.ivf", "test_vectors/vp8/inter/vp80-05-sharpness-1429.ivf.json", "test_vectors/vp8/inter/vp80-05-sharpness-1430.ivf", "test_vectors/vp8/inter/vp80-05-sharpness-1430.ivf.json", "test_vectors/vp8/inter/vp80-05-sharpness-1431.ivf", "test_vectors/vp8/inter/vp80-05-sharpness-1431.ivf.json", "test_vectors/vp8/inter/vp80-05-sharpness-1433.ivf", "test_vectors/vp8/inter/vp80-05-sharpness-1433.ivf.json", "test_vectors/vp8/inter/vp80-05-sharpness-1434.ivf", "test_vectors/vp8/inter/vp80-05-sharpness-1434.ivf.json", "test_vectors/vp8/inter/vp80-05-sharpness-1438.ivf", "test_vectors/vp8/inter/vp80-05-sharpness-1438.ivf.json", "test_vectors/vp8/inter/vp80-05-sharpness-1439.ivf", "test_vectors/vp8/inter/vp80-05-sharpness-1439.ivf.json", "test_vectors/vp8/inter/vp80-05-sharpness-1440.ivf", "test_vectors/vp8/inter/vp80-05-sharpness-1440.ivf.json", "test_vectors/vp8/inter/vp80-05-sharpness-1443.ivf", "test_vectors/vp8/inter/vp80-05-sharpness-1443.ivf.json"},
 				ExtraAttr:         []string{"graphics_video_vp8"},
-			},
+			}
+			*/
 			{
 				Name: "ffmpeg_vaapi_vp8_inter_multi_coeff",
 				Val: platformDecodingParams{
