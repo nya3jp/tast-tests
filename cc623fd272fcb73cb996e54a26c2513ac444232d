@@ -104,6 +104,24 @@
       "parentUuid": "8d8c1231_fe23c67d",
       "revId": "cc623fd272fcb73cb996e54a26c2513ac444232d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a695936_869e9093",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-08-15T17:12:24Z",
+      "side": 1,
+      "message": "I\u0027ll talk to the test infra team about what is going on with coral-kernelnext.",
+      "parentUuid": "443e369a_57847f00",
+      "revId": "cc623fd272fcb73cb996e54a26c2513ac444232d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
