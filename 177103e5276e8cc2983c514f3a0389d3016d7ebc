@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58fccdca_bba39bd0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_a11y.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2022-08-15T07:23:11Z",
+      "side": 1,
+      "message": "Please add a TODO with tracking bug and some comments here to elaborate the rationale why we need a workaround.",
+      "revId": "177103e5276e8cc2983c514f3a0389d3016d7ebc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
