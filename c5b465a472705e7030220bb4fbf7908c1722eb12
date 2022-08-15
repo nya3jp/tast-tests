@@ -16,6 +16,24 @@
       "message": "probably we\u0027d like to call failIfCrashesWereReported here, too?\nIf it\u0027s too late, maybe passing a callback reporting error to lacros.Launch may need. WDYT?",
       "revId": "c5b465a472705e7030220bb4fbf7908c1722eb12",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f43cb10_981450a3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/basic.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-08-15T01:03:35Z",
+      "side": 1,
+      "message": "My thinking was that cases where the test fails anyways are not so important (because we will have to look into them regardless), so I am fine with missing out on the crash report detection here. Any crash reports will still be part of the Tast results.",
+      "parentUuid": "c45eaff1_721cba5f",
+      "revId": "c5b465a472705e7030220bb4fbf7908c1722eb12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
