@@ -889,3 +889,22 @@ func WaitForAnyWindowWithoutTitle(ctx context.Context, tconn *chrome.TestConn, t
 		return !strings.Contains(w.Title, title)
 	})
 }
+
+// WaitForAppWindow waits for the window of the app name specified to be visible.
+// Note it would be useful to call this after ash.WaitForApp that checks for certain shelf behaviors to be done for the apps ahead.
+// TODO(b/225229931): Use appID instead of appName.
+func WaitForAppWindow(ctx context.Context, tconn *chrome.TestConn, appName string) error {
+	if err := WaitForCondition(ctx, tconn, func(w *Window) bool {
+		if !w.IsVisible {
+			return false
+		}
+		// Check app window by title. Note that Lacros window is prefixed with "Chrome", not "Lacros".
+		if w.WindowType == WindowTypeLacros {
+			return strings.Contains(w.Title, "Chrome")
+		}
+		return strings.Contains(w.Title, appName)
+	}, defaultPollOptions); err != nil {
+		return errors.Wrapf(err, "failed to wait for app to be visible for name: %v", appName)
+	}
+	return nil
+}
