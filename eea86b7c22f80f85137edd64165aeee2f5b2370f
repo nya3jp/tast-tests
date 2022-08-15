@@ -16,6 +16,24 @@
       "message": "If you already ran tast unit tests, please add this line to commit log\n\nTEST\u003dtast unit test passed\n\nAlso, please have somebody familiar to this project to review and give you a +2.\n\nThanks.\n",
       "revId": "eea86b7c22f80f85137edd64165aeee2f5b2370f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8e58d09_0c127497",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2022-08-15T22:44:57Z",
+      "side": 1,
+      "message": "Ack.",
+      "parentUuid": "18f9a2a2_7f093001",
+      "revId": "eea86b7c22f80f85137edd64165aeee2f5b2370f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
