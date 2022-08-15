@@ -2557,6 +2557,7 @@ func v4l2StatelessDecodeArgs(ctx context.Context, filename string) (command []st
 func av1decodeVAAPIargs(ctx context.Context, filename string) []string {
 	return []string{
 		"--video=" + filename,
+		"--codec=AV1",
 		"--md5",
 		// aomdec is used to compute reference hashes, and outputs only those for
 		// visible frames
@@ -2568,10 +2569,12 @@ func av1decodeVAAPIargs(ctx context.Context, filename string) []string {
 func hevcdecodeVAAPIargs(ctx context.Context, filename string) []string {
 	return []string{
 		"--video=" + filename,
+		"--codec=H265",
 		"--md5",
 		// vpxdec is used to compute reference hashes, and outputs only those for
 		// visible frames
 		"--visible",
+		// This flag is deprecated and is only used for backwards compatibility.
 		"--h265",
 	}
 }
@@ -2580,6 +2583,7 @@ func hevcdecodeVAAPIargs(ctx context.Context, filename string) []string {
 func vp9decodeVAAPIargs(ctx context.Context, filename string) []string {
 	return []string{
 		"--video=" + filename,
+		"--codec=VP9",
 		"--md5",
 		// vpxdec is used to compute reference hashes, and outputs only those for
 		// visible frames
@@ -2591,6 +2595,7 @@ func vp9decodeVAAPIargs(ctx context.Context, filename string) []string {
 func vp8decodeVAAPIargs(ctx context.Context, filename string) []string {
 	return []string{
 		"--video=" + filename,
+		"--codec=VP8",
 		"--md5",
 		// vpxdec is used to compute reference hashes, and outputs only those for
 		// visible frames
@@ -2602,6 +2607,7 @@ func vp8decodeVAAPIargs(ctx context.Context, filename string) []string {
 func h264decodeVAAPIargs(ctx context.Context, filename string) []string {
 	return []string{
 		"--video=" + filename,
+		"--codec=H264",
 		"--md5",
 		// OpenH264 is used to compute reference hashes, and outputs only those for
 		// visible frames
