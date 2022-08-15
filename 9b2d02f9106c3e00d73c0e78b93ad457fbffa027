@@ -55,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "df7ebb7b_a6884ac5",
+        "filename": "src/chromiumos/tast/local/bluetooth/floss.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-08-15T20:42:53Z",
+      "side": 1,
+      "message": "That SGTM, perhaps to start we could have a Floss package but leave the BlueZ as-is and revisit it in the future?",
+      "parentUuid": "e22813e5_675577f8",
+      "revId": "9b2d02f9106c3e00d73c0e78b93ad457fbffa027",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "825c74ce_c2cd6c4a",
         "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/fixture.go",
         "patchSetId": 4
@@ -66,6 +84,30 @@
       "writtenOn": "2022-08-15T04:56:41Z",
       "side": 1,
       "message": "It always calls Bluez\u0027s Enable(). Is it possible to init a bluetooth.TestParams in the parent fixture and get/use it from this fixture? The test body may call the bluetooth methods with the same approach then.",
+      "range": {
+        "startLine": 96,
+        "startChar": 11,
+        "endLine": 96,
+        "endChar": 27
+      },
+      "revId": "9b2d02f9106c3e00d73c0e78b93ad457fbffa027",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64ec441b_0458ce36",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-08-15T20:42:53Z",
+      "side": 1,
+      "message": "Ah, thank you for catching this! We definitely can do that from the other fixture methods since they have access to the testing state, but it looks like this method doesn\u0027t. Kyle, do you think it would be reasonable to have the Reset() method of this fixture not enable Bluetooth? This would mean that tests using this fixture cannot assume that Bluetooth will be enabled, but that seems okay given that Tast tests already are written defensively.\n\nIf yes, then we could remove this snippet and then reach into the testing state in SetUp and TearDown. If this doesn\u0027t work, then I think the easiest approach will be to duplicate the fixtures and the tests for Floss.",
+      "parentUuid": "825c74ce_c2cd6c4a",
       "range": {
         "startLine": 96,
         "startChar": 11,
