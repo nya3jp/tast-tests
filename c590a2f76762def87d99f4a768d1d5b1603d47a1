@@ -277,6 +277,30 @@
       },
       "revId": "c590a2f76762def87d99f4a768d1d5b1603d47a1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4280996b_06c01303",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2022-08-15T11:26:57Z",
+      "side": 1,
+      "message": "\u003e Do you mean to allow SSHFS to be automatically unmounted when we unmount the SDCard volume?\n\nYes, that\u0027s what I meant.\n\n\u003e Although that will be one less unmount needed, probably the code will be easier to understand if we always wrap with mount and unmount the parts of the code that accesses `/home/root/\u003chash\u003e/android-data/data`?\n\nSounds reasonable. Either is totally fine to me :)",
+      "parentUuid": "7d7fc324_271c7b50",
+      "range": {
+        "startLine": 302,
+        "startChar": 0,
+        "endLine": 308,
+        "endChar": 3
+      },
+      "revId": "c590a2f76762def87d99f4a768d1d5b1603d47a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
