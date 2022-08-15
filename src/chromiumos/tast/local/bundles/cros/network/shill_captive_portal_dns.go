@@ -98,8 +98,18 @@ func ShillCaptivePortalDNS(ctx context.Context, s *testing.State) {
 }
 
 func waitForShillNameServer(ctx context.Context, svc *shill.Service) (string, error) {
-	if err := svc.WaitForProperty(ctx, shillconst.ServicePropertyState, shillconst.ServiceStateReady, 5*time.Second); err != nil {
-		return "", errors.Wrap(err, "failed to wait for the service ready")
+	pw, err := svc.CreateWatcher(ctx)
+	if err != nil {
+		return "", errors.Wrap(err, "failed to create watcher")
+	}
+	defer pw.Close(ctx)
+
+	timeoutCtx, cancel := context.WithTimeout(ctx, 5*time.Second)
+	defer cancel()
+
+	_, err = pw.ExpectIn(timeoutCtx, shillconst.ServicePropertyState, shillconst.ServiceConnectedStates)
+	if err != nil {
+		return "", errors.Wrap(err, "service state is not a connected state")
 	}
 
 	configs, err := svc.GetIPConfigs(ctx)
