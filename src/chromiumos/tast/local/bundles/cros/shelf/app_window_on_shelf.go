@@ -47,11 +47,15 @@ func init() {
 			Name:    "productivity_launcher_clamshell_mode",
 			Val:     launcher.TestCase{TabletMode: false},
 			Fixture: "chromeLoggedInWith100FakeAppsProductivityLauncher",
-		}, {
+		},
+		/* Disabled due to <1% pass rate over 30 days. See b/241943139
+		{
 			Name:    "productivity_launcher_tablet_mode",
 			Val:     launcher.TestCase{TabletMode: true},
 			Fixture: "chromeLoggedInWith100FakeAppsProductivityLauncher",
-		}},
+		}
+		*/
+		},
 	})
 }
 
