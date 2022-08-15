@@ -22,6 +22,30 @@
       },
       "revId": "018c856e4a284a8a2c14a20744425196a8a7d1fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d41f3d16_f26c0fab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/run_oci.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1171009
+      },
+      "writtenOn": "2022-08-15T20:07:08Z",
+      "side": 1,
+      "message": "This file is probably inside the container and running into noexec issue in this test. The one inside the device should be fine.",
+      "parentUuid": "70a57cb5_d4574d4c",
+      "range": {
+        "startLine": 115,
+        "startChar": 3,
+        "endLine": 115,
+        "endChar": 56
+      },
+      "revId": "018c856e4a284a8a2c14a20744425196a8a7d1fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
