@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7431f3b6_bb2c845d",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_client.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1040,
+      "author": {
+        "id": 1546868
+      },
+      "writtenOn": "2022-08-15T18:36:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bf7fd8b6_e48716b7",
+      "range": {
+        "startLine": 1040,
+        "startChar": 60,
+        "endLine": 1040,
+        "endChar": 72
+      },
+      "revId": "6e1023da7cabe53e58426a92898ec02b28503046",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "17856ca7_1ed4d931",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-08-12T23:43:26Z",
       "side": 1,
       "message": "nit: Maybe just \"with_vK\" and \"with_uss\"? These names are appended to the test name, which already is \"AddRemoveFactors\".",
+      "range": {
+        "startLine": 35,
+        "startChar": 10,
+        "endLine": 35,
+        "endChar": 36
+      },
+      "revId": "6e1023da7cabe53e58426a92898ec02b28503046",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "71925c1a_569cd98e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/add_remove_factors.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1546868
+      },
+      "writtenOn": "2022-08-15T18:36:45Z",
+      "side": 1,
+      "message": "Sure, that makes sense to me, I was mostly just copying patterns from other tests I saw that seemed to use more repetitive names. But I generally agree with avoiding it.\n\n(FWIW I think the same thing when I see that every file in cryptohome/auth_factor also starts with \"auth_factor_\")",
+      "parentUuid": "17856ca7_1ed4d931",
       "range": {
         "startLine": 35,
         "startChar": 10,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "466f7336_a523b38e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/add_remove_factors.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1546868
+      },
+      "writtenOn": "2022-08-15T18:36:45Z",
+      "side": 1,
+      "message": "I don\u0027t even know where I copied that one from...",
+      "parentUuid": "6685ca1b_1ff4f24b",
+      "range": {
+        "startLine": 115,
+        "startChar": 21,
+        "endLine": 115,
+        "endChar": 43
+      },
+      "revId": "6e1023da7cabe53e58426a92898ec02b28503046",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7e20c2ab_a38f49a0",
@@ -110,6 +182,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b90af05f_ba863207",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/add_remove_factors.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1546868
+      },
+      "writtenOn": "2022-08-15T18:36:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7e20c2ab_a38f49a0",
+      "range": {
+        "startLine": 121,
+        "startChar": 11,
+        "endLine": 121,
+        "endChar": 38
+      },
+      "revId": "6e1023da7cabe53e58426a92898ec02b28503046",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6098b1b5_a07625b2",
@@ -123,6 +219,24 @@
       "writtenOn": "2022-08-12T23:43:26Z",
       "side": 1,
       "message": "nit: Maybe extract this into some kind of a helper function? So that we don\u0027t need to repeat all this code, and also the test becomes easier to read.",
+      "revId": "6e1023da7cabe53e58426a92898ec02b28503046",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2dc5a063_a9a56b36",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/add_remove_factors.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1546868
+      },
+      "writtenOn": "2022-08-15T18:36:45Z",
+      "side": 1,
+      "message": "Okay, I tried to factor this all out to a helper function. That may help as well in subsequent updates when I add multiple factors, as it\u0027ll also need to deal with ordering and putting that in one place is probably a good idea.",
+      "parentUuid": "6098b1b5_a07625b2",
       "revId": "6e1023da7cabe53e58426a92898ec02b28503046",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
