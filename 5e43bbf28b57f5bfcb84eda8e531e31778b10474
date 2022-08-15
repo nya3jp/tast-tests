@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "23fa2e55_336f0a16",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1513257
+      },
+      "writtenOn": "2022-08-15T16:11:32Z",
+      "side": 1,
+      "message": "@tast-owners, known failures listed here: https://tastboard.corp.google.com/test/diagnostics.Connectivity are not related to the test itself.",
+      "revId": "5e43bbf28b57f5bfcb84eda8e531e31778b10474",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
