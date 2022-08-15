@@ -609,6 +609,7 @@ func AppShown(ctx context.Context, tconn *chrome.TestConn, appID string) (bool, 
 }
 
 // WaitForApp waits for the app specified by appID to appear in the shelf.
+// TODO(crbug.com/1353057): Find a better name for this function that checks if the app is shown in the shelf.
 func WaitForApp(ctx context.Context, tconn *chrome.TestConn, appID string, timeout time.Duration) error {
 	return WaitForAppCondition(ctx, tconn, appID, timeout, uiPollingInterval, func() (bool, error) {
 		return AppShown(ctx, tconn, appID)
