@@ -110,7 +110,9 @@ func RunOCI(ctx context.Context, s *testing.State) {
 		failed := false
 
 		// TODO(b/194923131): Hack to disable failures which involve librt.so.1
-		if strings.Contains(string(stderr), "librt.so.1") {
+		// or libselinux.so.1.
+		if strings.Contains(string(stderr), "librt.so.1") ||
+			strings.Contains(string(stderr), "libselinux.so.1") {
 			return
 		}
 
