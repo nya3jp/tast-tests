@@ -57,13 +57,16 @@ func init() {
 					reconnectToSameAP:       false,
 					disconnectBeforeSuspend: true,
 				},
-			}, {
+			},
+			/* Disabled due to <1% pass rate over 30 days. See b/241943857
+			{
 				Name: "disconnect_before_suspend_same_ap",
 				Val: reconnectInDarkResumeParam{
 					reconnectToSameAP:       true,
 					disconnectBeforeSuspend: true,
 				},
-			},
+			}
+			*/
 		},
 	})
 }
