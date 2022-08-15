@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9febe6b_df2e624a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1541210
+      },
+      "writtenOn": "2022-08-15T16:07:24Z",
+      "side": 1,
+      "message": "Oh, sorry for the error in the comment... Also thanks for the suggestion!",
+      "parentUuid": "4c822dc9_0197ec40",
+      "range": {
+        "startLine": 272,
+        "startChar": 58,
+        "endLine": 272,
+        "endChar": 76
+      },
+      "revId": "16241aa9271d4530c7d5d7e1f2e7704f2e45a7ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "10310d5c_d4f4c6f7",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-08-15T14:02:43Z",
       "side": 1,
       "message": "With the function name `mountExternalStorageOnHost`, this sentence indicates /data/media/0 \u003d external storage, which sounds inconsistent with the other part of the code.\nMaybe something like \"failed to mount (Android|guest)\u0027s external storage on host)\" is more straightforward and less confusing for people not so familiar with details of ARC storage.",
+      "range": {
+        "startLine": 307,
+        "startChar": 28,
+        "endLine": 307,
+        "endChar": 65
+      },
+      "revId": "16241aa9271d4530c7d5d7e1f2e7704f2e45a7ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "61a3f4e2_2c85e102",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1541210
+      },
+      "writtenOn": "2022-08-15T16:07:24Z",
+      "side": 1,
+      "message": "Done - thanks!",
+      "parentUuid": "10310d5c_d4f4c6f7",
       "range": {
         "startLine": 307,
         "startChar": 28,
