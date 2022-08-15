@@ -205,6 +205,30 @@
       },
       "revId": "c590a2f76762def87d99f4a768d1d5b1603d47a1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ee149fc_607f849c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2022-08-15T10:22:34Z",
+      "side": 1,
+      "message": "Or possibly defer the umount command here, and mount SSHFS again after the SDCard volume is unmounted and mounted?",
+      "parentUuid": "0f84226b_f56cdc5d",
+      "range": {
+        "startLine": 302,
+        "startChar": 0,
+        "endLine": 308,
+        "endChar": 3
+      },
+      "revId": "c590a2f76762def87d99f4a768d1d5b1603d47a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
