@@ -453,16 +453,6 @@ func init() {
 				Timeout: 1 * time.Minute,
 			},
 			{
-				Name: "api_get_kernel_arg_info_compatibility",
-				Val: oclctsTest{
-					executable:   "test_api",
-					args:         "get_kernel_arg_info_compatibility",
-					expectedPass: false,
-					buganizer:    "b/227134903",
-				},
-				Timeout: 1 * time.Minute,
-			},
-			{
 				Name: "api_get_kernel_arg_info",
 				Val: oclctsTest{
 					executable:   "test_api",
@@ -811,7 +801,8 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_api",
 					args:         "min_max_parameter_size",
-					expectedPass: true,
+					expectedPass: false,
+					buganizer:    "b/227134906",
 				},
 				Timeout: 1 * time.Minute,
 			},
@@ -2376,8 +2367,7 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_bruteforce",
 					args:         "divide -w -1",
-					expectedPass: false,
-					buganizer:    "b/227133190",
+					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
 			},
@@ -2434,8 +2424,8 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_bruteforce",
 					args:         "fdim -w -1",
-					expectedPass: true,
-					buganizer:    "b/227132309",
+					expectedPass: false,
+					buganizer:    "b/227133190",
 				},
 				Timeout: 1 * time.Minute,
 			},
@@ -2517,8 +2507,7 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_bruteforce",
 					args:         "half_divide -w -1",
-					expectedPass: false,
-					buganizer:    "b/227133190",
+					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
 			},
@@ -2581,8 +2570,8 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_bruteforce",
 					args:         "half_powr -w -1",
-					expectedPass: true,
-					buganizer:    "b/227132309",
+					expectedPass: false,
+					buganizer:    "b/227133190",
 				},
 				Timeout: 1 * time.Minute,
 			},
@@ -2998,7 +2987,8 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_bruteforce",
 					args:         "rsqrt -w -1",
-					expectedPass: true,
+					expectedPass: false,
+					buganizer:    "b/227133190",
 				},
 				Timeout: 1 * time.Minute,
 			},
@@ -3409,7 +3399,8 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_buffers",
 					args:         "buffer_migrate",
-					expectedPass: true,
+					expectedPass: false,
+					buganizer:    "b/242503043",
 				},
 				Timeout: 1 * time.Minute,
 			},
@@ -3427,7 +3418,8 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_buffers",
 					args:         "buffer_read_array_barrier_char",
-					expectedPass: true,
+					expectedPass: false,
+					buganizer:    "b/242503043",
 				},
 				Timeout: 1 * time.Minute,
 			},
@@ -3436,7 +3428,8 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_buffers",
 					args:         "buffer_read_array_barrier_float",
-					expectedPass: true,
+					expectedPass: false,
+					buganizer:    "b/242503043",
 				},
 				Timeout: 1 * time.Minute,
 			},
@@ -3445,7 +3438,8 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_buffers",
 					args:         "buffer_read_array_barrier_int",
-					expectedPass: true,
+					expectedPass: false,
+					buganizer:    "b/242503043",
 				},
 				Timeout: 1 * time.Minute,
 			},
@@ -3454,7 +3448,8 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_buffers",
 					args:         "buffer_read_array_barrier_long",
-					expectedPass: true,
+					expectedPass: false,
+					buganizer:    "b/242503043",
 				},
 				Timeout: 1 * time.Minute,
 			},
@@ -3463,7 +3458,8 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_buffers",
 					args:         "buffer_read_array_barrier_short",
-					expectedPass: true,
+					expectedPass: false,
+					buganizer:    "b/242503043",
 				},
 				Timeout: 1 * time.Minute,
 			},
@@ -3472,7 +3468,8 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_buffers",
 					args:         "buffer_read_array_barrier_uchar",
-					expectedPass: true,
+					expectedPass: false,
+					buganizer:    "b/242503043",
 				},
 				Timeout: 1 * time.Minute,
 			},
@@ -3481,7 +3478,8 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_buffers",
 					args:         "buffer_read_array_barrier_uint",
-					expectedPass: true,
+					expectedPass: false,
+					buganizer:    "b/242503043",
 				},
 				Timeout: 1 * time.Minute,
 			},
@@ -3490,7 +3488,8 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_buffers",
 					args:         "buffer_read_array_barrier_ulong",
-					expectedPass: true,
+					expectedPass: false,
+					buganizer:    "b/242503043",
 				},
 				Timeout: 1 * time.Minute,
 			},
@@ -3499,7 +3498,8 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_buffers",
 					args:         "buffer_read_array_barrier_ushort",
-					expectedPass: true,
+					expectedPass: false,
+					buganizer:    "b/242503043",
 				},
 				Timeout: 1 * time.Minute,
 			},
@@ -3877,7 +3877,8 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_buffers",
 					args:         "image_migrate",
-					expectedPass: true,
+					expectedPass: false,
+					buganizer:    "b/242503043",
 				},
 				Timeout: 1 * time.Minute,
 			},
@@ -8385,8 +8386,7 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_contractions",
 					args:         "contractions_float_4",
-					expectedPass: false,
-					buganizer:    "b/227133190",
+					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
 			},
@@ -8395,8 +8395,7 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_contractions",
 					args:         "contractions_float_5",
-					expectedPass: false,
-					buganizer:    "b/227133190",
+					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
 			},
@@ -8405,8 +8404,7 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_contractions",
 					args:         "contractions_float_6",
-					expectedPass: false,
-					buganizer:    "b/227133190",
+					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
 			},
@@ -8415,8 +8413,7 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_contractions",
 					args:         "contractions_float_7",
-					expectedPass: false,
-					buganizer:    "b/227133190",
+					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
 			},
@@ -9172,7 +9169,8 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_events",
 					args:         "event_enqueue_barrier_with_event_list",
-					expectedPass: true,
+					expectedPass: false,
+					buganizer:    "b/242503043",
 				},
 				Timeout: 1 * time.Minute,
 			},
@@ -9181,7 +9179,8 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_events",
 					args:         "event_enqueue_marker",
-					expectedPass: true,
+					expectedPass: false,
+					buganizer:    "b/242503043",
 				},
 				Timeout: 1 * time.Minute,
 			},
@@ -9190,7 +9189,8 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_events",
 					args:         "event_enqueue_marker_with_event_list",
-					expectedPass: true,
+					expectedPass: false,
+					buganizer:    "b/242503043",
 				},
 				Timeout: 1 * time.Minute,
 			},
@@ -11163,8 +11163,7 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "1Darray CL_FLOAT",
-					expectedPass: false,
-					buganizer:    "b/227136793",
+					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
 			},
@@ -11173,8 +11172,7 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "1Darray CL_HALF_FLOAT",
-					expectedPass: false,
-					buganizer:    "b/227136793",
+					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
 			},
@@ -11183,8 +11181,7 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "1Darray CL_SIGNED_INT16",
-					expectedPass: false,
-					buganizer:    "b/227136793",
+					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
 			},
@@ -11193,8 +11190,7 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "1Darray CL_SIGNED_INT32",
-					expectedPass: false,
-					buganizer:    "b/227136793",
+					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
 			},
@@ -11203,8 +11199,7 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "1Darray CL_SIGNED_INT8",
-					expectedPass: false,
-					buganizer:    "b/227136793",
+					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
 			},
@@ -11213,8 +11208,7 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "1Darray CL_SNORM_INT16",
-					expectedPass: false,
-					buganizer:    "b/227136793",
+					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
 			},
@@ -11223,8 +11217,7 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "1Darray CL_SNORM_INT8",
-					expectedPass: false,
-					buganizer:    "b/227136793",
+					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
 			},
@@ -11242,8 +11235,7 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "1Darray CL_UNORM_INT16",
-					expectedPass: false,
-					buganizer:    "b/227136793",
+					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
 			},
@@ -11252,8 +11244,7 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "1Darray CL_UNORM_INT8",
-					expectedPass: false,
-					buganizer:    "b/227136793",
+					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
 			},
@@ -11271,8 +11262,7 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "1Darray CL_UNORM_SHORT_565",
-					expectedPass: false,
-					buganizer:    "b/227136793",
+					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
 			},
@@ -11281,8 +11271,7 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "1Darray CL_UNSIGNED_INT16",
-					expectedPass: false,
-					buganizer:    "b/227136793",
+					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
 			},
@@ -11291,8 +11280,7 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "1Darray CL_UNSIGNED_INT32",
-					expectedPass: false,
-					buganizer:    "b/227136793",
+					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
 			},
@@ -11301,8 +11289,7 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "1Darray CL_UNSIGNED_INT8",
-					expectedPass: false,
-					buganizer:    "b/227136793",
+					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
 			},
@@ -11311,8 +11298,7 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "1D CL_FLOAT",
-					expectedPass: false,
-					buganizer:    "b/227136793",
+					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
 			},
@@ -11321,8 +11307,7 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "1D CL_HALF_FLOAT",
-					expectedPass: false,
-					buganizer:    "b/227136793",
+					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
 			},
@@ -11331,8 +11316,7 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "1D CL_SIGNED_INT16",
-					expectedPass: false,
-					buganizer:    "b/227136793",
+					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
 			},
@@ -11341,8 +11325,7 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "1D CL_SIGNED_INT32",
-					expectedPass: false,
-					buganizer:    "b/227136793",
+					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
 			},
@@ -11351,8 +11334,7 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "1D CL_SIGNED_INT8",
-					expectedPass: false,
-					buganizer:    "b/227136793",
+					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
 			},
@@ -11361,8 +11343,7 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "1D CL_SNORM_INT16",
-					expectedPass: false,
-					buganizer:    "b/227136793",
+					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
 			},
@@ -11371,8 +11352,7 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "1D CL_SNORM_INT8",
-					expectedPass: false,
-					buganizer:    "b/227136793",
+					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
 			},
@@ -11390,8 +11370,7 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "1D CL_UNORM_INT16",
-					expectedPass: false,
-					buganizer:    "b/227136793",
+					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
 			},
@@ -11400,8 +11379,7 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "1D CL_UNORM_INT8",
-					expectedPass: false,
-					buganizer:    "b/227136793",
+					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
 			},
@@ -11419,8 +11397,7 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "1D CL_UNORM_SHORT_565",
-					expectedPass: false,
-					buganizer:    "b/227136793",
+					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
 			},
@@ -11429,8 +11406,7 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "1D CL_UNSIGNED_INT16",
-					expectedPass: false,
-					buganizer:    "b/227136793",
+					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
 			},
@@ -11439,8 +11415,7 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "1D CL_UNSIGNED_INT32",
-					expectedPass: false,
-					buganizer:    "b/227136793",
+					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
 			},
@@ -11449,8 +11424,7 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "1D CL_UNSIGNED_INT8",
-					expectedPass: false,
-					buganizer:    "b/227136793",
+					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
 			},
@@ -11459,8 +11433,7 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "2Darray CL_FLOAT",
-					expectedPass: false,
-					buganizer:    "b/227136793",
+					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
 			},
@@ -11469,8 +11442,7 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "2Darray CL_HALF_FLOAT",
-					expectedPass: false,
-					buganizer:    "b/227136793",
+					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
 			},
@@ -11479,8 +11451,7 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "2Darray CL_SIGNED_INT16",
-					expectedPass: false,
-					buganizer:    "b/227136793",
+					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
 			},
@@ -11489,8 +11460,7 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "2Darray CL_SIGNED_INT32",
-					expectedPass: false,
-					buganizer:    "b/227136793",
+					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
 			},
@@ -11499,8 +11469,7 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "2Darray CL_SIGNED_INT8",
-					expectedPass: false,
-					buganizer:    "b/227136793",
+					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
 			},
@@ -11509,8 +11478,7 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "2Darray CL_SNORM_INT16",
-					expectedPass: false,
-					buganizer:    "b/227136793",
+					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
 			},
@@ -11519,8 +11487,7 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "2Darray CL_SNORM_INT8",
-					expectedPass: false,
-					buganizer:    "b/227136793",
+					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
 			},
@@ -11538,8 +11505,7 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "2Darray CL_UNORM_INT16",
-					expectedPass: false,
-					buganizer:    "b/227136793",
+					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
 			},
@@ -11548,8 +11514,7 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "2Darray CL_UNORM_INT8",
-					expectedPass: false,
-					buganizer:    "b/227136793",
+					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
 			},
@@ -11567,8 +11532,7 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "2Darray CL_UNORM_SHORT_565",
-					expectedPass: false,
-					buganizer:    "b/227136793",
+					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
 			},
@@ -11577,8 +11541,7 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "2Darray CL_UNSIGNED_INT16",
-					expectedPass: false,
-					buganizer:    "b/227136793",
+					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
 			},
@@ -11587,8 +11550,7 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "2Darray CL_UNSIGNED_INT32",
-					expectedPass: false,
-					buganizer:    "b/227136793",
+					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
 			},
@@ -11597,8 +11559,7 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "2Darray CL_UNSIGNED_INT8",
-					expectedPass: false,
-					buganizer:    "b/227136793",
+					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
 			},
@@ -11607,8 +11568,7 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "2D CL_FLOAT",
-					expectedPass: false,
-					buganizer:    "b/227136793",
+					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
 			},
@@ -11617,8 +11577,7 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "2D CL_HALF_FLOAT",
-					expectedPass: false,
-					buganizer:    "b/227136793",
+					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
 			},
@@ -11627,8 +11586,7 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "2D CL_SIGNED_INT16",
-					expectedPass: false,
-					buganizer:    "b/227136793",
+					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
 			},
@@ -11637,8 +11595,7 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "2D CL_SIGNED_INT32",
-					expectedPass: false,
-					buganizer:    "b/227136793",
+					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
 			},
@@ -11647,8 +11604,7 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "2D CL_SIGNED_INT8",
-					expectedPass: false,
-					buganizer:    "b/227136793",
+					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
 			},
@@ -11657,8 +11613,7 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "2D CL_SNORM_INT16",
-					expectedPass: false,
-					buganizer:    "b/227136793",
+					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
 			},
@@ -11667,8 +11622,7 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "2D CL_SNORM_INT8",
-					expectedPass: false,
-					buganizer:    "b/227136793",
+					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
 			},
@@ -11686,8 +11640,7 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "2D CL_UNORM_INT16",
-					expectedPass: false,
-					buganizer:    "b/227136793",
+					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
 			},
@@ -11696,8 +11649,7 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "2D CL_UNORM_INT8",
-					expectedPass: false,
-					buganizer:    "b/227136793",
+					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
 			},
@@ -11715,8 +11667,7 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "2D CL_UNORM_SHORT_565",
-					expectedPass: false,
-					buganizer:    "b/227136793",
+					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
 			},
@@ -11725,8 +11676,7 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "2D CL_UNSIGNED_INT16",
-					expectedPass: false,
-					buganizer:    "b/227136793",
+					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
 			},
@@ -11735,8 +11685,7 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "2D CL_UNSIGNED_INT32",
-					expectedPass: false,
-					buganizer:    "b/227136793",
+					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
 			},
@@ -11745,8 +11694,7 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "2D CL_UNSIGNED_INT8",
-					expectedPass: false,
-					buganizer:    "b/227136793",
+					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
 			},
@@ -11755,8 +11703,7 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "3D CL_FLOAT",
-					expectedPass: false,
-					buganizer:    "b/227136793",
+					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
 			},
@@ -11765,8 +11712,7 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "3D CL_HALF_FLOAT",
-					expectedPass: false,
-					buganizer:    "b/227136793",
+					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
 			},
@@ -11775,8 +11721,7 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "3D CL_SIGNED_INT16",
-					expectedPass: false,
-					buganizer:    "b/227136793",
+					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
 			},
@@ -11785,8 +11730,7 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "3D CL_SIGNED_INT32",
-					expectedPass: false,
-					buganizer:    "b/227136793",
+					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
 			},
@@ -11795,8 +11739,7 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "3D CL_SIGNED_INT8",
-					expectedPass: false,
-					buganizer:    "b/227136793",
+					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
 			},
@@ -11805,8 +11748,7 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "3D CL_SNORM_INT16",
-					expectedPass: false,
-					buganizer:    "b/227136793",
+					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
 			},
@@ -11815,8 +11757,7 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "3D CL_SNORM_INT8",
-					expectedPass: false,
-					buganizer:    "b/227136793",
+					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
 			},
@@ -11834,8 +11775,7 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "3D CL_UNORM_INT16",
-					expectedPass: false,
-					buganizer:    "b/227136793",
+					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
 			},
@@ -11844,8 +11784,7 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "3D CL_UNORM_INT8",
-					expectedPass: false,
-					buganizer:    "b/227136793",
+					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
 			},
@@ -11863,8 +11802,7 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "3D CL_UNORM_SHORT_565",
-					expectedPass: false,
-					buganizer:    "b/227136793",
+					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
 			},
@@ -11873,8 +11811,7 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "3D CL_UNSIGNED_INT16",
-					expectedPass: false,
-					buganizer:    "b/227136793",
+					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
 			},
@@ -11883,8 +11820,7 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "3D CL_UNSIGNED_INT32",
-					expectedPass: false,
-					buganizer:    "b/227136793",
+					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
 			},
@@ -11893,8 +11829,7 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "3D CL_UNSIGNED_INT8",
-					expectedPass: false,
-					buganizer:    "b/227136793",
+					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
 			},
@@ -11939,8 +11874,7 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_mem_host_flags",
 					args:         "mem_host_read_only_image",
-					expectedPass: false,
-					buganizer:    "b/227134903",
+					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
 			},
@@ -11967,8 +11901,7 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_mem_host_flags",
 					args:         "mem_host_write_only_image",
-					expectedPass: false,
-					buganizer:    "b/227134903",
+					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
 			},
@@ -12617,8 +12550,7 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_samplerless_reads",
 					args:         "1D CL_FLOAT",
-					expectedPass: false,
-					buganizer:    "b/227136137",
+					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
 			},
@@ -12627,8 +12559,7 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_samplerless_reads",
 					args:         "1D CL_HALF_FLOAT",
-					expectedPass: false,
-					buganizer:    "b/227136137",
+					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
 			},
@@ -12637,8 +12568,7 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_samplerless_reads",
 					args:         "1D CL_SIGNED_INT16",
-					expectedPass: false,
-					buganizer:    "b/227136137",
+					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
 			},
@@ -12647,8 +12577,7 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_samplerless_reads",
 					args:         "1D CL_SIGNED_INT32",
-					expectedPass: false,
-					buganizer:    "b/227136137",
+					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
 			},
@@ -12657,8 +12586,7 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_samplerless_reads",
 					args:         "1D CL_SIGNED_INT8",
-					expectedPass: false,
-					buganizer:    "b/227136137",
+					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
 			},
@@ -12667,8 +12595,7 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_samplerless_reads",
 					args:         "1D CL_SNORM_INT16",
-					expectedPass: false,
-					buganizer:    "b/227136137",
+					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
 			},
@@ -12677,8 +12604,7 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_samplerless_reads",
 					args:         "1D CL_SNORM_INT8",
-					expectedPass: false,
-					buganizer:    "b/227136137",
+					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
 			},
@@ -12696,8 +12622,7 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_samplerless_reads",
 					args:         "1D CL_UNORM_INT16",
-					expectedPass: false,
-					buganizer:    "b/227136137",
+					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
 			},
@@ -12706,8 +12631,7 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_samplerless_reads",
 					args:         "1D CL_UNORM_INT8",
-					expectedPass: false,
-					buganizer:    "b/227136137",
+					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
 			},
@@ -12717,7 +12641,6 @@ func init() {
 					executable:   "test_samplerless_reads",
 					args:         "1D CL_UNORM_SHORT_555",
 					expectedPass: true,
-					buganizer:    "b/227136137",
 				},
 				Timeout: 1 * time.Minute,
 			},
@@ -12726,8 +12649,7 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_samplerless_reads",
 					args:         "1D CL_UNORM_SHORT_565",
-					expectedPass: false,
-					buganizer:    "b/227136137",
+					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
 			},
@@ -12736,8 +12658,7 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_samplerless_reads",
 					args:         "1D CL_UNSIGNED_INT16",
-					expectedPass: false,
-					buganizer:    "b/227136137",
+					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
 			},
@@ -12746,8 +12667,7 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_samplerless_reads",
 					args:         "1D CL_UNSIGNED_INT32",
-					expectedPass: false,
-					buganizer:    "b/227136137",
+					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
 			},
@@ -12756,8 +12676,7 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_samplerless_reads",
 					args:         "1D CL_UNSIGNED_INT8",
-					expectedPass: false,
-					buganizer:    "b/227136137",
+					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
 			},
@@ -13379,7 +13298,6 @@ func init() {
 					executable:   "test_thread_dimensions",
 					args:         "full_2d_implicit_local",
 					expectedPass: true,
-					buganizer:    "b/227133126",
 				},
 				Timeout: 10 * time.Minute,
 			},
@@ -13389,7 +13307,6 @@ func init() {
 					executable:   "test_thread_dimensions",
 					args:         "full_3d_explicit_local",
 					expectedPass: true,
-					buganizer:    "b/227133126",
 				},
 				Timeout: 20 * time.Minute,
 			},
