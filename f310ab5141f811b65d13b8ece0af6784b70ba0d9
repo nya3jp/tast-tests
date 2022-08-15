@@ -33,6 +33,69 @@
       "message": "shadow reviewer lgtm for tast",
       "revId": "f310ab5141f811b65d13b8ece0af6784b70ba0d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "249c3f07_69fa197e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-08-15T06:24:27Z",
+      "side": 1,
+      "message": "n",
+      "revId": "f310ab5141f811b65d13b8ece0af6784b70ba0d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2148a883_f00caec7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/create_and_fill_folder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-08-15T06:24:27Z",
+      "side": 1,
+      "message": "I guess this would be true everywhere? How about just removing the argument and let compiler check it for you?",
+      "range": {
+        "startLine": 77,
+        "startChar": 68,
+        "endLine": 77,
+        "endChar": 72
+      },
+      "revId": "f310ab5141f811b65d13b8ece0af6784b70ba0d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b674c0b_91192743",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-08-15T06:24:27Z",
+      "side": 1,
+      "message": "Oh. Now I see the comment.",
+      "range": {
+        "startLine": 158,
+        "startChar": 27,
+        "endLine": 159,
+        "endChar": 37
+      },
+      "revId": "f310ab5141f811b65d13b8ece0af6784b70ba0d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
