@@ -30,11 +30,15 @@ func init() {
 		Params: []testing.Param{{
 			Val:     browser.TypeAsh,
 			Fixture: "familyLinkUnicornLogin",
-		}, {
+		},
+		/* Disabled due to <1% pass rate over 30 days. See b/241943380
+		{
 			Name:    "lacros",
 			Val:     browser.TypeLacros,
 			Fixture: "familyLinkUnicornLoginWithLacros",
-		}},
+		}
+		*/
+		},
 	})
 }
 
