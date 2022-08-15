@@ -25,7 +25,8 @@ func init() {
 		},
 		Attr:         []string{"group:nearby-share"},
 		SoftwareDeps: []string{"chrome"},
-		Params: []testing.Param{
+		Params:       []testing.Param{
+			/* Disabled due to <1% pass rate over 30 days. See b/241942870
 			{
 				Name:    "dataonline_noone_wificredentials",
 				Fixture: "nearbyShareDataUsageOnlineNoOne",
@@ -37,7 +38,8 @@ func init() {
 					SecurityType:    nearbycommon.SecurityTypeWpaPsk,
 				},
 				Timeout: nearbycommon.DetectionTimeout + nearbycommon.SmallFileTransferTimeout,
-			},
+			}
+			*/
 		},
 	})
 }
