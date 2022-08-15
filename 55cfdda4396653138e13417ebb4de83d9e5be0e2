@@ -34,6 +34,24 @@
       "parentUuid": "fb9e4615_d2520172",
       "revId": "55cfdda4396653138e13417ebb4de83d9e5be0e2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bef65983_2e58fc32",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-08-15T18:38:01Z",
+      "side": 1,
+      "message": "Reopening for questions..\n\nCan you help understand what ash.WaitForApp (autotestPrivate.isAppShown) exactly does?\nWhat would be a better name based on what it does? My assumption is waiting until the shelf populates it, the app is starting to run and it has the app window attached (but doesn\u0027t need to wait until it becomes visible in UI tree, where the issue that I\u0027m trying to solve came from)\n\nPossible options in mind:\na) Update autotestPrivate.isAppShown to wait until the app window becomes visible in the UI tree.\n- pros: no change to callers\n- cons: lose a granular way to check the shelf behavior aside from windowing.\n\nb) Add new ash.WaitForAppWindow in Tast, merge it to ash.WaitForApp.\n- pros: no change to callers\n- cons: lose a granular way to check the shelf behavior aside from windowing. \n\nc) Add new ash.WaitForAppWindow in Tast, keep it separate from ash.WaitForApp.\n- pros: have a granular way to check the shelf behavior and windowing for apps\n- cons: callers should call the new API alongside ash.WaitForApp where needed (mostly). ash.WaitForApp should be renamed to avoid confusion.\n\nAny suggestion moving this forward soon?",
+      "parentUuid": "a6179e63_3286b687",
+      "revId": "55cfdda4396653138e13417ebb4de83d9e5be0e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

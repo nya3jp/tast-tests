@@ -57,6 +57,30 @@
       },
       "revId": "d8d75b71176394f2588210f06cafe9cd7921bc8d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60b30199_349f26d0",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 636,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-08-15T18:38:01Z",
+      "side": 1,
+      "message": "I was wondering that too. Is there a way to find an ash.Window by appID not by appName that I have seen already used in some places?\n\nOn a related note, I was also trying to pass in apps.App struct here instead but I couldn\u0027t since it causes a cyclic import (ash \u003d\u003e apps \u003d\u003e ash). Happy to update it to appID if there is a way.",
+      "parentUuid": "ba2a8a6b_ccbefd98",
+      "range": {
+        "startLine": 636,
+        "startChar": 68,
+        "endLine": 636,
+        "endChar": 75
+      },
+      "revId": "d8d75b71176394f2588210f06cafe9cd7921bc8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
