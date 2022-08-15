@@ -34,6 +34,24 @@
       "parentUuid": "c45eaff1_721cba5f",
       "revId": "c5b465a472705e7030220bb4fbf7908c1722eb12",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7331c046_0ebe47ce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/basic.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-08-15T08:37:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8f43cb10_981450a3",
+      "revId": "c5b465a472705e7030220bb4fbf7908c1722eb12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
