@@ -31,7 +31,6 @@ import (
 	"chromiumos/tast/local/cpu"
 	"chromiumos/tast/local/session"
 	"chromiumos/tast/testing"
-	"chromiumos/tast/testing/hwdep"
 )
 
 type testParameters struct {
@@ -77,27 +76,36 @@ func init() {
 			Val: testParameters{
 				browser.TypeLacros, lacros.Rootfs, lacros.LacrosSideBySide,
 			},
-		}, {
-			Name:              "omaha_primary",
-			ExtraSoftwareDeps: []string{"lacros"},
-			ExtraHardwareDeps: hwdep.D(hwdep.Model("kled", "enguarde", "samus", "sparky", "phaser")), // Only run on a subset of devices since it downloads from omaha and it will not use our lab's caching mechanisms. We don't want to overload our lab.
-			Val: testParameters{
-				browser.TypeLacros, lacros.Omaha, lacros.LacrosPrimary,
+		},
+			/* Disabled due to <1% pass rate over 30 days. See b/241943137
+			{
+				Name:              "omaha_primary",
+				ExtraSoftwareDeps: []string{"lacros"},
+				ExtraHardwareDeps: hwdep.D(hwdep.Model("kled", "enguarde", "samus", "sparky", "phaser")), // Only run on a subset of devices since it downloads from omaha and it will not use our lab's caching mechanisms. We don't want to overload our lab.
+				Val: testParameters{
+					browser.TypeLacros, lacros.Omaha, lacros.LacrosPrimary,
+				},
 			},
-		}, {
-			Name:              "omaha_sidebyside",
-			ExtraSoftwareDeps: []string{"lacros"},
-			ExtraHardwareDeps: hwdep.D(hwdep.Model("kled", "enguarde", "samus", "sparky", "phaser")), // Only run on a subset of devices since it downloads from omaha and it will not use our lab's caching mechanisms. We don't want to overload our lab.
-			Val: testParameters{
-				browser.TypeLacros, lacros.Omaha, lacros.LacrosSideBySide,
+			*/
+			/* Disabled due to <1% pass rate over 30 days. See b/241943137
+			{
+
+				Name:              "omaha_sidebyside",
+				ExtraSoftwareDeps: []string{"lacros"},
+				ExtraHardwareDeps: hwdep.D(hwdep.Model("kled", "enguarde", "samus", "sparky", "phaser")), // Only run on a subset of devices since it downloads from omaha and it will not use our lab's caching mechanisms. We don't want to overload our lab.
+				Val: testParameters{
+					browser.TypeLacros, lacros.Omaha, lacros.LacrosSideBySide,
+				},
 			},
-		}, {
-			Name: "chrome",
-			Val: testParameters{
-				// lacrosSelection and lacrosMode are actually ignored when bt is TypeAsh
-				browser.TypeAsh, lacros.NotSelected, lacros.NotSpecified,
-			},
-		}},
+			*/
+			{
+
+				Name: "chrome",
+				Val: testParameters{
+					// lacrosSelection and lacrosMode are actually ignored when bt is TypeAsh
+					browser.TypeAsh, lacros.NotSelected, lacros.NotSpecified,
+				},
+			}},
 		Vars:    []string{"lacros.StartupPerf.iterations", "lacros.StartupPerf.credentials", "skipInitialLogin", "skipRegularLogin"},
 		VarDeps: []string{"ui.gaiaPoolDefault"},
 	})
