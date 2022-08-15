@@ -12,8 +12,10 @@ import (
 	"strings"
 	"time"
 
+	"chromiumos/tast/common/cros/ui/setup"
 	"chromiumos/tast/remote/bundles/cros/meta/tastrun"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 // runCUJParam is a parameter to the RunCUJ test.
@@ -26,10 +28,12 @@ type runCUJParam struct {
 const (
 	// Default iteration and retry numbers for full run and quick run. It can be overriden by the
 	// runtime variables.
-	fullIteration  = 10
-	fullRetry      = 4 // Total 5 times of execution if one test fails.
-	quickIteration = 1
-	quickRetry     = 0 // No retry on failure.
+	fullIteration     = 10
+	fullRetry         = 4 // Total 5 times of execution if one test fails.
+	quickIteration    = 1
+	quickRetry        = 0 // No retry on failure.
+	crosboltRetry     = 2
+	crosboltIteration = 8
 )
 
 var basicTests = []string{
@@ -78,6 +82,17 @@ func init() {
 			},
 			Timeout: fullIteration * 8 * time.Minute,
 		}, {
+			Name:              "tabswitchcuj2_basic_noproxy_crosbolt",
+			ExtraAttr:         []string{"group:crosbolt", "crosbolt_perbuild"},
+			ExtraSoftwareDeps: []string{"arc"},
+			ExtraHardwareDeps: hwdep.D(setup.PerfCUJDevices()),
+			Val: runCUJParam{
+				tests:     []string{"ui.TabSwitchCUJ2.basic_noproxy"},
+				iteration: crosboltIteration,
+				retry:     crosboltRetry,
+			},
+			Timeout: crosboltIteration * 8 * time.Minute,
+		}, {
 			Name: "quickcheckcuj2_basic_wakeup",
 			Val: runCUJParam{
 				tests:     []string{"ui.QuickCheckCUJ2.basic_wakeup"},
@@ -85,6 +100,17 @@ func init() {
 				retry:     fullRetry,
 			},
 			Timeout: fullIteration * 3 * time.Minute,
+		}, {
+			Name:              "quickcheckcuj2_basic_wakeup_crosbolt",
+			ExtraAttr:         []string{"group:crosbolt", "crosbolt_perbuild"},
+			ExtraSoftwareDeps: []string{"arc"},
+			ExtraHardwareDeps: hwdep.D(setup.PerfCUJDevices()),
+			Val: runCUJParam{
+				tests:     []string{"ui.QuickCheckCUJ2.basic_wakeup"},
+				iteration: crosboltIteration,
+				retry:     crosboltRetry,
+			},
+			Timeout: crosboltIteration * 3 * time.Minute,
 		}, {
 			Name: "quickcheckcuj2_basic_unlock",
 			Val: runCUJParam{
@@ -94,6 +120,17 @@ func init() {
 			},
 			Timeout: fullIteration * 3 * time.Minute,
 		}, {
+			Name:              "quickcheckcuj2_basic_unlock_crosbolt",
+			ExtraAttr:         []string{"group:crosbolt", "crosbolt_perbuild"},
+			ExtraSoftwareDeps: []string{"arc"},
+			ExtraHardwareDeps: hwdep.D(setup.PerfCUJDevices()),
+			Val: runCUJParam{
+				tests:     []string{"ui.QuickCheckCUJ2.basic_unlock"},
+				iteration: crosboltIteration,
+				retry:     crosboltRetry,
+			},
+			Timeout: crosboltIteration * 3 * time.Minute,
+		}, {
 			Name: "everydaymultitaskingcuj_basic_ytmusic",
 			Val: runCUJParam{
 				tests:     []string{"ui.EverydayMultiTaskingCUJ.basic_ytmusic"},
@@ -101,6 +138,17 @@ func init() {
 				retry:     fullRetry,
 			},
 			Timeout: fullIteration * 10 * time.Minute,
+		}, {
+			Name:              "everydaymultitaskingcuj_basic_ytmusic_crosbolt",
+			ExtraAttr:         []string{"group:crosbolt", "crosbolt_perbuild"},
+			ExtraSoftwareDeps: []string{"arc"},
+			ExtraHardwareDeps: hwdep.D(setup.PerfCUJDevices()),
+			Val: runCUJParam{
+				tests:     []string{"ui.EverydayMultiTaskingCUJ.basic_ytmusic"},
+				iteration: crosboltIteration,
+				retry:     crosboltRetry,
+			},
+			Timeout: crosboltIteration * 10 * time.Minute,
 		}, {
 			Name: "videocuj2_basic_youtube_web",
 			Val: runCUJParam{
@@ -110,6 +158,17 @@ func init() {
 			},
 			Timeout: fullIteration * 10 * time.Minute,
 		}, {
+			Name:              "videocuj2_basic_youtube_web_crosbolt",
+			ExtraAttr:         []string{"group:crosbolt", "crosbolt_perbuild"},
+			ExtraSoftwareDeps: []string{"arc"},
+			ExtraHardwareDeps: hwdep.D(setup.PerfCUJDevices()),
+			Val: runCUJParam{
+				tests:     []string{"ui.VideoCUJ2.basic_youtube_web"},
+				iteration: crosboltIteration,
+				retry:     crosboltRetry,
+			},
+			Timeout: crosboltIteration * 10 * time.Minute,
+		}, {
 			Name: "videocuj2_basic_youtube_app",
 			Val: runCUJParam{
 				tests:     []string{"ui.VideoCUJ2.basic_youtube_app"},
@@ -117,6 +176,17 @@ func init() {
 				retry:     fullRetry,
 			},
 			Timeout: fullIteration * 10 * time.Minute,
+		}, {
+			Name:              "videocuj2_basic_youtube_app_crosbolt",
+			ExtraAttr:         []string{"group:crosbolt", "crosbolt_perbuild"},
+			ExtraSoftwareDeps: []string{"arc"},
+			ExtraHardwareDeps: hwdep.D(setup.PerfCUJDevices()),
+			Val: runCUJParam{
+				tests:     []string{"ui.VideoCUJ2.basic_youtube_app"},
+				iteration: crosboltIteration,
+				retry:     crosboltRetry,
+			},
+			Timeout: crosboltIteration * 10 * time.Minute,
 		}, {
 			Name: "googlemeetcuj_basic_two",
 			Val: runCUJParam{
@@ -126,6 +196,17 @@ func init() {
 			},
 			Timeout: fullIteration * 10 * time.Minute,
 		}, {
+			Name:              "googlemeetcuj_basic_two_crosbolt",
+			ExtraAttr:         []string{"group:crosbolt", "crosbolt_perbuild"},
+			ExtraSoftwareDeps: []string{"arc"},
+			ExtraHardwareDeps: hwdep.D(setup.PerfCUJDevices()),
+			Val: runCUJParam{
+				tests:     []string{"ui.GoogleMeetCUJ.basic_two"},
+				iteration: crosboltIteration,
+				retry:     crosboltRetry,
+			},
+			Timeout: crosboltIteration * 10 * time.Minute,
+		}, {
 			Name: "googlemeetcuj_basic_small",
 			Val: runCUJParam{
 				tests:     []string{"ui.GoogleMeetCUJ.basic_small"},
@@ -133,6 +214,17 @@ func init() {
 				retry:     fullRetry,
 			},
 			Timeout: fullIteration * 10 * time.Minute,
+		}, {
+			Name:              "googlemeetcuj_basic_small_crosbolt",
+			ExtraAttr:         []string{"group:crosbolt", "crosbolt_perbuild"},
+			ExtraSoftwareDeps: []string{"arc"},
+			ExtraHardwareDeps: hwdep.D(setup.PerfCUJDevices()),
+			Val: runCUJParam{
+				tests:     []string{"ui.GoogleMeetCUJ.basic_small"},
+				iteration: crosboltIteration,
+				retry:     crosboltRetry,
+			},
+			Timeout: crosboltIteration * 10 * time.Minute,
 		}, {
 			Name: "googlemeetcuj_basic_large",
 			Val: runCUJParam{
@@ -142,6 +234,17 @@ func init() {
 			},
 			Timeout: fullIteration * 10 * time.Minute,
 		}, {
+			Name:              "googlemeetcuj_basic_large_crosbolt",
+			ExtraAttr:         []string{"group:crosbolt", "crosbolt_perbuild"},
+			ExtraSoftwareDeps: []string{"arc"},
+			ExtraHardwareDeps: hwdep.D(setup.PerfCUJDevices()),
+			Val: runCUJParam{
+				tests:     []string{"ui.GoogleMeetCUJ.basic_large"},
+				iteration: crosboltIteration,
+				retry:     crosboltRetry,
+			},
+			Timeout: crosboltIteration * 10 * time.Minute,
+		}, {
 			Name: "googlemeetcuj_basic_class",
 			Val: runCUJParam{
 				tests:     []string{"ui.GoogleMeetCUJ.basic_class"},
@@ -149,6 +252,17 @@ func init() {
 				retry:     fullRetry,
 			},
 			Timeout: fullIteration * 10 * time.Minute,
+		}, {
+			Name:              "googlemeetcuj_basic_class_crosbolt",
+			ExtraAttr:         []string{"group:crosbolt", "crosbolt_perbuild"},
+			ExtraSoftwareDeps: []string{"arc"},
+			ExtraHardwareDeps: hwdep.D(setup.PerfCUJDevices()),
+			Val: runCUJParam{
+				tests:     []string{"ui.GoogleMeetCUJ.basic_class"},
+				iteration: crosboltIteration,
+				retry:     crosboltRetry,
+			},
+			Timeout: crosboltIteration * 10 * time.Minute,
 		}, {
 			Name: "tabswitchcuj2_plus_noproxy",
 			Val: runCUJParam{
@@ -158,6 +272,17 @@ func init() {
 			},
 			Timeout: fullIteration * 20 * time.Minute,
 		}, {
+			Name:              "tabswitchcuj2_plus_noproxy_crosbolt",
+			ExtraAttr:         []string{"group:crosbolt", "crosbolt_perbuild"},
+			ExtraSoftwareDeps: []string{"arc"},
+			ExtraHardwareDeps: hwdep.D(setup.PerfCUJDevices()),
+			Val: runCUJParam{
+				tests:     []string{"ui.TabSwitchCUJ2.plus_noproxy"},
+				iteration: crosboltIteration,
+				retry:     crosboltRetry,
+			},
+			Timeout: crosboltIteration * 20 * time.Minute,
+		}, {
 			Name: "everydaymultitaskingcuj_plus_ytmusic",
 			Val: runCUJParam{
 				tests:     []string{"ui.EverydayMultiTaskingCUJ.plus_ytmusic"},
@@ -165,6 +290,17 @@ func init() {
 				retry:     fullRetry,
 			},
 			Timeout: fullIteration * 10 * time.Minute,
+		}, {
+			Name:              "everydaymultitaskingcuj_plus_ytmusic_crosbolt",
+			ExtraAttr:         []string{"group:crosbolt", "crosbolt_perbuild"},
+			ExtraSoftwareDeps: []string{"arc"},
+			ExtraHardwareDeps: hwdep.D(setup.PerfCUJDevices()),
+			Val: runCUJParam{
+				tests:     []string{"ui.EverydayMultiTaskingCUJ.plus_ytmusic"},
+				iteration: crosboltIteration,
+				retry:     crosboltRetry,
+			},
+			Timeout: crosboltIteration * 10 * time.Minute,
 		}, {
 			Name: "googlemeetcuj_plus_large",
 			Val: runCUJParam{
@@ -174,6 +310,17 @@ func init() {
 			},
 			Timeout: fullIteration * 15 * time.Minute,
 		}, {
+			Name:              "googlemeetcuj_plus_large_crosbolt",
+			ExtraAttr:         []string{"group:crosbolt", "crosbolt_perbuild"},
+			ExtraSoftwareDeps: []string{"arc"},
+			ExtraHardwareDeps: hwdep.D(setup.PerfCUJDevices()),
+			Val: runCUJParam{
+				tests:     []string{"ui.GoogleMeetCUJ.plus_large"},
+				iteration: crosboltIteration,
+				retry:     crosboltRetry,
+			},
+			Timeout: crosboltIteration * 15 * time.Minute,
+		}, {
 			Name: "googlemeetcuj_plus_class",
 			Val: runCUJParam{
 				tests:     []string{"ui.GoogleMeetCUJ.plus_class"},
@@ -181,6 +328,17 @@ func init() {
 				retry:     fullRetry,
 			},
 			Timeout: fullIteration * 15 * time.Minute,
+		}, {
+			Name:              "googlemeetcuj_plus_class_crosbolt",
+			ExtraAttr:         []string{"group:crosbolt", "crosbolt_perbuild"},
+			ExtraSoftwareDeps: []string{"arc"},
+			ExtraHardwareDeps: hwdep.D(setup.PerfCUJDevices()),
+			Val: runCUJParam{
+				tests:     []string{"ui.GoogleMeetCUJ.plus_class"},
+				iteration: crosboltIteration,
+				retry:     crosboltRetry,
+			},
+			Timeout: crosboltIteration * 15 * time.Minute,
 		}, {
 			Name: "extendeddisplaycuj_plus_video_youtube_web",
 			Val: runCUJParam{
@@ -190,6 +348,17 @@ func init() {
 			},
 			Timeout: fullIteration * 10 * time.Minute,
 		}, {
+			Name:              "extendeddisplaycuj_plus_video_youtube_web_crosbolt",
+			ExtraAttr:         []string{"group:crosbolt", "crosbolt_perbuild"},
+			ExtraSoftwareDeps: []string{"arc"},
+			ExtraHardwareDeps: hwdep.D(setup.PerfCUJDevices()),
+			Val: runCUJParam{
+				tests:     []string{"ui.ExtendedDisplayCUJ.plus_video_youtube_web"},
+				iteration: crosboltIteration,
+				retry:     crosboltRetry,
+			},
+			Timeout: crosboltIteration * 10 * time.Minute,
+		}, {
 			Name: "tabswitchcuj2_premium_noproxy",
 			Val: runCUJParam{
 				tests:     []string{"ui.TabSwitchCUJ2.premium_noproxy"},
@@ -197,6 +366,17 @@ func init() {
 				retry:     fullRetry,
 			},
 			Timeout: fullIteration * 30 * time.Minute,
+		}, {
+			Name:              "tabswitchcuj2_premium_noproxy_crosbolt",
+			ExtraAttr:         []string{"group:crosbolt", "crosbolt_perbuild"},
+			ExtraSoftwareDeps: []string{"arc"},
+			ExtraHardwareDeps: hwdep.D(setup.PerfCUJDevices()),
+			Val: runCUJParam{
+				tests:     []string{"ui.TabSwitchCUJ2.premium_noproxy"},
+				iteration: crosboltIteration,
+				retry:     crosboltRetry,
+			},
+			Timeout: crosboltIteration * 30 * time.Minute,
 		}, {
 			Name: "videocuj2_premium_youtube_web",
 			Val: runCUJParam{
@@ -206,6 +386,17 @@ func init() {
 			},
 			Timeout: fullIteration * 5 * time.Minute,
 		}, {
+			Name:              "videocuj2_premium_youtube_web_crosbolt",
+			ExtraAttr:         []string{"group:crosbolt", "crosbolt_perbuild"},
+			ExtraSoftwareDeps: []string{"arc"},
+			ExtraHardwareDeps: hwdep.D(setup.PerfCUJDevices()),
+			Val: runCUJParam{
+				tests:     []string{"ui.VideoCUJ2.premium_youtube_web"},
+				iteration: crosboltIteration,
+				retry:     crosboltRetry,
+			},
+			Timeout: crosboltIteration * 5 * time.Minute,
+		}, {
 			Name: "videocuj2_premium_youtube_app",
 			Val: runCUJParam{
 				tests:     []string{"ui.VideoCUJ2.premium_youtube_app"},
@@ -213,6 +404,17 @@ func init() {
 				retry:     fullRetry,
 			},
 			Timeout: fullIteration * 5 * time.Minute,
+		}, {
+			Name:              "videocuj2_premium_youtube_app_crosbolt",
+			ExtraAttr:         []string{"group:crosbolt", "crosbolt_perbuild"},
+			ExtraSoftwareDeps: []string{"arc"},
+			ExtraHardwareDeps: hwdep.D(setup.PerfCUJDevices()),
+			Val: runCUJParam{
+				tests:     []string{"ui.VideoCUJ2.premium_youtube_app"},
+				iteration: crosboltIteration,
+				retry:     crosboltRetry,
+			},
+			Timeout: crosboltIteration * 5 * time.Minute,
 		}, {
 			Name: "googlemeetcuj_premium_large",
 			Val: runCUJParam{
@@ -222,6 +424,17 @@ func init() {
 			},
 			Timeout: fullIteration * 15 * time.Minute,
 		}, {
+			Name:              "googlemeetcuj_premium_large_crosbolt",
+			ExtraAttr:         []string{"group:crosbolt", "crosbolt_perbuild"},
+			ExtraSoftwareDeps: []string{"arc"},
+			ExtraHardwareDeps: hwdep.D(setup.PerfCUJDevices()),
+			Val: runCUJParam{
+				tests:     []string{"ui.GoogleMeetCUJ.premium_large"},
+				iteration: crosboltIteration,
+				retry:     crosboltRetry,
+			},
+			Timeout: crosboltIteration * 15 * time.Minute,
+		}, {
 			Name: "extendeddisplaycuj_premium_meet_large",
 			Val: runCUJParam{
 				tests:     []string{"ui.ExtendedDisplayCUJ.premium_meet_large"},
@@ -230,29 +443,16 @@ func init() {
 			},
 			Timeout: fullIteration * 15 * time.Minute,
 		}, {
-			Name: "basic_quick",
+			Name:              "extendeddisplaycuj_premium_meet_large_crosbolt",
+			ExtraAttr:         []string{"group:crosbolt", "crosbolt_perbuild"},
+			ExtraSoftwareDeps: []string{"arc"},
+			ExtraHardwareDeps: hwdep.D(setup.PerfCUJDevices()),
 			Val: runCUJParam{
-				tests:     basicTests,
-				iteration: quickIteration,
-				retry:     quickRetry,
+				tests:     []string{"ui.ExtendedDisplayCUJ.premium_meet_large"},
+				iteration: crosboltIteration,
+				retry:     crosboltRetry,
 			},
-			Timeout: quickIteration * time.Duration(len(basicTests)) * 10 * time.Minute,
-		}, {
-			Name: "plus_quick",
-			Val: runCUJParam{
-				tests:     plusTests,
-				iteration: quickIteration,
-				retry:     quickRetry,
-			},
-			Timeout: quickIteration * time.Duration(len(plusTests)) * 12 * time.Minute,
-		}, {
-			Name: "premium_quick",
-			Val: runCUJParam{
-				tests:     premiumTests,
-				iteration: quickIteration,
-				retry:     quickRetry,
-			},
-			Timeout: quickIteration * time.Duration(len(premiumTests)) * 15 * time.Minute,
+			Timeout: crosboltIteration * 15 * time.Minute,
 		}},
 	})
 }
