@@ -92,6 +92,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "cba5405f_69fe013b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-08-15T18:49:54Z",
+      "side": 1,
+      "message": "Marking as resolved as there doesn\u0027t seem to be anything left here. (please reopen if it\u0027s wrong) Can I get +2 review on this? Thanks,",
+      "parentUuid": "d6502f22_430e2944",
+      "revId": "0d7c1cc3003dfaf3e6e95367a3cf4439d3cd3028",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "9d8e24ab_98dac9a2",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
