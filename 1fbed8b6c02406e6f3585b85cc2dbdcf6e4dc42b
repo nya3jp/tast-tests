@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec0697b0_b590cd43",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/dock2_persistent_settings.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-15T15:43:23Z",
+      "side": 1,
+      "message": "This belongs after\n\tdefer cleanup(ctx)\n\tdefer utils.DumpScreenshotOnError(ctx, s.HasError, []string{extDispID1, extDispID2})\nand before\n\t// Step 1 - Connect two external display to docking station.",
+      "range": {
+        "startLine": 107,
+        "startChar": 0,
+        "endLine": 109,
+        "endChar": 0
+      },
+      "revId": "1fbed8b6c02406e6f3585b85cc2dbdcf6e4dc42b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

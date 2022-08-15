@@ -114,6 +114,54 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "827a580c_2c6c3997",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/dock2_persistent_settings.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-15T15:43:23Z",
+      "side": 1,
+      "message": "Same as above.",
+      "parentUuid": "34833315_8e486edc",
+      "range": {
+        "startLine": 1,
+        "startChar": 30,
+        "endLine": 1,
+        "endChar": 31
+      },
+      "revId": "3e590c3da37dff58aed9c0a63ff3e23e91a8448e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f59cdf92_2ad61eaa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/dock2_persistent_settings.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-15T15:43:23Z",
+      "side": 1,
+      "message": "When is the last time you ran `repo sync` and `update_chroot`? I remember a time when I would have gotten this message, but now it is the opposite.",
+      "parentUuid": "f10de771_94abe862",
+      "range": {
+        "startLine": 1,
+        "startChar": 42,
+        "endLine": 1,
+        "endChar": 63
+      },
+      "revId": "3e590c3da37dff58aed9c0a63ff3e23e91a8448e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "58dd4a28_07e134b6",
         "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/dock2_persistent_settings.go",
         "patchSetId": 23
