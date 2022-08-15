@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "71a02b39_bd20b659",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-08-15T23:32:37Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "a09bb5ceb97269c871cd368d90a4b1f6390a88c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "680f03db_aa8f0cb9",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_client.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-08-15T23:32:37Z",
+      "side": 1,
+      "message": "Is this supposed to match 4 spaces? \\s{4} might be a bit easier to read.",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 70
+      },
+      "revId": "a09bb5ceb97269c871cd368d90a4b1f6390a88c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29be27f3_836d3ac5",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_client.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1018,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-08-15T23:32:37Z",
+      "side": 1,
+      "message": "nit: remove this to make it read a bit better?",
+      "range": {
+        "startLine": 1016,
+        "startChar": 19,
+        "endLine": 1018,
+        "endChar": 17
+      },
+      "revId": "a09bb5ceb97269c871cd368d90a4b1f6390a88c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56e214ed_e6e82b4e",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_client.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1031,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-08-15T23:32:37Z",
+      "side": 1,
+      "message": "nit: `ListAuthFactors returned a mismatch of factor types and labels; got: %d, want: %d`",
+      "revId": "a09bb5ceb97269c871cd368d90a4b1f6390a88c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48c7e837_ace37a6e",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_client.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1041,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-08-15T23:32:37Z",
+      "side": 1,
+      "message": "nit: errors are typically handled immediately, i.e.\n\n```\nfactorType, ok :\u003d uda.AuthFactorType_value[string(types[i][1])]\nif !ok {\n ... \n}\n```",
+      "range": {
+        "startLine": 1037,
+        "startChar": 0,
+        "endLine": 1041,
+        "endChar": 3
+      },
+      "revId": "a09bb5ceb97269c871cd368d90a4b1f6390a88c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
