@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17ac54dd_09dc583c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/toggle_wifi_from_network_quick_settings.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-08-15T23:41:25Z",
+      "side": 1,
+      "message": "nit: add an explicit `Timeout` to the test attributes",
+      "revId": "7040582fde5a60568d36c5ab7059368aac087e50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a674f70b_a0f3d90f",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/quicksettings/network.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-08-15T23:41:25Z",
+      "side": 1,
+      "message": "possible typo of revamp",
+      "range": {
+        "startLine": 38,
+        "startChar": 80,
+        "endLine": 38,
+        "endChar": 85
+      },
+      "revId": "7040582fde5a60568d36c5ab7059368aac087e50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2247b69_46ae5341",
+        "filename": "src/chromiumos/tast/local/shill/wifi.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-08-15T23:41:25Z",
+      "side": 1,
+      "message": "would it make more sense to just return the status, and let callers/tests deal with checking it?",
+      "range": {
+        "startLine": 107,
+        "startChar": 61,
+        "endLine": 107,
+        "endChar": 72
+      },
+      "revId": "7040582fde5a60568d36c5ab7059368aac087e50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
