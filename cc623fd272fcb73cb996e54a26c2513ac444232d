@@ -86,6 +86,24 @@
       "message": "Looks like printer.Add.* is still failing every other run. Any idea what could be causing that?",
       "revId": "cc623fd272fcb73cb996e54a26c2513ac444232d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "443e369a_57847f00",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2022-08-15T15:14:16Z",
+      "side": 1,
+      "message": "The alternating failures seem to primarily be coral-kernelnext, and those all failing with an error like `Fixture failure] ensureUI: Failed to start ui: context deadline exceeded`.  This is only showing up every other build because coral-kernelnext only seems to run on alternating builds.  This board is failing tests all over the place; it probably ought to be marked as one of the known issues, but I don\u0027t know how to do that.\n\nIf you leave out coral-kernelnext, the only other failures are hana-kernelnext on 15036 and two kled failures.  debugd on hana-kernelnext was repeatedly crashing on 15036, so every test that used it failed.  The two kled failures are caused by ethernet failures; they look like lab network glitches to me.",
+      "parentUuid": "8d8c1231_fe23c67d",
+      "revId": "cc623fd272fcb73cb996e54a26c2513ac444232d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
