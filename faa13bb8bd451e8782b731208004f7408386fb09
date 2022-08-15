@@ -34,6 +34,24 @@
       "parentUuid": "11197cda_da326886",
       "revId": "faa13bb8bd451e8782b731208004f7408386fb09",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6897da64_319367e2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-08-15T19:19:30Z",
+      "side": 1,
+      "message": "Could you try repro-ing? It looks like $BUG was filed by autobisect, so I\u0027d assume that this should be fairly easy to repro.",
+      "parentUuid": "6f5d1ebf_20440ca1",
+      "revId": "faa13bb8bd451e8782b731208004f7408386fb09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
