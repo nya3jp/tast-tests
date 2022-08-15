@@ -78,8 +78,14 @@ func init() {
 				poolID:       arcDataMigrationUnmanagedPool,
 				dataFileName: homeDataNamePiX86,
 			},
-			ExtraData:         []string{homeDataNamePiX86},
-			ExtraSoftwareDeps: []string{"android_vm", "amd64"},
+			ExtraData: []string{homeDataNamePiX86},
+			ExtraSoftwareDeps: []string{
+				"android_vm",
+				"amd64",
+				// Skip the test on ARCVM virtio-blk /data enabled devices since the upgrade
+				// from P to R with virtio-blk /data is not supported yet.
+				"no_arcvm_virtio_blk_data",
+			},
 		}, {
 			// Launch ARC R with /data created on ARC P (for arm).
 			Name: "p_to_r_arm",
@@ -87,8 +93,14 @@ func init() {
 				poolID:       arcDataMigrationUnmanagedPool,
 				dataFileName: homeDataNamePiArm,
 			},
-			ExtraData:         []string{homeDataNamePiArm},
-			ExtraSoftwareDeps: []string{"android_vm", "arm"},
+			ExtraData: []string{homeDataNamePiArm},
+			ExtraSoftwareDeps: []string{
+				"android_vm",
+				"arm",
+				// Skip the test on ARCVM virtio-blk /data enabled devices since the upgrade
+				// from P to R with virtio-blk /data is not supported yet.
+				"no_arcvm_virtio_blk_data",
+			},
 		}, {
 			// Launch ARC R with /data created on ARC P for managed user(for x86).
 			Name: "managed_p_to_r_x86",
@@ -96,8 +108,14 @@ func init() {
 				poolID:       arcDataMigrationManagedPool,
 				dataFileName: homeDataNameManagedPiX86,
 			},
-			ExtraData:         []string{homeDataNameManagedPiX86},
-			ExtraSoftwareDeps: []string{"android_vm", "amd64"},
+			ExtraData: []string{homeDataNameManagedPiX86},
+			ExtraSoftwareDeps: []string{
+				"android_vm",
+				"amd64",
+				// Skip the test on ARCVM virtio-blk /data enabled devices since the upgrade
+				// from P to R with virtio-blk /data is not supported yet.
+				"no_arcvm_virtio_blk_data",
+			},
 		}},
 	})
 }
