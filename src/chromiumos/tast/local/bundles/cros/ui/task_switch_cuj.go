@@ -182,6 +182,7 @@ func TaskSwitchCUJ(ctx context.Context, s *testing.State) {
 		}
 	} else {
 		cs = cr
+		bTconn = tconn
 	}
 
 	kw, err := input.Keyboard(ctx)
