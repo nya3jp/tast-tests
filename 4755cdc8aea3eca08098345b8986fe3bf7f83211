@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0ba9e67_91c578f5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1543862
+      },
+      "writtenOn": "2022-08-15T05:09:15Z",
+      "side": 1,
+      "message": "Now the CL is no longer WIP. I would be glad if you can take a look.\n\nOne point we want to discuss here is how to handle the tab_arc case. In this case, one of the allocators is killed before the chrome tab. I removed the test variant because of it, but it might be better to treat the tab_arc case differently and just leave it as one of the variants.",
+      "revId": "4755cdc8aea3eca08098345b8986fe3bf7f83211",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
