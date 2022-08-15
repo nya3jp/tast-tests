@@ -217,6 +217,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc1d4718_aac6b222",
+        "filename": "src/chromiumos/tast/remote/cellular/callbox/iperf/test_manager.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-08-15T15:21:30Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "02efd396_d6d6672d",
+      "range": {
+        "startLine": 129,
+        "startChar": 0,
+        "endLine": 158,
+        "endChar": 2
+      },
+      "revId": "cfb176ebbfcec58666f573f069198490681ef50f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d4326659_a5927f5a",
