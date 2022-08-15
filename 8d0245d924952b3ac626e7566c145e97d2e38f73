@@ -22,6 +22,30 @@
       },
       "revId": "8d0245d924952b3ac626e7566c145e97d2e38f73",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "927728a2_1610270f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/meta/run_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1408793
+      },
+      "writtenOn": "2022-08-15T05:56:04Z",
+      "side": 1,
+      "message": "Is 8 absolutely essential? I\u0027ll change it to 8, but we have limited amount of load that we can put on Main-lab duts.",
+      "parentUuid": "8840944e_1eb917e0",
+      "range": {
+        "startLine": 36,
+        "startChar": 21,
+        "endLine": 36,
+        "endChar": 22
+      },
+      "revId": "8d0245d924952b3ac626e7566c145e97d2e38f73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
