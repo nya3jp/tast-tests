@@ -55,11 +55,13 @@ func init() {
 				ExtraSoftwareDeps: []string{"manatee"},
 				ExtraAttr:         []string{"informational"},
 			},
+			/* Disabled due to <1% pass rate over 30 days. See b/241943182
 			{
 				Name:              "fake",
 				Val:               manateeTestCase{useSystemServices: false},
 				ExtraSoftwareDeps: []string{"sirenia"},
-			},
+			}
+			*/
 		},
 	})
 }
