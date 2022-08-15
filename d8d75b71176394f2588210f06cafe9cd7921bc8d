@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d3ec503_b6a78aa4",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 635,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-08-15T08:36:46Z",
+      "side": 1,
+      "message": "what\u0027s the conceptual gap from WaitForApp, which also waits for \"visible\" state?\nCan we unify them?",
+      "revId": "d8d75b71176394f2588210f06cafe9cd7921bc8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba2a8a6b_ccbefd98",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 636,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-08-15T08:36:46Z",
+      "side": 1,
+      "message": "can we use appID here?\nMaybe adding another field to Window to return from ash?",
+      "range": {
+        "startLine": 636,
+        "startChar": 68,
+        "endLine": 636,
+        "endChar": 75
+      },
+      "revId": "d8d75b71176394f2588210f06cafe9cd7921bc8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
