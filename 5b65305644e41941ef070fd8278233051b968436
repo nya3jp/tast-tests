@@ -39,6 +39,29 @@
       },
       "revId": "5b65305644e41941ef070fd8278233051b968436",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f02aa66_455f825e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/opencl_cts.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 462,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-08-15T20:43:40Z",
+      "side": 1,
+      "message": "dbeckett, as you can see each failure is tracked.",
+      "range": {
+        "startLine": 462,
+        "startChar": 5,
+        "endLine": 462,
+        "endChar": 33
+      },
+      "revId": "5b65305644e41941ef070fd8278233051b968436",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
