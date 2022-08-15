@@ -25,8 +25,7 @@ func init() {
 			"kmshelton@chromium.org",     // Test porter (from TAuto)
 			"chromeos-faft@chromium.org", // Backup mailing list
 		},
-		// TODO(kmshelton): Move to firmware_bios after firmware_unstable verification
-		Attr:        []string{"group:firmware", "firmware_unstable"},
+		Attr:        []string{"group:firmware", "firmware_bios"},
 		Fixture:     fixture.NormalMode,
 		ServiceDeps: []string{"tast.cros.firmware.BiosService"},
 	})
