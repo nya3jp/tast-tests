@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "81252d4a_595d7922",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2022-08-15T19:53:23Z",
+      "side": 1,
+      "message": "gofmt is going wonky on this one, but thats life I guess",
+      "revId": "186fb3cdead73d67e0a5b303ff31c4d95057713b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
