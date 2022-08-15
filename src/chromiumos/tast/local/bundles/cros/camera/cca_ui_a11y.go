@@ -86,6 +86,11 @@ func CCAUIA11y(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to press Ctrl+Alt+Z keys")
 	}
 
+	// TODO(b/242471889): When Chromevox speaks the first element, remove this code and verify from the start.
+	if err = ew.Accel(ctx, tab); err != nil {
+		s.Fatal("Failed to press tab key")
+	}
+
 	for true {
 		arialabel, err := app.ReturnFocusedElementAriaLabel(ctx)
 		if err != nil {
