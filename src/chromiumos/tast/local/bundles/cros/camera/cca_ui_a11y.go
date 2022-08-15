@@ -86,6 +86,10 @@ func CCAUIA11y(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to press Ctrl+Alt+Z keys")
 	}
 
+	if err = ew.Accel(ctx, tab); err != nil {
+		s.Fatal("Failed to press tab key")
+	}
+
 	for true {
 		arialabel, err := app.ReturnFocusedElementAriaLabel(ctx)
 		if err != nil {
