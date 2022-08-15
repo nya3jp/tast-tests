@@ -110,7 +110,12 @@ func RunOCI(ctx context.Context, s *testing.State) {
 		failed := false
 
 		// TODO(b/194923131): Hack to disable failures which involve librt.so.1
-		if strings.Contains(string(stderr), "librt.so.1") {
+		// or libselinux.so.1. This is a workaround for the errors like
+		// `error while loading shared libraries: <lib>: file not located on exec mount`
+		// Speculative root cause is these file are loaded from container,
+		// not the device.
+		if strings.Contains(string(stderr), "librt.so.1") ||
+			strings.Contains(string(stderr), "libselinux.so.1") {
 			return
 		}
 
