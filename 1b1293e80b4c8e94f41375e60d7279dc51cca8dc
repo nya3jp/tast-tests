@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e02334cf_b520412c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/shill_service.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-08-15T20:50:54Z",
+      "side": 1,
+      "message": "The command `repo upload .  --no-verify` can bypass the upload checks, so I reverted these statements to the original code.",
+      "parentUuid": "b2334754_6de159da",
+      "revId": "1b1293e80b4c8e94f41375e60d7279dc51cca8dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1bef71c0_99cb8ccd",
@@ -225,6 +243,30 @@
       "side": 1,
       "message": "In my understanding, `ReserveForDisconnect()` and `ReserveForDeconfigAP()` are used to get a shorter ctx for subsequent operation. Because most WiFi tests use this method, for consistency, I also used the reserve function to get the shortened ctx.",
       "parentUuid": "25f4eed0_095700a0",
+      "range": {
+        "startLine": 35,
+        "startChar": 12,
+        "endLine": 35,
+        "endChar": 15
+      },
+      "revId": "1b1293e80b4c8e94f41375e60d7279dc51cca8dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2955c7fe_424d2ac6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/captive_portal_http.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-08-15T20:50:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c90623c6_a8c05d6a",
       "range": {
         "startLine": 35,
         "startChar": 12,
@@ -594,6 +636,24 @@
       "side": 1,
       "message": "This function is not written by me, but if I don\u0027t modify it, the following error will appear when I execute `repo upload` to upload the code, so I need to modify it to meet the requirements.\n\n```\nHook script \"../tast-tests/tools/run_lint.sh -commit\u003d${PRESUBMIT_COMMIT}\" failed with code 1:\n      Following errors should be modified by yourself:\n        src/chromiumos/tast/remote/wificell/test_fixture.go:689:9: if block ends with a return statement, so drop this else and outdent its block (move short variable declaration to its own line if necessary)\n        src/chromiumos/tast/remote/wificell/test_fixture.go:695:9: if block ends with a return statement, so drop this else and outdent its block (move short variable declaration to its own line if necessary)\n      \n        Refer the following documents for details:\n         https://golang.org/wiki/CodeReviewComments#indent-error-flow\n```",
       "parentUuid": "17b40ceb_8d4f76f1",
+      "revId": "1b1293e80b4c8e94f41375e60d7279dc51cca8dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2a5b421_c2571558",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 687,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-08-15T20:50:54Z",
+      "side": 1,
+      "message": "The command `repo upload . --no-verify` can bypass the upload checks, so I reverted these statements to the original code.",
+      "parentUuid": "12b03da4_371a7338",
       "revId": "1b1293e80b4c8e94f41375e60d7279dc51cca8dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
