@@ -36,12 +36,14 @@ func init() {
 				Fixture:   fixture.ClamshellNonVK,
 				ExtraAttr: []string{"group:input-tools-upstream"},
 			},
+			/* Disabled due to <1% pass rate over 30 days. See b/241943011
 			{
 				Name:              "lacros",
 				Fixture:           fixture.LacrosClamshellNonVK,
 				ExtraSoftwareDeps: []string{"lacros"},
 				ExtraAttr:         []string{"informational"},
-			},
+			}
+			*/
 		},
 	})
 }
