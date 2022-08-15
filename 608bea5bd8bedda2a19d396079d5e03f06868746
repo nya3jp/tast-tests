@@ -105,6 +105,23 @@
       "message": "achuith@: Please take a look...",
       "revId": "608bea5bd8bedda2a19d396079d5e03f06868746",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "462a1383_4493f535",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-08-15T23:25:18Z",
+      "side": 1,
+      "message": "I ran 3 different tests:\n\n1. `tast run \u003cDUT\u003e ui.MeetCUJ.2p`\n2. `tast run \u003cDUT\u003e ui.MeetCUJ.4p_present_notes_split`\n3. `tast run \u003cDUT\u003e ui.GoogleSheetsCUJ`\n\n#1 only showed `Event.Latency.EndToEnd.Mouse` info, which makes sense because we don\u0027t click on anything in the test. Currently, none of the new metrics cover regular mouse movement.\n\n#2 had `EventLatency.KeyPressed.TotalLatency`, `EventLatency.MousePressed.TotalLatency`, which is correct since we click once and type for a few minutes.\n\n#3 has `EventLatency.KeyPressed.TotalLatency`, `EventLatency.MouseWheel.TotalLatency`. I think this partially makes sense too, since we scroll a Google Sheet with our keyboard \u0026 scroll wheel. This test also scrolls down with the trackpad, but I don\u0027t see any scroll metrics being registered for that. \n\nThus, I don\u0027t think we have CUJs to really verify the gestures, and we might want to create a bug to see how we can get gesture scroll data for GoogleSheetsCUJ. Otherwise everything looks good.\n\nLast thing: would it be possible to add `EventLatency.GestureScrollUpdate.Wheel.TotalLatency`? That way after this CL, we can explore the trackpad scrolling in Google Sheets with gestures latency.",
+      "revId": "608bea5bd8bedda2a19d396079d5e03f06868746",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
