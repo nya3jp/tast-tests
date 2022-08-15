@@ -76,19 +76,24 @@ func init() {
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"lacros_stable"},
 			Val:               pathUpdateOnSameChannel,
-		}, {
-			Name:              "unstable",
-			ExtraSoftwareDeps: []string{"lacros_unstable"},
-			Val:               pathUpdateOnSameChannel,
-		}, {
-			Name:              "channel_upgrade",
-			ExtraSoftwareDeps: []string{"lacros_stable"},
-			Val:               pathUpgradeChannel,
-		}, {
-			Name:              "channel_downgrade",
-			ExtraSoftwareDeps: []string{"lacros_stable"},
-			Val:               pathDowngradeChannel,
-		}},
+		},
+			/* Disabled due to <1% pass rate over 30 days. See b/241943137
+			{
+				Name:              "unstable",
+				ExtraSoftwareDeps: []string{"lacros_unstable"},
+				Val:               pathUpdateOnSameChannel,
+			},
+			*/
+			{
+
+				Name:              "channel_upgrade",
+				ExtraSoftwareDeps: []string{"lacros_stable"},
+				Val:               pathUpgradeChannel,
+			}, {
+				Name:              "channel_downgrade",
+				ExtraSoftwareDeps: []string{"lacros_stable"},
+				Val:               pathDowngradeChannel,
+			}},
 		Timeout: 5 * time.Minute,
 	})
 }

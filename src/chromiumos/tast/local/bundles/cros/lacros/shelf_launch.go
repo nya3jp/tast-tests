@@ -14,7 +14,6 @@ import (
 	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/lacros/lacrosfaillog"
 	"chromiumos/tast/testing"
-	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -51,12 +50,16 @@ func init() {
 			Fixture:           "lacrosOnly",
 			ExtraSoftwareDeps: []string{"lacros_unstable"},
 			ExtraAttr:         []string{"informational"},
-		}, {
+		},
+		/* Disabled due to <1% pass rate over 30 days. See b/241943137
+		{
 			Name:              "omaha",
 			Fixture:           "lacrosOmaha",
 			ExtraHardwareDeps: hwdep.D(hwdep.Model("kled", "enguarde", "samus", "sparky")), // Only run on a subset of devices since it downloads from omaha and it will not use our lab's caching mechanisms. We don't want to overload our lab.
 			ExtraAttr:         []string{"informational"},
-		}},
+		}
+		*/
+		},
 	})
 }
 

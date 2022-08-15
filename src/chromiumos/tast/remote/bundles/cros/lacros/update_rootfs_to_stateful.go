@@ -30,10 +30,15 @@ func init() {
 		Vars: []string{"lacrosComponent"},
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"lacros_stable"},
-		}, {
+		},
+		/* Disabled due to <1% pass rate over 30 days. See b/241943137
+		{
 			Name:              "unstable",
 			ExtraSoftwareDeps: []string{"lacros_unstable"},
-		}},
+		}
+		*/
+		},
+
 		Timeout: 5 * time.Minute,
 	})
 }

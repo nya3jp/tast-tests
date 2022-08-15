@@ -40,28 +40,33 @@ func init() {
 				skew:      version.New(0, 0, 1000, 0), // 0 major -1000 build version skew from rootfs-lacros
 				validSkew: true,
 			},
-		}, {
-			Name:              "unstable",
-			ExtraSoftwareDeps: []string{"lacros_unstable"},
-			Val: testCase{
-				skew:      version.New(0, 0, 1000, 0), // 0 major -1000 build version skew from rootfs-lacros
-				validSkew: true,
+		},
+			/* Disabled due to <1% pass rate over 30 days. See b/241943137
+			{
+				Name:              "unstable",
+				ExtraSoftwareDeps: []string{"lacros_unstable"},
+				Val: testCase{
+					skew:      version.New(0, 0, 1000, 0), // 0 major -1000 build version skew from rootfs-lacros
+					validSkew: true,
+				},
 			},
-		}, {
-			Name:              "no_skew",
-			ExtraSoftwareDeps: []string{"lacros_stable"},
-			Val: testCase{
-				skew:      version.New(0, 0, 0, 0), // no skew. rootfs-lacros and stateful-lacros will be the same version. rootfs-lacros should be used.
-				validSkew: true,
-			},
-		}, {
-			Name:              "invalid_skew",
-			ExtraSoftwareDeps: []string{"lacros_stable"},
-			Val: testCase{
-				skew:      version.New(10, 0, 0, 0), // invalid skew; -10 milestone older than ash-chrome. if stateful-lacros is incompatible with ash-chrome, rootfs-lacros should be used.
-				validSkew: false,
-			},
-		}},
+			*/
+			{
+
+				Name:              "no_skew",
+				ExtraSoftwareDeps: []string{"lacros_stable"},
+				Val: testCase{
+					skew:      version.New(0, 0, 0, 0), // no skew. rootfs-lacros and stateful-lacros will be the same version. rootfs-lacros should be used.
+					validSkew: true,
+				},
+			}, {
+				Name:              "invalid_skew",
+				ExtraSoftwareDeps: []string{"lacros_stable"},
+				Val: testCase{
+					skew:      version.New(10, 0, 0, 0), // invalid skew; -10 milestone older than ash-chrome. if stateful-lacros is incompatible with ash-chrome, rootfs-lacros should be used.
+					validSkew: false,
+				},
+			}},
 		Timeout: 5 * time.Minute,
 	})
 }
