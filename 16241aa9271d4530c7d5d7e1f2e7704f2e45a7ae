@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "54e2ef6b_54195079",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2022-08-15T14:02:43Z",
+      "side": 1,
+      "message": "LGTM from the ARC storage perspective with regard to what\u0027s tested.",
+      "revId": "16241aa9271d4530c7d5d7e1f2e7704f2e45a7ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c822dc9_0197ec40",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2022-08-15T14:02:43Z",
+      "side": 1,
+      "message": "/sdcard \u003d /storage/emulated/0. This should probably be /storage/emulated/0 to make it consistent with a comment in the function body.\nAlso, \"mounts the external storage /sdcard/emulated/0 on the host at [...]\" sounds a little bit confusing to me as /storage/emulated/0 is on the guest side.\nMaybe it\u0027s because I\u0027m weak at English prepositions, but \"mounts Android\u0027s external storage directory /storage/emulated/0 on the host\u0027s [...]\" or something like that might be easier to parse.",
+      "range": {
+        "startLine": 272,
+        "startChar": 58,
+        "endLine": 272,
+        "endChar": 76
+      },
+      "revId": "16241aa9271d4530c7d5d7e1f2e7704f2e45a7ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10310d5c_d4f4c6f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2022-08-15T14:02:43Z",
+      "side": 1,
+      "message": "With the function name `mountExternalStorageOnHost`, this sentence indicates /data/media/0 \u003d external storage, which sounds inconsistent with the other part of the code.\nMaybe something like \"failed to mount (Android|guest)\u0027s external storage on host)\" is more straightforward and less confusing for people not so familiar with details of ARC storage.",
+      "range": {
+        "startLine": 307,
+        "startChar": 28,
+        "endLine": 307,
+        "endChar": 65
+      },
+      "revId": "16241aa9271d4530c7d5d7e1f2e7704f2e45a7ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
