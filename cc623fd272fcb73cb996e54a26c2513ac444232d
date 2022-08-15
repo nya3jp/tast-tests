@@ -69,6 +69,23 @@
       "message": "printer.add* tests are passing in the latest build now, see tastboard at https://tastboard.corp.google.com/test?contact\u0026testname\u003dprinter.Add\nprinter.proxyadd tests are always reliable passing, see tastboard at https://tastboard.corp.google.com/test?contact\u0026testname\u003dprinter.ProxyAdd",
       "revId": "cc623fd272fcb73cb996e54a26c2513ac444232d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d8c1231_fe23c67d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-08-15T13:27:43Z",
+      "side": 1,
+      "message": "Looks like printer.Add.* is still failing every other run. Any idea what could be causing that?",
+      "revId": "cc623fd272fcb73cb996e54a26c2513ac444232d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
