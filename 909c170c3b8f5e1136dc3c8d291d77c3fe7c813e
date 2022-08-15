@@ -16,6 +16,92 @@
       "message": "Re-verified after rebase.",
       "revId": "909c170c3b8f5e1136dc3c8d291d77c3fe7c813e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dae15fb2_8234e760",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-08-15T02:46:30Z",
+      "side": 1,
+      "message": "lgtm with nits",
+      "revId": "909c170c3b8f5e1136dc3c8d291d77c3fe7c813e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb9bf485_89acae0d",
+        "filename": "src/chromiumos/tast/local/dbusutil/dbus_object.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-08-15T02:46:30Z",
+      "side": 1,
+      "message": "`Get` is not a legal prefix in GO, see http://go/go-style/decisions#getters",
+      "range": {
+        "startLine": 73,
+        "startChar": 21,
+        "endLine": 73,
+        "endChar": 28
+      },
+      "revId": "909c170c3b8f5e1136dc3c8d291d77c3fe7c813e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77589d3c_4e981c20",
+        "filename": "src/chromiumos/tast/local/dbusutil/dbus_object.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-08-15T02:46:30Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 82,
+        "startChar": 21,
+        "endLine": 82,
+        "endChar": 30
+      },
+      "revId": "909c170c3b8f5e1136dc3c8d291d77c3fe7c813e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb01de61_4a39591a",
+        "filename": "src/chromiumos/tast/local/dbusutil/dbus_object.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-08-15T02:46:30Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 91,
+        "startChar": 21,
+        "endLine": 91,
+        "endChar": 31
+      },
+      "revId": "909c170c3b8f5e1136dc3c8d291d77c3fe7c813e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
