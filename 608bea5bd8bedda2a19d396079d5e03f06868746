@@ -90,6 +90,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "55705f0c_4709c66f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-08-15T23:26:32Z",
+      "side": 1,
+      "message": "nit: update commit msg to indicate the tests I did in the other comment?",
+      "parentUuid": "5d2b568c_a1dd7ffd",
+      "revId": "608bea5bd8bedda2a19d396079d5e03f06868746",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "4ae480f1_13036ed3",
