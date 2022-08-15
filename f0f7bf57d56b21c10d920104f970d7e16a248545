@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "77b67913_e4f29a73",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1445085
+      },
+      "writtenOn": "2022-08-15T17:03:57Z",
+      "side": 1,
+      "message": "Newman/Suhas, please +1 CLs when you are verify the following:\n\n1) Comments grammar checked.\n2) Functionality works\n\n\n",
+      "revId": "f0f7bf57d56b21c10d920104f970d7e16a248545",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
