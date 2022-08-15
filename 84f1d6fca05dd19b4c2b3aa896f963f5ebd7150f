@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0687b40f_19785003",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108259
+      },
+      "writtenOn": "2022-08-15T09:14:31Z",
+      "side": 1,
+      "message": "I\u0027d like to see a tryjob with changes rebased and with Cq-Depend, could you update your changes? I think we\u0027ll still see some graphics.Smoke tests fail.",
+      "revId": "84f1d6fca05dd19b4c2b3aa896f963f5ebd7150f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
