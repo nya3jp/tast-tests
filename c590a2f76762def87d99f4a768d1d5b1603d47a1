@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e05d753b_0c7feea1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1541210
+      },
+      "writtenOn": "2022-08-15T09:26:23Z",
+      "side": 1,
+      "message": "I see, thanks!",
+      "parentUuid": "27ee0e3c_e184d199",
+      "range": {
+        "startLine": 43,
+        "startChar": 4,
+        "endLine": 43,
+        "endChar": 9
+      },
+      "revId": "c590a2f76762def87d99f4a768d1d5b1603d47a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "72b75b9a_dcfd2378",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "39839b83_086f6f2d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1541210
+      },
+      "writtenOn": "2022-08-15T09:26:23Z",
+      "side": 1,
+      "message": "Apparently we don\u0027t need it here.",
+      "parentUuid": "72b75b9a_dcfd2378",
+      "range": {
+        "startLine": 70,
+        "startChar": 3,
+        "endLine": 70,
+        "endChar": 20
+      },
+      "revId": "c590a2f76762def87d99f4a768d1d5b1603d47a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "39009d01_56f316e1",
@@ -77,6 +125,30 @@
       "writtenOn": "2022-08-15T07:04:53Z",
       "side": 1,
       "message": "Shouldn\u0027t we unmount it when the test ends?",
+      "range": {
+        "startLine": 302,
+        "startChar": 0,
+        "endLine": 308,
+        "endChar": 3
+      },
+      "revId": "c590a2f76762def87d99f4a768d1d5b1603d47a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1cc6fe9_9c88f36e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1541210
+      },
+      "writtenOn": "2022-08-15T09:26:23Z",
+      "side": 1,
+      "message": "Looks like /home/root/\u003chash\u003e/android-data/data/media/0 is already unmounted at the end of the test. Probably it\u0027s unmounted when we unmount the SDCard volume. So if we need to do it, I think it should be before unmounting the SDCard volume.",
+      "parentUuid": "39009d01_56f316e1",
       "range": {
         "startLine": 302,
         "startChar": 0,
