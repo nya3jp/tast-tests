@@ -52,6 +52,24 @@
       "parentUuid": "6f5d1ebf_20440ca1",
       "revId": "faa13bb8bd451e8782b731208004f7408386fb09",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1593afc4_3280776d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-08-15T20:01:19Z",
+      "side": 1,
+      "message": "I was able to reproduce on a skylab DUT. It was flaky and passed 3/10 times when I ran it manually. The change in this CL made it pass 10/10 times.\n\nDo you know if there is a way to run the test multiple times locally to verify the flakiness is gone? Or do you think the manual runs I did should be good?",
+      "parentUuid": "6897da64_319367e2",
+      "revId": "faa13bb8bd451e8782b731208004f7408386fb09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
