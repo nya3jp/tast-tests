@@ -3,6 +3,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3edebbcf_5292be91",
+        "filename": "src/chromiumos/tast/common/network/iw/runner.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-08-15T03:02:07Z",
+      "side": 1,
+      "message": "unrelated to this CL though: `get` is normally not a legal prefix in Go, see https://g3doc.corp.google.com/go/g3doc/style/decisions.md?cl\u003dhead#getters",
+      "range": {
+        "startLine": 381,
+        "startChar": 8,
+        "endLine": 381,
+        "endChar": 22
+      },
+      "revId": "8ca9cea408ee30d8ae957d23cc5893d5ccfa3856",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87427bcc_17cf5010",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/nl80211_station_information.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-08-15T03:02:07Z",
+      "side": 1,
+      "message": "please also add the `Timeout` field",
+      "range": {
+        "startLine": 30,
+        "startChar": 26,
+        "endLine": 30,
+        "endChar": 30
+      },
+      "revId": "8ca9cea408ee30d8ae957d23cc5893d5ccfa3856",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "76c6b44c_8519e30c",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/nl80211_station_information.go",
         "patchSetId": 13
@@ -31,6 +77,52 @@
       "writtenOn": "2022-08-13T00:49:24Z",
       "side": 1,
       "message": "I know you connect the DUT to AP so there are some packet exchanges. However, without any transmission/reception, can the lower bound for rx/tx bytes and rx/tx packets be 0?",
+      "revId": "8ca9cea408ee30d8ae957d23cc5893d5ccfa3856",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "205b07a7_728b1d6b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/nl80211_station_information.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-08-15T03:02:07Z",
+      "side": 1,
+      "message": "please reformat this line to multiple lines (one attribute per line) for better readability.",
+      "range": {
+        "startLine": 80,
+        "startChar": 22,
+        "endLine": 80,
+        "endChar": 141
+      },
+      "revId": "8ca9cea408ee30d8ae957d23cc5893d5ccfa3856",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "063b7114_ac7d7f42",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/nl80211_station_information.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-08-15T03:02:07Z",
+      "side": 1,
+      "message": "you need to reserve time for cleanup tasks (deferred functions): see https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Reserve-time-for-clean_up-task",
+      "range": {
+        "startLine": 94,
+        "startChar": 3,
+        "endLine": 94,
+        "endChar": 6
+      },
       "revId": "8ca9cea408ee30d8ae957d23cc5893d5ccfa3856",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
