@@ -35,11 +35,13 @@ func init() {
 				ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel("gooey")),
 			},
 			// TODO(b/195385797): Move this to critical when the bug is fixed.
+			/* Disabled due to <1% pass rate over 30 days. See b/241943009
 			{
 				Name:              "informational",
 				ExtraAttr:         []string{"informational"},
 				ExtraHardwareDeps: hwdep.D(hwdep.Model("gooey")),
-			},
+			}
+			*/
 		},
 	})
 }
