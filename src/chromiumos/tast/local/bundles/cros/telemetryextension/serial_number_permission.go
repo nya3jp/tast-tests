@@ -42,16 +42,20 @@ func init() {
 				Fixture:           "telemetryExtensionOptionsPage",
 				ExtraHardwareDeps: dep.NonTargetModels(),
 			},
+			/* Disabled due to <1% pass rate over 30 days. See b/241944100
 			{
 				Name:              "target_models_lacros",
 				Fixture:           "telemetryExtensionOptionsPageLacros",
 				ExtraHardwareDeps: dep.TargetModels(),
-			},
+			}
+			*/
+			/* Disabled due to <1% pass rate over 30 days. See b/241944100
 			{
 				Name:              "non_target_models_lacros",
 				Fixture:           "telemetryExtensionOptionsPageLacros",
 				ExtraHardwareDeps: dep.NonTargetModels(),
-			},
+			}
+			*/
 		},
 	})
 }
