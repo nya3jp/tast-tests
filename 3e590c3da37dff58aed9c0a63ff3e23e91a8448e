@@ -66,6 +66,54 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "34833315_8e486edc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/dock2_persistent_settings.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1545162
+      },
+      "writtenOn": "2022-08-15T06:38:39Z",
+      "side": 1,
+      "message": "As same as above.",
+      "parentUuid": "ec76f9b5_fdd60b3a",
+      "range": {
+        "startLine": 1,
+        "startChar": 30,
+        "endLine": 1,
+        "endChar": 31
+      },
+      "revId": "3e590c3da37dff58aed9c0a63ff3e23e91a8448e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f10de771_94abe862",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/dock2_persistent_settings.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1545162
+      },
+      "writtenOn": "2022-08-15T06:38:39Z",
+      "side": 1,
+      "message": "After I removed this \"All right reserver\" and tried to upload, then I get this from the terminal.\n\n[FAILED] chromiumos/platform/tast-tests: cros_license_check        \nLicense must match:\n.*Copyright(?: \\(c\\))? (20[0-9]{2})(?:-20[0-9]{2})? The Chromium OS Authors\\. All rights reserved\\.\\n.*Use of this source code is governed by a BSD-style license that can be\\n.*found in the LICENSE file\\.\\n\nFound a bad header in these files:\nsrc/chromiumos/tast/local/bundles/cros/wwcb/dock2_persistent_settings.go\n\nFATAL: Preupload failed due to above error(s).",
+      "parentUuid": "1bc2acab_71b3b3ff",
+      "range": {
+        "startLine": 1,
+        "startChar": 42,
+        "endLine": 1,
+        "endChar": 63
+      },
+      "revId": "3e590c3da37dff58aed9c0a63ff3e23e91a8448e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "58dd4a28_07e134b6",
         "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/dock2_persistent_settings.go",
         "patchSetId": 23
@@ -77,6 +125,24 @@
       "writtenOn": "2022-08-12T15:59:28Z",
       "side": 1,
       "message": "Please do this:\n\tctx, cancel :\u003d ctxutil.Shorten(ctx, 10*time.Second)\n\tdefer cancel()\nThis establishes a shortened timeout for the rest of the test, reserving 10 seconds for `cleanup` and `utils.DumpScreenshotOnError`.",
+      "revId": "3e590c3da37dff58aed9c0a63ff3e23e91a8448e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1dd498c0_17d94875",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/dock2_persistent_settings.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1545162
+      },
+      "writtenOn": "2022-08-15T06:38:39Z",
+      "side": 1,
+      "message": "Done. But I was not sure that I did it correct. Please check.",
+      "parentUuid": "58dd4a28_07e134b6",
       "revId": "3e590c3da37dff58aed9c0a63ff3e23e91a8448e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
