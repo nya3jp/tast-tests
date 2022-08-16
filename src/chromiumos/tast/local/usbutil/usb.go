@@ -11,6 +11,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
+	"os"
 	"regexp"
 	"sort"
 	"strconv"
@@ -396,4 +397,140 @@ func Sort(d []Device) {
 		y := d[j]
 		return x.key() < y.key()
 	})
+}
+
+// RemovableDevices returns the all mounted removable devices connected to DUT.
+func RemovableDevices(ctx context.Context) (RemovableDeviceDetail, error) {
+	var mountMap []map[string]string
+	usbDevicesOut, err := testexec.CommandContext(ctx, "usb-devices").Output()
+	if err != nil {
+		return RemovableDeviceDetail{}, errors.Wrap(err, "failed to execute usb-devices command")
+	}
+	usbDevicesOutput := strings.Split(string(usbDevicesOut), "\n\n")
+	var usbDevices []map[string]string
+	for _, oline := range usbDevicesOutput {
+		usbDevicesMap := make(map[string]string)
+		for _, line := range strings.Split(oline, "\n") {
+			if strings.HasPrefix(line, "D:  Ver= ") {
+				usbDevicesMap["usbType"] = strings.Split(strings.Split(line, "Ver= ")[1], " ")[0]
+			} else if strings.HasPrefix(line, "S:  SerialNumber=") {
+				usbDevicesMap["serial"] = strings.Split(strings.Split(line, "SerialNumber=")[1], " ")[0]
+			}
+		}
+		if !(strings.Contains(oline, "S:  SerialNumber=")) {
+			usbDevicesMap["serial"] = "nil"
+		}
+		usbDevices = append(usbDevices, usbDevicesMap)
+	}
+
+	const mountFile = "/proc/mounts"
+	fileContent, err := os.Open(mountFile)
+	if err != nil {
+		return RemovableDeviceDetail{}, errors.Wrap(err, "failed to open file")
+	}
+	defer fileContent.Close()
+
+	// Using command 'cat /proc/mounts', we can view the status of all mounted file systems.
+	// e.g.:
+	/*
+		...
+		/dev/sda /media/removable/USB\040Drive fuseblk.ntfs rw,dirsync,nosuid...
+	*/
+	scanner := bufio.NewScanner(fileContent)
+	mountLine := ""
+	var details []MountFileDetails
+
+	for scanner.Scan() {
+		mountLine = scanner.Text()
+		internalMountMap := make(map[string]string)
+		// From above output checking if line contains '/media/removable/
+		// then get particular device details.
+		// Like e.g.
+		/*
+			/dev/sda as Device.
+			/media/removable/USB_Drive as Mountpoint.
+			fuseblk.ntfs as FsType.
+			rw as Access.
+			04014dfac72f63cc7bbecf5f5b as Serial
+			3.20 as UsbType.
+			SanDisk_3.2Gen1 as Model.
+		*/
+		if strings.HasPrefix(strings.Split(mountLine, " ")[1], "/media/removable/") {
+			internalMountMap["device"] = strings.Split(mountLine, " ")[0]
+			internalMountMap["mountpoint"] = strings.Split(mountLine, " ")[1]
+			internalMountMap["fsType"] = strings.Split(mountLine, " ")[2]
+			internalMountMap["access"] = strings.Split(strings.Split(mountLine, " ")[3], ",")[0]
+
+			serialOut, err := testexec.CommandContext(ctx, "udevadm", "info", "-a", "-n", internalMountMap["device"]).Output()
+			if err != nil {
+				return RemovableDeviceDetail{}, errors.Wrap(err, "failed to execute udevadm command to get device serial number")
+			}
+
+			// E.g. ATTRS{serial}=="04014dfac72f63cc7bbecf5f5bd27fce201e7c4e48afa0f35f3dd
+			reSerialNumber := regexp.MustCompile(`ATTRS{serial}==\"(.*)\"`)
+			serialNumberMatch := reSerialNumber.FindStringSubmatch(string(serialOut))
+			if len(serialNumberMatch) <= 1 {
+				return RemovableDeviceDetail{}, errors.New("failed to get device serial number")
+			}
+			internalMountMap["serial"] = serialNumberMatch[1]
+
+			modelOut, err := testexec.CommandContext(ctx, "udevadm", "info", "--name", internalMountMap["device"], "--query=property").Output()
+			if err != nil {
+				return RemovableDeviceDetail{}, errors.Wrap(err, "failed to execute udevadm command to get device model name")
+			}
+
+			// E.g. ID_MODEL=SanDisk_3.2Gen1
+			reDeviceModel := regexp.MustCompile(`ID_MODEL=(.*)`)
+			modelMatch := reDeviceModel.FindStringSubmatch(string(modelOut))
+			if len(serialNumberMatch) <= 1 {
+				return RemovableDeviceDetail{}, errors.New("failed to get device model name")
+			}
+			internalMountMap["model"] = modelMatch[1]
+
+			mountMap = append(mountMap, internalMountMap)
+		}
+	}
+
+	for _, item := range usbDevices {
+		if item["serial"] != "nil" {
+			for _, iItem := range mountMap {
+				if iItem["serial"] != "nil" && iItem["serial"] == item["serial"] {
+					if _, ok := iItem["usbType"]; !ok {
+						details = append(details, MountFileDetails{Device: iItem["device"],
+							Mountpoint: iItem["mountpoint"],
+							FsType:     iItem["fsType"],
+							Access:     iItem["access"],
+							Serial:     iItem["serial"],
+							UsbType:    item["usbType"],
+							Model:      iItem["model"]})
+					}
+				}
+			}
+		}
+	}
+	return RemovableDeviceDetail{details}, nil
+}
+
+// MountFileDetails contains mounted device detailed info.
+type MountFileDetails struct {
+	// Device represents device partition like dev/sda, dev/sdb.
+	Device string
+	// Mountpoint represents removable device path(/media/removable/).
+	Mountpoint string
+	// FsType represents device file format type.
+	FsType string
+	// Access represents file access of USB device like read, write.
+	Access string
+	// Serial represents serial number of USB device.
+	Serial string
+	// UsbType represents USB version type like 2.0, 3.0, 3.10.
+	UsbType string
+	// Model represents USB brand model name.
+	Model string
+}
+
+// RemovableDeviceDetail holds object for connected USB device details.
+type RemovableDeviceDetail struct {
+	// RemovableDevices holds connected USB devices details.
+	RemovableDevices []MountFileDetails
 }
