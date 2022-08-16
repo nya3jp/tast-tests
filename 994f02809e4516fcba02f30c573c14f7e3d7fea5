@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "175287ad_f921ad45",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_charging_state.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1545012
+      },
+      "writtenOn": "2022-08-16T17:05:11Z",
+      "side": 1,
+      "message": "Do status codes correlate to known status text strings?",
+      "revId": "994f02809e4516fcba02f30c573c14f7e3d7fea5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
