@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7b1a02e_cd0fc33e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1546868
+      },
+      "writtenOn": "2022-08-16T20:11:01Z",
+      "side": 1,
+      "message": "Updated the test to pass the reply proto to compareReplyToExpectations by pointer instead of by value, as the latter triggers some warning/error checks.",
+      "revId": "a8ab595ed262fefd20116a15b968e39b21bc7b17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
