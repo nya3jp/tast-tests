@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9e9fd0f_bc1bf8e1",
+        "filename": "src/chromiumos/tast/local/chrome/browser/tabs.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-08-16T15:20:49Z",
+      "side": 1,
+      "message": "could you use call instead of argument formatting?",
+      "range": {
+        "startLine": 57,
+        "startChar": 15,
+        "endLine": 57,
+        "endChar": 16
+      },
+      "revId": "ed54706c32078dda1d01b017d4d803f12ccb117f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
