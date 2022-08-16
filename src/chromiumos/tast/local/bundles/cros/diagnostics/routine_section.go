@@ -11,6 +11,8 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/diagnosticsapp"
+	"chromiumos/tast/local/cpu"
+	"chromiumos/tast/local/procutil"
 	"chromiumos/tast/testing"
 )
 
@@ -28,13 +30,25 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Fixture:      "diagnosticsPrep",
+		Timeout:      8 * time.Minute,
 	})
 }
+
+const (
+	// Full path to stress test launched by diagnostics routine service.
+	cpuStressTestExecPath = "/usr/bin/stressapptest"
+)
 
 // RoutineSection verifies routine section functionality.
 func RoutineSection(ctx context.Context, s *testing.State) {
 	tconn := s.FixtValue().(*chrome.TestConn)
 	ui := uiauto.New(tconn)
+
+	// Wait for CPU idle to reduce likelihood of stressapptest becoming a zombie.
+	if err := cpu.WaitUntilIdle(ctx); err != nil {
+		// Do not block test even if we failed to wait cpu idle time.
+		s.Log("Failed to wait cpu idle before running RoutineSection test. Keep running RoutineSection test")
+	}
 
 	// Find the first routine action button.
 	cpuButton := diagnosticsapp.DxCPUTestButton.Ancestor(diagnosticsapp.DxRootNode).First()
@@ -47,23 +61,36 @@ func RoutineSection(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to locate cpu button within the screen bounds: ", err)
 	}
 
-	// Test on power routine.
+	// Test CPU routine.
 	pollOpts := testing.PollOptions{Interval: time.Second, Timeout: 20 * time.Second}
 	if err := ui.WithPollOpts(pollOpts).LeftClick(cpuButton)(ctx); err != nil {
 		s.Fatal("Could not click the CPU test button: ", err)
 	}
 	s.Log("Starting CPU test routine")
 
-	// TODO(crbug/1174688): Detect this through a routine process instead of relying on the UI.
-	if err := ui.WithTimeout(time.Minute).WaitUntilExists(
+	// Wait for UI to swap to "in progress" state to give time for diagnostics service to start routine.
+	if err := ui.WithTimeout(5 * time.Second).WaitUntilExists(
 		diagnosticsapp.DxProgressBadge.Ancestor(diagnosticsapp.DxRootNode).First())(
 		ctx); err != nil {
 		s.Fatal("Could not verify test routine has started: ", err)
 	}
 
-	if err := ui.WithTimeout(5 * time.Minute).WaitUntilExists(
-		diagnosticsapp.DxPassedBadge.Ancestor(diagnosticsapp.DxRootNode).First())(
-		ctx); err != nil {
+	// Detect CPU stress test launched using process lookup.
+	proc, err := procutil.FindUnique(procutil.ByExe(cpuStressTestExecPath))
+	if err != nil {
+		s.Fatal("Stress test did not start: ", err)
+	}
+	s.Log("Stress test running at ", proc)
+
+	// Detect CPU stress test process terminated.
+	if err := procutil.WaitForTerminated(ctx, proc, 2*time.Minute); err != nil {
+		s.Fatal("Stress test did not stop: ", err)
+	}
+	s.Log("Stress test process no longer running")
+
+	if err := uiauto.IfFailThen(ui.WithTimeout(5*time.Second).WaitUntilExists(
+		diagnosticsapp.DxPassedBadge.Ancestor(diagnosticsapp.DxRootNode).First()), ui.WithTimeout(5*time.Second).WaitUntilExists(
+		diagnosticsapp.DxFailedBadge.Ancestor(diagnosticsapp.DxRootNode).First()))(ctx); err != nil {
 		s.Fatal("Could not verify successful run of at least one CPU routine: ", err)
 	}
 
@@ -72,6 +99,7 @@ func RoutineSection(ctx context.Context, s *testing.State) {
 	if err := uiauto.Combine("click Cancel",
 		ui.WithTimeout(20*time.Second).WaitUntilExists(cancelBtn),
 		ui.MakeVisible(cancelBtn),
+		ui.EnsureFocused(cancelBtn),
 		ui.WithPollOpts(pollOpts).LeftClick(cancelBtn),
 	)(ctx); err != nil {
 		s.Fatal("Failed to click cancel button: ", err)
