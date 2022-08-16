@@ -50,6 +50,24 @@
       "message": "These are actively working and the params are generated so don\u0027t modify the test params directly.",
       "revId": "1a5745acd1c8d38aa9744ca9840a0532b1995491",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0effe2e9_727c750d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-08-16T18:12:05Z",
+      "side": 1,
+      "message": "We can enable them after we know it will pass in certain situation (Do not need 100%). I really don\u0027t see why we should run those tests unless it can pass in some cases. They just consume lab resources. Currently the threshod is very low. Derek only tried to disable tests that failed 100% of time for last 30 days. We can\u0027t even call those test flaky because they failed consistantly.\n\nIlja, I think we can have a meeting regarding those tests. Thanks.",
+      "parentUuid": "14a0987e_9fa8a8bd",
+      "revId": "1a5745acd1c8d38aa9744ca9840a0532b1995491",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
