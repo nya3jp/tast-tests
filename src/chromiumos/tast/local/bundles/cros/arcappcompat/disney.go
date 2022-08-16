@@ -291,9 +291,11 @@ func launchAppForDisney(ctx context.Context, s *testing.State, tconn *chrome.Tes
 // signOutOfDisney verifies app is signed out.
 func signOutOfDisney(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
 	const (
-		myStuffDes  = "More options. access watchlist, settings, and change profiles."
-		signOutID   = "com.disney.disneyplus:id/title"
-		signOutText = "Log Out"
+		loginID        = "com.disney.disneyplus:id/welcomeButtonLogIn"
+		myStuffDes     = "More options. access watchlist, settings, and change profiles."
+		scrollLayoutID = "androidx.recyclerview.widget.RecyclerView"
+		signOutID      = "com.disney.disneyplus:id/title"
+		signOutText    = "Log Out"
 	)
 
 	// Click on my stuff icon.
@@ -305,11 +307,14 @@ func signOutOfDisney(ctx context.Context, s *testing.State, tconn *chrome.TestCo
 		s.Fatal("Failed to click MyStuffIcon: ", err)
 	}
 
-	// Click on sign out button.
+	// Scroll until signout is visible.
 	signOutButton := d.Object(ui.ID(signOutID), ui.TextMatches("(?i)"+signOutText))
-	if err := signOutButton.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
-		s.Error("SignOutButton doesn't exist: ", err)
-	} else if err := signOutButton.Click(ctx); err != nil {
-		s.Fatal("Failed to click on signOutButton: ", err)
+	scrollLayout := d.Object(ui.ID(scrollLayoutID), ui.Scrollable(true))
+	if err := scrollLayout.WaitForExists(ctx, testutil.DefaultUITimeout); err == nil {
+		s.Log("scrollLayout does exist: ", err)
+		scrollLayout.ScrollTo(ctx, signOutButton)
 	}
+	// Click on sign out until the app login button is visible.
+	loginButton := d.Object(ui.ID(loginID))
+	testutil.ClickUntilButtonExists(ctx, s, tconn, a, d, signOutButton, loginButton)
 }
