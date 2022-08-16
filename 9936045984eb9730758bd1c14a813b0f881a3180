@@ -54,6 +54,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fbe1d8b5_e1c355c9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-08-16T12:45:09Z",
+      "side": 1,
+      "message": "I like the idea. There is one bug. The kiosk and mgs fixture use fakedms fixture. If we put in place a new fixture that handles leasing an account we have to practically create 2 fixtures:\n- the one for mgs/kiosk that will derive from fakedms\n- the other one for regular sessions - pure tape only.\n\nI am torn apart here and I don\u0027t have a strong opinion. Alex? Mohamed? any 2 cents.",
+      "parentUuid": "1e6d2c68_61e92630",
+      "revId": "9936045984eb9730758bd1c14a813b0f881a3180",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "275d16e0_fea629de",
         "filename": "src/chromiumos/tast/local/vdi/fixtures/vdi.go",
         "patchSetId": 5
