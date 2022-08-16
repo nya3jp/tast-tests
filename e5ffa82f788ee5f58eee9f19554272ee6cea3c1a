@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e743adb_82a1e79e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/captive_portal_http.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-08-16T23:32:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4b89675b_60d12c0d",
+      "range": {
+        "startLine": 28,
+        "startChar": 25,
+        "endLine": 28,
+        "endChar": 35
+      },
+      "revId": "e5ffa82f788ee5f58eee9f19554272ee6cea3c1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b494c9fc_4262c573",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-08-16T21:50:44Z",
       "side": 1,
       "message": "I think it may be better if we just pass in the *testing.State object pointer or the directory path so that the test itself doesn\u0027t have to identify the correct python HTTP script to use.",
+      "range": {
+        "startLine": 48,
+        "startChar": 52,
+        "endLine": 48,
+        "endChar": 78
+      },
+      "revId": "e5ffa82f788ee5f58eee9f19554272ee6cea3c1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c31305a7_b05dee6e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/captive_portal_http.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-08-16T23:32:59Z",
+      "side": 1,
+      "message": "I refer to `dhcp.go` and use the template to directly write the script constant variable in `http.go` to the file in the remote router. All the original python script files and paths are deleted, and the http-related logic and information are wrapped in `http.go`.",
+      "parentUuid": "b494c9fc_4262c573",
       "range": {
         "startLine": 48,
         "startChar": 52,
@@ -64,6 +112,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6b5a30e_bba45561",
+        "filename": "src/chromiumos/tast/remote/wificell/ap_iface.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-08-16T23:32:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c2eed501_0fc854ff",
+      "revId": "e5ffa82f788ee5f58eee9f19554272ee6cea3c1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e161c9e4_d109813d",
@@ -77,6 +143,30 @@
       "writtenOn": "2022-08-16T21:50:44Z",
       "side": 1,
       "message": "use b/187790213 instead",
+      "range": {
+        "startLine": 141,
+        "startChar": 10,
+        "endLine": 141,
+        "endChar": 27
+      },
+      "revId": "e5ffa82f788ee5f58eee9f19554272ee6cea3c1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca8c8725_622ded3c",
+        "filename": "src/chromiumos/tast/remote/wificell/http/server.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-08-16T23:32:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e161c9e4_d109813d",
       "range": {
         "startLine": 141,
         "startChar": 10,
