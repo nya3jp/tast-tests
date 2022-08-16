@@ -106,12 +106,12 @@ func DisableHWWP(ctx context.Context, s *testing.State) {
 		}
 	}
 	s.Logf("skipFlashUSB is %t", skipFlashUSB)
-	cs := s.CloudStorage()
-	if skipFlashUSB {
-		cs = nil
-	}
-	if err := firmwareHelper.SetupUSBKey(ctx, cs); err != nil {
-		s.Fatal("USBKey not working: ", err)
+
+	if !skipFlashUSB {
+		cs := s.CloudStorage()
+		if err := firmwareHelper.SetupUSBKey(ctx, cs); err != nil {
+			s.Fatal("USBKey not working: ", err)
+		}
 	}
 
 	uiHelper, err := rmaweb.NewUIHelper(ctx, dut, firmwareHelper, s.RPCHint(), key, false)

@@ -22,7 +22,7 @@ import (
 	"chromiumos/tast/testing"
 )
 
-const skipPowerwashFile = "/var/lib/rmad/.disable_powerwash"
+const testFile = "/var/lib/rmad/.test"
 
 func init() {
 	testing.AddService(&testing.Service{
@@ -54,10 +54,12 @@ func (shimlessRMA *AppService) NewShimlessRMA(ctx context.Context,
 		if err := shimlessrmaapp.CreateEmptyStateFile(); err != nil {
 			return nil, errors.Wrap(err, "failed to create rmad state file")
 		}
+	}
 
-		if _, err := os.Create(skipPowerwashFile); err != nil {
-			return nil, errors.Wrap(err, "failed to create .disable_powerwash file")
-		}
+	// Restart will also remove test file.
+	// Therefore, we need to create it every time when we new ShimlessRMA
+	if _, err := os.Create(testFile); err != nil {
+		return nil, errors.Wrap(err, "failed to create .test file")
 	}
 
 	cr, err := chrome.New(ctx, chrome.EnableFeatures("ShimlessRMAFlow"),
@@ -95,7 +97,7 @@ func (shimlessRMA *AppService) CloseShimlessRMA(ctx context.Context,
 
 	shimlessrmaapp.RemoveStateFile()
 
-	os.Remove(skipPowerwashFile)
+	os.Remove(testFile)
 
 	shimlessRMA.cr.Close(ctx)
 
