@@ -641,6 +641,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "80a19ebe_e8429467",
+        "filename": "src/chromiumos/tast/remote/wificell/router/openwrt/router.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-08-16T05:52:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f77aaa9f_060a59c1",
+      "revId": "1b1293e80b4c8e94f41375e60d7279dc51cca8dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "17b40ceb_8d4f76f1",
