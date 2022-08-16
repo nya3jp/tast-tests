@@ -16,6 +16,24 @@
       "message": "Updated the test to pass the reply proto to compareReplyToExpectations by pointer instead of by value, as the latter triggers some warning/error checks.",
       "revId": "a8ab595ed262fefd20116a15b968e39b21bc7b17",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "56218839_9f557d55",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1546868
+      },
+      "writtenOn": "2022-08-16T21:09:34Z",
+      "side": 1,
+      "message": "And updated the ListAuthFactors call to return by pointer, to match.",
+      "parentUuid": "d7b1a02e_cd0fc33e",
+      "revId": "a8ab595ed262fefd20116a15b968e39b21bc7b17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
