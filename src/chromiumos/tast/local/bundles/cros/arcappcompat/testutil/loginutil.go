@@ -225,3 +225,16 @@ func ClickUntilFocused(ctx context.Context, s *testing.State, tconn *chrome.Test
 		s.Fatal("Failed to focus Ui element: ", err)
 	}
 }
+
+// ClickUntilButtonExists func click on until specified button exists.
+func ClickUntilButtonExists(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, checkElement, targetElement *ui.Object) {
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		if err := targetElement.Exists(ctx); err != nil {
+			checkElement.Click(ctx)
+			return err
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: ShortUITimeout}); err != nil {
+		s.Log("targetElement doesn't exist: ", err)
+	}
+}
