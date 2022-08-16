@@ -43,6 +43,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c6466475_02376e68",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2022-08-16T21:42:32Z",
+      "side": 1,
+      "message": "OK, https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3829664 is going through right now. If we are refactoring the common flags out, how about we append the codec-specific flags in each of the *decodeVAAPIargs functions (or pass them in as a slice arg to getVAAPIargs)?",
+      "parentUuid": "8524d19a_4e28564a",
+      "revId": "d4a3f68a00246dfba5c59103a41fea7d58f44a1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f4a2dbaf_3f0db18d",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
         "patchSetId": 8
