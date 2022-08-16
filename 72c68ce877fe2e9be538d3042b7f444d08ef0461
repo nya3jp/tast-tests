@@ -16,6 +16,41 @@
       "message": "clar: do we need this change still?",
       "revId": "72c68ce877fe2e9be538d3042b7f444d08ef0461",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc34f9ab_26db0080",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 614,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-08-16T22:42:56Z",
+      "side": 1,
+      "message": "I agree. I don\u0027t think it is within scope for this issue.",
+      "parentUuid": "2b215f59_13cbb6d8",
+      "revId": "72c68ce877fe2e9be538d3042b7f444d08ef0461",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f04ff0ac_82901682",
+        "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 909,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-08-16T22:42:56Z",
+      "side": 1,
+      "message": "I think this function is fine.",
+      "revId": "72c68ce877fe2e9be538d3042b7f444d08ef0461",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
