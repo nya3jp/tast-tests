@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8b22ad1_5807751e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-08-16T07:56:30Z",
+      "side": 1,
+      "message": "Seewai/Alex: I feel this change is one of many that might justify having partner specific bundles so they can run tests in their labs. What do you think?",
+      "revId": "cfd169cf274c0bd25d85d900bef6d7f65ba3216b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
