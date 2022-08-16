@@ -33,6 +33,29 @@
       "message": "Okay as a temporary workaround, but please fix properly soon, thanks!",
       "revId": "e6e92c6842c949ca8c56d726b2a6786134b67802",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea973def_a31df346",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_a11y.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2022-08-16T02:43:44Z",
+      "side": 1,
+      "message": "I think you might want to use b/242471889 instead.",
+      "range": {
+        "startLine": 89,
+        "startChar": 11,
+        "endLine": 89,
+        "endChar": 20
+      },
+      "revId": "e6e92c6842c949ca8c56d726b2a6786134b67802",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
