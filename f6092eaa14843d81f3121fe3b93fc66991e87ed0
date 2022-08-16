@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "39627b4e_08aa446d",
+        "filename": "src/chromiumos/tast/common/chameleon/chameleond.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 823,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-08-16T20:51:37Z",
+      "side": 1,
+      "message": "Ah I wasn\u0027t sure if that was convention or just the default name. I\u0027ve updated it to use `ok`.",
+      "parentUuid": "018f8a45_78b14a1a",
+      "range": {
+        "startLine": 823,
+        "startChar": 15,
+        "endLine": 823,
+        "endChar": 23
+      },
+      "revId": "f6092eaa14843d81f3121fe3b93fc66991e87ed0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4a8fed31_1eb50c71",
@@ -71,6 +95,24 @@
       "writtenOn": "2022-08-16T05:57:34Z",
       "side": 1,
       "message": "super nit: you can just declare via var and not use make, since append handles nil slices",
+      "revId": "f6092eaa14843d81f3121fe3b93fc66991e87ed0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a92b187_49e39e78",
+        "filename": "src/chromiumos/tast/common/chameleon/chameleond.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1425,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-08-16T20:51:37Z",
+      "side": 1,
+      "message": "Good point, but I believe the `sort.Slice` function call requires a non-nil slice so I\u0027ll keep the make call, as I\u0027d rather have it not fail if for some reason no appending happens.",
+      "parentUuid": "4a8fed31_1eb50c71",
       "revId": "f6092eaa14843d81f3121fe3b93fc66991e87ed0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
