@@ -38,6 +38,7 @@ group("all") {
     "ArcKeyCharacterMapTest:ArcKeyCharacterMapTest",
     "ArcLaunchIntentTest:ArcLaunchIntentTest",
     "ArcLifecycleTest:ArcLifecycleTest",
+    "ArcLinkCapturingTest:ArcLinkCapturingTest",
     "ArcLongPressTest:ArcLongPressTest",
     "ArcMidiClientTest:ArcMidiClientTest",
     "ArcMediaScanPerfTest:ArcMediaScanPerfTest",
