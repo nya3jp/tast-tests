@@ -34,6 +34,24 @@
       "parentUuid": "39969bac_22fb78e5",
       "revId": "876cd1c9279c62336a7904732a758ce646eca299",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cefc707a_d2d36d08",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/arcpipvideotest/arcpipvideotest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-08-16T22:59:13Z",
+      "side": 1,
+      "message": "Ack.",
+      "parentUuid": "d2e5f227_dd4e1b0c",
+      "revId": "876cd1c9279c62336a7904732a758ce646eca299",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
