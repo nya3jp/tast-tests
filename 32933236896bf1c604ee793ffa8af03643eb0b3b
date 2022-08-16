@@ -103,6 +103,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "77435cd2_d29b45bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/youtube_web.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-08-16T15:15:37Z",
+      "side": 1,
+      "message": "\u003e Some DUTs don\u0027t respond the first time the k key is pressed\n\nWhy? Could you investigate/fix it, instead of just retrying?\nIf it is very difficult to fix for some reasons, could you document why?",
+      "parentUuid": "e5ac0bd6_53bf3ede",
+      "revId": "32933236896bf1c604ee793ffa8af03643eb0b3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "01c6e73d_97058b60",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/youtube_web.go",
         "patchSetId": 3
@@ -132,6 +150,24 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "01c6e73d_97058b60",
+      "revId": "32933236896bf1c604ee793ffa8af03643eb0b3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e451dcc5_869c64ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/youtube_web.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-08-16T15:15:37Z",
+      "side": 1,
+      "message": "ditto",
+      "parentUuid": "62549895_307d5f27",
       "revId": "32933236896bf1c604ee793ffa8af03643eb0b3b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
