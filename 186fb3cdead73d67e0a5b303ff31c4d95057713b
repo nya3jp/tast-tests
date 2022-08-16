@@ -87,6 +87,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f759907f_46288921",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/update_rootfs_to_stateful.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2022-08-16T17:00:04Z",
+      "side": 1,
+      "message": "it started flickering green after I pulled the data.\n\nhttps://stainless.corp.google.com/search?view\u003dmatrix\u0026row\u003dbuild_version\u0026col\u003dqueued_date\u0026first_date\u003d2022-08-03\u0026last_date\u003d2022-08-16\u0026test\u003dtast.lacros.UpdateStatefulToStateful.unstable\u0026exclude_cts\u003dfalse\u0026exclude_not_run\u003dfalse\u0026exclude_non_release\u003dfalse\u0026exclude_au\u003dfalse\u0026exclude_acts\u003dfalse\u0026exclude_retried\u003dfalse\u0026exclude_non_production\u003dfalse\u0026exclude_non_critical\u003dfalse\n\n i\u0027ll drop this to all 3",
+      "parentUuid": "fe03b0cf_4112b08c",
+      "revId": "186fb3cdead73d67e0a5b303ff31c4d95057713b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "32352d50_417ef5ad",
@@ -104,6 +122,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8aa80362_70a4170a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/update_stateful_to_rootfs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2022-08-16T17:00:04Z",
+      "side": 1,
+      "message": "same as above",
+      "parentUuid": "32352d50_417ef5ad",
+      "revId": "186fb3cdead73d67e0a5b303ff31c4d95057713b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "616c2f4f_de8ea1c1",
@@ -117,6 +153,24 @@
       "writtenOn": "2022-08-16T16:45:54Z",
       "side": 1,
       "message": "This one look stable in stainless:\n\nhttps://stainless.corp.google.com/search?view\u003dmatrix\u0026row\u003dtest\u0026col\u003dbuild\u0026first_date\u003d2022-07-20\u0026last_date\u003d2022-08-16\u0026test\u003d%5Etast.lacros.\u0026exclude_cts\u003dfalse\u0026exclude_not_run\u003dfalse\u0026exclude_non_release\u003dtrue\u0026exclude_au\u003dtrue\u0026exclude_acts\u003dtrue\u0026exclude_retried\u003dfalse\u0026exclude_non_production\u003dfalse\u0026exclude_non_critical\u003dfalse\n\nsearch for tast.lacros.UpdateStatefulToStateful.unstable",
+      "revId": "186fb3cdead73d67e0a5b303ff31c4d95057713b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e8d1801_8d4c4655",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/update_stateful_to_stateful.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2022-08-16T17:00:04Z",
+      "side": 1,
+      "message": "same as above",
+      "parentUuid": "616c2f4f_de8ea1c1",
       "revId": "186fb3cdead73d67e0a5b303ff31c4d95057713b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
