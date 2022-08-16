@@ -148,6 +148,17 @@ func CCAUIIntent(ctx context.Context, s *testing.State) {
 	}
 	downloadsFolder := filepath.Join(userPath, "MyFiles", "Downloads")
 
+	virtioBlkDataEnabled, err := a.IsVirtioBlkDataEnabled(ctx)
+	if err != nil {
+		s.Fatal("Failed to check if virtio-blk /data is enabled: ", err)
+	}
+	if virtioBlkDataEnabled {
+		if err := arc.MountSDCardPartitionOnHostWithSSHFS(ctx, cr.NormalizedUser()); err != nil {
+			s.Fatal("Failed to mount Android's external storage on host: ", err)
+		}
+		defer arc.UnmountSDCardPartitionFromHost(ctx, cr.NormalizedUser())
+	}
+
 	subTestTimeout := 40 * time.Second
 	for _, tc := range []struct {
 		Name          string
