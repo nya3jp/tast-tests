@@ -22,6 +22,30 @@
       },
       "revId": "3c1a2f3a876a589aad781a410ba0491d453e55e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f9dfb0f_9e6f6763",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2575,
+      "author": {
+        "id": 1546782
+      },
+      "writtenOn": "2022-08-16T12:41:43Z",
+      "side": 0,
+      "message": "Fixed. I left a comment pointing out that it has been deprecated.",
+      "parentUuid": "3215d46c_1b91533e",
+      "range": {
+        "startLine": 2575,
+        "startChar": 0,
+        "endLine": 2575,
+        "endChar": 11
+      },
+      "revId": "3c1a2f3a876a589aad781a410ba0491d453e55e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
