@@ -22,6 +22,30 @@
       },
       "revId": "94485464d3856a70dadbe522aefa93fcc89d2fdb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "31d6aa95_9808c355",
+        "filename": "src/chromiumos/tast/local/bundles/cros/intel/play_movie_usb_typea_pendrive_headset.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-08-16T08:18:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e477a7e2_56d87ce1",
+      "range": {
+        "startLine": 139,
+        "startChar": 5,
+        "endLine": 139,
+        "endChar": 8
+      },
+      "revId": "94485464d3856a70dadbe522aefa93fcc89d2fdb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
