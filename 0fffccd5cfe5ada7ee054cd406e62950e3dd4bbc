@@ -33,6 +33,91 @@
       "message": "Don\u0027t need a thorough review, Xiyuan - just let Navin know if anything stands out ",
       "revId": "0fffccd5cfe5ada7ee054cd406e62950e3dd4bbc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ebe154f_9c2180eb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/taskswitchcuj/packages.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-08-16T20:00:52Z",
+      "side": 1,
+      "message": "Do we need to install \"Play Store\"? Think it should be installed in the Android image by default.",
+      "revId": "0fffccd5cfe5ada7ee054cd406e62950e3dd4bbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bfbb956a_e8ec192e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/taskswitchcuj/packages.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-08-16T20:00:52Z",
+      "side": 1,
+      "message": "Sleep to wait is a common source of flakes because the same duration could end up in different state in different DUTs. We should be careful and only resort to sleep when we have no signals to depend on.\n\nIf the intention here to wait for the play store activity to be complete gone, maybe try one of the following:\n1. ash.WaitForHidden\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/ash/wm.go;rcl\u003de35114ce1f6cd6818cb40f8a3319b7e01aaad22d;l\u003d400\n\n2. uiauto.WaitUntilGone\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/uiauto/automation.go;rcl\u003d379145247c9dc21dfb7ccc701606528d7a27cf9d;l\u003d595",
+      "revId": "0fffccd5cfe5ada7ee054cd406e62950e3dd4bbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0d651a2_0fff055c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/taskswitchcuj/packages.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-08-16T20:00:52Z",
+      "side": 1,
+      "message": "ditto. Do we have better signals to wait for instead of sleep?",
+      "revId": "0fffccd5cfe5ada7ee054cd406e62950e3dd4bbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa7c019e_93159e61",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/taskswitchcuj/task_switch_cuj.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-08-16T20:00:52Z",
+      "side": 1,
+      "message": "Replace the sleep with something? Maybe `webutil.WaitForRender` ?\n\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/webutil/webutil.go;rcl\u003d2f000da60f042478bffbe6ead862eab85055adbb;l\u003d67",
+      "revId": "0fffccd5cfe5ada7ee054cd406e62950e3dd4bbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73f7c5cb_2accd1c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/taskswitchcuj/task_switch_cuj.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-08-16T20:00:52Z",
+      "side": 1,
+      "message": "Maybe wait for everything on desktop stops moving?\n\nSomething like `ac.WithInterval(2*time.Second).WaitUntilNoEvent(nodewith.Root(), event.LocationChanged)(ctx)`\n\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/ash/desks.go;rcl\u003d90263e12b4872e12d46c2e91415c2935638b6f48;l\u003d208",
+      "revId": "0fffccd5cfe5ada7ee054cd406e62950e3dd4bbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
