@@ -22,6 +22,40 @@
       },
       "revId": "32933236896bf1c604ee793ffa8af03643eb0b3b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc9c3a6a_2627d5f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/youtube_web.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-08-16T00:26:35Z",
+      "side": 1,
+      "message": "why RetryUntil is needed?\nWhat could cause falkiness?\nCan we wait for certain condition ensuring \u0027k\u0027 actually triggers?",
+      "revId": "32933236896bf1c604ee793ffa8af03643eb0b3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01c6e73d_97058b60",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/youtube_web.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-08-16T00:26:35Z",
+      "side": 1,
+      "message": "ditto for RetryUntil",
+      "revId": "32933236896bf1c604ee793ffa8af03643eb0b3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
