@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "53124ecc_8dc47b48",
+        "filename": "src/chromiumos/tast/remote/policyutil/enrolled_fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-08-16T08:19:21Z",
+      "side": 1,
+      "message": "Good idea",
+      "parentUuid": "6aac1895_7fc757b8",
+      "range": {
+        "startLine": 188,
+        "startChar": 39,
+        "endLine": 188,
+        "endChar": 55
+      },
+      "revId": "3d52765194637c469fd9451f345f796b0d182bce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "562db58a_f95ceb2b",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "77861971_d34f6e13",
+        "filename": "src/chromiumos/tast/remote/policyutil/enrolled_fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-08-16T08:19:21Z",
+      "side": 1,
+      "message": "Nothing here is really secret. AFAIK you need +x to be able to read directories and I don\u0027t want this to break again.",
+      "parentUuid": "562db58a_f95ceb2b",
+      "range": {
+        "startLine": 189,
+        "startChar": 33,
+        "endLine": 189,
+        "endChar": 37
+      },
+      "revId": "3d52765194637c469fd9451f345f796b0d182bce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e409ecb2_765755fc",
@@ -77,6 +125,30 @@
       "writtenOn": "2022-08-11T17:09:10Z",
       "side": 1,
       "message": "nit: i\u0027d pass ctx explicitly here",
+      "range": {
+        "startLine": 205,
+        "startChar": 3,
+        "endLine": 205,
+        "endChar": 5
+      },
+      "revId": "3d52765194637c469fd9451f345f796b0d182bce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c5efc9b_4aeeef7a",
+        "filename": "src/chromiumos/tast/remote/policyutil/enrolled_fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-08-16T08:19:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e409ecb2_765755fc",
       "range": {
         "startLine": 205,
         "startChar": 3,
