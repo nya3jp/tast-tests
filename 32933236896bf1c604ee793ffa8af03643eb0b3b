@@ -43,6 +43,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c9536c38_5f3336ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/youtube_web.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2022-08-16T04:53:38Z",
+      "side": 1,
+      "message": "Some DUTs don\u0027t respond the first time the k key is pressed, so add a retry to make sure it passes.\nNot sure what is causing the k no response.",
+      "parentUuid": "cc9c3a6a_2627d5f4",
+      "revId": "32933236896bf1c604ee793ffa8af03643eb0b3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "01c6e73d_97058b60",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/youtube_web.go",
         "patchSetId": 3
