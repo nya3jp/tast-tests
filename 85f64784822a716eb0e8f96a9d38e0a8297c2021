@@ -16,6 +16,24 @@
       "message": "Since this is adding a new failure mode, would you also make the test informational for a few days to make sure it works as expected?",
       "revId": "85f64784822a716eb0e8f96a9d38e0a8297c2021",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c9e15f7_cf5e7049",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1547337
+      },
+      "writtenOn": "2022-08-16T08:17:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3ae352d1_e77d1681",
+      "revId": "85f64784822a716eb0e8f96a9d38e0a8297c2021",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
