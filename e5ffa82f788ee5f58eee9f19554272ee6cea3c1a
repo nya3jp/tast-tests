@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b89675b_60d12c0d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/captive_portal_http.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-08-16T21:50:44Z",
+      "side": 1,
+      "message": "matthewmwang for handoff",
+      "range": {
+        "startLine": 28,
+        "startChar": 25,
+        "endLine": 28,
+        "endChar": 35
+      },
+      "revId": "e5ffa82f788ee5f58eee9f19554272ee6cea3c1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b494c9fc_4262c573",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/captive_portal_http.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-08-16T21:50:44Z",
+      "side": 1,
+      "message": "I think it may be better if we just pass in the *testing.State object pointer or the directory path so that the test itself doesn\u0027t have to identify the correct python HTTP script to use.",
+      "range": {
+        "startLine": 48,
+        "startChar": 52,
+        "endLine": 48,
+        "endChar": 78
+      },
+      "revId": "e5ffa82f788ee5f58eee9f19554272ee6cea3c1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2eed501_0fc854ff",
+        "filename": "src/chromiumos/tast/remote/wificell/ap_iface.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-08-16T21:50:44Z",
+      "side": 1,
+      "message": "nit: let\u0027s just use the constant directly, no need to define a constant for another constant",
+      "revId": "e5ffa82f788ee5f58eee9f19554272ee6cea3c1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e161c9e4_d109813d",
+        "filename": "src/chromiumos/tast/remote/wificell/http/server.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-08-16T21:50:44Z",
+      "side": 1,
+      "message": "use b/187790213 instead",
+      "range": {
+        "startLine": 141,
+        "startChar": 10,
+        "endLine": 141,
+        "endChar": 27
+      },
+      "revId": "e5ffa82f788ee5f58eee9f19554272ee6cea3c1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
