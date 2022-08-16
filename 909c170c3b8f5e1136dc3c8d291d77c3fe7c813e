@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b5ef282_8c9c8496",
+        "filename": "src/chromiumos/tast/local/dbusutil/dbus_object.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-08-16T20:52:02Z",
+      "side": 1,
+      "message": "Yeah I am aware of that but I was basing it off of the existing `Get` function already present and in-use for this type. Though, you\u0027ve inspired me just to fix the base one too and make it more clear anyways.\n\nI\u0027ve updated them all.",
+      "parentUuid": "cb9bf485_89acae0d",
+      "range": {
+        "startLine": 73,
+        "startChar": 21,
+        "endLine": 73,
+        "endChar": 28
+      },
+      "revId": "909c170c3b8f5e1136dc3c8d291d77c3fe7c813e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "77589d3c_4e981c20",
@@ -81,6 +105,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "33a94bb1_c6e9bd89",
+        "filename": "src/chromiumos/tast/local/dbusutil/dbus_object.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-08-16T20:52:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "77589d3c_4e981c20",
+      "range": {
+        "startLine": 82,
+        "startChar": 21,
+        "endLine": 82,
+        "endChar": 30
+      },
+      "revId": "909c170c3b8f5e1136dc3c8d291d77c3fe7c813e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eb01de61_4a39591a",
@@ -94,6 +142,30 @@
       "writtenOn": "2022-08-15T02:46:30Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 91,
+        "startChar": 21,
+        "endLine": 91,
+        "endChar": 31
+      },
+      "revId": "909c170c3b8f5e1136dc3c8d291d77c3fe7c813e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3df87e50_98863c1a",
+        "filename": "src/chromiumos/tast/local/dbusutil/dbus_object.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-08-16T20:52:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eb01de61_4a39591a",
       "range": {
         "startLine": 91,
         "startChar": 21,
