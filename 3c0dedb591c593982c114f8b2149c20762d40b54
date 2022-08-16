@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f79e453c_5cacec7c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-08-16T16:24:21Z",
+      "side": 1,
+      "message": "LGTM. Since unit test was not run, no chump on this CL. Please make sure it went through the CQ procress.",
+      "revId": "3c0dedb591c593982c114f8b2149c20762d40b54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
