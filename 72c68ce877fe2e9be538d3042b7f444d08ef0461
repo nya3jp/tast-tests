@@ -38,6 +38,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "e43b3e4d_02c1cabd",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 614,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-08-16T23:26:59Z",
+      "side": 1,
+      "message": "I\u0027ll revert it as I can do this (removing WaitForAppsCondition or renaming to less confusing) for future refactoring at a later time.",
+      "parentUuid": "dc34f9ab_26db0080",
+      "revId": "72c68ce877fe2e9be538d3042b7f444d08ef0461",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "f04ff0ac_82901682",
         "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
         "patchSetId": 3

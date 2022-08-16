@@ -105,6 +105,30 @@
       },
       "revId": "d8d75b71176394f2588210f06cafe9cd7921bc8d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6a4cfa6_9f4cb86b",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 636,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-08-16T23:26:59Z",
+      "side": 1,
+      "message": "Can you elaborate it a bit more? \nLooks like `full_restore_window_app_id` that `app_id` is assigned to was initially exposed for ARC ghost window in this change https://crrev.com/c/2948591.\nDo you think `full_restore_window_app_id` could be generally used for other app windows? \nIf yes, is it okay to use the same field for the app windows or new one like `app_id`?",
+      "parentUuid": "15f0070f_14cbee4c",
+      "range": {
+        "startLine": 636,
+        "startChar": 68,
+        "endLine": 636,
+        "endChar": 75
+      },
+      "revId": "d8d75b71176394f2588210f06cafe9cd7921bc8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
