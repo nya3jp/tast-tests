@@ -22,6 +22,7 @@ import (
 type userParam struct {
 	username string
 	password string
+	isSaml   bool
 }
 
 func init() {
@@ -38,17 +39,28 @@ func init() {
 			"accountmanager.password1",
 			"accountmanager.managedusername",
 			"accountmanager.managedpassword",
+			"accountmanager.samlusername",
+			"accountmanager.samlpassword",
 		},
 		Params: []testing.Param{{
 			Val: userParam{
+				isSaml:   false,
 				username: "accountmanager.username1",
 				password: "accountmanager.password1",
 			},
 		}, {
 			Name: "managedchrome",
 			Val: userParam{
+				isSaml:   false,
 				username: "accountmanager.managedusername",
 				password: "accountmanager.managedpassword",
+			},
+		}, {
+			Name: "saml",
+			Val: userParam{
+				isSaml:   true,
+				username: "accountmanager.samlusername",
+				password: "accountmanager.samlpassword",
 			},
 		}},
 	})
@@ -91,8 +103,14 @@ func SystemDialog(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Adding a secondary Account")
-	if err := accountmanager.AddAccount(ctx, tconn, username, password); err != nil {
-		s.Fatal("Failed to add a secondary Account: ", err)
+	if param.isSaml {
+		if err := accountmanager.AddAccountSAML(ctx, tconn, username, password); err != nil {
+			s.Fatal("Failed to add a secondary SAML Account: ", err)
+		}
+	} else {
+		if err := accountmanager.AddAccount(ctx, tconn, username, password); err != nil {
+			s.Fatal("Failed to add a secondary Account: ", err)
+		}
 	}
 
 	// Make sure that the settings page is focused again.
