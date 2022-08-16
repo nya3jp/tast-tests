@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ce89e13_09e96d86",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1034,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2022-08-16T22:35:14Z",
+      "side": 1,
+      "message": "This is fine, but just for future reference if you know the size already (here it\u0027s just `len(hevcFilesFromBugs[testGroup])`) you can preallocate the slice.",
+      "range": {
+        "startLine": 1034,
+        "startChar": 27,
+        "endLine": 1034,
+        "endChar": 28
+      },
+      "revId": "f92779a50b93a522a4ca8d09d120cc6a91e64bad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
