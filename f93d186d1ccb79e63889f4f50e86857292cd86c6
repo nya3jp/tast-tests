@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "72a66f00_172230a4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-08-16T16:19:00Z",
+      "side": 1,
+      "message": "I have a question. Please take a look.\n\nAlso, please run tast unit test: fast_build.sh -T\n\nThen, add this line to commit log\nTEST\u003dtast unit test passed. \n\nThanks.\n",
+      "revId": "f93d186d1ccb79e63889f4f50e86857292cd86c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05b1ca05_0e936030",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/run_oci.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-08-16T16:19:00Z",
+      "side": 1,
+      "message": "Why don\u0027t we just check for \"file not located\"?\n\nIf it is intended to be temporary and going to be removed later after root cause is found, please add a \"TODO\" with buganizer number. Thanks.",
+      "revId": "f93d186d1ccb79e63889f4f50e86857292cd86c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
