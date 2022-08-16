@@ -16,6 +16,24 @@
       "message": "Do status codes correlate to known status text strings?",
       "revId": "994f02809e4516fcba02f30c573c14f7e3d7fea5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7cec8ccc_49a57695",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_charging_state.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-08-16T18:39:02Z",
+      "side": 1,
+      "message": "Yes: http://cs/chromeos_public/src/platform/ec/common/battery.c;l\u003d78;rcl\u003de1819b6372a026cc776fa58c80e5621899dc3e8b\n\nI don\u0027t recall why I switched the python version of this test to always use the status code, it might be that the strings are not printed by some older boards.",
+      "parentUuid": "175287ad_f921ad45",
+      "revId": "994f02809e4516fcba02f30c573c14f7e3d7fea5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
