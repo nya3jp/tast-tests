@@ -79,7 +79,7 @@ func SSHFSMount(ctx context.Context, s *testing.State) {
 		}
 		return nil
 	}
-	if err := testing.Poll(ctx, checkSshfs, nil); err != nil {
+	if err := testing.Poll(ctx, checkSshfs, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
 		s.Fatal("Timed out waiting for sshfs mount: ", err)
 	}
 
