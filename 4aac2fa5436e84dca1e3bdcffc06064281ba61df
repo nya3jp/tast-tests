@@ -16,6 +16,24 @@
       "message": "Why is this taking nil?",
       "revId": "4aac2fa5436e84dca1e3bdcffc06064281ba61df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a923d2e4_4123d00e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/docs_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1520127
+      },
+      "writtenOn": "2022-08-16T19:43:04Z",
+      "side": 1,
+      "message": "`NewRunner` initialization has a hidden feature to enable tracing runs when `br` is actually passed in. If tests don\u0027t care about tracing that can be disabled by passing in `nil` (which would also save some CPU cycles in the CI testing bots). It\u0027s a funny API indeed.\n\nBut this is something that only makes sense when used in conjunction with `RunMultiple` fn. I have now amended a comment to explain why it\u0027s passing in `nil`.\n\nPTAL.",
+      "parentUuid": "4d7656a7_fe776cf5",
+      "revId": "4aac2fa5436e84dca1e3bdcffc06064281ba61df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
