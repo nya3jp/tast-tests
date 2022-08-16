@@ -107,14 +107,16 @@ func init() {
 			"chromeos-sw-engprod@google.com",
 			"cros-system-ui-eng@google.com",
 		},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome"},
 		Fixture:      "chromeLoggedInWithProductivityLauncher",
 		Params: []testing.Param{{
-			Name: "clamshel_mode",
-			Val:  searchSettingsVals{tabletMode: false, testCases: standardTestCases},
+			Name:      "clamshel_mode",
+			ExtraAttr: []string{"informational"},
+			Val:       searchSettingsVals{tabletMode: false, testCases: standardTestCases},
 		}, {
 			Name:              "tablet_mode",
+			ExtraAttr:         []string{"informational"},
 			Val:               searchSettingsVals{tabletMode: true, testCases: standardTestCases},
 			ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		}, {
