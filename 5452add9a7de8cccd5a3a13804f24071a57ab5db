@@ -51,6 +51,23 @@
       "message": "Hi Kamil,\n\nPTAL :) ",
       "revId": "5452add9a7de8cccd5a3a13804f24071a57ab5db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3333fdcf_2b6bb854",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-08-16T14:29:38Z",
+      "side": 1,
+      "message": "Seems there is a merge conflict.",
+      "revId": "5452add9a7de8cccd5a3a13804f24071a57ab5db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
