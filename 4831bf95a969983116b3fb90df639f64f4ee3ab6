@@ -33,6 +33,41 @@
       "message": "Do you have a link to these fixture failures?",
       "revId": "4831bf95a969983116b3fb90df639f64f4ee3ab6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4334e7d1_85aba55f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-08-16T09:25:08Z",
+      "side": 1,
+      "message": "Lacros tests are not being promoted to CQ, Abandon CL",
+      "revId": "4831bf95a969983116b3fb90df639f64f4ee3ab6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a10943ed_c770bb7d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-08-16T09:25:08Z",
+      "side": 1,
+      "message": "They are on the tastboard for policy.UserFeedbackAllowed.lacros. All of those failures seem to have bugs already assigned: b/238407538, b/203022655 and crbug.com/1314873",
+      "parentUuid": "147c1cfa_0f87564c",
+      "revId": "4831bf95a969983116b3fb90df639f64f4ee3ab6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
