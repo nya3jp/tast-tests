@@ -73,7 +73,7 @@ func ECChargingState(ctx context.Context, s *testing.State) {
 	}
 
 	if battery.status&statusDischarging == 0 {
-		s.Fatal("Incorrect battery state, expected Discharging, got status: ", battery.status)
+		s.Fatalf("Incorrect battery state, expected Discharging, got status: 0x%x", battery.status)
 	}
 
 	if err := compareHostAndECBatteryStatus(ctx, h, battery); err != nil {
@@ -253,12 +253,14 @@ func suspendDUTAndCheckCharger(ctx context.Context, h *firmware.Helper, expectCh
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		ok, err := h.Servo.GetChargerAttached(ctx)
 		if err != nil {
+			testing.ContextLog(ctx, "GetChargerAttached failed: ", err)
 			return errors.Wrap(err, "error checking whether charger is attached")
 		} else if ok != expectChargerAttached {
+			testing.ContextLogf(ctx, "GetChargerAttached got %v, want %v", ok, expectChargerAttached)
 			return errors.Errorf("expected charger attached state: %v", expectChargerAttached)
 		}
 		return nil
-	}, &testing.PollOptions{Timeout: 10 * time.Second, Interval: 1 * time.Second}); err != nil {
+	}, &testing.PollOptions{Timeout: 60 * time.Second, Interval: 1 * time.Second}); err != nil {
 		return errors.Wrap(err, "failed to check if charger is attached")
 	}
 
