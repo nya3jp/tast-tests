@@ -33,6 +33,41 @@
       "message": "They were constantly failing because we just recently finished Lacros support for the feature.",
       "revId": "13d646295f46f0c8f0b5c9409430a68d4a713a52",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "19bdc8ee_58649e8a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-08-16T17:15:34Z",
+      "side": 1,
+      "message": "I understand people are working on them, but I don\u0027t think there is any reason to put them in schedule runs if they are not passing at all. They just took away lab resources. We can put them back after we need they can pass in some situation. Also, Derek only took out the one that always failed. \n\nLook at this:\n\nhttps://stainless.corp.google.com/search?view\u003dmatrix\u0026row\u003dtest\u0026col\u003dqueued_date\u0026first_date\u003d2022-07-20\u0026last_date\u003d2022-08-16\u0026test\u003d%5Etast%5C.telemetryextension%5C.\u0026exclude_cts\u003dfalse\u0026exclude_not_run\u003dfalse\u0026exclude_non_release\u003dtrue\u0026exclude_au\u003dtrue\u0026exclude_acts\u003dtrue\u0026exclude_retried\u003dfalse\u0026exclude_non_production\u003dfalse\u0026exclude_non_critical\u003dfalse\n\nMost of the telemetryextension tests failed but Derek didn\u0027t take out all of them.",
+      "parentUuid": "5e77602f_033ef157",
+      "revId": "13d646295f46f0c8f0b5c9409430a68d4a713a52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f0570c1_1be2edae",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-08-16T17:15:34Z",
+      "side": 1,
+      "message": "I think we may target the wrong set of the telemetryextension tests. I think the ones that we need to disable are\n\ntast.telemetryextension.APIOEMData.target_models\t\ntast.telemetryextension.APIOEMData.target_models_lacros\t\ntast.telemetryextension.APIOEMData.target_models_managed\ntast.telemetryextension.APIOEMData.target_models_managed_lacros\ntast.telemetryextension.SerialNumberPermission.target_models_lacros\t\n\nI think we can leave MessagePipe alone.",
+      "revId": "13d646295f46f0c8f0b5c9409430a68d4a713a52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
