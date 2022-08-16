@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3215d46c_1b91533e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2575,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-08-16T07:47:44Z",
+      "side": 0,
+      "message": "Please have both h265 flags so it works with new and old binary.",
+      "range": {
+        "startLine": 2575,
+        "startChar": 0,
+        "endLine": 2575,
+        "endChar": 11
+      },
+      "revId": "3c1a2f3a876a589aad781a410ba0491d453e55e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
