@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39969bac_22fb78e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/arcpipvideotest/arcpipvideotest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-08-16T22:26:28Z",
+      "side": 1,
+      "message": "nit: What do you think about printing the respective values in the error message for srvURL and hostPort?",
+      "revId": "876cd1c9279c62336a7904732a758ce646eca299",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
