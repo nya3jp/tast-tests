@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "45debe1e_ee74bfa4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1513952
+      },
+      "writtenOn": "2022-08-16T06:19:46Z",
+      "side": 1,
+      "message": "The OpenCL-CTS is an ongoing work.\nAt the moment some tests are always failing, but we still want them to run on every platforms to be notified when they are improvement which can come from multiple software stacks (mesa, clvk, clspv, etc).",
+      "revId": "5b65305644e41941ef070fd8278233051b968436",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f4bfe01a_6a00a5de",
