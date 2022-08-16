@@ -136,6 +136,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe54895c_8da3455d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/add_remove_factors.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1546868
+      },
+      "writtenOn": "2022-08-16T23:42:24Z",
+      "side": 1,
+      "message": "Well, the file name doesn\u0027t actually have to match the class name. Even in the style guide it\u0027s more a suggestion as to how things should generally look, not a hard rule that \"renaming the file means renaming the class\", it\u0027s not Java. Renaming auth_factor/auth_factor_manager.h -\u003e auth_factor/manager.h would not require renaming the class to \"Manager\".\n\nBut yes, c-style would probably say that I\u0027ve gone too far.",
+      "parentUuid": "955d8e14_be8e809b",
+      "range": {
+        "startLine": 35,
+        "startChar": 10,
+        "endLine": 35,
+        "endChar": 36
+      },
+      "revId": "6e1023da7cabe53e58426a92898ec02b28503046",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6685ca1b_1ff4f24b",
