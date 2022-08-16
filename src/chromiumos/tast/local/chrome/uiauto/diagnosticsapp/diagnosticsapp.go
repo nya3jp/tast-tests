@@ -64,6 +64,9 @@ var (
 	// DxPassedBadge export is used to find success badge notification.
 	DxPassedBadge = nodewith.Name("PASSED").Role(role.StaticText)
 
+	// DxFailedBadge export is used to find failed badge notification.
+	DxFailedBadge = nodewith.Name("FAILED").Role(role.StaticText)
+
 	// DxProgressBadge export is used to find successful launch of a routine.
 	DxProgressBadge = nodewith.Name("RUNNING").Role(role.StaticText)
 
