@@ -249,6 +249,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5cfc11cd_8281607e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/captive_portal_http.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-08-16T06:17:47Z",
+      "side": 1,
+      "message": "this doesn\u0027t look done. After enabling portal detection above you should:\n\n```\ndefer func(ctx) {\n  // Restore check portal list\n}(ctx)\n```",
+      "parentUuid": "3bdec885_854c6c1b",
+      "revId": "11fec9fd95e491a6775fd6023c405489b65373fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4b4b0f1d_3591c1f4",
         "filename": "src/chromiumos/tast/remote/wificell/ap_iface.go",
         "patchSetId": 13

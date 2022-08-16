@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9b24216_72e930ca",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/captive_portal_http.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-08-16T06:17:47Z",
+      "side": 1,
+      "message": "I think you may have misinterpreted my comment? These log lines made more sense where they were before.",
+      "revId": "16e5d8070d74cdcea5b31cc9fb1ea818d9241255",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d22f4854_8e92fc26",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/captive_portal_http.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-08-16T06:17:47Z",
+      "side": 1,
+      "message": "there should be a shillconst for wifi that you can use",
+      "range": {
+        "startLine": 65,
+        "startChar": 51,
+        "endLine": 65,
+        "endChar": 63
+      },
+      "revId": "16e5d8070d74cdcea5b31cc9fb1ea818d9241255",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0de7772f_14925eaf",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/captive_portal_http.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-08-16T06:17:47Z",
+      "side": 1,
+      "message": "IMO this should be done as follows:\n\n1. check whether portal detection is enabled for wifi.\n2a. if yes, we\u0027re done\n2b. if no, call EnablePortalDetection\n3. defer restoring the portal list",
+      "revId": "16e5d8070d74cdcea5b31cc9fb1ea818d9241255",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57a64df6_e36b676e",
+        "filename": "src/chromiumos/tast/remote/wificell/dhcp/server.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-08-16T06:17:47Z",
+      "side": 1,
+      "message": "you can just do this the same way you did it before (as a literal), but do it before the `if d.dnsOpt !\u003d nil` block",
+      "revId": "16e5d8070d74cdcea5b31cc9fb1ea818d9241255",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
