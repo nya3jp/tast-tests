@@ -160,6 +160,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e012bc1_a1a31ad7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/add_remove_factors.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-08-16T23:44:48Z",
+      "side": 1,
+      "message": "OK at least I was blocked by a reviewer when I tried to do literally this kind of thing 😊 It was already a couple of years ago, but when looking around it seems Chromium mostly follows this rule indeed.",
+      "parentUuid": "fe54895c_8da3455d",
+      "range": {
+        "startLine": 35,
+        "startChar": 10,
+        "endLine": 35,
+        "endChar": 36
+      },
+      "revId": "6e1023da7cabe53e58426a92898ec02b28503046",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6685ca1b_1ff4f24b",
