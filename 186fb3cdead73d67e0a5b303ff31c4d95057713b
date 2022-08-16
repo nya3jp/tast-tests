@@ -33,6 +33,92 @@
       "message": "Hi is there any way to see the pass rate of those tests? what is the policy enforced to disable tests here?\n\nlacros is still under the development and may not be as stable as other tests that have been around. Not sure if we should apply the same criteria for the project that is being actively worked on.\n\n+hidehiko +svenzheng in case you have anything to add here.",
       "revId": "186fb3cdead73d67e0a5b303ff31c4d95057713b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24a668d0_7b5629e8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-08-16T16:45:54Z",
+      "side": 1,
+      "message": "Here is an example of how you can check in stainless?\n\nhttps://stainless.corp.google.com/search?view\u003dmatrix\u0026row\u003dtest\u0026col\u003dbuild\u0026first_date\u003d2022-07-20\u0026last_date\u003d2022-08-16\u0026test\u003dlacros.ShelfLaunch.omaha%7Clacros.StartupPerf.omaha_primary%7Clacros.StartupPerf.omaha_sidebyside\u0026exclude_cts\u003dfalse\u0026exclude_not_run\u003dfalse\u0026exclude_non_release\u003dtrue\u0026exclude_au\u003dtrue\u0026exclude_acts\u003dtrue\u0026exclude_retried\u003dfalse\u0026exclude_non_production\u003dfalse\u0026exclude_non_critical\u003dfalse\n\nTo have a general view of lacros test cases:",
+      "parentUuid": "650e6c8e_b999f1d1",
+      "revId": "186fb3cdead73d67e0a5b303ff31c4d95057713b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "141440a1_0138ce36",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-08-16T16:45:54Z",
+      "side": 1,
+      "message": "I think there are a few test case\u0027s pass rate were over the threshold. Please check again.",
+      "revId": "186fb3cdead73d67e0a5b303ff31c4d95057713b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe03b0cf_4112b08c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/update_rootfs_to_stateful.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-08-16T16:45:54Z",
+      "side": 1,
+      "message": "I could not find in stainless. I could find it in stainless, but it was passing.",
+      "revId": "186fb3cdead73d67e0a5b303ff31c4d95057713b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32352d50_417ef5ad",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/update_stateful_to_rootfs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-08-16T16:45:54Z",
+      "side": 1,
+      "message": "This one look stable in stainless:\n\nhttps://stainless.corp.google.com/search?view\u003dmatrix\u0026row\u003dtest\u0026col\u003dbuild\u0026first_date\u003d2022-07-20\u0026last_date\u003d2022-08-16\u0026test\u003d%5Etast.lacros.\u0026exclude_cts\u003dfalse\u0026exclude_not_run\u003dfalse\u0026exclude_non_release\u003dtrue\u0026exclude_au\u003dtrue\u0026exclude_acts\u003dtrue\u0026exclude_retried\u003dfalse\u0026exclude_non_production\u003dfalse\u0026exclude_non_critical\u003dfalse\n\nSearch for tast.lacros.UpdateStatefulToRootfs.unstable",
+      "revId": "186fb3cdead73d67e0a5b303ff31c4d95057713b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "616c2f4f_de8ea1c1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/update_stateful_to_stateful.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-08-16T16:45:54Z",
+      "side": 1,
+      "message": "This one look stable in stainless:\n\nhttps://stainless.corp.google.com/search?view\u003dmatrix\u0026row\u003dtest\u0026col\u003dbuild\u0026first_date\u003d2022-07-20\u0026last_date\u003d2022-08-16\u0026test\u003d%5Etast.lacros.\u0026exclude_cts\u003dfalse\u0026exclude_not_run\u003dfalse\u0026exclude_non_release\u003dtrue\u0026exclude_au\u003dtrue\u0026exclude_acts\u003dtrue\u0026exclude_retried\u003dfalse\u0026exclude_non_production\u003dfalse\u0026exclude_non_critical\u003dfalse\n\nsearch for tast.lacros.UpdateStatefulToStateful.unstable",
+      "revId": "186fb3cdead73d67e0a5b303ff31c4d95057713b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
