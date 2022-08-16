@@ -17,6 +17,7 @@ import (
 	"chromiumos/tast/local/cryptohome"
 	hwseclocal "chromiumos/tast/local/hwsec"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -31,6 +32,8 @@ func init() {
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"pinweaver"},
+		// TODO(b/195385797): Run on gooey when the bug is fixed.
+		ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel("gooey")),
 	})
 }
 
