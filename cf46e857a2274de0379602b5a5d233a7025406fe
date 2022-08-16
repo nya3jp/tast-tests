@@ -22,6 +22,30 @@
       },
       "revId": "cf46e857a2274de0379602b5a5d233a7025406fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f653cd2a_41975cdc",
+        "filename": "src/chromiumos/tast/remote/cellular/callbox/iperf/server_result_poller.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1541462
+      },
+      "writtenOn": "2022-08-16T17:06:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e7e2aa1d_ae68be31",
+      "range": {
+        "startLine": 176,
+        "startChar": 86,
+        "endLine": 176,
+        "endChar": 93
+      },
+      "revId": "cf46e857a2274de0379602b5a5d233a7025406fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
