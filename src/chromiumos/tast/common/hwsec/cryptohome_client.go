@@ -933,6 +933,12 @@ func (u *CryptohomeClient) AddAuthFactor(ctx context.Context, authSessionID, lab
 	return err
 }
 
+// UpdateAuthFactor creates an auth factor for the user with given password.
+func (u *CryptohomeClient) UpdateAuthFactor(ctx context.Context, authSessionID, label, newKeyLabel, password string) error {
+	_, err := u.binary.updateAuthFactor(ctx, authSessionID, label, newKeyLabel, password)
+	return err
+}
+
 // AddPinAuthFactor creates an auth factor for the user with given password.
 func (u *CryptohomeClient) AddPinAuthFactor(ctx context.Context, authSessionID, label, pin string) error {
 	_, err := u.binary.addPinAuthFactor(ctx, authSessionID, label, pin)
