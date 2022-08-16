@@ -29,6 +29,7 @@ func init() {
 			"xiangdongkong@google.com",
 			"cros-feedback-app@google.com",
 		},
+		Fixture:      "chromeLoggedInWithOsFeedback",
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 	})
@@ -37,16 +38,11 @@ func init() {
 // VerifyScreenshotCheckboxStateChange verifies the default state for screenshot checkbox
 // is unchecked and user can check it to change the state.
 func VerifyScreenshotCheckboxStateChange(ctx context.Context, s *testing.State) {
+	cr := s.FixtValue().(*chrome.Chrome)
+
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
 	defer cancel()
-
-	s.Log("Setting up chrome")
-	cr, err := chrome.New(ctx, chrome.EnableFeatures("OsFeedback"))
-	if err != nil {
-		s.Fatal("Failed to start Chrome: ", err)
-	}
-	defer cr.Close(cleanupCtx)
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
