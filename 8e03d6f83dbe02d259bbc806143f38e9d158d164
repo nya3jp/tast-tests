@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c535de1d_a0cc0a72",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-08-16T18:18:19Z",
+      "side": 1,
+      "message": "LGTM. Since unit test was not run, no chump on this CL. Please make sure it went through the CQ procress.\n\nI want to see if Hyung Tae is okay to disable those tests before they will pass in some situation.",
+      "revId": "8e03d6f83dbe02d259bbc806143f38e9d158d164",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
