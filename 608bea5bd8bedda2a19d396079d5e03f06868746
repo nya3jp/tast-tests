@@ -110,6 +110,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "144800fc_6009a7be",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1002242
+      },
+      "writtenOn": "2022-08-16T16:30:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "55705f0c_4709c66f",
+      "revId": "608bea5bd8bedda2a19d396079d5e03f06868746",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "4ae480f1_13036ed3",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -138,6 +156,24 @@
       "writtenOn": "2022-08-15T23:25:18Z",
       "side": 1,
       "message": "I ran 3 different tests:\n\n1. `tast run \u003cDUT\u003e ui.MeetCUJ.2p`\n2. `tast run \u003cDUT\u003e ui.MeetCUJ.4p_present_notes_split`\n3. `tast run \u003cDUT\u003e ui.GoogleSheetsCUJ`\n\n#1 only showed `Event.Latency.EndToEnd.Mouse` info, which makes sense because we don\u0027t click on anything in the test. Currently, none of the new metrics cover regular mouse movement.\n\n#2 had `EventLatency.KeyPressed.TotalLatency`, `EventLatency.MousePressed.TotalLatency`, which is correct since we click once and type for a few minutes.\n\n#3 has `EventLatency.KeyPressed.TotalLatency`, `EventLatency.MouseWheel.TotalLatency`. I think this partially makes sense too, since we scroll a Google Sheet with our keyboard \u0026 scroll wheel. This test also scrolls down with the trackpad, but I don\u0027t see any scroll metrics being registered for that. \n\nThus, I don\u0027t think we have CUJs to really verify the gestures, and we might want to create a bug to see how we can get gesture scroll data for GoogleSheetsCUJ. Otherwise everything looks good.\n\nLast thing: would it be possible to add `EventLatency.GestureScrollUpdate.Wheel.TotalLatency`? That way after this CL, we can explore the trackpad scrolling in Google Sheets with gestures latency.",
+      "revId": "608bea5bd8bedda2a19d396079d5e03f06868746",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4cb851b5_bbc6bb46",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002242
+      },
+      "writtenOn": "2022-08-16T16:30:55Z",
+      "side": 1,
+      "message": "Thanks Navin for trying the CL.\n\nThe old metrics include mouse-move events, but currently, we don\u0027t report latency for mouse-move events in the new metrics. If we think reporting latency for mouse-move would be useful, we can easily add it.\n\nI\u0027ve also added `EventLatency.GestureScrollUpdate.Wheel.TotalLatency` to this CL.",
+      "parentUuid": "462a1383_4493f535",
       "revId": "608bea5bd8bedda2a19d396079d5e03f06868746",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
