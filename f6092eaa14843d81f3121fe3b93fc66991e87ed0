@@ -16,6 +16,63 @@
       "message": "Addressed comments and re-verified.",
       "revId": "f6092eaa14843d81f3121fe3b93fc66991e87ed0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "47530e76_8530e8cb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-08-16T05:57:34Z",
+      "side": 1,
+      "message": "Tast side lgtm modulo nits. defer rest of review to Jonathan.",
+      "revId": "f6092eaa14843d81f3121fe3b93fc66991e87ed0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "018f8a45_78b14a1a",
+        "filename": "src/chromiumos/tast/common/chameleon/chameleond.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 823,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-08-16T05:57:34Z",
+      "side": 1,
+      "message": "super nit: it\u0027s go convention to use \u0027ok\u0027 here",
+      "range": {
+        "startLine": 823,
+        "startChar": 15,
+        "endLine": 823,
+        "endChar": 23
+      },
+      "revId": "f6092eaa14843d81f3121fe3b93fc66991e87ed0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a8fed31_1eb50c71",
+        "filename": "src/chromiumos/tast/common/chameleon/chameleond.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1425,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-08-16T05:57:34Z",
+      "side": 1,
+      "message": "super nit: you can just declare via var and not use make, since append handles nil slices",
+      "revId": "f6092eaa14843d81f3121fe3b93fc66991e87ed0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
