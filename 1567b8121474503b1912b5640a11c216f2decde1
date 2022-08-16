@@ -22,6 +22,30 @@
       },
       "revId": "1567b8121474503b1912b5640a11c216f2decde1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d8f7aff_de70ae0e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-08-16T04:49:55Z",
+      "side": 1,
+      "message": "Done. Reduced to 5 seconds.",
+      "parentUuid": "915f21a7_2eef7567",
+      "range": {
+        "startLine": 15,
+        "startChar": 22,
+        "endLine": 15,
+        "endChar": 24
+      },
+      "revId": "1567b8121474503b1912b5640a11c216f2decde1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
