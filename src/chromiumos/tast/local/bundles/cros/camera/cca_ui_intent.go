@@ -107,6 +107,10 @@ func init() {
 }
 
 func CCAUIIntent(ctx context.Context, s *testing.State) {
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 3*time.Second)
+	defer cancel()
+
 	a := s.FixtValue().(cca.FixtureData).ARC
 	cr := s.FixtValue().(cca.FixtureData).Chrome
 	resetTestBridge := s.FixtValue().(cca.FixtureData).ResetTestBridge
@@ -120,7 +124,7 @@ func CCAUIIntent(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed initializing UI Automator: ", err)
 	}
-	defer uiDevice.Close(ctx)
+	defer uiDevice.Close(cleanupCtx)
 
 	s.Log("Installing camera intent testing app")
 	if err := a.Install(ctx, arc.APKPath("ArcCameraIntentTest.apk")); err != nil {
@@ -147,6 +151,19 @@ func CCAUIIntent(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get user path: ", err)
 	}
 	downloadsFolder := filepath.Join(userPath, "MyFiles", "Downloads")
+
+	virtioBlkDataEnabled, err := a.IsVirtioBlkDataEnabled(ctx)
+	if err != nil {
+		s.Fatal("Failed to check if virtio-blk /data is enabled: ", err)
+	}
+	if virtioBlkDataEnabled {
+		// To access |arcCameraFolderPathOnChromeOS| in ARCVM virtio-blk /data enabled devices,
+		// we need to manually mount Android's SDCard partition on the host side.
+		if err := arc.MountSDCardPartitionOnHostWithSSHFS(ctx, cr.NormalizedUser()); err != nil {
+			s.Fatal("Failed to mount Android's SDCard partition on host: ", err)
+		}
+		defer arc.UnmountSDCardPartitionFromHost(cleanupCtx, cr.NormalizedUser())
+	}
 
 	subTestTimeout := 40 * time.Second
 	for _, tc := range []struct {
