@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "63c696b2_0a7c3868",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/captive_portal_http.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-08-16T07:34:36Z",
+      "side": 1,
+      "message": "You are right. I misunderstand your comment about the defer function implementation. I have already restored the initial comments.",
+      "parentUuid": "b9b24216_72e930ca",
+      "revId": "16e5d8070d74cdcea5b31cc9fb1ea818d9241255",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d22f4854_8e92fc26",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-08-16T06:17:47Z",
       "side": 1,
       "message": "there should be a shillconst for wifi that you can use",
+      "range": {
+        "startLine": 65,
+        "startChar": 51,
+        "endLine": 65,
+        "endChar": 63
+      },
+      "revId": "16e5d8070d74cdcea5b31cc9fb1ea818d9241255",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa1fa6b2_a983576c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/captive_portal_http.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-08-16T07:34:36Z",
+      "side": 1,
+      "message": "Yes. I used `shillconst.TypeWifi` to replace my own constant variable",
+      "parentUuid": "d22f4854_8e92fc26",
       "range": {
         "startLine": 65,
         "startChar": 51,
@@ -58,6 +100,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "be176764_e905f30c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/captive_portal_http.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-08-16T07:34:36Z",
+      "side": 1,
+      "message": "Totally agree! My last patch did not implement the defer function because I misunderstood the comments of the defer function. The fourth step has been added.",
+      "parentUuid": "0de7772f_14925eaf",
+      "revId": "16e5d8070d74cdcea5b31cc9fb1ea818d9241255",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "57a64df6_e36b676e",
@@ -71,6 +131,24 @@
       "writtenOn": "2022-08-16T06:17:47Z",
       "side": 1,
       "message": "you can just do this the same way you did it before (as a literal), but do it before the `if d.dnsOpt !\u003d nil` block",
+      "revId": "16e5d8070d74cdcea5b31cc9fb1ea818d9241255",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a830728e_aac5dd46",
+        "filename": "src/chromiumos/tast/remote/wificell/dhcp/server.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-08-16T07:34:36Z",
+      "side": 1,
+      "message": "I\u0027m not sure I understand what you mean. But for my understanding, I set the original DHCP configurations before `if d.dnsOpt !\u003d nil`. Put all DNS configuration settings in `if d.dnsOpt !\u003d within nil`.",
+      "parentUuid": "57a64df6_e36b676e",
       "revId": "16e5d8070d74cdcea5b31cc9fb1ea818d9241255",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
