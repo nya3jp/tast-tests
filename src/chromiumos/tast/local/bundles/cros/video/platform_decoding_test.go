@@ -230,7 +230,6 @@ var hevcFiles = map[string][]string{
 		"test_vectors/hevc/main/AMVP_A_MTK_4.hevc",
 		"test_vectors/hevc/main/AMVP_B_MTK_4.hevc",
 		"test_vectors/hevc/main/AMVP_C_Samsung_7.hevc",
-		"test_vectors/hevc/main/BUMPING_A_ericsson_1.hevc",
 		"test_vectors/hevc/main/CAINIT_A_SHARP_4.hevc",
 		"test_vectors/hevc/main/CAINIT_B_SHARP_4.hevc",
 		"test_vectors/hevc/main/CAINIT_C_SHARP_3.hevc",
@@ -242,7 +241,6 @@ var hevcFiles = map[string][]string{
 		"test_vectors/hevc/main/CIP_A_Panasonic_3.hevc",
 		"test_vectors/hevc/main/cip_B_NEC_3.hevc",
 		"test_vectors/hevc/main/CIP_C_Panasonic_2.hevc",
-		"test_vectors/hevc/main/CONFWIN_A_Sony_1.hevc",
 		"test_vectors/hevc/main/DBLK_A_SONY_3.hevc",
 		"test_vectors/hevc/main/DBLK_B_SONY_3.hevc",
 		"test_vectors/hevc/main/DBLK_C_SONY_3.hevc",
@@ -286,9 +284,6 @@ var hevcFiles = map[string][]string{
 		"test_vectors/hevc/main/MVCLIP_A_qualcomm_3.hevc",
 		"test_vectors/hevc/main/MVDL1ZERO_A_docomo_4.hevc",
 		"test_vectors/hevc/main/MVEDGE_A_qualcomm_3.hevc",
-		"test_vectors/hevc/main/NoOutPrior_A_Qualcomm_1.hevc",
-		"test_vectors/hevc/main/NoOutPrior_B_Qualcomm_1.hevc",
-		"test_vectors/hevc/main/NUT_A_ericsson_5.hevc",
 		"test_vectors/hevc/main/OPFLAG_A_Qualcomm_1.hevc",
 		"test_vectors/hevc/main/OPFLAG_B_Qualcomm_1.hevc",
 		"test_vectors/hevc/main/OPFLAG_C_Qualcomm_1.hevc",
@@ -301,17 +296,11 @@ var hevcFiles = map[string][]string{
 		"test_vectors/hevc/main/PMERGE_C_TI_3.hevc",
 		"test_vectors/hevc/main/PMERGE_D_TI_3.hevc",
 		"test_vectors/hevc/main/PMERGE_E_TI_3.hevc",
-		"test_vectors/hevc/main/POC_A_Bossen_3.hevc",
 		"test_vectors/hevc/main/PPS_A_qualcomm_7.hevc",
 		"test_vectors/hevc/main/PS_B_VIDYO_3.hevc",
-		"test_vectors/hevc/main/RAP_A_docomo_6.hevc",
-		"test_vectors/hevc/main/RAP_B_Bossen_2.hevc",
 		"test_vectors/hevc/main/RPLM_A_qualcomm_4.hevc",
-		"test_vectors/hevc/main/RPLM_B_qualcomm_4.hevc",
 		"test_vectors/hevc/main/RPS_A_docomo_5.hevc",
 		"test_vectors/hevc/main/RPS_B_qualcomm_5.hevc",
-		"test_vectors/hevc/main/RPS_C_ericsson_5.hevc",
-		"test_vectors/hevc/main/RPS_D_ericsson_6.hevc",
 		"test_vectors/hevc/main/RPS_E_qualcomm_5.hevc",
 		"test_vectors/hevc/main/RPS_F_docomo_2.hevc",
 		"test_vectors/hevc/main/RQT_A_HHI_4.hevc",
@@ -333,10 +322,6 @@ var hevcFiles = map[string][]string{
 		"test_vectors/hevc/main/SAO_H_Parabola_1.hevc",
 		"test_vectors/hevc/main/SDH_A_Orange_4.hevc",
 		"test_vectors/hevc/main/SLICES_A_Rovi_3.hevc",
-		"test_vectors/hevc/main/SLIST_A_Sony_5.hevc",
-		"test_vectors/hevc/main/SLIST_B_Sony_9.hevc",
-		"test_vectors/hevc/main/SLIST_C_Sony_4.hevc",
-		"test_vectors/hevc/main/SLIST_D_Sony_9.hevc",
 		"test_vectors/hevc/main/SLPPLP_A_VIDYO_2.hevc",
 		"test_vectors/hevc/main/STRUCT_A_Samsung_7.hevc",
 		"test_vectors/hevc/main/STRUCT_B_Samsung_7.hevc",
@@ -348,7 +333,6 @@ var hevcFiles = map[string][]string{
 		"test_vectors/hevc/main/TSKIP_A_MS_3.hevc",
 		"test_vectors/hevc/main/TUSIZE_A_Samsung_1.hevc",
 		"test_vectors/hevc/main/VPSID_A_VIDYO_2.hevc",
-		"test_vectors/hevc/main/VPSSPSPPS_A_MainConcept_1.hevc",
 		"test_vectors/hevc/main/WP_A_Toshiba_3.hevc",
 		"test_vectors/hevc/main/WP_B_Toshiba_3.hevc",
 		"test_vectors/hevc/main/WPP_A_ericsson_MAIN_2.hevc",
@@ -513,6 +497,49 @@ var hevcFiles = map[string][]string{
 		"test_vectors/hevc/shvc/VUI_A_QUALCOMM_1.hevc",
 		"test_vectors/hevc/shvc/VUI_B_QUALCOMM_1.hevc",
 		"test_vectors/hevc/shvc/VUI_C_QUALCOMM_1.hevc",
+	},
+}
+
+// b(242711007): These test vectors are failing for VAAPI, but since we have removed
+// them from the hevc Files map, they are no longer being used in V4l2 tests.
+var hevcFilesFromBugs = map[string]map[string][]string{
+	"main": {
+		"239819547": {
+			"test_vectors/hevc/main/BUMPING_A_ericsson_1.hevc",
+			"test_vectors/hevc/main/NoOutPrior_B_Qualcomm_1.hevc",
+		},
+		"239927523": {
+			"test_vectors/hevc/main/NUT_A_ericsson_5.hevc",
+			"test_vectors/hevc/main/RAP_A_docomo_6.hevc",
+			"test_vectors/hevc/main/RAP_B_Bossen_2.hevc",
+		},
+		"239936640": {
+			"test_vectors/hevc/main/SLIST_A_Sony_5.hevc",
+			"test_vectors/hevc/main/SLIST_B_Sony_9.hevc",
+			"test_vectors/hevc/main/SLIST_C_Sony_4.hevc",
+			"test_vectors/hevc/main/SLIST_D_Sony_9.hevc",
+		},
+		"241775056": {
+			"test_vectors/hevc/main/POC_A_Bossen_3.hevc",
+		},
+		"241731431": {
+			"test_vectors/hevc/main/RPS_D_ericsson_6.hevc",
+		},
+		"241733687": {
+			"test_vectors/hevc/main/CONFWIN_A_Sony_1.hevc",
+		},
+		"241727534": {
+			"test_vectors/hevc/main/RPLM_B_qualcomm_4.hevc",
+		},
+		"241731425": {
+			"test_vectors/hevc/main/VPSSPSPPS_A_MainConcept_1.hevc",
+		},
+		"241772308": {
+			"test_vectors/hevc/main/NoOutPrior_A_Qualcomm_1.hevc",
+		},
+		"242708185": {
+			"test_vectors/hevc/main/RPS_C_ericsson_5.hevc",
+		},
 	},
 }
 
@@ -999,6 +1026,24 @@ func TestPlatformDecodingParams(t *testing.T) {
 			Metadata:     genExtraData(files),
 			Attr:         []string{"graphics_video_hevc"},
 		})
+	}
+
+	// Generate VAAPI HEVC tests from bugs.
+	for _, testGroup := range []string{"main"} {
+		bugs := hevcFilesFromBugs[testGroup]
+		for bug, files := range bugs {
+
+			params = append(params, paramData{
+				Name:         fmt.Sprintf("vaapi_hevc_bug_%s", bug),
+				Decoder:      filepath.Join(chrome.BinTestDir, "decode_test"),
+				CmdBuilder:   "hevcdecodeVAAPIargs",
+				Files:        files,
+				Timeout:      defaultTimeout,
+				SoftwareDeps: []string{"vaapi", caps.HWDecodeHEVC},
+				Metadata:     genExtraData(files),
+				Attr:         []string{"graphics_video_hevc"},
+			})
+		}
 	}
 
 	// Generate VAAPI VP8 tests.
