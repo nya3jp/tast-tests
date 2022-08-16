@@ -16,6 +16,24 @@
       "message": "Looks like tast.security.Manatee.fake is not running. Maybe we don\u0027t need this CL.\n\nhttps://stainless.corp.google.com/search?view\u003dmatrix\u0026row\u003dtest\u0026col\u003dqueued_date\u0026first_date\u003d2022-07-20\u0026last_date\u003d2022-08-16\u0026test\u003d%5Etast%5C.security%5C.\u0026exclude_cts\u003dfalse\u0026exclude_not_run\u003dfalse\u0026exclude_non_release\u003dtrue\u0026exclude_au\u003dtrue\u0026exclude_acts\u003dtrue\u0026exclude_retried\u003dfalse\u0026exclude_non_production\u003dfalse\u0026exclude_non_critical\u003dfalse",
       "revId": "a90ae3fbb4dab88b9c28e310f6df3ffd432e3a94",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d091aa0c_b50fe1b1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2022-08-16T17:54:21Z",
+      "side": 1,
+      "message": "Informational tests don\u0027t get reported on for VM hardware tests AFAIK. I filed a bug for this, but it is largely the reason this test case has bitrotted because it is really hard to get a test promoted to enforcing if it only has a board or two of coverage or no information coverage at all.",
+      "parentUuid": "bb211ff7_68bdff3d",
+      "revId": "a90ae3fbb4dab88b9c28e310f6df3ffd432e3a94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
