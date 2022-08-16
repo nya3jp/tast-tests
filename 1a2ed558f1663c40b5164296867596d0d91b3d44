@@ -16,6 +16,29 @@
       "message": "Thanks for the review!\n\nThis is mainly to help debug failures.",
       "revId": "1a2ed558f1663c40b5164296867596d0d91b3d44",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9ab8fab_41ae2b4d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterpriseconnectors/test_file_attached.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-08-16T07:34:36Z",
+      "side": 1,
+      "message": "Does Error make sense here?",
+      "range": {
+        "startLine": 309,
+        "startChar": 5,
+        "endLine": 309,
+        "endChar": 8
+      },
+      "revId": "1a2ed558f1663c40b5164296867596d0d91b3d44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
