@@ -73,6 +73,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "800d4fdc_c7c92188",
+        "filename": "src/chromiumos/tast/local/bluetooth/floss.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1525637
+      },
+      "writtenOn": "2022-08-16T02:46:35Z",
+      "side": 1,
+      "message": "Sounds good!",
+      "parentUuid": "df7ebb7b_a6884ac5",
+      "revId": "9b2d02f9106c3e00d73c0e78b93ad457fbffa027",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "825c74ce_c2cd6c4a",
         "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/fixture.go",
         "patchSetId": 4
