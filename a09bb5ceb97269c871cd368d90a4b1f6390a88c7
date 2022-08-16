@@ -65,6 +65,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ce338af_9489a0b1",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_client.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1546868
+      },
+      "writtenOn": "2022-08-16T15:43:21Z",
+      "side": 1,
+      "message": "nit: I did it slightly differently, as \" {4}\" because I still do want it to be a space, but I mean the {4} is definitely the right move.",
+      "parentUuid": "6edc3142_84198234",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 70
+      },
+      "revId": "a09bb5ceb97269c871cd368d90a4b1f6390a88c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "29be27f3_836d3ac5",
