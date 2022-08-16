@@ -74,17 +74,9 @@ func OpenAccountManagerSettingsAction(tconn *chrome.TestConn, cr *chrome.Chrome)
 	}
 }
 
-// AddAccount adds an account in-session. Account addition dialog should be already open.
-func AddAccount(ctx context.Context, tconn *chrome.TestConn, email, password string) error {
-	// Set up keyboard.
-	kb, err := input.VirtualKeyboard(ctx)
-	if err != nil {
-		return errors.Wrap(err, "failed to get keyboard")
-	}
-	defer kb.Close()
-
-	ui := uiauto.New(tconn).WithTimeout(DefaultUITimeout)
-
+// startAddAccount navigates to the Gaia screen in account addition dialog.
+// On success, the email page is shown and the email field is focused.
+func startAddAccount(ctx context.Context, kb *input.KeyboardEventWriter, ui *uiauto.Context, email string) error {
 	// All nodes in the dialog should be inside the `root`.
 	root := AddAccountDialog()
 
@@ -109,7 +101,7 @@ func AddAccount(ctx context.Context, tconn *chrome.TestConn, email, password str
 	if err := ui.Retry(2, func(ctx context.Context) error {
 		if err := uiauto.Combine("Click on Username",
 			ui.WaitUntilExists(emailField),
-			ui.LeftClick(emailField),
+			ui.LeftClickUntil(emailField, ui.Exists(emailField.Focused())),
 		)(ctx); err == nil {
 			// The email field input is found, the test can proceed.
 			return nil
@@ -132,6 +124,27 @@ func AddAccount(ctx context.Context, tconn *chrome.TestConn, email, password str
 		return errors.Wrap(err, "failed to click on user name")
 	}
 
+	return nil
+}
+
+// AddAccount adds an account in-session. Account addition dialog must be already open.
+func AddAccount(ctx context.Context, tconn *chrome.TestConn, email, password string) error {
+	// Set up keyboard.
+	kb, err := input.VirtualKeyboard(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to get keyboard")
+	}
+	defer kb.Close()
+
+	ui := uiauto.New(tconn).WithTimeout(DefaultUITimeout)
+
+	if err := startAddAccount(ctx, kb, ui, email); err != nil {
+		return errors.Wrap(err, "failed to start account addition")
+	}
+
+	// All nodes in the dialog should be inside the `root`.
+	root := AddAccountDialog()
+
 	passwordField := nodewith.Name("Enter your password").Role(role.TextField).Ancestor(root)
 	nextButton := nodewith.Name("Next").Role(role.Button).Ancestor(root)
 	iAgreeButton := nodewith.Name("I agree").Role(role.Button).Ancestor(root)
@@ -150,6 +163,50 @@ func AddAccount(ctx context.Context, tconn *chrome.TestConn, email, password str
 		ui.LeftClick(iAgreeButton),
 	)(ctx); err != nil {
 		return errors.Wrap(err, "failed to enter email and password")
+	}
+
+	return nil
+}
+
+// AddAccountSAML adds a SAML (at the moment only Microsoft) account in-session.
+// Account addition dialog must be already open.
+func AddAccountSAML(ctx context.Context, tconn *chrome.TestConn, email, password string) error {
+	// Set up keyboard.
+	kb, err := input.VirtualKeyboard(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to get keyboard")
+	}
+	defer kb.Close()
+
+	ui := uiauto.New(tconn).WithTimeout(DefaultUITimeout)
+
+	if err := startAddAccount(ctx, kb, ui, email); err != nil {
+		return errors.Wrap(err, "failed to start account addition")
+	}
+
+	// All nodes in the dialog should be inside the `root`.
+	root := AddAccountDialog()
+
+	samlEmailField := nodewith.NameContaining("Enter your email, phone, or Skype").Role(role.TextField).Ancestor(root)
+	passwordField := nodewith.NameContaining("Enter the password").Role(role.TextField).Ancestor(root)
+	noButton := nodewith.Name("No").Role(role.Button).Ancestor(root).Focusable()
+
+	if err := uiauto.Combine("Enter SAML email and password",
+		// Enter the User Name.
+		kb.TypeAction(email+"\n"),
+		// Enter the User Name on the SAML page.
+		ui.WaitUntilExists(samlEmailField),
+		ui.LeftClickUntil(samlEmailField, ui.Exists(samlEmailField.Focused())),
+		kb.TypeAction(email+"\n"),
+		// Enter the Password.
+		ui.WaitUntilExists(passwordField),
+		ui.LeftClickUntil(passwordField, ui.Exists(passwordField.Focused())),
+		kb.TypeAction(password+"\n"),
+		// On "Stay signed in?" screen select "No".
+		ui.WaitUntilExists(noButton),
+		ui.DoDefault(noButton),
+	)(ctx); err != nil {
+		return errors.Wrap(err, "failed to enter SAML email and password")
 	}
 
 	return nil
