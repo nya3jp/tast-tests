@@ -35,6 +35,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1a682bd_f386b48f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-08-16T12:33:32Z",
+      "side": 1,
+      "message": "LGTM % nit.",
+      "revId": "9936045984eb9730758bd1c14a813b0f881a3180",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "275d16e0_fea629de",
@@ -53,6 +70,29 @@
         "startChar": 26,
         "endLine": 120,
         "endChar": 30
+      },
+      "revId": "9936045984eb9730758bd1c14a813b0f881a3180",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "915182d8_51fbaa3c",
+        "filename": "src/chromiumos/tast/local/vdi/fixtures/vdi.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-08-16T12:33:32Z",
+      "side": 1,
+      "message": "nit: I like when a timeout is expressed as 30 * 60.\n\nYou can state in the comment above that this timeout is required as there are several sets in the scope of this fixture. The actual value, in the comment, is not really needed IMHO.\n\nThe same in other fixtures.",
+      "range": {
+        "startLine": 181,
+        "startChar": 124,
+        "endLine": 181,
+        "endChar": 128
       },
       "revId": "9936045984eb9730758bd1c14a813b0f881a3180",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
