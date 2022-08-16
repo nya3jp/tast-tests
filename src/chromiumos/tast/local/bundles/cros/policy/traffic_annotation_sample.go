@@ -6,27 +6,21 @@ package policy
 
 import (
 	"context"
-	"io/ioutil"
 	"net/http"
 	"net/http/httptest"
-	"path/filepath"
-	"regexp"
 	"time"
 
 	"chromiumos/tast/common/fixture"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/local/bundles/cros/policy/annotations"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/browser/browserfixt"
-	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/checked"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
-	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/restriction"
-	"chromiumos/tast/local/chrome/uiauto/role"
-	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -50,7 +44,7 @@ func init() {
 		}, {
 			Name:              "lacros",
 			ExtraSoftwareDeps: []string{"lacros"},
-			ExtraHardwareDeps: hwdep.D(hwdep.Model("atlas")), // Enough to run on one device.
+			ExtraHardwareDeps: hwdep.D(hwdep.Model("atlas")), // Enough to run on fone device.
 			Fixture:           fixture.LacrosPolicyLoggedIn,
 			Val:               browser.TypeLacros,
 		}},
@@ -70,10 +64,10 @@ func TrafficAnnotationSample(ctx context.Context, s *testing.State) {
 	server := httptest.NewServer(http.FileServer(s.DataFileSystem()))
 	defer server.Close()
 
-	tconn, err := cr.TestAPIConn(ctx)
-	if err != nil {
-		s.Fatal("Failed to create Test API connection: ", err)
-	}
+	//tconn, err := cr.TestAPIConn(ctx)
+	//if err != nil {
+	//	s.Fatal("Failed to create Test API connection: ", err)
+	//}
 
 	for _, param := range []struct {
 		name            string
@@ -107,34 +101,10 @@ func TrafficAnnotationSample(ctx context.Context, s *testing.State) {
 
 			defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "ui_tree_"+param.name)
 
-			// Open the net-export page.
-			netConn, err := br.NewConn(ctx, "chrome://net-export")
-			if err != nil {
-				s.Fatal("Failed to load chrome://net-export: ", err)
+			// Open the net-export page and start logging.
+			if err := annotations.StartLogging(ctx, cr, br); err != nil {
+				s.Fatal("Failed to start logging: ", err)
 			}
-			defer netConn.Close()
-			// Click Start Log button.
-			startLoggingBtn := `document.getElementById("start-logging")`
-			if err := netConn.WaitForExpr(ctx, startLoggingBtn); err != nil {
-				s.Fatal("Failed to wait for the Start Logging button to load: ", err)
-
-			}
-			if err := netConn.Eval(ctx, startLoggingBtn+`.click()`, nil); err != nil {
-				s.Fatal("Failed to click the Start Logging button: ", err)
-			}
-
-			// Click Save button to choose the filename for log file.
-			ui := uiauto.New(tconn)
-			saveButton := nodewith.Name("Save").Role(role.Button)
-			if err := uiauto.Combine("Click 'Save' button",
-				ui.WaitUntilExists(saveButton),
-				ui.WaitUntilEnabled(saveButton),
-				ui.DoDefault(saveButton),
-				ui.WaitUntilGone(saveButton),
-			)(ctx); err != nil {
-				s.Fatal("Failed to click: ", err)
-			}
-
 			// Open the website with the address form.
 			conn, err := br.NewConn(ctx, server.URL+"/"+"autofill_address_enabled.html")
 			if err != nil {
@@ -142,35 +112,10 @@ func TrafficAnnotationSample(ctx context.Context, s *testing.State) {
 			}
 			defer conn.Close()
 
-			// Click Stop Logging button.
-			stopLoggingBtn := `document.getElementById("stop-logging")`
-			if err := netConn.WaitForExpr(ctx, stopLoggingBtn); err != nil {
-				s.Fatal("Failed to wait for the Start Logging button to load: ", err)
+			// Stop logging and check the logs for given annotation.
+			if err := annotations.StopLoggingCheckLogs(ctx, cr, br, "88863520"); err != nil {
+				s.Fatal("Failed to stop logging and check logs: ", err)
 			}
-			if err := netConn.Eval(ctx, stopLoggingBtn+`.click()`, nil); err != nil {
-				s.Fatal("Failed to click the Start Logging button: ", err)
-			}
-
-			// Get the net export log file.
-			downloadsPath, err := cryptohome.DownloadsPath(ctx, cr.NormalizedUser())
-			if err != nil {
-				s.Fatal("Failed to get user's Download path: ", err)
-			}
-			downloadName := "chrome-net-export-log.json"
-			downloadLocation := filepath.Join(downloadsPath, downloadName)
-
-			// Read the net export log file.
-			logFile, err := ioutil.ReadFile(downloadLocation)
-			if err != nil {
-				s.Fatal("Failed to open logfile: ", err)
-			}
-			// Check if the traffic annotation exists in the log file.
-			// Specifically checking for autofill_query:88863520.
-			isExist, err := regexp.Match("\"traffic_annotation\":88863520", logFile)
-			if err != nil {
-				s.Fatal("Failed to locate traffic annotation in logfile: ", err)
-			}
-			s.Log("Checking for annotation in log file, result:", isExist)
 		})
 	}
 }
