@@ -86,7 +86,7 @@ func RoutingFallthrough(ctx context.Context, s *testing.State) {
 		IPv6:          true,
 		IsPrimary:     false,
 		IsHighestIPv6: primaryFamily == primaryIPv4Only,
-		Timeout:       0,
+		Timeout:       5 * time.Second,
 	}); len(errs) != 0 {
 		for _, err := range errs {
 			s.Error("Failed to verify connectivity to the base network: ", err)
