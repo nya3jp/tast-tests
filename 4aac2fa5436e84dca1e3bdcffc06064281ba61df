@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d7656a7_fe776cf5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/docs_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-08-16T02:42:53Z",
+      "side": 1,
+      "message": "Why is this taking nil?",
+      "revId": "4aac2fa5436e84dca1e3bdcffc06064281ba61df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
