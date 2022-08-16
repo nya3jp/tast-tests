@@ -52,6 +52,24 @@
       "parentUuid": "de76b0d2_3a1600cb",
       "revId": "3fa8d142282f5f4d5792f2531e183c2257343935",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9644e96f_06293818",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1520127
+      },
+      "writtenOn": "2022-08-16T18:06:28Z",
+      "side": 1,
+      "message": "In the original code, scenario and store are executed within the s.Run fn func:\n\n\u003e               if !s.Run(ctx, fmt.Sprintf(\"%s-%d\", runPrefix, i), func(ctx context.Context, s *testing.State) {\n\u003e                       hists, err :\u003d scenario(ctx)\n\u003e                       if err !\u003d nil {\n\u003e                               s.Fatal(\"Failed to run the test scenario: \", err)\n\u003e                       }\n\u003e                       if err \u003d store(ctx, r.pv, hists); err !\u003d nil {\n\u003e                               s.Fatal(\"Failed to store the histogram data: \", err)\n\u003e                       }\n\u003e               }) {\n\u003e                       return false\n\u003e               }\n\nYour suggestion changes the behavior a bit, bringing the same snip to be executed in another context, after run (s.Run fn in practice) is returned:\n\n\u003e               run(ctx, fmt.Sprintf(\"%s-%d\", runPrefix, i))\n\u003e               hists, err :\u003d scenario(ctx)\n\u003e               if err !\u003d nil {\n\u003e                       return errors.Wrap(err, \"failed to run the test scenario\")\n\u003e               }\n\u003e               if err :\u003d store(ctx, r.pv, hists); err !\u003d nil {\n\u003e                       return errors.Wrap(err, \"failed to store the histogram data\")\n\u003e               }\n\nI haven\u0027t done like this before because I was trying to be extra careful, but I don\u0027t see any problems in tests in doing that. In fact I\u0027ve now changed like this in the latest patchset. PTAL.\n\nAnd I don\u0027t know how to \"only pass in the scenario and store functions\" as you also mentioned though.\n\nThanks for reviewing!",
+      "parentUuid": "b574b9b4_85bbef79",
+      "revId": "3fa8d142282f5f4d5792f2531e183c2257343935",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
