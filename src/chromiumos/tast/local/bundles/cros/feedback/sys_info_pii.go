@@ -134,12 +134,16 @@ func SysInfoPII(ctx context.Context, s *testing.State) {
 			badContents := []contentsDescriptor{
 				{actualTitle, "tabTitle"},
 				{sensitiveURL, "URL"},
-				{sensitiveURLWithoutScheme, "URLWithoutScheme"},
 			}
 			if testType == localFileTest {
 				badContents = append(
 					badContents,
 					contentsDescriptor{localPageContents, "pageContents"},
+				)
+			} else {
+				badContents = append(
+					badContents,
+					contentsDescriptor{sensitiveURLWithoutScheme, "URLWithoutScheme"},
 				)
 			}
 			for _, entry := range badContents {
