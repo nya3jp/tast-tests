@@ -16,6 +16,24 @@
       "message": "LGTM. Since unit test was not run, no chump on this CL. Please make sure it went through the CQ procress.\n\nI want to see if Hyung Tae is okay to disable those tests before they will pass in some situation.",
       "revId": "8e03d6f83dbe02d259bbc806143f38e9d158d164",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f2ca61a_adecddae",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-08-16T20:26:16Z",
+      "side": 1,
+      "message": "It is okay to disable lacros.ShelfLaunch.omaha which is a known test failure. I can enable it again until a fix gets in.\n\n+hidehiko for lacros.StartupPerf",
+      "parentUuid": "c535de1d_a0cc0a72",
+      "revId": "8e03d6f83dbe02d259bbc806143f38e9d158d164",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
