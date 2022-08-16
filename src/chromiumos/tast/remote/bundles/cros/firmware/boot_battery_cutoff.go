@@ -198,7 +198,7 @@ func BootBatteryCutoff(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to disable hardware write protect: ", err)
 			}
 			s.Log("Rebooting DUT to ensure hardware WP disabled")
-			if err := h.Servo.SetPowerState(ctx, servo.PowerStateWarmReset); err != nil {
+			if err := h.Servo.SetPowerState(ctx, servo.PowerStateReset); err != nil {
 				s.Fatal("Faild to reset DUT: ", err)
 			}
 			h.CloseRPCConnection(ctx)
