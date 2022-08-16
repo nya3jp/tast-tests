@@ -124,6 +124,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fec8538c_c6f55988",
+        "filename": "src/chromiumos/tast/local/chrome/browser/browser.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-08-16T07:48:58Z",
+      "side": 1,
+      "message": "Experimentation suggests that in our case the current window is really just the current window. I\u0027ve made it clear in the comment and in the function name.",
+      "parentUuid": "81eb703d_fdfff638",
+      "revId": "1ff1b9971e853bbd4d93954f27531c2d26a83b54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d930a800_3b644021",
@@ -206,6 +224,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c78fab6c_95d5263a",
+        "filename": "src/chromiumos/tast/local/chrome/browser/browserfixt/browserfixt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-08-16T07:48:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "83d0d789_8865f9ff",
+      "revId": "1ff1b9971e853bbd4d93954f27531c2d26a83b54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9d9c450b_3c59396c",
@@ -243,6 +279,30 @@
       "side": 1,
       "message": "I had tried that but it required so many changes to the cuj tests that I gave up (since the callsites currently don\u0027t have the browser available, only the tconn). Moreover, there are several other functions here using chrome.tabs API.",
       "parentUuid": "9d9c450b_3c59396c",
+      "range": {
+        "startLine": 127,
+        "startChar": 0,
+        "endLine": 137,
+        "endChar": 1
+      },
+      "revId": "1ff1b9971e853bbd4d93954f27531c2d26a83b54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5dce00d6_08d71364",
+        "filename": "src/chromiumos/tast/local/chrome/cuj/ui.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-08-16T07:48:58Z",
+      "side": 1,
+      "message": "I have now moved all chrome.tabs wrappers to a new file tabs.go in the browser package.",
+      "parentUuid": "18ae7498_d646d7f5",
       "range": {
         "startLine": 127,
         "startChar": 0,
