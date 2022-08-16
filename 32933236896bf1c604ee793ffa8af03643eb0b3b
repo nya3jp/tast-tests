@@ -83,6 +83,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5ac0bd6_53bf3ede",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/youtube_web.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2022-08-16T07:08:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c9536c38_5f3336ad",
+      "revId": "32933236896bf1c604ee793ffa8af03643eb0b3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "01c6e73d_97058b60",
@@ -96,6 +114,24 @@
       "writtenOn": "2022-08-16T00:26:35Z",
       "side": 1,
       "message": "ditto for RetryUntil",
+      "revId": "32933236896bf1c604ee793ffa8af03643eb0b3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "62549895_307d5f27",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/youtube_web.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2022-08-16T07:08:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "01c6e73d_97058b60",
       "revId": "32933236896bf1c604ee793ffa8af03643eb0b3b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
