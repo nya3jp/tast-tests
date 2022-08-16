@@ -18,7 +18,6 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/firmware"
 	"chromiumos/tast/remote/firmware/fixture"
-	pb "chromiumos/tast/services/cros/firmware"
 	"chromiumos/tast/services/cros/graphics"
 	"chromiumos/tast/services/cros/inputs"
 	"chromiumos/tast/ssh"
@@ -215,7 +214,7 @@ func ScreenWakeTabletMode(ctx context.Context, s *testing.State) {
 	}
 
 	// Connect to the RPC service on the DUT.
-	if err := h.RequireRPCClient(ctx); err != nil {
+	if err := h.RequireRPCUtils(ctx); err != nil {
 		s.Fatal("Failed to connect to the RPC service on the DUT: ", err)
 	}
 
@@ -233,9 +232,6 @@ func ScreenWakeTabletMode(ctx context.Context, s *testing.State) {
 	}
 	defer touchscreen.CloseChrome(ctx, &empty.Empty{})
 
-	// Declare a rpc service for finding keyboard.
-	keyboard := pb.NewUtilsServiceClient(h.RPCClient.Conn)
-
 	// Declare a rpc service for detecting touchpad.
 	touchpad := inputs.NewTouchpadServiceClient(h.RPCClient.Conn)
 
@@ -248,7 +244,7 @@ func ScreenWakeTabletMode(ctx context.Context, s *testing.State) {
 				s.Log("Skip scanning for keyboard because DUT is a chromeslate")
 				return nil, nil
 			}
-			res, err := keyboard.FindPhysicalKeyboard(ctx, &empty.Empty{})
+			res, err := h.RPCUtils.FindPhysicalKeyboard(ctx, &empty.Empty{})
 			if err != nil {
 				return nil, errors.Wrap(err, "during FindPhysicalKeyboard")
 			}
@@ -705,6 +701,16 @@ func ScreenWakeTabletMode(ctx context.Context, s *testing.State) {
 		if err := verifyScreenState(ctx, expectOn); err != nil {
 			s.Fatal("After turning on tablemode: ", err)
 		}
+
+		// Check for the tablet mode enabled status.
+		if _, err := h.RPCUtils.ReuseChrome(ctx, &empty.Empty{}); err != nil {
+			s.Fatal("Failed to reuse Chrome session: ", err)
+		}
+		res, err := h.RPCUtils.EvalTabletMode(ctx, &empty.Empty{})
+		if err != nil {
+			s.Fatal("Failed to check for tablet mode enabled status: ", err)
+		}
+		s.Logf("Tablet mode enabled: %t", res.TabletModeEnabled)
 	}
 
 	s.Log("Tab power button to turn display off")
