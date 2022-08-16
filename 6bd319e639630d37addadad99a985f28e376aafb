@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15f8763d_0c3db9fc",
+        "filename": "src/chromiumos/tast/local/shill/manager.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 650,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-08-16T00:12:56Z",
+      "side": 0,
+      "message": "Let\u0027s just use this function instead.",
+      "revId": "6bd319e639630d37addadad99a985f28e376aafb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

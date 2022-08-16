@@ -54,6 +54,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c1d3d7c_cd65f34d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/shill_service.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-08-16T00:12:56Z",
+      "side": 1,
+      "message": "Ahh okay, I was just wondering. I\u0027m fine either way.",
+      "parentUuid": "e02334cf_b520412c",
+      "revId": "1b1293e80b4c8e94f41375e60d7279dc51cca8dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1bef71c0_99cb8ccd",
@@ -607,6 +625,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f77aaa9f_060a59c1",
+        "filename": "src/chromiumos/tast/remote/wificell/router/openwrt/router.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-08-16T00:12:56Z",
+      "side": 1,
+      "message": "Maybe leaving empty functions with a TODO is best.",
+      "parentUuid": "5cdddd7e_eb75bb9f",
+      "revId": "1b1293e80b4c8e94f41375e60d7279dc51cca8dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "17b40ceb_8d4f76f1",
         "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
         "patchSetId": 10
@@ -689,6 +725,24 @@
       "side": 1,
       "message": "I run the command `~/trunk/src/platform/tast/tools/go.sh generate chromiumos/tast/services/cros/wifi` according to the file `tast-tests/src/chromiumos/tast/services/cros/wifi/gen.go` and this file was changed automatically. Do I need to restore it manually?",
       "parentUuid": "9d8e0a79_bd23f23a",
+      "revId": "1b1293e80b4c8e94f41375e60d7279dc51cca8dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d335362_fc5a0b74",
+        "filename": "src/chromiumos/tast/services/cros/wifi/iwlwifi_pci_rescan.pb.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-08-16T00:12:56Z",
+      "side": 1,
+      "message": "Ah I see, no that\u0027s fine.",
+      "parentUuid": "3630c42d_772dbe64",
       "revId": "1b1293e80b4c8e94f41375e60d7279dc51cca8dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
