@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b215f59_13cbb6d8",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 614,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-08-16T13:39:34Z",
+      "side": 1,
+      "message": "clar: do we need this change still?",
+      "revId": "72c68ce877fe2e9be538d3042b7f444d08ef0461",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
