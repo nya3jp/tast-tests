@@ -124,7 +124,7 @@ func copyFilesToLinuxfiles(ctx context.Context, tconn *chrome.TestConn, filesApp
 		steps = append(steps, filesApp.SelectFile(file))
 	}
 
-	copyMsg := nodewith.Name(fmt.Sprintf("Copying %d items to %s", len(testFiles), "Linux files")).Role(role.StaticText).Ancestor(filesapp.WindowFinder(apps.Files.ID))
+	copyMsg := nodewith.Name(fmt.Sprintf("Copying %d items to %s", len(testFiles), "Linux files")).Role(role.StaticText).Ancestor(filesapp.WindowFinder(apps.FilesSWA.ID))
 	ui := uiauto.New(tconn)
 	steps = append(steps,
 		// Select all files.
