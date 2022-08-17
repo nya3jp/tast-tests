@@ -70,6 +70,24 @@
       "parentUuid": "b574b9b4_85bbef79",
       "revId": "3fa8d142282f5f4d5792f2531e183c2257343935",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3bf143e_0286b4ef",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-08-17T02:54:00Z",
+      "side": 1,
+      "message": "Maybe we can have a VC about this?\n\nI\u0027m not sure what the function of this RunFunc in the current CL is. Previously, the scenario was executed inside s.Run. Now, it looks like s.Run is run with nothing inside it, and the scenario is executed afterwards, which I think is broken.\n\nIt should be possible to have a \u0027scenario\u0027 function which just runs the test, including s.Run if necessary, and a store function as well, and completely get rid of this RunFunc, unless I\u0027m misunderstanding something.\n\nI guess it\u0027s also possible to fold store into the scenario func as well but not sure if that\u0027s a good idea.",
+      "parentUuid": "9644e96f_06293818",
+      "revId": "3fa8d142282f5f4d5792f2531e183c2257343935",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
