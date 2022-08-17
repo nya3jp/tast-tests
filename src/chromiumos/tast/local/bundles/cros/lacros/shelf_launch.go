@@ -71,18 +71,19 @@ func ShelfLaunch(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to get installed apps: ", err)
 	}
-	browserAppName := ""
+	browser, err := apps.PrimaryBrowser(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to get browser app: ", err)
+	}
+	found := false
 	for _, appItem := range appItems {
-		// TODO(crbug.com/1328994): Use apps.PrimaryBrowser for LacrosOnly app.
-		if appItem.Type == ash.StandaloneBrowser && appItem.AppID == apps.Lacros.ID &&
-			(appItem.Name == apps.Lacros.Name || appItem.Name == apps.Chrome.Name) {
-			browserAppName = appItem.Name
+		if appItem.Type == ash.StandaloneBrowser && appItem.AppID == browser.ID && appItem.Name == browser.Name {
+			found = true
 			break
 		}
 	}
-	if browserAppName == "" {
-		s.Logf("AppID: %v, Name: Lacros or Chrome, Type: %v, was expected, but got",
-			apps.Lacros.ID, ash.StandaloneBrowser)
+	if !found {
+		s.Logf("AppID: %v, Name: %v, Type: %v, was expected, but got", browser.ID, browser.Name, ash.StandaloneBrowser)
 		for _, appItem := range appItems {
 			s.Logf("AppID: %v, Name: %v, Type: %v", appItem.AppID, appItem.Name, appItem.Type)
 		}
@@ -94,9 +95,9 @@ func ShelfLaunch(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to get shelf items: ", err)
 	}
-	found := false
+	found = false
 	for _, shelfItem := range shelfItems {
-		if shelfItem.AppID == apps.Lacros.ID && shelfItem.Title == browserAppName && shelfItem.Type == ash.ShelfItemTypePinnedApp {
+		if shelfItem.AppID == browser.ID && shelfItem.Title == browser.Name && shelfItem.Type == ash.ShelfItemTypePinnedApp {
 			found = true
 			break
 		}
@@ -117,7 +118,7 @@ func ShelfLaunch(ctx context.Context, s *testing.State) {
 
 	// Clean up user data dir to ensure a clean start.
 	os.RemoveAll(lacros.UserDataDir)
-	if err = ash.LaunchAppFromShelf(ctx, tconn, browserAppName, apps.Lacros.ID); err != nil {
+	if err = ash.LaunchAppFromShelf(ctx, tconn, browser.Name, browser.ID); err != nil {
 		s.Fatal("Failed to launch Lacros: ", err)
 	}
 
@@ -156,7 +157,7 @@ func ShelfLaunch(ctx context.Context, s *testing.State) {
 	}
 	l = nil
 
-	if err := ash.WaitForAppClosed(ctx, tconn, apps.Lacros.ID); err != nil {
-		s.Fatalf("%s did not close successfully: %s", apps.Lacros.Name, err)
+	if err := ash.WaitForAppClosed(ctx, tconn, browser.ID); err != nil {
+		s.Fatalf("%s did not close successfully: %s", browser.Name, err)
 	}
 }
