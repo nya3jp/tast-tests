@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0acab62_3865762c",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/vkb/vkb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 520,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-08-17T00:35:24Z",
+      "side": 1,
+      "message": "nit: remove empty line.",
+      "revId": "115422e7b04a82a732eb1fff2006124269ba03f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ccd6f0e1_36016b99",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/vkb/vkb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 522,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-08-17T00:35:24Z",
+      "side": 1,
+      "message": "I am curious why do not you do something like \n\nvkbCtx.ui.LeftClick(A | B).\n\nKeyFinder.Name() returns a type of nodewith.Finder. It is same as what you have done in https://crrev.com/c/3830143",
+      "range": {
+        "startLine": 522,
+        "startChar": 9,
+        "endLine": 522,
+        "endChar": 19
+      },
+      "revId": "115422e7b04a82a732eb1fff2006124269ba03f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
