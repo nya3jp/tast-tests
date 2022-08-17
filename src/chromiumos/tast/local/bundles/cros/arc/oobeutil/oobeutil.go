@@ -41,7 +41,7 @@ func CompleteConsolidatedConsentOnboardingFlow(ctx context.Context, ui *uiauto.C
 	noThanks := nodewith.Name("No thanks").Role(role.Button)
 	next := nodewith.Name("Next").Role(role.Button)
 	getStarted := nodewith.Name("Get started").Role(role.Button)
-	syncAccept := nodewith.NameRegex(regexp.MustCompile("Accept and continue|Got it")).Role(role.Button)
+	syncAccept := nodewith.NameRegex(regexp.MustCompile("Accept and continue|Turn on sync")).Role(role.Button)
 	err = uiauto.Combine("go through the oobe flow screens after the consolidated consent screen",
 		ui.WaitUntilExists(acceptAndContinue),
 		ui.LeftClickUntil(acceptAndContinue, ui.Gone(acceptAndContinue)),
@@ -61,7 +61,7 @@ func CompleteRegularOnboardingFlow(ctx context.Context, ui *uiauto.Context, revi
 	skip := nodewith.Name("Skip").Role(role.StaticText)
 	noThanks := nodewith.Name("No thanks").Role(role.Button)
 	getStarted := nodewith.Name("Get started").Role(role.Button)
-	syncAccept := nodewith.NameRegex(regexp.MustCompile("Accept and continue|Got it")).Role(role.Button)
+	syncAccept := nodewith.NameRegex(regexp.MustCompile("Accept and continue|Turn on sync")).Role(role.Button)
 	more := nodewith.Name("More").Role(role.Button)
 	next := nodewith.Name("Next").Role(role.Button)
 	err := uiauto.Combine("go through the onboarding UI prior to ARC ToS acceptance",
