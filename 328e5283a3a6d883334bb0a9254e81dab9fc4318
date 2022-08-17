@@ -16,6 +16,29 @@
       "message": "Hi Jeremy,\n\nPlease review it. Thanks.",
       "revId": "328e5283a3a6d883334bb0a9254e81dab9fc4318",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "718453b4_7c8924f5",
+        "filename": "src/chromiumos/tast/remote/firmware/helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 663,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-08-17T17:15:09Z",
+      "side": 1,
+      "message": "This should be minimalSize instead of 8",
+      "range": {
+        "startLine": 663,
+        "startChar": 87,
+        "endLine": 663,
+        "endChar": 88
+      },
+      "revId": "328e5283a3a6d883334bb0a9254e81dab9fc4318",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
