@@ -57,6 +57,24 @@
       "parentUuid": "e52751cc_89ab495a",
       "revId": "7d276bc8ad98e9b05e2824a8bb2579125179cdae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc934d7c_3c87e6f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/intent_forward.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2022-08-17T15:55:08Z",
+      "side": 1,
+      "message": "Thanks for fixing this. My bad that I merged this just before my OOO start.",
+      "parentUuid": "824a0063_28f1a314",
+      "revId": "7d276bc8ad98e9b05e2824a8bb2579125179cdae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
