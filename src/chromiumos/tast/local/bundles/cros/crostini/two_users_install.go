@@ -10,6 +10,7 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/crostini"
 	cui "chromiumos/tast/local/crostini/ui"
 	"chromiumos/tast/local/crostini/ui/terminalapp"
@@ -47,6 +48,8 @@ func init() {
 }
 
 func TwoUsersInstall(ctx context.Context, s *testing.State) {
+	stopRecording := uiauto.RecordVNCVideo(ctx, s, uiauto.RecordingFramerate(5))
+	defer stopRecording()
 	// Login options for the first user.
 	optsUser1 := []chrome.Option{chrome.GAIALoginPool(s.RequiredVar("ui.gaiaPoolDefault")),
 		chrome.ExtraArgs("--vmodule=crostini*=1"),
