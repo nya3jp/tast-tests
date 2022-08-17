@@ -108,9 +108,9 @@ func ResizeWindow(ctx context.Context, s *testing.State) {
 				WindowFinder: nodewith.HasClass("NonClientView").NameContaining(chromeApp.Name),
 			}, {
 				Name:         apps.Files.Name,
-				ID:           apps.Files.ID,
+				ID:           apps.FilesSWA.ID,
 				IsArcApp:     false,
-				WindowFinder: filesapp.WindowFinder(apps.Files.ID),
+				WindowFinder: filesapp.WindowFinder(apps.FilesSWA.ID),
 			},
 		}
 	} else {
