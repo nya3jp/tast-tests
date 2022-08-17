@@ -68,13 +68,13 @@ func NewRunParams(tier cuj.Tier, ccaScriptPaths []string, outDir, appName, accou
 }
 
 type runResources struct {
-	kb          *input.KeyboardEventWriter
-	topRow      *input.TopRowLayout
-	ui          *uiauto.Context
-	vh          *audio.Helper
-	uiHandler   cuj.UIActionHandler
-	recorder    *cujrecorder.Recorder
-	browserName string
+	kb         *input.KeyboardEventWriter
+	topRow     *input.TopRowLayout
+	ui         *uiauto.Context
+	vh         *audio.Helper
+	uiHandler  cuj.UIActionHandler
+	recorder   *cujrecorder.Recorder
+	browserApp apps.App
 }
 
 // Run runs the EverydayMultitaskingCUJ test.
@@ -242,7 +242,7 @@ func Run(ctx context.Context, cr *chrome.Chrome, bt browser.Type, a *arc.ARC, pa
 		}
 	}
 
-	resources := &runResources{kb: kb, topRow: topRow, ui: ui, vh: vh, uiHandler: uiHandler, recorder: recorder, browserName: browserApp.Name}
+	resources := &runResources{kb: kb, topRow: topRow, ui: ui, vh: vh, uiHandler: uiHandler, recorder: recorder, browserApp: browserApp}
 
 	if err := openAndSwitchTabs(ctx, br, tconn, params, resources); err != nil {
 		return errors.Wrap(err, "failed to open and switch chrome tabs")
@@ -353,7 +353,7 @@ func openAndSwitchTabs(ctx context.Context, br *browser.Browser, tconn *chrome.T
 				// Sometimes, Spotify may pop up ads as active window.
 				// It should switch back to the browser window and try again.
 				if err := uiauto.Combine("switch back to browser and switch tab again",
-					resources.uiHandler.SwitchToAppWindowByIndex(resources.browserName, browserWinIdx),
+					resources.uiHandler.SwitchToAppWindowByIndex(resources.browserApp.Name, browserWinIdx),
 					resources.uiHandler.SwitchToChromeTabByIndex(tabIdx),
 				)(ctx); err != nil {
 					return err
@@ -407,13 +407,13 @@ func openAndSwitchTabs(ctx context.Context, br *browser.Browser, tconn *chrome.T
 	}
 
 	if err := resources.recorder.Run(ctx, func(ctx context.Context) error {
-		if resources.browserName == apps.Lacros.Name {
+		if resources.browserApp.ID == apps.LacrosID {
 			activeWindow, err := ash.GetActiveWindow(ctx, tconn)
 			if err != nil {
 				return errors.Wrap(err, "failed to get the active window")
 			}
 			if activeWindow.WindowType != ash.WindowTypeLacros {
-				if err := resources.uiHandler.SwitchToAppWindow(resources.browserName)(ctx); err != nil {
+				if err := resources.uiHandler.SwitchToAppWindow(resources.browserApp.Name)(ctx); err != nil {
 					return errors.Wrap(err, "failed to switch to lacros window")
 				}
 			}
@@ -467,7 +467,7 @@ func switchWindows(ctx context.Context, tconn *chrome.TestConn, params *RunParam
 						wIdx++
 					}
 				}
-				winName := resources.browserName
+				winName := resources.browserApp.Name
 				switchFunc := resources.uiHandler.SwitchToAppWindowByIndex(winName, wIdx)
 				for _, appName := range []string{HelloWorldAppName, SpotifyAppName} {
 					if strings.Contains(ws[i].Title, appName) {

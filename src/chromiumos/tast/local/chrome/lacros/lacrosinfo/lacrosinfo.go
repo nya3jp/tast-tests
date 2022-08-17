@@ -19,6 +19,17 @@ const (
 	LacrosStateStopped LacrosState = "Stopped"
 )
 
+// LacrosMode represents the mode of Lacros. See crosapi::browser_util::LacrosMode.
+type LacrosMode string
+
+// LacrosMode values.
+const (
+	LacrosModeDisabled   LacrosMode = "Disabled"
+	LacrosModeSideBySide LacrosMode = "SideBySide"
+	LacrosModePrimary    LacrosMode = "Primary"
+	LacrosModeOnly       LacrosMode = "Only"
+)
+
 // Info represents the format returned from autotestPrivate.getLacrosInfo.
 type Info struct {
 	// The state Lacros is in.  Note that this information is a snapshot at a
@@ -31,6 +42,8 @@ type Info struct {
 	// executed from. Note that this may change over time if omaha is used (even
 	// during a test). This also may be empty is lacros is not running.
 	LacrosPath string `json:"lacrosPath"`
+	// The mode of Lacros.
+	Mode LacrosMode `json:"mode"`
 }
 
 // Snapshot gets the current lacros info from ash-chrome. The parameter tconn should be the ash TestConn.

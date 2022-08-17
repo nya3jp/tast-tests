@@ -89,14 +89,14 @@ func Launch(ctx context.Context, tconn *chrome.TestConn) (l *Lacros, retErr erro
 	defer lacrosfaillog.SaveIf(faillogCtx, tconn, func() bool { return retErr != nil })
 
 	// Make sure Lacros app is not running before launch.
-	if running, err := ash.AppRunning(ctx, tconn, apps.Lacros.ID); err != nil {
+	if running, err := ash.AppRunning(ctx, tconn, apps.LacrosID); err != nil {
 		return nil, errors.Wrap(err, "failed to check if app is not running before launch")
 	} else if running {
 		return nil, errors.New("failed to launch lacros since app is already running. close before launch")
 	}
 
 	testing.ContextLog(ctx, "Launch lacros")
-	if err := apps.Launch(ctx, tconn, apps.Lacros.ID); err != nil {
+	if err := apps.Launch(ctx, tconn, apps.LacrosID); err != nil {
 		return nil, errors.Wrap(err, "failed to launch lacros")
 	}
 
