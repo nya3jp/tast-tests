@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "87e48fba_51129260",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-17T20:31:26Z",
+      "side": 1,
+      "message": "nit: You can just write CL:2461551 and it will appear as a clickable link in Gerrit.",
+      "range": {
+        "startLine": 9,
+        "startChar": 5,
+        "endLine": 9,
+        "endChar": 24
+      },
+      "revId": "43d0e8da95f274f0b3fe2405dcc35b2b03ae55ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "f8ae0ddf_1bc736d3",
@@ -14,6 +37,29 @@
       "writtenOn": "2022-08-17T19:19:59Z",
       "side": 1,
       "message": "PTAL. Thanks!",
+      "revId": "43d0e8da95f274f0b3fe2405dcc35b2b03ae55ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b828625_6b375672",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/downloads_folder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-17T20:31:26Z",
+      "side": 1,
+      "message": "nit: This can be a single line:\n`const downloadURI \u003d \"content://org.chromium.arc.volumeprovider/download/storage.txt\"`",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 1
+      },
       "revId": "43d0e8da95f274f0b3fe2405dcc35b2b03ae55ca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
