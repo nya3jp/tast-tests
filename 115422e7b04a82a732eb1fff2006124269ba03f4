@@ -39,6 +39,30 @@
       },
       "revId": "115422e7b04a82a732eb1fff2006124269ba03f4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23f5b62b_0473554d",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/vkb/vkb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 522,
+      "author": {
+        "id": 1379515
+      },
+      "writtenOn": "2022-08-17T00:37:29Z",
+      "side": 1,
+      "message": "The existing version calls ShowAccessPoints which isn\u0027t needed anymore, not sure if there is an eleganty workaround here",
+      "parentUuid": "ccd6f0e1_36016b99",
+      "range": {
+        "startLine": 522,
+        "startChar": 9,
+        "endLine": 522,
+        "endChar": 19
+      },
+      "revId": "115422e7b04a82a732eb1fff2006124269ba03f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
