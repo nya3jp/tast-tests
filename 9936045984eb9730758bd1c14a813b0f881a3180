@@ -70,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "782cfccd_2c8f78ba",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-08-17T12:25:17Z",
+      "side": 1,
+      "message": "I\u0027ve created a new task for refactoring.\nI think we can land this change as it is for now, to see how the environment works while leasing vdi accounts. and later we can refactor it.",
+      "parentUuid": "fbe1d8b5_e1c355c9",
+      "revId": "9936045984eb9730758bd1c14a813b0f881a3180",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "275d16e0_fea629de",
@@ -83,6 +101,30 @@
       "writtenOn": "2022-08-11T08:15:22Z",
       "side": 1,
       "message": "used",
+      "range": {
+        "startLine": 120,
+        "startChar": 26,
+        "endLine": 120,
+        "endChar": 30
+      },
+      "revId": "9936045984eb9730758bd1c14a813b0f881a3180",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3e75cd8_5d7e2fb2",
+        "filename": "src/chromiumos/tast/local/vdi/fixtures/vdi.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-08-17T12:25:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "275d16e0_fea629de",
       "range": {
         "startLine": 120,
         "startChar": 26,
@@ -116,6 +158,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "85222a4a_1b35b3fe",
+        "filename": "src/chromiumos/tast/local/vdi/fixtures/vdi.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-08-17T12:25:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "915182d8_51fbaa3c",
+      "range": {
+        "startLine": 181,
+        "startChar": 124,
+        "endLine": 181,
+        "endChar": 128
+      },
+      "revId": "9936045984eb9730758bd1c14a813b0f881a3180",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8c2d410e_26918b11",
@@ -139,6 +205,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "90d11cb2_d0219d01",
+        "filename": "src/chromiumos/tast/local/vdi/fixtures/vdi_kiosk.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-08-17T12:25:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8c2d410e_26918b11",
+      "range": {
+        "startLine": 117,
+        "startChar": 26,
+        "endLine": 117,
+        "endChar": 30
+      },
+      "revId": "9936045984eb9730758bd1c14a813b0f881a3180",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9aa4aa53_5a4afeff",
@@ -152,6 +242,30 @@
       "writtenOn": "2022-08-11T08:15:22Z",
       "side": 1,
       "message": "used",
+      "range": {
+        "startLine": 115,
+        "startChar": 26,
+        "endLine": 115,
+        "endChar": 30
+      },
+      "revId": "9936045984eb9730758bd1c14a813b0f881a3180",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e69120bc_05fceaed",
+        "filename": "src/chromiumos/tast/local/vdi/fixtures/vdi_mgs.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-08-17T12:25:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9aa4aa53_5a4afeff",
       "range": {
         "startLine": 115,
         "startChar": 26,
