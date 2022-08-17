@@ -45,14 +45,6 @@ func init() {
 				Fixture:           "chromeLoggedIn",
 				Val:               browser.TypeAsh,
 			},
-			// TODO(crbug.com/1163981): remove "unstable" once we see stability on all platforms.
-			{
-				Name:              "unstable",
-				ExtraAttr:         []string{"informational"},
-				ExtraHardwareDeps: hwdep.D(hwdep.Model(perfutil.UnstableModels...)),
-				Fixture:           "chromeLoggedIn",
-				Val:               browser.TypeAsh,
-			},
 			{
 				Name:              "lacros",
 				ExtraAttr:         []string{"informational"},

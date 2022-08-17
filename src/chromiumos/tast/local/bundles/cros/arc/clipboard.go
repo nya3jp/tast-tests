@@ -29,10 +29,6 @@ func init() {
 		Params: []testing.Param{{
 			ExtraAttr:         []string{"group:mainline", "informational"},
 			ExtraSoftwareDeps: []string{"android_p"},
-		}, {
-			Name:              "vm",
-			ExtraSoftwareDeps: []string{"android_vm"},
-			ExtraAttr:         []string{"group:mainline", "informational"},
 		}},
 	})
 }

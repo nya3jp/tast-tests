@@ -14,7 +14,6 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto/crd"
 	"chromiumos/tast/testing"
-	"chromiumos/tast/testing/hwdep"
 )
 
 // rdpVars represents the configurable parameters for the remote desktop session.
@@ -48,15 +47,6 @@ func init() {
 		Params: []testing.Param{{
 			// For running manually.
 			Name: "",
-		}, {
-			// For automated testing.
-			Name:      "test",
-			ExtraAttr: []string{"group:mainline", "informational"},
-			// TODO(b/151111783): This is a speculative fix to limit the number of sessions. It
-			// seems that the test account is throttled by the CRD backend, so the test is failing
-			// with a periodic pattern. The model list is handcrafted to cover various platforms.
-			ExtraHardwareDeps: hwdep.D(hwdep.Model("atlas", "careena", "dru", "eve", "kohaku",
-				"krane", "nocturne")),
 		}},
 	})
 }

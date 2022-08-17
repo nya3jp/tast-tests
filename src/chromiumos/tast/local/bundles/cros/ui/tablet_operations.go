@@ -64,13 +64,6 @@ func init() {
 					hwdep.SkipOnModel("kohaku")),
 				Val: testParam{browserType: browser.TypeAsh},
 			},
-			// TODO(crbug.com/1168774): remove "unstable" once we see stability on all platforms.
-			{
-				Name:              "unstable",
-				Fixture:           "chromeLoggedIn",
-				ExtraHardwareDeps: hwdep.D(hwdep.Model(perfutil.UnstableModels...)),
-				Val:               testParam{browserType: browser.TypeAsh},
-			},
 			// Run kohaku with specific size touch. See b/196859354.
 			{
 				Name:              "kohaku",

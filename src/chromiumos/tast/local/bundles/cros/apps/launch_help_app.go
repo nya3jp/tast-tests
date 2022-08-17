@@ -46,24 +46,8 @@ func init() {
 					oobe:       true,
 				},
 			}, {
-				Name:              "clamshell_oobe_unstable",
-				ExtraHardwareDeps: hwdep.D(pre.AppsUnstableModels),
-				ExtraAttr:         []string{"informational"},
-				Val: testParameters{
-					tabletMode: true,
-					oobe:       true,
-				},
-			}, {
 				Name:              "tablet_oobe_stable",
 				ExtraHardwareDeps: hwdep.D(pre.AppsStableModels),
-				Val: testParameters{
-					tabletMode: true,
-					oobe:       true,
-				},
-			}, {
-				Name:              "tablet_oobe_unstable",
-				ExtraHardwareDeps: hwdep.D(pre.AppsUnstableModels),
-				ExtraAttr:         []string{"informational"},
 				Val: testParameters{
 					tabletMode: true,
 					oobe:       true,
@@ -77,27 +61,9 @@ func init() {
 					oobe:       false,
 				},
 			}, {
-				Name:              "clamshell_logged_in_unstable",
-				ExtraHardwareDeps: hwdep.D(pre.AppsUnstableModels),
-				Fixture:           fixture.LoggedIn,
-				ExtraAttr:         []string{"informational"},
-				Val: testParameters{
-					tabletMode: false,
-					oobe:       false,
-				},
-			}, {
 				Name:              "tablet_logged_in_stable",
 				ExtraHardwareDeps: hwdep.D(pre.AppsStableModels, hwdep.TouchScreen()),
 				Fixture:           fixture.LoggedIn,
-				Val: testParameters{
-					tabletMode: true,
-					oobe:       false,
-				},
-			}, {
-				Name:              "tablet_logged_in_unstable",
-				ExtraHardwareDeps: hwdep.D(pre.AppsUnstableModels, hwdep.TouchScreen()),
-				Fixture:           fixture.LoggedIn,
-				ExtraAttr:         []string{"informational"},
 				Val: testParameters{
 					tabletMode: true,
 					oobe:       false,
