@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7db49de_9353a6c5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/link_capturing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-08-17T15:12:55Z",
+      "side": 1,
+      "message": "nit: delete this blank line",
+      "revId": "f5b9723830501ef75c874d74ad7467d151e8a132",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
