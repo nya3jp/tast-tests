@@ -20,6 +20,23 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "09c5a01a_74056e05",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2022-08-17T05:30:45Z",
+      "side": 1,
+      "message": "Thank you for updating the CL! The property solution looks better than the previous one to me. ",
+      "revId": "813aee8992746a511aa5f440ea02538fee83633e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "51b07889_48429c0d",
         "filename": "src/chromiumos/tast/local/arc/arc.go",
         "patchSetId": 9
@@ -31,6 +48,23 @@
       "writtenOn": "2022-08-17T04:47:48Z",
       "side": 1,
       "message": "This function will be reused in the planned changes to fix the other tast tests that fail with virtio-blk /data.",
+      "revId": "813aee8992746a511aa5f440ea02538fee83633e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "868e3333_9c0edb15",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 554,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2022-08-17T05:30:45Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this return `false, nil` when VMEnabled returns `false`, so that it works fine on ARC++ containers? Or a.GetProp does not fail even when the property is not defined?",
       "revId": "813aee8992746a511aa5f440ea02538fee83633e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -48,6 +82,46 @@
       "writtenOn": "2022-08-17T04:47:48Z",
       "side": 1,
       "message": "These functions (`MountExternalStorageOnHostWithSSHFS` and `UnmountExternalStorageFromHost`) will be reused in camera.CCAUIIntent.\n(I\u0027m not sure if arc/file.go is the right place to put these. Please feel free to suggest other places!)",
+      "revId": "813aee8992746a511aa5f440ea02538fee83633e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58cb56e2_e1ab94f1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_perf.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2022-08-17T05:30:45Z",
+      "side": 1,
+      "message": "Actually I think \"external storage\" in Android can include non-emulated volumes mounted on /storage (e.g. USB drives and MyFiles): https://developer.android.com/training/data-storage\nMaybe `useSDCardPartition` or something like that is less confusing.",
+      "range": {
+        "startLine": 42,
+        "startChar": 1,
+        "endLine": 42,
+        "endChar": 19
+      },
+      "revId": "813aee8992746a511aa5f440ea02538fee83633e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3dfcb9f4_a2fba5e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_perf.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2022-08-17T05:30:45Z",
+      "side": 1,
+      "message": "a.GetProp is not needed to be called when useExternalStorage is false.\nHow about checking useExternalStorage first, and then check arcvm_virtio_blk_data only when useExternalStorage is true (so that the myfiles_vm test case never fails at an unnecessary check)?",
       "revId": "813aee8992746a511aa5f440ea02538fee83633e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
