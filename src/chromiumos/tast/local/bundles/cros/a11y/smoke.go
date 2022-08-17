@@ -93,17 +93,16 @@ func Smoke(ctx context.Context, s *testing.State) {
 	}
 	defer cleanup(cleanupCtx)
 
-	var app apps.App
+	app, err := apps.PrimaryBrowser(ctx, tconn)
+	if err != nil {
+		s.Fatal("Could not determine the correct browser app to use: ", err)
+	}
+
 	var topWindowName string
 	switch bt {
 	case browser.TypeAsh:
-		app, err = apps.ChromeOrChromium(ctx, tconn)
-		if err != nil {
-			s.Fatal("Could not determine the correct Chrome app to use: ", err)
-		}
 		topWindowName = "BrowserFrame"
 	case browser.TypeLacros:
-		app = apps.Lacros
 		topWindowName = "ExoShellSurface"
 	default:
 		s.Fatal("Unrecognized browser type: ", bt)
