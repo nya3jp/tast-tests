@@ -1,0 +1,22 @@
+[package]
+name = "crash_rust_panic"
+version = "0.1.0"
+authors = ["The ChromiumOS Authors"]
+edition = "2018"
+
+[profile.release]
+panic = "abort"
+
+[profile.dev]
+panic = "abort"
+
+[[bin]]
+name = "crash_rust_panic"
+path = "crash.Rust.panic.rs"
+
+[dependencies]
+libchromeos = "0.1.0"
+
+[patch.crates-io] # ignored by ebuild
+libchromeos = { path = "../../../../../chroot/usr/lib/cros_rust_registry/registry/libchromeos-0.1.0/" } # ignored by ebuild
+crosvm-base = { path = "../../../../../chroot/usr/lib/cros_rust_registry/registry/crosvm-base-0.1.0/" } # ignored by ebuild
