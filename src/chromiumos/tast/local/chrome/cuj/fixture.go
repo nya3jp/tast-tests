@@ -377,7 +377,7 @@ func (f *loggedInToCUJUserFixture) SetUp(ctx context.Context, s *testing.FixtSta
 
 		var err error
 		if f.bt == browser.TypeLacros {
-			opts, err = lacrosfixt.NewConfig(lacrosfixt.Mode(lacros.LacrosPrimary),
+			opts, err = lacrosfixt.NewConfig(lacrosfixt.Mode(lacros.LacrosOnly),
 				lacrosfixt.ChromeOptions(opts...)).Opts()
 			if err != nil {
 				s.Fatal("Failed to get lacros options: ", err)
