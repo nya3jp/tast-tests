@@ -41,32 +41,17 @@ func init() {
 		Timeout:      4 * time.Minute,
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
-		Params: []testing.Param{{
-			Val: false, // Use the Chrome app version of Files app.
-		}, {
-			Name: "swa",
-			Val:  true, // Use the System Web App version of Files app.
-		}},
 	})
 }
 
 func UIPerf(ctx context.Context, s *testing.State) {
-	swaEnabled := s.Param().(bool)
 
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
 
-	// Enable or disable the SWA based on supplied params.
-	var chromeOpts []chrome.Option
-	filesLauncher := filesapp.Launch
-	if swaEnabled {
-		chromeOpts = append(chromeOpts, chrome.EnableFilesAppSWA())
-		filesLauncher = filesapp.LaunchSWA
-	}
-
 	// Start Chrome with SWA flag.
-	cr, err := chrome.New(ctx, chromeOpts...)
+	cr, err := chrome.New(ctx)
 	if err != nil {
 		s.Fatal("Cannot start Chrome: ", err)
 	}
@@ -83,8 +68,8 @@ func UIPerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect to test API: ", err)
 	}
 
-	// Launch the Files app (SWA or Chrome app depends on Params).
-	files, err := filesLauncher(ctx, tconn)
+	// Launch the Files app.
+	files, err := filesapp.Launch(ctx, tconn)
 	if err != nil {
 		s.Fatal("Launching the Files App failed: ", err)
 	}

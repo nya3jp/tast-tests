@@ -31,10 +31,6 @@ const (
 // LoginReuseOptions returns the login option for MTBF tests.
 func LoginReuseOptions(accountPool string) []chrome.Option {
 	return []chrome.Option{
-		// The old filesapp (apps.Files) has memory leak issue, use the new one (apps.FilesSWA) is essential in MTBF tests.
-		// FilesSWA is the default Files App if login into DUT manually, however the default config (config.NewConfig) of `EnableFilesAppSWA` is false,
-		// therefore, need to use `EnableFilesAppSWA()`.
-		chrome.EnableFilesAppSWA(),
 		// Only the legacy launcher is being exercised in MTBF tests currently.
 		chrome.DisableFeatures("ProductivityLauncher"),
 		chrome.KeepState(),

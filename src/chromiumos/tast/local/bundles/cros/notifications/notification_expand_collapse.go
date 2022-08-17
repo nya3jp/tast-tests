@@ -86,12 +86,12 @@ func NotificationExpandCollapse(ctx context.Context, s *testing.State) {
 		if err := ui.LeftClick(popup)(ctx); err != nil {
 			return errors.Wrap(err, "failed to click the notification body")
 		}
-		if err := ash.WaitForApp(ctx, tconn, apps.Files.ID, time.Minute); err != nil {
+		if err := ash.WaitForApp(ctx, tconn, apps.FilesSWA.ID, time.Minute); err != nil {
 			return errors.Wrap(err, "failed to wait for Files app to open")
 		}
 
 		// Close Files app at the end so we can reopen.
-		if err := apps.Close(ctx, tconn, apps.Files.ID); err != nil {
+		if err := apps.Close(ctx, tconn, apps.FilesSWA.ID); err != nil {
 			return errors.Wrap(err, "failed to close Files app")
 		}
 		return nil
@@ -102,12 +102,12 @@ func NotificationExpandCollapse(ctx context.Context, s *testing.State) {
 		if err := ui.LeftClick(notificationInMessageCenter)(ctx); err != nil {
 			return errors.Wrap(err, "failed to click the notification body")
 		}
-		if err := ash.WaitForApp(ctx, tconn, apps.Files.ID, time.Minute); err != nil {
+		if err := ash.WaitForApp(ctx, tconn, apps.FilesSWA.ID, time.Minute); err != nil {
 			return errors.Wrap(err, "failed to wait for Files app to open")
 		}
 
 		// Close Files app at the end so we can reopen.
-		if err := apps.Close(ctx, tconn, apps.Files.ID); err != nil {
+		if err := apps.Close(ctx, tconn, apps.FilesSWA.ID); err != nil {
 			return errors.Wrap(err, "failed to close Files app")
 		}
 		return nil

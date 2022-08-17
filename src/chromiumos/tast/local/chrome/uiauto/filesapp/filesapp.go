@@ -77,9 +77,9 @@ func WindowFinder(appID string) *nodewith.Finder {
 	return nodewith.NameStartingWith("Files").Role(role.Window).ClassName("RootView")
 }
 
-// Launch launches the Files Chrome app and returns it.
+// LaunchChromeApp launches the Files Chrome app and returns it.
 // An error is returned if the app fails to launch.
-func Launch(ctx context.Context, tconn *chrome.TestConn) (*FilesApp, error) {
+func LaunchChromeApp(ctx context.Context, tconn *chrome.TestConn) (*FilesApp, error) {
 	// Launch the Files App.
 	if err := apps.Launch(ctx, tconn, apps.Files.ID); err != nil {
 		return nil, err
@@ -88,9 +88,9 @@ func Launch(ctx context.Context, tconn *chrome.TestConn) (*FilesApp, error) {
 	return App(ctx, tconn, apps.Files.ID)
 }
 
-// LaunchSWA launches the Files app SWA variant and returns it.
+// Launch launches the Files app SWA variant and returns it.
 // An error is returned if the app fails to launch.
-func LaunchSWA(ctx context.Context, tconn *chrome.TestConn) (*FilesApp, error) {
+func Launch(ctx context.Context, tconn *chrome.TestConn) (*FilesApp, error) {
 	// Launch the Files App.
 	if err := apps.LaunchSystemWebApp(ctx, tconn, "File Manager", "chrome://file-manager"); err != nil {
 		return nil, err

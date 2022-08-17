@@ -80,7 +80,6 @@ func init() {
 		Contacts: []string{"austinct@chromium.org", "chromeos-files-syd@chromium.org"},
 		Impl: &fixture{chromeOptions: []chrome.Option{
 			chrome.EnableFeatures("DriveFsBidirectionalNativeMessaging"),
-			chrome.EnableFilesAppSWA(),
 		}, drivefsOptions: map[string]string{
 			"switchblade":     "true",
 			"switchblade_dss": "true",

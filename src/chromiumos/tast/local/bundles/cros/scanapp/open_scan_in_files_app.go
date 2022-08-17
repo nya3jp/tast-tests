@@ -150,7 +150,7 @@ func OpenScanInFilesApp(ctx context.Context, s *testing.State) {
 
 	_, file := filepath.Split(scan)
 
-	f, err := filesapp.App(ctx, tconn, apps.Files.ID)
+	f, err := filesapp.App(ctx, tconn, apps.FilesSWA.ID)
 	if err != nil {
 		s.Fatal("Failed to get Files app: ", err)
 	}

@@ -97,7 +97,7 @@ func MountMultiple(ctx context.Context, s *testing.State) {
 	testParams := s.Param().(testEntry)
 	zipFiles := testParams.ZipFiles
 
-	cr, err := chrome.New(ctx, chrome.EnableFilesAppSWA())
+	cr, err := chrome.New(ctx)
 	if err != nil {
 		s.Fatal("Cannot start Chrome: ", err)
 	}
@@ -125,7 +125,7 @@ func MountMultiple(ctx context.Context, s *testing.State) {
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
 	// Open the Files App.
-	files, err := filesapp.LaunchSWA(ctx, tconn)
+	files, err := filesapp.Launch(ctx, tconn)
 	if err != nil {
 		s.Fatal("Cannot launch the Files App: ", err)
 	}

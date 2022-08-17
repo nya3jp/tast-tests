@@ -139,6 +139,7 @@ func ContentPreview(ctx context.Context, s *testing.State) {
 				if err != nil {
 					s.Fatal("Failed to launch Files app: ", err)
 				}
+				defer files.Close(cleanupCtx)
 
 				if err := uiauto.Combine("select file",
 					files.OpenDownloads(),

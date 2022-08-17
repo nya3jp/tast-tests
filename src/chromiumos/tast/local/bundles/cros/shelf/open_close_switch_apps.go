@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/filesapp"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/pointer"
 	"chromiumos/tast/local/chrome/uiauto/role"
@@ -93,13 +94,10 @@ func OpenCloseSwitchApps(ctx context.Context, s *testing.State) {
 
 	// The test account has only Chrome pinned to the shelf, so we'll have to
 	// launch and pin another app.
-	if err := apps.Launch(ctx, tconn, apps.Files.ID); err != nil {
-		s.Fatal("Failed to launch Files app: ", err)
+	if _, err := filesapp.Launch(ctx, tconn); err != nil {
+		s.Fatal("Failed to launch the Files app: ", err)
 	}
-	if err := ash.WaitForApp(ctx, tconn, apps.Files.ID, time.Minute); err != nil {
-		s.Fatal("Files app did not appear in shelf after launch: ", err)
-	}
-	if err := ash.PinApp(ctx, tconn, apps.Files.ID); err != nil {
+	if err := ash.PinApp(ctx, tconn, apps.FilesSWA.ID); err != nil {
 		s.Fatal("Failed to pin Files app to the shelf: ", err)
 	}
 
@@ -125,7 +123,7 @@ func OpenCloseSwitchApps(ctx context.Context, s *testing.State) {
 	}
 
 	chromeInfo := appInfo{chromeBtn, browserApp.ID, "New Tab", browserApp.Name}
-	filesInfo := appInfo{filesBtn, apps.Files.ID, "Files - My files", apps.Files.Name}
+	filesInfo := appInfo{filesBtn, apps.FilesSWA.ID, "Files - My files", apps.Files.Name}
 	checkApps := []appInfo{chromeInfo, filesInfo}
 
 	// Close the apps so we can try opening them from the shelf.

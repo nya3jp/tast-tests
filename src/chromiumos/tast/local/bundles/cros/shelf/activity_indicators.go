@@ -17,6 +17,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/filesapp"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/testing"
@@ -138,11 +139,9 @@ func ActivityIndicators(ctx context.Context, s *testing.State) {
 	}
 
 	// Launch the files app.
-	if err = apps.Launch(ctx, tconn, apps.Files.ID); err != nil {
+	files, err := filesapp.Launch(ctx, tconn)
+	if err != nil {
 		s.Fatal("Failed to launch Files app: ", err)
-	}
-	if err = ash.WaitForApp(ctx, tconn, apps.Files.ID, time.Minute); err != nil {
-		s.Fatal("Files app did not appear in shelf after launch: ", err)
 	}
 
 	// Expect that 1 activity indicator is shown.
@@ -189,7 +188,7 @@ func ActivityIndicators(ctx context.Context, s *testing.State) {
 	}
 
 	// Close the Files app.
-	if err = apps.Close(ctx, tconn, apps.Files.ID); err != nil {
+	if err = files.Close(ctx); err != nil {
 		s.Fatal("Failed to close the Files app: ", err)
 	}
 	if err := ash.WaitForAppClosed(ctx, tconn, apps.Files.ID); err != nil {

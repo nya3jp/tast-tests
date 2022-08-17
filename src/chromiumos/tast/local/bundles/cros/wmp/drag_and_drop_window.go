@@ -8,11 +8,11 @@ import (
 	"context"
 	"time"
 
-	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/filesapp"
 	"chromiumos/tast/local/chrome/uiauto/mouse"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/coords"
@@ -50,13 +50,13 @@ func DragAndDropWindow(ctx context.Context, s *testing.State) {
 
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
-	if err := apps.Launch(ctx, tconn, apps.Files.ID); err != nil {
-		s.Fatal("Failed to open Files: ", err)
+	if _, err := filesapp.Launch(ctx, tconn); err != nil {
+		s.Fatal("Failed to launch Files app: ", err)
 	}
 
 	ac := uiauto.New(tconn)
 
-	oldInfo, err := ac.Info(ctx, nodewith.ClassName("HeaderView"))
+	oldInfo, err := ac.Info(ctx, nodewith.ClassName("WebAppFrameToolbarView"))
 	oldBounds := oldInfo.Location
 	start := oldBounds.CenterPoint()
 	end := start.Add(coords.NewPoint(100, 100))
@@ -65,7 +65,7 @@ func DragAndDropWindow(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to drag window: ", err)
 	}
 
-	newInfo, err := ac.Info(ctx, nodewith.ClassName("HeaderView"))
+	newInfo, err := ac.Info(ctx, nodewith.ClassName("WebAppFrameToolbarView"))
 	newBounds := newInfo.Location
 	// Window bounds should change after the drap and drop.
 	if oldBounds == newBounds {
