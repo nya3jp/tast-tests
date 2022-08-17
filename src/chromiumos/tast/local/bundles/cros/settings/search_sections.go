@@ -36,6 +36,7 @@ const (
 	arcOptions
 	optionsAndSubpage
 	optionsAndDeepLinking
+	guestMode
 )
 
 func init() {
@@ -75,6 +76,13 @@ func init() {
 					searchtype: optionsAndDeepLinking,
 				},
 				Fixture: "chromeLoggedIn",
+			}, {
+				Name: "guest_mode",
+				Val: settingsSearchTestParams{
+					arc:        false,
+					searchtype: guestMode,
+				},
+				Fixture: "chromeLoggedInGuest",
 			},
 		},
 	})
@@ -180,6 +188,32 @@ func searchDetail(st settingsSearchType) []settingsSearchDetail {
 				expectedResult:     `High contrast mode`,
 				expectedResultRole: role.GenericContainer,
 				deepLinkingSection: `Color inversion`,
+			},
+		}
+	case guestMode:
+		return []settingsSearchDetail{
+			{
+				keyword:            "turnoff",
+				expectedResult:     `Turn off (Bluetooth|Wi\-Fi|networks)`,
+				expectedResultRole: role.GenericContainer,
+			}, {
+				keyword:            "photo",
+				expectedResult:     `No search results found`,
+				expectedResultRole: role.StaticText,
+				expectedMismatch:   true,
+			}, {
+				keyword:            "wallpaper",
+				expectedResult:     `No search results found`,
+				expectedResultRole: role.StaticText,
+				expectedMismatch:   true,
+			}, {
+				keyword:            "Drive",
+				expectedResult:     `.*Drive.*`,
+				expectedResultRole: role.GenericContainer,
+			}, {
+				keyword:            "Input",
+				expectedResult:     `Inputs`,
+				expectedResultRole: role.GenericContainer,
 			},
 		}
 	default:
