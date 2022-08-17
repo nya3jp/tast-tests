@@ -154,6 +154,12 @@ func init() {
 				consentType: localcrash.MockConsent,
 			},
 		}, {
+			Name: "rust_crash_signature",
+			Val: userCrashParams{
+				testFunc:    testRustCrashSignature,
+				consentType: localcrash.MockConsent,
+			},
+		}, {
 			Name: "crash_log_infinite_recursion",
 			Val: userCrashParams{
 				testFunc:    testCrashLogInfiniteRecursion,
@@ -310,7 +316,7 @@ func testCoreFileRemovedInProduction(ctx context.Context, cr *chrome.Chrome, s *
 		s.Errorf("Got %d dmp files, want 1", dmpFiles)
 	}
 
-	if err := crash.CleanCrashSpoolDirs(ctx, crash.CrasherPath); err != nil {
+	if err := crash.CleanCrashSpoolDirs(ctx, opts); err != nil {
 		s.Error("Failed to clean crash spool dirs: ", err)
 	}
 }
@@ -353,7 +359,7 @@ func testChronosCrasher(ctx context.Context, cr *chrome.Chrome, s *testing.State
 	if err := crash.CheckCrashingProcess(ctx, cr, opts); err != nil {
 		s.Error("testChronosCrasher failed: ", err)
 	}
-	if err := crash.CleanCrashSpoolDirs(ctx, crash.CrasherPath); err != nil {
+	if err := crash.CleanCrashSpoolDirs(ctx, opts); err != nil {
 		s.Error("Failed to clean crash spool dirs: ", err)
 	}
 }
@@ -378,7 +384,7 @@ func testRootCrasher(ctx context.Context, cr *chrome.Chrome, s *testing.State) {
 	if err := crash.CheckCrashingProcess(ctx, cr, opts); err != nil {
 		s.Error("testRootCrasher failed: ", err)
 	}
-	if err := crash.CleanCrashSpoolDirs(ctx, crash.CrasherPath); err != nil {
+	if err := crash.CleanCrashSpoolDirs(ctx, opts); err != nil {
 		s.Error("Failed to clean crash spool dirs: ", err)
 	}
 }
@@ -440,7 +446,7 @@ func checkFilterCrasher(ctx context.Context, shouldReceive bool) error {
 		return errors.Wrapf(err, "timeout waiting for log flushed: want %q", successLog)
 	}
 
-	if err := crash.CleanCrashSpoolDirs(ctx, crash.CrasherPath); err != nil {
+	if err := crash.CleanCrashSpoolDirs(ctx, crash.DefaultCrasherOptions()); err != nil {
 		return errors.Wrap(err, "failed to clean crash spool dirs")
 	}
 	return nil
@@ -560,7 +566,7 @@ func checkCollectionFailure(ctx context.Context, cr *chrome.Chrome, testOption, 
 	// const collectionErrorSignature = "crash_reporter-user-collection"
 	// crash.CheckGeneratedReportSending(result.Meta, result.Log, result.Basename, "log", collectionErrorSignature)
 
-	if err := crash.CleanCrashSpoolDirs(ctx, crash.CrasherPath); err != nil {
+	if err := crash.CleanCrashSpoolDirs(ctx, opts); err != nil {
 		return errors.Wrap(err, "failed to clean crash files")
 	}
 	return nil
@@ -610,7 +616,33 @@ func testCrashLogsCreation(ctx context.Context, cr *chrome.Chrome, s *testing.St
 		s.Error("Meta file does not reference log")
 	}
 
-	if err := crash.CleanCrashSpoolDirs(ctx, CrashLogTest); err != nil {
+	if err := crash.CleanCrashSpoolDirs(ctx, opts); err != nil {
+		s.Error("Failed to clean crash spool dirs: ", err)
+	}
+}
+
+func testRustCrashSignature(ctx context.Context, cr *chrome.Chrome, s *testing.State) {
+	opts := crash.DefaultCrasherOptions()
+	opts.Username = "root"
+	opts.CustomCrasher = "/usr/bin/crosh --panic"
+	result, err := crash.RunCrasherProcessAndAnalyze(ctx, cr, opts)
+	if err != nil {
+		s.Fatal("Failed to run crasher: ", err)
+	}
+	if !result.Crashed {
+		s.Errorf("Crasher returned %d instead of crashing", result.ReturnCode)
+	}
+	if !result.CrashReporterCaught {
+		s.Error("Logs do not contain crash_reporter message")
+	}
+	b, err := ioutil.ReadFile(result.Meta)
+	if err != nil {
+		s.Error("Failed to read result meta: ", err)
+	}
+	if !strings.Contains(string(b), "sig=panicked at 'See you later, Alligator!', src/util.rs:") {
+		s.Error("Meta file does not contain expected signature")
+	}
+	if err := crash.CleanCrashSpoolDirs(ctx, opts); err != nil {
 		s.Error("Failed to clean crash spool dirs: ", err)
 	}
 }
@@ -641,7 +673,7 @@ func testCrashLogInfiniteRecursion(ctx context.Context, cr *chrome.Chrome, s *te
 	if !result.CrashReporterCaught {
 		s.Error("Logs do not contain crash_reporter message")
 	}
-	if err := crash.CleanCrashSpoolDirs(ctx, filepath.Base(RecursionTestPath)); err != nil {
+	if err := crash.CleanCrashSpoolDirs(ctx, opts); err != nil {
 		s.Error("Failed to clean crash files: ", err)
 	}
 }
@@ -722,7 +754,7 @@ func testMaxEnqueuedCrash(ctx context.Context, cr *chrome.Chrome, s *testing.Sta
 			s.Errorf("Expected no new files (now %d, were %d)", len(files), crashDirSize)
 		}
 	}
-	if err := crash.CleanCrashSpoolDirs(ctx, crash.CrasherPath); err != nil {
+	if err := crash.CleanCrashSpoolDirs(ctx, opts); err != nil {
 		s.Error("Failed to clean crash files: ", err)
 	}
 }
