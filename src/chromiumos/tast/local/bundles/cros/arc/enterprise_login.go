@@ -35,30 +35,6 @@ func init() {
 		Timeout:      enterpriseLoginTestTimeout,
 		Params: []testing.Param{
 			{
-				Name: "managed_3pp_true",
-				Val: testParams{
-					poolID:     "arc_enterprise_login_managed_3pp_true",
-					arcEnabled: true,
-				}},
-			{
-				Name: "managed_3pp_false",
-				Val: testParams{
-					poolID:     "arc_enterprise_login_managed_3pp_false",
-					arcEnabled: false,
-				}},
-			{
-				Name: "managed_necktie_false",
-				Val: testParams{
-					poolID:     "arc_enterprise_login_managed_necktie_false",
-					arcEnabled: false,
-				}},
-			{
-				Name: "managed_necktie_true",
-				Val: testParams{
-					poolID:     "arc_enterprise_login_managed_necktie_true",
-					arcEnabled: true,
-				}},
-			{
 				Name: "managed_unmanaged_false",
 				Val: testParams{
 					poolID:     "arc_enterprise_login_managed_unmanaged_false",

@@ -26,20 +26,11 @@ func init() {
 		Contacts:     []string{"hashimoto@chromium.org", "arc-eng@google.com"},
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{
-			Val:               false,
-			ExtraAttr:         []string{"group:mainline", "informational"},
-			ExtraSoftwareDeps: []string{"android_p"},
-		}, {
 			Name: "vm",
 			Val:  false,
 			// TODO(hashimoto): Enable this once mini-ARCVM is re-enabled. b/181279632
 			// ExtraAttr:         []string{"group:mainline", "informational"},
 			ExtraSoftwareDeps: []string{"android_vm"},
-		}, {
-			Name:              "logged_in",
-			Val:               true,
-			ExtraAttr:         []string{"group:mainline", "informational"},
-			ExtraSoftwareDeps: []string{"android_p"},
 		}, {
 			Name:              "vm_logged_in",
 			Val:               true,

@@ -35,10 +35,6 @@ func init() {
 			{
 				Name:              "stable",
 				ExtraHardwareDeps: hwdep.D(pre.AppsStableModels),
-			}, {
-				Name:              "unstable",
-				ExtraHardwareDeps: hwdep.D(pre.AppsUnstableModels),
-				ExtraAttr:         []string{"informational"},
 			},
 		},
 	})
