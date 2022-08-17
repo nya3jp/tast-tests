@@ -432,7 +432,7 @@ func (f *telemetryExtensionFixture) setupChromeForConsumers(ctx context.Context,
 			return errors.Wrap(err, "failed to get lacros options")
 		}
 		opts = append(opts, extraOpts...)
-		opts = append(opts, chrome.LacrosExtraArgs(fmt.Sprintf("--load-extension=%s", dir)))
+		opts = append(opts, chrome.LacrosUnpackedExtension(dir))
 	}
 
 	cr, err := chrome.New(ctx, opts...)
