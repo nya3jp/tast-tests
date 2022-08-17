@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d5be6ef_b4bce0c4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541462
+      },
+      "writtenOn": "2022-08-17T13:12:54Z",
+      "side": 1,
+      "message": "Rebased + realized resultsCh in server_result_poller was unbuffered so it was silently blocking deferred statement from exiting ",
+      "revId": "187c0a931161a8028e008565d145d175d01ab119",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
