@@ -153,6 +153,30 @@
       },
       "revId": "d8d75b71176394f2588210f06cafe9cd7921bc8d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2fd9b9c2_56c3e6a2",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 636,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-08-17T17:45:26Z",
+      "side": 1,
+      "message": "SGTM. I\u0027ll be able to put up a separate CL to get it exposed for all types of apps rather than just for ARC, then hold off on checking in this CL until then.\n\nBtw, in terms of renaming full_restore_window_app_id to app_id, I\u0027m not well aware of why it is named that way and exposed from full_restore (just skimmed go/chrome-os-full-restore-dd). It would be helpful if anyone who knows better about the context. If it is like a cosmetic change I believe we can follow up at a later time when confirmed since it is unlikely to block our migration effort.",
+      "parentUuid": "425bf27a_08461062",
+      "range": {
+        "startLine": 636,
+        "startChar": 68,
+        "endLine": 636,
+        "endChar": 75
+      },
+      "revId": "d8d75b71176394f2588210f06cafe9cd7921bc8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
