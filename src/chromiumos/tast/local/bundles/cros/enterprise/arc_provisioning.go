@@ -108,12 +108,21 @@ func ARCProvisioning(ctx context.Context, s *testing.State) {
 	}
 
 	// Indicates that the error is retryable and unrelated to core feature under test.
-	retry := func(desc string, err error) error {
-		if doRetries && attempts < maxAttempts {
+	retryForAll := func(desc string, err error) error {
+		if attempts < maxAttempts {
 			attempts++
 			err = errors.Wrap(err, "failed to "+desc)
 			s.Logf("%s. Retrying", err)
 			return err
+		}
+		return exit(desc, err)
+	}
+
+	// Indicates that the error is being retried only to stabilize the test temporarily.
+	// TODO(b/242902484): Replace the calls to this with exit() when unstable variant is removed.
+	retry := func(desc string, err error) error {
+		if doRetries {
+			return retryForAll(desc, err)
 		}
 		return exit(desc, err)
 	}
@@ -131,13 +140,13 @@ func ARCProvisioning(ctx context.Context, s *testing.State) {
 			chrome.ProdPolicy(),
 			chrome.ExtraArgs(arc.DisableSyncFlags()...))
 		if err != nil {
-			return retry("connect to Chrome", err)
+			return retryForAll("connect to Chrome", err)
 		}
 		defer cr.Close(ctx)
 
 		tconn, err := cr.TestAPIConn(ctx)
 		if err != nil {
-			return retry("create test API connection", err)
+			return retryForAll("create test API connection", err)
 		}
 
 		// Ensure chrome://policy shows correct ArcEnabled and ArcPolicy values.
@@ -151,6 +160,7 @@ func ARCProvisioning(ctx context.Context, s *testing.State) {
 
 		a, err := arc.NewWithTimeout(ctx, s.OutDir(), bootTimeout)
 		if err != nil {
+			// TODO(b/242902484): Switch to exit when unstable variant is removed.
 			return retry("start ARC by policy", err)
 		}
 		defer a.Close(ctx)
@@ -165,6 +175,7 @@ func ARCProvisioning(ctx context.Context, s *testing.State) {
 		}
 
 		if err := waitForProvisioning(ctx, a, attempts); err != nil {
+			// TODO(b/242902484): Switch to exit when unstable variant is removed.
 			return retry("wait for provisioning", err)
 		}
 
@@ -187,7 +198,7 @@ func ARCProvisioning(ctx context.Context, s *testing.State) {
 		}
 
 		if err := ensurePlayStoreNotEmpty(ctx, tconn, cr, a, s.OutDir(), attempts); err != nil {
-			// TODO(b/231751280): Switch to exit when the Play Store bug is resolved.
+			// TODO(b/242902484): Switch to exit when unstable variant is removed.
 			return retry("verify Play Store is not empty", err)
 		}
 
