@@ -82,23 +82,6 @@ func init() {
 			},
 			ExtraAttr: []string{"group:mainline", "group:meta"},
 		}, {
-			Name: "files_remote",
-			Val: runTestsParam{
-				tests: []string{
-					"meta.RemoteFiles",
-				},
-				wantResults: []tastrun.TestResult{
-					{Name: "meta.RemoteFiles"},
-				},
-				wantFiles: map[string]string{
-					"tests/meta.RemoteFiles/remote_files_internal.txt":              "This is an internal data file for remote tests.\n",
-					"tests/meta.RemoteFiles/remote_files_external.txt":              "This is an external data file for remote tests.\n",
-					"fixtures/metaRemoteDataFilesFixture/fixture_data_internal.txt": "This is an internal data file for remote tests.\n",
-					"fixtures/metaRemoteDataFilesFixture/fixture_data_external.txt": "This is an external data file for remote tests.\n",
-				},
-			},
-			ExtraAttr: []string{"group:mainline", "informational"},
-		}, {
 			Name: "panic",
 			Val: runTestsParam{
 				tests: []string{

@@ -52,24 +52,6 @@ func init() {
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
 		Timeout:      10 * time.Minute,
 		Params: []testing.Param{{
-			Name:              "unmanaged",
-			ExtraSoftwareDeps: []string{"android_p"},
-			Val: optInTestParams{
-				username:   "arc.OptInAfterInterruption.unmanaged_username",
-				password:   "arc.OptInAfterInterruption.unmanaged_password",
-				delays:     unmangedDelays,
-				chromeArgs: []string{},
-			},
-		}, {
-			Name:              "unmanaged_vm",
-			ExtraSoftwareDeps: []string{"android_vm"},
-			Val: optInTestParams{
-				username:   "arc.OptInAfterInterruption.unmanaged_username",
-				password:   "arc.OptInAfterInterruption.unmanaged_password",
-				delays:     unmangedDelays,
-				chromeArgs: []string{"--ignore-arcvm-dev-conf"},
-			},
-		}, {
 			Name:              "managed",
 			ExtraSoftwareDeps: []string{"android_p"},
 			Val: optInTestParams{
@@ -77,15 +59,6 @@ func init() {
 				password:   "arc.OptInAfterInterruption.managed_password",
 				delays:     managedDelays,
 				chromeArgs: []string{"--arc-force-show-optin-ui"},
-			},
-		}, {
-			Name:              "managed_vm",
-			ExtraSoftwareDeps: []string{"android_vm"},
-			Val: optInTestParams{
-				username:   "arc.OptInAfterInterruption.managed_username",
-				password:   "arc.OptInAfterInterruption.managed_password",
-				delays:     managedDelays,
-				chromeArgs: []string{"--arc-force-show-optin-ui", "--ignore-arcvm-dev-conf"},
 			},
 		}},
 		VarDeps: []string{

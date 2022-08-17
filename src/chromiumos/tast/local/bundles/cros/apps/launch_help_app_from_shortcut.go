@@ -39,21 +39,11 @@ func init() {
 				Name:              "stable",
 				Fixture:           fixture.LoggedIn,
 				ExtraHardwareDeps: hwdep.D(pre.AppsStableModels),
-			}, {
-				Name:              "unstable",
-				Fixture:           fixture.LoggedIn,
-				ExtraAttr:         []string{"informational"},
-				ExtraHardwareDeps: hwdep.D(pre.AppsUnstableModels),
 			},
 			{
 				Name:              "stable_guest",
 				Fixture:           fixture.LoggedInGuest,
 				ExtraHardwareDeps: hwdep.D(pre.AppsStableModels),
-			}, {
-				Name:              "unstable_guest",
-				Fixture:           fixture.LoggedInGuest,
-				ExtraAttr:         []string{"informational"},
-				ExtraHardwareDeps: hwdep.D(pre.AppsUnstableModels),
 			},
 		},
 	})
