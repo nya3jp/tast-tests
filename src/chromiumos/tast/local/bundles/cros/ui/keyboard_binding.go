@@ -334,7 +334,7 @@ func (v *ctrlFunctionVerifier) setup(ctx context.Context) error {
 
 // cleanup cleans up the test environment for "Ctrl".
 func (v *ctrlFunctionVerifier) cleanup(ctx context.Context) error {
-	return apps.Close(ctx, v.tconn, apps.Files.ID)
+	return apps.Close(ctx, v.tconn, apps.FilesSWA.ID)
 }
 
 // accel accelerates the key to trigger the function.
@@ -344,7 +344,7 @@ func (v *ctrlFunctionVerifier) accel(ctx context.Context) error {
 
 // verify verifies if the key is triggered.
 func (v *ctrlFunctionVerifier) verify(ctx context.Context) error {
-	return v.ui.WaitUntilGone(filesapp.WindowFinder(apps.Files.ID))(ctx)
+	return v.ui.WaitUntilGone(filesapp.WindowFinder(apps.FilesSWA.ID))(ctx)
 }
 
 // functionName returns the function name of "Ctrl".
@@ -378,7 +378,7 @@ func (v *altFunctionVerifier) setup(ctx context.Context) error {
 func (v *altFunctionVerifier) cleanup(ctx context.Context) error {
 	// Ignore error to ensure filesapp can be closed.
 	v.kb.AccelReleaseAction(v.boundKeyVal)(ctx)
-	return apps.Close(ctx, v.tconn, apps.Files.ID)
+	return apps.Close(ctx, v.tconn, apps.FilesSWA.ID)
 }
 
 // accel accelerates the key to trigger the function.

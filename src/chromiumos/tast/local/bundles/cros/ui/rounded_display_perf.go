@@ -11,11 +11,11 @@ import (
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/filesapp"
 	"chromiumos/tast/local/chrome/uiauto/mouse"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/pointer"
@@ -89,15 +89,17 @@ func RoundedDisplayPerf(ctx context.Context, s *testing.State) {
 	defer pc.Close()
 
 	// Open a Files window.
-	if err := apps.Launch(ctx, tconn, apps.Files.ID); err != nil {
-		s.Fatal("Failed to open Files: ", err)
-	}
-	defer apps.Close(cleanupCtx, tconn, apps.Files.ID)
-	filesInfo, err := uiauto.New(tconn).Info(ctx, nodewith.ClassName("HeaderView"))
+	files, err := filesapp.Launch(ctx, tconn)
 	if err != nil {
+		s.Fatal("Failed to launch Files app: ", err)
+	}
+	defer files.Close(cleanupCtx)
+	titleBar, err := files.Info(ctx, nodewith.ClassName("WebAppFrameToolbarView"))
+	if err != nil {
+		s.Log(uiauto.RootDebugInfo(ctx, tconn))
 		s.Fatal("Failed to obtain Files app info: ", err)
 	}
-	startDragPt := filesInfo.Location.CenterPoint()
+	startDragPt := titleBar.Location.CenterPoint()
 
 	// Verify that there is only one window, and get its ID.
 	ws, err := ash.GetAllWindows(ctx, tconn)

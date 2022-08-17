@@ -210,14 +210,6 @@ func RestartChromeForTesting(ctx context.Context, cfg *config.Config, extArgs, l
 		args = append(args, "--lacros-chrome-additional-args="+strings.Join(largs, "####"))
 	}
 
-	// TODO(b/207576612): Remove this explicit override once all tests have migrated
-	// to use the new Files app SWA version.
-	if cfg.EnableFilesAppSWA() {
-		args = append(args, "--enable-features=FilesSWA")
-	} else {
-		args = append(args, "--disable-features=FilesSWA")
-	}
-
 	if cfg.EnablePersonalizationHub() {
 		args = append(args, "--enable-features=PersonalizationHub")
 	} else {

@@ -32,6 +32,9 @@ const (
 	ChromePolicyLoggedInFeatureJourneys = "chromePolicyLoggedInFeatureJourneys"
 	// ChromePolicyLoggedInFeatureChromeLabs is a fixture name.
 	ChromePolicyLoggedInFeatureChromeLabs = "chromePolicyLoggedInFeatureChromeLabs"
+	// ChromePolicyLoggedInFilesSWADisabled is a fixture name.
+	// TODO(b/243619838): Remove fixture once the Files SWA "Unpin" behavior is solved.
+	ChromePolicyLoggedInFilesSWADisabled = "chromePolicyLoggedInFilesSWADisabled"
 	// ChromeEnrolledLoggedIn is a fixture name.
 	ChromeEnrolledLoggedIn = "chromeEnrolledLoggedIn"
 	// ChromeEnrolledLoggedInARC is a fixture name.

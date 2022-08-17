@@ -75,8 +75,7 @@ func WebAPK(ctx context.Context, s *testing.State) {
 	// Due to the UI Automator flakiness, we still can't use the arcBooted fixture as it starts UI Automator automatically.
 	cr, err := chrome.New(ctx,
 		chrome.GAIALoginPool(s.RequiredVar("ui.gaiaPoolDefault")),
-		chrome.ARCEnabled(),
-		chrome.EnableFilesAppSWA())
+		chrome.ARCEnabled())
 	if err != nil {
 		s.Fatal("Failed to connect to Chrome: ", err)
 	}
