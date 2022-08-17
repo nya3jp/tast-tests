@@ -223,14 +223,20 @@ func (app *GoogleDocs) UpdateCells(ctx context.Context) error {
 		return errors.Wrap(err, "failed to edit the value of the cell")
 	}
 
-	val, err := app.getCellValue(ctx, "B1")
-	if err != nil {
-		return errors.Wrap(err, "failed to get the value of the cell")
-	}
+	var sum int
+	if err := uiauto.Retry(retryTimes, func(ctx context.Context) error {
+		val, err := app.getCellValue(ctx, "B1")
+		if err != nil {
+			return errors.Wrap(err, "failed to get the value of the cell")
+		}
 
-	sum, err := strconv.Atoi(val)
-	if err != nil {
-		return errors.Wrap(err, "failed to convert type to integer")
+		sum, err = strconv.Atoi(val)
+		if err != nil {
+			return errors.Wrap(err, "failed to convert type to integer")
+		}
+		return nil
+	})(ctx); err != nil {
+		return err
 	}
 
 	if expectedSum := calculateSum(3, 100); sum != expectedSum {
