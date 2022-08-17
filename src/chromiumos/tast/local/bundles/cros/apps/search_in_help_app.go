@@ -47,10 +47,6 @@ func init() {
 				ExtraHardwareDeps: hwdep.D(pre.AppsStableModels),
 				// TODO(b/238803010): move back to mainline when this is resolved.
 				ExtraAttr: []string{"informational"},
-			}, {
-				Name:              "unstable",
-				ExtraHardwareDeps: hwdep.D(pre.AppsUnstableModels),
-				ExtraAttr:         []string{"informational"},
 			},
 		},
 	})

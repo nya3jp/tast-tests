@@ -23,11 +23,6 @@ func init() {
 			{
 				ExtraSoftwareDeps: []string{"dmverity_stable"},
 			},
-			{
-				Name:              "unstable_kernel",
-				ExtraSoftwareDeps: []string{"dmverity_unstable"},
-				ExtraAttr:         []string{"informational"},
-			},
 		},
 	})
 }
