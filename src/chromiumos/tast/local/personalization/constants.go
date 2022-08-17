@@ -16,6 +16,9 @@ var PersonalizationHubWindow = nodewith.NameContaining("Wallpaper & style").Role
 // right click from desktop.
 var SetPersonalizationMenu = nodewith.NameContaining("Set wallpaper").Role(role.MenuItem)
 
+// ChangeWallpaperButton is the finder to change wallpaper button in the personalization hub window.
+var ChangeWallpaperButton = nodewith.Name(ChangeWallpaper).HasClass("tast-open-subpage")
+
 const (
 	// Personalization Hub Name
 	Personalization = "Personalization"
