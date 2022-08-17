@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba07562f_d8ff9e90",
+        "filename": "src/chromiumos/tast/local/shill/manager.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 660,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-08-17T16:32:29Z",
+      "side": 1,
+      "message": "This function should be exported. It will also be used in the `shill_service.go`.",
+      "parentUuid": "c08c6c14_d97f1212",
+      "revId": "6f787795c92ec3d2aa46176a03bb7275f6131f86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e76051ba_40a7827e",
@@ -65,6 +83,24 @@
       "writtenOn": "2022-08-17T15:58:58Z",
       "side": 1,
       "message": "nit: newline after this one",
+      "revId": "6f787795c92ec3d2aa46176a03bb7275f6131f86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "710cd94e_1fca0180",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/captive_portal_http.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-08-17T16:32:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e76051ba_40a7827e",
       "revId": "6f787795c92ec3d2aa46176a03bb7275f6131f86",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -86,6 +122,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a230ce4_5ce942f6",
+        "filename": "src/chromiumos/tast/remote/wificell/http/server.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-08-17T16:32:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "468899af_ca4fb835",
+      "revId": "6f787795c92ec3d2aa46176a03bb7275f6131f86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9df609bd_5522bc84",
@@ -99,6 +153,24 @@
       "writtenOn": "2022-08-17T15:58:58Z",
       "side": 1,
       "message": "nit: whitespace-only line",
+      "revId": "6f787795c92ec3d2aa46176a03bb7275f6131f86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "863d3ef8_c67fc39b",
+        "filename": "src/chromiumos/tast/remote/wificell/http/server.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-08-17T16:32:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9df609bd_5522bc84",
       "revId": "6f787795c92ec3d2aa46176a03bb7275f6131f86",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -120,6 +192,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fde46f40_f4cc1ca6",
+        "filename": "src/chromiumos/tast/remote/wificell/http/server.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-08-17T16:32:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "65f57707_1120358f",
+      "revId": "6f787795c92ec3d2aa46176a03bb7275f6131f86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5eecef6f_15df790f",
@@ -133,6 +223,24 @@
       "writtenOn": "2022-08-17T15:58:58Z",
       "side": 1,
       "message": "nit: whitespace-only line",
+      "revId": "6f787795c92ec3d2aa46176a03bb7275f6131f86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b8609a8_2f8cdccb",
+        "filename": "src/chromiumos/tast/remote/wificell/http/server.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-08-17T16:32:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5eecef6f_15df790f",
       "revId": "6f787795c92ec3d2aa46176a03bb7275f6131f86",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -154,6 +262,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f309c699_b411e419",
+        "filename": "src/chromiumos/tast/remote/wificell/router/openwrt/router.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 541,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-08-17T16:32:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4c2ee1a3_db22fb63",
+      "revId": "6f787795c92ec3d2aa46176a03bb7275f6131f86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "11cefba0_bd481441",
@@ -167,6 +293,24 @@
       "writtenOn": "2022-08-17T15:58:58Z",
       "side": 1,
       "message": "ditto",
+      "revId": "6f787795c92ec3d2aa46176a03bb7275f6131f86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ce27a8c_421a88da",
+        "filename": "src/chromiumos/tast/remote/wificell/router/openwrt/router.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 547,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-08-17T16:32:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "11cefba0_bd481441",
       "revId": "6f787795c92ec3d2aa46176a03bb7275f6131f86",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
