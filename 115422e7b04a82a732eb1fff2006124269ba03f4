@@ -63,6 +63,30 @@
       },
       "revId": "115422e7b04a82a732eb1fff2006124269ba03f4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02f412dd_e34d1cf1",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/vkb/vkb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 522,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-08-17T01:03:55Z",
+      "side": 1,
+      "message": "As discussed offline. Create a new function vkbCtx.IsNewVK() or save the value in FixtureData can be more useful since it will last for a while.\n\nYou can add an additional attr in fixture data\nIt default to false, when the flag provided, you can explicitly set it to true\nhttp://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/inputs/fixture/fixture.go?l\u003d521",
+      "parentUuid": "23f5b62b_0473554d",
+      "range": {
+        "startLine": 522,
+        "startChar": 9,
+        "endLine": 522,
+        "endChar": 19
+      },
+      "revId": "115422e7b04a82a732eb1fff2006124269ba03f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
