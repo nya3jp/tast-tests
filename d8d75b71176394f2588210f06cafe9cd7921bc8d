@@ -129,6 +129,30 @@
       },
       "revId": "d8d75b71176394f2588210f06cafe9cd7921bc8d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "425bf27a_08461062",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 636,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-08-17T02:43:04Z",
+      "side": 1,
+      "message": "in the current implementation, the field is set only for ARC apps based on its requirement, but I guess it can be extended to arbitrary apps.\nIf so, I think we can change field to app_id, and unconditionally fill it (i.e. not limit to ARC app).\n(practically, introduce a new app_id field to Window, replace the use in Tast with it, and remove the full_restore_window_app_id).\n\nWDYT?",
+      "parentUuid": "a6a4cfa6_9f4cb86b",
+      "range": {
+        "startLine": 636,
+        "startChar": 68,
+        "endLine": 636,
+        "endChar": 75
+      },
+      "revId": "d8d75b71176394f2588210f06cafe9cd7921bc8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
