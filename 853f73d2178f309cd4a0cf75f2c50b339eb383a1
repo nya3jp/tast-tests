@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c89b302_b707f7a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/delete_description_update_search_result.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-08-17T13:05:24Z",
+      "side": 1,
+      "message": "nit/styule: we often drop getter prefix in go (incl. Tast).\nfirstLinkName()",
+      "revId": "853f73d2178f309cd4a0cf75f2c50b339eb383a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dec2b1a1_f5dd5ad8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/delete_description_update_search_result.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-08-17T13:05:24Z",
+      "side": 1,
+      "message": "instead, could you pass ui from the caller for consistency?",
+      "range": {
+        "startLine": 122,
+        "startChar": 42,
+        "endLine": 122,
+        "endChar": 65
+      },
+      "revId": "853f73d2178f309cd4a0cf75f2c50b339eb383a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3384e929_fa5bfff5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/delete_description_update_search_result.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-08-17T13:05:24Z",
+      "side": 1,
+      "message": "nit: could you move this after err check just below, to avoid touching meaning less result?",
+      "revId": "853f73d2178f309cd4a0cf75f2c50b339eb383a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6cd78df5_4966e32f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/delete_description_update_search_result.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-08-17T13:05:24Z",
+      "side": 1,
+      "message": "could you return error, instead, then remove s from argument?",
+      "revId": "853f73d2178f309cd4a0cf75f2c50b339eb383a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
