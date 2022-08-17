@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4cca6bd_43d3df01",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541210
+      },
+      "writtenOn": "2022-08-17T04:47:48Z",
+      "side": 1,
+      "message": "Hi risan@ youkichihosoi@,\nI modified the tests a bit since I noticed that 1) we can switch the use of SSHFS by looking at the property instead of using SoftwareDeps, and 2) SSHFS mount/unmount can be reused in fixing camera.CCAUIIntent.vm where the test waits until a file is created in /data/media/0.\nWould you mind taking another look? Sorry for the modification after the approvals.",
+      "revId": "813aee8992746a511aa5f440ea02538fee83633e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "51b07889_48429c0d",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 554,
+      "author": {
+        "id": 1541210
+      },
+      "writtenOn": "2022-08-17T04:47:48Z",
+      "side": 1,
+      "message": "This function will be reused in the planned changes to fix the other tast tests that fail with virtio-blk /data.",
+      "revId": "813aee8992746a511aa5f440ea02538fee83633e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "21c82c2a_a529ac13",
+        "filename": "src/chromiumos/tast/local/arc/file.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1541210
+      },
+      "writtenOn": "2022-08-17T04:47:48Z",
+      "side": 1,
+      "message": "These functions (`MountExternalStorageOnHostWithSSHFS` and `UnmountExternalStorageFromHost`) will be reused in camera.CCAUIIntent.\n(I\u0027m not sure if arc/file.go is the right place to put these. Please feel free to suggest other places!)",
+      "revId": "813aee8992746a511aa5f440ea02538fee83633e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
