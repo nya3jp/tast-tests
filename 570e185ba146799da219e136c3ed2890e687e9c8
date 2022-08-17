@@ -223,6 +223,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "486b8444_449c840e",
+        "filename": "src/chromiumos/tast/common/camera/dut/dut_control.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1548766
+      },
+      "writtenOn": "2022-08-17T10:01:02Z",
+      "side": 1,
+      "message": "Thank you for the suggestion , I am now comment out unuse code for now",
+      "parentUuid": "8f81e026_c1b66619",
+      "revId": "570e185ba146799da219e136c3ed2890e687e9c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ac6600ba_c116173d",
@@ -272,6 +290,24 @@
       "side": 1,
       "message": "https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#code-location\n\nFor example, tast-tests/src/chromiumos/tast/local/camera is here:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/camera/\n\n\nThe library under tast-tests is categorized as:\n\"local\": for local tests (run on DUT)\n\"remote\": for remote tests (run on host)\n\"common\": used by both local tests and remote tests\n\nI thought CCARestoreBacklight is used only by local test, and RestoreBacklight is for remote test. If so, I suggest moving to the respective package to limit the visibility.",
       "parentUuid": "2446d55e_a5cb43a4",
+      "revId": "570e185ba146799da219e136c3ed2890e687e9c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "603494f6_b563a6dc",
+        "filename": "src/chromiumos/tast/common/camera/dut/dut_control.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1548766
+      },
+      "writtenOn": "2022-08-17T10:01:02Z",
+      "side": 1,
+      "message": "Thank you for the explanation.\nFor the dimming display is not just use by CCA testing (localtest) but also camera.HAL3Remote.* testing , that\u0027s why I put dut_control.go into common folder.",
+      "parentUuid": "60d72b4c_857db871",
       "revId": "570e185ba146799da219e136c3ed2890e687e9c8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
