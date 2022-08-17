@@ -119,6 +119,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f54636d7_6abb930c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/youtube_web.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2022-08-17T02:08:27Z",
+      "side": 1,
+      "message": "Got it. I created a new ticket for this issue. (b/242791719)\nThis is difficult to solve in this cl, which affects the pass rate of the case. \nSo modify it first. I have to spend time testing a specific DUT to find out why.",
+      "parentUuid": "77435cd2_d29b45bd",
+      "revId": "32933236896bf1c604ee793ffa8af03643eb0b3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "01c6e73d_97058b60",
@@ -168,6 +186,24 @@
       "side": 1,
       "message": "ditto",
       "parentUuid": "62549895_307d5f27",
+      "revId": "32933236896bf1c604ee793ffa8af03643eb0b3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "11a58930_a4f11bfe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/youtube_web.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2022-08-17T02:08:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e451dcc5_869c64ef",
       "revId": "32933236896bf1c604ee793ffa8af03643eb0b3b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
