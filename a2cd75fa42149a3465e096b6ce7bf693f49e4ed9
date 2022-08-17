@@ -16,6 +16,92 @@
       "message": "Thank you for the effort of reviewing the code",
       "revId": "a2cd75fa42149a3465e096b6ce7bf693f49e4ed9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9a8e3dd_82d7c53d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-08-17T10:20:39Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "a2cd75fa42149a3465e096b6ce7bf693f49e4ed9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4ec97ac_2e66c939",
+        "filename": "src/chromiumos/tast/common/camera/dut/dut_control.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-08-17T10:20:39Z",
+      "side": 1,
+      "message": "nit: this doesn\u0027t seem to add too much value to the log files and we want to keep them free of too much clutter.",
+      "range": {
+        "startLine": 24,
+        "startChar": 1,
+        "endLine": 24,
+        "endChar": 92
+      },
+      "revId": "a2cd75fa42149a3465e096b6ce7bf693f49e4ed9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84e851c9_0546f38d",
+        "filename": "src/chromiumos/tast/common/camera/dut/dut_control.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-08-17T10:20:39Z",
+      "side": 1,
+      "message": "Commented out code shouldn\u0027t be submitted.",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 2
+      },
+      "revId": "a2cd75fa42149a3465e096b6ce7bf693f49e4ed9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "053530a4_704b5cc7",
+        "filename": "src/chromiumos/tast/local/camera/cca/fixture.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-08-17T10:20:39Z",
+      "side": 1,
+      "message": "@wtlee: is there a team we could add here as a contact too?",
+      "range": {
+        "startLine": 49,
+        "startChar": 2,
+        "endLine": 49,
+        "endChar": 50
+      },
+      "revId": "a2cd75fa42149a3465e096b6ce7bf693f49e4ed9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
