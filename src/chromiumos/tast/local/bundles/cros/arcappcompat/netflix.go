@@ -10,7 +10,6 @@ import (
 	"time"
 
 	"chromiumos/tast/common/android/ui"
-	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/arcappcompat/pre"
 	"chromiumos/tast/local/bundles/cros/arcappcompat/testutil"
@@ -125,8 +124,10 @@ func launchAppForNetflix(ctx context.Context, s *testing.State, tconn *chrome.Te
 		enterEmailAddressText = "Email or phone number"
 		passwordText          = "Password"
 		signInBtnText         = "Sign In"
-		selectUserID          = "com.netflix.mediaclient:id/profile_avatar_img"
+		selectUserID          = "com.netflix.mediaclient:id/2131429149"
 		okButtonText          = "OK"
+		notNowID              = "android:id/autofill_save_no"
+		neverButtonText       = "Never"
 	)
 
 	// Check for signInButton.
@@ -134,22 +135,30 @@ func launchAppForNetflix(ctx context.Context, s *testing.State, tconn *chrome.Te
 	if err := signInButton.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
 		s.Fatal("signInButton doesn't exist: ", err)
 	}
+
 	signInButton = d.Object(ui.TextMatches("(?i)" + signInButtonText))
-	enterEmailAddress := d.Object(ui.ClassName(TextClassName), ui.Text(enterEmailAddressText))
-	// Keep clicking signIn button until enterEmailAddress exist in the home page.
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		if err := enterEmailAddress.Exists(ctx); err != nil {
-			signInButton.Click(ctx)
-			return err
-		}
-		return nil
-	}, &testing.PollOptions{Timeout: testutil.LongUITimeout}); err != nil {
-		s.Log("EnterEmailAddress doesn't exist: ", err)
-	} else {
-		s.Log("EnterEmailAddress does exists")
+	notNowButton := d.Object(ui.ID(notNowID))
+	// Click on signIn button until not now button exists.
+	testutil.ClickUntilButtonExists(ctx, s, tconn, a, d, signInButton, notNowButton)
+
+	// Click on not now button.
+	if err := notNowButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+		s.Log("notNowButton doesn't exists: ", err)
+	} else if err := notNowButton.Click(ctx); err != nil {
+		s.Fatal("Failed to click on notNowButton: ", err)
 	}
+
+	// Click on never button.
+	neverButton := d.Object(ui.TextMatches("(?i)" + neverButtonText))
+	if err := neverButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+		s.Log("Never Button doesn't exist: ", err)
+	} else if err := neverButton.Click(ctx); err != nil {
+		s.Fatal("Failed to click on neverButton: ", err)
+	}
+
 	// Enter email address.
 	NetflixEmailID := s.RequiredVar("arcappcompat.Netflix.emailid")
+	enterEmailAddress := d.Object(ui.ClassName(TextClassName), ui.Text(enterEmailAddressText))
 	if err := enterEmailAddress.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
 		s.Error("EnterEmailAddress doesn't exist: ", err)
 	} else if err := enterEmailAddress.Click(ctx); err != nil {
@@ -178,6 +187,12 @@ func launchAppForNetflix(ctx context.Context, s *testing.State, tconn *chrome.Te
 	}
 	testutil.HandleDialogBoxes(ctx, s, d, appPkgName)
 
+	// Click on never button to save your password.
+	if err := neverButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+		s.Log("Never Button doesn't exist: ", err)
+	} else if err := neverButton.Click(ctx); err != nil {
+		s.Fatal("Failed to click on neverButton: ", err)
+	}
 	// Select User.
 	selectUser := d.Object(ui.ID(selectUserID), ui.Index(0))
 	if err := selectUser.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
@@ -207,13 +222,15 @@ func launchAppForNetflix(ctx context.Context, s *testing.State, tconn *chrome.Te
 func signOutOfNetflix(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
 	const (
 		downloadID            = "com.netflix.mediaclient:id/smart_downloads_icon"
+		enterEmailAddressText = "Email or phone number"
 		layoutClassName       = "android.widget.FrameLayout"
 		hamburgerIconDes      = "More"
 		homeIconID            = "com.netflix.mediaclient:id/ribbon_n_logo"
 		scrollLayoutClassName = "android.widget.ScrollView"
 		signOutButtonID       = "com.netflix.mediaclient:id/row_text"
 		signOutText           = "Sign Out"
-		selectUserID          = "com.netflix.mediaclient:id/profile_avatar_img"
+		selectUserID          = "com.netflix.mediaclient:id/2131429149"
+		TextClassName         = "android.widget.EditText"
 	)
 
 	// Select User.
@@ -242,18 +259,9 @@ func signOutOfNetflix(ctx context.Context, s *testing.State, tconn *chrome.TestC
 	// Click on hamburgerIcon button until scroll layout exists.
 	signOutButton := d.Object(ui.TextMatches("(?i)" + signOutText))
 	scrollLayout := d.Object(ui.ClassName(scrollLayoutClassName), ui.Scrollable(true))
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		if err := scrollLayout.Exists(ctx); err != nil {
-			if err := clickOnHamburgerIcon.Click(ctx); err != nil {
-				return errors.Wrap(err, "failed to click on HamburgerIcon")
-			}
-			return err
-		}
-		return nil
-	}, &testing.PollOptions{Timeout: testutil.ShortUITimeout}); err != nil {
-		s.Log("scrollLayout doesn't exist: ", err)
-	} else if err := scrollLayout.ScrollTo(ctx, signOutButton); err != nil {
-		s.Fatal("Failed to scroll: ", err)
+	testutil.ClickUntilButtonExists(ctx, s, tconn, a, d, signOutButton, scrollLayout)
+	if err := scrollLayout.Exists(ctx); err == nil {
+		scrollLayout.ScrollTo(ctx, signOutButton)
 	}
 
 	// Click on sign out button.
@@ -270,4 +278,8 @@ func signOutOfNetflix(ctx context.Context, s *testing.State, tconn *chrome.TestC
 	} else if err := signOutOfNetflix.Click(ctx); err != nil {
 		s.Fatal("Failed to click on signOutOfNetflix: ", err)
 	}
+
+	// Click on sign out button until enterEmailAddress page exists.
+	enterEmailAddress := d.Object(ui.ClassName(TextClassName), ui.Text(enterEmailAddressText))
+	testutil.ClickUntilButtonExists(ctx, s, tconn, a, d, signOutOfNetflix, enterEmailAddress)
 }
