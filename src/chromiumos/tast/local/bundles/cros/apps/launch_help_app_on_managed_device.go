@@ -38,21 +38,10 @@ func init() {
 				ExtraHardwareDeps: hwdep.D(pre.AppsStableModels),
 				Val:               true,
 			}, {
-				Name:              "oobe_unstable",
-				ExtraHardwareDeps: hwdep.D(pre.AppsUnstableModels),
-				Val:               true,
-				ExtraAttr:         []string{"informational"},
-			}, {
 				Name:              "logged_in_stable",
 				ExtraHardwareDeps: hwdep.D(pre.AppsStableModels),
 				Fixture:           "chromePolicyLoggedIn",
 				Val:               false,
-			}, {
-				Name:              "logged_in_unstable",
-				ExtraHardwareDeps: hwdep.D(pre.AppsUnstableModels),
-				Fixture:           "chromePolicyLoggedIn",
-				Val:               false,
-				ExtraAttr:         []string{"informational"},
 			},
 		}})
 }
