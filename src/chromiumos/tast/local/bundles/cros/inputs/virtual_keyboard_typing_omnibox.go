@@ -16,7 +16,6 @@ import (
 	"chromiumos/tast/local/bundles/cros/inputs/pre"
 	"chromiumos/tast/local/bundles/cros/inputs/util"
 	"chromiumos/tast/local/chrome/ash"
-	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/ime"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
@@ -125,9 +124,9 @@ func VirtualKeyboardTypingOmnibox(ctx context.Context, s *testing.State) {
 				}
 			}(cleanupCtx)
 
-			br := apps.Chrome
-			if s.FixtValue().(fixture.FixtData).BrowserType == browser.TypeLacros {
-				br = apps.Lacros
+			br, err := apps.PrimaryBrowser(ctx, tconn)
+			if err != nil {
+				s.Fatal("Failed to get browser app: ", err)
 			}
 			// Warning: Please do not launch Browser via cr.NewConn(ctx, "")
 			// to test omnibox typing. It might be indeterminate whether default url string
@@ -135,7 +134,7 @@ func VirtualKeyboardTypingOmnibox(ctx context.Context, s *testing.State) {
 			// In that case, typing test can either replace existing url or insert into it.
 			// A better way to do it is launching Browser from launcher, url is empty by default.
 			if err := apps.Launch(ctx, tconn, br.ID); err != nil {
-				s.Fatalf("Failed to launch %s: %s", apps.Chrome.Name, err)
+				s.Fatalf("Failed to launch %s: %s", br.Name, err)
 			}
 			defer func(ctx context.Context) {
 				if err := apps.Close(ctx, tconn, br.ID); err != nil {
