@@ -565,6 +565,18 @@ func (im InputMethod) Activate(tconn *chrome.TestConn) action.Action {
 	return im.actionWithFullyQualifiedID(tconn, f)
 }
 
+// A list of input methods that can be detected in testing readiness via Chromium API
+// chrome.autotestPrivate.isInputMethodReadyForTesting.
+var imesDetectedByAPI = []InputMethod{
+	ChineseZhuyin,
+	ChineseArray,
+	ChineseCangjie,
+	ChineseDayi,
+	ChineseQuick,
+	ChineseTraditionalPinyin,
+	ChineseWubi,
+}
+
 // WaitUntilActivated waits until the certain input method to be activated.
 func (im InputMethod) WaitUntilActivated(tconn *chrome.TestConn) action.Action {
 	// Use 10s as warming up time by default.
@@ -577,8 +589,10 @@ func (im InputMethod) WaitUntilActivated(tconn *chrome.TestConn) action.Action {
 	}
 
 	f := func(ctx context.Context, fullyQualifiedIMEID string) error {
-		if im == ChineseZhuyin {
-			return WaitForInputMethodActivated(ctx, tconn, fullyQualifiedIMEID)
+		for _, detectedIME := range imesDetectedByAPI {
+			if im == detectedIME {
+				return WaitForInputMethodActivated(ctx, tconn, fullyQualifiedIMEID)
+			}
 		}
 		return WaitForInputMethodActivatedWithSleep(ctx, tconn, fullyQualifiedIMEID, imWarmingUpTime)
 	}
