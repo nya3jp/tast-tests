@@ -52,7 +52,7 @@ func PinnedLauncherApps(ctx context.Context, s *testing.State) {
 	}
 
 	// Update the policy to pin the files app.
-	policyValue := policy.PinnedLauncherApps{Val: []string{apps.Files.ID}}
+	policyValue := policy.PinnedLauncherApps{Val: []string{apps.FilesSWA.ID}}
 	if err := policyutil.ServeAndVerify(ctx, fdms, cr, []policy.Policy{&policyValue}); err != nil {
 		s.Fatal("Failed to update policies: ", err)
 	}
