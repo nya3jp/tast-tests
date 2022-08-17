@@ -16,6 +16,29 @@
       "message": "Seewai/Alex: I feel this change is one of many that might justify having partner specific bundles so they can run tests in their labs. What do you think?",
       "revId": "cfd169cf274c0bd25d85d900bef6d7f65ba3216b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c01e558_cb0b042b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/vp9_video_decoder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-08-17T20:44:13Z",
+      "side": 1,
+      "message": "Seewai, are you sure partner tests should run in our lab and in particular on mainline?",
+      "range": {
+        "startLine": 30,
+        "startChar": 16,
+        "endLine": 30,
+        "endChar": 60
+      },
+      "revId": "cfd169cf274c0bd25d85d900bef6d7f65ba3216b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
