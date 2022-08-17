@@ -407,7 +407,7 @@ func openAndSwitchTabs(ctx context.Context, br *browser.Browser, tconn *chrome.T
 	}
 
 	if err := resources.recorder.Run(ctx, func(ctx context.Context) error {
-		if resources.browserName == apps.Lacros.Name {
+		if resources.browserName == apps.LacrosPrimaryLacros.Name {
 			activeWindow, err := ash.GetActiveWindow(ctx, tconn)
 			if err != nil {
 				return errors.Wrap(err, "failed to get the active window")
