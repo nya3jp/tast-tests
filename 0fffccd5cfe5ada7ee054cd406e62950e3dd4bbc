@@ -1,6 +1,98 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "78982b3c_32d28016",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-17T16:35:26Z",
+      "side": 1,
+      "message": "Capitalized: `Recorder`",
+      "range": {
+        "startLine": 9,
+        "startChar": 40,
+        "endLine": 9,
+        "endChar": 48
+      },
+      "revId": "0fffccd5cfe5ada7ee054cd406e62950e3dd4bbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f31e6bf0_9fe19bd9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-17T16:35:26Z",
+      "side": 1,
+      "message": "nit: hyphen",
+      "range": {
+        "startLine": 20,
+        "startChar": 41,
+        "endLine": 20,
+        "endChar": 42
+      },
+      "revId": "0fffccd5cfe5ada7ee054cd406e62950e3dd4bbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98c419ad_cfba8bcc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-17T16:35:26Z",
+      "side": 1,
+      "message": "nit: hyphen",
+      "range": {
+        "startLine": 21,
+        "startChar": 65,
+        "endLine": 21,
+        "endChar": 66
+      },
+      "revId": "0fffccd5cfe5ada7ee054cd406e62950e3dd4bbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a12f58cc_914ccc96",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-17T16:35:26Z",
+      "side": 1,
+      "message": "nit: hyphen",
+      "range": {
+        "startLine": 22,
+        "startChar": 35,
+        "endLine": 22,
+        "endChar": 36
+      },
+      "revId": "0fffccd5cfe5ada7ee054cd406e62950e3dd4bbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "d3239ee4_19559af6",
@@ -37,6 +129,98 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3f293652_7bd6fc27",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/task_switch_cuj.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-17T16:35:26Z",
+      "side": 1,
+      "message": "nit: Please put these in the same order as in the type definition of `taskswitchcuj.TaskSwitchTest`.",
+      "range": {
+        "startLine": 105,
+        "startChar": 0,
+        "endLine": 106,
+        "endChar": 34
+      },
+      "revId": "0fffccd5cfe5ada7ee054cd406e62950e3dd4bbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38c07a09_aa5f3059",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/taskswitchcuj/packages.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-17T16:35:26Z",
+      "side": 1,
+      "message": "https://github.com/golang/go/wiki/CodeReviewComments#comment-sentences",
+      "range": {
+        "startLine": 29,
+        "startChar": 19,
+        "endLine": 29,
+        "endChar": 71
+      },
+      "revId": "0fffccd5cfe5ada7ee054cd406e62950e3dd4bbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f85d831a_b97f32ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/taskswitchcuj/packages.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-17T16:35:26Z",
+      "side": 1,
+      "message": "`action.Action`",
+      "range": {
+        "startLine": 30,
+        "startChar": 12,
+        "endLine": 30,
+        "endChar": 43
+      },
+      "revId": "0fffccd5cfe5ada7ee054cd406e62950e3dd4bbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cbf723b3_fdba7ae8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/taskswitchcuj/packages.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-17T16:35:26Z",
+      "side": 1,
+      "message": "nit: Inline these.",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 1
+      },
+      "revId": "0fffccd5cfe5ada7ee054cd406e62950e3dd4bbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2ebe154f_9c2180eb",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/taskswitchcuj/packages.go",
         "patchSetId": 7
@@ -48,6 +232,75 @@
       "writtenOn": "2022-08-16T20:00:52Z",
       "side": 1,
       "message": "Do we need to install \"Play Store\"? Think it should be installed in the Android image by default.",
+      "revId": "0fffccd5cfe5ada7ee054cd406e62950e3dd4bbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b028c1f_f2938b01",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/taskswitchcuj/packages.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-17T16:35:26Z",
+      "side": 1,
+      "message": "Inline this even though it is used many times. `packageName` is actually longer than `pkg.name`, and `pkg.name` makes it clear where the value comes from.",
+      "range": {
+        "startLine": 61,
+        "startChar": 2,
+        "endLine": 61,
+        "endChar": 25
+      },
+      "revId": "0fffccd5cfe5ada7ee054cd406e62950e3dd4bbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31b8b4d9_58b80ac4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/taskswitchcuj/packages.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-17T16:35:26Z",
+      "side": 1,
+      "message": "`:\u003d`",
+      "range": {
+        "startLine": 70,
+        "startChar": 9,
+        "endLine": 70,
+        "endChar": 10
+      },
+      "revId": "0fffccd5cfe5ada7ee054cd406e62950e3dd4bbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c216a94_5e16fb04",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/taskswitchcuj/packages.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-17T16:35:26Z",
+      "side": 1,
+      "message": "optional nit: Maybe like this as a more maintainable pattern for ensuring that `cancel` is called:\n\t\tfunc() {\n\t\t\tinstallCtx, cancel :\u003d context.WithTimeout(ctx, 3*time.Minute)\n\t\t\tdefer cancel()\n\t\t\tif err :\u003d playstore.InstallApp(installCtx, a, d, packageName, \u0026playstore.Options{TryLimit: -1}); err !\u003d nil {\n\t\t\t\treturn errors.Wrapf(err, \"failed to install %s\", packageName)\n\t\t\t}\n\t\t}()",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 10
+      },
       "revId": "0fffccd5cfe5ada7ee054cd406e62950e3dd4bbc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -71,6 +324,75 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a83dc79d_f6d384c0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/taskswitchcuj/packages.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-17T16:35:26Z",
+      "side": 1,
+      "message": "comma",
+      "range": {
+        "startLine": 98,
+        "startChar": 47,
+        "endLine": 98,
+        "endChar": 48
+      },
+      "revId": "0fffccd5cfe5ada7ee054cd406e62950e3dd4bbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "813225ea_b8aa4ab6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/taskswitchcuj/packages.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-17T16:35:26Z",
+      "side": 1,
+      "message": "This should be:\n\tws, err :\u003d ash.GetAllWindows(ctx, tconn)\n\tif err !\u003d nil {",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 57
+      },
+      "revId": "0fffccd5cfe5ada7ee054cd406e62950e3dd4bbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2892f91_40921b18",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/taskswitchcuj/packages.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-17T16:35:26Z",
+      "side": 1,
+      "message": "`to`",
+      "range": {
+        "startLine": 120,
+        "startChar": 20,
+        "endLine": 120,
+        "endChar": 21
+      },
+      "revId": "0fffccd5cfe5ada7ee054cd406e62950e3dd4bbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a0d651a2_0fff055c",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/taskswitchcuj/packages.go",
         "patchSetId": 7
@@ -82,6 +404,765 @@
       "writtenOn": "2022-08-16T20:00:52Z",
       "side": 1,
       "message": "ditto. Do we have better signals to wait for instead of sleep?",
+      "revId": "0fffccd5cfe5ada7ee054cd406e62950e3dd4bbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8417e0f_91a950ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/taskswitchcuj/packages.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-17T16:35:26Z",
+      "side": 1,
+      "message": "I think if you implement all this without using `action.Combine`, it will be clearer and produce better error messages.",
+      "range": {
+        "startLine": 111,
+        "startChar": 0,
+        "endLine": 124,
+        "endChar": 3
+      },
+      "revId": "0fffccd5cfe5ada7ee054cd406e62950e3dd4bbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe25ad87_b10f72c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/taskswitchcuj/packages.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-17T16:35:26Z",
+      "side": 1,
+      "message": "You can merge the computation of `expectedNumWindows` into this line, like so:\n\t} else if expectedNumWindows :\u003d initialNumWindows + len(packages); len(ws) !\u003d expectedNumWindows {",
+      "range": {
+        "startLine": 130,
+        "startChar": 1,
+        "endLine": 130,
+        "endChar": 42
+      },
+      "revId": "0fffccd5cfe5ada7ee054cd406e62950e3dd4bbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62b9a81c_f66205f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/taskswitchcuj/packages.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-17T16:35:26Z",
+      "side": 1,
+      "message": "nit: This string can just as easily be wrapped in \" instead of `.",
+      "range": {
+        "startLine": 148,
+        "startChar": 26,
+        "endLine": 148,
+        "endChar": 66
+      },
+      "revId": "0fffccd5cfe5ada7ee054cd406e62950e3dd4bbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc7d9c0f_8798bd1f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/taskswitchcuj/packages.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-17T16:35:26Z",
+      "side": 1,
+      "message": "`move`",
+      "range": {
+        "startLine": 166,
+        "startChar": 36,
+        "endLine": 166,
+        "endChar": 41
+      },
+      "revId": "0fffccd5cfe5ada7ee054cd406e62950e3dd4bbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f4b65ac_2d93382c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/taskswitchcuj/packages.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-17T16:35:26Z",
+      "side": 1,
+      "message": "Can you use this:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/common/android/ui/object.go;drc\u003d12f8225ac991a14da85a473b8249471f052691de;l\u003d105",
+      "range": {
+        "startLine": 167,
+        "startChar": 0,
+        "endLine": 169,
+        "endChar": 3
+      },
+      "revId": "0fffccd5cfe5ada7ee054cd406e62950e3dd4bbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6fcb84d_36b10ebd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/taskswitchcuj/packages.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-17T16:35:26Z",
+      "side": 1,
+      "message": "I would have to imagine that if the OK button does not exist, then `okButton.Click` will return an error explaining that the OK button does not exist. You probably should not have to check `okButton.Exists` separately.",
+      "range": {
+        "startLine": 171,
+        "startChar": 0,
+        "endLine": 176,
+        "endChar": 3
+      },
+      "revId": "0fffccd5cfe5ada7ee054cd406e62950e3dd4bbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "748cf3fe_36b32fec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/taskswitchcuj/packages.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-17T16:35:26Z",
+      "side": 1,
+      "message": "This can fit at the end of the previous line.",
+      "range": {
+        "startLine": 187,
+        "startChar": 4,
+        "endLine": 187,
+        "endChar": 12
+      },
+      "revId": "0fffccd5cfe5ada7ee054cd406e62950e3dd4bbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b60ba1e_d6c08b5a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/taskswitchcuj/packages.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-17T16:35:26Z",
+      "side": 1,
+      "message": "I do not see the need to impose a maximum number of dialog popups. This could just simply be `for {`",
+      "range": {
+        "startLine": 188,
+        "startChar": 1,
+        "endLine": 188,
+        "endChar": 43
+      },
+      "revId": "0fffccd5cfe5ada7ee054cd406e62950e3dd4bbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58a1ad64_8854ab52",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/taskswitchcuj/packages.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-17T16:35:26Z",
+      "side": 1,
+      "message": "Same deal as for the OK button.",
+      "range": {
+        "startLine": 194,
+        "startChar": 0,
+        "endLine": 199,
+        "endChar": 3
+      },
+      "revId": "0fffccd5cfe5ada7ee054cd406e62950e3dd4bbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84bec311_78ac4816",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/taskswitchcuj/task_switch_cuj.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-17T16:35:26Z",
+      "side": 1,
+      "message": "I think you can remove this comment because `Tracing` is just as self explanatory as `Tablet` and `BrowserType`.",
+      "range": {
+        "startLine": 35,
+        "startChar": 17,
+        "endLine": 35,
+        "endChar": 48
+      },
+      "revId": "0fffccd5cfe5ada7ee054cd406e62950e3dd4bbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c66a9c33_4edf6629",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/taskswitchcuj/task_switch_cuj.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-17T16:35:26Z",
+      "side": 1,
+      "message": "`among them`",
+      "range": {
+        "startLine": 39,
+        "startChar": 17,
+        "endLine": 39,
+        "endChar": 36
+      },
+      "revId": "0fffccd5cfe5ada7ee054cd406e62950e3dd4bbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b17c7fdb_42ab6c20",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/taskswitchcuj/task_switch_cuj.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-17T16:35:26Z",
+      "side": 1,
+      "message": "Please make sure that after addressing all my code review comments about where `closeCtx` should be used, 2 seconds is still enough time for all usage of `closeCtx` combined.",
+      "range": {
+        "startLine": 45,
+        "startChar": 37,
+        "endLine": 45,
+        "endChar": 50
+      },
+      "revId": "0fffccd5cfe5ada7ee054cd406e62950e3dd4bbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25f68318_e1df4cdb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/taskswitchcuj/task_switch_cuj.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-17T16:35:26Z",
+      "side": 1,
+      "message": "`closeCtx`",
+      "range": {
+        "startLine": 66,
+        "startChar": 16,
+        "endLine": 66,
+        "endChar": 19
+      },
+      "revId": "0fffccd5cfe5ada7ee054cd406e62950e3dd4bbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b859745_ff63a4b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/taskswitchcuj/task_switch_cuj.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-17T16:35:26Z",
+      "side": 1,
+      "message": "nit: I think it is better to just use `testParam.Tablet` directly, almost no matter how many times you use it. It is not much longer than `tabletMode`, and it makes it clear that the value comes from the test variant.",
+      "range": {
+        "startLine": 83,
+        "startChar": 1,
+        "endLine": 83,
+        "endChar": 31
+      },
+      "revId": "0fffccd5cfe5ada7ee054cd406e62950e3dd4bbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b993a333_dbb60a1f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/taskswitchcuj/task_switch_cuj.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-17T16:35:26Z",
+      "side": 1,
+      "message": "`closeCtx`",
+      "range": {
+        "startLine": 88,
+        "startChar": 15,
+        "endLine": 88,
+        "endChar": 18
+      },
+      "revId": "0fffccd5cfe5ada7ee054cd406e62950e3dd4bbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe70de21_fcb39579",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/taskswitchcuj/task_switch_cuj.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-17T16:35:26Z",
+      "side": 1,
+      "message": "`closeCtx`",
+      "range": {
+        "startLine": 94,
+        "startChar": 15,
+        "endLine": 94,
+        "endChar": 18
+      },
+      "revId": "0fffccd5cfe5ada7ee054cd406e62950e3dd4bbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e90a857_61a1ed23",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/taskswitchcuj/task_switch_cuj.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-17T16:35:26Z",
+      "side": 1,
+      "message": "`action.Action`",
+      "range": {
+        "startLine": 112,
+        "startChar": 21,
+        "endLine": 112,
+        "endChar": 52
+      },
+      "revId": "0fffccd5cfe5ada7ee054cd406e62950e3dd4bbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c39e08ff_168c4017",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/taskswitchcuj/task_switch_cuj.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-17T16:35:26Z",
+      "side": 1,
+      "message": "This can go inside the `if tabletMode` code block because that is the only place where it is used.",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 39
+      },
+      "revId": "0fffccd5cfe5ada7ee054cd406e62950e3dd4bbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b84be12_92524c1b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/taskswitchcuj/task_switch_cuj.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-17T16:35:26Z",
+      "side": 1,
+      "message": "Remember that there can be an external keyboard in tablet mode. Keys like the overview key correspond with the function keys on a standard keyboard (it would be F4 or F5). `kw.Accel(ctx, topRow.SelectTask)` represents a real workflow in tablet mode. It is probably a workflow that real users seldom actually use, but it may still be a better choice here than autotest API.",
+      "range": {
+        "startLine": 140,
+        "startChar": 0,
+        "endLine": 144,
+        "endChar": 4
+      },
+      "revId": "0fffccd5cfe5ada7ee054cd406e62950e3dd4bbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9832fe80_dd2331aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/taskswitchcuj/task_switch_cuj.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-17T16:35:26Z",
+      "side": 1,
+      "message": "Just use `pc.Drag`.",
+      "range": {
+        "startLine": 146,
+        "startChar": 0,
+        "endLine": 149,
+        "endChar": 19
+      },
+      "revId": "0fffccd5cfe5ada7ee054cd406e62950e3dd4bbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0dfa1c06_143c8eb8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/taskswitchcuj/task_switch_cuj.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-17T16:35:26Z",
+      "side": 1,
+      "message": "Make sure that `s.Fatal` does not come between `pc` initialization and `defer pc.Close()`.",
+      "range": {
+        "startLine": 166,
+        "startChar": 0,
+        "endLine": 166,
+        "endChar": 17
+      },
+      "revId": "0fffccd5cfe5ada7ee054cd406e62950e3dd4bbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0852930_3a2324ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/taskswitchcuj/task_switch_cuj.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-17T16:35:26Z",
+      "side": 1,
+      "message": "`closeCtx`",
+      "range": {
+        "startLine": 174,
+        "startChar": 27,
+        "endLine": 174,
+        "endChar": 30
+      },
+      "revId": "0fffccd5cfe5ada7ee054cd406e62950e3dd4bbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c53033b_1ac0fdfa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/taskswitchcuj/task_switch_cuj.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-17T16:35:26Z",
+      "side": 1,
+      "message": "`that`",
+      "range": {
+        "startLine": 178,
+        "startChar": 4,
+        "endLine": 178,
+        "endChar": 7
+      },
+      "revId": "0fffccd5cfe5ada7ee054cd406e62950e3dd4bbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d063235b_401d9cbb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/taskswitchcuj/task_switch_cuj.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-17T16:35:26Z",
+      "side": 1,
+      "message": "`closeCtx`",
+      "range": {
+        "startLine": 181,
+        "startChar": 28,
+        "endLine": 181,
+        "endChar": 31
+      },
+      "revId": "0fffccd5cfe5ada7ee054cd406e62950e3dd4bbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e7d8824_9bf40c66",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/taskswitchcuj/task_switch_cuj.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-17T16:35:26Z",
+      "side": 1,
+      "message": "comma",
+      "range": {
+        "startLine": 186,
+        "startChar": 49,
+        "endLine": 186,
+        "endChar": 50
+      },
+      "revId": "0fffccd5cfe5ada7ee054cd406e62950e3dd4bbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75fa76c0_51fe4b3b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/taskswitchcuj/task_switch_cuj.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-17T16:35:26Z",
+      "side": 1,
+      "message": "This should be:\n\t\tnumAppWindows, err :\u003d launchPackages(ctx, tconn, kw, ac, packages)\n\t\tif err !\u003d nil {\nThis way will create a new `err` variable inside the anonymous function, instead of assigning a new value to the outside `err` variable originally established by `tconn, err :\u003d cr.TestAPIConn(ctx)`.",
+      "range": {
+        "startLine": 191,
+        "startChar": 0,
+        "endLine": 192,
+        "endChar": 84
+      },
+      "revId": "0fffccd5cfe5ada7ee054cd406e62950e3dd4bbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1aaa793_7ccd2c27",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/taskswitchcuj/task_switch_cuj.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-17T16:35:26Z",
+      "side": 1,
+      "message": "`return errors.Wrap(err, \"failed to launch apps\")`",
+      "range": {
+        "startLine": 193,
+        "startChar": 3,
+        "endLine": 193,
+        "endChar": 42
+      },
+      "revId": "0fffccd5cfe5ada7ee054cd406e62950e3dd4bbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cfa46e25_c0da004e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/taskswitchcuj/task_switch_cuj.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-17T16:35:26Z",
+      "side": 1,
+      "message": "This should simply be:\n\t\tinitTabs, cleanupTabs, numBrowserWindows, err :\u003d openChromeTabs(ctx, tconn, bTconn, cs, testParam.BrowserType \u003d\u003d browser.TypeLacros, testParam.Tablet, pv)\n\t\tif err !\u003d nil {",
+      "range": {
+        "startLine": 197,
+        "startChar": 0,
+        "endLine": 200,
+        "endChar": 166
+      },
+      "revId": "0fffccd5cfe5ada7ee054cd406e62950e3dd4bbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0411018_b4770ef3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/taskswitchcuj/task_switch_cuj.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-17T16:35:26Z",
+      "side": 1,
+      "message": "`return errors.Wrap(err, \"failed to open Chrome tabs\")`",
+      "range": {
+        "startLine": 201,
+        "startChar": 3,
+        "endLine": 201,
+        "endChar": 47
+      },
+      "revId": "0fffccd5cfe5ada7ee054cd406e62950e3dd4bbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95f00fee_ecec61d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/taskswitchcuj/task_switch_cuj.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-17T16:35:26Z",
+      "side": 1,
+      "message": "`closeCtx`",
+      "range": {
+        "startLine": 208,
+        "startChar": 20,
+        "endLine": 208,
+        "endChar": 23
+      },
+      "revId": "0fffccd5cfe5ada7ee054cd406e62950e3dd4bbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "868585c8_68175acb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/taskswitchcuj/task_switch_cuj.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-17T16:35:26Z",
+      "side": 1,
+      "message": "`action.Action`",
+      "range": {
+        "startLine": 216,
+        "startChar": 22,
+        "endLine": 216,
+        "endChar": 53
+      },
+      "revId": "0fffccd5cfe5ada7ee054cd406e62950e3dd4bbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7221c43_fd79b4b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/taskswitchcuj/task_switch_cuj.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-17T16:35:26Z",
+      "side": 1,
+      "message": "nit: Instead of defining this `subtest` type here, define a similar type in taskswitcher.go like\n\t// taskSwitchWorkflow represents a workflow for switching between windows.\n\ttype taskSwitchWorkflow struct {\n\t\tname        string\n\t\tdescription string\n\t\trun         action.Action\n\t}\nand return a value of that type from each function in taskswitcher.go. My reasoning is that the `string` values describe the behavior of code in taskswitcher.go, and therefore they belong with that code.",
+      "range": {
+        "startLine": 213,
+        "startChar": 0,
+        "endLine": 217,
+        "endChar": 3
+      },
+      "revId": "0fffccd5cfe5ada7ee054cd406e62950e3dd4bbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72e9c333_630ad8fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/taskswitchcuj/task_switch_cuj.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-17T16:35:26Z",
+      "side": 1,
+      "message": "This should be:\n\t\t\tswitchTaskByHotseat, err :\u003d initializeSwitchTaskByHotseat(ctx, tconn, stw, tcc, pc, ac, numWindows, numBrowserWindows)\n\t\t\tif err !\u003d nil {\n\t\t\t\ts.Fatal(\"Failed to initialize switching task by hotseat: \", err)\n\t\t\t}\n\t\t\tsubtests \u003d append(subtests, subtest{\n\t\t\t\tname:               \"Hotseat\",\n\t\t\t\tdesc:               \"Cycle through open applications using the hotseat\",\n\t\t\t\tswitchToNextWindow: switchTaskByHotseat,\n\t\t\t})",
+      "range": {
+        "startLine": 224,
+        "startChar": 0,
+        "endLine": 232,
+        "endChar": 4
+      },
       "revId": "0fffccd5cfe5ada7ee054cd406e62950e3dd4bbc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -105,6 +1186,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2cca2c5a_0f525f62",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/taskswitchcuj/task_switch_cuj.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-17T16:35:26Z",
+      "side": 1,
+      "message": "optional nit: I think this would be clearest at the beginning or end of the `for` loop body. I must admit that might just depend on an individual\u0027s thought processes while reading the code, so it is totally optional.",
+      "range": {
+        "startLine": 256,
+        "startChar": 6,
+        "endLine": 256,
+        "endChar": 14
+      },
+      "revId": "0fffccd5cfe5ada7ee054cd406e62950e3dd4bbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da6655c0_44a13927",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/taskswitchcuj/task_switch_cuj.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-17T16:35:26Z",
+      "side": 1,
+      "message": "This belongs outside the `action.Combine` call, because if it returns an error, then it will not be particularly appropriate to wrap that error with the one about failing to switch to the next window.",
+      "range": {
+        "startLine": 250,
+        "startChar": 0,
+        "endLine": 263,
+        "endChar": 7
+      },
+      "revId": "0fffccd5cfe5ada7ee054cd406e62950e3dd4bbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "73f7c5cb_2accd1c7",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/taskswitchcuj/task_switch_cuj.go",
         "patchSetId": 7
@@ -116,6 +1243,759 @@
       "writtenOn": "2022-08-16T20:00:52Z",
       "side": 1,
       "message": "Maybe wait for everything on desktop stops moving?\n\nSomething like `ac.WithInterval(2*time.Second).WaitUntilNoEvent(nodewith.Root(), event.LocationChanged)(ctx)`\n\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/ash/desks.go;rcl\u003d90263e12b4872e12d46c2e91415c2935638b6f48;l\u003d208",
+      "revId": "0fffccd5cfe5ada7ee054cd406e62950e3dd4bbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a224bfe8_716ada26",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/taskswitchcuj/taskswitcher.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-17T16:35:26Z",
+      "side": 1,
+      "message": "nit: `numTotalWindows - numBrowserWindows - i`",
+      "range": {
+        "startLine": 84,
+        "startChar": 17,
+        "endLine": 84,
+        "endChar": 66
+      },
+      "revId": "0fffccd5cfe5ada7ee054cd406e62950e3dd4bbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70740836_5c1f4ffa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/taskswitchcuj/taskswitcher.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-17T16:35:26Z",
+      "side": 1,
+      "message": "I think that if the returned `error` is non-nil, it will need more information added with `errors.Wrap` or `errors.Wrapf`.",
+      "range": {
+        "startLine": 116,
+        "startChar": 9,
+        "endLine": 116,
+        "endChar": 77
+      },
+      "revId": "0fffccd5cfe5ada7ee054cd406e62950e3dd4bbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4d9009e_79590f44",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/taskswitchcuj/taskswitcher.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-17T16:35:26Z",
+      "side": 1,
+      "message": "Rightmost is one word.",
+      "range": {
+        "startLine": 128,
+        "startChar": 18,
+        "endLine": 128,
+        "endChar": 28
+      },
+      "revId": "0fffccd5cfe5ada7ee054cd406e62950e3dd4bbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5607afb_ddf146bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/taskswitchcuj/taskswitcher.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-17T16:35:26Z",
+      "side": 1,
+      "message": "nit: I think it is considered best practice in Tast tests to write `func(ctx context.Context)` for this kind of thing, just to make sure that the deferred function call will use the current value of `ctx`. For example, if the code `ctx, cancel :\u003d ctxutil.Shorten(ctx, 10*time.Second)` appears below, then you want the deferred function call to still use the non-shortened context.\n\nJust to make sure we are on the same page about `defer`, please examine what happens when you run this: https://go.dev/play/p/sNzLpL7x3TM\n\nIf you write `defer func(ctx context.Context) { ... }(ctx)` followed by `ctx, cancel :\u003d ctxutil.Shorten(ctx, 10*time.Second)`, then the shortened context is like `\"strawberry\"`, and the deferred function call will still use the `\"cherry\"`.",
+      "range": {
+        "startLine": 156,
+        "startChar": 8,
+        "endLine": 156,
+        "endChar": 14
+      },
+      "revId": "0fffccd5cfe5ada7ee054cd406e62950e3dd4bbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b04a7003_a317ebe5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/taskswitchcuj/taskswitcher.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-17T16:35:26Z",
+      "side": 1,
+      "message": "nit:\n\t\t\tif done {\n\t\t\t\treturn\n\t\t\t}\n\t\t\tif err :\u003d ash.SetOverviewModeAndWait(ctx, tconn, false); err !\u003d nil {\n\t\t\t\ttesting.ContextLog(ctx, \"Failed to exit overview mode: \", err)\n\t\t\t}\nbecause people have better comprehension of code when there is less nesting (as in fewer levels of indentation).",
+      "range": {
+        "startLine": 157,
+        "startChar": 0,
+        "endLine": 161,
+        "endChar": 4
+      },
+      "revId": "0fffccd5cfe5ada7ee054cd406e62950e3dd4bbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0894ed3_8223f19e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/taskswitchcuj/taskswitcher.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-17T16:35:26Z",
+      "side": 1,
+      "message": "Write `continue` instead of nesting the whole rest of the `for` loop body in `else`.",
+      "revId": "0fffccd5cfe5ada7ee054cd406e62950e3dd4bbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b0b2745_9bd97faa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/taskswitchcuj/taskswitcher.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-17T16:35:26Z",
+      "side": 1,
+      "message": "optional nit: This name may not be ideal, because the phrase \"target bounds\" is generally used to describe the bounds at the end of a window animation.",
+      "range": {
+        "startLine": 180,
+        "startChar": 4,
+        "endLine": 180,
+        "endChar": 16
+      },
+      "revId": "0fffccd5cfe5ada7ee054cd406e62950e3dd4bbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7719db0e_ab51abf0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/taskswitchcuj/taskswitcher.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-17T16:35:26Z",
+      "side": 1,
+      "message": "nit: comma",
+      "range": {
+        "startLine": 181,
+        "startChar": 48,
+        "endLine": 181,
+        "endChar": 49
+      },
+      "revId": "0fffccd5cfe5ada7ee054cd406e62950e3dd4bbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51698692_477c653c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/taskswitchcuj/websites.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-17T16:35:26Z",
+      "side": 1,
+      "message": "`4`",
+      "range": {
+        "startLine": 22,
+        "startChar": 3,
+        "endLine": 22,
+        "endChar": 4
+      },
+      "revId": "0fffccd5cfe5ada7ee054cd406e62950e3dd4bbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "291c6a4b_2965d70d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/taskswitchcuj/websites.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-17T16:35:26Z",
+      "side": 1,
+      "message": "`action.Action`",
+      "range": {
+        "startLine": 38,
+        "startChar": 170,
+        "endLine": 38,
+        "endChar": 201
+      },
+      "revId": "0fffccd5cfe5ada7ee054cd406e62950e3dd4bbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c0a031d_72c7a028",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/taskswitchcuj/websites.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-17T16:35:26Z",
+      "side": 1,
+      "message": "`action.Action`",
+      "range": {
+        "startLine": 38,
+        "startChar": 137,
+        "endLine": 38,
+        "endChar": 168
+      },
+      "revId": "0fffccd5cfe5ada7ee054cd406e62950e3dd4bbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a70786a_d72ef732",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/taskswitchcuj/websites.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-17T16:35:26Z",
+      "side": 1,
+      "message": "I think it would be better to have `bt browser.Type`, for consistency.",
+      "range": {
+        "startLine": 38,
+        "startChar": 92,
+        "endLine": 38,
+        "endChar": 100
+      },
+      "revId": "0fffccd5cfe5ada7ee054cd406e62950e3dd4bbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04b5ab59_7a561fe2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/taskswitchcuj/websites.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-17T16:35:26Z",
+      "side": 1,
+      "message": "nit: not necessary",
+      "range": {
+        "startLine": 39,
+        "startChar": 24,
+        "endLine": 39,
+        "endChar": 27
+      },
+      "revId": "0fffccd5cfe5ada7ee054cd406e62950e3dd4bbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04c6a7a7_e52803f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/taskswitchcuj/websites.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-17T16:35:26Z",
+      "side": 1,
+      "message": "comma",
+      "range": {
+        "startLine": 41,
+        "startChar": 47,
+        "endLine": 41,
+        "endChar": 48
+      },
+      "revId": "0fffccd5cfe5ada7ee054cd406e62950e3dd4bbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4123c569_02b6e3d7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/taskswitchcuj/websites.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-17T16:35:26Z",
+      "side": 1,
+      "message": "This should be:\n\tws, err :\u003d ash.GetAllWindows(ctx, tconn)\n\tif err !\u003d nil {",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 57
+      },
+      "revId": "0fffccd5cfe5ada7ee054cd406e62950e3dd4bbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65ea27b1_1f1f4476",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/taskswitchcuj/websites.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-17T16:35:26Z",
+      "side": 1,
+      "message": "These are totally unnecessary. In the end, `init` is simply\n\tfunc(ctx context.Context) error {\n\t\treturn initializeSpeedometer(ctx, speedometerTab.Conn)\n\t}\nand `cleanup` is likewise just a single action that doesn\u0027t need to be in a slice.",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 49
+      },
+      "revId": "0fffccd5cfe5ada7ee054cd406e62950e3dd4bbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89276dd9_809de6bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/taskswitchcuj/websites.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-17T16:35:26Z",
+      "side": 1,
+      "message": "nit: comma",
+      "range": {
+        "startLine": 54,
+        "startChar": 46,
+        "endLine": 54,
+        "endChar": 47
+      },
+      "revId": "0fffccd5cfe5ada7ee054cd406e62950e3dd4bbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be88581d_5618af9a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/taskswitchcuj/websites.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-17T16:35:26Z",
+      "side": 1,
+      "message": "This should be:\n\tmanyTabs, err :\u003d cuj.NewTabs(ctx, cs, false, numExtraWebsites)\n\tif err !\u003d nil {",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 79
+      },
+      "revId": "0fffccd5cfe5ada7ee054cd406e62950e3dd4bbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c18b008_732188c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/taskswitchcuj/websites.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-17T16:35:26Z",
+      "side": 1,
+      "message": "`:\u003d`",
+      "range": {
+        "startLine": 66,
+        "startChar": 9,
+        "endLine": 66,
+        "endChar": 10
+      },
+      "revId": "0fffccd5cfe5ada7ee054cd406e62950e3dd4bbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5445e666_09a8d9f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/taskswitchcuj/websites.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-17T16:35:26Z",
+      "side": 1,
+      "message": "This should be:\n\ttaskSwitchTabs, err :\u003d cuj.NewTabsByURLs(ctx, cs, true, simpleWebsites)\n\tif err !\u003d nil {",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 88
+      },
+      "revId": "0fffccd5cfe5ada7ee054cd406e62950e3dd4bbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da8e3111_bb1a28be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/taskswitchcuj/websites.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-17T16:35:26Z",
+      "side": 1,
+      "message": "nit: comma",
+      "range": {
+        "startLine": 78,
+        "startChar": 41,
+        "endLine": 78,
+        "endChar": 42
+      },
+      "revId": "0fffccd5cfe5ada7ee054cd406e62950e3dd4bbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a362059_bb92e6a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/taskswitchcuj/websites.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-17T16:35:26Z",
+      "side": 1,
+      "message": "This should be:\n\tspeedometerTab, err :\u003d cuj.NewTabByURL(ctx, cs, true, \"https://browserbench.org/Speedometer2.0/\")\n\tif err !\u003d nil {",
+      "range": {
+        "startLine": 86,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 114
+      },
+      "revId": "0fffccd5cfe5ada7ee054cd406e62950e3dd4bbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06277a5e_bb1a10d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/taskswitchcuj/websites.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-17T16:35:26Z",
+      "side": 1,
+      "message": "This should be:\n\t\tscore, err :\u003d readSpeedometerScore(ctx, speedometerTab.Conn)\n\t\tif err !\u003d nil {",
+      "range": {
+        "startLine": 94,
+        "startChar": 0,
+        "endLine": 95,
+        "endChar": 78
+      },
+      "revId": "0fffccd5cfe5ada7ee054cd406e62950e3dd4bbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "866376ce_d3e178b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/taskswitchcuj/websites.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-17T16:35:26Z",
+      "side": 1,
+      "message": "You can merge the computation of `expectedNumWindows` into this line, like so:\n\t} else if expectedNumWindows :\u003d expectedNumBrowserWindows + initialNumWindows; len(ws) !\u003d expectedNumWindows {",
+      "range": {
+        "startLine": 138,
+        "startChar": 0,
+        "endLine": 138,
+        "endChar": 42
+      },
+      "revId": "0fffccd5cfe5ada7ee054cd406e62950e3dd4bbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a58439f_2d039892",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/taskswitchcuj/websites.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-17T16:35:26Z",
+      "side": 1,
+      "message": "How about `benchmarkClient.iterCount++;`",
+      "range": {
+        "startLine": 159,
+        "startChar": 3,
+        "endLine": 159,
+        "endChar": 34
+      },
+      "revId": "0fffccd5cfe5ada7ee054cd406e62950e3dd4bbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9f87d3f_2d89f0d0",
+        "filename": "src/chromiumos/tast/local/chrome/cuj/tab_handler.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-17T16:35:26Z",
+      "side": 1,
+      "message": "I see that this is distinct from `individualWindows` because you make sure it is true in the first iteration. Why do that here and not in `NewTabs`?",
+      "range": {
+        "startLine": 74,
+        "startChar": 35,
+        "endLine": 74,
+        "endChar": 54
+      },
+      "revId": "0fffccd5cfe5ada7ee054cd406e62950e3dd4bbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7eb9f92a_dc13e55a",
+        "filename": "src/chromiumos/tast/local/chrome/cuj/tab_handler.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-17T16:35:26Z",
+      "side": 1,
+      "message": "If `NewTabByURL` returns a pointer, then why don\u0027t `NewTabs` and `NewTabsByURLs` return `[]*TabConn`?",
+      "range": {
+        "startLine": 88,
+        "startChar": 93,
+        "endLine": 88,
+        "endChar": 101
+      },
+      "revId": "0fffccd5cfe5ada7ee054cd406e62950e3dd4bbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa462d06_5509aed5",
+        "filename": "src/chromiumos/tast/local/chrome/cuj/tab_handler.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-17T16:35:26Z",
+      "side": 1,
+      "message": "comma",
+      "range": {
+        "startLine": 111,
+        "startChar": 32,
+        "endLine": 111,
+        "endChar": 33
+      },
+      "revId": "0fffccd5cfe5ada7ee054cd406e62950e3dd4bbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f36dc805_1a9f4894",
+        "filename": "src/chromiumos/tast/local/chrome/cuj/tab_handler.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-17T16:35:26Z",
+      "side": 1,
+      "message": "If not returning `err`, at least include it in the log message.",
+      "range": {
+        "startLine": 115,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 72
+      },
+      "revId": "0fffccd5cfe5ada7ee054cd406e62950e3dd4bbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be02975a_eb24f294",
+        "filename": "src/chromiumos/tast/local/chrome/cuj/ui.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-17T16:35:26Z",
+      "side": 1,
+      "message": "nit: `meets the criterion`",
+      "range": {
+        "startLine": 151,
+        "startChar": 8,
+        "endLine": 151,
+        "endChar": 28
+      },
+      "revId": "0fffccd5cfe5ada7ee054cd406e62950e3dd4bbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9af5aca_156dcd5c",
+        "filename": "src/chromiumos/tast/local/chrome/cuj/ui.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-17T16:35:26Z",
+      "side": 1,
+      "message": "`\"failed to search for tabs with title %q\"`",
+      "range": {
+        "startLine": 157,
+        "startChar": 32,
+        "endLine": 157,
+        "endChar": 68
+      },
+      "revId": "0fffccd5cfe5ada7ee054cd406e62950e3dd4bbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79edac7c_b38edd65",
+        "filename": "src/chromiumos/tast/local/chrome/cuj/ui.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-17T16:35:26Z",
+      "side": 1,
+      "message": "if len(tabs) !\u003d 1 {\n\t\treturn nil, errors.Errorf(\"unexpected number of tabs with title %q; found %d, expected 1\", title, len(tabs))\n\t}",
+      "range": {
+        "startLine": 160,
+        "startChar": 0,
+        "endLine": 164,
+        "endChar": 2
+      },
+      "revId": "0fffccd5cfe5ada7ee054cd406e62950e3dd4bbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e20df603_1aa6a93e",
+        "filename": "src/chromiumos/tast/local/memory/arc/dumpsys_meminfo.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-17T16:35:26Z",
+      "side": 1,
+      "message": "What is this change for?",
+      "range": {
+        "startLine": 146,
+        "startChar": 41,
+        "endLine": 146,
+        "endChar": 53
+      },
       "revId": "0fffccd5cfe5ada7ee054cd406e62950e3dd4bbc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
