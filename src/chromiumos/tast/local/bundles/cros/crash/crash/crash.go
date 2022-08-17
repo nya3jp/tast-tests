@@ -31,8 +31,10 @@ const (
 	// CrasherPath is the full path for crasher.
 	CrasherPath = "/usr/local/libexec/tast/helpers/local/cros/platform.UserCrash.crasher"
 
-	crashReporterLogFormat          = "[user] Received crash notification for %s[%d] sig 11, user %s group %s (handling)"
-	crashReporterNoConsentLogFormat = "No consent. Not handling invocation: /sbin/crash_reporter --user=%d:11:%s:%s:%s"
+	crashReporterLogPrefix          = "[user] Received crash notification for"
+	crashReporterLogFormat          = "%s %s[%d] sig 11, user %s group %s (handling)"
+	crashReporterNoConsentLogPrefix = "No consent. Not handling invocation: /sbin/crash_reporter"
+	crashReporterNoConsentLogFormat = "%s --user=%d:11:%s:%s:%s"
 	crashSenderRateDir              = "/var/lib/crash_sender"
 )
 
@@ -46,6 +48,7 @@ type CrasherOptions struct {
 	CauseCrash              bool
 	Consent                 bool
 	CrasherPath             string
+	CustomCrasher           string
 	ExpectCrashReporterFail bool
 }
 
@@ -83,6 +86,7 @@ func DefaultCrasherOptions() CrasherOptions {
 		CauseCrash:              true,
 		Consent:                 true,
 		CrasherPath:             CrasherPath,
+		CustomCrasher:           "",
 		ExpectCrashReporterFail: false,
 	}
 }
@@ -195,16 +199,27 @@ func waitForProcessEnd(ctx context.Context, name string) error {
 // RunCrasherProcess runs the crasher process.
 // Will wait up to 10 seconds for crash_reporter to finish.
 func RunCrasherProcess(ctx context.Context, cr *chrome.Chrome, opts CrasherOptions) (*CrasherResult, error) {
-	if opts.CrasherPath != CrasherPath {
-		if err := testexec.CommandContext(ctx, "cp", "-a", CrasherPath, opts.CrasherPath).Run(); err != nil {
-			return nil, errors.Wrap(err, "failed to copy crasher")
+	var exepath string
+	var args []string
+	if opts.CustomCrasher == "" {
+		if opts.CrasherPath != CrasherPath {
+			if err := testexec.CommandContext(ctx, "cp", "-a", CrasherPath, opts.CrasherPath).Run(); err != nil {
+				return nil, errors.Wrap(err, "failed to copy crasher")
+			}
 		}
+		exepath = opts.CrasherPath
+		if !opts.CauseCrash {
+			args = append(args, "--nocrash")
+		}
+	} else {
+		args = strings.Split(opts.CustomCrasher, " ")
+		exepath, args = args[0], args[1:]
 	}
 	var command []string
 	if opts.Username != "root" {
 		command = []string{"su", opts.Username, "-c"}
 	}
-	basename := filepath.Base(opts.CrasherPath)
+	basename := filepath.Base(exepath)
 	// Use only the first 15 characters of the basename since the kernel
 	// strips the rest.
 	filterBasename := basename
@@ -212,12 +227,10 @@ func RunCrasherProcess(ctx context.Context, cr *chrome.Chrome, opts CrasherOptio
 		filterBasename = filterBasename[:15]
 	}
 	if err := crash.EnableCrashFiltering(ctx, filterBasename); err != nil {
-		return nil, errors.Wrapf(err, "failed to replace crash filter: %v", err)
+		return nil, errors.Wrap(err, "failed to replace crash filter")
 	}
-	command = append(command, opts.CrasherPath)
-	if !opts.CauseCrash {
-		command = append(command, "--nocrash")
-	}
+	command = append(command, exepath)
+	command = append(command, args...)
 	cmd := testexec.CommandContext(ctx, command[0], command[1:]...)
 
 	reader, err := syslog.NewReader(ctx)
@@ -233,24 +246,34 @@ func RunCrasherProcess(ctx context.Context, cr *chrome.Chrome, opts CrasherOptio
 		return nil, errors.Wrap(err, "failed to execute crasher")
 	}
 
-	// Get the PID from the output, since |crasher.pid| may be su's PID.
-	m := pidRegex.FindStringSubmatch(out)
-	if m == nil {
-		return nil, errors.Errorf("no PID found in output: %s", out)
-	}
-	pid, err := strconv.Atoi(m[1])
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to parse PID from output of command")
-	}
-	usr, err := user.Lookup(opts.Username)
-	if err != nil {
-		return nil, errors.Wrapf(err, "failed to lookup username %s", opts.Username)
-	}
 	var crashCaughtMessage string
-	if opts.Consent {
-		crashCaughtMessage = fmt.Sprintf(crashReporterLogFormat, basename, pid, usr.Uid, usr.Gid)
+	if opts.CustomCrasher == "" {
+		// Get the PID from the output, since |crasher.pid| may be su's PID.
+		m := pidRegex.FindStringSubmatch(out)
+		if m == nil {
+			return nil, errors.Errorf("no PID found in output: %s", out)
+		}
+		pid, err := strconv.Atoi(m[1])
+		if err != nil {
+			return nil, errors.Wrap(err, "failed to parse PID from output of command")
+		}
+		usr, err := user.Lookup(opts.Username)
+		if err != nil {
+			return nil, errors.Wrapf(err, "failed to lookup username %s", opts.Username)
+		}
+		if opts.Consent {
+			crashCaughtMessage = fmt.Sprintf(crashReporterLogFormat, crashReporterLogPrefix, basename, pid, usr.Uid, usr.Gid)
+		} else {
+			crashCaughtMessage = fmt.Sprintf(crashReporterNoConsentLogFormat, crashReporterNoConsentLogPrefix, pid, usr.Uid, usr.Gid, basename)
+		}
 	} else {
-		crashCaughtMessage = fmt.Sprintf(crashReporterNoConsentLogFormat, pid, usr.Uid, usr.Gid, basename)
+		// When using a custom crasher, we don't have the PID, so we check for the
+		// log message prefix and the executable name.
+		if opts.Consent {
+			crashCaughtMessage = crashReporterLogPrefix
+		} else {
+			crashCaughtMessage = crashReporterNoConsentLogPrefix
+		}
 	}
 
 	// Wait until the crasher has exited and been reaped.
@@ -263,7 +286,8 @@ func RunCrasherProcess(ctx context.Context, cr *chrome.Chrome, opts CrasherOptio
 	waitCtx, cancel := context.WithTimeout(ctx, 5*time.Second)
 	defer cancel()
 	_, err = reader.Wait(waitCtx, time.Hour /* unused */, func(e *syslog.Entry) bool {
-		return strings.Contains(e.Content, crashCaughtMessage)
+		return strings.Contains(e.Content, crashCaughtMessage) &&
+			(opts.CustomCrasher != "" || strings.Contains(e.Content, basename))
 	})
 	var crashReporterCaught bool
 	select {
@@ -283,8 +307,17 @@ func RunCrasherProcess(ctx context.Context, cr *chrome.Chrome, opts CrasherOptio
 		crashReporterCaught = true
 	}
 
+	var crashed bool
+	switch crasherExitCode {
+	case 128 + int(syscall.SIGSEGV):
+		crashed = true
+	case 128 + int(syscall.SIGABRT):
+		crashed = true
+	default:
+		crashed = false
+	}
 	result := CrasherResult{
-		Crashed:             (crasherExitCode == 128+int(syscall.SIGSEGV)),
+		Crashed:             crashed,
 		CrashReporterCaught: crashReporterCaught,
 		ReturnCode:          crasherExitCode,
 	}
@@ -292,10 +325,17 @@ func RunCrasherProcess(ctx context.Context, cr *chrome.Chrome, opts CrasherOptio
 	return &result, nil
 }
 
-func crashFilePrefix(crasherPath string) string {
+func crashExePath(opts CrasherOptions) string {
+	if opts.CustomCrasher == "" {
+		return opts.CrasherPath
+	}
+	return strings.SplitN(opts.CustomCrasher, " ", 2)[0]
+}
+
+func crashFilePrefix(opts CrasherOptions) string {
 	// The prefix of report file names. Basename of the executable, but non-alphanumerics replaced by underscores.
 	// See CrashCollector::Sanitize in src/platform2/crash-repoter/crash_collector.cc.
-	return nonAlphaNumericRegex.ReplaceAllLiteralString(filepath.Base(crasherPath), "_")
+	return nonAlphaNumericRegex.ReplaceAllLiteralString(filepath.Base(crashExePath(opts)), "_")
 }
 
 // RunCrasherProcessAndAnalyze executes a crasher process and extracts result data from dumps and logs.
@@ -334,7 +374,7 @@ func RunCrasherProcessAndAnalyze(ctx context.Context, cr *chrome.Chrome, opts Cr
 		return nil, errors.Wrapf(err, "failed to read crash directory %s", crashDir)
 	}
 
-	basename := crashFilePrefix(opts.CrasherPath)
+	basename := crashFilePrefix(opts)
 	oldBasename := ""
 	if opts.ExpectCrashReporterFail {
 		oldBasename = basename
@@ -449,7 +489,7 @@ func RunCrasherProcessAndAnalyze(ctx context.Context, cr *chrome.Chrome, opts Cr
 	}
 
 	result.Minidump = crashReportFiles[".dmp"]
-	result.Basename = filepath.Base(opts.CrasherPath)
+	result.Basename = filepath.Base(crashExePath(opts))
 	result.Meta = crashReportFiles[".meta"]
 	result.Log = crashReportFiles[".log"]
 	result.Pslog = crashReportFiles[".pslog"]
@@ -561,7 +601,7 @@ func CheckCrashingProcess(ctx context.Context, cr *chrome.Chrome, opts CrasherOp
 
 	// TODO(crbug.com/970930): Check that crash reporter announces minidump location to the log like "Stored minidump to /var/...."
 
-	if err := checkMinidumpStackwalk(ctx, result.Minidump, opts.CrasherPath, result.Basename, true); err != nil {
+	if err := checkMinidumpStackwalk(ctx, result.Minidump, crashExePath(opts), result.Basename, true); err != nil {
 		return err
 	}
 
@@ -613,7 +653,7 @@ func RunCrashTest(ctx context.Context, cr *chrome.Chrome, s *testing.State, test
 
 // CleanCrashSpoolDirs removes all crash files in the crash spool directories,
 // produced artificially but not consumed during a test.
-func CleanCrashSpoolDirs(ctx context.Context, crasherPath string) error {
+func CleanCrashSpoolDirs(ctx context.Context, opts CrasherOptions) error {
 	crashDirs, err := crash.GetDaemonStoreCrashDirs(ctx)
 	if err != nil {
 		return errors.Wrap(err, "failed to get daemon store dirs")
@@ -629,7 +669,7 @@ func CleanCrashSpoolDirs(ctx context.Context, crasherPath string) error {
 	}
 	var firstErr error
 	for _, f := range crashes {
-		if strings.SplitN(filepath.Base(f), ".", 2)[0] != crashFilePrefix(crasherPath) {
+		if strings.SplitN(filepath.Base(f), ".", 2)[0] != crashFilePrefix(opts) {
 			continue
 		}
 		if err := os.Remove(f); err != nil {
