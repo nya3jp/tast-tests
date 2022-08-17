@@ -16,6 +16,52 @@
       "message": "reminder for myself: don\u0027t submit until PM has confirmed these SLO thresholds",
       "revId": "9d9c703adea53cd29b7d5ba2e5fa8527b6f657eb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f71b524_2346c10e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_performance.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-08-17T04:45:47Z",
+      "side": 1,
+      "message": "this function seems to be reusable by future perf tests? how about moving it to `../inputs/util/perf.go`?",
+      "range": {
+        "startLine": 32,
+        "startChar": 5,
+        "endLine": 32,
+        "endChar": 24
+      },
+      "revId": "9d9c703adea53cd29b7d5ba2e5fa8527b6f657eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f0579e4_94b33a60",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_performance.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-08-17T04:45:47Z",
+      "side": 1,
+      "message": "The convention is to use `Perf` suffix, suggest to rename to `PhysicalKeyboardTypingPerf`",
+      "range": {
+        "startLine": 57,
+        "startChar": 16,
+        "endLine": 57,
+        "endChar": 43
+      },
+      "revId": "9d9c703adea53cd29b7d5ba2e5fa8527b6f657eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
