@@ -16,6 +16,24 @@
       "message": "I think this test case is recovering now. Maybe we should leave it.\n\nhttps://stainless.corp.google.com/search?view\u003dmatrix\u0026row\u003dtest\u0026col\u003dbuild\u0026first_date\u003d2022-07-20\u0026last_date\u003d2022-08-16\u0026test\u003d%5Etast%5C.nearbyshare%5C.\u0026exclude_cts\u003dfalse\u0026exclude_not_run\u003dfalse\u0026exclude_non_release\u003dtrue\u0026exclude_au\u003dtrue\u0026exclude_acts\u003dtrue\u0026exclude_retried\u003dfalse\u0026exclude_non_production\u003dfalse\u0026exclude_non_critical\u003dfalse",
       "revId": "c26ff700b25732e0f05c71b2f8991c06e6da178a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1964af5_8f6ec7da",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1520982
+      },
+      "writtenOn": "2022-08-17T20:51:39Z",
+      "side": 1,
+      "message": "The test was modified in crrev.com/c/3818375 to remove the failing portions while still relying on some form of verification. The linked CL has only landed in 15040 so it has only just started to recover. Would you recommend possibly doing a merge request for older builds or will that not be necessary?",
+      "parentUuid": "c1a63f6e_1a9483a5",
+      "revId": "c26ff700b25732e0f05c71b2f8991c06e6da178a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
