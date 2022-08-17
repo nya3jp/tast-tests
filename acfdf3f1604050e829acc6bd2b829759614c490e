@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "566b4e7c_3bb61b9d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1524909
+      },
+      "writtenOn": "2022-08-17T07:43:15Z",
+      "side": 1,
+      "message": "Please note that new test credentials must be landed on the private repo first.",
+      "revId": "acfdf3f1604050e829acc6bd2b829759614c490e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
