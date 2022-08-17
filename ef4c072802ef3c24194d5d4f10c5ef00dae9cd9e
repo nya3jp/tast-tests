@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b91062c2_eaf0775b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/util/test_runner.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2022-08-17T02:23:22Z",
+      "side": 1,
+      "message": "I am concerned this may not be exactly correct - e.g. if the suspend call returns DeadlineExceeded - it means things are broken. I think the fio cancleation on Deadline inhibition should happen deeper..",
+      "range": {
+        "startLine": 78,
+        "startChar": 41,
+        "endLine": 78,
+        "endChar": 83
+      },
+      "revId": "ef4c072802ef3c24194d5d4f10c5ef00dae9cd9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
