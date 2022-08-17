@@ -40,7 +40,7 @@ var gpuMtk = []string{"kukui", "jacuzzi"}
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: IGT,
+		Func: IgtKms,
 		Desc: "Verifies igt-gpu-tools test binaries run successfully",
 		Contacts: []string{
 			"ddavenport@chromium.org",
@@ -509,7 +509,7 @@ func summarizeLog(f *os.File) (r resultSummary, failedSubtests []string) {
 	return r, failedSubtests
 }
 
-func IGT(ctx context.Context, s *testing.State) {
+func IgtKms(ctx context.Context, s *testing.State) {
 	testOpt := s.Param().(igtTest)
 
 	f, err := os.Create(filepath.Join(s.OutDir(), filepath.Base(testOpt.exe)+".txt"))
