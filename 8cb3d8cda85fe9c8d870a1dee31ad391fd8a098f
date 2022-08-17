@@ -39,6 +39,30 @@
       },
       "revId": "8cb3d8cda85fe9c8d870a1dee31ad391fd8a098f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9859a0f5_d46ca804",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data_migration.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1541210
+      },
+      "writtenOn": "2022-08-17T06:14:13Z",
+      "side": 1,
+      "message": "Sounds good, thanks!",
+      "parentUuid": "f9b66f0e_48922678",
+      "range": {
+        "startLine": 85,
+        "startChar": 4,
+        "endLine": 86,
+        "endChar": 62
+      },
+      "revId": "8cb3d8cda85fe9c8d870a1dee31ad391fd8a098f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
