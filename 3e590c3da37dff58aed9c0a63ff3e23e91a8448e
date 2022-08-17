@@ -282,6 +282,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b561d1d6_60d715ac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/dock2_persistent_settings.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1541867
+      },
+      "writtenOn": "2022-08-17T16:36:26Z",
+      "side": 1,
+      "message": "The first two lines of those logs are indicating the initial step of the repo sync is failing.  It seems to be trying to resolve a remote repo as `Newman Liu \u003cchriswu@allion.corp-partner.google.com\u003e`.  Did you accidentally modify some files located in the `~/chromiumos/.repo`?  It may be best to look through your command line history inside and outside of the chroot.",
+      "parentUuid": "389b3c53_0171eed2",
+      "range": {
+        "startLine": 1,
+        "startChar": 42,
+        "endLine": 1,
+        "endChar": 63
+      },
+      "revId": "3e590c3da37dff58aed9c0a63ff3e23e91a8448e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "58dd4a28_07e134b6",
         "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/dock2_persistent_settings.go",
         "patchSetId": 23
