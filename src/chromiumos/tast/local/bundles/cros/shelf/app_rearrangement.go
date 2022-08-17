@@ -296,9 +296,9 @@ func AppRearrangement(ctx context.Context, s *testing.State) {
 			s.Fatalf("Failed to find all fake apps: want 2; got %q: ", len(fakeAppIDs))
 		}
 
-		appIDsToPin = []string{apps.Settings.ID, fakeAppIDs[1], apps.Files.ID}
-		defaultAppIDsInPinOrder = []string{browserApp.ID, apps.Settings.ID, fakeAppIDs[1], apps.Files.ID}
-		updatedAppIDsInPinOrder = []string{apps.Files.ID, browserApp.ID, apps.Settings.ID, fakeAppIDs[1]}
+		appIDsToPin = []string{apps.Settings.ID, fakeAppIDs[1], apps.FilesSWA.ID}
+		defaultAppIDsInPinOrder = []string{browserApp.ID, apps.Settings.ID, fakeAppIDs[1], apps.FilesSWA.ID}
+		updatedAppIDsInPinOrder = []string{apps.FilesSWA.ID, browserApp.ID, apps.Settings.ID, fakeAppIDs[1]}
 
 	case pwaAppTest:
 		fdms := s.FixtValue().(fakedms.HasFakeDMS).FakeDMS()
@@ -308,9 +308,9 @@ func AppRearrangement(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to install PWA: ", err)
 		}
 
-		appIDsToPin = []string{apps.Settings.ID, apps.Files.ID, pwaAppID}
-		defaultAppIDsInPinOrder = []string{browserApp.ID, apps.Settings.ID, apps.Files.ID, pwaAppID}
-		updatedAppIDsInPinOrder = []string{pwaAppID, browserApp.ID, apps.Settings.ID, apps.Files.ID}
+		appIDsToPin = []string{apps.Settings.ID, apps.FilesSWA.ID, pwaAppID}
+		defaultAppIDsInPinOrder = []string{browserApp.ID, apps.Settings.ID, apps.FilesSWA.ID, pwaAppID}
+		updatedAppIDsInPinOrder = []string{pwaAppID, browserApp.ID, apps.Settings.ID, apps.FilesSWA.ID}
 
 		// Use a shortened context for test operations to reserve time for cleanup.
 		cleanupCtx := ctx
@@ -334,9 +334,9 @@ func AppRearrangement(ctx context.Context, s *testing.State) {
 			s.Fatalf("Failed to wait until %s is installed: %v", appName, err)
 		}
 
-		appIDsToPin = []string{apps.Settings.ID, apps.Files.ID, installedArcAppID}
-		defaultAppIDsInPinOrder = []string{browserApp.ID, apps.Settings.ID, apps.Files.ID, installedArcAppID}
-		updatedAppIDsInPinOrder = []string{installedArcAppID, browserApp.ID, apps.Settings.ID, apps.Files.ID}
+		appIDsToPin = []string{apps.Settings.ID, apps.FilesSWA.ID, installedArcAppID}
+		defaultAppIDsInPinOrder = []string{browserApp.ID, apps.Settings.ID, apps.FilesSWA.ID, installedArcAppID}
+		updatedAppIDsInPinOrder = []string{installedArcAppID, browserApp.ID, apps.Settings.ID, apps.FilesSWA.ID}
 	}
 
 	// Pin additional apps to create a more complex scenario for testing.
