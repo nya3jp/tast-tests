@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/lacros/lacrosinfo"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
@@ -151,10 +152,21 @@ var Help = App{
 	Name: "Explore",
 }
 
-// Lacros has details about Lacros browser app.
-var Lacros = App{
-	ID:   "jaimifaeiicidiikhmjedcgdimealfbh",
+// LacrosID is the ID of the Lacros browser app.
+const LacrosID = "jaimifaeiicidiikhmjedcgdimealfbh"
+
+// LacrosPrimaryLacros has details about the Lacros browser app when the Ash browser is enabled as well,
+// i.e. in LacrosPrimary mode (or in the deprecated LacrosSideBySide mode).
+var LacrosPrimaryLacros = App{
+	ID:   LacrosID,
 	Name: "Lacros",
+}
+
+// LacrosOnlyLacros has details about the Lacros browser app when the Ash browser is disabled,
+// i.e. in LacrosOnly mode.
+var LacrosOnlyLacros = App{
+	ID:   LacrosID,
+	Name: "Chrome",
 }
 
 // Maps has details about Arc Maps app.
@@ -454,24 +466,45 @@ func ChromeOrChromium(ctx context.Context, tconn *chrome.TestConn) (App, error) 
 	return App{}, errors.New("Neither Chrome nor Chromium were found in available apps")
 }
 
+// Lacros returns the Lacros app details for the current system configuration.
+// The result (on success) is either LacrosPrimaryLacros or LacrosOnlyLacros.
+// The given TestConn must be a connection to Ash.
+func Lacros(ctx context.Context, tconn *chrome.TestConn) (App, error) {
+	lacrosInfo, err := lacrosinfo.Snapshot(ctx, tconn)
+	if err != nil {
+		return App{}, errors.Wrap(err, "failed to get lacros info")
+	}
+	switch lacrosInfo.Mode {
+	case lacrosinfo.LacrosModeDisabled:
+		return App{}, errors.New("Lacros app requested but Lacros is disabled")
+	case lacrosinfo.LacrosModeSideBySide:
+	case lacrosinfo.LacrosModePrimary:
+		return LacrosPrimaryLacros, nil
+	case lacrosinfo.LacrosModeOnly:
+		return LacrosOnlyLacros, nil
+	}
+	return App{}, errors.Wrapf(err, "unexpected LacrosMode: %v", lacrosInfo.Mode)
+}
+
 // PrimaryBrowser returns the primary browser for the current system configuration.
-// In LacrosPrimary and LacrosOnly configurations, this is 'Lacros'.
-// Otherwise it is 'Chrome' or 'Chromium' depending on branding.
+// In LacrosPrimary and LacrosOnly configurations, it behaves the same as the Lacros function above.
+// Otherwise it returns 'Chrome' or 'Chromium' depending on branding.
 // The given TestConn must be a connection to Ash.
 func PrimaryBrowser(ctx context.Context, tconn *chrome.TestConn) (App, error) {
-	const js = "tast.promisify(chrome.autotestPrivate.isLacrosPrimaryBrowser)()"
-	var lacros bool
-	if err := tconn.Eval(ctx, js, &lacros); err != nil {
-		return App{}, errors.Wrap(err, "failed to call isLacrosPrimaryBrowser")
-	}
-	if lacros {
-		return Lacros, nil
-	}
-	browserApp, err := ChromeOrChromium(ctx, tconn)
+	lacrosInfo, err := lacrosinfo.Snapshot(ctx, tconn)
 	if err != nil {
-		return App{}, errors.Wrap(err, "failed to find the browser app for ash-chrome")
+		return App{}, errors.Wrap(err, "failed to get lacros info")
 	}
-	return browserApp, nil
+	switch lacrosInfo.Mode {
+	case lacrosinfo.LacrosModeDisabled:
+	case lacrosinfo.LacrosModeSideBySide:
+		return ChromeOrChromium(ctx, tconn)
+	case lacrosinfo.LacrosModePrimary:
+		return LacrosPrimaryLacros, nil
+	case lacrosinfo.LacrosModeOnly:
+		return LacrosOnlyLacros, nil
+	}
+	return App{}, errors.Wrapf(err, "unexpected LacrosMode: %v", lacrosInfo.Mode)
 }
 
 // InstallPWAForURL navigates to a PWA, attempts to install and returns the installed app ID.
