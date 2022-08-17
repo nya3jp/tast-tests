@@ -14,7 +14,6 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/filesapp"
@@ -124,7 +123,7 @@ func copyFilesToLinuxfiles(ctx context.Context, tconn *chrome.TestConn, filesApp
 		steps = append(steps, filesApp.SelectFile(file))
 	}
 
-	copyMsg := nodewith.Name(fmt.Sprintf("Copying %d items to %s", len(testFiles), "Linux files")).Role(role.StaticText).Ancestor(filesapp.WindowFinder(apps.Files.ID))
+	copyMsg := nodewith.Name(fmt.Sprintf("Copying %d items to %s", len(testFiles), "Linux files")).Role(role.StaticText)
 	ui := uiauto.New(tconn)
 	steps = append(steps,
 		// Select all files.
@@ -143,7 +142,7 @@ func copyFilesToLinuxfiles(ctx context.Context, tconn *chrome.TestConn, filesApp
 		return err
 	}
 
-	if err := ui.WithTimeout(10 * time.Second).WaitUntilExists(copyMsg)(ctx); err != nil {
+	if err := filesApp.WithTimeout(10 * time.Second).WaitUntilExists(copyMsg)(ctx); err != nil {
 		testing.ContextLog(ctx, "Copying message was not found")
 	}
 
