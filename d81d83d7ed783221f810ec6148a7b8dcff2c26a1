@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6cae937f_9fb156ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_performance.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2022-08-17T04:33:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e09b6431_1e038720",
+      "range": {
+        "startLine": 63,
+        "startChar": 25,
+        "endLine": 63,
+        "endChar": 118
+      },
+      "revId": "d81d83d7ed783221f810ec6148a7b8dcff2c26a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1296bf92_402a13a2",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-08-17T04:17:47Z",
       "side": 1,
       "message": "remove HardwareDeps",
+      "range": {
+        "startLine": 66,
+        "startChar": 2,
+        "endLine": 66,
+        "endChar": 48
+      },
+      "revId": "d81d83d7ed783221f810ec6148a7b8dcff2c26a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "910be36a_103e013d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_performance.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2022-08-17T04:33:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1296bf92_402a13a2",
       "range": {
         "startLine": 66,
         "startChar": 2,
