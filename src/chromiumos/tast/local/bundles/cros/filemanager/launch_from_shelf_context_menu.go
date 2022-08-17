@@ -105,7 +105,7 @@ func isFilesAppPinnedByDefault(ctx context.Context, tconn *chrome.TestConn) (boo
 		return false, errors.Wrap(err, "failed to get the list of default pinned app IDs")
 	}
 	for _, id := range appIDs {
-		if id == apps.Files.ID {
+		if id == apps.FilesSWA.ID {
 			return true, nil
 		}
 	}
