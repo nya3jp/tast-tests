@@ -19,10 +19,10 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/lockscreen"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
-	"chromiumos/tast/local/chrome/uiauto/restriction"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/media/imgcmp"
@@ -77,9 +77,8 @@ func validateBackground(ctx context.Context, cr *chrome.Chrome, clr color.Color,
 		if err != nil {
 			return errors.Wrap(err, "failed to grab screenshot")
 		}
-		rect := img.Bounds()
 		redPixels := imgcmp.CountPixelsWithDiff(img, clr, 60)
-		totalPixels := (rect.Max.Y - rect.Min.Y) * (rect.Max.X - rect.Min.X)
+		totalPixels := img.Bounds().Dx() * img.Bounds().Dy()
 		percent := redPixels * 100 / totalPixels
 		if percent < expectedPercent {
 			return errors.Errorf("unexpected red pixels percentage: got %d / %d = %d%%; want at least %d%%", redPixels, totalPixels, percent, expectedPercent)
@@ -139,22 +138,22 @@ func WallpaperImage(ctx context.Context, s *testing.State) {
 	iurl, ihash := eds.ServePolicyData(imgBytes)
 
 	for _, param := range []struct {
-		name            string
-		wantRestriction restriction.Restriction // wantRestriction is the wanted restriction state of the wallpaper app link.
-		wantImageCheck  bool                    // wantImageCheck is a flag to check the image pixels.
-		value           *policy.WallpaperImage  // value is the value of the policy.
+		name                    string
+		photoContainerClassName string                 // photoContainerClassName is the class name of the photo container of the wallpaper image.
+		wantImageCheck          bool                   // wantImageCheck is a flag to check the image pixels.
+		value                   *policy.WallpaperImage // value is the value of the policy.
 	}{
 		{
-			name:            "nonempty",
-			wantRestriction: restriction.Disabled,
-			wantImageCheck:  true,
-			value:           &policy.WallpaperImage{Val: &policy.WallpaperImageValue{Url: iurl, Hash: ihash}},
+			name:                    "nonempty",
+			photoContainerClassName: "photo-images-container",
+			wantImageCheck:          true,
+			value:                   &policy.WallpaperImage{Val: &policy.WallpaperImageValue{Url: iurl, Hash: ihash}},
 		},
 		{
-			name:            "unset",
-			wantRestriction: restriction.None,
-			wantImageCheck:  false,
-			value:           &policy.WallpaperImage{Stat: policy.StatusUnset},
+			name:                    "unset",
+			photoContainerClassName: "photo-images-container clickable",
+			wantImageCheck:          false,
+			value:                   &policy.WallpaperImage{Stat: policy.StatusUnset},
 		},
 	} {
 		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
@@ -177,14 +176,26 @@ func WallpaperImage(ctx context.Context, s *testing.State) {
 				}
 			}
 
+			wallpaperButton := nodewith.
+				Role(role.Link).
+				Name("Set your wallpaper & style Personalize wallpaper, screen saver, accent colors, and more")
 			// Open the personalization settings page.
 			if err := policyutil.OSSettingsPage(ctx, cr, "personalization").
-				SelectNode(ctx, nodewith.
-					Role(role.Link).
-					Name("Wallpaper Open the wallpaper app")).
-				Restriction(param.wantRestriction).
+				SelectNode(ctx, wallpaperButton).
 				Verify(); err != nil {
 				s.Error("Unexpected OS settings state: ", err)
+			}
+
+			ui := uiauto.New(tconn)
+			if err := uiauto.Combine("open the wallpaper link button",
+				ui.DoDefault(wallpaperButton),
+				ui.WaitUntilExists(nodewith.Role(role.InlineTextBox).Name("Wallpaper")),
+			)(ctx); err != nil {
+				s.Fatal("Failed the wallpaper link button: ", err)
+			}
+
+			if err := ui.Exists(nodewith.Role(role.GenericContainer).ClassName(param.photoContainerClassName))(ctx); err != nil {
+				s.Fatal("Failed to find the photo container of the wallpaper: ", err)
 			}
 
 			if param.wantImageCheck {
