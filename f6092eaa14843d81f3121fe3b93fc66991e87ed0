@@ -133,6 +133,24 @@
       "parentUuid": "3a92b187_49e39e78",
       "revId": "f6092eaa14843d81f3121fe3b93fc66991e87ed0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d7f62fa_e23c2c62",
+        "filename": "src/chromiumos/tast/common/chameleon/chameleond.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1425,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-08-17T21:11:50Z",
+      "side": 1,
+      "message": "I was looking at the implementation of it and it seemed unclear whether or not it would work. I\u0027ll give a test next time though for now I\u0027ll just leave this as-is.",
+      "parentUuid": "6ee2b6fd_937a384c",
+      "revId": "f6092eaa14843d81f3121fe3b93fc66991e87ed0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
