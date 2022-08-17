@@ -17,13 +17,13 @@ import (
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
-	"chromiumos/tast/local/chrome/uiauto/nodewith"
-	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/local/chrome/uiauto/filesapp"
 	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/testing"
@@ -153,7 +153,7 @@ func AutoOpenAllowedForURLs(ctx context.Context, s *testing.State) {
 			}
 
 			ui := uiauto.New(tconn)
-			fileBrowserNode := nodewith.Role(role.Window).Name("Files - Downloads").ClassName("RootView")
+			fileBrowserNode := filesapp.WindowFinder(apps.FilesSWA.ID)
 			if param.wantAutoOpen {
 				if err := ui.WaitUntilExists(fileBrowserNode)(ctx); err != nil {
 					s.Error("Failed to wait for file to auto open: ", err)

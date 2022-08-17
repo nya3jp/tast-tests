@@ -35,7 +35,7 @@ func init() {
 			Val:               browser.TypeAsh,
 			Fixture:           "arcBooted",
 		}, {
-			Name:              "lacros",
+			Name: "lacros",
 			// TODO(b/239469085): Remove "informational" attribute.
 			ExtraAttr:         []string{"informational"},
 			ExtraSoftwareDeps: []string{"android_p", "lacros"},
@@ -61,7 +61,7 @@ func IntentForward(ctx context.Context, s *testing.State) {
 		viewDownloadsAction = "android.intent.action.VIEW_DOWNLOADS"
 		setWallpaperAction  = "android.intent.action.SET_WALLPAPER"
 
-		filesAppURL        = `chrome-extension://hhaomjibdihmijegdhdafkllkbggdgoj/main.*\.html`
+		filesAppURL        = "chrome://file-manager/"
 		wallpaperPickerURL = "chrome://personalization/wallpaper"
 	)
 
