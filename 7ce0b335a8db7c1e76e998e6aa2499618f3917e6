@@ -147,6 +147,30 @@
       },
       "revId": "7ce0b335a8db7c1e76e998e6aa2499618f3917e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f1a92b4_11eca70f",
+        "filename": "src/chromiumos/tast/local/apps/apps.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-08-17T07:56:22Z",
+      "side": 1,
+      "message": "Fair enough, done.",
+      "parentUuid": "69f1e885_ff3f2572",
+      "range": {
+        "startLine": 159,
+        "startChar": 4,
+        "endLine": 159,
+        "endChar": 18
+      },
+      "revId": "7ce0b335a8db7c1e76e998e6aa2499618f3917e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
