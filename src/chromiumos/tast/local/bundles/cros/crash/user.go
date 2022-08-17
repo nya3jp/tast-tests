@@ -154,6 +154,12 @@ func init() {
 				consentType: localcrash.MockConsent,
 			},
 		}, {
+			Name: "rust_crash_signature",
+			Val: userCrashParams{
+				testFunc:    testRustCrashSignature,
+				consentType: localcrash.MockConsent,
+			},
+		}, {
 			Name: "crash_log_infinite_recursion",
 			Val: userCrashParams{
 				testFunc:    testCrashLogInfiniteRecursion,
@@ -611,6 +617,33 @@ func testCrashLogsCreation(ctx context.Context, cr *chrome.Chrome, s *testing.St
 	}
 
 	if err := crash.CleanCrashSpoolDirs(ctx, CrashLogTest); err != nil {
+		s.Error("Failed to clean crash spool dirs: ", err)
+	}
+}
+
+func testRustCrashSignature(ctx context.Context, cr *chrome.Chrome, s *testing.State) {
+	const RustCrashSignature = "rust_crash_signature"
+	opts := crash.DefaultCrasherOptions()
+	opts.Username = "root"
+	opts.CrasherPath = filepath.Join("/usr/bin/crosh --panic")
+	result, err := crash.RunCrasherProcessAndAnalyze(ctx, cr, opts)
+	if err != nil {
+		s.Fatal("Failed to run crasher: ", err)
+	}
+	if !result.Crashed {
+		s.Errorf("Crasher returned %d instead of crashing", result.ReturnCode)
+	}
+	if !result.CrashReporterCaught {
+		s.Error("Logs do not contain crash_reporter message")
+	}
+	b, err := ioutil.ReadFile(result.Meta)
+	if err != nil {
+		s.Error("Failed to read result meta: ", err)
+	}
+	if !strings.Contains(string(b), "sig=panicked at 'See you later, Alligator!', src/util.rs:") {
+		s.Error("Meta file does not contain expected signature")
+	}
+	if err := crash.CleanCrashSpoolDirs(ctx, RustCrashSignature); err != nil {
 		s.Error("Failed to clean crash spool dirs: ", err)
 	}
 }
