@@ -107,6 +107,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "7b580954_445ca588",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 554,
+      "author": {
+        "id": 1541210
+      },
+      "writtenOn": "2022-08-17T09:15:16Z",
+      "side": 1,
+      "message": "\u003e Apparently `a.GetProp` and `getprop` (and android-sh) don\u0027t fail [...]\nSorry for the typo, I meant: (*on* android-sh)",
+      "parentUuid": "8a585d1c_d81d98ff",
+      "revId": "813aee8992746a511aa5f440ea02538fee83633e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "21c82c2a_a529ac13",
         "filename": "src/chromiumos/tast/local/arc/file.go",
         "patchSetId": 9
