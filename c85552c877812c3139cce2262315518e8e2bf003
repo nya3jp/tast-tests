@@ -148,6 +148,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "729b78b6_10d0aaec",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/printpreview/printpreview.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1541339
+      },
+      "writtenOn": "2022-08-17T18:17:29Z",
+      "side": 1,
+      "message": "Created the bug: https://b.corp.google.com/issues/242880037",
+      "parentUuid": "61c760f1_49f392a2",
+      "range": {
+        "startLine": 301,
+        "startChar": 66,
+        "endLine": 302,
+        "endChar": 29
+      },
+      "revId": "c85552c877812c3139cce2262315518e8e2bf003",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c0908350_edc78256",
