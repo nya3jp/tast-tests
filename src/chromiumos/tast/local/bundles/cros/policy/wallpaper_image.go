@@ -16,20 +16,18 @@ import (
 	"chromiumos/tast/common/fixture"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
-	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/lockscreen"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
-	"chromiumos/tast/local/chrome/uiauto/restriction"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/input"
-	"chromiumos/tast/local/media/imgcmp"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/local/policyutil/externaldata"
 	"chromiumos/tast/local/policyutil/fixtures"
-	"chromiumos/tast/local/screenshot"
+	"chromiumos/tast/local/wallpaper"
 	"chromiumos/tast/testing"
 )
 
@@ -67,28 +65,6 @@ func getImgBytesFromFilePath(filePath string) ([]byte, error) {
 	}
 	imgBytes := buf.Bytes()
 	return imgBytes, nil
-}
-
-// validateBackground takes a screenshot and check the percentage of the clr in the image, returns error if it's less than expectedPercent%.
-func validateBackground(ctx context.Context, cr *chrome.Chrome, clr color.Color, expectedPercent int) error {
-	// Take a screenshot and check the red pixels percentage.
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		img, err := screenshot.GrabScreenshot(ctx, cr)
-		if err != nil {
-			return errors.Wrap(err, "failed to grab screenshot")
-		}
-		rect := img.Bounds()
-		redPixels := imgcmp.CountPixelsWithDiff(img, clr, 60)
-		totalPixels := (rect.Max.Y - rect.Min.Y) * (rect.Max.X - rect.Min.X)
-		percent := redPixels * 100 / totalPixels
-		if percent < expectedPercent {
-			return errors.Errorf("unexpected red pixels percentage: got %d / %d = %d%%; want at least %d%%", redPixels, totalPixels, percent, expectedPercent)
-		}
-		return nil
-	}, &testing.PollOptions{Timeout: 30 * time.Second, Interval: time.Second}); err != nil {
-		return err
-	}
-	return nil
 }
 
 // WallpaperImage tests the WallpaperImage policy.
@@ -139,22 +115,22 @@ func WallpaperImage(ctx context.Context, s *testing.State) {
 	iurl, ihash := eds.ServePolicyData(imgBytes)
 
 	for _, param := range []struct {
-		name            string
-		wantRestriction restriction.Restriction // wantRestriction is the wanted restriction state of the wallpaper app link.
-		wantImageCheck  bool                    // wantImageCheck is a flag to check the image pixels.
-		value           *policy.WallpaperImage  // value is the value of the policy.
+		name                    string
+		photoContainerClassName string                 // photoContainerClassName is the class name of the photo container of the wallpaper image.
+		wantImageCheck          bool                   // wantImageCheck is a flag to check the image pixels.
+		value                   *policy.WallpaperImage // value is the value of the policy.
 	}{
 		{
-			name:            "nonempty",
-			wantRestriction: restriction.Disabled,
-			wantImageCheck:  true,
-			value:           &policy.WallpaperImage{Val: &policy.WallpaperImageValue{Url: iurl, Hash: ihash}},
+			name:                    "nonempty",
+			photoContainerClassName: "photo-images-container",
+			wantImageCheck:          true,
+			value:                   &policy.WallpaperImage{Val: &policy.WallpaperImageValue{Url: iurl, Hash: ihash}},
 		},
 		{
-			name:            "unset",
-			wantRestriction: restriction.None,
-			wantImageCheck:  false,
-			value:           &policy.WallpaperImage{Stat: policy.StatusUnset},
+			name:                    "unset",
+			photoContainerClassName: "photo-images-container clickable",
+			wantImageCheck:          false,
+			value:                   &policy.WallpaperImage{Stat: policy.StatusUnset},
 		},
 	} {
 		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
@@ -172,19 +148,19 @@ func WallpaperImage(ctx context.Context, s *testing.State) {
 
 			if param.wantImageCheck {
 				// Check red percentage of the desktop.
-				if err := validateBackground(ctx, cr, red, expectedPercent); err != nil {
+				if err := wallpaper.ValidateBackground(cr, red, expectedPercent)(ctx); err != nil {
 					s.Error("Failed to validate wallpaper: ", err)
 				}
 			}
 
+			ui := uiauto.New(tconn)
 			// Open the personalization settings page.
-			if err := policyutil.OSSettingsPage(ctx, cr, "personalization").
-				SelectNode(ctx, nodewith.
-					Role(role.Link).
-					Name("Wallpaper Open the wallpaper app")).
-				Restriction(param.wantRestriction).
-				Verify(); err != nil {
-				s.Error("Unexpected OS settings state: ", err)
+			if err := wallpaper.OpenWallpaperFromSettings(ctx, cr, ui); err != nil {
+				s.Error("Failed to open the wallpaper subpage in the personalization settings: ", err)
+			}
+
+			if err := ui.Exists(nodewith.Role(role.GenericContainer).ClassName(param.photoContainerClassName))(ctx); err != nil {
+				s.Fatal("Failed to find the photo container of the wallpaper: ", err)
 			}
 
 			if param.wantImageCheck {
@@ -195,7 +171,7 @@ func WallpaperImage(ctx context.Context, s *testing.State) {
 				if st, err := lockscreen.WaitState(ctx, tconn, func(st lockscreen.State) bool { return st.Locked && st.ReadyForPassword }, 30*time.Second); err != nil {
 					s.Fatalf("Waiting for screen to be locked failed: %v (last status %+v)", err, st)
 				}
-				if err := validateBackground(ctx, cr, blurredRed, expectedPercent); err != nil {
+				if err := wallpaper.ValidateBackground(cr, blurredRed, expectedPercent)(ctx); err != nil {
 					s.Error("Failed to validate wallpaper on lock screen: ", err)
 				}
 

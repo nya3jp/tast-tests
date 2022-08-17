@@ -24,6 +24,7 @@ import (
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/media/imgcmp"
 	"chromiumos/tast/local/personalization"
+	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/testing"
 )
@@ -33,6 +34,26 @@ func OpenWallpaperPicker(ui *uiauto.Context) uiauto.Action {
 	return uiauto.Combine("open wallpaper picker from personalization hub",
 		personalization.OpenPersonalizationHub(ui),
 		personalization.OpenWallpaperSubpage(ui))
+}
+
+// OpenWallpaperFromSettings will open the personalization settings and navigate to wallpaper subpage.
+func OpenWallpaperFromSettings(ctx context.Context, cr *chrome.Chrome, ui *uiauto.Context) error {
+	wallpaperButton := nodewith.
+		Role(role.Link).
+		Name("Set your wallpaper & style Personalize wallpaper, screen saver, accent colors, and more")
+	// Open the personalization settings page.
+	if err := policyutil.OSSettingsPage(ctx, cr, "personalization").
+		SelectNode(ctx, wallpaperButton).
+		Verify(); err != nil {
+		return errors.Wrap(err, "failed to open personalization settings")
+	}
+	if err := uiauto.Combine("open the wallpaper link button",
+		ui.DoDefault(wallpaperButton),
+		ui.WaitUntilExists(nodewith.Role(role.InlineTextBox).Name("Wallpaper")),
+	)(ctx); err != nil {
+		return errors.Wrap(err, "failed the wallpaper link button")
+	}
+	return nil
 }
 
 // SelectCollection returns an action to select the collection with the given collection name.
