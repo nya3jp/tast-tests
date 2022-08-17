@@ -619,6 +619,7 @@ func WaitForApp(ctx context.Context, tconn *chrome.TestConn, appID string, timeo
 func WaitForAppClosed(ctx context.Context, tconn *chrome.TestConn, appID string) error {
 	return WaitForAppCondition(ctx, tconn, appID, time.Minute, uiPollingInterval, func() (bool, error) {
 		shown, err := AppShown(ctx, tconn, appID)
+		testing.ContextLogf(ctx, "%s %s", appID, shown)
 		return !shown, err
 	}, "app is not closed yet")
 }

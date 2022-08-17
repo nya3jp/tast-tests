@@ -9,12 +9,10 @@ import (
 	"io/ioutil"
 	"os"
 	"path/filepath"
-	"strings"
 	"time"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/fsutil"
-	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto/filesapp"
 	"chromiumos/tast/local/sysutil"
@@ -214,10 +212,9 @@ func UnmountAllSmbMounts(ctx context.Context, cr *chrome.Chrome) error {
 		return errors.Wrap(err, "failed to launch Files app")
 	}
 	// Get connection to foreground Files app to verify changes.
-	filesChromeApp := "chrome-extension://" + apps.Files.ID + "/main.html"
 	filesSWA := "chrome://file-manager/"
 	matchFilesApp := func(t *chrome.Target) bool {
-		return t.URL == filesChromeApp || strings.HasPrefix(t.URL, filesSWA)
+		return t.URL == filesSWA
 	}
 	conn, err := cr.NewConnForTarget(ctx, matchFilesApp)
 	if err != nil {
