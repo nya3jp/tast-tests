@@ -223,14 +223,20 @@ func (app *GoogleDocs) UpdateCells(ctx context.Context) error {
 		return errors.Wrap(err, "failed to edit the value of the cell")
 	}
 
-	val, err := app.getCellValue(ctx, "B1")
-	if err != nil {
-		return errors.Wrap(err, "failed to get the value of the cell")
-	}
+	var sum int
+	if err := uiauto.Retry(retryTimes, func(ctx context.Context) error {
+		val, err := app.getCellValue(ctx, "B1")
+		if err != nil {
+			return errors.Wrap(err, "failed to get the value of the cell")
+		}
 
-	sum, err := strconv.Atoi(val)
-	if err != nil {
-		return errors.Wrap(err, "failed to convert type to integer")
+		sum, err = strconv.Atoi(val)
+		if err != nil {
+			return errors.Wrap(err, "failed to convert type to integer")
+		}
+		return nil
+	})(ctx); err != nil {
+		return err
 	}
 
 	if expectedSum := calculateSum(3, 100); sum != expectedSum {
@@ -357,16 +363,17 @@ func (app *GoogleDocs) validateEditMode(ctx context.Context) error {
 	return app.ui.WithTimeout(longerUIWaitTime).WaitUntilExists(shareButton)(ctx)
 }
 
-// selectCell selects the specified cell using the name box.
 func (app *GoogleDocs) selectCell(cell string) action.Action {
 	nameBox := nodewith.Name("Name box (Ctrl + J)").Role(role.GenericContainer)
 	nameField := nodewith.Role(role.TextField).FinalAncestor(nameBox)
 	nameFieldFocused := nameField.Focused()
+	nameFieldText := nodewith.Name(cell).Role(role.StaticText).Ancestor(nameField).Editable()
 	return uiauto.NamedCombine(fmt.Sprintf("to select cell %q", cell),
 		app.ui.DoDefaultUntil(nameField, app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(nameFieldFocused)),
 		app.kb.AccelAction("Ctrl+A"),
 		app.kb.TypeAction(cell),
 		app.kb.AccelAction("Enter"),
+		app.ui.WaitUntilExists(nameFieldText),
 		// Given time to jump to the specific cell and select it.
 		// And because we cannot be sure whether the target cell is focused, we have to wait a short time.
 		uiauto.Sleep(500*time.Millisecond),
@@ -404,12 +411,15 @@ func (app *GoogleDocs) getCellValue(ctx context.Context, cell string) (clipData 
 
 // editCellValue edits the cell to the specified value.
 func (app *GoogleDocs) editCellValue(ctx context.Context, cell, value string) error {
-	testing.ContextLogf(ctx, "Writing cell %q value: %s", cell, value)
-
-	return uiauto.Combine(fmt.Sprintf("write cell %q value", cell),
+	workingText := nodewith.Name("Working…").Role(role.StaticText)
+	return uiauto.NamedCombine(fmt.Sprintf("write cell %q value: %v", cell, value),
 		app.selectCell(cell),
 		app.kb.TypeAction(value),
 		app.kb.AccelAction("Enter"),
+		uiauto.IfSuccessThen(
+			app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(workingText),
+			app.ui.WaitUntilGone(workingText),
+		),
 	)(ctx)
 }
 
