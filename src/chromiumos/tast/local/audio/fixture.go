@@ -32,10 +32,13 @@ func (crasStoppedFixture) SetUp(ctx context.Context, s *testing.FixtState) inter
 	if err := upstart.StopJob(ctx, "cras"); err != nil {
 		s.Fatal("Cannot stop cras: ", err)
 	}
-	// b/231671430: Sleep required for pm_runtime_set_autosuspend_delay(&pdev->dev, 10000)
-	// https://source.chromium.org/chromium/chromiumos/third_party/kernel/+/HEAD:sound/soc/amd/acp-pcm-dma.c;l=1271;drc=662fb3efe7ee835f0eeba6bc63b81e82a97fc312
-	s.Log("Sleeping 11 seconds to wait for audio device to be ready")
-	if err := testing.Sleep(ctx, 11*time.Second); err != nil {
+
+	// We might need to sleep longer to work around improperly powered down devices.
+	// See b/232799132 for an example that generated flakes.
+	const sleepDuration = time.Second
+
+	s.Logf("Sleeping for %s to wait for audio device to be ready", sleepDuration)
+	if err := testing.Sleep(ctx, sleepDuration); err != nil {
 		s.Fatal("Sleep failed: ", err)
 	}
 	return nil
