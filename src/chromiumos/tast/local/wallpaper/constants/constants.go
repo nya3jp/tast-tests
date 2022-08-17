@@ -68,3 +68,6 @@ var LocalWallpaperColor = color.RGBA{255, 203, 198, 255}
 
 // WhiteWallpaperName is the name of a solid white wallpaper in the solid colors collection.
 const WhiteWallpaperName = "White"
+
+// WallpaperButton is a finder for wallpaper button in the peronalization settings page.
+var WallpaperButton = nodewith.Role(role.Link).NameContaining("Set your wallpaper")
