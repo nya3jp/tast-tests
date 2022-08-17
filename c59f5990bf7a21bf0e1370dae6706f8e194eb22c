@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92ccd1ca_f60cc238",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/child_wallpaper_sync.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-08-17T22:45:38Z",
+      "side": 1,
+      "message": "This seems strange to me because we shouldn\u0027t need to sign out at the end of a Tast test. Also, doing this in ChildWallpaperSync relies on the implementation detail that the EducoexistenceInsession test just happens to follow ChildWallpaperSync by coincidence. I suggest these other options:\n\n1) Make ChildWallpaperSync use a different fixture (instead of \"familyLinkUnicornLogin\" above). Tests that don\u0027t share the fixture won\u0027t share the same login session.\n2) Fix this ChildWallpaperSync test so that it doesn\u0027t hide the system UI at the end.",
+      "range": {
+        "startLine": 63,
+        "startChar": 19,
+        "endLine": 63,
+        "endChar": 29
+      },
+      "revId": "c59f5990bf7a21bf0e1370dae6706f8e194eb22c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
