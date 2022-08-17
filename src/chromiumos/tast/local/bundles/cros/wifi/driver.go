@@ -151,6 +151,7 @@ var expectedWLANDriver = map[wlan.DeviceID]map[string]string{
 	},
 	wlan.MediaTekMT7921SDIO: {
 		"5.10": "wireless/mediatek/mt76/mt7921/mt7921s.ko",
+		"5.15": "wireless/mediatek/mt76/mt7921/mt7921s.ko",
 	},
 }
 
