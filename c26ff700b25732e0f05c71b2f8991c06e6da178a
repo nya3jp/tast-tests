@@ -34,6 +34,24 @@
       "parentUuid": "c1a63f6e_1a9483a5",
       "revId": "c26ff700b25732e0f05c71b2f8991c06e6da178a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "985d674e_7193d775",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-08-17T20:56:45Z",
+      "side": 1,
+      "message": "The main goal of b/241942870 is to remove tests that always failed so that they will not consume lab resources. If it is fixed, I don\u0027t think this CL is needed. Thanks.",
+      "parentUuid": "c1964af5_8f6ec7da",
+      "revId": "c26ff700b25732e0f05c71b2f8991c06e6da178a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
