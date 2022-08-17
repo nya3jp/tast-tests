@@ -11,11 +11,11 @@ import (
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/filesapp"
 	"chromiumos/tast/local/chrome/uiauto/mouse"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/pointer"
@@ -89,10 +89,11 @@ func RoundedDisplayPerf(ctx context.Context, s *testing.State) {
 	defer pc.Close()
 
 	// Open a Files window.
-	if err := apps.Launch(ctx, tconn, apps.Files.ID); err != nil {
-		s.Fatal("Failed to open Files: ", err)
+	files, err := filesapp.Launch(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to launch Files app: ", err)
 	}
-	defer apps.Close(cleanupCtx, tconn, apps.Files.ID)
+	defer files.Close(cleanupCtx)
 	filesInfo, err := uiauto.New(tconn).Info(ctx, nodewith.ClassName("HeaderView"))
 	if err != nil {
 		s.Fatal("Failed to obtain Files app info: ", err)
