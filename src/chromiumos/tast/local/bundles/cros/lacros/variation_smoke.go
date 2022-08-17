@@ -123,7 +123,7 @@ func VariationSmoke(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to launch lacros: ", err)
 		}
 		// Close the lacros, close ash app first
-		defer ash.WaitForAppClosed(ctx, tconn, apps.Lacros.ID)
+		defer ash.WaitForAppClosed(ctx, tconn, apps.LacrosAsLacros.ID)
 		defer l.Close(ctx)
 
 		if err := testing.Poll(ctx, func(context.Context) error {
@@ -153,7 +153,7 @@ func VariationSmoke(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to launch lacros: ", err)
 		}
 		// Close the lacros, close ash app first
-		defer ash.WaitForAppClosed(ctx, tconn, apps.Lacros.ID)
+		defer ash.WaitForAppClosed(ctx, tconn, apps.LacrosAsLacros.ID)
 		defer l.Close(ctx)
 
 		// Navigate to some pages in Chrome and verify that web elements are rendered correctly.

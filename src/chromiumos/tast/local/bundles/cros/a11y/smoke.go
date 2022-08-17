@@ -103,7 +103,7 @@ func Smoke(ctx context.Context, s *testing.State) {
 		}
 		topWindowName = "BrowserFrame"
 	case browser.TypeLacros:
-		app = apps.Lacros
+		app = apps.LacrosAsLacros
 		topWindowName = "ExoShellSurface"
 	default:
 		s.Fatal("Unrecognized browser type: ", bt)
