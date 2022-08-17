@@ -116,6 +116,23 @@ func init() {
 		Parent:          fixture.FakeDMS,
 	})
 
+	// TODO(b/X): Remove fixture once the Files SWA "Unpin" behavior is solved.
+	testing.AddFixture(&testing.Fixture{
+		Name:     fixture.ChromePolicyLoggedInFilesSWADisabled,
+		Desc:     "Logged into a user session with Files Chrome app enabled",
+		Contacts: []string{"benreich@chromium.org", "chromeos-files-syd@google.com"},
+		Impl: &policyChromeFixture{
+			extraOptsFunc: func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+				return []chrome.Option{chrome.DisableFeatures("FilesSWA")}, nil
+			},
+		},
+		SetUpTimeout:    chrome.ManagedUserLoginTimeout,
+		ResetTimeout:    chrome.ResetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+		PostTestTimeout: 15 * time.Second,
+		Parent:          fixture.FakeDMS,
+	})
+
 	testing.AddFixture(&testing.Fixture{
 		Name:     fixture.ChromeEnrolledLoggedIn,
 		Desc:     "Logged into a user session with enrollment",

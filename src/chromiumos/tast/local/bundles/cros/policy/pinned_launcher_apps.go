@@ -30,7 +30,7 @@ func init() {
 		},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline"},
-		Fixture:      fixture.ChromePolicyLoggedIn,
+		Fixture:      fixture.ChromePolicyLoggedInFilesSWADisabled,
 	})
 }
 
@@ -62,7 +62,7 @@ func PinnedLauncherApps(ctx context.Context, s *testing.State) {
 	unpinContextMenuItem := nodewith.Name("Unpin").ClassName("MenuItemView")
 	if err := uiauto.Combine("check unpin option is not present for pinned app",
 		ui.RightClick(filesAppShelfButton),
-		ui.WaitUntilExists(nodewith.Name("App info").ClassName("MenuItemView")),
+		ui.WaitUntilExists(nodewith.Name("New window").ClassName("MenuItemView")),
 		ui.WaitUntilGone(unpinContextMenuItem),
 		// This extra left click is needed to dismiss the context menu.
 		ui.LeftClick(filesAppShelfButton),
