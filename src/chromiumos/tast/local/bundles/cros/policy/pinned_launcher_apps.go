@@ -52,7 +52,7 @@ func PinnedLauncherApps(ctx context.Context, s *testing.State) {
 	}
 
 	// Update the policy to pin the files app.
-	policyValue := policy.PinnedLauncherApps{Val: []string{apps.Files.ID}}
+	policyValue := policy.PinnedLauncherApps{Val: []string{apps.FilesSWA.ID}}
 	if err := policyutil.ServeAndVerify(ctx, fdms, cr, []policy.Policy{&policyValue}); err != nil {
 		s.Fatal("Failed to update policies: ", err)
 	}
@@ -62,7 +62,7 @@ func PinnedLauncherApps(ctx context.Context, s *testing.State) {
 	unpinContextMenuItem := nodewith.Name("Unpin").ClassName("MenuItemView")
 	if err := uiauto.Combine("check unpin option is not present for pinned app",
 		ui.RightClick(filesAppShelfButton),
-		ui.WaitUntilExists(nodewith.Name("App info").ClassName("MenuItemView")),
+		ui.WaitUntilExists(nodewith.Name("New window").ClassName("MenuItemView")),
 		ui.WaitUntilGone(unpinContextMenuItem),
 		// This extra left click is needed to dismiss the context menu.
 		ui.LeftClick(filesAppShelfButton),
