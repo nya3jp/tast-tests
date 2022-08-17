@@ -56,6 +56,24 @@
       "message": "nit:\n\nvar bugIDs []string\n\nshould be fine. Specifically, you didn\u0027t set capacity.",
       "revId": "f92779a50b93a522a4ca8d09d120cc6a91e64bad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0293d3d2_3aae0973",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1034,
+      "author": {
+        "id": 1546782
+      },
+      "writtenOn": "2022-08-17T15:09:40Z",
+      "side": 1,
+      "message": "I went ahead and added a capacity, since this what Jao-Ke also requested.",
+      "parentUuid": "7c2663d8_00e8e32c",
+      "revId": "f92779a50b93a522a4ca8d09d120cc6a91e64bad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
