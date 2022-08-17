@@ -24,7 +24,6 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/policyutil"
-	"chromiumos/tast/local/syslog"
 	"chromiumos/tast/testing"
 )
 
@@ -43,6 +42,7 @@ func init() {
 		Contacts:     []string{"mhasank@chromium.org", "arc-commercial@google.com"},
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome", "play_store"},
+		Timeout:      15 * time.Minute,
 		VarDeps: []string{
 			loginPoolVar,
 			packagesVar,
@@ -53,40 +53,34 @@ func init() {
 			{
 				ExtraSoftwareDeps: []string{"android_p", "no_qemu"},
 				Val:               withRetries,
-				Timeout:           15 * time.Minute,
 			},
 			{
 				Name:              "vm",
 				ExtraSoftwareDeps: []string{"android_vm", "no_qemu"},
 				Val:               withRetries,
-				Timeout:           15 * time.Minute,
 			},
 			{
 				Name:              "betty",
 				ExtraSoftwareDeps: []string{"android_p", "qemu"},
 				Val:               withRetries,
-				Timeout:           10 * time.Minute,
 				ExtraAttr:         []string{"informational"},
 			},
 			{
 				Name:              "vm_betty",
 				ExtraSoftwareDeps: []string{"android_vm", "qemu"},
 				Val:               withRetries,
-				Timeout:           10 * time.Minute,
 				ExtraAttr:         []string{"informational"},
 			},
 			{
 				Name:              "unstable",
 				ExtraSoftwareDeps: []string{"android_p"},
 				Val:               withoutRetries,
-				Timeout:           10 * time.Minute,
 				ExtraAttr:         []string{"informational"},
 			},
 			{
 				Name:              "vm_unstable",
 				ExtraSoftwareDeps: []string{"android_vm"},
 				Val:               withoutRetries,
-				Timeout:           10 * time.Minute,
 				ExtraAttr:         []string{"informational"},
 			}},
 	})
@@ -170,12 +164,6 @@ func ARCProvisioning(ctx context.Context, s *testing.State) {
 			return exit("increase logcat buffer size", err)
 		}
 
-		sysLogReader, err := openSysLog(ctx)
-		if err != nil {
-			return exit("initialize syslog reader", err)
-		}
-		defer sysLogReader.Close()
-
 		if err := waitForProvisioning(ctx, a, attempts); err != nil {
 			return retry("wait for provisioning", err)
 		}
@@ -191,9 +179,6 @@ func ARCProvisioning(ctx context.Context, s *testing.State) {
 		// Note: if the user policy for the user is changed, the packages listed in
 		// credentials files must be updated.
 		if err := a.WaitForPackages(ctx, packages); err != nil {
-			if chromeCrashed(ctx, sysLogReader) {
-				return retry("wait for packages", errors.Wrap(err, "Chrome process crashed"))
-			}
 			return exit("wait for packages", err)
 		}
 
@@ -233,22 +218,6 @@ func waitForProvisioning(ctx context.Context, a *arc.ARC, attempt int) error {
 	}
 	return nil
 
-}
-
-func openSysLog(ctx context.Context) (*syslog.LineReader, error) {
-	return syslog.NewLineReader(ctx, syslog.MessageFile, false /*fromStart*/, nil /*opts*/)
-}
-
-func chromeCrashed(ctx context.Context, sysLogReader *syslog.LineReader) bool {
-	const chromeCrashMessage = "Received crash notification for chrome"
-	for {
-		line, err := sysLogReader.ReadLine()
-		if err != nil {
-			return false
-		} else if strings.Contains(line, chromeCrashMessage) {
-			return true
-		}
-	}
 }
 
 func dumpBugReportOnError(ctx context.Context, hasError func() bool, a *arc.ARC, filePath string) {
