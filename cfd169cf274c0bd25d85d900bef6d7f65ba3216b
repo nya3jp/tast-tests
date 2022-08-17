@@ -39,6 +39,30 @@
       },
       "revId": "cfd169cf274c0bd25d85d900bef6d7f65ba3216b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e1ca77c_d5f505f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/vp9_video_decoder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-08-17T20:51:13Z",
+      "side": 1,
+      "message": "Actually, I don\u0027t know what the policy is. Also, I could not find any documents on what can be run in our main lab and what cannot. Ilja, if you have any information, please let me know. In general, tast-tests is public repo so that I don\u0027t think ther is any policy against it. However, I am not sure.",
+      "parentUuid": "0c01e558_cb0b042b",
+      "range": {
+        "startLine": 30,
+        "startChar": 16,
+        "endLine": 30,
+        "endChar": 60
+      },
+      "revId": "cfd169cf274c0bd25d85d900bef6d7f65ba3216b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
