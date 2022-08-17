@@ -71,6 +71,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "269d05b0_4f04d2a9",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 554,
+      "author": {
+        "id": 1541210
+      },
+      "writtenOn": "2022-08-17T07:31:41Z",
+      "side": 1,
+      "message": "Apparently `a.GetProp` and `getprop` (and android-sh) don\u0027t fail even when the property is not defined; they simply return an empty string. So we shouldn\u0027t need to worry about it.",
+      "parentUuid": "868e3333_9c0edb15",
+      "revId": "813aee8992746a511aa5f440ea02538fee83633e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "21c82c2a_a529ac13",
         "filename": "src/chromiumos/tast/local/arc/file.go",
         "patchSetId": 9
@@ -109,6 +127,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b73bc556_63edbe3f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_perf.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1541210
+      },
+      "writtenOn": "2022-08-17T07:31:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "58cb56e2_e1ab94f1",
+      "range": {
+        "startLine": 42,
+        "startChar": 1,
+        "endLine": 42,
+        "endChar": 19
+      },
+      "revId": "813aee8992746a511aa5f440ea02538fee83633e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3dfcb9f4_a2fba5e4",
@@ -122,6 +164,24 @@
       "writtenOn": "2022-08-17T05:30:45Z",
       "side": 1,
       "message": "a.GetProp is not needed to be called when useExternalStorage is false.\nHow about checking useExternalStorage first, and then check arcvm_virtio_blk_data only when useExternalStorage is true (so that the myfiles_vm test case never fails at an unnecessary check)?",
+      "revId": "813aee8992746a511aa5f440ea02538fee83633e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "de880af1_fa17b17a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_perf.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1541210
+      },
+      "writtenOn": "2022-08-17T07:31:41Z",
+      "side": 1,
+      "message": "Sounds good, thanks!",
+      "parentUuid": "3dfcb9f4_a2fba5e4",
       "revId": "813aee8992746a511aa5f440ea02538fee83633e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
