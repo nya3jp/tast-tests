@@ -24,7 +24,6 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/policyutil"
-	"chromiumos/tast/local/syslog"
 	"chromiumos/tast/testing"
 )
 
@@ -43,6 +42,7 @@ func init() {
 		Contacts:     []string{"mhasank@chromium.org", "arc-commercial@google.com"},
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome", "play_store"},
+		Timeout:      15 * time.Minute,
 		VarDeps: []string{
 			loginPoolVar,
 			packagesVar,
@@ -53,40 +53,34 @@ func init() {
 			{
 				ExtraSoftwareDeps: []string{"android_p", "no_qemu"},
 				Val:               withRetries,
-				Timeout:           15 * time.Minute,
 			},
 			{
 				Name:              "vm",
 				ExtraSoftwareDeps: []string{"android_vm", "no_qemu"},
 				Val:               withRetries,
-				Timeout:           15 * time.Minute,
 			},
 			{
 				Name:              "betty",
 				ExtraSoftwareDeps: []string{"android_p", "qemu"},
 				Val:               withRetries,
-				Timeout:           10 * time.Minute,
 				ExtraAttr:         []string{"informational"},
 			},
 			{
 				Name:              "vm_betty",
 				ExtraSoftwareDeps: []string{"android_vm", "qemu"},
 				Val:               withRetries,
-				Timeout:           10 * time.Minute,
 				ExtraAttr:         []string{"informational"},
 			},
 			{
 				Name:              "unstable",
 				ExtraSoftwareDeps: []string{"android_p"},
 				Val:               withoutRetries,
-				Timeout:           10 * time.Minute,
 				ExtraAttr:         []string{"informational"},
 			},
 			{
 				Name:              "vm_unstable",
 				ExtraSoftwareDeps: []string{"android_vm"},
 				Val:               withoutRetries,
-				Timeout:           10 * time.Minute,
 				ExtraAttr:         []string{"informational"},
 			}},
 	})
@@ -114,12 +108,21 @@ func ARCProvisioning(ctx context.Context, s *testing.State) {
 	}
 
 	// Indicates that the error is retryable and unrelated to core feature under test.
-	retry := func(desc string, err error) error {
-		if doRetries && attempts < maxAttempts {
+	retryForAll := func(desc string, err error) error {
+		if attempts < maxAttempts {
 			attempts++
 			err = errors.Wrap(err, "failed to "+desc)
 			s.Logf("%s. Retrying", err)
 			return err
+		}
+		return exit(desc, err)
+	}
+
+	// Indicates that the error is being retried only to stabilize the test temporarily.
+	// TODO(b/242902484): Replace the calls to this with exit() when unstable variant is removed.
+	retry := func(desc string, err error) error {
+		if doRetries {
+			return retryForAll(desc, err)
 		}
 		return exit(desc, err)
 	}
@@ -137,13 +140,13 @@ func ARCProvisioning(ctx context.Context, s *testing.State) {
 			chrome.ProdPolicy(),
 			chrome.ExtraArgs(arc.DisableSyncFlags()...))
 		if err != nil {
-			return retry("connect to Chrome", err)
+			return retryForAll("connect to Chrome", err)
 		}
 		defer cr.Close(ctx)
 
 		tconn, err := cr.TestAPIConn(ctx)
 		if err != nil {
-			return retry("create test API connection", err)
+			return retryForAll("create test API connection", err)
 		}
 
 		// Ensure chrome://policy shows correct ArcEnabled and ArcPolicy values.
@@ -157,6 +160,7 @@ func ARCProvisioning(ctx context.Context, s *testing.State) {
 
 		a, err := arc.NewWithTimeout(ctx, s.OutDir(), bootTimeout)
 		if err != nil {
+			// TODO(b/242902484): Switch to exit when unstable variant is removed.
 			return retry("start ARC by policy", err)
 		}
 		defer a.Close(ctx)
@@ -170,13 +174,8 @@ func ARCProvisioning(ctx context.Context, s *testing.State) {
 			return exit("increase logcat buffer size", err)
 		}
 
-		sysLogReader, err := openSysLog(ctx)
-		if err != nil {
-			return exit("initialize syslog reader", err)
-		}
-		defer sysLogReader.Close()
-
 		if err := waitForProvisioning(ctx, a, attempts); err != nil {
+			// TODO(b/242902484): Switch to exit when unstable variant is removed.
 			return retry("wait for provisioning", err)
 		}
 
@@ -191,9 +190,6 @@ func ARCProvisioning(ctx context.Context, s *testing.State) {
 		// Note: if the user policy for the user is changed, the packages listed in
 		// credentials files must be updated.
 		if err := a.WaitForPackages(ctx, packages); err != nil {
-			if chromeCrashed(ctx, sysLogReader) {
-				return retry("wait for packages", errors.Wrap(err, "Chrome process crashed"))
-			}
 			return exit("wait for packages", err)
 		}
 
@@ -202,7 +198,7 @@ func ARCProvisioning(ctx context.Context, s *testing.State) {
 		}
 
 		if err := ensurePlayStoreNotEmpty(ctx, tconn, cr, a, s.OutDir(), attempts); err != nil {
-			// TODO(b/231751280): Switch to exit when the Play Store bug is resolved.
+			// TODO(b/242902484): Switch to exit when unstable variant is removed.
 			return retry("verify Play Store is not empty", err)
 		}
 
@@ -233,22 +229,6 @@ func waitForProvisioning(ctx context.Context, a *arc.ARC, attempt int) error {
 	}
 	return nil
 
-}
-
-func openSysLog(ctx context.Context) (*syslog.LineReader, error) {
-	return syslog.NewLineReader(ctx, syslog.MessageFile, false /*fromStart*/, nil /*opts*/)
-}
-
-func chromeCrashed(ctx context.Context, sysLogReader *syslog.LineReader) bool {
-	const chromeCrashMessage = "Received crash notification for chrome"
-	for {
-		line, err := sysLogReader.ReadLine()
-		if err != nil {
-			return false
-		} else if strings.Contains(line, chromeCrashMessage) {
-			return true
-		}
-	}
 }
 
 func dumpBugReportOnError(ctx context.Context, hasError func() bool, a *arc.ARC, filePath string) {
