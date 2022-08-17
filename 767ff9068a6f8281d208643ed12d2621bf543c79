@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3adb33e_e6491dcb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-08-17T05:52:07Z",
+      "side": 1,
+      "message": "Please take a look. Have to wait with dry run until Di\u0027s CL is in Ash.",
+      "revId": "767ff9068a6f8281d208643ed12d2621bf543c79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
