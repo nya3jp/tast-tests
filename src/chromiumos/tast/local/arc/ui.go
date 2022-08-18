@@ -57,6 +57,9 @@ func (a *ARC) DumpUIHierarchyOnError(ctx context.Context, outDir string, hasErro
 // OpenPlayStoreAccountSettings opens account settings in PlayStore where user
 // can switch between available accounts.
 func OpenPlayStoreAccountSettings(ctx context.Context, arcDevice *androidui.Device, tconn *chrome.TestConn) error {
+	// Ensure the Play Store is closed so that we don't resume another session.
+	apps.Close(ctx, tconn, apps.PlayStore.ID)
+
 	if err := launcher.LaunchApp(tconn, apps.PlayStore.Name)(ctx); err != nil {
 		return errors.Wrap(err, "failed to launch Play Store")
 	}
