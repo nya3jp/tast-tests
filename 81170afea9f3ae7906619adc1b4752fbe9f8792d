@@ -16,6 +16,23 @@
       "message": "Yuki, please take a look for assistant team.\n\ntast-owners, please take a look for tast.\n",
       "revId": "81170afea9f3ae7906619adc1b4752fbe9f8792d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "abcd656d_6bdb27a8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1121230
+      },
+      "writtenOn": "2022-08-18T22:20:47Z",
+      "side": 1,
+      "message": "lgtm. Thank you!",
+      "revId": "81170afea9f3ae7906619adc1b4752fbe9f8792d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
