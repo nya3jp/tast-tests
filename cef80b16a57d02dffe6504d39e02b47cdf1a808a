@@ -16,6 +16,24 @@
       "message": "Hi Mohamed,\n\nCan you please help in sharing the CQ failure logs?",
       "revId": "cef80b16a57d02dffe6504d39e02b47cdf1a808a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2f7ed88_2eaaa856",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-08-18T10:58:18Z",
+      "side": 1,
+      "message": "I think it\u0027s just some build failures unrelated to the CL, you can try to submit again.",
+      "parentUuid": "5e98e535_213022a5",
+      "revId": "cef80b16a57d02dffe6504d39e02b47cdf1a808a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
