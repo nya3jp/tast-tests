@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4920646b_20be5eca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/update_password.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-08-18T14:06:50Z",
+      "side": 1,
+      "message": "IIUC the same test should work for VKs, after this is implemented. Could you please add a TODO pointing to the corresponding bug?",
+      "revId": "49de38ab65183f65febb643e9e4b4ff31816ef48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "401eb62a_488280be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/update_password.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-08-18T14:06:50Z",
+      "side": 1,
+      "message": "nit: Omit \"new\" (we already created the user above, so it\u0027s not \"new\").",
+      "range": {
+        "startLine": 89,
+        "startChar": 29,
+        "endLine": 89,
+        "endChar": 32
+      },
+      "revId": "49de38ab65183f65febb643e9e4b4ff31816ef48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02da6518_41c1623e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/update_password.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-08-18T14:06:50Z",
+      "side": 1,
+      "message": "nit: \"with old password\"\n\nDitto in line 178.",
+      "range": {
+        "startLine": 175,
+        "startChar": 48,
+        "endLine": 175,
+        "endChar": 61
+      },
+      "revId": "49de38ab65183f65febb643e9e4b4ff31816ef48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
