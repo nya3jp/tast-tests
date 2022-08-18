@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d48fc60b_5b02c475",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-08-18T21:20:04Z",
+      "side": 1,
+      "message": "I wasn\u0027t able to test it myself since it can\u0027t connect to staging stadia. But, I was updating some outdated code with the latest browser library to make it compatible for both browsers (when this test is fixed and re-enabled)",
+      "revId": "565c86e82d3fcaee82cf2699e77b34227383be9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
