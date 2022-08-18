@@ -20,7 +20,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ChromevoxTTSPitchAndRate,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded, // TODO(crbug.com/1159107): Test is disabled in continuous testing. Migrate when enabled.
 		Desc:         "A test that verifies the way ChromeVox sets Text-to-Speech pitch and rate",
 		Contacts: []string{
 			"katie@chromium.org",           // Test author
