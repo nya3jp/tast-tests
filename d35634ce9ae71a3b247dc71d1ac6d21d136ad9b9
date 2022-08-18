@@ -16,6 +16,23 @@
       "message": "Test as required by Test Design doc: go/cros-tethering-test\nPlease review",
       "revId": "d35634ce9ae71a3b247dc71d1ac6d21d136ad9b9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d7a6dc3_308fae3d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/sap_capabilities.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2022-08-18T16:10:44Z",
+      "side": 1,
+      "message": "Sorry that I did not mention it clearly. This iw cap test is ready partially. Would you please merge your change to the existing one? Thank you!\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/wifi/sap_caps.go;l\u003d30?q\u003dSAPcap\u0026sq\u003d\u0026ss\u003dchromiumos",
+      "revId": "d35634ce9ae71a3b247dc71d1ac6d21d136ad9b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
