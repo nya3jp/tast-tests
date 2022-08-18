@@ -16,6 +16,29 @@
       "message": "LGTM",
       "revId": "0deecd89142e0b045f7135a27a0fa611673045e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd84edf3_6a95cf32",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_provisioning.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-08-18T09:19:10Z",
+      "side": 1,
+      "message": "...why...? If test is stable enough, we don\u0027t need retry, right...?",
+      "range": {
+        "startLine": 121,
+        "startChar": 38,
+        "endLine": 121,
+        "endChar": 82
+      },
+      "revId": "0deecd89142e0b045f7135a27a0fa611673045e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
