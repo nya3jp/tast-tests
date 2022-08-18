@@ -57,7 +57,7 @@ func ARCVPNDisabled(ctx context.Context, s *testing.State) {
 	if err := arcvpn.CheckARCVPNState(ctx, a, false); err != nil {
 		s.Fatal("ArcHostVpnService not supposed to be running: ", err)
 	}
-	if err := arcvpn.ExpectARCPingSuccess(ctx, a, "vpn", conn.Server.OverlayIP); err == nil {
+	if err := arc.ExpectPingSuccess(ctx, a, "vpn", conn.Server.OverlayIP); err == nil {
 		s.Fatalf("Expected unable to ping %s from ARC over 'vpn', but was reachable", conn.Server.OverlayIP)
 	}
 }

@@ -6,9 +6,12 @@ package arc
 
 import (
 	"context"
+	"fmt"
 	"strings"
+	"time"
 
 	"chromiumos/tast/common/testexec"
+	"chromiumos/tast/errors"
 	"chromiumos/tast/testing"
 )
 
@@ -72,4 +75,40 @@ func UnblockOutbound(ctx context.Context) error {
 		return err
 	}
 	return testexec.CommandContext(ctx, "/sbin/iptables", "-w", "-t", "filter", "-D", "FORWARD", "-i", "arc+", "-j", "DROP").Run(testexec.DumpLogOnError)
+}
+
+// ExpectPingSuccess checks if 'addr' is reachable over the 'network' in ARC.
+// See ArcNetworkDebugTools#reachCmd for possible 'network' values.
+// Use an empty 'network' to test on default network.
+func ExpectPingSuccess(ctx context.Context, a *ARC, network, addr string) error {
+	if network == "" {
+		testing.ContextLogf(ctx, "Start to ping %s from ARC over default network", addr)
+	} else {
+		testing.ContextLogf(ctx, "Start to ping %s from ARC over %q", addr, network)
+	}
+	// This polls for 20 seconds before it gives up on pinging from within ARC. We
+	// poll for a little bit since the ARP table within ARC might not be populated
+	// yet - so give it some time before the ping makes it through.
+	// TODO(cassiewang): We observed in the local manual tests that sometimes this
+	// command gave: "*** SERVICE 'wifi' DUMP TIMEOUT (10000ms) EXPIRED ***". Need
+	// to check if this also happens on the lab machines, so use a relatively
+	// longer timeout here.
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		var cmd *testexec.Cmd
+		if network == "" {
+			cmd = a.Command(ctx, "dumpsys", "wifi", "tools", "reach", addr)
+		} else {
+			cmd = a.Command(ctx, "dumpsys", "wifi", "tools", "reach", network, addr)
+		}
+		if o, err := cmd.Output(testexec.DumpLogOnError); err != nil {
+			return errors.Wrapf(err, "failed to execute 'reach' commmand, output: %s", string(o))
+		} else if !strings.Contains(string(o), fmt.Sprintf("%s: reachable", addr)) {
+			return errors.Errorf("ping was unreachable, output: %s", string(o))
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 20 * time.Second}); err != nil {
+		return errors.Wrap(err, "no response received in ARC")
+	}
+
+	return nil
 }

@@ -69,7 +69,7 @@ func ARCVPNCrash(ctx context.Context, s *testing.State) {
 	if err := routing.ExpectPingSuccessWithTimeout(ctx, conn.Server.OverlayIP, "chronos", 10*time.Second); err != nil {
 		s.Fatalf("Failed to ping from host %s: %v", conn.Server.OverlayIP, err)
 	}
-	if err := arcvpn.ExpectARCPingSuccess(ctx, a, "vpn", conn.Server.OverlayIP); err != nil {
+	if err := arc.ExpectPingSuccess(ctx, a, "vpn", conn.Server.OverlayIP); err != nil {
 		s.Fatalf("Failed to ping from ARC %s: %v", conn.Server.OverlayIP, err)
 	}
 	if err := crashARCVPN(ctx, a); err != nil {
@@ -84,12 +84,12 @@ func ARCVPNCrash(ctx context.Context, s *testing.State) {
 	}
 	// arc0/eth0 are hardcoded in ARC as the iface of our fake ethernet network that VPN traffic
 	// will fall back to if there's an issue with the ARC VPN.
-	arc := s.Param().(string)
+	arcVersion := s.Param().(string)
 	network := "eth0"
-	if arc == "p" {
+	if arcVersion == "p" {
 		network = "arc0"
 	}
-	if err := arcvpn.ExpectARCPingSuccess(ctx, a, network, conn.Server.OverlayIP); err != nil {
+	if err := arc.ExpectPingSuccess(ctx, a, network, conn.Server.OverlayIP); err != nil {
 		s.Fatalf("Failed to ping %s from ARC over %q: %v", conn.Server.OverlayIP, network, err)
 	}
 }

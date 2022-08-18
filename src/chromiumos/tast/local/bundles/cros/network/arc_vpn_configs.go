@@ -85,7 +85,7 @@ func ARCVPNConfigs(ctx context.Context, s *testing.State) {
 	if err := routing.ExpectPingSuccessWithTimeout(ctx, conn1.Server.OverlayIP, "chronos", 10*time.Second); err != nil {
 		s.Fatalf("Failed to ping from host %s: %v", conn1.Server.OverlayIP, err)
 	}
-	if err := arcvpn.ExpectARCPingSuccess(ctx, a, "vpn", conn1.Server.OverlayIP); err != nil {
+	if err := arc.ExpectPingSuccess(ctx, a, "vpn", conn1.Server.OverlayIP); err != nil {
 		s.Fatalf("Failed to ping %s from ARC over 'vpn': %v", conn1.Server.OverlayIP, err)
 	}
 	cmd := a.Command(ctx, "dumpsys", "wifi", "networks", "transport", "vpn")
@@ -96,8 +96,8 @@ func ARCVPNConfigs(ctx context.Context, s *testing.State) {
 	oStr := string(o)
 	// On P, the VpnService.Builder#setMetered API isn't available for us to override the value
 	// and VPNs are considered metered by default.
-	arc := s.Param().(string)
-	if arc == "p" {
+	arcVersion := s.Param().(string)
+	if arcVersion == "p" {
 		metered = true
 	}
 	if err := checkMatch(oStr, `capabilities=.*`, `NOT_METERED`, !metered); err != nil {
@@ -129,7 +129,7 @@ func ARCVPNConfigs(ctx context.Context, s *testing.State) {
 	if err := arcvpn.CheckARCVPNState(ctx, a, false); err != nil {
 		s.Fatal("ArcHostVpnService should be stopped, but isn't: ", err)
 	}
-	if err := arcvpn.ExpectARCPingSuccess(ctx, a, "vpn", conn1.Server.OverlayIP); err == nil {
+	if err := arc.ExpectPingSuccess(ctx, a, "vpn", conn1.Server.OverlayIP); err == nil {
 		s.Fatalf("Expected unable to ping %s from ARC over 'vpn', but was reachable", conn1.Server.OverlayIP)
 	}
 
@@ -158,7 +158,7 @@ func ARCVPNConfigs(ctx context.Context, s *testing.State) {
 	if err := routing.ExpectPingSuccessWithTimeout(ctx, conn2.Server.OverlayIP, "chronos", 10*time.Second); err != nil {
 		s.Fatalf("Failed to ping from host %s: %v", conn2.Server.OverlayIP, err)
 	}
-	if err := arcvpn.ExpectARCPingSuccess(ctx, a, "vpn", conn2.Server.OverlayIP); err != nil {
+	if err := arc.ExpectPingSuccess(ctx, a, "vpn", conn2.Server.OverlayIP); err != nil {
 		s.Fatalf("Failed to ping %s from ARC over 'vpn': %v", conn2.Server.OverlayIP, err)
 	}
 	cmd = a.Command(ctx, "dumpsys", "wifi", "networks", "transport", "vpn")
@@ -169,7 +169,7 @@ func ARCVPNConfigs(ctx context.Context, s *testing.State) {
 	oStr = string(o)
 	// On P, the VpnService.Builder#setMetered API isn't available for us to override the value
 	// and VPNs are considered metered by default.
-	if arc == "p" {
+	if arcVersion == "p" {
 		metered = true
 	}
 	if err := checkMatch(oStr, `capabilities=.*`, `NOT_METERED`, !metered); err != nil {
