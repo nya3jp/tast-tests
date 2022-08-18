@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5c638db_8b4e4168",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-08-18T14:40:35Z",
+      "side": 1,
+      "message": "LGTM % 2 minor nits",
+      "revId": "36b452e1f432b18f264b284ed320dbe93e0f0d6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23cd560f_81597498",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ipv6_connectivity.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-08-18T14:40:35Z",
+      "side": 1,
+      "message": "nit: missing `.` at the end of comment",
+      "revId": "36b452e1f432b18f264b284ed320dbe93e0f0d6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95cf3846_8504d588",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ipv6_connectivity.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-08-18T14:40:35Z",
+      "side": 1,
+      "message": "nit: missing `.` at the end of comment",
+      "revId": "36b452e1f432b18f264b284ed320dbe93e0f0d6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
