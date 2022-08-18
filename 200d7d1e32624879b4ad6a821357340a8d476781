@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "37ea6c96_0103a9dc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-08-18T17:10:25Z",
+      "side": 1,
+      "message": "lgtm\n\nThanks.\n\nTast owner\u0027s blessing is still needed since I am an owner.",
+      "revId": "200d7d1e32624879b4ad6a821357340a8d476781",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
