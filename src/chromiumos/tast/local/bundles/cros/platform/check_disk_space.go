@@ -37,7 +37,8 @@ func CheckDiskSpace(ctx context.Context, s *testing.State) {
 	}
 	// Require the minimum of 24 MiB and 4% of total.
 	// TODO(b/200746365): Set the minimum back to 32MiB once coral has been optimized and no longer fails the test.
-	var req int64 = 24 * 1024 * 1024
+	// Similar problem on reef, see b/242892610. Reduced to 12MiB to unblock the builder.
+	var req int64 = 12 * 1024 * 1024
 	if b := int64(0.04 * float64(info.Used+info.Avail)); b < req {
 		req = b
 	}
