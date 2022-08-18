@@ -16,6 +16,24 @@
       "message": "I changed this back to WithChromeLoggedIn (I removed it in crrev.com/c/3806326).  Does that mean I also have to add \"chrome\" back into SoftwareDeps?  The test runs fine on my dut without \"chrome\"",
       "revId": "9485a25e763fbed426c8600cffe45d1e60e203e1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea79b85c_e853d804",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/oauth_token.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2022-08-18T18:21:51Z",
+      "side": 1,
+      "message": "Yes, you\u0027ll need to put chrome back in the list.  It passes without it on your dut because you have chrome installed, but that will prevent tast from running it on a headless board (https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/test_dependencies.md#existing-features)",
+      "parentUuid": "d5fc87af_5f092183",
+      "revId": "9485a25e763fbed426c8600cffe45d1e60e203e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
