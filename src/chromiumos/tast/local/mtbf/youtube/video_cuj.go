@@ -11,6 +11,7 @@ import (
 	"strings"
 	"time"
 
+	"chromiumos/tast/common/android/ui"
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
@@ -192,6 +193,11 @@ func Run(ctx context.Context, resources TestResources, param TestParams) error {
 		if err := playstore.InstallOrUpdateAppAndClose(ctx, tconn, a, d, youtubePkg, &playstore.Options{TryLimit: -1}); err != nil {
 			return errors.Wrapf(err, "failed to install %s", youtubePkg)
 		}
+		appVersion, err := getAppVersion(ctx, a, d, youtubePkg)
+		if err != nil {
+			return errors.Wrapf(err, "failed to get %s version", youtubePkg)
+		}
+		testing.ContextLog(ctx, "Youtube app version: ", appVersion)
 	}
 
 	openGmailWeb := func(ctx context.Context) (*chrome.Conn, error) {
@@ -427,4 +433,25 @@ func moveYTWebWindow(ctx context.Context, tconn *chrome.TestConn, testRes TestRe
 		testRes.UIHandler.SwitchWindow(),
 		cuj.SwitchWindowToDisplay(ctx, tconn, testRes.Kb, false), // Move to internal display.
 	)(ctx)
+}
+
+// getAppVersion gets app version.
+func getAppVersion(ctx context.Context, a *arc.ARC, d *ui.Device, appPkgName string) (string, error) {
+	var versionName string
+	out, err := a.Command(ctx, "dumpsys", "package", appPkgName).Output()
+	if err == nil {
+		versionNamePrefix := "versionName="
+		output := string(out)
+		splitOutput := strings.Split(output, "\n")
+		for splitLine := range splitOutput {
+			if strings.Contains(splitOutput[splitLine], versionNamePrefix) {
+				versionName = strings.Split(splitOutput[splitLine], "=")[1]
+				break
+			}
+		}
+		if versionName == "" {
+			err = errors.New("versionNamePrefix is not found in the output")
+		}
+	}
+	return versionName, err
 }
