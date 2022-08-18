@@ -95,6 +95,10 @@ func HomeDirectoryCreateFile(ctx context.Context, s *testing.State) {
 	if err := testCreateFileFromContainer(ctx, tconn, filesApp, cont); err != nil {
 		s.Fatal("Failed to test creating files in container: ", err)
 	}
+	// Select back to Downloads to remove the linux watcher.
+	if err := filesApp.OpenDownloads()(ctx); err != nil {
+		s.Fatal("Failed to open Downloads to remove Linux watcher: ", err)
+	}
 }
 
 func testCreateFolderFromLinuxFiles(ctx context.Context, filesApp *filesapp.FilesApp, cont *vm.Container, kb *input.KeyboardEventWriter) error {
