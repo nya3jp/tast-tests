@@ -10,8 +10,12 @@ import (
 	"net/http"
 	"time"
 
+	arcui "chromiumos/tast/common/android/ui"
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/local/chrome/uiauto"
@@ -19,6 +23,10 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/testing"
+)
+
+const (
+	testPackageName = "org.chromium.arc.testapp.linkcapturing"
 )
 
 func init() {
@@ -63,13 +71,13 @@ func init() {
 
 func LinkCapturing(ctx context.Context, s *testing.State) {
 	const (
-		serverPort  = 8000
-		testApk     = "ArcLinkCapturingTest.apk"
-		testPageURL = "http://127.0.0.1:8000/link_capturing/link_capturing_index.html"
+		serverPort = 8000
+		testApk    = "ArcLinkCapturingTest.apk"
 	)
 
 	cr := s.FixtValue().(*arc.PreData).Chrome
 	arcDevice := s.FixtValue().(*arc.PreData).ARC
+	uiAutomator := s.FixtValue().(*arc.PreData).UIDevice
 
 	// Give 5 seconds to clean up and dump out UI tree.
 	cleanupCtx := ctx
@@ -92,6 +100,14 @@ func LinkCapturing(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed installing the APK: ", err)
 	}
 
+	// Enable link capturing on the ARC side. Automatically verifying the link
+	// (as per https://developer.android.com/training/app-links/verify-site-associations)
+	// is difficult in a test environment, so this is a shortcut which has the
+	// same visible impact.
+	if err := arcDevice.Command(ctx, "pm", "set-app-link", testPackageName, "always").Run(testexec.DumpLogOnError); err != nil {
+		s.Fatal("Failed to set Android link capturing setting: ", err)
+	}
+
 	// Start local server.
 	server := &http.Server{Addr: fmt.Sprintf(":%d", 8000), Handler: http.FileServer(s.DataFileSystem())}
 	go func() {
@@ -107,10 +123,24 @@ func LinkCapturing(ctx context.Context, s *testing.State) {
 	}
 	defer closeBrowser(cleanupCtx)
 
-	// Open test page.
+	// Test steps:
+	if err := verifyBrowserLinkStaysInBrowser(ctx, tconn, br); err != nil {
+		s.Fatal("Failed to verify that a link clicked in the browser remains in the browser: ", err)
+	}
+
+	if err := verifyAndroidLinkStaysInAndroid(ctx, tconn, arcDevice, uiAutomator); err != nil {
+		s.Fatal("Failed to verify that a link clicked in Android remains in Android: ", err)
+	}
+}
+
+func verifyBrowserLinkStaysInBrowser(ctx context.Context, tconn *chrome.TestConn, br *browser.Browser) error {
+	const (
+		testPageURL = "http://127.0.0.1:8000/link_capturing/link_capturing_index.html"
+	)
+
 	conn, err := br.NewConn(ctx, testPageURL)
 	if err != nil {
-		s.Fatal("Failed to open test page in browser: ", err)
+		return errors.Wrap(err, "failed to open test page in browser")
 	}
 	defer conn.Close()
 
@@ -124,6 +154,40 @@ func LinkCapturing(ctx context.Context, s *testing.State) {
 		ui.LeftClick(link),
 		// "In-scope page" text appears on the app_index.html page.
 		ui.WaitUntilExists(heading))(ctx); err != nil {
-		s.Fatal("Failed to click link: ", err)
+		return errors.Wrap(err, "failed to click link")
 	}
+
+	return nil
+}
+
+func verifyAndroidLinkStaysInAndroid(ctx context.Context, tconn *chrome.TestConn, arcDevice *arc.ARC, uiAutomator *arcui.Device) error {
+	const (
+		testActivity     = testPackageName + ".MainActivity"
+		testIntentButton = testPackageName + ":id/link_action"
+		testIntentText   = testPackageName + ":id/intent_text"
+	)
+
+	activity, err := arc.NewActivity(arcDevice, testPackageName, testActivity)
+	if err != nil {
+		return errors.Wrap(err, "failed to create a new activity")
+	}
+	defer activity.Close()
+	if err := activity.Start(ctx, tconn); err != nil {
+		return errors.Wrap(err, "failed to start the test activity")
+	}
+	defer activity.Stop(ctx, tconn)
+
+	if err := uiAutomator.WaitForIdle(ctx, 5*time.Second); err != nil {
+		return errors.Wrap(err, "failed to wait for idle")
+	}
+
+	if err := uiAutomator.Object(arcui.ID(testIntentButton)).Click(ctx); err != nil {
+		return errors.Wrap(err, "failed to click intent button")
+	}
+
+	if err := uiAutomator.Object(arcui.ID(testIntentText)).WaitForExists(ctx, 10*time.Second); err != nil {
+		return errors.Wrap(err, "failed to wait for link activity")
+	}
+
+	return nil
 }
