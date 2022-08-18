@@ -34,6 +34,24 @@
       "parentUuid": "d5fc87af_5f092183",
       "revId": "9485a25e763fbed426c8600cffe45d1e60e203e1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7b740fc_01fbc9b8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/oauth_token.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1545249
+      },
+      "writtenOn": "2022-08-18T18:27:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea79b85c_e853d804",
+      "revId": "9485a25e763fbed426c8600cffe45d1e60e203e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
