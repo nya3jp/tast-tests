@@ -52,13 +52,16 @@ func NewScreencastButtonCondition(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to close the onboarding dialog: ", err)
 	}
 
-	if err := a11y.VerifySodaInstalled(ctx); err != nil {
-		s.Log("SODA is not installed, verifying new screencast button is disabled")
-		if err = projector.VerifyNewScreencastButtonDisabled(ctx, tconn, "Speech recognition not supported"); err != nil {
-			s.Fatal("SODA is not installed, but new screencast button is enabled: ", err)
-		}
-		// Pass the test and exit prematurely.
-		return
+	ui := uiauto.New(tconn)
+	errorTooltip := nodewith.Name("Speech recognition not supported").Role(role.GenericContainer)
+	cantInstallSpeechFiles := nodewith.Name("Can't install speech files").Role(role.StaticText)
+
+	if err := uiauto.Combine("verify SODA is installed",
+		ui.Gone(errorTooltip),
+		ui.Gone(cantInstallSpeechFiles),
+		a11y.VerifySodaInstalled,
+	)(ctx); err != nil {
+		s.Fatal("SODA is not installed")
 	}
 
 	if err := audio.WaitForDevice(ctx, audio.InputStream); err != nil {
@@ -74,7 +77,6 @@ func NewScreencastButtonCondition(ctx context.Context, s *testing.State) {
 	// UI action for refreshing the app until the element we're
 	// looking for exists.
 	refreshApp := projector.RefreshApp(ctx, tconn)
-	ui := uiauto.New(tconn)
 	newScreencastButton := nodewith.Name("New screencast").Role(role.Button).Focusable()
 	if err := ui.WithInterval(5*time.Second).RetryUntil(refreshApp, ui.Exists(newScreencastButton))(ctx); err != nil {
 		s.Fatal("SODA and microphone are enabled, but new screencast button is disabled: ", err)
