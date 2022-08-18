@@ -104,6 +104,30 @@
       },
       "revId": "0deecd89142e0b045f7135a27a0fa611673045e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "909cb91e_08146027",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_provisioning.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-08-18T14:33:11Z",
+      "side": 1,
+      "message": "I\u0027m confused.\n\nwithRetry (i.e. doRetried \u003d\u003d true) is the case for \"stable\" tests, and withoutRetry is for \"unstable\" tests.\n\nSo, replacing tempRetry with exit() has an impact of stable tests, and so \"removing of unstable tests\" is not really reasoning...?",
+      "parentUuid": "295a72bb_d4b1b25d",
+      "range": {
+        "startLine": 121,
+        "startChar": 38,
+        "endLine": 121,
+        "endChar": 82
+      },
+      "revId": "0deecd89142e0b045f7135a27a0fa611673045e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
