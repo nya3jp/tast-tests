@@ -24,6 +24,7 @@ import (
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/browser/browserfixt"
+	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
@@ -249,6 +250,38 @@ func LaunchInMode(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn
 		pc:     pc,
 		ui:     ui,
 	}, nil
+}
+
+// setUpIncognito launches an incognito browser with shortcut `Ctrl+Shift+N`.
+// NOTE: unfocused environment needs to be set up before calling this.
+func setUpIncognito(ctx context.Context, cr *chrome.Chrome, bt browser.Type) (*browser.Browser, func(ctx context.Context) error, error) {
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		return nil, nil, errors.Wrap(err, "failed to connect to test API")
+	}
+
+	kb, err := input.Keyboard(ctx)
+	if err != nil {
+		return nil, nil, errors.Wrap(err, "failed to connect to a keyboard")
+	}
+	defer kb.Close()
+
+	if err := kb.Accel(ctx, "Ctrl+Shift+N"); err != nil {
+		return nil, nil, errors.Wrap(err, "failed to launch incognito Chrome browser")
+	}
+
+	switch bt {
+	case browser.TypeAsh:
+		return cr.Browser(), func(context.Context) error { return nil }, nil
+	case browser.TypeLacros:
+		l, err := lacros.Connect(ctx, tconn)
+		if err != nil {
+			return nil, nil, errors.Wrap(err, "failed to launch lacros-chrome")
+		}
+		return l.Browser(), l.Close, nil
+	default:
+		return nil, nil, errors.Errorf("unrecognized browser type %s", string(bt))
+	}
 }
 
 // LaunchBrowser launches a local web server with the default html to serve
