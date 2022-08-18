@@ -88,6 +88,24 @@
       "parentUuid": "9644e96f_06293818",
       "revId": "3fa8d142282f5f4d5792f2531e183c2257343935",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8fea4b2_43702fb3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1520127
+      },
+      "writtenOn": "2022-08-18T21:00:23Z",
+      "side": 1,
+      "message": "\u003e Previously, the scenario was executed inside s.Run. Now, it looks like s.Run is run with nothing inside it, and the scenario is executed afterwards, which I think is broken.\n\nCorrect. Taking a closer look now, the scenario fn being executed afterwards indeed doesn\u0027t look correct. I made it like that because that\u0027s how I understood what you were suggesting, but I didn\u0027t pay attention to the fact that s.Run was basically doing nothing :-) So I\u0027ll need to change that again.\n\n\n\u003e It should be possible to have a \u0027scenario\u0027 function which just runs the test, including s.Run if necessary, and a store function as well, and completely get rid of this RunFunc\n\nIt seems doable to get rid of run totally (and RunFunc) inside RunMultiple, which then would pretty much take care of iterating and doing the trace if needed. Its signature becomes like this then: \n`func (r *Runner) RunMultiple(ctx context.Context, scenario ScenarioFunc, store StoreFunc) error` \n\nBut are we okay with tests not running s.Run at all, thus not harnessing subtests states and execution?\n\nAlso, I don\u0027t understand about the \"including s.Run if necessary\" you mentioned, sorry. Do you mean to tests call s.Run directly instead RunMultiple? Or to have a RunMultiple overloading with s.Run passing in, using RunFunc and so on? \n\n\n\u003e I guess it\u0027s also possible to fold store into the scenario func as well but not sure if that\u0027s a good idea.\n\nYup. IMHO one idea we could follow is to get this CL simple enough containing only the original motivation merged (to move perfutil package out of the ui dir and unlock potential work in other bundles) and after that we can keep up the work related to these interesting simplifications on perfutil.\n\nThank you very much for reviewing, Eliot!",
+      "parentUuid": "b3bf143e_0286b4ef",
+      "revId": "3fa8d142282f5f4d5792f2531e183c2257343935",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
