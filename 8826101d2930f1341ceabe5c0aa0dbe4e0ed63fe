@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0a7a7c6_c6399474",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-08-18T10:06:26Z",
+      "side": 1,
+      "message": "LGTM with a request.",
+      "revId": "8826101d2930f1341ceabe5c0aa0dbe4e0ed63fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f227ce2_1949e214",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/delete_description_update_search_result.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-08-18T10:06:26Z",
+      "side": 1,
+      "message": "unused. please remove.",
+      "range": {
+        "startLine": 122,
+        "startChar": 58,
+        "endLine": 122,
+        "endChar": 76
+      },
+      "revId": "8826101d2930f1341ceabe5c0aa0dbe4e0ed63fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
