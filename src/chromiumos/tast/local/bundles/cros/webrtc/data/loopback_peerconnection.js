@@ -70,15 +70,20 @@ async function runLoopbackPeerConnection(constraints, profile, targetBitrate) {
 
 async function runLoopbackPeerConnectionWithSimulcast(constraints,
                                                       targetBitrate) {
-  const rids = [ 0, 1, 2 ];
+  rids = [];
+  for (let i = 0; i < simulcasts; i++) {
+    rids.push(i);
+  }
+
   const stream = await navigator.mediaDevices.getUserMedia(constraints);
   localPeerConnection.addTransceiver(stream.getVideoTracks()[0], {
     // Prefer resolution even at the cost of visual quality to avoid falling
     // down to SW video encoding, see b/181320567 or crbug.com/1179020.
     degradationPreference: 'maintain-resolution',
     streams : [ stream ],
-    sendEncodings: rids.map(rid => {
-      return {'rid': rid, 'scaleResolutionDownBy': (2 ** rid)};
+    // Smaller id sending stream has a smaller resolutin.
+    sendEncodings: rids.map(i => {
+      return {'rid': i, 'scaleResolutionDownBy': (2 ** (rids.length - (i+1)))};
     }),
   });
 
