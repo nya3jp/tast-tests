@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "18649311_471aec7c",
+        "filename": "src/chromiumos/tast/local/mtbf/youtube/youtube_app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-08-18T05:57:03Z",
+      "side": 1,
+      "message": "Is this asked by lint? Otherwise pls do not change the file copyright.",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "05107cfc86b0e4431b520ab04427878dce021eb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
