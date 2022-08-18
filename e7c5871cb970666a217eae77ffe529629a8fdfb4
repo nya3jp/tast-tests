@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e05e64ef_290b0d27",
+        "filename": "src/chromiumos/tast/local/sysutil/removable_devices_helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-08-18T14:48:56Z",
+      "side": 1,
+      "message": "what about  using usbutil/usb.go\n\nhttp://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/usbutil/usb.go",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 77
+      },
+      "revId": "e7c5871cb970666a217eae77ffe529629a8fdfb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "295d20ec_7a8b4d29",
+        "filename": "src/chromiumos/tast/local/sysutil/removable_devices_helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-08-18T14:48:56Z",
+      "side": 1,
+      "message": "nit: remove \"Get\" prefix. You can call if \"AllRemovable...\" or just \"Removable...\"\n\nhttp://go/go-style/decisions#getters",
+      "range": {
+        "startLine": 20,
+        "startChar": 5,
+        "endLine": 20,
+        "endChar": 27
+      },
+      "revId": "e7c5871cb970666a217eae77ffe529629a8fdfb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
