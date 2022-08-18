@@ -18,6 +18,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
 
@@ -509,11 +510,17 @@ func InstallPWAForURL(ctx context.Context, cr *chrome.Chrome, pwaURL string, tim
 // or incognito mode by shortcut `Ctl+Shift+N`.
 func LaunchChromeByShortcut(tconn *chrome.TestConn, incognitoMode bool) action.Action {
 	return func(ctx context.Context) error {
-		return tconn.Call(ctx, nil, `async (incognito) => {
-			let accelerator = {keyCode: 'n', shift: incognito, control: true, alt: false, search: false, pressed: true};
-			await tast.promisify(chrome.autotestPrivate.activateAccelerator)(accelerator);
-			accelerator.pressed = false;
-			await tast.promisify(chrome.autotestPrivate.activateAccelerator)(accelerator);
-		}`, incognitoMode)
+		kb, err := input.Keyboard(ctx)
+		if err != nil {
+			return err
+		}
+		shortcut := "Ctrl+N"
+		if incognitoMode {
+			shortcut = "Ctrl+Shift+N"
+		}
+		if err := kb.Accel(ctx, shortcut); err != nil {
+			return err
+		}
+		return nil
 	}
 }
