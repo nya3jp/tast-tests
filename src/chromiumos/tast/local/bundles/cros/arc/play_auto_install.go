@@ -12,6 +12,7 @@ import (
 	"strings"
 	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/optin"
@@ -28,7 +29,8 @@ func init() {
 			"arc-core@google.com",
 			"khmel@chromium.org", // author.
 		},
-		Attr: []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline", "informational"},
+		SoftwareDeps: []string{"arc_android_data_cros_access"},
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p", "chrome"},
 		}, {
@@ -51,6 +53,10 @@ func PlayAutoInstall(ctx context.Context, s *testing.State) {
 		paiList = "/data/data/org.chromium.arc.gms/pailist.txt"
 	)
 
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 3*time.Second)
+	defer cancel()
+
 	// Setup Chrome.
 	cr, err := chrome.New(ctx,
 		chrome.GAIALogin(chrome.Creds{User: username, Pass: password}),
@@ -59,7 +65,7 @@ func PlayAutoInstall(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to start Chrome: ", err)
 	}
-	defer cr.Close(ctx)
+	defer cr.Close(cleanupCtx)
 
 	s.Log("Performing optin")
 	maxAttempts := 2
@@ -75,8 +81,23 @@ func PlayAutoInstall(ctx context.Context, s *testing.State) {
 
 	paiListUnderHome := filepath.Join(androidDataDir, paiList)
 
+	a, err := arc.New(ctx, s.OutDir())
+	if err != nil {
+		s.Fatal("Failed to start ARC: ", err)
+	}
+	defer a.Close(cleanupCtx)
+
 	s.Log("Waiting PAI triggered")
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		// On ARCVM virtio-blk /data enabled devices, we mount and unmount the disk image on
+		// every iteration of testing.Poll to ensure that the Android-side changes are
+		// reflected on the host side.
+		cleanupFunc, err := arc.MountVirtioBlkDataDiskImageReadOnlyIfUsed(ctx, a, cr.NormalizedUser())
+		if err != nil {
+			s.Fatal("Failed to make Android /data directory available on host: ", err)
+		}
+		defer cleanupFunc(cleanupCtx)
+
 		if _, err := os.Stat(paiListUnderHome); err != nil {
 			if os.IsNotExist(err) {
 				return errors.Errorf("paiList %q is not created yet", paiListUnderHome)
@@ -87,6 +108,12 @@ func PlayAutoInstall(ctx context.Context, s *testing.State) {
 	}, &testing.PollOptions{Timeout: 2 * time.Minute}); err != nil {
 		s.Fatal("Failed to wait PAI triggered: ", err)
 	}
+
+	cleanupFunc, err := arc.MountVirtioBlkDataDiskImageReadOnlyIfUsed(ctx, a, cr.NormalizedUser())
+	if err != nil {
+		s.Fatal("Failed to make Android /data directory available on host: ", err)
+	}
+	defer cleanupFunc(cleanupCtx)
 
 	data, err := ioutil.ReadFile(paiListUnderHome)
 	if err != nil {

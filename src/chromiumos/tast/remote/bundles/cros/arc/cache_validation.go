@@ -57,7 +57,7 @@ func init() {
 			"arc-performance@google.com",
 		},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
-		SoftwareDeps: []string{"chrome"},
+		SoftwareDeps: []string{"arc_android_data_cros_access", "chrome"},
 		ServiceDeps:  []string{"tast.cros.arc.GmsCoreCacheService", "tast.cros.arc.TTSCacheService"},
 		Params: []testing.Param{{
 			Name:              "pi_container",
