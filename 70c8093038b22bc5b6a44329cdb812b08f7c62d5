@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb0fc8c8_3ab1000b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/intel/dut_behavior_on_ec_commands.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-08-18T23:31:34Z",
+      "side": 1,
+      "message": "Do a naked return here for the opposite case to avoid long `if` statements",
+      "range": {
+        "startLine": 117,
+        "startChar": 1,
+        "endLine": 117,
+        "endChar": 19
+      },
+      "revId": "70c8093038b22bc5b6a44329cdb812b08f7c62d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3dc10ec_925a861e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/intel/dut_behavior_on_ec_commands.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-08-18T23:31:34Z",
+      "side": 1,
+      "message": "Is this `testing.Sleep` call right before a `testing.Poll` call necessary?",
+      "range": {
+        "startLine": 152,
+        "startChar": 2,
+        "endLine": 155,
+        "endChar": 3
+      },
+      "revId": "70c8093038b22bc5b6a44329cdb812b08f7c62d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2633cddc_e565c217",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/intel/dut_behavior_on_ec_commands.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-08-18T23:31:34Z",
+      "side": 1,
+      "message": "Pull this out into a function",
+      "range": {
+        "startLine": 156,
+        "startChar": 2,
+        "endLine": 165,
+        "endChar": 3
+      },
+      "revId": "70c8093038b22bc5b6a44329cdb812b08f7c62d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df3a20b0_dd458636",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/intel/dut_behavior_on_ec_commands.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-08-18T23:31:34Z",
+      "side": 1,
+      "message": "Can be simplified to `return dut.Conn().CommandContext(ctx, \"ectool\", \"version\").Run() \u003d\u003d nil`",
+      "range": {
+        "startLine": 185,
+        "startChar": 1,
+        "endLine": 188,
+        "endChar": 12
+      },
+      "revId": "70c8093038b22bc5b6a44329cdb812b08f7c62d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67b5e91a_47e3ed67",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/intel/dut_behavior_on_ec_commands.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-08-18T23:31:34Z",
+      "side": 1,
+      "message": "Since this is a pretty short function and only used once, no need to modularize",
+      "range": {
+        "startLine": 183,
+        "startChar": 0,
+        "endLine": 189,
+        "endChar": 1
+      },
+      "revId": "70c8093038b22bc5b6a44329cdb812b08f7c62d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "150fb5c9_b8177844",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/intel/dut_behavior_on_ec_commands.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-08-18T23:31:34Z",
+      "side": 1,
+      "message": "Are other errors expected/inconsequential here?",
+      "range": {
+        "startLine": 196,
+        "startChar": 104,
+        "endLine": 196,
+        "endChar": 145
+      },
+      "revId": "70c8093038b22bc5b6a44329cdb812b08f7c62d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
