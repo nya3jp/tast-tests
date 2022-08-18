@@ -6,7 +6,7 @@ let localPeerConnection = new RTCPeerConnection();
 let remotePeerConnection = new RTCPeerConnection();
 
 async function start(
-  profile, isSimulcast, svcScalabilityMode = '', displayMediaType = '',
+  profile, simulcasts, svcScalabilityMode = '', displayMediaType = '',
   width = 1280, height = 720) {
   let constraints = {audio : false, video : {width : width, height : height}};
   if (displayMediaType !== '') {
@@ -28,8 +28,9 @@ async function start(
   // |targetBitrate| uses a conservative 0.05 bits per pixel (bpp) estimate.
   const targetBitrate = width * height * 30 /*fps*/ * 0.05;
 
-  if (isSimulcast) {
-    await runLoopbackPeerConnectionWithSimulcast(constraints, targetBitrate);
+  if (simulcasts > 1) {
+    await runLoopbackPeerConnectionWithSimulcast(constraints, simulcasts,
+                                                 targetBitrate);
   } else if (svcScalabilityMode !== '') {
     await runLoopbackPeerConnectionWithSVC(
         constraints, svcScalabilityMode, profile, targetBitrate);
@@ -68,17 +69,22 @@ async function runLoopbackPeerConnection(constraints, profile, targetBitrate) {
       remotePeerConnection.localDescription);
 }
 
-async function runLoopbackPeerConnectionWithSimulcast(constraints,
+async function runLoopbackPeerConnectionWithSimulcast(constraints, simulcasts,
                                                       targetBitrate) {
-  const rids = [ 0, 1, 2 ];
+  rids = [];
+  for (let i = 0; i < simulcasts; i++) {
+    rids.push(i);
+  }
+
   const stream = await navigator.mediaDevices.getUserMedia(constraints);
   localPeerConnection.addTransceiver(stream.getVideoTracks()[0], {
     // Prefer resolution even at the cost of visual quality to avoid falling
     // down to SW video encoding, see b/181320567 or crbug.com/1179020.
     degradationPreference: 'maintain-resolution',
     streams : [ stream ],
-    sendEncodings: rids.map(rid => {
-      return {'rid': rid, 'scaleResolutionDownBy': (2 ** rid)};
+    // Smaller id sending stream has a smaller resolutin.
+    sendEncodings: rids.map(i => {
+      return {'rid': i, 'scaleResolutionDownBy': (2 ** (rids.length - (i+1)))};
     }),
   });
 

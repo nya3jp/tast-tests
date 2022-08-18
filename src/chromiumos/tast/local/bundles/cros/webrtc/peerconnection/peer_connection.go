@@ -9,6 +9,7 @@ import (
 	"context"
 	"net/http"
 	"net/http/httptest"
+	"regexp"
 	"strings"
 	"time"
 
@@ -100,15 +101,43 @@ func RunRTCPeerConnection(ctx context.Context, cr *chrome.Chrome, fileSystem htt
 		return errors.Wrap(err, "timed out waiting for page loading")
 	}
 
-	if err := conn.Call(ctx, nil, "start", profile, simulcast, svc, displayMediaType); err != nil {
+	const simulcastStreams = 3
+	simulcasts := 0
+	if simulcast {
+		simulcasts = simulcastStreams
+	}
+	if err := conn.Call(ctx, nil, "start", profile, simulcasts, svc, displayMediaType); err != nil {
 		return errors.Wrap(err, "error establishing connection")
 	}
 
-	if verifyMode != NoVerifyHWAcceleratorUsed {
-		if err := checkForCodecImplementation(ctx, conn, verifyMode, simulcast); err != nil {
-			return errors.Wrap(err, "checkForCodecImplementation() failed")
+	if verifyMode == NoVerifyHWAcceleratorUsed {
+		return nil
+	}
+
+	decode := verifyMode == VerifyHWDecoderUsed || verifyMode == VerifySWDecoderUsed
+	expectedHW := verifyMode == VerifyHWDecoderUsed || verifyMode == VerifyHWEncoderUsed
+	implName, isHWImpl, err := getCodecImplementation(ctx, conn, decode)
+	if err != nil {
+		return errors.Wrap(err, "failed getCodecImplementation")
+	}
+	if isHWImpl != expectedHW {
+		expectedCodec := "software"
+		if expectedHW {
+			expectedCodec = "hardware"
+		}
+		return errors.Wrapf(err, "expected implementation not found, got %v, looking for %s codec", implName, expectedCodec)
+	}
+
+	if simulcast && verifyMode == VerifyHWEncoderUsed {
+		isImplHWInAdapter := make([]bool, simulcastStreams)
+		for i := 0; i < simulcastStreams; i++ {
+			isImplHWInAdapter[i] = true
+		}
+		if err := checkSimulcastEncImpl(implName, isImplHWInAdapter); err != nil {
+			return err
 		}
 	}
+
 	return nil
 }
 
@@ -120,6 +149,7 @@ const (
 )
 
 // readRTCReport reads an RTCStat report of the given typ from the specified peer connection.
+// Since there are multiple outbound-rtp in the case of simulcast, the stat is selected whose frame height is the largest.
 // The out can be an arbitrary struct whose members are 'json' tagged, so that they will be filled.
 func readRTCReport(ctx context.Context, conn *chrome.Conn, pc peerConnectionType, typ string, out interface{}) error {
 	return conn.Call(ctx, out, `async(isRemote, type) => {
@@ -128,20 +158,25 @@ func readRTCReport(ctx context.Context, conn *chrome.Conn, pc peerConnectionType
 	  if (stats == null) {
 	    throw new Error("getStats() failed");
 	  }
+      var R = null;
 	  for (const [_, report] of stats) {
-	    if (report['type'] === type) {
-	      return report;
+	    if (report['type'] === type &&
+            (!R || R['frameHeight'] < report['frameHeight'])) {
+          R = report;
 	    }
 	  }
+      if (R !== null) {
+        return R;
+      }
 	  throw new Error("Stat not found");
 	}`, pc, typ)
 }
 
-// checkForCodecImplementation parses the RTCPeerConnection and verifies that it
-// is using hardware acceleration for verifyMode. This method uses the
-// RTCPeerConnection getStats() API [1].
+// getCodecImplementation parses the RTCPeerConnection and returns the implementation name and whether it is
+// a hardware implementation. If decode is true, this returns decoder implementation and otherwise encoder implementation.
+// This method uses the RTCPeerConnection getStats() API [1].
 // [1] https://w3c.github.io/webrtc-pc/#statistics-model
-func checkForCodecImplementation(ctx context.Context, conn *chrome.Conn, verifyMode VerifyHWAcceleratorMode, isSimulcast bool) error {
+func getCodecImplementation(ctx context.Context, conn *chrome.Conn, decode bool) (string, bool, error) {
 	// See [1] and [2] for the statNames to use here. The values are browser
 	// specific, for Chrome, "ExternalDecoder" and "{V4L2,Vaapi, etc.}VideoEncodeAccelerator"
 	// means that WebRTC is using hardware acceleration and anything else
@@ -152,7 +187,7 @@ func checkForCodecImplementation(ctx context.Context, conn *chrome.Conn, verifyM
 	//
 	// [1] https://w3c.github.io/webrtc-stats/#dom-rtcinboundrtpstreamstats-decoderimplementation
 	// [2] https://w3c.github.io/webrtc-stats/#dom-rtcoutboundrtpstreamstats-encoderimplementation
-	expectedImpl := "EncodeAccelerator"
+	hwImplName := "EncodeAccelerator"
 	readImpl := func(ctx context.Context) (string, error) {
 		var out struct {
 			Encoder string `json:"encoderImplementation"`
@@ -163,8 +198,8 @@ func checkForCodecImplementation(ctx context.Context, conn *chrome.Conn, verifyM
 		return out.Encoder, nil
 	}
 
-	if verifyMode == VerifyHWDecoderUsed {
-		expectedImpl = "ExternalDecoder"
+	if decode {
+		hwImplName = "ExternalDecoder"
 		readImpl = func(ctx context.Context) (string, error) {
 			var out struct {
 				Decoder string `json:"decoderImplementation"`
@@ -193,22 +228,59 @@ func checkForCodecImplementation(ctx context.Context, conn *chrome.Conn, verifyM
 		}
 		// "ExternalEncoder" is the default value for encoder implementations
 		// before filling the actual one, see b/162764016.
-		if verifyMode == VerifyHWEncoderUsed && impl == "ExternalEncoder" {
+		if impl == "ExternalEncoder" {
 			return errors.New("getStats() didn't fill in the encoder implementation (yet)")
 		}
 		return nil
 	}, &testing.PollOptions{Interval: pollInterval, Timeout: pollTimeout}); err != nil {
-		return err
+		return "", false, err
 	}
 	testing.ContextLog(ctx, "Implementation: ", impl)
 
-	if !strings.Contains(impl, expectedImpl) {
-		return errors.Errorf("expected implementation not found, got %v, looking for %v", impl, expectedImpl)
+	isHWImpl := strings.Contains(impl, hwImplName)
+	return impl, isHWImpl, nil
+}
+
+// checkSimulcastEncImpl checks that the given implName is used in given simulcast scenario.
+// isImplHWInAdapter[i] stands for whether i-th stream in the simulcast is expected to be produced by a hardware encoder.
+func checkSimulcastEncImpl(implName string, isImplHWInAdapter []bool) error {
+	isAllSWEnc := true
+	for _, isHW := range isImplHWInAdapter {
+		if isHW {
+			isAllSWEnc = false
+			break
+		}
 	}
-	if verifyMode == VerifyHWEncoderUsed && isSimulcast && !strings.HasPrefix(impl, SimulcastAdapterName) {
-		return errors.Errorf("simulcast adapter not found, got %v, looking for %v", impl, SimulcastAdapterName)
+	// If all the streams in the simulcast are produced by a software encoder.
+	// The implementation name is libvpx because a libvpx encoder supports simulcast.
+	if isAllSWEnc {
+		if implName == "libvpx" {
+			return nil
+		}
+		return errors.Errorf("unexpected simulcast encoder adapter name: %s", implName)
 	}
 
+	// If the streams in the simulcast are produced by software and hardware encoders or
+	// only hardware encoders, SimulcastEncoderAdapter is used to bundle the streams.
+	// The implementation name is like SimulcastEncoderAdapter(libvpx, VaapiVideoEncodeAccelerator, VaapiVideoEncodeAccelerator).
+	implName = strings.ReplaceAll(implName, " ", "")
+	re := regexp.MustCompile(`SimulcastEncoderAdapter\(([\S, ]+)\)`)
+	inStrs := re.FindStringSubmatch(implName)
+	if inStrs == nil {
+		return errors.Errorf("failed to extract internal encoder names: %s", implName)
+	}
+
+	implNames := strings.Split(inStrs[1], ",")
+	if len(implNames) != len(isImplHWInAdapter) {
+		return errors.Errorf("the number of simulcast streams mismatches: got %d (%v), expected %d", len(implNames), implNames, len(isImplHWInAdapter))
+	}
+
+	const hwImplName = "EncodeAccelerator"
+	for i, implName := range implNames {
+		if isImplHWInAdapter[i] != strings.Contains(implName, hwImplName) {
+			return errors.Errorf("unexpected implementations within simulcast adapter: %v", implNames)
+		}
+	}
 	return nil
 }
 
