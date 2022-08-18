@@ -134,6 +134,30 @@
       },
       "revId": "9b2d02f9106c3e00d73c0e78b93ad457fbffa027",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5358f34d_59e8ec2c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-08-18T17:32:23Z",
+      "side": 1,
+      "message": "I see two options here:\n\n1. Add the bluetooth params you need for bluez/floss distinction to the `chromeLoggedInWithBluetoothEnabled` struct, and assign the necessary values in the fixture `Setup` function. That way you can access whatever you need within this `Reset` function. You\u0027d probably need to unify the fixture `Impl`s to all use the same struct instead of directly reusing `chrome.NewLoggedInFixture`.\n\n2. Remove it from `Reset`, but deal with bluetooth state cleanup in `PreTest` and `PostTest` instead.\n\nI think either of these should be reasonable and accomplish what you need",
+      "parentUuid": "64ec441b_0458ce36",
+      "range": {
+        "startLine": 96,
+        "startChar": 11,
+        "endLine": 96,
+        "endChar": 27
+      },
+      "revId": "9b2d02f9106c3e00d73c0e78b93ad457fbffa027",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
