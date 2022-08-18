@@ -415,7 +415,8 @@ func shouldCloseOnReset(t *Target) bool {
 	if t.Type == "other" && (t.Title == "Chrome OS Virtual Keyboard" ||
 		strings.HasPrefix(t.URL, "chrome-extension://fgoepimhcoialccpbmpnnblemnepkkao") || // Don't close ChromeOS xkb extension.
 		strings.HasPrefix(t.URL, "chrome-extension://jkghodnilhceideoidjikpgommlajknk") || // Don't close input methods extension.
-		strings.HasPrefix(t.URL, "chrome-extension://mndnfokpggljbaajbnioimlmbfngpief")) { // Don't close ChromeVox extension.
+		strings.HasPrefix(t.URL, "chrome-extension://mndnfokpggljbaajbnioimlmbfngpief") || // Don't close ChromeVox extension.
+		strings.HasPrefix(t.URL, "chrome://tab-strip.top-chrome/")) { // Don't close the tab strip.
 		return false
 	}
 	return t.Type == "page" || t.Type == "app" || t.Type == "other"
