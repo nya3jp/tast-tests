@@ -126,6 +126,16 @@ func RecentApps(ctx context.Context, s *testing.State) {
 	}
 	defer cleanup(cleanupCtx)
 
+	//For tablet mode launcher, trigger an update for RecentApps to show.
+	if tabletMode {
+		if err := launcher.HideTabletModeLauncher(tconn)(ctx); err != nil {
+			s.Fatal("Failed to hide the launcher in tablet: ", err)
+		}
+		if err := launcher.OpenProductivityLauncher(ctx, tconn, tabletMode); err != nil {
+			s.Fatal("Failed to open launcher: ", err)
+		}
+	}
+
 	// Recent apps always show the first time with default suggestions.
 	recentApps := nodewith.ClassName("RecentAppsView")
 	if err := ui.WithTimeout(3 * time.Second).WaitUntilExists(recentApps)(ctx); err != nil {
@@ -222,16 +232,14 @@ func RecentApps(ctx context.Context, s *testing.State) {
 	}
 
 	// Wait for the window to finish initialization after they show in the shelf.
-
-	var windowName string
-
+	windowNode := nodewith.Role(role.Window).ClassName("RootView")
 	if arcBoot {
-		windowName = "InstallAppWith"
+		windowNode = windowNode.NameContaining("InstallAppWithAppList")
 	} else {
-		windowName = "Google Wallpaper"
+		windowNode = windowNode.Name("Google Wallpaper Art")
 	}
 
-	if err := ui.WaitUntilExists(nodewith.Role(role.Window).NameContaining(windowName).ClassName("RootView"))(ctx); err != nil {
+	if err := ui.WaitUntilExists(windowNode.First())(ctx); err != nil {
 		s.Fatal("Failed to wait for app window: ", err)
 	}
 
