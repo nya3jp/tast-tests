@@ -26,9 +26,7 @@ func init() {
 		// To-do: Some DUTs (i.e. Strongbad) showed behavior of KeyboardDevSwitcher at
 		// boot up, even though they are detachables. We're checking for params that
 		// could potentially serve as a filter to identify DUT's mode switcher type.
-		// Models currently listed below have TabletDetachableSwitcher as defined in
-		// their fw-testing-configs file.
-		HardwareDeps: hwdep.D(hwdep.ChromeEC(), hwdep.Platform("kukui", "nocturne", "poppy", "soraka")),
+		HardwareDeps: hwdep.D(hwdep.ChromeEC(), hwdep.FormFactor(hwdep.Detachable)),
 		Fixture:      fixture.DevModeGBB,
 		Timeout:      30 * time.Minute,
 	})
