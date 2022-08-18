@@ -131,6 +131,9 @@ func launchAppForHulu(ctx context.Context, s *testing.State, tconn *chrome.TestC
 		noneOfTheAboveID          = "com.google.android.gms:id/cancel"
 		neverButtonID             = "com.google.android.gms:id/credential_save_reject"
 		homeIconID                = "com.hulu.plus:id/menu_home"
+		OTPPageID                 = "com.hulu.plus:id/verification_title"
+		selectUserID              = "com.hulu.plus:id/tile_title"
+		selectUserText            = "appcompatautomation"
 	)
 
 	loginButton := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.TextMatches("(?i)"+loginText))
@@ -215,6 +218,20 @@ func launchAppForHulu(ctx context.Context, s *testing.State, tconn *chrome.TestC
 		s.Fatal("Failed to click on clickOnNoThanksButton: ", err)
 	}
 
+	// Check for OTP page.
+	checkForOTPPage := d.Object(ui.ID(OTPPageID))
+	if err := checkForOTPPage.WaitForExists(ctx, testutil.ShortUITimeout); err == nil {
+		s.Log("checkForOTPPage does exist")
+		return
+	}
+	// Select user.
+	selectUser := d.Object(ui.ID(selectUserID), ui.TextMatches("(?i)"+selectUserText))
+	if err := selectUser.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+		s.Log("selectUser doesn't exist: ", err)
+	} else if err := selectUser.Click(ctx); err != nil {
+		s.Fatal("Failed to click on selectUser: ", err)
+	}
+
 	// Click on got it button.
 	testutil.HandleDialogBoxes(ctx, s, d, appPkgName)
 
@@ -274,8 +291,17 @@ func signOutOfHulu(ctx context.Context, s *testing.State, tconn *chrome.TestConn
 		accountIconID    = "com.hulu.plus:id/menu_profile"
 		logoutText       = "Log Out"
 		logOutOfHuluText = "LOG OUT"
+		loginText        = "LOG IN"
 		homeIconID       = "com.hulu.plus:id/menu_home"
 	)
+
+	// Check for login button.
+	loginButton := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.TextMatches("(?i)"+loginText))
+	if err := loginButton.WaitForExists(ctx, testutil.LongUITimeout); err == nil {
+		s.Log("LoginButton does exist and skipped signout the app")
+		return
+	}
+
 	// Press back key to dismiss the pop up.
 	if err := d.PressKeyCode(ctx, ui.KEYCODE_BACK, 0); err != nil {
 		s.Log("Failed to enter KEYCODE_BACk: ", err)
