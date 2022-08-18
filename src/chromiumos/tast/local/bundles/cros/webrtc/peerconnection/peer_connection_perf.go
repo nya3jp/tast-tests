@@ -52,6 +52,10 @@ type RTCTestOptions struct {
 	// ScalableVideoCodec "scalabilityMode" identifier.
 	// https://www.w3.org/TR/webrtc-svc/#scalabilitymodes
 	svc string
+	// The number of video streams in simulcast.
+	simulcasts int
+	// The array each element of which is true iff -th smaller resolution should be a hardware encoder implementation.
+	simulcastHWEncs []bool
 	// If non-empty, the media to send through the RTC connection will be obtained
 	// using getDisplayMedia() and the value corresponds to the surface type. If
 	// empty, the media to send will be obtained using getUserMedia().
@@ -86,6 +90,28 @@ func MakeSWTestOptions(profile string, width, height int) RTCTestOptions {
 		videoGridDimension: 1,
 		videoGridFile:      "",
 		svc:                "",
+		displayMediaType:   "",
+	}
+}
+
+// MakeSimulcastTestOptions creates RTCTestOptions for profile, width and height.
+// While a hardware decoder is used, if hwEncs[i] is true then a hardware encoder is used for i-th stream in simulcast.
+func MakeSimulcastTestOptions(profile string, width, height int, hwEncs []bool) RTCTestOptions {
+	verifyHWEncoding := VerifySWEncoderUsed
+	if hwEncs[len(hwEncs)-1] {
+		verifyHWEncoding = VerifyHWEncoderUsed
+	}
+	return RTCTestOptions{
+		verifyHWDecoding:   VerifyHWDecoderUsed,
+		verifyHWEncoding:   verifyHWEncoding,
+		profile:            profile,
+		streamWidth:        width,
+		streamHeight:       height,
+		videoGridDimension: 1,
+		videoGridFile:      "",
+		svc:                "", // L1T3?
+		simulcasts:         len(hwEncs),
+		simulcastHWEncs:    hwEncs,
 		displayMediaType:   "",
 	}
 }
@@ -352,24 +378,36 @@ func peerConnectionPerf(ctx context.Context, cr *chrome.Chrome, loopbackURL, vid
 		return errors.Wrap(err, "timed out waiting for page loading")
 	}
 
-	if err := conn.Call(ctx, nil, "start", opts.profile, false, opts.svc, opts.displayMediaType, opts.streamWidth, opts.streamHeight); err != nil {
+	if err := conn.Call(ctx, nil, "start", opts.profile, opts.simulcasts, opts.svc, opts.displayMediaType, opts.streamWidth, opts.streamHeight); err != nil {
 		return errors.Wrap(err, "establishing connection")
 	}
 
-	hwDecoderUsed := checkForCodecImplementation(ctx, conn, VerifyHWDecoderUsed, false /*isSimulcast*/) == nil
+	decImplName, hwDecoderUsed, err := getCodecImplementation(ctx, conn /*decode=*/, true)
+	if err != nil {
+		return errors.Wrap(err, "failed to get decoder implementation name")
+	}
 	if opts.verifyHWDecoding == VerifyHWDecoderUsed && !hwDecoderUsed {
-		return errors.New("hardware decode accelerator wasn't used")
+		return errors.Errorf("hardware decode accelerator wasn't used, got %s", decImplName)
 	}
 	if opts.verifyHWDecoding == VerifySWDecoderUsed && hwDecoderUsed {
-		return errors.New("software decode wasn't used")
+		return errors.Errorf("software decode wasn't used, got %s", decImplName)
 	}
 
-	hwEncoderUsed := checkForCodecImplementation(ctx, conn, VerifyHWEncoderUsed, false /*isSimulcast*/) == nil
-	if opts.verifyHWEncoding == VerifyHWEncoderUsed && !hwEncoderUsed {
-		return errors.New("hardware encode accelerator wasn't used")
+	encImplName, hwEncoderUsed, err := getCodecImplementation(ctx, conn /*decode=*/, false)
+	if err != nil {
+		return errors.Wrap(err, "failed to get encoder implementation name")
 	}
-	if opts.verifyHWEncoding == VerifySWEncoderUsed && hwEncoderUsed {
-		return errors.New("software encode wasn't used")
+	if opts.simulcasts > 1 {
+		if err := checkSimulcastEncImpl(encImplName, opts.simulcastHWEncs); err != nil {
+			return err
+		}
+	} else {
+		if opts.verifyHWEncoding == VerifyHWEncoderUsed && !hwEncoderUsed {
+			return errors.Errorf("hardware encode accelerator wasn't used, got %s", encImplName)
+		}
+		if opts.verifyHWEncoding == VerifySWEncoderUsed && hwEncoderUsed {
+			return errors.Errorf("software encode wasn't used, got %s", encImplName)
+		}
 	}
 
 	if opts.videoGridDimension > 1 {

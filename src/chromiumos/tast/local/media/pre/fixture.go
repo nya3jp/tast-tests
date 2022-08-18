@@ -286,6 +286,22 @@ func init() {
 	})
 
 	testing.AddFixture(&testing.Fixture{
+		Name:     "chromeVideoWithFakeWebcamAndEnableVaapiVideoMinResolution",
+		Desc:     "Similar to chromeVideoWithFakeWebcam fixture but enable VaapiVideoMinResolutionForPerformance feature",
+		Contacts: []string{"chromeos-gfx-video@google.com"},
+		Impl: chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			return []chrome.Option{
+				chrome.ExtraArgs(chromeVideoArgsWithEnablingVaapiVEAMinResolution...),
+				chrome.ExtraArgs(chromeFakeWebcamArgs...),
+			}, nil
+		}),
+		Parent:          "gpuWatchDog",
+		SetUpTimeout:    chrome.LoginTimeout,
+		ResetTimeout:    chrome.ResetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+	})
+
+	testing.AddFixture(&testing.Fixture{
 		Name:     "chromeVideoWithFakeWebcamAndNoHwAcceleration",
 		Desc:     "Similar to chromeVideoWithFakeWebcam fixture but with both hardware decoding and encoding disabled",
 		Contacts: []string{"chromeos-gfx-video@google.com"},
@@ -658,6 +674,28 @@ var chromeVideoArgs = []string{
 	// Disable that for testing.
 	"--disable-features=VaapiEnforceVideoMinMaxResolution",
 	"--disable-features=VaapiVideoMinResolutionForPerformance",
+	// Allow media autoplay. <video> tag won't automatically play upon loading the source unless this flag is set.
+	"--autoplay-policy=no-user-gesture-required",
+	// Do not show message center notifications.
+	"--suppress-message-center-popups",
+	// Make sure ARC++ is not running.
+	"--arc-availability=none",
+}
+
+var chromeVideoArgsWithEnablingVaapiVEAMinResolution = []string{
+	// Enable verbose log messages for video components.
+	"--vmodule=" + strings.Join([]string{
+		"*/media/gpu/chromeos/*=2",
+		"*/media/gpu/vaapi/*=2",
+		"*/media/gpu/v4l2/*=2"}, ","),
+	// The Renderer video stack might have a policy of not using hardware
+	// accelerated decoding for certain small resolutions (see crbug.com/684792).
+	// Disable that for testing.
+	"--disable-features=ResolutionBasedDecoderPriority",
+	// VA-API HW decoder and encoder might reject small resolutions for
+	// performance (see crbug.com/1008491 and b/171041334).
+	// Disable that for testing.
+	"--disable-features=VaapiEnforceVideoMinMaxResolution",
 	// Allow media autoplay. <video> tag won't automatically play upon loading the source unless this flag is set.
 	"--autoplay-policy=no-user-gesture-required",
 	// Do not show message center notifications.
