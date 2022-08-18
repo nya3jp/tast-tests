@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "82d0265f_6ee0a601",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-08-18T00:21:17Z",
+      "side": 1,
+      "message": "Thank you for sending this change my way! Overall this is LGTM with a couple comments, PTAL whenever you have a moment!",
+      "revId": "5b519c4d9567c7532e28998d6cf26ada5b9e925b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b42200a_e882b35d",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/quicksettings/network.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-08-18T00:21:17Z",
+      "side": 1,
+      "message": "I will defer to Kyle on this, but I think it might be worth updating the logic here to initially search for the existing `NetworkDetailedViewRevamp`, and if it doesn\u0027t find it fall back to searching for `NetworkDetailedViewRevamp`. This prevents us from having to force callers to provide a boolean indicating whether the feature is enabled, but makes this method resilient to code changes in the chromium repo.",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 2
+      },
+      "revId": "5b519c4d9567c7532e28998d6cf26ada5b9e925b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "091186d4_8767955f",
+        "filename": "src/chromiumos/tast/local/shill/wifi.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-08-18T00:21:17Z",
+      "side": 1,
+      "message": "Nit: Remove new line.",
+      "revId": "5b519c4d9567c7532e28998d6cf26ada5b9e925b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
