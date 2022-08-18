@@ -16,6 +16,125 @@
       "message": "shadow reviewer lgtm for tast",
       "revId": "a64ed7dfa716e499aca2436e3475d787285fee19",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b57d1b1_fbd6b5f3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-08-18T06:39:27Z",
+      "side": 1,
+      "message": "I have a few comments. Please take a look.\n\nPlease also run tast unit test: fast_build.sh -T\n\nThen, add this line to commit log:\n\nTEST\u003dtast unit test passed.\n\nThanks.",
+      "revId": "a64ed7dfa716e499aca2436e3475d787285fee19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e118fa1_9d071195",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/ucm_sequences.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-08-18T06:39:27Z",
+      "side": 1,
+      "message": "Please see:\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/code_review_comments.md#state\n\n\u003e In many cases you can avoid passing testing.State to a function:\n\nWe discourage passing testing.State to functions.",
+      "revId": "a64ed7dfa716e499aca2436e3475d787285fee19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae76c4dc_5c7425dc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/ucm_sequences.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-08-18T06:39:27Z",
+      "side": 1,
+      "message": "Use testing.ContextLog",
+      "revId": "a64ed7dfa716e499aca2436e3475d787285fee19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9101107b_f8759bbf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/ucm_sequences.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-08-18T06:39:27Z",
+      "side": 1,
+      "message": "return error instead.",
+      "revId": "a64ed7dfa716e499aca2436e3475d787285fee19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "733a261a_d576938d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/ucm_sequences.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-08-18T06:39:27Z",
+      "side": 1,
+      "message": "return error instead.",
+      "revId": "a64ed7dfa716e499aca2436e3475d787285fee19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4df46e23_3efc472a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/ucm_sequences.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-08-18T06:39:27Z",
+      "side": 1,
+      "message": "return error instead.",
+      "revId": "a64ed7dfa716e499aca2436e3475d787285fee19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b994911_2cd360f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/ucm_sequences.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-08-18T06:39:27Z",
+      "side": 1,
+      "message": "log error message and save the error. Then return the error later.",
+      "revId": "a64ed7dfa716e499aca2436e3475d787285fee19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
