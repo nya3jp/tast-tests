@@ -36,7 +36,7 @@ func init() {
 		Func:     CrosDisksArchiveBig,
 		Desc:     "Checks that cros-disks can mount big archives",
 		Contacts: []string{"chromeos-files-syd@google.com"},
-		Attr:     []string{"group:mainline", "informational"},
+		Attr:     []string{"group:mainline"},
 		Data:     PreparedArchives,
 		Timeout:  10 * time.Minute,
 	})
