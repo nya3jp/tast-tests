@@ -49,9 +49,8 @@ func init() {
 			Fixture: "install100Apps",
 			Val:     browser.TypeAsh,
 		}, {
-			Name: "lacros",
-			// TODO(crbug.com/1309565): Use "install100LacrosApps" for lacros extension when ready.
-			Fixture:           "install100Apps",
+			Name:              "lacros",
+			Fixture:           "install100LacrosApps",
 			ExtraSoftwareDeps: []string{"lacros"},
 			Val:               browser.TypeLacros,
 		}},
