@@ -11,6 +11,7 @@ import (
 	"strings"
 	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/arc/arccrash"
@@ -25,7 +26,7 @@ func init() {
 		Desc:         "Test handling of a C++ binary crash",
 		Contacts:     []string{"kimiyuki@google.com", "arc-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"chrome"},
+		SoftwareDeps: []string{"arc_android_data_cros_access", "chrome"},
 		Fixture:      "arcBooted",
 		Params: []testing.Param{{
 			Name:              "real_consent",
@@ -138,6 +139,18 @@ func CxxCrash(ctx context.Context, s *testing.State) {
 		// The time to wait for removal of temporary files. Typically they are removed in a few seconds.
 		const pollingTimeout = 10 * time.Second
 		err = testing.Poll(ctx, func(c context.Context) error {
+			cleanupCtx := ctx
+			ctx, cancel := ctxutil.Shorten(ctx, 3*time.Second)
+			defer cancel()
+
+			// In order to ensure that the changes from the Android side is reflected to the host side,
+			// we mount and unmount the disk image on each iteration of testing.Poll.
+			cleanupFunc, err := arc.MountVirtioBlkDataDiskImageReadOnlyIfUsed(ctx, a, cr.NormalizedUser())
+			if err != nil {
+				return testing.PollBreak(errors.Wrap(err, "failed to mount Android /data virtio-blk disk image on host"))
+			}
+			defer cleanupFunc(cleanupCtx)
+
 			files, err := ioutil.ReadDir(temporaryCrashDir)
 			if err != nil {
 				return testing.PollBreak(err)

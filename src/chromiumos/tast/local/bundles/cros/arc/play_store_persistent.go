@@ -12,6 +12,7 @@ import (
 	"strconv"
 	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/optin"
@@ -28,7 +29,7 @@ func init() {
 		Desc:         "Makes sure that Play Store remains open after it is fully initialized",
 		Contacts:     []string{"khmel@chromium.org", "jhorwich@chromium.org", "arc-core@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"chrome"},
+		SoftwareDeps: []string{"arc_android_data_cros_access", "chrome"},
 		// 1 min for ARC is provisioned, 4 minutes max waiting for daily hygiene, and
 		// 1 min max waiting for CPU is idle. Normally test takes ~2.5-3.5 minutes to complete.
 		Timeout: 5 * time.Minute,
@@ -63,14 +64,24 @@ func getPlayStorePid(ctx context.Context, a *arc.ARC) (uint, error) {
 }
 
 // readFinskyPrefs reads content of Finsky shared prefs file.
-func readFinskyPrefs(ctx context.Context, user string) ([]byte, error) {
+func readFinskyPrefs(ctx context.Context, a *arc.ARC, user string) ([]byte, error) {
 	const finskyPrefsPath = "/data/data/com.android.vending/shared_prefs/finsky.xml"
+
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 3*time.Second)
+	defer cancel()
 
 	// Cryptohome dir for the current user.
 	rootCryptDir, err := cryptohome.SystemPath(ctx, user)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to get the cryptohome directory for the user")
 	}
+
+	cleanupFunc, err := arc.MountVirtioBlkDataDiskImageReadOnlyIfUsed(ctx, a, user)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to mount Android /data virtio-blk disk image on host")
+	}
+	defer cleanupFunc(cleanupCtx)
 
 	// android-data dir under the cryptohome dir (/home/root/${USER_HASH}/android-data)
 	androidDataDir := filepath.Join(rootCryptDir, "android-data")
@@ -84,12 +95,14 @@ func readFinskyPrefs(ctx context.Context, user string) ([]byte, error) {
 // daily hygiene fails internally. This is not ARC fault and we detect this as a signal that
 // daily hygiene ends. Next potentially successful attempt should happen in 20 min which is
 // problematic to wait in test.
-func waitForDailyHygieneDone(ctx context.Context, user string) (bool, error) {
+func waitForDailyHygieneDone(ctx context.Context, a *arc.ARC, user string) (bool, error) {
 	reOk := regexp.MustCompile(`<int name="dailyhygiene-last-version" value="\d+"`)
 	reFail := regexp.MustCompile(`<int name="dailyhygiene-failed" value="1" />`)
 	var ok bool
 	return ok, testing.Poll(ctx, func(ctx context.Context) error {
-		out, err := readFinskyPrefs(ctx, user)
+		// In order to ensure that the changes from the Android side is reflected to the host side,
+		// we mount and unmount the disk image on every iteration of testing.Poll.
+		out, err := readFinskyPrefs(ctx, a, user)
 		if err != nil {
 			// It is OK if it does not exist yet
 			return err
@@ -139,9 +152,9 @@ func PlayStorePersistent(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Wating for daily hygiene done")
-	ok, err := waitForDailyHygieneDone(ctx, cr.NormalizedUser())
+	ok, err := waitForDailyHygieneDone(ctx, a, cr.NormalizedUser())
 	if err != nil {
-		if out, rerr := readFinskyPrefs(ctx, cr.NormalizedUser()); rerr != nil {
+		if out, rerr := readFinskyPrefs(ctx, a, cr.NormalizedUser()); rerr != nil {
 			s.Error("Failed to read Finsky prefs: ", rerr)
 		} else if rerr := ioutil.WriteFile(filepath.Join(s.OutDir(), "finsky.xml"), out, 0644); rerr != nil {
 			s.Error("Failed to write Finsky prefs: ", rerr)

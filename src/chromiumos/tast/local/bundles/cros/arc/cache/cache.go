@@ -16,6 +16,7 @@ import (
 	"time"
 
 	"chromiumos/tast/common/testexec"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/fsutil"
 	"chromiumos/tast/local/arc"
@@ -134,6 +135,10 @@ func CopyGmsCoreCaches(ctx context.Context, a *arc.ARC, outputDir string) error 
 		gsfDatabase  = "/data/data/com.google.android.gsf/databases/gservices.db"
 	)
 
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 3*time.Second)
+	defer cancel()
+
 	// OpenSession signs in as chrome.DefaultUser.
 	androidDataDir, err := arc.AndroidDataDir(ctx, chrome.DefaultUser)
 	if err != nil {
@@ -153,7 +158,7 @@ func CopyGmsCoreCaches(ctx context.Context, a *arc.ARC, outputDir string) error 
 		{"current_modules_init.pb", pathMustNotExist},
 		{"pending_modules_init.pb", pathMustNotExist},
 	} {
-		if err := waitForPath(ctx, filepath.Join(chimeraPath, e.filename), e.cond); err != nil {
+		if err := waitForPath(ctx, a, filepath.Join(chimeraPath, e.filename), e.cond); err != nil {
 			return err
 		}
 	}
@@ -163,13 +168,20 @@ func CopyGmsCoreCaches(ctx context.Context, a *arc.ARC, outputDir string) error 
 		return errors.Wrap(err, "failed to get SDK version")
 	}
 
-	if err := waitForApksOptimized(ctx, chimeraPath, version); err != nil {
+	if err := waitForApksOptimized(ctx, a, chimeraPath, version); err != nil {
 		return err
 	}
 
 	targetTar := filepath.Join(outputDir, GMSCoreCacheArchive)
 
 	testing.ContextLogf(ctx, "Compressing GMS Core caches to %q", targetTar)
+
+	cleanupFunc, err := arc.MountVirtioBlkDataDiskImageReadOnlyIfUsed(ctx, a, chrome.DefaultUser)
+	if err != nil {
+		return errors.Wrap(err, "failed to make Android /data directory available on host")
+	}
+	defer cleanupFunc(cleanupCtx)
+
 	if err := testexec.CommandContext(ctx, "tar", "-cvpf", targetTar, "-C", gmsRootUnderHome, appChimera).Run(testexec.DumpLogOnError); err != nil {
 		return errors.Wrap(err, "failed to compress GMS Core caches")
 	}
@@ -291,6 +303,10 @@ func CopyTTSCache(ctx context.Context, a *arc.ARC, outputDir string) error {
 		ttsCacheAndroidPath = "/data/data/org.chromium.arc.intent_helper/files/tts_state.dat"
 	)
 
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 3*time.Second)
+	defer cancel()
+
 	// OpenSession signs in as chrome.DefaultUser.
 	androidDataDir, err := arc.AndroidDataDir(ctx, chrome.DefaultUser)
 	if err != nil {
@@ -298,9 +314,15 @@ func CopyTTSCache(ctx context.Context, a *arc.ARC, outputDir string) error {
 	}
 
 	ttsCachePath := filepath.Join(androidDataDir, ttsCacheAndroidPath)
-	if err := waitForPath(ctx, ttsCachePath, pathMustExist); err != nil {
+	if err := waitForPath(ctx, a, ttsCachePath, pathMustExist); err != nil {
 		return err
 	}
+
+	cleanupFunc, err := arc.MountVirtioBlkDataDiskImageReadOnlyIfUsed(ctx, a, chrome.DefaultUser)
+	if err != nil {
+		return errors.Wrap(err, "failed to make Android /data directory available on host")
+	}
+	defer cleanupFunc(cleanupCtx)
 
 	dst := filepath.Join(outputDir, TTSStateCache)
 	if err := fsutil.CopyFile(ttsCachePath, dst); err != nil {
@@ -312,10 +334,22 @@ func CopyTTSCache(ctx context.Context, a *arc.ARC, outputDir string) error {
 
 // waitForPath waits up to 1 minute or ctx deadline for the specified path to exist or not
 // exist depending on pathCondition c.
-func waitForPath(ctx context.Context, path string, c pathCondition) error {
+func waitForPath(ctx context.Context, a *arc.ARC, path string, c pathCondition) error {
 	testing.ContextLogf(ctx, "Waiting for path %q", path)
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		_, err := os.Stat(path)
+		cleanupCtx := ctx
+		ctx, cancel := ctxutil.Shorten(ctx, 3*time.Second)
+		defer cancel()
+
+		// In order to ensure that the changes from the Android side is reflected to the host side,
+		// we mount and unmount the disk image on each iteration of testing.Poll.
+		cleanupFunc, err := arc.MountVirtioBlkDataDiskImageReadOnlyIfUsed(ctx, a, chrome.DefaultUser)
+		if err != nil {
+			return errors.Wrap(err, "failed to make Android /data directory available on host")
+		}
+		defer cleanupFunc(cleanupCtx)
+
+		_, err = os.Stat(path)
 		if err != nil && !os.IsNotExist(err) {
 			return testing.PollBreak(errors.Wrapf(err, "failed to stat %s", path))
 		}
@@ -339,14 +373,26 @@ func waitForPath(ctx context.Context, path string, c pathCondition) error {
 // waitForApksOptimized waits up to 1 minute or ctx deadline for all APKs in given root path are
 // optimized, which means no *.flock locks and *.odex/*.vdex exist and matches actual APK count
 // on PI and below.
-func waitForApksOptimized(ctx context.Context, root string, sdkVersion int) error {
+func waitForApksOptimized(ctx context.Context, a *arc.ARC, root string, sdkVersion int) error {
 	testing.ContextLogf(ctx, "Waiting for APKs optimized %q", root)
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		cleanupCtx := ctx
+		ctx, cancel := ctxutil.Shorten(ctx, 3*time.Second)
+		defer cancel()
+
+		// In order to ensure that the changes from the Android side is reflected to the host side,
+		// we mount and unmount the disk image on each iteration of testing.Poll.
+		cleanupFunc, err := arc.MountVirtioBlkDataDiskImageReadOnlyIfUsed(ctx, a, chrome.DefaultUser)
+		if err != nil {
+			return errors.Wrap(err, "failed to make Android /data directory available on host")
+		}
+		defer cleanupFunc(cleanupCtx)
+
 		// Calculate number of files per extension.
 		perExtCnt := map[string]int{}
 		// Modes for root of odex files.
 		odexParentModes := map[string]os.FileMode{}
-		err := filepath.Walk(root, func(path string, info os.FileInfo, err error) error {
+		err = filepath.Walk(root, func(path string, info os.FileInfo, err error) error {
 			if err != nil {
 				return err
 			}
