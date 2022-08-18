@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "78868ae6_c16d891c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-08-18T20:42:45Z",
+      "side": 1,
+      "message": "+2 % nit",
+      "revId": "e7a8462a166d0ec377581c9e1f78f014ada7a183",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5b5d7fb_5388ec31",
+        "filename": "src/chromiumos/tast/local/audio/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-08-18T20:42:45Z",
+      "side": 1,
+      "message": "huge nit: remove",
+      "range": {
+        "startLine": 38,
+        "startChar": 23,
+        "endLine": 38,
+        "endChar": 27
+      },
+      "revId": "e7a8462a166d0ec377581c9e1f78f014ada7a183",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b3c949c_d305eb35",
+        "filename": "src/chromiumos/tast/local/audio/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-08-18T20:42:45Z",
+      "side": 1,
+      "message": "ideally this should not wait using an sleep... but wait for a condition or something that tells you that the audio device is ready.\n\nfor now, let\u0027s land it since this is not making the test more flaky.\nBut could you add a bug saying that. e.g:\n\n// TODO(b/xxx): Replace sleep with less flaky condition",
+      "range": {
+        "startLine": 40,
+        "startChar": 1,
+        "endLine": 40,
+        "endChar": 62
+      },
+      "revId": "e7a8462a166d0ec377581c9e1f78f014ada7a183",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
