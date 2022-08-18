@@ -16,6 +16,63 @@
       "message": "PTAL",
       "revId": "e039aed32c8842b9abafbdeba793adae6fd4d66c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4753c02f_3168f77f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/user_printers_allowed.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-08-18T14:30:58Z",
+      "side": 1,
+      "message": "nit: reflow to 80 characters.",
+      "revId": "e039aed32c8842b9abafbdeba793adae6fd4d66c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad6632e7_c566dac0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/user_printers_allowed.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-08-18T14:30:58Z",
+      "side": 1,
+      "message": "Can you add an explicit error to check against? Matching strings might break in the future.",
+      "revId": "e039aed32c8842b9abafbdeba793adae6fd4d66c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a82e310_32e8de33",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/user_printers_allowed.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-08-18T14:30:58Z",
+      "side": 1,
+      "message": "Errorf?",
+      "range": {
+        "startLine": 112,
+        "startChar": 6,
+        "endLine": 112,
+        "endChar": 12
+      },
+      "revId": "e039aed32c8842b9abafbdeba793adae6fd4d66c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
