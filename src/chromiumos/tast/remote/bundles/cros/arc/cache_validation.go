@@ -67,7 +67,7 @@ func init() {
 			},
 		}, {
 			Name:              "r",
-			ExtraSoftwareDeps: []string{"android_vm"},
+			ExtraSoftwareDeps: []string{"android_vm", "arc_android_data_cros_access"},
 			Val: testParamCacheValidation{
 				vmEnabled: true,
 			},

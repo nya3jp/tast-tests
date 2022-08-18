@@ -135,7 +135,7 @@ func init() {
 		}, {
 			Name:              "vm",
 			ExtraAttr:         []string{"group:arc-data-collector"},
-			ExtraSoftwareDeps: []string{"android_vm"},
+			ExtraSoftwareDeps: []string{"android_vm", "arc_android_data_cros_access"},
 			ExtraHardwareDeps: hwdep.D(
 				// Limit running in PFQ for VM devices to 8GB+ RAM spec only. For local
 				// test configs (upload=false) and non-VM, there are no restrictions.
@@ -159,7 +159,7 @@ func init() {
 			},
 		}, {
 			Name:              "vm_local",
-			ExtraSoftwareDeps: []string{"android_vm"},
+			ExtraSoftwareDeps: []string{"android_vm", "arc_android_data_cros_access"},
 			Val: testParam{
 				vmEnabled: true,
 				upload:    false,
