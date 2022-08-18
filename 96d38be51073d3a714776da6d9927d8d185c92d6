@@ -34,6 +34,24 @@
       "parentUuid": "77ad9fca_acb8992c",
       "revId": "96d38be51073d3a714776da6d9927d8d185c92d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2cd7d17_efee2876",
+        "filename": "src/chromiumos/tast/local/apps/apps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 526,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-08-18T09:30:42Z",
+      "side": 1,
+      "message": "how\u0027s adding another API to launch primary browser?",
+      "parentUuid": "72651579_e6296ecb",
+      "revId": "96d38be51073d3a714776da6d9927d8d185c92d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
