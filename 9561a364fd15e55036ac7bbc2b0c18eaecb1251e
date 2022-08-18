@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d26d76de_c5eb4673",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_provisioning.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-08-18T20:37:58Z",
+      "side": 1,
+      "message": "It may be helpful to rename this function to something else (like `retryForAll`) and name the new function `retry` to make it obvious regarding what is being changed in this CL - that is, all the changes will be made to the retry calls in lines 143 and 149 instead of the other retry calls\n\nAlternatively, allowing code duplication in the new function could also bring some clarity, i.e. keeping `retry` as is and adding a new function\n\n```\nretryForAll :\u003d func(desc string, err error) error {\n   if attempts \u003c maxAttempts {\n\tattempts++\n\terr \u003d errors.Wrap(err, \"failed to \"+desc)\n\ts.Logf(\"%s. Retrying\", err)\n\treturn err\n   }\n   return exit(desc, err)\n}\n```\nto be used in lines 143 and 149",
+      "revId": "9561a364fd15e55036ac7bbc2b0c18eaecb1251e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
