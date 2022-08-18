@@ -16,6 +16,29 @@
       "message": "PTAL, thanks!",
       "revId": "1eb9121ee12c4094a8e75f0b05d04c2d48a82b64",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "257c477f_c2149a8f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_intent.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-08-18T07:33:41Z",
+      "side": 1,
+      "message": "Use a cleanup context to make sure you have enough time to unmount here",
+      "range": {
+        "startLine": 159,
+        "startChar": 43,
+        "endLine": 159,
+        "endChar": 46
+      },
+      "revId": "1eb9121ee12c4094a8e75f0b05d04c2d48a82b64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
