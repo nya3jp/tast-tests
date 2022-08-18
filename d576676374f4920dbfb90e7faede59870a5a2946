@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b5a896a_24ae5fb5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ipv6_connectivity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1356183
+      },
+      "writtenOn": "2022-08-18T05:33:20Z",
+      "side": 1,
+      "message": "Rewrite the logic of this part.\n\nNow it only looks at `etho_routerb` interface (in ARC) and poll until there is a global address on it.",
+      "parentUuid": "96c5ab44_bd87b0cf",
+      "range": {
+        "startLine": 51,
+        "startChar": 1,
+        "endLine": 51,
+        "endChar": 118
+      },
+      "revId": "d576676374f4920dbfb90e7faede59870a5a2946",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "31ff287d_c98c02cf",
@@ -61,6 +85,30 @@
       "writtenOn": "2022-08-12T01:54:18Z",
       "side": 1,
       "message": "We have a ping helper for ARC in arcvpn.go [1]. Does it make sense to reuse that here?\n\n\n[1] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/network/arcvpn/arcvpn.go;drc\u003d2e1ffe871202b67b32603d24f0a9df03bf9ed067;l\u003d107",
+      "range": {
+        "startLine": 70,
+        "startChar": 1,
+        "endLine": 71,
+        "endChar": 23
+      },
+      "revId": "d576676374f4920dbfb90e7faede59870a5a2946",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "77340f4a_4995cd7a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ipv6_connectivity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1356183
+      },
+      "writtenOn": "2022-08-18T05:33:20Z",
+      "side": 1,
+      "message": "Done. Add a dependency patch that refactor this ping helper a bit for usage in this patch.",
+      "parentUuid": "31ff287d_c98c02cf",
       "range": {
         "startLine": 70,
         "startChar": 1,
