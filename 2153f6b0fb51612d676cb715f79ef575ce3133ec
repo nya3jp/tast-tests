@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d47eb038_e6447b59",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-08-18T23:39:33Z",
+      "side": 1,
+      "message": "nit: Driver sounds like a new term. Can you we use brConn or browserConn? I feel conn is more common to represent a chrome.Conn",
+      "range": {
+        "startLine": 269,
+        "startChar": 5,
+        "endLine": 269,
+        "endChar": 18
+      },
+      "revId": "2153f6b0fb51612d676cb715f79ef575ce3133ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0684e4b_07957719",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-08-18T23:39:33Z",
+      "side": 1,
+      "message": "if incognitoMode {\n    br, closeBrowser, err \u003d browserfixt.SetUpIncognito(ctx, cr, browserType)\n    if err !\u003d nil {\n\treturn nil, nil, errors.Wrap(err, \"failed to set up incognito browser\")\n    }\n    browserDriver, err \u003d br.NewConnForTarget(ctx, chrome.MatchTargetURL(\"chrome://newtab/\"))\n} else{\n    br, closeBrowser, err \u003d browserfixt.SetUpIncognito(ctx, cr, browserType)\n    if err !\u003d nil {\n\treturn nil, nil, errors.Wrap(err, \"failed to set up incognito browser\")\n    }\n    browserDriver, err \u003d br.NewConnForTarget(ctx, chrome.MatchTargetURL(\"chrome://newtab/\"))\n}\n\nreturn browserDriver, closeBrowser, err",
+      "range": {
+        "startLine": 271,
+        "startChar": 8,
+        "endLine": 271,
+        "endChar": 21
+      },
+      "revId": "2153f6b0fb51612d676cb715f79ef575ce3133ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "862ea5d5_a82ed078",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-08-18T23:39:33Z",
+      "side": 1,
+      "message": "nit: why do not use if else since it is a bool type.",
+      "range": {
+        "startLine": 271,
+        "startChar": 1,
+        "endLine": 271,
+        "endChar": 7
+      },
+      "revId": "2153f6b0fb51612d676cb715f79ef575ce3133ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
