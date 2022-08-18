@@ -34,7 +34,7 @@ const (
 	PowerStateInterval = 1 * time.Second
 
 	// reconnectTimeout is the timeout to wait to reconnect to the DUT after rebooting.
-	reconnectTimeout = 5 * time.Minute
+	reconnectTimeout = 6 * time.Minute
 
 	// usbVisibleTime is the time to wait after making the USB stick visible to DUT
 	usbVisibleTime = 5 * time.Second
