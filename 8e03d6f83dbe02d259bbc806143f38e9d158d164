@@ -34,6 +34,23 @@
       "parentUuid": "c535de1d_a0cc0a72",
       "revId": "8e03d6f83dbe02d259bbc806143f38e9d158d164",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f07798f0_3fee8162",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-08-18T00:38:12Z",
+      "side": 1,
+      "message": "I\u0027m okay with disabling the omaha subtests.\nI\u0027ve been looking into this issue for a while but things are still unclear to me at the moment. You might reference\nhttps://bugs.chromium.org/p/chromium/issues/detail?id\u003d1316191.",
+      "revId": "8e03d6f83dbe02d259bbc806143f38e9d158d164",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
