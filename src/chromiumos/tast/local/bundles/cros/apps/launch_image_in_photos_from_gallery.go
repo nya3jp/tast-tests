@@ -170,8 +170,8 @@ func LaunchImageInPhotosFromGallery(ctx context.Context, s *testing.State) {
 			// Long timeout is required here as the Photos first launch is very slow.
 			ud.WithTimeout(10*time.Second).WaitUntilExists(finder),
 			uiauto.Retry(3, uiauto.Combine("click button and waits its gone",
-				ud.WithTimeout(5*time.Second).LeftClick(finder),
-				ud.WithTimeout(5*time.Second).WaitUntilGone(finder),
+				ud.WithTimeout(10*time.Second).LeftClick(finder),
+				ud.WithTimeout(10*time.Second).WithScreenshotStrategy(uidetection.ImmediateScreenshot).WaitUntilGone(finder),
 			)),
 		)
 	}
