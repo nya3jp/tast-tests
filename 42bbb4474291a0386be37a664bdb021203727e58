@@ -39,6 +39,30 @@
       },
       "revId": "42bbb4474291a0386be37a664bdb021203727e58",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6af9ddb6_a60d4b92",
+        "filename": "src/chromiumos/tast/local/arc/networking.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1356183
+      },
+      "writtenOn": "2022-08-18T08:32:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9dc1b3f3_d1fca768",
+      "range": {
+        "startLine": 103,
+        "startChar": 2,
+        "endLine": 108,
+        "endChar": 4
+      },
+      "revId": "42bbb4474291a0386be37a664bdb021203727e58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
