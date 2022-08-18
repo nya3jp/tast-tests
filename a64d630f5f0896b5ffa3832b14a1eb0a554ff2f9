@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "853d64f6_45dec4fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/dynamic_color.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-08-18T20:25:03Z",
+      "side": 1,
+      "message": "nit: It\u0027s fairly uncommon to write this in \"Seconds\", can you convert this to Minutes?",
+      "range": {
+        "startLine": 27,
+        "startChar": 63,
+        "endLine": 27,
+        "endChar": 78
+      },
+      "revId": "a64d630f5f0896b5ffa3832b14a1eb0a554ff2f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c442e39_017fcfcc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/dynamic_color.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-08-18T20:25:03Z",
+      "side": 1,
+      "message": "s.Fatal(\"\u003cmsg\u003e: \", err)\n\ni.e. the message first, and no period. Also \"Failed to call sendArcOverlayColor: \" may be more descriptive?",
+      "revId": "a64d630f5f0896b5ffa3832b14a1eb0a554ff2f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2cb4098a_af42bece",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/dynamic_color.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-08-18T20:25:03Z",
+      "side": 1,
+      "message": "In this case, \"Failed to parse return value of sendArcOverlayColor\" may be more helpful? The standard is that `s.Fatal` starts a sentence.",
+      "revId": "a64d630f5f0896b5ffa3832b14a1eb0a554ff2f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d2bf9af_6b7b3765",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/dynamic_color.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-08-18T20:25:03Z",
+      "side": 1,
+      "message": "Here and below the pattern is \u003cdescription\u003e; got: %d, want: %d i.e.\n\ns.Errorf(\"Invalid system_palette; got: %d, want: %d\", palette, 50)",
+      "revId": "a64d630f5f0896b5ffa3832b14a1eb0a554ff2f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e34a26b_77a5093c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/standardizedtestutil/testutil.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-08-18T20:25:03Z",
+      "side": 1,
+      "message": "Is there a reason to define these here rather than in your test?",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 0
+      },
+      "revId": "a64d630f5f0896b5ffa3832b14a1eb0a554ff2f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
