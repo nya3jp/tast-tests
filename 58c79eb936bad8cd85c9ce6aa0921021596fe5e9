@@ -34,6 +34,24 @@
       "parentUuid": "bd4311b6_e72f2f8d",
       "revId": "58c79eb936bad8cd85c9ce6aa0921021596fe5e9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e52aacec_74b3cc47",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1512777
+      },
+      "writtenOn": "2022-08-18T23:19:26Z",
+      "side": 1,
+      "message": "\u003e Sorry, what does you comment mean? \nThere are a few failures in the CQ-dry run. This intention of this CL is to make the test a bit more strict, but we need to make this test more correct first. The comment (intended for htcheong) explains why the test was incorrect.\n\u003e Are you going to add additional software dependencies in this CL to address concern #2?\nI\u0027ll add two parent CLs to make the test more correct. Concern #2 is covered in CL:3840712. Still working on concern #1. If everything goes well this CL will be a rebase with no local diffs.",
+      "parentUuid": "73897090_8f324d63",
+      "revId": "58c79eb936bad8cd85c9ce6aa0921021596fe5e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
