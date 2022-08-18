@@ -16,6 +16,24 @@
       "message": "This cl is super large and most code are newly created. \nIf you are just moving location, can you please delete the old code in the same CL. Otherwise it is hard for me to focus on the changes.",
       "revId": "0470fcdf915de03d294b3fa1f5dc7ab664f098f2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b06faeb4_f954f11e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2022-08-18T05:53:52Z",
+      "side": 1,
+      "message": "Sorry for causing your inconvenience. Add the delete old code.",
+      "parentUuid": "a9cd3f4a_95766641",
+      "revId": "0470fcdf915de03d294b3fa1f5dc7ab664f098f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
