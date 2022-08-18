@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd4311b6_e72f2f8d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1512777
+      },
+      "writtenOn": "2022-08-18T14:19:27Z",
+      "side": 1,
+      "message": "There are two problems in the test that must be fixed:\n1. We should only be checking for internal cards [1]\n2. Some boards explicitly ignore the UCM suffix for some cards. We need to take that into account [1][2]\n\n[1] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/adhd/cras/src/server/cras_alsa_card.c;l\u003d493-494;drc\u003d8a1a130836ef4ca9ac3e54d81cfb64118aad34a1\n[2] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/overlays/overlay-zork/chromeos-base/chromeos-bsp-zork/files/ezkinil/audio/cras-config/board.ini;l\u003d4;drc\u003d4ef75fff407f5e26fbd340eaf1a681d1d801009c\n[3] ",
+      "revId": "58c79eb936bad8cd85c9ce6aa0921021596fe5e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
