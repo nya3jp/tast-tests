@@ -12,10 +12,12 @@ import (
 	"strings"
 	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/optin"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/testing"
 )
 
@@ -28,7 +30,8 @@ func init() {
 			"arc-core@google.com",
 			"khmel@chromium.org", // author.
 		},
-		Attr: []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline", "informational"},
+		SoftwareDeps: []string{"arc_android_data_cros_access"},
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p", "chrome"},
 		}, {
@@ -51,6 +54,10 @@ func PlayAutoInstall(ctx context.Context, s *testing.State) {
 		paiList = "/data/data/org.chromium.arc.gms/pailist.txt"
 	)
 
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 3*time.Second)
+	defer cancel()
+
 	// Setup Chrome.
 	cr, err := chrome.New(ctx,
 		chrome.GAIALogin(chrome.Creds{User: username, Pass: password}),
@@ -59,7 +66,7 @@ func PlayAutoInstall(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to start Chrome: ", err)
 	}
-	defer cr.Close(ctx)
+	defer cr.Close(cleanupCtx)
 
 	s.Log("Performing optin")
 	maxAttempts := 2
@@ -67,16 +74,38 @@ func PlayAutoInstall(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to optin: ", err)
 	}
 
-	// /data/data is not accessible from adb in RVC. Access this using chrome root.
-	androidDataDir, err := arc.AndroidDataDir(ctx, cr.NormalizedUser())
+	rootCryptDir, err := cryptohome.SystemPath(ctx, cr.NormalizedUser())
 	if err != nil {
-		s.Fatal("Failed to get android-data path: ", err)
+		s.Fatal("Failed to get cryptohome root dir: ", err)
 	}
 
-	paiListUnderHome := filepath.Join(androidDataDir, paiList)
+	// /data/data is not accessible from adb in RVC. Access this using chrome root.
+	paiListUnderHome := filepath.Join(rootCryptDir, "android-data", paiList)
+
+	a, err := arc.New(ctx, s.OutDir())
+	if err != nil {
+		s.Fatal("Failed to start ARC: ", err)
+	}
+	defer a.Close(cleanupCtx)
+
+	virtioBlkDataEnabled, err := a.IsVirtioBlkDataEnabled(ctx)
+	if err != nil {
+		s.Fatal("Failed to check if virtio-blk /data is enabled: ", err)
+	}
 
 	s.Log("Waiting PAI triggered")
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		if virtioBlkDataEnabled {
+			cleanupCtx := ctx
+			ctx, cancel := ctxutil.Shorten(ctx, 3*time.Second)
+			defer cancel()
+
+			if err := arc.MountVirtioBlkDataDiskImageReadOnly(ctx, a, rootCryptDir); err != nil {
+				return testing.PollBreak(errors.Wrap(err, "failed to mount Android's virtio-blk /data disk image on host"))
+			}
+			defer arc.UnmountVirtioBlkDataDiskImage(cleanupCtx, rootCryptDir)
+		}
+
 		if _, err := os.Stat(paiListUnderHome); err != nil {
 			if os.IsNotExist(err) {
 				return errors.Errorf("paiList %q is not created yet", paiListUnderHome)
@@ -88,6 +117,12 @@ func PlayAutoInstall(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to wait PAI triggered: ", err)
 	}
 
+	if virtioBlkDataEnabled {
+		if err := arc.MountVirtioBlkDataDiskImageReadOnly(ctx, a, rootCryptDir); err != nil {
+			s.Fatal("Failed to mount Android /data virtio-blk disk image on host: ", err)
+		}
+		defer arc.UnmountVirtioBlkDataDiskImage(cleanupCtx, rootCryptDir)
+	}
 	data, err := ioutil.ReadFile(paiListUnderHome)
 	if err != nil {
 		s.Fatal("Failed to read PAI list: ", err)
