@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "522e02d2_da214411",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-08-18T14:52:10Z",
+      "side": 1,
+      "message": "don\u0027t add reviewers directly. add tast-owners@ instead\nhttp://go/tast-reviews\n\nAlso, someone from your team should review it as well\n+2  but don\u0027t land it until someone from your team reviews it.\n",
+      "revId": "3dbbc1e4334d4395fb6a1cbcb517ee10c10e117d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
