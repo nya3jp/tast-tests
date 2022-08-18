@@ -11,8 +11,10 @@ import (
 	"strconv"
 	"strings"
 	"syscall"
+	"time"
 
 	"chromiumos/tast/common/testexec"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/testing"
@@ -25,7 +27,7 @@ func init() {
 		Desc:         "Verifies that Android's quota project ID setting logic works",
 		Contacts:     []string{"hashimoto@chromium.org", "arcvm-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"chrome", "android_vm"},
+		SoftwareDeps: []string{"chrome", "android_vm", "arc_android_data_cros_access"},
 		Fixture:      "arcBooted",
 	})
 }
@@ -41,7 +43,6 @@ func getQuotaProjectID(ctx context.Context, path string) (int64, error) {
 }
 
 func QuotaProjectID(ctx context.Context, s *testing.State) {
-	const androidUIDOffset = 655360
 	// This number comes from Android's android_filesystem_config.h.
 	const aidAppStart = 10000
 	// These numbers come from Android's android_projectid_config.h.
@@ -56,8 +57,26 @@ func QuotaProjectID(ctx context.Context, s *testing.State) {
 		activityName = "org.chromium.arc.testapp.quotaprojectid.MainActivity"
 	)
 
-	cr := s.FixtValue().(*arc.PreData).Chrome
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 3*time.Second)
+	defer cancel()
+
 	a := s.FixtValue().(*arc.PreData).ARC
+	virtioBlkDataEnabled, err := a.IsVirtioBlkDataEnabled(ctx)
+	if err != nil {
+		s.Fatal("Failed to check if virtio-blk /data is enabled: ", err)
+	}
+
+	var androidUIDOffset uint32
+	if virtioBlkDataEnabled {
+		// When virtio-blk /data is enabled, we directly mount the disk image of Android's /data on
+		// the host's /home/root/<hash>/android-data/data, so there is no UID offset.
+		androidUIDOffset = 0
+	} else {
+		androidUIDOffset = 655360
+	}
+
+	cr := s.FixtValue().(*arc.PreData).Chrome
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
@@ -78,6 +97,16 @@ func QuotaProjectID(ctx context.Context, s *testing.State) {
 	s.Log("Starting MainActivity")
 	if err := act.StartWithDefaultOptions(ctx, tconn); err != nil {
 		s.Fatal("Failed to start MainActivity: ", err)
+	}
+	if virtioBlkDataEnabled {
+		rootCryptDir, err := cryptohome.SystemPath(ctx, cr.NormalizedUser())
+		if err != nil {
+			s.Fatal("Failed to get cryptohome root dir: ", err)
+		}
+		if err := arc.MountVirtioBlkDataDiskImageReadOnly(ctx, a, rootCryptDir); err != nil {
+			s.Fatal("Failed to mount Android /data virtio-blk disk image on host: ", err)
+		}
+		defer arc.UnmountVirtioBlkDataDiskImage(cleanupCtx, rootCryptDir)
 	}
 
 	// Check the project ID of the package data directory.
