@@ -11,6 +11,7 @@ import (
 	"strings"
 	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/arc/arccrash"
@@ -25,7 +26,7 @@ func init() {
 		Desc:         "Test handling of a C++ binary crash",
 		Contacts:     []string{"kimiyuki@google.com", "arc-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"chrome"},
+		SoftwareDeps: []string{"arc_android_data_cros_access", "chrome"},
 		Fixture:      "arcBooted",
 		Params: []testing.Param{{
 			Name:              "real_consent",
@@ -52,6 +53,10 @@ func CxxCrash(ctx context.Context, s *testing.State) {
 		temporaryCrashDirInAndroid = "/data/vendor/arc_native_crash_reports"
 	)
 
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 3*time.Second)
+	defer cancel()
+
 	a := s.FixtValue().(*arc.PreData).ARC
 	cr := s.FixtValue().(*arc.PreData).Chrome
 
@@ -63,7 +68,7 @@ func CxxCrash(ctx context.Context, s *testing.State) {
 	if err := crash.SetUpCrashTest(ctx, opt); err != nil {
 		s.Fatal("Failed to set up crash test: ", err)
 	}
-	defer crash.TearDownCrashTest(ctx)
+	defer crash.TearDownCrashTest(cleanupCtx)
 
 	s.Log("Making crash")
 	cmd := a.Command(ctx, "/system/bin/sh", "-c", "kill -SEGV $$")
@@ -90,7 +95,7 @@ func CxxCrash(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to find files: ", err)
 	}
-	defer crash.RemoveAllFiles(ctx, files)
+	defer crash.RemoveAllFiles(cleanupCtx, files)
 
 	metaFiles := files[metaFileName]
 	if len(metaFiles) > 1 {
@@ -138,6 +143,15 @@ func CxxCrash(ctx context.Context, s *testing.State) {
 		// The time to wait for removal of temporary files. Typically they are removed in a few seconds.
 		const pollingTimeout = 10 * time.Second
 		err = testing.Poll(ctx, func(c context.Context) error {
+			// On ARCVM virtio-blk /data enabled devices, we mount and unmount the disk
+			// image on every iteration of testing.Poll to ensure that the Android-side
+			// changes are reflected on the host side.
+			cleanupFunc, err := arc.MountVirtioBlkDataDiskImageReadOnlyIfUsed(ctx, a, cr.NormalizedUser())
+			if err != nil {
+				return testing.PollBreak(errors.Wrap(err, "failed to mount Android /data virtio-blk disk image on host"))
+			}
+			defer cleanupFunc(cleanupCtx)
+
 			files, err := ioutil.ReadDir(temporaryCrashDir)
 			if err != nil {
 				return testing.PollBreak(err)

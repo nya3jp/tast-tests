@@ -165,3 +165,42 @@ func UnmountSDCardPartitionFromHost(ctx context.Context, user string) error {
 	cmd := testexec.CommandContext(ctx, "umount", filepath.Join(androidDataDir, "/data/media/0"))
 	return cmd.Run(testexec.DumpLogOnError)
 }
+
+// MountVirtioBlkDataDiskImageReadOnlyIfUsed first checks if ARCVM virtio-blk /data is used on the
+// device, and if that is the case, mounts the virtio-blk disk image on the host's
+// /home/root/<hash>/android-data/data as read-only.
+func MountVirtioBlkDataDiskImageReadOnlyIfUsed(ctx context.Context, a *ARC, user string) (func(context.Context), error) {
+	virtioBlkDataEnabled, err := a.IsVirtioBlkDataEnabled(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to check if virtio-blk /data is enabled")
+	}
+	if !virtioBlkDataEnabled {
+		// If ARCVM virtio-blk /data is not enabled, Android's /data directory is already
+		// available at the host's /home/root/<hash>/android-data/data.
+		return func(context.Context) {}, nil
+	}
+
+	// Before mounting the virtio-blk disk image, run sync on the Android side to ensure that
+	// the disk image up-to-date.
+	if err := a.Command(ctx, "sync").Run(testexec.DumpLogOnError); err != nil {
+		return nil, errors.Wrap(err, "failed to call sync on guest")
+	}
+
+	rootCryptDir, err := cryptohome.SystemPath(ctx, user)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get cryptohome root dir")
+	}
+
+	// Mount virtio-blk disk image.
+	diskImagePath := filepath.Join(rootCryptDir, "/crosvm/YXJjdm0=.img")
+	hostMountPath := filepath.Join(rootCryptDir, "/android-data/data")
+	mountCmd := testexec.CommandContext(ctx, "mount", "-o", "loop,ro,noload", diskImagePath, hostMountPath)
+	if err := mountCmd.Run(testexec.DumpLogOnError); err != nil {
+		return nil, errors.Wrap(err, "failed to mount virtio-blk Android /data disk image on host")
+	}
+	// Return a function to unmount the image.
+	cleanupFunc := func(ctx context.Context) {
+		testexec.CommandContext(ctx, "umount", hostMountPath).Run(testexec.DumpLogOnError)
+	}
+	return cleanupFunc, nil
+}
