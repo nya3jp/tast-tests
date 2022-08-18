@@ -22,6 +22,30 @@
       },
       "revId": "05107cfc86b0e4431b520ab04427878dce021eb3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "318028a8_5a697976",
+        "filename": "src/chromiumos/tast/local/mtbf/youtube/youtube_app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2022-08-18T06:02:41Z",
+      "side": 1,
+      "message": "Change back to the way it was. Thanks for the reviewing.",
+      "parentUuid": "18649311_471aec7c",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "05107cfc86b0e4431b520ab04427878dce021eb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
