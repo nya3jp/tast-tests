@@ -22,6 +22,30 @@
       },
       "revId": "c59f5990bf7a21bf0e1370dae6706f8e194eb22c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0950be79_796117e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/child_wallpaper_sync.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-08-18T16:32:00Z",
+      "side": 1,
+      "message": "1) Doesn\u0027t seem like a good option because we should recycle fixtures as much as possible instead of creating a new one just for this test, and the familyLinkUnicornLogin fixture is probably the most appropriate one for this test.\n2) Seems more reasonable. If the hiding the system UI is a synced setting, can we just manually log into the test account (credentials here [1]) and turn the setting off? This would be a no-code way to fix the tests.\n\n[1] https://source.corp.google.com/chromeos_internal/src/platform/tast-tests-private/vars/family.yaml;l\u003d23?q\u003df:tast%20family.unicornEmail%20f:.yaml",
+      "parentUuid": "92ccd1ca_f60cc238",
+      "range": {
+        "startLine": 63,
+        "startChar": 19,
+        "endLine": 63,
+        "endChar": 29
+      },
+      "revId": "c59f5990bf7a21bf0e1370dae6706f8e194eb22c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
