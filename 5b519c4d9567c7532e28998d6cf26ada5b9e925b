@@ -106,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2bcc92dc_c21e5402",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/quicksettings/network.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1394700
+      },
+      "writtenOn": "2022-08-18T22:34:30Z",
+      "side": 1,
+      "message": "Hmm okay ill just leave this as is because it is clearer to me what is going on here, and would be easier to debug if anything went wrong.",
+      "parentUuid": "bcb13a2e_e37e5f92",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 2
+      },
+      "revId": "5b519c4d9567c7532e28998d6cf26ada5b9e925b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "091186d4_8767955f",
