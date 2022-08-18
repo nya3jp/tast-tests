@@ -61,6 +61,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5aa6ba5b_c5fc9e18",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1551017
+      },
+      "writtenOn": "2022-08-18T23:21:51Z",
+      "side": 1,
+      "message": "Thanks Jao-ke for letting me know. I appended the codec-specific flags into the common function getVAAPIArggs.",
+      "parentUuid": "c6466475_02376e68",
+      "revId": "d4a3f68a00246dfba5c59103a41fea7d58f44a1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f4a2dbaf_3f0db18d",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
         "patchSetId": 8
