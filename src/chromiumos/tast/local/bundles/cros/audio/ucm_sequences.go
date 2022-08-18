@@ -139,6 +139,11 @@ func UCMSequences(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get sound cards: ", err)
 	}
 
+	boardConfig, err := audio.LoadBoardConfig(ctx)
+	if err != nil {
+		s.Fatal("Failed to load board config: ", err)
+	}
+
 	ucmSuffix, err := crosconfig.Get(ctx, "/audio/main", "ucm-suffix")
 	if err != nil && !crosconfig.IsNotFound(err) {
 		s.Fatal("Cannot get ucm suffix: ", err)
@@ -146,7 +151,7 @@ func UCMSequences(ctx context.Context, s *testing.State) {
 
 	for _, card := range cards {
 		ucmName := card.ShortName
-		if ucmSuffix != "" {
+		if ucmSuffix != "" && !boardConfig.ShouldIgnoreUCMSuffix(card.ShortName) {
 			ucmName += "." + ucmSuffix
 		}
 		ucmSequencesTestCard(ctx, s, param.alsaucmCommander, ucmName)
@@ -156,11 +161,11 @@ func UCMSequences(ctx context.Context, s *testing.State) {
 func ucmSequencesTestCard(ctx context.Context, s *testing.State, c alsaucmCommander, ucmName string) {
 	const ucmBasePath = "/usr/share/alsa/ucm"
 
-	s.Logf("Testing UCM: %s", ucmName)
+	hifiConf := filepath.Join(ucmBasePath, ucmName, "HiFi.conf")
+	s.Logf("Testing %s UCM: %s", ucmName, hifiConf)
 
 	// Check we have a complete HiFi.conf.
 	// If the file is absent or empty (placeholder during bringup), skip the test.
-	hifiConf := filepath.Join(ucmBasePath, ucmName, "HiFi.conf")
 	if stat, err := os.Stat(hifiConf); err != nil {
 		if os.IsNotExist(err) {
 			s.Log("Skipping due to missing HiFi.conf")
