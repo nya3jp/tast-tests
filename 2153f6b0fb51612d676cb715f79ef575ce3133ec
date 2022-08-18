@@ -68,6 +68,30 @@
       },
       "revId": "2153f6b0fb51612d676cb715f79ef575ce3133ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "277ec445_0cf97592",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-08-18T23:42:31Z",
+      "side": 1,
+      "message": "oops, in the second part, it should be \n\nbr, closeBrowser, err \u003d browserfixt.SetUp(ctx, cr, browserType)\n    if err !\u003d nil {\n\t\t\treturn nil, nil, errors.Wrap(err, \"failed to set up browser\")\n    }\n    browserDriver, err \u003d br.NewConn(ctx, \"chrome://newtab/\")",
+      "parentUuid": "e0684e4b_07957719",
+      "range": {
+        "startLine": 271,
+        "startChar": 8,
+        "endLine": 271,
+        "endChar": 21
+      },
+      "revId": "2153f6b0fb51612d676cb715f79ef575ce3133ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
