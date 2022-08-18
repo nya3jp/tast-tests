@@ -20,7 +20,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ChromevoxRichTextEditing,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded, // TODO(crbug.com/1159107): Test is disabled in continuous testing. Migrate when enabled.
 		Desc:         "A test that verifies the way ChromeVox can be used to edit text in a contenteditable",
 		Contacts: []string{
 			"katie@chromium.org",           // Test author

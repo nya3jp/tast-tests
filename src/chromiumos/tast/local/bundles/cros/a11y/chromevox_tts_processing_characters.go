@@ -20,7 +20,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ChromevoxTTSProcessingCharacters,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded, // TODO(crbug.com/1159107): Test is disabled in continuous testing. Migrate when enabled.
 		Desc:         "A test that verifies the way ChromeVox processes some characters for speech",
 		Contacts: []string{
 			"katie@chromium.org",           // Test author
