@@ -51,7 +51,7 @@ func init() {
 func DefaultSearchProviderSearchURL(ctx context.Context, s *testing.State) {
 	const (
 		fakeURL    = "fakeurl" // fakeURL is the fake search engine.
-		searchTerm = "abc"     // searchTerm is a value for test search.
+		searchTerm = "vy6ys"   // searchTerm is a value for test search.
 	)
 	addressBarNode := nodewith.Role(role.TextField).Name("Address and search bar")
 

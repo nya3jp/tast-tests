@@ -94,13 +94,13 @@ func DefaultSearchProviderSuggestURL(ctx context.Context, s *testing.State) {
 			name:          "set",
 			searchPolicy:  &policy.DefaultSearchProviderSearchURL{Val: fmt.Sprintf("%s/search?q={searchTerms}", srv.URL)},
 			suggestPolicy: &policy.DefaultSearchProviderSuggestURL{Val: fmt.Sprintf("%s/suggest?q={searchTerms}", srv.URL)},
-			wantCalls:     []string{"/suggest?q=", "/suggest?q=a", "/suggest?q=ab", "/suggest?q=abc", "/search?q=abc"},
+			wantCalls:     []string{"/suggest?q=", "/suggest?q=v", "/suggest?q=vy", "/suggest?q=vy6", "/suggest?q=vy6y", "/suggest?q=vy6ys", "/search?q=vy6ys"},
 		},
 		{
 			name:          "suggestUnset",
 			searchPolicy:  &policy.DefaultSearchProviderSearchURL{Val: fmt.Sprintf("%s/search?q={searchTerms}", srv.URL)},
 			suggestPolicy: &policy.DefaultSearchProviderSuggestURL{Stat: policy.StatusUnset},
-			wantCalls:     []string{"/search?q=abc"},
+			wantCalls:     []string{"/search?q=vy6ys"},
 		},
 		{
 			name:          "searchUnset",
@@ -169,7 +169,7 @@ func DefaultSearchProviderSuggestURL(ctx context.Context, s *testing.State) {
 			}
 
 			// Type something.
-			const searchTerm = "abc"
+			const searchTerm = "vy6ys"
 			for i, c := range searchTerm {
 				if err := kb.Type(ctx, string(c)); err != nil {
 					s.Fatalf("Failed to type %q: %v", c, err)
