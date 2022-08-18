@@ -17,8 +17,8 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/local/chrome/cuj"
-	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
@@ -31,7 +31,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         StadiaGameplayCUJ,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Measures the performance of critical user journey for game playing on Stadia",
 		Contacts:     []string{"yichenz@chromium.org"},
 		// TODO(http://crbug/1144356): Test is disabled until it can be fixed
@@ -68,30 +68,6 @@ func StadiaGameplayCUJ(ctx context.Context, s *testing.State) {
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to connect to the test API connection: ", err)
-	}
-
-	var cs ash.ConnSource
-	var bTconn *chrome.TestConn
-	bt := s.Param().(browser.Type)
-	if bt == browser.TypeLacros { // Lacros Chrome
-		// Launch lacros.
-		l, err := lacros.Launch(ctx, tconn)
-		if err != nil {
-			s.Fatal("Failed to launch lacros: ", err)
-		}
-		defer l.Close(ctx)
-		cs = l
-
-		if bTconn, err = l.TestAPIConn(ctx); err != nil {
-			s.Fatal("Failed to get lacros TestAPIConn: ", err)
-		}
-	} else { // Ash Chrome
-		cs = cr
-
-		var err error
-		if bTconn, err = cr.TestAPIConn(ctx); err != nil {
-			s.Fatal("Failed to get TestAPIConn: ", err)
-		}
 	}
 
 	tabChecker, err := cuj.NewTabCrashChecker(ctx, tconn)
@@ -139,6 +115,20 @@ func StadiaGameplayCUJ(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to add Ash recorded metrics: ", err)
 	}
 
+	// Set up the browser.
+	bt := s.Param().(browser.Type)
+	conn, br, closeBrowser, err := browserfixt.SetUpWithURL(ctx, cr, bt, stadiacuj.StadiaGameURL)
+	if err != nil {
+		s.Fatal("Failed to open the stadia staging instance: ", err)
+	}
+	defer closeBrowser(closeCtx)
+	defer conn.Close()
+
+	bTconn, err := br.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to get TestAPIConn: ", err)
+	}
+
 	// Browser metrics config, collected from ash-chrome or lacros-chrome
 	// depending on the browser being used.
 	browserConfigs := []cujrecorder.MetricConfig{
@@ -149,19 +139,13 @@ func StadiaGameplayCUJ(ctx context.Context, s *testing.State) {
 	if err := recorder.AddCollectedMetrics(bTconn, bt, browserConfigs...); err != nil {
 		s.Fatal("Failed to add Browser recorded metrics: ", err)
 	}
-
-	conn, err := cs.NewConn(ctx, stadiacuj.StadiaGameURL)
-	if err != nil {
-		s.Fatal("Failed to open the stadia staging instance: ", err)
-	}
-	defer conn.Close()
-	defer faillog.DumpUITreeOnError(closeCtx, s.OutDir(), s.HasError, tconn)
-
 	kb, err := input.Keyboard(ctx)
 	if err != nil {
 		s.Fatal("Failed to create a keyboard: ", err)
 	}
 	defer kb.Close()
+
+	defer faillog.DumpUITreeOnError(closeCtx, s.OutDir(), s.HasError, tconn)
 
 	ac := uiauto.New(tconn).WithTimeout(timeout)
 	webview := nodewith.ClassName("ContentsWebView").Role(role.WebView)
