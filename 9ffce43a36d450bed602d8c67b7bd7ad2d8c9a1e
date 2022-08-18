@@ -3,6 +3,75 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5f0145e6_4fb2a7ac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/user.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2022-08-18T21:00:54Z",
+      "side": 1,
+      "message": "As a new test, this needs to be informational at first.",
+      "range": {
+        "startLine": 157,
+        "startChar": 2,
+        "endLine": 162,
+        "endChar": 6
+      },
+      "revId": "9ffce43a36d450bed602d8c67b7bd7ad2d8c9a1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9139ca68_a8d9c384",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/user.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 625,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2022-08-18T21:00:54Z",
+      "side": 1,
+      "message": "Where does this value come from?",
+      "range": {
+        "startLine": 625,
+        "startChar": 29,
+        "endLine": 625,
+        "endChar": 49
+      },
+      "revId": "9ffce43a36d450bed602d8c67b7bd7ad2d8c9a1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c52b432_ff09b4cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/user.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 625,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2022-08-18T21:00:54Z",
+      "side": 1,
+      "message": "this is not a signature; please rename\n\nAlso, should start with a lowercase letter.",
+      "range": {
+        "startLine": 625,
+        "startChar": 7,
+        "endLine": 625,
+        "endChar": 25
+      },
+      "revId": "9ffce43a36d450bed602d8c67b7bd7ad2d8c9a1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7653575b_b974e283",
         "filename": "src/chromiumos/tast/local/bundles/cros/crash/user.go",
         "patchSetId": 2
@@ -32,6 +101,29 @@
       "side": 1,
       "message": "I figured out the problem - please hold on for a fix.",
       "parentUuid": "7653575b_b974e283",
+      "revId": "9ffce43a36d450bed602d8c67b7bd7ad2d8c9a1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8bc6ade_4fb18f27",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/user.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 644,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2022-08-18T21:00:54Z",
+      "side": 1,
+      "message": "Probably useful to save the crash meta file using crash.MoveFilesToOut (IIRC) for easier debugging if the meta file doesn\u0027t match.",
+      "range": {
+        "startLine": 644,
+        "startChar": 0,
+        "endLine": 644,
+        "endChar": 58
+      },
       "revId": "9ffce43a36d450bed602d8c67b7bd7ad2d8c9a1e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
