@@ -16,6 +16,23 @@
       "message": "I see, thank you for the explanation.",
       "revId": "288fd88e08030605d3060fbcf4d6d85cb16ed4bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7812bda5_0bc20d26",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541210
+      },
+      "writtenOn": "2022-08-18T03:04:10Z",
+      "side": 1,
+      "message": "Thank you!",
+      "revId": "288fd88e08030605d3060fbcf4d6d85cb16ed4bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
