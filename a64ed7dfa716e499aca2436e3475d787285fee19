@@ -54,6 +54,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1486e1a4_97f5dce9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/ucm_sequences.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1512777
+      },
+      "writtenOn": "2022-08-18T07:16:32Z",
+      "side": 1,
+      "message": "This `ucmSequencesTestCard` is an extension of the main test function (to avoid having a very large for loop body), instead of a support library function. So I don\u0027t think the points in the linked doc applies here.",
+      "parentUuid": "1e118fa1_9d071195",
+      "revId": "a64ed7dfa716e499aca2436e3475d787285fee19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ae76c4dc_5c7425dc",
         "filename": "src/chromiumos/tast/local/bundles/cros/audio/ucm_sequences.go",
         "patchSetId": 1
