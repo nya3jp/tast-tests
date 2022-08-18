@@ -15,42 +15,64 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/firmware"
 	"chromiumos/tast/remote/firmware/fixture"
+	"chromiumos/tast/ssh"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
 
+type lidSwitchTest int
+
+const (
+	checkKeyPresses lidSwitchTest = iota
+	bootWithLid
+	shutdownWithLid
+	unsuspendWithLid
+)
+
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     ECLidSwitch,
-		Desc:     "Test EC Lid Switch",
-		Contacts: []string{"tij@google.com", "cros-fw-engprod@google.com"},
-		Attr:     []string{"group:firmware", "firmware_unstable"},
-		Fixture:  fixture.NormalMode,
-		// Skip on form factors without a lid.
+		Func:         ECLidSwitch,
+		Desc:         "Test EC Lid Switch",
+		Contacts:     []string{"tij@google.com", "cros-fw-engprod@google.com"},
+		Attr:         []string{"group:firmware"},
+		Fixture:      fixture.NormalMode,
 		HardwareDeps: hwdep.D(hwdep.ChromeEC(), hwdep.Lid()),
 		ServiceDeps:  []string{"tast.cros.firmware.UtilsService"},
+		Timeout:      10 * time.Minute,
+		Params: []testing.Param{
+			{
+				Name:              "check_key_press",
+				Val:               checkKeyPresses,
+				ExtraHardwareDeps: hwdep.D(hwdep.Keyboard()),
+				ExtraAttr:         []string{"firmware_ec"},
+			},
+			{
+				Name: "open_lid_to_boot",
+				Val:  bootWithLid,
+				// Original test in suites: faft_ec, faft_ec_fw_qual, faft_ec_tot.
+				ExtraAttr: []string{"firmware_ec"},
+			},
+			{
+				Name:      "close_lid_to_shutdown",
+				Val:       shutdownWithLid,
+				ExtraAttr: []string{"firmware_ec"},
+			},
+			{
+				// powerd_dbus_suspend is not very stable so leaving this in unstable.
+				// This wasn't a test case in autotest so it's hard to determine the expected amount of stability.
+				Name:      "open_lid_to_unsuspend",
+				Val:       unsuspendWithLid,
+				ExtraAttr: []string{"firmware_unstable"},
+			},
+		},
 	})
 }
 
-// time constants
 const (
-	lidDelay       time.Duration = 2 * time.Second
-	wakeDelay      time.Duration = 10 * time.Second
-	noDelay        time.Duration = 0 * time.Second // minimal delay to make sure event is registered first
-	readKeyDelay   time.Duration = 2 * time.Second
-	readKeyTimeout time.Duration = 1 * time.Second
+	lidDelay  time.Duration = 1 * time.Second
+	wakeDelay time.Duration = 10 * time.Second
+	noDelay   time.Duration = lidDelay // Just wait for lid state to change, no additional delay.
 )
-
-// regular expressions
-var (
-	reKeyPress = regexp.MustCompile(`Event.*time.*code\s\d*\s\((KEY\S+)\)`)
-)
-
-type lidSwitchArgs struct {
-	ctx context.Context
-	h   *firmware.Helper
-	ms  *firmware.ModeSwitcher
-}
 
 func ECLidSwitch(ctx context.Context, s *testing.State) {
 	h := s.FixtValue().(*fixture.Value).Helper
@@ -60,221 +82,220 @@ func ECLidSwitch(ctx context.Context, s *testing.State) {
 	if err := h.RequireRPCUtils(ctx); err != nil {
 		s.Fatal("Requiring RPC utils: ", err)
 	}
-	ms, err := firmware.NewModeSwitcher(ctx, h)
-	if err != nil {
-		s.Fatal("Failed to create mode switcher: ", err)
-	}
 
-	args := &lidSwitchArgs{
-		ctx: ctx,
-		h:   h,
-		ms:  ms,
-	}
+	testMethod := s.Param().(lidSwitchTest)
+	switch testMethod {
+	case checkKeyPresses:
+		s.Log("Check for errant keypresses on lid open/close")
+		if err := checkKeyPressesWithLidClosed(ctx, h); err != nil {
+			s.Fatal("Error checking key presses: ", err)
+		}
+	case bootWithLid:
+		s.Log("Power off DUT and wake immediately")
+		if err := bootWithLidOpen(ctx, h, noDelay); err != nil {
+			s.Fatal("Failed to poweroff and wake immediately: ", err)
+		}
 
-	s.Log("Check for errant keypresses on lid open/close")
-	if err := checkKeyPress(args); err != nil {
-		s.Fatal("Error checking key presses: ", err)
-	}
+		s.Log("Power off DUT and wake after delay")
+		if err := bootWithLidOpen(ctx, h, wakeDelay); err != nil {
+			s.Fatal("Failed to poweroff and wake after delay: ", err)
+		}
+	case shutdownWithLid:
+		s.Log("Close DUT lid and wake immediately")
+		if err := shutdownWithLidClose(ctx, h, noDelay); err != nil {
+			s.Fatal("Failed to close lid and wake immediately: ", err)
+		}
 
-	s.Log("Power off DUT and wake immediately")
-	if err := powerOffAndWake(args, noDelay); err != nil {
-		s.Fatal("Failed to poweroff and wake after delay: ", err)
-	}
+		s.Log("Close DUT lid and wake immediately")
+		if err := shutdownWithLidClose(ctx, h, wakeDelay); err != nil {
+			s.Fatal("Failed to close lid and wake immediately: ", err)
+		}
+	case unsuspendWithLid:
+		s.Log("Suspend DUT and wake immediately")
+		if err := suspendAndWakeWithLid(ctx, h, noDelay); err != nil {
+			s.Fatal("Failed to suspend DUT and wake immediately: ", err)
+		}
 
-	s.Log("Power off DUT and wake after delay")
-	if err := powerOffAndWake(args, wakeDelay); err != nil {
-		s.Fatal("Failed to poweroff and wake after delay: ", err)
-	}
-
-	s.Log("Close DUT lid and wake immediately")
-	if err := closeLidAndWake(args); err != nil {
-		s.Fatal("Failed to close lid and wake immediately: ", err)
-	}
-
-	s.Log("Suspend DUT and wake immediately")
-	if err := suspendAndWake(args, noDelay); err != nil {
-		s.Fatal("Failed to suspend DUT and wake immediately: ", err)
-	}
-
-	s.Log("Suspend DUT and wake after delay")
-	if err := suspendAndWake(args, wakeDelay); err != nil {
-		s.Fatal("Failed to suspend DUT and wake after delay: ", err)
+		s.Log("Suspend DUT and wake after delay")
+		if err := suspendAndWakeWithLid(ctx, h, wakeDelay); err != nil {
+			s.Fatal("Failed to suspend DUT and wake after delay: ", err)
+		}
 	}
 }
 
-func suspendAndWake(args *lidSwitchArgs, delay time.Duration) error {
-	defer args.h.WaitConnect(args.ctx)
-	testing.ContextLog(args.ctx, "Suspending DUT")
-	cmd := args.h.DUT.Conn().CommandContext(args.ctx, "powerd_dbus_suspend")
+func suspendAndWakeWithLid(ctx context.Context, h *firmware.Helper, delay time.Duration) error {
+	testing.ContextLog(ctx, "Suspending DUT")
+	cmd := h.DUT.Conn().CommandContext(ctx, "powerd_dbus_suspend", "--delay=5")
 	if err := cmd.Start(); err != nil {
 		return errors.Wrap(err, "failed to suspend DUT")
 	}
-	testing.ContextLog(args.ctx, "Checking for S0ix or S3 powerstate")
-	if err := args.h.WaitForPowerStates(args.ctx, firmware.PowerStateInterval, firmware.PowerStateTimeout, "S0ix", "S3"); err != nil {
+
+	testing.ContextLog(ctx, "Checking for S0ix or S3 powerstate")
+	if err := h.WaitForPowerStates(ctx, firmware.PowerStateInterval, firmware.PowerStateTimeout, "S0ix", "S3"); err != nil {
 		return errors.Wrap(err, "failed to get S0ix or S3 powerstate")
 	}
 
+	if err := h.Servo.CloseLid(ctx); err != nil {
+		return err
+	}
+
 	// Used by main function to either immediately wake or wake after some delay.
-	if err := testing.Sleep(args.ctx, delay); err != nil {
+	if err := testing.Sleep(ctx, delay); err != nil {
 		return err
 	}
 
-	if err := args.h.Servo.CloseLid(args.ctx); err != nil {
+	if err := h.Servo.OpenLid(ctx); err != nil {
 		return err
 	}
-	// Delay by `lidDelay` to ensure lid is detected as closed.
-	if err := testing.Sleep(args.ctx, lidDelay); err != nil {
-		return err
-	}
-	if err := args.h.Servo.OpenLid(args.ctx); err != nil {
-		return err
-	}
-	testing.ContextLog(args.ctx, "Waiting for S0 powerstate")
-	err := args.h.WaitForPowerStates(args.ctx, firmware.PowerStateInterval, firmware.PowerStateTimeout, "S0")
+	testing.ContextLog(ctx, "Waiting for S0 powerstate")
+	err := h.WaitForPowerStates(ctx, firmware.PowerStateInterval, firmware.PowerStateTimeout, "S0")
 	if err != nil {
 		return errors.Wrap(err, "failed to get S0 powerstate")
 	}
 	return nil
 }
 
-func closeLidAndWake(args *lidSwitchArgs) error {
-	defer args.h.WaitConnect(args.ctx)
-	if err := args.h.Servo.CloseLid(args.ctx); err != nil {
+func shutdownWithLidClose(ctx context.Context, h *firmware.Helper, delay time.Duration) error {
+	if err := h.Servo.CloseLid(ctx); err != nil {
 		return err
 	}
-	testing.ContextLog(args.ctx, "Check for G3 or S5 powerstate")
-	err := args.h.WaitForPowerStates(args.ctx, firmware.PowerStateInterval, firmware.PowerStateTimeout, "G3", "S5")
-	if err != nil {
-		return errors.Wrap(err, "failed to get G3 or S5 powerstate")
-	}
-	// Delay by `lidDelay` to ensure lid is detected as closed.
-	if err := testing.Sleep(args.ctx, lidDelay); err != nil {
-		return err
-	}
-	if err := args.h.Servo.OpenLid(args.ctx); err != nil {
-		return err
-	}
-	testing.ContextLog(args.ctx, "Waiting for S0 powerstate")
-	err = args.h.WaitForPowerStates(args.ctx, firmware.PowerStateInterval, firmware.PowerStateTimeout, "S0")
-	if err != nil {
-		return errors.Wrap(err, "failed to get S0 powerstate")
-	}
-	return nil
-}
 
-func powerOffAndWake(args *lidSwitchArgs, delay time.Duration) error {
-	defer args.h.WaitConnect(args.ctx)
-	if err := args.ms.PowerOff(args.ctx); err != nil {
-		return err
-	}
-	// The ms.PowerOff method checks for G3 or S5 but might just wait for DUT to be unreachable.
-	// So it checks powerstate to make sure it reaches one of those two desired states.
-	testing.ContextLog(args.ctx, "Check for G3 or S5 powerstate")
-	err := args.h.WaitForPowerStates(args.ctx, firmware.PowerStateInterval, firmware.PowerStateTimeout, "G3", "S5")
+	// This usually takes longer than usual to reach G3/S5, so increase timeout.
+	testing.ContextLog(ctx, "Check for G3 or S5 powerstate")
+	err := h.WaitForPowerStates(ctx, firmware.PowerStateInterval, 2*time.Minute, "G3", "S5")
 	if err != nil {
 		return errors.Wrap(err, "failed to get G3 or S5 powerstate")
 	}
 
-	// Used by main function to either immediately wake or wake after some delay.
-	if err := testing.Sleep(args.ctx, delay); err != nil {
+	// Delay by `lidDelay` to ensure lid is detected as closed.
+	if err := testing.Sleep(ctx, delay); err != nil {
 		return err
 	}
 
-	if err := args.h.Servo.CloseLid(args.ctx); err != nil {
+	if err := h.Servo.OpenLid(ctx); err != nil {
 		return err
 	}
-	// Delay by `lidDelay` to ensure lid is detected as closed.
-	if err := testing.Sleep(args.ctx, lidDelay); err != nil {
-		return err
-	}
-	if err := args.h.Servo.OpenLid(args.ctx); err != nil {
-		return err
-	}
-	testing.ContextLog(args.ctx, "Waiting for S0 powerstate")
-	err = args.h.WaitForPowerStates(args.ctx, firmware.PowerStateInterval, firmware.PowerStateTimeout, "S0")
+	testing.ContextLog(ctx, "Waiting for S0 powerstate")
+	err = h.WaitForPowerStates(ctx, firmware.PowerStateInterval, firmware.PowerStateTimeout, "S0")
 	if err != nil {
 		return errors.Wrap(err, "failed to get S0 powerstate")
 	}
 	return nil
 }
 
-func readKeyPresses(ctx context.Context, scanner *bufio.Scanner) error {
-	text := make(chan string)
-	go func() {
-		for scanner.Scan() {
-			text <- scanner.Text()
-		}
-		close(text)
-	}()
-	for {
-		select {
-		case <-time.After(readKeyTimeout):
-			return nil
-		case out := <-text:
-			if match := reKeyPress.FindStringSubmatch(out); match != nil {
-				return errors.Errorf("unexpected key pressed detected: %v", match)
-			}
-		}
+func bootWithLidOpen(ctx context.Context, h *firmware.Helper, delay time.Duration) error {
+	testing.ContextLog(ctx, "Shutdown dut")
+	if err := h.DUT.Conn().CommandContext(ctx, "sh", "-c", "(sleep 2; /sbin/shutdown -P now) &").Start(); err != nil {
+		return errors.Wrap(err, "failed to run `/sbin/shutdown -P now` cmd")
 	}
+
+	testing.ContextLog(ctx, "Check for G3 or S5 powerstate")
+	if err := h.WaitForPowerStates(ctx, firmware.PowerStateInterval, firmware.PowerStateTimeout, "G3", "S5"); err != nil {
+		return errors.Wrap(err, "failed to get G3 or S5 powerstate")
+	}
+
+	if err := h.Servo.CloseLid(ctx); err != nil {
+		return err
+	}
+
+	// Used by main function to either immediately wake or wake after some delay.
+	testing.ContextLogf(ctx, "Delay opening lid by %s", delay)
+	if err := testing.Sleep(ctx, delay); err != nil {
+		return err
+	}
+
+	if err := h.Servo.OpenLid(ctx); err != nil {
+		return err
+	}
+
+	testing.ContextLog(ctx, "Waiting for S0 powerstate")
+	if err := h.WaitForPowerStates(ctx, firmware.PowerStateInterval, firmware.PowerStateTimeout, "S0"); err != nil {
+		return errors.Wrap(err, "failed to get S0 powerstate")
+	}
+
+	if err := h.WaitConnect(ctx); err != nil {
+		return errors.Wrap(err, "failed to reconnect to dut")
+	}
+	return nil
 }
 
-func checkKeyPress(args *lidSwitchArgs) error {
-	// Skip keypress test if no keyboard is available on DUT.
-	res, err := args.h.RPCUtils.FindPhysicalKeyboard(args.ctx, &empty.Empty{})
+func checkKeyPressesWithLidClosed(ctx context.Context, h *firmware.Helper) (reterr error) {
+	res, err := h.RPCUtils.FindPhysicalKeyboard(ctx, &empty.Empty{})
 	if err != nil {
-		testing.ContextLog(args.ctx, "No keyboard found, skipping keyboard tests: ", err)
-		return nil
+		return errors.Wrap(err, "failed to find keyboard")
 	}
 	device := res.Path
-	testing.ContextLogf(args.ctx, "Keyboard found at %v, checking for unexpected keypresses", device)
+	testing.ContextLogf(ctx, "Keyboard found at %v, checking for unexpected keypresses", device)
 
-	if err := stopPowerd(args); err != nil {
+	testing.ContextLog(ctx, "Stopping powerd")
+	if err := h.DUT.Conn().CommandContext(ctx, "stop", "powerd").Run(ssh.DumpLogOnError); err != nil {
 		return errors.Wrap(err, "failed to stop powerd")
 	}
-	defer startPowerd(args)
+	defer func() {
+		testing.ContextLog(ctx, "Restarting powerd")
+		if err := h.DUT.Conn().CommandContext(ctx, "start", "powerd").Run(ssh.DumpLogOnError); err != nil {
+			// Named return handles this error.
+			reterr = errors.Wrap(err, "failed to restart powerd")
+		}
+	}()
 
-	cmd := args.h.DUT.Conn().CommandContext(args.ctx, "evtest", device)
+	cmd := h.DUT.Conn().CommandContext(ctx, "evtest", device)
 	stdout, err := cmd.StdoutPipe()
 	if err != nil {
 		return errors.Wrap(err, "failed to pipe stdout from 'evtest' cmd")
 	}
 	scanner := bufio.NewScanner(stdout)
 	cmd.Start()
-	testing.ContextLog(args.ctx, "Started piping output from 'evtest'")
+	testing.ContextLog(ctx, "Started piping output from 'evtest'")
 	defer cmd.Abort()
 
-	if err := args.h.Servo.OpenLid(args.ctx); err != nil {
-		return errors.Wrap(err, "error in checkKeyPress")
+	readKeyPress := func() error {
+		text := make(chan string)
+		go func() {
+			defer close(text)
+			for scanner.Scan() {
+				text <- scanner.Text()
+			}
+		}()
+		for {
+			select {
+			case <-time.After(5 * time.Second):
+				return nil
+			case out := <-text:
+				if match := regexp.MustCompile(`Event.*time.*code\s(\d*)\s\(\S+\)`).FindStringSubmatch(out); match != nil {
+					return errors.Errorf("unexpected key pressed detected: %s", match[0])
+				}
+			}
+		}
 	}
-	// Delay by `lidDelay` to ensure lid is detected as closed.
-	if err := testing.Sleep(args.ctx, lidDelay); err != nil {
-		return err
+
+	// Make sure lid is open in case DUT is in closed lid state at test start.
+	if err := h.Servo.OpenLid(ctx); err != nil {
+		return errors.Wrap(err, "error opening lid")
 	}
-	if err := args.h.Servo.CloseLid(args.ctx); err != nil {
-		return errors.Wrap(err, "error in checkKeyPress")
+
+	// Delay by `lidDelay` to ensure lid is detected as open before re-closing.
+	if err := testing.Sleep(ctx, lidDelay); err != nil {
+		return errors.Wrap(err, "failed to sleep")
 	}
-	// Delay reading by `readKeyDelay` to ensure any keypresses get logged to stdout.
-	if err := testing.Sleep(args.ctx, readKeyDelay); err != nil {
-		return err
+
+	if err := h.Servo.CloseLid(ctx); err != nil {
+		return errors.Wrap(err, "error closing lid")
 	}
-	if err := readKeyPresses(args.ctx, scanner); err != nil {
-		return errors.Wrap(err, "error in checkKeyPress")
+
+	testing.ContextLog(ctx, "Checking for unexpected keypresses on lid close")
+	if err := readKeyPress(); err != nil {
+		return errors.Wrap(err, "expected no keypresses with lid closed")
 	}
-	if err := args.h.Servo.OpenLid(args.ctx); err != nil {
-		return errors.Wrap(err, "error in checkKeyPress")
+
+	if err := h.Servo.OpenLid(ctx); err != nil {
+		return errors.Wrap(err, "error opening lid")
+	}
+
+	testing.ContextLog(ctx, "Checking for unexpected keypresses on lid open")
+	if err := readKeyPress(); err != nil {
+		return errors.Wrap(err, "expected no keypresses with lid closed")
 	}
 
 	return nil
-}
-
-func startPowerd(args *lidSwitchArgs) error {
-	testing.ContextLog(args.ctx, "Starting powerd")
-	startPowerd := args.h.DUT.Conn().CommandContext(args.ctx, "start", "powerd")
-	return startPowerd.Run()
-}
-
-func stopPowerd(args *lidSwitchArgs) error {
-	testing.ContextLog(args.ctx, "Stopping powerd")
-	stopPowerd := args.h.DUT.Conn().CommandContext(args.ctx, "stop", "powerd")
-	return stopPowerd.Run()
 }
