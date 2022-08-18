@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8152752_67879e95",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-08-18T09:27:14Z",
+      "side": 1,
+      "message": "nit: start the message with a capital letter.",
+      "range": {
+        "startLine": 7,
+        "startChar": 8,
+        "endLine": 7,
+        "endChar": 9
+      },
+      "revId": "189f4c6bd6683cd408121b23f20f1cfce7679f17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "4f63a040_4ff66a54",
@@ -14,6 +37,23 @@
       "writtenOn": "2022-08-16T14:44:18Z",
       "side": 1,
       "message": "ok, now we have policy owner for these tests",
+      "revId": "189f4c6bd6683cd408121b23f20f1cfce7679f17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f22aebe_ac35cc46",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-08-18T09:27:14Z",
+      "side": 1,
+      "message": "LGTM % nit.",
       "revId": "189f4c6bd6683cd408121b23f20f1cfce7679f17",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
