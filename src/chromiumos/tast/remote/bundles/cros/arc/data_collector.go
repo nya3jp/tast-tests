@@ -115,7 +115,7 @@ func init() {
 			"alanding@chromium.org",
 			"arc-performance@google.com",
 		},
-		SoftwareDeps: []string{"chrome", "chrome_internal"},
+		SoftwareDeps: []string{"arc_android_data_cros_access", "chrome", "chrome_internal"},
 		ServiceDeps: []string{"tast.cros.arc.UreadaheadPackService",
 			"tast.cros.arc.GmsCoreCacheService", "tast.cros.arc.TTSCacheService"},
 		Timeout: 40 * time.Minute,

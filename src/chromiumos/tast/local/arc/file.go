@@ -165,3 +165,22 @@ func UnmountSDCardPartitionFromHost(ctx context.Context, user string) error {
 	cmd := testexec.CommandContext(ctx, "umount", filepath.Join(androidDataDir, "/data/media/0"))
 	return cmd.Run(testexec.DumpLogOnError)
 }
+
+// MountVirtioBlkDataDiskImageReadOnly mounts Android's virtio-blk /data disk image in
+// /home/root/<hash>/crosvm/YXJjdm0=.img to the host's /home/root/<hash>/android-data/data.
+func MountVirtioBlkDataDiskImageReadOnly(ctx context.Context, rootCryptDir string) error {
+	// Run sync on the Android side to ensure that the disk image up-to-date.
+	if err := testexec.CommandContext(ctx, "android-sh", "-c", "sync").Run(testexec.DumpLogOnError); err != nil {
+		return errors.Wrap(err, "failed to call sync on guest")
+	}
+	diskImagePath := rootCryptDir + "/crosvm/YXJjdm0=.img"
+	hostMountPath := rootCryptDir + "/android-data/data"
+	cmd := testexec.CommandContext(ctx, "mount", "-o", "loop,ro,noload", diskImagePath, hostMountPath)
+	return cmd.Run(testexec.DumpLogOnError)
+}
+
+// UnmountVirtioBlkDataDiskImage unmounts Android's virtio-blk /data disk image from the host.
+func UnmountVirtioBlkDataDiskImage(ctx context.Context, rootCryptDir string) error {
+	hostMountPath := rootCryptDir + "/android-data/data"
+	return testexec.CommandContext(ctx, "umount", hostMountPath).Run(testexec.DumpLogOnError)
+}

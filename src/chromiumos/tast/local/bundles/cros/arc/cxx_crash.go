@@ -11,10 +11,12 @@ import (
 	"strings"
 	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/arc/arccrash"
 	"chromiumos/tast/local/crash"
+	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/testing"
 )
 
@@ -25,7 +27,7 @@ func init() {
 		Desc:         "Test handling of a C++ binary crash",
 		Contacts:     []string{"kimiyuki@google.com", "arc-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"chrome"},
+		SoftwareDeps: []string{"arc_android_data_cros_access", "chrome"},
 		Fixture:      "arcBooted",
 		Params: []testing.Param{{
 			Name:              "real_consent",
@@ -127,17 +129,32 @@ func CxxCrash(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to check whether ARCVM is enabled: ", err)
 	}
 	if vmEnabled {
-		s.Log("Getting the dir path for temporary dump files")
-		androidDataDir, err := arc.AndroidDataDir(ctx, cr.NormalizedUser())
+		virtioBlkDataEnabled, err := a.IsVirtioBlkDataEnabled(ctx)
 		if err != nil {
-			s.Fatal("Failed to get android-data dir: ", err)
+			s.Fatal("Failed to check whether ARCVM virtio-blk /data is enabled: ", err)
 		}
-		temporaryCrashDir := filepath.Join(androidDataDir, temporaryCrashDirInAndroid)
+
+		s.Log("Getting the dir path for temporary dump files")
+		rootCryptDir, err := cryptohome.SystemPath(ctx, cr.NormalizedUser())
+		if err != nil {
+			s.Fatal("Failed to get cryptohome root dir: ", err)
+		}
+		temporaryCrashDir := filepath.Join(rootCryptDir, "android-data", temporaryCrashDirInAndroid)
 
 		s.Log("Checking that temporary dump files are deleted")
 		// The time to wait for removal of temporary files. Typically they are removed in a few seconds.
 		const pollingTimeout = 10 * time.Second
 		err = testing.Poll(ctx, func(c context.Context) error {
+			if virtioBlkDataEnabled {
+				cleanupCtx := ctx
+				ctx, cancel := ctxutil.Shorten(ctx, 3*time.Second)
+				defer cancel()
+
+				if err := arc.MountVirtioBlkDataDiskImageReadOnly(ctx, rootCryptDir); err != nil {
+					return testing.PollBreak(errors.Wrap(err, "failed to mount Android /data virtio-blk disk image on host"))
+				}
+				defer arc.UnmountVirtioBlkDataDiskImage(cleanupCtx, rootCryptDir)
+			}
 			files, err := ioutil.ReadDir(temporaryCrashDir)
 			if err != nil {
 				return testing.PollBreak(err)
