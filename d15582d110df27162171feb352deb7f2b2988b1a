@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e44fcb5c_562e5471",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_drag_window_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-08-18T16:58:03Z",
+      "side": 1,
+      "message": "Thanks for the catch! should be `lacros`.",
+      "parentUuid": "1f333ac3_40c5e471",
+      "range": {
+        "startLine": 86,
+        "startChar": 32,
+        "endLine": 86,
+        "endChar": 38
+      },
+      "revId": "d15582d110df27162171feb352deb7f2b2988b1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "552b7235_e5025d26",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "35e4a0ee_6a622a53",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_drag_window_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-08-18T16:58:03Z",
+      "side": 1,
+      "message": "My bad copy-paste. Thanks!",
+      "parentUuid": "552b7235_e5025d26",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 90,
+        "endChar": 19
+      },
+      "revId": "d15582d110df27162171feb352deb7f2b2988b1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "120b999a_fdb53ba2",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-08-18T16:42:01Z",
       "side": 1,
       "message": "nit: Think the current style is to use backtick ` around variable names.",
+      "range": {
+        "startLine": 368,
+        "startChar": 19,
+        "endLine": 368,
+        "endChar": 23
+      },
+      "revId": "d15582d110df27162171feb352deb7f2b2988b1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5bafe1a_2223c262",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_drag_window_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-08-18T16:58:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "120b999a_fdb53ba2",
       "range": {
         "startLine": 368,
         "startChar": 19,
