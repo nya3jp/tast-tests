@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1247c1e7_45d54b9e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/user_printers_allowed.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-08-18T17:02:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4753c02f_3168f77f",
+      "revId": "e039aed32c8842b9abafbdeba793adae6fd4d66c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ad6632e7_c566dac0",
@@ -52,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "adf124a7_4cb14bb3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/user_printers_allowed.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-08-18T17:02:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ad6632e7_c566dac0",
+      "revId": "e039aed32c8842b9abafbdeba793adae6fd4d66c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6a82e310_32e8de33",
@@ -65,6 +101,30 @@
       "writtenOn": "2022-08-18T14:30:58Z",
       "side": 1,
       "message": "Errorf?",
+      "range": {
+        "startLine": 112,
+        "startChar": 6,
+        "endLine": 112,
+        "endChar": 12
+      },
+      "revId": "e039aed32c8842b9abafbdeba793adae6fd4d66c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "acbafad5_57d8405e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/user_printers_allowed.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-08-18T17:02:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6a82e310_32e8de33",
       "range": {
         "startLine": 112,
         "startChar": 6,
