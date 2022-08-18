@@ -36,7 +36,7 @@ func init() {
 		Timeout:      2 * time.Minute,
 		SoftwareDeps: []string{"cros_internal", "cups", "virtual_usb_printer"},
 		Data:         []string{"to_print.pdf"},
-		Fixture:      "virtualUsbPrinterModulesLoaded",
+		Fixture:      "virtualUsbPrinterModulesLoadedWithChromeLoggedIn",
 	})
 }
 
