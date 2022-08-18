@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "21d580a4_1c77b5b9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-08-18T16:03:13Z",
+      "side": 1,
+      "message": "Test as required by Test Design doc: go/cros-tethering-test\nPlease review",
+      "revId": "d35634ce9ae71a3b247dc71d1ac6d21d136ad9b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
