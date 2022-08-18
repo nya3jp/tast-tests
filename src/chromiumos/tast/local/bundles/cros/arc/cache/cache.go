@@ -16,10 +16,12 @@ import (
 	"time"
 
 	"chromiumos/tast/common/testexec"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/fsutil"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/testing"
 )
 
@@ -135,9 +137,14 @@ func CopyGmsCoreCaches(ctx context.Context, a *arc.ARC, outputDir string) error 
 	)
 
 	// OpenSession signs in as chrome.DefaultUser.
-	androidDataDir, err := arc.AndroidDataDir(ctx, chrome.DefaultUser)
+	rootCryptDir, err := cryptohome.SystemPath(ctx, chrome.DefaultUser)
 	if err != nil {
-		return errors.Wrap(err, "failed to get android-data path")
+		return errors.Wrap(err, "failed to get cryptohome root dir")
+	}
+	androidDataDir := filepath.Join(rootCryptDir, "android-data")
+	virtioBlkDataEnabled, err := a.IsVirtioBlkDataEnabled(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to check if virtio-blk /data is enabled")
 	}
 
 	gmsRootUnderHome := filepath.Join(androidDataDir, gmsRoot)
@@ -153,7 +160,7 @@ func CopyGmsCoreCaches(ctx context.Context, a *arc.ARC, outputDir string) error 
 		{"current_modules_init.pb", pathMustNotExist},
 		{"pending_modules_init.pb", pathMustNotExist},
 	} {
-		if err := waitForPath(ctx, filepath.Join(chimeraPath, e.filename), e.cond); err != nil {
+		if err := waitForPath(ctx, filepath.Join(chimeraPath, e.filename), e.cond, rootCryptDir, virtioBlkDataEnabled); err != nil {
 			return err
 		}
 	}
@@ -163,13 +170,23 @@ func CopyGmsCoreCaches(ctx context.Context, a *arc.ARC, outputDir string) error 
 		return errors.Wrap(err, "failed to get SDK version")
 	}
 
-	if err := waitForApksOptimized(ctx, chimeraPath, version); err != nil {
+	if err := waitForApksOptimized(ctx, chimeraPath, version, rootCryptDir, virtioBlkDataEnabled); err != nil {
 		return err
 	}
 
 	targetTar := filepath.Join(outputDir, GMSCoreCacheArchive)
 
 	testing.ContextLogf(ctx, "Compressing GMS Core caches to %q", targetTar)
+	if virtioBlkDataEnabled {
+		cleanupCtx := ctx
+		ctx, cancel := ctxutil.Shorten(ctx, 3*time.Second)
+		defer cancel()
+
+		if err := arc.MountVirtioBlkDataDiskImageReadOnly(ctx, rootCryptDir); err != nil {
+			return errors.Wrap(err, "failed to mount Android's virtio-blk /data disk image on host")
+		}
+		defer arc.UnmountVirtioBlkDataDiskImage(cleanupCtx, rootCryptDir)
+	}
 	if err := testexec.CommandContext(ctx, "tar", "-cvpf", targetTar, "-C", gmsRootUnderHome, appChimera).Run(testexec.DumpLogOnError); err != nil {
 		return errors.Wrap(err, "failed to compress GMS Core caches")
 	}
@@ -292,16 +309,30 @@ func CopyTTSCache(ctx context.Context, a *arc.ARC, outputDir string) error {
 	)
 
 	// OpenSession signs in as chrome.DefaultUser.
-	androidDataDir, err := arc.AndroidDataDir(ctx, chrome.DefaultUser)
+	rootCryptDir, err := cryptohome.SystemPath(ctx, chrome.DefaultUser)
 	if err != nil {
-		return errors.Wrap(err, "failed to get android-data path")
+		return errors.Wrap(err, "failed to get cryptohome root dir")
+	}
+	virtioBlkDataEnabled, err := a.IsVirtioBlkDataEnabled(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to check if virtio-blk /data is enabled")
 	}
 
-	ttsCachePath := filepath.Join(androidDataDir, ttsCacheAndroidPath)
-	if err := waitForPath(ctx, ttsCachePath, pathMustExist); err != nil {
+	ttsCachePath := filepath.Join(rootCryptDir, "android-data", ttsCacheAndroidPath)
+	if err := waitForPath(ctx, ttsCachePath, pathMustExist, rootCryptDir, virtioBlkDataEnabled); err != nil {
 		return err
 	}
 
+	if virtioBlkDataEnabled {
+		cleanupCtx := ctx
+		ctx, cancel := ctxutil.Shorten(ctx, 3*time.Second)
+		defer cancel()
+
+		if err := arc.MountVirtioBlkDataDiskImageReadOnly(ctx, rootCryptDir); err != nil {
+			return errors.Wrap(err, "failed to mount Android's virtio-blk /data disk image on host")
+		}
+		defer arc.UnmountVirtioBlkDataDiskImage(cleanupCtx, rootCryptDir)
+	}
 	dst := filepath.Join(outputDir, TTSStateCache)
 	if err := fsutil.CopyFile(ttsCachePath, dst); err != nil {
 		return err
@@ -312,9 +343,19 @@ func CopyTTSCache(ctx context.Context, a *arc.ARC, outputDir string) error {
 
 // waitForPath waits up to 1 minute or ctx deadline for the specified path to exist or not
 // exist depending on pathCondition c.
-func waitForPath(ctx context.Context, path string, c pathCondition) error {
+func waitForPath(ctx context.Context, path string, c pathCondition, rootCryptDir string, virtioBlkDataEnabled bool) error {
 	testing.ContextLogf(ctx, "Waiting for path %q", path)
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		if virtioBlkDataEnabled {
+			cleanupCtx := ctx
+			ctx, cancel := ctxutil.Shorten(ctx, 3*time.Second)
+			defer cancel()
+
+			if err := arc.MountVirtioBlkDataDiskImageReadOnly(ctx, rootCryptDir); err != nil {
+				return testing.PollBreak(errors.Wrap(err, "failed to mount Android's virtio-blk /data disk image on host"))
+			}
+			defer arc.UnmountVirtioBlkDataDiskImage(cleanupCtx, rootCryptDir)
+		}
 		_, err := os.Stat(path)
 		if err != nil && !os.IsNotExist(err) {
 			return testing.PollBreak(errors.Wrapf(err, "failed to stat %s", path))
@@ -339,9 +380,15 @@ func waitForPath(ctx context.Context, path string, c pathCondition) error {
 // waitForApksOptimized waits up to 1 minute or ctx deadline for all APKs in given root path are
 // optimized, which means no *.flock locks and *.odex/*.vdex exist and matches actual APK count
 // on PI and below.
-func waitForApksOptimized(ctx context.Context, root string, sdkVersion int) error {
+func waitForApksOptimized(ctx context.Context, root string, sdkVersion int, rootCryptDir string, virtioBlkDataEnabled bool) error {
 	testing.ContextLogf(ctx, "Waiting for APKs optimized %q", root)
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		if virtioBlkDataEnabled {
+			if err := arc.MountVirtioBlkDataDiskImageReadOnly(ctx, rootCryptDir); err != nil {
+				return testing.PollBreak(errors.Wrap(err, "failed to mount virtio-blk /data disk image on host"))
+			}
+			defer arc.UnmountVirtioBlkDataDiskImage(ctx, rootCryptDir)
+		}
 		// Calculate number of files per extension.
 		perExtCnt := map[string]int{}
 		// Modes for root of odex files.
