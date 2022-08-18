@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0260da4_ccc00d23",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-08-18T09:20:16Z",
+      "side": 1,
+      "message": "# Oops, sorry that I overlooked shadow review comment... I should have waited for a day...\n",
+      "revId": "0deecd89142e0b045f7135a27a0fa611673045e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bd84edf3_6a95cf32",
