@@ -43,7 +43,7 @@ const (
 	dataWaitTime = 2 * time.Second
 	// defaultUIWaitTime indicates the default time to wait for UI elements to appear.
 	defaultUIWaitTime = 5 * time.Second
-	// defaultUIWaitTime indicates the time to wait for some UI elements that need more time to appear.
+	// longerUIWaitTime indicates the time to wait for some UI elements that need more time to appear.
 	longerUIWaitTime = time.Minute
 
 	// retryTimes defines the key UI operation retry times.

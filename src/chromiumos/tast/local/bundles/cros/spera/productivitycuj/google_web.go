@@ -299,7 +299,9 @@ func (app *GoogleDocs) VoiceToTextTesting(ctx context.Context, expectedText stri
 	}
 
 	return uiauto.Combine("play an audio file and check dictation results",
-		app.uiHdl.ClickUntil(dictationButton, app.checkDictionButton), // Make sure that the dictation does not stop by waiting a long time.
+		// Make sure that the dictation does not stop by waiting a long time.
+		uiauto.IfFailThen(app.checkDictionButton,
+			app.ui.DoDefaultUntil(dictationButton, app.checkDictionButton)),
 		playAudio,
 		checkDictationResult,
 		app.uiHdl.Click(dictationButton), // Click again to stop voice typing.
@@ -489,18 +491,21 @@ func (app *GoogleDocs) closeDialogs(ctx context.Context) error {
 
 // checkDictionButton checks if the "Start dictation" button is checked.
 func (app *GoogleDocs) checkDictionButton(ctx context.Context) error {
+	startTime := time.Now()
 	voiceTypingDialog := nodewith.Name("Voice typing").Role(role.Dialog)
 	dictationButton := nodewith.Name("Start dictation").Role(role.ToggleButton).FinalAncestor(voiceTypingDialog)
 	return testing.Poll(ctx, func(ctx context.Context) error {
-		button, err := app.ui.Info(ctx, dictationButton)
+		button, err := app.ui.WithTimeout(time.Second).Info(ctx, dictationButton)
 		if err != nil {
 			return err
 		}
 		if button.Checked != checked.True {
 			return errors.New("button not checked yet")
 		}
+
+		testing.ContextLogf(ctx, "Takes %v seconds to verify the dictation button is checked", time.Since(startTime).Seconds())
 		return nil
-	}, &testing.PollOptions{Timeout: 15 * time.Second})
+	}, &testing.PollOptions{Timeout: defaultUIWaitTime})
 }
 
 // NewGoogleDocs creates GoogleDocs instance which implements ProductivityApp interface.
