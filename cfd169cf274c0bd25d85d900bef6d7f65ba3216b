@@ -87,6 +87,30 @@
       },
       "revId": "cfd169cf274c0bd25d85d900bef6d7f65ba3216b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95ebee4c_baec2ce5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/vp9_video_decoder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-08-18T10:12:42Z",
+      "side": 1,
+      "message": "Hi Seewai, \n\nOur motive is to run these tests in Intel labs and OEM/ODM labs. And I feel it will be good to run them in the Google labs too. \n\nI believe you guys are experts and take the decision if you want to run this test in Google lab. In case you don\u0027t want to execute, I can remove the group attribute and publish it.",
+      "parentUuid": "abbbf9ae_a4a8fc4b",
+      "range": {
+        "startLine": 30,
+        "startChar": 16,
+        "endLine": 30,
+        "endChar": 60
+      },
+      "revId": "cfd169cf274c0bd25d85d900bef6d7f65ba3216b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
