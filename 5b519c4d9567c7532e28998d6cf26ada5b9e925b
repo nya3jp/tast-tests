@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2ba04d3_93eed5cd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-08-18T17:43:37Z",
+      "side": 1,
+      "message": "BTW I don\u0027t think CQ+1 matters for Tast CLs. Last I checked, the dry run is not configured to run HW tests",
+      "revId": "5b519c4d9567c7532e28998d6cf26ada5b9e925b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3b42200a_e882b35d",
@@ -31,6 +48,30 @@
       "writtenOn": "2022-08-18T00:21:17Z",
       "side": 1,
       "message": "I will defer to Kyle on this, but I think it might be worth updating the logic here to initially search for the existing `NetworkDetailedViewRevamp`, and if it doesn\u0027t find it fall back to searching for `NetworkDetailedViewRevamp`. This prevents us from having to force callers to provide a boolean indicating whether the feature is enabled, but makes this method resilient to code changes in the chromium repo.",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 2
+      },
+      "revId": "5b519c4d9567c7532e28998d6cf26ada5b9e925b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bcb13a2e_e37e5f92",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/quicksettings/network.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-08-18T17:43:37Z",
+      "side": 1,
+      "message": "No strong opinion from me here. I\u0027m not a huge fan of fall-back logic for these kind of UI differences since it makes debugging failures more confusing, but it does help with preventing failures due to changes in chromium if the feature\u0027s default enabled state changes. Pick your poison :)\n\nMaybe the ideal way would be to pick the finder based on whether or not the feature flag is set in chrome, but I don\u0027t think anyone has added the functionality to get  list of enabled chrome features/flags yet.",
+      "parentUuid": "3b42200a_e882b35d",
       "range": {
         "startLine": 45,
         "startChar": 0,
