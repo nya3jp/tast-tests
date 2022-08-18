@@ -16,6 +16,24 @@
       "message": "This check currently fails. I\u0027m not sure why - it works when I cause the same crash interactively.",
       "revId": "9ffce43a36d450bed602d8c67b7bd7ad2d8c9a1e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4fcdad69_12b1c293",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/user.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 643,
+      "author": {
+        "id": 1510622
+      },
+      "writtenOn": "2022-08-18T19:07:47Z",
+      "side": 1,
+      "message": "I figured out the problem - please hold on for a fix.",
+      "parentUuid": "7653575b_b974e283",
+      "revId": "9ffce43a36d450bed602d8c67b7bd7ad2d8c9a1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
