@@ -123,6 +123,8 @@ func launchAppForHulu(ctx context.Context, s *testing.State, tconn *chrome.TestC
 		allowButtonText           = "ALLOW"
 		continueText              = "CONTINUE"
 		enableLocationServiceText = "SHARE LOCATION"
+		locationTimeoutID         = "com.hulu.plus:id/title"
+		locationTimeoutText       = "Location Timeout"
 		loginText                 = "LOG IN"
 		enterEmailID              = "com.hulu.plus:id/email"
 		enterPasswordID           = "com.hulu.plus:id/password"
@@ -131,6 +133,12 @@ func launchAppForHulu(ctx context.Context, s *testing.State, tconn *chrome.TestC
 		noneOfTheAboveID          = "com.google.android.gms:id/cancel"
 		neverButtonID             = "com.google.android.gms:id/credential_save_reject"
 		homeIconID                = "com.hulu.plus:id/menu_home"
+		OTPPageID                 = "com.hulu.plus:id/verification_title"
+		retryButtonID             = "com.hulu.plus:id/btn_primary_action"
+		retryText                 = "RETRY"
+		selectUserID              = "com.hulu.plus:id/tile_title"
+		selectUserText            = "appcompatautomation"
+		locationTimeout           = 2 * time.Minute
 	)
 
 	loginButton := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.TextMatches("(?i)"+loginText))
@@ -215,6 +223,20 @@ func launchAppForHulu(ctx context.Context, s *testing.State, tconn *chrome.TestC
 		s.Fatal("Failed to click on clickOnNoThanksButton: ", err)
 	}
 
+	// Check for OTP page.
+	checkForOTPPage := d.Object(ui.ID(OTPPageID))
+	if err := checkForOTPPage.WaitForExists(ctx, testutil.ShortUITimeout); err == nil {
+		s.Log("checkForOTPPage does exist")
+		return
+	}
+	// Select user.
+	selectUser := d.Object(ui.ID(selectUserID), ui.TextMatches("(?i)"+selectUserText))
+	if err := selectUser.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+		s.Log("selectUser doesn't exist: ", err)
+	} else if err := selectUser.Click(ctx); err != nil {
+		s.Fatal("Failed to click on selectUser: ", err)
+	}
+
 	// Click on got it button.
 	testutil.HandleDialogBoxes(ctx, s, d, appPkgName)
 
@@ -259,6 +281,14 @@ func launchAppForHulu(ctx context.Context, s *testing.State, tconn *chrome.TestC
 		s.Fatal("Failed to start Hulu app: ", err)
 	}
 
+	// Check for location time out error page.
+	checkForLocationTimeout := d.Object(ui.ID(locationTimeoutID))
+	if err := checkForLocationTimeout.WaitForExists(ctx, locationTimeout); err == nil {
+		s.Fatal("Location time out error does exist")
+	} else {
+		s.Log("Location time out error does not exist")
+	}
+
 	testutil.HandleDialogBoxes(ctx, s, d, appPkgName)
 	// Check for launch verifier.
 	launchVerifier := d.Object(ui.PackageName(appPkgName))
@@ -271,11 +301,31 @@ func launchAppForHulu(ctx context.Context, s *testing.State, tconn *chrome.TestC
 // signOutOfHulu verifies app is signed out.
 func signOutOfHulu(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
 	const (
-		accountIconID    = "com.hulu.plus:id/menu_profile"
-		logoutText       = "Log Out"
-		logOutOfHuluText = "LOG OUT"
-		homeIconID       = "com.hulu.plus:id/menu_home"
+		accountIconID       = "com.hulu.plus:id/menu_profile"
+		logoutText          = "Log Out"
+		logOutOfHuluText    = "LOG OUT"
+		loginText           = "LOG IN"
+		locationTimeoutID   = "com.hulu.plus:id/title"
+		locationTimeoutText = "Location Timeout"
+		homeIconID          = "com.hulu.plus:id/menu_home"
+		retryText           = "RETRY"
+		retryButtonID       = "com.hulu.plus:id/btn_primary_action"
+		locationTimeout     = 2 * time.Minute
 	)
+
+	// Check for login button.
+	loginButton := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.TextMatches("(?i)"+loginText))
+	if err := loginButton.WaitForExists(ctx, testutil.LongUITimeout); err == nil {
+		s.Log("LoginButton does exist")
+		return
+	}
+	// Check for location time out error page.
+	checkForLocationTimeout := d.Object(ui.ID(locationTimeoutID))
+	if err := checkForLocationTimeout.WaitForExists(ctx, locationTimeout); err == nil {
+		s.Log("Location time out ID error does exist and skipped sign out")
+		return
+	}
+
 	// Press back key to dismiss the pop up.
 	if err := d.PressKeyCode(ctx, ui.KEYCODE_BACK, 0); err != nil {
 		s.Log("Failed to enter KEYCODE_BACk: ", err)
