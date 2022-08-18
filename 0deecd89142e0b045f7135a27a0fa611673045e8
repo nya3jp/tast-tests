@@ -80,6 +80,30 @@
       },
       "revId": "0deecd89142e0b045f7135a27a0fa611673045e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "295a72bb_d4b1b25d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_provisioning.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-08-18T11:47:55Z",
+      "side": 1,
+      "message": "See https://tastboard.corp.google.com/test/enterprise.ARCProvisioning.vm and https://tastboard.corp.google.com/test/enterprise.ARCProvisioning.vm_unstable",
+      "parentUuid": "65b640f3_786b8701",
+      "range": {
+        "startLine": 121,
+        "startChar": 38,
+        "endLine": 121,
+        "endChar": 82
+      },
+      "revId": "0deecd89142e0b045f7135a27a0fa611673045e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
