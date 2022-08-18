@@ -16,6 +16,46 @@
       "message": "LGTM\n\n1. Please run tast unit test: fast_build.sh -T \n   Then add this line:\n   \n   TEST\u003dtast unit test passed \n   \n   in the commit log\n   \n2. Please ask a domain expert to review this and give you a +2.\n\nThanks.\n",
       "revId": "36eab9c3ed86c800e3817e0ff340e0a24791198f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "df2457ed_47f19ed9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2022-08-18T01:53:40Z",
+      "side": 1,
+      "message": "LGTM.",
+      "revId": "36eab9c3ed86c800e3817e0ff340e0a24791198f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4fe35ca2_1dc1c446",
+        "filename": "src/chromiumos/tast/local/tracing/utils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2022-08-18T01:53:40Z",
+      "side": 1,
+      "message": "I think this should be moved to l.85.",
+      "range": {
+        "startLine": 77,
+        "startChar": 1,
+        "endLine": 81,
+        "endChar": 4
+      },
+      "revId": "36eab9c3ed86c800e3817e0ff340e0a24791198f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
