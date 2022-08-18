@@ -12,6 +12,7 @@ import (
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/lacros"
@@ -33,6 +34,36 @@ func SetUp(ctx context.Context, cr *chrome.Chrome, bt browser.Type) (*browser.Br
 			return nil, nil, errors.Wrap(err, "failed to connect to test API")
 		}
 		l, err := lacros.Launch(ctx, tconn)
+		if err != nil {
+			return nil, nil, errors.Wrap(err, "failed to launch lacros-chrome")
+		}
+		closeLacros := func(ctx context.Context) {
+			l.Close(ctx) // Ignore error.
+		}
+		return l.Browser(), closeLacros, nil
+	default:
+		return nil, nil, errors.Errorf("unrecognized browser type %s", string(bt))
+	}
+}
+
+// SetUpIncognito returns a Browser instance in incognito mode for a given
+// fixture value and browser type.
+// It also returns a closure to be called in order to close the browser instance,
+// after which the instance should not be used any further.
+func SetUpIncognito(ctx context.Context, cr *chrome.Chrome, bt browser.Type) (*browser.Browser, func(ctx context.Context), error) {
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		return nil, nil, errors.Wrap(err, "failed to connect to test API")
+	}
+	if err := apps.LaunchChromeByShortcut(tconn, true)(ctx); err != nil {
+		return nil, nil, errors.Wrap(err, "failed to launch incognito Chrome browser")
+	}
+
+	switch bt {
+	case browser.TypeAsh:
+		return cr.Browser(), func(context.Context) {}, nil
+	case browser.TypeLacros:
+		l, err := lacros.Connect(ctx, tconn)
 		if err != nil {
 			return nil, nil, errors.Wrap(err, "failed to launch lacros-chrome")
 		}
