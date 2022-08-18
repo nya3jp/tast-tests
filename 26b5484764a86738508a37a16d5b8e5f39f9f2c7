@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0cd738e_b1af6baf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2022-08-18T18:31:43Z",
+      "side": 1,
+      "message": "Is the problem that lpstat doesn\u0027t work, or is it that the printer doesn\u0027t get autoconfigured unless Chrome is running?  If the error is \"no destinations added\" after a timeout, it\u0027s probably the latter.",
+      "revId": "26b5484764a86738508a37a16d5b8e5f39f9f2c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
