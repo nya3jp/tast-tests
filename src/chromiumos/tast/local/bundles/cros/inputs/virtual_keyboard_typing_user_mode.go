@@ -34,22 +34,36 @@ var typingModeTestMessages = []data.Message{data.TypingMessageHello}
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         VirtualKeyboardTypingUserMode,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Checks that virtual keyboard works in different user modes",
 		Contacts:     []string{"shengjun@chromium.org", "essential-inputs-team@google.com"},
-		Attr:         []string{"group:mainline", "group:input-tools-upstream", "group:input-tools", "group:input-tools-upstream"},
+		Attr:         []string{"group:mainline", "group:input-tools"},
 		SearchFlags:  util.IMESearchFlags(typingModeTestIMEs),
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
 		HardwareDeps: hwdep.D(pre.InputsStableModels),
 		Timeout:      time.Duration(len(typingModeTestIMEs)) * time.Duration(len(typingModeTestMessages)) * time.Minute,
 		Params: []testing.Param{
 			{
-				Name:    "guest",
-				Fixture: fixture.AnyVKInGuest,
+				Name:      "guest",
+				ExtraAttr: []string{"group:input-tools-upstream"},
+				Fixture:   fixture.AnyVKInGuest,
 			},
 			{
-				Name:    "incognito",
-				Fixture: fixture.AnyVK,
+				Name:      "incognito",
+				ExtraAttr: []string{"group:input-tools-upstream"},
+				Fixture:   fixture.AnyVK,
+			},
+			{
+				Name:              "guest_lacros",
+				ExtraAttr:         []string{"informational"},
+				ExtraSoftwareDeps: []string{"lacros"},
+				Fixture:           fixture.LacrosAnyVKInGuest,
+			},
+			{
+				Name:              "incognito_lacros",
+				ExtraAttr:         []string{"informational"},
+				ExtraSoftwareDeps: []string{"lacros"},
+				Fixture:           fixture.LacrosAnyVK,
 			},
 		},
 	})
@@ -60,11 +74,15 @@ func VirtualKeyboardTypingUserMode(ctx context.Context, s *testing.State) {
 	tconn := s.FixtValue().(fixture.FixtData).TestAPIConn
 	uc := s.FixtValue().(fixture.FixtData).UserContext
 
-	its, err := testserver.LaunchInMode(ctx, cr, tconn, strings.Contains(s.TestName(), "incognito"))
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
+	defer cancel()
+
+	its, err := testserver.LaunchBrowserInMode(ctx, cr, tconn, s.FixtValue().(fixture.FixtData).BrowserType, strings.Contains(s.TestName(), "incognito"))
 	if err != nil {
 		s.Fatal("Failed to launch inputs test server: ", err)
 	}
-	defer its.Close()
+	defer its.CloseAll(cleanupCtx)
 
 	if strings.Contains(s.TestName(), "incognito") {
 		uc.SetAttribute(useractions.AttributeIncognitoMode, strconv.FormatBool(true))
