@@ -17,7 +17,6 @@ import (
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/bundles/cros/inputs/data"
 	"chromiumos/tast/local/bundles/cros/inputs/util"
 	"chromiumos/tast/local/chrome"
@@ -184,84 +183,24 @@ func LaunchServer(ctx context.Context) (server *httptest.Server) {
 	return newServer
 }
 
-// Launch launches a local web server to serve inputs testing on different type of input fields.
-// It then opens a Chrome browser window in normal mode to visit the test page.
-func Launch(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn) (*InputsTestServer, error) {
-	return LaunchInMode(ctx, cr, tconn, false)
-}
-
-// LaunchInMode launches a local web server to serve inputs testing on different type of input fields.
+// LaunchBrowserInMode launches a local web server to serve inputs testing on
+// different type of input fields.
 // It can be either normal user mode or incognito mode.
-func LaunchInMode(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn, incognitoMode bool) (its *InputsTestServer, err error) {
-	// URL path needs to be in the allowlist to enable some features.
-	// https://source.chromium.org/chromium/chromium/src/+/main:chrome/browser/ash/input_method/assistive_suggester.cc.
-	const urlPath = "e14s-test"
-	testing.ContextLog(ctx, "Start a local server to test inputs")
-
-	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		w.Header().Add("Content-Type", "text/html")
-		io.WriteString(w, html)
-	}))
-	defer func() {
-		if err != nil {
-			server.Close()
-		}
-	}()
-
-	userMode := "normal"
-	if incognitoMode {
-		userMode = "incognito"
-	}
-
-	if err = apps.LaunchChromeByShortcut(tconn, incognitoMode)(ctx); err != nil {
-		return nil, errors.Wrapf(err, "failed to launch Chrome browser in %s mode", userMode)
-	}
-
-	var pc *chrome.Conn
-	pc, err = cr.NewConnForTarget(ctx, chrome.MatchTargetURL("chrome://newtab/"))
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to find new tab")
-	}
-	defer func() {
-		if err != nil {
-			pc.Close()
-		}
-	}()
-
-	if err = pc.Navigate(ctx, server.URL+"/"+urlPath); err != nil {
-		return nil, errors.Wrapf(err, "failed to navigate to %q", server.URL)
-	}
-
-	if err = webutil.WaitForQuiescence(ctx, pc, 10*time.Second); err != nil {
-		return nil, errors.Wrap(err, "failed to load test page")
-	}
-
-	ui := uiauto.New(tconn)
-	// Even document is ready, target is not yet in a11y tree.
-	if err = ui.WaitUntilExists(pageRootFinder)(ctx); err != nil {
-		return nil, errors.Wrap(err, "failed to render test page")
-	}
-
-	return &InputsTestServer{
-		server: server,
-		cr:     cr,
-		tconn:  tconn,
-		pc:     pc,
-		ui:     ui,
-	}, nil
+func LaunchBrowserInMode(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn, browserType browser.Type, incognitoMode bool) (its *InputsTestServer, err error) {
+	return LaunchBrowserWithHTML(ctx, browserType, incognitoMode, cr, tconn, html)
 }
 
 // LaunchBrowser launches a local web server with the default html to serve
 // inputs testing on different type of input fields.
 // It opens either a Ash browser or a Lacros browser based on the arguments.
 func LaunchBrowser(ctx context.Context, browserType browser.Type, cr *chrome.Chrome, tconn *chrome.TestConn) (*InputsTestServer, error) {
-	return LaunchBrowserWithHTML(ctx, browserType, cr, tconn, html)
+	return LaunchBrowserWithHTML(ctx, browserType, false, cr, tconn, html)
 }
 
 // LaunchBrowserWithHTML launches a local web server with the specified html to
 // serve inputs testing on different type of input fields.
 // It opens either a Ash browser or a Lacros browser based on the arguments.
-func LaunchBrowserWithHTML(ctx context.Context, browserType browser.Type, cr *chrome.Chrome, tconn *chrome.TestConn, rawHTML string) (*InputsTestServer, error) {
+func LaunchBrowserWithHTML(ctx context.Context, browserType browser.Type, incognitoMode bool, cr *chrome.Chrome, tconn *chrome.TestConn, rawHTML string) (*InputsTestServer, error) {
 	// URL path needs to be in the allowlist to enable some features.
 	// https://source.chromium.org/chromium/chromium/src/+/main:chrome/browser/ash/input_method/assistive_suggester.cc.
 	const urlPath = "e14s-test"
@@ -278,27 +217,21 @@ func LaunchBrowserWithHTML(ctx context.Context, browserType browser.Type, cr *ch
 		}
 	}()
 
-	br, closeBrowser, err := browserfixt.SetUp(ctx, cr, browserType)
+	browserDriver, closeBrowser, err := setUpBrowser(ctx, browserType, incognitoMode, cr)
 	if err != nil {
-		return nil, errors.Wrap(err, "failed to set up browser")
+		return nil, errors.Wrap(err, "failed to connect to browser")
 	}
 	defer func() {
 		if hasError {
-			closeBrowser(ctx)
-		}
-	}()
-
-	pc, err := br.NewConn(ctx, server.URL+"/"+urlPath)
-	if err != nil {
-		return nil, errors.Wrapf(err, "failed to connect to browser and open %q", server.URL)
-	}
-	defer func() {
-		if hasError {
-			if err := pc.Close(); err != nil {
+			if err := browserDriver.Close(); err != nil {
 				testing.ContextLog(ctx, "Failed to close browser connection: ", err)
 			}
 		}
 	}()
+
+	if err = browserDriver.Navigate(ctx, server.URL+"/"+urlPath); err != nil {
+		return nil, errors.Wrapf(err, "failed to navigate to %q", server.URL)
+	}
 
 	activeWindow, err := ash.GetActiveWindow(ctx, tconn)
 	if err != nil {
@@ -308,7 +241,7 @@ func LaunchBrowserWithHTML(ctx context.Context, browserType browser.Type, cr *ch
 		return nil, errors.Wrap(err, "failed to maximize Chrome window")
 	}
 
-	if err := webutil.WaitForQuiescence(ctx, pc, 10*time.Second); err != nil {
+	if err := webutil.WaitForQuiescence(ctx, browserDriver, 10*time.Second); err != nil {
 		return nil, errors.Wrap(err, "failed to load test page")
 	}
 
@@ -323,10 +256,40 @@ func LaunchBrowserWithHTML(ctx context.Context, browserType browser.Type, cr *ch
 		server:       server,
 		cr:           cr,
 		tconn:        tconn,
-		pc:           pc,
+		pc:           browserDriver,
 		ui:           ui,
 		closeBrowser: closeBrowser,
 	}, nil
+}
+
+func setUpBrowser(ctx context.Context, browserType browser.Type, incognitoMode bool, cr *chrome.Chrome) (*chrome.Conn, func(ctx context.Context), error) {
+	var br *browser.Browser
+	var closeBrowser func(ctx context.Context)
+	var err error
+	var browserDriver *chrome.Conn
+
+	switch incognitoMode {
+	case true:
+		br, closeBrowser, err = browserfixt.SetUpIncognito(ctx, cr, browserType)
+		if err != nil {
+			return nil, nil, errors.Wrap(err, "failed to set up incognito browser")
+		}
+		browserDriver, err = br.NewConnForTarget(ctx, chrome.MatchTargetURL("chrome://newtab/"))
+		if err != nil {
+			return nil, nil, err
+		}
+
+	case false:
+		br, closeBrowser, err = browserfixt.SetUp(ctx, cr, browserType)
+		if err != nil {
+			return nil, nil, errors.Wrap(err, "failed to set up browser")
+		}
+		browserDriver, err = br.NewConn(ctx, "chrome://newtab/")
+		if err != nil {
+			return nil, nil, err
+		}
+	}
+	return browserDriver, closeBrowser, nil
 }
 
 // CloseAll releasees the connection, stops the local web server, and closees
