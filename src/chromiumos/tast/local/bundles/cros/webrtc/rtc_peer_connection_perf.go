@@ -198,6 +198,51 @@ func init() {
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9, caps.HWEncodeVP9},
 			Fixture:           "chromeVideoWithFakeWebcamAndSWEncoding",
 		}, {
+			// VP8 simulcast compositing of two streams, 180p and 360p.
+			// Both 180p and 360p streams are encoded by a software encoder.
+			Name:              "vp8_simulcast_180_sw_360_sw",
+			Val:               peerconnection.MakeSimulcastTestOptions("VP8", 640, 360, []bool{false, false}),
+			ExtraSoftwareDeps: []string{caps.HWDecodeVP8, caps.HWEncodeVP8},
+			Fixture:           "chromeVideoWithFakeWebcamAndSWEncoding",
+		}, {
+			// VP8 simulcast compositing of two streams, 180p and 360p.
+			// 180p is encoded by a software encoder and 360p is encoded by a hardware encoder.
+			Name: "vp8_simulcast_180_sw_360_hw",
+			Val:  peerconnection.MakeSimulcastTestOptions("VP8", 640, 360, []bool{false, true}),
+			// Run VA-API only because V4L2 API encoders's supported resolution is less than 180p.
+			ExtraSoftwareDeps: []string{caps.HWDecodeVP8, caps.HWEncodeVP8, "vaapi"},
+			Fixture:           "chromeVideoWithFakeWebcamAndEnableVaapiVideoMinResolution",
+		}, {
+			// VP8 simulcast compositing of two streams, 180p and 360p.
+			// Both 180p and 360p streams are encoded by hardware encoders.
+			Name:              "vp8_simulcast_180_hw_360_hw",
+			Val:               peerconnection.MakeSimulcastTestOptions("VP8", 640, 360, []bool{true, true}),
+			ExtraSoftwareDeps: []string{caps.HWDecodeVP8, caps.HWEncodeVP8},
+			Fixture:           "chromeVideoWithFakeWebcam",
+		}, {
+			// VP8 simulcast compositing of two streams, 180p, 360p and 720p.
+			// The all streams are encoded by software encoders.
+			Name:              "vp8_simulcast_180_sw_360_sw_720_sw",
+			Val:               peerconnection.MakeSimulcastTestOptions("VP8", 1280, 720, []bool{false, false, false}),
+			ExtraSoftwareDeps: []string{caps.HWDecodeVP8, caps.HWEncodeVP8},
+			Fixture:           "chromeVideoWithFakeWebcamAndSWEncoding",
+		}, {
+			// VP8 simulcast compositing of two streams, 180p, 360p and 720p.
+			// 180p is encoded by a software encoder and the other two streams
+			// are encoded by hardware encoders.
+			Name: "vp8_simulcast_180_sw_360_hw_720_hw",
+			Val:  peerconnection.MakeSimulcastTestOptions("VP8", 1280, 720, []bool{false, true, true}),
+			// Run VA-API only because V4L2 API encoder's supported resolution is less than 180p.
+			ExtraSoftwareDeps: []string{caps.HWDecodeVP8, caps.HWEncodeVP8, "vaapi"},
+			Fixture:           "chromeVideoWithFakeWebcamAndEnableVaapiVideoMinResolution",
+		}, {
+			// VP8 simulcast compositing of two streams, 180p, 360p and 720p.
+			// The all streams are encoded by hardware encoders.
+			Name:              "vp8_simulcast_180_hw_360_hw_720_hw",
+			Val:               peerconnection.MakeSimulcastTestOptions("VP8", 1280, 720, []bool{true, true, true}),
+			ExtraSoftwareDeps: []string{caps.HWDecodeVP8, caps.HWEncodeVP8},
+			Fixture:           "chromeVideoWithFakeWebcam",
+		}, {
 			Name:              "vp9_svc_l2t3_270p_sw",
 			Val:               peerconnection.MakeTestOptionsWithSVC("VP9", 480, 270, "L3T3_KEY", false),
 			ExtraHardwareDeps: hwdep.D(hwdep.SupportsVP9KSVCHWDecoding()),
