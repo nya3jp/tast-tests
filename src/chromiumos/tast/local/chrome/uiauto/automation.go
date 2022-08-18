@@ -710,6 +710,9 @@ func (ac *Context) ImmediateDoubleClick(finder *nodewith.Finder) Action {
 	return ac.immediateMouseClick(doubleClick, finder)
 }
 
+// ErrConditionNotYetMet is returned if a condition is not yet met after an ui interaction.
+var ErrConditionNotYetMet = errors.New("click may not have been received yet")
+
 // LeftClickUntil returns a function that repeatedly left clicks the node until the condition returns no error.
 // It will try to click the node once before it checks the condition.
 // This is useful for situations where there is no indication of whether the node is ready to receive clicks.
@@ -727,7 +730,7 @@ func (ac *Context) LeftClickUntil(finder *nodewith.Finder, condition func(contex
 				if err := ac.ImmediateLeftClick(finder)(ctx); err != nil {
 					return errors.Wrap(err, "failed to click the node")
 				}
-				return errors.Wrap(err, "click may not have been received yet")
+				return ErrConditionNotYetMet
 			}
 			return nil
 		}, &ac.pollOpts)
@@ -751,7 +754,7 @@ func (ac *Context) RightClickUntil(finder *nodewith.Finder, condition func(conte
 				if err := ac.ImmediateRightClick(finder)(ctx); err != nil {
 					return errors.Wrap(err, "failed to click the node")
 				}
-				return errors.Wrap(err, "click may not have been received yet")
+				return ErrConditionNotYetMet
 			}
 			return nil
 		}, &ac.pollOpts)
@@ -798,7 +801,7 @@ func (ac *Context) DoDefaultUntil(finder *nodewith.Finder, condition func(contex
 				if err := IfSuccessThen(ac.Exists(finder), ac.DoDefault(finder))(ctx); err != nil {
 					return errors.Wrap(err, "failed to click the node")
 				}
-				return errors.Wrap(err, "click may not have been received yet")
+				return ErrConditionNotYetMet
 			}
 			return nil
 		}, &ac.pollOpts)

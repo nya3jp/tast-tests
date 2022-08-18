@@ -6,14 +6,16 @@ package policy
 
 import (
 	"context"
+	"time"
 
 	"chromiumos/tast/common/fixture"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
-	"chromiumos/tast/local/chrome/uiauto/restriction"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/testing"
@@ -26,7 +28,7 @@ func init() {
 		Desc:         "Test behavior of UserPrintersAllowed policy: check if Add printer button is restricted based on the value of the policy",
 		Contacts: []string{
 			"alexanderhartl@google.com", // Test author
-			"chromeos-commercial-remote-management@google.com",
+			"chromeos-commercial-networking@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
 		Attr: []string{
@@ -45,22 +47,22 @@ func UserPrintersAllowed(ctx context.Context, s *testing.State) {
 
 	for _, param := range []struct {
 		name            string
-		wantRestriction restriction.Restriction     // wantRestricted is the expected restriction state of the "Add printer" button.
-		policy          *policy.UserPrintersAllowed // policy is the policy we test.
+		printersAllowed bool
+		policy          *policy.UserPrintersAllowed
 	}{
 		{
 			name:            "unset",
-			wantRestriction: restriction.None,
+			printersAllowed: true,
 			policy:          &policy.UserPrintersAllowed{Stat: policy.StatusUnset},
 		},
 		{
 			name:            "not_allowed",
-			wantRestriction: restriction.Disabled,
+			printersAllowed: false,
 			policy:          &policy.UserPrintersAllowed{Val: false},
 		},
 		{
 			name:            "allowed",
-			wantRestriction: restriction.None,
+			printersAllowed: true,
 			policy:          &policy.UserPrintersAllowed{Val: true},
 		},
 	} {
@@ -77,14 +79,36 @@ func UserPrintersAllowed(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to update policies: ", err)
 			}
 
-			// Check if the Add printer button is restricted.
-			if err := policyutil.OSSettingsPage(ctx, cr, "cupsPrinters").
-				SelectNode(ctx, nodewith.
-					Name("Add printer").
-					Role(role.Button)).
-				Restriction(param.wantRestriction).
-				Verify(); err != nil {
-				s.Error("Unexpected OS settings state: ", err)
+			tconn, err := cr.TestAPIConn(ctx)
+			if err != nil {
+				s.Fatal("Failed to create Test API connection: ", err)
+			}
+			ui := uiauto.New(tconn).WithTimeout(10 * time.Second)
+
+			// Open printer settings.
+			_, err = cr.NewConn(ctx, "chrome://os-settings/cupsPrinters")
+
+			// Click on the "Add printer" button until the "Add a printer manually" dialog appears.
+			// This way we check if it is possible to add new printers as the restriction state of
+			// the button is not visible in the ui tree. DoDefaultUntil cannot be used as it will
+			// ignore the restrictions on the button.
+			addPrinterButton := nodewith.Name("Add printer").Role(role.Button).Onscreen()
+			dialog := nodewith.Name("Add a printer manually").Onscreen().First()
+			if err = ui.WaitUntilExists(addPrinterButton)(ctx); err != nil {
+				s.Fatal("Failed to wait for the \"Add printer\" button to exist: ", err)
+			}
+			dialogExists := true
+			err = ui.LeftClickUntil(addPrinterButton, ui.Exists(dialog))(ctx)
+			if err != nil {
+				if errors.Is(err, uiauto.ErrConditionNotYetMet) {
+					dialogExists = false
+				} else {
+					s.Fatal("Failed to click on \"Add printer\" button: ", err)
+				}
+			}
+
+			if dialogExists != param.printersAllowed {
+				s.Errorf("Unexpected printer dialog existence; want: %q, got: %q", param.printersAllowed, dialogExists)
 			}
 		})
 	}
