@@ -24,7 +24,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         BasicDetections,
-		Desc:         "Confirm that the image-based uidetetion library works as intended",
+		Desc:         "Confirm that the image-based uidetection library works as intended",
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Contacts:     []string{"alvinjia@google.com", "chromeos-engprod-sydney@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
@@ -47,10 +47,15 @@ func BasicDetections(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to enter clamshell mode: ", err)
 	}
 
+	// Force light mode to minimise icon detection flakiness.
+	if err := tconn.Call(ctx, nil, `tast.promisify(chrome.autotestPrivate.forceAutoThemeMode)`, false); err != nil {
+		s.Fatal("Failed to force light mode: ", err)
+	}
+
 	ud := uidetection.NewDefault(tconn)
 	ui := uiauto.New(tconn)
 
-	chromeIcon := uidetection.CustomIcon(s.DataPath("logo_chrome.png"), uidetection.MinConfidence(0.6))
+	chromeIcon := uidetection.CustomIcon(s.DataPath("logo_chrome.png"), uidetection.MinConfidence(0.7))
 	addShortcut := uidetection.TextBlock([]string{"Add", "shortcut"})
 	bottomBar := nodewith.ClassName("ShelfView")
 	notificationArea := nodewith.ClassName("StatusAreaWidget")
@@ -71,8 +76,9 @@ func BasicDetections(ctx context.Context, s *testing.State) {
 			return nil
 		}
 	}
+	restoreButton := nodewith.Role(role.Button).ClassName("FrameSizeButton").Name("Restore")
 
-	maximizeButton := nodewith.Role(role.Button).ClassName("FrameCaptionButton").Name("Maximize")
+	maximizeButton := nodewith.Role(role.Button).ClassName("FrameSizeButton").Name("Maximize")
 
 	// Perform UI interaction to click Chrome logo to open Chrome,
 	// click "Add shortcut", and click "cancel".
@@ -92,6 +98,7 @@ func BasicDetections(ctx context.Context, s *testing.State) {
 			// Maximize chrome to ensure that the left and the right of the chrome
 			// are empty bounding boxes later on. Do this early so that we don't
 			// have a race condition later.
+			uiauto.IfSuccessThen(ui.Exists(restoreButton), ui.LeftClick(restoreButton)),
 			uiauto.IfSuccessThen(ui.Exists(maximizeButton), ui.LeftClick(maximizeButton))),
 
 		uiauto.Combine("verify that within successfully matches",
