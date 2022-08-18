@@ -140,6 +140,24 @@
       "parentUuid": "3a695936_869e9093",
       "revId": "cc623fd272fcb73cb996e54a26c2513ac444232d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1990d678_e6135fed",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2022-08-18T16:13:20Z",
+      "side": 1,
+      "message": "Sorry, I\u0027m mistaken.  That issue tracks the failure across all the arc tests on coral-kernelnext rather than this test.  However, that board is set to kernel-upstream and from what I understand is supposed to be ignored.",
+      "parentUuid": "4419331e_a2b29f21",
+      "revId": "cc623fd272fcb73cb996e54a26c2513ac444232d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
