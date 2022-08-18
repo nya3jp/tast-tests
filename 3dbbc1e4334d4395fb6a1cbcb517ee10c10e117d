@@ -16,6 +16,42 @@
       "message": "don\u0027t add reviewers directly. add tast-owners@ instead\nhttp://go/tast-reviews\n\nAlso, someone from your team should review it as well\n+2  but don\u0027t land it until someone from your team reviews it.\n",
       "revId": "3dbbc1e4334d4395fb6a1cbcb517ee10c10e117d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1cd18c7_43fe0c1f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1130680
+      },
+      "writtenOn": "2022-08-18T23:04:09Z",
+      "side": 1,
+      "message": "\u003e don\u0027t add reviewers directly. add tast-owners@ instead\n\u003e http://go/tast-reviews\n\noh, sorry, for some reason I thought tast-owners@ was only for Go changes\n\u003e \n\u003e Also, someone from your team should review it as well\n\u003e +2  but don\u0027t land it until someone from your team reviews it.\n\u003e \n\n+mxcai@, can you please take a look?",
+      "parentUuid": "522e02d2_da214411",
+      "revId": "3dbbc1e4334d4395fb6a1cbcb517ee10c10e117d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "49de37fe_69b72603",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1130680
+      },
+      "writtenOn": "2022-08-18T23:04:09Z",
+      "side": 1,
+      "message": "\u003e don\u0027t add reviewers directly. add tast-owners@ instead\n\u003e http://go/tast-reviews\n\noh, sorry, for some reason i thought tast-owners@ was only for Go changes\n\u003e \n\u003e Also, someone from your team should review it as well\n\u003e +2  but don\u0027t land it until someone from your team reviews it.\n\u003e",
+      "parentUuid": "522e02d2_da214411",
+      "revId": "3dbbc1e4334d4395fb6a1cbcb517ee10c10e117d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
