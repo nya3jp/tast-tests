@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f333ac3_40c5e471",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_drag_window_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-08-18T16:42:01Z",
+      "side": 1,
+      "message": "Do you mean `lacros` ? Here and the other 2 lacros variants.",
+      "range": {
+        "startLine": 86,
+        "startChar": 32,
+        "endLine": 86,
+        "endChar": 38
+      },
+      "revId": "d15582d110df27162171feb352deb7f2b2988b1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "552b7235_e5025d26",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_drag_window_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-08-18T16:42:01Z",
+      "side": 1,
+      "message": "These seems to be `drag_to_snap` params.\n\nShould they be\n```\n\t\t\t\tdt: dragTypeNormal,\n\t\t\t\tl:  \"NormalDrag\",\n\t\t\t\tdf: normalDrag,\n```\n?",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 90,
+        "endChar": 19
+      },
+      "revId": "d15582d110df27162171feb352deb7f2b2988b1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "120b999a_fdb53ba2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_drag_window_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-08-18T16:42:01Z",
+      "side": 1,
+      "message": "nit: Think the current style is to use backtick ` around variable names.",
+      "range": {
+        "startLine": 368,
+        "startChar": 19,
+        "endLine": 368,
+        "endChar": 23
+      },
+      "revId": "d15582d110df27162171feb352deb7f2b2988b1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
