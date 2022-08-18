@@ -16,6 +16,29 @@
       "message": "LGTM",
       "revId": "42bbb4474291a0386be37a664bdb021203727e58",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9dc1b3f3_d1fca768",
+        "filename": "src/chromiumos/tast/local/arc/networking.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-08-18T06:00:01Z",
+      "side": 1,
+      "message": "nit: Since both of the two branches are error paths, we can use\n```\nif o, err :\u003d ...; err !\u003d nil {\n  ...\n} else if !strings.Contains(string(o),...) {\n  ...\n}\n```\nJust a personal preference though",
+      "range": {
+        "startLine": 103,
+        "startChar": 2,
+        "endLine": 108,
+        "endChar": 4
+      },
+      "revId": "42bbb4474291a0386be37a664bdb021203727e58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
