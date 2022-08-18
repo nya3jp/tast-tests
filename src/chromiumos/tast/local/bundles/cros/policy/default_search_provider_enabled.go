@@ -135,7 +135,7 @@ func DefaultSearchProviderEnabled(ctx context.Context, s *testing.State) {
 			}
 
 			// Type something.
-			if err := kb.Type(ctx, "abc\n"); err != nil {
+			if err := kb.Type(ctx, "vy6ys\n"); err != nil {
 				s.Fatal("Failed to write events: ", err)
 			}
 

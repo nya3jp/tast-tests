@@ -52,7 +52,7 @@ func DefaultSearchProviderKeyword(ctx context.Context, s *testing.State) {
 	const (
 		testSearchEngine = "fakeurl"      // testSearchEngine is used as fake search engine.
 		testKeyword      = "tranquillity" // testKeyword is used as keyword that triggers the search engine.
-		testSearchTerm   = "abc"          // testSearchTerm is a value for test search.
+		testSearchTerm   = "vy6ys"        // testSearchTerm is a value for test search.
 	)
 	addressBarNode := nodewith.Role(role.TextField).Name("Address and search bar")
 
