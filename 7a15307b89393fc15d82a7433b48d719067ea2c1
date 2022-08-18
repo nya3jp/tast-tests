@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa168cdb_44e493dd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-08-18T22:59:24Z",
+      "side": 1,
+      "message": "Thanks for looking into this.",
+      "revId": "7a15307b89393fc15d82a7433b48d719067ea2c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dea6c604_28555425",
+        "filename": "src/chromiumos/tast/local/arc/ui.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-08-18T22:59:24Z",
+      "side": 1,
+      "message": "What surprises me is that the arc.UnicornParentPermission and familylink.EducoexistenceArc tests always fail when run back to back, regardless if the first test succeeds or fails. The first test is failing to clean up the Play Store for subsequent tests.\n\nInstead of closing the Play Store at the beginning of this helper function, I would instead close the Play Store at the end of the following tests: arc.UnicornPaidAppParentPermission [1], arc.UnicornBlockedApps [2], and arc.UnicornParentPermission [3]. The paradigm in Tast is that it\u0027s the responsibility of each test to clean up after itself. This helper function shouldn\u0027t need to worry about the Play Store being open and it should assume that the Play Store is not already open as a precondition before calling this function (we should actually add that to the comment on line 58). \n\nAdd the following code to each of the aforementioned tests *before* the call to launcher.LaunchApp(tconn, apps.PlayStore.Name):\n\n\tdefer func(ctx context.Context, tconn *chrome.TestConn) {\n\t\tif err :\u003d apps.Close(ctx, tconn, apps.PlayStore.ID); err !\u003d nil {\n\t\t\ts.Fatal(\"Failed to close the Play Store app: \", err)\n\t\t}\n\t}(ctx, tconn)\n\nAnd ask Renuga rnanjappan@ to review this CL. \n\nThe defer keyword in the above snippet guarantees to close the Play Store at the end of each test run, regardless if the test succeeds or fails.\n\n[1] src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/arc/unicorn_paid_app_parent_permission.go\n[2] src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/arc/unicorn_blocked_apps.go\n[3] src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/arc/unicorn_parent_permission.go",
+      "revId": "7a15307b89393fc15d82a7433b48d719067ea2c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
