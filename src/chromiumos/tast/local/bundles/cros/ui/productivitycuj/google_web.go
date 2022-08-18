@@ -35,6 +35,12 @@ const (
 	sheetsTab = "Google Sheets"
 )
 
+var (
+	menuBarBanner = nodewith.Name("Menu bar").Role(role.Banner)
+	fileItem      = nodewith.Name("File").Role(role.MenuItem).Ancestor(menuBarBanner)
+	fileExpanded  = fileItem.Expanded()
+)
+
 // GoogleDocs implements the ProductivityApp interface.
 type GoogleDocs struct {
 	br         *browser.Browser
@@ -254,9 +260,7 @@ func (app *GoogleDocs) VoiceToTextTesting(ctx context.Context, expectedText stri
 		}, &testing.PollOptions{Interval: time.Second, Timeout: 15 * time.Second})
 	}
 
-	docsWebArea := nodewith.NameContaining("Google Docs").Role(role.RootWebArea)
-	menuBar := nodewith.Role(role.MenuBar).Ancestor(docsWebArea)
-	tools := nodewith.Name("Tools").Role(role.MenuItem).FinalAncestor(menuBar)
+	tools := nodewith.Name("Tools").Role(role.MenuItem).Ancestor(menuBarBanner)
 	toolsExpanded := tools.Expanded()
 	voiceTypingItem := nodewith.Name("Voice typing v Ctrl+Shift+S").Role(role.MenuItem)
 	voiceTypingDialog := nodewith.Name("Voice typing").Role(role.Dialog)
@@ -277,7 +281,9 @@ func (app *GoogleDocs) VoiceToTextTesting(ctx context.Context, expectedText stri
 	}
 
 	return uiauto.Combine("play an audio file and check dictation results",
-		app.uiHdl.ClickUntil(dictationButton, app.checkDictionButton), // Make sure that the dictation does not stop by waiting a long time.
+		// Make sure that the dictation does not stop by waiting a long time.
+		uiauto.IfFailThen(app.checkDictionButton,
+			app.ui.DoDefaultUntil(dictationButton, app.checkDictionButton)),
 		playAudio,
 		checkDictationResult,
 		app.uiHdl.Click(dictationButton), // Click again to stop voice typing.
@@ -387,9 +393,6 @@ func (app *GoogleDocs) editCellValue(ctx context.Context, cell, value string) er
 
 // renameFile renames the name of the spreadsheet.
 func (app *GoogleDocs) renameFile(sheetName string) uiauto.Action {
-	menuBarBanner := nodewith.Name("Menu bar").Role(role.Banner)
-	fileItem := nodewith.Name("File").Role(role.MenuItem).Ancestor(menuBarBanner)
-	fileExpanded := fileItem.Expanded()
 	renameItem := nodewith.Name("Rename r").Role(role.MenuItem)
 	renameField := nodewith.Name("Rename").Role(role.TextField).Editable().Focused()
 
@@ -472,18 +475,21 @@ func (app *GoogleDocs) closeDialogs(ctx context.Context) error {
 
 // checkDictionButton checks if the "Start dictation" button is checked.
 func (app *GoogleDocs) checkDictionButton(ctx context.Context) error {
+	startTime := time.Now()
 	voiceTypingDialog := nodewith.Name("Voice typing").Role(role.Dialog)
 	dictationButton := nodewith.Name("Start dictation").Role(role.ToggleButton).FinalAncestor(voiceTypingDialog)
 	return testing.Poll(ctx, func(ctx context.Context) error {
-		button, err := app.ui.Info(ctx, dictationButton)
+		button, err := app.ui.WithTimeout(time.Second).Info(ctx, dictationButton)
 		if err != nil {
 			return err
 		}
 		if button.Checked != checked.True {
 			return errors.New("button not checked yet")
 		}
+
+		testing.ContextLogf(ctx, "Takes %v seconds to verify the dictation button is checked", time.Since(startTime).Seconds())
 		return nil
-	}, &testing.PollOptions{Timeout: 15 * time.Second})
+	}, &testing.PollOptions{Timeout: defaultUIWaitTime})
 }
 
 // NewGoogleDocs creates GoogleDocs instance which implements ProductivityApp interface.
