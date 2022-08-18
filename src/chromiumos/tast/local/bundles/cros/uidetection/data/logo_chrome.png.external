@@ -1,5 +1,5 @@
 {
-  "url": "gs://chromiumos-test-assets-public/tast/cros/uidetection/logo_chrome_20211221.png",
-  "size": 2175,
-  "sha256sum": "a9aeb0b676f0bff94ce24a9b01f29043080907b71d2f5ec85da201a8841b3b99"
+  "url": "gs://chromiumos-test-assets-public/tast/cros/uidetection/logo_chrome_20220817.png",
+  "size": 2181,
+  "sha256sum": "0912d8fb62e0efdd616c06d624b45965098661c19ea40fd7f5f6623794fb42de"
 }
