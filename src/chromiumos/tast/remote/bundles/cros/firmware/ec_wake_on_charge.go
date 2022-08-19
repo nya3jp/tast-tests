@@ -41,7 +41,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ECWakeOnCharge,
 		Desc:         "Checks that device will charge when EC is in a low-power mode, as a replacement for manual test 1.4.11",
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantNotNeeded,
 		Contacts:     []string{"arthur.chuang@cienet.com", "chromeos-firmware@google.com"},
 		Attr:         []string{"group:firmware", "firmware_unstable", "firmware_bringup"},
 		SoftwareDeps: []string{"chrome"},
