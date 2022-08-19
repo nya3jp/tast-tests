@@ -77,9 +77,8 @@ func TestALSACommand(ctx context.Context, s *testing.State, name string) {
 		s.Fatalf("%s failed: %v", name, err)
 	}
 	if strings.Contains(string(out), "no soundcards found") {
-		s.Errorf("%s recognized no sound cards", name)
+		s.Fatalf("%s recognized no sound cards", name)
 	}
-
 	//Ignore external devices.
 	found := false
 	for _, line := range strings.Split(string(out), "\n") {
