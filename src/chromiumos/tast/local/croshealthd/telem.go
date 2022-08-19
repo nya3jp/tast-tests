@@ -47,6 +47,7 @@ const (
 	TelemCategoryInput             TelemCategory = "input"
 	TelemCategoryMemory            TelemCategory = "memory"
 	TelemCategoryNetwork           TelemCategory = "network"
+	TelemCategorySensor            TelemCategory = "sensor"
 	TelemCategoryStatefulPartition TelemCategory = "stateful_partition"
 	TelemCategoryStorage           TelemCategory = "storage"
 	TelemCategorySystem            TelemCategory = "system"
