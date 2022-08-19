@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "945b9df7_71f42995",
+        "filename": "src/chromiumos/tast/local/arc/ui.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-08-19T23:02:08Z",
+      "side": 1,
+      "message": "return errors.Wrap(err, \"failed to close Play Store\")\n\nAn error here is actually serious. It won\u0027t happen if the Play Store is already closed before calling this function.",
+      "range": {
+        "startLine": 62,
+        "startChar": 2,
+        "endLine": 62,
+        "endChar": 62
+      },
+      "revId": "6ad7cc3d71863c3278e5b8b5af21aae65b0869a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
