@@ -46,6 +46,30 @@
       },
       "revId": "f635733306280daff74b0c7f36aa4cb4f7cda575",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2307fe7_c313ceda",
+        "filename": "src/chromiumos/tast/common/testdevicerequirements/testdevicerequirements.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-08-19T23:23:02Z",
+      "side": 1,
+      "message": "1. I don\u0027t hink know the policy of adding a google link to a source code that in public repo. I am not ok with it but I don\u0027t know Google\u0027s policy on this.\n\n2. How about something more general:\n\n```\n\t// BootPerformance1 specifies The Chrome device MUST take no longer than a specific duration to boot\n\t// from Deep Sleep to kernel execution.\n\tBootPerformance1 \u003d \"boot-perf-0001-v01\"\n\n\t//  BootPerformance1 specifies The Chrome device MUST take no longer than a specific duration to boot\n\t// boot from Deep Sleep to the login screen in the normal\n\t// boot process, or the firmware recovery screen in the recovery boot\n\t// process.\n\tBootPerformance2 \u003d \"boot-perf-0002-v01\"\n```",
+      "parentUuid": "f5f6db73_00e75245",
+      "range": {
+        "startLine": 26,
+        "startChar": 1,
+        "endLine": 34,
+        "endChar": 40
+      },
+      "revId": "f635733306280daff74b0c7f36aa4cb4f7cda575",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

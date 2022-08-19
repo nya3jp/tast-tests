@@ -106,6 +106,24 @@
       "parentUuid": "bc2f0262_60bab322",
       "revId": "86545cf0b2e4be2f4de118868d54bfb9be13581d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ccd5801b_f835f97c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/boot_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-08-19T23:23:02Z",
+      "side": 1,
+      "message": "I think it is good.",
+      "parentUuid": "01e72dac_de43eba0",
+      "revId": "86545cf0b2e4be2f4de118868d54bfb9be13581d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
