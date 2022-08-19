@@ -140,10 +140,4 @@ var (
 
 	// RoamingToggle is the finder for the roaming toggle UI in the cellular detail page.
 	RoamingToggle = nodewith.Name("Allow mobile data roaming").Role(role.ToggleButton)
-
-	// CellularAdvanced is the finder for the button that collpases/expands the advanced section of cellular details page.
-	CellularAdvanced = nodewith.Name("Show advanced network properties").Role(role.Button)
-
-	// LockSimToggle is the finder for the to Lock SIM toggle UI in the cellular details page.
-	LockSimToggle = nodewith.NameStartingWith("Lock").Role(role.ToggleButton)
 )
