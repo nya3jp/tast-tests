@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90e329dd_92b8c69d",
+        "filename": "src/chromiumos/tast/local/arc/file.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-08-19T13:55:51Z",
+      "side": 1,
+      "message": "It seems to me that all the callers of this function are repeating the same pattern, I\u0027m wondering if the following pattern makes sense / can simplify the code?\n\n```\nfunc MountDiskImageIfVirtioBlkEnabled(ctx, a, user) (func(context.Context), error) {\n  virtioBlkDataEnabled, err :\u003d a.IsVirtioBlkDataEnabled(ctx)\n  if err !\u003d nil {\n    return nil, errors.Wrap(err, \"failed to check if virtio-blk /data is enabled\")\n  }\n  if !virtioBlkDataEnabled {\n    // Do nothing and return an empty defer func in this case\n    return func(context.Context) {}, nil\n  }\n \n  rootCryptDir, err :\u003d cryptohome.SystemPath(ctx, user)\n  if err !\u003d nil {\n    return nil, errors.Wrap(err, \"failed to get cryptohome root dir\")\n  }\n  \n  // MountVirtioBlkDataDiskImageReadOnly() and UnmountVirtioBlkDataDiskImage() can be inlined here.\n  if err :\u003d MountVirtioBlkDataDiskImageReadOnly(ctx, a, rootCryptDir); err !\u003d nil {\n    return nil, err\n  }\n  return UnmountVirtioBlkDataDiskImage(), err\n}\n```\n\nAnd then at the call site:\n```\ncleanupCtx :\u003d ctx\nctx, cancel :\u003d ctxutil.Shorten(ctx, 3*time.Second)\ndefer cancel()\n\ncleanup, err :\u003d arc.MountDiskImageIfVirtioBlkEnabled(ctx, a, user)\nif err !\u003d nil {\n  ...\n}\ndefer cleanup()\n```",
+      "range": {
+        "startLine": 171,
+        "startChar": 5,
+        "endLine": 171,
+        "endChar": 40
+      },
+      "revId": "8c2a4f7a9a805872b742144438ed429c1d1fb2c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9fa7d4b5_ee2b774a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/play_store_persistent.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-08-19T13:55:51Z",
+      "side": 1,
+      "message": "nit: it\u0027s a little confusing that what testing.Poll() means here, maybe you want to put this comment near that poll",
+      "range": {
+        "startLine": 82,
+        "startChar": 62,
+        "endLine": 82,
+        "endChar": 74
+      },
+      "revId": "8c2a4f7a9a805872b742144438ed429c1d1fb2c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
