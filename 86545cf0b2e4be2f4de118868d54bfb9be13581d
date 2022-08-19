@@ -52,6 +52,24 @@
       "parentUuid": "f086fd03_14d36727",
       "revId": "86545cf0b2e4be2f4de118868d54bfb9be13581d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73c3edf8_9539dcff",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/boot_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-08-19T20:23:21Z",
+      "side": 1,
+      "message": "How about we define a set of global variables to use for requirement?\n\nSomething like a new package:\n\n```\ntast-tests/src/chromiumos/tast/common/testdevicereq\n```\n\nWith content like this\n\n```\n\ncont (\n    // The Chrome device MUST take no longer than 1 second to boot \n    // from Deep Sleep (ACPI S5) to kernel execution.\n    BootPerformance1 \u003d \"boot-perf-0001-v01\"\n    \n    // The Chrome device MUST take no longer than 8 seconds total to \n    // boot from Deep Sleep (ACPI S5) to the login screen in the normal \n    // boot process, or the firmware recovery screen in the recovery boot\n    // process. \n    BootPerformance2 \u003d \"boot-perf-0002-v01\"\n)\n\n```\n\nThen, we can do this in the test code,\n\n```\nimport tdreq \"chromiumos/tast/common/testdevicerequirement\"\n\nRequirements: []string{tdreq.BootPerformance1, tdrq.BootPerformanc2 },\n```\n\nIt will probably easiter for tast team to support when there are support questions coming up in future.",
+      "parentUuid": "d9174f55_11f874fd",
+      "revId": "86545cf0b2e4be2f4de118868d54bfb9be13581d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
