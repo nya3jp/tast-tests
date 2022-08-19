@@ -30,7 +30,7 @@ func init() {
 			"rzakarian@google.com", // Test author
 			"chromeos-commercial-remote-management@google.com",
 		},
-		Attr:         []string{"group:dpanel-end2end"},
+		Attr:         []string{"group:dmserver-enrollment-daily"},
 		SoftwareDeps: []string{"reboot", "chrome"},
 		ServiceDeps:  []string{"tast.cros.policy.PolicyService", "tast.cros.tape.Service"},
 		Timeout:      gaiaBytebotEnrollmentTimeout,
