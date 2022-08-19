@@ -78,17 +78,17 @@ func TestALSACommand(ctx context.Context, s *testing.State, name string) {
 	}
 	if strings.Contains(string(out), "no soundcards found") {
 		s.Errorf("%s recognized no sound cards", name)
-	}
-
-	//Ignore external devices.
-	found := false
-	for _, line := range strings.Split(string(out), "\n") {
-		if strings.HasPrefix(line, "card") {
-			found = found || IsInternalCard(line)
+	} else {
+		//Ignore external devices.
+		found := false
+		for _, line := range strings.Split(string(out), "\n") {
+			if strings.HasPrefix(line, "card") {
+				found = found || IsInternalCard(line)
+			}
 		}
-	}
-	if !found {
-		s.Errorf("%s recognized no internal sound cards", name)
+		if !found {
+			s.Errorf("%s recognized no internal sound cards", name)
+		}
 	}
 }
 
