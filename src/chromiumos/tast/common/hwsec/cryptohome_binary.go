@@ -441,6 +441,6 @@ func (c *cryptohomeBinary) fetchRecoveryRequest(ctx context.Context, authSession
 
 // listAuthFactors returns auth factors by calling "cryptohome --action=list_auth_factors".
 func (c *cryptohomeBinary) listAuthFactors(ctx context.Context, username string) ([]byte, error) {
-	args := []string{"--action=list_auth_factors", "--user=" + username}
+	args := []string{"--output-format=binary-protobuf", "--action=list_auth_factors", "--user=" + username}
 	return c.call(ctx, args...)
 }

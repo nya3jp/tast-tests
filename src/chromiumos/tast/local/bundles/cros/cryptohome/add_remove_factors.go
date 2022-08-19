@@ -56,7 +56,7 @@ type expectedFactor struct {
 // expectation was checked. It should generally look something like "before xyz" or "after abc".
 func compareReplyToExpectations(when string, reply *uda.ListAuthFactorsReply, expectations []expectedFactor, s *testing.State) {
 	if len(reply.GetConfiguredAuthFactors()) != len(expectations) {
-		s.Fatalf("ListAuthFactors reported the wrong number of factors (got %d, want %d) %s", len(expectations), len(reply.GetConfiguredAuthFactors()), when)
+		s.Fatalf("ListAuthFactors reported the wrong number of factors (got %d, want %d) %s", len(reply.GetConfiguredAuthFactors()), len(expectations), when)
 	}
 	for i, expected := range expectations {
 		factor := reply.ConfiguredAuthFactors[i]

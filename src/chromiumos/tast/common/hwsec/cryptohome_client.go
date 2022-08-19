@@ -13,6 +13,8 @@ import (
 	"strings"
 	"time"
 
+	"github.com/golang/protobuf/proto"
+
 	cpb "chromiumos/system_api/cryptohome_proto"
 	uda "chromiumos/system_api/user_data_auth_proto"
 	"chromiumos/tast/errors"
@@ -40,11 +42,6 @@ var (
 	// recoveryRequestRegexp matches the recovery request value.
 	// It would match "recovery_request:*"
 	recoveryRequestRegexp = regexp.MustCompile(`recovery_request:(.+)\n`)
-
-	// Regular expression for parsing ListAuthFactor output. These expressions
-	// capture "type: AUTH_FACTOR_*"" and "label: *" fields in the output.
-	listAuthFactorTypeRegexp  = regexp.MustCompile(`\n {4}type: (.*)\n`)
-	listAuthFactorLabelRegexp = regexp.MustCompile(`\n {4}label: (.*)\n`)
 )
 
 func getLastLine(s string) string {
@@ -1014,9 +1011,6 @@ func (u *CryptohomeClient) FetchRecoveryRequest(ctx context.Context, authSession
 }
 
 // ListAuthFactors lists the auth factors for a given user.
-//
-// Function returns a list auth factors reply object, but for practical reasons only types and labels
-// of the auth factors will be populated. This may change the future if output parsing is improved.
 func (u *CryptohomeClient) ListAuthFactors(ctx context.Context, user string) (*uda.ListAuthFactorsReply, error) {
 	reply := &uda.ListAuthFactorsReply{}
 
@@ -1024,25 +1018,9 @@ func (u *CryptohomeClient) ListAuthFactors(ctx context.Context, user string) (*u
 	if err != nil {
 		return reply, errors.Wrap(err, "ListAuthFactors failed")
 	}
-
-	types := listAuthFactorTypeRegexp.FindAllSubmatch(binaryMsg, -1)
-	labels := listAuthFactorLabelRegexp.FindAllSubmatch(binaryMsg, -1)
-	if len(types) != len(labels) {
-		return reply, errors.Errorf("ListAuthFactors returned a mismatch of factor types and labels; got: %d, want: %d", len(types), len(labels))
+	if err := proto.Unmarshal(binaryMsg, reply); err != nil {
+		return reply, errors.Wrap(err, "failed to unmarshal ListAuthFactors reply")
 	}
-
-	factors := make([]*uda.AuthFactor, len(types))
-	for i := range factors {
-		newFactor := &uda.AuthFactor{}
-		factorType, ok := uda.AuthFactorType_value[string(types[i][1])]
-		if !ok {
-			return reply, errors.Errorf("ListAuthFactors returned an unrecognized type: %q", types[i][1])
-		}
-		newFactor.Type = uda.AuthFactorType(factorType)
-		newFactor.Label = string(labels[i][1])
-		factors[i] = newFactor
-	}
-	reply.ConfiguredAuthFactors = factors
 
 	return reply, nil
 }
