@@ -35,7 +35,6 @@ func init() {
 		Contacts: []string{
 			"backlight-swe@google.com",
 		},
-		Attr:         []string{"group:mainline"},
 		Timeout:      5 * time.Minute,
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
 		Data:         []string{"gear_wheels_4000x3000_20200624.jpg", "download_link.html"},
@@ -44,15 +43,18 @@ func init() {
 				Name:              "stable",
 				Fixture:           fixture.LoggedIn,
 				ExtraHardwareDeps: hwdep.D(pre.AppsStableModels),
+				ExtraAttr:         []string{"group:mainline"},
 			}, {
-				Name:              "unstable",
-				Fixture:           fixture.LoggedIn,
-				ExtraAttr:         []string{"informational"},
+				Name:    "unstable",
+				Fixture: fixture.LoggedIn,
+				// b:238260020 - disable aged (>1y) unpromoted informational tests
+				// ExtraAttr:         []string{"group:mainline", "informational"},
 				ExtraHardwareDeps: hwdep.D(pre.AppsUnstableModels),
 			}, {
 				Name:              "lacros",
 				Fixture:           fixture.LacrosLoggedIn,
 				ExtraSoftwareDeps: []string{"lacros_stable"},
+				ExtraAttr:         []string{"group:mainline"},
 				ExtraHardwareDeps: hwdep.D(pre.AppsStableModels),
 			},
 		},

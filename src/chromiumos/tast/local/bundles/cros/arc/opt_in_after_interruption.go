@@ -48,7 +48,8 @@ func init() {
 			"alanding@chromium.org", // Tast port author.
 			"khmel@chromium.org",    // Original autotest author.
 		},
-		Attr:         []string{"group:mainline", "informational"},
+		// b:238260020 - disable aged (>1y) unpromoted informational tests
+		// Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
 		Timeout:      10 * time.Minute,
 		Params: []testing.Param{{

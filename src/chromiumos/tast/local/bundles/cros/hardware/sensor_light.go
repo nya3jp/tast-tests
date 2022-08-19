@@ -19,7 +19,8 @@ func init() {
 			"gwendal@chromium.com", // ChromeOS sensors point of contact
 			"chromeos-sensors-eng@google.com",
 		},
-		Attr: []string{"group:mainline", "informational"},
+		// b:238260020 - disable aged (>1y) unpromoted informational tests
+		// Attr: []string{"group:mainline", "informational"},
 	})
 }
 

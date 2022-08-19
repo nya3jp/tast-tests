@@ -50,8 +50,9 @@ func init() {
 			Name: "",
 		}, {
 			// For automated testing.
-			Name:      "test",
-			ExtraAttr: []string{"group:mainline", "informational"},
+			Name: "test",
+			// b:238260020 - disable aged (>1y) unpromoted informational tests
+			// ExtraAttr:         []string{"group:mainline", "informational"},
 			// TODO(b/151111783): This is a speculative fix to limit the number of sessions. It
 			// seems that the test account is throttled by the CRD backend, so the test is failing
 			// with a periodic pattern. The model list is handcrafted to cover various platforms.

@@ -33,11 +33,13 @@ func init() {
 		Data:         []string{"ArcShelfIconTest.apk"},
 		Timeout:      30 * time.Second,
 		Params: []testing.Param{{
-			ExtraAttr:         []string{"group:mainline", "informational"},
+			// b:238260020 - disable aged (>1y) unpromoted informational tests
+			// ExtraAttr:         []string{"group:mainline", "informational"},
 			ExtraSoftwareDeps: []string{"android_p"},
 		}, {
-			Name:              "vm",
-			ExtraAttr:         []string{"group:mainline", "informational"},
+			Name: "vm",
+			// b:238260020 - disable aged (>1y) unpromoted informational tests
+			// ExtraAttr:         []string{"group:mainline", "informational"},
 			ExtraSoftwareDeps: []string{"android_vm"},
 		}},
 	})

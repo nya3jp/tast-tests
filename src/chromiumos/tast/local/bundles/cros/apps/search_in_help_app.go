@@ -39,16 +39,18 @@ func init() {
 			"callistus@chromium.org", // test author.
 			"showoff-eng@google.com",
 		},
-		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
 		Params: []testing.Param{
 			{
 				Name:              "stable",
 				ExtraHardwareDeps: hwdep.D(pre.AppsStableModels),
+				// TODO(b/238803010): move back to mainline when this is resolved.
+				ExtraAttr: []string{"group:mainline", "informational"},
 			}, {
 				Name:              "unstable",
 				ExtraHardwareDeps: hwdep.D(pre.AppsUnstableModels),
-				ExtraAttr:         []string{"informational"},
+				// b:238260020 - disable aged (>1y) unpromoted informational tests
+				// ExtraAttr:         []string{"group:mainline", "informational"},
 			},
 		},
 	})
