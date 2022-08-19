@@ -21,7 +21,7 @@ func TestParseSoundCards(t *testing.T) {
                       Google-Helios-rev1-Helios
 `,
 			output: []Card{
-				{"sofcmlrt1011rt5", "sof-cml_rt1011_", "sof-cml_rt1011_rt5682", "Google-Helios-rev1-Helios"},
+				{0, "sofcmlrt1011rt5", "sof-cml_rt1011_", "sof-cml_rt1011_rt5682", "Google-Helios-rev1-Helios"},
 			},
 		},
 		"two cards": {
@@ -32,8 +32,8 @@ func TestParseSoundCards(t *testing.T) {
                       HDA ATI HDMI at 0xf4d80000 irq 43
 `,
 			output: []Card{
-				{"acpd7219m98357", "acpd7219m98357", "acpd7219m98357", "Google-Grunt-rev6"},
-				{"HDMI", "HDA-Intel", "HDA ATI HDMI", "HDA ATI HDMI at 0xf4d80000 irq 43"},
+				{0, "acpd7219m98357", "acpd7219m98357", "acpd7219m98357", "Google-Grunt-rev6"},
+				{1, "HDMI", "HDA-Intel", "HDA ATI HDMI", "HDA ATI HDMI at 0xf4d80000 irq 43"},
 			},
 		},
 		"no cards": {
