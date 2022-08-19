@@ -39,6 +39,30 @@
       },
       "revId": "7d0d674ada25bb0cd8ed86e0d42e487177bd7ada",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7508c8c_8569818a",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 654,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-08-19T20:19:40Z",
+      "side": 1,
+      "message": "I think we should return the error, as a failed HealthCheck call indicates a need for a router reboot.\n\n```\n// HealthCheck examines if the DUT is healthy. If some tests fail to bring\n// the WiFi device back, it treats the DUT as unhealthy. Testing host needs\n// to reboot the DUT to refrain it from affecting the following tests.\n```\n\nIf this is called during Reset it will cause Reset to fail and then the test lifecycle actions will trigger a reboot.\n\nIf this is called from within a test we can\u0027t fix it and it should cause a test failure. Then after the test Reset is called, calling this function again likely resulting in another failure that can be recovered from before moving onto the next test.",
+      "parentUuid": "bc598f26_11cc1e70",
+      "range": {
+        "startLine": 654,
+        "startChar": 0,
+        "endLine": 654,
+        "endChar": 68
+      },
+      "revId": "7d0d674ada25bb0cd8ed86e0d42e487177bd7ada",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
