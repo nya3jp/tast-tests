@@ -475,6 +475,7 @@ func RunCUJ(ctx context.Context, s *testing.State) {
 			s.Fatalf("Failed to parse the runtime variable \"iteration\": want an integer, got %q", strVar)
 		}
 	}
+
 	if strVar, ok := s.Var("retry"); ok {
 		if intVar, err := strconv.Atoi(strVar); err == nil {
 			retry = intVar
