@@ -1,0 +1,112 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93a9676f_d46de4ca",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 12
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-08-19T06:41:59Z",
+      "side": 1,
+      "message": "nit: also mention that this allows for testing with no login in existing tests as well.",
+      "revId": "c0419159b21fa50ba8110731648dcad1c5b32dda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c17b43e7_987ba438",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/telemetry_info_reporting.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-08-19T06:41:59Z",
+      "side": 1,
+      "message": "You should increase the timeout. Maybe 15 minutes? On slow devices EnsureTPMAndSystemStateAreReset \u003d 3 minutes.",
+      "range": {
+        "startLine": 40,
+        "startChar": 2,
+        "endLine": 40,
+        "endChar": 9
+      },
+      "revId": "c0419159b21fa50ba8110731648dcad1c5b32dda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "858a8e3a_fca760b6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/telemetry_info_reporting.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-08-19T06:41:59Z",
+      "side": 1,
+      "message": "Create a cleanup context before to make sure that the defer has enough time to run.",
+      "revId": "c0419159b21fa50ba8110731648dcad1c5b32dda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c92c0cbf_05c8fc16",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/telemetry_info_reporting.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-08-19T06:41:59Z",
+      "side": 1,
+      "message": "Do you still need to sleep if you are polling?",
+      "revId": "c0419159b21fa50ba8110731648dcad1c5b32dda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf3316f4_b4decaa5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/telemetry_info_reporting.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-08-19T06:41:59Z",
+      "side": 1,
+      "message": "nit: move the validators outside the array definition. Ideally you can move them outside the test function itself.",
+      "revId": "c0419159b21fa50ba8110731648dcad1c5b32dda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6692d8c2_62b8a94b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/telemetry_info_reporting.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-08-19T06:41:59Z",
+      "side": 1,
+      "message": "s.Run in testing.Poll will have interesting side-effects. You will run a subtest multiple times which I don\u0027t think anybody expects.\n\nI\u0027d put the poll inside the s.Run.",
+      "revId": "c0419159b21fa50ba8110731648dcad1c5b32dda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
