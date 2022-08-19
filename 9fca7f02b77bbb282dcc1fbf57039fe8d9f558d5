@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12be8983_77ef450a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/crash/crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2022-08-19T22:04:21Z",
+      "side": 1,
+      "message": "Why this change?",
+      "range": {
+        "startLine": 265,
+        "startChar": 60,
+        "endLine": 265,
+        "endChar": 83
+      },
+      "revId": "9fca7f02b77bbb282dcc1fbf57039fe8d9f558d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b182314_0ba5849b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/crash/crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2022-08-19T22:04:21Z",
+      "side": 1,
+      "message": "We should be able to get the pid using cmd.Process.Pid.",
+      "range": {
+        "startLine": 270,
+        "startChar": 5,
+        "endLine": 271,
+        "endChar": 47
+      },
+      "revId": "9fca7f02b77bbb282dcc1fbf57039fe8d9f558d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
