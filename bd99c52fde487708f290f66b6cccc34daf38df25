@@ -22,6 +22,30 @@
       },
       "revId": "bd99c52fde487708f290f66b6cccc34daf38df25",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae153cee_a3a8ec05",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_wake_on_charge.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1202834
+      },
+      "writtenOn": "2022-08-19T22:32:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ef38623_3e6125a3",
+      "range": {
+        "startLine": 44,
+        "startChar": 37,
+        "endLine": 44,
+        "endChar": 46
+      },
+      "revId": "bd99c52fde487708f290f66b6cccc34daf38df25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
