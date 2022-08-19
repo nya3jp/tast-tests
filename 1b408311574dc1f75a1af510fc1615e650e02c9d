@@ -16,6 +16,23 @@
       "message": "Thanks!",
       "revId": "1b408311574dc1f75a1af510fc1615e650e02c9d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00ec7131_89ece385",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cache/cache.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2022-08-19T08:33:58Z",
+      "side": 1,
+      "message": "Maybe it\u0027s better to add a comment to mention that we mount and unmount the image in each loop to make sure that changes in the target file is properly reflected on the host side?\nThe same goes for the other mounts and unmounts in testing.Poll.",
+      "revId": "1b408311574dc1f75a1af510fc1615e650e02c9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
