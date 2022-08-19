@@ -144,14 +144,8 @@ var (
 	// CellularAdvanced is the finder for the button that collpases/expands the advanced section of cellular details page.
 	CellularAdvanced = nodewith.Name("Show advanced network properties").Role(role.Button)
 
-	// LockSimToggle is the finder for the Lock SIM toggle UI in the cellular details page.
+	// LockSimToggle is the finder for the to Lock SIM toggle UI in the cellular details page.
 	LockSimToggle = nodewith.NameStartingWith("Lock").Role(role.ToggleButton)
-
-	// EnterButton is the finder for the Enter button in the SIM lock dialog UI.
-	EnterButton = nodewith.Role(role.Button).Name("Enter")
-
-	// VisibilityButton is the finder for the show PIN button in the SIM lock dialog UI.
-	VisibilityButton = nodewith.Role(role.Button).HasClass("icon-visibility")
 )
 
 // Elements in "Proxy" section of Network page.
