@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/coords"
+	"chromiumos/tast/testing"
 )
 
 // ResizableArea setups resizeable area before performing resizing.
@@ -39,11 +40,34 @@ func ResizableArea(ctx context.Context, tconn *chrome.TestConn) (*coords.Rect, e
 
 // StableDrag drags the window and waits for location be stabled.
 func StableDrag(tconn *chrome.TestConn, window *nodewith.Finder, srcPt, endPt coords.Point) uiauto.Action {
+	const dragDuration = 3 * time.Second
 	ui := uiauto.New(tconn)
 
-	return uiauto.Combine("mouse drag and wait for location be stabled",
-		ui.WaitForLocation(window),
-		mouse.Drag(tconn, srcPt, endPt, time.Second),
-		ui.WaitForLocation(window),
-	)
+	return func(ctx context.Context) error {
+		if srcPt.Equals(endPt) {
+			return nil
+		}
+
+		locationBefore, err := ui.Location(ctx, window)
+		if err != nil {
+			return err
+		}
+
+		if err := mouse.Drag(tconn, srcPt, endPt, dragDuration)(ctx); err != nil {
+			return err
+		}
+
+		// Racing issue exists and causes this function didn't ensure a stable-drag action.
+		// Wait for location changes is essential, not just wait for location to be stable.
+		return testing.Poll(ctx, func(ctx context.Context) error {
+			locationAfter, err := ui.Location(ctx, window)
+			if err != nil {
+				return testing.PollBreak(err)
+			}
+			if locationBefore.Equals(*locationAfter) {
+				return errors.New("location hasn't changed")
+			}
+			return nil
+		}, &testing.PollOptions{Timeout: 5*time.Second + dragDuration})
+	}
 }

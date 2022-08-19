@@ -160,6 +160,8 @@ func (ra *ResizeApp) ResizeWindow(tconn *chrome.TestConn, window *nodewith.Finde
 			return errors.Wrap(err, "failed to get drag detail")
 		}
 
+		testing.ContextLogf(ctx, "Dragging from %v to %v", start, end)
+
 		if err := wmp.StableDrag(tconn, window, start, end)(ctx); err != nil {
 			return errors.Wrap(err, "failed to resize")
 		}
@@ -168,9 +170,11 @@ func (ra *ResizeApp) ResizeWindow(tconn *chrome.TestConn, window *nodewith.Finde
 		if err != nil {
 			return errors.Wrap(err, "failed to get window info after resize")
 		}
+
 		if !ra.verifyLocation(ctx, windowInfoAfter.Location, end, dragBound) {
 			return errors.Errorf("failed to verify that the window has been resized for bound %q: Before %q, after %q", dragBound, windowInfoBefore.Location, windowInfoAfter.Location)
 		}
+
 		testing.ContextLog(ctx, "Window has resized as expected")
 
 		if err := wmp.StableDrag(tconn, window, end, start)(ctx); err != nil {
@@ -184,7 +188,11 @@ func (ra *ResizeApp) ResizeWindow(tconn *chrome.TestConn, window *nodewith.Finde
 // verifyLocation verifies that the new position of window is correct.
 func (ra *ResizeApp) verifyLocation(ctx context.Context, windowLoc coords.Rect, expectedPos coords.Point, dragBound WindowBound) bool {
 	// The difference between each bound of target window's location and expected position must be not greater than a threshold.
-	const maxBias = defaultMargin
+	// As StableDrag() preserves one defaultMargin for both sourcePt and endPt, the actual result might be different than what
+	// we expected. The acceptable bias value would be less than (or equal to) 2 defaultMargin.
+	const maxBias = 2 * defaultMargin
+
+	testing.ContextLog(ctx, "Window location after resizing: ", windowLoc)
 
 	switch dragBound {
 	case TopLeft:
@@ -215,6 +223,7 @@ func (ra *ResizeApp) dragDetail(ctx context.Context, tconn *chrome.TestConn, dra
 	if err != nil {
 		return sourcePt, endPt, errors.Wrap(err, "failed to get resizable area")
 	}
+	testing.ContextLog(ctx, "Resizable area is ", resizeArea.BottomRight())
 
 	var shift coords.Point
 	switch dragBound {

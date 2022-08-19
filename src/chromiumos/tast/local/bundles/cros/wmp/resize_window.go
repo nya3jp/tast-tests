@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/arc"
+	"chromiumos/tast/local/arc/apputil"
 	"chromiumos/tast/local/arc/apputil/notificationshowcase"
 	"chromiumos/tast/local/bundles/cros/wmp/wmputils"
 	"chromiumos/tast/local/chrome"
@@ -54,7 +55,7 @@ func init() {
 				Val:               true, // Expect to test on ARC++ app.
 				ExtraSoftwareDeps: []string{"arc"},
 				ExtraData:         []string{resizeWindowArcAppApkFileName},
-				Timeout:           5 * time.Minute,
+				Timeout:           2*time.Minute + apputil.InstallationTimeout,
 			}},
 	})
 }
