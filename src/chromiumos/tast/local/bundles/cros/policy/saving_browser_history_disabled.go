@@ -41,16 +41,12 @@ func init() {
 		Params: []testing.Param{{
 			Fixture: fixture.ChromePolicyLoggedIn,
 			Val:     browser.TypeAsh,
-		},
-		/* Disabled due to <1% pass rate over 30 days. See b/241942929
-		{
+		}, {
 			Name:              "lacros",
 			ExtraSoftwareDeps: []string{"lacros"},
 			Fixture:           fixture.LacrosPolicyLoggedIn,
 			Val:               browser.TypeLacros,
-		}
-		*/
-		},
+		}},
 	})
 }
 
@@ -108,11 +104,6 @@ func SavingBrowserHistoryDisabled(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to update policies: ", err)
 			}
 
-			// Clear the browser history.
-			if err := tconn.Eval(ctx, `tast.promisify(chrome.browsingData.removeHistory({"since": 0}))`, nil); err != nil {
-				s.Fatal("Failed to clear browsing history: ", err)
-			}
-
 			// TODO(crbug.com/1254152): Modify browser setup after creating the new browser package.
 			// Setup browser based on the chrome type.
 			br, closeBrowser, err := browserfixt.SetUp(ctx, cr, s.Param().(browser.Type))
@@ -120,6 +111,20 @@ func SavingBrowserHistoryDisabled(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to open the browser: ", err)
 			}
 			defer closeBrowser(cleanupCtx)
+
+			// Connect to Test API of the used browser to clear the browser
+			// history. We need a second connection as the clearing of the
+			// history has to be executed from the used browser while the ui
+			// uiauto package needs a connection to the ash browser.
+			tconn2, err := br.TestAPIConn(ctx)
+			if err != nil {
+				s.Fatal("Failed to create Test API connection: ", err)
+			}
+
+			// Clear the browser history.
+			if err := tconn2.Eval(ctx, `tast.promisify(chrome.browsingData.removeHistory({"since": 0}))`, nil); err != nil {
+				s.Fatal("Failed to clear browsing history: ", err)
+			}
 
 			defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "ui_tree_"+param.name)
 
