@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf79c65a_07c38854",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-08-19T17:23:10Z",
+      "side": 1,
+      "message": "1, I saw a few files that are totally removed. We just need to remove the attribute related lines, right? Please stay the reason that we need to remove the files. Also, have the file removal approval by owner. If so, please mention it in the commit log.\n\n2. Please resolve conflicts. Also, I think it is better to split the CLs based different component. Then, add one of the owners of tests in the component as a reviewer. In this case, we will have less merge conflict and I think he coordination will be better this way.\n\n3. I think it may also have code conflict with Derek\u0027s change to remove tests (not just informational tests) that fail 100% in last 30 days. I add him to the CC list.",
+      "revId": "26f676d297908fb49c0b30e7f1fc2a85e67463c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
