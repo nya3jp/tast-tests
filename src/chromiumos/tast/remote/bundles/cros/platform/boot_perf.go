@@ -46,7 +46,8 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Vars:         []string{"platform.BootPerf.iterations", "platform.BootPerf.skipRootfsCheck"},
 		// This test collects boot timing for |iterations| times and requires a longer timeout.
-		Timeout: 25 * time.Minute,
+		Timeout:      25 * time.Minute,
+		Requirements: []string{"boot-perf-0001-v01", "boot-perf-0002-v01"},
 	})
 }
 
