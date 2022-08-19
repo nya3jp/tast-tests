@@ -35,6 +35,43 @@ func (c *Connector) Init(s *testing.FixtState, tconn *chrome.TestConn, d *uidete
 	c.keyboard = k
 }
 
+// EnterServerURL enters url to the Citix setup.
+func (c *Connector) EnterServerURL(ctx context.Context, cfg *apps.VDILoginConfig) error {
+	testing.ContextLog(ctx, "Citrix: entering server url")
+
+	if err := c.detector.WithTimeout(uiDetectionTimeout).WaitUntilExists(uidetection.Word("https://URL"))(ctx); err != nil {
+		return errors.Wrap(err, "failed waiting for Citrix splashscreen")
+	}
+
+	testing.ContextLog(ctx, "Citrix: entering server url")
+	if err := uiauto.Combine("enter citrix server url, connect and wait for next screen",
+		c.keyboard.AccelAction("Tab"), // Enter server test box.
+		c.keyboard.TypeAction(cfg.Server),
+		c.keyboard.AccelAction("Enter"), // Connect to the server.
+	)(ctx); err != nil {
+		return errors.Wrap(err, "failed entering server url")
+	}
+
+	return nil
+}
+
+// EnterCredentialsAndLogin waits for the screen and enters credentials.
+func (c *Connector) EnterCredentialsAndLogin(ctx context.Context, cfg *apps.VDILoginConfig) error {
+	testing.ContextLog(ctx, "Citrix: entering username and password and logging in")
+	if err := uiauto.Combine("enter username and password and connect login",
+		c.detector.WithTimeout(uiDetectionTimeout).WaitUntilExists(uidetection.TextBlock([]string{"User", "name"})),
+		c.keyboard.TypeAction(cfg.Username),
+		c.keyboard.AccelAction("Tab"),
+		c.keyboard.TypeAction(cfg.Password),
+		c.keyboard.AccelAction("Tab"),
+		c.keyboard.AccelAction("Enter"),
+	)(ctx); err != nil {
+		return errors.Wrap(err, "failed entering username or password")
+	}
+
+	return nil
+}
+
 // Login connects to the server and logs in using information provided in config.
 func (c *Connector) Login(ctx context.Context, cfg *apps.VDILoginConfig) error {
 	testing.ContextLog(ctx, "Citrix: logging in")
@@ -48,13 +85,13 @@ func (c *Connector) Login(ctx context.Context, cfg *apps.VDILoginConfig) error {
 		c.keyboard.AccelAction("Tab"), // Enter server test box.
 		c.keyboard.TypeAction(cfg.Server),
 		c.keyboard.AccelAction("Enter"), // Connect to the server.
-		c.detector.WithTimeout(uiDetectionTimeout).WaitUntilExists(uidetection.TextBlock([]string{"User", "name"})),
 	)(ctx); err != nil {
 		return errors.Wrap(err, "failed entering server url")
 	}
 
 	testing.ContextLog(ctx, "Citrix: entering username and password")
 	if err := uiauto.Combine("enter username and password and connect login",
+		c.detector.WithTimeout(uiDetectionTimeout).WaitUntilExists(uidetection.TextBlock([]string{"User", "name"})),
 		c.keyboard.TypeAction(cfg.Username),
 		c.keyboard.AccelAction("Tab"),
 		c.keyboard.TypeAction(cfg.Password),
@@ -141,4 +178,9 @@ func (c *Connector) ResetSearch(ctx context.Context) error {
 		return errors.Wrap(err, "couldn't clear the search results")
 	}
 	return nil
+}
+
+// ReplaceDetector replaces detector instance.
+func (c *Connector) ReplaceDetector(d *uidetection.Context) {
+	c.detector = d
 }
