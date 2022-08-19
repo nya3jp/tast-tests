@@ -185,31 +185,28 @@ func (p *itsPreImpl) Prepare(ctx context.Context, s *testing.PreState) interface
 	}
 	p.adbDevice = adbDevice
 
-	output, err := testexec.CommandContext(ctx, "python", "-c", "print(__import__('sys').version_info.major)").Output(testexec.DumpLogOnError)
+	output, err := testexec.CommandContext(ctx, "python3", "-c", "print(__import__('sys').version_info.major)").Output(testexec.DumpLogOnError)
 	if err != nil {
 		s.Fatal("Failed to probe system default python version: ", err)
 	}
-	isDefaultPython2 := output[0] == '2'
+	isDefaultPython3 := output[0] == '3'
 
+	testing.ContextLog(ctx, " python3 :",isDefaultPython3)
 	// Unpack ITS bundle.
 	bundlePath, err := p.abi.bundlePath()
 	if err != nil {
 		s.Fatal("Failed to get bundle path: ", err)
 	}
-	if isDefaultPython2 {
-		testing.ContextLog(ctx, "Use system default python2")
-		if err := itsUnzip(ctx, s.DataPath(bundlePath), p.dir); err != nil {
-			s.Fatal("Failed to unzip its bundle: ", err)
-		}
-		// The script is written in python2, no need to apply python2 -> python3 patches.
-		// TODO(b/195621235): Remove python2 code path here after fully migrate to python3.
-	} else {
+
+	if isDefaultPython3 {
 		testing.ContextLog(ctx, "Use system default python3")
 		if err := testexec.CommandContext(
 			ctx, "python3", s.DataPath(SetupITSRepoScript), s.DataPath(bundlePath),
 			"--patch_path", s.DataPath(ITSPy3Patch), "--output", p.dir).Run(testexec.DumpLogOnError); err != nil {
 			s.Fatal("Failed to setup its repo from bundle path: ", err)
 		}
+	}else{
+		s.Fatal("Not support python3 : ", err)
 	}
 
 	// Install CTSVerifier apk.
@@ -255,7 +252,7 @@ func (h *ITSHelper) TestCmd(ctx context.Context, scene, camera int) *testexec.Cm
 	scriptPath := path.Join("tools", "run_all_tests.py")
 	cmdStr := fmt.Sprintf(`cd %s
 	source %s
-	python %s device=%s scenes=%d camera=%d skip_scene_validation`,
+	python3 %s device=%s scenes=%d camera=%d skip_scene_validation`,
 		h.p.itsRoot(), setupPath, scriptPath, h.p.hostname, scene, camera)
 	cmd := testexec.CommandContext(ctx, "bash", "-c", cmdStr)
 	cmd.Env = append(os.Environ(), "PYTHONUNBUFFERED=y")

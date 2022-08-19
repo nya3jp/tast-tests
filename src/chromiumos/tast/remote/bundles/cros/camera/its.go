@@ -73,6 +73,22 @@ func init() {
 				Pre:               pre.ITSX86Pre,
 				Val:               itsParam{0, pb.Facing_FACING_BACK, ""},
 			},
+			// ARM back
+			{
+				Name:              "scene0_back_arm",
+				ExtraAttr:         []string{"camerabox_facing_back"},
+				ExtraData:         append([]string{pre.CtsVerifierArmZip}),
+				Pre:               pre.ITSArmPre,
+				Val:               itsParam{0, pb.Facing_FACING_BACK, ""},
+			},
+			// ARM front
+			{
+				Name:              "scene0_front_arm",
+				ExtraAttr:         []string{"camerabox_facing_front"},
+				ExtraData:         append([]string{pre.CtsVerifierArmZip}),
+				Pre:               pre.ITSArmPre,
+				Val:               itsParam{0, pb.Facing_FACING_FRONT, ""},
+			},
 		},
 	})
 }
