@@ -16,6 +16,24 @@
       "message": "Can we add a comment on what these strings coming from? It looks very arbitary and it will be very hard to maintain in future. Thanks.",
       "revId": "86545cf0b2e4be2f4de118868d54bfb9be13581d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f086fd03_14d36727",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/boot_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1518298
+      },
+      "writtenOn": "2022-08-19T18:37:03Z",
+      "side": 1,
+      "message": "Added a comment, let me know what you think. The requirements traceability is fluid right now as the working group works to define tooling. That is ultimately where requirements will come from. For now, we are using IDs as specified in: go/cros-pvs-reqid-proposal\n\nIf the IDs change it will be no more or less harder to maintain than any other of the string fields already defined (and uncommented), like Vars, SW Deps, etc.",
+      "parentUuid": "fdb4b343_888e5f9a",
+      "revId": "86545cf0b2e4be2f4de118868d54bfb9be13581d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
