@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a0b6010_3e0a220c",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 503,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2022-08-19T18:48:03Z",
+      "side": 1,
+      "message": "todo: how should expKeyType be piped through NewFirmwareTest?",
+      "range": {
+        "startLine": 503,
+        "startChar": 0,
+        "endLine": 503,
+        "endChar": 69
+      },
+      "revId": "56aedd30d732b8dd6a8dc97802a05cf7d139056e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

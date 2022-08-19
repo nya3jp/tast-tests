@@ -16,6 +16,29 @@
       "message": "Revising, not ready for review.",
       "revId": "d09233c787eb356d29ba4b2d7df408b013ddf1ca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9efff02_809f870e",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2022-08-19T18:48:03Z",
+      "side": 1,
+      "message": "this will reboot twice, once because FlashFirmware reboots for needsRebootAfterFlashing, and once when initializing entropy. \n\nCan we avoid this?",
+      "range": {
+        "startLine": 424,
+        "startChar": 1,
+        "endLine": 436,
+        "endChar": 38
+      },
+      "revId": "d09233c787eb356d29ba4b2d7df408b013ddf1ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad7e6f76_1a914097",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2022-08-19T18:48:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "271bbdb3_04c5680d",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 5
+      },
+      "revId": "20bb66e5c01d70075c46e5f345f58f3929f0567d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "988ddd9c_96193819",
@@ -61,6 +85,30 @@
       "writtenOn": "2022-07-26T09:42:16Z",
       "side": 1,
       "message": "Max 72 columns per line.",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 175
+      },
+      "revId": "20bb66e5c01d70075c46e5f345f58f3929f0567d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea26d8aa_fb7108b9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2022-08-19T18:48:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "988ddd9c_96193819",
       "range": {
         "startLine": 16,
         "startChar": 0,
