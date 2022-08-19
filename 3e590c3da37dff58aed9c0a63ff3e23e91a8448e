@@ -354,6 +354,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7815d4cd_a5c69c74",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/dock2_persistent_settings.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-08-19T17:06:22Z",
+      "side": 1,
+      "message": "I think your repo still need to be updated. I don\u0027t know what went wrong. Please contact an expert on repo tool to resolve it.\n\nThe line should be\n\n```\n// Copyright 2022 The ChromiumOS Authors.\n```\n\nThanks.",
+      "parentUuid": "851a47d7_22ff93e0",
+      "range": {
+        "startLine": 1,
+        "startChar": 30,
+        "endLine": 1,
+        "endChar": 31
+      },
+      "revId": "3e590c3da37dff58aed9c0a63ff3e23e91a8448e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "58dd4a28_07e134b6",
         "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/dock2_persistent_settings.go",
         "patchSetId": 23

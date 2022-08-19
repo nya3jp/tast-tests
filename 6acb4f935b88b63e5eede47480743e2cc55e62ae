@@ -3,6 +3,40 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "56bd61f2_096c267a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/dock2_persistent_settings.go",
+        "patchSetId": 27
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-08-19T17:06:22Z",
+      "side": 1,
+      "message": "1. I think it will be better if you add package prefix to your variables to avoid name conflict with other tests.\n\nwwcb.WWCBIP, wwcb.DockingID,...\n\n2. nit: I suggest to have variable names to start with an alphabet",
+      "revId": "6acb4f935b88b63e5eede47480743e2cc55e62ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79ca49a0_14b6d592",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/dock2_persistent_settings.go",
+        "patchSetId": 27
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-08-19T17:06:22Z",
+      "side": 1,
+      "message": "I think the name of function should be something more meaning. Also, there is no reason to have the dock2PersistentSettings prefix while all these functions are only used in this test.\n\nI suggest to have something like connect2ExtDisplays, connectDockingStation, openAppsOnDisplays, ...",
+      "revId": "6acb4f935b88b63e5eede47480743e2cc55e62ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "97f98692_b52b324f",
         "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/dock2_persistent_settings.go",
         "patchSetId": 27
