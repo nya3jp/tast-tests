@@ -150,6 +150,16 @@ func UCMSequences(ctx context.Context, s *testing.State) {
 	}
 
 	for _, card := range cards {
+		isExternal, err := card.IsExternal()
+		if err != nil {
+			s.Errorf("Cannot tell if %s is an external card: %s", card.ShortName, err)
+			continue
+		}
+		if isExternal {
+			s.Logf("Skipping external card %s", card.ShortName)
+			continue
+		}
+
 		ucmName := card.ShortName
 		if ucmSuffix != "" && !boardConfig.ShouldIgnoreUCMSuffix(card.ShortName) {
 			ucmName += "." + ucmSuffix
