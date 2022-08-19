@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cdd47275_df126e54",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-08-19T14:55:14Z",
+      "side": 1,
+      "message": "This seems like a great candidate for a table-driven test[1] as the params do not include any extra data or append any different attributes, and only change the length of the test.\n\n[1] https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Table_driven-tests",
+      "revId": "bc5d496788e914d587c7f912fac47ea39d9adfb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1445464_1d3370bb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/intel/webgl_multi_window.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-08-19T14:55:14Z",
+      "side": 1,
+      "message": "Please give this param a more descriptive name.",
+      "revId": "bc5d496788e914d587c7f912fac47ea39d9adfb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f0b6f02_24b124ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/intel/webgl_multi_window.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-08-19T14:55:14Z",
+      "side": 1,
+      "message": "Please give this param a more descriptive name.",
+      "revId": "bc5d496788e914d587c7f912fac47ea39d9adfb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "542679a0_7ebcfa60",
+        "filename": "src/chromiumos/tast/local/bundles/cros/intel/webgl_multi_window.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-08-19T14:55:14Z",
+      "side": 1,
+      "message": "Please give this param a more descriptive name.",
+      "revId": "bc5d496788e914d587c7f912fac47ea39d9adfb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2d422c5_d29b5c54",
+        "filename": "src/chromiumos/tast/local/bundles/cros/intel/webgl_multi_window.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-08-19T14:55:14Z",
+      "side": 1,
+      "message": "This should be available on all boards, right?",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 2
+      },
+      "revId": "bc5d496788e914d587c7f912fac47ea39d9adfb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
