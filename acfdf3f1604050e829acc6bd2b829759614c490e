@@ -16,6 +16,282 @@
       "message": "Please note that new test credentials must be landed on the private repo first.",
       "revId": "acfdf3f1604050e829acc6bd2b829759614c490e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4a0ccb2_4ae5ecaa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/drivefs_pooled_storage.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-08-19T01:37:46Z",
+      "side": 1,
+      "message": "nit: include `chromeos-files-syd@google.com`",
+      "range": {
+        "startLine": 30,
+        "startChar": 3,
+        "endLine": 30,
+        "endChar": 25
+      },
+      "revId": "acfdf3f1604050e829acc6bd2b829759614c490e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e512a7fc_a835a1c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/drivefs_pooled_storage.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-08-19T01:37:46Z",
+      "side": 1,
+      "message": "One of the reasons we have a pool of accounts is after a period of time these tests are running on ~90 boards across multiple releases simultaneously and can hit GAIA rate limits.\n\nI wonder if we \"need\" full board coverage or we can limit this to a few instead? Maybe raise a bug for this to investigate and we can land it as is and if it becomes a problem we have the bug with context ready to roll.",
+      "range": {
+        "startLine": 42,
+        "startChar": 2,
+        "endLine": 49,
+        "endChar": 4
+      },
+      "revId": "acfdf3f1604050e829acc6bd2b829759614c490e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e069e75_77d81e5f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/drivefs_pooled_storage.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-08-19T01:37:46Z",
+      "side": 1,
+      "message": "Generally when you do this table based [1] you either do:\n```\ns.Run\n```\nfor tests that run within the scope of DrivefsPooledStorage. From the perspective of tastboard and stainless if any of these tests fail the entire test fails. \n\nOne other option is to use `Params` [2] to split these up into sub tests such that if one fails the others don\u0027t and they get reported on tastboard / stainless as:\n\nDrivefsPooledStorage.low\nDrivefsPooledStorage.full_individual\nDrivefsPooledStorage.full_organization\n\nOne benefit of the latter is also the ability to have timeouts for each individual subtest instead of an overall timeout which is observed here. For example if full_individual times out the full_organization will still run, in it\u0027s current way it won\u0027t run.\n\n[1] http://go/tast-docs/writing_tests.md#Table_driven-tests\n[2] http://go/tast-docs/writing_tests.md#parameterized-tests",
+      "range": {
+        "startLine": 67,
+        "startChar": 1,
+        "endLine": 89,
+        "endChar": 2
+      },
+      "revId": "acfdf3f1604050e829acc6bd2b829759614c490e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7507d4f5_900bbdc1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/drivefs_pooled_storage.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-08-19T01:37:46Z",
+      "side": 1,
+      "message": "Probably want a cleanupCtx here to ensure this always get run (pass that into line 110 as well, e.g.\n```\ncleanupCtx :\u003d ctx\nctx, cancel :\u003d ctxutil.Shorten(ctx, 5*time.Second)\ndefer cancel()\n```",
+      "range": {
+        "startLine": 98,
+        "startChar": 17,
+        "endLine": 98,
+        "endChar": 20
+      },
+      "revId": "acfdf3f1604050e829acc6bd2b829759614c490e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f6e9862_ce3dae8c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/drivefs_pooled_storage.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-08-19T01:37:46Z",
+      "side": 1,
+      "message": "One thing with using the fixture, all of this is abstracted away and any changes necessary are done in one place. If we need to update the location (e.g. \"root\") all other locations will need to be done as well.\n\nYou could potentially place the current accounts in a pool of 1 (see first comment about why we use the pools) and then it should integrate nicely (although not sure about the client id 😐)",
+      "range": {
+        "startLine": 100,
+        "startChar": 2,
+        "endLine": 112,
+        "endChar": 49
+      },
+      "revId": "acfdf3f1604050e829acc6bd2b829759614c490e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3642e8fe_45beb6b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/drivefs_pooled_storage.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-08-19T01:37:46Z",
+      "side": 1,
+      "message": "Put this inside the `uiauto.Combine`, e.g.\n```\nuiauto.Combine(...,\n  files.ClickMoreMenuItem(),\n  files.OpenDrive(),\n  files.ClickMoreMenuItem(),\n)\n```\n\nAfter reading, is this even needed?",
+      "range": {
+        "startLine": 128,
+        "startChar": 2,
+        "endLine": 128,
+        "endChar": 27
+      },
+      "revId": "acfdf3f1604050e829acc6bd2b829759614c490e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a546b14e_28c71238",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/drivefs_pooled_storage.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-08-19T01:37:46Z",
+      "side": 1,
+      "message": "nit: drive?",
+      "range": {
+        "startLine": 129,
+        "startChar": 33,
+        "endLine": 129,
+        "endChar": 42
+      },
+      "revId": "acfdf3f1604050e829acc6bd2b829759614c490e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "134a2e3b_9f05e3d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/drivefs_pooled_storage.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-08-19T01:37:46Z",
+      "side": 1,
+      "message": "Can we just use `files` here? Should have an `Info` property available\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/uiauto/filesapp/uiwrapper.go;l\u003d50-52;drc\u003d882a199c3577907a0cc3a8dc3e6795bc77a03201",
+      "range": {
+        "startLine": 137,
+        "startChar": 23,
+        "endLine": 137,
+        "endChar": 25
+      },
+      "revId": "acfdf3f1604050e829acc6bd2b829759614c490e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dfd30735_a897ed06",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/drivefs_pooled_storage.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-08-19T01:37:46Z",
+      "side": 1,
+      "message": "Just FYI (no action required), this can lead to a difficult with change later on. Relying directly on UI classes means if anyone wants to change the names there is a long (sometimes on the order of weeks) time to land these changes:\n1. Change tast tests to accept both\n2. Change impl\n3. Change tast test to accept new class not old one",
+      "range": {
+        "startLine": 139,
+        "startChar": 40,
+        "endLine": 139,
+        "endChar": 62
+      },
+      "revId": "acfdf3f1604050e829acc6bd2b829759614c490e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "844fb1c6_f98958a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/drivefs_pooled_storage.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-08-19T01:37:46Z",
+      "side": 1,
+      "message": "nit: Can we show what we received instead? If we\u0027re getting bytes back it might be useful debugging to show how many (or it may actually have an error message which could be useful)",
+      "range": {
+        "startLine": 141,
+        "startChar": 12,
+        "endLine": 141,
+        "endChar": 44
+      },
+      "revId": "acfdf3f1604050e829acc6bd2b829759614c490e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca234926_b211d0c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/drivefs_pooled_storage.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-08-19T01:37:46Z",
+      "side": 1,
+      "message": "These if conditions only seem to change the text within the same banners, can we just have the text in the table above instead of the boolean? Makes it slightly smaller to read, e.g.\n\n```\nuser:               s.RequiredVar(\"filemanager.DrivefsPooledStorage.OrgFullUsername\"),\npass:               s.RequiredVar(\"filemanager.DrivefsPooledStorage.OrgFullPassword\"),\nexpectedBannerText: \"Warning: Test Org has used all of its Google Workspace storage.\"\nexpectedVisualSignalText: \"Your organization requires more storage to complete the upload.\"\n```\n\nWDYT?",
+      "range": {
+        "startLine": 144,
+        "startChar": 0,
+        "endLine": 144,
+        "endChar": 28
+      },
+      "revId": "acfdf3f1604050e829acc6bd2b829759614c490e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00ca00ac_593b273f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/drivefs_pooled_storage.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-08-19T01:37:46Z",
+      "side": 1,
+      "message": "nit: again all these could be files instead right? (same for all below)",
+      "range": {
+        "startLine": 146,
+        "startChar": 13,
+        "endLine": 146,
+        "endChar": 15
+      },
+      "revId": "acfdf3f1604050e829acc6bd2b829759614c490e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
