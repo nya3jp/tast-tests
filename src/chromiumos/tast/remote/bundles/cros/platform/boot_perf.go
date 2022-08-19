@@ -47,6 +47,10 @@ func init() {
 		Vars:         []string{"platform.BootPerf.iterations", "platform.BootPerf.skipRootfsCheck"},
 		// This test collects boot timing for |iterations| times and requires a longer timeout.
 		Timeout: 25 * time.Minute,
+
+		// List of requirements this test satisfies. These must match the DLM
+		// requirements and specify a version <req>-<version>.
+		Requirements: []string{"boot-perf-0001-v01", "boot-perf-0002-v01"},
 	})
 }
 
