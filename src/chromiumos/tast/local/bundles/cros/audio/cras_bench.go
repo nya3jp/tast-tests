@@ -18,8 +18,10 @@ import (
 
 // crasBenchParameters contains all the data needed to run a single test iteration.
 type crasBenchParameters struct {
-	BenchmarkFilter string // cras_bench filter for this test case.
-	MetricFps       bool   // If the result contains metric FPS.
+	BenchmarkFilter  string // cras_bench filter for this test case.
+	MetricFps        bool   // If the result contains metric FPS.
+	Time4096Frame    bool   // If the result contains metric "time_per_4096_frames".
+	MaxTime4096Frame bool   // If the result contains metric "max_time_per_4096_frames".
 }
 
 func init() {
@@ -33,30 +35,38 @@ func init() {
 			{
 				Name: "apm",
 				Val: crasBenchParameters{
-					BenchmarkFilter: "BM_Apm",
-					MetricFps:       true,
+					BenchmarkFilter:  "BM_Apm",
+					MetricFps:        true,
+					Time4096Frame:    false,
+					MaxTime4096Frame: false,
 				},
 			},
 			{
 				Name: "dsp",
 				Val: crasBenchParameters{
-					BenchmarkFilter: "BM_Dsp",
-					MetricFps:       true,
+					BenchmarkFilter:  "BM_Dsp",
+					MetricFps:        true,
+					Time4096Frame:    false,
+					MaxTime4096Frame: false,
 				},
 			},
 			{
 				Name: "cras_mixer_ops",
 				Val: crasBenchParameters{
-					BenchmarkFilter: "BM_CrasMixerOps",
-					MetricFps:       false,
+					BenchmarkFilter:  "BM_CrasMixerOps",
+					MetricFps:        false,
+					Time4096Frame:    false,
+					MaxTime4096Frame: false,
 				},
 			},
 			{
 				Name:              "alsa",
 				ExtraHardwareDeps: hwdep.D(hwdep.Speaker()),
 				Val: crasBenchParameters{
-					BenchmarkFilter: "BM_Alsa",
-					MetricFps:       true,
+					BenchmarkFilter:  "BM_Alsa",
+					MetricFps:        true,
+					Time4096Frame:    true,
+					MaxTime4096Frame: true,
 				},
 			},
 		},
@@ -95,9 +105,11 @@ func CrasBench(ctx context.Context, s *testing.State) {
 	// }
 	result := struct {
 		Benchmarks []struct {
-			Name    string  `json:"name"`
-			CPUTime float64 `json:"cpu_time"`
-			FPS     float64 `json:"frames_per_second"`
+			Name             string  `json:"name"`
+			CPUTime          float64 `json:"cpu_time"`
+			FPS              float64 `json:"frames_per_second"`
+			Time4096Frame    float64 `json:"time_per_4096_frames"`
+			MaxTime4096Frame float64 `json:"max_time_per_4096_frames"`
 		} `json:"benchmarks"`
 	}{}
 	if err := json.Unmarshal(out, &result); err != nil {
@@ -113,6 +125,14 @@ func CrasBench(ctx context.Context, s *testing.State) {
 		if param.MetricFps {
 			fps := perf.Metric{Name: name, Variant: "fps", Unit: "fps", Direction: perf.BiggerIsBetter}
 			p.Set(fps, res.FPS)
+		}
+		if param.Time4096Frame {
+			time4096 := perf.Metric{Name: name, Variant: "time_per_4096_frames", Unit: "ns", Direction: perf.SmallerIsBetter}
+			p.Set(time4096, res.Time4096Frame)
+		}
+		if param.MaxTime4096Frame {
+			maxTime4096 := perf.Metric{Name: name, Variant: "max_time_per_4096_frames", Unit: "ns", Direction: perf.SmallerIsBetter}
+			p.Set(maxTime4096, res.MaxTime4096Frame)
 		}
 	}
 	if err := p.Save(s.OutDir()); err != nil {
