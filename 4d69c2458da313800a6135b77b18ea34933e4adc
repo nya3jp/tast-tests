@@ -22,6 +22,30 @@
       },
       "revId": "4d69c2458da313800a6135b77b18ea34933e4adc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2b5b637_532d07c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/gesture_navigation.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1528608
+      },
+      "writtenOn": "2022-08-19T14:08:29Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "897dd9a8_0242ccc4",
+      "range": {
+        "startLine": 48,
+        "startChar": 2,
+        "endLine": 48,
+        "endChar": 52
+      },
+      "revId": "4d69c2458da313800a6135b77b18ea34933e4adc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

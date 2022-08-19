@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "98110783_946c1864",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/gesture_navigation.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1528608
+      },
+      "writtenOn": "2022-08-19T14:08:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "453c0b43_bfb6583d",
+      "revId": "16bceabef5ebaf27e93de2ea1405172eb061c644",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "022defb1_2647ad64",
@@ -48,6 +66,30 @@
       "writtenOn": "2022-07-15T07:32:05Z",
       "side": 1,
       "message": "should we just skip to the navigation flow with the test api test? It would make test more robust",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 90,
+        "endChar": 2
+      },
+      "revId": "16bceabef5ebaf27e93de2ea1405172eb061c644",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f2f0ab2_beb302c0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/gesture_navigation.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1528608
+      },
+      "writtenOn": "2022-08-19T14:08:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "022defb1_2647ad64",
       "range": {
         "startLine": 63,
         "startChar": 0,
