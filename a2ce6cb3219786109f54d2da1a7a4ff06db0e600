@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b60a7e4a_9a66900a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/dock2_persistent_settings.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1545162
+      },
+      "writtenOn": "2022-08-19T01:35:58Z",
+      "side": 1,
+      "message": "Yeah. Mostly. It describe what testing for.\nDoes it need to remove?",
+      "parentUuid": "d56c84fd_3c7b99e1",
+      "revId": "a2ce6cb3219786109f54d2da1a7a4ff06db0e600",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bcc7fe76_888f5a1a",
         "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/dock2_persistent_settings.go",
         "patchSetId": 26
@@ -31,6 +49,30 @@
       "writtenOn": "2022-08-17T16:09:01Z",
       "side": 1,
       "message": "`displays`",
+      "range": {
+        "startLine": 14,
+        "startChar": 28,
+        "endLine": 14,
+        "endChar": 35
+      },
+      "revId": "a2ce6cb3219786109f54d2da1a7a4ff06db0e600",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "37a09c10_87a687dc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/dock2_persistent_settings.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1545162
+      },
+      "writtenOn": "2022-08-19T01:35:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bcc7fe76_888f5a1a",
       "range": {
         "startLine": 14,
         "startChar": 28,
