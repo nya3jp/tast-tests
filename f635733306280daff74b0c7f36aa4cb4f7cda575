@@ -22,6 +22,30 @@
       },
       "revId": "f635733306280daff74b0c7f36aa4cb4f7cda575",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5f6db73_00e75245",
+        "filename": "src/chromiumos/tast/common/testdevicerequirements/testdevicerequirements.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1518298
+      },
+      "writtenOn": "2022-08-19T22:58:27Z",
+      "side": 1,
+      "message": "Seewai, are you ok with moving forward with Brett\u0027s suggestion?",
+      "parentUuid": "0b782839_89cde90c",
+      "range": {
+        "startLine": 26,
+        "startChar": 1,
+        "endLine": 34,
+        "endChar": 40
+      },
+      "revId": "f635733306280daff74b0c7f36aa4cb4f7cda575",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
