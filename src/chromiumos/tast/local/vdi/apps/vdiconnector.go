@@ -30,9 +30,12 @@ type VDILoginConfig struct {
 type VDIInt interface {
 	Init(s *testing.FixtState, tconn *chrome.TestConn, d *uidetection.Context, k *input.KeyboardEventWriter)
 	Login(ctx context.Context, cfg *VDILoginConfig) error
+	EnterServerURL(ctx context.Context, cfg *VDILoginConfig) error
+	EnterCredentialsAndLogin(ctx context.Context, cfg *VDILoginConfig) error
 	Logout(ctx context.Context) error
 	LoginAfterRestart(ctx context.Context) error
 	WaitForMainScreenVisible(ctx context.Context) error
 	SearchAndOpenApplication(ctx context.Context, appName string, checkIfOpened func(context.Context) error) uiauto.Action
 	ResetSearch(ctx context.Context) error
+	ReplaceDetector(d *uidetection.Context)
 }

@@ -36,6 +36,48 @@ func (c *Connector) Init(s *testing.FixtState, tconn *chrome.TestConn, d *uidete
 	c.keyboard = k
 }
 
+// EnterServerURL waits for the screen and enters url to the VMWare setup.
+func (c *Connector) EnterServerURL(ctx context.Context, cfg *apps.VDILoginConfig) error {
+	testing.ContextLog(ctx, "VMWare: entering server url")
+
+	if err := c.detector.WithTimeout(uiDetectionTimeout).WaitUntilExists(uidetection.CustomIcon(c.dataPath(VmwareData[SplashscreenAddBtn])))(ctx); err != nil {
+		return errors.Wrap(err, "failed waiting for VMware splashscreen")
+	}
+
+	if err := uiauto.Combine("click on adding new connection and wait to next screen",
+		c.detector.LeftClick(uidetection.CustomIcon(c.dataPath(VmwareData[SplashscreenAddBtn]))),
+		c.detector.WithTimeout(uiDetectionTimeout).WaitUntilExists(uidetection.Word("Connect")),
+	)(ctx); err != nil {
+		return errors.Wrap(err, "failed clicking on add new connection")
+	}
+
+	testing.ContextLog(ctx, "VMware: entering server url")
+	if err := uiauto.Combine("enter VMware server url, connect and wait for next screen",
+		c.keyboard.TypeAction(cfg.Server),
+		c.keyboard.AccelAction("Enter"),
+	)(ctx); err != nil {
+		return errors.Wrap(err, "failed adding server url")
+	}
+
+	return nil
+}
+
+// EnterCredentialsAndLogin waits for the screen and enters credentials.
+func (c *Connector) EnterCredentialsAndLogin(ctx context.Context, cfg *apps.VDILoginConfig) error {
+	testing.ContextLog(ctx, "VMWare: entering username and password and logging in")
+	if err := uiauto.Combine("enter username and password and connect login",
+		c.detector.WithTimeout(uiDetectionTimeout).WaitUntilExists(uidetection.Word("Login")),
+		c.keyboard.TypeAction(cfg.Username),
+		c.keyboard.AccelAction("Tab"),
+		c.keyboard.TypeAction(cfg.Password),
+		c.keyboard.AccelAction("Enter"),
+	)(ctx); err != nil {
+		return errors.Wrap(err, "failed entering username or password")
+	}
+
+	return nil
+}
+
 // Login connects to the server and logs in using information provided in config.
 func (c *Connector) Login(ctx context.Context, cfg *apps.VDILoginConfig) error {
 	testing.ContextLog(ctx, "VMware: logging in")
@@ -56,13 +98,13 @@ func (c *Connector) Login(ctx context.Context, cfg *apps.VDILoginConfig) error {
 	if err := uiauto.Combine("enter VMware server url, connect and wait for next screen",
 		c.keyboard.TypeAction(cfg.Server),
 		c.keyboard.AccelAction("Enter"),
-		c.detector.WithTimeout(uiDetectionTimeout).WaitUntilExists(uidetection.Word("Login")),
 	)(ctx); err != nil {
 		return errors.Wrap(err, "failed adding server url")
 	}
 
 	testing.ContextLog(ctx, "VMware: entering username and password")
 	if err := uiauto.Combine("enter username and password and connect login",
+		c.detector.WithTimeout(uiDetectionTimeout).WaitUntilExists(uidetection.Word("Login")),
 		c.keyboard.TypeAction(cfg.Username),
 		c.keyboard.AccelAction("Tab"),
 		c.keyboard.TypeAction(cfg.Password),
@@ -172,4 +214,9 @@ func (c *Connector) ResetSearch(ctx context.Context) error {
 		return errors.Wrap(err, "couldn't clear the search results")
 	}
 	return nil
+}
+
+// ReplaceDetector replaces detector instance.
+func (c *Connector) ReplaceDetector(d *uidetection.Context) {
+	c.detector = d
 }
