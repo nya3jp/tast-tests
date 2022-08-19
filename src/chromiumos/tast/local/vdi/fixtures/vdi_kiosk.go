@@ -20,6 +20,7 @@ import (
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/kioskmode"
 	"chromiumos/tast/local/policyutil/fixtures"
+	"chromiumos/tast/local/syslog"
 	"chromiumos/tast/local/uidetection"
 	vdiApps "chromiumos/tast/local/vdi/apps"
 	"chromiumos/tast/local/vdi/apps/citrix"
@@ -51,7 +52,7 @@ func init() {
 		SetUpTimeout:    chrome.EnrollmentAndLoginTimeout + vdiApps.VDILoginTimeout,
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
-		PostTestTimeout: 15 * time.Second,
+		PostTestTimeout: time.Minute,
 		Data:            citrix.CitrixData,
 		Parent:          fixture.FakeDMSEnrolled,
 	})
@@ -82,7 +83,7 @@ func init() {
 		SetUpTimeout:    chrome.EnrollmentAndLoginTimeout + vdiApps.VDILoginTimeout,
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
-		PostTestTimeout: 15 * time.Second,
+		PostTestTimeout: time.Minute,
 		Data:            vmware.VmwareData,
 		Parent:          fixture.FakeDMSEnrolled,
 	})
@@ -95,6 +96,8 @@ type kioskFixtureState struct {
 	// kiosk is a reference to a kiosk sessions providing a clean way to tear
 	// down the session.
 	kiosk *kioskmode.Kiosk
+	// fdms is the already running DMS server from the parent fixture.
+	fdms *fakedms.FakeDMS
 	// keyboard is a reference to keyboard to be release in the TearDown.
 	keyboard *input.KeyboardEventWriter
 	// vdiApplicationToStart is the VDI application that is launched.
@@ -107,6 +110,8 @@ type kioskFixtureState struct {
 	vdiUsernameKey string
 	// vdiPasswordKey is a key to retrieve VDI user password.
 	vdiPasswordKey string
+	// vdiConfig holds the vdi configuration.
+	vdiConfig vdiApps.VDILoginConfig
 	// accountsConfiguration holds the Kiosk accounts configuration that is
 	// prepared in SetUp when creating Kiosk session and in TearDown when
 	// cleaning policies preventing Kiosk from autostart - since
@@ -123,6 +128,7 @@ func (v *kioskFixtureState) SetUp(ctx context.Context, s *testing.FixtState) int
 	if !ok {
 		s.Fatal("Parent is not a FakeDMS fixture")
 	}
+	v.fdms = fdms
 
 	vdiAccountID := "vdi_kiosk@managedchrome.com"
 	accountType := policy.AccountTypeKioskApp
@@ -199,15 +205,19 @@ func (v *kioskFixtureState) SetUp(ctx context.Context, s *testing.FixtState) int
 		vdiPassword = s.RequiredVar(v.vdiPasswordKey)
 	}
 
+	v.vdiConfig = vdiApps.VDILoginConfig{
+		Server:   vdiServer,
+		Username: vdiUsername,
+		Password: vdiPassword,
+	}
+
 	if err := v.vdiConnector.Login(
 		ctx,
-		&vdiApps.VDILoginConfig{
-			Server:   vdiServer,
-			Username: vdiUsername,
-			Password: vdiPassword,
-		}); err != nil {
+		&v.vdiConfig,
+	); err != nil {
 		s.Fatal("Was not able to login to the VDI application: ", err)
 	}
+
 	if err := v.vdiConnector.WaitForMainScreenVisible(ctx); err != nil {
 		s.Fatal("Main screen of the VDI application was not visible: ", err)
 	}
@@ -265,4 +275,38 @@ func (v *kioskFixtureState) PostTest(ctx context.Context, s *testing.FixtTestSta
 	if err := dumpPolicies(ctx, tconn, fixtures.PolicyFileDump); err != nil {
 		s.Fatal("Could not store policies: ", err)
 	}
+
+	chrome.Unlock()
+
+	reader, err := syslog.NewReader(ctx, syslog.Program("chrome"))
+	if err != nil {
+		s.Fatal("Failed to start log reader: ", err)
+	}
+	defer reader.Close()
+	cr, err := v.kiosk.RestartChromeWithOptions(
+		ctx,
+		chrome.NoLogin(),
+		chrome.DMSPolicy(v.fdms.URL),
+		chrome.KeepState())
+	if err != nil {
+		s.Fatal("Failed to connect to new chrome instance: ", err)
+	}
+	chrome.Lock()
+
+	if err := kioskmode.ConfirmKioskStarted(ctx, reader); err != nil {
+		s.Fatal("Kiosk is not started after restarting Chrome: ", err)
+	}
+
+	// A new connection is required since Chrome was restarted.
+	tconn, err = cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to create Test API connection: ", err)
+	}
+
+	// Detector has to be recreated and updated in vdi connector.
+	detector := uidetection.NewDefault(tconn)
+	v.vdiConnector.ReplaceDetector(detector)
+
+	// TODO: kamilszarek add error handling.
+	v.vdiConnector.EnterCredentialsAndLogin(ctx, &v.vdiConfig)
 }
