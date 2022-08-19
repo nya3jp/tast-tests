@@ -52,6 +52,24 @@
       "parentUuid": "73897090_8f324d63",
       "revId": "58c79eb936bad8cd85c9ce6aa0921021596fe5e9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ee0f3a9_6fb42821",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-08-19T00:28:22Z",
+      "side": 1,
+      "message": "So, I should wait for your testing first before I review this CL again?",
+      "parentUuid": "e52aacec_74b3cc47",
+      "revId": "58c79eb936bad8cd85c9ce6aa0921021596fe5e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
