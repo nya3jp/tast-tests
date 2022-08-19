@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a87a5abd_d49cd524",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-08-19T22:21:38Z",
+      "side": 1,
+      "message": "LGTM % one nit",
+      "revId": "7a15307b89393fc15d82a7433b48d719067ea2c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dea6c604_28555425",
@@ -49,6 +66,47 @@
       "side": 1,
       "message": "I\u0027ve added the suggested cleanup in this CL: https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3843170\n\n\nI think we should still make this change in addition to fixing the other tests.  This additional step makes the utility function more robust and ensures that it will work as described regardless of the current state of the Play Store app.",
       "parentUuid": "dea6c604_28555425",
+      "revId": "7a15307b89393fc15d82a7433b48d719067ea2c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3f7ab3a_7652b608",
+        "filename": "src/chromiumos/tast/local/arc/ui.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-08-19T22:21:38Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "6d6bb913_312aacba",
+      "revId": "7a15307b89393fc15d82a7433b48d719067ea2c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ec9cff1_49bf860b",
+        "filename": "src/chromiumos/tast/local/arc/ui.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-08-19T22:21:38Z",
+      "side": 1,
+      "message": "Check the error message from apps.Close() because the Play Store could be open, but apps.Close() can still fail to close it. This function doesn\u0027t return an error if the Play Store is not already open.",
+      "range": {
+        "startLine": 61,
+        "startChar": 1,
+        "endLine": 61,
+        "endChar": 11
+      },
       "revId": "7a15307b89393fc15d82a7433b48d719067ea2c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
