@@ -22,6 +22,30 @@
       },
       "revId": "e84304f1216551f0f86a7be6c92ff1e588b9025e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a8670c0_c56b03f3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2022-08-19T18:46:18Z",
+      "side": 1,
+      "message": "Package dutfs provides remote file system operations on DUT. Mkdir is included in this package for consistency.\n\nAdd gen command to commit message.",
+      "parentUuid": "38a2aaa9_341ca78c",
+      "range": {
+        "startLine": 7,
+        "startChar": 11,
+        "endLine": 7,
+        "endChar": 16
+      },
+      "revId": "e84304f1216551f0f86a7be6c92ff1e588b9025e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
