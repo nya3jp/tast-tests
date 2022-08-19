@@ -21,12 +21,14 @@ import (
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/ossettings"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/testing"
 )
 
 const (
 	testPackageName = "org.chromium.arc.testapp.linkcapturing"
+	testIntentText  = testPackageName + ":id/intent_text"
 )
 
 func init() {
@@ -123,17 +125,89 @@ func LinkCapturing(ctx context.Context, s *testing.State) {
 	}
 	defer closeBrowser(cleanupCtx)
 
+	// Default state: Browser links stay in browser, Android links stay
+	// in Android.
 	if err := verifyBrowserLinkStaysInBrowser(ctx, tconn, br); err != nil {
 		s.Fatal("Failed to verify that a link clicked in the browser remains in the browser: ", err)
 	}
-
 	if err := verifyAndroidLinkStaysInAndroid(ctx, tconn, arcDevice, uiAutomator); err != nil {
 		s.Fatal("Failed to verify that a link clicked in Android remains in Android: ", err)
 	}
+
+	// When link capturing is set to "Open in app", links from the browser
+	// should open in Android.
+	if err := changeLinkCapturingSetting(ctx, tconn, cr, true); err != nil {
+		s.Fatal("Failed to enable link capturing setting: ", err)
+	}
+	if err := verifyBrowserLinkOpensAndroid(ctx, tconn, br, uiAutomator); err != nil {
+		s.Fatal("Failed to verify that a link clicked in the browser opens Android: ", err)
+	}
+
+	// When link capturing is set to "Open in Chrome browser", links from
+	// Android should show the Android intent picker.
+	if err := changeLinkCapturingSetting(ctx, tconn, cr, false); err != nil {
+		s.Fatal("Failed to disable link capturing setting: ", err)
+	}
+	if err := verifyAndroidLinkShowsPicker(ctx, tconn, arcDevice, uiAutomator); err != nil {
+		s.Fatal("Failed to verify that a link clicked in Android shows the intent picker: ", err)
+	}
 }
 
-// verifyBrowserLinkStaysInBrowser clicks a link in the browser and verifies that it stays in a browser tab.
+// verifyBrowserLinkStaysInBrowser clicks a link in the browser and verifies
+// that it stays in a browser tab.
 func verifyBrowserLinkStaysInBrowser(ctx context.Context, tconn *chrome.TestConn, br *browser.Browser) error {
+	heading := nodewith.Name("In-scope page").Role(role.Heading)
+	ui := uiauto.New(tconn)
+
+	return clickBrowserLinkAndVerify(ctx, tconn, br, func() error {
+		if err := ui.WaitUntilExists(heading)(ctx); err != nil {
+			return errors.Wrap(err, "failed to wait for browser page")
+		}
+
+		return nil
+	})
+}
+
+// verifyBrowserLinkOpensAndroid clicks a link in the browser and verifies
+// that it opens the test Android app.
+func verifyBrowserLinkOpensAndroid(ctx context.Context, tconn *chrome.TestConn, br *browser.Browser, uiAutomator *arcui.Device) error {
+	return clickBrowserLinkAndVerify(ctx, tconn, br, func() error {
+		if err := uiAutomator.Object(arcui.ID(testIntentText)).WaitForExists(ctx, 10*time.Second); err != nil {
+			return errors.Wrap(err, "failed to wait for link activity")
+		}
+
+		return nil
+	})
+}
+
+// verifyAndroidLinkStaysInAndroid clicks a link in Android and verifies that
+// it is handled within Android.
+func verifyAndroidLinkStaysInAndroid(ctx context.Context, tconn *chrome.TestConn, arcDevice *arc.ARC, uiAutomator *arcui.Device) error {
+	return clickAndroidLinkAndVerify(ctx, tconn, arcDevice, uiAutomator,
+		func() error {
+			if err := uiAutomator.Object(arcui.ID(testIntentText)).WaitForExists(ctx, 10*time.Second); err != nil {
+				return errors.Wrap(err, "failed to wait for link activity")
+			}
+			return nil
+		})
+}
+
+// verifyAndroidLinkShowsPicker clicks a link in Android and verifies that
+// it shows an intent picker (so it is not automatically handled by Android).
+func verifyAndroidLinkShowsPicker(ctx context.Context, tconn *chrome.TestConn, arcDevice *arc.ARC, uiAutomator *arcui.Device) error {
+	return clickAndroidLinkAndVerify(ctx, tconn, arcDevice, uiAutomator,
+		func() error {
+			if err := uiAutomator.Object(arcui.Text("Open with")).WaitForExists(ctx, 10*time.Second); err != nil {
+				return errors.Wrap(err, "failed to wait for ARC intent picker")
+			}
+			return nil
+		})
+}
+
+// clickBrowserLinkAndVerify clicks a link in a browser tab, then calls
+// verifier to verify the device state. verifier is passed as a func to allow
+// cleanup after verification is completed.
+func clickBrowserLinkAndVerify(ctx context.Context, tconn *chrome.TestConn, br *browser.Browser, verifier func() error) error {
 	const testPageURL = "http://127.0.0.1:8000/link_capturing/link_capturing_index.html"
 
 	conn, err := br.NewConn(ctx, testPageURL)
@@ -145,25 +219,25 @@ func verifyBrowserLinkStaysInBrowser(ctx context.Context, tconn *chrome.TestConn
 	ui := uiauto.New(tconn).WithTimeout(30 * time.Second)
 
 	link := nodewith.Name("In-scope link").Role(role.Link)
-	heading := nodewith.Name("In-scope page").Role(role.Heading)
 
-	// Clicking the link should stay in the browser, not open the ARC app.
-	if err := uiauto.Combine("Click link to browser",
-		ui.LeftClick(link),
-		// "In-scope page" text appears on the app_index.html page.
-		ui.WaitUntilExists(heading))(ctx); err != nil {
+	if err := ui.LeftClick(link)(ctx); err != nil {
 		return errors.Wrap(err, "failed to click link")
+	}
+
+	if err := verifier(); err != nil {
+		return errors.Wrap(err, "failed to verify after link click")
 	}
 
 	return nil
 }
 
-// verifyAndroidLinkStaysInAndroid clicks a link in Android and verifies that it is handled within Android.
-func verifyAndroidLinkStaysInAndroid(ctx context.Context, tconn *chrome.TestConn, arcDevice *arc.ARC, uiAutomator *arcui.Device) error {
+// clickAndroidLinkAndVerify clicks a link in Android, then calls verifier to
+// verify the device state. verifier is passed as a func to allow cleanup after
+// verification is completed.
+func clickAndroidLinkAndVerify(ctx context.Context, tconn *chrome.TestConn, arcDevice *arc.ARC, uiAutomator *arcui.Device, verifier func() error) error {
 	const (
 		testActivity     = testPackageName + ".MainActivity"
 		testIntentButton = testPackageName + ":id/link_action"
-		testIntentText   = testPackageName + ":id/intent_text"
 	)
 
 	activity, err := arc.NewActivity(arcDevice, testPackageName, testActivity)
@@ -184,8 +258,42 @@ func verifyAndroidLinkStaysInAndroid(ctx context.Context, tconn *chrome.TestConn
 		return errors.Wrap(err, "failed to click intent button")
 	}
 
-	if err := uiAutomator.Object(arcui.ID(testIntentText)).WaitForExists(ctx, 10*time.Second); err != nil {
-		return errors.Wrap(err, "failed to wait for link activity")
+	if err := verifier(); err != nil {
+		return errors.Wrap(err, "failed to verify after link click")
+	}
+
+	return nil
+}
+
+// changeLinkCapturingSetting changes the "Open supported links" setting in app
+// management for the test app. If openInApp is true, the setting will be
+// enabled and links will open in the app. Otherwise, the setting will be
+// disabled and links will open in the browser.
+func changeLinkCapturingSetting(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome, openInApp bool) error {
+	const (
+		testAppName                = "Link Capturing Test App"
+		testAppID                  = "cacnggingocklkpmmmniidnncakhjgob"
+		linkCapturingOpenInApp     = "Open in " + testAppName
+		linkCapturingOpenInBrowser = "Open in Chrome browser"
+	)
+
+	ui := uiauto.New(tconn)
+	appHeader := nodewith.Name(testAppName).Role(role.Heading).Ancestor(ossettings.WindowFinder)
+	osSettings, err := ossettings.LaunchAtAppMgmtPage(ctx, tconn, cr, testAppID, ui.Exists(appHeader))
+	if err != nil {
+		return errors.Wrap(err, "failed to open OS Settings")
+	}
+	defer osSettings.Close(ctx)
+
+	var settingRadioButton *nodewith.Finder
+	if openInApp {
+		settingRadioButton = nodewith.Name(linkCapturingOpenInApp).Role(role.RadioButton)
+	} else {
+		settingRadioButton = nodewith.Name(linkCapturingOpenInBrowser).Role(role.RadioButton)
+	}
+
+	if err := ui.LeftClick(settingRadioButton)(ctx); err != nil {
+		return errors.Wrap(err, "failed to click radio button")
 	}
 
 	return nil
