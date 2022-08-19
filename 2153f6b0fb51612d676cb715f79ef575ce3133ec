@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3da99ffc_e85f70ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-08-19T02:13:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d47eb038_e6447b59",
+      "range": {
+        "startLine": 269,
+        "startChar": 5,
+        "endLine": 269,
+        "endChar": 18
+      },
+      "revId": "2153f6b0fb51612d676cb715f79ef575ce3133ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e0684e4b_07957719",
@@ -84,6 +108,54 @@
       "side": 1,
       "message": "oops, in the second part, it should be \n\nbr, closeBrowser, err \u003d browserfixt.SetUp(ctx, cr, browserType)\n    if err !\u003d nil {\n\t\t\treturn nil, nil, errors.Wrap(err, \"failed to set up browser\")\n    }\n    browserDriver, err \u003d br.NewConn(ctx, \"chrome://newtab/\")",
       "parentUuid": "e0684e4b_07957719",
+      "range": {
+        "startLine": 271,
+        "startChar": 8,
+        "endLine": 271,
+        "endChar": 21
+      },
+      "revId": "2153f6b0fb51612d676cb715f79ef575ce3133ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "416e6d88_35554a70",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-08-19T02:13:20Z",
+      "side": 1,
+      "message": "It is more of a personal preferrence. \"if-else\" feels like one is normal scenario and the other is abnormal, while \"swtich\" makes them two equal scenrios.\n\nPerformance wise, using if-else or switch should not result in noticeable difference.",
+      "parentUuid": "862ea5d5_a82ed078",
+      "range": {
+        "startLine": 271,
+        "startChar": 1,
+        "endLine": 271,
+        "endChar": 7
+      },
+      "revId": "2153f6b0fb51612d676cb715f79ef575ce3133ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e1337ea_c30f22b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-08-19T02:13:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "277ec445_0cf97592",
       "range": {
         "startLine": 271,
         "startChar": 8,
