@@ -34,8 +34,18 @@ func redirectHandler(url string) func(http.ResponseWriter, *http.Request) {
 	}
 }
 
+func tempRedirectHandler(url string) func(http.ResponseWriter, *http.Request) {
+	return func(rw http.ResponseWriter, req *http.Request) {
+		http.Redirect(rw, req, url, http.StatusTemporaryRedirect)
+	}
+}
+
 func redirectWithNoLocationHandler(rw http.ResponseWriter, req *http.Request) {
 	rw.WriteHeader(http.StatusFound)
+}
+
+func tempRedirectWithNoLocationHandler(rw http.ResponseWriter, req *http.Request) {
+	rw.WriteHeader(http.StatusTemporaryRedirect)
 }
 
 func noContentHandler(rw http.ResponseWriter, req *http.Request) {
@@ -75,6 +85,20 @@ func init() {
 			Val: &params{
 				ServiceState:         shillconst.ServiceStateNoConnectivity,
 				HTTPResponseHandler:  nil,
+				HTTPSResponseHandler: nil,
+			},
+		}, {
+			Name: "tempredirectfound",
+			Val: &params{
+				ServiceState:         shillconst.ServiceStateRedirectFound,
+				HTTPResponseHandler:  tempRedirectHandler(redirectURL),
+				HTTPSResponseHandler: nil,
+			},
+		}, {
+			Name: "tempredirectnolocation",
+			Val: &params{
+				ServiceState:         shillconst.ServiceStatePortalSuspected,
+				HTTPResponseHandler:  tempRedirectWithNoLocationHandler,
 				HTTPSResponseHandler: nil,
 			},
 		}},
