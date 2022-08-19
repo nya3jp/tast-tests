@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a6e4c47_4dd9286a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/factory/hwiddatabase.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1113505
+      },
+      "writtenOn": "2022-08-19T01:42:19Z",
+      "side": 1,
+      "message": "why we also ban kitty? add comments?",
+      "range": {
+        "startLine": 39,
+        "startChar": 31,
+        "endLine": 39,
+        "endChar": 57
+      },
+      "revId": "2afa448964b781bffa6a656aeaa82cdacc538bff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
