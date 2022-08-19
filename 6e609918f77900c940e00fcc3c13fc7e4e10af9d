@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd1ba35b_b04d3fb9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/intel/boot_via_usb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-08-19T17:32:33Z",
+      "side": 1,
+      "message": "Do you mind also adding a google.com contact?",
+      "revId": "6e609918f77900c940e00fcc3c13fc7e4e10af9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e0a8e3a_e585d979",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/intel/boot_via_usb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-08-19T17:32:33Z",
+      "side": 1,
+      "message": "deviceStr is in usbpdmuxinfo",
+      "range": {
+        "startLine": 64,
+        "startChar": 38,
+        "endLine": 64,
+        "endChar": 43
+      },
+      "revId": "6e609918f77900c940e00fcc3c13fc7e4e10af9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c94b6276_591a35b2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/intel/boot_via_usb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-08-19T17:32:33Z",
+      "side": 1,
+      "message": "Optional. You can also add testexec.DumpLogOnError for debugging.",
+      "range": {
+        "startLine": 67,
+        "startChar": 78,
+        "endLine": 67,
+        "endChar": 79
+      },
+      "revId": "6e609918f77900c940e00fcc3c13fc7e4e10af9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1393cc24_a37767a1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/intel/boot_via_usb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-08-19T17:32:33Z",
+      "side": 1,
+      "message": "deviceStr",
+      "range": {
+        "startLine": 76,
+        "startChar": 43,
+        "endLine": 76,
+        "endChar": 48
+      },
+      "revId": "6e609918f77900c940e00fcc3c13fc7e4e10af9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
