@@ -28,7 +28,8 @@ func init() {
 		SoftwareDeps: []string{"android_p", "chrome"},
 		Fixture:      "arcBooted",
 		// Informational because the test is flaky. See https://crbug.com/1018776
-		Attr: []string{"group:mainline", "informational"},
+		// b:238260020 - disable aged (>1y) unpromoted informational tests
+		// Attr: []string{"group:mainline", "informational"},
 	})
 }
 

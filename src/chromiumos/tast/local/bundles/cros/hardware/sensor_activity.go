@@ -28,7 +28,8 @@ func init() {
 			"chingkang@chromium.org", // Test author
 			"chromeos-sensors-eng@google.com",
 		},
-		Attr:         []string{"group:mainline", "informational"},
+		// b:238260020 - disable aged (>1y) unpromoted informational tests
+		// Attr:         []string{"group:mainline", "informational"},
 		HardwareDeps: hwdep.D(hwdep.ChromeEC()),
 		Params: []testing.Param{{
 			ExtraHardwareDeps: hwdep.D(hwdep.Model("coachz")),

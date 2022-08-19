@@ -30,29 +30,32 @@ func init() {
 			"showoff-eng@google.com",
 			"shengjun@chromium.org",
 		},
-		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
 		Params: []testing.Param{
 			{
 				Name:              "oobe_stable",
 				ExtraHardwareDeps: hwdep.D(pre.AppsStableModels),
 				Val:               true,
+				ExtraAttr:         []string{"group:mainline"},
 			}, {
 				Name:              "oobe_unstable",
 				ExtraHardwareDeps: hwdep.D(pre.AppsUnstableModels),
 				Val:               true,
-				ExtraAttr:         []string{"informational"},
+				// b:238260020 - disable aged (>1y) unpromoted informational tests
+				// ExtraAttr:         []string{"group:mainline", "informational"},
 			}, {
 				Name:              "logged_in_stable",
 				ExtraHardwareDeps: hwdep.D(pre.AppsStableModels),
 				Fixture:           "chromePolicyLoggedIn",
 				Val:               false,
+				ExtraAttr:         []string{"group:mainline"},
 			}, {
 				Name:              "logged_in_unstable",
 				ExtraHardwareDeps: hwdep.D(pre.AppsUnstableModels),
 				Fixture:           "chromePolicyLoggedIn",
 				Val:               false,
-				ExtraAttr:         []string{"informational"},
+				// b:238260020 - disable aged (>1y) unpromoted informational tests
+				// ExtraAttr:         []string{"group:mainline", "informational"},
 			},
 		}})
 }

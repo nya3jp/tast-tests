@@ -31,23 +31,24 @@ func init() {
 			"blick-swe@google.com",
 			"shengjun@chromium.org",
 		},
-		Attr:         []string{"group:mainline"},
 		Timeout:      5 * time.Minute,
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
 		Params: []testing.Param{{
 			Name:              "stable",
 			Fixture:           fixture.LoggedIn,
 			ExtraHardwareDeps: hwdep.D(pre.AppsStableModels),
+			ExtraAttr:         []string{"group:mainline"},
 		}, {
 			Name:              "unstable",
 			Fixture:           fixture.LoggedIn,
 			ExtraHardwareDeps: hwdep.D(pre.AppsUnstableModels),
-			ExtraAttr:         []string{"informational"},
+			// b:238260020 - disable aged (>1y) unpromoted informational tests
+			// ExtraAttr:         []string{"group:mainline", "informational"},
 		}, {
 			Name:              "lacros",
 			Fixture:           fixture.LacrosLoggedIn,
 			ExtraSoftwareDeps: []string{"lacros"},
-			ExtraAttr:         []string{"informational"},
+			ExtraAttr:         []string{"group:mainline", "informational"},
 			ExtraHardwareDeps: hwdep.D(pre.AppsStableModels),
 		}},
 	})
