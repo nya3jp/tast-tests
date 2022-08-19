@@ -23,13 +23,14 @@ func init() {
 		Contacts:     []string{"hidehiko@chromium.org", "tast-owners@google.com"},
 		SoftwareDeps: []string{"chrome"},
 		Fixture:      "arcBooted",
-		Attr:         []string{"group:mainline"},
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
-			ExtraAttr:         []string{"informational"},
+			// b:238260020 - disable aged (>1y) unpromoted informational tests
+			// ExtraAttr:         []string{"group:mainline", "informational"},
 		}, {
 			Name:              "vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
+			ExtraAttr:         []string{"group:mainline"},
 		}},
 	})
 }

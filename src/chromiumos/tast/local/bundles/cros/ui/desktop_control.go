@@ -40,22 +40,23 @@ func init() {
 		Params: []testing.Param{
 			{
 				// TODO(crbug.com/1337389): remove "informational" once the issue is fixed.
-				ExtraAttr:         []string{"informational"},
+				ExtraAttr:         []string{"group:mainline", "informational"},
 				ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(perfutil.UnstableModels...)),
 				Fixture:           "chromeLoggedIn",
 				Val:               browser.TypeAsh,
 			},
 			// TODO(crbug.com/1163981): remove "unstable" once we see stability on all platforms.
 			{
-				Name:              "unstable",
-				ExtraAttr:         []string{"informational"},
+				Name: "unstable",
+				// b:238260020 - disable aged (>1y) unpromoted informational tests
+				// ExtraAttr:         []string{"group:mainline", "informational"},
 				ExtraHardwareDeps: hwdep.D(hwdep.Model(perfutil.UnstableModels...)),
 				Fixture:           "chromeLoggedIn",
 				Val:               browser.TypeAsh,
 			},
 			{
 				Name:              "lacros",
-				ExtraAttr:         []string{"informational"},
+				ExtraAttr:         []string{"group:mainline", "informational"},
 				ExtraSoftwareDeps: []string{"lacros"},
 				ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(perfutil.UnstableModels...)),
 				Fixture:           "lacros",
@@ -63,7 +64,7 @@ func init() {
 			},
 			{
 				Name:              "lacros_unstable",
-				ExtraAttr:         []string{"informational"},
+				ExtraAttr:         []string{"group:mainline", "informational"},
 				ExtraSoftwareDeps: []string{"lacros"},
 				ExtraHardwareDeps: hwdep.D(hwdep.Model(perfutil.UnstableModels...)),
 				Fixture:           "lacros",

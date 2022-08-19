@@ -32,27 +32,30 @@ func init() {
 		Contacts: []string{
 			"showoff-eng@google.com",
 		},
-		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
 		Params: []testing.Param{
 			{
 				Name:              "stable",
 				Fixture:           fixture.LoggedIn,
 				ExtraHardwareDeps: hwdep.D(pre.AppsStableModels),
+				ExtraAttr:         []string{"group:mainline"},
 			}, {
-				Name:              "unstable",
-				Fixture:           fixture.LoggedIn,
-				ExtraAttr:         []string{"informational"},
+				Name:    "unstable",
+				Fixture: fixture.LoggedIn,
+				// b:238260020 - disable aged (>1y) unpromoted informational tests
+				// ExtraAttr:         []string{"group:mainline", "informational"},
 				ExtraHardwareDeps: hwdep.D(pre.AppsUnstableModels),
 			},
 			{
 				Name:              "stable_guest",
 				Fixture:           fixture.LoggedInGuest,
 				ExtraHardwareDeps: hwdep.D(pre.AppsStableModels),
+				ExtraAttr:         []string{"group:mainline"},
 			}, {
-				Name:              "unstable_guest",
-				Fixture:           fixture.LoggedInGuest,
-				ExtraAttr:         []string{"informational"},
+				Name:    "unstable_guest",
+				Fixture: fixture.LoggedInGuest,
+				// b:238260020 - disable aged (>1y) unpromoted informational tests
+				// ExtraAttr:         []string{"group:mainline", "informational"},
 				ExtraHardwareDeps: hwdep.D(pre.AppsUnstableModels),
 			},
 		},

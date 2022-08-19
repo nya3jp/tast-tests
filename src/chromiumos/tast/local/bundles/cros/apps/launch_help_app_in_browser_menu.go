@@ -28,17 +28,18 @@ func init() {
 			"showoff-eng@google.com",
 			"shengjun@chromium.org", // original test author
 		},
-		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
 		Fixture:      fixture.LoggedIn,
 		Params: []testing.Param{
 			{
 				Name:              "stable",
 				ExtraHardwareDeps: hwdep.D(pre.AppsStableModels),
+				ExtraAttr:         []string{"group:mainline"},
 			}, {
 				Name:              "unstable",
 				ExtraHardwareDeps: hwdep.D(pre.AppsUnstableModels),
-				ExtraAttr:         []string{"informational"},
+				// b:238260020 - disable aged (>1y) unpromoted informational tests
+				// ExtraAttr:         []string{"group:mainline", "informational"},
 			},
 		},
 	})

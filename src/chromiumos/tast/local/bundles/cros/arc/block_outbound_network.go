@@ -23,7 +23,8 @@ func init() {
 		Contacts:     []string{"arc-eng@google.com"},
 		SoftwareDeps: []string{"chrome"},
 		Fixture:      "arcBooted",
-		Attr:         []string{"group:mainline", "informational"},
+		// b:238260020 - disable aged (>1y) unpromoted informational tests
+		// Attr:         []string{"group:mainline", "informational"},
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
 		}, {

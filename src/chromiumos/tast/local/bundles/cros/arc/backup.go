@@ -28,7 +28,8 @@ func init() {
 		Desc:         "This test ensure that we can backup and restore Android Apps",
 		Contacts:     []string{"rohitbm@google.com", "arc-core@google.com"},
 		SoftwareDeps: []string{"chrome"},
-		Attr:         []string{"group:mainline", "informational"},
+		// b:238260020 - disable aged (>1y) unpromoted informational tests
+		// Attr:         []string{"group:mainline", "informational"},
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
 		}, {

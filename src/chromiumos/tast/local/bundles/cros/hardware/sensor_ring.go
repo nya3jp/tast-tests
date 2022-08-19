@@ -22,7 +22,8 @@ func init() {
 			"mathewk@chromium.org", // Test author
 			"chromeos-sensors-eng@google.com",
 		},
-		Attr:         []string{"group:mainline", "informational"},
+		// b:238260020 - disable aged (>1y) unpromoted informational test
+		// Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"no_iioservice"},
 	})
 }

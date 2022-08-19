@@ -26,7 +26,8 @@ func init() {
 			"hidehiko@chromium.org",
 		},
 		SoftwareDeps: []string{"chrome"},
-		Attr:         []string{"group:mainline", "informational"},
+		// b:238260020 - disable aged (>1y) unpromoted informational tests
+		// Attr:         []string{"group:mainline", "informational"},
 		// This test performs 2 logins.
 		Timeout: 2*chrome.LoginTimeout + time.Minute,
 	})

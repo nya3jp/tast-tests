@@ -23,7 +23,8 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Checks Android transient audio focus requests are forwarded to Chrome",
 		Contacts:     []string{"beccahughes@chromium.org", "arc-eng@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		// b:238260020 - disable aged (>1y) unpromoted informational tests
+		// Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      4 * time.Minute,
 		Data: []string{

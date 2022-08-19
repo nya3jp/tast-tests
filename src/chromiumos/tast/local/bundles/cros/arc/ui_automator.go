@@ -22,13 +22,14 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Fixture:      "arcBooted",
 		Data:         []string{"todo-mvp.apk"},
-		Attr:         []string{"group:mainline", "informational"},
+		// b:238260020 - disable aged (>1y) unpromoted informational tests
+		// Attr:         []string{"group:mainline", "informational"},
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
 		}, {
 			Name:              "vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
-			ExtraAttr:         []string{"informational"},
+			ExtraAttr:         []string{"group:mainline", "informational"},
 		}},
 	})
 }

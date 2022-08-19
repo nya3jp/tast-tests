@@ -97,7 +97,8 @@ func init() {
 					"fixtures/metaRemoteDataFilesFixture/fixture_data_external.txt": "This is an external data file for remote tests.\n",
 				},
 			},
-			ExtraAttr: []string{"group:mainline", "informational"},
+			// b:238260020 - disable aged (>1y) unpromoted informational tests
+			// ExtraAttr: []string{"group:mainline", "informational"},
 		}, {
 			Name: "panic",
 			Val: runTestsParam{

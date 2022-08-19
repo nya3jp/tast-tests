@@ -17,16 +17,17 @@ func init() {
 		Func:     DMVerity,
 		Desc:     "Verify dm-verity reports IO errors on bad data",
 		Contacts: []string{"hidehiko@chromium.org"},
-		Attr:     []string{"group:mainline"},
 		Timeout:  4 * time.Minute,
 		Params: []testing.Param{
 			{
 				ExtraSoftwareDeps: []string{"dmverity_stable"},
+				ExtraAttr:         []string{"group:mainline"},
 			},
 			{
 				Name:              "unstable_kernel",
 				ExtraSoftwareDeps: []string{"dmverity_unstable"},
-				ExtraAttr:         []string{"informational"},
+				// b:238260020 - disable aged (>1y) unpromoted informational tests
+				// ExtraAttr:         []string{"group:mainline", "informational"},
 			},
 		},
 	})
