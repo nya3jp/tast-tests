@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b782839_89cde90c",
+        "filename": "src/chromiumos/tast/common/testdevicerequirements/testdevicerequirements.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1525322
+      },
+      "writtenOn": "2022-08-19T21:40:43Z",
+      "side": 1,
+      "message": "Ahhhh, I am not a fan of the comments.  Seems like we are adding a Source of Truth or duplicating info that could get out of date.  In the future hopefully our requirements publishing will allow a link to the requirement by ID that is guaranteed to always work (right now updated releases/changes could break links) when that is done I could see adding a link to the source as a comment but I am against duplicating the requirement language.\n\nPerhpas a comment at the start here that says to go to https://chromeos.google.com/partner/dlm/docs/latest-requirements/\u003cform factor\u003e.html to look up definitions from requirement IDs for now?",
+      "range": {
+        "startLine": 26,
+        "startChar": 1,
+        "endLine": 34,
+        "endChar": 40
+      },
+      "revId": "f635733306280daff74b0c7f36aa4cb4f7cda575",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
