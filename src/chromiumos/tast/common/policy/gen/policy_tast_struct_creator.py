@@ -148,6 +148,7 @@ type ONCGlobalNetworkConfiguration struct {
 \tAllowOnlyPolicyNetworksToAutoconnect\tbool\t`json:"AllowOnlyPolicyNetworksToAutoconnect"`
 \tAllowOnlyPolicyNetworksToConnect\tbool\t`json:"AllowOnlyPolicyNetworksToConnect"`
 \tAllowOnlyPolicyCellularNetworks\tbool\t`json:"AllowOnlyPolicyCellularNetworks"`
+\tAllowCellularSimLock\tbool\t`json:"AllowCellularSimLock"`
 }
 
 type ONC struct {
