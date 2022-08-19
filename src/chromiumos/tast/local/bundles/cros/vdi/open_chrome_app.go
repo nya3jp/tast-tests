@@ -13,7 +13,6 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
-	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/uidetection"
 	"chromiumos/tast/local/vdi/fixtures"
 	"chromiumos/tast/testing"
@@ -109,31 +108,5 @@ func OpenChromeApp(ctx context.Context, s *testing.State) {
 
 	if err := vdi.SearchAndOpenApplication(ctx, appToOpen, isOpened)(ctx); err != nil {
 		s.Fatalf("Failed to open %v app: %v", appToOpen, err)
-	}
-
-	// Cleanup applies only to Kiosk as other sessions perform clean up in
-	// fixtures' PostTest().
-	if kioskMode {
-		if err := uidetector.LeftClick(uidetection.TextBlock([]string{"New", "tab"}).First())(ctx); err != nil {
-			s.Error("Could not click on the opened new Tab. It may affect clean up: ", err)
-		}
-
-		kb, err := input.Keyboard(ctx)
-		if err != nil {
-			s.Fatal("Failed to get a keyboard")
-		}
-		defer kb.Close()
-
-		// Move focus on Chrome.
-		if err := kb.Accel(ctx, "Tab"); err != nil {
-			s.Fatal("Failed to execute Tab command: ", err)
-		}
-		// Close the Chrome tab. This is not passed to Vmware Horizon in Kiosk mode.
-		if err := kb.Accel(ctx, "Ctrl+Shift+w"); err != nil {
-			s.Fatal("Failed to execute Ctrl+Shift+w command: ", err)
-		}
-		if err := vdi.ResetSearch(ctx); err != nil {
-			s.Fatal("Was not able to reset search results: ", err)
-		}
 	}
 }
