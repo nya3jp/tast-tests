@@ -30,7 +30,8 @@ func init() {
 			"quasisec@chromium.org",        // CrOS Flashrom Maintainer
 			"chromeos-firmware@google.com", // CrOS Firmware Developers
 		},
-		Attr:         []string{"group:mainline", "informational"},
+		// b:238260020 - disable aged (>1y) unpromoted informational tests
+		// Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"flashrom"},
 		Params: []testing.Param{{
 			Val: params{

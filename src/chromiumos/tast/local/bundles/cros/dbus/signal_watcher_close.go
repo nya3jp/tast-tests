@@ -19,7 +19,8 @@ func init() {
 		Func:     SignalWatcherClose,
 		Desc:     "Verifies dbusutil.SignalWatcher can be closed properly without deadlock when the number of signals exceeds channel buffer",
 		Contacts: []string{"yenlinlai@google.com", "chromeos-kernel-wifi@google.com"},
-		Attr:     []string{"group:mainline", "informational"},
+		// b:238260020 - disable aged (>1y) unpromoted informational tests
+		// Attr:     []string{"group:mainline", "informational"},
 	})
 }
 

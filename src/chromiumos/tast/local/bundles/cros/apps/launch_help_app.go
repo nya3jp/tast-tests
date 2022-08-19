@@ -33,7 +33,6 @@ func init() {
 			"showoff-eng@google.com",
 			"shengjun@chromium.org",
 		},
-		Attr:         []string{"group:mainline"},
 		VarDeps:      []string{"ui.gaiaPoolDefault"},
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
 		Timeout:      chrome.GAIALoginTimeout + time.Minute,
@@ -41,6 +40,7 @@ func init() {
 			{
 				Name:              "clamshell_oobe_stable",
 				ExtraHardwareDeps: hwdep.D(pre.AppsStableModels),
+				ExtraAttr:         []string{"group:mainline"},
 				Val: testParameters{
 					tabletMode: false,
 					oobe:       true,
@@ -48,7 +48,8 @@ func init() {
 			}, {
 				Name:              "clamshell_oobe_unstable",
 				ExtraHardwareDeps: hwdep.D(pre.AppsUnstableModels),
-				ExtraAttr:         []string{"informational"},
+				// b:238260020 - disable aged (>1y) unpromoted informational tests
+				// ExtraAttr:         []string{"group:mainline", "informational"},
 				Val: testParameters{
 					tabletMode: true,
 					oobe:       true,
@@ -56,6 +57,7 @@ func init() {
 			}, {
 				Name:              "tablet_oobe_stable",
 				ExtraHardwareDeps: hwdep.D(pre.AppsStableModels),
+				ExtraAttr:         []string{"group:mainline"},
 				Val: testParameters{
 					tabletMode: true,
 					oobe:       true,
@@ -63,7 +65,8 @@ func init() {
 			}, {
 				Name:              "tablet_oobe_unstable",
 				ExtraHardwareDeps: hwdep.D(pre.AppsUnstableModels),
-				ExtraAttr:         []string{"informational"},
+				// b:238260020 - disable aged (>1y) unpromoted informational tests
+				// ExtraAttr:         []string{"group:mainline", "informational"},
 				Val: testParameters{
 					tabletMode: true,
 					oobe:       true,
@@ -71,6 +74,7 @@ func init() {
 			}, {
 				Name:              "clamshell_logged_in_stable",
 				ExtraHardwareDeps: hwdep.D(pre.AppsStableModels),
+				ExtraAttr:         []string{"group:mainline"},
 				Fixture:           fixture.LoggedIn,
 				Val: testParameters{
 					tabletMode: false,
@@ -80,7 +84,8 @@ func init() {
 				Name:              "clamshell_logged_in_unstable",
 				ExtraHardwareDeps: hwdep.D(pre.AppsUnstableModels),
 				Fixture:           fixture.LoggedIn,
-				ExtraAttr:         []string{"informational"},
+				// b:238260020 - disable aged (>1y) unpromoted informational tests
+				// ExtraAttr:         []string{"group:mainline", "informational"},
 				Val: testParameters{
 					tabletMode: false,
 					oobe:       false,
@@ -88,6 +93,7 @@ func init() {
 			}, {
 				Name:              "tablet_logged_in_stable",
 				ExtraHardwareDeps: hwdep.D(pre.AppsStableModels, hwdep.TouchScreen()),
+				ExtraAttr:         []string{"group:mainline"},
 				Fixture:           fixture.LoggedIn,
 				Val: testParameters{
 					tabletMode: true,
@@ -97,7 +103,8 @@ func init() {
 				Name:              "tablet_logged_in_unstable",
 				ExtraHardwareDeps: hwdep.D(pre.AppsUnstableModels, hwdep.TouchScreen()),
 				Fixture:           fixture.LoggedIn,
-				ExtraAttr:         []string{"informational"},
+				// b:238260020 - disable aged (>1y) unpromoted informational tests
+				// ExtraAttr:         []string{"group:mainline", "informational"},
 				Val: testParameters{
 					tabletMode: true,
 					oobe:       false,
@@ -107,6 +114,7 @@ func init() {
 				ExtraHardwareDeps: hwdep.D(pre.AppsStableModels),
 				Fixture:           fixture.LacrosLoggedIn,
 				ExtraSoftwareDeps: []string{"lacros_stable"},
+				ExtraAttr:         []string{"group:mainline"},
 				Val: testParameters{
 					tabletMode: false,
 					oobe:       false,
@@ -116,6 +124,7 @@ func init() {
 				Name:              "tablet_logged_in_stable_lacros",
 				Fixture:           fixture.LacrosLoggedIn,
 				ExtraSoftwareDeps: []string{"lacros_stable"},
+				ExtraAttr:         []string{"group:mainline"},
 				ExtraHardwareDeps: hwdep.D(pre.AppsStableModels, hwdep.TouchScreen()),
 				Val: testParameters{
 					tabletMode: true,
