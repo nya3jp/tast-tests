@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f042a0bc_4c6af301",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/link_capturing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-08-19T14:42:02Z",
+      "side": 1,
+      "message": "Do we need this comment?",
+      "revId": "6e74a71a090a1ec0f0686f1893d2690cd2dfd88e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a149d263_5317e547",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/link_capturing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-08-19T14:42:02Z",
+      "side": 1,
+      "message": "Do we need to do this instead of WaitForExists on testIntentButton?",
+      "range": {
+        "startLine": 180,
+        "startChar": 0,
+        "endLine": 182,
+        "endChar": 2
+      },
+      "revId": "6e74a71a090a1ec0f0686f1893d2690cd2dfd88e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
