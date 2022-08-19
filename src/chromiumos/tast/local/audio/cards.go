@@ -5,25 +5,32 @@
 package audio
 
 import (
+	"fmt"
 	"os"
+	"path/filepath"
 	"regexp"
+	"strconv"
 	"strings"
 
 	"chromiumos/tast/errors"
 )
 
 // Card is a card listed in /proc/asound/cards as:
-// ## [ID             ]: Driver - ShortName
-//                       LongName
 //
-// snd_iprintf(buffer, "%2i [%-15s]: %s - %s\n",
-// 	idx,
-// 	card->id,
-// 	card->driver,
-// 	card->shortname);
-// snd_iprintf(buffer, "                      %s\n",
-// 	card->longname);
+//	## [ID             ]: Driver - ShortName
+//	                      LongName
+//
+// It was formatted with the below, from sound/core/init.c:
+//
+//	snd_iprintf(buffer, "%2i [%-15s]: %s - %s\n",
+//			idx,
+//			card->id,
+//			card->driver,
+//			card->shortname);
+//	snd_iprintf(buffer, "                      %s\n",
+//			card->longname);
 type Card struct {
+	Index     int
 	ID        string
 	Driver    string
 	ShortName string
@@ -32,7 +39,7 @@ type Card struct {
 
 // cardRegexp parses the string from printf "%2i [%-15s]: %s - %s\n"
 // See doc for Card.
-var cardRegexp = regexp.MustCompile(`[ \d]{2} \[(.{15})\]: (\S+) - (.+)
+var cardRegexp = regexp.MustCompile(`([ \d]){2} \[(.{15})\]: (\S+) - (.+)
 \s+(.+)
 `)
 
@@ -53,11 +60,16 @@ func parseSoundCards(s string) ([]Card, error) {
 
 	var cards []Card
 	for _, m := range cardRegexp.FindAllStringSubmatch(s, -1) {
+		index, err := strconv.Atoi(m[1])
+		if err != nil {
+			return nil, errors.Errorf("cannot parse %q as an integer", m[1])
+		}
 		cards = append(cards, Card{
-			ID:        strings.TrimSpace(m[1]),
-			Driver:    m[2],
-			ShortName: m[3],
-			LongName:  m[4],
+			Index:     index,
+			ID:        strings.TrimSpace(m[2]),
+			Driver:    m[3],
+			ShortName: m[4],
+			LongName:  m[5],
 		})
 	}
 
@@ -77,4 +89,20 @@ func GetSoundCards() ([]Card, error) {
 		return nil, errors.Errorf("cannot parse /proc/asound/cards: %s", err)
 	}
 	return parseSoundCards(string(b))
+}
+
+// IsExternal tells whether the sound card is an external card.
+func (c *Card) IsExternal() (bool, error) {
+	bus, err := filepath.EvalSymlinks(fmt.Sprintf("/sys/class/sound/card%d/device/subsystem", c.Index))
+	if err != nil {
+		return false, err
+	}
+	switch bus {
+	case "/sys/bus/platform", "/sys/bus/pci":
+		return false, nil
+	case "/sys/bus/usb":
+		return true, nil
+	default:
+		return false, errors.Errorf("unknown bus: %q", bus)
+	}
 }
