@@ -106,6 +106,24 @@
       "parentUuid": "b3bf143e_0286b4ef",
       "revId": "3fa8d142282f5f4d5792f2531e183c2257343935",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d139bd0_cca30774",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-08-19T03:26:27Z",
+      "side": 1,
+      "message": "I mean can\u0027t we just put s.Run inside of ScenarioFunc. e.g. uiperf would have a Run function that takes the testing.State and construct a closure that captures it. We need to preserve those tests using s.Run to create subtests, but we don\u0027t need the perfutil library to handle that itself.\n\nThere are maybe some ergonomics benefits to keeping StoreFunc separate (extra parameters in the ScenarioFunc / easy to use some of the boilerplate StoreFuns). hidehiko@ originally suggested merging StoreFunc as well so I\u0027ll defer to him on that.",
+      "parentUuid": "b8fea4b2_43702fb3",
+      "revId": "3fa8d142282f5f4d5792f2531e183c2257343935",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
