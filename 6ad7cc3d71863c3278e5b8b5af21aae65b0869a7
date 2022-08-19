@@ -22,6 +22,30 @@
       },
       "revId": "6ad7cc3d71863c3278e5b8b5af21aae65b0869a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0231a3c3_478e11e5",
+        "filename": "src/chromiumos/tast/local/arc/ui.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1000097
+      },
+      "writtenOn": "2022-08-19T23:22:31Z",
+      "side": 1,
+      "message": "If the failure causes the navigation to the Account Settings to fail, this log will be useful context.  As long as the function succeeds in opening the Play Store Account Settings, I think it\u0027s best to ignore this error so that we don\u0027t increase the possible flakiness of tests that use this function.",
+      "parentUuid": "945b9df7_71f42995",
+      "range": {
+        "startLine": 62,
+        "startChar": 2,
+        "endLine": 62,
+        "endChar": 62
+      },
+      "revId": "6ad7cc3d71863c3278e5b8b5af21aae65b0869a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
