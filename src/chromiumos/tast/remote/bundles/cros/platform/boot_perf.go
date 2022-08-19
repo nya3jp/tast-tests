@@ -17,6 +17,7 @@ import (
 	empty "github.com/golang/protobuf/ptypes/empty"
 
 	"chromiumos/tast/common/perf"
+	tdreq "chromiumos/tast/common/testdevicerequirements"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/rpc"
@@ -47,6 +48,10 @@ func init() {
 		Vars:         []string{"platform.BootPerf.iterations", "platform.BootPerf.skipRootfsCheck"},
 		// This test collects boot timing for |iterations| times and requires a longer timeout.
 		Timeout: 25 * time.Minute,
+
+		// List of requirements this test satisfies. These must match the DLM
+		// requirements and specify a version <req>-<version>.
+		Requirements: []string{tdreq.BootPerformance1, tdreq.BootPerformance2},
 	})
 }
 
