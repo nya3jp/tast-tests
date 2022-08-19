@@ -963,11 +963,6 @@ func (h *Helper) GetCurrentICCID(ctx context.Context) (string, error) {
 	return h.getCellularServiceProperty(ctx, shillconst.ServicePropertyCellularICCID)
 }
 
-// GetCurrentNetworkName gets current Network name
-func (h *Helper) GetCurrentNetworkName(ctx context.Context) (string, error) {
-	return h.getCellularServiceProperty(ctx, shillconst.ServicePropertyName)
-}
-
 // disableNonCellularInterfaceforTesting disable all non cellular interfaces
 func (h *Helper) disableNonCellularInterfaceforTesting(ctx context.Context) error {
 	ctx, cancel := ctxutil.Shorten(ctx, shill.EnableWaitTime*2)
