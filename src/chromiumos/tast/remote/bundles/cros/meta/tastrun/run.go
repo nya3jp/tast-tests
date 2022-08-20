@@ -30,7 +30,12 @@ func NewCommand(ctx context.Context, s *testing.State, subcmd string, flags, pat
 	}
 
 	args := append([]string{subcmd}, flags...)
-	args = append(args, meta.RunFlags...)
+	switch subcmd {
+	case "run":
+		args = append(args, meta.RunFlags...)
+	case "list":
+		args = append(args, meta.ListFlags...)
+	}
 	args = append(args, meta.Target)
 	args = append(args, patterns...)
 	cmd := exec.CommandContext(ctx, meta.TastPath, args...)
