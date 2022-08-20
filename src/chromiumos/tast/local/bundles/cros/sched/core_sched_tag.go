@@ -28,7 +28,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         CoreSchedTag,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantNeeded,
 		Desc:         "Ensures renderers scheduling cookies are assigned correctly",
 		Contacts:     []string{"joelaf@google.com", "briannorris@chromium.org"},
 		Attr:         []string{"group:mainline"},
