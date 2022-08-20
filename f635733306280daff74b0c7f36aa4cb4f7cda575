@@ -118,6 +118,30 @@
       },
       "revId": "f635733306280daff74b0c7f36aa4cb4f7cda575",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cbad27a5_5d4e2a0b",
+        "filename": "src/chromiumos/tast/common/testdevicerequirements/testdevicerequirements.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-08-20T23:15:57Z",
+      "side": 1,
+      "message": "I am open to suggestion, but I will think Tast team members will have a hard time to answer support questions regarding this file in future. It is not well-known location: https://chromeos.google.com/partner/dlm/docs/latest-requirements/.\nAt least not for me. I didn\u0027t even know this link until I reviewed this CL. \n\nDo you know which team is maintain that site?\n\nHow about this?\n\n```\n\t// BootPerformance1 specifies a requirement for ChromeOS device to \n\t// run this test. For the detail description, please contant\n\t// \u003can-email-address-that-is-not-tast\u003e\n\tBootPerformance1 \u003d \"boot-perf-0001-v01\"\n\n\t// BootPerformance2 specifies a requirement for ChromeOS device to \n\t// run this test. For the detail description, please contant\n\t// \u003can-email-address-that-is-not-tast\u003e\n\tBootPerformance2 \u003d \"boot-perf-0002-v01\"\n```\n\nAlso, I think \"Go\" prefers all exported symbols to have some kind of comments. Please suggest any comment. Thanks.",
+      "parentUuid": "21ee9e43_40a4d881",
+      "range": {
+        "startLine": 26,
+        "startChar": 1,
+        "endLine": 34,
+        "endChar": 40
+      },
+      "revId": "f635733306280daff74b0c7f36aa4cb4f7cda575",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
