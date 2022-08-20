@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0b01e35_f9486ead",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-08-20T00:35:30Z",
+      "side": 1,
+      "message": "LGTM for marking the metadata. Btw, does anyone on the team have a plan to migrate it to Lacros?",
+      "revId": "48c312c225c0b84bd1446361e3d6f58e00a3a68b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
