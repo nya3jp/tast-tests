@@ -16,6 +16,75 @@
       "message": "Roman, PTAL.",
       "revId": "534620e4bf6b36119dd0546de9795c941c4f0739",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d04dd010_c9de87c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/gesture_navigation.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2022-08-20T08:49:36Z",
+      "side": 1,
+      "message": "hm, why do you need to sign-in with a real gaia account? I thought fake one should work too.",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 60
+      },
+      "revId": "534620e4bf6b36119dd0546de9795c941c4f0739",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ddd4f5d_34474de5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/gesture_navigation.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2022-08-20T08:49:36Z",
+      "side": 1,
+      "message": "is there a way to mark the test run N/A here?)",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 2
+      },
+      "revId": "534620e4bf6b36119dd0546de9795c941c4f0739",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b93af2f_e634d1aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/gesture_navigation.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2022-08-20T08:49:36Z",
+      "side": 1,
+      "message": "we should probably use test-api for that",
+      "range": {
+        "startLine": 78,
+        "startChar": 48,
+        "endLine": 78,
+        "endChar": 101
+      },
+      "revId": "534620e4bf6b36119dd0546de9795c941c4f0739",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
