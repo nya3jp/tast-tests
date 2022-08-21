@@ -48,13 +48,14 @@ func CrostiniCellularNetworkConnectivity(ctx context.Context, s *testing.State) 
 
 	cont := s.FixtValue().(crostini.FixtureData).Cont
 
-	ipType, err := helper.GetCurrentIPType(ctx)
+	ipv4, ipv6, err := helper.GetNetworkProvisionedCellularIPTypes(ctx)
 	if err != nil {
 		s.Fatal("Failed to read APN info: ", err)
 	}
+	s.Log("ipv4: ", ipv4, " ipv6: ", ipv6)
 
 	verifyIPConnectivity := func(ctx context.Context) error {
-		if err := cellular.VerifyCrostiniIPConnectivity(ctx, cont.Command, ipType); err != nil {
+		if err := cellular.VerifyCrostiniIPConnectivity(ctx, cont.Command, ipv4, ipv6); err != nil {
 			return errors.Wrap(err, "failed connectivity test")
 		}
 		return nil

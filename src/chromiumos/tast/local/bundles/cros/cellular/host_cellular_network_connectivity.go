@@ -36,14 +36,14 @@ func HostCellularNetworkConnectivity(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create cellular.Helper: ", err)
 	}
 
-	ipType, err := helper.GetCurrentIPType(ctx)
+	ipv4, ipv6, err := helper.GetNetworkProvisionedCellularIPTypes(ctx)
 	if err != nil {
 		s.Fatal("Failed to read APN info: ", err)
 	}
+	s.Log("ipv4: ", ipv4, " ipv6: ", ipv6)
 
-	s.Log("ip-type: ", ipType)
 	verifyHostIPConnectivity := func(ctx context.Context) error {
-		if err := cellular.VerifyIPConnectivity(ctx, testexec.CommandContext, ipType, "/bin"); err != nil {
+		if err := cellular.VerifyIPConnectivity(ctx, testexec.CommandContext, ipv4, ipv6, "/bin"); err != nil {
 			return errors.Wrap(err, "failed connectivity test")
 		}
 		return nil

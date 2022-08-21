@@ -59,13 +59,14 @@ func ArcCellularNetworkConnectivity(ctx context.Context, s *testing.State) {
 		defer a.Close(ctx)
 	}()
 
-	ipType, err := helper.GetCurrentIPType(ctx)
+	ipv4, ipv6, err := helper.GetNetworkProvisionedCellularIPTypes(ctx)
 	if err != nil {
 		s.Fatal("Failed to read APN info: ", err)
 	}
+	s.Log("ipv4: ", ipv4, " ipv6: ", ipv6)
 
 	verifyIPConnectivity := func(ctx context.Context) error {
-		if err := cellular.VerifyIPConnectivity(ctx, arc.BootstrapCommand, ipType, "/system/bin"); err != nil {
+		if err := cellular.VerifyIPConnectivity(ctx, arc.BootstrapCommand, ipv4, ipv6, "/system/bin"); err != nil {
 			return errors.Wrap(err, "failed connectivity test")
 		}
 		return nil
