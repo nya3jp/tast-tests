@@ -9,6 +9,7 @@ import (
 	"context"
 	"io/ioutil"
 	"math/rand"
+	"net"
 	"os"
 	"path/filepath"
 	"strconv"
@@ -956,6 +957,51 @@ func (h *Helper) GetCurrentIPType(ctx context.Context) (string, error) {
 		return ipType, nil
 	}
 	return "ipv4", nil
+}
+
+// GetNetworkProvisionedCellularIPTypes return the currently provisioned IP types
+func (h *Helper) GetNetworkProvisionedCellularIPTypes(ctx context.Context) (bool, bool, error) {
+	// Verify that a connectable Cellular service exists and ensure it is connected.
+	service, err := h.FindServiceForDevice(ctx)
+	if err != nil {
+		return false, false, errors.Wrap(err, "unable to find Cellular Service")
+	}
+	if isConnected, err := service.IsConnected(ctx); err != nil {
+		return false, false, errors.Wrap(err, "unable to get IsConnected for Service")
+	} else if !isConnected {
+		if _, err := h.ConnectToDefault(ctx); err != nil {
+			return false, false, errors.Wrap(err, "unable to Connect to default service")
+		}
+	}
+	configs, err := service.GetIPConfigs(ctx)
+	if err != nil {
+		return false, false, errors.Wrap(err, "failed to get IPConfigs from service")
+	}
+
+	ipv4Present := false
+	ipv6Present := false
+	for _, config := range configs {
+		props, err := config.GetIPProperties(ctx)
+		if err != nil {
+			return false, false, errors.Wrap(err, "failed to get IPConfig properties")
+		}
+		testing.ContextLog(ctx, "Address :", props.Address)
+		ip := net.ParseIP(props.Address)
+		if ip == nil {
+			continue
+		}
+		if ip.To4() != nil {
+			testing.ContextLog(ctx, "IPv4 Address :", props.Address, " len(ip): ", len(ip))
+			ipv4Present = true
+		} else {
+			testing.ContextLog(ctx, "IPv6 Address :", props.Address, " len(ip): ", len(ip))
+			ipv6Present = true
+		}
+	}
+	if ipv4Present == false && ipv6Present == false {
+		return false, false, errors.New("no IP networks provisioned")
+	}
+	return ipv4Present, ipv6Present, nil
 }
 
 // GetCurrentICCID gets current ICCID

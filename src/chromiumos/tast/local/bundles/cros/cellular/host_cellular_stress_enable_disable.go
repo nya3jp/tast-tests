@@ -37,7 +37,7 @@ func HostCellularStressEnableDisable(ctx context.Context, s *testing.State) {
 	}
 
 	stressTestHostIPConnectivity := func(ctx context.Context) error {
-		for i := 1; i < 31; i++ {
+		for i := 1; i < 5; i++ {
 			s.Logf("Test loop: %d", i)
 			s.Log("Disable")
 			if _, err := helper.Disable(ctx); err != nil {
@@ -56,11 +56,12 @@ func HostCellularStressEnableDisable(ctx context.Context, s *testing.State) {
 			if err := helper.IsConnected(ctx); err != nil {
 				return errors.Wrap(err, "failed to connect to Service")
 			}
-			ipType, err := helper.GetCurrentIPType(ctx)
+			ipv4, ipv6, err := helper.GetNetworkProvisionedCellularIPTypes(ctx)
 			if err != nil {
-				return errors.Wrap(err, "failed to read APN info")
+				s.Fatal("Failed to read APN info: ", err)
 			}
-			if err := cellular.VerifyIPConnectivity(ctx, testexec.CommandContext, ipType, "/bin"); err != nil {
+			s.Log("ipv4: ", ipv4, " ipv6: ", ipv6)
+			if err := cellular.VerifyIPConnectivity(ctx, testexec.CommandContext, ipv4, ipv6, "/bin"); err != nil {
 				return errors.Wrap(err, "failed connectivity test")
 			}
 		}

@@ -47,25 +47,18 @@ func verifyCrostiniIPv6Ping(ctx context.Context, cmd func(context.Context, ...st
 }
 
 // VerifyCrostiniIPConnectivity verifies the ip connectivity from crostini via cellular interface.
-func VerifyCrostiniIPConnectivity(ctx context.Context, cmd func(context.Context, ...string) *testexec.Cmd, ipType string) error {
-	if ipType == "ipv4" {
-		if err := verifyCrostiniIPv4Ping(ctx, cmd); err != nil {
-			return err
-		}
-	}
-	if ipType == "ipv4v6" {
-		if err := verifyCrostiniIPv4Ping(ctx, cmd); err != nil {
-			testing.ContextLog(ctx, "Failed ipv4 ping test : ", err)
-		}
+func VerifyCrostiniIPConnectivity(ctx context.Context, cmd func(context.Context, ...string) *testexec.Cmd, ipv4, ipv6 bool) error {
+	if ipv6 {
 		if err := verifyCrostiniIPv6Ping(ctx, cmd); err != nil {
 			return err
 		}
 	}
-	if ipType == "ipv6" {
-		if err := verifyCrostiniIPv6Ping(ctx, cmd); err != nil {
+	if ipv4 {
+		if err := verifyCrostiniIPv4Ping(ctx, cmd); err != nil {
 			return err
 		}
 	}
+
 	return nil
 }
 
@@ -96,24 +89,19 @@ func verifyIPv6Ping(ctx context.Context, cmd func(context.Context, string, ...st
 }
 
 // VerifyIPConnectivity verifies the ip connectivity from Host/ARC via cellular interface.
-func VerifyIPConnectivity(ctx context.Context, cmd func(context.Context, string, ...string) *testexec.Cmd, ipType, bindir string) error {
-	if ipType == "ipv4" {
+func VerifyIPConnectivity(ctx context.Context, cmd func(context.Context, string, ...string) *testexec.Cmd, ipv4, ipv6 bool, bindir string) error {
+	if ipv4 {
 		if err := verifyIPv4Ping(ctx, cmd, bindir); err != nil {
 			return err
 		}
 	}
-	if ipType == "ipv4v6" {
-		if err := verifyIPv4Ping(ctx, cmd, bindir); err != nil {
-			testing.ContextLog(ctx, "Failed ipv4 ping test : ", err)
-		}
+	if ipv6 {
 		if err := verifyIPv6Ping(ctx, cmd, bindir); err != nil {
 			return err
 		}
 	}
-	if ipType == "ipv6" {
-		if err := verifyIPv6Ping(ctx, cmd, bindir); err != nil {
-			return err
-		}
+	if !ipv4 && !ipv6 {
+		return errors.New("no ip network found")
 	}
 	return nil
 }
