@@ -30,7 +30,7 @@ func init() {
 				ExtraSoftwareDeps: []string{"dlc"},
 				ExtraHardwareDeps: crostini.CrostiniStable,
 				Fixture:           "crostiniBullseye",
-				Timeout:           15 * time.Minute,
+				Timeout:           10 * time.Minute,
 			},
 		},
 	})
@@ -45,16 +45,19 @@ func CrostiniCellularNetworkConnectivity(ctx context.Context, s *testing.State) 
 	if err != nil {
 		s.Fatal("Failed to create cellular.Helper: ", err)
 	}
-
-	cont := s.FixtValue().(crostini.FixtureData).Cont
-
-	ipType, err := helper.GetCurrentIPType(ctx)
+	// Enable and get service to set autoconnect based on test parameters.
+	if _, err := helper.Enable(ctx); err != nil {
+		s.Fatal("Failed to enable modem")
+	}
+	ipv4, ipv6, err := helper.GetNetworkProvisionedCellularIPTypes(ctx)
 	if err != nil {
 		s.Fatal("Failed to read APN info: ", err)
 	}
+	s.Log("ipv4: ", ipv4, " ipv6: ", ipv6)
+	cont := s.FixtValue().(crostini.FixtureData).Cont
 
 	verifyIPConnectivity := func(ctx context.Context) error {
-		if err := cellular.VerifyCrostiniIPConnectivity(ctx, cont.Command, ipType); err != nil {
+		if err := cellular.VerifyCrostiniIPConnectivity(ctx, cont.Command, ipv4, ipv6); err != nil {
 			return errors.Wrap(err, "failed connectivity test")
 		}
 		return nil

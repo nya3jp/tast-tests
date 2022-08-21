@@ -35,15 +35,18 @@ func HostCellularNetworkConnectivity(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to create cellular.Helper: ", err)
 	}
-
-	ipType, err := helper.GetCurrentIPType(ctx)
+	// Enable and get service to set autoconnect based on test parameters.
+	if _, err := helper.Enable(ctx); err != nil {
+		s.Fatal("Failed to enable modem")
+	}
+	ipv4, ipv6, err := helper.GetNetworkProvisionedCellularIPTypes(ctx)
 	if err != nil {
 		s.Fatal("Failed to read APN info: ", err)
 	}
+	s.Log("ipv4: ", ipv4, " ipv6: ", ipv6)
 
-	s.Log("ip-type: ", ipType)
 	verifyHostIPConnectivity := func(ctx context.Context) error {
-		if err := cellular.VerifyIPConnectivity(ctx, testexec.CommandContext, ipType, "/bin"); err != nil {
+		if err := cellular.VerifyIPConnectivity(ctx, testexec.CommandContext, ipv4, ipv6, "/bin"); err != nil {
 			return errors.Wrap(err, "failed connectivity test")
 		}
 		return nil
