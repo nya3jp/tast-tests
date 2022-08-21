@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "63c9aef0_37b002d6",
+        "filename": "src/chromiumos/tast/common/testdevicerequirements/testdevicerequirements.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-08-21T16:16:04Z",
+      "side": 1,
+      "message": "can we have more descriptive name of variables?\nE.g., the meaning of Requirements: \"BootPerformance1\" \"BootPerformance2\" is hard for me to understand what is the actual requirements.",
+      "range": {
+        "startLine": 28,
+        "startChar": 1,
+        "endLine": 28,
+        "endChar": 17
+      },
+      "revId": "f635733306280daff74b0c7f36aa4cb4f7cda575",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0b782839_89cde90c",
         "filename": "src/chromiumos/tast/common/testdevicerequirements/testdevicerequirements.go",
         "patchSetId": 4
