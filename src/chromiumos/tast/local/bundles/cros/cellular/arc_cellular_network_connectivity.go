@@ -39,11 +39,19 @@ func ArcCellularNetworkConnectivity(ctx context.Context, s *testing.State) {
 	if _, err := modemmanager.NewModemWithSim(ctx); err != nil {
 		s.Fatal("Could not find MM dbus object with a valid sim: ", err)
 	}
-
 	helper, err := cellular.NewHelper(ctx)
 	if err != nil {
 		s.Fatal("Failed to create cellular.Helper: ", err)
 	}
+	// Enable and get service to set autoconnect based on test parameters.
+	if _, err := helper.Enable(ctx); err != nil {
+		s.Fatal("Failed to enable modem")
+	}
+	ipv4, ipv6, err := helper.GetNetworkProvisionedCellularIPTypes(ctx)
+	if err != nil {
+		s.Fatal("Failed to read APN info: ", err)
+	}
+	s.Log("ipv4: ", ipv4, " ipv6: ", ipv6)
 
 	// StartARC
 	func() {
@@ -59,13 +67,8 @@ func ArcCellularNetworkConnectivity(ctx context.Context, s *testing.State) {
 		defer a.Close(ctx)
 	}()
 
-	ipType, err := helper.GetCurrentIPType(ctx)
-	if err != nil {
-		s.Fatal("Failed to read APN info: ", err)
-	}
-
 	verifyIPConnectivity := func(ctx context.Context) error {
-		if err := cellular.VerifyIPConnectivity(ctx, arc.BootstrapCommand, ipType, "/system/bin"); err != nil {
+		if err := cellular.VerifyIPConnectivity(ctx, arc.BootstrapCommand, ipv4, ipv6, "/system/bin"); err != nil {
 			return errors.Wrap(err, "failed connectivity test")
 		}
 		return nil
