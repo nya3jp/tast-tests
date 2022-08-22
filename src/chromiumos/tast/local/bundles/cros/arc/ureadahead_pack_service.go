@@ -11,9 +11,12 @@ import (
 	"os"
 	"os/exec"
 	"path/filepath"
+	"regexp"
+	"strconv"
 	"strings"
 	"time"
 
+	"github.com/golang/protobuf/ptypes/empty"
 	"google.golang.org/grpc"
 
 	"chromiumos/tast/common/testexec"
@@ -313,6 +316,44 @@ func stopUreadaheadTracing(ctx context.Context, cmd *testexec.Cmd) error {
 	}
 
 	return nil
+}
+
+func (c *UreadaheadPackService) CheckMinMemory(ctx context.Context, req *empty.Empty) (*arcpb.CheckMinMemoryResponse, error) {
+	const (
+		ureadaheadVMMinMemoryKB = 7500000
+	)
+
+	// Check for whether ARCVM is present.
+	vmEnabled, err := arc.VMEnabled()
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to check whether ARCVM is enabled")
+	}
+
+	result := true
+	if vmEnabled {
+		testing.ContextLog(ctx, "Checking minimum memory requirement for ARCVM")
+		memInfo, err := ioutil.ReadFile("/proc/meminfo")
+		if err != nil {
+			return nil, errors.Wrap(err, "failed to read /proc/meminfo")
+		}
+		memTotal := regexp.MustCompile(`(\n|^)MemTotal:\s+(\d+)\s+kB(\n|$)`).FindSubmatch(memInfo)
+		if memTotal == nil {
+			return nil, errors.Wrapf(err, "failed to find required MemTotal string: %q", memInfo)
+		}
+		memTotalInt, err := strconv.Atoi(string(memTotal[2]))
+		if err != nil || memTotalInt <= 0 {
+			return nil, errors.Wrapf(err, "failed to parse %q into valid value", memTotal[2])
+		}
+		if memTotalInt < ureadaheadVMMinMemoryKB {
+			testing.ContextLogf(ctx, "Total memory %dkB < %dkB required, will not generate ureadahead pack", memTotalInt, ureadaheadVMMinMemoryKB)
+			result = false
+		}
+	}
+
+	response := arcpb.CheckMinMemoryResponse{
+		Result: result,
+	}
+	return &response, nil
 }
 
 // getGuestPack pulls ureadahead initial pack for requested Chrome login mode from guest OS.
