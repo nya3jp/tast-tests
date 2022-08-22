@@ -158,6 +158,30 @@
       },
       "revId": "9b2d02f9106c3e00d73c0e78b93ad457fbffa027",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc5f3642_eeee17b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-08-22T17:43:06Z",
+      "side": 1,
+      "message": "Thank you for the input on this issue Kyle! I ended up going for your first suggestion and used the existing interface to provide Chrome+Bluetooth implementation and it appears to be working as intended :)\n\nI did hit a presubmit error,\n\n    src/chromiumos/tast/local/bundles/cros/bluetooth/toggle_bluetooth_from_bluetooth_settings.go:48:24: Tast forbids inter-file references in entry files; move type ChromeLoggedInWithBluetoothEnabled in fixture.go to a shared package\n\nBut I wasn\u0027t sure whether this was mandatory in this case given I had seen other locations where this same approach was used (https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/assistant/fixture.go;l\u003d384-388;drc\u003da6d913d0c9f9dc3980b9632eb6fdf8dfb0323d9f). Would love any feedback on this iteration!",
+      "parentUuid": "5358f34d_59e8ec2c",
+      "range": {
+        "startLine": 96,
+        "startChar": 11,
+        "endLine": 96,
+        "endChar": 27
+      },
+      "revId": "9b2d02f9106c3e00d73c0e78b93ad457fbffa027",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
