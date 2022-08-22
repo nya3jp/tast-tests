@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "329a079f_702529f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/toggle_cellular_from_quick_settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1394700
+      },
+      "writtenOn": "2022-08-22T19:01:02Z",
+      "side": 1,
+      "message": "We actually do not need to create a new variable here, we already have one here https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/uiauto/quicksettings/network.go;l\u003d25",
+      "range": {
+        "startLine": 55,
+        "startChar": 1,
+        "endLine": 55,
+        "endChar": 29
+      },
+      "revId": "1e61f53f451bd7d4f2d439de57664e890677df9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "01bfe7b1_b7b84aac",
         "filename": "src/chromiumos/tast/local/bundles/cros/cellular/toggle_cellular_from_quick_settings.go",
         "patchSetId": 1
