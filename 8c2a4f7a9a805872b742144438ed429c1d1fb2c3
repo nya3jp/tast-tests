@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a5e7830_35fb037f",
+        "filename": "src/chromiumos/tast/local/arc/file.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1541210
+      },
+      "writtenOn": "2022-08-22T03:35:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "90e329dd_92b8c69d",
+      "range": {
+        "startLine": 171,
+        "startChar": 5,
+        "endLine": 171,
+        "endChar": 40
+      },
+      "revId": "8c2a4f7a9a805872b742144438ed429c1d1fb2c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9fa7d4b5_ee2b774a",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-08-19T13:55:51Z",
       "side": 1,
       "message": "nit: it\u0027s a little confusing that what testing.Poll() means here, maybe you want to put this comment near that poll",
+      "range": {
+        "startLine": 82,
+        "startChar": 62,
+        "endLine": 82,
+        "endChar": 74
+      },
+      "revId": "8c2a4f7a9a805872b742144438ed429c1d1fb2c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8cadf2ca_7a9b3f5e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/play_store_persistent.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1541210
+      },
+      "writtenOn": "2022-08-22T03:35:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9fa7d4b5_ee2b774a",
       "range": {
         "startLine": 82,
         "startChar": 62,
