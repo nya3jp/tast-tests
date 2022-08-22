@@ -88,6 +88,24 @@
       "parentUuid": "3ee0f3a9_6fb42821",
       "revId": "58c79eb936bad8cd85c9ce6aa0921021596fe5e9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0bc43b5_68f18120",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1512777
+      },
+      "writtenOn": "2022-08-22T05:22:30Z",
+      "side": 1,
+      "message": "Manual tests are done. However there are still quirks in VM tests so we\u0027re going through multiple CQ dry runs. This CL does not need extra changes, though.",
+      "parentUuid": "fb4169fc_ca6b51bd",
+      "revId": "58c79eb936bad8cd85c9ce6aa0921021596fe5e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
