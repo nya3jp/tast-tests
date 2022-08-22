@@ -314,6 +314,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a6500582_4c3429e2",
+        "filename": "src/chromiumos/tast/common/camera/dut/dut_control.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2022-08-22T09:58:07Z",
+      "side": 1,
+      "message": "Is this CCADimBacklight() going to be called from a remote test as well, or is it just the commandline composition logic in doRestoreBacklight() that is shared by both local/remote tests?\nIf latter, I suggest separating I/O and commandline data like:\n- CCADimBacklight: local\n- DoRestoreBacklight: common\n- DimBacklight: remote",
+      "parentUuid": "603494f6_b563a6dc",
+      "revId": "570e185ba146799da219e136c3ed2890e687e9c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e4b34a04_2c136bda",
         "filename": "src/chromiumos/tast/common/camera/dut/dut_control.go",
         "patchSetId": 10
