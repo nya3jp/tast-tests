@@ -378,6 +378,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6525b088_f2c89928",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/dock2_persistent_settings.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1445085
+      },
+      "writtenOn": "2022-08-22T18:11:31Z",
+      "side": 1,
+      "message": "One Suggestion to fix the comment at the later time. This CL has been on review for a very long time.",
+      "parentUuid": "7815d4cd_a5c69c74",
+      "range": {
+        "startLine": 1,
+        "startChar": 30,
+        "endLine": 1,
+        "endChar": 31
+      },
+      "revId": "3e590c3da37dff58aed9c0a63ff3e23e91a8448e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "58dd4a28_07e134b6",
         "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/dock2_persistent_settings.go",
         "patchSetId": 23

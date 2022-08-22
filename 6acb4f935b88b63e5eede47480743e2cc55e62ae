@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1f38c70a_24eb7c50",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/dock2_persistent_settings.go",
+        "patchSetId": 27
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1445085
+      },
+      "writtenOn": "2022-08-22T18:11:31Z",
+      "side": 1,
+      "message": "Let make more improvements on the next CL.",
+      "parentUuid": "56bd61f2_096c267a",
+      "revId": "6acb4f935b88b63e5eede47480743e2cc55e62ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "79ca49a0_14b6d592",
         "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/dock2_persistent_settings.go",
         "patchSetId": 27
@@ -37,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e1dbbe5c_b468a305",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/dock2_persistent_settings.go",
+        "patchSetId": 27
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1445085
+      },
+      "writtenOn": "2022-08-22T18:11:31Z",
+      "side": 1,
+      "message": "I agree with give more descriptive names for functions.\n\nLet\u0027s address these in the next CL to change these since we already have same naming convention from dock1_persistent_settings.go.",
+      "parentUuid": "79ca49a0_14b6d592",
+      "revId": "6acb4f935b88b63e5eede47480743e2cc55e62ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "97f98692_b52b324f",
         "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/dock2_persistent_settings.go",
         "patchSetId": 27
@@ -48,6 +84,30 @@
       "writtenOn": "2022-08-19T15:42:11Z",
       "side": 1,
       "message": "`displays`",
+      "range": {
+        "startLine": 154,
+        "startChar": 56,
+        "endLine": 154,
+        "endChar": 63
+      },
+      "revId": "6acb4f935b88b63e5eede47480743e2cc55e62ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec13681d_be14e3cc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/dock2_persistent_settings.go",
+        "patchSetId": 27
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1445085
+      },
+      "writtenOn": "2022-08-22T18:11:31Z",
+      "side": 1,
+      "message": "please fix",
+      "parentUuid": "97f98692_b52b324f",
       "range": {
         "startLine": 154,
         "startChar": 56,
