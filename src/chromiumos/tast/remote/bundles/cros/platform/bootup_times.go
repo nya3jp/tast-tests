@@ -62,17 +62,20 @@ func init() {
 			Name:    "power_button",
 			Val:     bootupTimes{bootType: powerButton},
 			Timeout: 5 * time.Minute,
-		}, {
-			Name:              "from_s5",
-			Val:               bootupTimes{bootType: bootFromS5},
-			Timeout:           5 * time.Minute,
-			ExtraHardwareDeps: hwdep.D(hwdep.ChromeEC()),
-		}, {
-			Name:              "refresh_power",
-			Val:               bootupTimes{bootType: refreshPower},
-			Timeout:           5 * time.Minute,
-			ExtraHardwareDeps: hwdep.D(hwdep.ChromeEC()),
-		}},
+		},
+			// TODO(b/242478571): fix and re-enable
+			//{
+			//	Name:              "from_s5",
+			//	Val:               bootupTimes{bootType: bootFromS5},
+			//	Timeout:           5 * time.Minute,
+			//	ExtraHardwareDeps: hwdep.D(hwdep.ChromeEC()),
+			//},
+			{
+				Name:              "refresh_power",
+				Val:               bootupTimes{bootType: refreshPower},
+				Timeout:           5 * time.Minute,
+				ExtraHardwareDeps: hwdep.D(hwdep.ChromeEC()),
+			}},
 	})
 }
 
