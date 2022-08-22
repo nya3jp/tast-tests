@@ -39,6 +39,30 @@
       },
       "revId": "f6b56f4554bff9f9d12581fd096e924cab0a0eda",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "53cb06d6_e6bdbfa6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2022-08-22T21:16:33Z",
+      "side": 1,
+      "message": "Thanks for catching it.  Yes this was leftover from local testing.",
+      "parentUuid": "6a727819_5628770e",
+      "range": {
+        "startLine": 258,
+        "startChar": 5,
+        "endLine": 258,
+        "endChar": 38
+      },
+      "revId": "f6b56f4554bff9f9d12581fd096e924cab0a0eda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
