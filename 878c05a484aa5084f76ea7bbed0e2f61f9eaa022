@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3248f88_6ffc863c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/open_chromebook_help_forum.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-08-22T20:21:03Z",
+      "side": 1,
+      "message": "should be `err !\u003d nil`, right?",
+      "range": {
+        "startLine": 76,
+        "startChar": 54,
+        "endLine": 76,
+        "endChar": 64
+      },
+      "revId": "878c05a484aa5084f76ea7bbed0e2f61f9eaa022",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
