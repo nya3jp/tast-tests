@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1ba0130_873ad95f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-08-22T00:53:51Z",
+      "side": 1,
+      "message": "LGTM!",
+      "revId": "4e473768a41bb2d724048bd539c6ed5c8d8af112",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d67c04b_2480d5b2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-08-22T00:53:51Z",
+      "side": 1,
+      "message": "nit: chrome.NewTabURL would be preferred particularly if it is passed to NewConnForTarget. You can see more in the comment of chrome.NewTabURL (although this hardcoded string is still being used in many existing code)",
+      "range": {
+        "startLine": 277,
+        "startChar": 68,
+        "endLine": 277,
+        "endChar": 86
+      },
+      "revId": "4e473768a41bb2d724048bd539c6ed5c8d8af112",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
