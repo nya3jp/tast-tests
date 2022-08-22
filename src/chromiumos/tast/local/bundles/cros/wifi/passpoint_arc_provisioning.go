@@ -57,11 +57,11 @@ func PasspointARCProvisioning(ctx context.Context, s *testing.State) {
 		{
 			desc: "TTLS with Home OI",
 			ap: passpoint.AccessPoint{
-				SSID:              "passpoint-ttls-home-oi",
-				Domain:            fqdn,
-				Realms:            []string{fqdn},
-				RoamingConsortium: passpoint.HomeOI,
-				Auth:              passpoint.AuthTTLS,
+				SSID:               "passpoint-ttls-home-oi",
+				Domain:             fqdn,
+				Realms:             []string{fqdn},
+				RoamingConsortiums: []uint64{passpoint.HomeOI},
+				Auth:               passpoint.AuthTTLS,
 			},
 			creds: passpoint.Credentials{
 				Domains: []string{fqdn},
@@ -72,11 +72,11 @@ func PasspointARCProvisioning(ctx context.Context, s *testing.State) {
 		{
 			desc: "TTLS with Roaming OI",
 			ap: passpoint.AccessPoint{
-				SSID:              "passpoint-ttls-roaming-oi",
-				Domain:            fqdn,
-				Realms:            []string{fqdn},
-				RoamingConsortium: passpoint.RoamingOI1,
-				Auth:              passpoint.AuthTTLS,
+				SSID:               "passpoint-ttls-roaming-oi",
+				Domain:             fqdn,
+				Realms:             []string{fqdn},
+				RoamingConsortiums: []uint64{passpoint.RoamingOI1},
+				Auth:               passpoint.AuthTTLS,
 			},
 			creds: passpoint.Credentials{
 				Domains:    []string{fqdn},
@@ -88,11 +88,11 @@ func PasspointARCProvisioning(ctx context.Context, s *testing.State) {
 		{
 			desc: "TLS with Home OI",
 			ap: passpoint.AccessPoint{
-				SSID:              "passpoint-tls-home-oi",
-				Domain:            fqdn,
-				Realms:            []string{fqdn},
-				RoamingConsortium: passpoint.HomeOI,
-				Auth:              passpoint.AuthTLS,
+				SSID:               "passpoint-tls-home-oi",
+				Domain:             fqdn,
+				Realms:             []string{fqdn},
+				RoamingConsortiums: []uint64{passpoint.HomeOI},
+				Auth:               passpoint.AuthTLS,
 			},
 			creds: passpoint.Credentials{
 				Domains: []string{fqdn},
@@ -103,11 +103,11 @@ func PasspointARCProvisioning(ctx context.Context, s *testing.State) {
 		{
 			desc: "TLS with Roaming OI",
 			ap: passpoint.AccessPoint{
-				SSID:              "passpoint-tls-roaming-oi",
-				Domain:            fqdn,
-				Realms:            []string{fqdn},
-				RoamingConsortium: passpoint.RoamingOI1,
-				Auth:              passpoint.AuthTLS,
+				SSID:               "passpoint-tls-roaming-oi",
+				Domain:             fqdn,
+				Realms:             []string{fqdn},
+				RoamingConsortiums: []uint64{passpoint.RoamingOI1},
+				Auth:               passpoint.AuthTLS,
 			},
 			creds: passpoint.Credentials{
 				Domains:    []string{fqdn},
