@@ -87,6 +87,14 @@ func RoutingIPv4Static(ctx context.Context, s *testing.State) {
 	if err := testEnv.TestService.SetProperty(ctx, shillconst.ServicePropertyStaticIPConfig, svcStaticIPConfig); err != nil {
 		s.Fatal("Failed to configure StaticIPConfig property on the test service: ", err)
 	}
+	defer func(ctx context.Context) {
+		// Reset StaticIPConfig before removing the test interfaces, to avoid
+		// installing this address on the physical interfaces. See
+		// b/239753191#comment8 for a racing case.
+		if err := testEnv.TestService.SetProperty(ctx, shillconst.ServicePropertyStaticIPConfig, map[string]interface{}{}); err != nil {
+			testing.ContextLog(ctx, "Failed to reset StaticIPConfig property on the test service: ", err)
+		}
+	}(cleanupCtx)
 
 	// Connect the service, and its state should become Online.
 	// TODO(b/235330956): The current code verifies that configuring static IP
