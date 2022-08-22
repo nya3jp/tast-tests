@@ -24,7 +24,7 @@ func init() {
 		Func:         RoutingIPv4Static,
 		Desc:         "Verify the shill behavior and routing semantics when the network does not have DHCP or SLAAC but only static IPv4 config",
 		Contacts:     []string{"jiejiang@google.com", "cros-networking@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		LacrosStatus: testing.LacrosVariantUnneeded,
 	})
 }
