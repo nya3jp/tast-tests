@@ -32,8 +32,15 @@ func init() {
 			ExtraSoftwareDeps: []string{"android_vm"},
 		}},
 		Fixture: "arcBooted",
-		Timeout: 2 * time.Minute,
+		Timeout: cdConfig().PollTimeout + 4*time.Minute,
 	})
+}
+
+// cdConfig returns the config to wait for the CPU to cooldown for TouchPerf tests.
+func cdConfig() cpu.CoolDownConfig {
+	cdConfig := cpu.DefaultCoolDownConfig(cpu.CoolDownPreserveUI)
+	cdConfig.TemperatureThreshold = 61000
+	return cdConfig
 }
 
 func TouchPerf(ctx context.Context, s *testing.State) {
@@ -88,8 +95,9 @@ func TouchPerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Could not maximize test app: ", err)
 	}
 
-	if err := cpu.WaitUntilIdle(ctx); err != nil {
-		s.Fatal("Failed to wait until CPU idle: ", err)
+	s.Log("Waiting until CPU is stabilized")
+	if err := cpu.WaitUntilStabilized(ctx, cdConfig()); err != nil {
+		s.Fatal("Could not wait until CPU is stabilized: ", err)
 	}
 
 	s.Log("Injecting touch move events")
