@@ -20,6 +20,40 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "199701ec_c715933c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/toggle_cellular_from_os_settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-08-22T23:21:30Z",
+      "side": 1,
+      "message": "Handle err here.",
+      "revId": "fe6827227506bfc0a25048edbbf528ea231946ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4c6d32a_f9187977",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/toggle_cellular_from_os_settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-08-22T23:21:30Z",
+      "side": 1,
+      "message": "Lines 51-56 can be condensed:\nif app, err :\u003d ossettings.Launch(ctx, tconn); err !\u003d nil {\n  s.Fatal(\"Failed to launch OS Settings: \", err)\n} else {\n  defer app.Close(ctx)\n}\n(If Launch fails we don\u0027t need to (and shouldn\u0027t try to) close app).",
+      "revId": "fe6827227506bfc0a25048edbbf528ea231946ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e705b3b1_f6c96ec9",
         "filename": "src/chromiumos/tast/local/bundles/cros/cellular/toggle_cellular_from_os_settings.go",
         "patchSetId": 1
@@ -72,6 +106,58 @@
       "side": 1,
       "message": "I think we might be okay here since the `Enable` method appears to wait for certain properties to be set before continuing [1]. However, it seems like it may be possible for Cellular to be inhibited [2] by the time we reach the toggle since we aren\u0027t waiting on that at all-- stevenjb@ do you think it would make sense to update this method (or add another) that waits for Cellular to no longer be inhibited?\n\n[1] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/cellular/cellular_helper.go;l\u003d139-157;drc\u003d22f19c8f4bce685e7189206ebde8673f4e85bd1e\n[2] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/common/shillconst/const.go;l\u003d39;drc\u003da7406fbba3eaccb2b9e0229a68878ecb63fcb5a5",
       "parentUuid": "f3caeb5c_92edd05a",
+      "revId": "fe6827227506bfc0a25048edbbf528ea231946ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b4d9d8a_9c6d54c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/toggle_cellular_from_os_settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-08-22T23:21:30Z",
+      "side": 1,
+      "message": "We should definitely wait and confirm that cellular and the toggle are enabled in the UI. \n\nThe cellular helper ensures that the state was enabled in Shill, but there are still multiple asynchronous APIs between Shill and the UI (dbus + mojo) that will *probably* have propagated, but *might* not have. It\u0027s also always a good idea to verify assumptions wherever reasonable.",
+      "parentUuid": "21bc2cdf_650fc9a3",
+      "revId": "fe6827227506bfc0a25048edbbf528ea231946ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f202437_bdee3720",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/toggle_cellular_from_os_settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-08-22T23:21:30Z",
+      "side": 1,
+      "message": "20 seems like a lot, why so many? Maybe add a comment here.",
+      "revId": "fe6827227506bfc0a25048edbbf528ea231946ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4ed500c_65aa4e94",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/toggle_cellular_from_os_settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-08-22T23:21:30Z",
+      "side": 1,
+      "message": "We should wait for the change to propagate to the UI here also.",
       "revId": "fe6827227506bfc0a25048edbbf528ea231946ce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
