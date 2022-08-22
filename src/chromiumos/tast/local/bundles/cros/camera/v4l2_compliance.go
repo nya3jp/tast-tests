@@ -6,6 +6,8 @@ package camera
 
 import (
 	"context"
+	"os"
+	"path/filepath"
 	"strings"
 
 	"chromiumos/tast/common/testexec"
@@ -33,15 +35,22 @@ func V4L2Compliance(ctx context.Context, s *testing.State) {
 	}
 
 	for _, videodev := range captureDevices {
-		cmd := testexec.CommandContext(ctx, "v4l2-compliance", "-v", "-d", videodev)
-		out, err := cmd.Output(testexec.DumpLogOnError)
-
+		// TODO(b/243048705): Remove strace and use CombinedOutput when debugging is done.
+		cmd := testexec.CommandContext(ctx, "strace", "-T", "-f", "v4l2-compliance", "-v", "-d", videodev)
+		stdout, stderr, err := cmd.SeparatedOutput(testexec.DumpLogOnError)
 		if err == nil {
 			continue
 		}
 
+		// Save strace output.
+		filename := filepath.Join(s.OutDir(), "v4l2-compliance.strace.txt")
+		err = os.WriteFile(filename, stderr, 0644)
+		if err != nil {
+			s.Fatalf("Error saving: %s: %v", filename, err)
+		}
+
 		// Log full output on error.
-		result := string(out)
+		result := string(stdout)
 		s.Log(result)
 
 		if cmd.ProcessState.ExitCode() != 1 {
