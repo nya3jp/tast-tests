@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "015d3993_686b246d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-08-22T15:58:59Z",
+      "side": 1,
+      "message": "When I added from_s5, none if the tests platform.BootupTimes.* passed, all of them failed all the time. Did this case get skipped when the other tests were fixed?",
+      "revId": "aace88736e313f42329e5efdb919649259045542",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "099625bb_706fa1d6",
