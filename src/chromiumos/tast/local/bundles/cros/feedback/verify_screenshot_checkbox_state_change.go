@@ -60,9 +60,7 @@ func VerifyScreenshotCheckboxStateChange(ctx context.Context, s *testing.State) 
 	}
 
 	// Verify the checkbox in share data page is unchecked and then click it.
-	checkboxAncestor := nodewith.Name("Attach screenshot").Role(
-		role.GenericContainer).Ancestor(feedbackRootNode)
-	checkbox := nodewith.Role(role.CheckBox).Ancestor(checkboxAncestor)
+	checkbox := nodewith.Role(role.CheckBox).Ancestor(feedbackRootNode).First()
 	if err := uiauto.Combine("Verify checkbox is unchecked and click it",
 		ui.WaitUntilExists(checkbox.Attribute("checked", "false")),
 		ui.DoDefault(checkbox),
