@@ -8,6 +8,7 @@ import (
 	"bytes"
 	"context"
 	"fmt"
+	"html/template"
 	"io/ioutil"
 	"net"
 	"path/filepath"
@@ -29,7 +30,7 @@ type AccessPoint struct {
 	Realms []string
 	// RoamingConsortium is the OI supported by this network.
 	// TODO(b/232747458): support multiple roaming consortium OIs.
-	RoamingConsortium uint64
+	RoamingConsortiums []uint64
 	// Auth is the EAP network authentication.
 	Auth
 }
@@ -37,6 +38,10 @@ type AccessPoint struct {
 // ToServer transforms the Passpoint access point descriptions into a valid hostapd service instance.
 func (ap *AccessPoint) ToServer(iface, outDir string) *hostapd.Server {
 	certs := certificate.TestCert1()
+	var roamingConsortiums []string
+	for _, rc := range ap.RoamingConsortiums {
+		roamingConsortiums = append(roamingConsortiums, fmt.Sprintf("%x", rc))
+	}
 	return hostapd.NewServer(
 		iface,
 		filepath.Join(outDir, iface),
@@ -48,7 +53,7 @@ func (ap *AccessPoint) ToServer(iface, outDir string) *hostapd.Server {
 			&certs,
 			ap.Domain,
 			ap.Realms,
-			fmt.Sprintf("%x", ap.RoamingConsortium),
+			roamingConsortiums,
 		),
 	)
 }
@@ -71,21 +76,21 @@ type APConf struct {
 	domain string
 	// realms is the set of domains supported by the access point.
 	realms []string
-	// roamingConsortium is the Organisation Identifier (OI) of compatible networks.
-	roamingConsortium string
+	// roamingConsortiums is the Organisation Identifier (OI) list of compatible networks.
+	roamingConsortiums []string
 }
 
 // NewAPConf creates a new Passpoint compatible access point configuration from the parameters.
-func NewAPConf(ssid string, auth Auth, identity, password string, cert *certificate.CertStore, domain string, realms []string, roamingConsortium string) *APConf {
+func NewAPConf(ssid string, auth Auth, identity, password string, cert *certificate.CertStore, domain string, realms, roamingConsortiums []string) *APConf {
 	return &APConf{
-		ssid:              ssid,
-		auth:              auth,
-		identity:          identity,
-		password:          password,
-		cert:              cert,
-		domain:            domain,
-		realms:            realms,
-		roamingConsortium: roamingConsortium,
+		ssid:               ssid,
+		auth:               auth,
+		identity:           identity,
+		password:           password,
+		cert:               cert,
+		domain:             domain,
+		realms:             realms,
+		roamingConsortiums: roamingConsortiums,
 	}
 }
 
@@ -104,32 +109,10 @@ func (c APConf) Generate(ctx context.Context, dir, ctrlPath string) (string, err
 		return "", errors.Wrap(err, "failed to prepare EAP users file")
 	}
 
-	confContents := fmt.Sprintf(`ctrl_interface=%s
-# Wireless configuration
-ssid=%s
-hw_mode=g
-channel=1
-# Enable EAP authentication and server
-ieee8021x=1
-eapol_version=2
-eap_server=1
-ca_cert=%s
-server_cert=%s
-private_key=%s
-eap_user_file=%s
-# Security
-wpa=2
-wpa_key_mgmt=WPA-EAP WPA-EAP-SHA256
-wpa_pairwise=CCMP
-ieee80211w=1
-# Interworking (802.11u-2011)
-interworking=1
-domain_name=%s
-nai_realm=0,%s
-roaming_consortium=%s
-# Hotspot 2.0
-hs20=1
-`, ctrlPath, c.ssid, caCertPath, serverCertPath, privateKeyPath, eapUserFilePath, c.domain, c.prepareRealms(), c.roamingConsortium)
+	confContents, err := c.prepareConf(ctrlPath, caCertPath, serverCertPath, privateKeyPath, eapUserFilePath)
+	if err != nil {
+		return "", errors.Wrap(err, "failed to prepare configuration file")
+	}
 
 	for _, p := range []struct {
 		path     string
@@ -187,6 +170,64 @@ func (c APConf) prepareRealms() string {
 	default:
 		return realms
 	}
+}
+
+// prepareConf generates the content of hostapd configuration file.
+func (c APConf) prepareConf(socketPath, caPath, certPath, keyPath, eapUsers string) (string, error) {
+	tmpl := template.Must(template.New("").Parse(`
+ctrl_interface={{.CtrlSocket}}
+# Wireless configuration
+ssid={{.SSID}}
+hw_mode=g
+channel=1
+# Enable EAP authentication and server
+ieee8021x=1
+eapol_version=2
+eap_server=1
+ca_cert={{.CaCert}}
+server_cert={{.ServerCert}}
+private_key={{.PrivateKey}}
+eap_user_file={{.EapUsers}}
+# Security
+wpa=2
+wpa_key_mgmt=WPA-EAP WPA-EAP-SHA256
+wpa_pairwise=CCMP
+ieee80211w=1
+# Interworking (802.11u-2011)
+interworking=1
+domain_name={{.Domains}}
+nai_realm=0,{{.Realms}}
+{{range .RoamingConsortiums}}
+roaming_consortium={{.}}
+{{end}}
+# Hotspot 2.0
+hs20=1
+`))
+	var buf bytes.Buffer
+	if err := tmpl.Execute(&buf, struct {
+		CtrlSocket         string
+		SSID               string
+		CaCert             string
+		ServerCert         string
+		PrivateKey         string
+		EapUsers           string
+		Domains            string
+		Realms             string
+		RoamingConsortiums []string
+	}{
+		CtrlSocket:         socketPath,
+		SSID:               c.ssid,
+		CaCert:             caPath,
+		ServerCert:         certPath,
+		PrivateKey:         keyPath,
+		EapUsers:           eapUsers,
+		Domains:            c.domain,
+		Realms:             c.prepareRealms(),
+		RoamingConsortiums: c.roamingConsortiums,
+	}); err != nil {
+		return "", errors.Wrap(err, "failed to execute hostapd configuration template")
+	}
+	return buf.String(), nil
 }
 
 // STAAssociationTimeout is the reasonable delay to wait for station
