@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "73ce80b6_6f5fe4a4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/util/test_runner.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2022-08-22T00:08:49Z",
+      "side": 1,
+      "message": "I am not convinced this is deep enough, but not sure if doing it deeper is gonna help.. so just a random thought, not actionable",
+      "range": {
+        "startLine": 30,
+        "startChar": 12,
+        "endLine": 30,
+        "endChar": 24
+      },
+      "revId": "3c7ac782b6e97aef79f6dbe4f0009974429b6be3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
