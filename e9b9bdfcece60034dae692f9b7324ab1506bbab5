@@ -170,6 +170,30 @@
       },
       "revId": "e9b9bdfcece60034dae692f9b7324ab1506bbab5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "459720b7_e74b2870",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/rpcdut/rpcdut.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-08-22T14:37:07Z",
+      "side": 1,
+      "message": "Right. Sorry, I should have reread more carefully before my previous comment.",
+      "parentUuid": "1277a218_2568acdf",
+      "range": {
+        "startLine": 160,
+        "startChar": 61,
+        "endLine": 160,
+        "endChar": 77
+      },
+      "revId": "e9b9bdfcece60034dae692f9b7324ab1506bbab5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
