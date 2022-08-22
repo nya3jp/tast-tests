@@ -16,6 +16,24 @@
       "message": "Why don\u0027t we need to remove the whole test? We just need to remove this line, right?",
       "revId": "5a6dc38bbd4572e32c264584431955fba520fe15",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "70c93bb0_862a7bb4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tablet_operations.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1515645
+      },
+      "writtenOn": "2022-08-22T01:55:54Z",
+      "side": 0,
+      "message": "This test was marked for deletion by test owner (go/retiring-old-informational-tests-2022). Only tests marked by OWNERs for deletion are deleted.",
+      "parentUuid": "57fc2d35_30e5844b",
+      "revId": "5a6dc38bbd4572e32c264584431955fba520fe15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
