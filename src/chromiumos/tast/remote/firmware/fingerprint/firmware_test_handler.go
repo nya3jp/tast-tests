@@ -290,7 +290,7 @@ func stopDaemons(ctx context.Context, upstartService platform.UpstartServiceClie
 	for _, name := range daemons {
 		status, err := upstartService.JobStatus(ctx, &platform.JobStatusRequest{JobName: name})
 		if err != nil {
-			return nil, errors.Wrap(err, "failed to get status for"+name)
+			return ret, errors.Wrap(err, "failed to get status for "+name)
 		}
 
 		daemonWasRunning := upstart.State(status.GetState()) == upstart.RunningState
@@ -301,7 +301,7 @@ func stopDaemons(ctx context.Context, upstartService platform.UpstartServiceClie
 				JobName: name,
 			})
 			if err != nil {
-				return nil, errors.Wrap(err, "failed to stop "+name)
+				return ret, errors.Wrap(err, "failed to stop "+name)
 			}
 		}
 
