@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "336a34ce_7e4dcb89",
+        "filename": "src/chromiumos/tast/local/bundles/cros/spera/extended_display_cuj.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2022-08-22T07:40:50Z",
+      "side": 1,
+      "message": "Revert it back to current year copyright. Otherwise, error message for cros_license_check: Use ChromiumOS instead of Chromium OS in new files.",
+      "revId": "b886a9a06cedd15fd654fa79218f54a892b55bfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
