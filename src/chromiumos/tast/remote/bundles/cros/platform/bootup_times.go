@@ -20,7 +20,8 @@ import (
 	"chromiumos/tast/services/cros/platform"
 	"chromiumos/tast/services/cros/security"
 	"chromiumos/tast/testing"
-	"chromiumos/tast/testing/hwdep"
+	// TODO(b/242478571): uncomment when re-enabling the from_s5 test
+	//"chromiumos/tast/testing/hwdep"
 )
 
 type bootupTimes struct {
@@ -60,12 +61,15 @@ func init() {
 			Name:    "power_button",
 			Val:     bootupTimes{bootType: powerButton},
 			Timeout: 5 * time.Minute,
-		}, {
-			Name:              "from_s5",
-			Val:               bootupTimes{bootType: bootFromS5},
-			Timeout:           5 * time.Minute,
-			ExtraHardwareDeps: hwdep.D(hwdep.ChromeEC()),
-		}},
+		},
+		// TODO(b/242478571): fix and re-enable
+		//{
+		//	Name:              "from_s5",
+		//	Val:               bootupTimes{bootType: bootFromS5},
+		//	Timeout:           5 * time.Minute,
+		//	ExtraHardwareDeps: hwdep.D(hwdep.ChromeEC()),
+		//}
+		},
 	})
 }
 
