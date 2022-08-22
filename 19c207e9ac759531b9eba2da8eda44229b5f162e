@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "39f7d35a_17951841",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/change_password_failure.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1518219
+      },
+      "writtenOn": "2022-08-22T15:24:21Z",
+      "side": 1,
+      "message": "I created a [task on buganizer](https://buganizer.corp.google.com/issues/243385469) for this, to replace DOM accesses in all similar tast tests.",
+      "parentUuid": "b70d7d4e_8810c8d5",
+      "range": {
+        "startLine": 86,
+        "startChar": 60,
+        "endLine": 86,
+        "endChar": 108
+      },
+      "revId": "19c207e9ac759531b9eba2da8eda44229b5f162e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4021a932_275222b8",
         "filename": "src/chromiumos/tast/local/bundles/cros/login/change_password_failure.go",
         "patchSetId": 1

@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "547784a6_d293bd75",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1518219
+      },
+      "writtenOn": "2022-08-22T15:24:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ee78bab2_5c29eda1",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 43
+      },
+      "revId": "136c01a6f4fd2334f53260f7ff9c4369c77779b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5c95295d_0da1ea90",
@@ -37,6 +61,24 @@
       "writtenOn": "2022-06-29T16:32:53Z",
       "side": 1,
       "message": "I\u0027d move this function after the init() or even at the end, to be consistent with the other tests",
+      "revId": "136c01a6f4fd2334f53260f7ff9c4369c77779b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "26f3941b_db3b8ddd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/change_password_failure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1518219
+      },
+      "writtenOn": "2022-08-22T15:24:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5c95295d_0da1ea90",
       "revId": "136c01a6f4fd2334f53260f7ff9c4369c77779b4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -58,6 +100,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc93393f_9487d807",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/change_password_failure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1518219
+      },
+      "writtenOn": "2022-08-22T15:24:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6012a3ca_79783b70",
+      "revId": "136c01a6f4fd2334f53260f7ff9c4369c77779b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a1f2aa95_232de9c8",
@@ -71,6 +131,24 @@
       "writtenOn": "2022-06-29T16:32:53Z",
       "side": 1,
       "message": "nit: comments should end with . at the end.",
+      "revId": "136c01a6f4fd2334f53260f7ff9c4369c77779b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "da434fa2_3d691b45",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/change_password_failure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1518219
+      },
+      "writtenOn": "2022-08-22T15:24:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a1f2aa95_232de9c8",
       "revId": "136c01a6f4fd2334f53260f7ff9c4369c77779b4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
