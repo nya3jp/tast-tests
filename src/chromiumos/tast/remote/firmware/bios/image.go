@@ -41,7 +41,7 @@ func NewRemoteImage(ctx context.Context, runner ServoHostCommandRunner, programm
 		return nil, errors.Wrap(err, "closing local temp file")
 	}
 
-	remoteTmpFile, err := runner.OutputCommand(ctx, true, "tempfile", "-d", "/var/tmp", "-p", "fwimg")
+	remoteTmpFile, err := runner.OutputCommand(ctx, true, "mktemp", "-u", "-p", "/var/tmp", "-t", "fwimgXXXXXX")
 	if err != nil {
 		return nil, errors.Wrap(err, "creating remote temp file")
 	}
@@ -129,7 +129,7 @@ func WriteRemoteFlashrom(ctx context.Context, runner ServoHostCommandRunner, pro
 		err = err1
 	}
 
-	remoteTmpFile, err := runner.OutputCommand(ctx, true, "tempfile", "-d", "/var/tmp", "-p", "fwimg")
+	remoteTmpFile, err := runner.OutputCommand(ctx, true, "mktemp", "-u", "-p", "/var/tmp", "-t", "fwimgXXXXXX")
 	if err != nil {
 		return errors.Wrap(err, "creating remote temp file")
 	}
