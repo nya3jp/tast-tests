@@ -18,7 +18,7 @@ func InitializeAllowedEntries() []AllowedEntry {
 		{"dhcpcd", "", ".*eth\\d: checksum failure from.*", 0},
 		{"dhcpcd", "", ".*eth\\d: DHCP lease expired.*", 0},
 		{"dhcpcd", "", ".*eth\\d: dhcp_envoption 119: Operation not supported.*", 0},
-		{"dhcpcd", "", ".*eth\\d: truncated packet.*", 0},
+		{"dhcpcd", "", ".*eth.*: truncated packet.*", 0},
 		{"dnsproxyd", "client.cc", ".*Unable to get properties for device.*", 0},
 		{"dnsproxyd", "dbus_method_invoker.h", ".*CallMethodAndBlockWithTimeout.*", 0},
 		{"dnsproxyd", "object_proxy.cc", ".*Failed to call method: org.chromium.flimflam.Device.GetProperties.*", 0},
