@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c428a87d_6506994e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2022-08-22T01:25:20Z",
+      "side": 1,
+      "message": "Is that due to the extra large flash size on these newer Intel DUT\u0027s? If you break that down per-test that the maths look reasonable, what is the expected value for a complete erasure+write on a 32MB Intel DUT - maybe measure that?",
+      "range": {
+        "startLine": 9,
+        "startChar": 25,
+        "endLine": 9,
+        "endChar": 63
+      },
+      "revId": "0c9a1b85875634ae20c03e6af9c615e9bf43948c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d00ceac_667ac3d5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2022-08-22T01:25:20Z",
+      "side": 1,
+      "message": "create a bug.",
+      "range": {
+        "startLine": 13,
+        "startChar": 4,
+        "endLine": 13,
+        "endChar": 8
+      },
+      "revId": "0c9a1b85875634ae20c03e6af9c615e9bf43948c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
