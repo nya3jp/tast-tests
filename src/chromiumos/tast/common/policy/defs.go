@@ -1730,6 +1730,35 @@ func (p *ChromeOsReleaseChannel) Equal(iface interface{}) bool {
 }
 
 // /////////////////////////////////////////////////////////////////////////////
+// 92. MaxConnectionsPerProxy
+// This is a future policy, it is not present in stable builds.
+// /////////////////////////////////////////////////////////////////////////////
+type MaxConnectionsPerProxy struct {
+	Stat Status
+	Val  int
+}
+
+func (p *MaxConnectionsPerProxy) Name() string          { return "MaxConnectionsPerProxy" }
+func (p *MaxConnectionsPerProxy) Field() string         { return "" }
+func (p *MaxConnectionsPerProxy) Scope() Scope          { return ScopeUser }
+func (p *MaxConnectionsPerProxy) Status() Status        { return p.Stat }
+func (p *MaxConnectionsPerProxy) UntypedV() interface{} { return p.Val }
+func (p *MaxConnectionsPerProxy) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v int
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as int", m)
+	}
+	return v, nil
+}
+func (p *MaxConnectionsPerProxy) Equal(iface interface{}) bool {
+	v, ok := iface.(int)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
+}
+
+// /////////////////////////////////////////////////////////////////////////////
 // 93. IncognitoModeAvailability
 // This policy can be modified without rebooting.
 // /////////////////////////////////////////////////////////////////////////////
@@ -8376,38 +8405,6 @@ func (p *MediaRouterCastAllowAllIPs) Equal(iface interface{}) bool {
 }
 
 // /////////////////////////////////////////////////////////////////////////////
-// 438. DeviceSamlLoginAuthenticationType
-// This policy can be modified without rebooting.
-// This is a future policy, it is not present in stable builds.
-// /////////////////////////////////////////////////////////////////////////////
-type DeviceSamlLoginAuthenticationType struct {
-	Stat Status
-	Val  int
-}
-
-func (p *DeviceSamlLoginAuthenticationType) Name() string { return "DeviceSamlLoginAuthenticationType" }
-func (p *DeviceSamlLoginAuthenticationType) Field() string {
-	return "saml_login_authentication_type.saml_login_authentication_type"
-}
-func (p *DeviceSamlLoginAuthenticationType) Scope() Scope          { return ScopeDevice }
-func (p *DeviceSamlLoginAuthenticationType) Status() Status        { return p.Stat }
-func (p *DeviceSamlLoginAuthenticationType) UntypedV() interface{} { return p.Val }
-func (p *DeviceSamlLoginAuthenticationType) UnmarshalAs(m json.RawMessage) (interface{}, error) {
-	var v int
-	if err := json.Unmarshal(m, &v); err != nil {
-		return nil, errors.Wrapf(err, "could not read %s as int", m)
-	}
-	return v, nil
-}
-func (p *DeviceSamlLoginAuthenticationType) Equal(iface interface{}) bool {
-	v, ok := iface.(int)
-	if !ok {
-		return ok
-	}
-	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
-}
-
-// /////////////////////////////////////////////////////////////////////////////
 // 439. WebUsbAskForUrls
 // This policy can be modified without rebooting.
 // /////////////////////////////////////////////////////////////////////////////
@@ -14010,6 +14007,13 @@ type OnFileAttachedEnterpriseConnectorValue struct {
 	Enable                   []*OnFileAttachedEnterpriseConnectorValueEnable         `json:"enable,omitempty"`
 	RequireJustificationTags []string                                                `json:"require_justification_tags,omitempty"`
 	ServiceProvider          string                                                  `json:"service_provider"`
+	Verification             *OnFileAttachedEnterpriseConnectorValueVerification     `json:"verification"`
+}
+
+type OnFileAttachedEnterpriseConnectorValueVerification struct {
+	Linux   []string `json:"linux,omitempty"`
+	Mac     []string `json:"mac,omitempty"`
+	Windows []string `json:"windows,omitempty"`
 }
 
 type OnFileAttachedEnterpriseConnectorValueEnable struct {
@@ -14101,6 +14105,13 @@ type OnFileDownloadedEnterpriseConnectorValue struct {
 	Enable                   []*OnFileDownloadedEnterpriseConnectorValueEnable         `json:"enable,omitempty"`
 	RequireJustificationTags []string                                                  `json:"require_justification_tags,omitempty"`
 	ServiceProvider          string                                                    `json:"service_provider"`
+	Verification             *OnFileDownloadedEnterpriseConnectorValueVerification     `json:"verification"`
+}
+
+type OnFileDownloadedEnterpriseConnectorValueVerification struct {
+	Linux   []string `json:"linux,omitempty"`
+	Mac     []string `json:"mac,omitempty"`
+	Windows []string `json:"windows,omitempty"`
 }
 
 type OnFileDownloadedEnterpriseConnectorValueEnable struct {
@@ -14159,6 +14170,13 @@ type OnBulkDataEntryEnterpriseConnectorValue struct {
 	MinimumDataSize          int                                                      `json:"minimum_data_size"`
 	RequireJustificationTags []string                                                 `json:"require_justification_tags,omitempty"`
 	ServiceProvider          string                                                   `json:"service_provider"`
+	Verification             *OnBulkDataEntryEnterpriseConnectorValueVerification     `json:"verification"`
+}
+
+type OnBulkDataEntryEnterpriseConnectorValueVerification struct {
+	Linux   []string `json:"linux,omitempty"`
+	Mac     []string `json:"mac,omitempty"`
+	Windows []string `json:"windows,omitempty"`
 }
 
 type OnBulkDataEntryEnterpriseConnectorValueEnable struct {
@@ -14950,37 +14968,6 @@ func (p *SuggestedContentEnabled) UnmarshalAs(m json.RawMessage) (interface{}, e
 	return v, nil
 }
 func (p *SuggestedContentEnabled) Equal(iface interface{}) bool {
-	v, ok := iface.(bool)
-	if !ok {
-		return ok
-	}
-	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
-}
-
-// /////////////////////////////////////////////////////////////////////////////
-// 727. ExtensionInstallEventLoggingEnabled
-// This policy can be modified without rebooting.
-// /////////////////////////////////////////////////////////////////////////////
-type ExtensionInstallEventLoggingEnabled struct {
-	Stat Status
-	Val  bool
-}
-
-func (p *ExtensionInstallEventLoggingEnabled) Name() string {
-	return "ExtensionInstallEventLoggingEnabled"
-}
-func (p *ExtensionInstallEventLoggingEnabled) Field() string         { return "" }
-func (p *ExtensionInstallEventLoggingEnabled) Scope() Scope          { return ScopeUser }
-func (p *ExtensionInstallEventLoggingEnabled) Status() Status        { return p.Stat }
-func (p *ExtensionInstallEventLoggingEnabled) UntypedV() interface{} { return p.Val }
-func (p *ExtensionInstallEventLoggingEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error) {
-	var v bool
-	if err := json.Unmarshal(m, &v); err != nil {
-		return nil, errors.Wrapf(err, "could not read %s as bool", m)
-	}
-	return v, nil
-}
-func (p *ExtensionInstallEventLoggingEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
 		return ok
@@ -17160,6 +17147,36 @@ func (p *ClearBrowsingDataOnExitList) Equal(iface interface{}) bool {
 }
 
 // /////////////////////////////////////////////////////////////////////////////
+// 810. ProfilePickerOnStartupAvailability
+// /////////////////////////////////////////////////////////////////////////////
+type ProfilePickerOnStartupAvailability struct {
+	Stat Status
+	Val  int
+}
+
+func (p *ProfilePickerOnStartupAvailability) Name() string {
+	return "ProfilePickerOnStartupAvailability"
+}
+func (p *ProfilePickerOnStartupAvailability) Field() string         { return "" }
+func (p *ProfilePickerOnStartupAvailability) Scope() Scope          { return ScopeUser }
+func (p *ProfilePickerOnStartupAvailability) Status() Status        { return p.Stat }
+func (p *ProfilePickerOnStartupAvailability) UntypedV() interface{} { return p.Val }
+func (p *ProfilePickerOnStartupAvailability) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v int
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as int", m)
+	}
+	return v, nil
+}
+func (p *ProfilePickerOnStartupAvailability) Equal(iface interface{}) bool {
+	v, ok := iface.(int)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
+}
+
+// /////////////////////////////////////////////////////////////////////////////
 // 813. ManagedConfigurationPerOrigin
 // This policy can be modified without rebooting.
 // /////////////////////////////////////////////////////////////////////////////
@@ -17764,6 +17781,36 @@ func (p *SerialAllowUsbDevicesForUrls) UnmarshalAs(m json.RawMessage) (interface
 }
 func (p *SerialAllowUsbDevicesForUrls) Equal(iface interface{}) bool {
 	v, ok := iface.([]*SerialAllowUsbDevicesForUrlsValue)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
+}
+
+// /////////////////////////////////////////////////////////////////////////////
+// 839. ForcedLanguages
+// This policy can be modified without rebooting.
+// This is a future policy, it is not present in stable builds.
+// /////////////////////////////////////////////////////////////////////////////
+type ForcedLanguages struct {
+	Stat Status
+	Val  []string
+}
+
+func (p *ForcedLanguages) Name() string          { return "ForcedLanguages" }
+func (p *ForcedLanguages) Field() string         { return "" }
+func (p *ForcedLanguages) Scope() Scope          { return ScopeUser }
+func (p *ForcedLanguages) Status() Status        { return p.Stat }
+func (p *ForcedLanguages) UntypedV() interface{} { return p.Val }
+func (p *ForcedLanguages) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v []string
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as []string", m)
+	}
+	return v, nil
+}
+func (p *ForcedLanguages) Equal(iface interface{}) bool {
+	v, ok := iface.([]string)
 	if !ok {
 		return ok
 	}
@@ -19910,6 +19957,13 @@ type OnPrintEnterpriseConnectorValue struct {
 	Enable                   []*OnPrintEnterpriseConnectorValueEnable         `json:"enable,omitempty"`
 	RequireJustificationTags []string                                         `json:"require_justification_tags,omitempty"`
 	ServiceProvider          string                                           `json:"service_provider"`
+	Verification             *OnPrintEnterpriseConnectorValueVerification     `json:"verification"`
+}
+
+type OnPrintEnterpriseConnectorValueVerification struct {
+	Linux   []string `json:"linux,omitempty"`
+	Mac     []string `json:"mac,omitempty"`
+	Windows []string `json:"windows,omitempty"`
 }
 
 type OnPrintEnterpriseConnectorValueEnable struct {
@@ -20686,7 +20740,6 @@ func (p *WebHidAllowDevicesWithHidUsagesForUrls) Equal(iface interface{}) bool {
 
 // /////////////////////////////////////////////////////////////////////////////
 // 956. SecondaryGoogleAccountUsage
-// This is a future policy, it is not present in stable builds.
 // /////////////////////////////////////////////////////////////////////////////
 type SecondaryGoogleAccountUsage struct {
 	Stat Status
@@ -21055,6 +21108,7 @@ func (p *DownloadBubbleEnabled) Equal(iface interface{}) bool {
 
 // /////////////////////////////////////////////////////////////////////////////
 // 971. DevicePowerAdaptiveChargingEnabled
+// This policy has a default value of False.
 // This policy can be modified without rebooting.
 // /////////////////////////////////////////////////////////////////////////////
 type DevicePowerAdaptiveChargingEnabled struct {
@@ -21411,7 +21465,7 @@ func (p *ClipboardBlockedForUrls) Equal(iface interface{}) bool {
 // /////////////////////////////////////////////////////////////////////////////
 // 986. OsColorMode
 // This policy has a default value of light.
-// This is a future policy, it is not present in stable builds.
+// This policy can be modified without rebooting.
 // /////////////////////////////////////////////////////////////////////////////
 type OsColorMode struct {
 	Stat Status
@@ -21431,6 +21485,204 @@ func (p *OsColorMode) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 	return v, nil
 }
 func (p *OsColorMode) Equal(iface interface{}) bool {
+	v, ok := iface.(string)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
+}
+
+// /////////////////////////////////////////////////////////////////////////////
+// 991. OnFileTransferEnterpriseConnector
+// This policy can be modified without rebooting.
+// This is a future policy, it is not present in stable builds.
+// /////////////////////////////////////////////////////////////////////////////
+type OnFileTransferEnterpriseConnector struct {
+	Stat Status
+	Val  []*OnFileTransferEnterpriseConnectorValue
+}
+
+type OnFileTransferEnterpriseConnectorValue struct {
+	BlockLargeFiles          bool                                                    `json:"block_large_files"`
+	BlockPasswordProtected   bool                                                    `json:"block_password_protected"`
+	BlockUntilVerdict        int                                                     `json:"block_until_verdict"`
+	CustomMessages           []*OnFileTransferEnterpriseConnectorValueCustomMessages `json:"custom_messages,omitempty"`
+	Disable                  []*Reffile_transfer_enable_disable_schema               `json:"disable,omitempty"`
+	Enable                   []*Reffile_transfer_enable_disable_schema               `json:"enable,omitempty"`
+	RequireJustificationTags []string                                                `json:"require_justification_tags,omitempty"`
+	ServiceProvider          string                                                  `json:"service_provider"`
+}
+
+type OnFileTransferEnterpriseConnectorValueCustomMessages struct {
+	Language     string `json:"language"`
+	LearnMoreUrl string `json:"learn_more_url"`
+	Message      string `json:"message"`
+	Tag          string `json:"tag"`
+}
+
+func (p *OnFileTransferEnterpriseConnector) Name() string          { return "OnFileTransferEnterpriseConnector" }
+func (p *OnFileTransferEnterpriseConnector) Field() string         { return "" }
+func (p *OnFileTransferEnterpriseConnector) Scope() Scope          { return ScopeUser }
+func (p *OnFileTransferEnterpriseConnector) Status() Status        { return p.Stat }
+func (p *OnFileTransferEnterpriseConnector) UntypedV() interface{} { return p.Val }
+func (p *OnFileTransferEnterpriseConnector) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v []*OnFileTransferEnterpriseConnectorValue
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as []*OnFileTransferEnterpriseConnectorValue", m)
+	}
+	return v, nil
+}
+func (p *OnFileTransferEnterpriseConnector) Equal(iface interface{}) bool {
+	v, ok := iface.([]*OnFileTransferEnterpriseConnectorValue)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
+}
+
+// /////////////////////////////////////////////////////////////////////////////
+// 995. NewWindowsInKioskAllowed
+// This policy can be modified without rebooting.
+// This is a future policy, it is not present in stable builds.
+// /////////////////////////////////////////////////////////////////////////////
+type NewWindowsInKioskAllowed struct {
+	Stat Status
+	Val  bool
+}
+
+func (p *NewWindowsInKioskAllowed) Name() string          { return "NewWindowsInKioskAllowed" }
+func (p *NewWindowsInKioskAllowed) Field() string         { return "" }
+func (p *NewWindowsInKioskAllowed) Scope() Scope          { return ScopeUser }
+func (p *NewWindowsInKioskAllowed) Status() Status        { return p.Stat }
+func (p *NewWindowsInKioskAllowed) UntypedV() interface{} { return p.Val }
+func (p *NewWindowsInKioskAllowed) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v bool
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as bool", m)
+	}
+	return v, nil
+}
+func (p *NewWindowsInKioskAllowed) Equal(iface interface{}) bool {
+	v, ok := iface.(bool)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
+}
+
+// /////////////////////////////////////////////////////////////////////////////
+// 996. EncryptedClientHelloEnabled
+// This policy can be modified without rebooting.
+// /////////////////////////////////////////////////////////////////////////////
+type EncryptedClientHelloEnabled struct {
+	Stat Status
+	Val  bool
+}
+
+func (p *EncryptedClientHelloEnabled) Name() string          { return "EncryptedClientHelloEnabled" }
+func (p *EncryptedClientHelloEnabled) Field() string         { return "" }
+func (p *EncryptedClientHelloEnabled) Scope() Scope          { return ScopeUser }
+func (p *EncryptedClientHelloEnabled) Status() Status        { return p.Stat }
+func (p *EncryptedClientHelloEnabled) UntypedV() interface{} { return p.Val }
+func (p *EncryptedClientHelloEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v bool
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as bool", m)
+	}
+	return v, nil
+}
+func (p *EncryptedClientHelloEnabled) Equal(iface interface{}) bool {
+	v, ok := iface.(bool)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
+}
+
+// /////////////////////////////////////////////////////////////////////////////
+// 997. DeviceAutofillSAMLUsername
+// This policy can be modified without rebooting.
+// /////////////////////////////////////////////////////////////////////////////
+type DeviceAutofillSAMLUsername struct {
+	Stat Status
+	Val  string
+}
+
+func (p *DeviceAutofillSAMLUsername) Name() string { return "DeviceAutofillSAMLUsername" }
+func (p *DeviceAutofillSAMLUsername) Field() string {
+	return "saml_username.url_parameter_to_autofill_saml_username"
+}
+func (p *DeviceAutofillSAMLUsername) Scope() Scope          { return ScopeDevice }
+func (p *DeviceAutofillSAMLUsername) Status() Status        { return p.Stat }
+func (p *DeviceAutofillSAMLUsername) UntypedV() interface{} { return p.Val }
+func (p *DeviceAutofillSAMLUsername) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v string
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as string", m)
+	}
+	return v, nil
+}
+func (p *DeviceAutofillSAMLUsername) Equal(iface interface{}) bool {
+	v, ok := iface.(string)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
+}
+
+// /////////////////////////////////////////////////////////////////////////////
+// 999. KerberosDomainAutocomplete
+// This policy can be modified without rebooting.
+// This is a future policy, it is not present in stable builds.
+// /////////////////////////////////////////////////////////////////////////////
+type KerberosDomainAutocomplete struct {
+	Stat Status
+	Val  string
+}
+
+func (p *KerberosDomainAutocomplete) Name() string          { return "KerberosDomainAutocomplete" }
+func (p *KerberosDomainAutocomplete) Field() string         { return "" }
+func (p *KerberosDomainAutocomplete) Scope() Scope          { return ScopeUser }
+func (p *KerberosDomainAutocomplete) Status() Status        { return p.Stat }
+func (p *KerberosDomainAutocomplete) UntypedV() interface{} { return p.Val }
+func (p *KerberosDomainAutocomplete) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v string
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as string", m)
+	}
+	return v, nil
+}
+func (p *KerberosDomainAutocomplete) Equal(iface interface{}) bool {
+	v, ok := iface.(string)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
+}
+
+// /////////////////////////////////////////////////////////////////////////////
+// 1000. KerberosDefaultConfiguration
+// This policy can be modified without rebooting.
+// This is a future policy, it is not present in stable builds.
+// /////////////////////////////////////////////////////////////////////////////
+type KerberosDefaultConfiguration struct {
+	Stat Status
+	Val  string
+}
+
+func (p *KerberosDefaultConfiguration) Name() string          { return "KerberosDefaultConfiguration" }
+func (p *KerberosDefaultConfiguration) Field() string         { return "" }
+func (p *KerberosDefaultConfiguration) Scope() Scope          { return ScopeUser }
+func (p *KerberosDefaultConfiguration) Status() Status        { return p.Stat }
+func (p *KerberosDefaultConfiguration) UntypedV() interface{} { return p.Val }
+func (p *KerberosDefaultConfiguration) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v string
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as string", m)
+	}
+	return v, nil
+}
+func (p *KerberosDefaultConfiguration) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
 	if !ok {
 		return ok
@@ -21519,6 +21771,20 @@ type RefConfig struct {
 	SharedSecret        string `json:"shared_secret"`
 }
 
+type Reffile_transfer_enable_disable_schema struct {
+	SourceDestinationList []*Reffile_transfer_enable_disable_schemaSourceDestinationList `json:"source_destination_list,omitempty"`
+	Tags                  []string                                                       `json:"tags,omitempty"`
+}
+
+type Reffile_transfer_enable_disable_schemaSourceDestinationList struct {
+	Destinations []*Reffile_transfer_source_destination_schema `json:"destinations,omitempty"`
+	Sources      []*Reffile_transfer_source_destination_schema `json:"sources,omitempty"`
+}
+
+type Reffile_transfer_source_destination_schema struct {
+	FileSystemType string `json:"file_system_type"`
+}
+
 type RefDomainFiletypePair struct {
 	Domains       []string `json:"domains,omitempty"`
 	FileExtension string   `json:"file_extension"`
@@ -21583,7 +21849,6 @@ type ONCGlobalNetworkConfiguration struct {
 	AllowOnlyPolicyNetworksToAutoconnect bool `json:"AllowOnlyPolicyNetworksToAutoconnect"`
 	AllowOnlyPolicyNetworksToConnect     bool `json:"AllowOnlyPolicyNetworksToConnect"`
 	AllowOnlyPolicyCellularNetworks      bool `json:"AllowOnlyPolicyCellularNetworks"`
-	AllowCellularSimLock                 bool `json:"AllowCellularSimLock"`
 }
 
 type ONC struct {
