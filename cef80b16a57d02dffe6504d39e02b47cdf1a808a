@@ -34,6 +34,23 @@
       "parentUuid": "5e98e535_213022a5",
       "revId": "cef80b16a57d02dffe6504d39e02b47cdf1a808a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0535ece1_f63b5141",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-08-22T04:36:08Z",
+      "side": 1,
+      "message": "Hi Omar, \n\nI guess we are having some errors in this CL. That\u0027s why the dry runs are failing within 30 mins. Can you please share the CQ error logs?",
+      "revId": "cef80b16a57d02dffe6504d39e02b47cdf1a808a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
