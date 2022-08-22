@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b025a602_1ab90a14",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-08-22T07:17:11Z",
+      "side": 1,
+      "message": "I did text diff, no major change in the result.\nLGTM",
+      "revId": "ea6bc4fedd54ac2685d4a2261e49deab1df1b5ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
