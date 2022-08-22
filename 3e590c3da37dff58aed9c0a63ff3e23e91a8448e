@@ -450,6 +450,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ecb64e34_a3997dab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/dock2_persistent_settings.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1445085
+      },
+      "writtenOn": "2022-08-22T21:40:26Z",
+      "side": 1,
+      "message": "Totally agreed. Developers need to get their repo tools/branch correctly. I will sync up with them offline on this.\n\n\n$ git status\nNot currently on any branch.\n\n\nMeanwhile, this if fixed by edit in review.",
+      "parentUuid": "7e17e900_cef36824",
+      "range": {
+        "startLine": 1,
+        "startChar": 30,
+        "endLine": 1,
+        "endChar": 31
+      },
+      "revId": "3e590c3da37dff58aed9c0a63ff3e23e91a8448e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "58dd4a28_07e134b6",
         "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/dock2_persistent_settings.go",
         "patchSetId": 23
