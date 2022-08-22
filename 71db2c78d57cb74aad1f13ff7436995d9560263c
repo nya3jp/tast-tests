@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "287a05e3_f052e64e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-08-22T07:54:05Z",
+      "side": 1,
+      "message": "Hi Alston, there is probably a better way to review the change.\n\n1. Move the file and delete the original one in patchset A\n2. Add back the original file in patchset B.\n\nSo that I can compare Base -\u003e Patchset A, and Patchset A -\u003e B",
+      "revId": "71db2c78d57cb74aad1f13ff7436995d9560263c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
