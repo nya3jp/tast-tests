@@ -531,6 +531,24 @@ func (ac *Context) WaitUntilEnabled(finder *nodewith.Finder) Action {
 	}
 }
 
+// WaitUntilCheckedState returns a function that waits until the node reaches the
+// expected state.
+func (ac *Context) WaitUntilCheckedState(finder *nodewith.Finder, expectedState bool) Action {
+	return func(ctx context.Context) error {
+		return testing.Poll(ctx, func(ctx context.Context) error {
+			nodeInfo, err := ac.Info(ctx, finder)
+			if err != nil {
+				return err
+			}
+			isToggleChecked := (nodeInfo.Checked == checked.True)
+			if isToggleChecked != expectedState {
+				return errors.Wrapf(err, "%v is disabled", nodeInfo.Name)
+			}
+			return nil
+		}, &ac.pollOpts)
+	}
+}
+
 // ErrNodeAppeared is returned if node is expected not to be visible
 var ErrNodeAppeared = errors.New("node appeared when it should not")
 
