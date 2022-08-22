@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ffd5271_559c2e96",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-08-22T05:03:04Z",
+      "side": 1,
+      "message": "One occurrence of apps.Lacros.ID had been missing. Please take another look.\nDi\u0027s change has made it into ChromeOS, so the CL is ready to land.",
+      "revId": "6b2f69426563ee2b6c7e2a7048c965d477482c38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
