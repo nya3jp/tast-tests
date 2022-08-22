@@ -15,6 +15,14 @@ import (
 	"chromiumos/tast/local/input"
 )
 
+// Since the resolution of each DUT may be different, each coordinate file must be recorded separately.
+// Now only recording is made for the hatch device. If replaying on other machines, the case may fail due to wrong coordinates.
+// TODO(b/243053294): Since these file may change frequently, it's better the test download the files based on a var.
+const (
+	coordinatesFile = "citrix/clinician_workstation_coordinates.json"
+	uiWaitFile      = "citrix/clinician_workstation_uiwait.json"
+)
+
 // ClinicianWorkstationData lists all the data used in the clinician workstation cuj.
 var ClinicianWorkstationData = []string{
 	// The following are icons used by uidetection in the clinician workstation cuj.
@@ -32,6 +40,9 @@ var ClinicianWorkstationData = []string{
 	cx.IconPhotosComputer,
 	cx.IconPhotosDownload,
 	cx.IconPhotosDelete,
+	// The following are files used in replay mode.
+	coordinatesFile,
+	uiWaitFile,
 }
 
 // Test scenario for clinician workstation CUJ:
@@ -76,6 +87,12 @@ func (c *ClinicianWorkstationScenario) Run(ctx context.Context, tconn *chrome.Te
 		}
 		return nil
 	}
+	if p.TestMode == cx.ReplayMode {
+		if err := citrix.LoadRecordFile(coordinatesFile, uiWaitFile); err != nil {
+			return err
+		}
+	}
+
 	return uiauto.NamedCombine("run the clinician workstation cuj scenario",
 		citrix.ConnectRemoteDesktop(p.DesktopName),
 		citrix.CloseAllChromeBrowsers(),

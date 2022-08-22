@@ -31,6 +31,7 @@ type TestParams struct {
 	CitrixServerURL string
 	DesktopName     string
 	TabletMode      bool
+	TestMode        cx.TestMode
 	DataPath        func(string) string
 	UIHandler       cuj.UIActionHandler
 }
@@ -82,7 +83,7 @@ func Run(ctx context.Context, cr *chrome.Chrome, scenario CitrixScenario, p *Tes
 		return errors.Wrap(err, "failed to add metrics to recorder")
 	}
 
-	citrix := cx.NewCitrix(tconn, kb, p.DataPath, desktopTitle, p.TabletMode)
+	citrix := cx.NewCitrix(tconn, kb, p.DataPath, desktopTitle, p.TabletMode, p.TestMode)
 	if err := uiauto.NamedCombine("open and login citrix",
 		citrix.Open(),
 		citrix.Login(p.CitrixServerURL, p.CitrixUserName, p.CitrixPassword),
@@ -96,6 +97,12 @@ func Run(ctx context.Context, cr *chrome.Chrome, scenario CitrixScenario, p *Tes
 		return scenario.Run(ctx, tconn, kb, citrix, p)
 	}); err != nil {
 		return errors.Wrap(err, "failed to run the clinician workstation cuj")
+	}
+
+	if p.TestMode == cx.RecordMode {
+		if err := citrix.SaveRecordFile(ctx, p.OutDir); err != nil {
+			return err
+		}
 	}
 
 	pv := perf.NewValues()
