@@ -16,6 +16,23 @@
       "message": "Hey Pi-Hsun Shih, your changes look good to me. Do you have someone else on your team to help review these changes, though?",
       "revId": "abed7aaf9a13695a7aac02feba3c7c387854e432",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c94715fc_e8e0cad7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 28
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2022-08-22T02:43:18Z",
+      "side": 1,
+      "message": "lgtm from camera team",
+      "revId": "abed7aaf9a13695a7aac02feba3c7c387854e432",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
