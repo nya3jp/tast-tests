@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "99e4dbac_20c852b4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1408939
+      },
+      "writtenOn": "2022-08-22T02:36:17Z",
+      "side": 1,
+      "message": "On a brya DUT, erase+write takes 4-5 mins. I don\u0027t think there\u0027s anything adding to the test time other than flashrom ops.\n\nI guess to summarize, this CL isn\u0027t just tweaking parameters to see if it helps, manual test runs took ~32 mins so there\u0027s good reason to think it just needs a bit longer than 30m.",
+      "parentUuid": "c428a87d_6506994e",
+      "range": {
+        "startLine": 9,
+        "startChar": 25,
+        "endLine": 9,
+        "endChar": 63
+      },
+      "revId": "0c9a1b85875634ae20c03e6af9c615e9bf43948c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4d00ceac_667ac3d5",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-08-22T01:25:20Z",
       "side": 1,
       "message": "create a bug.",
+      "range": {
+        "startLine": 13,
+        "startChar": 4,
+        "endLine": 13,
+        "endChar": 8
+      },
+      "revId": "0c9a1b85875634ae20c03e6af9c615e9bf43948c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2097318b_d916e1d6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1408939
+      },
+      "writtenOn": "2022-08-22T02:36:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d00ceac_667ac3d5",
       "range": {
         "startLine": 13,
         "startChar": 4,
