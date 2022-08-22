@@ -10,6 +10,7 @@ import (
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/bundles/cros/spera/enterprisecuj"
+	cx "chromiumos/tast/local/bundles/cros/spera/enterprisecuj/citrix"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/cuj"
@@ -41,6 +42,26 @@ func init() {
 				Name:    "basic",
 				Fixture: "enrolledLoggedInToCUJUser",
 				Timeout: 10 * time.Minute,
+				Val:     cx.NormalMode,
+			},
+			{
+				// basic_record is a subcase for recording clinician workstation CUJ.
+				// When executed, it will record the coordinates and waiting time of all pictures and text
+				// detected by uidetection, and will read these data in replay mode.
+				Name:    "basic_record",
+				Fixture: "enrolledLoggedInToCUJUser",
+				Timeout: 10 * time.Minute,
+				Val:     cx.RecordMode,
+			},
+			{
+				// basic_replay is a subcase for replaying clinician workstation CUJ.
+				// When executed, the coordinates and waiting time of the picture/text recorded in the record
+				// mode will be loaded. Use this coordinate data to perform ui click, and reduce this waiting
+				// time data to wait for ui. This can greatly reduce the execution time of the case
+				Name:    "basic_replay",
+				Fixture: "enrolledLoggedInToCUJUser",
+				Timeout: 10 * time.Minute,
+				Val:     cx.ReplayMode,
 			},
 		},
 		Data: enterprisecuj.ClinicianWorkstationData,
@@ -98,6 +119,7 @@ func ClinicianWorkstationCUJ(ctx context.Context, s *testing.State) {
 		CitrixPassword:  s.RequiredVar("spera.citrix_password"),
 		DesktopName:     s.RequiredVar("spera.citrix_desktopname"),
 		TabletMode:      tabletMode,
+		TestMode:        s.Param().(cx.TestMode),
 		DataPath:        s.DataPath,
 		UIHandler:       uiHandler,
 	}
