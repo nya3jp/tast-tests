@@ -263,6 +263,7 @@ func (s *OSSettings) SetToggleOption(cr *chrome.Chrome, optionName string, expec
 		}
 		optionFinder := nodewith.Name(optionName).Role(role.ToggleButton)
 		return uiauto.Combine("set toggle option",
+			s.ui.WaitUntilEnabled(optionFinder),
 			s.LeftClick(optionFinder),
 			s.WaitUntilToggleOption(cr, optionName, expected),
 		)(ctx)
