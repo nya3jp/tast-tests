@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5fd2433_2bb48deb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-08-22T23:36:00Z",
+      "side": 1,
+      "message": "LGTM per offline chat, now I understood the intention. Thank you for the chat!",
+      "revId": "c43e1e79f7e829e46b01ee55129109a782b39dba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
