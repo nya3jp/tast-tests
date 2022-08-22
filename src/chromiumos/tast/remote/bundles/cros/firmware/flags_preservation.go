@@ -7,6 +7,8 @@ package firmware
 import (
 	"context"
 	"fmt"
+	"regexp"
+	"strconv"
 	"strings"
 	"time"
 
@@ -161,6 +163,24 @@ func FlagsPreservation(ctx context.Context, s *testing.State) {
 				}
 			}
 
+			// For debugging purposes, log servo serials to check
+			// whether servo v4 or v4.1 is used.
+			servoSerials, err := h.Servo.GetServoSerials(ctx)
+			if err != nil {
+				s.Fatal("Failed to get servo serials: ", err)
+			}
+			for serial, val := range servoSerials {
+				s.Logf("Found serial for %s: %s", serial, val)
+			}
+			// Dirinboz [zork] did not wake from battery cutoff with a 45W charger,
+			// but it did with a 65W. Also, when connected to a servo v4 board, the
+			// same 65W charger only outputs 60W to DUT. On servo v4.1, it output the
+			// full 65W. Log more information about how much power DUT receives from
+			// charger in the lab.
+			if err := checkMaxChargerPower(ctx, h); err != nil {
+				s.Fatal("Failed to check for max power: ", err)
+			}
+
 			s.Log("Power-cycling DUT by disconnecting AC and removing battery")
 			if err := h.SetDUTPower(ctx, false); err != nil {
 				s.Fatal("Failed to remove charger: ", err)
@@ -168,7 +188,7 @@ func FlagsPreservation(ctx context.Context, s *testing.State) {
 
 			// When power is cut, there's a temporary drop in connection with the DUT.
 			// Wait for DUT to reconnect before proceeding to the next step.
-			waitConnectCtx, cancelWaitConnect := context.WithTimeout(ctx, 15*time.Second)
+			waitConnectCtx, cancelWaitConnect := context.WithTimeout(ctx, 2*time.Minute)
 			defer cancelWaitConnect()
 			if err := s.DUT().WaitConnect(waitConnectCtx); err != nil {
 				s.Fatal("Failed to reconnect to DUT: ", err)
@@ -281,7 +301,7 @@ func FlagsPreservation(ctx context.Context, s *testing.State) {
 		}
 
 		s.Log("Waiting for DUT to power ON")
-		waitConnectCtx, cancelWaitConnect := context.WithTimeout(ctx, 2*time.Minute)
+		waitConnectCtx, cancelWaitConnect := context.WithTimeout(ctx, 8*time.Minute)
 		defer cancelWaitConnect()
 
 		if err := h.WaitConnect(waitConnectCtx); err != nil {
@@ -428,5 +448,41 @@ func checkDUTAsleepAndPressPwr(ctx context.Context, h *firmware.Helper) error {
 	if err := h.Servo.KeypressWithDuration(shortCtx, servo.PowerKey, servo.Dur(h.Config.HoldPwrButtonPowerOn)); err != nil {
 		return errors.Wrap(err, "failed to press power button")
 	}
+	return nil
+}
+
+// checkMaxChargerPower runs the local command 'power_supply_info' on DUT
+// to check for max voltage and max current, and multiply them to get max power.
+func checkMaxChargerPower(ctx context.Context, h *firmware.Helper) error {
+	// Regular expressions.
+	var (
+		reMaxVoltage = regexp.MustCompile(`max\s+voltage\D*([^\n\r]*)`)
+		reMaxCurrnet = regexp.MustCompile(`max\s+current\D*([^\n\r]*)`)
+	)
+	out, err := h.DUT.Conn().CommandContext(ctx, "power_supply_info").Output()
+	if err != nil {
+		return errors.Wrap(err, "failed to retrieve power supply info from DUT")
+	}
+	findMatch := func(maxPowerVar string, pattern *regexp.Regexp, scannedOut []byte) (float64, error) {
+		match := pattern.FindStringSubmatch(string(scannedOut))
+		if len(match) < 2 {
+			return 0, errors.Errorf("did not find value for %s", maxPowerVar)
+		}
+		val, err := strconv.ParseFloat(match[1], 64)
+		if err != nil {
+			return 0, errors.Wrapf(err, "failed to parse for %s", maxPowerVar)
+		}
+		return val, nil
+	}
+	maxVoltage, err := findMatch("max_voltage", reMaxVoltage, out)
+	if err != nil {
+		return err
+	}
+	maxCurrent, err := findMatch("max_current", reMaxCurrnet, out)
+	if err != nil {
+		return err
+	}
+	testing.ContextLogf(ctx, "DUT receives max_voltage: %f, max_current: %f, max_power: %f",
+		maxVoltage, maxCurrent, maxVoltage*maxCurrent)
 	return nil
 }
