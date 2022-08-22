@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f0926b2_857af044",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2022-08-22T04:39:12Z",
+      "side": 1,
+      "message": "The moblab test configuration file mentioned above.\nhttps://chromium.googlesource.com/chromiumos/third_party/autotest/+/refs/heads/main/server/site_tests/platform_MTBF/spera_config.json",
+      "parentUuid": "1c246e15_6e3b386b",
+      "revId": "2333fbb11f4188619a7c2cb3d9bcc48986ce01a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5239b33b_15f8fb3f",
