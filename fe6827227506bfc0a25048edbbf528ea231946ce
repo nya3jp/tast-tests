@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3caeb5c_92edd05a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/toggle_cellular_from_os_settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-08-22T15:52:47Z",
+      "side": 1,
+      "message": "Enabling cellular on L58 will ensure it is enabled in the UI as well?\n\nIs it possible we might end up in a situation where we come in disabled, the toggle is still disabled at L69, and then we are waiting for the wrong state?",
+      "revId": "fe6827227506bfc0a25048edbbf528ea231946ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
