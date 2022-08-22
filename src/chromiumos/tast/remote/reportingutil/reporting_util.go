@@ -22,10 +22,16 @@ import (
 )
 
 // ReportingPoliciesDisabledUser is the path to the secert username for the policies disabled OU.
-const ReportingPoliciesDisabledUser = "policy.reporting_policies_disabled_usename"
+const ReportingPoliciesDisabledUser = "policy.reporting_policies_disabled_username"
 
 // ReportingPoliciesDisabledPassword is the path to the secert password for the policies disabled OU.
 const ReportingPoliciesDisabledPassword = "policy.reporting_policies_disabled_password"
+
+// ReportingPoliciesEnabledUser is the path to the secert username for the policies enabled OU.
+const ReportingPoliciesEnabledUser = "policy.reporting_policies_enabled_username"
+
+// ReportingPoliciesEnabledPassword is the path to the secert password for the policies enabled OU.
+const ReportingPoliciesEnabledPassword = "policy.reporting_policies_enabled_password"
 
 // ManagedChromeCustomerIDPath is the path to the secret customer ID var for managedchrome.
 const ManagedChromeCustomerIDPath = "policy.managedchrome_obfuscated_customer_id"
@@ -60,13 +66,55 @@ type InputEvent struct {
 
 // WrappedEncryptedData mirrors the wrappedEncryptedData JSON field.
 type WrappedEncryptedData struct {
-	MetricData *MetricData `json:"metricData"`
+	MetricData         *MetricData         `json:"metricData"`
+	AddRemoveUserEvent *AddRemoveUserEvent `json:"addRemoveUserEvent"`
+	LoginLogoutEvent   *LoginLogoutEvent   `json:"loginLogoutEvent"`
+	//LockUnlockEvent    *LockUnlockEvent    `json:"lockUnlockEvent"`
 }
 
 // MetricData mirrors the metricData JSON field.
 type MetricData struct {
 	Time     string    `json:"timestampMs"`
 	InfoData *InfoData `json:"infoData"`
+}
+
+// LoginLogoutEvent mirrors the loginLogoutEvent JSON field.
+type LoginLogoutEvent struct {
+	Time           string          `json:"timestampMs"`
+	AffiliatedUser *AffiliatedUser `json:"affiliatedUser"`
+	LoginEvent     *LoginEvent     `json:"loginEvent"`
+	LogoutEvent    *LogoutEvent    `json:"logoutEvent"`
+	SessionType    string          `json:"sessionType"`
+}
+
+// AddRemoveUserEvent mirrors the addRemoveUserEvent JSON field.
+type AddRemoveUserEvent struct {
+	Time             string            `json:"timestampMs"`
+	AffiliatedUser   *AffiliatedUser   `json:"affiliatedUser"`
+	UserAddedEvent   *UserAddedEvent   `json:"userAddedEvent"`
+	UserRemovedEvent *UserRemovedEvent `json:"userRemovedEvent"`
+}
+
+// AffiliatedUser mirrors the affiliatedUser JSON field.
+type AffiliatedUser struct {
+	UserEmail string `json:"userEmail"`
+}
+
+// UserAddedEvent mirrors the userAddedEvent JSON field.
+type UserAddedEvent struct {
+}
+
+// UserRemovedEvent mirrors the userRemovedEvent JSON field.
+type UserRemovedEvent struct {
+	Reason string `json:"reason"`
+}
+
+// LoginEvent mirrors the loginEvent JSON field.
+type LoginEvent struct {
+}
+
+// LogoutEvent mirrors the logoutEvent JSON field.
+type LogoutEvent struct {
 }
 
 // InfoData mirrors the infoData JSON field.
