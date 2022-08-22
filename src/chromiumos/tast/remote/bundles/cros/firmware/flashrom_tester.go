@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/common/servo"
 	"chromiumos/tast/remote/firmware/fixture"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/ssh"
 	"chromiumos/tast/testing/hwdep"
 )
 
@@ -36,7 +37,7 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"crossystem", "flashrom"},
 		HardwareDeps: hwdep.D(hwdep.ChromeEC()),
-		Timeout:      30 * time.Minute,
+		Timeout:      45 * time.Minute,
 		Params: []testing.Param{
 			{
 				Fixture: fixture.NormalMode,
@@ -51,6 +52,12 @@ func FlashromTester(ctx context.Context, s *testing.State) {
 	if err := h.RequireServo(ctx); err != nil {
 		s.Fatal("Failed to connect to servo: ", err)
 	}
+
+	x, err := h.DUT.Conn().CommandContext(ctx, "flashrom", "--wp-disable", "--wp-range", "0,0").Output(ssh.DumpLogOnError)
+	if err != nil {
+		s.Fatal("failed to enable wp")
+	}
+	s.Logf("wp enable: %s", x)
 
 	cmd := h.DUT.Conn().CommandContext(ctx, "flashrom_tester", "--debug", "/usr/sbin/flashrom", "host")
 
