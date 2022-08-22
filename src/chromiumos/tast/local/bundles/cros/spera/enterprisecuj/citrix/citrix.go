@@ -7,6 +7,10 @@ package citrix
 
 import (
 	"context"
+	"encoding/json"
+	"fmt"
+	"io/ioutil"
+	"path"
 	"strings"
 	"time"
 
@@ -20,6 +24,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/chrome/uiauto/state"
+	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/uidetection"
 	"chromiumos/tast/testing"
@@ -39,11 +44,29 @@ var iconInTaskManager = map[WindowsApp]string{
 	GoogleChrome: IconChromeTaskManager,
 }
 
+// TestMode indicates whether to run in normal/record/replay mode.
+type TestMode string
+
+const (
+	// ReplayMode represents "replay" mode.
+	ReplayMode TestMode = "replay"
+	// RecordMode represents "record" mode.
+	RecordMode TestMode = "record"
+	// NormalMode represents "normal" mode.
+	NormalMode TestMode = "normal"
+)
+
 const (
 	// shortUITimeout used for situations where UI response might be faster.
 	shortUITimeout = 3 * time.Second
 	// viewingTime used to view the effect after clicking application.
 	viewingTime = 2 * time.Second
+	// uiWaitTimeFactor used in replay mode, the record waiting time for UI is divided by this number
+	// as the time waiting for UI in replay mode.
+	uiWaitTimeFactor = 3
+	// uiVerifyInterval is used in replay mode, the real ud.WaitUntilExist is called when the number
+	// of executions of Fake UI Detects reaches uiVerifyInterval.
+	uiVerifyInterval = 5
 )
 
 // Citrix defines the struct related to Citrix Workspace app.
@@ -56,10 +79,16 @@ type Citrix struct {
 	desktopTitle string
 	appStartTime int64
 	tabletMode   bool
+	// testMode represents which mode is currently executed.
+	// There are three modes: normal, record and replay mode.
+	testMode      TestMode
+	coordinates   map[string]coords.Point
+	uiWaitTime    map[string]int
+	uiVerifyCount int
 }
 
 // NewCitrix creates an instance of Citrix.
-func NewCitrix(tconn *chrome.TestConn, kb *input.KeyboardEventWriter, dataPath func(string) string, desktopTitle string, tabletMode bool) *Citrix {
+func NewCitrix(tconn *chrome.TestConn, kb *input.KeyboardEventWriter, dataPath func(string) string, desktopTitle string, tabletMode bool, testMode TestMode) *Citrix {
 	return &Citrix{
 		tconn:        tconn,
 		ui:           uiauto.New(tconn),
@@ -68,6 +97,16 @@ func NewCitrix(tconn *chrome.TestConn, kb *input.KeyboardEventWriter, dataPath f
 		dataPath:     dataPath,
 		desktopTitle: desktopTitle,
 		tabletMode:   tabletMode,
+		testMode:     testMode,
+		// coordinates and uiWaitTime used in record and replay test mode.
+		// In record mode, the coordinates and ui wait times of picture and text detected by uidetection will be
+		// recorded to coordinates and uiWaitTime.
+		// In replay mode, the coordinates and uiWait file will be loaded to the coordinates and uiWaitTime
+		// in order to click and wait for the picture and text.
+		coordinates: make(map[string]coords.Point),
+		uiWaitTime:  make(map[string]int),
+		// uiVerifyCount used in replay mode, it records the number of executions of fake ui detection.
+		uiVerifyCount: 0,
 	}
 }
 
@@ -135,17 +174,17 @@ func (c *Citrix) Logout() action.Action {
 
 // ConnectRemoteDesktop connects to the remote desktop by given desktop name.
 func (c *Citrix) ConnectRemoteDesktop(desktop string) action.Action {
+	uiCtx := uiContext("ConnectRemoteDesktop")
 	searchWorkspace := nodewith.Name("Search Workspace").HasClass("citrix-ui__button").Role(role.Button)
 	listBoxFinder := nodewith.Ancestor(nodewith.HasClass("ul_vabzqc").Role(role.ListBox))
 	listApp := listBoxFinder.Name(desktop).Role(role.ListBoxOption)
-	windowsToolbar := c.customIcon(IconToolbar)
 	cancelButton := c.customIcon(IconTrackerCancel)
 	return uiauto.NamedCombine("connect to remote desktop "+desktop+" in Citrix Workspace",
 		c.ui.DoDefault(searchWorkspace),
 		c.kb.TypeAction(desktop),
 		c.ui.DoDefault(listApp),
-		c.ud.WaitUntilExists(windowsToolbar),
-		uiauto.IfSuccessThen(c.ud.Exists(cancelButton), c.ud.LeftClick(cancelButton)),
+		c.waitIcon(uiCtx, IconToolbar),
+		uiauto.IfSuccessThen(c.ud.Exists(cancelButton), c.clickIcon(uiCtx, IconTrackerCancel)),
 	)
 }
 
@@ -153,8 +192,8 @@ func (c *Citrix) ConnectRemoteDesktop(desktop string) action.Action {
 // Sometimes, some actions are performed on chrome os when Citrix Workplace is open without
 // focus on it. If there is focus to the desktop, this problem can be solved.
 func (c *Citrix) FocusOnDesktop() action.Action {
-	desktop := c.customIcon(IconDesktop)
-	return c.ud.LeftClick(desktop)
+	uiCtx := uiContext("FocusOnDesktop")
+	return c.clickIcon(uiCtx, IconDesktop)
 }
 
 // FullscreenDesktop sets Citrix remote desktop to fullscreen.
@@ -205,6 +244,7 @@ func (c *Citrix) ExitFullscreenDesktop() action.Action {
 
 // NewTab opens chrome broswer with url in the remote desktop.
 func (c *Citrix) NewTab(url string, newWindow bool) action.Action {
+	uiCtx := uiContext("NewTab")
 	return func(ctx context.Context) error {
 		newTabAction := c.kb.AccelAction("Ctrl+T")
 		if newWindow {
@@ -216,10 +256,9 @@ func (c *Citrix) NewTab(url string, newWindow bool) action.Action {
 				return c.searchToOpenApplication(GoogleChrome)(ctx)
 			}
 		}
-		searchGoogle := uidetection.TextBlock([]string{"Search", "Google"}).First()
 		return uiauto.NamedCombine("open tab "+url,
 			newTabAction,
-			c.ud.WaitUntilExists(searchGoogle),
+			c.waitText(uiCtx, "Search Google"),
 			c.kb.TypeAction(url),
 			c.kb.AccelAction("Enter"),
 		)(ctx)
@@ -240,21 +279,19 @@ func (c *Citrix) OpenChromeWithURLs(urls []string) action.Action {
 
 // searchToOpenApplication searchs and open the application in the remote desktop.
 func (c *Citrix) searchToOpenApplication(appName WindowsApp) action.Action {
-	searchIcon := c.customIcon(IconSearch)
-	typeHereToSearch := uidetection.TextBlock([]string{"Type", "here", "to", "search"})
-	desktopApp := uidetection.TextBlock([]string{"Desktop", "app"})
+	uiCtx := uiContext("searchToOpenApplication")
 	return uiauto.NamedCombine("search to open application "+string(appName),
-		c.ud.LeftClick(searchIcon),
-		c.ud.WaitUntilExists(typeHereToSearch),
+		c.clickIcon(uiCtx, IconSearch),
+		c.waitText(uiCtx, "Type here to search"),
 		c.kb.TypeAction(string(appName)),
-		c.ud.LeftClick(desktopApp))
+		c.clickText(uiCtx, "Desktop app"))
 }
 
 // SearchFromWiki searchs from wiki.
 func (c *Citrix) SearchFromWiki(text string) action.Action {
-	searchIcon := c.customIcon(IconChromeWikiSearch)
+	uiCtx := uiContext("SearchFromWiki")
 	return uiauto.NamedCombine("search '"+text+"' from wiki",
-		c.ud.WaitUntilExists(searchIcon),
+		c.waitIcon(uiCtx, IconChromeWikiSearch),
 		c.kb.TypeAction(text),
 		c.kb.AccelAction("Enter"),
 		uiauto.Sleep(viewingTime),
@@ -263,9 +300,9 @@ func (c *Citrix) SearchFromWiki(text string) action.Action {
 
 // SearchFromGoogle searchs from Google.
 func (c *Citrix) SearchFromGoogle(text string) action.Action {
-	searchGoogle := c.customIcon(IconChromeGoogleSearch)
+	uiCtx := uiContext("SearchFromGoogle")
 	return uiauto.NamedCombine("search '"+text+"' from Google",
-		c.ud.WaitUntilExists(searchGoogle),
+		c.waitIcon(uiCtx, IconChromeGoogleSearch),
 		c.kb.TypeAction(text),
 		c.kb.AccelAction("Enter"),
 		uiauto.Sleep(viewingTime),
@@ -290,14 +327,13 @@ func (c *Citrix) SwitchTab() action.Action {
 
 // CreateGoogleKeepNote opens Google keep and create new note.
 func (c *Citrix) CreateGoogleKeepNote(text string) action.Action {
-	takeNoteField := uidetection.TextBlock([]string{"Take", "a", "note..."}).First()
-	noteText := uidetection.TextBlock(strings.Split(text, " ")).First()
+	uiCtx := uiContext("CreateGoogleKeepNote")
 	return uiauto.NamedCombine("open google keep and create new note",
 		c.NewTab(cuj.GoogleKeepURL, true),
-		c.ud.LeftClick(takeNoteField),
+		c.clickText(uiCtx, "Take a note..."),
 		c.kb.TypeAction(text),
 		c.kb.AccelAction("Esc"), // Save note.
-		c.ud.WaitUntilExists(noteText),
+		c.waitText(uiCtx, text),
 	)
 }
 
@@ -315,15 +351,13 @@ func (c *Citrix) DeleteGoogleKeepNote(text string) action.Action {
 
 // UploadPhoto uploads photo to Google photo.
 func (c *Citrix) UploadPhoto(filename string) action.Action {
-	sampleFile := uidetection.Word(filename).Above(uidetection.Word("Cancel"))
+	uiCtx := uiContext("UploadPhoto")
 	uploadButton := c.customIcon(IconPhotosUpload)
-	smallUploadButton := c.customIcon(IconPhotosUploadSmall)
-	computerButton := c.customIcon(IconPhotosComputer)
 	downloadButton := c.customIcon(IconPhotosDownload)
+	fileFinder := uidetection.Word(filename).Above(uidetection.Word("Cancel"))
 	verifiedAndMeasureUploadTime := func(ctx context.Context) error {
-		verificationText := uidetection.TextBlock([]string{"1", "item", "uploaded"}).First()
 		startTime := time.Now()
-		if err := c.ud.WaitUntilExists(verificationText)(ctx); err != nil {
+		if err := c.waitText(uiCtx, "1 item uploaded")(ctx); err != nil {
 			return err
 		}
 		uploadTime := time.Now().Sub(startTime)
@@ -333,11 +367,12 @@ func (c *Citrix) UploadPhoto(filename string) action.Action {
 
 	return uiauto.NamedCombine("upload photo to Google photo",
 		c.NewTab(cuj.GooglePhotosURL, true),
-		uiauto.IfFailThen(c.ud.WithTimeout(shortUITimeout).LeftClick(uploadButton), c.ud.LeftClick(smallUploadButton)),
-		c.ud.LeftClick(computerButton),
+		uiauto.IfFailThen(c.ud.WithTimeout(shortUITimeout).LeftClick(uploadButton),
+			c.clickIcon(uiCtx, IconPhotosUploadSmall)),
+		c.clickIcon(uiCtx, IconPhotosComputer),
 		uiauto.IfSuccessThen(c.ud.WithTimeout(shortUITimeout).WaitUntilExists(downloadButton),
-			c.ud.LeftClick(downloadButton)),
-		c.ud.LeftClick(sampleFile),
+			c.clickIcon(uiCtx, IconPhotosDownload)),
+		c.clickFinder(uiCtx+filename, fileFinder),
 		c.kb.AccelAction("Enter"),
 		verifiedAndMeasureUploadTime,
 	)
@@ -345,24 +380,22 @@ func (c *Citrix) UploadPhoto(filename string) action.Action {
 
 // DeletePhoto deletes photo from Google photo.
 func (c *Citrix) DeletePhoto() action.Action {
-	deleteButton := c.customIcon(IconPhotosDelete)
-	moveToTrash := uidetection.TextBlock([]string{"Move", "to", "trash"}).First()
+	uiCtx := uiContext("DeletePhoto")
 	return uiauto.NamedCombine("delete photo from Google photo",
 		c.kb.AccelAction("Right"),
 		c.kb.AccelAction("Enter"),
-		c.ud.LeftClick(deleteButton),
-		c.ud.LeftClick(moveToTrash),
+		c.clickIcon(uiCtx, IconPhotosDelete),
+		c.clickText(uiCtx, "Move to trash"),
 	)
 }
 
 // CloseApplication closes application by task mangaer in the remote desktop.
 func (c *Citrix) CloseApplication(appName WindowsApp) action.Action {
-	appIcon := c.customIcon(iconInTaskManager[appName])
-	endTask := c.customIcon(IconEndTask)
+	uiCtx := uiContext("CloseApplication")
 	return uiauto.NamedCombine("close windows application by task mangaer",
 		c.searchToOpenApplication(TaskManager),
-		c.ud.LeftClick(appIcon),
-		c.ud.LeftClick(endTask),
+		c.clickIcon(uiCtx, iconInTaskManager[appName]),
+		c.clickIcon(uiCtx, IconEndTask),
 		c.kb.AccelAction("Esc"))
 }
 
@@ -396,7 +429,145 @@ func (c *Citrix) Close(ctx context.Context) error {
 	return nil
 }
 
+// SaveRecordFile saves the set of coordinates of finders to the file "coordinates.json" and
+// the set of ui wait time to the file "uiwait.json".
+func (c *Citrix) SaveRecordFile(ctx context.Context, outDir string) error {
+	const (
+		coordFileName  = "coordinates.json"
+		uiWaitFileName = "uiwait.json"
+	)
+	filePath := path.Join(outDir, coordFileName)
+	j, err := json.MarshalIndent(c.coordinates, "", "  ")
+	if err != nil {
+		return errors.Wrapf(err, "failed to marshall data for %s json file: %v", coordFileName, c.coordinates)
+	}
+	if err := ioutil.WriteFile(filePath, j, 0644); err != nil {
+		return errors.Wrapf(err, "failed to write %s json file", coordFileName)
+	}
+
+	filePath = path.Join(outDir, uiWaitFileName)
+	j, err = json.MarshalIndent(c.uiWaitTime, "", "  ")
+	if err != nil {
+		return errors.Wrapf(err, "failed to marshall data for %s json file: %v", uiWaitFileName, c.uiWaitTime)
+	}
+	if err := ioutil.WriteFile(filePath, j, 0644); err != nil {
+		return errors.Wrapf(err, "failed to write %s json file", uiWaitFileName)
+	}
+	return nil
+}
+
+// LoadRecordFile loads the set of coordinates of finders and the set of ui wait time from the json files.
+func (c *Citrix) LoadRecordFile(coordFileName, uiWaitFileName string) error {
+	byteValue, err := ioutil.ReadFile(c.dataPath(coordFileName))
+	if err != nil {
+		return err
+	}
+	if err = json.Unmarshal(byteValue, &c.coordinates); err != nil {
+		return err
+	}
+	byteValue, err = ioutil.ReadFile(c.dataPath(uiWaitFileName))
+	if err != nil {
+		return err
+	}
+	if err = json.Unmarshal(byteValue, &c.uiWaitTime); err != nil {
+		return err
+	}
+	return nil
+}
+
 // customIcon returns uidetection finder with file name.
 func (c *Citrix) customIcon(name string) *uidetection.Finder {
 	return uidetection.CustomIcon(c.dataPath(name))
+}
+
+// clickIcon returns action to click the icon.
+// The prefix parameter is used to distinguish which function the action is executed in.
+// To avoid encountering the situation that different functions have the same picture and text with different coordinates.
+func (c *Citrix) clickIcon(prefix, name string) action.Action {
+	finder := c.customIcon(name)
+	return c.clickFinder(prefix+name, finder)
+}
+
+// clickText returns action to click the text.
+// The prefix parameter is used to distinguish which function the action is executed in.
+// To avoid encountering the situation that different functions have the same picture and text with different coordinates.
+func (c *Citrix) clickText(prefix, name string) action.Action {
+	splitName := strings.Split(name, " ")
+	finder := uidetection.TextBlock(splitName).First()
+	return c.clickFinder(prefix+name, finder)
+}
+
+// clickFinder returns action to click the finder.
+func (c *Citrix) clickFinder(name string, finder *uidetection.Finder) action.Action {
+	return func(ctx context.Context) error {
+		if c.testMode == RecordMode {
+			startTime := time.Now()
+			l, err := c.ud.Location(ctx, finder)
+			if err != nil {
+				return err
+			}
+			c.uiWaitTime[name] = int(time.Now().Sub(startTime).Milliseconds())
+			c.coordinates[name] = l.Rect.CenterPoint()
+			testing.ContextLogf(ctx, "Mouse click at %s with location %v", name, l.Rect.CenterPoint())
+			return c.ui.MouseClickAtLocation(0, l.Rect.CenterPoint())(ctx)
+		} else if c.testMode == ReplayMode {
+			empty := coords.Point{}
+			if c.coordinates[name] != empty {
+				actionName := fmt.Sprintf("mouse click at %s with location %v", name, c.coordinates[name])
+				return uiauto.NamedCombine(actionName,
+					uiauto.Sleep(time.Duration(float64(c.uiWaitTime[name]/uiWaitTimeFactor)*float64(time.Millisecond))),
+					c.ui.MouseClickAtLocation(0, c.coordinates[name]),
+				)(ctx)
+			}
+		}
+		return c.ud.LeftClick(finder)(ctx)
+	}
+}
+
+// waitIcon returns action to wait the icon.
+// The prefix parameter is used to distinguish which function the action is executed in.
+// To avoid encountering the situation that different functions have the same picture and text with different wait time.
+func (c *Citrix) waitIcon(prefix, name string) action.Action {
+	finder := c.customIcon(name)
+	return c.waitFinder(prefix+name, finder)
+}
+
+// waitText returns action to wait the text.
+// The prefix parameter is used to distinguish which function the action is executed in.
+// To avoid encountering the situation that different functions have the same picture and text with different wait time.
+func (c *Citrix) waitText(prefix, name string) action.Action {
+	splitName := strings.Split(name, " ")
+	finder := uidetection.TextBlock(splitName).First()
+	return c.waitFinder(prefix+name, finder)
+}
+
+// waitFinder returns action to wait the finder.
+func (c *Citrix) waitFinder(name string, finder *uidetection.Finder) action.Action {
+	return func(ctx context.Context) error {
+		if c.testMode == RecordMode {
+			startTime := time.Now()
+			if err := c.ud.WaitUntilExists(finder)(ctx); err != nil {
+				return err
+			}
+			c.uiWaitTime[name] = int(time.Now().Sub(startTime).Milliseconds())
+			return nil
+		} else if c.testMode == ReplayMode {
+			// The real ud.WaitUntilExist is called when the number of executions of Fake UI Detects
+			// reaches uiVerifyInterval.
+			if c.uiVerifyCount%uiVerifyInterval == uiVerifyInterval-1 {
+				c.uiVerifyCount = 0
+			} else {
+				if c.uiWaitTime[name] != 0 {
+					c.uiVerifyCount++
+					return uiauto.Sleep(time.Duration(float64(c.uiWaitTime[name]/uiWaitTimeFactor) * float64(time.Millisecond)))(ctx)
+				}
+			}
+		}
+		return c.ud.WaitUntilExists(finder)(ctx)
+	}
+}
+
+// uiContext returns the string combination of dash symbol.
+func uiContext(name string) string {
+	return name + "-"
 }
