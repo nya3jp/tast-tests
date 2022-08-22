@@ -24,10 +24,10 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         ALSAConformance,
-		Desc:         "Runs alsa_conformance_test to test basic functions of ALSA",
-		Contacts:     []string{"yuhsuan@chromium.org", "cychiang@chromium.org"},
-		Attr:         []string{"group:mainline", "informational"},
+		Func:     ALSAConformance,
+		Desc:     "Runs alsa_conformance_test to test basic functions of ALSA",
+		Contacts: []string{"yuhsuan@chromium.org", "cychiang@chromium.org"},
+		Attr:     []string{"group:mainline", "informational"},
 		// TODO(b/213524693) : remove "chronicler" when b/213524693 is fixed.
 		// TODO(b/238591902) : remove "nautilus" and "nautiluslte" when b/238591902 is fixed.
 		// TODO(b/238591444) : remove "soraka" when b/238591444 is fixed.
@@ -37,7 +37,10 @@ func init() {
 		// TODO(b/239409160) : remove "gimble" when b/239409160 is fixed.
 		// TODO(b/239412705) : remove "primus" when b/239412705 is fixed.
 		// TODO(b/239412769) : remove "anahera" when b/239412769 is fixed.
-		HardwareDeps: hwdep.D(hwdep.Speaker(), hwdep.Microphone(), hwdep.SkipOnModel("chronicler", "nautilus", "nautiluslte", "soraka", "karma", "beetley", "redrix", "gimble", "primus","anahera")),
+		// TODO(b/243344261) : remove "babymega" when b/243344261 is fixed.
+		// TODO(b/243344614) : remove "babytiger" when b/243344614 is fixed.
+		// TODO(b/243345196) : remove "blacktiplte" when b/243345196 is fixed.
+		HardwareDeps: hwdep.D(hwdep.Speaker(), hwdep.Microphone(), hwdep.SkipOnModel("chronicler", "nautilus", "nautiluslte", "soraka", "karma", "beetley", "redrix", "gimble", "primus", "anahera", "babymega", "babytiger", "blacktiplte")),
 		Timeout:      10 * time.Minute,
 	})
 }
