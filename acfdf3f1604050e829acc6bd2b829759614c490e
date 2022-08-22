@@ -114,6 +114,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "da960e36_7a507727",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/drivefs_pooled_storage.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-08-22T23:32:46Z",
+      "side": 1,
+      "message": "Yeah we can land this now but maybe raise a bug and leave a TODO about reducing the boards this runs on or introducing an account pool. Though if this is the only test we\u0027re going to introduce with workspace on it, we should probably consider reducing the boards instead.",
+      "parentUuid": "d6ae09c3_0eb673a4",
+      "range": {
+        "startLine": 42,
+        "startChar": 2,
+        "endLine": 49,
+        "endChar": 4
+      },
+      "revId": "acfdf3f1604050e829acc6bd2b829759614c490e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3e069e75_77d81e5f",
         "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/drivefs_pooled_storage.go",
         "patchSetId": 5
@@ -243,6 +267,30 @@
       "side": 1,
       "message": "Right, that would be a nice improvement but I\u0027m also not quite sure how I could associate each subtest with its corresponding user, since `\u0027drivefs.accountPool\u0027` seems to be hardcoded into the existing fixtures (I think I would need 3 pools of 1 account each - one for \"low\", another for \"full_individual\", another for \"full_organization\").\n\nDo you think we could do this as follow up improvement?",
       "parentUuid": "6f6e9862_ce3dae8c",
+      "range": {
+        "startLine": 100,
+        "startChar": 2,
+        "endLine": 112,
+        "endChar": 49
+      },
+      "revId": "acfdf3f1604050e829acc6bd2b829759614c490e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eeae3b4a_d95da2cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/drivefs_pooled_storage.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-08-22T23:32:46Z",
+      "side": 1,
+      "message": "Yeah definitely. Follow up SGTM.",
+      "parentUuid": "13835f1c_de27708f",
       "range": {
         "startLine": 100,
         "startChar": 2,
@@ -431,6 +479,30 @@
       "side": 1,
       "message": "Yes, that\u0027s true. Do you know what the alternative could be here? I wonder if could somehow add classes just for tast tests. But it isn\u0027t clear to me yet how these classes from the accessibility tree get populated from HTML.",
       "parentUuid": "dfd30735_a897ed06",
+      "range": {
+        "startLine": 139,
+        "startChar": 40,
+        "endLine": 139,
+        "endChar": 62
+      },
+      "revId": "acfdf3f1604050e829acc6bd2b829759614c490e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2757cece_689d3f9b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/drivefs_pooled_storage.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-08-22T23:32:46Z",
+      "side": 1,
+      "message": "Another one to maybe raise a bug, tag this and land but investigate an alternative? When you raise the bug let\u0027s probably think of this more broadly (there\u0027s a few places in Files app where tast test relies on strings)",
+      "parentUuid": "bd9d78ee_f83238db",
       "range": {
         "startLine": 139,
         "startChar": 40,
