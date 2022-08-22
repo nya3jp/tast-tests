@@ -20,7 +20,7 @@ const (
 	hwsimTimeout        = 30 * time.Second
 	shillRequestTimeout = 5 * time.Second
 	shillIfaceTimeout   = 10 * time.Second
-	ifaceCount          = 3
+	ifaceCount          = 4
 	testIfaceClaimer    = "hwsim-fixture"
 )
 
