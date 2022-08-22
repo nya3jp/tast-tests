@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0949b18d_04c36998",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-08-22T17:06:16Z",
+      "side": 1,
+      "message": "LGTM with some small comments",
+      "revId": "c8f0ad196f108875d8f604388f550cb721518d78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70635c44_12e47d63",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/device/device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-08-22T17:06:16Z",
+      "side": 1,
+      "message": "It\u0027s generally suggested to avoid passing in the `testing.State` and instead just return an error for callers to handle:\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/code_review_comments.md#state\n\nNot necessary for this CL, but something to keep in mind",
+      "range": {
+        "startLine": 74,
+        "startChar": 42,
+        "endLine": 74,
+        "endChar": 58
+      },
+      "revId": "c8f0ad196f108875d8f604388f550cb721518d78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07a8ef3f_09ab09fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/device/device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-08-22T17:06:16Z",
+      "side": 1,
+      "message": "could you change this to `Fatalf` instead? then you could remove the `else` and un-indent the rest.",
+      "range": {
+        "startLine": 80,
+        "startChar": 4,
+        "endLine": 80,
+        "endChar": 10
+      },
+      "revId": "c8f0ad196f108875d8f604388f550cb721518d78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
