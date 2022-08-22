@@ -33,6 +33,176 @@
       "message": "shadow reviewer lgtm for tast",
       "revId": "0312f1ff5ab57590bf33b140f7dcfdf8d5d661e4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a18eb314_e3c981af",
+        "filename": "src/chromiumos/tast/local/arc/file.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-08-22T06:57:15Z",
+      "side": 1,
+      "message": "nit: reflow comment",
+      "revId": "0312f1ff5ab57590bf33b140f7dcfdf8d5d661e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9671f1d_448439e2",
+        "filename": "src/chromiumos/tast/local/arc/file.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-08-22T06:57:15Z",
+      "side": 1,
+      "message": "nit: reflow comment",
+      "revId": "0312f1ff5ab57590bf33b140f7dcfdf8d5d661e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1fd28b8_6e5c4fbc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cache/cache.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-08-22T06:57:15Z",
+      "side": 1,
+      "message": "Move this out of the testing.Poll. It will guarantee cleanupCtx has enough time remaining.",
+      "revId": "0312f1ff5ab57590bf33b140f7dcfdf8d5d661e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d80f585_138e6abd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cache/cache.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-08-22T06:57:15Z",
+      "side": 1,
+      "message": "nit: reflow comment",
+      "revId": "0312f1ff5ab57590bf33b140f7dcfdf8d5d661e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "984b90af_4fe0b3be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cache/cache.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-08-22T06:57:15Z",
+      "side": 1,
+      "message": "Same as above",
+      "revId": "0312f1ff5ab57590bf33b140f7dcfdf8d5d661e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c67ed146_7419922d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cache/cache.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-08-22T06:57:15Z",
+      "side": 1,
+      "message": "nit: reflow",
+      "revId": "0312f1ff5ab57590bf33b140f7dcfdf8d5d661e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a15219a_1493a1d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cxx_crash.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-08-22T06:57:15Z",
+      "side": 1,
+      "message": "Move outside of the poll",
+      "revId": "0312f1ff5ab57590bf33b140f7dcfdf8d5d661e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7022149b_a42eff3e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cxx_crash.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-08-22T06:57:15Z",
+      "side": 1,
+      "message": "nit: reflow",
+      "revId": "0312f1ff5ab57590bf33b140f7dcfdf8d5d661e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3cd083d_57c9d417",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/play_auto_install.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-08-22T06:57:15Z",
+      "side": 1,
+      "message": "Just use the existing cleanupCtx",
+      "revId": "0312f1ff5ab57590bf33b140f7dcfdf8d5d661e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fdef7729_bb504254",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/play_store_persistent.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-08-22T06:57:15Z",
+      "side": 1,
+      "message": "nit: reflow",
+      "revId": "0312f1ff5ab57590bf33b140f7dcfdf8d5d661e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
