@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "437e5e55_9720c8b3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-08-22T14:28:17Z",
+      "side": 1,
+      "message": "nit: Add the reason for the tests to no longer be part of group:mainline",
+      "revId": "9fa76f76592433119ed88b9be450c86f3f7a28a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "7dc473a1_2682b3e8",
@@ -14,6 +31,52 @@
       "writtenOn": "2022-08-22T14:11:17Z",
       "side": 1,
       "message": "Disabling the tests based on the discussion here: https://docs.google.com/spreadsheets/d/1L85KKiVWB2miWR3Rsi4aumkubhuQw0F92Feon5CiuEs/edit?disco\u003dAAAAejYdFPk",
+      "revId": "9fa76f76592433119ed88b9be450c86f3f7a28a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8e93299_b761127a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/autofill_address_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-08-22T14:28:17Z",
+      "side": 1,
+      "message": "informational only has meaning together with group:mainline.\n\nThe list can be empty and the tests are no longer run by automation.",
+      "range": {
+        "startLine": 42,
+        "startChar": 25,
+        "endLine": 42,
+        "endChar": 40
+      },
+      "revId": "9fa76f76592433119ed88b9be450c86f3f7a28a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2313de2a_21c391cc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/autofill_credit_card_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-08-22T14:28:17Z",
+      "side": 1,
+      "message": "Same as above",
+      "range": {
+        "startLine": 54,
+        "startChar": 26,
+        "endLine": 54,
+        "endChar": 39
+      },
       "revId": "9fa76f76592433119ed88b9be450c86f3f7a28a5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
