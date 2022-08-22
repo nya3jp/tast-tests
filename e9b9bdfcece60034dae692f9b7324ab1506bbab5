@@ -146,6 +146,30 @@
       },
       "revId": "e9b9bdfcece60034dae692f9b7324ab1506bbab5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1277a218_2568acdf",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/rpcdut/rpcdut.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2022-08-22T12:37:08Z",
+      "side": 1,
+      "message": "Increased timeout to 90 seconds.\n\n\u003e I would also hate to artificially extend the time it takes to execute tests.\n\nMe too. That\u0027s why I used `testing.Poll()`. This is similar to a loop with a configurable interval and timeout. The function provided is called until it returns `nil`, so in most cases it will exit after a few seconds.\n\nI\u0027m also creating a new context with 3 seconds timeout in the lambda, so I\u0027m sure that each attempt won\u0027t take more than 3 seconds (SSH connection issues, DUT disconnected while connecting, etc.).",
+      "parentUuid": "191ac6ae_11e7b66d",
+      "range": {
+        "startLine": 160,
+        "startChar": 61,
+        "endLine": 160,
+        "endChar": 77
+      },
+      "revId": "e9b9bdfcece60034dae692f9b7324ab1506bbab5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

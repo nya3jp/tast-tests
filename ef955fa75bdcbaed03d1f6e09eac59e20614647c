@@ -90,6 +90,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ec27984_121edd8b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2022-08-22T12:37:08Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "cf08074d_1c7340d4",
+      "revId": "ef955fa75bdcbaed03d1f6e09eac59e20614647c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "994fd179_f8cf1031",
@@ -113,6 +131,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4fddde1_7dfdb9a6",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/rpcdut/rpcdut.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2022-08-22T12:37:08Z",
+      "side": 1,
+      "message": "Yes.",
+      "parentUuid": "994fd179_f8cf1031",
+      "range": {
+        "startLine": 110,
+        "startChar": 30,
+        "endLine": 110,
+        "endChar": 43
+      },
+      "revId": "ef955fa75bdcbaed03d1f6e09eac59e20614647c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a2077246_ce70d68b",
@@ -126,6 +168,30 @@
       "writtenOn": "2022-08-04T05:51:12Z",
       "side": 1,
       "message": "It might be important to note that:\n\nThere isn\u0027t a race condition between \"boot-update-firmware\" finishing and \"reboot\" starting because the state of \"reboot\" is changed during the pre-start of \"boot-update-firmware\".",
+      "range": {
+        "startLine": 114,
+        "startChar": 0,
+        "endLine": 114,
+        "endChar": 2
+      },
+      "revId": "ef955fa75bdcbaed03d1f6e09eac59e20614647c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "76dcda97_d1b54392",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/rpcdut/rpcdut.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2022-08-22T12:37:08Z",
+      "side": 1,
+      "message": "Yes. Added this to the comment.",
+      "parentUuid": "a2077246_ce70d68b",
       "range": {
         "startLine": 114,
         "startChar": 0,
