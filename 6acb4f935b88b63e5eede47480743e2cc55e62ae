@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3bc74c0_08ff5263",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/dock2_persistent_settings.go",
+        "patchSetId": 27
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-08-22T21:25:48Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1f38c70a_24eb7c50",
+      "revId": "6acb4f935b88b63e5eede47480743e2cc55e62ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "79ca49a0_14b6d592",
@@ -67,6 +85,24 @@
       "side": 1,
       "message": "I agree with give more descriptive names for functions.\n\nLet\u0027s address these in the next CL to change these since we already have same naming convention from dock1_persistent_settings.go.",
       "parentUuid": "79ca49a0_14b6d592",
+      "revId": "6acb4f935b88b63e5eede47480743e2cc55e62ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "31de01b4_112e049d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/dock2_persistent_settings.go",
+        "patchSetId": 27
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-08-22T21:25:48Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e1dbbe5c_b468a305",
       "revId": "6acb4f935b88b63e5eede47480743e2cc55e62ae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
