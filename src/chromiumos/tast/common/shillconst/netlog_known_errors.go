@@ -48,6 +48,7 @@ func InitializeAllowedEntries() []AllowedEntry {
 		{"dnsproxyd", "object_proxy.cc", ".*Failed to call method: .*flimflam.Manager.GetProperties.*", 0},                        // b/239574927
 		{"dnsproxyd", "client.cc", ".*Unable to get shill Manager properties.*", 0},                                               // b/239574927
 		{"shill", "netlink_manager.cc", ".*OnNetlinkMessageError.*Device or resource busy.*", 0},                                  // b/239582086
+		{"shill", "network.cc", ".*IP flag write failed:.*", 0},                                                                   // b/243403055
 		{"shill", "object_proxy.cc", ".*Failed to call method: fi.w1.wpa_supplicant1.CreateInterface.*", 0},                       // b/215373366
 		{"shill", "object_proxy.cc", ".*Failed to call method: fi.w1.wpa_supplicant1.Interface.Scan.*", 0},                        // b/215373366
 		{"shill", "object_proxy.cc", ".*Failed to call method: org.chromium.PatchPanel.GetTrafficCounters.*", 0},                  // b/215373366
