@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "099625bb_706fa1d6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/bootup_times.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1409117
+      },
+      "writtenOn": "2022-08-22T03:51:50Z",
+      "side": 1,
+      "message": "This weird extra indentation is enforced by gofmt. I know not what magic incantations may force it to change its mind.",
+      "range": {
+        "startLine": 74,
+        "startChar": 3,
+        "endLine": 74,
+        "endChar": 4
+      },
+      "revId": "aace88736e313f42329e5efdb919649259045542",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
