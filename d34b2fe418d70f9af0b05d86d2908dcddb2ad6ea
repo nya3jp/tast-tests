@@ -16,6 +16,23 @@
       "message": "shadow reviewer lgtm for tast",
       "revId": "d34b2fe418d70f9af0b05d86d2908dcddb2ad6ea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ffdc7f0e_ea4faa08",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-08-22T18:07:04Z",
+      "side": 1,
+      "message": "Thanks!",
+      "revId": "d34b2fe418d70f9af0b05d86d2908dcddb2ad6ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
