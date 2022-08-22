@@ -87,6 +87,24 @@
       "parentUuid": "9bbb1d1e_95052d94",
       "revId": "0a9c6dfa8aa482a5c06b14c5829d8df67b6041f1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad26a1e5_3482bbf2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1534417
+      },
+      "writtenOn": "2022-08-22T01:26:11Z",
+      "side": 1,
+      "message": "Oops incomplete message sent.\n\nThe errors seem to have gone in the dashboard (except those kernelnext)",
+      "parentUuid": "e682fe21_31bc3379",
+      "revId": "0a9c6dfa8aa482a5c06b14c5829d8df67b6041f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
