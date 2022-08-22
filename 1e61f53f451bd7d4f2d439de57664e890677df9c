@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01bfe7b1_b7b84aac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/toggle_cellular_from_quick_settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-08-22T15:53:29Z",
+      "side": 1,
+      "message": "ditto re: what I said on the other CL about possibly having a race condition here. Let me know if that\u0027s not correct",
+      "revId": "1e61f53f451bd7d4f2d439de57664e890677df9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
