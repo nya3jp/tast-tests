@@ -99,6 +99,30 @@
       },
       "revId": "2333fbb11f4188619a7c2cb3d9bcc48986ce01a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "950c0376_c0402f6f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/spera/video_cuj2.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2022-08-22T07:40:18Z",
+      "side": 1,
+      "message": "Revert it back to current year copyright. Otherwise, error message for cros_license_check: Use ChromiumOS instead of Chromium OS in new files.",
+      "parentUuid": "b47952b5_b69cf8f5",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 3,
+        "endChar": 29
+      },
+      "revId": "2333fbb11f4188619a7c2cb3d9bcc48986ce01a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
