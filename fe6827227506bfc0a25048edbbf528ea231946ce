@@ -1,6 +1,46 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2842f75c_d5a774dc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-08-22T22:29:14Z",
+      "side": 1,
+      "message": "Thank you for sending this change my way! Really excited to see these tests being added :)",
+      "revId": "fe6827227506bfc0a25048edbbf528ea231946ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e705b3b1_f6c96ec9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/toggle_cellular_from_os_settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-08-22T22:29:14Z",
+      "side": 1,
+      "message": "Can we create a `network.go` file similar to the `bluetooth.go` file [1] and declare this UI node there? This will be helpful for other tests that need to enable or disable Mobile via clicking the toggle.\n\n[1] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/uiauto/ossettings/bluetooth.go",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 100
+      },
+      "revId": "fe6827227506bfc0a25048edbbf528ea231946ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f3caeb5c_92edd05a",
@@ -14,6 +54,24 @@
       "writtenOn": "2022-08-22T15:52:47Z",
       "side": 1,
       "message": "Enabling cellular on L58 will ensure it is enabled in the UI as well?\n\nIs it possible we might end up in a situation where we come in disabled, the toggle is still disabled at L69, and then we are waiting for the wrong state?",
+      "revId": "fe6827227506bfc0a25048edbbf528ea231946ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21bc2cdf_650fc9a3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/toggle_cellular_from_os_settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-08-22T22:29:14Z",
+      "side": 1,
+      "message": "I think we might be okay here since the `Enable` method appears to wait for certain properties to be set before continuing [1]. However, it seems like it may be possible for Cellular to be inhibited [2] by the time we reach the toggle since we aren\u0027t waiting on that at all-- stevenjb@ do you think it would make sense to update this method (or add another) that waits for Cellular to no longer be inhibited?\n\n[1] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/cellular/cellular_helper.go;l\u003d139-157;drc\u003d22f19c8f4bce685e7189206ebde8673f4e85bd1e\n[2] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/common/shillconst/const.go;l\u003d39;drc\u003da7406fbba3eaccb2b9e0229a68878ecb63fcb5a5",
+      "parentUuid": "f3caeb5c_92edd05a",
       "revId": "fe6827227506bfc0a25048edbbf528ea231946ce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
