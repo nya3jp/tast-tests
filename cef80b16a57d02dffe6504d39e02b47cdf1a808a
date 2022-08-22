@@ -51,6 +51,24 @@
       "message": "Hi Omar, \n\nI guess we are having some errors in this CL. That\u0027s why the dry runs are failing within 30 mins. Can you please share the CQ error logs?",
       "revId": "cef80b16a57d02dffe6504d39e02b47cdf1a808a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ec35470_9f3f3cdf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-08-22T11:35:55Z",
+      "side": 1,
+      "message": "tast-remote-tests-cros-0.0.2-r12098: # chromiumos/tast/local/bundles/cros/intel\ntast-remote-tests-cros-0.0.2-r12098: src/chromiumos/tast/local/bundles/cros/intel/cca_facing_camera_video_capture.go:149:21: suspect or: decoderName !\u003d wantVaapiDecoder || decoderName !\u003d wantPipelineDecoder\ntast-remote-tests-cros-0.0.2-r12098:  * ERROR: chromeos-base/tast-remote-tests-cros-0.0.2-r12098::chromiumos failed (compile phase):\n\n\nYou need to run `go vet` before uploading",
+      "parentUuid": "0535ece1_f63b5141",
+      "revId": "cef80b16a57d02dffe6504d39e02b47cdf1a808a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
