@@ -48,7 +48,8 @@ func init() {
 		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Checks that virtual keyboard works on different input fields",
 		Contacts:     []string{"shengjun@chromium.org", "essential-inputs-team@google.com"},
-		Attr:         []string{"group:mainline", "group:input-tools"},
+		// TODO(b/243336476): Remove Informational
+		Attr:         []string{"group:mainline", "group:input-tools", "informational"},
 		SearchFlags:  util.IMESearchFlags(inputFieldTestIMEs),
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
 		Timeout:      time.Duration(len(inputFieldTestIMEs)) * time.Duration(len(inputFieldToMessage)) * time.Minute,
