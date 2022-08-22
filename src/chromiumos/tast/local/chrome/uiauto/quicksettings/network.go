@@ -30,6 +30,9 @@ var (
 	// NetworkDetailedViewWifiToggleButtonRevamp is the WiFi toggle within the Network
 	// detailed view with QuickSettingsNetworkRevamp flag enabled.
 	NetworkDetailedViewWifiToggleButtonRevamp = nodewith.HasClass("TrayToggleButton").NameContaining("Wi-Fi").Ancestor(NetworkDetailedViewRevamp)
+
+	// NetworkDetailedViewMobileDataToggle is the switch to enable/disable Mobile data within network quick settings
+	NetworkDetailedViewMobileDataToggle = nodewith.Name("Mobile data").HasClass("TrayToggleButton").Ancestor(NetworkDetailedView)
 )
 
 // NavigateToNetworkDetailedView will navigate to the detailed Network view
