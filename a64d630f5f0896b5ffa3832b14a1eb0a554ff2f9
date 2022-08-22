@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1965b9e7_d6156158",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/dynamic_color.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1460002
+      },
+      "writtenOn": "2022-08-22T19:53:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "853d64f6_45dec4fe",
+      "range": {
+        "startLine": 27,
+        "startChar": 63,
+        "endLine": 27,
+        "endChar": 78
+      },
+      "revId": "a64d630f5f0896b5ffa3832b14a1eb0a554ff2f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3c442e39_017fcfcc",
@@ -37,6 +61,24 @@
       "writtenOn": "2022-08-18T20:25:03Z",
       "side": 1,
       "message": "s.Fatal(\"\u003cmsg\u003e: \", err)\n\ni.e. the message first, and no period. Also \"Failed to call sendArcOverlayColor: \" may be more descriptive?",
+      "revId": "a64d630f5f0896b5ffa3832b14a1eb0a554ff2f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "286566ef_92efd33e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/dynamic_color.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1460002
+      },
+      "writtenOn": "2022-08-22T19:53:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3c442e39_017fcfcc",
       "revId": "a64d630f5f0896b5ffa3832b14a1eb0a554ff2f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -58,6 +100,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "750d3168_1f0cb184",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/dynamic_color.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1460002
+      },
+      "writtenOn": "2022-08-22T19:53:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2cb4098a_af42bece",
+      "revId": "a64d630f5f0896b5ffa3832b14a1eb0a554ff2f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6d2bf9af_6b7b3765",
@@ -75,6 +135,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "395c7d71_77a436e1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/dynamic_color.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1460002
+      },
+      "writtenOn": "2022-08-22T19:53:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d2bf9af_6b7b3765",
+      "revId": "a64d630f5f0896b5ffa3832b14a1eb0a554ff2f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9e34a26b_77a5093c",
@@ -88,6 +166,30 @@
       "writtenOn": "2022-08-18T20:25:03Z",
       "side": 1,
       "message": "Is there a reason to define these here rather than in your test?",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 0
+      },
+      "revId": "a64d630f5f0896b5ffa3832b14a1eb0a554ff2f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fadd49b4_6972affd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/standardizedtestutil/testutil.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1460002
+      },
+      "writtenOn": "2022-08-22T19:53:11Z",
+      "side": 1,
+      "message": "Defining them in the test results in failing lint checks. Tast requires exactly one symbol to be exported in an entry file.",
+      "parentUuid": "9e34a26b_77a5093c",
       "range": {
         "startLine": 88,
         "startChar": 0,
