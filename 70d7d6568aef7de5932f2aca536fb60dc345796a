@@ -33,6 +33,24 @@
       "message": "This can be a constant instead of a variable",
       "revId": "70d7d6568aef7de5932f2aca536fb60dc345796a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "793229d6_dae723fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/update_password.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-08-22T11:32:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a6189729_c29bb19d",
+      "revId": "70d7d6568aef7de5932f2aca536fb60dc345796a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
