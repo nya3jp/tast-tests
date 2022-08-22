@@ -3,6 +3,75 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e9d68d2d_f889a89a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-22T16:58:21Z",
+      "side": 1,
+      "message": "`Add`\nSee: https://chromium.googlesource.com/chromiumos/docs/+/HEAD/contributing.md#Commit-messages",
+      "range": {
+        "startLine": 7,
+        "startChar": 10,
+        "endLine": 7,
+        "endChar": 13
+      },
+      "revId": "69599ce1289c271773c197146caec368d1d946d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31f7918f_c8862832",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-22T16:58:21Z",
+      "side": 1,
+      "message": "nit: `nonempty`",
+      "range": {
+        "startLine": 7,
+        "startChar": 23,
+        "endLine": 7,
+        "endChar": 32
+      },
+      "revId": "69599ce1289c271773c197146caec368d1d946d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d209fb12_c22a0fe8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-22T16:58:21Z",
+      "side": 1,
+      "message": "nit: `TEST\u003dtast run \u003cDUT\u003e platform.FormFactor`",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 24
+      },
+      "revId": "69599ce1289c271773c197146caec368d1d946d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fd326872_79e6f485",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/form_factor.go",
         "patchSetId": 2
@@ -48,6 +117,161 @@
       "writtenOn": "2022-08-22T06:50:06Z",
       "side": 1,
       "message": "This test could cover more cases by being a table driven test to check many properties.\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Table_driven-tests",
+      "revId": "69599ce1289c271773c197146caec368d1d946d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4315534d_ad3903ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/form_factor.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-22T16:58:21Z",
+      "side": 1,
+      "message": "nit: Instead of writing the `var` keyword, just write `cmd :\u003d`",
+      "range": {
+        "startLine": 28,
+        "startChar": 1,
+        "endLine": 28,
+        "endChar": 10
+      },
+      "revId": "69599ce1289c271773c197146caec368d1d946d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6ee7c72_263d342f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/form_factor.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-22T16:58:21Z",
+      "side": 1,
+      "message": "nit: I would not put a blank line here.",
+      "revId": "69599ce1289c271773c197146caec368d1d946d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50c472ce_de7a4139",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/form_factor.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-22T16:58:21Z",
+      "side": 1,
+      "message": "nit: Instead of writing the `var` keyword, just write `output, err :\u003d`",
+      "range": {
+        "startLine": 30,
+        "startChar": 1,
+        "endLine": 30,
+        "endChar": 18
+      },
+      "revId": "69599ce1289c271773c197146caec368d1d946d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1376c621_95db5099",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/form_factor.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-22T16:58:21Z",
+      "side": 1,
+      "message": "nit: If you use `cmd.SeparatedOutput` instead of `cmd.Output`, then you can get the output on `stderr` and include it in this error message.",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 62
+      },
+      "revId": "69599ce1289c271773c197146caec368d1d946d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3abe4fd_93759cdf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/form_factor.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-22T16:58:21Z",
+      "side": 1,
+      "message": "nit: We do not write `else` when the `if` case will always exit anyway.",
+      "range": {
+        "startLine": 33,
+        "startChar": 3,
+        "endLine": 33,
+        "endChar": 7
+      },
+      "revId": "69599ce1289c271773c197146caec368d1d946d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd089949_ebd0e6ac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/form_factor.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-22T16:58:21Z",
+      "side": 1,
+      "message": "nit: The return value of a shell command is an `int`. A return value of 0 indicates success. That is not what this is about; it is about output on `stdout`. You could use the word `printed`, the word `logged`, or just a vague word like `gave`.",
+      "range": {
+        "startLine": 34,
+        "startChar": 15,
+        "endLine": 34,
+        "endChar": 23
+      },
+      "revId": "69599ce1289c271773c197146caec368d1d946d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33049f67_8ccfbcfd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/form_factor.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-22T16:58:21Z",
+      "side": 1,
+      "message": "See my other code review comment about the use of the word `returned`.",
+      "range": {
+        "startLine": 36,
+        "startChar": 12,
+        "endLine": 36,
+        "endChar": 20
+      },
       "revId": "69599ce1289c271773c197146caec368d1d946d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
