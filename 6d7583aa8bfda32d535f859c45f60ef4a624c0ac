@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd37cbb0_ae12b29a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-08-22T16:45:35Z",
+      "side": 1,
+      "message": "Please add a `TEST\u003d` here indicating that the tests are stable",
+      "revId": "6d7583aa8bfda32d535f859c45f60ef4a624c0ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
