@@ -16,6 +16,23 @@
       "message": "This change is ready to review. PTAL. Thank you.",
       "revId": "a9cb0b3fe1e6dadec36bb4e5ed43a7041773861f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c377120_b08421d8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1551017
+      },
+      "writtenOn": "2022-08-22T23:25:17Z",
+      "side": 1,
+      "message": "Commenting for followup that my code is ready to review. PTAL.\nThank you!",
+      "revId": "a9cb0b3fe1e6dadec36bb4e5ed43a7041773861f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
