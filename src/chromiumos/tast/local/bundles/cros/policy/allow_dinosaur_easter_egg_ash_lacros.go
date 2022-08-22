@@ -9,6 +9,7 @@ import (
 	"time"
 
 	"chromiumos/tast/common/fixture"
+	"chromiumos/tast/common/pci"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/ctxutil"
@@ -42,6 +43,9 @@ func init() {
 			Fixture:           fixture.LacrosPolicyLoggedIn,
 			Val:               browser.TypeLacros,
 		}},
+		SearchFlags: []*testing.StringPair{
+			pci.SearchFlag[*policy.AllowDinosaurEasterEgg](pci.VerifiedFunctionalityJS),
+		},
 	})
 }
 

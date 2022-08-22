@@ -10,6 +10,7 @@ import (
 	"time"
 
 	"chromiumos/tast/common/fixture"
+	"chromiumos/tast/common/pci"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/local/chrome"
@@ -61,6 +62,9 @@ func init() {
 						policies:  []policy.Policy{&policy.AutoclickEnabled{Stat: policy.StatusUnset}},
 					},
 				},
+				ExtraSearchFlags: []*testing.StringPair{
+					pci.SearchFlag[*policy.AutoclickEnabled](pci.VerifiedFunctionalityJS),
+				},
 			},
 			{
 				Name:      "caret_highlight",
@@ -85,6 +89,9 @@ func init() {
 						policies:  []policy.Policy{&policy.CaretHighlightEnabled{Stat: policy.StatusUnset}},
 					},
 				},
+				ExtraSearchFlags: []*testing.StringPair{
+					pci.SearchFlag[*policy.CaretHighlightEnabled](pci.VerifiedFunctionalityJS),
+				},
 			},
 			{
 				Name:      "cursor_highlight",
@@ -108,6 +115,9 @@ func init() {
 						wantValue: false,
 						policies:  []policy.Policy{&policy.CursorHighlightEnabled{Stat: policy.StatusUnset}},
 					},
+				},
+				ExtraSearchFlags: []*testing.StringPair{
+					pci.SearchFlag[*policy.CursorHighlightEnabled](pci.VerifiedFunctionalityJS),
 				},
 			},
 			{
@@ -142,6 +152,9 @@ func init() {
 						policies:  []policy.Policy{&policy.ScreenMagnifierType{Stat: policy.StatusUnset}},
 					},
 				},
+				ExtraSearchFlags: []*testing.StringPair{
+					pci.SearchFlag[*policy.ScreenMagnifierType](pci.VerifiedFunctionalityJS),
+				},
 			},
 			{
 				Name:      "focus_highlight",
@@ -165,6 +178,9 @@ func init() {
 						wantValue: false,
 						policies:  []policy.Policy{&policy.KeyboardFocusHighlightEnabled{Stat: policy.StatusUnset}},
 					},
+				},
+				ExtraSearchFlags: []*testing.StringPair{
+					pci.SearchFlag[*policy.KeyboardFocusHighlightEnabled](pci.VerifiedFunctionalityJS),
 				},
 			},
 			{
@@ -190,6 +206,9 @@ func init() {
 						policies:  []policy.Policy{&policy.HighContrastEnabled{Stat: policy.StatusUnset}},
 					},
 				},
+				ExtraSearchFlags: []*testing.StringPair{
+					pci.SearchFlag[*policy.HighContrastEnabled](pci.VerifiedFunctionalityJS),
+				},
 			},
 			{
 				Name:      "large_cursor",
@@ -213,6 +232,9 @@ func init() {
 						wantValue: false,
 						policies:  []policy.Policy{&policy.LargeCursorEnabled{Stat: policy.StatusUnset}},
 					},
+				},
+				ExtraSearchFlags: []*testing.StringPair{
+					pci.SearchFlag[*policy.LargeCursorEnabled](pci.VerifiedFunctionalityJS),
 				},
 			},
 			{
@@ -247,6 +269,9 @@ func init() {
 						policies:  []policy.Policy{&policy.ScreenMagnifierType{Stat: policy.StatusUnset}},
 					},
 				},
+				ExtraSearchFlags: []*testing.StringPair{
+					pci.SearchFlag[*policy.ScreenMagnifierType](pci.VerifiedFunctionalityJS),
+				},
 			},
 			{
 				Name:      "select_to_speak",
@@ -270,6 +295,9 @@ func init() {
 						wantValue: false,
 						policies:  []policy.Policy{&policy.SelectToSpeakEnabled{Stat: policy.StatusUnset}},
 					},
+				},
+				ExtraSearchFlags: []*testing.StringPair{
+					pci.SearchFlag[*policy.SelectToSpeakEnabled](pci.VerifiedFunctionalityJS),
 				},
 			},
 			{
@@ -296,6 +324,9 @@ func init() {
 						policies:  []policy.Policy{&policy.SpokenFeedbackEnabled{Stat: policy.StatusUnset}},
 					},
 				},
+				ExtraSearchFlags: []*testing.StringPair{
+					pci.SearchFlag[*policy.SpokenFeedbackEnabled](pci.VerifiedFunctionalityJS),
+				},
 			},
 			{
 				Name:      "sticky_keys",
@@ -319,6 +350,9 @@ func init() {
 						wantValue: false,
 						policies:  []policy.Policy{&policy.StickyKeysEnabled{Stat: policy.StatusUnset}},
 					},
+				},
+				ExtraSearchFlags: []*testing.StringPair{
+					pci.SearchFlag[*policy.StickyKeysEnabled](pci.VerifiedFunctionalityJS),
 				},
 			},
 			{
@@ -344,6 +378,9 @@ func init() {
 						wantValue: false,
 						policies:  []policy.Policy{&policy.VirtualKeyboardEnabled{Stat: policy.StatusUnset}},
 					},
+				},
+				ExtraSearchFlags: []*testing.StringPair{
+					pci.SearchFlag[*policy.VirtualKeyboardEnabled](pci.VerifiedFunctionalityJS),
 				},
 			},
 		},

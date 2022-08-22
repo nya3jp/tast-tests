@@ -13,12 +13,12 @@ import (
 	"time"
 
 	"chromiumos/tast/common/fixture"
+	"chromiumos/tast/common/pci"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/common/shillconst"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
-	pciutil "chromiumos/tast/local/bundles/cros/policy/util"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/network"
 	"chromiumos/tast/local/policyutil"
@@ -49,27 +49,38 @@ func init() {
 				Val:               true,
 				ExtraAttr:         []string{"group:mainline", "informational"},
 				ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(noEthernetModels...)),
+				ExtraSearchFlags: []*testing.StringPair{
+					pci.SearchFlag[*policy.DeviceDockMacAddressSource](pci.VerifiedFunctionalityOS),
+				},
 			},
 			{
 				Name:              "no_ethernet",
 				Val:               false,
 				ExtraAttr:         []string{"group:mainline", "informational"},
 				ExtraHardwareDeps: hwdep.D(hwdep.Model(noEthernetModels...)),
+				ExtraSearchFlags: []*testing.StringPair{
+					pci.SearchFlag[*policy.DeviceDockMacAddressSource](pci.VerifiedFunctionalityOS),
+				},
 			},
 			{
 				Name:              "has_ethernet_lab",
 				Val:               true,
 				ExtraAttr:         []string{"group:wilco_bve_dock"},
 				ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(noEthernetModels...)),
+				ExtraSearchFlags: []*testing.StringPair{
+					pci.SearchFlag[*policy.DeviceDockMacAddressSource](pci.VerifiedFunctionalityOS),
+				},
 			},
 			{
 				Name:              "no_ethernet_lab",
 				Val:               false,
 				ExtraAttr:         []string{"group:wilco_bve_dock"},
 				ExtraHardwareDeps: hwdep.D(hwdep.Model(noEthernetModels...)),
+				ExtraSearchFlags: []*testing.StringPair{
+					pci.SearchFlag[*policy.DeviceDockMacAddressSource](pci.VerifiedFunctionalityOS),
+				},
 			},
 		},
-		SearchFlags: pciutil.PCISearchFlags(pciutil.OSVerified),
 	})
 }
 

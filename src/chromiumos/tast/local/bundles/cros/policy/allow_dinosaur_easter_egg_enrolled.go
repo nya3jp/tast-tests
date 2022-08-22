@@ -8,9 +8,9 @@ import (
 	"context"
 
 	"chromiumos/tast/common/fixture"
+	"chromiumos/tast/common/pci"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
-	pciutil "chromiumos/tast/local/bundles/cros/policy/util"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/testing"
@@ -28,7 +28,9 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Fixture:      fixture.ChromeEnrolledLoggedIn,
-		SearchFlags:  pciutil.PCISearchFlags(pciutil.JSVerified),
+		SearchFlags: []*testing.StringPair{
+			pci.SearchFlag[*policy.AllowDinosaurEasterEgg](pci.VerifiedFunctionalityJS),
+		},
 	})
 }
 
