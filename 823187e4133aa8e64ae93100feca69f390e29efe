@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "405d4072_a8deea44",
+        "filename": "src/chromiumos/tast/common/pci/search_flag.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-08-22T13:54:57Z",
+      "side": 1,
+      "message": "Generics should only be used when there is no other way to do it:\nhttps://g3doc.corp.google.com/go/g3doc/style/decisions.md?cl\u003dhead#generics\n\nAnd I think we do not fulfill that requirement here, so we probably should just use SearchFlagWithPolicyName() directly.",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 1
+      },
+      "revId": "823187e4133aa8e64ae93100feca69f390e29efe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
