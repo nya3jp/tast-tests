@@ -124,6 +124,24 @@
       "parentUuid": "b8fea4b2_43702fb3",
       "revId": "3fa8d142282f5f4d5792f2531e183c2257343935",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2cdba67d_5eb7f98e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1520127
+      },
+      "writtenOn": "2022-08-22T14:31:02Z",
+      "side": 1,
+      "message": "\u003e I mean can\u0027t we just put s.Run inside of ScenarioFunc. e.g. uiperf would have a Run function that takes the testing.State and construct a closure that captures it. We need to preserve those tests using s.Run to create subtests, but we don\u0027t need the perfutil library to handle that itself.\n\nI see. Thanks again for the comments, Eliot. I think I have now made the necessary changes based on your idea. PTAL.",
+      "parentUuid": "1d139bd0_cca30774",
+      "revId": "3fa8d142282f5f4d5792f2531e183c2257343935",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
