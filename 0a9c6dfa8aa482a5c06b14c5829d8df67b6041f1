@@ -105,6 +105,23 @@
       "parentUuid": "e682fe21_31bc3379",
       "revId": "0a9c6dfa8aa482a5c06b14c5829d8df67b6041f1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "190c4166_c9c31451",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2022-08-22T01:33:45Z",
+      "side": 1,
+      "message": "lgtm, there\u0027re only fixture failures.",
+      "revId": "0a9c6dfa8aa482a5c06b14c5829d8df67b6041f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
