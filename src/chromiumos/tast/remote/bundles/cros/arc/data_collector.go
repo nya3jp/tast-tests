@@ -13,6 +13,8 @@ import (
 	"path/filepath"
 	"time"
 
+	"github.com/golang/protobuf/ptypes/empty"
+
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/bundles/cros/arc/version"
@@ -21,7 +23,6 @@ import (
 	arcpb "chromiumos/tast/services/cros/arc"
 	"chromiumos/tast/ssh/linuxssh"
 	"chromiumos/tast/testing"
-	"chromiumos/tast/testing/hwdep"
 )
 
 type testParam struct {
@@ -136,14 +137,6 @@ func init() {
 			Name:              "vm",
 			ExtraAttr:         []string{"group:arc-data-collector"},
 			ExtraSoftwareDeps: []string{"android_vm"},
-			ExtraHardwareDeps: hwdep.D(
-				// Limit running in PFQ for VM devices to 8GB+ RAM spec only. For local
-				// test configs (upload=false) and non-VM, there are no restrictions.
-				// It is known issue that 4G devices experience memory pressure during the opt in.
-				// This leads to the situation when FS page caches are reclaimed and captured result
-				// does not properly reflect actual FS usage. Don't upload caches to server for
-				// devices lower than 8G.
-				hwdep.MinMemory(7500)),
 			Val: testParam{
 				vmEnabled: true,
 				upload:    true,
@@ -255,6 +248,23 @@ func DataCollector(ctx context.Context, s *testing.State) {
 		// Shorten the total context by 5 seconds to allow for cleanup.
 		shortCtx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
 		defer cancel()
+
+		// Limit running in PFQ for VM devices to 8GB+ RAM spec only. For local
+		// test configs (upload=false) and non-VM, there are no restrictions.
+		// It is known issue that 4G devices experience memory pressure during the opt in.
+		// This leads to the situation when FS page caches are reclaimed and captured result
+		// does not properly reflect actual FS usage. Don't upload caches to server for
+		// devices lower than 8G.
+		if param.vmEnabled && !param.upload {
+			response, err := service.CheckMinMemory(shortCtx, &empty.Empty{})
+			if err != nil {
+				return errors.Wrap(err, "ureadaheadPackService.CheckMinMemory returned an error")
+			}
+			if response.Result == false {
+				testing.ContextLog(shortCtx, "Did not meet minimum memory requirement for ureadahead, skipping generate")
+				return nil
+			}
+		}
 
 		// Pass initial boot and capture results.
 		response, err := service.Generate(shortCtx, &request)

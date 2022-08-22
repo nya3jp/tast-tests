@@ -7,12 +7,16 @@ syntax = "proto3";
 
 package tast.cros.arc;
 
+import "google/protobuf/empty.proto";
+
 option go_package = "chromiumos/tast/services/cros/arc";
 
 // UreadaheadPackService provides ureadahead pack generation
 service UreadaheadPackService {
   // Generate generates ureadahead pack for requested Chrome login mode, initial or provisioned.
   rpc Generate (UreadaheadPackRequest) returns (UreadaheadPackResponse) {}
+  // CheckMinMemory verifies total memory meets minimum requirement to generate ureadahead pack.
+  rpc CheckMinMemory (google.protobuf.Empty) returns (CheckMinMemoryResponse) {}
 }
 
 message UreadaheadPackRequest {
@@ -28,4 +32,9 @@ message UreadaheadPackResponse {
   string vm_pack_path = 2;
   // Path to log for ureadahead pack generation.
   string log_path = 3;
+}
+
+message CheckMinMemoryResponse {
+  // Returns true if memory requirement is met, otherwise false.
+  bool result = 1;
 }
