@@ -40,8 +40,28 @@ var (
 )
 
 const (
-	shortUITimeout = 3 * time.Second // Used for situations where UI response might be faster.
-	viewingTime    = 2 * time.Second // Used to view the effect after clicking application.
+	// shortUITimeout used for situations where UI response might be faster.
+	shortUITimeout = 3 * time.Second
+	// viewingTime used to view the effect after clicking application.
+	viewingTime = 2 * time.Second
+	// uiWaitTimeFactor used in replay mode, the record waiting time for UI is divided by this number
+	// as the time waiting for UI in replay mode.
+	uiWaitTimeFactor = 3
+	// uiVerifyInterval is used in replay mode, the real ud.WaitUntilExist is called when the number
+	// of executions of Fake UI Detects reaches uiVerifyInterval.
+	uiVerifyInterval = 5
+)
+
+// TestMode indicates whether to run in normal/record/replay mode.
+type TestMode string
+
+const (
+	// ReplayMode represents "replay" mode.
+	ReplayMode TestMode = "replay"
+	// RecordMode represents "record" mode.
+	RecordMode TestMode = "record"
+	// NormalMode represents "normal" mode.
+	NormalMode TestMode = "normal"
 )
 
 // Citrix defines the struct related to Citrix Workspace app.
