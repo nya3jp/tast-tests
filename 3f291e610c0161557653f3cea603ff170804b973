@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3cc9b9b1_f043f30f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/flashrom_tester.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-08-22T21:30:46Z",
+      "side": 1,
+      "message": "This is a long test. Currently we have 2247 informational tests, and encountered multiple timeout issue in VM test for informational tests. I strongly suggest to move this one out informational test suite. Then create its own suite and schedule.",
+      "revId": "3f291e610c0161557653f3cea603ff170804b973",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
