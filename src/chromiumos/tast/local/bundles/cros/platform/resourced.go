@@ -256,19 +256,20 @@ func Resourced(ctx context.Context, s *testing.State) {
 			s.Fatal("Checking memory pressure signal failed: ", err)
 		}
 
+		if err := checkSetGameModeWithTimeout(ctx, rm); err != nil {
+			s.Fatal("Checking SetGameModeWithTimeout failed: ", err)
+		}
+
+		if err := checkSetRTCAudioActive(ctx, rm); err != nil {
+			s.Fatal("Checking SetRTCAudioActive failed: ", err)
+		}
+
+		if err := checkSetFullscreenVideo(ctx, rm); err != nil {
+			s.Fatal("Checking SetFullscreenVideoWithTimeout failed: ", err)
+		}
+
 		return
 	}
 
-	// Other checks.
-	if err := checkSetGameModeWithTimeout(ctx, rm); err != nil {
-		s.Fatal("Checking SetGameModeWithTimeout failed: ", err)
-	}
-
-	if err := checkSetRTCAudioActive(ctx, rm); err != nil {
-		s.Fatal("Checking SetRTCAudioActive failed: ", err)
-	}
-
-	if err := checkSetFullscreenVideo(ctx, rm); err != nil {
-		s.Fatal("Checking SetFullscreenVideoWithTimeout failed: ", err)
-	}
+	// New tests will be added here. Stable tests are promoted to baseline.
 }
