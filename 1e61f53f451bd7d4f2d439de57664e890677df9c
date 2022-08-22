@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fcebb313_00e19db3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/toggle_cellular_from_quick_settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1394700
+      },
+      "writtenOn": "2022-08-22T19:04:01Z",
+      "side": 1,
+      "message": "Drive by: You could also navigate the the quick settings page using this instead, https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/uiauto/quicksettings/network.go;l\u003d38",
+      "range": {
+        "startLine": 51,
+        "startChar": 11,
+        "endLine": 51,
+        "endChar": 31
+      },
+      "revId": "1e61f53f451bd7d4f2d439de57664e890677df9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "329a079f_702529f2",
         "filename": "src/chromiumos/tast/local/bundles/cros/cellular/toggle_cellular_from_quick_settings.go",
         "patchSetId": 1
