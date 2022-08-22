@@ -1,0 +1,141 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "620af4f7_d9060efa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-08-22T14:01:59Z",
+      "side": 1,
+      "message": "looks good. just nits",
+      "revId": "c5712ea98f281c23d74a4c4a7e65a90fe0824278",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb6a16cf_a9c54d84",
+        "filename": "src/chromiumos/tast/local/cellular/cellular_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 962,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-08-22T14:01:59Z",
+      "side": 1,
+      "message": "nit: returns",
+      "range": {
+        "startLine": 962,
+        "startChar": 40,
+        "endLine": 962,
+        "endChar": 46
+      },
+      "revId": "c5712ea98f281c23d74a4c4a7e65a90fe0824278",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b02f6eb_e98c2123",
+        "filename": "src/chromiumos/tast/local/cellular/cellular_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 963,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-08-22T14:01:59Z",
+      "side": 1,
+      "message": "might want to name these for clarity\u0027s sake",
+      "range": {
+        "startLine": 963,
+        "startChar": 76,
+        "endLine": 963,
+        "endChar": 86
+      },
+      "revId": "c5712ea98f281c23d74a4c4a7e65a90fe0824278",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65d5be30_b77957e6",
+        "filename": "src/chromiumos/tast/local/cellular/cellular_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 994,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-08-22T14:01:59Z",
+      "side": 1,
+      "message": "Should we continue logging these at this level?",
+      "revId": "c5712ea98f281c23d74a4c4a7e65a90fe0824278",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8cfaefb_2781c395",
+        "filename": "src/chromiumos/tast/local/cellular/cellular_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 997,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-08-22T14:01:59Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "c5712ea98f281c23d74a4c4a7e65a90fe0824278",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dfba82d1_1842a02a",
+        "filename": "src/chromiumos/tast/local/cellular/cellular_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1002,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-08-22T14:01:59Z",
+      "side": 1,
+      "message": "curious when we might expect this to happen... I guess we can have no IP configs but I would assume the connect attempt would fail and we would error out before this if so.",
+      "range": {
+        "startLine": 1002,
+        "startChar": 23,
+        "endLine": 1002,
+        "endChar": 63
+      },
+      "revId": "c5712ea98f281c23d74a4c4a7e65a90fe0824278",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3021c2a6_0aae41b8",
+        "filename": "src/chromiumos/tast/local/cellular/cellular_network_utils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-08-22T14:01:59Z",
+      "side": 1,
+      "message": "any reason we reordered these?",
+      "revId": "c5712ea98f281c23d74a4c4a7e65a90fe0824278",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
