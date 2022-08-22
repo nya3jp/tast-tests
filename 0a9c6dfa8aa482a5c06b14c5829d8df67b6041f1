@@ -122,6 +122,23 @@
       "message": "lgtm, there\u0027re only fixture failures.",
       "revId": "0a9c6dfa8aa482a5c06b14c5829d8df67b6041f1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "565998ef_bd5bfd42",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1534417
+      },
+      "writtenOn": "2022-08-22T02:28:07Z",
+      "side": 1,
+      "message": "Thanks for reviewing!",
+      "revId": "0a9c6dfa8aa482a5c06b14c5829d8df67b6041f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
