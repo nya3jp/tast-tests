@@ -1,0 +1,248 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "294e9753_0ee81d97",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2022-08-22T06:17:33Z",
+      "side": 1,
+      "message": "I still need more time to look at MemoryAllocationUnit, but everything else is reviewed.",
+      "revId": "81092bf65394db098e7a3a471508cd417781ae29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19bc2415_22ee3836",
+        "filename": "src/chromiumos/tast/local/bundles/cros/multivm/memory_allocation_canary_health_perf.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2022-08-22T06:17:33Z",
+      "side": 1,
+      "message": "I think the name is too long, but I can\u0027t think of a shorter one...",
+      "revId": "81092bf65394db098e7a3a471508cd417781ae29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57c3f752_35224ab4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/multivm/memory_allocation_canary_health_perf.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2022-08-22T06:17:33Z",
+      "side": 1,
+      "message": "Put cwd@google.com and arcvm-memory@google.com too.",
+      "revId": "81092bf65394db098e7a3a471508cd417781ae29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d07ba222_80524e5f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/multivm/memory_allocation_canary_health_perf.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2022-08-22T06:17:33Z",
+      "side": 1,
+      "message": "I think other tests will run using this same process, so we should put the limit back at the end of the test.",
+      "revId": "81092bf65394db098e7a3a471508cd417781ae29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5553f870_65be8c9e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/multivm/memory_allocation_canary_health_perf.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2022-08-22T06:17:33Z",
+      "side": 1,
+      "message": "I don\u0027t think the canaries need to allocate anything.\n\nIt might simplify things once there\u0027s a VPN canary, since a VPN can\u0027t allocate anything.",
+      "revId": "81092bf65394db098e7a3a471508cd417781ae29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19d3497f_fea11d7e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/multivm/memory_allocation_canary_health_perf.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2022-08-22T06:17:33Z",
+      "side": 1,
+      "message": "Go doesn\u0027t need the `true`\n\nhttps://go.dev/tour/flowcontrol/4",
+      "revId": "81092bf65394db098e7a3a471508cd417781ae29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1158c18d_9bab4fa8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/multivm/memory_allocation_canary_health_perf.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2022-08-22T06:17:33Z",
+      "side": 1,
+      "message": "Doesn\u0027t each process have at least three files? stdout stdin stderr?",
+      "revId": "81092bf65394db098e7a3a471508cd417781ae29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b01bf38_c73780f8",
+        "filename": "src/chromiumos/tast/local/memory/memoryuser/canary.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2022-08-22T06:17:33Z",
+      "side": 1,
+      "message": "I Don\u0027t think these are used any more.",
+      "range": {
+        "startLine": 17,
+        "startChar": 1,
+        "endLine": 26,
+        "endChar": 1
+      },
+      "revId": "81092bf65394db098e7a3a471508cd417781ae29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "129afeed_62a5c635",
+        "filename": "src/chromiumos/tast/local/memory/memoryuser/canary.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2022-08-22T06:17:33Z",
+      "side": 1,
+      "message": "NIT: Put this down below next to all its methods.",
+      "revId": "81092bf65394db098e7a3a471508cd417781ae29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1dfa471_baf1a2b9",
+        "filename": "src/chromiumos/tast/local/memory/memoryuser/canary.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2022-08-22T06:17:33Z",
+      "side": 1,
+      "message": "NIT: Put this up near all the tab methods.",
+      "revId": "81092bf65394db098e7a3a471508cd417781ae29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78006153_125f246c",
+        "filename": "src/chromiumos/tast/local/memory/memoryuser/memory_allocation_manager.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2022-08-22T06:17:33Z",
+      "side": 1,
+      "message": "Why int64?",
+      "revId": "81092bf65394db098e7a3a471508cd417781ae29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7cffdf5d_23778c38",
+        "filename": "src/chromiumos/tast/local/memory/memoryuser/memory_allocation_manager.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2022-08-22T06:17:33Z",
+      "side": 1,
+      "message": "Make this private and called by NewMemoryAllocationManager below?\n\nI think we always want to call it exactly once.",
+      "revId": "81092bf65394db098e7a3a471508cd417781ae29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6cdf66a4_24ea9c50",
+        "filename": "src/chromiumos/tast/local/memory/memoryuser/memory_allocation_manager.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2022-08-22T06:17:33Z",
+      "side": 1,
+      "message": "We don\u0027t use IDs anywhere else, so maybe change this to `AssertNoDeadAllocators() error` and then return an error that mentions the ID for debugging purposes.",
+      "revId": "81092bf65394db098e7a3a471508cd417781ae29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1ce7834_759c186b",
+        "filename": "src/chromiumos/tast/local/memory/memoryuser/memory_stress_task.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2022-08-22T06:17:33Z",
+      "side": 1,
+      "message": "Maybe just use `cr.NewConn(ctx, st.url, cdputil.WithBackground())` instead of creating a new method.\n\nAlso, what does background actually mean here? Is it still a tab? Are we sure it can be killed by TabManager?",
+      "revId": "81092bf65394db098e7a3a471508cd417781ae29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
