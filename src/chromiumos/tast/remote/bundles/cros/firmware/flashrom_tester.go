@@ -36,7 +36,7 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"crossystem", "flashrom"},
 		HardwareDeps: hwdep.D(hwdep.ChromeEC()),
-		Timeout:      30 * time.Minute,
+		Timeout:      45 * time.Minute,
 		Params: []testing.Param{
 			{
 				Fixture: fixture.NormalMode,
