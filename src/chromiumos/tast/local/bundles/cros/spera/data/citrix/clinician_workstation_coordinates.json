@@ -1,0 +1,38 @@
+{
+  "CreateGoogleKeepNote-Take a note...": {
+    "x": 610,
+    "y": 191
+  },
+  "DeletePhoto-Move to trash": {
+    "x": 1272,
+    "y": 263
+  },
+  "DeletePhoto-citrix/photos_delete.png": {
+    "x": 1327,
+    "y": 103
+  },
+  "FocusOnDesktop-citrix/desktop.png": {
+    "x": 733,
+    "y": 435
+  },
+  "UploadPhoto-citrix/photos_computer.png": {
+    "x": 965,
+    "y": 162
+  },
+  "UploadPhoto-citrix/photos_upload_small.png": {
+    "x": 1130,
+    "y": 103
+  },
+  "UploadPhoto-sample": {
+    "x": 234,
+    "y": 210
+  },
+  "searchToOpenApplication-Desktop app": {
+    "x": 141,
+    "y": 378
+  },
+  "searchToOpenApplication-citrix/search.png": {
+    "x": 71,
+    "y": 920
+  }
+}
