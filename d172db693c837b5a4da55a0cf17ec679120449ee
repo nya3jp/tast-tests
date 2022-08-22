@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "9830b2d8_d85f84e3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-22T15:54:42Z",
+      "side": 1,
+      "message": "I see this in Patchset 4 but not in Patchset 5. Also, please wrap at 72 characters.",
+      "parentUuid": "3dd3f4fe_4c6d2797",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 47
+      },
+      "revId": "d172db693c837b5a4da55a0cf17ec679120449ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "15c2fe96_84e4f07c",
