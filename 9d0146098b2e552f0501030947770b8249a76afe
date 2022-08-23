@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "07f47492_df34e196",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-08-23T09:09:39Z",
+      "side": 1,
+      "message": "Test only has fixture failures:\nhttps://cros-health-prod.googleplex.com/test/policy.DisableScreenshotsHotkey",
+      "revId": "9d0146098b2e552f0501030947770b8249a76afe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
