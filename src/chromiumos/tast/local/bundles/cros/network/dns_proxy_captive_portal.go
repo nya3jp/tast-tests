@@ -24,7 +24,7 @@ func init() {
 		Desc:         "Verify dns-proxy behaves correctly when shill detects a captive portal",
 		Contacts:     []string{"jasongustaman@google.com", "garrick@google.com", "cros-networking@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"chrome"},
+		SoftwareDeps: []string{"chrome", "no_kernel_upstream"},
 		Timeout:      5 * time.Minute,
 	})
 }
