@@ -37,7 +37,7 @@ func init() {
 		Desc:            "Fixture providing enrollment",
 		Contacts:        []string{"vsavu@google.com", "chromeos-commercial-remote-management@google.com"},
 		Impl:            &enrolledFixt{},
-		SetUpTimeout:    3 * enrollmentRunTimeout,
+		SetUpTimeout:    15 * time.Minute,
 		TearDownTimeout: 5 * time.Minute,
 		ResetTimeout:    15 * time.Second,
 		ServiceDeps:     []string{"tast.cros.policy.PolicyService", "tast.cros.hwsec.OwnershipService"},
