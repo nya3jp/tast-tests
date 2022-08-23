@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd8cb354_471f5e63",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2022-08-23T16:06:10Z",
+      "side": 1,
+      "message": "Can you add more details to the linked on what failure and how the test is handling it.",
+      "revId": "cf49b0ab4ca01c69e275fe80840ebbd6ac907f52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77d4282c_d8017c42",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/hulu.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2022-08-23T16:06:10Z",
+      "side": 1,
+      "message": "So when OTP page is displayed, the test doesn\u0027t proceed?",
+      "range": {
+        "startLine": 280,
+        "startChar": 0,
+        "endLine": 282,
+        "endChar": 8
+      },
+      "revId": "cf49b0ab4ca01c69e275fe80840ebbd6ac907f52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f1908ed_c950a919",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/hulu.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2022-08-23T16:06:10Z",
+      "side": 1,
+      "message": "Whats addressed here?",
+      "range": {
+        "startLine": 336,
+        "startChar": 0,
+        "endLine": 336,
+        "endChar": 43
+      },
+      "revId": "cf49b0ab4ca01c69e275fe80840ebbd6ac907f52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7cbd5cfd_f9f3a3ce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/hulu.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2022-08-23T16:06:10Z",
+      "side": 1,
+      "message": "Is it like you verify that login button exists after signing out?\n\nAlso why is this location timeout error handling?",
+      "range": {
+        "startLine": 367,
+        "startChar": 0,
+        "endLine": 380,
+        "endChar": 0
+      },
+      "revId": "cf49b0ab4ca01c69e275fe80840ebbd6ac907f52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
