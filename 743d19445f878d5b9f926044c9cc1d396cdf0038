@@ -16,6 +16,23 @@
       "message": "Please review, thanks!",
       "revId": "743d19445f878d5b9f926044c9cc1d396cdf0038",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec25ec9b_b38caea2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-23T16:04:56Z",
+      "side": 1,
+      "message": "What is the point? What other CUJ tests will gather useful data of these metrics? When is it appropriate to collect metrics in a particular CUJ test without adding them to common_metrics.go?",
+      "revId": "743d19445f878d5b9f926044c9cc1d396cdf0038",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
