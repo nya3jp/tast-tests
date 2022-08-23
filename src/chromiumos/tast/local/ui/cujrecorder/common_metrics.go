@@ -81,6 +81,10 @@ func AshCommonMetricConfigs() []MetricConfig {
 		NewCustomMetricConfig("Discarding.DailyReloads.External", "tabs", perf.SmallerIsBetter),
 		NewCustomMetricConfig("Discarding.DailyReloads.Urgent", "tabs", perf.SmallerIsBetter),
 
+		// Desk Metrics
+		NewCustomMetricConfig("Ash.Desks.AnimationLatency.DeskActivation", "ms", perf.SmallerIsBetter),
+		NewSmoothnessMetricConfig("Ash.Desks.AnimationSmoothness.DeskActivation"),
+
 		// Others to monitor.
 		NewCustomMetricConfig("Power.BatteryDischargeRate", "mW", perf.SmallerIsBetter),
 		NewLatencyMetricConfig("Ash.DragWindowFromShelf.PresentationTime"),
