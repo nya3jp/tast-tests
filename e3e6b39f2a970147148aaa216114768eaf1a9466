@@ -16,6 +16,57 @@
       "message": "LGTM % defer Seewai\u0027s review.",
       "revId": "e3e6b39f2a970147148aaa216114768eaf1a9466",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "23ee0c2e_1cb43919",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-08-23T16:27:39Z",
+      "side": 1,
+      "message": "Please take a look at my comments. Thanks.",
+      "revId": "e3e6b39f2a970147148aaa216114768eaf1a9466",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9b81999_73b0512b",
+        "filename": "src/chromiumos/tast/local/common/shared_object.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-08-23T16:27:39Z",
+      "side": 1,
+      "message": "Do you have to use generic here?\n\ngo/go-style/decisions#generics\n\nIf you think it is necessary, please add a comment to explain why.\n\nThanks.",
+      "revId": "e3e6b39f2a970147148aaa216114768eaf1a9466",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc7e7580_ee441cdb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/ui/tconn_service_grpc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-08-23T16:27:39Z",
+      "side": 1,
+      "message": "Can we use the new global run time variable declaration instead?\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#global-runtime-variables-recommended-for-new-code\n\nIf the variable is used across multiple ui tests, I would suggest to declare in chromiumos/tast/remote/crosserverutil.\n\nSomething like:\n\n```\nvar DefaultGRPCServerPort \u003d testing.RegisterVarString(\n        \"ui.GRPCServerPort\",\n        strconv.Itoa(DefaultGRPCServerPort),\n        \"The TCP based GRPC Server port for remote testing\",\n)\n```\n\nThen, you can access in your test like this\n\n```\nportStr :\u003d crosserverutil.DefaultGRPCServerPort\n\n```",
+      "revId": "e3e6b39f2a970147148aaa216114768eaf1a9466",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
