@@ -151,3 +151,21 @@ func GetEUICC(ctx context.Context, findTestEuicc bool) (*EUICC, int, error) {
 
 	return nil, -1, errors.Wrapf(err, "no %s euicc found", euiccType)
 }
+
+// Eid returns the profile's Eid.
+func (e *EUICC) Eid(ctx context.Context) (string, error) {
+	return e.getStringProperty(ctx, hermesconst.EuiccPropertyEid)
+}
+
+func (e *EUICC) getStringProperty(ctx context.Context, propertyName string) (string, error) {
+	props, err := dbusutil.NewDBusProperties(ctx, e.DBusObject)
+	if err != nil {
+		return "", errors.Wrap(err, "failed to read euicc properties")
+	}
+	value, err := props.GetString(propertyName)
+	if err != nil {
+		return "", errors.Wrapf(err, "failed to read euicc property %s", propertyName)
+	}
+
+	return value, nil
+}
