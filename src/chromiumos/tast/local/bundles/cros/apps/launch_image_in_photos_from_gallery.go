@@ -158,7 +158,7 @@ func LaunchImageInPhotosFromGallery(ctx context.Context, s *testing.State) {
 	}
 
 	// Wait for image to appear in Photos app
-	ud := uidetection.NewDefault(tconn).WithTimeout(time.Minute)
+	ud := uidetection.NewDefault(tconn).WithTimeout(time.Minute).WithScreenshotStrategy(uidetection.ImmediateScreenshot)
 	allowButton := uidetection.Word("ALLOW")
 	gotItButton := uidetection.TextBlock([]string{"Got", "it"})
 
@@ -169,9 +169,10 @@ func LaunchImageInPhotosFromGallery(ctx context.Context, s *testing.State) {
 		return uiauto.IfSuccessThen(
 			// Long timeout is required here as the Photos first launch is very slow.
 			ud.WithTimeout(10*time.Second).WaitUntilExists(finder),
-			uiauto.Retry(3, uiauto.Combine("click button and waits its gone",
+			uiauto.Retry(3, uiauto.NamedCombine("click button and waits its gone",
+				ud.WithTimeout(10*time.Second).WaitForLocation(finder),
 				ud.WithTimeout(10*time.Second).LeftClick(finder),
-				ud.WithTimeout(10*time.Second).WithScreenshotStrategy(uidetection.ImmediateScreenshot).WaitUntilGone(finder),
+				ud.WithTimeout(10*time.Second).WaitUntilGone(finder),
 			)),
 		)
 	}
