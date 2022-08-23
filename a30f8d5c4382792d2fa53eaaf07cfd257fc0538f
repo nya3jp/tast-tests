@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c142ffa0_e2b8ffc0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-08-23T21:49:10Z",
+      "side": 1,
+      "message": "Hi Li, this Tast CL is ready for review.",
+      "revId": "a30f8d5c4382792d2fa53eaaf07cfd257fc0538f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
