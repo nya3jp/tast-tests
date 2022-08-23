@@ -18,6 +18,13 @@ import (
 	"chromiumos/tast/testing/hwdep"
 )
 
+type ecUsbPortTest int
+
+const (
+	testUSBOnLidClose ecUsbPortTest = iota
+	testUSBOnShutdown
+)
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ECUSBPorts,
@@ -26,6 +33,17 @@ func init() {
 		Attr:         []string{"group:firmware", "firmware_unstable"},
 		HardwareDeps: hwdep.D(hwdep.ChromeEC()),
 		Fixture:      fixture.NormalMode,
+		Params: []testing.Param{
+			{
+				Name:              "usb_pins_on_lid_close",
+				Val:               testUSBOnLidClose,
+				ExtraHardwareDeps: hwdep.D(hwdep.Lid()),
+			},
+			{
+				Name: "usb_pins_on_shutdown",
+				Val:  testUSBOnShutdown,
+			},
+		},
 	})
 }
 
@@ -41,19 +59,22 @@ func ECUSBPorts(ctx context.Context, s *testing.State) {
 
 	s.Log("Check that ports are initially enabled")
 	if err := checkUSBAPortEnabled(ctx, h, 1); err != nil {
-		s.Fatal("Expected USB Ports to be enabled")
+		s.Fatal("Expected USB Ports to be enabled: ", err)
 	}
 
-	if err := testPortsAfterShutdown(ctx, h, 0); err != nil {
-		s.Fatal("Some USB Ports enabled after shutdown: ", err)
-	}
-
-	if err := testPortsAfterLidClose(ctx, h, 0); err != nil {
-		s.Fatal("Some USB Ports enabled after lidclose: ", err)
+	switch s.Param().(ecUsbPortTest) {
+	case testUSBOnShutdown:
+		if err := testPortsAfterShutdown(ctx, h); err != nil {
+			s.Fatal("Some USB Ports enabled after shutdown: ", err)
+		}
+	case testUSBOnLidClose:
+		if err := testPortsAfterLidClose(ctx, h); err != nil {
+			s.Fatal("Some USB Ports enabled after lidclose: ", err)
+		}
 	}
 }
 
-func testPortsAfterLidClose(ctx context.Context, h *firmware.Helper, expectedState int) error {
+func testPortsAfterLidClose(ctx context.Context, h *firmware.Helper) error {
 	if err := h.Servo.CloseLid(ctx); err != nil {
 		return errors.Wrap(err, "failed to close lid")
 	}
@@ -63,8 +84,8 @@ func testPortsAfterLidClose(ctx context.Context, h *firmware.Helper, expectedSta
 		return errors.Wrap(err, "failed to get G3 or S5 powerstate")
 	}
 
-	testing.ContextLog(ctx, "Check that ports have state ", expectedState)
-	if err := checkUSBAPortEnabled(ctx, h, expectedState); err != nil {
+	testing.ContextLog(ctx, "Check that ports have state 0")
+	if err := checkUSBAPortEnabled(ctx, h, 0); err != nil {
 		return errors.Wrap(err, "failed to check usb ports")
 	}
 
@@ -85,7 +106,7 @@ func testPortsAfterLidClose(ctx context.Context, h *firmware.Helper, expectedSta
 	return nil
 }
 
-func testPortsAfterShutdown(ctx context.Context, h *firmware.Helper, expectedState int) error {
+func testPortsAfterShutdown(ctx context.Context, h *firmware.Helper) error {
 	testing.ContextLog(ctx, "Shut down DUT")
 	cmd := h.DUT.Conn().CommandContext(ctx, "/sbin/shutdown", "-P", "now")
 	if err := cmd.Start(); err != nil {
@@ -97,8 +118,8 @@ func testPortsAfterShutdown(ctx context.Context, h *firmware.Helper, expectedSta
 		return errors.Wrap(err, "failed to get G3 powerstate")
 	}
 
-	testing.ContextLog(ctx, "Check that ports have state ", expectedState)
-	if err := checkUSBAPortEnabled(ctx, h, expectedState); err != nil {
+	testing.ContextLog(ctx, "Check that ports have state 0")
+	if err := checkUSBAPortEnabled(ctx, h, 0); err != nil {
 		return errors.Wrap(err, "failed to check usb ports")
 	}
 
@@ -130,6 +151,7 @@ func checkUSBAPortEnabled(ctx context.Context, h *firmware.Helper, expectedStatu
 			if pin.Ioex {
 				gpioOrIoex = "ioex"
 			}
+			testing.ContextLogf(ctx, "Checking %s pin name: %q", gpioOrIoex, pin.Name)
 			cmd := fmt.Sprintf("%sget %s", gpioOrIoex, pin.Name)
 			matchList := []string{fmt.Sprintf(`(?i)(0|1)[^\n\r]*\s%s`, pin.Name)}
 			out, err := h.Servo.RunECCommandGetOutput(ctx, cmd, matchList)
@@ -156,8 +178,8 @@ func checkUSBAPortEnabled(ctx context.Context, h *firmware.Helper, expectedStatu
 		for i := 1; i <= portsToCheck; i++ {
 			name := fmt.Sprintf("USB%d_ENABLE", i)
 			cmd := fmt.Sprintf("gpioget %s", name)
-			reFoundPort := regexp.MustCompile(fmt.Sprintf(`(?i)(0|1)[^\n\r]*\s%s`, name))
-			reNotFoundPort := regexp.MustCompile(`Parameter\s+(\d+)\s+invalid`)
+			reFoundPort := regexp.MustCompile(fmt.Sprintf(`(?i)(0|1)\s+%s`, name))
+			reNotFoundPort := regexp.MustCompile(`Parameter\s*\d\s*invalid`)
 			matchList := []string{"(" + reFoundPort.String() + "|" + reNotFoundPort.String() + ")"}
 			out, err := h.Servo.RunECCommandGetOutput(ctx, cmd, matchList)
 			if err != nil {
