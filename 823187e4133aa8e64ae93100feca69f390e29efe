@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8f917ed_8d4476fc",
+        "filename": "src/chromiumos/tast/common/pci/search_flag.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1550127
+      },
+      "writtenOn": "2022-08-23T09:32:11Z",
+      "side": 1,
+      "message": "Done\n\nI wanted to use the policy\u0027s Name function. It would\u0027ve been nice if go had static methods.",
+      "parentUuid": "405d4072_a8deea44",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 1
+      },
+      "revId": "823187e4133aa8e64ae93100feca69f390e29efe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "617b1d1d_b225d4b7",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-08-23T08:20:35Z",
       "side": 1,
       "message": "I think we can add that at a higher level - at line 42. That way all the test will be affected.",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 6
+      },
+      "revId": "823187e4133aa8e64ae93100feca69f390e29efe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a4ae716_0f1541bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/accessibility_policies.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1550127
+      },
+      "writtenOn": "2022-08-23T09:32:11Z",
+      "side": 1,
+      "message": "I also add the policy name in the Search Flag value. There are different a11y policies that are being tested from parameter to parameter.",
+      "parentUuid": "617b1d1d_b225d4b7",
       "range": {
         "startLine": 65,
         "startChar": 0,
