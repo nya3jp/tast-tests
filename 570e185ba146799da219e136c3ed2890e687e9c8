@@ -348,6 +348,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d1ed543_61643a00",
+        "filename": "src/chromiumos/tast/common/camera/dut/dut_control.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2022-08-23T09:47:58Z",
+      "side": 1,
+      "message": "Got it. I also feel that the separation would be costly compared to the size of the code. So I am OK with submitting as-is for now.",
+      "parentUuid": "38a5fef1_ca3e8044",
+      "revId": "570e185ba146799da219e136c3ed2890e687e9c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e4b34a04_2c136bda",
