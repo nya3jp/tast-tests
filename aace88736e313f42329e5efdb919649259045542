@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1bfaf05_3ee395ce",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1409117
+      },
+      "writtenOn": "2022-08-23T00:56:05Z",
+      "side": 1,
+      "message": "I don\u0027t think any of the tests have been fixed. It is possible that they all would take down the DUT, but it\u0027s hard to tell, especially since the other 4 have a high proportion of NOSTATUS (since from_s5 takes down the DUT before they get to run).\n\nI elected for a low-touch, incremental approach; but I\u0027m happy to just disable all of the test cases in this file in one go if you\u0027d prefer.",
+      "parentUuid": "015d3993_686b246d",
+      "revId": "aace88736e313f42329e5efdb919649259045542",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "099625bb_706fa1d6",
