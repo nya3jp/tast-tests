@@ -64,6 +64,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a68bd3a_4668f8f8",
+        "filename": "src/chromiumos/tast/services/cros/ui/tconn_service.pb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-08-23T02:41:12Z",
+      "side": 1,
+      "message": "Should be caused by the proto I guess.",
+      "parentUuid": "7ade8077_b1687cba",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "d1d1e9e40c51054b793b8ffc2addcaad539f793a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1a0d03f2_0c48b559",
