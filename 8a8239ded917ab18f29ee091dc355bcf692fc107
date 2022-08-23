@@ -121,6 +121,24 @@
       "parentUuid": "36aeeec4_a8aae31a",
       "revId": "8a8239ded917ab18f29ee091dc355bcf692fc107",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "16940d14_b430dd3c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1379515
+      },
+      "writtenOn": "2022-08-23T22:55:43Z",
+      "side": 1,
+      "message": "sorry, just realised this sounds much harsher than I intended",
+      "parentUuid": "cf212185_017ce0a1",
+      "revId": "8a8239ded917ab18f29ee091dc355bcf692fc107",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ],
   "submitRequirementResults": [
