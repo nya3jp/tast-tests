@@ -113,12 +113,11 @@ func UnicornPaidAppParentPermission(ctx context.Context, s *testing.State) {
 
 	searchResult := d.Object(ui.ClassName("android.view.View"), ui.DescriptionContains("$"),ui.Index(1))
 	if err := searchResult.WaitForExists(ctx, 30*time.Second); err != nil {
-		s.Fatal("Search Result doesn't exist: ", err)
-	}
-	if err := searchResult.Click(ctx); err != nil {
+		s.Log("Search Result doesn't exist: ", err)
+	} else if err := searchResult.Click(ctx); err != nil {
 		s.Fatal("Failed to click on Search Result: ", err)
 	}
-
+	
 	installButton := d.Object(ui.ClassName("android.widget.Button"), ui.TextContains("$"), ui.Enabled(true))
 	if err := installButton.WaitForExists(ctx, 10*time.Second); err != nil {
 		s.Fatal("Install Button doesn't exisit: ", err)
