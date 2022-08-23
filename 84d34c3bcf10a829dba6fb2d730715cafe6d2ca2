@@ -33,6 +33,24 @@
       "message": "The idea is great, but what does it mean when we have separators between owners and other reviewers? Will gwsq assign 2 reviewers (1 owner and 1 reviewer)?\n\nCan we extend this to have owners of a test folder?\nI mean that tast reviewers are similar to readability review, but the owners of some packages can be a team responsible for tracking the tests in specific folder, so we can mark them as mandatory reviewers.",
       "revId": "84d34c3bcf10a829dba6fb2d730715cafe6d2ca2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b8bb4eb_d28e9c04",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-08-23T14:59:47Z",
+      "side": 1,
+      "message": "The separators in the file are just to structure it, gswq has a separate configuration.\n\nHaving the owners file just forces you to get +2 from one of the owners in order to be able to submit a CL.",
+      "parentUuid": "c73c85dd_28564858",
+      "revId": "84d34c3bcf10a829dba6fb2d730715cafe6d2ca2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
