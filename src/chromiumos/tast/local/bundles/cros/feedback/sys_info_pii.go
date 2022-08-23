@@ -14,8 +14,16 @@ import (
 
 	"chromiumos/tast/fsutil"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/testing"
 )
+
+// piiTestParam contains all the data needed to run a single test iteration.
+type piiTestParam struct {
+	testType    int
+	browserType browser.Type
+}
 
 // Define test types.
 const (
@@ -36,16 +44,42 @@ func init() {
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      5 * time.Minute,
-		Pre:          chrome.LoggedIn(),
 		Params: []testing.Param{{
-			Name:      "",
-			Val:       localFileTest,
+			Name: "local_on_ash",
+			Val: piiTestParam{
+				testType:    localFileTest,
+				browserType: browser.TypeAsh,
+			},
 			ExtraData: []string{testPageFilename},
 			ExtraAttr: []string{"informational"},
+			Pre:       chrome.LoggedIn(),
 		}, {
-			Name:      "third_party_site",
-			Val:       thirdPartySiteTest,
+			Name: "third_party_site_on_ash",
+			Val: piiTestParam{
+				testType:    thirdPartySiteTest,
+				browserType: browser.TypeAsh,
+			},
 			ExtraAttr: []string{"informational"},
+			Pre:       chrome.LoggedIn(),
+		}, {
+			Name: "local_on_lacros",
+			Val: piiTestParam{
+				testType:    localFileTest,
+				browserType: browser.TypeLacros,
+			},
+			ExtraData:         []string{testPageFilename},
+			ExtraAttr:         []string{"informational"},
+			ExtraSoftwareDeps: []string{"lacros"},
+			Fixture:           "lacros",
+		}, {
+			Name: "third_party_site_on_lacros",
+			Val: piiTestParam{
+				testType:    thirdPartySiteTest,
+				browserType: browser.TypeLacros,
+			},
+			ExtraAttr:         []string{"informational"},
+			ExtraSoftwareDeps: []string{"lacros"},
+			Fixture:           "lacros",
 		}},
 	})
 }
@@ -74,7 +108,8 @@ func SysInfoPII(ctx context.Context, s *testing.State) {
 		localPageTitle    = "feedback.SysInfoPII test page title"
 		localPageContents = "feedback.SysInfoPII test page contents"
 	)
-	testType := s.Param().(int)
+	testType := s.Param().(piiTestParam).testType
+	browserType := s.Param().(piiTestParam).browserType
 
 	sensitiveURL := ""
 	sensitiveURLWithoutScheme := ""
@@ -98,20 +133,58 @@ func SysInfoPII(ctx context.Context, s *testing.State) {
 		sensitiveURLWithoutScheme = "www.facebook.com"
 	}
 
-	cr := s.PreValue().(*chrome.Chrome)
-	conn, err := cr.NewConn(ctx, sensitiveURL)
-	if err != nil {
-		s.Fatal("Failed to establish a chrome renderer connection: ", err)
-	}
-	defer conn.Close()
+	var bTconn *chrome.TestConn
+	var conn *chrome.Conn
 
-	tconn, err := cr.TestAPIConn(ctx)
-	if err != nil {
-		s.Fatal("Could not create test API conn: ", err)
+	if browserType == browser.TypeAsh {
+		cr := s.PreValue().(*chrome.Chrome)
+		tconn, err := cr.TestAPIConn(ctx)
+		if err != nil {
+			s.Fatal("Could not create test API conn: ", err)
+		}
+
+		conn, err = cr.NewConn(ctx, sensitiveURL)
+		if err != nil {
+			s.Fatal("Failed to establish a chrome renderer connection: ", err)
+		}
+		defer conn.Close()
+
+		bTconn = tconn
+	} else {
+		tconn, err := s.FixtValue().(chrome.HasChrome).Chrome().TestAPIConn(ctx)
+		if err != nil {
+			s.Fatal("Could not create test API conn: ", err)
+		}
+
+		l, err := lacros.Launch(ctx, tconn)
+		if err != nil {
+			s.Fatal("Failed to launch Lacros: ", err)
+		}
+		defer l.Close(ctx)
+
+		// Get all pages.
+		ts, err := l.FindTargets(ctx, chrome.MatchAllPages())
+		if err != nil {
+			s.Fatal("Failed to find pages: ", err)
+		}
+
+		if len(ts) != 1 {
+			s.Fatal("Expected only one page target, got ", ts)
+		}
+
+		conn, err = l.NewConnForTarget(ctx, chrome.MatchTargetID(ts[0].TargetID))
+		if err := conn.Navigate(ctx, sensitiveURL); err != nil {
+			s.Fatal("Failed to navigate to sensitiveURL: ", err)
+		}
+
+		if bTconn, err = l.TestAPIConn(ctx); err != nil {
+			s.Fatal("Failed to get lacros TestAPIConn: ", err)
+		}
 	}
+
 	s.Log("Calling getSystemInformation")
 	var ret []*systemInformation
-	if err := tconn.Eval(ctx, "tast.promisify(chrome.feedbackPrivate.getSystemInformation)()", &ret); err != nil {
+	if err := bTconn.Eval(ctx, "tast.promisify(chrome.feedbackPrivate.getSystemInformation)()", &ret); err != nil {
 		s.Fatal("Could not call getSystemInformation: ", err)
 	}
 
