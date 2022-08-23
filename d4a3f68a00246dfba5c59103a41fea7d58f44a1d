@@ -97,6 +97,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0273bcdc_0b9fe3e2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1551017
+      },
+      "writtenOn": "2022-08-23T00:47:51Z",
+      "side": 1,
+      "message": "I see what you meant. Code is ready for review. PTAL. \n\nI updated the patch: have the common function arguments returned and the appropriate codec flag appended in corresponding *decodeVAAPIArgs.",
+      "parentUuid": "d7851bb5_71cff6f6",
+      "revId": "d4a3f68a00246dfba5c59103a41fea7d58f44a1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f4a2dbaf_3f0db18d",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
         "patchSetId": 8
