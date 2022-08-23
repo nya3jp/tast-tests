@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ee4a07e_e170bd60",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-08-23T00:14:47Z",
+      "side": 1,
+      "message": "+2 for Tast Review % nits",
+      "revId": "5e2e6d9e316fdf80f37618b1ad3e97dd2568849c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f53bdc5e_c8e7859a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/v4l2_compliance.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-08-23T00:14:47Z",
+      "side": 1,
+      "message": "micro nit: Please use comment sentences (missing \".\")\ngo/go-style/decisions#comment-sentences",
+      "revId": "5e2e6d9e316fdf80f37618b1ad3e97dd2568849c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c54dc1e_3652c394",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/v4l2_compliance.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-08-23T00:14:47Z",
+      "side": 1,
+      "message": "micro nit: ditto (comment sentences)",
+      "revId": "5e2e6d9e316fdf80f37618b1ad3e97dd2568849c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b3ee97c_9fe535bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/v4l2_compliance.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-08-23T00:14:47Z",
+      "side": 1,
+      "message": "optional: If stderr output is longer than a few lines, consider writing it to a file instead of dumping it in the log to avoid cluttering the logs. (Not sure how long stderr here might be.)",
+      "revId": "5e2e6d9e316fdf80f37618b1ad3e97dd2568849c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
