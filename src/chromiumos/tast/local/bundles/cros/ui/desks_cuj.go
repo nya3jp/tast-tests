@@ -137,14 +137,6 @@ func DesksCUJ(ctx context.Context, s *testing.State) {
 	}
 	defer recorder.Close(cleanupCtx)
 
-	configs := []cujrecorder.MetricConfig{
-		cujrecorder.NewCustomMetricConfig("Ash.Desks.AnimationLatency.DeskActivation", "ms", perf.SmallerIsBetter),
-		cujrecorder.NewSmoothnessMetricConfig("Ash.Desks.AnimationSmoothness.DeskActivation"),
-	}
-	if err := recorder.AddCollectedMetrics(tconn, browser.TypeAsh, configs...); err != nil {
-		s.Fatal("Failed to add recorded metrics: ", err)
-	}
-
 	if err := recorder.AddCommonMetrics(tconn, bTconn); err != nil {
 		s.Fatal("Failed to add common metrics to recorder: ", err)
 	}
