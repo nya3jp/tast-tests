@@ -16,6 +16,23 @@
       "message": "Why are we enabling bootid_logger? I am removing that change and marking the other tests as informational.",
       "revId": "8a8239ded917ab18f29ee091dc355bcf692fc107",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5230d23_085a0318",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333018
+      },
+      "writtenOn": "2022-08-23T00:56:30Z",
+      "side": 1,
+      "message": "the test failure is real.",
+      "revId": "8a8239ded917ab18f29ee091dc355bcf692fc107",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
