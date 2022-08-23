@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60c84186_76194d01",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-23T20:43:03Z",
+      "side": 1,
+      "message": "comma",
+      "range": {
+        "startLine": 12,
+        "startChar": 56,
+        "endLine": 12,
+        "endChar": 57
+      },
+      "revId": "e6ea44c9cd39aa617c181d8edc828721d263e815",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94ab8615_0e70ab5c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-23T20:43:03Z",
+      "side": 1,
+      "message": "`ll`",
+      "range": {
+        "startLine": 16,
+        "startChar": 30,
+        "endLine": 16,
+        "endChar": 31
+      },
+      "revId": "e6ea44c9cd39aa617c181d8edc828721d263e815",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3861cfb6_acb1a672",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-23T20:43:03Z",
+      "side": 1,
+      "message": "Please specify exactly which patchset you tested.",
+      "range": {
+        "startLine": 16,
+        "startChar": 51,
+        "endLine": 17,
+        "endChar": 9
+      },
+      "revId": "e6ea44c9cd39aa617c181d8edc828721d263e815",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
