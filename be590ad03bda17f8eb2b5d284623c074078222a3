@@ -51,6 +51,24 @@
       "parentUuid": "0e43c9a3_e562ad05",
       "revId": "be590ad03bda17f8eb2b5d284623c074078222a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "925384e7_254ab966",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-23T21:27:13Z",
+      "side": 1,
+      "message": "I think the test should detect whether there is a camera, and only expect to find an outbound video stream if there is a camera. Maybe you can do this by checking where `\"autotest-capability:builtin_or_vivid_camera\"` falls within `s.Features(\"\")`.",
+      "parentUuid": "b4ef16a0_2a0f4657",
+      "revId": "be590ad03bda17f8eb2b5d284623c074078222a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
