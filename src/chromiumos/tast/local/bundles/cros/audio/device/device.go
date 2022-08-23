@@ -95,7 +95,7 @@ func TestALSACommand(ctx context.Context, s *testing.State, name string) {
 // sound card.
 func IsInternalCard(card string) bool {
 	//Based on ALSA command output.
-	externalCards := []string{"USB Audio"}
+	externalCards := []string{"USB Audio", "HDMI"}
 	for _, externalCard := range externalCards {
 		if strings.Contains(card, externalCard) {
 			return false
