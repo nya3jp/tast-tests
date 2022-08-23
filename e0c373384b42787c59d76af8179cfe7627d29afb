@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "39f13f4c_0bc1348f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_image_in_photos_from_gallery.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-08-23T02:12:54Z",
+      "side": 1,
+      "message": "LeftClick uses uda.Location, but it is not WaitForLocation which waits for stable location. \n\nAn alternative solution is to refactor LeftClick to use WaitForLocation. It is pretty useful if user only cares about stabilised click target with ImmediateScreenshot strategy.",
+      "range": {
+        "startLine": 174,
+        "startChar": 35,
+        "endLine": 174,
+        "endChar": 44
+      },
+      "revId": "e0c373384b42787c59d76af8179cfe7627d29afb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
