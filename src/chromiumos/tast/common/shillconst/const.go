@@ -342,3 +342,8 @@ const (
 	PasspointCredentialsPropertyMeteredOverride    = "MeteredOverride"
 	PasspointCredentialsPropertyAndroidPackageName = "AndroidPackageName"
 )
+
+// Default ICCID when ICCID is unknown. Defined in dbus-constants.h
+const (
+	UnknownICCID = "unknown-iccid"
+)
