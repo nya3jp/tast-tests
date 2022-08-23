@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bf0a9c12_be8f0628",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/dock2_persistent_settings.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1445085
+      },
+      "writtenOn": "2022-08-23T16:40:02Z",
+      "side": 1,
+      "message": "Let\u0027s keep this for now.",
+      "parentUuid": "b60a7e4a_9a66900a",
+      "revId": "a2ce6cb3219786109f54d2da1a7a4ff06db0e600",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bcc7fe76_888f5a1a",
         "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/dock2_persistent_settings.go",
         "patchSetId": 26
