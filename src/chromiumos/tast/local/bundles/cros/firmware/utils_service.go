@@ -7,6 +7,7 @@ package firmware
 import (
 	"bytes"
 	"context"
+	"path/filepath"
 	"regexp"
 	"strings"
 	"time"
@@ -19,6 +20,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/common"
@@ -244,10 +246,28 @@ func (us *UtilsService) FindSingleNode(ctx context.Context, req *fwpb.NodeElemen
 	uiNode := nodewith.Name(req.Name).First()
 
 	if err := uiauto.WithTimeout(10 * time.Second).WaitUntilExists(uiNode)(ctx); err != nil {
+		if err := saveLogsOnError(ctx, us, func() bool { return true }); err != nil {
+			return nil, errors.Wrapf(err, "could not save logs when node %q not found", req.Name)
+		}
 		return nil, errors.Wrapf(err, "could not find node: %s", req.Name)
 	}
 
 	return &empty.Empty{}, nil
+}
+
+func saveLogsOnError(ctx context.Context, us *UtilsService, hasError func() bool) error {
+	tconn, err := us.cr.TestAPIConn(ctx)
+	if err != nil {
+		return err
+	}
+
+	outDir, ok := testing.ContextOutDir(ctx)
+	if !ok {
+		return errors.New("could not get the output directory")
+	}
+	faillog.DumpUITreeOnError(ctx, filepath.Join(outDir, "BaseECUpdate"), hasError, tconn)
+	faillog.SaveScreenshotOnError(ctx, us.cr, filepath.Join(outDir, "BaseECUpdate"), hasError)
+	return nil
 }
 
 // GetDetachableBaseValue retrieves the values of a few detachable-base attributes,
