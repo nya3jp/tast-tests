@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c29f786b_e41f361e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tconn_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-08-23T02:50:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d9f2b61c_f6423e13",
+      "range": {
+        "startLine": 31,
+        "startChar": 3,
+        "endLine": 31,
+        "endChar": 52
+      },
+      "revId": "d1d1e9e40c51054b793b8ffc2addcaad539f793a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7ade8077_b1687cba",
@@ -111,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed184416_35620d9c",
+        "filename": "src/chromiumos/tast/services/cros/ui/tconn_service.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-08-23T02:50:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a0d03f2_0c48b559",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "d1d1e9e40c51054b793b8ffc2addcaad539f793a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3ded2895_8e93322b",
@@ -128,6 +176,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e11a9218_357b7468",
+        "filename": "src/chromiumos/tast/services/cros/ui/tconn_service.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-08-23T02:50:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3ded2895_8e93322b",
+      "revId": "d1d1e9e40c51054b793b8ffc2addcaad539f793a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2f7694be_e09c8387",
@@ -141,6 +207,30 @@
       "writtenOn": "2022-08-23T02:38:13Z",
       "side": 1,
       "message": "nit: indentation.",
+      "range": {
+        "startLine": 44,
+        "startChar": 1,
+        "endLine": 45,
+        "endChar": 23
+      },
+      "revId": "d1d1e9e40c51054b793b8ffc2addcaad539f793a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ea2463d_6796ca2e",
+        "filename": "src/chromiumos/tast/services/cros/ui/tconn_service.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-08-23T02:50:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2f7694be_e09c8387",
       "range": {
         "startLine": 44,
         "startChar": 1,
