@@ -50,6 +50,41 @@
       "message": "According to @AlvinJia these are real failures.\n\nThis covers a pretty important use case, so should block uprev if that is the case",
       "revId": "8a8239ded917ab18f29ee091dc355bcf692fc107",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4d6d9c5_d0b4bd6b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000175
+      },
+      "writtenOn": "2022-08-23T02:07:47Z",
+      "side": 1,
+      "message": "It looks the fix needs to take some time. Let me land this to unblock the uprev. Long absence of uprev may cause some complexity on our development. Once the failure fixes, let\u0027s revert this asap.",
+      "parentUuid": "ef862345_3bff64b0",
+      "revId": "8a8239ded917ab18f29ee091dc355bcf692fc107",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6a319f4_a9c834a0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000175
+      },
+      "writtenOn": "2022-08-23T02:07:47Z",
+      "side": 1,
+      "message": "Let me chump this CL since the failure is only on the build phase on byla and it\u0027s not related with this change.",
+      "revId": "8a8239ded917ab18f29ee091dc355bcf692fc107",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
