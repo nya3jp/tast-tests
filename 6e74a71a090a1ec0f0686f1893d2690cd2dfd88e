@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb86291d_d38930cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/link_capturing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1130680
+      },
+      "writtenOn": "2022-08-23T00:10:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f042a0bc_4c6af301",
+      "revId": "6e74a71a090a1ec0f0686f1893d2690cd2dfd88e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "03650a53_c82550f5",
@@ -58,6 +76,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c8844ee_9fbd9dbb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/link_capturing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1130680
+      },
+      "writtenOn": "2022-08-23T00:10:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "03650a53_c82550f5",
+      "range": {
+        "startLine": 136,
+        "startChar": 5,
+        "endLine": 136,
+        "endChar": 36
+      },
+      "revId": "6e74a71a090a1ec0f0686f1893d2690cd2dfd88e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "523e4ee9_3dbf528b",
@@ -71,6 +113,30 @@
       "writtenOn": "2022-08-19T21:24:01Z",
       "side": 1,
       "message": "huge nit: remove `(` `)` when there is only one element",
+      "range": {
+        "startLine": 137,
+        "startChar": 7,
+        "endLine": 137,
+        "endChar": 8
+      },
+      "revId": "6e74a71a090a1ec0f0686f1893d2690cd2dfd88e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2afdbbfb_dc742abf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/link_capturing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1130680
+      },
+      "writtenOn": "2022-08-23T00:10:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "523e4ee9_3dbf528b",
       "range": {
         "startLine": 137,
         "startChar": 7,
@@ -118,6 +184,30 @@
       "side": 1,
       "message": "+1\n\nI\u0027d remove WaitForIdle if not needed",
       "parentUuid": "a149d263_5317e547",
+      "range": {
+        "startLine": 180,
+        "startChar": 0,
+        "endLine": 182,
+        "endChar": 2
+      },
+      "revId": "6e74a71a090a1ec0f0686f1893d2690cd2dfd88e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b8197a5_4501e9aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/link_capturing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1130680
+      },
+      "writtenOn": "2022-08-23T00:10:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e30c87dd_c4b363da",
       "range": {
         "startLine": 180,
         "startChar": 0,
