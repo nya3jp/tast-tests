@@ -52,6 +52,24 @@
       "parentUuid": "240b805a_63533aed",
       "revId": "b02871a12408673f2b666e536a84998c9b2eaed4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19e06b5e_45845aa3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1377969
+      },
+      "writtenOn": "2022-08-23T05:35:06Z",
+      "side": 1,
+      "message": "This one seems to suggest that skiponmodel betty+novato might do the trick:\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/53e406e1d147320c2933f9c721e81c4e04a1ce56:src/platform/tast-tests/src/chromiumos/tast/remote/bundles/cros/apps/apps_service_grpc.go;l\u003d36",
+      "parentUuid": "a2bc30b9_09fcce54",
+      "revId": "b02871a12408673f2b666e536a84998c9b2eaed4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
