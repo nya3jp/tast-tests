@@ -132,11 +132,7 @@ func KeyboardBinding(ctx context.Context, s *testing.State) {
 	s.Logf("The Search key name on the DUT is %q", searchKey.name)
 
 	for _, k := range []*key{
-		// TODO(b/241180458): Unblock 'searchKey' after the issue is solved.
-		// Changing binding function for the key "Search" might not work properly as expected
-		// on some DUT models(e.g., dewatt, nipperkin, dragonair, etc.)
-
-		// searchKey,
+		searchKey,
 		newCtrlKey(),
 		newAltKey(),
 		newEscapeKey(),
