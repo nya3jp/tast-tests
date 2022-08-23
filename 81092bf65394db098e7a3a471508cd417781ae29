@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b060a83b_e70e1f27",
+        "filename": "src/chromiumos/tast/local/bundles/cros/multivm/memory_allocation_canary_health_perf.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1543862
+      },
+      "writtenOn": "2022-08-23T03:04:54Z",
+      "side": 1,
+      "message": "I renamed it to `MemoryCanaryPerf` for now, but it might be hard to tell what the test is doing though...",
+      "parentUuid": "19bc2415_22ee3836",
+      "revId": "81092bf65394db098e7a3a471508cd417781ae29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "57c3f752_35224ab4",
         "filename": "src/chromiumos/tast/local/bundles/cros/multivm/memory_allocation_canary_health_perf.go",
         "patchSetId": 14
@@ -48,6 +66,24 @@
       "writtenOn": "2022-08-22T06:17:33Z",
       "side": 1,
       "message": "Put cwd@google.com and arcvm-memory@google.com too.",
+      "revId": "81092bf65394db098e7a3a471508cd417781ae29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "923d89c9_5117757e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/multivm/memory_allocation_canary_health_perf.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1543862
+      },
+      "writtenOn": "2022-08-23T03:04:54Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "57c3f752_35224ab4",
       "revId": "81092bf65394db098e7a3a471508cd417781ae29",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -86,6 +122,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "61246ef6_f1abd250",
+        "filename": "src/chromiumos/tast/local/bundles/cros/multivm/memory_allocation_canary_health_perf.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1543862
+      },
+      "writtenOn": "2022-08-23T03:04:54Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "5553f870_65be8c9e",
+      "revId": "81092bf65394db098e7a3a471508cd417781ae29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "19d3497f_fea11d7e",
@@ -99,6 +153,24 @@
       "writtenOn": "2022-08-22T06:17:33Z",
       "side": 1,
       "message": "Go doesn\u0027t need the `true`\n\nhttps://go.dev/tour/flowcontrol/4",
+      "revId": "81092bf65394db098e7a3a471508cd417781ae29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eeafdd35_1ca39264",
+        "filename": "src/chromiumos/tast/local/bundles/cros/multivm/memory_allocation_canary_health_perf.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1543862
+      },
+      "writtenOn": "2022-08-23T03:04:54Z",
+      "side": 1,
+      "message": "Didn\u0027t know that. Thanks!!",
+      "parentUuid": "19d3497f_fea11d7e",
       "revId": "81092bf65394db098e7a3a471508cd417781ae29",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -145,6 +217,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2b36b6fe_7db31400",
+        "filename": "src/chromiumos/tast/local/memory/memoryuser/canary.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1543862
+      },
+      "writtenOn": "2022-08-23T03:04:54Z",
+      "side": 1,
+      "message": "They are used in the main test file. It gets the variant name (like `.app_host`) and store corresponding `CanaryType` value. I think it is reasonable to have the type definition in canary.go even if the type itself is not used in the other part of the file. How do you think?",
+      "parentUuid": "3b01bf38_c73780f8",
+      "range": {
+        "startLine": 17,
+        "startChar": 1,
+        "endLine": 26,
+        "endChar": 1
+      },
+      "revId": "81092bf65394db098e7a3a471508cd417781ae29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "129afeed_62a5c635",
         "filename": "src/chromiumos/tast/local/memory/memoryuser/canary.go",
         "patchSetId": 14
@@ -156,6 +252,24 @@
       "writtenOn": "2022-08-22T06:17:33Z",
       "side": 1,
       "message": "NIT: Put this down below next to all its methods.",
+      "revId": "81092bf65394db098e7a3a471508cd417781ae29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2c01702_5eaf208d",
+        "filename": "src/chromiumos/tast/local/memory/memoryuser/canary.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1543862
+      },
+      "writtenOn": "2022-08-23T03:04:54Z",
+      "side": 1,
+      "message": "Fixed.",
+      "parentUuid": "129afeed_62a5c635",
       "revId": "81092bf65394db098e7a3a471508cd417781ae29",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -177,6 +291,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1e9ac21_e1bdbd06",
+        "filename": "src/chromiumos/tast/local/memory/memoryuser/canary.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1543862
+      },
+      "writtenOn": "2022-08-23T03:04:54Z",
+      "side": 1,
+      "message": "Fixed.",
+      "parentUuid": "a1dfa471_baf1a2b9",
+      "revId": "81092bf65394db098e7a3a471508cd417781ae29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "78006153_125f246c",
@@ -194,6 +326,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "612438ed_fdad7181",
+        "filename": "src/chromiumos/tast/local/memory/memoryuser/memory_allocation_manager.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1543862
+      },
+      "writtenOn": "2022-08-23T03:04:54Z",
+      "side": 1,
+      "message": "No need... Fixed.",
+      "parentUuid": "78006153_125f246c",
+      "revId": "81092bf65394db098e7a3a471508cd417781ae29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7cffdf5d_23778c38",
@@ -207,6 +357,24 @@
       "writtenOn": "2022-08-22T06:17:33Z",
       "side": 1,
       "message": "Make this private and called by NewMemoryAllocationManager below?\n\nI think we always want to call it exactly once.",
+      "revId": "81092bf65394db098e7a3a471508cd417781ae29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d321e848_6ef459cf",
+        "filename": "src/chromiumos/tast/local/memory/memoryuser/memory_allocation_manager.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1543862
+      },
+      "writtenOn": "2022-08-23T03:04:54Z",
+      "side": 1,
+      "message": "Sounds good. Fixed.",
+      "parentUuid": "7cffdf5d_23778c38",
       "revId": "81092bf65394db098e7a3a471508cd417781ae29",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
