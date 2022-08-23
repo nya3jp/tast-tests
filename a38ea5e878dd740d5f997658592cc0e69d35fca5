@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f65a11c_1b55c3bd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-08-23T19:41:01Z",
+      "side": 1,
+      "message": "Successfully re-verified after rebasing due to merge conflict.",
+      "revId": "a38ea5e878dd740d5f997658592cc0e69d35fca5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
