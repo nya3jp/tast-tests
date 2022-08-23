@@ -6,7 +6,6 @@ package firmware
 
 import (
 	"context"
-	"fmt"
 	"regexp"
 	"strconv"
 	"time"
@@ -36,7 +35,7 @@ func init() {
 		Func:         ECWakeSource,
 		Desc:         "Test that DUT goes to G3 powerstate on shutdown",
 		Contacts:     []string{"tij@google.com", "cros-fw-engprod@google.com"},
-		Attr:         []string{"group:firmware", "firmware_unstable"},
+		Attr:         []string{"group:firmware"},
 		Fixture:      fixture.NormalMode,
 		HardwareDeps: hwdep.D(hwdep.ChromeEC()),
 		SoftwareDeps: []string{"chrome"},
@@ -48,20 +47,24 @@ func init() {
 				Name:              "power_btn",
 				ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 				Val:               wakeByPowerBtn,
+				ExtraAttr:         []string{"firmware_ec"},
 			},
 			{
 				Name:              "keypress",
 				ExtraHardwareDeps: hwdep.D(hwdep.Keyboard()),
 				Val:               wakeByKeyboard,
+				ExtraAttr:         []string{"firmware_unstable"},
 			},
 			{
 				Name:              "lid",
 				ExtraHardwareDeps: hwdep.D(hwdep.Lid()),
 				Val:               wakeByLid,
+				ExtraAttr:         []string{"firmware_ec"},
 			},
 			{
-				Name: "usb_keyboard",
-				Val:  wakeByUSBKeyboard,
+				Name:      "usb_keyboard",
+				Val:       wakeByUSBKeyboard,
+				ExtraAttr: []string{"firmware_ec"},
 			},
 		},
 	})
@@ -69,20 +72,8 @@ func init() {
 
 // time constants
 const (
-	ecSuspendDelay     time.Duration = 5 * time.Second
-	dutWakeDelay       time.Duration = 5 * time.Second
-	lidSwitchDelay     time.Duration = 2 * time.Second
-	powerdSuspendDelay time.Duration = 3 * time.Second
-)
-
-// regular expressions
-const (
-	reGetTabletMode          string = `\[\S+ tablet mode (enabled|disabled)\]`
-	reTabletModeNotAvailable string = `Command 'tabletmode' not found or ambiguous`
-	reCheckTabletMode        string = `(` + reGetTabletMode + `|` + reTabletModeNotAvailable + `)`
-	reHasKsstate             string = `Keyboard scan disable mask: (0x[0-9a-fA-F]{8})`
-	reNoKsstate              string = `Command \'ksstate\' not found or ambiguous\.`
-	reGetKsstate             string = `(` + reHasKsstate + `|` + reNoKsstate + `)`
+	dutWakeDelay   time.Duration = 5 * time.Second
+	lidSwitchDelay time.Duration = 2 * time.Second
 )
 
 func ECWakeSource(ctx context.Context, s *testing.State) {
@@ -96,9 +87,13 @@ func ECWakeSource(ctx context.Context, s *testing.State) {
 	}
 
 	// Create instance of chrome for login so that DUT suspends mode instead of shutting down.
-	s.Log("New Chrome service")
-	if _, err := h.RPCUtils.NewChrome(ctx, &empty.Empty{}); err != nil {
-		s.Fatal("Failed to create instance of chrome: ", err)
+	s.Log("Use Chrome service")
+	if _, err := h.RPCUtils.ReuseChrome(ctx, &empty.Empty{}); err != nil {
+		// Only create new instance if instance doesn't already exist.
+		s.Log("Chrome instance did not already exist, creating new one")
+		if _, err := h.RPCUtils.NewChrome(ctx, &empty.Empty{}); err != nil {
+			s.Fatal("Failed to create instance of chrome: ", err)
+		}
 	}
 
 	switch testType {
@@ -161,17 +156,13 @@ func testWakeWithLid(ctx context.Context, h *firmware.Helper) error {
 	}
 
 	testing.ContextLog(ctx, "Suspending DUT")
-	cmd := h.DUT.Conn().CommandContext(ctx, "powerd_dbus_suspend", fmt.Sprintf("--delay=%d", int(powerdSuspendDelay.Seconds())))
+	cmd := h.DUT.Conn().CommandContext(ctx, "powerd_dbus_suspend", "--delay=5")
 	if err := cmd.Start(); err != nil {
 		return errors.Wrap(err, "failed to suspend DUT")
 	}
 
-	testing.ContextLogf(ctx, "Sleeping for %s seconds", ecSuspendDelay+powerdSuspendDelay)
-	if err := testing.Sleep(ctx, ecSuspendDelay+powerdSuspendDelay); err != nil {
-		return errors.Wrap(err, "failed to sleep waiting for suspend")
-	}
 	testing.ContextLog(ctx, "Checking for S0ix or S3 powerstate")
-	if err := h.WaitForPowerStates(ctx, 1*time.Second, 30*time.Second, "S0ix", "S3"); err != nil {
+	if err := h.WaitForPowerStates(ctx, firmware.PowerStateInterval, firmware.PowerStateTimeout, "S0ix", "S3"); err != nil {
 		return errors.Wrap(err, "failed to get S0ix or S3 powerstate")
 	}
 
@@ -181,7 +172,7 @@ func testWakeWithLid(ctx context.Context, h *firmware.Helper) error {
 	}
 
 	testing.ContextLog(ctx, "Checking it remains suspended for S0ix or S3 powerstate")
-	if err := h.WaitForPowerStates(ctx, 1*time.Second, 30*time.Second, "S0ix", "S3"); err != nil {
+	if err := h.WaitForPowerStates(ctx, firmware.PowerStateInterval, firmware.PowerStateTimeout, "S0ix", "S3"); err != nil {
 		return errors.Wrap(err, "failed to get S0ix or S3 powerstate")
 	}
 
@@ -206,13 +197,8 @@ func closeAndOpenLid(ctx context.Context, h *firmware.Helper, delay time.Duratio
 		return err
 	}
 
-	testing.ContextLogf(ctx, "waiting %s for DUT to settle into suspend state", ecSuspendDelay)
-	if err := testing.Sleep(ctx, ecSuspendDelay); err != nil {
-		return err
-	}
-
 	testing.ContextLog(ctx, "Checking for S0ix or S3 powerstate")
-	if err := h.WaitForPowerStates(ctx, 1*time.Second, 60*time.Second, "S0ix", "S3"); err != nil {
+	if err := h.WaitForPowerStates(ctx, firmware.PowerStateInterval, firmware.PowerStateTimeout, "S0ix", "S3"); err != nil {
 		return errors.Wrap(err, "failed to get S0ix or S3 powerstate")
 	}
 
@@ -226,7 +212,7 @@ func closeAndOpenLid(ctx context.Context, h *firmware.Helper, delay time.Duratio
 	}
 
 	testing.ContextLog(ctx, "Waiting for S0 powerstate")
-	if err := h.WaitForPowerStates(ctx, 1*time.Second, 30*time.Second, "S0"); err != nil {
+	if err := h.WaitForPowerStates(ctx, firmware.PowerStateInterval, firmware.PowerStateTimeout, "S0"); err != nil {
 		return errors.Wrap(err, "failed to get S0 powerstate")
 	}
 
@@ -265,71 +251,33 @@ func testWakeWithUSBKeyboard(ctx context.Context, h *firmware.Helper) error {
 }
 
 func testSuspendAndWakeWithInternalKeypress(ctx context.Context, h *firmware.Helper) error {
-	var match []string
-	out, err := h.Servo.RunECCommandGetOutput(ctx, "tabletmode off", []string{reCheckTabletMode})
-	if err != nil {
-		// Not all devices support this cmd.
-		testing.ContextLog(ctx, "Failed to disable tabletmode: ", err)
-	} else if out != nil {
-		tabletModeAvailable := regexp.MustCompile(reGetTabletMode)
-		match = tabletModeAvailable.FindStringSubmatch(out[0][0])
-	}
+	reHasKsstate := `Keyboard scan disable mask: (0x[0-9a-fA-F]{8})`
+	reNoKsstate := `Command \'ksstate\' not found or ambiguous\.`
+	reGetKsstate := `(` + reHasKsstate + `|` + reNoKsstate + `)`
 
 	testing.ContextLog(ctx, "Checking ksstate")
 	shouldWake := false
+
 	ksstateout, err := h.Servo.RunECCommandGetOutput(ctx, "ksstate", []string{reGetKsstate})
 	if err != nil {
 		return errors.Wrap(err, "failed to check for presence of ksstate")
-	} else if ksstateout != nil {
+	}
+
+	if ksstateout != nil {
 		ksstatematch := regexp.MustCompile(reHasKsstate).FindStringSubmatch(ksstateout[0][0])
 		parsedMask, err := strconv.ParseInt(string(ksstatematch[1]), 0, 0)
 		testing.ContextLog(ctx, "keyboard scan disable mask: ", parsedMask)
 		if err != nil {
 			testing.ContextLog(ctx, "Failed to parse kb disable mask: ", ksstatematch)
 		} else {
-			// If parsedMask = 0, expect internal keyboard to not be disabled.
+			// If parsedMask != 0, expect internal keyboard to be disabled.
 			shouldWake = parsedMask == 0
 		}
 	}
 
-	if match == nil {
-		testing.ContextLog(ctx, "DUT does not support tablet mode")
-		// Whether or not it wakes on keypress depends on keyboard being enabled/disabled.
-		testing.ContextLog(ctx, "Suspend DUT and wake with emulated keypress")
-		if err := testWakeWithKeyboard(ctx, h, shouldWake); err != nil {
-			return errors.Wrap(err, "failed suspend and wake with keypress")
-		}
-	} else {
-		testing.ContextLog(ctx, "DUT supports tablet mode, disabling tablet mode")
-		out, err = h.Servo.RunECCommandGetOutput(ctx, "tabletmode off", []string{reGetTabletMode})
-		if err == nil {
-			testing.ContextLog(ctx, "current tabletmode state: ", out[0][1])
-			// If tabletmode is off, waking on keypress depends on keyboard being enabled/disabled.
-			testing.ContextLog(ctx, "Suspend DUT and wake with emulated keypress")
-			if err := testWakeWithKeyboard(ctx, h, shouldWake); err != nil {
-				return errors.Wrap(err, "failed suspend and wake with keypress with tablet mode disabled")
-			}
-		} else {
-			testing.ContextLog(ctx, "Failed to disable tablet mode")
-		}
-
-		testing.ContextLog(ctx, "Enabling tablet mode")
-		out, err = h.Servo.RunECCommandGetOutput(ctx, "tabletmode on", []string{reGetTabletMode})
-		if err == nil {
-			testing.ContextLog(ctx, "current tabletmode state: ", out[0][1])
-			// Device is in tablet mode, expect that keyboard is disabled and keypress does not wake device.
-			testing.ContextLog(ctx, "Suspend DUT and stay suspended after emulated keypress")
-			if err := testWakeWithKeyboard(ctx, h, false); err != nil {
-				return errors.Wrap(err, "failed suspend and stay suspended with keypress with tablet mode enabled")
-			}
-		} else {
-			testing.ContextLog(ctx, "Failed to enable tablet mode: ", err)
-		}
-
-		testing.ContextLog(ctx, "Resetting tablet mode to initial value")
-		if err = h.Servo.RunECCommand(ctx, "tabletmode reset"); err != nil {
-			testing.ContextLog(ctx, "Failed to run reset tablet mode: ", err)
-		}
+	testing.ContextLog(ctx, "Suspend DUT and wake with emulated keypress")
+	if err := testWakeWithKeyboard(ctx, h, shouldWake); err != nil {
+		return errors.Wrap(err, "failed suspend and wake with keypress")
 	}
 
 	return nil
@@ -385,18 +333,13 @@ func testWakeWithPowerKey(ctx context.Context, h *firmware.Helper) error {
 
 func suspendDUTAndWakeWithKey(ctx context.Context, h *firmware.Helper, wakeKey servo.KeypressControl, shouldWake bool) error {
 	testing.ContextLog(ctx, "Suspending DUT")
-	cmd := h.DUT.Conn().CommandContext(ctx, "powerd_dbus_suspend", fmt.Sprintf("--delay=%d", int(powerdSuspendDelay.Seconds())))
+	cmd := h.DUT.Conn().CommandContext(ctx, "powerd_dbus_suspend", "--delay=5")
 	if err := cmd.Start(); err != nil {
 		return errors.Wrap(err, "failed to suspend DUT")
 	}
 
-	testing.ContextLogf(ctx, "Sleeping for %s seconds", ecSuspendDelay+powerdSuspendDelay)
-	if err := testing.Sleep(ctx, ecSuspendDelay+powerdSuspendDelay); err != nil {
-		return errors.Wrap(err, "failed to sleep waiting for suspend")
-	}
-
 	testing.ContextLog(ctx, "Checking for S0ix or S3 powerstate")
-	if err := h.WaitForPowerStates(ctx, 1*time.Second, 30*time.Second, "S0ix", "S3"); err != nil {
+	if err := h.WaitForPowerStates(ctx, firmware.PowerStateInterval, firmware.PowerStateTimeout, "S0ix", "S3"); err != nil {
 		return errors.Wrap(err, "failed to get S0ix or S3 powerstate")
 	}
 
@@ -408,13 +351,8 @@ func suspendDUTAndWakeWithKey(ctx context.Context, h *firmware.Helper, wakeKey s
 	// If shouldn't wake, DUT should remain suspended, and wake from suspended when power button is pressed.
 	testing.ContextLog(ctx, "Should device be awake after keypress: ", shouldWake)
 	if !shouldWake {
-		testing.ContextLogf(ctx, "Sleeping for %s", ecSuspendDelay)
-		if err := testing.Sleep(ctx, ecSuspendDelay); err != nil {
-			return err
-		}
-
 		testing.ContextLog(ctx, "Expect DUT to remain suspended, wait for S0ix or S3 powerstates")
-		if err := h.WaitForPowerStates(ctx, 2*time.Second, 90*time.Second, "S0ix", "S3"); err != nil {
+		if err := h.WaitForPowerStates(ctx, firmware.PowerStateInterval, 2*firmware.PowerStateTimeout, "S0ix", "S3"); err != nil {
 			return errors.Wrap(err, "failed to get one of S0ix or S3 powerstates")
 		}
 
@@ -425,14 +363,9 @@ func suspendDUTAndWakeWithKey(ctx context.Context, h *firmware.Helper, wakeKey s
 		}
 	}
 
-	testing.ContextLogf(ctx, "Sleeping for %s to wait for DUT to wake", ecSuspendDelay)
-	if err := testing.Sleep(ctx, ecSuspendDelay); err != nil {
-		return errors.Wrapf(err, "failed to sleep for %s waiting for power on", ecSuspendDelay)
-	}
-
 	// Both cases expect DUT to have woken.
 	testing.ContextLog(ctx, "Waiting for S0 powerstate")
-	if err := h.WaitForPowerStates(ctx, 1*time.Second, 30*time.Second, "S0"); err != nil {
+	if err := h.WaitForPowerStates(ctx, firmware.PowerStateInterval, firmware.PowerStateTimeout, "S0"); err != nil {
 		return errors.Wrap(err, "failed to get S0 powerstate")
 	}
 
