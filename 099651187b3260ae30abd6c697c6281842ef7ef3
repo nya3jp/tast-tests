@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "24563a43_96799ba4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2022-08-23T17:26:35Z",
+      "side": 1,
+      "message": "Thank you, looks great!",
+      "revId": "099651187b3260ae30abd6c697c6281842ef7ef3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cdfd8440_0b5ca33e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 2687,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2022-08-23T17:26:35Z",
+      "side": 1,
+      "message": "Nit: can you just return this directly without assigning an intermediary?",
+      "revId": "099651187b3260ae30abd6c697c6281842ef7ef3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
