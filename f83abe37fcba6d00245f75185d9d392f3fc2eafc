@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2dc5a53f_69342872",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2022-08-23T21:38:35Z",
+      "side": 1,
+      "message": "Waiting for team member technical review before approval",
+      "revId": "f83abe37fcba6d00245f75185d9d392f3fc2eafc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c756fad9_e6b48fb0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/kiosk_with_legacy_mount.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2022-08-23T21:38:35Z",
+      "side": 1,
+      "message": "Is there a reason for the mixed comment styles?\n\nDoes GoDoc handle this correctly?",
+      "revId": "f83abe37fcba6d00245f75185d9d392f3fc2eafc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a20216f_3e44b825",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/kiosk_with_legacy_mount.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2022-08-23T21:38:35Z",
+      "side": 1,
+      "message": "delete commented code",
+      "revId": "f83abe37fcba6d00245f75185d9d392f3fc2eafc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bed68113_65f80a30",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/kiosk_with_legacy_mount.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2022-08-23T21:38:35Z",
+      "side": 1,
+      "message": "optional nit: It might be easier to see the overall flow of testing if you create a few helper functions for some of these steps.  Especially the steps that are repeated for each login method.",
+      "revId": "f83abe37fcba6d00245f75185d9d392f3fc2eafc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
