@@ -54,6 +54,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fadd89e0_1a4a904e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/kiosk_with_legacy_mount.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1546868
+      },
+      "writtenOn": "2022-08-23T21:49:43Z",
+      "side": 1,
+      "message": "A bunch of tests do this sequence (although not all, I failed to add such a section to the tests I recently added). I wonder if a few of these particularly common patterns would make sense to refactor in some way?\n\nI don\u0027t usually like extracting code from tests too much, they work best when they\u0027re spell out what they\u0027re doing in a straightforward way, but some of these really common patterns that are more setup than pure testing might be better if they were reused. Then when reading individual tests you can focus more on what\u0027s actually unique about it.\n\nAnyway I don\u0027t think you need to go \"fix\" all the other existing tests in this change, but at least pulling some of these commonly-used patterns out into something we could reuse, which we could then share later on in a followup, might be helpful.",
+      "revId": "f83abe37fcba6d00245f75185d9d392f3fc2eafc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bed68113_65f80a30",
         "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/kiosk_with_legacy_mount.go",
         "patchSetId": 1
