@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "45b3fad7_9b3e43e1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/device/device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1547337
+      },
+      "writtenOn": "2022-08-23T06:53:48Z",
+      "side": 1,
+      "message": "Got it, I\u0027ll keep that in mind. Since I\u0027ll be modifying these tests further, I\u0027ll add a future CL to modify the tast to not pass the `testing.State`.",
+      "parentUuid": "70635c44_12e47d63",
+      "range": {
+        "startLine": 74,
+        "startChar": 42,
+        "endLine": 74,
+        "endChar": 58
+      },
+      "revId": "c8f0ad196f108875d8f604388f550cb721518d78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "07a8ef3f_09ab09fb",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-08-22T17:06:16Z",
       "side": 1,
       "message": "could you change this to `Fatalf` instead? then you could remove the `else` and un-indent the rest.",
+      "range": {
+        "startLine": 80,
+        "startChar": 4,
+        "endLine": 80,
+        "endChar": 10
+      },
+      "revId": "c8f0ad196f108875d8f604388f550cb721518d78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "653f5a49_0b79d6b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/device/device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1547337
+      },
+      "writtenOn": "2022-08-23T06:53:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "07a8ef3f_09ab09fb",
       "range": {
         "startLine": 80,
         "startChar": 4,
