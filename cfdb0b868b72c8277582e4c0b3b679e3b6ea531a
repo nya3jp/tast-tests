@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10015058_e634371c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-08-23T15:32:52Z",
+      "side": 1,
+      "message": "nit: remove",
+      "range": {
+        "startLine": 9,
+        "startChar": 7,
+        "endLine": 9,
+        "endChar": 17
+      },
+      "revId": "cfdb0b868b72c8277582e4c0b3b679e3b6ea531a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3444a601_90727740",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/wallpaper_image.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-08-23T15:32:52Z",
+      "side": 1,
+      "message": "Can you mention why it\u0027s needed instead?",
+      "range": {
+        "startLine": 119,
+        "startChar": 76,
+        "endLine": 119,
+        "endChar": 139
+      },
+      "revId": "cfdb0b868b72c8277582e4c0b3b679e3b6ea531a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d67bc3d8_26abbab5",
+        "filename": "src/chromiumos/tast/local/wallpaper/wallpaper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-08-23T15:32:52Z",
+      "side": 1,
+      "message": "Can you use NameContaining instead? It should be safer.\n\nhttps://pkg.go.dev/chromium.googlesource.com/chromiumos/platform/tast-tests.git/src/chromiumos/tast/local/chrome/uiauto/nodewith#NameContaining",
+      "range": {
+        "startLine": 43,
+        "startChar": 2,
+        "endLine": 43,
+        "endChar": 6
+      },
+      "revId": "cfdb0b868b72c8277582e4c0b3b679e3b6ea531a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
