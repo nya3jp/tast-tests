@@ -42,6 +42,7 @@ import (
 	"chromiumos/tast/local/ui/cujrecorder"
 	"chromiumos/tast/local/webrtcinternals"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 type meetLayoutType string
@@ -87,6 +88,10 @@ func init() {
 		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Measures the performance of critical user journey for Google Meet",
 		Contacts:     []string{"yichenz@chromium.org", "chromeos-perfmetrics-eng@google.com"},
+		HardwareDeps: hwdep.D(
+			hwdep.SkipOnModel("kaisa"),
+			hwdep.SkipOnModel("kench"),
+		),
 		SoftwareDeps: []string{"chrome", "arc"},
 		Data:         []string{cujrecorder.SystemTraceConfigFile},
 		Vars: []string{
