@@ -92,7 +92,7 @@ func VmcExtraDisk(ctx context.Context, s *testing.State) {
 		s.Fatalf("Failed to create %s VM: %v", vmName, err)
 	}
 	defer func() {
-		if err := vmc.Command(ctx, hash, "destroy", vmName).Run(testexec.DumpLogOnError); err != nil {
+		if err := vmc.Command(ctx, hash, "destroy", "-y", vmName).Run(testexec.DumpLogOnError); err != nil {
 			s.Errorf("Failed to destroy %s VM: %v", vmName, err)
 		}
 	}()
