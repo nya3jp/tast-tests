@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6ad7475_636987fe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-08-23T01:15:46Z",
+      "side": 1,
+      "message": "Looks much better. Thanks.\n\nLGTM % nits.",
+      "revId": "5dd376f546fc19b48c6b76c88da03ef1ef79b409",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
