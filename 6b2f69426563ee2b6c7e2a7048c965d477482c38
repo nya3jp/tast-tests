@@ -16,6 +16,23 @@
       "message": "One occurrence of apps.Lacros.ID had been missing. Please take another look.\nDi\u0027s change has made it into ChromeOS, so the CL is ready to land.",
       "revId": "6b2f69426563ee2b6c7e2a7048c965d477482c38",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "acbdd890_e39dc99e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-08-23T02:00:51Z",
+      "side": 1,
+      "message": "Tests are failing because the tested Ash does not contain Di\u0027s changes.\nThe changes are in M106-15054.2.0 and newer. However, these builds use M107, which is behind in Ash for some reason. Does anyone know how this works?",
+      "revId": "6b2f69426563ee2b6c7e2a7048c965d477482c38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
