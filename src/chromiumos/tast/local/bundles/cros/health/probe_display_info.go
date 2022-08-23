@@ -38,7 +38,7 @@ func ProbeDisplayInfo(ctx context.Context, s *testing.State) {
 	// initialization and modetest reads after the initialization, their
 	// data can't match. Currently it only happens to bob and scarlet.
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		if encoderID, err := getModetestConnectorInfo(ctx, connectorEncoder); err != nil {
+		if encoderID, err := modetestConnectorInfo(ctx, connectorEncoder); err != nil {
 			return err
 		} else if encoderID == "0" {
 			return errors.New("there is no encoder id for the connector")
@@ -137,9 +137,9 @@ const (
 	modeInfoClock                             = 12
 )
 
-// hasEmbeddedDisplay returns true when it detects an embedded display(eDP) on the DUT.
+// embeddedDisplayExists returns true when it detects an embedded display(eDP) on the DUT.
 // It returns false when there is no eDP and returns error when it fails to run the command.
-func hasEmbeddedDisplay(ctx context.Context) (bool, error) {
+func embeddedDisplayExists(ctx context.Context) (bool, error) {
 	b, err := testexec.CommandContext(ctx, "modetest", "-c").Output(testexec.DumpLogOnError)
 	if err != nil {
 		return false, err
@@ -160,7 +160,7 @@ func hasEmbeddedDisplay(ctx context.Context) (bool, error) {
 	return false, nil
 }
 
-func isPrivacyScreenSupported(ctx context.Context) (bool, error) {
+func privacyScreenSupported(ctx context.Context) (bool, error) {
 	b, err := testexec.CommandContext(ctx, "modetest", "-c").Output(testexec.DumpLogOnError)
 	if err != nil {
 		return false, errors.Wrap(err, "failed to run modetest command")
@@ -179,7 +179,7 @@ func isPrivacyScreenSupported(ctx context.Context) (bool, error) {
 	return strings.Contains(string(b), "privacy-screen"), nil
 }
 
-func isPrivacyScreenEnabled(ctx context.Context) (bool, error) {
+func privacyScreenEnabled(ctx context.Context) (bool, error) {
 	// Only hw-state indicates the real state of privacy screen info.
 	cmd := "modetest -c | sed -n -e '/eDP/,/connected/ p' | grep -A 3 'privacy-screen hw-state' | grep 'value' | awk -e '{ print $2 }'"
 	b, err := testexec.CommandContext(ctx, "sh", "-c", cmd).Output(testexec.DumpLogOnError)
@@ -203,7 +203,7 @@ func isPrivacyScreenEnabled(ctx context.Context) (bool, error) {
 }
 
 func verifyPrivacyScreenInfo(ctx context.Context, EDP *embeddedDisplayInfo) error {
-	privacyScreenSupported, err := isPrivacyScreenSupported(ctx)
+	privacyScreenSupported, err := privacyScreenSupported(ctx)
 	if err != nil {
 		return err
 	}
@@ -215,7 +215,7 @@ func verifyPrivacyScreenInfo(ctx context.Context, EDP *embeddedDisplayInfo) erro
 		return errors.New("failed. Privacy screen is not supported, but privacy_screen_enabled is true")
 	}
 
-	privacyScreenEnabled, err := isPrivacyScreenEnabled(ctx)
+	privacyScreenEnabled, err := privacyScreenEnabled(ctx)
 	if err != nil {
 		return err
 	}
@@ -238,7 +238,7 @@ func compareUintPointer[T uint8 | uint16 | uint32](got *T, want T, field string)
 	return nil
 }
 
-func getModetestConnectorInfo(ctx context.Context, column modetestConnectorColumn) (string, error) {
+func modetestConnectorInfo(ctx context.Context, column modetestConnectorColumn) (string, error) {
 	// Example output of "modetest -c" (partially):
 	// id      encoder status          name            size (mm)       modes   encoders
 	// 71      70      connected       eDP-1           290x190         1       70
@@ -253,7 +253,7 @@ func getModetestConnectorInfo(ctx context.Context, column modetestConnectorColum
 	return strings.TrimRight(string(b), "\n"), nil
 }
 
-func getModetestEncoderInfo(ctx context.Context, encoderID string, column modetestEncoderColumn) (string, error) {
+func modetestEncoderInfo(ctx context.Context, encoderID string, column modetestEncoderColumn) (string, error) {
 	// Example output of "modetest -e" (partially):
 	// id      crtc    type    possible crtcs  possible clones
 	// 70      41      TMDS    0x00000007      0x00000001
@@ -268,7 +268,7 @@ func getModetestEncoderInfo(ctx context.Context, encoderID string, column modete
 	return strings.TrimRight(string(b), "\n"), nil
 }
 
-func getModetestCrtcInfo(ctx context.Context, crtcID string, column modetestModeInfoColumn) (string, error) {
+func modetestCrtcInfo(ctx context.Context, crtcID string, column modetestModeInfoColumn) (string, error) {
 	// Example output of "modetest -p" (partially):
 	// id      fb      pos     size
 	// 41      97      (0,0)   (1920x1280)
@@ -284,14 +284,14 @@ func getModetestCrtcInfo(ctx context.Context, crtcID string, column modetestMode
 	return strings.TrimRight(string(b), "\n"), nil
 }
 
-func getModetestModeInfo(ctx context.Context, column modetestModeInfoColumn) (string, error) {
+func modetestModeInfo(ctx context.Context, column modetestModeInfoColumn) (string, error) {
 	// Example output of mode info:
 	// #0 1920x1280 60.00 1920 1944 1992 2080 1280 1286 1303 1320 164740 flags: nhsync, nvsync; type: preferred, driver
 	//
 	// We should find the mode info in the following ways:
 	// 1. Find the mode info in crtc first, it means the current used mode info.
 	// 2. Fall back to the "preferred" mode info in connector info.
-	if encoderID, err := getModetestConnectorInfo(ctx, connectorEncoder); err != nil {
+	if encoderID, err := modetestConnectorInfo(ctx, connectorEncoder); err != nil {
 		return "", err
 	} else if encoderID == "0" {
 		// It means that we can't find the crtc info. So fall back to method 2.
@@ -302,16 +302,16 @@ func getModetestModeInfo(ctx context.Context, column modetestModeInfoColumn) (st
 		}
 
 		return strings.TrimRight(string(b), "\n"), nil
-	} else if crtcID, err := getModetestEncoderInfo(ctx, encoderID, encoderCrtc); err != nil {
+	} else if crtcID, err := modetestEncoderInfo(ctx, encoderID, encoderCrtc); err != nil {
 		return "", err
-	} else if info, err := getModetestCrtcInfo(ctx, crtcID, column); err != nil {
+	} else if info, err := modetestCrtcInfo(ctx, crtcID, column); err != nil {
 		return "", err
 	} else {
 		return info, nil
 	}
 }
 
-func getModetestConnectorEdidInfo(ctx context.Context) (string, error) {
+func modetestConnectorEdidInfo(ctx context.Context) (string, error) {
 	// Example EDID output of "modetest -c" (partially):
 	// id      encoder status          name            size (mm)       modes   encoders
 	// 32      0       connected       eDP-1           310x170         1       31
@@ -363,9 +363,9 @@ func getModetestConnectorEdidInfo(ctx context.Context) (string, error) {
 }
 
 func verifyEmbeddedDisplaySize(ctx context.Context, EDP *embeddedDisplayInfo) error {
-	if hasEDP, err := hasEmbeddedDisplay(ctx); err != nil {
+	if EDPExists, err := embeddedDisplayExists(ctx); err != nil {
 		return err
-	} else if !hasEDP {
+	} else if !EDPExists {
 		if EDP.DisplayWidth != nil {
 			return errors.New("there is no embedded display, but cros_healthd report DisplayWidth field")
 		}
@@ -375,7 +375,7 @@ func verifyEmbeddedDisplaySize(ctx context.Context, EDP *embeddedDisplayInfo) er
 		return nil
 	}
 
-	sizeRaw, err := getModetestConnectorInfo(ctx, connectorSize)
+	sizeRaw, err := modetestConnectorInfo(ctx, connectorSize)
 	if err != nil {
 		return err
 	}
@@ -397,9 +397,9 @@ func verifyEmbeddedDisplaySize(ctx context.Context, EDP *embeddedDisplayInfo) er
 }
 
 func verifyEmbeddedDisplayResolution(ctx context.Context, EDP *embeddedDisplayInfo) error {
-	if hasEDP, err := hasEmbeddedDisplay(ctx); err != nil {
+	if EDPExists, err := embeddedDisplayExists(ctx); err != nil {
 		return err
-	} else if !hasEDP {
+	} else if !EDPExists {
 		if EDP.ResolutionHorizontal != nil {
 			return errors.New("there is no embedded display, but cros_healthd report ResolutionHorizontal field")
 		}
@@ -409,9 +409,9 @@ func verifyEmbeddedDisplayResolution(ctx context.Context, EDP *embeddedDisplayIn
 		return nil
 	}
 
-	if horizontalRaw, err := getModetestModeInfo(ctx, modeInfoHdisplay); err != nil {
+	if horizontalRaw, err := modetestModeInfo(ctx, modeInfoHdisplay); err != nil {
 		return err
-	} else if verticalRaw, err := getModetestModeInfo(ctx, modeInfoVdisplay); err != nil {
+	} else if verticalRaw, err := modetestModeInfo(ctx, modeInfoVdisplay); err != nil {
 		return err
 	} else if horizontalRaw == "" && verticalRaw == "" {
 		// It means that we can't get the info in use, or default preferred info.
@@ -434,9 +434,9 @@ func verifyEmbeddedDisplayResolution(ctx context.Context, EDP *embeddedDisplayIn
 }
 
 func verifyEmbeddedDisplayRefreshRate(ctx context.Context, EDP *embeddedDisplayInfo) error {
-	if hasEDP, err := hasEmbeddedDisplay(ctx); err != nil {
+	if EDPExists, err := embeddedDisplayExists(ctx); err != nil {
 		return err
-	} else if !hasEDP {
+	} else if !EDPExists {
 		if EDP.RefreshRate != nil {
 			return errors.New("there is no embedded display, but cros_healthd report RefreshRate field")
 		}
@@ -444,11 +444,11 @@ func verifyEmbeddedDisplayRefreshRate(ctx context.Context, EDP *embeddedDisplayI
 	}
 
 	var wantRefreshRate float64
-	if htotalRaw, err := getModetestModeInfo(ctx, modeInfoHtotal); err != nil {
+	if htotalRaw, err := modetestModeInfo(ctx, modeInfoHtotal); err != nil {
 		return err
-	} else if vtotalRaw, err := getModetestModeInfo(ctx, modeInfoVtotal); err != nil {
+	} else if vtotalRaw, err := modetestModeInfo(ctx, modeInfoVtotal); err != nil {
 		return err
-	} else if clockRaw, err := getModetestModeInfo(ctx, modeInfoClock); err != nil {
+	} else if clockRaw, err := modetestModeInfo(ctx, modeInfoClock); err != nil {
 		return err
 	} else if htotalRaw == "" && vtotalRaw == "" && clockRaw == "" {
 		// It means that we can't get the info in use, or default preferred info.
@@ -579,9 +579,9 @@ func verifyEmbeddedDisplayProperty(ctx context.Context, EDP *embeddedDisplayInfo
 var edidVersionRegexp = regexp.MustCompile(`EDID Structure Version & Revision: (.*)`)
 
 func verifyEmbeddedDisplayEdid(ctx context.Context, EDP *embeddedDisplayInfo) error {
-	if hasEDP, err := hasEmbeddedDisplay(ctx); err != nil {
+	if EDPExists, err := embeddedDisplayExists(ctx); err != nil {
 		return err
-	} else if !hasEDP {
+	} else if !EDPExists {
 		if EDP.ModelID != nil {
 			return errors.New("there is no embedded display, but cros_healthd report ModelID field")
 		}
@@ -597,7 +597,7 @@ func verifyEmbeddedDisplayEdid(ctx context.Context, EDP *embeddedDisplayInfo) er
 		return nil
 	}
 
-	edidInfo, err := getModetestConnectorEdidInfo(ctx)
+	edidInfo, err := modetestConnectorEdidInfo(ctx)
 	if err != nil {
 		if EDP.Manufacturer == "" && EDP.ModelID == nil && EDP.SerialNumber == nil &&
 			EDP.ManufactureWeek == nil && EDP.ManufactureYear == nil &&
