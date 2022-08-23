@@ -16,6 +16,24 @@
       "message": "nit: revert this. pls do not touch the code if no reason.",
       "revId": "56840cc0f3d821602f5ecfec2fc1a52135133c3a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1629301c_e2ded504",
+        "filename": "src/chromiumos/tast/local/bundles/cros/spera/conference/run.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2022-08-23T06:44:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a9e1d1a_013480bf",
+      "revId": "56840cc0f3d821602f5ecfec2fc1a52135133c3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
