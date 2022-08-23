@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bbfbeb12_bfd3e8f6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2022-08-23T21:48:18Z",
+      "side": 1,
+      "message": "Thinking about this a little more, I think that creating an entirely new test, rather than reusing crash.User, might be the way to go - we don\u0027t need most of what crash.User provides and it seems to be adding complexity.\n\nReally, all we need to do here is to:\n\n1. Run the crasher\n2. Use WaitForCrashFiles to ensure that the crash shows up\n3. Check the contents of the .meta file\n\nSee https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/crash/seccomp.go for an example of a test that does something not entirely dissimilar.",
+      "revId": "1c3a106def1a884f9e7badb35ec0fe76e863fd11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

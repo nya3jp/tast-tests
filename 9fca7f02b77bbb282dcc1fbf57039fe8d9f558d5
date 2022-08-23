@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "548d4c03_2b2c24e2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/crash/crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2022-08-23T21:48:18Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4c7fe649_c482e92e",
+      "range": {
+        "startLine": 265,
+        "startChar": 60,
+        "endLine": 265,
+        "endChar": 83
+      },
+      "revId": "9fca7f02b77bbb282dcc1fbf57039fe8d9f558d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5b182314_0ba5849b",
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "That pid could be the \"su\" pid - although, I am never running the custom crasher as non-root, so I could just disallow it.\n\nAnother option is to use regex matching on the log and replace the PID with \\d+",
       "parentUuid": "5b182314_0ba5849b",
+      "range": {
+        "startLine": 270,
+        "startChar": 5,
+        "endLine": 271,
+        "endChar": 47
+      },
+      "revId": "9fca7f02b77bbb282dcc1fbf57039fe8d9f558d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db0efc1b_015dbbc0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/crash/crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2022-08-23T21:48:18Z",
+      "side": 1,
+      "message": "This approach could break if something else happens to crash at the same time as this test runs: we might pick up on the wrong crasher and pass. If it\u0027s feasible to get the PID, I\u0027d prefer we do that.\n\nDisallowing root for a custom crasher might be one good way to do that; scraping logs would be another.",
+      "parentUuid": "a795da15_24e292e2",
       "range": {
         "startLine": 270,
         "startChar": 5,
