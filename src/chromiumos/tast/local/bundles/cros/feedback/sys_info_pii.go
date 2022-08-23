@@ -14,8 +14,16 @@ import (
 
 	"chromiumos/tast/fsutil"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/testing"
 )
+
+// piiTestParam contains all the data needed to run a single test iteration.
+type piiTestParam struct {
+	testType    int
+	browserType browser.Type
+}
 
 // Define test types.
 const (
@@ -30,22 +38,48 @@ const (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         SysInfoPII,
-		LacrosStatus: testing.LacrosVariantNeeded,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Verify that known-sensitive data doesn't show up in feedback reports",
 		Contacts:     []string{"xiangdongkong@google.com", "cros-feedback-app@google.com"},
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      5 * time.Minute,
-		Pre:          chrome.LoggedIn(),
 		Params: []testing.Param{{
-			Name:      "",
-			Val:       localFileTest,
+			Name: "local_on_ash",
+			Val: piiTestParam{
+				testType:    localFileTest,
+				browserType: browser.TypeAsh,
+			},
 			ExtraData: []string{testPageFilename},
 			ExtraAttr: []string{"informational"},
+			Fixture:   "chromeLoggedIn",
 		}, {
-			Name:      "third_party_site",
-			Val:       thirdPartySiteTest,
+			Name: "third_party_site_on_ash",
+			Val: piiTestParam{
+				testType:    thirdPartySiteTest,
+				browserType: browser.TypeAsh,
+			},
 			ExtraAttr: []string{"informational"},
+			Fixture:   "chromeLoggedIn",
+		}, {
+			Name: "local_on_lacros",
+			Val: piiTestParam{
+				testType:    localFileTest,
+				browserType: browser.TypeLacros,
+			},
+			ExtraData:         []string{testPageFilename},
+			ExtraAttr:         []string{"informational"},
+			ExtraSoftwareDeps: []string{"lacros"},
+			Fixture:           "lacros",
+		}, {
+			Name: "third_party_site_on_lacros",
+			Val: piiTestParam{
+				testType:    thirdPartySiteTest,
+				browserType: browser.TypeLacros,
+			},
+			ExtraAttr:         []string{"informational"},
+			ExtraSoftwareDeps: []string{"lacros"},
+			Fixture:           "lacros",
 		}},
 	})
 }
@@ -74,7 +108,8 @@ func SysInfoPII(ctx context.Context, s *testing.State) {
 		localPageTitle    = "feedback.SysInfoPII test page title"
 		localPageContents = "feedback.SysInfoPII test page contents"
 	)
-	testType := s.Param().(int)
+	testType := s.Param().(piiTestParam).testType
+	browserType := s.Param().(piiTestParam).browserType
 
 	sensitiveURL := ""
 	sensitiveURLWithoutScheme := ""
@@ -98,20 +133,25 @@ func SysInfoPII(ctx context.Context, s *testing.State) {
 		sensitiveURLWithoutScheme = "www.facebook.com"
 	}
 
-	cr := s.PreValue().(*chrome.Chrome)
-	conn, err := cr.NewConn(ctx, sensitiveURL)
+	cr := s.FixtValue().(chrome.HasChrome).Chrome()
+
+	// Set up a browser.
+	conn, br, closeBrowser, err := browserfixt.SetUpWithURL(ctx, cr, browserType, sensitiveURL)
 	if err != nil {
-		s.Fatal("Failed to establish a chrome renderer connection: ", err)
+		s.Fatal("Failed to create new browser window: ", err)
 	}
+	defer closeBrowser(ctx)
 	defer conn.Close()
 
-	tconn, err := cr.TestAPIConn(ctx)
+	// Get a test API connection to active browser.
+	bTconn, err := br.TestAPIConn(ctx)
 	if err != nil {
-		s.Fatal("Could not create test API conn: ", err)
+		s.Fatal("Failed to create test API connection: ", err)
 	}
+
 	s.Log("Calling getSystemInformation")
 	var ret []*systemInformation
-	if err := tconn.Eval(ctx, "tast.promisify(chrome.feedbackPrivate.getSystemInformation)()", &ret); err != nil {
+	if err := bTconn.Eval(ctx, "tast.promisify(chrome.feedbackPrivate.getSystemInformation)()", &ret); err != nil {
 		s.Fatal("Could not call getSystemInformation: ", err)
 	}
 
