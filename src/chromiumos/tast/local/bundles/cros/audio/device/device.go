@@ -71,13 +71,13 @@ func TestDeviceFiles(ctx context.Context, s *testing.State, pattern string) {
 
 // TestALSACommand tests ALSA command recognizes devices.
 // We want to check internal sound cards, ignore external devices as workaround.
-func TestALSACommand(ctx context.Context, s *testing.State, name string) {
+func TestALSACommand(ctx context.Context, name string) error {
 	out, err := testexec.CommandContext(ctx, name, "-l").CombinedOutput(testexec.DumpLogOnError)
 	if err != nil {
-		s.Fatalf("%s failed: %v", name, err)
+		return err
 	}
 	if strings.Contains(string(out), "no soundcards found") {
-		s.Fatalf("%s recognized no sound cards", name)
+		return errors.Errorf("%q recognized no sound cards", name)
 	}
 	//Ignore external devices.
 	found := false
@@ -87,8 +87,9 @@ func TestALSACommand(ctx context.Context, s *testing.State, name string) {
 		}
 	}
 	if !found {
-		s.Errorf("%s recognized no internal sound cards", name)
+		return errors.Errorf("%q recognized no internal sound cards", name)
 	}
+	return nil
 }
 
 // IsInternalCard checks if the given ALSA command output is about an internal
