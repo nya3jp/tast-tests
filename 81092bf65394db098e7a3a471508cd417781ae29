@@ -107,6 +107,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "551bf5ee_1612e1f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/multivm/memory_allocation_canary_health_perf.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1543862
+      },
+      "writtenOn": "2022-08-23T06:55:48Z",
+      "side": 1,
+      "message": "Really, after I ran the test script once, at least `prlimit --pid $PID --nofile`\u0027s output for the next run did not change. I think the value set by `prlimit` is reset when the process is killed.",
+      "parentUuid": "d07ba222_80524e5f",
+      "revId": "81092bf65394db098e7a3a471508cd417781ae29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5553f870_65be8c9e",
         "filename": "src/chromiumos/tast/local/bundles/cros/multivm/memory_allocation_canary_health_perf.go",
         "patchSetId": 14
@@ -188,6 +206,24 @@
       "writtenOn": "2022-08-22T06:17:33Z",
       "side": 1,
       "message": "Doesn\u0027t each process have at least three files? stdout stdin stderr?",
+      "revId": "81092bf65394db098e7a3a471508cd417781ae29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "af8421bd_f1f97b6e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/multivm/memory_allocation_canary_health_perf.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1543862
+      },
+      "writtenOn": "2022-08-23T06:55:48Z",
+      "side": 1,
+      "message": "Ah should be... Fixed, thanks",
+      "parentUuid": "1158c18d_9bab4fa8",
       "revId": "81092bf65394db098e7a3a471508cd417781ae29",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -396,6 +432,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c407fc1_3285863c",
+        "filename": "src/chromiumos/tast/local/memory/memoryuser/memory_allocation_manager.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1543862
+      },
+      "writtenOn": "2022-08-23T06:55:48Z",
+      "side": 1,
+      "message": "Yeah, that sounds much cleaner. Fixed. Thanks!!",
+      "parentUuid": "6cdf66a4_24ea9c50",
+      "revId": "81092bf65394db098e7a3a471508cd417781ae29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e1ce7834_759c186b",
@@ -409,6 +463,24 @@
       "writtenOn": "2022-08-22T06:17:33Z",
       "side": 1,
       "message": "Maybe just use `cr.NewConn(ctx, st.url, cdputil.WithBackground())` instead of creating a new method.\n\nAlso, what does background actually mean here? Is it still a tab? Are we sure it can be killed by TabManager?",
+      "revId": "81092bf65394db098e7a3a471508cd417781ae29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "555af24f_75db0b81",
+        "filename": "src/chromiumos/tast/local/memory/memoryuser/memory_stress_task.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1543862
+      },
+      "writtenOn": "2022-08-23T06:55:48Z",
+      "side": 1,
+      "message": "`cdputil` is in the internal tast repository (\"chromiumos/tast/local/chrome/internal/cdputil\") so this module does not have access (I do not know why \"chromiumos/tast/local/chrome\" can access it though...)",
+      "parentUuid": "e1ce7834_759c186b",
       "revId": "81092bf65394db098e7a3a471508cd417781ae29",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
