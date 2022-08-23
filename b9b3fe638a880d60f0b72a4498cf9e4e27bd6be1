@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b69237a7_54bf7023",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/drivefs_pooled_storage.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1524909
+      },
+      "writtenOn": "2022-08-23T06:06:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d517e1b_7a767e52",
+      "range": {
+        "startLine": 68,
+        "startChar": 3,
+        "endLine": 68,
+        "endChar": 40
+      },
+      "revId": "b9b3fe638a880d60f0b72a4498cf9e4e27bd6be1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a9fc1aa3_92fa78f7",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-08-22T23:32:46Z",
       "side": 1,
       "message": "nit: remove this",
+      "range": {
+        "startLine": 88,
+        "startChar": 3,
+        "endLine": 88,
+        "endChar": 41
+      },
+      "revId": "b9b3fe638a880d60f0b72a4498cf9e4e27bd6be1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2616ce21_e39e5696",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/drivefs_pooled_storage.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1524909
+      },
+      "writtenOn": "2022-08-23T06:06:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a9fc1aa3_92fa78f7",
       "range": {
         "startLine": 88,
         "startChar": 3,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b41b98cf_e64b9943",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/drivefs_pooled_storage.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1524909
+      },
+      "writtenOn": "2022-08-23T06:06:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f16574c1_9cc20db8",
+      "range": {
+        "startLine": 103,
+        "startChar": 1,
+        "endLine": 103,
+        "endChar": 3
+      },
+      "revId": "b9b3fe638a880d60f0b72a4498cf9e4e27bd6be1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7c5887a5_92705f3b",
@@ -100,6 +172,30 @@
       "writtenOn": "2022-08-22T23:32:46Z",
       "side": 1,
       "message": "nit/optional: Travis introduced a `DrivefsClient` concept that is surfaced on the fixture, maybe consider using this throughout so moving to the fixture is relatively painless?\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/drivefs/fixture.go;l\u003d210;drc\u003db9483d6d7ff1febca1f6fd8f5820b38d21d20b49",
+      "range": {
+        "startLine": 114,
+        "startChar": 0,
+        "endLine": 117,
+        "endChar": 2
+      },
+      "revId": "b9b3fe638a880d60f0b72a4498cf9e4e27bd6be1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "87cd3224_b184deff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/drivefs_pooled_storage.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1524909
+      },
+      "writtenOn": "2022-08-23T06:06:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7c5887a5_92705f3b",
       "range": {
         "startLine": 114,
         "startChar": 0,

@@ -136,6 +136,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "781720f6_9b7f37f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/drivefs_pooled_storage.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1524909
+      },
+      "writtenOn": "2022-08-23T06:06:01Z",
+      "side": 1,
+      "message": "👌 https://crbug.com/1355719",
+      "parentUuid": "da960e36_7a507727",
+      "range": {
+        "startLine": 42,
+        "startChar": 2,
+        "endLine": 49,
+        "endChar": 4
+      },
+      "revId": "acfdf3f1604050e829acc6bd2b829759614c490e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3e069e75_77d81e5f",
@@ -503,6 +527,30 @@
       "side": 1,
       "message": "Another one to maybe raise a bug, tag this and land but investigate an alternative? When you raise the bug let\u0027s probably think of this more broadly (there\u0027s a few places in Files app where tast test relies on strings)",
       "parentUuid": "bd9d78ee_f83238db",
+      "range": {
+        "startLine": 139,
+        "startChar": 40,
+        "endLine": 139,
+        "endChar": 62
+      },
+      "revId": "acfdf3f1604050e829acc6bd2b829759614c490e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bbf90d49_f4c0f6fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/drivefs_pooled_storage.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1524909
+      },
+      "writtenOn": "2022-08-23T06:06:01Z",
+      "side": 1,
+      "message": "👍 https://crbug.com/1355708",
+      "parentUuid": "2757cece_689d3f9b",
       "range": {
         "startLine": 139,
         "startChar": 40,
