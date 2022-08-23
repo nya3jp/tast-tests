@@ -28,6 +28,8 @@ func init() {
 			Name:              "lacros",
 			Val:               browser.TypeLacros,
 			ExtraSoftwareDeps: []string{"lacros"},
+			// TODO(b/243248239): Flaky on VMs.
+			ExtraAttr: []string{"informational"},
 		}},
 	})
 }
