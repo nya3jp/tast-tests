@@ -137,6 +137,7 @@ const (
 	ServicePropertyCheckPortal       = "CheckPortal"
 
 	// Cellular service property names.
+	ServicePropertyCellularEID           = "Cellular.EID"
 	ServicePropertyCellularICCID         = "Cellular.ICCID"
 	ServicePropertyCellularAllowRoaming  = "Cellular.AllowRoaming"
 	ServicePropertyCellularLastGoodAPN   = "Cellular.LastGoodAPN"
