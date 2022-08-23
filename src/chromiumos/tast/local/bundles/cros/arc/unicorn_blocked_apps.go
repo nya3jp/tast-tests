@@ -131,11 +131,16 @@ func UnicornBlockedApps(ctx context.Context, s *testing.State) {
 	}
 
 	// Verify that install button is disabled for the blocked app.
-	installButton := d.Object(ui.ClassName("android.widget.Button"), ui.TextMatches("(?i)"+installButtonText), ui.Enabled(false))
+	installButton := d.Object(ui.ClassName("android.widget.Button"), ui.TextMatches("(?i)"+installButtonText))
 	if err := installButton.WaitForExists(ctx, DefaultUITimeout); err != nil {
-		s.Fatal("Failed to find the disabled install button for blocked app: ", err)
+		s.Fatal("Failed to find the install button for blocked app: ", err)
 	}
 
+	if enabled, err := installButton.IsEnabled(ctx); err != nil {
+		s.Fatal("Failed to check install button state")
+	} else if enabled {
+		s.Fatal("Install button is enabled")
+	}
 }
 
 // verifyArcPolicyBlockedApps matches ArcPolicy BLOCKD apps list with expected packages.
