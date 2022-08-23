@@ -46,6 +46,12 @@ func init() {
 	})
 }
 
+const (
+	// Output from ec console for gpioget or ioexget looks like:
+	// "0* EN_USB_A0_5V" for gpio, or "1* O H EN_USB_A0_5V" for ioex.
+	reECUSBPortGet string = `(?i)(0|1)[^\r\n]*%s`
+)
+
 func ECUSBPorts(ctx context.Context, s *testing.State) {
 	h := s.FixtValue().(*fixture.Value).Helper
 	if err := h.RequireServo(ctx); err != nil {
@@ -151,10 +157,18 @@ func getUSBPorts(ctx context.Context, h *firmware.Helper) ([]firmware.USBEnableP
 
 	for _, pin := range h.Config.USBEnablePins {
 		gpioName := firmware.GpioName(pin.Name)
-		// Probe pin to verify it actually exists.
-		_, err := ec.FindBaseGpio(ctx, []firmware.GpioName{gpioName})
-		if err != nil {
-			return enablePins, errors.Wrapf(err, "USB enable pin %q defined in fw testing configs but not found in gpio, update configs to reflect this", pin.Name)
+		if !pin.Ioex {
+			// Probe pin to verify it actually exists.
+			_, err := ec.FindBaseGpio(ctx, []firmware.GpioName{gpioName})
+			if err != nil {
+				return enablePins, errors.Wrapf(err, "GPIO pin %q defined in fw testing configs but not found in gpio, update configs to reflect this", pin.Name)
+			}
+		} else {
+			matchList := []string{fmt.Sprintf(reECUSBPortGet, pin.Name)}
+			_, err := h.Servo.RunECCommandGetOutput(ctx, fmt.Sprintf("ioexget %s", pin.Name), matchList)
+			if err != nil {
+				return enablePins, errors.Wrapf(err, "IOEX pin %q defined in fw testing configs but not found in ioex, update configs to reflect this", pin.Name)
+			}
 		}
 		enablePins = append(enablePins, pin)
 	}
@@ -186,7 +200,6 @@ func checkUSBAPortEnabled(ctx context.Context, h *firmware.Helper, enablePins []
 	// Collect errors for all usb ports instead of failing at first.
 	var unexpectedStatus = map[string]string{}
 	expectedStatus := strconv.Itoa(expectedStatusInt)
-	// ec := firmware.NewECTool(h.DUT, firmware.ECToolNameMain)
 
 	for _, pin := range enablePins {
 		gpioOrIoex := "gpio"
@@ -195,7 +208,7 @@ func checkUSBAPortEnabled(ctx context.Context, h *firmware.Helper, enablePins []
 		}
 		testing.ContextLogf(ctx, "Checking status of %q pin name: %q", gpioOrIoex, pin.Name)
 		cmd := fmt.Sprintf("%sget %s", gpioOrIoex, pin.Name)
-		matchList := []string{fmt.Sprintf(`(?i)(0|1)\S?\s*%s`, pin.Name)}
+		matchList := []string{fmt.Sprintf(reECUSBPortGet, pin.Name)}
 		out, err := h.Servo.RunECCommandGetOutput(ctx, cmd, matchList)
 		if err != nil {
 			return errors.Wrapf(err, "failed to run cmd %q, got error", cmd)
