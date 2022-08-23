@@ -61,7 +61,7 @@ func DefaultCoolDownConfig(mode CoolDownMode) CoolDownConfig {
 		PollTimeout:              300 * time.Second,
 		PollInterval:             2 * time.Second,
 		TemperatureThresholdMode: TemperatureThresholdPerModel,
-		TemperatureThreshold:     46000,
+		TemperatureThreshold:     86000,
 		CoolDownMode:             mode,
 	}
 }
