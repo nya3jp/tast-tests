@@ -40,3 +40,40 @@ func (p *Profile) IsTestProfile(ctx context.Context) (bool, error) {
 	}
 	return class == hermesconst.ProfileClassTest, nil
 }
+
+// Iccid returns the profile's ICCID.
+func (p *Profile) Iccid(ctx context.Context) (string, error) {
+	return p.getStringProperty(ctx, hermesconst.ProfilePropertyIccid)
+}
+
+// Nickname returns the profile's nickname.
+func (p *Profile) Nickname(ctx context.Context) (string, error) {
+	return p.getStringProperty(ctx, hermesconst.ProfilePropertyNickname)
+}
+
+// ServiceProvider returns the profile's network service provider.
+func (p *Profile) ServiceProvider(ctx context.Context) (string, error) {
+	return p.getStringProperty(ctx, hermesconst.ProfilePropertyServiceProvider)
+}
+
+// Rename changes the profile's nickname.
+func (p *Profile) Rename(ctx context.Context, nickName string) error {
+	if err := p.Call(ctx, hermesconst.ProfileMethodRename, nickName).Err; err != nil {
+		return errors.Wrap(err, "failed to rename profile")
+	}
+
+	return nil
+}
+
+func (p *Profile) getStringProperty(ctx context.Context, propertyName string) (string, error) {
+	props, err := dbusutil.NewDBusProperties(ctx, p.DBusObject)
+	if err != nil {
+		return "", errors.Wrap(err, "failed to read profile properties")
+	}
+	value, err := props.GetString(propertyName)
+	if err != nil {
+		return "", errors.Wrapf(err, "failed to read profile property %s", propertyName)
+	}
+
+	return value, nil
+}
