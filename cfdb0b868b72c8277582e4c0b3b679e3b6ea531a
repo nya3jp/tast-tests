@@ -68,6 +68,40 @@
       },
       "revId": "cfdb0b868b72c8277582e4c0b3b679e3b6ea531a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "918b13cd_03722d72",
+        "filename": "src/chromiumos/tast/local/wallpaper/wallpaper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1537587
+      },
+      "writtenOn": "2022-08-23T17:57:41Z",
+      "side": 1,
+      "message": "Can we move the human-readable string into `./constants/constants.go`?",
+      "revId": "cfdb0b868b72c8277582e4c0b3b679e3b6ea531a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "507c2b64_5e48e1e3",
+        "filename": "src/chromiumos/tast/local/wallpaper/wallpaper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1537587
+      },
+      "writtenOn": "2022-08-23T17:57:41Z",
+      "side": 1,
+      "message": "nit: new line not needed",
+      "revId": "cfdb0b868b72c8277582e4c0b3b679e3b6ea531a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
