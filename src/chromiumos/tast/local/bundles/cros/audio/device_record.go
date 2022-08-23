@@ -29,5 +29,7 @@ func init() {
 
 func DeviceRecord(ctx context.Context, s *testing.State) {
 	device.TestDeviceFiles(ctx, s, `^pcmC\d+D\d+c$`)
-	device.TestALSACommand(ctx, s, "arecord")
+	if err := device.TestALSACommand(ctx, "arecord"); err != nil {
+		s.Error("arecord failed: ", err)
+	}
 }
