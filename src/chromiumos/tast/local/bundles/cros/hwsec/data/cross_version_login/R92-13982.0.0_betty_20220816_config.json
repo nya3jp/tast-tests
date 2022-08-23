@@ -7,7 +7,7 @@
       "KeyDelegateName": "",
       "KeyDelegatePath": "",
       "ChallengeSPKI": null,
-      "ChallengeAlg": 0
+      "ChallengeAlgs": null
     },
     "RsaKey": null,
     "KeyLabel": "legacy-0",
@@ -17,6 +17,7 @@
         "KeyLabel": "extraLabel",
         "LowEntropy": false
       }
-    ]
+    ],
+    "VaultFSType": 0
   }
 ]
