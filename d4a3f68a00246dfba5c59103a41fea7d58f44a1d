@@ -79,6 +79,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d7851bb5_71cff6f6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2022-08-23T00:07:56Z",
+      "side": 1,
+      "message": "Ah, I meant that we would return the common function arguments, and /then/ in each of the codec-specific *decodeVAAPIargs functions, append the appropriate codec flag.\n\nPassing the codec into the common function, and as a string, is less flexible, which is why I personally prefer this approach. Alternatively, a more variadic args approach such as getVAAPIargs accepting a param for the slice of additional args would also be fine. This I think would be closer to what Po-Hsien is suggesting.\n\nThanks!",
+      "parentUuid": "5aa6ba5b_c5fc9e18",
+      "revId": "d4a3f68a00246dfba5c59103a41fea7d58f44a1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f4a2dbaf_3f0db18d",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
         "patchSetId": 8
