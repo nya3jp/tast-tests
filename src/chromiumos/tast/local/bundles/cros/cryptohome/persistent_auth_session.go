@@ -84,11 +84,13 @@ func PersistentAuthSession(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to create hwsec local helper: ", err)
 	}
-	daemonController := helper.DaemonController()
 
-	// Ensure cryptohomed is started and wait for it to be available.
-	if err := daemonController.Ensure(ctx, hwsec.CryptohomeDaemon); err != nil {
-		s.Fatal("Failed to ensure cryptohomed: ", err)
+	if err := helper.EnsureTPMAndSystemStateAreReset(ctx); err != nil {
+		s.Fatal("Failed to reset TPM or system states: ", err)
+	}
+
+	if err := cryptohome.CheckService(ctx); err != nil {
+		s.Fatal("Cryptohome D-Bus service didn't come back: ", err)
 	}
 
 	if err := client.UnmountAll(ctx); err != nil {
