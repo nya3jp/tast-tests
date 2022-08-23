@@ -64,6 +64,7 @@ func init() {
 				ExtraAttr:         []string{"informational"},
 				ExtraHardwareDeps: hwdep.D(pre.InputsUnstableModels),
 			},
+			// test line
 			/* Disabled due to <1% pass rate over 30 days. See b/241943011
 			{
 				Name:              "lacros",
