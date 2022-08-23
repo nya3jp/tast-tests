@@ -316,6 +316,12 @@ func (c *cryptohomeBinary) authenticatePinAuthFactor(ctx context.Context, authSe
 	return c.call(ctx, args...)
 }
 
+// authenticateKioskAuthFactor calls "cryptohome --action=authenticate_auth_factor --public_mount".
+func (c *cryptohomeBinary) authenticateKioskAuthFactor(ctx context.Context, authSessionID, label string) ([]byte, error) {
+	args := []string{"--action=authenticate_auth_factor", "--auth_session_id=" + authSessionID, "--key_label=" + label, "--public_mount"}
+	return c.call(ctx, args...)
+}
+
 // authenticateRecoveryAuthFactor calls "cryptohome --action=authenticate_auth_factor --recovery_epoch_response=<epochResponseHex> --recovery_response=<recoveryResponseHex>".
 func (c *cryptohomeBinary) authenticateRecoveryAuthFactor(ctx context.Context, authSessionID, label, epochResponseHex, recoveryResponseHex string) ([]byte, error) {
 	args := []string{"--action=authenticate_auth_factor", "--auth_session_id=" + authSessionID, "--key_label=" + label, "--recovery_epoch_response=" + epochResponseHex, "--recovery_response=" + recoveryResponseHex}
