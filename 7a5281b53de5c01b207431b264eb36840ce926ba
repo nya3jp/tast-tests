@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f45ee1c8_82f6d6da",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2022-08-23T18:34:56Z",
+      "side": 1,
+      "message": "I think doing this full end-to-end test is definitely important and should be added, but I think we might want to keep the abbreviated updater test version,too.\n\nAlthough I don\u0027t like flashing the FPMCU extra times, I feel that having the abbreviated test can help pinpoint an updater code failure vs. a boot race condition that breaks the update process.",
+      "revId": "7a5281b53de5c01b207431b264eb36840ce926ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
