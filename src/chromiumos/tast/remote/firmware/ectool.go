@@ -163,20 +163,23 @@ func (ec *ECTool) FindBaseGpio(ctx context.Context, gpios []GpioName) (map[GpioN
 	results := make(map[GpioName]string)
 	for _, name := range gpios {
 		// Regular expressions
-		reFoundGpio := regexp.MustCompile(fmt.Sprintf(`GPIO\s+%s[^\n\r]*`, name))
-		reGpioVal := regexp.MustCompile(`\s+(0|1)`)
+		reFoundGpio := regexp.MustCompile(fmt.Sprintf(`GPIO\s*%s\s*=\s*(\d+)`, string(name)))
+		// reGpioVal := regexp.MustCompile(`\s+(0|1)`)
 		// Check whether the gpio exists, and if it does, also check its value.
 		out, err := ec.Command(ctx, "gpioget", string(name)).CombinedOutput()
 		if err != nil {
-			msg := strings.Split(strings.TrimSpace(string(out)), "\n")
-			testing.ContextLogf(ctx, "running 'ectool gpioget %s' on DUT failed: %v, and received: %v", name, err, msg)
+			// msg := strings.Split(strings.TrimSpace(string(out)), "\n")
+			testing.ContextLogf(ctx, "running 'ectool gpioget %s' on DUT failed: %v, and received: %v", name, err, string(out))
 		}
-		match := reFoundGpio.FindSubmatch(out)
-		if len(match) == 0 {
+		if match := reFoundGpio.FindStringSubmatch(string(out)); match == nil {
 			testing.ContextLogf(ctx, "Did not find gpio with name %s", string(name))
 		} else {
-			val := reGpioVal.FindSubmatch(out)
-			gpioVal := strings.TrimSpace(string(val[0]))
+			gpioVal := match[1]
+			// if err != nil {
+			// 	testing.ContextLog("Failed to parse value for %v from output %v as integer: %v", string(name), string(out), err)
+			// }
+			// val := reGpioVal.FindSubmatch(out)
+			// gpioVal := strings.TrimSpace(string(val[0]))
 			testing.ContextLogf(ctx, "Found gpio with name %s, and value: %s", string(name), gpioVal)
 			results[name] = gpioVal
 		}
