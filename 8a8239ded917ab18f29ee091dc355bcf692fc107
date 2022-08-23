@@ -33,6 +33,23 @@
       "message": "the test failure is real.",
       "revId": "8a8239ded917ab18f29ee091dc355bcf692fc107",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef862345_3bff64b0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1379515
+      },
+      "writtenOn": "2022-08-23T00:57:28Z",
+      "side": 1,
+      "message": "According to @AlvinJia these are real failures.\n\nThis covers a pretty important use case, so should block uprev if that is the case",
+      "revId": "8a8239ded917ab18f29ee091dc355bcf692fc107",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
