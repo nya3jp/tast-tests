@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "12d1fa31_668e8ae0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1481202
+      },
+      "writtenOn": "2022-08-23T14:56:34Z",
+      "side": 1,
+      "message": "Cherry-pick to 106 has been approved (b/243055372#comment14), adding a reviewer",
+      "revId": "c7ec61a62eddcc85a4d229eee56db8884e378b1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
