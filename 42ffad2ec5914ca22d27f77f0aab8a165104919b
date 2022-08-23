@@ -1,0 +1,267 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e84a462_38281906",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-23T17:35:31Z",
+      "side": 1,
+      "message": "This line should be at most 50 characters. See: https://chromium.googlesource.com/chromiumos/docs/+/HEAD/contributing.md#Commit-messages",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 74
+      },
+      "revId": "42ffad2ec5914ca22d27f77f0aab8a165104919b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c52a35ae_6ed51fd4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-23T17:35:31Z",
+      "side": 1,
+      "message": "Please wrap at 72 characters. See: https://chromium.googlesource.com/chromiumos/docs/+/HEAD/contributing.md#Commit-messages",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 336
+      },
+      "revId": "42ffad2ec5914ca22d27f77f0aab8a165104919b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0744d7e6_9dd70e5b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-23T17:35:31Z",
+      "side": 1,
+      "message": "This currently focuses on network names and includes methods to bulk query/update cellular eSIM network names, but can later be extended to include additional network properties.",
+      "range": {
+        "startLine": 9,
+        "startChar": 158,
+        "endLine": 9,
+        "endChar": 336
+      },
+      "revId": "42ffad2ec5914ca22d27f77f0aab8a165104919b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7388c87d_c9defa47",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-23T17:35:31Z",
+      "side": 1,
+      "message": "Please fix inconsistencies in the order of eSIM and pSIM. For example, currently, `type pSimNetwork struct` comes before `type eSimNetwork struct`, but the `Properties` function implementations appear in the opposite order.",
+      "revId": "42ffad2ec5914ca22d27f77f0aab8a165104919b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94c7865e_e84388c2",
+        "filename": "src/chromiumos/tast/local/cellular/cellular_network_provider.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-23T17:35:31Z",
+      "side": 1,
+      "message": "This allows outside code to write `cellular.NetworkProvider{}` or `new(cellular.NetworkProvider)`. To prevent that, you can write:\n\t// NetworkProvider provides methods to query and manipulate collections of cellular networks.\n\ttype NetworkProvider interface {\n\t\tESimNetworks(ctx context.Context) ([]ESimNetwork, error)\n\t\tPSimNetworks(ctx context.Context) ([]Network, error)\n\t\tNetworks(ctx context.Context) ([]Network, error)\n\t\tPSimNetworkNames(ctx context.Context) ([]string, error)\n\t\tESimNetworkNames(ctx context.Context) ([]string, error)\n\t\tNetworkNames(ctx context.Context) ([]string, error)\n\t\tRenameESimProfiles(ctx context.Context, prefix string) error\n\t}\n\t\n\t// networkProvider is a type to which a pointer implements NetworkProvider.\n\ttype networkProvider struct {\n\t\teuicc   *hermes.EUICC\n\t\tmanager *shill.Manager\n\t}",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 1
+      },
+      "revId": "42ffad2ec5914ca22d27f77f0aab8a165104919b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "405a9c8b_a362636c",
+        "filename": "src/chromiumos/tast/local/cellular/cellular_network_provider.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-23T17:35:31Z",
+      "side": 1,
+      "message": "This needs a comment. See: https://github.com/golang/go/wiki/CodeReviewComments#doc-comments",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 16
+      },
+      "revId": "42ffad2ec5914ca22d27f77f0aab8a165104919b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc4d9e39_cb1c366b",
+        "filename": "src/chromiumos/tast/local/cellular/cellular_network_provider.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-23T17:35:31Z",
+      "side": 1,
+      "message": "`// eSimNetwork is a type to which a pointer implements ESimNetwork.`",
+      "revId": "42ffad2ec5914ca22d27f77f0aab8a165104919b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b127f806_a9511899",
+        "filename": "src/chromiumos/tast/local/cellular/cellular_network_provider.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-23T17:35:31Z",
+      "side": 1,
+      "message": "`Profile`",
+      "range": {
+        "startLine": 107,
+        "startChar": 3,
+        "endLine": 107,
+        "endChar": 13
+      },
+      "revId": "42ffad2ec5914ca22d27f77f0aab8a165104919b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1cc38c6d_28f43e8a",
+        "filename": "src/chromiumos/tast/local/cellular/cellular_network_provider.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-23T17:35:31Z",
+      "side": 1,
+      "message": "Remove this word.",
+      "range": {
+        "startLine": 261,
+        "startChar": 60,
+        "endLine": 261,
+        "endChar": 62
+      },
+      "revId": "42ffad2ec5914ca22d27f77f0aab8a165104919b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09b58f3b_4311d2d2",
+        "filename": "src/chromiumos/tast/local/hermes/euicc_helper.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-23T17:35:31Z",
+      "side": 1,
+      "message": "nit: I would not put a blank line here.",
+      "revId": "42ffad2ec5914ca22d27f77f0aab8a165104919b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5530766_e9a57dd2",
+        "filename": "src/chromiumos/tast/local/hermes/profile_helper.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-23T17:35:31Z",
+      "side": 1,
+      "message": "nit: I would not put a blank line here.",
+      "revId": "42ffad2ec5914ca22d27f77f0aab8a165104919b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0ed2315_c7bdce16",
+        "filename": "src/chromiumos/tast/local/hermes/profile_helper.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-23T17:35:31Z",
+      "side": 1,
+      "message": "nit: I would not put a blank line here.",
+      "revId": "42ffad2ec5914ca22d27f77f0aab8a165104919b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a386ee7_3240f04a",
+        "filename": "src/chromiumos/tast/local/shill/service.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-23T17:35:31Z",
+      "side": 1,
+      "message": "nit: I would not put a blank line here.",
+      "revId": "42ffad2ec5914ca22d27f77f0aab8a165104919b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
