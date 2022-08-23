@@ -251,6 +251,24 @@ func init() {
 	})
 
 	testing.AddFixture(&testing.Fixture{
+		Name:     "chromeVideoWithFakeWebcamAndSVCEnabledAndSWEncoding",
+		Desc:     "Similar to chromeVideoWithFakeWebcam fixture but allowing use of the Web SVC API and disabling hardware encoding",
+		Contacts: []string{"chromeos-gfx-video@google.com"},
+		Impl: chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			return []chrome.Option{
+				chrome.ExtraArgs(chromeVideoArgs...),
+				chrome.ExtraArgs(chromeFakeWebcamArgs...),
+				chrome.ExtraArgs("--enable-blink-features=RTCSvcScalabilityMode"),
+				chrome.ExtraArgs("--disable-accelerated-video-encode"),
+			}, nil
+		}),
+		Parent:          "gpuWatchDog",
+		SetUpTimeout:    chrome.LoginTimeout,
+		ResetTimeout:    chrome.ResetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+	})
+
+	testing.AddFixture(&testing.Fixture{
 		Name:     "chromeVideoWithFakeWebcamAndNoHwAcceleration",
 		Desc:     "Similar to chromeVideoWithFakeWebcam fixture but with both hardware decoding and encoding disabled",
 		Contacts: []string{"chromeos-gfx-video@google.com"},

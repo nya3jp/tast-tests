@@ -90,12 +90,33 @@ func MakeSWTestOptions(profile string, width, height int) RTCTestOptions {
 	}
 }
 
-// MakeTestOptionsWithSVC creates RTCTestoptions for profile, width and height with HW
-// Encoding/Decoding enabled and with a layer structure as per svc definition.
-func MakeTestOptionsWithSVC(profile string, width, height int, svc string) RTCTestOptions {
+// MakeSWEncoderTestOptions creates RTCTestoptions for profile, width and height and
+// with HW Decoding and SW Encoding.
+func MakeSWEncoderTestOptions(profile string, width, height int) RTCTestOptions {
 	return RTCTestOptions{
 		verifyHWDecoding:   VerifyHWDecoderUsed,
-		verifyHWEncoding:   VerifyHWEncoderUsed,
+		verifyHWEncoding:   VerifySWEncoderUsed,
+		profile:            profile,
+		streamWidth:        width,
+		streamHeight:       height,
+		videoGridDimension: 1,
+		videoGridFile:      "",
+		svc:                "",
+		displayMediaType:   "",
+	}
+}
+
+// MakeTestOptionsWithSVC creates RTCTestoptions for profile, width and height with HW
+// Decoding enabled and with a layer structure as per svc definition. hwEnc specifies
+// enabling a hardware encoder.
+func MakeTestOptionsWithSVC(profile string, width, height int, svc string, hwEnc bool) RTCTestOptions {
+	verifyHWEncoding := VerifySWEncoderUsed
+	if hwEnc {
+		verifyHWEncoding = VerifyHWEncoderUsed
+	}
+	return RTCTestOptions{
+		verifyHWDecoding:   VerifyHWDecoderUsed,
+		verifyHWEncoding:   verifyHWEncoding,
 		profile:            profile,
 		streamWidth:        width,
 		streamHeight:       height,
