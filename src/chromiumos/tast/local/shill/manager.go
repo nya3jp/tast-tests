@@ -183,6 +183,63 @@ func (m *Manager) DeviceByType(ctx context.Context, deviceType string) (*Device,
 	return nil, errors.New("Device not found")
 }
 
+// ServicePaths returns a list of service paths.
+func (m *Manager) ServicePaths(ctx context.Context) ([]dbus.ObjectPath, error) {
+	p, err := m.GetProperties(ctx)
+	if err != nil {
+		return nil, err
+	}
+	return p.GetObjectPaths(shillconst.ManagerPropertyServiceCompleteList)
+}
+
+// Services returns a list of services.
+func (m *Manager) Services(ctx context.Context) ([]*Service, error) {
+	paths, err := m.ServicePaths(ctx)
+	if err != nil {
+		return nil, err
+	}
+
+	profiles := make([]*Service, len(paths))
+	for i, path := range paths {
+		profiles[i], err = NewService(ctx, path)
+		if err != nil {
+			return nil, err
+		}
+	}
+	return profiles, nil
+}
+
+// ServicesByTechnology returns list of Services and their Properties snapshots of the specified technology.
+func (m *Manager) ServicesByTechnology(ctx context.Context, technology Technology) ([]*Service, []*dbusutil.Properties, error) {
+	var matches []*Service
+	var props []*dbusutil.Properties
+
+	services, err := m.Services(ctx)
+	if err != nil {
+		return nil, nil, err
+	}
+
+	for _, service := range services {
+		p, err := service.GetProperties(ctx)
+		if err != nil {
+			if dbusutil.IsDBusError(err, dbusutil.DBusErrorUnknownObject) {
+				// This error is forgivable as a device may go down anytime.
+				continue
+			}
+			return nil, nil, err
+		}
+		if serviceType, err := p.GetString(shillconst.ServicePropertyType); err != nil {
+			testing.ContextLogf(ctx, "Error getting the type of the service %q: %v", service, err)
+			continue
+		} else if serviceType != string(technology) {
+			continue
+		}
+		matches = append(matches, service)
+		props = append(props, p)
+	}
+	return matches, props, nil
+}
+
 // ConfigureService configures a service with the given properties and returns its path.
 func (m *Manager) ConfigureService(ctx context.Context, props map[string]interface{}) (dbus.ObjectPath, error) {
 	var service dbus.ObjectPath
