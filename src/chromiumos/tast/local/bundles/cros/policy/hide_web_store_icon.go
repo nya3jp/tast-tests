@@ -57,8 +57,6 @@ func HideWebStoreIcon(ctx context.Context, s *testing.State) {
 		policies []policy.Policy // policies is the policies that will be set.
 	}{
 		{
-			// This case fails due to https://crbug.com/1199312 -> node is
-			// present in the UI tree but not visible in the UI.
 			name:     "hide",
 			wantIcon: false,
 			policies: []policy.Policy{pinWebStoreApp, &policy.HideWebStoreIcon{Val: true}},
@@ -101,24 +99,23 @@ func HideWebStoreIcon(ctx context.Context, s *testing.State) {
 				// it seems to be mostly flaky at ash.WaitForLauncherState(ctx, tconn, ash.FullscreenAllApps).
 				if err := uiauto.Combine("Open Launcher and go to Expanded Apps list view",
 					uia.WithInterval(500*time.Millisecond).LeftClickUntil(
-						nodewith.Name("Launcher").ClassName("ash/HomeButton"),
-						uia.Exists(nodewith.Name("Expand to all apps").ClassName("ExpandArrowView"))),
-					uia.LeftClick(nodewith.Name("Expand to all apps").ClassName("ExpandArrowView")),
-					uia.WaitUntilExists(nodewith.ClassName("AppsGridView")),
+						nodewith.Name("Launcher").HasClass("ash/HomeButton"),
+						uia.Exists(nodewith.HasClass("AppListBubbleView")),
+					),
 				)(ctx); err != nil {
-					s.Fatal("Failed to open Expanded Apps list view: ", err)
+					s.Fatal("Failed to open Apps list view: ", err)
 				}
 			}
 
 			appName := apps.WebStore.Name
 
 			// Confirm the status of the Web Store icon in the application launcher
-			if err := policyutil.WaitUntilExistsStatus(ctx, tconn, nodewith.Name(appName).ClassName("AppListItemView"), param.wantIcon, 15*time.Second); err != nil {
+			if err := policyutil.WaitUntilExistsStatus(ctx, tconn, nodewith.Name(appName).HasClass("AppListItemView"), param.wantIcon, 15*time.Second); err != nil {
 				s.Error("Could not confirm the desired status of the Web Store Icon in the application launcher: ", err)
 			}
 
 			// Confirm the status of the Web Store icon on the shelf
-			if err := policyutil.WaitUntilExistsStatus(ctx, tconn, nodewith.Name(appName).ClassName("ash/ShelfAppButton"), param.wantIcon, 15*time.Second); err != nil {
+			if err := policyutil.WaitUntilExistsStatus(ctx, tconn, nodewith.Name(appName).HasClass("ash/ShelfAppButton"), param.wantIcon, 15*time.Second); err != nil {
 				s.Error("Could not confirm the desired status of the Web Store Icon on the system shelf: ", err)
 			}
 		})
