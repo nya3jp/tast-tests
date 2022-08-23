@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae6e5abb_904baf36",
+        "filename": "src/chromiumos/tast/local/bundles/cros/spera/tabswitchcuj/data/tab_switch_cuj.wprgo.external",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2022-08-23T01:38:57Z",
+      "side": 1,
+      "message": "After merging all test cases, we will ask Alex to copy the files to \"gs://chromiumos-test-assets-public/tast/cros/spera\". Thanks.",
+      "range": {
+        "startLine": 2,
+        "startChar": 10,
+        "endLine": 2,
+        "endChar": 87
+      },
+      "revId": "aa386dbdaaddaf42cb9d3dc6d4fe1d30343cb8ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
