@@ -114,8 +114,18 @@ func DefaultSearchProviderSearchURL(ctx context.Context, s *testing.State) {
 			}
 			defer closeBrowser(cleanupCtx)
 
-			// Clear the browser history, otherwise the previous search results can interfere with the test.
-			if err := tconn.Eval(ctx, `tast.promisify(chrome.browsingData.removeHistory({"since": 0}))`, nil); err != nil {
+			// Connect to Test API of the used browser to clear the browser
+			// history. We need a second connection as the clearing of the
+			// history has to be executed from the used browser while the
+			// uiauto package needs a connection to the ash browser.
+			tconn2, err := br.TestAPIConn(ctx)
+			if err != nil {
+				s.Fatal("Failed to create Test API connection: ", err)
+			}
+
+			// Clear the browser history, otherwise the previous search results can
+			// interfere with the test.
+			if err := tconn2.Eval(ctx, `tast.promisify(chrome.browsingData.removeHistory({"since": 0}))`, nil); err != nil {
 				s.Fatal("Failed to clear browsing history: ", err)
 			}
 
