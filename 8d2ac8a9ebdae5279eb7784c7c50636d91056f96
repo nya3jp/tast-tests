@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06f0f906_9a2f400c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2022-08-23T11:14:23Z",
+      "side": 1,
+      "message": "nit: tast run dut camera.CCAUIDocumentScanning*",
+      "range": {
+        "startLine": 15,
+        "startChar": 5,
+        "endLine": 15,
+        "endChar": 46
+      },
+      "revId": "8d2ac8a9ebdae5279eb7784c7c50636d91056f96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9987f6c_8ffdd9c0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_document_scanning.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2022-08-23T11:14:23Z",
+      "side": 1,
+      "message": "nit: Add TODO to mention that it will be deprecated soon once we fully land multi-page doc scan feature",
+      "range": {
+        "startLine": 34,
+        "startChar": 3,
+        "endLine": 45,
+        "endChar": 5
+      },
+      "revId": "8d2ac8a9ebdae5279eb7784c7c50636d91056f96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a19eca01_4d461d9e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_document_scanning.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2022-08-23T11:14:23Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 5
+      },
+      "revId": "8d2ac8a9ebdae5279eb7784c7c50636d91056f96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a078f02b_3c25185f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_document_scanning.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 587,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2022-08-23T11:14:23Z",
+      "side": 1,
+      "message": "Dumb question: Why can\u0027t we reuse WaitForVisibleState() here?",
+      "range": {
+        "startLine": 587,
+        "startChar": 15,
+        "endLine": 587,
+        "endChar": 27
+      },
+      "revId": "8d2ac8a9ebdae5279eb7784c7c50636d91056f96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "829772d7_fce4e1f1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_document_scanning.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 662,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2022-08-23T11:14:23Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 662,
+        "startChar": 15,
+        "endLine": 662,
+        "endChar": 27
+      },
+      "revId": "8d2ac8a9ebdae5279eb7784c7c50636d91056f96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6ee20ed_29ddf3c4",
+        "filename": "src/chromiumos/tast/local/camera/cca/ui.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2022-08-23T11:14:23Z",
+      "side": 1,
+      "message": "It seems inconsistent with the button",
+      "range": {
+        "startLine": 169,
+        "startChar": 26,
+        "endLine": 169,
+        "endChar": 85
+      },
+      "revId": "8d2ac8a9ebdae5279eb7784c7c50636d91056f96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09631a5b_0a55b613",
+        "filename": "src/chromiumos/tast/local/camera/cca/ui.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2022-08-23T11:14:23Z",
+      "side": 1,
+      "message": "nit: Can be simplified as:\n\n```\nif exist, err :\u003d a.Exist(ctx, ui); err !\u003d nil {\n  return testing.PollBreak(err)\n} else if !exist {\n  return errors.Errorf(\"failed to wait existence for %v\", ui.Name)\n}\nreturn nil\n```",
+      "range": {
+        "startLine": 318,
+        "startChar": 2,
+        "endLine": 324,
+        "endChar": 3
+      },
+      "revId": "8d2ac8a9ebdae5279eb7784c7c50636d91056f96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
