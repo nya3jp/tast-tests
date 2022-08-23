@@ -44,7 +44,7 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		ServiceDeps:  []string{"tast.cros.firmware.UtilsService"},
 		HardwareDeps: hwdep.D(
-			hwdep.Model("kakadu", "katsu", "homestar", "mrbland", "wormdingler", "quackingstick"),
+			hwdep.Model("krane", "kakadu", "katsu", "homestar", "mrbland", "wormdingler", "quackingstick"),
 			hwdep.ChromeEC(),
 		),
 		Fixture: fixture.DevModeGBB,
@@ -72,8 +72,9 @@ func BaseECUpdate(ctx context.Context, s *testing.State) {
 	// https://chromium.googlesource.com/chromiumos/platform2/+/HEAD/hammerd/hammertests/#prepare-host-and-dut
 	// We noticed that Soraka and Nocturne don't have product-id, vendor-id, and usb-path,
 	// which are the required params used in flashing the base ec bin file. Also, on Coachz
-	// and Krane, even though the base ec version changed, the notification window did not
-	// appear. We'll need to do some more research on these models.
+	// and Krane leased from the lab, even though the base ec version changed, the notification window did not
+	// appear. We'll need to do some more research on these models. But at the moment, when tested in our office,
+	// Krane [Google_Krane.12573.271.0] passed the test.
 	h := s.FixtValue().(*fixture.Value).Helper
 
 	if err := h.RequireServo(ctx); err != nil {
@@ -158,7 +159,7 @@ func BaseECUpdate(ctx context.Context, s *testing.State) {
 	// Given that DUT's base ec is running an old firmware,
 	// detaching then re-attaching base would trigger an update
 	// notification window to pop up in a logged in session.
-	if err := triggerAndFindNotification(ctx, ecTool, utilServiceClient); err != nil {
+	if err := triggerAndFindNotification(ctx, ecTool, utilServiceClient, dut); err != nil {
 		s.Fatal("Failed to trigger and find notification: ", err)
 	}
 
@@ -266,7 +267,7 @@ func getBaseECInfo(ctx context.Context, dut *dut.DUT, productIDDecimal string) (
 	return baseEC, nil
 }
 
-func triggerAndFindNotification(ctx context.Context, ecTool *firmware.ECTool, utilSvcClient fwpb.UtilsServiceClient) error {
+func triggerAndFindNotification(ctx context.Context, ecTool *firmware.ECTool, utilSvcClient fwpb.UtilsServiceClient, dut *dut.DUT) error {
 
 	// Included in baseGpioNames are a list of possible gpios available for
 	// controlling the base state. The first one found from the list would
@@ -287,23 +288,44 @@ func triggerAndFindNotification(ctx context.Context, ecTool *firmware.ECTool, ut
 
 	// Detach then re-attach detachable's base to trigger update notification.
 	for _, step := range []struct {
-		basestate string
-		value     string
+		basestate    string
+		value        string
+		baseAttached bool
 	}{
 		{
-			basestate: baseStateGpio,
-			value:     "0",
+			basestate:    baseStateGpio,
+			value:        "0",
+			baseAttached: false,
 		},
 		{
-			basestate: baseStateGpio,
-			value:     "1",
+			basestate:    baseStateGpio,
+			value:        "1",
+			baseAttached: true,
 		},
 	} {
 		if err := ecTool.Command(ctx, "gpioset", step.basestate, step.value).Run(testexec.DumpLogOnError); err != nil {
 			return errors.Wrap(err, "failed to switch the basestate")
 		}
-		if err := testing.Sleep(ctx, time.Second); err != nil {
-			return errors.Wrap(err, "failed to sleep 1 second for the command to fully propagate to the DUT")
+
+		// Allow some delay to ensure base attached/detached by setting the gpio.
+		if err := testing.Sleep(ctx, 3*time.Second); err != nil {
+			return errors.Wrap(err, "failed to sleep for 3 seconds for the command to fully propagate to the DUT")
+		}
+
+		lsusbInfo, err := dut.Conn().CommandContext(ctx, "lsusb").Output(testexec.DumpLogOnError)
+		if err != nil {
+			return errors.Wrap(err, "failed to get lsusb info")
+		}
+
+		switch step.baseAttached {
+		case true:
+			if !strings.Contains(string(lsusbInfo), "Hammer") {
+				return errors.New("expected keyboard attached, but did not find name 'hammer' from lsusb")
+			}
+		case false:
+			if strings.Contains(string(lsusbInfo), "Hammer") {
+				return errors.New("expected keyboard detached, but found name 'hammer' from lsusb")
+			}
 		}
 	}
 
