@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8bf1b6c_38923a44",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-08-23T22:46:40Z",
+      "side": 1,
+      "message": "Change the `TEST\u003d` argument to `./fast_build.sh -T \u0026\u0026 tast run $DUT [name of test]` and run command",
+      "revId": "f83abe37fcba6d00245f75185d9d392f3fc2eafc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "2dc5a53f_69342872",
@@ -71,6 +88,57 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "521a57dd_3d001dae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/kiosk_with_legacy_mount.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-08-23T22:46:40Z",
+      "side": 1,
+      "message": "Please move this `defer` to after the first `err` check after initialization",
+      "revId": "f83abe37fcba6d00245f75185d9d392f3fc2eafc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1ff8270_bb34f35c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/kiosk_with_legacy_mount.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-08-23T22:46:40Z",
+      "side": 1,
+      "message": "Please make this comment a complete sentence with a period",
+      "revId": "f83abe37fcba6d00245f75185d9d392f3fc2eafc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ce9ca2c_e7deb0a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/kiosk_with_legacy_mount.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-08-23T22:46:40Z",
+      "side": 1,
+      "message": "Same as above",
+      "revId": "f83abe37fcba6d00245f75185d9d392f3fc2eafc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bed68113_65f80a30",
         "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/kiosk_with_legacy_mount.go",
         "patchSetId": 1
@@ -82,6 +150,40 @@
       "writtenOn": "2022-08-23T21:38:35Z",
       "side": 1,
       "message": "optional nit: It might be easier to see the overall flow of testing if you create a few helper functions for some of these steps.  Especially the steps that are repeated for each login method.",
+      "revId": "f83abe37fcba6d00245f75185d9d392f3fc2eafc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be95fb25_be6a5c95",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/kiosk_with_legacy_mount.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-08-23T22:46:40Z",
+      "side": 1,
+      "message": "Same as above",
+      "revId": "f83abe37fcba6d00245f75185d9d392f3fc2eafc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e181cad_eed0e3e3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/kiosk_with_legacy_mount.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-08-23T22:46:40Z",
+      "side": 1,
+      "message": "`defer` here has the same effect as no `defer`; do you know where in the code the client is mounted? If not or N/A, please remove `defer`, otherwise, move to immediately after mount",
       "revId": "f83abe37fcba6d00245f75185d9d392f3fc2eafc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
