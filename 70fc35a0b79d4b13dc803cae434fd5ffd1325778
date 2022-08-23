@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8710f850_aa7666b0",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/rpcdut/rpcdut.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-08-23T23:57:45Z",
+      "side": 1,
+      "message": "Does the overhead cause a problem or does it just cause the loop to run slightly longer? (e.g., another iteration of the polling interval)",
+      "range": {
+        "startLine": 143,
+        "startChar": 0,
+        "endLine": 145,
+        "endChar": 42
+      },
+      "revId": "70fc35a0b79d4b13dc803cae434fd5ffd1325778",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
