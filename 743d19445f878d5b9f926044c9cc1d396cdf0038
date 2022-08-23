@@ -33,6 +33,24 @@
       "message": "What is the point? What other CUJ tests will gather useful data of these metrics? When is it appropriate to collect metrics in a particular CUJ test without adding them to common_metrics.go?",
       "revId": "743d19445f878d5b9f926044c9cc1d396cdf0038",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24f0ef1c_d68bfabd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-08-23T17:15:24Z",
+      "side": 1,
+      "message": "I believe there are a couple points:\n1. Having uniformly collected data helps the dashboard team greatly, since each test collects a uniform set of metrics, and there are fewer \"special cases\" per test.\n2. Something as common as desk activation smoothness appears to be a pretty standard metric that\u0027s not inherently unique to DesksCUJ. DesksCUJ happens to revolve around desk moving, but as a common action that users do, opening Desks is a task that could easily be applied to other (future) CUJs.\n3. There\u0027s no inherent downside to having the metric in common_metrics.go, since results-chart.json filters out all 0 values. \n\nIMO, CUJ tests that have pretty specific metrics related to unique actions in the test that would be unlikely for future tests to reproduce, like `Cras.MissedCallbackFrequencyInput` and `Cras.MissedCallbackFrequencyOutput` in MeetCUJ could be added directly to the test. But then again, I feel like there\u0027s a valid argument to add it to `common_metrics.go` anyways, because it costs nothing, and ensures if another test happens to do something that triggers this metric, we collect it.",
+      "parentUuid": "ec25ec9b_b38caea2",
+      "revId": "743d19445f878d5b9f926044c9cc1d396cdf0038",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
