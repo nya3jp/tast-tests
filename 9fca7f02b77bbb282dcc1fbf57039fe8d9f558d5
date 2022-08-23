@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4c7fe649_c482e92e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/crash/crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1510622
+      },
+      "writtenOn": "2022-08-23T19:06:32Z",
+      "side": 1,
+      "message": "Removed.\n\nI needed the prefix of the log message, and I didn\u0027t want to duplicate it. But I just realized that I can concatenate it while initializing crashReporterLogFormat.",
+      "parentUuid": "12be8983_77ef450a",
+      "range": {
+        "startLine": 265,
+        "startChar": 60,
+        "endLine": 265,
+        "endChar": 83
+      },
+      "revId": "9fca7f02b77bbb282dcc1fbf57039fe8d9f558d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5b182314_0ba5849b",
         "filename": "src/chromiumos/tast/local/bundles/cros/crash/crash/crash.go",
         "patchSetId": 4
@@ -37,6 +61,30 @@
       "writtenOn": "2022-08-19T22:04:21Z",
       "side": 1,
       "message": "We should be able to get the pid using cmd.Process.Pid.",
+      "range": {
+        "startLine": 270,
+        "startChar": 5,
+        "endLine": 271,
+        "endChar": 47
+      },
+      "revId": "9fca7f02b77bbb282dcc1fbf57039fe8d9f558d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a795da15_24e292e2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/crash/crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1510622
+      },
+      "writtenOn": "2022-08-23T19:06:32Z",
+      "side": 1,
+      "message": "That pid could be the \"su\" pid - although, I am never running the custom crasher as non-root, so I could just disallow it.\n\nAnother option is to use regex matching on the log and replace the PID with \\d+",
+      "parentUuid": "5b182314_0ba5849b",
       "range": {
         "startLine": 270,
         "startChar": 5,
