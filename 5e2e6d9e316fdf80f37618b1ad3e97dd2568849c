@@ -121,6 +121,24 @@
       "parentUuid": "1b3ee97c_9fe535bf",
       "revId": "5e2e6d9e316fdf80f37618b1ad3e97dd2568849c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d953870_ded8d286",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/v4l2_compliance.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1459152
+      },
+      "writtenOn": "2022-08-23T09:42:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ef93a0c_c73e41ca",
+      "revId": "5e2e6d9e316fdf80f37618b1ad3e97dd2568849c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
