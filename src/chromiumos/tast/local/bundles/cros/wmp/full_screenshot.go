@@ -42,7 +42,7 @@ func init() {
 
 // FullScreenshot takes a full screenshot and verify the screenshot's existence.
 func FullScreenshot(ctx context.Context, s *testing.State) {
-	cr := s.FixtValue().(*chrome.Chrome)
+	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
@@ -62,37 +62,6 @@ func FullScreenshot(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 15*time.Second)
 	defer cancel()
 
-	displayInfo, err := display.GetPrimaryInfo(ctx, tconn)
-	if err != nil {
-		s.Fatal("Failed to get the primary display info: ", err)
-	}
-
-	originalZoomFactor := displayInfo.DisplayZoomFactor
-	// If the display has been zoomed, the dimensions of the full screenshot might be slightly different.
-	// Zoom the display to a fixed ratio before capturing the screenshot to avoid the issue.
-	newZoomFactor := 1.0
-	property := display.DisplayProperties{DisplayZoomFactor: &newZoomFactor}
-	if err := display.SetDisplayProperties(ctx, tconn, displayInfo.ID, property); err != nil {
-		s.Fatal("Failed to set the display property: ", err)
-	}
-	defer display.SetDisplayProperties(cleanupCtx, tconn, displayInfo.ID, display.DisplayProperties{DisplayZoomFactor: &originalZoomFactor})
-
-	originalRotation := displayInfo.Rotation
-	var intToRotationAngle = map[int]display.RotationAngle{
-		0:   display.Rotate0,
-		90:  display.Rotate90,
-		180: display.Rotate180,
-		270: display.Rotate270,
-		-1:  display.RotateAny,
-	}
-
-	// If the display has been rotated, the dimensions of the full screenshot might be different.
-	// Rotate the display to the default orientation before capturing the screenshot to avoid the issue.
-	if err := display.SetDisplayRotationSync(ctx, tconn, displayInfo.ID, intToRotationAngle[0]); err != nil {
-		s.Fatal("Failed to set the display rotation: ", err)
-	}
-	defer display.SetDisplayRotationSync(cleanupCtx, tconn, displayInfo.ID, intToRotationAngle[originalRotation])
-
 	if err := wmp.LaunchScreenCapture(ctx, tconn); err != nil {
 		s.Fatal("Failed to launch 'Screen capture': ", err)
 	}
@@ -110,7 +79,7 @@ func FullScreenshot(ctx context.Context, s *testing.State) {
 	}(cleanupCtx)
 
 	testing.ContextLog(ctx, "Check the existence and the size of the screenshot")
-	if err := checkScreenshot(ctx, tconn, displayInfo, downloadsPath); err != nil {
+	if err := checkScreenshot(ctx, tconn, downloadsPath); err != nil {
 		s.Fatal("Failed to verify the screenshot: ", err)
 	}
 }
@@ -136,12 +105,29 @@ func deleteAllScreenshots(downloadsPath string) error {
 
 // checkScreenshot checks the screenshot's existence.
 // And then verifies its size is the same as the size of the full screen by decoding the screenshot.
-func checkScreenshot(ctx context.Context, tconn *chrome.TestConn, displayInfo *display.Info, downloadsPath string) error {
+func checkScreenshot(ctx context.Context, tconn *chrome.TestConn, downloadsPath string) error {
+	displayInfo, err := display.GetPrimaryInfo(ctx, tconn)
+	if err != nil {
+		return errors.Wrap(err, "failed to get the primary display info")
+	}
+
 	displayMode, err := displayInfo.GetSelectedMode()
 	if err != nil {
-		return errors.Wrap(err, "failed to get display mode")
+		return errors.Wrap(err, "failed to obtain the display mode")
 	}
-	fullScreenSize := coords.NewSize(displayMode.WidthInNativePixels, displayMode.HeightInNativePixels)
+
+	orientation, err := display.GetOrientation(ctx, tconn)
+	if err != nil {
+		return errors.Wrap(err, "failed to obtain the display orientation")
+	}
+
+	expectedFullScreenshotSize := coords.NewSize(displayMode.WidthInNativePixels, displayMode.HeightInNativePixels)
+	// The screen ui orientation might be different from the DUT's default orientation setting.
+	// If the orientation angle is 90 or 270 degrees,
+	// swap the width and height value to match the current screen ui orientation.
+	if orientation.Angle == 90 || orientation.Angle == 270 {
+		expectedFullScreenshotSize.Width, expectedFullScreenshotSize.Height = expectedFullScreenshotSize.Height, expectedFullScreenshotSize.Width
+	}
 
 	files, err := filepath.Glob(filepath.Join(downloadsPath, screenshotPattern))
 	if err != nil {
@@ -168,8 +154,8 @@ func checkScreenshot(ctx context.Context, tconn *chrome.TestConn, displayInfo *d
 		return errors.Wrap(err, "failed to decode the screenshot")
 	}
 
-	if image.Width != fullScreenSize.Width || image.Height != fullScreenSize.Height {
-		return errors.Errorf("screenshot size mismatched: want %s, got (%d x %d)", fullScreenSize, image.Width, image.Height)
+	if image.Width != expectedFullScreenshotSize.Width || image.Height != expectedFullScreenshotSize.Height {
+		return errors.Errorf("screenshot size mismatched: want %s, got (%d x %d)", expectedFullScreenshotSize, image.Width, image.Height)
 	}
 
 	return nil
