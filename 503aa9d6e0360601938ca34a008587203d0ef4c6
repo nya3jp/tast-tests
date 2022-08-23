@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f35a2c70_38d629dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_sensor_info.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-08-23T04:54:18Z",
+      "side": 1,
+      "message": "could you document what the result string (should) look like?",
+      "revId": "503aa9d6e0360601938ca34a008587203d0ef4c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9177fde_19c725d7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_sensor_info.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-08-23T04:54:18Z",
+      "side": 1,
+      "message": "nit/style: we often avoid using getter prefix.\n\nmaybe: rawLidAngle() ?",
+      "range": {
+        "startLine": 35,
+        "startChar": 5,
+        "endLine": 35,
+        "endChar": 19
+      },
+      "revId": "503aa9d6e0360601938ca34a008587203d0ef4c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0ced698_b82db52f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_sensor_info.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-08-23T04:54:18Z",
+      "side": 1,
+      "message": "nit/style:\n\nlidAngle, err :\u003d strconv.ParseUint(...)\nif err !\u003d nil {\n  return err\n}\nif info.LidAngle \u003d\u003d nil {\n  return errors. ...\n}\nif uint(*info.LidAngle) !\u003d lidAngle {\n  return errors. ...\n}",
+      "range": {
+        "startLine": 62,
+        "startChar": 2,
+        "endLine": 68,
+        "endChar": 3
+      },
+      "revId": "503aa9d6e0360601938ca34a008587203d0ef4c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
