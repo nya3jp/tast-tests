@@ -103,6 +103,24 @@
       "parentUuid": "d4d6d9c5_d0b4bd6b",
       "revId": "8a8239ded917ab18f29ee091dc355bcf692fc107",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf212185_017ce0a1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1379515
+      },
+      "writtenOn": "2022-08-23T05:30:34Z",
+      "side": 1,
+      "message": "So what is the point of having these tests at all if we have a critical failure?",
+      "parentUuid": "36aeeec4_a8aae31a",
+      "revId": "8a8239ded917ab18f29ee091dc355bcf692fc107",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ],
   "submitRequirementResults": [
