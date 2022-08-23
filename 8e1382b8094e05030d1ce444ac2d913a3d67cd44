@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4571ce97_62d8595e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2022-08-23T07:25:01Z",
+      "side": 1,
+      "message": "Hi Jun,\nPlease compare Base and Patchset 2. Thanks!",
+      "revId": "8e1382b8094e05030d1ce444ac2d913a3d67cd44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
