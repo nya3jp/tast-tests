@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "196d4be1_aa050967",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1427718
+      },
+      "writtenOn": "2022-08-23T07:26:15Z",
+      "side": 1,
+      "message": "fixed",
+      "parentUuid": "9abd5e51_dc6c0efb",
+      "range": {
+        "startLine": 13,
+        "startChar": 48,
+        "endLine": 13,
+        "endChar": 58
+      },
+      "revId": "2c3f5b38c3e9f532fcd9867bc66665e8adc29dc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
