@@ -1,0 +1,14 @@
+# When making changes, also update PolicyReviewers in the GwsQ config:
+# https://source.corp.google.com/piper///depot/google3/chrome_platform/tast/gerrit.gwsq
+
+set noparent
+
+# Package owners
+mohamedaomar@google.com
+vsavu@google.com
+
+# Chrome OS Commercial EngProd
+alexanderhartl@google.com
+gabormagda@google.com
+kamilszarek@google.com
+mohamedaomar@google.com
