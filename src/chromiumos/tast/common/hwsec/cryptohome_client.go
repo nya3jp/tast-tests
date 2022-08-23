@@ -227,6 +227,9 @@ type VaultConfig struct {
 
 	// CreateEmptyLabel is set to true if vault should be created with no label.
 	CreateEmptyLabel bool
+
+	// KioskUser is set to true if the vault should be mounted as a Vault.
+	KioskUser bool
 }
 
 // NewVaultConfig creates a default vault config.
@@ -237,12 +240,19 @@ func NewVaultConfig() *VaultConfig {
 // vaultConfigToExtraFlags converts VaultConfig to flags accepted by the cryptohome command line.
 func vaultConfigToExtraFlags(config *VaultConfig) []string {
 	const (
-		// mountFlagEphemeral is the flag passed to cryptohome command line when you want the vault to be ephemeral.
+		// mountFlagEphemeral is the flag passed to cryptohome command line
+		// when you want the vault to be ephemeral.
 		mountFlagEphemeral = "--ensure_ephemeral"
-		// mountFlagEcryptfs is the flag passed to cryptohome command line when you want the vault to use ecryptfs.
+		// mountFlagEcryptfs is the flag passed to cryptohome command line
+		// when you want the vault to use ecryptfs.
 		mountFlagEcryptfs = "--ecryptfs"
-		// mountFlagCreateEmptyLabel is the flag passed to cryptohome command line when you want the legacy behavior of using an empty label in authorization request.
+		// mountFlagCreateEmptyLabel is the flag passed to cryptohome command
+		// line when you want the legacy behavior of using an empty label in
+		// authorization request.
 		mountFlagCreateEmptyLabel = "--create_empty_label"
+		// kioskUser is the flag passed to cryptohome command line when you
+		// want the to mount kiosk user.
+		kioskUser = "--public_mount"
 	)
 
 	var extraFlags []string
@@ -254,6 +264,9 @@ func vaultConfigToExtraFlags(config *VaultConfig) []string {
 	}
 	if config.CreateEmptyLabel {
 		extraFlags = append(extraFlags, mountFlagCreateEmptyLabel)
+	}
+	if config.KioskUser {
+		extraFlags = append(extraFlags, kioskUser)
 	}
 	return extraFlags
 }
@@ -903,6 +916,12 @@ func (u *CryptohomeClient) RemoveAuthFactor(ctx context.Context, authSessionID, 
 // AuthenticatePinAuthFactor authenticates an AuthSession with a given authSessionID via pin.
 func (u *CryptohomeClient) AuthenticatePinAuthFactor(ctx context.Context, authSessionID, label, pin string) error {
 	_, err := u.binary.authenticatePinAuthFactor(ctx, authSessionID, label, pin)
+	return err
+}
+
+// AuthenticateKioskAuthFactor authenticates an AuthSession with a given authSessionID via a kiosk authfactor.
+func (u *CryptohomeClient) AuthenticateKioskAuthFactor(ctx context.Context, authSessionID, label string) error {
+	_, err := u.binary.authenticateKioskAuthFactor(ctx, authSessionID, label)
 	return err
 }
 
