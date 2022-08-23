@@ -33,6 +33,24 @@
       "message": "I think it might be better to remove this:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go;drc\u003df70d1b41e7f230734e83bb0a02f0e57c75fe06ee;l\u003d1310\n\nIt is a legitimate workflow to join a meeting on a device with no camera. You can see the other participants\u0027 video, and you can talk to them if the device has a microphone. We can collect performance data related to the inbound video streams. It is still a reasonable test to run.",
       "revId": "be590ad03bda17f8eb2b5d284623c074078222a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4ef16a0_2a0f4657",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-08-23T21:06:17Z",
+      "side": 1,
+      "message": "That\u0027s true. I do think that will hide a lot of problems we are having with the \"missing outbound video stream\" error message though. Right now, only puff/kaisa and fizz/kench should have this error message, but there are a slew of other devices that currently are failing because of it, when we expect them to be showing their video. I think there\u0027s an issue with some devices just not turning the video on, and I want those devices to fail the test so we can identify the issue and fix it.",
+      "parentUuid": "0e43c9a3_e562ad05",
+      "revId": "be590ad03bda17f8eb2b5d284623c074078222a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
