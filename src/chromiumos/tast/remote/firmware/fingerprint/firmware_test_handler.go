@@ -107,7 +107,7 @@ func NewFirmwareTest(ctx context.Context, d *rpcdut.RPCDUT, servoSpec, outDir st
 		if initError != nil {
 			testing.ContextLog(ctx, "NewFirmwareTest failed, restore daemon state")
 			if err := restoreDaemons(ctx, t.UpstartService(), t.daemonState); err != nil {
-				testing.ContextLog(ctx, "Failed to restart daemons")
+				testing.ContextLog(ctx, "Failed to restart daemons: ", err)
 			}
 		}
 	}()
@@ -131,7 +131,7 @@ func NewFirmwareTest(ctx context.Context, d *rpcdut.RPCDUT, servoSpec, outDir st
 			if initError != nil {
 				testing.ContextLog(ctx, "NewFirmwareTest failed, let's re-enable biod upstart job")
 				if _, err := upstartService.EnableJob(ctx, &platform.EnableJobRequest{JobName: biodUpstartJobName}); err != nil {
-					testing.ContextLog(ctx, "Failed to re-enable biod upstart job")
+					testing.ContextLog(ctx, "Failed to re-enable biod upstart job: ", err)
 				}
 			}
 		}()
@@ -145,7 +145,7 @@ func NewFirmwareTest(ctx context.Context, d *rpcdut.RPCDUT, servoSpec, outDir st
 			if initError != nil {
 				testing.ContextLog(ctx, "NewFirmwareTest failed, let's re-enable FP updater")
 				if err := EnableFPUpdater(ctx, d); err != nil {
-					testing.ContextLog(ctx, "Failed to re-enable FP updater")
+					testing.ContextLog(ctx, "Failed to re-enable FP updater: ", err)
 				}
 			}
 		}()
@@ -336,7 +336,7 @@ func restoreDaemons(ctx context.Context, upstartService platform.UpstartServiceC
 		testing.ContextLog(ctx, "Checking state for ", daemon.name)
 		status, err := upstartService.JobStatus(ctx, &platform.JobStatusRequest{JobName: daemon.name})
 		if err != nil {
-			testing.ContextLog(ctx, "Failed to get state for "+daemon.name)
+			testing.ContextLog(ctx, "Failed to get state for "+daemon.name+": ", err)
 			if firstErr != nil {
 				firstErr = err
 			}
@@ -352,7 +352,7 @@ func restoreDaemons(ctx context.Context, upstartService platform.UpstartServiceC
 					JobName: daemon.name,
 				})
 				if err != nil {
-					testing.ContextLog(ctx, "Failed to stop "+daemon.name)
+					testing.ContextLog(ctx, "Failed to stop "+daemon.name+": ", err)
 					if firstErr != nil {
 						firstErr = err
 					}
@@ -363,7 +363,7 @@ func restoreDaemons(ctx context.Context, upstartService platform.UpstartServiceC
 					JobName: daemon.name,
 				})
 				if err != nil {
-					testing.ContextLog(ctx, "Failed to start "+daemon.name)
+					testing.ContextLog(ctx, "Failed to start "+daemon.name+": ", err)
 					if firstErr != nil {
 						firstErr = err
 					}
