@@ -330,6 +330,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "38a5fef1_ca3e8044",
+        "filename": "src/chromiumos/tast/common/camera/dut/dut_control.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1548766
+      },
+      "writtenOn": "2022-08-23T09:43:08Z",
+      "side": 1,
+      "message": "I fully understand your point of view\nBut the current dut_control is only for simple dimming display , \nIf the code is distributed in three different folders will cause difficulties on maintain, I suggest whether we can commit this code first , then I will deploy the dim display to more tests (including local and remote), and then we can further discuss how to separate",
+      "parentUuid": "a6500582_4c3429e2",
+      "revId": "570e185ba146799da219e136c3ed2890e687e9c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e4b34a04_2c136bda",
