@@ -12,6 +12,7 @@ import (
 	"time"
 
 	"chromiumos/tast/common/shillconst"
+	"chromiumos/tast/local/network"
 	"chromiumos/tast/local/shill"
 	"chromiumos/tast/local/syslog"
 	"chromiumos/tast/local/upstart"
@@ -74,6 +75,15 @@ func startShillAndWaitForNetworks(ctx context.Context, s *testing.State) {
 }
 
 func ShillNoErrorsInLog(ctx context.Context, s *testing.State) {
+	// We lose connectivity along the way here, and if that races with the
+	// recover_duts network-recovery hooks, it may interrupt us. Lock the hook
+	// before shill restarted.
+	unlock, err := network.LockCheckNetworkHook(ctx)
+	if err != nil {
+		s.Fatal("Failed to lock check network hook")
+	}
+	defer unlock()
+
 	if err := upstart.StopJob(ctx, shillJob); err != nil {
 		s.Fatal("Failed stopping shill: ", err)
 	}
