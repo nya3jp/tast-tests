@@ -37,57 +37,37 @@ type service struct {
 	sharedObject *common.SharedObjectsForService
 }
 
-// useTconn performs an action that requires access to tconn.
-func (svc *service) useTconn(ctx context.Context, fn func(tconn *chrome.TestConn) error) error {
-	svc.sharedObject.ChromeMutex.Lock()
-	defer svc.sharedObject.ChromeMutex.Unlock()
-
-	cr := svc.sharedObject.Chrome
-	if cr == nil {
-		return errors.New("Chrome is not instantiated")
-	}
-	tconn, err := cr.TestAPIConn(ctx)
-	if err != nil {
-		return errors.Wrap(err, "failed to create test API connection")
-	}
-
-	return fn(tconn)
-}
-
 // LaunchApp launches an app.
 func (svc *service) LaunchApp(ctx context.Context, req *pb.LaunchAppRequest) (*empty.Empty, error) {
 	if req.TimeoutSecs == 0 {
 		req.TimeoutSecs = defaultAppLaunchTimeout
 	}
-	return &empty.Empty{}, svc.useTconn(ctx, func(tconn *chrome.TestConn) error {
+	return common.UseTconn(ctx, svc.sharedObject, func(tconn *chrome.TestConn) (*empty.Empty, error) {
 		appID, err := getInstalledAppID(ctx, tconn, func(app *ash.ChromeApp) bool {
 			return app.Name == req.AppName
 		}, &testing.PollOptions{Timeout: time.Duration(req.TimeoutSecs) * time.Second})
 		if err != nil {
-			return err
+			return nil, err
 		}
 		if err := tconn.Call(ctx, nil, `tast.promisify(chrome.autotestPrivate.launchApp)`, appID); err != nil {
-			return errors.Wrapf(err, "failed to launch app %s", req.AppName)
+			return nil, errors.Wrapf(err, "failed to launch app %s", req.AppName)
 		}
 		if err := ash.WaitForApp(ctx, tconn, appID, time.Duration(req.TimeoutSecs)*time.Second); err != nil {
-			return errors.Wrapf(err, "app %s never opened", req.AppName)
+			return nil, errors.Wrapf(err, "app %s never opened", req.AppName)
 		}
-		return nil
+		return &empty.Empty{}, nil
 	})
 }
 
 // GetPrimaryBrowser returns the App used for the primary browser.
 func (svc *service) GetPrimaryBrowser(ctx context.Context, req *empty.Empty) (*pb.App, error) {
-	var result *pb.App
-	err := svc.useTconn(ctx, func(tconn *chrome.TestConn) error {
+	return common.UseTconn(ctx, svc.sharedObject, func(tconn *chrome.TestConn) (*pb.App, error) {
 		app, err := PrimaryBrowser(ctx, tconn)
 		if err != nil {
-			return err
+			return nil, err
 		}
-		result = &pb.App{Id: app.ID, Name: app.Name}
-		return nil
+		return &pb.App{Id: app.ID, Name: app.Name}, nil
 	})
-	return result, err
 }
 
 // LaunchPrimaryBrowser launches the primary browser and returns the App launched.

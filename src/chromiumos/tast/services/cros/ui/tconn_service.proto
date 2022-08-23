@@ -1,0 +1,46 @@
+// Copyright 2022 The ChromiumOS Authors.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package tast.cros.ui;
+
+import "google/protobuf/empty.proto";
+import "google/protobuf/struct.proto";
+
+option go_package = "chromiumos/tast/services/cros/ui";
+
+// TconnService provides functions for interacting with tconn directly.
+service TconnService {
+  // Eval evaluates expr on the test connection. See Conn.Eval for details.
+  rpc Eval(EvalRequest) returns (google.protobuf.Value) {}
+
+  // Call calls the javascript fn with given args. See Conn.Call for details
+  rpc Call(CallRequest) returns (google.protobuf.Value) {}
+
+  // WaitForExpr repeatedly evaluates the JavaScript expression expr until it evaluates to true.
+  // Errors returned by Eval are treated the same as expr == false unless fail_on_err is true.
+  rpc WaitForExpr(WaitForExprRequest) returns (google.protobuf.Empty) {}
+
+  // ResetAutomation resets the automation API feature. The automation API feature
+  // is widely used to control the UI, but keeping it activated sometimes causes
+  // performance drawback on low-end devices. This method deactivates the
+  // automation API and resets internal states. See: https://crbug.com/1096719.
+  rpc ResetAutomation(google.protobuf.Empty) returns (google.protobuf.Empty) {}
+}
+
+message EvalRequest {
+  string expr = 1;
+}
+
+message CallRequest {
+  string fn = 1;
+  repeated google.protobuf.Value args = 2;
+}
+
+message WaitForExprRequest {
+    string expr = 1;
+    uint32 timeout_secs = 2;
+    bool fail_on_err = 3;
+}
