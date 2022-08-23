@@ -86,7 +86,11 @@ func Basic(ctx context.Context, s *testing.State) {
 	}
 	defer lacrosfaillog.SaveIf(cleanupCtx, tconn, s.HasError)
 	defer failIfCrashesWereReported()
-	defer l.Close(cleanupCtx)
+	defer func() {
+		if err := l.Close(cleanupCtx); err != nil {
+			s.Error("Failed to close Lacros: ", err)
+		}
+	}()
 
 	// Test that a new blank tab can be opened.
 	conn, err := l.NewConn(ctx, chrome.BlankURL)
