@@ -99,6 +99,21 @@ func (s *Service) GetState(ctx context.Context) (string, error) {
 	return state, nil
 }
 
+// GetName returns the current service name.
+func (s *Service) GetName(ctx context.Context) (string, error) {
+	return s.getStringProperty(ctx, shillconst.ServicePropertyName)
+}
+
+// GetEid returns the current service EID (cellular only).
+func (s *Service) GetEid(ctx context.Context) (string, error) {
+	return s.getStringProperty(ctx, shillconst.ServicePropertyCellularEID)
+}
+
+// GetIccid returns the current service ICCID (cellular only).
+func (s *Service) GetIccid(ctx context.Context) (string, error) {
+	return s.getStringProperty(ctx, shillconst.ServicePropertyCellularICCID)
+}
+
 // IsConnected returns true if the the service is connected.
 func (s *Service) IsConnected(ctx context.Context) (bool, error) {
 	props, err := s.GetProperties(ctx)
@@ -110,6 +125,19 @@ func (s *Service) IsConnected(ctx context.Context) (bool, error) {
 		return false, errors.Wrap(err, "unable to get IsConnected from properties")
 	}
 	return connected, nil
+}
+
+// IsVisible returns true if the the service is visible.
+func (s *Service) IsVisible(ctx context.Context) (bool, error) {
+	props, err := s.GetProperties(ctx)
+	if err != nil {
+		return false, errors.Wrap(err, "unable to get properties")
+	}
+	visible, err := props.GetBool(shillconst.ServicePropertyVisible)
+	if err != nil {
+		return false, errors.Wrap(err, "unable to get IsVisible from properties")
+	}
+	return visible, nil
 }
 
 // WaitForConnectedOrError polls for either:
@@ -169,4 +197,16 @@ func (s *Service) Disconnect(ctx context.Context) error {
 // Remove calls the Remove method on the service.
 func (s *Service) Remove(ctx context.Context) error {
 	return s.Call(ctx, "Remove").Err
+}
+
+func (s *Service) getStringProperty(ctx context.Context, propertyName string) (string, error) {
+	props, err := s.GetProperties(ctx)
+	if err != nil {
+		return "", errors.Wrap(err, "failed to read service properties")
+	}
+	value, err := props.GetString(propertyName)
+	if err != nil {
+		return "", errors.Wrapf(err, "failed to read service property %s", propertyName)
+	}
+	return value, nil
 }
