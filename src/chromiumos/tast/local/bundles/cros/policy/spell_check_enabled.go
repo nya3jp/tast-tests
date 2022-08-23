@@ -103,7 +103,7 @@ func SpellCheckEnabled(ctx context.Context, s *testing.State) {
 
 			if err := policyutil.SettingsPage(ctx, cr, br, "languages").
 				SelectNode(ctx, nodewith.
-					Name("Spell check").
+					Name("Check for spelling errors when you type text on web pages").
 					Role(role.ToggleButton)).
 				Restriction(param.wantRestriction).
 				Checked(param.wantChecked).
