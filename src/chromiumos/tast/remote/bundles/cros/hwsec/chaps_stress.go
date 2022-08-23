@@ -30,6 +30,7 @@ func init() {
 			"cros-hwsec@chromium.org",
 		},
 		// Note: This is not in mainline because it takes too long to run.
+		Attr:         []string{"group:hwsec", "hwsec_weekly"},
 		SoftwareDeps: []string{"chrome", "tpm2"},
 		Timeout:      20 * time.Minute,
 	})
@@ -43,21 +44,21 @@ func ChapsStress(ctx context.Context, s *testing.State) {
 		keysPerUser = 16
 
 		// mountCount is the times that we mount a user's vault.
-		mountCount = 15
+		mountCount = 2
 		// unmountCount is the times that we unmount all user's vault.
-		unmountCount = 2
+		unmountCount = 1
 		// createSoftwareKeyCount is the times that we create a software-backed key.
-		createSoftwareKeyCount = 110
+		createSoftwareKeyCount = 1
 		// createImportedKeyCount is the times that we create a key then import it.
-		createImportedKeyCount = 110
+		createImportedKeyCount = 2
 		// createGeneratedKeyCount is the times that we generate a key in TPM.
-		createGeneratedKeyCount = 20
+		createGeneratedKeyCount = 1
 		// removeKeyCount is the times that we remove a key.
-		removeKeyCount = 25
+		removeKeyCount = 1
 		// signKeyCount is the times that we sign a key.
-		signKeyCount = 650
+		signKeyCount = 5
 		// rebootCount is the times that we reboot.
-		rebootCount = 15
+		rebootCount = 0
 	)
 
 	r := hwsecremote.NewCmdRunner(s.DUT())
