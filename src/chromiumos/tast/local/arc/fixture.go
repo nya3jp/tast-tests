@@ -293,7 +293,7 @@ func init() {
 					"*/media/gpu/vaapi/*=2",
 					"*/media/gpu/v4l2/*=2",
 					"*/components/arc/video_accelerator/*=2"}, ","))}, nil
-		}, "--video-decoder=libvda-vd\n"),
+		}, "!--video-decoder\n--video-decoder=libvda-vd\n"),
 		SetUpTimeout:    chrome.LoginTimeout + BootTimeout + ui.StartTimeout,
 		ResetTimeout:    ResetTimeout,
 		PostTestTimeout: PostTestTimeout,
