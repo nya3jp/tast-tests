@@ -141,6 +141,30 @@
       },
       "revId": "9fca7f02b77bbb282dcc1fbf57039fe8d9f558d5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc434a8f_8af905cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/crash/crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2022-08-24T15:00:05Z",
+      "side": 1,
+      "message": "Could we have the crasher emit its PID over stdout or stderr (if we aren\u0027t going to use crosh)?",
+      "parentUuid": "db0efc1b_015dbbc0",
+      "range": {
+        "startLine": 270,
+        "startChar": 5,
+        "endLine": 271,
+        "endChar": 47
+      },
+      "revId": "9fca7f02b77bbb282dcc1fbf57039fe8d9f558d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
