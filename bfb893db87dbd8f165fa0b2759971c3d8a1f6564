@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed22d684_7fdc3f5f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_sensor_info.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-08-24T20:32:27Z",
+      "side": 1,
+      "message": "sorry, I overlooked here.\n\nif _, err :\u003d os.Stat(...); err !\u003d nil {\n  if os.IsNotExist(err) {\n    return \"\", nil\n  }\n  return \"\", err\n}\n...\n\n\nI think you need to report error, other than ENOEXIST.",
+      "range": {
+        "startLine": 41,
+        "startChar": 1,
+        "endLine": 44,
+        "endChar": 0
+      },
+      "revId": "bfb893db87dbd8f165fa0b2759971c3d8a1f6564",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e25f3316_3672b545",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_sensor_info.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-08-24T20:32:27Z",
+      "side": 1,
+      "message": "nit:\n\nreturn errors.Wrap(...)",
+      "revId": "bfb893db87dbd8f165fa0b2759971c3d8a1f6564",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
