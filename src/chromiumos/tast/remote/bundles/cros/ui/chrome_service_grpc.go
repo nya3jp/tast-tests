@@ -7,7 +7,6 @@ package ui
 import (
 	"context"
 	"math/rand"
-	"strconv"
 	"strings"
 	"time"
 
@@ -34,7 +33,7 @@ func init() {
 		Contacts:     []string{"jonfan@google.com", "chromeos-sw-engprod@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
-		Vars:         []string{"grpcServerPort", "ui.gaiaPoolDefault"},
+		Vars:         []string{crosserverutil.DefaultGRPCServerPortVar, "ui.gaiaPoolDefault"},
 		HardwareDeps: hwdep.D(hwdep.FormFactor(hwdep.Clamshell)),
 		Params: []testing.Param{{
 			Name: "default_fake_login",
@@ -79,15 +78,7 @@ func init() {
 
 // ChromeServiceGRPC tests ChromeService functionalities for managing chrome lifecycle.
 func ChromeServiceGRPC(ctx context.Context, s *testing.State) {
-	grpcServerPort := crosserverutil.DefaultGRPCServerPort
-	if portStr, ok := s.Var("grpcServerPort"); ok {
-		if portInt, err := strconv.Atoi(portStr); err == nil {
-			grpcServerPort = portInt
-		}
-	}
-
-	// Connect to TCP based gRPC Server on DUT.
-	cl, err := crosserverutil.Dial(ctx, s.DUT(), "localhost", grpcServerPort, true)
+	cl, err := crosserverutil.GetGRPCClient(ctx, s.DUT())
 	if err != nil {
 		s.Fatal("Failed to connect to the RPC service on the DUT: ", err)
 	}
@@ -118,6 +109,7 @@ var random = rand.New(rand.NewSource(time.Now().UnixNano()))
 // pickRandomCreds picks a random user and password from a list of credentials.
 //
 // creds is a string containing multiple credentials separated by newlines:
+//
 //  user1:pass1
 //  user2:pass2
 //  user3:pass3
