@@ -49,6 +49,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "121c6488_9bda9578",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/boot_perf_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2022-08-24T22:25:22Z",
+      "side": 1,
+      "message": "Is the problem that the script (https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform2/bootstat/bootstat_archive;l\u003d26;drc\u003d9c78bfe80aaf8ae7d3cea311d99599612d538ead) can\u0027t follow symlinks in `/tmp`? Do we do something differently with `/tmp` when testing?",
+      "parentUuid": "f38b2a6a_4d51cf5d",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 63,
+        "endChar": 52
+      },
+      "revId": "8846e6530cf36452b6928c506168de6b0dc51fc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4d0be00f_7d96e596",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/boot_perf_service.go",
         "patchSetId": 1
