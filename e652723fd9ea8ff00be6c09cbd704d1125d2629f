@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0e62c91_52c6fc66",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-08-24T13:28:40Z",
+      "side": 1,
+      "message": "Do we need to wait until the revert of the promotion is merged (https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3853422), or could we submit the fix now already?",
+      "revId": "e652723fd9ea8ff00be6c09cbd704d1125d2629f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
