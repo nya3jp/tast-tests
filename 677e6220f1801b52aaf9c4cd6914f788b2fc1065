@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "44b6db49_f05b060e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2022-08-24T06:22:47Z",
+      "side": 1,
+      "message": "Ooops, we should set it circular depend of these two CLs, so they can merge together.",
+      "parentUuid": "54a89459_f562cf82",
+      "revId": "677e6220f1801b52aaf9c4cd6914f788b2fc1065",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "e65d1cea_f0796e15",
