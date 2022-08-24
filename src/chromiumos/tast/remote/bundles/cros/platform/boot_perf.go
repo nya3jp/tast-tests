@@ -69,8 +69,10 @@ func assertRootfsVerification(ctx context.Context, s *testing.State) {
 	}
 }
 
-// waitUntilCPUCoolDown waits until system CPU cools down to stabilize the test.
-func waitUntilCPUCoolDown(fullCtx context.Context, s *testing.State) {
+// preReboot performs actions before rebooting the DUT:
+//   - Wait until the CPU is cool.
+//   - Stop tlsdated.
+func preReboot(fullCtx context.Context, s *testing.State) {
 	// Use a timeout of 30 seconds for waiting until the CPU cools down. A longer wait only has a marginal effect.
 	ctx, cancel := context.WithTimeout(fullCtx, 30*time.Second)
 	defer cancel()
@@ -87,6 +89,11 @@ func waitUntilCPUCoolDown(fullCtx context.Context, s *testing.State) {
 		// DUT is unable to cool down, probably timed out. Treat this as a non-fatal error and continue the test with a warning.
 		s.Log("Warning: PerfBootService.WaitUntilCPUCoolDown returned an error: ", err)
 	}
+
+	bootPerfService := platform.NewBootPerfServiceClient(cl.Conn)
+	if _, err = bootPerfService.EnsureTlsdatedStopped(ctx, &empty.Empty{}); err != nil {
+		s.Fatal("Failed to stop tlsdated: ", err)
+	}
 }
 
 // bootPerfOnce runs one iteration of the boot perf test.
@@ -97,12 +104,7 @@ func bootPerfOnce(fullCtx context.Context, s *testing.State, i, iterations int, 
 	ctx, cancel := ctxutil.Shorten(fullCtx, 10*time.Second)
 	defer cancel()
 
-	waitUntilCPUCoolDown(ctx, s)
-
-	// Stop tlsdated, that makes sure nobody will touch the RTC anymore, and also creates a sync-rtc bootstat file.
-	if err := d.Conn().CommandContext(ctx, "stop", "tlsdated").Run(); err != nil {
-		s.Fatal("Failed to stop tlsdated")
-	}
+	preReboot(ctx, s)
 
 	if err := d.Reboot(ctx); err != nil {
 		s.Fatal("Failed to reboot DUT: ", err)

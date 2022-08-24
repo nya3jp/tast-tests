@@ -18,6 +18,9 @@ service BootPerfService {
   // Disables bootchart collection for next system boot.
   rpc DisableBootchart(google.protobuf.Empty) returns (google.protobuf.Empty) {}
 
+  // Stops and checks that tlsdated is stopped to ensure that the RTC sync event runs.
+  rpc EnsureTlsdatedStopped(google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
   // Collects boot perf metrics from the device.
   rpc GetBootPerfMetrics(google.protobuf.Empty) returns (GetBootPerfMetricsResponse) {}
 
