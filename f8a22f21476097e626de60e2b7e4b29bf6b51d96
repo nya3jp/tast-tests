@@ -16,6 +16,57 @@
       "message": "lgtm for tast review",
       "revId": "f8a22f21476097e626de60e2b7e4b29bf6b51d96",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "67f5d46a_70000e24",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2022-08-24T01:04:53Z",
+      "side": 1,
+      "message": "Sorry for late review. LGTM % 2 nits.",
+      "revId": "f8a22f21476097e626de60e2b7e4b29bf6b51d96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57dc978e_517e32cf",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/nl80211_station_information.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2022-08-24T01:04:53Z",
+      "side": 1,
+      "message": "Add\n```\nctx, cancel :\u003d tf.ReserveForDeconfigAP(ctx, apIface)\ndefer cancel()\n```\n\nref: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go;l\u003d1334?q\u003dsimple_connect.go\u0026ss\u003dchromiumos",
+      "revId": "f8a22f21476097e626de60e2b7e4b29bf6b51d96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ace6d18b_4f626beb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/nl80211_station_information.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2022-08-24T01:04:53Z",
+      "side": 1,
+      "message": "Also need to reserve time for disconnect.\n\n```\nctx, cancel \u003d tf.ReserveForDisconnect(ctx)\ndefer cancel()\n```\n\nRef: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go;l\u003d1360?q\u003dsimple_connect.go\u0026ss\u003dchromiumos",
+      "revId": "f8a22f21476097e626de60e2b7e4b29bf6b51d96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
