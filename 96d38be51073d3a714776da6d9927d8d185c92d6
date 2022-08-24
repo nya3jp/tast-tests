@@ -88,6 +88,24 @@
       "parentUuid": "d52a8ed7_a170e718",
       "revId": "96d38be51073d3a714776da6d9927d8d185c92d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ad25767_61bbed26",
+        "filename": "src/chromiumos/tast/local/apps/apps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 526,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-08-24T21:53:56Z",
+      "side": 1,
+      "message": "I think we can investigate that for a general solution in http://b/233559985.\n\nThis CL has been revised specifically for the inputs tests (https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3836884/4) and cannot be used by other tests. \n\nWDYT?",
+      "parentUuid": "285ddbf6_fc4c0c28",
+      "revId": "96d38be51073d3a714776da6d9927d8d185c92d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
