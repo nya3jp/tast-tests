@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "370f90ba_b9d7b55d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-08-24T19:52:07Z",
+      "side": 1,
+      "message": "1. Please resolve conflict\n\n2. Please run tast unit tests: fast_build.h -T\n\n   Then add this line to commit log\n   \nTEST\u003dtast unit test passed.\n \nThanks.",
+      "revId": "d7097903132be6c6500f8932e18061737a29f0dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a668a734_72ff7d16",
@@ -37,6 +54,23 @@
         "endLine": 31,
         "endChar": 52
       },
+      "revId": "d7097903132be6c6500f8932e18061737a29f0dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7467bb3_e9b066c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tconn_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-08-24T19:52:07Z",
+      "side": 1,
+      "message": "The logic switches here. Are you trying to fix a bug? The description did not mention fixing any bug? Please clarify. Thanks.",
       "revId": "d7097903132be6c6500f8932e18061737a29f0dd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
