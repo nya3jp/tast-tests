@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c56074a1_a049b18a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/shill_cellular_smoke.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1425417
+      },
+      "writtenOn": "2022-08-24T17:52:36Z",
+      "side": 0,
+      "message": "I wonder if bringing down the interface using ifconfig is better and simpler. I am skeptical of going through a Shill function, and think that doing it via standard command line tools might be better in the long run.",
+      "range": {
+        "startLine": 52,
+        "startChar": 38,
+        "endLine": 52,
+        "endChar": 65
+      },
+      "revId": "65506025a7d8427cdbe7457cab77b5d6d423b18d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b485131_e4f5efed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/shill_cellular_smoke.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1425417
+      },
+      "writtenOn": "2022-08-24T17:52:36Z",
+      "side": 0,
+      "message": "Any reason why these commands are no longer useful?",
+      "range": {
+        "startLine": 86,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 0
+      },
+      "revId": "65506025a7d8427cdbe7457cab77b5d6d423b18d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
