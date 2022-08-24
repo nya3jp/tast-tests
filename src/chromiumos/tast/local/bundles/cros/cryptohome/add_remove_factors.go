@@ -50,30 +50,38 @@ func init() {
 
 // Structure for specifying the expected fields in an AuthFactor.
 type expectedConfiguredFactor struct {
-	factorType uda.AuthFactorType
-	label      string
+	Type  uda.AuthFactorType
+	Label string
 }
 
-// compareReplyToExpectations will compare the reply from ListAuthFactors to a set of expected factors.
-// The comparison will check both configured factors (specified by type and label only) as well as the
-// supported factors.
+// compareReplyToExpectations will compare the reply from ListAuthFactors to a
+// set of expected factors. The comparison will check both configured factors
+// (specified by type and label only) as well as the supported factors.
 //
-// The `when` parameter should be a string that can be included in the error messages describing when
-// this expectation was checked. It should generally look something like "before xyz" or "after abc".
+// The `when` parameter should be a string that can be included in the error
+// messages describing when this expectation was checked. It should generally
+// look something like "before xyz" or "after abc".
 func compareReplyToExpectations(when string, reply *uda.ListAuthFactorsReply, expectedConfigured []expectedConfiguredFactor, expectedSupported []uda.AuthFactorType, s *testing.State) {
-	// Compare the configured and expected configured factors. Currently order matters, but it might make
-	// sense to change that in the future as we configure more factors in the test.
+	// Compare the configured and expected configured factors. We do this by
+	// reducing the configured factors in the reply to a list of
+	// expectedConfiguredFactor instances, so that we can do a direct diff of
+	// the two lists (actual vs expected). Order does not matter.
 	if len(reply.GetConfiguredAuthFactors()) != len(expectedConfigured) {
 		s.Fatalf("ListAuthFactors reported the wrong number of factors (got %d, want %d) %s", len(reply.GetConfiguredAuthFactors()), len(expectedConfigured), when)
 	}
-	for i, expected := range expectedConfigured {
-		factor := reply.ConfiguredAuthFactors[i]
-		if factor.Type != expected.factorType {
-			s.Fatalf("Auth factor %d does not have the correct type (got %d, want %d) %s", i, factor.Type, expected.factorType, when)
+	actualConfigured := make([]expectedConfiguredFactor, 0, len(reply.ConfiguredAuthFactors))
+	for _, configured := range reply.ConfiguredAuthFactors {
+		newConfigured := expectedConfiguredFactor{
+			Type:  configured.Type,
+			Label: configured.Label,
 		}
-		if factor.Label != expected.label {
-			s.Fatalf("Auth factor %d does not have the correct label (got %q, want %q) %s", i, factor.Label, expected.label, when)
-		}
+		actualConfigured = append(actualConfigured, newConfigured)
+	}
+	configuredLess := func(a, b expectedConfiguredFactor) bool {
+		return a.Type < b.Type || (a.Type == b.Type && a.Label < b.Label)
+	}
+	if diff := cmp.Diff(actualConfigured, expectedConfigured, cmpopts.SortSlices(configuredLess)); diff != "" {
+		s.Errorf("Mismatch in configured auth factors %s (-got +want) %s", when, diff)
 	}
 	// Compare the supported and expected supports factors. Order does not matter.
 	typeLess := func(a, b uda.AuthFactorType) bool { return a < b }
@@ -87,6 +95,8 @@ func AddRemoveFactors(ctx context.Context, s *testing.State) {
 		userName      = "foo@bar.baz"
 		userPassword  = "secret"
 		passwordLabel = "online-password"
+		userPin       = "12345"
+		pinLabel      = "luggage-pin"
 	)
 
 	userParam := s.Param().(addRemoveFactorsParams)
@@ -149,6 +159,15 @@ func AddRemoveFactors(ctx context.Context, s *testing.State) {
 	var expectedOnlyPassword = []expectedConfiguredFactor{
 		{uda.AuthFactorType_AUTH_FACTOR_TYPE_PASSWORD, passwordLabel},
 	}
+	var expectedPasswordAndPin = []expectedConfiguredFactor{
+		{uda.AuthFactorType_AUTH_FACTOR_TYPE_PASSWORD, passwordLabel},
+		{uda.AuthFactorType_AUTH_FACTOR_TYPE_PIN, pinLabel},
+	}
+	// The final set of auth factors at the end of the test depends on whether or not PIN is supported.
+	expectedFinalConfiguredFactors := expectedOnlyPassword
+	if supportsPin {
+		expectedFinalConfiguredFactors = expectedPasswordAndPin
+	}
 
 	// Expected supported auth factors at different points in the test.
 	var expectedAllSupported = []uda.AuthFactorType{
@@ -180,12 +199,26 @@ func AddRemoveFactors(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to add password auth factor: ", err)
 	}
 
-	// List the auth factors for the user. There should be none.
+	// List the auth factors for the user. There should be only password.
 	listFactorsAfterAddPasswordReply, err := client.ListAuthFactors(ctx, userName)
 	if err != nil {
 		s.Fatal("Failed to list auth factors after adding password: ", err)
 	}
 	compareReplyToExpectations("after adding password", listFactorsAfterAddPasswordReply, expectedOnlyPassword, expectedNoKioskSupported, s)
+
+	if supportsPin {
+		// Add a PIN auth factor.
+		if err := client.AddPinAuthFactor(ctx, authSessionID, pinLabel, userPin); err != nil {
+			s.Fatal("Failed to add PIN auth factor: ", err)
+		}
+
+		// List the auth factors for the user. There should be password and pin.
+		listFactorsAfterAddPinReply, err := client.ListAuthFactors(ctx, userName)
+		if err != nil {
+			s.Fatal("Failed to list auth factors after adding PIN: ", err)
+		}
+		compareReplyToExpectations("after adding PIN", listFactorsAfterAddPinReply, expectedPasswordAndPin, expectedNoKioskSupported, s)
+	}
 
 	// Unmount the user.
 	if err := client.UnmountAll(ctx); err != nil {
@@ -197,5 +230,5 @@ func AddRemoveFactors(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to list auth factors after unmount: ", err)
 	}
-	compareReplyToExpectations("after unmount", listFactorsAfterUnmount, expectedOnlyPassword, expectedNoKioskSupported, s)
+	compareReplyToExpectations("after unmount", listFactorsAfterUnmount, expectedFinalConfiguredFactors, expectedNoKioskSupported, s)
 }
