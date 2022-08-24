@@ -130,6 +130,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "56117568_2b33af7a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/toggle_cellular_from_os_settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-08-24T13:41:49Z",
+      "side": 1,
+      "message": "+1, it seems like we should be checking to make sure everything propagates as expected at each step in this test.",
+      "parentUuid": "1b4d9d8a_9c6d54c2",
+      "revId": "fe6827227506bfc0a25048edbbf528ea231946ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5f202437_bdee3720",
         "filename": "src/chromiumos/tast/local/bundles/cros/cellular/toggle_cellular_from_os_settings.go",
         "patchSetId": 1
