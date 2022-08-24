@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "405fd4d1_c0e4ee30",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/dynamic_color.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1460002
+      },
+      "writtenOn": "2022-08-24T19:01:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e0003c8_1d5a836f",
+      "revId": "4716fa7fbef0d33350d37dd1fc13839604bc952b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "668f53a9_069a3904",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-08-24T07:45:34Z",
       "side": 1,
       "message": "Maybe do this inline?\n\narc.Command(ctx, \"settings\", \"get\", \"secure\", \"theme_customization_overlay_packages\").Output()",
+      "revId": "4716fa7fbef0d33350d37dd1fc13839604bc952b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "90b8e340_0638b760",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/dynamic_color.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1460002
+      },
+      "writtenOn": "2022-08-24T19:01:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "668f53a9_069a3904",
       "revId": "4716fa7fbef0d33350d37dd1fc13839604bc952b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -58,6 +94,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf1a42d5_cb59f26d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/dynamic_color.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1460002
+      },
+      "writtenOn": "2022-08-24T19:01:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f192b224_0c030ebf",
+      "range": {
+        "startLine": 54,
+        "startChar": 5,
+        "endLine": 54,
+        "endChar": 11
+      },
+      "revId": "4716fa7fbef0d33350d37dd1fc13839604bc952b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6dd06670_8bb8b3d7",
@@ -71,6 +131,24 @@
       "writtenOn": "2022-08-24T07:45:34Z",
       "side": 1,
       "message": "You need to check for errors here",
+      "revId": "4716fa7fbef0d33350d37dd1fc13839604bc952b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eef851cf_ca3b0cfc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/dynamic_color.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1460002
+      },
+      "writtenOn": "2022-08-24T19:01:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6dd06670_8bb8b3d7",
       "revId": "4716fa7fbef0d33350d37dd1fc13839604bc952b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -98,6 +176,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "88117903_33dae7c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/dynamic_color.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1460002
+      },
+      "writtenOn": "2022-08-24T19:01:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e3f2dcbf_03d3783b",
+      "range": {
+        "startLine": 58,
+        "startChar": 64,
+        "endLine": 58,
+        "endChar": 66
+      },
+      "revId": "4716fa7fbef0d33350d37dd1fc13839604bc952b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5acdcf30_d69b4a93",
@@ -111,6 +213,30 @@
       "writtenOn": "2022-08-24T07:45:34Z",
       "side": 1,
       "message": "Same here",
+      "range": {
+        "startLine": 61,
+        "startChar": 58,
+        "endLine": 61,
+        "endChar": 70
+      },
+      "revId": "4716fa7fbef0d33350d37dd1fc13839604bc952b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6708cf75_21103b45",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/dynamic_color.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1460002
+      },
+      "writtenOn": "2022-08-24T19:01:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5acdcf30_d69b4a93",
       "range": {
         "startLine": 61,
         "startChar": 58,
