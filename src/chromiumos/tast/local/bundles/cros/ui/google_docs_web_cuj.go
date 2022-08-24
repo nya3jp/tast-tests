@@ -22,6 +22,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
+		// TODO (b/242590511): Deprecated after moving all performance cuj test cases to chromiumos/tast/local/bundles/cros/spera directory.
 		Func:         GoogleDocsWebCUJ,
 		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Measures the performance of Google Docs web version CUJ",
