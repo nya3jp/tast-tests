@@ -233,7 +233,7 @@ func ProcessesTestInternal(ctx context.Context, s *testing.State, testSelector [
 			s.Error("Failed to find processes: ", err)
 			continue
 		}
-		s.Logf("Processes for %v: %v", testCase.query, p)
+		// s.Logf("Processes for %v: %v", testCase.query, p)
 		if len(p) < testCase.minProcessCount {
 			s.Errorf("Found %d process(es) for %v; require at least %d",
 				len(p), testCase.query, testCase.minProcessCount)
