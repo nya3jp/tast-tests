@@ -24,7 +24,7 @@ func init() {
 			"chungsheng@google.com",
 		},
 		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"mojo_service_manager"},
+		SoftwareDeps: []string{"chrome", "mojo_service_manager"},
 		Timeout:      1 * time.Minute,
 	})
 }
