@@ -105,6 +105,9 @@ var (
 	uptimeFileGlob = filepath.Join(bootstatCurrentDir, uptimePrefix+"*")
 	diskFileGlob   = filepath.Join(bootstatCurrentDir, diskPrefix+"*")
 
+	syncRtcTlsdatedStart = "sync-rtc-tlsdated-start"
+	syncRtcTlsdatedStop  = "sync-rtc-tlsdated-stop"
+
 	// The name of this file has changed starting with linux-3.19.
 	// Use a glob to snarf up all existing records.
 	ramOopsFileGlob = "/sys/fs/pstore/console-ramoops*"
@@ -164,6 +167,42 @@ func WaitUntilBootComplete(ctx context.Context) error {
 
 	// Try one last time with only Required metrics, in case a Recommended metric wasn't found.
 	return pollOnce(ctx, metricRequired)
+}
+
+// EnsureTlsdatedStateBeforeReboot ensures that the sync-rtc-tlsdated-stop and
+// sync-rtc-tlsdated-start bootstat files are in a valid state before rebooting
+// the device:
+//   - tlsdated is running
+//   - sync-rtc-tlsdated-start is present
+func EnsureTlsdatedStateBeforeReboot(ctx context.Context) error {
+	syncRtcTlsdatedStartFile := filepath.Join(bootstatCurrentDir, syncRtcTlsdatedStart)
+	if err := func() error {
+		// tlsdated should be running.
+		_, state, _, err := upstart.JobStatus(ctx, "tlsdated")
+		if err != nil || state != upstartcommon.RunningState {
+			return errors.New("tlsdated not running")
+		}
+
+		// sync-rtc-tlsdated-start should be present.
+		if _, err := os.Stat(syncRtcTlsdatedStartFile); err != nil {
+			return err
+		}
+
+		return nil // Passed the above checks.
+	}(); err == nil {
+		return nil
+	}
+
+	testing.ContextLog(ctx, "Restart tlsdated to ensure it's in a valid state")
+	if err := upstart.RestartJob(ctx, "tlsdated"); err != nil {
+		return err
+	}
+	if _, err := os.Stat(syncRtcTlsdatedStartFile); err != nil {
+		// Restarting tlsdated doesn't work. Just return the error.
+		return err
+	}
+
+	return nil
 }
 
 // parseBootstat reads values from a bootstat event file. Each line of a
@@ -226,18 +265,18 @@ func parseUptime(eventName, bootstatDir string, index int) (float64, error) {
 // "seconds since kernel startup" from the bootstat files for the events named
 // in |eventMetrics|, and stores the values as perf metrics.  The following
 // metrics may be recorded:
-//   * seconds_kernel_to_startup
-//   * seconds_kernel_to_startup_done
-//   * seconds_kernel_to_chrome_exec
-//   * seconds_kernel_to_chrome_main
-//   * seconds_kernel_to_signin_start
-//   * seconds_kernel_to_signin_wait
-//   * seconds_kernel_to_signin_users
-//   * seconds_kernel_to_login
-//   * seconds_kernel_to_android_start
-//   * seconds_kernel_to_cellular_registered
-//   * seconds_kernel_to_wifi_registered
-//   * seconds_kernel_to_network
+//   - seconds_kernel_to_startup
+//   - seconds_kernel_to_startup_done
+//   - seconds_kernel_to_chrome_exec
+//   - seconds_kernel_to_chrome_main
+//   - seconds_kernel_to_signin_start
+//   - seconds_kernel_to_signin_wait
+//   - seconds_kernel_to_signin_users
+//   - seconds_kernel_to_login
+//   - seconds_kernel_to_android_start
+//   - seconds_kernel_to_cellular_registered
+//   - seconds_kernel_to_wifi_registered
+//   - seconds_kernel_to_network
 func GatherTimeMetrics(ctx context.Context, results *platform.GetBootPerfMetricsResponse) error {
 	var missingNonRequiredEvennts []string
 	for _, k := range eventMetrics {
@@ -297,11 +336,12 @@ func parseDiskstat(eventName, bootstatDir string, index int) (float64, error) {
 // events named in |eventMetrics|, converts the values to "bytes read since
 // boot", and stores the values as perf metrics. The following metrics are
 // recorded:
-//   * rdbytes_kernel_to_startup
-//   * rdbytes_kernel_to_startup_done
-//   * rdbytes_kernel_to_chrome_exec
-//   * rdbytes_kernel_to_chrome_main
-//   * rdbytes_kernel_to_login
+//   - rdbytes_kernel_to_startup
+//   - rdbytes_kernel_to_startup_done
+//   - rdbytes_kernel_to_chrome_exec
+//   - rdbytes_kernel_to_chrome_main
+//   - rdbytes_kernel_to_login
+//
 // Disk statistics are reported in units of 512 byte sectors; we convert the
 // metrics to bytes so that downstream consumers don't have to ask "How big is
 // a sector?".
@@ -465,9 +505,9 @@ func readFirmwareTimestamps(ctx context.Context) ([]byte, error) {
 // spent from the start of that shutdown until the completion of the most recent
 // boot.
 // This function records these metrics:
-//   * seconds_shutdown_time
-//   * seconds_reboot_time
-//   * seconds_reboot_error
+//   - seconds_shutdown_time
+//   - seconds_reboot_time
+//   - seconds_reboot_error
 func GatherRebootMetrics(results *platform.GetBootPerfMetricsResponse) error {
 	bootstatDir, err := findMostRecentBootstatArchivePath()
 	if err != nil {
@@ -610,6 +650,13 @@ func GatherMetricRawDataFiles(raw map[string][]byte) error {
 	for _, glob := range []string{uptimeFileGlob, diskFileGlob} {
 		list, _ := filepath.Glob(glob) // filepath.Glob() only returns error on malformed glob patterns.
 		files = append(files, list...)
+	}
+
+	// Add sync-rtc-tlsdated-start sync-rtc-tlsdated-stop.
+	files = append(files, filepath.Join(bootstatCurrentDir, "sync-rtc-tlsdated-start"))
+	lastBootstatArchive, err := findMostRecentBootstatArchivePath()
+	if err == nil {
+		files = append(files, filepath.Join(lastBootstatArchive, "sync-rtc-tlsdated-stop"))
 	}
 
 	for _, f := range files {
