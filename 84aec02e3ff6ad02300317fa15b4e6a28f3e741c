@@ -16,6 +16,42 @@
       "message": "You could use `audio.GetSoundCards`. The card name we typically refer to is `Card.ShortName`.\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/audio/cards.go;l\u003d74;drc\u003d7e5b86e04c51e439308cff285ae46dfeb66bbff4",
       "revId": "84aec02e3ff6ad02300317fa15b4e6a28f3e741c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a92f114_21539c59",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/device/device.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1547337
+      },
+      "writtenOn": "2022-08-24T04:27:17Z",
+      "side": 1,
+      "message": "This is useful, thanks. Will change the sound card name check to use `audio.GetSoundCards` instead.",
+      "parentUuid": "03110c87_874cbd4c",
+      "revId": "84aec02e3ff6ad02300317fa15b4e6a28f3e741c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63f00824_da3e18c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/device/device.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1547337
+      },
+      "writtenOn": "2022-08-24T04:27:17Z",
+      "side": 1,
+      "message": "This is useful, thanks.",
+      "parentUuid": "03110c87_874cbd4c",
+      "revId": "84aec02e3ff6ad02300317fa15b4e6a28f3e741c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
