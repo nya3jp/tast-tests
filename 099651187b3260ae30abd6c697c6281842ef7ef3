@@ -33,6 +33,24 @@
       "message": "Nit: can you just return this directly without assigning an intermediary?",
       "revId": "099651187b3260ae30abd6c697c6281842ef7ef3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "84f00488_6ea36c56",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 2687,
+      "author": {
+        "id": 1551017
+      },
+      "writtenOn": "2022-08-24T01:04:09Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "cdfd8440_0b5ca33e",
+      "revId": "099651187b3260ae30abd6c697c6281842ef7ef3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
