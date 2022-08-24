@@ -16,6 +16,29 @@
       "message": "Hello, please help me review this change. Thank you.",
       "revId": "46bebd48cb1c127e7dc62c7814892d4e15b21246",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49004c8a_775ba86f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/chaps_stress.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1528117
+      },
+      "writtenOn": "2022-08-24T02:48:08Z",
+      "side": 1,
+      "message": "What\u0027s the reason to drop reboot count to 0?",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 17
+      },
+      "revId": "46bebd48cb1c127e7dc62c7814892d4e15b21246",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
