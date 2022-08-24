@@ -241,8 +241,8 @@ func drawStrokes(ctx context.Context, tconn *chrome.TestConn, sg *strokeGroup) e
 		for i, p := range s.points {
 			// Mouse will be moved to each of the points to draw the stroke.
 			// A stroke can have up to 50 points, if a stroke is long enough and uses all 50 points to represent
-			// the stroke, it will take 2 seconds (40ms * 50) to draw that stroke.
-			if err := mouse.Move(tconn, p.toCoordsPoint(), 40*time.Millisecond)(ctx); err != nil {
+			// the stroke, it will take 0.5 seconds (10ms * 50) to draw that stroke.
+			if err := mouse.Move(tconn, p.toCoordsPoint(), 10*time.Millisecond)(ctx); err != nil {
 				return errors.Wrap(err, "failed to move mouse")
 			}
 			// Left mouse button should be pressed on only the first point of every stroke to start the stroke.
