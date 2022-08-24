@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "728d00e0_dae9d2ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/sys_info_pii.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1542652
+      },
+      "writtenOn": "2022-08-24T00:46:23Z",
+      "side": 1,
+      "message": "The Fixture \"lacros\" will log users in. From the DUT during testing, I can clearly see that a logged user opens a browser.\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/lacros/lacrosfixt/fixtimpl.go;l\u003d24?q\u003dlacrosAudio\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch:src%2Fplatform%2Ftast-tests%2Fsrc%2Fchromiumos%2Ftast%2Flocal%2F\u0026start\u003d1",
+      "parentUuid": "eb448196_1dae5456",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 63,
+        "endChar": 32
+      },
+      "revId": "dece3fd7c27c3a4dc0f823612815541f46d0abe1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e5f0e262_99f9062e",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-08-23T23:50:15Z",
       "side": 1,
       "message": "Can you please comment as to what this is doing?",
+      "range": {
+        "startLine": 154,
+        "startChar": 0,
+        "endLine": 159,
+        "endChar": 0
+      },
+      "revId": "dece3fd7c27c3a4dc0f823612815541f46d0abe1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f5aaef3_fec97a21",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/sys_info_pii.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1542652
+      },
+      "writtenOn": "2022-08-24T00:46:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e5f0e262_99f9062e",
       "range": {
         "startLine": 154,
         "startChar": 0,
@@ -72,6 +120,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f9322a86_d3578092",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/sys_info_pii.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1542652
+      },
+      "writtenOn": "2022-08-24T00:46:23Z",
+      "side": 1,
+      "message": "It\u0027s coming from here [1]. I guess we want to open a new lacros browser with only one empty page? \n\nThe reason I\u0027m not able to use `lacros.LaunchWithURL` function directly is that I need to get the `conn` to be used in line 194.\n\n[1] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/lacros/launch.go;l\u003d124-132",
+      "parentUuid": "45458e96_c99d0153",
+      "range": {
+        "startLine": 171,
+        "startChar": 0,
+        "endLine": 174,
+        "endChar": 0
+      },
+      "revId": "dece3fd7c27c3a4dc0f823612815541f46d0abe1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9554461a_d95ba0cf",
         "filename": "src/chromiumos/tast/local/bundles/cros/feedback/sys_info_pii.go",
         "patchSetId": 1
@@ -83,6 +155,30 @@
       "writtenOn": "2022-08-23T23:50:15Z",
       "side": 1,
       "message": "Does this callback do the right thing on lacros? Can you do a single test where you copy off everything that it returns to the out directory and make sure that it\u0027s correctly accumulating everything?",
+      "range": {
+        "startLine": 187,
+        "startChar": 44,
+        "endLine": 187,
+        "endChar": 87
+      },
+      "revId": "dece3fd7c27c3a4dc0f823612815541f46d0abe1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "02dc4a4d_3f633b44",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/sys_info_pii.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1542652
+      },
+      "writtenOn": "2022-08-24T00:46:23Z",
+      "side": 1,
+      "message": "Yes. The result got from lacros contains similar category of info as from ash.",
+      "parentUuid": "9554461a_d95ba0cf",
       "range": {
         "startLine": 187,
         "startChar": 44,
