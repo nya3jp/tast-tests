@@ -16,6 +16,24 @@
       "message": "What\u0027s RUS?",
       "revId": "212cf24faff93503179c171a27088bafd75c4c40",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5dcd7b42_044ba058",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/disable_hwwp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1531792
+      },
+      "writtenOn": "2022-08-24T03:28:37Z",
+      "side": 1,
+      "message": "rmaweb.Rsu  Use RSU unlock code to disable WP",
+      "parentUuid": "ef3eb409_6f1689e5",
+      "revId": "212cf24faff93503179c171a27088bafd75c4c40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
