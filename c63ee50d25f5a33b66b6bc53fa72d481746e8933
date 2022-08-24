@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b717fc89_ccb14ddf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-08-24T13:59:00Z",
+      "side": 1,
+      "message": "LGTM\nThis is quite an interesting problem.\nAre you sure it is finding the same node?",
+      "revId": "c63ee50d25f5a33b66b6bc53fa72d481746e8933",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "754fb554_ef211454",
+        "filename": "src/chromiumos/tast/local/accountmanager/account_manager.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 376,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-08-24T13:59:00Z",
+      "side": 1,
+      "message": "nit: Missing quote `\"More actions, \u003cemail\u003e\"`",
+      "range": {
+        "startLine": 376,
+        "startChar": 21,
+        "endLine": 376,
+        "endChar": 43
+      },
+      "revId": "c63ee50d25f5a33b66b6bc53fa72d481746e8933",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
