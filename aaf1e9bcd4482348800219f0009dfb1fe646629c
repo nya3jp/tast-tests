@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c2a3493_f2dd1957",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1485520
+      },
+      "writtenOn": "2022-08-24T16:14:12Z",
+      "side": 1,
+      "message": "I think it is a good idea to have a marker in the description indicating the report comes from end to end testing. Thank you!",
+      "revId": "aaf1e9bcd4482348800219f0009dfb1fe646629c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "159bddba_6b02abb7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/submit_feedback_again.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1485520
+      },
+      "writtenOn": "2022-08-24T16:14:12Z",
+      "side": 1,
+      "message": "nit: maybe \"End to end test - please ignore\"?",
+      "revId": "aaf1e9bcd4482348800219f0009dfb1fe646629c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
