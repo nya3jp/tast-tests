@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd743dc1_90aaefd1",
+        "filename": "src/chromiumos/tast/local/bluetooth/bluez/adapter.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-08-24T22:03:31Z",
+      "side": 1,
+      "message": "Sure, that\u0027s nicer. Done.",
+      "parentUuid": "4783b462_8b1cbe4e",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 14
+      },
+      "revId": "8d735bcf7ba0dc4bbed42683e472a52f122af140",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "34a58174_88115b54",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-08-24T09:54:21Z",
       "side": 1,
       "message": "How about `return \u0026Device{dbus: obj}, nil`",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 14
+      },
+      "revId": "8d735bcf7ba0dc4bbed42683e472a52f122af140",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "af0a80d3_fd5529fc",
+        "filename": "src/chromiumos/tast/local/bluetooth/bluez/device.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-08-24T22:03:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "34a58174_88115b54",
       "range": {
         "startLine": 28,
         "startChar": 0,
