@@ -1,15 +1,15 @@
-// Copyright 2021 The Chromium OS Authors. All rights reserved.
+// Copyright 2022 The ChromiumOS Authors.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package ui
+package spera
 
 import (
 	"context"
 	"time"
 
 	"chromiumos/tast/ctxutil"
-	"chromiumos/tast/local/bundles/cros/ui/productivitycuj"
+	"chromiumos/tast/local/bundles/cros/spera/productivitycuj"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
@@ -22,40 +22,42 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         GoogleDocsWebCUJ,
+		Func:         MicrosoftOfficeWebCUJ,
 		LacrosStatus: testing.LacrosVariantExists,
-		Desc:         "Measures the performance of Google Docs web version CUJ",
+		Desc:         "Measures the performance of Microsoft Office web version CUJ",
 		Contacts:     []string{"xliu@cienet.com", "alston.huang@cienet.com", "jane.yang@cienet.com"},
 		SoftwareDeps: []string{"chrome"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		Vars: []string{
-			"ui.sampleGDocSheetURL", // Required. The URL of sample Google Sheet. It will be copied to create a new one to perform tests on.
-			"ui.cuj_mode",           // Optional. Expecting "tablet" or "clamshell".
+			"spera.ms_username",            // Required. Expecting the username of the "Microsoft" account.
+			"spera.ms_password",            // Required. Expecting the password of the "Microsoft" account.
+			"spera.sampleMSOfficeSheetURL", // Required. The URL of sample Microsoft Excel. It will be copied to create a new one to perform tests on.
+			"spera.cuj_mode",               // Optional. Expecting "tablet" or "clamshell".
 		},
 		Params: []testing.Param{
 			{
-				Name:    "basic",
+				Name:    "plus",
 				Fixture: "loggedInAndKeepState",
 				Timeout: 15 * time.Minute,
 				Val: productivitycuj.ProductivityParam{
-					Tier: cuj.Basic,
+					Tier: cuj.Plus,
 				},
 			},
 			{
-				Name:              "basic_lacros",
+				Name:              "plus_lacros",
 				Fixture:           "loggedInAndKeepStateLacros",
 				Timeout:           15 * time.Minute,
 				ExtraSoftwareDeps: []string{"lacros"},
 				Val: productivitycuj.ProductivityParam{
-					Tier:     cuj.Basic,
+					Tier:     cuj.Plus,
 					IsLacros: true,
 				},
 			},
 			{
 				Name:      "premium",
 				Fixture:   "loggedInAndKeepState",
-				ExtraData: []string{"productivity_cuj_voice_to_text_en.wav"},
 				Timeout:   15 * time.Minute,
+				ExtraData: []string{"productivity_cuj_voice_to_text_en.wav"},
 				Val: productivitycuj.ProductivityParam{
 					Tier: cuj.Premium,
 				},
@@ -63,9 +65,9 @@ func init() {
 			{
 				Name:              "premium_lacros",
 				Fixture:           "loggedInAndKeepStateLacros",
-				ExtraData:         []string{"productivity_cuj_voice_to_text_en.wav"},
 				Timeout:           15 * time.Minute,
 				ExtraSoftwareDeps: []string{"lacros"},
+				ExtraData:         []string{"productivity_cuj_voice_to_text_en.wav"},
 				Val: productivitycuj.ProductivityParam{
 					Tier:     cuj.Premium,
 					IsLacros: true,
@@ -75,13 +77,12 @@ func init() {
 	})
 }
 
-func GoogleDocsWebCUJ(ctx context.Context, s *testing.State) {
+func MicrosoftOfficeWebCUJ(ctx context.Context, s *testing.State) {
 	p := s.Param().(productivitycuj.ProductivityParam)
 	cr := s.FixtValue().(chrome.HasChrome).Chrome()
-
-	sampleSheetURL, ok := s.Var("ui.sampleGDocSheetURL")
+	sampleSheetURL, ok := s.Var("spera.sampleMSOfficeSheetURL")
 	if !ok {
-		s.Fatal("Require variable ui.sampleGDocSheetURL is not provided")
+		s.Fatal("Require variable spera.sampleMSOfficeSheetURL is not provided")
 	}
 
 	tconn, err := cr.TestAPIConn(ctx)
@@ -94,7 +95,7 @@ func GoogleDocsWebCUJ(ctx context.Context, s *testing.State) {
 	defer cancel()
 
 	var tabletMode bool
-	if mode, ok := s.Var("ui.cuj_mode"); ok {
+	if mode, ok := s.Var("spera.cuj_mode"); ok {
 		tabletMode = mode == "tablet"
 		cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, tabletMode)
 		if err != nil {
@@ -132,7 +133,10 @@ func GoogleDocsWebCUJ(ctx context.Context, s *testing.State) {
 	}
 	defer kb.Close()
 
-	office := productivitycuj.NewGoogleDocs(tconn, kb, uiHdl, tabletMode)
+	username := s.RequiredVar("spera.ms_username")
+	password := s.RequiredVar("spera.ms_password")
+
+	office := productivitycuj.NewMicrosoftWebOffice(tconn, uiHdl, kb, tabletMode, p.IsLacros, username, password)
 
 	var expectedText, testFileLocation string
 	if p.Tier == cuj.Premium {
