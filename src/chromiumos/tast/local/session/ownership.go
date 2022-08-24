@@ -13,6 +13,7 @@ import (
 	"io/ioutil"
 	"os"
 	"path/filepath"
+	"runtime/debug"
 	"time"
 
 	"github.com/golang/protobuf/proto"
@@ -73,6 +74,10 @@ func PrepareChromeForPolicyTesting(ctx context.Context, m *SessionManager) error
 // ClearDeviceOwnership deletes DUT's ownership infomation.
 func ClearDeviceOwnership(ctx context.Context) error {
 	testing.ContextLog(ctx, "Clearing device owner info")
+
+	testing.ContextLog(ctx, "MIERSH 1")
+	testing.ContextLog(ctx, "MIERSH stacktrace: ", string(debug.Stack()))
+	testing.ContextLog(ctx, "MIERSH 2")
 
 	// The UI must be stopped while we do this, or the session_manager will
 	// write the policy and key files out again.

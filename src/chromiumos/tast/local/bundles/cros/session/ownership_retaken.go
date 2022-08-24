@@ -10,11 +10,13 @@ import (
 	"crypto/x509"
 	"io/ioutil"
 	"path/filepath"
+	"time"
 
 	"github.com/google/go-cmp/cmp"
 	"google.golang.org/protobuf/testing/protocmp"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/session"
 	"chromiumos/tast/local/session/ownership"
@@ -28,8 +30,9 @@ func init() {
 		Contacts: []string{
 			"hidehiko@chromium.org",
 		},
-		Data: []string{"testcert.p12"},
-		Attr: []string{"group:mainline"},
+		Data:         []string{"testcert.p12"},
+		SoftwareDeps: []string{"chrome"},
+		Attr:         []string{"group:mainline"},
 	})
 }
 
@@ -38,6 +41,24 @@ func OwnershipRetaken(ctx context.Context, s *testing.State) {
 		testUser = "ownership_test@chromium.org"
 		testPass = "testme"
 	)
+
+	noLoginChrome, err := chrome.New(ctx, chrome.NoLogin())
+	if err != nil {
+		s.Fatal("Failed to log in with Chrome: ", err)
+	}
+	defer noLoginChrome.Close(ctx)
+
+	// cmdRunner := hwseclocal.NewCmdRunner()
+
+	// helper, err := hwseclocal.NewHelper(cmdRunner)
+	// if err != nil {
+	// 	s.Fatal("Failed to create hwsec local helper: ", err)
+	// }
+
+	// // Resets the TPM, system, and user states before running the tests.
+	// if err := helper.EnsureTPMAndSystemStateAreReset(ctx); err != nil {
+	// 	s.Fatal("Failed to reset TPM or system states: ", err)
+	// }
 
 	privKey, err := session.ExtractPrivKey(s.DataPath("testcert.p12"))
 	if err != nil {
@@ -85,6 +106,15 @@ func OwnershipRetaken(ctx context.Context, s *testing.State) {
 		s.Fatal("Owner key should not have changed")
 	}
 
+	s.Log("HERE ==============================================")
+	// time.Sleep(10 * time.Second)
+
+	// if err := upstart.RestartJob(ctx, "ui"); err != nil {
+	// 	s.Fatal("Chrome logout failed: ", err)
+	// } else {
+	// 	s.Log("MIERSH restarted")
+	// }
+
 	// Start a new session, which will trigger the re-taking of ownership.
 	wp, err := sm.WatchPropertyChangeComplete(ctx)
 	if err != nil {
@@ -97,6 +127,9 @@ func OwnershipRetaken(ctx context.Context, s *testing.State) {
 	}
 	defer ws.Close(ctx)
 
+	s.Log("HERE 2 ==============================================")
+	// time.Sleep(10 * time.Second)
+
 	if err = cryptohome.CreateVault(ctx, testUser, testPass); err != nil {
 		s.Fatal("Failed to create vault: ", err)
 	}
@@ -104,12 +137,27 @@ func OwnershipRetaken(ctx context.Context, s *testing.State) {
 		s.Fatalf("Failed to start new session for %s: %v", testUser, err)
 	}
 
+	s.Log("HERE 2.5 ==============================================")
+	// time.Sleep(10 * time.Second)
+
+	// normalChrome, err := chrome.New(ctx, chrome.FakeLogin(chrome.Creds{User: testUser, Pass: "123"}))
+	// if err != nil {
+	// 	s.Fatal("Failed to log in with Chrome: ", err)
+	// }
+	// defer normalChrome.Close(ctx)
+
+	s.Log("HERE 3 ==============================================")
+	time.Sleep(10 * time.Second)
+
 	select {
 	case <-wp.Signals:
 	case <-ws.Signals:
 	case <-ctx.Done():
 		s.Fatal("Timed out waiting for PropertyChangeComplete or SetOwnerKeyComplete signal: ", ctx.Err())
 	}
+
+	s.Log("HERE 4 ==============================================")
+	// time.Sleep(10 * time.Second)
 
 	// Grab key, ensure that it's different than known key.
 	if same, err := verifyOwnerKey(); err != nil {
