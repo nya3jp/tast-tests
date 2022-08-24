@@ -16,6 +16,23 @@
       "message": "Updated the smoke test to run on cellular interface with ethernet and wifi disabled.",
       "revId": "6491dab2aa0f97f7f344503d2afe69445f4a434e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1564d56_c1b9f8a9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-08-24T13:35:52Z",
+      "side": 1,
+      "message": "Very nice!",
+      "revId": "6491dab2aa0f97f7f344503d2afe69445f4a434e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
