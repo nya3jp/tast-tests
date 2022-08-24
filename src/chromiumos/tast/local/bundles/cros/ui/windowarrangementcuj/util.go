@@ -292,35 +292,30 @@ func combineTabs(ctx context.Context, tconn *chrome.TestConn, ui *uiauto.Context
 
 // dragAndRestore performs a drag beginning at the first given point, proceeding
 // through the others in order, and ending back at the first given point. Before
-// ending the drag, dragAndRestore tries to wait until every window that still exists*
-// has the same bounds as before the drag (as expected because the drag is a closed
-// loop). If that wait times out, then the drag is ended anyway. The wait is repeated
-// after the drag is ended, and if there is a window bounds change that does not even
+// ending the drag, dragAndRestore tries to wait until every window has the same
+// bounds as before the drag (as expected because the drag is a closed loop). If
+// that wait times out, then the drag is ended anyway. The wait is repeated after
+// the drag is ended, and if there is a window bounds change that does not even
 // revert after the drag is completed, dragAndRestore returns a non-nil error.
-//
-// *So if an app crashes during the drag, its disappearing windows are not part of the
-// bounds check.
 func dragAndRestore(ctx context.Context, tconn *chrome.TestConn, pc pointer.Context, duration time.Duration, p ...coords.Point) error {
 	if len(p) < 2 {
 		return errors.Errorf("expected at least two drag points, got %v", p)
 	}
 
-	initialBoundsMap := make(map[int]coords.Rect)
-	if err := ash.ForEachWindow(ctx, tconn, func(w *ash.Window) error {
-		initialBoundsMap[w.ID] = w.BoundsInRoot
-		return nil
-	}); err != nil {
-		return errors.Wrap(err, "failed to get bounds of all windows")
+	wsInitial, err := ash.GetAllWindows(ctx, tconn)
+	if err != nil {
+		return errors.Wrap(err, "failed to get windows")
 	}
 
 	verifyBounds := func(ctx context.Context) error {
-		if err := ash.ForEachWindow(ctx, tconn, func(w *ash.Window) error {
-			if initialBounds := initialBoundsMap[w.ID]; !w.BoundsInRoot.Equals(initialBounds) {
-				return errors.Errorf("got window bounds %v; want %v", w.BoundsInRoot, initialBounds)
+		for _, wInitial := range wsInitial {
+			wNow, err := ash.GetWindow(ctx, tconn, wInitial.ID)
+			if err != nil {
+				return errors.Wrapf(err, "failed to look up %q window by ID %d (the app probably crashed)", wInitial.Title, wInitial.ID)
 			}
-			return nil
-		}); err != nil {
-			return errors.Wrap(err, "failed to verify bounds of all windows")
+			if !wNow.BoundsInRoot.Equals(wInitial.BoundsInRoot) {
+				return errors.Errorf("%q window bounds not restored; changed from %v to %v", wNow.Title, wInitial.BoundsInRoot, wNow.BoundsInRoot)
+			}
 		}
 		return nil
 	}
