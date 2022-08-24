@@ -390,6 +390,19 @@ func Minijail(ctx context.Context, s *testing.State) {
 			args:  usernsArgs,
 			check: checkRegexp("^0\n0\n$"),
 		},
+		// Landlock test cases
+		{
+			name:  "landlock-allow",
+			cmd:   "id -ru && id -u",
+			args:  usernsArgs,
+			check: checkRegexp("^0\n0\n$"),
+		},
+		// {
+		// 	name:  "landlock-deny",
+		// 	cmd:   "id -ru && id -u",
+		// 	args:  usernsArgs,
+		// 	check: checkRegexp("^0\n0\n$"),
+		// },
 	} {
 		runTestCase(&tc, s.Param().(linkMode))
 	}
