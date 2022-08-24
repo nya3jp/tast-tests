@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8438063_09384d61",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1525637
+      },
+      "writtenOn": "2022-08-24T09:54:21Z",
+      "side": 1,
+      "message": "Generally LGTM\n\nI\u0027m not an expert of DBus but the changes make sense to me.\n\nAdd chadduffin@ to CC as he has a pending CL related to local/bluetooth",
+      "revId": "8d735bcf7ba0dc4bbed42683e472a52f122af140",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4783b462_8b1cbe4e",
+        "filename": "src/chromiumos/tast/local/bluetooth/bluez/adapter.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1525637
+      },
+      "writtenOn": "2022-08-24T09:54:21Z",
+      "side": 1,
+      "message": "How about `return \u0026Adapter{dbus: obj}, nil`",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 14
+      },
+      "revId": "8d735bcf7ba0dc4bbed42683e472a52f122af140",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34a58174_88115b54",
+        "filename": "src/chromiumos/tast/local/bluetooth/bluez/device.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1525637
+      },
+      "writtenOn": "2022-08-24T09:54:21Z",
+      "side": 1,
+      "message": "How about `return \u0026Device{dbus: obj}, nil`",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 14
+      },
+      "revId": "8d735bcf7ba0dc4bbed42683e472a52f122af140",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
