@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4109c86f_851712f5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/vpn_server.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-08-24T05:18:33Z",
+      "side": 1,
+      "message": "To avoid confliction with the underlay IP addresses.",
+      "range": {
+        "startLine": 331,
+        "startChar": 1,
+        "endLine": 332,
+        "endChar": 42
+      },
+      "revId": "8e32b9fd3876d7b3bca83bc616b746b1c69a6cdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
