@@ -59,6 +59,11 @@ func TconnServiceGRPC(ctx context.Context, s *testing.State) {
 		}
 		return result
 	}
+	undefined := &structpb.Value{}
+
+	if cmp.Equal(value(nil), undefined, protocmp.Transform()) {
+		s.Fatal("Nil and undefined are indistinguishable")
+	}
 
 	structValue := value(map[string]interface{}{"a": 1, "b": 2})
 	for _, tc := range []struct {
@@ -66,8 +71,16 @@ func TconnServiceGRPC(ctx context.Context, s *testing.State) {
 		want *structpb.Value
 	}{
 		{
+			expr: "null",
+			want: value(nil),
+		},
+		{
 			expr: "1 + 1",
 			want: value(2),
+		},
+		{
+			expr: "undefined",
+			want: undefined,
 		},
 		{
 			expr: "tast.promisify(chrome.i18n.getAcceptLanguages)()",
@@ -102,6 +115,16 @@ func TconnServiceGRPC(ctx context.Context, s *testing.State) {
 			fn:   "(x) => { return x; }",
 			args: []*structpb.Value{structValue},
 			want: structValue,
+		},
+		{
+			fn:   "() => {  return null; }",
+			args: []*structpb.Value{},
+			want: value(nil),
+		},
+		{
+			fn:   "() => {}",
+			args: []*structpb.Value{},
+			want: undefined,
 		},
 	} {
 		got, err := svc.Call(ctx, &pb.CallRequest{Fn: tc.fn, Args: tc.args})

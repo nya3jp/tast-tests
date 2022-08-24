@@ -627,6 +627,10 @@ func (c *Chrome) CloseTarget(ctx context.Context, id TargetID) error {
 // cf) crbug.com/1043590
 type TestConn = driver.TestConn
 
+// ErrTestConnUndefinedOut is the error returned by cdputil when the result of
+// some javascript is undefined, but you attempt to store it in a value.
+var ErrTestConnUndefinedOut = cdputil.ErrUndefinedOut
+
 // TestAPIConn returns a shared connection to the test API extension's
 // background page (which can be used to access various APIs). The connection is
 // lazily created, and this function will block until the extension is loaded or
