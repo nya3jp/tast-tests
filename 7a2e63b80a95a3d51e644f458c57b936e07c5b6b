@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "770ee869_6cd6da8c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_create_file.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1250573
+      },
+      "writtenOn": "2022-08-24T08:09:00Z",
+      "side": 1,
+      "message": "Can we use the `filesApp` instance here instead of the `Ancestor()`.",
+      "range": {
+        "startLine": 124,
+        "startChar": 55,
+        "endLine": 124,
+        "endChar": 87
+      },
+      "revId": "7a2e63b80a95a3d51e644f458c57b936e07c5b6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
