@@ -7,7 +7,6 @@ package inputs
 import (
 	"context"
 	"fmt"
-	"strconv"
 	"time"
 
 	"github.com/golang/protobuf/ptypes/empty"
@@ -32,22 +31,13 @@ func init() {
 		Desc:         "Check basic functionality of KeyboardService",
 		Contacts:     []string{"jonfan@google.com", "chromeos-sw-engprod@google.com"},
 		SoftwareDeps: []string{"chrome"},
-		Vars:         []string{"grpcServerPort"},
 		HardwareDeps: hwdep.D(hwdep.FormFactor(hwdep.Clamshell)),
 	})
 }
 
 // KeyboardServiceGRPC check KeyboardService functionalities like Type, Accel, AccelPress and AccelRelease.
 func KeyboardServiceGRPC(ctx context.Context, s *testing.State) {
-	grpcServerPort := crosserverutil.DefaultGRPCServerPort
-	if portStr, ok := s.Var("grpcServerPort"); ok {
-		if portInt, err := strconv.Atoi(portStr); err == nil {
-			grpcServerPort = portInt
-		}
-	}
-
-	// Connect to TCP based gRPC Server on DUT.
-	cl, err := crosserverutil.Dial(ctx, s.DUT(), "localhost", grpcServerPort, true)
+	cl, err := crosserverutil.GetGRPCClient(ctx, s.DUT())
 	if err != nil {
 		s.Fatal("Failed to connect to the RPC service on the DUT: ", err)
 	}
