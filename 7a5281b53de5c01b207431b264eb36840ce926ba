@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f5c13de_5021901e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2022-08-24T08:23:47Z",
+      "side": 1,
+      "message": "The problem was fixed in some other patch.\n\n\u003e Is this change just trying to test the end-to-end flow more thoroughly?\n\nYes. I found that with a little improvement, the test could cover the `boot-update-firmware` script too.",
+      "parentUuid": "3190c964_7b7e8b72",
+      "range": {
+        "startLine": 16,
+        "startChar": 45,
+        "endLine": 19,
+        "endChar": 15
+      },
+      "revId": "7a5281b53de5c01b207431b264eb36840ce926ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f45ee1c8_82f6d6da",
@@ -37,6 +61,24 @@
       "writtenOn": "2022-08-23T18:34:56Z",
       "side": 1,
       "message": "I think doing this full end-to-end test is definitely important and should be added, but I think we might want to keep the abbreviated updater test version,too.\n\nAlthough I don\u0027t like flashing the FPMCU extra times, I feel that having the abbreviated test can help pinpoint an updater code failure vs. a boot race condition that breaks the update process.",
+      "revId": "7a5281b53de5c01b207431b264eb36840ce926ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bdfe3219_3b68d713",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2022-08-24T08:23:47Z",
+      "side": 1,
+      "message": "Yeah, I think we should care about how many times the FPMCU is flashed. If you want to keep the version that calls `bio_fw_updater` directly then I think that we can test the part with the `boot-update-firmware` script separately. It could be a DUT reboot at the end of this test and check if `bio_fw_updater` was run and logs contain information that no update was necessary.",
+      "parentUuid": "f45ee1c8_82f6d6da",
       "revId": "7a5281b53de5c01b207431b264eb36840ce926ba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
