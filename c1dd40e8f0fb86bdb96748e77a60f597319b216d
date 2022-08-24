@@ -212,6 +212,30 @@
       },
       "revId": "c1dd40e8f0fb86bdb96748e77a60f597319b216d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9057321_17ab56a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/sys_info_pii.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1542652
+      },
+      "writtenOn": "2022-08-24T20:18:02Z",
+      "side": 1,
+      "message": "Oh, I missed that. It works now. Thanks!",
+      "parentUuid": "0d2cf7cc_41e5c8ae",
+      "range": {
+        "startLine": 139,
+        "startChar": 0,
+        "endLine": 139,
+        "endChar": 36
+      },
+      "revId": "c1dd40e8f0fb86bdb96748e77a60f597319b216d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
