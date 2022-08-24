@@ -11201,6 +11201,35 @@ func (p *StickyKeysEnabled) Equal(iface interface{}) bool {
 }
 
 // /////////////////////////////////////////////////////////////////////////////
+// 563. AppRecommendationZeroStateEnabled
+// This policy can be modified without rebooting.
+// /////////////////////////////////////////////////////////////////////////////
+type AppRecommendationZeroStateEnabled struct {
+	Stat Status
+	Val  bool
+}
+
+func (p *AppRecommendationZeroStateEnabled) Name() string          { return "AppRecommendationZeroStateEnabled" }
+func (p *AppRecommendationZeroStateEnabled) Field() string         { return "" }
+func (p *AppRecommendationZeroStateEnabled) Scope() Scope          { return ScopeUser }
+func (p *AppRecommendationZeroStateEnabled) Status() Status        { return p.Stat }
+func (p *AppRecommendationZeroStateEnabled) UntypedV() interface{} { return p.Val }
+func (p *AppRecommendationZeroStateEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v bool
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as bool", m)
+	}
+	return v, nil
+}
+func (p *AppRecommendationZeroStateEnabled) Equal(iface interface{}) bool {
+	v, ok := iface.(bool)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
+}
+
+// /////////////////////////////////////////////////////////////////////////////
 // 565. PolicyDictionaryMultipleSourceMergeList
 // This policy can be modified without rebooting.
 // /////////////////////////////////////////////////////////////////////////////
@@ -21655,40 +21684,6 @@ func (p *KerberosDefaultConfiguration) UnmarshalAs(m json.RawMessage) (interface
 }
 func (p *KerberosDefaultConfiguration) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
-	if !ok {
-		return ok
-	}
-	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
-}
-
-// /////////////////////////////////////////////////////////////////////////////
-// 1003. DeviceLoginScreenContextAwareAccessSignalsAllowlist
-// This policy can be modified without rebooting.
-// This is a future policy, it is not present in stable builds.
-// /////////////////////////////////////////////////////////////////////////////
-type DeviceLoginScreenContextAwareAccessSignalsAllowlist struct {
-	Stat Status
-	Val  []string
-}
-
-func (p *DeviceLoginScreenContextAwareAccessSignalsAllowlist) Name() string {
-	return "DeviceLoginScreenContextAwareAccessSignalsAllowlist"
-}
-func (p *DeviceLoginScreenContextAwareAccessSignalsAllowlist) Field() string {
-	return "device_login_screen_context_aware_access_signals_allowlist.value"
-}
-func (p *DeviceLoginScreenContextAwareAccessSignalsAllowlist) Scope() Scope          { return ScopeDevice }
-func (p *DeviceLoginScreenContextAwareAccessSignalsAllowlist) Status() Status        { return p.Stat }
-func (p *DeviceLoginScreenContextAwareAccessSignalsAllowlist) UntypedV() interface{} { return p.Val }
-func (p *DeviceLoginScreenContextAwareAccessSignalsAllowlist) UnmarshalAs(m json.RawMessage) (interface{}, error) {
-	var v []string
-	if err := json.Unmarshal(m, &v); err != nil {
-		return nil, errors.Wrapf(err, "could not read %s as []string", m)
-	}
-	return v, nil
-}
-func (p *DeviceLoginScreenContextAwareAccessSignalsAllowlist) Equal(iface interface{}) bool {
-	v, ok := iface.([]string)
 	if !ok {
 		return ok
 	}
