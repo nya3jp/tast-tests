@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e4a2241_b2c5987b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1529065
+      },
+      "writtenOn": "2022-08-24T04:43:53Z",
+      "side": 1,
+      "message": "Could the CPU and memory overhead for screen recording cause problems with test performance on low-end devices?",
+      "revId": "c45b98cdeea7602b7357a150ebd656823d079cdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
