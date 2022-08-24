@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3cac00e7_c2fa47b2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/device/device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1547337
+      },
+      "writtenOn": "2022-08-24T04:40:31Z",
+      "side": 1,
+      "message": "Changed.\n\nDue to the error message in DevicePlay and DeviceRecord, the error message would become `aplay failed: aplay recognized no sound cards` and `arecord failed: arecord recognized no sound cards` if using errors.Errorf(\"%q recognized no sound cards\", name).\nI originally thought that the duplication of mentioning the called command would be redundant. On second thought, this clarifies what part failed to recognize the sound cards.",
+      "parentUuid": "5091debb_15c772aa",
+      "revId": "bf57885d60e71d7ab8c2a9c8d3f4132a8235d583",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8c3a1ada_1945798e",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-08-24T03:32:24Z",
       "side": 1,
       "message": "Nit: should this be errors.Errorf(\"%q recognized no internal sound cards\", name)?",
+      "revId": "bf57885d60e71d7ab8c2a9c8d3f4132a8235d583",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4482ea2e_c2b2edc0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/device/device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1547337
+      },
+      "writtenOn": "2022-08-24T04:40:31Z",
+      "side": 1,
+      "message": "Changed.\n\nDue to the error message in DevicePlay and DeviceRecord, the error message would become `aplay failed: aplay recognized no internal sound cards` and `arecord failed: arecord recognized no internal sound cards` if using errors.Errorf(\"%q recognized no internal sound cards\", name).\nI originally thought that the duplication of mentioning the called command would be redundant. On second thought, this clarifies what part failed to recognize the internal sound cards.",
+      "parentUuid": "8c3a1ada_1945798e",
       "revId": "bf57885d60e71d7ab8c2a9c8d3f4132a8235d583",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5633e966_e259da44",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/device_play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1547337
+      },
+      "writtenOn": "2022-08-24T04:40:31Z",
+      "side": 1,
+      "message": "I don\u0027t need to keep it going. Changed to s.Fatal.",
+      "parentUuid": "5cfad60d_a3a86b9f",
+      "revId": "bf57885d60e71d7ab8c2a9c8d3f4132a8235d583",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2df0b211_584bf7ba",
@@ -65,6 +119,24 @@
       "writtenOn": "2022-08-24T03:32:24Z",
       "side": 1,
       "message": "Same here",
+      "revId": "bf57885d60e71d7ab8c2a9c8d3f4132a8235d583",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8030f885_680aeedd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/device_record.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1547337
+      },
+      "writtenOn": "2022-08-24T04:40:31Z",
+      "side": 1,
+      "message": "I don\u0027t need to keep it going. Changed to s.Fatal.",
+      "parentUuid": "2df0b211_584bf7ba",
       "revId": "bf57885d60e71d7ab8c2a9c8d3f4132a8235d583",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
