@@ -26,6 +26,7 @@ type processInfo struct {
 	Nice                  int8             `json:"nice"`
 	ParentProcessID       jsontypes.Uint32 `json:"parent_process_id"`
 	ProcessGroupID        jsontypes.Uint32 `json:"process_group_id"`
+	ProcessID             jsontypes.Uint32 `json:"process_id"`
 	PhysicalBytesRead     jsontypes.Uint64 `json:"physical_bytes_read"`
 	PhysicalBytesWritten  jsontypes.Uint64 `json:"physical_bytes_written"`
 	Priority              int8             `json:"priority"`
