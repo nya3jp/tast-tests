@@ -141,12 +141,15 @@ func RunClamShell(ctx, closeCtx context.Context, tconn *chrome.TestConn, ui *uia
 		return errors.Wrap(err, "failed to wait for browser window to become maximized")
 	}
 
-	// Minimize window in a way that does not trigger https://crbug.com/1324662.
-	// TODO(https://crbug.com/1324662): When the bug is fixed, minimize window
-	// in a way similar to the above code that maximizes the window. It better
-	// represents a real user workflow.
-	if err := ash.SetWindowStateAndWait(ctx, tconn, browserWinID, ash.WindowStateMinimized); err != nil {
+	// Minimize window.
+	minimizeButton := nodewith.Name("Minimize").ClassName("FrameCaptionButton").Role(role.Button)
+	if err := ui.LeftClick(minimizeButton)(ctx); err != nil {
 		return errors.Wrap(err, "failed to minimize the browser window")
+	}
+	if err := ash.WaitForCondition(ctx, tconn, func(w *ash.Window) bool {
+		return w.ID == browserWinID && w.State == ash.WindowStateMinimized && !w.IsAnimating
+	}, &testing.PollOptions{Timeout: timeout}); err != nil {
+		return errors.Wrap(err, "failed to wait for browser window to become minimized")
 	}
 
 	// Restore window.
