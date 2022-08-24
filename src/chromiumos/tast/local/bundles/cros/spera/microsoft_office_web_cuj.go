@@ -1,15 +1,15 @@
-// Copyright 2021 The Chromium OS Authors. All rights reserved.
+// Copyright 2022 The ChromiumOS Authors.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package ui
+package spera
 
 import (
 	"context"
 	"time"
 
 	"chromiumos/tast/ctxutil"
-	"chromiumos/tast/local/bundles/cros/ui/productivitycuj"
+	"chromiumos/tast/local/bundles/cros/spera/productivitycuj"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
@@ -22,7 +22,6 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		// TODO (b/242590511): Deprecated after moving all performance cuj test cases to chromiumos/tast/local/bundles/cros/spera directory.
 		Func:         MicrosoftOfficeWebCUJ,
 		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Measures the performance of Microsoft Office web version CUJ",
@@ -30,10 +29,10 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		Vars: []string{
-			"ui.ms_username",            // Required. Expecting the username of the "Microsoft" account.
-			"ui.ms_password",            // Required. Expecting the password of the "Microsoft" account.
-			"ui.sampleMSOfficeSheetURL", // Required. The URL of sample Microsoft Excel. It will be copied to create a new one to perform tests on.
-			"ui.cuj_mode",               // Optional. Expecting "tablet" or "clamshell".
+			"spera.ms_username",            // Required. Expecting the username of the "Microsoft" account.
+			"spera.ms_password",            // Required. Expecting the password of the "Microsoft" account.
+			"spera.sampleMSOfficeSheetURL", // Required. The URL of sample Microsoft Excel. It will be copied to create a new one to perform tests on.
+			"spera.cuj_mode",               // Optional. Expecting "tablet" or "clamshell".
 		},
 		Params: []testing.Param{
 			{
@@ -81,9 +80,9 @@ func init() {
 func MicrosoftOfficeWebCUJ(ctx context.Context, s *testing.State) {
 	p := s.Param().(productivitycuj.ProductivityParam)
 	cr := s.FixtValue().(chrome.HasChrome).Chrome()
-	sampleSheetURL, ok := s.Var("ui.sampleMSOfficeSheetURL")
+	sampleSheetURL, ok := s.Var("spera.sampleMSOfficeSheetURL")
 	if !ok {
-		s.Fatal("Require variable ui.sampleMSOfficeSheetURL is not provided")
+		s.Fatal("Require variable spera.sampleMSOfficeSheetURL is not provided")
 	}
 
 	tconn, err := cr.TestAPIConn(ctx)
@@ -96,7 +95,7 @@ func MicrosoftOfficeWebCUJ(ctx context.Context, s *testing.State) {
 	defer cancel()
 
 	var tabletMode bool
-	if mode, ok := s.Var("ui.cuj_mode"); ok {
+	if mode, ok := s.Var("spera.cuj_mode"); ok {
 		tabletMode = mode == "tablet"
 		cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, tabletMode)
 		if err != nil {
@@ -134,8 +133,8 @@ func MicrosoftOfficeWebCUJ(ctx context.Context, s *testing.State) {
 	}
 	defer kb.Close()
 
-	username := s.RequiredVar("ui.ms_username")
-	password := s.RequiredVar("ui.ms_password")
+	username := s.RequiredVar("spera.ms_username")
+	password := s.RequiredVar("spera.ms_password")
 
 	office := productivitycuj.NewMicrosoftWebOffice(tconn, uiHdl, kb, tabletMode, p.IsLacros, username, password)
 
