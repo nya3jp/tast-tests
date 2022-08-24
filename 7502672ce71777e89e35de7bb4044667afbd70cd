@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b0313bb_42551e6b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550127
+      },
+      "writtenOn": "2022-08-24T15:59:33Z",
+      "side": 1,
+      "message": "Hi @Kamil and @Alexander, I updated the CL with a method that takes the Policy object instead of a string literal. The other function is still used since there are legacy policies that are tested, such as DeviceOffHours, which are not present in the defs.go file. It is better to use the objects instead of the string literal due to typos and other concerns.",
+      "revId": "7502672ce71777e89e35de7bb4044667afbd70cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
