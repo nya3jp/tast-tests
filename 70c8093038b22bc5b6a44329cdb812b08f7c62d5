@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f355aac2_64df488a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-08-24T07:02:59Z",
+      "side": 1,
+      "message": "Just FYI we usually wait for an SME of the area (I\u0027m assuming pjlee@ here?) to review before reviewing from tast-owners perspective. Please add me back to the attention set once reviewed and approved.",
+      "revId": "70c8093038b22bc5b6a44329cdb812b08f7c62d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bb0fc8c8_3ab1000b",
