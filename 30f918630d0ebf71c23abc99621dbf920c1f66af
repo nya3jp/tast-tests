@@ -33,6 +33,41 @@
       "message": "LGTM, but please run tast unit test: fast_build.sh -T\n\nThen, add this line to commit log:\n\nTEST\u003dtast unit tests passed.\n\nThanks.\n",
       "revId": "30f918630d0ebf71c23abc99621dbf920c1f66af",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "df00ea70_19b11a63",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1196204
+      },
+      "writtenOn": "2022-08-24T05:06:16Z",
+      "side": 1,
+      "message": "+ Keiichi for team-internal review as requested by Ricardo.",
+      "revId": "30f918630d0ebf71c23abc99621dbf920c1f66af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa4e36eb_f912e0b8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1196204
+      },
+      "writtenOn": "2022-08-24T05:06:16Z",
+      "side": 1,
+      "message": "\u003e LGTM, but please run tast unit test: fast_build.sh -T\n\u003e \n\u003e Then, add this line to commit log:\n\u003e \n\u003e TEST\u003dtast unit tests passed.\n\u003e \n\u003e Thanks.\n\u003e \n\nDone, thanks!",
+      "parentUuid": "61d9c77a_a3b40294",
+      "revId": "30f918630d0ebf71c23abc99621dbf920c1f66af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
