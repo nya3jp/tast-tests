@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6db9891_3db736a1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-08-24T17:30:13Z",
+      "side": 1,
+      "message": "Thanks all for the review thus far! I iterated on the change and updated all of the existing UI tests to run using this new approach. I tested this by running\n\n    tast --verbose run localhost:7777 bluetooth.*.floss_disabled\n\nand ensuring all of the tests passed. I think this is in better shape and is no longer just an example and can be fully reviewed so that it can be landed :) please let me know if y\u0027all have any questions!",
+      "revId": "4fa71a47aa8169f677b9ecbbad683070376e5ea3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

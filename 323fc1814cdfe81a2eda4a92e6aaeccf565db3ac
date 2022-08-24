@@ -22,6 +22,30 @@
       },
       "revId": "323fc1814cdfe81a2eda4a92e6aaeccf565db3ac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0bef99b_b0067cb5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/fixture.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-08-24T17:30:13Z",
+      "side": 1,
+      "message": "These fixtures are used as parents for the fixtures that the tests actually use to simplify the main responsibilities of enabling feature flags and choosing which Bluetooth implementation to use. Do you think it makes sense to figure out how we could combine the fixtures so that only the ones specifying the Bluetooth implementation exists?",
+      "parentUuid": "b968f3ef_ccc0912c",
+      "range": {
+        "startLine": 37,
+        "startChar": 19,
+        "endLine": 37,
+        "endChar": 45
+      },
+      "revId": "323fc1814cdfe81a2eda4a92e6aaeccf565db3ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

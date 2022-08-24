@@ -206,6 +206,30 @@
       },
       "revId": "9b2d02f9106c3e00d73c0e78b93ad457fbffa027",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "569424c6_903c36ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-08-24T17:30:13Z",
+      "side": 1,
+      "message": "Ah, that must be what the issue is-- moving it appears to have made everything happy except the lint related to updating the copyright header for new files. I left the notice as-is given that this file was only moved, but I can update it if need be!",
+      "parentUuid": "ea994659_d4ed291c",
+      "range": {
+        "startLine": 96,
+        "startChar": 11,
+        "endLine": 96,
+        "endChar": 27
+      },
+      "revId": "9b2d02f9106c3e00d73c0e78b93ad457fbffa027",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
