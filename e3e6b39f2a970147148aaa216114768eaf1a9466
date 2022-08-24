@@ -70,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "18a67046_92d8448f",
+        "filename": "src/chromiumos/tast/local/common/shared_object.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-08-24T18:56:35Z",
+      "side": 1,
+      "message": "ACK",
+      "parentUuid": "8878e2d6_933c564b",
+      "revId": "e3e6b39f2a970147148aaa216114768eaf1a9466",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dc7e7580_ee441cdb",
@@ -101,6 +119,24 @@
       "side": 1,
       "message": "The CL was getting too big, so I pulled this into a parent CL.",
       "parentUuid": "dc7e7580_ee441cdb",
+      "revId": "e3e6b39f2a970147148aaa216114768eaf1a9466",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d6a965b_89ab395a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/ui/tconn_service_grpc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-08-24T18:56:35Z",
+      "side": 1,
+      "message": "ACK",
+      "parentUuid": "752b2c71_e15246d2",
       "revId": "e3e6b39f2a970147148aaa216114768eaf1a9466",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
