@@ -32,7 +32,7 @@ func init() {
 		Contacts: []string{"tobyhuang@chromium.org", "cros-projector@google.com"},
 		Impl: NewProjectorFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
 			return []chrome.Option{
-				chrome.EnableFeatures("Projector, ProjectorAppDebug, ProjectorAnnotator, ProjectorTutorialVideoView"),
+				chrome.EnableFeatures("Projector, ProjectorAppDebug, ProjectorAnnotator, ProjectorTutorialVideoView, ProjectorLocalPlayback"),
 				chrome.GAIALoginPool(s.RequiredVar("ui.gaiaPoolDefault")),
 			}, nil
 		}),
@@ -52,7 +52,7 @@ func init() {
 		Contacts: []string{"hyungtaekim@chromium.org", "cros-projector@google.com"},
 		Impl: NewProjectorFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
 			return lacrosfixt.NewConfig(lacrosfixt.ChromeOptions(
-				chrome.EnableFeatures("Projector, ProjectorAppDebug, ProjectorAnnotator, ProjectorTutorialVideoView"),
+				chrome.EnableFeatures("Projector, ProjectorAppDebug, ProjectorAnnotator, ProjectorTutorialVideoView, ProjectorLocalPlayback"),
 				chrome.GAIALoginPool(s.RequiredVar("ui.gaiaPoolDefault")),
 			)).Opts()
 		}),

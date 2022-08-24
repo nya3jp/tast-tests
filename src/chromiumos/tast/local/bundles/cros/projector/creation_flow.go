@@ -59,6 +59,11 @@ func CreationFlow(ctx context.Context, s *testing.State) {
 	stopRecordingButton := nodewith.Name("Stop screen recording").Role(role.Button)
 	tutorialsText := nodewith.Name("Getting started").Role(role.StaticText)
 	closeTutorialsButton := nodewith.Name("Close tutorials").Role(role.Button)
+	viewerTitle := nodewith.Name("Screencast title").Role(role.TextField)
+	zeroTimeElapsed := nodewith.Name("00:00").Role(role.StaticText).Ancestor(nodewith.Name("Time elapsed"))
+	playButton := nodewith.Name("Play").Role(role.Button)
+	pauseButton := nodewith.Name("Pause").Role(role.Button)
+	homeButton := nodewith.Name("Back to home").Role(role.Button)
 
 	if err := launcher.LaunchAndWaitForAppOpen(tconn, apps.Projector)(ctx); err != nil {
 		s.Fatal("Failed to open Projector app: ", err)
@@ -112,6 +117,15 @@ func CreationFlow(ctx context.Context, s *testing.State) {
 		// Dismiss the tutorial videos in case they hide the screencast item on small screens.
 		ui.WithInterval(5*time.Second).RetryUntil(refreshApp, ui.Exists(closeTutorialsButton)),
 		ui.LeftClickUntil(closeTutorialsButton, ui.Gone(tutorialsText)),
+		// Test local video playback while screencast is still transcoding.
+		ui.WithInterval(time.Second).LeftClickUntil(screencastItem, ui.Exists(viewerTitle)),
+		ui.WaitUntilExists(zeroTimeElapsed),
+		ui.WaitUntilExists(playButton),
+		// Verify that the play head has proceeded by playing until the elapsed time is no longer 00:00.
+		ui.WithInterval(time.Second).LeftClickUntil(playButton, ui.Gone(zeroTimeElapsed)),
+		ui.WaitUntilExists(pauseButton),
+		ui.WithInterval(time.Second).LeftClickUntil(pauseButton, ui.Exists(playButton)),
+		ui.WithInterval(time.Second).LeftClickUntil(homeButton, ui.Gone(viewerTitle)),
 	)(ctx); err != nil {
 		s.Fatal("Failed to go through the new screencast creation flow: ", err)
 	}
