@@ -22,6 +22,30 @@
       },
       "revId": "70fc35a0b79d4b13dc803cae434fd5ffd1325778",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4872f4e0_67c998bb",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/rpcdut/rpcdut.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2022-08-24T09:57:54Z",
+      "side": 1,
+      "message": "To be honest, I don\u0027t remember what the problem was, implemented that one month ago.\n\nI\u0027ll leave this comment unresolved. If we decide to merge this CL, I\u0027ll check what the problem was.",
+      "parentUuid": "8710f850_aa7666b0",
+      "range": {
+        "startLine": 143,
+        "startChar": 0,
+        "endLine": 145,
+        "endChar": 42
+      },
+      "revId": "70fc35a0b79d4b13dc803cae434fd5ffd1325778",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
