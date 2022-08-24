@@ -86,7 +86,7 @@ func SubmitFeedbackAgain(ctx context.Context, s *testing.State) {
 	}
 	defer kb.Close()
 
-	if err := kb.Type(ctx, "This time I am not able to open camera"); err != nil {
+	if err := kb.Type(ctx, "End to end test - please ignore"); err != nil {
 		s.Fatal("Failed to enter issue description: ", err)
 	}
 
