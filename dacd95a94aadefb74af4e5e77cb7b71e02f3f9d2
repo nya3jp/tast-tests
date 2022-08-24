@@ -16,6 +16,24 @@
       "message": "Friendly ping reviewers :)\n\nCould we submit the current implementation to unblock https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3836884/3?\n\nWe can explore a better solution later for broader usage.",
       "revId": "dacd95a94aadefb74af4e5e77cb7b71e02f3f9d2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f49ef01a_b477a7a9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-08-24T07:34:52Z",
+      "side": 1,
+      "message": "I could live with having this apps.LaunchChromeByShortcut with warning.\n\nBut I\u0027d very much prefer not having this SetUpIncognito function in browserfixt (it doesn\u0027t match the other SetUp functions there). Can you just call apps.LaunchChromeByShortcut followed by browserfixt.Connect in your tests?\n\nNote that I\u0027m not a tast test owner, so I won\u0027t be able to +2.",
+      "parentUuid": "8f77d112_82a31676",
+      "revId": "dacd95a94aadefb74af4e5e77cb7b71e02f3f9d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
