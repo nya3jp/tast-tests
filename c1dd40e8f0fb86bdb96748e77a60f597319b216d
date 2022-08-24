@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ea5dbd6_8f3bed53",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/sys_info_pii.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1542652
+      },
+      "writtenOn": "2022-08-24T18:23:17Z",
+      "side": 1,
+      "message": "Done. Good to know. Thanks.",
+      "parentUuid": "c7d6cf67_ff11a12b",
+      "range": {
+        "startLine": 41,
+        "startChar": 24,
+        "endLine": 41,
+        "endChar": 43
+      },
+      "revId": "c1dd40e8f0fb86bdb96748e77a60f597319b216d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "43e4fc21_6a970011",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-08-24T16:36:00Z",
       "side": 1,
       "message": "`Fixture:   \"chromeLoggedIn\",`\n\nnit: precondition could be replaced with new fixture convention for consistency here and at L63.",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 32
+      },
+      "revId": "c1dd40e8f0fb86bdb96748e77a60f597319b216d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "83e9b952_749df158",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/sys_info_pii.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1542652
+      },
+      "writtenOn": "2022-08-24T18:23:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "43e4fc21_6a970011",
       "range": {
         "startLine": 55,
         "startChar": 0,
@@ -84,6 +132,30 @@
       "side": 1,
       "message": "We also wouldn\u0027t need both `bTconn` and `tconn` after this change, right?",
       "parentUuid": "7908a3fd_892367d9",
+      "range": {
+        "startLine": 139,
+        "startChar": 0,
+        "endLine": 139,
+        "endChar": 36
+      },
+      "revId": "c1dd40e8f0fb86bdb96748e77a60f597319b216d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a012216d_a89d6fea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/sys_info_pii.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1542652
+      },
+      "writtenOn": "2022-08-24T18:23:17Z",
+      "side": 1,
+      "message": "The new code is much more simplified! Thanks for the suggestion.\n\nThere is one issue while testing lacros with third party site (screenshot here: http://screen/5eSiJkgWLeUzVWb.png). Seems like it\u0027s looking for a tab name exactly the same as the URL `https://www.facebook.com`? But only find `616739487 0 Facebook - log in or sign up https://www.facebook.com/ true`. This requirement seems too strict?",
+      "parentUuid": "af79d7df_2c67bf6d",
       "range": {
         "startLine": 139,
         "startChar": 0,
