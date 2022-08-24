@@ -6,13 +6,14 @@ package network
 
 import (
 	"context"
+	"fmt"
 	"regexp"
 	"time"
 
-	"chromiumos/tast/common/hermesconst"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/cellular"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
@@ -21,8 +22,6 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/quicksettings"
 	"chromiumos/tast/local/chrome/uiauto/restriction"
 	"chromiumos/tast/local/chrome/uiauto/role"
-	"chromiumos/tast/local/dbusutil"
-	"chromiumos/tast/local/hermes"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/local/policyutil/fixtures"
 	"chromiumos/tast/testing"
@@ -44,9 +43,6 @@ func init() {
 	})
 }
 
-const managedProfileName = "ManagedProfile"
-const unmanagedProfileName = "UnmanagedProfile"
-
 func CellularPolicyConnection(ctx context.Context, s *testing.State) {
 	fdms := s.FixtValue().(fakedms.HasFakeDMS).FakeDMS()
 	// Start a Chrome instance that will fetch policies from the FakeDMS.
@@ -65,10 +61,13 @@ func CellularPolicyConnection(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to clean up: ", err)
 	}
 
-	managedIccid, err := getManagedProfileIccidBeforeTest(ctx)
+	managedProperties, unmanagedProperties, err := getProfilesBeforeTest(ctx)
 	if err != nil {
 		s.Fatal("Failed to connect to each cellular network before applying policy: ", err)
 	}
+	managedIccid := managedProperties.Iccid
+	managedProfileName := managedProperties.Name
+	unmanagedProfileName := unmanagedProperties.Name
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
@@ -124,7 +123,8 @@ func CellularPolicyConnection(ctx context.Context, s *testing.State) {
 			}
 			ui := uiauto.New(tconn).WithTimeout(30 * time.Second)
 
-			managedNetworks := nodewith.NameRegex(regexp.MustCompile(".*ManagedProfile,.*Managed by your Administrator.*")).Role(role.GenericContainer)
+			regex := fmt.Sprintf(".*%s,.*Managed by your Administrator.*", managedProfileName)
+			managedNetworks := nodewith.NameRegex(regexp.MustCompile(regex)).Role(role.GenericContainer)
 			infos, err := ui.NodesInfo(ctx, managedNetworks)
 			if err != nil {
 				s.Fatal("Failed to get nodes info: ", err)
@@ -160,7 +160,7 @@ func CellularPolicyConnection(ctx context.Context, s *testing.State) {
 			if param.allowOnlyPolicyCellularNetworks {
 				// make sure "Add Cellular" button is disabled
 				if err := ui.CheckRestriction(ossettings.AddCellularButton, restriction.Disabled)(ctx); err != nil {
-					s.Fatal("Add cellular button is not disabled")
+					s.Fatal("Add cellular button is not disabled: ", err)
 				}
 			}
 
@@ -246,72 +246,65 @@ func CellularPolicyConnection(ctx context.Context, s *testing.State) {
 	s.Log("Finish managed eSIM profile connection test")
 }
 
-// getManagedProfileIccidBeforeTest picks one of the profile's ICCID as the managed profile
-// for the following test to use and disables all profiles in the euicc.
-func getManagedProfileIccidBeforeTest(ctx context.Context) (managedIccid string, e error) {
-	const prodSimSlotNum = 0
-	euicc, err := hermes.NewEUICC(ctx, prodSimSlotNum)
+func disconnect(ctx context.Context) error {
+	helper, err := cellular.NewHelper(ctx)
 	if err != nil {
-		return "", errors.Wrap(err, "Unable to get Hermes euicc")
+		return errors.Wrap(err, "failed to create cellular helper")
 	}
 
-	testing.ContextLog(ctx, "Looking for installed profile")
-	profiles, err := euicc.InstalledProfiles(ctx, false)
+	service, err := helper.FindService(ctx)
 	if err != nil {
-		return "", errors.Wrap(err, "failed to get installed profiles")
-	}
-	if len(profiles) < 2 {
-		return "", errors.Wrap(err, "no profiles found on euicc, expected atleast two installed profiles")
+		return errors.Wrap(err, "failed to get connectable cellular service")
 	}
 
-	findUnmanagedProfile := false
-	for _, profile := range profiles {
-		props, err := dbusutil.NewDBusProperties(ctx, profile.DBusObject)
-		iccid, err := props.GetString(hermesconst.ProfilePropertyIccid)
-		if err != nil {
-			return "", errors.Wrapf(err, "failed to read profile %s iccid", profile.String())
-		}
-
-		nickName, err := props.GetString(hermesconst.ProfilePropertyNickname)
-		if err != nil {
-			return "", errors.Wrapf(err, "failed to read profile %s nickname", profile.String())
-		}
-
-		state, err := props.GetInt32(hermesconst.ProfilePropertyState)
-		if err != nil {
-			return "", errors.Wrapf(err, "failed to read profile %s property state", profile.String())
-		}
-
-		if managedIccid == "" {
-			managedIccid = iccid
-			testing.ContextLogf(ctx, "Using managed profile iccid: %s", managedIccid)
-
-			if state == hermesconst.ProfileStateEnabled {
-				if err := profile.Call(ctx, hermesconst.ProfileMethodDisable).Err; err != nil {
-					return "", errors.Wrapf(err, "failed to disable profile %s", profile.String())
-				}
-			}
-
-			if nickName != managedProfileName {
-				testing.ContextLogf(ctx, "Renaming profile %s to ManagedProfile", profile.String())
-				if err := profile.Call(ctx, "Rename", managedProfileName).Err; err != nil {
-					return "", errors.Wrapf(err, "failed to rename profile: %s", profile.String())
-				}
-			}
-		} else if !findUnmanagedProfile {
-			if nickName != unmanagedProfileName {
-				testing.ContextLogf(ctx, "Renaming profile %s to UnmanagedProfile", profile.String())
-				if err := profile.Call(ctx, "Rename", unmanagedProfileName).Err; err != nil {
-					return "", errors.Wrapf(err, "failed to rename profile: %s", profile.String())
-				}
-			}
-			testing.ContextLogf(ctx, "Using unmanaged profile iccid: %s", iccid)
-			findUnmanagedProfile = true
+	if connected, err := service.IsConnected(ctx); err != nil {
+		return errors.Wrap(err, "failed to get the cellular service connected status")
+	} else if connected {
+		if _, err := helper.Disconnect(ctx); err != nil {
+			return errors.Wrap(err, "failed to disconnect from cellular service")
 		}
 	}
-	if !findUnmanagedProfile {
-		return "", errors.Wrap(nil, "didn't find unmanaged profile")
+
+	return nil
+}
+
+func getProfilesBeforeTest(ctx context.Context) (*cellular.NetworkProperties, *cellular.NetworkProperties, error) {
+	testing.ContextLog(ctx, "disconnecting cellular connection")
+	if err := disconnect(ctx); err != nil {
+		return nil, nil, errors.Wrap(err, "failed to disconnect from cellular service")
 	}
 
-	return managedIccid, nil
+	networkProvider, err := cellular.NewNetworkProvider(ctx, false)
+	if err != nil {
+		return nil, nil, errors.Wrap(err, "failed to fetch cellular network")
+	}
+
+	testing.ContextLog(ctx, "renaming eSIM profiles")
+	if err := networkProvider.RenameESimProfiles(ctx, "CellularNetwork"); err != nil {
+		return nil, nil, errors.Wrap(err, "failed to rename all eSIM profiles")
+	}
+
+	networks, err := networkProvider.ESimNetworks(ctx)
+	if err != nil {
+		return nil, nil, errors.Wrap(err, "failed to fetch eSIM networks")
+	}
+
+	if len(networks) < 2 {
+		return nil, nil, errors.Errorf("Not enough eSIM profiles, expected: 2 got %d", len(networks))
+	}
+
+	managedNetwork := networks[0]
+	managedProperties, err := managedNetwork.Properties(ctx)
+	if err != nil {
+		return nil, nil, errors.Wrap(err, "failed to fetch managed network properties")
+	}
+
+	unmanagedNetwork := networks[1]
+	unmanagedProperties, err := unmanagedNetwork.Properties(ctx)
+	if err != nil {
+		return nil, nil, errors.Wrap(err, "failed to fetch unmanaged network properties")
+	}
+
+	testing.ContextLogf(ctx, "using unmanaged profile: %q, managed profile: %q", managedProperties.Name, unmanagedProperties.Name)
+	return managedProperties, unmanagedProperties, nil
 }
