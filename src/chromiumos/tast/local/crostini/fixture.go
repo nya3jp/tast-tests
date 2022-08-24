@@ -6,6 +6,7 @@ package crostini
 
 import (
 	"context"
+	"path/filepath"
 	"strconv"
 	"time"
 
@@ -16,6 +17,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	cui "chromiumos/tast/local/crostini/ui"
 	"chromiumos/tast/local/crostini/ui/terminalapp"
@@ -334,7 +336,20 @@ func (f *crostiniFixture) SetUp(ctx context.Context, s *testing.FixtState) inter
 		s.Fatal("Failed to create keyboard device: ", err)
 	}
 
-	r, err := StartRecording(ctx, f.tconn, "crostini_restart", RestartStages)
+	// Setup the screen recorder.
+	screenRecorder, err := uiauto.NewScreenRecorder(ctx, f.tconn)
+	if err != nil {
+		s.Log("Failed to create screen recorder: ", err)
+	}
+	if screenRecorder != nil {
+		if err := screenRecorder.Start(ctx, f.tconn); err != nil {
+			s.Log("Failed to start screen recorder: ", err)
+		}
+		defer screenRecorder.StopAndSaveOnError(cleanupCtx, filepath.Join(s.OutDir(), "faillog", "record.webm"), s.HasError)
+	}
+
+	// Setup the perf recorder.
+	perfRecorder, err := StartRecording(ctx, f.tconn, "crostini_restart", RestartStages)
 	if err != nil {
 		s.Log("Can't record initial restart metrics: ", err)
 	}
@@ -350,7 +365,7 @@ func (f *crostiniFixture) SetUp(ctx context.Context, s *testing.FixtState) inter
 			s.Fatal("Failed to install Crostini: ", err)
 		}
 	}
-	if f.values, err = r.UpdateValues(ctx, f.tconn); err != nil {
+	if f.values, err = perfRecorder.UpdateValues(ctx, f.tconn); err != nil {
 		s.Log("Can't update perf values: ", err)
 	} else {
 		f.values.Save(s.OutDir())
