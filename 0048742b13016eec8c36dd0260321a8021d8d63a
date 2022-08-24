@@ -16,6 +16,24 @@
       "message": "Line 63 to 71 can be simplified to just check a `ui.DoDefault(metrics)`, which already contains `ui.WaitUntilExists(metrics)`.",
       "revId": "0048742b13016eec8c36dd0260321a8021d8d63a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8de8c993_513118b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/view_metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1538417
+      },
+      "writtenOn": "2022-08-24T18:18:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cbd7e035_12b35e72",
+      "revId": "0048742b13016eec8c36dd0260321a8021d8d63a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
