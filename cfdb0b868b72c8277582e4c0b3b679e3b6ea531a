@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd93bdb8_8be18cb5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-08-24T12:30:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "10015058_e634371c",
+      "range": {
+        "startLine": 9,
+        "startChar": 7,
+        "endLine": 9,
+        "endChar": 17
+      },
+      "revId": "cfdb0b868b72c8277582e4c0b3b679e3b6ea531a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3444a601_90727740",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-08-23T15:32:52Z",
       "side": 1,
       "message": "Can you mention why it\u0027s needed instead?",
+      "range": {
+        "startLine": 119,
+        "startChar": 76,
+        "endLine": 119,
+        "endChar": 139
+      },
+      "revId": "cfdb0b868b72c8277582e4c0b3b679e3b6ea531a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d30590d1_b188200e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/wallpaper_image.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-08-24T12:30:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3444a601_90727740",
       "range": {
         "startLine": 119,
         "startChar": 76,
@@ -87,6 +135,48 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9cfef2d1_262871f2",
+        "filename": "src/chromiumos/tast/local/wallpaper/wallpaper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-08-24T12:30:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "918b13cd_03722d72",
+      "revId": "cfdb0b868b72c8277582e4c0b3b679e3b6ea531a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2df8066f_3f8f0e71",
+        "filename": "src/chromiumos/tast/local/wallpaper/wallpaper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-08-24T12:30:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d67bc3d8_26abbab5",
+      "range": {
+        "startLine": 43,
+        "startChar": 2,
+        "endLine": 43,
+        "endChar": 6
+      },
+      "revId": "cfdb0b868b72c8277582e4c0b3b679e3b6ea531a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "507c2b64_5e48e1e3",
@@ -100,6 +190,24 @@
       "writtenOn": "2022-08-23T17:57:41Z",
       "side": 1,
       "message": "nit: new line not needed",
+      "revId": "cfdb0b868b72c8277582e4c0b3b679e3b6ea531a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2254c8e5_72ce6542",
+        "filename": "src/chromiumos/tast/local/wallpaper/wallpaper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-08-24T12:30:25Z",
+      "side": 1,
+      "message": "but this is the output of the formatter, so I guess it\u0027s okay?",
+      "parentUuid": "507c2b64_5e48e1e3",
       "revId": "cfdb0b868b72c8277582e4c0b3b679e3b6ea531a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
