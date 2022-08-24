@@ -226,18 +226,18 @@ func parseUptime(eventName, bootstatDir string, index int) (float64, error) {
 // "seconds since kernel startup" from the bootstat files for the events named
 // in |eventMetrics|, and stores the values as perf metrics.  The following
 // metrics may be recorded:
-//   * seconds_kernel_to_startup
-//   * seconds_kernel_to_startup_done
-//   * seconds_kernel_to_chrome_exec
-//   * seconds_kernel_to_chrome_main
-//   * seconds_kernel_to_signin_start
-//   * seconds_kernel_to_signin_wait
-//   * seconds_kernel_to_signin_users
-//   * seconds_kernel_to_login
-//   * seconds_kernel_to_android_start
-//   * seconds_kernel_to_cellular_registered
-//   * seconds_kernel_to_wifi_registered
-//   * seconds_kernel_to_network
+//   - seconds_kernel_to_startup
+//   - seconds_kernel_to_startup_done
+//   - seconds_kernel_to_chrome_exec
+//   - seconds_kernel_to_chrome_main
+//   - seconds_kernel_to_signin_start
+//   - seconds_kernel_to_signin_wait
+//   - seconds_kernel_to_signin_users
+//   - seconds_kernel_to_login
+//   - seconds_kernel_to_android_start
+//   - seconds_kernel_to_cellular_registered
+//   - seconds_kernel_to_wifi_registered
+//   - seconds_kernel_to_network
 func GatherTimeMetrics(ctx context.Context, results *platform.GetBootPerfMetricsResponse) error {
 	var missingNonRequiredEvennts []string
 	for _, k := range eventMetrics {
@@ -297,11 +297,12 @@ func parseDiskstat(eventName, bootstatDir string, index int) (float64, error) {
 // events named in |eventMetrics|, converts the values to "bytes read since
 // boot", and stores the values as perf metrics. The following metrics are
 // recorded:
-//   * rdbytes_kernel_to_startup
-//   * rdbytes_kernel_to_startup_done
-//   * rdbytes_kernel_to_chrome_exec
-//   * rdbytes_kernel_to_chrome_main
-//   * rdbytes_kernel_to_login
+//   - rdbytes_kernel_to_startup
+//   - rdbytes_kernel_to_startup_done
+//   - rdbytes_kernel_to_chrome_exec
+//   - rdbytes_kernel_to_chrome_main
+//   - rdbytes_kernel_to_login
+//
 // Disk statistics are reported in units of 512 byte sectors; we convert the
 // metrics to bytes so that downstream consumers don't have to ask "How big is
 // a sector?".
@@ -465,9 +466,9 @@ func readFirmwareTimestamps(ctx context.Context) ([]byte, error) {
 // spent from the start of that shutdown until the completion of the most recent
 // boot.
 // This function records these metrics:
-//   * seconds_shutdown_time
-//   * seconds_reboot_time
-//   * seconds_reboot_error
+//   - seconds_shutdown_time
+//   - seconds_reboot_time
+//   - seconds_reboot_error
 func GatherRebootMetrics(results *platform.GetBootPerfMetricsResponse) error {
 	bootstatDir, err := findMostRecentBootstatArchivePath()
 	if err != nil {
@@ -610,6 +611,13 @@ func GatherMetricRawDataFiles(raw map[string][]byte) error {
 	for _, glob := range []string{uptimeFileGlob, diskFileGlob} {
 		list, _ := filepath.Glob(glob) // filepath.Glob() only returns error on malformed glob patterns.
 		files = append(files, list...)
+	}
+
+	// Add sync-rtc-tlsdated-start sync-rtc-tlsdated-stop.
+	files = append(files, filepath.Join(bootstatCurrentDir, "sync-rtc-tlsdated-start"))
+	lastBootstatArchive, err := findMostRecentBootstatArchivePath()
+	if err == nil {
+		files = append(files, filepath.Join(lastBootstatArchive, "sync-rtc-tlsdated-stop"))
 	}
 
 	for _, f := range files {

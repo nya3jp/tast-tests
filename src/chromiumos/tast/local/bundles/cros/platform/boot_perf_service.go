@@ -7,12 +7,16 @@ package platform
 import (
 	"context"
 	"math"
+	"os"
 	"strings"
+	"time"
 
 	"github.com/golang/protobuf/ptypes/empty"
 	"google.golang.org/grpc"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/platform/bootperf"
+	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/services/cros/platform"
 	"chromiumos/tast/testing"
 )
@@ -50,31 +54,53 @@ func (*BootPerfService) DisableBootchart(ctx context.Context, _ *empty.Empty) (*
 	return &empty.Empty{}, nil
 }
 
+func (*BootPerfService) EnsureTlsdatedStopped(ctx context.Context, _ *empty.Empty) (*empty.Empty, error) {
+	const syncRTCBootstatFile = "/tmp/sync-rtc-tlsdated-stop"
+
+	if err := upstart.StopJob(ctx, "tlsdated"); err != nil {
+		return nil, err
+	}
+	// Poll until /tmp/sync-rtc-tlsdated-stop shows up.
+	if err := testing.Poll(ctx, func(context.Context) error {
+		if _, err := os.Stat(syncRTCBootstatFile); err != nil {
+			return errors.Wrapf(err, "error in waiting for %s", syncRTCBootstatFile)
+		}
+		return nil
+	}, &testing.PollOptions{
+		Timeout:  2 * time.Second,
+		Interval: time.Second,
+	}); err != nil {
+		return nil, err
+	}
+
+	return &empty.Empty{}, nil
+}
+
 // GetBootPerfMetrics gathers recorded timing and disk usage statistics during
 // boot time. The test calculates some or all of the following metrics:
-//   * seconds_kernel_to_startup
-//   * seconds_kernel_to_startup_done
-//   * seconds_kernel_to_chrome_exec
-//   * seconds_kernel_to_chrome_main
-//   * seconds_kernel_to_signin_start
-//   * seconds_kernel_to_signin_wait
-//   * seconds_kernel_to_signin_users
-//   * seconds_kernel_to_login
-//   * seconds_kernel_to_network
-//   * seconds_startup_to_chrome_exec
-//   * seconds_chrome_exec_to_login
-//   * rdbytes_kernel_to_startup
-//   * rdbytes_kernel_to_startup_done
-//   * rdbytes_kernel_to_chrome_exec
-//   * rdbytes_kernel_to_chrome_main
-//   * rdbytes_kernel_to_login
-//   * rdbytes_startup_to_chrome_exec
-//   * rdbytes_chrome_exec_to_login
-//   * seconds_power_on_to_kernel
-//   * seconds_power_on_to_login
-//   * seconds_shutdown_time
-//   * seconds_reboot_time
-//   * seconds_reboot_error
+//   - seconds_kernel_to_startup
+//   - seconds_kernel_to_startup_done
+//   - seconds_kernel_to_chrome_exec
+//   - seconds_kernel_to_chrome_main
+//   - seconds_kernel_to_signin_start
+//   - seconds_kernel_to_signin_wait
+//   - seconds_kernel_to_signin_users
+//   - seconds_kernel_to_login
+//   - seconds_kernel_to_network
+//   - seconds_startup_to_chrome_exec
+//   - seconds_chrome_exec_to_login
+//   - rdbytes_kernel_to_startup
+//   - rdbytes_kernel_to_startup_done
+//   - rdbytes_kernel_to_chrome_exec
+//   - rdbytes_kernel_to_chrome_main
+//   - rdbytes_kernel_to_login
+//   - rdbytes_startup_to_chrome_exec
+//   - rdbytes_chrome_exec_to_login
+//   - seconds_power_on_to_kernel
+//   - seconds_power_on_to_login
+//   - seconds_shutdown_time
+//   - seconds_reboot_time
+//   - seconds_reboot_error
 func (*BootPerfService) GetBootPerfMetrics(ctx context.Context, _ *empty.Empty) (*platform.GetBootPerfMetricsResponse, error) {
 	out := &platform.GetBootPerfMetricsResponse{
 		Metrics: make(map[string]float64),
