@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "b5e2eff2_86eaf481",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 15
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1529893
+      },
+      "writtenOn": "2022-08-24T22:23:26Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8a6b2815_7ab86dd2",
+      "revId": "f8a22f21476097e626de60e2b7e4b29bf6b51d96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "627bddd2_4fd14c13",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 15
@@ -92,6 +110,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea5aca79_463d2411",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/nl80211_station_information.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1529893
+      },
+      "writtenOn": "2022-08-24T22:23:26Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e43d2b2b_9a20c47f",
+      "range": {
+        "startLine": 49,
+        "startChar": 15,
+        "endLine": 49,
+        "endChar": 18
+      },
+      "revId": "f8a22f21476097e626de60e2b7e4b29bf6b51d96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "16f3836a_2b13d33b",
@@ -105,6 +147,30 @@
       "writtenOn": "2022-08-24T05:02:59Z",
       "side": 1,
       "message": "this link isn\u0027t right - we don\u0027t use eureka_internal. You can just remove it, most people know what iw is.",
+      "range": {
+        "startLine": 53,
+        "startChar": 27,
+        "endLine": 53,
+        "endChar": 101
+      },
+      "revId": "f8a22f21476097e626de60e2b7e4b29bf6b51d96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "596b7e57_bbee0905",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/nl80211_station_information.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1529893
+      },
+      "writtenOn": "2022-08-24T22:23:26Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "16f3836a_2b13d33b",
       "range": {
         "startLine": 53,
         "startChar": 27,
@@ -138,6 +204,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "333162e2_8df989b4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/nl80211_station_information.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1529893
+      },
+      "writtenOn": "2022-08-24T22:23:26Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "547dece2_9cfcd72b",
+      "range": {
+        "startLine": 75,
+        "startChar": 2,
+        "endLine": 75,
+        "endChar": 13
+      },
+      "revId": "f8a22f21476097e626de60e2b7e4b29bf6b51d96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "64fec616_b45ab02c",
@@ -151,6 +241,24 @@
       "writtenOn": "2022-08-24T01:06:46Z",
       "side": 1,
       "message": "You don\u0027t need to reserve time here if you reserve the time for deconfig AP and disconnect station.",
+      "revId": "f8a22f21476097e626de60e2b7e4b29bf6b51d96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1dc6308c_25df0e81",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/nl80211_station_information.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1529893
+      },
+      "writtenOn": "2022-08-24T22:23:26Z",
+      "side": 1,
+      "message": "It seems that ReserveForDeconfigAP() and ReserveForDisconnect are discouraged now, see https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3741017/comments/063b7114_ac7d7f42",
+      "parentUuid": "64fec616_b45ab02c",
       "revId": "f8a22f21476097e626de60e2b7e4b29bf6b51d96",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -212,6 +320,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3c5e449_1c7ed925",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/nl80211_station_information.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1529893
+      },
+      "writtenOn": "2022-08-24T22:23:26Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d75babf8_05f78afc",
+      "range": {
+        "startLine": 130,
+        "startChar": 1,
+        "endLine": 130,
+        "endChar": 4
+      },
+      "revId": "f8a22f21476097e626de60e2b7e4b29bf6b51d96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "337280ff_4d80665f",
@@ -229,6 +361,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "137c9cf8_4fdbd8c2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/nl80211_station_information.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1529893
+      },
+      "writtenOn": "2022-08-24T22:23:26Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "337280ff_4d80665f",
+      "revId": "f8a22f21476097e626de60e2b7e4b29bf6b51d96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a88236d2_450f279b",
@@ -242,6 +392,24 @@
       "writtenOn": "2022-08-24T05:02:59Z",
       "side": 1,
       "message": "directly return here.",
+      "revId": "f8a22f21476097e626de60e2b7e4b29bf6b51d96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f25a7db2_e86536ee",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/nl80211_station_information.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1529893
+      },
+      "writtenOn": "2022-08-24T22:23:26Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a88236d2_450f279b",
       "revId": "f8a22f21476097e626de60e2b7e4b29bf6b51d96",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
