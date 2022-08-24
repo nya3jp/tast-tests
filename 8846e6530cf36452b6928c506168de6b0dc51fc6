@@ -26,6 +26,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f38b2a6a_4d51cf5d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/boot_perf_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2022-08-24T22:10:49Z",
+      "side": 1,
+      "message": "also, if we were worrying about pre-reboot persisting to disk (as floated on $BUG), this isn\u0027t really the file to look for. yes we want this file to exist; but it\u0027s in tmpfs and not \"flushing\" anywhere, and the _real_ thing we want is for this to run afterward:\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform2/init/chromeos_shutdown;l\u003d156;drc\u003d9e40a92f3d7343c519753451b0c69b4e5391a691\n\nOf course, we can\u0027t really poll for that one...\n\n... so again, I don\u0027t really know if polling this file gets us very far.",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 63,
+        "endChar": 52
+      },
+      "revId": "8846e6530cf36452b6928c506168de6b0dc51fc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4d0be00f_7d96e596",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/boot_perf_service.go",
         "patchSetId": 1
