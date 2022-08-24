@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4e1881e_94d7d371",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/bt_test_service.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-08-24T22:02:17Z",
+      "side": 1,
+      "message": "Yep, done.",
+      "parentUuid": "95fe2de9_7ab72c12",
+      "revId": "6a6d4f679a4919e27d162163bc3b9a21dac7d49b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "04e32341_c5339621",
@@ -52,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4a4020f_625c9f95",
+        "filename": "src/chromiumos/tast/remote/bluetooth/fixture.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-08-24T22:02:17Z",
+      "side": 1,
+      "message": "Can do, done.",
+      "parentUuid": "04e32341_c5339621",
+      "revId": "6a6d4f679a4919e27d162163bc3b9a21dac7d49b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1f1a656d_dae88352",
@@ -65,6 +101,30 @@
       "writtenOn": "2022-08-24T09:20:11Z",
       "side": 1,
       "message": "How about `%+v` so you don\u0027t need to join the addresses by yourself?",
+      "range": {
+        "startLine": 348,
+        "startChar": 53,
+        "endLine": 348,
+        "endChar": 55
+      },
+      "revId": "6a6d4f679a4919e27d162163bc3b9a21dac7d49b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "14cc5142_4502c9bb",
+        "filename": "src/chromiumos/tast/remote/bluetooth/fixture.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-08-24T22:02:17Z",
+      "side": 1,
+      "message": "I\u0027d like to keep it as-is. I find it more readable easier to copy/paste with `, ` as the join rather than ` `, which is what `%+v` provides.",
+      "parentUuid": "1f1a656d_dae88352",
       "range": {
         "startLine": 348,
         "startChar": 53,
