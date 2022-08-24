@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3190c964_7b7e8b72",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-08-24T00:06:45Z",
+      "side": 1,
+      "message": "It looks like the linked bug was already marked fixed. Is this change just trying to test the end-to-end flow more thoroughly? If  so, I agree with Craig that it\u0027s probably easier to debug issues if we have two versions of the test, one that calls `bio_fw_updater` directly and one that reboots.\n\nWe do have https://tastboard.corp.google.com/test/firmware.FpUpdaterSucceeded, but that doesn\u0027t flash an old version of firmware first, so will not actually perform an update unless the FPMCU already has an old version (and it\u0027s hard to guarantee what is on the FPMCU in the lab).",
+      "range": {
+        "startLine": 16,
+        "startChar": 45,
+        "endLine": 19,
+        "endChar": 15
+      },
+      "revId": "7a5281b53de5c01b207431b264eb36840ce926ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f45ee1c8_82f6d6da",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 8
