@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e12c37e_7afc93ed",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 17
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1520127
+      },
+      "writtenOn": "2022-08-24T14:37:55Z",
+      "side": 1,
+      "message": "Thanks again for the VC today, Eliot. PTAL and let me know if I\u0027ve made all the suggested changes like we talked. BR.",
+      "revId": "1ef4db0f7d335575f23ea7bc591b663e2c2afafd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
