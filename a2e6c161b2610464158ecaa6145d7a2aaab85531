@@ -16,6 +16,24 @@
       "message": "LGTM, but I\u0027m having a similar issue in TaskSwitchCUJ specific to ARC apps crashing. Is there a way to directly check the status of ARC? Or is checking by window existence the best way?",
       "revId": "a2e6c161b2610464158ecaa6145d7a2aaab85531",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f8eeec4_2292a5f0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/windowarrangementcuj/util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-24T20:44:02Z",
+      "side": 1,
+      "message": "When I ran the WindowArrangementCUJ tests with this CL, I actually saw some of the variants failing with this error saying that a browser window was not found. I might have to investigate or work around that. So I do not want a solution specific to ARC.\n\nIf you want a solution specific to ARC, maybe you can use `arc.OutputLogcatGrep`.",
+      "parentUuid": "dd3cf1aa_64947072",
+      "revId": "a2e6c161b2610464158ecaa6145d7a2aaab85531",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
