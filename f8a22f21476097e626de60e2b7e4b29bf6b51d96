@@ -265,6 +265,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "861a843d_619cfd5e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/nl80211_station_information.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-08-24T23:32:55Z",
+      "side": 1,
+      "message": "tbh I would prefer those for consistency\u0027s sake, and if Tast folks really have a problem with it we can change them all at once. fwiw we\u0027re not defining new ReserveForX functions, we\u0027re just using existing ones.",
+      "parentUuid": "1dc6308c_25df0e81",
+      "revId": "f8a22f21476097e626de60e2b7e4b29bf6b51d96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "57dc978e_517e32cf",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/nl80211_station_information.go",
         "patchSetId": 15
