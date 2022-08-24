@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5091debb_15c772aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/device/device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-08-24T03:32:24Z",
+      "side": 1,
+      "message": "Nit: should this be errors.Errorf(\"%q recognized no sound cards\", name)?",
+      "revId": "bf57885d60e71d7ab8c2a9c8d3f4132a8235d583",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c3a1ada_1945798e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/device/device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-08-24T03:32:24Z",
+      "side": 1,
+      "message": "Nit: should this be errors.Errorf(\"%q recognized no internal sound cards\", name)?",
+      "revId": "bf57885d60e71d7ab8c2a9c8d3f4132a8235d583",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5cfad60d_a3a86b9f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/device_play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-08-24T03:32:24Z",
+      "side": 1,
+      "message": "Is there a particular reason you use s.Error instead of s.Fatal? Do you want it to keep going",
+      "revId": "bf57885d60e71d7ab8c2a9c8d3f4132a8235d583",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2df0b211_584bf7ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/device_record.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-08-24T03:32:24Z",
+      "side": 1,
+      "message": "Same here",
+      "revId": "bf57885d60e71d7ab8c2a9c8d3f4132a8235d583",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
