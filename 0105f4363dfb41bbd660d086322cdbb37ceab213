@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2cde44d0_e1308f61",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-08-24T10:08:39Z",
+      "side": 1,
+      "message": "I have this b/243629567 created as an umbrella ticket.",
+      "parentUuid": "8863982f_517efa44",
+      "range": {
+        "startLine": 13,
+        "startChar": 4,
+        "endLine": 13,
+        "endChar": 8
+      },
+      "revId": "0105f4363dfb41bbd660d086322cdbb37ceab213",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d53aeda4_70524551",
         "filename": "src/chromiumos/tast/remote/policyutil/enrolled_fixture.go",
         "patchSetId": 1
