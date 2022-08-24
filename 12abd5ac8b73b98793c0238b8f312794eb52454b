@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6279cd0b_49e8c983",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1268793
+      },
+      "writtenOn": "2022-08-24T23:46:17Z",
+      "side": 1,
+      "message": "Thanks for working on this.",
+      "revId": "12abd5ac8b73b98793c0238b8f312794eb52454b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3cd472c5_3a746f38",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/new_screencast_button_condition.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1268793
+      },
+      "writtenOn": "2022-08-24T23:46:17Z",
+      "side": 1,
+      "message": "Soda installation error show asynchronously, so this line might not catch the issue in most cases.\n\nSince we verify if soda is installed in line 62, we can probably just remove this line unless we worry about the error show up even if soda is installed - we might need to introduce a timeout so the test pass if the dialog doesn\u0027t show up within x seconds.",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 34
+      },
+      "revId": "12abd5ac8b73b98793c0238b8f312794eb52454b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
