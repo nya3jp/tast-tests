@@ -16,6 +16,29 @@
       "message": "I\u0027m checking an explicit error now, however it only works when it is the last error in the chain, so the previous errors get discarded which doesn\u0027t seem like the right thing to do.\n",
       "revId": "2183b305964366e79b679a126e066a0933103dd9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5a62480_27fce237",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 714,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-08-24T12:36:16Z",
+      "side": 1,
+      "message": "You need to define a custom error type that can still wrap errors.",
+      "range": {
+        "startLine": 714,
+        "startChar": 4,
+        "endLine": 714,
+        "endChar": 25
+      },
+      "revId": "2183b305964366e79b679a126e066a0933103dd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
