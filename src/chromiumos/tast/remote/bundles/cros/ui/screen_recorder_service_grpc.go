@@ -8,7 +8,6 @@ import (
 	"context"
 	"fmt"
 	"path/filepath"
-	"strconv"
 	"time"
 
 	"github.com/golang/protobuf/ptypes/empty"
@@ -22,11 +21,11 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ScreenRecorderServiceGRPC,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Check basic functionalities of ScreenRecorderService",
 		Contacts:     []string{"jonfan@google.com", "chromeos-sw-engprod@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
-		Vars:         []string{"grpcServerPort"},
 		Params: []testing.Param{{
 			Name: "given_path",
 			Val:  "record.webm",
@@ -38,15 +37,7 @@ func init() {
 }
 
 func ScreenRecorderServiceGRPC(ctx context.Context, s *testing.State) {
-	grpcServerPort := crosserverutil.DefaultGRPCServerPort
-	if portStr, ok := s.Var("grpcServerPort"); ok {
-		if portInt, err := strconv.Atoi(portStr); err == nil {
-			grpcServerPort = portInt
-		}
-	}
-
-	// Connect to TCP based gRPC Server on DUT.
-	cl, err := crosserverutil.Dial(ctx, s.DUT(), "localhost", grpcServerPort, true)
+	cl, err := crosserverutil.GetGRPCClient(ctx, s.DUT())
 	if err != nil {
 		s.Fatal("Failed to connect to the RPC service on the DUT: ", err)
 	}

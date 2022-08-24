@@ -22,6 +22,12 @@ import (
 // DefaultGRPCServerPort is the default TCP based GRPC Server port for remote testing
 const DefaultGRPCServerPort = 4445
 
+var defaultGRPCServerPort = testing.RegisterVarString(
+	"crosserverutil.GRPCServerPort",
+	strconv.Itoa(DefaultGRPCServerPort),
+	"The TCP based GRPC Server port for remote testing",
+)
+
 // Client owns a gRPC connection to the DUT for remote tests to use.
 type Client struct {
 	// Conn is the gRPC connection. Use this to create gRPC service stubs.
@@ -161,4 +167,16 @@ func StopCrosServer(ctx context.Context, sshConn *ssh.Conn, port int) error {
 	}
 
 	return nil
+}
+
+// GetGRPCClient connects to the TCP based gRPC Server on DUT.
+func GetGRPCClient(ctx context.Context, d *dut.DUT) (*Client, error) {
+	portStr := defaultGRPCServerPort.Value()
+	portInt, err := strconv.Atoi(portStr)
+	if err != nil {
+		return nil, errors.Wrapf(err, "unable to parse port %q to an int", portStr)
+	}
+
+	// Connect to TCP based gRPC Server on DUT.
+	return Dial(ctx, d, "localhost", portInt, true)
 }
