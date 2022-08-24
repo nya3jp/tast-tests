@@ -263,6 +263,7 @@ func (s *OSSettings) SetToggleOption(cr *chrome.Chrome, optionName string, expec
 		}
 		optionFinder := nodewith.Name(optionName).Role(role.ToggleButton)
 		return uiauto.Combine("set toggle option",
+			s.MakeVisible(optionFinder),
 			s.LeftClick(optionFinder),
 			s.WaitUntilToggleOption(cr, optionName, expected),
 		)(ctx)
@@ -274,6 +275,7 @@ func (s *OSSettings) SetDropDownOption(cr *chrome.Chrome, optionName, expected s
 	optionFinder := nodewith.Name(optionName).Role(role.PopUpButton)
 	settingFinder := nodewith.Name(expected).Role(role.ListBoxOption)
 	return uiauto.Combine("set drop down option",
+		s.MakeVisible(optionFinder),
 		s.LeftClick(optionFinder),
 		s.LeftClick(settingFinder),
 		uiauto.Sleep(time.Second),
@@ -319,7 +321,7 @@ func (s *OSSettings) DropdownValue(ctx context.Context, cr *chrome.Chrome, dropd
 // WaitUntilToggleOption returns an action to wait until the toggle option enabled or disabled.
 func (s *OSSettings) WaitUntilToggleOption(cr *chrome.Chrome, optionName string, expected bool) uiauto.Action {
 	return func(ctx context.Context) error {
-		return testing.Poll(ctx, func(ctx context.Context) error {
+		err := testing.Poll(ctx, func(ctx context.Context) error {
 			if isEnabled, err := s.IsToggleOptionEnabled(ctx, cr, optionName); err != nil {
 				// JS evaluation is not always reliable. So do not break if failed.
 				return err
@@ -327,7 +329,8 @@ func (s *OSSettings) WaitUntilToggleOption(cr *chrome.Chrome, optionName string,
 				return errors.Errorf("Option %q is unpected: got %v; want %v", optionName, isEnabled, expected)
 			}
 			return nil
-		}, &testing.PollOptions{Timeout: 10 * time.Second})
+		}, &testing.PollOptions{Timeout: 10 * time.Second, Interval: time.Second})
+		return err
 	}
 }
 
