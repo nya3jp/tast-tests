@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be28c15c_eb6a5bfc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/boot_perf_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2022-08-24T21:37:10Z",
+      "side": 1,
+      "message": "I\u0027m as (or more) confused as you about $BUG, but do we *really* expect tlsdated to still be executing after it has \"stopped\"?\n\nMy understanding of the upstart cookbook matches my observations, which say the post-stop clause should be completely done by the time \u0027stop tlsdated\u0027 returns:\n\nhttps://upstart.ubuntu.com/cookbook/#viewing-state-transitions\n\n```\n# initctl log-priority -v info\n# tail -f /var/log/upstart.log \u0026\n...\n# stop tlsdated\n2022-08-24T21:30:15.987220Z INFO kernel: [610169.841905] init: Connection from private client\n2022-08-24T21:30:15.991560Z INFO kernel: [610169.848813] init: tlsdated goal changed from start to stop\n2022-08-24T21:30:15.991672Z INFO kernel: [610169.849417] init: tlsdated state changed from running to pre-stop\n2022-08-24T21:30:15.992491Z INFO kernel: [610169.850496] init: tlsdated state changed from pre-stop to stopping\n2022-08-24T21:30:15.994561Z INFO kernel: [610169.851983] init: Handling stopping event\n2022-08-24T21:30:15.996520Z INFO kernel: [610169.853772] init: tlsdated state changed from stopping to killed\n2022-08-24T21:30:15.998766Z INFO kernel: [610169.855162] init: Sending TERM signal to tlsdated main process (4206)\n2022-08-24T21:30:16.004525Z INFO kernel: [610169.862257] init: tlsdated main process (4206) exited normally\n2022-08-24T21:30:16.004624Z INFO kernel: [610169.862512] init: tlsdated state changed from killed to post-stop\n2022-08-24T21:30:16.009524Z INFO kernel: [610169.866998] init: tlsdated post-stop process (3450)\n2022-08-24T21:30:16.158514Z INFO kernel: [610170.016386] init: tlsdated post-stop process (3450) exited normally\n2022-08-24T21:30:16.158595Z INFO kernel: [610170.016542] init: tlsdated state changed from post-stop to waiting\n2022-08-24T21:30:16.160494Z INFO kernel: [610170.018395] init: Handling stopped event\n/// \u0027stop\u0027 command returned\n```\n\nI guess it can be OK to do something like this speculatively, but I\u0027m not all that optimistic.\n\nOr maybe you don\u0027t _really_ think this needs polling, but you want to catch the failure sooner? In which case, you could drop the testing.Poll() and make this just a single check/error.",
+      "range": {
+        "startLine": 60,
+        "startChar": 11,
+        "endLine": 60,
+        "endChar": 43
+      },
+      "revId": "8846e6530cf36452b6928c506168de6b0dc51fc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d0be00f_7d96e596",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/boot_perf_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2022-08-24T21:37:10Z",
+      "side": 1,
+      "message": "seems slightly long to penalize for a miss",
+      "range": {
+        "startLine": 71,
+        "startChar": 12,
+        "endLine": 71,
+        "endChar": 23
+      },
+      "revId": "8846e6530cf36452b6928c506168de6b0dc51fc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
