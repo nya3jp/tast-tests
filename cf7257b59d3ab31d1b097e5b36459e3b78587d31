@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c5b6977_255aa79b",
+        "filename": "src/chromiumos/tast/remote/firmware/helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-08-24T18:10:39Z",
+      "side": 1,
+      "message": "This device is only valid until the next Servo.SetUSBMuxState() command, so there is really no reason to store it in the helper instance vars, just use a local var.",
+      "range": {
+        "startLine": 125,
+        "startChar": 1,
+        "endLine": 126,
+        "endChar": 14
+      },
+      "revId": "cf7257b59d3ab31d1b097e5b36459e3b78587d31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
