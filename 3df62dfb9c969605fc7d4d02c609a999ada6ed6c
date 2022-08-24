@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ff8fd5a_ca1c5248",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-08-24T20:41:23Z",
+      "side": 1,
+      "message": "src/platform/tast/fast_build.sh -T is a good way to run unittest for tast.",
+      "range": {
+        "startLine": 14,
+        "startChar": 5,
+        "endLine": 14,
+        "endChar": 9
+      },
+      "revId": "3df62dfb9c969605fc7d4d02c609a999ada6ed6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae2b4aa6_82f6c68c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peerconnection/peer_connection_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-08-24T20:41:23Z",
+      "side": 1,
+      "message": "Capital C here for consistency.",
+      "range": {
+        "startLine": 304,
+        "startChar": 9,
+        "endLine": 304,
+        "endChar": 10
+      },
+      "revId": "3df62dfb9c969605fc7d4d02c609a999ada6ed6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
