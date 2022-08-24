@@ -27,6 +27,10 @@ import (
 // tastObjectGroup is the object group used for releasing remote objects owned by Tast.
 const tastObjectGroup = "TastObjectGroup"
 
+// ErrUndefinedOut is the error returned when the result of some javascript is
+// undefined, but you attempt to store it in a value.
+var ErrUndefinedOut = errors.New("attempting to output undefined into out - out should be nil, or a value should be returned")
+
 // Conn is the connection to a web content view, e.g. a tab.
 type Conn struct {
 	co       *rpcc.Conn
@@ -134,6 +138,9 @@ func (c *Conn) Eval(ctx context.Context, expr string, awaitPromise bool, out int
 		*ro = repl.Result
 		return nil, nil
 	}
+	if repl.Result.Type == "undefined" {
+		return nil, ErrUndefinedOut
+	}
 	return nil, json.Unmarshal(repl.Result.Value, out)
 }
 
@@ -192,6 +199,9 @@ func (c *Conn) CallOn(ctx context.Context, objectID runtime.RemoteObjectID, out 
 		}
 		*ro = repl.Result
 		return nil, nil
+	}
+	if repl.Result.Type == "undefined" {
+		return nil, ErrUndefinedOut
 	}
 	return nil, json.Unmarshal(repl.Result.Value, out)
 }

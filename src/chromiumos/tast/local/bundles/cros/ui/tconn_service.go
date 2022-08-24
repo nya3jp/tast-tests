@@ -38,6 +38,9 @@ func (svc *TconnService) Eval(ctx context.Context, req *pb.EvalRequest) (*struct
 	return common.UseTconn(ctx, svc.sharedObject, func(tconn *chrome.TestConn) (*structpb.Value, error) {
 		var out interface{}
 		if err := tconn.Eval(ctx, req.Expr, &out); err != nil {
+			if err == chrome.ErrTestConnUndefinedOut {
+				return &structpb.Value{}, nil
+			}
 			return nil, err
 		}
 		return structpb.NewValue(out)
@@ -53,6 +56,9 @@ func (svc *TconnService) Call(ctx context.Context, req *pb.CallRequest) (*struct
 			args = append(args, arg.AsInterface())
 		}
 		if err := tconn.Call(ctx, &out, req.Fn, args...); err != nil {
+			if err == chrome.ErrTestConnUndefinedOut {
+				return &structpb.Value{}, nil
+			}
 			return nil, err
 		}
 		return structpb.NewValue(out)
