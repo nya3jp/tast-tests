@@ -182,6 +182,30 @@
       },
       "revId": "9b2d02f9106c3e00d73c0e78b93ad457fbffa027",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea994659_d4ed291c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-08-24T16:54:25Z",
+      "side": 1,
+      "message": "Probably best to heed the presubmits 😊 I think in this case you can just move this file out of `src/chromiumos/tast/local/bundles/cros/bluetooth` and into `src/chromiumos/tast/local/bluetooth`. Usually fixtures are not kept in `bundles` subpackages, which should just contain test-specific helpers and such.",
+      "parentUuid": "bc5f3642_eeee17b5",
+      "range": {
+        "startLine": 96,
+        "startChar": 11,
+        "endLine": 96,
+        "endChar": 27
+      },
+      "revId": "9b2d02f9106c3e00d73c0e78b93ad457fbffa027",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

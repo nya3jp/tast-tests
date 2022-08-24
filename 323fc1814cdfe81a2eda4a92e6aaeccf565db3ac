@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b968f3ef_ccc0912c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/fixture.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-08-24T16:54:25Z",
+      "side": 1,
+      "message": "won\u0027t the `Impl` be `nil` for these fixtures? will that cause problems in `Reset/SetUp/TearDown`?",
+      "range": {
+        "startLine": 37,
+        "startChar": 19,
+        "endLine": 37,
+        "endChar": 45
+      },
+      "revId": "323fc1814cdfe81a2eda4a92e6aaeccf565db3ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
