@@ -16,6 +16,252 @@
       "message": "Hi Toby Please review this CL thanks!",
       "revId": "e1e4d9d7d7e99d59fe3dc71fe08dc2d31fe41006",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f1fe75f_9942c449",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-08-24T19:08:49Z",
+      "side": 1,
+      "message": "Thanks for working on this. We had crash bugs from this in the past, so it\u0027s good to add a test to prevent regressions.",
+      "revId": "e1e4d9d7d7e99d59fe3dc71fe08dc2d31fe41006",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25e01866_ca28358b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/enabled_policy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-08-24T19:08:49Z",
+      "side": 1,
+      "message": "Nit: Could you simplify this to testProjectorEnabled?",
+      "range": {
+        "startLine": 105,
+        "startChar": 5,
+        "endLine": 105,
+        "endChar": 29
+      },
+      "revId": "e1e4d9d7d7e99d59fe3dc71fe08dc2d31fe41006",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09db67ec_505b926b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/enabled_policy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-08-24T19:08:49Z",
+      "side": 1,
+      "message": "Nit: consider return errors.Wrap(err, \"failed to list registered apps\")",
+      "revId": "e1e4d9d7d7e99d59fe3dc71fe08dc2d31fe41006",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "492ae814_adcd6574",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/enabled_policy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-08-24T19:08:49Z",
+      "side": 1,
+      "message": "Should you return here?",
+      "revId": "e1e4d9d7d7e99d59fe3dc71fe08dc2d31fe41006",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93a4c2e7_d8e9a3d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/enabled_policy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-08-24T19:08:49Z",
+      "side": 1,
+      "message": "Should you wait here for the Projector app to close? Something like\n\nui.WaitUntilGone(screencastAppWindow)",
+      "revId": "e1e4d9d7d7e99d59fe3dc71fe08dc2d31fe41006",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d62b5fe_ef0a9c16",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/enabled_policy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-08-24T19:08:49Z",
+      "side": 1,
+      "message": "Use LaunchApp() so we don\u0027t need to use a keyboard (which is notoriously flaky).",
+      "range": {
+        "startLine": 153,
+        "startChar": 20,
+        "endLine": 153,
+        "endChar": 35
+      },
+      "revId": "e1e4d9d7d7e99d59fe3dc71fe08dc2d31fe41006",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "083b2130_63f72092",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/enabled_policy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-08-24T19:08:49Z",
+      "side": 1,
+      "message": "Could you use uiauto.Combine() [1] to combine many of these actions into one block so it\u0027s easier to read?\n\n[1] go/tast-codelab-3",
+      "range": {
+        "startLine": 157,
+        "startChar": 13,
+        "endLine": 157,
+        "endChar": 28
+      },
+      "revId": "e1e4d9d7d7e99d59fe3dc71fe08dc2d31fe41006",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21deea69_dd73bde1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/enabled_policy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-08-24T19:08:49Z",
+      "side": 1,
+      "message": "I wonder if it\u0027s more robust to do\n\nui.WithInterval(time.Second).LeftClickUntil(okButton, ui.Gone(blockedWindowFinder))\n\nbecause hitting the enter key one time might not do the trick. This way has the benefit of clicking multiple times, if necessary, until the dialog closes, especially since leaving the dialog behind might affect later tests.",
+      "range": {
+        "startLine": 161,
+        "startChar": 9,
+        "endLine": 161,
+        "endChar": 31
+      },
+      "revId": "e1e4d9d7d7e99d59fe3dc71fe08dc2d31fe41006",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "689ee4c2_7fcaa478",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/enabled_policy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-08-24T19:08:49Z",
+      "side": 1,
+      "message": "Nit: affect",
+      "range": {
+        "startLine": 166,
+        "startChar": 93,
+        "endLine": 166,
+        "endChar": 99
+      },
+      "revId": "e1e4d9d7d7e99d59fe3dc71fe08dc2d31fe41006",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c9cd93b_ab765f84",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/enabled_policy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-08-24T19:08:49Z",
+      "side": 1,
+      "message": "Nit: Could you rename this to testProjectorDisabled?",
+      "range": {
+        "startLine": 173,
+        "startChar": 5,
+        "endLine": 173,
+        "endChar": 30
+      },
+      "revId": "e1e4d9d7d7e99d59fe3dc71fe08dc2d31fe41006",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d43dfe2b_3368ae13",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/enabled_policy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-08-24T19:08:49Z",
+      "side": 1,
+      "message": "Instead of doing this, I wonder if it\u0027s better to WaitForChromeAppInstalled(Projector.ID, time.Minute) and expect an error. \n\nIf you detect that the Projector SWA is not installed like this, it could be due to a race condition where this test proceeded too quickly before *any* SWA has installed. If we wait a minute or two for the Projector SWA to install, then we can be sure that the Projector SWA didn\u0027t install.",
+      "revId": "e1e4d9d7d7e99d59fe3dc71fe08dc2d31fe41006",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac21c89c_62273a7d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/enabled_policy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-08-24T19:08:49Z",
+      "side": 1,
+      "message": "Nit: consider return errors.Wrap(err, \"failed to list registered apps\")",
+      "range": {
+        "startLine": 183,
+        "startChar": 9,
+        "endLine": 183,
+        "endChar": 12
+      },
+      "revId": "e1e4d9d7d7e99d59fe3dc71fe08dc2d31fe41006",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
