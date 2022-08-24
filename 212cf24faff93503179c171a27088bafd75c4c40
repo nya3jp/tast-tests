@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef3eb409_6f1689e5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/disable_hwwp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2022-08-24T03:27:21Z",
+      "side": 1,
+      "message": "What\u0027s RUS?",
+      "revId": "212cf24faff93503179c171a27088bafd75c4c40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
