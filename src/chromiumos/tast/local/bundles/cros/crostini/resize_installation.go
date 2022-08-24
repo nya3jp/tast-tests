@@ -30,8 +30,8 @@ func init() {
 		Func:         ResizeInstallation,
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Test resizing during installation",
-		Contacts:     []string{"alvinjia@google.com", "clumptini@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		Contacts:     []string{"clumptini+oncall@google.com"},
+		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome", "vm_host"},
 		Pre:          chrome.LoggedIn(),
 		Params: []testing.Param{
