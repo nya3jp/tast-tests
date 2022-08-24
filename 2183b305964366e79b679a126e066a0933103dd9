@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "689181a3_3288f80b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-08-24T08:18:33Z",
+      "side": 1,
+      "message": "I\u0027m checking an explicit error now, however it only works when it is the last error in the chain, so the previous errors get discarded which doesn\u0027t seem like the right thing to do.\n",
+      "revId": "2183b305964366e79b679a126e066a0933103dd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
