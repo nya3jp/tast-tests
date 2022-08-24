@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a6b2815_7ab86dd2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 15
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-08-24T05:02:59Z",
+      "side": 1,
+      "message": "link to doc",
+      "revId": "f8a22f21476097e626de60e2b7e4b29bf6b51d96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "627bddd2_4fd14c13",
@@ -31,6 +48,92 @@
       "writtenOn": "2022-08-24T01:04:53Z",
       "side": 1,
       "message": "Sorry for late review. LGTM % 2 nits.",
+      "revId": "f8a22f21476097e626de60e2b7e4b29bf6b51d96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7384dc4c_53c0f304",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-08-24T05:02:59Z",
+      "side": 1,
+      "message": "please at least cc doc reviewers to relevant CLs in the future, thanks!",
+      "revId": "f8a22f21476097e626de60e2b7e4b29bf6b51d96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e43d2b2b_9a20c47f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/nl80211_station_information.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-08-24T05:02:59Z",
+      "side": 1,
+      "message": "nit: it\u0027s not new",
+      "range": {
+        "startLine": 49,
+        "startChar": 15,
+        "endLine": 49,
+        "endChar": 18
+      },
+      "revId": "f8a22f21476097e626de60e2b7e4b29bf6b51d96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16f3836a_2b13d33b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/nl80211_station_information.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-08-24T05:02:59Z",
+      "side": 1,
+      "message": "this link isn\u0027t right - we don\u0027t use eureka_internal. You can just remove it, most people know what iw is.",
+      "range": {
+        "startLine": 53,
+        "startChar": 27,
+        "endLine": 53,
+        "endChar": 101
+      },
+      "revId": "f8a22f21476097e626de60e2b7e4b29bf6b51d96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "547dece2_9cfcd72b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/nl80211_station_information.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-08-24T05:02:59Z",
+      "side": 1,
+      "message": "I thought this already isn\u0027t enough based on your manual experimentation",
+      "range": {
+        "startLine": 75,
+        "startChar": 2,
+        "endLine": 75,
+        "endChar": 13
+      },
       "revId": "f8a22f21476097e626de60e2b7e4b29bf6b51d96",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -82,6 +185,63 @@
       "writtenOn": "2022-08-24T01:04:53Z",
       "side": 1,
       "message": "Also need to reserve time for disconnect.\n\n```\nctx, cancel \u003d tf.ReserveForDisconnect(ctx)\ndefer cancel()\n```\n\nRef: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go;l\u003d1360?q\u003dsimple_connect.go\u0026ss\u003dchromiumos",
+      "revId": "f8a22f21476097e626de60e2b7e4b29bf6b51d96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d75babf8_05f78afc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/nl80211_station_information.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-08-24T05:02:59Z",
+      "side": 1,
+      "message": "more descriptive name",
+      "range": {
+        "startLine": 130,
+        "startChar": 1,
+        "endLine": 130,
+        "endChar": 4
+      },
+      "revId": "f8a22f21476097e626de60e2b7e4b29bf6b51d96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "337280ff_4d80665f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/nl80211_station_information.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-08-24T05:02:59Z",
+      "side": 1,
+      "message": "can you just s.Error here instead of appending to a potentially long list of invalid messages? That way, the error for a specific attribute is localized as well.",
+      "revId": "f8a22f21476097e626de60e2b7e4b29bf6b51d96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a88236d2_450f279b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/nl80211_station_information.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-08-24T05:02:59Z",
+      "side": 1,
+      "message": "directly return here.",
       "revId": "f8a22f21476097e626de60e2b7e4b29bf6b51d96",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
