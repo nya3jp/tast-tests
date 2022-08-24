@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "f1e0cbf4_bbc0e114",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-08-24T17:26:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e8bf1b6c_38923a44",
+      "revId": "f83abe37fcba6d00245f75185d9d392f3fc2eafc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "2dc5a53f_69342872",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -52,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ab6e85d_c13ded3f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/kiosk_with_legacy_mount.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-08-24T17:26:59Z",
+      "side": 1,
+      "message": "Moved it to a common style.",
+      "parentUuid": "c756fad9_e6b48fb0",
+      "revId": "f83abe37fcba6d00245f75185d9d392f3fc2eafc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2a20216f_3e44b825",
@@ -65,6 +101,24 @@
       "writtenOn": "2022-08-23T21:38:35Z",
       "side": 1,
       "message": "delete commented code",
+      "revId": "f83abe37fcba6d00245f75185d9d392f3fc2eafc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2feb09de_0b2e5a11",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/kiosk_with_legacy_mount.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-08-24T17:26:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2a20216f_3e44b825",
       "revId": "f83abe37fcba6d00245f75185d9d392f3fc2eafc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -86,6 +140,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d47e2c3c_934f0ca8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/kiosk_with_legacy_mount.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-08-24T17:26:59Z",
+      "side": 1,
+      "message": "I made a separate function for this file, not the best approach but i will move it to a separate helper function in cryptohome.go in side CL.",
+      "parentUuid": "fadd89e0_1a4a904e",
+      "revId": "f83abe37fcba6d00245f75185d9d392f3fc2eafc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "521a57dd_3d001dae",
@@ -99,6 +171,24 @@
       "writtenOn": "2022-08-23T22:46:40Z",
       "side": 1,
       "message": "Please move this `defer` to after the first `err` check after initialization",
+      "revId": "f83abe37fcba6d00245f75185d9d392f3fc2eafc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d39fa974_06b72e7a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/kiosk_with_legacy_mount.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-08-24T17:26:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "521a57dd_3d001dae",
       "revId": "f83abe37fcba6d00245f75185d9d392f3fc2eafc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -120,6 +210,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "af18ec06_0d65ef82",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/kiosk_with_legacy_mount.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-08-24T17:26:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d1ff8270_bb34f35c",
+      "revId": "f83abe37fcba6d00245f75185d9d392f3fc2eafc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0ce9ca2c_e7deb0a9",
@@ -133,6 +241,24 @@
       "writtenOn": "2022-08-23T22:46:40Z",
       "side": 1,
       "message": "Same as above",
+      "revId": "f83abe37fcba6d00245f75185d9d392f3fc2eafc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d98c2722_3951861d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/kiosk_with_legacy_mount.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-08-24T17:26:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ce9ca2c_e7deb0a9",
       "revId": "f83abe37fcba6d00245f75185d9d392f3fc2eafc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -154,6 +280,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "24056f08_c237d888",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/kiosk_with_legacy_mount.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-08-24T17:26:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bed68113_65f80a30",
+      "revId": "f83abe37fcba6d00245f75185d9d392f3fc2eafc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "be95fb25_be6a5c95",
@@ -171,6 +315,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2b50a72_e0e26b1b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/kiosk_with_legacy_mount.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-08-24T17:26:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "be95fb25_be6a5c95",
+      "revId": "f83abe37fcba6d00245f75185d9d392f3fc2eafc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0e181cad_eed0e3e3",
@@ -184,6 +346,24 @@
       "writtenOn": "2022-08-23T22:46:40Z",
       "side": 1,
       "message": "`defer` here has the same effect as no `defer`; do you know where in the code the client is mounted? If not or N/A, please remove `defer`, otherwise, move to immediately after mount",
+      "revId": "f83abe37fcba6d00245f75185d9d392f3fc2eafc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fff35ad2_1306b08c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/kiosk_with_legacy_mount.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-08-24T17:26:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0e181cad_eed0e3e3",
       "revId": "f83abe37fcba6d00245f75185d9d392f3fc2eafc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
