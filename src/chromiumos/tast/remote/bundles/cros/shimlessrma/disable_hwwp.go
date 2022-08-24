@@ -107,7 +107,10 @@ func DisableHWWP(ctx context.Context, s *testing.State) {
 	}
 	s.Logf("skipFlashUSB is %t", skipFlashUSB)
 
-	if !skipFlashUSB {
+	// USB install only occurs in Manual option.
+	// So always skip it for RSU testing.
+	if !skipFlashUSB && wpOption == rmaweb.Manual {
+		s.Log("Flash USB starts")
 		cs := s.CloudStorage()
 		if err := firmwareHelper.SetupUSBKey(ctx, cs); err != nil {
 			s.Fatal("USBKey not working: ", err)
@@ -142,11 +145,23 @@ func DisableHWWP(ctx context.Context, s *testing.State) {
 	}
 	// Restart will dispose resources, so don't dispose resources explicitly.
 
-	if err := action.Combine("Navigate to firmware installation page and install firmware",
-		uiHelper.WriteProtectDisabledPageOperation,
-		uiHelper.WaitForFirmwareInstallation,
-	)(ctx); err != nil {
-		s.Fatal("Fail to navigate to firmware installation page and install firmware: ", err)
+	// faft-cr50-pool cannot update firmware from USB.
+	// Since we already run Manual test case (removal battery) in skylab and install firmware from USB,
+	// we skip firmware installation in all RSU test cases.
+	if wpOption == rmaweb.Manual {
+		if err := action.Combine("Navigate to firmware installation page and install firmware",
+			uiHelper.WriteProtectDisabledPageOperation,
+			uiHelper.WaitForFirmwareInstallation,
+		)(ctx); err != nil {
+			s.Fatal("Fail to navigate to firmware installation page and install firmware: ", err)
+		}
+	} else {
+		if err := action.Combine("Navigate to firmware installation page and bypass firmware install",
+			uiHelper.WriteProtectDisabledPageOperation,
+			uiHelper.BypassFirmwareInstallation,
+		)(ctx); err != nil {
+			s.Fatal("Fail to navigate to firmware installation page and bypass firmware install: ", err)
+		}
 	}
 
 	// Wait for reboot start.
