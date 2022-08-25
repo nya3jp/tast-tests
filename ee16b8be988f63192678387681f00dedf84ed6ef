@@ -70,6 +70,30 @@
       },
       "revId": "ee16b8be988f63192678387681f00dedf84ed6ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ded02485_0e4bcdf5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/drag_window_from_shelf_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1118421
+      },
+      "writtenOn": "2022-08-25T17:32:29Z",
+      "side": 1,
+      "message": "Ah, got it, that makes sense. Agreed that we can keep the TODO if it\u0027s a real issue. \nIf we keep it, can we reword it to something like `Remove the workaround to open the browser windows first before setting the tablet mode`?",
+      "parentUuid": "a170ae99_c8442eee",
+      "range": {
+        "startLine": 86,
+        "startChar": 4,
+        "endLine": 86,
+        "endChar": 28
+      },
+      "revId": "ee16b8be988f63192678387681f00dedf84ed6ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
