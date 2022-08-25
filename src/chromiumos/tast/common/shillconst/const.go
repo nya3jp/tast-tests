@@ -351,3 +351,9 @@ const (
 	PasspointCredentialsPropertyMeteredOverride    = "MeteredOverride"
 	PasspointCredentialsPropertyAndroidPackageName = "AndroidPackageName"
 )
+
+// Scaled signal quality constant for shill cellular service.
+// Set to 10 = less than 2 bars in the UI
+const (
+	CellularServiceMinSignalStrength = 10
+)
