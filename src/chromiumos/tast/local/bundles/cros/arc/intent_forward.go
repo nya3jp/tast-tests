@@ -93,6 +93,7 @@ func IntentForward(ctx context.Context, s *testing.State) {
 		br, brCleanUp, err := browserfixt.Connect(ctx, cr, bt)
 		if err != nil {
 			s.Error(err, "failed to connect to browser")
+			return
 		}
 		defer brCleanUp(ctx)
 		urlMatcher := func(t *target.Info) bool {
