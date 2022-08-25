@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "405e3c38_ea1c3b44",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-08-25T08:32:03Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "79c32ca6bce7f44eb82071935af02df523e1d7aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3005768_b0b00ffb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/pre/its_pre.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-08-25T08:32:03Z",
+      "side": 1,
+      "message": "nit: Remove. That doesn\u0027t seem to add any real value to the log files.",
+      "range": {
+        "startLine": 194,
+        "startChar": 1,
+        "endLine": 194,
+        "endChar": 54
+      },
+      "revId": "79c32ca6bce7f44eb82071935af02df523e1d7aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
