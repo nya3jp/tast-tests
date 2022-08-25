@@ -16,6 +16,24 @@
       "message": "I\u0027d pull this out into its own separate function, so that you can factor out the other ReadFile calls as well.\n\nFor readability, it might also make sense to then refactor the WriteFile into a matching helper call. That\u0027s less important because it\u0027s only done once, but I think having matching \"set up the file\" and \"verify the file\" functions makes the intended symmetry more explicit and clearer to a reader.",
       "revId": "216bada4c15ecfab238272b113c61be4ce60a693",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "82a433a2_84036e9b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/kiosk_with_legacy_mount.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-08-25T15:50:27Z",
+      "side": 1,
+      "message": "Yes! Its coming up in a follow up CL.",
+      "parentUuid": "37697a7a_5826e5c9",
+      "revId": "216bada4c15ecfab238272b113c61be4ce60a693",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
