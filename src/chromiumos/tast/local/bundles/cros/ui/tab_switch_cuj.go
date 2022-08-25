@@ -1,4 +1,4 @@
-// Copyright 2019 The Chromium OS Authors. All rights reserved.
+// Copyright 2020 The Chromium OS Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -8,73 +8,108 @@ import (
 	"context"
 	"time"
 
-	"chromiumos/tast/local/bundles/cros/ui/tabswitchcuj"
+	"chromiumos/tast/local/bundles/cros/ui/taskswitchcuj"
 	"chromiumos/tast/local/chrome/browser"
-	"chromiumos/tast/local/chrome/cuj"
-	"chromiumos/tast/local/cpu"
-	"chromiumos/tast/local/power"
 	"chromiumos/tast/local/ui/cujrecorder"
-	"chromiumos/tast/local/wpr"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         TabSwitchCUJ,
+		Func:         TaskSwitchCUJ,
 		LacrosStatus: testing.LacrosVariantExists,
-		Desc:         "Measures the performance of tab-switching CUJ",
-		// TODO(b/234063928): Remove crosbolt attributes when TabSwitchCUJ runs stably on suite cuj.
+		Desc:         "Measures the performance of the critical user journey for task switching",
+		Contacts:     []string{"ramsaroop@chromium.org", "chromeos-perfmetrics-eng@google.com"},
 		Attr:         []string{"group:cuj"},
-		Contacts:     []string{"yichenz@chromium.org", "chromeos-perfmetrics-eng@google.com"},
 		SoftwareDeps: []string{"chrome"},
 		Data:         []string{cujrecorder.SystemTraceConfigFile},
-		Timeout:      22*time.Minute + cuj.CPUStablizationTimeout,
+		Timeout:      25 * time.Minute,
 		Vars:         []string{"mute"},
-		Params: []testing.Param{{
-			ExtraData: []string{tabswitchcuj.WPRArchiveName},
-			Val: tabswitchcuj.TabSwitchParam{
-				BrowserType: browser.TypeAsh,
+		Params: []testing.Param{
+			{
+				ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
+				Fixture:           "loggedInToCUJUser",
+				ExtraSoftwareDeps: []string{"android_p"},
+				Val: taskswitchcuj.TaskSwitchTest{
+					BrowserType: browser.TypeAsh,
+				},
 			},
-			Pre: wpr.ReplayMode(tabswitchcuj.WPRArchiveName),
-		}, {
-			Name: "lacros",
-			Val: tabswitchcuj.TabSwitchParam{
-				BrowserType: browser.TypeLacros,
+			{
+				Name:              "vm",
+				ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
+				ExtraSoftwareDeps: []string{"android_vm"},
+				Fixture:           "loggedInToCUJUser",
+				Val: taskswitchcuj.TaskSwitchTest{
+					BrowserType: browser.TypeAsh,
+				},
+			}, {
+				Name:              "lacros",
+				ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
+				ExtraSoftwareDeps: []string{"android_p", "lacros"},
+				Fixture:           "loggedInToCUJUserLacros",
+				Val: taskswitchcuj.TaskSwitchTest{
+					BrowserType: browser.TypeLacros,
+				},
+			}, {
+				Name:              "lacros_vm",
+				ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
+				ExtraSoftwareDeps: []string{"android_vm", "lacros"},
+				Fixture:           "loggedInToCUJUserLacros",
+				Val: taskswitchcuj.TaskSwitchTest{
+					BrowserType: browser.TypeLacros,
+				},
+			}, {
+				Name:              "tablet",
+				ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
+				ExtraSoftwareDeps: []string{"android_p"},
+				Fixture:           "loggedInToCUJUser",
+				Val: taskswitchcuj.TaskSwitchTest{
+					BrowserType: browser.TypeAsh,
+					Tablet:      true,
+				},
 			},
-			Fixture:           "tabSwitchCUJWPRLacros",
-			ExtraSoftwareDeps: []string{"lacros"},
-		}, {
-			Name:      "trace",
-			ExtraData: []string{tabswitchcuj.WPRArchiveName},
-			Val: tabswitchcuj.TabSwitchParam{
-				BrowserType: browser.TypeAsh,
-				Tracing:     true,
+			{
+				Name:              "tablet_vm",
+				ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
+				ExtraSoftwareDeps: []string{"android_vm"},
+				Fixture:           "loggedInToCUJUser",
+				Val: taskswitchcuj.TaskSwitchTest{
+					BrowserType: browser.TypeAsh,
+					Tablet:      true,
+				},
+			}, {
+				Name:              "lacros_tablet",
+				ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
+				ExtraSoftwareDeps: []string{"android_p", "lacros"},
+				Fixture:           "loggedInToCUJUserLacros",
+				Val: taskswitchcuj.TaskSwitchTest{
+					BrowserType: browser.TypeLacros,
+					Tablet:      true,
+				},
+			}, {
+				Name:              "lacros_tablet_vm",
+				ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
+				ExtraSoftwareDeps: []string{"android_vm", "lacros"},
+				Fixture:           "loggedInToCUJUserLacros",
+				Val: taskswitchcuj.TaskSwitchTest{
+					BrowserType: browser.TypeLacros,
+					Tablet:      true,
+				},
+			}, {
+				// Pilot test on "noibat" that has HDMI dongle installed.
+				Name:              "noibat",
+				ExtraHardwareDeps: hwdep.D(hwdep.Model("noibat")),
+				ExtraSoftwareDeps: []string{"android_vm"},
+				Fixture:           "loggedInToCUJUser",
+				Val: taskswitchcuj.TaskSwitchTest{
+					BrowserType: browser.TypeAsh,
+				},
 			},
-			Pre: wpr.ReplayMode(tabswitchcuj.WPRArchiveName),
-		}, {
-			Name:      "validation",
-			ExtraData: []string{tabswitchcuj.WPRArchiveName},
-			Val: tabswitchcuj.TabSwitchParam{
-				BrowserType: browser.TypeAsh,
-				Validation:  true,
-			},
-			Pre: wpr.ReplayMode(tabswitchcuj.WPRArchiveName),
-		}},
+		},
 	})
 }
 
-func TabSwitchCUJ(ctx context.Context, s *testing.State) {
-	// Ensure display on to record ui performance correctly.
-	if err := power.TurnOnDisplay(ctx); err != nil {
-		s.Fatal("Failed to turn on display: ", err)
-	}
-
-	// Wait for cpu to stabilize before test.
-	if err := cpu.WaitUntilStabilized(ctx, cuj.CPUCoolDownConfig()); err != nil {
-		// Log the cpu stabilizing wait failure instead of make it fatal.
-		// TODO(b/213238698): Include the error as part of test data.
-		s.Log("Failed to wait for CPU to become idle: ", err)
-	}
-
-	tabswitchcuj.Run(ctx, s)
+func TaskSwitchCUJ(ctx context.Context, s *testing.State) {
+	taskswitchcuj.Run(ctx, s)
 }

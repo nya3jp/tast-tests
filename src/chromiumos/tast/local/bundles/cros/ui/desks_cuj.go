@@ -149,6 +149,7 @@ func DesksCUJ(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to add common metrics to recorder: ", err)
 	}
 
+	// Collect a 1-min trace.
 	recorder.EnableTracing(s.OutDir(), s.DataPath(cujrecorder.SystemTraceConfigFile))
 
 	if err := recorder.RunFor(ctx, func(ctx context.Context) error {

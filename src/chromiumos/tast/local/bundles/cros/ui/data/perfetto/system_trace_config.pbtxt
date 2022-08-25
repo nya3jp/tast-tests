@@ -3,8 +3,8 @@
 # Enable periodic flushing of the trace buffer into the output file.
 write_into_file: true
 
-# Max duration: 30 mins.
-duration_ms: 1800000
+# Max duration: 1 min.
+duration_ms: 60000
 
 # Writes the userspace buffer into the file every 2 seconds.
 # The data rate of a typical trace is ~1-4 MB/s. So a 8MB in-memory buffer can hold for up
