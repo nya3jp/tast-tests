@@ -357,13 +357,13 @@ func TestCleanup(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome)
 		}
 	}
 
-	// Open Account Manager page in OS Settings.
-	if err := OpenAccountManagerSettingsAction(tconn, cr)(ctx); err != nil {
-		return errors.Wrap(err, "failed to launch Account Manager page")
-	}
-
 	moreActionsButton := nodewith.NameStartingWith("More actions,").Role(role.Button).First()
 	for {
+		// Open Account Manager page in OS Settings.
+		if err := OpenAccountManagerSettingsAction(tconn, cr)(ctx); err != nil {
+			return errors.Wrap(err, "failed to launch Account Manager page")
+		}
+
 		moreActionsFound, err := ui.IsNodeFound(ctx, moreActionsButton)
 		if err != nil {
 			return errors.Wrap(err, "failed to search for More actions button")
@@ -373,7 +373,7 @@ func TestCleanup(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome)
 			break
 		}
 
-		// Select specific "More actions, <email> button.
+		// Select specific "More actions, <email>" button.
 		info, err := ui.Info(ctx, moreActionsButton)
 		if err != nil {
 			return errors.Wrap(err, "failed to get More actions button info")
