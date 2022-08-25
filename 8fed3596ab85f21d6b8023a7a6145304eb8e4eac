@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "258c2e6e_29535a74",
+        "filename": "src/chromiumos/tast/local/audio/cards.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1532847
+      },
+      "writtenOn": "2022-08-25T08:17:00Z",
+      "side": 1,
+      "message": "Will we have something external that falls into this category? (I hope they don\u0027t mess with PCIe)",
+      "revId": "8fed3596ab85f21d6b8023a7a6145304eb8e4eac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
