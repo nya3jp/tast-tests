@@ -7,22 +7,34 @@ package shimlessrma
 import (
 	"context"
 	"encoding/json"
+	"fmt"
 	"io/ioutil"
 	"os"
+	"strings"
 	"time"
 
 	"github.com/golang/protobuf/ptypes/empty"
 	"google.golang.org/grpc"
 
+	"chromiumos/tast/common/action"
 	"chromiumos/tast/common/testexec"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/shimlessrmaapp"
+	"chromiumos/tast/local/shill"
 	pb "chromiumos/tast/services/cros/shimlessrma"
 	"chromiumos/tast/testing"
 )
 
-const testFile = "/var/lib/rmad/.test"
+const (
+	testFile              = "/var/lib/rmad/.test"
+	offlineLogFile        = "/var/lib/rmad/offline.log"
+	offlineExecuteSuccess = "Success"
+	wifiName              = "GoogleGuest-IPv4"
+	googleURL             = "google.com"
+)
 
 func init() {
 	testing.AddService(&testing.Service{
@@ -63,6 +75,7 @@ func (shimlessRMA *AppService) NewShimlessRMA(ctx context.Context,
 	}
 
 	cr, err := chrome.New(ctx, chrome.EnableFeatures("ShimlessRMAFlow"),
+		chrome.EnableFeatures("ShimlessRMAOsUpdate"),
 		chrome.NoLogin(),
 		chrome.LoadSigninProfileExtension(req.ManifestKey),
 		chrome.ExtraArgs("--launch-rma"))
@@ -104,16 +117,76 @@ func (shimlessRMA *AppService) CloseShimlessRMA(ctx context.Context,
 	return &empty.Empty{}, nil
 }
 
-// TestWelcomeAndCancel tests welcome page is loaded and then cancel it.
-func (shimlessRMA *AppService) TestWelcomeAndCancel(ctx context.Context, req *empty.Empty) (*empty.Empty, error) {
-	// TODO: refactor testing steps to separate method later.
-	if err := shimlessRMA.app.WaitForWelcomePageToLoad()(ctx); err != nil {
-		return nil, errors.Wrap(err, "failed to load welcome page")
+// PrepareOfflineTest prepare DUT for offline test (temporary local test).
+func (shimlessRMA *AppService) PrepareOfflineTest(ctx context.Context, req *empty.Empty) (*empty.Empty, error) {
+	// Ignore error since file may not exist.
+	os.Remove(offlineLogFile)
+
+	// If we cannot create it, then we can catch it when we try to fetch this file.
+	file, err := os.Create(offlineLogFile)
+	if err != nil {
+		return nil, errors.Wrapf(err, "fail to create %s", offlineLogFile)
+	}
+	defer file.Close()
+
+	return &empty.Empty{}, nil
+}
+
+// TestWelcomeAndNetworkConnection tests welcome page and network page in local test mode.
+// We turn off ethernet in this method, so we cannot pass the error back to the gRPC caller.
+// Instead, we write error (or Success) to a temp log and Host will verify the content of log later.
+func (shimlessRMA *AppService) TestWelcomeAndNetworkConnection(ctx context.Context, req *empty.Empty) (*empty.Empty, error) {
+	file, _ := os.OpenFile(offlineLogFile, os.O_RDWR, 0644)
+	defer file.Close()
+
+	if err := action.Combine("test welcome page and network connection page in offline mode",
+		shimlessRMA.handleUntilWifiConnectionWithoutEthernet,
+		shimlessRMA.cancelShimlessRMA,
+	)(ctx); err != nil {
+		file.WriteString(err.Error())
+		return nil, err
 	}
 
-	if err := shimlessRMA.app.LeftClickCancelButton()(ctx); err != nil {
-		return nil, errors.Wrap(err, "failed to click cancel button")
+	file.WriteString(offlineExecuteSuccess)
+	return &empty.Empty{}, nil
+}
+
+// VerifyTestWelcomeAndNetworkConnectionSuccess verify that TestWelcomeAndNetworkConnection runs successfully.
+// It reads offlineLogFile and verify the content.
+func (shimlessRMA *AppService) VerifyTestWelcomeAndNetworkConnectionSuccess(ctx context.Context, req *empty.Empty) (*empty.Empty, error) {
+	content, err := ioutil.ReadFile(offlineLogFile)
+	if err != nil {
+		return nil, errors.Wrap(err, "TestWelcomeAndNetworkConnection failed because we cannot read log file")
 	}
+
+	if string(content) != offlineExecuteSuccess {
+		errorMessage := fmt.Sprintf("TestWelcomeAndNetworkConnection failed. Reason is %s", content)
+		return nil, errors.New(errorMessage)
+	}
+
+	if err := os.Remove(offlineLogFile); err != nil {
+		return nil, errors.Wrap(err, "fail to delete offline log file")
+	}
+
+	return &empty.Empty{}, nil
+}
+
+// VerifyNoWifiConnected verify that no wifi is connected.
+func (shimlessRMA *AppService) VerifyNoWifiConnected(ctx context.Context, req *empty.Empty) (*empty.Empty, error) {
+	wifi, err := shill.NewWifiManager(ctx, nil)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed creating shill manager proxy")
+	}
+	// Disable ethernet and wifi to ensure the tethered connection is being used.
+	connected, err := wifi.Connected(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "Fail to check whether wifi is connected")
+	}
+
+	if connected {
+		return nil, errors.New("Fail to forget wifi")
+	}
+	testing.ContextLog(ctx, "No wifi is connected")
 
 	return &empty.Empty{}, nil
 }
@@ -220,4 +293,66 @@ func (shimlessRMA *AppService) BypassFirmwareInstallation(ctx context.Context, r
 		return nil, err
 	}
 	return &empty.Empty{}, nil
+}
+
+func (shimlessRMA *AppService) handleWelcomePage(ctx context.Context) error {
+	return action.Combine("Navigate to handle Welcome page",
+		shimlessRMA.app.WaitForPageToLoad("Chromebook repair", time.Minute),
+		shimlessRMA.app.WaitUntilButtonEnabled("Get started", time.Minute),
+		shimlessRMA.app.LeftClickButton("Get started"),
+	)(ctx)
+}
+
+func (shimlessRMA *AppService) connectWifiAndVerifyInternetConnection(ctx context.Context) error {
+	return action.Combine("Fail to click wifi",
+		shimlessRMA.app.WaitForPageToLoad("Get connected", time.Minute),
+		shimlessRMA.app.LeftClickGenericContainer(wifiName),
+		uiauto.Sleep(5*time.Second),
+		shimlessRMA.app.LeftClickButton("Next"),
+	)(ctx)
+}
+
+func (shimlessRMA *AppService) handleUntilWifiConnectionWithoutEthernet(ctx context.Context) error {
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
+
+	manager, err := shill.NewManager(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed creating shill manager proxy")
+	}
+	// Disable ethernet and wifi to ensure the tethered connection is being used.
+	ethEnableFunc, err := manager.DisableTechnologyForTesting(ctx, shill.TechnologyEthernet)
+	if err != nil {
+		return errors.Wrap(err, "Unable to disable ethernet")
+	}
+	defer ethEnableFunc(cleanupCtx)
+
+	if networkAvailable(ctx) {
+		return errors.New("Still access to Internet after ethernet is disabled")
+	}
+
+	return action.Combine("Handle until Wifi Connection without Ethernet",
+		shimlessRMA.handleWelcomePage,
+		shimlessRMA.connectWifiAndVerifyInternetConnection,
+		shimlessRMA.app.WaitForPageToLoad("Select which components were replaced", time.Minute),
+	)(ctx)
+}
+
+func (shimlessRMA *AppService) cancelShimlessRMA(ctx context.Context) error {
+	return action.Combine("Cancel shimless RMA app",
+		shimlessRMA.app.LeftClickButton("Exit"),
+		shimlessRMA.app.LeftClickButton("Exit"),
+	)(ctx)
+}
+
+func networkAvailable(ctx context.Context) bool {
+	out, err := testexec.CommandContext(ctx, "ping", "-c", "3", googleURL).Output(testexec.DumpLogOnError)
+	// Ping is expected to return an error if it fails to ping the server.
+	// Just log the error and return false.
+	if err != nil {
+		testing.ContextLog(ctx, "Failed to run 'ping' command: ", err)
+		return false
+	}
+	return strings.Contains(string(out), "3 received")
 }
