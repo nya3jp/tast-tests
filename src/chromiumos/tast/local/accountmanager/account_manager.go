@@ -436,6 +436,7 @@ func TestCleanup(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome)
 			return errors.Wrap(err, "failed to get More actions button info")
 		}
 		accountMoreActionsButton := nodewith.Name(info.Name).Role(role.Button)
+		testing.ContextLog(ctx, "ui.IsNodeFound found "+accountMoreActionsButton.Pretty())
 
 		// Find and click "More actions, <email>" button.
 		if err := uiauto.Combine("Click More actions",
@@ -452,6 +453,7 @@ func TestCleanup(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome)
 		if err := ui.WaitUntilGone(accountMoreActionsButton)(ctx); err != nil {
 			return errors.Wrap(err, "failed to wait until account is removed")
 		}
+		testing.ContextLog(ctx, "ui.WaitUntilGone "+accountMoreActionsButton.Pretty())
 	}
 
 	// Close all windows.
