@@ -34,6 +34,24 @@
       "parentUuid": "ff89bf85_81632cab",
       "revId": "f24256817a6da43a7c1eac2fb724b9804ee24399",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a79c4ed_40823b36",
+        "filename": "src/chromiumos/tast/local/wallpaper/wallpaper.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-08-25T13:43:33Z",
+      "side": 1,
+      "message": "Fixed, what I wanted is to open the personalization hub and check if change wallpaper button is clickable or not.",
+      "parentUuid": "44989a8c_1911bda4",
+      "revId": "f24256817a6da43a7c1eac2fb724b9804ee24399",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
