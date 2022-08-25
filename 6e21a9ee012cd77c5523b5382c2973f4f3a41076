@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "80a09430_8e622de7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/add_remove_factors.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1546868
+      },
+      "writtenOn": "2022-08-25T16:36:30Z",
+      "side": 1,
+      "message": "This seemed to be necessary to make the cmp.Diff+cmpopts work. I think I could also make by adding either a custom comparer or maybe by fiddling with exporter options on cmp.Diff, but both of those were a little complicated to figure out.\n\nSince this is a private type I thought that making the fields public was not too big of a problem, but if you really would prefer I avoid that I can look into hooking the comparer to it.",
+      "parentUuid": "b22ea8ac_eeb696f2",
+      "range": {
+        "startLine": 53,
+        "startChar": 1,
+        "endLine": 53,
+        "endChar": 5
+      },
+      "revId": "6e21a9ee012cd77c5523b5382c2973f4f3a41076",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b390ad4d_5006ab3a",
         "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/add_remove_factors.go",
         "patchSetId": 1
@@ -54,6 +78,24 @@
       "writtenOn": "2022-08-25T07:23:26Z",
       "side": 1,
       "message": "nit: reflow comments",
+      "revId": "6e21a9ee012cd77c5523b5382c2973f4f3a41076",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7c4990a_4dc181eb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/add_remove_factors.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1546868
+      },
+      "writtenOn": "2022-08-25T16:36:30Z",
+      "side": 1,
+      "message": "What am I reflowing to? TBH I find what people consider to be a reasonable line length in Go to be rather opaque, and the lack of any kind of reflow support in gofmt doesn\u0027t help. I mostly just try to aim for not making the comments wider than the code it\u0027s comment and hope that this makes people happy.",
+      "parentUuid": "b390ad4d_5006ab3a",
       "revId": "6e21a9ee012cd77c5523b5382c2973f4f3a41076",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -75,6 +117,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f435ca09_e5156044",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/add_remove_factors.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1546868
+      },
+      "writtenOn": "2022-08-25T16:36:30Z",
+      "side": 1,
+      "message": "Okay, I tried to use this pattern instead.",
+      "parentUuid": "f097fdaa_1f1c7e09",
+      "revId": "6e21a9ee012cd77c5523b5382c2973f4f3a41076",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f2dd8648_1b2dbe3d",
@@ -88,6 +148,30 @@
       "writtenOn": "2022-08-25T07:23:26Z",
       "side": 1,
       "message": "Explicitly print got and want as well:\n\nreply.GetConfiguredAuthFactors() \u003d %v; want %v; diff %s",
+      "range": {
+        "startLine": 79,
+        "startChar": 48,
+        "endLine": 79,
+        "endChar": 66
+      },
+      "revId": "6e21a9ee012cd77c5523b5382c2973f4f3a41076",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fea79bb2_d8d9eadb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/add_remove_factors.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1546868
+      },
+      "writtenOn": "2022-08-25T16:36:30Z",
+      "side": 1,
+      "message": "I don\u0027t think that works with slices of structs, versus just two structs? FWIW this by far seemed to be the most common test pattern for this kind of diff-based compare, which is why I used it.",
+      "parentUuid": "f2dd8648_1b2dbe3d",
       "range": {
         "startLine": 79,
         "startChar": 48,
