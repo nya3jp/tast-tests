@@ -29,7 +29,7 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"biometrics_daemon"},
 		HardwareDeps: hwdep.D(hwdep.Fingerprint()),
-		ServiceDeps:  []string{"tast.cros.platform.UpstartService", dutfs.ServiceName},
+		ServiceDeps:  []string{"tast.cros.platform.DbusService", "tast.cros.platform.UpstartService", dutfs.ServiceName},
 		Vars:         []string{"servo"},
 	})
 }
