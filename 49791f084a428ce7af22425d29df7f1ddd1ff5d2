@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e9af746_0697753c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/apps/apps_service_grpc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-08-25T00:46:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "64a3f4b9_99fe95d2",
+      "revId": "49791f084a428ce7af22425d29df7f1ddd1ff5d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "09221c6e_8e4fdd8c",
@@ -48,6 +66,24 @@
       "writtenOn": "2022-08-24T18:54:43Z",
       "side": 1,
       "message": "Do not need this line.",
+      "revId": "49791f084a428ce7af22425d29df7f1ddd1ff5d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "440fad56_9371b398",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/inputs/keyboard_service_grpc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-08-25T00:46:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "09221c6e_8e4fdd8c",
       "revId": "49791f084a428ce7af22425d29df7f1ddd1ff5d2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -69,6 +105,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "90d50083_a9605145",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/ui/automation_service_grpc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-08-25T00:46:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3598ab65_9c9c9ced",
+      "revId": "49791f084a428ce7af22425d29df7f1ddd1ff5d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f9395c83_eb3ea7e5",
@@ -82,6 +136,24 @@
       "writtenOn": "2022-08-24T18:54:43Z",
       "side": 1,
       "message": "Vars:         []string{ \"ui.gaiaPoolDefault\"},",
+      "revId": "49791f084a428ce7af22425d29df7f1ddd1ff5d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5143f935_bb8c47ae",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/ui/chrome_service_grpc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-08-25T00:46:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f9395c83_eb3ea7e5",
       "revId": "49791f084a428ce7af22425d29df7f1ddd1ff5d2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -103,6 +175,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f45c6441_732b89bc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/ui/screen_recorder_service_grpc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-08-25T00:46:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8d740e14_d72d6bbc",
+      "revId": "49791f084a428ce7af22425d29df7f1ddd1ff5d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f45e2802_ffea3685",
@@ -116,6 +206,24 @@
       "writtenOn": "2022-08-24T18:54:43Z",
       "side": 1,
       "message": "I don\u0027t think you need this line.",
+      "revId": "49791f084a428ce7af22425d29df7f1ddd1ff5d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "576c77d2_93f8b195",
+        "filename": "src/chromiumos/tast/remote/crosserverutil/cros_server_util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-08-25T00:46:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f45e2802_ffea3685",
       "revId": "49791f084a428ce7af22425d29df7f1ddd1ff5d2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
