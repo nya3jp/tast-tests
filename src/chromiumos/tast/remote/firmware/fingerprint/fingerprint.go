@@ -76,6 +76,11 @@ const (
 	powerdUpstartJobName = "powerd"
 	disableFpUpdaterFile = ".disable_fp_updater"
 	dutTempPathPattern   = "fp_test_*"
+	// Constants used to enable/disable DBus bus activation for fwupd
+	// service.
+	statefulPartitionDir = "/mnt/stateful_partition"
+	dbusServiceDir       = "/usr/share/dbus-1/system-services"
+	fwupdServiceFile     = "org.freedesktop.fwupd.service"
 )
 
 // Map from signing key ID to type of signing key.
