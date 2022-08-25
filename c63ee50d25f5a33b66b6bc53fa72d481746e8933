@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c95c7c7_99ec5c16",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-08-25T06:50:15Z",
+      "side": 1,
+      "message": "Yes, it looks like. See https://crrev.com/c/3855489",
+      "parentUuid": "b717fc89_ccb14ddf",
+      "revId": "c63ee50d25f5a33b66b6bc53fa72d481746e8933",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "754fb554_ef211454",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-08-24T13:59:00Z",
       "side": 1,
       "message": "nit: Missing quote `\"More actions, \u003cemail\u003e\"`",
+      "range": {
+        "startLine": 376,
+        "startChar": 21,
+        "endLine": 376,
+        "endChar": 43
+      },
+      "revId": "c63ee50d25f5a33b66b6bc53fa72d481746e8933",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d74bb668_6fee1ea0",
+        "filename": "src/chromiumos/tast/local/accountmanager/account_manager.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 376,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-08-25T06:50:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "754fb554_ef211454",
       "range": {
         "startLine": 376,
         "startChar": 21,
