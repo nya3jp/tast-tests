@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e263bd51_1812013d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-08-25T01:49:50Z",
+      "side": 1,
+      "message": "LGTM. Please have somebody familiar with apps service to review it and give you +2. Thanks.",
+      "revId": "28d4308b272fa5a3980fb0dc1fbb87e2f1cdab6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
