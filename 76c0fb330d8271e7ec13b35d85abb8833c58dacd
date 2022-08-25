@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0dccab7d_9db7e8d3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2022-08-25T18:26:45Z",
+      "side": 1,
+      "message": "Fixed merge conflict. Tast unit test passed on latest patch #5",
+      "revId": "76c0fb330d8271e7ec13b35d85abb8833c58dacd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
