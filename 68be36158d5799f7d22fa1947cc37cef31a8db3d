@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "017527f5_01e5f916",
+        "filename": "src/chromiumos/tast/local/chrome/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1000045
+      },
+      "writtenOn": "2022-08-25T23:13:13Z",
+      "side": 0,
+      "message": "FYI - I renamed this to chromeLogged*In*WithGaia for consistency with the other chromeLoggedIn fixtures.",
+      "revId": "68be36158d5799f7d22fa1947cc37cef31a8db3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

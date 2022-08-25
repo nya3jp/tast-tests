@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "df3aadba_5abb89b5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000045
+      },
+      "writtenOn": "2022-08-25T23:13:13Z",
+      "side": 1,
+      "message": "Please take a look.",
+      "revId": "e0f02e7f1c39ea5496a41f004a08dcdef4ca7388",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb62c732_3986b281",
+        "filename": "src/chromiumos/tast/local/chrome/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1000045
+      },
+      "writtenOn": "2022-08-25T23:13:13Z",
+      "side": 1,
+      "message": "The diff is a bit confusing. This one is the updated chromeLoggedInWith100FakeAppsProductivityLauncher.",
+      "revId": "e0f02e7f1c39ea5496a41f004a08dcdef4ca7388",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
