@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7a529b16_cd5f3ab9",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/firmware_test_handler.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 449,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-08-25T20:42:59Z",
+      "side": 1,
+      "message": "Since we may need to disable/enable other services launched by DBus, can we make this more generic and put it in the common Tast code? e.g., Similar to how we handle upstart:\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/upstart/upstart.go\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/platform/upstart_service.go",
+      "range": {
+        "startLine": 435,
+        "startChar": 0,
+        "endLine": 449,
+        "endChar": 1
+      },
+      "revId": "98cc597254d5ea88790fde3762fc5c239dc300a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "83573f38_8e56f504",
         "filename": "src/chromiumos/tast/remote/firmware/fingerprint/firmware_test_handler.go",
         "patchSetId": 2
