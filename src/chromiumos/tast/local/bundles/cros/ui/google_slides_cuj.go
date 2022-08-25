@@ -32,6 +32,7 @@ func init() {
 		Attr:         []string{"group:cuj"},
 		SoftwareDeps: []string{"chrome", "arc"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
+		Data:         []string{cujrecorder.SystemTraceConfigFile},
 		Timeout:      15 * time.Minute,
 		Params: []testing.Param{{
 			Val:     browser.TypeAsh,
@@ -94,6 +95,8 @@ func GoogleSlidesCUJ(ctx context.Context, s *testing.State) {
 	if err := recorder.AddCommonMetrics(tconn, bTconn); err != nil {
 		s.Fatal("Failed to add common metrics to recorder: ", err)
 	}
+
+	recorder.EnableTracing(s.OutDir(), s.DataPath(cujrecorder.SystemTraceConfigFile))
 
 	// Create a virtual keyboard.
 	kw, err := input.Keyboard(ctx)

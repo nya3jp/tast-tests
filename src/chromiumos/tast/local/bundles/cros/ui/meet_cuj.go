@@ -64,7 +64,6 @@ type meetTest struct {
 	cam         bool                 // Whether the camera is on or not.
 	duration    time.Duration        // Duration of the meet call. Must be less than test timeout.
 	browserType browser.Type         // Ash Chrome browser or Lacros.
-	tracing     bool                 // Whether to turn on tracing.
 	validation  bool                 // Whether to add extra cpu loads before collecting metrics.
 	botsOptions []bond.AddBotsOption // Customizes the meeting participant bots.
 }
@@ -230,19 +229,6 @@ func init() {
 			Fixture:           "loggedInToCUJUserWithWebRTCEventLoggingLacros",
 			ExtraSoftwareDeps: []string{"lacros"},
 		}, {
-			// Big meeting with tracing.
-			Name:      "16p_trace",
-			Timeout:   defaultTestTimeout + 20*time.Minute,
-			ExtraAttr: []string{"group:cuj"},
-			Val: meetTest{
-				num:         15,
-				layout:      meetLayoutTiled,
-				cam:         true,
-				browserType: browser.TypeAsh,
-				tracing:     true,
-			},
-			Fixture: "loggedInToCUJUserWithWebRTCEventLogging",
-		}, {
 			// Validation test for big meeting.
 			Name:    "16p_validation",
 			Timeout: defaultTestTimeout + 10*time.Minute,
@@ -316,19 +302,6 @@ func init() {
 				layout:      meetLayoutTiled,
 				cam:         true,
 				browserType: browser.TypeLacros,
-			},
-			Fixture:           "loggedInToCUJUserWithWebRTCEventLoggingLacros",
-			ExtraSoftwareDeps: []string{"lacros"},
-		}, {
-			// Lacros variation of 16p trace test
-			Name:    "lacros_16p_trace",
-			Timeout: defaultTestTimeout + 20*time.Minute,
-			Val: meetTest{
-				num:         15,
-				layout:      meetLayoutTiled,
-				cam:         true,
-				browserType: browser.TypeLacros,
-				tracing:     true,
 			},
 			Fixture:           "loggedInToCUJUserWithWebRTCEventLoggingLacros",
 			ExtraSoftwareDeps: []string{"lacros"},
@@ -562,9 +535,8 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to add common metrics to recorder: ", err)
 	}
 
-	if meet.tracing {
-		recorder.EnableTracing(s.OutDir(), s.DataPath(cujrecorder.SystemTraceConfigFile))
-	}
+	recorder.EnableTracing(s.OutDir(), s.DataPath(cujrecorder.SystemTraceConfigFile))
+
 	defer func() {
 		if err := recorder.Close(closeCtx); err != nil {
 			s.Error("Failed to stop recorder: ", err)

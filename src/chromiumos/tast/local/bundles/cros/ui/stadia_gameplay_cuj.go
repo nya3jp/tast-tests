@@ -37,6 +37,7 @@ func init() {
 		// TODO(http://crbug/1144356): Test is disabled until it can be fixed
 		// Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome", "arc"},
+		Data:         []string{cujrecorder.SystemTraceConfigFile},
 		Vars:         []string{"record"},
 		Timeout:      10 * time.Minute,
 		Params: []testing.Param{{
@@ -114,6 +115,8 @@ func StadiaGameplayCUJ(ctx context.Context, s *testing.State) {
 	if err := recorder.AddCollectedMetrics(tconn, browser.TypeAsh, ashConfigs...); err != nil {
 		s.Fatal("Failed to add Ash recorded metrics: ", err)
 	}
+
+	recorder.EnableTracing(s.OutDir(), s.DataPath(cujrecorder.SystemTraceConfigFile))
 
 	// Set up the browser.
 	bt := s.Param().(browser.Type)

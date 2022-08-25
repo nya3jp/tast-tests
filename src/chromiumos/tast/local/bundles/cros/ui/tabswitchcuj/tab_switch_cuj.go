@@ -47,7 +47,6 @@ const (
 // TabSwitchParam holds parameters of tab switch cuj test variations.
 type TabSwitchParam struct {
 	BrowserType browser.Type // Chrome type.
-	Tracing     bool         // Whether to turn on tracing.
 	Validation  bool         // Whether to add extra cpu loads before collecting metrics.
 }
 
@@ -136,9 +135,7 @@ func runSetup(ctx context.Context, s *testing.State) (*tabSwitchVariables, error
 		return nil, errors.Wrap(err, "failed to add any chrome common metrics to recorder")
 	}
 
-	if vars.param.Tracing {
-		vars.recorder.EnableTracing(s.OutDir(), s.DataPath(cujrecorder.SystemTraceConfigFile))
-	}
+	vars.recorder.EnableTracing(s.OutDir(), s.DataPath(cujrecorder.SystemTraceConfigFile))
 
 	metricsSuccessfullyAdded = true
 	return &vars, nil
