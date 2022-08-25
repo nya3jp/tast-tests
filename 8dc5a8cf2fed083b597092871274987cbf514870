@@ -16,6 +16,63 @@
       "message": "Hola Maksim and Anastasiia, PTAL!",
       "revId": "8dc5a8cf2fed083b597092871274987cbf514870",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d951a66_2f808e2f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_tpm_live_tests.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-08-25T11:57:46Z",
+      "side": 1,
+      "message": "nit: Can we maybe find a bit more generic name, like `needsTpmReset`?",
+      "range": {
+        "startLine": 40,
+        "startChar": 3,
+        "endLine": 40,
+        "endChar": 17
+      },
+      "revId": "8dc5a8cf2fed083b597092871274987cbf514870",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dfee9b48_d5288c16",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_tpm_live_tests.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-08-25T11:57:46Z",
+      "side": 1,
+      "message": "IIUC, with this approach all tests would still run on Tast bots in a single batch. That\u0027s how it used to work as well, but now we have a chance to split everything into separate sub-tests, so that they can be scheduled independently and failures in one sub-test are clearly distinguishable.\n\nSee https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Parameterized-tests",
+      "revId": "8dc5a8cf2fed083b597092871274987cbf514870",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f46e189c_1344fc33",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_tpm_live_tests.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-08-25T11:57:46Z",
+      "side": 1,
+      "message": "nit: This code can be moved outside `if`, because we do it in either case anyway.",
+      "revId": "8dc5a8cf2fed083b597092871274987cbf514870",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
