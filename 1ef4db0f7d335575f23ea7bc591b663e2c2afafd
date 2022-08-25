@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "883b8db8_42a248ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/perf/perf.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1520127
+      },
+      "writtenOn": "2022-08-25T20:00:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "588afa65_6a57b779",
+      "revId": "1ef4db0f7d335575f23ea7bc591b663e2c2afafd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9fce8ce8_19cfac82",
@@ -48,6 +66,24 @@
       "writtenOn": "2022-08-25T01:40:52Z",
       "side": 1,
       "message": "This store is now done outside s.Run. Does this make any difference? If it does, we should have the scenariofunc do the storing as well.",
+      "revId": "1ef4db0f7d335575f23ea7bc591b663e2c2afafd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18f81437_bc41a837",
+        "filename": "src/chromiumos/tast/local/perfutil/run.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1520127
+      },
+      "writtenOn": "2022-08-25T20:00:40Z",
+      "side": 1,
+      "message": "Most tests use perfutil owns utility functions like StoreAllWithHeuristics, StoreAll etc and a few only (e.g. SplitViewResizePerf, LoginPerf) create their own implementation of storing the metrics. All of these functions do simple data manipulation on arrays to calculate the average and save the collected data.\n\nI actually can\u0027t think of reasons to make store func holding states in a different context and doing all the harnessing that s.Run does. In any case, I have now adjusted this CL commit message accordingly to explain this change.",
+      "parentUuid": "9fce8ce8_19cfac82",
       "revId": "1ef4db0f7d335575f23ea7bc591b663e2c2afafd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
