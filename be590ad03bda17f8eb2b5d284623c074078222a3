@@ -69,6 +69,29 @@
       "parentUuid": "b4ef16a0_2a0f4657",
       "revId": "be590ad03bda17f8eb2b5d284623c074078222a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc022763_bfe07ca3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-08-25T15:54:00Z",
+      "side": 1,
+      "message": "we can skip all devices without webcam here `SoftwareDeps: []string{\"chrome\", \"arc\", caps.BuiltinOrVividCamera},`, or just like avery recommended, do the checking (VerifyCapabilities \nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/common/media/caps/caps.go;l\u003d148?q\u003dBuiltinOrVividCamera\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch:src%2Fplatform%2Ftast-tests%2F\u0026start\u003d1) at https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go;drc\u003df70d1b41e7f230734e83bb0a02f0e57c75fe06ee;l\u003d1310\n\nI personally prefer the latter one.",
+      "range": {
+        "startLine": 95,
+        "startChar": 2,
+        "endLine": 95,
+        "endChar": 42
+      },
+      "revId": "be590ad03bda17f8eb2b5d284623c074078222a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
