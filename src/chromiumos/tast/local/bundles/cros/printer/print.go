@@ -12,6 +12,7 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
@@ -97,6 +98,11 @@ func Print(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get the keyboard: ", err)
 	}
 	defer kb.Close()
+
+	// Hide all notifications to prevent them from covering the printer entry.
+	if err := ash.CloseNotifications(ctx, tconn); err != nil {
+		s.Fatal("Failed to close all notifications: ", err)
+	}
 
 	if err := uiauto.Combine("click Settings Printer entry, save printer",
 		ui.LeftClick(entryFinder),
