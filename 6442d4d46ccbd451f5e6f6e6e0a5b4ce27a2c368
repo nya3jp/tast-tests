@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d43d52f_5562d582",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-25T18:02:03Z",
+      "side": 1,
+      "message": "Please be more specific. I would not know what values to use, or what additional setup is required to establish suitable values for these variables.",
+      "range": {
+        "startLine": 13,
+        "startChar": 14,
+        "endLine": 13,
+        "endChar": 20
+      },
+      "revId": "6442d4d46ccbd451f5e6f6e6e0a5b4ce27a2c368",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "6465342a_7d4fcefd",
@@ -31,6 +54,753 @@
       "writtenOn": "2022-08-25T05:01:52Z",
       "side": 1,
       "message": "Also Avery for owners",
+      "revId": "6442d4d46ccbd451f5e6f6e6e0a5b4ce27a2c368",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8155f775_bbe58bed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-25T18:02:03Z",
+      "side": 1,
+      "message": "This is scoped to the whole `ui` package, so it needs to be named something like `loginPerfTestParam`.",
+      "range": {
+        "startLine": 42,
+        "startChar": 5,
+        "endLine": 42,
+        "endChar": 19
+      },
+      "revId": "6442d4d46ccbd451f5e6f6e6e0a5b4ce27a2c368",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e83d767_03e56474",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-25T18:02:03Z",
+      "side": 1,
+      "message": "`ChromeOS` (remember all the hype about a branding change)",
+      "range": {
+        "startLine": 52,
+        "startChar": 59,
+        "endLine": 52,
+        "endChar": 68
+      },
+      "revId": "6442d4d46ccbd451f5e6f6e6e0a5b4ce27a2c368",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0f4010c_880639c0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-25T18:02:03Z",
+      "side": 1,
+      "message": "Instead of having such an extremely long line of code, you can put the comment on a separate line above, or maybe even use two or three lines for the comment.",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 242
+      },
+      "revId": "6442d4d46ccbd451f5e6f6e6e0a5b4ce27a2c368",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7fa4e1d2_fa42e58e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-25T18:02:03Z",
+      "side": 1,
+      "message": "See code review comment on `lacros_chrome_omaha_primary` test variant.",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 90,
+        "endChar": 242
+      },
+      "revId": "6442d4d46ccbd451f5e6f6e6e0a5b4ce27a2c368",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f5265cc_d58c768c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-25T18:02:03Z",
+      "side": 1,
+      "message": "nit: `retL`",
+      "range": {
+        "startLine": 160,
+        "startChar": 115,
+        "endLine": 160,
+        "endChar": 116
+      },
+      "revId": "6442d4d46ccbd451f5e6f6e6e0a5b4ce27a2c368",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2982a7ca_d44f7dc5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-25T18:02:03Z",
+      "side": 1,
+      "message": "You can remove this. When you write `tconn, err :\u003d` it will create an `err` variable inside the tightest scope if there is not already one there.",
+      "range": {
+        "startLine": 198,
+        "startChar": 0,
+        "endLine": 198,
+        "endChar": 15
+      },
+      "revId": "6442d4d46ccbd451f5e6f6e6e0a5b4ce27a2c368",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7bec33a9_ea37eb60",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-25T18:02:03Z",
+      "side": 1,
+      "message": "var l *lacros.Lacros\n\t\tif err :\u003d testing.Poll(ctx, func(ctx context.Context) error {\n\t\t\tvar err error\n\t\t\tl, err \u003d lacros.Connect(ctx, tconn)\n\t\t\treturn err\n\t\t}, \u0026testing.PollOptions{Timeout: 10*time.Second, Interval: 10*time.Millisecond}); err !\u003d nil {\n\t\t\treturn nil, errors.Wrap(err, \"failed to connect to lacros\")\n\t\t}\n\t\treturn l, nil\n\t}\n\treturn nil, nil",
+      "range": {
+        "startLine": 204,
+        "startChar": 0,
+        "endLine": 219,
+        "endChar": 14
+      },
+      "revId": "6442d4d46ccbd451f5e6f6e6e0a5b4ce27a2c368",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "674e483d_dcd277ca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-25T18:02:03Z",
+      "side": 1,
+      "message": "Even though `ash.CreateWindows` is in the `ash` package, it will work for Lacros if you pass in `l` for the `ash.ConnSource` parameter. You can get rid of the `browserTestAPIConn` function and simply write:\n\tvar cs ash.ConnSource\n\tif l !\u003d nil {\n\t\tcs \u003d l\n\t} else {\n\t\tcs \u003d cr\n\t}\n\n\ttconn, err :\u003d cs.TestAPIConn(ctx)\n\tif err !\u003d nil {\n\t\treturn errors.Wrap(err, \"failed to connect to browser test api\")\n\t}\n\n\tif err :\u003d ash.CreateWindows(ctx, tconn, cs, url, n); err !\u003d nil {\n\t\treturn errors.Wrap(err, \"failed to create browser windows\")\n\t}\n\n\treturn nil",
+      "range": {
+        "startLine": 242,
+        "startChar": 0,
+        "endLine": 260,
+        "endChar": 11
+      },
+      "revId": "6442d4d46ccbd451f5e6f6e6e0a5b4ce27a2c368",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f635d342_b0273214",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-25T18:02:03Z",
+      "side": 1,
+      "message": "Remove this comma.",
+      "range": {
+        "startLine": 323,
+        "startChar": 61,
+        "endLine": 323,
+        "endChar": 62
+      },
+      "revId": "6442d4d46ccbd451f5e6f6e6e0a5b4ce27a2c368",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00619f70_c7b3a9ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-25T18:02:03Z",
+      "side": 1,
+      "message": "`allow`",
+      "range": {
+        "startLine": 323,
+        "startChar": 94,
+        "endLine": 323,
+        "endChar": 97
+      },
+      "revId": "6442d4d46ccbd451f5e6f6e6e0a5b4ce27a2c368",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b08989d7_03ed23da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-25T18:02:03Z",
+      "side": 1,
+      "message": "`properly`",
+      "range": {
+        "startLine": 324,
+        "startChar": 20,
+        "endLine": 324,
+        "endChar": 26
+      },
+      "revId": "6442d4d46ccbd451f5e6f6e6e0a5b4ce27a2c368",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84233440_c8a50124",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-25T18:02:03Z",
+      "side": 1,
+      "message": "Write either\n\t\"set \\\"Always restore\\\" setting\"\nor\n\t`set \"Always restore\" setting`",
+      "range": {
+        "startLine": 357,
+        "startChar": 26,
+        "endLine": 357,
+        "endChar": 57
+      },
+      "revId": "6442d4d46ccbd451f5e6f6e6e0a5b4ce27a2c368",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b310c513_93ac0142",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-25T18:02:03Z",
+      "side": 1,
+      "message": "Just `err` will do. The error will already contain the `string` argument to `uiauto.Combine` so you don\u0027t have to repeat the information here.",
+      "range": {
+        "startLine": 360,
+        "startChar": 9,
+        "endLine": 360,
+        "endChar": 68
+      },
+      "revId": "6442d4d46ccbd451f5e6f6e6e0a5b4ce27a2c368",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e0eabc5_23b62181",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-25T18:02:03Z",
+      "side": 1,
+      "message": "Check the returned `error`. See: https://github.com/golang/go/wiki/CodeReviewComments#handle-errors",
+      "range": {
+        "startLine": 362,
+        "startChar": 0,
+        "endLine": 362,
+        "endChar": 20
+      },
+      "revId": "6442d4d46ccbd451f5e6f6e6e0a5b4ce27a2c368",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2668853_e5226672",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-25T18:02:03Z",
+      "side": 1,
+      "message": "`state`",
+      "range": {
+        "startLine": 366,
+        "startChar": 46,
+        "endLine": 366,
+        "endChar": 52
+      },
+      "revId": "6442d4d46ccbd451f5e6f6e6e0a5b4ce27a2c368",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fcc7bc8d_3cc11667",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-25T18:02:03Z",
+      "side": 1,
+      "message": "Check the returned `error`. See: https://github.com/golang/go/wiki/CodeReviewComments#handle-errors",
+      "range": {
+        "startLine": 368,
+        "startChar": 1,
+        "endLine": 368,
+        "endChar": 34
+      },
+      "revId": "6442d4d46ccbd451f5e6f6e6e0a5b4ce27a2c368",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b1ade49_48da3bf6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-25T18:02:03Z",
+      "side": 1,
+      "message": "This needs a comment even though the name may seem like enough description. See: https://github.com/golang/go/wiki/CodeReviewComments#doc-comments",
+      "range": {
+        "startLine": 372,
+        "startChar": 5,
+        "endLine": 372,
+        "endChar": 28
+      },
+      "revId": "6442d4d46ccbd451f5e6f6e6e0a5b4ce27a2c368",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85ed6a3c_fbc49c2e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-25T18:02:03Z",
+      "side": 1,
+      "message": "Please follow guidance here:\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/code_review_comments.md#state\n\nI see that you need `s` for calling `logout` because `logout` already violates the guidance. You should fix `logout` (preferably in a separate CL) instead of perpetuating bad design in this test.",
+      "range": {
+        "startLine": 372,
+        "startChar": 50,
+        "endLine": 372,
+        "endChar": 66
+      },
+      "revId": "6442d4d46ccbd451f5e6f6e6e0a5b4ce27a2c368",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f30ba406_3de0f3ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 374,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-25T18:02:03Z",
+      "side": 1,
+      "message": "`supported`",
+      "range": {
+        "startLine": 374,
+        "startChar": 28,
+        "endLine": 374,
+        "endChar": 37
+      },
+      "revId": "6442d4d46ccbd451f5e6f6e6e0a5b4ce27a2c368",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba2f9691_d77ea108",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-25T18:02:03Z",
+      "side": 1,
+      "message": "Instead of having a separate `initArcOpt` variable, just write:\n\t// Only enable arc if it\u0027s supported.\n\tif arc.Supported() {\n\t\toptions \u003d append(options, chrome.ARCSupported())\n\t}",
+      "revId": "6442d4d46ccbd451f5e6f6e6e0a5b4ce27a2c368",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8bf2c63b_cc69d04c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-25T18:02:03Z",
+      "side": 1,
+      "message": "`Optin`",
+      "range": {
+        "startLine": 414,
+        "startChar": 9,
+        "endLine": 414,
+        "endChar": 15
+      },
+      "revId": "6442d4d46ccbd451f5e6f6e6e0a5b4ce27a2c368",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3c7b85d_6f4b875b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-25T18:02:03Z",
+      "side": 1,
+      "message": "`Running`",
+      "range": {
+        "startLine": 416,
+        "startChar": 33,
+        "endLine": 416,
+        "endChar": 36
+      },
+      "revId": "6442d4d46ccbd451f5e6f6e6e0a5b4ce27a2c368",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27d247be_6d10d598",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-25T18:02:03Z",
+      "side": 1,
+      "message": "I would not put a blank line here. If anything, I would put a blank line just above `var l *lacros.Lacros` (not just below it).",
+      "revId": "6442d4d46ccbd451f5e6f6e6e0a5b4ce27a2c368",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b0ed791_32deaf99",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 428,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-25T18:02:03Z",
+      "side": 1,
+      "message": "This comment belongs outside the `if` because it also applies to the `else` case.",
+      "range": {
+        "startLine": 428,
+        "startChar": 2,
+        "endLine": 428,
+        "endChar": 51
+      },
+      "revId": "6442d4d46ccbd451f5e6f6e6e0a5b4ce27a2c368",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d71696ff_a347bea8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 430,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-25T18:02:03Z",
+      "side": 1,
+      "message": "Check the returned `error`. See: https://github.com/golang/go/wiki/CodeReviewComments#handle-errors",
+      "range": {
+        "startLine": 430,
+        "startChar": 0,
+        "endLine": 430,
+        "endChar": 37
+      },
+      "revId": "6442d4d46ccbd451f5e6f6e6e0a5b4ce27a2c368",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4fa8f1a_f9537a42",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 433,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-25T18:02:03Z",
+      "side": 1,
+      "message": "Check the returned `error`. See: https://github.com/golang/go/wiki/CodeReviewComments#handle-errors",
+      "range": {
+        "startLine": 433,
+        "startChar": 2,
+        "endLine": 433,
+        "endChar": 37
+      },
+      "revId": "6442d4d46ccbd451f5e6f6e6e0a5b4ce27a2c368",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c23f09e8_576c4561",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 435,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-25T18:02:03Z",
+      "side": 1,
+      "message": "Check the returned `error`. See: https://github.com/golang/go/wiki/CodeReviewComments#handle-errors",
+      "range": {
+        "startLine": 435,
+        "startChar": 1,
+        "endLine": 435,
+        "endChar": 37
+      },
+      "revId": "6442d4d46ccbd451f5e6f6e6e0a5b4ce27a2c368",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4edf1e5_7d3eb261",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 452,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-25T18:02:03Z",
+      "side": 1,
+      "message": "nit: comma",
+      "range": {
+        "startLine": 452,
+        "startChar": 28,
+        "endLine": 452,
+        "endChar": 29
+      },
+      "revId": "6442d4d46ccbd451f5e6f6e6e0a5b4ce27a2c368",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be7bedae_b1cf2c6f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 502,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-25T18:02:03Z",
+      "side": 1,
+      "message": "This should be:\n\t\t\t\t\tl, err :\u003d loginPerfDoLogin(ctx, cr, creds, param.bt)\n\t\t\t\t\tif err !\u003d nil {\n\t\t\t\t\t\treturn err\n\t\t\t\t\t}",
+      "range": {
+        "startLine": 499,
+        "startChar": 0,
+        "endLine": 502,
+        "endChar": 6
+      },
+      "revId": "6442d4d46ccbd451f5e6f6e6e0a5b4ce27a2c368",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0e3f6a3_09cd3209",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 524,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-25T18:02:03Z",
+      "side": 1,
+      "message": "Update this comment so it talks about both `cr` and `l`.",
+      "range": {
+        "startLine": 524,
+        "startChar": 0,
+        "endLine": 524,
+        "endChar": 120
+      },
+      "revId": "6442d4d46ccbd451f5e6f6e6e0a5b4ce27a2c368",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27a54d56_33424248",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 540,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-25T18:02:03Z",
+      "side": 1,
+      "message": "Rename the `reportEnsureWorkVisibleHistogram` function, because it will also be used to report all these. Maybe name it just `reportHistogram`.",
+      "range": {
+        "startLine": 536,
+        "startChar": 0,
+        "endLine": 540,
+        "endChar": 88
+      },
+      "revId": "6442d4d46ccbd451f5e6f6e6e0a5b4ce27a2c368",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65863e77_8a6b1962",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-25T18:02:03Z",
+      "side": 1,
+      "message": "nit:\n\t\t\t\ttestName :\u003d fmt.Sprintf(\"%dwindows%s\", currentWindows, suffix)\n\t\t\t\ts.Log(\"Starting test: \", testName)\n\t\t\t\tr.RunMultiple(ctx, s, testName,",
+      "range": {
+        "startLine": 546,
+        "startChar": 0,
+        "endLine": 548,
+        "endChar": 56
+      },
+      "revId": "6442d4d46ccbd451f5e6f6e6e0a5b4ce27a2c368",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05b5bfd3_081f9143",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 640,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-25T18:02:03Z",
+      "side": 1,
+      "message": "Just write `else` and remove the `unknown histogram` error.",
+      "range": {
+        "startLine": 640,
+        "startChar": 9,
+        "endLine": 640,
+        "endChar": 303
+      },
       "revId": "6442d4d46ccbd451f5e6f6e6e0a5b4ce27a2c368",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
