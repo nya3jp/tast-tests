@@ -88,26 +88,6 @@ func init() {
 		TearDownTimeout: chrome.ResetTimeout,
 	})
 
-	testing.AddFixture(&testing.Fixture{
-		Name: "assistantBaseWithLegacyLauncher",
-		Desc: "Chrome session for assistant testing and productivity launcher disabled",
-		Contacts: []string{
-			"yawano@google.com",
-			"assitive-eng@google.com",
-		},
-		Impl: chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
-			return []chrome.Option{
-				VerboseLogging(),
-				ashNoNudgesExtraArg(),
-				chrome.DisableFeatures("ProductivityLauncher"),
-				chrome.ExtraArgs(arc.DisableSyncFlags()...),
-			}, nil
-		}),
-		SetUpTimeout:    chrome.LoginTimeout,
-		ResetTimeout:    chrome.ResetTimeout,
-		TearDownTimeout: chrome.ResetTimeout,
-	})
-
 	// Assistant fixtures use assistant test gaia for tests with Arc++ feature
 	// as we have to make sure that necessary bits are enabled to run our tests,
 	// e.g. device apps.
@@ -207,36 +187,6 @@ func init() {
 	})
 
 	testing.AddFixture(&testing.Fixture{
-		Name: "assistantWithLegacyLauncher",
-		Desc: "Assistant is enabled with productivity launcher disabled",
-		Contacts: []string{
-			"yawano@google.com",
-			"assistive-eng@google.com",
-		},
-		Parent: "assistantBaseWithLegacyLauncher",
-		Impl: NewAssistantFixture(func(s *testing.FixtState) FixtData {
-			return FixtData{
-				Chrome: s.ParentValue().(*chrome.Chrome),
-			}
-		}),
-		PreTestTimeout:  preTestTimeout,
-		PostTestTimeout: postTestTimeout,
-	})
-
-	testing.AddFixture(&testing.Fixture{
-		Name: "assistantClamshellWithLegacyLauncher",
-		Desc: "Assistant is enabled in Clamshell mode with productivity launcher disabled",
-		Contacts: []string{
-			"yawano@google.com",
-			"assistive-eng@google.com",
-		},
-		Parent:          "assistantWithLegacyLauncher",
-		Impl:            newTabletFixture(false),
-		SetUpTimeout:    setUpTimeout,
-		TearDownTimeout: tearDownTimeout,
-	})
-
-	testing.AddFixture(&testing.Fixture{
 		Name: "assistantWithArc",
 		Desc: "Assistant is enabled with Arc",
 		Contacts: []string{
@@ -263,18 +213,6 @@ func init() {
 			"assistive-eng@google.com",
 		},
 		Parent:         "assistantClamshell",
-		Impl:           newPerfFixture(),
-		PreTestTimeout: perfFixturePreTestTimeout,
-	})
-
-	testing.AddFixture(&testing.Fixture{
-		Name: "assistantClamshellWithLegacyLauncherPerf",
-		Desc: "Assistant clamshell legacy launcher fixture for running performance test",
-		Contacts: []string{
-			"yawano@google.com",
-			"assistive-eng@google.com",
-		},
-		Parent:         "assistantClamshellWithLegacyLauncher",
 		Impl:           newPerfFixture(),
 		PreTestTimeout: perfFixturePreTestTimeout,
 	})
