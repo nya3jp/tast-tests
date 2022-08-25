@@ -16,6 +16,24 @@
       "message": "We\u0027re collect 1 min trace at the very beginning of the test, is that right? Should we be concerned about capturing startup artifacts or noise from previous test runs?",
       "revId": "fe5026f79fee5fa4ca88d3e9d1d96b23656fe692",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "09549422_9633acce",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-08-25T22:11:09Z",
+      "side": 1,
+      "message": "I think we want to collect trace during metrics recording (i.e. the first 1 min of the test scenario)? There is cpu cooldown and other preparation before running the test scenario, so I assume the impact of the previous run should be minimal.",
+      "parentUuid": "a773deae_f8f1ffe1",
+      "revId": "fe5026f79fee5fa4ca88d3e9d1d96b23656fe692",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
