@@ -50,6 +50,29 @@
       "message": "Hi Tast Owners, please review this CL.",
       "revId": "12b1334b6987e287d40a2151777603fd660e67c3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4bda026c_60a80eb8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/creation_flow.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-08-25T01:22:12Z",
+      "side": 1,
+      "message": "This doesn\u0027t look like a long-last solution to pass the test if some predition is not met. Ideally, we would still want to skip it.\n\n@seewaifu, is it feasible to add a sw software to check if the microphone is muted?",
+      "range": {
+        "startLine": 57,
+        "startChar": 2,
+        "endLine": 57,
+        "endChar": 8
+      },
+      "revId": "12b1334b6987e287d40a2151777603fd660e67c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
