@@ -22,6 +22,30 @@
       },
       "revId": "668c0aa5bf31fd884bd69cc0a793a60c9ba51063",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7438310_8a1f7239",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/dock2_persistent_settings.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1545162
+      },
+      "writtenOn": "2022-08-25T10:48:28Z",
+      "side": 1,
+      "message": "Pardon.\nInitFixture was changed, cuz I don\u0027t want the dock to have cache.\nAnd DumpScreenshotOnError is for capturing a screenshot by camera.\nBoth func is new after we discussed in the meeting.\n\nI thought those two func will be added when we move to dock4 CL, and would be better for reviewing. \n\nAnd my repo still has problems, so I just edit it online.\nBut I also do the testing locally a couple times.",
+      "parentUuid": "ba1de84f_6d2de440",
+      "range": {
+        "startLine": 112,
+        "startChar": 13,
+        "endLine": 112,
+        "endChar": 34
+      },
+      "revId": "668c0aa5bf31fd884bd69cc0a793a60c9ba51063",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
