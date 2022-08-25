@@ -176,6 +176,7 @@ func WindowStateTransitionsCUJ(ctx context.Context, s *testing.State) {
 	); err != nil {
 		s.Fatal("Failed to add window animation smoothness metrics to the recorder: ", err)
 	}
+	// Collect a 1-min trace.
 	recorder.EnableTracing(s.OutDir(), s.DataPath(cujrecorder.SystemTraceConfigFile))
 
 	// Conduct the performance measurement.
