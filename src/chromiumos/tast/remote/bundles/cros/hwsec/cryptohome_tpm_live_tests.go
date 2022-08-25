@@ -31,41 +31,92 @@ func init() {
 
 // CryptohomeTPMLiveTests would check cryptohome-tpm-live-test running as expect.
 func CryptohomeTPMLiveTests(ctx context.Context, s *testing.State) {
-	cmdRunner := hwsecremote.NewCmdRunner(s.DUT())
+	for _, param := range []struct {
+		name           string
+		withPcrChanges bool
+	}{
+		{
+			name:           "tpm_ecc_auth_block_test",
+			withPcrChanges: false,
+		},
+		{
+			name:           "tpm_bound_to_pcr_auth_block_test",
+			withPcrChanges: false,
+		},
+		{
+			name:           "tpm_not_bound_to_pcr_auth_block_test",
+			withPcrChanges: false,
+		},
+		{
+			name:           "pcr_key_test",
+			withPcrChanges: false,
+		},
+		{
+			name:           "decryption_key_test",
+			withPcrChanges: false,
+		},
+		{
+			name:           "seal_with_current_user_test",
+			withPcrChanges: false,
+		},
+		{
+			name:           "nvram_test",
+			withPcrChanges: false,
+		},
+		{
+			name:           "signature_sealed_secret_test",
+			withPcrChanges: true,
+		},
+		{
+			name:           "recovery_tpm_backend_test",
+			withPcrChanges: true,
+		},
+	} {
+		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
+			cmdRunner := hwsecremote.NewCmdRunner(s.DUT())
 
-	helper, err := hwsecremote.NewHelper(cmdRunner, s.DUT())
-	if err != nil {
-		s.Fatal("Helper creation error: ", err)
-	}
+			helper, err := hwsecremote.NewHelper(cmdRunner, s.DUT())
+			if err != nil {
+				s.Fatal("Helper creation error: ", err)
+			}
 
-	tpmManager := helper.TPMManagerClient()
+			tpmManager := helper.TPMManagerClient()
 
-	s.Log("Start resetting TPM if needed")
-	if err := helper.EnsureTPMAndSystemStateAreReset(ctx); err != nil {
-		s.Fatal("Failed to ensure resetting TPM: ", err)
-	}
-	s.Log("TPM is confirmed to be reset")
+			s.Log("Start resetting TPM if needed")
+			if param.withPcrChanges {
+				if err := helper.EnsureTPMAndSystemStateAreReset(ctx); err != nil {
+					s.Fatal("Failed to ensure resetting TPM: ", err)
+				}
+				s.Log("TPM is confirmed to be reset")
 
-	ctxForResetTPM := ctx
-	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Minute)
-	defer cancel()
-	defer func(ctx context.Context) {
-		// Clean the TPM up, so that the TPM state clobbered by the TPM live tests doesn't affect subsequent tests.
-		if err := helper.EnsureTPMAndSystemStateAreReset(ctx); err != nil {
-			s.Fatal("Failed to ensure resetting TPM: ", err)
-		}
-	}(ctxForResetTPM)
+				ctxForResetTPM := ctx
+				ctx, cancel := ctxutil.Shorten(ctx, 5*time.Minute)
+				defer cancel()
+				defer func(ctx context.Context) {
+					// Clean the TPM up, so that the TPM state clobbered by the TPM live tests doesn't affect subsequent tests.
+					if err := helper.EnsureTPMAndSystemStateAreReset(ctx); err != nil {
+						s.Fatal("Failed to ensure resetting TPM: ", err)
+					}
+				}(ctxForResetTPM)
 
-	if _, err := tpmManager.TakeOwnership(ctx); err != nil {
-		s.Fatal("Failed to take TPM ownership: ", err)
-	}
+				if _, err := tpmManager.TakeOwnership(ctx); err != nil {
+					s.Fatal("Failed to take TPM ownership: ", err)
+				}
+			} else {
+				if _, err := tpmManager.TakeOwnership(ctx); err != nil {
+					s.Fatal("Failed to take TPM ownership: ", err)
+				}
+			}
 
-	if out, err := cmdRunner.Run(ctx, "cryptohome-tpm-live-test"); err != nil {
-		logFile := filepath.Join(s.OutDir(), "tpm_live_test_output.txt")
-		if writeErr := ioutil.WriteFile(logFile, out, 0644); writeErr != nil {
-			s.Errorf("Failed to write to %s: %v", logFile, writeErr)
-		}
+			if out, err := cmdRunner.Run(ctx, "cryptohome-tpm-live-test", "--test="+param.name); err != nil {
+				s.Log(out)
+				logFile := filepath.Join(s.OutDir(), "tpm_live_test_output.txt")
+				if writeErr := ioutil.WriteFile(logFile, out, 0644); writeErr != nil {
+					s.Errorf("Failed to write to %s: %v", logFile, writeErr)
+				}
 
-		s.Fatal("TPM live test failed: ", err)
+				s.Fatal("TPM live test failed: ", err)
+			}
+		})
 	}
 }
