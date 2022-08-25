@@ -65,6 +65,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea7e80e3_a1136a43",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/add_remove_factors.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-08-25T16:59:50Z",
+      "side": 1,
+      "message": "Keep them exported, didn\u0027t know about the cmp limitation.",
+      "parentUuid": "80a09430_8e622de7",
+      "range": {
+        "startLine": 53,
+        "startChar": 1,
+        "endLine": 53,
+        "endChar": 5
+      },
+      "revId": "6e21a9ee012cd77c5523b5382c2973f4f3a41076",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b390ad4d_5006ab3a",
@@ -96,6 +120,24 @@
       "side": 1,
       "message": "What am I reflowing to? TBH I find what people consider to be a reasonable line length in Go to be rather opaque, and the lack of any kind of reflow support in gofmt doesn\u0027t help. I mostly just try to aim for not making the comments wider than the code it\u0027s comment and hope that this makes people happy.",
       "parentUuid": "b390ad4d_5006ab3a",
+      "revId": "6e21a9ee012cd77c5523b5382c2973f4f3a41076",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77a5f7f3_2d27daff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/add_remove_factors.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-08-25T16:59:50Z",
+      "side": 1,
+      "message": "Keep to a 80 char wide line for consistency in tast tests.\n\ngo/go-style/guide#line-length",
+      "parentUuid": "c7c4990a_4dc181eb",
       "revId": "6e21a9ee012cd77c5523b5382c2973f4f3a41076",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -172,6 +214,30 @@
       "side": 1,
       "message": "I don\u0027t think that works with slices of structs, versus just two structs? FWIW this by far seemed to be the most common test pattern for this kind of diff-based compare, which is why I used it.",
       "parentUuid": "f2dd8648_1b2dbe3d",
+      "range": {
+        "startLine": 79,
+        "startChar": 48,
+        "endLine": 79,
+        "endChar": 66
+      },
+      "revId": "6e21a9ee012cd77c5523b5382c2973f4f3a41076",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa69cbb9_ef93c174",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/add_remove_factors.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-08-25T16:59:50Z",
+      "side": 1,
+      "message": "%v can print everything (even if it\u0027s not pretty).\n\nThe style guide changed recently:\n\nhttps://g3doc.corp.google.com/go/g3doc/style/decisions.md?cl\u003dhead#got-before-want",
+      "parentUuid": "fea79bb2_d8d9eadb",
       "range": {
         "startLine": 79,
         "startChar": 48,
