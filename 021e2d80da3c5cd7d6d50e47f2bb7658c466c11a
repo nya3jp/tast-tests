@@ -34,6 +34,24 @@
       "parentUuid": "561d4118_f61dbf31",
       "revId": "021e2d80da3c5cd7d6d50e47f2bb7658c466c11a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1621889d_e1369907",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/idle_perf.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2022-08-25T21:38:11Z",
+      "side": 0,
+      "message": "sgtm",
+      "parentUuid": "baf74d21_d4a10ec3",
+      "revId": "021e2d80da3c5cd7d6d50e47f2bb7658c466c11a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

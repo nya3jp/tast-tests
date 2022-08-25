@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a773deae_f8f1ffe1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2022-08-25T21:38:11Z",
+      "side": 1,
+      "message": "We\u0027re collect 1 min trace at the very beginning of the test, is that right? Should we be concerned about capturing startup artifacts or noise from previous test runs?",
+      "revId": "fe5026f79fee5fa4ca88d3e9d1d96b23656fe692",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
