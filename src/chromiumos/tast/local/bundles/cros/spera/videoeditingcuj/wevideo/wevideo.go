@@ -9,6 +9,7 @@ import (
 	"context"
 	"fmt"
 	"regexp"
+	"strings"
 	"time"
 
 	"chromiumos/tast/common/action"
@@ -29,6 +30,7 @@ const (
 	dragTime       = 2 * time.Second  // Used for dragging.
 	shortUITimeout = 3 * time.Second  // Used for situations where UI response might be faster.
 	longUITimeout  = 30 * time.Second // Used for situations where UI response might be slow.
+	retryTimes     = 3                // retryTimes is the maximum number of times the action will be retried.
 )
 
 var weVideoWebArea = nodewith.Name("WeVideo").Role(role.RootWebArea)
@@ -110,7 +112,7 @@ func (w *WeVideo) Login(account string) action.Action {
 	return uiauto.IfSuccessThen(loginRequired,
 		// There is a bug in Wevideo login process, sometimes it needs to login twice with google account.
 		// So add retry login here.
-		uiauto.Retry(3, uiauto.NamedCombine("log in WeVideo",
+		uiauto.Retry(retryTimes, uiauto.NamedCombine("log in WeVideo",
 			uiauto.IfSuccessThen(ui.Exists(loginButton), ui.DoDefault(loginButton)),
 			ui.WaitUntilExists(loginWebArea),
 			loginWithGoogle,
@@ -125,11 +127,13 @@ func (w *WeVideo) Login(account string) action.Action {
 func (w *WeVideo) Create() action.Action {
 	promptWindow := nodewith.ClassName("Modal medium")
 	closeButton := nodewith.Name("CLOSE").Role(role.Button).Ancestor(promptWindow)
-	createNewButton := nodewith.NameContaining("CREATE NEW").Role(role.Button).Ancestor(weVideoWebArea)
+	createNewRe := regexp.MustCompile("(?i)create new")
+	createNewButton := nodewith.NameRegex(createNewRe).Ancestor(weVideoWebArea).First()
 	videoText := nodewith.Name("Video").Role(role.StaticText).Ancestor(weVideoWebArea)
-	titleText := nodewith.Name("MY VIDEO").Role(role.StaticText).Ancestor(weVideoWebArea)
+	titleRe := regexp.MustCompile("(?i)my video")
+	titleText := nodewith.NameRegex(titleRe).Role(role.StaticText).Ancestor(weVideoWebArea)
 	// The pop-up prompt window display time is not necessarily, so add retry to ensure that the window is closed.
-	return uiauto.Retry(3, uiauto.NamedCombine("create the new video editing",
+	return uiauto.Retry(retryTimes, uiauto.NamedCombine("create the new video editing",
 		// Close the pop-up prompt window.
 		uiauto.IfSuccessThen(w.ui.WithTimeout(shortUITimeout).WaitUntilExists(closeButton), w.ui.LeftClick(closeButton)),
 		w.ui.DoDefault(createNewButton),
@@ -146,7 +150,7 @@ func (w *WeVideo) AddStockVideo(clipName, previousClipName, clipTime, expectedTr
 	tryItNowButton := nodewith.Name("TRY IT NOW").Role(role.Button)
 	openStockMedia := uiauto.IfSuccessThen(ui.WithTimeout(shortUITimeout).WaitUntilGone(searchVideo),
 		// The pop-up prompt window display time is not necessarily, so add retry to ensure that the window is closed.
-		uiauto.Retry(3, uiauto.NamedCombine("open stock media",
+		uiauto.Retry(retryTimes, uiauto.NamedCombine("open stock media",
 			w.closePromptWindow(),
 			ui.LeftClick(stockMediaButton),
 			uiauto.IfSuccessThen(ui.WithTimeout(shortUITimeout).WaitUntilExists(tryItNowButton), ui.LeftClick(tryItNowButton)),
@@ -189,7 +193,7 @@ func (w *WeVideo) AddStockVideo(clipName, previousClipName, clipTime, expectedTr
 		defer pc.Close()
 		testing.ContextLogf(ctx, "Drag video to track from %v to %v", dragUpStart, dragUpEnd)
 		// Sometimes it fails to drag the video, so add a retry here.
-		return uiauto.Retry(3, uiauto.Combine("drag video to track",
+		return uiauto.Retry(retryTimes, uiauto.Combine("drag video to track",
 			pc.Drag(dragUpStart, pc.DragTo(dragUpEnd, dragTime)),
 			uiauto.IfSuccessThen(ui.WithTimeout(shortUITimeout).WaitUntilExists(insertAndPush), ui.LeftClick(insertAndPush)),
 			ui.WithTimeout(shortUITimeout).WaitUntilExists(beginningOfTheClip),
@@ -242,45 +246,22 @@ func (w *WeVideo) AddText(clipName, expectedTrack, text string) action.Action {
 		pc := pointer.NewMouse(w.tconn)
 		defer pc.Close()
 		testing.ContextLogf(ctx, "Drag text to track from %v to %v", dragUpStart, dragUpEnd)
-		return uiauto.Retry(3, uiauto.Combine("drag text to track",
+		return uiauto.Retry(retryTimes, uiauto.Combine("drag text to track",
 			pc.Drag(dragUpStart, pc.DragTo(dragUpEnd, dragTime)),
 			ui.WithTimeout(shortUITimeout).WaitUntilExists(beginningOfTheClip),
 		))(ctx)
 	}
 	sampleText := nodewith.Name("Sample text").Role(role.StaticText)
-	saveButton := nodewith.Name("SAVE CHANGES").Role(role.StaticText)
-	editTextProperties := func(ctx context.Context) error {
-		const lowScreenHeight = 750
-		var height int64
-		if err := w.tconn.Eval(ctx, "window.screen.height", &height); err != nil {
-			return errors.Wrap(err, "failed to retrieve screen height")
-		}
-		scrollLowScreenHeight := func(scrollAction action.Action) action.Action {
-			return func(ctx context.Context) error {
-				if !w.tabletMode && height <= lowScreenHeight {
-					testing.ContextLogf(ctx, "The screen height(%d) is not enough, scrolling the page", height)
-					return scrollAction(ctx)
-				}
-				return nil
-			}
-		}
-		return uiauto.NamedCombine("edit text",
-			w.closePromptWindow(),
-			ui.DoubleClick(beginningOfTheClip),
-			ui.LeftClick(sampleText),
-			w.kb.AccelAction("Ctrl+A"),
-			w.kb.TypeAction(text),
-			// Some DUTs have too little screen height to display the save button.
-			// Swipe down to slide the page down to reveal the save button.
-			// There are two scroll bars in the text properties, so scroll twice here.
-			scrollLowScreenHeight(w.uiHandler.SwipeDown()),
-			scrollLowScreenHeight(w.uiHandler.SwipeDown()),
-			ui.LeftClickUntil(saveButton, ui.WithTimeout(shortUITimeout).WaitUntilGone(saveButton)),
-			// After saving, scroll back to the top.
-			scrollLowScreenHeight(w.uiHandler.SwipeUp()),
-		)(ctx)
-	}
-
+	saveButtonRe := regexp.MustCompile("(?i)save changes")
+	saveButton := nodewith.NameRegex(saveButtonRe).Role(role.StaticText).Ancestor(weVideoWebArea)
+	editTextProperties := uiauto.NamedCombine("edit text",
+		w.closePromptWindow(),
+		w.kb.TypeAction("e"), // Type e to edit text.
+		ui.LeftClick(sampleText),
+		w.kb.AccelAction("Ctrl+A"),
+		w.kb.TypeAction(text),
+		ui.DoDefaultUntil(saveButton, ui.WithTimeout(shortUITimeout).WaitUntilGone(saveButton)),
+	)
 	return uiauto.NamedCombine(fmt.Sprintf("add text to clip \"%s\"", clipName),
 		w.closePromptWindow(),
 		ui.LeftClick(textButton),
@@ -292,7 +273,7 @@ func (w *WeVideo) AddText(clipName, expectedTrack, text string) action.Action {
 // AddTransition adds transition to the expected clip.
 func (w *WeVideo) AddTransition(clipName string) action.Action {
 	transitionButton := nodewith.Name("Transitions").Role(role.Button).HasClass("MuiListItem-button")
-	transitionClip := nodewith.ClassName("transition-icon").Role(role.GenericContainer)
+	transitionClip := nodewith.HasClass("clip-transition").Role(role.GenericContainer)
 	dragTransitionToClip := func(ctx context.Context) error {
 		crossFade := nodewith.Name("Cross fade").Role(role.StaticText)
 		crossFadeLocation, err := w.ui.Location(ctx, crossFade)
@@ -304,7 +285,7 @@ func (w *WeVideo) AddTransition(clipName string) action.Action {
 		pc := pointer.NewMouse(w.tconn)
 		defer pc.Close()
 		testing.ContextLogf(ctx, "Drag transition to clip from %v to %v", dragUpStart, dragUpEnd)
-		return uiauto.Retry(3, uiauto.Combine("drag transition to clip",
+		return uiauto.Retry(retryTimes, uiauto.Combine("drag transition to clip",
 			pc.Drag(dragUpStart, pc.DragTo(dragUpEnd, dragTime)),
 			// Check the transition is added.
 			w.ui.WithTimeout(shortUITimeout).WaitUntilExists(transitionClip),
@@ -320,10 +301,9 @@ func (w *WeVideo) AddTransition(clipName string) action.Action {
 
 // PlayVideo plays the edited video from the beginning of expected clip.
 func (w *WeVideo) PlayVideo(clipName string) action.Action {
-	playButton := nodewith.NameContaining("Play the video").Role(role.GenericContainer)
 	return uiauto.NamedCombine("play the edited video from the beginning to the end",
 		w.ui.MouseClickAtLocation(0, w.clips[clipName].startPoint),
-		w.ui.DoDefault(playButton),
+		w.kb.AccelAction("Space"), // Press space to play video.
 		w.waitUntilPlaying(shortUITimeout),
 		w.waitUntilPaused(longUITimeout),
 	)
@@ -402,9 +382,20 @@ func (w *WeVideo) waitUntilPaused(timeout time.Duration) action.Action {
 
 // currentTime gets the current playing time (in string) of the edited video.
 func (w *WeVideo) currentTime(ctx context.Context) (string, error) {
+	timeNodeRe := regexp.MustCompile("^(\\d+):(\\d+):(\\d+) / (\\d+):(\\d+):(\\d+)$")
+	timeNodeText := nodewith.NameRegex(timeNodeRe).Role(role.StaticText).Ancestor(weVideoWebArea)
+	if err := w.ui.Exists(timeNodeText)(ctx); err == nil {
+		info, err := w.ui.Info(ctx, timeNodeText)
+		if err != nil {
+			return "", err
+		}
+		currentTime := strings.Split(info.Name, " ")[0]
+		return currentTime, nil
+	}
+
 	playHead := nodewith.Name("Playhead").Role(role.GenericContainer).Ancestor(weVideoWebArea)
-	timeNode := nodewith.NameRegex(regexp.MustCompile("^(\\d+):(\\d+):(\\d+)$")).Role(role.StaticText).Ancestor(playHead)
-	info, err := w.ui.Info(ctx, timeNode)
+	timeNodeText = nodewith.NameRegex(regexp.MustCompile("^(\\d+):(\\d+):(\\d+)$")).Role(role.StaticText).Ancestor(playHead)
+	info, err := w.ui.Info(ctx, timeNodeText)
 	if err != nil {
 		return "", err
 	}
@@ -414,7 +405,7 @@ func (w *WeVideo) currentTime(ctx context.Context) (string, error) {
 // closePromptWindow closes the pop-up prompt window.
 func (w *WeVideo) closePromptWindow() action.Action {
 	promptWindow := nodewith.NameContaining("Intercom Live Chat").Role(role.Dialog)
-	closeButton := nodewith.Name("Close").Role(role.Button).Ancestor(promptWindow)
+	closeButton := nodewith.Name("Close").Role(role.Button).Ancestor(promptWindow).First()
 	closeDialog := uiauto.NamedAction("close prompt window",
 		w.ui.LeftClickUntil(closeButton, w.ui.WithTimeout(shortUITimeout).WaitUntilGone(closeButton)))
 	return uiauto.IfSuccessThen(w.ui.WithTimeout(shortUITimeout).WaitUntilExists(closeButton), closeDialog)
