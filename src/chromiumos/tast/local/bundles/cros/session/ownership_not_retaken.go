@@ -12,6 +12,7 @@ import (
 
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/cryptohome"
+	hwseclocal "chromiumos/tast/local/hwsec"
 	"chromiumos/tast/local/session"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
@@ -41,6 +42,16 @@ func OwnershipNotRetaken(ctx context.Context, s *testing.State) {
 
 		uiSetupTimeout = 90 * time.Second
 	)
+
+	cmdRunner := hwseclocal.NewCmdRunner()
+	helper, err := hwseclocal.NewHelper(cmdRunner)
+	if err != nil {
+		s.Fatal("Failed to create hwsec local helper: ", err)
+	}
+	// Resets the TPM, system, and user states before running the tests.
+	if err := helper.EnsureTPMAndSystemStateAreReset(ctx); err != nil {
+		s.Fatal("Failed to reset TPM or system states: ", err)
+	}
 
 	// Clear the device ownership info.
 	if err := func() error {
