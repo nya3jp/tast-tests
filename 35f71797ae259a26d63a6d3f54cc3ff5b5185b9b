@@ -16,6 +16,24 @@
       "message": "We have this comment in every file `Collect a 1-min trace.`. But the actual duration isn\u0027t specific to each test. Thus, if we ever want to change the duration of the trace, we\u0027d have to do a like 15 file change to fix all of these comments. Maybe we can have a more general description? Is the description necessary?",
       "revId": "35f71797ae259a26d63a6d3f54cc3ff5b5185b9b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "425d3fae_8baf7378",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/arc_youtube_cuj.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-08-25T20:55:59Z",
+      "side": 1,
+      "message": "Sounds good. I\u0027m also fine with just removing this comment.",
+      "parentUuid": "55550e25_5ffe09d3",
+      "revId": "35f71797ae259a26d63a6d3f54cc3ff5b5185b9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
