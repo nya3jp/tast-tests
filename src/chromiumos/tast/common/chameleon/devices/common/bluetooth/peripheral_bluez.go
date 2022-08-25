@@ -37,8 +37,7 @@ type BluezPeripheral interface {
 
 	// SpecifyDeviceType calls the Chameleond RPC method of the same name.
 	// Instantiates one of the supported devices specified by deviceType.
-	// Returns true if successful.
-	SpecifyDeviceType(ctx context.Context, deviceType string) (bool, error)
+	SpecifyDeviceType(ctx context.Context, deviceType string) error
 
 	// SetBtdFlags calls the Chameleond RPC method of the same name.
 	// Allows bluetoothd config execution flags to be set.
@@ -158,8 +157,8 @@ func (c *CommonBluezPeripheral) GetBaseDeviceType(ctx context.Context, deviceTyp
 
 // SpecifyDeviceType calls the Chameleond RPC method of the same name.
 // This implements BluezPeripheral.SpecifyDeviceType, see that for more details.
-func (c *CommonBluezPeripheral) SpecifyDeviceType(ctx context.Context, deviceType string) (bool, error) {
-	return c.RPC("SpecifyDeviceType").Args(deviceType).CallForBool(ctx)
+func (c *CommonBluezPeripheral) SpecifyDeviceType(ctx context.Context, deviceType string) error {
+	return c.RPC("SpecifyDeviceType").Args(deviceType).Call(ctx)
 }
 
 // SetBtdFlags calls the Chameleond RPC method of the same name.
