@@ -57,7 +57,7 @@ func init() {
 				Name:              "docked",
 				Fixture:           fixture.AnyVK,
 				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
-				ExtraAttr:         []string{"group:input-tools-upstream"},
+				ExtraAttr:         []string{"group:input-tools-upstream", "informational"},
 				Val:               hwTestIMEs,
 			},
 			{
@@ -80,7 +80,7 @@ func init() {
 				Name:              "floating",
 				Fixture:           fixture.AnyVK,
 				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
-				ExtraAttr:         []string{"group:input-tools-upstream"},
+				ExtraAttr:         []string{"group:input-tools-upstream", "informational"},
 				Val:               hwTestIMEs,
 			},
 			{
