@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "508a2f09_a51e3cd2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/shill_cellular_smoke.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1441092
+      },
+      "writtenOn": "2022-08-25T00:08:47Z",
+      "side": 0,
+      "message": "Since Shill, ndproxy, and dns-proxy handle most of the networking on ChromeOS, any changes using the standard linux tools will mess up the networking state.",
+      "parentUuid": "c56074a1_a049b18a",
+      "range": {
+        "startLine": 52,
+        "startChar": 38,
+        "endLine": 52,
+        "endChar": 65
+      },
+      "revId": "65506025a7d8427cdbe7457cab77b5d6d423b18d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6b485131_e4f5efed",
         "filename": "src/chromiumos/tast/local/bundles/cros/cellular/shill_cellular_smoke.go",
         "patchSetId": 1
@@ -37,6 +61,30 @@
       "writtenOn": "2022-08-24T17:52:36Z",
       "side": 0,
       "message": "Any reason why these commands are no longer useful?",
+      "range": {
+        "startLine": 86,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 0
+      },
+      "revId": "65506025a7d8427cdbe7457cab77b5d6d423b18d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12bba567_e532c35e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/shill_cellular_smoke.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1441092
+      },
+      "writtenOn": "2022-08-25T00:08:47Z",
+      "side": 0,
+      "message": "This is only needed when the cellular interface is not the default interface, since helper.RunTestOnCellularInterface() ensures that cellular interface is the default interface, and dns-proxy sets up accordingly, we no longer need to do any of this.",
+      "parentUuid": "6b485131_e4f5efed",
       "range": {
         "startLine": 86,
         "startChar": 0,
