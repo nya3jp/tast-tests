@@ -34,7 +34,6 @@ import (
 type taskSwitchCUJTestParam struct {
 	tablet     bool
 	useLacros  bool
-	tracing    bool // If true, collect and store trace data during recording.
 	validation bool // If true, add extra cpu loads before recording.
 }
 
@@ -62,13 +61,6 @@ func init() {
 				ExtraSoftwareDeps: []string{"android_p"},
 				Fixture:           "loggedInToCUJUser",
 				Val:               taskSwitchCUJTestParam{validation: true},
-			},
-			{
-				Name:              "trace",
-				ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
-				ExtraSoftwareDeps: []string{"android_p"},
-				Fixture:           "loggedInToCUJUser",
-				Val:               taskSwitchCUJTestParam{tracing: true},
 			},
 			{
 				Name:              "vm",
@@ -413,9 +405,8 @@ func TaskSwitchCUJ(ctx context.Context, s *testing.State) {
 	if err := recorder.AddCommonMetrics(tconn, bTconn); err != nil {
 		s.Fatal("Failed to add common metrics to recorder: ", err)
 	}
-	if testParam.tracing {
-		recorder.EnableTracing(s.OutDir(), s.DataPath(cujrecorder.SystemTraceConfigFile))
-	}
+	// Collect a 1-min trace.
+	recorder.EnableTracing(s.OutDir(), s.DataPath(cujrecorder.SystemTraceConfigFile))
 	defer recorder.Close(closeCtx)
 
 	if testParam.validation {

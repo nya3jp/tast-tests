@@ -41,6 +41,7 @@ func init() {
 		Contacts:     []string{"yichenz@chromium.org", "chromeos-perfmetrics-eng@google.com"},
 		Attr:         []string{"group:cuj"},
 		SoftwareDeps: []string{"chrome"},
+		Data:         []string{cujrecorder.SystemTraceConfigFile},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		Timeout:      10 * time.Minute,
 		Vars: []string{
@@ -65,12 +66,14 @@ func init() {
 //
 // Pre-preparation:
 //   - Open a Meet window and grant permissions.
+//
 // During recording:
 //   - Join the meeting.
 //   - Add a participant (bot) to the meeting.
 //   - Open a large Google Docs file and scroll down.
 //   - Open a large Google Slides file and go down.
 //   - Open the Gmail inbox and scroll down.
+//
 // After recording:
 //   - Record and save metrics.
 func MeetMultiTaskingCUJ(ctx context.Context, s *testing.State) {
@@ -304,6 +307,9 @@ func MeetMultiTaskingCUJ(ctx context.Context, s *testing.State) {
 	if err := recorder.AddCommonMetrics(tconn, bTconn); err != nil {
 		s.Fatal("Failed to add common metrics to recorder: ", err)
 	}
+
+	// Collect a 1-min trace.
+	recorder.EnableTracing(s.OutDir(), s.DataPath(cujrecorder.SystemTraceConfigFile))
 
 	if err := recorder.Run(ctx, func(ctx context.Context) error {
 		// Hide notifications so that they won't overlap with other UI components.

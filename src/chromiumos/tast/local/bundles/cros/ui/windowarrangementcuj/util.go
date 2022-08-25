@@ -38,7 +38,6 @@ const pkgName = "org.chromium.arc.testapp.pictureinpicturevideo"
 type TestParam struct {
 	BrowserType browser.Type
 	Tablet      bool
-	Tracing     bool
 	Validation  bool
 }
 
