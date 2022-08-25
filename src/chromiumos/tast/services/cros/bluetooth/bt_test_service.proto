@@ -24,8 +24,27 @@ service BTTestService {
 
   // DisableBluetoothAdapter powers off the bluetooth adapter.
   rpc DisableBluetoothAdapter(google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
+  // DisconnectAllDevices disconnects all connected bluetooth devices.
+  rpc DisconnectAllDevices(google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
+  // DiscoverDevice confirms that the DUT can discover the provided bluetooth
+  // device. Fails if the device is not found or if the discovered matching
+  // device's attributes do not match those provided.
+  rpc DiscoverDevice(DiscoverDeviceRequest) returns (google.protobuf.Empty) {}
 }
 
 message ChromeNewRequest {
   bool bluetoothRevampEnabled = 1;
 }
+
+message Device {
+  string macAddress = 1;
+  string advertisedName = 2;
+}
+
+message DiscoverDeviceRequest {
+  // The device to discover.
+  Device device = 1;
+}
+
