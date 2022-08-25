@@ -19,7 +19,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         OwnershipTaken,
+		Func:         OwnershipTakenWIP,
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Sign in and ensure that ownership of the device is taken",
 		Contacts: []string{
@@ -30,7 +30,7 @@ func init() {
 	})
 }
 
-func OwnershipTaken(ctx context.Context, s *testing.State) {
+func OwnershipTakenWIP(ctx context.Context, s *testing.State) {
 	const (
 		testUser = "ownership_test@chromium.org"
 		testPass = "testme"
