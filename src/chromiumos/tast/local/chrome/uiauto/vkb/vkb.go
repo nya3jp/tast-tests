@@ -21,6 +21,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/mouse"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/ossettings"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/chrome/uiauto/touch"
 	"chromiumos/tast/local/chrome/useractions"
@@ -543,12 +544,20 @@ func (vkbCtx *VirtualKeyboardContext) TapMultipasteSuggestion(itemName string) u
 }
 
 // EnableA11yVirtualKeyboard returns an action enabling or disabling
-// accessibility mode of the virtual keyboard.
-// When disabled, the tablet non-a11y virtual keyboard will be used.
+// accessibility mode of the virtual keyboard via OS settings.
 func (vkbCtx *VirtualKeyboardContext) EnableA11yVirtualKeyboard(enabled bool) uiauto.Action {
-	return func(ctx context.Context) error {
-		return vkbCtx.tconn.Call(ctx, nil, `tast.promisify(chrome.autotestPrivate.setAllowedPref)`, "settings.a11y.virtual_keyboard", enabled)
-	}
+	return uiauto.NamedAction("Set A11y VK via OS settings",
+		func(ctx context.Context) error {
+			oss, err := ossettings.LaunchAtManageA11yFeaturePage(ctx, vkbCtx.tconn, vkbCtx.cr)
+			if err != nil {
+				return errors.Wrap(err, "failed to open A11y setting")
+			}
+			return uiauto.NamedCombine("Set A11y VK",
+				oss.SetOnScreenKeyboard(vkbCtx.cr, enabled),
+				oss.Close,
+			)(ctx)
+		},
+	)
 }
 
 // SelectFromSuggestion returns an action waiting for suggestion candidate (Case Sensitive) to appear and clicks it to select.
