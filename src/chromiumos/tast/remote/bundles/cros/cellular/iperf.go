@@ -35,7 +35,7 @@ func init() {
 			"cros-connectivity@google.com",
 		},
 		Attr:         []string{"group:cellular", "cellular_callbox"},
-		ServiceDeps:  []string{""},
+		ServiceDeps:  []string{"tast.cros.cellular.RemoteCellularService"},
 		SoftwareDeps: []string{"chrome"},
 		Fixture:      "callboxManagedFixture",
 		Timeout:      15 * time.Minute,
