@@ -8,6 +8,7 @@ import (
 	"context"
 
 	"chromiumos/tast/common/fixture"
+	"chromiumos/tast/common/pci"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/local/chrome"
@@ -34,6 +35,9 @@ func init() {
 		// TODO(crbug.com/1238027): Close dialog before the next test.
 		// Attr:         []string{"group:mainline", "informational"},
 		Fixture: fixture.ChromePolicyLoggedIn,
+		SearchFlags: []*testing.StringPair{
+			pci.SearchFlag(&policy.DictationEnabled{}, pci.VerifiedFunctionalityUI),
+		},
 	})
 }
 
