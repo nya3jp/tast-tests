@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "477e0530_a577aac0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-08-25T23:30:19Z",
+      "side": 1,
+      "message": "Looks like all the bots have now picked up the right versions.\n\nI\u0027ve made one bug fix (go switch cases...) and rebased. Please have another look.",
+      "revId": "3d916b88e45f10a729d791ac8a3f0bd801de02ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
