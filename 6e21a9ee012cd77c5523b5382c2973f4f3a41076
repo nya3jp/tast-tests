@@ -288,6 +288,30 @@
       },
       "revId": "6e21a9ee012cd77c5523b5382c2973f4f3a41076",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c08c36d_37e799ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/add_remove_factors.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-08-25T17:28:03Z",
+      "side": 1,
+      "message": "I\u0027m learning something new every day 😀. Looks like your code was more idiomatic than my proposal, keep it.",
+      "parentUuid": "2fa270d6_ebc09021",
+      "range": {
+        "startLine": 79,
+        "startChar": 48,
+        "endLine": 79,
+        "endChar": 66
+      },
+      "revId": "6e21a9ee012cd77c5523b5382c2973f4f3a41076",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
