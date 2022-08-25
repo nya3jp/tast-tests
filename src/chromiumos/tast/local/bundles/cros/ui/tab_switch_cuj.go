@@ -44,14 +44,6 @@ func init() {
 			Fixture:           "tabSwitchCUJWPRLacros",
 			ExtraSoftwareDeps: []string{"lacros"},
 		}, {
-			Name:      "trace",
-			ExtraData: []string{tabswitchcuj.WPRArchiveName},
-			Val: tabswitchcuj.TabSwitchParam{
-				BrowserType: browser.TypeAsh,
-				Tracing:     true,
-			},
-			Pre: wpr.ReplayMode(tabswitchcuj.WPRArchiveName),
-		}, {
 			Name:      "validation",
 			ExtraData: []string{tabswitchcuj.WPRArchiveName},
 			Val: tabswitchcuj.TabSwitchParam{

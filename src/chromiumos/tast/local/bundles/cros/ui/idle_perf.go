@@ -35,7 +35,6 @@ const (
 )
 
 type idlePerfTest struct {
-	tracing     bool
 	testType    testType
 	browserType browser.Type
 }
@@ -56,26 +55,10 @@ func init() {
 			Val:               idlePerfTest{testType: testTypeARC},
 			Fixture:           "arcBootedRestricted",
 		}, {
-			Name:              "trace",
-			ExtraSoftwareDeps: []string{"android_p"},
-			Val: idlePerfTest{
-				testType: testTypeARC,
-				tracing:  true,
-			},
-			Fixture: "arcBootedRestricted",
-		}, {
 			Name:              "arcvm",
 			ExtraSoftwareDeps: []string{"android_vm"},
 			Val:               idlePerfTest{testType: testTypeARC},
 			Fixture:           "arcBootedRestricted",
-		}, {
-			Name:              "arcvm_trace",
-			ExtraSoftwareDeps: []string{"android_vm"},
-			Val: idlePerfTest{
-				testType: testTypeARC,
-				tracing:  true,
-			},
-			Fixture: "arcBootedRestricted",
 		}, {
 			Name:              "lacros",
 			ExtraSoftwareDeps: []string{"lacros"},
@@ -85,27 +68,10 @@ func init() {
 			},
 			Fixture: "lacrosPerf",
 		}, {
-			Name:              "lacros_trace",
-			ExtraSoftwareDeps: []string{"lacros"},
-			Val: idlePerfTest{
-				testType:    testTypeBrowser,
-				browserType: browser.TypeLacros,
-				tracing:     true,
-			},
-			Fixture: "lacrosPerf",
-		}, {
 			Name: "ash",
 			Val: idlePerfTest{
 				testType:    testTypeBrowser,
 				browserType: browser.TypeAsh,
-			},
-			Fixture: "chromeLoggedInDisableFirmwareUpdaterApp",
-		}, {
-			Name: "ash_trace",
-			Val: idlePerfTest{
-				testType:    testTypeBrowser,
-				browserType: browser.TypeAsh,
-				tracing:     true,
 			},
 			Fixture: "chromeLoggedInDisableFirmwareUpdaterApp",
 		}},
@@ -153,10 +119,6 @@ func IdlePerf(ctx context.Context, s *testing.State) {
 			s.Error("Failed to stop recorder: ", err)
 		}
 	}()
-
-	if idleTest.tracing {
-		recorder.EnableTracing(s.OutDir(), s.DataPath(cujrecorder.SystemTraceConfigFile))
-	}
 
 	if err := recorder.Run(ctx, func(ctx context.Context) error {
 		if idleTest.testType == testTypeBrowser {
