@@ -745,3 +745,29 @@ func TriggerAddingVPNDialog(tconn *chrome.TestConn) uiauto.Action {
 		)(ctx)
 	}
 }
+
+// StartCast casts by clicking Cast button in Uber tray.
+func StartCast(tconn *chrome.TestConn) uiauto.Action {
+	ui := uiauto.New(tconn)
+
+	return func(ctx context.Context) error {
+		if err := Expand(ctx, tconn); err != nil {
+			return err
+		}
+		return ui.LeftClick(PodIconButton(SettingPodCast))(ctx)
+	}
+}
+
+// StopCast casts by clicking Stop button in notification.
+func StopCast(tconn *chrome.TestConn) uiauto.Action {
+	ui := uiauto.New(tconn)
+
+	castingNotification := nodewith.NameContaining("Casting").HasClass("AshNotificationView")
+	stopButton := nodewith.Name("Stop").Role(role.Button).Ancestor(castingNotification)
+	return func(ctx context.Context) error {
+		if err := Expand(ctx, tconn); err != nil {
+			return err
+		}
+		return ui.LeftClick(stopButton)(ctx)
+	}
+}
