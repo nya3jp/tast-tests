@@ -55,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "aee89874_4f31b157",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-08-25T01:43:24Z",
+      "side": 1,
+      "message": "In the link, s.Run is hidden inside util.RunSubTest(). It does something like below:\n\n1. Test Default behavior\n2. Enable setting\n3. Test Enabled behavior\n4. Disable setting\n5. Test disabled behavior.\n\ns.Run is more convenient than Params if you do not need to expose the tests externally or present in dashboard. Technically subtest(s.Run) is just a wrapped logic running independently and would not terminate the entire test if it fails.\n\ne.g. On validating the default behavior of Browser and Android link. verifyBrowserLinkStaysInBrowser and verifyAndroidLinkStaysInAndroid are independent. It can be A fail \u0026 B pass, or A fail \u0026 B fail. In the current implementation, it introduces a dep that validating B after passing A.\n\nAn alternative solution is using s.Error instead of s.Fatal. It will not terminate the test immediately.\n\nThen you can do:\nif err :\u003d verifyBrowserLinkStaysInBrowser(); err !\u003d nil{\n    s.Error(\"\") // Record failure and continue test\n}\n\nif err :\u003d verifyBrowserLinkStaysInBrowser(); err !\u003d nil{\n    s.Error(\"\") // Record failure and continue test\n}\n\nif s.HasError(){\n    s.Fatal(\"\") // Terminate test if any error has been thrown out.\n}",
+      "parentUuid": "35026afd_a6a9c2ba",
+      "revId": "3f1ccf73102fde83e851803baac0a4b688706ead",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2bbac0f0_88cdd7a9",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/link_capturing.go",
         "patchSetId": 4
