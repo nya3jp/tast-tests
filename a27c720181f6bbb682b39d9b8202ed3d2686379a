@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8028cc7a_4af60753",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-08-25T18:52:30Z",
+      "side": 1,
+      "message": "LGTM with one remaining question!",
+      "revId": "a27c720181f6bbb682b39d9b8202ed3d2686379a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a304842e_b6e90e64",
@@ -54,6 +71,53 @@
         "startChar": 15,
         "endLine": 56,
         "endChar": 30
+      },
+      "revId": "a27c720181f6bbb682b39d9b8202ed3d2686379a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1c8bc1f_47c1b95d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/toggle_cellular_from_os_settings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-08-25T18:52:30Z",
+      "side": 1,
+      "message": "Great find! :)",
+      "parentUuid": "6f7055fe_c7acbe14",
+      "range": {
+        "startLine": 56,
+        "startChar": 15,
+        "endLine": 56,
+        "endChar": 30
+      },
+      "revId": "a27c720181f6bbb682b39d9b8202ed3d2686379a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "106eed37_851bc2e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/toggle_cellular_from_os_settings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-08-25T18:52:30Z",
+      "side": 1,
+      "message": "Would this method still need to be updated to check that we are not inhibited? Or would reaching the \"scanning\" state imply that we are no longer inhibited? Asking because I am curious if we could find ourselves attempting to click a disabled toggle, and I am not as familiar with the Cellular state flow.",
+      "range": {
+        "startLine": 59,
+        "startChar": 18,
+        "endLine": 59,
+        "endChar": 37
       },
       "revId": "a27c720181f6bbb682b39d9b8202ed3d2686379a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
