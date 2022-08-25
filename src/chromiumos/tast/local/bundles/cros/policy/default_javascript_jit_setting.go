@@ -11,6 +11,7 @@ import (
 	"time"
 
 	"chromiumos/tast/common/fixture"
+	"chromiumos/tast/common/pci"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/ctxutil"
@@ -42,6 +43,9 @@ func init() {
 			Val:               browser.TypeLacros,
 		}},
 		Data: []string{"jit_test.html", "is_jit_enabled.wasm"},
+		SearchFlags: []*testing.StringPair{
+			pci.SearchFlag(&policy.DefaultJavaScriptJitSetting{}, pci.VerifiedFunctionalityJS),
+		},
 	})
 }
 
