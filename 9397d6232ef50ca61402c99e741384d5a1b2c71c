@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d2f7380_f2b014d0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1536317
+      },
+      "writtenOn": "2022-08-25T23:51:00Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "9397d6232ef50ca61402c99e741384d5a1b2c71c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
