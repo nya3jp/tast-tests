@@ -83,6 +83,21 @@ func NewFirmwareTest(ctx context.Context, d *rpcdut.RPCDUT, servoSpec, outDir st
 		return nil, errors.Wrap(err, "failed to redial rpc")
 	}
 
+	// Disable DBus bus activation for fwupd. It will prevent fwupd and
+	// finally powerd from starting when Chrome tries to get information
+	// from fwupd, see b/243645924 for more details.
+	if err := disableFwupdDbusActivation(ctx, t.d); err != nil {
+		return nil, errors.Wrap(err, "failed to disable DBus bus activation for fwupd")
+	}
+	defer func() {
+		if initError != nil {
+			testing.ContextLog(ctx, "NewFirmwareTest failed, let's re-enable DBus activation for fwupd")
+			if err := enableFwupdDbusActivation(ctx, t.d); err != nil {
+				testing.ContextLog(ctx, "Failed to re-enable DBus activation for fwupd: ", err)
+			}
+		}
+	}()
+
 	t.daemonState, err = stopDaemons(ctx, t.UpstartService(), []string{
 		biodUpstartJobName,
 		// TODO(b/183123775): Remove when bug is fixed.
@@ -221,6 +236,16 @@ func (t *FirmwareTest) Close(ctx context.Context) error {
 		} else if err != nil && firstErr == nil {
 			firstErr = errors.Wrapf(err, "failed to check existence of temp directory: %q", t.dutTempDir)
 		}
+	}
+
+	// Enable DBus bus activation for fwupd.
+	fwupdEnabled, err := isFwupdDbusActivationEnabled(ctx, t.d)
+	if err == nil && !fwupdEnabled {
+		if err := enableFwupdDbusActivation(ctx, t.d); err != nil && firstErr == nil {
+			firstErr = err
+		}
+	} else if err != nil && firstErr == nil {
+		firstErr = err
 	}
 
 	if err := restoreDaemons(ctx, t.UpstartService(), t.daemonState); err != nil && firstErr == nil {
@@ -393,6 +418,46 @@ func DisableFPUpdater(ctx context.Context, d *rpcdut.RPCDUT) error {
 		return errors.Wrapf(err, "failed to create %q", disableFpUpdaterPath)
 	}
 	// Sync filesystem to make sure that FP updater is disabled correctly.
+	if err := d.Conn().CommandContext(ctx, "sync").Run(ssh.DumpLogOnError); err != nil {
+		return errors.Wrap(err, "failed to sync DUT")
+	}
+	return nil
+}
+
+// isFwupdDbusActivationEnabled returns true if fwupd service can be
+// automatically started.
+func isFwupdDbusActivationEnabled(ctx context.Context, d *rpcdut.RPCDUT) (bool, error) {
+	fs := dutfs.NewClient(d.RPC().Conn)
+	enabled, err := fs.Exists(ctx, filepath.Join(dbusServiceDir, fwupdServiceFile))
+	return enabled, err
+}
+
+// enableFwupdDbusActivation enables mechanism that will automatically start
+// fwupd service on connection attempt.
+func enableFwupdDbusActivation(ctx context.Context, d *rpcdut.RPCDUT) error {
+	testing.ContextLog(ctx, "Enabling the DBus bus activation for fwupd service")
+
+	servicePath := filepath.Join(dbusServiceDir, fwupdServiceFile)
+	statefulServicePath := filepath.Join(statefulPartitionDir, fwupdServiceFile)
+	if err := d.Conn().CommandContext(ctx, "mv", statefulServicePath, servicePath).Run(ssh.DumpLogOnError); err != nil {
+		return errors.Wrap(err, "failed to move file")
+	}
+	if err := d.Conn().CommandContext(ctx, "sync").Run(ssh.DumpLogOnError); err != nil {
+		return errors.Wrap(err, "failed to sync DUT")
+	}
+	return nil
+}
+
+// disableFwupdDbusActivation disables mechanism that would automatically start
+// fwupd service on connection attempt.
+func disableFwupdDbusActivation(ctx context.Context, d *rpcdut.RPCDUT) error {
+	testing.ContextLog(ctx, "Disabling the DBus bus activation for fwupd service")
+
+	servicePath := filepath.Join(dbusServiceDir, fwupdServiceFile)
+	statefulServicePath := filepath.Join(statefulPartitionDir, fwupdServiceFile)
+	if err := d.Conn().CommandContext(ctx, "mv", servicePath, statefulServicePath).Run(ssh.DumpLogOnError); err != nil {
+		return errors.Wrap(err, "failed to move file")
+	}
 	if err := d.Conn().CommandContext(ctx, "sync").Run(ssh.DumpLogOnError); err != nil {
 		return errors.Wrap(err, "failed to sync DUT")
 	}
