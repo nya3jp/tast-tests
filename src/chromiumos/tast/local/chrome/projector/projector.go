@@ -40,7 +40,7 @@ func RefreshApp(ctx context.Context, tconn *chrome.TestConn) uiauto.Action {
 func DismissOnboardingDialog(ctx context.Context, tconn *chrome.TestConn) error {
 	ui := uiauto.New(tconn)
 
-	closeOnboardingButton := nodewith.Name("Skip tour").Role(role.Button)
+	closeOnboardingButton := nodewith.Name("Close").Role(role.Button).FinalAncestor(nodewith.Role(role.Dialog))
 
 	// Since each user only sees the onboarding flow a maximum of three
 	// times, the onboarding dialog may not appear.
