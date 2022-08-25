@@ -26,6 +26,34 @@ func init() {
 		SoftwareDeps: []string{"tpm", "reboot"},
 		Attr:         []string{"group:hwsec_destructive_func"},
 		Timeout:      15 * time.Minute,
+		Params: []testing.Param{{
+			name:          "tpm_ecc_auth_block_test",
+			needsTpmReset: false,
+		}, {
+			name:          "tpm_bound_to_pcr_auth_block_test",
+			needsTpmReset: false,
+		}, {
+			name:          "tpm_not_bound_to_pcr_auth_block_test",
+			needsTpmReset: false,
+		}, {
+			name:          "pcr_key_test",
+			needsTpmReset: true,
+		}, {
+			name:          "decryption_key_test",
+			needsTpmReset: false,
+		}, {
+			name:          "seal_with_current_user_test",
+			needsTpmReset: false,
+		}, {
+			name:          "nvram_test",
+			needsTpmReset: false,
+		}, {
+			name:          "signature_sealed_secret_test",
+			needsTpmReset: true,
+		}, {
+			name:          "recovery_tpm_backend_test",
+			needsTpmReset: true,
+		}},
 	})
 }
 
@@ -41,31 +69,40 @@ func CryptohomeTPMLiveTests(ctx context.Context, s *testing.State) {
 	tpmManager := helper.TPMManagerClient()
 
 	s.Log("Start resetting TPM if needed")
-	if err := helper.EnsureTPMAndSystemStateAreReset(ctx); err != nil {
-		s.Fatal("Failed to ensure resetting TPM: ", err)
-	}
-	s.Log("TPM is confirmed to be reset")
-
-	ctxForResetTPM := ctx
-	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Minute)
-	defer cancel()
-	defer func(ctx context.Context) {
-		// Clean the TPM up, so that the TPM state clobbered by the TPM live tests doesn't affect subsequent tests.
+	needsTpmReset := s.Param().(bool)
+	if needsTpmReset {
 		if err := helper.EnsureTPMAndSystemStateAreReset(ctx); err != nil {
 			s.Fatal("Failed to ensure resetting TPM: ", err)
 		}
-	}(ctxForResetTPM)
+		s.Log("TPM is confirmed to be reset")
 
-	if _, err := tpmManager.TakeOwnership(ctx); err != nil {
-		s.Fatal("Failed to take TPM ownership: ", err)
+		ctxForResetTPM := ctx
+		ctx, cancel := ctxutil.Shorten(ctx, 5*time.Minute)
+		defer cancel()
+		defer func(ctx context.Context) {
+			// Clean the TPM up, so that the TPM state clobbered by the TPM live tests doesn't affect subsequent tests.
+			if err := helper.EnsureTPMAndSystemStateAreReset(ctx); err != nil {
+				s.Fatal("Failed to ensure resetting TPM: ", err)
+			}
+		}(ctxForResetTPM)
+
+		if _, err := tpmManager.TakeOwnership(ctx); err != nil {
+			s.Fatal("Failed to take TPM ownership: ", err)
+		}
+	} else {
+		if _, err := tpmManager.TakeOwnership(ctx); err != nil {
+			s.Fatal("Failed to take TPM ownership: ", err)
+		}
 	}
 
-	if out, err := cmdRunner.Run(ctx, "cryptohome-tpm-live-test"); err != nil {
+	testName := s.Param().(string)
+	if out, err := cmdRunner.Run(ctx, "cryptohome-tpm-live-test", "--test="+testName); err != nil {
+		s.Log(out)
 		logFile := filepath.Join(s.OutDir(), "tpm_live_test_output.txt")
 		if writeErr := ioutil.WriteFile(logFile, out, 0644); writeErr != nil {
 			s.Errorf("Failed to write to %s: %v", logFile, writeErr)
 		}
 
-		s.Fatal("TPM live test failed: ", err)
+		s.Fatal(testName+" from TPM live test failed: ", err)
 	}
 }
