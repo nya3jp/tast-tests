@@ -16,6 +16,24 @@
       "message": "Split this CL into 2.\n\nFirst run the script without your change to update defs.go.\nThen make the change, run the script again and that\u0027s the second CL.\n\nIt makes the change much clearer.",
       "revId": "956f96e3fb62ffc9e569ae45e186afbdc4a59b4c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "893a9bd1_a41a3e00",
+        "filename": "src/chromiumos/tast/common/policy/defs.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1310249
+      },
+      "writtenOn": "2022-08-25T02:17:30Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "5bc53053_b657af67",
+      "revId": "956f96e3fb62ffc9e569ae45e186afbdc4a59b4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
