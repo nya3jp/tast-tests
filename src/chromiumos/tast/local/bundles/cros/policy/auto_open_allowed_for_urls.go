@@ -14,6 +14,7 @@ import (
 	"time"
 
 	"chromiumos/tast/common/fixture"
+	"chromiumos/tast/common/pci"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/ctxutil"
@@ -56,6 +57,10 @@ func init() {
 			Val:               browser.TypeLacros,
 		}},
 		Data: []string{indexFileName, downloadFileName},
+		SearchFlags: []*testing.StringPair{
+			pci.SearchFlag(&policy.AutoOpenAllowedForURLs{}, pci.VerifiedFunctionalityUI),
+			pci.SearchFlag(&policy.AutoOpenFileTypes{}, pci.VerifiedFunctionalityUI),
+		},
 	})
 }
 

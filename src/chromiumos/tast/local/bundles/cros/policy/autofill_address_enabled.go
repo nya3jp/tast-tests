@@ -11,6 +11,7 @@ import (
 	"time"
 
 	"chromiumos/tast/common/fixture"
+	"chromiumos/tast/common/pci"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/ctxutil"
@@ -50,6 +51,9 @@ func init() {
 			Val:               browser.TypeLacros,
 		}},
 		Data: []string{"autofill_address_enabled.html"},
+		SearchFlags: []*testing.StringPair{
+			pci.SearchFlag(&policy.AutofillAddressEnabled{}, pci.VerifiedFunctionalityUI),
+		},
 	})
 }
 
