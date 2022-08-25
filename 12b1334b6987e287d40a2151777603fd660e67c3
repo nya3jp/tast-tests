@@ -52,6 +52,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0963aa38_e702af7f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-08-25T02:00:12Z",
+      "side": 1,
+      "message": "I agree with Alvin that we should skip the test if testing condition is not met. I suggest two possible solution. Please take a look. Thanks.",
+      "revId": "12b1334b6987e287d40a2151777603fd660e67c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4bda026c_60a80eb8",
@@ -65,6 +82,30 @@
       "writtenOn": "2022-08-25T01:22:12Z",
       "side": 1,
       "message": "This doesn\u0027t look like a long-last solution to pass the test if some predition is not met. Ideally, we would still want to skip it.\n\n@seewaifu, is it feasible to add a sw software to check if the microphone is muted?",
+      "range": {
+        "startLine": 57,
+        "startChar": 2,
+        "endLine": 57,
+        "endChar": 8
+      },
+      "revId": "12b1334b6987e287d40a2151777603fd660e67c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e44b48f_7596efbe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/creation_flow.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-08-25T02:00:12Z",
+      "side": 1,
+      "message": "It is a \"phyical switch\" so we cannot use software dependency because we don\u0027t if the switch is on/off during build time. I would suggest following possible solutions:\n\n1. Create a new hardware dependency and feature to check whether there is an hardware switch and whether the switch is on/off. Then skip the test if the hardware dependency is not met. For this solution, I do not know how to do it. You should consult somebody familar with physical hardware testing.\n\n2. Create a hardware dependency to skip on  the models that have a mute switch. I think this can be easily done.",
+      "parentUuid": "4bda026c_60a80eb8",
       "range": {
         "startLine": 57,
         "startChar": 2,
