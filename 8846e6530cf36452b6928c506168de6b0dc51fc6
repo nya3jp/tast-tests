@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6570e94_587fab11",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/boot_perf_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2022-08-25T20:44:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "61c69ac4_5103740c",
+      "range": {
+        "startLine": 60,
+        "startChar": 11,
+        "endLine": 60,
+        "endChar": 43
+      },
+      "revId": "8846e6530cf36452b6928c506168de6b0dc51fc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f38b2a6a_4d51cf5d",
