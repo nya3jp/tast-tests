@@ -34,16 +34,13 @@ const (
 	PowerStateInterval = 1 * time.Second
 
 	// reconnectTimeout is the timeout to wait to reconnect to the DUT after rebooting.
-	reconnectTimeout = 6 * time.Minute
+	reconnectTimeout = 8 * time.Minute
 
 	// usbVisibleTime is the time to wait after making the USB stick visible to DUT
 	usbVisibleTime = 5 * time.Second
 
 	// usbDisableTime is the time to wait for USB to be disabled.
 	usbDisableTime = 5 * time.Second
-
-	// checkNoGoodScreenTimeout is the timeout to wait for the DUT to reach NOGOOD Screen.
-	checkNoGoodScreenTimeout = 1 * time.Minute
 )
 
 // ModeSwitcher enables booting the DUT into different firmware boot modes (normal, dev, rec).
@@ -193,7 +190,7 @@ func (ms ModeSwitcher) RebootToMode(ctx context.Context, toMode fwCommon.BootMod
 	case fwCommon.BootModeNormal:
 		// Skip disabling dev request if CheckToNormConfirmed is required.
 		if !msOptsContain(opts, CheckToNormConfirmed) {
-			testing.ContextLog(ctx, "Disabling dev requst")
+			testing.ContextLog(ctx, "Disabling dev request")
 			if err := h.DUT.Conn().CommandContext(ctx, "crossystem", "disable_dev_request=1").Run(ssh.DumpLogOnError); err != nil {
 				return errors.Wrap(err, "sending disable dev request")
 			}
@@ -682,6 +679,35 @@ func (ms *ModeSwitcher) fwScreenToDevMode(ctx context.Context, opts ...ModeSwitc
 	if err := testing.Sleep(ctx, h.Config.FirmwareScreen); err != nil {
 		return errors.Wrapf(err, "sleeping for %s (FirmwareScreen) to wait for INSERT screen", h.Config.FirmwareScreen)
 	}
+
+	if msOptsContain(opts, CheckToNoGoodScreen) {
+		// Check the usb on the servo host.
+		usbdev, err := h.CheckUSBOnServoHost(ctx)
+		if err != nil {
+			return errors.Wrap(err, "failed to check the USB on servo host")
+		}
+		// An invalid USB is required to check for the NOGOOD screen.
+		if err := h.FormatUSB(ctx, usbdev); err != nil {
+			return errors.Wrap(err, "failed to format the USB")
+		}
+		// Enable USB connection to DUT.
+		if err := h.Servo.SetUSBMuxState(ctx, servo.USBMuxDUT); err != nil {
+			return errors.Wrap(err, "failed to set 'usb3_mux_sel:dut_sees_usbkey'")
+		}
+		testing.ContextLog(ctx, "Checking if DUT reaches the NOGOOD screen")
+		if err := h.WaitDUTConnectDuringBootFromUSB(ctx, usbdev, false); err != nil {
+			return errors.Wrap(err, "failed to check NOGOOD screen")
+		}
+		// Remove USB from DUT.
+		if err := h.Servo.SetUSBMuxState(ctx, servo.USBMuxOff); err != nil {
+			return errors.Wrap(err, "failed to power off usbkey")
+		}
+		if err := testing.Sleep(ctx, usbDisableTime); err != nil {
+			return errors.Wrap(err, "failed to sleep after setting usb mux state disable")
+		}
+		testing.ContextLog(ctx, "Booting to the recovery screen with the bad USB powered off")
+	}
+
 	switch h.Config.ModeSwitcherType {
 	case MenuSwitcher:
 		// Same as KeyboardDevSwitcher.
@@ -729,67 +755,14 @@ func (ms *ModeSwitcher) fwScreenToDevMode(ctx context.Context, opts ...ModeSwitc
 			return errors.Wrap(err, "failed to reconnect to DUT")
 		}
 	case TabletDetachableSwitcher:
-		// If CheckToNoGoodScreen (requires having an invalid USB plugged in):
 		// 1. Wait [FirmwareScreen] seconds for the INSERT screen to appear.
 		// 2. Hold both VolumeUp and VolumeDown for 100ms to trigger TO_DEV screen.
 		// 3. Wait [KeypressDelay] seconds to confirm keypress.
-		// 4. Press PowerKey to select [Cancel] and return back to INSERT screen.
+		// 4. Hold VolumeUp for 100ms to change menu selection to 'Confirm enabling developer mode'.
 		// 5. Wait [KeypressDelay] seconds to confirm keypress.
-		// 6. Enable USB.
-		// 7. If an invalid USB was inserted, DUT will reach the NOGOOD screen.
-		// 8. Disable USB.
-
-		// Skip steps 1 through 8, if the CheckToNoGoodScreen option was not provided.
-		// 9. Wait [FirmwareScreen] seconds for the INSERT screen to appear.
-		// 10. Hold both VolumeUp and VolumeDown for 100ms to trigger TO_DEV screen.
-		// 11. Wait [KeypressDelay] seconds to confirm keypress.
-		// 12. Hold VolumeUp for 100ms to change menu selection to 'Confirm enabling developer mode'.
-		// 13. Wait [KeypressDelay] seconds to confirm keypress.
-		// 14. Press PowerKey to select menu item.
-		// 15. Wait [KeypressDelay] seconds to confirm keypress.
-		// 16. Wait [FirmwareScreen] seconds to transition screens.
-		if msOptsContain(opts, CheckToNoGoodScreen) {
-			if err := h.Servo.SetInt(ctx, servo.VolumeUpDownHold, 100); err != nil {
-				return errors.Wrap(err, "triggering TO_DEV screen")
-			}
-			if err := testing.Sleep(ctx, h.Config.KeypressDelay); err != nil {
-				return errors.Wrapf(err, "sleeping for %s (KeypressDelay) to confirm triggering TO_DEV screen", h.Config.KeypressDelay)
-			}
-
-			if err := h.Servo.KeypressWithDuration(ctx, servo.PowerKey, servo.DurTab); err != nil {
-				return errors.Wrap(err, "selecting menu item 'Cancel' on TO_DEV screen")
-			}
-			if err := h.Servo.SetUSBMuxState(ctx, servo.USBMuxDUT); err != nil {
-				return errors.Wrap(err, "failed to set 'usb3_mux_sel:dut_sees_usbkey'")
-			}
-
-			testing.ContextLogf(ctx, "Sleeping %s to let USB become visible to DUT", usbVisibleTime)
-			if err := testing.Sleep(ctx, usbVisibleTime); err != nil {
-				return errors.Wrap(err, "failed to sleep to let USB become visible to DUT")
-			}
-
-			// Attempt to reconnect to DUT. Expect a timeout to be reached
-			// because DUT would reach the NOGOOD screen.
-			checkNoGoodScreenCtx, checkNoGoodScreenCancel := context.WithTimeout(ctx, checkNoGoodScreenTimeout)
-			defer checkNoGoodScreenCancel()
-
-			err := h.WaitConnect(checkNoGoodScreenCtx)
-			if err == nil {
-				return errors.New("expected NOGOOD screen. But, DUT advanced to the welcome page")
-			}
-			if err != nil && !errors.Is(err, context.DeadlineExceeded) {
-				return errors.Wrap(err, "unexpected error")
-			}
-
-			if err := h.Servo.SetUSBMuxState(ctx, servo.USBMuxOff); err != nil {
-				return errors.Wrap(err, "failed to power off usbkey")
-			}
-			if err := testing.Sleep(ctx, usbDisableTime); err != nil {
-				return errors.Wrap(err, "sleeping after setting usb mux state disable")
-			}
-			testing.ContextLog(ctx, "Booting to the INSERT screen with no USB devices")
-		}
-
+		// 6. Press PowerKey to select menu item.
+		// 7. Wait [KeypressDelay] seconds to confirm keypress.
+		// 8. Wait [FirmwareScreen] seconds to transition screens.
 		if err := h.Servo.SetInt(ctx, servo.VolumeUpDownHold, 100); err != nil {
 			return errors.Wrap(err, "triggering TO_DEV screen")
 		}

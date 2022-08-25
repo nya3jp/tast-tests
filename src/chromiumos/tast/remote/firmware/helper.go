@@ -502,41 +502,9 @@ func (h *Helper) SyncTastFilesToDUT(ctx context.Context) error {
 // Downloads the test image if the image isn't the right version.
 // Will break the DUT if it is currently booted off the USB drive in recovery mode.
 func (h *Helper) SetupUSBKey(ctx context.Context, cloudStorage *testing.CloudStorage) (retErr error) {
-	testing.ContextLog(ctx, "Validating image usbkey on servo")
-	// Power cycling the USB key helps to make it visible to the host.
-	if err := h.Servo.SetUSBMuxState(ctx, servo.USBMuxOff); err != nil {
-		return errors.Wrap(err, "failed to power off usbkey")
-	}
-	// After setting the usb to off, you can't touch it for 2s.
-	if err := testing.Sleep(ctx, 2*time.Second); err != nil {
-		return errors.Wrap(err, "sleep 2s")
-	}
-	// This call is super slow.
-	usbdev, err := h.Servo.GetStringTimeout(ctx, servo.ImageUSBKeyDev, time.Second*90)
+	usbdev, err := h.CheckUSBOnServoHost(ctx)
 	if err != nil {
-		return errors.Wrap(err, "servo call image_usbkey_dev failed")
-	}
-	if usbdev == "" {
-		return errors.New("no USB key detected")
-	}
-	var fdiskOutput []byte
-	// Verify that the device really exists on the servo host.
-	err = testing.Poll(ctx, func(ctx context.Context) error {
-		fdiskOutput, err = h.ServoProxy.OutputCommand(ctx, true, "fdisk", "-l", usbdev)
-		return err
-	}, &testing.PollOptions{
-		Timeout:  10 * time.Second,
-		Interval: 1 * time.Second,
-	})
-	if err != nil {
-		return errors.Wrapf(err, "validate usb key at %q", usbdev)
-	}
-	testing.ContextLogf(ctx, "Output from fdisk -l %q: %s", usbdev, fdiskOutput)
-
-	// Following ChromiumOS Developer Guide, USB size should be bigger than 8GB:
-	// https://chromium.googlesource.com/chromiumos/docs/+/HEAD/developer_guide.md#put-your-image-on-a-usb-disk
-	if err := checkUSBStorage(ctx, string(fdiskOutput), 8); err != nil {
-		return errors.Wrap(err, "failed to verify usb storage")
+		return errors.Wrap(err, "failed to check the usb device on servo host")
 	}
 	testing.ContextLog(ctx, "Checking ChromeOS image name on usbkey")
 	mountPath := fmt.Sprintf("/media/servo_usb/%d", h.ServoProxy.GetPort())
@@ -1069,6 +1037,95 @@ func (h *Helper) pressPowerSequenceToOpenCCD(ctx context.Context, openNoTPMWipe 
 		if !(openNoTPMWipe == 1 && strings.Contains(err.Error(), "DUT still connected")) {
 			return errors.Wrapf(err, "failed while pressing power button for %s with OpenNoTPMWipe status %v", ppTimeout, openNoTPMWipe)
 		}
+	}
+	return nil
+}
+
+// CheckUSBOnServoHost checks if there is any usb device connected to the host and gets its path.
+func (h *Helper) CheckUSBOnServoHost(ctx context.Context) (string, error) {
+	testing.ContextLog(ctx, "Validating image usbkey on servo")
+	// Power cycling the USB key helps to make it visible to the host.
+	if err := h.Servo.SetUSBMuxState(ctx, servo.USBMuxOff); err != nil {
+		return "", errors.Wrap(err, "failed to power off usbkey")
+	}
+	// After setting the usb to off, you can't touch it for 2s.
+	if err := testing.Sleep(ctx, 2*time.Second); err != nil {
+		return "", errors.Wrap(err, "sleep 2s")
+	}
+	// This call is super slow.
+	var err error
+	usbdev, err := h.Servo.GetStringTimeout(ctx, servo.ImageUSBKeyDev, time.Second*90)
+	if err != nil {
+		return "", errors.Wrap(err, "servo call image_usbkey_dev failed")
+	}
+	if usbdev == "" {
+		return "", errors.New("no USB key detected")
+	}
+	var fdiskOutput []byte
+	// Verify that the device really exists on the servo host.
+	err = testing.Poll(ctx, func(ctx context.Context) error {
+		fdiskOutput, err = h.ServoProxy.OutputCommand(ctx, true, "fdisk", "-l", usbdev)
+		return err
+	}, &testing.PollOptions{
+		Timeout:  10 * time.Second,
+		Interval: 1 * time.Second,
+	})
+	if err != nil {
+		return "", errors.Wrapf(err, "validate usb key at %q", usbdev)
+	}
+	testing.ContextLogf(ctx, "Output from fdisk -l %q: %s", usbdev, fdiskOutput)
+	// Following ChromiumOS Developer Guide, USB size should be bigger than 8GB:
+	// https://chromium.googlesource.com/chromiumos/docs/+/HEAD/developer_guide.md#put-your-image-on-a-usb-disk
+	if err := checkUSBStorage(ctx, string(fdiskOutput), 8); err != nil {
+		return "", errors.Wrap(err, "failed to verify usb storage")
+	}
+	return usbdev, nil
+}
+
+// FormatUSB will format the usb device to create an invalid usb device.
+func (h *Helper) FormatUSB(ctx context.Context, usbdev string) error {
+	if usbdev == "" {
+		return errors.New("no USB key detected. Please run CheckUSBOnServoHost")
+	}
+	testing.ContextLog(ctx, "Formatting the USB device")
+	if err := h.ServoProxy.RunCommand(ctx, true, "mkfs.vfat", "-I", usbdev); err != nil {
+		return errors.Wrap(err, "failed to format the usb device")
+	}
+	return nil
+}
+
+// WaitDUTConnectDuringBootFromUSB will check if the DUT boots from USB or not.
+// If expBoot is true, DUT is expected to boot from USB succcessfully.
+// If expBoot is false, DUT is expected to reach a specific firmware screen, e.g. NOGOOD Screen or Broken Screen.
+// Firmware screen string for NOGOOD Screen: The device you inserted does not contain ChromeOS.
+// Firmware screen string for Broken Screen: ChromeOS is missing or damaged. Please remove all connected devices and start recovery.
+// Reference for NOGOOD Screen and Broken Screen:
+// https://chromium.googlesource.com/chromiumos/docs/+/HEAD/firmware_test_manual.md#firmware-screen-names
+func (h *Helper) WaitDUTConnectDuringBootFromUSB(ctx context.Context, usbdev string, expBoot bool) error {
+	if usbdev == "" {
+		return errors.New("no USB key detected. Please run CheckUSBOnServoHost")
+	}
+	waitConnectCtx, cancelWaitConnect := context.WithTimeout(ctx, reconnectTimeout)
+	defer cancelWaitConnect()
+
+	err := h.WaitConnect(waitConnectCtx)
+	if err == nil {
+		switch expBoot {
+		case true:
+			testing.ContextLog(ctx, "Checking that DUT has booted from a removable device")
+			fromRemovableDevice, err := h.Reporter.BootedFromRemovableDevice(ctx)
+			if err != nil {
+				return errors.Wrap(err, "failed to check for the boot device type")
+			}
+			if !fromRemovableDevice {
+				return errors.New("DUT did not boot from a removable device")
+			}
+		case false:
+			return errors.Wrap(err, "expected DUT at the firmware screen. But, DUT advanced to the welcome page")
+		}
+	}
+	if err != nil && !strings.Contains(err.Error(), context.DeadlineExceeded.Error()) {
+		return errors.Wrap(err, "unexpected error")
 	}
 	return nil
 }
