@@ -29,6 +29,7 @@ func init() {
 		Contacts:     []string{"amusbach@chromium.org", "chromeos-perfmetrics-eng@google.com"},
 		Attr:         []string{"group:cuj"},
 		SoftwareDeps: []string{"chrome"},
+		Data:         []string{cujrecorder.SystemTraceConfigFile},
 		Fixture:      "loggedInToCUJUser",
 		Timeout:      14 * time.Minute,
 		Params: []testing.Param{{
@@ -84,6 +85,9 @@ func ArcYoutubeCUJ(ctx context.Context, s *testing.State) {
 	if err := recorder.AddCommonMetrics(tconn, tconn); err != nil {
 		s.Fatal("Failed to add common metrics to recorder: ", err)
 	}
+
+	// Collect a 1-min trace.
+	recorder.EnableTracing(s.OutDir(), s.DataPath(cujrecorder.SystemTraceConfigFile))
 
 	if err := recorder.Run(ctx, func(ctx context.Context) error {
 		// Launch the ARC YouTube app.
