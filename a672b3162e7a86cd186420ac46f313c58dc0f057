@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7d8bc7e_f66883a2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 18
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1545162
+      },
+      "writtenOn": "2022-08-25T11:36:54Z",
+      "side": 1,
+      "message": "I just check on grammars and pass the test.\nPlease follow here for more details.\nhttps://drive.google.com/drive/u/3/folders/1fx5MK1M9BRm9yQe86QTe3CUpa6hnScSg",
+      "revId": "a672b3162e7a86cd186420ac46f313c58dc0f057",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
