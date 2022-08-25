@@ -21849,6 +21849,7 @@ type ONCGlobalNetworkConfiguration struct {
 	AllowOnlyPolicyNetworksToAutoconnect bool `json:"AllowOnlyPolicyNetworksToAutoconnect"`
 	AllowOnlyPolicyNetworksToConnect     bool `json:"AllowOnlyPolicyNetworksToConnect"`
 	AllowOnlyPolicyCellularNetworks      bool `json:"AllowOnlyPolicyCellularNetworks"`
+	AllowCellularSimLock                 bool `json:"AllowCellularSimLock"`
 }
 
 type ONC struct {
