@@ -79,6 +79,52 @@
       },
       "revId": "3f1ccf73102fde83e851803baac0a4b688706ead",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81ccb5dc_29c27324",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/link_capturing.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-08-25T00:16:36Z",
+      "side": 1,
+      "message": "optional nit:\n\nsettingRadioButton \u003d nodewith.Name(linkCapturingOpenInBrowser).Role(role.RadioButton)\nif openInApp{\n    settingRadioButton \u003d nodewith.Name(linkCapturingOpenInApp).Role(role.RadioButton)\n}",
+      "range": {
+        "startLine": 288,
+        "startChar": 1,
+        "endLine": 293,
+        "endChar": 2
+      },
+      "revId": "3f1ccf73102fde83e851803baac0a4b688706ead",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87e49415_337fd6ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/link_capturing.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-08-25T00:16:36Z",
+      "side": 1,
+      "message": "nit: the wrap is not necessary.\n\nreturn ui.LeftClick(settingRadioButton)(ctx)",
+      "range": {
+        "startLine": 295,
+        "startChar": 1,
+        "endLine": 299,
+        "endChar": 11
+      },
+      "revId": "3f1ccf73102fde83e851803baac0a4b688706ead",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
