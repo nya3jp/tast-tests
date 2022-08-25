@@ -97,15 +97,6 @@ func init() {
 					Tablet:      true,
 				},
 			}, {
-				Name:              "tracing",
-				ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
-				ExtraSoftwareDeps: []string{"android_p"},
-				Fixture:           "loggedInToCUJUser",
-				Val: taskswitchcuj.TaskSwitchTest{
-					BrowserType: browser.TypeAsh,
-					Tracing:     true,
-				},
-			}, {
 				// Pilot test on "noibat" that has HDMI dongle installed.
 				Name:              "noibat",
 				ExtraHardwareDeps: hwdep.D(hwdep.Model("noibat")),

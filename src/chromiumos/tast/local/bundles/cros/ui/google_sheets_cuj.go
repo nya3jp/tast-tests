@@ -35,6 +35,7 @@ func init() {
 		Contacts:     []string{"yichenz@chromium.org", "chromeos-perfmetrics-eng@google.com"},
 		Attr:         []string{"group:cuj"},
 		SoftwareDeps: []string{"chrome", "arc"},
+		Data:         []string{cujrecorder.SystemTraceConfigFile},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		Timeout:      13 * time.Minute,
 		Params: []testing.Param{{
@@ -126,6 +127,8 @@ func GoogleSheetsCUJ(ctx context.Context, s *testing.State) {
 	if err := recorder.AddCommonMetrics(tconn, bTconn); err != nil {
 		s.Fatal("Failed to add common metrics to recorder: ", err)
 	}
+
+	recorder.EnableTracing(s.OutDir(), s.DataPath(cujrecorder.SystemTraceConfigFile))
 
 	// Create a virtual trackpad.
 	tpw, err := input.Trackpad(ctx)
