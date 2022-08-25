@@ -61,16 +61,6 @@ func init() {
 				ExtraSoftwareDeps: []string{"android_p"},
 			},
 			{
-				Name: "tablet_mode_trace",
-				Val: windowarrangementcuj.TestParam{
-					BrowserType: browser.TypeAsh,
-					Tablet:      true,
-					Tracing:     true,
-				},
-				Fixture:           "loggedInToCUJUser",
-				ExtraSoftwareDeps: []string{"android_p"},
-			},
-			{
 				Name: "tablet_mode_validation",
 				Val: windowarrangementcuj.TestParam{
 					BrowserType: browser.TypeAsh,
@@ -186,9 +176,8 @@ func WindowArrangementCUJ(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to add common metrics to recorder: ", err)
 	}
 
-	if testParam.Tracing {
-		recorder.EnableTracing(s.OutDir(), s.DataPath(cujrecorder.SystemTraceConfigFile))
-	}
+	// Collect a 1-min trace.
+	recorder.EnableTracing(s.OutDir(), s.DataPath(cujrecorder.SystemTraceConfigFile))
 	defer recorder.Close(closeCtx)
 
 	if err := crastestclient.Mute(ctx); err != nil {
