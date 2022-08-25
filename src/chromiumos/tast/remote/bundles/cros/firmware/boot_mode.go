@@ -15,7 +15,6 @@ import (
 	"chromiumos/tast/remote/firmware/fixture"
 	"chromiumos/tast/remote/firmware/reporters"
 	"chromiumos/tast/testing"
-	"chromiumos/tast/testing/hwdep"
 )
 
 // bootModeTestParams defines the params for a single test-case.
@@ -153,9 +152,8 @@ func init() {
 			ExtraAttr: []string{"firmware_bios", "firmware_level2"},
 			Timeout:   15 * time.Minute,
 		}, {
-			Name:              "detachable_nogood_screen",
-			Fixture:           fixture.NormalMode,
-			ExtraHardwareDeps: hwdep.D(hwdep.FormFactor(hwdep.Detachable)),
+			Name:    "nogood_screen",
+			Fixture: fixture.NormalMode,
 			Val: bootModeTestParams{
 				bootToMode:          fwCommon.BootModeDev,
 				checkToNoGoodScreen: true,
@@ -229,19 +227,6 @@ func BootMode(ctx context.Context, s *testing.State) {
 
 		if tc.checkToNoGoodScreen {
 			opts = append(opts, firmware.CheckToNoGoodScreen)
-
-			usbdev, err := h.Servo.GetStringTimeout(ctx, servo.ImageUSBKeyDev, time.Second*90)
-			if err != nil {
-				s.Fatal("Servo call image_usbkey_dev failed: ", err)
-			}
-			if usbdev == "" {
-				s.Fatal("No USB key detected: ", err)
-			}
-
-			// Format the USB device to remove all data stored.
-			if err := h.ServoProxy.RunCommand(ctx, true, "mkfs.vfat", "-I", usbdev); err != nil {
-				s.Fatal("Failed to clean the usb: ", err)
-			}
 		}
 
 		s.Logf("Transitioning to %s mode with options %+v", tc.bootToMode, opts)
