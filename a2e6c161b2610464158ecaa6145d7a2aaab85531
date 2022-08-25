@@ -3,6 +3,23 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "39aa1742_a76a0f6c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-08-25T15:46:46Z",
+      "side": 1,
+      "message": "lgtm",
+      "revId": "a2e6c161b2610464158ecaa6145d7a2aaab85531",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "dd3cf1aa_64947072",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/windowarrangementcuj/util.go",
         "patchSetId": 1
