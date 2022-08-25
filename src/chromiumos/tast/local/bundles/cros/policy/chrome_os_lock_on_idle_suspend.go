@@ -83,7 +83,7 @@ func ChromeOsLockOnIdleSuspend(ctx context.Context, s *testing.State) {
 			if err := policyutil.OSSettingsPageWithPassword(ctx, cr, "osPrivacy/lockScreen", fixtures.Password).
 				SelectNode(ctx, nodewith.
 					Role(role.ToggleButton).
-					Name("Show lock screen when waking from sleep")).
+					Name("Lock in sleep mode or when cover is closed")).
 				Restriction(param.wantRestriction).
 				Checked(param.wantChecked).
 				Verify(); err != nil {
