@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0f05332_0e014a37",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/dynamic_color.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1460002
+      },
+      "writtenOn": "2022-08-25T15:06:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cde8d35f_7e9156b6",
+      "range": {
+        "startLine": 40,
+        "startChar": 95,
+        "endLine": 40,
+        "endChar": 111
+      },
+      "revId": "afa2f2dad48ac25f9e27984826c530da0fdc9fa6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f98843a8_ec831b2a",
@@ -41,6 +65,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "74709a09_8a82b003",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/dynamic_color.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1460002
+      },
+      "writtenOn": "2022-08-25T15:06:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f98843a8_ec831b2a",
+      "revId": "afa2f2dad48ac25f9e27984826c530da0fdc9fa6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c141f4b9_a65a7b59",
@@ -54,6 +96,30 @@
       "writtenOn": "2022-08-25T07:17:15Z",
       "side": 1,
       "message": "Capital letters denote public interfaces, it does not make sense to use it here.",
+      "range": {
+        "startLine": 57,
+        "startChar": 7,
+        "endLine": 57,
+        "endChar": 8
+      },
+      "revId": "afa2f2dad48ac25f9e27984826c530da0fdc9fa6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f731187b_cd895101",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/dynamic_color.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1460002
+      },
+      "writtenOn": "2022-08-25T15:06:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c141f4b9_a65a7b59",
       "range": {
         "startLine": 57,
         "startChar": 7,
