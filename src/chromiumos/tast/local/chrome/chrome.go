@@ -304,14 +304,15 @@ func New(ctx context.Context, opts ...Option) (c *Chrome, retErr error) {
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to prepare extensions for ash-chrome")
 	}
-	// lacrosExts, err := extension.PrepareExtensions(lacrosExtensionsDir, cfg, guestModeLogin)
-	// if err != nil {
-	// 	return nil, errors.Wrap(err, "failed to prepare extensions for lacros-chrome")
-	// }
+	lacrosExts, err := extension.PrepareExtensions(lacrosExtensionsDir, cfg, guestModeLogin)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to prepare extensions for lacros-chrome")
+	}
 
-	// if err := setup.RestartChromeForTesting(ctx, cfg, exts.AshArgs(), lacrosExts.LacrosArgs()); err != nil {
-	// 	return nil, errors.Wrap(err, "failed to restart chrome for testing")
-	// }
+// MIERSH
+	if err := setup.RestartChromeForTesting(ctx, cfg, exts.AshArgs(), lacrosExts.LacrosArgs()); err != nil {
+		return nil, errors.Wrap(err, "failed to restart chrome for testing")
+	}
 
 	agg := jslog.NewAggregator()
 	defer func() {
