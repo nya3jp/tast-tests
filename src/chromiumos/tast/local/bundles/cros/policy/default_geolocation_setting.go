@@ -11,6 +11,7 @@ import (
 	"time"
 
 	"chromiumos/tast/common/fixture"
+	"chromiumos/tast/common/pci"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/ctxutil"
@@ -48,15 +49,15 @@ func init() {
 			Val:               browser.TypeLacros,
 		}},
 		Data: []string{"default_geolocation_setting_index.html"},
-		SearchFlags: []*testing.StringPair{
-			&testing.StringPair{
-				Key:   "feature_id",
-				Value: "screenplay-763459eb-41b2-4e31-9381-91808acb7c97",
-			},
-			&testing.StringPair{
-				Key:   "feature_id",
-				Value: "screenplay-9279088e-0489-4fac-bc4d-af79c9f4038f",
-			}},
+		SearchFlags: []*testing.StringPair{{
+			Key:   "feature_id",
+			Value: "screenplay-763459eb-41b2-4e31-9381-91808acb7c97",
+		}, {
+			Key:   "feature_id",
+			Value: "screenplay-9279088e-0489-4fac-bc4d-af79c9f4038f",
+		},
+			pci.SearchFlag(&policy.DefaultGeolocationSetting{}, pci.VerifiedFunctionalityUI),
+		},
 	})
 }
 
