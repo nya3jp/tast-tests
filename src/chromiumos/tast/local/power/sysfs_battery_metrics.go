@@ -12,6 +12,7 @@ import (
 	"strconv"
 	"strings"
 
+	"chromiumos/tast/common/action"
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
@@ -263,17 +264,19 @@ func (b *SysfsBatteryMetrics) Start(_ context.Context) error {
 // Snapshot takes a snapshot of battery metrics.
 // If there are no batteries can be used to report the metrics,
 // Snapshot does nothing and returns without error.
-func (b *SysfsBatteryMetrics) Snapshot(_ context.Context, values *perf.Values) error {
+func (b *SysfsBatteryMetrics) Snapshot(ctx context.Context, values *perf.Values) error {
 	if len(b.batteryPath) == 0 {
 		return nil
 	}
 
-	power, err := ReadSystemPower(b.batteryPath)
-	if err != nil {
-		return err
-	}
-	values.Append(b.powerMetric, power)
-	return nil
+	return action.Retry(3, func(ctx context.Context) error {
+		power, err := ReadSystemPower(b.batteryPath)
+		if err != nil {
+			return err
+		}
+		values.Append(b.powerMetric, power)
+		return nil
+	}, 0)(ctx)
 }
 
 // Stop reports the total amount of energy used during the test.
