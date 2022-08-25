@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41879e41_f3e0f4a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/clipboardhistory/context_menu_clipboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1511087
+      },
+      "writtenOn": "2022-08-25T20:49:54Z",
+      "side": 1,
+      "message": "We don\u0027t have a timeline for adding a clipboard option to the Lacros context menu. In order to avoid having dead code in this test indefinitely, could you please create a separate draft CL that we can submit when this functionality is eventually implemented?",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 8
+      },
+      "revId": "02465576e7f2d745828e1c8c01a1cc59e152fa06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26d82f83_17b343d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/clipboardhistory/context_menu_clipboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1511087
+      },
+      "writtenOn": "2022-08-25T20:49:54Z",
+      "side": 1,
+      "message": "For this and all other parameterized test cases:\n\nCould this `Val` be a `gmailTest` object rather than an enum specifying that a `gmailTest` should be created later?",
+      "revId": "02465576e7f2d745828e1c8c01a1cc59e152fa06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa6af46b_ee5cc9f9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/clipboardhistory/context_menu_clipboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1511087
+      },
+      "writtenOn": "2022-08-25T20:49:54Z",
+      "side": 1,
+      "message": "Same situation as the Lacros case",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 85,
+        "endChar": 8
+      },
+      "revId": "02465576e7f2d745828e1c8c01a1cc59e152fa06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
