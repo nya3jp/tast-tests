@@ -62,16 +62,41 @@ func DragWindowFromShelfPerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect to test API: ", err)
 	}
 
+	// Set up the browser, open a first window.
+	const numWindows = 8
+	const url = ui.PerftestURL
+	conn, br, closeBrowser, err := browserfixt.SetUpWithURL(ctx, cr, s.Param().(browser.Type), url)
+	if err != nil {
+		s.Fatal("Failed to open the browser: ", err)
+	}
+	defer closeBrowser(cleanupCtx)
+	if err := conn.Close(); err != nil {
+		s.Fatalf("Failed to close connection to url %v: %v", url, err)
+	}
+	// Open the rest of the windows.
+	if err := ash.CreateWindows(ctx, tconn, br, url, numWindows-1); err != nil {
+		s.Fatal("Failed to open browser windows: ", err)
+	}
+
 	orientation, err := display.GetOrientation(ctx, tconn)
 	if err != nil {
 		s.Fatal("Failed to obtain the display rotation: ", err)
 	}
 
+	// Enable the tablet mode.
+	// TODO(crbug.com/1348824): Remove the workaround that opens the browser windows first then sets the tablet mode after that.
 	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, true)
 	if err != nil {
 		s.Fatal("Failed to ensure in tablet mode: ", err)
 	}
 	defer cleanup(cleanupCtx)
+
+	// Ensure all windows are in a stable state before starting to measure the metrics.
+	if err = ash.ForEachWindow(ctx, tconn, func(w *ash.Window) error {
+		return ash.WaitWindowFinishAnimating(ctx, tconn, w.ID)
+	}); err != nil {
+		s.Fatal("Failed to wait for all windows to finish animating: ", err)
+	}
 
 	// Prepare the touch screen as this test requires touch scroll events.
 	tsw, err := input.Touchscreen(ctx)
@@ -89,22 +114,6 @@ func DragWindowFromShelfPerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create single touch writer: ", err)
 	}
 	defer stw.Close()
-
-	// Set up the browser, open a first window.
-	const numWindows = 8
-	const url = ui.PerftestURL
-	conn, br, closeBrowser, err := browserfixt.SetUpWithURL(ctx, cr, s.Param().(browser.Type), url)
-	if err != nil {
-		s.Fatal("Failed to open the browser: ", err)
-	}
-	defer closeBrowser(cleanupCtx)
-	if err := conn.Close(); err != nil {
-		s.Fatalf("Failed to close connection to url %v: %v", url, err)
-	}
-	// Open the rest of the windows.
-	if err := ash.CreateWindows(ctx, tconn, br, url, numWindows-1); err != nil {
-		s.Fatal("Failed to open browser windows: ", err)
-	}
 
 	pv := perfutil.RunMultiple(ctx, s, cr.Browser(), perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
 		if err := ash.DragToShowOverview(ctx, tsw, stw, tconn); err != nil {
