@@ -46,6 +46,30 @@
       },
       "revId": "ee16b8be988f63192678387681f00dedf84ed6ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a170ae99_c8442eee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/drag_window_from_shelf_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-08-25T17:27:27Z",
+      "side": 1,
+      "message": "If yes to getting this workaround in, I\u0027ll change it to just the comment. \nIf no to keeping this workaround but yes to removing it once the issue is addressed, I\u0027ll keep it a TODO as a reminder to remove the workaround.",
+      "parentUuid": "d1695309_aa06e79e",
+      "range": {
+        "startLine": 86,
+        "startChar": 4,
+        "endLine": 86,
+        "endChar": 28
+      },
+      "revId": "ee16b8be988f63192678387681f00dedf84ed6ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
