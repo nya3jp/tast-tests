@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "819d8427_439eb693",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 30
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1445085
+      },
+      "writtenOn": "2022-08-25T19:37:24Z",
+      "side": 1,
+      "message": "$ tast run -var\u003dutils.WWCBIP\u003d192.168.86.217 -var\u003dDockingID\u003d1912901 -var\u003d1stExtDispID\u003d2007901 -var\u003d2ndExtDispID\u003d2007902 -var\u003dEthernetID\u003dJ45SW01 192.168.86.34 wwcb.Dock2PersistentSettings\n...\n2022-08-25T19:36:01.148861Z wwcb.Dock2PersistentSettings [ PASS ] \n",
+      "revId": "ace7b7852090a090f86efbdd9e68ba896aa015ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
