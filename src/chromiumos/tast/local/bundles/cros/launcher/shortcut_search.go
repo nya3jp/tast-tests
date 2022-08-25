@@ -37,11 +37,11 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{
 			Name:    "clamshell_mode",
-			Fixture: "chromeLoggedInWithProductivityLauncher",
+			Fixture: "chromeLoggedIn",
 			Val:     launcher.TestCase{TabletMode: false},
 		}, {
 			Name:              "tablet_mode",
-			Fixture:           "chromeLoggedInWithProductivityLauncher",
+			Fixture:           "chromeLoggedIn",
 			Val:               launcher.TestCase{TabletMode: true},
 			ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		}},
@@ -75,7 +75,7 @@ func ShortcutSearch(ctx context.Context, s *testing.State) {
 	defer kb.Close()
 
 	testCase := s.Param().(launcher.TestCase)
-	cleanup, err := launcher.SetUpLauncherTest(ctx, tconn, testCase.TabletMode, testCase.ProductivityLauncher, false /*stabilizeAppCount*/)
+	cleanup, err := launcher.SetUpLauncherTest(ctx, tconn, testCase.TabletMode, false /*stabilizeAppCount*/)
 	if err != nil {
 		s.Fatal("Failed to set up launcher test case: ", err)
 	}

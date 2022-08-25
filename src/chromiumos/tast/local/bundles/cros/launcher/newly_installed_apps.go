@@ -67,7 +67,7 @@ func init() {
 					appType:    newlyInstalledCwsApp,
 					tabletMode: false,
 				},
-				Fixture: "chromeLoggedInWithGaiaProductivityLauncher",
+				Fixture: "chromeLoggedInWithGaia",
 			},
 			{
 				Name: "cws_tablet_mode",
@@ -78,7 +78,7 @@ func init() {
 					tabletMode: true,
 				},
 				ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
-				Fixture:           "chromeLoggedInWithGaiaProductivityLauncher",
+				Fixture:           "chromeLoggedInWithGaia",
 			},
 		},
 	})
@@ -108,7 +108,7 @@ func NewlyInstalledApps(ctx context.Context, s *testing.State) {
 		defer closeAppAndUninstallViaSettings(ctx, cr, tconn, tc.appName, tc.appID)
 	}
 
-	cleanup, err := launcher.SetUpLauncherTest(ctx, tconn, tc.tabletMode, true /*productivityLauncher*/, true /*stabilizeAppCount*/)
+	cleanup, err := launcher.SetUpLauncherTest(ctx, tconn, tc.tabletMode, true /*stabilizeAppCount*/)
 	if err != nil {
 		s.Fatal("Failed to set up launcher test case: ", err)
 	}

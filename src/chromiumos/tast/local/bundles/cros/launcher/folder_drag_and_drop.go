@@ -37,12 +37,12 @@ func init() {
 		Params: []testing.Param{{
 			Name:    "productivity_launcher_clamshell_mode",
 			Val:     launcher.TestCase{TabletMode: false},
-			Fixture: "chromeLoggedInWith100FakeAppsProductivityLauncher",
+			Fixture: "chromeLoggedInWith100FakeAppsNoAppSort",
 		}, {
 			Name:              "productivity_launcher_tablet_mode",
 			Val:               launcher.TestCase{TabletMode: true},
 			ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
-			Fixture:           "chromeLoggedInWith100FakeAppsProductivityLauncher",
+			Fixture:           "chromeLoggedInWith100FakeAppsNoAppSort",
 		}},
 	})
 }
@@ -69,7 +69,7 @@ func FolderDragAndDrop(ctx context.Context, s *testing.State) {
 	testCase := s.Param().(launcher.TestCase)
 	tabletMode := testCase.TabletMode
 
-	cleanup, err := launcher.SetUpLauncherTest(ctx, tconn, tabletMode, true /*productivityLauncher*/, true /*stabilizeAppCount*/)
+	cleanup, err := launcher.SetUpLauncherTest(ctx, tconn, tabletMode, true /*stabilizeAppCount*/)
 	if err != nil {
 		s.Fatal("Failed to set up launcher test case: ", err)
 	}
@@ -86,7 +86,7 @@ func FolderDragAndDrop(ctx context.Context, s *testing.State) {
 	}
 
 	// Create a folder that will be dragged around in the test.
-	if err := launcher.CreateFolder(ctx, tconn, true /*productivityLauncher*/); err != nil {
+	if err := launcher.CreateFolder(ctx, tconn); err != nil {
 		s.Fatal("Failed to create a folder item: ", err)
 	}
 

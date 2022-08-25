@@ -46,7 +46,7 @@ func init() {
 		Attr: []string{"group:mainline", "informational"},
 		Params: []testing.Param{{
 			Name:    "all_tabs_in_one_window",
-			Fixture: "chromeLoggedInWithProductivityLauncher",
+			Fixture: "chromeLoggedIn",
 			Val: &openTabSearchTestCase{
 				tabletMode: false,
 				tabTitle:   "Google",
@@ -58,7 +58,7 @@ func init() {
 			},
 		}, {
 			Name:              "all_tabs_in_one_window_tablet_mode",
-			Fixture:           "chromeLoggedInWithProductivityLauncher",
+			Fixture:           "chromeLoggedIn",
 			ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 			Val: &openTabSearchTestCase{
 				tabletMode: true,
@@ -71,7 +71,7 @@ func init() {
 			},
 		}, {
 			Name:    "all_tabs_in_one_window_minimized",
-			Fixture: "chromeLoggedInWithProductivityLauncher",
+			Fixture: "chromeLoggedIn",
 			Val: &openTabSearchTestCase{
 				tabletMode: false,
 				tabTitle:   "Google",
@@ -83,7 +83,7 @@ func init() {
 			},
 		}, {
 			Name:              "all_tabs_in_one_window_minimized_tablet_mode",
-			Fixture:           "chromeLoggedInWithProductivityLauncher",
+			Fixture:           "chromeLoggedIn",
 			ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 			Val: &openTabSearchTestCase{
 				tabletMode: true,
@@ -96,7 +96,7 @@ func init() {
 			},
 		}, {
 			Name:    "multiple_windows",
-			Fixture: "chromeLoggedInWithProductivityLauncher",
+			Fixture: "chromeLoggedIn",
 			Val: &openTabSearchTestCase{
 				tabletMode: false,
 				tabTitle:   "About Version",
@@ -111,7 +111,7 @@ func init() {
 			},
 		}, {
 			Name:              "multiple_windows_tablet_mode",
-			Fixture:           "chromeLoggedInWithProductivityLauncher",
+			Fixture:           "chromeLoggedIn",
 			ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 			Val: &openTabSearchTestCase{
 				tabletMode: true,
@@ -127,7 +127,7 @@ func init() {
 			},
 		}, {
 			Name:    "multiple_windows_minimized",
-			Fixture: "chromeLoggedInWithProductivityLauncher",
+			Fixture: "chromeLoggedIn",
 			Val: &openTabSearchTestCase{
 				tabletMode: false,
 				tabTitle:   "About Version",
@@ -142,7 +142,7 @@ func init() {
 			},
 		}, {
 			Name:              "multiple_windows_minimized_tablet_mode",
-			Fixture:           "chromeLoggedInWithProductivityLauncher",
+			Fixture:           "chromeLoggedIn",
 			ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 			Val: &openTabSearchTestCase{
 				tabletMode: true,

@@ -38,11 +38,11 @@ func init() {
 		Params: []testing.Param{{
 			Name:    "productivity_launcher_clamshell_mode",
 			Val:     launcher.TestCase{TabletMode: false},
-			Fixture: "chromeLoggedInWithGaiaProductivityLauncher",
+			Fixture: "chromeLoggedInWithGaia",
 		}, {
 			Name:              "productivity_launcher_tablet_mode",
 			Val:               launcher.TestCase{TabletMode: true},
-			Fixture:           "chromeLoggedInWithGaiaProductivityLauncher",
+			Fixture:           "chromeLoggedInWithGaia",
 			ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		}},
 	})
@@ -70,7 +70,7 @@ func SearchInstalledApps(ctx context.Context, s *testing.State) {
 	defer kw.Close()
 
 	testCase := s.Param().(launcher.TestCase)
-	cleanup, err := launcher.SetUpLauncherTest(ctx, tconn, testCase.TabletMode, true /*productivityLauncher*/, false /*stabilizeAppCount*/)
+	cleanup, err := launcher.SetUpLauncherTest(ctx, tconn, testCase.TabletMode, false /*stabilizeAppCount*/)
 	if err != nil {
 		s.Fatal("Failed to set up launcher test case: ", err)
 	}

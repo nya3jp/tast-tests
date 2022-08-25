@@ -109,21 +109,6 @@ func init() {
 		TearDownTimeout: chrome.ResetTimeout,
 	})
 
-	// lacrosWith100FakeAppsLegacyLauncher is the same as lacrosWith100FakeApps
-	// but disables productivity launcher feature in ash-chrome.
-	testing.AddFixture(&testing.Fixture{
-		Name:     "lacrosWith100FakeAppsLegacyLauncher",
-		Desc:     "Lacros Chrome from a pre-built image with 100 fake apps installed and productivity launcher disabled",
-		Contacts: []string{"hidehiko@chromium.org", "edcourtney@chromium.org"},
-		Impl: chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
-			return NewConfig(ChromeOptions(chrome.DisableFeatures("ProductivityLauncher"))).Opts()
-		}),
-		Parent:          "install100LacrosApps",
-		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
-		ResetTimeout:    chrome.ResetTimeout,
-		TearDownTimeout: chrome.ResetTimeout,
-	})
-
 	// lacrosOmaha is a fixture to enable Lacros by feature flag in Chrome.
 	// This does not require downloading a binary from Google Storage before the test.
 	// It will use the currently available fishfood release of Lacros from Omaha.

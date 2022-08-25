@@ -105,8 +105,8 @@ func BubbleLauncherAnimationPerf(ctx context.Context, s *testing.State) {
 	bt := s.Param().(browser.Type)
 	// Options for fake apps.
 	opts := s.FixtValue().([]chrome.Option)
-	// Options copied from the "chromeLoggedInWith100FakeAppsProductivityLauncher" fixture.
-	opts = append(opts, chrome.EnableFeatures("ProductivityLauncher"), chrome.DisableFeatures("LauncherAppSort"))
+	// Options copied from the "chromeLoggedInWith100FakeAppsNoAppSort" fixture.
+	opts = append(opts, chrome.DisableFeatures("LauncherAppSort"))
 	if bt == browser.TypeLacros {
 		var err error
 		opts, err = lacrosfixt.NewConfig(lacrosfixt.ChromeOptions(opts...)).Opts()
