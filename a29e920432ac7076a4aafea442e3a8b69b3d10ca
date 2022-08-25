@@ -63,6 +63,30 @@
       },
       "revId": "a29e920432ac7076a4aafea442e3a8b69b3d10ca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19ac6abf_89214079",
+        "filename": "src/chromiumos/tast/remote/policyutil/clean_ownership.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-08-25T10:21:06Z",
+      "side": 1,
+      "message": "Deprovision gets DeviceID from the files that are stored on disk and they are created (from what I saw when running tests) when devices enroll successfully. When enrollment fails getting DeviceID fails with an error.\n\n\u003e\u003e Failed to get the deviceID: rpc error: code \u003d Unknown desc \u003d failed to read /var/lib/devicesettings/policy.1: open /var/lib/devicesettings/policy.1: no such file or directory\n\n\nConcerning resetting ownership - I added that into Reset and in TearDown(this part ensures that after the last test ownership will be removed).\nReason (which I should put into the code\u0027s comments):\nIf enrollment worked:\nDUT has to first deprovision and then clear ownership. Hence. PostTest() does deprovisioning followed by Reset() handling clearing ownership.\n\nIf enrollment fails:\nPostTest() fails as mentioned above.\nReset() is still executed.\n\n\nAn alternative would be to close deprovisioning into an anonymous function and return errors (stopping execution of the function) and report them with s.Error() and then call deprovisioning.\n\nI went with the current implementation as it was easier to put in place.",
+      "parentUuid": "c02ad3d2_28a6d5ff",
+      "range": {
+        "startLine": 78,
+        "startChar": 50,
+        "endLine": 78,
+        "endChar": 68
+      },
+      "revId": "a29e920432ac7076a4aafea442e3a8b69b3d10ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
