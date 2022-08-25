@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "722f47e0_47920ed8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1498402
+      },
+      "writtenOn": "2022-08-25T19:48:43Z",
+      "side": 1,
+      "message": "PTAL when you get a chance.\n\nThere is more motivation for the change in go/platform-specific-tast-test-data.",
+      "revId": "15c5f80be4a95d14bdced2a06158d3a8f37e697d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c86a3d4_80aaf19f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/expectations/expectations.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1498402
+      },
+      "writtenOn": "2022-08-25T19:48:43Z",
+      "side": 1,
+      "message": "I wasn\u0027t sure about the name of this expectations file type \"BuildFile\". The usage documentation is descriptive enough, but I\u0027m worried that it isn\u0027t intuitive.\n\nIf someone wants an expectation to only match volteer-kernelnext builds, they would use a `FileType` of `BuildFile` with the file name: `build-volteer-kernelnext`.\n\nI\u0027m worried that it is may be read as being \"build number\" rather than \"build name\" or \"build string\".\n\nLMK if you have strong feelings about the name or have a good alternative.",
+      "range": {
+        "startLine": 35,
+        "startChar": 1,
+        "endLine": 35,
+        "endChar": 10
+      },
+      "revId": "15c5f80be4a95d14bdced2a06158d3a8f37e697d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
