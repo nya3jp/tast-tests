@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/cellular"
 	"chromiumos/tast/local/dbusutil"
+	"chromiumos/tast/local/hermes"
 	"chromiumos/tast/local/modemmanager"
 	"chromiumos/tast/testing"
 )
@@ -32,6 +33,21 @@ func init() {
 }
 
 func ShillCellularSimSlots(ctx context.Context, s *testing.State) {
+	// The test only checks that shill creates a cellular service for the pSIM when the eSIM slot is active.
+	// Shill doesn't create a service for the eSIM if it is on the inactive slot since the service is not usable. See go/dual-sim-mbim
+	// If Chrome wishes to create a service for the inactive eSIM, Chrome calls Hermes to switch slots, enables any profiles, before shill creates a service for the eSIM.
+	euicc, _, err := hermes.GetEUICC(ctx, false)
+	if err != nil {
+		s.Fatal("Unable to get Hermes euicc: ", err)
+	}
+	p, err := euicc.EnabledProfile(ctx)
+	if err != nil {
+		s.Fatal("Could not read profile status: ", err)
+	}
+	if p == nil {
+		s.Fatal("Expected a profile to be enabled on the eSIM")
+	}
+
 	// Ensure that MM reports 2 slots.
 	modem, err := modemmanager.NewModem(ctx)
 	if err != nil {
@@ -61,6 +77,10 @@ func ShillCellularSimSlots(ctx context.Context, s *testing.State) {
 		iccid, err := simProps.GetString(mmconst.SimPropertySimIdentifier)
 		if err != nil {
 			s.Fatal("Missing Sim.SimIdentifier property: ", err)
+		}
+		if iccid == "" {
+			// Shill represents unknown pSIM iccid = "" as "unknown-iccid".
+			iccid = shillconst.UnknownICCID
 		}
 		props := map[string]interface{}{
 			shillconst.ServicePropertyCellularICCID: iccid,
@@ -97,7 +117,7 @@ func ShillCellularSimSlots(ctx context.Context, s *testing.State) {
 	for i := 0; i < 2; i++ {
 		simProps := simProperties[i]
 		slotInfo := simSlotInfo[i]
-		if err := compareSimProps(simProps, "SimIdentifier", slotInfo, "ICCID"); err != nil {
+		if err := compareSimProps(simProps, mmconst.SimPropertySimIdentifier, slotInfo, "ICCID"); err != nil {
 			s.Fatal("ICCID mismatch, err: ", err)
 		}
 		if err := compareSimProps(simProps, "Eid", slotInfo, "EID"); err != nil {
@@ -110,6 +130,10 @@ func compareSimProps(simProps *dbusutil.Properties, simKey string, slotInfo map[
 	simp, err := simProps.GetString(simKey)
 	if err != nil {
 		return errors.Wrapf(err, "missing property: %v", simKey)
+	}
+	if simKey == mmconst.SimPropertySimIdentifier && simp == "" {
+		// Shill represents MM iccid = "" as "unknown-iccid".
+		simp = shillconst.UnknownICCID
 	}
 	slotp := slotInfo[slotKey].Value()
 	if simp != slotp {
