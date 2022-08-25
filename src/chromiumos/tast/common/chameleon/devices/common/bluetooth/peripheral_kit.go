@@ -28,6 +28,11 @@ type PeripheralKit interface {
 	// Returns the capabilities of the kit that tests should account for.
 	GetCapabilities(ctx context.Context) (map[string]interface{}, error)
 
+	// CheckSerialConnection calls the Chameleond RPC method of the same name.
+	// Checks the USB serial connection between to the kit and returns true if is
+	// connected.
+	CheckSerialConnection(ctx context.Context) (bool, error)
+
 	// EnterCommandMode calls the Chameleond RPC method of the same name.
 	// Makes the kit enter command mode.
 	// Returns true if successful.
@@ -228,6 +233,13 @@ func NewCommonPeripheralKit(xmlrpcClient *xmlrpc.XMLRpc, methodNamePrefix string
 // This implements PeripheralKit.GetPort, see that for more details.
 func (c *CommonPeripheralKit) GetPort(ctx context.Context) (string, error) {
 	return c.RPC("GetPort").CallForString(ctx)
+}
+
+// CheckSerialConnection calls the Chameleond RPC method of the same name.
+// This implements PeripheralKit.CheckSerialConnection, see that for more
+// details.
+func (c *CommonPeripheralKit) CheckSerialConnection(ctx context.Context) (bool, error) {
+	return c.RPC("CheckSerialConnection").CallForBool(ctx)
 }
 
 // GetCapabilities calls the Chameleond RPC method of the same name.
