@@ -33,6 +33,23 @@
       "message": "See the above comment for the links to tastboard. Thanks!",
       "revId": "c95b2a980b641fd71811a8ffaccaaf99c379a6c2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0172f5c9_765edcb4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-08-25T02:06:07Z",
+      "side": 1,
+      "message": "Thanks!",
+      "revId": "c95b2a980b641fd71811a8ffaccaaf99c379a6c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
