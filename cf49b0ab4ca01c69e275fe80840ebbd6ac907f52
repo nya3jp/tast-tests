@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7978dde6_2e51693e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/hulu.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2022-08-25T18:54:37Z",
+      "side": 1,
+      "message": "yes.",
+      "parentUuid": "77d4282c_d8017c42",
+      "range": {
+        "startLine": 280,
+        "startChar": 0,
+        "endLine": 282,
+        "endChar": 8
+      },
+      "revId": "cf49b0ab4ca01c69e275fe80840ebbd6ac907f52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5f1908ed_c950a919",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8dd71ad5_08cae4f1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/hulu.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2022-08-25T18:54:37Z",
+      "side": 1,
+      "message": "On some devices, even though location is enabled the app complains of location time out and could not navigate the app further. Need to fail the test if the error is displayed.",
+      "parentUuid": "5f1908ed_c950a919",
+      "range": {
+        "startLine": 336,
+        "startChar": 0,
+        "endLine": 336,
+        "endChar": 43
+      },
+      "revId": "cf49b0ab4ca01c69e275fe80840ebbd6ac907f52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7cbd5cfd_f9f3a3ce",
@@ -77,6 +125,30 @@
       "writtenOn": "2022-08-23T16:06:10Z",
       "side": 1,
       "message": "Is it like you verify that login button exists after signing out?\n\nAlso why is this location timeout error handling?",
+      "range": {
+        "startLine": 367,
+        "startChar": 0,
+        "endLine": 380,
+        "endChar": 0
+      },
+      "revId": "cf49b0ab4ca01c69e275fe80840ebbd6ac907f52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e097057_8703acac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/hulu.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2022-08-25T18:54:37Z",
+      "side": 1,
+      "message": "\u003e\u003eIs it like you verify that login button exists after signing out?\nVerify Login button is to check if the app is not logged in or not due to OTP page. If login button exists, sign out test case will be skipped.\n\n\u003e\u003eAlso why is this location timeout error handling?\nObserved that if location timeout error exists, Sign out test is failing flaky. So to avoid flaky failure, if location timeout error is found, sign out test will be skipped.",
+      "parentUuid": "7cbd5cfd_f9f3a3ce",
       "range": {
         "startLine": 367,
         "startChar": 0,
