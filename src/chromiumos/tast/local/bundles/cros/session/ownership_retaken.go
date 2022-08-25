@@ -15,7 +15,9 @@ import (
 	"google.golang.org/protobuf/testing/protocmp"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/cryptohome"
+	hwseclocal "chromiumos/tast/local/hwsec"
 	"chromiumos/tast/local/session"
 	"chromiumos/tast/local/session/ownership"
 	"chromiumos/tast/testing"
@@ -23,13 +25,15 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: OwnershipRetaken,
-		Desc: "Ensures that ownership is re-taken upon loss of owner's cryptohome",
+		Func:         OwnershipRetaken,
+		LacrosStatus: testing.LacrosVariantUnneeded,
+		Desc:         "Ensures that ownership is re-taken upon loss of owner's cryptohome",
 		Contacts: []string{
 			"hidehiko@chromium.org",
 		},
-		Data: []string{"testcert.p12"},
-		Attr: []string{"group:mainline"},
+		Data:         []string{"testcert.p12"},
+		SoftwareDeps: []string{"chrome"},
+		Attr:         []string{"group:mainline"},
 	})
 }
 
@@ -38,6 +42,16 @@ func OwnershipRetaken(ctx context.Context, s *testing.State) {
 		testUser = "ownership_test@chromium.org"
 		testPass = "testme"
 	)
+
+	cmdRunner := hwseclocal.NewCmdRunner()
+	helper, err := hwseclocal.NewHelper(cmdRunner)
+	if err != nil {
+		s.Fatal("Failed to create hwsec local helper: ", err)
+	}
+	// Resets the TPM, system, and user states before running the tests.
+	if err := helper.EnsureTPMAndSystemStateAreReset(ctx); err != nil {
+		s.Fatal("Failed to reset TPM or system states: ", err)
+	}
 
 	privKey, err := session.ExtractPrivKey(s.DataPath("testcert.p12"))
 	if err != nil {
@@ -97,12 +111,12 @@ func OwnershipRetaken(ctx context.Context, s *testing.State) {
 	}
 	defer ws.Close(ctx)
 
-	if err = cryptohome.CreateVault(ctx, testUser, testPass); err != nil {
-		s.Fatal("Failed to create vault: ", err)
+	cr, err := chrome.New(ctx, chrome.KeepState(), chrome.TryReuseSession(),
+		chrome.FakeLogin(chrome.Creds{User: testUser, Pass: "123"}))
+	if err != nil {
+		s.Fatal("Failed to log in with Chrome: ", err)
 	}
-	if err = sm.StartSession(ctx, testUser, ""); err != nil {
-		s.Fatalf("Failed to start new session for %s: %v", testUser, err)
-	}
+	defer cr.Close(ctx)
 
 	select {
 	case <-wp.Signals:
