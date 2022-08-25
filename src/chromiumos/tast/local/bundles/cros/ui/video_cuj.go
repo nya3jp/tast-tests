@@ -37,7 +37,6 @@ type videoCUJTestParam struct {
 	bt       browser.Type
 	duration time.Duration // How long the overall test should take.
 	tablet   bool
-	tracing  bool
 }
 
 func init() {
@@ -64,13 +63,6 @@ func init() {
 			Val: videoCUJTestParam{
 				bt:       browser.TypeAsh,
 				duration: 30 * time.Minute,
-			},
-		}, {
-			Name:    "clamshell_trace",
-			Fixture: "loggedInToCUJUser",
-			Val: videoCUJTestParam{
-				bt:      browser.TypeAsh,
-				tracing: true,
 			},
 		}, {
 			Name:    "tablet",
@@ -211,9 +203,8 @@ func VideoCUJ(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to add common metrics to recorder: ", err)
 	}
 
-	if testParam.tracing {
-		recorder.EnableTracing(s.OutDir(), s.DataPath(cujrecorder.SystemTraceConfigFile))
-	}
+	// Collect a 1-min trace.
+	recorder.EnableTracing(s.OutDir(), s.DataPath(cujrecorder.SystemTraceConfigFile))
 	defer recorder.Close(closeCtx)
 
 	webConn, err := cs.NewConn(ctx, ui.PerftestURL)
