@@ -24,7 +24,7 @@ func init() {
 		Func: ConfigVerify,
 		Desc: "Examines a kernel build CONFIG list to make sure various things are present, missing, built as modules, etc",
 		Contacts: []string{
-			"vapier@chromium.org",
+			"jeffxu@chromium.org",
 			"chromeos-kernel-test@google.com",
 			"oka@chromium.org", // Tast port author
 		},
