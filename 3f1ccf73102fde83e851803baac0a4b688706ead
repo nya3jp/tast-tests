@@ -16,6 +16,69 @@
       "message": "Switching reviewers to shengjun@ who is based in Sydney. PTAL thanks!",
       "revId": "3f1ccf73102fde83e851803baac0a4b688706ead",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ca83d10_349ce59d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-08-25T00:13:23Z",
+      "side": 1,
+      "message": "Overall the test is not well structured. Verifying default behavior and settings are independent tests. You can use subtest to run each verification.\n\nRefer to https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#table_driven-tests\n\nExample test: \nhttps://crsrc.org/o/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_glide_typing.go",
+      "revId": "3f1ccf73102fde83e851803baac0a4b688706ead",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2bbac0f0_88cdd7a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/link_capturing.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-08-25T00:13:23Z",
+      "side": 1,
+      "message": "Making this type as uiauto.Action, should make the code much simpler. For example:\n\nclickBrowserLinkAndVerify(ctx, tconn, br, ui.WaitUntilExists(heading))",
+      "range": {
+        "startLine": 210,
+        "startChar": 97,
+        "endLine": 210,
+        "endChar": 118
+      },
+      "revId": "3f1ccf73102fde83e851803baac0a4b688706ead",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7734aa7_864f73b2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/link_capturing.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-08-25T00:13:23Z",
+      "side": 1,
+      "message": "if you are happy to change the signature, this can be simplified to \n\nreturn uiauto.Combine(\"click link and verify result\",\n    ui.LeftClick(link),\n    verifier,\n)(ctx)",
+      "range": {
+        "startLine": 223,
+        "startChar": 1,
+        "endLine": 231,
+        "endChar": 11
+      },
+      "revId": "3f1ccf73102fde83e851803baac0a4b688706ead",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
