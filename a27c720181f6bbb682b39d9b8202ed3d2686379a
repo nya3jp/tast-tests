@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "a304842e_b6e90e64",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/toggle_cellular_from_os_settings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-08-25T14:53:48Z",
+      "side": 1,
+      "message": "nit: you can actually get rid of the `else` and just unindent this. `s.Fatal` stops execution of the test",
+      "revId": "a27c720181f6bbb682b39d9b8202ed3d2686379a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "6f7055fe_c7acbe14",
