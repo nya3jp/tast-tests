@@ -51,6 +51,24 @@
       "parentUuid": "f8a443f1_bbdd12ca",
       "revId": "a5f56c5613c0d3f879d1043b81922c539596dfb7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "839ee76e_01645adb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-08-25T08:41:55Z",
+      "side": 1,
+      "message": "Done, moved to `clipboardhistory` directory",
+      "parentUuid": "205af158_70b334fe",
+      "revId": "a5f56c5613c0d3f879d1043b81922c539596dfb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
