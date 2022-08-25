@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e36c3fce_48ad88e7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tconn_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-08-25T00:48:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a668a734_72ff7d16",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 52
+      },
+      "revId": "d7097903132be6c6500f8932e18061737a29f0dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d7467bb3_e9b066c8",
@@ -71,6 +95,24 @@
       "writtenOn": "2022-08-24T19:52:07Z",
       "side": 1,
       "message": "The logic switches here. Are you trying to fix a bug? The description did not mention fixing any bug? Please clarify. Thanks.",
+      "revId": "d7097903132be6c6500f8932e18061737a29f0dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b44d1795_a62fe4bb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tconn_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-08-25T00:48:22Z",
+      "side": 1,
+      "message": "Ah, sorry, that was supposed to be in the parent CL.",
+      "parentUuid": "d7467bb3_e9b066c8",
       "revId": "d7097903132be6c6500f8932e18061737a29f0dd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
