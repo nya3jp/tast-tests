@@ -40,6 +40,7 @@ func init() {
 		},
 		Attr:         []string{"group:cuj"},
 		SoftwareDeps: []string{"chrome", "arc", "no_kernel_upstream"},
+		Data:         []string{cujrecorder.SystemTraceConfigFile},
 		Timeout:      chrome.GAIALoginTimeout + arc.BootTimeout + 3*time.Minute,
 		VarDeps:      []string{"ui.gaiaPoolDefault"},
 	})
@@ -109,6 +110,9 @@ func DeskTemplatesCUJ(ctx context.Context, s *testing.State) {
 	if err := recorder.AddCommonMetrics(tconn, tconn); err != nil {
 		s.Fatal("Failed to add common metrics to recorder: ", err)
 	}
+
+	// Collect a 1-min trace.
+	recorder.EnableTracing(s.OutDir(), s.DataPath(cujrecorder.SystemTraceConfigFile))
 
 	pv := perf.NewValues()
 	if err := recorder.Run(ctx, func(ctx context.Context) error {

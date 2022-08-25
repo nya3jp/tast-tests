@@ -34,7 +34,6 @@ import (
 type TaskSwitchTest struct {
 	BrowserType browser.Type
 	Tablet      bool
-	Tracing     bool
 }
 
 // Run runs the task switch CUJ by opening up ARC and browser windows
@@ -105,9 +104,8 @@ func Run(ctx context.Context, s *testing.State) {
 	if err := recorder.AddCommonMetrics(tconn, bTconn); err != nil {
 		s.Fatal("Failed to add common metrics to the recorder: ", err)
 	}
-	if testParam.Tracing {
-		recorder.EnableTracing(s.OutDir(), s.DataPath(cujrecorder.SystemTraceConfigFile))
-	}
+	// Collect a 1-min trace.
+	recorder.EnableTracing(s.OutDir(), s.DataPath(cujrecorder.SystemTraceConfigFile))
 	defer recorder.Close(closeCtx)
 
 	topRow, err := input.KeyboardTopRowLayout(ctx, kw)
