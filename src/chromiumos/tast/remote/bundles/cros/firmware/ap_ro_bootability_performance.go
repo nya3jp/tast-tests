@@ -65,7 +65,7 @@ func init() {
 		Fixture:      fixture.NormalMode,
 		Data:         []string{"shipped-firmwares.json"},
 		ServiceDeps:  []string{"tast.cros.firmware.BiosService", "tast.cros.firmware.UtilsService"},
-		HardwareDeps: hwdep.D(hwdep.ChromeEC(), hwdep.Model("vilboz")), // Temporarily constraining the test to one model with a number of shipped fw versions.
+		HardwareDeps: hwdep.D(hwdep.ChromeEC(), hwdep.Model("vilboz", "dirinboz", "sparky360", "apel", "delbin")), // Temporarily constraining the test to a few models.
 	})
 }
 
@@ -302,29 +302,9 @@ func downloadFirmwareFile(ctx context.Context, s *testing.State, board, fwid, tm
 	dir := "gs://chromeos-image-archive/" + board + "-firmware/"
 	out, err := testexec.CommandContext(ctx, "gsutil", "ls", dir).Output(testexec.DumpLogOnError)
 	if err != nil {
-		testing.ContextLog(ctx, "WARNING! 'gsutil' failed")
-
-		// Known complete paths for zork-vilboz.
-		knownPaths := [4]string{
-			"gs://chromeos-image-archive/zork-firmware/R87-13434.576.0",
-			"gs://chromeos-image-archive/zork-firmware/R87-13434.486.0",
-			"gs://chromeos-image-archive/zork-firmware/R87-13434.436.0",
-			"gs://chromeos-image-archive/zork-firmware/R87-13434.283.0",
-		}
-
-		// Get the complete path.
-		for i := 0; i < len(knownPaths); i++ {
-			path = re.FindString(knownPaths[i])
-			if path != "" {
-				break
-			}
-		}
-	} else {
-		testing.ContextLog(ctx, "Getting the complete path by using 'gsutil'")
-		path = re.FindString(string(out))
+		return errors.Wrap(err, "failed to run 'gsutil ls' to find the complete path")
 	}
-
-	// Verify there was a match.
+	path = re.FindString(string(out))
 	if path == "" {
 		return errors.Errorf("no image archive found for firmware id: %s board: %s", fwid, board)
 	}
