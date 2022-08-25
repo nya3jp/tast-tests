@@ -7,11 +7,13 @@ package firmware
 import (
 	"context"
 	"path/filepath"
+	"strings"
 	"time"
 
 	"github.com/golang/protobuf/ptypes/empty"
 
 	"chromiumos/tast/common/servo"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/firmware"
 	"chromiumos/tast/remote/firmware/fixture"
@@ -46,6 +48,7 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		ServiceDeps:  []string{"tast.cros.ui.ScreenRecorderService", "tast.cros.browser.ChromeService", "tast.cros.ui.CheckVirtualKeyboardService", "tast.cros.firmware.UtilsService"},
 		Fixture:      fixture.NormalMode,
+		Timeout:      8 * time.Minute,
 		HardwareDeps: hwdep.D(hwdep.ChromeEC(), hwdep.TouchScreen()),
 		Params: []testing.Param{{
 			ExtraHardwareDeps: hwdep.D(hwdep.FormFactor(hwdep.Convertible)),
@@ -98,7 +101,7 @@ func ECVerifyVK(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to reconnect to DUT: ", err)
 	}
 
-	if err := h.RequireRPCClient(ctx); err != nil {
+	if err := h.RequireRPCUtils(ctx); err != nil {
 		s.Fatal("Failed to connect to the RPC service on the DUT: ", err)
 	}
 
@@ -123,21 +126,52 @@ func ECVerifyVK(ctx context.Context, s *testing.State) {
 		FileName: filePath,
 	}
 	screenRecorder := pb.NewScreenRecorderServiceClient(h.RPCClient.Conn)
+
 	if _, err := screenRecorder.Start(ctx, &startRequest); err != nil {
 		s.Fatal("Failed to start recording: ", err)
 	}
-	defer func() {
+
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 2*time.Minute)
+	defer cancel()
+
+	defer func(ctx context.Context) {
 		res, err := screenRecorder.Stop(ctx, &empty.Empty{})
 		if err != nil {
 			s.Log("Unable to save the recording: ", err)
 		} else {
 			s.Logf("Screen recording saved to %s", res.FileName)
 		}
-	}()
+	}(cleanupCtx)
+
+	// Restore tablet mode settings so that DUT won't
+	// be left in tablet mode at the end of test.
+	args := s.Param().(dutTestParams)
+	ecTool := firmware.NewECTool(s.DUT(), firmware.ECToolNameMain)
+	var restoreECTabletMode bool
+	defer func(ctx context.Context, restoreECTabletMode *bool) {
+		if *restoreECTabletMode {
+			s.Log("Restoring ec tablet mode setting at the end of test")
+			if _, err := h.Servo.CheckAndRunTabletModeCommand(ctx, args.tabletModeOff); err != nil {
+				s.Fatal("Unablet to reset EC tablet mode setting: ", err)
+			}
+		}
+		if args.formFactor == convertible {
+			// Set tablet mode angles to the default settings under ectool
+			// at the end of test if they are not.
+			tabletModeAngleInit, hysInit, err := ecTool.SaveTabletModeAngles(ctx)
+			if err != nil {
+				s.Fatal("Failed to read tablet mode angles: ", err)
+			} else if tabletModeAngleInit != "180" || hysInit != "20" {
+				s.Log("Restoring ectool tablet mode angles to the default settings")
+				if err := ecTool.ForceTabletModeAngle(ctx, "180", "20"); err != nil {
+					s.Fatal("Failed to restore tablet mode angles to the default settings: ", err)
+				}
+			}
+		}
+	}(cleanupCtx, &restoreECTabletMode)
 
 	vkService := pb.NewCheckVirtualKeyboardServiceClient(h.RPCClient.Conn)
-	ecTool := firmware.NewECTool(s.DUT(), firmware.ECToolNameMain)
-	args := s.Param().(dutTestParams)
 	for _, tc := range []struct {
 		formFactor        dutType
 		canDoTabletSwitch bool
@@ -147,24 +181,17 @@ func ECVerifyVK(ctx context.Context, s *testing.State) {
 		{args.formFactor, args.canDoTabletSwitch, true, args.tabletModeOn},
 		{args.formFactor, args.canDoTabletSwitch, false, args.tabletModeOff},
 	} {
-		// Set tablet mode angles to the default settings under ectool
-		// at the end of test if they are not.
-		defer func(formFactor dutType) {
-			if formFactor == convertible {
-				tabletModeAngleInit, hysInit, err := ecTool.SaveTabletModeAngles(ctx)
-				if err != nil {
-					s.Fatal("Failed to read tablet mode angles: ", err)
-				} else if tabletModeAngleInit != "180" || hysInit != "20" {
-					s.Log("Restoring ectool tablet mode angles to the default settings")
-					if err := ecTool.ForceTabletModeAngle(ctx, "180", "20"); err != nil {
-						s.Fatal("Failed to restore tablet mode angles to the default settings: ", err)
-					}
-				}
-			}
-		}(tc.formFactor)
 		// Switch DUT to tablet mode, then back to clamshell mode, for convertibles and detachables.
-		if err := switchDUTMode(ctx, h, tc.canDoTabletSwitch, tc.turnTabletModeOn, tc.tabletModeCmd, ecTool); err != nil {
+		msg, err := switchDUTMode(ctx, h, tc.canDoTabletSwitch, tc.turnTabletModeOn, tc.tabletModeCmd, ecTool)
+		if err != nil {
 			s.Fatalf("Failed to run %s: %v", tc.tabletModeCmd, err)
+		}
+		const tabletModeEnabled = "tablet mode enabled"
+		switch strings.Contains(msg, tabletModeEnabled) {
+		case true:
+			restoreECTabletMode = true
+		default:
+			restoreECTabletMode = false
 		}
 		// Short delay to ensure that the command on changing DUT's tablet mode state has fully propagated.
 		s.Log("Sleeping for a few seconds")
@@ -182,7 +209,7 @@ func ECVerifyVK(ctx context.Context, s *testing.State) {
 		}); err != nil {
 			s.Fatal("Failed to click Search Bar: ", err)
 		}
-		s.Log("Checking virtual keyboard is present")
+		s.Log("Checking if virtual keyboard is present")
 		if err := checkVKIsPresent(ctx, h, vkService, dutInTabletMode); err != nil {
 			s.Fatal("Failed to check VK is present: ", err)
 		}
@@ -194,9 +221,9 @@ func ECVerifyVK(ctx context.Context, s *testing.State) {
 	}
 }
 
-func switchDUTMode(ctx context.Context, h *firmware.Helper, canDoTabletSwitch, turnTabletModeOn bool, tabletModeCmd string, ecTool *firmware.ECTool) error {
+func switchDUTMode(ctx context.Context, h *firmware.Helper, canDoTabletSwitch, turnTabletModeOn bool, tabletModeCmd string, ecTool *firmware.ECTool) (string, error) {
 	if !canDoTabletSwitch {
-		return nil
+		return "", nil
 	}
 	forceTabletModeAngle := func(ctx context.Context) error {
 		if turnTabletModeOn {
@@ -213,19 +240,18 @@ func switchDUTMode(ctx context.Context, h *firmware.Helper, canDoTabletSwitch, t
 		return nil
 	}
 	testing.ContextLogf(ctx, "Running EC command %s to change DUT's tablet mode state", tabletModeCmd)
-	if _, err := h.Servo.CheckAndRunTabletModeCommand(ctx, tabletModeCmd); err != nil {
+	out, err := h.Servo.CheckAndRunTabletModeCommand(ctx, tabletModeCmd)
+	if err != nil {
 		testing.ContextLogf(ctx, "Failed to set DUT tablet mode state, and got: %v. Attempting to set tablet_mode_angle with ectool instead", err)
 		if err := forceTabletModeAngle(ctx); err != nil {
-			return errors.Wrap(err, "failed to set DUT tablet mode state")
+			return "", errors.Wrap(err, "failed to set DUT tablet mode state")
 		}
+		return "", nil
 	}
-	return nil
+	return out, nil
 }
 
 func checkTabletMode(ctx context.Context, h *firmware.Helper, turnTabletModeOn bool) (bool, error) {
-	if err := h.RequireRPCUtils(ctx); err != nil {
-		return false, errors.Wrap(err, "requiring RPC utils")
-	}
 	// Reuse the existing guest session created via ChromeService at the beginning of test.
 	if _, err := h.RPCUtils.ReuseChrome(ctx, &empty.Empty{}); err != nil {
 		return false, errors.Wrap(err, "failed to reuse Chrome session for the utils service")
