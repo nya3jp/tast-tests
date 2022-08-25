@@ -15,6 +15,11 @@ import (
 	"chromiumos/tast/testing"
 )
 
+type testParams struct {
+	testName      string
+	needsTpmReset bool
+}
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func: CryptohomeTPMLiveTests,
@@ -26,6 +31,61 @@ func init() {
 		SoftwareDeps: []string{"tpm", "reboot"},
 		Attr:         []string{"group:hwsec_destructive_func"},
 		Timeout:      15 * time.Minute,
+		Params: []testing.Param{{
+			Name: "tpm_ecc_auth_block_test",
+			Val: testParams{
+				testName:      "tpm_ecc_auth_block_test",
+				needsTpmReset: false,
+			},
+		}, {
+			Name: "tpm_bound_to_pcr_auth_block_test",
+			Val: testParams{
+				testName:      "tpm_bound_to_pcr_auth_block_test",
+				needsTpmReset: false,
+			},
+		}, {
+			Name: "tpm_not_bound_to_pcr_auth_block_test",
+			Val: testParams{
+				testName:      "tpm_not_bound_to_pcr_auth_block_test",
+				needsTpmReset: false,
+			},
+		}, {
+			Name: "pcr_key_test",
+			Val: testParams{
+				testName:      "pcr_key_test",
+				needsTpmReset: true,
+			},
+		}, {
+			Name: "decryption_key_test",
+			Val: testParams{
+				testName:      "decryption_key_test",
+				needsTpmReset: false,
+			},
+		}, {
+			Name: "seal_with_current_user_test",
+			Val: testParams{
+				testName:      "seal_with_current_user_test",
+				needsTpmReset: false,
+			},
+		}, {
+			Name: "nvram_test",
+			Val: testParams{
+				testName:      "nvram_test",
+				needsTpmReset: false,
+			},
+		}, {
+			Name: "signature_sealed_secret_test",
+			Val: testParams{
+				testName:      "signature_sealed_secret_test",
+				needsTpmReset: true,
+			},
+		}, {
+			Name: "recovery_tpm_backend_test",
+			Val: testParams{
+				testName:      "recovery_tpm_backend_test",
+				needsTpmReset: true,
+			},
+		}},
 	})
 }
 
@@ -41,31 +101,35 @@ func CryptohomeTPMLiveTests(ctx context.Context, s *testing.State) {
 	tpmManager := helper.TPMManagerClient()
 
 	s.Log("Start resetting TPM if needed")
-	if err := helper.EnsureTPMAndSystemStateAreReset(ctx); err != nil {
-		s.Fatal("Failed to ensure resetting TPM: ", err)
-	}
-	s.Log("TPM is confirmed to be reset")
-
-	ctxForResetTPM := ctx
-	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Minute)
-	defer cancel()
-	defer func(ctx context.Context) {
-		// Clean the TPM up, so that the TPM state clobbered by the TPM live tests doesn't affect subsequent tests.
+	if s.Param().(testParams).needsTpmReset {
 		if err := helper.EnsureTPMAndSystemStateAreReset(ctx); err != nil {
 			s.Fatal("Failed to ensure resetting TPM: ", err)
 		}
-	}(ctxForResetTPM)
+		s.Log("TPM is confirmed to be reset")
+	}
+
+	ctxForResetTPM := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Minute)
+	if s.Param().(testParams).needsTpmReset {
+		defer cancel()
+		defer func(ctx context.Context) {
+			// Clean the TPM up, so that the TPM state clobbered by the TPM live tests doesn't affect subsequent tests.
+			if err := helper.EnsureTPMAndSystemStateAreReset(ctx); err != nil {
+				s.Fatal("Failed to ensure resetting TPM: ", err)
+			}
+		}(ctxForResetTPM)
+	}
 
 	if _, err := tpmManager.TakeOwnership(ctx); err != nil {
 		s.Fatal("Failed to take TPM ownership: ", err)
 	}
 
-	if out, err := cmdRunner.Run(ctx, "cryptohome-tpm-live-test"); err != nil {
+	if out, err := cmdRunner.Run(ctx, "cryptohome-tpm-live-test", "--test="+s.Param().(testParams).testName); err != nil {
 		logFile := filepath.Join(s.OutDir(), "tpm_live_test_output.txt")
 		if writeErr := ioutil.WriteFile(logFile, out, 0644); writeErr != nil {
 			s.Errorf("Failed to write to %s: %v", logFile, writeErr)
 		}
 
-		s.Fatal("TPM live test failed: ", err)
+		s.Fatal(s.Param().(testParams).testName+" from TPM live test failed: ", err)
 	}
 }
