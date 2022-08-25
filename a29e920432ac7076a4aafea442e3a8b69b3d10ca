@@ -39,6 +39,30 @@
       },
       "revId": "a29e920432ac7076a4aafea442e3a8b69b3d10ca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c02ad3d2_28a6d5ff",
+        "filename": "src/chromiumos/tast/remote/policyutil/clean_ownership.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-08-25T08:10:12Z",
+      "side": 1,
+      "message": "Not reliably (during tast tests). You can check if the TPM is owned and use that. EnsureTPMAndSystemStateAreResetRemote already checks.\n\nDeprovisioning should always happen anyway, it has nothing to do with DUT state.\n\nBTW we need to call EnsureTPMAndSystemStateAreResetRemote here as well. I\u0027m not sure reset is executed after the last test.",
+      "parentUuid": "f16a4191_5ed5e2e2",
+      "range": {
+        "startLine": 78,
+        "startChar": 50,
+        "endLine": 78,
+        "endChar": 68
+      },
+      "revId": "a29e920432ac7076a4aafea442e3a8b69b3d10ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
