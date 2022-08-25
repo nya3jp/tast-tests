@@ -14,6 +14,7 @@ import (
 	"time"
 
 	"chromiumos/tast/common/fixture"
+	"chromiumos/tast/common/pci"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/ctxutil"
@@ -61,6 +62,9 @@ func init() {
 			"cert_for_127.0.0.1.pem",
 			"key_for_127.0.0.1.pem",
 			"ca-cert.pem",
+		},
+		SearchFlags: []*testing.StringPair{
+			pci.SearchFlag(&policy.BlockThirdPartyCookies{}, pci.VerifiedFunctionalityUI),
 		},
 	})
 }

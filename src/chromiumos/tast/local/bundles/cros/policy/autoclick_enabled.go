@@ -10,6 +10,7 @@ import (
 	"time"
 
 	"chromiumos/tast/common/fixture"
+	"chromiumos/tast/common/pci"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/local/chrome"
@@ -38,6 +39,9 @@ func init() {
 		// TODO(crbug.com/1186655): Enable test when the policy can be disabled.
 		Attr:    []string{},
 		Fixture: fixture.ChromePolicyLoggedIn,
+		SearchFlags: []*testing.StringPair{
+			pci.SearchFlag(&policy.AutoclickEnabled{}, pci.VerifiedFunctionalityUI),
+		},
 	})
 }
 

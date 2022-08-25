@@ -9,6 +9,7 @@ import (
 	"strings"
 	"time"
 
+	"chromiumos/tast/common/pci"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/local/arc"
@@ -36,6 +37,9 @@ func init() {
 			ExtraSoftwareDeps: []string{"android_vm"},
 		}},
 		Timeout: 8 * time.Minute, // There is a need to start Chrome 4 times.
+		SearchFlags: []*testing.StringPair{
+			pci.SearchFlag(&policy.ArcBackupRestoreServiceEnabled{}, pci.VerifiedFunctionalityOS),
+		},
 	})
 }
 
