@@ -16,6 +16,24 @@
       "message": "nit: Should we add a delay in between retrying? If it doesn\u0027t work the first time, do you think immediately rereading it would work? I don\u0027t know much about why this is happening, so it\u0027s up to you.",
       "revId": "c6ee05c006bb9fb8e174ce80647cf6ff87dac495",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd321776_c5af2965",
+        "filename": "src/chromiumos/tast/local/power/sysfs_battery_metrics.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-08-25T22:52:34Z",
+      "side": 1,
+      "message": "Since it\u0027s in a Snapshot, I don\u0027t want to have a long delay. My guess is the empty current_now file only happens for a short time. Added a log here for later investigation.",
+      "parentUuid": "35c769f6_a218fe42",
+      "revId": "c6ee05c006bb9fb8e174ce80647cf6ff87dac495",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
