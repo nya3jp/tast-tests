@@ -88,6 +88,30 @@ func (uiHelper *UIHelper) WelcomePageOperation(ctx context.Context) error {
 	)(ctx)
 }
 
+// PrepareOfflineTest prepares DUT for offline mode.
+func (uiHelper *UIHelper) PrepareOfflineTest(ctx context.Context) error {
+	_, err := uiHelper.Client.PrepareOfflineTest(ctx, &empty.Empty{})
+	return err
+}
+
+// WelcomeAndNetworkPageOperationOffline handles all operations on Welcome Page and Network Connection Page in offline mode.
+func (uiHelper *UIHelper) WelcomeAndNetworkPageOperationOffline(ctx context.Context) error {
+	_, err := uiHelper.Client.TestWelcomeAndNetworkConnection(ctx, &empty.Empty{})
+	return err
+}
+
+// VerifyWifiIsForgotten verify that wifi is forgotten.
+func (uiHelper *UIHelper) VerifyWifiIsForgotten(ctx context.Context) error {
+	_, err := uiHelper.Client.VerifyNoWifiConnected(ctx, &empty.Empty{})
+	return err
+}
+
+// VerifyOfflineOperationSuccess verify that offline operation is successful.
+func (uiHelper *UIHelper) VerifyOfflineOperationSuccess(ctx context.Context) error {
+	_, err := uiHelper.Client.VerifyTestWelcomeAndNetworkConnectionSuccess(ctx, &empty.Empty{})
+	return err
+}
+
 // ComponentsPageOperation handles all operations on Components Selection Page.
 func (uiHelper *UIHelper) ComponentsPageOperation(ctx context.Context) error {
 	return action.Combine("Components page operation",
