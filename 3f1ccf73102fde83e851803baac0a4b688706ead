@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "35026afd_a6a9c2ba",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1130680
+      },
+      "writtenOn": "2022-08-25T01:01:16Z",
+      "side": 1,
+      "message": "The example test that you linked doesn\u0027t use s.Run from the linked doc, it uses different Params to create multiple cases. Is there a preference between the two? I assume that s.Run has lower overhead.\n\nTo confirm, the structure I\u0027m imagining is something like,\n\n```\n{\n  name: \"default_setting_click_in_browser_opens_in_tab\",\n  setting: OpenInDefault,\n  link: ClickLinkInBrowser,\n  opensIn: OpensInTab\n},\n{\n  name: \"app_setting_click_in_browser_opens_in_app\",\n  setting: OpenInApp,\n  link: ClickLinkInBrowser\n  opensIn: OpensInApp\n}\n```\n\nand then the test playback reads the values and performs the steps of (1) enable setting, (2) click link, (3) verify behavior. Does that make sense? Just wanted to check before I change everything.",
+      "parentUuid": "9ca83d10_349ce59d",
+      "revId": "3f1ccf73102fde83e851803baac0a4b688706ead",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2bbac0f0_88cdd7a9",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/link_capturing.go",
         "patchSetId": 4
