@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "642218e3_26537321",
+        "filename": "src/chromiumos/tast/local/mtbf/youtube/video_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2022-08-25T01:47:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "925bcc96_27a9b2ec",
+      "range": {
+        "startLine": 443,
+        "startChar": 2,
+        "endLine": 443,
+        "endChar": 75
+      },
+      "revId": "39ee1f3d03223393b5f3679d1ffb973e88ce83c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aed4865c_61e6a679",
@@ -37,6 +61,24 @@
       "writtenOn": "2022-08-25T00:26:03Z",
       "side": 1,
       "message": "Please deal with error if versionName is empty string. e.g. versionNamePrefix is not found in the output in future.",
+      "revId": "39ee1f3d03223393b5f3679d1ffb973e88ce83c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6877716_42e7ae80",
+        "filename": "src/chromiumos/tast/local/mtbf/youtube/video_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 453,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2022-08-25T01:47:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aed4865c_61e6a679",
       "revId": "39ee1f3d03223393b5f3679d1ffb973e88ce83c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
