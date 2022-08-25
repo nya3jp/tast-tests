@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "71c1da1e_9414e8dd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1551017
+      },
+      "writtenOn": "2022-08-25T16:14:31Z",
+      "side": 1,
+      "message": "\u003e Patch Set 12: Code-Review+2\n\u003e \n\u003e By voting Code-Review+2 the following files are still code-owner approved by \u003cGERRIT_ACCOUNT_1197299\u003e:\n\u003e * src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go\n\u003e \n\n",
+      "revId": "84e10c175bd65c95081b38f6a5b9495b499402fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
