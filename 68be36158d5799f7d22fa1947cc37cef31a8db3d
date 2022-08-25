@@ -16,6 +16,29 @@
       "message": "FYI - I renamed this to chromeLogged*In*WithGaia for consistency with the other chromeLoggedIn fixtures.",
       "revId": "68be36158d5799f7d22fa1947cc37cef31a8db3d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba001e82_4ea6afad",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1368351
+      },
+      "writtenOn": "2022-08-25T23:32:47Z",
+      "side": 0,
+      "message": "Is this function used for the legacy launcher or is it used for the tablet mode launcher as well, it is not very clear if we might remove this or not",
+      "range": {
+        "startLine": 180,
+        "startChar": 12,
+        "endLine": 180,
+        "endChar": 28
+      },
+      "revId": "68be36158d5799f7d22fa1947cc37cef31a8db3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
