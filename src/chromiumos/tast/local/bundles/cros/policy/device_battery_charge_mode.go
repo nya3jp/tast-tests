@@ -9,6 +9,7 @@ import (
 	"time"
 
 	"chromiumos/tast/common/fixture"
+	"chromiumos/tast/common/pci"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/common/servo"
@@ -39,6 +40,11 @@ func init() {
 		HardwareDeps: hwdep.D(hwdep.Battery()),
 		Vars:         []string{"servo"},
 		Fixture:      fixture.ChromeEnrolledLoggedIn,
+		SearchFlags: []*testing.StringPair{
+			pci.SearchFlag(&policy.DeviceBatteryChargeMode{}, pci.VerifiedFunctionalityOS),
+			pci.SearchFlag(&policy.DeviceBatteryChargeCustomStopCharging{}, pci.VerifiedValue),
+			pci.SearchFlag(&policy.DeviceBatteryChargeCustomStartCharging{}, pci.VerifiedValue),
+		},
 	})
 }
 

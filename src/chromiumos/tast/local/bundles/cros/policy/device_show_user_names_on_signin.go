@@ -9,6 +9,7 @@ import (
 	"time"
 
 	"chromiumos/tast/common/fixture"
+	"chromiumos/tast/common/pci"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/ctxutil"
@@ -35,6 +36,9 @@ func init() {
 		Fixture:      fixture.FakeDMSEnrolled,
 		VarDeps:      []string{"ui.signinProfileTestExtensionManifestKey"},
 		Timeout:      2*chrome.LoginTimeout + 10*time.Second,
+		SearchFlags: []*testing.StringPair{
+			pci.SearchFlag(&policy.DeviceShowUserNamesOnSignin{}, pci.VerifiedFunctionalityUI),
+		},
 	})
 }
 

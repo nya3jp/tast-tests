@@ -9,6 +9,7 @@ import (
 	"time"
 
 	"chromiumos/tast/common/fixture"
+	"chromiumos/tast/common/pci"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/local/chrome"
@@ -33,6 +34,9 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Fixture:      fixture.FakeDMSEnrolled,
 		VarDeps:      []string{"ui.signinProfileTestExtensionManifestKey"},
+		SearchFlags: []*testing.StringPair{
+			pci.SearchFlag(&policy.DeviceGuestModeEnabled{}, pci.VerifiedFunctionalityUI),
+		},
 	})
 }
 

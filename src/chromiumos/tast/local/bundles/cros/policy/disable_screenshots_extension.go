@@ -14,6 +14,7 @@ import (
 	"path/filepath"
 	"time"
 
+	"chromiumos/tast/common/pci"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/ctxutil"
@@ -50,6 +51,9 @@ func init() {
 		Data:         append(extensionFiles, disableScreenshotsExtensionHTML),
 		// 2 minutes is the default local test timeout. Check localTestTimeout constant in tast/src/chromiumos/tast/internal/bundle/local.go.
 		Timeout: chrome.ManagedUserLoginTimeout + 2*time.Minute,
+		SearchFlags: []*testing.StringPair{
+			pci.SearchFlag(&policy.DisableScreenshots{}, pci.VerifiedFunctionalityJS),
+		},
 	})
 }
 
