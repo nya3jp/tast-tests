@@ -142,6 +142,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d04d1cd1_5080b405",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/add_remove_factors.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1546868
+      },
+      "writtenOn": "2022-08-25T17:18:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "77a5f7f3_2d27daff",
+      "revId": "6e21a9ee012cd77c5523b5382c2973f4f3a41076",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f097fdaa_1f1c7e09",
@@ -238,6 +256,30 @@
       "side": 1,
       "message": "%v can print everything (even if it\u0027s not pretty).\n\nThe style guide changed recently:\n\nhttps://g3doc.corp.google.com/go/g3doc/style/decisions.md?cl\u003dhead#got-before-want",
       "parentUuid": "fea79bb2_d8d9eadb",
+      "range": {
+        "startLine": 79,
+        "startChar": 48,
+        "endLine": 79,
+        "endChar": 66
+      },
+      "revId": "6e21a9ee012cd77c5523b5382c2973f4f3a41076",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2fa270d6_ebc09021",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/add_remove_factors.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1546868
+      },
+      "writtenOn": "2022-08-25T17:18:09Z",
+      "side": 1,
+      "message": "But that style guide entry also talks about diffs, and links to https://g3doc.corp.google.com/go/g3doc/style/decisions.md?cl\u003dhead#print-diffs, which suggests the format I used here?\n\nIn particular, it says \"Instead of printing both the returned value and the wanted value, make a diff\" which suggests that outputting both the full values and the diff is not generally preferred in that case.",
+      "parentUuid": "aa69cbb9_ef93c174",
       "range": {
         "startLine": 79,
         "startChar": 48,
