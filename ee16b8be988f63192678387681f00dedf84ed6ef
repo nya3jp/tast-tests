@@ -22,6 +22,30 @@
       },
       "revId": "ee16b8be988f63192678387681f00dedf84ed6ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1695309_aa06e79e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/drag_window_from_shelf_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-08-25T17:21:59Z",
+      "side": 1,
+      "message": "crbug.com/1348824 is an issue that I think is related to this weird behavior (eg, lacros not starting a first window in the tablet UI when in the tablet mode). I can\u0027t reproduce it manually with my corp chromebook, but to me it seems to be happening in Tast+Lacros environment.\n\n+Eriko, Hidehiko for any insights into this.\n\nI would like to see if this workaround doesn\u0027t affect what we\u0027re testing and is safe to check in until a root cause is figured out.",
+      "parentUuid": "3431044c_049dd4f2",
+      "range": {
+        "startLine": 86,
+        "startChar": 4,
+        "endLine": 86,
+        "endChar": 28
+      },
+      "revId": "ee16b8be988f63192678387681f00dedf84ed6ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
