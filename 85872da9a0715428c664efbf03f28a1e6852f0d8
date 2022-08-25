@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d7096ec_40eed10f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/view_metrics.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-08-25T07:25:22Z",
+      "side": 1,
+      "message": "If the group is already listed, do you need specific people to be listed as well?",
+      "revId": "85872da9a0715428c664efbf03f28a1e6852f0d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d049b92_9a093d1a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/view_metrics.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-08-25T07:25:22Z",
+      "side": 1,
+      "message": "nit: keep in one line",
+      "revId": "85872da9a0715428c664efbf03f28a1e6852f0d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bdb6c52b_1493434c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/view_metrics.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-08-25T07:25:22Z",
+      "side": 1,
+      "message": "Error",
+      "range": {
+        "startLine": 70,
+        "startChar": 4,
+        "endLine": 70,
+        "endChar": 9
+      },
+      "revId": "85872da9a0715428c664efbf03f28a1e6852f0d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
