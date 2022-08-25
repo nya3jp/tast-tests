@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "60391f64_2d7a8f9e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1377969
+      },
+      "writtenOn": "2022-08-25T00:18:45Z",
+      "side": 1,
+      "message": "chumped, only failure was a test that is now disabled",
+      "revId": "352a4ac521b63abb147cc38a4a96b5a88de21c8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
