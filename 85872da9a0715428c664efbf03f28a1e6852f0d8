@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a2e329c_c1dc553f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/view_metrics.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1538417
+      },
+      "writtenOn": "2022-08-25T19:00:59Z",
+      "side": 1,
+      "message": "Please keep it because we want to contact the listed people first.",
+      "parentUuid": "1d7096ec_40eed10f",
+      "revId": "85872da9a0715428c664efbf03f28a1e6852f0d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9d049b92_9a093d1a",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "13a0a38d_60a1bb2a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/view_metrics.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1538417
+      },
+      "writtenOn": "2022-08-25T19:00:59Z",
+      "side": 1,
+      "message": "We are following the same pattern of other Feedback tast test to wrap the line if it\u0027s longer than 80 char.",
+      "parentUuid": "9d049b92_9a093d1a",
+      "revId": "85872da9a0715428c664efbf03f28a1e6852f0d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bdb6c52b_1493434c",
@@ -48,6 +84,30 @@
       "writtenOn": "2022-08-25T07:25:22Z",
       "side": 1,
       "message": "Error",
+      "range": {
+        "startLine": 70,
+        "startChar": 4,
+        "endLine": 70,
+        "endChar": 9
+      },
+      "revId": "85872da9a0715428c664efbf03f28a1e6852f0d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a944daec_e4b43982",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/view_metrics.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1538417
+      },
+      "writtenOn": "2022-08-25T19:00:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bdb6c52b_1493434c",
       "range": {
         "startLine": 70,
         "startChar": 4,
