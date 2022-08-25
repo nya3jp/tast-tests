@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a619446_018bbade",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_display_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1537719
+      },
+      "writtenOn": "2022-08-25T08:25:26Z",
+      "side": 1,
+      "message": "I think embedded display stands for eDP. How about using `edpExists` directly.",
+      "parentUuid": "8bab0c24_9c84d432",
+      "revId": "ea49f1c56e25b13cb90d97c4fb85fb0afbc772ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "14818786_c149ec4c",
@@ -41,6 +59,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea2ae2ed_4e54a1a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_display_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1537719
+      },
+      "writtenOn": "2022-08-25T08:25:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "14818786_c149ec4c",
+      "range": {
+        "startLine": 365,
+        "startChar": 52,
+        "endLine": 365,
+        "endChar": 55
+      },
+      "revId": "ea49f1c56e25b13cb90d97c4fb85fb0afbc772ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b26c9b8d_5a15399a",
@@ -54,6 +96,30 @@
       "writtenOn": "2022-08-24T20:34:59Z",
       "side": 1,
       "message": "nit: edpExists",
+      "range": {
+        "startLine": 366,
+        "startChar": 4,
+        "endLine": 366,
+        "endChar": 13
+      },
+      "revId": "ea49f1c56e25b13cb90d97c4fb85fb0afbc772ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0aca0212_f94cc15c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_display_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1537719
+      },
+      "writtenOn": "2022-08-25T08:25:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b26c9b8d_5a15399a",
       "range": {
         "startLine": 366,
         "startChar": 4,
