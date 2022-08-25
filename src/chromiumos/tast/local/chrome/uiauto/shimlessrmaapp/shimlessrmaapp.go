@@ -197,6 +197,11 @@ func (r *RMAApp) EnterIntoTextInput(ctx context.Context, textInputName, content 
 	)
 }
 
+// LeftClickGenericContainer returns a function that clicks a Generic Container.
+func (r *RMAApp) LeftClickGenericContainer(label string) uiauto.Action {
+	return r.ui.LeftClick(nodewith.NameContaining(label).Role(role.GenericContainer).Visible().First())
+}
+
 func getRmadUID() (int, error) {
 	u, err := user.Lookup("rmad")
 	if err != nil {

@@ -18,8 +18,11 @@ service AppService {
   // Closes and releases the resources obtained by New.
   rpc CloseShimlessRMA (google.protobuf.Empty) returns (google.protobuf.Empty) {}
 
-  // Tests welcome page is loaded and then cancel it.
-  rpc TestWelcomeAndCancel (google.protobuf.Empty) returns (google.protobuf.Empty) {}
+  // Test welcome page and network connection page.
+  rpc TestWelcomeAndNetworkConnection (google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
+  // Prepare DUT for offline test (temporary local test).
+  rpc PrepareOfflineTest (google.protobuf.Empty) returns (google.protobuf.Empty) {}
 
   // Waits for page to load.
   rpc WaitForPageToLoad (WaitForPageToLoadRequest) returns (google.protobuf.Empty) {}
@@ -42,8 +45,14 @@ service AppService {
   // Enter the content into input box.
   rpc EnterIntoTextInput(EnterIntoTextInputRequest) returns (google.protobuf.Empty) {}
 
-  // Bypass firmare installation.
+  // Bypass firmware installation.
   rpc BypassFirmwareInstallation(google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
+  // VerifyNoWifiConnected verify that no wifi is connected.
+  rpc VerifyNoWifiConnected(google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
+  // VerifyTestWelcomeAndNetworkConnectionSuccess verify that TestWelcomeAndNetworkConnection runs successfully.
+  rpc VerifyTestWelcomeAndNetworkConnectionSuccess(google.protobuf.Empty) returns (google.protobuf.Empty) {}
 }
 
 message NewShimlessRMARequest {
