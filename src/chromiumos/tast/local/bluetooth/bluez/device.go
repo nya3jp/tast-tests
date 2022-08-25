@@ -60,6 +60,11 @@ func (d *Device) Address(ctx context.Context) (string, error) {
 	return d.dbus.PropertyString(ctx, "Address")
 }
 
+// Name returns the name of the bluetooth remote device.
+func (d *Device) Name(ctx context.Context) (string, error) {
+	return d.dbus.PropertyString(ctx, "Name")
+}
+
 // Alias returns the alias of the bluetooth remote device.
 func (d *Device) Alias(ctx context.Context) (string, error) {
 	return d.dbus.PropertyString(ctx, "Alias")
