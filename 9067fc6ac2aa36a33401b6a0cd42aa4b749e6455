@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7d83915b_af7e5d4e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/e2e_policy_verification.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-08-25T10:21:31Z",
+      "side": 1,
+      "message": "I will address that.",
+      "parentUuid": "0e7b9cac_613cfad1",
+      "range": {
+        "startLine": 43,
+        "startChar": 2,
+        "endLine": 43,
+        "endChar": 9
+      },
+      "revId": "9067fc6ac2aa36a33401b6a0cd42aa4b749e6455",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bfe8c040_673bef28",
         "filename": "src/chromiumos/tast/remote/policyutil/clean_ownership.go",
         "patchSetId": 6
