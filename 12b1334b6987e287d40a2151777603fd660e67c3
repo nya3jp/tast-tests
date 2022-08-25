@@ -114,6 +114,30 @@
       },
       "revId": "12b1334b6987e287d40a2151777603fd660e67c3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac512dc1_0dadd3e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/creation_flow.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-08-25T02:16:18Z",
+      "side": 1,
+      "message": "+1, we can use option 2 as the short-term solution to stabilize the tests and explore the long-term solutions later.\n\nI think it should be a software dependency to check `muted/unmuted` though, since it is done by checking the cras node if I not mistaken.",
+      "parentUuid": "1e44b48f_7596efbe",
+      "range": {
+        "startLine": 57,
+        "startChar": 2,
+        "endLine": 57,
+        "endChar": 8
+      },
+      "revId": "12b1334b6987e287d40a2151777603fd660e67c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
