@@ -45,12 +45,12 @@ func init() {
 			{
 				Name:    "enable_launcher_app_sort",
 				Val:     enableLauncherAppSort,
-				Fixture: "chromeLoggedInWith100FakeAppsProductivityLauncherAppSort",
+				Fixture: "chromeLoggedInWith100FakeAppsAppSort",
 			},
 			{
 				Name:    "disable_launcher_app_sort",
 				Val:     disableLauncherAppSort,
-				Fixture: "chromeLoggedInWith100FakeAppsProductivityLauncher",
+				Fixture: "chromeLoggedInWith100FakeAppsNoAppSort",
 			},
 		},
 	})
@@ -67,7 +67,7 @@ func BubbleLaunchApp(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
 
-	cleanup, err := launcher.SetUpLauncherTest(ctx, tconn, false /*tabletMode*/, true /*productivityLauncher*/, true /*stabilizeAppCount*/)
+	cleanup, err := launcher.SetUpLauncherTest(ctx, tconn, false /*tabletMode*/, true /*stabilizeAppCount*/)
 	if err != nil {
 		s.Fatal("Failed to set up launcher test case: ", err)
 	}

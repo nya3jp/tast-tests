@@ -74,13 +74,13 @@ func CreateAndFillFolder(ctx context.Context, s *testing.State) {
 	testCase := s.Param().(launcher.TestCase)
 	tabletMode := testCase.TabletMode
 
-	cleanup, err := launcher.SetUpLauncherTest(ctx, tconn, tabletMode, true /*productivityLauncher*/, true /*stabilizeAppCount*/)
+	cleanup, err := launcher.SetUpLauncherTest(ctx, tconn, tabletMode, true /*stabilizeAppCount*/)
 	if err != nil {
 		s.Fatal("Failed to set up launcher test case: ", err)
 	}
 	defer cleanup(cleanupCtx)
 
-	if err := launcher.CreateFolder(ctx, tconn, true /*productivityLauncher*/); err != nil {
+	if err := launcher.CreateFolder(ctx, tconn); err != nil {
 		s.Fatal("Failed to create folder app: ", err)
 	}
 

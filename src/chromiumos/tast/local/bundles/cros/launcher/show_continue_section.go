@@ -37,10 +37,10 @@ func init() {
 		Timeout:      3*time.Minute + cws.InstallationTimeout,
 		Params: []testing.Param{{
 			Name: "clamshell_mode",
-			Val:  launcher.TestCase{ProductivityLauncher: true, TabletMode: false},
+			Val:  launcher.TestCase{TabletMode: false},
 		}, {
 			Name:              "tablet_mode",
-			Val:               launcher.TestCase{ProductivityLauncher: true, TabletMode: true},
+			Val:               launcher.TestCase{TabletMode: true},
 			ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		}},
 	})
@@ -69,7 +69,7 @@ func ShowContinueSection(ctx context.Context, s *testing.State) {
 	testCase := s.Param().(launcher.TestCase)
 	tabletMode := testCase.TabletMode
 
-	cleanup, err := launcher.SetUpLauncherTest(ctx, tconn, tabletMode, testCase.ProductivityLauncher, false /*stabilizeAppCount*/)
+	cleanup, err := launcher.SetUpLauncherTest(ctx, tconn, tabletMode, false /*stabilizeAppCount*/)
 	if err != nil {
 		s.Fatal("Failed to set up launcher test case: ", err)
 	}

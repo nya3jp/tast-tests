@@ -171,7 +171,7 @@ func InstallArcAppWithAppListSorted(ctx context.Context, s *testing.State) {
 	// Enter the tablet/clamshell mode depending on the test param.
 	tabletMode := testParam.TabletMode
 
-	cleanup, err := launcher.SetUpLauncherTest(ctx, tconn, tabletMode, true /*productivityLauncher*/, true /*stabilizeAppCount*/)
+	cleanup, err := launcher.SetUpLauncherTest(ctx, tconn, tabletMode, true /*stabilizeAppCount*/)
 	if err != nil {
 		s.Fatal("Failed to set up launcher test case: ", err)
 	}

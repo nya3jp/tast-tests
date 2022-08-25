@@ -56,7 +56,7 @@ func HideContinueSectionTablet(ctx context.Context, s *testing.State) {
 
 	// Set up the launcher test. This enters tablet mode, which will show the
 	// sorting nudge.
-	cleanup, err := launcher.SetUpLauncherTest(ctx, tconn, true /*tabletMode*/, true /*productivityLauncher*/, false /*stabilizeAppCount*/)
+	cleanup, err := launcher.SetUpLauncherTest(ctx, tconn, true /*tabletMode*/, false /*stabilizeAppCount*/)
 	if err != nil {
 		s.Fatal("Failed to set up launcher test case: ", err)
 	}

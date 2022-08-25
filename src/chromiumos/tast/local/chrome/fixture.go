@@ -101,38 +101,15 @@ func init() {
 		TearDownTimeout: ResetTimeout,
 	})
 
+	// TODO(crbug.com/1351225): Move tests from this fixture to chromeLoggedInWith100FakeApps.
+	// This fixture used to force-enable productivity launcher. Several tests seem to use it for
+	// that reason and likely don't depend on app sorting behavior.
 	testing.AddFixture(&testing.Fixture{
-		Name:     "chromeLoggedInWith100FakeAppsDoubleBufferingAndLegacyLauncher",
-		Desc:     "Logged into a user session with 100 fake apps with productivity launcher disabled and double buffer compositing",
-		Contacts: []string{"yjliu@chromium.org", "tbarzic@chromium.org"},
-		Impl: NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]Option, error) {
-			return []Option{DisableFeatures("ProductivityLauncher"), ExtraArgs("--double-buffer-compositing")}, nil
-		}),
-		Parent:          "install100Apps",
-		SetUpTimeout:    LoginTimeout,
-		ResetTimeout:    ResetTimeout,
-		TearDownTimeout: ResetTimeout,
-	})
-
-	testing.AddFixture(&testing.Fixture{
-		Name:     "chromeLoggedInWith100FakeAppsLegacyLauncher",
-		Desc:     "Logged into a user session with 100 fake apps and productivity launcher disabled",
-		Contacts: []string{"tbarzic@chromium.org"},
-		Impl: NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]Option, error) {
-			return []Option{DisableFeatures("ProductivityLauncher")}, nil
-		}),
-		Parent:          "install100Apps",
-		SetUpTimeout:    LoginTimeout,
-		ResetTimeout:    ResetTimeout,
-		TearDownTimeout: ResetTimeout,
-	})
-
-	testing.AddFixture(&testing.Fixture{
-		Name:     "chromeLoggedInWith100FakeAppsProductivityLauncher",
-		Desc:     "Logged into a user session with 100 fake apps and productivity launcher",
+		Name:     "chromeLoggedInWith100FakeAppsNoAppSort",
+		Desc:     "Logged into a user session with 100 fake apps and app sorting disabled",
 		Contacts: []string{"jamescook@chromium.org"},
 		Impl: NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]Option, error) {
-			return []Option{EnableFeatures("ProductivityLauncher"), DisableFeatures("LauncherAppSort")}, nil
+			return []Option{DisableFeatures("LauncherAppSort")}, nil
 		}),
 		Parent:          "install100Apps",
 		SetUpTimeout:    LoginTimeout,
@@ -141,11 +118,11 @@ func init() {
 	})
 
 	testing.AddFixture(&testing.Fixture{
-		Name:     "chromeLoggedInWith100FakeAppsProductivityLauncherAppSort",
-		Desc:     "Logged into a user session with 100 fake apps and productivity launcher",
+		Name:     "chromeLoggedInWith100FakeAppsAppSort",
+		Desc:     "Logged into a user session with 100 fake apps and app sorting enabled",
 		Contacts: []string{"andrewxu@chromium.org"},
 		Impl: NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]Option, error) {
-			return []Option{EnableFeatures("ProductivityLauncher", "LauncherAppSort")}, nil
+			return []Option{EnableFeatures("LauncherAppSort")}, nil
 		}),
 		Parent:          "install100Apps",
 		SetUpTimeout:    LoginTimeout,
@@ -167,62 +144,12 @@ func init() {
 	})
 
 	testing.AddFixture(&testing.Fixture{
-		Name:     "chromeLoggedInWithLegacyLauncher",
-		Desc:     "Logged into a user session with productivity launcher disabled",
-		Contacts: []string{"tbarzic@chromium.org"},
-		Impl: NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]Option, error) {
-			return []Option{DisableFeatures("ProductivityLauncher")}, nil
-		}),
-		SetUpTimeout:    LoginTimeout,
-		ResetTimeout:    ResetTimeout,
-		TearDownTimeout: ResetTimeout,
-	})
-
-	testing.AddFixture(&testing.Fixture{
-		Name:     "chromeLoggedInWithProductivityLauncher",
-		Desc:     "Logged into a user session with productivity launcher enabled",
-		Contacts: []string{"yulunwu@chromium.org"},
-		Impl: NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]Option, error) {
-			return []Option{EnableFeatures("ProductivityLauncher")}, nil
-		}),
-		SetUpTimeout:    LoginTimeout,
-		ResetTimeout:    ResetTimeout,
-		TearDownTimeout: ResetTimeout,
-	})
-
-	testing.AddFixture(&testing.Fixture{
-		Name:     "chromeLoggedWithGaia",
+		Name:     "chromeLoggedInWithGaia",
 		Desc:     "Logged into a session with Gaia user",
 		Contacts: []string{"jinrongwu@google.com"},
 		Vars:     []string{"ui.gaiaPoolDefault"},
 		Impl: NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]Option, error) {
 			return []Option{GAIALoginPool(s.RequiredVar("ui.gaiaPoolDefault"))}, nil
-		}),
-		SetUpTimeout:    LoginTimeout,
-		ResetTimeout:    ResetTimeout,
-		TearDownTimeout: ResetTimeout,
-	})
-
-	testing.AddFixture(&testing.Fixture{
-		Name:     "chromeLoggedInWithGaiaLegacyLauncher",
-		Desc:     "Logged into a session with Gaia user where productivity launcher is disabled",
-		Contacts: []string{"tbarzic@google.com"},
-		Vars:     []string{"ui.gaiaPoolDefault"},
-		Impl: NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]Option, error) {
-			return []Option{GAIALoginPool(s.RequiredVar("ui.gaiaPoolDefault")), DisableFeatures("ProductivityLauncher")}, nil
-		}),
-		SetUpTimeout:    LoginTimeout,
-		ResetTimeout:    ResetTimeout,
-		TearDownTimeout: ResetTimeout,
-	})
-
-	testing.AddFixture(&testing.Fixture{
-		Name:     "chromeLoggedInWithGaiaProductivityLauncher",
-		Desc:     "Logged into a session with Gaia user where productivity launcher is enabled",
-		Contacts: []string{"tbarzic@google.com"},
-		Vars:     []string{"ui.gaiaPoolDefault"},
-		Impl: NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]Option, error) {
-			return []Option{GAIALoginPool(s.RequiredVar("ui.gaiaPoolDefault")), EnableFeatures("ProductivityLauncher")}, nil
 		}),
 		SetUpTimeout:    LoginTimeout,
 		ResetTimeout:    ResetTimeout,

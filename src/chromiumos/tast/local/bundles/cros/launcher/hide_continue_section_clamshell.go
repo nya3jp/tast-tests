@@ -59,7 +59,7 @@ func HideContinueSectionClamshell(ctx context.Context, s *testing.State) {
 	defer cleanupFiles()
 
 	// Bubble launcher requires clamshell mode.
-	cleanup, err := launcher.SetUpLauncherTest(ctx, tconn, false /*tabletMode*/, true /*productivityLauncher*/, false /*stabilizeAppCount*/)
+	cleanup, err := launcher.SetUpLauncherTest(ctx, tconn, false /*tabletMode*/, false /*stabilizeAppCount*/)
 	if err != nil {
 		s.Fatal("Failed to set up launcher test case: ", err)
 	}

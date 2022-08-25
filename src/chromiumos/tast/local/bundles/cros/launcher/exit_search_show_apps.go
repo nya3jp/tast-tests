@@ -33,11 +33,11 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{
 			Name:    "clamshell_mode",
-			Fixture: "chromeLoggedInWithProductivityLauncher",
+			Fixture: "chromeLoggedIn",
 			Val:     launcher.TestCase{TabletMode: false},
 		}, {
 			Name:              "tablet_mode",
-			Fixture:           "chromeLoggedInWithProductivityLauncher",
+			Fixture:           "chromeLoggedIn",
 			Val:               launcher.TestCase{TabletMode: true},
 			ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		}},
@@ -72,7 +72,7 @@ func ExitSearchShowApps(ctx context.Context, s *testing.State) {
 	testCase := s.Param().(launcher.TestCase)
 	tabletMode := testCase.TabletMode
 
-	cleanup, err := launcher.SetUpLauncherTest(ctx, tconn, tabletMode, true /*productivityLauncher*/, false /*stabilizeAppCount*/)
+	cleanup, err := launcher.SetUpLauncherTest(ctx, tconn, tabletMode, false /*stabilizeAppCount*/)
 	if err != nil {
 		s.Fatal("Failed to set up launcher test case: ", err)
 	}

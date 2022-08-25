@@ -36,7 +36,7 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		// GAIA is required to install an app from Chrome Webstore.
-		Fixture: "chromeLoggedWithGaia",
+		Fixture: "chromeLoggedInWithGaia",
 	})
 }
 

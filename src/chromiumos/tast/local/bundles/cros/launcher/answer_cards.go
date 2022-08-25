@@ -32,13 +32,13 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{
 			Name:    "productivity_launcher_clamshell_mode",
-			Fixture: "chromeLoggedInWithProductivityLauncher",
+			Fixture: "chromeLoggedIn",
 			Val:     launcher.TestCase{TabletMode: false},
 		},
 		/* Disabled due to <1% pass rate over 30 days. See b/241943050
 		{
 			Name:              "productivity_launcher_tablet_mode",
-			Fixture:           "chromeLoggedInWithProductivityLauncher",
+			Fixture:           "chromeLoggedIn",
 			Val:               launcher.TestCase{TabletMode: true},
 			ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		}
@@ -74,7 +74,7 @@ func AnswerCards(ctx context.Context, s *testing.State) {
 	testCase := s.Param().(launcher.TestCase)
 	tabletMode := testCase.TabletMode
 
-	cleanup, err := launcher.SetUpLauncherTest(ctx, tconn, tabletMode, true /*productivityLauncher*/, false /*stabilizeAppCount*/)
+	cleanup, err := launcher.SetUpLauncherTest(ctx, tconn, tabletMode, false /*stabilizeAppCount*/)
 	if err != nil {
 		s.Fatal("Failed to set up launcher test case: ", err)
 	}

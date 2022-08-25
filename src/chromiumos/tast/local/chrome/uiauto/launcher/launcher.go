@@ -71,10 +71,9 @@ var SearchResultListLabelFinder = nodewith.ClassName("Label")
 var ReorderEducationNudgeFinder = nodewith.ClassName("Label").Name("Sort your apps by name or color")
 
 // TestCase describes modes in which the launcher UI can be shown, and by which launcher test should generally be parameterized.
-// TODO(crbug.com/1351225): Remove this when all legacy launcher tests are removed.
+// Use a struct because it makes the individual test cases more readable.
 type TestCase struct {
-	ProductivityLauncher bool // Whether productivity launcher feature should be enabled
-	TabletMode           bool // Whether the test runs in tablet mode
+	TabletMode bool // Whether the test runs in tablet mode
 }
 
 // SortType Indicates the order that the launcher is sorted with.
@@ -137,8 +136,6 @@ func WaitForCategorizedResult(tconn *chrome.TestConn, category, result string) u
 // mode state, and open the launcher.
 // tabletMode indicates whether the test uses tablet mode or clamshell mode
 // launcher.
-// productivityLauncher indicates whether the test uses productivity launcher,
-// i.e. whether ProductivityLauncher feature is enabled.
 // stabilizeAppCount indicates whether setup should wait for the number of
 // apps shown in the launcher to stabilize (and for default system apps to
 // finish installing). This can be skipped by tests that don't interact with app
@@ -154,10 +151,7 @@ func WaitForCategorizedResult(tconn *chrome.TestConn, category, result string) u
 //		s.Fatal("Test setup failed: ", err)
 //	}
 //	defer cleanup(ctx)
-//
-// TODO(crbug.com/1351225): Remove argument productivityLauncher when all
-// legacy launcher tests are removed.
-func SetUpLauncherTest(ctx context.Context, tconn *chrome.TestConn, tabletMode, productivityLauncher, stabilizeAppCount bool) (func(ctx context.Context), error) {
+func SetUpLauncherTest(ctx context.Context, tconn *chrome.TestConn, tabletMode, stabilizeAppCount bool) (func(ctx context.Context), error) {
 	cleanupTabletMode, err := ash.EnsureTabletModeEnabled(ctx, tconn, tabletMode)
 	if err != nil {
 		return nil, errors.Wrapf(err, "failed to ensure tablet mode state %t", tabletMode)
@@ -171,16 +165,9 @@ func SetUpLauncherTest(ctx context.Context, tconn *chrome.TestConn, tabletMode, 
 		}
 	}
 
-	if productivityLauncher {
-		if err := OpenProductivityLauncher(ctx, tconn, tabletMode); err != nil {
-			cleanupTabletMode(ctx)
-			return nil, errors.Wrap(err, "failed to open bubble launcher")
-		}
-	} else {
-		if err := OpenExpandedView(tconn)(ctx); err != nil {
-			cleanupTabletMode(ctx)
-			return nil, errors.Wrap(err, "failed to open Expanded Application list view")
-		}
+	if err := OpenProductivityLauncher(ctx, tconn, tabletMode); err != nil {
+		cleanupTabletMode(ctx)
+		return nil, errors.Wrap(err, "failed to open bubble launcher")
 	}
 
 	// Function that presses the Escape key twice to ensure that the
@@ -202,7 +189,7 @@ func SetUpLauncherTest(ctx context.Context, tconn *chrome.TestConn, tabletMode, 
 			return errors.Wrapf(err, "failed to send %d for the second time", input.KEY_ESC)
 		}
 
-		if productivityLauncher && !tabletMode {
+		if !tabletMode {
 			ui := uiauto.New(tconn)
 			if err := ui.WaitUntilGone(nodewith.ClassName(BubbleAppsGridViewClass))(ctx); err != nil {
 				return errors.Wrap(err, "Bubble launcher faild to close")
@@ -745,8 +732,7 @@ func CloseFolderView(ctx context.Context, tconn *chrome.TestConn) error {
 
 // CreateFolder is a helper function to create a folder by dragging the first non-folder item on top of the second non-folder item.
 // folderOpensOnCreation indicates whether the folder view expected to get opened after creation (with no extra user input).
-// TODO(crbug.com/1351225): Remove "folderOpensOnCreation" when all legacy launcher tests are removed, as the parameter will always be true.
-func CreateFolder(ctx context.Context, tconn *chrome.TestConn, folderOpensOnCreation bool) error {
+func CreateFolder(ctx context.Context, tconn *chrome.TestConn) error {
 	// When productivity launcher is enabled, first row of items in the app list will be recent apps, which are not draggable, and cannot
 	// be used for tests that create folder.
 	precedingRecentApps, err := FirstNonRecentAppItem(ctx, tconn)
@@ -789,11 +775,9 @@ func CreateFolder(ctx context.Context, tconn *chrome.TestConn, folderOpensOnCrea
 		return errors.Wrap(err, "failed to drag icon over another icon")
 	}
 
-	// If folders get opened automatically on creation by user gesture, as it's case with productivity launcher feature, close the folder view.
-	if folderOpensOnCreation {
-		if err := CloseFolderView(ctx, tconn); err != nil {
-			return errors.Wrap(err, "failed to close the folder")
-		}
+	// Folders get opened automatically on creation by user gesture, so close the folder view.
+	if err := CloseFolderView(ctx, tconn); err != nil {
+		return errors.Wrap(err, "failed to close the folder")
 	}
 
 	// Make sure the folder items was added to the apps grid.

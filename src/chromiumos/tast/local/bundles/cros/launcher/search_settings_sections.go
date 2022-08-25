@@ -109,7 +109,7 @@ func init() {
 		},
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome"},
-		Fixture:      "chromeLoggedInWithProductivityLauncher",
+		Fixture:      "chromeLoggedIn",
 		Params: []testing.Param{{
 			Name:      "clamshel_mode",
 			ExtraAttr: []string{"informational"},
@@ -150,7 +150,7 @@ func SearchSettingsSections(ctx context.Context, s *testing.State) {
 	defer kb.Close()
 
 	testParams := s.Param().(searchSettingsVals)
-	cleanup, err := launcher.SetUpLauncherTest(ctx, tconn, testParams.tabletMode, true /*productivityLauncher*/, false /*stabilizeAppCount*/)
+	cleanup, err := launcher.SetUpLauncherTest(ctx, tconn, testParams.tabletMode, false /*stabilizeAppCount*/)
 	if err != nil {
 		s.Fatal("Failed to set up launcher test case: ", err)
 	}

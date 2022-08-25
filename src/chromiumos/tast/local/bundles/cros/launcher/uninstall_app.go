@@ -70,7 +70,7 @@ func init() {
 						URL:  "https://chrome.google.com/webstore/detail/wicked-good-unarchiver/mljpablpddhocfbnokacjggdbmafjnon",
 					},
 				},
-				Fixture: "chromeLoggedInWithGaiaProductivityLauncher",
+				Fixture: "chromeLoggedInWithGaia",
 			},
 			{
 				Name: "cws_tablet",
@@ -84,7 +84,7 @@ func init() {
 						URL:  "https://chrome.google.com/webstore/detail/wicked-good-unarchiver/mljpablpddhocfbnokacjggdbmafjnon",
 					},
 				},
-				Fixture: "chromeLoggedInWithGaiaProductivityLauncher",
+				Fixture: "chromeLoggedInWithGaia",
 			},
 			{
 				Name: "arc",
@@ -147,7 +147,7 @@ func UninstallApp(ctx context.Context, s *testing.State) {
 	defer uninstall(cleanupCtx, cr, tconn, app)
 	defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "uninstall_app_from_launcher")
 
-	cleanup, err := launcher.SetUpLauncherTest(ctx, tconn, app.isTabletMode, true /*productivityLauncher*/, true /*stabilizeAppCount*/)
+	cleanup, err := launcher.SetUpLauncherTest(ctx, tconn, app.isTabletMode, true /*stabilizeAppCount*/)
 	if err != nil {
 		s.Fatal("Failed to set up launcher test case: ", err)
 	}

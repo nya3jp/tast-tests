@@ -37,11 +37,11 @@ func init() {
 		Params: []testing.Param{{
 			Name:    "productivity_launcher_clamshell_mode",
 			Val:     launcher.TestCase{TabletMode: false},
-			Fixture: "chromeLoggedInWith100FakeAppsProductivityLauncher",
+			Fixture: "chromeLoggedInWith100FakeAppsNoAppSort",
 		}, {
 			Name:    "productivity_launcher_tablet_mode",
 			Val:     launcher.TestCase{TabletMode: true},
-			Fixture: "chromeLoggedInWith100FakeAppsProductivityLauncher",
+			Fixture: "chromeLoggedInWith100FakeAppsNoAppSort",
 		}},
 	})
 }
@@ -63,7 +63,7 @@ func AppDragAndDrop(ctx context.Context, s *testing.State) {
 	tabletMode := testCase.TabletMode
 
 	cleanup, err := launcher.SetUpLauncherTest(
-		ctx, tconn, tabletMode, true /*productivityLauncher*/, true /*stabilizeAppCount*/)
+		ctx, tconn, tabletMode, true /*stabilizeAppCount*/)
 	if err != nil {
 		s.Fatal("Failed to set up launcher test case: ", err)
 	}

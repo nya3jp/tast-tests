@@ -45,11 +45,11 @@ func init() {
 		Params: []testing.Param{{
 			Name:    "clamshell_mode",
 			Val:     launcher.TestCase{TabletMode: false},
-			Fixture: "chromeLoggedInWithProductivityLauncher",
+			Fixture: "chromeLoggedIn",
 		}, {
 			Name:              "tablet_mode",
 			Val:               launcher.TestCase{TabletMode: true},
-			Fixture:           "chromeLoggedInWithProductivityLauncher",
+			Fixture:           "chromeLoggedIn",
 			ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		}},
 	})
@@ -71,7 +71,7 @@ func RemoveContinueSectionTask(ctx context.Context, s *testing.State) {
 	testCase := s.Param().(launcher.TestCase)
 	tabletMode := testCase.TabletMode
 
-	cleanup, err := launcher.SetUpLauncherTest(ctx, tconn, tabletMode, true /*productivityLauncher*/, false /*stabilizeAppCount*/)
+	cleanup, err := launcher.SetUpLauncherTest(ctx, tconn, tabletMode, false /*stabilizeAppCount*/)
 	defer cleanup(cleanupCtx)
 	if err != nil {
 		s.Fatal("Failed to set up launcher test case: ", err)
