@@ -86,8 +86,9 @@ func (y *YtWeb) OpenAndPlayVideo(ctx context.Context) (err error) {
 		y.ui.WithTimeout(shortUITimeout).WaitUntilExists(stayInChrome),
 		func(ctx context.Context) error {
 			testing.ContextLog(ctx, "dialog popped up and asked whether to switch to YouTube app")
-			rememberMyChoice := nodewith.Name("Remember my choice").Role(role.CheckBox)
-			if err := y.uiHdl.Click(rememberMyChoice)(ctx); err != nil {
+			rememberReg := regexp.MustCompile("Remember (my|this) choice")
+			rememberChoice := nodewith.NameRegex(rememberReg).Role(role.CheckBox)
+			if err := y.uiHdl.Click(rememberChoice)(ctx); err != nil {
 				return err
 			}
 			if err := y.uiHdl.Click(stayInChrome)(ctx); err != nil {
