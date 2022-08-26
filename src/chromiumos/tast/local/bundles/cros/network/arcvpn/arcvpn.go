@@ -36,7 +36,7 @@ func SetUpHostVPN(ctx, cleanupCtx context.Context) (*vpn.Connection, func() erro
 	// For example, vpn.AuthTypeCert VPNs will log the user out while trying to prep the cert
 	// store.
 	config := vpn.Config{
-		Type:     vpn.TypeL2TPIPsecSwanctl,
+		Type:     vpn.TypeL2TPIPsec,
 		AuthType: vpn.AuthTypePSK,
 	}
 	return SetUpHostVPNWithConfig(ctx, cleanupCtx, config)
