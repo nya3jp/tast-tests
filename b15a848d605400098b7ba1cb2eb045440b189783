@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7872490e_2afe4d8b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/image_paste.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-08-26T18:47:32Z",
+      "side": 1,
+      "message": "```\nbt :\u003d s.Param().(browser.Type)\nswitch bt {\ncase browser.TypeLacros:\n\topts \u003d append(opts, chrome.LacrosUnpackedExtension(extDir))\ncase browser.TypeAsh:\n\topts \u003d append(tops, chrome.UnpackedExtension(extDir))\n}\n```",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 86,
+        "endChar": 0
+      },
+      "revId": "b15a848d605400098b7ba1cb2eb045440b189783",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51f83d20_085e64d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/image_paste.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-08-26T18:47:32Z",
+      "side": 1,
+      "message": "clarification: is this line where it opens a browser window for the first time? `cr` or `tconn` won\u0027t be used until it reaches this point?\nIf yes, L87-89, L119-123, L130 could be merged to using `browserfixt.SetUpWithURL()`",
+      "range": {
+        "startLine": 130,
+        "startChar": 0,
+        "endLine": 130,
+        "endChar": 68
+      },
+      "revId": "b15a848d605400098b7ba1cb2eb045440b189783",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
