@@ -16,6 +16,23 @@
       "message": "Done. Already sync.\nAnd also fix repo problems locally.\nFor now, this CL is ready for review.\nPlease have a look, thanks.\n\n",
       "revId": "263b5344eebb022757a7786b9bd9e5d2729722bd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47b9c414_78654c84",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/dock4_usb_audio.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1545012
+      },
+      "writtenOn": "2022-08-26T16:17:53Z",
+      "side": 1,
+      "message": "Why does numbering start with 4 here?",
+      "revId": "263b5344eebb022757a7786b9bd9e5d2729722bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
