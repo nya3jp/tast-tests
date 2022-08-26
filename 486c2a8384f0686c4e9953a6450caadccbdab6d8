@@ -1,0 +1,74 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3fc63e3a_b608c536",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-26T16:57:23Z",
+      "side": 1,
+      "message": "nit: `power`",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 10
+      },
+      "revId": "486c2a8384f0686c4e9953a6450caadccbdab6d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37750ea8_15916e56",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-26T16:57:23Z",
+      "side": 1,
+      "message": "\u003e \"somtimes\" is a possible misspelling of \"sometimes\".\n\nPlease fix.",
+      "parentUuid": "d993b082_0a58fa03",
+      "range": {
+        "startLine": 9,
+        "startChar": 37,
+        "endLine": 9,
+        "endChar": 45
+      },
+      "revId": "486c2a8384f0686c4e9953a6450caadccbdab6d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3492277c_b82b6b1b",
+        "filename": "src/chromiumos/tast/local/power/sysfs_battery_metrics.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-26T16:57:23Z",
+      "side": 1,
+      "message": "This should be:\n\t\t\ttesting.ContextLog(ctx, \"Failed to read system power: \", err)",
+      "range": {
+        "startLine": 275,
+        "startChar": 0,
+        "endLine": 275,
+        "endChar": 67
+      },
+      "revId": "486c2a8384f0686c4e9953a6450caadccbdab6d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
