@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cff2259a_d9873019",
+        "filename": "src/chromiumos/tast/local/audio/board_config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1512777
+      },
+      "writtenOn": "2022-08-26T10:02:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "960c2a07_3fd7cd6f",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 44
+      },
+      "revId": "8539e05b7e715bd536a3b761459ca40754e753bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "71b4d481_692eef7d",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-08-26T07:31:27Z",
       "side": 1,
       "message": "nit: please use full sentences: `No cras config, return empty config.`\nSame for below.",
+      "range": {
+        "startLine": 54,
+        "startChar": 6,
+        "endLine": 54,
+        "endChar": 41
+      },
+      "revId": "8539e05b7e715bd536a3b761459ca40754e753bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa5b238d_afb50bb1",
+        "filename": "src/chromiumos/tast/local/audio/board_config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1512777
+      },
+      "writtenOn": "2022-08-26T10:02:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "71b4d481_692eef7d",
       "range": {
         "startLine": 54,
         "startChar": 6,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "25982b24_2212f887",
+        "filename": "src/chromiumos/tast/local/audio/board_config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1512777
+      },
+      "writtenOn": "2022-08-26T10:02:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f7586b12_cdc4d35f",
+      "range": {
+        "startLine": 61,
+        "startChar": 1,
+        "endLine": 61,
+        "endChar": 2
+      },
+      "revId": "8539e05b7e715bd536a3b761459ca40754e753bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d8a1bf3e_c2b254ee",
@@ -110,6 +182,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ec9953a_f154cfef",
+        "filename": "src/chromiumos/tast/local/audio/board_config_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1512777
+      },
+      "writtenOn": "2022-08-26T10:02:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d8a1bf3e_c2b254ee",
+      "range": {
+        "startLine": 34,
+        "startChar": 21,
+        "endLine": 34,
+        "endChar": 25
+      },
+      "revId": "8539e05b7e715bd536a3b761459ca40754e753bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9f87aa0b_9f184d8f",
@@ -123,6 +219,30 @@
       "writtenOn": "2022-08-26T07:31:27Z",
       "side": 1,
       "message": "What do you think about creating a new function, something like `boardConfig.UCMNameFromCardName()` instead?",
+      "range": {
+        "startLine": 153,
+        "startChar": 2,
+        "endLine": 156,
+        "endChar": 3
+      },
+      "revId": "8539e05b7e715bd536a3b761459ca40754e753bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c55e7a2_311ddb99",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/ucm_sequences.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1512777
+      },
+      "writtenOn": "2022-08-26T10:02:01Z",
+      "side": 1,
+      "message": "I\u0027m not too sure about this. There\u0027s no corresponding function in CRAS and we might change how the name is computed in the future, making it less revolved around `boardConfig`.\n\nI\u0027d defer this until we\u0027re computing the UCM names in multiple tests.",
+      "parentUuid": "9f87aa0b_9f184d8f",
       "range": {
         "startLine": 153,
         "startChar": 2,
