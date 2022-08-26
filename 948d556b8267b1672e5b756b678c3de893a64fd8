@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3387e5cb_7289d736",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-08-26T11:36:54Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "948d556b8267b1672e5b756b678c3de893a64fd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5011d0d4_15fb277d",
+        "filename": "src/chromiumos/tast/local/policyutil/settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-08-26T11:36:54Z",
+      "side": 1,
+      "message": "Please use DoDefault instead of LeftClick wherever possible as it is more stable.",
+      "range": {
+        "startLine": 196,
+        "startChar": 14,
+        "endLine": 196,
+        "endChar": 23
+      },
+      "revId": "948d556b8267b1672e5b756b678c3de893a64fd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
