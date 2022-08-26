@@ -22,7 +22,6 @@ func init() {
 			"chromeos-cellular-team@google.com",
 		},
 		Attr:         []string{"group:cellular", "cellular_callbox"},
-		ServiceDeps:  []string{"tast.cros.example.ChromeService"},
 		SoftwareDeps: []string{"chrome"},
 		Fixture:      "callboxManagedFixture",
 		Timeout:      5 * time.Minute,
@@ -34,7 +33,7 @@ func AssertCellularData(ctx context.Context, s *testing.State) {
 	cellularInterface := "rmnet_data0"
 	dutConn := s.DUT().Conn()
 	tf := s.FixtValue().(*manager.TestFixture)
-	tf.ConnectToCallbox(ctx, s, dutConn, &manager.ConfigureCallboxRequestBody{
+	if err := tf.ConnectToCallbox(ctx, dutConn, &manager.ConfigureCallboxRequestBody{
 		Hardware:     "CMW",
 		CellularType: "LTE",
 		ParameterList: []string{
@@ -45,7 +44,9 @@ func AssertCellularData(ctx context.Context, s *testing.State) {
 			"pul", "0",
 			"pdl", "high",
 		},
-	}, cellularInterface)
+	}, cellularInterface); err != nil {
+		s.Fatal("Failed to initialize cellular connection: ", err)
+	}
 
 	// Assert cellular connection on DUT can connect to a URL like ethernet can
 	ethernetResult, err := dutConn.CommandContext(ctx, "curl", "--interface", "eth0", testURL).Output()

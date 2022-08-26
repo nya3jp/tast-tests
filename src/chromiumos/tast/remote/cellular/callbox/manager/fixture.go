@@ -11,17 +11,18 @@ import (
 
 	"github.com/golang/protobuf/ptypes/empty"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/exec"
 	"chromiumos/tast/rpc"
-	"chromiumos/tast/services/cros/example"
+	"chromiumos/tast/services/cros/ui"
 	"chromiumos/tast/ssh"
 	"chromiumos/tast/testing"
 )
 
 // Timeout for methods of Tast fixture.
 const (
-	setUpTimeout    = 1 * time.Minute
-	tearDownTimeout = 10 * time.Second
+	setUpTimeout    = 3 * time.Minute
+	tearDownTimeout = 3 * time.Minute
 	resetTimeout    = 1 * time.Second
 	postTestTimeout = 1 * time.Second
 )
@@ -38,7 +39,7 @@ func init() {
 		ResetTimeout:    resetTimeout,
 		PostTestTimeout: postTestTimeout,
 		TearDownTimeout: tearDownTimeout,
-		ServiceDeps:     []string{},
+		ServiceDeps:     []string{"tast.cros.browser.ChromeService"},
 		Vars:            []string{"callboxManager", "callbox"},
 	})
 }
@@ -46,6 +47,8 @@ func init() {
 // TestFixture is the test fixture used for callboxManagedFixture fixtures.
 type TestFixture struct {
 	fcm                  *forwardedCallboxManager
+	rpcClient            *rpc.Client
+	ChromeServiceClient  ui.ChromeServiceClient
 	CallboxManagerClient *CallboxManagerClient
 	Vars                 fixtureVars
 }
@@ -101,77 +104,68 @@ func (tf *TestFixture) SetUp(ctx context.Context, s *testing.FixtState) interfac
 		}
 	}
 
+	cl, err := rpc.Dial(ctx, s.DUT(), s.RPCHint())
+	if err != nil {
+		s.Fatal("Failed to connect to the RPC service on the DUT: ", err)
+	}
+	tf.rpcClient = cl
+
+	tf.ChromeServiceClient = ui.NewChromeServiceClient(cl.Conn)
+	if _, err := tf.ChromeServiceClient.New(ctx, &ui.NewRequest{}); err != nil {
+		s.Fatal("Failed to start Chrome: ", err)
+	}
+
 	return tf
 }
 
 // ConnectToCallbox function handles initial test setup and wraps parameters.
-// TODO(b/242218149): Refactor this to not use testing.State as a parameter.
-func (tf *TestFixture) ConnectToCallbox(ctx context.Context, s *testing.State, dutConn *ssh.Conn, configureRequestBody *ConfigureCallboxRequestBody, cellularInterface string) interface{} {
-	// Connect to the gRPC server on the DUT.
-	ctxForCleanupcl := ctx
-	cl, err := rpc.Dial(ctxForCleanupcl, s.DUT(), s.RPCHint())
-	if err != nil {
-		s.Fatal("Failed to connect to the RPC service on the DUT: ", err)
-	}
-	defer cl.Close(ctxForCleanupcl)
-
-	ctxForCleanupcr := ctx
-	cr := example.NewChromeServiceClient(cl.Conn)
-
-	if _, err := cr.New(ctxForCleanupcr, &empty.Empty{}); err != nil {
-		s.Fatal("Failed to start Chrome: ", err)
-	}
-	defer cr.Close(ctxForCleanupcr, &empty.Empty{})
-
-	const expr = "chrome.i18n.getUILanguage()"
-	req := &example.EvalOnTestAPIConnRequest{Expr: expr}
-	res, err := cr.EvalOnTestAPIConn(ctx, req)
-	if err != nil {
-		s.Fatalf("Failed to eval %s: %v, %s", expr, err, res.ValueJson)
-	}
-
+func (tf *TestFixture) ConnectToCallbox(ctx context.Context, dutConn *ssh.Conn, configureRequestBody *ConfigureCallboxRequestBody, cellularInterface string) error {
 	// Disable and then re-enable cellular on DUT.
 	if err := dutConn.CommandContext(ctx, "dbus-send", "--system", "--fixed", "--print-reply", "--dest=org.chromium.flimflam", "/", "org.chromium.flimflam.Manager.DisableTechnology", "string:cellular").Run(exec.DumpLogOnError); err != nil {
-		s.Fatal("Failed to disable DUT cellular: ", err)
+		return errors.Wrap(err, "failed to disable DUT cellular")
 	}
 
 	// Preform callbox simulation.
 	if err := tf.CallboxManagerClient.ConfigureCallbox(ctx, configureRequestBody); err != nil {
-		s.Fatal("Failed to configure callbox: ", err)
+		return errors.Wrap(err, "failed to configure callbox")
 	}
 
 	// Allow for cellular simulation to start before turning on mobile data.
+	errCh := make(chan error, 1)
 	var wg sync.WaitGroup
 	wg.Add(1)
 	go func() {
 		defer wg.Done()
 		if err := tf.CallboxManagerClient.BeginSimulation(ctx, nil); err != nil {
-			s.Fatal("Failed to begin callbox simulation: ", err)
+			errCh <- errors.Wrap(err, "failed to begin callbox simulation")
 		}
 	}()
 	// TODO(b/229419538): Add functionality to callbox libraries to pull state
 	testing.Sleep(ctx, time.Second*10)
 	// Turn on mobile data to force a connection.
 	if err := dutConn.CommandContext(ctx, "dbus-send", "--system", "--fixed", "--print-reply", "--dest=org.chromium.flimflam", "/", "org.chromium.flimflam.Manager.EnableTechnology", "string:cellular").Run(exec.DumpLogOnError); err != nil {
-		s.Fatal("Failed to enable DUT cellular: ", err)
+		return errors.Wrap(err, "failed to enable DUT cellular")
 	}
 	// Required due to bug using esim as primary, see b/229421807.
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		return dutConn.CommandContext(ctx, "mmcli", "-m", "any", "--set-primary-sim-slot=2").Run(exec.DumpLogOnError)
 	}, &testing.PollOptions{Interval: time.Second * 5, Timeout: time.Second * 15}); err != nil {
-		s.Fatal("Failed to switch primary sim: ", err)
+		return errors.Wrap(err, "failed to switch primary sim")
 	}
 
 	wg.Wait()
+	close(errCh)
+	if len(errCh) > 0 {
+		return <-errCh
+	}
 
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		_, err := dutConn.CommandContext(ctx, "curl", "--interface", cellularInterface, "google.com").Output()
 		return err
 	}, &testing.PollOptions{Interval: time.Second * 10, Timeout: time.Second * 200}); err != nil {
-		s.Fatalf("Failed curl %q on DUT using cellular interface: %v", "google.com", err)
+		return errors.Wrapf(err, "failed to curl  %q on DUT using cellular interface", "google.com")
 	}
-
-	return tf
+	return nil
 }
 
 var callboxManagerByCallboxLookup = map[string]string{
@@ -203,11 +197,19 @@ func (tf TestFixture) PostTest(ctx context.Context, s *testing.FixtTestState) {
 
 }
 
-// TearDown shuts down the tunnel to the CallboxManager if one was created.
+// TearDown releases resources held open by the test fixture.
 func (tf *TestFixture) TearDown(ctx context.Context, s *testing.FixtState) {
 	if tf.fcm != nil {
 		if err := tf.fcm.Close(ctx); err != nil {
-			s.Fatal("Failed to close tunnel to CallboxManager during tear down: ", err)
+			s.Error("Failed to close tunnel to CallboxManager: ", err)
 		}
+	}
+
+	if _, err := tf.ChromeServiceClient.Close(ctx, &empty.Empty{}); err != nil {
+		s.Error("Failed to close Chrome: ", err)
+	}
+
+	if err := tf.rpcClient.Close(ctx); err != nil {
+		s.Error("Failed to close DUT RPC client: ", err)
 	}
 }
