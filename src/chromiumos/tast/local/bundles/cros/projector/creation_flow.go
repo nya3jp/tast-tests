@@ -7,6 +7,8 @@ package projector
 
 import (
 	"context"
+	"os"
+	"path/filepath"
 	"regexp"
 	"time"
 
@@ -20,6 +22,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/launcher"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/local/drivefs"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -33,7 +36,6 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "ondevice_speech"},
 		HardwareDeps: hwdep.D(hwdep.Microphone()),
-		Timeout:      10 * time.Minute,
 		Fixture:      "projectorLogin",
 	})
 }
@@ -44,6 +46,12 @@ func CreationFlow(ctx context.Context, s *testing.State) {
 	defer cancel()
 
 	tconn := s.FixtValue().(*projector.FixtData).TestConn
+	cr := s.FixtValue().(*projector.FixtData).Chrome
+	driveFsClient, err := drivefs.NewDriveFs(ctx, cr.NormalizedUser())
+	if err != nil {
+		s.Fatal("Failed waiting for DriveFS to start: ", err)
+	}
+	s.Log("Drivefs fully started")
 
 	defer faillog.DumpUITreeOnError(ctxForCleanUp, s.OutDir(), s.HasError, tconn)
 
@@ -114,6 +122,18 @@ func CreationFlow(ctx context.Context, s *testing.State) {
 		ui.LeftClickUntil(closeTutorialsButton, ui.Gone(tutorialsText)),
 	)(ctx); err != nil {
 		s.Fatal("Failed to go through the new screencast creation flow: ", err)
+	}
+
+	// Verifies Screencast saved to right location.
+	screencastTitle := nodewith.Role(role.StaticText).Ancestor(nodewith.ClassName("screencast-title").Ancestor(screencastItem))
+	info, err := ui.Info(ctx, screencastTitle)
+	if err != nil {
+		s.Fatal("Fail to get screencast tiltle info: ", err)
+	}
+
+	testFilePath := driveFsClient.MyDrivePath(filepath.Join("Screencast recordings", info.Name))
+	if _, err := os.Stat(testFilePath); err != nil {
+		s.Fatal("Failed to locate screencast in default folder: ", err)
 	}
 }
 
