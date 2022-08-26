@@ -39,6 +39,30 @@
       },
       "revId": "948d556b8267b1672e5b756b678c3de893a64fd8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd92aedf_b319c5e5",
+        "filename": "src/chromiumos/tast/local/policyutil/settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1357438
+      },
+      "writtenOn": "2022-08-26T12:00:17Z",
+      "side": 1,
+      "message": "Replaced where it still worked.\nWhat I find quite unfortunate about DoDefault is that it doesn\u0027t work on about 10% of the UI elements. So you\u0027re kind of forced to develop with LeftClick and then experimentally find out which of them can be replaced.",
+      "parentUuid": "5011d0d4_15fb277d",
+      "range": {
+        "startLine": 196,
+        "startChar": 14,
+        "endLine": 196,
+        "endChar": 23
+      },
+      "revId": "948d556b8267b1672e5b756b678c3de893a64fd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
