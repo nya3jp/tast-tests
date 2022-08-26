@@ -11,6 +11,7 @@ import (
 	"github.com/shirou/gopsutil/v3/process"
 
 	"chromiumos/tast/common/fixture"
+	"chromiumos/tast/common/pci"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/local/chrome"
@@ -39,6 +40,9 @@ func init() {
 			Name: "disabled",
 			Val:  false,
 		}},
+		SearchFlags: []*testing.StringPair{
+			pci.SearchFlag(&policy.SystemProxySettings{}, pci.VerifiedFunctionalityOS),
+		},
 	})
 }
 

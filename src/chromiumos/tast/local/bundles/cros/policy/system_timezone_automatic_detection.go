@@ -9,6 +9,7 @@ import (
 	"time"
 
 	"chromiumos/tast/common/fixture"
+	"chromiumos/tast/common/pci"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/local/chrome"
@@ -34,6 +35,9 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Fixture:      fixture.ChromeEnrolledLoggedIn,
+		SearchFlags: []*testing.StringPair{
+			pci.SearchFlag(&policy.SystemTimezoneAutomaticDetection{}, pci.VerifiedFunctionalityUI),
+		},
 	})
 }
 
