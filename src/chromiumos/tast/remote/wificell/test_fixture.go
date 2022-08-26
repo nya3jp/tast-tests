@@ -1,4 +1,4 @@
-// Copyright 2020 The ChromiumOS Authors
+// Copyright 2022 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -1439,6 +1439,16 @@ func (tf *TestFixture) ClearBSSIDIgnoreDUT(ctx context.Context, dutIdx DutIdx) e
 		return errors.Wrap(err, "failed to clear WPA BSSID_IGNORE")
 	}
 
+	return nil
+}
+
+// AddToBSSIDIgnoreDUT adds the passed BSSID into BSSID_IGNORE list on DUT.
+func (tf *TestFixture) AddToBSSIDIgnoreDUT(ctx context.Context, dutIdx DutIdx, bssid string) error {
+	wpar := remotewpacli.NewRemoteRunner(tf.duts[dutIdx].dut.Conn())
+	err := wpar.AddToBSSIDIgnore(ctx, bssid)
+	if err != nil {
+		return errors.Wrapf(err, "failed to add %s to WPA BSSID_IGNORE", bssid)
+	}
 	return nil
 }
 

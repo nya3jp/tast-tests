@@ -1,4 +1,4 @@
-// Copyright 2020 The ChromiumOS Authors
+// Copyright 2022 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -59,6 +59,23 @@ func (r *Runner) ClearBSSIDIgnore(ctx context.Context) error {
 	}
 	if !strings.Contains(string(cmdOut), "OK") {
 		return errors.Errorf("failed to detect 'OK' in the output of 'wpa_cli bssid_ignore clear', output: %s", string(cmdOut))
+	}
+	return nil
+}
+
+// AddToBSSIDIgnore adds the passed BSSID into BSSID_IGNORE list on DUT.
+func (r *Runner) AddToBSSIDIgnore(ctx context.Context, bssid string) error {
+	cmdOut, err := r.cmd.Output(ctx, "sudo", sudoWPACLI("bssid_ignore", bssid)...)
+	if err != nil {
+		return errors.Wrap(err, "failed running wpa_cli bssid_ignore")
+	}
+	if !strings.Contains(string(cmdOut), "OK") {
+		// Sample output of successful command:
+		/*
+			Selected interface 'wlan0'
+			Ok
+		*/
+		return errors.Errorf("failed to detect 'OK' in the output of 'wpa_cli bssid_ignore', output: %s", string(cmdOut))
 	}
 	return nil
 }

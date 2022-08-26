@@ -1,4 +1,4 @@
-// Copyright 2020 The ChromiumOS Authors
+// Copyright 2022 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -30,7 +30,6 @@ func init() {
 		Func: BSSTMRequest,
 		Desc: "Tests the DUTs response to a BSS Transition Management Request",
 		Contacts: []string{
-			"wgd@google.com",                  // Test author
 			"chromeos-wifi-champs@google.com", // WiFi oncall rotation; or http://b/new?component=893827
 		},
 		Attr:        []string{"group:wificell", "wificell_func"},
@@ -250,6 +249,31 @@ func BSSTMRequest(ctx context.Context, s *testing.State) {
 
 		req := params
 		req.Neighbors = []string{roamBSSID}
+		err = tf.ClearBSSIDIgnoreDUT(ctx, wificell.DefaultDUT)
+		if err != nil {
+			s.Fatal("Failed to clear wpa BSSID_IGNORE: ", err)
+		}
+		// Before sending the BSSTM request, add the current BSSID into the
+		// DUT's ignorelist to avoid any any potential race condition. Adding a
+		// BSSID to the ignore list does not trigger the device to roam away
+		// from the BSSID, but it should prevent it from roaming back.
+		// NB: Each time we add the BSSID to the ignore list, it increases
+		// the duration for which the BSSID is ignored. Each wpa_cli
+		// invocation results in the BSSID being added to the ignore list
+		// twice, so the two calls here translate to 4 insertions in
+		// wpa_supplicant, which results in an ignorelist duration of 120
+		// seconds, which should be plenty.
+
+		// We add the BSSID into the ignorelist twice purposely to ensure the
+		// ignore duration is sufficient.
+		err = tf.AddToBSSIDIgnoreDUT(ctx, wificell.DefaultDUT, fromBSSID)
+		if err != nil {
+			s.Fatal("Failed to add wpa BSSID_IGNORE: ", err)
+		}
+		err = tf.AddToBSSIDIgnoreDUT(ctx, wificell.DefaultDUT, fromBSSID)
+		if err != nil {
+			s.Fatal("Failed to add wpa BSSID_IGNORE: ", err)
+		}
 		sendReqAndWaitConnected(fromBSSID, roamBSSID, ap0, ap1, req, false)
 		t := time.Now()
 
@@ -259,6 +283,10 @@ func BSSTMRequest(ctx context.Context, s *testing.State) {
 		waitForProps, err = tf.WifiClient().ExpectShillProperty(waitCtx, servicePath, props, monitorProps)
 		if err != nil {
 			s.Fatal("Failed to create Shill property watcher: ", err)
+		}
+		err = tf.ClearBSSIDIgnoreDUT(ctx, wificell.DefaultDUT)
+		if err != nil {
+			s.Fatal("Failed to clear wpa BSSID_IGNORE: ", err)
 		}
 
 		if params.DisassocImminent {
@@ -285,7 +313,23 @@ func BSSTMRequest(ctx context.Context, s *testing.State) {
 			}
 		}
 		req.Neighbors = []string{fromBSSID}
+
+		// Before we transition back to the original BSSID, add the current
+		// BSSID into the ignore list. We add it twice purposely to ensure the
+		// ignore duration is sufficient.
+		err = tf.AddToBSSIDIgnoreDUT(ctx, wificell.DefaultDUT, roamBSSID)
+		if err != nil {
+			s.Fatal("Failed to add wpa BSSID_IGNORE: ", err)
+		}
+		err = tf.AddToBSSIDIgnoreDUT(ctx, wificell.DefaultDUT, roamBSSID)
+		if err != nil {
+			s.Fatal("Failed to add wpa BSSID_IGNORE: ", err)
+		}
 		sendReqAndWaitConnected(roamBSSID, fromBSSID, ap1, ap0, req, false)
+		err = tf.ClearBSSIDIgnoreDUT(ctx, wificell.DefaultDUT)
+		if err != nil {
+			s.Fatal("Failed to clear wpa BSSID_IGNORE: ", err)
+		}
 	}
 
 	// Before sending the BSS TM request, run a scan and make sure the DUT
