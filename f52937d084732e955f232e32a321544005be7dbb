@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dea30a34_661f7a77",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/bootperf/metrics_util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2022-08-26T03:55:54Z",
+      "side": 1,
+      "message": "I flipped the check in PS#4 with an anonymous function call for checking the conditions. So the check for sync-rtc-tlsdated-start should be that err \u003d\u003d nil (not checking whether it\u0027s a regular file for simplicity).\n\nI also removed the check for sync-rtc-tlsdated-stop since the test parses the last line of it, and keeping its content leaves the trace that tlsdated has been stopped before.",
+      "parentUuid": "95040fa3_0e62f1ad",
+      "range": {
+        "startLine": 181,
+        "startChar": 49,
+        "endLine": 181,
+        "endChar": 59
+      },
+      "revId": "f52937d084732e955f232e32a321544005be7dbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9cd32970_fb06f3a5",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-08-25T20:44:56Z",
       "side": 1,
       "message": "did you intend to have an \u0027else\u0027 clause that does something different when the file exists? (e.g., don\u0027t restart.) Your commit message sounds like it",
+      "range": {
+        "startLine": 182,
+        "startChar": 0,
+        "endLine": 182,
+        "endChar": 84
+      },
+      "revId": "f52937d084732e955f232e32a321544005be7dbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac68e0e2_ecc6c455",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/bootperf/metrics_util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2022-08-26T03:55:54Z",
+      "side": 1,
+      "message": "Right, we don\u0027t need to restart if tlsdated is in a valid state. Updated in PS#4.",
+      "parentUuid": "9cd32970_fb06f3a5",
       "range": {
         "startLine": 182,
         "startChar": 0,
