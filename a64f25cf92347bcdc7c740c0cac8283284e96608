@@ -22,6 +22,30 @@
       },
       "revId": "a64f25cf92347bcdc7c740c0cac8283284e96608",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b18bc573_2fdc245c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/quick_unlock_mode_allowlist.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1550127
+      },
+      "writtenOn": "2022-08-26T14:32:17Z",
+      "side": 1,
+      "message": "Yep, that\u0027s how `gofmt` formats it.",
+      "parentUuid": "eccce348_bc48028f",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 4
+      },
+      "revId": "a64f25cf92347bcdc7c740c0cac8283284e96608",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
