@@ -11,6 +11,7 @@ import (
 	"time"
 
 	"chromiumos/tast/common/fixture"
+	"chromiumos/tast/common/pci"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/errors"
@@ -53,6 +54,10 @@ func init() {
 				ExtraHardwareDeps: hwdep.D(hwdep.Fingerprint()),
 				Val:               webauthnTestParam{fingerprintSupported: true},
 			},
+		},
+		SearchFlags: []*testing.StringPair{
+			pci.SearchFlag(&policy.WebAuthnFactors{}, pci.VerifiedFunctionalityUI),
+			pci.SearchFlag(&policy.QuickUnlockModeAllowlist{}, pci.VerifiedValue),
 		},
 	})
 }

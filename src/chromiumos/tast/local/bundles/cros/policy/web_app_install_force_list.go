@@ -10,6 +10,7 @@ import (
 	"path/filepath"
 
 	"chromiumos/tast/common/fixture"
+	"chromiumos/tast/common/pci"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/local/apps"
@@ -53,6 +54,9 @@ func init() {
 			"certificate.pem",
 			"key.pem",
 			"ca-cert.pem"},
+		SearchFlags: []*testing.StringPair{
+			pci.SearchFlag(&policy.WebAppInstallForceList{}, pci.VerifiedFunctionalityUI),
+		},
 	})
 }
 
