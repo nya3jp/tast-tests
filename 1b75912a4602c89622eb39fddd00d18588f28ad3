@@ -374,6 +374,30 @@
       },
       "revId": "1b75912a4602c89622eb39fddd00d18588f28ad3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa836ca8_5111d10e",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/quicksettings/network.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1547388
+      },
+      "writtenOn": "2022-08-26T20:31:56Z",
+      "side": 1,
+      "message": "I wanted to get Chad\u0027s feedback on one of my replies, so waited for it before uploading.",
+      "parentUuid": "9d88406c_126e4ccf",
+      "range": {
+        "startLine": 36,
+        "startChar": 97,
+        "endLine": 36,
+        "endChar": 114
+      },
+      "revId": "1b75912a4602c89622eb39fddd00d18588f28ad3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
