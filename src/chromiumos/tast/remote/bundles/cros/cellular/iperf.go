@@ -39,7 +39,7 @@ func init() {
 			"cros-connectivity@google.com",
 		},
 		Attr:         []string{"group:cellular", "cellular_callbox"},
-		ServiceDeps:  []string{"tast.cros.example.ChromeService"},
+		ServiceDeps:  []string{""},
 		SoftwareDeps: []string{"chrome"},
 		Fixture:      "callboxManagedFixture",
 		Timeout:      15 * time.Minute,
@@ -87,7 +87,9 @@ func Iperf(ctx context.Context, s *testing.State) {
 	tf := s.FixtValue().(*manager.TestFixture)
 	dutConn := s.DUT().Conn()
 
-	tf.ConnectToCallbox(ctx, s, dutConn, tc.callboxOpts, cellularInterface)
+	if err := tf.ConnectToCallbox(ctx, dutConn, tc.callboxOpts, cellularInterface); err != nil {
+		s.Fatal("Failed to initialize cellular connection: ", err)
+	}
 
 	testManager := cbiperf.NewTestManager(tf.Vars.Callbox, dutConn, tf.CallboxManagerClient)
 
