@@ -89,6 +89,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "43eea7ae_7d8e4f6f",
+        "filename": "src/chromiumos/tast/local/assistant/lacros.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1121230
+      },
+      "writtenOn": "2022-08-26T02:35:10Z",
+      "side": 1,
+      "message": "It\u0027s just three args and we already have copies in assistant/fixture.go. I\u0027m fine with having another copy here.",
+      "parentUuid": "345ba5f4_dfff2637",
+      "revId": "daf6bb4e6bde030eeb4711d6e9fd16b6b1a744b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "08316f2d_7383ba33",

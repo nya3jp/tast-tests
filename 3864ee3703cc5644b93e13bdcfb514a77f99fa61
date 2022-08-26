@@ -70,6 +70,30 @@
       },
       "revId": "3864ee3703cc5644b93e13bdcfb514a77f99fa61",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ffb90a9_74b3205b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/card_element_animation_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1121230
+      },
+      "writtenOn": "2022-08-26T02:35:10Z",
+      "side": 0,
+      "message": "cowmoo@: Do you remember why we chose the browser window for this performance test? Is it as an easy way of opening an app or a window? Or was there any specific reason for choosing a browser window?",
+      "parentUuid": "894d5bef_5f7fcd07",
+      "range": {
+        "startLine": 29,
+        "startChar": 16,
+        "endLine": 29,
+        "endChar": 43
+      },
+      "revId": "3864ee3703cc5644b93e13bdcfb514a77f99fa61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
