@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d903d97_c2b886cc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1121230
+      },
+      "writtenOn": "2022-08-26T02:18:54Z",
+      "side": 1,
+      "message": "Thank you for the CL! Let me clarify the situation about this change.",
+      "revId": "b6d4373bd862c52aa7836b249f97187b1eca0363",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
