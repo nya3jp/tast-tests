@@ -33,6 +33,24 @@
       "message": "Why does numbering start with 4 here?",
       "revId": "263b5344eebb022757a7786b9bd9e5d2729722bd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9f4012a_608ce4e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/dock4_usb_audio.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1545012
+      },
+      "writtenOn": "2022-08-26T16:30:04Z",
+      "side": 1,
+      "message": "Can disregard for now to focus on Dock4",
+      "parentUuid": "47b9c414_78654c84",
+      "revId": "263b5344eebb022757a7786b9bd9e5d2729722bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
