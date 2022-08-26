@@ -33,6 +33,46 @@
       "message": "cowmoo@: PTAL the comment. Feel free to remove yourself from the reviewer after replying to the comment. Thank you!",
       "revId": "b6d4373bd862c52aa7836b249f97187b1eca0363",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ccefac3_11fdced9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1121230
+      },
+      "writtenOn": "2022-08-26T17:43:22Z",
+      "side": 1,
+      "message": "lgtm with a comment. Thank you!",
+      "revId": "b6d4373bd862c52aa7836b249f97187b1eca0363",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab153428_2a835927",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/card_element_animation_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1121230
+      },
+      "writtenOn": "2022-08-26T17:43:22Z",
+      "side": 1,
+      "message": "What does this do? I\u0027m not familiar with Lacros. Is this to obtain `br` object? Can we move this out of this for-loop?\n\n```\n// TODO: Add a comment to explain what this is doing.\nvar br ...\n{\n  conn, br, closeBrowser, err :\u003d browserfixt.SetUpWithURL(...)\n  conn.Close()\n  defer closeBrowser(...)\n}\n\nfor nWindows ... {\n  if nWindows \u003e 0 {\n    ...\n  }\n  ...\n}\n```",
+      "range": {
+        "startLine": 99,
+        "startChar": 3,
+        "endLine": 107,
+        "endChar": 33
+      },
+      "revId": "b6d4373bd862c52aa7836b249f97187b1eca0363",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
