@@ -33,6 +33,92 @@
       "message": "I\u0027m dropping the tast-owner reviewer pending some review from in-team tast dev\u0027s.",
       "revId": "753dd012788434a9515209f24982dd1455eb138c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39ab7689_aa9890fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 2512,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-08-26T00:16:58Z",
+      "side": 1,
+      "message": "forgot to close the file. f.Close()\n\nOr let expectations.OpenTestExpectations returns the content of the file instead.",
+      "range": {
+        "startLine": 2512,
+        "startChar": 1,
+        "endLine": 2512,
+        "endChar": 3
+      },
+      "revId": "753dd012788434a9515209f24982dd1455eb138c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "efaa3a49_66c97ac1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 2540,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-08-26T00:16:58Z",
+      "side": 1,
+      "message": "Looks like the content of the yaml looks as like s[decoder][filename] \u003d PASS|FAIL etc? Can you add it to README for better understanding?",
+      "range": {
+        "startLine": 2540,
+        "startChar": 46,
+        "endLine": 2540,
+        "endChar": 76
+      },
+      "revId": "753dd012788434a9515209f24982dd1455eb138c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83c197c9_88df6def",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 2554,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-08-26T00:16:58Z",
+      "side": 1,
+      "message": "How about introduced a NoExpect value so that you don\u0027t have to check hasExpectation everytime and make the code cleaner.\n\n```\nexpectation, ok :\u003d testExpectations[filename]\nif !ok {\n    expectations \u003d expectations.NoExpect\n}\n\nif expectation \u003d\u003d expectations.ExceptSkip {\n    ....\n}\nif expectation \u003d\u003d expectations.ExpectFailure {\n   ....\n}\n```",
+      "revId": "753dd012788434a9515209f24982dd1455eb138c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1bc7b0fc_e87cdbe4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 2612,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-08-26T00:16:58Z",
+      "side": 1,
+      "message": "I\u0027m not sure what you want to do to update the expectations. The expectations still need to go through gerrit reviews to checkout in. Update it here only updates the files inside DUT.",
+      "range": {
+        "startLine": 2612,
+        "startChar": 4,
+        "endLine": 2612,
+        "endChar": 26
+      },
+      "revId": "753dd012788434a9515209f24982dd1455eb138c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
