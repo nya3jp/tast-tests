@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d58bc71_cbed3ef9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-08-26T07:52:36Z",
+      "side": 1,
+      "message": "Hi Xiyuan, I was wondering if this test needs migration to lacros or not. Does this change make sense to you? Thanks,",
+      "revId": "805c354eb0b4d2ad12905b0ce295a80457c6f6f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
