@@ -72,7 +72,7 @@ func PrepareChromeForPolicyTesting(ctx context.Context, m *SessionManager) error
 
 // ClearDeviceOwnership deletes DUT's ownership infomation.
 func ClearDeviceOwnership(ctx context.Context) error {
-	testing.ContextLog(ctx, "Clearing device owner info")
+	testing.ContextLog(ctx, "MIERSH Clearing device owner info !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
 
 	// The UI must be stopped while we do this, or the session_manager will
 	// write the policy and key files out again.
