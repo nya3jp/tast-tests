@@ -35,6 +35,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2f774b6_cce87c1a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 18
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1545162
+      },
+      "writtenOn": "2022-08-26T07:15:52Z",
+      "side": 1,
+      "message": "Pardon.\nI would sync again since dock2 has been merged.\nWill upload new patchset.",
+      "revId": "a672b3162e7a86cd186420ac46f313c58dc0f057",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "06ffeafc_7a63a1e2",
