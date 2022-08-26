@@ -12,6 +12,7 @@ import (
 	"path/filepath"
 
 	"chromiumos/tast/common/fixture"
+	"chromiumos/tast/common/pci"
 	"chromiumos/tast/common/policy"
 	filesystemreadwrite "chromiumos/tast/local/bundles/cros/policy/file_system_read_write"
 	"chromiumos/tast/local/chrome/browser"
@@ -43,6 +44,10 @@ func init() {
 			Val:               browser.TypeLacros,
 		}},
 		Data: []string{writeAskTestHTML},
+		SearchFlags: []*testing.StringPair{
+			pci.SearchFlag(&policy.FileSystemWriteAskForUrls{}, pci.VerifiedFunctionalityUI),
+			pci.SearchFlag(&policy.DefaultFileSystemWriteGuardSetting{}, pci.VerifiedFunctionalityUI),
+		},
 	})
 }
 
