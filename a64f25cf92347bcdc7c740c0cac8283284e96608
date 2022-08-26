@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eccce348_bc48028f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/quick_unlock_mode_allowlist.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-08-26T13:34:27Z",
+      "side": 1,
+      "message": "Was that a lint check complaining about this?",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 4
+      },
+      "revId": "a64f25cf92347bcdc7c740c0cac8283284e96608",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
