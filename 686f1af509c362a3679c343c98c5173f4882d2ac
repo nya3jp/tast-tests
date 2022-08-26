@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "710b1a44_3303518a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-08-26T14:04:49Z",
+      "side": 1,
+      "message": "How do we know that test failures here won\u0027t be because of the live network?",
+      "revId": "686f1af509c362a3679c343c98c5173f4882d2ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ead801ce_81bddc18",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/check_signal_quality.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-08-26T14:04:49Z",
+      "side": 1,
+      "message": "nit: remove blank line",
+      "revId": "686f1af509c362a3679c343c98c5173f4882d2ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
