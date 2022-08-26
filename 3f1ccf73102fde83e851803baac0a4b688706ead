@@ -73,6 +73,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a2b090fa_56a964d9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1130680
+      },
+      "writtenOn": "2022-08-26T03:31:46Z",
+      "side": 1,
+      "message": "Thanks for explaining! I have uploaded a CL which uses a table-based format, please let me know what you think. I\u0027m still very much a Go novice so I think it\u0027s probably not fully idiomatic.",
+      "parentUuid": "aee89874_4f31b157",
+      "revId": "3f1ccf73102fde83e851803baac0a4b688706ead",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2bbac0f0_88cdd7a9",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/link_capturing.go",
         "patchSetId": 4
@@ -84,6 +102,30 @@
       "writtenOn": "2022-08-25T00:13:23Z",
       "side": 1,
       "message": "Making this type as uiauto.Action, should make the code much simpler. For example:\n\nclickBrowserLinkAndVerify(ctx, tconn, br, ui.WaitUntilExists(heading))",
+      "range": {
+        "startLine": 210,
+        "startChar": 97,
+        "endLine": 210,
+        "endChar": 118
+      },
+      "revId": "3f1ccf73102fde83e851803baac0a4b688706ead",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "47c88975_b882a075",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/link_capturing.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1130680
+      },
+      "writtenOn": "2022-08-26T03:31:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2bbac0f0_88cdd7a9",
       "range": {
         "startLine": 210,
         "startChar": 97,
@@ -117,6 +159,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "54bfcf1e_ba7b8caf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/link_capturing.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1130680
+      },
+      "writtenOn": "2022-08-26T03:31:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f7734aa7_864f73b2",
+      "range": {
+        "startLine": 223,
+        "startChar": 1,
+        "endLine": 231,
+        "endChar": 11
+      },
+      "revId": "3f1ccf73102fde83e851803baac0a4b688706ead",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "81ccb5dc_29c27324",
@@ -140,6 +206,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "968ad58d_f1fdddaa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/link_capturing.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1130680
+      },
+      "writtenOn": "2022-08-26T03:31:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "81ccb5dc_29c27324",
+      "range": {
+        "startLine": 288,
+        "startChar": 1,
+        "endLine": 293,
+        "endChar": 2
+      },
+      "revId": "3f1ccf73102fde83e851803baac0a4b688706ead",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "87e49415_337fd6ed",
@@ -153,6 +243,30 @@
       "writtenOn": "2022-08-25T00:16:36Z",
       "side": 1,
       "message": "nit: the wrap is not necessary.\n\nreturn ui.LeftClick(settingRadioButton)(ctx)",
+      "range": {
+        "startLine": 295,
+        "startChar": 1,
+        "endLine": 299,
+        "endChar": 11
+      },
+      "revId": "3f1ccf73102fde83e851803baac0a4b688706ead",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "702f107b_0ef21378",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/link_capturing.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1130680
+      },
+      "writtenOn": "2022-08-26T03:31:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "87e49415_337fd6ed",
       "range": {
         "startLine": 295,
         "startChar": 1,
