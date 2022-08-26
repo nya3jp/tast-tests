@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0ee68c3_e796f798",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/link_capturing.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-08-26T07:48:30Z",
+      "side": 1,
+      "message": "This is not relevant to this CL. Feel free to ignore it or fix it separately.\n\nI am curious why it forces listen port to 8000 and hard code it everywhere.\n\nDoes below code work for you?\n\nserver :\u003d httptest.NewServer(http.FileServer(s.DataFileSystem()))\ndefer server.Close()\n\nThen the test page url is:\n\nconst testPageURL \u003d server.URL + \"/link_capturing/link_capturing_index.html\"",
+      "range": {
+        "startLine": 114,
+        "startChar": 24,
+        "endLine": 114,
+        "endChar": 55
+      },
+      "revId": "a4a5c487a9d7d230983fa2630fd9ba99116df305",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b96752c4_ea57b914",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/link_capturing.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-08-26T07:48:30Z",
+      "side": 1,
+      "message": "In golang, you can implement enum in this way:\n\ntype openMethod int // create a new type is optional.\n\nconst (\n\topenInDefault    openMethod \u003d iota\n\topenInApp\n\topenInBrowser\n)",
+      "range": {
+        "startLine": 128,
+        "startChar": 1,
+        "endLine": 128,
+        "endChar": 6
+      },
+      "revId": "a4a5c487a9d7d230983fa2630fd9ba99116df305",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "307b84e9_3760ce03",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/link_capturing.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-08-26T07:48:30Z",
+      "side": 1,
+      "message": "Run subtests in loop is not necessary. It actually hurts the flexibility in your case.\n\nWDYT:\n\n1. s.Run(default_link_in_browser_stay_in_browser)\n2. s.Run(default_link_in_android_stay_in_android)\n3. changeLinkCapturingSetting(openInApp)\n4. s.Run(app_setting_link_in_browser_opens_app)\n5. change..\n6. s.Run(linkOpensInAndroidPicker)",
+      "range": {
+        "startLine": 141,
+        "startChar": 1,
+        "endLine": 141,
+        "endChar": 30
+      },
+      "revId": "a4a5c487a9d7d230983fa2630fd9ba99116df305",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a383319_fa6ae249",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/link_capturing.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-08-26T07:48:30Z",
+      "side": 1,
+      "message": "these can be merged as well.\n\nreturn uiauto.Combine(\"click link and verify result\",\n    intentButton.Click,\n    verifier,\n)(ctx)",
+      "range": {
+        "startLine": 251,
+        "startChar": 1,
+        "endLine": 259,
+        "endChar": 11
+      },
+      "revId": "a4a5c487a9d7d230983fa2630fd9ba99116df305",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
