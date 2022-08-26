@@ -20,6 +20,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c4519df7_f2e5d289",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/dock4_usb_audio.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1546867
+      },
+      "writtenOn": "2022-08-26T23:06:00Z",
+      "side": 1,
+      "message": "Can you please add the text \u0027Test case\u0027\nFrom: #4 Audio Test over USB via a Dock Station\nTo: Test case #4 Audio Test over USB via a Dock Station",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 41
+      },
+      "revId": "263b5344eebb022757a7786b9bd9e5d2729722bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "47b9c414_78654c84",
         "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/dock4_usb_audio.go",
         "patchSetId": 19
@@ -49,6 +72,47 @@
       "side": 1,
       "message": "Can disregard for now to focus on Dock4",
       "parentUuid": "47b9c414_78654c84",
+      "revId": "263b5344eebb022757a7786b9bd9e5d2729722bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9322ca78_1e8bcc9b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/dock4_usb_audio.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1546867
+      },
+      "writtenOn": "2022-08-26T23:06:00Z",
+      "side": 1,
+      "message": "Please start verification numbering from 1",
+      "parentUuid": "b9f4012a_608ce4e5",
+      "revId": "263b5344eebb022757a7786b9bd9e5d2729722bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5776531d_a566a0a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/dock4_usb_audio.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1546867
+      },
+      "writtenOn": "2022-08-26T23:06:00Z",
+      "side": 1,
+      "message": "remove space",
+      "range": {
+        "startLine": 222,
+        "startChar": 53,
+        "endLine": 222,
+        "endChar": 54
+      },
       "revId": "263b5344eebb022757a7786b9bd9e5d2729722bd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
