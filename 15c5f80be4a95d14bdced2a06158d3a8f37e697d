@@ -60,6 +60,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d13a2b21_874d547c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/expectations/README.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1498402
+      },
+      "writtenOn": "2022-08-26T23:39:35Z",
+      "side": 1,
+      "message": "I don\u0027t think there is a need to enforce the test expectation location. If there is a good reason to put the files in another location, that would be up to the test writer and reviewers.",
+      "parentUuid": "1146d41e_b63e7b0f",
+      "range": {
+        "startLine": 15,
+        "startChar": 43,
+        "endLine": 15,
+        "endChar": 72
+      },
+      "revId": "15c5f80be4a95d14bdced2a06158d3a8f37e697d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8c3fd998_1c8689ef",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/expectations/README.md",
         "patchSetId": 5
@@ -71,6 +95,30 @@
       "writtenOn": "2022-08-26T00:28:41Z",
       "side": 1,
       "message": "Always confused me with the build number, how about BuildBoard?",
+      "range": {
+        "startLine": 26,
+        "startChar": 2,
+        "endLine": 26,
+        "endChar": 7
+      },
+      "revId": "15c5f80be4a95d14bdced2a06158d3a8f37e697d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c1157cc_57a1e1f5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/expectations/README.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1498402
+      },
+      "writtenOn": "2022-08-26T23:39:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8c3fd998_1c8689ef",
       "range": {
         "startLine": 26,
         "startChar": 2,
@@ -98,6 +146,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "42ff1721_d1f6f9e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/expectations/README.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1498402
+      },
+      "writtenOn": "2022-08-26T23:39:35Z",
+      "side": 1,
+      "message": "I elaborated on the priority and behavior of `ReadTestExpecatations` in a new section in README.md.\n\nThe contents of the YAML file are up to the test code. I\u0027ll add some sample YAML into platform_decoding.go.",
+      "parentUuid": "24472e2a_75626224",
+      "revId": "15c5f80be4a95d14bdced2a06158d3a8f37e697d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d4cfd259_9b3573e8",
@@ -121,6 +187,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5cd8d61_f20eddf0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/expectations/README.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1498402
+      },
+      "writtenOn": "2022-08-26T23:39:35Z",
+      "side": 1,
+      "message": "Fixed with backticks. I meant the type `expectations.Type`. The \".\" was not intended to start a new sentence.",
+      "parentUuid": "d4cfd259_9b3573e8",
+      "range": {
+        "startLine": 31,
+        "startChar": 62,
+        "endLine": 31,
+        "endChar": 68
+      },
+      "revId": "15c5f80be4a95d14bdced2a06158d3a8f37e697d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4aba1fe4_4c321490",
@@ -134,6 +224,30 @@
       "writtenOn": "2022-08-26T00:28:41Z",
       "side": 1,
       "message": "What do you mean ticket string?",
+      "range": {
+        "startLine": 33,
+        "startChar": 12,
+        "endLine": 33,
+        "endChar": 26
+      },
+      "revId": "15c5f80be4a95d14bdced2a06158d3a8f37e697d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "74b9ca49_f557e08e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/expectations/README.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1498402
+      },
+      "writtenOn": "2022-08-26T23:39:35Z",
+      "side": 1,
+      "message": "Added an example buganizer and crrbug link.",
+      "parentUuid": "4aba1fe4_4c321490",
       "range": {
         "startLine": 33,
         "startChar": 12,
@@ -190,6 +304,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a17b6f0c_041459de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/expectations/expectations.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1498402
+      },
+      "writtenOn": "2022-08-26T23:39:35Z",
+      "side": 1,
+      "message": "Good point. I unexported ConvertBuildToBoard and GetTestExpectationsDirectory.\n\nGenerateTestExpectationsFilenameWithDirectory may be useful for a test if it wants to modify the default test expectations directory.",
+      "parentUuid": "4e40073d_8382045a",
+      "range": {
+        "startLine": 56,
+        "startChar": 5,
+        "endLine": 56,
+        "endChar": 24
+      },
+      "revId": "15c5f80be4a95d14bdced2a06158d3a8f37e697d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dd24aede_e970b43f",
@@ -207,6 +345,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f1234d6_cef7a9cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/expectations/expectations.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1498402
+      },
+      "writtenOn": "2022-08-26T23:39:35Z",
+      "side": 1,
+      "message": "Good question. I don\u0027t want the test case as part of the path. Only the test module (the .go file) should contribute to the path.\n\nI.e. tast.video.ChromeStackDecoder.vp8 should use `/usr/graphics/expectations/tast/video/ChromeStackDecoder/`, not `/usr/graphics/expectations/tast/video/ChromeStackDecoder/vp8/`.",
+      "parentUuid": "dd24aede_e970b43f",
+      "revId": "15c5f80be4a95d14bdced2a06158d3a8f37e697d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1fdf60e5_205dd3f7",
@@ -220,6 +376,30 @@
       "writtenOn": "2022-08-26T00:28:41Z",
       "side": 1,
       "message": "Let\u0027s simply return an error and let the caller determine if they want to fail the test.",
+      "range": {
+        "startLine": 141,
+        "startChar": 3,
+        "endLine": 141,
+        "endChar": 55
+      },
+      "revId": "15c5f80be4a95d14bdced2a06158d3a8f37e697d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "956615d0_33779493",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/expectations/expectations.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1498402
+      },
+      "writtenOn": "2022-08-26T23:39:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1fdf60e5_205dd3f7",
       "range": {
         "startLine": 141,
         "startChar": 3,
@@ -253,6 +433,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3004e0c4_ca5c920e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/expectations/expectations.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1498402
+      },
+      "writtenOn": "2022-08-26T23:39:35Z",
+      "side": 1,
+      "message": "Good suggestion. Done.",
+      "parentUuid": "8034cf5a_5c48d070",
+      "range": {
+        "startLine": 144,
+        "startChar": 10,
+        "endLine": 144,
+        "endChar": 18
+      },
+      "revId": "15c5f80be4a95d14bdced2a06158d3a8f37e697d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8b7f5a55_34e528b6",
@@ -276,6 +480,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fab2caaf_eab7a0bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/expectations/expectations.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1498402
+      },
+      "writtenOn": "2022-08-26T23:39:35Z",
+      "side": 1,
+      "message": "I added comments here and in the README.md about the file type priority and lack of YAML merging for cases where there are more than one match.",
+      "parentUuid": "8b7f5a55_34e528b6",
+      "range": {
+        "startLine": 145,
+        "startChar": 2,
+        "endLine": 148,
+        "endChar": 3
+      },
+      "revId": "15c5f80be4a95d14bdced2a06158d3a8f37e697d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eabd19ef_0e8268de",
@@ -289,6 +517,30 @@
       "writtenOn": "2022-08-26T00:28:41Z",
       "side": 1,
       "message": "Looks only used in your next CL. Do you mind adding it there?",
+      "range": {
+        "startLine": 160,
+        "startChar": 0,
+        "endLine": 180,
+        "endChar": 1
+      },
+      "revId": "15c5f80be4a95d14bdced2a06158d3a8f37e697d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "36caae40_40e3f65a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/expectations/expectations.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1498402
+      },
+      "writtenOn": "2022-08-26T23:39:35Z",
+      "side": 1,
+      "message": "My plan is to also use this definition with ChromeStackDecoder, but the CL for that is not ready yet. I think this is the right commit to define the type.",
+      "parentUuid": "eabd19ef_0e8268de",
       "range": {
         "startLine": 160,
         "startChar": 0,
