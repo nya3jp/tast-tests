@@ -73,7 +73,7 @@ func NewRemoteImage(ctx context.Context, runner ServoHostCommandRunner, programm
 	}
 	testing.ContextLog(ctx, "Copying image from servohost to localhost")
 	if err := runner.GetFile(ctx, true, remoteTempFileName, localTempFileName); err != nil {
-		return nil, errors.Wrapf(err, "copy remote %s to local %s", localTempFileName, remoteTempFileName)
+		return nil, errors.Wrapf(err, "copy remote %s to local %s", remoteTempFileName, localTempFileName)
 	}
 
 	data, err := ioutil.ReadFile(localTempFileName)
