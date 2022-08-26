@@ -47,6 +47,8 @@ func init() {
 			"cryptohome-core@google.com",
 		},
 		Attr: []string{"group:mainline"},
+		// Only tpm2 support soft TPM clear.
+		SoftwareDeps: []string{"tpm2"},
 		Params: []testing.Param{{
 			Name: "default",
 			Val:  &params{VaultType: defaultVaultType},
