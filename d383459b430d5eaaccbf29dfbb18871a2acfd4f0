@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5bc3206a_caef6c23",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-08-26T14:12:30Z",
+      "side": 1,
+      "message": "Is there no way we can use hwdeps for this? The runtime-check \"test N/A\" paradigm is deprecated in Tast.",
+      "revId": "d383459b430d5eaaccbf29dfbb18871a2acfd4f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1ef31ea_26763029",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/shill_cellular_enable_and_connect.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-08-26T14:12:30Z",
+      "side": 1,
+      "message": "I think this means the test will not run on e.g. coral, even though it should.",
+      "revId": "d383459b430d5eaaccbf29dfbb18871a2acfd4f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
