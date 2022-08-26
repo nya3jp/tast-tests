@@ -1,4 +1,4 @@
-// Copyright 2022 The Chromium OS Authors. All rights reserved.
+// Copyright 2022 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -12,6 +12,10 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/browser/browserfixt"
+	"chromiumos/tast/local/chrome/lacros"
+	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/local/common"
 	pb "chromiumos/tast/services/cros/ui"
 	"chromiumos/tast/testing"
@@ -48,10 +52,16 @@ func (svc *ChromeService) New(ctx context.Context, req *pb.NewRequest) (*empty.E
 		return nil, errors.Wrap(err, "failed to convert to chrome options")
 	}
 
+	// If |req.Lacros| is set, lacros-chrome will be enabled.
+	bt, lcfg, err := toBrowserConfig(req)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to convert to lacros config")
+	}
+
 	// By default, this will always create a new chrome session even when there is an existing one.
 	// This gives full control of the lifecycle to the end users.
 	// Users can use TryReuseSessions if they want to potentially reuse the session.
-	cr, err := chrome.New(ctx, opts...)
+	cr, err := browserfixt.NewChrome(ctx, bt, lcfg, opts...)
 	if err != nil {
 		testing.ContextLog(ctx, "Failed to start Chrome")
 		return nil, err
@@ -146,4 +156,37 @@ func toCreds(c *pb.NewRequest_Credentials) chrome.Creds {
 		ParentUser: c.ParentUsername,
 		ParentPass: c.ParentPassword,
 	}
+}
+
+func toBrowserConfig(req *pb.NewRequest) (browser.Type, *lacrosfixt.Config, error) {
+	var lcfg *lacrosfixt.Config
+	bt := browser.TypeAsh
+	if req.GetLacros() != nil {
+		// Defaults to LacrosOnly in the RootFS if unspecified.
+		bt = browser.TypeLacros
+
+		var mode lacros.Mode
+		switch req.GetLacros().GetMode() {
+		case pb.Lacros_MODE_SIDEBYSIDE:
+			mode = lacros.LacrosSideBySide
+		case pb.Lacros_MODE_PRIMARY:
+			mode = lacros.LacrosPrimary
+		case pb.Lacros_MODE_ONLY, pb.Lacros_MODE_UNSPECIFIED:
+			mode = lacros.LacrosOnly
+		default:
+			return bt, nil, errors.Errorf("unsupported mode: %v", req.GetLacros().GetMode())
+		}
+
+		var selection lacros.Selection
+		switch req.GetLacros().GetSelection() {
+		case pb.Lacros_SELECTION_ROOTFS, pb.Lacros_SELECTION_UNSPECIFIED:
+			selection = lacros.Rootfs
+		case pb.Lacros_SELECTION_OMAHA:
+			selection = lacros.Omaha
+		default:
+			return bt, nil, errors.Errorf("unsupported selection: %v", req.GetLacros().GetSelection())
+		}
+		lcfg = lacrosfixt.NewConfig(lacrosfixt.Mode(mode), lacrosfixt.Selection(selection))
+	}
+	return bt, lcfg, nil
 }
