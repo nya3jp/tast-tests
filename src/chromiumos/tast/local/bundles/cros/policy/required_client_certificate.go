@@ -9,6 +9,7 @@ import (
 	"time"
 
 	"chromiumos/tast/common/fixture"
+	"chromiumos/tast/common/pci"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/local/chrome"
@@ -45,6 +46,11 @@ func init() {
 			ExtraSoftwareDeps: []string{"lacros"},
 			Val:               browser.TypeLacros,
 		}},
+		SearchFlags: []*testing.StringPair{
+			pci.SearchFlag(&policy.RequiredClientCertificateForUser{}, pci.VerifiedFunctionalityUI),
+			pci.SearchFlag(&policy.RequiredClientCertificateForDevice{}, pci.VerifiedFunctionalityUI),
+			pci.SearchFlag(&policy.LacrosAvailability{}, pci.VerifiedValue),
+		},
 	})
 }
 
