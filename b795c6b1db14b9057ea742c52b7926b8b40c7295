@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0c36a36_2f560236",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/shill_cellular_sim_slots.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-08-26T20:17:14Z",
+      "side": 1,
+      "message": "nit: is there already a constant for this?",
+      "range": {
+        "startLine": 134,
+        "startChar": 14,
+        "endLine": 134,
+        "endChar": 29
+      },
+      "revId": "b795c6b1db14b9057ea742c52b7926b8b40c7295",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

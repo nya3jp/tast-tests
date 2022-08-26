@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ae320c1_c5ba68fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/shill_cellular_sim_slots.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-08-26T20:17:14Z",
+      "side": 1,
+      "message": "In go, acronyms are just supposed to use the same case throughout. This means that if they start with a lowercase letter, they use all lowercase letters, and if they start with an uppercase letter, they use all uppercase letters. So it would be `iccid` or `fooICCID`, if that makes sense.",
+      "parentUuid": "6b33caca_4ff95d5e",
+      "range": {
+        "startLine": 77,
+        "startChar": 2,
+        "endLine": 77,
+        "endChar": 7
+      },
+      "revId": "a6fb49fd7314863e48e7483ffc3cc62840943e23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "627cfeef_f60463e7",
