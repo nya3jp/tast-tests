@@ -22,6 +22,30 @@
       },
       "revId": "3864ee3703cc5644b93e13bdcfb514a77f99fa61",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "51639c5d_2782e05d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/card_element_animation_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1121230
+      },
+      "writtenOn": "2022-08-26T02:22:30Z",
+      "side": 0,
+      "message": "After reading go/lacros-tast-porting, it looks like we need a Lacros variant as we test performance with a browser window opened. I\u0027ll review this CL. Thank you!",
+      "parentUuid": "2774f668_076feb19",
+      "range": {
+        "startLine": 29,
+        "startChar": 16,
+        "endLine": 29,
+        "endChar": 43
+      },
+      "revId": "3864ee3703cc5644b93e13bdcfb514a77f99fa61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
