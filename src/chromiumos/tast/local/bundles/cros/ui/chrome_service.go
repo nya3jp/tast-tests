@@ -12,6 +12,9 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/browser/browserfixt"
+	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/local/common"
 	pb "chromiumos/tast/services/cros/ui"
 	"chromiumos/tast/testing"
@@ -51,7 +54,8 @@ func (svc *ChromeService) New(ctx context.Context, req *pb.NewRequest) (*empty.E
 	// By default, this will always create a new chrome session even when there is an existing one.
 	// This gives full control of the lifecycle to the end users.
 	// Users can use TryReuseSessions if they want to potentially reuse the session.
-	cr, err := chrome.New(ctx, opts...)
+	// If |BrowserType| is "lacros", lacros-chrome will be a primary browser. otherwise, ash-chrome.
+	cr, err := browserfixt.NewChrome(ctx, browser.Type(req.BrowserType), lacrosfixt.NewConfig(), opts...)
 	if err != nil {
 		testing.ContextLog(ctx, "Failed to start Chrome")
 		return nil, err

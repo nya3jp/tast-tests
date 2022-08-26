@@ -29,7 +29,7 @@ const (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ChromeServiceGRPC,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Check basic functionality of ChromeService",
 		Contacts:     []string{"jonfan@google.com", "chromeos-sw-engprod@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
@@ -72,6 +72,17 @@ func init() {
 				// The test definition block has no access to testing.State and "ui.gaiaPoolDefault".
 				// Credentials will be populated based on "ui.gaiaPoolDefault" in the main test function.
 				LoginMode: pb.LoginMode_LOGIN_MODE_GAIA_LOGIN,
+			},
+		}, {
+			Name: "default_fake_login_lacros",
+			Val:  &pb.NewRequest{BrowserType: "lacros"},
+		}, {
+			Name: "gaia_login_lacros",
+			Val: &pb.NewRequest{
+				// The test definition block has no access to testing.State and "ui.gaiaPoolDefault".
+				// Credentials will be populated based on "ui.gaiaPoolDefault" in the main test function.
+				LoginMode:   pb.LoginMode_LOGIN_MODE_GAIA_LOGIN,
+				BrowserType: "lacros",
 			},
 		}},
 	})
@@ -118,10 +129,11 @@ var random = rand.New(rand.NewSource(time.Now().UnixNano()))
 // pickRandomCreds picks a random user and password from a list of credentials.
 //
 // creds is a string containing multiple credentials separated by newlines:
-//  user1:pass1
-//  user2:pass2
-//  user3:pass3
-//  ...
+//
+//	user1:pass1
+//	user2:pass2
+//	user3:pass3
+//	...
 func pickRandomCreds(creds string) (*pb.NewRequest_Credentials, error) {
 	// Pick a random line
 	lines := strings.Split(creds, "\n")

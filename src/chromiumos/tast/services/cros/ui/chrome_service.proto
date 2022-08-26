@@ -74,6 +74,9 @@ message NewRequest {
     // account.
     string parent_password = 6;
   }
+
+  // BrowserType is the type of browser to be used (e.g. "ash" or "lacros").
+  string browser_type = 8;
 }
 
 // LoginMode describes the user mode for the login.
