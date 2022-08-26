@@ -29,11 +29,12 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Behavior of ArcEnabled policy, checking whether ARC is enabled after setting the policy",
 		Contacts: []string{
-			"gabormagda@google.com", // Test author
+			"gabormagda@google.com", // Test author,
+			"arc-commercial@google.com",
 			"chromeos-commercial-remote-management@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		Timeout:      2 * time.Minute,
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
