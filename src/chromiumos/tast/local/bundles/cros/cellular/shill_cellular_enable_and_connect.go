@@ -12,6 +12,7 @@ import (
 	"chromiumos/tast/common/shillconst"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/cellular"
+	"chromiumos/tast/local/crosconfig"
 	"chromiumos/tast/local/modemmanager"
 	"chromiumos/tast/local/shill"
 	"chromiumos/tast/testing"
@@ -22,13 +23,23 @@ func init() {
 		Func:     ShillCellularEnableAndConnect,
 		Desc:     "Verifies that Shill can enable, disable, connect, and disconnect to a Cellular Service",
 		Contacts: []string{"stevenjb@google.com", "cros-network-health@google.com", "chromeos-cellular-team@google.com"},
-		Attr:     []string{"group:cellular", "cellular_unstable", "cellular_sim_active"},
+		Attr:     []string{"group:cellular", "cellular_unstable", "cellular_sim_active", "group:crosbolt", "crosbolt_perbuild"},
 		Timeout:  10 * time.Minute,
 		Fixture:  "cellular",
 	})
 }
 
 func ShillCellularEnableAndConnect(ctx context.Context, s *testing.State) {
+	// Check if device has modem
+	dutVariant, err := crosconfig.Get(ctx, "/modem", "firmware-variant")
+	if err != nil && !crosconfig.IsNotFound(err) {
+		s.Fatal("cros_config /modem firmware-variant failed: ", err)
+	}
+	// Check if dut has modem-variant
+	if dutVariant == "" {
+		return
+	}
+
 	if _, err := modemmanager.NewModemWithSim(ctx); err != nil {
 		s.Fatal("Could not find MM dbus object with a valid sim: ", err)
 	}
