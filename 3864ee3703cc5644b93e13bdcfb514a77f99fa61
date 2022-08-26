@@ -46,6 +46,30 @@
       },
       "revId": "3864ee3703cc5644b93e13bdcfb514a77f99fa61",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "894d5bef_5f7fcd07",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/card_element_animation_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-08-26T02:25:26Z",
+      "side": 0,
+      "message": "Please correct me. This tests seem to open browser windows (that could probably be any other apps?) as a part of the test steps although the assistant is implemented in ash-chrome. If you can change it to opening apps other than browser, it may not need migration to lacros.",
+      "parentUuid": "2774f668_076feb19",
+      "range": {
+        "startLine": 29,
+        "startChar": 16,
+        "endLine": 29,
+        "endChar": 43
+      },
+      "revId": "3864ee3703cc5644b93e13bdcfb514a77f99fa61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
