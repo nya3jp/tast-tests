@@ -59,9 +59,9 @@ import (
 
 # Template for a single policy. Is formatted using a Policy object.
 POLICY_TEMPLATE = """
-///////////////////////////////////////////////////////////////////////////////
+// ****************************************************************************
 // {self.id}. {self.name}{self.additional_info}
-///////////////////////////////////////////////////////////////////////////////
+// ****************************************************************************
 type {self.name} struct {{
 \tStat Status
 \tVal {self.type}
@@ -82,19 +82,19 @@ func (p *{self.name}) Equal(iface interface{{}}) bool {{
 
 # Header for the section containing definitions of Reference values.
 REFERENCE_HEADER = """
-///////////////////////////////////////////////////////////////////////////////
+// ****************************************************************************
 // Reference values (used via '$ref' in JSON Schema).
-///////////////////////////////////////////////////////////////////////////////
+// ****************************************************************************
 """
 
 # Common part for Open Network Configuration.
 ONC_SCHEMA = """
-///////////////////////////////////////////////////////////////////////////////
+// ****************************************************************************
 // Open Network Configuration(ONC) schema.
 // Used in OpenNetworkConfiguration and DeviceOpenNetworkConfiguration.
 // This is a subset of the full schema. Only the parts that tast tests use are defined here.
 // See https://chromium.googlesource.com/chromium/src/+/HEAD/components/onc/docs/onc_spec.md for full schema.
-///////////////////////////////////////////////////////////////////////////////
+// ****************************************************************************
 type ONCEap struct {
 \tOuter\tstring\t`json:"Outer"`
 \tInner\tstring\t`json:"Inner,omitempty"`
