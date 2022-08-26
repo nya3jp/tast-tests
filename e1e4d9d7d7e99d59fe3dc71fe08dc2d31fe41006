@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ebf3a2c_4e4d6df3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/enabled_policy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1403852
+      },
+      "writtenOn": "2022-08-26T21:56:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "25e01866_ca28358b",
+      "range": {
+        "startLine": 105,
+        "startChar": 5,
+        "endLine": 105,
+        "endChar": 29
+      },
+      "revId": "e1e4d9d7d7e99d59fe3dc71fe08dc2d31fe41006",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "09db67ec_505b926b",
@@ -71,6 +95,24 @@
       "writtenOn": "2022-08-24T19:08:49Z",
       "side": 1,
       "message": "Nit: consider return errors.Wrap(err, \"failed to list registered apps\")",
+      "revId": "e1e4d9d7d7e99d59fe3dc71fe08dc2d31fe41006",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2509f8f8_f12fd448",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/enabled_policy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1403852
+      },
+      "writtenOn": "2022-08-26T21:56:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "09db67ec_505b926b",
       "revId": "e1e4d9d7d7e99d59fe3dc71fe08dc2d31fe41006",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -92,6 +134,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e43a2a73_58e9346d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/enabled_policy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1403852
+      },
+      "writtenOn": "2022-08-26T21:56:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "492ae814_adcd6574",
+      "revId": "e1e4d9d7d7e99d59fe3dc71fe08dc2d31fe41006",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "93a4c2e7_d8e9a3d0",
@@ -109,6 +169,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3dcf3e53_da96088b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/enabled_policy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1403852
+      },
+      "writtenOn": "2022-08-26T21:56:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "93a4c2e7_d8e9a3d0",
+      "revId": "e1e4d9d7d7e99d59fe3dc71fe08dc2d31fe41006",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5d62b5fe_ef0a9c16",
@@ -122,6 +200,30 @@
       "writtenOn": "2022-08-24T19:08:49Z",
       "side": 1,
       "message": "Use LaunchApp() so we don\u0027t need to use a keyboard (which is notoriously flaky).",
+      "range": {
+        "startLine": 153,
+        "startChar": 20,
+        "endLine": 153,
+        "endChar": 35
+      },
+      "revId": "e1e4d9d7d7e99d59fe3dc71fe08dc2d31fe41006",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0d02859_37cb852c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/enabled_policy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1403852
+      },
+      "writtenOn": "2022-08-26T21:56:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5d62b5fe_ef0a9c16",
       "range": {
         "startLine": 153,
         "startChar": 20,
@@ -155,6 +257,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "578c3049_ab6132a7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/enabled_policy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1403852
+      },
+      "writtenOn": "2022-08-26T21:56:16Z",
+      "side": 1,
+      "message": "Cool idea!",
+      "parentUuid": "083b2130_63f72092",
+      "range": {
+        "startLine": 157,
+        "startChar": 13,
+        "endLine": 157,
+        "endChar": 28
+      },
+      "revId": "e1e4d9d7d7e99d59fe3dc71fe08dc2d31fe41006",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "21deea69_dd73bde1",
@@ -168,6 +294,30 @@
       "writtenOn": "2022-08-24T19:08:49Z",
       "side": 1,
       "message": "I wonder if it\u0027s more robust to do\n\nui.WithInterval(time.Second).LeftClickUntil(okButton, ui.Gone(blockedWindowFinder))\n\nbecause hitting the enter key one time might not do the trick. This way has the benefit of clicking multiple times, if necessary, until the dialog closes, especially since leaving the dialog behind might affect later tests.",
+      "range": {
+        "startLine": 161,
+        "startChar": 9,
+        "endLine": 161,
+        "endChar": 31
+      },
+      "revId": "e1e4d9d7d7e99d59fe3dc71fe08dc2d31fe41006",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c130a2c_995a710c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/enabled_policy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1403852
+      },
+      "writtenOn": "2022-08-26T21:56:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "21deea69_dd73bde1",
       "range": {
         "startLine": 161,
         "startChar": 9,
@@ -201,6 +351,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef7548d9_d4aa73cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/enabled_policy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1403852
+      },
+      "writtenOn": "2022-08-26T21:56:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "689ee4c2_7fcaa478",
+      "range": {
+        "startLine": 166,
+        "startChar": 93,
+        "endLine": 166,
+        "endChar": 99
+      },
+      "revId": "e1e4d9d7d7e99d59fe3dc71fe08dc2d31fe41006",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9c9cd93b_ab765f84",
@@ -214,6 +388,30 @@
       "writtenOn": "2022-08-24T19:08:49Z",
       "side": 1,
       "message": "Nit: Could you rename this to testProjectorDisabled?",
+      "range": {
+        "startLine": 173,
+        "startChar": 5,
+        "endLine": 173,
+        "endChar": 30
+      },
+      "revId": "e1e4d9d7d7e99d59fe3dc71fe08dc2d31fe41006",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2e02861_c710a3dc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/enabled_policy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1403852
+      },
+      "writtenOn": "2022-08-26T21:56:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9c9cd93b_ab765f84",
       "range": {
         "startLine": 173,
         "startChar": 5,
@@ -243,6 +441,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e9ce6802_c2a3d352",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/enabled_policy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1403852
+      },
+      "writtenOn": "2022-08-26T21:56:16Z",
+      "side": 1,
+      "message": "I am thinking about removing this section.\nThe testing.Poll()(in WaitForChromeAppInstalled) should only be used as a last resort when there\u0027s no other way to watch for an event[1]. \n\nWe verifies the Screencast is not in the app registry. \n@Yilkal: since you work for app time limit before, could we assume that if a app is not in the app registry, the app will never be installed? \n\n\n[1] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast/src/chromiumos/tast/testing/util.go;l\u003d37;drc\u003de2fe706ffdd02eb70704b8a3b0a72215ef08c147",
+      "parentUuid": "d43dfe2b_3368ae13",
+      "revId": "e1e4d9d7d7e99d59fe3dc71fe08dc2d31fe41006",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ac21c89c_62273a7d",
         "filename": "src/chromiumos/tast/local/bundles/cros/projector/enabled_policy.go",
         "patchSetId": 3
@@ -254,6 +470,30 @@
       "writtenOn": "2022-08-24T19:08:49Z",
       "side": 1,
       "message": "Nit: consider return errors.Wrap(err, \"failed to list registered apps\")",
+      "range": {
+        "startLine": 183,
+        "startChar": 9,
+        "endLine": 183,
+        "endChar": 12
+      },
+      "revId": "e1e4d9d7d7e99d59fe3dc71fe08dc2d31fe41006",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eed2d3cc_f8d66f23",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/enabled_policy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1403852
+      },
+      "writtenOn": "2022-08-26T21:56:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ac21c89c_62273a7d",
       "range": {
         "startLine": 183,
         "startChar": 9,
