@@ -26,8 +26,7 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Basic test that clicks through Demo Mode setup from OOBE",
 		Contacts:     []string{"cros-demo-mode-eng@google.com"},
-		// Disabled due to <1% pass rate over 30 days. See b/241943180
-		//Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline", "informational"},
 		// Demo Mode uses Zero Touch Enrollment for enterprise enrollment, which
 		// requires a real TPM.
 		// We require "arc" and "chrome_internal" because the ARC TOS screen
@@ -139,20 +138,7 @@ func SetUp(ctx context.Context, s *testing.State) {
 		if err := oobeConn.WaitForExprFailOnErr(ctx, "OobeAPI.screens.EulaScreen.isVisible()"); err != nil {
 			s.Fatal("Failed to wait for the EULA screen to be visible: ", err)
 		}
-		eulaWebview := nodewith.State(state.Focused, true).Role(role.Iframe)
-		if err := ui.WaitUntilExists(eulaWebview)(ctx); err != nil {
-			s.Fatal("Failed to wait for the EULA webview to exist: ", err)
-		}
-		var eulaScreenNextButtonName string
-		if err := oobeConn.Eval(ctx, "OobeAPI.screens.EulaScreen.getNextButtonName()", &eulaScreenNextButtonName); err != nil {
-			s.Fatal("Failed to get EULA next button name: ", err)
-		}
-		eulaScreenNextButton := nodewith.Role(role.Button).Name(eulaScreenNextButtonName)
-		if err := uiauto.Combine("Click next on the EULA screen",
-			// Button is not focused on the screen. We focus the webview with EULA by default.
-			ui.WaitUntilExists(eulaScreenNextButton.State(state.Focused, false)),
-			ui.LeftClickUntil(eulaScreenNextButton, ui.Gone(eulaScreenNextButton)),
-		)(ctx); err != nil {
+		if err := oobeConn.Eval(ctx, "OobeAPI.screens.EulaScreen.clickNext()", nil); err != nil {
 			s.Fatal("Failed to click accept EULA button: ", err)
 		}
 	}
