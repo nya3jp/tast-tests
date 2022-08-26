@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d308080_13ab8c79",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1403852
+      },
+      "writtenOn": "2022-08-26T20:26:11Z",
+      "side": 1,
+      "message": "Hi Please review this CL. Thanks!\n\nThe reason why I didn\u0027t split the creation flow to another function:\nI tried but realized that saving file to the right location needs the entire creation flow, which mean every line in creation_flow.go is needed.\n\nHaving 2 tests like one tests the CreationFlow and one to test CreationFlow+saveFileToTheRightLocation seems redundant...Plus I think verifying the saved to right location also serves the purpose of creating a video, which is not a thing that is unrelated to screencast creation(for example tutorial dialog).\n\nLet me know your thought!Thanks!\n",
+      "revId": "fdcba4cca6c69f4e3da2367594940d1bcf326d5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
