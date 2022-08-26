@@ -1,6 +1,52 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6cc01ab_7c88650c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-26T16:43:00Z",
+      "side": 1,
+      "message": "nit: `ui` because all CUJ tests are in the `ui` package",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 10
+      },
+      "revId": "fe5026f79fee5fa4ca88d3e9d1d96b23656fe692",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1da024f5_065fc6ea",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-26T16:43:00Z",
+      "side": 1,
+      "message": "Explain why `IdlePerf` is an exception.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 70
+      },
+      "revId": "fe5026f79fee5fa4ca88d3e9d1d96b23656fe692",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "a773deae_f8f1ffe1",
