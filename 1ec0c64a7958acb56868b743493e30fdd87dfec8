@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d95f77f_b1894506",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/unicorn_extensions.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-08-26T01:28:58Z",
+      "side": 1,
+      "message": "If the timeout to wait for sync is five minutes, then the timeout for the overall test should be higher, like six minutes, to allow time for clicking the parent permission dialog etc.",
+      "range": {
+        "startLine": 28,
+        "startChar": 16,
+        "endLine": 28,
+        "endChar": 18
+      },
+      "revId": "1ec0c64a7958acb56868b743493e30fdd87dfec8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02d3d211_b3b53897",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/unicorn_extensions.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-08-26T01:28:58Z",
+      "side": 1,
+      "message": "Could you manipulate the braces so that this block is indented at the same level as the Ash Chrome test parameters above?",
+      "range": {
+        "startLine": 37,
+        "startChar": 3,
+        "endLine": 41,
+        "endChar": 4
+      },
+      "revId": "1ec0c64a7958acb56868b743493e30fdd87dfec8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3395e1b3_6620a533",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/unicorn_extensions.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-08-26T01:28:58Z",
+      "side": 1,
+      "message": "Since you can do anything inside this poll body, why not keep refreshing the Chrome Web Store page and clicking the \"Add to Chrome\" button until this error dialog [1] goes away? That\u0027s an alternative way to wait for this pref to sync, and it more closely mimics what a real child user (who\u0027s in a rush to install a particular extension) would do upon logging into a new device.\n\n[1] https://screenshot.googleplex.com/3uFzKYuDbSKuMLH.png",
+      "range": {
+        "startLine": 58,
+        "startChar": 2,
+        "endLine": 65,
+        "endChar": 12
+      },
+      "revId": "1ec0c64a7958acb56868b743493e30fdd87dfec8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d440ef3_654a8b53",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/unicorn_extensions.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-08-26T01:28:58Z",
+      "side": 1,
+      "message": "Why not do\n\n    if !isLacros {\n        return waitForBoolPrefValue(ctx, c, prefName, expectedValue, timeout)\n    }\n    // Code for Lacros\n \n The more complex code should go in the main body to reduce nesting.",
+      "revId": "1ec0c64a7958acb56868b743493e30fdd87dfec8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8326b06_f15a8cf3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/unicorn_extensions.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-08-26T01:28:58Z",
+      "side": 1,
+      "message": "If you take my other suggestion, then we don\u0027t need to split the code path depending on Lacros vs Ash. In both cases, we would do the same thing: go to the Chrome Web Store page and keep refreshing until the error dialog disappears and the correct parent permission dialog appears. You wouldn\u0027t need this boolean anymore. I also like this suggestion because we shouldn\u0027t treat the Lacros browser any differently than Ash in tests.",
+      "range": {
+        "startLine": 92,
+        "startChar": 1,
+        "endLine": 92,
+        "endChar": 9
+      },
+      "revId": "1ec0c64a7958acb56868b743493e30fdd87dfec8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
