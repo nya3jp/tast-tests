@@ -5,13 +5,15 @@
 package servo
 
 import (
-	"bufio"
+	"archive/tar"
+	"bytes"
 	"context"
 	"fmt"
 	"io"
 	"net"
 	"net/http"
 	"os"
+	"path/filepath"
 	"strconv"
 	"strings"
 	"sync"
@@ -20,6 +22,7 @@ import (
 	"github.com/docker/docker/api/types"
 	"github.com/docker/docker/api/types/filters"
 	"github.com/docker/docker/client"
+	"github.com/docker/docker/pkg/stdcopy"
 
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
@@ -481,7 +484,11 @@ func (p *Proxy) GetFile(ctx context.Context, asRoot bool, remoteFile, localFile 
 			if err != nil {
 				return errors.Wrap(err, "could not copy remote file")
 			}
-			_, err = io.Copy(outFile, r)
+			tr := tar.NewReader(r)
+			if _, err := tr.Next(); err != nil {
+				return errors.Wrap(err, "could not read remote tar file")
+			}
+			_, err = io.Copy(outFile, tr)
 			if err != nil {
 				return errors.Wrap(err, "could not write to local file")
 			}
@@ -514,12 +521,26 @@ func (p *Proxy) PutFiles(ctx context.Context, asRoot bool, fileMap map[string]st
 	if p.isLocal() {
 		for l, r := range fileMap {
 			if p.isDockerized() {
-				f, err := os.Open(l)
+				f, err := os.ReadFile(l)
 				if err != nil {
-					return errors.Wrap(err, "could not open local file")
+					return errors.Wrap(err, "could not read local file")
 				}
-				defer f.Close()
-				return p.dcl.CopyToContainer(ctx, p.sdc, r, f, types.CopyToContainerOptions{AllowOverwriteDirWithFile: true})
+				hdr := &tar.Header{
+					Name: filepath.Base(r),
+					Size: int64(len(f)),
+				}
+				var buf bytes.Buffer
+				tw := tar.NewWriter(&buf)
+				if err := tw.WriteHeader(hdr); err != nil {
+					return errors.Wrap(err, "failed to write tar header")
+				}
+				if _, err := tw.Write(f); err != nil {
+					return errors.Wrap(err, "failed to write tar body")
+				}
+				if err := tw.Close(); err != nil {
+					return errors.Wrap(err, "failed to close tar")
+				}
+				return p.dcl.CopyToContainer(ctx, p.sdc, filepath.Dir(r), &buf, types.CopyToContainerOptions{AllowOverwriteDirWithFile: true})
 			}
 			if asRoot {
 				testing.ContextLogf(ctx, "Running sudo cp %s %s", l, r)
@@ -594,11 +615,9 @@ func (p *Proxy) dockerExec(ctx context.Context, stdin io.Reader, name string, ar
 			return
 		}
 		defer hRes.Close()
-		scanner := bufio.NewScanner(hRes.Reader)
-		for scanner.Scan() {
-			out = append(out, scanner.Bytes()...)
-			out = append(out, '\n')
-		}
+		var outBuf, errBuf bytes.Buffer
+		stdcopy.StdCopy(&outBuf, &errBuf, hRes.Reader)
+		out = outBuf.Bytes()
 	}(p.dcl)
 
 	wg.Wait()
