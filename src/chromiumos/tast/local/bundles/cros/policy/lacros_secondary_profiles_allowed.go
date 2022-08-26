@@ -9,6 +9,7 @@ import (
 	"time"
 
 	"chromiumos/tast/common/fixture"
+	"chromiumos/tast/common/pci"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/ctxutil"
@@ -25,8 +26,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: LacrosSecondaryProfilesAllowed,
-		Desc: "Behavior of LacrosSecondaryProfilesAllowed policy",
+		Func:         LacrosSecondaryProfilesAllowed,
+		Desc:         "Behavior of LacrosSecondaryProfilesAllowed policy",
+		LacrosStatus: testing.LacrosVariantExists,
 		Contacts: []string{
 			"anastasiian@chromium.org", // Test author
 			"chromeos-commercial-identity@google.com",
@@ -34,6 +36,9 @@ func init() {
 		SoftwareDeps: []string{"chrome", "lacros"},
 		Attr:         []string{"group:mainline", "informational"},
 		Fixture:      fixture.LacrosPolicyLoggedIn,
+		SearchFlags: []*testing.StringPair{
+			pci.SearchFlag(&policy.LacrosSecondaryProfilesAllowed{}, pci.VerifiedFunctionalityUI),
+		},
 	})
 }
 

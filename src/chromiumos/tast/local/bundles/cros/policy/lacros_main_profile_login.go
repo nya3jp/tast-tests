@@ -9,6 +9,7 @@ import (
 	"time"
 
 	"chromiumos/tast/common/fixture"
+	"chromiumos/tast/common/pci"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/ctxutil"
@@ -126,6 +127,10 @@ func init() {
 				},
 			}},
 		Timeout: chrome.LoginTimeout + time.Minute,
+		SearchFlags: []*testing.StringPair{
+			pci.SearchFlag(&policy.EnableSyncConsent{}, pci.VerifiedFunctionalityUI),
+			pci.SearchFlag(&policy.SyncDisabled{}, pci.VerifiedFunctionalityUI),
+		},
 	})
 }
 

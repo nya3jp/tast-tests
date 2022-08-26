@@ -11,6 +11,7 @@ import (
 	"time"
 
 	"chromiumos/tast/common/fixture"
+	"chromiumos/tast/common/pci"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/ctxutil"
@@ -44,6 +45,10 @@ func init() {
 			Val:               browser.TypeLacros,
 		}},
 		Data: []string{"notifications_for_urls_test_page.html"},
+		SearchFlags: []*testing.StringPair{
+			pci.SearchFlag(&policy.NotificationsAllowedForUrls{}, pci.VerifiedFunctionalityJS),
+			pci.SearchFlag(&policy.DefaultNotificationsSetting{}, pci.VerifiedValue),
+		},
 	})
 }
 
