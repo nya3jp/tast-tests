@@ -21,6 +21,7 @@ import (
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/local/policyutil/fixtures"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -33,13 +34,25 @@ func init() {
 			"arc-commercial@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		Timeout:      2 * time.Minute,
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
+			// TODO(b/169663310): Remove the unstable variant of the test when test is stable on
+			// these boards.
+			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel("krane", "kakadu", "katsu", "kodama")),
 		}, {
 			Name:              "vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
+			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel("krane")),
+		}, {
+			Name:              "unstable",
+			ExtraSoftwareDeps: []string{"android_p"},
+			ExtraAttr:         []string{"informational"},
+		}, {
+			Name:              "vm_unstable",
+			ExtraSoftwareDeps: []string{"android_vm"},
+			ExtraAttr:         []string{"informational"},
 		}},
 		SearchFlags: []*testing.StringPair{
 			pci.SearchFlag(&policy.ArcEnabled{}, pci.VerifiedFunctionalityUI),
