@@ -1,0 +1,37 @@
+// Copyright 2022 The ChromiumOS Authors.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package tast.cros.platform;
+
+import "google/protobuf/empty.proto";
+
+option go_package = "chromiumos/tast/services/cros/platform";
+
+// DbusService provides RPC methods for interacting with DBus on platform.
+service DbusService {
+  // Enables DBus activation for given service.
+  rpc EnableDbusActivation(EnableDbusActivationRequest) returns (google.protobuf.Empty) {}
+  // Disables DBus activation for given service.
+  rpc DisableDbusActivation(DisableDbusActivationRequest) returns (google.protobuf.Empty) {}
+  // Check that given service has bus activation enabled.
+  rpc IsDbusActivationEnabled(IsDbusActivationEnabledRequest) returns (IsDbusActivationEnabledResponse) {}
+}
+
+message EnableDbusActivationRequest {
+  string service_name = 1;
+}
+
+message DisableDbusActivationRequest {
+  string service_name = 1;
+}
+
+message IsDbusActivationEnabledRequest {
+  string service_name = 1;
+}
+
+message IsDbusActivationEnabledResponse {
+  bool enabled = 1;
+}
