@@ -73,6 +73,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "345ba5f4_dfff2637",
+        "filename": "src/chromiumos/tast/local/assistant/lacros.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-08-26T01:52:15Z",
+      "side": 1,
+      "message": "I\u0027ll probably leave it up to yawano@ since the other ash fixtures also use these but don\u0027t have a const/var/func for sharing.",
+      "parentUuid": "aacf95a3_85d1c166",
+      "revId": "daf6bb4e6bde030eeb4711d6e9fd16b6b1a744b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "08316f2d_7383ba33",
         "filename": "src/chromiumos/tast/local/bundles/cros/assistant/card_element_animation_perf.go",
         "patchSetId": 4
