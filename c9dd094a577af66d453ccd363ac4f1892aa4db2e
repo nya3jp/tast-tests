@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "06c30dd2_914afc94",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2022-08-26T02:19:41Z",
+      "side": 1,
+      "message": "For the tpm1 case, we will need to use remote tast.\nBut this test used local test packages, that\u0027s not doable now.",
+      "revId": "c9dd094a577af66d453ccd363ac4f1892aa4db2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
