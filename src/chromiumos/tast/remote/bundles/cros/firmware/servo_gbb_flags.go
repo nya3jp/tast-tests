@@ -202,7 +202,7 @@ func ServoGBBFlags(ctx context.Context, s *testing.State) {
 	h.DisconnectDUT(ctx) // Some of the dutControl commands will reboot
 	dutControl(ctx, s, h.Servo, servoFlashCmds.DUTControlOn)
 	if err = bios.WriteRemoteFlashrom(ctx, h.ServoProxy, programmer, img, commonbios.GBBImageSection, servoFlashCmds.FlashExtraFlagsFlashrom); err != nil {
-		s.Error("count not write flashrom: ", err)
+		s.Error("Failed to write flashrom: ", err)
 	}
 	dutControl(ctx, s, h.Servo, servoFlashCmds.DUTControlOff)
 	if s.HasError() {
