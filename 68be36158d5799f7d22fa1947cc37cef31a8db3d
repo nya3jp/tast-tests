@@ -39,6 +39,30 @@
       },
       "revId": "68be36158d5799f7d22fa1947cc37cef31a8db3d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8d8f030_3ff3fd87",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1000045
+      },
+      "writtenOn": "2022-08-26T00:45:16Z",
+      "side": 0,
+      "message": "AFAICT from reading the source of OpenExpandedView() it contains fallback code that supports productivity launcher. I suspect there are some tests using it to open the clamshell mode launcher. I need to talk to Toni about it, so I decided to leave it alone in this CL.",
+      "parentUuid": "ba001e82_4ea6afad",
+      "range": {
+        "startLine": 180,
+        "startChar": 12,
+        "endLine": 180,
+        "endChar": 28
+      },
+      "revId": "68be36158d5799f7d22fa1947cc37cef31a8db3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
