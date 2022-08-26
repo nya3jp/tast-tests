@@ -83,6 +83,10 @@ message NewRequest {
     // account.
     string parent_password = 6;
   }
+
+  // Lacros is the primary browser to be used if |lacros| is set. Ash will be
+  // used if unset.
+  Lacros lacros = 11;
 }
 
 // LoginMode describes the user mode for the login.
@@ -92,4 +96,25 @@ enum LoginMode {
   LOGIN_MODE_FAKE_LOGIN = 2;   // fake login with no authentication
   LOGIN_MODE_GAIA_LOGIN = 3;   // real network-based login using GAIA backend
   LOGIN_MODE_GUEST_LOGIN = 4;  // sign in as ephemeral guest user
+}
+
+// Lacros is the primary browser to be used when logged in. This could be
+// configured to launch browser with the supporting mode from given sources.
+message Lacros {
+  // Mode is whether Lacros is enabled as a primary browser or else.
+  enum Mode {
+    MODE_UNSPECIFIED = 0;
+    MODE_SIDEBYSIDE = 1;
+    MODE_PRIMARY = 2;
+    MODE_ONLY = 3;
+  }
+  Mode mode = 1;
+
+  // Selection is where to locate a Lacros browser. Use Rootfs as a default.
+  enum Selection {
+    SELECTION_UNSPECIFIED = 0;
+    SELECTION_ROOTFS = 1;
+    SELECTION_OMAHA = 2;
+  }
+  Selection selection = 2;
 }
