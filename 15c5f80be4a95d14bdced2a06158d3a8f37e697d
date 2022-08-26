@@ -35,6 +35,115 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "1146d41e_b63e7b0f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/expectations/README.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-08-26T00:28:41Z",
+      "side": 1,
+      "message": "No objection on this but wondering how we enforce it.\n\nRight now, deqp is simply put into expectations/deqp and it is used by borealis.Deqp",
+      "range": {
+        "startLine": 15,
+        "startChar": 43,
+        "endLine": 15,
+        "endChar": 72
+      },
+      "revId": "15c5f80be4a95d14bdced2a06158d3a8f37e697d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c3fd998_1c8689ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/expectations/README.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-08-26T00:28:41Z",
+      "side": 1,
+      "message": "Always confused me with the build number, how about BuildBoard?",
+      "range": {
+        "startLine": 26,
+        "startChar": 2,
+        "endLine": 26,
+        "endChar": 7
+      },
+      "revId": "15c5f80be4a95d14bdced2a06158d3a8f37e697d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24472e2a_75626224",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/expectations/README.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-08-26T00:28:41Z",
+      "side": 1,
+      "message": "Probably explain how all the yaml are interact with each other. If model, build, board, platform all exist for a particular test, are the content merged together?\n\nAnd what\u0027s the content of the file would look like?",
+      "revId": "15c5f80be4a95d14bdced2a06158d3a8f37e697d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4cfd259_9b3573e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/expectations/README.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-08-26T00:28:41Z",
+      "side": 1,
+      "message": "s. Type\n  ^\n space",
+      "range": {
+        "startLine": 31,
+        "startChar": 62,
+        "endLine": 31,
+        "endChar": 68
+      },
+      "revId": "15c5f80be4a95d14bdced2a06158d3a8f37e697d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4aba1fe4_4c321490",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/expectations/README.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-08-26T00:28:41Z",
+      "side": 1,
+      "message": "What do you mean ticket string?",
+      "range": {
+        "startLine": 33,
+        "startChar": 12,
+        "endLine": 33,
+        "endChar": 26
+      },
+      "revId": "15c5f80be4a95d14bdced2a06158d3a8f37e697d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "7c86a3d4_80aaf19f",
@@ -53,6 +162,138 @@
         "startChar": 1,
         "endLine": 35,
         "endChar": 10
+      },
+      "revId": "15c5f80be4a95d14bdced2a06158d3a8f37e697d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e40073d_8382045a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/expectations/expectations.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-08-26T00:28:41Z",
+      "side": 1,
+      "message": "Looks like only a limited number of functions will be called by tests. Consider unexport functions to limit package visibility.\n\ne.g. ConvertBuildToBoard, GenerateTestExpectationsFilenameWithDirectory, GetTestExpectationsDirectory",
+      "range": {
+        "startLine": 56,
+        "startChar": 5,
+        "endLine": 56,
+        "endChar": 24
+      },
+      "revId": "15c5f80be4a95d14bdced2a06158d3a8f37e697d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd24aede_e970b43f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/expectations/expectations.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-08-26T00:28:41Z",
+      "side": 1,
+      "message": "How about strings.Replace to replace . with /?",
+      "revId": "15c5f80be4a95d14bdced2a06158d3a8f37e697d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1fdf60e5_205dd3f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/expectations/expectations.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-08-26T00:28:41Z",
+      "side": 1,
+      "message": "Let\u0027s simply return an error and let the caller determine if they want to fail the test.",
+      "range": {
+        "startLine": 141,
+        "startChar": 3,
+        "endLine": 141,
+        "endChar": 55
+      },
+      "revId": "15c5f80be4a95d14bdced2a06158d3a8f37e697d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8034cf5a_5c48d070",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/expectations/expectations.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-08-26T00:28:41Z",
+      "side": 1,
+      "message": "Do we want to rely on the caller to close it? Or simply returns the content of the files back?",
+      "range": {
+        "startLine": 144,
+        "startChar": 10,
+        "endLine": 144,
+        "endChar": 18
+      },
+      "revId": "15c5f80be4a95d14bdced2a06158d3a8f37e697d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b7f5a55_34e528b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/expectations/expectations.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-08-26T00:28:41Z",
+      "side": 1,
+      "message": "Looks like you return on the first successful read, then the order in 138 matters a lot. Maybe add something in your README?",
+      "range": {
+        "startLine": 145,
+        "startChar": 2,
+        "endLine": 148,
+        "endChar": 3
+      },
+      "revId": "15c5f80be4a95d14bdced2a06158d3a8f37e697d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eabd19ef_0e8268de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/expectations/expectations.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-08-26T00:28:41Z",
+      "side": 1,
+      "message": "Looks only used in your next CL. Do you mind adding it there?",
+      "range": {
+        "startLine": 160,
+        "startChar": 0,
+        "endLine": 180,
+        "endChar": 1
       },
       "revId": "15c5f80be4a95d14bdced2a06158d3a8f37e697d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
