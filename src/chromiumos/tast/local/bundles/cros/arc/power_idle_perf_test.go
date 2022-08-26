@@ -35,23 +35,45 @@ func TestPowerIdlePerfParamsAreGenerated(t *testing.T) {
 		SoftwareDeps []string
 		HardwareDeps []string
 		Fixture      string
+		Timeout      string
 		Val          []valMember
 	}
 	var params []paramData
 	for _, batteryMode := range []struct {
-		name  string
-		hwdep string
-		val   []valMember
+		name    string
+		hwdep   string
+		timeout string
+		val     []valMember
 	}{
 		{
 			"",
 			"hwdep.ForceDischarge()",
-			[]valMember{{"setupOption", "setup.ForceBatteryDischarge"}},
+			"15 * time.Minute",
+			[]valMember{
+				{"setupOption", "setup.ForceBatteryDischarge"},
+				{"metrics", "power.TestMetrics()"},
+				{"iterations", "30"}, // 5 minutes.
+			},
+		},
+		{
+			"discharge",
+			"hwdep.ForceDischarge()",
+			"40 * time.Minute",
+			[]valMember{
+				{"setupOption", "setup.ForceBatteryDischarge"},
+				{"metrics", "[]perf.TimelineDatasource{power.NewSysfsBatteryMetrics()}"},
+				{"iterations", "180"}, // 30 minutes.
+			},
 		},
 		{
 			"nobatterymetrics",
 			"hwdep.NoForceDischarge()",
-			[]valMember{{"setupOption", "setup.NoBatteryDischarge"}},
+			"15 * time.Minute",
+			[]valMember{
+				{"setupOption", "setup.NoBatteryDischarge"},
+				{"metrics", "power.TestMetrics()"},
+				{"iterations", "30"}, // 5 minutes.
+			},
 		},
 	} {
 		for _, arcType := range []struct {
@@ -81,6 +103,7 @@ func TestPowerIdlePerfParamsAreGenerated(t *testing.T) {
 				SoftwareDeps: []string{arcType.swdep},
 				HardwareDeps: []string{batteryMode.hwdep},
 				Fixture:      arcType.fixture,
+				Timeout:      batteryMode.timeout,
 				Val:          batteryMode.val,
 			}
 			params = append(params, p)
@@ -97,6 +120,7 @@ func TestPowerIdlePerfParamsAreGenerated(t *testing.T) {
 			{{ range .Val }}{{ .Key }}: {{ .Value }},
 			{{ end }}
 		},
+		Timeout: {{ .Timeout }},
 		Fixture: "{{ .Fixture }}",
 	},
 	{{ end }}`, params)
