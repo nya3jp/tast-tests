@@ -16,6 +16,69 @@
       "message": "LGTM.",
       "revId": "66b51e69e10de8b2a6e322fb28770a186e71e511",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "403f90f8_268ccc3b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1525637
+      },
+      "writtenOn": "2022-08-26T08:06:01Z",
+      "side": 1,
+      "message": "Only two nits.",
+      "revId": "66b51e69e10de8b2a6e322fb28770a186e71e511",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03fbef41_a72cc845",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/bt_test_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1525637
+      },
+      "writtenOn": "2022-08-26T08:06:01Z",
+      "side": 1,
+      "message": "Usually we don\u0027t break a string just because it\u0027s too long. Plesae consider to break this line before `pollErr` instead.\n\nSee http://go/go-style/guide#line-length",
+      "range": {
+        "startLine": 148,
+        "startChar": 36,
+        "endLine": 149,
+        "endChar": 56
+      },
+      "revId": "66b51e69e10de8b2a6e322fb28770a186e71e511",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67020b02_6562459b",
+        "filename": "src/chromiumos/tast/remote/bluetooth/emulated_btpeer_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1525637
+      },
+      "writtenOn": "2022-08-26T08:06:01Z",
+      "side": 1,
+      "message": "There are too many `else`s here. Please consider the following form:\n\n```\nbla, ok :\u003d func()\nif !ok {\n  return some_err\n}\nblabla, ok :\u003d func2(bla)\nif !ok {\n  return another_err\n}\nfor _, method :\u003d range blabla {\n  ...\n}\n```\n\nSee http://go/go-style/decisions#indent-error-flow",
+      "range": {
+        "startLine": 181,
+        "startChar": 0,
+        "endLine": 195,
+        "endChar": 2
+      },
+      "revId": "66b51e69e10de8b2a6e322fb28770a186e71e511",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
