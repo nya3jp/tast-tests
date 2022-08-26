@@ -1,0 +1,163 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d94e12d_c51229d2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-08-26T05:03:22Z",
+      "side": 1,
+      "message": "my initial scan.",
+      "revId": "fdac9b754defa76537eb8463c44020499aaa85de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1c9ffd4_724b4734",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/tpm_contest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-08-26T05:03:22Z",
+      "side": 1,
+      "message": "I don\u0027t think you need to take channel here.\nWhat you need is only returning the final result, so you can return error (nil on success),\nthen, caller can send it to the original goroutine.",
+      "range": {
+        "startLine": 35,
+        "startChar": 33,
+        "endLine": 35,
+        "endChar": 41
+      },
+      "revId": "fdac9b754defa76537eb8463c44020499aaa85de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08c06069_c8ad1100",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/tpm_contest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-08-26T05:03:22Z",
+      "side": 1,
+      "message": "could you properly stop the iteration at the end of test?",
+      "revId": "fdac9b754defa76537eb8463c44020499aaa85de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd5b4a95_afd0a854",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/tpm_contest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-08-26T05:03:22Z",
+      "side": 1,
+      "message": "could you return the error, instead?\nCould you remove testing.State from arg, then?\n\ntesting.ContextLog helps you to make logging.",
+      "revId": "fdac9b754defa76537eb8463c44020499aaa85de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e40fceb_c63ef6ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/tpm_contest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-08-26T05:03:22Z",
+      "side": 1,
+      "message": "style: min (no getter prefix please for consistency).",
+      "revId": "fdac9b754defa76537eb8463c44020499aaa85de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa22f01d_b68ac8c0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/tpm_contest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-08-26T05:03:22Z",
+      "side": 1,
+      "message": "nit/style: \"TPMContest\" (all capital for acronyms).",
+      "revId": "fdac9b754defa76537eb8463c44020499aaa85de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b6dbb83_4d23182a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/tpm_contest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-08-26T05:03:22Z",
+      "side": 1,
+      "message": "cmdStr sounds a bit weird as it\u0027s not str. Maybe just cmd?",
+      "revId": "fdac9b754defa76537eb8463c44020499aaa85de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac8c59e1_b9104020",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/tpm_contest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-08-26T05:03:22Z",
+      "side": 1,
+      "message": "let\u0027s break.",
+      "revId": "fdac9b754defa76537eb8463c44020499aaa85de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "649a8618_307c2218",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/tpm_contest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-08-26T05:03:22Z",
+      "side": 1,
+      "message": "unused.",
+      "revId": "fdac9b754defa76537eb8463c44020499aaa85de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
