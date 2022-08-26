@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f71d5b3_475392af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/toggle_cellular_from_quick_settings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1547388
+      },
+      "writtenOn": "2022-08-26T18:56:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ff73236_9dfd75ea",
+      "range": {
+        "startLine": 40,
+        "startChar": 8,
+        "endLine": 40,
+        "endChar": 11
+      },
+      "revId": "1b75912a4602c89622eb39fddd00d18588f28ad3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "569aaec9_ca31b03f",
@@ -71,6 +95,30 @@
       "writtenOn": "2022-08-26T18:27:28Z",
       "side": 1,
       "message": "This method looks like it might rely on the node that is found being a specific type of node that has `.Checked` property. Would it make sense to check the node type or whether it has that property/is the expected type? Or are we okay to check this property on any node? Asking because I am not actually sure whether we can safely access that member or not :)",
+      "range": {
+        "startLine": 534,
+        "startChar": 61,
+        "endLine": 535,
+        "endChar": 17
+      },
+      "revId": "1b75912a4602c89622eb39fddd00d18588f28ad3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b62d404_aa4ab9cd",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 535,
+      "author": {
+        "id": 1547388
+      },
+      "writtenOn": "2022-08-26T18:56:17Z",
+      "side": 1,
+      "message": "Checked property is a member of NodeInfo and NodeInfo is associated with all types of nodes. So, accessing this should be safe for any type of node.\n\nThis property applies for a few different node types {switch, radio button, checkbox etc}, however, there is nothing restricting for other types to make use of this property. Not restricting this to specific classes will make it possible to reuse this method for other types as well. Please let me know what you think.",
+      "parentUuid": "569aaec9_ca31b03f",
       "range": {
         "startLine": 534,
         "startChar": 61,
@@ -104,6 +152,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b6c05cf_74d9f3d4",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 543,
+      "author": {
+        "id": 1547388
+      },
+      "writtenOn": "2022-08-26T18:56:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "21a677d1_8ba07076",
+      "range": {
+        "startLine": 543,
+        "startChar": 3,
+        "endLine": 543,
+        "endChar": 18
+      },
+      "revId": "1b75912a4602c89622eb39fddd00d18588f28ad3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fc577356_1cf2d846",
@@ -117,6 +189,30 @@
       "writtenOn": "2022-08-26T18:27:28Z",
       "side": 1,
       "message": "Nit: WDYT of replacing this with `Ancestor(NetworkDetailedViewRevamp)` since the `HasClass` effectively checks the same thing, and the `Ancestor` call will help us be very specific?",
+      "range": {
+        "startLine": 36,
+        "startChar": 97,
+        "endLine": 36,
+        "endChar": 114
+      },
+      "revId": "1b75912a4602c89622eb39fddd00d18588f28ad3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "880a5798_770279da",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/quicksettings/network.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1547388
+      },
+      "writtenOn": "2022-08-26T18:56:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fc577356_1cf2d846",
       "range": {
         "startLine": 36,
         "startChar": 97,
