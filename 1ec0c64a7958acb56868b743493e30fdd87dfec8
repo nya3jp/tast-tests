@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8e082d3c_79755df5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/unicorn_extensions.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1248360
+      },
+      "writtenOn": "2022-08-26T15:20:02Z",
+      "side": 1,
+      "message": "Other tests that rely on Sync have a timeout of 5 minutes.\nSounds good to have 5 minutes here as well for consistency.\n\nNit: If it is possible to add comment that explains that long timeout is because waiting for sync, that would be great.\n\n [1] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/familylink/denied_sites_blocked.go;drc\u003d89303b9dbba464b18dc0dcf4d114f14c4f5210e5;l\u003d29\n [2] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/familylink/mature_sites_blocked.go;drc\u003d14caad2428faa63f150f507f52acb44287d5e7a2;l\u003d28",
+      "parentUuid": "9d95f77f_b1894506",
+      "range": {
+        "startLine": 28,
+        "startChar": 16,
+        "endLine": 28,
+        "endChar": 18
+      },
+      "revId": "1ec0c64a7958acb56868b743493e30fdd87dfec8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "02d3d211_b3b53897",
         "filename": "src/chromiumos/tast/local/bundles/cros/familylink/unicorn_extensions.go",
         "patchSetId": 2
@@ -72,6 +96,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b055405c_ce5c1d9f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/unicorn_extensions.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1248360
+      },
+      "writtenOn": "2022-08-26T15:20:02Z",
+      "side": 1,
+      "message": "Discussed this issue in https://chromium-review.googlesource.com/c/chromium/src/+/3857725/comments/d2c65dbe_22a00682",
+      "parentUuid": "3395e1b3_6620a533",
+      "range": {
+        "startLine": 58,
+        "startChar": 2,
+        "endLine": 65,
+        "endChar": 12
+      },
+      "revId": "1ec0c64a7958acb56868b743493e30fdd87dfec8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9d440ef3_654a8b53",
         "filename": "src/chromiumos/tast/local/bundles/cros/familylink/unicorn_extensions.go",
         "patchSetId": 2
@@ -89,6 +137,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1206f144_231a12ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/unicorn_extensions.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1248360
+      },
+      "writtenOn": "2022-08-26T15:20:02Z",
+      "side": 1,
+      "message": "Q: How does launching lacros here affect the NavigateExtensionApprovalFlow function?\nIIRC NavigateExtensionApprovalFlow opens the browser window. With this code added do we have 2 browser windows? Or is the lacros.Launch() \u0027silent\u0027 and does not open the UI?",
+      "range": {
+        "startLine": 74,
+        "startChar": 2,
+        "endLine": 74,
+        "endChar": 33
+      },
+      "revId": "1ec0c64a7958acb56868b743493e30fdd87dfec8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d8326b06_f15a8cf3",
         "filename": "src/chromiumos/tast/local/bundles/cros/familylink/unicorn_extensions.go",
         "patchSetId": 2
@@ -100,6 +171,30 @@
       "writtenOn": "2022-08-26T01:28:58Z",
       "side": 1,
       "message": "If you take my other suggestion, then we don\u0027t need to split the code path depending on Lacros vs Ash. In both cases, we would do the same thing: go to the Chrome Web Store page and keep refreshing until the error dialog disappears and the correct parent permission dialog appears. You wouldn\u0027t need this boolean anymore. I also like this suggestion because we shouldn\u0027t treat the Lacros browser any differently than Ash in tests.",
+      "range": {
+        "startLine": 92,
+        "startChar": 1,
+        "endLine": 92,
+        "endChar": 9
+      },
+      "revId": "1ec0c64a7958acb56868b743493e30fdd87dfec8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "000eb5e1_fb0a82d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/unicorn_extensions.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1248360
+      },
+      "writtenOn": "2022-08-26T15:20:02Z",
+      "side": 1,
+      "message": "Lacros and Ash have some differences. Especially when it comes to the startup. Since Ash is a UI process it is not up to user action to start it. It is not true for Lacros that is in user control. Starting Lacros is justified \u0027special treatment \u0027.",
+      "parentUuid": "d8326b06_f15a8cf3",
       "range": {
         "startLine": 92,
         "startChar": 1,
