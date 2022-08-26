@@ -30,7 +30,6 @@ func init() {
 
 func AssertCellularData(ctx context.Context, s *testing.State) {
 	testURL := "google.com"
-	cellularInterface := "rmnet_data0"
 	dutConn := s.DUT().Conn()
 	tf := s.FixtValue().(*manager.TestFixture)
 	if err := tf.ConnectToCallbox(ctx, dutConn, &manager.ConfigureCallboxRequestBody{
@@ -44,7 +43,7 @@ func AssertCellularData(ctx context.Context, s *testing.State) {
 			"pul", "0",
 			"pdl", "high",
 		},
-	}, cellularInterface); err != nil {
+	}); err != nil {
 		s.Fatal("Failed to initialize cellular connection: ", err)
 	}
 
@@ -54,7 +53,7 @@ func AssertCellularData(ctx context.Context, s *testing.State) {
 		s.Fatalf("Failed to curl %q on DUT using ethernet interface: %v", testURL, err)
 	}
 
-	cellularResult, err := dutConn.CommandContext(ctx, "curl", "--interface", cellularInterface, testURL).Output()
+	cellularResult, err := dutConn.CommandContext(ctx, "curl", "--interface", tf.InterfaceName, testURL).Output()
 	if err != nil {
 		s.Fatalf("Failed to curl %q on DUT using cellular interface: %v", testURL, err)
 	}
