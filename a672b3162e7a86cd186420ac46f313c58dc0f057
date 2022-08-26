@@ -16,6 +16,167 @@
       "message": "I just check on grammars and pass the test.\nPlease follow here for more details.\nhttps://drive.google.com/drive/u/3/folders/1fx5MK1M9BRm9yQe86QTe3CUpa6hnScSg",
       "revId": "a672b3162e7a86cd186420ac46f313c58dc0f057",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06ffeafc_7a63a1e2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/dock4_usb_audio.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1445085
+      },
+      "writtenOn": "2022-08-26T05:16:10Z",
+      "side": 1,
+      "message": "Remove space.  ChormeOS is one world and this is the branding change.",
+      "range": {
+        "startLine": 1,
+        "startChar": 30,
+        "endLine": 1,
+        "endChar": 31
+      },
+      "revId": "a672b3162e7a86cd186420ac46f313c58dc0f057",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f88a7f92_3a8dce0d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/dock4_usb_audio.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1445085
+      },
+      "writtenOn": "2022-08-26T05:16:10Z",
+      "side": 1,
+      "message": "Please remove. See older CL for reference.",
+      "range": {
+        "startLine": 1,
+        "startChar": 43,
+        "endLine": 1,
+        "endChar": 63
+      },
+      "revId": "a672b3162e7a86cd186420ac46f313c58dc0f057",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c6ef55e_944dcee2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/dock4_usb_audio.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1445085
+      },
+      "writtenOn": "2022-08-26T05:16:10Z",
+      "side": 1,
+      "message": "There is no context why these comment here? \nPlease put these inline to the code.  Also give descriptive comments rather raw output.",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 34
+      },
+      "revId": "a672b3162e7a86cd186420ac46f313c58dc0f057",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cec91d2c_ad719829",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/chromebook_window.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1445085
+      },
+      "writtenOn": "2022-08-26T05:16:10Z",
+      "side": 1,
+      "message": "Please fix.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 63
+      },
+      "revId": "a672b3162e7a86cd186420ac46f313c58dc0f057",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "880fa0f2_1b914f58",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/wwcb_api.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1445085
+      },
+      "writtenOn": "2022-08-26T05:16:10Z",
+      "side": 1,
+      "message": "Please fix.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 63
+      },
+      "revId": "a672b3162e7a86cd186420ac46f313c58dc0f057",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7fa30937_3adb39b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/wwcb_fixture.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1445085
+      },
+      "writtenOn": "2022-08-26T05:16:10Z",
+      "side": 1,
+      "message": "Please fix.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 63
+      },
+      "revId": "a672b3162e7a86cd186420ac46f313c58dc0f057",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba328a4d_c9a5da86",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/wwcb_verify.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1445085
+      },
+      "writtenOn": "2022-08-26T05:16:10Z",
+      "side": 1,
+      "message": "Please fix.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 63
+      },
+      "revId": "a672b3162e7a86cd186420ac46f313c58dc0f057",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
