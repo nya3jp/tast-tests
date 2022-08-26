@@ -33,6 +33,24 @@
       "message": "FYI, https://crrev.com/c/3828403, a big refactoring from EngProd team is landing. I believe there are some ideas we want, such as moving the local/bluetooth package to local/bluetooth/bluez, moving the fixture out of bundles, etc.\n\nI thought I added you to the CC, but actually not...",
       "revId": "4fa71a47aa8169f677b9ecbbad683070376e5ea3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "12b27847_5077cd08",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-08-26T18:53:47Z",
+      "side": 1,
+      "message": "Thank you for the heads up Hsin-chen! I will leave this change up until that one lands and will make changes as appropriate :)",
+      "parentUuid": "9dfba47d_89a1747e",
+      "revId": "4fa71a47aa8169f677b9ecbbad683070376e5ea3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
