@@ -195,6 +195,7 @@ func Minijail(ctx context.Context, s *testing.State) {
 	chrootArgs := []string{"-C", "%T/c"}
 	pivotrootArgs := []string{"-P", "%T/c"}
 	usernsArgs := []string{"-m0 1000 1", "-M0 1000 1"}
+	landlockArgs := []string{"--fs-default-paths", "--fs-path-rx=/usr/local/libexec/tast"}
 
 	for _, tc := range []testCase{
 		{
@@ -389,6 +390,13 @@ func Minijail(ctx context.Context, s *testing.State) {
 			cmd:   "id -ru && id -u",
 			args:  usernsArgs,
 			check: checkRegexp("^0\n0\n$"),
+		},
+		// Landlock test cases.
+		{
+			name:  "landlock-allow",
+			cmd:   "/bin/true",
+			args:  landlockArgs,
+			check: checkRegexp(""),
 		},
 	} {
 		runTestCase(&tc, s.Param().(linkMode))
