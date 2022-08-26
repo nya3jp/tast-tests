@@ -9,6 +9,7 @@ import (
 	"time"
 
 	"chromiumos/tast/common/fixture"
+	"chromiumos/tast/common/pci"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/errors"
@@ -36,6 +37,9 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		Fixture:      fixture.ChromePolicyLoggedIn,
 		Data:         []string{"user_avatar_image.jpeg"},
+		SearchFlags: []*testing.StringPair{
+			pci.SearchFlag(&policy.UserAvatarImage{}, pci.VerifiedFunctionalityUI),
+		},
 	})
 }
 
