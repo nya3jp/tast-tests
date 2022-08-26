@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e5595df_ea07fe22",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-08-26T07:50:39Z",
+      "side": 1,
+      "message": "the commit message should start with the package name, for example:\n`tast: Fix DismissOnboardingDialog`",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 29
+      },
+      "revId": "ebbae2c10a7144baaebc2e270a686972863a3c8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a2dd5fe_1d6a0be2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-08-26T07:50:39Z",
+      "side": 1,
+      "message": "LGTM % minor nit",
+      "revId": "ebbae2c10a7144baaebc2e270a686972863a3c8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
