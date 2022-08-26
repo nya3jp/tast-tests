@@ -1,4 +1,4 @@
-// Copyright 2022 The Chromium OS Authors. All rights reserved.
+// Copyright 2022 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -28,7 +28,7 @@ const (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ChromeServiceGRPC,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Check basic functionality of ChromeService",
 		Contacts:     []string{"jonfan@google.com", "chromeos-sw-engprod@google.com"},
 		SoftwareDeps: []string{"chrome"},
@@ -71,6 +71,10 @@ func init() {
 				// Credentials will be populated based on "ui.gaiaPoolDefault" in the main test function.
 				LoginMode: pb.LoginMode_LOGIN_MODE_GAIA_LOGIN,
 			},
+		}, {
+			Name: "default_fake_login_lacros",
+			Val: &pb.NewRequest{
+				Lacros: &pb.Lacros{}},
 		}},
 	})
 }
