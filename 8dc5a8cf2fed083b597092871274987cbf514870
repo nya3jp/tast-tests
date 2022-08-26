@@ -133,6 +133,24 @@
       "parentUuid": "f46e189c_1344fc33",
       "revId": "8dc5a8cf2fed083b597092871274987cbf514870",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a258607_d8457b5d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_tpm_live_tests.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-08-26T10:15:04Z",
+      "side": 1,
+      "message": "Oh but this is odd: it means that the shortened `ctx` isn\u0027t actually used for running the test. We need to restructure the code so that it\u0027s actually used (maybe by extracting the preparation part into a helper function or function literal?).",
+      "parentUuid": "b0fc3912_bfb7a316",
+      "revId": "8dc5a8cf2fed083b597092871274987cbf514870",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
