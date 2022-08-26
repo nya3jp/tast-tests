@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07fd2a1d_73596d44",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/shill_cellular_sim_slots.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-08-26T14:02:03Z",
+      "side": 1,
+      "message": "nit: `iccid`",
+      "range": {
+        "startLine": 77,
+        "startChar": 2,
+        "endLine": 77,
+        "endChar": 7
+      },
+      "revId": "a6fb49fd7314863e48e7483ffc3cc62840943e23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "627cfeef_f60463e7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/shill_cellular_sim_slots.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-08-26T14:02:03Z",
+      "side": 1,
+      "message": "any reason to introduce this new variable? seems like you can just leave this out and use `iccid` below",
+      "revId": "a6fb49fd7314863e48e7483ffc3cc62840943e23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
