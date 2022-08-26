@@ -46,7 +46,8 @@ func init() {
 			"hardikgoyal@chromium.org",
 			"cryptohome-core@google.com",
 		},
-		Attr: []string{"group:mainline"},
+		Attr:         []string{"group:mainline"},
+		SoftwareDeps: []string{"tpm2"},
 		Params: []testing.Param{{
 			Name: "default",
 			Val:  &params{VaultType: defaultVaultType},
