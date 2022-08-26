@@ -16,6 +16,29 @@
       "message": "Agree, Pavan could you PTAL at this when you get a chance",
       "revId": "ee7350d3fd3f056d1c672aa6ad662b6bf85782bf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e754b9ba_51139995",
+        "filename": "src/chromiumos/tast/local/network/cellular_network_provider.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1516042
+      },
+      "writtenOn": "2022-08-26T23:42:22Z",
+      "side": 1,
+      "message": "It seems like this pSims include both eSims and pSims, can we rename the pSim to make it clear?",
+      "range": {
+        "startLine": 223,
+        "startChar": 1,
+        "endLine": 223,
+        "endChar": 18
+      },
+      "revId": "ee7350d3fd3f056d1c672aa6ad662b6bf85782bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
