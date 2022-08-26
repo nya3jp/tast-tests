@@ -6,6 +6,7 @@ package policyutil
 
 import (
 	"context"
+	"time"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
@@ -191,15 +192,30 @@ func (checker *nodeChecker) Verify() error {
 func CheckCertificateVisibleInSystemSettings(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome, certName string) error {
 	OSSettingsPage(ctx, cr, "network")
 	ui := uiauto.New(tconn)
+
+	if err := ui.DoDefault(nodewith.Name("Add network connection").Role(role.Button))(ctx); err != nil {
+		return err
+	}
+
+	// Sometimes Wi-Fi is not enabled by default and "Add Wi-Fi" button is not shown.
+	// Enable it in such cases.
+	err := ui.WithTimeout(time.Second).WaitUntilExists(nodewith.Name("Add Wi-Fi…").Role(role.Button))(ctx)
+	if err != nil {
+		if err := ui.DoDefault(nodewith.Name("Wi-Fi enable").Role(role.ToggleButton))(ctx); err != nil {
+			return err
+		}
+	}
+
 	return uiauto.Combine("use system settings",
-		ui.LeftClick(nodewith.Name("Add network connection").Role(role.Button)),
-		ui.LeftClick(nodewith.Name("Add Wi-Fi…").Role(role.Button)),
-		ui.LeftClick(nodewith.Name("Security").ClassName("md-select")),
+		ui.WaitUntilExists(nodewith.Name("Add Wi-Fi…").Role(role.Button)),
+		ui.DoDefault(nodewith.Name("Add Wi-Fi…").Role(role.Button)),
+		ui.DoDefault(nodewith.Name("Security").ClassName("md-select")),
 		ui.LeftClick(nodewith.Name("EAP").Role(role.ListBoxOption)),
-		ui.LeftClick(nodewith.Name("EAP method").ClassName("md-select")),
+		ui.WaitUntilExists(nodewith.Name("EAP method").ClassName("md-select")),
+		ui.DoDefault(nodewith.Name("EAP method").ClassName("md-select")),
 		ui.LeftClick(nodewith.Name("EAP-TLS").Role(role.ListBoxOption)),
 		ui.WaitUntilExists(nodewith.Name("Server CA certificate").Role(role.InlineTextBox)),
 		ui.MakeVisible(nodewith.Name("User certificate").Role(role.InlineTextBox)),
-		ui.LeftClick(nodewith.Name("User certificate").ClassName("md-select")),
-		ui.LeftClick(nodewith.Name(certName+" ["+certName+"]").Role(role.ListBoxOption)))(ctx)
+		ui.DoDefault(nodewith.Name("User certificate").ClassName("md-select")),
+		ui.DoDefault(nodewith.Name(certName+" ["+certName+"]").Role(role.ListBoxOption)))(ctx)
 }
