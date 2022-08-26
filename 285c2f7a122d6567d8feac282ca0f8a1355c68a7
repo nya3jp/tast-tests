@@ -194,6 +194,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e460512e_8e434143",
+        "filename": "src/chromiumos/tast/local/cellular/cellular_network_provider.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-08-26T18:42:54Z",
+      "side": 1,
+      "message": "Ah, TIL! Thank you for the explanation :)",
+      "parentUuid": "5048db02_dc56ca1f",
+      "range": {
+        "startLine": 214,
+        "startChar": 0,
+        "endLine": 220,
+        "endChar": 21
+      },
+      "revId": "285c2f7a122d6567d8feac282ca0f8a1355c68a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "394d9452_adbb9117",

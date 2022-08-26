@@ -16,6 +16,23 @@
       "message": "Moved cellular_network_provider from local/cellular/ to local/network/ and renamed Networks to CellularNetworks.",
       "revId": "c0f52896f7f23850780c9db96982953bd7a76161",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd17f6b6_f70b25c8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-08-26T18:42:54Z",
+      "side": 1,
+      "message": "LGTM, but it might be worth having Pavan or another take a look from the Platform perspective!",
+      "revId": "c0f52896f7f23850780c9db96982953bd7a76161",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
