@@ -464,7 +464,7 @@ func closeAllTabs(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn
 	return cuj.CloseChrome(ctx, tconn)
 }
 
-// Run2 runs the TabSwitchCUJ test. It is invoked by TabSwitchCujRecorder2 to
+// Run2 runs the TabSwitchCUJ test. It is invoked by TabSwitchCUJRecorder2 to
 // record web contents via WPR and invoked by TabSwitchCUJ2 to execute the tests
 // from the recorded contents. Additional actions will be executed in each tab.
 func Run2(ctx context.Context, s *testing.State, cr *chrome.Chrome, caseLevel Level, isTablet bool, bt browser.Type) {
@@ -527,13 +527,9 @@ func Run2(ctx context.Context, s *testing.State, cr *chrome.Chrome, caseLevel Le
 	}
 	s.Log("Browser start ms: ", browserStartTime)
 	br := cr.Browser()
-	var bTconn *chrome.TestConn
-	if l != nil {
-		br = l.Browser()
-		bTconn, err = l.TestAPIConn(ctx)
-		if err != nil {
-			s.Fatal("Failed to get lacros test API Conn: ", err)
-		}
+	bTconn, err := br.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to get browser test API connection: ", err)
 	}
 	defer func(ctx context.Context) {
 		// To make debug easier, if something goes wrong, take screenshot before tabs are closed.
