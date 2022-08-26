@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9518fcf4_22cd284f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tab_switch_cuj_recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-08-26T06:37:10Z",
+      "side": 1,
+      "message": "+tclaiborne@ Can you (or a good contact of this) confirm if this test needs migration to Lacros? I ran it locally, but it seems to have been broken. If not used, please consider removing this.",
+      "range": {
+        "startLine": 20,
+        "startChar": 24,
+        "endLine": 20,
+        "endChar": 61
+      },
+      "revId": "9a28ee22b7ca51d409b86d8918aa3249420861e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
