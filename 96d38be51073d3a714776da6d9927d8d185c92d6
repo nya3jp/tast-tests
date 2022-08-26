@@ -142,6 +142,24 @@
       "parentUuid": "1de5824c_fd1d7ee2",
       "revId": "96d38be51073d3a714776da6d9927d8d185c92d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c3254c4_3837020e",
+        "filename": "src/chromiumos/tast/local/apps/apps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 526,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-08-26T05:37:15Z",
+      "side": 1,
+      "message": "Actually, I don\u0027t need to touch that method at all.\n\nRevised to make all the changes to the private function for the inputs tests, to ensure the change doesn\u0027t impact elsewhere.",
+      "parentUuid": "58baa093_68b0cd5a",
+      "revId": "96d38be51073d3a714776da6d9927d8d185c92d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
