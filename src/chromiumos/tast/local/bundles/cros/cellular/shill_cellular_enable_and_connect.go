@@ -15,16 +15,18 @@ import (
 	"chromiumos/tast/local/modemmanager"
 	"chromiumos/tast/local/shill"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     ShillCellularEnableAndConnect,
-		Desc:     "Verifies that Shill can enable, disable, connect, and disconnect to a Cellular Service",
-		Contacts: []string{"stevenjb@google.com", "cros-network-health@google.com", "chromeos-cellular-team@google.com"},
-		Attr:     []string{"group:cellular", "cellular_unstable", "cellular_sim_active"},
-		Timeout:  10 * time.Minute,
-		Fixture:  "cellular",
+		Func:         ShillCellularEnableAndConnect,
+		Desc:         "Verifies that Shill can enable, disable, connect, and disconnect to a Cellular Service",
+		Contacts:     []string{"stevenjb@google.com", "cros-network-health@google.com", "chromeos-cellular-team@google.com"},
+		Attr:         []string{"group:cellular", "cellular_unstable", "cellular_sim_active", "group:crosbolt", "crosbolt_perbuild"},
+		HardwareDeps: hwdep.D(hwdep.Cellular()),
+		Timeout:      10 * time.Minute,
+		Fixture:      "cellular",
 	})
 }
 
