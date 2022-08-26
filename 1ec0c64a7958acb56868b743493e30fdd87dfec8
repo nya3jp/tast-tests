@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b484d4bc_0d533c7e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/unicorn_extensions.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-08-26T17:13:11Z",
+      "side": 1,
+      "message": "In that case, then the timeout below on line 101 should be four minutes. Either way, there should be a ~1 minute delta between the sync timeout and the overall test timeout.",
+      "parentUuid": "8e082d3c_79755df5",
+      "range": {
+        "startLine": 28,
+        "startChar": 16,
+        "endLine": 28,
+        "endChar": 18
+      },
+      "revId": "1ec0c64a7958acb56868b743493e30fdd87dfec8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "02d3d211_b3b53897",
         "filename": "src/chromiumos/tast/local/bundles/cros/familylink/unicorn_extensions.go",
         "patchSetId": 2
@@ -67,6 +91,23 @@
         "endLine": 41,
         "endChar": 4
       },
+      "revId": "1ec0c64a7958acb56868b743493e30fdd87dfec8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0b8a169_f6d76262",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/unicorn_extensions.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-08-26T17:13:11Z",
+      "side": 1,
+      "message": "Nit: consider inlining this on line 63 below.",
       "revId": "1ec0c64a7958acb56868b743493e30fdd87dfec8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -120,6 +161,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dec2302f_68a34712",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/unicorn_extensions.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-08-26T17:13:11Z",
+      "side": 1,
+      "message": "Could you move this function to projector.go [1] and call it at the beginning of NavigateExtensionApprovalFlow()? The ability to poll wait for prefs to sync seems like a useful helper function to add to the common utility file. These helper functions are also generic and not specific to this test file.\n\n[1] src/platform/tast-tests/src/chromiumos/tast/local/chrome/projector/projector.go",
+      "range": {
+        "startLine": 72,
+        "startChar": 5,
+        "endLine": 72,
+        "endChar": 40
+      },
+      "revId": "1ec0c64a7958acb56868b743493e30fdd87dfec8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9d440ef3_654a8b53",
         "filename": "src/chromiumos/tast/local/bundles/cros/familylink/unicorn_extensions.go",
         "patchSetId": 2
@@ -148,6 +212,30 @@
       "writtenOn": "2022-08-26T15:20:02Z",
       "side": 1,
       "message": "Q: How does launching lacros here affect the NavigateExtensionApprovalFlow function?\nIIRC NavigateExtensionApprovalFlow opens the browser window. With this code added do we have 2 browser windows? Or is the lacros.Launch() \u0027silent\u0027 and does not open the UI?",
+      "range": {
+        "startLine": 74,
+        "startChar": 2,
+        "endLine": 74,
+        "endChar": 33
+      },
+      "revId": "1ec0c64a7958acb56868b743493e30fdd87dfec8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48572d6d_19f1edbf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/unicorn_extensions.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-08-26T17:13:11Z",
+      "side": 1,
+      "message": "I don\u0027t see two Lacros windows when I run this test.",
+      "parentUuid": "1206f144_231a12ea",
       "range": {
         "startLine": 74,
         "startChar": 2,
