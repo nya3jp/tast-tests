@@ -11,6 +11,7 @@ import (
 	"path"
 	"strconv"
 	"strings"
+	"time"
 
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/common/testexec"
@@ -85,6 +86,15 @@ func ReadBatteryStatus(devPath string) (BatteryStatus, error) {
 // which comes from /sys/class/power_supply/<supply name>/capacity.
 func ReadBatteryCapacity(devPath string) (float64, error) {
 	return ReadBatteryProperty(devPath, "capacity")
+}
+
+// ReadBatteryChargeFullDesign reads the design capacity of the battery in Ah.
+func ReadBatteryChargeFullDesign(devPath string) (float64, error) {
+	charge, err := ReadBatteryProperty(devPath, "charge_full_design")
+	if err != nil {
+		return 0, err
+	}
+	return charge / 1000000.0, nil
 }
 
 // ReadBatteryChargeNow returns the charge of a battery in Ah.
@@ -212,10 +222,15 @@ func SysfsBatteryPath(ctx context.Context) (string, error) {
 
 // SysfsBatteryMetrics hold the metrics read from sysfs.
 type SysfsBatteryMetrics struct {
-	powerMetric     perf.Metric
-	batteryPath     string
-	dischargeMetric perf.Metric
-	initialEnergy   float64
+	powerMetric            perf.Metric
+	batteryPath            string
+	dischargeMetric        perf.Metric
+	initialEnergy          float64
+	chargeSnapshots        []float64
+	timeSnapshots          []float64
+	initialTime            time.Time
+	dischargeCurrentMetric perf.Metric
+	dischargeLifeMetric    perf.Metric
 }
 
 // Assert that SysfsBatteryMetrics can be used in perf.Timeline.
@@ -245,18 +260,28 @@ func (b *SysfsBatteryMetrics) Setup(ctx context.Context, prefix string) error {
 		return errors.Errorf("unexpected number of batteries: got %d; want 1", len(batteryPaths))
 	}
 	b.batteryPath = batteryPaths[0]
-	b.initialEnergy, err = ReadBatteryEnergy(b.batteryPath)
-	if err != nil {
-		return err
-	}
 	b.powerMetric = perf.Metric{Name: prefix + "system", Unit: "W", Direction: perf.SmallerIsBetter, Multiple: true}
 	b.dischargeMetric = perf.Metric{Name: prefix + "discharge_mwh", Unit: "mWh", Direction: perf.SmallerIsBetter, Multiple: false}
+	b.dischargeCurrentMetric = perf.Metric{Name: prefix + "discharge_a", Unit: "A", Direction: perf.SmallerIsBetter, Multiple: false}
+	b.dischargeLifeMetric = perf.Metric{Name: prefix + "discharge_life", Unit: "h", Direction: perf.BiggerIsBetter, Multiple: false}
 	return nil
 }
 
 // Start captures the initial battery state which the first snapshot will be
 // relative to.
 func (b *SysfsBatteryMetrics) Start(_ context.Context) error {
+	initialEnergy, err := ReadBatteryEnergy(b.batteryPath)
+	if err != nil {
+		return err
+	}
+	charge, err := ReadBatteryChargeNow(b.batteryPath)
+	if err != nil {
+		return err
+	}
+	b.initialTime = time.Now()
+	b.initialEnergy = initialEnergy
+	b.timeSnapshots = []float64{0.0}
+	b.chargeSnapshots = []float64{charge}
 	return nil
 }
 
@@ -273,11 +298,44 @@ func (b *SysfsBatteryMetrics) Snapshot(_ context.Context, values *perf.Values) e
 		return err
 	}
 	values.Append(b.powerMetric, power)
+
+	charge, err := ReadBatteryChargeNow(b.batteryPath)
+	if err != nil {
+		return err
+	}
+	b.timeSnapshots = append(b.timeSnapshots, time.Now().Sub(b.initialTime).Hours())
+	b.chargeSnapshots = append(b.chargeSnapshots, charge)
 	return nil
 }
 
+// leastSquares performs a Simple Linear Regression Model on the passed data.
+//
+// xs - The dependant variable, or parameter.
+// ys - The independent variable, or measurement.
+//
+// returns: (alpha, beta)
+// alpha - The y-intercept of the fitted line.
+// beta  - The slope of the fitted line.
+func leastSquares(xs []float64, ys []float64) (float64, float64) {
+	n := float64(len(xs))
+	xySum := 0.0 // Sum of x_i*y_i.
+	xSum := 0.0  // Sum of x_i.
+	ySum := 0.0  // Sum of y_i.
+	x2Sum := 0.0 // Sum of x_i^2.
+	for i, x := range xs {
+		y := ys[i]
+		xySum += x * y
+		xSum += x
+		ySum += y
+		x2Sum += x * x
+	}
+	beta := (n*xySum - xSum*ySum) / (n*x2Sum - xSum*xSum)
+	alpha := ySum/n - beta*xSum/n
+	return alpha, beta
+}
+
 // Stop reports the total amount of energy used during the test.
-func (b *SysfsBatteryMetrics) Stop(_ context.Context, values *perf.Values) error {
+func (b *SysfsBatteryMetrics) Stop(ctx context.Context, values *perf.Values) error {
 	if len(b.batteryPath) == 0 {
 		return nil
 	}
@@ -286,6 +344,28 @@ func (b *SysfsBatteryMetrics) Stop(_ context.Context, values *perf.Values) error
 	if err != nil {
 		return err
 	}
+	charge, err := ReadBatteryChargeNow(b.batteryPath)
+	b.timeSnapshots = append(b.timeSnapshots, time.Now().Sub(b.initialTime).Hours())
+	b.chargeSnapshots = append(b.chargeSnapshots, charge)
+
 	values.Set(b.dischargeMetric, 1000*(b.initialEnergy-energy))
+
+	// TODO: maybe remove first and last sample? Or just last?
+	_, current := leastSquares(b.timeSnapshots, b.chargeSnapshots)
+
+	// The leastSquares is done with a time axis in hours, so the slope is Wh/h,
+	// or just W, but negative because charge is decreasing.
+	values.Set(b.dischargeCurrentMetric, -current)
+
+	if chargeDesign, err := ReadBatteryChargeFullDesign(b.batteryPath); err != nil {
+		testing.ContextLog(ctx, "Failed to read battery capacity: ", err)
+	} else {
+		values.Set(b.dischargeLifeMetric, -chargeDesign/current)
+	}
+
+	for i, x := range b.timeSnapshots {
+		y := b.chargeSnapshots[i]
+		testing.ContextLogf(ctx, "%f, %f", x, y)
+	}
 	return nil
 }
