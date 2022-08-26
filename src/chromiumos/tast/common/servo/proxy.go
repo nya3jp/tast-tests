@@ -238,12 +238,12 @@ func getServodContainerIP(ctx context.Context, dcl *client.Client, name string) 
 	// Get the list of containers based on the filter above.
 	containers, err := dcl.ContainerList(ctx, types.ContainerListOptions{Filters: f})
 	if err != nil {
-		testing.ContextLog(ctx, "Error occurred while getting the docker containers list.")
+		testing.ContextLog(ctx, "Error occurred while getting the docker containers list")
 		return "", err
 	}
 	// Return error if the container is not found or is not in running state.
 	if len(containers) != 1 {
-		return "", errors.Errorf("%d number of container(s) with name %s found.\n", len(containers), name)
+		return "", errors.Errorf("%d number of container(s) with name %s found", len(containers), name)
 	}
 	// Get the Docker network set to the container, this is set in the drone env variables.
 	// If not found then fall back to default network name.
@@ -252,13 +252,13 @@ func getServodContainerIP(ctx context.Context, dcl *client.Client, name string) 
 		cnet = "default_satlab"
 	}
 	if containers[0].NetworkSettings != nil {
-		sat_net := containers[0].NetworkSettings.Networks[cnet]
-		if sat_net != nil {
-			return sat_net.IPAddress, nil
+		satNet := containers[0].NetworkSettings.Networks[cnet]
+		if satNet != nil {
+			return satNet.IPAddress, nil
 		}
-		return "", errors.Errorf("Could not find the '%s' network for the container '%s'. Found networks: [%v]\n", cnet, name, containers[0].NetworkSettings.Networks)
+		return "", errors.Errorf("could not find the %q network for the container %q. Found networks: [%v]", cnet, name, containers[0].NetworkSettings.Networks)
 	}
-	return "", errors.Errorf("Could not find IP address for the container '%s'\n", name)
+	return "", errors.Errorf("could not find IP address for the container %q", name)
 }
 
 func (p *Proxy) connectSSH(ctx context.Context) (retErr error) {
