@@ -83,6 +83,11 @@ message NewRequest {
     // account.
     string parent_password = 6;
   }
+
+  // If |lacros| is set, Lacros browser will be enabled.
+  // If |lacros| is unset or lacros.Mode is set to MODE_DISABLED, Lacros
+  // browser will not be enabled.
+  Lacros lacros = 11;
 }
 
 // LoginMode describes the user mode for the login.
@@ -92,4 +97,27 @@ enum LoginMode {
   LOGIN_MODE_FAKE_LOGIN = 2;   // fake login with no authentication
   LOGIN_MODE_GAIA_LOGIN = 3;   // real network-based login using GAIA backend
   LOGIN_MODE_GUEST_LOGIN = 4;  // sign in as ephemeral guest user
+}
+
+// Lacros to enable Lacros browser with configurable launch mode and/or
+// selection of whether rootfs or stateful is used.
+message Lacros {
+  // Mode is whether Lacros is enabled as a primary browser or else.
+  enum Mode {
+    MODE_UNSPECIFIED = 0; // default mode for end users = MODE_ONLY
+    MODE_SIDEBYSIDE = 1;
+    MODE_PRIMARY = 2;
+    MODE_ONLY = 3;
+    MODE_DISABLED = 4;    // disable Lacros
+  }
+  Mode mode = 1;
+
+  // Selection is where to locate a Lacros browser.
+  // TODO(b/246961327): Support locally deployed Lacros binary when needed.
+  enum Selection {
+    SELECTION_UNSPECIFIED = 0;  // let the system choose
+    SELECTION_ROOTFS = 1;
+    SELECTION_OMAHA = 2;
+  }
+  Selection selection = 2;
 }
