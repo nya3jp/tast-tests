@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "05ca2096_187a11c3",
+        "filename": "src/chromiumos/tast/local/assistant/lacros.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-08-26T01:42:15Z",
+      "side": 1,
+      "message": "Sure. These are actually copied from the matching ash fixture:\nhttps://osscs.corp.google.com/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/assistant/fixture.go;l\u003d60-64;drc\u003da6d913d0c9f9dc3980b9632eb6fdf8dfb0323d9f",
+      "parentUuid": "b53be6f6_a82012f3",
+      "revId": "daf6bb4e6bde030eeb4711d6e9fd16b6b1a744b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "08316f2d_7383ba33",
@@ -48,6 +66,24 @@
       "writtenOn": "2022-08-26T01:34:07Z",
       "side": 1,
       "message": "any reason to declare closeBrowser in the outer scope?",
+      "revId": "daf6bb4e6bde030eeb4711d6e9fd16b6b1a744b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6887d4f_332ec83c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/card_element_animation_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-08-26T01:42:15Z",
+      "side": 1,
+      "message": "Thanks for the catch. moved into the loop.",
+      "parentUuid": "08316f2d_7383ba33",
       "revId": "daf6bb4e6bde030eeb4711d6e9fd16b6b1a744b4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
