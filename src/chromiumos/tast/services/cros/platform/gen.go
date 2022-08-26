@@ -3,10 +3,11 @@
 // found in the LICENSE file.
 
 //go:generate protoc -I . --go_out=plugins=grpc:../../../../.. boot_perf_service.proto
+//go:generate protoc -I . --go_out=plugins=grpc:../../../../.. dbus_service.proto
 //go:generate protoc -I . --go_out=plugins=grpc:../../../../.. perfetto_trace_based_metrics_service.proto
 //go:generate protoc -I . --go_out=plugins=grpc:../../../../.. upstart_service.proto
 
-// Package platform provides the BootPerfService,
+// Package platform provides the BootPerfService, DbusService
 // PerfettoTraceBasedMetricsService and UpstartService.
 package platform
 
