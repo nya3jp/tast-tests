@@ -8,13 +8,13 @@
 //
 // Steps to update the test:
 //  1. Make changes in this package.
-//  2. "tast run $IP ui.TabSwitchCujRecorder" to record the contents.
+//  2. "tast run $IP ui.TabSwitchCUJRecorder" to record the contents.
 //     Look for the recorded wpr archive in /tmp/tab_switch_cuj.wprgo.
 //  3. Update the recorded wpr archive to cloud storage under
 //     gs://chromiumos-test-assets-public/tast/cros/ui/
 //     It is recommended to add a date suffix to make it easier to change.
 //  4. Update "tab_switch_cuj.wprgo.external" file under ui/data.
-//  5. "tast run $IP ui.TabSwitchCuj" locally to make sure tests works
+//  5. "tast run $IP ui.TabSwitchCUJ" locally to make sure tests works
 //     with the new recorded contents.
 //  6. Submit the changes here with updated external data reference.
 package tabswitchcuj
@@ -27,10 +27,9 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/local/chrome/cuj"
-	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/webutil"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/ui/cujrecorder"
@@ -56,8 +55,8 @@ type tabSwitchVariables struct {
 	webPages []webPage      // List of sites to visit
 
 	cr              *chrome.Chrome
-	l               *lacros.Lacros
-	cs              ash.ConnSource
+	br              *browser.Browser
+	closeBrowser    func(context.Context) error
 	browserTestConn *chrome.TestConn
 	recorder        *cujrecorder.Recorder
 }
@@ -81,28 +80,23 @@ func runSetup(ctx context.Context, s *testing.State) (*tabSwitchVariables, error
 
 	switch vars.param.BrowserType {
 	case browser.TypeAsh:
-		vars.cr = s.PreValue().(*chrome.Chrome)
-		vars.cs = vars.cr
-
-		var err error
-		if vars.browserTestConn, err = vars.cr.TestAPIConn(ctx); err != nil {
-			return nil, errors.Wrap(err, "failed to get TestAPIConn")
-		}
+		vars.cr = s.PreValue().(chrome.HasChrome).Chrome()
 	case browser.TypeLacros:
-		var err error
-		vars.cr, vars.l, vars.cs, err = lacros.Setup(ctx, s.FixtValue(), browser.TypeLacros)
-		if err != nil {
-			return nil, errors.Wrap(err, "failed to initialize test")
-		}
-
-		if vars.browserTestConn, err = vars.l.TestAPIConn(ctx); err != nil {
-			return nil, errors.Wrap(err, "failed to get lacros TestAPIConn")
-		}
+		vars.cr = s.FixtValue().(chrome.HasChrome).Chrome()
 	default:
 		return nil, errors.Errorf("unsupported browser type: %v", vars.param.BrowserType)
 	}
-
 	var err error
+	vars.br, vars.closeBrowser, err = browserfixt.SetUp(ctx, vars.cr, vars.param.BrowserType)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to open the browser")
+	}
+
+	vars.browserTestConn, err = vars.br.TestAPIConn(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get browser TestAPIConn")
+	}
+
 	vars.recorder, err = cujrecorder.NewRecorder(ctx, vars.cr, nil, cujrecorder.RecorderOptions{})
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to create a recorder")
@@ -112,9 +106,7 @@ func runSetup(ctx context.Context, s *testing.State) (*tabSwitchVariables, error
 		if metricsSuccessfullyAdded {
 			return
 		}
-		if vars.param.BrowserType == browser.TypeLacros {
-			lacros.CloseLacros(ctx, vars.l)
-		}
+		vars.closeBrowser(ctx)
 		vars.recorder.Close(ctx)
 	}(ctx)
 
@@ -282,7 +274,7 @@ func testBody(ctx context.Context, s *testing.State, test *tabSwitchVariables) e
 		conns := make([]*chrome.Conn, 0, numPages)
 
 		// Create the homepage of the site.
-		firstPage, err := test.cs.NewConn(ctx, data.startURL)
+		firstPage, err := test.br.NewConn(ctx, data.startURL)
 		if err != nil {
 			return errors.Wrapf(err, "failed to open %s", data.startURL)
 		}
@@ -296,7 +288,7 @@ func testBody(ctx context.Context, s *testing.State, test *tabSwitchVariables) e
 
 		// Open those found URLs as new tabs
 		for _, url := range urls {
-			newConnection, err := test.cs.NewConn(ctx, url)
+			newConnection, err := test.br.NewConn(ctx, url)
 			if err != nil {
 				return errors.Wrapf(err, "failed to open the URL %s", url)
 			}
@@ -367,11 +359,7 @@ func Run(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to run setup: ", err)
 	}
-
-	if setupVars.param.BrowserType == browser.TypeLacros {
-		defer lacros.CloseLacros(closeCtx, setupVars.l)
-	}
-
+	defer setupVars.closeBrowser(closeCtx)
 	defer setupVars.recorder.Close(closeCtx)
 
 	if err := muteDevice(ctx, s); err != nil {
