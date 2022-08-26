@@ -35,6 +35,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe02b398_c7b49e62",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-08-26T19:16:23Z",
+      "side": 1,
+      "message": "This LGTM once the changes below are made :)",
+      "revId": "1b75912a4602c89622eb39fddd00d18588f28ad3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9ff73236_9dfd75ea",
@@ -119,6 +136,30 @@
       "side": 1,
       "message": "Checked property is a member of NodeInfo and NodeInfo is associated with all types of nodes. So, accessing this should be safe for any type of node.\n\nThis property applies for a few different node types {switch, radio button, checkbox etc}, however, there is nothing restricting for other types to make use of this property. Not restricting this to specific classes will make it possible to reuse this method for other types as well. Please let me know what you think.",
       "parentUuid": "569aaec9_ca31b03f",
+      "range": {
+        "startLine": 534,
+        "startChar": 61,
+        "endLine": 535,
+        "endChar": 17
+      },
+      "revId": "1b75912a4602c89622eb39fddd00d18588f28ad3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed047584_23284315",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 535,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-08-26T19:16:23Z",
+      "side": 1,
+      "message": "Okay, thank you for taking a look at that! This SGTM then-- but could we expand on the comment to also mention that this will only work for nodes that can actually be checked (and list them out like you did above)?",
+      "parentUuid": "4b62d404_aa4ab9cd",
       "range": {
         "startLine": 534,
         "startChar": 61,
