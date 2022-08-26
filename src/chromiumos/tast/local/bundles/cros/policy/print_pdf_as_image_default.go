@@ -12,6 +12,7 @@ import (
 	"time"
 
 	"chromiumos/tast/common/fixture"
+	"chromiumos/tast/common/pci"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/ctxutil"
@@ -49,6 +50,9 @@ func init() {
 			Val:               browser.TypeLacros,
 		}},
 		Data: []string{"print_pdf_as_image_default.pdf"},
+		SearchFlags: []*testing.StringPair{
+			pci.SearchFlag(&policy.PrintPdfAsImageDefault{}, pci.VerifiedFunctionalityUI),
+		},
 	})
 }
 

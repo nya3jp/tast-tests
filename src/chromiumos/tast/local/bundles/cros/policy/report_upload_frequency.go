@@ -10,6 +10,7 @@ import (
 	"time"
 
 	"chromiumos/tast/common/fixture"
+	"chromiumos/tast/common/pci"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/local/chrome"
@@ -31,6 +32,9 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Fixture:      fixture.ChromeEnrolledLoggedIn,
 		Timeout:      6 * time.Minute, // Increased timeout as we need to wait for report uploads.
+		SearchFlags: []*testing.StringPair{
+			pci.SearchFlag(&policy.ReportUploadFrequency{}, pci.VerifiedFunctionalityOS),
+		},
 	})
 }
 
