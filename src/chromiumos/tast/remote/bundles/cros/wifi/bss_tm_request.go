@@ -1,4 +1,4 @@
-// Copyright 2020 The ChromiumOS Authors
+// Copyright 2022 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -215,6 +215,23 @@ func BSSTMRequest(ctx context.Context, s *testing.State) {
 		sendReqAndWaitConnected := func(from, to string, fromAP, toAP *wificell.APIface, req hostapd.BSSTMReqParams, expectConnectFail bool) {
 			// Send BSS Transition Management Request to client.
 			s.Logf("Sending BSS Transition Management Request from AP %s to DUT %s", from, clientMAC)
+			err = tf.ClearBSSIDIgnoreDUT(ctx, wificell.DefaultDUT)
+			if err != nil {
+				s.Fatal("Failed to clear wpa BSSID_IGNORE: ", err)
+			}
+			// Add the "from" BSSID into into the DUT's ignorelist twice to
+			// avoid any potential race condition. Adding a BSSID to the
+			// ignore list does not trigger the device to roam away from the
+			// BSSID, but it should prevent it from roaming back.
+			err = tf.AddToBSSIDIgnoreDUT(ctx, wificell.DefaultDUT, from)
+			if err != nil {
+				s.Fatal("Failed to add wpa BSSID_IGNORE: ", err)
+			}
+			err = tf.AddToBSSIDIgnoreDUT(ctx, wificell.DefaultDUT, from)
+			if err != nil {
+				s.Fatal("Failed to clear wpa BSSID_IGNORE: ", err)
+			}
+
 			if err := fromAP.SendBSSTMRequest(ctx, clientMAC, req); err != nil {
 				s.Fatal("Failed to send BSS TM Request: ", err)
 			}
@@ -246,6 +263,10 @@ func BSSTMRequest(ctx context.Context, s *testing.State) {
 			if err := tf.VerifyConnection(ctx, toAP); err != nil {
 				s.Fatal("DUT: failed to verify connection: ", err)
 			}
+			err = tf.ClearBSSIDIgnoreDUT(ctx, wificell.DefaultDUT)
+			if err != nil {
+				s.Fatal("Failed to clear wpa BSSID_IGNORE: ", err)
+			}
 		}
 
 		req := params
@@ -256,6 +277,7 @@ func BSSTMRequest(ctx context.Context, s *testing.State) {
 		props = getProps(fromBSSID)
 		waitCtx, cancel = context.WithTimeout(ctx, bssTMRoamTimeout)
 		defer cancel()
+
 		waitForProps, err = tf.WifiClient().ExpectShillProperty(waitCtx, servicePath, props, monitorProps)
 		if err != nil {
 			s.Fatal("Failed to create Shill property watcher: ", err)
