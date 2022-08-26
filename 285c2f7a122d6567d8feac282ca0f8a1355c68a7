@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fcfbef8d_bdf6d06a",
+        "filename": "src/chromiumos/tast/local/cellular/cellular_network_provider.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1541462
+      },
+      "writtenOn": "2022-08-26T15:59:35Z",
+      "side": 1,
+      "message": "Initially I had it named `CellularNetworkProvider` but tast-lint didn\u0027t approve since the package name was cellular so it would be cellular.CellularNetworkProvider. I agree though, I\u0027ll move it to the network package though and rename it to make it clearer.",
+      "parentUuid": "b1389ddd_f8e34ce1",
+      "range": {
+        "startLine": 18,
+        "startChar": 5,
+        "endLine": 18,
+        "endChar": 20
+      },
+      "revId": "285c2f7a122d6567d8feac282ca0f8a1355c68a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "858482a4_4d2e71b1",
@@ -58,6 +82,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2f1d45d_8d4993a3",
+        "filename": "src/chromiumos/tast/local/cellular/cellular_network_provider.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1541462
+      },
+      "writtenOn": "2022-08-26T15:59:35Z",
+      "side": 1,
+      "message": "This was my original thought since this is the only exported function. But I agree, it\u0027s somewhat awkward, I\u0027ll move it to the bottom with the rest of functions so everything is consistent.",
+      "parentUuid": "858482a4_4d2e71b1",
+      "revId": "285c2f7a122d6567d8feac282ca0f8a1355c68a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1667e7c4_ca7e8c6b",
@@ -71,6 +113,30 @@
       "writtenOn": "2022-08-25T18:25:02Z",
       "side": 1,
       "message": "Nit: Consider updating these conditions to continue early if we detect there is an EID or the ICCID is empty (and updating the `append` to be done unconditionally).\n\n    eid, err :\u003d service.GetEid(ctx)\n    if err !\u003d nil {\n        return nil, errors.Wrap(err, \"failed to get service eid\")\n    } else if eid !\u003d \"\" {\n        continue\n    }\n    \n    iccid, err :\u003d service.GetIccid(ctx)\n    if err !\u003d nil {\n        return nil, errors.Wrap(err, \"failed to get service iccid\")\n    } else if iccid \u003d\u003d \"\" {\n        continue\n    }",
+      "range": {
+        "startLine": 177,
+        "startChar": 0,
+        "endLine": 184,
+        "endChar": 3
+      },
+      "revId": "285c2f7a122d6567d8feac282ca0f8a1355c68a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "53256f0c_e9344721",
+        "filename": "src/chromiumos/tast/local/cellular/cellular_network_provider.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1541462
+      },
+      "writtenOn": "2022-08-26T15:59:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1667e7c4_ca7e8c6b",
       "range": {
         "startLine": 177,
         "startChar": 0,
@@ -104,6 +170,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5048db02_dc56ca1f",
+        "filename": "src/chromiumos/tast/local/cellular/cellular_network_provider.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1541462
+      },
+      "writtenOn": "2022-08-26T15:59:35Z",
+      "side": 1,
+      "message": "In this instance we are forced to as even though ESimNetwork implements Network the append function doesn\u0027t recognize them as the same when using the ellipsis.",
+      "parentUuid": "5d4be185_6ec3ee43",
+      "range": {
+        "startLine": 214,
+        "startChar": 0,
+        "endLine": 220,
+        "endChar": 21
+      },
+      "revId": "285c2f7a122d6567d8feac282ca0f8a1355c68a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "394d9452_adbb9117",
@@ -117,6 +207,30 @@
       "writtenOn": "2022-08-25T18:25:02Z",
       "side": 1,
       "message": "Same question as above, would it be possible to `append` in one swoop?\n\n    return append(eSims, pSims...), nil",
+      "range": {
+        "startLine": 273,
+        "startChar": 0,
+        "endLine": 276,
+        "endChar": 18
+      },
+      "revId": "285c2f7a122d6567d8feac282ca0f8a1355c68a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "585a8c51_4890d3a3",
+        "filename": "src/chromiumos/tast/local/cellular/cellular_network_provider.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1541462
+      },
+      "writtenOn": "2022-08-26T15:59:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "394d9452_adbb9117",
       "range": {
         "startLine": 273,
         "startChar": 0,
