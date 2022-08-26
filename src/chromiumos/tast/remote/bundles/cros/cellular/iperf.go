@@ -25,10 +25,6 @@ type iperfTestCase struct {
 	iperfConfigurations []iperfTestCaseConfiguration
 }
 
-// cellularInterface is the name of the cellular interface to use.
-// TODO(b/241964523): Dynamically get cellular interface from shill at runtime.
-const cellularInterface = "rmnet_data0"
-
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         Iperf,
@@ -86,7 +82,7 @@ func Iperf(ctx context.Context, s *testing.State) {
 	tf := s.FixtValue().(*manager.TestFixture)
 	dutConn := s.DUT().Conn()
 
-	if err := tf.ConnectToCallbox(ctx, dutConn, tc.callboxOpts, cellularInterface); err != nil {
+	if err := tf.ConnectToCallbox(ctx, dutConn, tc.callboxOpts); err != nil {
 		s.Fatal("Failed to initialize cellular connection: ", err)
 	}
 
@@ -94,7 +90,7 @@ func Iperf(ctx context.Context, s *testing.State) {
 
 	for _, config := range tc.iperfConfigurations {
 		subTest := func(ctx context.Context, s *testing.State) {
-			history, err := testManager.RunOnce(ctx, config.testType, cellularInterface, config.additionalOptions)
+			history, err := testManager.RunOnce(ctx, config.testType, tf.InterfaceName, config.additionalOptions)
 			if err != nil {
 				s.Fatal("Failed to run iperf session: ", err)
 			}
