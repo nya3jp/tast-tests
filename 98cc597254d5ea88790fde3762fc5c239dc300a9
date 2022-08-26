@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e26f55a_97d76d4e",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/firmware_test_handler.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 449,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2022-08-26T12:30:25Z",
+      "side": 1,
+      "message": "Done, https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3856533/1",
+      "parentUuid": "7a529b16_cd5f3ab9",
+      "range": {
+        "startLine": 435,
+        "startChar": 0,
+        "endLine": 449,
+        "endChar": 1
+      },
+      "revId": "98cc597254d5ea88790fde3762fc5c239dc300a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "83573f38_8e56f504",
@@ -55,6 +79,24 @@
       "side": 1,
       "message": "I can extract the common code to separate function, but I want to keep `disableFwupdDbusActivation` and `enableFwupdDbusActivation`. I would like to avoid passing the `enable` argument. Is it ok for you?",
       "parentUuid": "83573f38_8e56f504",
+      "revId": "98cc597254d5ea88790fde3762fc5c239dc300a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "57413038_5d6a2a87",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/firmware_test_handler.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 453,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2022-08-26T12:30:25Z",
+      "side": 1,
+      "message": "The code was moved to other patch.",
+      "parentUuid": "b5ccc038_268dfd02",
       "revId": "98cc597254d5ea88790fde3762fc5c239dc300a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
