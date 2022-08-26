@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "67eb1028_d0aa4323",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 19
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1545162
+      },
+      "writtenOn": "2022-08-26T13:34:23Z",
+      "side": 1,
+      "message": "Done. Already sync.\nAnd also fix repo problems locally.\nFor now, this CL is ready for review.\nPlease have a look, thanks.\n\n",
+      "revId": "263b5344eebb022757a7786b9bd9e5d2729722bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
