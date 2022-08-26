@@ -12,6 +12,7 @@ import (
 
 	cpb "chromiumos/system_api/plugin_vm_service_proto"
 	"chromiumos/tast/common/fixture"
+	"chromiumos/tast/common/pci"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/local/chrome"
@@ -32,6 +33,9 @@ func init() {
 		SoftwareDeps: []string{"chrome", "plugin_vm"},
 		Attr:         []string{"group:mainline"},
 		Fixture:      fixture.ChromePolicyLoggedIn,
+		SearchFlags: []*testing.StringPair{
+			pci.SearchFlag(&policy.PluginVmDataCollectionAllowed{}, pci.VerifiedFunctionalityOS),
+		},
 	})
 }
 
