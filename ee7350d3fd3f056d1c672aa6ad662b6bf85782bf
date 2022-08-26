@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "45812438_96797a0c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541462
+      },
+      "writtenOn": "2022-08-26T19:56:10Z",
+      "side": 1,
+      "message": "Agree, Pavan could you PTAL at this when you get a chance",
+      "revId": "ee7350d3fd3f056d1c672aa6ad662b6bf85782bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
