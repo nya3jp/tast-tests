@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "c0953be1_4a681390",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1547388
+      },
+      "writtenOn": "2022-08-26T20:30:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "faa6a40c_be5f718f",
+      "range": {
+        "startLine": 9,
+        "startChar": 61,
+        "endLine": 9,
+        "endChar": 63
+      },
+      "revId": "1b75912a4602c89622eb39fddd00d18588f28ad3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "1782248c_dc33f6eb",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 4
@@ -200,6 +224,30 @@
       "side": 1,
       "message": "Okay, thank you for taking a look at that! This SGTM then-- but could we expand on the comment to also mention that this will only work for nodes that can actually be checked (and list them out like you did above)?",
       "parentUuid": "4b62d404_aa4ab9cd",
+      "range": {
+        "startLine": 534,
+        "startChar": 61,
+        "endLine": 535,
+        "endChar": 17
+      },
+      "revId": "1b75912a4602c89622eb39fddd00d18588f28ad3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b26e87a9_86792e8d",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 535,
+      "author": {
+        "id": 1547388
+      },
+      "writtenOn": "2022-08-26T20:30:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ed047584_23284315",
       "range": {
         "startLine": 534,
         "startChar": 61,
