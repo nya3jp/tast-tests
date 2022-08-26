@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "beaa4a40_adffa6fd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1529887
+      },
+      "writtenOn": "2022-08-26T23:27:29Z",
+      "side": 1,
+      "message": "I responded on the bug https://b.corp.google.com/issues/240998447 and we have a separate tracking bug https://b.corp.google.com/issues/243870307 showing inconsistent reporting of LCP2 only on YT website, potentially due to its dynamic nature https://web.dev/lcp/\n\nWe should not implement workarounds to try and capture LCP2 by clicking buttons or navigating away. The solution for this particular problem is do not use YT website for LCP2 measurement.\n\nI would prefer if we revert this CL and exclude capturing LCP2 from a dynamic content like YT pages, etc.\n\nOur LCP2 measurement supposed to measure speed of the browser to parse webpage\u0027s DOM model, load and paint its largest elements, under different conditions. That can be easily accomplished with any other website that has a consistent and reliable static content.",
+      "revId": "d90ecd5d5bde26d8cd24a9c311ea9ed0a814fb8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
