@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "faa6a40c_be5f718f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-08-26T20:13:47Z",
+      "side": 1,
+      "message": "nit: 5",
+      "range": {
+        "startLine": 9,
+        "startChar": 61,
+        "endLine": 9,
+        "endChar": 63
+      },
+      "revId": "1b75912a4602c89622eb39fddd00d18588f28ad3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "1782248c_dc33f6eb",
@@ -48,6 +71,23 @@
       "writtenOn": "2022-08-26T19:16:23Z",
       "side": 1,
       "message": "This LGTM once the changes below are made :)",
+      "revId": "1b75912a4602c89622eb39fddd00d18588f28ad3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "54fceb9d_2d2614ad",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-08-26T20:13:47Z",
+      "side": 1,
+      "message": "lgtm % commit message and comment nit from Chad",
       "revId": "1b75912a4602c89622eb39fddd00d18588f28ad3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -254,6 +294,30 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "fc577356_1cf2d846",
+      "range": {
+        "startLine": 36,
+        "startChar": 97,
+        "endLine": 36,
+        "endChar": 114
+      },
+      "revId": "1b75912a4602c89622eb39fddd00d18588f28ad3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d88406c_126e4ccf",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/quicksettings/network.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-08-26T20:13:47Z",
+      "side": 1,
+      "message": "Did you forget to reupload?",
+      "parentUuid": "880a5798_770279da",
       "range": {
         "startLine": 36,
         "startChar": 97,
