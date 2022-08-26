@@ -59,36 +59,36 @@ func init() {
 			},
 			ExtraSoftwareDeps: []string{"ikev2"},
 		}, {
-			Name: "l2tp_ipsec_stroke_psk",
+			Name: "l2tp_ipsec_psk",
 			Val: vpnTestParams{
 				config: vpn.Config{
-					Type:     vpn.TypeL2TPIPsecStroke,
+					Type:     vpn.TypeL2TPIPsec,
 					AuthType: vpn.AuthTypePSK,
 				},
 			},
 		}, {
-			Name: "l2tp_ipsec_stroke_psk_evil",
+			Name: "l2tp_ipsec_psk_evil",
 			Val: vpnTestParams{
 				config: vpn.Config{
-					Type:                  vpn.TypeL2TPIPsecStroke,
+					Type:                  vpn.TypeL2TPIPsec,
 					AuthType:              vpn.AuthTypePSK,
 					UnderlayIPIsOverlayIP: true,
 				},
 			},
 		}, {
-			Name: "l2tp_ipsec_stroke_psk_xauth",
+			Name: "l2tp_ipsec_psk_xauth",
 			Val: vpnTestParams{
 				config: vpn.Config{
-					Type:          vpn.TypeL2TPIPsecStroke,
+					Type:          vpn.TypeL2TPIPsec,
 					AuthType:      vpn.AuthTypePSK,
 					IPsecUseXauth: true,
 				},
 			},
 		}, {
-			Name: "l2tp_ipsec_stroke_psk_xauth_missing_user",
+			Name: "l2tp_ipsec_psk_xauth_missing_user",
 			Val: vpnTestParams{
 				config: vpn.Config{
-					Type:                  vpn.TypeL2TPIPsecStroke,
+					Type:                  vpn.TypeL2TPIPsec,
 					AuthType:              vpn.AuthTypePSK,
 					IPsecUseXauth:         true,
 					IPsecXauthMissingUser: true,
@@ -96,10 +96,10 @@ func init() {
 				shouldFail: true,
 			},
 		}, {
-			Name: "l2tp_ipsec_stroke_psk_xauth_wrong_user",
+			Name: "l2tp_ipsec_psk_xauth_wrong_user",
 			Val: vpnTestParams{
 				config: vpn.Config{
-					Type:                vpn.TypeL2TPIPsecStroke,
+					Type:                vpn.TypeL2TPIPsec,
 					AuthType:            vpn.AuthTypePSK,
 					IPsecUseXauth:       true,
 					IPsecXauthWrongUser: true,
@@ -107,66 +107,10 @@ func init() {
 				shouldFail: true,
 			},
 		}, {
-			Name: "l2tp_ipsec_stroke_cert",
+			Name: "l2tp_ipsec_cert",
 			Val: vpnTestParams{
 				config: vpn.Config{
-					Type:     vpn.TypeL2TPIPsecStroke,
-					AuthType: vpn.AuthTypeCert,
-				},
-			},
-		}, {
-			Name: "l2tp_ipsec_swanctl_psk",
-			Val: vpnTestParams{
-				config: vpn.Config{
-					Type:     vpn.TypeL2TPIPsecSwanctl,
-					AuthType: vpn.AuthTypePSK,
-				},
-			},
-		}, {
-			Name: "l2tp_ipsec_swanctl_psk_evil",
-			Val: vpnTestParams{
-				config: vpn.Config{
-					Type:                  vpn.TypeL2TPIPsecSwanctl,
-					AuthType:              vpn.AuthTypePSK,
-					UnderlayIPIsOverlayIP: true,
-				},
-			},
-		}, {
-			Name: "l2tp_ipsec_swanctl_psk_xauth",
-			Val: vpnTestParams{
-				config: vpn.Config{
-					Type:          vpn.TypeL2TPIPsecSwanctl,
-					AuthType:      vpn.AuthTypePSK,
-					IPsecUseXauth: true,
-				},
-			},
-		}, {
-			Name: "l2tp_ipsec_swanctl_psk_xauth_missing_user",
-			Val: vpnTestParams{
-				config: vpn.Config{
-					Type:                  vpn.TypeL2TPIPsecSwanctl,
-					AuthType:              vpn.AuthTypePSK,
-					IPsecUseXauth:         true,
-					IPsecXauthMissingUser: true,
-				},
-				shouldFail: true,
-			},
-		}, {
-			Name: "l2tp_ipsec_swanctl_psk_xauth_wrong_user",
-			Val: vpnTestParams{
-				config: vpn.Config{
-					Type:                vpn.TypeL2TPIPsecSwanctl,
-					AuthType:            vpn.AuthTypePSK,
-					IPsecUseXauth:       true,
-					IPsecXauthWrongUser: true,
-				},
-				shouldFail: true,
-			},
-		}, {
-			Name: "l2tp_ipsec_swanctl_cert",
-			Val: vpnTestParams{
-				config: vpn.Config{
-					Type:     vpn.TypeL2TPIPsecSwanctl,
+					Type:     vpn.TypeL2TPIPsec,
 					AuthType: vpn.AuthTypeCert,
 				},
 			},
