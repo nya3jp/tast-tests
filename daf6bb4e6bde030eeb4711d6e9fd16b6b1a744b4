@@ -55,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "aacf95a3_85d1c166",
+        "filename": "src/chromiumos/tast/local/assistant/lacros.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-08-26T01:43:57Z",
+      "side": 1,
+      "message": "so consider sharing them?",
+      "parentUuid": "05ca2096_187a11c3",
+      "revId": "daf6bb4e6bde030eeb4711d6e9fd16b6b1a744b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "08316f2d_7383ba33",
         "filename": "src/chromiumos/tast/local/bundles/cros/assistant/card_element_animation_perf.go",
         "patchSetId": 4
