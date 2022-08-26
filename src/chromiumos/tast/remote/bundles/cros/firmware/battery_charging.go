@@ -42,6 +42,17 @@ func BatteryCharging(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create config: ", err)
 	}
 
+	// Increase timeout in getting response from ec uart.
+	if err := h.Servo.SetString(ctx, "ec_uart_timeout", "10"); err != nil {
+		s.Fatal("Failed to extend ec uart timeout: ", err)
+	}
+	defer func() {
+		testing.ContextLog(ctx, "Restoring ec uart timeout to the default value of 3 seconds")
+		if err := h.Servo.SetString(ctx, "ec_uart_timeout", "3"); err != nil {
+			s.Fatal("Failed to restore default ec uart timeout: ", err)
+		}
+	}()
+
 	// For debugging purposes, log servo and dut connection type.
 	servoType, err := h.Servo.GetServoType(ctx)
 	if err != nil {
@@ -107,6 +118,10 @@ func BatteryCharging(ctx context.Context, s *testing.State) {
 					s.Fatal("Unable to read ac information: ", err)
 				} else {
 					s.Logf("Line power %s", ac)
+				}
+				s.Log("Running ec command to check for charger state")
+				if err := checkECChgState(ctx, h); err != nil {
+					s.Fatal("Failed to query ec chgstate: ", err)
 				}
 			}
 			s.Fatal("While determining charger state: ", err)
