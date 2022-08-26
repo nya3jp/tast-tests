@@ -227,6 +227,30 @@
       },
       "revId": "a27c720181f6bbb682b39d9b8202ed3d2686379a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cabe64db_5b26480c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/toggle_cellular_from_os_settings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-08-26T17:04:18Z",
+      "side": 1,
+      "message": "Okay, that sounds good to me-- that also seems like a change that would only benefit other tests, if anything, since clicking a disabled toggle won\u0027t have any effect.",
+      "parentUuid": "fabb1871_c5ebbc59",
+      "range": {
+        "startLine": 59,
+        "startChar": 18,
+        "endLine": 59,
+        "endChar": 37
+      },
+      "revId": "a27c720181f6bbb682b39d9b8202ed3d2686379a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
