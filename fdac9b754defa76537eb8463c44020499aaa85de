@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "061da564_20bdb10d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/tpm_contest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1549582
+      },
+      "writtenOn": "2022-08-26T16:52:33Z",
+      "side": 1,
+      "message": "I\u0027m not sure if I follow. Are you suggesting making this a helper function that runs within a separate go routine rather than having it run as a go routine itself?",
+      "parentUuid": "d1c9ffd4_724b4734",
+      "range": {
+        "startLine": 35,
+        "startChar": 33,
+        "endLine": 35,
+        "endChar": 41
+      },
+      "revId": "fdac9b754defa76537eb8463c44020499aaa85de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "08c06069_c8ad1100",
         "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/tpm_contest.go",
         "patchSetId": 3
@@ -54,6 +78,24 @@
       "writtenOn": "2022-08-26T05:03:22Z",
       "side": 1,
       "message": "could you properly stop the iteration at the end of test?",
+      "revId": "fdac9b754defa76537eb8463c44020499aaa85de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70ec6cfe_0a8383a3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/tpm_contest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1549582
+      },
+      "writtenOn": "2022-08-26T16:52:33Z",
+      "side": 1,
+      "message": "Iteration is stopped upon receipt of the cancel signal at the end of the test.",
+      "parentUuid": "08c06069_c8ad1100",
       "revId": "fdac9b754defa76537eb8463c44020499aaa85de",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -77,6 +119,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "eb9e4c9f_c82ab9c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/tpm_contest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1549582
+      },
+      "writtenOn": "2022-08-26T16:52:33Z",
+      "side": 1,
+      "message": "Thanks, I\u0027ll look into this. But I need to understand your comment above first regarding returning an error and not receiving a channel as an arg.",
+      "parentUuid": "dd5b4a95_afd0a854",
+      "revId": "fdac9b754defa76537eb8463c44020499aaa85de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9e40fceb_c63ef6ba",
         "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/tpm_contest.go",
         "patchSetId": 3
@@ -88,6 +148,24 @@
       "writtenOn": "2022-08-26T05:03:22Z",
       "side": 1,
       "message": "style: min (no getter prefix please for consistency).",
+      "revId": "fdac9b754defa76537eb8463c44020499aaa85de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f585494c_950d75f9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/tpm_contest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1549582
+      },
+      "writtenOn": "2022-08-26T16:52:33Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9e40fceb_c63ef6ba",
       "revId": "fdac9b754defa76537eb8463c44020499aaa85de",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -109,6 +187,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4399e1f_3cfa95ca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/tpm_contest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1549582
+      },
+      "writtenOn": "2022-08-26T16:52:33Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "aa22f01d_b68ac8c0",
+      "revId": "fdac9b754defa76537eb8463c44020499aaa85de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3b6dbb83_4d23182a",
@@ -122,6 +218,24 @@
       "writtenOn": "2022-08-26T05:03:22Z",
       "side": 1,
       "message": "cmdStr sounds a bit weird as it\u0027s not str. Maybe just cmd?",
+      "revId": "fdac9b754defa76537eb8463c44020499aaa85de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "07053739_6110b67a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/tpm_contest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1549582
+      },
+      "writtenOn": "2022-08-26T16:52:33Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3b6dbb83_4d23182a",
       "revId": "fdac9b754defa76537eb8463c44020499aaa85de",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -145,6 +259,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "af924b0b_3111e874",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/tpm_contest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1549582
+      },
+      "writtenOn": "2022-08-26T16:52:33Z",
+      "side": 1,
+      "message": "I want to break out of the `select` and `for` statements. Are you suggesting adding a label below and breaking to it?",
+      "parentUuid": "ac8c59e1_b9104020",
+      "revId": "fdac9b754defa76537eb8463c44020499aaa85de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "649a8618_307c2218",
         "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/tpm_contest.go",
         "patchSetId": 3
@@ -156,6 +288,24 @@
       "writtenOn": "2022-08-26T05:03:22Z",
       "side": 1,
       "message": "unused.",
+      "revId": "fdac9b754defa76537eb8463c44020499aaa85de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9519a8ff_fc8b8c33",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/tpm_contest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1549582
+      },
+      "writtenOn": "2022-08-26T16:52:33Z",
+      "side": 1,
+      "message": "`workerIterations` is checked in each iteration of the for loop to see if all workers have completed at least `minTestIterations`. Or are you suggesting we don\u0027t need it?",
+      "parentUuid": "649a8618_307c2218",
       "revId": "fdac9b754defa76537eb8463c44020499aaa85de",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
