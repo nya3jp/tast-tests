@@ -16,6 +16,115 @@
       "message": "LGTM!",
       "revId": "1b75912a4602c89622eb39fddd00d18588f28ad3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0a57c01_bf6b7bc1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-08-26T18:27:28Z",
+      "side": 1,
+      "message": "Overall this change is looking pretty good, just got a few questions whenever you have a moment :)",
+      "revId": "1b75912a4602c89622eb39fddd00d18588f28ad3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ff73236_9dfd75ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/toggle_cellular_from_quick_settings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-08-26T18:27:28Z",
+      "side": 1,
+      "message": "Let\u0027s handle this `err` as well,\n\n    if err !\u003d nil {\n        s.Fatal(\"Failed to create Test API connection: \", err)\n    }",
+      "range": {
+        "startLine": 40,
+        "startChar": 8,
+        "endLine": 40,
+        "endChar": 11
+      },
+      "revId": "1b75912a4602c89622eb39fddd00d18588f28ad3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "569aaec9_ca31b03f",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 535,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-08-26T18:27:28Z",
+      "side": 1,
+      "message": "This method looks like it might rely on the node that is found being a specific type of node that has `.Checked` property. Would it make sense to check the node type or whether it has that property/is the expected type? Or are we okay to check this property on any node? Asking because I am not actually sure whether we can safely access that member or not :)",
+      "range": {
+        "startLine": 534,
+        "startChar": 61,
+        "endLine": 535,
+        "endChar": 17
+      },
+      "revId": "1b75912a4602c89622eb39fddd00d18588f28ad3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21a677d1_8ba07076",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 543,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-08-26T18:27:28Z",
+      "side": 1,
+      "message": "Nit: Consider renaming to `isNodeChecked` if we don\u0027t require the node to be a toggle.",
+      "range": {
+        "startLine": 543,
+        "startChar": 3,
+        "endLine": 543,
+        "endChar": 18
+      },
+      "revId": "1b75912a4602c89622eb39fddd00d18588f28ad3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc577356_1cf2d846",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/quicksettings/network.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-08-26T18:27:28Z",
+      "side": 1,
+      "message": "Nit: WDYT of replacing this with `Ancestor(NetworkDetailedViewRevamp)` since the `HasClass` effectively checks the same thing, and the `Ancestor` call will help us be very specific?",
+      "range": {
+        "startLine": 36,
+        "startChar": 97,
+        "endLine": 36,
+        "endChar": 114
+      },
+      "revId": "1b75912a4602c89622eb39fddd00d18588f28ad3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
