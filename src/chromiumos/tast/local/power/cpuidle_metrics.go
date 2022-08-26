@@ -6,9 +6,15 @@ package power
 
 import (
 	"context"
+	"fmt"
 	"io/ioutil"
+	"os"
 	"path"
+	"path/filepath"
 	"regexp"
+	"sort"
+	"strconv"
+	"strings"
 	"time"
 
 	"chromiumos/tast/common/perf"
@@ -229,5 +235,241 @@ func (cs *CpuidleStateMetrics) Snapshot(ctx context.Context, values *perf.Values
 
 // Stop does nothing.
 func (cs *CpuidleStateMetrics) Stop(ctx context.Context, values *perf.Values) error {
+	return nil
+}
+
+type cpuidleCounter struct {
+	// Static values that don't change
+	name                                                       string
+	latency                                                    uint64
+	cpuidleStateDirs                                           []string
+	timeMetric, usageMetric, timeTotalMetric, usageTotalMetric perf.Metric
+}
+
+type cpuidleCounters []cpuidleCounter
+
+func (cs cpuidleCounters) Len() int {
+	return len(cs)
+}
+
+func (cs cpuidleCounters) Less(i, j int) bool {
+	return cs[i].latency < cs[j].latency
+}
+
+func (cs cpuidleCounters) Swap(i, j int) {
+	temp := cs[i]
+	cs[i] = cs[j]
+	cs[j] = temp
+}
+
+func (cs cpuidleCounters) readValues() (cpuidleCounterValues, error) {
+	var values []cpuidleCounterValue
+	for _, counter := range cs {
+		value := cpuidleCounterValue{}
+		for _, stateDir := range counter.cpuidleStateDirs {
+			idleTimeBytes, err := os.ReadFile(filepath.Join(stateDir, "time"))
+			if err != nil {
+				return nil, errors.Wrap(err, "failed to read cpuidle state time")
+			}
+			idleTimeString := strings.TrimSpace(string(idleTimeBytes))
+			idleTime, err := strconv.ParseUint(idleTimeString, 10, 64)
+			if err != nil {
+				return nil, errors.Wrapf(err, "failed to parse cpu idle state time %q", idleTimeString)
+			}
+			value.time += idleTime
+
+			idleUsageBytes, err := os.ReadFile(filepath.Join(stateDir, "usage"))
+			if err != nil {
+				return nil, errors.Wrap(err, "failed to read cpuidle state usage")
+			}
+			idleUsageString := strings.TrimSpace((string(idleUsageBytes)))
+			idleUsage, err := strconv.ParseUint(idleUsageString, 10, 64)
+			if err != nil {
+				return nil, errors.Wrapf(err, "failed to parse cpu idle state usage %q", idleUsage)
+			}
+			value.usage += idleUsage
+		}
+		values = append(values, value)
+	}
+	return values, nil
+}
+
+type cpuidleCounterValue struct {
+	usage, time uint64
+}
+
+type cpuidleCounterValues []cpuidleCounterValue
+
+func (vs cpuidleCounterValues) reportDiff(counters cpuidleCounters, prevValues cpuidleCounterValues, duration time.Duration, p *perf.Values, total bool) error {
+	if len(vs) != len(counters) || len(vs) != len(prevValues) {
+		return errors.New("mismatch number of cpuidle counters")
+	}
+	seconds := duration.Seconds()
+	// Loop from deepest to shalowest sleep.
+	var totalUsage, totalTime uint64
+	for i := len(vs) - 1; i >= 0; i-- {
+		counter := counters[i]
+		curr := vs[i]
+		prev := prevValues[i]
+		totalUsage += curr.usage - prev.usage
+		totalTime += curr.time - prev.time
+		if total {
+			p.Set(counter.timeTotalMetric, (time.Duration(totalTime)*time.Microsecond).Seconds()/seconds)
+			p.Set(counter.usageTotalMetric, float64(totalUsage)/seconds)
+		} else {
+			p.Append(counter.timeMetric, (time.Duration(totalTime)*time.Microsecond).Seconds()/seconds)
+			p.Append(counter.usageMetric, float64(totalUsage)/seconds)
+		}
+
+	}
+	return nil
+}
+
+// AggregateCpuidleMetrics aggregates idle time from all CPUs and states.
+//
+// NOTE: The cpuidle timings are measured according to the kernel. They resemble
+// hardware cstates, but they might not have a direct correspondence. Furthermore,
+// they generally may be greater than the time the CPU actually spends in the
+// corresponding cstate, as the hardware may enter shallower states than requested.
+type AggregateCpuidleMetrics struct {
+	counters    cpuidleCounters
+	startTime   time.Time
+	startValues cpuidleCounterValues
+	prevTime    time.Time
+	prevValues  cpuidleCounterValues
+}
+
+// NewAggregateCpuidleMetrics creates a TimelineDatasource to log aggregate
+// cpuidle time and usage metrics.
+func NewAggregateCpuidleMetrics() perf.TimelineDatasource {
+	return &AggregateCpuidleMetrics{
+		prevTime: time.Time{},
+		counters: nil,
+	}
+}
+
+// Setup enumerates all the cpuidle state directories.
+func (a *AggregateCpuidleMetrics) Setup(ctx context.Context, prefix string) error {
+	nameFiles, err := filepath.Glob("/sys/devices/system/cpu/cpu*/cpuidle/state*/name")
+	if err != nil {
+		return errors.Wrap(err, "failed to search for cpuidle names")
+	}
+	counters := make(map[string]*cpuidleCounter)
+	for _, nameFile := range nameFiles {
+		nameBytes, err := os.ReadFile(nameFile)
+		if err != nil {
+			return errors.Wrap(err, "failed to read cpuidle state name")
+		}
+		name := strings.TrimSpace(string(nameBytes))
+		stateDir := filepath.Dir(nameFile)
+		// state, err := strconv.ParseUint(filepath.Base(stateDir)[5:], 10, 64)
+		// if err != nil {
+		// 	return errors.Wrapf(err, "failed to parse state number from dir %q", stateDir)
+		// }
+		latencyBytes, err := os.ReadFile(filepath.Join(stateDir, "latency"))
+		if err != nil {
+			return errors.Wrap(err, "failed to read cpuidle state latency")
+		}
+		latency, err := strconv.ParseUint(strings.TrimSpace(string(latencyBytes)), 10, 64)
+		if err != nil {
+			return errors.Wrapf(err, "failed to parse latency from %q", string(latencyBytes))
+		}
+		if counter, ok := counters[name]; ok {
+			if counter.latency != latency {
+				return errors.Wrapf(err, "cpuidle counter %q has different latencies", name)
+			}
+			counter.cpuidleStateDirs = append(counter.cpuidleStateDirs, stateDir)
+		} else {
+			counters[name] = &cpuidleCounter{
+				name:             name,
+				latency:          latency,
+				cpuidleStateDirs: []string{stateDir},
+				timeMetric: perf.Metric{
+					Name:      fmt.Sprintf("cpuidle_ratio_deeper_%s", name),
+					Unit:      "cpus",
+					Direction: perf.BiggerIsBetter,
+					Multiple:  true,
+				},
+				usageMetric: perf.Metric{
+					Name:      fmt.Sprintf("cpuidle_wakes_deeper_%s", name),
+					Unit:      "wakes_per_s",
+					Direction: perf.SmallerIsBetter,
+					Multiple:  true,
+				},
+				timeTotalMetric: perf.Metric{
+					Name:      fmt.Sprintf("cpuidle_ratio_deeper_%s_total", name),
+					Unit:      "cpus",
+					Direction: perf.SmallerIsBetter,
+					Multiple:  true,
+				},
+				usageTotalMetric: perf.Metric{
+					Name:      fmt.Sprintf("cpuidle_wakes_deeper_%s_total", name),
+					Unit:      "wakes_per_s",
+					Direction: perf.SmallerIsBetter,
+					Multiple:  true,
+				},
+			}
+		}
+	}
+	for _, counter := range counters {
+		a.counters = append(a.counters, *counter)
+	}
+	// Sort counters based on their latency values, if there is a tie, we use
+	// stable sort so that the original order in the state dirs is preserved.
+	sort.Stable(a.counters)
+
+	return nil
+}
+
+// Start records the initial time and usage values.
+func (a *AggregateCpuidleMetrics) Start(ctx context.Context) error {
+	values, err := a.counters.readValues()
+	if err != nil {
+		return err
+	}
+	a.startTime = time.Now()
+	a.prevTime = a.startTime
+	a.startValues = values
+	a.prevValues = values
+	return nil
+}
+
+// Snapshot computes the
+func (a *AggregateCpuidleMetrics) Snapshot(ctx context.Context, p *perf.Values) error {
+	t0 := time.Now()
+	values, err := a.counters.readValues()
+	if err != nil {
+		return err
+	}
+	t1 := time.Now()
+	duration := t1.Sub(a.prevTime)
+	updateTime := t1.Sub(t0).Seconds()
+	if updateTime/duration.Seconds() > 0.001 {
+		testing.ContextLogf(ctx, "AggregateCpuidleMetrics took %fs to update", updateTime)
+	}
+
+	values.reportDiff(a.counters, a.prevValues, duration, p, false)
+	a.prevValues = values
+	a.prevTime = t1
+
+	return nil
+}
+
+// Stop computes total metrics.
+func (a *AggregateCpuidleMetrics) Stop(ctx context.Context, p *perf.Values) error {
+	t0 := time.Now()
+	values, err := a.counters.readValues()
+	if err != nil {
+		return err
+	}
+	t1 := time.Now()
+	duration := t1.Sub(a.startTime)
+	updateTime := t1.Sub(t0).Seconds()
+	if updateTime/duration.Seconds() > 0.001 {
+		testing.ContextLogf(ctx, "AggregateCpuidleMetrics took %fs to update", updateTime)
+	}
+
+	values.reportDiff(a.counters, a.startValues, duration, p, true)
+
 	return nil
 }
