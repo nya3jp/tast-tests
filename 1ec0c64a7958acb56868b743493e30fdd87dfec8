@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d61b54a6_62a9f096",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/unicorn_extensions.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000097
+      },
+      "writtenOn": "2022-08-26T22:34:57Z",
+      "side": 1,
+      "message": "Comment added and timeout adjusted to 4 below.",
+      "parentUuid": "b484d4bc_0d533c7e",
+      "range": {
+        "startLine": 28,
+        "startChar": 16,
+        "endLine": 28,
+        "endChar": 18
+      },
+      "revId": "1ec0c64a7958acb56868b743493e30fdd87dfec8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "02d3d211_b3b53897",
         "filename": "src/chromiumos/tast/local/bundles/cros/familylink/unicorn_extensions.go",
         "patchSetId": 2
@@ -85,6 +109,30 @@
       "writtenOn": "2022-08-26T01:28:58Z",
       "side": 1,
       "message": "Could you manipulate the braces so that this block is indented at the same level as the Ash Chrome test parameters above?",
+      "range": {
+        "startLine": 37,
+        "startChar": 3,
+        "endLine": 41,
+        "endChar": 4
+      },
+      "revId": "1ec0c64a7958acb56868b743493e30fdd87dfec8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "432b1c7d_608fa334",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/unicorn_extensions.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000097
+      },
+      "writtenOn": "2022-08-26T22:34:57Z",
+      "side": 1,
+      "message": "Done.  I\u0027m surprised gofmt didn\u0027t fix this!",
+      "parentUuid": "02d3d211_b3b53897",
       "range": {
         "startLine": 37,
         "startChar": 3,
@@ -108,6 +156,24 @@
       "writtenOn": "2022-08-26T17:13:11Z",
       "side": 1,
       "message": "Nit: consider inlining this on line 63 below.",
+      "revId": "1ec0c64a7958acb56868b743493e30fdd87dfec8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "663e20ec_5d2ecf5f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/unicorn_extensions.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000097
+      },
+      "writtenOn": "2022-08-26T22:34:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a0b8a169_f6d76262",
       "revId": "1ec0c64a7958acb56868b743493e30fdd87dfec8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -149,6 +215,30 @@
       "side": 1,
       "message": "Discussed this issue in https://chromium-review.googlesource.com/c/chromium/src/+/3857725/comments/d2c65dbe_22a00682",
       "parentUuid": "3395e1b3_6620a533",
+      "range": {
+        "startLine": 58,
+        "startChar": 2,
+        "endLine": 65,
+        "endChar": 12
+      },
+      "revId": "1ec0c64a7958acb56868b743493e30fdd87dfec8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c91a922_7d8fa133",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/unicorn_extensions.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1000097
+      },
+      "writtenOn": "2022-08-26T22:34:57Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b055405c_ce5c1d9f",
       "range": {
         "startLine": 58,
         "startChar": 2,
@@ -208,6 +298,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f6201c9f_1c83974a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/unicorn_extensions.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1000097
+      },
+      "writtenOn": "2022-08-26T22:34:57Z",
+      "side": 1,
+      "message": "I\u0027m happy to do this in a followup CL.  I\u0027d prefer to limit the scope of this CL to a single file.",
+      "parentUuid": "1eb55494_6af830d0",
+      "range": {
+        "startLine": 72,
+        "startChar": 5,
+        "endLine": 72,
+        "endChar": 40
+      },
+      "revId": "1ec0c64a7958acb56868b743493e30fdd87dfec8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9d440ef3_654a8b53",
         "filename": "src/chromiumos/tast/local/bundles/cros/familylink/unicorn_extensions.go",
         "patchSetId": 2
@@ -219,6 +333,24 @@
       "writtenOn": "2022-08-26T01:28:58Z",
       "side": 1,
       "message": "Why not do\n\n    if !isLacros {\n        return waitForBoolPrefValue(ctx, c, prefName, expectedValue, timeout)\n    }\n    // Code for Lacros\n \n The more complex code should go in the main body to reduce nesting.",
+      "revId": "1ec0c64a7958acb56868b743493e30fdd87dfec8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a5fc592_e08f73db",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/unicorn_extensions.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1000097
+      },
+      "writtenOn": "2022-08-26T22:34:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9d440ef3_654a8b53",
       "revId": "1ec0c64a7958acb56868b743493e30fdd87dfec8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -272,6 +404,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "199617fc_a9060df6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/unicorn_extensions.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1000097
+      },
+      "writtenOn": "2022-08-26T22:34:57Z",
+      "side": 1,
+      "message": "This window is closed at the end of the function with \"defer l.Close(ctx)\" on line 78.",
+      "parentUuid": "48572d6d_19f1edbf",
+      "range": {
+        "startLine": 74,
+        "startChar": 2,
+        "endLine": 74,
+        "endChar": 33
+      },
+      "revId": "1ec0c64a7958acb56868b743493e30fdd87dfec8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d8326b06_f15a8cf3",
         "filename": "src/chromiumos/tast/local/bundles/cros/familylink/unicorn_extensions.go",
         "patchSetId": 2
@@ -307,6 +463,30 @@
       "side": 1,
       "message": "Lacros and Ash have some differences. Especially when it comes to the startup. Since Ash is a UI process it is not up to user action to start it. It is not true for Lacros that is in user control. Starting Lacros is justified \u0027special treatment \u0027.",
       "parentUuid": "d8326b06_f15a8cf3",
+      "range": {
+        "startLine": 92,
+        "startChar": 1,
+        "endLine": 92,
+        "endChar": 9
+      },
+      "revId": "1ec0c64a7958acb56868b743493e30fdd87dfec8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab4f726f_d71d8729",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/unicorn_extensions.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1000097
+      },
+      "writtenOn": "2022-08-26T22:34:57Z",
+      "side": 1,
+      "message": "With Lacros, the sync will not start until we launch the browser and we need the browser running to query the preference.  This means we need different behavior in the case of Lacros.",
+      "parentUuid": "000eb5e1_fb0a82d4",
       "range": {
         "startLine": 92,
         "startChar": 1,
