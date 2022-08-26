@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dcd878ba_27ca1fec",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_tpm_live_tests.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1524917
+      },
+      "writtenOn": "2022-08-26T04:24:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1d951a66_2f808e2f",
+      "range": {
+        "startLine": 40,
+        "startChar": 3,
+        "endLine": 40,
+        "endChar": 17
+      },
+      "revId": "8dc5a8cf2fed083b597092871274987cbf514870",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dfee9b48_d5288c16",
@@ -58,6 +82,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "347435da_0ef7e838",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_tpm_live_tests.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1524917
+      },
+      "writtenOn": "2022-08-26T04:24:38Z",
+      "side": 1,
+      "message": "Yup yup, I changed it now.",
+      "parentUuid": "dfee9b48_d5288c16",
+      "revId": "8dc5a8cf2fed083b597092871274987cbf514870",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f46e189c_1344fc33",
@@ -71,6 +113,24 @@
       "writtenOn": "2022-08-25T11:57:46Z",
       "side": 1,
       "message": "nit: This code can be moved outside `if`, because we do it in either case anyway.",
+      "revId": "8dc5a8cf2fed083b597092871274987cbf514870",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0fc3912_bfb7a316",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_tpm_live_tests.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1524917
+      },
+      "writtenOn": "2022-08-26T04:24:38Z",
+      "side": 1,
+      "message": "I put it outside before because both cases would call it but then it complains that `cryptohome_tpm_live_tests.go:93:5: ctx declared but not used`. That is why I put it inside instead",
+      "parentUuid": "f46e189c_1344fc33",
       "revId": "8dc5a8cf2fed083b597092871274987cbf514870",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
