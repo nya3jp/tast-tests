@@ -522,7 +522,7 @@ func (p *Proxy) PutFiles(ctx context.Context, asRoot bool, fileMap map[string]st
 				return p.dcl.CopyToContainer(ctx, p.sdc, r, f, types.CopyToContainerOptions{AllowOverwriteDirWithFile: true})
 			}
 			if asRoot {
-				testing.ContextLog(ctx, "Running sudo cp ", l, r)
+				testing.ContextLogf(ctx, "Running sudo cp %s %s", l, r)
 				if err := testexec.CommandContext(ctx, "sudo", "cp", l, r).Run(testexec.DumpLogOnError); err != nil {
 					return err
 				}
