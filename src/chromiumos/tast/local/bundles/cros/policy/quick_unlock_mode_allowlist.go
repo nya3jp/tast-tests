@@ -9,6 +9,7 @@ import (
 	"time"
 
 	"chromiumos/tast/common/fixture"
+	"chromiumos/tast/common/pci"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/errors"
@@ -53,6 +54,10 @@ func init() {
 				Val:               testParam{fingerprintSupported: true},
 			},
 		},
+		SearchFlags: []*testing.StringPair{
+			pci.SearchFlag(&policy.QuickUnlockModeAllowlist{}, pci.VerifiedFunctionalityUI),
+			pci.SearchFlag(&policy.WebAuthnFactors{}, pci.VerifiedValue),
+		},
 	})
 }
 
@@ -60,9 +65,12 @@ func init() {
 // It tests "setup" and "quick_unlock", but not "webauthn" or other auth usages. So it will include
 // just enough test cases to verify:
 // 1. QuickUnlockModeAllowlist enabled will enable "setup" the auth method and using it for "quick_unlock",
-//    even if all other policies disable it.
+//
+//	even if all other policies disable it.
+//
 // 2. QuickUnlockModeAllowlist disabled will disable using the auth method for "quick_unlock" even if all other
-//    policies enabled it, but will not disable "setup" for that auth method.
+//
+//	policies enabled it, but will not disable "setup" for that auth method.
 func QuickUnlockModeAllowlist(ctx context.Context, s *testing.State) {
 	type testCase struct {
 		name                     string
