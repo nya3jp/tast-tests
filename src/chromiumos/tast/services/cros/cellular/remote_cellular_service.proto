@@ -1,0 +1,21 @@
+// Copyright 2022 The ChromiumOS Authors
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package tast.cros.cellular;
+
+import "google/protobuf/empty.proto";
+
+option go_package = "chromiumos/tast/services/cros/cellular";
+
+// RemoteCellularService provides RPC methods to interact with the cellular environment on the DUT.
+service RemoteCellularService {
+  // QueryInterface returns information about the cellular device interface.
+  rpc QueryInterface(google.protobuf.Empty) returns (QueryInterfaceResponse) {}
+}
+
+message QueryInterfaceResponse {
+  string name = 1;
+}

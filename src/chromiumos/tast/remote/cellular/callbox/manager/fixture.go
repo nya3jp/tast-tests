@@ -18,6 +18,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/exec"
 	"chromiumos/tast/rpc"
+	"chromiumos/tast/services/cros/cellular"
 	"chromiumos/tast/services/cros/ui"
 	"chromiumos/tast/ssh"
 	"chromiumos/tast/testing"
@@ -43,7 +44,7 @@ func init() {
 		ResetTimeout:    resetTimeout,
 		PostTestTimeout: postTestTimeout,
 		TearDownTimeout: tearDownTimeout,
-		ServiceDeps:     []string{"tast.cros.browser.ChromeService"},
+		ServiceDeps:     []string{"tast.cros.browser.ChromeService", "tast.cros.cellular.RemoteCellularService"},
 		Vars:            []string{"callboxManager", "callbox"},
 	})
 }
@@ -54,6 +55,8 @@ type TestFixture struct {
 	rpcClient            *rpc.Client
 	ChromeServiceClient  ui.ChromeServiceClient
 	CallboxManagerClient *CallboxManagerClient
+	RemoteCellularClient cellular.RemoteCellularServiceClient
+	InterfaceName        string
 	Vars                 fixtureVars
 }
 
@@ -112,7 +115,7 @@ func (tf *TestFixture) SetUp(ctx context.Context, s *testing.FixtState) interfac
 		}
 	}
 
-	cl, err := rpc.Dial(ctx, s.DUT(), s.RPCHint())
+	cl, err := rpc.Dial(ctx, dut, s.RPCHint())
 	if err != nil {
 		s.Fatal("Failed to connect to the RPC service on the DUT: ", err)
 	}
@@ -123,11 +126,19 @@ func (tf *TestFixture) SetUp(ctx context.Context, s *testing.FixtState) interfac
 		s.Fatal("Failed to start Chrome: ", err)
 	}
 
+	tf.RemoteCellularClient = cellular.NewRemoteCellularServiceClient(cl.Conn)
+	if resp, err := tf.RemoteCellularClient.QueryInterface(ctx, &empty.Empty{}); err != nil {
+		s.Fatal("Failed to query cellular interface: ", err)
+	} else {
+		s.Logf("Using cellular interface %q", resp.Name)
+		tf.InterfaceName = resp.Name
+	}
+
 	return tf
 }
 
 // ConnectToCallbox function handles initial test setup and wraps parameters.
-func (tf *TestFixture) ConnectToCallbox(ctx context.Context, dutConn *ssh.Conn, configureRequestBody *ConfigureCallboxRequestBody, cellularInterface string) error {
+func (tf *TestFixture) ConnectToCallbox(ctx context.Context, dutConn *ssh.Conn, configureRequestBody *ConfigureCallboxRequestBody) error {
 	// Disable and then re-enable cellular on DUT.
 	if err := dutConn.CommandContext(ctx, "dbus-send", "--system", "--fixed", "--print-reply", "--dest=org.chromium.flimflam", "/", "org.chromium.flimflam.Manager.DisableTechnology", "string:cellular").Run(exec.DumpLogOnError); err != nil {
 		return errors.Wrap(err, "failed to disable DUT cellular")
@@ -168,7 +179,7 @@ func (tf *TestFixture) ConnectToCallbox(ctx context.Context, dutConn *ssh.Conn, 
 	}
 
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		_, err := dutConn.CommandContext(ctx, "curl", "--interface", cellularInterface, "google.com").Output()
+		_, err := dutConn.CommandContext(ctx, "curl", "--interface", tf.InterfaceName, "google.com").Output()
 		return err
 	}, &testing.PollOptions{Interval: time.Second * 10, Timeout: time.Second * 200}); err != nil {
 		return errors.Wrapf(err, "failed to curl  %q on DUT using cellular interface", "google.com")
