@@ -9,6 +9,7 @@ import (
 	"time"
 
 	"chromiumos/tast/common/fixture"
+	"chromiumos/tast/common/pci"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/ctxutil"
@@ -43,6 +44,10 @@ func init() {
 		}},
 		// Loading two YouTube videos on slower devices can take a while (we observed subtests that took up to 40 seconds), thus give every subtest 1 minute to run.
 		Timeout: 7 * time.Minute,
+		SearchFlags: []*testing.StringPair{
+			pci.SearchFlag(&policy.ForceYouTubeSafetyMode{}, pci.VerifiedFunctionalityJS),
+			pci.SearchFlag(&policy.ForceYouTubeRestrict{}, pci.VerifiedFunctionalityJS),
+		},
 	})
 }
 

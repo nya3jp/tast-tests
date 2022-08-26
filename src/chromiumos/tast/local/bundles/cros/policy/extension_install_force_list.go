@@ -8,6 +8,7 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/common/pci"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
@@ -29,6 +30,9 @@ func init() {
 		VarDeps:      []string{"policy.ExtensionInstallForceList.username", "policy.ExtensionInstallForceList.password"},
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      chrome.GAIALoginTimeout + time.Minute,
+		SearchFlags: []*testing.StringPair{
+			pci.SearchFlagWithName("ExtensionInstallForceList", pci.VerifiedFunctionalityUI),
+		},
 	})
 }
 

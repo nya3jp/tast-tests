@@ -9,6 +9,7 @@ import (
 	"time"
 
 	"chromiumos/tast/common/fixture"
+	"chromiumos/tast/common/pci"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/errors"
@@ -104,6 +105,10 @@ func init() {
 					},
 				},
 			},
+		},
+		SearchFlags: []*testing.StringPair{
+			pci.SearchFlag(&policy.ExtensionInstallBlocklist{}, pci.VerifiedFunctionalityUI),
+			pci.SearchFlag(&policy.ExtensionInstallAllowlist{}, pci.VerifiedFunctionalityUI),
 		},
 	})
 }
