@@ -149,6 +149,8 @@ func Minijail(ctx context.Context, s *testing.State) {
 		}
 	}
 
+	// landlockTestCase returns a testCase based on common settings needed by Landllock tests.
+
 	// mountTestCase returns a testCase based on common settings needed by chroot and pivotroot test cases.
 	mountTestCase := func(name, cmd string, extraArgs []string) testCase {
 		return testCase{
@@ -390,6 +392,19 @@ func Minijail(ctx context.Context, s *testing.State) {
 			args:  usernsArgs,
 			check: checkRegexp("^0\n0\n$"),
 		},
+		// Landlock test cases
+		{
+			name:  "landlock-allow",
+			cmd:   "id -ru && id -u",
+			args:  usernsArgs,
+			check: checkRegexp("^0\n0\n$"),
+		},
+		// {
+		// 	name:  "landlock-deny",
+		// 	cmd:   "id -ru && id -u",
+		// 	args:  usernsArgs,
+		// 	check: checkRegexp("^0\n0\n$"),
+		// },
 	} {
 		runTestCase(&tc, s.Param().(linkMode))
 	}
