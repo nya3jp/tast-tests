@@ -22,6 +22,30 @@
       },
       "revId": "115efa862bdff7bbfc8b0c8601d9aa438e3253a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8a58e6c_c4a61ebf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/card_element_animation_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-08-26T01:27:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5454e5c7_7d5a9146",
+      "range": {
+        "startLine": 37,
+        "startChar": 37,
+        "endLine": 37,
+        "endChar": 43
+      },
+      "revId": "115efa862bdff7bbfc8b0c8601d9aa438e3253a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
