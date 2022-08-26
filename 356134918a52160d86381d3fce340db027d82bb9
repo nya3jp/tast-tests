@@ -33,6 +33,24 @@
       "message": "Thanks for adding the Lacros variant!",
       "revId": "356134918a52160d86381d3fce340db027d82bb9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a9a7594_337b00ee",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-08-26T03:52:29Z",
+      "side": 1,
+      "message": "Hi Yanzhu, can I get your +2 on this if this looks good? Thanks,",
+      "parentUuid": "b6f534be_f9e11e04",
+      "revId": "356134918a52160d86381d3fce340db027d82bb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
