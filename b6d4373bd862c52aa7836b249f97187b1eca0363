@@ -73,6 +73,30 @@
       },
       "revId": "b6d4373bd862c52aa7836b249f97187b1eca0363",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e8b04d8_54f61796",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/card_element_animation_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-08-27T00:51:27Z",
+      "side": 1,
+      "message": "Good catch. Yes, it is to get `br` object and use it to open more browser windows afterwards. But, the tricky part is that `br` can only be instantiated with at least one window opened for lacros (otherwise, there will be no lacros process that `br` can connect to)\n\nso, I have to do this one-off when it opens a window for the first time. Hope this helps.",
+      "parentUuid": "ab153428_2a835927",
+      "range": {
+        "startLine": 99,
+        "startChar": 3,
+        "endLine": 107,
+        "endChar": 33
+      },
+      "revId": "b6d4373bd862c52aa7836b249f97187b1eca0363",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
