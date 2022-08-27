@@ -20,7 +20,7 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// SetUp returns a Browser instance for a given fixture value and browser type.
+// SetUp returns a Browser instance for a given browser type and an existing ash-chrome instance.
 // It also returns a closure to be called in order to close the browser instance,
 // after which the instance should not be used any further.
 func SetUp(ctx context.Context, cr *chrome.Chrome, bt browser.Type) (*browser.Browser, func(ctx context.Context), error) {
@@ -46,9 +46,9 @@ func SetUp(ctx context.Context, cr *chrome.Chrome, bt browser.Type) (*browser.Br
 }
 
 // SetUpWithURL can be thought of as a combination of SetUp and NewConn that
-// avoids the extra blank tab in the case of Lacros. The caller is responsible
-// for closing the returned connection via its Close() method prior to calling
-// the returned closure.
+// avoids the extra default new tab page in the case of Lacros. The caller is
+// responsible for closing the returned connection via its Close() method prior
+// to calling the returned closure.
 // NOTE: Since SetUpWithURL is implemented with the help of NewConnForTarget,
 // the given url must match exactly the URL that Chrome ends up associating
 // with the tab. For example, you must use "chrome://version/" instead of
@@ -105,12 +105,11 @@ func SetUpWithURL(ctx context.Context, cr *chrome.Chrome, bt browser.Type, url s
 	}
 }
 
-// SetUpWithNewChrome returns a Browser instance along with a new Chrome instance created.
-// This is useful when no fixture is used but the new chrome needs to be instantiated in test for a fresh UI restart between tests.
+// SetUpWithNewChrome returns a Browser instance and a new ash-chrome instance as well.
+// This is useful when tests would like to call chrome.New for restarting ash-chrome and also launch Lacros.
 // It also returns a closure to be called in order to close the browser instance.
-// The caller is responsible for calling the closure first, then Close() on the chrome instance for deferred cleanup.
-// LacrosConfig is the configurations to be set to enable Lacros for use by tests.
-// For convenience, DefaultLacrosConfig().WithVar(s) could be passed in when rootfs-lacros is needed as a primary browser unless specified with the runtime var.
+// The caller is responsible for calling the closure first, then Close() on the chrome instance for cleanup.
+// Note that it opens an extra default tab page for Lacros, but not for ash-chrome.
 func SetUpWithNewChrome(ctx context.Context, bt browser.Type, cfg *lacrosfixt.Config, opts ...chrome.Option) (*chrome.Chrome, *browser.Browser, func(ctx context.Context), error) {
 	switch bt {
 	case browser.TypeAsh:
