@@ -32,7 +32,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		// TODO (b/242590511): Deprecated after moving all performance cuj test cases to chromiumos/tast/local/bundles/cros/spera directory.
 		Func:         ExtendedDisplayCUJ,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Test video entertainment with extended display",
 		Contacts:     []string{"vlin@cienet.com", "cienet-development@googlegroups.com"},
 		SoftwareDeps: []string{"chrome", "arc"},
