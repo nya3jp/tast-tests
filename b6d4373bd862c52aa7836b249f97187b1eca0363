@@ -162,6 +162,30 @@
       },
       "revId": "b6d4373bd862c52aa7836b249f97187b1eca0363",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa1f8652_a3876f78",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/card_element_animation_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-08-27T03:59:55Z",
+      "side": 1,
+      "message": "Got your point. L98 should be `nWindows \u003d\u003d 1` so that it can start measuring with no window. Thanks for the catch. will be updating it shortly.\n\nBy the way, getting a br via browserfixt.SetUpWithURL then closing it soon after that won\u0027t be working as expected. it\u0027s because as soon as the last window is closed the browser process terminates and `br` gets invalidated.",
+      "parentUuid": "3d231703_0ea19484",
+      "range": {
+        "startLine": 99,
+        "startChar": 3,
+        "endLine": 107,
+        "endChar": 33
+      },
+      "revId": "b6d4373bd862c52aa7836b249f97187b1eca0363",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
