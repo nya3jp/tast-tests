@@ -52,6 +52,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "63e3ab09_86702f27",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1121230
+      },
+      "writtenOn": "2022-08-27T03:15:06Z",
+      "side": 1,
+      "message": "Thank you!",
+      "revId": "b6d4373bd862c52aa7836b249f97187b1eca0363",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ab153428_2a835927",
@@ -113,6 +130,30 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "8e8b04d8_54f61796",
+      "range": {
+        "startLine": 99,
+        "startChar": 3,
+        "endLine": 107,
+        "endChar": 33
+      },
+      "revId": "b6d4373bd862c52aa7836b249f97187b1eca0363",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d231703_0ea19484",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/card_element_animation_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1121230
+      },
+      "writtenOn": "2022-08-27T03:15:06Z",
+      "side": 1,
+      "message": "Do you want to re-use a browser window opened with `browserfixt.SetUpWithURL`? If that\u0027s the case, you have to do it with condition nWindows \u003d\u003d 1, not nWindows \u003d\u003d 0.\n\nBut I prefer to obtain a `br` object at the outside of this loop for simplicity, i.e. open a window with `browserfixt.SetUpWithURL` to obtain a `br` object and close it immediately after that.",
+      "parentUuid": "3b383759_4ecaecac",
       "range": {
         "startLine": 99,
         "startChar": 3,
