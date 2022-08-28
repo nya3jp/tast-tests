@@ -10,11 +10,9 @@ import (
 	"time"
 
 	"chromiumos/tast/ctxutil"
-	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome/projector"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
-	"chromiumos/tast/local/chrome/uiauto/launcher"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/testing"
@@ -50,12 +48,8 @@ func CreationFlow(ctx context.Context, s *testing.State) {
 	tutorialsText := nodewith.Name("Getting started").Role(role.StaticText)
 	closeTutorialsButton := nodewith.Name("Close tutorials").Role(role.Button)
 
-	if err := launcher.LaunchAndWaitForAppOpen(tconn, apps.Projector)(ctx); err != nil {
-		s.Fatal("Failed to open Projector app: ", err)
-	}
-
-	if err := projector.DismissOnboardingDialog(ctx, tconn); err != nil {
-		s.Fatal("Failed to close the onboarding dialog: ", err)
+	if err := projector.SetUpProjectorApp(ctx, tconn); err != nil {
+		s.Fatal("Failed to set up Projector app: ", err)
 	}
 
 	// We need to clean up any screencasts after the test to
