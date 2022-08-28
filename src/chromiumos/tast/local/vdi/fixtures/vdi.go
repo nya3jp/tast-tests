@@ -326,6 +326,10 @@ func (v *fixtureState) PostTest(ctx context.Context, s *testing.FixtTestState) {
 		s.Fatal("The VDI app did not appear in shelf after launch: ", err)
 	}
 
+	// In user session and mgs we simply call LoginAfterRestart. Applications
+	// (Citrix, VMWare) handle restarting themselves differently. Citrix does
+	// not require to do anything - it holds the session. VMWare makes user to
+	// pick server and provide credentials.
 	if err := v.vdiConnector.LoginAfterRestart(ctx); err != nil {
 		s.Fatal("Couldn't log in after restart: ", err)
 	}
