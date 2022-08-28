@@ -21,7 +21,6 @@ import (
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/mgs"
 	"chromiumos/tast/local/policyutil"
-	"chromiumos/tast/local/policyutil/fixtures"
 	"chromiumos/tast/local/uidetection"
 	vdiApps "chromiumos/tast/local/vdi/apps"
 	"chromiumos/tast/local/vdi/apps/citrix"
@@ -303,11 +302,11 @@ func (v *mgsFixtureState) PostTest(ctx context.Context, s *testing.FixtTestState
 	}
 	for _, w := range ws {
 		if err := w.CloseWindow(ctx, tconn); err != nil {
-			s.Logf("Warning: Failed to close window (%+v): %v", w, err)
+			s.Errorf("Warning: Failed to close window (%+v): %v", w, err)
 		}
 	}
 
-	testing.ContextLog(ctx, "VDI: Restarting VDI app")
+	testing.ContextLog(ctx, "VDI mgs: Restarting VDI app")
 	if err := apps.Launch(ctx, tconn, v.vdiApplicationToStart.ID); err != nil {
 		s.Fatal("Failed to launch vdi app: ", err)
 	}
@@ -321,13 +320,5 @@ func (v *mgsFixtureState) PostTest(ctx context.Context, s *testing.FixtTestState
 
 	if err := v.vdiConnector.WaitForMainScreenVisible(ctx); err != nil {
 		s.Fatal("VDI main screen was not present: ", err)
-	}
-
-	if err != nil {
-		s.Fatal("Failed to create TestAPI connection: ", err)
-	}
-
-	if err := dumpPolicies(ctx, tconn, fixtures.PolicyFileDump); err != nil {
-		s.Error("Could not dump policies: ", err)
 	}
 }
