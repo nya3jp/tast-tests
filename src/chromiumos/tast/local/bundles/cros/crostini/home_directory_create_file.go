@@ -11,13 +11,9 @@ import (
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/filesapp"
-	"chromiumos/tast/local/chrome/uiauto/nodewith"
-	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/vm"
@@ -125,18 +121,5 @@ func testCreateFileFromContainer(ctx context.Context, tconn *chrome.TestConn, fi
 		return errors.Wrap(err, "failed to create test file in the container")
 	}
 
-	refresh := nodewith.Name("Refresh").Role(role.Button).Ancestor(filesapp.WindowFinder(apps.Files.ID))
-	if err := uiauto.New(tconn).LeftClickUntil(refresh, filesApp.FileExists(fileName))(ctx); err != nil {
-		// Sometimes refresh does not work. Close and reopen Files app instead.
-		testing.ContextLogf(ctx, "Failed to find the new file: %s, try to relaunch Files app", err)
-		filesApp, err := filesapp.Relaunch(ctx, tconn, filesApp)
-		if err != nil {
-			return errors.Wrap(err, "failed to relaunch Files app")
-		}
-		if err := filesApp.OpenLinuxFiles()(ctx); err != nil {
-			return errors.Wrap(err, "failed to open Linux files")
-		}
-		return filesApp.FileExists(fileName)(ctx)
-	}
-	return nil
+	return filesApp.WaitForFile(fileName)(ctx)
 }
