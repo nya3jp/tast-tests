@@ -11,12 +11,26 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/launcher"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/testing"
 )
+
+// SetUpProjectorApp launches the Projector aka Screencast app from
+// the launcher and dimisses the onboarding dialog.
+func SetUpProjectorApp(ctx context.Context, tconn *chrome.TestConn) error {
+	if err := launcher.LaunchAndWaitForAppOpen(tconn, apps.Projector)(ctx); err != nil {
+		return errors.Wrap(err, "failed to open Projector app")
+	}
+	if err := DismissOnboardingDialog(ctx, tconn); err != nil {
+		return errors.Wrap(err, "failed to close the onboarding dialog")
+	}
+	return nil
+}
 
 // RefreshApp returns an action that refreshes the Screencast app by right-clicking.
 // TODO(b/231097154): Refreshing in a loop should not be necessary.
@@ -104,6 +118,9 @@ func LaunchCreationFlow(ctx context.Context, tconn *chrome.TestConn, launchAnnot
 			return err
 		}
 	}
+
+	// Ensure the recording is at least a couple seconds long.
+	testing.Sleep(ctx, 6*time.Second)
 
 	testing.ContextLog(ctx, "Stopping recording")
 	if err := uiauto.Combine("stopping recording",
