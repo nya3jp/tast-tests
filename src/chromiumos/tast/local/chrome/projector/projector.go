@@ -7,6 +7,7 @@ package projector
 
 import (
 	"context"
+	"regexp"
 	"time"
 
 	"chromiumos/tast/errors"
@@ -71,5 +72,111 @@ func VerifyNewScreencastButtonDisabled(ctx context.Context, tconn *chrome.TestCo
 	)(ctx); err != nil {
 		return errors.Wrapf(err, "new screencast button is not disabled with expected error: %s", tooltipText)
 	}
+	return nil
+}
+
+// LaunchCreationFlow creates a new screencast. Don't forget to call
+// DeleteScreencastItems() at the end of your test to clean up, or
+// else the screencasts will take up Drive quota over time.
+func LaunchCreationFlow(ctx context.Context, tconn *chrome.TestConn, launchAnnotator bool) error {
+	ui := uiauto.New(tconn).WithTimeout(2 * time.Minute)
+
+	newScreencastButton := nodewith.Name("New screencast").Role(role.Button).Focusable()
+	clickOrTapRegex := regexp.MustCompile("(Click|Tap) anywhere to record full screen")
+	clickOrTapAnywhereToRecord := nodewith.NameRegex(clickOrTapRegex).Role(role.StaticText)
+	stopRecordingButton := nodewith.Name("Stop screen recording").Role(role.Button)
+
+	testing.ContextLog(ctx, "Starting the new screencast creation flow")
+	if err := uiauto.Combine("starting the new screencast creation flow",
+		ui.WaitUntilExists(newScreencastButton),
+		// Expect the Screencast app to minimize once the
+		// recording session starts, so the button should
+		// disappear.
+		ui.LeftClickUntil(newScreencastButton, ui.Gone(newScreencastButton)),
+		ui.WaitUntilExists(clickOrTapAnywhereToRecord),
+		ui.LeftClickUntil(clickOrTapAnywhereToRecord, ui.Gone(clickOrTapAnywhereToRecord)),
+	)(ctx); err != nil {
+		return errors.Wrap(err, "failed to start new screencast creation flow")
+	}
+
+	if launchAnnotator {
+		if err := LaunchAnnotator(ctx, tconn); err != nil {
+			return err
+		}
+	}
+
+	testing.ContextLog(ctx, "Stopping recording")
+	if err := uiauto.Combine("stopping recording",
+		ui.WaitUntilExists(stopRecordingButton),
+		// Expect the Screencast app to maximize after
+		// recording stops.
+		ui.LeftClickUntil(stopRecordingButton, ui.Gone(stopRecordingButton)),
+	)(ctx); err != nil {
+		return errors.Wrap(err, "failed to stop recording")
+	}
+	return nil
+}
+
+// LaunchAnnotator opens the annotator, changes the marker color, and
+// draws a dot.
+func LaunchAnnotator(ctx context.Context, tconn *chrome.TestConn) error {
+	ui := uiauto.New(tconn).WithTimeout(2 * time.Minute)
+
+	annotatorTrayButton := nodewith.NameStartingWith("Toggle marker.").Role(role.Button)
+	inkCanvas := nodewith.ClassName("ink-engine").Role(role.Canvas)
+	blueMarkerButton := nodewith.Name("Blue").Role(role.Button)
+
+	testing.ContextLog(ctx, "Launching the annotator")
+	if err := uiauto.Combine("launch the annotator",
+		ui.WaitUntilExists(annotatorTrayButton),
+		// Enable the annotator.
+		ui.WithInterval(time.Second).LeftClickUntil(annotatorTrayButton, ui.Exists(inkCanvas)),
+		// Open the color picker.
+		ui.RightClickUntil(annotatorTrayButton, ui.Exists(blueMarkerButton)),
+		// Change marker color to blue.
+		ui.LeftClickUntil(blueMarkerButton, ui.Gone(blueMarkerButton)),
+		// Draw a blue dot.
+		// TODO(b/229634049): Verify the drawing rendered.
+		ui.LeftClick(inkCanvas),
+		// Clear the canvas.
+		// TODO(b/229634049): Verify the canvas cleared.
+		ui.RightClick(inkCanvas),
+		// Disable the annotator.
+		ui.WithInterval(time.Second).LeftClickUntil(annotatorTrayButton, ui.Gone(inkCanvas)),
+	)(ctx); err != nil {
+		return errors.Wrap(err, "failed to launch annotator")
+	}
+	return nil
+}
+
+// DeleteScreencastItems deletes all screencast items in the gallery
+// view.
+func DeleteScreencastItems(ctx context.Context, tconn *chrome.TestConn) error {
+	testing.ContextLog(ctx, "Deleting screencasts")
+
+	ui := uiauto.New(tconn).WithTimeout(2 * time.Minute)
+
+	screencastItem := nodewith.ClassName("screencast-media").Role(role.GenericContainer).First()
+	screencastItemMoreOptionsButton := nodewith.Name("More options").Role(role.PopUpButton).Ancestor(screencastItem)
+	deleteMenuItem := nodewith.Name("Delete").Role(role.MenuItem)
+	deleteButton := nodewith.Name("Delete").Role(role.Button)
+
+	deleteScreencastItem := func(ctx context.Context) error {
+		if err := uiauto.Combine("delete first screencast item",
+			ui.WaitUntilExists(screencastItemMoreOptionsButton),
+			ui.MakeVisible(screencastItemMoreOptionsButton),
+			ui.LeftClickUntil(screencastItemMoreOptionsButton, ui.Exists(deleteMenuItem)),
+			ui.LeftClickUntil(deleteMenuItem, ui.Exists(deleteButton)),
+			ui.LeftClickUntil(deleteButton, ui.Gone(deleteButton)),
+		)(ctx); err != nil {
+			return errors.Wrap(err, "failed to delete screencast item")
+		}
+		return nil
+	}
+
+	if err := ui.WithInterval(5*time.Second).RetryUntil(deleteScreencastItem, ui.Gone(screencastItem))(ctx); err != nil {
+		return errors.Wrap(err, "failed to delete all leftover screencast items")
+	}
+
 	return nil
 }
