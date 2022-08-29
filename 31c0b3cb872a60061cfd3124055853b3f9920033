@@ -166,6 +166,30 @@
       },
       "revId": "31c0b3cb872a60061cfd3124055853b3f9920033",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "067aeca4_cfebe772",
+        "filename": "src/chromiumos/tast/local/chrome/option.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 515,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2022-08-29T21:54:33Z",
+      "side": 1,
+      "message": "Hi Hidehiko, Matt, how about if we live with the status quo and move forward without the change in the option.go?  \nThe grpc tests would provide some test coverage for those options.\n\nIt would be great to enable Lacros through this interface.",
+      "parentUuid": "17f536ef_40040f17",
+      "range": {
+        "startLine": 515,
+        "startChar": 38,
+        "endLine": 515,
+        "endChar": 44
+      },
+      "revId": "31c0b3cb872a60061cfd3124055853b3f9920033",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
