@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "65945ca9_b86aecd8",
+        "filename": "src/chromiumos/tast/local/mtbf/youtube/video_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 409,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2022-08-29T04:10:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "28c1b1db_b9b73c96",
+      "range": {
+        "startLine": 409,
+        "startChar": 5,
+        "endLine": 409,
+        "endChar": 16
+      },
+      "revId": "9a3b5a44ed7956b556b5c6d0f598a3d0d3e080b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8922027d_7e06f006",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-08-29T03:28:00Z",
       "side": 1,
       "message": "Can you please just add 2 functions: StartCast(accessCode), StopCast()? Current implementation looks very weird.",
+      "range": {
+        "startLine": 345,
+        "startChar": 16,
+        "endLine": 345,
+        "endChar": 20
+      },
+      "revId": "9a3b5a44ed7956b556b5c6d0f598a3d0d3e080b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb1a1d97_c2537fbd",
+        "filename": "src/chromiumos/tast/local/mtbf/youtube/youtube_web.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2022-08-29T04:10:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8922027d_7e06f006",
       "range": {
         "startLine": 345,
         "startChar": 16,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "89cae1fa_0e8257f4",
+        "filename": "src/chromiumos/tast/local/mtbf/youtube/youtube_web.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 374,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2022-08-29T04:10:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dfa6c0d6_ebbfc2b5",
+      "range": {
+        "startLine": 374,
+        "startChar": 16,
+        "endLine": 374,
+        "endChar": 31
+      },
+      "revId": "9a3b5a44ed7956b556b5c6d0f598a3d0d3e080b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "afdeb7e5_1f081b11",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-08-29T03:28:00Z",
       "side": 1,
       "message": "Not sure if this works in different resolution, but seems very fragile.",
+      "range": {
+        "startLine": 378,
+        "startChar": 30,
+        "endLine": 378,
+        "endChar": 35
+      },
+      "revId": "9a3b5a44ed7956b556b5c6d0f598a3d0d3e080b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a67d6513_6fbac979",
+        "filename": "src/chromiumos/tast/local/mtbf/youtube/youtube_web.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2022-08-29T04:10:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "afdeb7e5_1f081b11",
       "range": {
         "startLine": 378,
         "startChar": 30,
