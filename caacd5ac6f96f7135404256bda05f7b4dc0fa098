@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4bec995f_b1d0d615",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1196554
+      },
+      "writtenOn": "2022-08-29T22:32:32Z",
+      "side": 1,
+      "message": "Is tracefs mounted at /sys/kernel/tracing for all kernel versions that we use in ChromeOS? Or is it only for certain versions and newer?",
+      "revId": "caacd5ac6f96f7135404256bda05f7b4dc0fa098",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
