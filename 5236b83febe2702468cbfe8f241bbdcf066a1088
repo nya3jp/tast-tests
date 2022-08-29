@@ -16,6 +16,24 @@
       "message": "This adds an additional reboot. Do we need to add this for all duts or can we specify something like needsRebootAfterFlashing  for Brya boards?",
       "revId": "5236b83febe2702468cbfe8f241bbdcf066a1088",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f334437c_02107426",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/firmware_test_handler.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2022-08-29T16:41:39Z",
+      "side": 1,
+      "message": "I don\u0027t have brya board, so I tried to reproduce the problem on zork - successfully, unfortunately. I believe that all boards are affected. Running powerd during tests can lead to issues with setting `fw_wp_state`.",
+      "parentUuid": "01c35a81_2ba9d44b",
+      "revId": "5236b83febe2702468cbfe8f241bbdcf066a1088",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
