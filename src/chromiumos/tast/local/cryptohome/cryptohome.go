@@ -712,3 +712,20 @@ func TestLockScreenPin(ctx context.Context, userName, secret, wrongSecret, keyLa
 
 	return nil
 }
+
+// MountAndVerify tests that after a successful mount with AuthSession, the testFile still exists.
+func MountAndVerify(ctx context.Context, userName, authSessionID string, ecryptFs bool) error {
+	cmdRunner := hwseclocal.NewCmdRunner()
+	cryptohome := hwsec.NewCryptohomeClient(cmdRunner)
+
+	if err := cryptohome.PreparePersistentVault(ctx, authSessionID, ecryptFs); err != nil {
+		return errors.Wrap(err, "prepare persistent vault")
+	}
+	defer UnmountVault(ctx, userName)
+
+	// Verify that file is still there.
+	if err := VerifyFileForPersistence(ctx, userName); err != nil {
+		return errors.Wrap(err, "verify test file")
+	}
+	return nil
+}
