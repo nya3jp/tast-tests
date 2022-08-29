@@ -16,6 +16,52 @@
       "message": "Thanks for reviewing!!",
       "revId": "3231738990572699a7b22fc34a7d2eb2b41e27c4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d58828cd_a851aa29",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/enabled_policy.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-08-29T18:58:55Z",
+      "side": 1,
+      "message": "This line has no effect because you need to pass the ctx. Also, could you check for errors here, like\n\nif err :\u003d ui.WaitUntilGone(screencastAppWindow)(ctx); err !\u003d nil {}",
+      "range": {
+        "startLine": 146,
+        "startChar": 1,
+        "endLine": 146,
+        "endChar": 38
+      },
+      "revId": "3231738990572699a7b22fc34a7d2eb2b41e27c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e77f9d85_ce602e29",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/enabled_policy.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-08-29T18:58:55Z",
+      "side": 1,
+      "message": "Nit: disabled",
+      "range": {
+        "startLine": 158,
+        "startChar": 85,
+        "endLine": 158,
+        "endChar": 91
+      },
+      "revId": "3231738990572699a7b22fc34a7d2eb2b41e27c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

@@ -459,6 +459,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "df04b04b_a66dc99c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/enabled_policy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-08-29T18:58:55Z",
+      "side": 1,
+      "message": "Should we just ping Yilkal with this question in chat for a quicker response?\n\nThat comment above Poll() is true, but we still use polling all the time anyway in our Tast tests to wait for something to happen, such a pref to sync. If we don\u0027t have to wait to verify that the SWA is not installed, then great, but if we have to wait, then I don\u0027t think it\u0027s a problem to use WaitForChromeAppInstalled() and polling.",
+      "parentUuid": "e9ce6802_c2a3d352",
+      "revId": "e1e4d9d7d7e99d59fe3dc71fe08dc2d31fe41006",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ac21c89c_62273a7d",
         "filename": "src/chromiumos/tast/local/bundles/cros/projector/enabled_policy.go",
         "patchSetId": 3
