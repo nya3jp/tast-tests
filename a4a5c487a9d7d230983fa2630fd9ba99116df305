@@ -71,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "747e83d7_2ded67da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/link_capturing.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1130680
+      },
+      "writtenOn": "2022-08-29T01:40:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b96752c4_ea57b914",
+      "range": {
+        "startLine": 128,
+        "startChar": 1,
+        "endLine": 128,
+        "endChar": 6
+      },
+      "revId": "a4a5c487a9d7d230983fa2630fd9ba99116df305",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "307b84e9_3760ce03",
@@ -142,6 +166,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ea2dc09_87a4c834",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/link_capturing.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1130680
+      },
+      "writtenOn": "2022-08-29T01:40:44Z",
+      "side": 1,
+      "message": "Okay, thanks for checking, I\u0027ve left it as-is.",
+      "parentUuid": "22c3a873_618fdbe6",
+      "range": {
+        "startLine": 141,
+        "startChar": 1,
+        "endLine": 141,
+        "endChar": 30
+      },
+      "revId": "a4a5c487a9d7d230983fa2630fd9ba99116df305",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3a383319_fa6ae249",
@@ -155,6 +203,30 @@
       "writtenOn": "2022-08-26T07:48:30Z",
       "side": 1,
       "message": "these can be merged as well.\n\nreturn uiauto.Combine(\"click link and verify result\",\n    intentButton.Click,\n    verifier,\n)(ctx)",
+      "range": {
+        "startLine": 251,
+        "startChar": 1,
+        "endLine": 259,
+        "endChar": 11
+      },
+      "revId": "a4a5c487a9d7d230983fa2630fd9ba99116df305",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "34db99d8_12be0b61",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/link_capturing.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1130680
+      },
+      "writtenOn": "2022-08-29T01:40:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a383319_fa6ae249",
       "range": {
         "startLine": 251,
         "startChar": 1,
