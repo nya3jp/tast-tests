@@ -16,6 +16,24 @@
       "message": "overall LGTM, but if it fails in CQ due to that, you might try using `DoDefault()` instead of `LeftClick()`, it should work even if there are some notifications hiding it.",
       "revId": "cb5239ab6e53094adbec55771c2b232818693116",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f61d078c_54b5a4ee",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2022-08-29T15:05:48Z",
+      "side": 1,
+      "message": "Is that something we should be doing in general?  If DoDefault does the same as LeftClick except it isn\u0027t affected by other UI on the screen, maybe we should be preferring it everywhere?",
+      "parentUuid": "55c3ebea_190a6fc5",
+      "revId": "cb5239ab6e53094adbec55771c2b232818693116",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
