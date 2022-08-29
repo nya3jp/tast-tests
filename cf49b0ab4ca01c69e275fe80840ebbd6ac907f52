@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f9fe412_f78eed9c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2022-08-29T18:21:29Z",
+      "side": 1,
+      "message": "Can we add these details to be bug for record.",
+      "parentUuid": "69ef7aa8_937c9cdf",
+      "revId": "cf49b0ab4ca01c69e275fe80840ebbd6ac907f52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "77d4282c_d8017c42",
