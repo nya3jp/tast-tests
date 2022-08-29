@@ -39,6 +39,30 @@
       },
       "revId": "12abd5ac8b73b98793c0238b8f312794eb52454b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b2c7bf3_5865ff57",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/new_screencast_button_condition.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-08-29T22:53:55Z",
+      "side": 1,
+      "message": "I can do WaitUntilExists() and check that the error is not nil.\n\nI changed this test to do the following:\n1) Assert that SODA is installed.\n2) Wait 15 seconds for the error tooltip. If it exists, then fail the test.\n2) Wait another 15 seconds for the error dialog. If it exists, then fail the test.",
+      "parentUuid": "3cd472c5_3a746f38",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 34
+      },
+      "revId": "12abd5ac8b73b98793c0238b8f312794eb52454b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
