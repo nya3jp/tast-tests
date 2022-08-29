@@ -15,13 +15,11 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         MigrateBasic,
+		Func:         BackwardMigrateBasic,
 		LacrosStatus: testing.LacrosVariantExists,
-		Desc:         "Test basic functionality of Ash-to-Lacros profile migration",
+		Desc:         "Test basic functionality of Lacros-to-Ash profile migration",
 		Contacts: []string{
-			"ythjkt@google.com", // Test author
-			"neis@google.com",
-			"hidehiko@google.com",
+			"vsavu@google.com", // Test author
 			"lacros-team@google.com",
 		},
 		Attr:         []string{"group:mainline", "informational"},
@@ -36,12 +34,17 @@ func init() {
 	})
 }
 
-// MigrateBasic tests that migration is run to completion and Lacros is launchable after the migration.
-func MigrateBasic(ctx context.Context, s *testing.State) {
+// BackwardMigrateBasic tests forward and then backward lacros migration.
+func BackwardMigrateBasic(ctx context.Context, s *testing.State) {
 	if err := migrate.ClearMigrationState(ctx); err != nil {
 		s.Fatal("Failed to run Chrome to clear migration state: ", err)
 	}
 
+	forwardMigrate(ctx, s)
+	backwardMigrate(ctx, s)
+}
+
+func forwardMigrate(ctx context.Context, s *testing.State) {
 	cr, err := migrate.Run(ctx, s.Param().([]lacrosfixt.Option))
 	if err != nil {
 		s.Fatal("Failed to migrate profile: ", err)
@@ -49,4 +52,12 @@ func MigrateBasic(ctx context.Context, s *testing.State) {
 	defer cr.Close(ctx)
 
 	migrate.VerifyLacrosLaunch(ctx, s, cr)
+}
+
+func backwardMigrate(ctx context.Context, s *testing.State) {
+	cr, err := migrate.BackwardRun(ctx, s.Param().([]lacrosfixt.Option))
+	if err != nil {
+		s.Fatal("Failed to backward migrate profile: ", err)
+	}
+	defer cr.Close(ctx)
 }
