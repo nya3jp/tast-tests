@@ -151,6 +151,24 @@
       "parentUuid": "b0fc3912_bfb7a316",
       "revId": "8dc5a8cf2fed083b597092871274987cbf514870",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d99d56a7_1ec897c2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_tpm_live_tests.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1524917
+      },
+      "writtenOn": "2022-08-29T01:54:04Z",
+      "side": 1,
+      "message": "hmmm, my understanding is that only the `ctx` from line #93 is not used. `ctx` is re-declared (in the if condition) at line #93 and will not be used if we put this\n```\nif _, err :\u003d tpmManager.TakeOwnership(ctx); err !\u003d nil {\n    s.Fatal(\"Failed to take TPM ownership: \", err)\n}\n```\noutside of the condition.\n\n(On the other hand, `ctx` from line #75 is used)",
+      "parentUuid": "2a258607_d8457b5d",
+      "revId": "8dc5a8cf2fed083b597092871274987cbf514870",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
