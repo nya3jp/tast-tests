@@ -52,6 +52,24 @@
       "parentUuid": "5243bdf5_78d6c929",
       "revId": "3f291e610c0161557653f3cea603ff170804b973",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa57b031_d76927a1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/flashrom_tester.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1408939
+      },
+      "writtenOn": "2022-08-29T22:37:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ae3ff8c1_c5ef56ab",
+      "revId": "3f291e610c0161557653f3cea603ff170804b973",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
