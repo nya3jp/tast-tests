@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f5bea2f_9c73facf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202834
+      },
+      "writtenOn": "2022-08-29T22:00:08Z",
+      "side": 1,
+      "message": "I couldn\u0027t find any calls to servo.Close outside of firmware tests, so I don\u0027t think this will affect quota pool DUTs.  Jeremy, does that sound accurate (i.e. you don\u0027t anticipate this will leave quota pool DUTs without their watchdog running)?  Just want to confirm this won\u0027t cause problems for DUTs backing the CQ, if the watchdog is serving a critical function there.\n\n+cc Ziting, current servod owner who may have more background on expected behavior of the watchdog",
+      "revId": "1eaeb154a93b8976959763da6132ece9e207a651",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
