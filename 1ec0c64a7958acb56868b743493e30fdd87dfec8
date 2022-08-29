@@ -428,6 +428,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4007495b_672f6c4c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/unicorn_extensions.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1248360
+      },
+      "writtenOn": "2022-08-29T15:13:16Z",
+      "side": 1,
+      "message": "Ack. Nit: Maybe add comment about that? It could have a side effect, if there was a special behavior the first time the browser is opened.",
+      "parentUuid": "199617fc_a9060df6",
+      "range": {
+        "startLine": 74,
+        "startChar": 2,
+        "endLine": 74,
+        "endChar": 33
+      },
+      "revId": "1ec0c64a7958acb56868b743493e30fdd87dfec8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d8326b06_f15a8cf3",
         "filename": "src/chromiumos/tast/local/bundles/cros/familylink/unicorn_extensions.go",
         "patchSetId": 2
