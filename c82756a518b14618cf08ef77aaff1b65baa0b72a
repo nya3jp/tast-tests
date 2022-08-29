@@ -1,6 +1,52 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b5a3853_ca4afea7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-29T22:51:15Z",
+      "side": 1,
+      "message": "`;`",
+      "range": {
+        "startLine": 10,
+        "startChar": 16,
+        "endLine": 10,
+        "endChar": 17
+      },
+      "revId": "c82756a518b14618cf08ef77aaff1b65baa0b72a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3e33b02_7aa90f4f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-29T22:51:15Z",
+      "side": 1,
+      "message": "Remove repeated letter `u`",
+      "range": {
+        "startLine": 11,
+        "startChar": 14,
+        "endLine": 11,
+        "endChar": 15
+      },
+      "revId": "c82756a518b14618cf08ef77aaff1b65baa0b72a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "75331c35_e261b283",
@@ -14,6 +60,23 @@
       "writtenOn": "2022-08-29T21:47:43Z",
       "side": 1,
       "message": "ptal; sorry failed to catch this one on the past cl",
+      "revId": "c82756a518b14618cf08ef77aaff1b65baa0b72a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e48047af_f28efcd8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-29T22:51:15Z",
+      "side": 1,
+      "message": "lgtm with minor changes in commit message",
       "revId": "c82756a518b14618cf08ef77aaff1b65baa0b72a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
