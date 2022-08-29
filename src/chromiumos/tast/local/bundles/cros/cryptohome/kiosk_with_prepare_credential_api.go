@@ -17,7 +17,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: KioskWithLegacyMount,
+		Func: KioskWithPrepareCredentialAPI,
 		Desc: "Ensures that cryptohome correctly mounts kiosk sessions through various Auth APIs",
 		Contacts: []string{
 			"hardikgoyal@chromium.org",
@@ -27,13 +27,12 @@ func init() {
 	})
 }
 
-// KioskWithLegacyMount tests the following case:
+// KioskWithPrepareCredentialAPI tests the following case:
 // User Created with Legacy mountEx call (this will involve KEY_TYPE_PASSWORD):
-//	Ensure that the user can login with mountEx call
 //	Ensure that the user can login with Credential APIs
 //	Ensure that the user can login with AuthFactor APIs
 //	Ensure that the user can login with AuthFactor APIs with USS Enabled
-func KioskWithLegacyMount(ctx context.Context, s *testing.State) {
+func KioskWithPrepareCredentialAPI(ctx context.Context, s *testing.State) {
 	const (
 		cleanupTime = 20 * time.Second
 	)
@@ -59,42 +58,44 @@ func KioskWithLegacyMount(ctx context.Context, s *testing.State) {
 		s.Log("Failed to remove vault before test starts: ", err)
 	}
 
-	// Create and mount the kiosk for the first time.
-	if err := cryptohome.MountKiosk(ctx); err != nil {
-		s.Fatal("Failed to mount kiosk: ", err)
+	// Authenticate a new auth session, create the user, mount the vault
+	// and add kiosk credential.
+	authSessionID, err := client.StartAuthSession(ctx, cryptohome.KioskUser /*ephemeral=*/, false)
+	if err != nil {
+		s.Fatal("Failed to start auth session for re-mounting: ", err)
+	}
+	defer client.InvalidateAuthSession(ctx, authSessionID)
+
+	if err := client.CreatePersistentUser(ctx, authSessionID); err != nil {
+		s.Fatal("Failed to create persistent user: ", err)
 	}
 	defer cryptohome.RemoveVault(ctxForCleanUp, cryptohome.KioskUser)
-	defer cryptohome.UnmountAll(ctxForCleanUp)
+
+	if err := client.PreparePersistentVault(ctx, authSessionID, false /*ecryptfs*/); err != nil {
+		s.Fatal("Failed to prepare new persistent vault: ", err)
+	}
+	defer client.UnmountAll(ctxForCleanUp)
+
+	if err := client.AddCredentialsWithAuthSession(ctx, cryptohome.KioskUser, "" /* no password required*/, "" /*no label required*/, authSessionID, true /*isKioskUser*/); err != nil {
+		s.Fatal("Failed to add kiosk credentials: ", err)
+	}
 
 	if err := cryptohome.WriteFileForPersistence(ctx, cryptohome.KioskUser); err != nil {
 		s.Fatal("Failed to write test file: ", err)
 	}
 
-	if err := cryptohome.UnmountVault(ctx, cryptohome.KioskUser); err != nil {
-		s.Fatal("Failed to unmount vault: ", err)
+	if err := client.InvalidateAuthSession(ctx, authSessionID); err != nil {
+		s.Fatal("Failed to invalidate session: ", err)
 	}
 
-	// Verify that file is still there.
-	if err := cryptohome.VerifyFileForPersistence(ctx, cryptohome.KioskUser); err == nil {
-		s.Fatal("Failed to unmount successfully as file is still readable")
+	// Unmount all user vaults before we start.
+	if err := cryptohome.UnmountAll(ctx); err != nil {
+		s.Log("Failed to unmount all before test starts: ", err)
 	}
 
-	//	Ensure that the user can login with mountEx call
-	if err := cryptohome.MountKiosk(ctx); err != nil {
-		s.Fatal("Failed to mount kiosk: ", err)
-	}
-
-	// Verify that file is still there.
-	if err := cryptohome.VerifyFileForPersistence(ctx, cryptohome.KioskUser); err != nil {
-		s.Fatal("Failed to verify file persistence: ", err)
-	}
-
-	if err := cryptohome.UnmountVault(ctx, cryptohome.KioskUser); err != nil {
-		s.Fatal("Failed to unmount vault: ", err)
-	}
-
-	// Authenticate a new auth session via the new added pin auth factor and mount the user.
-	authSessionID, err := client.StartAuthSession(ctx, cryptohome.KioskUser /*ephemeral=*/, false)
+	// Authenticate a new auth session, create the user, mount the vault
+	// and add kiosk credential.
+	authSessionID, err = client.StartAuthSession(ctx, cryptohome.KioskUser, false /*ephemeral*/)
 	if err != nil {
 		s.Fatal("Failed to start auth session for re-mounting: ", err)
 	}
@@ -110,7 +111,7 @@ func KioskWithLegacyMount(ctx context.Context, s *testing.State) {
 
 	// Ensure that Kiosk login works when USS flag is disabled, but should
 	// still work with AuthFactor API.
-	authSessionID, err = client.StartAuthSession(ctx, cryptohome.KioskUser /*ephemeral=*/, false)
+	authSessionID, err = client.StartAuthSession(ctx, cryptohome.KioskUser, false /*ephemeral*/)
 	if err != nil {
 		s.Fatal("Failed to start auth session for re-mounting: ", err)
 	}
@@ -131,7 +132,7 @@ func KioskWithLegacyMount(ctx context.Context, s *testing.State) {
 	defer cleanupUSSExperiment()
 
 	// Ensure that Kiosk login works when USS flag is enabled.
-	authSessionID, err = client.StartAuthSession(ctx, cryptohome.KioskUser /*ephemeral=*/, false)
+	authSessionID, err = client.StartAuthSession(ctx, cryptohome.KioskUser, false /*ephemeral*/)
 	if err != nil {
 		s.Fatal("Failed to start auth session for re-mounting: ", err)
 	}
