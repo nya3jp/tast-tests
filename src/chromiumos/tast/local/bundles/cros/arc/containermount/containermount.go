@@ -83,7 +83,8 @@ func sdcardMounts() ([]sysutil.MountInfo, error) {
 // mount-passthrough daemons. Currently there are 8 mount-passthrough daemon
 // jobs for MyFiles and removable media.
 // The name should be matched to the following regexp:
-//   "arc-(myfiles|removable-media)(-(default|read|write))?
+//
+//	"arc-(myfiles|removable-media)(-(default|read|write))?
 func mountPassthroughMounts(ctx context.Context) ([]sysutil.MountInfo, error) {
 	var ret []sysutil.MountInfo
 	for _, job := range []string{
@@ -209,7 +210,7 @@ func testDebugfsTracefs(ctx context.Context, s *testing.State, arc []sysutil.Mou
 
 	// If debugfs/tracefs is mounted somewhere in the container,
 	// - It should be mounted at /sys/kernel/debug/tracing, and
-	// - It should be /tracing portion of debugfs (or the root of tracefs for kernels >= 4.4)
+	// - It should be the root of tracefs.
 	// And there is at most one such mount.
 	// Or there could be sync debugfs mounted.
 	// And there can be zero or one sync mounts.
@@ -218,9 +219,7 @@ func testDebugfsTracefs(ctx context.Context, s *testing.State, arc []sysutil.Mou
 	for _, m := range arc {
 		switch m.Fstype {
 		case "debugfs":
-			if m.Root == "/tracing" && m.MountPath == "/sys/kernel/debug/tracing" {
-				numTracing++
-			} else if m.Root == "/sync" && m.MountPath == "/sys/kernel/debug/sync" {
+			if m.Root == "/sync" && m.MountPath == "/sys/kernel/debug/sync" {
 				numSync++
 			} else {
 				s.Errorf("Unexpected debugfs mount point at %s", m.MountPath)
@@ -235,7 +234,7 @@ func testDebugfsTracefs(ctx context.Context, s *testing.State, arc []sysutil.Mou
 	}
 
 	if numTracing != 1 {
-		s.Errorf("Unexpected debugfs/tracefs mount points: got %d; want 1", numTracing)
+		s.Errorf("Unexpected tracefs mount points: got %d; want 1", numTracing)
 	}
 	if numSync != 0 && numSync != 1 {
 		s.Errorf("Unexpected sync debug fs mount points: got %d; want 0 or 1", numSync)
