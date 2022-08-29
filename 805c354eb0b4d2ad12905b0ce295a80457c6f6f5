@@ -51,6 +51,24 @@
       "message": "lgtm\n\nNot tast-owner though so you might need more official +2.",
       "revId": "805c354eb0b4d2ad12905b0ce295a80457c6f6f5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bcae79f7_85cb4254",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-08-29T17:51:23Z",
+      "side": 1,
+      "message": "Thanks for clarification! I\u0027ll be able to tast-owner@ for +2",
+      "parentUuid": "dfd6e9ea_8debdc48",
+      "revId": "805c354eb0b4d2ad12905b0ce295a80457c6f6f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
