@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ec6fe09_6595ec1c",
+        "filename": "src/chromiumos/tast/local/mtbf/youtube/youtube_web.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-08-29T05:55:25Z",
+      "side": 1,
+      "message": "this does not sound reliable? do you have a better approach?",
+      "range": {
+        "startLine": 355,
+        "startChar": 2,
+        "endLine": 355,
+        "endChar": 29
+      },
+      "revId": "2ea2edf3652c224f7b41aa3e06c5d6901536c20b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
