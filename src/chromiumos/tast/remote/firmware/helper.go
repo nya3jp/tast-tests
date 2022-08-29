@@ -566,6 +566,10 @@ func (h *Helper) SetupUSBKey(ctx context.Context, cloudStorage *testing.CloudSto
 		return nil
 	}
 	testing.ContextLogf(ctx, "Current build on USB (%s) differs from DUT (%s), proceed with download", releaseBuilderPath, dutBuilderPath)
+	// Sometimes servod loses the CCD connection while we are flashing the USB drive.
+	if err := h.Servo.WatchdogRemove(ctx, servo.WatchdogCCD); err != nil {
+		return errors.Wrap(err, "failed to remove ccd watchdog")
+	}
 
 	// Copying the behavior from src/third_party/hdctools/servo/drv/usb_downloader.py.
 	// Write the chromiumos_test_image.bin straight over /dev/sdx (usbdev).
