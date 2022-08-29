@@ -1,4 +1,4 @@
-// Copyright 2022 The ChromiumOS Authors.
+// Copyright 2022 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -18,6 +18,7 @@ import (
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/cuj"
 	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/checked"
 	"chromiumos/tast/local/chrome/uiauto/filesapp"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/pointer"
@@ -150,7 +151,7 @@ func (tc *TinkerCad) Copy(ctx context.Context, sampleDesignURL string) (string, 
 	return sampleDesignInfo.Name, tc.ui.DoDefault(btnCopy)(ctx)
 }
 
-// Delete deletes the specific design by it's name.
+// Delete deletes all designs match the given name.
 func (tc *TinkerCad) Delete(ctx context.Context, sampleDesignName string) error {
 	// Delete export file if design is exported.
 	if tc.exportFilePath != "" {
@@ -159,21 +160,49 @@ func (tc *TinkerCad) Delete(ctx context.Context, sampleDesignName string) error 
 			return errors.Wrap(err, "failed to remove a file")
 		}
 	}
-	if err := tc.conn.Navigate(ctx, cuj.TinkerCadDashboardURL); err != nil {
-		return errors.Wrapf(err, "failed to navigate to %q", cuj.TinkerCadDashboardURL)
+
+	if err := tc.conn.Navigate(ctx, cuj.TinkerCAD3DDesignsURL); err != nil {
+		return errors.Wrapf(err, "failed to navigate to %q", cuj.TinkerCAD3DDesignsURL)
 	}
-	checkBoxSelect := dashboardAreaFinder.Name("Select").Role(role.CheckBox)
-	sampleDesign := dashboardAreaFinder.NameContaining(sampleDesignName).Role(role.StaticText).First()
-	btnDelete := dashboardAreaFinder.NameContaining("Delete").Role(role.StaticText)
-	popUpFinder := nodewith.Ancestor(nodewith.HasClass("modal-content").Role(role.GenericContainer))
-	deletionCheckText := popUpFinder.NameContaining("Deleting an item permanently").Role(role.StaticText)
-	btnFinalDelete := popUpFinder.Name("Delete").Role(role.Button).Focusable()
-	return uiauto.NamedCombine("delete the design",
-		tc.ui.DoDefaultUntil(checkBoxSelect, tc.ui.Exists(btnDelete)),
-		tc.ui.DoDefault(sampleDesign),
-		tc.ui.DoDefault(btnDelete),
-		tc.ui.WaitUntilExists(deletionCheckText),
-		tc.ui.DoDefaultUntil(btnFinalDelete, tc.ui.Gone(btnFinalDelete)),
+
+	if err := webutil.WaitForQuiescence(ctx, tc.conn, 15*time.Second); err != nil {
+		return errors.Wrap(err, "failed to wait TinkerCAD website for quiescence")
+	}
+
+	sampleDesignLink := nodewith.NameContaining(sampleDesignName).Role(role.Link).Focusable()
+	if err := tc.ui.WithTimeout(shortUITimeout).WaitUntilExists(sampleDesignLink.First())(ctx); err != nil {
+		testing.ContextLog(ctx, "No matched design found")
+		return nil
+	}
+
+	selectMatchedDesign := func(ctx context.Context) error {
+		nodes, err := tc.ui.NodesInfo(ctx, sampleDesignLink)
+		if err != nil {
+			return errors.Wrap(err, "failed to get nodes info")
+		}
+		testing.ContextLog(ctx, "Number of matched designs: ", len(nodes))
+		for i := 0; i < len(nodes); i++ {
+			designNode := sampleDesignLink.Nth(i)
+			if err := tc.ui.LeftClick(designNode)(ctx); err != nil {
+				return errors.Wrap(err, "failed to delete matched design")
+			}
+		}
+		return nil
+	}
+
+	selectCheckBox := dashboardAreaFinder.Name("Select").Role(role.CheckBox)
+	selectCheckBoxChecked := selectCheckBox.Attribute("checked", checked.True)
+	topBarTool := dashboardAreaFinder.Role(role.GenericContainer).HasClass("top-bar-tool-wrapper")
+	deleteText := nodewith.NameContaining("Delete").Role(role.StaticText).Ancestor(topBarTool)
+	deleteDialog := dashboardAreaFinder.Role(role.Dialog).Focusable()
+	deleteButton := nodewith.Name("Delete").Role(role.Button).Ancestor(deleteDialog).Focusable()
+
+	return uiauto.NamedCombine("delete designs with name: "+sampleDesignName,
+		tc.ui.DoDefaultUntil(selectCheckBox, tc.ui.WithTimeout(shortUITimeout).WaitUntilExists(selectCheckBoxChecked)),
+		selectMatchedDesign,
+		tc.ui.DoDefault(deleteText),
+		tc.ui.LeftClickUntil(deleteButton, tc.ui.WithTimeout(shortUITimeout).WaitUntilGone(deleteButton)),
+		tc.ui.WithTimeout(shortUITimeout).WaitUntilGone(sampleDesignLink.First()),
 	)(ctx)
 }
 

@@ -1,4 +1,4 @@
-// Copyright 2022 The ChromiumOS Authors.
+// Copyright 2022 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -26,10 +26,13 @@ import (
 	"chromiumos/tast/testing"
 )
 
-const tinkerCadTerm = "Tinkercad"
+const (
+	tinkerCadTerm  = "Tinkercad"
+	fileNamePrefix = "Copy of"
+)
 
 // Run runs the EDU3DModelingCUJ test.
-func Run(ctx context.Context, cr *chrome.Chrome, isTablet bool, bt browser.Type, outDir, sampleDesignURL, rotateIconPath string) (retErr error) {
+func Run(ctx context.Context, cr *chrome.Chrome, isTablet bool, bt browser.Type, outDir, sampleDesignURL, rotateIconPath string) error {
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		return errors.Wrap(err, "failed to connect to the test API connection")
@@ -110,7 +113,7 @@ func Run(ctx context.Context, cr *chrome.Chrome, isTablet bool, bt browser.Type,
 	ctx, cancel = ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
 
-	if err := recorder.Run(ctx, func(ctx context.Context) error {
+	if err := recorder.Run(ctx, func(ctx context.Context) (retErr error) {
 		account := cr.Creds().User
 		tinkerCad := tinkercad.NewTinkerCad(tconn, kb, br, rotateIconPath)
 
@@ -156,6 +159,11 @@ func Run(ctx context.Context, cr *chrome.Chrome, isTablet bool, bt browser.Type,
 			if err := uiHandler.SwitchToChromeTabByIndex(0)(ctx); err != nil {
 				return errors.Wrap(err, "failed to switch tab")
 			}
+		}
+
+		// Delete existing copies if previous tests failed to delete them.
+		if err := tinkerCad.Delete(ctx, fileNamePrefix); err != nil {
+			testing.ContextLog(ctx, "Failed to delete existing copies: ", err)
 		}
 
 		// Copy the design from URL than delete it at the final step.
