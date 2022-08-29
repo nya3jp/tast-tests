@@ -142,6 +142,30 @@
       },
       "revId": "3864ee3703cc5644b93e13bdcfb514a77f99fa61",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d20d44c_27bd93af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/card_element_animation_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-08-29T17:54:08Z",
+      "side": 0,
+      "message": "If I have read it correctly, we need lacros variant for this test since it uses browser windows. I\u0027ll mark this comment as resolved and work to get this in with +2. Thanks for clarification.",
+      "parentUuid": "cd566efd_94aedcd8",
+      "range": {
+        "startLine": 29,
+        "startChar": 16,
+        "endLine": 29,
+        "endChar": 43
+      },
+      "revId": "3864ee3703cc5644b93e13bdcfb514a77f99fa61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
