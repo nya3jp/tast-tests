@@ -2,5 +2,5 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-// Package utils contains utility functions for wwcb tests.
-package utils
+// Package wwcb contains local Tast tests that work with chromebook
+package wwcb

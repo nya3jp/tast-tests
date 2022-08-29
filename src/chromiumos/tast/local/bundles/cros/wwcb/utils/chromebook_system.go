@@ -1,4 +1,4 @@
-// Copyright 2022 The Chromium OS Authors. All rights reserved.
+// Copyright 2022 The ChromiumOS Authors.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -6,9 +6,13 @@ package utils
 
 import (
 	"context"
+	"encoding/json"
 	"fmt"
 	"io/ioutil"
+	"os"
+	"regexp"
 	"strings"
+	"time"
 
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
@@ -57,4 +61,55 @@ func SuspendAndResume(ctx context.Context, cr *chrome.Chrome, sleepTime int) err
 
 	testing.ContextLog(ctx, "DUT resumes from suspend")
 	return cr.Reconnect(ctx)
+}
+
+// WaitForFileSaved waits for the presence of the captured file with file name matching the specified
+// change timeout from 5s to 60s
+// refer to cca.go in pacakge cca
+// pattern, size larger than zero, and modified time after the specified timestamp.
+func WaitForFileSaved(ctx context.Context, dir string, pat *regexp.Regexp, ts time.Time) (os.FileInfo, error) {
+	const timeout = time.Minute
+	var result os.FileInfo
+	seen := make(map[string]struct{})
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		files, err := ioutil.ReadDir(dir)
+		if err != nil {
+			return errors.Wrap(err, "failed to read the directory")
+		}
+		for _, file := range files {
+			if file.Size() == 0 || file.ModTime().Before(ts) {
+				continue
+			}
+			if _, ok := seen[file.Name()]; ok {
+				continue
+			}
+			seen[file.Name()] = struct{}{}
+			testing.ContextLog(ctx, "New file found: ", file.Name())
+			if pat.MatchString(file.Name()) {
+				testing.ContextLog(ctx, "Found a match: ", file.Name())
+				result = file
+				return nil
+			}
+		}
+		return errors.New("no matching output file found")
+	}, &testing.PollOptions{Timeout: timeout}); err != nil {
+		return nil, errors.Wrapf(err, "no matching output file found after %v", timeout)
+	}
+	return result, nil
+}
+
+// PrettyPrint pretty print objects.
+func PrettyPrint(ctx context.Context, i interface{}) {
+	s, _ := json.MarshalIndent(i, "", "\t")
+	testing.ContextLog(ctx, string(s))
+
+}
+
+// RunOrFatal runOrFatal runs body as subtest, then invokes s.Fatal if it returns an error
+func RunOrFatal(ctx context.Context, s *testing.State, name string, body func(context.Context, *testing.State) error) bool {
+	return s.Run(ctx, name, func(ctx context.Context, s *testing.State) {
+		if err := body(ctx, s); err != nil {
+			s.Fatal("subtest failed: ", err)
+		}
+	})
 }
