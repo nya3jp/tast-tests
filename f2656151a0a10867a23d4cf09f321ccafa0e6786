@@ -22,6 +22,30 @@
       },
       "revId": "f2656151a0a10867a23d4cf09f321ccafa0e6786",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d97257f8_aa2471b1",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/firmware_test_handler.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2022-08-29T21:21:47Z",
+      "side": 1,
+      "message": "Maybe we should try to remove `powerd` from the list first and check if the problem in b/183123775 is fixed? If we observe failures, we can always revert and merge these changes.\n\nWhat do you think about it?",
+      "parentUuid": "904a6a5b_c7bbf078",
+      "range": {
+        "startLine": 87,
+        "startChar": 4,
+        "endLine": 87,
+        "endChar": 33
+      },
+      "revId": "f2656151a0a10867a23d4cf09f321ccafa0e6786",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
