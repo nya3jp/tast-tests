@@ -16,6 +16,23 @@
       "message": "Rebased to fix merge conflict and re-ran gofmt which caught a couple more files. Re-verified and unit tests pass. Please re-review.",
       "revId": "4ede08adf37256c8a96a75c0164a88ad80570a8f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "69adc193_0c2ce67a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-08-29T21:00:52Z",
+      "side": 1,
+      "message": "Sorry, I missed this before.\n\nsrc/chromiumos/tast/services/cros/ui/conference_service.pb.go  cannot be in the CL.\n\nThis is a generated file as a result of a change in conference_service.proto.\n\nThe generation script may be wrong but it should not be in this CL.\n",
+      "revId": "4ede08adf37256c8a96a75c0164a88ad80570a8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
