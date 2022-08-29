@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03044e48_87e1dad1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/arc_enabled.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-08-29T12:39:11Z",
+      "side": 1,
+      "message": "Can you also remove the remote management team?",
+      "revId": "22ab2a566366baf5a11ab62279cf58d1c14c92d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2eb3c4ce_bd20de78",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/arc_enabled.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-08-29T12:39:11Z",
+      "side": 1,
+      "message": "I\u0027d split this into a separate CL to be revertable in case there are any issues.",
+      "revId": "22ab2a566366baf5a11ab62279cf58d1c14c92d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
