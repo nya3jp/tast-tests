@@ -92,14 +92,15 @@ func PlayStoreSearchAndLaunch(ctx context.Context, s *testing.State) {
 	}
 	defer a.Close(cleanupCtx)
 	defer func() {
-		if s.HasError() {
-			if err := a.Command(cleanupCtx, "uiautomator", "dump").Run(testexec.DumpLogOnError); err != nil {
-				s.Error("Failed to dump UIAutomator: ", err)
-			}
-			if err := a.PullFile(cleanupCtx, "/sdcard/window_dump.xml", filepath.Join(s.OutDir(), "uiautomator_dump.xml")); err != nil {
-				s.Error("Failed to pull UIAutomator dump: ", err)
-			}
+
+		if err := a.Command(cleanupCtx, "perfetto", "-o", "/data/misc/perfetto-traces/trace_file.perfetto-trace", "-t", "20s", "sched", "freq", "idle", "am").Run(testexec.DumpLogOnError); err != nil {
+			s.Error("Failed to dump UIAutomator: ", err)
 		}
+
+		if err := a.PullFile(cleanupCtx, "/data/misc/perfetto-traces/trace_file.perfetto-trace", filepath.Join(s.OutDir(), "pulledtrace")); err != nil {
+			s.Error("Failed to pull UIAutomator dump: ", err)
+		}
+
 	}()
 
 	d, err := a.NewUIDevice(ctx)
