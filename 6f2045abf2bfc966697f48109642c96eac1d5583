@@ -33,6 +33,80 @@
       "message": "hidehiko@, would you please take a look at the changes betw ps#1 and ps#4? Thanks.",
       "revId": "6f2045abf2bfc966697f48109642c96eac1d5583",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e13eb6e_21479e6d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-08-29T16:28:10Z",
+      "side": 1,
+      "message": "# Unmarking CR+2 just in case. Overall direction still LG, but I\u0027d like to see a few more things.",
+      "revId": "6f2045abf2bfc966697f48109642c96eac1d5583",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f38edcca_e3cf6844",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/bootperf/metrics_util.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-08-29T16:28:10Z",
+      "side": 1,
+      "message": "I think, if it reports an err, it EnsureTlsdatedStateBeforeReboot should return error, too.",
+      "range": {
+        "startLine": 182,
+        "startChar": 2,
+        "endLine": 184,
+        "endChar": 3
+      },
+      "revId": "6f2045abf2bfc966697f48109642c96eac1d5583",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11c99804_ed522c3f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/bootperf/metrics_util.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-08-29T16:28:10Z",
+      "side": 1,
+      "message": "clarification: when this happens?\nShould we consider this as critical error? Or, it should not?",
+      "revId": "6f2045abf2bfc966697f48109642c96eac1d5583",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b476a9b_ec14675a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/bootperf/metrics_util.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-08-29T16:28:10Z",
+      "side": 1,
+      "message": "Another clarification:\nIIUC, tlsdated should create this file. Then, any timing issues?\nI.e., should this file be created \"before\" the tlsdated job is becoming running? Or, if it is created at the beginning of tlsdated daemon, you may want to poll in order to avoid flakiness. Could you double check?",
+      "revId": "6f2045abf2bfc966697f48109642c96eac1d5583",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
