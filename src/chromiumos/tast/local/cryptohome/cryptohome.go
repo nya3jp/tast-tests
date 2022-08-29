@@ -9,7 +9,9 @@ package cryptohome
 // Please considering use hwsec.CryptohomeClient directly for new consumer.
 
 import (
+	"bytes"
 	"context"
+	"io/ioutil"
 	"os"
 	"path/filepath"
 	"time"
@@ -37,6 +39,11 @@ const (
 
 	// defaultGaiaPasswordLabel is the default label used to sign into chromebook using their GAIA account.
 	defaultGaiaPasswordLabel = "gaia"
+
+	// persistentTestFile is filename used for creating test file
+	persistentTestFile = "file"
+
+	persistentTestFileContent = "content"
 )
 
 // UserHash returns user's cryptohome hash.
@@ -326,6 +333,52 @@ func CheckDeps(ctx context.Context) error {
 		return errors.Wrap(err, "failed to ensure high-level TPM daemons")
 	}
 
+	return nil
+}
+
+// WriteFileForPersistence writes a files which can be later verified to exist.
+func WriteFileForPersistence(ctx context.Context, username string) error {
+
+	// Write a test file to verify persistence.
+	userPath, err := UserPath(ctx, username)
+	if err != nil {
+		return errors.Wrap(err, "user vault path fetch failed")
+	}
+	filePath := filepath.Join(userPath, persistentTestFile)
+	if err := ioutil.WriteFile(filePath, []byte(persistentTestFileContent), 0644); err != nil {
+		return errors.Wrap(err, "write file operation failed")
+	}
+	return nil
+}
+
+// VerifyFileForPersistence writes a files which can be later verified to exist.
+func VerifyFileForPersistence(ctx context.Context, username string) error {
+	userPath, err := UserPath(ctx, username)
+	if err != nil {
+		return errors.Wrap(err, "failed to get user vault path")
+	}
+	filePath := filepath.Join(userPath, persistentTestFile)
+	// Verify that file is still there.
+	if content, err := ioutil.ReadFile(filePath); err != nil {
+		return errors.Wrap(err, "failed to read test file")
+	} else if bytes.Compare(content, []byte(persistentTestFileContent)) != 0 {
+		return errors.Wrap(err, "incorrect tests file content")
+	}
+	return nil
+}
+
+// VerifyFileUnreadability verifies that the file
+// written(orUnwritten as part of WriteFileForPersistence) is unreadable.
+func VerifyFileUnreadability(ctx context.Context, username string) error {
+	userPath, err := UserPath(ctx, username)
+	if err != nil {
+		return errors.Wrap(err, "failed to get user vault path")
+	}
+	filePath := filepath.Join(userPath, persistentTestFile)
+	// Verify non-persistence.
+	if _, err := ioutil.ReadFile(filePath); err == nil {
+		return errors.Wrap(err, "file is persisted when it is not expected to be")
+	}
 	return nil
 }
 

@@ -5,10 +5,7 @@
 package cryptohome
 
 import (
-	"bytes"
 	"context"
-	"io/ioutil"
-	"path/filepath"
 	"time"
 
 	"chromiumos/tast/common/hwsec"
@@ -42,8 +39,6 @@ func RemoveCredentialAuthSession(ctx context.Context, s *testing.State) {
 		updatedPin                            = "098765"
 		pinLabel                              = "pin"
 		wrongPin                              = "000000"
-		testFile                              = "file"
-		testFileContent                       = "content"
 		cryptohomeErrorAuthorizationKeyFailed = 3
 	)
 
@@ -93,18 +88,9 @@ func RemoveCredentialAuthSession(ctx context.Context, s *testing.State) {
 	}
 	defer client.UnmountAll(ctxForCleanUp)
 
-	// Step 3: Verify that the newly created mount exists.
-	// Write a test file to verify persistence later.
-	userPath, err := cryptohome.UserPath(ctx, userName)
-	if err != nil {
-		s.Fatal("Failed to get user vault path: ", err)
-	}
-
-	// Step 4: Write a file to check for persistence. This file will read later to see
-	// if we mounted the same vault prior to updating credentials.
-	filePath := filepath.Join(userPath, testFile)
-	if err := ioutil.WriteFile(filePath, []byte(testFileContent), 0644); err != nil {
-		s.Fatal("Failed to write a file to the vault: ", err)
+	// Step 3 & 4: Write a test file to verify persistence later.
+	if err := cryptohome.WriteFileForPersistence(ctx, userName); err != nil {
+		s.Fatal("Failed to write test file: ", err)
 	}
 
 	// Step 5: Add Pin credentials for the user. After this the user has a password and
@@ -189,9 +175,7 @@ func RemoveCredentialAuthSession(ctx context.Context, s *testing.State) {
 	defer client.UnmountAll(ctxForCleanUp)
 
 	// Step 15: Verify that file is still there.
-	if content, err := ioutil.ReadFile(filePath); err != nil {
-		s.Fatal("Failed to read back test file: ", err)
-	} else if bytes.Compare(content, []byte(testFileContent)) != 0 {
-		s.Fatal("Incorrect tests file content: ", err)
+	if err := cryptohome.VerifyFileForPersistence(ctx, userName); err != nil {
+		s.Fatal("Failed to verify file persistence: ", err)
 	}
 }

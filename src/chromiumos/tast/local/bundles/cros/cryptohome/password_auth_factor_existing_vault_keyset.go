@@ -36,15 +36,13 @@ func init() {
 // is enabled.
 func PasswordAuthFactorExistingVaultKeyset(ctx context.Context, s *testing.State) {
 	const (
-		userName        = "foo@bar.baz"
-		userPassword    = "secret"
-		passwordLabel   = "gaia"
-		testFile        = "file"
-		testFileContent = "content"
-		ussFlagFile     = "/var/lib/cryptohome/uss_enabled"
-		shadow          = "/home/.shadow"
-		keysetFile      = "master.0" // nocheck
-		ussFile         = "user_secret_stash/uss"
+		userName      = "foo@bar.baz"
+		userPassword  = "secret"
+		passwordLabel = "gaia"
+		ussFlagFile   = "/var/lib/cryptohome/uss_enabled"
+		shadow        = "/home/.shadow"
+		keysetFile    = "master.0" // nocheck
+		ussFile       = "user_secret_stash/uss"
 	)
 
 	// Enable the UserSecretStash experiment for the duration of the test by
