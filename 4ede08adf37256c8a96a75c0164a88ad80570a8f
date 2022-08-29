@@ -33,6 +33,24 @@
       "message": "Sorry, I missed this before.\n\nsrc/chromiumos/tast/services/cros/ui/conference_service.pb.go  cannot be in the CL.\n\nThis is a generated file as a result of a change in conference_service.proto.\n\nThe generation script may be wrong but it should not be in this CL.\n",
       "revId": "4ede08adf37256c8a96a75c0164a88ad80570a8f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e1997a7_b1a3b541",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-08-29T21:16:58Z",
+      "side": 1,
+      "message": "I tested this by regenerating this file as per the `gen.go` file in this directory and the newly generated file does have the extra newline like how gofmt added in this CL. This was likely removed manually, and future generations of this file will include it. Thus, I do believe it is right to include the change in this CL.\n\nOh and FWIW you didn\u0027t miss it before, this change was added in the last patchset submitted today.",
+      "parentUuid": "69adc193_0c2ce67a",
+      "revId": "4ede08adf37256c8a96a75c0164a88ad80570a8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
