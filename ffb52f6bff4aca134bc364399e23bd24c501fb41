@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd8dc58a_881af62e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 21
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-08-29T02:44:15Z",
+      "side": 1,
+      "message": "CL is doing several different things and is quite large. Please break this up into multiple CLs.",
+      "revId": "ffb52f6bff4aca134bc364399e23bd24c501fb41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3cbe6544_ae0b01e3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/chromebook_window.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-08-29T02:44:15Z",
+      "side": 1,
+      "message": "Please put this in a separate CL",
+      "revId": "ffb52f6bff4aca134bc364399e23bd24c501fb41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46e4902d_1d37a13d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/wwcb_verify.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-08-29T02:44:15Z",
+      "side": 1,
+      "message": "Please put these comment fixes in a separate CL",
+      "revId": "ffb52f6bff4aca134bc364399e23bd24c501fb41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b54972a_d57ab3b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/wwcb_verify.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-08-29T02:44:15Z",
+      "side": 1,
+      "message": "Please put these in a separate CL.",
+      "revId": "ffb52f6bff4aca134bc364399e23bd24c501fb41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
