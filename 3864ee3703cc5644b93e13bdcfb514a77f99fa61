@@ -118,6 +118,30 @@
       },
       "revId": "3864ee3703cc5644b93e13bdcfb514a77f99fa61",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd566efd_94aedcd8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/card_element_animation_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1429709
+      },
+      "writtenOn": "2022-08-29T17:11:13Z",
+      "side": 0,
+      "message": "This test opens multiple browser windows because it\u0027s common to use google assistant while there are multiple open browser windows in the background. It was a simple way to check if multiple browsers being opened degraded performance of assistant system UI animations.",
+      "parentUuid": "97f7f05a_fe472b86",
+      "range": {
+        "startLine": 29,
+        "startChar": 16,
+        "endLine": 29,
+        "endChar": 43
+      },
+      "revId": "3864ee3703cc5644b93e13bdcfb514a77f99fa61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
