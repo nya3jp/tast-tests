@@ -503,6 +503,10 @@ func (h *Helper) SyncTastFilesToDUT(ctx context.Context) error {
 // Will break the DUT if it is currently booted off the USB drive in recovery mode.
 func (h *Helper) SetupUSBKey(ctx context.Context, cloudStorage *testing.CloudStorage) (retErr error) {
 	testing.ContextLog(ctx, "Validating image usbkey on servo")
+	// Sometimes servod loses the CCD connection while we are flashing the USB drive.
+	if err := h.Servo.WatchdogRemove(ctx, servo.WatchdogCCD); err != nil {
+		return errors.Wrap(err, "failed to remove ccd watchdog")
+	}
 	// Power cycling the USB key helps to make it visible to the host.
 	if err := h.Servo.SetUSBMuxState(ctx, servo.USBMuxOff); err != nil {
 		return errors.Wrap(err, "failed to power off usbkey")
