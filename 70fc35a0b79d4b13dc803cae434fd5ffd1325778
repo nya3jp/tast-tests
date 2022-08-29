@@ -46,6 +46,30 @@
       },
       "revId": "70fc35a0b79d4b13dc803cae434fd5ffd1325778",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ce0b0fc_15349141",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/rpcdut/rpcdut.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-08-29T17:38:57Z",
+      "side": 1,
+      "message": "Sounds good.",
+      "parentUuid": "4872f4e0_67c998bb",
+      "range": {
+        "startLine": 143,
+        "startChar": 0,
+        "endLine": 145,
+        "endChar": 42
+      },
+      "revId": "70fc35a0b79d4b13dc803cae434fd5ffd1325778",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
