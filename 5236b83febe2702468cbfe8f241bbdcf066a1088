@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01c35a81_2ba9d44b",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/firmware_test_handler.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2022-08-29T16:27:26Z",
+      "side": 1,
+      "message": "This adds an additional reboot. Do we need to add this for all duts or can we specify something like needsRebootAfterFlashing  for Brya boards?",
+      "revId": "5236b83febe2702468cbfe8f241bbdcf066a1088",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
