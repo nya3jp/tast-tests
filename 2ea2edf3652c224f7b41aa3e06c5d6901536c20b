@@ -22,6 +22,30 @@
       },
       "revId": "2ea2edf3652c224f7b41aa3e06c5d6901536c20b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6f1b108_3b2f65e4",
+        "filename": "src/chromiumos/tast/local/mtbf/youtube/youtube_web.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2022-08-29T06:02:15Z",
+      "side": 1,
+      "message": "Use Play/Pause functions instead.\n```\ny.Pause(),\ny.Play(),\n```",
+      "parentUuid": "1ec6fe09_6595ec1c",
+      "range": {
+        "startLine": 355,
+        "startChar": 2,
+        "endLine": 355,
+        "endChar": 29
+      },
+      "revId": "2ea2edf3652c224f7b41aa3e06c5d6901536c20b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
