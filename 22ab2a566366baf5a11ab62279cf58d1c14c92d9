@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d03811f2_aa876fe2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-08-29T12:40:21Z",
+      "side": 1,
+      "message": "The test is failing repeatedly on some boards.\n\nCan you filter them out using software/hardware deps and only make the test critical on stable boards?",
+      "revId": "22ab2a566366baf5a11ab62279cf58d1c14c92d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "03044e48_87e1dad1",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/arc_enabled.go",
         "patchSetId": 4
