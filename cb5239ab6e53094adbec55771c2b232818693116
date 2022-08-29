@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "55c3ebea_190a6fc5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-08-29T08:04:28Z",
+      "side": 1,
+      "message": "overall LGTM, but if it fails in CQ due to that, you might try using `DoDefault()` instead of `LeftClick()`, it should work even if there are some notifications hiding it.",
+      "revId": "cb5239ab6e53094adbec55771c2b232818693116",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
