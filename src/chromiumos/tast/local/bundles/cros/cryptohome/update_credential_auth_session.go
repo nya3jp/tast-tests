@@ -5,10 +5,7 @@
 package cryptohome
 
 import (
-	"bytes"
 	"context"
-	"io/ioutil"
-	"path/filepath"
 	"time"
 
 	"chromiumos/tast/common/hwsec"
@@ -33,8 +30,6 @@ func init() {
 }
 
 const (
-	testFile                              = "file"
-	testFileContent                       = "content"
 	cryptohomeErrorAuthorizationKeyFailed = 3
 )
 
@@ -97,17 +92,9 @@ func UpdateCredentialAuthSession(ctx context.Context, s *testing.State) {
 	}
 	defer client.UnmountAll(ctxForCleanUp)
 
-	// Step 3: Get user path to create a file to check for persistence later.
-	userPath, err := cryptohome.UserPath(ctx, userName)
-	if err != nil {
-		s.Fatal("Failed to get user vault path: ", err)
-	}
-
-	// Step 4: Write a file to check for persistence. This file will read later to see
-	// if we mounted the same vault prior to updating credentials.
-	filePath := filepath.Join(userPath, testFile)
-	if err := ioutil.WriteFile(filePath, []byte(testFileContent), 0644); err != nil {
-		s.Fatal("Failed to write a file to the vault: ", err)
+	// Step 3&4: Get user path and create a file to check for persistence later.
+	if err := cryptohome.WriteFileForPersistence(ctx, userName); err != nil {
+		s.Fatal("Failed to write test file: ", err)
 	}
 
 	// Step 5: Add Pin credentials for the user. After this the user has a password
@@ -151,7 +138,7 @@ func UpdateCredentialAuthSession(ctx context.Context, s *testing.State) {
 	defer client.InvalidateAuthSession(ctxForCleanUp, authSessionID)
 
 	// Step 11: Following successful auth, ensure that the file we created earlier still exists.
-	if err := mountAndVerifyFilePersistence(ctx, client, filePath, authSessionID); err != nil {
+	if err := mountAndVerifyFilePersistence(ctx, client, userName, authSessionID); err != nil {
 		s.Fatal("Failed to verify file persistence when logging in with updated password: ", err)
 	}
 	defer client.UnmountAll(ctx)
@@ -176,7 +163,7 @@ func UpdateCredentialAuthSession(ctx context.Context, s *testing.State) {
 
 	// Step 14: Following successful auth, ensure that the file we created
 	// earlier still exists.
-	if err := mountAndVerifyFilePersistence(ctx, client, filePath, authSessionID); err != nil {
+	if err := mountAndVerifyFilePersistence(ctx, client, userName, authSessionID); err != nil {
 		s.Fatal("Failed to verify file persistence when logging in with pin after updating password: ", err)
 	}
 	defer client.UnmountAll(ctx)
@@ -209,7 +196,7 @@ func UpdateCredentialAuthSession(ctx context.Context, s *testing.State) {
 
 	// Step 18: Following successful auth, ensure that the file we created
 	// earlier still exists.
-	if err := mountAndVerifyFilePersistence(ctx, client, filePath, authSessionID); err != nil {
+	if err := mountAndVerifyFilePersistence(ctx, client, userName, authSessionID); err != nil {
 		s.Fatal("Failed to verify file persistenc when logging in with updatedPassword, post update pin: ", err)
 	}
 	defer client.UnmountAll(ctx)
@@ -233,7 +220,7 @@ func UpdateCredentialAuthSession(ctx context.Context, s *testing.State) {
 	}
 
 	// Step 21: Following successful auth, ensure that the file we created earlier still exists.
-	if err := mountAndVerifyFilePersistence(ctx, client, filePath, authSessionID); err != nil {
+	if err := mountAndVerifyFilePersistence(ctx, client, userName, authSessionID); err != nil {
 		s.Fatal("Failed to verify file persistence after after logging in with new pin: ", err)
 	}
 	defer client.UnmountAll(ctx)
@@ -286,18 +273,15 @@ func loginWithCorrectAndIncorrectCredentials(ctx context.Context, client *hwsec.
 
 // mountAndVerifyFilePersistence mounts using the given AuthSessionID and ensures
 // that the file we wrote earlier still exists.
-func mountAndVerifyFilePersistence(ctx context.Context, client *hwsec.CryptohomeClient, filePath, authSessionID string) error {
+func mountAndVerifyFilePersistence(ctx context.Context, client *hwsec.CryptohomeClient, username, authSessionID string) error {
 	// Write a test file to verify persistence.
 	if err := client.PreparePersistentVault(ctx, authSessionID, false /*=ecryptfs*/); err != nil {
 		return errors.Wrap(err, "failed to prepare persistent vault with given credential")
 	}
 
 	// Verify that file is still there.
-	if content, err := ioutil.ReadFile(filePath); err != nil {
-		return errors.Wrap(err, "failed to read back test file")
-	} else if bytes.Compare(content, []byte(testFileContent)) != 0 {
-		return errors.Wrap(err, "incorrect tests file content")
+	if err := cryptohome.VerifyFileForPersistence(ctx, username); err != nil {
+		return errors.Wrap(err, "failed to verify file persistence")
 	}
-
 	return nil
 }

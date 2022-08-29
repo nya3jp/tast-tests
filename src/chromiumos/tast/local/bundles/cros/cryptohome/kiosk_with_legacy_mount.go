@@ -5,10 +5,7 @@
 package cryptohome
 
 import (
-	"bytes"
 	"context"
-	"io/ioutil"
-	"path/filepath"
 	"time"
 
 	"chromiumos/tast/common/hwsec"
@@ -33,15 +30,14 @@ func init() {
 
 // KioskWithLegacyMount tests the following case:
 // User Created with Legacy mountEx call (this will involve KEY_TYPE_PASSWORD):
+//
 //	Ensure that the user can login with mountEx call
 //	Ensure that the user can login with Credential APIs
 //	Ensure that the user can login with AuthFactor APIs
 //	Ensure that the user can login with AuthFactor APIs with USS Enabled
 func KioskWithLegacyMount(ctx context.Context, s *testing.State) {
 	const (
-		testFile        = "file"
-		testFileContent = "content"
-		cleanupTime     = 20 * time.Second
+		cleanupTime = 20 * time.Second
 	)
 
 	ctxForCleanUp := ctx
@@ -69,25 +65,21 @@ func KioskWithLegacyMount(ctx context.Context, s *testing.State) {
 	if err := cryptohome.MountKiosk(ctx); err != nil {
 		s.Fatal("Failed to mount kiosk: ", err)
 	}
-	defer cryptohome.RemoveVault(ctxForCleanUp, cryptohome.KioskUser);
+	defer cryptohome.RemoveVault(ctxForCleanUp, cryptohome.KioskUser)
 	defer cryptohome.UnmountAll(ctxForCleanUp)
 
 	// Write a test file to verify persistence.
-	userPath, err := cryptohome.UserPath(ctx, cryptohome.KioskUser)
-	if err != nil {
-		s.Fatal("Failed to get kiosk user vault path: ", err)
-	}
-	filePath := filepath.Join(userPath, testFile)
-	if err := ioutil.WriteFile(filePath, []byte(testFileContent), 0644); err != nil {
-		s.Fatal("Failed to write a file to the vault: ", err)
+	if err := cryptohome.WriteFileForPersistence(ctx, cryptohome.KioskUser); err != nil {
+		s.Fatal("Failed to write test file: ", err)
 	}
 
 	if err := cryptohome.UnmountVault(ctx, cryptohome.KioskUser); err != nil {
 		s.Fatal("Failed to unmount vault: ", err)
 	}
 
-	if _, err := ioutil.ReadFile(filePath); err == nil {
-		s.Fatal("File is readable after unmount")
+	// Verify that file is still there.
+	if err := cryptohome.VerifyFileForPersistence(ctx, cryptohome.KioskUser); err == nil {
+		s.Fatal("Failed to unmount successfully as file is still readable")
 	}
 
 	//	Ensure that the user can login with mountEx call
@@ -96,10 +88,8 @@ func KioskWithLegacyMount(ctx context.Context, s *testing.State) {
 	}
 
 	// Verify that file is still there.
-	if content, err := ioutil.ReadFile(filePath); err != nil {
-		s.Fatal("Failed to read back test file: ", err)
-	} else if bytes.Compare(content, []byte(testFileContent)) != 0 {
-		s.Fatalf("Incorrect tests file content. got: %q, want: %q", content, testFileContent)
+	if err := cryptohome.VerifyFileForPersistence(ctx, cryptohome.KioskUser); err != nil {
+		s.Fatal("Failed to verify file persistence: ", err)
 	}
 
 	if err := cryptohome.UnmountVault(ctx, cryptohome.KioskUser); err != nil {
@@ -117,7 +107,7 @@ func KioskWithLegacyMount(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to authenticate with auth session: ", err)
 	}
 
-	if err := mountAndVerify(ctx, client, authSessionID, filePath); err != nil {
+	if err := mountAndVerify(ctx, client, authSessionID); err != nil {
 		s.Fatal("Failed to mount and verify persistence: ", err)
 	}
 
@@ -132,7 +122,7 @@ func KioskWithLegacyMount(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to authenticate with auth session: ", err)
 	}
 
-	if err := mountAndVerify(ctx, client, authSessionID, filePath); err != nil {
+	if err := mountAndVerify(ctx, client, authSessionID); err != nil {
 		s.Fatal("Failed to mount and verify persistence: ", err)
 	}
 
@@ -154,29 +144,20 @@ func KioskWithLegacyMount(ctx context.Context, s *testing.State) {
 	}
 	defer client.InvalidateAuthSession(ctx, authSessionID)
 
-	if err := mountAndVerify(ctx, client, authSessionID, filePath); err != nil {
+	if err := mountAndVerify(ctx, client, authSessionID); err != nil {
 		s.Fatal("Failed to mount and verify persistence: ", err)
 	}
 }
 
-func mountAndVerify(ctx context.Context, client *hwsec.CryptohomeClient, authSessionID, filePath string) error {
-	const (
-		testFile        = "file"
-		testFileContent = "content"
-	)
+func mountAndVerify(ctx context.Context, client *hwsec.CryptohomeClient, authSessionID string) error {
 	if err := client.PreparePersistentVault(ctx, authSessionID /*ecryptfs=*/, false); err != nil {
 		return errors.Wrap(err, "failed to prepare persistent vault")
 	}
+	defer cryptohome.UnmountVault(ctx, cryptohome.KioskUser)
 
 	// Verify that file is still there.
-	if content, err := ioutil.ReadFile(filePath); err != nil {
-		return errors.Wrap(err, "failed to read test file")
-	} else if bytes.Compare(content, []byte(testFileContent)) != 0 {
-		return errors.Wrap(err, "incorrect tests file content")
-	}
-
-	if err := cryptohome.UnmountVault(ctx, cryptohome.KioskUser); err != nil {
-		return errors.Wrap(err, "failed to unmount vault")
+	if err := cryptohome.VerifyFileForPersistence(ctx, cryptohome.KioskUser); err != nil {
+		return errors.Wrap(err, "failed to verify test file")
 	}
 	return nil
 }

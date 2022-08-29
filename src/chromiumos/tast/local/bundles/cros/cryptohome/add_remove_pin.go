@@ -5,10 +5,7 @@
 package cryptohome
 
 import (
-	"bytes"
 	"context"
-	"io/ioutil"
-	"path/filepath"
 	"time"
 
 	"chromiumos/tast/common/hwsec"
@@ -39,8 +36,6 @@ func AddRemovePin(ctx context.Context, s *testing.State) {
 		userPin                    = "123456"
 		passwordLabel              = "online-password"
 		pinLabel                   = "test-pin"
-		testFile                   = "file"
-		testFileContent            = "content"
 		cryptohomeErrorKeyNotFound = 15
 	)
 
@@ -92,12 +87,7 @@ func AddRemovePin(ctx context.Context, s *testing.State) {
 	defer client.UnmountAll(ctxForCleanUp)
 
 	// Write a test file to verify persistence.
-	userPath, err := cryptohome.UserPath(ctx, userName)
-	if err != nil {
-		s.Fatal("Failed to get user vault path: ", err)
-	}
-	filePath := filepath.Join(userPath, testFile)
-	if err := ioutil.WriteFile(filePath, []byte(testFileContent), 0644); err != nil {
+	if err := cryptohome.WriteFileForPersistence(ctx, userName); err != nil {
 		s.Fatal("Failed to write a file to the vault: ", err)
 	}
 
@@ -124,11 +114,9 @@ func AddRemovePin(ctx context.Context, s *testing.State) {
 			return errors.Wrap(err, "failed to prepare persistent vault")
 		}
 
-		// Verify that the test file is still there.
-		if content, err := ioutil.ReadFile(filePath); err != nil {
-			return errors.Wrap(err, "failed to read back test file")
-		} else if bytes.Compare(content, []byte(testFileContent)) != 0 {
-			return errors.Wrapf(err, "incorrect tests file content. got: %q, want: %q", content, testFileContent)
+		// Verify that file is still there.
+		if err := cryptohome.VerifyFileForPersistence(ctx, userName); err != nil {
+			s.Fatal("Failed to verify test file: ", err)
 		}
 		return nil
 	}

@@ -5,10 +5,7 @@
 package cryptohome
 
 import (
-	"bytes"
 	"context"
-	"io/ioutil"
-	"path/filepath"
 	"time"
 
 	"chromiumos/tast/common/hwsec"
@@ -40,11 +37,9 @@ func init() {
 
 func VaultMigration(ctx context.Context, s *testing.State) {
 	const (
-		userName        = "foo@bar.baz"
-		userPassword    = "secret"
-		keyLabel        = "fake_label"
-		testFile        = "file"
-		testFileContent = "content"
+		userName     = "foo@bar.baz"
+		userPassword = "secret"
+		keyLabel     = "fake_label"
 	)
 
 	ctxForCleanUp := ctx
@@ -91,25 +86,19 @@ func VaultMigration(ctx context.Context, s *testing.State) {
 	}
 	defer client.UnmountAll(ctxForCleanUp)
 
-	userPath, err := cryptohome.UserPath(ctx, userName)
-	if err != nil {
-		s.Fatal("Failed to get user vault path: ", err)
-	}
-
-	filePath := filepath.Join(userPath, testFile)
-	if err := ioutil.WriteFile(filePath, []byte(testFileContent), 0644); err != nil {
-		s.Fatal("Failed to write a file to the vault: ", err)
+	// Write a test file to verify persistence.
+	if err := cryptohome.WriteFileForPersistence(ctx, userName); err != nil {
+		s.Fatal("Failed to write test file: ", err)
 	}
 
 	if err := client.UnmountAll(ctx); err != nil {
 		s.Fatal("Failed to unmount vaults for re-mounting: ", err)
 	}
 
-	if _, err := ioutil.ReadFile(filePath); err == nil {
+	if err := cryptohome.VerifyFileUnreadability(ctx, cryptohome.KioskUser); err != nil {
 		s.Fatal("File is readable after unmount")
 	}
 
-	s.Log("Mount for encryption migration")
 	authSessionID, err = cryptohome.AuthenticateWithAuthSession(ctx, userName, userPassword, keyLabel, false /*ephemeral*/, false /*kiosk*/)
 	if err != nil {
 		s.Fatal("Failed to authenticate persistent user: ", err)
@@ -138,9 +127,7 @@ func VaultMigration(ctx context.Context, s *testing.State) {
 	defer client.UnmountAll(ctxForCleanUp)
 
 	// Verify that file is still there.
-	if content, err := ioutil.ReadFile(filePath); err != nil {
-		s.Fatal("Failed to read back test file: ", err)
-	} else if bytes.Compare(content, []byte(testFileContent)) != 0 {
-		s.Fatalf("Incorrect tests file content. got: %q, want: %q", content, testFileContent)
+	if err := cryptohome.VerifyFileForPersistence(ctx, userName); err != nil {
+		s.Fatal("Failed to verify file persistence: ", err)
 	}
 }
