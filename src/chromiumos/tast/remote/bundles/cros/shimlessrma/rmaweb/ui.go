@@ -204,7 +204,7 @@ func (uiHelper *UIHelper) FinalizingRepairPageOperation(ctx context.Context) err
 // RepairCompletedPageOperation handles all operations on repair completed Page.
 func (uiHelper *UIHelper) RepairCompletedPageOperation(ctx context.Context) error {
 	return action.Combine("Repair Completed page operation",
-		uiHelper.waitForPageToLoad("Repair is complete", longTimeInSecondToEnableButton),
+		uiHelper.waitForPageToLoad("Almost done!", longTimeInSecondToEnableButton),
 		uiHelper.clickButton("Reboot"),
 	)(ctx)
 }
