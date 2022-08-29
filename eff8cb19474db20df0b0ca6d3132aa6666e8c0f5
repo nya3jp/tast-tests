@@ -16,6 +16,24 @@
       "message": "This looks good, but do know if it can fail (i.e. does it fail for /bin/false or something that calls abort())?",
       "revId": "eff8cb19474db20df0b0ca6d3132aa6666e8c0f5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c476adca_1d2f2911",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1544637
+      },
+      "writtenOn": "2022-08-29T15:45:50Z",
+      "side": 1,
+      "message": "Yes, it can. /bin/false is one example, it will also fail if you try to cat a file outside the allowed Landlock directories.\n\n(I see this comment is resolved so I’ve not made any changes for now, but if needed I could modify runTestCase() to optionally expect failures and capture these)",
+      "parentUuid": "d141fd17_15c474da",
+      "revId": "eff8cb19474db20df0b0ca6d3132aa6666e8c0f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
