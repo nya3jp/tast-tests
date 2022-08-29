@@ -46,6 +46,30 @@
       },
       "revId": "8346df492b4a0af308496cc0eee63b9a317d2799",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e346527_b73b9990",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/chroot/network_chroot.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1356183
+      },
+      "writtenOn": "2022-08-29T08:42:03Z",
+      "side": 1,
+      "message": "Got it. SGTM.",
+      "parentUuid": "aebfb320_b276d16a",
+      "range": {
+        "startLine": 6,
+        "startChar": 8,
+        "endLine": 6,
+        "endChar": 14
+      },
+      "revId": "8346df492b4a0af308496cc0eee63b9a317d2799",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
