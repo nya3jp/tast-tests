@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28c1b1db_b9b73c96",
+        "filename": "src/chromiumos/tast/local/mtbf/youtube/video_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 409,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-08-29T03:28:00Z",
+      "side": 1,
+      "message": "You are enabling this function to support multi-window situations. In that case you should rename this function to getPrimaryWindowID or getFirstWindowID?",
+      "range": {
+        "startLine": 409,
+        "startChar": 5,
+        "endLine": 409,
+        "endChar": 16
+      },
+      "revId": "9a3b5a44ed7956b556b5c6d0f598a3d0d3e080b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8922027d_7e06f006",
+        "filename": "src/chromiumos/tast/local/mtbf/youtube/youtube_web.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-08-29T03:28:00Z",
+      "side": 1,
+      "message": "Can you please just add 2 functions: StartCast(accessCode), StopCast()? Current implementation looks very weird.",
+      "range": {
+        "startLine": 345,
+        "startChar": 16,
+        "endLine": 345,
+        "endChar": 20
+      },
+      "revId": "9a3b5a44ed7956b556b5c6d0f598a3d0d3e080b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dfa6c0d6_ebbfc2b5",
+        "filename": "src/chromiumos/tast/local/mtbf/youtube/youtube_web.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 374,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-08-29T03:28:00Z",
+      "side": 1,
+      "message": "nit: ResetCastStatus",
+      "range": {
+        "startLine": 374,
+        "startChar": 16,
+        "endLine": 374,
+        "endChar": 31
+      },
+      "revId": "9a3b5a44ed7956b556b5c6d0f598a3d0d3e080b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "afdeb7e5_1f081b11",
+        "filename": "src/chromiumos/tast/local/mtbf/youtube/youtube_web.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-08-29T03:28:00Z",
+      "side": 1,
+      "message": "Not sure if this works in different resolution, but seems very fragile.",
+      "range": {
+        "startLine": 378,
+        "startChar": 30,
+        "endLine": 378,
+        "endChar": 35
+      },
+      "revId": "9a3b5a44ed7956b556b5c6d0f598a3d0d3e080b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
