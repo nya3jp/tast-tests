@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "df6d1210_bece4fb0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-08-29T08:56:22Z",
+      "side": 1,
+      "message": "np, thanks for the review!",
+      "parentUuid": "4a9026e7_d5959aa5",
+      "revId": "82483b924584069caeda62eba34ee3a5809888cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1eee4be1_dbee60d9",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "25a5555f_c9f464a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-08-29T08:56:22Z",
+      "side": 1,
+      "message": "The usage is in a separate CL: https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3836884/6",
+      "parentUuid": "1eee4be1_dbee60d9",
+      "revId": "82483b924584069caeda62eba34ee3a5809888cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "05fb1ac7_dc9089e4",
@@ -48,6 +84,24 @@
       "writtenOn": "2022-08-29T07:21:18Z",
       "side": 1,
       "message": "it may need to unfocus from any window?",
+      "revId": "82483b924584069caeda62eba34ee3a5809888cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e4ce787_1dfbdcd8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-08-29T08:56:22Z",
+      "side": 1,
+      "message": "It is only used in the inputs tests, which ensure a clean environment at the start of a test, and openning Ash/Lacros browser is the first step, there is no need to unfocus from other windows.",
+      "parentUuid": "05fb1ac7_dc9089e4",
       "revId": "82483b924584069caeda62eba34ee3a5809888cc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
