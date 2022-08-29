@@ -65,14 +65,17 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/filesapp"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         Dock1PersistentSettings,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Test persistent settings of window bound placement across displays in one use session via a Dock",
 		Contacts:     []string{"flin@google.com", "newmanliu19020@allion.corp-partner.google.com"},
 		SoftwareDeps: []string{"chrome"},
+		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		Timeout:      4 * time.Minute,
 		Vars:         []string{"WWCBIP", "DockingID", "1stExtDispID"},
 		Pre:          chrome.LoggedIn(),
@@ -96,9 +99,11 @@ func Dock1PersistentSettings(ctx context.Context, s *testing.State) {
 	}
 	defer kb.Close()
 
-	if err := utils.InitFixtures(ctx); err != nil {
+	cleanup, err := utils.InitFixtures(ctx)
+	if err != nil {
 		s.Fatal("Failed to initialize fixtures: ", err)
 	}
+	defer cleanup(ctx)
 
 	testing.ContextLog(ctx, "Step 1 - Boot-up and sign in to the device")
 
