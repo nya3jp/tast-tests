@@ -22,6 +22,30 @@
       },
       "revId": "8346df492b4a0af308496cc0eee63b9a317d2799",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aebfb320_b276d16a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/chroot/network_chroot.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-08-29T08:39:32Z",
+      "side": 1,
+      "message": "Sorry I forgot to mention, I plan to move this inside vpn package in a follow-up patch, I will rename this to server_runner (or some other name) at that time",
+      "parentUuid": "b0b8ac9e_9841c171",
+      "range": {
+        "startLine": 6,
+        "startChar": 8,
+        "endLine": 6,
+        "endChar": 14
+      },
+      "revId": "8346df492b4a0af308496cc0eee63b9a317d2799",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
