@@ -24,7 +24,7 @@ func init() {
 
 // CheckTracefsInstances checks that we don't have more tracefs instances than the number of processors as a warning of potential boot performance issues with SELinux labeling.
 func CheckTracefsInstances(ctx context.Context, s *testing.State) {
-	const tracefsInstancesPath = "/sys/kernel/debug/tracing/instances"
+	const tracefsInstancesPath = "/sys/kernel/tracing/instances"
 
 	cpuInfo, err := cpu.InfoWithContext(ctx)
 	if err != nil {

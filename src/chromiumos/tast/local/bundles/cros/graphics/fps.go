@@ -107,7 +107,7 @@ func parseTrace(tracePath string, crtc int) ([]float64, error) {
 
 func FPS(ctx context.Context, s *testing.State) {
 	const (
-		tracingPath = "/sys/kernel/debug/tracing"
+		tracingPath = "/sys/kernel/tracing"
 
 		// Collect statistics for 5 seconds.
 		collectTime = 5 * time.Second

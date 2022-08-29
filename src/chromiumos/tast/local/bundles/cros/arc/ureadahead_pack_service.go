@@ -64,7 +64,7 @@ func (c *UreadaheadPackService) Generate(ctx context.Context, request *arcpb.Ure
 		arcvmPackName = "opt.google.vms.android.pack"
 		arcvmRoot     = "/opt/google/vms/android"
 
-		sysOpenTrace = "/sys/kernel/debug/tracing/events/fs/do_sys_open"
+		sysOpenTrace = "/sys/kernel/tracing/events/fs/do_sys_open"
 
 		logName = "ureadahead.log"
 
@@ -161,7 +161,7 @@ func (c *UreadaheadPackService) Generate(ctx context.Context, request *arcpb.Ure
 
 	testing.ContextLog(ctx, "Start ureadahead tracing")
 
-	flags := []string{"/sys/kernel/debug/tracing/tracing_on",
+	flags := []string{"/sys/kernel/tracing/tracing_on",
 		filepath.Join(sysOpenTrace, "enable")}
 
 	// Define callback to handle flag.
@@ -186,7 +186,7 @@ func (c *UreadaheadPackService) Generate(ctx context.Context, request *arcpb.Ure
 		return nil, errors.Wrap(err, "failed to reset ureadahead flag")
 	}
 
-	if err := ioutil.WriteFile("/sys/kernel/debug/tracing/trace", []byte(""), 0644); err != nil {
+	if err := ioutil.WriteFile("/sys/kernel/tracing/trace", []byte(""), 0644); err != nil {
 		return nil, errors.Wrap(err, "failed to reset tracing buffer")
 	}
 
