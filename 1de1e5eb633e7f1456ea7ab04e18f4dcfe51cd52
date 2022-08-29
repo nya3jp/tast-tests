@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5056c425_2753cd74",
+        "filename": "src/chromiumos/tast/local/chrome/browser/browserfixt/browserfixt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-08-29T18:17:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "14415e94_3a34cde1",
+      "revId": "1de1e5eb633e7f1456ea7ab04e18f4dcfe51cd52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "244da8da_fbe44e6f",
@@ -65,6 +83,30 @@
       "writtenOn": "2022-08-29T07:30:02Z",
       "side": 1,
       "message": "as you\u0027re here, can we swap the phrases to match with the return value\u0027s order?",
+      "range": {
+        "startLine": 108,
+        "startChar": 30,
+        "endLine": 108,
+        "endChar": 87
+      },
+      "revId": "1de1e5eb633e7f1456ea7ab04e18f4dcfe51cd52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b184e74_0b9aa376",
+        "filename": "src/chromiumos/tast/local/chrome/browser/browserfixt/browserfixt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-08-29T18:17:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "244da8da_fbe44e6f",
       "range": {
         "startLine": 108,
         "startChar": 30,
@@ -98,6 +140,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0a32b2c_e04d83ba",
+        "filename": "src/chromiumos/tast/local/chrome/browser/browserfixt/browserfixt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-08-29T18:17:44Z",
+      "side": 1,
+      "message": "Done. rather reverted to the original comment.",
+      "parentUuid": "d6a2ae60_42d2c7ab",
+      "range": {
+        "startLine": 109,
+        "startChar": 0,
+        "endLine": 109,
+        "endChar": 108
+      },
+      "revId": "1de1e5eb633e7f1456ea7ab04e18f4dcfe51cd52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "06181a41_69e508a7",
@@ -111,6 +177,24 @@
       "writtenOn": "2022-08-29T02:52:11Z",
       "side": 1,
       "message": "This behaviour is inconsistent, we should consider changing it",
+      "revId": "1de1e5eb633e7f1456ea7ab04e18f4dcfe51cd52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ede4952_eaf7dd34",
+        "filename": "src/chromiumos/tast/local/chrome/browser/browserfixt/browserfixt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-08-29T18:17:44Z",
+      "side": 1,
+      "message": "I updated the comment with an alternative way to get around this inconsistency.\n\nAgree for the future. Please suggest any better way that you think can address this for good.",
+      "parentUuid": "06181a41_69e508a7",
       "revId": "1de1e5eb633e7f1456ea7ab04e18f4dcfe51cd52",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
