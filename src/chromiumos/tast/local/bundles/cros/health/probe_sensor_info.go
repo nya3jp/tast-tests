@@ -17,7 +17,15 @@ import (
 )
 
 type sensorInfo struct {
-	LidAngle *uint16 `json:"lid_angle"`
+	LidAngle *uint16            `json:"lid_angle"`
+	Sensors  []sensorAttributes `json:"sensors"`
+}
+
+type sensorAttributes struct {
+	Name     *string `json:"name"`
+	DeviceID int32   `json:"device_id"`
+	Type     string  `json:"type"`
+	Location string  `json:"location"`
 }
 
 func init() {
