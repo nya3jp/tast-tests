@@ -406,13 +406,16 @@ func waitWindowStateFullscreen(ctx context.Context, tconn *chrome.TestConn, winT
 	return nil
 }
 
-func getWindowID(ctx context.Context, tconn *chrome.TestConn) (int, error) {
+func getFirstWindowID(ctx context.Context, tconn *chrome.TestConn) (int, error) {
 	all, err := ash.GetAllWindows(ctx, tconn)
 	if err != nil {
 		return -1, errors.Wrap(err, "failed to get all windows")
 	}
 	if len(all) != 1 {
-		return -1, errors.Errorf("expect 1 window, got %d", len(all))
+		for _, win := range all {
+			testing.ContextLogf(ctx, "%+v", *win)
+		}
+		testing.ContextLogf(ctx, "Expect 1 window, got %d", len(all))
 	}
 	return all[0].ID, nil
 }
