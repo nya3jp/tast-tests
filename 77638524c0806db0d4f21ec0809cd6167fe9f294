@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50ce994d_67719f43",
+        "filename": "src/chromiumos/tast/services/cros/baserpc/file_system.proto",
+        "patchSetId": 9
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-08-29T20:33:50Z",
+      "side": 1,
+      "message": "Looking at [the docs](https://pkg.go.dev/os#Mkdir), I don\u0027t see part about the empty string\u0027s behavior. Do you know where that is documented?\n\nAlso, I think `dir` should be `name`?",
+      "range": {
+        "startLine": 102,
+        "startChar": 2,
+        "endLine": 102,
+        "endChar": 83
+      },
+      "revId": "77638524c0806db0d4f21ec0809cd6167fe9f294",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
