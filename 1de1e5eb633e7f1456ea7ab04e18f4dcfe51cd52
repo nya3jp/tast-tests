@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a76b594_a7e0965c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-08-29T07:30:02Z",
+      "side": 1,
+      "message": "Defer to Eliot.",
+      "revId": "1de1e5eb633e7f1456ea7ab04e18f4dcfe51cd52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "14415e94_3a34cde1",
@@ -31,6 +48,29 @@
       "writtenOn": "2022-08-29T02:52:11Z",
       "side": 1,
       "message": "Sentence is ambiguous, add \u0027and a given existing ash-chrome\u0027 IMO",
+      "revId": "1de1e5eb633e7f1456ea7ab04e18f4dcfe51cd52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "244da8da_fbe44e6f",
+        "filename": "src/chromiumos/tast/local/chrome/browser/browserfixt/browserfixt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-08-29T07:30:02Z",
+      "side": 1,
+      "message": "as you\u0027re here, can we swap the phrases to match with the return value\u0027s order?",
+      "range": {
+        "startLine": 108,
+        "startChar": 30,
+        "endLine": 108,
+        "endChar": 87
+      },
       "revId": "1de1e5eb633e7f1456ea7ab04e18f4dcfe51cd52",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
