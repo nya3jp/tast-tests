@@ -317,8 +317,8 @@ func (c *cryptohomeBinary) authenticatePinAuthFactor(ctx context.Context, authSe
 }
 
 // authenticateKioskAuthFactor calls "cryptohome --action=authenticate_auth_factor --public_mount".
-func (c *cryptohomeBinary) authenticateKioskAuthFactor(ctx context.Context, authSessionID, label string) ([]byte, error) {
-	args := []string{"--action=authenticate_auth_factor", "--auth_session_id=" + authSessionID, "--key_label=" + label, "--public_mount"}
+func (c *cryptohomeBinary) authenticateKioskAuthFactor(ctx context.Context, authSessionID string) ([]byte, error) {
+	args := []string{"--action=authenticate_auth_factor", "--auth_session_id=" + authSessionID, "--key_label=public_mount", "--public_mount"}
 	return c.call(ctx, args...)
 }
 

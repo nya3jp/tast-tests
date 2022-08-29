@@ -917,8 +917,8 @@ func (u *CryptohomeClient) AuthenticatePinAuthFactor(ctx context.Context, authSe
 }
 
 // AuthenticateKioskAuthFactor authenticates an AuthSession with a given authSessionID via a kiosk authfactor.
-func (u *CryptohomeClient) AuthenticateKioskAuthFactor(ctx context.Context, authSessionID, label string) error {
-	_, err := u.binary.authenticateKioskAuthFactor(ctx, authSessionID, label)
+func (u *CryptohomeClient) AuthenticateKioskAuthFactor(ctx context.Context, authSessionID string) error {
+	_, err := u.binary.authenticateKioskAuthFactor(ctx, authSessionID)
 	return err
 }
 
