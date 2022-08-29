@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "225e30ed_42c8e358",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-08-29T16:06:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b6cc01ab_7c88650c",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 10
+      },
+      "revId": "fe5026f79fee5fa4ca88d3e9d1d96b23656fe692",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1da024f5_065fc6ea",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-08-26T16:43:00Z",
       "side": 1,
       "message": "Explain why `IdlePerf` is an exception.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 70
+      },
+      "revId": "fe5026f79fee5fa4ca88d3e9d1d96b23656fe692",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec7bb781_d889dd95",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-08-29T16:06:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1da024f5_065fc6ea",
       "range": {
         "startLine": 9,
         "startChar": 0,
