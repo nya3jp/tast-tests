@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c40bfd8_43049f5f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-08-29T07:55:02Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "a04296d9ce1620e6e20c2cea2192cfc4c5c9d4ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85dbd54b_018ea6fe",
+        "filename": "src/chromiumos/tast/local/vdi/apps/vmware/connector.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-08-29T07:55:02Z",
+      "side": 1,
+      "message": "just a question:\nIs it okay to change the pointer this way? do we need to cleanup the old object?",
+      "range": {
+        "startLine": 221,
+        "startChar": 1,
+        "endLine": 221,
+        "endChar": 15
+      },
+      "revId": "a04296d9ce1620e6e20c2cea2192cfc4c5c9d4ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
