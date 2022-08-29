@@ -34,8 +34,6 @@ type Servo struct {
 
 	// If initialPDRole is set, then upon Servo.Close(), the PDRole control will be set to initialPDRole.
 	initialPDRole PDRoleValue
-
-	removedWatchdogs []WatchdogValue
 }
 
 const (
@@ -102,12 +100,6 @@ func (s *Servo) Close(ctx context.Context) error {
 		testing.ContextLogf(ctx, "Restoring %q to %q", PDRole, s.initialPDRole)
 		if err := s.SetPDRole(ctx, s.initialPDRole); err != nil && firstError == nil {
 			firstError = errors.Wrapf(err, "restoring servo control %q to %q", PDRole, s.initialPDRole)
-		}
-	}
-	for _, v := range s.removedWatchdogs {
-		testing.ContextLogf(ctx, "Restoring servo watchdog %q", v)
-		if err := s.WatchdogAdd(ctx, v); err != nil && firstError == nil {
-			firstError = errors.Wrapf(err, "restoring watchdog %q", v)
 		}
 	}
 	return firstError
