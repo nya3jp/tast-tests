@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "680abc72_bedfc9a2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/dock4_usb_audio.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1545162
+      },
+      "writtenOn": "2022-08-29T02:06:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c4519df7_f2e5d289",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 41
+      },
+      "revId": "263b5344eebb022757a7786b9bd9e5d2729722bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "47b9c414_78654c84",
@@ -107,6 +131,30 @@
       "writtenOn": "2022-08-26T23:06:00Z",
       "side": 1,
       "message": "remove space",
+      "range": {
+        "startLine": 222,
+        "startChar": 53,
+        "endLine": 222,
+        "endChar": 54
+      },
+      "revId": "263b5344eebb022757a7786b9bd9e5d2729722bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7beaf343_9db5988e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/dock4_usb_audio.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1545162
+      },
+      "writtenOn": "2022-08-29T02:06:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5776531d_a566a0a0",
       "range": {
         "startLine": 222,
         "startChar": 53,
