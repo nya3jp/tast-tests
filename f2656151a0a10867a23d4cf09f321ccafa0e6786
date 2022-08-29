@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "904a6a5b_c7bbf078",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/firmware_test_handler.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-08-29T20:27:23Z",
+      "side": 1,
+      "message": "I think we can go ahead and merge this change, but I checked the bug that caused us to stop `powerd` and it looks like it\u0027s fixed: http://b/183123775.\n\nWe may be able to just [remove `powerd` from the list of daemons we are stopping](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/remote/firmware/fingerprint/firmware_test_handler.go;l\u003d100-103;drc\u003dc8ab3f747c68108d86c39598225aac4c2b1c63f7).",
+      "range": {
+        "startLine": 87,
+        "startChar": 4,
+        "endLine": 87,
+        "endChar": 33
+      },
+      "revId": "f2656151a0a10867a23d4cf09f321ccafa0e6786",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
