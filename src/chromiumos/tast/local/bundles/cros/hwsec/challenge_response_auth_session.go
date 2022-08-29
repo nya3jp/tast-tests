@@ -5,13 +5,10 @@
 package hwsec
 
 import (
-	"bytes"
 	"context"
 	"crypto/rsa"
 	"crypto/x509"
-	"io/ioutil"
 	"math/rand"
-	"path/filepath"
 
 	cpb "chromiumos/system_api/cryptohome_proto"
 	"chromiumos/tast/common/hwsec"
@@ -55,11 +52,9 @@ func init() {
 // Challenge Credentials through AuthSession
 func ChallengeResponseAuthSession(ctx context.Context, s *testing.State) {
 	const (
-		dbusName        = "org.chromium.TestingCryptohomeKeyDelegate"
-		testUser        = "cryptohome_test@chromium.org"
-		testFile        = "file"
-		testFileContent = "content"
-		keySizeBits     = 2048
+		dbusName    = "org.chromium.TestingCryptohomeKeyDelegate"
+		testUser    = "cryptohome_test@chromium.org"
+		keySizeBits = 2048
 	)
 	keyAlgs := s.Param().([]cpb.ChallengeSignatureAlgorithm)
 
@@ -123,14 +118,8 @@ func ChallengeResponseAuthSession(ctx context.Context, s *testing.State) {
 	defer cleanup(ctx)
 
 	// Write a test file to verify persistence.
-	userPath, err := cryptohome.UserPath(ctx, testUser)
-	if err != nil {
-		s.Fatal("Failed to get user vault path: ", err)
-	}
-
-	filePath := filepath.Join(userPath, testFile)
-	if err := ioutil.WriteFile(filePath, []byte(testFileContent), 0644); err != nil {
-		s.Fatal("Failed to write a file to the vault: ", err)
+	if err := cryptohome.WriteFileForPersistence(ctx, testUser); err != nil {
+		s.Fatal("Failed to write test file: ", err)
 	}
 
 	// Unmount recently mounted vaults.
@@ -150,10 +139,8 @@ func ChallengeResponseAuthSession(ctx context.Context, s *testing.State) {
 	}
 
 	// Verify that file is still there.
-	if content, err := ioutil.ReadFile(filePath); err != nil {
-		s.Fatal("Failed to read back test file: ", err)
-	} else if bytes.Compare(content, []byte(testFileContent)) != 0 {
-		s.Fatalf("Incorrect tests file content. got: %q, want: %q", content, testFileContent)
+	if err := cryptohome.VerifyFileForPersistence(ctx, testUser); err != nil {
+		s.Fatal("Failed to verify file persistence: ", err)
 	}
 
 	// Clear AuthSession and unmount previously mounted vault.
@@ -170,8 +157,8 @@ func ChallengeResponseAuthSession(ctx context.Context, s *testing.State) {
 		s.Fatal("Authentication with wrong credentials is expected to fail but succeeded: ", err)
 	}
 
-	// Verify that file is still there, but should not be readable.
-	if _, err := ioutil.ReadFile(filePath); err == nil {
-		s.Fatal("File is readable after unsuccessful authentication, but it expected to be unreadable: ", err)
+	// Unauthenticated authsession should not allow the file to be read.
+	if err := cryptohome.VerifyFileUnreadability(ctx, testUser); err != nil {
+		s.Fatal("File is readable when it should not be: ", err)
 	}
 }
