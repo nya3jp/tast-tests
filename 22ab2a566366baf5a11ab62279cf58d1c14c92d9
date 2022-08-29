@@ -54,6 +54,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "84318dbc_53e60ecb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-08-29T18:40:55Z",
+      "side": 1,
+      "message": "Good idea. Added unstable variant for kukui models (we can\u0027t skip boards). Leaving the kernelnext unaddressed like other critical tests.",
+      "parentUuid": "d1344e8b_35adafdf",
+      "revId": "22ab2a566366baf5a11ab62279cf58d1c14c92d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "03044e48_87e1dad1",
