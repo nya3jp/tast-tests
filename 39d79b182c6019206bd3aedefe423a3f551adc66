@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4a20ff8_fd3f1854",
+        "filename": "src/chromiumos/tast/local/bundles/cros/terminal/crosh.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2022-08-29T01:35:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "57378ee9_93a08860",
+      "range": {
+        "startLine": 23,
+        "startChar": 26,
+        "endLine": 23,
+        "endChar": 30
+      },
+      "revId": "39d79b182c6019206bd3aedefe423a3f551adc66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f449317e_3fc83e27",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb4c0127_d2f763ce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/terminal/crosh.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2022-08-29T01:35:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f449317e_3fc83e27",
+      "range": {
+        "startLine": 62,
+        "startChar": 1,
+        "endLine": 62,
+        "endChar": 3
+      },
+      "revId": "39d79b182c6019206bd3aedefe423a3f551adc66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "142832a0_d5718907",
@@ -77,6 +125,24 @@
       "writtenOn": "2022-08-29T01:24:56Z",
       "side": 1,
       "message": "add `defer faillog.DumpUITreeAndScreenshot(...)` may help to debug test failures.",
+      "revId": "39d79b182c6019206bd3aedefe423a3f551adc66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "20bf9915_56f92a9b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/terminal/crosh.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2022-08-29T01:35:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "142832a0_d5718907",
       "revId": "39d79b182c6019206bd3aedefe423a3f551adc66",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
