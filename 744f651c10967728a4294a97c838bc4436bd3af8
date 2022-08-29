@@ -16,6 +16,29 @@
       "message": "I am enabling this test again.",
       "revId": "744f651c10967728a4294a97c838bc4436bd3af8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c56d989_66497831",
+        "filename": "src/chromiumos/tast/local/bundles/cros/demomode/set_up.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1465072
+      },
+      "writtenOn": "2022-08-29T14:56:34Z",
+      "side": 1,
+      "message": "Thanks for fixing this! Could you possibly add a TODO here for switching this to some uiauto-based button-clicking implementation?",
+      "range": {
+        "startLine": 141,
+        "startChar": 2,
+        "endLine": 141,
+        "endChar": 91
+      },
+      "revId": "744f651c10967728a4294a97c838bc4436bd3af8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
