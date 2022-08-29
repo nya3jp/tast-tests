@@ -16,6 +16,23 @@
       "message": "LGMT with nit from me",
       "revId": "1bc5a3781f8aad1cc7e3074d6b59bf107adf0a00",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3903f471_a90dbbfc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-08-29T20:55:38Z",
+      "side": 1,
+      "message": "LGTM % one nit.",
+      "revId": "1bc5a3781f8aad1cc7e3074d6b59bf107adf0a00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

@@ -96,6 +96,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae1c43fa_798a1cfe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/unicorn_extensions.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-08-29T20:55:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d61b54a6_62a9f096",
+      "range": {
+        "startLine": 28,
+        "startChar": 16,
+        "endLine": 28,
+        "endChar": 18
+      },
+      "revId": "1ec0c64a7958acb56868b743493e30fdd87dfec8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "02d3d211_b3b53897",
@@ -322,6 +346,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a772c365_f9923582",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/unicorn_extensions.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-08-29T20:55:38Z",
+      "side": 1,
+      "message": "Ack, could you add a TODO so we don\u0027t forget?",
+      "parentUuid": "f6201c9f_1c83974a",
+      "range": {
+        "startLine": 72,
+        "startChar": 5,
+        "endLine": 72,
+        "endChar": 40
+      },
+      "revId": "1ec0c64a7958acb56868b743493e30fdd87dfec8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9d440ef3_654a8b53",
         "filename": "src/chromiumos/tast/local/bundles/cros/familylink/unicorn_extensions.go",
         "patchSetId": 2
@@ -511,6 +559,30 @@
       "side": 1,
       "message": "With Lacros, the sync will not start until we launch the browser and we need the browser running to query the preference.  This means we need different behavior in the case of Lacros.",
       "parentUuid": "000eb5e1_fb0a82d4",
+      "range": {
+        "startLine": 92,
+        "startChar": 1,
+        "endLine": 92,
+        "endChar": 9
+      },
+      "revId": "1ec0c64a7958acb56868b743493e30fdd87dfec8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ed9245d_4d34f864",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/unicorn_extensions.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-08-29T20:55:38Z",
+      "side": 1,
+      "message": "If you keep checking the Chrome Web Store while waiting for the pref to sync, then you don\u0027t need special logic for Lacros. It just means you would need to refresh the Chrome Web Store for slightly longer in Lacros vs Ash, but we\u0027re not using that approach. Since we\u0027re waiting for the pref to sync instead, the current approach does require special logic to open Lacros ahead of time.",
+      "parentUuid": "ab4f726f_d71d8729",
       "range": {
         "startLine": 92,
         "startChar": 1,
