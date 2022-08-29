@@ -35,6 +35,12 @@ const (
 	sheetsTab = "Google Sheets"
 )
 
+var (
+	menuBarBanner = nodewith.Name("Menu bar").Role(role.Banner)
+	fileItem      = nodewith.Name("File").Role(role.MenuItem).Ancestor(menuBarBanner)
+	fileExpanded  = fileItem.Expanded()
+)
+
 // GoogleDocs implements the ProductivityApp interface.
 type GoogleDocs struct {
 	br         *browser.Browser
@@ -186,7 +192,25 @@ func (app *GoogleDocs) ScrollPage(ctx context.Context) error {
 
 // SwitchToOfflineMode switches to offline mode.
 func (app *GoogleDocs) SwitchToOfflineMode(ctx context.Context) error {
-	return nil
+	expandFileMenu := uiauto.IfSuccessThen(
+		app.ui.WithTimeout(defaultUIWaitTime).WaitUntilGone(fileExpanded),
+		app.uiHdl.ClickUntil(fileItem, app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(fileExpanded)),
+	)
+
+	removeOffline := nodewith.Role(role.MenuItemCheckBox).Name("Remove offline access k")
+	checkOffline := uiauto.NamedCombine("check whether offline mode is available",
+		expandFileMenu,
+		app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(removeOffline),
+	)
+
+	makeOfflineModeAvailable := uiauto.NamedCombine("make offline mode available",
+		expandFileMenu,
+		app.kb.TypeAction("k"),
+		checkOffline,
+		uiauto.IfSuccessThen(app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(fileExpanded), app.uiHdl.Click(fileItem)),
+	)
+
+	return uiauto.IfFailThen(checkOffline, makeOfflineModeAvailable)(ctx)
 }
 
 // UpdateCells updates one of the independent cells and propagate values to dependent cells.
@@ -387,9 +411,6 @@ func (app *GoogleDocs) editCellValue(ctx context.Context, cell, value string) er
 
 // renameFile renames the name of the spreadsheet.
 func (app *GoogleDocs) renameFile(sheetName string) uiauto.Action {
-	menuBarBanner := nodewith.Name("Menu bar").Role(role.Banner)
-	fileItem := nodewith.Name("File").Role(role.MenuItem).Ancestor(menuBarBanner)
-	fileExpanded := fileItem.Expanded()
 	renameItem := nodewith.Name("Rename r").Role(role.MenuItem)
 	renameField := nodewith.Name("Rename").Role(role.TextField).Editable().Focused()
 

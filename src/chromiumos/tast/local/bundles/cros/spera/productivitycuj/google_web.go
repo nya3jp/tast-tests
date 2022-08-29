@@ -35,6 +35,12 @@ const (
 	sheetsTab = "Google Sheets"
 )
 
+var (
+	menuBarBanner = nodewith.Name("Menu bar").Role(role.Banner)
+	fileItem      = nodewith.Name("File").Role(role.MenuItem).Ancestor(menuBarBanner)
+	fileExpanded  = fileItem.Expanded()
+)
+
 // GoogleDocs implements the ProductivityApp interface.
 type GoogleDocs struct {
 	br         *browser.Browser
@@ -184,9 +190,27 @@ func (app *GoogleDocs) ScrollPage(ctx context.Context) error {
 	return nil
 }
 
-// SwitchToOfflineMode switches to offline mode.
+// SwitchToOfflineMode switches to offline mode and switches back to online mode.
 func (app *GoogleDocs) SwitchToOfflineMode(ctx context.Context) error {
-	return nil
+	expandFileMenu := uiauto.IfSuccessThen(
+		app.ui.WithTimeout(defaultUIWaitTime).WaitUntilGone(fileExpanded),
+		app.uiHdl.ClickUntil(fileItem, app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(fileExpanded)),
+	)
+
+	removeOffline := nodewith.Role(role.MenuItemCheckBox).Name("Remove offline access k")
+	checkOffline := uiauto.NamedCombine("check whether offline mode is available",
+		expandFileMenu,
+		app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(removeOffline),
+	)
+
+	makeOfflineModeAvailable := uiauto.NamedCombine("make offline mode available",
+		expandFileMenu,
+		app.kb.TypeAction("k"),
+		checkOffline,
+		uiauto.IfSuccessThen(app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(fileExpanded), app.uiHdl.Click(fileItem)),
+	)
+
+	return uiauto.IfFailThen(checkOffline, makeOfflineModeAvailable)(ctx)
 }
 
 // UpdateCells updates one of the independent cells and propagate values to dependent cells.
@@ -254,9 +278,7 @@ func (app *GoogleDocs) VoiceToTextTesting(ctx context.Context, expectedText stri
 		}, &testing.PollOptions{Interval: time.Second, Timeout: 15 * time.Second})
 	}
 
-	docsWebArea := nodewith.NameContaining("Google Docs").Role(role.RootWebArea)
-	menuBar := nodewith.Role(role.MenuBar).Ancestor(docsWebArea)
-	tools := nodewith.Name("Tools").Role(role.MenuItem).FinalAncestor(menuBar)
+	tools := nodewith.Name("Tools").Role(role.MenuItem).Ancestor(menuBarBanner)
 	toolsExpanded := tools.Expanded()
 	voiceTypingItem := nodewith.Name("Voice typing v Ctrl+Shift+S").Role(role.MenuItem)
 	voiceTypingDialog := nodewith.Name("Voice typing").Role(role.Dialog)
@@ -288,8 +310,6 @@ func (app *GoogleDocs) VoiceToTextTesting(ctx context.Context, expectedText stri
 // It removes the document and slide which we created in the test case and close all tabs after completing the test.
 // This function should be called as deferred function after the app is created.
 func (app *GoogleDocs) Cleanup(ctx context.Context, sheetName string) error {
-	menuBar := nodewith.Name("Menu bar").Role(role.Banner)
-	file := nodewith.Name("File").Role(role.MenuItem).Ancestor(menuBar)
 	moveToTrash := nodewith.NameContaining("Move to trash t").Role(role.MenuItem)
 	dialog := nodewith.Name("File moved to trash").Role(role.Dialog)
 	homeScreen := nodewith.NameRegex(regexp.MustCompile("^Go to (Docs|Slides|Sheets) home screen")).Role(role.Button).Ancestor(dialog)
@@ -297,7 +317,7 @@ func (app *GoogleDocs) Cleanup(ctx context.Context, sheetName string) error {
 		if err := uiauto.NamedCombine("remove the "+tabName,
 			app.uiHdl.SwitchToChromeTabByName(tabName),
 			app.closeDialogs,
-			app.uiHdl.Click(file),
+			app.uiHdl.Click(fileItem),
 			app.uiHdl.Click(moveToTrash),
 			app.uiHdl.Click(homeScreen),
 		)(ctx); err != nil {
@@ -387,9 +407,6 @@ func (app *GoogleDocs) editCellValue(ctx context.Context, cell, value string) er
 
 // renameFile renames the name of the spreadsheet.
 func (app *GoogleDocs) renameFile(sheetName string) uiauto.Action {
-	menuBarBanner := nodewith.Name("Menu bar").Role(role.Banner)
-	fileItem := nodewith.Name("File").Role(role.MenuItem).Ancestor(menuBarBanner)
-	fileExpanded := fileItem.Expanded()
 	renameItem := nodewith.Name("Rename r").Role(role.MenuItem)
 	renameField := nodewith.Name("Rename").Role(role.TextField).Editable().Focused()
 
