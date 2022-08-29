@@ -146,9 +146,15 @@ func (p *Installer) Install(ctx context.Context) error {
 		defer cancel()
 	}
 
-	// Focus on the install button to ensure virtual keyboard does not get in the
-	// way and prevent the button from being clicked.
 	ui := uiauto.New(p.tconn)
+	// Hide virtual keyboard if it appears.
+	if err := ui.WithTimeout(time.Second).WaitUntilExists(vkb.NodeFinder.First())(ctx); err == nil {
+		if err := vkb.NewContext(nil, p.tconn).HideVirtualKeyboard()(ctx); err != nil {
+			return errors.Wrap(err, "failed to hide virtual keyboard")
+		}
+
+	}
+
 	installButton := nodewith.Name("Install").Role(role.Button)
 	if err := uiauto.Combine("click install and wait it to finish",
 		ui.LeftClick(installButton),
