@@ -1,4 +1,4 @@
-// Copyright 2022 The Chromium OS Authors. All rights reserved.
+// Copyright 2022 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -152,6 +152,8 @@ const (
 	TinkerCadSignInURL = "https://www.tinkercad.com/login"
 	// TinkerCadDashboardURL specifies the URL for TinkerCad dashboard.
 	TinkerCadDashboardURL = "https://www.tinkercad.com/dashboard"
+	// TinkerCAD3DDesignsURL specifies the URL for TinkerCad dashboard of 3D designs.
+	TinkerCAD3DDesignsURL = "https://www.tinkercad.com/dashboard?collection=designs&type=tinkercad"
 
 	// URLs used by Gaming Proxy CUJ
 
