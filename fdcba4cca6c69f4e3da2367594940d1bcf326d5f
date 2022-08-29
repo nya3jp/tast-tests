@@ -16,6 +16,47 @@
       "message": "Hi Please review this CL. Thanks!\n\nThe reason why I didn\u0027t split the creation flow to another function:\nI tried but realized that saving file to the right location needs the entire creation flow, which mean every line in creation_flow.go is needed.\n\nHaving 2 tests like one tests the CreationFlow and one to test CreationFlow+saveFileToTheRightLocation seems redundant...Plus I think verifying the saved to right location also serves the purpose of creating a video, which is not a thing that is unrelated to screencast creation(for example tutorial dialog).\n\nLet me know your thought!Thanks!\n",
       "revId": "fdcba4cca6c69f4e3da2367594940d1bcf326d5f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c935c33d_9b2c97eb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-08-29T16:44:56Z",
+      "side": 1,
+      "message": "I\u0027m also adding local playback test in crrev.com/c/3860243. This test is growing too large. To see why this is a problem, suppose the annotator, saving to the correct DriveFS location, and local video playback all fail at the same time. With one big monolithic test, we would only detect the annotator failures initially because it suppresses the later failures. We won\u0027t know about the other failures until we fix the issue with the annotator. Ideally, we want to detect all failures at the same time and independently.\n\nI think we should split this test into three separate ones:\n1) Original CreationFlow test (responsible for testing the annotator).\n2) LocalPlayback (crrev.com/c/3860243).\n3) DriveFsLocation (this CL).\n\nI refactored the common creation flow code into projector.go in crrev.com/c/3861378.\n\nWDYT?",
+      "parentUuid": "7d308080_13ab8c79",
+      "revId": "fdcba4cca6c69f4e3da2367594940d1bcf326d5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51dc3d1d_6d6b2919",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/creation_flow.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-08-29T16:44:56Z",
+      "side": 1,
+      "message": "Nit: title",
+      "range": {
+        "startLine": 132,
+        "startChar": 34,
+        "endLine": 132,
+        "endChar": 40
+      },
+      "revId": "fdcba4cca6c69f4e3da2367594940d1bcf326d5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
