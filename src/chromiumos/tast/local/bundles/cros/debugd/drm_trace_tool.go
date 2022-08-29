@@ -24,8 +24,8 @@ import (
 )
 
 const (
-	bufferSizePath    = "/sys/kernel/debug/tracing/instances/drm/buffer_size_kb"
-	traceContentsPath = "/sys/kernel/debug/tracing/instances/drm/trace"
+	bufferSizePath    = "/sys/kernel/tracing/instances/drm/buffer_size_kb"
+	traceContentsPath = "/sys/kernel/tracing/instances/drm/trace"
 	traceMaskPath     = "/sys/module/drm/parameters/trace"
 )
 
