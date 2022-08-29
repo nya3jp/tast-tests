@@ -51,6 +51,24 @@
       "message": "The test command in the commit message is missing the DockingID var.",
       "revId": "d8f1df92fbe96d1f5ec30bd78ccec8717823e837",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "25b46721_6573f88f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/dock5_network_switch.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1545162
+      },
+      "writtenOn": "2022-08-29T03:45:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "363a2b0f_318044ad",
+      "revId": "d8f1df92fbe96d1f5ec30bd78ccec8717823e837",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
