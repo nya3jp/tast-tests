@@ -40,8 +40,6 @@ func RecoveryOptOut(ctx context.Context, s *testing.State) {
 		userPassword                          = "secret"
 		passwordLabel                         = "online-password"
 		recoveryLabel                         = "test-recovery"
-		testFile                              = "file"
-		testFileContent                       = "content"
 		cryptohomeErrorAuthorizationKeyFailed = 3
 	)
 

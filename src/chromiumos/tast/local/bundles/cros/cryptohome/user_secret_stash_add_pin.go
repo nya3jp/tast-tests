@@ -5,10 +5,7 @@
 package cryptohome
 
 import (
-	"bytes"
 	"context"
-	"io/ioutil"
-	"path/filepath"
 	"time"
 
 	"chromiumos/tast/common/hwsec"
@@ -33,13 +30,11 @@ func init() {
 
 func UserSecretStashAddPin(ctx context.Context, s *testing.State) {
 	const (
-		userName        = "foo@bar.baz"
-		userPassword    = "secret"
-		userPin         = "123456"
-		passwordLabel   = "online-password"
-		pinLabel        = "test-pin"
-		testFile        = "file"
-		testFileContent = "content"
+		userName      = "foo@bar.baz"
+		userPassword  = "secret"
+		userPin       = "123456"
+		passwordLabel = "online-password"
+		pinLabel      = "test-pin"
 	)
 
 	ctxForCleanUp := ctx
@@ -90,13 +85,8 @@ func UserSecretStashAddPin(ctx context.Context, s *testing.State) {
 	defer client.UnmountAll(ctxForCleanUp)
 
 	// Write a test file to verify persistence.
-	userPath, err := cryptohome.UserPath(ctx, userName)
-	if err != nil {
-		s.Fatal("Failed to get user vault path: ", err)
-	}
-	filePath := filepath.Join(userPath, testFile)
-	if err := ioutil.WriteFile(filePath, []byte(testFileContent), 0644); err != nil {
-		s.Fatal("Failed to write a file to the vault: ", err)
+	if err := cryptohome.WriteFileForPersistence(ctx, userName); err != nil {
+		s.Fatal("Failed to write test file: ", err)
 	}
 
 	// Add a password auth factor to the user.
@@ -122,10 +112,8 @@ func UserSecretStashAddPin(ctx context.Context, s *testing.State) {
 	}
 
 	// Verify that the test file is still there.
-	if content, err := ioutil.ReadFile(filePath); err != nil {
-		s.Fatal("Failed to read back test file: ", err)
-	} else if bytes.Compare(content, []byte(testFileContent)) != 0 {
-		s.Fatalf("Incorrect tests file content. got: %q, want: %q", content, testFileContent)
+	if err := cryptohome.VerifyFileForPersistence(ctx, userName); err != nil {
+		s.Fatal("Failed to verify file persistence: ", err)
 	}
 
 	// Add a pin auth factor to the user.
@@ -151,9 +139,7 @@ func UserSecretStashAddPin(ctx context.Context, s *testing.State) {
 	}
 
 	// Verify that the test file is still there.
-	if content, err := ioutil.ReadFile(filePath); err != nil {
-		s.Fatal("Failed to read back test file: ", err)
-	} else if bytes.Compare(content, []byte(testFileContent)) != 0 {
-		s.Fatalf("Incorrect tests file content. got: %q, want: %q", content, testFileContent)
+	if err := cryptohome.VerifyFileForPersistence(ctx, userName); err != nil {
+		s.Fatal("Failed to verify file persistence: ", err)
 	}
 }
