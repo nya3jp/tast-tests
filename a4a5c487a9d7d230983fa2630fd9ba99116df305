@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5648f133_c8147f2f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/link_capturing.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1130680
+      },
+      "writtenOn": "2022-08-29T00:18:08Z",
+      "side": 1,
+      "message": "We have to hardcode a port into the companion Android app for the test to work. I\u0027ve added a comment about this to the const definition.",
+      "parentUuid": "e0ee68c3_e796f798",
+      "range": {
+        "startLine": 114,
+        "startChar": 24,
+        "endLine": 114,
+        "endChar": 55
+      },
+      "revId": "a4a5c487a9d7d230983fa2630fd9ba99116df305",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b96752c4_ea57b914",
@@ -60,6 +84,30 @@
       "writtenOn": "2022-08-26T07:48:30Z",
       "side": 1,
       "message": "Run subtests in loop is not necessary. It actually hurts the flexibility in your case.\n\nWDYT:\n\n1. s.Run(default_link_in_browser_stay_in_browser)\n2. s.Run(default_link_in_android_stay_in_android)\n3. changeLinkCapturingSetting(openInApp)\n4. s.Run(app_setting_link_in_browser_opens_app)\n5. change..\n6. s.Run(linkOpensInAndroidPicker)",
+      "range": {
+        "startLine": 141,
+        "startChar": 1,
+        "endLine": 141,
+        "endChar": 30
+      },
+      "revId": "a4a5c487a9d7d230983fa2630fd9ba99116df305",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0d46b48_8fcfd370",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/link_capturing.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1130680
+      },
+      "writtenOn": "2022-08-29T00:18:08Z",
+      "side": 1,
+      "message": "Sorry, I\u0027m having a little trouble understanding your suggestions completely.\n\nTo confirm, are you suggesting that I change the structure back to roughly what was in Patchset #4, but with s.Run() for each of the \"test cases\" in the LinkCapturing method?",
+      "parentUuid": "307b84e9_3760ce03",
       "range": {
         "startLine": 141,
         "startChar": 1,
