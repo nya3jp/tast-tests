@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2acad5b_41105852",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-08-29T02:52:11Z",
+      "side": 1,
+      "message": "thanks for docs updates",
+      "revId": "1de1e5eb633e7f1456ea7ab04e18f4dcfe51cd52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14415e94_3a34cde1",
+        "filename": "src/chromiumos/tast/local/chrome/browser/browserfixt/browserfixt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-08-29T02:52:11Z",
+      "side": 1,
+      "message": "Sentence is ambiguous, add \u0027and a given existing ash-chrome\u0027 IMO",
+      "revId": "1de1e5eb633e7f1456ea7ab04e18f4dcfe51cd52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6a2ae60_42d2c7ab",
+        "filename": "src/chromiumos/tast/local/chrome/browser/browserfixt/browserfixt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-08-29T02:52:11Z",
+      "side": 1,
+      "message": "This is also used when browser type is not lacros, but this comment makes it sound like it\u0027s only useful for lacros",
+      "range": {
+        "startLine": 109,
+        "startChar": 0,
+        "endLine": 109,
+        "endChar": 108
+      },
+      "revId": "1de1e5eb633e7f1456ea7ab04e18f4dcfe51cd52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06181a41_69e508a7",
+        "filename": "src/chromiumos/tast/local/chrome/browser/browserfixt/browserfixt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-08-29T02:52:11Z",
+      "side": 1,
+      "message": "This behaviour is inconsistent, we should consider changing it",
+      "revId": "1de1e5eb633e7f1456ea7ab04e18f4dcfe51cd52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
