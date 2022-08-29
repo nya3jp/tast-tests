@@ -8,10 +8,12 @@ package migrate
 
 import (
 	"context"
+	"os"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/local/chrome/localstate"
 	"chromiumos/tast/local/cryptohome"
@@ -79,4 +81,43 @@ func Run(ctx context.Context, opts []lacrosfixt.Option) (*chrome.Chrome, error) 
 	crDoNotUse = nil
 	testing.ContextLog(ctx, "Restarting after profile migration")
 	return chrome.New(ctx, chromeOpts...)
+}
+
+// ClearMigrationState resets profile migration by running Ash with Lacros disabled.
+func ClearMigrationState(ctx context.Context) error {
+	// First restart Chrome with Lacros disabled in order to reset profile migration.
+	cr, err := chrome.New(ctx, chrome.DisableFeatures("LacrosSupport"))
+	if err != nil {
+		return errors.Wrap(err, "failed to start chrome")
+	}
+	defer cr.Close(ctx)
+
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		if _, err := os.Stat(LacrosFirstRunPath); !os.IsNotExist(err) {
+			return errors.Wrap(err, "'First Run' file exists or cannot be read")
+		}
+		return nil
+	}, nil); err != nil {
+		return errors.Wrap(err, "'First Run' file exists or cannot be read")
+	}
+
+	return nil
+}
+
+// VerifyLacrosLaunch checks if Lacros is launchable after profile migration.
+func VerifyLacrosLaunch(ctx context.Context, s *testing.State, cr *chrome.Chrome) {
+	if _, err := os.Stat(LacrosFirstRunPath); err != nil {
+		s.Fatal("Error reading 'First Run' file: ", err)
+	}
+
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to create Test API connection: ", err)
+	}
+
+	l, err := lacros.Launch(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to launch lacros: ", err)
+	}
+	l.Close(ctx)
 }
