@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "54ea83bc_cfa6b74e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-08-29T19:23:27Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "48113059b4850582134f2d10dfb25bae3d9d9af6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b0cc171_91b332c1",
+        "filename": "src/chromiumos/tast/local/dbusutil/activation.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-08-29T19:23:27Z",
+      "side": 1,
+      "message": "nit: These two functions are extremely similar, the only difference is:\n\nfsutil.MoveFile(statefulServicePath, servicePath)\nvs\nfsutil.MoveFile(servicePath, statefulServicePath)\n\nI don\u0027t think code duplication is the worst thing when writing tests but in this case, it\u0027s hard as a reader to spot that difference. WDYT about creating a shared util function which handles all this, or calling out that line directly?",
+      "revId": "48113059b4850582134f2d10dfb25bae3d9d9af6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
