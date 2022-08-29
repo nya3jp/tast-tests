@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "05ad3e29_7b32784a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-08-29T12:43:34Z",
+      "side": 1,
+      "message": "many tests fail on kernelnext boards and they don\u0027t break CQ. Example https://tastboard.corp.google.com/test/enterprise.ARCProvisioning\n\nhttps://tastboard.corp.google.com/test/arc.Boot\n\nSkipping the test on those boards, prevents the team working on those boards from seeing the break. So we\u0027ll keep this the same as other critical tests.",
+      "parentUuid": "d03811f2_aa876fe2",
+      "revId": "22ab2a566366baf5a11ab62279cf58d1c14c92d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "03044e48_87e1dad1",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a038fcf7_6d85a9fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/arc_enabled.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-08-29T12:43:34Z",
+      "side": 1,
+      "message": "Sure, sending a separate CL to you for this.",
+      "parentUuid": "03044e48_87e1dad1",
+      "revId": "22ab2a566366baf5a11ab62279cf58d1c14c92d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2eb3c4ce_bd20de78",
@@ -48,6 +84,24 @@
       "writtenOn": "2022-08-29T12:39:11Z",
       "side": 1,
       "message": "I\u0027d split this into a separate CL to be revertable in case there are any issues.",
+      "revId": "22ab2a566366baf5a11ab62279cf58d1c14c92d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f35b4c2_b43801ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/arc_enabled.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-08-29T12:43:34Z",
+      "side": 1,
+      "message": "Limiting this CL to only promotion to CQ now.",
+      "parentUuid": "2eb3c4ce_bd20de78",
       "revId": "22ab2a566366baf5a11ab62279cf58d1c14c92d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
