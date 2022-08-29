@@ -5,10 +5,7 @@
 package cryptohome
 
 import (
-	"bytes"
 	"context"
-	"io/ioutil"
-	"path/filepath"
 	"time"
 
 	"chromiumos/tast/common/hwsec"
@@ -66,11 +63,9 @@ func init() {
 
 func PersistentAuthSession(ctx context.Context, s *testing.State) {
 	const (
-		userName        = "foo@bar.baz"
-		userPassword    = "secret"
-		keyLabel        = "fake_label"
-		testFile        = "file"
-		testFileContent = "content"
+		userName     = "foo@bar.baz"
+		userPassword = "secret"
+		keyLabel     = "fake_label"
 	)
 
 	vtype := s.Param().(*params).VaultType
@@ -133,14 +128,8 @@ func PersistentAuthSession(ctx context.Context, s *testing.State) {
 	}
 
 	// Write a test file to verify persistence.
-	userPath, err := cryptohome.UserPath(ctx, userName)
-	if err != nil {
-		s.Fatal("Failed to get user vault path: ", err)
-	}
-
-	filePath := filepath.Join(userPath, testFile)
-	if err := ioutil.WriteFile(filePath, []byte(testFileContent), 0644); err != nil {
-		s.Fatal("Failed to write a file to the vault: ", err)
+	if err := cryptohome.WriteFileForPersistence(ctx, userName); err != nil {
+		s.Fatal("Failed to write test file: ", err)
 	}
 
 	// Unmount and mount again.
@@ -148,7 +137,7 @@ func PersistentAuthSession(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to unmount vaults for re-mounting: ", err)
 	}
 
-	if _, err := ioutil.ReadFile(filePath); err == nil {
+	if err := cryptohome.VerifyFileUnreadability(ctx, cryptohome.KioskUser); err != nil {
 		s.Fatal("File is readable after unmount")
 	}
 
@@ -168,10 +157,7 @@ func PersistentAuthSession(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to prepare persistent vault: ", err)
 	}
 
-	// Verify that file is still there.
-	if content, err := ioutil.ReadFile(filePath); err != nil {
-		s.Fatal("Failed to read back test file: ", err)
-	} else if bytes.Compare(content, []byte(testFileContent)) != 0 {
-		s.Fatalf("Incorrect tests file content. got: %q, want: %q", content, testFileContent)
+	if err := cryptohome.VerifyFileForPersistence(ctx, userName); err != nil {
+		s.Fatal("Failed to verify file persistence: ", err)
 	}
 }
