@@ -348,17 +348,6 @@ func init() {
 			},
 			Timeout: fullIteration * 10 * time.Minute,
 		}, {
-			Name:              "extendeddisplaycuj_plus_video_youtube_web_crosbolt",
-			ExtraAttr:         []string{"group:crosbolt", "crosbolt_perbuild"},
-			ExtraSoftwareDeps: []string{"arc"},
-			ExtraHardwareDeps: hwdep.D(setup.PerfCUJDevices()),
-			Val: runCUJParam{
-				tests:     []string{"ui.ExtendedDisplayCUJ.plus_video_youtube_web"},
-				iteration: crosboltIteration,
-				retry:     crosboltRetry,
-			},
-			Timeout: crosboltIteration * 10 * time.Minute,
-		}, {
 			Name: "tabswitchcuj2_premium_noproxy",
 			Val: runCUJParam{
 				tests:     []string{"ui.TabSwitchCUJ2.premium_noproxy"},
@@ -442,17 +431,6 @@ func init() {
 				retry:     fullRetry,
 			},
 			Timeout: fullIteration * 15 * time.Minute,
-		}, {
-			Name:              "extendeddisplaycuj_premium_meet_large_crosbolt",
-			ExtraAttr:         []string{"group:crosbolt", "crosbolt_perbuild"},
-			ExtraSoftwareDeps: []string{"arc"},
-			ExtraHardwareDeps: hwdep.D(setup.PerfCUJDevices()),
-			Val: runCUJParam{
-				tests:     []string{"ui.ExtendedDisplayCUJ.premium_meet_large"},
-				iteration: crosboltIteration,
-				retry:     crosboltRetry,
-			},
-			Timeout: crosboltIteration * 15 * time.Minute,
 		}},
 	})
 }
