@@ -168,9 +168,9 @@ func expectOverrideAllowedForURL(ctx context.Context, br *browser.Browser, tconn
 
 	// Click "Advanced" button (on SSL error page).
 	ui := uiauto.New(tconn)
-	advancedButton := nodewith.Name("Advanced").Role(role.Button)
+	advancedButton := nodewith.Name("Advanced").Role(role.Button).State("focusable", true)
 	if err := uiauto.Combine("click advanced",
-		ui.WithTimeout(20*time.Second).WaitUntilExists(advancedButton),
+		ui.WaitUntilExists(advancedButton),
 		ui.FocusAndWait(advancedButton),
 		ui.DoDefault(advancedButton),
 	)(ctx); err != nil {
