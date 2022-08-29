@@ -67,6 +67,12 @@ var Canvas = App{
 	Name: "Chrome Canvas",
 }
 
+// Crosh has details about Crosh SWA.
+var Crosh = App{
+	ID:   "cgfnfgkafmcdkdgilmojlnaadileaach",
+	Name: "Crosh",
+}
+
 // Cursive has details about the Cursive app.
 var Cursive = App{
 	ID:   "apignacaigpffemhdbhmnajajaccbckh",
