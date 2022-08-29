@@ -1,0 +1,154 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa88a8a6_f8683424",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2022-08-29T00:09:06Z",
+      "side": 1,
+      "message": "\u003e \"deivce\" is a possible misspelling of \"device\".\n\nPlease fix.",
+      "parentUuid": "471f4bba_829ad238",
+      "range": {
+        "startLine": 11,
+        "startChar": 38,
+        "endLine": 11,
+        "endChar": 44
+      },
+      "revId": "a10bb177d04a4181679934ea638b8d251a18ebd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3d9f9cc_1016cc4c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shimlessrma/app_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2022-08-29T00:09:06Z",
+      "side": 1,
+      "message": "nit: Succeed → Success?",
+      "revId": "a10bb177d04a4181679934ea638b8d251a18ebd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d51c7319_5d98838f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shimlessrma/app_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2022-08-29T00:09:06Z",
+      "side": 1,
+      "message": "I think you should use offlineLogFile constant instead",
+      "revId": "a10bb177d04a4181679934ea638b8d251a18ebd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3a9bc28_d2a8d477",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shimlessrma/app_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2022-08-29T00:09:06Z",
+      "side": 1,
+      "message": "nit: empty line",
+      "revId": "a10bb177d04a4181679934ea638b8d251a18ebd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c3ca2aa_4adcf8ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shimlessrma/app_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2022-08-29T00:09:06Z",
+      "side": 1,
+      "message": "`GoogleGuest-IPv4` i think it\u0027s better to move this to constants",
+      "revId": "a10bb177d04a4181679934ea638b8d251a18ebd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43c11499_4d053390",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shimlessrma/app_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2022-08-29T00:09:06Z",
+      "side": 1,
+      "message": "I think it\u0027s better to move google.com to constants",
+      "revId": "a10bb177d04a4181679934ea638b8d251a18ebd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ecb18245_c1cb64a9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/os_update.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2022-08-29T00:09:06Z",
+      "side": 1,
+      "message": "what will happen if it\u0027s longer than the timeout of the text? isn\u0027t it safer to use context.Shorten?",
+      "revId": "a10bb177d04a4181679934ea638b8d251a18ebd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f169ffb4_d63e4e02",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/rmaweb/ui.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2022-08-29T00:09:06Z",
+      "side": 1,
+      "message": "\u003e \"successfuly\" is a possible misspelling of \"successfully\".\n\nPlease fix.",
+      "parentUuid": "3cd62c2f_405318ed",
+      "range": {
+        "startLine": 109,
+        "startChar": 66,
+        "endLine": 109,
+        "endChar": 77
+      },
+      "revId": "a10bb177d04a4181679934ea638b8d251a18ebd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
