@@ -22,6 +22,30 @@
       },
       "revId": "fbd7bfd30acaef5a42194a1cfd04b8d8da578773",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "066e7ebf_09f3c911",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-08-29T18:42:31Z",
+      "side": 1,
+      "message": "I think it will have to be exported, since you\u0027re calling `NewFirmwareFile` outside of this file and it takes `KeyType` as a parameter.\n\nIs there something in particular you are worried about? Just trying to limit the scope?",
+      "parentUuid": "7bd71885_714da77e",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 28
+      },
+      "revId": "fbd7bfd30acaef5a42194a1cfd04b8d8da578773",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
