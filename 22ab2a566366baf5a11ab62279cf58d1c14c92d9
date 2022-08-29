@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d1344e8b_35adafdf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-08-29T13:31:17Z",
+      "side": 1,
+      "message": "You can use a parameterized test to maintain coverage. You need to do it since you are failing non-kernelnext boards: kukui (kakadu) for example.\n\nKeep the normal tests limited to stable boards. Add an \"unstable\" subtest that will run on all boards as well. This way you get full coverage and don\u0027t risk breaking the CQ.\n\nThe other tests should be updated as well. Critical tests should not fail.",
+      "parentUuid": "05ad3e29_7b32784a",
+      "revId": "22ab2a566366baf5a11ab62279cf58d1c14c92d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "03044e48_87e1dad1",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/arc_enabled.go",
         "patchSetId": 4
