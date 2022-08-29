@@ -118,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "22c3a873_618fdbe6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/link_capturing.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-08-29T01:00:26Z",
+      "side": 1,
+      "message": "Yes, it was what I meant. Just wanted to say you are not forced to use loop. But after checking the logic again, it is not a problem in your case. You can feel free to ignore this comment.",
+      "parentUuid": "b0d46b48_8fcfd370",
+      "range": {
+        "startLine": 141,
+        "startChar": 1,
+        "endLine": 141,
+        "endChar": 30
+      },
+      "revId": "a4a5c487a9d7d230983fa2630fd9ba99116df305",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3a383319_fa6ae249",
