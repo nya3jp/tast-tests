@@ -118,6 +118,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3063de9f_3cb9fc15",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/dock4_usb_audio.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1545162
+      },
+      "writtenOn": "2022-08-29T02:07:07Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "9322ca78_1e8bcc9b",
+      "revId": "263b5344eebb022757a7786b9bd9e5d2729722bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5776531d_a566a0a0",
