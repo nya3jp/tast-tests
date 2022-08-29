@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6914425_726b1fcf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1522762
+      },
+      "writtenOn": "2022-08-29T21:07:52Z",
+      "side": 1,
+      "message": "This is fixed in this crbug and its associated cl: https://bugs.chromium.org/p/chromium/issues/detail?id\u003d1350297#c10",
+      "parentUuid": "8a13c838_b67d0579",
+      "range": {
+        "startLine": 10,
+        "startChar": 14,
+        "endLine": 11,
+        "endChar": 39
+      },
+      "revId": "506da7312fa67f85165747b16b21bbf803e6c12e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "52dd063d_370d4dbe",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-08-12T02:49:19Z",
       "side": 1,
       "message": "Although go doesn\u0027t have strict line length limits, it\u0027s still recommended to keep comments \u003c80 characters: go/go-style/decisions#comment-line-length. Can you wrap this and the other long comments in this CL?",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 314
+      },
+      "revId": "506da7312fa67f85165747b16b21bbf803e6c12e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "94b68b49_42e35d5a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/wmputils/wm.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1522762
+      },
+      "writtenOn": "2022-08-29T21:07:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "52dd063d_370d4dbe",
       "range": {
         "startLine": 70,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "12ca7a07_c2e413e4",
+        "filename": "src/chromiumos/tast/local/chrome/ash/desks.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1522762
+      },
+      "writtenOn": "2022-08-29T21:07:52Z",
+      "side": 1,
+      "message": "Function removed since bug (mentioned above) is fixed.",
+      "parentUuid": "411cccd3_cb877291",
+      "range": {
+        "startLine": 407,
+        "startChar": 31,
+        "endLine": 407,
+        "endChar": 40
+      },
+      "revId": "506da7312fa67f85165747b16b21bbf803e6c12e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "406f96eb_92fe9a2a",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-08-12T02:49:19Z",
       "side": 1,
       "message": "This isn\u0027t checking anything.",
+      "range": {
+        "startLine": 415,
+        "startChar": 0,
+        "endLine": 417,
+        "endChar": 2
+      },
+      "revId": "506da7312fa67f85165747b16b21bbf803e6c12e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "41560565_73dad8c9",
+        "filename": "src/chromiumos/tast/local/chrome/ash/desks.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 1522762
+      },
+      "writtenOn": "2022-08-29T21:07:52Z",
+      "side": 1,
+      "message": "Same as above",
+      "parentUuid": "406f96eb_92fe9a2a",
       "range": {
         "startLine": 415,
         "startChar": 0,
