@@ -33,6 +33,23 @@
       "message": "Done.\nI will leave it to dock5.\nPlease check, thank you.",
       "revId": "c540f98f694850163a5b0a7b8b5b453a9241a318",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14c8d9a0_fd763fdb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/wwcb_fixture.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1545012
+      },
+      "writtenOn": "2022-08-29T20:38:40Z",
+      "side": 1,
+      "message": "Can we add an error message here?",
+      "revId": "c540f98f694850163a5b0a7b8b5b453a9241a318",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
