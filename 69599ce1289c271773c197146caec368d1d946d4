@@ -107,6 +107,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fc66eb0d_68cda305",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-08-29T15:29:52Z",
+      "side": 1,
+      "message": "If you can figure out how to make this hardware test actually have dependency on the hardware, then it seems fine, but hardware tests that don\u0027t require hardware at all and can be replaced by a build-time check is an anti-pattern we try to avoid.",
+      "parentUuid": "14f26c1e_41252b31",
+      "revId": "69599ce1289c271773c197146caec368d1d946d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fd326872_79e6f485",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/form_factor.go",
         "patchSetId": 2
