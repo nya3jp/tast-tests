@@ -89,6 +89,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "14f26c1e_41252b31",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1408939
+      },
+      "writtenOn": "2022-08-29T03:07:33Z",
+      "side": 1,
+      "message": "Sure, we can make the property required in the schema.\n\nIt seems reasonable to have the Tast hwdep code actually check the form factor is defined instead of silently failing though, so this test seems like a reasonable step forward to me. But I can abandon the CL if you\u0027d prefer.",
+      "parentUuid": "348700e7_67052f37",
+      "revId": "69599ce1289c271773c197146caec368d1d946d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fd326872_79e6f485",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/form_factor.go",
         "patchSetId": 2
