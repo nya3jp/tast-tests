@@ -84,8 +84,6 @@ const (
 	passwordAuthFactorSecret = "password"
 	testUser1                = "testUser1@example.com"
 	testUser2                = "testUser2@example.com"
-	testFile                 = "file"
-	testFileContent          = "content"
 )
 
 func PINWeaverWithAuthAPI(ctx context.Context, s *testing.State) {

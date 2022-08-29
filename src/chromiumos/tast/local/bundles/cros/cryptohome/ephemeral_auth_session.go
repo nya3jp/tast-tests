@@ -6,8 +6,6 @@ package cryptohome
 
 import (
 	"context"
-	"io/ioutil"
-	"path/filepath"
 	"time"
 
 	"chromiumos/tast/common/hwsec"
@@ -38,8 +36,6 @@ func EphemeralAuthSession(ctx context.Context, s *testing.State) {
 		userName                              = "foo@bar.baz"
 		userPassword                          = "secret"
 		keyLabel                              = "fake_label"
-		testFile                              = "file"
-		testFileContent                       = "content"
 		wrongPassword                         = "wrongPassword"
 		cryptohomeErrorAuthorizationKeyFailed = 3
 	)
@@ -89,14 +85,8 @@ func EphemeralAuthSession(ctx context.Context, s *testing.State) {
 	}
 
 	// Write a test file to verify non-persistence.
-	userPath, err := cryptohome.UserPath(ctx, userName)
-	if err != nil {
-		s.Fatal("Failed to get user vault path: ", err)
-	}
-
-	filePath := filepath.Join(userPath, testFile)
-	if err := ioutil.WriteFile(filePath, []byte(testFileContent), 0644); err != nil {
-		s.Fatal("Failed to write a file to the vault: ", err)
+	if err := cryptohome.WriteFileForPersistence(ctx, userName); err != nil {
+		s.Fatal("Failed to write test file: ", err)
 	}
 
 	// Test invalid credentials when the user's directory is mounted.
@@ -135,7 +125,7 @@ func EphemeralAuthSession(ctx context.Context, s *testing.State) {
 	}
 
 	// Verify non-persistence.
-	if _, err := ioutil.ReadFile(filePath); err == nil {
+	if err := cryptohome.VerifyFileUnreadability(ctx, userName); err != nil {
 		s.Fatal("File is persisted across ephemeral session boundary")
 	}
 

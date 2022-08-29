@@ -5,10 +5,7 @@
 package cryptohome
 
 import (
-	"bytes"
 	"context"
-	"io/ioutil"
-	"path/filepath"
 	"time"
 
 	"chromiumos/tast/common/hwsec"
@@ -36,8 +33,6 @@ func UserSecretStash(ctx context.Context, s *testing.State) {
 		userName                          = "foo@bar.baz"
 		userPassword                      = "secret"
 		passwordLabel                     = "online-password"
-		testFile                          = "file"
-		testFileContent                   = "content"
 		cryptohomeRemoveCredentialsFailed = 54
 	)
 
@@ -89,13 +84,8 @@ func UserSecretStash(ctx context.Context, s *testing.State) {
 	defer client.UnmountAll(ctxForCleanUp)
 
 	// Write a test file to verify persistence.
-	userPath, err := cryptohome.UserPath(ctx, userName)
-	if err != nil {
-		s.Fatal("Failed to get user vault path: ", err)
-	}
-	filePath := filepath.Join(userPath, testFile)
-	if err := ioutil.WriteFile(filePath, []byte(testFileContent), 0644); err != nil {
-		s.Fatal("Failed to write a file to the vault: ", err)
+	if err := cryptohome.WriteFileForPersistence(ctx, userName); err != nil {
+		s.Fatal("Failed to write test file: ", err)
 	}
 
 	// Add a password auth factor to the user.
@@ -117,10 +107,8 @@ func UserSecretStash(ctx context.Context, s *testing.State) {
 		}
 
 		// Verify that the test file is still there.
-		if content, err := ioutil.ReadFile(filePath); err != nil {
-			return errors.Wrap(err, "failed to read back test file")
-		} else if bytes.Compare(content, []byte(testFileContent)) != 0 {
-			return errors.Errorf("incorrect tests file content. got: %q, want: %q", content, testFileContent)
+		if err := cryptohome.VerifyFileForPersistence(ctx, userName); err != nil {
+			return errors.Wrap(err, "failed to verify file persistence")
 		}
 		return nil
 	}

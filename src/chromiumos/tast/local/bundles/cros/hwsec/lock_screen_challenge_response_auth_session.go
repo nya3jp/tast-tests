@@ -63,13 +63,11 @@ func LockScreenChallengeResponseAuthSession(ctx context.Context, s *testing.Stat
 
 func lockScreenLogin(ctx context.Context, s *testing.State, isEphemeral bool) {
 	const (
-		ownerUser       = "owner@owner.owner"
-		keyLabel        = "fake_label"
-		dbusName        = "org.chromium.TestingCryptohomeKeyDelegate"
-		testUser        = "cryptohome_test@chromium.org"
-		testFile        = "file"
-		testFileContent = "content"
-		keySizeBits     = 2048
+		ownerUser   = "owner@owner.owner"
+		keyLabel    = "fake_label"
+		dbusName    = "org.chromium.TestingCryptohomeKeyDelegate"
+		testUser    = "cryptohome_test@chromium.org"
+		keySizeBits = 2048
 	)
 	keyAlgs := s.Param().([]cpb.ChallengeSignatureAlgorithm)
 
