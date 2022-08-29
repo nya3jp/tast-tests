@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a9026e7_d5959aa5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-08-29T07:21:18Z",
+      "side": 1,
+      "message": "(Sorry for delayed reply. Was on the flight).",
+      "revId": "82483b924584069caeda62eba34ee3a5809888cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1eee4be1_dbee60d9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-08-29T07:21:18Z",
+      "side": 1,
+      "message": "but not called from anywhere...?",
+      "revId": "82483b924584069caeda62eba34ee3a5809888cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05fb1ac7_dc9089e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-08-29T07:21:18Z",
+      "side": 1,
+      "message": "it may need to unfocus from any window?",
+      "revId": "82483b924584069caeda62eba34ee3a5809888cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
