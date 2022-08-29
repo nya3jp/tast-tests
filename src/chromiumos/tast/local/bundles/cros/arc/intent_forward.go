@@ -104,6 +104,7 @@ func IntentForward(ctx context.Context, s *testing.State) {
 		conn, err := br.NewConnForTarget(ctx, urlMatcher)
 		if err != nil {
 			s.Errorf("%s(%s) -> %s: %v", action, data, url, err)
+			return
 		}
 		defer conn.Close()
 	}
