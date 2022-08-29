@@ -33,9 +33,4 @@
       </activity>
   </application>
 
-    <!--  self-instrumenting test package. -->
-    <instrumentation android:name="android.test.InstrumentationTestRunner"
-         android:targetPackage="org.chromium.arc.testapp.windowanimationjank">
-    </instrumentation>
-
 </manifest>
