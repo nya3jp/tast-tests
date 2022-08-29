@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "110ca26a_7fdd98ab",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1538417
+      },
+      "writtenOn": "2022-08-29T23:01:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "37cffeea_adeddc68",
+      "range": {
+        "startLine": 7,
+        "startChar": 44,
+        "endLine": 7,
+        "endChar": 46
+      },
+      "revId": "f184ab1beba920be9c8f9aa7c75c078e99240dab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "e438336b_1e99c3de",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c4b46af_d543dad1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/view_system_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1538417
+      },
+      "writtenOn": "2022-08-29T23:01:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dd8011c1_43a24e27",
+      "range": {
+        "startLine": 25,
+        "startChar": 51,
+        "endLine": 25,
+        "endChar": 53
+      },
+      "revId": "f184ab1beba920be9c8f9aa7c75c078e99240dab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "589cdb7a_c3f3ad14",
@@ -77,6 +125,30 @@
       "writtenOn": "2022-08-29T22:55:04Z",
       "side": 1,
       "message": "`te`",
+      "range": {
+        "startLine": 38,
+        "startChar": 54,
+        "endLine": 38,
+        "endChar": 56
+      },
+      "revId": "f184ab1beba920be9c8f9aa7c75c078e99240dab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ac9ff04_851152a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/view_system_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1538417
+      },
+      "writtenOn": "2022-08-29T23:01:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "589cdb7a_c3f3ad14",
       "range": {
         "startLine": 38,
         "startChar": 54,
