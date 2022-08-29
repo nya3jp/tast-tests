@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12424022_907a6123",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/sim_lock_policy_lock_setting_off.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1547388
+      },
+      "writtenOn": "2022-08-29T19:38:34Z",
+      "side": 1,
+      "message": "I think this should be un commented to be able to run this tast test.",
+      "revId": "385168ed38dea7ad80cd7cb9fabb8c22d1e1b5d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
