@@ -390,13 +390,25 @@ func (r *Runner) StartSoftAP(ctx context.Context, freq uint32, ssid, keyMgmt, ps
 	}
 
 	if psk != "" {
-		if err := r.setNetwork(ctx, id, "psk", psk); err != nil {
+		if err := r.setNetwork(ctx, id, "psk", fmt.Sprintf("\"%s\"", psk)); err != nil {
 			return errors.Wrap(err, "failed running wpa_cli set_network psk")
 		}
 
 		// WPA2-PSK and WPA3-SAE both use RSN protocol.
 		if err := r.setNetwork(ctx, id, "proto", "RSN"); err != nil {
 			return errors.Wrap(err, "failed running wpa_cli set_network proto")
+		}
+	}
+
+	if keyMgmt == "SAE" {
+		if err := r.setNetwork(ctx, id, "pairwise", "CCMP"); err != nil {
+			return errors.Wrap(err, "failed running wpa_cli set_network pairwise")
+		}
+		if err := r.setNetwork(ctx, id, "group", "CCMP"); err != nil {
+			return errors.Wrap(err, "failed running wpa_cli set_network group")
+		}
+		if err := r.setNetwork(ctx, id, "ieee80211w", "2"); err != nil {
+			return errors.Wrap(err, "failed running wpa_cli set_network ieee80211w")
 		}
 	}
 
@@ -427,7 +439,7 @@ func (r *Runner) StopSoftAP(ctx context.Context) error {
 func (r *Runner) waitForStatus(ctx context.Context, status string) error {
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		return r.run(ctx, "wpa_state="+status, "status")
-	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
+	}, &testing.PollOptions{Timeout: 90 * time.Second, Interval: 2 * time.Second}); err != nil {
 		return err
 	}
 	return nil
