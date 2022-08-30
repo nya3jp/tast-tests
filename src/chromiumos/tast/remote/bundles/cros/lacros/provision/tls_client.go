@@ -64,7 +64,7 @@ func (c *TLSClient) ProvisionLacrosFromDeviceFilePath(ctx context.Context, dutNa
 	t := tls.NewCommonClient(c.conn)
 	op, err := t.ProvisionLacros(ctx, &req)
 	if err != nil {
-		return errors.Wrapf(err, "ProvisionLacros: failed to call a RPC with %v", req)
+		return errors.Wrapf(err, "ProvisionLacros: failed to call a RPC with %v", &req)
 	}
 	opName := op.Name
 	lro := longrunning.NewOperationsClient(c.conn)
