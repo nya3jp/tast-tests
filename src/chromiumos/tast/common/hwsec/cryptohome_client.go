@@ -967,6 +967,12 @@ func (u *CryptohomeClient) AddPinAuthFactor(ctx context.Context, authSessionID, 
 	return err
 }
 
+// AddKioskAuthFactor creates an auth factor for kiosk user.
+func (u *CryptohomeClient) AddKioskAuthFactor(ctx context.Context, authSessionID string) error {
+	_, err := u.binary.addKioskAuthFactor(ctx, authSessionID)
+	return err
+}
+
 // AddRecoveryAuthFactor creates a recovery auth factor for the user.
 func (u *CryptohomeClient) AddRecoveryAuthFactor(ctx context.Context, authSessionID, label, mediatorPubKeyHex string) error {
 	_, err := u.binary.addRecoveryAuthFactor(ctx, authSessionID, label, mediatorPubKeyHex)
