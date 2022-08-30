@@ -12,10 +12,54 @@ option go_package = "chromiumos/tast/services/cros/cellular";
 
 // RemoteCellularService provides RPC methods to interact with the cellular environment on the DUT.
 service RemoteCellularService {
+  // SetUp initialize the DUT for cellular testing.
+  rpc SetUp(google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
+  // TearDown releases any held resources and reverts the changes made in SetUp.
+  rpc TearDown(google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
+  // Enable enables cellular on the DUT.
+  rpc Enable(google.protobuf.Empty) returns (EnableResponse) {}
+
+  // Disable disables cellular on the DUT.
+  rpc Disable(google.protobuf.Empty) returns (DisableResponse) {}
+
+  // Connect attempts to connect to the cellular service.
+  rpc Connect(google.protobuf.Empty) returns (ConnectResponse) {}
+
+  // Disconnect attempts to disconnect from a cellular service.
+  rpc Disconnect(google.protobuf.Empty) returns (DisconnectResponse) {}
+
+  // QueryService returns information about the available cellular service.
+  rpc QueryService(google.protobuf.Empty) returns (QueryServiceResponse) {}
+
   // QueryInterface returns information about the cellular device interface.
   rpc QueryInterface(google.protobuf.Empty) returns (QueryInterfaceResponse) {}
 }
 
+message EnableResponse {
+  int64 enable_time = 1;
+}
+
+message DisableResponse {
+  int64 disable_time = 1;
+}
+
+message ConnectResponse {
+  int64 connect_time = 1;
+}
+
+message DisconnectResponse {
+  int64 disconnect_time = 1;
+}
+
 message QueryInterfaceResponse {
   string name = 1;
+}
+
+message QueryServiceResponse {
+  string name = 1;
+  string device = 2;
+  string state = 3;
+  bool is_connected = 4;
 }

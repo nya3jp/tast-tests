@@ -22,6 +22,7 @@ func init() {
 			"chromeos-cellular-team@google.com",
 		},
 		Attr:         []string{"group:cellular", "cellular_callbox"},
+		ServiceDeps:  []string{"tast.cros.cellular.RemoteCellularService"},
 		SoftwareDeps: []string{"chrome"},
 		Fixture:      "callboxManagedFixture",
 		Timeout:      5 * time.Minute,

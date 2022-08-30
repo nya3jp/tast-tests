@@ -116,6 +116,25 @@ func parseUpdateFirmwareCompletedSignal(sig *dbus.Signal) (UpdateFirmwareComplet
 	return res, nil
 }
 
+// Stop stops the Modem Firmware Daemon if it is currently running and returns true if it was stopped.
+func Stop(ctx context.Context) (bool, error) {
+	if !upstart.JobExists(ctx, JobName) {
+		return false, nil
+	}
+	_, _, pid, err := upstart.JobStatus(ctx, JobName)
+	if err != nil {
+		return false, errors.Wrapf(err, "failed to run upstart.JobStatus for %q", JobName)
+	}
+	if pid == 0 {
+		return false, nil
+	}
+	err = upstart.StopJob(ctx, JobName)
+	if err != nil {
+		return false, errors.Wrapf(err, "failed to stop %q", JobName)
+	}
+	return true, nil
+}
+
 // StartAndWaitForQuiescence starts the modemfwd job and waits for the initial sequence to complete
 // or until an error is logged.
 func StartAndWaitForQuiescence(ctx context.Context) error {
