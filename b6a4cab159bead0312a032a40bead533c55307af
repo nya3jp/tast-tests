@@ -70,6 +70,29 @@
       "parentUuid": "df9f020d_e5a06888",
       "revId": "b6a4cab159bead0312a032a40bead533c55307af",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7383d9f_59ba56d9",
+        "filename": "src/chromiumos/tast/local/chrome/familylink/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-08-30T07:19:28Z",
+      "side": 1,
+      "message": "nit: comment in the description on why this was added.",
+      "range": {
+        "startLine": 185,
+        "startChar": 161,
+        "endLine": 185,
+        "endChar": 177
+      },
+      "revId": "b6a4cab159bead0312a032a40bead533c55307af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
