@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ff10acc_11d75ea3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-08-30T15:49:28Z",
+      "side": 1,
+      "message": "LGTM but please get +1 from a team member before submission.",
+      "revId": "222b193498fdab07dfb39965fbc60fa97b5c0fc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc74760c_d4488d73",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint_reset_flags.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-08-30T15:49:28Z",
+      "side": 1,
+      "message": "nit: Watchdog",
+      "range": {
+        "startLine": 28,
+        "startChar": 4,
+        "endLine": 28,
+        "endChar": 12
+      },
+      "revId": "222b193498fdab07dfb39965fbc60fa97b5c0fc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
