@@ -9,10 +9,9 @@ import (
 	"fmt"
 	"io/ioutil"
 	"path/filepath"
-	"regexp"
-	"strings"
 	"time"
 
+	"chromiumos/tast/local/audio"
 	"chromiumos/tast/local/bundles/cros/vm/audioutils"
 	"chromiumos/tast/local/bundles/cros/vm/dlc"
 	"chromiumos/tast/testing"
@@ -186,8 +185,6 @@ func AudioAplay(ctx context.Context, s *testing.State) {
 		  Subdevice #3: subdevice #3
 	*/
 
-	deviceRegex := regexp.MustCompile(`card \d+:.*\[(?P<Card>.*)\], device \d+:.*\[(?P<Device>.*)\]`)
-
 	if err := audioutils.RunCrosvm(ctx, data.Kernel, kernelLogPath, kernelArgs, config); err != nil {
 		s.Fatal("Failed to run crosvm: ", err)
 	}
@@ -197,51 +194,10 @@ func AudioAplay(ctx context.Context, s *testing.State) {
 		s.Fatalf("Failed to read output file %q: %v", outputLogPath, err)
 	}
 
-	testing.ContextLog(ctx, string(output))
-	lines := strings.Split(string(output), "\n")
-	devicesCnt := 0
-	for idx := 0; idx < len(lines); idx++ {
-		lines[idx] = strings.TrimSpace(lines[idx])
-
-		match := deviceRegex.FindStringSubmatch(lines[idx])
-		if match == nil {
-			continue
-		}
-
-		if devicesCnt >= len(param.expectedCardNames) {
-			s.Errorf("card name count is more than expected: got %s", match[1])
-			continue
-		}
-
-		if devicesCnt >= len(param.expectedDeviceNames) {
-			s.Errorf("device name count is more than expected: got %s", match[2])
-			continue
-		}
-
-		if match[1] != param.expectedCardNames[devicesCnt] {
-			s.Errorf("card name incorrect: got %s, want %s", match[1], param.expectedCardNames[devicesCnt])
-		}
-		if match[2] != param.expectedDeviceNames[devicesCnt] {
-			s.Errorf("device name incorrect: got %s, want %s", match[2], param.expectedDeviceNames[devicesCnt])
-		}
-		devicesCnt++
-
-		// Expect next line: "Subdevices: n/n"
-		idx++
-		if idx >= len(lines) {
-			s.Errorf("device %s has no subdevices line after it", match[2])
-			break
-		}
-
-		lines[idx] = strings.TrimSpace(lines[idx])
-		expectSubdevices := fmt.Sprintf("Subdevices: %d/%d", param.expectedStreamsPerDevice, param.expectedStreamsPerDevice)
-		if lines[idx] != expectSubdevices {
-			s.Errorf("device %s subdevices line incorrect: got %q, want %q", match[2], lines[idx], expectSubdevices)
-		}
+	if err := audio.CheckAlsaDeviceList(
+		ctx, string(output), param.expectedCardNames,
+		param.expectedDeviceNames, param.expectedStreamsPerDevice, true,
+	); err != nil {
+		s.Errorf("Found difference on aplay -l output, err: %s", err)
 	}
-
-	if devicesCnt != len(param.expectedDeviceNames) {
-		s.Errorf("device count incorrect: got %d, want %d", devicesCnt, len(param.expectedDeviceNames))
-	}
-
 }
