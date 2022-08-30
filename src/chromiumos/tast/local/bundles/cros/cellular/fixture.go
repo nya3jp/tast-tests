@@ -1,4 +1,4 @@
-// Copyright 2021 The Chromium OS Authors. All rights reserved.
+// Copyright 2021 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -6,14 +6,12 @@ package cellular
 
 import (
 	"context"
-	"io/ioutil"
-	"strconv"
-	"strings"
 	"time"
 
 	"chromiumos/tast/common/fixture"
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/cellular"
 	"chromiumos/tast/local/hermes"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
@@ -86,7 +84,9 @@ func (f *cellularFixture) SetUp(ctx context.Context, s *testing.FixtState) inter
 	}
 
 	// Give some time for cellular daemons to perform any modem operations. Stopping them via upstart might leave the modem in a bad state.
-	ensureUptime(ctx, s, 2*time.Minute)
+	if err := cellular.EnsureUptime(ctx, 2*time.Minute); err != nil {
+		s.Fatal("Failed to wait for system uptime: ", err)
+	}
 
 	var err error
 	if f.modemfwdStopped, err = stopJob(ctx, modemfwdJobName); err != nil {
@@ -121,22 +121,6 @@ func (f *cellularFixture) TearDown(ctx context.Context, s *testing.FixtState) {
 			s.Fatalf("Failed to start %q: %s", modemfwdJobName, err)
 		}
 		s.Logf("Started %q", modemfwdJobName)
-	}
-}
-
-func ensureUptime(ctx context.Context, s *testing.FixtState, duration time.Duration) {
-	uptimeStr, err := ioutil.ReadFile("/proc/uptime")
-	if err != nil {
-		s.Errorf("Failed to read system uptime: %s", err)
-	}
-	uptimeFloat, err := strconv.ParseFloat(strings.Fields(string(uptimeStr))[0], 64)
-	if err != nil {
-		s.Errorf("Failed to parse system uptime %q : %s", string(uptimeStr), err)
-	}
-	uptime := time.Duration(uptimeFloat) * time.Second
-	if uptime < duration {
-		s.Logf("Waiting for %s uptime before starting test, current uptime:  %s", duration, uptime)
-		testing.Sleep(ctx, duration-uptime)
 	}
 }
 
