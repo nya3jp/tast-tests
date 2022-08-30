@@ -1991,7 +1991,7 @@ func (tf *TestFixture) ReserveForDeleteIPRoute(ctx context.Context) (context.Con
 }
 
 // StartTethering configures the specific DUT to provide a tethering session with the options specified.
-func (tf *TestFixture) StartTethering(ctx context.Context, dutIdx DutIdx, ops []tethering.Option) (*tethering.Config, *wifi.TetheringResponse, error) {
+func (tf *TestFixture) StartTethering(ctx context.Context, dutIdx DutIdx, ops []tethering.Option, fac security.ConfigFactory) (*tethering.Config, *wifi.TetheringResponse, error) {
 	ctx, st := timing.Start(ctx, "tf.StartTethering")
 	defer st.End()
 
@@ -2007,6 +2007,14 @@ func (tf *TestFixture) StartTethering(ctx context.Context, dutIdx DutIdx, ops []
 		Band:              c.Band.String(),
 	}
 
+	if fac != nil {
+		// Defer the securityConfig generation from test's init() to here because the step may emit error and that's not allowed in test init().
+		c.SecConf, err = fac.Gen()
+		if err != nil {
+			return nil, nil, err
+		}
+	}
+
 	if c.SecConf.Class() == shillconst.SecurityPSK {
 		request.Psk = c.PSK
 		if c.SecMode == wpa.ModePureWPA2 {
@@ -2016,6 +2024,9 @@ func (tf *TestFixture) StartTethering(ctx context.Context, dutIdx DutIdx, ops []
 		} else if c.SecMode == wpa.ModeMixedWPA3 {
 			request.Security = shillconst.SoftAPSecurityWPA2WPA3
 		}
+		wpaCfg := c.SecConf.(*wpa.Config)
+		request.Psk = wpaCfg.PSK()
+		request.Cipher = wpaCfg.Ciphers2()
 	} else if c.SecConf.Class() == shillconst.SecurityNone {
 		request.Security = shillconst.SoftAPSecurityNone
 	}
