@@ -947,6 +947,21 @@ func init() {
 				Fixture:           "chromeVideoWith1DecoderThreadsAndGlobalVaapiLockDisabled",
 			},
 			{
+				Name: "h264_1080p_30fps_hw_x2_2threads",
+				Val: playbackPerfParams{
+					fileName:    "perf/h264/1080p_30fps_300frames.h264.mp4",
+					decoderType: 0,
+					browserType: browser.TypeAsh,
+					gridWidth:   2,
+					gridHeight:  1,
+					perfTracing: true,
+				},
+				ExtraSoftwareDeps: []string{"proprietary_codecs", "autotest-capability:hw_dec_h264_1080_30", "thread_safe_libva_backend"},
+				ExtraData:         []string{"perf/h264/1080p_30fps_300frames.h264.mp4"},
+				ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
+				Fixture:           "chromeVideoWith2DecoderThreadsAndGlobalVaapiLockDisabled",
+			},
+			{
 				Name: "h264_480p_30fps_hw_x9_1threads",
 				Val: playbackPerfParams{
 					fileName:    "perf/h264/480p_30fps_300frames.h264.mp4",
@@ -960,6 +975,21 @@ func init() {
 				ExtraData:         []string{"perf/h264/480p_30fps_300frames.h264.mp4"},
 				ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
 				Fixture:           "chromeVideoWith1DecoderThreadsAndGlobalVaapiLockDisabled",
+			},
+			{
+				Name: "h264_480p_30fps_hw_x9_2threads",
+				Val: playbackPerfParams{
+					fileName:    "perf/h264/480p_30fps_300frames.h264.mp4",
+					decoderType: 0,
+					browserType: browser.TypeAsh,
+					gridWidth:   3,
+					gridHeight:  3,
+					perfTracing: true,
+				},
+				ExtraSoftwareDeps: []string{"proprietary_codecs", "autotest-capability:hw_dec_h264_1080_30", "thread_safe_libva_backend"},
+				ExtraData:         []string{"perf/h264/480p_30fps_300frames.h264.mp4"},
+				ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
+				Fixture:           "chromeVideoWith2DecoderThreadsAndGlobalVaapiLockDisabled",
 			},
 			{
 				Name: "h264_480p_30fps_hw_x9_4threads",
@@ -1005,6 +1035,21 @@ func init() {
 				ExtraData:         []string{"perf/h264/360p_30fps_300frames.h264.mp4"},
 				ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
 				Fixture:           "chromeVideoWith1DecoderThreadsAndGlobalVaapiLockDisabled",
+			},
+			{
+				Name: "h264_360p_30fps_hw_x16_2threads",
+				Val: playbackPerfParams{
+					fileName:    "perf/h264/360p_30fps_300frames.h264.mp4",
+					decoderType: 0,
+					browserType: browser.TypeAsh,
+					gridWidth:   4,
+					gridHeight:  4,
+					perfTracing: true,
+				},
+				ExtraSoftwareDeps: []string{"proprietary_codecs", "autotest-capability:hw_dec_h264_1080_30", "thread_safe_libva_backend"},
+				ExtraData:         []string{"perf/h264/360p_30fps_300frames.h264.mp4"},
+				ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
+				Fixture:           "chromeVideoWith2DecoderThreadsAndGlobalVaapiLockDisabled",
 			},
 			{
 				Name: "h264_360p_30fps_hw_x16_4threads",
@@ -1067,6 +1112,21 @@ func init() {
 				Fixture:           "chromeVideoWith1DecoderThreadsAndGlobalVaapiLockDisabled",
 			},
 			{
+				Name: "vp9_1080p_30fps_hw_x2_2threads",
+				Val: playbackPerfParams{
+					fileName:    "perf/vp9/1080p_30fps_300frames.vp9.webm",
+					decoderType: 0,
+					browserType: browser.TypeAsh,
+					gridWidth:   2,
+					gridHeight:  1,
+					perfTracing: true,
+				},
+				ExtraSoftwareDeps: []string{"autotest-capability:hw_dec_vp9_1080_30", "thread_safe_libva_backend"},
+				ExtraData:         []string{"perf/vp9/1080p_30fps_300frames.vp9.webm"},
+				ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
+				Fixture:           "chromeVideoWith2DecoderThreadsAndGlobalVaapiLockDisabled",
+			},
+			{
 				Name: "vp9_480p_30fps_hw_x9_1threads",
 				Val: playbackPerfParams{
 					fileName:    "perf/vp9/480p_30fps_300frames.vp9.webm",
@@ -1080,6 +1140,21 @@ func init() {
 				ExtraData:         []string{"perf/vp9/480p_30fps_300frames.vp9.webm"},
 				ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
 				Fixture:           "chromeVideoWith1DecoderThreadsAndGlobalVaapiLockDisabled",
+			},
+			{
+				Name: "vp9_480p_30fps_hw_x9_2threads",
+				Val: playbackPerfParams{
+					fileName:    "perf/vp9/480p_30fps_300frames.vp9.webm",
+					decoderType: 0,
+					browserType: browser.TypeAsh,
+					gridWidth:   3,
+					gridHeight:  3,
+					perfTracing: true,
+				},
+				ExtraSoftwareDeps: []string{"autotest-capability:hw_dec_vp9_1080_30", "thread_safe_libva_backend"},
+				ExtraData:         []string{"perf/vp9/480p_30fps_300frames.vp9.webm"},
+				ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
+				Fixture:           "chromeVideoWith2DecoderThreadsAndGlobalVaapiLockDisabled",
 			},
 			{
 				Name: "vp9_480p_30fps_hw_x9_4threads",
@@ -1125,6 +1200,21 @@ func init() {
 				ExtraData:         []string{"perf/vp9/360p_30fps_300frames.vp9.webm"},
 				ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
 				Fixture:           "chromeVideoWith1DecoderThreadsAndGlobalVaapiLockDisabled",
+			},
+			{
+				Name: "vp9_360p_30fps_hw_x16_2threads",
+				Val: playbackPerfParams{
+					fileName:    "perf/vp9/360p_30fps_300frames.vp9.webm",
+					decoderType: 0,
+					browserType: browser.TypeAsh,
+					gridWidth:   4,
+					gridHeight:  4,
+					perfTracing: true,
+				},
+				ExtraSoftwareDeps: []string{"autotest-capability:hw_dec_vp9_1080_30", "thread_safe_libva_backend"},
+				ExtraData:         []string{"perf/vp9/360p_30fps_300frames.vp9.webm"},
+				ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
+				Fixture:           "chromeVideoWith2DecoderThreadsAndGlobalVaapiLockDisabled",
 			},
 			{
 				Name: "vp9_360p_30fps_hw_x16_4threads",
