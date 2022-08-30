@@ -51,6 +51,40 @@
       "message": "debugd and gfx lgtm. (Other ones seem sensible too.)",
       "revId": "caacd5ac6f96f7135404256bda05f7b4dc0fa098",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "37eb19f1_2ddebc83",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2022-08-30T09:38:05Z",
+      "side": 1,
+      "message": "platform looks good.",
+      "revId": "caacd5ac6f96f7135404256bda05f7b4dc0fa098",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6450b925_3f2d5cd0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ureadahead_pack_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2022-08-30T09:38:05Z",
+      "side": 1,
+      "message": "nit (optional) sysOpenTrace is used only once, but /sys/kernel/tracing has 3 occurrences. It may be simpler to have\n\nftraceRoot \u003d \"/sys/kernel/tracing\"\n\nand make uses relative to ftraceRoot.",
+      "revId": "caacd5ac6f96f7135404256bda05f7b4dc0fa098",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
