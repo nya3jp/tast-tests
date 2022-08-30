@@ -1,4 +1,4 @@
-// Copyright 2019 The Chromium OS Authors. All rights reserved.
+// Copyright 2019 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -698,6 +698,11 @@ func (m *Manager) SetDNSProxyDOHProviders(ctx context.Context, url string, ns []
 	return m.Call(ctx, "SetDNSProxyDOHProviders", map[string]interface{}{
 		url: strings.Join(ns, ","),
 	}).Err
+}
+
+// SetServiceOrder sets the service priority that shill should use.
+func (m *Manager) SetServiceOrder(ctx context.Context, order string) error {
+	return m.Call(ctx, "SetServiceOrder", order).Err
 }
 
 // EnablePortalDetection will enable portal detection for the default technologies.

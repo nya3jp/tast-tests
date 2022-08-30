@@ -29,6 +29,194 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+type EnableResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	EnableTime int64 `protobuf:"varint,1,opt,name=enable_time,json=enableTime,proto3" json:"enable_time,omitempty"`
+}
+
+func (x *EnableResponse) Reset() {
+	*x = EnableResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_remote_cellular_service_proto_msgTypes[0]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *EnableResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*EnableResponse) ProtoMessage() {}
+
+func (x *EnableResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_remote_cellular_service_proto_msgTypes[0]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use EnableResponse.ProtoReflect.Descriptor instead.
+func (*EnableResponse) Descriptor() ([]byte, []int) {
+	return file_remote_cellular_service_proto_rawDescGZIP(), []int{0}
+}
+
+func (x *EnableResponse) GetEnableTime() int64 {
+	if x != nil {
+		return x.EnableTime
+	}
+	return 0
+}
+
+type DisableResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	DisableTime int64 `protobuf:"varint,1,opt,name=disable_time,json=disableTime,proto3" json:"disable_time,omitempty"`
+}
+
+func (x *DisableResponse) Reset() {
+	*x = DisableResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_remote_cellular_service_proto_msgTypes[1]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *DisableResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DisableResponse) ProtoMessage() {}
+
+func (x *DisableResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_remote_cellular_service_proto_msgTypes[1]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DisableResponse.ProtoReflect.Descriptor instead.
+func (*DisableResponse) Descriptor() ([]byte, []int) {
+	return file_remote_cellular_service_proto_rawDescGZIP(), []int{1}
+}
+
+func (x *DisableResponse) GetDisableTime() int64 {
+	if x != nil {
+		return x.DisableTime
+	}
+	return 0
+}
+
+type ConnectResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	ConnectTime int64 `protobuf:"varint,1,opt,name=connect_time,json=connectTime,proto3" json:"connect_time,omitempty"`
+}
+
+func (x *ConnectResponse) Reset() {
+	*x = ConnectResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_remote_cellular_service_proto_msgTypes[2]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *ConnectResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ConnectResponse) ProtoMessage() {}
+
+func (x *ConnectResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_remote_cellular_service_proto_msgTypes[2]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ConnectResponse.ProtoReflect.Descriptor instead.
+func (*ConnectResponse) Descriptor() ([]byte, []int) {
+	return file_remote_cellular_service_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *ConnectResponse) GetConnectTime() int64 {
+	if x != nil {
+		return x.ConnectTime
+	}
+	return 0
+}
+
+type DisconnectResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	DisconnectTime int64 `protobuf:"varint,1,opt,name=disconnect_time,json=disconnectTime,proto3" json:"disconnect_time,omitempty"`
+}
+
+func (x *DisconnectResponse) Reset() {
+	*x = DisconnectResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_remote_cellular_service_proto_msgTypes[3]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *DisconnectResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DisconnectResponse) ProtoMessage() {}
+
+func (x *DisconnectResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_remote_cellular_service_proto_msgTypes[3]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DisconnectResponse.ProtoReflect.Descriptor instead.
+func (*DisconnectResponse) Descriptor() ([]byte, []int) {
+	return file_remote_cellular_service_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *DisconnectResponse) GetDisconnectTime() int64 {
+	if x != nil {
+		return x.DisconnectTime
+	}
+	return 0
+}
+
 type QueryInterfaceResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -40,7 +228,7 @@ type QueryInterfaceResponse struct {
 func (x *QueryInterfaceResponse) Reset() {
 	*x = QueryInterfaceResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_remote_cellular_service_proto_msgTypes[0]
+		mi := &file_remote_cellular_service_proto_msgTypes[4]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -53,7 +241,7 @@ func (x *QueryInterfaceResponse) String() string {
 func (*QueryInterfaceResponse) ProtoMessage() {}
 
 func (x *QueryInterfaceResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_remote_cellular_service_proto_msgTypes[0]
+	mi := &file_remote_cellular_service_proto_msgTypes[4]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -66,7 +254,7 @@ func (x *QueryInterfaceResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use QueryInterfaceResponse.ProtoReflect.Descriptor instead.
 func (*QueryInterfaceResponse) Descriptor() ([]byte, []int) {
-	return file_remote_cellular_service_proto_rawDescGZIP(), []int{0}
+	return file_remote_cellular_service_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *QueryInterfaceResponse) GetName() string {
@@ -74,6 +262,77 @@ func (x *QueryInterfaceResponse) GetName() string {
 		return x.Name
 	}
 	return ""
+}
+
+type QueryServiceResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Name        string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	Device      string `protobuf:"bytes,2,opt,name=device,proto3" json:"device,omitempty"`
+	State       string `protobuf:"bytes,3,opt,name=state,proto3" json:"state,omitempty"`
+	IsConnected bool   `protobuf:"varint,4,opt,name=is_connected,json=isConnected,proto3" json:"is_connected,omitempty"`
+}
+
+func (x *QueryServiceResponse) Reset() {
+	*x = QueryServiceResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_remote_cellular_service_proto_msgTypes[5]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *QueryServiceResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*QueryServiceResponse) ProtoMessage() {}
+
+func (x *QueryServiceResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_remote_cellular_service_proto_msgTypes[5]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use QueryServiceResponse.ProtoReflect.Descriptor instead.
+func (*QueryServiceResponse) Descriptor() ([]byte, []int) {
+	return file_remote_cellular_service_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *QueryServiceResponse) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *QueryServiceResponse) GetDevice() string {
+	if x != nil {
+		return x.Device
+	}
+	return ""
+}
+
+func (x *QueryServiceResponse) GetState() string {
+	if x != nil {
+		return x.State
+	}
+	return ""
+}
+
+func (x *QueryServiceResponse) GetIsConnected() bool {
+	if x != nil {
+		return x.IsConnected
+	}
+	return false
 }
 
 var File_remote_cellular_service_proto protoreflect.FileDescriptor
@@ -84,20 +343,77 @@ var file_remote_cellular_service_proto_rawDesc = []byte{
 	0x12, 0x74, 0x61, 0x73, 0x74, 0x2e, 0x63, 0x72, 0x6f, 0x73, 0x2e, 0x63, 0x65, 0x6c, 0x6c, 0x75,
 	0x6c, 0x61, 0x72, 0x1a, 0x1b, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2f, 0x70, 0x72, 0x6f, 0x74,
 	0x6f, 0x62, 0x75, 0x66, 0x2f, 0x65, 0x6d, 0x70, 0x74, 0x79, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f,
-	0x22, 0x2c, 0x0a, 0x16, 0x51, 0x75, 0x65, 0x72, 0x79, 0x49, 0x6e, 0x74, 0x65, 0x72, 0x66, 0x61,
-	0x63, 0x65, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x12, 0x0a, 0x04, 0x6e, 0x61,
-	0x6d, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x32, 0x6f,
-	0x0a, 0x15, 0x52, 0x65, 0x6d, 0x6f, 0x74, 0x65, 0x43, 0x65, 0x6c, 0x6c, 0x75, 0x6c, 0x61, 0x72,
-	0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x12, 0x56, 0x0a, 0x0e, 0x51, 0x75, 0x65, 0x72, 0x79,
-	0x49, 0x6e, 0x74, 0x65, 0x72, 0x66, 0x61, 0x63, 0x65, 0x12, 0x16, 0x2e, 0x67, 0x6f, 0x6f, 0x67,
-	0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x45, 0x6d, 0x70, 0x74,
-	0x79, 0x1a, 0x2a, 0x2e, 0x74, 0x61, 0x73, 0x74, 0x2e, 0x63, 0x72, 0x6f, 0x73, 0x2e, 0x63, 0x65,
-	0x6c, 0x6c, 0x75, 0x6c, 0x61, 0x72, 0x2e, 0x51, 0x75, 0x65, 0x72, 0x79, 0x49, 0x6e, 0x74, 0x65,
-	0x72, 0x66, 0x61, 0x63, 0x65, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x00, 0x42,
-	0x28, 0x5a, 0x26, 0x63, 0x68, 0x72, 0x6f, 0x6d, 0x69, 0x75, 0x6d, 0x6f, 0x73, 0x2f, 0x74, 0x61,
-	0x73, 0x74, 0x2f, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x73, 0x2f, 0x63, 0x72, 0x6f, 0x73,
-	0x2f, 0x63, 0x65, 0x6c, 0x6c, 0x75, 0x6c, 0x61, 0x72, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f,
-	0x33,
+	0x22, 0x31, 0x0a, 0x0e, 0x45, 0x6e, 0x61, 0x62, 0x6c, 0x65, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e,
+	0x73, 0x65, 0x12, 0x1f, 0x0a, 0x0b, 0x65, 0x6e, 0x61, 0x62, 0x6c, 0x65, 0x5f, 0x74, 0x69, 0x6d,
+	0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x03, 0x52, 0x0a, 0x65, 0x6e, 0x61, 0x62, 0x6c, 0x65, 0x54,
+	0x69, 0x6d, 0x65, 0x22, 0x34, 0x0a, 0x0f, 0x44, 0x69, 0x73, 0x61, 0x62, 0x6c, 0x65, 0x52, 0x65,
+	0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x21, 0x0a, 0x0c, 0x64, 0x69, 0x73, 0x61, 0x62, 0x6c,
+	0x65, 0x5f, 0x74, 0x69, 0x6d, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x03, 0x52, 0x0b, 0x64, 0x69,
+	0x73, 0x61, 0x62, 0x6c, 0x65, 0x54, 0x69, 0x6d, 0x65, 0x22, 0x34, 0x0a, 0x0f, 0x43, 0x6f, 0x6e,
+	0x6e, 0x65, 0x63, 0x74, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x21, 0x0a, 0x0c,
+	0x63, 0x6f, 0x6e, 0x6e, 0x65, 0x63, 0x74, 0x5f, 0x74, 0x69, 0x6d, 0x65, 0x18, 0x01, 0x20, 0x01,
+	0x28, 0x03, 0x52, 0x0b, 0x63, 0x6f, 0x6e, 0x6e, 0x65, 0x63, 0x74, 0x54, 0x69, 0x6d, 0x65, 0x22,
+	0x3d, 0x0a, 0x12, 0x44, 0x69, 0x73, 0x63, 0x6f, 0x6e, 0x6e, 0x65, 0x63, 0x74, 0x52, 0x65, 0x73,
+	0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x27, 0x0a, 0x0f, 0x64, 0x69, 0x73, 0x63, 0x6f, 0x6e, 0x6e,
+	0x65, 0x63, 0x74, 0x5f, 0x74, 0x69, 0x6d, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x03, 0x52, 0x0e,
+	0x64, 0x69, 0x73, 0x63, 0x6f, 0x6e, 0x6e, 0x65, 0x63, 0x74, 0x54, 0x69, 0x6d, 0x65, 0x22, 0x2c,
+	0x0a, 0x16, 0x51, 0x75, 0x65, 0x72, 0x79, 0x49, 0x6e, 0x74, 0x65, 0x72, 0x66, 0x61, 0x63, 0x65,
+	0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x12, 0x0a, 0x04, 0x6e, 0x61, 0x6d, 0x65,
+	0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x22, 0x7b, 0x0a, 0x14,
+	0x51, 0x75, 0x65, 0x72, 0x79, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x52, 0x65, 0x73, 0x70,
+	0x6f, 0x6e, 0x73, 0x65, 0x12, 0x12, 0x0a, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x01, 0x20, 0x01,
+	0x28, 0x09, 0x52, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x12, 0x16, 0x0a, 0x06, 0x64, 0x65, 0x76, 0x69,
+	0x63, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x06, 0x64, 0x65, 0x76, 0x69, 0x63, 0x65,
+	0x12, 0x14, 0x0a, 0x05, 0x73, 0x74, 0x61, 0x74, 0x65, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52,
+	0x05, 0x73, 0x74, 0x61, 0x74, 0x65, 0x12, 0x21, 0x0a, 0x0c, 0x69, 0x73, 0x5f, 0x63, 0x6f, 0x6e,
+	0x6e, 0x65, 0x63, 0x74, 0x65, 0x64, 0x18, 0x04, 0x20, 0x01, 0x28, 0x08, 0x52, 0x0b, 0x69, 0x73,
+	0x43, 0x6f, 0x6e, 0x6e, 0x65, 0x63, 0x74, 0x65, 0x64, 0x32, 0xa4, 0x05, 0x0a, 0x15, 0x52, 0x65,
+	0x6d, 0x6f, 0x74, 0x65, 0x43, 0x65, 0x6c, 0x6c, 0x75, 0x6c, 0x61, 0x72, 0x53, 0x65, 0x72, 0x76,
+	0x69, 0x63, 0x65, 0x12, 0x39, 0x0a, 0x05, 0x53, 0x65, 0x74, 0x55, 0x70, 0x12, 0x16, 0x2e, 0x67,
+	0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x45,
+	0x6d, 0x70, 0x74, 0x79, 0x1a, 0x16, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72,
+	0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x22, 0x00, 0x12, 0x3a,
+	0x0a, 0x06, 0x52, 0x65, 0x69, 0x6e, 0x69, 0x74, 0x12, 0x16, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c,
+	0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x45, 0x6d, 0x70, 0x74, 0x79,
+	0x1a, 0x16, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62,
+	0x75, 0x66, 0x2e, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x22, 0x00, 0x12, 0x3c, 0x0a, 0x08, 0x54, 0x65,
+	0x61, 0x72, 0x44, 0x6f, 0x77, 0x6e, 0x12, 0x16, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e,
+	0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x1a, 0x16,
+	0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66,
+	0x2e, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x22, 0x00, 0x12, 0x46, 0x0a, 0x06, 0x45, 0x6e, 0x61, 0x62,
+	0x6c, 0x65, 0x12, 0x16, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74,
+	0x6f, 0x62, 0x75, 0x66, 0x2e, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x1a, 0x22, 0x2e, 0x74, 0x61, 0x73,
+	0x74, 0x2e, 0x63, 0x72, 0x6f, 0x73, 0x2e, 0x63, 0x65, 0x6c, 0x6c, 0x75, 0x6c, 0x61, 0x72, 0x2e,
+	0x45, 0x6e, 0x61, 0x62, 0x6c, 0x65, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x00,
+	0x12, 0x48, 0x0a, 0x07, 0x44, 0x69, 0x73, 0x61, 0x62, 0x6c, 0x65, 0x12, 0x16, 0x2e, 0x67, 0x6f,
+	0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x45, 0x6d,
+	0x70, 0x74, 0x79, 0x1a, 0x23, 0x2e, 0x74, 0x61, 0x73, 0x74, 0x2e, 0x63, 0x72, 0x6f, 0x73, 0x2e,
+	0x63, 0x65, 0x6c, 0x6c, 0x75, 0x6c, 0x61, 0x72, 0x2e, 0x44, 0x69, 0x73, 0x61, 0x62, 0x6c, 0x65,
+	0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x00, 0x12, 0x48, 0x0a, 0x07, 0x43, 0x6f,
+	0x6e, 0x6e, 0x65, 0x63, 0x74, 0x12, 0x16, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70,
+	0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x1a, 0x23, 0x2e,
+	0x74, 0x61, 0x73, 0x74, 0x2e, 0x63, 0x72, 0x6f, 0x73, 0x2e, 0x63, 0x65, 0x6c, 0x6c, 0x75, 0x6c,
+	0x61, 0x72, 0x2e, 0x43, 0x6f, 0x6e, 0x6e, 0x65, 0x63, 0x74, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e,
+	0x73, 0x65, 0x22, 0x00, 0x12, 0x4e, 0x0a, 0x0a, 0x44, 0x69, 0x73, 0x63, 0x6f, 0x6e, 0x6e, 0x65,
+	0x63, 0x74, 0x12, 0x16, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74,
+	0x6f, 0x62, 0x75, 0x66, 0x2e, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x1a, 0x26, 0x2e, 0x74, 0x61, 0x73,
+	0x74, 0x2e, 0x63, 0x72, 0x6f, 0x73, 0x2e, 0x63, 0x65, 0x6c, 0x6c, 0x75, 0x6c, 0x61, 0x72, 0x2e,
+	0x44, 0x69, 0x73, 0x63, 0x6f, 0x6e, 0x6e, 0x65, 0x63, 0x74, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e,
+	0x73, 0x65, 0x22, 0x00, 0x12, 0x52, 0x0a, 0x0c, 0x51, 0x75, 0x65, 0x72, 0x79, 0x53, 0x65, 0x72,
+	0x76, 0x69, 0x63, 0x65, 0x12, 0x16, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72,
+	0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x1a, 0x28, 0x2e, 0x74,
+	0x61, 0x73, 0x74, 0x2e, 0x63, 0x72, 0x6f, 0x73, 0x2e, 0x63, 0x65, 0x6c, 0x6c, 0x75, 0x6c, 0x61,
+	0x72, 0x2e, 0x51, 0x75, 0x65, 0x72, 0x79, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x52, 0x65,
+	0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x00, 0x12, 0x56, 0x0a, 0x0e, 0x51, 0x75, 0x65, 0x72,
+	0x79, 0x49, 0x6e, 0x74, 0x65, 0x72, 0x66, 0x61, 0x63, 0x65, 0x12, 0x16, 0x2e, 0x67, 0x6f, 0x6f,
+	0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x45, 0x6d, 0x70,
+	0x74, 0x79, 0x1a, 0x2a, 0x2e, 0x74, 0x61, 0x73, 0x74, 0x2e, 0x63, 0x72, 0x6f, 0x73, 0x2e, 0x63,
+	0x65, 0x6c, 0x6c, 0x75, 0x6c, 0x61, 0x72, 0x2e, 0x51, 0x75, 0x65, 0x72, 0x79, 0x49, 0x6e, 0x74,
+	0x65, 0x72, 0x66, 0x61, 0x63, 0x65, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x00,
+	0x42, 0x28, 0x5a, 0x26, 0x63, 0x68, 0x72, 0x6f, 0x6d, 0x69, 0x75, 0x6d, 0x6f, 0x73, 0x2f, 0x74,
+	0x61, 0x73, 0x74, 0x2f, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x73, 0x2f, 0x63, 0x72, 0x6f,
+	0x73, 0x2f, 0x63, 0x65, 0x6c, 0x6c, 0x75, 0x6c, 0x61, 0x72, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74,
+	0x6f, 0x33,
 }
 
 var (
@@ -112,16 +428,37 @@ func file_remote_cellular_service_proto_rawDescGZIP() []byte {
 	return file_remote_cellular_service_proto_rawDescData
 }
 
-var file_remote_cellular_service_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
+var file_remote_cellular_service_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
 var file_remote_cellular_service_proto_goTypes = []interface{}{
-	(*QueryInterfaceResponse)(nil), // 0: tast.cros.cellular.QueryInterfaceResponse
-	(*empty.Empty)(nil),            // 1: google.protobuf.Empty
+	(*EnableResponse)(nil),         // 0: tast.cros.cellular.EnableResponse
+	(*DisableResponse)(nil),        // 1: tast.cros.cellular.DisableResponse
+	(*ConnectResponse)(nil),        // 2: tast.cros.cellular.ConnectResponse
+	(*DisconnectResponse)(nil),     // 3: tast.cros.cellular.DisconnectResponse
+	(*QueryInterfaceResponse)(nil), // 4: tast.cros.cellular.QueryInterfaceResponse
+	(*QueryServiceResponse)(nil),   // 5: tast.cros.cellular.QueryServiceResponse
+	(*empty.Empty)(nil),            // 6: google.protobuf.Empty
 }
 var file_remote_cellular_service_proto_depIdxs = []int32{
-	1, // 0: tast.cros.cellular.RemoteCellularService.QueryInterface:input_type -> google.protobuf.Empty
-	0, // 1: tast.cros.cellular.RemoteCellularService.QueryInterface:output_type -> tast.cros.cellular.QueryInterfaceResponse
-	1, // [1:2] is the sub-list for method output_type
-	0, // [0:1] is the sub-list for method input_type
+	6, // 0: tast.cros.cellular.RemoteCellularService.SetUp:input_type -> google.protobuf.Empty
+	6, // 1: tast.cros.cellular.RemoteCellularService.Reinit:input_type -> google.protobuf.Empty
+	6, // 2: tast.cros.cellular.RemoteCellularService.TearDown:input_type -> google.protobuf.Empty
+	6, // 3: tast.cros.cellular.RemoteCellularService.Enable:input_type -> google.protobuf.Empty
+	6, // 4: tast.cros.cellular.RemoteCellularService.Disable:input_type -> google.protobuf.Empty
+	6, // 5: tast.cros.cellular.RemoteCellularService.Connect:input_type -> google.protobuf.Empty
+	6, // 6: tast.cros.cellular.RemoteCellularService.Disconnect:input_type -> google.protobuf.Empty
+	6, // 7: tast.cros.cellular.RemoteCellularService.QueryService:input_type -> google.protobuf.Empty
+	6, // 8: tast.cros.cellular.RemoteCellularService.QueryInterface:input_type -> google.protobuf.Empty
+	6, // 9: tast.cros.cellular.RemoteCellularService.SetUp:output_type -> google.protobuf.Empty
+	6, // 10: tast.cros.cellular.RemoteCellularService.Reinit:output_type -> google.protobuf.Empty
+	6, // 11: tast.cros.cellular.RemoteCellularService.TearDown:output_type -> google.protobuf.Empty
+	0, // 12: tast.cros.cellular.RemoteCellularService.Enable:output_type -> tast.cros.cellular.EnableResponse
+	1, // 13: tast.cros.cellular.RemoteCellularService.Disable:output_type -> tast.cros.cellular.DisableResponse
+	2, // 14: tast.cros.cellular.RemoteCellularService.Connect:output_type -> tast.cros.cellular.ConnectResponse
+	3, // 15: tast.cros.cellular.RemoteCellularService.Disconnect:output_type -> tast.cros.cellular.DisconnectResponse
+	5, // 16: tast.cros.cellular.RemoteCellularService.QueryService:output_type -> tast.cros.cellular.QueryServiceResponse
+	4, // 17: tast.cros.cellular.RemoteCellularService.QueryInterface:output_type -> tast.cros.cellular.QueryInterfaceResponse
+	9, // [9:18] is the sub-list for method output_type
+	0, // [0:9] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name
 	0, // [0:0] is the sub-list for extension extendee
 	0, // [0:0] is the sub-list for field type_name
@@ -134,7 +471,67 @@ func file_remote_cellular_service_proto_init() {
 	}
 	if !protoimpl.UnsafeEnabled {
 		file_remote_cellular_service_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*EnableResponse); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_remote_cellular_service_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*DisableResponse); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_remote_cellular_service_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*ConnectResponse); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_remote_cellular_service_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*DisconnectResponse); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_remote_cellular_service_proto_msgTypes[4].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*QueryInterfaceResponse); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_remote_cellular_service_proto_msgTypes[5].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*QueryServiceResponse); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -152,7 +549,7 @@ func file_remote_cellular_service_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_remote_cellular_service_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   1,
+			NumMessages:   6,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
@@ -178,7 +575,23 @@ const _ = grpc.SupportPackageIsVersion6
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type RemoteCellularServiceClient interface {
-	// QueryInterface returns information about the cellular device interface.
+	// SetUp initialize the DUT for cellular testing.
+	SetUp(ctx context.Context, in *empty.Empty, opts ...grpc.CallOption) (*empty.Empty, error)
+	// Reinit reinitializes the DUT for cellular testing betweek tests.
+	Reinit(ctx context.Context, in *empty.Empty, opts ...grpc.CallOption) (*empty.Empty, error)
+	// TearDown releases any held resources and reverts the changes made in SetUp.
+	TearDown(ctx context.Context, in *empty.Empty, opts ...grpc.CallOption) (*empty.Empty, error)
+	// Enable enables cellular on the DUT.
+	Enable(ctx context.Context, in *empty.Empty, opts ...grpc.CallOption) (*EnableResponse, error)
+	// Disable disables cellular on the DUT.
+	Disable(ctx context.Context, in *empty.Empty, opts ...grpc.CallOption) (*DisableResponse, error)
+	// Connect attempts to connect to the cellular service.
+	Connect(ctx context.Context, in *empty.Empty, opts ...grpc.CallOption) (*ConnectResponse, error)
+	// Disconnect attempts to disconnect from a cellular service.
+	Disconnect(ctx context.Context, in *empty.Empty, opts ...grpc.CallOption) (*DisconnectResponse, error)
+	// QueryInterface returns the cellular device interface properties.
+	QueryService(ctx context.Context, in *empty.Empty, opts ...grpc.CallOption) (*QueryServiceResponse, error)
+	// QueryInterface returns the cellular device interface properties.
 	QueryInterface(ctx context.Context, in *empty.Empty, opts ...grpc.CallOption) (*QueryInterfaceResponse, error)
 }
 
@@ -188,6 +601,78 @@ type remoteCellularServiceClient struct {
 
 func NewRemoteCellularServiceClient(cc grpc.ClientConnInterface) RemoteCellularServiceClient {
 	return &remoteCellularServiceClient{cc}
+}
+
+func (c *remoteCellularServiceClient) SetUp(ctx context.Context, in *empty.Empty, opts ...grpc.CallOption) (*empty.Empty, error) {
+	out := new(empty.Empty)
+	err := c.cc.Invoke(ctx, "/tast.cros.cellular.RemoteCellularService/SetUp", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *remoteCellularServiceClient) Reinit(ctx context.Context, in *empty.Empty, opts ...grpc.CallOption) (*empty.Empty, error) {
+	out := new(empty.Empty)
+	err := c.cc.Invoke(ctx, "/tast.cros.cellular.RemoteCellularService/Reinit", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *remoteCellularServiceClient) TearDown(ctx context.Context, in *empty.Empty, opts ...grpc.CallOption) (*empty.Empty, error) {
+	out := new(empty.Empty)
+	err := c.cc.Invoke(ctx, "/tast.cros.cellular.RemoteCellularService/TearDown", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *remoteCellularServiceClient) Enable(ctx context.Context, in *empty.Empty, opts ...grpc.CallOption) (*EnableResponse, error) {
+	out := new(EnableResponse)
+	err := c.cc.Invoke(ctx, "/tast.cros.cellular.RemoteCellularService/Enable", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *remoteCellularServiceClient) Disable(ctx context.Context, in *empty.Empty, opts ...grpc.CallOption) (*DisableResponse, error) {
+	out := new(DisableResponse)
+	err := c.cc.Invoke(ctx, "/tast.cros.cellular.RemoteCellularService/Disable", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *remoteCellularServiceClient) Connect(ctx context.Context, in *empty.Empty, opts ...grpc.CallOption) (*ConnectResponse, error) {
+	out := new(ConnectResponse)
+	err := c.cc.Invoke(ctx, "/tast.cros.cellular.RemoteCellularService/Connect", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *remoteCellularServiceClient) Disconnect(ctx context.Context, in *empty.Empty, opts ...grpc.CallOption) (*DisconnectResponse, error) {
+	out := new(DisconnectResponse)
+	err := c.cc.Invoke(ctx, "/tast.cros.cellular.RemoteCellularService/Disconnect", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *remoteCellularServiceClient) QueryService(ctx context.Context, in *empty.Empty, opts ...grpc.CallOption) (*QueryServiceResponse, error) {
+	out := new(QueryServiceResponse)
+	err := c.cc.Invoke(ctx, "/tast.cros.cellular.RemoteCellularService/QueryService", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
 }
 
 func (c *remoteCellularServiceClient) QueryInterface(ctx context.Context, in *empty.Empty, opts ...grpc.CallOption) (*QueryInterfaceResponse, error) {
@@ -201,7 +686,23 @@ func (c *remoteCellularServiceClient) QueryInterface(ctx context.Context, in *em
 
 // RemoteCellularServiceServer is the server API for RemoteCellularService service.
 type RemoteCellularServiceServer interface {
-	// QueryInterface returns information about the cellular device interface.
+	// SetUp initialize the DUT for cellular testing.
+	SetUp(context.Context, *empty.Empty) (*empty.Empty, error)
+	// Reinit reinitializes the DUT for cellular testing betweek tests.
+	Reinit(context.Context, *empty.Empty) (*empty.Empty, error)
+	// TearDown releases any held resources and reverts the changes made in SetUp.
+	TearDown(context.Context, *empty.Empty) (*empty.Empty, error)
+	// Enable enables cellular on the DUT.
+	Enable(context.Context, *empty.Empty) (*EnableResponse, error)
+	// Disable disables cellular on the DUT.
+	Disable(context.Context, *empty.Empty) (*DisableResponse, error)
+	// Connect attempts to connect to the cellular service.
+	Connect(context.Context, *empty.Empty) (*ConnectResponse, error)
+	// Disconnect attempts to disconnect from a cellular service.
+	Disconnect(context.Context, *empty.Empty) (*DisconnectResponse, error)
+	// QueryInterface returns the cellular device interface properties.
+	QueryService(context.Context, *empty.Empty) (*QueryServiceResponse, error)
+	// QueryInterface returns the cellular device interface properties.
 	QueryInterface(context.Context, *empty.Empty) (*QueryInterfaceResponse, error)
 }
 
@@ -209,12 +710,180 @@ type RemoteCellularServiceServer interface {
 type UnimplementedRemoteCellularServiceServer struct {
 }
 
+func (*UnimplementedRemoteCellularServiceServer) SetUp(context.Context, *empty.Empty) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SetUp not implemented")
+}
+func (*UnimplementedRemoteCellularServiceServer) Reinit(context.Context, *empty.Empty) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Reinit not implemented")
+}
+func (*UnimplementedRemoteCellularServiceServer) TearDown(context.Context, *empty.Empty) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method TearDown not implemented")
+}
+func (*UnimplementedRemoteCellularServiceServer) Enable(context.Context, *empty.Empty) (*EnableResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Enable not implemented")
+}
+func (*UnimplementedRemoteCellularServiceServer) Disable(context.Context, *empty.Empty) (*DisableResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Disable not implemented")
+}
+func (*UnimplementedRemoteCellularServiceServer) Connect(context.Context, *empty.Empty) (*ConnectResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Connect not implemented")
+}
+func (*UnimplementedRemoteCellularServiceServer) Disconnect(context.Context, *empty.Empty) (*DisconnectResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Disconnect not implemented")
+}
+func (*UnimplementedRemoteCellularServiceServer) QueryService(context.Context, *empty.Empty) (*QueryServiceResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method QueryService not implemented")
+}
 func (*UnimplementedRemoteCellularServiceServer) QueryInterface(context.Context, *empty.Empty) (*QueryInterfaceResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method QueryInterface not implemented")
 }
 
 func RegisterRemoteCellularServiceServer(s *grpc.Server, srv RemoteCellularServiceServer) {
 	s.RegisterService(&_RemoteCellularService_serviceDesc, srv)
+}
+
+func _RemoteCellularService_SetUp_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(empty.Empty)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RemoteCellularServiceServer).SetUp(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/tast.cros.cellular.RemoteCellularService/SetUp",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RemoteCellularServiceServer).SetUp(ctx, req.(*empty.Empty))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RemoteCellularService_Reinit_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(empty.Empty)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RemoteCellularServiceServer).Reinit(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/tast.cros.cellular.RemoteCellularService/Reinit",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RemoteCellularServiceServer).Reinit(ctx, req.(*empty.Empty))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RemoteCellularService_TearDown_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(empty.Empty)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RemoteCellularServiceServer).TearDown(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/tast.cros.cellular.RemoteCellularService/TearDown",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RemoteCellularServiceServer).TearDown(ctx, req.(*empty.Empty))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RemoteCellularService_Enable_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(empty.Empty)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RemoteCellularServiceServer).Enable(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/tast.cros.cellular.RemoteCellularService/Enable",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RemoteCellularServiceServer).Enable(ctx, req.(*empty.Empty))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RemoteCellularService_Disable_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(empty.Empty)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RemoteCellularServiceServer).Disable(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/tast.cros.cellular.RemoteCellularService/Disable",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RemoteCellularServiceServer).Disable(ctx, req.(*empty.Empty))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RemoteCellularService_Connect_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(empty.Empty)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RemoteCellularServiceServer).Connect(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/tast.cros.cellular.RemoteCellularService/Connect",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RemoteCellularServiceServer).Connect(ctx, req.(*empty.Empty))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RemoteCellularService_Disconnect_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(empty.Empty)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RemoteCellularServiceServer).Disconnect(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/tast.cros.cellular.RemoteCellularService/Disconnect",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RemoteCellularServiceServer).Disconnect(ctx, req.(*empty.Empty))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RemoteCellularService_QueryService_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(empty.Empty)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RemoteCellularServiceServer).QueryService(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/tast.cros.cellular.RemoteCellularService/QueryService",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RemoteCellularServiceServer).QueryService(ctx, req.(*empty.Empty))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
 func _RemoteCellularService_QueryInterface_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -239,6 +908,38 @@ var _RemoteCellularService_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "tast.cros.cellular.RemoteCellularService",
 	HandlerType: (*RemoteCellularServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "SetUp",
+			Handler:    _RemoteCellularService_SetUp_Handler,
+		},
+		{
+			MethodName: "Reinit",
+			Handler:    _RemoteCellularService_Reinit_Handler,
+		},
+		{
+			MethodName: "TearDown",
+			Handler:    _RemoteCellularService_TearDown_Handler,
+		},
+		{
+			MethodName: "Enable",
+			Handler:    _RemoteCellularService_Enable_Handler,
+		},
+		{
+			MethodName: "Disable",
+			Handler:    _RemoteCellularService_Disable_Handler,
+		},
+		{
+			MethodName: "Connect",
+			Handler:    _RemoteCellularService_Connect_Handler,
+		},
+		{
+			MethodName: "Disconnect",
+			Handler:    _RemoteCellularService_Disconnect_Handler,
+		},
+		{
+			MethodName: "QueryService",
+			Handler:    _RemoteCellularService_QueryService_Handler,
+		},
 		{
 			MethodName: "QueryInterface",
 			Handler:    _RemoteCellularService_QueryInterface_Handler,

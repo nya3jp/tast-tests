@@ -1,4 +1,4 @@
-// Copyright 2022 The Chromium OS Authors. All rights reserved.
+// Copyright 2022 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -112,6 +112,25 @@ func parseUpdateFirmwareCompletedSignal(sig *dbus.Signal) (UpdateFirmwareComplet
 	res.success = success
 	res.errStr = errStr
 	return res, nil
+}
+
+// Stop stops the Modem Firmware Daemon if it is currently running and returns true if it was stopped.
+func Stop(ctx context.Context) (bool, error) {
+	if !upstart.JobExists(ctx, JobName) {
+		return false, nil
+	}
+	_, _, pid, err := upstart.JobStatus(ctx, JobName)
+	if err != nil {
+		return false, errors.Wrapf(err, "failed to run upstart.JobStatus for %q", JobName)
+	}
+	if pid == 0 {
+		return false, nil
+	}
+	err = upstart.StopJob(ctx, JobName)
+	if err != nil {
+		return false, errors.Wrapf(err, "failed to stop %q", JobName)
+	}
+	return true, nil
 }
 
 // StartAndWaitForQuiescence starts the modemfwd job and waits for the initial sequence to complete
