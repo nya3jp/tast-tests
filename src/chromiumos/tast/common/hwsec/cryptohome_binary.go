@@ -386,6 +386,12 @@ func (c *cryptohomeBinary) addRecoveryAuthFactor(ctx context.Context, authSessio
 	return c.call(ctx, args...)
 }
 
+// addKioskAuthFactor calls "cryptohome --action=add_auth_factor --public_mount".
+func (c *cryptohomeBinary) addKioskAuthFactor(ctx context.Context, authSessionID string) ([]byte, error) {
+	args := []string{"--action=add_auth_factor", "--auth_session_id=" + authSessionID, "--public_mount", "--key_label=public_mount"}
+	return c.call(ctx, args...)
+}
+
 // updateAuthFactor calls "cryptohome --action=update_auth_factor".
 func (c *cryptohomeBinary) updateAuthFactor(ctx context.Context, authSessionID, label, newKeyLabel, password string) ([]byte, error) {
 	args := []string{"--action=update_auth_factor",
