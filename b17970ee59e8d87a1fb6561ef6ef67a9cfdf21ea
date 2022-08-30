@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd8364b8_18524b10",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-08-30T22:07:44Z",
+      "side": 1,
+      "message": "As per Avery\u0027s suggestion, I will push forward with this CL, and then make a new CL with a kaisa / kench specific variant.",
+      "revId": "b17970ee59e8d87a1fb6561ef6ef67a9cfdf21ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
