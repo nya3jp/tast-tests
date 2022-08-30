@@ -66,6 +66,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "05f0337b_1d849f5e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/enabled_policy.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1332928
+      },
+      "writtenOn": "2022-08-30T19:01:52Z",
+      "side": 1,
+      "message": "Should this \"else\" be here? If the chrome app is successfully installed, then this else block doesn\u0027t execute.",
+      "range": {
+        "startLine": 168,
+        "startChar": 3,
+        "endLine": 168,
+        "endChar": 7
+      },
+      "revId": "3231738990572699a7b22fc34a7d2eb2b41e27c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1c08ee0d_605bd309",
         "filename": "src/chromiumos/tast/local/bundles/cros/projector/enabled_policy.go",
         "patchSetId": 5
