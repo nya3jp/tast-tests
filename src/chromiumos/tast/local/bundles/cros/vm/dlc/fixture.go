@@ -11,6 +11,7 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/dlc"
 	"chromiumos/tast/testing"
 )
@@ -56,8 +57,9 @@ type dlcFixture struct {
 //		...
 //	}
 type FixtData struct {
-	Kernel string // Path to the guest kernel.
-	Rootfs string // Path to the guest rootfs image.
+	Chrome *chrome.Chrome // Instance of Chrome
+	Kernel string         // Path to the guest kernel.
+	Rootfs string         // Path to the guest rootfs image.
 }
 
 func (f *dlcFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
@@ -79,6 +81,7 @@ func (f *dlcFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{
 	terminaDLCDir := infoList[0].RootMount
 
 	return FixtData{
+		Chrome: s.ParentValue().(*chrome.Chrome),
 		Kernel: filepath.Join(terminaDLCDir, "vm_kernel"),
 		Rootfs: filepath.Join(terminaDLCDir, "vm_rootfs.img"),
 	}
