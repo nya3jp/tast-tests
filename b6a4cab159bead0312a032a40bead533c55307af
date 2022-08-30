@@ -93,6 +93,30 @@
       },
       "revId": "b6a4cab159bead0312a032a40bead533c55307af",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "04b2abcb_1f7a11da",
+        "filename": "src/chromiumos/tast/local/chrome/familylink/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-08-30T12:15:46Z",
+      "side": 1,
+      "message": "added to the description.",
+      "parentUuid": "d7383d9f_59ba56d9",
+      "range": {
+        "startLine": 185,
+        "startChar": 161,
+        "endLine": 185,
+        "endChar": 177
+      },
+      "revId": "b6a4cab159bead0312a032a40bead533c55307af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
