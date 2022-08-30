@@ -9,12 +9,12 @@ import (
 	"time"
 
 	"chromiumos/tast/common/testexec"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/uiauto/quicksettings"
 	"chromiumos/tast/testing"
 )
-
-// AloopCrasNodeType defines CrasNode type for ALSA loopback.
-const AloopCrasNodeType = "ALSA_LOOPBACK"
 
 // LoadAloop loads snd-aloop module on kernel. A deferred call to the returned
 // unloadAloop function to unload snd-aloop should be scheduled by the caller if
@@ -41,57 +41,42 @@ func LoadAloop(ctx context.Context) (func(ctx context.Context), error) {
 	}, nil
 }
 
-func findDevice(ctx context.Context, devices []CrasNode, isInput bool) (CrasNode, error) {
-	for _, n := range devices {
-		if n.Type == AloopCrasNodeType && n.IsInput == isInput {
-			return n, nil
+// SetupLoopback sets the playback and capture nodes to the ALSA loopback via the Quick Settings UI .
+func SetupLoopback(ctx context.Context, cr *chrome.Chrome) error {
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to create Test API connection")
+	}
+
+	timeForCleanUp := 5 * time.Second
+	ctxForCleanUp := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, timeForCleanUp)
+	defer cancel()
+
+	if err := quicksettings.Show(ctx, tconn); err != nil {
+		return errors.Wrap(err, "failed to show the quicksettings to select playback node")
+	}
+	defer func() {
+		if err := quicksettings.Hide(ctxForCleanUp, tconn); err != nil {
+			testing.ContextLog(ctx, "Failed to hide the quicksettings on defer: ", err)
 		}
-	}
-	return CrasNode{}, errors.Errorf("cannot find device with type=%s and isInput=%v", AloopCrasNodeType, isInput)
-}
-
-// SetupLoopback sets the playback and capture device using alsa loopback device.
-func SetupLoopback(ctx context.Context) error {
-	cras, err := NewCras(ctx)
-	if err != nil {
-		return errors.Wrap(err, "failed to create cras")
+	}()
+	if err := quicksettings.SelectAudioOption(ctx, tconn, "Loopback Playback"); err != nil {
+		return errors.Wrap(err, "failed to select ALSA loopback output")
 	}
 
-	var playbackFound, captureFound bool
-	checkLoopbackNode := func(n *CrasNode) bool {
-		if n.Type != AloopCrasNodeType {
-			return false
-		}
-		if n.IsInput {
-			captureFound = true
-		} else {
-			playbackFound = true
-		}
-		return captureFound && playbackFound
+	// After selecting Loopback Playback, SelectAudioOption() sometimes detected that audio setting
+	// is still opened while it is actually fading out, and failed to select Loopback Capture.
+	// Call Hide() and Show() to reset the quicksettings menu first.
+	if err := quicksettings.Hide(ctx, tconn); err != nil {
+		return errors.Wrap(err, "failed to hide the quicksettings before show")
 	}
-
-	if err = cras.WaitForDeviceUntil(ctx, checkLoopbackNode, 5*time.Second); err != nil {
-		return errors.Wrap(err, "failed to wait for loopback devices")
+	if err := quicksettings.Show(ctx, tconn); err != nil {
+		return errors.Wrap(err, "failed to show the quicksettings to select capture node")
 	}
-
-	audioDevices, err := cras.GetNodes(ctx)
-	if err != nil {
-		return errors.Wrap(err, "failed to get nodes")
+	if err := quicksettings.SelectAudioOption(ctx, tconn, "Loopback Capture"); err != nil {
+		return errors.Wrap(err, "failed to select ALSA loopback input")
 	}
-
-	playbackDevice, err := findDevice(ctx, audioDevices, false)
-	if err != nil {
-		return errors.Wrap(err, "failed to find audio device")
-	}
-
-	captureDevice, err := findDevice(ctx, audioDevices, true)
-	if err != nil {
-		return errors.Wrap(err, "failed to find audio device")
-	}
-
-	cras.SetActiveNode(ctx, playbackDevice)
-	cras.SetActiveNode(ctx, captureDevice)
-	cras.SetOutputNodeVolume(ctx, playbackDevice, 100)
 
 	return nil
 }
