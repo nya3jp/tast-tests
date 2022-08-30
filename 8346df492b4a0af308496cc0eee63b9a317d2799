@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa5fdd9a_42743091",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-08-30T02:35:36Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "d742fb81_d07e979b",
+      "revId": "8346df492b4a0af308496cc0eee63b9a317d2799",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b0b8ac9e_9841c171",
@@ -102,6 +120,24 @@
       "writtenOn": "2022-08-30T01:57:17Z",
       "side": 1,
       "message": "Please create a bug for this TODO",
+      "revId": "8346df492b4a0af308496cc0eee63b9a317d2799",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "23469cbe_29f541c0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns_proxy_over_vpn.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-08-30T02:35:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "38e1cd61_d12bfa40",
       "revId": "8346df492b4a0af308496cc0eee63b9a317d2799",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
