@@ -20,6 +20,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "392141a9_c68c134b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/activate.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-08-30T14:47:09Z",
+      "side": 1,
+      "message": "maybe: reflect.DeepEqual?",
+      "range": {
+        "startLine": 182,
+        "startChar": 0,
+        "endLine": 192,
+        "endChar": 1
+      },
+      "revId": "ef45adb8e101ebb88804eaa920ea0bcae48e74b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d34896aa_31105e6f",
         "filename": "src/chromiumos/tast/local/bundles/cros/lacros/activate.go",
         "patchSetId": 2
@@ -49,6 +72,47 @@
       "side": 1,
       "message": "To make this more actionable. Are you okay with me changing closeBrowser closure returned by various browserfixt functions to take a bool parameter that indicates whether the browser tabs should be closed (rather than just freeing the resources)?",
       "parentUuid": "d34896aa_31105e6f",
+      "revId": "ef45adb8e101ebb88804eaa920ea0bcae48e74b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9887d51a_440520c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/activate.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-08-30T14:47:09Z",
+      "side": 1,
+      "message": "Hmm... taking a parameter by teardown method sounds like a bit non-natural to me.\nLet\u0027s discuss tomorrow offline in our 1:1 how to proceed.",
+      "parentUuid": "6c16eeeb_d2263c53",
+      "revId": "ef45adb8e101ebb88804eaa920ea0bcae48e74b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f6eccf8_5067d59a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/activate.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-08-30T14:47:09Z",
+      "side": 1,
+      "message": "nit/style:\n\nTODO(crbug.com/1316237):",
+      "range": {
+        "startLine": 217,
+        "startChar": 10,
+        "endLine": 217,
+        "endChar": 27
+      },
       "revId": "ef45adb8e101ebb88804eaa920ea0bcae48e74b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
