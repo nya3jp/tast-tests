@@ -50,7 +50,7 @@ func init() {
 				Name:              "lacros",
 				Fixture:           fixture.LacrosClamshellNonVKWithGrammarCheck,
 				ExtraSoftwareDeps: []string{"lacros"},
-				ExtraAttr:         []string{"informational"},
+				ExtraAttr:         []string{"group:input-tools-upstream"},
 			},
 		},
 	})
