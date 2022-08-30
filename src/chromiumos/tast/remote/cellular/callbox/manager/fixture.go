@@ -6,11 +6,15 @@ package manager
 
 import (
 	"context"
+	"fmt"
+	"net"
+	"strings"
 	"sync"
 	"time"
 
 	"github.com/golang/protobuf/ptypes/empty"
 
+	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/exec"
 	"chromiumos/tast/rpc"
@@ -60,15 +64,20 @@ type fixtureVars struct {
 
 // SetUp sets up the test fixture and connects to the CallboxManager.
 func (tf *TestFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
+	dut := s.DUT()
+
 	// Parse Vars
-	if callbox, ok := s.Var("callbox"); ok && callbox != "" {
-		testing.ContextLog(ctx, "callbox: ", callbox)
-		tf.Vars.Callbox = callbox
-	} else {
-		// Will be replaced with DUT metadata lookup
-		tf.Vars.Callbox = "chromeos1-donutlab-callbox1.cros"
-		testing.ContextLogf(ctx, "No callbox specified, defaulting to %s", tf.Vars.Callbox)
+	callbox, ok := s.Var("callbox")
+	if !ok || callbox == "" {
+		testing.ContextLog(ctx, "No callbox specified, deducing from DUT name")
+		var err error
+		if callbox, err = callboxHostName(dut); err != nil {
+			s.Fatal("Failed to determine callbox hostname: ", err)
+		}
 	}
+	tf.Vars.Callbox = callbox
+	testing.ContextLogf(ctx, "Using callbox: %q", tf.Vars.Callbox)
+
 	callboxManager, ok := s.Var("callboxManager")
 	if !ok {
 		testing.ContextLog(ctx, "No callboxManager specified, defaulting to lookup")
@@ -86,7 +95,6 @@ func (tf *TestFixture) SetUp(ctx context.Context, s *testing.FixtState) interfac
 	// Initialize CallboxManagerClient
 	if tf.Vars.CallboxManager == labProxyHostname {
 		// Tunnel to Callbox Manager on labProxyHostname
-		dut := s.DUT()
 		var err error
 		tf.fcm, err = newForwardToLabCallboxManager(ctx, dut.KeyDir(), dut.KeyFile())
 		if err != nil {
@@ -166,6 +174,33 @@ func (tf *TestFixture) ConnectToCallbox(ctx context.Context, dutConn *ssh.Conn, 
 		return errors.Wrapf(err, "failed to curl  %q on DUT using cellular interface", "google.com")
 	}
 	return nil
+}
+
+// callboxHostName derives the hostname of the callbox from the dut's hostname.
+//
+// callbox DUT names follow the convention <callbox>-host<n> e.g. "chromeos1-donutlab-callbox1-host1"
+func callboxHostName(dut *dut.DUT) (string, error) {
+	dutHost := dut.HostName()
+	if host, _, err := net.SplitHostPort(dutHost); err == nil {
+		dutHost = host
+	}
+
+	if dutHost == "localhost" {
+		return "", errors.Errorf("unable to infer callbox hostname from: %q, localhost not supported", dut.HostName())
+	}
+
+	if ip := net.ParseIP(dutHost); ip != nil {
+		return "", errors.Errorf("unable to infer callbox hostname from: %q, ip:port format not supported", dut.HostName())
+	}
+
+	hostname := strings.Split(dutHost, "-")
+	if len(hostname) < 2 {
+		return "", errors.Errorf("unable to infer callbox hostname from: %q, unknown name format", dut.HostName())
+	}
+
+	// CallboxManager expects callbox hostnames to end in .cros
+	hostname = hostname[0 : len(hostname)-1]
+	return fmt.Sprintf("%s.cros", strings.Join(hostname, "-")), nil
 }
 
 var callboxManagerByCallboxLookup = map[string]string{
