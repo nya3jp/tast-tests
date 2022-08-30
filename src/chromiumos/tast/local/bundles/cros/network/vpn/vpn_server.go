@@ -13,7 +13,6 @@ import (
 
 	"chromiumos/tast/common/crypto/certificate"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/bundles/cros/network/chroot"
 	"chromiumos/tast/local/network/virtualnet/env"
 	"chromiumos/tast/testing"
 )
@@ -352,7 +351,7 @@ var (
 type Server struct {
 	OverlayIP    string
 	UnderlayIP   string
-	netChroot    *chroot.NetworkChroot
+	netChroot    *serverRunner
 	stopCommands [][]string
 	pidFiles     []string
 	logFiles     []string
@@ -360,7 +359,7 @@ type Server struct {
 
 // StartL2TPIPsecServer starts a L2TP/IPsec server.
 func StartL2TPIPsecServer(ctx context.Context, env *env.Env, authType string, ipsecUseXauth, underlayIPIsOverlayIP bool) (*Server, error) {
-	chro := chroot.NewNetworkChroot(env)
+	chro := newServerRunner(env)
 	server := &Server{
 		netChroot:    chro,
 		stopCommands: [][]string{},
@@ -432,7 +431,7 @@ func StartL2TPIPsecServer(ctx context.Context, env *env.Env, authType string, ip
 
 // StartIKEv2Server starts an IKEv2 server.
 func StartIKEv2Server(ctx context.Context, env *env.Env, authType string) (*Server, error) {
-	chro := chroot.NewNetworkChroot(env)
+	chro := newServerRunner(env)
 	server := &Server{
 		netChroot:    chro,
 		stopCommands: [][]string{{"/bin/ip", "link", "del", "xfrm1"}},
@@ -500,7 +499,7 @@ func StartIKEv2Server(ctx context.Context, env *env.Env, authType string) (*Serv
 
 // StartOpenVPNServer starts an OpenVPN server.
 func StartOpenVPNServer(ctx context.Context, env *env.Env, useUserPassword, useTLSAuth bool) (*Server, error) {
-	chro := chroot.NewNetworkChroot(env)
+	chro := newServerRunner(env)
 	server := &Server{
 		netChroot:    chro,
 		stopCommands: [][]string{},
@@ -549,7 +548,7 @@ func StartOpenVPNServer(ctx context.Context, env *env.Env, useUserPassword, useT
 
 // StartWireGuardServer starts a WireGuard server.
 func StartWireGuardServer(ctx context.Context, env *env.Env, clientPublicKey string, usePSK, isSecondServer bool) (*Server, error) {
-	chro := chroot.NewNetworkChroot(env)
+	chro := newServerRunner(env)
 	server := &Server{
 		netChroot:    chro,
 		stopCommands: [][]string{{"/bin/ip", "link", "del", "wg1"}},
