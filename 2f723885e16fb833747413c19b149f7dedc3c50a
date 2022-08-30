@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "12e487a6_14978adb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-08-30T16:00:35Z",
+      "side": 1,
+      "message": "I just have one nit comment. You can decide whether you want the change or not. thanks. ",
+      "revId": "2f723885e16fb833747413c19b149f7dedc3c50a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2907e487_3cc3a0c2",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/ectool.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-08-30T16:00:35Z",
+      "side": 1,
+      "message": "nit: \"to unsigned integer\"",
+      "revId": "2f723885e16fb833747413c19b149f7dedc3c50a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
