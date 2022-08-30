@@ -477,6 +477,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b47b4905_9cae03f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/enabled_policy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1332928
+      },
+      "writtenOn": "2022-08-30T02:05:23Z",
+      "side": 1,
+      "message": "hmm this is an interesting problem\n\nThe code that we are calling i.e. ChromeAppInstalled calls into AppRegistryCache here [1].\n\nMy understanding is that upon startup AppRegistryCache can be empty and all the AppPublishers notify the registry about the applications that they have. \n\nNow the main question is if we start chrome with the policy disabled, will the AppRegistryCache even be informed about projector by the web app provider?\n\nLooking at the code: If the SWA is disabled, then it\u0027s ProjectorSystemWebAppDelegate will not be part of the delegate_map returned here [2], which means the delegate actually gets destroyed and the app will not be installed [3].\n\nI think some other SWAs manage this behavior better by installing in a disabled state [4], maybe Projector should do the same.\n\n[1] https://source.chromium.org/chromium/chromium/src/+/main:chrome/browser/chromeos/extensions/autotest_private/autotest_private_api.cc;drc\u003d956d134255a8bb1ad5456c7cfa35097372cebbfa;l\u003d3755\n\n[2] https://source.chromium.org/chromium/chromium/src/+/main:chrome/browser/ash/system_web_apps/system_web_app_manager.cc;drc\u003d206fd5e4a12226776e734e38871d12e83bed6a6d;l\u003d154\n\n[3] https://source.chromium.org/chromium/chromium/src/+/main:chrome/browser/ash/system_web_apps/types/system_web_app_delegate.h;drc\u003d31587bb18cb168cd44e69edcab075951820746ce;l\u003d151\n\n[4] https://source.chromium.org/chromium/chromium/src/+/main:chrome/browser/web_applications/policy/web_app_policy_manager.cc;drc\u003d956d134255a8bb1ad5456c7cfa35097372cebbfa;l\u003d657",
+      "parentUuid": "df04b04b_a66dc99c",
+      "revId": "e1e4d9d7d7e99d59fe3dc71fe08dc2d31fe41006",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ac21c89c_62273a7d",
         "filename": "src/chromiumos/tast/local/bundles/cros/projector/enabled_policy.go",
         "patchSetId": 3
