@@ -62,6 +62,63 @@
       },
       "revId": "3231738990572699a7b22fc34a7d2eb2b41e27c4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c08ee0d_605bd309",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/enabled_policy.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-08-30T06:40:19Z",
+      "side": 1,
+      "message": "I ran a simple experiment where I passed --enable-features\u003dProjectorManagedUserIgnorePolicy to my DUT, forcing the Projector app to be always installed regardless of policy.\n\nEven if the Projector app is installed, this error doesn\u0027t throw, so we can get rid of this check.",
+      "revId": "3231738990572699a7b22fc34a7d2eb2b41e27c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c989980_98d48a81",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/enabled_policy.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-08-30T06:40:19Z",
+      "side": 1,
+      "message": "Nit: Screencast app",
+      "range": {
+        "startLine": 179,
+        "startChar": 22,
+        "endLine": 179,
+        "endChar": 32
+      },
+      "revId": "3231738990572699a7b22fc34a7d2eb2b41e27c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1a6b7b4_287faee0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/enabled_policy.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-08-30T06:40:19Z",
+      "side": 1,
+      "message": "If the app is installed despite the policy being disabled, then this error throws. We should only keep this check. No need for WaitForChromeAppInstalled() or ChromeAppInstalled().",
+      "revId": "3231738990572699a7b22fc34a7d2eb2b41e27c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

@@ -511,6 +511,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b18d295_bb79358b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/enabled_policy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-08-30T06:40:19Z",
+      "side": 1,
+      "message": "I ran a simple experiment. See comments below.",
+      "parentUuid": "ee670cfc_3e6cd53f",
+      "revId": "e1e4d9d7d7e99d59fe3dc71fe08dc2d31fe41006",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ac21c89c_62273a7d",
