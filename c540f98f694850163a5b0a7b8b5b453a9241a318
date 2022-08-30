@@ -108,6 +108,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2242d797_02780870",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 23
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1545162
+      },
+      "writtenOn": "2022-08-30T03:46:31Z",
+      "side": 1,
+      "message": "I was told to execute `fast_build.sh -T`,\nand check if it passed then add this line \"TEST\u003dtast unit test passed.\" in comment.\n\nAnd I just discover that I was missing sth through your feedback,\nthen I go to learn the concept about Go\u0027s unit test.\n\nBut I still do not figure out yet,\ndo you have any instruction?\nI am checking on this.\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Unit-tests",
+      "parentUuid": "165df576_36b40f45",
+      "revId": "c540f98f694850163a5b0a7b8b5b453a9241a318",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "14c8d9a0_fd763fdb",
         "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/wwcb_fixture.go",
         "patchSetId": 23
