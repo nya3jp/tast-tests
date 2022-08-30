@@ -46,6 +46,30 @@
       },
       "revId": "9a28ee22b7ca51d409b86d8918aa3249420861e2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e3b9803_f28cebc5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tab_switch_cuj_recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-08-30T17:14:32Z",
+      "side": 1,
+      "message": "Thanks for clarifying that it doesn\u0027t need a lacros variant! Just updated the comment as you suggested.\n\nBtw, can you help review the other tests (eg. `TabSwitchCUJRecorder2`) to see whether it needs lacros variants? I\u0027ll probably keep this comment open for that and be able to change the lacros metadata accordingly in a follow-up patchset.",
+      "parentUuid": "f3ef186b_1d28952b",
+      "range": {
+        "startLine": 20,
+        "startChar": 24,
+        "endLine": 20,
+        "endChar": 61
+      },
+      "revId": "9a28ee22b7ca51d409b86d8918aa3249420861e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

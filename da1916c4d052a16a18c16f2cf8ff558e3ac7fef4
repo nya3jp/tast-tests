@@ -69,6 +69,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7609728_e898f2dc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-08-30T17:14:32Z",
+      "side": 1,
+      "message": "as per go/lacros-tast-porting, it is likely necessary to specify what type of the browser to use for each variant. That is to be passed in to browserfixt.SetUp* to instantiate a browser based on that type - whether lacros vs. ash-chrome.",
+      "parentUuid": "27354e2e_f7b043e6",
+      "revId": "da1916c4d052a16a18c16f2cf8ff558e3ac7fef4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "387aa641_7ca7076b",
@@ -82,6 +100,24 @@
       "writtenOn": "2022-08-30T16:52:06Z",
       "side": 1,
       "message": "In our other tests, cr is the same value across lacros and ash variants (i.e MeetCUJ[1]). Do we need to distinguish between the browsers here then? can we just do `vars.cr :\u003d s.FixtValue().(chrome.HasChrome).Chrome()`\n\n[1] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go;l\u003d391",
+      "revId": "da1916c4d052a16a18c16f2cf8ff558e3ac7fef4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c35630c0_702b0a45",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-08-30T17:14:32Z",
+      "side": 1,
+      "message": "\u003e Do we need to distinguish between the browsers here then?\n\nI don\u0027t think we can use `vars.cr :\u003d s.FixtValue().(chrome.HasChrome).Chrome()` here because the ash variant tests should be migrated to using `Fixture` first.\nIt is doable for sure in that `Precondition` could easily be replaced with `Fixture` it seems. Can you or anyone on your team help with that and fix this line later?",
+      "parentUuid": "387aa641_7ca7076b",
       "revId": "da1916c4d052a16a18c16f2cf8ff558e3ac7fef4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
