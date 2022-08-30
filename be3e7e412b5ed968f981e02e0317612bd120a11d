@@ -16,6 +16,115 @@
       "message": "Hi Xiqi, this refactoring CL is ready for review.",
       "revId": "be3e7e412b5ed968f981e02e0317612bd120a11d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d413cffa_dbd5cc1d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1403852
+      },
+      "writtenOn": "2022-08-30T22:54:32Z",
+      "side": 1,
+      "message": "Thanks for working on this!! Nice refactor!",
+      "revId": "be3e7e412b5ed968f981e02e0317612bd120a11d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c35dbc1_fa7e20f1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/creation_flow.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1403852
+      },
+      "writtenOn": "2022-08-30T22:54:32Z",
+      "side": 1,
+      "message": "Not sure this timeout covers the setup fixture timeout.\nIf it is, fixture sets 2min timeout for app installation, plus line10 10s, line47 2min and LaunchAnnotator 2min, LaunchCreationFlow 2min, deleteScreencast 2min, will the timeout of sub-steps exceed this time out? Maybe increase?",
+      "range": {
+        "startLine": 33,
+        "startChar": 16,
+        "endLine": 33,
+        "endChar": 32
+      },
+      "revId": "be3e7e412b5ed968f981e02e0317612bd120a11d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1a41945_1fb13055",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/creation_flow.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1403852
+      },
+      "writtenOn": "2022-08-30T22:54:32Z",
+      "side": 1,
+      "message": "Q: why do we want to refresh the app? If we have to refresh, does it mean there\u0027s something doesn\u0027t work as expected?",
+      "range": {
+        "startLine": 63,
+        "startChar": 1,
+        "endLine": 63,
+        "endChar": 47
+      },
+      "revId": "be3e7e412b5ed968f981e02e0317612bd120a11d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5658a874_2e50d5e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/creation_flow.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1403852
+      },
+      "writtenOn": "2022-08-30T22:54:32Z",
+      "side": 1,
+      "message": "Q: Did it happen at the end of previous test? Do we want to put it at the beginning ? Since we always delete screencasts that created in test, the number of screencasts might always smaller than 3. If tutorial dialogs always shows up, do we want to move it to LaunchCreationFlow?",
+      "range": {
+        "startLine": 74,
+        "startChar": 88,
+        "endLine": 76,
+        "endChar": 66
+      },
+      "revId": "be3e7e412b5ed968f981e02e0317612bd120a11d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5489c55_f8e1b394",
+        "filename": "src/chromiumos/tast/local/chrome/projector/projector.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1403852
+      },
+      "writtenOn": "2022-08-30T22:54:32Z",
+      "side": 1,
+      "message": "In creation_flow.go line 63, we\u0027ve already refresh, do we want to refresh again?",
+      "range": {
+        "startLine": 86,
+        "startChar": 1,
+        "endLine": 86,
+        "endChar": 37
+      },
+      "revId": "be3e7e412b5ed968f981e02e0317612bd120a11d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
