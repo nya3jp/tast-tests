@@ -65,7 +65,7 @@ func AudioLoopbackLatency(ctx context.Context, s *testing.State) {
 	}
 	defer unload(ctx)
 
-	if err = audio.SetupLoopback(ctx); err != nil {
+	if err = audio.SetupLoopback(ctx, data.Chrome); err != nil {
 		s.Fatal("Failed to setup loopback device: ", err)
 	}
 

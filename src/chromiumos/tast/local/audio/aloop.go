@@ -10,6 +10,8 @@ import (
 
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/uiauto/quicksettings"
 	"chromiumos/tast/testing"
 )
 
@@ -51,7 +53,7 @@ func findDevice(ctx context.Context, devices []CrasNode, isInput bool) (CrasNode
 }
 
 // SetupLoopback sets the playback and capture device using alsa loopback device.
-func SetupLoopback(ctx context.Context) error {
+func SetupLoopback(ctx context.Context, cr *chrome.Chrome) error {
 	cras, err := NewCras(ctx)
 	if err != nil {
 		return errors.Wrap(err, "failed to create cras")
@@ -74,24 +76,25 @@ func SetupLoopback(ctx context.Context) error {
 		return errors.Wrap(err, "failed to wait for loopback devices")
 	}
 
-	audioDevices, err := cras.GetNodes(ctx)
+	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
-		return errors.Wrap(err, "failed to get nodes")
+		return errors.Errorf("failed to create Test API connection: %s", err)
 	}
 
-	playbackDevice, err := findDevice(ctx, audioDevices, false)
-	if err != nil {
-		return errors.Wrap(err, "failed to find audio device")
+	quicksettings.Show(ctx, tconn)
+	defer quicksettings.Hide(ctx, tconn)
+	// Select ALSA loopback output and input nodes as active nodes by UI.
+	if err := quicksettings.SelectAudioOption(ctx, tconn, "Loopback Playback"); err != nil {
+		return errors.Errorf("failed to select ALSA loopback output: %s", err)
 	}
-
-	captureDevice, err := findDevice(ctx, audioDevices, true)
-	if err != nil {
-		return errors.Wrap(err, "failed to find audio device")
+	// After selecting Loopback Playback, SelectAudioOption() sometimes detected that audio setting
+	// is still opened while it is actually fading out, and failed to select Loopback Capture.
+	// Call Hide() and Show() to reset the quicksettings menu first.
+	quicksettings.Hide(ctx, tconn)
+	quicksettings.Show(ctx, tconn)
+	if err := quicksettings.SelectAudioOption(ctx, tconn, "Loopback Capture"); err != nil {
+		return errors.Errorf("failed to select ALSA loopback input: %s", err)
 	}
-
-	cras.SetActiveNode(ctx, playbackDevice)
-	cras.SetActiveNode(ctx, captureDevice)
-	cras.SetOutputNodeVolume(ctx, playbackDevice, 100)
 
 	return nil
 }
