@@ -15,7 +15,9 @@ import (
 	"chromiumos/tast/local/bundles/cros/arcappcompat/pre"
 	"chromiumos/tast/local/bundles/cros/arcappcompat/testutil"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/uidetection"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -146,7 +148,7 @@ func init() {
 func Discord(ctx context.Context, s *testing.State) {
 	const (
 		appPkgName  = "com.discord"
-		appActivity = ".app.AppActivity$Main"
+		appActivity = ".main.MainActivity"
 	)
 	testSet := s.Param().(testutil.TestParams)
 	testutil.RunTestCases(ctx, s, appPkgName, appActivity, testSet)
@@ -164,14 +166,16 @@ func launchAppForDiscord(ctx context.Context, s *testing.State, tconn *chrome.Te
 		homeIconID             = "com.discord:id/tabs_host_bottom_nav_friends_item"
 		notNowID               = "android:id/autofill_save_no"
 		verifyText             = "Verify"
+		loginID                = "login_submit_button"
+		neverButtonID          = "com.google.android.gms:id/credential_save_reject"
+		captchaWord            = "skip"
 	)
 
-	// Click on sign in button.
-	signInButton := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.Text(signInText))
-	if err := signInButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
-		s.Error("SignIn Button doesn't exist: ", err)
-	} else if err := signInButton.Click(ctx); err != nil {
-		s.Fatal("Failed to click on signInButton: ", err)
+	loginButton := d.Object(ui.ClassName("android.widget.TextView"), ui.Text(signInText))
+	if err := loginButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+		s.Error("Login Button doesn't exist: ", err)
+	} else if err := loginButton.Click(ctx); err != nil {
+		s.Fatal("Failed to click on loginButton: ", err)
 	}
 
 	// Click on emailid text field until the emailid text field is focused.
@@ -231,13 +235,20 @@ func launchAppForDiscord(ctx context.Context, s *testing.State, tconn *chrome.Te
 	}
 	s.Log("Entered password")
 
-	// Click on sign in button.
-	if err := signInButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
-		s.Error("SignIn Button doesn't exist: ", err)
-	} else if err := signInButton.Click(ctx); err != nil {
-		s.Fatal("Failed to click on signInButton: ", err)
+	// Click on login button.
+	loginButton = d.Object(ui.ID(loginID))
+	if err := loginButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+		s.Error("Login Button doesn't exist: ", err)
+	} else if err := loginButton.Click(ctx); err != nil {
+		s.Fatal("Failed to click on loginButton: ", err)
 	}
-
+	// Click on never button.
+	neverButton := d.Object(ui.ID(neverButtonID))
+	if err := neverButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+		s.Log("Never Button doesn't exist: ", err)
+	} else if err := neverButton.Click(ctx); err != nil {
+		s.Fatal("Failed to click on neverButton: ", err)
+	}
 	// Click on not now button.
 	notNowButton := d.Object(ui.ID(notNowID))
 	if err := notNowButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
@@ -247,16 +258,19 @@ func launchAppForDiscord(ctx context.Context, s *testing.State, tconn *chrome.Te
 	}
 
 	// Check for captcha.
-	verifyCaptcha := d.Object(ui.TextMatches("(?i)" + verifyText))
-	if err := verifyCaptcha.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
-		s.Log("verifyCaptcha doesn't exist: ", err)
-		testutil.HandleDialogBoxes(ctx, s, d, appPkgName)
-		// Check for homePageVerifier.
-		homePageVerifier := d.Object(ui.ID(homeIconID))
-		if err := homePageVerifier.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
-			s.Fatal("homePageVerifier doesn't exist: ", err)
-		}
-	} else {
-		s.Log("Verify by reCaptcha exists")
+	ud := uidetection.NewDefault(tconn).WithTimeout(time.Minute).WithScreenshotStrategy(uidetection.ImmediateScreenshot)
+	captchaPage := uidetection.Word(captchaWord).First()
+	if err := uiauto.Combine("Check for captcha page",
+		ud.WithTimeout(testutil.ShortUITimeout).WaitUntilExists(captchaPage),
+	)(ctx); err == nil {
+		s.Log("Captcha page does exist")
+		return
+	}
+
+	testutil.HandleDialogBoxes(ctx, s, d, appPkgName)
+	// Check for homePageVerifier.
+	homePageVerifier := d.Object(ui.ID(homeIconID))
+	if err := homePageVerifier.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
+		s.Fatal("homePageVerifier doesn't exist: ", err)
 	}
 }
