@@ -973,6 +973,12 @@ func (u *CryptohomeClient) AddRecoveryAuthFactor(ctx context.Context, authSessio
 	return err
 }
 
+// AddKioskAuthFactor creates an auth factor for kiosk user.
+func (u *CryptohomeClient) AddKioskAuthFactor(ctx context.Context, authSessionID string) error {
+	_, err := u.binary.addKioskAuthFactor(ctx, authSessionID)
+	return err
+}
+
 // PrepareGuestVault prepares vault for guest session.
 func (u *CryptohomeClient) PrepareGuestVault(ctx context.Context) error {
 	_, err := u.binary.prepareGuestVault(ctx)
