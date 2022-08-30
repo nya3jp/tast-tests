@@ -56,6 +56,30 @@
       },
       "revId": "cdcb4ff345b1c3b279bbef067d53c77aaaf8cb31",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca84a129_d38c5ea8",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/printpreview/printpreview.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1541339
+      },
+      "writtenOn": "2022-08-30T19:59:07Z",
+      "side": 1,
+      "message": "It\u0027s split in two because setDropdownInternal() is used by CL 3788520 later in this CL set.",
+      "parentUuid": "4b98b8fb_b3828533",
+      "range": {
+        "startLine": 223,
+        "startChar": 0,
+        "endLine": 250,
+        "endChar": 1
+      },
+      "revId": "cdcb4ff345b1c3b279bbef067d53c77aaaf8cb31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
