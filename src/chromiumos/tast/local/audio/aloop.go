@@ -6,8 +6,10 @@ package audio
 
 import (
 	"context"
+	"time"
 
 	"chromiumos/tast/common/testexec"
+	"chromiumos/tast/errors"
 	"chromiumos/tast/testing"
 )
 
@@ -37,4 +39,59 @@ func LoadAloop(ctx context.Context) (func(ctx context.Context), error) {
 			testing.ContextLog(ctx, "Failed to start cras: ", err)
 		}
 	}, nil
+}
+
+func findDevice(ctx context.Context, devices []CrasNode, isInput bool) (CrasNode, error) {
+	for _, n := range devices {
+		if n.Type == AloopCrasNodeType && n.IsInput == isInput {
+			return n, nil
+		}
+	}
+	return CrasNode{}, errors.Errorf("cannot find device with type=%s and isInput=%v", AloopCrasNodeType, isInput)
+}
+
+// SetupLoopback sets the playback and capture device using alsa loopback device.
+func SetupLoopback(ctx context.Context) error {
+	cras, err := NewCras(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to create cras")
+	}
+
+	var playbackFound, captureFound bool
+	checkLoopbackNode := func(n *CrasNode) bool {
+		if n.Type != AloopCrasNodeType {
+			return false
+		}
+		if n.IsInput {
+			captureFound = true
+		} else {
+			playbackFound = true
+		}
+		return captureFound && playbackFound
+	}
+
+	if err = cras.WaitForDeviceUntil(ctx, checkLoopbackNode, 5*time.Second); err != nil {
+		return errors.Wrap(err, "failed to wait for loopback devices")
+	}
+
+	audioDevices, err := cras.GetNodes(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to get nodes")
+	}
+
+	playbackDevice, err := findDevice(ctx, audioDevices, false)
+	if err != nil {
+		return errors.Wrap(err, "failed to find audio device")
+	}
+
+	captureDevice, err := findDevice(ctx, audioDevices, true)
+	if err != nil {
+		return errors.Wrap(err, "failed to find audio device")
+	}
+
+	cras.SetActiveNode(ctx, playbackDevice)
+	cras.SetActiveNode(ctx, captureDevice)
+	cras.SetOutputNodeVolume(ctx, playbackDevice, 100)
+
+	return nil
 }

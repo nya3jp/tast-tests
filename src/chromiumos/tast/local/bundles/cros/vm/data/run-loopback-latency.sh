@@ -23,9 +23,8 @@ main() {
 
   local loop="$1"
   local log="$2"
-  local buffer_sizes = "$@"
+  local buffer_sizes=("${@:3}")
 
-  local buffer_sizes=(512 1024 2048 4096 8192)
   for buffer_size in "${buffer_sizes[@]}"; do
     truncate -s 0 "${log}.${buffer_size}"
     for (( i = 0; i < loop; i++ )); do
