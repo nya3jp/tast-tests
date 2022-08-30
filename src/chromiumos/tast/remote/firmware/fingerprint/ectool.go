@@ -39,6 +39,15 @@ func EctoolCommand(ctx context.Context, d *dut.DUT, args ...string) *ssh.Cmd {
 	return cmd
 }
 
+// UnmarshalEctoolFlags unmarshals part of the ectool output into a flags.
+func UnmarshalEctoolFlags(data string) (uint32, error) {
+	flags, err := strconv.ParseUint(data, 0, 32)
+	if err != nil {
+		return 0, errors.Wrapf(err, "failed to convert ectool flags (%q) to unsigned integer", data)
+	}
+	return uint32(flags), nil
+}
+
 // RollbackState is the state of the anti-rollback block.
 type RollbackState struct {
 	BlockID    int
