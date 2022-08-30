@@ -25,7 +25,7 @@ func init() {
 		Func:         DevModeFwScreen,
 		Desc:         "Verify the functionality of Ctrl+D while on the dev screen",
 		Contacts:     []string{"cienet-firmware@cienet.corp-partner.google.com", "chromeos-firmware@google.com"},
-		Attr:         []string{"group:firmware"},
+		Attr:         []string{"group:firmware", "firmware_unstable"},
 		SoftwareDeps: []string{"crossystem"},
 		Fixture:      fixture.DevMode,
 		Timeout:      20 * time.Minute,
