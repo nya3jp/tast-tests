@@ -33,6 +33,24 @@
       "message": "nit: remove blank line",
       "revId": "686f1af509c362a3679c343c98c5173f4882d2ac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d047134_e84208f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/check_signal_quality.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1487102
+      },
+      "writtenOn": "2022-08-30T16:53:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ead801ce_81bddc18",
+      "revId": "686f1af509c362a3679c343c98c5173f4882d2ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
