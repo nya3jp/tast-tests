@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2797cf7f_12e63329",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-08-30T05:58:58Z",
+      "side": 1,
+      "message": "Hi there, this sounds a new CUJ?\n\nCan you share me the CUJ ",
+      "revId": "dc7f966a41b9ead22b5ee52a1f681dda16862aee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea044e00_f3855f5c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/spera/edu_cast_to_class.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-08-30T05:58:58Z",
+      "side": 1,
+      "message": "Is this the same as targetResolution variable? Please avoid hard code the same value.",
+      "range": {
+        "startLine": 80,
+        "startChar": 11,
+        "endLine": 80,
+        "endChar": 16
+      },
+      "revId": "dc7f966a41b9ead22b5ee52a1f681dda16862aee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "659c0d66_45caf0ca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/spera/edu_cast_to_class.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-08-30T05:58:58Z",
+      "side": 1,
+      "message": "optional: I have seen this piece of code multiple times in CUJ testing. Do we have a better way to reuse the code?",
+      "range": {
+        "startLine": 99,
+        "startChar": 1,
+        "endLine": 113,
+        "endChar": 2
+      },
+      "revId": "dc7f966a41b9ead22b5ee52a1f681dda16862aee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0eb7acad_dd5bb5fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/spera/edu_cast_to_class.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-08-30T05:58:58Z",
+      "side": 1,
+      "message": "nit: please do not omit err info.",
+      "range": {
+        "startLine": 174,
+        "startChar": 39,
+        "endLine": 174,
+        "endChar": 43
+      },
+      "revId": "dc7f966a41b9ead22b5ee52a1f681dda16862aee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c233fe0_8fefc9ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/spera/edu_cast_to_class.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-08-30T05:58:58Z",
+      "side": 1,
+      "message": "This is very confusing. Where is the err from? Is there any reason not to use `s.HasError()`",
+      "range": {
+        "startLine": 205,
+        "startChar": 81,
+        "endLine": 205,
+        "endChar": 84
+      },
+      "revId": "dc7f966a41b9ead22b5ee52a1f681dda16862aee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5729afad_e16b2057",
+        "filename": "src/chromiumos/tast/local/bundles/cros/spera/edu_cast_to_class.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-08-30T05:58:58Z",
+      "side": 1,
+      "message": "Nit: I have not checked inside the actual action called. But it does not make sense that the description is `check` while the function is `reset`",
+      "range": {
+        "startLine": 212,
+        "startChar": 27,
+        "endLine": 212,
+        "endChar": 31
+      },
+      "revId": "dc7f966a41b9ead22b5ee52a1f681dda16862aee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
