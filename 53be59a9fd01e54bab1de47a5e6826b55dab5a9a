@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d267c1c1_1573a843",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_usb_ports.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1427718
+      },
+      "writtenOn": "2022-08-30T12:20:33Z",
+      "side": 1,
+      "message": "fixed",
+      "parentUuid": "52f95e7e_ec3e3171",
+      "range": {
+        "startLine": 164,
+        "startChar": 25,
+        "endLine": 164,
+        "endChar": 31
+      },
+      "revId": "53be59a9fd01e54bab1de47a5e6826b55dab5a9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
