@@ -42,6 +42,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "989a00b0_b0518adf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shimlessrma/app_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1531792
+      },
+      "writtenOn": "2022-08-30T01:52:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a3d9f9cc_1016cc4c",
+      "revId": "a10bb177d04a4181679934ea638b8d251a18ebd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d51c7319_5d98838f",
@@ -55,6 +73,24 @@
       "writtenOn": "2022-08-29T00:09:06Z",
       "side": 1,
       "message": "I think you should use offlineLogFile constant instead",
+      "revId": "a10bb177d04a4181679934ea638b8d251a18ebd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "50c8e03e_5d061f10",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shimlessrma/app_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1531792
+      },
+      "writtenOn": "2022-08-30T01:52:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d51c7319_5d98838f",
       "revId": "a10bb177d04a4181679934ea638b8d251a18ebd3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -76,6 +112,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a629a59_eed26560",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shimlessrma/app_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1531792
+      },
+      "writtenOn": "2022-08-30T01:52:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a3a9bc28_d2a8d477",
+      "revId": "a10bb177d04a4181679934ea638b8d251a18ebd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6c3ca2aa_4adcf8ff",
@@ -93,6 +147,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6a90f3d_97a2c2f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shimlessrma/app_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1531792
+      },
+      "writtenOn": "2022-08-30T01:52:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6c3ca2aa_4adcf8ff",
+      "revId": "a10bb177d04a4181679934ea638b8d251a18ebd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "43c11499_4d053390",
@@ -106,6 +178,24 @@
       "writtenOn": "2022-08-29T00:09:06Z",
       "side": 1,
       "message": "I think it\u0027s better to move google.com to constants",
+      "revId": "a10bb177d04a4181679934ea638b8d251a18ebd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e88f1820_16e123ac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shimlessrma/app_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1531792
+      },
+      "writtenOn": "2022-08-30T01:52:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "43c11499_4d053390",
       "revId": "a10bb177d04a4181679934ea638b8d251a18ebd3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -129,6 +219,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ddcf46cc_ca26024d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/os_update.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1531792
+      },
+      "writtenOn": "2022-08-30T01:52:12Z",
+      "side": 1,
+      "message": "In WelcomeAndNetworkPageOperationOffline, we keep 10 seconds separately to recover Ethernet. WelcomeAndNetworkPageOperationOffline shouldn\u0027t use more than 2 minutes. However, even it takes longer than it, we are still able to recover Ethernet and test result will fail because we don\u0027t write Success to offline log.\n\nAlso I don\u0027t think context.Shorten make difference in this case.",
+      "parentUuid": "ecb18245_c1cb64a9",
+      "revId": "a10bb177d04a4181679934ea638b8d251a18ebd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f169ffb4_d63e4e02",
         "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/rmaweb/ui.go",
         "patchSetId": 2
@@ -141,6 +249,30 @@
       "side": 1,
       "message": "\u003e \"successfuly\" is a possible misspelling of \"successfully\".\n\nPlease fix.",
       "parentUuid": "3cd62c2f_405318ed",
+      "range": {
+        "startLine": 109,
+        "startChar": 66,
+        "endLine": 109,
+        "endChar": 77
+      },
+      "revId": "a10bb177d04a4181679934ea638b8d251a18ebd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "84f26ce5_1d12ad8f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/rmaweb/ui.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1531792
+      },
+      "writtenOn": "2022-08-30T01:52:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f169ffb4_d63e4e02",
       "range": {
         "startLine": 109,
         "startChar": 66,
