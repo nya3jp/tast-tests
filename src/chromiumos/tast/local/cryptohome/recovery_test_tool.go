@@ -35,6 +35,7 @@ const (
 	epochResponseFile                    = "epoch_response"
 	mediatorPubKeyFile                   = "mediator_pub_key"
 	customMediatorPubKeyFile             = "custom_mediator_pub_key"
+	recoveryIDFile                       = "recovery_id"
 )
 
 // RecoveryTestTool is a command line test tool for cryptohome recovery testing.
@@ -164,6 +165,7 @@ func (c *RecoveryTestTool) CreateHsmPayload(ctx context.Context) error {
 		c.getFileParam("channel_priv_key_out_file", channelPrivKeyFile),
 		c.getFileParam("serialized_hsm_payload_out_file", hsmPayloadFile),
 		c.getFileParam("recovery_secret_out_file", recoverySecretCreatedFile),
+		c.getFileParam("recovery_id_file", recoveryIDFile),
 	}
 
 	if !c.useFakeMediator() {
