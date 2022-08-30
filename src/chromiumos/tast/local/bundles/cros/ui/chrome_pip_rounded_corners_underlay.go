@@ -24,6 +24,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/pointer"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/chrome/webutil"
+	"chromiumos/tast/local/coords"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -153,7 +154,7 @@ func ChromePIPRoundedCornersUnderlay(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get the PIP window location (before resize): ", err)
 	}
 
-	if err := pc.Drag(pipWindowBounds.TopLeft(), pc.DragTo(info.WorkArea.TopLeft(), time.Second))(ctx); err != nil {
+	if err := pc.Drag(pipWindowBounds.TopLeft().Add(coords.NewPoint(1, 1)), pc.DragTo(info.WorkArea.TopLeft(), time.Second))(ctx); err != nil {
 		s.Fatal("Failed to resize the PIP window: ", err)
 	}
 
