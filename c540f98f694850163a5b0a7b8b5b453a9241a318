@@ -37,6 +37,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "587a4ffe_3de97102",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 23
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1545012
+      },
+      "writtenOn": "2022-08-30T02:19:32Z",
+      "side": 1,
+      "message": "The commit message says \"TEST\u003dtast unit test passed.\"\n\nI ran the Tast unit tests and they do pass, but I do not see any unit test for any of the wwcb directory content.  Are there unit tests written that have not been checked in?",
+      "revId": "c540f98f694850163a5b0a7b8b5b453a9241a318",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "14c8d9a0_fd763fdb",
         "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/wwcb_fixture.go",
         "patchSetId": 23
