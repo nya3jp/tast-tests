@@ -50,6 +50,40 @@
       "message": "PTAL Navin",
       "revId": "da1916c4d052a16a18c16f2cf8ff558e3ac7fef4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27354e2e_f7b043e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-08-30T16:52:06Z",
+      "side": 1,
+      "message": "If you rebase, you\u0027ll see that `Tracing` will no longer be in `TabSwitchParam`. After your change, (esp if we don\u0027t do the switch statement in the next comment), `BrowserType` will also be unused. Thus we\u0027d have an entire Param struct just for 1 field, validation.\n\nI think we should remove browser type from this struct (as long as my comment below works). Let\u0027s keep the param struct for now in this CL even if its 1 field, because it will at least help for dev later down the line if we need more criteria for the test.",
+      "revId": "da1916c4d052a16a18c16f2cf8ff558e3ac7fef4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "387aa641_7ca7076b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-08-30T16:52:06Z",
+      "side": 1,
+      "message": "In our other tests, cr is the same value across lacros and ash variants (i.e MeetCUJ[1]). Do we need to distinguish between the browsers here then? can we just do `vars.cr :\u003d s.FixtValue().(chrome.HasChrome).Chrome()`\n\n[1] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go;l\u003d391",
+      "revId": "da1916c4d052a16a18c16f2cf8ff558e3ac7fef4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

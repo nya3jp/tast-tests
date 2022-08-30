@@ -22,6 +22,30 @@
       },
       "revId": "9a28ee22b7ca51d409b86d8918aa3249420861e2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3ef186b_1d28952b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tab_switch_cuj_recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-08-30T16:52:06Z",
+      "side": 1,
+      "message": "This test does not need migration to Lacros. I wouldn\u0027t put the comment `unused test` though, I think its purpose is a supporter for TabSwitchCUJ? To quote @xiyuan \n\n`\nIt is used to record all web traffic via wpr so that later TabSwitchCUJ could run without really talking to real sites\n`",
+      "parentUuid": "9518fcf4_22cd284f",
+      "range": {
+        "startLine": 20,
+        "startChar": 24,
+        "endLine": 20,
+        "endChar": 61
+      },
+      "revId": "9a28ee22b7ca51d409b86d8918aa3249420861e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
