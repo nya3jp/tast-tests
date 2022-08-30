@@ -104,7 +104,7 @@ func Mtab(ctx context.Context, s *testing.State) {
 		"/run/arc/sdcard":          {nil, "tmpfs", defaultRO + ",mode=755"},
 		"/run/arc/shared_mounts":   {nil, "tmpfs", defaultRW + ",mode=755"},
 		"/run/arc/debugfs/sync":    {nil, "debugfs", defaultRW + ",gid=605,mode=750"},
-		"/run/arc/debugfs/tracing": {nil, "debugfs,tracefs", defaultRW},
+		"/run/arc/debugfs/tracing": {nil, "debugfs,tracefs", defaultRW + ",mode=755"},
 		"/run/chromeos-config/v1":  {nil, "tmpfs", defaultRO},
 		"/run/debugfs_gpu":         {nil, "debugfs", defaultRW + ",gid=605,mode=750"}, // debugfs-access
 		"/run/imageloader":         {nil, "tmpfs", defaultRW + ",mode=755"},
@@ -112,9 +112,11 @@ func Mtab(ctx context.Context, s *testing.State) {
 		"/run/netns":               {nil, "tmpfs", defaultRW + ",mode=755"},
 		"/run/lock":                {nil, "tmpfs", defaultRW + ",mode=755"},
 
-		"/sys/fs/cgroup":    {nil, "tmpfs", defaultRW + ",mode=755"},
-		"/sys/fs/selinux":   {nil, "selinuxfs", "rw,nosuid,noexec"},
-		"/sys/kernel/debug": {nil, "debugfs", defaultRW + ",gid=605,mode=750"},
+		"/sys/fs/cgroup":            {nil, "tmpfs", defaultRW + ",mode=755"},
+		"/sys/fs/selinux":           {nil, "selinuxfs", "rw,nosuid,noexec"},
+		"/sys/kernel/debug":         {nil, "debugfs", defaultRW + ",gid=605,mode=750"},
+		"/sys/kernel/debug/tracing": {nil, "tracefs", defaultRW + ",mode=755"},
+		"/sys/kernel/tracing":       {nil, "tracefs", defaultRW + ",mode=755"},
 
 		"/usr/share/chromeos-assets/quickoffice/_platform_specific": {loopDev, "squashfs", defaultRO},
 		"/usr/share/chromeos-assets/speech_synthesis/patts":         {loopDev, "squashfs", "nodev,nosuid"},
