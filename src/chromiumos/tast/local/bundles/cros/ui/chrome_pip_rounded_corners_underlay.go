@@ -24,6 +24,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/pointer"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/chrome/webutil"
+	"chromiumos/tast/local/coords"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -153,7 +154,12 @@ func ChromePIPRoundedCornersUnderlay(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get the PIP window location (before resize): ", err)
 	}
 
-	if err := pc.Drag(pipWindowBounds.TopLeft(), pc.DragTo(info.WorkArea.TopLeft(), time.Second))(ctx); err != nil {
+	// Drag to resize the PIP window. Begin at an offset from the
+	// corner, to ensure that for touch input (which is used by this
+	// test on devices that default to tablet mode), when the
+	// coordinates are converted to input.TouchCoord, the rounding
+	// error will not perturb the point out of the PIP window bounds.
+	if err := pc.Drag(pipWindowBounds.TopLeft().Add(coords.NewPoint(1, 1)), pc.DragTo(info.WorkArea.TopLeft(), time.Second))(ctx); err != nil {
 		s.Fatal("Failed to resize the PIP window: ", err)
 	}
 
