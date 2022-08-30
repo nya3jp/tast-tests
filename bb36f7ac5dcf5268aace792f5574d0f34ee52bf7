@@ -22,6 +22,30 @@
       },
       "revId": "bb36f7ac5dcf5268aace792f5574d0f34ee52bf7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "181dccac_1fcd18d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/stateful_files.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1527467
+      },
+      "writtenOn": "2022-08-30T00:43:05Z",
+      "side": 1,
+      "message": "When Lacros\u0027s crash dumps are saved in the cryptohome, the directory name is `crash_dumps`, so I\u0027m  mirroring that.",
+      "parentUuid": "9004c50f_84a1f7ca",
+      "range": {
+        "startLine": 109,
+        "startChar": 52,
+        "endLine": 109,
+        "endChar": 63
+      },
+      "revId": "bb36f7ac5dcf5268aace792f5574d0f34ee52bf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
