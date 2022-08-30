@@ -103,6 +103,24 @@
       "parentUuid": "14c8d9a0_fd763fdb",
       "revId": "c540f98f694850163a5b0a7b8b5b453a9241a318",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "035fcc9e_f58e3a3b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/wwcb_fixture.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1545012
+      },
+      "writtenOn": "2022-08-30T02:59:52Z",
+      "side": 1,
+      "message": "Misread, nothing needed, thanks!",
+      "parentUuid": "75bed92e_5bfcf8b7",
+      "revId": "c540f98f694850163a5b0a7b8b5b453a9241a318",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
