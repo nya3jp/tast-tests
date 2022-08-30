@@ -75,6 +75,21 @@ func (c *Config) Class() string {
 	return shillconst.SecurityPSK
 }
 
+// PSK returns the passphrase for WPA network.
+func (c *Config) PSK() string {
+	return c.psk
+}
+
+// Ciphers2 returns WPA2 ciphers of the network.
+func (c *Config) Ciphers2() string {
+	var ciphersstr []string
+	for _, cipher := range c.ciphers2 {
+		ciphersstr = append(ciphersstr, string(cipher))
+	}
+
+	return string(strings.Join(ciphersstr, " "))
+}
+
 // HostapdConfig returns hostapd config of WPA network.
 func (c *Config) HostapdConfig() (map[string]string, error) {
 	var ret = make(map[string]string)
