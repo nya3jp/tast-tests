@@ -1,0 +1,52 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8cf69280_8d9c37a5",
+        "filename": "src/chromiumos/tast/services/cros/shimlessrma/app_service.pb.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 865,
+      "author": {
+        "id": 1531792
+      },
+      "writtenOn": "2022-08-30T02:00:39Z",
+      "side": 1,
+      "message": "\u003e \"firmare\" is a possible misspelling of \"firmware\".\n\nPlease fix.",
+      "parentUuid": "4a0491c2_10a9aadf",
+      "range": {
+        "startLine": 865,
+        "startChar": 11,
+        "endLine": 865,
+        "endChar": 18
+      },
+      "revId": "17c3139882f5faf08e88046abe63ba8f4cc65c57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8fc7ee3_8f4b4ad9",
+        "filename": "src/chromiumos/tast/services/cros/shimlessrma/app_service.pb.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1031,
+      "author": {
+        "id": 1531792
+      },
+      "writtenOn": "2022-08-30T02:00:39Z",
+      "side": 1,
+      "message": "\u003e \"firmare\" is a possible misspelling of \"firmware\".\n\nPlease fix.",
+      "parentUuid": "75684583_96466eff",
+      "range": {
+        "startLine": 1031,
+        "startChar": 11,
+        "endLine": 1031,
+        "endChar": 18
+      },
+      "revId": "17c3139882f5faf08e88046abe63ba8f4cc65c57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
