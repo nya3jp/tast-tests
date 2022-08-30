@@ -16,6 +16,24 @@
       "message": "Hi Eric, in go/retiring-old-informational-tests-2022, I marked this VM variant is okay to be deleted, but P is not. why it\u0027s deleted?",
       "revId": "aa860db6efde8f398d15d96a98d2ffde4df57df8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff7e8cfa_898de123",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/surface_insets.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1515645
+      },
+      "writtenOn": "2022-08-30T01:23:08Z",
+      "side": 0,
+      "message": "Sorry- that was my miss when filtering out tests. Let me chat with you offline on this. Given that there\u0027s likely no chance this will be promoted, we can move this to another test suite instead.",
+      "parentUuid": "b161399f_2e56b3a4",
+      "revId": "aa860db6efde8f398d15d96a98d2ffde4df57df8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
