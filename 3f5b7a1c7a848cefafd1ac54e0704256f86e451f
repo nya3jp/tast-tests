@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "759ab2ce_8cc38c63",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/kiosk_with_prepare_credential_api.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-08-30T03:45:28Z",
+      "side": 1,
+      "message": "nit: Maybe move these two lines up to group them with `ctxForCleanUp :\u003d ctx` line together.",
+      "range": {
+        "startLine": 42,
+        "startChar": 47,
+        "endLine": 44,
+        "endChar": 15
+      },
+      "revId": "3f5b7a1c7a848cefafd1ac54e0704256f86e451f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a4f3327_5c5d4ef0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/kiosk_with_prepare_credential_api.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-08-30T03:45:28Z",
+      "side": 1,
+      "message": "nit: keep the style same at least in this file, either `/*var_name\u003d*/` or `/*var_name*/`.",
+      "range": {
+        "startLine": 63,
+        "startChar": 75,
+        "endLine": 63,
+        "endChar": 84
+      },
+      "revId": "3f5b7a1c7a848cefafd1ac54e0704256f86e451f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "223fe72c_acb1aa1a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/kiosk_with_prepare_credential_api.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-08-30T03:45:28Z",
+      "side": 1,
+      "message": "should this be ctxForCleanUp?",
+      "range": {
+        "startLine": 67,
+        "startChar": 36,
+        "endLine": 67,
+        "endChar": 39
+      },
+      "revId": "3f5b7a1c7a848cefafd1ac54e0704256f86e451f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a842d79a_0d23359b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/kiosk_with_prepare_credential_api.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-08-30T03:45:28Z",
+      "side": 1,
+      "message": "Should this be `Error`? If this is kind of expected, maybe change the log msg (\"Failed to\" sounds like an unexpected error)?",
+      "range": {
+        "startLine": 93,
+        "startChar": 4,
+        "endLine": 93,
+        "endChar": 7
+      },
+      "revId": "3f5b7a1c7a848cefafd1ac54e0704256f86e451f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d69bd855_0debacd8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/kiosk_with_prepare_credential_api.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-08-30T03:45:28Z",
+      "side": 1,
+      "message": "ctxForCleanUp?",
+      "range": {
+        "startLine": 102,
+        "startChar": 36,
+        "endLine": 102,
+        "endChar": 39
+      },
+      "revId": "3f5b7a1c7a848cefafd1ac54e0704256f86e451f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbf73f79_4d9d6758",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/kiosk_with_prepare_credential_api.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-08-30T03:45:28Z",
+      "side": 1,
+      "message": "nit: `err :\u003d`",
+      "range": {
+        "startLine": 104,
+        "startChar": 8,
+        "endLine": 104,
+        "endChar": 9
+      },
+      "revId": "3f5b7a1c7a848cefafd1ac54e0704256f86e451f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ecffa8f8_d18b0c97",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/kiosk_with_prepare_credential_api.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-08-30T03:45:28Z",
+      "side": 1,
+      "message": "nit: `:\u003d`",
+      "range": {
+        "startLine": 139,
+        "startChar": 8,
+        "endLine": 139,
+        "endChar": 9
+      },
+      "revId": "3f5b7a1c7a848cefafd1ac54e0704256f86e451f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bcea2270_118c778f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/kiosk_with_prepare_credential_api.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-08-30T03:45:28Z",
+      "side": 1,
+      "message": "ctxForCleanUp",
+      "range": {
+        "startLine": 142,
+        "startChar": 36,
+        "endLine": 142,
+        "endChar": 39
+      },
+      "revId": "3f5b7a1c7a848cefafd1ac54e0704256f86e451f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
