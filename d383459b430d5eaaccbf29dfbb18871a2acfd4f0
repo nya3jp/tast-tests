@@ -33,6 +33,24 @@
       "message": "I think this means the test will not run on e.g. coral, even though it should.",
       "revId": "d383459b430d5eaaccbf29dfbb18871a2acfd4f0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "754a7117_2a91cf06",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/shill_cellular_enable_and_connect.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1441092
+      },
+      "writtenOn": "2022-08-30T19:38:58Z",
+      "side": 1,
+      "message": "True, but there is no easy way as of now to differentiate between cellular and non-cellular sku\u0027s using HWdeps. I can add a check with the labels to see if we are in cellular-pool",
+      "parentUuid": "d1ef31ea_26763029",
+      "revId": "d383459b430d5eaaccbf29dfbb18871a2acfd4f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
