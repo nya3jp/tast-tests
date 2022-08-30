@@ -6,13 +6,16 @@ package manager
 
 import (
 	"context"
+	"fmt"
+	"net"
+	"strings"
 	"sync"
 	"time"
 
 	"github.com/golang/protobuf/ptypes/empty"
 
+	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/exec"
 	"chromiumos/tast/rpc"
 	"chromiumos/tast/services/cros/cellular"
 	"chromiumos/tast/services/cros/ui"
@@ -26,6 +29,7 @@ const (
 	tearDownTimeout = 2 * time.Minute
 	resetTimeout    = 1 * time.Second
 	postTestTimeout = 1 * time.Second
+	testURL         = "google.com"
 )
 
 func init() {
@@ -63,15 +67,21 @@ type fixtureVars struct {
 
 // SetUp sets up the test fixture and connects to the CallboxManager.
 func (tf *TestFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
+	dut := s.DUT()
+
 	// Parse Vars
-	if callbox, ok := s.Var("callbox"); ok && callbox != "" {
-		testing.ContextLog(ctx, "callbox: ", callbox)
-		tf.Vars.Callbox = callbox
-	} else {
-		// Will be replaced with DUT metadata lookup
-		tf.Vars.Callbox = "chromeos1-donutlab-callbox1.cros"
-		testing.ContextLogf(ctx, "No callbox specified, defaulting to %s", tf.Vars.Callbox)
+	callbox, ok := s.Var("callbox")
+	if !ok || callbox == "" {
+		testing.ContextLog(ctx, "No callbox specified, deducing from DUT name")
+		var err error
+		callbox, err = callboxHostName(dut)
+		if err != nil {
+			s.Fatal("Failed to determine callbox hostname: ", err)
+		}
 	}
+	tf.Vars.Callbox = callbox
+	testing.ContextLogf(ctx, "Using callbox: %q", tf.Vars.Callbox)
+
 	callboxManager, ok := s.Var("callboxManager")
 	if !ok {
 		testing.ContextLog(ctx, "No callboxManager specified, defaulting to lookup")
@@ -85,8 +95,6 @@ func (tf *TestFixture) SetUp(ctx context.Context, s *testing.FixtState) interfac
 		testing.ContextLogf(ctx, "callboxManager: %s (deduced from callbox)", callboxManager)
 		tf.Vars.CallboxManager = callboxManager
 	}
-
-	dut := s.DUT()
 
 	// Initialize CallboxManagerClient
 	if tf.Vars.CallboxManager == labProxyHostname {
@@ -116,11 +124,20 @@ func (tf *TestFixture) SetUp(ctx context.Context, s *testing.FixtState) interfac
 	tf.rpcClient = cl
 
 	tf.ChromeServiceClient = ui.NewChromeServiceClient(cl.Conn)
-	if _, err := tf.ChromeServiceClient.New(ctx, &ui.NewRequest{}); err != nil {
-		s.Fatal("Failed to start Chrome: ", err)
-	}
+	/*
+		if _, err := tf.ChromeServiceClient.New(ctx, &ui.NewRequest{}); err != nil {
+			s.Fatal("Failed to start Chrome: ", err)
+		}
+	*/
 
 	tf.RemoteCellularClient = cellular.NewRemoteCellularServiceClient(cl.Conn)
+	if _, err := tf.RemoteCellularClient.SetUp(ctx, &empty.Empty{}); err != nil {
+		s.Fatal("Failed to initialize cellular shill service on DUT: ", err)
+	}
+	if _, err := tf.RemoteCellularClient.SetUp(ctx, &empty.Empty{}); err != nil {
+		s.Fatal("Failed to initialize DUT: ", err)
+	}
+
 	if resp, err := tf.RemoteCellularClient.QueryInterface(ctx, &empty.Empty{}); err != nil {
 		s.Fatal("Failed to query cellular interface: ", err)
 	} else {
@@ -134,7 +151,7 @@ func (tf *TestFixture) SetUp(ctx context.Context, s *testing.FixtState) interfac
 // ConnectToCallbox function handles initial test setup and wraps parameters.
 func (tf *TestFixture) ConnectToCallbox(ctx context.Context, dutConn *ssh.Conn, configureRequestBody *ConfigureCallboxRequestBody) error {
 	// Disable and then re-enable cellular on DUT.
-	if err := dutConn.CommandContext(ctx, "dbus-send", "--system", "--fixed", "--print-reply", "--dest=org.chromium.flimflam", "/", "org.chromium.flimflam.Manager.DisableTechnology", "string:cellular").Run(exec.DumpLogOnError); err != nil {
+	if _, err := tf.RemoteCellularClient.Disable(ctx, &empty.Empty{}); err != nil {
 		return errors.Wrap(err, "failed to disable DUT cellular")
 	}
 
@@ -155,15 +172,8 @@ func (tf *TestFixture) ConnectToCallbox(ctx context.Context, dutConn *ssh.Conn, 
 	}()
 	// TODO(b/229419538): Add functionality to callbox libraries to pull state
 	testing.Sleep(ctx, time.Second*10)
-	// Turn on mobile data to force a connection.
-	if err := dutConn.CommandContext(ctx, "dbus-send", "--system", "--fixed", "--print-reply", "--dest=org.chromium.flimflam", "/", "org.chromium.flimflam.Manager.EnableTechnology", "string:cellular").Run(exec.DumpLogOnError); err != nil {
+	if _, err := tf.RemoteCellularClient.Enable(ctx, &empty.Empty{}); err != nil {
 		return errors.Wrap(err, "failed to enable DUT cellular")
-	}
-	// Required due to bug using esim as primary, see b/229421807.
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		return dutConn.CommandContext(ctx, "mmcli", "-m", "any", "--set-primary-sim-slot=2").Run(exec.DumpLogOnError)
-	}, &testing.PollOptions{Interval: time.Second * 5, Timeout: time.Second * 15}); err != nil {
-		return errors.Wrap(err, "failed to switch primary sim")
 	}
 
 	wg.Wait()
@@ -172,13 +182,68 @@ func (tf *TestFixture) ConnectToCallbox(ctx context.Context, dutConn *ssh.Conn, 
 		return <-errCh
 	}
 
+	// test cellular data by curling website,
+	curlArgs := []string{"-m", "5", "--interface", tf.InterfaceName, testURL}
+	retryCount := 0
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		_, err := dutConn.CommandContext(ctx, "curl", "--interface", tf.InterfaceName, "google.com").Output()
-		return err
-	}, &testing.PollOptions{Interval: time.Second * 10, Timeout: time.Second * 200}); err != nil {
-		return errors.Wrapf(err, "failed to curl  %q on DUT using cellular interface", "www.google.com")
+		// first time will just be connecting as we will be attached but not connected
+		if err := tf.ToggleConnection(ctx); err != nil {
+			return errors.Wrap(err, "failed to toggle cellular connection")
+		}
+
+		retryCount++
+		testing.ContextLogf(ctx, "curling %q attempt: %d", testURL, retryCount)
+		if _, err := dutConn.CommandContext(ctx, "curl", curlArgs...).Output(); err != nil {
+			return err
+		}
+
+		return nil
+	}, &testing.PollOptions{Interval: time.Second, Timeout: time.Second * 200}); err != nil {
+		return errors.Wrapf(err, "failed curl %q on DUT using cellular interface", "google.com")
 	}
 	return nil
+}
+
+// ToggleConnection disconnects and reconnects to the default cellular service.
+func (tf *TestFixture) ToggleConnection(ctx context.Context) error {
+	if resp, err := tf.RemoteCellularClient.QueryService(ctx, &empty.Empty{}); err != nil {
+		return errors.Wrap(err, "failed to query cellular service status")
+	} else if resp.IsConnected {
+		if _, err := tf.RemoteCellularClient.Disconnect(ctx, &empty.Empty{}); err != nil {
+			return errors.Wrap(err, "failed to disconnect from cellular service")
+		}
+	}
+	if _, err := tf.RemoteCellularClient.Connect(ctx, &empty.Empty{}); err != nil {
+		return errors.Wrap(err, "failed to connect to cellular service")
+	}
+	return nil
+}
+
+// callboxHostName derives the hostname of the callbox from the dut's hostname.
+//
+// callbox DUT names follow the convention <callbox>-host<n> e.g. "chromeos1-donutlab-callbox1-host1"
+func callboxHostName(dut *dut.DUT) (string, error) {
+	dutHost := dut.HostName()
+	if host, _, err := net.SplitHostPort(dutHost); err == nil {
+		dutHost = host
+	}
+
+	if dutHost == "localhost" {
+		return "", errors.Errorf("unable to infer callbox hostname from: %q, localhost not supported", dut.HostName())
+	}
+
+	if ip := net.ParseIP(dutHost); ip != nil {
+		return "", errors.Errorf("unable to infer callbox hostname from: %q, ip:port format not supported", dut.HostName())
+	}
+
+	hostname := strings.Split(dutHost, "-")
+	if len(hostname) < 2 {
+		return "", errors.Errorf("unable to infer callbox hostname from: %q, unknown name format", dut.HostName())
+	}
+
+	// CallboxManager expects callbox hostnames to end in .cros
+	hostname = hostname[0 : len(hostname)-1]
+	return fmt.Sprintf("%s.cros", strings.Join(hostname, "-")), nil
 }
 
 var callboxManagerByCallboxLookup = map[string]string{
@@ -195,19 +260,20 @@ func callboxManagerByCallbox(callbox string) string {
 	return ""
 }
 
-// Reset does nothing currently, but is required for the test fixture.
+// Reset resets the DUT cellular environment.
 func (tf *TestFixture) Reset(ctx context.Context) error {
+	if _, err := tf.RemoteCellularClient.Reinit(ctx, &empty.Empty{}); err != nil {
+		return errors.Wrap(err, "failed to reinit cellular client")
+	}
 	return nil
 }
 
 // PreTest does nothing currently, but is required for the test fixture.
 func (tf *TestFixture) PreTest(ctx context.Context, s *testing.FixtTestState) {
-
 }
 
 // PostTest does nothing currently, but is required for the test fixture.
 func (tf TestFixture) PostTest(ctx context.Context, s *testing.FixtTestState) {
-
 }
 
 // TearDown releases resources held open by the test fixture.
@@ -216,6 +282,10 @@ func (tf *TestFixture) TearDown(ctx context.Context, s *testing.FixtState) {
 		if err := tf.fcm.Close(ctx); err != nil {
 			s.Error("Failed to close tunnel to CallboxManager: ", err)
 		}
+	}
+
+	if _, err := tf.RemoteCellularClient.TearDown(ctx, &empty.Empty{}); err != nil {
+		s.Error("Failed to tear down cellular remote service: ", err)
 	}
 
 	if _, err := tf.ChromeServiceClient.Close(ctx, &empty.Empty{}); err != nil {
