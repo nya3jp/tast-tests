@@ -643,6 +643,11 @@ func (m *Manager) SetDNSProxyDOHProviders(ctx context.Context, url string, ns []
 	}).Err
 }
 
+// SetServiceOrder sets the service priority that shill should use.
+func (m *Manager) SetServiceOrder(ctx context.Context, order string) error {
+	return m.Call(ctx, "SetServiceOrder", order).Err
+}
+
 // EnablePortalDetection will enable portal detection for the default technologies.
 // This is useful for portal detection testing which uses the shillReset test fixture,
 // as a shill reset will remove the default profile which makes it so no technologies
