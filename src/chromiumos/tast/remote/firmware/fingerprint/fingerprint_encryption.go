@@ -7,7 +7,6 @@ package fingerprint
 import (
 	"context"
 	"regexp"
-	"strconv"
 
 	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
@@ -27,15 +26,6 @@ const (
 // IsSet checks if the given flags are set.
 func (f EncryptionStatusFlags) IsSet(flags EncryptionStatusFlags) bool {
 	return (f & flags) == flags
-}
-
-// unmarshalEctoolFlags unmarshals part of the ectool output into a EncryptionStatusFlags.
-func unmarshalEctoolFlags(data string) (EncryptionStatusFlags, error) {
-	flags, err := strconv.ParseUint(data, 0, 32)
-	if err != nil {
-		return 0, errors.Wrapf(err, "failed to convert encryption status flags (%s) to int", data)
-	}
-	return EncryptionStatusFlags(flags), nil
 }
 
 // EncryptionStatus hold the state of encryption engine from an FPMCU.
@@ -60,7 +50,7 @@ func unmarshalEctoolEncryptionStatus(data string) (EncryptionStatus, error) {
 	if result == nil || len(result) != 2 {
 		return EncryptionStatus{}, errors.Errorf("can't find current encryption status flags in %q", data)
 	}
-	current, err := unmarshalEctoolFlags(result[1])
+	current, err := UnmarshalEctoolFlags(result[1])
 	if err != nil {
 		return EncryptionStatus{}, errors.Wrap(err, "failed to unmarshal current flags")
 	}
@@ -69,12 +59,12 @@ func unmarshalEctoolEncryptionStatus(data string) (EncryptionStatus, error) {
 	if result == nil || len(result) != 2 {
 		return EncryptionStatus{}, errors.Errorf("can't find valid encryption status flags in %q", data)
 	}
-	valid, err := unmarshalEctoolFlags(result[1])
+	valid, err := UnmarshalEctoolFlags(result[1])
 	if err != nil {
 		return EncryptionStatus{}, errors.Wrap(err, "failed to unmarshal valid flags")
 	}
 
-	return EncryptionStatus{current, valid}, nil
+	return EncryptionStatus{EncryptionStatusFlags(current), EncryptionStatusFlags(valid)}, nil
 }
 
 // GetEncryptionStatus is used to obtain actual encryption engine state
