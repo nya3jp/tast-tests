@@ -75,6 +75,11 @@ func (c *Config) Class() string {
 	return shillconst.SecurityPSK
 }
 
+// PSK returns security class of WPA network.
+func (c *Config) PSK() string {
+	return c.psk
+}
+
 // HostapdConfig returns hostapd config of WPA network.
 func (c *Config) HostapdConfig() (map[string]string, error) {
 	var ret = make(map[string]string)

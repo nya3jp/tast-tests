@@ -8,6 +8,8 @@ import (
 	"context"
 	"fmt"
 
+	"chromiumos/tast/common/wifi/security"
+	"chromiumos/tast/common/wifi/security/wpa"
 	"chromiumos/tast/remote/wificell"
 	"chromiumos/tast/remote/wificell/dutcfg"
 	"chromiumos/tast/remote/wificell/tethering"
@@ -17,6 +19,7 @@ import (
 
 type sapSimpleConnectTestcase struct {
 	tetheringOpts []tethering.Option
+	secConfFac    security.ConfigFactory
 }
 
 func init() {
@@ -41,6 +44,57 @@ func init() {
 					tetheringOpts: []tethering.Option{tethering.Band(tethering.Band5g), tethering.NoUplink(true)},
 				}},
 			},
+			{
+				// Verifies that Soft AP DUT can accept connection from a station with WPA2 PSK encryption in low band and high band.
+				Name: "wpa2_psk",
+				Val: []sapSimpleConnectTestcase{{
+					tetheringOpts: []tethering.Option{tethering.Band(tethering.Band2p4g), tethering.NoUplink(true),
+						tethering.SecMode(wpa.ModePureWPA2)},
+					secConfFac: wpa.NewConfigFactory(
+						"chromeos", wpa.Mode(wpa.ModePureWPA2), wpa.Ciphers2(wpa.CipherCCMP),
+					),
+				}, {
+					tetheringOpts: []tethering.Option{tethering.Band(tethering.Band5g), tethering.NoUplink(true),
+						tethering.SecMode(wpa.ModePureWPA2)},
+					secConfFac: wpa.NewConfigFactory(
+						"chromeos", wpa.Mode(wpa.ModePureWPA2), wpa.Ciphers2(wpa.CipherCCMP),
+					),
+				}},
+			},
+			{
+				// Verifies that Soft AP DUT can accept connection from a station with WPA2 PSK encryption in low band and high band.
+				Name: "wpa3_psk",
+				Val: []sapSimpleConnectTestcase{{
+					tetheringOpts: []tethering.Option{tethering.Band(tethering.Band2p4g), tethering.NoUplink(true),
+						tethering.SecMode(wpa.ModePureWPA3)},
+					secConfFac: wpa.NewConfigFactory(
+						"chromeos", wpa.Mode(wpa.ModePureWPA3), wpa.Ciphers2(wpa.CipherCCMP),
+					),
+				}, {
+					tetheringOpts: []tethering.Option{tethering.Band(tethering.Band5g), tethering.NoUplink(true),
+						tethering.SecMode(wpa.ModePureWPA3)},
+					secConfFac: wpa.NewConfigFactory(
+						"chromeos", wpa.Mode(wpa.ModePureWPA3), wpa.Ciphers2(wpa.CipherCCMP),
+					),
+				}},
+			},
+			{
+				// Verifies that Soft AP DUT can accept connection from a station with WPA2 PSK encryption in low band and high band.
+				Name: "wpa3mixed_psk",
+				Val: []sapSimpleConnectTestcase{{
+					tetheringOpts: []tethering.Option{tethering.Band(tethering.Band2p4g), tethering.NoUplink(true),
+						tethering.SecMode(wpa.ModeMixedWPA3)},
+					secConfFac: wpa.NewConfigFactory(
+						"chromeos", wpa.Mode(wpa.ModeMixedWPA3), wpa.Ciphers2(wpa.CipherCCMP),
+					),
+				}, {
+					tetheringOpts: []tethering.Option{tethering.Band(tethering.Band5g), tethering.NoUplink(true),
+						tethering.SecMode(wpa.ModeMixedWPA3)},
+					secConfFac: wpa.NewConfigFactory(
+						"chromeos", wpa.Mode(wpa.ModeMixedWPA3), wpa.Ciphers2(wpa.CipherCCMP),
+					),
+				}},
+			},
 		},
 	})
 }
@@ -61,8 +115,8 @@ func SAPSimpleConnect(ctx context.Context, s *testing.State) {
 		s.Fatal("Test requires at least 2 DUTs to be declared. Only have ", tf.NumberOfDUTs())
 	}
 
-	testOnce := func(ctx context.Context, s *testing.State, options []tethering.Option) {
-		tetheringConf, _, err := tf.StartTethering(ctx, wificell.DefaultDUT, options)
+	testOnce := func(ctx context.Context, s *testing.State, options []tethering.Option, fac security.ConfigFactory) {
+		tetheringConf, _, err := tf.StartTethering(ctx, wificell.DefaultDUT, options, fac)
 		if err != nil {
 			s.Error("Failed to start tethering session on DUT, err: ", err)
 		}
@@ -102,7 +156,7 @@ func SAPSimpleConnect(ctx context.Context, s *testing.State) {
 	testcases := s.Param().([]sapSimpleConnectTestcase)
 	for i, tc := range testcases {
 		subtest := func(ctx context.Context, s *testing.State) {
-			testOnce(ctx, s, tc.tetheringOpts)
+			testOnce(ctx, s, tc.tetheringOpts, tc.secConfFac)
 		}
 		if !s.Run(ctx, fmt.Sprintf("Testcase #%d", i), subtest) {
 			// Stop if any sub-test failed.
