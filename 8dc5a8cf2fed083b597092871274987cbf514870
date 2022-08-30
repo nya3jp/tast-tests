@@ -187,6 +187,24 @@
       "parentUuid": "d99d56a7_1ec897c2",
       "revId": "8dc5a8cf2fed083b597092871274987cbf514870",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38ba7dc7_7ec3fac0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_tpm_live_tests.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-08-30T13:22:12Z",
+      "side": 1,
+      "message": "When we call `cmdRunner.Run()`, which `ctx` is passed to it? It should be the shortened one. But, based on the compiler error you mentioned above, it seems like it isn\u0027t.",
+      "parentUuid": "6d9baedf_fa5120ca",
+      "revId": "8dc5a8cf2fed083b597092871274987cbf514870",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
