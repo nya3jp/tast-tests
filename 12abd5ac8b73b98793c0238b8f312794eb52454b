@@ -87,6 +87,30 @@
       },
       "revId": "12abd5ac8b73b98793c0238b8f312794eb52454b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "987d0085_2518529e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/new_screencast_button_condition.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-08-30T06:48:32Z",
+      "side": 1,
+      "message": "15 seconds is the default uiauto time out, so it should be okay. I didn\u0027t specify 15 seconds anywhere.",
+      "parentUuid": "f14b2709_6536999b",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 34
+      },
+      "revId": "12abd5ac8b73b98793c0238b8f312794eb52454b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
