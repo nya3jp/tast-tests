@@ -89,6 +89,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "98769820_fdd4a104",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/enabled_policy.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-08-30T20:43:55Z",
+      "side": 1,
+      "message": "Else here is correct. If the err is nil, meaning there were no errors fetching the install status, then we\u0027ll check if the app was installed here. \n\nHowever, it doesn\u0027t matter because I\u0027m recommending removing this entire section in my comment below. This check doesn\u0027t catch when the screencast app is installed, even though it is installed, probably due to some sort of race condition and checking too early.",
+      "parentUuid": "05f0337b_1d849f5e",
+      "range": {
+        "startLine": 168,
+        "startChar": 3,
+        "endLine": 168,
+        "endChar": 7
+      },
+      "revId": "3231738990572699a7b22fc34a7d2eb2b41e27c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1c08ee0d_605bd309",
         "filename": "src/chromiumos/tast/local/bundles/cros/projector/enabled_policy.go",
         "patchSetId": 5
