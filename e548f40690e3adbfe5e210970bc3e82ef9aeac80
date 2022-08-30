@@ -16,6 +16,24 @@
       "message": "Won\u0027t this duplicate the VM testing? I think the unstable part could be run only on the krane model.",
       "revId": "e548f40690e3adbfe5e210970bc3e82ef9aeac80",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "007e8909_ea45c7d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/arc_enabled.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-08-30T12:44:51Z",
+      "side": 1,
+      "message": "Good point. Sent https://crrev.com/c/3865893 to address this.",
+      "parentUuid": "4f697bef_6bfb97a1",
+      "revId": "e548f40690e3adbfe5e210970bc3e82ef9aeac80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
