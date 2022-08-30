@@ -3,6 +3,46 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2e5f8ae5_858975d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/kiosk_with_prepare_credential_api.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-08-30T04:22:25Z",
+      "side": 1,
+      "message": "design: Should this be written as one test case or as three? (is there a sequential dependency here?)",
+      "revId": "3f5b7a1c7a848cefafd1ac54e0704256f86e451f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3117a877_2e284bf2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/kiosk_with_prepare_credential_api.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-08-30T04:22:25Z",
+      "side": 1,
+      "message": "nit/naming: maybe prefer cleanupCtx",
+      "range": {
+        "startLine": 40,
+        "startChar": 1,
+        "endLine": 40,
+        "endChar": 14
+      },
+      "revId": "3f5b7a1c7a848cefafd1ac54e0704256f86e451f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "759ab2ce_8cc38c63",
         "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/kiosk_with_prepare_credential_api.go",
         "patchSetId": 2
@@ -19,6 +59,52 @@
         "startChar": 47,
         "endLine": 44,
         "endChar": 15
+      },
+      "revId": "3f5b7a1c7a848cefafd1ac54e0704256f86e451f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9b83e2f_f9cdbc03",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/kiosk_with_prepare_credential_api.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-08-30T04:22:25Z",
+      "side": 1,
+      "message": "See Jie\u0027s comment below about Log. I think this should be Fatal.",
+      "range": {
+        "startLine": 53,
+        "startChar": 4,
+        "endLine": 53,
+        "endChar": 7
+      },
+      "revId": "3f5b7a1c7a848cefafd1ac54e0704256f86e451f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d27672fd_54109e11",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/kiosk_with_prepare_credential_api.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-08-30T04:22:25Z",
+      "side": 1,
+      "message": "as above",
+      "range": {
+        "startLine": 58,
+        "startChar": 4,
+        "endLine": 58,
+        "endChar": 7
       },
       "revId": "3f5b7a1c7a848cefafd1ac54e0704256f86e451f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
@@ -180,6 +266,52 @@
         "startChar": 36,
         "endLine": 142,
         "endChar": 39
+      },
+      "revId": "3f5b7a1c7a848cefafd1ac54e0704256f86e451f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c8fb35f_5e63c2a3",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 722,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-08-30T04:22:25Z",
+      "side": 1,
+      "message": "optional/style: I am not a fan of prepending \"failed to\" in errors.Wrap messages.\nIt leads to messages like:\nfailed to A: failed to B: failed to C: some error.\n\nwhere \"failed to\" is just visual noise and distracts from the actual error. In various UIs (e.g. tastboard) errors are truncated so longer error messages may actually lead to the interesting bits not being visible at all.\n\nIn this case, I would suggest wrapping with \"preparing persistent vault\"",
+      "range": {
+        "startLine": 722,
+        "startChar": 27,
+        "endLine": 722,
+        "endChar": 36
+      },
+      "revId": "3f5b7a1c7a848cefafd1ac54e0704256f86e451f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ae52694_3b389c77",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 728,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-08-30T04:22:25Z",
+      "side": 1,
+      "message": "optional/style: see above",
+      "range": {
+        "startLine": 728,
+        "startChar": 27,
+        "endLine": 728,
+        "endChar": 36
       },
       "revId": "3f5b7a1c7a848cefafd1ac54e0704256f86e451f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
