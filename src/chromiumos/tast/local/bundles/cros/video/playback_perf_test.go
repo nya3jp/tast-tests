@@ -6,13 +6,11 @@ package video
 
 import (
 	"fmt"
-	"sort"
 	"strings"
 	"testing"
 
 	"chromiumos/tast/common/genparams"
 	"chromiumos/tast/local/bundles/cros/video/playback"
-	"chromiumos/tast/local/media/pre"
 )
 
 // codec
@@ -255,12 +253,11 @@ func TestPlaybackPerfParams(t *testing.T) {
 
 	// multi-playback
 	// Get threads and fixture for them. Sort the threads as the order of Golang map iteration is not deterministic.
-	fixtureMap := pre.VideoDecoderThreadsFixtureNames()
-	var threadsCands []int
-	for numThreads := range fixtureMap {
-		threadsCands = append(threadsCands, numThreads)
+	threadsCands := []int{1, 4, 9, 16}
+	fixtureMap := map[int]string{}
+	for _, numThreads := range threadsCands {
+		fixtureMap[numThreads] = fmt.Sprintf("chromeVideoWith%dDecoderThreadsAndGlobalVaapiLockDisabled", numThreads)
 	}
-	sort.Ints(threadsCands)
 
 	for _, codec := range []string{"h264", "vp9"} {
 		// 1080p x 2 ~= 2K, 480p x 9  ~= 2K, 360p x 16 ~= 2K, 180p x 49 ~= 1260p
