@@ -554,6 +554,23 @@ func init() {
 	})
 
 	testing.AddFixture(&testing.Fixture{
+		Name:     "chromeVideoWith2DecoderThreadsAndGlobalVaapiLockDisabled",
+		Desc:     "Similar to chromeVideo fixture but max decoder threads is set to 2 and disable global VA-API lock",
+		Contacts: []string{"chromeos-gfx-video@google.com"},
+		Impl: chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			return []chrome.Option{
+				chrome.ExtraArgs(chromeVideoArgs...),
+				chrome.ExtraArgs("--disable-features=GlobalVaapiLock"),
+				chrome.ExtraArgs("--disable-features=LimitConcurrentDecoderInstances"),
+				chrome.ExtraArgs("--max-chromeos-decoder-threads=2"),
+			}, nil
+		}),
+		Parent:          "gpuWatchDog",
+		SetUpTimeout:    chrome.LoginTimeout,
+		ResetTimeout:    chrome.ResetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+	})
+	testing.AddFixture(&testing.Fixture{
 		Name:     "chromeVideoWith4DecoderThreadsAndGlobalVaapiLockDisabled",
 		Desc:     "Similar to chromeVideo fixture but max decoder threads is set to 4 and disable global VA-API lock",
 		Contacts: []string{"chromeos-gfx-video@google.com"},

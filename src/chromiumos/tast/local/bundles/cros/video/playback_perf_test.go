@@ -253,7 +253,7 @@ func TestPlaybackPerfParams(t *testing.T) {
 
 	// multi-playback
 	// Get threads and fixture for them. Sort the threads as the order of Golang map iteration is not deterministic.
-	threadsCands := []int{1, 4, 9, 16}
+	threadsCands := []int{1, 2, 4, 9, 16}
 	fixtureMap := map[int]string{}
 	for _, numThreads := range threadsCands {
 		fixtureMap[numThreads] = fmt.Sprintf("chromeVideoWith%dDecoderThreadsAndGlobalVaapiLockDisabled", numThreads)
