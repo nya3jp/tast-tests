@@ -77,6 +77,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b889a878_a7fffe37",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/bootperf/metrics_util.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2022-08-30T04:02:03Z",
+      "side": 1,
+      "message": "This error is consumed because we try to recover from this condition. The function works as:\n\n1. The function literal checks a) if tlsdated is running and b) if /tmp/sync-rtc-tlsdated-start is present. If this both are true, just return.\n2. If the check fails, we try to recover by restarting tlsdated to see if /tmp/sync-rtc-tlsdated-start can be generated. If it still fails, return the error: restating tlsdated more may not be helpful.\n\nSince the function restarts tlsdated to recover the error, the original error in 1. that why tlsdated isn\u0027t in a running state, or why upstart fails to check the job status, doesn\u0027t provide much information. I think it\u0027s OK to just consume the error.",
+      "parentUuid": "f38edcca_e3cf6844",
+      "range": {
+        "startLine": 182,
+        "startChar": 2,
+        "endLine": 184,
+        "endChar": 3
+      },
+      "revId": "6f2045abf2bfc966697f48109642c96eac1d5583",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "11c99804_ed522c3f",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/bootperf/metrics_util.go",
         "patchSetId": 4
@@ -94,6 +118,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "352b4fc8_21f9ab92",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/bootperf/metrics_util.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2022-08-30T04:02:03Z",
+      "side": 1,
+      "message": "This file (/tmp/sync-rtc-tlsdated-start) is generated before starting tlsdated. It\u0027s part of the boot process:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/tlsdate/init/tlsdated.conf;l\u003d40?q\u003dtlsdated.conf\u0026ss\u003dchromiumos\n\nThe test treated it as a critical error and failed and this test becomes flaky because the file is sometimes missing, for reasons we still don\u0027t know. It\u0027s unlikely that some other service occupies the RTC hardware device given that the file can be missing in the 2nd or 3rd reboot iteration of the boot performance test. So we\u0027d like to make the test more fault-tolerant by restarting tlsdated to recover from this failure.",
+      "parentUuid": "11c99804_ed522c3f",
+      "revId": "6f2045abf2bfc966697f48109642c96eac1d5583",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6b476a9b_ec14675a",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/bootperf/metrics_util.go",
         "patchSetId": 4
@@ -105,6 +147,24 @@
       "writtenOn": "2022-08-29T16:28:10Z",
       "side": 1,
       "message": "Another clarification:\nIIUC, tlsdated should create this file. Then, any timing issues?\nI.e., should this file be created \"before\" the tlsdated job is becoming running? Or, if it is created at the beginning of tlsdated daemon, you may want to poll in order to avoid flakiness. Could you double check?",
+      "revId": "6f2045abf2bfc966697f48109642c96eac1d5583",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc1fd00a_28c29223",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/bootperf/metrics_util.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2022-08-30T04:02:03Z",
+      "side": 1,
+      "message": "This isn\u0027t suppose to be a race condition because the file is generated in the pre-start stanza of the tlsdated config https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/tlsdate/init/tlsdated.conf;l\u003d40?q\u003dtlsdated.conf\u0026ss\u003dchromiumos\n\nThe file is generated strictly before upstart starts the tlsdated process.",
+      "parentUuid": "6b476a9b_ec14675a",
       "revId": "6f2045abf2bfc966697f48109642c96eac1d5583",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
