@@ -63,6 +63,30 @@
       },
       "revId": "12abd5ac8b73b98793c0238b8f312794eb52454b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f14b2709_6536999b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/new_screencast_button_condition.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1268793
+      },
+      "writtenOn": "2022-08-30T00:41:40Z",
+      "side": 1,
+      "message": "15 secs sounds like a long time but probably okay comparing to 5 mins timeout. Not sure what\u0027s the best practise on trading off between test run time and the threshold. We can update it if see a issue later.",
+      "parentUuid": "6b2c7bf3_5865ff57",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 34
+      },
+      "revId": "12abd5ac8b73b98793c0238b8f312794eb52454b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
