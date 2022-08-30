@@ -22,6 +22,30 @@
       },
       "revId": "fcf096e9a74205064ee4fa0f63221be9f8c695b2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ec8abf6_2893bdeb",
+        "filename": "src/chromiumos/tast/remote/firmware/ectool.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1427718
+      },
+      "writtenOn": "2022-08-30T23:26:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c1a7733e_45f8db81",
+      "range": {
+        "startLine": 166,
+        "startChar": 0,
+        "endLine": 183,
+        "endChar": 1
+      },
+      "revId": "fcf096e9a74205064ee4fa0f63221be9f8c695b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
