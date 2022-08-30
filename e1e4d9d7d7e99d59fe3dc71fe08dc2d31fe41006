@@ -495,6 +495,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ee670cfc_3e6cd53f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/enabled_policy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1332928
+      },
+      "writtenOn": "2022-08-30T02:06:16Z",
+      "side": 1,
+      "message": "Long story short, I think Projector will not show up in the list of installed apps there, but I am not 100% certain.",
+      "parentUuid": "b47b4905_9cae03f3",
+      "revId": "e1e4d9d7d7e99d59fe3dc71fe08dc2d31fe41006",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ac21c89c_62273a7d",
         "filename": "src/chromiumos/tast/local/bundles/cros/projector/enabled_policy.go",
         "patchSetId": 3
