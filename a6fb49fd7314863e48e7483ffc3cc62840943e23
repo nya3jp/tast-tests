@@ -105,6 +105,24 @@
       "parentUuid": "627cfeef_f60463e7",
       "revId": "a6fb49fd7314863e48e7483ffc3cc62840943e23",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "59ba1bde_9eec4880",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/shill_cellular_sim_slots.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1425417
+      },
+      "writtenOn": "2022-08-30T22:08:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d94067cf_4ea22e1f",
+      "revId": "a6fb49fd7314863e48e7483ffc3cc62840943e23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
