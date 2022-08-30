@@ -190,6 +190,30 @@
       },
       "revId": "31c0b3cb872a60061cfd3124055853b3f9920033",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17d43caa_c4efa411",
+        "filename": "src/chromiumos/tast/local/chrome/option.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 515,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-08-30T01:37:54Z",
+      "side": 1,
+      "message": "Fine by me, I can just remove the tests for now and add them when it\u0027s properly supported.",
+      "parentUuid": "067aeca4_cfebe772",
+      "range": {
+        "startLine": 515,
+        "startChar": 38,
+        "endLine": 515,
+        "endChar": 44
+      },
+      "revId": "31c0b3cb872a60061cfd3124055853b3f9920033",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
