@@ -48,10 +48,12 @@ func init() {
 		}, {
 			Name:              "unstable",
 			ExtraSoftwareDeps: []string{"android_p"},
+			ExtraHardwareDeps: hwdep.D(hwdep.Model("krane", "kakadu", "katsu", "kodama")),
 			ExtraAttr:         []string{"informational"},
 		}, {
 			Name:              "vm_unstable",
 			ExtraSoftwareDeps: []string{"android_vm"},
+			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel("krane")),
 			ExtraAttr:         []string{"informational"},
 		}},
 		SearchFlags: []*testing.StringPair{
