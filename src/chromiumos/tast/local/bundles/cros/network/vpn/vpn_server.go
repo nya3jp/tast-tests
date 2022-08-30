@@ -13,7 +13,6 @@ import (
 
 	"chromiumos/tast/common/crypto/certificate"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/bundles/cros/network/chroot"
 	"chromiumos/tast/local/network/virtualnet/env"
 	"chromiumos/tast/testing"
 )
@@ -352,7 +351,7 @@ var (
 type Server struct {
 	OverlayIP    string
 	UnderlayIP   string
-	netChroot    *chroot.NetworkChroot
+	serverRunner *serverRunner
 	stopCommands [][]string
 	pidFiles     []string
 	logFiles     []string
@@ -360,18 +359,18 @@ type Server struct {
 
 // StartL2TPIPsecServer starts a L2TP/IPsec server.
 func StartL2TPIPsecServer(ctx context.Context, env *env.Env, authType string, ipsecUseXauth, underlayIPIsOverlayIP bool) (*Server, error) {
-	chro := chroot.NewNetworkChroot(env)
+	runner := newServerRunner(env)
 	server := &Server{
-		netChroot:    chro,
+		serverRunner: runner,
 		stopCommands: [][]string{},
 		pidFiles:     []string{charonPidFile, xl2tpdPidFile, pppdPidFile},
 		logFiles:     []string{charonLogFile},
 	}
 
-	chro.AddRootDirectories(strongSwanDirectories)
-	chro.AddRootDirectories(l2tpDirectories)
-	chro.AddConfigTemplates(strongSwanConfigs)
-	chro.AddConfigTemplates(l2tpConfigs)
+	runner.AddRootDirectories(strongSwanDirectories)
+	runner.AddRootDirectories(l2tpDirectories)
+	runner.AddConfigTemplates(strongSwanConfigs)
+	runner.AddConfigTemplates(l2tpConfigs)
 
 	configValues := map[string]interface{}{
 		"chap_user":                chapUser,
@@ -399,15 +398,15 @@ func StartL2TPIPsecServer(ctx context.Context, env *env.Env, authType string, ip
 	// For running strongSwan VPN with flag --with-piddir=/run/ipsec. We
 	// want to use /run/ipsec for strongSwan runtime data dir instead of
 	// /run, and the cmdline flag applies to both client and server
-	chro.AddStartupCommand(makeIPsecDir)
+	runner.AddStartupCommand(makeIPsecDir)
 
-	chro.AddConfigValues(configValues)
-	chro.AddStartupCommand(fmt.Sprintf("%s &", charonCommand))
+	runner.AddConfigValues(configValues)
+	runner.AddStartupCommand(fmt.Sprintf("%s &", charonCommand))
 
 	xl2tpdCmdStr := fmt.Sprintf("%s -c /%s -C /tmp/l2tpd.control", xl2tpdCommand, xl2tpdConfigFile)
-	chro.AddStartupCommand(xl2tpdCmdStr)
+	runner.AddStartupCommand(xl2tpdCmdStr)
 
-	underlayIP, err := chro.Startup(ctx)
+	underlayIP, err := runner.Startup(ctx)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to start L2TP/IPsec server")
 	}
@@ -416,7 +415,7 @@ func StartL2TPIPsecServer(ctx context.Context, env *env.Env, authType string, ip
 	// connection config. The execution may fail until the charon process is
 	// ready, so we use a Poll here.
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		return chro.RunChroot(ctx, []string{swanctlCommand, "--load-all"})
+		return runner.RunChroot(ctx, []string{swanctlCommand, "--load-all"})
 	}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
 		return nil, errors.Wrap(err, "failed to load swanctl config")
 	}
@@ -432,16 +431,16 @@ func StartL2TPIPsecServer(ctx context.Context, env *env.Env, authType string, ip
 
 // StartIKEv2Server starts an IKEv2 server.
 func StartIKEv2Server(ctx context.Context, env *env.Env, authType string) (*Server, error) {
-	chro := chroot.NewNetworkChroot(env)
+	runner := newServerRunner(env)
 	server := &Server{
-		netChroot:    chro,
+		serverRunner: runner,
 		stopCommands: [][]string{{"/bin/ip", "link", "del", "xfrm1"}},
 		pidFiles:     []string{charonPidFile},
 		logFiles:     []string{charonLogFile},
 	}
 
-	chro.AddRootDirectories(strongSwanDirectories)
-	chro.AddConfigTemplates(strongSwanConfigs)
+	runner.AddRootDirectories(strongSwanDirectories)
+	runner.AddConfigTemplates(strongSwanConfigs)
 
 	configValues := map[string]interface{}{
 		"chap_user":      chapUser,
@@ -467,18 +466,18 @@ func StartIKEv2Server(ctx context.Context, env *env.Env, authType string) (*Serv
 		return nil, errors.Errorf("IKEv2 type %s is not defined", authType)
 	}
 
-	chro.AddConfigValues(configValues)
+	runner.AddConfigValues(configValues)
 
 	// For running strongSwan VPN with flag --with-piddir=/run/ipsec. We
 	// want to use /run/ipsec for strongSwan runtime data dir instead of
 	// /run, and the cmdline flag applies to both client and server
-	chro.AddStartupCommand(makeIPsecDir)
-	chro.AddStartupCommand(fmt.Sprintf("%s &", charonCommand))
-	chro.AddStartupCommand("ip link add xfrm1 type xfrm dev lo if_id " + ikev2InterfaceID)
-	chro.AddStartupCommand("ip addr add dev xfrm1 " + ikev2ServerIP + "/24")
-	chro.AddStartupCommand("ip link set dev xfrm1 up")
+	runner.AddStartupCommand(makeIPsecDir)
+	runner.AddStartupCommand(fmt.Sprintf("%s &", charonCommand))
+	runner.AddStartupCommand("ip link add xfrm1 type xfrm dev lo if_id " + ikev2InterfaceID)
+	runner.AddStartupCommand("ip addr add dev xfrm1 " + ikev2ServerIP + "/24")
+	runner.AddStartupCommand("ip link set dev xfrm1 up")
 
-	underlayIP, err := chro.Startup(ctx)
+	underlayIP, err := runner.Startup(ctx)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to start IKEv2 VPN server")
 	}
@@ -487,7 +486,7 @@ func StartIKEv2Server(ctx context.Context, env *env.Env, authType string) (*Serv
 	// connection config. The execution may fail until the charon process is
 	// ready, so we use a Poll here.
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		return chro.RunChroot(ctx, []string{swanctlCommand, "--load-all"})
+		return runner.RunChroot(ctx, []string{swanctlCommand, "--load-all"})
 	}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
 		return nil, errors.Wrap(err, "failed to load swanctl config")
 	}
@@ -500,16 +499,16 @@ func StartIKEv2Server(ctx context.Context, env *env.Env, authType string) (*Serv
 
 // StartOpenVPNServer starts an OpenVPN server.
 func StartOpenVPNServer(ctx context.Context, env *env.Env, useUserPassword, useTLSAuth bool) (*Server, error) {
-	chro := chroot.NewNetworkChroot(env)
+	runner := newServerRunner(env)
 	server := &Server{
-		netChroot:    chro,
+		serverRunner: runner,
 		stopCommands: [][]string{},
 		pidFiles:     []string{openvpnPidFile},
 		logFiles:     []string{openvpnLogFile},
 	}
 
-	chro.AddRootDirectories(openvpnRootDirectories)
-	chro.AddConfigTemplates(openvpnConfigs)
+	runner.AddRootDirectories(openvpnRootDirectories)
+	runner.AddConfigTemplates(openvpnConfigs)
 	configValues := map[string]interface{}{
 		"ca_cert":                      openvpnCaCertFile,
 		"diffie_hellman_params_file":   openvpnDiffieHellmanFile,
@@ -530,15 +529,15 @@ func StartOpenVPNServer(ctx context.Context, env *env.Env, useUserPassword, useT
 		configValues["tls_auth_file"] = openvpnTLSAuthFile
 	}
 
-	chro.AddConfigValues(configValues)
-	chro.AddStartupCommand("chmod 755 " + openvpnAuthScript)
-	chro.AddStartupCommand(fmt.Sprintf("%s --config /%s &", openvpnCommand, openvpnConfigFile))
-	chro.NetEnv = []string{
+	runner.AddConfigValues(configValues)
+	runner.AddStartupCommand("chmod 755 " + openvpnAuthScript)
+	runner.AddStartupCommand(fmt.Sprintf("%s --config /%s &", openvpnCommand, openvpnConfigFile))
+	runner.NetEnv = []string{
 		"OPENSSL_CONF=/etc/ssl/openssl.cnf.compat",
 		"OPENSSL_CHROMIUM_SKIP_TRUSTED_PURPOSE_CHECK=1",
 	}
 
-	underlayIP, err := chro.Startup(ctx)
+	underlayIP, err := runner.Startup(ctx)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to start OpenVPN server")
 	}
@@ -549,9 +548,9 @@ func StartOpenVPNServer(ctx context.Context, env *env.Env, useUserPassword, useT
 
 // StartWireGuardServer starts a WireGuard server.
 func StartWireGuardServer(ctx context.Context, env *env.Env, clientPublicKey string, usePSK, isSecondServer bool) (*Server, error) {
-	chro := chroot.NewNetworkChroot(env)
+	runner := newServerRunner(env)
 	server := &Server{
-		netChroot:    chro,
+		serverRunner: runner,
 		stopCommands: [][]string{{"/bin/ip", "link", "del", "wg1"}},
 		pidFiles:     []string{},
 		logFiles:     []string{}, // No log for WireGuard server.
@@ -575,20 +574,20 @@ func StartWireGuardServer(ctx context.Context, env *env.Env, clientPublicKey str
 		server.OverlayIP = wgServerOverlayIP
 	}
 
-	chro.AddConfigTemplates(wgConfigs)
-	chro.AddConfigValues(configValues)
-	chro.AddStartupCommand("ip link add wg1 type wireguard")
-	chro.AddStartupCommand("wg setconf wg1 /" + wgConfigFile)
-	chro.AddStartupCommand("ip addr add dev wg1 " + server.OverlayIP)
-	chro.AddStartupCommand("ip link set dev wg1 up")
+	runner.AddConfigTemplates(wgConfigs)
+	runner.AddConfigValues(configValues)
+	runner.AddStartupCommand("ip link add wg1 type wireguard")
+	runner.AddStartupCommand("wg setconf wg1 /" + wgConfigFile)
+	runner.AddStartupCommand("ip addr add dev wg1 " + server.OverlayIP)
+	runner.AddStartupCommand("ip link set dev wg1 up")
 	if isSecondServer {
-		chro.AddStartupCommand("ip route add " + wgClientOverlayIP + " dev wg1")
+		runner.AddStartupCommand("ip route add " + wgClientOverlayIP + " dev wg1")
 	} else {
-		chro.AddStartupCommand("ip route add " + wgClientOverlayIP + " dev wg1")
+		runner.AddStartupCommand("ip route add " + wgClientOverlayIP + " dev wg1")
 	}
 
 	var err error
-	if server.UnderlayIP, err = chro.Startup(ctx); err != nil {
+	if server.UnderlayIP, err = runner.Startup(ctx); err != nil {
 		return nil, errors.Wrap(err, "failed to start WireGuard server")
 	}
 	return server, nil
@@ -596,15 +595,15 @@ func StartWireGuardServer(ctx context.Context, env *env.Env, clientPublicKey str
 
 // StopServer stop VPN server instance.
 func (s *Server) StopServer(ctx context.Context) error {
-	chro := s.netChroot
+	runner := s.serverRunner
 	for _, cmd := range s.stopCommands {
-		if err := chro.RunChroot(ctx, cmd); err != nil {
+		if err := runner.RunChroot(ctx, cmd); err != nil {
 			return errors.Wrapf(err, "failed to execute %v", cmd)
 		}
 	}
 
 	for _, pidFile := range s.pidFiles {
-		if err := chro.KillPidFile(ctx, pidFile, true); err != nil {
+		if err := runner.KillPidFile(ctx, pidFile, true); err != nil {
 			return errors.Wrapf(err, "failed to kill the PID file %v", pidFile)
 		}
 	}
@@ -614,7 +613,7 @@ func (s *Server) StopServer(ctx context.Context) error {
 
 func (s *Server) collectLogs(ctx context.Context) error {
 	var getLogErr error
-	content, err := s.netChroot.GetLogContents(ctx, s.logFiles)
+	content, err := s.serverRunner.GetLogContents(ctx, s.logFiles)
 	if err != nil {
 		getLogErr = errors.Wrap(err, "failed to get vpn log contents")
 	}
@@ -633,7 +632,7 @@ func (s *Server) collectLogs(ctx context.Context) error {
 	return getLogErr
 }
 
-// Exit does a best effort to stop the server, log the contents, and shut down the chroot.
+// Exit does a best effort to stop the server, log the contents, and shut down the serverRunner.
 func (s *Server) Exit(ctx context.Context) error {
 	var lastErr error
 
@@ -649,8 +648,8 @@ func (s *Server) Exit(ctx context.Context) error {
 		lastErr = err
 	}
 
-	if err := s.netChroot.Shutdown(ctx); err != nil {
-		testing.ContextLog(ctx, "Failed to shutdown the chroot: ", err)
+	if err := s.serverRunner.Shutdown(ctx); err != nil {
+		testing.ContextLog(ctx, "Failed to shutdown the serverRunner: ", err)
 		lastErr = err
 	}
 
@@ -659,7 +658,7 @@ func (s *Server) Exit(ctx context.Context) error {
 
 // SetupInternetAccess setup internet connectivity for VPN server.
 func (s *Server) SetupInternetAccess(ctx context.Context) error {
-	if err := s.netChroot.RunChroot(ctx, []string{"/sbin/iptables", "-t", "nat", "-A", "POSTROUTING", "!", "-s", s.OverlayIP, "-j", "SNAT", "--to", s.UnderlayIP, "-w"}); err != nil {
+	if err := s.serverRunner.RunChroot(ctx, []string{"/sbin/iptables", "-t", "nat", "-A", "POSTROUTING", "!", "-s", s.OverlayIP, "-j", "SNAT", "--to", s.UnderlayIP, "-w"}); err != nil {
 		return errors.Wrap(err, "failed to setup internet connectivity")
 	}
 	return nil
