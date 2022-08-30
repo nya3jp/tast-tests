@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5fb5341_bae87b68",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/gesture_navigation.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1528608
+      },
+      "writtenOn": "2022-08-30T10:47:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d04dd010_c9de87c3",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 60
+      },
+      "revId": "534620e4bf6b36119dd0546de9795c941c4f0739",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0ddd4f5d_34474de5",
@@ -112,6 +136,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "063d6c77_a81d62b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/gesture_navigation.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1528608
+      },
+      "writtenOn": "2022-08-30T10:47:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1783a775_e7a23a88",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 2
+      },
+      "revId": "534620e4bf6b36119dd0546de9795c941c4f0739",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8b93af2f_e634d1aa",
@@ -125,6 +173,30 @@
       "writtenOn": "2022-08-20T08:49:36Z",
       "side": 1,
       "message": "we should probably use test-api for that",
+      "range": {
+        "startLine": 78,
+        "startChar": 48,
+        "endLine": 78,
+        "endChar": 101
+      },
+      "revId": "534620e4bf6b36119dd0546de9795c941c4f0739",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9bc3712a_9e2a4372",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/gesture_navigation.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1528608
+      },
+      "writtenOn": "2022-08-30T10:47:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b93af2f_e634d1aa",
       "range": {
         "startLine": 78,
         "startChar": 48,
