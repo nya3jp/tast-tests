@@ -54,6 +54,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6ac608d_91bb51cd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2022-08-30T23:31:02Z",
+      "side": 1,
+      "message": "Added the details in the bug, https://buganizer.corp.google.com/issues/239619730#comment2. Updated the commit message as well.",
+      "parentUuid": "6f9fe412_f78eed9c",
+      "revId": "cf49b0ab4ca01c69e275fe80840ebbd6ac907f52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "77d4282c_d8017c42",
