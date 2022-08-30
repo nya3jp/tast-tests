@@ -182,7 +182,7 @@ func init() {
 		Name:     "familyLinkUnicornArcPolicyLogin",
 		Desc:     "Supervised Family Link user login with Unicorn account and ARC support with fakeDMS setup",
 		Contacts: []string{"tobyhuang@chromium.org", "xiqiruan@chromium.org", "cros-families-eng+test@google.com"},
-		Impl:     NewFamilyLinkFixture("arc.parentUser", "arc.parentPassword", "arc.childUser", "arc.childPassword", true, chrome.ARCSupported()),
+		Impl:     NewFamilyLinkFixture("arc.parentUser", "arc.parentPassword", "arc.childUser", "arc.childPassword", true, chrome.ARCSupported(), chrome.ExtraArgs(arc.DisableSyncFlags()...)),
 		Vars: []string{
 			"arc.parentUser",
 			"arc.parentPassword",
