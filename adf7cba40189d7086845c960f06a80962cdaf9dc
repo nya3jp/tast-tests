@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "18d660fa_840756ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/kiosk_with_auth_factor_api.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-08-30T18:02:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4813ff3e_924f8a68",
+      "range": {
+        "startLine": 66,
+        "startChar": 36,
+        "endLine": 66,
+        "endChar": 39
+      },
+      "revId": "adf7cba40189d7086845c960f06a80962cdaf9dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e28c158a_a3c5f3a5",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1979d33_e1a74021",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/kiosk_with_auth_factor_api.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-08-30T18:02:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e28c158a_a3c5f3a5",
+      "range": {
+        "startLine": 101,
+        "startChar": 36,
+        "endLine": 101,
+        "endChar": 39
+      },
+      "revId": "adf7cba40189d7086845c960f06a80962cdaf9dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c652cfc5_69c0ee61",
@@ -77,6 +125,30 @@
       "writtenOn": "2022-08-30T17:48:29Z",
       "side": 1,
       "message": "ctxForCleanup?",
+      "range": {
+        "startLine": 125,
+        "startChar": 36,
+        "endLine": 125,
+        "endChar": 39
+      },
+      "revId": "adf7cba40189d7086845c960f06a80962cdaf9dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4dc2e192_e8fef2b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/kiosk_with_auth_factor_api.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-08-30T18:02:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c652cfc5_69c0ee61",
       "range": {
         "startLine": 125,
         "startChar": 36,
