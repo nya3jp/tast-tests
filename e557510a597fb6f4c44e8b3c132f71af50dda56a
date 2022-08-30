@@ -39,6 +39,30 @@
       },
       "revId": "e557510a597fb6f4c44e8b3c132f71af50dda56a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0c137a1_41c2e178",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/add_remove_pin.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-08-30T15:44:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0c3cb880_8a9c4366",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 1
+      },
+      "revId": "e557510a597fb6f4c44e8b3c132f71af50dda56a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
