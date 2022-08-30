@@ -34,6 +34,24 @@
       "parentUuid": "234bf38a_e02ad808",
       "revId": "b6a4cab159bead0312a032a40bead533c55307af",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "df9f020d_e5a06888",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-08-30T01:34:12Z",
+      "side": 1,
+      "message": "The blocking of apps is enforced by the Play Store and it is still being tested. See L143 where Install button disable is checked.\n\nFaking a policy value and verifying if a app is blocked in the faked policy is not useful or relevant for this test. Not intending to bring it back.",
+      "parentUuid": "d8a8c298_2ae2feb1",
+      "revId": "b6a4cab159bead0312a032a40bead533c55307af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
