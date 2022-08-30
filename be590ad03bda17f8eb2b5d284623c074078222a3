@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "00e2bba6_22b80263",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-30T21:53:37Z",
+      "side": 1,
+      "message": "nit: this line is too long. Wrap at 72 characters.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 143
+      },
+      "revId": "be590ad03bda17f8eb2b5d284623c074078222a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "9eeba842_8a882aa8",
@@ -71,6 +94,41 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4507ec6_78cb047a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-30T21:53:37Z",
+      "side": 1,
+      "message": "You can land this CL to simply skip on `kaisa` and `kench`, and then write a separate CL to add a test variant that runs only on those models.",
+      "parentUuid": "925384e7_254ab966",
+      "revId": "be590ad03bda17f8eb2b5d284623c074078222a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b401a36a_abeff9da",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-30T21:53:37Z",
+      "side": 1,
+      "message": "lgtm with nit",
+      "revId": "be590ad03bda17f8eb2b5d284623c074078222a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cc022763_bfe07ca3",
@@ -84,6 +142,30 @@
       "writtenOn": "2022-08-25T15:54:00Z",
       "side": 1,
       "message": "we can skip all devices without webcam here `SoftwareDeps: []string{\"chrome\", \"arc\", caps.BuiltinOrVividCamera},`, or just like avery recommended, do the checking (VerifyCapabilities \nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/common/media/caps/caps.go;l\u003d148?q\u003dBuiltinOrVividCamera\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch:src%2Fplatform%2Ftast-tests%2F\u0026start\u003d1) at https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go;drc\u003df70d1b41e7f230734e83bb0a02f0e57c75fe06ee;l\u003d1310\n\nI personally prefer the latter one.",
+      "range": {
+        "startLine": 95,
+        "startChar": 2,
+        "endLine": 95,
+        "endChar": 42
+      },
+      "revId": "be590ad03bda17f8eb2b5d284623c074078222a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "81339f23_341fd86d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-30T21:53:37Z",
+      "side": 1,
+      "message": "In outside discussion, Navin has stated that he would rather explicitly check for `kaisa` and `kench` because we know that they intentionally have no webcam and there are no plans to add a webcam to them.",
+      "parentUuid": "cc022763_bfe07ca3",
       "range": {
         "startLine": 95,
         "startChar": 2,
