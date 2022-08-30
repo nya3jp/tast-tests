@@ -131,7 +131,7 @@ func RunClamShell(ctx, closeCtx context.Context, tconn *chrome.TestConn, ui *uia
 	}
 
 	// Maximize window.
-	maximizeButton := nodewith.Name("Maximize").ClassName("FrameCaptionButton").Role(role.Button)
+	maximizeButton := nodewith.Name("Maximize").ClassName("FrameSizeButton").Role(role.Button)
 	if err := ui.LeftClick(maximizeButton)(ctx); err != nil {
 		return errors.Wrap(err, "failed to maximize the browser window")
 	}
