@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "596cfea4_a1e4f8cd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2022-08-30T01:08:21Z",
+      "side": 1,
+      "message": "nit: The body of commit messages should be \u003c\u003d 72 lines",
+      "revId": "d2befbd5328334c97b1741a6520ed2be7aefa543",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
