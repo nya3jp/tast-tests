@@ -27,6 +27,7 @@ import (
 	"chromiumos/tast/common/network/protoutil"
 	"chromiumos/tast/common/shillconst"
 	"chromiumos/tast/common/testexec"
+	"chromiumos/tast/common/utils"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/network"
@@ -2918,8 +2919,8 @@ func (s *ShillService) StartTethering(ctx context.Context, request *wifi.Tetheri
 	}
 
 	if err := s.startDHCPServer(ctx); err != nil {
-		localwpacli.NewLocalRunner().StopSoftAP(ctx)
 		s.stopDHCPServer(ctx)
+		localwpacli.NewLocalRunner().StopSoftAP(ctx)
 		return nil, errors.Wrap(err, "failed to start DHCP server")
 	}
 
@@ -2929,6 +2930,7 @@ func (s *ShillService) StartTethering(ctx context.Context, request *wifi.Tetheri
 // StopTethering attempts to stop the tethering session.
 // This is the implementation of wifi.ShillService/StopTethering gRPC.
 func (s *ShillService) StopTethering(ctx context.Context, _ *empty.Empty) (*empty.Empty, error) {
+	var firstErr error
 	ctx, cancel := reserveForReturn(ctx)
 	defer cancel()
 
@@ -2936,16 +2938,16 @@ func (s *ShillService) StopTethering(ctx context.Context, _ *empty.Empty) (*empt
 	defer st.End()
 	testing.ContextLog(ctx, "Attempting to stop the tethering session")
 
+	if err := s.stopDHCPServer(ctx); err != nil {
+		utils.CollectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to stop DHCP server"))
+	}
+
 	// TODO(b/235758932): Change to use Shill dbus call instead of wpa_supplicant when tethering support in Shill is ready.
 	if err := localwpacli.NewLocalRunner().StopSoftAP(ctx); err != nil {
-		return &empty.Empty{}, errors.Wrap(err, "failed to stop soft AP in wpa_supplicant")
+		utils.CollectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to stop soft AP in wpa_supplicant"))
 	}
 
-	if err := s.stopDHCPServer(ctx); err != nil {
-		return &empty.Empty{}, errors.Wrap(err, "failed to stop DHCP server")
-	}
-
-	return &empty.Empty{}, nil
+	return &empty.Empty{}, firstErr
 }
 
 func (s *ShillService) startSoftAP(ctx context.Context, request *wifi.TetheringRequest) (uint32, error) {
@@ -2965,7 +2967,7 @@ func (s *ShillService) startSoftAP(ctx context.Context, request *wifi.TetheringR
 		keyMgmt = "WPA-PSK SAE"
 	}
 
-	if err := localwpacli.NewLocalRunner().StartSoftAP(ctx, freq, string(request.Ssid), keyMgmt, string(request.Psk)); err != nil {
+	if err := localwpacli.NewLocalRunner().StartSoftAP(ctx, freq, string(request.Ssid), keyMgmt, string(request.Psk), string(request.Cipher)); err != nil {
 		return 0, errors.Wrap(err, "failed to start soft AP in wpa_supplicant")
 	}
 
@@ -3019,6 +3021,7 @@ func (s *ShillService) startDHCPServer(ctx context.Context) (ret error) {
 }
 
 func (s *ShillService) stopDHCPServer(ctx context.Context) error {
+	var firstErr error
 	r := &cmd.LocalCmdRunner{}
 
 	if err := r.Run(ctx, "killall", "dnsmasq"); err != nil {
@@ -3029,24 +3032,24 @@ func (s *ShillService) stopDHCPServer(ctx context.Context) error {
 	args := []firewall.RuleOption{firewall.OptionDeleteRule(firewall.InputChain)}
 	args = append(args, dhcpFirewallParams...)
 	if err := firewallRunner.ExecuteCommand(ctx, args...); err != nil {
-		return errors.Wrap(err, "failed to delete DHCP iptable rule")
+		utils.CollectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to delete DHCP iptable rule"))
 	}
 
 	m, err := shill.NewManager(ctx)
 	if err != nil {
-		return errors.Wrap(err, "failed to create shill manager proxy")
+		utils.CollectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to create shill manager proxy"))
 	}
 	iface, err := shill.WifiInterface(ctx, m, 5*time.Second)
 	if err != nil {
-		return errors.Wrap(err, "failed to get a WiFi device")
+		utils.CollectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to get a WiFi device"))
 	}
 
 	ipr := ip.NewLocalRunner()
 	if err := ipr.DeleteIP(ctx, iface, net.ParseIP(softAPIPAddress), 24); err != nil {
-		return errors.Wrap(err, "failed to delete IPv4 address on WiFi interface")
+		utils.CollectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to delete IPv4 address on WiFi interface"))
 	}
 
-	return nil
+	return firstErr
 }
 
 // SetPortalDetectionEnabled persistently enables/disables PortalDection via shill.
