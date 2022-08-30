@@ -162,6 +162,57 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "262cc213_54bd4e98",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/wwcb_api.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1545012
+      },
+      "writtenOn": "2022-08-30T15:49:20Z",
+      "side": 1,
+      "message": "Do the command line arguments passed-in replace this hard coded IP?",
+      "revId": "c540f98f694850163a5b0a7b8b5b453a9241a318",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d27002c8_74825be1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/wwcb_api.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1545012
+      },
+      "writtenOn": "2022-08-30T15:49:20Z",
+      "side": 1,
+      "message": "Doc is a bit unclear.  It looks like the function returns a URL for the screen_capture API endpoint.  Does this actually trigger the camera capturing a screenshot?",
+      "revId": "c540f98f694850163a5b0a7b8b5b453a9241a318",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "124b25e6_ddaad6a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/wwcb_api.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1545012
+      },
+      "writtenOn": "2022-08-30T15:49:20Z",
+      "side": 1,
+      "message": "Spelling: should this be \"GetPicColorHotValue\" (c in Pic is missing)?",
+      "revId": "c540f98f694850163a5b0a7b8b5b453a9241a318",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "14c8d9a0_fd763fdb",
         "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/wwcb_fixture.go",
         "patchSetId": 23
