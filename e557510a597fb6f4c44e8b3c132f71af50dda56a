@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d69bd835_16cf4d4d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2022-08-30T05:47:25Z",
+      "side": 1,
+      "message": "LGTM from tast side. Waiting for team member\u0027s technical review before submitting.",
+      "revId": "e557510a597fb6f4c44e8b3c132f71af50dda56a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c3cb880_8a9c4366",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/add_remove_pin.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2022-08-30T05:47:25Z",
+      "side": 1,
+      "message": "nit: You may want to retain the comment here and other files to make it consistent.",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 1
+      },
+      "revId": "e557510a597fb6f4c44e8b3c132f71af50dda56a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
