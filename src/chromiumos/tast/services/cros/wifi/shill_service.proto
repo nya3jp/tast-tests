@@ -582,6 +582,7 @@ message TetheringRequest {
   string band = 4;
   string security = 5;
   string psk = 6;
+  string cipher = 7;
 }
 
 message TetheringResponse {
