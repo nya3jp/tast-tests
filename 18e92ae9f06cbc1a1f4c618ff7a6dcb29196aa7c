@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dcf908cb_addd036f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/network_chroot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1356183
+      },
+      "writtenOn": "2022-08-30T05:17:02Z",
+      "side": 1,
+      "message": "Also change the file name?",
+      "range": {
+        "startLine": 25,
+        "startChar": 5,
+        "endLine": 25,
+        "endChar": 17
+      },
+      "revId": "18e92ae9f06cbc1a1f4c618ff7a6dcb29196aa7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7a910e2_26853aa7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/vpn_server.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1356183
+      },
+      "writtenOn": "2022-08-30T05:17:02Z",
+      "side": 1,
+      "message": "rename?",
+      "range": {
+        "startLine": 354,
+        "startChar": 1,
+        "endLine": 354,
+        "endChar": 10
+      },
+      "revId": "18e92ae9f06cbc1a1f4c618ff7a6dcb29196aa7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
