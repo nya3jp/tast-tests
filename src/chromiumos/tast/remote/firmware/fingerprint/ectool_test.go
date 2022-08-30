@@ -79,3 +79,26 @@ f1: A B C
 		t.Fatal("Parsed extra values.")
 	}
 }
+
+func TestEctoolFlagsUnmarshaler(t *testing.T) {
+	var out = `0x00000c02`
+	var expect uint32 = 0xc02
+
+	actual, err := UnmarshalEctoolFlags(out)
+	if err != nil {
+		t.Fatal("Failed to unmarshal ectool flags: ", err)
+	}
+
+	if actual != expect {
+		t.Fatalf("Unmarshaled ectool flags  %+v doesn't match expected flags %+v.", actual, expect)
+	}
+}
+
+func TestEctoolFlagsUnmarshalerLargerThanUint32(t *testing.T) {
+	var out = `0x100000c02`
+
+	_, err := UnmarshalEctoolFlags(out)
+	if err == nil {
+		t.Fatal("Expected parsing error for numbers larger than uint32")
+	}
+}
