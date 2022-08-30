@@ -40,6 +40,13 @@ const (
 	WindowMovementDirectionLeft WindowMovementDirection = "Left"
 )
 
+// DesksInfo holds overall desks information.
+// https://cs.chromium.org/chromium/src/chrome/common/extensions/api/autotest_private.idl
+type DesksInfo struct {
+	ActiveDeskIndex int `json:"activeDeskIndex"`
+	NumDesks        int `json:"numDesks"`
+}
+
 // CreateNewDesk requests Ash to create a new Virtual Desk which would fail if
 // the maximum number of desks have been reached.
 func CreateNewDesk(ctx context.Context, tconn *chrome.TestConn) error {
@@ -110,19 +117,26 @@ func ActivateAdjacentDesksToTargetIndex(ctx context.Context, tconn *chrome.TestC
 	return nil
 }
 
-// GetDeskCount asks Ash's DesksController to give it the number of desks that
-// are currently open.
-// This call will fail if the returned desk count is 0, which should never
-// happen.
+// GetDeskCount asks Ash's DesksController for information about the
+// open desks. This call will fail if the returned desk count is less
+// than 1, which should never happen.
 func GetDeskCount(ctx context.Context, tconn *chrome.TestConn) (int, error) {
-	count := 0
-	if err := tconn.Call(ctx, &count, "tast.promisify(chrome.autotestPrivate.getDeskCount)"); err != nil {
-		return count, err
+	desks, err := GetDesksInfo(ctx, tconn)
+	if err != nil {
+		return 0, err
 	}
-	if count == 0 {
-		return count, errors.New("failed to get desk count")
+	if desks.NumDesks < 1 {
+		return desks.NumDesks, errors.Errorf("unexpected desk count of %d, there should always be at least 1 desk", desks.NumDesks)
 	}
-	return count, nil
+	return desks.NumDesks, nil
+}
+
+// GetDesksInfo retrieves desks information defined in DesksInfo
+// from the autotestPrivate API.
+func GetDesksInfo(ctx context.Context, tconn *chrome.TestConn) (DesksInfo, error) {
+	var desks DesksInfo
+	err := tconn.Call(ctx, &desks, "tast.promisify(chrome.autotestPrivate.getDesksInfo)")
+	return desks, err
 }
 
 // FindDeskMiniViews returns a list of DeskMiniView nodes.
