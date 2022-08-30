@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dba9b005_6306e3fd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-08-30T04:56:33Z",
+      "side": 1,
+      "message": "Please take a look, with low priority.\nThis can\u0027t land until at least two chromium changes have landed, both of which I haven\u0027t sent out yet.",
+      "revId": "ef45adb8e101ebb88804eaa920ea0bcae48e74b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d34896aa_31105e6f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/activate.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-08-30T04:56:33Z",
+      "side": 1,
+      "message": "Here I need some way to free resources without closing the browser.\n\nLet me c\u0026p my comment from an earlier CL:\n\n\u003d\u003d\u003d\n\nHaving the closure NOT close the browser seems more natural for [browserfixt.]Connect since it\u0027s used to connect to an already open browser.\n\nHowever, I\u0027m tempted to follow up with adding a parameter to the closure that lets one close the browser as well (i.e. the parameter decides whether Close or CloseResources is called).\n\nAlternatively, perhaps it\u0027s time to provide a Close and Free method (or similar) on Browser.\n\nBTW, the closeBrowser closure returned by browserfixt.SetUp and browserfixt.SetUpWithURL is quite weird currently because for Ash it doesn\u0027t actually close the browser.",
+      "revId": "ef45adb8e101ebb88804eaa920ea0bcae48e74b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
