@@ -2,8 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-// Package chroot implements a chroot environment that runs in a separate network namespace from the caller.
-package chroot
+package vpn
 
 import (
 	"bytes"
@@ -22,8 +21,8 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// NetworkChroot wraps the chroot variables.
-type NetworkChroot struct {
+// serverRunner is a helper struct to start a VPN server inside a virtualnet Env object.
+type serverRunner struct {
 	netRootDirectories     []string
 	netConfigFileTemplates map[string]string
 	netConfigFileValues    map[string]interface{}
@@ -41,9 +40,9 @@ const (
 		"set -x\n" // Print all executed commands to the terminal.
 )
 
-// NewNetworkChroot creates a new chroot object.
-func NewNetworkChroot(virtualNetEnv *env.Env) *NetworkChroot {
-	return &NetworkChroot{
+// newServerRunner creates a new serverRunner object.
+func newServerRunner(virtualNetEnv *env.Env) *serverRunner {
+	return &serverRunner{
 		netConfigFileTemplates: map[string]string{startup: startupTemplate},
 		netConfigFileValues:    map[string]interface{}{"startup_log": startupLog},
 		virtualNetEnv:          virtualNetEnv,
@@ -51,14 +50,14 @@ func NewNetworkChroot(virtualNetEnv *env.Env) *NetworkChroot {
 }
 
 // Startup starts the VPN server in virtualNetEnv.
-func (n *NetworkChroot) Startup(ctx context.Context) (string, error) {
+func (n *serverRunner) Startup(ctx context.Context) (string, error) {
 	success := false
 	defer func() {
 		if success {
 			return
 		}
 		if err := n.Shutdown(ctx); err != nil {
-			testing.ContextLog(ctx, "Failed to clean up NetworkChroot on setup failure: ", err)
+			testing.ContextLog(ctx, "Failed to clean up serverRunner on setup failure: ", err)
 		}
 	}()
 
@@ -90,7 +89,7 @@ func (n *NetworkChroot) Startup(ctx context.Context) (string, error) {
 }
 
 // Shutdown stops the cmds running by this object.
-func (n *NetworkChroot) Shutdown(ctx context.Context) error {
+func (n *serverRunner) Shutdown(ctx context.Context) error {
 	// Wait for the startup command finishing. Kill it at first just in case if it is still running.
 	if n.startupCmd != nil {
 		n.startupCmd.Kill()
@@ -109,7 +108,7 @@ func assureExists(path string) bool {
 }
 
 // writeConfigs write config files.
-func (n *NetworkChroot) writeConfigs() error {
+func (n *serverRunner) writeConfigs() error {
 	for configFile, fileTemplate := range n.netConfigFileTemplates {
 		b := &bytes.Buffer{}
 		template.Must(template.New("").Parse(fileTemplate)).Execute(b, n.netConfigFileValues)
@@ -123,7 +122,7 @@ func (n *NetworkChroot) writeConfigs() error {
 
 // RunChroot runs a command in a chroot, within the network namespace associated
 // with this chroot.
-func (n *NetworkChroot) RunChroot(ctx context.Context, args []string) error {
+func (n *serverRunner) RunChroot(ctx context.Context, args []string) error {
 	output, err := n.virtualNetEnv.CreateCommand(ctx, args...).CombinedOutput()
 	o := string(output)
 	if err != nil {
@@ -133,7 +132,7 @@ func (n *NetworkChroot) RunChroot(ctx context.Context, args []string) error {
 }
 
 // getPidFile returns the integer contents of |pid_file| in the chroot.
-func (n *NetworkChroot) getPidFile(pidFile string, missingOk bool) (int, error) {
+func (n *serverRunner) getPidFile(pidFile string, missingOk bool) (int, error) {
 	chrootPidFile := n.virtualNetEnv.ChrootPath(pidFile)
 	content, err := ioutil.ReadFile(chrootPidFile)
 	if err != nil {
@@ -152,7 +151,7 @@ func (n *NetworkChroot) getPidFile(pidFile string, missingOk bool) (int, error) 
 }
 
 // KillPidFile kills the process belonging to |pid_file| in the chroot.
-func (n *NetworkChroot) KillPidFile(ctx context.Context, pidFile string, missingOk bool) error {
+func (n *serverRunner) KillPidFile(ctx context.Context, pidFile string, missingOk bool) error {
 	pid, err := n.getPidFile(pidFile, missingOk)
 	if err != nil {
 		return errors.Wrapf(err, "failed to get the pid for the file %s", pidFile)
@@ -169,33 +168,33 @@ func (n *NetworkChroot) KillPidFile(ctx context.Context, pidFile string, missing
 }
 
 // AddConfigTemplates add a filename-content dict to the set of templates for the chroot.
-func (n *NetworkChroot) AddConfigTemplates(templates map[string]string) {
+func (n *serverRunner) AddConfigTemplates(templates map[string]string) {
 	for k, v := range templates {
 		n.netConfigFileTemplates[k] = v
 	}
 }
 
 // AddConfigValues add a name-value dict to the set of values for the config template.
-func (n *NetworkChroot) AddConfigValues(values map[string]interface{}) {
+func (n *serverRunner) AddConfigValues(values map[string]interface{}) {
 	for k, v := range values {
 		n.netConfigFileValues[k] = v
 	}
 }
 
 // AddRootDirectories add |directories| to the set created within the chroot.
-func (n *NetworkChroot) AddRootDirectories(directories []string) {
+func (n *serverRunner) AddRootDirectories(directories []string) {
 	n.netRootDirectories = append(n.netRootDirectories, directories...)
 }
 
 // AddStartupCommand add a command to the script run when the chroot starts up.
-func (n *NetworkChroot) AddStartupCommand(command string) {
+func (n *serverRunner) AddStartupCommand(command string) {
 	n.netConfigFileTemplates[startup] = n.netConfigFileTemplates[startup] + fmt.Sprintf("%s\n", command)
 }
 
 // GetLogContents return the logfiles from the chroot. |logFilePaths| is a list
 // of relative paths to the chroot. An error will be returned if any file in the
 // list does not exist.
-func (n *NetworkChroot) GetLogContents(ctx context.Context, logFilePaths []string) (string, error) {
+func (n *serverRunner) GetLogContents(ctx context.Context, logFilePaths []string) (string, error) {
 	logFilePaths = append(logFilePaths, startupLog)
 	var missingPaths []string
 
