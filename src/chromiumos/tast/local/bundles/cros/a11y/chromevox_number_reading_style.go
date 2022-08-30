@@ -21,7 +21,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ChromevoxNumberReadingStyle,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantNeeded, // TODO(crbug.com/1358282): Migrate when Chromevox options page opens in Lacros.
 		Desc:         "Verifies ChromeVox honors its setting to read numbers as words or as digits",
 		Contacts: []string{
 			"josiahk@chromium.org",         // Test author

@@ -27,7 +27,7 @@ const liveCaptionToggleName = "Live Caption"
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         LiveCaption,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantNeeded, // TODO(b/223493879): Migrate when the feature is complete for Lacros.
 		Desc:         "Checks live caption works",
 		Contacts: []string{
 			"alanlxl@chromium.org",
