@@ -378,7 +378,7 @@ func OverviewDragWindowPerf(ctx context.Context, s *testing.State) {
 		// Open a first window using browserfixt to get a Browser instance, then use the browser instance for other windows.
 		if currentWindows == 0 {
 			var conn *browser.Conn
-			var closeBrowser func(ctx context.Context)
+			var closeBrowser func(ctx context.Context) error
 			conn, br, closeBrowser, err = browserfixt.SetUpWithURL(ctx, cr, drag.bt, url)
 			if err != nil {
 				s.Fatal("Failed to open chrome: ", err)
