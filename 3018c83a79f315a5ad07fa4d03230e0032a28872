@@ -74,6 +74,30 @@
       },
       "revId": "3018c83a79f315a5ad07fa4d03230e0032a28872",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a62d137_b95ed8c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/split_view.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1539138
+      },
+      "writtenOn": "2022-08-31T08:28:35Z",
+      "side": 1,
+      "message": "Good point! hmm but Activity.Close() doesn\u0027t return errors. I am only wrapping Activity.Stop() with error catch.",
+      "parentUuid": "1e38d06f_966626cd",
+      "range": {
+        "startLine": 155,
+        "startChar": 1,
+        "endLine": 158,
+        "endChar": 16
+      },
+      "revId": "3018c83a79f315a5ad07fa4d03230e0032a28872",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
