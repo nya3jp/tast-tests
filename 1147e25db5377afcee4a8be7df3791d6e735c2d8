@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "18349858_3d07096f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-08-31T06:41:33Z",
+      "side": 1,
+      "message": "Add Georg to review the changes in browserfixt.go",
+      "revId": "1147e25db5377afcee4a8be7df3791d6e735c2d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c47026ac_68733123",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/cursive_smoke.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-08-31T06:41:33Z",
+      "side": 1,
+      "message": "this is unnecessary if the browser has been closed at L129.\n\nYou may need to add a condition check.",
+      "range": {
+        "startLine": 93,
+        "startChar": 1,
+        "endLine": 93,
+        "endChar": 31
+      },
+      "revId": "1147e25db5377afcee4a8be7df3791d6e735c2d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "324a36ad_5e65844a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/cursive_smoke.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-08-31T06:41:33Z",
+      "side": 1,
+      "message": "you just need `l, err :\u003d lacros.Launch(ctx, tconn)` and `l.Close()` here.\n\nor, you don\u0027t need to check if it is TypeLacros by using `browserfixt.SetUp(ctx, cr, browserType)` (there is no harm openning a Ash browser)",
+      "range": {
+        "startLine": 133,
+        "startChar": 2,
+        "endLine": 137,
+        "endChar": 32
+      },
+      "revId": "1147e25db5377afcee4a8be7df3791d6e735c2d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
