@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b5bdcf4_9776d93d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1268793
+      },
+      "writtenOn": "2022-08-31T21:09:29Z",
+      "side": 1,
+      "message": "Thanks for working on this.",
+      "revId": "67061db54b446cb5e2a95eefaa1b8d8daf6b44f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e26b317_2bd91af3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/local_playback.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1268793
+      },
+      "writtenOn": "2022-08-31T21:09:29Z",
+      "side": 1,
+      "message": "nit: Observe this check in a few tests, can we refactor it into a helper function or fixture for setting up for the creation flow?\n\nFeel free to do that in a follow up CL.",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 0
+      },
+      "revId": "67061db54b446cb5e2a95eefaa1b8d8daf6b44f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b10f29f_49f857da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/local_playback.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1268793
+      },
+      "writtenOn": "2022-08-31T21:09:29Z",
+      "side": 1,
+      "message": "I am curious about why you prefer using defer instead of actually do the clean up after the test?",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 60
+      },
+      "revId": "67061db54b446cb5e2a95eefaa1b8d8daf6b44f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "84b945c1_8e8d31f5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/local_playback.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1268793
+      },
+      "writtenOn": "2022-08-31T21:09:29Z",
+      "side": 1,
+      "message": "It is probably safe to assume that the video is still transcoding at this point. Adding a check on whether the screencast is still being transcoding might introduce flakyness.\n\nIf there is no easy way to guarantee that, I am wondering if we want to introduce a way to force loading from local if our goal is to make sure local playback is being tested.\n\nSomething to think about, consider adding TODOs or adding comment to better explain this suitation. No need to address in this CL.",
+      "range": {
+        "startLine": 71,
+        "startChar": 37,
+        "endLine": 71,
+        "endChar": 74
+      },
+      "revId": "67061db54b446cb5e2a95eefaa1b8d8daf6b44f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d483e3f3_e10d2928",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/local_playback.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1268793
+      },
+      "writtenOn": "2022-08-31T21:09:29Z",
+      "side": 1,
+      "message": "I think this is a good test for \"test playback\". Might want to consider refactoring out to be reuseable.",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 80
+      },
+      "revId": "67061db54b446cb5e2a95eefaa1b8d8daf6b44f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
