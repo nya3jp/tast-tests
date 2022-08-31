@@ -42,7 +42,7 @@ func init() {
 type CheckVirtualKeyboardService struct {
 	cr           *chrome.Chrome
 	br           *browser.Browser
-	closeBrowser func(ctx context.Context)
+	closeBrowser uiauto.Action
 	tconn        *chrome.TestConn // from ash-chrome
 	sharedObject *common.SharedObjectsForService
 	uia          *uiauto.Context

@@ -153,7 +153,7 @@ type InputsTestServer struct {
 	pc *chrome.Conn
 	ui *uiauto.Context
 	// Cleanup task for the browser.
-	closeBrowser func(ctx context.Context)
+	closeBrowser uiauto.Action
 }
 
 // FieldInputEval encapsulates a function to input text into an input field, and its expected output.
