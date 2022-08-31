@@ -10,4 +10,5 @@ const (
 	SignalSuspendImminent     = "SuspendImminent"
 	SignalDarkSuspendImminent = "DarkSuspendImminent"
 	SignalSuspendDone         = "SuspendDone"
+	SignalInputEvent          = "InputEvent"
 )
