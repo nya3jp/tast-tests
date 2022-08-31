@@ -210,6 +210,30 @@
       },
       "revId": "12b1334b6987e287d40a2151777603fd660e67c3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b255efc6_0ba70e26",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/creation_flow.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-08-31T22:04:03Z",
+      "side": 1,
+      "message": "Done. I went with option 2 as the short-term solution. I couldn\u0027t figure out how to add a new software dependency to check the cras node similar to [1]. Where is the logic implemented for software deps?\n\n[1] https://source.chromium.org/chromium/chromium/src/+/main:ash/projector/projector_controller_impl.cc;l\u003d444?q\u003df:projector%20f:controller%20cras",
+      "parentUuid": "48c093b5_cc575790",
+      "range": {
+        "startLine": 57,
+        "startChar": 2,
+        "endLine": 57,
+        "endChar": 8
+      },
+      "revId": "12b1334b6987e287d40a2151777603fd660e67c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
