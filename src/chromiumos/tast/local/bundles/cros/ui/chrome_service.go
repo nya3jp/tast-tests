@@ -82,11 +82,8 @@ func (svc *ChromeService) Close(ctx context.Context, req *empty.Empty) (*empty.E
 	return &empty.Empty{}, err
 }
 
+// toOptions converts a chrome_service.NewRequest into a set of chrome options.
 func toOptions(req *pb.NewRequest) ([]chrome.Option, error) {
-	// TODO(jonfan): Find a creative way to unit test this function
-	// The underlying object Config and MutableConfig are private
-	// chrome.Option are callback functions that work on Config, and they cannot
-	// be compared easily without having access to Config or its Mock Interface.
 	var options []chrome.Option
 
 	if req.KeepState {

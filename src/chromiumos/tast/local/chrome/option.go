@@ -9,6 +9,8 @@ import (
 	"math/rand"
 	"time"
 
+	"github.com/google/go-cmp/cmp"
+
 	"chromiumos/tast/local/chrome/internal/config"
 	"chromiumos/tast/local/cryptohome"
 )
@@ -514,4 +516,18 @@ func DisablePersonalizationHub() Option {
 		cfg.EnablePersonalizationHub = false
 		return nil
 	}
+}
+
+// OptionsDiff returns the diff between two sets of options.
+// It returns empty string if they are the same, or a diff if they are different.
+func OptionsDiff(got, want []Option) (string, error) {
+	gotCfg, err := config.NewConfig(got)
+	if err != nil {
+		return "", err
+	}
+	wantCfg, err := config.NewConfig(want)
+	if err != nil {
+		return "", err
+	}
+	return cmp.Diff(gotCfg, wantCfg, cmp.AllowUnexported(config.Config{})), err
 }
