@@ -45,7 +45,7 @@ func init() {
 		Contacts:     []string{"amusbach@chromium.org", "chromeos-perf@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_nightly"},
 		SoftwareDeps: []string{"chrome", "proprietary_codecs"},
-		Data:         []string{"bear-320x240.h264.mp4", "pip_video.html"},
+		Data:         []string{"180p_60fps_600frames.h264.mp4", "pip_video.html"},
 		Timeout:      5 * time.Minute,
 		Params: []testing.Param{{
 			Name:    "small",
@@ -186,9 +186,9 @@ func ChromePIPEnergyAndPower(ctx context.Context, s *testing.State) {
 		}
 	} else {
 		// The minimum size of a Chrome PIP window is 260x146. The aspect ratio of the
-		// video is 4x3, and so the minimum width 260 corresponds to a height of 195.
-		if pipWindowBounds.Width != 260 || pipWindowBounds.Height != 195 {
-			s.Fatalf("PIP window is %v. It should be (260 x 195)", pipWindowBounds.Size())
+		// video is 16x9, which matches that minimum size.
+		if pipWindowBounds.Width != 260 || pipWindowBounds.Height != 146 {
+			s.Fatalf("PIP window is %v. It should be (260 x 146)", pipWindowBounds.Size())
 		}
 	}
 
