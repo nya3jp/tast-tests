@@ -111,6 +111,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "401e91f5_72e0b6a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/enabled_policy.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1332928
+      },
+      "writtenOn": "2022-08-31T00:01:53Z",
+      "side": 1,
+      "message": "ooh gotcha!! the if statement is actually for err !\u003d nil.",
+      "parentUuid": "98769820_fdd4a104",
+      "range": {
+        "startLine": 168,
+        "startChar": 3,
+        "endLine": 168,
+        "endChar": 7
+      },
+      "revId": "3231738990572699a7b22fc34a7d2eb2b41e27c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1c08ee0d_605bd309",
@@ -124,6 +148,24 @@
       "writtenOn": "2022-08-30T06:40:19Z",
       "side": 1,
       "message": "I ran a simple experiment where I passed --enable-features\u003dProjectorManagedUserIgnorePolicy to my DUT, forcing the Projector app to be always installed regardless of policy.\n\nEven if the Projector app is installed, this error doesn\u0027t throw, so we can get rid of this check.",
+      "revId": "3231738990572699a7b22fc34a7d2eb2b41e27c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74620f8e_beb5e3e3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/enabled_policy.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1332928
+      },
+      "writtenOn": "2022-08-31T00:01:53Z",
+      "side": 1,
+      "message": "makes sense!!",
+      "parentUuid": "1c08ee0d_605bd309",
       "revId": "3231738990572699a7b22fc34a7d2eb2b41e27c4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
