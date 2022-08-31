@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "369f2396_4a9f7920",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-08-31T21:12:31Z",
+      "side": 1,
+      "message": "Done, I\u0027ll try keeping an eye on this in future CLs.",
+      "parentUuid": "01bbf5fc_ebaf43c0",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 12
+      },
+      "revId": "936b0a2fc733726a7a6d7ebf055e1b615d869734",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "296d87df_5ff18a2e",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-08-31T20:47:38Z",
       "side": 1,
       "message": "If you can reproduce the problem (maybe with `crosfleet`), then please actually verify that this CL fixes it.",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 33
+      },
+      "revId": "936b0a2fc733726a7a6d7ebf055e1b615d869734",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa917620_fc85559f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-08-31T21:12:31Z",
+      "side": 1,
+      "message": "It\u0027s really hard to reproduce -- this \"Missing outbound video stream\" is actually not happening frequently on non puff/kaisa and fizz/kench devices. I saw dedede/metaknight had the camera turned off frequently though so verified through crosfleet that this fixed worked, at least when I ran it.\n\nI still expect to see the error message some times because some devices seem to have camera issues, but hopefully this fixes the ones where clearly the camera is just turned off.",
+      "parentUuid": "296d87df_5ff18a2e",
       "range": {
         "startLine": 15,
         "startChar": 0,
