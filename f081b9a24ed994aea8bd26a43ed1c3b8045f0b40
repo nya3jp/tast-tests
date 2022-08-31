@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0428838a_ca9a1a39",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/drag_and_drop_window.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-08-31T22:28:44Z",
+      "side": 1,
+      "message": "nit: check window\u0027s bound to ensure the window get dragged back",
+      "revId": "f081b9a24ed994aea8bd26a43ed1c3b8045f0b40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
