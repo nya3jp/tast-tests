@@ -22,6 +22,30 @@
       },
       "revId": "7a06996f525f7f4b7941f76ce16e4889b24363ea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fcf2d305_dd641a01",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/image_paste.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2022-08-31T00:45:15Z",
+      "side": 1,
+      "message": "In case of Ash Chrome there is only 1 window and hence no issue. Should lacros be similar having 1 window instead of 2 so that this workaround of bringing extension window to front can be avoided.",
+      "parentUuid": "ee22b6c2_20f630d4",
+      "range": {
+        "startLine": 121,
+        "startChar": 0,
+        "endLine": 121,
+        "endChar": 106
+      },
+      "revId": "7a06996f525f7f4b7941f76ce16e4889b24363ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
