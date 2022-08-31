@@ -164,6 +164,23 @@ func (app *MicrosoftWebOffice) CreateSpreadsheet(ctx context.Context, cr *chrome
 		return "", errors.Wrap(err, "failed to wait for sample sheet page to finish loading")
 	}
 
+	updatingRootWebArea := nodewith.Name("We're updating our terms").Role(role.RootWebArea).Focusable()
+	nextButton := nodewith.Name("Next").Role(role.Button).Ancestor(updatingRootWebArea)
+	skipUpdatingTermDialog := uiauto.IfSuccessThen(
+		app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(nextButton),
+		app.uiHdl.Click(nextButton))
+	// 1. If the account is already logged in, the "We are updating our terms" dialog may pop up after navigating to the sample sheet.
+	// 2. If the account is not logged in, a dialog box may pop up after logging in.
+	// So check the dialog before and after login.
+	if err := uiauto.Combine("wait for sample sheet content appears",
+		skipUpdatingTermDialog,
+		app.checkSignIn,
+		skipUpdatingTermDialog,
+		app.ui.WaitUntilExists(canvas),
+	)(ctx); err != nil {
+		return "", errors.Wrap(err, "failed to wait sample sheet content appears")
+	}
+
 	connOneDrive, err = app.openOneDrive(ctx)
 	if err != nil {
 		return "", errors.Wrap(err, "failed to open OneDrive")
@@ -238,6 +255,16 @@ func (app *MicrosoftWebOffice) CreateSpreadsheet(ctx context.Context, cr *chrome
 	// Since the file will only be saved automatically after the file is edited, mark the file created successfully here.
 	app.sheetCreated = true
 	return sheetName, nil
+}
+
+// skipUpdatingTermsDialog skips the "We are updating our terms" dialog.
+// The dialog might pop up in the following situations:
+// 1. After navigating to OneDrive or Microsoft Excel.
+// 2. After the sign-in process, before the stay sign-in dialog pops up.
+func (app *MicrosoftWebOffice) skipUpdatingTermsDialog() uiauto.Action {
+	updatingRootWebArea := nodewith.Name("We're updating our terms").Role(role.RootWebArea).Focusable()
+	skipTermsButton := nodewith.Name("Next").Role(role.Button).Ancestor(updatingRootWebArea)
+	return uiauto.IfSuccessThen(app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(skipTermsButton), app.uiHdl.Click(skipTermsButton))
 }
 
 // OpenSpreadsheet opens an existing spreadsheet from microsoft web app.
@@ -541,18 +568,13 @@ func (app *MicrosoftWebOffice) signIn(ctx context.Context) error {
 
 	passwordField := nodewith.Name("Enter the password for " + app.username).Role(role.TextField)
 	signInButton := nodewith.Name("Sign in").Role(role.Button)
-	staySignInHeading := nodewith.Name("Stay signed in?").Role(role.Heading)
-	yesButton := nodewith.Name("Yes").Role(role.Button)
-	closeButton := nodewith.Name("Close first run experience").Role(role.Button)
 
 	enterPassword := func(ctx context.Context) error {
 		return uiauto.NamedCombine("enter the password",
 			app.ui.DoDefaultUntil(passwordField, app.ui.Exists(passwordField.Focused())),
 			app.kb.AccelAction("Ctrl+A"), // Prevent the field from already being populated.
 			app.kb.TypeAction(app.password),
-			app.uiHdl.Click(signInButton),
-			uiauto.IfSuccessThen(app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(staySignInHeading), app.uiHdl.Click(yesButton)),
-			uiauto.IfSuccessThen(app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(closeButton), app.uiHdl.Click(closeButton)),
+			app.ui.DoDefault(signInButton),
 		)(ctx)
 	}
 
@@ -575,10 +597,20 @@ func (app *MicrosoftWebOffice) signIn(ctx context.Context) error {
 		return err
 	}
 
+	// Check and skip the dialog at the end of sign in action.
+	savePasswordWindow := nodewith.Name("Save password?").Role(role.Window)
+	closeSavePasswordWindow := nodewith.Name("Close").Role(role.Button).Ancestor(savePasswordWindow)
+	msAccountWebArea := nodewith.Name("Microsoft account").Role(role.RootWebArea)
+	staySignInHeading := nodewith.Name("Stay signed in?").Role(role.Heading).Ancestor(msAccountWebArea)
+	staySignInYesButton := nodewith.Name("Yes").Role(role.Button).Ancestor(msAccountWebArea).Focusable()
+	closeButton := nodewith.Name("Close first run experience").Role(role.Button)
+
 	// Sometimes it will login directly without entering password.
-	return uiauto.IfSuccessThen(
-		app.ui.WaitUntilExists(passwordField),
-		enterPassword,
+	return uiauto.Combine("enter password and skip dialog",
+		uiauto.IfSuccessThen(app.ui.WaitUntilExists(passwordField), enterPassword),
+		uiauto.IfSuccessThen(app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(closeSavePasswordWindow), app.uiHdl.Click(closeSavePasswordWindow)),
+		uiauto.IfSuccessThen(app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(staySignInHeading), uiauto.NamedAction("click stay sign in", app.uiHdl.Click(staySignInYesButton))),
+		uiauto.IfSuccessThen(app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(closeButton), app.uiHdl.Click(closeButton)),
 	)(ctx)
 }
 
@@ -676,18 +708,14 @@ func (app *MicrosoftWebOffice) openOneDrive(ctx context.Context) (*chrome.Conn, 
 	goToOffice := nodewith.Name("Go to Office").Role(role.Link)
 	securityHeading := nodewith.Name("Is your security info still accurate?").Role(role.Heading)
 	looksGoodButton := nodewith.Name("Looks good!").Role(role.Button)
-	updatingRootWebArea := nodewith.Name("We're updating our terms").Role(role.RootWebArea).Focusable()
-	nextButton := nodewith.Name("Next").Role(role.Button).Ancestor(updatingRootWebArea)
-	// The "We're updating our terms" dialog may appears after sign in or after navigate to OneDrive.
-	// Check and skip the dialog before and after navigate to OneDrive.
 	navigateToOneDrive := uiauto.Retry(retryTimes, func(ctx context.Context) (err error) {
 		if err = uiauto.NamedCombine("navigate to OneDrive",
-			uiauto.IfSuccessThen(app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(nextButton), app.uiHdl.Click(nextButton)),
 			uiauto.IfSuccessThen(app.ui.Exists(securityHeading), app.uiHdl.Click(looksGoodButton)),
 			app.ui.DoDefault(appLauncher),
 			app.ui.WaitUntilExists(closeAppLauncher),
 			app.ui.FocusAndWait(oneDriveLink),
 			app.ui.DoDefault(oneDriveLink),
+			app.skipUpdatingTermsDialog(),
 		)(ctx); err == nil {
 			return nil
 		}
@@ -810,8 +838,8 @@ func (app *MicrosoftWebOffice) clickNavigationItem(itemName string) action.Actio
 
 // switchToListView switches the view option to list view.
 func (app *MicrosoftWebOffice) switchToListView(ctx context.Context) error {
-	details := nodewith.NameRegex(regexp.MustCompile(`(Details|Info).*`)).Role(role.MenuItem).First()
-	viewOptions := nodewith.NameContaining("View options").Role(role.MenuItem)
+	details := nodewith.NameRegex(regexp.MustCompile(`([Dd]etails|Info).*`)).Role(role.MenuItem).First()
+	viewOptions := nodewith.NameRegex(regexp.MustCompile(`[Vv]iew options`)).Role(role.MenuItem)
 	viewOptionsExpanded := viewOptions.Expanded()
 	listView := nodewith.NameContaining("List").Role(role.MenuItemCheckBox).Ancestor(viewOptions)
 
