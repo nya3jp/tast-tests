@@ -36,7 +36,12 @@ func (f *FilePicker) OpenDir(dirName string) uiauto.Action {
 	return f.filesApp.OpenDir(dirName, dirName)
 }
 
-// OpenFile returns a function that executes double click on a file to open it with default app.
+// OpenFile returns a function that executes double click on a file to open it.
 func (f *FilePicker) OpenFile(fileName string) uiauto.Action {
 	return f.filesApp.OpenFile(fileName)
+}
+
+// SelectFile returns a function that selects a file.
+func (f *FilePicker) SelectFile(fileName string) uiauto.Action {
+	return f.filesApp.SelectFile(fileName)
 }
