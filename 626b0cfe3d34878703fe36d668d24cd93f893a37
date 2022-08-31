@@ -33,6 +33,23 @@
       "message": "ChromevoxNumberReadingStyle CR+1 (sadly don\u0027t have CR+2 power currently)",
       "revId": "626b0cfe3d34878703fe36d668d24cd93f893a37",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "21e75e69_4ce9e36a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-08-31T15:22:12Z",
+      "side": 1,
+      "message": "Xinglong, can you help confirm that a11y.LiveCaption needs lacros variant? Thanks,",
+      "revId": "626b0cfe3d34878703fe36d668d24cd93f893a37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
