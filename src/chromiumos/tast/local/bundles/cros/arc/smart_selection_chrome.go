@@ -10,6 +10,7 @@ import (
 	"time"
 
 	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/browser"
@@ -118,10 +119,7 @@ func SmartSelectionChrome(ctx context.Context, s *testing.State) {
 	}
 
 	// Right click the selected address and ensure the smart selection map option is available.
-	mapOption := nodewith.Name("Map").Role(role.MenuItem)
-	if err := uiauto.Combine("Show context menu",
-		ui.RightClick(address),
-		ui.WaitUntilExists(mapOption))(ctx); err != nil {
+	if err := waitForMapOption(ctx, ui, address); err != nil {
 		s.Log("Failed to show map option: ", err)
 		// After timeout, dump all the menuItems if possible, this should provide a clear
 		// idea whether items are missing in the menu or the menu not being there at all.
@@ -136,4 +134,24 @@ func SmartSelectionChrome(ctx context.Context, s *testing.State) {
 		}
 		s.Fatalf("Found %d menu items, including: %s", len(items), strings.Join(items, " / "))
 	}
+}
+
+func waitForMapOption(ctx context.Context, ui *uiauto.Context, address *nodewith.Finder) error {
+	mapOption := nodewith.Name("Map").Role(role.MenuItem)
+	testing.ContextLog(ctx, "Polling until Map option is found")
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		if err := ui.RightClick(address)(ctx); err != nil {
+			return errors.Wrap(err, "failed to right click on address")
+		}
+		if err := ui.WithTimeout(3 * time.Second).WithInterval(100 * time.Millisecond).WaitUntilExists(mapOption)(ctx); err != nil {
+			// Did not find Map, click again to close the context menu.
+			testing.ContextLog(ctx, "Did not find Map in context menu")
+			if e := ui.RightClick(address)(ctx); e != nil {
+				return testing.PollBreak(errors.Wrap(e, "failed to close context menu"))
+			}
+			return errors.Wrap(err, "Map option not found")
+		}
+		testing.ContextLog(ctx, "Map option found")
+		return nil
+	}, &testing.PollOptions{Timeout: 15 * time.Second, Interval: 500 * time.Millisecond})
 }
