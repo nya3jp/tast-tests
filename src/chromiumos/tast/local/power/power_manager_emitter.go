@@ -64,6 +64,11 @@ func (p *PowerManagerEmitter) EmitSuspendDone(ctx context.Context, msg *pmpb.Sus
 	return p.emitEvent(ctx, msg, SignalSuspendDone)
 }
 
+// EmitInputEvent emits InputEvent D-Bus signal.
+func (p *PowerManagerEmitter) EmitInputEvent(ctx context.Context, msg *pmpb.InputEvent) error {
+	return p.emitEvent(ctx, msg, SignalInputEvent)
+}
+
 func (*PowerManagerEmitter) emitEvent(ctx context.Context, msg proto.Message, eventName string) error {
 	watcher, err := NewSignalWatcher(ctx, eventName)
 	if err != nil {
