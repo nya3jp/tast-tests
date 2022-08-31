@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e20b3410_3d53ddf8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/gesture_navigation.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1528608
+      },
+      "writtenOn": "2022-08-31T12:13:18Z",
+      "side": 1,
+      "message": "```nodewith.Name(\"Get started\").Role(role.Button) (value of type *nodewith.Finder) is not constant```\nProbably can\u0027t guarantee that pointer won\u0027t be changed later.",
+      "parentUuid": "d4a2d7c2_109b8c8f",
+      "range": {
+        "startLine": 41,
+        "startChar": 1,
+        "endLine": 41,
+        "endChar": 4
+      },
+      "revId": "bf95b41789923edaba561f50d58042535a452cee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0c8b2cb8_2179c565",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-08-31T07:14:57Z",
       "side": 1,
       "message": "remove - this is default behavior anyway.",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 65
+      },
+      "revId": "bf95b41789923edaba561f50d58042535a452cee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2519ac6_aeea3136",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/gesture_navigation.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1528608
+      },
+      "writtenOn": "2022-08-31T12:13:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0c8b2cb8_2179c565",
       "range": {
         "startLine": 48,
         "startChar": 0,
