@@ -383,12 +383,18 @@ func authenticateWithCorrectPassword(ctx, ctxForCleanUp context.Context, testUse
 
 	// Authenticate with correct password.
 	if userParam.useAuthFactor {
-		err = cryptohomeHelper.AuthenticateAuthFactor(ctx, authSessionID, passwordAuthFactorLabel, passwordAuthFactorSecret)
+		reply, err := cryptohomeHelper.AuthenticateAuthFactor(ctx, authSessionID, passwordAuthFactorLabel, passwordAuthFactorSecret)
+		if err != nil {
+			return errors.Wrap(err, "failed to authenticate auth factor")
+		}
+		if !reply.Authenticated {
+			return errors.New("AuthSession not authenticated despite successful reply")
+		}
 	} else {
 		err = cryptohomeHelper.AuthenticateAuthSession(ctx, passwordAuthFactorSecret, passwordAuthFactorLabel, authSessionID, false /*kiosk_mount*/)
-	}
-	if err != nil {
-		return errors.Wrap(err, "failed to authenticated auth factor with correct password")
+		if err != nil {
+			return errors.Wrap(err, "failed to authenticate AuthSession")
+		}
 	}
 
 	return nil

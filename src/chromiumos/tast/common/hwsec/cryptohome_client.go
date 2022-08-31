@@ -998,9 +998,16 @@ func (u *CryptohomeClient) UpdateCredentialWithAuthSession(ctx context.Context, 
 }
 
 // AuthenticateAuthFactor authenticates an AuthSession with a given authSessionID via an auth factor.
-func (u *CryptohomeClient) AuthenticateAuthFactor(ctx context.Context, authSessionID, label, password string) error {
-	_, err := u.binary.authenticateAuthFactor(ctx, authSessionID, label, password)
-	return err
+func (u *CryptohomeClient) AuthenticateAuthFactor(ctx context.Context, authSessionID, label, password string) (*uda.AuthenticateAuthFactorReply, error) {
+	binaryMsg, err := u.binary.authenticateAuthFactor(ctx, authSessionID, label, password)
+	if err != nil {
+		return nil, errors.Wrap(err, "AuthenticateAuthFactor failed")
+	}
+	reply := &uda.AuthenticateAuthFactorReply{}
+	if err := proto.Unmarshal(binaryMsg, reply); err != nil {
+		return nil, errors.Wrap(err, "failed to unmarshal AuthenticateAuthFactor reply")
+	}
+	return reply, nil
 }
 
 // RemoveAuthFactor removes an auth factor with provided label.
