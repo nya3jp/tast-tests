@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0708197_1e813cd8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/dock5_network_switch.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1445085
+      },
+      "writtenOn": "2022-08-31T17:13:16Z",
+      "side": 1,
+      "message": "Please fix.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 63
+      },
+      "revId": "7563a05dc0fd88de376ff923aface600150946db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
