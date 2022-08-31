@@ -24,7 +24,7 @@ func init() {
 		Func:         RoutingFallthrough,
 		Desc:         "Verify the fall-through behavior for one IP family when the primary network is only configured with another family",
 		Contacts:     []string{"jiejiang@google.com", "cros-networking@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Params: []testing.Param{{
 			Name: "ipv4_only_primary",
