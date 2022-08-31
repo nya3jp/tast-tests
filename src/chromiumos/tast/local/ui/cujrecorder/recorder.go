@@ -236,20 +236,20 @@ func (r *Recorder) AddCommonMetrics(tconn, bTconn *chrome.TestConn) error {
 	} else {
 		bt = browser.TypeLacros
 	}
-	if err := r.AddCollectedMetrics(tconn, browser.TypeAsh, AshCommonMetricConfigs()...); err != nil {
+	if err := r.AddCollectedMetrics(tconn, browser.TypeAsh, CUJAshCommonMetricConfigs()...); err != nil {
 		return errors.Wrap(err, "failed to add Ash common metrics")
 	}
-	if err := r.AddCollectedMetrics(bTconn, bt, BrowserCommonMetricConfigs()...); err != nil {
+	if err := r.AddCollectedMetrics(bTconn, bt, CUJBrowserCommonMetricConfigs()...); err != nil {
 		return errors.Wrapf(err, "failed to add Browser(%s) common metrics", bt)
 	}
-	if err := r.AddCollectedMetrics(tconn, browser.TypeAsh, AnyChromeCommonMetricConfigs()...); err != nil {
+	if err := r.AddCollectedMetrics(tconn, browser.TypeAsh, CUJAnyChromeCommonMetricConfigs()...); err != nil {
 		return errors.Wrap(err, "failed to add Ash AnyChrome common metrics")
 	}
 	if tconn != bTconn {
-		if err := r.AddCollectedMetrics(bTconn, browser.TypeLacros, LacrosCommonMetricConfigs()...); err != nil {
+		if err := r.AddCollectedMetrics(bTconn, browser.TypeLacros, CUJLacrosCommonMetricConfigs()...); err != nil {
 			return errors.Wrap(err, "failed to add Lacros common metrics")
 		}
-		if err := r.AddCollectedMetrics(bTconn, browser.TypeLacros, AnyChromeCommonMetricConfigs()...); err != nil {
+		if err := r.AddCollectedMetrics(bTconn, browser.TypeLacros, CUJAnyChromeCommonMetricConfigs()...); err != nil {
 			return errors.Wrap(err, "failed to add Lacros AnyChrome common metrics")
 		}
 	}
