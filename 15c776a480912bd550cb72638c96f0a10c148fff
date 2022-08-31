@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b07bbfa_536f3a3c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 25
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1545162
+      },
+      "writtenOn": "2022-08-31T09:00:35Z",
+      "side": 1,
+      "message": "After the recent meeting, I\u0027m trying to separate dock1 \u0026 2 this CL, but I could not do it in that way, since the repo would check on the codes.\n\nMy old repo did not update and sync to the current version, and then faced some issues on the last review, so I just reinstalled the Tast, and the repo is working correctly and as expected, therefore those changes on dock 1 \u0026 2 come out right now, not in their CL.\n\nI will remember the concept that makes CL smaller and upload the test case with those related changes to one CL, and keep this in mind. ",
+      "revId": "15c776a480912bd550cb72638c96f0a10c148fff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
