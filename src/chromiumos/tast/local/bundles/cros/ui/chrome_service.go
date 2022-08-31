@@ -122,6 +122,18 @@ func toOptions(req *pb.NewRequest) ([]chrome.Option, error) {
 		options = append(options, chrome.DisableFeatures(req.DisableFeatures...))
 	}
 
+	if len(req.LacrosExtraArgs) > 0 {
+		options = append(options, chrome.LacrosExtraArgs(req.LacrosExtraArgs...))
+	}
+
+	if len(req.LacrosEnableFeatures) > 0 {
+		options = append(options, chrome.LacrosEnableFeatures(req.LacrosEnableFeatures...))
+	}
+
+	if len(req.LacrosDisableFeatures) > 0 {
+		options = append(options, chrome.LacrosDisableFeatures(req.LacrosDisableFeatures...))
+	}
+
 	return options, nil
 }
 
