@@ -78,9 +78,11 @@ type MetricData struct {
 
 // InfoData mirrors the infoData JSON field.
 type InfoData struct {
-	MemoryInfo  *MemoryInfo  `json:"memoryInfo"`
-	NetworkInfo *NetworkInfo `json:"networksInfo"`
-	CpuInfo     *CpuInfo     `json:"cpuInfo"`
+	MemoryInfo        *MemoryInfo        `json:"memoryInfo"`
+	NetworkInfo       *NetworkInfo       `json:"networksInfo"`
+	CpuInfo           *CpuInfo           `json:"cpuInfo"`
+	PrivacyScreenInfo *PrivacyScreenInfo `json:"privacyScreenInfo"`
+	DisplayInfo       *DisplayInfo       `json:"displayInfo"`
 }
 
 // TelemetryData mirrors the telemetryData JSON field.
@@ -88,6 +90,7 @@ type TelemetryData struct {
 	AudioTelemetry       *AudioTelemetry       `json:"audioTelemetry"`
 	NetworkTelemetry     *NetworkTelemetry     `json:"networksTelemetry"`
 	PeripheralsTelemetry *PeripheralsTelemetry `json:"peripheralsTelemetry"`
+	DisplaysTelemetry    *DisplaysTelemetry    `json:"displaysTelemetry"`
 }
 
 // MemoryInfo mirrors the memoryInfo JSON field.
@@ -115,6 +118,24 @@ type NetworkInterfaces struct {
 
 type CpuInfo struct {
 	KeyLockerInfo *KeyLockerInfo `json:"keyLockerInfo"`
+}
+
+type PrivacyScreenInfo struct {
+	Supported bool `json:"supported"`
+}
+
+type DisplayInfo struct {
+	DisplayDevice []DisplayDevice `json:"displayDevice"`
+}
+
+type DisplayDevice struct {
+	DisplayName     string `json:"displayName"`
+	DisplayWidth    int32  `json:"displayWidth"`
+	DisplayHeight   int32  `json:"displayHeight"`
+	IsInternal      bool   `json:"isInternal"`
+	Manufacturer    string `json:"manufacturer"`
+	ModelId         int32  `json:"modelId"`
+	ManufactureYear string `json:"manufactureYear"`
 }
 
 type KeyLockerInfo struct {
@@ -154,6 +175,19 @@ type UsbTelemetry struct {
 	Pid        int32  `json:"pid"`
 	ClassId    int32  `json:"classId"`
 	SubclassId int32  `json:"subclassId"`
+}
+
+// DisplaysTelemetry mirrors the displaysTelemetry JSON field.
+type DisplaysTelemetry struct {
+	DisplayStatus []DisplayStatus `json:"displayStatus"`
+}
+
+// DisplayStatus mirrors the displayStatus JSON field.
+type DisplayStatus struct {
+	DisplayName          string `json:"displayName"`
+	ResolutionVertical   int32  `json:"resolutionVertical"`
+	ResolutionHorizontal int32  `json:"resolutionHorizontal"`
+	RefreshRate          int64  `json:"refreshRate"`
 }
 
 type inputEventsResponse struct {
