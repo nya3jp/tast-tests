@@ -78,16 +78,16 @@ func MakeVBRTestOptions(webMName string, profile videotype.CodecProfile) TestOpt
 	}
 }
 
-// MakeBitrateTestOptions creates TestOptions from webMName and codec.
+// MakeBitrateTestOptions creates TestOptions from webMName, codec, bitrate and bitrateMode.
 // spatialLayers and temporalLayers are set to 1.
 // Sets bitrate for testing quality changes.
-func MakeBitrateTestOptions(webMName string, profile videotype.CodecProfile, bitrate int) TestOptions {
+func MakeBitrateTestOptions(webMName string, profile videotype.CodecProfile, bitrate int, bitrateMode string) TestOptions {
 	return TestOptions{
 		webMName:       webMName,
 		profile:        profile,
 		spatialLayers:  1,
 		temporalLayers: 1,
-		bitrateMode:    "cbr",
+		bitrateMode:    bitrateMode,
 		bitrate:        bitrate,
 	}
 }
