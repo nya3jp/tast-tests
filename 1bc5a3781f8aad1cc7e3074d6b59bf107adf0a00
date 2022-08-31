@@ -50,6 +50,24 @@
       "message": "Thanks for looking at this Zork. Would this also fix https://buganizer.corp.google.com/issues/241589791? ",
       "revId": "1bc5a3781f8aad1cc7e3074d6b59bf107adf0a00",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "385eae3e_0e73b3fb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1248360
+      },
+      "writtenOn": "2022-08-31T19:49:20Z",
+      "side": 1,
+      "message": "I think that issue when lacros was not even showing up at all might be obsolete now (?).",
+      "parentUuid": "20e0e3bb_6b5fad8d",
+      "revId": "1bc5a3781f8aad1cc7e3074d6b59bf107adf0a00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
