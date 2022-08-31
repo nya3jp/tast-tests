@@ -223,6 +223,24 @@
       "parentUuid": "38ba7dc7_7ec3fac0",
       "revId": "8dc5a8cf2fed083b597092871274987cbf514870",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "be0109ef_406058b6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_tpm_live_tests.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-08-31T10:54:29Z",
+      "side": 1,
+      "message": "Shortening regardless sgtm to me; thanks.\n\nThe reason the shortening is used is that the `defer` statements are subject to the time limit in the `ctx` object they use, in the same way as the \"core\" test code. So if the test\u0027s main statements time out and we didn\u0027t reserve extra time for the cleanup in advance, the cleanup wouldn\u0027t happen as well, potentially leaving the DUT in a broken state.",
+      "parentUuid": "2d9a1fb9_5294b8ad",
+      "revId": "8dc5a8cf2fed083b597092871274987cbf514870",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
