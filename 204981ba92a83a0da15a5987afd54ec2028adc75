@@ -16,6 +16,24 @@
       "message": "This CL depends on crrev.com/c/3864821 landing first.",
       "revId": "204981ba92a83a0da15a5987afd54ec2028adc75",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a95d719_eaa1c273",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-08-31T23:24:03Z",
+      "side": 1,
+      "message": "You may use `Cq-Depend` to submit these two CLs together.",
+      "parentUuid": "57f7e9db_119398b9",
+      "revId": "204981ba92a83a0da15a5987afd54ec2028adc75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
