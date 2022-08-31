@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9751f56b_5b333546",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/tbt_hotplug_unplug.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2022-08-31T18:29:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bf990789_db280d57",
+      "revId": "8afa0ccfce91aa3d33624b50f2c39de262ff3d67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8e4ea3fd_5cf538ae",
@@ -138,6 +156,24 @@
       "side": 1,
       "message": "Yes, 41-42 should be the only change. Thanks.",
       "parentUuid": "16e4dd22_f8d2c86d",
+      "revId": "8afa0ccfce91aa3d33624b50f2c39de262ff3d67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "85e9fa0a_6b3c29e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/tbt_hotplug_unplug.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2022-08-31T18:29:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d14740e8_7f7aff94",
       "revId": "8afa0ccfce91aa3d33624b50f2c39de262ff3d67",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
