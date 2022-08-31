@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f2560b3_5913cabf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/cursive_smoke.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-08-31T06:47:27Z",
+      "side": 1,
+      "message": "The test can potentially fail before L129. That\u0027s why I add browser session check in the other file. In my personal opinion, closeBrowser function in cleanup should accept the situation where browser is already closed.",
+      "parentUuid": "c47026ac_68733123",
+      "range": {
+        "startLine": 93,
+        "startChar": 1,
+        "endLine": 93,
+        "endChar": 31
+      },
+      "revId": "1147e25db5377afcee4a8be7df3791d6e735c2d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "324a36ad_5e65844a",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-08-31T06:41:33Z",
       "side": 1,
       "message": "you just need `l, err :\u003d lacros.Launch(ctx, tconn)` and `l.Close()` here.\n\nor, you don\u0027t need to check if it is TypeLacros by using `browserfixt.SetUp(ctx, cr, browserType)` (there is no harm openning a Ash browser)",
+      "range": {
+        "startLine": 133,
+        "startChar": 2,
+        "endLine": 137,
+        "endChar": 32
+      },
+      "revId": "1147e25db5377afcee4a8be7df3791d6e735c2d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f47a449_461576df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/cursive_smoke.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-08-31T06:47:27Z",
+      "side": 1,
+      "message": "There are 2 options to launch Lacros, one is to use lacros.Launch, and the other one is browserfixt.Setup. Since this test already uses browserfixt, I would like to use the same package if no other benefit.",
+      "parentUuid": "324a36ad_5e65844a",
       "range": {
         "startLine": 133,
         "startChar": 2,
