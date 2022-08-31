@@ -65,6 +65,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa266154_6e31e36b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/tpm_contest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1549582
+      },
+      "writtenOn": "2022-08-31T18:44:40Z",
+      "side": 1,
+      "message": "Changed the test flow so function does not take a channel as an arg.",
+      "parentUuid": "061da564_20bdb10d",
+      "range": {
+        "startLine": 35,
+        "startChar": 33,
+        "endLine": 35,
+        "endChar": 41
+      },
+      "revId": "fdac9b754defa76537eb8463c44020499aaa85de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "08c06069_c8ad1100",
@@ -100,6 +124,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "551f4b46_42f250fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/tpm_contest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1549582
+      },
+      "writtenOn": "2022-08-31T18:44:40Z",
+      "side": 1,
+      "message": "Test flow changed. Iteration is still stopped upon receipt of cancel.",
+      "parentUuid": "70ec6cfe_0a8383a3",
+      "revId": "fdac9b754defa76537eb8463c44020499aaa85de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dd5b4a95_afd0a854",
@@ -131,6 +173,24 @@
       "side": 1,
       "message": "Thanks, I\u0027ll look into this. But I need to understand your comment above first regarding returning an error and not receiving a channel as an arg.",
       "parentUuid": "dd5b4a95_afd0a854",
+      "revId": "fdac9b754defa76537eb8463c44020499aaa85de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3797b675_715f8456",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/tpm_contest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1549582
+      },
+      "writtenOn": "2022-08-31T18:44:40Z",
+      "side": 1,
+      "message": "Test flow changed. Error reporting is performed from the caller now.",
+      "parentUuid": "eb9e4c9f_c82ab9c9",
       "revId": "fdac9b754defa76537eb8463c44020499aaa85de",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -275,6 +335,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a8fcff6_eaf5b36d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/tpm_contest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1549582
+      },
+      "writtenOn": "2022-08-31T18:44:40Z",
+      "side": 1,
+      "message": "Test flow changed. select statement is no longer used.",
+      "parentUuid": "af924b0b_3111e874",
+      "revId": "fdac9b754defa76537eb8463c44020499aaa85de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "649a8618_307c2218",
@@ -306,6 +384,24 @@
       "side": 1,
       "message": "`workerIterations` is checked in each iteration of the for loop to see if all workers have completed at least `minTestIterations`. Or are you suggesting we don\u0027t need it?",
       "parentUuid": "649a8618_307c2218",
+      "revId": "fdac9b754defa76537eb8463c44020499aaa85de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "42939180_80cb0163",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/tpm_contest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1549582
+      },
+      "writtenOn": "2022-08-31T18:44:40Z",
+      "side": 1,
+      "message": "Test flow changed. variable no longer used.",
+      "parentUuid": "9519a8ff_fc8b8c33",
       "revId": "fdac9b754defa76537eb8463c44020499aaa85de",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
