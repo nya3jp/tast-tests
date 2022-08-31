@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c29026e4_50fb009b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lockscreen/close_lid.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-08-31T23:41:10Z",
+      "side": 1,
+      "message": "is there a hardware requirement for this test? e.g., the device has to be a clamshell or convertible? see https://chromium.googlesource.com/chromiumos/platform/tast/+/main/src/chromiumos/tast/testing/hwdep/hwdep.go for the list of hardware deps.",
+      "range": {
+        "startLine": 20,
+        "startChar": 26,
+        "endLine": 20,
+        "endChar": 30
+      },
+      "revId": "ac7aaa1a6a08b4d1b04eefa3f15adba30bb16d82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "587c9b12_b486e3c5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lockscreen/close_lid.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-08-31T23:41:10Z",
+      "side": 1,
+      "message": "is this supposed to be used in the test?",
+      "range": {
+        "startLine": 35,
+        "startChar": 2,
+        "endLine": 35,
+        "endChar": 23
+      },
+      "revId": "ac7aaa1a6a08b4d1b04eefa3f15adba30bb16d82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01d6d439_b34b242b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lockscreen/close_lid.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-08-31T23:41:10Z",
+      "side": 1,
+      "message": "just `Keyboard`",
+      "range": {
+        "startLine": 44,
+        "startChar": 18,
+        "endLine": 44,
+        "endChar": 33
+      },
+      "revId": "ac7aaa1a6a08b4d1b04eefa3f15adba30bb16d82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd6d8f4f_0630d83c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lockscreen/close_lid.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-08-31T23:41:10Z",
+      "side": 1,
+      "message": "need to reserve time for cleanup tasks: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Reserve-time-for-clean_up-task",
+      "range": {
+        "startLine": 54,
+        "startChar": 16,
+        "endLine": 54,
+        "endChar": 19
+      },
+      "revId": "ac7aaa1a6a08b4d1b04eefa3f15adba30bb16d82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5715b5b_91c749fc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lockscreen/close_lid.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-08-31T23:41:10Z",
+      "side": 1,
+      "message": "reformat to:\n```\ndefer func(ctx context.Context) {\n...//use ctx\n}(cleanupCtx)\n```",
+      "range": {
+        "startLine": 65,
+        "startChar": 1,
+        "endLine": 65,
+        "endChar": 15
+      },
+      "revId": "ac7aaa1a6a08b4d1b04eefa3f15adba30bb16d82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c223d035_3e1a3491",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lockscreen/close_lid.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-08-31T23:41:10Z",
+      "side": 1,
+      "message": "is it intended that the cleanup failure results in the test failure?",
+      "range": {
+        "startLine": 67,
+        "startChar": 5,
+        "endLine": 67,
+        "endChar": 10
+      },
+      "revId": "ac7aaa1a6a08b4d1b04eefa3f15adba30bb16d82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9db6e070_7d4d7269",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lockscreen/close_lid.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-08-31T23:41:10Z",
+      "side": 1,
+      "message": "Just curious: could this result in other actions (e.g., put the device into sleep mode)? If so, how do we ensure that wont\u0027 happen?",
+      "range": {
+        "startLine": 76,
+        "startChar": 11,
+        "endLine": 76,
+        "endChar": 34
+      },
+      "revId": "ac7aaa1a6a08b4d1b04eefa3f15adba30bb16d82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd8c9f3d_96775553",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lockscreen/close_lid.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-08-31T23:41:10Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 92,
+        "startChar": 1,
+        "endLine": 92,
+        "endChar": 15
+      },
+      "revId": "ac7aaa1a6a08b4d1b04eefa3f15adba30bb16d82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
