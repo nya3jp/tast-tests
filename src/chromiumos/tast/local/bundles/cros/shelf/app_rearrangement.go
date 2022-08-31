@@ -189,7 +189,7 @@ func AppRearrangement(ctx context.Context, s *testing.State) {
 	defer cancel()
 
 	var cr *chrome.Chrome
-	var closeBrowser func(ctx context.Context)
+	var closeBrowser uiauto.Action
 	var err error
 
 	testType := s.Param().(rearrangmentTestType)

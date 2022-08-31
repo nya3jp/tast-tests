@@ -69,6 +69,9 @@ func (l *Lacros) CloseResources(ctx context.Context) {
 
 // Close closes all lacros chrome targets and the dev session.
 func (l *Lacros) Close(ctx context.Context) error {
+	if l.sess == nil {
+		return nil
+	}
 	// Get all pages. Note that we can't get all targets, because one of them
 	// will be the test extension or devtools and we don't want to kill that.
 	// Further note that this will mean pages are not restored, compared to killing
