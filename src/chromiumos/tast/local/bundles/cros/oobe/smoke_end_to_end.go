@@ -41,14 +41,23 @@ func init() {
 		Params: []testing.Param{{
 			Val: false,
 		}, {
-			Name: "polymer3",
+			// TODO: Increase timeout with chrome.LoginTimeout
+			Name: "adduser",
 			Val:  true,
 		}},
 	})
 }
 
 func SmokeEndToEnd(ctx context.Context, s *testing.State) {
-	polymer3 := s.Param().(bool)
+	addUser := s.Param().(bool)
+	if addUser {
+		// Create a user first.
+		cr, err := chrome.New(ctx)
+		if err != nil {
+			s.Fatal("Failed to start Chrome: ", err)
+		}
+		cr.Close(ctx)
+	}
 	options := []chrome.Option{
 		chrome.NoLogin(),
 		chrome.DontSkipOOBEAfterLogin(),
@@ -56,8 +65,8 @@ func SmokeEndToEnd(ctx context.Context, s *testing.State) {
 		chrome.GAIALoginPool(s.RequiredVar("ui.gaiaPoolDefault")),
 		chrome.LoadSigninProfileExtension(s.RequiredVar("ui.signinProfileTestExtensionManifestKey")),
 	}
-	if polymer3 {
-		options = append(options, chrome.EnableFeatures("EnableOobePolymer3"))
+	if addUser {
+		options = append(options, chrome.KeepState())
 	}
 	cr, err := chrome.New(ctx, options...)
 	if err != nil {
@@ -82,55 +91,61 @@ func SmokeEndToEnd(ctx context.Context, s *testing.State) {
 
 	ui := uiauto.New(tconn).WithTimeout(10 * time.Second)
 
-	s.Log("Waiting for the welcome screen")
-	if err := oobeConn.WaitForExprFailOnErr(ctx, "OobeAPI.screens.WelcomeScreen.isVisible()"); err != nil {
-		s.Fatal("Failed to wait for the welcome screen to be visible: ", err)
-	}
-
 	focusedButton := nodewith.State(state.Focused, true).Role(role.Button)
-	if err := uiauto.Combine("click next on the welcome screen",
-		ui.WaitUntilExists(focusedButton),
-		ui.LeftClick(focusedButton),
-	)(ctx); err != nil {
-		s.Fatal("Failed to click welcome screen next button: ", err)
-	}
-
-	shouldSkipNetworkScreen := false
-	if err := oobeConn.Eval(ctx, "OobeAPI.screens.NetworkScreen.shouldSkip()", &shouldSkipNetworkScreen); err != nil {
-		s.Fatal("Failed to evaluate whether to skip Network screen: ", err)
-	}
-
-	if shouldSkipNetworkScreen {
-		s.Log("Skipping the network screen")
-	} else {
-		s.Log("Waiting for the network screen")
-		if err := oobeConn.WaitForExprFailOnErr(ctx, "OobeAPI.screens.NetworkScreen.isVisible()"); err != nil {
-			s.Fatal("Failed to wait for the network screen to be visible: ", err)
+	if !addUser {
+		s.Log("Waiting for the welcome screen")
+		if err := oobeConn.WaitForExprFailOnErr(ctx, "OobeAPI.screens.WelcomeScreen.isVisible()"); err != nil {
+			s.Fatal("Failed to wait for the welcome screen to be visible: ", err)
 		}
-		//(TODO, https://crbug.com/1291153): Switch to focused button.
-		nextButton := nodewith.Name("Next").Role(role.Button)
-		if err := ui.LeftClickUntil(nextButton, ui.Gone(nextButton))(ctx); err != nil {
-			s.Fatal("Failed to click network page next button: ", err)
-		}
-	}
 
-	shouldSkipEulaScreen := false
-	if err := oobeConn.Eval(ctx, "OobeAPI.screens.EulaScreen.shouldSkip()", &shouldSkipEulaScreen); err != nil {
-		s.Fatal("Failed to evaluate whether to skip Eula screen: ", err)
-	}
-
-	if shouldSkipEulaScreen {
-		s.Log("Skipping the EULA screen")
-	} else {
-		s.Log("Waiting for the EULA screen")
-		if err := oobeConn.WaitForExprFailOnErr(ctx, "OobeAPI.screens.EulaScreen.isReadyForTesting()"); err != nil {
-			s.Fatal("Failed to wait for the eula screen to be visible: ", err)
-		}
-		if err := uiauto.Combine("Click next on EULA screen",
+		if err := uiauto.Combine("click next on the welcome screen",
 			ui.WaitUntilExists(focusedButton),
 			ui.LeftClick(focusedButton),
 		)(ctx); err != nil {
-			s.Fatal("Failed to click EULA screen next button: ", err)
+			s.Fatal("Failed to click welcome screen next button: ", err)
+		}
+
+		shouldSkipNetworkScreen := false
+		if err := oobeConn.Eval(ctx, "OobeAPI.screens.NetworkScreen.shouldSkip()", &shouldSkipNetworkScreen); err != nil {
+			s.Fatal("Failed to evaluate whether to skip Network screen: ", err)
+		}
+
+		if shouldSkipNetworkScreen {
+			s.Log("Skipping the network screen")
+		} else {
+			s.Log("Waiting for the network screen")
+			if err := oobeConn.WaitForExprFailOnErr(ctx, "OobeAPI.screens.NetworkScreen.isVisible()"); err != nil {
+				s.Fatal("Failed to wait for the network screen to be visible: ", err)
+			}
+			//(TODO, https://crbug.com/1291153): Switch to focused button.
+			nextButton := nodewith.Name("Next").Role(role.Button)
+			if err := ui.LeftClickUntil(nextButton, ui.Gone(nextButton))(ctx); err != nil {
+				s.Fatal("Failed to click network page next button: ", err)
+			}
+		}
+
+		shouldSkipEulaScreen := false
+		if err := oobeConn.Eval(ctx, "OobeAPI.screens.EulaScreen.shouldSkip()", &shouldSkipEulaScreen); err != nil {
+			s.Fatal("Failed to evaluate whether to skip Eula screen: ", err)
+		}
+
+		if shouldSkipEulaScreen {
+			s.Log("Skipping the EULA screen")
+		} else {
+			s.Log("Waiting for the EULA screen")
+			if err := oobeConn.WaitForExprFailOnErr(ctx, "OobeAPI.screens.EulaScreen.isReadyForTesting()"); err != nil {
+				s.Fatal("Failed to wait for the eula screen to be visible: ", err)
+			}
+			if err := uiauto.Combine("Click next on EULA screen",
+				ui.WaitUntilExists(focusedButton),
+				ui.LeftClick(focusedButton),
+			)(ctx); err != nil {
+				s.Fatal("Failed to click EULA screen next button: ", err)
+			}
+		}
+	} else {
+		if err := ui.LeftClick(nodewith.Role(role.Button).Name("Add Person"))(ctx); err != nil {
+			s.Fatal("Failed to click on the Add Person button")
 		}
 	}
 
