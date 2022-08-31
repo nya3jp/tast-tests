@@ -50,6 +50,24 @@
       "message": "tab?",
       "revId": "1d01f9aab38d4ecd679dd11f2e643d25a03a30ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "759d2fb9_a3f0fd55",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/containermount/containermount.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2022-08-31T22:36:21Z",
+      "side": 1,
+      "message": "\u0027go fmt\u0027 is doing this for me.",
+      "parentUuid": "cd97d0a1_ec906848",
+      "revId": "1d01f9aab38d4ecd679dd11f2e643d25a03a30ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
