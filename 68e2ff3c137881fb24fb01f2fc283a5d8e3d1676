@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1881bcd2_3bf2d2d0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2022-08-31T10:30:03Z",
+      "side": 1,
+      "message": "Renato, please finish :)",
+      "revId": "68e2ff3c137881fb24fb01f2fc283a5d8e3d1676",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
