@@ -7,6 +7,7 @@ package youtube
 
 import (
 	"context"
+	"strings"
 	"time"
 
 	"chromiumos/tast/common/android/ui"
@@ -126,4 +127,68 @@ func (yt *Youtube) Play(ctx context.Context, media *apputil.Media) (err error) {
 	}
 
 	return nil
+}
+
+// GetYoutubePlayingTime returns the current time of video.
+func (yt *Youtube) GetYoutubePlayingTime(ctx context.Context) (float64, error) {
+	testing.ContextLog(ctx, "Get youtube playing time")
+	watchPlayerID := idPrefix + "watch_player"
+	timebarCurrentTimeID := idPrefix + "time_bar_current_time"
+
+	var playTime string
+	var err error
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		testing.ContextLog(ctx, "Clicking the player view to find the time bar and collect the current time")
+		playerView := yt.Device.Object(ui.ID(watchPlayerID))
+		if err := playerView.Click(ctx); err != nil {
+			return err
+		}
+
+		playtimeNode := yt.Device.Object(ui.ID(timebarCurrentTimeID))
+		playTime, err = playtimeNode.GetText(ctx)
+		if err != nil {
+			return err
+		}
+
+		testing.ContextLogf(ctx, "Youtube playing time is %s", playTime)
+		return nil
+	}, &testing.PollOptions{Timeout: time.Minute, Interval: 5 * time.Second}); err != nil {
+		return 0, err
+	}
+
+	tc := playTime + "s"
+	if strings.Count(tc, ":") == 1 {
+		tc = strings.Replace(tc, ":", "m", 1)
+	} else if strings.Count(tc, ":") == 2 {
+		tc = strings.Replace(tc, ":", "h", 1)
+		tc = strings.Replace(tc, ":", "m", 1)
+	} else {
+		return 0, errors.Errorf(`unexpected time code, want: "hh:mm:ss" or "mm:ss", got: %q`, playTime)
+	}
+
+	vt, err := time.ParseDuration(tc)
+	if err != nil {
+		return 0, errors.Wrapf(err, "failed to parse %s", tc)
+	}
+	return vt.Seconds(), nil
+}
+
+// IsPlaying checks if youtube app is playing video.
+func (yt *Youtube) IsPlaying(ctx context.Context) (bool, error) {
+	timeStart, err := yt.GetYoutubePlayingTime(ctx)
+	if err != nil {
+		return false, errors.Wrap(err, "failed to get video time")
+	}
+
+	// Wait for a while to verify playing by checking time difference on progress bar.
+	if err := testing.Sleep(ctx, 5*time.Second); err != nil {
+		return false, errors.Wrap(err, "failed to sleep")
+	}
+
+	timeEnd, err := yt.GetYoutubePlayingTime(ctx)
+	if err != nil {
+		return false, errors.Wrap(err, "failed to get video time")
+	}
+
+	return timeStart != timeEnd, nil
 }
