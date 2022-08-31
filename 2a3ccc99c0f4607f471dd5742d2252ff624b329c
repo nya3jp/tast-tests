@@ -88,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9942af68_ec4f275f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/cursive_smoke.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-08-31T08:12:53Z",
+      "side": 1,
+      "message": "I see. In that case shouldn\u0027t you close Ash as well (in the Ash variant)?\nWould be good to include part of that explanation in a code comment too.\n\n(BTW I\u0027m planning to change the Lacros closeBrowser closure to not close any tabs, just free resources. That will make it more analogous to closeBrowser in the Ash case.)",
+      "parentUuid": "3b185b0b_a6446d12",
+      "revId": "2a3ccc99c0f4607f471dd5742d2252ff624b329c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "083cd97a_d8bb82cb",
