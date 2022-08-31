@@ -88,6 +88,7 @@ type TelemetryData struct {
 	AudioTelemetry       *AudioTelemetry       `json:"audioTelemetry"`
 	NetworkTelemetry     *NetworkTelemetry     `json:"networksTelemetry"`
 	PeripheralsTelemetry *PeripheralsTelemetry `json:"peripheralsTelemetry"`
+	DisplaysTelemetry    *DisplaysTelemetry    `json:"displaysTelemetry"`
 }
 
 // MemoryInfo mirrors the memoryInfo JSON field.

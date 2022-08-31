@@ -18,6 +18,7 @@ import (
 	"chromiumos/tast/rpc"
 	pspb "chromiumos/tast/services/cros/policy"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 type telemetryInfoReportingParameters struct {
@@ -36,6 +37,7 @@ func init() {
 			"cros-reporting-team@google.com",
 		},
 		Attr:         []string{"group:dpanel-end2end", "group:enterprise-reporting"},
+		HardwareDeps: hwdep.D(hwdep.Touchscreen()),
 		SoftwareDeps: []string{"reboot", "chrome"},
 		ServiceDeps:  []string{"tast.cros.policy.PolicyService", "tast.cros.hwsec.OwnershipService", "tast.cros.tape.Service"},
 		Timeout:      15 * time.Minute,
@@ -101,6 +103,19 @@ func networkTelemetryValidator(event reportingutil.InputEvent) bool {
 	return false
 }
 
+func displayTelemetryValidator(event reportingutil.InputEvent) bool {
+	if w := event.WrappedEncryptedData; w != nil {
+		if m := w.MetricData; m != nil {
+			if i := m.TelemetryData; i != nil {
+				if m := i.NetworkTelemetry; m != nil {
+					return true
+				}
+			}
+		}
+	}
+	return false
+}
+
 func cpuInfoValidator(event reportingutil.InputEvent) bool {
 	if w := event.WrappedEncryptedData; w != nil {
 		if m := w.MetricData; m != nil {
@@ -128,6 +143,32 @@ func networkInfoValidator(event reportingutil.InputEvent) bool {
 }
 
 func memoryInfoValidator(event reportingutil.InputEvent) bool {
+	if w := event.WrappedEncryptedData; w != nil {
+		if m := w.MetricData; m != nil {
+			if i := m.InfoData; i != nil {
+				if m := i.MemoryInfo; m != nil {
+					return true
+				}
+			}
+		}
+	}
+	return false
+}
+
+func ePrivacyInfoValidator(event reportingutil.InputEvent) bool {
+	if w := event.WrappedEncryptedData; w != nil {
+		if m := w.MetricData; m != nil {
+			if i := m.InfoData; i != nil {
+				if m := i.MemoryInfo; m != nil {
+					return true
+				}
+			}
+		}
+	}
+	return false
+}
+
+func displayInfoValidator(event reportingutil.InputEvent) bool {
 	if w := event.WrappedEncryptedData; w != nil {
 		if m := w.MetricData; m != nil {
 			if i := m.InfoData; i != nil {
@@ -224,6 +265,11 @@ func TelemetryInfoReporting(ctx context.Context, s *testing.State) {
 				validator: networkTelemetryValidator,
 			},
 			{
+				name:      "displayTelemetry",
+				testType:  Telemetry,
+				validator: displayTelemetryValidator,
+			},
+			{
 				name:      "networkInfo",
 				testType:  Info,
 				validator: networkInfoValidator,
@@ -237,6 +283,16 @@ func TelemetryInfoReporting(ctx context.Context, s *testing.State) {
 				name:      "cpuInfo",
 				testType:  Info,
 				validator: cpuInfoValidator,
+			},
+			{
+				name:      "ePrivacyInfo",
+				testType:  Info,
+				validator: ePrivacyInfoValidator,
+			},
+			{
+				name:      "displayInfo",
+				testType:  Info,
+				validator: displayInfoValidator,
 			},
 		} {
 			events := telemetryEvents
