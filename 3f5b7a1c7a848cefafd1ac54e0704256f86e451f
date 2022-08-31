@@ -529,6 +529,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "261e44ee_95733b9f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/kiosk_with_prepare_credential_api.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-08-31T10:19:29Z",
+      "side": 1,
+      "message": "(resolved)",
+      "parentUuid": "bcea2270_118c778f",
+      "range": {
+        "startLine": 142,
+        "startChar": 36,
+        "endLine": 142,
+        "endChar": 39
+      },
+      "revId": "3f5b7a1c7a848cefafd1ac54e0704256f86e451f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2c8fb35f_5e63c2a3",
