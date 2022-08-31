@@ -186,6 +186,30 @@
       },
       "revId": "12b1334b6987e287d40a2151777603fd660e67c3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48c093b5_cc575790",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/creation_flow.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-08-31T18:04:28Z",
+      "side": 1,
+      "message": "Please see if this document provide enough information for you: \n\ngo/tast-deps\n\nThanks.",
+      "parentUuid": "81e3fa59_a3ab9ef4",
+      "range": {
+        "startLine": 57,
+        "startChar": 2,
+        "endLine": 57,
+        "endChar": 8
+      },
+      "revId": "12b1334b6987e287d40a2151777603fd660e67c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
