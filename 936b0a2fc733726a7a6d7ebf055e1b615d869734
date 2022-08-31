@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a661558a_8c878bf9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-08-31T20:34:30Z",
+      "side": 1,
+      "message": "Please review, thank you! \n\nNote: I realized the cam field is not actually used (as in it\u0027s always true for every test), and could arguably be removed. I want to keep it because I was thinking of following up crrev/c/3852481 with a variant with the cam turned off, so that kaisa and kench could successfully run those tests?",
+      "revId": "936b0a2fc733726a7a6d7ebf055e1b615d869734",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
