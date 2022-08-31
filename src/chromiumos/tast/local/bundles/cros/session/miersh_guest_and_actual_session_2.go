@@ -20,7 +20,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: MiershGuestAndActualSession,
+		Func: MiershGuestAndActualSession2,
 		Desc: "Ensures that the session_manager correctly handles ownership when a guest signs in before user",
 		Contacts: []string{
 			"hidehiko@chromium.org",
@@ -30,13 +30,15 @@ func init() {
 	})
 }
 
-func logout(ctx context.Context, s *testing.State, cr *chrome.Chrome) {
+func logout2(ctx context.Context, s *testing.State, cr *chrome.Chrome) {
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		tconn, err := cr.TestAPIConn(ctx)
 		if err != nil {
+			s.Log("MIERSH err: ", err)
 			return err
 		}
 		if err := tconn.Call(ctx, nil, "chrome.autotestPrivate.logout"); err != nil {
+			s.Log("MIERSH err: ", err)
 			return err
 		}
 		return nil
@@ -46,9 +48,12 @@ func logout(ctx context.Context, s *testing.State, cr *chrome.Chrome) {
 	}
 }
 
-func MiershGuestAndActualSession(ctx context.Context, s *testing.State) {
+func MiershGuestAndActualSession2(ctx context.Context, s *testing.State) {
 	const testUser = "first_user@nowhere.com"
 
+	//
+	// Reset TPM
+	//
 	cmdRunner := hwseclocal.NewCmdRunner()
 
 	helper, err := hwseclocal.NewHelper(cmdRunner)
@@ -61,35 +66,75 @@ func MiershGuestAndActualSession(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to reset TPM or system states: ", err)
 	}
 
-	if err := session.SetUpDevice(ctx); err != nil {
-		s.Fatal("Failed to reset device ownership: ", err)
-	}
+	//
+	// RemoveVault, not sure it's needed
+	//
 
 	if err := cryptohome.RemoveVault(ctx, testUser); err != nil {
 		s.Fatal("Failed to remove vault: ", err)
 	}
 
+	//
+	// Create the initial Chrome, don't login
+	//
+
+	chromeObj, err := chrome.New(ctx, chrome.NoLogin())
+	if err != nil {
+		s.Fatal("Failed to log in with Chrome: ", err)
+	}
+	defer chromeObj.Close(ctx)
+
+	s.Log("Connect to session manager")
+
+	//
+	// Connection to the session manager
+	//
 	sm, err := session.NewSessionManager(ctx)
 	if err != nil {
 		s.Fatal("Failed to create session_manager binding: ", err)
 	}
-	if err := session.PrepareChromeForPolicyTesting(ctx, sm); err != nil {
-		s.Fatal("Failed to prepare Chrome for testing: ", err)
-	}
 
-	if err := cryptohome.MountGuest(ctx); err != nil {
-		s.Fatal("Failed to mount guest: ", err)
-	}
+	//
+	// Login into the user session
+	//
 
-	if err := sm.StartSession(ctx, cryptohome.GuestUser, ""); err != nil {
-		s.Fatal("Failed to start guest session: ", err)
-	}
+	s.Log("MIERSH start guest login")
 
-	guestChrome, err := chrome.New(ctx, chrome.GuestLogin())
-	if err != nil {
-		s.Fatal("Failed to log in with Chrome: ", err)
-	}
-	defer guestChrome.Close(ctx)
+	chrome.MiershLogIn(ctx, chromeObj, chrome.FakeLogin(chrome.Creds{User: testUser, Pass: "123"}))
+
+	//
+	// Logout from the user session
+	//
+
+	logout2(ctx, s, chromeObj)
+
+	//
+	// Everything works until here, but not further.
+	// With the current code it fails after the "Finding OOBE DevTools target" with a timeout error.
+	// Also, ideally, the session above should be a guest session,
+	// but my Chrome doesn't have the test extension, so the logout for it doesn't work.
+	//
+
+	// chrome.FixChromeSession(ctx, chromeObj)
+
+	s.Log("MIERSH HERE 1")
+
+	chrome.MiershLogIn(ctx, chromeObj, chrome.FakeLogin(chrome.Creds{User: testUser, Pass: "123"}))
+
+	logout2(ctx, s, chromeObj)
+
+	s.Log("MIERSH SUCCESS")
+	time.Sleep(15 * time.Second)
+
+	//
+	// Success
+	//
+
+	// guestChrome, err := chrome.New(ctx, chrome.GuestLogin())
+	// if err != nil {
+	// 	s.Fatal("Failed to log in with Chrome: ", err)
+	// }
+	// defer guestChrome.Close(ctx)
 
 	guestTookOwnership := false
 
@@ -119,7 +164,10 @@ func MiershGuestAndActualSession(ctx context.Context, s *testing.State) {
 
 	s.Log("waiting done, guestTookOwnership: ", guestTookOwnership)
 
-	logout(ctx, s, guestChrome)
+	logout2(ctx, s, chromeObj)
+
+	s.Log("MIERSH SUCCESS")
+	time.Sleep(60 * time.Second)
 
 	normalChrome, err := chrome.New(ctx, chrome.FakeLogin(chrome.Creds{User: testUser, Pass: "123"}))
 	if err != nil {
