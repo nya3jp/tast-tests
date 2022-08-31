@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5047f9df_c3b3e8f1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/kiosk_ephemeral_mount.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-08-31T01:09:47Z",
+      "side": 1,
+      "message": "I noticed after going back and forth between different variants of the kiosk test that it would be helpful to include in the definition that this test focuses on the ephemeral mount, namely it tests that files do not leak across sessions. Can you also cover this in the descryption.",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 72
+      },
+      "revId": "03b94a1a9e07ecbba21cb95020d54cbb2544137f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "eed30bc9_6d05120f",
         "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/kiosk_ephemeral_mount.go",
         "patchSetId": 1
