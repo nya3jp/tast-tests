@@ -16,6 +16,64 @@
       "message": "Ben, could you please take a look~",
       "revId": "3018c83a79f315a5ad07fa4d03230e0032a28872",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0dc3ae59_027695b5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-08-31T06:08:42Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "3018c83a79f315a5ad07fa4d03230e0032a28872",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "65ef0319_18dd2350",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-08-31T06:08:42Z",
+      "side": 1,
+      "message": "Thanks for the review 😊",
+      "parentUuid": "2873cf94_7fd58e38",
+      "revId": "3018c83a79f315a5ad07fa4d03230e0032a28872",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e38d06f_966626cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/split_view.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-08-31T06:08:42Z",
+      "side": 1,
+      "message": "nit: might want to check error check this, if this fails isn\u0027t the rest of the test going to fail in weird and wonderful ways?",
+      "range": {
+        "startLine": 155,
+        "startChar": 1,
+        "endLine": 158,
+        "endChar": 16
+      },
+      "revId": "3018c83a79f315a5ad07fa4d03230e0032a28872",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
