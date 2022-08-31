@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0fa62d06_434c695c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/creation_flow.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-08-31T02:07:38Z",
+      "side": 1,
+      "message": "The fixture\u0027s 3 minute timeout is independent of this test\u0027s 10 minute timeout.\n\nThis test + LaunchCreationFlow + LaunchAnnotator + deleteScreencast \u003d 8 minutes, we still have two minutes remaining. I think that\u0027s sufficient?",
+      "parentUuid": "7c35dbc1_fa7e20f1",
+      "range": {
+        "startLine": 33,
+        "startChar": 16,
+        "endLine": 33,
+        "endChar": 32
+      },
+      "revId": "be3e7e412b5ed968f981e02e0317612bd120a11d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b1a41945_1fb13055",
@@ -71,6 +95,30 @@
       "writtenOn": "2022-08-30T22:54:32Z",
       "side": 1,
       "message": "Q: why do we want to refresh the app? If we have to refresh, does it mean there\u0027s something doesn\u0027t work as expected?",
+      "range": {
+        "startLine": 63,
+        "startChar": 1,
+        "endLine": 63,
+        "endChar": 47
+      },
+      "revId": "be3e7e412b5ed968f981e02e0317612bd120a11d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "88b2b3c1_f91903a4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/creation_flow.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-08-31T02:07:38Z",
+      "side": 1,
+      "message": "Done, removed. The refreshing was a hacky workaround for bugs b/231097154 and b/236767247 that seem to be resolved now.",
+      "parentUuid": "b1a41945_1fb13055",
       "range": {
         "startLine": 63,
         "startChar": 1,
@@ -106,6 +154,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "de29decc_9c186b79",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/creation_flow.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-08-31T02:07:38Z",
+      "side": 1,
+      "message": "We don\u0027t need to dismiss the tutorial videos for the test to pass and this step is optional. Finding the screencast items later works fine even if the tutorial videos are still there. I would prefer not to include it in LaunchCreationFlow to reduce flakiness. Only the CreationFlow test will verify that the tutorial videos are present when there are \u003c3 videos by dismissing the panel. WDYT?",
+      "parentUuid": "5658a874_2e50d5e0",
+      "range": {
+        "startLine": 74,
+        "startChar": 88,
+        "endLine": 76,
+        "endChar": 66
+      },
+      "revId": "be3e7e412b5ed968f981e02e0317612bd120a11d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d5489c55_f8e1b394",
         "filename": "src/chromiumos/tast/local/chrome/projector/projector.go",
         "patchSetId": 3
@@ -117,6 +189,30 @@
       "writtenOn": "2022-08-30T22:54:32Z",
       "side": 1,
       "message": "In creation_flow.go line 63, we\u0027ve already refresh, do we want to refresh again?",
+      "range": {
+        "startLine": 86,
+        "startChar": 1,
+        "endLine": 86,
+        "endChar": 37
+      },
+      "revId": "be3e7e412b5ed968f981e02e0317612bd120a11d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5cdab87_82069f13",
+        "filename": "src/chromiumos/tast/local/chrome/projector/projector.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-08-31T02:07:38Z",
+      "side": 1,
+      "message": "Done, removed the refreshing.",
+      "parentUuid": "d5489c55_f8e1b394",
       "range": {
         "startLine": 86,
         "startChar": 1,
