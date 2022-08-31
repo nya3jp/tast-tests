@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "62e39eec_d5b796bf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-08-31T00:43:55Z",
+      "side": 1,
+      "message": "Thanks for cleaning up this. LGTM with nits.",
+      "revId": "a8eb515f971a0d2b188b25995ea4185c5ab62426",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ff8096d_a89befc1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/add_remove_pin.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-08-31T00:43:55Z",
+      "side": 1,
+      "message": "This error message is repetitive in the new created helper function. Can you change this with a test related context. For example: Failed to verify persistence\nPlease fix for other files as well.",
+      "range": {
+        "startLine": 91,
+        "startChar": 11,
+        "endLine": 91,
+        "endChar": 46
+      },
+      "revId": "a8eb515f971a0d2b188b25995ea4185c5ab62426",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0ec2055_7d7015cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/remove_credential_auth_session.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-08-31T00:43:55Z",
+      "side": 1,
+      "message": "should we keep either one of these comments or merge them?",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 92,
+        "endChar": 58
+      },
+      "revId": "a8eb515f971a0d2b188b25995ea4185c5ab62426",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
