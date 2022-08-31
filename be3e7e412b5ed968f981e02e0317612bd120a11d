@@ -176,6 +176,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5f1a93f_99235227",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/creation_flow.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1403852
+      },
+      "writtenOn": "2022-08-31T23:04:04Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "de29decc_9c186b79",
+      "range": {
+        "startLine": 74,
+        "startChar": 88,
+        "endLine": 76,
+        "endChar": 66
+      },
+      "revId": "be3e7e412b5ed968f981e02e0317612bd120a11d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d5489c55_f8e1b394",
