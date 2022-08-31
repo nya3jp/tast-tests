@@ -60,7 +60,7 @@ func InstallApp(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn, 
 			// If the app is not installed, install it now.
 			// Click on the add button, if it exists.
 			if err := ui.Exists(add)(ctx); err == nil {
-				if err := ui.LeftClick(add)(ctx); err != nil {
+				if err := ui.DoDefault(add)(ctx); err != nil {
 					return testing.PollBreak(err)
 				}
 				addClicked = true
@@ -89,7 +89,7 @@ func UninstallApp(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn
 
 	ui := uiauto.New(tconn)
 	return uiauto.Combine("uninstall the extension from CWS",
-		ui.LeftClick(nodewith.Role(role.Button).Name("Remove from Chrome").First()),
+		ui.DoDefault(nodewith.Role(role.Button).Name("Remove from Chrome").First()),
 		ui.LeftClick(nodewith.Role(role.Button).Name("Remove")),
 	)(ctx)
 }
