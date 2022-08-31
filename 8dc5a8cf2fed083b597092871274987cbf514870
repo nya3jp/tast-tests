@@ -205,6 +205,24 @@
       "parentUuid": "6d9baedf_fa5120ca",
       "revId": "8dc5a8cf2fed083b597092871274987cbf514870",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d9a1fb9_5294b8ad",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_tpm_live_tests.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1524917
+      },
+      "writtenOn": "2022-08-31T09:54:15Z",
+      "side": 1,
+      "message": "True. What if I shorten the context regardless if tpm reset is required or not? This way, the shortend ctx would be fed in the cmdRunner.\n\n(I actually am not sure why the duration of the context is shorten at the first place. Is it to make the test run faster?)",
+      "parentUuid": "38ba7dc7_7ec3fac0",
+      "revId": "8dc5a8cf2fed083b597092871274987cbf514870",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
