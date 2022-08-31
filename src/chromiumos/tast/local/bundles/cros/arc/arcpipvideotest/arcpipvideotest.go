@@ -28,8 +28,8 @@ import (
 )
 
 // EstablishARCPIPVideo installs the ArcPipVideoTest app, launches it, and
-// makes it play bear-320x240.h264.mp4 in PIP. That video must be listed in
-// the Data field on test registration. Returns a cleanup action.
+// makes it play 180p_60fps_600frames.h264.mp4 in PIP. That video must be
+// listed in the Data field on test registration. Returns a cleanup action.
 func EstablishARCPIPVideo(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, dataFS http.FileSystem, bigPIP bool) (action.Action, error) {
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
@@ -100,7 +100,7 @@ func EstablishARCPIPVideo(ctx context.Context, tconn *chrome.TestConn, a *arc.AR
 		return a.RemoveReverseTCP(ctx, androidPort)
 	})
 
-	withVideo := arc.WithExtraString("video_uri", fmt.Sprintf("http://localhost:%d/bear-320x240.h264.mp4", androidPort))
+	withVideo := arc.WithExtraString("video_uri", fmt.Sprintf("http://localhost:%d/180p_60fps_600frames.h264.mp4", androidPort))
 	cantPlayThisVideo := d.Object(
 		ui.Text("Can't play this video."),
 		ui.PackageName(pkgName),

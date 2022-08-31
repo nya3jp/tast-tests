@@ -28,7 +28,7 @@ func init() {
 		// Video playback doesn't work well on VM boards.
 		SoftwareDeps: []string{"chrome", "no_qemu", "proprietary_codecs"},
 		HardwareDeps: hwdep.D(hwdep.SupportsNV12Overlays()),
-		Data:         []string{"bear-320x240.h264.mp4"},
+		Data:         []string{"180p_60fps_600frames.h264.mp4"},
 		Fixture:      "gpuWatchDog",
 		Timeout:      5 * time.Minute,
 		Params: []testing.Param{{
