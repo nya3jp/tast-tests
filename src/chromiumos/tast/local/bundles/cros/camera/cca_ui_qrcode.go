@@ -11,6 +11,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/camera/cca"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/testing"
@@ -131,12 +132,17 @@ func runQRCodeTest(ctx context.Context, cr *chrome.Chrome, bt browser.Type, app 
 			return errors.Wrap(err, "failed to click chip")
 		}
 
+		if err := ash.WaitForCondition(ctx, tconn, ash.BrowserTypeMatch(bt), nil); err != nil {
+			return errors.Wrap(err, "failed to find browser window")
+		}
+
+		br, brCleanUp, err := browserfixt.Connect(ctx, cr, bt)
+		if err != nil {
+			return errors.Wrap(err, "failed to connect to browser")
+		}
+		defer brCleanUp(ctx)
+
 		if err := testing.Poll(ctx, func(ctx context.Context) error {
-			br, brCleanUp, err := browserfixt.Connect(ctx, cr, bt)
-			if err != nil {
-				return err
-			}
-			defer brCleanUp(ctx)
 			ok, err := br.IsTargetAvailable(ctx, chrome.MatchTargetURL(testParams.expected))
 			if err != nil {
 				return testing.PollBreak(err)
