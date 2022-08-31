@@ -9,9 +9,11 @@ import (
 	"time"
 
 	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/feedbackapp"
@@ -43,19 +45,19 @@ func init() {
 			Name: "legal_help_page",
 			Val: testParam{
 				linkName:    "Legal Help page",
-				linkAddress: "support.google.com/legal/answer/3110420",
+				linkAddress: "https://support.google.com/legal/answer/3110420",
 			},
 		}, {
 			Name: "privacy_policy",
 			Val: testParam{
 				linkName:    "Privacy Policy",
-				linkAddress: "policies.google.com/privacy",
+				linkAddress: "https://policies.google.com/privacy",
 			},
 		}, {
 			Name: "terms_of_service",
 			Val: testParam{
 				linkName:    "Terms of Service",
-				linkAddress: "policies.google.com/terms",
+				linkAddress: "https://policies.google.com/terms",
 			},
 		}},
 	})
@@ -97,8 +99,19 @@ func ViewPolicy(ctx context.Context, s *testing.State) {
 	}
 
 	// Verify browser contains correct address.
-	if err := nodewith.NameContaining(s.Param().(testParam).linkAddress).Role(
-		role.TextField); err == nil {
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		tabs, err := browser.CurrentTabs(ctx, tconn)
+		if err != nil {
+			return errors.Wrap(err, "failed to get the current tabs")
+		}
+		if tabs[0].URL != s.Param().(testParam).linkAddress {
+			return errors.Wrap(err, "failed to get correct url address")
+		}
+		return nil
+	}, &testing.PollOptions{
+		Interval: 5 * time.Second,
+		Timeout:  30 * time.Second,
+	}); err != nil {
 		s.Fatal("Failed to find link address: ", err)
 	}
 }
