@@ -788,10 +788,9 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		if err := meetConn.Eval(ctx, "hrTelemetryApi.setMicMuted(false)", nil); err != nil {
 			return errors.Wrap(err, "failed to turn on mic")
 		}
-		if !meet.cam {
-			if err := meetConn.Eval(ctx, "hrTelemetryApi.setCameraMuted(true)", nil); err != nil {
-				return errors.Wrap(err, "failed to turn off camera")
-			}
+
+		if err := meetConn.Eval(ctx, fmt.Sprintf("hrTelemetryApi.setCameraMuted(%t)", !meet.cam), nil); err != nil {
+			return errors.Wrapf(err, "failed to set camera off-status to %t", !meet.cam)
 		}
 
 		var participantCount int
