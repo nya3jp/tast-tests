@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "643763d0_0e643986",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1441092
+      },
+      "writtenOn": "2022-08-31T23:51:07Z",
+      "side": 1,
+      "message": "Looks like we do have a way to check for cellular in hwdep `HardwareDeps: hwdep.D(hwdep.Cellular())`",
+      "parentUuid": "9225045b_24f31352",
+      "revId": "d383459b430d5eaaccbf29dfbb18871a2acfd4f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d1ef31ea_26763029",
