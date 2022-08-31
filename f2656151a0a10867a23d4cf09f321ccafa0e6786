@@ -46,6 +46,30 @@
       },
       "revId": "f2656151a0a10867a23d4cf09f321ccafa0e6786",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34e01c76_2fd35115",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/firmware_test_handler.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-08-31T15:59:57Z",
+      "side": 1,
+      "message": "Since it looks like the [fix was not released](http://b/183123775#comment19), I\u0027m ok with going ahead and merging this. I\u0027m not sure how long it will take for the uprev to land. I think they may have to do a FAFT run, and I don\u0027t know how long that takes. We can revert this once it does land.",
+      "parentUuid": "d97257f8_aa2471b1",
+      "range": {
+        "startLine": 87,
+        "startChar": 4,
+        "endLine": 87,
+        "endChar": 33
+      },
+      "revId": "f2656151a0a10867a23d4cf09f321ccafa0e6786",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
