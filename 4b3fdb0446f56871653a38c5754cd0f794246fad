@@ -16,6 +16,24 @@
       "message": "It will always be the first tab? Or is this the active tab?",
       "revId": "4b3fdb0446f56871653a38c5754cd0f794246fad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "85c03f17_0a156dc0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/open_chromebook_help_forum.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1538417
+      },
+      "writtenOn": "2022-08-31T17:09:36Z",
+      "side": 1,
+      "message": "It will always be the first tab and we only open one tab.",
+      "parentUuid": "87b97b79_a959b4af",
+      "revId": "4b3fdb0446f56871653a38c5754cd0f794246fad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
