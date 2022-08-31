@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9225045b_24f31352",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-08-31T12:53:31Z",
+      "side": 1,
+      "message": "I think you might want to send mail to the tast-owners@ list and see if they have any better suggestions for avoiding the \"runtime test N/A\"-type behavior here. There has to be a mechanism by which we can avoid scheduling this test on the wrong devices.",
+      "revId": "d383459b430d5eaaccbf29dfbb18871a2acfd4f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d1ef31ea_26763029",
