@@ -16,6 +16,46 @@
       "message": "I think my understanding is that if we add 1 to the y value of a bounds, we are actually going lower on the device screen? like y \u003d 0 is the top and y \u003d screen_height is the bottom? If so, lgtm.",
       "revId": "094b305a978dc109ec84a0f684038509c7d181e4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b836f43_838dae8c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_pip_rounded_corners_underlay.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-08-31T13:41:38Z",
+      "side": 1,
+      "message": "should this be offset by (1, 1) too?",
+      "range": {
+        "startLine": 157,
+        "startChar": 73,
+        "endLine": 157,
+        "endChar": 120
+      },
+      "revId": "094b305a978dc109ec84a0f684038509c7d181e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db81fb5d_b4432531",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_pip_rounded_corners_underlay.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-08-31T13:41:38Z",
+      "side": 1,
+      "message": "Could you comment why \"(1, 1)\" needs to be added here?",
+      "revId": "094b305a978dc109ec84a0f684038509c7d181e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
