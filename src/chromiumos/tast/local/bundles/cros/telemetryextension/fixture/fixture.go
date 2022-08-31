@@ -258,7 +258,7 @@ type telemetryExtensionFixture struct {
 	dir     string
 	cr      *chrome.Chrome
 	br      *browser.Browser
-	closeBr func(ctx context.Context)
+	closeBr uiauto.Action
 
 	healthdPID int
 

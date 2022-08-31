@@ -422,14 +422,9 @@ func shouldCloseOnReset(t *Target) bool {
 	return t.Type == "page" || t.Type == "app" || t.Type == "other"
 }
 
-// ResetState attempts to reset Chrome's state (e.g. by closing all pages).
-// Tests typically do not need to call this; it is exposed primarily for other packages.
-func (c *Chrome) ResetState(ctx context.Context) error {
-	testing.ContextLog(ctx, "Resetting Chrome's state")
-	ctx, st := timing.Start(ctx, "reset_chrome")
-	defer st.End()
-
-	targets, err := c.FindTargets(ctx, shouldCloseOnReset)
+// CloseTargets closes all targets matched by TargetMatcher.
+func (c *Chrome) CloseTargets(ctx context.Context, tm cdputil.TargetMatcher) error {
+	targets, err := c.FindTargets(ctx, tm)
 	if err != nil {
 		return errors.Wrap(err, "failed to get targets")
 	}
@@ -446,8 +441,8 @@ func (c *Chrome) ResetState(ctx context.Context) error {
 		}
 	}
 	// Wait for the targets to finish closing
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		targets, err := c.FindTargets(ctx, shouldCloseOnReset)
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		targets, err := c.FindTargets(ctx, tm)
 		if err != nil {
 			return errors.Wrap(err, "failed to get targets")
 		}
@@ -464,7 +459,17 @@ func (c *Chrome) ResetState(ctx context.Context) error {
 			return errors.Errorf("%d target(s) still open", stillClosingCount)
 		}
 		return nil
-	}, &testing.PollOptions{Interval: 10 * time.Millisecond, Timeout: 15 * time.Second}); err != nil {
+	}, &testing.PollOptions{Interval: 10 * time.Millisecond, Timeout: 15 * time.Second})
+}
+
+// ResetState attempts to reset Chrome's state (e.g. by closing all pages).
+// Tests typically do not need to call this; it is exposed primarily for other packages.
+func (c *Chrome) ResetState(ctx context.Context) error {
+	testing.ContextLog(ctx, "Resetting Chrome's state")
+	ctx, st := timing.Start(ctx, "reset_chrome")
+	defer st.End()
+
+	if err := c.CloseTargets(ctx, shouldCloseOnReset); err != nil {
 		return errors.Wrap(err, "not all targets finished closing")
 	}
 
