@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ce852a8_2635d850",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2022-08-31T07:12:58Z",
+      "side": 1,
+      "message": "lgtm with nits",
+      "revId": "ed925a4ba494901c9f0d1f54b565e98a985c7f9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f03f1680_ccd42a19",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/theme_selection.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2022-08-31T07:12:58Z",
+      "side": 1,
+      "message": "either break lines at 80 or not break them :) I think the latter preffered in go?",
+      "range": {
+        "startLine": 51,
+        "startChar": 103,
+        "endLine": 51,
+        "endChar": 110
+      },
+      "revId": "ed925a4ba494901c9f0d1f54b565e98a985c7f9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6f462ca_87b0d0f1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/theme_selection.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2022-08-31T07:12:58Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 67,
+        "startChar": 101,
+        "endLine": 67,
+        "endChar": 103
+      },
+      "revId": "ed925a4ba494901c9f0d1f54b565e98a985c7f9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ebdaa79_afc48e78",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/theme_selection.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2022-08-31T07:12:58Z",
+      "side": 1,
+      "message": "I think you could just remove those. This is the default behavior anyway.",
+      "range": {
+        "startLine": 117,
+        "startChar": 2,
+        "endLine": 117,
+        "endChar": 64
+      },
+      "revId": "ed925a4ba494901c9f0d1f54b565e98a985c7f9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
