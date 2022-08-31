@@ -63,6 +63,23 @@ func getLastStringValue(d LabelMap, key string) (string, bool) {
 	return "", false
 }
 
+// GetCellularCarrierFromHostInfoLabels return the current carrier name from host_info_labels, else return empty string
+func GetCellularCarrierFromHostInfoLabels(ctx context.Context, d LabelMap) string {
+	if c, ok := getLastStringValue(d, "label-carrier"); ok {
+		return c
+	}
+	return ""
+}
+
+// GetDevicePoolFromHostInfoLabels return the current device pool name from host_info_labels, else return empty string
+func GetDevicePoolFromHostInfoLabels(ctx context.Context, d LabelMap) []string {
+	var pools []string
+	for _, v := range d["label-pools"] {
+		pools = append(pools, v)
+	}
+	return pools
+}
+
 // GetModemInfoFromHostInfoLabels populate Modem info from host_info_labels
 func GetModemInfoFromHostInfoLabels(ctx context.Context, d LabelMap) *ModemInfo {
 	var modemInfo ModemInfo

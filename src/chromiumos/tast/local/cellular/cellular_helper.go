@@ -67,6 +67,8 @@ type Helper struct {
 	Labels             []string
 	modemInfo          *ModemInfo
 	simInfo            []*SIMInfo
+	carrierName        string
+	devicePools        []string
 }
 
 // NewHelper creates a Helper object and ensures that a Cellular Device is present.
@@ -1111,8 +1113,13 @@ func (h *Helper) GetHostInfoLabels(ctx context.Context, labels []string) error {
 		}
 	}
 	h.Labels = labels
+	h.PrintHostInfoLabels(ctx)
 	h.modemInfo = GetModemInfoFromHostInfoLabels(ctx, dims)
 	h.simInfo = GetSIMInfoFromHostInfoLabels(ctx, dims)
+	h.carrierName = GetCellularCarrierFromHostInfoLabels(ctx, dims)
+	testing.ContextLog(ctx, "Carrier Name : ", h.carrierName)
+	h.devicePools = GetDevicePoolFromHostInfoLabels(ctx, dims)
+	testing.ContextLog(ctx, "Pools : ", h.devicePools)
 	return nil
 }
 
