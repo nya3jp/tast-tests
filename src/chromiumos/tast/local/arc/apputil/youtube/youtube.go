@@ -7,15 +7,19 @@ package youtube
 
 import (
 	"context"
+	"fmt"
+	"regexp"
 	"time"
 
 	"chromiumos/tast/common/android/ui"
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/apputil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/shutil"
 	"chromiumos/tast/testing"
 )
 
@@ -139,4 +143,22 @@ func (yt *Youtube) startFromBeginning(ctx context.Context) error {
 	}
 
 	return apputil.DragAndDrop(yt.ARC, timestampsRect.CenterPoint(), timestampsRect.LeftCenter(), time.Second)(ctx)
+}
+
+// IsPlaying checks if youtube app is playing media.
+func (yt *Youtube) IsPlaying(ctx context.Context) (bool, error) {
+	cmd := yt.ARC.Command(ctx, "dumpsys", "media_session")
+	mediaSession, err := cmd.Output(testexec.DumpLogOnError)
+	if err != nil {
+		return false, errors.Wrapf(err, "failed to run %s", shutil.EscapeSlice(cmd.Args))
+	}
+
+	// The Media button session indicates which app is the primary media session.
+	regexpMatchPlayer := regexp.MustCompile(fmt.Sprintf(`Media button session is %s`, yt.PkgName))
+	// The target state "state=3" indicates the media is currently playing.
+	// See: https://developer.android.com/reference/android/media/session/PlaybackState
+	regexpMatchPlaybackState := regexp.MustCompile(`PlaybackState {state=3.*`)
+
+	// Matching both regular expressions means that the primary media session is youtube app and the PlaybackState of media session is playing.
+	return regexpMatchPlayer.MatchString(string(mediaSession)) && regexpMatchPlaybackState.MatchString(string(mediaSession)), nil
 }
