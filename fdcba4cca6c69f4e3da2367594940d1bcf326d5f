@@ -61,6 +61,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2ae88cc6_91727956",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/creation_flow.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-08-31T19:05:04Z",
+      "side": 1,
+      "message": "I don\u0027t see flakiness due to DriveFS on Tastboard [1]. Most of the errors are due to the microphone being muted or the constant refreshing, but Zork is removing the refreshing.\n\nThe I think it\u0027s just a pattern in Tast to always check for errors. I hope this error doesn\u0027t actually happen, or else this test would be flaky.\n\n[1] https://tastboard.corp.google.com/test/projector.CreationFlow",
+      "parentUuid": "65fad090_02851099",
+      "range": {
+        "startLine": 53,
+        "startChar": 2,
+        "endLine": 53,
+        "endChar": 55
+      },
+      "revId": "fdcba4cca6c69f4e3da2367594940d1bcf326d5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bbfc5837_1000ae32",
         "filename": "src/chromiumos/tast/local/bundles/cros/projector/creation_flow.go",
         "patchSetId": 2
