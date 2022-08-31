@@ -99,8 +99,12 @@ func UserSecretStash(ctx context.Context, s *testing.State) {
 		if err != nil {
 			return errors.Wrap(err, "failed to start auth session for re-mounting")
 		}
-		if err := client.AuthenticateAuthFactor(ctx, authSessionID, passwordLabel, userPassword); err != nil {
+		authReply, err := client.AuthenticateAuthFactor(ctx, authSessionID, passwordLabel, userPassword)
+		if err != nil {
 			return errors.Wrap(err, "failed to authenticate with auth session")
+		}
+		if !authReply.Authenticated {
+			return errors.New("AuthSession not authenticated despite successful reply")
 		}
 		if err := client.PreparePersistentVault(ctx, authSessionID, false /*ephemeral*/); err != nil {
 			return errors.Wrap(err, "failed to prepare persistent vault")
