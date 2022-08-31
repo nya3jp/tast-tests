@@ -231,7 +231,7 @@ func DataLeakPreventionRulesListDragdropMixedTypeBrowsers(ctx context.Context, s
 }
 
 // openWebsite opens a browser of |brType| and navigates to the |url|.
-func openWebsite(ctx context.Context, cr *chrome.Chrome, brType browser.Type, url string) (func(ctx context.Context), *chrome.Conn, error) {
+func openWebsite(ctx context.Context, cr *chrome.Chrome, brType browser.Type, url string) (uiauto.Action, *chrome.Conn, error) {
 	br, closeBr, err := browserfixt.SetUp(ctx, cr, brType)
 	if err != nil {
 		return nil, nil, errors.Wrapf(err, "couldn't launch the %v browser", brType)
