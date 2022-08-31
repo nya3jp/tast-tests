@@ -1,0 +1,153 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1458f7fd_0c47fe3e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1511087
+      },
+      "writtenOn": "2022-08-31T20:57:34Z",
+      "side": 1,
+      "message": "LGTM from a clipboard history perspective. I\u0027m new to Tast, so the Tast reviewer\u0027s feedback will be important here :-)\n\nThanks for working on this!",
+      "revId": "d7ce17b54c2d343f1336016a29854e3be710d20d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23ff1def_7b260c78",
+        "filename": "src/chromiumos/tast/local/bundles/cros/clipboardhistory/context_menu_clipboard.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1511087
+      },
+      "writtenOn": "2022-08-31T20:57:34Z",
+      "side": 1,
+      "message": "I believe this should be `LacrosVariantUnneeded` since, as of right now, there is no Lacros functionality to test.",
+      "range": {
+        "startLine": 38,
+        "startChar": 24,
+        "endLine": 38,
+        "endChar": 43
+      },
+      "revId": "d7ce17b54c2d343f1336016a29854e3be710d20d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6eabb9dc_4432ae76",
+        "filename": "src/chromiumos/tast/local/bundles/cros/clipboardhistory/context_menu_clipboard.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1511087
+      },
+      "writtenOn": "2022-08-31T20:57:34Z",
+      "side": 1,
+      "message": "suggestion: `ContextMenuClipboard verifies that it is possible to open clipboard history via various surfaces\u0027 context menus.`\n(change so this comment doesn\u0027t go out of date as more surfaces are added)",
+      "revId": "d7ce17b54c2d343f1336016a29854e3be710d20d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50035e08_f92d195d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/clipboardhistory/context_menu_clipboard.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1511087
+      },
+      "writtenOn": "2022-08-31T20:57:34Z",
+      "side": 1,
+      "message": "nit: input field",
+      "range": {
+        "startLine": 140,
+        "startChar": 33,
+        "endLine": 140,
+        "endChar": 43
+      },
+      "revId": "d7ce17b54c2d343f1336016a29854e3be710d20d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6dcda090_71c9fbdc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/clipboardhistory/context_menu_clipboard.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1511087
+      },
+      "writtenOn": "2022-08-31T20:57:34Z",
+      "side": 1,
+      "message": "Do you need this? Seems like you always want to clear the field first.",
+      "range": {
+        "startLine": 160,
+        "startChar": 95,
+        "endLine": 160,
+        "endChar": 110
+      },
+      "revId": "d7ce17b54c2d343f1336016a29854e3be710d20d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f00e02a_97cb3a23",
+        "filename": "src/chromiumos/tast/local/bundles/cros/clipboardhistory/context_menu_clipboard.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1511087
+      },
+      "writtenOn": "2022-08-31T20:57:34Z",
+      "side": 1,
+      "message": "nit: `open Gmail`",
+      "range": {
+        "startLine": 238,
+        "startChar": 45,
+        "endLine": 238,
+        "endChar": 54
+      },
+      "revId": "d7ce17b54c2d343f1336016a29854e3be710d20d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f068d057_6d7f6eb4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/clipboardhistory/context_menu_clipboard.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1511087
+      },
+      "writtenOn": "2022-08-31T20:57:34Z",
+      "side": 1,
+      "message": "nit: Gmail",
+      "range": {
+        "startLine": 270,
+        "startChar": 55,
+        "endLine": 270,
+        "endChar": 60
+      },
+      "revId": "d7ce17b54c2d343f1336016a29854e3be710d20d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
