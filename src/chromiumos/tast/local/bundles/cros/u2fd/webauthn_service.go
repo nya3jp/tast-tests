@@ -47,7 +47,7 @@ type WebauthnService struct {
 
 	cr           *chrome.Chrome
 	br           *browser.Browser
-	closeBrowser func(ctx context.Context)
+	closeBrowser uiauto.Action
 	// Keeping keyboard in state instead of creating it each time because it takes about 5 seconds to create a keyboard.
 	keyboard *input.KeyboardEventWriter
 	conn     *chrome.Conn

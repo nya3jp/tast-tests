@@ -97,7 +97,7 @@ func CardElementAnimationPerf(ctx context.Context, s *testing.State) {
 		// Open the browser windows. Also set up the browser the first time it opens.
 		if nWindows == 1 {
 			var conn *chrome.Conn
-			var closeBrowser func(ctx context.Context)
+			var closeBrowser uiauto.Action
 			var err error
 			conn, br, closeBrowser, err = browserfixt.SetUpWithURL(ctx, cr, bt, uiconsts.PerftestURL)
 			if err != nil {
