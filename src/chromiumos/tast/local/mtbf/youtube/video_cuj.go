@@ -200,40 +200,6 @@ func Run(ctx context.Context, resources TestResources, param TestParams) error {
 		testing.ContextLog(ctx, "Youtube app version: ", appVersion)
 	}
 
-	openGmailWeb := func(ctx context.Context) (*chrome.Conn, error) {
-		// If there's a lacros browser, bring it to active.
-		lacrosWin, err := ash.FindWindow(ctx, tconn, func(w *ash.Window) bool {
-			return w.WindowType == ash.WindowTypeLacros
-		})
-		if err != nil && err != ash.ErrWindowNotFound {
-			return nil, errors.Wrap(err, "failed to find lacros window")
-		}
-		if err == nil {
-			if err := lacrosWin.ActivateWindow(ctx, tconn); err != nil {
-				return nil, errors.Wrap(err, "failed to activate lacros window")
-			}
-		}
-
-		conn, err := uiHandler.NewChromeTab(ctx, br, cuj.GmailURL, true)
-		if err != nil {
-			return conn, errors.Wrap(err, "failed to open gmail web page")
-		}
-		if err := webutil.WaitForQuiescence(ctx, conn, 2*time.Minute); err != nil {
-			return conn, errors.Wrap(err, "failed to wait for gmail page to finish loading")
-		}
-		// YouTube sometimes pops up a prompt to notice users how to operate YouTube
-		// if there're new features. Dismiss prompt if it exist.
-		gotItPrompt := nodewith.Name("Got it").Role(role.Button)
-		uiauto.IfSuccessThen(
-			ui.WaitUntilExists(gotItPrompt),
-			uiHandler.ClickUntil(
-				gotItPrompt,
-				ui.WithTimeout(2*time.Second).WaitUntilGone(gotItPrompt),
-			),
-		)
-		return conn, nil
-	}
-
 	// Give 5 seconds to cleanup recorder.
 	cleanupRecorderCtx := ctx
 	ctx, cancel = ctxutil.Shorten(ctx, 5*time.Second)
@@ -249,19 +215,39 @@ func Run(ctx context.Context, resources TestResources, param TestParams) error {
 		return errors.Wrap(err, "failed to add metrics to recorder")
 	}
 
-	for _, videoSource := range videoSources {
-		// Repeat the run for different video source.
-		if err = recorder.Run(ctx, func(ctx context.Context) (retErr error) {
-			var videoApp VideoApp
-			switch appName {
-			case YoutubeWeb:
-				videoApp = NewYtWeb(br, tconn, kb, videoSource, extendedDisplay, ui, uiHandler)
-			case YoutubeApp:
-				videoApp = NewYtApp(tconn, kb, a, d, videoSource, outDir)
-			}
+	run := func(ctx context.Context, videoSource VideoSrc) error {
+		var videoApp VideoApp
+		switch appName {
+		case YoutubeWeb:
+			videoApp = NewYtWeb(br, tconn, kb, videoSource, extendedDisplay, ui, uiHandler)
+		case YoutubeApp:
+			videoApp = NewYtApp(tconn, kb, a, d, videoSource, outDir)
+		}
 
-			// Give time to cleanup videoApp resources.
-			cleanupResourceCtx := ctx
+		// Give time to cleanup videoApp resources.
+		cleanupResourceCtx := ctx
+		ctx, cancel = ctxutil.Shorten(ctx, 5*time.Second)
+		defer cancel()
+
+		// Close the currently playing video and restart the new one.
+		defer func(ctx context.Context) {
+			if appName == YoutubeWeb {
+				// Before closing the youtube site outside the recorder, dump the UI tree to capture a screenshot.
+				faillog.DumpUITreeWithScreenshotOnError(ctx, outDir, func() bool { return true }, cr, "ui_dump")
+				if bt == browser.TypeLacros {
+					// For lacros, leave a new tab to keep the browser alive for further testing.
+					if err := browser.ReplaceAllTabsWithSingleNewTab(ctx, bTconn); err != nil {
+						testing.ContextLog(ctx, "Failed to keep new tab: ", err)
+					}
+				} else {
+					videoApp.Close(ctx)
+				}
+			}
+		}(cleanupResourceCtx)
+
+		return recorder.Run(ctx, func(ctx context.Context) (retErr error) {
+			// Give time to dump arc UI tree.
+			cleanupCtx := ctx
 			ctx, cancel = ctxutil.Shorten(ctx, 15*time.Second)
 			defer cancel()
 
@@ -273,92 +259,18 @@ func Run(ctx context.Context, resources TestResources, param TestParams) error {
 					}
 					a.DumpUIHierarchyOnError(ctx, filepath.Join(outDir, "arc"), func() bool { return retErr != nil })
 				}
-				faillog.DumpUITreeWithScreenshotOnError(ctx, outDir, func() bool { return retErr != nil }, cr, "ui_dump")
-				if appName == YoutubeWeb && bt == browser.TypeLacros {
-					// For lacros, leave a new tab to keep the browser alive for further testing.
-					if err := browser.ReplaceAllTabsWithSingleNewTab(ctx, bTconn); err != nil {
-						testing.ContextLog(ctx, "Failed to keep new tab: ", err)
-					}
-				} else {
+				if appName == YoutubeApp {
+					faillog.DumpUITreeWithScreenshotOnError(ctx, outDir, func() bool { return retErr != nil }, cr, "ui_dump")
 					videoApp.Close(ctx)
 				}
-			}(cleanupResourceCtx)
+			}(cleanupCtx)
 
-			if err := videoApp.OpenAndPlayVideo(ctx); err != nil {
-				return errors.Wrapf(err, "failed to open %s", appName)
-			}
+			return videoScenario(ctx, resources, param, bTconn, br, videoApp, tabChecker)
+		})
+	}
 
-			// Play video at fullscreen.
-			if err := videoApp.EnterFullscreen(ctx); err != nil {
-				return errors.Wrap(err, "failed to play video in fullscreen")
-			}
-			// After entering full screen, it must be in playback state.
-			// This will make sure to switch to pip mode.
-			if err := uiauto.Retry(3, videoApp.IsPlaying())(ctx); err != nil {
-				return errors.Wrap(err, "failed to verify video is playing")
-			}
-
-			// Open Gmail web.
-			testing.ContextLog(ctx, "Open Gmail web")
-			gConn, err := openGmailWeb(ctx)
-			if err != nil {
-				return errors.Wrap(err, "failed to open Gmail website")
-			}
-			if appName == YoutubeApp && bt == browser.TypeLacros {
-				// For Youtube App, the current lacros with Gmail is the only lacros window.
-				// Leave a new tab to keep the browser alive for further testing.
-				defer func() {
-					gConn.Close()
-					if err := browser.ReplaceAllTabsWithSingleNewTab(ctx, bTconn); err != nil {
-						testing.ContextLog(ctx, "Failed to keep new tab: ", err)
-					}
-				}()
-			} else {
-				defer gConn.Close()
-				defer gConn.CloseTarget(cleanupResourceCtx)
-			}
-
-			ytApp, ok := videoApp.(*YtApp)
-			// Only do PiP testing for YT APP and when logged in as premium user.
-			if ok && param.CheckPIP && ytApp.isPremiumAccount() {
-				if err = ytApp.checkYoutubeAppPIP(ctx); err != nil {
-					return errors.Wrap(err, "youtube app smaller video preview window is not shown")
-				}
-			}
-
-			// Switch back to video playing.
-			if appName == YoutubeApp {
-				if err := uiHandler.SwitchToAppWindow("YouTube")(ctx); err != nil {
-					return errors.Wrap(err, "failed to switch to YouTube app")
-				}
-			} else {
-				if err := uiHandler.SwitchWindow()(ctx); err != nil {
-					return errors.Wrap(err, "failed to switch back to video playing")
-				}
-			}
-
-			// Pause and resume video playback.
-			if err := videoApp.PauseAndPlayVideo(ctx); err != nil {
-				return errors.Wrap(err, "failed to pause and play video")
-			}
-
-			if extendedDisplay {
-				if err := moveGmailWindow(ctx, tconn, resources); err != nil {
-					return errors.Wrap(err, "failed to move Gmail window between main display and extended display")
-				}
-				if appName == YoutubeWeb {
-					if err := moveYTWebWindow(ctx, tconn, resources); err != nil {
-						return errors.Wrap(err, "failed to move YT Web window to internal display")
-					}
-				}
-			}
-
-			// Before recording the metrics, check if there is any tab crashed.
-			if err := tabChecker.Check(ctx); err != nil {
-				return errors.Wrap(err, "tab renderer crashed")
-			}
-			return nil
-		}); err != nil {
+	for _, videoSource := range videoSources {
+		if err := run(ctx, videoSource); err != nil {
 			return errors.Wrapf(err, "failed to run %q video playback", appName)
 		}
 	}
@@ -392,6 +304,122 @@ func Run(ctx context.Context, resources TestResources, param TestParams) error {
 	}
 	if err := recorder.SaveHistograms(outDir); err != nil {
 		return errors.Wrap(err, "failed to save histogram raw data")
+	}
+	return nil
+}
+
+func videoScenario(ctx context.Context, resources TestResources, param TestParams, bTconn *chrome.TestConn,
+	br *browser.Browser, videoApp VideoApp, tabChecker *cuj.TabCrashChecker) error {
+
+	var (
+		appName         = param.App
+		extendedDisplay = param.ExtendedDisplay
+		checkPIP        = param.CheckPIP
+		uiHandler       = resources.UIHandler
+		tconn           = resources.Tconn
+	)
+
+	openGmailWeb := func(ctx context.Context) (*chrome.Conn, error) {
+		// If there's a lacros browser, bring it to active.
+		lacrosWin, err := ash.FindWindow(ctx, tconn, func(w *ash.Window) bool {
+			return w.WindowType == ash.WindowTypeLacros
+		})
+		if err != nil && err != ash.ErrWindowNotFound {
+			return nil, errors.Wrap(err, "failed to find lacros window")
+		}
+		if err == nil {
+			if err := lacrosWin.ActivateWindow(ctx, tconn); err != nil {
+				return nil, errors.Wrap(err, "failed to activate lacros window")
+			}
+		}
+
+		conn, err := uiHandler.NewChromeTab(ctx, br, cuj.GmailURL, true)
+		if err != nil {
+			return conn, errors.Wrap(err, "failed to open gmail web page")
+		}
+		if err := webutil.WaitForQuiescence(ctx, conn, 2*time.Minute); err != nil {
+			return conn, errors.Wrap(err, "failed to wait for gmail page to finish loading")
+		}
+
+		ui := uiauto.New(tconn)
+		// YouTube sometimes pops up a prompt to notice users how to operate YouTube
+		// if there're new features. Dismiss prompt if it exist.
+		gotItPrompt := nodewith.Name("Got it").Role(role.Button)
+		uiauto.IfSuccessThen(
+			ui.WaitUntilExists(gotItPrompt),
+			uiHandler.ClickUntil(
+				gotItPrompt,
+				ui.WithTimeout(2*time.Second).WaitUntilGone(gotItPrompt),
+			),
+		)
+		return conn, nil
+	}
+
+	if err := videoApp.OpenAndPlayVideo(ctx); err != nil {
+		return errors.Wrapf(err, "failed to open %s", appName)
+	}
+
+	// Play video at fullscreen.
+	if err := videoApp.EnterFullscreen(ctx); err != nil {
+		return errors.Wrap(err, "failed to play video in fullscreen")
+	}
+	// After entering full screen, it must be in playback state.
+	// This will make sure to switch to pip mode.
+	if err := uiauto.Retry(3, videoApp.IsPlaying())(ctx); err != nil {
+		return errors.Wrap(err, "failed to verify video is playing")
+	}
+
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
+	defer cancel()
+
+	// Open Gmail web.
+	testing.ContextLog(ctx, "Open Gmail web")
+	gConn, err := openGmailWeb(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to open Gmail website")
+	}
+	defer gConn.Close()
+	defer gConn.CloseTarget(cleanupCtx)
+
+	ytApp, ok := videoApp.(*YtApp)
+	// Only do PiP testing for YT APP and when logged in as premium user.
+	if ok && checkPIP && ytApp.isPremiumAccount() {
+		if err = ytApp.checkYoutubeAppPIP(ctx); err != nil {
+			return errors.Wrap(err, "youtube app smaller video preview window is not shown")
+		}
+	}
+
+	// Switch back to video playing.
+	if appName == YoutubeApp {
+		if err := uiHandler.SwitchToAppWindow("YouTube")(ctx); err != nil {
+			return errors.Wrap(err, "failed to switch to YouTube app")
+		}
+	} else {
+		if err := uiHandler.SwitchWindow()(ctx); err != nil {
+			return errors.Wrap(err, "failed to switch back to video playing")
+		}
+	}
+
+	// Pause and resume video playback.
+	if err := videoApp.PauseAndPlayVideo(ctx); err != nil {
+		return errors.Wrap(err, "failed to pause and play video")
+	}
+
+	if extendedDisplay {
+		if err := moveGmailWindow(ctx, tconn, resources); err != nil {
+			return errors.Wrap(err, "failed to move Gmail window between main display and extended display")
+		}
+		if appName == YoutubeWeb {
+			if err := moveYTWebWindow(ctx, tconn, resources); err != nil {
+				return errors.Wrap(err, "failed to move YT Web window to internal display")
+			}
+		}
+	}
+
+	// Before recording the metrics, check if there is any tab crashed.
+	if err := tabChecker.Check(ctx); err != nil {
+		return errors.Wrap(err, "tab renderer crashed")
 	}
 	return nil
 }
