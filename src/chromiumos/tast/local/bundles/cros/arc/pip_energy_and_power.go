@@ -38,7 +38,7 @@ func init() {
 		Contacts:     []string{"amusbach@chromium.org", "chromeos-perf@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_nightly"},
 		SoftwareDeps: []string{"chrome"},
-		Data:         []string{"bear-320x240.h264.mp4"},
+		Data:         []string{"180p_60fps_600frames.h264.mp4"},
 		Timeout:      6 * time.Minute,
 		Params: []testing.Param{{
 			Name:              "small",
