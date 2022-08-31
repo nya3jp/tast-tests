@@ -8,8 +8,8 @@ import (
 	"chromiumos/tast/common/perf"
 )
 
-// AshCommonMetricConfigs returns common metrics metrics which are required
-// to be collected by CUJ tests from the Ash process only.
+// AshCommonMetricConfigs returns SPERA common metrics which are
+// required to be collected by CUJ tests from the Ash process only.
 func AshCommonMetricConfigs() []MetricConfig {
 	return []MetricConfig{
 		// Responsiveness.
@@ -26,17 +26,10 @@ func AshCommonMetricConfigs() []MetricConfig {
 
 		// Smoothness.
 		NewCustomMetricConfig("Ash.Smoothness.PercentDroppedFrames_1sWindow", "percent", perf.SmallerIsBetter),
-		NewCustomMetricConfig("Graphics.Smoothness.MaxPercentDroppedFrames_1sWindow", "percent", perf.SmallerIsBetter),
-		NewSmoothnessMetricConfig("Apps.HomeLauncherTransition.AnimationSmoothness.EnterFullscreenAllApps"),
-		NewSmoothnessMetricConfig("Apps.HomeLauncherTransition.AnimationSmoothness.EnterFullscreenSearch"),
-		NewSmoothnessMetricConfig("Apps.HomeLauncherTransition.AnimationSmoothness.FadeInOverview"),
-		NewSmoothnessMetricConfig("Apps.HomeLauncherTransition.AnimationSmoothness.FadeOutOverview"),
-		NewSmoothnessMetricConfig("Apps.HomeLauncherTransition.AnimationSmoothness.HideLauncherForWindow"),
 		NewSmoothnessMetricConfig("Apps.PaginationTransition.AnimationSmoothness.ClamshellMode"),
 		NewSmoothnessMetricConfig("Apps.StateTransition.AnimationSmoothness"),
 		NewSmoothnessMetricConfig("Apps.StateTransition.AnimationSmoothness.Close.ClamshellMode"),
 		NewSmoothnessMetricConfig("Apps.StateTransition.AnimationSmoothness.FullscreenAllApps.ClamshellMode"),
-		NewSmoothnessMetricConfig("Apps.StateTransition.AnimationSmoothness.FullscreenSearch.ClamshellMode"),
 		NewSmoothnessMetricConfig("Apps.StateTransition.AnimationSmoothness.Half.ClamshellMode"),
 		NewSmoothnessMetricConfig("Apps.StateTransition.AnimationSmoothness.Peeking.ClamshellMode"),
 		NewSmoothnessMetricConfig("Ash.Overview.AnimationSmoothness.Enter.ClamshellMode"),
@@ -60,61 +53,22 @@ func AshCommonMetricConfigs() []MetricConfig {
 		NewCustomMetricConfig("Cras.FetchDelayMilliSeconds", "ms", perf.SmallerIsBetter),
 		NewCustomMetricConfig("Cras.UnderrunsPerDevice", "count", perf.SmallerIsBetter),
 
-		// ARC App Kill Metrics
-		NewCustomMetricConfig("Arc.App.LowMemoryKills.LMKD.CachedCount10Minutes", "apps", perf.SmallerIsBetter),
-		NewCustomMetricConfig("Arc.App.LowMemoryKills.LMKD.ForegroundCount10Minutes", "apps", perf.SmallerIsBetter),
-		NewCustomMetricConfig("Arc.App.LowMemoryKills.LMKD.PerceptibleCount10Minutes", "apps", perf.SmallerIsBetter),
-		NewCustomMetricConfig("Arc.App.LowMemoryKills.Pressure.CachedCount10Minutes", "apps", perf.SmallerIsBetter),
-		NewCustomMetricConfig("Arc.App.LowMemoryKills.Pressure.ForegroundCount10Minutes", "apps", perf.SmallerIsBetter),
-		NewCustomMetricConfig("Arc.App.LowMemoryKills.Pressure.PerceptibleCount10Minutes", "apps", perf.SmallerIsBetter),
-		NewCustomMetricConfig("Arc.App.LowMemoryKills.LinuxOOMCount10Minutes", "apps", perf.SmallerIsBetter),
-
-		// Tab Discard Metrics
-		NewCustomMetricConfig("Discarding.DailyDiscards.External", "tabs", perf.SmallerIsBetter),
-		NewCustomMetricConfig("Discarding.DailyDiscards.Urgent", "tabs", perf.SmallerIsBetter),
-		NewCustomMetricConfig("Discarding.DailyReloads.External", "tabs", perf.SmallerIsBetter),
-		NewCustomMetricConfig("Discarding.DailyReloads.Urgent", "tabs", perf.SmallerIsBetter),
-
-		// Desk Metrics
-		NewCustomMetricConfig("Ash.Desks.AnimationLatency.DeskActivation", "ms", perf.SmallerIsBetter),
-		NewSmoothnessMetricConfig("Ash.Desks.AnimationSmoothness.DeskActivation"),
-
-		// Others to monitor.
+		// Other metrics to monitor.
 		NewCustomMetricConfig("Power.BatteryDischargeRate", "mW", perf.SmallerIsBetter),
-		NewLatencyMetricConfig("Ash.DragWindowFromShelf.PresentationTime"),
-		NewLatencyMetricConfig("Ash.HotseatTransition.Drag.PresentationTime"),
-		NewSmoothnessMetricConfig("Ash.Homescreen.AnimationSmoothness"),
-		NewSmoothnessMetricConfig("Ash.SwipeHomeToOverviewGesture"),
-		NewSmoothnessMetricConfig("Ash.HotseatTransition.AnimationSmoothness.TransitionToShownHotseat"),
-		NewSmoothnessMetricConfig("Ash.HotseatTransition.AnimationSmoothness.TransitionToExtendedHotseat"),
-		NewSmoothnessMetricConfig("Ash.HotseatTransition.AnimationSmoothness.TransitionToHiddenHotseat"),
-		NewCustomMetricConfig("BootTime.Authenticate", "ms", perf.SmallerIsBetter),
-		NewCustomMetricConfig("BootTime.Chrome", "ms", perf.SmallerIsBetter),
-		NewCustomMetricConfig("BootTime.Firmware", "ms", perf.SmallerIsBetter),
-		NewCustomMetricConfig("BootTime.Kernel", "ms", perf.SmallerIsBetter),
-		NewCustomMetricConfig("BootTime.Login2", "ms", perf.SmallerIsBetter),
-		NewCustomMetricConfig("BootTime.LoginNewUser", "ms", perf.SmallerIsBetter),
-		NewCustomMetricConfig("BootTime.System", "ms", perf.SmallerIsBetter),
-		NewCustomMetricConfig("BootTime.Total2", "ms", perf.SmallerIsBetter),
-		NewCustomMetricConfig("ShutdownTime.BrowserDeleted", "ms", perf.SmallerIsBetter),
-		NewCustomMetricConfig("ShutdownTime.Logout", "ms", perf.SmallerIsBetter),
-		NewCustomMetricConfig("ShutdownTime.Restart", "ms", perf.SmallerIsBetter),
-		NewCustomMetricConfig("ShutdownTime.UIMessageLoopEnded", "ms", perf.SmallerIsBetter),
 	}
 }
 
-// LacrosCommonMetricConfigs returns common metrics which are required
-// to be collected by CUJ tests from the Lacros process only.
+// LacrosCommonMetricConfigs returns SPERA common metrics which are
+// required to be collected by CUJ tests from the Lacros process only.
 func LacrosCommonMetricConfigs() []MetricConfig {
 	return []MetricConfig{
-		// Smoothness.
 		NewCustomMetricConfig("Chrome.Lacros.Smoothness.PercentDroppedFrames_1sWindow", "percent", perf.SmallerIsBetter),
 	}
 }
 
-// BrowserCommonMetricConfigs returns common metrics metrics which are
-// required to be collected by CUJ tests from the browser process only (Ash or
-// Lacros).
+// BrowserCommonMetricConfigs returns SEPRA common metrics which are
+// required to be collected by CUJ tests from the browser process only
+// (Ash or Lacros).
 func BrowserCommonMetricConfigs() []MetricConfig {
 	return []MetricConfig{
 		// Responsiveness.
@@ -144,31 +98,22 @@ func BrowserCommonMetricConfigs() []MetricConfig {
 		NewCustomMetricConfig("PageLoad.PaintTiming.NavigationToLargestContentfulPaint2", "ms", perf.SmallerIsBetter),
 		NewCustomMetricConfig("PageLoad.PaintTiming.NavigationToFirstContentfulPaint", "ms", perf.SmallerIsBetter),
 		NewCustomMetricConfig("Browser.Responsiveness.JankyIntervalsPerThirtySeconds", "janks", perf.SmallerIsBetter),
-		NewCustomMetricConfig("Browser.Responsiveness.JankyIntervalsPerThirtySeconds3", "janks", perf.SmallerIsBetter),
 
 		// Startup Latency.
 		NewCustomMetricConfig("Startup.FirstWebContents.NonEmptyPaint3", "ms", perf.SmallerIsBetter),
 
-		// Others to monitor.
-		NewCustomMetricConfig("MPArch.RWH_TabSwitchPaintDuration", "ms", perf.SmallerIsBetter),
+		// Other metrics to monitor.
 		NewCustomMetricConfig("EventLatency.TotalLatency", "ms", perf.SmallerIsBetter),
-		NewCustomMetricConfig("PageLoad.InteractiveTiming.FirstInputDelay4", "ms", perf.SmallerIsBetter),
-		NewCustomMetricConfig("SessionRestore.ForegroundTabFirstPaint4", "ms", perf.SmallerIsBetter),
 		NewCustomMetricConfig("Media.Video.Roughness.60fps", "ms", perf.SmallerIsBetter),
-		NewCustomMetricConfig("Media.DroppedFrameCount", "count", perf.SmallerIsBetter),
 		NewCustomMetricConfig("Graphics.Smoothness.PercentDroppedFrames.AllInteractions", "percent", perf.SmallerIsBetter),
 		NewCustomMetricConfig("Graphics.Smoothness.PercentDroppedFrames.AllSequences", "percent", perf.SmallerIsBetter),
 		NewCustomMetricConfig("Graphics.Smoothness.PercentDroppedFrames.CompositorThread.Video", "percent", perf.SmallerIsBetter),
-		NewCustomMetricConfig("WebRTC.Video.DroppedFrames.Capturer", "percent", perf.SmallerIsBetter),
-		NewCustomMetricConfig("WebRTC.Video.DroppedFrames.Encoder", "percent", perf.SmallerIsBetter),
-		NewCustomMetricConfig("WebRTC.Video.DroppedFrames.EncoderQueue", "percent", perf.SmallerIsBetter),
-		NewCustomMetricConfig("WebRTC.Video.DroppedFrames.RateLimiter", "percent", perf.SmallerIsBetter),
 	}
 }
 
-// AnyChromeCommonMetricConfigs returns common metrics metrics which are
-// required to be collected by CUJ tests from any Chrome binary running (could
-// be from both Ash and Lacros in parallel).
+// AnyChromeCommonMetricConfigs returns SPERA common metrics which are
+// required to be collected by CUJ tests from any Chrome binary running
+// (could be from both Ash and Lacros in parallel).
 func AnyChromeCommonMetricConfigs() []MetricConfig {
 	return []MetricConfig{
 		// Smoothness.
