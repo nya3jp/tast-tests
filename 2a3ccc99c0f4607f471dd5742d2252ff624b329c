@@ -16,6 +16,97 @@
       "message": "Hi reviewers, I added new function chrome.CloseTargets() in the new patch, which allows closing apps \u0026 pages in the test.",
       "revId": "2a3ccc99c0f4607f471dd5742d2252ff624b329c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8cad73e_73a16731",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/cursive_smoke.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-08-31T07:40:34Z",
+      "side": 1,
+      "message": "Redundant with line 54.",
+      "revId": "2a3ccc99c0f4607f471dd5742d2252ff624b329c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8f7c324_8239d154",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/cursive_smoke.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-08-31T07:40:34Z",
+      "side": 1,
+      "message": "I\u0027d prefer an explanation of why you close it in the first place.",
+      "revId": "2a3ccc99c0f4607f471dd5742d2252ff624b329c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "083cd97a_d8bb82cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/cursive_smoke.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-08-31T07:40:34Z",
+      "side": 1,
+      "message": "C",
+      "range": {
+        "startLine": 135,
+        "startChar": 4,
+        "endLine": 135,
+        "endChar": 5
+      },
+      "revId": "2a3ccc99c0f4607f471dd5742d2252ff624b329c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f655c2a_f9282f7e",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-08-31T07:40:34Z",
+      "side": 1,
+      "message": "Nit: ... closes all targets matched by TargetMatcher.",
+      "revId": "2a3ccc99c0f4607f471dd5742d2252ff624b329c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96234a1a_e60d6e7a",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacros.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-08-31T07:40:34Z",
+      "side": 1,
+      "message": "Nit: please add a newline.",
+      "revId": "2a3ccc99c0f4607f471dd5742d2252ff624b329c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
