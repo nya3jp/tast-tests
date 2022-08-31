@@ -46,7 +46,7 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "proprietary_codecs"},
 		HardwareDeps: hwdep.D(hwdep.SupportsNV12Overlays()),
-		Data:         []string{"bear-320x240.h264.mp4", "pip_video.html"},
+		Data:         []string{"180p_60fps_600frames.h264.mp4", "pip_video.html"},
 		Params: []testing.Param{{
 			Fixture: "chromeGraphics",
 			Val:     browser.TypeAsh,
