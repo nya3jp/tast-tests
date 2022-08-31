@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bee6d9ce_f2cda2c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/kiosk_ephemeral_mount.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-08-31T16:37:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5047f9df_c3b3e8f1",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 72
+      },
+      "revId": "03b94a1a9e07ecbba21cb95020d54cbb2544137f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eed30bc9_6d05120f",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-08-31T01:01:09Z",
       "side": 1,
       "message": "can you add a comment for this boolean flag, and the ones following int his file so that we don\u0027t need to check back the MountVault.",
+      "range": {
+        "startLine": 85,
+        "startChar": 119,
+        "endLine": 85,
+        "endChar": 123
+      },
+      "revId": "03b94a1a9e07ecbba21cb95020d54cbb2544137f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f36e3269_af2119ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/kiosk_ephemeral_mount.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-08-31T16:37:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eed30bc9_6d05120f",
       "range": {
         "startLine": 85,
         "startChar": 119,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ed3b36c_6e0501b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/kiosk_ephemeral_mount.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-08-31T16:37:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1789cfdd_af606706",
+      "range": {
+        "startLine": 103,
+        "startChar": 1,
+        "endLine": 103,
+        "endChar": 44
+      },
+      "revId": "03b94a1a9e07ecbba21cb95020d54cbb2544137f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2290a640_44e9ef68",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-08-31T00:57:26Z",
       "side": 1,
       "message": "nit:please fix the comment",
+      "range": {
+        "startLine": 117,
+        "startChar": 1,
+        "endLine": 117,
+        "endChar": 89
+      },
+      "revId": "03b94a1a9e07ecbba21cb95020d54cbb2544137f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "739dd8e7_1b93597a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/kiosk_ephemeral_mount.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-08-31T16:37:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2290a640_44e9ef68",
       "range": {
         "startLine": 117,
         "startChar": 1,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "37b0eb00_81b444c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/kiosk_ephemeral_mount.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-08-31T16:37:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "579cc836_9472d07e",
+      "range": {
+        "startLine": 132,
+        "startChar": 1,
+        "endLine": 132,
+        "endChar": 44
+      },
+      "revId": "03b94a1a9e07ecbba21cb95020d54cbb2544137f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "09dd70ea_383a59e4",
@@ -129,6 +249,30 @@
       "writtenOn": "2022-08-31T00:57:26Z",
       "side": 1,
       "message": "it\u0027d be nicer to follow if you add separator comments between legacy API, authsession, authFactor and USS.",
+      "range": {
+        "startLine": 146,
+        "startChar": 0,
+        "endLine": 147,
+        "endChar": 35
+      },
+      "revId": "03b94a1a9e07ecbba21cb95020d54cbb2544137f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "61fdc93e_5027c12c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/kiosk_ephemeral_mount.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-08-31T16:37:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "09dd70ea_383a59e4",
       "range": {
         "startLine": 146,
         "startChar": 0,
@@ -162,6 +306,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8790806a_bb89f70c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/kiosk_ephemeral_mount.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-08-31T16:37:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "036f24f3_94d9e34e",
+      "range": {
+        "startLine": 162,
+        "startChar": 1,
+        "endLine": 162,
+        "endChar": 44
+      },
+      "revId": "03b94a1a9e07ecbba21cb95020d54cbb2544137f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a36f4c97_c4d98a1d",
@@ -185,6 +353,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd66df02_c636e04e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/kiosk_ephemeral_mount.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-08-31T16:37:12Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a36f4c97_c4d98a1d",
+      "range": {
+        "startLine": 199,
+        "startChar": 0,
+        "endLine": 202,
+        "endChar": 2
+      },
+      "revId": "03b94a1a9e07ecbba21cb95020d54cbb2544137f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f7cc4bc4_339c1982",
@@ -198,6 +390,30 @@
       "writtenOn": "2022-08-31T00:57:26Z",
       "side": 1,
       "message": "I think two more steps needed to finalize the test: 1) Unmount 2) VerifyUnreadable",
+      "range": {
+        "startLine": 204,
+        "startChar": 1,
+        "endLine": 207,
+        "endChar": 1
+      },
+      "revId": "03b94a1a9e07ecbba21cb95020d54cbb2544137f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "78e15fc0_46448060",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/kiosk_ephemeral_mount.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-08-31T16:37:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f7cc4bc4_339c1982",
       "range": {
         "startLine": 204,
         "startChar": 1,
