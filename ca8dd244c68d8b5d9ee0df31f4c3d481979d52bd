@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dab4fef9_2549f55f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/kiosk_with_prepare_credential_api.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-08-31T01:23:42Z",
+      "side": 1,
+      "message": "InvalidateAuthSession is forgotton. also it\u0027d be better to have the UnMount here",
+      "range": {
+        "startLine": 111,
+        "startChar": 1,
+        "endLine": 111,
+        "endChar": 2
+      },
+      "revId": "ca8dd244c68d8b5d9ee0df31f4c3d481979d52bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9fb6cc7c_18846a3a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/kiosk_with_prepare_credential_api.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-08-31T01:23:42Z",
+      "side": 1,
+      "message": "same: InvalidateAuthSession is forgotton. also it\u0027d be better to have the UnMount here",
+      "range": {
+        "startLine": 126,
+        "startChar": 1,
+        "endLine": 126,
+        "endChar": 2
+      },
+      "revId": "ca8dd244c68d8b5d9ee0df31f4c3d481979d52bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "847f09b3_6b837060",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 724,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-08-31T01:23:42Z",
+      "side": 1,
+      "message": "Lets remove the defer from here and let the caller handle Unmount.",
+      "range": {
+        "startLine": 724,
+        "startChar": 1,
+        "endLine": 724,
+        "endChar": 34
+      },
+      "revId": "ca8dd244c68d8b5d9ee0df31f4c3d481979d52bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
