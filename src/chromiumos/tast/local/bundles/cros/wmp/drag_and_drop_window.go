@@ -71,4 +71,11 @@ func DragAndDropWindow(ctx context.Context, s *testing.State) {
 	if oldBounds == newBounds {
 		s.Fatal("Drag failed: window bounds didn't change")
 	}
+
+	// Drag the app window back, so subsequent files app launcher position the
+	// files app window at original bounds.
+	if err := mouse.Drag(tconn, end, start, time.Millisecond)(ctx); err != nil {
+		s.Fatal("Failed to drag window back: ", err)
+	}
+
 }
