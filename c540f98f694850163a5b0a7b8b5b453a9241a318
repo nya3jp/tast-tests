@@ -177,6 +177,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd6b7bc6_132cff6d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/wwcb_api.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1545162
+      },
+      "writtenOn": "2022-08-31T02:41:07Z",
+      "side": 1,
+      "message": "I just test it. It does. Done.\n\nSee logs below.\n(cr) (docking_04) oem@oem-Latitude-3450 ~/chromiumos/src/platform/tast-tests $ tast run -var\u003dutils.WWCBIP\u003d192.168.1.198 -var\u003dDockingID\u003d1912901 -var\u003d1stExtDispID\u003d2007901 192.168.1.222 wwcb.Dock4UsbAudio\n2022-08-31T02:18:33.703727Z Command line: tast run -var\u003dutils.WWCBIP\u003d192.168.1.198 -var\u003dDockingID\u003d1912901 -var\u003d1stExtDispID\u003d2007901 192.168.1.222 wwcb.Dock4UsbAudio\n\n\n2022-08-31T02:25:54.175875Z [02:25:52.208] Initialize fixtures\n2022-08-31T02:25:54.176071Z [02:25:52.208] request: http://192.168.1.198:8585/api/AVIOSYS?type\u003d1\u0026port\u003d1\n2022-08-31T02:25:54.645032Z [02:25:52.766] response: map[resultCode:0000 resultTxt:Success]\n2022-08-31T02:25:54.645559Z [02:25:52.766] Step 1 - Connect external display to docking station\n2022-08-31T02:25:54.645774Z [02:25:52.766] request: http://192.168.1.198:8585/api/switchfixture?id\u003d2007901\u0026action\u003don\u0026Interval\u003d0\n2022-08-31T02:26:00.192580Z [02:25:58.315] response: map[resultCode:0000 resultTxt:Success]",
+      "parentUuid": "262cc213_54bd4e98",
+      "revId": "c540f98f694850163a5b0a7b8b5b453a9241a318",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d27002c8_74825be1",
@@ -194,6 +212,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2af9d5f6_b9483821",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/wwcb_api.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1545162
+      },
+      "writtenOn": "2022-08-31T02:41:07Z",
+      "side": 1,
+      "message": "Yeah, this function will tell the WWCB server to capture a screenshot, then store in the server, in the end, return the filepath which stored on server. I will describe more clear.",
+      "parentUuid": "d27002c8_74825be1",
+      "revId": "c540f98f694850163a5b0a7b8b5b453a9241a318",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "124b25e6_ddaad6a9",
@@ -207,6 +243,24 @@
       "writtenOn": "2022-08-30T15:49:20Z",
       "side": 1,
       "message": "Spelling: should this be \"GetPicColorHotValue\" (c in Pic is missing)?",
+      "revId": "c540f98f694850163a5b0a7b8b5b453a9241a318",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea529161_a6a6b72c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/wwcb_api.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1545162
+      },
+      "writtenOn": "2022-08-31T02:41:07Z",
+      "side": 1,
+      "message": "Yeah, you\u0027re right. Done.",
+      "parentUuid": "124b25e6_ddaad6a9",
       "revId": "c540f98f694850163a5b0a7b8b5b453a9241a318",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
