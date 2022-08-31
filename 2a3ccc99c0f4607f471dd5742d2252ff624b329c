@@ -106,6 +106,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c4731e1_d8f2d928",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/cursive_smoke.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-08-31T08:18:43Z",
+      "side": 1,
+      "message": "Added clarification in comment as suggested.\n\nThe ash apps and windows are closed underneath. \n\nRefactor closeBrowser sounds not a good idea to me. It is a cleanup function for callers not exactly the same as cr.Close and cr.CloseTarget. To align with ash, it should be lacros.Close and lacros.CloseTarget I guess. \n\nAnyway, once you make the change, remember to update this test too 😊",
+      "parentUuid": "9942af68_ec4f275f",
+      "revId": "2a3ccc99c0f4607f471dd5742d2252ff624b329c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "083cd97a_d8bb82cb",
