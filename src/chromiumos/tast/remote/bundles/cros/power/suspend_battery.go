@@ -62,10 +62,17 @@ func init() {
 
 				// dedede
 				"boten",
+				"cret",
+				"cret360",
+				"drawlat",
 				"gallop",
+				"galith",
 				"lantis",
 				"madoo",
+				"magister",
 				"maglia",
+				"maglith",
+				"magma",
 				"magolor",
 				"metaknight",
 				"sasuke",
@@ -92,6 +99,7 @@ func init() {
 
 				// jacuzzi
 				"damu",
+				"esche",
 				"burnet",
 				"fennel",
 				"juniper",
@@ -122,17 +130,20 @@ func init() {
 				// volteer
 				"chronicler",
 				"collis",
+				"drobit",
 				"eldrid",
 				"elemi",
 				"lillipup",
 				"voema",
 				"volta",
+				"voxel",
 
 				// zork
 				"berknip",
 				"dirinboz",
 				"ezkinil",
 				"gumboz",
+				"jelboz360",
 				"morphius",
 				"vilboz",
 				"vilboz14",
