@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "eed30bc9_6d05120f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/kiosk_ephemeral_mount.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-08-31T01:01:09Z",
+      "side": 1,
+      "message": "can you add a comment for this boolean flag, and the ones following int his file so that we don\u0027t need to check back the MountVault.",
+      "range": {
+        "startLine": 85,
+        "startChar": 119,
+        "endLine": 85,
+        "endChar": 123
+      },
+      "revId": "03b94a1a9e07ecbba21cb95020d54cbb2544137f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1789cfdd_af606706",
         "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/kiosk_ephemeral_mount.go",
         "patchSetId": 1
