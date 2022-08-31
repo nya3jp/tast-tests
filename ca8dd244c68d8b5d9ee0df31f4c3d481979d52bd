@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a8bc4df_9369002e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/kiosk_with_prepare_credential_api.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-08-31T16:36:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dab4fef9_2549f55f",
+      "range": {
+        "startLine": 111,
+        "startChar": 1,
+        "endLine": 111,
+        "endChar": 2
+      },
+      "revId": "ca8dd244c68d8b5d9ee0df31f4c3d481979d52bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9fb6cc7c_18846a3a",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-08-31T01:23:42Z",
       "side": 1,
       "message": "same: InvalidateAuthSession is forgotton. also it\u0027d be better to have the UnMount here",
+      "range": {
+        "startLine": 126,
+        "startChar": 1,
+        "endLine": 126,
+        "endChar": 2
+      },
+      "revId": "ca8dd244c68d8b5d9ee0df31f4c3d481979d52bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb4341bb_bf5fd92c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/kiosk_with_prepare_credential_api.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-08-31T16:36:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9fb6cc7c_18846a3a",
       "range": {
         "startLine": 126,
         "startChar": 1,
