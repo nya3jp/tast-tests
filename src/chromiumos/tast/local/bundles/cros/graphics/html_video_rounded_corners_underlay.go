@@ -30,7 +30,7 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "proprietary_codecs"},
 		HardwareDeps: hwdep.D(hwdep.SupportsNV12Overlays()),
-		Data:         []string{"bear-320x240.h264.mp4", "video_with_rounded_corners.html"},
+		Data:         []string{"180p_60fps_600frames.h264.mp4", "video_with_rounded_corners.html"},
 		Params: []testing.Param{{
 			Fixture: "chromeGraphics",
 			Val:     browser.TypeAsh,
