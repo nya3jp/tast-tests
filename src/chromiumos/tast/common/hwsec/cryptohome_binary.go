@@ -300,7 +300,7 @@ func (c *cryptohomeBinary) authenticateChallengeCredentialWithAuthSession(ctx co
 
 // authenticateAuthFactor calls "cryptohome --action=authenticate_auth_factor".
 func (c *cryptohomeBinary) authenticateAuthFactor(ctx context.Context, authSessionID, label, password string) ([]byte, error) {
-	args := []string{"--action=authenticate_auth_factor", "--auth_session_id=" + authSessionID, "--key_label=" + label, "--password=" + password}
+	args := []string{"--action=authenticate_auth_factor", "--output-format=binary-protobuf", "--auth_session_id=" + authSessionID, "--key_label=" + label, "--password=" + password}
 	return c.call(ctx, args...)
 }
 
