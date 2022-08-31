@@ -6,23 +6,23 @@ package policy
 
 import (
 	"context"
-	"fmt"
 	"time"
-
-	"github.com/golang/protobuf/ptypes/empty"
 
 	"chromiumos/tast/common/tape"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/lockscreen"
-	"chromiumos/tast/local/chrome/uiauto/quicksettings"
+	"chromiumos/tast/local/chrome/uiauto/ossettings"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/remote/policyutil"
 	"chromiumos/tast/remote/reportingutil"
 	"chromiumos/tast/rpc"
 	pspb "chromiumos/tast/services/cros/policy"
 	"chromiumos/tast/testing"
+
+	"github.com/golang/protobuf/ptypes/empty"
 )
 
 type loginLockReportingParameters struct {
@@ -140,28 +140,31 @@ func LoginLockReporting(ctx context.Context, s *testing.State) {
 
 	testStartTime := time.Now()
 
-	cr, err := chrome.New(
-		ctx,
-		chrome.GAIAEnterpriseEnroll(chrome.Creds{User: user, Pass: pass}),
-		chrome.GAIALogin(chrome.Creds{User: user, Pass: pass}),
-		chrome.DMSPolicy(reportingutil.DmServerURL),
-		chrome.EnableFeatures("EncryptedReportingPipeline"),
-		chrome.EncryptedReportingAddr(fmt.Sprintf("%v/record", reportingutil.ReportingServerURL)),
-		chrome.CustomLoginTimeout(chrome.EnrollmentAndLoginTimeout),
-	)
+	cr, err := chrome.New(ctx, chrome.FakeLogin(chrome.Creds{User: user, Pass: pass}))
 	if err != nil {
-		//return nil, errors.Wrap(err, "failed to start chrome")
-		s.Fatal("Failed to start chrome: ", err)
+		s.Fatal("Chrome login failed: ", err)
 	}
-
-	tconn, err := cr.TestAPIConn(ctx)
-	if err != nil {
-		s.Fatal("Failed to get test API connection")
-	}
+	defer cr.Close(ctx)
 
 	c, err := pc.ClientID(ctx, &empty.Empty{})
 	if err != nil {
 		s.Fatal("Failed to grab client ID from device: ", err)
+	}
+
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Getting test API connection failed: ", err)
+	}
+	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
+
+	// Set up PIN through a connection to the Settings page.
+	settings, err := ossettings.Launch(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to launch Settings app: ", err)
+	}
+
+	if err := settings.EnablePINUnlock(cr, pass, "01234", true)(ctx); err != nil {
+		s.Fatal("Failed to enable PIN unlock: ", err)
 	}
 
 	// Lock the screen.
@@ -169,38 +172,97 @@ func LoginLockReporting(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to lock the screen: ", err)
 	}
 
-	kb, err := input.Keyboard(ctx)
+	if st, err := lockscreen.WaitState(ctx, tconn, func(st lockscreen.State) bool { return st.Locked && st.ReadyForPassword }, 30*time.Second); err != nil {
+		s.Fatalf("Waiting for screen to be locked failed: %v (last status %+v)", err, st)
+	}
+
+	keyboard, err := input.VirtualKeyboard(ctx)
 	if err != nil {
-		s.Fatal("failed to create the keyboard: ", err)
+		s.Fatal("Failed to get keyboard: ", err)
 	}
-	testing.ContextLog(ctx, "Entering wrong password on login screen")
-	if err := lockscreen.TypePassword(ctx, tconn, user, pass, kb); err != nil {
-		s.Fatal("failed to type wrong password: ", err)
-	}
+	defer keyboard.Close()
 
-	testing.ContextLog(ctx, "Entering correct password on login screen")
-	if err := lockscreen.TypePassword(ctx, tconn, user, pass, kb); err != nil {
-		s.Fatal("failed to type correct password: ", err)
+	// Enter and submit the PIN to unlock the DUT.
+	if err := lockscreen.EnterPIN(ctx, tconn, keyboard, "0012"); err != nil {
+		s.Fatal("Failed to enter in PIN: ", err)
 	}
-
-	if err := lockscreen.Unlock(ctx, tconn); err != nil {
-		s.Fatal("Failed to unlock the screen: ", err)
-	}
-
-	if err := quicksettings.SignOut(ctx, tconn); err != nil {
-		s.Fatal("failed to sign out with quick settings: ", err)
-	}
-
 	/*
-		have:
-		1 added user
-		1 login user
-		1 lock
-		1 unlock failed
-		1 unlock succeeded
-		1 logout
-		missing:
-		1 removed user
+		if _, err := pc.GAIAEnrollForReporting(ctx, &pspb.GAIAEnrollForReportingRequest{
+			Username:           user,
+			Password:           pass,
+			DmserverUrl:        reportingutil.DmServerURL,
+			ReportingServerUrl: reportingutil.ReportingServerURL,
+			EnabledFeatures:    "EncryptedReportingPipeline, EnableTelemetryTestingRates",
+			SkipLogin:          false,
+		}); err != nil {
+			s.Fatal("Failed to enroll using chrome: ", err)
+		}
+		c, err := pc.ClientID(ctx, &empty.Empty{})
+		if err != nil {
+			s.Fatal("Failed to grab client ID from device: ", err)
+		}
+
+			cr, err := chrome.New(
+				ctx,
+				chrome.GAIAEnterpriseEnroll(chrome.Creds{User: user, Pass: pass}),
+				chrome.GAIALogin(chrome.Creds{User: user, Pass: pass}),
+				chrome.DMSPolicy(reportingutil.DmServerURL),
+				chrome.EnableFeatures("EncryptedReportingPipeline"),
+				chrome.EncryptedReportingAddr(fmt.Sprintf("%v/record", reportingutil.ReportingServerURL)),
+				chrome.CustomLoginTimeout(chrome.EnrollmentAndLoginTimeout),
+			)
+			if err != nil {
+				//return nil, errors.Wrap(err, "failed to start chrome")
+				s.Fatal("Failed to start chrome: ", err)
+			}
+
+			tconn, err := cr.TestAPIConn(ctx)
+			if err != nil {
+				s.Fatal("Failed to get test API connection")
+			}
+
+			c, err := pc.ClientID(ctx, &empty.Empty{})
+			if err != nil {
+				s.Fatal("Failed to grab client ID from device: ", err)
+			}
+
+			// Lock the screen.
+			if err := lockscreen.Lock(ctx, tconn); err != nil {
+				s.Fatal("Failed to lock the screen: ", err)
+			}
+
+			kb, err := input.Keyboard(ctx)
+			if err != nil {
+				s.Fatal("failed to create the keyboard: ", err)
+			}
+			testing.ContextLog(ctx, "Entering wrong password on login screen")
+			if err := lockscreen.TypePassword(ctx, tconn, user, pass, kb); err != nil {
+				s.Fatal("failed to type wrong password: ", err)
+			}
+
+			testing.ContextLog(ctx, "Entering correct password on login screen")
+			if err := lockscreen.TypePassword(ctx, tconn, user, pass, kb); err != nil {
+				s.Fatal("failed to type correct password: ", err)
+			}
+
+			if err := lockscreen.Unlock(ctx, tconn); err != nil {
+				s.Fatal("Failed to unlock the screen: ", err)
+			}
+
+			if err := quicksettings.SignOut(ctx, tconn); err != nil {
+				s.Fatal("failed to sign out with quick settings: ", err)
+			}
+
+
+				have:
+				1 added user
+				1 login user
+				1 lock
+				1 unlock failed
+				1 unlock succeeded
+				1 logout
+				missing:
+				1 removed user
 	*/
 
 	// The info reporting normally takes a couple minutes to be reported but the
