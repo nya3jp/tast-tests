@@ -7,6 +7,7 @@ package filepicker
 
 import (
 	"context"
+	"time"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
@@ -36,7 +37,18 @@ func (f *FilePicker) OpenDir(dirName string) uiauto.Action {
 	return f.filesApp.OpenDir(dirName, dirName)
 }
 
-// OpenFile returns a function that executes double click on a file to open it with default app.
+// OpenFile returns a function that executes double click on a file to open it.
 func (f *FilePicker) OpenFile(fileName string) uiauto.Action {
 	return f.filesApp.OpenFile(fileName)
+}
+
+// SelectFile returns a function that selects a file.
+func (f *FilePicker) SelectFile(fileName string) uiauto.Action {
+	return f.filesApp.SelectFile(fileName)
+}
+
+// WithTimeout returns a new FilePicker with the specified timeout.
+// This only changes the timeout and does not relaunch the FilePicker.
+func (f *FilePicker) WithTimeout(timeout time.Duration) *FilePicker {
+	return &FilePicker{filesApp: f.filesApp.WithTimeout(timeout)}
 }
