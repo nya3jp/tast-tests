@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8de0905_71df1107",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1518728
+      },
+      "writtenOn": "2022-08-31T10:06:22Z",
+      "side": 1,
+      "message": "Hello Jeremy,\nPlease review this CL for FwmpDevDisableBoot(). \nThank you.",
+      "revId": "1fd9e046495c82f07f67a8b3a4714b4bcbc07156",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
