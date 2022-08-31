@@ -46,6 +46,30 @@
       },
       "revId": "7a06996f525f7f4b7941f76ce16e4889b24363ea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "449caa81_ecd0885d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/image_paste.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-08-31T01:25:19Z",
+      "side": 1,
+      "message": "The workaround at L122-129 didn\u0027t work for me.\n\nReviewers, is there any reliable way to bring a lacros window to top and get focused so that the extension window can continue to copy the image?",
+      "parentUuid": "fcf2d305_dd641a01",
+      "range": {
+        "startLine": 121,
+        "startChar": 0,
+        "endLine": 121,
+        "endChar": 106
+      },
+      "revId": "7a06996f525f7f4b7941f76ce16e4889b24363ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
