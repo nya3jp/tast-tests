@@ -16,6 +16,24 @@
       "message": "nit: `16x9, which matches...`\ncomma?",
       "revId": "7c202938f661aa385726296ff294d39e711276c2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e132dbb_ce4a8157",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_pip_energy_and_power.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-31T20:50:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a2f05e4e_fbd89a08",
+      "revId": "7c202938f661aa385726296ff294d39e711276c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
