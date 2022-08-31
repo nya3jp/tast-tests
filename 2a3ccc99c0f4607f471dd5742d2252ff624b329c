@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4ed4506_45b020d7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/cursive_smoke.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-08-31T08:03:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b8cad73e_73a16731",
+      "revId": "2a3ccc99c0f4607f471dd5742d2252ff624b329c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a8f7c324_8239d154",
@@ -48,6 +66,24 @@
       "writtenOn": "2022-08-31T07:40:34Z",
       "side": 1,
       "message": "I\u0027d prefer an explanation of why you close it in the first place.",
+      "revId": "2a3ccc99c0f4607f471dd5742d2252ff624b329c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b185b0b_a6446d12",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/cursive_smoke.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-08-31T08:03:35Z",
+      "side": 1,
+      "message": "The web page is the PWA to be installed. Keeping the page opened will make it in A11y which can make the ui finder a bit harder. Besides, have the web page \u0026 PWA app launched at the same time, can potentially cause conflicts? (I guess it is possible in theory), and nice to test the PWA launch in a clean environment align with real user experience.",
+      "parentUuid": "a8f7c324_8239d154",
       "revId": "2a3ccc99c0f4607f471dd5742d2252ff624b329c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -75,6 +111,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc499c91_b8bc2c4d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/cursive_smoke.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-08-31T08:03:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "083cd97a_d8bb82cb",
+      "range": {
+        "startLine": 135,
+        "startChar": 4,
+        "endLine": 135,
+        "endChar": 5
+      },
+      "revId": "2a3ccc99c0f4607f471dd5742d2252ff624b329c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1f655c2a_f9282f7e",
@@ -92,6 +152,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3606b871_0059f21c",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-08-31T08:03:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1f655c2a_f9282f7e",
+      "revId": "2a3ccc99c0f4607f471dd5742d2252ff624b329c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "96234a1a_e60d6e7a",
@@ -105,6 +183,24 @@
       "writtenOn": "2022-08-31T07:40:34Z",
       "side": 1,
       "message": "Nit: please add a newline.",
+      "revId": "2a3ccc99c0f4607f471dd5742d2252ff624b329c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4651411c_8b439760",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacros.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-08-31T08:03:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "96234a1a_e60d6e7a",
       "revId": "2a3ccc99c0f4607f471dd5742d2252ff624b329c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
