@@ -162,6 +162,30 @@
       },
       "revId": "12b1334b6987e287d40a2151777603fd660e67c3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81e3fa59_a3ab9ef4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/creation_flow.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-08-31T00:39:24Z",
+      "side": 1,
+      "message": "I\u0027m still trying to figure out the best way to add a new hardware or software dependency. Any pointers?",
+      "parentUuid": "417927e3_6c2acc05",
+      "range": {
+        "startLine": 57,
+        "startChar": 2,
+        "endLine": 57,
+        "endChar": 8
+      },
+      "revId": "12b1334b6987e287d40a2151777603fd660e67c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
