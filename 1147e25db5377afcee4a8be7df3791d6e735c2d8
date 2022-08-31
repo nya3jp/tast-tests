@@ -67,6 +67,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8904c1d5_7df44d93",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/cursive_smoke.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-08-31T07:44:18Z",
+      "side": 1,
+      "message": "\u003e The test can potentially fail before L129\nThat\u0027s why I mentioned you need a condition check: only close if the test fail before L129.\n\n\u003e closeBrowser function in cleanup should accept the situation where browser is already closed.\nThat\u0027s not true, it may just throw an error/expection or do nothing. In any case,  you should not make any assumption. It is possible that closing an already closed instance may cause unexpected results.\n\nThe way to do it is add a flag:\n```\nshouldClose :\u003d true\ndefer fuc(ctx context.Context){\n    if shouldClose {\n        closeBrowser(cleanupCtx)\n    }\n}(cleanupCtx)\n...\n\n// After L129.\nshouldClose \u003d false\n```",
+      "parentUuid": "4f2560b3_5913cabf",
+      "range": {
+        "startLine": 93,
+        "startChar": 1,
+        "endLine": 93,
+        "endChar": 31
+      },
+      "revId": "1147e25db5377afcee4a8be7df3791d6e735c2d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "324a36ad_5e65844a",
         "filename": "src/chromiumos/tast/local/bundles/cros/apps/cursive_smoke.go",
         "patchSetId": 6
