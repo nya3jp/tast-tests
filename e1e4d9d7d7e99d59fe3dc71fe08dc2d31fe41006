@@ -529,6 +529,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ddff19f_0cea7c2d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/enabled_policy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1403852
+      },
+      "writtenOn": "2022-08-31T20:45:34Z",
+      "side": 1,
+      "message": "Thanks Yilkal for the pointer! \nI think [4] might be called upon policy changed in session.\nSince ProjectorSystemWebAppDelegate will not appear in delegate_map in [2], I think verified the app is not in the lis tof RegisteredSystemWebApps is sufficient.",
+      "parentUuid": "2b18d295_bb79358b",
+      "revId": "e1e4d9d7d7e99d59fe3dc71fe08dc2d31fe41006",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ac21c89c_62273a7d",
