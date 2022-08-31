@@ -178,6 +178,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7c331931_724136e3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/bootperf/metrics_util.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2022-08-31T10:27:55Z",
+      "side": 1,
+      "message": "There can be multiple failure paths when bootstat accesses the RTC device (/dev/rtc). One theory is that the RTC device (/dev/rtc) is busy, but I can\u0027t imagine how.\n\nI think we can add more debugging info w.r.t. /dev/rtc:\n- run fuser /dev/rtc to see if any process is using it\n- if it\u0027s busy, what process is using it.\n- run bootstat --sync\u003drtc (an unused name) to see if bootstat outputs any error\n\nIf all these fails, we may need to use ftrace to trace the user of this device during boot 😊",
+      "parentUuid": "b7f04e32_59c44515",
+      "revId": "6f2045abf2bfc966697f48109642c96eac1d5583",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6b476a9b_ec14675a",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/bootperf/metrics_util.go",
         "patchSetId": 4
