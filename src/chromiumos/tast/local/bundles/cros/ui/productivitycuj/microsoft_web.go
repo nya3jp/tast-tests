@@ -164,6 +164,9 @@ func (app *MicrosoftWebOffice) CreateSpreadsheet(ctx context.Context, cr *chrome
 		return "", errors.Wrap(err, "failed to wait for sample sheet page to finish loading")
 	}
 
+	// 1. If the account is already logged in, the "We are updating our terms" dialog may pop up after navigating to the sample sheet.
+	// 2. If the account is not logged in, a dialog box may pop up after logging in.
+	// So check the dialog before and after login.
 	if err := uiauto.Combine("wait for sample sheet content appears",
 		app.skipUpdatingTermsDialog(),
 		app.checkSignIn,
@@ -546,28 +549,21 @@ func (app *MicrosoftWebOffice) checkSignIn(ctx context.Context) error {
 func (app *MicrosoftWebOffice) signIn(ctx context.Context) error {
 	testing.ContextLog(ctx, "Signing in to Microsoft Office")
 
-	enterAccount := func(ctx context.Context) error {
-		accountField := nodewith.NameContaining("Enter your email").Role(role.TextField)
-		nextButton := nodewith.Name("Next").Role(role.Button)
-		return uiauto.NamedCombine("enter the account",
-			app.ui.DoDefaultUntil(accountField, app.ui.Exists(accountField.Focused())),
-			app.kb.AccelAction("Ctrl+A"),
-			app.kb.TypeAction(app.username),
-			app.ui.DoDefault(nextButton),
-		)(ctx)
-	}
+	accountField := nodewith.NameContaining("Enter your email").Role(role.TextField)
+	enterAccount := uiauto.NamedCombine("enter the account",
+		app.ui.DoDefaultUntil(accountField, app.ui.Exists(accountField.Focused())),
+		app.kb.AccelAction("Ctrl+A"),
+		app.kb.TypeAction(app.username),
+		app.kb.AccelAction("Enter"),
+	)
 
 	passwordField := nodewith.Name("Enter the password for " + app.username).Role(role.TextField)
-	signInButton := nodewith.Name("Sign in").Role(role.Button)
-
-	enterPassword := func(ctx context.Context) error {
-		return uiauto.NamedCombine("enter the password",
-			app.ui.DoDefaultUntil(passwordField, app.ui.Exists(passwordField.Focused())),
-			app.kb.AccelAction("Ctrl+A"), // Prevent the field from already being populated.
-			app.kb.TypeAction(app.password),
-			app.ui.DoDefault(signInButton),
-		)(ctx)
-	}
+	enterPassword := uiauto.NamedCombine("enter the password",
+		app.ui.DoDefaultUntil(passwordField, app.ui.Exists(passwordField.Focused())),
+		app.kb.AccelAction("Ctrl+A"), // Prevent the field from already being populated.
+		app.kb.TypeAction(app.password),
+		app.kb.AccelAction("Enter"),
+	)
 
 	accountList := nodewith.Name("Pick an account").Role(role.List)
 	accountButton := nodewith.NameContaining(app.username).Role(role.Button).Ancestor(accountList)
@@ -579,7 +575,6 @@ func (app *MicrosoftWebOffice) signIn(ctx context.Context) error {
 		return err
 	}
 
-	accountField := nodewith.NameContaining("Enter your email").Role(role.TextField)
 	// If we select the account option in the "Pick an account" list, there is no need to fill in the account field.
 	if err := uiauto.IfSuccessThen(
 		app.ui.WaitUntilExists(accountField),
