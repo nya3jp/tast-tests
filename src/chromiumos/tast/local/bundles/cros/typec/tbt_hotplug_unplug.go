@@ -37,7 +37,8 @@ func init() {
 		HardwareDeps: hwdep.D(hwdep.Model("volteer", "voxel")),
 		Params: []testing.Param{{
 			Val:       1,
-			ExtraAttr: []string{"group:mainline", "informational"},
+			// Disabled due to <1% pass rate over 30 days. See b/241943435
+			// ExtraAttr: []string{"group:mainline", "informational"},
 		}, {
 			Name:      "stress",
 			Val:       500,
