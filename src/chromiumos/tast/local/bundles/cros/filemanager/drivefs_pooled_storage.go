@@ -6,12 +6,10 @@ package filemanager
 
 import (
 	"context"
-	"path/filepath"
 	"regexp"
 	"time"
 
 	"chromiumos/tast/ctxutil"
-	"chromiumos/tast/fsutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
@@ -25,7 +23,6 @@ type testCase struct {
 	user                     string
 	pass                     string
 	expectedBannerText       string
-	expectedVisualSignalText string
 	expectedStorageMeterText string
 }
 
@@ -65,7 +62,6 @@ func init() {
 				user:                     "filemanager.DrivefsPooledStorage.WarnUsername",
 				pass:                     "filemanager.DrivefsPooledStorage.WarnPassword",
 				expectedBannerText:       "Storage low 15% left of your 30 GB individual storage.",
-				expectedVisualSignalText: "",
 				expectedStorageMeterText: "",
 			},
 		}, {
@@ -74,7 +70,6 @@ func init() {
 				user:                     "filemanager.DrivefsPooledStorage.FullUsername",
 				pass:                     "filemanager.DrivefsPooledStorage.FullPassword",
 				expectedBannerText:       "Warning: You’ve used all your individual Google Workspace storage.",
-				expectedVisualSignalText: "There is not enough free space in your Google Drive to complete the upload.",
 				expectedStorageMeterText: "0 bytes available",
 			},
 		}, {
@@ -83,7 +78,6 @@ func init() {
 				user:                     "filemanager.DrivefsPooledStorage.OrgFullUsername",
 				pass:                     "filemanager.DrivefsPooledStorage.OrgFullPassword",
 				expectedBannerText:       "Warning: Test Org has used all of its Google Workspace storage.",
-				expectedVisualSignalText: "Your organization requires more storage to complete the upload.",
 				expectedStorageMeterText: "",
 			},
 		}},
@@ -94,8 +88,6 @@ func init() {
 }
 
 func DrivefsPooledStorage(ctx context.Context, s *testing.State) {
-	const testFileName = "test_1KB.txt"
-
 	tc := s.Param().(testCase)
 
 	// Start up Chrome.
@@ -111,12 +103,10 @@ func DrivefsPooledStorage(ctx context.Context, s *testing.State) {
 	defer cancel()
 	defer cr.Close(cleanupCtx)
 
-	dfs, err := drivefs.NewDriveFs(ctx, s.RequiredVar(tc.user))
-	if err != nil {
+	if _, err := drivefs.NewDriveFs(ctx, s.RequiredVar(tc.user)); err != nil {
 		s.Fatal("Failed waiting for DriveFS to start: ", err)
 	}
 	s.Log("drivefs fully started")
-	drivefsRoot := filepath.Join(dfs.MountPath(), "root")
 
 	// Open the test API.
 	tconn, err := cr.TestAPIConn(ctx)
@@ -124,11 +114,6 @@ func DrivefsPooledStorage(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create Test API Connection: ", err)
 	}
 	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
-
-	// Copy the test file into My Drive.
-	if err := fsutil.CopyFile(s.DataPath(testFileName), filepath.Join(drivefsRoot, testFileName)); err != nil {
-		s.Fatalf("Cannot copy %q to %q: %v", testFileName, drivefsRoot, err)
-	}
 
 	// Launch Files App.
 	files, err := filesapp.Launch(ctx, tconn)
@@ -164,16 +149,6 @@ func DrivefsPooledStorage(ctx context.Context, s *testing.State) {
 
 		if err != nil {
 			s.Fatalf("Error retrieving banner with expected contents %q. %v", tc.expectedBannerText, err)
-		}
-	}
-
-	if tc.expectedVisualSignalText != "" {
-		// Read syncing error visual signal.
-		_, err := files.Info(
-			ctx,
-			nodewith.Ancestor(nodewith.HasClass("files-feedback-panels")).Name(tc.expectedVisualSignalText).First())
-		if err != nil {
-			s.Fatalf("Error retrieving banner with expected contents %q. %v", tc.expectedVisualSignalText, err)
 		}
 	}
 }
