@@ -140,3 +140,56 @@ func (yt *Youtube) startFromBeginning(ctx context.Context) error {
 
 	return apputil.DragAndDrop(yt.ARC, timestampsRect.CenterPoint(), timestampsRect.LeftCenter(), time.Second)(ctx)
 }
+
+// GetYoutubePlayingTime returns the current time of video.
+func (yt *Youtube) GetYoutubePlayingTime(ctx context.Context) (string, error) {
+	testing.ContextLog(ctx, "Get youtube playing time")
+	watchPlayerID := idPrefix + "watch_player"
+	timebarCurrentTimeID := idPrefix + "time_bar_current_time"
+
+	var playTime string
+	var err error
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		playerView := yt.Device.Object(ui.ID(watchPlayerID))
+		playtimeNode := yt.Device.Object(ui.ID(timebarCurrentTimeID))
+
+		if err := uiauto.NamedCombine("clicking the player view to find the time bar",
+			playerView.Click,
+			apputil.WaitForExists(playtimeNode, 5*time.Second),
+		)(ctx); err != nil {
+			return err
+		}
+
+		playTime, err = playtimeNode.GetText(ctx)
+		if err != nil {
+			return err
+		}
+
+		testing.ContextLogf(ctx, "Youtube playing time is %s", playTime)
+		return nil
+	}, &testing.PollOptions{Timeout: time.Minute, Interval: 5 * time.Second}); err != nil {
+		return "", err
+	}
+
+	return playTime, nil
+}
+
+// IsPlaying checks if youtube app is playing video.
+func (yt *Youtube) IsPlaying(ctx context.Context) (bool, error) {
+	timeStart, err := yt.GetYoutubePlayingTime(ctx)
+	if err != nil {
+		return false, errors.Wrap(err, "failed to get video time")
+	}
+
+	// Wait for a while to verify playing by checking time difference on progress bar.
+	if err := testing.Sleep(ctx, 5*time.Second); err != nil {
+		return false, errors.Wrap(err, "failed to sleep")
+	}
+
+	timeEnd, err := yt.GetYoutubePlayingTime(ctx)
+	if err != nil {
+		return false, errors.Wrap(err, "failed to get video time")
+	}
+
+	return timeStart != timeEnd, nil
+}
