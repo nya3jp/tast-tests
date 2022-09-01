@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cba513f1_e292a233",
+        "filename": "src/chromiumos/tast/local/bundles/cros/clipboardhistory/context_menu_clipboard.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2022-09-01T11:00:55Z",
+      "side": 1,
+      "message": "https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#When-to-log\nDoes the ash.SetClipboard take long time?\nIf not, this log line would be unnecessary because Fatalf() gives the `text` where we failed at.",
+      "revId": "f050b5b054f072b24b35e686d4e832205fc3dd2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46f09e56_e640717f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/clipboardhistory/context_menu_clipboard.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2022-09-01T11:00:55Z",
+      "side": 1,
+      "message": "Optional: We may relpace LeftClick with DoDefault() where applicable, if we don\u0027t want to make the test affected by accidental UI clutter (e.g. popup window by another app hides the center point of this item accidentally).",
+      "range": {
+        "startLine": 171,
+        "startChar": 10,
+        "endLine": 171,
+        "endChar": 19
+      },
+      "revId": "f050b5b054f072b24b35e686d4e832205fc3dd2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37b8f27e_587cb8bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/clipboardhistory/context_menu_clipboard.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2022-09-01T11:00:55Z",
+      "side": 1,
+      "message": "optional: Will you check if it works stably without this line? Because ui.LeftClick internally waits for the item to exist and stabilize.",
+      "revId": "f050b5b054f072b24b35e686d4e832205fc3dd2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18eb4e38_33ea183b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/clipboardhistory/context_menu_clipboard.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2022-09-01T11:00:55Z",
+      "side": 1,
+      "message": "Is this for handling a case where a popup is shown sometimes but not always?\nI think this probably applies the default timeout (15 seconds) when it does not appear, which will slow the test.\n\nI suggest:\n1. replacing this with Exists() if it works stably.\n  1a. If it appears delayed, I suggest waiting for another UI element that always appear, if any.\n2. alternatively, set a proper timeout for this WaitUntilExist",
+      "range": {
+        "startLine": 267,
+        "startChar": 18,
+        "endLine": 267,
+        "endChar": 69
+      },
+      "revId": "f050b5b054f072b24b35e686d4e832205fc3dd2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f75b900_c246d615",
+        "filename": "src/chromiumos/tast/local/bundles/cros/clipboardhistory/context_menu_clipboard.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2022-09-01T11:00:55Z",
+      "side": 1,
+      "message": "nit: remove an extra space",
+      "range": {
+        "startLine": 280,
+        "startChar": 27,
+        "endLine": 280,
+        "endChar": 37
+      },
+      "revId": "f050b5b054f072b24b35e686d4e832205fc3dd2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
