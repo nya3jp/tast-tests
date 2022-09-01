@@ -120,6 +120,24 @@
       "parentUuid": "387aa641_7ca7076b",
       "revId": "da1916c4d052a16a18c16f2cf8ff558e3ac7fef4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0bd4ea3d_2bf412c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-09-01T20:03:31Z",
+      "side": 1,
+      "message": "Yes this makes sense, my bad. I think we use pre value because of the use of the web player. Let\u0027s keep this how it is.",
+      "parentUuid": "c35630c0_702b0a45",
+      "revId": "da1916c4d052a16a18c16f2cf8ff558e3ac7fef4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

@@ -70,6 +70,30 @@
       },
       "revId": "9a28ee22b7ca51d409b86d8918aa3249420861e2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb81c968_c897bcd9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tab_switch_cuj_recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-09-01T20:03:31Z",
+      "side": 1,
+      "message": "Sorry, TabSwitchCUJRecorder2 isn\u0027t our test and I\u0027m not sure if they want a tab switch variant... looking at the blame, it looks like a cinet test? @achuith, do you know the best person to reach for this test? \n\nAll of our tests should technically have a lacros variant, if the test requires it.",
+      "parentUuid": "7e3b9803_f28cebc5",
+      "range": {
+        "startLine": 20,
+        "startChar": 24,
+        "endLine": 20,
+        "endChar": 61
+      },
+      "revId": "9a28ee22b7ca51d409b86d8918aa3249420861e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
