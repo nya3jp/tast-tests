@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30999c71_76f6f6ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/kiosk_ephemeral_mount.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-09-01T16:38:37Z",
+      "side": 1,
+      "message": "I think it\u0027s the same call as the one in line 87, so I\u0027d suggest changing the failure message to differentiate between them.\nSimilarly for all the other calls like `cryptohome.WriteFileForPersistence`.",
+      "range": {
+        "startLine": 106,
+        "startChar": 18,
+        "endLine": 106,
+        "endChar": 28
+      },
+      "revId": "b82708ac0f1dfa0641e0491cd60840ee76dd9380",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
