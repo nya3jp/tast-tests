@@ -16,6 +16,23 @@
       "message": "Thanks for the review. Feedback has been implemented.",
       "revId": "87e55451f2cd7269f6a649beebe75d59ffe4a056",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2e6b009_137f226d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 2475,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2022-09-01T23:23:58Z",
+      "side": 1,
+      "message": "I like the idea to generate updated expectations! It seems a little brittle/cumbersome to generate locally though, because there are quite a lot of models/boards/chipsets, and this puts burden on the person updating to have them on hand, or lease them all.\n\nI think Ilja has some thoughts too on alternatives, in particular, outsourcing some of this work to the lab.",
+      "revId": "87e55451f2cd7269f6a649beebe75d59ffe4a056",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
