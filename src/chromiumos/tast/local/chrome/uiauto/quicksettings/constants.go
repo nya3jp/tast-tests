@@ -41,6 +41,9 @@ var SignoutButton = nodewith.Role(role.Button).Name("Sign out").ClassName("PillB
 // VPNButton is the finder for the 'VPN' Quick Settings button.
 var VPNButton = nodewith.Role(role.Button).Name("VPN").ClassName("PillButton")
 
+// AddCellularButton is the finder for adding new SIM profiles in Quick Settings.
+var AddCellularButton = nodewith.Name("Add new cellular network").Role(role.Button)
+
 // SliderType represents the Quick Settings slider elements.
 type SliderType string
 
