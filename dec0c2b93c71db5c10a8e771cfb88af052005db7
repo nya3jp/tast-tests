@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bdcbebc9_31bd609a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-09-01T08:30:50Z",
+      "side": 1,
+      "message": "LGTM from tast POV, please get approval from a team member (someone who knows the feature) first before submitting.",
+      "revId": "dec0c2b93c71db5c10a8e771cfb88af052005db7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
