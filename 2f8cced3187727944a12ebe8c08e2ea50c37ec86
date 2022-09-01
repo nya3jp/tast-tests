@@ -46,6 +46,30 @@
       },
       "revId": "2f8cced3187727944a12ebe8c08e2ea50c37ec86",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c184261_1cba2109",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/cursive_smoke.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-09-01T00:20:59Z",
+      "side": 1,
+      "message": "Sorry that I missed that line, I was directly looking at this function call. all good, thanks",
+      "parentUuid": "dacb6e2a_e2e15c8b",
+      "range": {
+        "startLine": 150,
+        "startChar": 11,
+        "endLine": 150,
+        "endChar": 26
+      },
+      "revId": "2f8cced3187727944a12ebe8c08e2ea50c37ec86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
