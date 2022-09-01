@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "11e4a2d2_8725d3b8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/tpm_contest.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1549582
+      },
+      "writtenOn": "2022-09-01T21:52:28Z",
+      "side": 1,
+      "message": "Approximately 90 seconds on the Dewatt DUT I tested with. I figured doubling it would provide enough headroom for slower devices.",
+      "parentUuid": "e3dbd74b_aceb25d8",
+      "revId": "9c2a079ded69414ca72f3b38dccb2a92c9a90e26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a3559b6d_76c0c1a0",
         "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/tpm_contest.go",
         "patchSetId": 4
@@ -48,6 +66,24 @@
       "writtenOn": "2022-09-01T13:42:09Z",
       "side": 1,
       "message": "Should each command have a separate minTestIterations?",
+      "revId": "9c2a079ded69414ca72f3b38dccb2a92c9a90e26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "90553747_0aeadf4b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/tpm_contest.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1549582
+      },
+      "writtenOn": "2022-09-01T21:52:28Z",
+      "side": 1,
+      "message": "Cool idea, but it\u0027s not needed for this test. Executing all commands in parallel at least once is sufficient to test the issues seen in: https://b.corp.google.com/issues/237763380",
+      "parentUuid": "a3559b6d_76c0c1a0",
       "revId": "9c2a079ded69414ca72f3b38dccb2a92c9a90e26",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -86,6 +122,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f58917cc_71073ddd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/tpm_contest.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1549582
+      },
+      "writtenOn": "2022-09-01T21:52:28Z",
+      "side": 1,
+      "message": "I\u0027m not very familiar w/ Widevine, but know that this command tasks the TPM from the TA. Will add a comment.",
+      "parentUuid": "ffbc0303_c25c298a",
+      "revId": "9c2a079ded69414ca72f3b38dccb2a92c9a90e26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7f6c4c65_f9f8e384",
@@ -99,6 +153,24 @@
       "writtenOn": "2022-09-01T13:42:09Z",
       "side": 1,
       "message": "This line could use a comment. It was not clear on first pass why the command was being repeated infinitely after passing.",
+      "revId": "9c2a079ded69414ca72f3b38dccb2a92c9a90e26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "737e163d_9349d0ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/tpm_contest.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1549582
+      },
+      "writtenOn": "2022-09-01T21:52:28Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7f6c4c65_f9f8e384",
       "revId": "9c2a079ded69414ca72f3b38dccb2a92c9a90e26",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
