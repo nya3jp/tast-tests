@@ -147,7 +147,7 @@ func (app *MicrosoftWebOffice) CreateSpreadsheet(ctx context.Context, cr *chrome
 	closeTabsFunc := browser.CloseAllTabs
 	if app.isLacros {
 		// For lacros-Chrome, it should leave a new tab to keep the Chrome process alive.
-		closeTabsFunc = browser.ReplaceCurrentTabsWithSingleNewTab
+		closeTabsFunc = browser.ReplaceAllTabsWithSingleNewTab
 	}
 	connExcel, err = app.br.NewConn(ctx, sampleSheetURL)
 	if err != nil {
