@@ -62,7 +62,7 @@ func RequiredClientCertificate(ctx context.Context, s *testing.State) {
 
 	extraPolicies := []policy.Policy{&policy.AttestationEnabledForDevice{Val: true}}
 	if browserType == browser.TypeLacros {
-		extraPolicies = append(extraPolicies, &policy.LacrosAvailability{Val: "lacros_primary"})
+		extraPolicies = append(extraPolicies, &policy.LacrosAvailability{Val: "lacros_only"})
 	}
 
 	chromeOpts := []chrome.Option{
@@ -71,7 +71,7 @@ func RequiredClientCertificate(ctx context.Context, s *testing.State) {
 	}
 	if browserType == browser.TypeLacros {
 		var err error
-		chromeOpts, err = lacrosfixt.NewConfig(lacrosfixt.Mode(lacros.LacrosPrimary), lacrosfixt.ChromeOptions(chromeOpts...)).Opts()
+		chromeOpts, err = lacrosfixt.NewConfig(lacrosfixt.Mode(lacros.LacrosOnly), lacrosfixt.ChromeOptions(chromeOpts...)).Opts()
 		if err != nil {
 			s.Fatal("Failed to compute Chrome options: ", err)
 		}
