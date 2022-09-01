@@ -90,6 +90,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8e4906a1_68924b91",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/shared_screencast.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-09-01T23:53:57Z",
+      "side": 1,
+      "message": "Edit: I think Tast is complaining about two nodes with role\u003dDialog, not multiple close buttons. Each nodewith needs to refer to a unique element, it\u0027s one of the quirks of the library. \n\nI can also reproduce this error on my Eve DUT. Here\u0027s the screenshot [1] and ui_tree.txt [2]. I don\u0027t understand why Tast is complaining about two nodes with role\u003dDialog when I only see one?\n\nTip: use this command to run Tast tests repeatedly for de-flaking:\n./repeat-test.sh -r 10 -- -buildbundle\u003dcros localhost:2222 projector.SharedScreencast* \n\n[1] https://screenshot.googleplex.com/8eDgcbbLtbJqC8F.png\n[2] https://paste.googleplex.com/6633547128373248",
+      "parentUuid": "d042001c_b542dba4",
+      "range": {
+        "startLine": 80,
+        "startChar": 21,
+        "endLine": 80,
+        "endChar": 44
+      },
+      "revId": "070d618cf32029ec6fb5f6c1e5bb17d9cd6a2f98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "de2bba18_5688bca2",
         "filename": "src/chromiumos/tast/local/bundles/cros/projector/shared_screencast.go",
         "patchSetId": 1
