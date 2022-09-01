@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "125995db_2e628b9b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-09-01T00:20:11Z",
+      "side": 1,
+      "message": "Kindly reminder: do not remove the gs test data if it is not urgent. Otherwise it will fail tests in previous versions.",
+      "revId": "9dc9aca3d93905f1e0eda0aa9f4f7f44a32ca923",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
