@@ -39,6 +39,30 @@
       },
       "revId": "d09233c787eb356d29ba4b2d7df408b013ddf1ca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "416aae82_43cbfde7",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2022-09-01T16:45:01Z",
+      "side": 1,
+      "message": "Rebooting isn\u0027t that big of an issue because it is relatively quick, compared to flashing. Maybe add flag in future CL.",
+      "parentUuid": "d9efff02_809f870e",
+      "range": {
+        "startLine": 424,
+        "startChar": 1,
+        "endLine": 436,
+        "endChar": 38
+      },
+      "revId": "d09233c787eb356d29ba4b2d7df408b013ddf1ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
