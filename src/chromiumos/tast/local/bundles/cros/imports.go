@@ -40,6 +40,7 @@ import (
 	_ "chromiumos/tast/local/bundles/cros/example"
 	_ "chromiumos/tast/local/bundles/cros/factory"
 	_ "chromiumos/tast/local/bundles/cros/familylink"
+	_ "chromiumos/tast/local/bundles/cros/featured"
 	_ "chromiumos/tast/local/bundles/cros/feedback"
 	_ "chromiumos/tast/local/bundles/cros/filemanager"
 	_ "chromiumos/tast/local/bundles/cros/firmware"
