@@ -16,6 +16,29 @@
       "message": "Hola Kamil and Chou Yi, PTAL!",
       "revId": "cc77bc2859f680e97f779619e9ee2069d7126ae2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c917767_462be480",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_tpm_live_tests.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2022-09-01T02:20:12Z",
+      "side": 1,
+      "message": "nit: Should we put `ctx, cancel :\u003d ctxutil.Shorten(ctx, 5*time.Minute)` inside the `if s.Param().(testParams).needsTpmReset`?\nI think we don\u0027t need to shorten the context if we don\u0027t need to reset the TPM.",
+      "range": {
+        "startLine": 112,
+        "startChar": 1,
+        "endLine": 112,
+        "endChar": 51
+      },
+      "revId": "cc77bc2859f680e97f779619e9ee2069d7126ae2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
