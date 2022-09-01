@@ -6,10 +6,12 @@ package arc
 
 import (
 	"context"
+	"path/filepath"
 	"time"
 
 	"chromiumos/tast/common/android/ui"
 	"chromiumos/tast/common/policy"
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome/familylink"
 	"chromiumos/tast/local/policyutil"
@@ -48,6 +50,7 @@ func UnicornBlockedApps(ctx context.Context, s *testing.State) {
 		maxAttempts          = 2
 		playStorePackage     = "com.android.vending"
 		assetBrowserActivity = "com.android.vending.AssetBrowserActivity"
+		logcatBufferSize     = "10M"
 	)
 	fdms := s.FixtValue().(*familylink.FixtData).FakeDMS
 	cr := s.FixtValue().(*familylink.FixtData).Chrome
@@ -69,6 +72,15 @@ func UnicornBlockedApps(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect to ARC: ", err)
 	}
 	defer a.Close(ctx)
+
+	verboseTags := []string{"clouddpc", "Finsky", "Volley", "PlayCommon"}
+	if err := a.EnableVerboseLogging(ctx, verboseTags...); err != nil {
+		s.Fatal("Unable to change log level: ", err)
+	}
+
+	if err := a.Command(ctx, "logcat", "-G", logcatBufferSize).Run(testexec.DumpLogOnError); err != nil {
+		s.Fatal("Unable to increase buffer size: ", err)
+	}
 
 	if err := a.WaitForProvisioning(ctx, provisioningTimeout); err != nil {
 		s.Fatal("Failed to wait for provisioning: ", err)
@@ -114,6 +126,9 @@ func UnicornBlockedApps(ctx context.Context, s *testing.State) {
 	if enabled, err := installButton.IsEnabled(ctx); err != nil {
 		s.Fatal("Failed to check install button state")
 	} else if enabled {
+		if err := a.BugReport(ctx, filepath.Join(s.OutDir(), "bugreport.zip")); err != nil {
+			testing.ContextLog(ctx, "Failed to get bug report: ", err)
+		}
 		s.Fatal("Install button is enabled")
 	}
 }
