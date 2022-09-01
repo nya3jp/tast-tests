@@ -34,6 +34,24 @@
       "parentUuid": "88494376_b3fc2c3e",
       "revId": "f0b259767d9f7215d699ded98ec2745fff4d33fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a00a6a5c_0b12ba6e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_arrangement_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-09-01T20:00:45Z",
+      "side": 1,
+      "message": "we can probably remove validation tests since we don\u0027t really use its data. we don\u0027t necessary need to remove `tablet_mode_validation` in this cl but we can drop `tablet_mode_validation_vm` for now, wdyt?",
+      "parentUuid": "50740fdb_d80ab7ab",
+      "revId": "f0b259767d9f7215d699ded98ec2745fff4d33fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
