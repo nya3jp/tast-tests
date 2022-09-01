@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "65473b49_e19335c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lockscreen/close_lid.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2022-09-01T01:57:51Z",
+      "side": 1,
+      "message": "I\u0027m not sure about hardware requirement.  From the way that I have implemented the lid events, there is a chance that this code might work on all devices.  I was thinking that maybe I could first check in this test as informational and then see what happens.",
+      "parentUuid": "c29026e4_50fb009b",
+      "range": {
+        "startLine": 20,
+        "startChar": 26,
+        "endLine": 20,
+        "endChar": 30
+      },
+      "revId": "ac7aaa1a6a08b4d1b04eefa3f15adba30bb16d82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "587c9b12_b486e3c5",
         "filename": "src/chromiumos/tast/local/bundles/cros/lockscreen/close_lid.go",
         "patchSetId": 3
@@ -37,6 +61,30 @@
       "writtenOn": "2022-08-31T23:41:10Z",
       "side": 1,
       "message": "is this supposed to be used in the test?",
+      "range": {
+        "startLine": 35,
+        "startChar": 2,
+        "endLine": 35,
+        "endChar": 23
+      },
+      "revId": "ac7aaa1a6a08b4d1b04eefa3f15adba30bb16d82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "297a2775_6e9f18d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lockscreen/close_lid.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2022-09-01T01:57:51Z",
+      "side": 1,
+      "message": "woops, left over from copying lockscreen.KeyboardShortcut",
+      "parentUuid": "587c9b12_b486e3c5",
       "range": {
         "startLine": 35,
         "startChar": 2,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fab9ca86_b33bdc85",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lockscreen/close_lid.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2022-09-01T01:57:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "01d6d439_b34b242b",
+      "range": {
+        "startLine": 44,
+        "startChar": 18,
+        "endLine": 44,
+        "endChar": 33
+      },
+      "revId": "ac7aaa1a6a08b4d1b04eefa3f15adba30bb16d82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dd6d8f4f_0630d83c",
@@ -93,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7d2a38a_bc6208d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lockscreen/close_lid.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2022-09-01T01:57:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dd6d8f4f_0630d83c",
+      "range": {
+        "startLine": 54,
+        "startChar": 16,
+        "endLine": 54,
+        "endChar": 19
+      },
+      "revId": "ac7aaa1a6a08b4d1b04eefa3f15adba30bb16d82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a5715b5b_91c749fc",
@@ -106,6 +202,30 @@
       "writtenOn": "2022-08-31T23:41:10Z",
       "side": 1,
       "message": "reformat to:\n```\ndefer func(ctx context.Context) {\n...//use ctx\n}(cleanupCtx)\n```",
+      "range": {
+        "startLine": 65,
+        "startChar": 1,
+        "endLine": 65,
+        "endChar": 15
+      },
+      "revId": "ac7aaa1a6a08b4d1b04eefa3f15adba30bb16d82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1a30a23_0405cfb1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lockscreen/close_lid.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2022-09-01T01:57:51Z",
+      "side": 1,
+      "message": "How about\n\ndefer func() {\n  // use cleanupCtx\n}()",
+      "parentUuid": "a5715b5b_91c749fc",
       "range": {
         "startLine": 65,
         "startChar": 1,
@@ -141,6 +261,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "31aac1e9_1443e997",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lockscreen/close_lid.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2022-09-01T01:57:51Z",
+      "side": 1,
+      "message": "I don\u0027t really know or care.\n\nI copied from https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/wilco/api_handle_power_event.go;l\u003d39-43;drc\u003d2b3f2e33ee576d4d698929981dce08103b577c63",
+      "parentUuid": "c223d035_3e1a3491",
+      "range": {
+        "startLine": 67,
+        "startChar": 5,
+        "endLine": 67,
+        "endChar": 10
+      },
+      "revId": "ac7aaa1a6a08b4d1b04eefa3f15adba30bb16d82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9db6e070_7d4d7269",
         "filename": "src/chromiumos/tast/local/bundles/cros/lockscreen/close_lid.go",
         "patchSetId": 3
@@ -152,6 +296,30 @@
       "writtenOn": "2022-08-31T23:41:10Z",
       "side": 1,
       "message": "Just curious: could this result in other actions (e.g., put the device into sleep mode)? If so, how do we ensure that wont\u0027 happen?",
+      "range": {
+        "startLine": 76,
+        "startChar": 11,
+        "endLine": 76,
+        "endChar": 34
+      },
+      "revId": "ac7aaa1a6a08b4d1b04eefa3f15adba30bb16d82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "917e981c_78968542",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lockscreen/close_lid.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2022-09-01T01:57:51Z",
+      "side": 1,
+      "message": "It wont happen because powerd is the thing that does suspend, not ash-chrome.  I\u0027m sending fake signals here from powerd to ash.  If I was using servo to send fake kernel events to powerd, then I would need to worry about suspend happening.",
+      "parentUuid": "9db6e070_7d4d7269",
       "range": {
         "startLine": 76,
         "startChar": 11,
@@ -175,6 +343,30 @@
       "writtenOn": "2022-08-31T23:41:10Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 92,
+        "startChar": 1,
+        "endLine": 92,
+        "endChar": 15
+      },
+      "revId": "ac7aaa1a6a08b4d1b04eefa3f15adba30bb16d82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6a46206_052aeae9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lockscreen/close_lid.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2022-09-01T01:57:51Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "fd8c9f3d_96775553",
       "range": {
         "startLine": 92,
         "startChar": 1,
