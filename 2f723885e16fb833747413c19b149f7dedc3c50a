@@ -33,6 +33,24 @@
       "message": "nit: \"to unsigned integer\"",
       "revId": "2f723885e16fb833747413c19b149f7dedc3c50a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f784fa62_cbae3c8f",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/ectool.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2022-09-01T13:10:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2907e487_3cc3a0c2",
+      "revId": "2f723885e16fb833747413c19b149f7dedc3c50a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
