@@ -51,6 +51,24 @@
       "parentUuid": "3a06f91c_83bdd04d",
       "revId": "102301cbb8423e2f1acffa50fc4120f7fed96aef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8091426_0282e56b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-09-01T07:25:13Z",
+      "side": 1,
+      "message": "It is essential. In the other tests, the DUT is not managed. But with managed DUT, the policies overwrite the Lacros availability flag that is set in `Chrome.New()`.  If the Lacros policy is not set, it uses the default value, which was disabled when these values were added. I don\u0027t know if the default value has changed since then.",
+      "parentUuid": "f7f6afbd_dcec9a8c",
+      "revId": "102301cbb8423e2f1acffa50fc4120f7fed96aef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
