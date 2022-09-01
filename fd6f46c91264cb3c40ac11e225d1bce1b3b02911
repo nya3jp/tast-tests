@@ -39,6 +39,30 @@
       },
       "revId": "fd6f46c91264cb3c40ac11e225d1bce1b3b02911",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a72f11e5_f65c4229",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/drivefs_pooled_storage.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1524909
+      },
+      "writtenOn": "2022-09-01T00:16:57Z",
+      "side": 1,
+      "message": "Thanks! 👍",
+      "parentUuid": "2133de1e_a9245228",
+      "range": {
+        "startLine": 106,
+        "startChar": 1,
+        "endLine": 106,
+        "endChar": 57
+      },
+      "revId": "fd6f46c91264cb3c40ac11e225d1bce1b3b02911",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
