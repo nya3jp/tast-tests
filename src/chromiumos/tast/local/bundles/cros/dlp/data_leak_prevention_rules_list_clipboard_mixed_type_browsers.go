@@ -43,7 +43,7 @@ func init() {
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		Attr:         []string{"group:mainline", "informational"},
 		Data:         []string{"text_1.html", "text_2.html", "editable_text_box.html"},
-		Fixture:      "lacrosPolicyLoggedIn",
+		Fixture:      "lacrosPrimaryPolicyLoggedIn", // TODO(crbug.com/1360034): Rewrite test to use lacrosPolicyLoggedIn fixture.
 		Timeout:      3 * time.Minute,
 	})
 }
