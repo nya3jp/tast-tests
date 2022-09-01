@@ -60,6 +60,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dbc46afd_d47ee5a3",
+        "filename": "src/chromiumos/tast/common/fixture/policyutil.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-09-01T14:56:28Z",
+      "side": 1,
+      "message": "I\u0027ll address the other comments later, as for this point, of course we can migrate everything at once, but this will affect all the tast tests that uses FakeDMS (even the ones in CQ) which is IMHO is very risky.\nSo I duplicated the fixtures to be able to migrate the tests incrementally without worrying about breaking anything.\nWDYT?",
+      "parentUuid": "916f6230_8fca796a",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 42
+      },
+      "revId": "64a10d6ef05513ba9c514cd89ea643ef8a4f51c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ab642367_f29cd687",
         "filename": "src/chromiumos/tast/common/policy/fakedms/fakedms.go",
         "patchSetId": 10
