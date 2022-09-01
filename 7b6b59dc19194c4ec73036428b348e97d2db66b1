@@ -39,6 +39,30 @@
       },
       "revId": "7b6b59dc19194c4ec73036428b348e97d2db66b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b24094ad_639a721e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/unicorn_blocked_apps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-09-01T21:00:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df055195_9cd0db18",
+      "range": {
+        "startLine": 80,
+        "startChar": 42,
+        "endLine": 80,
+        "endChar": 47
+      },
+      "revId": "7b6b59dc19194c4ec73036428b348e97d2db66b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
