@@ -258,19 +258,7 @@ func MakeTestParamsFromList(t genparams.TestingT, baseCases []Param) string {
 				return
 			}
 
-			if testCase.MinimalSet && i.debianVersion != vm.DebianBuster {
-				// The minimal set is currently Buster.
-				return
-			}
-
-			name := testCase.Name
-			if !testCase.MinimalSet {
-				// If we're generating a minimal set
-				// then the debian version is always
-				// the same and we don't need to
-				// include it in the test name.
-				name = combineName(name, string(i.debianVersion))
-			}
+			name := combineName(testCase.Name, string(i.debianVersion))
 
 			if testCase.DeviceMode == devicemode.TabletMode || testCase.DeviceMode == devicemode.ClamshellMode {
 				name = combineName(name, testCase.DeviceMode.String())
