@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d3e7a8b4_fde3f597",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1322206
+      },
+      "writtenOn": "2022-09-01T19:56:13Z",
+      "side": 1,
+      "message": "In Wayland protocol, clipboard \"write\" must be triggered by a user interaction, ie: pointer button/touch/key press, which code-wise is achieved by sending the serial value received (from the Compositor, ie: Exo/Ash in this case) with input event triggering the clipboard operation [1][2]. In other words, you must \"emulate\" a pointer enter and button press within the window which is trying to write data to the clipboard for it to work in Lacros.\n\n[1] https://source.chromium.org/chromium/chromium/src/+/main:ui/ozone/platform/wayland/host/wayland_clipboard.cc;l\u003d123-125;drc\u003df28f4f8f90c4494c9bc9f34a28f5dcc215caa077 \n[2] https://wayland.app/protocols/wayland#wl_data_device:request:set_selection:arg:serial",
+      "parentUuid": "30b3d0ff_32048ca7",
+      "revId": "7a06996f525f7f4b7941f76ce16e4889b24363ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ee22b6c2_20f630d4",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/image_paste.go",
         "patchSetId": 2
