@@ -99,6 +99,7 @@ func installOrUpdate(ctx context.Context, a *arc.ARC, d *ui.Device, pkgName stri
 		linkPaypalAccountText     = "Want to link your PayPal account.*"
 		installAppsFromDeviceText = "Install apps from your devices"
 		serverBusyText            = "Server busy, please try again later."
+		internalProblemText       = "There.s an internal problem with your device."
 
 		acceptButtonText   = "accept"
 		continueButtonText = "continue"
@@ -185,6 +186,8 @@ func installOrUpdate(ctx context.Context, a *arc.ARC, d *ui.Device, pkgName stri
 			{termsOfServiceText, acceptButtonText},
 			// Press "Try again" if "Server busy, please try again later." screen is shown.
 			{serverBusyText, tryAgainButtonText},
+			// Press Ok to dismiss the dialog if "There\'s an internal problem with your device."
+			{internalProblemText, okButtonText},
 		} {
 			if err := FindAndDismissDialog(ctx, d, val.dialogText, val.buttonText, defaultUITimeout); err != nil {
 				return testing.PollBreak(err)
