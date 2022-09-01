@@ -368,6 +368,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8dedde87_91286e3c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/unicorn_extensions.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1000097
+      },
+      "writtenOn": "2022-09-01T05:20:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a772c365_f9923582",
+      "range": {
+        "startLine": 72,
+        "startChar": 5,
+        "endLine": 72,
+        "endChar": 40
+      },
+      "revId": "1ec0c64a7958acb56868b743493e30fdd87dfec8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9d440ef3_654a8b53",
@@ -488,6 +512,30 @@
       "side": 1,
       "message": "Ack. Nit: Maybe add comment about that? It could have a side effect, if there was a special behavior the first time the browser is opened.",
       "parentUuid": "199617fc_a9060df6",
+      "range": {
+        "startLine": 74,
+        "startChar": 2,
+        "endLine": 74,
+        "endChar": 33
+      },
+      "revId": "1ec0c64a7958acb56868b743493e30fdd87dfec8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "94b717f4_830539b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/unicorn_extensions.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1000097
+      },
+      "writtenOn": "2022-09-01T05:20:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4007495b_672f6c4c",
       "range": {
         "startLine": 74,
         "startChar": 2,
