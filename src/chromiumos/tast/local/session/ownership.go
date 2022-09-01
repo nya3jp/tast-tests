@@ -22,6 +22,7 @@ import (
 	lm "chromiumos/system_api/login_manager_proto"
 	upstartcommon "chromiumos/tast/common/upstart"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/errors/stack"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
@@ -72,7 +73,8 @@ func PrepareChromeForPolicyTesting(ctx context.Context, m *SessionManager) error
 
 // ClearDeviceOwnership deletes DUT's ownership infomation.
 func ClearDeviceOwnership(ctx context.Context) error {
-	testing.ContextLog(ctx, "Clearing device owner info")
+	testing.ContextLog(ctx, "MIERSH Clearing device owner info !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+	testing.ContextLog(ctx, "MIERSH ", stack.New(1).String())
 
 	// The UI must be stopped while we do this, or the session_manager will
 	// write the policy and key files out again.
