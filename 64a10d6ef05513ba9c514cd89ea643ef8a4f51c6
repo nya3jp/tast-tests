@@ -16,6 +16,126 @@
       "message": "PTAL, I\u0027ll create a follow up CL to migrate the tests with new params.",
       "revId": "64a10d6ef05513ba9c514cd89ea643ef8a4f51c6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "008b042e_869c4763",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1153089
+      },
+      "writtenOn": "2022-09-01T14:46:16Z",
+      "side": 1,
+      "message": "Leaving this review to Victor. I have only taken a quick look at some files. Victor, if you\u0027d like me to review this as well, please move me back to the list of reviewers.",
+      "revId": "64a10d6ef05513ba9c514cd89ea643ef8a4f51c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "916f6230_8fca796a",
+        "filename": "src/chromiumos/tast/common/fixture/policyutil.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1153089
+      },
+      "writtenOn": "2022-09-01T14:46:16Z",
+      "side": 1,
+      "message": "I thought that you wanted to migrate everyone at once. Why create these additional fixtures?",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 42
+      },
+      "revId": "64a10d6ef05513ba9c514cd89ea643ef8a4f51c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab642367_f29cd687",
+        "filename": "src/chromiumos/tast/common/policy/fakedms/fakedms.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1153089
+      },
+      "writtenOn": "2022-09-01T14:46:16Z",
+      "side": 1,
+      "message": "Please move shared code to a private helper function. To avoid passing too many arguments, just pass `useCpp bool` to it and internally use correct arg names and other params depending on the `useCpp` value.",
+      "range": {
+        "startLine": 155,
+        "startChar": 0,
+        "endLine": 175,
+        "endChar": 4
+      },
+      "revId": "64a10d6ef05513ba9c514cd89ea643ef8a4f51c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "951e0777_240d8557",
+        "filename": "src/chromiumos/tast/common/policy/fakedms/fakedms.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1153089
+      },
+      "writtenOn": "2022-09-01T14:46:16Z",
+      "side": 1,
+      "message": "Since it\u0027s only used here, can we pass it as an argument to `start`?",
+      "revId": "64a10d6ef05513ba9c514cd89ea643ef8a4f51c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ae12256_04048342",
+        "filename": "src/chromiumos/tast/common/policy/fakedms/fakedms.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1153089
+      },
+      "writtenOn": "2022-09-01T14:46:16Z",
+      "side": 1,
+      "message": "Is this supported by Python policy test server?",
+      "revId": "64a10d6ef05513ba9c514cd89ea643ef8a4f51c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ed81e81_3a892f7a",
+        "filename": "src/chromiumos/tast/common/policy/policy_blob.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1153089
+      },
+      "writtenOn": "2022-09-01T14:46:16Z",
+      "side": 1,
+      "message": "It\u0027s unclear from the name what this is for. Can you please add a comment?",
+      "range": {
+        "startLine": 29,
+        "startChar": 1,
+        "endLine": 29,
+        "endChar": 11
+      },
+      "revId": "64a10d6ef05513ba9c514cd89ea643ef8a4f51c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
