@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f37cd7d0_e2c8b1ee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/epic.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2022-09-01T04:56:07Z",
+      "side": 1,
+      "message": "What is this clamshell_mode_default and clamshell_mode_top_apps?",
+      "range": {
+        "startLine": 40,
+        "startChar": 10,
+        "endLine": 40,
+        "endChar": 32
+      },
+      "revId": "9b801ed67437489889c3d7b03d96f98d673c18ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
