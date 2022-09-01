@@ -16,6 +16,29 @@
       "message": "jas",
       "revId": "58db839962bcc52316b5b3ab88e946ba744b8964",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "389ebbb0_124db04b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ipv6_connectivity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-09-01T05:42:35Z",
+      "side": 1,
+      "message": "nit: \"ARC device\"",
+      "range": {
+        "startLine": 137,
+        "startChar": 30,
+        "endLine": 137,
+        "endChar": 36
+      },
+      "revId": "58db839962bcc52316b5b3ab88e946ba744b8964",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
