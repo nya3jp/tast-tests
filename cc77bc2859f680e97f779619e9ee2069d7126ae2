@@ -39,6 +39,30 @@
       },
       "revId": "cc77bc2859f680e97f779619e9ee2069d7126ae2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82554679_d36b417e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_tpm_live_tests.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1524917
+      },
+      "writtenOn": "2022-09-01T07:37:07Z",
+      "side": 1,
+      "message": "That was originally the plan, but in golang, this shortened ctx will not be fed in `cmdRunner.Run()` later if we put shorten in the condition, judging from the compiling error. (See the discussion here https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3855557/comments/f46e189c_1344fc33)",
+      "parentUuid": "3c917767_462be480",
+      "range": {
+        "startLine": 112,
+        "startChar": 1,
+        "endLine": 112,
+        "endChar": 51
+      },
+      "revId": "cc77bc2859f680e97f779619e9ee2069d7126ae2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
