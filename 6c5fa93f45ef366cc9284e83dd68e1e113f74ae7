@@ -16,6 +16,29 @@
       "message": "Thanks in advance for the review!",
       "revId": "6c5fa93f45ef366cc9284e83dd68e1e113f74ae7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c007cc3c_a540057a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterpriseconnectors/test_file_attached.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2022-09-01T03:02:35Z",
+      "side": 1,
+      "message": "filesapp.SelectFile and OpenFile waits for the targeted element to exist and stable (uses mouse.Click/DoubleClick). So I don\u0027t think WaitForFile is necessary.\nHow about setting WithTimeout to SelectFile instead?\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/uiauto/automation.go;l\u003d705;drc\u003dd0bffe24c33373a01ab673b63a628fbbe960592c",
+      "range": {
+        "startLine": 301,
+        "startChar": 0,
+        "endLine": 303,
+        "endChar": 31
+      },
+      "revId": "6c5fa93f45ef366cc9284e83dd68e1e113f74ae7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
