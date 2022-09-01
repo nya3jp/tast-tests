@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e02b2da8_683794a9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2022-09-01T11:07:27Z",
+      "side": 1,
+      "message": "I found that firmware.FpTpmSeed test doesn\u0027t need the `tast.cros.platform.DbusService`",
+      "revId": "435b7f78826951c7c0dbe93f8b1ad14a5bd732ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
