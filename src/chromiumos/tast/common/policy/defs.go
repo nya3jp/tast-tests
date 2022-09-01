@@ -6360,7 +6360,9 @@ type Application struct {
 }
 
 type ArcPolicyValue struct {
-	Applications []Application `json:"applications"`
+	Applications              []Application `json:"applications"`
+	PlayLocalPolicyEnabled    bool          `json:"playLocalPolicyEnabled"`
+	PlayEmmApiInstallDisabled bool          `json:"playEmmApiInstallDisabled"`
 }
 
 func (p *ArcPolicy) Name() string          { return "ArcPolicy" }

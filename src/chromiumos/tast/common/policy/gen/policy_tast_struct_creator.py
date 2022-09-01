@@ -539,6 +539,8 @@ type Application struct {
 
 type ArcPolicyValue struct {
 \tApplications\t[]Application\t`json:"applications"`
+\tPlayLocalPolicyEnabled\tbool\t`json:"playLocalPolicyEnabled"`
+\tPlayEmmApiInstallDisabled\tbool\t`json:"playEmmApiInstallDisabled"`
 }
 """ + attr_structs
   return attr_type, attr_structs
