@@ -121,11 +121,13 @@ func MiershGuestAndActualSession(ctx context.Context, s *testing.State) {
 
 	logout(ctx, s, guestChrome)
 
-	normalChrome, err := chrome.New(ctx, chrome.FakeLogin(chrome.Creds{User: testUser, Pass: "123"}))
+	s.Log("MIERSH try loging in with chrome.KeepState()")
+	normalChrome, err := chrome.New(ctx, chrome.KeepState(), chrome.FakeLogin(chrome.Creds{User: testUser, Pass: "123"}))
 	if err != nil {
 		s.Fatal("Failed to log in with Chrome: ", err)
 	}
 	defer normalChrome.Close(ctx)
+	s.Log("MIERSH login done")
 
 	select {
 	case <-wp.Signals:
