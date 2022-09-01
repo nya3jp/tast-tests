@@ -331,6 +331,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ac8fbc5_5ad482b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lockscreen/close_lid.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2022-09-01T07:45:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d3b1d5f0_cb438e3c",
+      "range": {
+        "startLine": 67,
+        "startChar": 5,
+        "endLine": 67,
+        "endChar": 10
+      },
+      "revId": "ac7aaa1a6a08b4d1b04eefa3f15adba30bb16d82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9db6e070_7d4d7269",
