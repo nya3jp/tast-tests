@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <title>WebUsbBlocked</title>
+  </head>
+
+  <body>
+    <button class="btn">Request USB Devices</Button>
+    <script>
+      const btn = document.querySelector('.btn');
+      btn.addEventListener('click', async () => {
+        // Dummy vendorId.
+        await navigator.usb.requestDevice({ filters: [{ vendorId: 0x0951 }] });
+      });
+    </script>
+  </body>
+
+</html>
