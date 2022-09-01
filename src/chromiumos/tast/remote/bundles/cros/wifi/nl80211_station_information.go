@@ -60,28 +60,22 @@ NL80211_STA_INFO_TX_PACKETS             tx packets                  u32
 NL80211_STA_INFO_TX_RETRIES             tx retries                  u32
 NL80211_STA_INFO_TX_FAILED              tx failed                   u32
 NL80211_STA_INFO_RX_DROP_MISC           rx drop misc                u64
-NL80211_STA_INFO_BEACON_SIGNAL_AVG      beacon signal avg           u8
 NL80211_STA_INFO_SIGNAL_AVG             signal avg                  u8
 NL80211_STA_INFO_SIGNAL                 signal                      u8
 */
 
 const (
-	nl80211RxBytes         = "rx bytes"
-	nl80211TxBytes         = "tx bytes"
-	nl80211RxPackets       = "rx packets"
-	nl80211TxPackets       = "tx packets"
-	nl80211RxDrop          = "rx drop misc"
-	nl80211TxRetries       = "tx retries"
-	nl80211TxFailed        = "tx failed"
-	nl80211BeaconSignalAvg = "beacon signal avg"
-	nl80211SignalAvg       = "signal avg"
-	nl80211Signal          = "signal"
-	// The difference between NL80211_STA_INFO_SIGNAL_AVG,
-	// NL80211_STA_INFO_SIGNAL and NL80211_STA_INFO_BEACON_SIGNAL_AVG. This
-	// value is subject to changes based on test results.
-	nl80211SignalError      = 10
+	nl80211RxBytes          = "rx bytes"
+	nl80211TxBytes          = "tx bytes"
+	nl80211RxPackets        = "rx packets"
+	nl80211TxPackets        = "tx packets"
+	nl80211RxDrop           = "rx drop misc"
+	nl80211TxRetries        = "tx retries"
+	nl80211TxFailed         = "tx failed"
+	nl80211SignalAvg        = "signal avg"
+	nl80211Signal           = "signal"
 	nl80211SignalLowerBound = -100
-	nl80211SignalUpperBound = -25
+	nl80211SignalUpperBound = 0
 )
 
 func Nl80211StationInformation(ctx context.Context, s *testing.State) {
@@ -99,7 +93,6 @@ func Nl80211StationInformation(ctx context.Context, s *testing.State) {
 		{nl80211RxDrop, 0, math.MaxInt64},
 		{nl80211TxRetries, 0, math.MaxUint32},
 		{nl80211TxFailed, 0, math.MaxUint32},
-		{nl80211BeaconSignalAvg, nl80211SignalLowerBound, nl80211SignalUpperBound},
 		{nl80211SignalAvg, nl80211SignalLowerBound, nl80211SignalUpperBound},
 		{nl80211Signal, nl80211SignalLowerBound, nl80211SignalUpperBound}}
 
@@ -161,16 +154,6 @@ func Nl80211StationInformation(ctx context.Context, s *testing.State) {
 		attributeValues[attribute.name] = value
 		s.Logf("%s: %s", attribute.name, output)
 	}
-
-	// Check if the difference between signal, signal avg and beacon signal avg
-	// is too large
-	for _, attribute := range []string{nl80211Signal, nl80211SignalAvg} {
-		signalValue, ok1 := attributeValues[attribute]
-		beaconSignalAvgValue, ok2 := attributeValues[nl80211BeaconSignalAvg]
-		if ok1 && ok2 && math.Abs(float64(signalValue-beaconSignalAvgValue)) > nl80211SignalError {
-			s.Errorf("The difference between %q %d and %q %d is larger than the threshold %d", attribute, attributeValues[attribute], nl80211BeaconSignalAvg, attributeValues[nl80211BeaconSignalAvg], nl80211SignalError)
-		}
-	}
 }
 
 func parseValue(name, text string) (value int64, err error) {
@@ -179,8 +162,7 @@ func parseValue(name, text string) (value int64, err error) {
 	// strength per chain
 	// signal:              -56 [-56, -59] dBm
 	// signal avg:          -60 dBm
-	// beacon signal avg:   -58 dBm
-	if name == nl80211Signal || name == nl80211SignalAvg || name == nl80211BeaconSignalAvg {
+	if name == nl80211Signal || name == nl80211SignalAvg {
 		numbers := strings.Split(text, " ")
 		if len(numbers) == 0 {
 			return value, errors.New("failed to get the number")
