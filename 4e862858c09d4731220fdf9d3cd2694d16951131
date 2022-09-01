@@ -33,6 +33,29 @@
       "message": "ping, can I get a look from somebody in security land? or a recommendation of who should look?",
       "revId": "4e862858c09d4731220fdf9d3cd2694d16951131",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5f59e12_1d9a8adf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/mtab.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1544064
+      },
+      "writtenOn": "2022-09-01T19:57:19Z",
+      "side": 1,
+      "message": "Sorry, new to this file, so lots of questions, I hope you don\u0027t mind :-)\n\nIs there production code change linked to this test change ?\n\nFor my curiosities: why do we need execution bit ? assume mode\u003d755 is RWX-RX-RX\nusually chromeOS has RO/RX/RW for file/path. \n\nWhy do we need both defautRW and mode\u003d755 ? since they have similar meaning. \n\nCould you please also add comments directly into code. \nSuch as: why tracefs need to have defaultRW and mode\u003d755 \n\nAbout description:\n\u003eWe\u0027ve been manually chmod\u0027ing the tracefs root, but now we\u0027re using it\n\u003e in the mount option, so we need to update it in this test.\n\nwhat is \"We\" referring to? production code? test code ?\n\n\u003e Drop the optional tracing-is-in-debugfs, since we\u0027ve dropped old kernels\n\u003e that didn\u0027t have tracefs.\n\nI do not see this change in diff, is tracing-is-in-debugfs a concept or a flag in code somewhere. \n\nThanks.\nJeff",
+      "range": {
+        "startLine": 107,
+        "startChar": 20,
+        "endLine": 107,
+        "endChar": 27
+      },
+      "revId": "4e862858c09d4731220fdf9d3cd2694d16951131",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
