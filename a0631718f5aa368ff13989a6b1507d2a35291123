@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e72d1728_c7c5cc7a",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/wmp/window.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-09-01T20:09:48Z",
+      "side": 1,
+      "message": "I don\u0027t think this poll is necessary since `ui.Location`[1] will wait until the location is the same for a two iterations of polling.\n\n\n\n[1]https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/uiauto/automation.go;l\u003d235?q\u003dlocation%20stable\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch:src%2Fplatform%2Ftast-tests%2Fsrc%2Fchromiumos%2Ftast%2Flocal%2Fchrome%2Fuiauto%2F",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 65
+      },
+      "revId": "a0631718f5aa368ff13989a6b1507d2a35291123",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
