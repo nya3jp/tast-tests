@@ -7,20 +7,16 @@ package crostini
 import (
 	"context"
 	"regexp"
-	"strconv"
 	"time"
 
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/ctxutil"
-	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/launcher"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
-	"chromiumos/tast/local/chrome/vmc"
 	"chromiumos/tast/local/crostini"
-	"chromiumos/tast/local/crostini/ui/settings"
 	"chromiumos/tast/local/crostini/ui/terminalapp"
 	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/local/uidetection"
@@ -66,12 +62,6 @@ func AppGeditInstallUninstall(ctx context.Context, s *testing.State) {
 	defer cancel()
 	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
 
-	// Check VM size before Gedit install.
-	sizeBytesBeforeGedit, err := getVMSizeInBytes(ctx)
-	if err != nil {
-		s.Fatal("Failed to get VM size before installing Gedit: ", err)
-	}
-
 	// Install Gedit.
 	s.Log("Installing Gedit")
 	if err := cont.Command(ctx, "sudo", "apt-get", "update").Run(testexec.DumpLogOnError); err != nil {
@@ -79,15 +69,6 @@ func AppGeditInstallUninstall(ctx context.Context, s *testing.State) {
 	}
 	if err := cont.Command(ctx, "sudo", "apt-get", "-y", "install", "gedit").Run(testexec.DumpLogOnError); err != nil {
 		s.Fatal("Failed to install Gedit: ", err)
-	}
-
-	// Check VM size after Gedit install.
-	sizeBytesAfterGedit, err := getVMSizeInBytes(ctx)
-	if err != nil {
-		s.Fatal("Failed to get VM size after installing Gedit: ", err)
-	}
-	if err := assertGBSizeUnchanged(ctx, sizeBytesBeforeGedit, sizeBytesAfterGedit); err != nil {
-		s.Fatal("VM size has changed unexpectedly after installing gedit: ", err)
 	}
 
 	// Launch and test Gedit.
@@ -128,15 +109,6 @@ func AppGeditInstallUninstall(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to run command in Terminal window: ", err)
 	}
 
-	// Check VM size again.
-	sizeBytesAfterGeditRemoved, err := getVMSizeInBytes(ctx)
-	if err != nil {
-		s.Fatal("Failed to get VM size after removing Gedit: ", err)
-	}
-	if err := assertGBSizeUnchanged(ctx, sizeBytesBeforeGedit, sizeBytesAfterGeditRemoved); err != nil {
-		s.Fatal("VM size has changed unexpectedly after removing gedit: ", err)
-	}
-
 	// Close terminal.
 	if err := uiauto.Combine("close Terminal window",
 		ta.WaitForPrompt(), // Wait until Gedit uninstall streams finish printing.
@@ -144,45 +116,4 @@ func AppGeditInstallUninstall(ctx context.Context, s *testing.State) {
 	)(ctx); err != nil {
 		s.Fatal("Failed to close terminal: ", err)
 	}
-}
-
-func getVMSizeInBytes(ctx context.Context) (int64, error) {
-	hash, err := vmc.UserIDHash(ctx)
-	if err != nil {
-		return 0, errors.Wrap(err, "failed to get CROS_USER_ID_HASH")
-		// s.Fatal("Failed to get CROS_USER_ID_HASH: ", err)
-	}
-	cmdOut, err := vmc.Command(ctx, hash, "list").Output()
-	if err != nil {
-		return 0, errors.Wrap(err, "failed to run 'vmc list'")
-		// s.Fatal("Failed to run 'vmc list': ", err)
-	}
-	testing.ContextLog(ctx, "Here is the result of 'vmc list': ", string(cmdOut))
-
-	// 'vmc list' produces an output like
-	// 'termina (10737434624 bytes, min shrinkable size 2723151872 bytes, raw)
-	// Total Size (bytes): 10737434624'
-	// Note the first and third ints are the same. We extract all digits
-	// from the string with the regex pattern.
-	re := regexp.MustCompile(`[-]?\d[\d,]*[\.]?[\d{2}]*`)
-	matches := re.FindAllString(string(cmdOut), -1)
-
-	// Tests that the output has the expected structure - first and third sizes must be the same.
-	if matches[0] != matches[2] {
-		return 0, errors.Errorf("expected termina VM sizes to match, but got two values - %s and %s", matches[0], matches[2])
-	}
-
-	return strconv.ParseInt(matches[0], 10, 64)
-}
-
-func assertGBSizeUnchanged(ctx context.Context, before, after int64) error {
-	// Convert to GB and floating point.
-	beforeSizeGB := float64(before / settings.SizeGB)
-	afterSizeGB := float64(after / settings.SizeGB)
-
-	if beforeSizeGB != afterSizeGB {
-		return errors.Errorf("Termina VM of unexpected size- want %fGB but got %fGB", beforeSizeGB, afterSizeGB)
-	}
-
-	return nil
 }
