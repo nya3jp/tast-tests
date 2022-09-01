@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88494376_b3fc2c3e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_arrangement_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2022-09-01T10:07:31Z",
+      "side": 1,
+      "message": "Let\u0027s skip validation, but keep the others.",
+      "revId": "f0b259767d9f7215d699ded98ec2745fff4d33fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
