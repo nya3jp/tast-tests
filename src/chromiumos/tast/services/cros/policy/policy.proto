@@ -15,6 +15,7 @@ service PolicyService {
   rpc VerifyPolicyStatus(VerifyPolicyStatusRequest) returns (google.protobuf.Empty) {}
   rpc StartNewChromeReader(google.protobuf.Empty) returns (google.protobuf.Empty) {}
   rpc WaitForEnrollmentError(google.protobuf.Empty) returns (google.protobuf.Empty) {}
+  rpc GAIAZTEEnrollUsingChrome(GAIAZTEEnrollUsingChromeRequest) returns (google.protobuf.Empty) {}
   rpc EnrollUsingChrome(EnrollUsingChromeRequest) returns (google.protobuf.Empty) {}
   rpc GAIAEnrollUsingChrome(GAIAEnrollUsingChromeRequest) returns (google.protobuf.Empty) {}
   rpc GAIAEnrollAndLoginUsingChrome(GAIAEnrollAndLoginUsingChromeRequest) returns (google.protobuf.Empty) {}
@@ -63,6 +64,11 @@ message EnrollUsingChromeRequest {
   string extra_args = 4;
   string fakedms_dir = 5;
   bool skip_login = 6;
+}
+
+message GAIAZTEEnrollUsingChromeRequest {
+  string dmserverURL = 1;
+  string manifestKey = 2;
 }
 
 message GAIAEnrollUsingChromeRequest {
