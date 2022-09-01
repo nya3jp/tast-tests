@@ -16,6 +16,91 @@
       "message": "Test flow changed after some back and forth with Hidehiko.",
       "revId": "9c2a079ded69414ca72f3b38dccb2a92c9a90e26",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3dbd74b_aceb25d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/tpm_contest.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2022-09-01T13:42:09Z",
+      "side": 1,
+      "message": "What\u0027s the expected run time?",
+      "revId": "9c2a079ded69414ca72f3b38dccb2a92c9a90e26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3559b6d_76c0c1a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/tpm_contest.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2022-09-01T13:42:09Z",
+      "side": 1,
+      "message": "Should each command have a separate minTestIterations?",
+      "revId": "9c2a079ded69414ca72f3b38dccb2a92c9a90e26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "61934ac6_13848569",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/tpm_contest.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2022-09-01T13:42:09Z",
+      "side": 1,
+      "message": "nit: It\u0027d be nice if the commands were defined as a single string and then split. However you\u0027d need to handle quoted arguments when splitting.",
+      "revId": "9c2a079ded69414ca72f3b38dccb2a92c9a90e26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ffbc0303_c25c298a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/tpm_contest.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2022-09-01T13:42:09Z",
+      "side": 1,
+      "message": "Please add comment about what the command does.",
+      "revId": "9c2a079ded69414ca72f3b38dccb2a92c9a90e26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f6c4c65_f9f8e384",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/tpm_contest.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2022-09-01T13:42:09Z",
+      "side": 1,
+      "message": "This line could use a comment. It was not clear on first pass why the command was being repeated infinitely after passing.",
+      "revId": "9c2a079ded69414ca72f3b38dccb2a92c9a90e26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
