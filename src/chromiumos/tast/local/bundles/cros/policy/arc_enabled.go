@@ -21,7 +21,6 @@ import (
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/local/policyutil/fixtures"
 	"chromiumos/tast/testing"
-	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -37,23 +36,18 @@ func init() {
 		Attr:         []string{"group:mainline"},
 		Timeout:      2 * time.Minute,
 		Params: []testing.Param{{
-			ExtraSoftwareDeps: []string{"android_p"},
-			// TODO(b/169663310): Remove the unstable variant of the test when test is stable on
-			// these boards.
-			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel("krane", "kakadu", "katsu", "kodama")),
+			ExtraSoftwareDeps: []string{"android_p", "no_tablet_form_factor"},
 		}, {
 			Name:              "vm",
-			ExtraSoftwareDeps: []string{"android_vm"},
-			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel("krane", "kakadu", "katsu", "kodama")),
+			ExtraSoftwareDeps: []string{"android_vm", "no_tablet_form_factor"},
 		}, {
+			// TODO(b/169663310): Create separate test for tablet form factor.
 			Name:              "unstable",
-			ExtraSoftwareDeps: []string{"android_p"},
-			ExtraHardwareDeps: hwdep.D(hwdep.Model("krane", "kakadu", "katsu", "kodama")),
+			ExtraSoftwareDeps: []string{"android_p", "tablet_form_factor"},
 			ExtraAttr:         []string{"informational"},
 		}, {
 			Name:              "vm_unstable",
-			ExtraSoftwareDeps: []string{"android_vm"},
-			ExtraHardwareDeps: hwdep.D(hwdep.Model("krane", "kakadu", "katsu", "kodama")),
+			ExtraSoftwareDeps: []string{"android_vm", "tablet_form_factor"},
 			ExtraAttr:         []string{"informational"},
 		}},
 		SearchFlags: []*testing.StringPair{
