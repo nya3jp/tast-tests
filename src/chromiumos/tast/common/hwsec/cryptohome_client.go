@@ -52,6 +52,22 @@ func getLastLine(s string) string {
 	return lines[len(lines)-1]
 }
 
+const (
+	// OldCryptohomeMountAPI makes the client use old api.
+	OldCryptohomeMountAPI = iota
+	// NewCryptohomeMountAPI makes the client use new api.
+	NewCryptohomeMountAPI
+)
+
+// CryptohomeMountAPI denotes Mount API type to use.
+type CryptohomeMountAPI int64
+
+// CryptohomeMountAPIParam is a helper struct to parametrize tests for old and
+// new mount APIs.
+type CryptohomeMountAPIParam struct {
+	MountAPI CryptohomeMountAPI
+}
+
 // CryptohomeClient wraps and the functions of cryptohomeBinary and parses the outputs to
 // structured data.
 type CryptohomeClient struct {
@@ -59,6 +75,7 @@ type CryptohomeClient struct {
 	binary               *cryptohomeBinary
 	cryptohomePathBinary *cryptohomePathBinary
 	daemonController     *DaemonController
+	mountAPI             CryptohomeMountAPI
 }
 
 // NewCryptohomeClient creates a new CryptohomeClient.
@@ -68,7 +85,13 @@ func NewCryptohomeClient(r CmdRunner) *CryptohomeClient {
 		binary:               newCryptohomeBinary(r),
 		cryptohomePathBinary: newCryptohomePathBinary(r),
 		daemonController:     NewDaemonController(r),
+		mountAPI:             OldCryptohomeMountAPI,
 	}
+}
+
+// SetMountAPIParam sets Mount API type.
+func (u *CryptohomeClient) SetMountAPIParam(param *CryptohomeMountAPIParam) {
+	u.mountAPI = param.MountAPI
 }
 
 // InstallAttributesStatus retrieves the a status string from cryptohome. The status string is in JSON format and holds the various cryptohome related status.
@@ -346,8 +369,84 @@ func authConfigToExtraFlags(config *AuthConfig) []string {
 	return extraFlags
 }
 
+func (u *CryptohomeClient) createUserWithAuthSession(ctx context.Context, username, password, keyLabel string, isKioskUser bool) (string, error) {
+	// Start an Auth session and get an authSessionID.
+	authSessionID, err := u.StartAuthSession(ctx, username, false /*ephemeral*/)
+	if err != nil {
+		return "", errors.Wrap(err, "failed to start Auth session")
+	}
+	testing.ContextLog(ctx, "Auth session ID: ", authSessionID)
+
+	if err := u.AddCredentialsWithAuthSession(ctx, username, password, keyLabel, authSessionID, isKioskUser); err != nil {
+		return "", errors.Wrap(err, "failed to add credentials with AuthSession")
+	}
+	testing.ContextLog(ctx, "Added credentials successfully")
+	if err := u.AuthenticateAuthSession(ctx, password, keyLabel, authSessionID, isKioskUser); err != nil {
+		return "", errors.Wrap(err, "failed to authenticate with AuthSession")
+	}
+	testing.ContextLog(ctx, "User authenticated successfully")
+
+	// This is a no-op for now since AddCredentials.. above will already create
+	// the user.
+	if err := u.CreatePersistentUser(ctx, authSessionID); err != nil {
+		return "", errors.Wrap(err, "failed to create persistent user")
+	}
+	return authSessionID, nil
+}
+
+func (u *CryptohomeClient) authenticateWithAuthSession(ctx context.Context, username, password, keyLabel string, isEphemeral, isKioskUser bool) (string, error) {
+	// Start an Auth session and get an authSessionID.
+	authSessionID, err := u.StartAuthSession(ctx, username, isEphemeral)
+	if err != nil {
+		return "", errors.Wrap(err, "failed to start Auth session")
+	}
+	testing.ContextLog(ctx, "Auth session ID: ", authSessionID)
+
+	// Authenticate the same AuthSession using authSessionID.
+	// If we cannot authenticate, do not proceed with mount and unmount.
+	if err := u.AuthenticateAuthSession(ctx, password, keyLabel, authSessionID, isKioskUser); err != nil {
+		return "", errors.Wrap(err, "failed to authenticate with AuthSession")
+	}
+	testing.ContextLog(ctx, "User authenticated successfully")
+
+	return authSessionID, nil
+}
+
+func (u *CryptohomeClient) mountVaultWithNewAPI(ctx context.Context, label string, authConfig *AuthConfig, create bool, vaultConfig *VaultConfig) error {
+	var authSessionID string
+	var err error
+
+	if create {
+		authSessionID, err = u.createUserWithAuthSession(ctx, authConfig.Username, authConfig.Password, label, vaultConfig.KioskUser)
+		if err != nil {
+			return errors.Wrap(err, "failed to create user")
+		}
+	} else {
+		authSessionID, err = u.authenticateWithAuthSession(ctx, authConfig.Username, authConfig.Password, label, vaultConfig.Ephemeral, vaultConfig.KioskUser)
+		if err != nil {
+			return errors.Wrap(err, "failed to authenticate user")
+		}
+	}
+
+	if !vaultConfig.Ephemeral {
+		if err := u.PreparePersistentVault(ctx, authSessionID, vaultConfig.Ecryptfs); err != nil {
+			return errors.Wrap(err, "failed to prepare persistent vault")
+		}
+	} else {
+		if err := u.PrepareEphemeralVault(ctx, authSessionID); err != nil {
+			return errors.Wrap(err, "failed to prepare ephemeral vault")
+		}
+	}
+
+	return nil
+}
+
 // MountVault mounts the vault for username; creates a new vault if no vault yet if create is true. error is nil if the operation completed successfully.
 func (u *CryptohomeClient) MountVault(ctx context.Context, label string, authConfig *AuthConfig, create bool, vaultConfig *VaultConfig) error {
+	if u.mountAPI == NewCryptohomeMountAPI {
+		return u.mountVaultWithNewAPI(ctx, label, authConfig, create, vaultConfig)
+	}
+
 	extraFlags := vaultConfigToExtraFlags(vaultConfig)
 	extraFlags = append(extraFlags, authConfigToExtraFlags(authConfig)...)
 
