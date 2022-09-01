@@ -54,6 +54,13 @@ const (
 	powerpoint = "PowerPoint presentation"
 	// excel indicates the label of the new spreadsheet.
 	excel = "Excel workbook"
+
+	// listView indicates the "List view" option in the "View option" menu.
+	listView = "List view"
+	// modified indicates the "Modified" option in the "Sort" menu.
+	modified = "Modified"
+	// descending indicates the "Descending" option in the "Sort" menu.
+	descending = "Descending"
 )
 
 var (
@@ -183,8 +190,8 @@ func (app *MicrosoftWebOffice) CreateSpreadsheet(ctx context.Context, cr *chrome
 
 	if err = uiauto.NamedCombine("remove if the same file name exists",
 		app.clickNavigationItem(myFiles),
-		app.switchToListView,
-		app.sortByModified,
+		app.switchToListView(),
+		app.sortByModified(),
 		app.removeSheet(sheetName),
 		app.clickNavigationItem(myFiles),
 	)(ctx); err != nil {
@@ -715,6 +722,7 @@ func (app *MicrosoftWebOffice) openOneDrive(ctx context.Context) (*chrome.Conn, 
 	myFiles := nodewith.Name("My files").Role(role.Heading).First()
 	alertDialog := nodewith.Role(role.AlertDialog).First()
 	closeDialog := nodewith.Name("Close dialog").Role(role.Button).Ancestor(alertDialog)
+	noThanksButton := nodewith.Name("No, thanks").Role(role.Button).Ancestor(alertDialog)
 	gotItButton := nodewith.Name("Got it").Role(role.Button)
 
 	if err := uiauto.Combine("check if already signed in and navigate to OneDrive",
@@ -722,6 +730,7 @@ func (app *MicrosoftWebOffice) openOneDrive(ctx context.Context) (*chrome.Conn, 
 		navigateToOneDrive,
 		app.reload(myFiles, func(ctx context.Context) error { return nil }),
 		uiauto.IfSuccessThen(app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(closeDialog), app.uiHdl.Click(closeDialog)),
+		uiauto.IfSuccessThen(app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(noThanksButton), app.uiHdl.Click(noThanksButton)),
 		uiauto.IfSuccessThen(app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(gotItButton), app.uiHdl.Click(gotItButton)),
 	)(ctx); err != nil {
 		return nil, err
@@ -824,69 +833,53 @@ func (app *MicrosoftWebOffice) clickNavigationItem(itemName string) action.Actio
 }
 
 // switchToListView switches the view option to list view.
-func (app *MicrosoftWebOffice) switchToListView(ctx context.Context) error {
-	details := nodewith.NameRegex(regexp.MustCompile(`([Dd]etails|Info).*`)).Role(role.MenuItem).First()
-	viewOptions := nodewith.NameRegex(regexp.MustCompile(`[Vv]iew options`)).Role(role.MenuItem)
-	viewOptionsExpanded := viewOptions.Expanded()
-	listView := nodewith.NameContaining("List").Role(role.MenuItemCheckBox).Ancestor(viewOptions)
-
-	checkListViewEnabled := func(ctx context.Context) error {
-		if node, err := app.ui.Info(ctx, listView); err != nil {
-			return err
-		} else if node.Checked == checked.False {
-			return errors.New("list view options has not been enabled")
-		}
-		return nil
-	}
-
-	// If the setting is already "list view", skip the switch view operation.
-	if err := checkListViewEnabled(ctx); err != nil {
-		return app.ui.Retry(retryTimes, uiauto.Combine("switch to list view",
-			// Sometimes "Details" will be displayed later, causing the position of the "View Options" button to change.
-			app.ui.WaitUntilExists(details),
-			app.ui.RetryUntil(app.ui.DoDefault(viewOptions), app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(viewOptionsExpanded)),
-			// After the page loads, OneDrive will reload and display again.
-			// Therefore, the expanded list of "View Options" might disappear and cause the "List" option to not be found.
-			app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(listView),
-			app.uiHdl.Click(listView),
-		))(ctx)
-	}
-
-	// Give the list some time to finish loading and ordering. Otherwise, we may encounter errors in the next operation.
-	return testing.Sleep(ctx, 2*time.Second)
+func (app *MicrosoftWebOffice) switchToListView() uiauto.Action {
+	viewMenu := nodewith.NameRegex(regexp.MustCompile(`[Vv]iew options`)).Role(role.MenuItem)
+	return uiauto.NamedAction("switch the view option to list view",
+		app.selectMenuItem(viewMenu, listView),
+	)
 }
 
 // sortByModified sorts by date modified in descending order.
-func (app *MicrosoftWebOffice) sortByModified(ctx context.Context) error {
-	sort := nodewith.NameContaining("Sort").Role(role.MenuItem).First()
-	sortExpanded := sort.Expanded()
-	modified := nodewith.Name("Modified").Role(role.MenuItemCheckBox)
-	descending := nodewith.Name("Descending").Role(role.MenuItemCheckBox)
-	sortMenuExpand := app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(sortExpanded)
+func (app *MicrosoftWebOffice) sortByModified() uiauto.Action {
+	sortMenu := nodewith.NameStartingWith("Sort").Role(role.MenuItem).First()
+	return uiauto.NamedCombine("sort by date modified in descending order",
+		app.selectMenuItem(sortMenu, modified),
+		app.selectMenuItem(sortMenu, descending),
+	)
+}
 
-	setCheckBoxChecked := func(nodeFinder *nodewith.Finder) uiauto.Action {
-		return func(ctx context.Context) error {
-			if err := uiauto.IfFailThen(app.ui.Exists(sortExpanded), app.uiHdl.Click(sort))(ctx); err != nil {
-				return err
-			}
-			node, err := app.ui.Info(ctx, nodeFinder)
-			if err != nil {
-				return err
-			}
-			if node.Checked == checked.True {
-				return nil
-			}
-			return app.uiHdl.Click(nodeFinder)(ctx)
+// selectMenuItem selects specific item in the menu.
+func (app *MicrosoftWebOffice) selectMenuItem(menu *nodewith.Finder, itemName string) uiauto.Action {
+	details := nodewith.NameRegex(regexp.MustCompile(`([Dd]etails|Info).*`)).Role(role.MenuItem).First()
+	menuExpanded := menu.Expanded()
+	checkIfMenuExpanded := app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(menuExpanded)
+	checkIfMenuCollapsed := app.ui.WithTimeout(defaultUIWaitTime).WaitUntilGone(menuExpanded)
+
+	expandMenu := uiauto.Combine("expand menu",
+		app.ui.WaitUntilExists(details),
+		uiauto.IfSuccessThen(checkIfMenuCollapsed, app.ui.DoDefaultUntil(menu, checkIfMenuExpanded)),
+	)
+
+	checkMenuItem := func(ctx context.Context) error {
+		menuItem := nodewith.Name(itemName).Role(role.MenuItemCheckBox).Ancestor(menu)
+		if found, err := app.ui.IsNodeFound(ctx, menuItem); err != nil {
+			return errors.Wrapf(err, "failed to check %v", menuItem)
+		} else if !found {
+			// Normally, the node would be the "menuItemCheckBox" role, but sometimes it would be "menuItemRadio".
+			menuItem = menuItem.Role(role.MenuItemRadio)
+			testing.ContextLog(ctx, "Changing the role to: ", role.MenuItemRadio)
 		}
+		menuItemChecked := menuItem.Attribute("checked", checked.True)
+		waitMenuItemChecked := app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(menuItemChecked)
+		return uiauto.IfFailThen(waitMenuItemChecked, app.ui.DoDefaultUntil(menuItem, checkIfMenuCollapsed))(ctx)
 	}
 
-	return uiauto.Combine("sort by date modified in descending order",
-		setCheckBoxChecked(modified),
-		setCheckBoxChecked(descending),
-		uiauto.IfFailThen(sortMenuExpand, app.uiHdl.Click(sort)),
-		// Give the list some time to finish loading and ordering. Otherwise, we may encounter errors in the next operation.
-		uiauto.Sleep(2*time.Second),
-	)(ctx)
+	return uiauto.Combine("select the specific item in the menu",
+		// Sometimes "Details" will be displayed later, causing the position of the menu button to change.
+		expandMenu,
+		checkMenuItem,
+	)
 }
 
 // searchSampleSheet searches for the existence of the sample spreadsheet.
@@ -916,8 +909,8 @@ func (app *MicrosoftWebOffice) searchSampleSheet(ctx context.Context) error {
 		link := nodewith.NameContaining(sheetName).Role(role.Link).Ancestor(row)
 		return uiauto.NamedCombine("search file from my files",
 			app.clickNavigationItem(myFiles),
-			app.switchToListView,
-			app.sortByModified,
+			app.switchToListView(),
+			app.sortByModified(),
 			app.ui.DoDefaultUntil(link, app.ui.Gone(link)),
 			app.ui.WithTimeout(longerUIWaitTime).WaitUntilExists(canvas), // The excel page may takes long time to load.
 			app.maybeCloseOneDriveTab(myFilesTab),
@@ -1250,7 +1243,7 @@ func (app *MicrosoftWebOffice) removeDocument(fileName string) uiauto.Action {
 	deleteAlert := nodewith.Role(role.Alert).Ancestor(myFilesRootWebArea)
 	deleteAlertButton := nodewith.Name("Delete").Role(role.Button).Ancestor(deleteAlert)
 	return uiauto.NamedCombine("remove the document: "+fileName,
-		app.switchToListView,
+		app.switchToListView(),
 		app.ui.DoDefaultUntil(checkBox, app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(commandBar)),
 		app.uiHdl.Click(deleteItem),
 		uiauto.IfSuccessThen(
