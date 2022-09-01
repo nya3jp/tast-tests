@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ace200f2_0a2e9d17",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ipv6_connectivity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1356183
+      },
+      "writtenOn": "2022-09-01T08:16:42Z",
+      "side": 1,
+      "message": "Oh that\u0027s fancy, good to know. This is no longer applicable as we use getARCInterfaceName() now for both ARCVM and container as suggested by Jason, but I\u0027ll try to use that next time there\u0027s a similar need.",
+      "parentUuid": "73fe876b_7668a4e3",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 25
+      },
+      "revId": "58db839962bcc52316b5b3ab88e946ba744b8964",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4058bd41_c199f24d",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4360e1f5_3edf3b77",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ipv6_connectivity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1356183
+      },
+      "writtenOn": "2022-09-01T08:16:42Z",
+      "side": 1,
+      "message": "Ah that\u0027s much simpler. Thanks for the suggestion.\nDone.",
+      "parentUuid": "4058bd41_c199f24d",
+      "range": {
+        "startLine": 118,
+        "startChar": 0,
+        "endLine": 121,
+        "endChar": 0
+      },
+      "revId": "58db839962bcc52316b5b3ab88e946ba744b8964",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "389ebbb0_124db04b",
@@ -77,6 +125,30 @@
       "writtenOn": "2022-09-01T05:42:35Z",
       "side": 1,
       "message": "nit: \"ARC device\"",
+      "range": {
+        "startLine": 137,
+        "startChar": 30,
+        "endLine": 137,
+        "endChar": 36
+      },
+      "revId": "58db839962bcc52316b5b3ab88e946ba744b8964",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b162b6e_45332a00",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ipv6_connectivity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1356183
+      },
+      "writtenOn": "2022-09-01T08:16:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "389ebbb0_124db04b",
       "range": {
         "startLine": 137,
         "startChar": 30,
