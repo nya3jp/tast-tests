@@ -7,6 +7,7 @@ package projector
 
 import (
 	"context"
+	"fmt"
 	"time"
 
 	"chromiumos/tast/ctxutil"
@@ -48,6 +49,7 @@ func init() {
 }
 
 func SharedScreencast(ctx context.Context, s *testing.State) {
+	// Leave 10 seconds to close the browser and Projector connection.
 	ctxForCleanUp := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
@@ -67,26 +69,27 @@ func SharedScreencast(ctx context.Context, s *testing.State) {
 	defer closeBrowser(ctxForCleanUp)
 
 	// Open a new window.
-	conn, err := br.NewConn(ctx, sharedScreencast, browser.WithNewWindow())
+	conn, err := br.NewConn(ctx, "" /*url=*/)
 	if err != nil {
 		s.Fatal("Failed to navigate to Projector landing page: ", err)
 	}
 	defer conn.Close()
 
-	if err := br.ReloadActiveTab(ctx); err != nil {
-		s.Fatal("Failed to launch Projector app: ", err)
+	// Open the screencast.
+	if err := conn.Eval(ctx, fmt.Sprintf("window.location.href = '%s';", sharedScreencast), nil); err != nil {
+		s.Fatal("Failed to open the screenshot: ", err)
 	}
 
+	// TODO(b/244787719): Ensure this doesn't cause flakiness to this test.
+	if err := projector.DismissOnboardingDialog(ctx, tconn); err != nil {
+		s.Fatal("Failed to close the onboarding dialog: ", err)
+	}
+
+	// Set timeout to one minute to allow the shared screencast to load over the network.
 	ui := uiauto.New(tconn).WithTimeout(time.Minute)
 
-	screencastTitle := nodewith.Name("Screencast for Tast (Do not modify)").Role(role.StaticText)
-
-	// UI action for refreshing the app until the element we're
-	// looking for exists.
-	refreshApp := projector.RefreshApp(ctx, tconn)
-
 	// Verify the shared screencast title rendered correctly.
-	if err := ui.WithInterval(5*time.Second).RetryUntil(refreshApp, ui.Exists(screencastTitle))(ctx); err != nil {
+	if err := ui.WaitUntilExists(nodewith.Name("Screencast for Tast (Do not modify)").Role(role.StaticText))(ctx); err != nil {
 		s.Fatal("Failed to render shared screencast: ", err)
 	}
 }
