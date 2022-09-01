@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a10bc3ba_3f8e257c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2022-09-01T18:04:47Z",
+      "side": 1,
+      "message": "Thanks, Paramjit, this is much easier to reason about!",
+      "revId": "98081399bbade085259c7a9c68787ba9a0498a8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c5da769_d3636069",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/rust.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2022-09-01T18:04:47Z",
+      "side": 1,
+      "message": "Please update description",
+      "range": {
+        "startLine": 22,
+        "startChar": 9,
+        "endLine": 22,
+        "endChar": 61
+      },
+      "revId": "98081399bbade085259c7a9c68787ba9a0498a8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b181eab_e5091700",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/rust.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2022-09-01T18:04:47Z",
+      "side": 1,
+      "message": "Nit: this can all be on one line",
+      "range": {
+        "startLine": 43,
+        "startChar": 17,
+        "endLine": 45,
+        "endChar": 13
+      },
+      "revId": "98081399bbade085259c7a9c68787ba9a0498a8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42d96acb_b0388750",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/rust.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2022-09-01T18:04:47Z",
+      "side": 1,
+      "message": "Please check return value of this function",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 48
+      },
+      "revId": "98081399bbade085259c7a9c68787ba9a0498a8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
