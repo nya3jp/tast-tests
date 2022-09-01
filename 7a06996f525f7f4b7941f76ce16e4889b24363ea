@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "30b3d0ff_32048ca7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-09-01T03:29:45Z",
+      "side": 1,
+      "message": "Nick, could you please have a look at the problem described in the comments. Writing to the clipboard from Lacros does not work, apparently due to \"no serial found\". Do you agree that this is the problem? What can be the cause? Thanks!",
+      "revId": "7a06996f525f7f4b7941f76ce16e4889b24363ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ee22b6c2_20f630d4",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/image_paste.go",
         "patchSetId": 2
@@ -86,6 +103,30 @@
       "side": 1,
       "message": "The problem here doesn\u0027t look like a test issue to me but like a bug in Chrome. Let me dig deeper.",
       "parentUuid": "449caa81_ecd0885d",
+      "range": {
+        "startLine": 121,
+        "startChar": 0,
+        "endLine": 121,
+        "endChar": 106
+      },
+      "revId": "7a06996f525f7f4b7941f76ce16e4889b24363ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff8b3956_087f689b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/image_paste.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-09-01T03:29:45Z",
+      "side": 1,
+      "message": "When I run arc.ImagePaste.lacros_vm, the test fails as described.\nHowever, when I run it and manually (on the DUT) cycle through the two windows at the beginning, then the test passes.\n\nBy \"at the beginning I mean around the time when the ADB/ARC messages are being logged by the test:\n2022-09-01T03:01:11.484792Z [03:01:11.768] Waiting for Android boot\n2022-09-01T03:01:11.484876Z [03:01:11.768] Waiting for initial ARC process\n2022-09-01T03:01:14.987244Z [03:01:15.315] Setting up ADB connection\n2022-09-01T03:01:15.041423Z [03:01:15.316] Installing ADB vendor keys\n2022-09-01T03:01:15.041494Z [03:01:15.316] Killing existing ADB server process(es)\n2022-09-01T03:01:15.204316Z [03:01:15.504] Starting ADB server\n\nBy \"cycle through the two windows\" I mean press alt+tab and then press it again, so that the after-state looks the same as the before-state. Indeed, when printing the ash.Window states in Tast there is no difference between before and after. Yet the test then passes.\n\nInstrumenting code in ui/ozone/platform/wayland/host/wayland_clipboard.cc and in components/exo/data_offer.cc shows two key differences between the failing and the passing run:\n1) In the failing run, ClipboardImpl::Write (in the Lacros process) hits the \"No serial found for selection\" case.\n2) In the failing run, there is no call to DataOffer::Receive() (in the Ash process). This might be a consequence of (1).",
+      "parentUuid": "e0c128ff_012d02df",
       "range": {
         "startLine": 121,
         "startChar": 0,
