@@ -82,6 +82,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab30e3ac_91823090",
+        "filename": "src/chromiumos/tast/common/fixture/policyutil.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1153089
+      },
+      "writtenOn": "2022-09-01T15:09:10Z",
+      "side": 1,
+      "message": "Not sure it\u0027s worth all the added effort you have already put into this CL. But, yeah, it does reduce the risk to an extent. I guess you could do this for CQ tests, but I would just migrate information tests without duplicating them.",
+      "parentUuid": "dbc46afd_d47ee5a3",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 42
+      },
+      "revId": "64a10d6ef05513ba9c514cd89ea643ef8a4f51c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ab642367_f29cd687",
