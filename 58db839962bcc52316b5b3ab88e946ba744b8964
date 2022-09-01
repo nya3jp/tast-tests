@@ -43,6 +43,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4058bd41_c199f24d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ipv6_connectivity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2022-09-01T06:33:12Z",
+      "side": 1,
+      "message": "Should we consolidate this with the ARCVM case? I think `GetDevices()` would work the same way with ARC++.\n\nThis way, we can remove the differences between the ARC++ and ARCVM and just use `arc` as SoftwareDeps.\nIf we\u0027d like to separate ARC++ and ARCVM, then at least we can remove the `netDeviceType`.",
+      "range": {
+        "startLine": 118,
+        "startChar": 0,
+        "endLine": 121,
+        "endChar": 0
+      },
+      "revId": "58db839962bcc52316b5b3ab88e946ba744b8964",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "389ebbb0_124db04b",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/ipv6_connectivity.go",
         "patchSetId": 1
