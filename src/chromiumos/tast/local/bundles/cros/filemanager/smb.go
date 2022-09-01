@@ -9,7 +9,9 @@ import (
 	"io/ioutil"
 	"os"
 	"path/filepath"
+	"strings"
 
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/filesapp"
@@ -57,6 +59,17 @@ func SMB(ctx context.Context, s *testing.State) {
 	files, err := filesapp.Launch(ctx, tconn)
 	if err != nil {
 		s.Fatal("Launching the Files App failed: ", err)
+	}
+
+	// Files app will start with the window positioning of the previous session, this can cause the 3-dot menu position to end up out of view. Maximize the window to ensure the window bounds are all visible.
+	window, err := ash.FindWindow(ctx, tconn, func(w *ash.Window) bool {
+		return strings.HasPrefix(w.Title, filesapp.FilesTitlePrefix)
+	})
+	if err != nil {
+		s.Fatal("Failed to find the Files app window: ", err)
+	}
+	if err := ash.SetWindowStateAndWait(ctx, tconn, window.ID, ash.WindowStateMaximized); err != nil {
+		s.Fatal("Failed to maximize the Files app window: ", err)
 	}
 
 	ui := uiauto.New(tconn)
