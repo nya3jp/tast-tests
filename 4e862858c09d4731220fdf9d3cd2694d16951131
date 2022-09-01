@@ -56,6 +56,30 @@
       },
       "revId": "4e862858c09d4731220fdf9d3cd2694d16951131",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a52ea17b_8a1fb5da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/mtab.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2022-09-01T21:23:17Z",
+      "side": 1,
+      "message": "\u003e Sorry, new to this file, so lots of questions, I hope you don\u0027t mind :-)\n\nNo worries.\n\n\u003e Is there production code change linked to this test change ?\n\nSee the Cq-Depend in the CL description -- it points to:\nhttps://chromium-review.googlesource.com/3861519\n\nTechnically, it\u0027s not _actually_ changing the resulting production behavior, because there was already a:\n\n  chmod a+rx ${TRACING}/.\n  \nBut now I\u0027m factoring that into the mount options, so it shows up here in the mount test as a side effect.\n\n\u003e For my curiosities: why do we need execution bit ? assume mode\u003d755 is RWX-RX-RX\n\u003e usually chromeOS has RO/RX/RW for file/path. \n\nYes, 755 is RWX-RX-RX (or more conventionally displayed as rwxr-xr-x on *NIX systems).\n\nThe execution bit for a directory means one can enumerate the directory. So one needs a minimum of RX permissions if they want to perform typical operations on a directory.\n\n\u003e Why do we need both defautRW and mode\u003d755 ? since they have similar meaning. \n\nI don\u0027t actually know precisely what the defaultRW (i.e., we\u0027re mostly talking about the \"rw\" flag) mount option means. I don\u0027t see any formal documentation for it in the kernel tree. But I believe it\u0027s just the inverse of \"ro\", which is more clear -- read-only, meaning no writable permission.\n\nI think \"rw\" is thus different than specifying the finer-grained setting for \"group\" and \"other\", as I\u0027m doing in \u0027mode\u003d\u0027. So altogether:\n1. rw -- primarily means \"not forced read-only\"\n2. mode\u003d755 -- allow group+other to enumerate the directory\n\n\u003e Could you please also add comments directly into code. \n\u003e Such as: why tracefs need to have defaultRW and mode\u003d755 \n\nIt\u0027s in the implementation code:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform2/+/3861519/3/init/startup/chromeos_startup.cc#142\n\nI can add it here if necessary, although I don\u0027t see that for any of the other mode\u003d755 mounts.\n\n\u003e About description:\n\u003e \u003eWe\u0027ve been manually chmod\u0027ing the tracefs root, but now we\u0027re using it\n\u003e \u003e in the mount option, so we need to update it in this test.\n\u003e \n\u003e what is \"We\" referring to? production code? test code ?\n\nProduction code, in the Cq-Depend CL. See:\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform2/+/3861519/3/debugd/share/debugd.conf\nand\nhttps://chromium-review.googlesource.com/c/chromiumos/platform2/+/3861519/3/init/startup/chromeos_startup.cc\n\n\u003e \u003e Drop the optional tracing-is-in-debugfs, since we\u0027ve dropped old kernels\n\u003e \u003e that didn\u0027t have tracefs.\n\u003e \n\u003e I do not see this change in diff, is tracing-is-in-debugfs a concept or a flag in code somewhere. \n\nThat\u0027s referring to the change from \"debugfs,tracefs\" (i.e., /run/arc/debugfs/tracing might be called either \"debugfs\" or \"tracefs\", depending on the kernel) to just \"tracefs\" (because old kernels have been retired).\n\nThis is probably reasonable background:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2899699\n(from the \u0027git blame\u0027 for this line before I changed it)\nvs. this revert:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2899582\n(which broke things because \"debugfs\" showed up unexpectedly on some kernels)",
+      "parentUuid": "f5f59e12_1d9a8adf",
+      "range": {
+        "startLine": 107,
+        "startChar": 20,
+        "endLine": 107,
+        "endChar": 27
+      },
+      "revId": "4e862858c09d4731220fdf9d3cd2694d16951131",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
