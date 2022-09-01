@@ -9,7 +9,6 @@ import (
 	"context"
 	"time"
 
-	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/a11y"
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/audio"
@@ -36,13 +35,9 @@ func init() {
 }
 
 func NewScreencastButtonCondition(ctx context.Context, s *testing.State) {
-	ctxForCleanUp := ctx
-	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
-	defer cancel()
-
 	tconn := s.FixtValue().(*projector.FixtData).TestConn
 
-	defer faillog.DumpUITreeOnError(ctxForCleanUp, s.OutDir(), s.HasError, tconn)
+	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
 	if err := launcher.LaunchAndWaitForAppOpen(tconn, apps.Projector)(ctx); err != nil {
 		s.Fatal("Failed to open Projector app: ", err)
@@ -52,6 +47,8 @@ func NewScreencastButtonCondition(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to close the onboarding dialog: ", err)
 	}
 
+	// UI action for refreshing the app until the element we're
+	// looking for exists.
 	ui := uiauto.New(tconn)
 
 	if err := a11y.VerifySodaInstalled(ctx); err != nil {
@@ -78,11 +75,8 @@ func NewScreencastButtonCondition(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("SODA and microphone are enabled, verifying that the new screencast button is enabled")
-	// UI action for refreshing the app until the element we're
-	// looking for exists.
-	refreshApp := projector.RefreshApp(ctx, tconn)
 	newScreencastButton := nodewith.Name("New screencast").Role(role.Button).Focusable()
-	if err := ui.WithInterval(5*time.Second).RetryUntil(refreshApp, ui.Exists(newScreencastButton))(ctx); err != nil {
+	if err := ui.WaitUntilExists(newScreencastButton)(ctx); err != nil {
 		s.Fatal("SODA and microphone are enabled, but new screencast button is disabled: ", err)
 	}
 }
