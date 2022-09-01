@@ -240,6 +240,20 @@ func (f *tastFixtureImpl) dutHealthCheck(ctx context.Context, d *dut.DUT, rpcHin
 // recoverUnhealthyDUT checks if the DUT is healthy. If not, try to recover it
 // with reboot.
 func (f *tastFixtureImpl) recoverUnhealthyDUT(ctx context.Context, d *dut.DUT, s *testing.FixtState) error {
+	if !d.Connected(ctx) {
+		testing.ContextLog(ctx, "DUT found to not be connected before health check; reconnecting to DUT")
+		if err := testing.Poll(ctx, func(ctx context.Context) error {
+			if err := d.WaitConnect(ctx); err != nil {
+				return errors.Wrap(err, "failed to connect to DUT")
+			}
+			return nil
+		}, &testing.PollOptions{
+			Timeout: 1 * time.Minute,
+		}); err != nil {
+			return errors.Wrap(err, "failed to wait for DUT to connect")
+		}
+		testing.ContextLog(ctx, "Successfully reconnected to DUT")
+	}
 	if err := f.dutHealthCheck(ctx, d, s.RPCHint()); err != nil {
 		testing.ContextLog(ctx, "Rebooting the DUT due to health check err: ", err)
 		// As reboot will at least break tf.rpc, no reason to keep
