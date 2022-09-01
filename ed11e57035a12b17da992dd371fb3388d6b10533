@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c97d8cc5_03091ba8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-09-01T20:20:43Z",
+      "side": 1,
+      "message": "Thanks for making that change. We should go and make similar changes to other APIs as well\n\n(you may also want to rebase the newly landed Kiosks tests)",
+      "revId": "ed11e57035a12b17da992dd371fb3388d6b10533",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3466591_d9b22500",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/update_password.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-09-01T20:20:43Z",
+      "side": 1,
+      "message": "AuthSession",
+      "range": {
+        "startLine": 116,
+        "startChar": 22,
+        "endLine": 116,
+        "endChar": 33
+      },
+      "revId": "ed11e57035a12b17da992dd371fb3388d6b10533",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "286088ea_63949edf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/user_secret_stash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-09-01T20:20:43Z",
+      "side": 1,
+      "message": "AuthSession",
+      "range": {
+        "startLine": 117,
+        "startChar": 22,
+        "endLine": 117,
+        "endChar": 34
+      },
+      "revId": "ed11e57035a12b17da992dd371fb3388d6b10533",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "560f08de_dea3186a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/user_secret_stash_add_pin.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-09-01T20:20:43Z",
+      "side": 1,
+      "message": "AuthSession",
+      "range": {
+        "startLine": 122,
+        "startChar": 11,
+        "endLine": 122,
+        "endChar": 23
+      },
+      "revId": "ed11e57035a12b17da992dd371fb3388d6b10533",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
