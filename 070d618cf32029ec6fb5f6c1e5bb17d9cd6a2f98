@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e9bc105_b4b04875",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-09-01T23:18:58Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "070d618cf32029ec6fb5f6c1e5bb17d9cd6a2f98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7ddd25a_0fde13f9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/shared_screencast.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-09-01T23:18:58Z",
+      "side": 1,
+      "message": "Prefer fmt.Sprintf() in Go instead of operator+ to concatenate strings.",
+      "range": {
+        "startLine": 78,
+        "startChar": 16,
+        "endLine": 78,
+        "endChar": 64
+      },
+      "revId": "070d618cf32029ec6fb5f6c1e5bb17d9cd6a2f98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de2bba18_5688bca2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/shared_screencast.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-09-01T23:18:58Z",
+      "side": 1,
+      "message": "Consider extending the timeout to one minute as before because 15 seconds might not be enough time to load the shared screencast over the network. You also have five minutes to run this test in total, so spending one minute to load the screencast title makes sense.",
+      "revId": "070d618cf32029ec6fb5f6c1e5bb17d9cd6a2f98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "baf6961d_f7658e16",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/shared_screencast.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-09-01T23:18:58Z",
+      "side": 1,
+      "message": "WaitUntilExists() is less likely to flake because it gives some time for the screencast title to load.",
+      "range": {
+        "startLine": 86,
+        "startChar": 14,
+        "endLine": 86,
+        "endChar": 20
+      },
+      "revId": "070d618cf32029ec6fb5f6c1e5bb17d9cd6a2f98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
