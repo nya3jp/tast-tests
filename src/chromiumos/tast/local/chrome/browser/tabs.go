@@ -59,13 +59,13 @@ func CloseAllTabs(ctx context.Context, tconn *TestConn) error {
 // TODO(neis): Put this in a common place.
 const newTabURL = "chrome://new-tab/"
 
-// ReplaceCurrentTabsWithSingleNewTab replaces the browser tabs of the current window
+// ReplaceAllTabsWithSingleNewTab replaces the browser tabs of the current window
 // with an empty tab.
 // Leaving one tab is critical to keep the lacros-chrome process running.
 // See crbug.com/1268743 for the chrome arg --disable-lacros-keep-alive.
 // TODO(neis): Try to get rid of this function.
-func ReplaceCurrentTabsWithSingleNewTab(ctx context.Context, tconn *TestConn) error {
-	tabs, err := CurrentTabs(ctx, tconn)
+func ReplaceAllTabsWithSingleNewTab(ctx context.Context, tconn *TestConn) error {
+	tabs, err := AllTabs(ctx, tconn)
 	if err != nil {
 		return errors.Wrap(err, "failed to get browser tabs")
 	}
