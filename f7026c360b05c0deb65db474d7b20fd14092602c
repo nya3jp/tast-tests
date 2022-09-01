@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c06094b2_9af8fd47",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2022-09-01T06:35:36Z",
+      "side": 1,
+      "message": "This isn\u0027t a comment for this test but: the test we find to be problematic is `firmware.FlashromTester` (it renders the DUTs unreachable, and TAST still attempts remote tests, so the tests fail immediately, see b/242220299 for details)",
+      "revId": "f7026c360b05c0deb65db474d7b20fd14092602c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
