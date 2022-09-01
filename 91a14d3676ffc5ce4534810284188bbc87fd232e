@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b143a7c1_e6199bf1",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/common_metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-09-01T21:13:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f23d4074_55af234e",
+      "range": {
+        "startLine": 54,
+        "startChar": 5,
+        "endLine": 54,
+        "endChar": 11
+      },
+      "revId": "91a14d3676ffc5ce4534810284188bbc87fd232e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a0fd816d_5fd526a2",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-09-01T20:27:10Z",
       "side": 1,
       "message": "`Other`",
+      "range": {
+        "startLine": 95,
+        "startChar": 5,
+        "endLine": 95,
+        "endChar": 11
+      },
+      "revId": "91a14d3676ffc5ce4534810284188bbc87fd232e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9da7211_7b3a9d2f",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/common_metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-09-01T21:13:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a0fd816d_5fd526a2",
       "range": {
         "startLine": 95,
         "startChar": 5,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "813f0078_91335683",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/cuj_metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-09-01T21:13:48Z",
+      "side": 1,
+      "message": "Good point. I tried rewording it.",
+      "parentUuid": "3711ba3c_e813a2a7",
+      "range": {
+        "startLine": 10,
+        "startChar": 57,
+        "endLine": 12,
+        "endChar": 33
+      },
+      "revId": "91a14d3676ffc5ce4534810284188bbc87fd232e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0f54cf35_10a802fc",
@@ -100,6 +172,30 @@
       "writtenOn": "2022-09-01T20:27:10Z",
       "side": 1,
       "message": "nit: This is slightly error prone because someone might eventually add a `LacrosCommonMetricConfigs` function in common_metrics.go and they might not even know about cuj_metrics.go.",
+      "range": {
+        "startLine": 72,
+        "startChar": 5,
+        "endLine": 72,
+        "endChar": 33
+      },
+      "revId": "91a14d3676ffc5ce4534810284188bbc87fd232e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e455e96b_45cf85f5",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/cuj_metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-09-01T21:13:48Z",
+      "side": 1,
+      "message": "I added an empty LacrosCommonMetricConfigs to common_metrics to prevent against this issue.",
+      "parentUuid": "0f54cf35_10a802fc",
       "range": {
         "startLine": 72,
         "startChar": 5,
