@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d6690e3_c577a5f6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-09-01T14:56:37Z",
+      "side": 1,
+      "message": "Do we ever expect there to be more pools than just cellular?",
+      "revId": "545ed2285fa9ee30fbde913b6cfa675f0a064e34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
