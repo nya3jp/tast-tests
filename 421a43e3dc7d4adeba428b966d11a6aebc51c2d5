@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "05e2903a_204d2fbc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-09-01T10:56:16Z",
+      "side": 1,
+      "message": "LGTM % nits\nNice first test! I only added comments about some cosmetic changes.",
+      "revId": "421a43e3dc7d4adeba428b966d11a6aebc51c2d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1907d42_49f2d8f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/data/web_usb_blocked.html",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-09-01T10:56:16Z",
+      "side": 1,
+      "message": "nit: extra white space.\nnit: Use `.` at the end of the comment.",
+      "range": {
+        "startLine": 14,
+        "startChar": 25,
+        "endLine": 14,
+        "endChar": 26
+      },
+      "revId": "421a43e3dc7d4adeba428b966d11a6aebc51c2d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6d54c04_52ac849c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/web_usb_blocked_for_urls.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-09-01T10:56:16Z",
+      "side": 1,
+      "message": "nit: `WebUSBBlockedForUrls`. Although it is different from the policy object, that one is auto generated, while here you should stick to the naming conventions.",
+      "range": {
+        "startLine": 53,
+        "startChar": 5,
+        "endLine": 53,
+        "endChar": 25
+      },
+      "revId": "421a43e3dc7d4adeba428b966d11a6aebc51c2d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ddf415e5_ce059e25",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/web_usb_blocked_for_urls.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-09-01T10:56:16Z",
+      "side": 1,
+      "message": "nit: USB. Same for below.",
+      "range": {
+        "startLine": 128,
+        "startChar": 33,
+        "endLine": 128,
+        "endChar": 36
+      },
+      "revId": "421a43e3dc7d4adeba428b966d11a6aebc51c2d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
