@@ -16,6 +16,63 @@
       "message": "Thanks Toby and Yilkal!",
       "revId": "91134a22ff00ec914c72f5a84379819bf445711b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1932afb_51ff689f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-09-01T22:55:45Z",
+      "side": 1,
+      "message": "LGTM % a few nits",
+      "revId": "91134a22ff00ec914c72f5a84379819bf445711b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bab1e73f_b92bb7e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/enabled_policy.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-09-01T22:55:45Z",
+      "side": 1,
+      "message": "Consider moving this line above the sub test because if the sub test fails, then this line doesn\u0027t run and Chrome isn\u0027t reset, potentially causing spillover effects.",
+      "revId": "91134a22ff00ec914c72f5a84379819bf445711b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9b5283e_9b302161",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/enabled_policy.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-09-01T22:55:45Z",
+      "side": 1,
+      "message": "Nit: to close",
+      "range": {
+        "startLine": 148,
+        "startChar": 65,
+        "endLine": 148,
+        "endChar": 71
+      },
+      "revId": "91134a22ff00ec914c72f5a84379819bf445711b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
