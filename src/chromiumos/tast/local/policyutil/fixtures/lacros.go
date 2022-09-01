@@ -34,6 +34,23 @@ func init() {
 		Parent:          fixture.PersistentLacros,
 	})
 
+	// TODO(crbug.com/1360034): Remove this fixture.
+	testing.AddFixture(&testing.Fixture{
+		Name:     fixture.LacrosPrimaryPolicyLoggedIn,
+		Desc:     "Fixture for a running FakeDMS with lacros in LacrosPrimary mode",
+		Contacts: []string{"mohamedaomar@google.com", "wtlee@chromium.org", "chromeos-commercial-remote-management@google.com"},
+		Impl: &policyChromeFixture{
+			extraOptsFunc: func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+				return lacrosfixt.NewConfig().Opts()
+			},
+		},
+		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
+		ResetTimeout:    chrome.ResetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+		PostTestTimeout: 15 * time.Second,
+		Parent:          fixture.PersistentLacrosPrimary,
+	})
+
 	// TODO(b/218907052): Remove fixture after Journeys flag  is enabled by default.
 	testing.AddFixture(&testing.Fixture{
 		Name:     fixture.LacrosPolicyLoggedInFeatureJourneys,

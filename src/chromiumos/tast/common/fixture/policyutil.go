@@ -50,6 +50,8 @@ const (
 const (
 	// LacrosPolicyLoggedIn is a fixture name.
 	LacrosPolicyLoggedIn = "lacrosPolicyLoggedIn"
+	// LacrosPrimaryPolicyLoggedIn is a fixture name.
+	LacrosPrimaryPolicyLoggedIn = "lacrosPrimaryPolicyLoggedIn"
 	// LacrosPolicyLoggedInFeatureJourneys is a fixture name.
 	LacrosPolicyLoggedInFeatureJourneys = "lacrosPolicyLoggedInFeatureJourneys"
 	// LacrosPolicyLoggedInFeatureChromeLabs is a fixture name.
@@ -64,6 +66,8 @@ const (
 const (
 	// PersistentLacros is a fixture name.
 	PersistentLacros = "persistentLacros"
+	// PersistentLacrosPrimary is a fixture name.
+	PersistentLacrosPrimary = "persistentLacrosPrimary"
 	// PersistentLacrosEnrolled is a fixture name.
 	PersistentLacrosEnrolled = "persistentLacrosEnrolled"
 	// PersistentLacrosRealUser is a fixture name.
