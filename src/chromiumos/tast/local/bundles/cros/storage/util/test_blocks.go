@@ -103,7 +103,7 @@ func suspendTestBlock(ctx context.Context, s *testing.State, rw *FioResultWriter
 			return runContinuousStorageStress(ctx, "write_stress", s.DataPath("write_stress"), rw, testParam.TestDevice)
 		},
 		func(ctx context.Context) error {
-			return runPeriodicPowerSuspend(ctx, testParam.SkipS0iXResidencyCheck)
+			return runSuspendStressTest(ctx, testParam.SuspendBlockTimeout)
 		},
 	}
 

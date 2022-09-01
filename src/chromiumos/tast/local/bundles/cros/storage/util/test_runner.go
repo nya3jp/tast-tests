@@ -6,7 +6,8 @@ package util
 
 import (
 	"context"
-	"math/rand"
+	"strconv"
+	"strings"
 	"sync"
 	"time"
 
@@ -33,21 +34,30 @@ func runContinuousStorageStress(ctx context.Context, job, jobFile string, rw *Fi
 	}
 }
 
-// runPeriodicPowerSuspend repeatedly suspends the DUT that is running a FIO
-// Exits only when context deadline is exceeded.
-func runPeriodicPowerSuspend(ctx context.Context, SkipS0iXResidencyCheck bool) error {
-	// Indefinite loop of randomized sleeps and power suspends.
-	for {
-		if ctx.Err() != nil {
-			return nil
-		}
-		sleepDuration := time.Duration(rand.Intn(30)+30) * time.Second
-		testing.ContextLog(ctx, "Sleeping for ", sleepDuration)
-		testing.Sleep(ctx, sleepDuration)
-		if err := Suspend(ctx, SkipS0iXResidencyCheck); err != nil {
-			return errors.Wrap(err, "failed to suspend DUT")
+// runSuspendStressTest runs the suspend_stress_test executable for the number of
+// loops determined based on the duration, then parses the output for errors.
+func runSuspendStressTest(ctx context.Context, duration time.Duration) error {
+	output, err := SuspendStressTest(ctx, duration)
+
+	if err != nil {
+		return err
+	}
+
+	resultStart := strings.Index(output, "Finished")
+	results := output[resultStart:]
+	resSlice := strings.Split(results, "\n")
+	for _, res := range resSlice {
+		if strings.Contains(res, ":") {
+			failStr := strings.Split(res, ": ")
+			count, err := strconv.Atoi(failStr[1])
+			if err == nil && count > 0 {
+				testing.ContextLog(ctx, "Suspend Stress results: ", results)
+				return errors.Errorf("Suspend failure: %s", res)
+			}
 		}
 	}
+
+	return nil
 }
 
 // runTasksInParallel runs stress tasks in parallel until finished or until

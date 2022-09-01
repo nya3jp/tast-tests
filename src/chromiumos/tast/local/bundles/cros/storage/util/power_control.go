@@ -25,6 +25,11 @@ const (
 	defaultSuspendTimeout    = 20 * time.Second
 	defaultSuspendWakeupTime = 30 * time.Second
 
+	defaultSuspendMin = 30
+	defaultSuspendMax = 35
+	defaultWakeMin    = 10
+	defaultWakeMax    = 25
+
 	amdS0ixResidencyFile    = "/sys/kernel/debug/amd_pmc/s0ix_stats"
 	intelS0ixResidencyFile1 = "/sys/kernel/debug/pmc_core/slp_s0_residency_usec"
 	intelS0ixResidencyFile2 = "/sys/kernel/debug/telemetry/s0ix_residency_usec"
@@ -32,7 +37,34 @@ const (
 	amdS0ixResidencyFilePattern = "Residency Time: "
 
 	s2IdleResidencyFilePathPattern = "/sys/devices/system/cpu/cpu[0-9]/cpuidle/state*/s2idle/time"
+
+	suspendStressTestPath = "/usr/bin/suspend_stress_test"
 )
+
+// SuspendStressTest executes the suspend_stress_test on the DUT with the given
+// number of loops.
+func SuspendStressTest(ctx context.Context, duration time.Duration) (string, error) {
+	minSuspend := "--suspend_min=" + strconv.Itoa(defaultSuspendMin)
+	maxSuspend := "--suspend_max=" + strconv.Itoa(defaultSuspendMax)
+	minWake := "--wake_min=" + strconv.Itoa(defaultWakeMin)
+	maxWake := "--wake_max=" + strconv.Itoa(defaultWakeMax)
+
+	durationSec := int(duration / time.Second)
+	loopMaxTime := defaultSuspendMax + defaultWakeMax
+	numLoops := durationSec / loopMaxTime
+
+	loops := "--count=" + strconv.Itoa(numLoops)
+
+	cmd := testexec.CommandContext(ctx, suspendStressTestPath, minSuspend,
+		maxSuspend, minWake, maxWake, loops)
+	testing.ContextLog(ctx, "Running command: ", cmd)
+	out, err := cmd.Output(testexec.DumpLogOnError)
+	if err != nil {
+		return "", errors.Wrap(err, "failed to run suspend_stress_test")
+	}
+
+	return string(out), nil
+}
 
 // Suspend suspends the device for a pre-defined time and then resumes it.
 func Suspend(ctx context.Context, skipResidencyCheck bool) error {
