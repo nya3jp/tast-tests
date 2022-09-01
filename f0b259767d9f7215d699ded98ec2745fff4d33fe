@@ -16,6 +16,24 @@
       "message": "Let\u0027s skip validation, but keep the others.",
       "revId": "f0b259767d9f7215d699ded98ec2745fff4d33fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "50740fdb_d80ab7ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_arrangement_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-09-01T17:17:23Z",
+      "side": 1,
+      "message": "In the past, WindowArrangementCUJ did nothing with ARC, so none of the variants were limited to devices with `android_p`. The `android_vm` devices ran the `tablet_mode_validation` variant at that time, so they can run a `tablet_mode_validation_vm` variant now.",
+      "parentUuid": "88494376_b3fc2c3e",
+      "revId": "f0b259767d9f7215d699ded98ec2745fff4d33fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
