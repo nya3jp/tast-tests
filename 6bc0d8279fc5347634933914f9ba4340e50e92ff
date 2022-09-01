@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9eb693e7_00812b65",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-09-01T20:57:38Z",
+      "side": 1,
+      "message": "Will this test also be expanded to verify that only networks allowed by policy show up, or will that be part of a separate test?",
+      "revId": "6bc0d8279fc5347634933914f9ba4340e50e92ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f45eb76_7e76102e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/esim_allow_cellular_policy_networks_on.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-09-01T20:57:38Z",
+      "side": 1,
+      "message": "Maybe putting `ESim` in the name of the test isn\u0027t necessary? We don\u0027t interact with it at all or even mention it outside of the test name.",
+      "range": {
+        "startLine": 27,
+        "startChar": 16,
+        "endLine": 27,
+        "endChar": 20
+      },
+      "revId": "6bc0d8279fc5347634933914f9ba4340e50e92ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
