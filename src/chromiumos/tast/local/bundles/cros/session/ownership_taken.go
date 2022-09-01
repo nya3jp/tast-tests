@@ -11,6 +11,7 @@ import (
 
 	"chromiumos/policy/chromium/policy/enterprise_management_proto"
 	"chromiumos/tast/local/chrome"
+	hwseclocal "chromiumos/tast/local/hwsec"
 	"chromiumos/tast/local/session"
 	"chromiumos/tast/testing"
 )
@@ -33,6 +34,22 @@ func OwnershipTaken(ctx context.Context, s *testing.State) {
 		testUser = "ownership_test@chromium.org"
 		testPass = "testme"
 	)
+
+	//
+	// MIERSH clear TPM
+	//
+
+	cmdRunner := hwseclocal.NewCmdRunner()
+
+	helper, err := hwseclocal.NewHelper(cmdRunner)
+	if err != nil {
+		s.Fatal("Failed to create hwsec local helper: ", err)
+	}
+
+	// Resets the TPM, system, and user states before running the tests.
+	if err := helper.EnsureTPMAndSystemStateAreReset(ctx); err != nil {
+		s.Fatal("Failed to reset TPM or system states: ", err)
+	}
 
 	if err := session.SetUpDevice(ctx); err != nil {
 		s.Fatal("Failed to reset device ownership: ", err)

@@ -6,6 +6,7 @@ package policyutil
 
 import (
 	"context"
+	"time"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
@@ -191,11 +192,24 @@ func (checker *nodeChecker) Verify() error {
 func CheckCertificateVisibleInSystemSettings(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome, certName string) error {
 	OSSettingsPage(ctx, cr, "network")
 	ui := uiauto.New(tconn)
+
+	if err := ui.LeftClick(nodewith.Name("Add network connection").Role(role.Button))(ctx); err != nil {
+		return err
+	}
+
+	err := ui.WithTimeout(time.Second).WaitUntilExists(nodewith.Name("Add Wi-Fi…").Role(role.Button))(ctx)
+	if err != nil {
+		if err := ui.LeftClick(nodewith.Name("Wi-Fi enable").Role(role.ToggleButton))(ctx); err != nil {
+			return err
+		}
+	}
+
 	return uiauto.Combine("use system settings",
-		ui.LeftClick(nodewith.Name("Add network connection").Role(role.Button)),
+		ui.WaitUntilExists(nodewith.Name("Add Wi-Fi…").Role(role.Button)),
 		ui.LeftClick(nodewith.Name("Add Wi-Fi…").Role(role.Button)),
 		ui.LeftClick(nodewith.Name("Security").ClassName("md-select")),
 		ui.LeftClick(nodewith.Name("EAP").Role(role.ListBoxOption)),
+		ui.WaitUntilExists(nodewith.Name("EAP method").ClassName("md-select")),
 		ui.LeftClick(nodewith.Name("EAP method").ClassName("md-select")),
 		ui.LeftClick(nodewith.Name("EAP-TLS").Role(role.ListBoxOption)),
 		ui.WaitUntilExists(nodewith.Name("Server CA certificate").Role(role.InlineTextBox)),
