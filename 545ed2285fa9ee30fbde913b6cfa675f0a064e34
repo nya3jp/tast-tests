@@ -16,6 +16,24 @@
       "message": "Do we ever expect there to be more pools than just cellular?",
       "revId": "545ed2285fa9ee30fbde913b6cfa675f0a064e34",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "39d95fa9_aa6c09ca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1441092
+      },
+      "writtenOn": "2022-09-01T16:53:06Z",
+      "side": 1,
+      "message": "Yes, something like this `\"label-pool\":{\"DUT_POOL_CQ\", \"DUT_POOL_BVT\", \"cellular\"},`",
+      "parentUuid": "3d6690e3_c577a5f6",
+      "revId": "545ed2285fa9ee30fbde913b6cfa675f0a064e34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
