@@ -14,6 +14,7 @@ import (
 
 	"chromiumos/tast/common/android/ui"
 	"chromiumos/tast/common/policy"
+	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
@@ -127,8 +128,19 @@ func ARCProvisioning(ctx context.Context, s *testing.State) {
 		return exit(desc, err)
 	}
 
-	login := chrome.GAIALoginPool(s.RequiredVar(loginPoolVar))
+	creds, err := chrome.PickRandomCreds(s.RequiredVar(loginPoolVar))
+	if err != nil {
+		exit("get login creds", err)
+	}
+	login := chrome.GAIALogin(creds)
+
 	packages := strings.Split(s.RequiredVar(packagesVar), ",")
+
+	fdms, err := setupPolicyServerWithArcApps(ctx, s.OutDir(), creds.User, packages)
+	if err != nil {
+		exit("setup fake policy server", err)
+	}
+	defer fdms.Stop(ctx)
 
 	if err := testing.Poll(ctx, func(ctx context.Context) (retErr error) {
 		// Log-in to Chrome and allow to launch ARC if allowed by user policy.
@@ -137,7 +149,7 @@ func ARCProvisioning(ctx context.Context, s *testing.State) {
 			login,
 			chrome.ARCSupported(),
 			chrome.UnRestrictARCCPU(),
-			chrome.ProdPolicy(),
+			chrome.DMSPolicy(fdms.URL),
 			chrome.ExtraArgs(arc.DisableSyncFlags()...))
 		if err != nil {
 			return retryForAll("connect to Chrome", err)
@@ -206,6 +218,33 @@ func ARCProvisioning(ctx context.Context, s *testing.State) {
 	}, nil); err != nil {
 		s.Fatal("Provisioning flow failed: ", err)
 	}
+}
+
+func setupPolicyServerWithArcApps(ctx context.Context, outDir, policyUser string, packages []string) (fdms *fakedms.FakeDMS, retErr error) {
+	arcPolicy := createArcPolicyWithForceInstallApps(packages)
+	arcEnabledPolicy := &policy.ArcEnabled{Val: true}
+	policies := []policy.Policy{arcEnabledPolicy, arcPolicy}
+
+	return policyutil.SetUpFakePolicyServer(ctx, outDir, policyUser, policies)
+}
+
+func createArcPolicyWithForceInstallApps(packages []string) *policy.ArcPolicy {
+	var forceInstalledApps []policy.Application
+	for _, packageName := range packages {
+		forceInstalledApps = append(forceInstalledApps, policy.Application{
+			PackageName: packageName,
+			InstallType: "FORCE_INSTALLED",
+		})
+	}
+	arcPolicy := &policy.ArcPolicy{
+		Val: &policy.ArcPolicyValue{
+			Applications:              forceInstalledApps,
+			PlayLocalPolicyEnabled:    true,
+			PlayEmmApiInstallDisabled: true,
+		},
+	}
+
+	return arcPolicy
 }
 
 func enableVerboseLogging(ctx context.Context, a *arc.ARC) error {
