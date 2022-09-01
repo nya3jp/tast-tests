@@ -33,6 +33,29 @@
       "message": "Hi Tast Owners, this CL is ready for review.",
       "revId": "85ed239f248e1e123a5c6e30278a6d33f45cf0f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a3d97ff_077890ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/creation_flow.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2022-09-01T01:16:36Z",
+      "side": 1,
+      "message": "DeleteScreencastItems has a 2 minute timeout, and then it retries deleting at a 5 second interval, so this should probably be increased.",
+      "range": {
+        "startLine": 40,
+        "startChar": 37,
+        "endLine": 40,
+        "endChar": 51
+      },
+      "revId": "85ed239f248e1e123a5c6e30278a6d33f45cf0f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
