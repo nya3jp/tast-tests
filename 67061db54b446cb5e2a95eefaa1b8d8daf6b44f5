@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ab432d8_afaf878f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/local_playback.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-09-01T20:16:35Z",
+      "side": 1,
+      "message": "Done, refactored into projector.go. It\u0027s not appropriate for the fixture because the projector.SharedScreencast test also uses the fixture and it doesn\u0027t launch the app at the beginning of the test (it clicks a share link instead). The projectorLogin fixture is currently shared for all Projector tests.",
+      "parentUuid": "0e26b317_2bd91af3",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 0
+      },
+      "revId": "67061db54b446cb5e2a95eefaa1b8d8daf6b44f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7b10f29f_49f857da",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-08-31T21:09:29Z",
       "side": 1,
       "message": "I am curious about why you prefer using defer instead of actually do the clean up after the test?",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 60
+      },
+      "revId": "67061db54b446cb5e2a95eefaa1b8d8daf6b44f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3f2f723_922a6244",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/local_playback.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-09-01T20:16:35Z",
+      "side": 1,
+      "message": "Defer statements always run regardless if the test succeeds or fails. If I simply call projector.DeleteScreencastItems() at the end of this test, and this test fails somewhere in the middle, then the deletion code won\u0027t execute. That could lead to an explosion of screencasts in test accounts on Drive.",
+      "parentUuid": "7b10f29f_49f857da",
       "range": {
         "startLine": 56,
         "startChar": 0,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d2071e2_792fa0e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/local_playback.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-09-01T20:16:35Z",
+      "side": 1,
+      "message": "Good point, we can verify that the screencast is still transcoding by searching for the \"Processing...\" text. And I bet the screencast is still transcoding because even a short one-second screencast takes hours to transcode.\n\nGood point, we can verify that the screencast is still transcoding by searching for the \"Processing...\" text. And I bet the screencast is still transcoding because even a short one-second screencast takes hours to transcode.",
+      "parentUuid": "84b945c1_8e8d31f5",
+      "range": {
+        "startLine": 71,
+        "startChar": 37,
+        "endLine": 71,
+        "endChar": 74
+      },
+      "revId": "67061db54b446cb5e2a95eefaa1b8d8daf6b44f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d483e3f3_e10d2928",
@@ -100,6 +172,30 @@
       "writtenOn": "2022-08-31T21:09:29Z",
       "side": 1,
       "message": "I think this is a good test for \"test playback\". Might want to consider refactoring out to be reuseable.",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 80
+      },
+      "revId": "67061db54b446cb5e2a95eefaa1b8d8daf6b44f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "82b9c8dc_78527735",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/local_playback.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-09-01T20:16:35Z",
+      "side": 1,
+      "message": "Ack. I\u0027ll refactor this section into projector.go once another test needs it. I left a TODO.",
+      "parentUuid": "d483e3f3_e10d2928",
       "range": {
         "startLine": 73,
         "startChar": 0,
