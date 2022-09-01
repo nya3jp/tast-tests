@@ -26,25 +26,6 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// RefreshApp returns an action that refreshes the Screencast app by right-clicking.
-// TODO(b/231097154): Refreshing in a loop should not be necessary.
-// Replace with WaitUntilExists() once this bug has been fixed.
-func RefreshApp(ctx context.Context, tconn *chrome.TestConn) uiauto.Action {
-	ui := uiauto.New(tconn)
-	appWindow := nodewith.ClassName("WebAppFrameToolbarView").Role(role.Pane)
-	reload := nodewith.Name("Reload Ctrl+R").Role(role.MenuItem)
-
-	return func(ctx context.Context) error {
-		if err := uiauto.Combine("refresh app through right-click context menu",
-			ui.RightClickUntil(appWindow, ui.Exists(reload)),
-			ui.LeftClick(reload),
-		)(ctx); err != nil {
-			return errors.Wrap(err, "failed to refresh app")
-		}
-		return nil
-	}
-}
-
 // SetUpProjectorApp launches the Projector aka Screencast app from
 // the launcher and dimisses the onboarding dialog. It also checks the
 // microphone and sets up a fake one if necessary. The caller should
@@ -82,7 +63,7 @@ func SetUpProjectorApp(ctx context.Context, tconn *chrome.TestConn) (func(ctx co
 func DismissOnboardingDialog(ctx context.Context, tconn *chrome.TestConn) error {
 	ui := uiauto.New(tconn)
 
-	closeOnboardingButton := nodewith.Name("Close").Role(role.Button).FinalAncestor(nodewith.Role(role.Dialog))
+	closeOnboardingButton := nodewith.Name("Close").Role(role.Button).Ancestor(nodewith.Role(role.Dialog))
 
 	// Since each user only sees the onboarding flow a maximum of three
 	// times, the onboarding dialog may not appear.
@@ -104,9 +85,8 @@ func VerifyNewScreencastButtonDisabled(ctx context.Context, tconn *chrome.TestCo
 	ui := uiauto.New(tconn)
 	newScreencastButton := nodewith.Name("New screencast").Role(role.Button)
 	errorTooltip := nodewith.Name(tooltipText).Role(role.GenericContainer)
-	refreshApp := RefreshApp(ctx, tconn)
 	if err := uiauto.Combine("verify the new screencast button is disabled",
-		ui.WithInterval(5*time.Second).RetryUntil(refreshApp, ui.Exists(newScreencastButton)),
+		ui.WaitUntilExists(newScreencastButton),
 		// The new screencast button exists but it is not enabled.
 		ui.Gone(newScreencastButton.Focusable()),
 		ui.Exists(errorTooltip),
