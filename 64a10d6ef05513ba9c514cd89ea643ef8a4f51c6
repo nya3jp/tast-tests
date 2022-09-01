@@ -149,6 +149,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fe77071f_d16442ff",
+        "filename": "src/chromiumos/tast/common/policy/fakedms/fakedms.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1153089
+      },
+      "writtenOn": "2022-09-01T15:40:26Z",
+      "side": 1,
+      "message": "Mention here that this version is deprecated and users should prefer `NewCpp`.",
+      "revId": "64a10d6ef05513ba9c514cd89ea643ef8a4f51c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ab642367_f29cd687",
         "filename": "src/chromiumos/tast/common/policy/fakedms/fakedms.go",
         "patchSetId": 10
@@ -229,6 +246,80 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e445bd51_53bd3d85",
+        "filename": "src/chromiumos/tast/common/policy/gen/policy_tast_struct_creator.py",
+        "patchSetId": 10
+      },
+      "lineNbr": 441,
+      "author": {
+        "id": 1153089
+      },
+      "writtenOn": "2022-09-01T15:40:26Z",
+      "side": 1,
+      "message": "Should this be called `set_proto_value` given that it calls `SetDeviceProto` or `SetUserProto` below?",
+      "range": {
+        "startLine": 441,
+        "startChar": 9,
+        "endLine": 441,
+        "endChar": 20
+      },
+      "revId": "64a10d6ef05513ba9c514cd89ea643ef8a4f51c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da8c212c_4a8b91c3",
+        "filename": "src/chromiumos/tast/common/policy/gen/policy_tast_struct_creator.py",
+        "patchSetId": 10
+      },
+      "lineNbr": 465,
+      "author": {
+        "id": 1153089
+      },
+      "writtenOn": "2022-09-01T15:40:26Z",
+      "side": 1,
+      "message": "Better:\n\n```\npolicy_name, field_name \u003d device_field.split(\u0027.\u0027)\nreturn \u0027SetDeviceProto(m, \"%s\", \"%s\", p.Val)\u0027 % (policy_name, field_name)\n```",
+      "revId": "64a10d6ef05513ba9c514cd89ea643ef8a4f51c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "313cc3cc_3b1ca837",
+        "filename": "src/chromiumos/tast/common/policy/gen/policy_tast_struct_creator.py",
+        "patchSetId": 10
+      },
+      "lineNbr": 466,
+      "author": {
+        "id": 1153089
+      },
+      "writtenOn": "2022-09-01T15:40:26Z",
+      "side": 1,
+      "message": "forgot to remove?",
+      "revId": "64a10d6ef05513ba9c514cd89ea643ef8a4f51c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59fb6fae_b2b57ff5",
+        "filename": "src/chromiumos/tast/common/policy/policy_blob.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1153089
+      },
+      "writtenOn": "2022-09-01T15:40:26Z",
+      "side": 1,
+      "message": "Please add a TODO somewhere here to deprecate support for fields used by Python server.",
+      "revId": "64a10d6ef05513ba9c514cd89ea643ef8a4f51c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0ed81e81_3a892f7a",
         "filename": "src/chromiumos/tast/common/policy/policy_blob.go",
         "patchSetId": 10
@@ -269,6 +360,98 @@
         "startChar": 1,
         "endLine": 29,
         "endChar": 11
+      },
+      "revId": "64a10d6ef05513ba9c514cd89ea643ef8a4f51c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd029040_59a10552",
+        "filename": "src/chromiumos/tast/common/policy/policy_blob.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1153089
+      },
+      "writtenOn": "2022-09-01T15:40:26Z",
+      "side": 1,
+      "message": "Which sub-struct? I don\u0027t see it used in `Blob` above. Perhaps better:\n\n```\n// PolicyEntry struct is used to serialize various policies in Blob to JSON format\n// accepted by the policy test server.\n```\n\nAlso please change `PolicyBlob` in all comments above and below to `Blob`. Looks like struct was renamed, but comments were left unchanged.",
+      "range": {
+        "startLine": 73,
+        "startChar": 3,
+        "endLine": 73,
+        "endChar": 53
+      },
+      "revId": "64a10d6ef05513ba9c514cd89ea643ef8a4f51c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9850dce8_7a9851dd",
+        "filename": "src/chromiumos/tast/common/policy/policy_blob.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1153089
+      },
+      "writtenOn": "2022-09-01T15:40:26Z",
+      "side": 1,
+      "message": "I would call this PolicyEntry. Field is too generic and unclear.",
+      "range": {
+        "startLine": 74,
+        "startChar": 5,
+        "endLine": 74,
+        "endChar": 10
+      },
+      "revId": "64a10d6ef05513ba9c514cd89ea643ef8a4f51c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae249411_f55b72cd",
+        "filename": "src/chromiumos/tast/common/policy/policy_blob.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1153089
+      },
+      "writtenOn": "2022-09-01T15:40:26Z",
+      "side": 1,
+      "message": "This needs to be updated",
+      "range": {
+        "startLine": 207,
+        "startChar": 51,
+        "endLine": 210,
+        "endChar": 49
+      },
+      "revId": "64a10d6ef05513ba9c514cd89ea643ef8a4f51c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5b33148_7bfce9e2",
+        "filename": "src/chromiumos/tast/common/policy/policy_blob.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1153089
+      },
+      "writtenOn": "2022-09-01T15:40:26Z",
+      "side": 1,
+      "message": "For fake_dmserver, please encode these as regular policies with\n\n```\nField{\n  PolicyType: \"google/chromeos/publicaccount\",\n  EntityID: k,\n  Value: v\n}\n```",
+      "range": {
+        "startLine": 277,
+        "startChar": 37,
+        "endLine": 277,
+        "endChar": 39
       },
       "revId": "64a10d6ef05513ba9c514cd89ea643ef8a4f51c6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
