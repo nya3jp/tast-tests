@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d78e38f_3895f63e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lockscreen/close_lid.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-09-01T02:43:17Z",
+      "side": 1,
+      "message": "SGTM",
+      "parentUuid": "65473b49_e19335c2",
+      "range": {
+        "startLine": 20,
+        "startChar": 26,
+        "endLine": 20,
+        "endChar": 30
+      },
+      "revId": "ac7aaa1a6a08b4d1b04eefa3f15adba30bb16d82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "587c9b12_b486e3c5",
@@ -273,6 +297,30 @@
       "side": 1,
       "message": "I don\u0027t really know or care.\n\nI copied from https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/wilco/api_handle_power_event.go;l\u003d39-43;drc\u003d2b3f2e33ee576d4d698929981dce08103b577c63",
       "parentUuid": "c223d035_3e1a3491",
+      "range": {
+        "startLine": 67,
+        "startChar": 5,
+        "endLine": 67,
+        "endChar": 10
+      },
+      "revId": "ac7aaa1a6a08b4d1b04eefa3f15adba30bb16d82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3b1d5f0_cb438e3c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lockscreen/close_lid.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-09-01T02:43:17Z",
+      "side": 1,
+      "message": "if it doesn\u0027t matter, it is better to use `s.Log` here. Otherwise, the test may fail because of things that are unrelated to the feature under test.",
+      "parentUuid": "31aac1e9_1443e997",
       "range": {
         "startLine": 67,
         "startChar": 5,

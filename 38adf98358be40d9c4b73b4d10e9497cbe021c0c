@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1573fd48_c8237f00",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lockscreen/close_lid.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-09-01T02:43:17Z",
+      "side": 1,
+      "message": "suggest to reformat this to:\n```\ndefer func(cleanupCtx context.Context){}(cleanupCtx)\n```\n\nsee the discussion here: https://chrome-internal-review.googlesource.com/c/chromeos/platform/tast-tests-private/+/4957097/comments/699597a7_4e682216",
+      "range": {
+        "startLine": 68,
+        "startChar": 1,
+        "endLine": 68,
+        "endChar": 15
+      },
+      "revId": "38adf98358be40d9c4b73b4d10e9497cbe021c0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d931c491_07ed2664",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lockscreen/close_lid.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-09-01T02:43:17Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 95,
+        "startChar": 1,
+        "endLine": 99,
+        "endChar": 4
+      },
+      "revId": "38adf98358be40d9c4b73b4d10e9497cbe021c0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
