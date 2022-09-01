@@ -79,12 +79,29 @@ func init() {
 				ExtraSoftwareDeps: []string{"android_p", "lacros"},
 			},
 			{
-				Name: "vm",
+				Name: "clamshell_mode_vm",
 				Val: windowarrangementcuj.TestParam{
 					BrowserType: browser.TypeAsh,
 				},
 				Fixture:           "loggedInToCUJUser",
 				ExtraSoftwareDeps: []string{"android_vm"},
+			},
+			{
+				Name: "tablet_mode_vm",
+				Val: windowarrangementcuj.TestParam{
+					BrowserType: browser.TypeAsh,
+					Tablet:      true,
+				},
+				Fixture:           "loggedInToCUJUser",
+				ExtraSoftwareDeps: []string{"android_vm"},
+			},
+			{
+				Name: "lacros_vm",
+				Val: windowarrangementcuj.TestParam{
+					BrowserType: browser.TypeLacros,
+				},
+				Fixture:           "loggedInToCUJUserLacros",
+				ExtraSoftwareDeps: []string{"android_vm", "lacros"},
 			},
 		},
 	})
