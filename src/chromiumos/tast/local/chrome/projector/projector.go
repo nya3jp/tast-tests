@@ -7,7 +7,6 @@ package projector
 
 import (
 	"context"
-	"time"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
@@ -62,9 +61,8 @@ func VerifyNewScreencastButtonDisabled(ctx context.Context, tconn *chrome.TestCo
 	ui := uiauto.New(tconn)
 	newScreencastButton := nodewith.Name("New screencast").Role(role.Button)
 	errorTooltip := nodewith.Name(tooltipText).Role(role.GenericContainer)
-	refreshApp := RefreshApp(ctx, tconn)
 	if err := uiauto.Combine("verify the new screencast button is disabled",
-		ui.WithInterval(5*time.Second).RetryUntil(refreshApp, ui.Exists(newScreencastButton)),
+		ui.WaitUntilExists(newScreencastButton),
 		// The new screencast button exists but it is not enabled.
 		ui.Gone(newScreencastButton.Focusable()),
 		ui.Exists(errorTooltip),
