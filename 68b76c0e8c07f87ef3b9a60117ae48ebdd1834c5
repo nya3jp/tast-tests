@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "54159827_a06b8184",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-09-01T20:20:35Z",
+      "side": 1,
+      "message": "I have two minor comments. Please take a look. Also, please run tast unit tests: fast_build.sh -T\n\nThen, add this line to the commit log\nTEST\u003dtast unit tests passed.\n\nThanks.\n",
+      "revId": "68b76c0e8c07f87ef3b9a60117ae48ebdd1834c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c876cb8_4da60cba",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/cellular/assert_cellular_data.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-09-01T20:20:35Z",
+      "side": 1,
+      "message": "Do you need this line?",
+      "revId": "68b76c0e8c07f87ef3b9a60117ae48ebdd1834c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7282795d_54785872",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/cellular/iperf.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-09-01T20:20:35Z",
+      "side": 1,
+      "message": "Do you need this line?",
+      "revId": "68b76c0e8c07f87ef3b9a60117ae48ebdd1834c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
