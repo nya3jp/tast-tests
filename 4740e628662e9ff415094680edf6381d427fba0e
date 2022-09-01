@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa63852c_830665f3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-09-01T12:57:00Z",
+      "side": 1,
+      "message": "CR+2 to avoid cross time zone iteration.\nCould you address my comment below before submitting?",
+      "revId": "4740e628662e9ff415094680edf6381d427fba0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "171a91d6_5a175279",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/unicorn_extensions.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-09-01T12:57:00Z",
+      "side": 1,
+      "message": "we often don\u0027t have getter prefix in the name.\n\nbootPref()",
+      "revId": "4740e628662e9ff415094680edf6381d427fba0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b1807df_d21eee73",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/unicorn_extensions.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-09-01T12:57:00Z",
+      "side": 1,
+      "message": "nit: maybe tconn for consistency across tast repository. Ditto for below.",
+      "range": {
+        "startLine": 46,
+        "startChar": 38,
+        "endLine": 46,
+        "endChar": 39
+      },
+      "revId": "4740e628662e9ff415094680edf6381d427fba0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "151f17b7_3357c7ac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/unicorn_extensions.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-09-01T12:57:00Z",
+      "side": 1,
+      "message": "nit: could you use browser.Type for more clarity?",
+      "range": {
+        "startLine": 72,
+        "startChar": 82,
+        "endLine": 72,
+        "endChar": 95
+      },
+      "revId": "4740e628662e9ff415094680edf6381d427fba0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
