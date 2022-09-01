@@ -99,8 +99,10 @@ func RestartChromeForTesting(ctx context.Context, cfg *config.Config, extArgs, l
 				"*auto_enrollment_controller*=1"}, ","))
 	}
 
-	if cfg.LoginMode() != config.GAIALogin && cfg.EnrollMode() != config.GAIAEnroll {
-		args = append(args, "--disable-gaia-services")
+	if cfg.EnrollMode() != config.GAIAZTEEnroll {
+		if cfg.LoginMode() != config.GAIALogin && cfg.EnrollMode() != config.GAIAEnroll {
+			args = append(args, "--disable-gaia-services")
+		}
 	}
 
 	// Enable verbose logging on gaia_auth_fetcher to help debug some login failures. See crbug.com/1166530
