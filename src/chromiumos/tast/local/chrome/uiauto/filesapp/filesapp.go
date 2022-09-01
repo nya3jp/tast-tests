@@ -72,7 +72,7 @@ func WindowFinder(appID string) *nodewith.Finder {
 		return nodewith.NameStartingWith("Files").Role(role.Window).ClassName("BrowserFrame")
 	}
 	if appID == vars.FilePickerPseudoAppID {
-		return nodewith.NameStartingWith("Select a file to open").Role(role.Window).ClassName("ExtensionViewViews")
+		return nodewith.Name("Select a file to open").Role(role.Window).ClassName("WebDialogView")
 	}
 	return nodewith.NameStartingWith("Files").Role(role.Window).ClassName("RootView")
 }
