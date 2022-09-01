@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "549307fd_5589571c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-09-01T23:17:22Z",
+      "side": 1,
+      "message": "lgtm with nit",
+      "revId": "687a1e014fde2000d3ea67a0e93dcb1facf29148",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe503601_f07f9cb1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/smart_selection_chrome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-09-01T23:17:22Z",
+      "side": 1,
+      "message": "nit: This should be:\n\t\tif err :\u003d ui.WithTimeout(3 * time.Second).WithInterval(100 * time.Millisecond).WaitUntilExists(mapOption)(ctx); err !\u003d nil {",
+      "range": {
+        "startLine": 146,
+        "startChar": 0,
+        "endLine": 147,
+        "endChar": 17
+      },
+      "revId": "687a1e014fde2000d3ea67a0e93dcb1facf29148",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
