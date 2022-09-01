@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b1c2368_f246b8e5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1357438
+      },
+      "writtenOn": "2022-09-01T12:39:14Z",
+      "side": 1,
+      "message": "I added a description of these changes to the doc: \nhttps://docs.google.com/document/d/1MH0ZB62DRfebN3ZCIyCdxeeN0F2U0Rfc0UEGore_GGU/edit#heading\u003dh.ik8jy9ec780g\nThanks for the help! \u003d)",
+      "revId": "53551ac559b794854fdaad84e96eb7a05313c3bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
