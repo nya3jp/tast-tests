@@ -13,6 +13,7 @@ import (
 
 	"chromiumos/tast/common/servo"
 	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/firmware"
 	"chromiumos/tast/remote/firmware/fixture"
@@ -49,7 +50,7 @@ func init() {
 		Fixture:      fixture.NormalMode,
 		ServiceDeps:  []string{"tast.cros.firmware.UtilsService"},
 		HardwareDeps: hwdep.D(hwdep.ChromeEC(), hwdep.Battery()),
-		Timeout:      20 * time.Minute,
+		Timeout:      30 * time.Minute,
 		Params: []testing.Param{{
 			Name:              "chromeslate",
 			ExtraHardwareDeps: hwdep.D(hwdep.FormFactor(hwdep.Chromeslate)),
@@ -86,7 +87,7 @@ func init() {
 func ECWakeOnCharge(ctx context.Context, s *testing.State) {
 	// getChargerPollOptions sets the time to retry the GetChargerAttached command.
 	getChargerPollOptions := testing.PollOptions{
-		Timeout:  30 * time.Second,
+		Timeout:  1 * time.Minute,
 		Interval: 1 * time.Second,
 	}
 
@@ -191,6 +192,10 @@ func ECWakeOnCharge(ctx context.Context, s *testing.State) {
 				if err := openCCD(ctx); err != nil {
 					return err
 				}
+				// Sleep briefly to ensure that CCD has fully opened.
+				if err := testing.Sleep(ctx, 1*time.Second); err != nil {
+					return errors.Wrap(err, "failed to sleep")
+				}
 				// For debugging purposes, log the ccd state again for reference.
 				if checkedInfo.hasCCD {
 					valAfterOpenCCD, err := h.Servo.GetString(ctx, servo.GSCCCDLevel)
@@ -199,11 +204,6 @@ func ECWakeOnCharge(ctx context.Context, s *testing.State) {
 					}
 					s.Logf("CCD state: %s", valAfterOpenCCD)
 				}
-			}
-
-			// Sleep briefly to ensure that CCD has fully opened.
-			if err := testing.Sleep(ctx, 1*time.Second); err != nil {
-				return errors.Wrap(err, "failed to sleep")
 			}
 
 			// Verify EC console is responsive.
@@ -255,41 +255,39 @@ func ECWakeOnCharge(ctx context.Context, s *testing.State) {
 		return nil
 	}
 
-	// To prevent leaving DUT in an offline state, open lid and perform a cold reset at the end of test.
+	// To prevent leaving DUT in an offline state, open lid or perform a cold reset at the end of test.
 	cleanupCtx := ctx
-	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Minute)
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Minute)
 	defer cancel()
 
 	args := s.Param().(*testArgsForECWakeOnCharge)
 	defer func(ctx context.Context, args *testArgsForECWakeOnCharge) {
-		if args.hasLid {
+		switch args.hasLid {
+		case true:
 			if err := h.Servo.OpenLid(ctx); err != nil {
 				s.Fatal("Failed to set lid state: ", err)
 			}
-			s.Log("Waiting for S0 powerstate")
-			if err := h.WaitForPowerStates(ctx, firmware.PowerStateInterval, 1*time.Minute, "S0"); err != nil {
-				s.Fatal("Failed to wait for S0 powerstate: ", err)
+		case false:
+			s.Log("Cold resetting DUT at the end of test")
+			if err := h.Servo.SetPowerState(ctx, servo.PowerStateReset); err != nil {
+				s.Fatal("Failed to cold reset DUT at the end of test: ", err)
 			}
-			if err := testing.Poll(ctx, func(ctx context.Context) error {
-				lidState, err := h.Servo.LidOpenState(ctx)
-				if err != nil {
-					return errors.Wrap(err, "failed to check the lid state")
-				}
-				if lidState != string(servo.LidOpenYes) {
-					return errors.Errorf("expected: %q got: %q", servo.LidOpenYes, lidState)
-				}
-				return nil
-			}, &testing.PollOptions{Timeout: 1 * time.Minute, Interval: 1 * time.Second}); err != nil {
-				s.Fatal("Failed to check for lid: ", err)
-			}
-		}
-		s.Log("Cold resetting DUT at the end of test")
-		if err := h.Servo.SetPowerState(ctx, servo.PowerStateReset); err != nil {
-			s.Fatal("Failed to cold reset DUT at the end of test: ", err)
 		}
 		s.Log("Waiting for reconnection to DUT")
 		if err := h.WaitConnect(ctx); err != nil {
 			s.Fatal("Unable to reconnect to DUT: ", err)
+		}
+		// Check for tablet mode angles, and if they are different
+		// than the default values, restore them to default.
+		cmd := firmware.NewECTool(s.DUT(), firmware.ECToolNameMain)
+		tabletModeAngleInit, hysInit, err := cmd.SaveTabletModeAngles(ctx)
+		if err != nil {
+			s.Fatal("Failed to read tablet mode angles: ", err)
+		} else if tabletModeAngleInit != "180" || hysInit != "20" {
+			s.Log("Restoring ectool tablet mode angles to the default settings")
+			if err := cmd.ForceTabletModeAngle(ctx, "180", "20"); err != nil {
+				s.Fatal("Failed to restore tablet mode angles to the default settings: ", err)
+			}
 		}
 	}(cleanupCtx, args)
 
@@ -375,80 +373,15 @@ func ECWakeOnCharge(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to sleep: ", err)
 		}
 
-		if (tc.lidOpen == "yes" || checkedInfo.hasMicroOrC2D2) && h.Config.Hibernate {
-			// Hibernate DUT
-			if tc.lidOpen == "no" {
-				// In cases where lid is closed, and there's a servo_micro or C2D2 connection,
-				// use console command to hibernate. Using keyboard presses might trigger DUT
-				// to wake, as well as interrupt lid emulation.
-				s.Log("Putting DUT in hibernation with EC console command")
-				if err := h.Servo.ECHibernate(ctx, servo.UseConsole); err != nil {
-					s.Fatal("Failed to hibernate: ", err)
-				}
-			} else {
-				if args.formFactor == "convertible" || args.formFactor == "detachable" {
-					// For convertibles and detachables, if DUT was left in tablet mode by previous tests,
-					// key presses may be inactive. Always turn tablet mode off before using keyboard to hibernate.
-					s.Logf("DUT is a %s. Checking tablet mode status before using keyboard to hibernate", args.formFactor)
-					if inTabletMode, err := checkTabletModeStatus(ctx, h); err != nil {
-						s.Fatal("Unable to check DUT's tablet mode status: ", err)
-					} else if inTabletMode {
-						s.Log("DUT is in tablet mode. Attempting to turn tablet mode off")
-						out, err := h.Servo.CheckAndRunTabletModeCommand(ctx, args.tabletModeOff)
-						if err != nil {
-							if args.formFactor == "convertible" {
-								s.Logf("Failed to run %s: %v. Attempting to set rotation angles with ectool instead", args.tabletModeOff, err)
-								cmd := firmware.NewECTool(s.DUT(), firmware.ECToolNameMain)
-								tabletModeAngleInit, hysInit, err := saveAnglesAndForceClamshell(ctx, cmd)
-								if err != nil {
-									s.Fatal("Failed to force DUT into clamshell mode: ", err)
-								}
-								defer func(cmd *firmware.ECTool) {
-									s.Logf("Restoring DUT's tablet mode angles to the original settings: lid_angle=%s, hys=%s", tabletModeAngleInit, hysInit)
-									if err := cmd.ForceTabletModeAngle(ctx, tabletModeAngleInit, hysInit); err != nil {
-										s.Fatal("Failed to restore tablet mode angle to the initial angles: ", err)
-									}
-								}(cmd)
-							} else {
-								s.Fatalf("Failed to run %s: %v", args.tabletModeOff, err)
-							}
-						}
-						s.Logf("Tablet mode status: %s", out)
-						// Allow some delay to ensure that DUT has completely transitioned out of tablet mode.
-						if err := testing.Sleep(ctx, 3*time.Second); err != nil {
-							s.Fatal("Failed to sleep: ", err)
-						}
-					}
-				}
-				s.Log("Putting DUT in hibernation with key presses")
-				if err := h.Servo.ECHibernate(ctx, servo.UseKeyboard); err != nil {
-					s.Logf("Failed to hibernate: %v. Retry with using EC console command to hibernate", err)
-					if err := h.Servo.ECHibernate(ctx, servo.UseConsole); err != nil {
-						s.Fatal("Failed to hibernate: ", err)
-					}
-				}
+		if h.Config.Hibernate {
+			if err := hibernateDUT(ctx, h, s.DUT(), checkedInfo.hasMicroOrC2D2, tc.lidOpen, args.formFactor, args.tabletModeOff); err != nil {
+				s.Fatal("Failed to hibernate DUT: ", err)
 			}
-			h.DisconnectDUT(ctx)
 			deviceHasHibernated = true
-		} else if tc.lidOpen == "no" {
-			// Note: when lid is closed without log-in, power state transitions from S0 to S5,
-			// and then eventually to G3, which would be equivalent to long pressing on power
-			// to put DUT asleep.
-			s.Log("Waiting for power state to become G3 or S5")
-			if err := h.WaitForPowerStates(ctx, firmware.PowerStateInterval, 1*time.Minute, "G3", "S5"); err != nil {
-				// On Hayato/Asurada, sometimes EC becomes unresponsive when lid is closed. But, for this test's
-				// purposes, we're more concerned about whether DUT awakes when AC is applied.
-				if strings.Contains(err.Error(), "No data was sent from the pty") ||
-					strings.Contains(err.Error(), "Timed out waiting for interfaces to become available") {
-					s.Log("DUT appears to be completely offline. We're okay as long as reconnecting power resumes it")
-				} else {
-					s.Fatal("Failed to get powerstates at G3 or S5: ", err)
-				}
-			}
 		} else {
 			// For DUTs that do not support the ec hibernation command, we would use
 			// a long power button press instead.
-			s.Log("Long pressing on power key to put DUT into deep sleep mode")
+			s.Logf("Long pressing on power key for %s to put DUT into deep sleep mode", h.Config.HoldPwrButtonPowerOff)
 			if err := h.Servo.KeypressWithDuration(ctx, servo.PowerKey, servo.Dur(h.Config.HoldPwrButtonPowerOff)); err != nil {
 				s.Fatal("Failed to set a KeypressControl by servo: ", err)
 			}
@@ -528,21 +461,6 @@ func checkTabletModeStatus(ctx context.Context, h *firmware.Helper) (bool, error
 	return res.TabletModeEnabled, nil
 }
 
-// saveAnglesAndForceClamshell saves the initial tablet mode angles from ectool, and then
-// force sets them into the clamshell mode angles.
-func saveAnglesAndForceClamshell(ctx context.Context, cmd *firmware.ECTool) (string, string, error) {
-	// Save initial tablet mode angle settings to restore at the end of test.
-	tabletModeAngleInit, hysInit, err := cmd.SaveTabletModeAngles(ctx)
-	if err != nil {
-		return "", "", errors.Wrap(err, "failed to save initial tablet mode angles")
-	}
-	// Setting tabletModeAngle to 360 will force DUT into clamshell mode.
-	if err := cmd.ForceTabletModeAngle(ctx, "360", "0"); err != nil {
-		return "", "", errors.Wrap(err, "failed to set clamshell mode angles")
-	}
-	return tabletModeAngleInit, hysInit, nil
-}
-
 func bootDUTIntoS0(ctx context.Context, h *firmware.Helper) error {
 	// Check if DUT is at G3. If DUT is in G3, use power button to boot it into S0.
 	testing.ContextLog(ctx, "Checking if power states at G3 or S5")
@@ -580,5 +498,82 @@ func checkInformation(ctx context.Context, h *firmware.Helper, info *debugInform
 	}
 	testing.ContextLogf(ctx, "DUT has micro or c2d2: %t, has CCD: %t, servo type: %s, servo connection type: %s",
 		info.hasMicroOrC2D2, info.hasCCD, info.servoType, info.servoConnectionType)
+	return nil
+}
+
+func ensureClamshellMode(ctx context.Context, h *firmware.Helper, dut *dut.DUT, formFactor, tabletModeOff string) error {
+	inTabletMode, err := checkTabletModeStatus(ctx, h)
+	if err != nil {
+		return errors.Wrap(err, "unable to check for DUT's tablet mode status")
+	}
+	if inTabletMode {
+		testing.ContextLog(ctx, "DUT is in tablet mode. Attempting to turn tablet mode off")
+		out, err := h.Servo.CheckAndRunTabletModeCommand(ctx, tabletModeOff)
+		if err != nil {
+			if formFactor == "convertible" {
+				testing.ContextLogf(ctx, "Failed to run %s: %v. Attempting to set rotation angles with ectool instead", tabletModeOff, err)
+				cmd := firmware.NewECTool(dut, firmware.ECToolNameMain)
+				// Setting tabletModeAngle to 360 will force DUT into clamshell mode.
+				if err := cmd.ForceTabletModeAngle(ctx, "360", "0"); err != nil {
+					return errors.Wrap(err, "failed to set DUT in clamshell mode")
+				}
+				return nil
+			}
+			return errors.Wrapf(err, "failed to run %s", tabletModeOff)
+		}
+		// Allow some delay to ensure that DUT has completely transitioned out of tablet mode.
+		if err := testing.Sleep(ctx, 3*time.Second); err != nil {
+			return errors.Wrap(err, "failed to sleep")
+		}
+		testing.ContextLogf(ctx, "Tablet mode status: %s", out)
+	}
+	return nil
+}
+
+func hibernateDUT(ctx context.Context, h *firmware.Helper, dut *dut.DUT, hasMicroOrC2D2 bool, lidOpen, formFactor, tabletModeOff string) error {
+	switch lidOpen {
+	case "no":
+		if hasMicroOrC2D2 {
+			// In cases where lid is closed, and there's a servo_micro or C2D2 connection,
+			// use console command to hibernate. Using keyboard presses might trigger DUT
+			// to wake, and interrupt lid emulation.
+			testing.ContextLog(ctx, "Putting DUT in hibernation with EC console command")
+			if err := h.Servo.ECHibernate(ctx, servo.UseConsole); err != nil {
+				return errors.Wrap(err, "failed to hibernate")
+			}
+			return nil
+		}
+		// Note: when lid is closed without log-in, power state transitions from S0 to S5,
+		// and then eventually to G3, which would be equivalent to long pressing on power
+		// to put DUT asleep.
+		testing.ContextLog(ctx, "Waiting for power state to become G3 or S5")
+		if err := h.WaitForPowerStates(ctx, firmware.PowerStateInterval, 1*time.Minute, "G3", "S5"); err != nil {
+			// Sometimes EC becomes unresponsive when lid is closed. But, for this test's
+			// purposes, we're more concerned about whether DUT wakes when AC is re-attached.
+			if strings.Contains(err.Error(), "No data was sent from the pty") ||
+				strings.Contains(err.Error(), "Timed out waiting for interfaces to become available") {
+				testing.ContextLog(ctx, "DUT appears to be completely offline. We're okay as long as reconnecting power resumes it")
+			} else {
+				return errors.Wrap(err, "failed to get powerstates at G3 or S5")
+			}
+		}
+	case "yes":
+		if formFactor == "convertible" || formFactor == "detachable" {
+			// For convertibles and detachables, if DUT was left in tablet mode by previous tests,
+			// key presses may be inactive. Always turn tablet mode off before using keyboard to hibernate.
+			testing.ContextLogf(ctx, "DUT is a %s. Checking tablet mode status before using keyboard to hibernate", formFactor)
+			if err := ensureClamshellMode(ctx, h, dut, formFactor, tabletModeOff); err != nil {
+				return err
+			}
+		}
+		testing.ContextLog(ctx, "Putting DUT in hibernation with key presses")
+		if err := h.Servo.ECHibernate(ctx, servo.UseKeyboard); err != nil {
+			testing.ContextLogf(ctx, "Failed to hibernate: %v. Retry with using EC console command to hibernate", err)
+			if err := h.Servo.ECHibernate(ctx, servo.UseConsole); err != nil {
+				return errors.Wrap(err, "failed to hibernate")
+			}
+		}
+		h.DisconnectDUT(ctx)
+	}
 	return nil
 }

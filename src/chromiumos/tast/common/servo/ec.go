@@ -222,8 +222,15 @@ func (s *Servo) ECHibernate(ctx context.Context, option HibernationOpt) error {
 			return err
 		}
 	case "console":
-		if err := s.RunECCommand(ctx, "hibernate"); err != nil {
+		reHibernate := `\[\S+((?i)[^\n\r]*(?i)hibernating|hibernate)]`
+		out, err := s.RunECCommandGetOutput(ctx, "hibernate", []string{reHibernate})
+		if err != nil {
 			return errors.Wrap(err, "failed to run EC command: hibernate")
+		}
+		if out != nil {
+			testing.ContextLogf(ctx, "Found message: %q", out[0][0])
+		} else {
+			testing.ContextLog(ctx, "Did not find message about DUT hibernating")
 		}
 	}
 
@@ -328,7 +335,7 @@ func (s *Servo) CheckUnresponsiveEC(ctx context.Context) error {
 			return errors.Wrap(err, "unexpected EC error")
 		}
 		return nil
-	}, &testing.PollOptions{Interval: 1 * time.Second, Timeout: 20 * time.Second})
+	}, &testing.PollOptions{Interval: 1 * time.Second, Timeout: 1 * time.Minute})
 }
 
 // CheckAndRunTabletModeCommand checks if relevant EC commands exist and use them for setting tablet mode.
