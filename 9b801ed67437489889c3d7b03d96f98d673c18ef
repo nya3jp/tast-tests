@@ -22,6 +22,30 @@
       },
       "revId": "9b801ed67437489889c3d7b03d96f98d673c18ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9601a5e4_cdb7707b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/epic.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2022-09-01T18:22:22Z",
+      "side": 1,
+      "message": "\"clamshell_mode_default\" test runs the common test cases for \"appcompat_default\" suite (Reference:https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go;l\u003d70).\n\n\"clamshell_mode_top_apps\" test runs the specific test cases for \"appcompat_top_apps\" suite. (Reference: https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go;l\u003d115)",
+      "parentUuid": "f37cd7d0_e2c8b1ee",
+      "range": {
+        "startLine": 40,
+        "startChar": 10,
+        "endLine": 40,
+        "endChar": 32
+      },
+      "revId": "9b801ed67437489889c3d7b03d96f98d673c18ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
