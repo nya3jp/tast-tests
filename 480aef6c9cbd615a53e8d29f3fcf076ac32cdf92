@@ -1,0 +1,297 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9266a9da_3ce8eea8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2022-09-01T21:32:09Z",
+      "side": 1,
+      "message": "This commit message isn\u0027t accurate -- this isn\u0027t adding the tast test; it\u0027s adding a helper program for it instead. Could you please rework this commit message to be a bit more specific?",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 0
+      },
+      "revId": "480aef6c9cbd615a53e8d29f3fcf076ac32cdf92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "03db8d3b_66b5af00",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2022-09-01T21:32:09Z",
+      "side": 1,
+      "message": "Overall, great work on this, Kendrake! As I mentioned in my comments and as we discussed the docs on some of the libraries you\u0027re using here are not the most comprehensive, so it\u0027s awesome that you got this working, and the method you mentioned about looking at unit tests for usage examples is a great way to approach this!\n\nI left a bunch of comments, but by and large they\u0027re stylistic issues. ",
+      "revId": "480aef6c9cbd615a53e8d29f3fcf076ac32cdf92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9b1b6c4_196b7e95",
+        "filename": "helpers/local/featured.FeatureLibrary.check.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2022-09-01T21:32:09Z",
+      "side": 1,
+      "message": "nit: Style for struct fields is to be `snake_lower_case`, so for example `feature_name`",
+      "range": {
+        "startLine": 28,
+        "startChar": 14,
+        "endLine": 28,
+        "endChar": 25
+      },
+      "revId": "480aef6c9cbd615a53e8d29f3fcf076ac32cdf92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cbd9f957_8416651f",
+        "filename": "helpers/local/featured.FeatureLibrary.check.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2022-09-01T21:32:09Z",
+      "side": 1,
+      "message": "nit: should make this `const TestFeatureState\u0026` to minimize unnecessary copies.",
+      "range": {
+        "startLine": 35,
+        "startChar": 25,
+        "endLine": 35,
+        "endChar": 41
+      },
+      "revId": "480aef6c9cbd615a53e8d29f3fcf076ac32cdf92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "28d6fc35_9219c205",
+        "filename": "helpers/local/featured.FeatureLibrary.check.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2022-09-01T21:32:09Z",
+      "side": 1,
+      "message": "This function overall is really great! The base::JSON and base::Value docs are not the most clear, and it\u0027s awesome that you were able to look at examples and put this together!",
+      "range": {
+        "startLine": 35,
+        "startChar": 5,
+        "endLine": 35,
+        "endChar": 24
+      },
+      "revId": "480aef6c9cbd615a53e8d29f3fcf076ac32cdf92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "417a32e0_dc75b7ec",
+        "filename": "helpers/local/featured.FeatureLibrary.check.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2022-09-01T21:32:09Z",
+      "side": 1,
+      "message": "nit: It\u0027s generally preferable to declare variables closer to where they are used, rather than at the start of the function. (So, in this case, that would be line 57 before the `base::JSONWriter::Write` call.)\n\nIt *used* to be the case (IIRC, in C89) that you had to declare all variables at the start of the function, but modern compilers are smarter and do not require this.",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 24
+      },
+      "revId": "480aef6c9cbd615a53e8d29f3fcf076ac32cdf92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd114917_f5a56bf8",
+        "filename": "helpers/local/featured.FeatureLibrary.check.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2022-09-01T21:32:09Z",
+      "side": 1,
+      "message": "Similarly, `params` can be declared right before the for loop on line 49.",
+      "range": {
+        "startLine": 38,
+        "startChar": 20,
+        "endLine": 38,
+        "endChar": 26
+      },
+      "revId": "480aef6c9cbd615a53e8d29f3fcf076ac32cdf92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4ad8ae0_f2b19915",
+        "filename": "helpers/local/featured.FeatureLibrary.check.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2022-09-01T21:32:09Z",
+      "side": 1,
+      "message": "nit: `name` will be the same thing as ParamsCallbackFeatureName, and enabled will be the same thing as `entry.enabled`. So, instead of having separate fields in the struct for `ParamsCallbackFeatureName` and `ParamsCallbackEnabledResult`, could we just put the `result` in the struct and copy all of the data out in this for loop here?",
+      "range": {
+        "startLine": 48,
+        "startChar": 20,
+        "endLine": 48,
+        "endChar": 31
+      },
+      "revId": "480aef6c9cbd615a53e8d29f3fcf076ac32cdf92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "312a7e90_fb06b0f3",
+        "filename": "helpers/local/featured.FeatureLibrary.check.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2022-09-01T21:32:09Z",
+      "side": 1,
+      "message": "Just to elaborate a bit more on my suggestion above, this could change to:\n\n```\nfeature-\u003eparams_callback_enable_result \u003d result\n```\n\nand get rid of the for loop entirely.",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 3
+      },
+      "revId": "480aef6c9cbd615a53e8d29f3fcf076ac32cdf92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f3b8b56_0fdace4e",
+        "filename": "helpers/local/featured.FeatureLibrary.check.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2022-09-01T21:32:09Z",
+      "side": 1,
+      "message": "the `kFoo` style should only be used for constants, not parameters. Parameters should be `lower_snake_case`. In this case, you could call it `feature` or `feature_to_check`, or something like that.",
+      "range": {
+        "startLine": 79,
+        "startChar": 47,
+        "endLine": 79,
+        "endChar": 67
+      },
+      "revId": "480aef6c9cbd615a53e8d29f3fcf076ac32cdf92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b52b7a27_adcafc65",
+        "filename": "helpers/local/featured.FeatureLibrary.check.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2022-09-01T21:32:09Z",
+      "side": 1,
+      "message": "nit: `feature` is a bit of a confusing name for this parameter -- it\u0027s easy to mix it up for the *input* feature. Can you please chose a more descriptive name?",
+      "range": {
+        "startLine": 81,
+        "startChar": 40,
+        "endLine": 81,
+        "endChar": 47
+      },
+      "revId": "480aef6c9cbd615a53e8d29f3fcf076ac32cdf92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9a59b07_367f7640",
+        "filename": "helpers/local/featured.FeatureLibrary.check.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2022-09-01T21:32:09Z",
+      "side": 1,
+      "message": "Same naming comments as for `IsFeatureEnabled`",
+      "range": {
+        "startLine": 92,
+        "startChar": 50,
+        "endLine": 94,
+        "endChar": 51
+      },
+      "revId": "480aef6c9cbd615a53e8d29f3fcf076ac32cdf92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50e50468_d014c14a",
+        "filename": "helpers/local/featured.FeatureLibrary.check.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2022-09-01T21:32:09Z",
+      "side": 1,
+      "message": "These two should also be named with `lower_snake_case` -- so for example `enabled_feature`.",
+      "range": {
+        "startLine": 122,
+        "startChar": 19,
+        "endLine": 122,
+        "endChar": 33
+      },
+      "revId": "480aef6c9cbd615a53e8d29f3fcf076ac32cdf92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
