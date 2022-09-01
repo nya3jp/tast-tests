@@ -16,6 +16,98 @@
       "message": "Please review, thanks!",
       "revId": "91a14d3676ffc5ce4534810284188bbc87fd232e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f23d4074_55af234e",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/common_metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-09-01T20:27:10Z",
+      "side": 1,
+      "message": "`Other`",
+      "range": {
+        "startLine": 54,
+        "startChar": 5,
+        "endLine": 54,
+        "endChar": 11
+      },
+      "revId": "91a14d3676ffc5ce4534810284188bbc87fd232e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0fd816d_5fd526a2",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/common_metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-09-01T20:27:10Z",
+      "side": 1,
+      "message": "`Other`",
+      "range": {
+        "startLine": 95,
+        "startChar": 5,
+        "endLine": 95,
+        "endChar": 11
+      },
+      "revId": "91a14d3676ffc5ce4534810284188bbc87fd232e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3711ba3c_e813a2a7",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/cuj_metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-09-01T20:27:10Z",
+      "side": 1,
+      "message": "nit: I think this could potentially be interpreted like describing a cinnamon stick, candy cane, whipped cream, mini-marshmallows, and chocolate shavings as augmentations to hot chocolate. None of those things include hot chocolate, but you use them to augment the hot chocolate, like this:\n`append(cujrecorder.AshCommonMetricConfigs(), cujrecorder.CUJAshCommonMetricConfigs()...)`\nI would be more explicit that `CUJAshCommonMetricConfigs` automatically retrieves the metrics of `AshCommonMetricConfigs` and adds more.",
+      "range": {
+        "startLine": 10,
+        "startChar": 57,
+        "endLine": 12,
+        "endChar": 33
+      },
+      "revId": "91a14d3676ffc5ce4534810284188bbc87fd232e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f54cf35_10a802fc",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/cuj_metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-09-01T20:27:10Z",
+      "side": 1,
+      "message": "nit: This is slightly error prone because someone might eventually add a `LacrosCommonMetricConfigs` function in common_metrics.go and they might not even know about cuj_metrics.go.",
+      "range": {
+        "startLine": 72,
+        "startChar": 5,
+        "endLine": 72,
+        "endChar": 33
+      },
+      "revId": "91a14d3676ffc5ce4534810284188bbc87fd232e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
