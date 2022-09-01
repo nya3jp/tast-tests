@@ -120,7 +120,7 @@ func GetBrowserStartTime(ctx context.Context, tconn *chrome.TestConn,
 		}
 		// For lacros-Chrome, we will close all existing tabs but leave a new tab to keep the Chrome
 		// process alive.
-		closeTabsFunc = browser.ReplaceCurrentTabsWithSingleNewTab
+		closeTabsFunc = browser.ReplaceAllTabsWithSingleNewTab
 	}
 
 	// Depending on the settings, Chrome might open all left-off pages automatically from last session.
