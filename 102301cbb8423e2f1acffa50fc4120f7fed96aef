@@ -16,6 +16,23 @@
       "message": "Please have a look.\n\nBTW, why is it that policy tests set the lacros mode via policy? Was that just a convenient way or is it essential?",
       "revId": "102301cbb8423e2f1acffa50fc4120f7fed96aef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a06f91c_83bdd04d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-09-01T07:21:18Z",
+      "side": 1,
+      "message": "From the DLP package, I think this will break a few tests, like src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard_mixed_type_browsers.go that needs both browsers.\nCan you reach out to the dlp team so they can create their own fixture that still enables both browsers, before your change lands?",
+      "revId": "102301cbb8423e2f1acffa50fc4120f7fed96aef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
