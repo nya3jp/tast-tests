@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2509cf7e_f88ab2ea",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-09-01T23:34:23Z",
+      "side": 1,
+      "message": "LGTM from tast-owners, please wait for area LGTM from zhangwenyu@",
+      "revId": "98b4f04fc754b7fe62afc3ca8b7b595862fde00b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "70a8ccab_d117a3ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/verify_system_info_and_app_and_metrics_checkbox_state.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-09-01T23:34:23Z",
+      "side": 1,
+      "message": "nit/optional: might be worth setting up a PageObject style interface which abstracts these away? Similar to `filesapp` and `scanapp`. Totally out of scope to the CL so feel free to ignore, in fact I\u0027ll leave this as resolved 😊",
+      "range": {
+        "startLine": 62,
+        "startChar": 1,
+        "endLine": 68,
+        "endChar": 2
+      },
+      "revId": "98b4f04fc754b7fe62afc3ca8b7b595862fde00b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
