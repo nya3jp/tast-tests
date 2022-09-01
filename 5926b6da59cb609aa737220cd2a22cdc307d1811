@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc480c80_857540e7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1175129
+      },
+      "writtenOn": "2022-09-01T09:43:07Z",
+      "side": 1,
+      "message": "Just came back from vacation!\n\nCL:3780976 added src/chromiumos/tast/local/bundles/cros/network/proxy_retain.go\n\nCan we in any way reduce duplication of \"interacting with proxy UI\" and \"verify if proxy is applied\" code between those two?",
+      "revId": "5926b6da59cb609aa737220cd2a22cdc307d1811",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
