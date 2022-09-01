@@ -26,6 +26,13 @@ func init() {
 		SoftwareDeps: []string{"reboot", "tpm"},
 		Attr:         []string{"group:hwsec_destructive_func"},
 		Timeout:      5 * time.Minute,
+		Params: []testing.Param{{
+			Name: "old_mount_api",
+			Val:  &hwsec.CryptohomeMountAPIParam{MountAPI: hwsec.OldCryptohomeMountAPI},
+		}, {
+			Name: "new_mount_api",
+			Val:  &hwsec.CryptohomeMountAPIParam{MountAPI: hwsec.NewCryptohomeMountAPI},
+		}},
 	})
 }
 
@@ -38,6 +45,7 @@ func VerifyUnrecoverableVaultBehaviour(ctx context.Context, s *testing.State) {
 	}
 
 	utility := helper.CryptohomeClient()
+	utility.SetMountAPIParam(s.Param().(*hwsec.CryptohomeMountAPIParam))
 
 	// Resets the TPM states before running the tests.
 	if err := helper.EnsureTPMIsReset(ctx); err != nil {
