@@ -30,6 +30,7 @@ type bootModeTestParams struct {
 	resetType           firmware.ResetType
 	checkBootFromMain   bool
 	checkToNoGoodScreen bool
+	checkToBrokenScreen bool
 }
 
 func init() {
@@ -160,6 +161,17 @@ func init() {
 			},
 			ExtraAttr: []string{"firmware_unstable", "firmware_usb"},
 			Timeout:   15 * time.Minute,
+		}, {
+			Name:    "broken_screen",
+			Fixture: fixture.NormalMode,
+			Val: bootModeTestParams{
+				bootToMode:          fwCommon.BootModeRecovery,
+				checkToBrokenScreen: true,
+				resetType:           firmware.ColdReset,
+				resetAfterBoot:      true,
+			},
+			ExtraAttr: []string{"firmware_unstable", "firmware_usb"},
+			Timeout:   60 * time.Minute,
 		}},
 	})
 }
@@ -213,7 +225,7 @@ func BootMode(ctx context.Context, s *testing.State) {
 			s.Fatalf("Failed to set up %s mode: %s", pv.BootMode, err)
 		}
 	}
-
+	var usbdev string
 	if tc.bootToMode != "" {
 		// Switch to tc.bootToMode.
 		// RebootToMode ensures that the DUT winds up in the expected boot mode afterward.
@@ -229,11 +241,43 @@ func BootMode(ctx context.Context, s *testing.State) {
 			opts = append(opts, firmware.CheckToNoGoodScreen)
 		}
 
+		if tc.checkToBrokenScreen {
+			// Call h.CheckUSBOnServoHost before booting from usb device again
+			// in order to get the usbdev and pass it to CheckBrokenScreen.
+			usbdev, err = h.CheckUSBOnServoHost(ctx)
+			if err != nil {
+				s.Fatal("Failed to check the usb key: ", err)
+			}
+			s.Log("USB path: ", usbdev)
+		}
+
 		s.Logf("Transitioning to %s mode with options %+v", tc.bootToMode, opts)
 		if err = ms.RebootToMode(ctx, tc.bootToMode, opts...); err != nil {
-			s.Fatalf("Error during transition from %s to %s: %+v", pv.BootMode, tc.bootToMode, err)
+			s.Fatalf("Error during transition from %s to %s: %v", pv.BootMode, tc.bootToMode, err)
 		}
 		s.Log("Transition completed successfully")
+	}
+
+	if tc.checkToBrokenScreen {
+		// Verify DUT reaches 'Broken Screen' with broken_screen test.
+		if err := h.CheckBrokenScreen(ctx, usbdev); err != nil {
+			s.Fatal("Failed to check Broken Screen: ", err)
+		}
+		s.Log("Disabling USB connection to DUT")
+		if err := h.Servo.SetUSBMuxState(ctx, servo.USBMuxOff); err != nil {
+			s.Fatal("Failed to disable 'usb3_mux_sel:dut_sees_usbkey': ", err)
+		}
+		s.Log("Rebooting the DUT with hard reset")
+		if err := h.Servo.SetPowerState(ctx, servo.PowerStateReset); err != nil {
+			s.Fatal("Failed to reboot the DUT with hard reset: ", err)
+		}
+		s.Log("Waiting for connection to DUT")
+		reconnectTimeout := 8 * time.Minute
+		connectCtx, cancel := context.WithTimeout(ctx, reconnectTimeout)
+		defer cancel()
+		if err := h.WaitConnect(connectCtx); err != nil {
+			s.Fatal("Failed to connect to DUT: ", err)
+		}
 	}
 
 	// Reset the DUT, if the test case calls for it.
