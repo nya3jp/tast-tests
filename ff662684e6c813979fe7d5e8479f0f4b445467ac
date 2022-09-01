@@ -16,6 +16,24 @@
       "message": "Suggest change: \"docking: Add wwcb/dock5\n\nAdd wwcb/dock5 to test wired/WiFi network switching\nwhen the ethernet is connected or disconnected via a dock.\"\n\nto:\n\"Add wwcb/dock5: test wired/WiFi network switching via a dock\"\n\n",
       "revId": "ff662684e6c813979fe7d5e8479f0f4b445467ac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c48d66b_c96e54b4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1545162
+      },
+      "writtenOn": "2022-09-01T02:37:23Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "d73fe88c_c6df5e1c",
+      "revId": "ff662684e6c813979fe7d5e8479f0f4b445467ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

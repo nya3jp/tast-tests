@@ -22,6 +22,30 @@
       },
       "revId": "7563a05dc0fd88de376ff923aface600150946db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b06b10cc_964df3c0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/dock5_network_switch.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1545162
+      },
+      "writtenOn": "2022-09-01T02:37:23Z",
+      "side": 1,
+      "message": "I think this was already fixed it in patchset 12.",
+      "parentUuid": "a0708197_1e813cd8",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 63
+      },
+      "revId": "7563a05dc0fd88de376ff923aface600150946db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
