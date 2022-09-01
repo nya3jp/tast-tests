@@ -16,6 +16,97 @@
       "message": "Thanks for the review.",
       "revId": "f2d6ee1d3f813acd870c314533cc5ac903f85e5c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ad04eb6_24e77239",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2022-09-01T23:23:51Z",
+      "side": 1,
+      "message": "Thanks for putting this together!",
+      "revId": "f2d6ee1d3f813acd870c314533cc5ac903f85e5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "154d79a4_742eab07",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/expectations/expectations.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2022-09-01T23:23:51Z",
+      "side": 1,
+      "message": "Just to check, why do we need this? Is it because we have a hierarchy of having YAML files per test [directory], and then relatively short content in the expectations YAMLs themselves? If so, I\u0027m a bit hesitant to generate that many expectations files --- it seems easier (both on the file system and to parse) to have a bit larger granularity, with longer expectations files.\n\nIn particular, perhaps we have model/board/chipset YAMLs, containing the expectations for the corresponding failing/flaky tests. I recognize the issue boils down to how we slice, basically, and I think that having tests as the lowest level might actually be a bit easier to manage. Thoughts?",
+      "revId": "f2d6ee1d3f813acd870c314533cc5ac903f85e5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48db3d2b_1b28c16b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/expectations/expectations.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2022-09-01T23:23:51Z",
+      "side": 1,
+      "message": "nit: some output on the path searched?",
+      "range": {
+        "startLine": 148,
+        "startChar": 73,
+        "endLine": 148,
+        "endChar": 77
+      },
+      "revId": "f2d6ee1d3f813acd870c314533cc5ac903f85e5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80b1ee48_30fbd310",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/expectations/expectations.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2022-09-01T23:23:51Z",
+      "side": 1,
+      "message": "Hm, when would we need to express passing as an expectation? Would it work as well to remove the state? Otherwise, are we expecting to enumerate expectations YAMLs for every test...?",
+      "revId": "f2d6ee1d3f813acd870c314533cc5ac903f85e5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ef3a106_024b26c1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/expectations/expectations.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2022-09-01T23:23:51Z",
+      "side": 1,
+      "message": "One thing Ilja mentioned (he probably has more comments) is that we might want to cover an `ExpectFlake` state.",
+      "revId": "f2d6ee1d3f813acd870c314533cc5ac903f85e5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
