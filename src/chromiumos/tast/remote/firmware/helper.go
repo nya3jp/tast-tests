@@ -1133,3 +1133,38 @@ func (h *Helper) WaitDUTConnectDuringBootFromUSB(ctx context.Context, usbdev str
 	}
 	return nil
 }
+
+// CheckBrokenScreen checks if the DUT reaches Broken Screen.
+func (h *Helper) CheckBrokenScreen(ctx context.Context, usbdev string) error {
+	testing.ContextLog(ctx, "Setting crossystem recovery_request to 1")
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		if err := h.DUT.Conn().CommandContext(ctx, "crossystem", "recovery_request=1").Run(); err != nil {
+			return errors.Wrap(err, "failed to set crossystem recovery_request")
+		}
+
+		recoveryRequest, err := h.Reporter.CrossystemParam(ctx, reporters.CrossystemParamRecoveryRequest)
+		if err != nil {
+			return errors.Wrap(err, "failed to get crossystem recovery_request")
+		} else if recoveryRequest != "1" {
+			return errors.Errorf("expected crossystem recovery_request to be 1, got %s", recoveryRequest)
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 20 * time.Second}); err != nil {
+		return errors.Wrap(err, "failed to set the crossystem recovery_request to 1")
+	}
+
+	testing.ContextLog(ctx, "Rebooting the DUT with warm reset")
+	if err := h.Servo.SetPowerState(ctx, servo.PowerStateWarmReset); err != nil {
+		return errors.Wrap(err, "failed to reboot the DUT with warm reset")
+	}
+	testing.ContextLogf(ctx, "Sleeping %s (FirmwareScreen)", h.Config.FirmwareScreen)
+	if err := testing.Sleep(ctx, h.Config.FirmwareScreen); err != nil {
+		return errors.Wrapf(err, "sleeping for %s (FirmwareScreen) to wait for firmware screen", h.Config.FirmwareScreen)
+	}
+
+	testing.ContextLog(ctx, "Checking if it reaches Broken Screen")
+	if err := h.WaitDUTConnectDuringBootFromUSB(ctx, usbdev, false); err != nil {
+		return errors.Wrap(err, "failed to reach Broken Screen")
+	}
+	return nil
+}
