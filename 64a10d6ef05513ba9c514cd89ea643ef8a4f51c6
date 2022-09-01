@@ -108,6 +108,47 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "de10de40_b7f4672e",
+        "filename": "src/chromiumos/tast/common/fixture/policyutil.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-09-01T15:10:17Z",
+      "side": 1,
+      "message": "I also propose we migrate everything at once. I strongly doubt this will introduce flakiness. The CQ should already catch any other issues.\n\nWe could also mark all current critical tests as informational for ~2 days to confirm that the change did not break anything and revert that after.",
+      "parentUuid": "dbc46afd_d47ee5a3",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 42
+      },
+      "revId": "64a10d6ef05513ba9c514cd89ea643ef8a4f51c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1c7a144_3c9003d8",
+        "filename": "src/chromiumos/tast/common/policy/fakedms/fakedms.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-09-01T15:10:17Z",
+      "side": 1,
+      "message": "You have 2 implementations of each fixture, but share the implementation of FakeDMS. If you *really* want to have both implementations in parallel do the reverse. Have 2 implementations of FakeDMS, but reuse the fixture as much as possible.",
+      "revId": "64a10d6ef05513ba9c514cd89ea643ef8a4f51c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ab642367_f29cd687",
         "filename": "src/chromiumos/tast/common/policy/fakedms/fakedms.go",
         "patchSetId": 10
@@ -165,6 +206,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a65c518d_8955de86",
+        "filename": "src/chromiumos/tast/common/policy/gen/policy_tast_struct_creator.py",
+        "patchSetId": 10
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-09-01T15:10:17Z",
+      "side": 1,
+      "message": "nit: proto_setter might be more appropriate",
+      "range": {
+        "startLine": 80,
+        "startChar": 6,
+        "endLine": 80,
+        "endChar": 17
+      },
+      "revId": "64a10d6ef05513ba9c514cd89ea643ef8a4f51c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0ed81e81_3a892f7a",
         "filename": "src/chromiumos/tast/common/policy/policy_blob.go",
         "patchSetId": 10
@@ -181,6 +245,87 @@
         "startChar": 1,
         "endLine": 29,
         "endChar": 11
+      },
+      "revId": "64a10d6ef05513ba9c514cd89ea643ef8a4f51c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7909ddee_ddec216a",
+        "filename": "src/chromiumos/tast/common/policy/policy_blob.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-09-01T15:10:17Z",
+      "side": 1,
+      "message": "I would just rename it to PublicAccountPolicies.\n\nThe shorter name will be very confusing.",
+      "parentUuid": "0ed81e81_3a892f7a",
+      "range": {
+        "startLine": 29,
+        "startChar": 1,
+        "endLine": 29,
+        "endChar": 11
+      },
+      "revId": "64a10d6ef05513ba9c514cd89ea643ef8a4f51c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f7e05ba_ec016fea",
+        "filename": "src/chromiumos/tast/common/policy/proto_helper.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-09-01T15:10:17Z",
+      "side": 1,
+      "message": "nit: maybe defs_helper would be more appropriate.",
+      "revId": "64a10d6ef05513ba9c514cd89ea643ef8a4f51c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "868f54cc_45ee1ad5",
+        "filename": "src/chromiumos/tast/common/policy/proto_helper.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-09-01T15:10:17Z",
+      "side": 1,
+      "message": "nit: Add more docs, this code is not self-explanatory.",
+      "revId": "64a10d6ef05513ba9c514cd89ea643ef8a4f51c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab44c74d_ae7d70ab",
+        "filename": "src/chromiumos/tast/common/policy/proto_helper.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-09-01T15:10:17Z",
+      "side": 1,
+      "message": "Since we are in the same package, this does not need to be exported. Same below.",
+      "range": {
+        "startLine": 34,
+        "startChar": 5,
+        "endLine": 34,
+        "endChar": 28
       },
       "revId": "64a10d6ef05513ba9c514cd89ea643ef8a4f51c6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
