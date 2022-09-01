@@ -162,7 +162,7 @@ func shutdownWithLidClose(ctx context.Context, h *firmware.Helper, delay time.Du
 
 	// This usually takes longer than usual to reach G3/S5, so increase timeout.
 	testing.ContextLog(ctx, "Check for G3 or S5 powerstate")
-	err := h.WaitForPowerStates(ctx, firmware.PowerStateInterval, 2*time.Minute, "G3", "S5")
+	err := h.WaitForPowerStates(ctx, firmware.PowerStateInterval, 2*firmware.PowerStateTimeout, "G3", "S5")
 	if err != nil {
 		return errors.Wrap(err, "failed to get G3 or S5 powerstate")
 	}
@@ -190,7 +190,7 @@ func bootWithLidOpen(ctx context.Context, h *firmware.Helper, delay time.Duratio
 	}
 
 	testing.ContextLog(ctx, "Check for G3 or S5 powerstate")
-	if err := h.WaitForPowerStates(ctx, firmware.PowerStateInterval, firmware.PowerStateTimeout, "G3", "S5"); err != nil {
+	if err := h.WaitForPowerStates(ctx, firmware.PowerStateInterval, 2*firmware.PowerStateTimeout, "G3", "S5"); err != nil {
 		return errors.Wrap(err, "failed to get G3 or S5 powerstate")
 	}
 
@@ -227,17 +227,19 @@ func checkKeyPressesWithLidClosed(ctx context.Context, h *firmware.Helper) (rete
 	device := res.Path
 	testing.ContextLogf(ctx, "Keyboard found at %v, checking for unexpected keypresses", device)
 
-	testing.ContextLog(ctx, "Stopping powerd")
-	if err := h.DUT.Conn().CommandContext(ctx, "stop", "powerd").Run(ssh.DumpLogOnError); err != nil {
-		return errors.Wrap(err, "failed to stop powerd")
+	powerdCmd := "mkdir -p /tmp/power_manager && " +
+		"echo 0 > /tmp/power_manager/use_lid && " +
+		"mount --bind /tmp/power_manager /var/lib/power_manager && " +
+		"restart powerd"
+	if err := h.DUT.Conn().CommandContext(ctx, "sh", "-c", powerdCmd).Run(ssh.DumpLogOnError); err != nil {
+		return errors.Wrap(err, "failed to set use_lid")
 	}
-	defer func() {
-		testing.ContextLog(ctx, "Restarting powerd")
-		if err := h.DUT.Conn().CommandContext(ctx, "start", "powerd").Run(ssh.DumpLogOnError); err != nil {
-			// Named return handles this error.
-			reterr = errors.Wrap(err, "failed to restart powerd")
+	defer func(ctx context.Context) {
+		restartPowerd := "umount /var/lib/power_manager && restart powerd"
+		if err := h.DUT.Conn().CommandContext(ctx, "sh", "-c", restartPowerd).Run(ssh.DumpLogOnError); err != nil {
+			reterr = errors.Wrap(err, "failed to restore powerd settings")
 		}
-	}()
+	}(ctx)
 
 	cmd := h.DUT.Conn().CommandContext(ctx, "evtest", device)
 	stdout, err := cmd.StdoutPipe()
