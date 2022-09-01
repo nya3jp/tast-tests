@@ -22,6 +22,30 @@
       },
       "revId": "b82708ac0f1dfa0641e0491cd60840ee76dd9380",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4d473e3_08913cee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/kiosk_ephemeral_mount.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-09-01T16:49:25Z",
+      "side": 1,
+      "message": "Yes they are the same call and I can, but something else to consider is that when it errors out, line number gets displayed with it - so I don\u0027t think its much of a concern there -- what do you think?",
+      "parentUuid": "30999c71_76f6f6ba",
+      "range": {
+        "startLine": 106,
+        "startChar": 18,
+        "endLine": 106,
+        "endChar": 28
+      },
+      "revId": "b82708ac0f1dfa0641e0491cd60840ee76dd9380",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
