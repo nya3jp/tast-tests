@@ -10,6 +10,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
 )
 
 var (
@@ -33,6 +34,9 @@ var (
 
 	// NetworkDetailedViewMobileDataToggle is the switch to enable/disable Mobile data within network quick settings
 	NetworkDetailedViewMobileDataToggle = nodewith.Name("Mobile data").HasClass("TrayToggleButton").Ancestor(NetworkDetailedView)
+
+	// AddCellularButton is the finder for adding new SIM profiles in Quick Settings.
+	AddCellularButton = nodewith.Name("Add new cellular network").Role(role.Button)
 )
 
 // NavigateToNetworkDetailedView will navigate to the detailed Network view
