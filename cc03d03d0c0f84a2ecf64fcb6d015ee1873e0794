@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d57d9ecf_14d8ff74",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2022-09-02T21:28:36Z",
+      "side": 1,
+      "message": "MkDir is necessary to run ObeysRollback tast test.",
+      "parentUuid": "b8ec462c_59d057c9",
+      "range": {
+        "startLine": 12,
+        "startChar": 4,
+        "endLine": 12,
+        "endChar": 15
+      },
+      "revId": "cc03d03d0c0f84a2ecf64fcb6d015ee1873e0794",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "168ea08a_c7f9b59b",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-09-02T12:38:26Z",
       "side": 1,
       "message": "I think you should add a local test here, that you did. Like fastbuild for example.",
+      "range": {
+        "startLine": 13,
+        "startChar": 5,
+        "endLine": 13,
+        "endChar": 14
+      },
+      "revId": "cc03d03d0c0f84a2ecf64fcb6d015ee1873e0794",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4ef444d_5fc251fb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2022-09-02T21:28:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "168ea08a_c7f9b59b",
       "range": {
         "startLine": 13,
         "startChar": 5,
