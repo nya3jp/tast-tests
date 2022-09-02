@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32da08d0_6a1f4c54",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/common_metrics.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1497117
+      },
+      "writtenOn": "2022-09-02T17:56:19Z",
+      "side": 0,
+      "message": "Things are changing fast. I just got a request from Art to collect this for gaming test. Please leave this. I also added it into go/spera-metrics.",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 105
+      },
+      "revId": "746095464392f102e97f863a953a74c90dfbf3f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f3c3d90_2d4316f1",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/common_metrics.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1497117
+      },
+      "writtenOn": "2022-09-02T17:56:19Z",
+      "side": 0,
+      "message": "spera CUJs use this metric to derive Cras.UnderrunsPerDevicePerMinute. Please leave it in the common_metrics.go. I just added it into the go/sperat-metrics.",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 82
+      },
+      "revId": "746095464392f102e97f863a953a74c90dfbf3f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5056bc06_de054063",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/common_metrics.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1497117
+      },
+      "writtenOn": "2022-09-02T17:56:19Z",
+      "side": 0,
+      "message": "Same as the Ash one. Please leave this.",
+      "range": {
+        "startLine": 111,
+        "startChar": 0,
+        "endLine": 111,
+        "endChar": 115
+      },
+      "revId": "746095464392f102e97f863a953a74c90dfbf3f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
