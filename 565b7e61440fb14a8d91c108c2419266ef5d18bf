@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f396514_ff24bd9d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-09-02T18:06:34Z",
+      "side": 1,
+      "message": "Please ask a domain expert to review and give you +2. thanks.",
+      "revId": "565b7e61440fb14a8d91c108c2419266ef5d18bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
