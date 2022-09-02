@@ -112,6 +112,7 @@ func RemoveSuggestedSearchResult(ctx context.Context, s *testing.State) {
 		s.Fatalf("Failed to close the window(%s): %v", activeWindow.Name, err)
 	}
 
+	// SetUpLauncherTest opens the launcher.
 	cleanup, err := launcher.SetUpLauncherTest(ctx, tconn, tabletMode, false /*stabilizeAppCount*/)
 	if err != nil {
 		s.Fatal("Failed to set up launcher test case: ", err)
@@ -126,7 +127,6 @@ func RemoveSuggestedSearchResult(ctx context.Context, s *testing.State) {
 	// associated "Google Search" result.
 	ui := uiauto.New(tconn)
 	if err := uiauto.Combine("search launcher",
-		launcher.Open(tconn),
 		launcher.Search(tconn, kb, testQuery),
 		ui.WaitUntilExists(resultFinder),
 	)(ctx); err != nil {
