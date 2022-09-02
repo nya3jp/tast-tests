@@ -27,9 +27,9 @@ type GoogleMeetConfig struct {
 }
 
 // GetGoogleMeetConfig returns an object that contains the Google meet configuration.
-func GetGoogleMeetConfig(ctx context.Context, s *testing.ServiceState, roomSize int) (GoogleMeetConfig, error) {
-	// If roomSize is NoRoom, an empty object is returned.
-	if roomSize == NoRoom {
+func GetGoogleMeetConfig(ctx context.Context, s *testing.ServiceState, roomType RoomType) (GoogleMeetConfig, error) {
+	// If roomType is NoRoom, an empty object is returned.
+	if roomType == NoRoom {
 		return GoogleMeetConfig{}, nil
 	}
 	const (
@@ -63,7 +63,10 @@ func GetGoogleMeetConfig(ctx context.Context, s *testing.ServiceState, roomSize 
 	}
 
 	var urlVar, urlSeondaryVar string
-	switch roomSize {
+	switch roomType {
+	case TwoRoomSize:
+		urlVar = "spera.meet_url_two"
+		urlSeondaryVar = "spera.meet_url_two_secondary"
 	case SmallRoomSize:
 		urlVar = "spera.meet_url_small"
 		urlSeondaryVar = "spera.meet_url_small_secondary"
@@ -73,9 +76,6 @@ func GetGoogleMeetConfig(ctx context.Context, s *testing.ServiceState, roomSize 
 	case ClassRoomSize:
 		urlVar = "spera.meet_url_class"
 		urlSeondaryVar = "spera.meet_url_class_secondary"
-	default:
-		urlVar = "spera.meet_url_two"
-		urlSeondaryVar = "spera.meet_url_two_secondary"
 	}
 	varToURLs := func(varName, generalVarName string) []string {
 		var urls []string
