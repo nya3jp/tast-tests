@@ -22,6 +22,30 @@
       },
       "revId": "cbd15cf245559aa51bc81f744918e30d21153a88",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca216988_9e6a5b6e",
+        "filename": "src/chromiumos/tast/local/vdi/fixtures/vdi_mgs.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-09-02T14:07:36Z",
+      "side": 0,
+      "message": "In case we have a problem with mgs then other tests will manifest problems more precisely. Mgs is used here as a setup we don\u0027t really manipulate its state. \nWe also don\u0027t apply policies in the individual tests hence the dump here is not that useful.",
+      "parentUuid": "5719849f_01a8d2d9",
+      "range": {
+        "startLine": 330,
+        "startChar": 0,
+        "endLine": 333,
+        "endChar": 0
+      },
+      "revId": "cbd15cf245559aa51bc81f744918e30d21153a88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
