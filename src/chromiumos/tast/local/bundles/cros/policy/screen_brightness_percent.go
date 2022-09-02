@@ -31,7 +31,8 @@ func init() {
 			"chromeos-commercial-remote-management@google.com",
 		},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
-		SoftwareDeps: []string{"chrome"},
+		// VMs don't support brightness control.
+		SoftwareDeps: []string{"chrome", "no_qemu"},
 		Attr:         []string{"group:mainline"},
 		Fixture:      fixture.ChromePolicyLoggedIn,
 		SearchFlags: []*testing.StringPair{
