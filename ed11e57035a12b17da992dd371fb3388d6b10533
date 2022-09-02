@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c74d738_44900fca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-09-02T23:44:03Z",
+      "side": 1,
+      "message": "Agreed, especially methods that currently parse stuff via regexps need to be switched over; but it\u0027s non-urgent.\n\nI didn\u0027t get the comment about kiosk tests. Do you mean I need to update some new tests in this CL?",
+      "parentUuid": "c97d8cc5_03091ba8",
+      "revId": "ed11e57035a12b17da992dd371fb3388d6b10533",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a3466591_d9b22500",
