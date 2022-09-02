@@ -12,7 +12,6 @@ import (
 	"math"
 	"net/http"
 	"net/url"
-	"strconv"
 	"strings"
 	"time"
 
@@ -134,8 +133,9 @@ func preTest(ctx context.Context) {
 }
 
 func (s *ConferenceService) RunGoogleMeetScenario(ctx context.Context, req *pb.MeetScenarioRequest) (*empty.Empty, error) {
-	roomSize := int(req.RoomSize)
-	meet, err := conference.GetGoogleMeetConfig(ctx, s.s, roomSize)
+	roomType := conference.RoomType(req.RoomType)
+	isNoRoom := roomType == conference.NoRoom
+	meet, err := conference.GetGoogleMeetConfig(ctx, s.s, roomType)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to get meet config")
 	}
@@ -224,7 +224,7 @@ func (s *ConferenceService) RunGoogleMeetScenario(ctx context.Context, req *pb.M
 				// Nothing to clean up at the end of Google Meet conference.
 				return nil
 			}
-			if roomSize != conference.NoRoom && roomURL == "" {
+			if !isNoRoom && roomURL == "" {
 				return "", nil, errors.New("the conference invite link is empty")
 			}
 			return roomURL, cleanup, nil
@@ -232,18 +232,18 @@ func (s *ConferenceService) RunGoogleMeetScenario(ctx context.Context, req *pb.M
 
 		// Creates a Google Meet conference instance which implements conference.Conference methods
 		// which provides conference operations.
-		gmcli := conference.NewGoogleMeetConference(cr, tconn, kb, uiHandler, tabletMode, req.ExtendedDisplay, bt, int(req.RoomSize), meet.Account, meet.Password, outDir)
+		gmcli := conference.NewGoogleMeetConference(cr, tconn, kb, uiHandler, tabletMode, req.ExtendedDisplay, bt, roomType, meet.Account, meet.Password, outDir)
 		defer gmcli.End(cleanupCtx)
 		// Shorten context a bit to allow for cleanup if Run fails.
 		ctx, cancel := ctxutil.Shorten(ctx, 3*time.Second)
 		defer cancel()
 
-		if err := conference.Run(ctx, cr, gmcli, prepare, req.Tier, outDir, tabletMode, bt, roomSize); err != nil {
+		if err := conference.Run(ctx, cr, gmcli, prepare, req.Tier, outDir, tabletMode, bt, roomType); err != nil {
 			return errors.Wrap(err, "failed to run Google Meet conference")
 		}
 		return nil
 	}
-	if roomSize == conference.NoRoom {
+	if isNoRoom {
 		// Without Google Meet, there is no need to assign a meet url.
 		if err := run(ctx, ""); err != nil {
 			testing.ContextLogf(ctx, "Failed to run conference: %+v", err)
@@ -279,7 +279,7 @@ func (s *ConferenceService) RunGoogleMeetScenario(ctx context.Context, req *pb.M
 			if ok {
 				botsDuration = deadline.Add(90 * time.Second).Sub(time.Now())
 			}
-			numBots := roomSize - 1 // one of participants is the test itself
+			numBots := conference.GoogleMeetRoomParticipants[roomType] - 1 // one of participants is the test itself
 			_, numFailures, err := bondConn.AddBots(ctx, bondMeetingCode, numBots, botsDuration)
 			defer bondConn.RemoveAllBots(ctx, bondMeetingCode)
 			if err != nil || numFailures > 0 {
@@ -356,7 +356,7 @@ func (s *ConferenceService) RunZoomScenario(ctx context.Context, req *pb.MeetSce
 		RoomID string `json:"room_id"`
 		Err    string `json:"err"`
 	}
-
+	roomType := conference.RoomType(req.RoomType)
 	runConferenceAPI := func(ctx context.Context, sessionToken, host, api, parameterString string) (*responseData, error) {
 		reqURL := fmt.Sprintf("%s/api/room/zoom/%s%s&iszoomcase=true", host, api, parameterString)
 		testing.ContextLog(ctx, "Requesting a zoom room from the zoom bot server with request URL: ", reqURL)
@@ -462,7 +462,7 @@ func (s *ConferenceService) RunZoomScenario(ctx context.Context, req *pb.MeetSce
 	}
 	// Creates a Zoom conference instance which implements conference.Conference methods.
 	// which provides conference operations.
-	zmcli := conference.NewZoomConference(cr, tconn, kb, uiHandler, tabletMode, int(req.RoomSize), account, outDir)
+	zmcli := conference.NewZoomConference(cr, tconn, kb, uiHandler, tabletMode, roomType, account, outDir)
 	defer zmcli.End(cleanupCtx)
 	// Sends a http request that ask for creating a Zoom conferece with
 	// specified participants and also return clean up method for closing
@@ -475,7 +475,7 @@ func (s *ConferenceService) RunZoomScenario(ctx context.Context, req *pb.MeetSce
 	// the conference which opened by "createaio".
 	prepare := func(ctx context.Context) (string, conference.Cleanup, error) {
 		var data *responseData
-		roomSize := strconv.FormatInt(req.RoomSize-1, 10)
+		roomSize := conference.ZoomRoomParticipants[roomType] - 1
 		// Create a Zoom conference on remote server dynamically and get conference room
 		// link. Retry three times until it successfully gets a conference room link.
 		const retryCount = 3
@@ -484,8 +484,8 @@ func (s *ConferenceService) RunZoomScenario(ctx context.Context, req *pb.MeetSce
 			// Use the remaining time of the case to set the existence time of the room.
 			deadline, _ := ctx.Deadline()
 			maxDuration := math.Ceil(deadline.Sub(time.Now()).Minutes())
-			parameterString := fmt.Sprintf("?count=%s&max_duration=%v", roomSize, maxDuration)
-			testing.ContextLogf(ctx, "Create a %s-person zoom room that can exist for %v minutes", roomSize, maxDuration)
+			parameterString := fmt.Sprintf("?count=%d&max_duration=%v", roomSize, maxDuration)
+			testing.ContextLogf(ctx, "Create a %d-person zoom room that can exist for %v minutes", roomSize, maxDuration)
 			if data, err = runConferenceAPI(ctx, sessionToken, host, "createaio", parameterString); err == nil {
 				break
 			}
@@ -512,7 +512,7 @@ func (s *ConferenceService) RunZoomScenario(ctx context.Context, req *pb.MeetSce
 	// Shorten context a bit to allow for cleanup if Run fails.
 	ctx, cancel := ctxutil.Shorten(ctx, 3*time.Second)
 	defer cancel()
-	if err := conference.Run(ctx, cr, zmcli, prepare, req.Tier, outDir, tabletMode, bt, int(req.RoomSize)); err != nil {
+	if err := conference.Run(ctx, cr, zmcli, prepare, req.Tier, outDir, tabletMode, bt, roomType); err != nil {
 		return nil, errors.Wrap(err, "failed to run Zoom conference")
 	}
 

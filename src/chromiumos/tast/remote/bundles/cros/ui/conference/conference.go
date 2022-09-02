@@ -2,6 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
+// Package conference contains remote Tast tests which conference related.
 package conference
 
 import (
@@ -18,16 +19,6 @@ import (
 const (
 	// CPUIdleTimeout is used to wait for the cpu idle.
 	CPUIdleTimeout = 2 * time.Minute
-	// NoRoom means not joining google meet when running the test.
-	NoRoom = 0
-	// TwoRoomSize creates a conference room with 2 participants.
-	TwoRoomSize = 2
-	// SmallRoomSize creates a conference room with 5 participants.
-	SmallRoomSize = 5
-	// LargeRoomSize creates a conference room with 16 participants.
-	LargeRoomSize = 16
-	// ClassRoomSize creates a conference room with 38 participants.
-	ClassRoomSize = 38
 	// CameraVideo is a video file used as a fake camera for conference testing.
 	// Video shows a real person talking to the camera. Using this video as the camera input,
 	// the effect of switching the background can be observed on the conference page.
@@ -38,8 +29,8 @@ const (
 
 // TestParameters defines the test parameters for conference.
 type TestParameters struct {
-	// Size is the conf room size.
-	Size int
+	// RoomType defines the conference room type.
+	RoomType RoomType
 	// Tier defines the test tier: basic, plus, or premium.
 	Tier string
 	// IsLacros defines the browser type is Lacros or not.

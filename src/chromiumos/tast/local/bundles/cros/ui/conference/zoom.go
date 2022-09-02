@@ -1,4 +1,4 @@
-// Copyright 2021 The Chromium OS Authors. All rights reserved.
+// Copyright 2021 The ChromiumOS Authors.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -37,7 +37,7 @@ type ZoomConference struct {
 	uiHandler                  cuj.UIActionHandler
 	displayAllParticipantsTime time.Duration
 	tabletMode                 bool
-	roomSize                   int
+	roomType                   RoomType
 	networkLostCount           int
 	account                    string
 	outDir                     string
@@ -144,14 +144,15 @@ func (conf *ZoomConference) Join(ctx context.Context, room string, toBlur bool) 
 	// Checks the number of participants in the conference that
 	// for different tiers testing would ask for different size
 	checkParticipantsNum := func(ctx context.Context) error {
-		roomSize := conf.roomSize
+		expectedParticipants := ZoomRoomParticipants[conf.roomType]
 		participants, err := conf.GetParticipants(ctx)
 		if err != nil {
 			return errors.Wrap(err, "failed to get the the number of meeting participants")
 		}
-		if int(participants) != roomSize {
-			return errors.Wrapf(err, "meeting participant number is %d but %d is expected", participants, roomSize)
+		if int(participants) != expectedParticipants {
+			return errors.Wrapf(err, "meeting participant number is %d but %d is expected", participants, expectedParticipants)
 		}
+		testing.ContextLog(ctx, "Current participants: ", participants)
 		return nil
 	}
 	joinAudio := func(ctx context.Context) error {
@@ -559,7 +560,7 @@ func (conf *ZoomConference) DisplayAllParticipantsTime() time.Duration {
 
 // NewZoomConference creates Zoom conference room instance which implements Conference interface.
 func NewZoomConference(cr *chrome.Chrome, tconn *chrome.TestConn, kb *input.KeyboardEventWriter,
-	uiHandler cuj.UIActionHandler, tabletMode bool, roomSize int, account, outDir string) *ZoomConference {
+	uiHandler cuj.UIActionHandler, tabletMode bool, roomType RoomType, account, outDir string) *ZoomConference {
 	ui := uiauto.New(tconn)
 	return &ZoomConference{
 		cr:         cr,
@@ -568,7 +569,7 @@ func NewZoomConference(cr *chrome.Chrome, tconn *chrome.TestConn, kb *input.Keyb
 		ui:         ui,
 		uiHandler:  uiHandler,
 		tabletMode: tabletMode,
-		roomSize:   roomSize,
+		roomType:   roomType,
 		account:    account,
 		outDir:     outDir,
 	}

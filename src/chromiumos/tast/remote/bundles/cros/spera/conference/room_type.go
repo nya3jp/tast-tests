@@ -1,0 +1,1 @@
+../../../../../local/bundles/cros/spera/conference/room_type.go

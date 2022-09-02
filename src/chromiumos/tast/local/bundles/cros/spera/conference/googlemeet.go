@@ -39,7 +39,7 @@ type GoogleMeetConference struct {
 	tabletMode                 bool
 	extendedDisplay            bool
 	bt                         browser.Type
-	roomSize                   int
+	roomType                   RoomType
 	networkLostCount           int
 	account                    string
 	password                   string
@@ -305,35 +305,34 @@ func (conf *GoogleMeetConference) Join(ctx context.Context, room string, toBlur 
 	// Checks the number of participants in the conference that
 	// for different tiers testing would ask for different size.
 	checkParticipantsNum := func(ctx context.Context) error {
-		// Check the number of participants following this logic:
-		// - Class size room: >= 38 participants
+		// Check number of participants following this logic:
+		// - Class size room: >= 49 participants
 		// - Large size room: 16 ~ 17 participants
-		// - Small size room: 5 ~ 6 participants
+		// - Small size room: 6 ~ 7 participants
 		// - One to one room: 2
-
-		roomSize := conf.roomSize
+		expectedParticipants := GoogleMeetRoomParticipants[conf.roomType]
 		participants, err := conf.GetParticipants(ctx)
 		if err != nil {
 			return errors.Wrap(err, "failed to get the the number of meeting participants")
 		}
 		if participants == 1 {
-			return ParticipantError(errors.Wrapf(err, "there are no other participants in the conference room %q; meeting participant number got %d; want %d", room, participants, roomSize))
+			return ParticipantError(errors.Wrapf(err, "there are no other participants in the conference room %q; meeting participant number got %d; want %d", room, participants, expectedParticipants))
 		}
-		switch roomSize {
+		switch conf.roomType {
 		case ClassRoomSize:
-			if participants < roomSize {
-				return ParticipantError(errors.Wrapf(err, "room url %q; meeting participant number got %d; want at least %d", room, participants, roomSize))
+			if participants < expectedParticipants {
+				return ParticipantError(errors.Wrapf(err, "room url %q; meeting participant number got %d; want at least %d", room, participants, expectedParticipants))
 			}
 		case SmallRoomSize, LargeRoomSize:
-			if participants != roomSize && participants != roomSize+1 {
-				return ParticipantError(errors.Wrapf(err, "room url %q; meeting participant number got %d; want %d ~ %d", room, participants, roomSize, roomSize+1))
+			if participants != expectedParticipants && participants != expectedParticipants+1 {
+				return ParticipantError(errors.Wrapf(err, "room url %q; meeting participant number got %d; want %d ~ %d", room, participants, expectedParticipants, expectedParticipants+1))
 			}
 		case TwoRoomSize:
-			if participants != roomSize {
-				return ParticipantError(errors.Wrapf(err, "room url %q; meeting participant number got %d; want %d", room, participants, roomSize))
+			if participants != expectedParticipants {
+				return ParticipantError(errors.Wrapf(err, "room url %q; meeting participant number got %d; want %d", room, participants, expectedParticipants))
 			}
 		}
-
+		testing.ContextLog(ctx, "Current participants: ", participants)
 		return nil
 	}
 
@@ -605,7 +604,7 @@ func (conf *GoogleMeetConference) changeLayout(mode string) action.Action {
 						return errors.Wrap(err, "failed to get stable grids")
 					}
 					// Check classrooms to expect grids to be more than 16 grids.
-					if conf.roomSize == ClassRoomSize && len(grids) <= 16 {
+					if conf.roomType == ClassRoomSize && len(grids) <= 16 {
 						return errors.Wrapf(err, "unexpected grids: got: %v; want more than 16 grids", len(grids))
 					}
 					return nil
@@ -741,7 +740,7 @@ func (conf *GoogleMeetConference) Presenting(ctx context.Context, application go
 	// shareScreen shares screen by "A Tab" and selects the tab which is going to present.
 	// If there is extended display, move conference to extended display.
 	shareScreen := func(ctx context.Context) error {
-		if conf.roomSize == NoRoom {
+		if conf.roomType == NoRoom {
 			// Share screen will automatically switch to the specified application tab.
 			// Without googlemeet, it must switch to slide tab before present slide.
 			// And present document doesn't need a switch because it is already on the document page.
@@ -788,7 +787,7 @@ func (conf *GoogleMeetConference) Presenting(ctx context.Context, application go
 	}
 
 	stopPresenting := func(ctx context.Context) error {
-		if conf.roomSize == NoRoom {
+		if conf.roomType == NoRoom {
 			return nil
 		}
 		// There are two "Stop presenting" buttons on the screen with the same ancestor, role and name that we can't use unique finder.
@@ -853,7 +852,7 @@ var _ Conference = (*GoogleMeetConference)(nil)
 
 // NewGoogleMeetConference creates Google Meet conference room instance which implements Conference interface.
 func NewGoogleMeetConference(cr *chrome.Chrome, tconn *chrome.TestConn, kb *input.KeyboardEventWriter, uiHandler cuj.UIActionHandler,
-	tabletMode, extendedDisplay bool, bt browser.Type, roomSize int, account, password, outDir string) *GoogleMeetConference {
+	tabletMode, extendedDisplay bool, bt browser.Type, roomType RoomType, account, password, outDir string) *GoogleMeetConference {
 	ui := uiauto.New(tconn)
 	return &GoogleMeetConference{
 		cr:              cr,
@@ -864,7 +863,7 @@ func NewGoogleMeetConference(cr *chrome.Chrome, tconn *chrome.TestConn, kb *inpu
 		tabletMode:      tabletMode,
 		extendedDisplay: extendedDisplay,
 		bt:              bt,
-		roomSize:        roomSize,
+		roomType:        roomType,
 		account:         account,
 		password:        password,
 		outDir:          outDir,
