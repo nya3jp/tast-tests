@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a32114e9_0646fabb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_provisioning.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-09-02T13:52:16Z",
+      "side": 1,
+      "message": "Real login is needed for successfully authenticating and using Play Store",
+      "parentUuid": "ef29b34c_498f9961",
+      "revId": "cf872e91fea195aeea4589d6d95d29f38c407e45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a23296fe_0b6f229a",
