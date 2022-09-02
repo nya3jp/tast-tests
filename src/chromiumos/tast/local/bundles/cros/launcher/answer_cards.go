@@ -74,6 +74,7 @@ func AnswerCards(ctx context.Context, s *testing.State) {
 	testCase := s.Param().(launcher.TestCase)
 	tabletMode := testCase.TabletMode
 
+	// SetUpLauncherTest opens the launcher.
 	cleanup, err := launcher.SetUpLauncherTest(ctx, tconn, tabletMode, false /*stabilizeAppCount*/)
 	if err != nil {
 		s.Fatal("Failed to set up launcher test case: ", err)
@@ -88,7 +89,7 @@ func AnswerCards(ctx context.Context, s *testing.State) {
 			validateAction: ui.WaitUntilExists(launcher.SearchResultListItemFinder.NameRegex(regexp.MustCompile("/.*/"))),
 		},
 		{
-			searchKeyword:  "hello in spanish",
+			searchKeyword:  "translate hello into spanish",
 			validateAction: ui.WaitUntilExists(launcher.SearchResultListItemFinder.NameContaining("Hola")),
 		},
 		{
@@ -118,13 +119,13 @@ func AnswerCards(ctx context.Context, s *testing.State) {
 			defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "ui_tree_"+string(subtest.searchKeyword))
 
 			if err := uiauto.Combine("search launcher",
-				launcher.Open(tconn),
 				launcher.Search(tconn, kb, subtest.searchKeyword),
 				subtest.validateAction,
-				launcher.CloseBubbleLauncher(tconn),
 			)(ctx); err != nil {
 				s.Fatal("Failed to search: ", err)
 			}
 		})
+		// Clear the input, even if the subtest failed.
+		kb.TypeKey(ctx, input.KEY_ESC)
 	}
 }

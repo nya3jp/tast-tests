@@ -72,6 +72,7 @@ func ExitSearchShowApps(ctx context.Context, s *testing.State) {
 	testCase := s.Param().(launcher.TestCase)
 	tabletMode := testCase.TabletMode
 
+	// Setting up a launcher test opens the launcher.
 	cleanup, err := launcher.SetUpLauncherTest(ctx, tconn, tabletMode, false /*stabilizeAppCount*/)
 	if err != nil {
 		s.Fatal("Failed to set up launcher test case: ", err)
@@ -104,7 +105,6 @@ func ExitSearchShowApps(ctx context.Context, s *testing.State) {
 			defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "ui_tree_"+subtest.name)
 
 			if err := uiauto.Combine("search launcher",
-				launcher.Open(tconn),
 				launcher.Search(tconn, kb, "test"),
 				subtest.exitSearchAction,
 				launcher.WaitForLauncherSearchExit(tconn, tabletMode),
