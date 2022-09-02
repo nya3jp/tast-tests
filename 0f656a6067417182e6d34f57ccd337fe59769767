@@ -22,6 +22,30 @@
       },
       "revId": "0f656a6067417182e6d34f57ccd337fe59769767",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3a301e6_8ae82b71",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/policy_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1313155
+      },
+      "writtenOn": "2022-09-02T16:43:27Z",
+      "side": 1,
+      "message": "Deleted 1 log statement.\nPut TODO around 3.\n\nThanks!",
+      "parentUuid": "37f5fdc0_0291a768",
+      "range": {
+        "startLine": 172,
+        "startChar": 1,
+        "endLine": 172,
+        "endChar": 19
+      },
+      "revId": "0f656a6067417182e6d34f57ccd337fe59769767",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
