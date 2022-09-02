@@ -16,6 +16,23 @@
       "message": "Hi Zork, this follow-up CL to crrev.com/c/3852701 is ready for review.",
       "revId": "59305dde2049d761de77649d0ced1f51a0ac55f4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16afebb0_94a12861",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/new_screencast_button_condition.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1000097
+      },
+      "writtenOn": "2022-09-02T19:07:13Z",
+      "side": 1,
+      "message": "Could you fold in crrev.com/c/3868688 and remove refreshApp?",
+      "revId": "59305dde2049d761de77649d0ced1f51a0ac55f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
