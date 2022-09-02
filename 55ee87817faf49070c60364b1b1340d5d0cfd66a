@@ -77,6 +77,46 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "54f48f20_20d67d97",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/hid_wake.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2022-09-02T22:36:21Z",
+      "side": 1,
+      "message": "nit: extra newline.",
+      "revId": "55ee87817faf49070c60364b1b1340d5d0cfd66a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7af07de_3b1d4022",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/hid_wake.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2022-09-02T22:36:21Z",
+      "side": 1,
+      "message": "Why 2 seconds?\n\nIt sounds like a polling construct would be more appropriate here (check out Type C or other tast tests for examples of this).",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 2
+      },
+      "revId": "55ee87817faf49070c60364b1b1340d5d0cfd66a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d407ced8_d68f0d61",
         "filename": "src/chromiumos/tast/remote/bundles/cros/typec/hid_wake.go",
         "patchSetId": 4
@@ -88,6 +128,52 @@
       "writtenOn": "2022-09-02T21:51:19Z",
       "side": 1,
       "message": "else is not needed because the test will end at s.Fatal.",
+      "revId": "55ee87817faf49070c60364b1b1340d5d0cfd66a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7cad4e1_b31828cf",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/hid_wake.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2022-09-02T22:36:21Z",
+      "side": 1,
+      "message": "I don\u0027t think we need to log this step. If there is an error, it will be surfaced by tast.",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 39
+      },
+      "revId": "55ee87817faf49070c60364b1b1340d5d0cfd66a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3088595_3e582133",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/hid_wake.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2022-09-02T22:36:21Z",
+      "side": 1,
+      "message": "Why 12? It would be good to make this configurable via a file constant.",
+      "range": {
+        "startLine": 77,
+        "startChar": 27,
+        "endLine": 77,
+        "endChar": 37
+      },
       "revId": "55ee87817faf49070c60364b1b1340d5d0cfd66a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -111,6 +197,98 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b9e8cb2e_0fbd54cb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/hid_wake.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2022-09-02T22:36:21Z",
+      "side": 1,
+      "message": "This seems brittle. What happens if something caused an aborted suspend?\n\nPolling is the more robust option.",
+      "range": {
+        "startLine": 86,
+        "startChar": 0,
+        "endLine": 86,
+        "endChar": 42
+      },
+      "revId": "55ee87817faf49070c60364b1b1340d5d0cfd66a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c9a1947_cf84ffe9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/hid_wake.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2022-09-02T22:36:21Z",
+      "side": 1,
+      "message": "Again, we don\u0027t need to log every step of the test. Let\u0027s reduce the verbosity (if there is a pertinent error, it will be surfaced).",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 95,
+        "endChar": 34
+      },
+      "revId": "55ee87817faf49070c60364b1b1340d5d0cfd66a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d8562ac_730bd2fb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/hid_wake.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2022-09-02T22:36:21Z",
+      "side": 1,
+      "message": "Does this not return an error?",
+      "range": {
+        "startLine": 96,
+        "startChar": 1,
+        "endLine": 96,
+        "endChar": 70
+      },
+      "revId": "55ee87817faf49070c60364b1b1340d5d0cfd66a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9db4b344_2351a562",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/hid_wake.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2022-09-02T22:36:21Z",
+      "side": 1,
+      "message": "These time intervals seem hard to reason about (and brittle, as noted elsewhere).\n\nI\u0027d suggest Polling for these pre-defined intervals rather than just checking once at a specific timestamp. I think it will simplify a lot of the code path here.",
+      "range": {
+        "startLine": 98,
+        "startChar": 1,
+        "endLine": 98,
+        "endChar": 48
+      },
+      "revId": "55ee87817faf49070c60364b1b1340d5d0cfd66a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d7d60a85_77c2444f",
         "filename": "src/chromiumos/tast/remote/bundles/cros/typec/hid_wake.go",
         "patchSetId": 4
@@ -122,6 +300,29 @@
       "writtenOn": "2022-09-02T21:51:19Z",
       "side": 1,
       "message": "else is not needed.",
+      "revId": "55ee87817faf49070c60364b1b1340d5d0cfd66a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9191bf4_445a3309",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/hid_wake.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2022-09-02T22:36:21Z",
+      "side": 1,
+      "message": "Why 20 seconds?",
+      "range": {
+        "startLine": 108,
+        "startChar": 1,
+        "endLine": 109,
+        "endChar": 48
+      },
       "revId": "55ee87817faf49070c60364b1b1340d5d0cfd66a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -173,6 +374,24 @@
       "writtenOn": "2022-09-02T21:51:19Z",
       "side": 1,
       "message": "I do not understand the variable suspend2 here. It is not used outside the \"go func\" block. Why do we need a channel in this case. I will defer this to Prashant to review.",
+      "revId": "55ee87817faf49070c60364b1b1340d5d0cfd66a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7470d85c_43d9896e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/hid_wake.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2022-09-02T22:36:21Z",
+      "side": 1,
+      "message": "The usage should be along the lines of this: https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/remote/bundles/cros/typec/hpd_wake.go;l\u003d58?q\u003dhpd_wake.go\n\nWe call the suspend function. But since it itself is blocking, we run it on a separate thread, and then in the main thread we check to see that the DUT is unreachable.",
+      "parentUuid": "f712908e_994ab307",
       "revId": "55ee87817faf49070c60364b1b1340d5d0cfd66a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -241,6 +460,213 @@
       "writtenOn": "2022-09-02T21:51:19Z",
       "side": 1,
       "message": "else is needed.",
+      "revId": "55ee87817faf49070c60364b1b1340d5d0cfd66a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb1bf207_49b31546",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/hid_wake.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2022-09-02T22:36:21Z",
+      "side": 1,
+      "message": "There\u0027s no need to log successes, only failures (lack of failure logs is indicative of success).",
+      "range": {
+        "startLine": 178,
+        "startChar": 0,
+        "endLine": 181,
+        "endChar": 0
+      },
+      "revId": "55ee87817faf49070c60364b1b1340d5d0cfd66a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c55c305a_883ee2e7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/hid_wake.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2022-09-02T22:36:21Z",
+      "side": 1,
+      "message": "Unnecessary log print (tast prints successes and failures after every test).",
+      "range": {
+        "startLine": 181,
+        "startChar": 0,
+        "endLine": 182,
+        "endChar": 31
+      },
+      "revId": "55ee87817faf49070c60364b1b1340d5d0cfd66a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2462417e_2bd1287b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/hid_wake.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2022-09-02T22:36:21Z",
+      "side": 1,
+      "message": "servo HID device (not servo itself).",
+      "range": {
+        "startLine": 185,
+        "startChar": 58,
+        "endLine": 185,
+        "endChar": 66
+      },
+      "revId": "55ee87817faf49070c60364b1b1340d5d0cfd66a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8bd91210_c01b7e66",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/hid_wake.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2022-09-02T22:36:21Z",
+      "side": 1,
+      "message": "This should be added to Servod rather than via poling",
+      "range": {
+        "startLine": 184,
+        "startChar": 0,
+        "endLine": 187,
+        "endChar": 67
+      },
+      "revId": "55ee87817faf49070c60364b1b1340d5d0cfd66a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "672daf3d_c4607c24",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/hid_wake.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2022-09-02T22:36:21Z",
+      "side": 1,
+      "message": "This is only being use in 1 location. Please inline.",
+      "range": {
+        "startLine": 188,
+        "startChar": 1,
+        "endLine": 188,
+        "endChar": 5
+      },
+      "revId": "55ee87817faf49070c60364b1b1340d5d0cfd66a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ebcdff7c_49164f3d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/hid_wake.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2022-09-02T22:36:21Z",
+      "side": 1,
+      "message": "Please avoid magic strings/numbers without descriptions (hint: use constants).\n\nAlso, is the servo VID/PID always guaranteed to be this? If so, isn\u0027t it easier to use a libusb wrapper (`gousb` maybe?) and search for a hid device with the VID/PID you have in mind? Then you don\u0027t have to deal with the filepath acrobatics.\n\nAlso, is there a way to toggle this from the servod side? I think that would be more succinct than seraching for a HID with VID/PID.",
+      "range": {
+        "startLine": 190,
+        "startChar": 70,
+        "endLine": 190,
+        "endChar": 88
+      },
+      "revId": "55ee87817faf49070c60364b1b1340d5d0cfd66a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c624431a_52dccec2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/hid_wake.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2022-09-02T22:36:21Z",
+      "side": 1,
+      "message": "Please return an empty string `\"\"` for errors. `~` is a valid filepath.",
+      "range": {
+        "startLine": 215,
+        "startChar": 9,
+        "endLine": 215,
+        "endChar": 12
+      },
+      "revId": "55ee87817faf49070c60364b1b1340d5d0cfd66a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3dd9e1a_f7bb4d60",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/hid_wake.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2022-09-02T22:36:21Z",
+      "side": 1,
+      "message": "If you\u0027re going to be checking the VID and PID anyway, then why bother with the find command?\n\nIt\u0027s more portable to just iterate through each devices directory and check the VID/PID.",
+      "range": {
+        "startLine": 205,
+        "startChar": 0,
+        "endLine": 220,
+        "endChar": 0
+      },
+      "revId": "55ee87817faf49070c60364b1b1340d5d0cfd66a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aee5b8dd_83a25b47",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/hid_wake.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2022-09-02T22:36:21Z",
+      "side": 1,
+      "message": "We\u0027re doing this conversion (i.e using `string(servoPath)`) multiple times in this function. Since `servodPath` is never being used in its raw form, it is better to just call `string(servoPath)` once at the very beginning and use that everywhere.",
+      "range": {
+        "startLine": 221,
+        "startChar": 26,
+        "endLine": 221,
+        "endChar": 43
+      },
       "revId": "55ee87817faf49070c60364b1b1340d5d0cfd66a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
