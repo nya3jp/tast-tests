@@ -294,8 +294,13 @@ func (f *prepareCUJFixture) Reset(ctx context.Context) error {
 }
 
 func (f *prepareCUJFixture) PreTest(ctx context.Context, s *testing.FixtTestState) {
-	// Ensure display on to record ui performance correctly.
-	if err := power.TurnOnDisplay(ctx); err != nil {
+	// Ensure display on to record ui performance correctly. Keep trying for 2 min
+	// since it could take 2 min for `powerd` dbus service to be accessible via
+	// dbus from tast. See b/244752048.
+	if err := testing.Poll(ctx, power.TurnOnDisplay, &testing.PollOptions{
+		Interval: 10 * time.Second,
+		Timeout:  2 * time.Minute,
+	}); err != nil {
 		s.Fatal("Failed to turn on display: ", err)
 	}
 
