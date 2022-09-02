@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f392209_47509f61",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_obeys_rollback.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-09-02T01:29:46Z",
+      "side": 1,
+      "message": "nit: maybe use and here instead of nested ifs\nqq: Is it necessary to use errors.Is if you compare equality?",
+      "revId": "53d4e3e5d65405ab6bc1975cfee5e479fe9e28a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
