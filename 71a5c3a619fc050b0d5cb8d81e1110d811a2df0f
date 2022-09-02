@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d63c5482_81e5d389",
+        "filename": "src/chromiumos/tast/local/bundles/cros/spera/enterprisecuj/citrix/citrix.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2022-09-02T09:38:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f0a6ce15_d1c2816e",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 3
+      },
+      "revId": "71a5c3a619fc050b0d5cb8d81e1110d811a2df0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7d1b6bca_f8dfa1fa",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-09-02T02:38:26Z",
       "side": 1,
       "message": "move this out to a separate var declaration",
+      "range": {
+        "startLine": 37,
+        "startChar": 1,
+        "endLine": 39,
+        "endChar": 2
+      },
+      "revId": "71a5c3a619fc050b0d5cb8d81e1110d811a2df0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ba8241c_eb57a181",
+        "filename": "src/chromiumos/tast/local/bundles/cros/spera/enterprisecuj/citrix/citrix.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2022-09-02T09:38:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7d1b6bca_f8dfa1fa",
       "range": {
         "startLine": 37,
         "startChar": 1,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "91d07730_21652bc5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/spera/enterprisecuj/citrix/citrix.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2022-09-02T09:38:42Z",
+      "side": 1,
+      "message": "You\u0027re right.\nTablet mode doesn\u0027t need to go to full screen. I missed this scenario.\nChange to do nothing in tablet mode here.\nIn addition, the citrix app in tablet mode will not respond to typing, and the test can\u0027t be completed in tablet mode. I will create another ticket to record this issue.",
+      "parentUuid": "d90491d8_19895b9b",
+      "range": {
+        "startLine": 190,
+        "startChar": 67,
+        "endLine": 190,
+        "endChar": 84
+      },
+      "revId": "71a5c3a619fc050b0d5cb8d81e1110d811a2df0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5cdc600b_892cbb82",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-09-02T02:38:26Z",
       "side": 1,
       "message": "just `newTabAction \u003d`",
+      "range": {
+        "startLine": 203,
+        "startChar": 3,
+        "endLine": 203,
+        "endChar": 26
+      },
+      "revId": "71a5c3a619fc050b0d5cb8d81e1110d811a2df0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "44bb248e_8e5c1078",
+        "filename": "src/chromiumos/tast/local/bundles/cros/spera/enterprisecuj/citrix/citrix.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2022-09-02T09:38:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5cdc600b_892cbb82",
       "range": {
         "startLine": 203,
         "startChar": 3,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cdd39c32_7b82cd05",
+        "filename": "src/chromiumos/tast/local/bundles/cros/spera/enterprisecuj/citrix/citrix.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2022-09-02T09:38:42Z",
+      "side": 1,
+      "message": "Sorry, this is a comment left by the previous logic, it has been deleted. \nThanks for checking.",
+      "parentUuid": "f652cedb_a9fdff17",
+      "range": {
+        "startLine": 214,
+        "startChar": 6,
+        "endLine": 214,
+        "endChar": 44
+      },
+      "revId": "71a5c3a619fc050b0d5cb8d81e1110d811a2df0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dd29abcf_12a26fc4",
@@ -139,6 +259,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ee6681f_c9da9864",
+        "filename": "src/chromiumos/tast/local/bundles/cros/spera/enterprisecuj/citrix/citrix.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2022-09-02T09:38:42Z",
+      "side": 1,
+      "message": "I tried to use the logic of uidetection before and needed to wait for two checks.\nCheck whether has \"Close window\" or \"Close all windows\" on the screen.\nUsing uidetection will waste a lot of time waiting for pattern recognition.\nThat\u0027s why we use the keyboard approach.",
+      "parentUuid": "dd29abcf_12a26fc4",
+      "range": {
+        "startLine": 370,
+        "startChar": 3,
+        "endLine": 370,
+        "endChar": 30
+      },
+      "revId": "71a5c3a619fc050b0d5cb8d81e1110d811a2df0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fe91d51d_f2c9fb38",
@@ -152,6 +296,30 @@
       "writtenOn": "2022-09-02T02:38:26Z",
       "side": 1,
       "message": "this should be handled in the library, not in the test.\n\nWhy `Record` cannot return fast in case of failures?\n\nIf you want to shorten the timeout, it is better to use something like `recorder.WithTimeout(time.Minute).Record(...)`",
+      "range": {
+        "startLine": 116,
+        "startChar": 1,
+        "endLine": 118,
+        "endChar": 15
+      },
+      "revId": "71a5c3a619fc050b0d5cb8d81e1110d811a2df0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "15e77e3c_faab89d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/spera/enterprisecuj/run.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2022-09-02T09:38:42Z",
+      "side": 1,
+      "message": "This was added because this problem was encountered before when recording: b/196856854.\nBut this problem does not occur in this case at present, I think there is no need to set the shorter timeout in particular. I will remove this setting first.\nThen I will check if other cases still need this setting.",
+      "parentUuid": "fe91d51d_f2c9fb38",
       "range": {
         "startLine": 116,
         "startChar": 1,
