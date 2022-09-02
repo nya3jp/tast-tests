@@ -205,6 +205,14 @@ func (t *FirmwareTest) Close(ctx context.Context) error {
 	var firstErr error
 
 	if err := ReimageFPMCU(ctx, t.d, t.servo, t.needsRebootAfterFlashing); err != nil {
+		// ReimageFPMCU reboots the DUT at least once. Sometimes after
+		// reboot, the connection to the DUT is broken. In this case
+		// we should return error now, because further executing will
+		// result in nil pointer dereference, because RPC connection is
+		// not available.
+		if !t.d.RPCConnected(ctx) {
+			return errors.Wrap(err, "lost connection to the DUT")
+		}
 		firstErr = err
 	}
 
