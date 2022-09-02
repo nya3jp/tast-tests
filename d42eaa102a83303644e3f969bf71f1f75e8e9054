@@ -16,6 +16,24 @@
       "message": "Hi, PTAL. Thanks!",
       "revId": "d42eaa102a83303644e3f969bf71f1f75e8e9054",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "45c94054_fa9347ee",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1504887
+      },
+      "writtenOn": "2022-09-02T03:42:52Z",
+      "side": 1,
+      "message": "The test was updated to address this error. It had to be re-uploaded under my own developer account since the previous owner is unable to transfer it.\n\n```\n08-22 00:34:43.050  3933  3933 W System.err: java.lang.NullPointerException: Attempt to read from field \u0027byte[] com.android.volley.NetworkResponse.data\u0027 on a null object reference\n08-22 00:34:43.050  3933  3933 W System.err:    at com.managedchrome.arcloggingtest.MainActivity.lambda$uploadLog$2(MainActivity.java:135)\n```",
+      "parentUuid": "0783daa8_71236f92",
+      "revId": "d42eaa102a83303644e3f969bf71f1f75e8e9054",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
