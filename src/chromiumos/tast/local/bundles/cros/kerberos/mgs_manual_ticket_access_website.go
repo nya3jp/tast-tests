@@ -6,7 +6,6 @@ package kerberos
 
 import (
 	"context"
-	"fmt"
 	"strings"
 	"time"
 
@@ -14,7 +13,6 @@ import (
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/ctxutil"
-	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome/ime"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
@@ -82,45 +80,23 @@ func MgsManualTicketAccessWebsite(ctx context.Context, s *testing.State) {
 
 	// The website does not have a valid certificate. We accept the warning and
 	// proceed to the content.
-	clickAdvance := fmt.Sprintf("document.getElementById(%q).click()", "details-button")
-	clickProceed := fmt.Sprintf("document.getElementById(%q).click()", "proceed-link")
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		if err := conn.Eval(ctx, clickAdvance, nil); err != nil {
-			return errors.Wrap(err, "failed to click Advance button")
-		}
-
-		if err := conn.Eval(ctx, clickProceed, nil); err != nil {
-			return errors.Wrap(err, "failed to click Proceed button")
-		}
-		return nil
-	}, &testing.PollOptions{
-		Timeout:  5 * time.Second,
-		Interval: 1 * time.Second,
-	}); err != nil {
+	if err := kerberos.ClickAdvancedAndProceed(ctx, conn); err != nil {
 		s.Fatal("Could not accept the certificate warning: ", err)
 	}
 
 	// Check that title is 401 - unauthorized.
 	var websiteTitle string
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		if err := conn.Eval(ctx, "document.title", &websiteTitle); err != nil {
-			return errors.Wrap(err, "failed to get the website title")
-		}
-		if websiteTitle == "" {
-			return errors.New("website title is empty")
-		}
-		return nil
-	}, &testing.PollOptions{
-		Timeout:  5 * time.Second,
-		Interval: 1 * time.Second,
-	}); err != nil {
-		s.Fatal("Couldn't get non-empty website title: ", err)
+	if err := conn.Eval(ctx, "document.title", &websiteTitle); err != nil {
+		s.Fatal("Failed to get the website title: ", err)
 	}
-
+	if websiteTitle == "" {
+		s.Fatal("Website title is empty")
+	}
 	if !strings.Contains(websiteTitle, "401") {
-		s.Fatal("Website title did not contain error 401")
+		s.Fatal("Website title does not contain 401")
 	}
 
+	// Access keyboard.
 	keyboard, err := input.Keyboard(ctx)
 	if err != nil {
 		s.Fatal("Failed to get a keyboard")
@@ -138,28 +114,26 @@ func MgsManualTicketAccessWebsite(ctx context.Context, s *testing.State) {
 	if err := kerberos.AddTicket(ctx, cr, tconn, ui, keyboard, config, password); err != nil {
 		s.Fatal("Failed to add Kerberos ticket: ", err)
 	}
-
-	s.Log("Wait for website to have non-empty title")
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		if err := conn.Navigate(ctx, config.WebsiteAddress); err != nil {
-			s.Fatalf("Failed to navigate to the server URL %q: %v", config.WebsiteAddress, err)
-		}
-
-		if err := conn.Eval(ctx, "document.title", &websiteTitle); err != nil {
-			return errors.Wrap(err, "failed to get the website title")
-		}
-		if websiteTitle == "" || strings.Contains(websiteTitle, "401") {
-			return errors.New("website title is empty")
-		}
-		return nil
-	}, &testing.PollOptions{
-		Timeout:  5 * time.Second,
-		Interval: 1 * time.Second,
-	}); err != nil && websiteTitle == "" {
-		s.Fatal("Couldn't get non-empty website title: ", err)
+	// Refresh the website.
+	if err := conn.Navigate(ctx, config.WebsiteAddress); err != nil {
+		s.Fatalf("Failed to navigate to the server URL %q: %v", config.WebsiteAddress, err)
+	}
+	// Wait for the website to load.
+	if err := conn.WaitForExpr(ctx, "document.readyState === 'complete'"); err != nil {
+		s.Fatal("Failed waiting for URL to load: ", err)
 	}
 
+	s.Log("Getting the website's title")
+	if err := conn.Eval(ctx, "document.title", &websiteTitle); err != nil {
+		s.Fatal("Failed to get the website title: ", err)
+	}
+	if websiteTitle == "" {
+		s.Fatal("Website title is empty")
+	}
+	if strings.Contains(websiteTitle, "401") {
+		s.Error("Website title contains 401")
+	}
 	if !strings.Contains(websiteTitle, "KerberosTest") {
-		s.Error("Website title was not KerberosTest but ", websiteTitle)
+		s.Fatal("Website title was not KerberosTest but ", websiteTitle)
 	}
 }

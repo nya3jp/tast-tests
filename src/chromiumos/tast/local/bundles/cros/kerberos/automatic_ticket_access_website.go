@@ -6,7 +6,6 @@ package kerberos
 
 import (
 	"context"
-	"fmt"
 	"strings"
 	"time"
 
@@ -14,7 +13,6 @@ import (
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/ctxutil"
-	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
@@ -132,40 +130,22 @@ func AutomaticTicketAccessWebsite(ctx context.Context, s *testing.State) {
 
 	// The website does not have a valid certificate. We accept the warning and
 	// proceed to the content.
-	clickAdvance := fmt.Sprintf("document.getElementById(%q).click()", "details-button")
-	if err := conn.Eval(ctx, clickAdvance, nil); err != nil {
-		s.Fatal("Failed to click Advance button: ", err)
+	if err := kerberos.ClickAdvancedAndProceed(ctx, conn); err != nil {
+		s.Fatal("Could not accept the certificate warning: ", err)
 	}
 
-	clickProceed := fmt.Sprintf("document.getElementById(%q).click()", "proceed-link")
-	if err := conn.Eval(ctx, clickProceed, nil); err != nil {
-		s.Fatal("Failed to click Advance button: ", err)
-	}
-
-	//Required as after last click we need to wait for completion. Otherwise
-	// test check the title of already loaded page.
-	if conn.WaitForExpr(ctx, "document.readyState === 'complete'"); err != nil {
-		s.Error("Failed waiting for URL to load: ", err)
-	}
-
-	s.Log("Wait for website to have non-empty title")
+	s.Log("Getting the website's title")
 	var websiteTitle string
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		if err := conn.Eval(ctx, "document.title", &websiteTitle); err != nil {
-			return errors.Wrap(err, "failed to get the website title")
-		}
-		if websiteTitle == "" {
-			return errors.New("website title is still empty")
-		}
-		return nil
-	}, &testing.PollOptions{
-		Timeout:  5 * time.Second,
-		Interval: 1 * time.Second,
-	}); err != nil {
-		s.Error("Couldn't get non-empty website title: ", err)
+	if err := conn.Eval(ctx, "document.title", &websiteTitle); err != nil {
+		s.Fatal("Failed to get the website title: ", err)
 	}
-
+	if websiteTitle == "" {
+		s.Fatal("Website title is empty")
+	}
+	if strings.Contains(websiteTitle, "401") {
+		s.Error("Website title contains 401")
+	}
 	if !strings.Contains(websiteTitle, "KerberosTest") {
-		s.Error("Website title was not KerberosTest but ", websiteTitle)
+		s.Fatal("Website title was not KerberosTest but ", websiteTitle)
 	}
 }

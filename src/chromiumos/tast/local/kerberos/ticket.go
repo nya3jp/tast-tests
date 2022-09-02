@@ -8,6 +8,8 @@ package kerberos
 
 import (
 	"context"
+	"fmt"
+	"time"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
@@ -70,6 +72,49 @@ func CheckForTicket(ctx context.Context, ui *uiauto.Context, config *Configurati
 	// Check that ticket is "Active".
 	if err := ui.WaitUntilExists(nodewith.Name("Active").Role(role.StaticText))(ctx); err != nil {
 		return errors.Wrap(err, "Kerberos ticket is not Active")
+	}
+
+	return nil
+}
+
+// ClickAdvancedAndProceed presses "Advanced" and "Proceed" buttons on the
+// Kerberos test website to accept the warning. This is needed because the
+// website lacks security certificate.
+func ClickAdvancedAndProceed(ctx context.Context, conn *chrome.Conn) error {
+	clickAdvance := fmt.Sprintf("document.getElementById(%q).click()", "details-button")
+	clickProceed := fmt.Sprintf("document.getElementById(%q).click()", "proceed-link")
+
+	// Trying to click "Advance" button until success or timeout.
+	// Returns error in case of failure.
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		if err := conn.Eval(ctx, clickAdvance, nil); err != nil {
+			return errors.Wrap(err, "failed to click Advance button")
+		}
+		return nil
+	}, &testing.PollOptions{
+		Timeout:  5 * time.Second,
+		Interval: 1 * time.Second,
+	}); err != nil {
+		return err
+	}
+
+	// Trying to click "Proceed" button until success or timeout.
+	// Returns error in case of failure.
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		if err := conn.Eval(ctx, clickProceed, nil); err != nil {
+			return errors.Wrap(err, "failed to click Proceed button")
+		}
+		return nil
+	}, &testing.PollOptions{
+		Timeout:  5 * time.Second,
+		Interval: 1 * time.Second,
+	}); err != nil {
+		return err
+	}
+
+	// Wait for webpage to load its content after we accepted the warning.
+	if err := conn.WaitForExpr(ctx, "document.readyState === 'complete'"); err != nil {
+		return errors.Wrap(err, "failed to wait for the URL to load")
 	}
 
 	return nil
