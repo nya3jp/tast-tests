@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "242a029b_e0515a43",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-09-02T00:09:00Z",
+      "side": 1,
+      "message": "LGTM, thanks for fixing this. Mind if we hold off on landing this CL so we can remove the final reference to RefreshApp() in projector.go?",
+      "revId": "2d8d51da89424544b50f2f7fb1719fad57aa5ea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cdeebad2_a7013ad4",
+        "filename": "src/chromiumos/tast/local/chrome/projector/projector.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-09-02T00:09:00Z",
+      "side": 1,
+      "message": "Could you remove this function in this CL after all the other references have been removed in their respective CLs? Essentially, land this CL after the other ones.",
+      "range": {
+        "startLine": 22,
+        "startChar": 5,
+        "endLine": 22,
+        "endChar": 15
+      },
+      "revId": "2d8d51da89424544b50f2f7fb1719fad57aa5ea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
