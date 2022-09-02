@@ -82,6 +82,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2553f15b_04681697",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/bootperf/metrics_util.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2022-09-02T07:42:45Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "7508c7c0_4cf2320e",
+      "range": {
+        "startLine": 198,
+        "startChar": 78,
+        "endLine": 198,
+        "endChar": 81
+      },
+      "revId": "71f7fc84b08ad3c14290e5f4dddcdf5bf9343c2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4dd99761_db8f96e6",
@@ -95,6 +119,30 @@
       "writtenOn": "2022-09-02T00:26:09Z",
       "side": 1,
       "message": "can we use gopsutil?\n\n    process.NewProcess(m[1])\n    ...\n\nI think it knows how to retrieve cmdline and stat in nice Golang forms.",
+      "range": {
+        "startLine": 195,
+        "startChar": 0,
+        "endLine": 210,
+        "endChar": 2
+      },
+      "revId": "71f7fc84b08ad3c14290e5f4dddcdf5bf9343c2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed469e3a_5ae3f83f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/bootperf/metrics_util.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2022-09-02T07:42:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4dd99761_db8f96e6",
       "range": {
         "startLine": 195,
         "startChar": 0,

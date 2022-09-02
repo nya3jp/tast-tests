@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bba7d142_06006e1f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2022-09-02T07:42:45Z",
+      "side": 1,
+      "message": "Updated to log debugging info and fail early to help finding the root cause.\nHidehiko, would you please take a look? Thanks.",
+      "revId": "152729b29d2f5e52cf3ff79dbd0eecb0099e40e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
