@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ffd51a7_464134cf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-09-02T13:01:27Z",
+      "side": 1,
+      "message": "Thank you for kindly reminding us :)",
+      "parentUuid": "5e667a77_703fb172",
+      "revId": "f050b5b054f072b24b35e686d4e832205fc3dd2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cba513f1_e292a233",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-09-01T11:00:55Z",
       "side": 1,
       "message": "https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#When-to-log\nDoes the ash.SetClipboard take long time?\nIf not, this log line would be unnecessary because Fatalf() gives the `text` where we failed at.",
+      "revId": "f050b5b054f072b24b35e686d4e832205fc3dd2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5362726b_281f0d13",
+        "filename": "src/chromiumos/tast/local/bundles/cros/clipboardhistory/context_menu_clipboard.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-09-02T13:01:27Z",
+      "side": 1,
+      "message": "Removed",
+      "parentUuid": "cba513f1_e292a233",
       "revId": "f050b5b054f072b24b35e686d4e832205fc3dd2d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -58,6 +94,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "372a1c57_5f8b3a96",
+        "filename": "src/chromiumos/tast/local/bundles/cros/clipboardhistory/context_menu_clipboard.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-09-02T13:01:27Z",
+      "side": 1,
+      "message": "Done, thanks for the advice",
+      "parentUuid": "46f09e56_e640717f",
+      "range": {
+        "startLine": 171,
+        "startChar": 10,
+        "endLine": 171,
+        "endChar": 19
+      },
+      "revId": "f050b5b054f072b24b35e686d4e832205fc3dd2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "37b8f27e_587cb8bc",
@@ -71,6 +131,24 @@
       "writtenOn": "2022-09-01T11:00:55Z",
       "side": 1,
       "message": "optional: Will you check if it works stably without this line? Because ui.LeftClick internally waits for the item to exist and stabilize.",
+      "revId": "f050b5b054f072b24b35e686d4e832205fc3dd2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6397ca03_497860b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/clipboardhistory/context_menu_clipboard.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-09-02T13:01:27Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "37b8f27e_587cb8bc",
       "revId": "f050b5b054f072b24b35e686d4e832205fc3dd2d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -98,6 +176,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "216edc3f_5a16da4f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/clipboardhistory/context_menu_clipboard.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-09-02T13:01:27Z",
+      "side": 1,
+      "message": "Timeout reduced to 10 seconds",
+      "parentUuid": "18eb4e38_33ea183b",
+      "range": {
+        "startLine": 267,
+        "startChar": 18,
+        "endLine": 267,
+        "endChar": 69
+      },
+      "revId": "f050b5b054f072b24b35e686d4e832205fc3dd2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8f75b900_c246d615",
@@ -111,6 +213,30 @@
       "writtenOn": "2022-09-01T11:00:55Z",
       "side": 1,
       "message": "nit: remove an extra space",
+      "range": {
+        "startLine": 280,
+        "startChar": 27,
+        "endLine": 280,
+        "endChar": 37
+      },
+      "revId": "f050b5b054f072b24b35e686d4e832205fc3dd2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "feea9f1b_c5a16dd2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/clipboardhistory/context_menu_clipboard.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-09-02T13:01:27Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "8f75b900_c246d615",
       "range": {
         "startLine": 280,
         "startChar": 27,
