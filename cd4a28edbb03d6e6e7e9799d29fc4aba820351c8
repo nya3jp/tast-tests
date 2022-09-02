@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5ab23a6_66e1a05b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-09-02T18:27:59Z",
+      "side": 1,
+      "message": "Thank you for sending this change my way! Overall this is looking pretty darn good, just have a couple questions/comments whenever you have a moment :)",
+      "revId": "cd4a28edbb03d6e6e7e9799d29fc4aba820351c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8203825_16d51088",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/allow_cellular_policy_networks_on.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-09-02T18:27:59Z",
+      "side": 1,
+      "message": "Do we need this explicit timeout or would the default work? I am not sure exactly what the default is, but it seems like this test might be fairly quick (not sure about the fake DMS bits, though).",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 32
+      },
+      "revId": "cd4a28edbb03d6e6e7e9799d29fc4aba820351c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c923c4c_1ec4f90f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/allow_cellular_policy_networks_on.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-09-02T18:27:59Z",
+      "side": 1,
+      "message": "Nit: The `policyutil.ResetChrome` method seems like mostly resets Chrome and removes previously applied policies. Consider rewording this comment (and the log statement inside the `s.Fatal`) to make this more clear/avoid confusion with post-test clean up.",
+      "range": {
+        "startLine": 55,
+        "startChar": 4,
+        "endLine": 55,
+        "endChar": 20
+      },
+      "revId": "cd4a28edbb03d6e6e7e9799d29fc4aba820351c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb161c14_4d5be379",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/allow_cellular_policy_networks_on.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-09-02T18:27:59Z",
+      "side": 1,
+      "message": "Do we need to specify the timeout here?",
+      "range": {
+        "startLine": 102,
+        "startChar": 24,
+        "endLine": 102,
+        "endChar": 54
+      },
+      "revId": "cd4a28edbb03d6e6e7e9799d29fc4aba820351c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68a586be_792fbd54",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/allow_cellular_policy_networks_on.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-09-02T18:27:59Z",
+      "side": 1,
+      "message": "Nit: Consider skipping this here since we already defer `app.Close()` above.",
+      "range": {
+        "startLine": 108,
+        "startChar": 0,
+        "endLine": 110,
+        "endChar": 2
+      },
+      "revId": "cd4a28edbb03d6e6e7e9799d29fc4aba820351c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bef5fb44_eb583855",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/quicksettings/constants.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-09-02T18:27:59Z",
+      "side": 1,
+      "message": "Could we move this constant into the `network.go` file [1] with other network constants? I think these constants are mostly for general Quick Settings constants rather than for a specific page :)\n\n[1] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/uiauto/quicksettings/network.go;l\u003d15-36;drc\u003dd0bffe24c33373a01ab673b63a628fbbe960592c",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 83
+      },
+      "revId": "cd4a28edbb03d6e6e7e9799d29fc4aba820351c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
