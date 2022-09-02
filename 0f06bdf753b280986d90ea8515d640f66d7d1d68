@@ -16,6 +16,23 @@
       "message": "Toni and Tast Owners, please take a look.\n\nCC Yulun FYI, just in case you were looking into launcher.AnswerCards -- this CL fixes the spanish language translation failure.",
       "revId": "0f06bdf753b280986d90ea8515d640f66d7d1d68",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8b23e9d_c166bfd5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-09-02T08:07:04Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "0f06bdf753b280986d90ea8515d640f66d7d1d68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
