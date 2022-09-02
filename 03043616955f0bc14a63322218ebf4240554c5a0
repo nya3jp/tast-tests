@@ -33,6 +33,23 @@
       "message": "As discussed offline, both changes are problematic.\n\nMaybe we should just remove the loop and do something simple:\nWaitUntilExists, and then if this times out (after 15s) we reload once and wait one more time, this time maybe 30s. (We may have to increase the overall test timeout, not sure.)\n\nThough I\u0027m worried there is some bug with history recording that will still cause the test to fail.",
       "revId": "03043616955f0bc14a63322218ebf4240554c5a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "230f91e2_9933a184",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-09-02T04:29:40Z",
+      "side": 1,
+      "message": "I think the issue has been sorted out.",
+      "revId": "03043616955f0bc14a63322218ebf4240554c5a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
