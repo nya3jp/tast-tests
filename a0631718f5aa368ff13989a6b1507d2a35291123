@@ -22,6 +22,30 @@
       },
       "revId": "a0631718f5aa368ff13989a6b1507d2a35291123",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b435fa69_03441ea2",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/wmp/window.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-09-02T13:17:55Z",
+      "side": 1,
+      "message": "Sorry for not being more clear here.\nWe found a racing issue that the node\u0027s location didn\u0027t sync to the UI tree on time.\nTo ensure a stable drag action, we need to wait for the location to not just be stable, but also change.\n\nMore comments are added to explain it.",
+      "parentUuid": "e72d1728_c7c5cc7a",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 65
+      },
+      "revId": "a0631718f5aa368ff13989a6b1507d2a35291123",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
