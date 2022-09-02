@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec39d042_a1c3a16d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-09-02T22:33:40Z",
+      "side": 1,
+      "message": "It turns out that this test doesn\u0027t require an unmuted microphone to pass. It just requires a microphone to exist, and the hwdep.Microphone() doesn\u0027t work as expected. I reverted this CL back to patch set 2 while awaiting Li-Yu\u0027s reply in crrev.com/c/3849630. If we can\u0027t fix the root cause in hwdep.Microphone(), then at least I know that checking audio.WaitForDevice(InputStream) would fix the issue.",
+      "revId": "328349800f5468085872d7aef29c5c5f78992e76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
