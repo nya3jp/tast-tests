@@ -46,6 +46,30 @@
       },
       "revId": "cbd15cf245559aa51bc81f744918e30d21153a88",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ad2a26a_c45643fb",
+        "filename": "src/chromiumos/tast/local/vdi/fixtures/vdi_mgs.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-09-02T14:09:38Z",
+      "side": 0,
+      "message": "Ack",
+      "parentUuid": "ca216988_9e6a5b6e",
+      "range": {
+        "startLine": 330,
+        "startChar": 0,
+        "endLine": 333,
+        "endChar": 0
+      },
+      "revId": "cbd15cf245559aa51bc81f744918e30d21153a88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
