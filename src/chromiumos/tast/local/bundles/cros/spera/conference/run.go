@@ -29,7 +29,7 @@ type Cleanup func(context.Context) error
 type Prepare func(context.Context) (string, Cleanup, error)
 
 // Run runs the specified user scenario in conference room with different CUJ tiers.
-func Run(ctx context.Context, cr *chrome.Chrome, conf Conference, prepare Prepare, tier, outDir string, tabletMode bool, bt browser.Type, roomSize int) (retErr error) {
+func Run(ctx context.Context, cr *chrome.Chrome, conf Conference, prepare Prepare, tier, outDir string, tabletMode bool, bt browser.Type, roomType RoomType) (retErr error) {
 	// Shorten context a bit to allow for cleanup.
 	cleanUpCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
@@ -95,9 +95,9 @@ func Run(ctx context.Context, cr *chrome.Chrome, conf Conference, prepare Prepar
 	if err := cuj.AddPerformanceCUJMetrics(tconn, bTconn, recorder); err != nil {
 		return errors.Wrap(err, "failed to add metrics to recorder")
 	}
-
+	isNoRoom := roomType == NoRoom
 	meetTimeout := 50 * time.Second
-	if roomSize == NoRoom {
+	if isNoRoom {
 		meetTimeout = 70 * time.Second
 	} else if tier == "plus" {
 		meetTimeout = 140 * time.Second
@@ -115,7 +115,7 @@ func Run(ctx context.Context, cr *chrome.Chrome, conf Conference, prepare Prepar
 			errc <- graphics.MeasureGPUCounters(gpuCtx, meetTimeout, pv)
 		}()
 
-		if roomSize != NoRoom {
+		if !isNoRoom {
 			// Only premium tier need to change background to blur at the beginning.
 			toBlur := tier == "premium"
 			if err := conf.Join(ctx, inviteLink, toBlur); err != nil {
@@ -150,7 +150,7 @@ func Run(ctx context.Context, cr *chrome.Chrome, conf Conference, prepare Prepar
 		}
 
 		// Premium tier.
-		if roomSize != NoRoom && tier == "premium" {
+		if !isNoRoom && tier == "premium" {
 			if err := conf.BackgroundChange(ctx); err != nil {
 				return err
 			}

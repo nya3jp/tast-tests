@@ -20,7 +20,7 @@ service ConferenceService2 {
 
 message MeetScenarioRequest {
   string tier = 1;
-  int64 room_size = 2;
+  int64 room_type = 2;
   bool extended_display = 3;
   string camera_video_path = 4;
   bool isLacros = 5;

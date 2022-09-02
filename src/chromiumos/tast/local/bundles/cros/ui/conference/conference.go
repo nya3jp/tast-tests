@@ -18,19 +18,6 @@ import (
 )
 
 const (
-	// NoRoom means not joining google meet when running the test.
-	NoRoom = 0
-	// TwoRoomSize creates a conference room with 2 participants.
-	TwoRoomSize = 2
-	// SmallRoomSize creates a conference room with 5 participants.
-	SmallRoomSize = 5
-	// LargeRoomSize creates a conference room with 16 participants.
-	LargeRoomSize = 16
-	// ClassRoomSize creates a conference room with 38 participants.
-	ClassRoomSize = 38
-)
-
-const (
 	longUITimeout   = time.Minute      // Used for situations where UI might take a long time to respond.
 	mediumUITimeout = 30 * time.Second // Used for situations where UI response are slower.
 	shortUITimeout  = 3 * time.Second  // Used for situations where UI response are faster.
