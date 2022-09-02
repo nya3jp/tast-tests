@@ -16,6 +16,23 @@
       "message": "Updated as suggested by Jason. Now a same test code applies to both ARCVM and ARC container. PTAL again.",
       "revId": "a0aa70380edc53e46817e36c33b64468736e3dba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd32ad19_0d90c784",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1356183
+      },
+      "writtenOn": "2022-09-02T04:37:37Z",
+      "side": 1,
+      "message": "Thanks for the review!",
+      "revId": "a0aa70380edc53e46817e36c33b64468736e3dba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
