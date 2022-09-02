@@ -39,6 +39,30 @@
       },
       "revId": "a04296d9ce1620e6e20c2cea2192cfc4c5c9d4ac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e3df57f_4f145cd3",
+        "filename": "src/chromiumos/tast/local/vdi/apps/vmware/connector.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-09-02T14:10:06Z",
+      "side": 1,
+      "message": "Yup, it is okay. a codelab does not say anything about releasing it go/tast-uidetection. Its constructor uses test connection and that on its own is not released manually in tests but left to be closed by the session.",
+      "parentUuid": "85dbd54b_018ea6fe",
+      "range": {
+        "startLine": 221,
+        "startChar": 1,
+        "endLine": 221,
+        "endChar": 15
+      },
+      "revId": "a04296d9ce1620e6e20c2cea2192cfc4c5c9d4ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
