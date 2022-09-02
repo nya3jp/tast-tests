@@ -29,7 +29,11 @@ func init() {
 		Desc:         "Checks conditions where the new screencast button is disabled or enabled",
 		Contacts:     []string{"tobyhuang@chromium.org", "cros-projector+tast@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"chrome"},
+		// The soda software dep excludes VMs because we want
+		// to verify that SODA is installed on non-VM devices.
+		// Don't use ondevice_speech because that would make
+		// this test a tautology.
+		SoftwareDeps: []string{"chrome", "soda"},
 		Timeout:      5 * time.Minute,
 		Fixture:      "projectorLogin",
 	})
@@ -52,10 +56,24 @@ func NewScreencastButtonCondition(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to close the onboarding dialog: ", err)
 	}
 
+	if err := audio.WaitForDevice(ctx, audio.InputStream); err != nil {
+		s.Log("Microphone is unavailable, verifying new screencast button is disabled")
+		if err = projector.VerifyNewScreencastButtonDisabled(ctx, tconn, "Turn on microphone"); err != nil {
+			s.Fatal("Microphone is unavailable, but new screencast button is enabled: ", err)
+		}
+		// Pass the test and exit prematurely.
+		return
+	}
+
+	s.Log("Microphone is enabled, verifying that the new screencast button is enabled")
 	ui := uiauto.New(tconn)
+	newScreencastButton := nodewith.Name("New screencast").Role(role.Button).Focusable()
+	if err := ui.WaitUntilExists(newScreencastButton)(ctx); err != nil {
+		s.Fatal("Microphone is enabled, but new screencast button is disabled: ", err)
+	}
 
 	if err := a11y.VerifySodaInstalled(ctx); err != nil {
-		s.Fatal("SODA is not installed")
+		s.Fatal("New screencast button should be disabled if SODA is not installed")
 	}
 
 	errorTooltip := nodewith.Name("Speech recognition not supported").Role(role.GenericContainer)
@@ -66,23 +84,5 @@ func NewScreencastButtonCondition(ctx context.Context, s *testing.State) {
 	cantInstallSpeechFiles := nodewith.Name("Can't install speech files").Role(role.StaticText)
 	if err := ui.WaitUntilExists(cantInstallSpeechFiles)(ctx); err == nil {
 		s.Fatal("Can't install speech files dialog should not appear if SODA is installed")
-	}
-
-	if err := audio.WaitForDevice(ctx, audio.InputStream); err != nil {
-		s.Log("Microphone is unavailable, verifying new screencast button is disabled")
-		if err = projector.VerifyNewScreencastButtonDisabled(ctx, tconn, "Turn on microphone"); err != nil {
-			s.Fatal("Microphone is unavailable, but new screencast button is enabled: ", err)
-		}
-		// Pass the test and exit prematurely.
-		return
-	}
-
-	s.Log("SODA and microphone are enabled, verifying that the new screencast button is enabled")
-	// UI action for refreshing the app until the element we're
-	// looking for exists.
-	refreshApp := projector.RefreshApp(ctx, tconn)
-	newScreencastButton := nodewith.Name("New screencast").Role(role.Button).Focusable()
-	if err := ui.WithInterval(5*time.Second).RetryUntil(refreshApp, ui.Exists(newScreencastButton))(ctx); err != nil {
-		s.Fatal("SODA and microphone are enabled, but new screencast button is disabled: ", err)
 	}
 }
