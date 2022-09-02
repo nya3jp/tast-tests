@@ -94,7 +94,7 @@ func DeskTemplatesDelete(ctx context.Context, s *testing.State) {
 	}
 
 	// Open Chrome and Files.
-	appsList := []apps.App{apps.Chrome, apps.Files}
+	appsList := []apps.App{apps.Chrome, apps.FilesSWA}
 	if err := wmputils.OpenApps(ctx, tconn, ac, appsList); err != nil {
 		s.Fatal("Failed to open apps: ", err)
 	}
