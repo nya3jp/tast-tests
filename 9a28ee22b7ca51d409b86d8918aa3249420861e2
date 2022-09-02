@@ -94,6 +94,30 @@
       },
       "revId": "9a28ee22b7ca51d409b86d8918aa3249420861e2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c0c5a14_7fbbbdf2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tab_switch_cuj_recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2022-09-02T21:39:43Z",
+      "side": 1,
+      "message": "Added Xibin",
+      "parentUuid": "fb81c968_c897bcd9",
+      "range": {
+        "startLine": 20,
+        "startChar": 24,
+        "endLine": 20,
+        "endChar": 61
+      },
+      "revId": "9a28ee22b7ca51d409b86d8918aa3249420861e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
