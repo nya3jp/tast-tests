@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6842e2be_5ffbca2f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-09-02T12:56:42Z",
+      "side": 1,
+      "message": "@Victor: Does FakeDMS work with a real user?",
+      "revId": "cf872e91fea195aeea4589d6d95d29f38c407e45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef29b34c_498f9961",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_provisioning.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-09-02T12:56:42Z",
+      "side": 1,
+      "message": "Do you need a real login, or FakeLogin would be enough?",
+      "revId": "cf872e91fea195aeea4589d6d95d29f38c407e45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a23296fe_0b6f229a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_provisioning.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-09-02T12:56:42Z",
+      "side": 1,
+      "message": "You can skip this part, this is the default value.",
+      "range": {
+        "startLine": 225,
+        "startChar": 49,
+        "endLine": 225,
+        "endChar": 73
+      },
+      "revId": "cf872e91fea195aeea4589d6d95d29f38c407e45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
