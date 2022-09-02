@@ -21,7 +21,7 @@ func init() {
 		Func: LTSRollback,
 		Desc: "Check if an appropriate LTS version is being served for rollback",
 		Contacts: []string{
-			"vsavu@chromium.org", // Test author
+			"vsavu@google.com", // Test author
 			"chromeos-commercial-remote-management@google.com",
 		},
 		Attr:         []string{"group:omaha"},
