@@ -16,6 +16,176 @@
       "message": "Hi Prashant and Seewai,\ncan you take a look at this new test? It is a modernized version of an older USB test which checked our ability to wake a device using HID events depending on how the device is registered by the kernel. It works by using the servo\u0027s keyboard emulator to send HID events to the DUT. Depending on the servo\u0027s wake capable setting, which is toggled in this test, the HID events will either wake the DUT or be ignored. Let me know if you have any questions.\n\nThanks,\nJameson",
       "revId": "55ee87817faf49070c60364b1b1340d5d0cfd66a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1a379ce_4091d8e2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-09-02T21:51:19Z",
+      "side": 1,
+      "message": "I have a few comments. Please take a look. Thanks. \n\nAlso, please run tast unit tests: fast_build.sh -T\n\nThen add this line to the commit log:\n\nTEST\u003dtast unit tests passed. \n\nthanks.\n",
+      "revId": "55ee87817faf49070c60364b1b1340d5d0cfd66a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d407ced8_d68f0d61",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/hid_wake.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-09-02T21:51:19Z",
+      "side": 1,
+      "message": "else is not needed because the test will end at s.Fatal.",
+      "revId": "55ee87817faf49070c60364b1b1340d5d0cfd66a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0719b54c_e7667f90",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/hid_wake.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-09-02T21:51:19Z",
+      "side": 1,
+      "message": "I do not understand the variable suspend1 here. It is not used outside the \"go func\" block. Why do we need a channel in this case. I will defer this to Prashant to review.",
+      "revId": "55ee87817faf49070c60364b1b1340d5d0cfd66a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7d60a85_77c2444f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/hid_wake.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-09-02T21:51:19Z",
+      "side": 1,
+      "message": "else is not needed.",
+      "revId": "55ee87817faf49070c60364b1b1340d5d0cfd66a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c33695ec_dd0f1418",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/hid_wake.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-09-02T21:51:19Z",
+      "side": 1,
+      "message": "else is not needed.",
+      "revId": "55ee87817faf49070c60364b1b1340d5d0cfd66a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e02dd8e_7ab45812",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/hid_wake.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-09-02T21:51:19Z",
+      "side": 1,
+      "message": "else is not needed.",
+      "revId": "55ee87817faf49070c60364b1b1340d5d0cfd66a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f712908e_994ab307",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/hid_wake.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-09-02T21:51:19Z",
+      "side": 1,
+      "message": "I do not understand the variable suspend2 here. It is not used outside the \"go func\" block. Why do we need a channel in this case. I will defer this to Prashant to review.",
+      "revId": "55ee87817faf49070c60364b1b1340d5d0cfd66a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2ea8a5a_f028e8c7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/hid_wake.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-09-02T21:51:19Z",
+      "side": 1,
+      "message": "else is no needed.",
+      "revId": "55ee87817faf49070c60364b1b1340d5d0cfd66a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63f64a1a_1c1a8705",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/hid_wake.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-09-02T21:51:19Z",
+      "side": 1,
+      "message": "else is needed.",
+      "revId": "55ee87817faf49070c60364b1b1340d5d0cfd66a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1119a422_6d2f1af6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/hid_wake.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-09-02T21:51:19Z",
+      "side": 1,
+      "message": "else is needed.",
+      "revId": "55ee87817faf49070c60364b1b1340d5d0cfd66a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
