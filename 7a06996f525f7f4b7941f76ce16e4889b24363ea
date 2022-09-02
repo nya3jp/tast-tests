@@ -79,6 +79,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9b2f290a_e8c3eff8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-09-02T03:03:55Z",
+      "side": 1,
+      "message": "Hi Nick,\n\nDo you know why wayland requires serial for clipboard write?\nI looked at the .xml file but I couldn\u0027t find the background.\n(note: maybe this is offtopic, so should be discussed independently...)",
+      "parentUuid": "d3e7a8b4_fde3f597",
+      "revId": "7a06996f525f7f4b7941f76ce16e4889b24363ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ee22b6c2_20f630d4",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/image_paste.go",
         "patchSetId": 2
