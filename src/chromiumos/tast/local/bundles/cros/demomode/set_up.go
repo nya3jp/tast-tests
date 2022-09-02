@@ -1,4 +1,4 @@
-// Copyright 2022 The ChromiumOS Authors.
+// Copyright 2022 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/chrome/uiauto/state"
+	hwseclocal "chromiumos/tast/local/hwsec"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/session"
 	"chromiumos/tast/testing"
@@ -41,6 +42,13 @@ func init() {
 // TODO(b/231472901): Deduplicate the shared code between Demo Mode and normal
 // OOBE Tast tests
 func SetUp(ctx context.Context, s *testing.State) {
+	// If DUT ran other tests before this one, it could have logged into a managedchrome.com account.
+	// This would place a domain lock on the device and prevent it from entering demo mode (cros-demo-mode.com).
+	// The solution is to reset TPM before trying to enter demo mode.
+	resetTPMAndSystemState(ctx, s)
+	// Other tests may or may not require TPM to be reset, but we reset it just to be safe.
+	defer resetTPMAndSystemState(ctx, s)
+
 	cr, err := chrome.New(ctx,
 		chrome.NoLogin(),
 		chrome.ARCEnabled(),
@@ -178,4 +186,17 @@ func SetUp(ctx context.Context, s *testing.State) {
 	case <-ctx.Done():
 		s.Fatal("Didn't get SessionStateChanged signal: ", ctx.Err())
 	}
+}
+
+func resetTPMAndSystemState(ctx context.Context, s *testing.State) {
+	r := hwseclocal.NewCmdRunner()
+	helper, err := hwseclocal.NewHelper(r)
+	if err != nil {
+		s.Fatal("Helper creation error: ", err)
+	}
+	s.Log("Start resetting TPM if needed")
+	if err := helper.EnsureTPMAndSystemStateAreReset(ctx); err != nil {
+		s.Fatal("Failed to ensure resetting TPM: ", err)
+	}
+	s.Log("TPM is confirmed to be reset")
 }
