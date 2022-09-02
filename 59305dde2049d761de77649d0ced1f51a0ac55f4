@@ -33,6 +33,24 @@
       "message": "Could you fold in crrev.com/c/3868688 and remove refreshApp?",
       "revId": "59305dde2049d761de77649d0ced1f51a0ac55f4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff12c0ee_f68f38df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/new_screencast_button_condition.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-09-02T23:12:22Z",
+      "side": 1,
+      "message": "Done, removed refreshApp.",
+      "parentUuid": "16afebb0_94a12861",
+      "revId": "59305dde2049d761de77649d0ced1f51a0ac55f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
