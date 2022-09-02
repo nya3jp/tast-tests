@@ -1,4 +1,4 @@
-// Copyright 2022 The ChromiumOS Authors.
+// Copyright 2022 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/chrome/uiauto/state"
+	"chromiumos/tast/local/demomode/fixture"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/session"
 	"chromiumos/tast/testing"
@@ -26,7 +27,11 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Basic test that clicks through Demo Mode setup from OOBE",
 		Contacts:     []string{"cros-demo-mode-eng@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		// If DUT ran other tests before current one, it could have logged into a managedchrome.com account.
+		// This would place a domain lock on the device and prevent it from entering demo mode (cros-demo-mode.com).
+		// The solution is to reset TPM before trying to enter demo mode.
+		Fixture: fixture.TPMReset,
+		Attr:    []string{"group:mainline", "informational"},
 		// Demo Mode uses Zero Touch Enrollment for enterprise enrollment, which
 		// requires a real TPM.
 		// We require "arc" and "chrome_internal" because the ARC TOS screen
