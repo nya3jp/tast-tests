@@ -16,6 +16,24 @@
       "message": "This would run logcat regardless of whether the test fails? Would the bug report contain what goes to here (thus not adding to the log if test succeeds)?",
       "revId": "138c5dfbba9007f0e9073eb5564531ca1e239854",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "98c82287_c1b323ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/unicorn_blocked_apps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-09-02T01:30:05Z",
+      "side": 1,
+      "message": "This is not running logcat. It is only adjusting buffer size. Notice the \"-G\" argument.",
+      "parentUuid": "07323752_82f72fe7",
+      "revId": "138c5dfbba9007f0e9073eb5564531ca1e239854",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
