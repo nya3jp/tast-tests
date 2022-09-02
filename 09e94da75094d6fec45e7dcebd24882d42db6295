@@ -16,6 +16,24 @@
       "message": "This is great! Thank you. Is it just for arc notifications?",
       "revId": "09e94da75094d6fec45e7dcebd24882d42db6295",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6bcf111f_386d07ce",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-09-02T13:07:24Z",
+      "side": 1,
+      "message": "Yes, the test plan describes the objective as follow\n```\nObjective: Certain Android apps will \"bundle\" multiple notifications together.\n```\n\nThe use of `ArcNotificationTest2.apk` was suggested by toshikikikuchi@ from b:200987545#comment9",
+      "parentUuid": "f18d1116_0d6a60a0",
+      "revId": "09e94da75094d6fec45e7dcebd24882d42db6295",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
