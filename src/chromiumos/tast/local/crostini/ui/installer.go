@@ -156,10 +156,18 @@ func (p *Installer) Install(ctx context.Context) error {
 	}
 
 	installButton := nodewith.Name("Install").Role(role.Button)
+	installingMsg := nodewith.NameStartingWith("Installing Linux").Role(role.StaticText)
 	if err := uiauto.Combine("click install and wait it to finish",
 		ui.LeftClick(installButton),
-		ui.WithTimeout(installationTimeout).WaitUntilGone(InstallWindow))(ctx); err != nil {
-		// If the install fails, return any error message from the installer rather than a timeout error.
+		ui.WaitUntilExists(installingMsg),
+		ui.WithTimeout(installationTimeout).WaitUntilGone(installingMsg),
+	)(ctx); err != nil {
+		return errors.Wrap(err, "installation doesn't finish in time")
+	}
+
+	// The installation fails if installingMsg is gone but InstallWindow still exists.
+	if err := ui.WithTimeout(time.Second).WaitUntilExists(InstallWindow)(ctx); err == nil {
+		// Return with the error if the installation fails (err==nil).
 		message, messageErr := p.checkErrorMessage(cleanupCtx)
 		if messageErr != nil {
 			testing.ContextLog(cleanupCtx, "Error checking for error message in installer: ", messageErr)
@@ -168,7 +176,6 @@ func (p *Installer) Install(ctx context.Context) error {
 		if message != "" {
 			return errors.Errorf("error in installer dialog: %s", message)
 		}
-		return err
 	}
 	return nil
 }
