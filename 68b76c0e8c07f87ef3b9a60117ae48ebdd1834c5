@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f57906ce_e5aad115",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541462
+      },
+      "writtenOn": "2022-09-02T17:51:18Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "54159827_a06b8184",
+      "revId": "68b76c0e8c07f87ef3b9a60117ae48ebdd1834c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5c876cb8_4da60cba",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "99880a23_a9afa5db",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/cellular/assert_cellular_data.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1541462
+      },
+      "writtenOn": "2022-09-02T17:51:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5c876cb8_4da60cba",
+      "revId": "68b76c0e8c07f87ef3b9a60117ae48ebdd1834c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7282795d_54785872",
@@ -48,6 +84,24 @@
       "writtenOn": "2022-09-01T20:20:35Z",
       "side": 1,
       "message": "Do you need this line?",
+      "revId": "68b76c0e8c07f87ef3b9a60117ae48ebdd1834c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "366f5cf5_1ef25601",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/cellular/iperf.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1541462
+      },
+      "writtenOn": "2022-09-02T17:51:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7282795d_54785872",
       "revId": "68b76c0e8c07f87ef3b9a60117ae48ebdd1834c5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
