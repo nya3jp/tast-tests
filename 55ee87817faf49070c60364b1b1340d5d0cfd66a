@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d71761e0_7917d138",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-09-02T21:27:01Z",
+      "side": 1,
+      "message": "Hi Prashant and Seewai,\ncan you take a look at this new test? It is a modernized version of an older USB test which checked our ability to wake a device using HID events depending on how the device is registered by the kernel. It works by using the servo\u0027s keyboard emulator to send HID events to the DUT. Depending on the servo\u0027s wake capable setting, which is toggled in this test, the HID events will either wake the DUT or be ignored. Let me know if you have any questions.\n\nThanks,\nJameson",
+      "revId": "55ee87817faf49070c60364b1b1340d5d0cfd66a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
