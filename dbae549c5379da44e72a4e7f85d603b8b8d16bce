@@ -33,6 +33,24 @@
       "message": "Do you mind add a blank line between each AddFixture?",
       "revId": "dbae549c5379da44e72a4e7f85d603b8b8d16bce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "71fb4596_7cdf58a2",
+        "filename": "src/chromiumos/tast/local/media/pre/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 536,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2022-09-02T01:40:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "69002ef5_0a0abbf6",
+      "revId": "dbae549c5379da44e72a4e7f85d603b8b8d16bce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
