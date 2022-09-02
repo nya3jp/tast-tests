@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66e03db0_3f0f78ba",
+        "filename": "src/chromiumos/tast/local/chrome/ime/ime.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-09-02T07:18:29Z",
+      "side": 1,
+      "message": "Can interval be shorter? We may probably consider to use this function to measure IME activation performance?",
+      "range": {
+        "startLine": 112,
+        "startChar": 35,
+        "endLine": 112,
+        "endChar": 36
+      },
+      "revId": "8302b8728bb24439e0ccdd9b9bca1fc94f0c4e44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa881c5e_ec0a8801",
+        "filename": "src/chromiumos/tast/local/chrome/ime/ime.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-09-02T07:18:29Z",
+      "side": 1,
+      "message": "10s might not be enough for some IMEs on low-end devices. 30s seems better since it is only up to 30s.",
+      "range": {
+        "startLine": 112,
+        "startChar": 61,
+        "endLine": 112,
+        "endChar": 63
+      },
+      "revId": "8302b8728bb24439e0ccdd9b9bca1fc94f0c4e44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
