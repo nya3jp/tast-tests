@@ -78,7 +78,7 @@ const (
 // - upload a log from the test app to test server for comparison,
 // - check that app installation log is uploaded from Chrome.
 func ARCInstallLogging(ctx context.Context, s *testing.State) {
-	const testPackage = "com.managedchrome.arcloggingtest"
+	const testPackage = "com.managedchrome.arcloggingtest2"
 	const poolID = "arc_logging_test"
 
 	// Shorten deadline to leave time for cleanup
