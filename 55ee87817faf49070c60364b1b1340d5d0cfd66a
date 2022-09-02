@@ -398,6 +398,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7d9aa512_7892e6d3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/hid_wake.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-09-02T22:51:44Z",
+      "side": 1,
+      "message": "Thank Prashant for providing the example. In the example, the channel is used by both the child thread and the main thread, but not in this CL. Jameson, please take a look. Thanks.",
+      "parentUuid": "7470d85c_43d9896e",
+      "revId": "55ee87817faf49070c60364b1b1340d5d0cfd66a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "214a2de5_c9ce86d8",
         "filename": "src/chromiumos/tast/remote/bundles/cros/typec/hid_wake.go",
         "patchSetId": 4
