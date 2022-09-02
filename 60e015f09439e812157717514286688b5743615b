@@ -129,6 +129,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d2110653_581e8f8d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kerberos/manual_ticket_access_website.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1365228
+      },
+      "writtenOn": "2022-09-02T18:49:21Z",
+      "side": 1,
+      "message": "nit: *Getting",
+      "range": {
+        "startLine": 137,
+        "startChar": 8,
+        "endLine": 137,
+        "endChar": 11
+      },
+      "revId": "60e015f09439e812157717514286688b5743615b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a9c341f2_33f1f572",
         "filename": "src/chromiumos/tast/local/bundles/cros/kerberos/manual_ticket_access_website.go",
         "patchSetId": 3
@@ -191,6 +214,29 @@
         "startChar": 2,
         "endLine": 123,
         "endChar": 9
+      },
+      "revId": "60e015f09439e812157717514286688b5743615b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e8b8624_5ffef3ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kerberos/mgs_manual_ticket_access_website.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1365228
+      },
+      "writtenOn": "2022-09-02T18:49:21Z",
+      "side": 1,
+      "message": "nit: *Getting",
+      "range": {
+        "startLine": 126,
+        "startChar": 8,
+        "endLine": 126,
+        "endChar": 11
       },
       "revId": "60e015f09439e812157717514286688b5743615b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
