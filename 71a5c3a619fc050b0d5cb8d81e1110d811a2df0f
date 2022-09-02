@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0a6ce15_d1c2816e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/spera/enterprisecuj/citrix/citrix.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-09-02T02:38:26Z",
+      "side": 1,
+      "message": "const",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 3
+      },
+      "revId": "71a5c3a619fc050b0d5cb8d81e1110d811a2df0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d1b6bca_f8dfa1fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/spera/enterprisecuj/citrix/citrix.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-09-02T02:38:26Z",
+      "side": 1,
+      "message": "move this out to a separate var declaration",
+      "range": {
+        "startLine": 37,
+        "startChar": 1,
+        "endLine": 39,
+        "endChar": 2
+      },
+      "revId": "71a5c3a619fc050b0d5cb8d81e1110d811a2df0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d90491d8_19895b9b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/spera/enterprisecuj/citrix/citrix.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-09-02T02:38:26Z",
+      "side": 1,
+      "message": "I am not entirely sure but would like to check: is setting windowStateNormal in the tablet mode working? I remember setting certain window states in the tablet mode returns errors.",
+      "range": {
+        "startLine": 190,
+        "startChar": 67,
+        "endLine": 190,
+        "endChar": 84
+      },
+      "revId": "71a5c3a619fc050b0d5cb8d81e1110d811a2df0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5cdc600b_892cbb82",
+        "filename": "src/chromiumos/tast/local/bundles/cros/spera/enterprisecuj/citrix/citrix.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-09-02T02:38:26Z",
+      "side": 1,
+      "message": "just `newTabAction \u003d`",
+      "range": {
+        "startLine": 203,
+        "startChar": 3,
+        "endLine": 203,
+        "endChar": 26
+      },
+      "revId": "71a5c3a619fc050b0d5cb8d81e1110d811a2df0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f652cedb_a9fdff17",
+        "filename": "src/chromiumos/tast/local/bundles/cros/spera/enterprisecuj/citrix/citrix.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-09-02T02:38:26Z",
+      "side": 1,
+      "message": "I don\u0027t quite understand this. Rephase?",
+      "range": {
+        "startLine": 214,
+        "startChar": 6,
+        "endLine": 214,
+        "endChar": 44
+      },
+      "revId": "71a5c3a619fc050b0d5cb8d81e1110d811a2df0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd29abcf_12a26fc4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/spera/enterprisecuj/citrix/citrix.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-09-02T02:38:26Z",
+      "side": 1,
+      "message": "the sleeps here look unstable, are there any other alternatives?",
+      "range": {
+        "startLine": 370,
+        "startChar": 3,
+        "endLine": 370,
+        "endChar": 30
+      },
+      "revId": "71a5c3a619fc050b0d5cb8d81e1110d811a2df0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe91d51d_f2c9fb38",
+        "filename": "src/chromiumos/tast/local/bundles/cros/spera/enterprisecuj/run.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-09-02T02:38:26Z",
+      "side": 1,
+      "message": "this should be handled in the library, not in the test.\n\nWhy `Record` cannot return fast in case of failures?\n\nIf you want to shorten the timeout, it is better to use something like `recorder.WithTimeout(time.Minute).Record(...)`",
+      "range": {
+        "startLine": 116,
+        "startChar": 1,
+        "endLine": 118,
+        "endChar": 15
+      },
+      "revId": "71a5c3a619fc050b0d5cb8d81e1110d811a2df0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
