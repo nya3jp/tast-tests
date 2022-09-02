@@ -20,7 +20,7 @@ func init() {
 		Func: MajorVersionPinning,
 		Desc: "Check if an appropriate versions are served when pinning to a major version",
 		Contacts: []string{
-			"vsavu@chromium.org", // Test author
+			"vsavu@google.com", // Test author
 			"chromeos-commercial-remote-management@google.com",
 		},
 		Attr:         []string{"group:omaha"},
