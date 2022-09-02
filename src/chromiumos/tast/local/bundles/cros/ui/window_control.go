@@ -33,8 +33,9 @@ func init() {
 			"chromeos-wmp@google.com",
 			"mukai@chromium.org", // Tast author
 		},
-		Attr:         []string{"group:mainline"},
-		SoftwareDeps: []string{"chrome", "no_chrome_dcheck"},
+		Attr: []string{"group:mainline"},
+		// no_qemu: VMs often fail performance expectations.
+		SoftwareDeps: []string{"chrome", "no_chrome_dcheck", "no_qemu"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		Params: []testing.Param{{
 			Fixture: "chromeLoggedIn",
