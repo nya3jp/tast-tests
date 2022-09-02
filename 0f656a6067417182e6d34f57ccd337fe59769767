@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37f5fdc0_0291a768",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/policy_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-09-02T12:04:27Z",
+      "side": 1,
+      "message": "Can you add a TODO in every file to remove all these debug logs later again, to make sure we do not clutter the log files once we have some tests running with this.",
+      "range": {
+        "startLine": 172,
+        "startChar": 1,
+        "endLine": 172,
+        "endChar": 19
+      },
+      "revId": "0f656a6067417182e6d34f57ccd337fe59769767",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
