@@ -100,7 +100,19 @@ func WaitForInputMethodActivated(ctx context.Context, tconn *chrome.TestConn, im
 	if err := WaitForInputMethodMatches(ctx, tconn, imeID, 20*time.Second); err != nil {
 		return errors.Wrapf(err, "failed to wait for IME to be %q", imeID)
 	}
-	return tconn.WaitForExpr(ctx, `chrome.autotestPrivate.isInputMethodReadyForTesting`)
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		var isReady bool
+		if err := tconn.Eval(ctx, "tast.promisify(chrome.autotestPrivate.isInputMethodReadyForTesting)()", &isReady); err != nil {
+			return errors.Wrap(err, "failed to wait for input method to be ready")
+		}
+		if !isReady {
+			return errors.New("input method not ready")
+		}
+		return nil
+	}, &testing.PollOptions{Interval: 100 * time.Millisecond, Timeout: 30 * time.Second}); err != nil {
+		return errors.Wrap(err, "failed to wait for input method to be ready")
+	}
+	return nil
 }
 
 // CurrentInputMethod returns the ID of current IME obtained
