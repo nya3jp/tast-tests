@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "30d79955_a74a21a1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/update_password.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-09-02T23:29:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a3466591_d9b22500",
+      "range": {
+        "startLine": 116,
+        "startChar": 22,
+        "endLine": 116,
+        "endChar": 33
+      },
+      "revId": "ed11e57035a12b17da992dd371fb3388d6b10533",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "286088ea_63949edf",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "65cbe007_5b7aac76",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/user_secret_stash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-09-02T23:29:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "286088ea_63949edf",
+      "range": {
+        "startLine": 117,
+        "startChar": 22,
+        "endLine": 117,
+        "endChar": 34
+      },
+      "revId": "ed11e57035a12b17da992dd371fb3388d6b10533",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "560f08de_dea3186a",
@@ -77,6 +125,30 @@
       "writtenOn": "2022-09-01T20:20:43Z",
       "side": 1,
       "message": "AuthSession",
+      "range": {
+        "startLine": 122,
+        "startChar": 11,
+        "endLine": 122,
+        "endChar": 23
+      },
+      "revId": "ed11e57035a12b17da992dd371fb3388d6b10533",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a44f44c_7f3f4afe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/user_secret_stash_add_pin.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-09-02T23:29:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "560f08de_dea3186a",
       "range": {
         "startLine": 122,
         "startChar": 11,
