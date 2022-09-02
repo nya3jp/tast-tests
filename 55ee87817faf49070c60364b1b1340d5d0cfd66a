@@ -54,6 +54,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0a0facb9_b1a1a2d7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/hid_wake.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2022-09-02T21:55:38Z",
+      "side": 1,
+      "message": "This hwdep should be unrelated to this test.",
+      "range": {
+        "startLine": 28,
+        "startChar": 24,
+        "endLine": 28,
+        "endChar": 49
+      },
+      "revId": "55ee87817faf49070c60364b1b1340d5d0cfd66a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d407ced8_d68f0d61",
         "filename": "src/chromiumos/tast/remote/bundles/cros/typec/hid_wake.go",
         "patchSetId": 4
