@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f452978_65d9fe24",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-09-02T12:59:13Z",
+      "side": 1,
+      "message": "Yes, you just need to set the PolicyUser.",
+      "parentUuid": "6842e2be_5ffbca2f",
+      "revId": "cf872e91fea195aeea4589d6d95d29f38c407e45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ef29b34c_498f9961",
