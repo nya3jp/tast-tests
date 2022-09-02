@@ -16,6 +16,7 @@ import (
 	hwseclocal "chromiumos/tast/local/hwsec"
 	"chromiumos/tast/shutil"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -29,6 +30,8 @@ func init() {
 		Attr:    []string{"group:mainline"},
 		Data:    []string{"testcert.p12"},
 		Timeout: 3 * time.Minute,
+		// TODO(b/244676664): Skip on amd64-generic due to CQ failures
+		HardwareDeps: hwdep.D(hwdep.SkipOnPlatform("amd64-generic")),
 	})
 }
 
