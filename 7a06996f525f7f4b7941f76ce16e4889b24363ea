@@ -153,6 +153,30 @@
       },
       "revId": "7a06996f525f7f4b7941f76ce16e4889b24363ea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b31da28b_ff8ef516",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/image_paste.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2022-09-02T01:45:54Z",
+      "side": 1,
+      "message": "I could get this test pass by simulating this alt+tab twice when there are 2 windows (Lacros only). If thats the only way to get this working. I can send in the same. Please confirm",
+      "parentUuid": "ff8b3956_087f689b",
+      "range": {
+        "startLine": 121,
+        "startChar": 0,
+        "endLine": 121,
+        "endChar": 106
+      },
+      "revId": "7a06996f525f7f4b7941f76ce16e4889b24363ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
