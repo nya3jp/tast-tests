@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "26d07bd9_ac5cc24c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/shared_screencast.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1000097
+      },
+      "writtenOn": "2022-09-02T22:54:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b7ddd25a_0fde13f9",
+      "range": {
+        "startLine": 78,
+        "startChar": 16,
+        "endLine": 78,
+        "endChar": 64
+      },
+      "revId": "070d618cf32029ec6fb5f6c1e5bb17d9cd6a2f98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bd832e1a_0115de00",
@@ -114,6 +138,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e4eecbff_cf0d8165",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/shared_screencast.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1000097
+      },
+      "writtenOn": "2022-09-02T22:54:13Z",
+      "side": 1,
+      "message": "I haven\u0027t been able to reproduce this.  Since it\u0027s not part of this CL, could you file a bug to capture your findings?",
+      "parentUuid": "8e4906a1_68924b91",
+      "range": {
+        "startLine": 80,
+        "startChar": 21,
+        "endLine": 80,
+        "endChar": 44
+      },
+      "revId": "070d618cf32029ec6fb5f6c1e5bb17d9cd6a2f98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "de2bba18_5688bca2",
         "filename": "src/chromiumos/tast/local/bundles/cros/projector/shared_screencast.go",
         "patchSetId": 1
@@ -125,6 +173,24 @@
       "writtenOn": "2022-09-01T23:18:58Z",
       "side": 1,
       "message": "Consider extending the timeout to one minute as before because 15 seconds might not be enough time to load the shared screencast over the network. You also have five minutes to run this test in total, so spending one minute to load the screencast title makes sense.",
+      "revId": "070d618cf32029ec6fb5f6c1e5bb17d9cd6a2f98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3dfe8f98_edd5c29d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/shared_screencast.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1000097
+      },
+      "writtenOn": "2022-09-02T22:54:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "de2bba18_5688bca2",
       "revId": "070d618cf32029ec6fb5f6c1e5bb17d9cd6a2f98",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -142,6 +208,30 @@
       "writtenOn": "2022-09-01T23:18:58Z",
       "side": 1,
       "message": "WaitUntilExists() is less likely to flake because it gives some time for the screencast title to load.",
+      "range": {
+        "startLine": 86,
+        "startChar": 14,
+        "endLine": 86,
+        "endChar": 20
+      },
+      "revId": "070d618cf32029ec6fb5f6c1e5bb17d9cd6a2f98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "08ed892f_7440d67a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/shared_screencast.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1000097
+      },
+      "writtenOn": "2022-09-02T22:54:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "baf6961d_f7658e16",
       "range": {
         "startLine": 86,
         "startChar": 14,
