@@ -179,6 +179,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "214a2de5_c9ce86d8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/hid_wake.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-09-02T21:58:00Z",
+      "side": 1,
+      "message": "Also, I think CombineOutput is a blocking command so I am not sure if a channel is needed here.",
+      "revId": "55ee87817faf49070c60364b1b1340d5d0cfd66a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c2ea8a5a_f028e8c7",
         "filename": "src/chromiumos/tast/remote/bundles/cros/typec/hid_wake.go",
         "patchSetId": 4
