@@ -26,7 +26,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         FullRestoreAlwaysRestore,
-		LacrosStatus: testing.LacrosVariantNeeded,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Test full restore always restore setting",
 		Contacts: []string{
 			"nancylingwang@google.com",
