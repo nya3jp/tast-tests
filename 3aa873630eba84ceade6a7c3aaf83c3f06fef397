@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d452d71_28656abe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/account_disk_usage.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-09-02T16:24:03Z",
+      "side": 1,
+      "message": "I\u0027m not sure this will work, as I think it might be \"Generic\" for this board. Will monitor the CQ and see if things improve tho.",
+      "range": {
+        "startLine": 34,
+        "startChar": 30,
+        "endLine": 34,
+        "endChar": 44
+      },
+      "revId": "3aa873630eba84ceade6a7c3aaf83c3f06fef397",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
