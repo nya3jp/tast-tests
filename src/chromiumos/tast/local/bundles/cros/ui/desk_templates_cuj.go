@@ -116,7 +116,7 @@ func DeskTemplatesCUJ(ctx context.Context, s *testing.State) {
 	pv := perf.NewValues()
 	if err := recorder.Run(ctx, func(ctx context.Context) error {
 		// Open PlayStore, Chrome and Files.
-		appsList := []apps.App{apps.PlayStore, apps.Chrome, apps.Files}
+		appsList := []apps.App{apps.PlayStore, apps.Chrome, apps.FilesSWA}
 		for _, app := range appsList {
 			if err := apps.Launch(ctx, tconn, app.ID); err != nil {
 				return errors.Wrapf(err, "%s can't be opened", app.Name)
@@ -136,7 +136,7 @@ func DeskTemplatesCUJ(ctx context.Context, s *testing.State) {
 		if err := ash.SetOverviewModeAndWait(ctx, tconn, true); err != nil {
 			return errors.Wrap(err, "error in setting overview mode")
 		}
-		if err := ac.WithInterval(2*time.Second).WaitUntilNoEvent(nodewith.Root(), event.LocationChanged)(ctx); err != nil {
+		if err := ac.WithInterval(5*time.Second).WaitUntilNoEvent(nodewith.Root(), event.LocationChanged)(ctx); err != nil {
 			return errors.Wrap(err, "failed to wait for overview animation to be completed")
 		}
 		defer ash.SetOverviewModeAndWait(cleanupCtx, tconn, false)

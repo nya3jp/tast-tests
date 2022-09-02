@@ -106,7 +106,7 @@ func DesksTemplatesLaunch(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Could not find the primary browser app info: ", err)
 	}
-	appsList := []apps.App{apps.PlayStore, browserApp, apps.Files}
+	appsList := []apps.App{apps.PlayStore, browserApp, apps.FilesSWA}
 	if err := wmputils.OpenApps(ctx, tconn, ac, appsList); err != nil {
 		s.Fatal("Failed to open apps: ", err)
 	}
