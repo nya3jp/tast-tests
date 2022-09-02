@@ -1,6 +1,52 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "38f18472_18b570cc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-09-02T07:47:34Z",
+      "side": 1,
+      "message": "nit: start the CL message with the name of the package followed by the message:\npolicy: disable ScreenBrightnessPercent on VMs",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 6
+      },
+      "revId": "b0af81d6b8e26fed39bf750c9ea0499306ade6c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3fa8b714_41f93822",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-09-02T07:47:34Z",
+      "side": 1,
+      "message": "Here you should put what test you run for the CL. In this case compilation would suffice:\n~/chromiumos/src/platform/tast $ . fast_build.sh -T",
+      "range": {
+        "startLine": 10,
+        "startChar": 5,
+        "endLine": 10,
+        "endChar": 34
+      },
+      "revId": "b0af81d6b8e26fed39bf750c9ea0499306ade6c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "2cde9148_4b188e46",
@@ -14,6 +60,23 @@
       "writtenOn": "2022-09-02T04:56:34Z",
       "side": 1,
       "message": "PTAL. This is required by crrev.com/c/3869729 which will make the test run on VMs otherwise.",
+      "revId": "b0af81d6b8e26fed39bf750c9ea0499306ade6c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "829b06a8_acefe29c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-09-02T07:47:34Z",
+      "side": 1,
+      "message": "LGTM % nit.",
       "revId": "b0af81d6b8e26fed39bf750c9ea0499306ade6c4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
