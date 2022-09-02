@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "50949e77_d232cba1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1145774
+      },
+      "writtenOn": "2022-09-02T07:50:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "38f18472_18b570cc",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 6
+      },
+      "revId": "b0af81d6b8e26fed39bf750c9ea0499306ade6c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3fa8b714_41f93822",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-09-02T07:47:34Z",
       "side": 1,
       "message": "Here you should put what test you run for the CL. In this case compilation would suffice:\n~/chromiumos/src/platform/tast $ . fast_build.sh -T",
+      "range": {
+        "startLine": 10,
+        "startChar": 5,
+        "endLine": 10,
+        "endChar": 34
+      },
+      "revId": "b0af81d6b8e26fed39bf750c9ea0499306ade6c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a524dc7_f9d19d72",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1145774
+      },
+      "writtenOn": "2022-09-02T07:50:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3fa8b714_41f93822",
       "range": {
         "startLine": 10,
         "startChar": 5,
