@@ -6,7 +6,6 @@ package kerberos
 
 import (
 	"context"
-	"fmt"
 	"strings"
 	"time"
 
@@ -82,21 +81,7 @@ func MgsManualTicketAccessWebsite(ctx context.Context, s *testing.State) {
 
 	// The website does not have a valid certificate. We accept the warning and
 	// proceed to the content.
-	clickAdvance := fmt.Sprintf("document.getElementById(%q).click()", "details-button")
-	clickProceed := fmt.Sprintf("document.getElementById(%q).click()", "proceed-link")
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		if err := conn.Eval(ctx, clickAdvance, nil); err != nil {
-			return errors.Wrap(err, "failed to click Advance button")
-		}
-
-		if err := conn.Eval(ctx, clickProceed, nil); err != nil {
-			return errors.Wrap(err, "failed to click Proceed button")
-		}
-		return nil
-	}, &testing.PollOptions{
-		Timeout:  5 * time.Second,
-		Interval: 1 * time.Second,
-	}); err != nil {
+	if err := kerberos.ClickAdvancedAndProceed(ctx, conn); err != nil {
 		s.Fatal("Could not accept the certificate warning: ", err)
 	}
 
@@ -109,16 +94,15 @@ func MgsManualTicketAccessWebsite(ctx context.Context, s *testing.State) {
 		if websiteTitle == "" {
 			return errors.New("website title is empty")
 		}
+		if !strings.Contains(websiteTitle, "401") {
+			return errors.New("Website title did not contain error 401")
+		}
 		return nil
 	}, &testing.PollOptions{
 		Timeout:  5 * time.Second,
 		Interval: 1 * time.Second,
 	}); err != nil {
-		s.Fatal("Couldn't get non-empty website title: ", err)
-	}
-
-	if !strings.Contains(websiteTitle, "401") {
-		s.Fatal("Website title did not contain error 401")
+		s.Fatal("Couldn't get the expected website title: ", err)
 	}
 
 	keyboard, err := input.Keyboard(ctx)
@@ -156,7 +140,7 @@ func MgsManualTicketAccessWebsite(ctx context.Context, s *testing.State) {
 		Timeout:  5 * time.Second,
 		Interval: 1 * time.Second,
 	}); err != nil && websiteTitle == "" {
-		s.Fatal("Couldn't get non-empty website title: ", err)
+		s.Fatal("Couldn't get the expected website title: ", err)
 	}
 
 	if !strings.Contains(websiteTitle, "KerberosTest") {

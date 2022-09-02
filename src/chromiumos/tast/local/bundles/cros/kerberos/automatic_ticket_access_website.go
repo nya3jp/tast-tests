@@ -6,7 +6,6 @@ package kerberos
 
 import (
 	"context"
-	"fmt"
 	"strings"
 	"time"
 
@@ -132,14 +131,8 @@ func AutomaticTicketAccessWebsite(ctx context.Context, s *testing.State) {
 
 	// The website does not have a valid certificate. We accept the warning and
 	// proceed to the content.
-	clickAdvance := fmt.Sprintf("document.getElementById(%q).click()", "details-button")
-	if err := conn.Eval(ctx, clickAdvance, nil); err != nil {
-		s.Fatal("Failed to click Advance button: ", err)
-	}
-
-	clickProceed := fmt.Sprintf("document.getElementById(%q).click()", "proceed-link")
-	if err := conn.Eval(ctx, clickProceed, nil); err != nil {
-		s.Fatal("Failed to click Advance button: ", err)
+	if err := kerberos.ClickAdvancedAndProceed(ctx, conn); err != nil {
+		s.Fatal("Could not accept the certificate warning: ", err)
 	}
 
 	//Required as after last click we need to wait for completion. Otherwise
