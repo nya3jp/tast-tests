@@ -16,6 +16,29 @@
       "message": "Xibin for tab_switch_cuj2",
       "revId": "ba0e20c6cd3ee8173549d068ac5f502bfc0c3091",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a02f88df_85d7744b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 530,
+      "author": {
+        "id": 1497117
+      },
+      "writtenOn": "2022-09-03T06:17:56Z",
+      "side": 1,
+      "message": "Thanks for adding me into the review. \nSince Run2() can also be invoked by TabSwitchCUJ2, Lacros support is needed here.  I\u0027m confused how this would work for Lacros because br should be assigned to Lacros instance and bTconn should be the lacros connection in order to test Lacros.",
+      "range": {
+        "startLine": 530,
+        "startChar": 0,
+        "endLine": 530,
+        "endChar": 35
+      },
+      "revId": "ba0e20c6cd3ee8173549d068ac5f502bfc0c3091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
