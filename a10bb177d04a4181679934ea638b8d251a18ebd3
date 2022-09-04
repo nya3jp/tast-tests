@@ -259,6 +259,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "27e3370f_39267bd4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/os_update.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2022-09-04T23:21:16Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ddcf46cc_ca26024d",
+      "revId": "a10bb177d04a4181679934ea638b8d251a18ebd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f169ffb4_d63e4e02",
