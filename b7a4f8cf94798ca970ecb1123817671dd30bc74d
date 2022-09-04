@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a749e76b_8359d3ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/util/power_control.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2022-09-04T21:27:28Z",
+      "side": 1,
+      "message": "let\u0027s make it 10-25, so we can fit 10 cycles in 10 minutes, otherwise we fit only ~ 6-7 due to hwo you calculate amount of cycles",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 23
+      },
+      "revId": "b7a4f8cf94798ca970ecb1123817671dd30bc74d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
