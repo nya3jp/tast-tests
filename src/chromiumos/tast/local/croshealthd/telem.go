@@ -29,7 +29,9 @@ type TelemParams struct {
 	// The category to pass as the --category flag.
 	Category TelemCategory
 	// The pid to pass as the --process flag.
-	PID int
+	PID string
+	// The bool value to pass as the --ignore flag.
+	Ignore bool
 }
 
 // Categories for the cros_healthd telem command.
@@ -72,8 +74,8 @@ func RunTelem(ctx context.Context, params TelemParams, outDir string) ([]byte, e
 	if params.Category != "" {
 		args = append(args, fmt.Sprintf("--category=%s", params.Category))
 	}
-	if params.PID != 0 {
-		args = append(args, fmt.Sprintf("--process=%d", params.PID))
+	if params.PID != "" {
+		args = append(args, fmt.Sprintf("--process=%s", params.PID))
 	}
 	b, err := testexec.CommandContext(ctx, "cros-health-tool", args...).Output(testexec.DumpLogOnError)
 	if err != nil {
