@@ -57,6 +57,7 @@ func CameraboxLoLOff(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Error setting up display: ", err)
 	}
+	defer displayChart.Close(ctx, s.OutDir())
 
 	displayChart.Display(ctx, hostPaths[utils.ZeroPresence])
 

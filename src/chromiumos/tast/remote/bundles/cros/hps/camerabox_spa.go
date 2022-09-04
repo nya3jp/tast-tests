@@ -72,6 +72,7 @@ func CameraboxSPA(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Error setting up display: ", err)
 	}
+	defer displayChart.Close(ctx, s.OutDir())
 
 	// Connecting to Taeko.
 	cleanupCtx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
