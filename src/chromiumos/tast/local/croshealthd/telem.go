@@ -13,6 +13,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"path/filepath"
+	"strconv"
 	"strings"
 
 	"chromiumos/tast/common/testexec"
@@ -28,8 +29,10 @@ type TelemCategory string
 type TelemParams struct {
 	// The category to pass as the --category flag.
 	Category TelemCategory
-	// The pid to pass as the --process flag.
-	PID int
+	// Whether to check all pids for --process flag.
+	AllPIDs bool
+	// The pids to check as the --process flag.
+	PIDs []int
 }
 
 // Categories for the cros_healthd telem command.
@@ -72,8 +75,18 @@ func RunTelem(ctx context.Context, params TelemParams, outDir string) ([]byte, e
 	if params.Category != "" {
 		args = append(args, fmt.Sprintf("--category=%s", params.Category))
 	}
-	if params.PID != 0 {
-		args = append(args, fmt.Sprintf("--process=%d", params.PID))
+	if params.AllPIDs && len(params.PIDs) > 0 {
+		return nil, errors.New("Select either all PIDs or a set of PIDs, but not both")
+	}
+	if params.AllPIDs {
+		args = append(args, "--process=all")
+	}
+	if len(params.PIDs) > 0 {
+		var pidStrs []string
+		for _, pid := range params.PIDs {
+			pidStrs = append(pidStrs, strconv.Itoa(pid))
+		}
+		args = append(args, "--process="+strings.Join(pidStrs, ","))
 	}
 	b, err := testexec.CommandContext(ctx, "cros-health-tool", args...).Output(testexec.DumpLogOnError)
 	if err != nil {

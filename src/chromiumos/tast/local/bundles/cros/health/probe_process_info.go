@@ -78,7 +78,7 @@ func validateProcessInfo(info *processInfo, p *process.Process) error {
 
 // ProbeProcessInfo tests that process info with pid=1 (init) can be successfully and correctly fetched.
 func ProbeProcessInfo(ctx context.Context, s *testing.State) {
-	params := croshealthd.TelemParams{PID: 1}
+	params := croshealthd.TelemParams{PIDs: []int{1}}
 	var info processInfo
 	if err := croshealthd.RunAndParseJSONTelem(ctx, params, s.OutDir(), &info); err != nil {
 		s.Fatal("Failed to get process telemetry info: ", err)
