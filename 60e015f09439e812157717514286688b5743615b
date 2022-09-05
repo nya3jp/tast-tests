@@ -129,6 +129,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b461b41d_e4e26a09",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kerberos/automatic_ticket_access_website.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1365228
+      },
+      "writtenOn": "2022-09-05T13:00:36Z",
+      "side": 1,
+      "message": "Good point, let\u0027s leave it as you suggested!",
+      "parentUuid": "562744c0_0449ad90",
+      "range": {
+        "startLine": 145,
+        "startChar": 1,
+        "endLine": 147,
+        "endChar": 2
+      },
+      "revId": "60e015f09439e812157717514286688b5743615b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fd6ee04d_f52d242f",
