@@ -16,6 +16,46 @@
       "message": "PTAL, thanks!",
       "revId": "aa5238a6d764a129058a76d079e09835899e3c0a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe57835a_f5894a52",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-09-05T10:23:26Z",
+      "side": 1,
+      "message": "shadow reviewer lgtm for tast",
+      "revId": "aa5238a6d764a129058a76d079e09835899e3c0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1adc8d44_2d68d778",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ghost_window.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-09-05T10:23:26Z",
+      "side": 1,
+      "message": "nit: maybe add a comment to explain why android_vm_r is used instead of android_vm",
+      "range": {
+        "startLine": 44,
+        "startChar": 32,
+        "endLine": 44,
+        "endChar": 44
+      },
+      "revId": "aa5238a6d764a129058a76d079e09835899e3c0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
