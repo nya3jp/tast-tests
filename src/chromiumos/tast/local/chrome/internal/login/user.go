@@ -41,7 +41,7 @@ func loginUser(ctx context.Context, cfg *config.Config, sess *driver.Session) er
 		if err := conn.Call(ctx, nil, "Oobe.loginForTesting", creds.User, creds.Pass, creds.GAIAID, false); err != nil {
 			return err
 		}
-	case config.GAIALogin:
+	case config.GAIALogin, config.SAMLLogin:
 		// GAIA login requires Internet connectivity.
 		if err := shill.WaitForOnline(ctx); err != nil {
 			return err

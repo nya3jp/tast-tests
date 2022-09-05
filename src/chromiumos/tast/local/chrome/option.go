@@ -95,6 +95,17 @@ func GAIALogin(creds Creds) Option {
 	}
 }
 
+// SAMLLogin returns an Option that can be passed to New to perform a real
+// GAIA-based login rather than the default fake login but it returns before
+// authentication.
+func SAMLLogin(creds Creds) Option {
+	return func(cfg *config.MutableConfig) error {
+		cfg.LoginMode = config.SAMLLogin
+		cfg.Creds = creds
+		return nil
+	}
+}
+
 // UseSandboxGaia returns an Option that can be passed to New to instruct use
 // the sandbox instance of Gaia.
 // NOTE: Only works with the Gaia-based login options.

@@ -44,6 +44,7 @@ const (
 	FakeLogin                   // fake login with no authentication
 	GAIALogin                   // real network-based login using GAIA backend
 	GuestLogin                  // sign in as ephemeral guest user
+	SAMLLogin                   // sign in to an 3p IDP
 )
 
 // EnrollMode describes how the test should enroll.
