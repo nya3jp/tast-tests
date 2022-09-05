@@ -516,7 +516,11 @@ func (vkbCtx *VirtualKeyboardContext) SwitchToSymbolNumberLayout() uiauto.Action
 }
 
 // SwitchToMultipaste returns an action changing to multipaste layout.
-func (vkbCtx *VirtualKeyboardContext) SwitchToMultipaste() uiauto.Action {
+func (vkbCtx *VirtualKeyboardContext) SwitchToMultipaste(atlasEnabled bool) uiauto.Action {
+	if atlasEnabled {
+		return uiauto.Combine("switch to multipaste keyboard",
+			vkbCtx.ui.LeftClick(KeyFinder.Name("clipboard")))
+	}
 	return uiauto.Combine("switch to multipaste keyboard",
 		vkbCtx.ShowAccessPoints(),
 		vkbCtx.ui.LeftClick(KeyFinder.Name("Multipaste clipboard")),

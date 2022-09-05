@@ -44,6 +44,7 @@ const (
 	TabletVKRestart                           = "tabletVKRestart"
 	TabletVKInGuest                           = "tabletVKInGuest"
 	TabletVKWithMultitouch                    = "tabletVKWithMultitouch"
+	TabletVKWithAtlas                         = "tabletVKWithAtlas"
 	// Lacros fixtures.
 	LacrosAnyVK                                     = "lacrosAnyVK"
 	LacrosAnyVKInGuest                              = "lacrosAnyVKInGuest"
@@ -66,7 +67,7 @@ func init() {
 			"shengjun@chromium.org",
 			"essential-inputs-team@google.com",
 		},
-		Impl:            inputsFixture(notForced, true, false, browser.TypeAsh),
+		Impl:            inputsFixture(notForced, true, false, browser.TypeAsh, false),
 		SetUpTimeout:    chrome.LoginTimeout,
 		PreTestTimeout:  preTestTimeout,
 		PostTestTimeout: postTestTimeout,
@@ -81,7 +82,7 @@ func init() {
 			"shengjun@chromium.org",
 			"essential-inputs-team@google.com",
 		},
-		Impl:            inputsFixture(notForced, true, false, browser.TypeAsh, chrome.GuestLogin()),
+		Impl:            inputsFixture(notForced, true, false, browser.TypeAsh, false, chrome.GuestLogin()),
 		SetUpTimeout:    chrome.LoginTimeout,
 		PreTestTimeout:  preTestTimeout,
 		PostTestTimeout: postTestTimeout,
@@ -96,7 +97,7 @@ func init() {
 			"shengjun@chromium.org",
 			"essential-inputs-team@google.com",
 		},
-		Impl:            inputsFixture(clamshellMode, true, false, browser.TypeAsh),
+		Impl:            inputsFixture(clamshellMode, true, false, browser.TypeAsh, false),
 		SetUpTimeout:    chrome.LoginTimeout,
 		PreTestTimeout:  preTestTimeout,
 		PostTestTimeout: postTestTimeout,
@@ -111,7 +112,7 @@ func init() {
 			"shengjun@chromium.org",
 			"essential-inputs-team@google.com",
 		},
-		Impl:            inputsFixture(clamshellMode, true, true, browser.TypeAsh),
+		Impl:            inputsFixture(clamshellMode, true, true, browser.TypeAsh, false),
 		SetUpTimeout:    chrome.LoginTimeout,
 		PreTestTimeout:  preTestTimeout,
 		PostTestTimeout: postTestTimeout,
@@ -126,7 +127,7 @@ func init() {
 			"shengjun@chromium.org",
 			"essential-inputs-team@google.com",
 		},
-		Impl:            inputsFixture(clamshellMode, false, false, browser.TypeAsh),
+		Impl:            inputsFixture(clamshellMode, false, false, browser.TypeAsh, false),
 		SetUpTimeout:    chrome.LoginTimeout,
 		PreTestTimeout:  preTestTimeout,
 		PostTestTimeout: postTestTimeout,
@@ -141,7 +142,7 @@ func init() {
 			"shengjun@chromium.org",
 			"essential-inputs-team@google.com",
 		},
-		Impl:            inputsFixture(clamshellMode, false, false, browser.TypeAsh, chrome.ExtraArgs("--enable-features=AssistMultiWord")),
+		Impl:            inputsFixture(clamshellMode, false, false, browser.TypeAsh, false, chrome.ExtraArgs("--enable-features=AssistMultiWord")),
 		SetUpTimeout:    chrome.LoginTimeout,
 		PreTestTimeout:  preTestTimeout,
 		PostTestTimeout: postTestTimeout,
@@ -155,7 +156,7 @@ func init() {
 			"jhtin@chromium.org",
 			"essential-inputs-team@google.com",
 		},
-		Impl:            inputsFixture(clamshellMode, false, false, browser.TypeAsh, chrome.ExtraArgs("--enable-features=DiacriticsOnPhysicalKeyboardLongpress")),
+		Impl:            inputsFixture(clamshellMode, false, false, browser.TypeAsh, false, chrome.ExtraArgs("--enable-features=DiacriticsOnPhysicalKeyboardLongpress")),
 		SetUpTimeout:    chrome.LoginTimeout,
 		PreTestTimeout:  preTestTimeout,
 		PostTestTimeout: postTestTimeout,
@@ -170,7 +171,7 @@ func init() {
 			"shengjun@chromium.org",
 			"essential-inputs-team@google.com",
 		},
-		Impl:            inputsFixture(clamshellMode, false, false, browser.TypeAsh, chrome.GuestLogin()),
+		Impl:            inputsFixture(clamshellMode, false, false, browser.TypeAsh, false, chrome.GuestLogin()),
 		SetUpTimeout:    chrome.LoginTimeout,
 		PreTestTimeout:  preTestTimeout,
 		PostTestTimeout: postTestTimeout,
@@ -185,7 +186,7 @@ func init() {
 			"shengjun@chromium.org",
 			"essential-inputs-team@google.com",
 		},
-		Impl:            inputsFixture(tabletMode, true, false, browser.TypeAsh),
+		Impl:            inputsFixture(tabletMode, true, false, browser.TypeAsh, false),
 		SetUpTimeout:    chrome.LoginTimeout,
 		PreTestTimeout:  preTestTimeout,
 		PostTestTimeout: postTestTimeout,
@@ -200,7 +201,7 @@ func init() {
 			"shengjun@chromium.org",
 			"essential-inputs-team@google.com",
 		},
-		Impl:            inputsFixture(tabletMode, true, true, browser.TypeAsh),
+		Impl:            inputsFixture(tabletMode, true, true, browser.TypeAsh, false),
 		SetUpTimeout:    chrome.LoginTimeout,
 		PreTestTimeout:  preTestTimeout,
 		PostTestTimeout: postTestTimeout,
@@ -215,7 +216,7 @@ func init() {
 			"shengjun@chromium.org",
 			"essential-inputs-team@google.com",
 		},
-		Impl:            inputsFixture(tabletMode, true, false, browser.TypeAsh, chrome.GuestLogin()),
+		Impl:            inputsFixture(tabletMode, true, false, browser.TypeAsh, false, chrome.GuestLogin()),
 		SetUpTimeout:    chrome.LoginTimeout,
 		PreTestTimeout:  preTestTimeout,
 		PostTestTimeout: postTestTimeout,
@@ -229,7 +230,21 @@ func init() {
 			"michellegc@google.com",
 			"essential-inputs-team@google.com",
 		},
-		Impl:            inputsFixture(tabletMode, true, false, browser.TypeAsh, chrome.ExtraArgs("--enable-features=VirtualKeyboardMultitouch")),
+		Impl:            inputsFixture(tabletMode, true, false, browser.TypeAsh, false, chrome.ExtraArgs("--enable-features=VirtualKeyboardMultitouch")),
+		SetUpTimeout:    chrome.LoginTimeout,
+		PreTestTimeout:  preTestTimeout,
+		PostTestTimeout: postTestTimeout,
+		ResetTimeout:    resetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+	})
+	testing.AddFixture(&testing.Fixture{
+		Name: TabletVKWithAtlas,
+		Desc: "Tablet mode with VK and Atlas enabled",
+		Contacts: []string{
+			"jopalmer@google.com",
+			"essential-inputs-team@google.com",
+		},
+		Impl:            inputsFixture(tabletMode, true, false, browser.TypeAsh, true, chrome.ExtraArgs("--enable-features=VirtualKeyboardNewHeader")),
 		SetUpTimeout:    chrome.LoginTimeout,
 		PreTestTimeout:  preTestTimeout,
 		PostTestTimeout: postTestTimeout,
@@ -246,7 +261,7 @@ func init() {
 			"shengjun@chromium.org",
 			"essential-inputs-team@google.com",
 		},
-		Impl:            inputsFixture(notForced, true, false, browser.TypeLacros),
+		Impl:            inputsFixture(notForced, true, false, browser.TypeLacros, false),
 		SetUpTimeout:    chrome.LoginTimeout,
 		PreTestTimeout:  preTestTimeout,
 		PostTestTimeout: postTestTimeout,
@@ -261,7 +276,7 @@ func init() {
 			"shengjun@chromium.org",
 			"essential-inputs-team@google.com",
 		},
-		Impl:            inputsFixture(notForced, true, false, browser.TypeLacros, chrome.GuestLogin()),
+		Impl:            inputsFixture(notForced, true, false, browser.TypeLacros, false, chrome.GuestLogin()),
 		SetUpTimeout:    chrome.LoginTimeout,
 		PreTestTimeout:  preTestTimeout,
 		PostTestTimeout: postTestTimeout,
@@ -276,7 +291,7 @@ func init() {
 			"shengjun@chromium.org",
 			"essential-inputs-team@google.com",
 		},
-		Impl:            inputsFixture(clamshellMode, true, false, browser.TypeLacros),
+		Impl:            inputsFixture(clamshellMode, true, false, browser.TypeLacros, false),
 		SetUpTimeout:    chrome.LoginTimeout,
 		PreTestTimeout:  preTestTimeout,
 		PostTestTimeout: postTestTimeout,
@@ -291,7 +306,7 @@ func init() {
 			"shengjun@chromium.org",
 			"essential-inputs-team@google.com",
 		},
-		Impl:            inputsFixture(clamshellMode, false, false, browser.TypeLacros),
+		Impl:            inputsFixture(clamshellMode, false, false, browser.TypeLacros, false),
 		SetUpTimeout:    chrome.LoginTimeout,
 		PreTestTimeout:  preTestTimeout,
 		PostTestTimeout: postTestTimeout,
@@ -306,7 +321,7 @@ func init() {
 			"shengjun@chromium.org",
 			"essential-inputs-team@google.com",
 		},
-		Impl:            inputsFixture(clamshellMode, false, false, browser.TypeLacros, chrome.ExtraArgs("--enable-features=AssistMultiWord")),
+		Impl:            inputsFixture(clamshellMode, false, false, browser.TypeLacros, false, chrome.ExtraArgs("--enable-features=AssistMultiWord")),
 		SetUpTimeout:    chrome.LoginTimeout,
 		PreTestTimeout:  preTestTimeout,
 		PostTestTimeout: postTestTimeout,
@@ -321,7 +336,7 @@ func init() {
 			"shengjun@chromium.org",
 			"essential-inputs-team@google.com",
 		},
-		Impl:            inputsFixture(clamshellMode, false, false, browser.TypeLacros, chrome.ExtraArgs("--enable-features=DiacriticsOnPhysicalKeyboardLongpress")),
+		Impl:            inputsFixture(clamshellMode, false, false, browser.TypeLacros, false, chrome.ExtraArgs("--enable-features=DiacriticsOnPhysicalKeyboardLongpress")),
 		SetUpTimeout:    chrome.LoginTimeout,
 		PreTestTimeout:  preTestTimeout,
 		PostTestTimeout: postTestTimeout,
@@ -336,7 +351,7 @@ func init() {
 			"shengjun@chromium.org",
 			"essential-inputs-team@google.com",
 		},
-		Impl:            inputsFixture(clamshellMode, false, false, browser.TypeLacros, chrome.GuestLogin()),
+		Impl:            inputsFixture(clamshellMode, false, false, browser.TypeLacros, false, chrome.GuestLogin()),
 		SetUpTimeout:    chrome.LoginTimeout,
 		PreTestTimeout:  preTestTimeout,
 		PostTestTimeout: postTestTimeout,
@@ -351,7 +366,7 @@ func init() {
 			"shengjun@chromium.org",
 			"essential-inputs-team@google.com",
 		},
-		Impl:            inputsFixture(tabletMode, true, false, browser.TypeLacros),
+		Impl:            inputsFixture(tabletMode, true, false, browser.TypeLacros, false),
 		SetUpTimeout:    chrome.LoginTimeout,
 		PreTestTimeout:  preTestTimeout,
 		PostTestTimeout: postTestTimeout,
@@ -366,7 +381,7 @@ func init() {
 			"shengjun@chromium.org",
 			"essential-inputs-team@google.com",
 		},
-		Impl:            inputsFixture(tabletMode, true, false, browser.TypeLacros, chrome.GuestLogin()),
+		Impl:            inputsFixture(tabletMode, true, false, browser.TypeLacros, false, chrome.GuestLogin()),
 		SetUpTimeout:    chrome.LoginTimeout,
 		PreTestTimeout:  preTestTimeout,
 		PostTestTimeout: postTestTimeout,
@@ -380,7 +395,7 @@ func init() {
 			"michellegc@google.com",
 			"essential-inputs-team@google.com",
 		},
-		Impl:            inputsFixture(tabletMode, true, false, browser.TypeLacros, chrome.ExtraArgs("--enable-features=VirtualKeyboardMultitouch")),
+		Impl:            inputsFixture(tabletMode, true, false, browser.TypeLacros, false, chrome.ExtraArgs("--enable-features=VirtualKeyboardMultitouch")),
 		SetUpTimeout:    chrome.LoginTimeout,
 		PreTestTimeout:  preTestTimeout,
 		PostTestTimeout: postTestTimeout,
@@ -391,10 +406,11 @@ func init() {
 
 // FixtData is the data returned by SetUp and passed to tests.
 type FixtData struct {
-	Chrome      *chrome.Chrome
-	TestAPIConn *chrome.TestConn
-	UserContext *useractions.UserContext
-	BrowserType browser.Type
+	Chrome       *chrome.Chrome
+	TestAPIConn  *chrome.TestConn
+	UserContext  *useractions.UserContext
+	BrowserType  browser.Type
+	AtlasEnabled bool
 }
 
 // deviceMode describes the device UI mode it boots in.
@@ -408,15 +424,16 @@ const (
 
 // inputsFixtureImpl implements testing.FixtureImpl.
 type inputsFixtureImpl struct {
-	cr          *chrome.Chrome  // Underlying Chrome instance
-	dm          deviceMode      // Device ui mode to test
-	vkEnabled   bool            // Whether virtual keyboard is force enabled
-	restart     bool            // Whether restart the fixture after each test
-	browserType browser.Type    // Whether Ash or Lacros is used for test
-	fOpts       []chrome.Option // Options that are passed to chrome.New
-	tconn       *chrome.TestConn
-	recorder    *uiauto.ScreenRecorder
-	uc          *useractions.UserContext
+	cr           *chrome.Chrome  // Underlying Chrome instance
+	dm           deviceMode      // Device ui mode to test
+	vkEnabled    bool            // Whether virtual keyboard is force enabled
+	restart      bool            // Whether restart the fixture after each test
+	browserType  browser.Type    // Whether Ash or Lacros is used for test
+	fOpts        []chrome.Option // Options that are passed to chrome.New
+	tconn        *chrome.TestConn
+	recorder     *uiauto.ScreenRecorder
+	uc           *useractions.UserContext
+	atlasEnabled bool
 }
 
 func (f *inputsFixtureImpl) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
@@ -472,7 +489,7 @@ func (f *inputsFixtureImpl) SetUp(ctx context.Context, s *testing.FixtState) int
 	f.uc = uc
 
 	chrome.Lock()
-	return FixtData{f.cr, f.tconn, f.uc, f.browserType}
+	return FixtData{f.cr, f.tconn, f.uc, f.browserType, f.atlasEnabled}
 }
 
 func (f *inputsFixtureImpl) PreTest(ctx context.Context, s *testing.FixtTestState) {
@@ -529,13 +546,14 @@ func (f *inputsFixtureImpl) TearDown(ctx context.Context, s *testing.FixtState) 
 	f.tconn = nil
 }
 
-func inputsFixture(dm deviceMode, vkEnabled, restart bool, browserType browser.Type, opts ...chrome.Option) testing.FixtureImpl {
+func inputsFixture(dm deviceMode, vkEnabled, restart bool, browserType browser.Type, atlasEnabled bool, opts ...chrome.Option) testing.FixtureImpl {
 	return &inputsFixtureImpl{
-		dm:          dm,
-		vkEnabled:   vkEnabled,
-		restart:     restart,
-		browserType: browserType,
-		fOpts:       opts,
+		dm:           dm,
+		vkEnabled:    vkEnabled,
+		restart:      restart,
+		browserType:  browserType,
+		fOpts:        opts,
+		atlasEnabled: atlasEnabled,
 	}
 }
 

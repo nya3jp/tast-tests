@@ -47,6 +47,12 @@ func init() {
 				ExtraAttr:         []string{"informational"},
 			},
 			{
+				Name:              "atlas_informational",
+				Fixture:           fixture.TabletVKWithAtlas,
+				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
+				ExtraAttr:         []string{"informational"},
+			},
+			{
 				Name:              "lacros",
 				Fixture:           fixture.LacrosTabletVK,
 				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
@@ -109,7 +115,7 @@ func VirtualKeyboardMultipaste(ctx context.Context, s *testing.State) {
 		actionName,
 		uiauto.Combine("navigate to multipaste virtual keyboard and paste text",
 			its.ClickFieldUntilVKShown(inputField),
-			vkbCtx.SwitchToMultipaste(),
+			vkbCtx.SwitchToMultipaste((fixture.FixtData)(s.FixtValue().(fixture.FixtData)).AtlasEnabled),
 			uiauto.RetrySilently(3, uiauto.Combine("click on multipaste items",
 				its.Clear(inputField),
 				vkbCtx.TapMultipasteItem(text1),
