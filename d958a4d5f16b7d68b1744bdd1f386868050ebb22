@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c0e0f49_ff62472b",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_client.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 374,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2022-09-05T19:51:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b6d025e1_0d4ecadd",
+      "range": {
+        "startLine": 374,
+        "startChar": 70,
+        "endLine": 374,
+        "endChar": 71
+      },
+      "revId": "d958a4d5f16b7d68b1744bdd1f386868050ebb22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "961f7a2d_2e4f346e",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a52b786e_5d35c821",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_client.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2022-09-05T19:51:07Z",
+      "side": 1,
+      "message": "removed",
+      "parentUuid": "961f7a2d_2e4f346e",
+      "range": {
+        "startLine": 378,
+        "startChar": 2,
+        "endLine": 378,
+        "endChar": 64
+      },
+      "revId": "d958a4d5f16b7d68b1744bdd1f386868050ebb22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3f8eb174_fff47c49",
@@ -77,6 +125,30 @@
       "writtenOn": "2022-09-05T00:51:37Z",
       "side": 1,
       "message": "nit: don\u0027t log too many things here, see http://go/tast-docs/writing_tests.md#When-to-log",
+      "range": {
+        "startLine": 384,
+        "startChar": 1,
+        "endLine": 384,
+        "endChar": 58
+      },
+      "revId": "d958a4d5f16b7d68b1744bdd1f386868050ebb22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ee36928_acc5eb49",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_client.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2022-09-05T19:51:07Z",
+      "side": 1,
+      "message": "This does help debugging though, not impedes it with clutter, from my experience.",
+      "parentUuid": "3f8eb174_fff47c49",
       "range": {
         "startLine": 384,
         "startChar": 1,
