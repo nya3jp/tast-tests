@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1587056_be329fb9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/media_session_api.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-09-05T11:46:17Z",
+      "side": 1,
+      "message": "We don\u0027t need to start a new browser for ash-Chrome, but we need it for Lacros.\nMore comments are added to explain it.",
+      "parentUuid": "37bd824a_4e7427e7",
+      "revId": "46ee2d39c8901e94d236fb1fe96c0c61c1d5afd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e3264f63_d5da8195",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd18b9f3_4c11e1f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/media_session_api.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-09-05T11:46:17Z",
+      "side": 1,
+      "message": "There are multiple nodes that are `role.Window` and also with the specified name, class name is the only field to distinguish them. \n\nIt is necessary to use the class name to find such a node.",
+      "parentUuid": "e3264f63_d5da8195",
+      "revId": "46ee2d39c8901e94d236fb1fe96c0c61c1d5afd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "21503cb2_99dcbb76",
@@ -48,6 +84,30 @@
       "writtenOn": "2022-09-05T05:22:36Z",
       "side": 1,
       "message": "cleanupCtx here?",
+      "range": {
+        "startLine": 136,
+        "startChar": 49,
+        "endLine": 136,
+        "endChar": 52
+      },
+      "revId": "46ee2d39c8901e94d236fb1fe96c0c61c1d5afd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d11d25b_ea9ad51e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/media_session_api.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-09-05T11:46:17Z",
+      "side": 1,
+      "message": "Fixed.",
+      "parentUuid": "21503cb2_99dcbb76",
       "range": {
         "startLine": 136,
         "startChar": 49,
