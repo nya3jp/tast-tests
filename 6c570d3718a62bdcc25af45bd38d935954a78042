@@ -1,0 +1,135 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e9d496f_e71ed6d3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1510928
+      },
+      "writtenOn": "2022-09-05T07:12:29Z",
+      "side": 1,
+      "message": "rvc-arc",
+      "range": {
+        "startLine": 10,
+        "startChar": 10,
+        "endLine": 10,
+        "endChar": 20
+      },
+      "revId": "6c570d3718a62bdcc25af45bd38d935954a78042",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "942e4668_7cb57f7c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1510928
+      },
+      "writtenOn": "2022-09-05T07:12:29Z",
+      "side": 1,
+      "message": "And removed some unrelated classes.",
+      "revId": "6c570d3718a62bdcc25af45bd38d935954a78042",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b408b1ab_23035cdf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510928
+      },
+      "writtenOn": "2022-09-05T07:12:29Z",
+      "side": 1,
+      "message": "Good starting point. Please fix the issues.",
+      "revId": "6c570d3718a62bdcc25af45bd38d935954a78042",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eab0b557_70f5f91d",
+        "filename": "android/ArcWindowAnimationJankTest/src/org/chromium/arc/testapp/windowanimationjank/FullscreenRotationTest.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1510928
+      },
+      "writtenOn": "2022-09-05T07:12:29Z",
+      "side": 1,
+      "message": "Remove this file.",
+      "revId": "6c570d3718a62bdcc25af45bd38d935954a78042",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5904d3c9_abd8a88f",
+        "filename": "android/ArcWindowAnimationJankTest/src/org/chromium/arc/testapp/windowanimationjank/Utils.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1510928
+      },
+      "writtenOn": "2022-09-05T07:12:29Z",
+      "side": 1,
+      "message": "Remove these lines.",
+      "revId": "6c570d3718a62bdcc25af45bd38d935954a78042",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7404247_6786b8db",
+        "filename": "android/ArcWindowAnimationJankTest/src/org/chromium/arc/testapp/windowanimationjank/Utils.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1510928
+      },
+      "writtenOn": "2022-09-05T07:12:29Z",
+      "side": 1,
+      "message": "Please remove unused variables. If all variables are unused, remove this class.",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 0
+      },
+      "revId": "6c570d3718a62bdcc25af45bd38d935954a78042",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c534932_0708b29a",
+        "filename": "android/ArcWindowAnimationJankTest/src/org/chromium/arc/testapp/windowanimationjank/WindowAnimationJankTestBase.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1510928
+      },
+      "writtenOn": "2022-09-05T07:12:29Z",
+      "side": 1,
+      "message": "Remove this file.",
+      "revId": "6c570d3718a62bdcc25af45bd38d935954a78042",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
