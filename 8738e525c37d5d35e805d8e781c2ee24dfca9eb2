@@ -77,6 +77,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "978e76c0_45122e51",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_animation_jank.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1510928
+      },
+      "writtenOn": "2022-09-05T08:21:44Z",
+      "side": 1,
+      "message": "Change to owner ldap.",
+      "revId": "8738e525c37d5d35e805d8e781c2ee24dfca9eb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8b57f67f_8e5a7d52",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_animation_jank.go",
         "patchSetId": 5
@@ -122,6 +139,23 @@
       "writtenOn": "2022-09-05T08:12:38Z",
       "side": 1,
       "message": "Add code for start perfetto.",
+      "revId": "8738e525c37d5d35e805d8e781c2ee24dfca9eb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a3d8588_54dfe0a1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_animation_jank.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1510928
+      },
+      "writtenOn": "2022-09-05T08:21:44Z",
+      "side": 1,
+      "message": "Save perfetto trace file. Leave a todo here, e.g.:\n\nTODO(yukashu): Analyse Perfetto trace file here.",
       "revId": "8738e525c37d5d35e805d8e781c2ee24dfca9eb2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
