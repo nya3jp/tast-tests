@@ -54,7 +54,7 @@ func LogIn(ctx context.Context, cfg *config.Config, sess *driver.Session) error 
 	switch cfg.LoginMode() {
 	case config.NoLogin:
 		return nil
-	case config.FakeLogin, config.GAIALogin:
+	case config.FakeLogin, config.GAIALogin, config.SAMLLogin:
 		if err := loginUser(ctx, cfg, sess); err != nil {
 			return err
 		}
