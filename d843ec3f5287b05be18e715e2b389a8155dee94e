@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "440b277a_e8bf22da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shimlessrma/app_service.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-09-05T05:23:48Z",
+      "side": 1,
+      "message": "remove this as well?",
+      "range": {
+        "startLine": 125,
+        "startChar": 1,
+        "endLine": 125,
+        "endChar": 80
+      },
+      "revId": "d843ec3f5287b05be18e715e2b389a8155dee94e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7ff4f0f_890b6f0d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shimlessrma/app_service.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-09-05T05:23:48Z",
+      "side": 1,
+      "message": "you should not ignore the error here, as the following code execution replies on it.",
+      "range": {
+        "startLine": 139,
+        "startChar": 7,
+        "endLine": 139,
+        "endChar": 8
+      },
+      "revId": "d843ec3f5287b05be18e715e2b389a8155dee94e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
