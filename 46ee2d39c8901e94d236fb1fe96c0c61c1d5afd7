@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37bd824a_4e7427e7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/media_session_api.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2022-09-05T00:43:05Z",
+      "side": 1,
+      "message": "Why ae you starting a new browser?  Can\u0027t you use the one from the fixture?\n\nIf not, please add a comment as to why.",
+      "revId": "46ee2d39c8901e94d236fb1fe96c0c61c1d5afd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3264f63_d5da8195",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/media_session_api.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2022-09-05T00:43:05Z",
+      "side": 1,
+      "message": "Is the classname necessary?  Without it you can share the finder between the two browser types.",
+      "revId": "46ee2d39c8901e94d236fb1fe96c0c61c1d5afd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
