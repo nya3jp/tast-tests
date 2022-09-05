@@ -34,9 +34,15 @@ func init() {
 		Desc:         "Test ghost window for ARC Apps",
 		Contacts:     []string{"sstan@google.com", "arc-framework+tast@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"chrome", "arc"},
+		SoftwareDeps: []string{"chrome"},
 		Timeout:      5 * time.Minute,
 		Vars:         []string{"ui.gaiaPoolDefault"},
+		Params: []testing.Param{{
+			ExtraSoftwareDeps: []string{"android_p"},
+		}, {
+			Name:              "vm",
+			ExtraSoftwareDeps: []string{"android_vm_r"},
+		}},
 	})
 }
 
