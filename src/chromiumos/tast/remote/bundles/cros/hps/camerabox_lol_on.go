@@ -77,7 +77,8 @@ func CameraboxLoLOn(ctx context.Context, s *testing.State) {
 	displayChart.Display(ctx, hostPaths[presenceNo.numOfPerson])
 
 	// Connecting to Taeko.
-	cleanupCtx, cancel := ctxutil.Shorten(ctx, time.Minute)
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, time.Minute)
 	defer cancel()
 	cl, err := rpc.Dial(ctx, dut, s.RPCHint())
 	if err != nil {
