@@ -16,6 +16,23 @@
       "message": "LGTM",
       "revId": "4b04313b40f63c3d816072702f1e06ffe126b0e2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4de5809f_c6c3c6dc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1145774
+      },
+      "writtenOn": "2022-09-05T08:42:26Z",
+      "side": 1,
+      "message": "Thanks for the review! Waiting until tree turns green to avoid wasting time/resource in CQ.",
+      "revId": "4b04313b40f63c3d816072702f1e06ffe126b0e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
