@@ -16,6 +16,46 @@
       "message": "PTAL",
       "revId": "5ea071e2457c464195958b42ac7c9197ebbf15b5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2876804_b5ce8d7b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/screen_brightness_percent.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-09-05T07:50:25Z",
+      "side": 1,
+      "message": "Is it possible to add a hwdep that determines if display brightness is available instead?",
+      "range": {
+        "startLine": 33,
+        "startChar": 30,
+        "endLine": 33,
+        "endChar": 45
+      },
+      "revId": "5ea071e2457c464195958b42ac7c9197ebbf15b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0b678a5_842b81ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_control.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-09-05T07:50:25Z",
+      "side": 1,
+      "message": "Can you increase the timeouts instead? I\u0027m also not sure how this is related to the change in the description.",
+      "revId": "5ea071e2457c464195958b42ac7c9197ebbf15b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
