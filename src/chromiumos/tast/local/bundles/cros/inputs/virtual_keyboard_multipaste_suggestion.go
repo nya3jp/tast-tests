@@ -35,20 +35,20 @@ func init() {
 		SearchFlags:  util.IMESearchFlags([]ime.InputMethod{ime.EnglishUS}),
 		Params: []testing.Param{
 			{
-				Fixture:           fixture.TabletVKWithMultipasteSuggestion,
+				Fixture:           fixture.TabletVK,
 				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
 				ExtraAttr:         []string{"group:input-tools-upstream"},
 			},
 			{
 				Name:              "informational",
-				Fixture:           fixture.TabletVKWithMultipasteSuggestion,
+				Fixture:           fixture.TabletVK,
 				ExtraAttr:         []string{"informational"},
 				ExtraHardwareDeps: hwdep.D(pre.InputsUnstableModels, hwdep.SkipOnPlatform("puff", "fizz")),
 			},
 			{
 				Name:              "lacros",
 				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
-				Fixture:           fixture.LacrosTabletVKWithMultipasteSuggestion,
+				Fixture:           fixture.LacrosTabletVK,
 				ExtraAttr:         []string{"group:input-tools-upstream"},
 				ExtraSoftwareDeps: []string{"lacros"},
 			},

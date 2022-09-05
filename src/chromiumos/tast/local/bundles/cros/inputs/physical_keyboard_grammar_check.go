@@ -37,18 +37,18 @@ func init() {
 		SoftwareDeps: []string{"chrome", "chrome_internal", "ondevice_grammar"},
 		Params: []testing.Param{
 			{
-				Fixture:           fixture.ClamshellNonVKWithGrammarCheck,
+				Fixture:           fixture.ClamshellNonVK,
 				ExtraHardwareDeps: hwdep.D(hwdep.Model(pre.GrammarEnabledModels...)),
 				ExtraAttr:         []string{"group:input-tools-upstream"},
 			},
 			{
 				Name:              "informational",
-				Fixture:           fixture.ClamshellNonVKWithGrammarCheck,
+				Fixture:           fixture.ClamshellNonVK,
 				ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(pre.GrammarEnabledModels...)),
 			},
 			{
 				Name:              "lacros",
-				Fixture:           fixture.LacrosClamshellNonVKWithGrammarCheck,
+				Fixture:           fixture.LacrosClamshellNonVK,
 				ExtraSoftwareDeps: []string{"lacros"},
 				ExtraAttr:         []string{"group:input-tools-upstream"},
 			},
