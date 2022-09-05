@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package tast.cros.enterpriseconnectors;
+
+import "google/protobuf/empty.proto";
+
+option go_package = "chromiumos/tast/services/cros/enterpriseconnectors";
+
+message EnrollRequest {
+  string user = 1;
+  string pass = 2;
+}
+
+message LoginWithFakeIDPRequest {
+  string signinProfileTestExtensionManifestKey = 1;
+}
+
+message LoginWithFakeIDPResponse {
+  bool succesful = 1;
+}
+
+// DeviceTrustService provides RPC methods to run device trust related operations
+service DeviceTrustService {
+  rpc Enroll(EnrollRequest) returns (google.protobuf.Empty) {}
+  rpc LoginWithFakeIDP(LoginWithFakeIDPRequest) returns (LoginWithFakeIDPResponse) {}
+}
