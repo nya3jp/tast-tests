@@ -111,7 +111,7 @@ func CameraboxLoLOff(ctx context.Context, s *testing.State) {
 	}
 	// It should not dim after DimDelay.
 	// Poll instead of Sleep in order to fail fast in case screen dims before the delay.
-	err := PollForBrightnessChange(ctx, brightness, quickDimMetrics.DimDelay.AsDuration(), dut.Conn())
+	err = utils.PollForBrightnessChange(ctx, brightness, quickDimMetrics.DimDelay.AsDuration(), dut.Conn())
 	if err != nil {
 		// If brightness is not changed it's not an error in this case, as we'll check the brightness after polling anyway.
 		testing.ContextLog(ctx, err.Error())
@@ -125,7 +125,11 @@ func CameraboxLoLOff(ctx context.Context, s *testing.State) {
 	}
 
 	// It should not lock after quick dim delay.
-	testing.Sleep(ctx, quickDimMetrics.ScreenOffDelay.AsDuration())
+	err = utils.PollForBrightnessChange(ctx, brightness, quickDimMetrics.ScreenOffDelay.AsDuration(), dut.Conn())
+	if err != nil {
+		// If brightness is not changed it's not an error in this case, as we'll check the brightness after polling anyway.
+		testing.ContextLog(ctx, err.Error())
+	}
 	newBrightness, err = utils.GetBrightness(hctx.Ctx, dut.Conn())
 	if err != nil {
 		s.Fatal("Error when getting brightness: ", err)
