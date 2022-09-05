@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d508f9c1_414bb9c0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hps/camerabox_lol_off.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-09-05T01:42:47Z",
+      "side": 1,
+      "message": "you need to reserve time for the cleanup tasks. https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Reserve-time-for-clean_up-task\n\nditto to others.",
+      "range": {
+        "startLine": 60,
+        "startChar": 26,
+        "endLine": 60,
+        "endChar": 29
+      },
+      "revId": "d5dee8892c2f4c801fa3c2548b425a5eb77908c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
