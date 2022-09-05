@@ -17,11 +17,13 @@ import (
 	"chromiumos/tast/testing"
 )
 
+const manualTestTime = 5 * time.Minute
+
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         GamingProxyCUJ,
+		Func:         GamingProxyManualCUJ,
 		LacrosStatus: testing.LacrosVariantExists,
-		Desc:         "A test case that simulates the Online Gaming Platform testing",
+		Desc:         "Semi-automated tests that allow users to manually operate on the browser UI with keyboard/mouse",
 		Contacts:     []string{"xliu@cienet.com", "jane.yang@cienet.com"},
 		SoftwareDeps: []string{"chrome"},
 		Vars: []string{
@@ -31,66 +33,51 @@ func init() {
 			{
 				Name:    "basic_h264_1080p_60fps",
 				Fixture: "loggedInAndKeepState",
-				Timeout: 20 * time.Minute,
+				Timeout: manualTestTime + 2*time.Minute,
 				Val: gamingproxycuj.TestParams{
-					BrowserType: browser.TypeAsh,
-					VideoOption: gamingproxycuj.H264DASH1080P60FPS,
-				},
-			},
-			{
-				Name:    "plus_h264_4k_60fps",
-				Fixture: "loggedInAndKeepState",
-				Timeout: 20 * time.Minute,
-				Val: gamingproxycuj.TestParams{
-					BrowserType: browser.TypeAsh,
-					VideoOption: gamingproxycuj.H264DASH4K60FPS,
+					BrowserType:    browser.TypeAsh,
+					VideoOption:    gamingproxycuj.H264DASH1080P60FPS,
+					ManualTestTime: manualTestTime,
 				},
 			},
 			{
 				Name:    "plus_av1_4k_60fps",
 				Fixture: "loggedInAndKeepState",
-				Timeout: 20 * time.Minute,
+				Timeout: manualTestTime + 2*time.Minute,
 				Val: gamingproxycuj.TestParams{
-					BrowserType: browser.TypeAsh,
-					VideoOption: gamingproxycuj.AV1DASH60FPS,
+					BrowserType:    browser.TypeAsh,
+					VideoOption:    gamingproxycuj.AV1DASH60FPS,
+					ManualTestTime: manualTestTime,
 				},
 			},
 			{
 				Name:              "basic_lacros_h264_1080p_60fps",
 				Fixture:           "loggedInAndKeepStateLacros",
-				Timeout:           20 * time.Minute,
+				Timeout:           manualTestTime + 2*time.Minute,
 				ExtraSoftwareDeps: []string{"lacros"},
 				Val: gamingproxycuj.TestParams{
-					BrowserType: browser.TypeLacros,
-					VideoOption: gamingproxycuj.H264DASH1080P60FPS,
-				},
-			},
-			{
-				Name:              "plus_lacros_h264_4k_60fps",
-				Fixture:           "loggedInAndKeepStateLacros",
-				Timeout:           20 * time.Minute,
-				ExtraSoftwareDeps: []string{"lacros"},
-				Val: gamingproxycuj.TestParams{
-					BrowserType: browser.TypeLacros,
-					VideoOption: gamingproxycuj.H264DASH4K60FPS,
+					BrowserType:    browser.TypeLacros,
+					VideoOption:    gamingproxycuj.H264DASH1080P60FPS,
+					ManualTestTime: manualTestTime,
 				},
 			},
 			{
 				Name:              "plus_lacros_av1_4k_60fps",
 				Fixture:           "loggedInAndKeepStateLacros",
-				Timeout:           20 * time.Minute,
+				Timeout:           manualTestTime + 2*time.Minute,
 				ExtraSoftwareDeps: []string{"lacros"},
 				Val: gamingproxycuj.TestParams{
-					BrowserType: browser.TypeLacros,
-					VideoOption: gamingproxycuj.AV1DASH60FPS,
+					BrowserType:    browser.TypeLacros,
+					VideoOption:    gamingproxycuj.AV1DASH60FPS,
+					ManualTestTime: manualTestTime,
 				},
 			},
 		},
 	})
 }
 
-// GamingProxyCUJ simulates the Online Gaming Platform testing.
-func GamingProxyCUJ(ctx context.Context, s *testing.State) {
+// GamingProxyManualCUJ simulates the Online Gaming Platform with manual testing.
+func GamingProxyManualCUJ(ctx context.Context, s *testing.State) {
 	p := s.Param().(gamingproxycuj.TestParams)
 	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 
@@ -128,7 +115,7 @@ func GamingProxyCUJ(ctx context.Context, s *testing.State) {
 		defer cleanup(cleanupCtx)
 	}
 
-	if err := gamingproxycuj.Run(ctx, cr, s.OutDir(), tabletMode, p.BrowserType, p.VideoOption); err != nil {
-		s.Fatal("Failed to run gaming proxy cuj: ", err)
+	if err := gamingproxycuj.RunＭanual(ctx, cr, s.OutDir(), tabletMode, p.BrowserType, p.VideoOption, p.ManualTestTime); err != nil {
+		s.Fatal("Failed to run gaming proxy manual cuj: ", err)
 	}
 }
