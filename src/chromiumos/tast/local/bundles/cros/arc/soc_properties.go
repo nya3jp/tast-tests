@@ -37,7 +37,7 @@ func init() {
 			"ultima",
 		)),
 
-		SoftwareDeps: []string{"arc", "chrome"},
+		SoftwareDeps: []string{"android_vm", "chrome"},
 		Fixture:      "arcBooted",
 		Timeout:      4 * time.Minute,
 
