@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e0c289c_5434064b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-09-05T00:51:37Z",
+      "side": 1,
+      "message": "LGTM % nits, please wait for LGTM from hardikgoyal@ or yich@ before submitting",
+      "revId": "d958a4d5f16b7d68b1744bdd1f386868050ebb22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6d025e1_0d4ecadd",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_client.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 374,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-09-05T00:51:37Z",
+      "side": 1,
+      "message": "nit: comment should be after the comma",
+      "range": {
+        "startLine": 374,
+        "startChar": 70,
+        "endLine": 374,
+        "endChar": 71
+      },
+      "revId": "d958a4d5f16b7d68b1744bdd1f386868050ebb22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "961f7a2d_2e4f346e",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_client.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-09-05T00:51:37Z",
+      "side": 1,
+      "message": "nit: Should this be uncommented? Maybe remove it if not.",
+      "range": {
+        "startLine": 378,
+        "startChar": 2,
+        "endLine": 378,
+        "endChar": 64
+      },
+      "revId": "d958a4d5f16b7d68b1744bdd1f386868050ebb22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f8eb174_fff47c49",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_client.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-09-05T00:51:37Z",
+      "side": 1,
+      "message": "nit: don\u0027t log too many things here, see http://go/tast-docs/writing_tests.md#When-to-log",
+      "range": {
+        "startLine": 384,
+        "startChar": 1,
+        "endLine": 384,
+        "endChar": 58
+      },
+      "revId": "d958a4d5f16b7d68b1744bdd1f386868050ebb22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
