@@ -82,6 +82,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5316d2c1_e49286f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/screen_brightness_percent.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-09-05T08:30:13Z",
+      "side": 1,
+      "message": "I\u0027m not aware of such a hwdep, I think for now excluding it on VMs should be fine.",
+      "parentUuid": "1234abd4_262d06da",
+      "range": {
+        "startLine": 33,
+        "startChar": 30,
+        "endLine": 33,
+        "endChar": 45
+      },
+      "revId": "5ea071e2457c464195958b42ac7c9197ebbf15b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c0b678a5_842b81ef",
