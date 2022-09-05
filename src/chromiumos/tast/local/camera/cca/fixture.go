@@ -346,16 +346,17 @@ func (f *fixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
 			}
 		}()
 	}
-
-	f.brightnessVal, err = dutcontrol.CCADimBacklight(ctx)
-	if err != nil {
-		s.Fatal("Failed to set brightness: ", err)
-	}
-	defer func() {
-		if !success {
-			dutcontrol.CCARestoreBacklight(ctx, f.brightnessVal)
+	if f.launchCCAInCameraBox {
+		f.brightnessVal, err = dutcontrol.CCADimBacklight(ctx)
+		if err != nil {
+			s.Fatal("Failed to set brightness: ", err)
 		}
-	}()
+		defer func() {
+			if !success {
+				dutcontrol.CCARestoreBacklight(ctx, f.brightnessVal)
+			}
+		}()
+	}
 
 	tb, err := testutil.NewTestBridge(ctx, cr, f.cameraType())
 	if err != nil {
@@ -399,8 +400,10 @@ func (f *fixture) TearDown(ctx context.Context, s *testing.FixtState) {
 		s.Error("Failed to tear down Chrome: ", err)
 	}
 	f.cr = nil
-	if err := dutcontrol.CCARestoreBacklight(ctx, f.brightnessVal); err != nil {
-		s.Fatal("Restore Backlight failed: ", err)
+	if f.launchCCAInCameraBox {
+		if err := dutcontrol.CCARestoreBacklight(ctx, f.brightnessVal); err != nil {
+			s.Error("Restore Backlight failed: ", err)
+		}
 	}
 	if f.cameraScene != "" {
 		if err := os.RemoveAll(f.cameraScene); err != nil {
