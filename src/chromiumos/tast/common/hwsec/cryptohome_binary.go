@@ -402,6 +402,16 @@ func (c *cryptohomeBinary) updateAuthFactor(ctx context.Context, authSessionID, 
 	return c.call(ctx, args...)
 }
 
+// updateRecoveryAuthFactor calls "cryptohome --action=update_auth_factor --recovery_mediator_pub_key=mediatorPubKeyHex".
+func (c *cryptohomeBinary) updateRecoveryAuthFactor(ctx context.Context, authSessionID, label, newKeyLabel, mediatorPubKeyHex string) ([]byte, error) {
+	args := []string{"--action=update_auth_factor",
+		"--auth_session_id=" + authSessionID,
+		"--key_label=" + label,
+		"--new_key_label=" + newKeyLabel,
+		"--recovery_mediator_pub_key=" + mediatorPubKeyHex}
+	return c.call(ctx, args...)
+}
+
 // prepareGuestVault calls "cryptohome --action=prepare_guest_vault"
 func (c *cryptohomeBinary) prepareGuestVault(ctx context.Context) ([]byte, error) {
 	return c.call(ctx, "--action=prepare_guest_vault")
