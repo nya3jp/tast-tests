@@ -16,6 +16,24 @@
       "message": "I can see many changes here but it\u0027s not clear what was actually *wrong* before in the test. It would help if you could write that in the commit message. What did it do badly before and what is the new fixed behaviour you are introducing in this patch?",
       "revId": "9f9f2affe40a3bf6ab3591c138262b209d8afc2a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1ea3737_9e370c1a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1508123
+      },
+      "writtenOn": "2022-09-05T01:59:17Z",
+      "side": 1,
+      "message": "The actual fix is not checking for the screen lock, right? The other changes are basically unrelated, to make it fail fast?",
+      "parentUuid": "b27439e8_73c12965",
+      "revId": "9f9f2affe40a3bf6ab3591c138262b209d8afc2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
