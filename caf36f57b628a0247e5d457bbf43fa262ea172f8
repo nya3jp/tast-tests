@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a958811_f4b98c5a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shimlessrma/app_service.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-09-05T04:31:04Z",
+      "side": 1,
+      "message": "but you are still handling the error?",
+      "range": {
+        "startLine": 124,
+        "startChar": 1,
+        "endLine": 124,
+        "endChar": 26
+      },
+      "revId": "caf36f57b628a0247e5d457bbf43fa262ea172f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3204b5f6_94c308f1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shimlessrma/app_service.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-09-05T04:31:04Z",
+      "side": 1,
+      "message": "time.Minute\n\nsame to other `60*time.Second`",
+      "range": {
+        "startLine": 300,
+        "startChar": 57,
+        "endLine": 300,
+        "endChar": 71
+      },
+      "revId": "caf36f57b628a0247e5d457bbf43fa262ea172f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e351b33_d02d8ea7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shimlessrma/app_service.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-09-05T04:31:04Z",
+      "side": 1,
+      "message": "uiauto.Sleep()",
+      "range": {
+        "startLine": 310,
+        "startChar": 2,
+        "endLine": 312,
+        "endChar": 4
+      },
+      "revId": "caf36f57b628a0247e5d457bbf43fa262ea172f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1cecb7ec_1a5d6640",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shimlessrma/app_service.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-09-05T04:31:04Z",
+      "side": 1,
+      "message": "why ignore the cancel() func?",
+      "range": {
+        "startLine": 319,
+        "startChar": 6,
+        "endLine": 319,
+        "endChar": 7
+      },
+      "revId": "caf36f57b628a0247e5d457bbf43fa262ea172f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "682e7941_56254ce8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/wifi_connection.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-09-05T04:31:04Z",
+      "side": 1,
+      "message": "is there any other possible error? if so, you still need to handle the errors: ignore the gPRC connection error and fail on others.",
+      "range": {
+        "startLine": 68,
+        "startChar": 1,
+        "endLine": 70,
+        "endChar": 0
+      },
+      "revId": "caf36f57b628a0247e5d457bbf43fa262ea172f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
