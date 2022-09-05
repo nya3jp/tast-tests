@@ -47,7 +47,7 @@ func MonitorBluetoothEvent(ctx context.Context, s *testing.State) {
 
 	// Run monitor command in background.
 	var stdoutBuf, stderrBuf bytes.Buffer
-	monitorCmd := testexec.CommandContext(ctx, "cros-health-tool", "event", "--category=bluetooth", "--length_seconds=3")
+	monitorCmd := testexec.CommandContext(ctx, "cros-health-tool", "event", "--category=bluetooth", "--length_seconds=10")
 	monitorCmd.Stdout = &stdoutBuf
 	monitorCmd.Stderr = &stderrBuf
 
