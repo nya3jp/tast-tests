@@ -36,32 +36,24 @@ const (
 	AnyVKInGuest                              = "anyVKInGuest"
 	ClamshellVK                               = "clamshellVK"
 	ClamshellVKRestart                        = "clamshellVKRestart"
-	ClamshellVKWithAssistAutocorrect          = "clamshellVKWithAssistAutocorrect"
 	ClamshellNonVKWithDiacriticsOnPKLongpress = "clamshellWithDiacriticsOnPKLongpress"
 	ClamshellNonVK                            = "clamshellNonVK"
 	ClamshellNonVKInGuest                     = "clamshellNonVKInGuest"
 	ClamshellNonVKWithMultiwordSuggest        = "clamshellNonVKWithMultiwordSuggest"
-	ClamshellNonVKWithGrammarCheck            = "clamshellNonVKWithGrammarCheck"
 	TabletVK                                  = "tabletVK"
 	TabletVKRestart                           = "tabletVKRestart"
 	TabletVKInGuest                           = "tabletVKInGuest"
-	TabletVKWithAssistAutocorrect             = "tabletVKWithAssistAutocorrect"
-	TabletVKWithMultipasteSuggestion          = "tabletVKWithMultipasteSuggestion"
 	TabletVKWithMultitouch                    = "tabletVKWithMultitouch"
 	// Lacros fixtures.
 	LacrosAnyVK                                     = "lacrosAnyVK"
 	LacrosAnyVKInGuest                              = "lacrosAnyVKInGuest"
 	LacrosClamshellVK                               = "lacrosClamshellVK"
-	LacrosClamshellVKWithAssistAutocorrect          = "lacrosClamshellVKWithAssistAutocorrect"
 	LacrosClamshellNonVK                            = "lacrosClamshellNonVK"
 	LacrosClamshellNonVKInGuest                     = "lacrosClamshellNonVKInGuest"
 	LacrosClamshellNonVKWithMultiwordSuggest        = "lacrosClamshellNonVKWithMultiwordSuggest"
-	LacrosClamshellNonVKWithGrammarCheck            = "lacrosClamshellNonVKWithGrammarCheck"
 	LacrosClamshellNonVKWithDiacriticsOnPKLongpress = "lacrosClamshellWithDiacriticsOnPKLongpress"
 	LacrosTabletVK                                  = "lacrosTabletVK"
 	LacrosTabletVKInGuest                           = "lacrosTabletVKInGuest"
-	LacrosTabletVKWithAssistAutocorrect             = "lacrosTabletVKWithAssistAutocorrect"
-	LacrosTabletVKWithMultipasteSuggestion          = "lacrosTabletVKWithMultipasteSuggestion"
 	LacrosTabletVKWithMultitouch                    = "lacrosTabletVKWithMultitouch"
 )
 
@@ -127,21 +119,6 @@ func init() {
 		TearDownTimeout: chrome.ResetTimeout,
 	})
 	testing.AddFixture(&testing.Fixture{
-		Name: ClamshellVKWithAssistAutocorrect,
-		Desc: "Clamshell mode with A11y VK enabled  and assist autocorrect",
-		Contacts: []string{
-			"alvinjia@google.com",
-			"shengjun@chromium.org",
-			"essential-inputs-team@google.com",
-		},
-		Impl:            inputsFixture(clamshellMode, true, false, browser.TypeAsh, chrome.ExtraArgs("--enable-features=AssistAutoCorrect")),
-		SetUpTimeout:    chrome.LoginTimeout,
-		PreTestTimeout:  preTestTimeout,
-		PostTestTimeout: postTestTimeout,
-		ResetTimeout:    resetTimeout,
-		TearDownTimeout: chrome.ResetTimeout,
-	})
-	testing.AddFixture(&testing.Fixture{
 		Name: ClamshellNonVK,
 		Desc: "Clamshell mode with VK disabled",
 		Contacts: []string{
@@ -165,21 +142,6 @@ func init() {
 			"essential-inputs-team@google.com",
 		},
 		Impl:            inputsFixture(clamshellMode, false, false, browser.TypeAsh, chrome.ExtraArgs("--enable-features=AssistMultiWord")),
-		SetUpTimeout:    chrome.LoginTimeout,
-		PreTestTimeout:  preTestTimeout,
-		PostTestTimeout: postTestTimeout,
-		ResetTimeout:    resetTimeout,
-		TearDownTimeout: chrome.ResetTimeout,
-	})
-	testing.AddFixture(&testing.Fixture{
-		Name: ClamshellNonVKWithGrammarCheck,
-		Desc: "Clamshell mode with VK disabled and grammar check",
-		Contacts: []string{
-			"alvinjia@google.com",
-			"shengjun@chromium.org",
-			"essential-inputs-team@google.com",
-		},
-		Impl:            inputsFixture(clamshellMode, false, false, browser.TypeAsh, chrome.ExtraArgs("--enable-features=OnDeviceGrammarCheck")),
 		SetUpTimeout:    chrome.LoginTimeout,
 		PreTestTimeout:  preTestTimeout,
 		PostTestTimeout: postTestTimeout,
@@ -239,36 +201,6 @@ func init() {
 			"essential-inputs-team@google.com",
 		},
 		Impl:            inputsFixture(tabletMode, true, true, browser.TypeAsh),
-		SetUpTimeout:    chrome.LoginTimeout,
-		PreTestTimeout:  preTestTimeout,
-		PostTestTimeout: postTestTimeout,
-		ResetTimeout:    resetTimeout,
-		TearDownTimeout: chrome.ResetTimeout,
-	})
-	testing.AddFixture(&testing.Fixture{
-		Name: TabletVKWithAssistAutocorrect,
-		Desc: "Tablet mode with VK enabled and assist autocorrect",
-		Contacts: []string{
-			"alvinjia@google.com",
-			"shengjun@chromium.org",
-			"essential-inputs-team@google.com",
-		},
-		Impl:            inputsFixture(tabletMode, true, false, browser.TypeAsh, chrome.ExtraArgs("--enable-features=AssistAutoCorrect")),
-		SetUpTimeout:    chrome.LoginTimeout,
-		PreTestTimeout:  preTestTimeout,
-		PostTestTimeout: postTestTimeout,
-		ResetTimeout:    resetTimeout,
-		TearDownTimeout: chrome.ResetTimeout,
-	})
-	testing.AddFixture(&testing.Fixture{
-		Name: TabletVKWithMultipasteSuggestion,
-		Desc: "Tablet mode with VK enabled and multipaste suggestion",
-		Contacts: []string{
-			"alvinjia@google.com",
-			"shengjun@chromium.org",
-			"essential-inputs-team@google.com",
-		},
-		Impl:            inputsFixture(tabletMode, true, false, browser.TypeAsh, chrome.ExtraArgs("--enable-features=VirtualKeyboardMultipasteSuggestion")),
 		SetUpTimeout:    chrome.LoginTimeout,
 		PreTestTimeout:  preTestTimeout,
 		PostTestTimeout: postTestTimeout,
@@ -352,21 +284,6 @@ func init() {
 		TearDownTimeout: chrome.ResetTimeout,
 	})
 	testing.AddFixture(&testing.Fixture{
-		Name: LacrosClamshellVKWithAssistAutocorrect,
-		Desc: "Lacros variant: clamshell mode with A11y VK enabled  and assist autocorrect",
-		Contacts: []string{
-			"alvinjia@google.com",
-			"shengjun@chromium.org",
-			"essential-inputs-team@google.com",
-		},
-		Impl:            inputsFixture(clamshellMode, true, false, browser.TypeLacros, chrome.ExtraArgs("--enable-features=AssistAutoCorrect")),
-		SetUpTimeout:    chrome.LoginTimeout,
-		PreTestTimeout:  preTestTimeout,
-		PostTestTimeout: postTestTimeout,
-		ResetTimeout:    resetTimeout,
-		TearDownTimeout: chrome.ResetTimeout,
-	})
-	testing.AddFixture(&testing.Fixture{
 		Name: LacrosClamshellNonVK,
 		Desc: "Lacros variant: clamshell mode with VK disabled",
 		Contacts: []string{
@@ -397,23 +314,8 @@ func init() {
 		TearDownTimeout: chrome.ResetTimeout,
 	})
 	testing.AddFixture(&testing.Fixture{
-		Name: LacrosClamshellNonVKWithGrammarCheck,
-		Desc: "Lacros variant: clamshell mode with VK disabled and grammar check",
-		Contacts: []string{
-			"alvinjia@google.com",
-			"shengjun@chromium.org",
-			"essential-inputs-team@google.com",
-		},
-		Impl:            inputsFixture(clamshellMode, false, false, browser.TypeLacros, chrome.ExtraArgs("--enable-features=OnDeviceGrammarCheck")),
-		SetUpTimeout:    chrome.LoginTimeout,
-		PreTestTimeout:  preTestTimeout,
-		PostTestTimeout: postTestTimeout,
-		ResetTimeout:    resetTimeout,
-		TearDownTimeout: chrome.ResetTimeout,
-	})
-	testing.AddFixture(&testing.Fixture{
 		Name: LacrosClamshellNonVKWithDiacriticsOnPKLongpress,
-		Desc: "Lacros variant: clamshell mode with VK disabled and grammar check",
+		Desc: "Lacros variant: clamshell mode with VK disabled and diacritics on PK longpress",
 		Contacts: []string{
 			"alvinjia@google.com",
 			"shengjun@chromium.org",
@@ -450,36 +352,6 @@ func init() {
 			"essential-inputs-team@google.com",
 		},
 		Impl:            inputsFixture(tabletMode, true, false, browser.TypeLacros),
-		SetUpTimeout:    chrome.LoginTimeout,
-		PreTestTimeout:  preTestTimeout,
-		PostTestTimeout: postTestTimeout,
-		ResetTimeout:    resetTimeout,
-		TearDownTimeout: chrome.ResetTimeout,
-	})
-	testing.AddFixture(&testing.Fixture{
-		Name: LacrosTabletVKWithAssistAutocorrect,
-		Desc: "Lacros variant: tablet mode with VK enabled and assist autocorrect",
-		Contacts: []string{
-			"alvinjia@google.com",
-			"shengjun@chromium.org",
-			"essential-inputs-team@google.com",
-		},
-		Impl:            inputsFixture(tabletMode, true, false, browser.TypeLacros, chrome.ExtraArgs("--enable-features=AssistAutoCorrect")),
-		SetUpTimeout:    chrome.LoginTimeout,
-		PreTestTimeout:  preTestTimeout,
-		PostTestTimeout: postTestTimeout,
-		ResetTimeout:    resetTimeout,
-		TearDownTimeout: chrome.ResetTimeout,
-	})
-	testing.AddFixture(&testing.Fixture{
-		Name: LacrosTabletVKWithMultipasteSuggestion,
-		Desc: "Lacros variant: tablet mode with VK enabled and multipaste suggestion",
-		Contacts: []string{
-			"alvinjia@google.com",
-			"shengjun@chromium.org",
-			"essential-inputs-team@google.com",
-		},
-		Impl:            inputsFixture(tabletMode, true, false, browser.TypeLacros, chrome.ExtraArgs("--enable-features=VirtualKeyboardMultipasteSuggestion")),
 		SetUpTimeout:    chrome.LoginTimeout,
 		PreTestTimeout:  preTestTimeout,
 		PostTestTimeout: postTestTimeout,

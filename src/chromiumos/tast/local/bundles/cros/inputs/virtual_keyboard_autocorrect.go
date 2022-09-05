@@ -43,7 +43,7 @@ func init() {
 		Params: []testing.Param{
 			{
 				Name:    "en_us_tablet",
-				Fixture: fixture.TabletVKWithAssistAutocorrect,
+				Fixture: fixture.TabletVK,
 				Val: autocorrect.TestCase{
 					InputMethod:  ime.EnglishUS,
 					MisspeltWord: "helol",
@@ -55,7 +55,7 @@ func init() {
 			},
 			{
 				Name:    "en_us_a11y",
-				Fixture: fixture.ClamshellVKWithAssistAutocorrect,
+				Fixture: fixture.ClamshellVK,
 				Val: autocorrect.TestCase{
 					InputMethod:  ime.EnglishUS,
 					MisspeltWord: "helol",
@@ -67,7 +67,7 @@ func init() {
 			},
 			{
 				Name:    "es_es_tablet",
-				Fixture: fixture.TabletVKWithAssistAutocorrect,
+				Fixture: fixture.TabletVK,
 				Val: autocorrect.TestCase{
 					InputMethod:  ime.SpanishSpain,
 					MisspeltWord: "espanol",
@@ -79,7 +79,7 @@ func init() {
 			},
 			{
 				Name:    "es_es_a11y",
-				Fixture: fixture.ClamshellVKWithAssistAutocorrect,
+				Fixture: fixture.ClamshellVK,
 				Val: autocorrect.TestCase{
 					InputMethod:  ime.SpanishSpain,
 					MisspeltWord: "espanol",
@@ -91,7 +91,7 @@ func init() {
 			},
 			{
 				Name:    "fr_fr_tablet",
-				Fixture: fixture.TabletVKWithAssistAutocorrect,
+				Fixture: fixture.TabletVK,
 				Val: autocorrect.TestCase{
 					InputMethod:  ime.FrenchFrance,
 					MisspeltWord: "francais",
@@ -103,7 +103,7 @@ func init() {
 			},
 			{
 				Name:    "fr_fr_a11y",
-				Fixture: fixture.ClamshellVKWithAssistAutocorrect,
+				Fixture: fixture.ClamshellVK,
 				Val: autocorrect.TestCase{
 					InputMethod:  ime.FrenchFrance,
 					MisspeltWord: "francais",
@@ -115,7 +115,7 @@ func init() {
 			},
 			{
 				Name:              "en_us_tablet_lacros",
-				Fixture:           fixture.LacrosTabletVKWithAssistAutocorrect,
+				Fixture:           fixture.LacrosTabletVK,
 				ExtraAttr:         []string{"informational"},
 				ExtraSoftwareDeps: []string{"lacros"},
 				Val: autocorrect.TestCase{
@@ -128,7 +128,7 @@ func init() {
 			},
 			{
 				Name:              "en_us_a11y_lacros",
-				Fixture:           fixture.LacrosClamshellVKWithAssistAutocorrect,
+				Fixture:           fixture.LacrosClamshellVK,
 				ExtraAttr:         []string{"informational"},
 				ExtraSoftwareDeps: []string{"lacros"},
 				Val: autocorrect.TestCase{
@@ -141,7 +141,7 @@ func init() {
 			},
 			{
 				Name:              "es_es_tablet_lacros",
-				Fixture:           fixture.LacrosTabletVKWithAssistAutocorrect,
+				Fixture:           fixture.LacrosTabletVK,
 				ExtraAttr:         []string{"informational"},
 				ExtraSoftwareDeps: []string{"lacros"},
 				Val: autocorrect.TestCase{
@@ -154,7 +154,7 @@ func init() {
 			},
 			{
 				Name:              "es_es_a11y_lacros",
-				Fixture:           fixture.LacrosClamshellVKWithAssistAutocorrect,
+				Fixture:           fixture.LacrosClamshellVK,
 				ExtraAttr:         []string{"informational"},
 				ExtraSoftwareDeps: []string{"lacros"},
 				Val: autocorrect.TestCase{
@@ -167,7 +167,7 @@ func init() {
 			},
 			{
 				Name:              "fr_fr_tablet_lacros",
-				Fixture:           fixture.LacrosTabletVKWithAssistAutocorrect,
+				Fixture:           fixture.LacrosTabletVK,
 				ExtraAttr:         []string{"informational"},
 				ExtraSoftwareDeps: []string{"lacros"},
 				Val: autocorrect.TestCase{
@@ -180,7 +180,7 @@ func init() {
 			},
 			{
 				Name:              "fr_fr_a11y_lacros",
-				Fixture:           fixture.LacrosClamshellVKWithAssistAutocorrect,
+				Fixture:           fixture.LacrosClamshellVK,
 				ExtraAttr:         []string{"informational"},
 				ExtraSoftwareDeps: []string{"lacros"},
 				Val: autocorrect.TestCase{
