@@ -9,8 +9,10 @@ import (
 	"fmt"
 	"io/ioutil"
 	"os"
+	"os/exec"
 	"path/filepath"
 	"regexp"
+	"strconv"
 	"strings"
 	"syscall"
 	"time"
@@ -25,6 +27,7 @@ type linkMode int
 const (
 	staticLink linkMode = iota
 	dynamicLink
+	firstLandlockKernelVersion = 5.10
 )
 
 func init() {
@@ -79,7 +82,7 @@ func Minijail(ctx context.Context, s *testing.State) {
 		check  checkFunc // optional function to run after test
 	}
 
-	runTestCase := func(tc *testCase, lm linkMode) {
+	runTestCase := func(tc *testCase, lm linkMode, successExpected bool) {
 		// Construct a human-readable test name.
 		name := tc.name
 		if lm == staticLink {
@@ -124,10 +127,18 @@ func Minijail(ctx context.Context, s *testing.State) {
 		defer cancel()
 		cmd := testexec.CommandContext(ctx, minijailPath, args...)
 		out, err := cmd.Output()
-		if err != nil {
-			s.Errorf("%v failed: %v", name, err)
-			cmd.DumpLog(ctx)
-			return
+		if successExpected {
+			if err != nil {
+				s.Errorf("%v failed: %v", name, err)
+				cmd.DumpLog(ctx)
+				return
+			}
+		} else {
+			if err == nil {
+				s.Errorf("%v expected error not found", name)
+				cmd.DumpLog(ctx)
+				return
+			}
 		}
 
 		if tc.check != nil {
@@ -393,12 +404,46 @@ func Minijail(ctx context.Context, s *testing.State) {
 		},
 		// Landlock test cases.
 		{
-			name:  "landlock-allow",
+			name:  "landlock-allow-zero-return",
 			cmd:   "/bin/true",
 			args:  landlockArgs,
 			check: checkRegexp(""),
 		},
 	} {
-		runTestCase(&tc, s.Param().(linkMode))
+		runTestCase(&tc, s.Param().(linkMode), true)
+	}
+
+	// Landlock test cases where a nonzero exit code is expected. Skip these
+	// tests if Landlock isn't supported.
+	unameOutput, err := exec.Command("uname", "-r").Output()
+	if err != nil {
+		s.Log("Error reading kernel version: ", err)
+		return
+	}
+	split := strings.Split(string(unameOutput), ".")
+	version, err := strconv.ParseFloat(string(split[0]+"."+split[1]), 64)
+	if err != nil {
+		s.Log("Error parsing kernel version: ", err)
+		return
+	}
+	if version < firstLandlockKernelVersion {
+		s.Log("Skipping Landlock tests on kernel missing support")
+		return
+	}
+	for _, tc := range []testCase{
+		{
+			name:  "landlock-allow-nonzero-return",
+			cmd:   "/bin/false",
+			args:  landlockArgs,
+			check: checkRegexp(""),
+		},
+		{
+			name:  "landlock-deny-disallowed-path",
+			cmd:   "/bin/ls /dev",
+			args:  landlockArgs,
+			check: checkRegexp(""),
+		},
+	} {
+		runTestCase(&tc, s.Param().(linkMode), false)
 	}
 }
