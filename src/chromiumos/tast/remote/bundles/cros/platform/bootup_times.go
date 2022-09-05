@@ -42,7 +42,8 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Boot performance test after reboot, powerbutton and lid close open",
 		Contacts:     []string{"pathan.jilani@intel.com", "intel-chrome-system-automation-team@intel.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		// Disabled due to 98%-99% failure rate and preventing other tests from running. TODO(b/242478571): fix and re-enable.
+		//Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		ServiceDeps:  []string{"tast.cros.arc.PerfBootService", "tast.cros.platform.BootPerfService", "tast.cros.security.BootLockboxService", "tast.cros.security.BootLockboxService"},
 		Vars: []string{"servo",
@@ -62,20 +63,17 @@ func init() {
 			Name:    "power_button",
 			Val:     bootupTimes{bootType: powerButton},
 			Timeout: 5 * time.Minute,
-		},
-			// TODO(b/242478571): fix and re-enable
-			//{
-			//	Name:              "from_s5",
-			//	Val:               bootupTimes{bootType: bootFromS5},
-			//	Timeout:           5 * time.Minute,
-			//	ExtraHardwareDeps: hwdep.D(hwdep.ChromeEC()),
-			//},
-			{
-				Name:              "refresh_power",
-				Val:               bootupTimes{bootType: refreshPower},
-				Timeout:           5 * time.Minute,
-				ExtraHardwareDeps: hwdep.D(hwdep.ChromeEC()),
-			}},
+		}, {
+			Name:              "from_s5",
+			Val:               bootupTimes{bootType: bootFromS5},
+			Timeout:           5 * time.Minute,
+			ExtraHardwareDeps: hwdep.D(hwdep.ChromeEC()),
+		}, {
+			Name:              "refresh_power",
+			Val:               bootupTimes{bootType: refreshPower},
+			Timeout:           5 * time.Minute,
+			ExtraHardwareDeps: hwdep.D(hwdep.ChromeEC()),
+		}},
 	})
 }
 
