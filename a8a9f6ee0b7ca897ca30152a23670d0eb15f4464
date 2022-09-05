@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b22d0b3_c8b63d81",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hps/hps_setting_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1508123
+      },
+      "writtenOn": "2022-09-05T01:52:59Z",
+      "side": 1,
+      "message": "Are we guaranteed that the old settings will always be different to the new ones? Is this assuming that the test is starting with a fresh user profile where lock-on-leave is disabled by default until the button click above?",
+      "revId": "a8a9f6ee0b7ca897ca30152a23670d0eb15f4464",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
