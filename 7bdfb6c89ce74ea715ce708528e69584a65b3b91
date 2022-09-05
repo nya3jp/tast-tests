@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "129613b2_96fa189c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_screenshare_entire_screen.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-09-05T08:47:43Z",
+      "side": 1,
+      "message": "Note for both test author and reviewer: browser connection should be closed in a `defer` call.",
+      "range": {
+        "startLine": 166,
+        "startChar": 0,
+        "endLine": 168,
+        "endChar": 2
+      },
+      "revId": "7bdfb6c89ce74ea715ce708528e69584a65b3b91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
