@@ -50,6 +50,46 @@
       "message": "Hi Tast Owners, this CL is ready for review.",
       "revId": "1887437e6df4a00cd2b49c9851f9b6ba7ecb5a32",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "91b0d95c_6c9fb2c0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-09-05T10:38:15Z",
+      "side": 1,
+      "message": "LGTM % comment",
+      "revId": "1887437e6df4a00cd2b49c9851f9b6ba7ecb5a32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f058750e_70ee4dcc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/new_screencast_button_condition.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-09-05T10:38:15Z",
+      "side": 1,
+      "message": "please use hwdep.Microphone() condition instead\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast/src/chromiumos/tast/testing/hwdep/hwdep.go;l\u003d1155",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 40
+      },
+      "revId": "1887437e6df4a00cd2b49c9851f9b6ba7ecb5a32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
