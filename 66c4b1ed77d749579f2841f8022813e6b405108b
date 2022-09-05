@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3553d682_d5084afd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459152
+      },
+      "writtenOn": "2022-09-05T13:24:02Z",
+      "side": 1,
+      "message": "I managed to replicate the bug... so I can live without this. I do not want to abandon it because I do not want to lose your votes and I might need this in the future :P\n\nThanks for your review anyway.!",
+      "parentUuid": "5ac84380_52d6f435",
+      "revId": "66c4b1ed77d749579f2841f8022813e6b405108b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b6ad96b3_f113aff3",
