@@ -6,6 +6,7 @@ package network
 
 import (
 	"context"
+	"fmt"
 	"regexp"
 	"time"
 
@@ -21,31 +22,18 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     ARCVPNConfigs,
-		Desc:     "Host VPN configs are reflected properly in ARC VPN",
-		Contacts: []string{"cassiewang@google.com", "cros-networking@google.com"},
-		Attr:     []string{"group:mainline", "informational"},
-		Fixture:  "shillResetWithArcBooted",
-		Params: []testing.Param{{
-			Val:               "p",
-			ExtraSoftwareDeps: []string{"android_p", "wireguard"},
-		}, {
-			Name:              "vm",
-			Val:               "vm",
-			ExtraSoftwareDeps: []string{"android_vm", "wireguard"},
-		}},
+		Func:         ARCVPNConfigs,
+		Desc:         "Host VPN configs are reflected properly in ARC VPN",
+		Contacts:     []string{"cassiewang@google.com", "cros-networking@google.com"},
+		Attr:         []string{"group:mainline", "informational"},
+		Fixture:      "shillResetWithArcBooted",
+		SoftwareDeps: []string{"arc", "wireguard"},
 	})
 }
 
 // ARCVPNConfigs tests that a few specific config fields from the host VPN are passed and set on
 // the mirrored ARC VPN correctly.
 func ARCVPNConfigs(ctx context.Context, s *testing.State) {
-	// If the main body of the test times out, we still want to reserve a
-	// few seconds to allow for our cleanup code to run.
-	cleanupCtx := ctx
-	ctx, cancel := ctxutil.Shorten(cleanupCtx, 6*time.Second)
-	defer cancel()
-
 	a := s.FixtValue().(*arc.PreData).ARC
 
 	if err := arcvpn.SetARCVPNEnabled(ctx, a, true); err != nil {
@@ -63,121 +51,73 @@ func ARCVPNConfigs(ctx context.Context, s *testing.State) {
 	// hardcoded value. This eventually gets set properly again on the host-side, but Chrome
 	// passes the overridden value to ARC so it won't get reflected properly in ARC. Note that
 	// the hardcoded value is a minimum valid MTU size so it doesn't break any correctness.
-	metered := false
-	searchDomains := []string{"foo1", "bar1"}
-	config1 := vpn.Config{
+	if err := verifyVPNWithConfig(ctx, a, vpn.Config{
 		Type:          vpn.TypeWireGuard,
-		Metered:       metered,
-		SearchDomains: searchDomains,
+		Metered:       false,
+		SearchDomains: []string{"foo1", "bar1"},
 		MTU:           576,
-	}
-	conn1, cleanup1, err := arcvpn.SetUpHostVPNWithConfig(ctx, cleanupCtx, config1)
-	if err != nil {
-		s.Fatal("Failed to setup host VPN: ", err)
-	}
-	defer cleanup1()
-	if _, err := conn1.Connect(ctx); err != nil {
-		s.Fatal("Failed to connect to VPN server: ", err)
-	}
-	if err := arcvpn.CheckARCVPNState(ctx, a, true); err != nil {
-		s.Fatal("Failed to start ArcHostVpnService: ", err)
-	}
-	if err := routing.ExpectPingSuccessWithTimeout(ctx, conn1.Server.OverlayIP, "chronos", 10*time.Second); err != nil {
-		s.Fatalf("Failed to ping from host %s: %v", conn1.Server.OverlayIP, err)
-	}
-	if err := arc.ExpectPingSuccess(ctx, a, "vpn", conn1.Server.OverlayIP); err != nil {
-		s.Fatalf("Failed to ping %s from ARC over 'vpn': %v", conn1.Server.OverlayIP, err)
-	}
-	cmd := a.Command(ctx, "dumpsys", "wifi", "networks", "transport", "vpn")
-	o, err := cmd.Output(testexec.DumpLogOnError)
-	if err != nil {
-		s.Fatal(err, "Failed to execute 'dumpsys wifi networks transport vpn'")
-	}
-	oStr := string(o)
-	// On P, the VpnService.Builder#setMetered API isn't available for us to override the value
-	// and VPNs are considered metered by default.
-	arcVersion := s.Param().(string)
-	if arcVersion == "p" {
-		metered = true
-	}
-	if err := checkMatch(oStr, `capabilities=.*`, `NOT_METERED`, !metered); err != nil {
-		s.Fatal("Failed to verify capabilities on ARC VPN network: ", err)
-	}
-	for _, domain := range searchDomains {
-		if err := checkMatch(oStr, `domains=.*`, domain, true); err != nil {
-			s.Fatal("Failed to verify search domains on ARC VPN network: ", err)
-		}
-	}
-	// Use the output of ifconfig instead of dumpsys because Android P doesn't set the MTU
-	// property on the VPN's LinkProperties (which is what the dumpsys reads from). So the
-	// dumpsys output will always report a MTU of 0 on P (this is fixed in R). ifconfig reports
-	// it correctly on both P and R.
-	// TODO: We can switch to the dumpsys output once b/233322908 is fixed.
-	cmd = a.Command(ctx, "ifconfig", "tun0")
-	o, err = cmd.Output(testexec.DumpLogOnError)
-	if err != nil {
-		s.Fatal(err, "Failed to execute 'ifconfig tun0'")
-	}
-	if err := checkMatch(string(o), `MTU:.*`, `576`, true); err != nil {
-		s.Fatal("Failed to verify MTU on ARC VPN network: ", err)
-	}
-
-	// Disconnect from our first connection.
-	if err := conn1.Disconnect(ctx); err != nil {
-		s.Error("Failed to disconnect VPN: ", err)
-	}
-	if err := arcvpn.CheckARCVPNState(ctx, a, false); err != nil {
-		s.Fatal("ArcHostVpnService should be stopped, but isn't: ", err)
-	}
-	if err := arc.ExpectPingSuccess(ctx, a, "vpn", conn1.Server.OverlayIP); err == nil {
-		s.Fatalf("Expected unable to ping %s from ARC over 'vpn', but was reachable", conn1.Server.OverlayIP)
+	}); err != nil {
+		s.Fatal("Failed to verify VPN connection with the first config: ", err)
 	}
 
 	// Connect with a different config and verify values. Use values that are different from
 	// the first connection's config's values to ensure we didn't just get lucky with some
 	// default values.
-	metered = true
-	searchDomains = []string{"foo2", "bar2"}
-	config2 := vpn.Config{
+	if err := verifyVPNWithConfig(ctx, a, vpn.Config{
 		Type:          vpn.TypeWireGuard,
-		Metered:       metered,
-		SearchDomains: searchDomains,
+		Metered:       true,
+		SearchDomains: []string{"foo2", "bar2"},
 		MTU:           1280,
+	}); err != nil {
+		s.Fatal("Failed to verify VPN connection with the second config: ", err)
 	}
-	conn2, cleanup2, err := arcvpn.SetUpHostVPNWithConfig(ctx, cleanupCtx, config2)
+}
+
+func verifyVPNWithConfig(ctx context.Context, a *arc.ARC, config vpn.Config) error {
+	// If the main body of the function times out, we still want to reserve a few
+	// seconds to allow for our cleanup code to run.
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(cleanupCtx, 6*time.Second)
+	defer cancel()
+
+	conn, cleanup, err := arcvpn.SetUpHostVPNWithConfig(ctx, cleanupCtx, config)
 	if err != nil {
-		s.Fatal("Failed to setup host VPN: ", err)
+		return errors.Wrap(err, "failed to setup host VPN")
 	}
-	defer cleanup2()
-	if _, err := conn2.Connect(ctx); err != nil {
-		s.Fatal("Failed to connect to VPN server: ", err)
+	defer cleanup()
+	if _, err := conn.Connect(ctx); err != nil {
+		return errors.Wrap(err, "failed to connect to VPN server")
 	}
 	if err := arcvpn.CheckARCVPNState(ctx, a, true); err != nil {
-		s.Fatal("Failed to start ArcHostVpnService: ", err)
+		return errors.Wrap(err, "failed to start ArcHostVpnService")
 	}
-	if err := routing.ExpectPingSuccessWithTimeout(ctx, conn2.Server.OverlayIP, "chronos", 10*time.Second); err != nil {
-		s.Fatalf("Failed to ping from host %s: %v", conn2.Server.OverlayIP, err)
+	if err := routing.ExpectPingSuccessWithTimeout(ctx, conn.Server.OverlayIP, "chronos", 10*time.Second); err != nil {
+		return errors.Wrapf(err, "failed to ping from host %s", conn.Server.OverlayIP)
 	}
-	if err := arc.ExpectPingSuccess(ctx, a, "vpn", conn2.Server.OverlayIP); err != nil {
-		s.Fatalf("Failed to ping %s from ARC over 'vpn': %v", conn2.Server.OverlayIP, err)
+	if err := arc.ExpectPingSuccess(ctx, a, "vpn", conn.Server.OverlayIP); err != nil {
+		return errors.Wrapf(err, "failed to ping %s from ARC over 'vpn'", conn.Server.OverlayIP)
 	}
-	cmd = a.Command(ctx, "dumpsys", "wifi", "networks", "transport", "vpn")
-	o, err = cmd.Output(testexec.DumpLogOnError)
+	cmd := a.Command(ctx, "dumpsys", "wifi", "networks", "transport", "vpn")
+	o, err := cmd.Output(testexec.DumpLogOnError)
 	if err != nil {
-		s.Fatal(err, "Failed to execute 'dumpsys wifi networks transport vpn'")
+		return errors.Wrap(err, "failed to execute 'dumpsys wifi networks transport vpn'")
 	}
-	oStr = string(o)
+	oStr := string(o)
 	// On P, the VpnService.Builder#setMetered API isn't available for us to override the value
 	// and VPNs are considered metered by default.
-	if arcVersion == "p" {
-		metered = true
+	arcVersion, err := arc.SDKVersion()
+	if err != nil {
+		return errors.Wrap(err, "failed to get ARC SDK version")
 	}
-	if err := checkMatch(oStr, `capabilities=.*`, `NOT_METERED`, !metered); err != nil {
-		s.Fatal("Failed to verify capabilities on ARC VPN network: ", err)
+	if arcVersion == arc.SDKP {
+		config.Metered = true
 	}
-	for _, domain := range searchDomains {
+	if err := checkMatch(oStr, `capabilities=.*`, `NOT_METERED`, !config.Metered); err != nil {
+		return errors.Wrap(err, "failed to verify capabilities on ARC VPN network")
+	}
+	for _, domain := range config.SearchDomains {
 		if err := checkMatch(oStr, `domains=.*`, domain, true); err != nil {
-			s.Fatal("Failed to verify search domains on ARC VPN network: ", err)
+			return errors.Wrap(err, "failed to verify search domains on ARC VPN network")
 		}
 	}
 	// Use the output of ifconfig instead of dumpsys because Android P doesn't set the MTU
@@ -188,11 +128,24 @@ func ARCVPNConfigs(ctx context.Context, s *testing.State) {
 	cmd = a.Command(ctx, "ifconfig", "tun0")
 	o, err = cmd.Output(testexec.DumpLogOnError)
 	if err != nil {
-		s.Fatal(err, "Failed to execute 'ifconfig tun0'")
+		return errors.Wrap(err, "failed to execute 'ifconfig tun0'")
 	}
-	if err := checkMatch(string(o), `MTU:.*`, `1280`, true); err != nil {
-		s.Fatal("Failed to verify MTU on ARC VPN network: ", err)
+	if err := checkMatch(string(o), `MTU:.*`, fmt.Sprint(config.MTU), true); err != nil {
+		return errors.Wrap(err, "failed to verify MTU on ARC VPN network")
 	}
+
+	// Disconnect from the connection. Verify the state and connectivity in ARC.
+	if err := conn.Disconnect(ctx); err != nil {
+		return errors.Wrap(err, "failed to disconnect VPN")
+	}
+	if err := arcvpn.CheckARCVPNState(ctx, a, false); err != nil {
+		return errors.Wrap(err, "ArcHostVpnService should be stopped, but isn't")
+	}
+	if err := arc.ExpectPingSuccess(ctx, a, "vpn", conn.Server.OverlayIP); err == nil {
+		return errors.Errorf("expected unable to ping %s from ARC over 'vpn', but was reachable", conn.Server.OverlayIP)
+	}
+
+	return nil
 }
 
 // checkMatch will check that there is some 'lineRegex' within 'input'. And within the matches
