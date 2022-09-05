@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80143cb8_c09e895b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/telemetry_info_reporting.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-09-05T07:55:31Z",
+      "side": 1,
+      "message": "Does it make sense to split the test based on hwdep and what telemetry needs to be sent.\n\nThis change excludes testing on any Chromebox for example.",
+      "revId": "3ad12a34faaded943b20095894358c1edee34110",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36f63232_adc3b5ae",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/telemetry_info_reporting.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-09-05T07:55:31Z",
+      "side": 1,
+      "message": "At this point I propose you should make a more generic validator generator.\n\nOnly the innermost entry is different between them. You can reduce each validator to something like:\n\naudioTelemetryValidator :\u003d genValidator(func(i ...) bool { return i.AudioTelemetry !\u003d nil})\n\nOr even define them inline in the array below.",
+      "revId": "3ad12a34faaded943b20095894358c1edee34110",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
