@@ -64,9 +64,7 @@ func init() {
 			Val:               newRoutineParams(croshealthd.RoutineNVMESelfTest),
 			Timeout:           3 * time.Minute,
 			ExtraSoftwareDeps: []string{"nvme"},
-			ExtraHardwareDeps: hwdep.D(hwdep.Nvme(), hwdep.NvmeSelfTest(),
-				// eve uses Samsung nvme drives which do not support self-test
-				hwdep.SkipOnModel("eve")),
+			ExtraHardwareDeps: hwdep.D(hwdep.Nvme(), hwdep.NvmeSelfTest()),
 		}, {
 			Name: "nvme_wear_level",
 			Val:  newRoutineParams(croshealthd.RoutineNVMEWearLevel),
