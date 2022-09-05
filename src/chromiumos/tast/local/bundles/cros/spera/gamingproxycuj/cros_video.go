@@ -122,6 +122,12 @@ func (v *CrosVideo) VerifyPlaying(ctx context.Context) error {
 	}, &testing.PollOptions{Timeout: 10 * time.Second})
 }
 
+// Exists returns whether the video exists.
+func (v *CrosVideo) Exists() action.Action {
+	video := nodewith.Role(role.Video).Ancestor(crosVideoWebArea)
+	return v.ui.Exists(video)
+}
+
 // FramesData returns frames data including decoded frames, dropped frames and dropped frames percent.
 func (v *CrosVideo) FramesData(ctx context.Context) (decodedFrames, droppedFrames, droppedFramesPer float64, err error) {
 	if err := v.conn.Call(ctx, &decodedFrames, `() => parseFloat(document.querySelector("#decodedFramesDebug").textContent)`); err != nil {
