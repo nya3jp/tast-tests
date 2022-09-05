@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "06a1ba53_8b63fddb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1145774
+      },
+      "writtenOn": "2022-09-05T08:05:18Z",
+      "side": 1,
+      "message": "Adding test owners for awareness.",
+      "revId": "5ea071e2457c464195958b42ac7c9197ebbf15b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e2876804_b5ce8d7b",
@@ -41,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1234abd4_262d06da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/screen_brightness_percent.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1145774
+      },
+      "writtenOn": "2022-09-05T08:05:18Z",
+      "side": 1,
+      "message": "I\u0027m neither the test owner nor familiar with brightness control so I can\u0027t really tell (+alexanderhartl@). I\u0027m thinking that excluding VMs should be a good approximate until we meet a HW device that don\u0027t support brightness control.\n\nFor now I\u0027m trying to unblock crrev.com/c/3869729 to make more tests run on VMs.",
+      "parentUuid": "e2876804_b5ce8d7b",
+      "range": {
+        "startLine": 33,
+        "startChar": 30,
+        "endLine": 33,
+        "endChar": 45
+      },
+      "revId": "5ea071e2457c464195958b42ac7c9197ebbf15b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c0b678a5_842b81ef",
@@ -54,6 +95,24 @@
       "writtenOn": "2022-09-05T07:50:25Z",
       "side": 1,
       "message": "Can you increase the timeouts instead? I\u0027m also not sure how this is related to the change in the description.",
+      "revId": "5ea071e2457c464195958b42ac7c9197ebbf15b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9122e830_7d780ddb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_control.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1145774
+      },
+      "writtenOn": "2022-09-05T08:05:18Z",
+      "side": 1,
+      "message": "It\u0027s not about test reaching timeouts; the test appears to be performing UI operations and measuring frame latency / jankiness etc. VMs can\u0027t pass the test as seen in CQ dry-run of crrev.com/c/3869729.\n\nIn general I don\u0027t think performance benchmarks like this applies to VM, it only makes sense on HW boards.",
+      "parentUuid": "c0b678a5_842b81ef",
       "revId": "5ea071e2457c464195958b42ac7c9197ebbf15b5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
