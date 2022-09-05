@@ -22,6 +22,30 @@
       },
       "revId": "7bdfb6c89ce74ea715ce708528e69584a65b3b91",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03d7a5ba_8793ff59",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_screenshare_entire_screen.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1373247
+      },
+      "writtenOn": "2022-09-05T09:16:27Z",
+      "side": 1,
+      "message": "Seems obvious now, not sure how I didn\u0027t catch that. Thanks!",
+      "parentUuid": "129613b2_96fa189c",
+      "range": {
+        "startLine": 166,
+        "startChar": 0,
+        "endLine": 168,
+        "endChar": 2
+      },
+      "revId": "7bdfb6c89ce74ea715ce708528e69584a65b3b91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
