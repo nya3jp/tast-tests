@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "073ca4ac_46053ffe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/clipboardhistory/context_menu_clipboard.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2022-09-05T01:55:37Z",
+      "side": 1,
+      "message": "can this also be DoDefault?",
+      "revId": "4ea4e063353d3e09537cd0ed692364e9f599560e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

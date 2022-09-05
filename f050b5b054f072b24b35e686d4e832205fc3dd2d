@@ -202,6 +202,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2a72bae2_6c35f9f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/clipboardhistory/context_menu_clipboard.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2022-09-05T01:55:37Z",
+      "side": 1,
+      "message": "10 seconds sounds too long to be done for every successful trials if it happens frequently. How about this way?\n1. quickly check if StartedBtn exist by Exists(). If exist, clear the prompt\n2. try pasteAndVerify. If success, end\n3. if the verification failed, check if the StartedBtn had appeared (after starting step #2). If so, clear prompts and retry pasteAndVerify",
+      "parentUuid": "216edc3f_5a16da4f",
+      "range": {
+        "startLine": 267,
+        "startChar": 18,
+        "endLine": 267,
+        "endChar": 69
+      },
+      "revId": "f050b5b054f072b24b35e686d4e832205fc3dd2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8f75b900_c246d615",
         "filename": "src/chromiumos/tast/local/bundles/cros/clipboardhistory/context_menu_clipboard.go",
         "patchSetId": 6
