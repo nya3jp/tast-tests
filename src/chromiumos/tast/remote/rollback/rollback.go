@@ -130,7 +130,7 @@ func ToPreviousVersion(ctx context.Context, dut *dut.DUT, rpcHint *testing.RPCHi
 	}
 
 	builderPath := fmt.Sprintf("%s-release/R%d-%s", board, targetMilestone, rollbackVersion)
-	if err := updateutil.UpdateFromGS(ctx, dut, outDir, rpcHint, builderPath); err != nil {
+	if err := updateutil.UpdateFromGSByAPI(ctx, dut, outDir, rpcHint, builderPath); err != nil {
 		return errors.Wrapf(err, "failed to update DUT to image for %q from GS", builderPath)
 	}
 

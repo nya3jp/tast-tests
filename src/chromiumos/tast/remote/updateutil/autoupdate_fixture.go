@@ -140,7 +140,7 @@ func (au *autoupdateFixt) PostTest(ctx context.Context, s *testing.FixtTestState
 
 	// Restore the DUT image with installation.
 	s.Log("Installing the original image to the DUT")
-	err := UpdateFromGS(ctx, s.DUT(), s.OutDir(), s.RPCHint(), au.builderPath)
+	err := UpdateFromGSByAPI(ctx, s.DUT(), s.OutDir(), s.RPCHint(), au.builderPath)
 	if err != nil {
 		s.Fatalf("Failed to restore DUT image to %q from GS: %v", au.builderPath, err)
 	}

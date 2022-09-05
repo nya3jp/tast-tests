@@ -57,7 +57,7 @@ func BasicNToN(ctx context.Context, s *testing.State) {
 	builderPath := lsbContent[lsbrelease.BuilderPath]
 
 	// Update the DUT.
-	if err := updateutil.UpdateFromGS(ctx, s.DUT(), s.OutDir(), s.RPCHint(), builderPath); err != nil {
+	if err := updateutil.UpdateFromGSByAPI(ctx, s.DUT(), s.OutDir(), s.RPCHint(), builderPath); err != nil {
 		s.Fatalf("Failed to update DUT to image for %q from GS: %v", builderPath, err)
 	}
 

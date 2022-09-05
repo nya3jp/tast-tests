@@ -100,7 +100,7 @@ func NToMTest(ctx context.Context, dut *dut.DUT, outDir string, rpcHint *testing
 
 	// Update the DUT.
 	testing.ContextLogf(ctx, "Starting update from %s to %s", originalVersion, rollbackVersion)
-	if err := updateutil.UpdateFromGS(ctx, dut, outDir, rpcHint, builderPath); err != nil {
+	if err := updateutil.UpdateFromGSByAPI(ctx, dut, outDir, rpcHint, builderPath); err != nil {
 		return errors.Wrapf(err, "failed to update DUT to image for %q from GS", builderPath)
 	}
 

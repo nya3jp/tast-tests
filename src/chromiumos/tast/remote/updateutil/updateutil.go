@@ -22,6 +22,7 @@ import (
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 
+	"chromiumos/tast/common/action"
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/dut"
@@ -32,6 +33,8 @@ import (
 	"chromiumos/tast/ssh/linuxssh"
 	"chromiumos/tast/testing"
 )
+
+type updateMethod func(context.Context, *rpc.Client, *aupb.StartResponse) error
 
 // tlwAddress is used to connect to the Test Lab Wiring,
 // which is used for the communication with the image caching service.
@@ -112,9 +115,38 @@ func FillFromLSBRelease(ctx context.Context, dut *dut.DUT, rpcHint *testing.RPCH
 	return nil
 }
 
-// UpdateFromGS updates the DUT to an image found in the Google Storage under the builder path folder.
+// UpdateFromGSByCustomLSB updates the DUT to an image found in the Google Storage under the builder path folder by customising lsb config.
+func UpdateFromGSByCustomLSB(ctx context.Context, dut *dut.DUT, outdir string, rpcHint *testing.RPCHint, builderPath string, testSteps action.Action) (retErr error) {
+	customLsb := func(ctx context.Context, cl *rpc.Client, nebraska *aupb.StartResponse) error {
+		if err := createCustomLsbRelease(ctx, dut, nebraska.Port); err != nil {
+			return errors.Wrap(err, "Fail to setup custom LSB to update OS version")
+		}
+		defer clearCustomLsbRelease(ctx, dut)
+		return testSteps(ctx)
+	}
+
+	return updateFromGS(ctx, dut, outdir, rpcHint, builderPath, customLsb)
+}
+
+// UpdateFromGSByAPI updates the DUT to an image found in the Google Storage under the builder path folder by api.
 // It saves the logs (udpdate engine logs and Nebraska logs) to the given outdir.
-func UpdateFromGS(ctx context.Context, dut *dut.DUT, outdir string, rpcHint *testing.RPCHint, builderPath string) (retErr error) {
+func UpdateFromGSByAPI(ctx context.Context, dut *dut.DUT, outdir string, rpcHint *testing.RPCHint, builderPath string) (retErr error) {
+	triggerUpdate := func(ctx context.Context, cl *rpc.Client, nebraska *aupb.StartResponse) error {
+		// Trigger the update and wait for the results.
+		updateClient := aupb.NewUpdateServiceClient(cl.Conn)
+		if _, err := updateClient.CheckForUpdate(ctx, &aupb.UpdateRequest{
+			OmahaUrl: fmt.Sprintf("http://127.0.0.1:%s/update?critical_update=True", nebraska.Port),
+		}); err != nil {
+			return errors.Wrap(err, "failed to update")
+		}
+
+		return nil
+	}
+
+	return updateFromGS(ctx, dut, outdir, rpcHint, builderPath, triggerUpdate)
+}
+
+func updateFromGS(ctx context.Context, dut *dut.DUT, outdir string, rpcHint *testing.RPCHint, builderPath string, triggerUpdate updateMethod) (retErr error) {
 	// Limit the timeout for the update.
 	updateCtx, cancel := context.WithTimeout(ctx, UpdateTimeout)
 	defer cancel()
@@ -214,15 +246,39 @@ func UpdateFromGS(ctx context.Context, dut *dut.DUT, outdir string, rpcHint *tes
 		}
 	}(cleanupCtx)
 
-	// Trigger the update and wait for the results.
-	updateClient := aupb.NewUpdateServiceClient(cl.Conn)
-	if _, err := updateClient.CheckForUpdate(updateCtx, &aupb.UpdateRequest{
-		OmahaUrl: fmt.Sprintf("http://127.0.0.1:%s/update?critical_update=True", nebraska.Port),
-	}); err != nil {
-		return errors.Wrap(err, "failed to update")
+	return triggerUpdate(updateCtx, cl, nebraska)
+}
+
+func createCustomLsbRelease(ctx context.Context, dut *dut.DUT, port string) error {
+	releaseVersion := "CHROMEOS_RELEASE_VERSION=0.0.0.0"
+	auserver := fmt.Sprintf("CHROMEOS_AUSERVER=http://127.0.0.1:%s/update?critical_update=True", port)
+	cmd1 := fmt.Sprintf("echo '%s' > /mnt/stateful_partition/etc/lsb-release", releaseVersion)
+	cmd2 := fmt.Sprintf("echo '%s' >> /mnt/stateful_partition/etc/lsb-release", auserver)
+
+	if err := dut.Conn().CommandContext(ctx, "mkdir", "-p", "/mnt/stateful_partition/etc").Run(); err != nil {
+		return errors.Wrap(err, "failed to create dir /mnt/stateful_partition/etc")
 	}
 
+	if err := dut.Conn().CommandContext(ctx, "touch", "/mnt/stateful_partition/etc/lsb-release").Run(); err != nil {
+		return errors.Wrap(err, "failed to touch /mnt/stateful_partition/etc/lsb-release")
+	}
+
+	if err := dut.Conn().CommandContext(ctx, "sh", "-c", cmd1).Run(); err != nil {
+		return errors.Wrap(err, "failed to write release version to /mnt/stateful_partition/etc/lsb-release")
+	}
+
+	if err := dut.Conn().CommandContext(ctx, "sh", "-c", cmd2).Run(); err != nil {
+		return errors.Wrap(err, "failed to write au server to /mnt/stateful_partition/etc/lsb-release")
+	}
+
+	output, _ := dut.Conn().CommandContext(ctx, "cat", "/mnt/stateful_partition/etc/lsb-release").Output()
+	testing.ContextLog(ctx, string(output))
+
 	return nil
+}
+
+func clearCustomLsbRelease(ctx context.Context, dut *dut.DUT) error {
+	return dut.Conn().CommandContext(ctx, "rm", "/mnt/stateful_partition/etc/lsb-release").Run()
 }
 
 // cacheForDUT caches the required update files in a caching server which is available from the DUT.

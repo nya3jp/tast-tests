@@ -88,6 +88,14 @@ func (uiHelper *UIHelper) WelcomePageOperation(ctx context.Context) error {
 	)(ctx)
 }
 
+// OsUpdateOperation handles all operations on OS Update Page.
+func (uiHelper *UIHelper) OsUpdateOperation(ctx context.Context) error {
+	return action.Combine("Os Update Operation",
+		uiHelper.waitForPageToLoad("Make sure Chrome OS is up to date", timeInSecondToLoadPage),
+		uiHelper.waitAndClickButton("Update version & restart", longTimeInSecondToEnableButton),
+	)(ctx)
+}
+
 // ComponentsPageOperation handles all operations on Components Selection Page.
 func (uiHelper *UIHelper) ComponentsPageOperation(ctx context.Context) error {
 	return action.Combine("Components page operation",
