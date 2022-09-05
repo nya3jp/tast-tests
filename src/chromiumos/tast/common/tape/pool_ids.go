@@ -16,6 +16,8 @@ const (
 	ChromeosbytebotCom                    = "chromeosbytebot_com"
 	Crosprqa4Com                          = "crosprqa4_com"
 	DefaultManaged                        = "default_managed"
+	DeviceTrustDisabled                   = "device_trust_disabled"
+	DeviceTrustEnabled                    = "device_trust_enabled"
 	Enrollment                            = "enrollment"
 	EnrollmentKiosk                       = "enrollment_kiosk"
 	ZTETestAutomation                     = "zte-test-automation"

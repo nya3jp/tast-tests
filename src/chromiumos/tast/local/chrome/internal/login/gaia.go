@@ -172,6 +172,10 @@ func performGAIALogin(ctx context.Context, cfg *config.Config, sess *driver.Sess
 			return testing.PollBreak(errors.Wrap(err, "failed to click on the primary action button"))
 		}
 
+		if cfg.LoginMode() == config.SAMLLogin {
+			return nil
+		}
+
 		authType, err = getAuthType(ctx, gaiaConn)
 		if err == nil {
 			return nil
@@ -187,6 +191,11 @@ func performGAIALogin(ctx context.Context, cfg *config.Config, sess *driver.Sess
 		return errors.New("couldn't sign the user in and login retry is needed")
 	}, pollOpts); err != nil {
 		return err
+	}
+
+	// Skip authentication for SAML flows and give back the current context.
+	if cfg.LoginMode() == config.SAMLLogin {
+		return nil
 	}
 
 	// Fill in password / contact email.
