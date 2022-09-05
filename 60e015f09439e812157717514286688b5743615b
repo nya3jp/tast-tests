@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0ed0f24_c692a97b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kerberos/automatic_ticket_access_website.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1541513
+      },
+      "writtenOn": "2022-09-05T12:49:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a424a10e_2df0482a",
+      "range": {
+        "startLine": 137,
+        "startChar": 8,
+        "endLine": 137,
+        "endChar": 11
+      },
+      "revId": "60e015f09439e812157717514286688b5743615b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "33f166fb_0a4f341b",
@@ -71,6 +95,30 @@
       "writtenOn": "2022-09-02T18:46:05Z",
       "side": 1,
       "message": "This check is unnecessary, because the check below will detect if the website title contains 401 error.",
+      "range": {
+        "startLine": 145,
+        "startChar": 1,
+        "endLine": 147,
+        "endChar": 2
+      },
+      "revId": "60e015f09439e812157717514286688b5743615b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "562744c0_0449ad90",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kerberos/automatic_ticket_access_website.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1541513
+      },
+      "writtenOn": "2022-09-05T12:49:30Z",
+      "side": 1,
+      "message": "From the perspective of failing the test (or not) you are correct, but i made it like this intentionally to have better error messages. I would prefer to leave them as they are, if you dont mind.",
+      "parentUuid": "33f166fb_0a4f341b",
       "range": {
         "startLine": 145,
         "startChar": 1,
@@ -104,6 +152,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1edd0f65_3302e708",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kerberos/manual_ticket_access_website.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1541513
+      },
+      "writtenOn": "2022-09-05T12:49:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fd6ee04d_f52d242f",
+      "range": {
+        "startLine": 103,
+        "startChar": 1,
+        "endLine": 105,
+        "endChar": 2
+      },
+      "revId": "60e015f09439e812157717514286688b5743615b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f7ac492c_59fabf05",
@@ -117,6 +189,30 @@
       "writtenOn": "2022-09-02T18:46:05Z",
       "side": 1,
       "message": "nit: replace with `s.Fatal`.",
+      "range": {
+        "startLine": 134,
+        "startChar": 2,
+        "endLine": 134,
+        "endChar": 9
+      },
+      "revId": "60e015f09439e812157717514286688b5743615b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a3d49f3_fd48e9c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kerberos/manual_ticket_access_website.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1541513
+      },
+      "writtenOn": "2022-09-05T12:49:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f7ac492c_59fabf05",
       "range": {
         "startLine": 134,
         "startChar": 2,
@@ -150,6 +246,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e27aac9f_e7941ae5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kerberos/manual_ticket_access_website.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1541513
+      },
+      "writtenOn": "2022-09-05T12:49:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d2110653_581e8f8d",
+      "range": {
+        "startLine": 137,
+        "startChar": 8,
+        "endLine": 137,
+        "endChar": 11
+      },
+      "revId": "60e015f09439e812157717514286688b5743615b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a9c341f2_33f1f572",
@@ -163,6 +283,30 @@
       "writtenOn": "2022-09-02T18:46:05Z",
       "side": 1,
       "message": "These 2 checks are also unnecessary.",
+      "range": {
+        "startLine": 141,
+        "startChar": 1,
+        "endLine": 146,
+        "endChar": 2
+      },
+      "revId": "60e015f09439e812157717514286688b5743615b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8719841_5db47081",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kerberos/manual_ticket_access_website.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1541513
+      },
+      "writtenOn": "2022-09-05T12:49:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a9c341f2_33f1f572",
       "range": {
         "startLine": 141,
         "startChar": 1,
@@ -196,6 +340,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f308966f_b48c6809",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kerberos/mgs_manual_ticket_access_website.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1541513
+      },
+      "writtenOn": "2022-09-05T12:49:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aa440d2f_64a73a6b",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 2
+      },
+      "revId": "60e015f09439e812157717514286688b5743615b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "57676b63_eac2ece2",
@@ -209,6 +377,30 @@
       "writtenOn": "2022-09-02T18:46:05Z",
       "side": 1,
       "message": "nit: Replace with `s.Fatal`.",
+      "range": {
+        "startLine": 123,
+        "startChar": 2,
+        "endLine": 123,
+        "endChar": 9
+      },
+      "revId": "60e015f09439e812157717514286688b5743615b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b495ae20_9ef317ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kerberos/mgs_manual_ticket_access_website.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1541513
+      },
+      "writtenOn": "2022-09-05T12:49:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "57676b63_eac2ece2",
       "range": {
         "startLine": 123,
         "startChar": 2,
@@ -242,6 +434,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "756a4b81_b36325b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kerberos/mgs_manual_ticket_access_website.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1541513
+      },
+      "writtenOn": "2022-09-05T12:49:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5e8b8624_5ffef3ff",
+      "range": {
+        "startLine": 126,
+        "startChar": 8,
+        "endLine": 126,
+        "endChar": 11
+      },
+      "revId": "60e015f09439e812157717514286688b5743615b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "81ed106a_63ebb86a",
@@ -255,6 +471,30 @@
       "writtenOn": "2022-09-02T18:46:05Z",
       "side": 1,
       "message": "Same as other comments.",
+      "range": {
+        "startLine": 130,
+        "startChar": 1,
+        "endLine": 135,
+        "endChar": 2
+      },
+      "revId": "60e015f09439e812157717514286688b5743615b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "073e11a3_bf568621",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kerberos/mgs_manual_ticket_access_website.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1541513
+      },
+      "writtenOn": "2022-09-05T12:49:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "81ed106a_63ebb86a",
       "range": {
         "startLine": 130,
         "startChar": 1,
