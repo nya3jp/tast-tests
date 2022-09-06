@@ -34,6 +34,13 @@ func init() {
 			ExtraSoftwareDeps: []string{caps.HWEncodeH264, "proprietary_codecs"},
 			Fixture:           "chromeVideoWithFakeWebcam",
 		}, {
+			// TODO(b/236546408): Remove once hardware variable bitrate encoding is enabled by default.
+			Name:              "h264_vbr",
+			Val:               videotype.H264,
+			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
+			ExtraSoftwareDeps: []string{caps.HWEncodeH264VBR, "proprietary_codecs"},
+			Fixture:           "chromeVideoWithFakeWebcamAndHWVBREncoding",
+		}, {
 			Name:              "vp8",
 			Val:               videotype.VP8,
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
