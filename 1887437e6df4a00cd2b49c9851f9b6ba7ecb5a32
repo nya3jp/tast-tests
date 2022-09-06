@@ -69,6 +69,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "95ef4573_98022cbb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-09-06T23:45:53Z",
+      "side": 1,
+      "message": "Thanks for the review.",
+      "revId": "1887437e6df4a00cd2b49c9851f9b6ba7ecb5a32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f058750e_70ee4dcc",
@@ -82,6 +99,30 @@
       "writtenOn": "2022-09-05T10:38:15Z",
       "side": 1,
       "message": "please use hwdep.Microphone() condition instead\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast/src/chromiumos/tast/testing/hwdep/hwdep.go;l\u003d1155",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 40
+      },
+      "revId": "1887437e6df4a00cd2b49c9851f9b6ba7ecb5a32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3bec99bf_5610745e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/new_screencast_button_condition.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-09-06T23:45:53Z",
+      "side": 1,
+      "message": "Ack. That hardware dep doesn\u0027t work because it sometimes adds a fake microphone when none is detected based on the device\u0027s form factor [1]. See b/241588663.\n\nThe purpose of this test is to run on all devices and check for the \"Turn on microphone\" error if a microphone doesn\u0027t exist, or check that the new screencast button is enabled otherwise. To use hwdep.Microphone(), I would have to create a new hardware dep called hwdep.NoMicrophone() and split this test into two. It doesn\u0027t seem worth it. There\u0027s already another test projector.CreationFlow [2] that uses hwdep.Microphone().\n\n[1] https://source.corp.google.com/chromeos_public/src/platform/tast/src/chromiumos/tast/internal/crosbundle/hardware.go;l\u003d495?q\u003df:src%2Fchromiumos%2Ftast%2Finternal%2Fcrosbundle%2Fhardware.go\n[2] https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/projector/creation_flow.go;l\u003d32?q\u003df:projector%20f:tast%20creationflow",
+      "parentUuid": "f058750e_70ee4dcc",
       "range": {
         "startLine": 64,
         "startChar": 0,
