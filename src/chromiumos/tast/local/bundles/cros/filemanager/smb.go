@@ -10,6 +10,7 @@ import (
 	"os"
 	"path/filepath"
 	"strings"
+	"time"
 
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto"
@@ -31,7 +32,7 @@ func init() {
 			"benreich@chromium.org",
 			"chromeos-files-syd@google.com",
 		},
-		Attr:         []string{"group:mainline"},
+		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Fixture:      "smbStarted",
 	})
@@ -61,15 +62,22 @@ func SMB(ctx context.Context, s *testing.State) {
 		s.Fatal("Launching the Files App failed: ", err)
 	}
 
-	// Files app will start with the window positioning of the previous session, this can cause the 3-dot menu position to end up out of view. Maximize the window to ensure the window bounds are all visible.
-	window, err := ash.FindWindow(ctx, tconn, func(w *ash.Window) bool {
-		return strings.HasPrefix(w.Title, filesapp.FilesTitlePrefix)
-	})
-	if err != nil {
-		s.Fatal("Failed to find the Files app window: ", err)
-	}
-	if err := ash.SetWindowStateAndWait(ctx, tconn, window.ID, ash.WindowStateMaximized); err != nil {
-		s.Fatal("Failed to maximize the Files app window: ", err)
+	// Files app will start with the window positioning of the previous session,
+	// this can cause the 3-dot menu position to end up out of view. Maximize the
+	// window to ensure the window bounds are all visible.
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		window, err := ash.FindWindow(ctx, tconn, func(w *ash.Window) bool {
+			return strings.HasPrefix(w.Title, filesapp.FilesTitlePrefix)
+		})
+		if err != nil {
+			return err
+		}
+		if err := ash.SetWindowStateAndWait(ctx, tconn, window.ID, ash.WindowStateMaximized); err != nil {
+			return testing.PollBreak(err)
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
+		s.Fatal("Failed to maximize Files app window: ", err)
 	}
 
 	ui := uiauto.New(tconn)
