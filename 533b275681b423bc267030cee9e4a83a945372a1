@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4305f6c3_5278195d",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint_reset_flags.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-09-06T18:57:59Z",
+      "side": 1,
+      "message": "Can you add a link so that people that aren\u0027t familiar with the code can find it easily?",
+      "range": {
+        "startLine": 19,
+        "startChar": 3,
+        "endLine": 19,
+        "endChar": 22
+      },
+      "revId": "533b275681b423bc267030cee9e4a83a945372a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a9a834d_042fabb5",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint_reset_flags.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-09-06T18:57:59Z",
+      "side": 1,
+      "message": "IntelliJ warns that that this should have the name of the flag at the beginning of the description:\n\n```\n// ResetFlagOther Other known reason.\n```\n\nSame for the other flags.",
+      "range": {
+        "startLine": 21,
+        "startChar": 1,
+        "endLine": 21,
+        "endChar": 23
+      },
+      "revId": "533b275681b423bc267030cee9e4a83a945372a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73f2feb4_b2902dcd",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint_reset_flags.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-09-06T18:57:59Z",
+      "side": 1,
+      "message": "Should this be `0x4`?",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 32
+      },
+      "revId": "533b275681b423bc267030cee9e4a83a945372a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc36e2a2_f0e99ec0",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint_reset_flags.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-09-06T18:57:59Z",
+      "side": 1,
+      "message": "If you change the type to `ResetFlags`, we could remove the cast in `GetResetFlags`.",
+      "range": {
+        "startLine": 76,
+        "startChar": 44,
+        "endLine": 76,
+        "endChar": 50
+      },
+      "revId": "533b275681b423bc267030cee9e4a83a945372a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "938e93bf_33df2d67",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint_reset_flags.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-09-06T18:57:59Z",
+      "side": 1,
+      "message": "Should we add a `ResetFlagNone \u003d 0` to the constants?",
+      "range": {
+        "startLine": 86,
+        "startChar": 9,
+        "endLine": 86,
+        "endChar": 22
+      },
+      "revId": "533b275681b423bc267030cee9e4a83a945372a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
