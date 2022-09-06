@@ -172,28 +172,28 @@ func UCMSequences(ctx context.Context, s *testing.State) {
 func ucmSequencesTestCard(ctx context.Context, s *testing.State, c alsaucmCommander, ucmName string, hasUCMSuffix bool) {
 	const ucmBasePath = "/usr/share/alsa/ucm"
 
-	hifiConf := filepath.Join(ucmBasePath, ucmName, "HiFi.conf")
-	s.Logf("Testing %s UCM: %s", ucmName, hifiConf)
+	ucmConf := filepath.Join(ucmBasePath, ucmName, ucmName+".conf")
+	s.Logf("Testing %s UCM: %s", ucmName, ucmConf)
 
-	// Check we have a complete HiFi.conf.
+	// Check we have a complete UCM.
 	// If the file is rightfully absent or empty (placeholder during bringup), skip the test.
-	if stat, err := os.Stat(hifiConf); err != nil {
+	if stat, err := os.Stat(ucmConf); err != nil {
 		if os.IsNotExist(err) {
 			if !hasUCMSuffix {
-				s.Log("Skipping due to missing HiFi.conf and ucm-suffix")
+				s.Log("Skipping due to missing UCM and ucm-suffix")
 				return
 			}
-			// If ucm-suffix is set, but HiFi.conf is missing, then it
+			// If ucm-suffix is set, but ${ucmName}.conf is missing, then it
 			// is likely that the sound card name found on the live system
 			// disagrees with the one in the configuration (boxster and UCM).
 			s.Error("Missing HiFi.conf but ucm-suffix is set")
 			return
 		}
 		if stat.Size() == 0 {
-			s.Log("Skipping due to empty HiFi.conf")
+			s.Log("Skipping due to empty UCM")
 			return
 		}
-		s.Error("Failed to stat HiFi.conf: ", err)
+		s.Error("Failed to stat UCM: ", err)
 		return
 	}
 
