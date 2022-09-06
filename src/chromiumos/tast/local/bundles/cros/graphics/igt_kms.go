@@ -25,7 +25,7 @@ var gpuMtk = []string{"kukui", "jacuzzi"}
 func init() {
 	testing.AddTest(&testing.Test{
 		Func: IgtKms,
-		Desc: "Verifies igt-gpu-tools test binaries run successfully",
+		Desc: "Verifies IGT KMS test binaries run successfully",
 		Contacts: []string{
 			"ddavenport@chromium.org",
 			"chromeos-gfx@google.com",
