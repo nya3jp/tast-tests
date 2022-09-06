@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ca40cc1_0aee737b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/minijail.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2022-09-06T02:27:13Z",
+      "side": 1,
+      "message": "testexec.CommandContext is preferred in tast tests.",
+      "range": {
+        "startLine": 418,
+        "startChar": 21,
+        "endLine": 418,
+        "endChar": 33
+      },
+      "revId": "fab8dbe2aa83d8dbaa731e325c22d24095f44fb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
