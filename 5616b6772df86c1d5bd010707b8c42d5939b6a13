@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "959e83bb_906d6976",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1498402
+      },
+      "writtenOn": "2022-09-06T20:49:05Z",
+      "side": 1,
+      "message": "This is the frequency table of modules used in platform_decoding.go\u0027s commit messages:\n\n      1 video.PlatformDecoding\n     16 video/platform_decoding\n     10 video\n      6 tast-tests/video\n      2 tast-tests\n      1 platform/tast-tests\n     10 platform_decoding\n\nMaybe use `video/platform_decoding`?",
+      "parentUuid": "16e51d52_bd042414",
+      "revId": "5616b6772df86c1d5bd010707b8c42d5939b6a13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "795177ed_21b2c6e8",
