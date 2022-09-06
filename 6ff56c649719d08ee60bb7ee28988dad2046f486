@@ -34,6 +34,24 @@
       "parentUuid": "6792a8c3_3b8d5e88",
       "revId": "6ff56c649719d08ee60bb7ee28988dad2046f486",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7fa93865_96ce6e1f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1518298
+      },
+      "writtenOn": "2022-09-06T18:08:52Z",
+      "side": 1,
+      "message": "After further investigation, it doesn\u0027t appear this is widespread so abandoning the revert for now.",
+      "parentUuid": "e0a9d6c0_62d53b0a",
+      "revId": "6ff56c649719d08ee60bb7ee28988dad2046f486",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ],
   "submitRequirementResults": [
