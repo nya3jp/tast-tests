@@ -32,6 +32,8 @@ var (
 	H264DASH1080P60FPS = VideoOption{"H264 DASH 60 FPS", "1920x1080"}
 	H264DASH4K60FPS    = VideoOption{"H264 DASH 60 FPS", "3840x2160"}
 	AV1DASH60FPS       = VideoOption{"AV1 DASH 60FPS", "3840x2026"}
+	VP9DASH1080P60FPS  = VideoOption{"VP9 DASH 60 FPS", "1920x1080"}
+	VP9DASH4K60FPS     = VideoOption{"VP9 DASH 60 FPS", "3840x2160"}
 )
 
 // CrosVideo defines the struct related to cros video web.
