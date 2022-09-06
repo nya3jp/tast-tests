@@ -75,6 +75,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "535b2af0_d742174a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/play_files.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1221932
+      },
+      "writtenOn": "2022-09-06T07:05:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9d13774f_1a4fa6ce",
+      "range": {
+        "startLine": 113,
+        "startChar": 44,
+        "endLine": 113,
+        "endChar": 54
+      },
+      "revId": "00ac67fda56348879659ca605caab93a2077f2c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "21ea0b65_90272a62",
@@ -88,6 +112,30 @@
       "writtenOn": "2022-09-06T06:59:51Z",
       "side": 1,
       "message": "nit: \"to remove\"",
+      "range": {
+        "startLine": 129,
+        "startChar": 38,
+        "endLine": 129,
+        "endChar": 45
+      },
+      "revId": "00ac67fda56348879659ca605caab93a2077f2c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e2e883f_ba866d57",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/play_files.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1221932
+      },
+      "writtenOn": "2022-09-06T07:05:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "21ea0b65_90272a62",
       "range": {
         "startLine": 129,
         "startChar": 38,
@@ -121,6 +169,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f284f50b_91585aa4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/play_files.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1221932
+      },
+      "writtenOn": "2022-09-06T07:05:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f36cb84b_599f9b66",
+      "range": {
+        "startLine": 152,
+        "startChar": 81,
+        "endLine": 152,
+        "endChar": 82
+      },
+      "revId": "00ac67fda56348879659ca605caab93a2077f2c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3164969b_9500cbc5",
@@ -144,6 +216,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "da22fd82_ef4530b8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/play_files.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1221932
+      },
+      "writtenOn": "2022-09-06T07:05:30Z",
+      "side": 1,
+      "message": "This only performs remove in the host side, and does not require any context.",
+      "parentUuid": "3164969b_9500cbc5",
+      "range": {
+        "startLine": 179,
+        "startChar": 2,
+        "endLine": 179,
+        "endChar": 4
+      },
+      "revId": "00ac67fda56348879659ca605caab93a2077f2c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "674886f2_aabc6897",
@@ -157,6 +253,30 @@
       "writtenOn": "2022-09-06T06:59:51Z",
       "side": 1,
       "message": "10s is probably too much to reserve here, closing Files app might be a few second job.",
+      "range": {
+        "startLine": 251,
+        "startChar": 37,
+        "endLine": 251,
+        "endChar": 51
+      },
+      "revId": "00ac67fda56348879659ca605caab93a2077f2c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6b1501c_fe23aca5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/play_files.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1221932
+      },
+      "writtenOn": "2022-09-06T07:05:30Z",
+      "side": 1,
+      "message": "Changed to 5s.",
+      "parentUuid": "674886f2_aabc6897",
       "range": {
         "startLine": 251,
         "startChar": 37,
