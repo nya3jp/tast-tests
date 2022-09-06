@@ -224,6 +224,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "db9e3171_90f5bd10",
+        "filename": "src/chromiumos/tast/local/bundles/cros/clipboardhistory/context_menu_clipboard.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-09-06T14:11:00Z",
+      "side": 1,
+      "message": "Done, we also add one more retry just to stabilize it.",
+      "parentUuid": "2a72bae2_6c35f9f6",
+      "range": {
+        "startLine": 267,
+        "startChar": 18,
+        "endLine": 267,
+        "endChar": 69
+      },
+      "revId": "f050b5b054f072b24b35e686d4e832205fc3dd2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8f75b900_c246d615",

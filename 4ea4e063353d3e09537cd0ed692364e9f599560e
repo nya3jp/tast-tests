@@ -16,6 +16,24 @@
       "message": "can this also be DoDefault?",
       "revId": "4ea4e063353d3e09537cd0ed692364e9f599560e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a87d31d6_dad4b407",
+        "filename": "src/chromiumos/tast/local/bundles/cros/clipboardhistory/context_menu_clipboard.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-09-06T14:11:00Z",
+      "side": 1,
+      "message": "It appears that triggering the default action on a content within the clipboard history menu won\u0027t result the same as triggering `LeftClick` or mouse click.\nThe action here couldn\u0027t be replaced with `DoDefault`.",
+      "parentUuid": "073ca4ac_46053ffe",
+      "revId": "4ea4e063353d3e09537cd0ed692364e9f599560e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
