@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "957bdbf7_cabddfe0",
+        "filename": "src/chromiumos/tast/local/chrome/cuj/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-09-06T16:17:40Z",
+      "side": 1,
+      "message": "Just write `power.TurnOnDisplay`. It already has the type `func(ctx context.Context) error`, so you don\u0027t have to wrap it in an anonymous function.",
+      "range": {
+        "startLine": 300,
+        "startChar": 29,
+        "endLine": 302,
+        "endChar": 2
+      },
+      "revId": "b068a2744fedd532c0c4e6d8b47455e854c10ee2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
