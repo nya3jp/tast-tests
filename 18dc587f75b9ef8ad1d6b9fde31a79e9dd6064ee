@@ -123,6 +123,41 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a911519_01098c8a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510928
+      },
+      "writtenOn": "2022-09-06T03:26:19Z",
+      "side": 1,
+      "message": "Maybe we need add comment about the change of this app when copy from android repo. Such as delete classes, remove dependency and the reason why we do that.",
+      "revId": "18dc587f75b9ef8ad1d6b9fde31a79e9dd6064ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4037c3c2_6ddb6032",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510928
+      },
+      "writtenOn": "2022-09-06T03:26:19Z",
+      "side": 1,
+      "message": "For why we copy and change test APK:\n\nWe did the same thing for other test: http://cs/chromeos_public/src/platform/tast-tests/android/ArcGamePerformanceTest/\n\nWe copy most of APK code, but not all of them. In this CL, we just keep the UI element generate code (e.g. FlowLayout) and remove the instrument test e.g. rotation test.\n\n\nFor why not checkout android source code:\n\nSome test App, like this one, has dependency outside of aosp_android_sdk. I guess we don\u0027t want to introduce these mess stuff. So here we change the code and remove this part.",
+      "parentUuid": "dce3ba84_3698af5b",
+      "revId": "18dc587f75b9ef8ad1d6b9fde31a79e9dd6064ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d3d36ba3_9c1dcc4f",
