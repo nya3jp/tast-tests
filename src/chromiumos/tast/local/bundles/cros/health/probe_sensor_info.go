@@ -56,7 +56,10 @@ func rawLidAngle(ctx context.Context) (string, error) {
 func validateLidAngle(ctx context.Context, info *sensorInfo) error {
 	lidAngleRaw, err := rawLidAngle(ctx)
 	if err != nil {
-		return errors.Wrap(err, "failed to get lid angle")
+		if info.LidAngle != nil {
+			return errors.Wrap(err, "failed to get lid angle, but cros_healthd report it")
+		}
+		return nil
 	}
 
 	if lidAngleRaw == "" || lidAngleRaw == "unreliable" {
