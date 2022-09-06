@@ -15,7 +15,6 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
@@ -97,8 +96,7 @@ func init() {
 			} else {
 				opts = append(opts, chrome.ARCDisabled())
 			}
-			return lacrosfixt.NewConfig(lacrosfixt.Mode(lacros.LacrosPrimary),
-				lacrosfixt.ChromeOptions(opts...)).Opts()
+			return lacrosfixt.NewConfig(lacrosfixt.ChromeOptions(opts...)).Opts()
 		}),
 		SetUpTimeout:    chrome.LoginTimeout,
 		ResetTimeout:    chrome.ResetTimeout,
