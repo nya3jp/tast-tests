@@ -7,6 +7,7 @@ package video
 import (
 	"context"
 	"fmt"
+	"os"
 	"regexp"
 	"strconv"
 	"strings"
@@ -2595,6 +2596,16 @@ func PlatformDecoding(ctx context.Context, s *testing.State) {
 	}
 	defer vl.Close()
 
+	// Creates temporary md5 checksum log file
+	f, err := os.CreateTemp("", "frame_checksums.*.md5")
+	if err != nil {
+		s.Fatal("Failed to create md5 checksum log: ", err)
+	}
+	md5logPath := f.Name()
+	if err := f.Close(); err != nil {
+		s.Fatal("Failed to close md5 checksum log: ", err)
+	}
+
 	// Run the decode_test binary for vaapi or the v4l2_stateful_decoder binary or
 	// v4l2_stateless_decoder binary for v4l2, propagating its errors: the binary fails
 	// if the VAAPI or V4l2 calls themselves error, the binary is called on unsupported
@@ -2606,12 +2617,14 @@ func PlatformDecoding(ctx context.Context, s *testing.State) {
 	for _, filename := range testOpt.filenames {
 		testing.ContextLogf(ctx, "Running %s on %s", exec, filename)
 		args := testOpt.commandBuilder(ctx, s.DataPath(filename))
+		args = append(args, "--md5="+md5logPath)
 		stdout, stderr, err := testexec.CommandContext(
 			ctx,
 			validatePath,
 			"--exec="+exec,
 			fmt.Sprintf("--args=%s", strings.Join(args, " ")),
 			fmt.Sprintf("--metadata=%s.json", s.DataPath(filename)),
+			fmt.Sprintf("--md5=%s", md5logPath),
 		).SeparatedOutput(testexec.DumpLogOnError)
 
 		if err != nil {
@@ -2625,11 +2638,14 @@ func PlatformDecoding(ctx context.Context, s *testing.State) {
 		}
 		// TODO(jchinlee): Investigate saving failing frames.
 	}
+
+	// Remove temporary md5 log file
+	defer os.Remove(md5logPath)
 }
 
 // v4l2StatefulDecodeArgs provides the arguments to use with the stateful decoding binary exe for v4l2.
 func v4l2StatefulDecodeArgs(ctx context.Context, filename string) (command []string) {
-	command = append(command, "--file="+filename, "--md5", "--log_level=1")
+	command = append(command, "--file="+filename, "--log_level=1")
 
 	// Query the driver info. If we are on a MediaTek platform, add --mmap to the
 	// command line.
@@ -2651,7 +2667,6 @@ func v4l2StatelessDecodeArgs(ctx context.Context, filename string) (command []st
 	// TODO(stevecho): md5 support has to be added
 	command = append(command,
 		"--video="+filename,
-		"--md5",
 		// vpxdec is used to compute reference hashes, and outputs only those for
 		// visible frames
 		"--visible")
@@ -2675,7 +2690,6 @@ func v4l2StatelessDecodeArgs(ctx context.Context, filename string) (command []st
 func getVAAPIArgs(ctx context.Context, filename string) []string {
 	return []string{
 		"--video=" + filename,
-		"--md5",
 		// aomdec is used to compute reference hashes, and outputs only those for
 		// visible frames
 		"--visible",
