@@ -16,6 +16,24 @@
       "message": "Please restore this file.",
       "revId": "356e5ddeca9bde1b0d7e9ba7c99b147b50178b65",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "38fe4021_b04632aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/play_store_search_and_launch.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1553967
+      },
+      "writtenOn": "2022-09-06T01:52:39Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "0a501d98_b4955ead",
+      "revId": "356e5ddeca9bde1b0d7e9ba7c99b147b50178b65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
