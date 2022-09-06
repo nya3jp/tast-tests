@@ -15,7 +15,6 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
-	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/timing"
@@ -188,10 +187,7 @@ func (f *fixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
 		)
 		if f.bt == browser.TypeLacros {
 			var err error
-			opts, err = lacrosfixt.NewConfig(
-				lacrosfixt.Mode(lacros.LacrosPrimary),
-				lacrosfixt.ChromeOptions(opts...),
-			).Opts()
+			opts, err = lacrosfixt.NewConfig(lacrosfixt.ChromeOptions(opts...)).Opts()
 			if err != nil {
 				s.Fatal("Failed to get lacros options: ", err)
 			}
