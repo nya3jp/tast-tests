@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4120de1e_d9408e2a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/recent_files_appear.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1525413
+      },
+      "writtenOn": "2022-09-06T02:21:38Z",
+      "side": 1,
+      "message": "I also updated here to make it more stable, instead of clicking between \"Recent\" menu and \"Images\" filter button, we switch between \"All\" filter button and \"Image\" filter button.",
+      "revId": "a2c220dfdc89fcc44ec97576a8fd47b500482db3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
