@@ -29,6 +29,8 @@ type platformDecodingParams struct {
 
 const validatePath = "/usr/local/graphics/validate"
 
+const md5logPath = "/md5checksum.log"
+
 func init() {
 	// The VP9 tests are named and ordered with increasing VP9 levels (resolution and bitrate) of the
 	// test. Each test plays back 6 different videos of approximately the same resolution. The frames
@@ -2612,6 +2614,7 @@ func PlatformDecoding(ctx context.Context, s *testing.State) {
 			"--exec="+exec,
 			fmt.Sprintf("--args=%s", strings.Join(args, " ")),
 			fmt.Sprintf("--metadata=%s.json", s.DataPath(filename)),
+			fmt.Sprintf("--md5=%s", md5logPath),
 		).SeparatedOutput(testexec.DumpLogOnError)
 
 		if err != nil {
@@ -2629,7 +2632,7 @@ func PlatformDecoding(ctx context.Context, s *testing.State) {
 
 // v4l2StatefulDecodeArgs provides the arguments to use with the stateful decoding binary exe for v4l2.
 func v4l2StatefulDecodeArgs(ctx context.Context, filename string) (command []string) {
-	command = append(command, "--file="+filename, "--md5", "--log_level=1")
+	command = append(command, "--file="+filename, "--md5="+md5logPath, "--log_level=1")
 
 	// Query the driver info. If we are on a MediaTek platform, add --mmap to the
 	// command line.
@@ -2651,7 +2654,7 @@ func v4l2StatelessDecodeArgs(ctx context.Context, filename string) (command []st
 	// TODO(stevecho): md5 support has to be added
 	command = append(command,
 		"--video="+filename,
-		"--md5",
+		"--md5="+md5logPath,
 		// vpxdec is used to compute reference hashes, and outputs only those for
 		// visible frames
 		"--visible")
@@ -2675,7 +2678,7 @@ func v4l2StatelessDecodeArgs(ctx context.Context, filename string) (command []st
 func getVAAPIArgs(ctx context.Context, filename string) []string {
 	return []string{
 		"--video=" + filename,
-		"--md5",
+		"--md5=" + md5logPath,
 		// aomdec is used to compute reference hashes, and outputs only those for
 		// visible frames
 		"--visible",
