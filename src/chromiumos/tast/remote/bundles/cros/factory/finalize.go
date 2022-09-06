@@ -23,7 +23,7 @@ func init() {
 		Func:         Finalize,
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Test finalize process in factory toolkit",
-		Contacts:     []string{"menghuan@chromium.org", "chromeos-factory-eng@google.com"},
+		Contacts:     []string{"lschyi@google.com", "chromeos-factory-eng@google.com"},
 		SoftwareDeps: append([]string{"reboot", "factory_flow"}, fixture.EnsureToolkitSoftwareDeps...),
 		Attr:         []string{"group:mainline", "informational"},
 		Timeout:      8 * time.Minute,
