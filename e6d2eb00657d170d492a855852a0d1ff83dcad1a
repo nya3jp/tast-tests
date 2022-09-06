@@ -22,6 +22,30 @@
       },
       "revId": "e6d2eb00657d170d492a855852a0d1ff83dcad1a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f4e70e8_552aa882",
+        "filename": "src/chromiumos/tast/local/power/sysfs_battery_metrics.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-09-06T19:14:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c33df4ea_109ef1ce",
+      "range": {
+        "startLine": 260,
+        "startChar": 36,
+        "endLine": 260,
+        "endChar": 37
+      },
+      "revId": "e6d2eb00657d170d492a855852a0d1ff83dcad1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
