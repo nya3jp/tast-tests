@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "00d043e7_2cf121c5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2022-09-06T15:58:15Z",
+      "side": 1,
+      "message": "Thanks, Kendrake!",
+      "revId": "722fef493a1e1c55d58f6579295cc6e629ce10af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6df3421c_24157c98",
+        "filename": "helpers/local/featured.FeatureLibrary.check.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2022-09-06T15:58:15Z",
+      "side": 1,
+      "message": "This logic will behave unexpectedly if there are multiple features in the dictionary. While that\u0027s fine for the current use case, in which we\u0027ll only ever call this on one feature at a time, it could confuse us later.\n\nSuggestions:\n1. Use `feature_state.params_callback_result.find(feature_state.feature_name)` and only look at the one entry. Docs here: https://en.cppreference.com/w/cpp/container/map/find\n2. (more involved) Restructure the code to support *multiple* features in the same call",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 73
+      },
+      "revId": "722fef493a1e1c55d58f6579295cc6e629ce10af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a83f4d3b_1ee208b7",
+        "filename": "helpers/local/featured.FeatureLibrary.check.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2022-09-06T15:58:15Z",
+      "side": 1,
+      "message": "I believe that in general there should be a newline at the end of each file; could you please change your VSCode settings to add one?",
+      "revId": "722fef493a1e1c55d58f6579295cc6e629ce10af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
