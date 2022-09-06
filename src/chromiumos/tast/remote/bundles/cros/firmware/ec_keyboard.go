@@ -8,6 +8,7 @@ import (
 	"bufio"
 	"context"
 	"regexp"
+	"strings"
 	"time"
 
 	"github.com/golang/protobuf/ptypes/empty"
@@ -16,6 +17,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/firmware"
 	"chromiumos/tast/remote/firmware/fixture"
+	"chromiumos/tast/ssh"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -32,34 +34,26 @@ func init() {
 		Func:         ECKeyboard,
 		Desc:         "Test EC Keyboard interface",
 		Contacts:     []string{"tij@google.com", "cros-fw-engprod@google.com"},
-		Attr:         []string{"group:firmware", "firmware_unstable"},
+		Attr:         []string{"group:firmware"},
 		HardwareDeps: hwdep.D(hwdep.ChromeEC(), hwdep.Keyboard()),
 		Fixture:      fixture.NormalMode,
 		Timeout:      2 * time.Minute,
 		ServiceDeps:  []string{"tast.cros.firmware.UtilsService"},
 		Params: []testing.Param{{
-			Val: servoECKeyboard,
+			Val:       servoECKeyboard,
+			ExtraAttr: []string{"firmware_ec"},
 		}, {
-			Name: "usb_keyboard",
-			Val:  servoUSBKeyboard,
+			Name:      "usb_keyboard",
+			Val:       servoUSBKeyboard,
+			ExtraAttr: []string{"firmware_unstable"},
 		}},
 	})
 }
 
-const typeTimeout = 250 * time.Millisecond
-
-var testKeyMap = map[string]string{
-	"0":        "KEY_0",
-	"b":        "KEY_B",
-	"e":        "KEY_E",
-	"o":        "KEY_O",
-	"r":        "KEY_R",
-	"s":        "KEY_S",
-	"t":        "KEY_T",
-	"<enter>":  "KEY_ENTER",
-	"<ctrl_l>": "KEY_LEFTCTRL",
-	"<alt_l>":  "KEY_LEFTALT",
-}
+const (
+	typeTimeout = 500 * time.Millisecond
+	keyPressDur = 100 * time.Millisecond // Equivalent to DurTab keypress.
+)
 
 func ECKeyboard(ctx context.Context, s *testing.State) {
 	h := s.FixtValue().(*fixture.Value).Helper
@@ -71,6 +65,26 @@ func ECKeyboard(ctx context.Context, s *testing.State) {
 		s.Fatal("Requiring RPC utils: ", err)
 	}
 
+	// Stop UI to prevent keypresses from causing unintended behaviour.
+	if out, err := h.DUT.Conn().CommandContext(ctx, "status", "ui").Output(ssh.DumpLogOnError); err != nil {
+		s.Fatal("Failed to check ui status: ", err)
+	} else if !strings.Contains(string(out), "stop/waiting") {
+		s.Log("Stopping UI")
+		if err := h.DUT.Conn().CommandContext(ctx, "stop", "ui").Run(ssh.DumpLogOnError); err != nil {
+			s.Fatal("Failed to stop ui: ", err)
+		}
+	}
+	defer func() {
+		// Restart UI after test ends.
+		if err := h.DUT.Conn().CommandContext(ctx, "start", "ui").Run(ssh.DumpLogOnError); err != nil {
+			s.Fatal("Failed to start ui: ", err)
+		}
+	}()
+
+	var device string
+	var testKeyMap map[string]string
+	var keyPressFunc func(context.Context, string) error
+
 	switch s.Param().(keyboardTest) {
 	case servoECKeyboard:
 		if hasKb, err := h.Servo.HasControl(ctx, string(servo.USBKeyboard)); err != nil {
@@ -80,17 +94,49 @@ func ECKeyboard(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to disable usb keyboard: ", err)
 			}
 		}
+		testKeyMap = map[string]string{
+			"0":        "KEY_0",
+			"b":        "KEY_B",
+			"e":        "KEY_E",
+			"o":        "KEY_O",
+			"r":        "KEY_R",
+			"s":        "KEY_S",
+			"t":        "KEY_T",
+			"<enter>":  "KEY_ENTER",
+			"<ctrl_l>": "KEY_LEFTCTRL",
+			"<alt_l>":  "KEY_LEFTALT",
+		}
+		keyPressFunc = func(ctx context.Context, key string) error {
+			if err := h.Servo.PressKey(ctx, key, servo.Dur(keyPressDur)); err != nil {
+				return errors.Wrap(err, "failed to type key")
+			}
+			return nil
+		}
+		res, err := h.RPCUtils.FindPhysicalKeyboard(ctx, &empty.Empty{})
+		if err != nil {
+			s.Fatal("During FindPhysicalKeyboard: ", err)
+		}
+		device = res.Path
+
 	case servoUSBKeyboard:
 		if err := h.Servo.SetOnOff(ctx, servo.USBKeyboard, servo.On); err != nil {
 			s.Fatal("Failed to enable usb keyboard: ", err)
 		}
+		// Only usb_keyboard_enter_key uses the usb keyboard handler in servo.
+		testKeyMap = map[string]string{
+			"usb_keyboard_enter_key": "KEY_ENTER",
+		}
+		keyPressFunc = func(ctx context.Context, keyStr string) error {
+			key := servo.KeypressControl(keyStr)
+			if err := h.Servo.KeypressWithDuration(ctx, key, servo.Dur(keyPressDur)); err != nil {
+				return errors.Wrap(err, "failed to type key")
+			}
+			return nil
+		}
+		// This is where the usb keyboard device events that servo emulates are sent.
+		device = "/dev/input/by-id/usb-Google_Servo_LUFA_Keyboard_Emulator-event-kbd"
 	}
 
-	res, err := h.RPCUtils.FindPhysicalKeyboard(ctx, &empty.Empty{})
-	if err != nil {
-		s.Fatal("During FindPhysicalKeyboard: ", err)
-	}
-	device := res.Path
 	s.Log("Device path: ", device)
 	cmd := h.DUT.Conn().CommandContext(ctx, "evtest", device)
 	stdout, err := cmd.StdoutPipe()
@@ -120,7 +166,7 @@ func ECKeyboard(ctx context.Context, s *testing.State) {
 
 	for key, keyCode := range testKeyMap {
 		s.Logf("Pressing key %q, expecting to read keycode %q", key, keyCode)
-		if err = readKeyPress(ctx, h, scanner, key, keyCode); err != nil {
+		if err = readKeyPress(ctx, h, scanner, key, keyCode, keyPressFunc); err != nil {
 			s.Fatal("Failed to read key: ", err)
 		}
 		// Wait for reading to complete before entering next key to prevent failing previous read.
@@ -130,7 +176,8 @@ func ECKeyboard(ctx context.Context, s *testing.State) {
 	}
 }
 
-func readKeyPress(ctx context.Context, h *firmware.Helper, scanner *bufio.Scanner, key, keyCode string) error {
+func readKeyPress(ctx context.Context, h *firmware.Helper, scanner *bufio.Scanner, key, keyCode string,
+	keyPress func(context.Context, string) error) error {
 	regex := `Event.*time.*code\s(\d*)\s\(` + keyCode + `\)`
 	expMatch := regexp.MustCompile(regex)
 
@@ -141,7 +188,9 @@ func readKeyPress(ctx context.Context, h *firmware.Helper, scanner *bufio.Scanne
 			text <- scanner.Text()
 		}
 	}()
-	if err := h.Servo.PressKey(ctx, key, servo.DurTab); err != nil {
+
+	start := time.Now()
+	if err := keyPress(ctx, key); err != nil {
 		return errors.Wrap(err, "failed to type key")
 	}
 
@@ -151,7 +200,7 @@ func readKeyPress(ctx context.Context, h *firmware.Helper, scanner *bufio.Scanne
 			return errors.New("did not detect keycode within expected time")
 		case out := <-text:
 			if match := expMatch.FindStringSubmatch(out); match != nil {
-				testing.ContextLog(ctx, "key pressed: ", match)
+				testing.ContextLogf(ctx, "key pressed detected in %s: %v", time.Since(start)-keyPressDur, match)
 				return nil
 			}
 		}
