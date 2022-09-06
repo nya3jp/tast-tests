@@ -27,7 +27,7 @@ func init() {
 			"patrykd@google.com", // Test author
 			"chromeos-fingerprint@google.com",
 		},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		Timeout:      6 * time.Minute,
 		SoftwareDeps: []string{"crossystem"},
 		HardwareDeps: hwdep.D(hwdep.Fingerprint()),
