@@ -16,6 +16,46 @@
       "message": "Thanks for cleaning this up!",
       "revId": "f0b778812b4eff99ec7e86175d06e73827a547bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "28002b48_9ff0c0d7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-09-06T20:31:56Z",
+      "side": 1,
+      "message": "LGTM in general % the one comment.",
+      "revId": "f0b778812b4eff99ec7e86175d06e73827a547bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0d2ca4d_ad0c3a3d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/arc_vpn_configs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-09-06T20:31:56Z",
+      "side": 1,
+      "message": "The second ctx parameter should be a cleanup context. (context with few seconds reserved for cleanup)",
+      "range": {
+        "startLine": 83,
+        "startChar": 58,
+        "endLine": 83,
+        "endChar": 61
+      },
+      "revId": "f0b778812b4eff99ec7e86175d06e73827a547bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
