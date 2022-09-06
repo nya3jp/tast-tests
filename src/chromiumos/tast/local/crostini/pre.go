@@ -62,24 +62,6 @@ var UnstableModels = []string{
 	"lars",
 	"cave",
 	"chell",
-	// http://crbug.com/1257369 volteer and brya
-	"kano",
-	"volmar",
-	"chronicler",
-	"collis",
-	"copano",
-	"drobit",
-	"voema",
-	"volet",
-	"copano",
-	"drobit",
-	"delbin",
-	"volta",
-	"voxel",
-	// http://b/236329444
-	"primus",
-	"caroline",
-	"cerise",
 	// http://b/234402067
 	"taniks",
 }
