@@ -101,6 +101,13 @@ func OptionProto(proto L4Proto) RuleOption {
 	}
 }
 
+// OptionUIDOwner sets up the owner of the process sending packets.
+func OptionUIDOwner(uidOwner string) RuleOption {
+	return func(args *[]string) {
+		*args = append(*args, "-m", "owner", "--uid-owner", uidOwner)
+	}
+}
+
 // OptionDPort sets up the destination port option to a single value.
 func OptionDPort(port int) RuleOption {
 	return func(args *[]string) {
