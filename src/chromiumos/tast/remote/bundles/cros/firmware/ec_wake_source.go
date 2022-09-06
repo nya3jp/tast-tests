@@ -53,7 +53,7 @@ func init() {
 				Name:              "keypress",
 				ExtraHardwareDeps: hwdep.D(hwdep.Keyboard()),
 				Val:               wakeByKeyboard,
-				ExtraAttr:         []string{"firmware_unstable"},
+				ExtraAttr:         []string{"firmware_ec"},
 			},
 			{
 				Name:              "lid",
@@ -89,11 +89,7 @@ func ECWakeSource(ctx context.Context, s *testing.State) {
 	// Create instance of chrome for login so that DUT suspends mode instead of shutting down.
 	s.Log("Use Chrome service")
 	if _, err := h.RPCUtils.ReuseChrome(ctx, &empty.Empty{}); err != nil {
-		// Only create new instance if instance doesn't already exist.
-		s.Log("Chrome instance did not already exist, creating new one")
-		if _, err := h.RPCUtils.NewChrome(ctx, &empty.Empty{}); err != nil {
-			s.Fatal("Failed to create instance of chrome: ", err)
-		}
+		s.Fatal("Failed to create instance of chrome: ", err)
 	}
 
 	switch testType {
@@ -261,10 +257,15 @@ func testSuspendAndWakeWithInternalKeypress(ctx context.Context, h *firmware.Hel
 	ksstateout, err := h.Servo.RunECCommandGetOutput(ctx, "ksstate", []string{reGetKsstate})
 	if err != nil {
 		return errors.Wrap(err, "failed to check for presence of ksstate")
+	} else if len(ksstateout[0]) == 0 {
+		return errors.Errorf("failed to check for presence of ksstate, got output: %v", ksstateout)
 	}
 
 	if ksstateout != nil {
 		ksstatematch := regexp.MustCompile(reHasKsstate).FindStringSubmatch(ksstateout[0][0])
+		if ksstatematch == nil {
+			return errors.Errorf("failed to parse keyboard scan disable mask, got: %v", ksstatematch)
+		}
 		parsedMask, err := strconv.ParseInt(string(ksstatematch[1]), 0, 0)
 		testing.ContextLog(ctx, "keyboard scan disable mask: ", parsedMask)
 		if err != nil {
