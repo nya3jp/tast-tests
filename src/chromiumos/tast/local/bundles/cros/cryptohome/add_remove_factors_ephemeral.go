@@ -1,0 +1,183 @@
+// Copyright 2022 The ChromiumOS Authors.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+package cryptohome
+
+import (
+	"context"
+	"time"
+
+	"github.com/google/go-cmp/cmp"
+	"github.com/google/go-cmp/cmp/cmpopts"
+
+	uda "chromiumos/system_api/user_data_auth_proto"
+	"chromiumos/tast/common/hwsec"
+	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/local/cryptohome"
+	hwseclocal "chromiumos/tast/local/hwsec"
+	"chromiumos/tast/testing"
+)
+
+// Parameteters that control test behavior.
+type addRemoveFactorsEphemeralParams struct {
+	// Specifies whether to use user secret stash.
+	useUserSecretStash bool
+}
+
+func init() {
+	testing.AddTest(&testing.Test{
+		Func: AddRemoveFactorsEphemeral,
+		Desc: "Test adding, removing, and listing auth factors for ephemeral users",
+		Contacts: []string{
+			"jadmanski@chromium.org",
+			"cryptohome-core@google.com",
+		},
+		Attr: []string{"group:mainline", "informational"},
+		Data: []string{"testcert.p12"},
+		Params: []testing.Param{{
+			Name: "with_vk",
+			Val: addRemoveFactorsEphemeralParams{
+				useUserSecretStash: false,
+			},
+		}, {
+			Name: "with_uss",
+			Val: addRemoveFactorsEphemeralParams{
+				useUserSecretStash: true,
+			},
+		}},
+	})
+}
+
+// checkReplyForExpectedFactors will check that the auth factors reply has the
+// expected factors. Currently this is fixed, but this may be changed in the
+// future to accept parameters if the expected factors becomes dynamic.
+func checkReplyForExpectedFactors(when string, reply *uda.ListAuthFactorsReply, s *testing.State) {
+	if len(reply.ConfiguredAuthFactors) > 0 {
+		s.Fatalf("Reported configured auth factors on an ephemeral user %s", when)
+	}
+	// Compare the supported and expected supports factors. Order does not matter.
+	var expectedSupported = []uda.AuthFactorType{
+		uda.AuthFactorType_AUTH_FACTOR_TYPE_PASSWORD,
+	}
+	typeLess := func(a, b uda.AuthFactorType) bool { return a < b }
+	if diff := cmp.Diff(reply.SupportedAuthFactors, expectedSupported, cmpopts.SortSlices(typeLess)); diff != "" {
+		s.Errorf("Mismatch in supported auth factors %s (-got +want) %s", when, diff)
+	}
+}
+
+func AddRemoveFactorsEphemeral(ctx context.Context, s *testing.State) {
+	const (
+		ownerName     = "owner@bar.baz"
+		userName      = "foo@bar.baz"
+		userPassword  = "secret"
+		passwordLabel = "online-password"
+		userPin       = "12345"
+		pinLabel      = "luggage-pin"
+	)
+
+	userParam := s.Param().(addRemoveFactorsEphemeralParams)
+	ctxForCleanUp := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
+
+	cmdRunner := hwseclocal.NewCmdRunner()
+	client := hwsec.NewCryptohomeClient(cmdRunner)
+	helper, err := hwseclocal.NewHelper(cmdRunner)
+	if err != nil {
+		s.Fatal("Failed to create hwsec local helper: ", err)
+	}
+	daemonController := helper.DaemonController()
+
+	// Wait for cryptohomed becomes available if needed.
+	if err := daemonController.Ensure(ctx, hwsec.CryptohomeDaemon); err != nil {
+		s.Fatal("Failed to ensure cryptohomed: ", err)
+	}
+
+	// Clean up obsolete state, in case there's any.
+	if err := client.UnmountAll(ctx); err != nil {
+		s.Fatal("Failed to unmount vaults for preparation: ", err)
+	}
+	if err := cryptohome.RemoveVault(ctx, userName); err != nil {
+		s.Fatal("Failed to remove old vault for preparation: ", err)
+	}
+
+	// Set up an owner. This is needed for ephemeral users.
+	if err := hwseclocal.SetUpVaultAndUserAsOwner(ctx, s.DataPath("testcert.p12"), ownerName, "whatever", "whatever", helper.CryptohomeClient()); err != nil {
+		client.UnmountAll(ctx)
+		client.RemoveVault(ctx, ownerName)
+		s.Fatal("Failed to setup vault and user as owner: ", err)
+	}
+	if err := client.UnmountAll(ctx); err != nil {
+		s.Fatal("Failed to unmount vaults for preparation: ", err)
+	}
+	defer client.RemoveVault(ctxForCleanUp, ownerName)
+
+	// Determine if the client supports using PIN auth.
+	supportsPin, err := client.SupportsLECredentials(ctx)
+	if err != nil {
+		s.Fatal("Unable to determine if PINs are supported: ", err)
+	}
+
+	// Enable the UserSecretStash experiment if USS is specified.
+	if userParam.useUserSecretStash {
+		cleanupUSSExperiment, err := helper.EnableUserSecretStash(ctx)
+		if err != nil {
+			s.Fatal("Failed to enable the UserSecretStash experiment: ", err)
+		}
+		defer cleanupUSSExperiment()
+	}
+
+	// Create and mount the persistent user.
+	authSessionID, err := client.StartAuthSession(ctx, userName /*ephemeral=*/, true)
+	if err != nil {
+		s.Fatal("Failed to start auth session: ", err)
+	}
+	if err := client.PrepareEphemeralVault(ctx, authSessionID /*ecryptfs=*/); err != nil {
+		s.Fatal("Failed to prepare new persistent vault: ", err)
+	}
+	defer client.UnmountAll(ctxForCleanUp)
+
+	// List the auth factors for the user. There should be no factors, configured, an maximum factors supported.
+	listFactorsAtStartReply, err := client.ListAuthFactors(ctx, userName)
+	if err != nil {
+		s.Fatal("Failed to list auth factors before adding any factors: ", err)
+	}
+	checkReplyForExpectedFactors("before adding factors", listFactorsAtStartReply, s)
+
+	// Add a password auth factor to the user.
+	if err := client.AddAuthFactor(ctx, authSessionID, passwordLabel, userPassword); err != nil {
+		s.Fatal("Failed to add password auth factor: ", err)
+	}
+
+	// List the auth factors for the user. There should be only password.
+	listFactorsAfterAddPasswordReply, err := client.ListAuthFactors(ctx, userName)
+	if err != nil {
+		s.Fatal("Failed to list auth factors after adding password: ", err)
+	}
+	checkReplyForExpectedFactors("after adding password", listFactorsAfterAddPasswordReply, s)
+
+	if supportsPin {
+		// Add a PIN auth factor.
+		if err := client.AddPinAuthFactor(ctx, authSessionID, pinLabel, userPin); err != nil {
+			s.Fatal("Failed to add PIN auth factor: ", err)
+		}
+
+		// List the auth factors for the user. There should be password and pin.
+		listFactorsAfterAddPinReply, err := client.ListAuthFactors(ctx, userName)
+		if err != nil {
+			s.Fatal("Failed to list auth factors after adding PIN: ", err)
+		}
+		checkReplyForExpectedFactors("after adding PIN", listFactorsAfterAddPinReply, s)
+	}
+
+	// Unmount the user.
+	if err := client.UnmountAll(ctx); err != nil {
+		s.Fatal("Failed to unmount vaults: ", err)
+	}
+
+	// After unmount listing auth factors should fail.
+	if _, err := client.ListAuthFactors(ctx, userName); err == nil {
+		s.Fatal("Unexpectedly succeeded at listing auth factors after unmount")
+	}
+}
