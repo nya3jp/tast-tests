@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94b33414_523ff262",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_binary.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-09-06T11:14:11Z",
+      "side": 1,
+      "message": "Changing the label on update is forbidden anyway: https://source.chromium.org/chromium/chromiumos/platform2/+/main:cryptohome/auth_session.cc;l\u003d1177;drc\u003dbff4a555132174ca57107dd5d377ca863ad01c29\n\nSo we can save a bit by removing this parameter here.",
+      "range": {
+        "startLine": 406,
+        "startChar": 95,
+        "endLine": 406,
+        "endChar": 106
+      },
+      "revId": "ebf30cd49fc4aa84b4c0161869b075b6ecbe9d8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f645e87_904d85ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/update_recovery.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-09-06T11:14:11Z",
+      "side": 1,
+      "message": "nit: Copy-paste error (there\u0027s no plan to use recovery for VaultKeyset users).",
+      "revId": "ebf30cd49fc4aa84b4c0161869b075b6ecbe9d8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b63f0326_407de7f0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/update_recovery.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-09-06T11:14:11Z",
+      "side": 1,
+      "message": "We should better not reuse this old AuthSessionID. First, it relies on cryptohome supporting overlapping AuthSessions, which is a gray area at the moment. Second, it relies on the AuthSession staying alive even after the unmount, but per b/238016305 we might want to change this in the future.\n\nIn the real-world scenario, Chrome will update the recovery auth factor right after a successful authentication. In the test it\u0027d map to `authenticateWithRecovery()` having to return the AuthSessionID.",
+      "range": {
+        "startLine": 187,
+        "startChar": 48,
+        "endLine": 187,
+        "endChar": 61
+      },
+      "revId": "ebf30cd49fc4aa84b4c0161869b075b6ecbe9d8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7602d965_151f2803",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/update_recovery.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-09-06T11:14:11Z",
+      "side": 1,
+      "message": "I\u0027m a bit on the fence here, because changed raw file contents don\u0027t actually imply the factor was changed for real (for example, what if cryptohome updates some AuthFactor field on every login). Also hardcoding cryptohome file structure in the test is not great.\n\nCould we replace this with a check that the RecoveryID is different across the first and the second authentication attempts?",
+      "revId": "ebf30cd49fc4aa84b4c0161869b075b6ecbe9d8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
