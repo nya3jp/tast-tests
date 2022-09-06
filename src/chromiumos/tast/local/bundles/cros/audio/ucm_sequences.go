@@ -191,13 +191,15 @@ func ucmSequencesTestCard(ctx context.Context, s *testing.State, c alsaucmComman
 			// If ucm-suffix is set, but HiFi.conf is missing, then it
 			// is likely that the sound card name found on the live system
 			// disagrees with the one in the configuration (boxster and UCM).
-			s.Fatal("Missing HiFi.conf but ucm-suffix is set")
+			s.Error("Missing HiFi.conf but ucm-suffix is set")
+			return
 		}
 		if stat.Size() == 0 {
 			s.Log("Skipping due to empty HiFi.conf")
 			return
 		}
-		s.Fatal("Failed to stat HiFi.conf: ", err)
+		s.Error("Failed to stat HiFi.conf: ", err)
+		return
 	}
 
 	ucmCmds, err := c.commands(ctx, ucmName)
