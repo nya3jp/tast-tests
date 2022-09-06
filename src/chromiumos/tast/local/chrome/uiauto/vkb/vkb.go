@@ -70,10 +70,10 @@ var DragPointFinder = NodeFinder.Role(role.Button).NameContaining("drag to repos
 var KeyFinder = NodeFinder.Role(role.Button)
 
 // MultipasteItemFinder returns a finder of multipaste item on virtual keyboard.
-var MultipasteItemFinder = NodeFinder.ClassName("scrim")
+var MultipasteItemFinder = NodeFinder.HasClass("scrim")
 
 // MultipasteSuggestionFinder returns a finder of multipaste suggestion on virtual keyboard header bar.
-var MultipasteSuggestionFinder = NodeFinder.ClassName("chip")
+var MultipasteSuggestionFinder = NodeFinder.HasClass("chip")
 
 // KeyByNameIgnoringCase returns a virtual keyboard Key button finder with the name ignoring case.
 func KeyByNameIgnoringCase(keyName string) *nodewith.Finder {
@@ -318,9 +318,10 @@ func (vkbCtx *VirtualKeyboardContext) ShowAccessPoints() uiauto.Action {
 }
 
 // SetFloatingMode returns an action changing the virtual keyboard to floating/dock layout.
-func (vkbCtx *VirtualKeyboardContext) SetFloatingMode(uc *useractions.UserContext, enabled bool) uiauto.Action {
+func (vkbCtx *VirtualKeyboardContext) SetFloatingMode(uc *useractions.UserContext, enabled, atlasEnabled bool) uiauto.Action {
 	var switchMode uiauto.Action
 	var actionName string
+	var maybeShowAccessPoints uiauto.Action
 	if enabled {
 		actionName = "Switch VK to floating mode"
 		flipButtonFinder := KeyFinder.Name("make virtual keyboard movable")
@@ -340,11 +341,14 @@ func (vkbCtx *VirtualKeyboardContext) SetFloatingMode(uc *useractions.UserContex
 			vkbCtx.ui.LeftClickUntil(flipButtonFinder, vkbCtx.ui.WithTimeout(10*time.Second).WaitUntilGone(DragPointFinder)),
 		)
 	}
-
+	maybeShowAccessPoints = uiauto.Combine("do nothing")
+	if !atlasEnabled {
+		maybeShowAccessPoints = uiauto.Combine("show access points", vkbCtx.ShowAccessPoints())
+	}
 	return uiauto.UserAction(
 		actionName,
 		uiauto.Combine("switch VK mode",
-			vkbCtx.ShowAccessPoints(),
+			maybeShowAccessPoints,
 			switchMode,
 			vkbCtx.WaitLocationStable(),
 		),
@@ -533,7 +537,7 @@ func (vkbCtx *VirtualKeyboardContext) DeleteMultipasteItem(touchCtx *touch.Conte
 	itemFinder := MultipasteItemFinder.Name(itemName)
 	return uiauto.Combine("Delete item in multipaste virtual keyboard",
 		touchCtx.LongPress(itemFinder),
-		touchCtx.Tap(KeyFinder.ClassName("trash-button")),
+		touchCtx.Tap(KeyFinder.HasClass("trash-button")),
 		vkbCtx.ui.WithTimeout(3*time.Second).WaitUntilGone(itemFinder))
 }
 
