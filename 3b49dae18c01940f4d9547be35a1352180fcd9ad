@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ce55828_74a9cfb9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1548766
+      },
+      "writtenOn": "2022-09-06T03:35:06Z",
+      "side": 1,
+      "message": "Yes , I testing on puff , it is pass the test\n\n2022-09-06T03:33:14.615352Z [03:33:14.615] Closing DUT SSH connection to localhost:2222\n2022-09-06T03:33:14.618977Z Got global error: connection to test bundle broken with msgTimeout 2m0s: rpc error: code \u003d Unavailable desc \u003d error reading from server: EOF\n2022-09-06T03:33:21.697297Z --------------------------------------------------------------------------------\n2022-09-06T03:33:21.697319Z camera.CCAUIPTZ [ PASS ] \n2022-09-06T03:33:21.697329Z --------------------------------------------------------------------------------\n2022-09-06T03:33:21.697336Z Results saved to /tmp/tast/results/20220906-113152",
+      "parentUuid": "f255c01a_5c7b7b7c",
+      "range": {
+        "startLine": 14,
+        "startChar": 5,
+        "endLine": 14,
+        "endChar": 50
+      },
+      "revId": "3b49dae18c01940f4d9547be35a1352180fcd9ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9126919f_7bdf8b09",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-09-05T12:57:20Z",
       "side": 1,
       "message": "I think this should be s.Error() instead?",
+      "range": {
+        "startLine": 405,
+        "startChar": 5,
+        "endLine": 405,
+        "endChar": 10
+      },
+      "revId": "3b49dae18c01940f4d9547be35a1352180fcd9ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "97b20973_84ce5b44",
+        "filename": "src/chromiumos/tast/local/camera/cca/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1548766
+      },
+      "writtenOn": "2022-09-06T03:35:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9126919f_7bdf8b09",
       "range": {
         "startLine": 405,
         "startChar": 5,
