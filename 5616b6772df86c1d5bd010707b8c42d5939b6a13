@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "59b8d906_e08f7d0b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2022-09-06T21:14:21Z",
+      "side": 1,
+      "message": "Thanks Nathan. If we do see \"platform_decoding\", then I assume it is also fine with current title. \n\nI am not exactly sure about the recommendation, but I thought it is supposed to repo branch name and/or folder name. \n\nI think I used \"tast-tests/video\" before finding it was also used before in similar CLs.",
+      "parentUuid": "959e83bb_906d6976",
+      "revId": "5616b6772df86c1d5bd010707b8c42d5939b6a13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "795177ed_21b2c6e8",
