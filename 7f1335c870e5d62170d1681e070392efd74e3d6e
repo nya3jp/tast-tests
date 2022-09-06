@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7eb1f1b_89f7d361",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1504887
+      },
+      "writtenOn": "2022-09-06T23:10:56Z",
+      "side": 1,
+      "message": "Hi, PTAL. I have also added the calculator app in the policy for [this account](https://source.corp.google.com/chromeos_internal/src/platform/tast-tests-private/vars/enterprise.ARCInstallLogging.yaml;l\u003d1;bpv\u003d1). Thanks! ",
+      "revId": "7f1335c870e5d62170d1681e070392efd74e3d6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
