@@ -22,9 +22,11 @@ func readFirstLine(filePath string) (string, error) {
 	defer file.Close()
 
 	reader := bufio.NewReader(file)
-	// Reader.ReadString returns error iff line does not end in \n. We can
-	// ignore this error.
-	lineContent, _ := reader.ReadString('\n')
+	lineContent, err := reader.ReadString('\n')
+	if err != nil {
+		return "", err
+	}
+
 	return strings.TrimSuffix(lineContent, "\n"), nil
 }
 
