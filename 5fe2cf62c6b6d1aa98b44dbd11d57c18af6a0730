@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6009d71e_c0e38c24",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/fixture/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-09-06T00:16:25Z",
+      "side": 1,
+      "message": "I think this is not required, especially it is very short term solution.\n\nIn the implementation, you can check whether the chrome flags contains `VirtualKeyboardNewHeader`, then return true in the fixture data.",
+      "range": {
+        "startLine": 436,
+        "startChar": 1,
+        "endLine": 436,
+        "endChar": 13
+      },
+      "revId": "5fe2cf62c6b6d1aa98b44dbd11d57c18af6a0730",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
