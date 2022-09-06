@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a63d7e19_9a6b4d86",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-09-06T22:00:23Z",
+      "side": 1,
+      "message": "I would describe what \"KeyType\" is. Something like:\n\n```\nKeyType The type of key used to sign the firmware.\n```",
+      "range": {
+        "startLine": 45,
+        "startChar": 11,
+        "endLine": 45,
+        "endChar": 44
+      },
+      "revId": "e34292ff790765767177d1b12baefadf6f365169",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cfdcf5f2_f095a8df",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 448,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-09-06T22:00:23Z",
+      "side": 1,
+      "message": "Did you intend to add this?",
+      "range": {
+        "startLine": 445,
+        "startChar": 0,
+        "endLine": 448,
+        "endChar": 2
+      },
+      "revId": "e34292ff790765767177d1b12baefadf6f365169",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4400610_c734bfd4",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 610,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-09-06T22:00:23Z",
+      "side": 1,
+      "message": "Looks like these were flipped? Can you create a separate CL that fixes this issue?\n\nRationale: go/small-cls",
+      "range": {
+        "startLine": 598,
+        "startChar": 0,
+        "endLine": 610,
+        "endChar": 2
+      },
+      "revId": "e34292ff790765767177d1b12baefadf6f365169",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe35aafb_72d26b0b",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/firmware_test_handler.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-09-06T22:00:23Z",
+      "side": 1,
+      "message": "Was this intentionally changed? I\u0027m wondering if it was accidentally re-added when you merged with Patryk\u0027s change that modified these lines.",
+      "range": {
+        "startLine": 86,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 2
+      },
+      "revId": "e34292ff790765767177d1b12baefadf6f365169",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
