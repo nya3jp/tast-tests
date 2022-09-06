@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/firmware"
 	"chromiumos/tast/remote/firmware/fixture"
+	"chromiumos/tast/ssh"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -32,7 +33,7 @@ func init() {
 		Func:         ECKeyboard,
 		Desc:         "Test EC Keyboard interface",
 		Contacts:     []string{"tij@google.com", "cros-fw-engprod@google.com"},
-		Attr:         []string{"group:firmware", "firmware_unstable"},
+		Attr:         []string{"group:firmware", "firmware_ec"},
 		HardwareDeps: hwdep.D(hwdep.ChromeEC(), hwdep.Keyboard()),
 		Fixture:      fixture.NormalMode,
 		Timeout:      2 * time.Minute,
@@ -46,7 +47,7 @@ func init() {
 	})
 }
 
-const typeTimeout = 250 * time.Millisecond
+const typeTimeout = 500 * time.Millisecond
 
 var testKeyMap = map[string]string{
 	"0":        "KEY_0",
@@ -69,6 +70,11 @@ func ECKeyboard(ctx context.Context, s *testing.State) {
 
 	if err := h.RequireRPCUtils(ctx); err != nil {
 		s.Fatal("Requiring RPC utils: ", err)
+	}
+
+	// Stop UI to prevent keypresses from causing unintended behaviour.
+	if err := h.DUT.Conn().CommandContext(ctx, "stop", "ui").Run(ssh.DumpLogOnError); err != nil {
+		s.Fatal("Failed to stop ui: ", err)
 	}
 
 	switch s.Param().(keyboardTest) {
@@ -133,6 +139,8 @@ func ECKeyboard(ctx context.Context, s *testing.State) {
 func readKeyPress(ctx context.Context, h *firmware.Helper, scanner *bufio.Scanner, key, keyCode string) error {
 	regex := `Event.*time.*code\s(\d*)\s\(` + keyCode + `\)`
 	expMatch := regexp.MustCompile(regex)
+	// Use constant press time to better log duration since keypress.
+	pressDur := 100 * time.Millisecond
 
 	text := make(chan string)
 	go func() {
@@ -141,7 +149,9 @@ func readKeyPress(ctx context.Context, h *firmware.Helper, scanner *bufio.Scanne
 			text <- scanner.Text()
 		}
 	}()
-	if err := h.Servo.PressKey(ctx, key, servo.DurTab); err != nil {
+
+	start := time.Now()
+	if err := h.Servo.PressKey(ctx, key, servo.Dur(pressDur)); err != nil {
 		return errors.Wrap(err, "failed to type key")
 	}
 
@@ -151,7 +161,7 @@ func readKeyPress(ctx context.Context, h *firmware.Helper, scanner *bufio.Scanne
 			return errors.New("did not detect keycode within expected time")
 		case out := <-text:
 			if match := expMatch.FindStringSubmatch(out); match != nil {
-				testing.ContextLog(ctx, "key pressed: ", match)
+				testing.ContextLogf(ctx, "key pressed detected in %s: %v", time.Since(start)-pressDur, match)
 				return nil
 			}
 		}
