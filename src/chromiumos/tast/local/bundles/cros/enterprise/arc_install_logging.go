@@ -14,7 +14,6 @@ import (
 	"strings"
 	"time"
 
-	"chromiumos/tast/common/android/ui"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/tape"
 	"chromiumos/tast/ctxutil"
@@ -53,21 +52,22 @@ func init() {
 type eventType string
 
 const (
-	serverRequest          eventType = "SERVER_REQUEST"
-	cloudDpcRequest        eventType = "CLOUDDPC_REQUEST"
-	cloudDpsRequest        eventType = "CLOUDDPS_REQUEST"
-	cloudDpsResponse       eventType = "CLOUDDPS_RESPONSE"
-	phoneskyLog            eventType = "PHONESKY_LOG"
-	success                eventType = "SUCCESS"
-	cancelled              eventType = "CANCELED"
-	connectivityChange     eventType = "CONNECTIVITY_CHANGE"
-	sessionStateChange     eventType = "SESSION_STATE_CHANGE"
-	installationStarted    eventType = "INSTALLATION_STARTED"
-	installationFinished   eventType = "INSTALLATION_FINISHED"
-	installationFailed     eventType = "INSTALLATION_FAILED"
-	directInstall          eventType = "DIRECT_INSTALL"
-	cloudDpcMainLoopFailed eventType = "CLOUDDPC_MAIN_LOOP_FAILED"
-	unknown                eventType = "UNKNOWN"
+	serverRequest           eventType = "SERVER_REQUEST"
+	cloudDpcRequest         eventType = "CLOUDDPC_REQUEST"
+	cloudDpsRequest         eventType = "CLOUDDPS_REQUEST"
+	cloudDpsResponse        eventType = "CLOUDDPS_RESPONSE"
+	phoneskyLog             eventType = "PHONESKY_LOG"
+	success                 eventType = "SUCCESS"
+	cancelled               eventType = "CANCELED"
+	connectivityChange      eventType = "CONNECTIVITY_CHANGE"
+	sessionStateChange      eventType = "SESSION_STATE_CHANGE"
+	installationStarted     eventType = "INSTALLATION_STARTED"
+	installationFinished    eventType = "INSTALLATION_FINISHED"
+	installationFailed      eventType = "INSTALLATION_FAILED"
+	directInstall           eventType = "DIRECT_INSTALL"
+	cloudDpcMainLoopFailed  eventType = "CLOUDDPC_MAIN_LOOP_FAILED"
+	playstoreLocalPolicySet eventType = "PLAYSTORE_LOCAL_POLICY_SET"
+	unknown                 eventType = "UNKNOWN"
 )
 
 // ARCInstallLogging runs the install event logging test:
@@ -75,10 +75,9 @@ const (
 // - check that ARC is launched by user policy,
 // - check ArcEnabled is true and test app is set to force-installed by policy,
 // - check that the test app is installed,
-// - upload a log from the test app to test server for comparison,
 // - check that app installation log is uploaded from Chrome.
 func ARCInstallLogging(ctx context.Context, s *testing.State) {
-	const testPackage = "com.managedchrome.arcloggingtest"
+	const testPackage = "com.google.android.calculator"
 	const poolID = "arc_logging_test"
 
 	// Shorten deadline to leave time for cleanup
@@ -134,60 +133,6 @@ func ARCInstallLogging(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to force install packages: ", err)
 	}
 
-	// Launch test app.
-	s.Log("Starting log test app")
-	act, err := arc.NewActivity(a, testPackage, ".MainActivity")
-	if err != nil {
-		s.Fatal("Failed to create new activity: ", err)
-	}
-	defer act.Close()
-
-	if err := act.StartWithDefaultOptions(ctx, tconn); err != nil {
-		s.Fatal("Failed starting test app: ", err)
-	}
-
-	d, err := a.NewUIDevice(ctx)
-	if err != nil {
-		s.Fatal("Failed initializing UI Automator: ", err)
-	}
-	defer d.Close(ctx)
-
-	// Select current account in the account selection UI.
-	s.Log("Selecting android account")
-	accountSelection := d.Object(ui.ResourceIDMatches("(android:id/text1)"))
-	if err := accountSelection.WaitForExists(ctx, time.Second); err != nil {
-		s.Fatal("Failed to find account selection: ", err)
-	}
-	if err := accountSelection.Click(ctx); err != nil {
-		s.Fatal("Failed to select account: ", err)
-	}
-
-	doneButton := d.Object(ui.ResourceIDMatches("(android:id/button1)"))
-	if err := doneButton.WaitForExists(ctx, time.Second); err != nil {
-		s.Fatal("Failed to find done button: ", err)
-	}
-	if err := doneButton.Click(ctx); err != nil {
-		s.Fatal("Failed to click done: ", err)
-	}
-
-	// Start uploading logs to test server by clicking "UPLOAD" button.
-	s.Log("Starting log upload")
-	uploadButtonID := fmt.Sprintf("(%s:id/uploadButton)", testPackage)
-	uploadButton := d.Object(ui.ResourceIDMatches(uploadButtonID))
-	if err := uploadButton.WaitForExists(ctx, time.Second); err != nil {
-		s.Fatal("Failed to find upload button: ", err)
-	}
-	if err := uploadButton.Click(ctx); err != nil {
-		s.Fatal("Failed to click upload button: ", err)
-	}
-
-	// Wait for status label in the test app to show "SUCCESS".
-	s.Log("Checking for app log upload status")
-	uploadStatusLabelID := fmt.Sprintf("(%s:id/uploadStatusLabel)", testPackage)
-	if err := waitForAppLogUpload(ctx, d, uploadStatusLabelID); err != nil {
-		s.Fatal("Failed to upload app log: ", err)
-	}
-
 	// Check if required sequence appears in chrome log.
 	if err := waitForLoggedEvents(ctx, cr, testPackage); err != nil {
 		s.Fatal("Required events not logged: ", err)
@@ -198,26 +143,6 @@ func ARCInstallLogging(ctx context.Context, s *testing.State) {
 	if err := waitForChromeLogUpload(ctx, cr, testPackage); err != nil {
 		s.Fatal("Chrome log not uploaded: ", err)
 	}
-}
-
-// waitForAppLogUpload waits for test app to upload logs to test server. Status label will show "SUCCESS" after successful upload.
-func waitForAppLogUpload(ctx context.Context, d *ui.Device, uploadStatusLabelID string) error {
-	ctx, st := timing.Start(ctx, "wait_app_log_upload")
-	defer st.End()
-
-	return testing.Poll(ctx, func(ctx context.Context) error {
-		text, err := d.Object(ui.ResourceIDMatches(uploadStatusLabelID)).GetText(ctx)
-		if err != nil {
-			return testing.PollBreak(errors.Wrap(err, "failed to get status"))
-		}
-
-		if text == "UPLOADING" {
-			return errors.New("Log upload not finished yet")
-		} else if text == "SUCCESS" {
-			return nil
-		}
-		return testing.PollBreak(errors.Wrap(err, "unknown log upload status: "+text))
-	}, nil)
 }
 
 // statusCodeToEvent converts status code to eventType. Should be in sync with device_management_backend.proto in chrome.
@@ -237,6 +162,7 @@ func statusCodeToEvent(code string) eventType {
 		"12": installationFailed,
 		"13": directInstall,
 		"14": cloudDpcMainLoopFailed,
+		"15": playstoreLocalPolicySet,
 	}
 	event, ok := statusCodeMap[code]
 	if !ok {
