@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e7e5895_de456ef7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368301
+      },
+      "writtenOn": "2022-09-06T10:28:07Z",
+      "side": 1,
+      "message": "Hi Kamil,\n\nThis CL should fix recent consistent failures of kiosk.AppsCachedOffline. PTAL!",
+      "revId": "58059d98b648770bdf8beefa86f10f9e4f07ace0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
