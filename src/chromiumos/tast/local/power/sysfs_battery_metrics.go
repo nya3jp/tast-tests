@@ -258,6 +258,7 @@ func (b *SysfsBatteryMetrics) Setup(ctx context.Context, prefix string) error {
 // Start captures the initial battery state which the first snapshot will be
 // relative to.
 func (b *SysfsBatteryMetrics) Start(_ context.Context) error {
+	testing.ContextLog(ctx, "Start captures the initial battery state")
 	return nil
 }
 
@@ -277,7 +278,7 @@ func (b *SysfsBatteryMetrics) Snapshot(ctx context.Context, values *perf.Values)
 		}
 		values.Append(b.powerMetric, power)
 		return nil
-	}, 0)(ctx)
+	}, 100*time.Millisecond)(ctx)
 }
 
 // Stop reports the total amount of energy used during the test.
