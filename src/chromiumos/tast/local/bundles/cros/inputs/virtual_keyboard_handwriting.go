@@ -28,6 +28,7 @@ var hwTestMessages = []data.Message{data.HandwritingMessageHello}
 var hwTestIMEs = []ime.InputMethod{
 	ime.AlphanumericWithJapaneseKeyboard,
 	ime.ChinesePinyin,
+	ime.EnglishSouthAfrica,
 	ime.EnglishUK,
 	ime.EnglishUS,
 	ime.EnglishUSWithInternationalKeyboard,
@@ -38,7 +39,6 @@ var hwTestIMEs = []ime.InputMethod{
 var hwTestIMEsUpstream = []ime.InputMethod{
 	// TODO(b/230424689): Add Arabic to CQ once issue fixed.
 	ime.Arabic,
-	ime.EnglishSouthAfrica,
 }
 
 func init() {
@@ -61,14 +61,6 @@ func init() {
 				Val:               hwTestIMEs,
 			},
 			{
-				Name:              "docked_upstream",
-				Fixture:           fixture.AnyVK,
-				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
-				ExtraAttr:         []string{"group:input-tools-upstream", "informational"},
-				Val:               hwTestIMEsUpstream,
-				ExtraSearchFlags:  util.IMESearchFlags(hwTestIMEsUpstream),
-			},
-			{
 				Name:              "docked_informational",
 				Fixture:           fixture.AnyVK,
 				ExtraHardwareDeps: hwdep.D(pre.InputsUnstableModels),
@@ -82,14 +74,6 @@ func init() {
 				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
 				ExtraAttr:         []string{"group:input-tools-upstream"},
 				Val:               hwTestIMEs,
-			},
-			{
-				Name:              "floating_upstream",
-				Fixture:           fixture.AnyVK,
-				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
-				ExtraAttr:         []string{"informational", "group:input-tools-upstream"},
-				Val:               hwTestIMEsUpstream,
-				ExtraSearchFlags:  util.IMESearchFlags(hwTestIMEsUpstream),
 			},
 			{
 				Name:              "floating_informational",
