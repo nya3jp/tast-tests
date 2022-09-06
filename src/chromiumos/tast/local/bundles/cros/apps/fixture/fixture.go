@@ -15,7 +15,7 @@ import (
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/browser"
-	"chromiumos/tast/local/chrome/lacros"
+	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/testing"
@@ -148,15 +148,7 @@ func (f *fixtureImpl) SetUp(ctx context.Context, s *testing.FixtState) interface
 	opts = append(opts, f.fOpts...)
 	opts = append(opts, chrome.EnableWebAppInstall())
 
-	if f.browserType == browser.TypeLacros {
-		lacrosOpts, err := lacrosfixt.NewConfig(lacrosfixt.Mode(lacros.LacrosPrimary)).Opts()
-		if err != nil {
-			s.Fatal("Failed to get lacros options: ", err)
-		}
-		opts = append(opts, lacrosOpts...)
-	}
-
-	cr, err := chrome.New(ctx, opts...)
+	cr, err := browserfixt.NewChrome(ctx, f.browserType, lacrosfixt.NewConfig(), opts...)
 	if err != nil {
 		s.Fatal("Failed to start Chrome: ", err)
 	}
