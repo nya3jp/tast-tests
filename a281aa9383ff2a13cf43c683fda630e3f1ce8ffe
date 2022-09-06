@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "486e0b83_758985af",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-09-06T23:03:43Z",
+      "side": 1,
+      "message": "Hi Alvin, I implemented your suggestion. PTAL.",
+      "revId": "a281aa9383ff2a13cf43c683fda630e3f1ce8ffe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
