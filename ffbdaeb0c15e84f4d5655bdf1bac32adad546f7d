@@ -49,6 +49,40 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "17d542e3_c97ec8f9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_animation_jank.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1510928
+      },
+      "writtenOn": "2022-09-06T08:28:04Z",
+      "side": 1,
+      "message": "Get confirmed from Shao-Chuan, we can remove this line, leave a comment here mention that we don\u0027t run the test since currently no ARC T devices running tast test.",
+      "revId": "ffbdaeb0c15e84f4d5655bdf1bac32adad546f7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ff084ab_bef7252c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_animation_jank.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1510928
+      },
+      "writtenOn": "2022-09-06T08:28:04Z",
+      "side": 1,
+      "message": "30 Minutes seems too long, what about 5 min?",
+      "revId": "ffbdaeb0c15e84f4d5655bdf1bac32adad546f7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5aa38c48_11a1fbe4",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_animation_jank.go",
         "patchSetId": 13
