@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4dc1cc69_9dfe4371",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-09-06T02:34:08Z",
+      "side": 1,
+      "message": "Still LGTM.",
+      "revId": "a2c220dfdc89fcc44ec97576a8fd47b500482db3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4120de1e_d9408e2a",
@@ -14,6 +31,24 @@
       "writtenOn": "2022-09-06T02:21:38Z",
       "side": 1,
       "message": "I also updated here to make it more stable, instead of clicking between \"Recent\" menu and \"Images\" filter button, we switch between \"All\" filter button and \"Image\" filter button.",
+      "revId": "a2c220dfdc89fcc44ec97576a8fd47b500482db3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4449f34e_ae8a5343",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/recent_files_appear.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-09-06T02:34:08Z",
+      "side": 1,
+      "message": "SGTM.",
+      "parentUuid": "4120de1e_d9408e2a",
       "revId": "a2c220dfdc89fcc44ec97576a8fd47b500482db3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
