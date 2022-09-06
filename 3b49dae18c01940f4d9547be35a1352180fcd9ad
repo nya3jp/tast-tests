@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc419c3c_25b0252c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2022-09-06T05:24:36Z",
+      "side": 1,
+      "message": "Once you have verified, you can update the TEST section with the command you run to indicate what tests have been verified.",
+      "parentUuid": "7ce55828_74a9cfb9",
+      "range": {
+        "startLine": 14,
+        "startChar": 5,
+        "endLine": 14,
+        "endChar": 50
+      },
+      "revId": "3b49dae18c01940f4d9547be35a1352180fcd9ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9126919f_7bdf8b09",
