@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc35383e_8636daeb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-09-06T01:35:06Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "d6277375937f10fa93bfaa7c4031769568f71d0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2d11913_31c8c512",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/recent_files_appear.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-09-06T01:35:06Z",
+      "side": 1,
+      "message": "nit: best to transition back to a fixture instead now there is no flag required.",
+      "range": {
+        "startLine": 55,
+        "startChar": 1,
+        "endLine": 59,
+        "endChar": 27
+      },
+      "revId": "d6277375937f10fa93bfaa7c4031769568f71d0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
