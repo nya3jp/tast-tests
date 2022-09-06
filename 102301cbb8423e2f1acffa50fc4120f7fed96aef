@@ -87,6 +87,24 @@
       "parentUuid": "b8091426_0282e56b",
       "revId": "102301cbb8423e2f1acffa50fc4120f7fed96aef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "75626677_3de2724f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-09-06T01:24:44Z",
+      "side": 1,
+      "message": "They decided to rewrite the test but it\u0027s unlikely to happen soon. For this CL I\u0027ve made a deprecated copy of the lacrosPrimary fixtures just for this test to keep working.",
+      "parentUuid": "c9b92f56_0112d960",
+      "revId": "102301cbb8423e2f1acffa50fc4120f7fed96aef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
