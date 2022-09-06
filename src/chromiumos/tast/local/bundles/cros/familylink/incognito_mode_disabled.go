@@ -52,7 +52,7 @@ func IncognitoModeDisabled(ctx context.Context, s *testing.State) {
 	}
 
 	// Chrome app name doesn't exactly match the chrome shelf name so modify it here for simpler code later.
-	if chromeApp.Name == apps.Chrome.Name {
+	if chromeApp.Name == apps.Chrome.Name && chromeApp.ID != apps.LacrosID {
 		chromeApp.Name = "Google Chrome"
 	}
 

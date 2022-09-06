@@ -15,7 +15,6 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/local/upstart"
@@ -270,7 +269,7 @@ func (f *familyLinkFixture) SetUp(ctx context.Context, s *testing.FixtState) int
 
 	if f.isLacros {
 		var err error
-		f.opts, err = lacrosfixt.NewConfig(lacrosfixt.ChromeOptions(f.opts...), lacrosfixt.Mode(lacros.LacrosPrimary)).Opts()
+		f.opts, err = lacrosfixt.NewConfig(lacrosfixt.ChromeOptions(f.opts...)).Opts()
 		if err != nil {
 			s.Fatal("Failed to get lacros options: ", err)
 		}

@@ -22,7 +22,6 @@ import (
 	"chromiumos/tast/local/camera/testutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/browser"
-	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/ssh"
 	"chromiumos/tast/testing"
@@ -315,7 +314,7 @@ func (f *fixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
 	if f.lacros {
 		browserType = browser.TypeLacros
 		var err error
-		chromeOpts, err = lacrosfixt.NewConfig(lacrosfixt.Mode(lacros.LacrosPrimary), lacrosfixt.ChromeOptions(chromeOpts...)).Opts()
+		chromeOpts, err = lacrosfixt.NewConfig(lacrosfixt.ChromeOptions(chromeOpts...)).Opts()
 		if err != nil {
 			s.Fatal("Failed to compute Chrome options: ", err)
 		}
