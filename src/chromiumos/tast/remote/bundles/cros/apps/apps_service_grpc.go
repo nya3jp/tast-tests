@@ -19,7 +19,7 @@ import (
 
 type testParams struct {
 	chromeRequest *ui.NewRequest
-	browserName   string
+	browserID     string
 }
 
 var disableFeatures = []string{"DefaultWebAppInstallation"}
@@ -38,14 +38,14 @@ func init() {
 				Name: "ash",
 				Val: testParams{
 					chromeRequest: &ui.NewRequest{DisableFeatures: disableFeatures},
-					browserName:   "Chrome",
+					browserID:     "mgndgikekgjfcpckkfioiadnlibdjbkf", // See Chrome.ID in local/apps/apps.go.
 				},
 			},
 			{
 				Name: "lacros",
 				Val: testParams{
-					browserName:   "Lacros",
-					chromeRequest: &ui.NewRequest{DisableFeatures: disableFeatures, EnableFeatures: []string{"LacrosSupport", "LacrosPrimary"}, LacrosExtraArgs: []string{"--no-first-run"}},
+					chromeRequest: &ui.NewRequest{DisableFeatures: disableFeatures, EnableFeatures: []string{"LacrosSupport", "LacrosPrimary", "LacrosOnly"}, LacrosExtraArgs: []string{"--no-first-run"}},
+					browserID:     "jaimifaeiicidiikhmjedcgdimealfbh", // See LacrosID in local/apps/apps.go.
 				},
 			},
 		},
@@ -96,8 +96,8 @@ func AppsServiceGRPC(ctx context.Context, s *testing.State) { // NOLINT
 	if err != nil {
 		s.Fatal("Failed to launch primary browser: ", err)
 	}
-	if browser.Name != variant.browserName {
-		s.Fatalf("Incorrect browser name: got %v; want %v", browser.Name, variant.browserName)
+	if browser.Id != variant.browserID {
+		s.Fatalf("Incorrect browser ID: got %v; want %v", browser.Id, variant.browserID)
 	}
 
 	browserWindowFinder := &ui.Finder{
