@@ -39,6 +39,30 @@
       },
       "revId": "8f893e49f9b732960712b0a09b3760d8c61101ea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "180c751c_fc7d7a35",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/ucm_sequences.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1512777
+      },
+      "writtenOn": "2022-09-06T12:15:44Z",
+      "side": 1,
+      "message": "Done.\n\nI hoped that using a static string would group failures with the same reason together. But it did not work.",
+      "parentUuid": "4257ad7d_08072b0e",
+      "range": {
+        "startLine": 189,
+        "startChar": 20,
+        "endLine": 189,
+        "endChar": 35
+      },
+      "revId": "8f893e49f9b732960712b0a09b3760d8c61101ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
