@@ -1,4 +1,4 @@
-// Copyright 2022 The ChromiumOS Authors.
+// Copyright 2022 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -107,7 +107,7 @@ func EDUImageEditingCUJ(ctx context.Context, s *testing.State) {
 	testImageLocation := s.DataPath(testImage)
 	bt := s.Param().(browser.Type)
 
-	googlePhotos := imageeditingcuj.NewGooglePhotos(tconn, uiHdl, kb, cr.Creds().Pass)
+	googlePhotos := imageeditingcuj.NewGooglePhotos(tconn, uiHdl, kb, cr.Creds().Pass, tabletMode)
 
 	if err := imageeditingcuj.Run(ctx, cr, googlePhotos, bt, tabletMode, s.OutDir(), testImage, testImageLocation); err != nil {
 		s.Fatal("Failed to run image editing cuj: ", err)
