@@ -493,14 +493,14 @@ func (f *telemetryExtensionFixture) setupChromeForManagedUsers(ctx context.Conte
 }
 
 func (f *telemetryExtensionFixture) setupConnectionToPWA(ctx context.Context) error {
-	pwaConn, err := f.br.NewConn(ctx, "https://www.google.com")
+	pwaConn, err := f.br.NewConn(ctx, "https://googlechromelabs.github.io/cros-sample-telemetry-extension")
 	if err != nil {
-		return errors.Wrap(err, "failed to create connection to google.com")
+		return errors.Wrap(err, "failed to create connection to googlechromelabs.github.io")
 	}
 	f.v.PwaConn = pwaConn
 
 	if err := chrome.AddTastLibrary(ctx, pwaConn); err != nil {
-		return errors.Wrap(err, "failed to add Tast library to google.com")
+		return errors.Wrap(err, "failed to add Tast library to googlechromelabs.github.io")
 	}
 	return nil
 }

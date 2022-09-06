@@ -17,7 +17,7 @@
     ],
     "externally_connectable": {
         "matches": [
-            "*://www.google.com/*"
+            "*://googlechromelabs.github.io/*"
         ]
     }
 }
