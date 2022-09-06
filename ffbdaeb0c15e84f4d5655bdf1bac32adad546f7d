@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3dffb3b5_fddceb72",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1546145
+      },
+      "writtenOn": "2022-09-06T02:53:16Z",
+      "side": 1,
+      "message": "I think we should not break encapsulation here, instead expose a function that turns on tracing\n\nfunc (a *ARC) ActivateTracing() error {\n  return device.Command(ctx, \"shell\", \"echo 0 \u003e /sys/kernel/debug/tracing/tracing_on\").Run(testexec.DumpLogOnError);\n}",
+      "range": {
+        "startLine": 140,
+        "startChar": 0,
+        "endLine": 143,
+        "endChar": 1
+      },
+      "revId": "ffbdaeb0c15e84f4d5655bdf1bac32adad546f7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d8be0a9_3210b15e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data/config.pbtxt",
+        "patchSetId": 13
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1546145
+      },
+      "writtenOn": "2022-09-06T02:53:16Z",
+      "side": 1,
+      "message": "is this going to be enough? If we\u0027re trying to detect jank we should be doing frame timeline and maybe gpu/cpu scheduling details, sys calls, etc.\n\neg (but not necessaryl exactly):\n\n```\nbuffers: {\n    size_kb: 63488\n    fill_policy: DISCARD\n}\nbuffers: {\n    size_kb: 2048\n    fill_policy: DISCARD\n}\ndata_sources: {\n    config {\n        name: \"linux.process_stats\"\n        target_buffer: 1\n        process_stats_config {\n            scan_all_processes_on_start: true\n        }\n    }\n}\ndata_sources: {\n    config {\n        name: \"android.surfaceflinger.frametimeline\"\n    }\n}\ndata_sources: {\n    config {\n        name: \"linux.ftrace\"\n        ftrace_config {\n            ftrace_events: \"sched/sched_switch\"\n            ftrace_events: \"power/suspend_resume\"\n            ftrace_events: \"sched/sched_wakeup\"\n            ftrace_events: \"sched/sched_wakeup_new\"\n            ftrace_events: \"sched/sched_waking\"\n            ftrace_events: \"power/cpu_frequency\"\n            ftrace_events: \"power/cpu_idle\"\n            ftrace_events: \"raw_syscalls/sys_enter\"\n            ftrace_events: \"raw_syscalls/sys_exit\"\n            ftrace_events: \"sched/sched_process_exit\"\n            ftrace_events: \"sched/sched_process_free\"\n            ftrace_events: \"task/task_newtask\"\n            ftrace_events: \"task/task_rename\"\n        }\n    }\n}\nduration_ms: 10000\n```",
+      "range": {
+        "startLine": 2,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 5
+      },
+      "revId": "ffbdaeb0c15e84f4d5655bdf1bac32adad546f7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5aa38c48_11a1fbe4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_animation_jank.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1546145
+      },
+      "writtenOn": "2022-09-06T02:53:16Z",
+      "side": 1,
+      "message": "Don\u0027t we need to wait until the trace/activity is complete to pull the trace?",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 2
+      },
+      "revId": "ffbdaeb0c15e84f4d5655bdf1bac32adad546f7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58fdfd62_fd8bf2cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_animation_jank.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1546145
+      },
+      "writtenOn": "2022-09-06T02:53:16Z",
+      "side": 1,
+      "message": "Shouldn\u0027t the test analyze the trace and fail under some conditions?",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 1
+      },
+      "revId": "ffbdaeb0c15e84f4d5655bdf1bac32adad546f7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
