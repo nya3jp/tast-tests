@@ -231,6 +231,7 @@ func runU2Test(ctx context.Context, dut *dut.DUT, device string, svo *servo.Serv
 			if err := svo.KeypressWithDuration(ctx, servo.PowerKey, servo.DurTab); err != nil {
 				return errors.Wrap(err, "failed to press the power key")
 			}
+      testing.Sleep(ctx, 5*time.Second)
 			if _, err := stdin.Write([]byte("\n")); err != nil {
 				return errors.Wrap(err, "failed to pipe the enter")
 			}
