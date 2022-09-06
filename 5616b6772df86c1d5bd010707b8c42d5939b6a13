@@ -50,6 +50,40 @@
       "message": "Where would be the ideal folder / location to dump log file?\n\nIn general, I think root directory might not be the ideal place.\n\nBijan, can you look up to see whether there is any better place for the purpose?",
       "revId": "5616b6772df86c1d5bd010707b8c42d5939b6a13",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "679b1b2c_1a52ded4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1498402
+      },
+      "writtenOn": "2022-09-06T20:34:19Z",
+      "side": 1,
+      "message": "I don\u0027t think you should use a static path. Especially one in `/`. Why not use `os.CreateTemp`?\n\nhttps://pkg.go.dev/os#CreateTemp\n\nI.e.\n\n```\nfunc CreateTempFilePath() string, err {\n\tf, err :\u003d os.CreateTemp(\"\", \"frame_checksums.*.md5\")\n\tif err !\u003d nil {\n\t\treturn \"\", err\n\t}\n\ttemporaryFilePath :\u003d f.Name();\n\tif err :\u003d f.Close(); err !\u003d nul {\n\t\treturn \"\", err\n\t}\n\treturn temporaryFilePath, nil\n}\n```",
+      "revId": "5616b6772df86c1d5bd010707b8c42d5939b6a13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd6c65d3_94b24aa7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2617,
+      "author": {
+        "id": 1498402
+      },
+      "writtenOn": "2022-09-06T20:34:19Z",
+      "side": 1,
+      "message": "What handles removing the checksum file after it is written to?\n\nI would expect this to call `defer os.Remove(md5logPath)`.",
+      "revId": "5616b6772df86c1d5bd010707b8c42d5939b6a13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
