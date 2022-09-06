@@ -3,6 +3,46 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fac1748d_6af1fe26",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-09-06T10:02:29Z",
+      "side": 1,
+      "message": "minor nit: `Make`",
+      "range": {
+        "startLine": 7,
+        "startChar": 17,
+        "endLine": 7,
+        "endChar": 21
+      },
+      "revId": "5988e1734253fc89f35f4ea10a2c0f9e0a811b3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d723fbf_fab870b3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-09-06T10:02:29Z",
+      "side": 1,
+      "message": "LGTm % nit + comment",
+      "revId": "5988e1734253fc89f35f4ea10a2c0f9e0a811b3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "caa74f25_9164c13c",
         "filename": "src/chromiumos/tast/remote/bundles/cros/apps/apps_service_grpc.go",
         "patchSetId": 2
@@ -32,6 +72,24 @@
       "side": 1,
       "message": "Ah, the background is that in LacrosOnly mode, the Lacros browser is called \"Chrome\", so you can\u0027t distinguish it from Ash that way.",
       "parentUuid": "caa74f25_9164c13c",
+      "revId": "5988e1734253fc89f35f4ea10a2c0f9e0a811b3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ac0df21_e046ab93",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/apps/apps_service_grpc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-09-06T10:02:29Z",
+      "side": 1,
+      "message": "Please add it as comment as well.\n`jaimifaeiicidiikhmjedcgdimealfbh` is alreadz in apps.go, so you can use it here.",
+      "parentUuid": "41b03813_cd46f0ce",
       "revId": "5988e1734253fc89f35f4ea10a2c0f9e0a811b3b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
