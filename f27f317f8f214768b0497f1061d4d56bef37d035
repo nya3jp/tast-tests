@@ -16,6 +16,24 @@
       "message": "we should probably try to fix these? Or at least file bugs",
       "revId": "f27f317f8f214768b0497f1061d4d56bef37d035",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9b4a99b_0e86dcbb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1368351
+      },
+      "writtenOn": "2022-09-06T22:17:44Z",
+      "side": 1,
+      "message": "Hmm good point. I was a somewhat dismissive of it since I only caught it on the tast test and not on live device.",
+      "parentUuid": "16d3ca09_da6cf909",
+      "revId": "f27f317f8f214768b0497f1061d4d56bef37d035",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
