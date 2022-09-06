@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc7abff9_bb96de02",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/creation_flow.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-09-06T23:32:30Z",
+      "side": 1,
+      "message": "do you also need to check the error? and only use the fake microphone if it is a device-not-found error.",
+      "range": {
+        "startLine": 52,
+        "startChar": 56,
+        "endLine": 52,
+        "endChar": 59
+      },
+      "revId": "81e34635c84e12da4de9e1753beeb49d3605c781",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
