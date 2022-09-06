@@ -16,6 +16,195 @@
       "message": "PTAL",
       "revId": "4280cc328f3b5fd548c835363f87f0c07d6394ff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12e97dfa_49281481",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/play_files.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2022-09-06T06:26:31Z",
+      "side": 1,
+      "message": "I think the name should be more specific to avoid conflicts. For example, if you rename this to `bootConfig`, it conflicts with the one defined in boot.go.",
+      "range": {
+        "startLine": 27,
+        "startChar": 5,
+        "endLine": 27,
+        "endChar": 15
+      },
+      "revId": "4280cc328f3b5fd548c835363f87f0c07d6394ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "707e2f0a_104ea16e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/play_files.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2022-09-06T06:26:31Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be done in a cleanup context?",
+      "range": {
+        "startLine": 73,
+        "startChar": 7,
+        "endLine": 73,
+        "endChar": 20
+      },
+      "revId": "4280cc328f3b5fd548c835363f87f0c07d6394ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "132ef523_caf3d6b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/play_files.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2022-09-06T06:26:31Z",
+      "side": 1,
+      "message": "nit: Set up?",
+      "range": {
+        "startLine": 80,
+        "startChar": 4,
+        "endLine": 80,
+        "endChar": 9
+      },
+      "revId": "4280cc328f3b5fd548c835363f87f0c07d6394ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c734ab41_7a8e9df9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/play_files.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2022-09-06T06:26:31Z",
+      "side": 1,
+      "message": "nit: \"CrOS\" for consistency?",
+      "range": {
+        "startLine": 99,
+        "startChar": 22,
+        "endLine": 99,
+        "endChar": 26
+      },
+      "revId": "4280cc328f3b5fd548c835363f87f0c07d6394ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4773e59_40f27d0e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/play_files.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2022-09-06T06:26:31Z",
+      "side": 1,
+      "message": "nit: `testing.ContextLog(ctx, \"Testing ...\")` just for consistency, or remove the above `testing.ContextLog(ctx, \"Testing Android -\u003e CrOS\")`?",
+      "revId": "4280cc328f3b5fd548c835363f87f0c07d6394ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec673e5f_51cee83b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/play_files.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2022-09-06T06:26:31Z",
+      "side": 1,
+      "message": "Shouldn\u0027t we check the return value here?",
+      "range": {
+        "startLine": 175,
+        "startChar": 1,
+        "endLine": 175,
+        "endChar": 38
+      },
+      "revId": "4280cc328f3b5fd548c835363f87f0c07d6394ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc9b5ff7_d4602b29",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/play_files.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2022-09-06T06:26:31Z",
+      "side": 1,
+      "message": "Shouldn\u0027t we check the return value here?",
+      "range": {
+        "startLine": 186,
+        "startChar": 1,
+        "endLine": 186,
+        "endChar": 44
+      },
+      "revId": "4280cc328f3b5fd548c835363f87f0c07d6394ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59ceaf22_85fb48dc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/play_files.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2022-09-06T06:26:31Z",
+      "side": 1,
+      "message": "Add periods to the comments?",
+      "revId": "4280cc328f3b5fd548c835363f87f0c07d6394ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38a2bdee_e8e9155e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/play_files.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2022-09-06T06:26:31Z",
+      "side": 1,
+      "message": "Add periods to the comments?",
+      "revId": "4280cc328f3b5fd548c835363f87f0c07d6394ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
