@@ -70,10 +70,10 @@ var DragPointFinder = NodeFinder.Role(role.Button).NameContaining("drag to repos
 var KeyFinder = NodeFinder.Role(role.Button)
 
 // MultipasteItemFinder returns a finder of multipaste item on virtual keyboard.
-var MultipasteItemFinder = NodeFinder.ClassName("scrim")
+var MultipasteItemFinder = NodeFinder.HasClass("scrim")
 
 // MultipasteSuggestionFinder returns a finder of multipaste suggestion on virtual keyboard header bar.
-var MultipasteSuggestionFinder = NodeFinder.ClassName("chip")
+var MultipasteSuggestionFinder = NodeFinder.HasClass("chip")
 
 // KeyByNameIgnoringCase returns a virtual keyboard Key button finder with the name ignoring case.
 func KeyByNameIgnoringCase(keyName string) *nodewith.Finder {
@@ -340,11 +340,10 @@ func (vkbCtx *VirtualKeyboardContext) SetFloatingMode(uc *useractions.UserContex
 			vkbCtx.ui.LeftClickUntil(flipButtonFinder, vkbCtx.ui.WithTimeout(10*time.Second).WaitUntilGone(DragPointFinder)),
 		)
 	}
-
 	return uiauto.UserAction(
 		actionName,
 		uiauto.Combine("switch VK mode",
-			vkbCtx.ShowAccessPoints(),
+			vkbctx.ShowAccessPoints(),
 			switchMode,
 			vkbCtx.WaitLocationStable(),
 		),
@@ -533,7 +532,7 @@ func (vkbCtx *VirtualKeyboardContext) DeleteMultipasteItem(touchCtx *touch.Conte
 	itemFinder := MultipasteItemFinder.Name(itemName)
 	return uiauto.Combine("Delete item in multipaste virtual keyboard",
 		touchCtx.LongPress(itemFinder),
-		touchCtx.Tap(KeyFinder.ClassName("trash-button")),
+		touchCtx.Tap(KeyFinder.HasClass("trash-button")),
 		vkbCtx.ui.WithTimeout(3*time.Second).WaitUntilGone(itemFinder))
 }
 
