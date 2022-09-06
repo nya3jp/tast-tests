@@ -10,12 +10,12 @@ import (
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/cws"
-	"chromiumos/tast/local/chrome/uiauto/filesapp"
 	"chromiumos/tast/local/chrome/uiauto/launcher"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/ossettings"
@@ -206,24 +206,27 @@ func RecentApps(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to confirm recent apps order: ", err)
 	}
 
-	// Launch the files app. It should now be the first app in the recent apps section.
-	filesApp, err := filesapp.Launch(ctx, tconn)
+	// Launch the chrome app. It should now be the first app in the recent apps section.
+	chromeApp, err := apps.ChromeOrChromium(ctx, tconn)
 	if err != nil {
-		s.Fatal("Could not launch the Files App: ", err)
+		s.Fatal("Failed to find the chrome app")
 	}
-	defer filesApp.Close(cleanupCtx)
+
+	if err := launcher.LaunchAndWaitForAppOpen(tconn, chromeApp)(ctx); err != nil {
+		s.Fatal("Failed to launch the chrome app")
+	}
 
 	if err := launcher.OpenProductivityLauncher(ctx, tconn, tabletMode); err != nil {
 		s.Fatal("Failed to open launcher: ", err)
 	}
 
-	expectedOrderedAppNames = []string{"Files", appName}
+	expectedOrderedAppNames = []string{chromeApp.Name, appName}
 	if err := verifyLeadingRecentApps(ctx, tconn, expectedOrderedAppNames); err != nil {
 		s.Fatal("Failed to confirm recent apps order: ", err)
 	}
 
 	// Launch the new app. It should be the first app in the recent apps section again.
-	if err := ui.DoubleClick(newApp)(ctx); err != nil {
+	if err := ui.LeftClick(newApp)(ctx); err != nil {
 		s.Fatalf("Failed to click %s in recent apps: %v", appName, err)
 	}
 
@@ -243,11 +246,15 @@ func RecentApps(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to wait for app window: ", err)
 	}
 
+	if err := apps.Close(ctx, tconn, appID); err != nil {
+		s.Fatalf("Failed to close %s(%s): %v", appName, appID, err)
+	}
+
 	if err := launcher.OpenProductivityLauncher(ctx, tconn, tabletMode); err != nil {
 		s.Fatal("Failed to open launcher: ", err)
 	}
 
-	expectedOrderedAppNames = []string{appName, "Files"}
+	expectedOrderedAppNames = []string{appName, chromeApp.Name}
 	if err := verifyLeadingRecentApps(ctx, tconn, expectedOrderedAppNames); err != nil {
 		s.Fatal("Failed to confirm recent apps order: ", err)
 	}
@@ -261,7 +268,7 @@ func RecentApps(ctx context.Context, s *testing.State) {
 		s.Fatalf("Failed to verify that %s(%s) is removed from recent apps: %v", appName, appID, err)
 	}
 
-	expectedOrderedAppNames = []string{"Files"}
+	expectedOrderedAppNames = []string{chromeApp.Name}
 	if err := verifyLeadingRecentApps(ctx, tconn, expectedOrderedAppNames); err != nil {
 		s.Fatal("Failed to confirm recent apps order: ", err)
 	}
