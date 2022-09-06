@@ -1942,6 +1942,7 @@ func (tf *TestFixture) StartTethering(ctx context.Context, dutIdx DutIdx, ops []
 	return c, resp, nil
 }
 
+// StopTethering attempts to stop the tethering session for the specified DUT.
 func (tf *TestFixture) StopTethering(ctx context.Context, dutIdx DutIdx) error {
 	ctx, st := timing.Start(ctx, "tf.StopTethering")
 	defer st.End()
