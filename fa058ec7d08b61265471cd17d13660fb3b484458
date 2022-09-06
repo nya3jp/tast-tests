@@ -16,6 +16,75 @@
       "message": "Need to verify.",
       "revId": "fa058ec7d08b61265471cd17d13660fb3b484458",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bcff135f_f294c87e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_obeys_rollback.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-09-06T23:21:35Z",
+      "side": 1,
+      "message": "Can you add a `FpInfo` function in `ectool.go` that uses `EctoolCommand` and use that? [Here is an example](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/remote/firmware/fingerprint/ectool.go;l\u003d209-211;drc\u003d5c6b2958232bf3c94b9f749daa25c2e957e83e3d).",
+      "range": {
+        "startLine": 69,
+        "startChar": 8,
+        "endLine": 69,
+        "endChar": 74
+      },
+      "revId": "fa058ec7d08b61265471cd17d13660fb3b484458",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "869299ab_93876833",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_obeys_rollback.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-09-06T23:21:35Z",
+      "side": 1,
+      "message": "To avoid issues where the test crashes for some reason and we haven\u0027t cleaned up the directory, you can create a unique directory name with something like [this](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/remote/bundles/cros/firmware/write_protect.go;l\u003d101;drc\u003d4063061d21264beff9398de26bd69b48d4fa8680).",
+      "range": {
+        "startLine": 107,
+        "startChar": 1,
+        "endLine": 107,
+        "endChar": 47
+      },
+      "revId": "fa058ec7d08b61265471cd17d13660fb3b484458",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "faabd83a_abde7b54",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_obeys_rollback.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-09-06T23:21:35Z",
+      "side": 1,
+      "message": "I think you can use [dutfs.RemoveAll](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/remote/dutfs/dutfs.go;l\u003d122-132;drc\u003d49024c3171973b1a1ce31a22a2579b72c1032a1c).",
+      "range": {
+        "startLine": 127,
+        "startChar": 2,
+        "endLine": 127,
+        "endChar": 69
+      },
+      "revId": "fa058ec7d08b61265471cd17d13660fb3b484458",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
