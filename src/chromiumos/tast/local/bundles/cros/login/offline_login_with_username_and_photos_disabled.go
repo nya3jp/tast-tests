@@ -53,6 +53,10 @@ func OfflineLoginWithUsernameAndPhotosDisabled(ctx context.Context, s *testing.S
 	setupOwnerAndUsersAndPresetting(ctx, cleanUpCtx, s, creds)
 
 	loginOffline := func(ctx context.Context) error {
+		cleanUpCtx := ctx
+		ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
+		defer cancel()
+
 		cr, err := chrome.New(ctx,
 			chrome.ExtraArgs("--skip-force-online-signin-for-testing"),
 			chrome.NoLogin(),
