@@ -26,3 +26,14 @@ func ExpectAuthIntents(intents, expectedIntents []uda.AuthIntent) error {
 	}
 	return errors.New(diff)
 }
+
+// ExpectAuthFactorTypes checks whether two given sets of types are equal, and
+// in case they're not returns an error containing the formatted difference.
+func ExpectAuthFactorTypes(types, expectedTypes []uda.AuthFactorType) error {
+	less := func(a, b uda.AuthFactorType) bool { return a < b }
+	diff := cmp.Diff(types, expectedTypes, cmpopts.SortSlices(less))
+	if diff == "" {
+		return nil
+	}
+	return errors.New(diff)
+}
