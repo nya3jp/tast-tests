@@ -16,6 +16,24 @@
       "message": "nit: maybe use and here instead of nested ifs\nqq: Is it necessary to use errors.Is if you compare equality?",
       "revId": "53d4e3e5d65405ab6bc1975cfee5e479fe9e28a4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ec8c664_1bf447ab",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_obeys_rollback.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2022-09-06T18:28:01Z",
+      "side": 1,
+      "message": "This test tries 3 cases: 2 with nil errors, and 1 with a \"process not found\" error. The nil errors cannot compare err.Error() because they are nil, so they must be compared with errors.IS. The \"process not found\" error incorrectly returns false using errors.IS and must be compared with err.Error() see other expamples:  http://source/search?q\u003d%20tast%20%22Process%20exited%20with%20status%201%22\n\nI could make this an OR instead of nested ifs.",
+      "parentUuid": "6f392209_47509f61",
+      "revId": "53d4e3e5d65405ab6bc1975cfee5e479fe9e28a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
