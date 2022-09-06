@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc0a188c_227dd080",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_sensor_info.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-09-06T10:27:03Z",
+      "side": 1,
+      "message": "I don\u0027t think you should ignore error here. There might be many reasons why you were not able to get lid angled, for example you are out of time which does not mean that lid angle is not available",
+      "range": {
+        "startLine": 62,
+        "startChar": 2,
+        "endLine": 62,
+        "endChar": 12
+      },
+      "revId": "c912df17f9f6a51709e8b7cee82866fe3c2f1593",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
