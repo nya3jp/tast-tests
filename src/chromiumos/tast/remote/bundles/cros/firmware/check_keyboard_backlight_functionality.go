@@ -206,6 +206,20 @@ func adjustKBBacklight(ctx context.Context, h *firmware.Helper, d *dut.DUT, extr
 		return errors.Wrap(err, "failed to get kb backlight")
 	}
 
+	// Log for output from running the 'backlight_tool' command. If kb light is absent,
+	// this command would return: 'No backlight in /sys/class/leds matched by *:kbd_backlight'.
+	// Otherwise, it will respond with a kb light percentage value. To-do: Verify its accuracy
+	// first via the test script, and potentially move it to hwdep.KeyboardBacklight() later.
+	hasKbLight := true
+	out, err := h.DUT.Conn().CommandContext(ctx, "backlight_tool", "--keyboard", "--get_brightness").CombinedOutput()
+	if err != nil {
+		testing.ContextLog(ctx, "Could not obtain output from backlight_tool: ", err)
+	}
+	outStr := strings.TrimSpace(string(out))
+	if strings.Contains(outStr, "No backlight in") {
+		hasKbLight = false
+	}
+
 	// Set a specific duration on adjusting the kb light.
 	endTime := time.Now().Add(dur)
 	for shouldContinue(kbLight, extremeValue, action) {
@@ -217,7 +231,9 @@ func adjustKBBacklight(ctx context.Context, h *firmware.Helper, d *dut.DUT, extr
 				testing.ContextLog(ctx, "Checking final kb light pwm failed: ", err)
 			}
 			hwdepResults := checkKBLightDependency(ctx, h)
-			return &timeoutError{E: errors.Errorf("timeout in adjusting kb backlight. Got kb light initial pwm val: %s, final pwm val: %s, and hwdep val: %q", initialPwm, finalPwm, hwdepResults)}
+			return &timeoutError{E: errors.Errorf(
+				"timeout in adjusting kb backlight. Got kb light initial pwm val: %s, final pwm val: %s, and hwdep val: %q, backlight_tool returns kb light present: %t",
+				initialPwm, finalPwm, hwdepResults, hasKbLight)}
 		}
 		testing.ContextLogf(ctx, "Attempting to match, current: %d, expected: %d", kbLight, extremeValue)
 		if err := pressShortcut(ctx, h, actionKey); err != nil {
