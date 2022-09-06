@@ -16,6 +16,23 @@
       "message": "I think we can test this just as effectively and even cheaper on the test infra with a browsertest. Can we do that instead of a tast test? Browsertests are easier to maintain.\n\nFurther -- I Don\u0027t think we need to test this with the calendar app. We should probably just have a generic test for \"send a notification, does the popup persist for 6 seconds?.",
       "revId": "45a72f7fccc56058784fb2060b208f73fadc87b2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "56b703ad_9336ecca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-09-06T02:45:59Z",
+      "side": 1,
+      "message": "already automated, see b:200987564",
+      "revId": "45a72f7fccc56058784fb2060b208f73fadc87b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ],
   "submitRequirementResults": [
