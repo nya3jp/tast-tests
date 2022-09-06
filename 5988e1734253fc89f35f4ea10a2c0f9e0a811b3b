@@ -16,6 +16,24 @@
       "message": "Alternative 1: Remove the check in line 99. I\u0027m not sure whether it\u0027s essential or just a sanity check.\nAlternative 2: Define ChromeID and LacrosID in a new common/apps/apps.go file, or similar.",
       "revId": "5988e1734253fc89f35f4ea10a2c0f9e0a811b3b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41b03813_cd46f0ce",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/apps/apps_service_grpc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-09-06T09:20:45Z",
+      "side": 1,
+      "message": "Ah, the background is that in LacrosOnly mode, the Lacros browser is called \"Chrome\", so you can\u0027t distinguish it from Ash that way.",
+      "parentUuid": "caa74f25_9164c13c",
+      "revId": "5988e1734253fc89f35f4ea10a2c0f9e0a811b3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
