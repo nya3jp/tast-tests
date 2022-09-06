@@ -1,4 +1,4 @@
-// Copyright 2022 The ChromiumOS Authors.
+// Copyright 2022 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -137,7 +137,7 @@ func AddRemoveFactors(ctx context.Context, s *testing.State) {
 		if err != nil {
 			s.Fatal("Failed to enable the UserSecretStash experiment: ", err)
 		}
-		defer cleanupUSSExperiment()
+		defer cleanupUSSExperiment(ctx)
 	}
 
 	// Create and mount the persistent user.
