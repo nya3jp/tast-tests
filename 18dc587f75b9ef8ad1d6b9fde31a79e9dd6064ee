@@ -35,6 +35,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f863c89_c619dfe9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1546145
+      },
+      "writtenOn": "2022-09-06T02:25:43Z",
+      "side": 1,
+      "message": "can you record this working on your chromebook with\n\nctrl+shift+show all windows button\n\nand upload to recall?\n\nhttps://support.google.com/chromebook/answer/10474268?hl\u003den\n\nYou can do this and then copy the file to your work computer using scp.\n\ngo/recall\n\nCreate a project, uplaod the file you copied off your laptop using scp",
+      "revId": "18dc587f75b9ef8ad1d6b9fde31a79e9dd6064ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d3d36ba3_9c1dcc4f",
@@ -48,6 +65,52 @@
       "writtenOn": "2022-09-06T02:00:14Z",
       "side": 1,
       "message": "I think we can remove the instrumentation label, since we only use perfetto test.",
+      "revId": "18dc587f75b9ef8ad1d6b9fde31a79e9dd6064ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eed053cc_e9c2d03b",
+        "filename": "android/ArcWindowAnimationJankTest/src/org/chromium/arc/testapp/windowanimationjank/ElementLayoutActivity.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1546145
+      },
+      "writtenOn": "2022-09-06T02:25:43Z",
+      "side": 1,
+      "message": "Same as below",
+      "range": {
+        "startLine": 27,
+        "startChar": 48,
+        "endLine": 27,
+        "endChar": 58
+      },
+      "revId": "18dc587f75b9ef8ad1d6b9fde31a79e9dd6064ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b5fbf5b_5d45226d",
+        "filename": "android/ArcWindowAnimationJankTest/src/org/chromium/arc/testapp/windowanimationjank/ElementLayoutActivity.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1546145
+      },
+      "writtenOn": "2022-09-06T02:25:43Z",
+      "side": 1,
+      "message": "Can you put a comment that just says what color this is in english for reference?",
+      "range": {
+        "startLine": 28,
+        "startChar": 29,
+        "endLine": 28,
+        "endChar": 44
+      },
       "revId": "18dc587f75b9ef8ad1d6b9fde31a79e9dd6064ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
