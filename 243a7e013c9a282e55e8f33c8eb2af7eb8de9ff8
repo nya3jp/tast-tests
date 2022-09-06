@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8df60eb2_8cbcacc6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/cursive_smoke.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-09-06T03:59:49Z",
+      "side": 1,
+      "message": "I don\u0027t think it is good idea to hardcode the models, which are subject to future changes. We may not need to add hw deps on any specific devices, as long as the fixtures cover both scenarios (see the other thread).",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 0
+      },
+      "revId": "243a7e013c9a282e55e8f33c8eb2af7eb8de9ff8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4fb258f_025861f9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/cursive_smoke.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-09-06T03:59:49Z",
+      "side": 1,
+      "message": "ctx",
+      "range": {
+        "startLine": 161,
+        "startChar": 15,
+        "endLine": 161,
+        "endChar": 25
+      },
+      "revId": "243a7e013c9a282e55e8f33c8eb2af7eb8de9ff8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e1d299f_2de869a1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/fixture/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-09-06T03:59:49Z",
+      "side": 1,
+      "message": "if false, we also need to explicitly disable it?",
+      "range": {
+        "startLine": 176,
+        "startChar": 1,
+        "endLine": 178,
+        "endChar": 2
+      },
+      "revId": "243a7e013c9a282e55e8f33c8eb2af7eb8de9ff8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
