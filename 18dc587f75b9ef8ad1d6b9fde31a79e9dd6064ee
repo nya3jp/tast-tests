@@ -107,6 +107,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dce3ba84_3698af5b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2022-09-06T03:09:40Z",
+      "side": 1,
+      "message": "We already have aosp in chromeos https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/aosp/?q\u003daosp\u0026ss\u003dchromiumos, but we don\u0027t have frameworks/base checkout there.\n\nMaybe we can chat with infla team if it\u0027s okay to add framework/base there. But because frameworks/base is really huge, people might not be happy with it.\nAlso I\u0027m not sure how to make it buildable as a part of tast apk without adding divergence. That\u0027s another difficulty.\n\nAs long as licence is okay, I think we can go with this. (And we should check the difference of the license between Apache2.0 vs BSD)",
+      "parentUuid": "ae0f5b69_3b1c7d07",
+      "revId": "18dc587f75b9ef8ad1d6b9fde31a79e9dd6064ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d3d36ba3_9c1dcc4f",
         "filename": "android/ArcWindowAnimationJankTest/AndroidManifest.xml",
         "patchSetId": 5
@@ -462,6 +480,29 @@
         "startChar": 19,
         "endLine": 84,
         "endChar": 27
+      },
+      "revId": "18dc587f75b9ef8ad1d6b9fde31a79e9dd6064ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85bd6ba2_f3a1a43a",
+        "filename": "android/BUILD.gn",
+        "patchSetId": 5
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2022-09-06T03:09:40Z",
+      "side": 1,
+      "message": "ArcWindowAnimationJankTest:ArcWindowAnimationJankTest",
+      "range": {
+        "startLine": 63,
+        "startChar": 5,
+        "endLine": 63,
+        "endChar": 31
       },
       "revId": "18dc587f75b9ef8ad1d6b9fde31a79e9dd6064ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
