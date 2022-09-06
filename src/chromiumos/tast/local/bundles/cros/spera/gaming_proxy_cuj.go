@@ -43,6 +43,15 @@ func init() {
 				},
 			},
 			{
+				Name:    "basic_vp9_1080p_60fps",
+				Fixture: "loggedInAndKeepState",
+				Timeout: 20 * time.Minute,
+				Val: gamingproxycuj.TestParams{
+					BrowserType: browser.TypeAsh,
+					VideoOption: gamingproxycuj.VP9DASH1080P60FPS,
+				},
+			},
+			{
 				Name:    "plus_h264_4k_60fps",
 				Fixture: "loggedInAndKeepState",
 				Timeout: 20 * time.Minute,
@@ -61,6 +70,15 @@ func init() {
 				},
 			},
 			{
+				Name:    "plus_vp9_4k_60fps",
+				Fixture: "loggedInAndKeepState",
+				Timeout: 20 * time.Minute,
+				Val: gamingproxycuj.TestParams{
+					BrowserType: browser.TypeAsh,
+					VideoOption: gamingproxycuj.VP9DASH4K60FPS,
+				},
+			},
+			{
 				Name:              "basic_lacros_h264_1080p_60fps",
 				Fixture:           "loggedInAndKeepStateLacros",
 				Timeout:           20 * time.Minute,
@@ -68,6 +86,16 @@ func init() {
 				Val: gamingProxyCUJParam{
 					browserType: browser.TypeLacros,
 					videoOption: gamingproxycuj.H264DASH1080P60FPS,
+				},
+			},
+			{
+				Name:              "basic_lacros_vp9_1080p_60fps",
+				Fixture:           "loggedInAndKeepStateLacros",
+				Timeout:           20 * time.Minute,
+				ExtraSoftwareDeps: []string{"lacros"},
+				Val: gamingproxycuj.TestParams{
+					BrowserType: browser.TypeLacros,
+					VideoOption: gamingproxycuj.VP9DASH1080P60FPS,
 				},
 			},
 			{
@@ -88,6 +116,16 @@ func init() {
 				Val: gamingProxyCUJParam{
 					browserType: browser.TypeLacros,
 					videoOption: gamingproxycuj.AV1DASH60FPS,
+				},
+			},
+			{
+				Name:              "plus_lacros_vp9_4k_60fps",
+				Fixture:           "loggedInAndKeepStateLacros",
+				Timeout:           20 * time.Minute,
+				ExtraSoftwareDeps: []string{"lacros"},
+				Val: gamingproxycuj.TestParams{
+					BrowserType: browser.TypeLacros,
+					VideoOption: gamingproxycuj.VP9DASH4K60FPS,
 				},
 			},
 		},
