@@ -52,6 +52,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e56d5488_b61cd26f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1546145
+      },
+      "writtenOn": "2022-09-06T02:40:36Z",
+      "side": 1,
+      "message": "Are you also going to write a Tast test like this:\n\nsrc/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/arc/storage/storage.go",
+      "revId": "18dc587f75b9ef8ad1d6b9fde31a79e9dd6064ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d3d36ba3_9c1dcc4f",
@@ -65,6 +82,29 @@
       "writtenOn": "2022-09-06T02:00:14Z",
       "side": 1,
       "message": "I think we can remove the instrumentation label, since we only use perfetto test.",
+      "revId": "18dc587f75b9ef8ad1d6b9fde31a79e9dd6064ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60574ce8_9c060db9",
+        "filename": "android/ArcWindowAnimationJankTest/src/org/chromium/arc/testapp/windowanimationjank/ElementLayoutActivity.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1546145
+      },
+      "writtenOn": "2022-09-06T02:40:36Z",
+      "side": 1,
+      "message": "Can you make a more descriptive name indicating what this Activity does?",
+      "range": {
+        "startLine": 23,
+        "startChar": 13,
+        "endLine": 23,
+        "endChar": 34
+      },
       "revId": "18dc587f75b9ef8ad1d6b9fde31a79e9dd6064ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -110,6 +150,282 @@
         "startChar": 29,
         "endLine": 28,
         "endChar": 44
+      },
+      "revId": "18dc587f75b9ef8ad1d6b9fde31a79e9dd6064ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17d757c4_d3a3e835",
+        "filename": "android/ArcWindowAnimationJankTest/src/org/chromium/arc/testapp/windowanimationjank/ElementLayoutActivity.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1546145
+      },
+      "writtenOn": "2022-09-06T02:40:36Z",
+      "side": 1,
+      "message": "It\u0027s best practice to create a new class that implements this interface, you can make it an inner class so it has access to the private members of this class",
+      "range": {
+        "startLine": 52,
+        "startChar": 59,
+        "endLine": 52,
+        "endChar": 63
+      },
+      "revId": "18dc587f75b9ef8ad1d6b9fde31a79e9dd6064ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ab4d3fa_8655aaa8",
+        "filename": "android/ArcWindowAnimationJankTest/src/org/chromium/arc/testapp/windowanimationjank/ElementLayoutActivity.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1546145
+      },
+      "writtenOn": "2022-09-06T02:40:36Z",
+      "side": 1,
+      "message": "Instead of void functions can you make functions that create the button, return it, then add it to the layout from here?\n\neg:\n\nmLayout.addView(createTextView());",
+      "range": {
+        "startLine": 60,
+        "startChar": 16,
+        "endLine": 60,
+        "endChar": 33
+      },
+      "revId": "18dc587f75b9ef8ad1d6b9fde31a79e9dd6064ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef8ba10f_65430823",
+        "filename": "android/ArcWindowAnimationJankTest/src/org/chromium/arc/testapp/windowanimationjank/ElementLayoutActivity.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1546145
+      },
+      "writtenOn": "2022-09-06T02:40:36Z",
+      "side": 1,
+      "message": "can we be a little more descriptive?\n\neg: createRandomTestTextView",
+      "range": {
+        "startLine": 80,
+        "startChar": 17,
+        "endLine": 80,
+        "endChar": 31
+      },
+      "revId": "18dc587f75b9ef8ad1d6b9fde31a79e9dd6064ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a85c439f_323b3cc9",
+        "filename": "android/ArcWindowAnimationJankTest/src/org/chromium/arc/testapp/windowanimationjank/ElementLayoutActivity.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1546145
+      },
+      "writtenOn": "2022-09-06T02:40:36Z",
+      "side": 1,
+      "message": "as mentioned above, can we make functiosn that return values?",
+      "range": {
+        "startLine": 80,
+        "startChar": 12,
+        "endLine": 80,
+        "endChar": 16
+      },
+      "revId": "18dc587f75b9ef8ad1d6b9fde31a79e9dd6064ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f5157ed_7f217cb4",
+        "filename": "android/ArcWindowAnimationJankTest/src/org/chromium/arc/testapp/windowanimationjank/ElementLayoutActivity.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1546145
+      },
+      "writtenOn": "2022-09-06T02:40:36Z",
+      "side": 1,
+      "message": "These are not needed if they just call super, remove",
+      "range": {
+        "startLine": 119,
+        "startChar": 4,
+        "endLine": 128,
+        "endChar": 0
+      },
+      "revId": "18dc587f75b9ef8ad1d6b9fde31a79e9dd6064ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15c51960_dbdb11c3",
+        "filename": "android/ArcWindowAnimationJankTest/src/org/chromium/arc/testapp/windowanimationjank/ElementLayoutActivity.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1546145
+      },
+      "writtenOn": "2022-09-06T02:40:36Z",
+      "side": 1,
+      "message": "What exactly is this function doing?  It may be better to create a more descriptive function name that is called by this function along with some comments",
+      "range": {
+        "startLine": 130,
+        "startChar": 19,
+        "endLine": 130,
+        "endChar": 28
+      },
+      "revId": "18dc587f75b9ef8ad1d6b9fde31a79e9dd6064ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29777de0_4712a663",
+        "filename": "android/ArcWindowAnimationJankTest/src/org/chromium/arc/testapp/windowanimationjank/ElementLayoutActivity.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1546145
+      },
+      "writtenOn": "2022-09-06T02:40:36Z",
+      "side": 1,
+      "message": "can this be a constant?",
+      "range": {
+        "startLine": 134,
+        "startChar": 0,
+        "endLine": 134,
+        "endChar": 30
+      },
+      "revId": "18dc587f75b9ef8ad1d6b9fde31a79e9dd6064ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cdef37cd_282ce5cf",
+        "filename": "android/ArcWindowAnimationJankTest/src/org/chromium/arc/testapp/windowanimationjank/ElementLayoutActivity.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1546145
+      },
+      "writtenOn": "2022-09-06T02:40:36Z",
+      "side": 1,
+      "message": "instead of using a float why not just use an integer that you reset with % (mod)\n\nAlso how do you know this is 3 times per second, it is dependent on device framerate, maybe you should use a real java time Instant (https://developer.android.com/reference/java/time/Instant)",
+      "range": {
+        "startLine": 146,
+        "startChar": 8,
+        "endLine": 147,
+        "endChar": 65
+      },
+      "revId": "18dc587f75b9ef8ad1d6b9fde31a79e9dd6064ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "419e4fdc_3e275035",
+        "filename": "android/ArcWindowAnimationJankTest/src/org/chromium/arc/testapp/windowanimationjank/FlowLayout.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1546145
+      },
+      "writtenOn": "2022-09-06T02:40:36Z",
+      "side": 1,
+      "message": "Can\u0027t we just use a linear layout or something? why is a custom layout needed?",
+      "range": {
+        "startLine": 17,
+        "startChar": 13,
+        "endLine": 17,
+        "endChar": 23
+      },
+      "revId": "18dc587f75b9ef8ad1d6b9fde31a79e9dd6064ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7323b790_9433e602",
+        "filename": "android/ArcWindowAnimationJankTest/src/org/chromium/arc/testapp/windowanimationjank/FlowLayout.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1546145
+      },
+      "writtenOn": "2022-09-06T02:40:36Z",
+      "side": 1,
+      "message": "can delete",
+      "range": {
+        "startLine": 20,
+        "startChar": 3,
+        "endLine": 26,
+        "endChar": 5
+      },
+      "revId": "18dc587f75b9ef8ad1d6b9fde31a79e9dd6064ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85479517_54b6c7fb",
+        "filename": "android/ArcWindowAnimationJankTest/src/org/chromium/arc/testapp/windowanimationjank/FlowLayout.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1546145
+      },
+      "writtenOn": "2022-09-06T02:40:36Z",
+      "side": 1,
+      "message": "What is exactly are we doing here? if we even really need this class, can we add comments on what this onMeausure is accomplishing and how?",
+      "range": {
+        "startLine": 29,
+        "startChar": 19,
+        "endLine": 29,
+        "endChar": 28
+      },
+      "revId": "18dc587f75b9ef8ad1d6b9fde31a79e9dd6064ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d736c1cf_d2c050d7",
+        "filename": "android/ArcWindowAnimationJankTest/src/org/chromium/arc/testapp/windowanimationjank/FlowLayout.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1546145
+      },
+      "writtenOn": "2022-09-06T02:40:36Z",
+      "side": 1,
+      "message": "same, comments etc",
+      "range": {
+        "startLine": 84,
+        "startChar": 19,
+        "endLine": 84,
+        "endChar": 27
       },
       "revId": "18dc587f75b9ef8ad1d6b9fde31a79e9dd6064ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
