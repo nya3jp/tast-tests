@@ -16,6 +16,24 @@
       "message": "Any info on the failures? Just curious to know what broke and see if it\u0027s something I can look out for in future reviews",
       "revId": "6ff56c649719d08ee60bb7ee28988dad2046f486",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0a9d6c0_62d53b0a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1512777
+      },
+      "writtenOn": "2022-09-06T17:00:19Z",
+      "side": 1,
+      "message": "This revert was created due as being part of the chain of CL:3840712\nThere\u0027s an on going discussion in https://chat.google.com/room/AAAAY30-_-o/pDk1XGqZRj0",
+      "parentUuid": "6792a8c3_3b8d5e88",
+      "revId": "6ff56c649719d08ee60bb7ee28988dad2046f486",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
