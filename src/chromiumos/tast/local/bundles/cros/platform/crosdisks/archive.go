@@ -37,6 +37,7 @@ var PreparedArchives = []string{
 	"Invalid.zip",
 	"Format V4.rar",
 	"Format V5.rar",
+	"LZMA.zip",
 	"Multipart Old Style.rar",
 	"Multipart Old Style.r00",
 	"Multipart New Style 01.rar",
@@ -357,6 +358,15 @@ func testStrictPasswordInArchives(ctx context.Context, s *testing.State, cd *cro
 	}
 }
 
+// testUnsupportedCompressionMethod checks that a ZIP containing a file with an
+// unsupported compression method is not accepted (https://crbug.com/1360291).
+func testUnsupportedCompressionMethod(ctx context.Context, s *testing.State, cd *crosdisks.CrosDisks, dataDir string) {
+	archivePath := filepath.Join(dataDir, "LZMA.zip")
+	if err := verifyMountStatus(ctx, cd, archivePath, filepath.Ext(archivePath), nil, crosdisks.MountErrorMountProgramFailed); err != nil {
+		s.Errorf("Test failed for %q: %v", archivePath, err)
+	}
+}
+
 func testDuplicateFilenamesInArchives(ctx context.Context, s *testing.State, cd *crosdisks.CrosDisks, dataDir string) {
 	mtime := int64(1600602814)
 	expectedContent := DirectoryContents{
@@ -539,6 +549,9 @@ func RunArchiveTests(ctx context.Context, s *testing.State) {
 			})
 			s.Run(ctx, "StrictPassword", func(ctx context.Context, state *testing.State) {
 				testStrictPasswordInArchives(ctx, state, cd, mountPath)
+			})
+			s.Run(ctx, "UnsupportedCompressionMethod", func(ctx context.Context, state *testing.State) {
+				testUnsupportedCompressionMethod(ctx, state, cd, mountPath)
 			})
 			s.Run(ctx, "DuplicateFilenames", func(ctx context.Context, state *testing.State) {
 				testDuplicateFilenamesInArchives(ctx, state, cd, mountPath)
