@@ -332,6 +332,31 @@ func (s *OSSettings) WaitUntilToggleOption(cr *chrome.Chrome, optionName string,
 	}
 }
 
+// OpenNetworkDetailPage navigates Settings app to the network detail page.
+func OpenNetworkDetailPage(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome, networkName string) (*OSSettings, error) {
+	ui := uiauto.New(tconn)
+	app, err := Launch(ctx, tconn)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to launch settings page")
+	}
+
+	if err := app.SetToggleOption(cr, "Mobile data enable", true)(ctx); err != nil {
+		return nil, errors.Wrap(err, "failed to enable mobile data")
+	}
+
+	app, err = OpenMobileDataSubpage(ctx, tconn, cr)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to open mobile data subpage")
+	}
+
+	var networkNameDetail = nodewith.NameContaining(networkName).Role(role.Button).ClassName("subpage-arrow").First()
+	if err := ui.LeftClick(networkNameDetail)(ctx); err != nil {
+		return nil, errors.Wrap(err, "failed to open detail page")
+	}
+
+	return &OSSettings{tconn: tconn, ui: ui}, nil
+}
+
 // SearchWithKeyword searches the demand keyword by input text in the `SearchBox`.
 func (s *OSSettings) SearchWithKeyword(ctx context.Context, kb *input.KeyboardEventWriter,
 	keyword string) (results []uiauto.NodeInfo, mismatched bool, err error) {
