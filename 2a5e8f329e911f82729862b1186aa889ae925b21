@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "346cdf89_8bea5f20",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/vkb/vkb.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-09-06T07:33:24Z",
+      "side": 1,
+      "message": "IIRC, this function is used in many places.\n\nInstead of changing signature, I would suggest to add an internal check whether atlasEnabled, similar to http://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/uiauto/vkb/handwriting.go?l\u003d33",
+      "range": {
+        "startLine": 321,
+        "startChar": 38,
+        "endLine": 321,
+        "endChar": 53
+      },
+      "revId": "2a5e8f329e911f82729862b1186aa889ae925b21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
