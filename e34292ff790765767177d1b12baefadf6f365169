@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "254aa8fb_7ee71015",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 16
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-09-06T22:38:19Z",
+      "side": 1,
+      "message": "It would be nice if MP firmware behaved the same as custom firmware types. Specifically, rather than having magic happen with an empty string, we can create a `FirmwareFile` with `KeyType` set as `KeyTypeMp` and `filePath` set to be the path to the MP firmware on the rootfs.\n\nThen in cases where we need to do something special because it\u0027s MP firmware (or not), we can check the `KeyType` rather than compare to an empty string or `FirmwareFile{}`.\n\nTo make it less cumbersome to construct that object, you can create a function. For example,\n\n\n```\nfunc NewMPFirmwareFile() FirmwareFile {\n\tmpFirmwarePath :\u003d // Add logic here to get the path\n\treturn FirmwareFile{filePath: mpFirmwarePath, KeyType: KeyTypeMp}\n}\n```\n\nThen in the tests where you are passing `fingerprint.FirmwareFile{}`, you can use `fingerprint.NewMPFirmwareFile()`.",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 69
+      },
+      "revId": "e34292ff790765767177d1b12baefadf6f365169",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a63d7e19_9a6b4d86",
         "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
         "patchSetId": 16
@@ -49,6 +72,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "98ca50d0_86884c14",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 516,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-09-06T22:38:19Z",
+      "side": 1,
+      "message": "For the generated images, I think we already save [both the RO version and RW version](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/remote/firmware/fingerprint/fingerprint_test_images.go;l\u003d54-62;drc\u003dbd0e26bfea64162536a1ca0801a9227adab7eb46).\n\nIn that case, we should add a `ROVersion` and `RWVersion` fields to `FirmwareFile` and we can pass that all the way through instead of having to reconstruct it here.\n\nWe should also fill those values in for the MP firmware and then here we can just do:\n\n```\nexpectedROVersion \u003d firmwareFile.ROVersion\n```\n\n(no special cases for different types of firmware)",
+      "range": {
+        "startLine": 506,
+        "startChar": 0,
+        "endLine": 516,
+        "endChar": 2
+      },
+      "revId": "e34292ff790765767177d1b12baefadf6f365169",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b4400610_c734bfd4",
         "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
         "patchSetId": 16
@@ -65,6 +111,29 @@
         "startChar": 0,
         "endLine": 610,
         "endChar": 2
+      },
+      "revId": "e34292ff790765767177d1b12baefadf6f365169",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26beb45a_b3432898",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint_test_images.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 493,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-09-06T22:38:19Z",
+      "side": 1,
+      "message": "I know it\u0027s a small change, but can you move this typo fix to a separate CL?\n\nRationale: go/small-cls",
+      "range": {
+        "startLine": 493,
+        "startChar": 0,
+        "endLine": 493,
+        "endChar": 68
       },
       "revId": "e34292ff790765767177d1b12baefadf6f365169",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
