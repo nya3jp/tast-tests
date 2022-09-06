@@ -6,7 +6,6 @@ package filemanager
 
 import (
 	"context"
-	"regexp"
 	"time"
 
 	"chromiumos/tast/ctxutil"
@@ -20,10 +19,10 @@ import (
 )
 
 type testCase struct {
-	user                     string
-	pass                     string
-	expectedBannerText       string
-	expectedStorageMeterText string
+	user                      string
+	pass                      string
+	expectedBannerClass       string
+	expectedStorageMeterClass string
 }
 
 func init() {
@@ -59,31 +58,28 @@ func init() {
 		Params: []testing.Param{{
 			Name: "low",
 			Val: testCase{
-				user:                     "filemanager.DrivefsPooledStorage.WarnUsername",
-				pass:                     "filemanager.DrivefsPooledStorage.WarnPassword",
-				expectedBannerText:       "Storage low 15% left of your 30 GB individual storage.",
-				expectedStorageMeterText: "",
+				user:                      "filemanager.DrivefsPooledStorage.WarnUsername",
+				pass:                      "filemanager.DrivefsPooledStorage.WarnPassword",
+				expectedBannerClass:       "tast-drive-low-individual-space",
+				expectedStorageMeterClass: "",
 			},
 		}, {
 			Name: "full_individual",
 			Val: testCase{
-				user:                     "filemanager.DrivefsPooledStorage.FullUsername",
-				pass:                     "filemanager.DrivefsPooledStorage.FullPassword",
-				expectedBannerText:       "Warning: You’ve used all your individual Google Workspace storage.",
-				expectedStorageMeterText: "0 bytes available",
+				user:                      "filemanager.DrivefsPooledStorage.FullUsername",
+				pass:                      "filemanager.DrivefsPooledStorage.FullPassword",
+				expectedBannerClass:       "tast-drive-out-of-individual-space",
+				expectedStorageMeterClass: "tast-storage-meter-empty",
 			},
 		}, {
 			Name: "full_organization",
 			Val: testCase{
-				user:                     "filemanager.DrivefsPooledStorage.OrgFullUsername",
-				pass:                     "filemanager.DrivefsPooledStorage.OrgFullPassword",
-				expectedBannerText:       "Warning: Test Org has used all of its Google Workspace storage.",
-				expectedStorageMeterText: "",
+				user:                      "filemanager.DrivefsPooledStorage.OrgFullUsername",
+				pass:                      "filemanager.DrivefsPooledStorage.OrgFullPassword",
+				expectedBannerClass:       "tast-drive-out-of-organization-space",
+				expectedStorageMeterClass: "",
 			},
 		}},
-		Data: []string{
-			"test_1KB.txt",
-		},
 	})
 }
 
@@ -129,26 +125,24 @@ func DrivefsPooledStorage(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to navigate to My drive and open the 'More menu': ", err)
 	}
 
-	if tc.expectedStorageMeterText != "" {
+	if tc.expectedStorageMeterClass != "" {
 		// Read storage meter.
-		storageMeter, err := files.Info(
+		_, err := files.Info(
 			ctx,
-			nodewith.Ancestor(nodewith.HasClass("chrome-menu files-menu")).NameRegex(regexp.MustCompile(" ((used)|(available))$")).First())
+			nodewith.HasClass(tc.expectedStorageMeterClass).First())
 		if err != nil {
-			s.Fatal("Error retrieving storage meter: ", err)
-		} else if storageMeter.Name != tc.expectedStorageMeterText {
-			s.Fatalf("Unexpected storage meter contents. Expected %q, found: %q", tc.expectedStorageMeterText, storageMeter.Name)
+			s.Fatalf("Error retrieving storage meter with expected class %q. %v", tc.expectedStorageMeterClass, err)
 		}
 	}
 
-	if tc.expectedBannerText != "" {
+	if tc.expectedBannerClass != "" {
 		// Read active banner.
 		_, err := files.Info(
 			ctx,
-			nodewith.Ancestor(nodewith.HasClass("warning-message")).Name(tc.expectedBannerText).First())
+			nodewith.HasClass(tc.expectedBannerClass).Role("banner").First())
 
 		if err != nil {
-			s.Fatalf("Error retrieving banner with expected contents %q. %v", tc.expectedBannerText, err)
+			s.Fatalf("Error retrieving banner with expected class %q. %v", tc.expectedBannerClass, err)
 		}
 	}
 }
