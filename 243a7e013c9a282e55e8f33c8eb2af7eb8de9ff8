@@ -140,6 +140,30 @@
       },
       "revId": "243a7e013c9a282e55e8f33c8eb2af7eb8de9ff8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bdc92854_fe276bdd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/fixture/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-09-06T05:08:26Z",
+      "side": 1,
+      "message": "I don\u0027t think you should rely on that if you want to test two scenarios explicitly with two exclusive fixtures. The test logic here should not behave differently given different hardwares.",
+      "parentUuid": "1d39eea0_931ec4a2",
+      "range": {
+        "startLine": 176,
+        "startChar": 1,
+        "endLine": 178,
+        "endChar": 2
+      },
+      "revId": "243a7e013c9a282e55e8f33c8eb2af7eb8de9ff8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
