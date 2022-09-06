@@ -184,6 +184,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7fdf117b_8da33d25",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/shared_screencast.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1000097
+      },
+      "writtenOn": "2022-09-06T22:37:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "93fca48f_3c7f73f3",
+      "range": {
+        "startLine": 80,
+        "startChar": 21,
+        "endLine": 80,
+        "endChar": 44
+      },
+      "revId": "070d618cf32029ec6fb5f6c1e5bb17d9cd6a2f98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "de2bba18_5688bca2",
