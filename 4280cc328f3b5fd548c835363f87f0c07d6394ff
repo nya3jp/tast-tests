@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b340043_f079300e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/play_files.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1221932
+      },
+      "writtenOn": "2022-09-06T06:45:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "12e97dfa_49281481",
+      "range": {
+        "startLine": 27,
+        "startChar": 5,
+        "endLine": 27,
+        "endChar": 15
+      },
+      "revId": "4280cc328f3b5fd548c835363f87f0c07d6394ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "707e2f0a_104ea16e",
@@ -71,6 +95,30 @@
       "writtenOn": "2022-09-06T06:26:31Z",
       "side": 1,
       "message": "Shouldn\u0027t this be done in a cleanup context?",
+      "range": {
+        "startLine": 73,
+        "startChar": 7,
+        "endLine": 73,
+        "endChar": 20
+      },
+      "revId": "4280cc328f3b5fd548c835363f87f0c07d6394ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c1b8d04_20004877",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/play_files.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1221932
+      },
+      "writtenOn": "2022-09-06T06:45:50Z",
+      "side": 1,
+      "message": "Done. Also fixed for the defer on line 85.",
+      "parentUuid": "707e2f0a_104ea16e",
       "range": {
         "startLine": 73,
         "startChar": 7,
@@ -104,6 +152,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7ff37a1_05dcbbd8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/play_files.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1221932
+      },
+      "writtenOn": "2022-09-06T06:45:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "132ef523_caf3d6b7",
+      "range": {
+        "startLine": 80,
+        "startChar": 4,
+        "endLine": 80,
+        "endChar": 9
+      },
+      "revId": "4280cc328f3b5fd548c835363f87f0c07d6394ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c734ab41_7a8e9df9",
@@ -127,6 +199,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2d08aa9_f481c7d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/play_files.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1221932
+      },
+      "writtenOn": "2022-09-06T06:45:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c734ab41_7a8e9df9",
+      "range": {
+        "startLine": 99,
+        "startChar": 22,
+        "endLine": 99,
+        "endChar": 26
+      },
+      "revId": "4280cc328f3b5fd548c835363f87f0c07d6394ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e4773e59_40f27d0e",
@@ -140,6 +236,24 @@
       "writtenOn": "2022-09-06T06:26:31Z",
       "side": 1,
       "message": "nit: `testing.ContextLog(ctx, \"Testing ...\")` just for consistency, or remove the above `testing.ContextLog(ctx, \"Testing Android -\u003e CrOS\")`?",
+      "revId": "4280cc328f3b5fd548c835363f87f0c07d6394ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea63c4f8_98d11df7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/play_files.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1221932
+      },
+      "writtenOn": "2022-09-06T06:45:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e4773e59_40f27d0e",
       "revId": "4280cc328f3b5fd548c835363f87f0c07d6394ff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -190,6 +304,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0048f381_452e95ca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/play_files.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1221932
+      },
+      "writtenOn": "2022-09-06T06:45:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cc9b5ff7_d4602b29",
+      "range": {
+        "startLine": 186,
+        "startChar": 1,
+        "endLine": 186,
+        "endChar": 44
+      },
+      "revId": "4280cc328f3b5fd548c835363f87f0c07d6394ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "59ceaf22_85fb48dc",
@@ -207,6 +345,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a66c440d_186b610e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/play_files.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1221932
+      },
+      "writtenOn": "2022-09-06T06:45:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "59ceaf22_85fb48dc",
+      "revId": "4280cc328f3b5fd548c835363f87f0c07d6394ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "38a2bdee_e8e9155e",
@@ -220,6 +376,24 @@
       "writtenOn": "2022-09-06T06:26:31Z",
       "side": 1,
       "message": "Add periods to the comments?",
+      "revId": "4280cc328f3b5fd548c835363f87f0c07d6394ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "97d4efbc_052dae8e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/play_files.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1221932
+      },
+      "writtenOn": "2022-09-06T06:45:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "38a2bdee_e8e9155e",
       "revId": "4280cc328f3b5fd548c835363f87f0c07d6394ff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
