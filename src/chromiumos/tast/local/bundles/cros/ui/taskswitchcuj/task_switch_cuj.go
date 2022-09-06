@@ -148,9 +148,18 @@ func Run(ctx context.Context, s *testing.State) {
 				return errors.Wrap(err, "failed to hit overview key")
 			}
 
+			if err := ash.WaitForOverviewState(ctx, tconn, ash.Shown, 30*time.Second); err != nil {
+				return errors.Wrap(err, "failed to wait for overview state")
+			}
+
 			if err := stw.Swipe(ctx, startX, startY, endX, endY, 2*time.Second); err != nil {
 				return errors.Wrap(err, "failed to swipe horizontally in overview mode")
 			}
+
+			if err := ac.WithInterval(2*time.Second).WaitUntilNoEvent(nodewith.Root(), event.LocationChanged)(ctx); err != nil {
+				s.Log("Failed to wait for the swipe animation to stabilize: ", err)
+			}
+
 			return stw.End()
 		}
 	} else {
@@ -160,6 +169,10 @@ func Run(ctx context.Context, s *testing.State) {
 		setOverviewMode = func(ctx context.Context) error {
 			if err := kw.Accel(ctx, topRow.SelectTask); err != nil {
 				return errors.Wrap(err, "failed to hit overview key")
+			}
+
+			if err := ash.WaitForOverviewState(ctx, tconn, ash.Shown, 30*time.Second); err != nil {
+				return errors.Wrap(err, "failed to wait for overview state")
 			}
 			return nil
 		}
@@ -269,7 +282,7 @@ func Run(ctx context.Context, s *testing.State) {
 			// stabilization fails, because sometimes the visible
 			// window does not stabilize in a timely manner.
 			if err := ac.WithInterval(2*time.Second).WaitUntilNoEvent(nodewith.Root(), event.LocationChanged)(ctx); err != nil {
-				s.Logf("Failed to wait for the window to stabilize after %s: ", err)
+				s.Logf("Failed to wait for the window to stabilize after subtest %s: %v", taskSwitcher.name, err)
 			}
 		}
 
