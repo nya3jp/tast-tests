@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0168780f_bbbedad6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-09-06T23:54:50Z",
+      "side": 1,
+      "message": "Hi Li, I fixed the merge conflict and this CL is ready for review again.",
+      "revId": "03cf43d6bb3072bac50217d177981bf8f8ffd8b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
