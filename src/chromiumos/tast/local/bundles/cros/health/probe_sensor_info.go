@@ -45,12 +45,18 @@ func rawLidAngle(ctx context.Context) (string, error) {
 		return "", err
 	}
 
-	b, err := testexec.CommandContext(ctx, "ectool", "motionsense", "lid_angle").Output(testexec.DumpLogOnError)
+	bStdout, bStderr, err := testexec.CommandContext(ctx, "ectool", "motionsense", "lid_angle").SeparatedOutput(testexec.DumpLogOnError)
 	if err != nil {
+		stderr := string(bStderr)
+		if strings.Contains(stderr, "INVALID_COMMAND") || strings.Contains(stderr, "INVALID_PARAM") {
+			// Some devices do not support lid_angle and return |INVALID_COMMAND| or
+			// |INVALID_PARAM|. Check stderr and return "" in these cases.
+			return "", nil
+		}
 		return "", errors.Wrap(err, "failed to run ectool command")
 	}
 
-	return strings.ReplaceAll(strings.TrimSpace(string(b)), "Lid angle: ", ""), nil
+	return strings.ReplaceAll(strings.TrimSpace(string(bStdout)), "Lid angle: ", ""), nil
 }
 
 func validateLidAngle(ctx context.Context, info *sensorInfo) error {
