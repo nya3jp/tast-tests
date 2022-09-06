@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3487c2a6_fa0130ca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/intel/video_capture_with_resolutions.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-09-06T06:34:55Z",
+      "side": 1,
+      "message": "Nit: We call this back-facing elsewhere, can we call it back-facing here?",
+      "revId": "9794328faaed761fb8175ca2bc97674e9cf3c858",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13ea090f_ea6dc74d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/intel/video_capture_with_resolutions.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-09-06T06:34:55Z",
+      "side": 1,
+      "message": "You record each video for 5 minutes, and the test is 20 minutes.\nIs the number of possible resolutions for the camera guaranteed to be 3 or less? I would guess that for high-end devices, they may have a lot of resolutions available.\n\nIf not, we need to increase the deadline appropriately",
+      "revId": "9794328faaed761fb8175ca2bc97674e9cf3c858",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
