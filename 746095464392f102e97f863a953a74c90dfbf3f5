@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "83c07f56_7c880635",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/common_metrics.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-09-06T15:34:32Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "32da08d0_6a1f4c54",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 105
+      },
+      "revId": "746095464392f102e97f863a953a74c90dfbf3f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7f3c3d90_2d4316f1",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c77f3337_e9d078f1",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/common_metrics.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-09-06T15:34:32Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "7f3c3d90_2d4316f1",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 82
+      },
+      "revId": "746095464392f102e97f863a953a74c90dfbf3f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5056bc06_de054063",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-09-02T17:56:19Z",
       "side": 0,
       "message": "Same as the Ash one. Please leave this.",
+      "range": {
+        "startLine": 111,
+        "startChar": 0,
+        "endLine": 111,
+        "endChar": 115
+      },
+      "revId": "746095464392f102e97f863a953a74c90dfbf3f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3baa6d9_afa2df97",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/common_metrics.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-09-06T15:34:32Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "5056bc06_de054063",
       "range": {
         "startLine": 111,
         "startChar": 0,
