@@ -191,10 +191,10 @@ func (s *ShillService) TearDown(ctx context.Context, _ *empty.Empty) (*empty.Emp
 
 	var retErr error
 	if err := s.cleanProfiles(ctx, m); err != nil {
-		retErr = errors.Wrapf(retErr, "cleanProfiles failed: %s", err)
+		retErr = errors.Wrap(err, "cleanProfiles failed")
 	}
 	if err := s.removeWifiEntries(ctx, m); err != nil {
-		retErr = errors.Wrapf(retErr, "removeWifiEntries failed: %s", err)
+		retErr = errors.Wrap(err, "removeWifiEntries failed")
 	}
 	if err := upstart.EnsureJobRunning(ctx, "ui"); err != nil {
 		testing.ContextLog(ctx, "Failed to start ui: ", err)
@@ -2956,16 +2956,16 @@ func (s *ShillService) startSoftAP(ctx context.Context, request *wifi.TetheringR
 		channel = 36
 	}
 
-	key_mgmt := "NONE"
+	keyMgmt := "NONE"
 	if request.Security == shillconst.SoftAPSecurityWPA2 {
-		key_mgmt = "WPA-PSK"
+		keyMgmt = "WPA-PSK"
 	} else if request.Security == shillconst.SoftAPSecurityWPA3 {
-		key_mgmt = "SAE"
+		keyMgmt = "SAE"
 	} else if request.Security == shillconst.SoftAPSecurityWPA2WPA3 {
-		key_mgmt = "WPA-PSK SAE"
+		keyMgmt = "WPA-PSK SAE"
 	}
 
-	if err := localwpacli.NewLocalRunner().StartSoftAP(ctx, freq, string(request.Ssid), key_mgmt, string(request.Psk)); err != nil {
+	if err := localwpacli.NewLocalRunner().StartSoftAP(ctx, freq, string(request.Ssid), keyMgmt, string(request.Psk)); err != nil {
 		return 0, errors.Wrap(err, "failed to start soft AP in wpa_supplicant")
 	}
 
