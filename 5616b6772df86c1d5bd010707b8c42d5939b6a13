@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "16e51d52_bd042414",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2022-09-06T20:31:59Z",
+      "side": 1,
+      "message": "Please check what we generally use instead of \"Platform_Decoding:\".\n\nI think we typically use something with \"tast-tests\" repo branch name.",
+      "revId": "5616b6772df86c1d5bd010707b8c42d5939b6a13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "795177ed_21b2c6e8",
@@ -14,6 +31,23 @@
       "writtenOn": "2022-09-06T17:48:58Z",
       "side": 1,
       "message": "Platform Decoding update to utilize md5 checksum log. PTAL",
+      "revId": "5616b6772df86c1d5bd010707b8c42d5939b6a13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5809f3b6_e8f5a1d7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2022-09-06T20:31:59Z",
+      "side": 1,
+      "message": "Where would be the ideal folder / location to dump log file?\n\nIn general, I think root directory might not be the ideal place.\n\nBijan, can you look up to see whether there is any better place for the purpose?",
       "revId": "5616b6772df86c1d5bd010707b8c42d5939b6a13",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
