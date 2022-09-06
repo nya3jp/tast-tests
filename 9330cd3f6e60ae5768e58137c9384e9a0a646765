@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3bf262c2_c8b7bf21",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1554467
+      },
+      "writtenOn": "2022-09-06T17:50:26Z",
+      "side": 1,
+      "message": "I get an error when I attempt to run this test.  Are there missing library changes?  Does this CL depend on another CL that is not merged yet?\n\nacwans@acwans ~/chromiumos/src/scripts $ tast run -var\u003dutils.WWCBIP\u003dpenguin -var\u003dDockingID\u003d1912901 -var\u003d1stExtDispID\u003d2007901 -var\u003dEthernetID\u003dj45sw01 localhost:2223 wwcb.Dock5NetworkSwitch\n2022-09-06T17:49:00.619953Z Command line: tast run -var\u003dutils.WWCBIP\u003dpenguin -var\u003dDockingID\u003d1912901 -var\u003d1stExtDispID\u003d2007901 -var\u003dEthernetID\u003dj45sw01 localhost:2223 wwcb.Dock5NetworkSwitch\n2022-09-06T17:49:00.620014Z Writing results to /tmp/tast/results/20220906-174900\n2022-09-06T17:49:00.622127Z Starting ephemeral devserver at http://127.0.0.1:36513 for remote tests\n2022-09-06T17:49:00.622669Z Connecting to localhost:2223\n2022-09-06T17:49:01.018378Z Building remote_test_runner, cros\n2022-09-06T17:49:01.573404Z package chromiumos/tast/remote/bundles/cros\n2022-09-06T17:49:01.573502Z     imports chromiumos/tast/remote/bundles/cros/network\n2022-09-06T17:49:01.573522Z     imports chromiumos/tast/common/wifi/security/base\n2022-09-06T17:49:01.573547Z     imports chromiumos/tast/common/shillconst\n2022-09-06T17:49:01.573563Z     imports github.com/godbus/dbus: no Go files in /usr/lib/gopath/src/github.com/godbus/dbus\n2022-09-06T17:49:01.573584Z ../platform/tast-tests/src/chromiumos/tast/common/hwsec/cryptohome_mount_info.go:16:2: cannot find package \"github.com/shirou/gopsutil/disk\" in any of:\n2022-09-06T17:49:01.573601Z     /usr/lib/go/src/github.com/shirou/gopsutil/disk (from $GOROOT)\n2022-09-06T17:49:01.573622Z     /home/acwans/chromiumos/src/platform/tast-tests/src/github.com/shirou/gopsutil/disk (from $GOPATH)\n2022-09-06T17:49:01.573638Z     /home/acwans/chromiumos/src/platform/tast/src/github.com/shirou/gopsutil/disk\n2022-09-06T17:49:01.573654Z     /usr/lib/gopath/src/github.com/shirou/gopsutil/disk\n2022-09-06T17:49:01.573668Z ../platform/tast-tests/src/chromiumos/tast/common/android/adb/adb.go:14:2: cannot find package \"github.com/shirou/gopsutil/process\" in any of:\n2022-09-06T17:49:01.573684Z     /usr/lib/go/src/github.com/shirou/gopsutil/process (from $GOROOT)\n2022-09-06T17:49:01.573706Z     /home/acwans/chromiumos/src/platform/tast-tests/src/github.com/shirou/gopsutil/process (from $GOPATH)\n2022-09-06T17:49:01.573724Z     /home/acwans/chromiumos/src/platform/tast/src/github.com/shirou/gopsutil/process\n2022-09-06T17:49:01.573740Z     /usr/lib/gopath/src/github.com/shirou/gopsutil/process\n2022-09-06T17:49:01.694645Z Failed to run tests: failed to build and push primary DUT: build failed: failed to build chromiumos/tast/remote/bundles/cros: exit status 1",
+      "revId": "9330cd3f6e60ae5768e58137c9384e9a0a646765",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
