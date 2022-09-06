@@ -18,6 +18,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/browser/browserfixt"
+	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
@@ -27,6 +28,60 @@ import (
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
+
+func boolPref(ctx context.Context, tconn *chrome.TestConn, prefName string) (bool, error) {
+	var value struct {
+		Value bool `json:"value"`
+	}
+	if err := tconn.Call(ctx, &value, "tast.promisify(chrome.settingsPrivate.getPref)", prefName); err != nil {
+		return false, err
+	}
+	return value.Value, nil
+}
+
+func waitForBoolPrefValue(ctx context.Context, tconn *chrome.TestConn, prefName string, expectedValue bool, timeout time.Duration) error {
+	// TODO(b/244515056): Move this function to a shared location.
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		value, err := boolPref(ctx, tconn, prefName)
+		if err != nil {
+			return err
+		}
+		if value != expectedValue {
+			return errors.Errorf("%q is not the right value", prefName)
+		}
+		return nil
+	}, &testing.PollOptions{Interval: 10 * time.Millisecond, Timeout: timeout}); err != nil {
+		return err
+	}
+	return nil
+}
+
+// WaitForBoolPrefValueFromAshOrLacros waits for a boolean preference to be the expected value.
+func WaitForBoolPrefValueFromAshOrLacros(ctx context.Context, tconn *chrome.TestConn, bt browser.Type, prefName string, expectedValue bool, timeout time.Duration) error {
+	if bt == browser.TypeAsh {
+		return waitForBoolPrefValue(ctx, tconn, prefName, expectedValue, timeout)
+	}
+
+	// Launch Lacros so that we can sync the preference and poll its status.
+	l, err := lacros.Launch(ctx, tconn)
+	if err != nil {
+		return err
+	}
+	// Ensure we close Lacros before we return.
+	defer l.Close(ctx)
+
+	ltconn, err := l.TestAPIConn(ctx)
+	if err != nil {
+		return err
+	}
+	return waitForBoolPrefValue(ctx, ltconn, prefName, expectedValue, timeout)
+}
+
+// WaitForSyncToComplete waits for supervised user's management settings to finish syncing.  Once this is complete, you can assume that restrictions will be applied to the account.
+func WaitForSyncToComplete(ctx context.Context, tconn *chrome.TestConn, bt browser.Type, timeout time.Duration) error {
+	// TODO(zork): Find a better condition to wait on than this preference.
+	return WaitForBoolPrefValueFromAshOrLacros(ctx, tconn, bt, "profile.managed.extensions_may_request_permissions", true, timeout)
+}
 
 // AddEduSecondaryAccount opens the EDU Coexistence in-session flow
 // and attempts to add a secondary account for a Family Link (FL)
