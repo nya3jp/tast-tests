@@ -30,7 +30,7 @@ func init() {
 		Func:         BuildProperties,
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Checks important Android properties such as first_api_level",
-		Contacts:     []string{"niwa@chromium.org", "risan@chromium.org", "arc-eng@google.com"},
+		Contacts:     []string{"niwa@chromium.org", "arc-eng@google.com"},
 		SoftwareDeps: []string{"chrome"},
 		Fixture:      "arcBooted",
 		Timeout:      4 * time.Minute,

@@ -47,7 +47,7 @@ func init() {
 		Func:         MediaScanPerf,
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Checks elapsed time during a full-volume media scan",
-		Contacts:     []string{"risan@chromium.org", "youkichihosoi@chromium.org", "arc-storage@google.com"},
+		Contacts:     []string{"youkichihosoi@chromium.org", "arc-storage@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_weekly"},
 		SoftwareDeps: []string{"chrome"},
 		Fixture:      "arcBooted",
