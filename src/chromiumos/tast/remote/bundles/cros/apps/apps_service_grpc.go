@@ -44,8 +44,8 @@ func init() {
 			{
 				Name: "lacros",
 				Val: testParams{
-					chromeRequest: &ui.NewRequest{DisableFeatures: disableFeatures, EnableFeatures: []string{"LacrosSupport", "LacrosPrimary"}},
 					browserName:   "Lacros",
+					chromeRequest: &ui.NewRequest{DisableFeatures: disableFeatures, EnableFeatures: []string{"LacrosSupport", "LacrosPrimary"}, LacrosExtraArgs: []string{"--no-first-run"}},
 				},
 			},
 		},
