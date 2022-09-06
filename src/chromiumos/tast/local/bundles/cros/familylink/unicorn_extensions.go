@@ -9,11 +9,8 @@ import (
 	"context"
 	"time"
 
-	"chromiumos/tast/errors"
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/familylink"
-	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/testing"
 )
 
@@ -43,53 +40,6 @@ func init() {
 	})
 }
 
-func boolPref(ctx context.Context, tconn *chrome.TestConn, prefName string) (bool, error) {
-	var value struct {
-		Value bool `json:"value"`
-	}
-	if err := tconn.Call(ctx, &value, "tast.promisify(chrome.settingsPrivate.getPref)", prefName); err != nil {
-		return false, err
-	}
-	return value.Value, nil
-}
-
-func waitForBoolPrefValue(ctx context.Context, tconn *chrome.TestConn, prefName string, expectedValue bool, timeout time.Duration) error {
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		value, err := boolPref(ctx, tconn, prefName)
-		if err != nil {
-			return err
-		}
-		if value != expectedValue {
-			return errors.Errorf("%q is not the right value", prefName)
-		}
-		return nil
-	}, &testing.PollOptions{Interval: 10 * time.Millisecond, Timeout: timeout}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func waitForBoolPrefValueFromAshOrLacros(ctx context.Context, tconn *chrome.TestConn, bt browser.Type, prefName string, expectedValue bool, timeout time.Duration) error {
-	// TODO(b/244515056): Move this function to a shared location.
-	if bt == browser.TypeAsh {
-		return waitForBoolPrefValue(ctx, tconn, prefName, expectedValue, timeout)
-	}
-
-	// Launch Lacros so that we can sync the preference and poll its status.
-	l, err := lacros.Launch(ctx, tconn)
-	if err != nil {
-		return err
-	}
-	// Ensure we close Lacros before we return.
-	defer l.Close(ctx)
-
-	ltconn, err := l.TestAPIConn(ctx)
-	if err != nil {
-		return err
-	}
-	return waitForBoolPrefValue(ctx, ltconn, prefName, expectedValue, timeout)
-}
-
 func UnicornExtensions(ctx context.Context, s *testing.State) {
 	cr := s.FixtValue().(*familylink.FixtData).Chrome
 	tconn := s.FixtValue().(*familylink.FixtData).TestConn
@@ -101,7 +51,7 @@ func UnicornExtensions(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create test API connection")
 	}
 
-	if err := waitForBoolPrefValueFromAshOrLacros(ctx, tconn, s.Param().(browser.Type), "profile.managed.extensions_may_request_permissions", true, 4*time.Minute); err != nil {
+	if err := familylink.WaitForBoolPrefValueFromAshOrLacros(ctx, tconn, s.Param().(browser.Type), "profile.managed.extensions_may_request_permissions", true, 4*time.Minute); err != nil {
 		s.Fatal("Failed to wait for pref: ", err)
 	}
 
