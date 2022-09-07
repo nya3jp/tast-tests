@@ -16,8 +16,10 @@ import (
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/lacros"
+	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/local/policyutil/fixtures"
 	"chromiumos/tast/local/session"
@@ -25,12 +27,27 @@ import (
 	"chromiumos/tast/testing"
 )
 
+var driveWebApp = []*policy.WebAppInstallForceListValue{
+	{
+		Url:                    "https://drive.google.com/drive/installwebapp?usp=admin",
+		DefaultLaunchContainer: "window",
+	},
+}
+
 func init() {
 	testing.AddFixture(&testing.Fixture{
-		Name:            fixture.ManagedGuestSession,
-		Desc:            "Fixture to log into a managed guest session",
-		Contacts:        []string{"alston.huang@cienet.com", "chromeos-perfmetrics-eng@google.com"},
-		Impl:            &guestSessionFixture{},
+		Name:     fixture.ManagedGuestSessionWithPWA,
+		Desc:     "Fixture to log into a managed guest session with apps installed",
+		Contacts: []string{"alston.huang@cienet.com", "chromeos-perfmetrics-eng@google.com"},
+		Impl: &guestSessionFixture{
+			webApps:   driveWebApp,
+			bt:        browser.TypeAsh,
+			keepState: true,
+			chromeExtraOpts: []chrome.Option{
+				chrome.EnableFeatures("WebUITabStrip"),
+				chrome.ExtraArgs("--force-devtools-available"),
+			},
+		},
 		SetUpTimeout:    chrome.ManagedUserLoginTimeout,
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
@@ -39,11 +56,24 @@ func init() {
 	})
 
 	testing.AddFixture(&testing.Fixture{
-		Name:     fixture.ManagedGuestSessionWithExtensions,
-		Desc:     "Fixture to log into a managed guest session with extensions installed",
-		Contacts: []string{"alston.huang@cienet.com", "chromeos-perfmetrics-eng@google.com"},
+		Name:     fixture.ManagedGuestSessionWithPWALacros,
+		Desc:     "Fixture to log into a managed guest session with apps installed and used for lacros variation of CUJ tests",
+		Contacts: []string{"alston.huang@cienet.com", "jason.hsiao@cienet.com", "chromeos-perfmetrics-eng@google.com"},
 		Impl: &guestSessionFixture{
-			extensions: []string{apps.Drive.ID},
+			webApps:   driveWebApp,
+			bt:        browser.TypeLacros,
+			keepState: true,
+			chromeExtraOpts: []chrome.Option{
+				chrome.EnableFeatures("WebUITabStrip"),
+				chrome.LacrosEnableFeatures("WebUITabStrip"),
+				chrome.ExtraArgs("--force-devtools-available"),
+				chrome.LacrosExtraArgs("--force-devtools-available"),
+			},
+			extraPublicPolicies: []policy.Policy{
+				&policy.LacrosAvailability{
+					Val: "lacros_only",
+				},
+			},
 		},
 		SetUpTimeout:    chrome.ManagedUserLoginTimeout,
 		ResetTimeout:    chrome.ResetTimeout,
@@ -80,8 +110,13 @@ func (f FixtData) LoginTime() time.Duration {
 type guestSessionFixture struct {
 	// MGS holds chrome and fakedms instances.
 	mgs *MGS
-	// extensions contains extensions to be installed to the session.
-	extensions []string
+	// webApps contains web apps to be installed to the session.
+	webApps []*policy.WebAppInstallForceListValue
+	// bt describes what type of browser this fixture should use
+	bt                  browser.Type
+	keepState           bool
+	chromeExtraOpts     []chrome.Option
+	extraPublicPolicies []policy.Policy
 }
 
 func (g *guestSessionFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
@@ -96,6 +131,29 @@ func (g *guestSessionFixture) SetUp(ctx context.Context, s *testing.FixtState) i
 	}
 	defer reader.Close()
 
+	opts := g.chromeExtraOpts
+	if g.keepState {
+		opts = append(opts, chrome.KeepState())
+	}
+
+	publicPolicies := []policy.Policy{
+		&policy.ExtensionInstallForcelist{
+			Val: []string{InSessionExtensionID},
+		},
+		&policy.WebAppInstallForceList{
+			Val: g.webApps,
+		},
+	}
+
+	if g.bt == browser.TypeLacros {
+		opts, err = lacrosfixt.NewConfig(lacrosfixt.Mode(lacros.LacrosOnly),
+			lacrosfixt.ChromeOptions(opts...)).Opts()
+		if err != nil {
+			s.Fatal("Failed to get lacros options: ", err)
+		}
+		publicPolicies = append(publicPolicies, g.extraPublicPolicies...)
+	}
+
 	mgs, cr, err := New(
 		ctx,
 		fdms,
@@ -103,16 +161,8 @@ func (g *guestSessionFixture) SetUp(ctx context.Context, s *testing.FixtState) i
 		ExtraPolicies([]policy.Policy{&policy.DeviceLoginScreenExtensions{
 			Val: []string{LoginScreenExtensionID},
 		}}),
-		AddPublicAccountPolicies(MgsAccountID, []policy.Policy{
-			&policy.ExtensionInstallForcelist{
-				Val: append(g.extensions, InSessionExtensionID),
-			},
-		}),
-		ExtraChromeOptions(
-			chrome.KeepState(),
-			chrome.EnableFeatures("WebUITabStrip"),
-			chrome.ExtraArgs("--force-devtools-available"),
-		),
+		AddPublicAccountPolicies(MgsAccountID, publicPolicies),
+		ExtraChromeOptions(opts...),
 	)
 	if err != nil {
 		s.Fatal("Failed to start Chrome on Signin screen with default MGS account: ", err)
