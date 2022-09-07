@@ -281,7 +281,7 @@ func hasSharedElement(lhs, rhs []string) bool {
 	return false
 }
 
-func prepareChallengeAuth(ctx context.Context, lf util.LogFunc, config *util.CrossVersionLoginConfig) (func(), error) {
+func prepareChallengeAuth(ctx context.Context, lf hwsec.LogFunc, config *util.CrossVersionLoginConfig) (func(), error) {
 	authConfig := config.AuthConfig
 	rsaKey := config.RsaKey
 	username := authConfig.Username
@@ -293,7 +293,7 @@ func prepareChallengeAuth(ctx context.Context, lf util.LogFunc, config *util.Cro
 	if _, err := dbusConn.RequestName(authConfig.KeyDelegateName, 0 /* flags */); err != nil {
 		return nil, errors.Wrap(err, "failed to request the well-known D-Bus name")
 	}
-	keyDelegate, err := util.NewCryptohomeKeyDelegate(
+	keyDelegate, err := hwsec.NewCryptohomeKeyDelegate(
 		lf, dbusConn, username, authConfig.ChallengeAlgs, rsaKey, authConfig.ChallengeSPKI)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to export D-Bus key delegate")
@@ -307,7 +307,7 @@ func prepareChallengeAuth(ctx context.Context, lf util.LogFunc, config *util.Cro
 }
 
 // testConfig verifies the login functionality of specific auth config from CrossVersionLoginConfig.
-func testConfig(ctx context.Context, lf util.LogFunc, cryptohome *hwsec.CryptohomeClient, config *util.CrossVersionLoginConfig) error {
+func testConfig(ctx context.Context, lf hwsec.LogFunc, cryptohome *hwsec.CryptohomeClient, config *util.CrossVersionLoginConfig) error {
 	// Exercise the regular login flow as driven by Chrome Login Screen, to catch
 	// any regressions in APIs between Cryptohomed and Chrome.
 	// This part of the test is only possible when the snapshot contains mountable
@@ -355,7 +355,7 @@ func testConfigViaChrome(ctx context.Context, config *util.CrossVersionLoginConf
 
 // testConfigViaCryptohome verifies the login functionality by making requests
 // via Cryptohome CLI.
-func testConfigViaCryptohome(ctx context.Context, lf util.LogFunc, cryptohome *hwsec.CryptohomeClient, config *util.CrossVersionLoginConfig) error {
+func testConfigViaCryptohome(ctx context.Context, lf hwsec.LogFunc, cryptohome *hwsec.CryptohomeClient, config *util.CrossVersionLoginConfig) error {
 	const (
 		newPasswordLabel = "newPasswordLabel"
 		newPinLabel      = "newPinLabel"
@@ -459,7 +459,7 @@ func testConfigViaCryptohome(ctx context.Context, lf util.LogFunc, cryptohome *h
 }
 
 // testVersion verifies the login functionality in the specific version.
-func testVersion(ctx context.Context, lf util.LogFunc, cryptohome *hwsec.CryptohomeClient, daemonController *hwsec.DaemonController, dataPath, configPath string) error {
+func testVersion(ctx context.Context, lf hwsec.LogFunc, cryptohome *hwsec.CryptohomeClient, daemonController *hwsec.DaemonController, dataPath, configPath string) error {
 	configJSON, err := ioutil.ReadFile(configPath)
 	if err != nil {
 		return errors.Wrapf(err, "failed to read %q", configPath)

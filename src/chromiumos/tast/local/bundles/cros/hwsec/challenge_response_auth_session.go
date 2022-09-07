@@ -12,7 +12,6 @@ import (
 
 	cpb "chromiumos/system_api/cryptohome_proto"
 	"chromiumos/tast/common/hwsec"
-	"chromiumos/tast/local/bundles/cros/hwsec/util"
 	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/dbusutil"
 	hwseclocal "chromiumos/tast/local/hwsec"
@@ -94,7 +93,7 @@ func ChallengeResponseAuthSession(ctx context.Context, s *testing.State) {
 	}
 	defer dbusConn.ReleaseName(dbusName)
 
-	keyDelegate, err := util.NewCryptohomeKeyDelegate(
+	keyDelegate, err := hwsec.NewCryptohomeKeyDelegate(
 		s.Logf, dbusConn, testUser, keyAlgs, rsaKey, pubKeySPKIDER)
 	if err != nil {
 		s.Fatal("Failed to export D-Bus key delegate: ", err)

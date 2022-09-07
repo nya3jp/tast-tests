@@ -6,15 +6,20 @@ package cryptohome
 
 import (
 	"context"
+	"crypto/rsa"
+	"crypto/x509"
+	"math/rand"
 	"time"
 
 	"github.com/google/go-cmp/cmp"
 	"github.com/google/go-cmp/cmp/cmpopts"
 
+	cpb "chromiumos/system_api/cryptohome_proto"
 	uda "chromiumos/system_api/user_data_auth_proto"
 	"chromiumos/tast/common/hwsec"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/cryptohome"
+	"chromiumos/tast/local/dbusutil"
 	hwseclocal "chromiumos/tast/local/hwsec"
 	"chromiumos/tast/testing"
 )
@@ -92,11 +97,14 @@ func compareReplyToExpectations(when string, reply *uda.ListAuthFactorsReply, ex
 
 func AddRemoveFactors(ctx context.Context, s *testing.State) {
 	const (
-		userName      = "foo@bar.baz"
-		userPassword  = "secret"
-		passwordLabel = "online-password"
-		userPin       = "12345"
-		pinLabel      = "luggage-pin"
+		userName       = "foo@bar.baz"
+		userPassword   = "secret"
+		passwordLabel  = "online-password"
+		userPin        = "12345"
+		pinLabel       = "luggage-pin"
+		smartCardLabel = "smart-card-label"
+		dbusName       = "org.chromium.TestingCryptohomeKeyDelegate"
+		keySizeBits    = 2048
 	)
 
 	userParam := s.Param().(addRemoveFactorsParams)
@@ -131,6 +139,52 @@ func AddRemoveFactors(ctx context.Context, s *testing.State) {
 		s.Fatal("Unable to determine if PINs are supported: ", err)
 	}
 
+	// Determine if the client supports using Smart Card auth.
+	supportsSmartCard := false
+	authConfig := (*hwsec.AuthConfig)(nil)
+	if err := helper.EnsureTPMIsReady(ctx, hwsec.DefaultTakingOwnershipTimeout); err == nil {
+		supportsSmartCard = true
+
+		// Set up KeyDelegate for the Smart Card.
+		// Use a pseudorandom generator with a fixed seed, to make the values used by
+		// the test predictable.
+		smartCardAlgorithms := []cpb.ChallengeSignatureAlgorithm{
+			cpb.ChallengeSignatureAlgorithm_CHALLENGE_RSASSA_PKCS1_V1_5_SHA1,
+			cpb.ChallengeSignatureAlgorithm_CHALLENGE_RSASSA_PKCS1_V1_5_SHA256,
+			cpb.ChallengeSignatureAlgorithm_CHALLENGE_RSASSA_PKCS1_V1_5_SHA384,
+			cpb.ChallengeSignatureAlgorithm_CHALLENGE_RSASSA_PKCS1_V1_5_SHA512,
+		}
+		randReader := rand.New(rand.NewSource(0 /* seed */))
+
+		rsaKey, err := rsa.GenerateKey(randReader, keySizeBits)
+		if err != nil {
+			s.Fatal("Failed to generate RSA key: ", err)
+		}
+		pubKeySPKIDER, err := x509.MarshalPKIXPublicKey(&rsaKey.PublicKey)
+		if err != nil {
+			s.Fatal("Failed to generate SubjectPublicKeyInfo: ", err)
+		}
+
+		dbusConn, err := dbusutil.SystemBus()
+		if err != nil {
+			s.Fatal("Failed to connect to system D-Bus bus: ", err)
+		}
+		if _, err := dbusConn.RequestName(dbusName, 0 /* flags */); err != nil {
+			s.Fatal("Failed to request the well-known D-Bus name: ", err)
+		}
+		defer dbusConn.ReleaseName(dbusName)
+
+		keyDelegate, err := hwsec.NewCryptohomeKeyDelegate(
+			s.Logf, dbusConn, userName, smartCardAlgorithms, rsaKey, pubKeySPKIDER)
+		if err != nil {
+			s.Fatal("Failed to export D-Bus key delegate: ", err)
+		}
+		defer keyDelegate.Close()
+
+		// Prepare Smart Card config.
+		authConfig = hwsec.NewChallengeAuthConfig(userName, dbusName, keyDelegate.DBusPath, pubKeySPKIDER, smartCardAlgorithms)
+	}
+
 	// Enable the UserSecretStash experiment if USS is specified.
 	if userParam.useUserSecretStash {
 		cleanupUSSExperiment, err := helper.EnableUserSecretStash(ctx)
@@ -159,14 +213,19 @@ func AddRemoveFactors(ctx context.Context, s *testing.State) {
 	var expectedOnlyPassword = []expectedConfiguredFactor{
 		{uda.AuthFactorType_AUTH_FACTOR_TYPE_PASSWORD, passwordLabel},
 	}
-	var expectedPasswordAndPin = []expectedConfiguredFactor{
-		{uda.AuthFactorType_AUTH_FACTOR_TYPE_PASSWORD, passwordLabel},
-		{uda.AuthFactorType_AUTH_FACTOR_TYPE_PIN, pinLabel},
-	}
+	var expectedPin = expectedConfiguredFactor{uda.AuthFactorType_AUTH_FACTOR_TYPE_PIN, pinLabel}
+	var expectedSmartCard = expectedConfiguredFactor{uda.AuthFactorType_AUTH_FACTOR_TYPE_SMART_CARD, smartCardLabel}
+
 	// The final set of auth factors at the end of the test depends on whether or not PIN is supported.
 	expectedFinalConfiguredFactors := expectedOnlyPassword
+	expectedConfiguredFactors := expectedOnlyPassword
 	if supportsPin {
-		expectedFinalConfiguredFactors = expectedPasswordAndPin
+		expectedFinalConfiguredFactors = append(expectedFinalConfiguredFactors, expectedPin)
+	}
+
+	// TODO(b/241016536) Smart Cards implementation only works with VaultKeyset, USS will be implemented later.
+	if !userParam.useUserSecretStash && supportsSmartCard {
+		expectedFinalConfiguredFactors = append(expectedFinalConfiguredFactors, expectedSmartCard)
 	}
 
 	// Expected supported auth factors at different points in the test.
@@ -177,10 +236,14 @@ func AddRemoveFactors(ctx context.Context, s *testing.State) {
 	var expectedNoKioskSupported = []uda.AuthFactorType{
 		uda.AuthFactorType_AUTH_FACTOR_TYPE_PASSWORD,
 	}
-	// The supported lists may also need PIN or RECOVERY, depending on the DUT and the test params.
+	// The supported lists may also need PIN, RECOVERY or SMART_CARD, depending on the DUT and the test params.
 	if supportsPin {
 		expectedAllSupported = append(expectedAllSupported, uda.AuthFactorType_AUTH_FACTOR_TYPE_PIN)
 		expectedNoKioskSupported = append(expectedNoKioskSupported, uda.AuthFactorType_AUTH_FACTOR_TYPE_PIN)
+	}
+	if supportsSmartCard {
+		expectedAllSupported = append(expectedAllSupported, uda.AuthFactorType_AUTH_FACTOR_TYPE_SMART_CARD)
+		expectedNoKioskSupported = append(expectedNoKioskSupported, uda.AuthFactorType_AUTH_FACTOR_TYPE_SMART_CARD)
 	}
 	if userParam.useUserSecretStash {
 		expectedAllSupported = append(expectedAllSupported, uda.AuthFactorType_AUTH_FACTOR_TYPE_CRYPTOHOME_RECOVERY)
@@ -212,12 +275,33 @@ func AddRemoveFactors(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to add PIN auth factor: ", err)
 		}
 
+		// Update configured auth factors base on what we expect to see.
+		expectedConfiguredFactors = append(expectedConfiguredFactors, expectedPin)
+
 		// List the auth factors for the user. There should be password and pin.
 		listFactorsAfterAddPinReply, err := client.ListAuthFactors(ctx, userName)
 		if err != nil {
 			s.Fatal("Failed to list auth factors after adding PIN: ", err)
 		}
-		compareReplyToExpectations("after adding PIN", listFactorsAfterAddPinReply, expectedPasswordAndPin, expectedNoKioskSupported, s)
+		compareReplyToExpectations("after adding PIN", listFactorsAfterAddPinReply, expectedConfiguredFactors, expectedNoKioskSupported, s)
+	}
+
+	// TODO(b/241016536) Smart Cards implementation only works with VaultKeyset, USS will be implemented later.
+	if !userParam.useUserSecretStash && supportsSmartCard {
+		// Add a Smart Card auth factor.
+		if err := client.AddSmartCardAuthFactor(ctx, authSessionID, smartCardLabel, authConfig); err != nil {
+			s.Fatal("Failed to add Smart Card auth factor: ", err)
+		}
+
+		// Update configured auth factors we expect to see.
+		expectedConfiguredFactors = append(expectedConfiguredFactors, expectedSmartCard)
+
+		// List the auth factors for the user. There should be password and pin.
+		listFactorsAfterAddSmartCardReply, err := client.ListAuthFactors(ctx, userName)
+		if err != nil {
+			s.Fatal("Failed to list auth factors after adding Smart Card: ", err)
+		}
+		compareReplyToExpectations("after adding Smart Card", listFactorsAfterAddSmartCardReply, expectedConfiguredFactors, expectedNoKioskSupported, s)
 	}
 
 	// Unmount the user.
