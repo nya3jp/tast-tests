@@ -34,6 +34,24 @@
       "parentUuid": "1a9c3bb0_c80ce1d8",
       "revId": "3b7c4d062693dad553e4c7f367f4b31ebe5bf962",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "41ead18e_8898a992",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1544637
+      },
+      "writtenOn": "2022-09-07T17:46:50Z",
+      "side": 1,
+      "message": "Hmmm, I\u0027m not certain where the Reven config is defined, but if I build it locally uname -r gives 5.10.140-19508-g641704e464df. It also seems to be passing now.",
+      "parentUuid": "e0594cd1_e05348e0",
+      "revId": "3b7c4d062693dad553e4c7f367f4b31ebe5bf962",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
