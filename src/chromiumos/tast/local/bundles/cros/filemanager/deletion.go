@@ -52,6 +52,14 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Data:         []string{testFile},
 		Fixture:      "chromeLoggedIn",
+		SearchFlags: []*testing.StringPair{{
+			Key:   "feature_id",
+			Value: "screenplay-2bf9ed18-db1b-4587-9aae-195121f2acae",
+		}, {
+			Key:   "feature_id",
+			Value: "screenplay-4c745151-7307-4658-aa58-1bb97592b4a6",
+		},
+		},
 	})
 }
 
