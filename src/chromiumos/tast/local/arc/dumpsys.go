@@ -125,6 +125,7 @@ func (a *ARC) TaskInfosFromDumpsys(ctx context.Context) ([]TaskInfo, error) {
 		return a.dumpsysActivityActivitiesP(ctx)
 	case SDKR, SDKS, SDKT:
 		tasks, err := a.dumpsysActivityActivitiesR(ctx)
+
 		if err != nil {
 			return nil, errors.Wrap(err, "could not get info from 'dumpsys activity activities'")
 		}
@@ -247,6 +248,11 @@ func (a *ARC) dumpsysActivityActivitiesR(ctx context.Context) (tasks []TaskInfo,
 	traverse = func(wc windowContainer) {
 		if d, ok := wc.(*server.DisplayContentProto); ok && d != nil {
 			focusedActivity = d.GetFocusedApp()
+			// Since Android 12(S), the `WindowContainer` field has been deprecated and `Task` only exist within `RootDisplayArea`,
+			// instead of both in `RootDisplayArea` and `DisplayArea`. Therefore, we also need to traverse RootDisplayArea to extract `Task`.
+			if rda := d.GetRootDisplayArea(); rda != nil {
+				traverse(rda)
+			}
 		}
 
 		if t, ok := wc.(*server.TaskProto); ok && t != nil {
@@ -266,7 +272,17 @@ func (a *ARC) dumpsysActivityActivitiesR(ctx context.Context) (tasks []TaskInfo,
 			}
 
 			// Add all immediate ActivityRecord children.
-			for _, c := range t.GetWindowContainer().GetChildren() {
+			// `TaskFragment` is introduced since Android 12(S) in `Task` as the container for `Activity` or `TaskFragment`.
+			// Therefore, when `TaskFragment` exists, we need to extract activities from `TaskFragment` instead of `Task`,
+			// and to traverse `TaskFragment` to get the child tasks.
+			var ac windowContainer
+			if t.GetTaskFragment() != nil {
+				ac = t.GetTaskFragment()
+				traverse(ac)
+			} else {
+				ac = t
+			}
+			for _, c := range ac.GetWindowContainer().GetChildren() {
 				a := c.GetActivity()
 				if a == nil {
 					continue
@@ -292,6 +308,7 @@ func (a *ARC) dumpsysActivityActivitiesR(ctx context.Context) (tasks []TaskInfo,
 			traverse(c.GetDisplayArea())
 			traverse(c.GetDisplayContent())
 			traverse(c.GetTask())
+			traverse(c.GetTaskFragment())
 			traverse(c.GetWindow())
 			traverse(c.GetWindowToken())
 		}
