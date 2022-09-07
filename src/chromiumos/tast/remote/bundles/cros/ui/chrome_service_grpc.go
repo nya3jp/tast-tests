@@ -31,7 +31,6 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Check basic functionality of ChromeService",
 		Contacts:     []string{"jonfan@google.com", "chromeos-sw-engprod@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Vars:         []string{"ui.gaiaPoolDefault"},
 		HardwareDeps: hwdep.D(hwdep.FormFactor(hwdep.Clamshell)),
@@ -110,10 +109,10 @@ var random = rand.New(rand.NewSource(time.Now().UnixNano()))
 //
 // creds is a string containing multiple credentials separated by newlines:
 //
-//  user1:pass1
-//  user2:pass2
-//  user3:pass3
-//  ...
+//	user1:pass1
+//	user2:pass2
+//	user3:pass3
+//	..
 func pickRandomCreds(creds string) (*pb.NewRequest_Credentials, error) {
 	// Pick a random line
 	lines := strings.Split(creds, "\n")
