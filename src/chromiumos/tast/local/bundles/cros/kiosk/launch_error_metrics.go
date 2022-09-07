@@ -61,6 +61,7 @@ func LaunchErrorMetrics(ctx context.Context, s *testing.State) {
 		kioskmode.DefaultLocalAccounts(),
 		kioskmode.ExtraChromeOptions(
 			chrome.LoadSigninProfileExtension(s.RequiredVar("ui.signinProfileTestExtensionManifestKey")),
+			chrome.ExtraArgs("--kiosk-launch-cancel-no-exit-for-tests"),
 			chromeOptions,
 		),
 	)

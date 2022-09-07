@@ -84,6 +84,8 @@ const (
 	kioskLaunchSucceededLog = "Kiosk launch succeeded"
 	// kioskClosingSplashScreenLog is reported by chrome once the splash screen is gone.
 	kioskClosingSplashScreenLog = "App window created, closing splash screen."
+	// readyToExitChromeLog is reported by chrome once Chrome is ready to exit after cancelling Kiosk launch.
+	readyToExitChromeLog = "Chrome is ready to exit after cancelling Kiosk launch"
 )
 
 // Kiosk structure holds necessary references and provides a way to safely
@@ -457,19 +459,25 @@ func (k *Kiosk) CancelKioskLaunch(ctx context.Context, opts ...chrome.Option) (*
 	}
 	defer kw.Close()
 
+	reader, err := syslog.NewReader(ctx, syslog.Program("chrome"))
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to start log reader")
+	}
+	defer reader.Close()
+
 	if err := kw.Accel(ctx, "Ctrl+Alt+S"); err != nil {
 		return nil, errors.Wrap(err, "failed to hit Ctrl+Alt+S and attempt to quit a kiosk app")
 	}
-	// The current Chrome process will exit after pressing Ctrl+Alt+S. Waiting for
-	// UI events is therefore not possible. A short delay is needed to make sure
-	// launch error event will be triggered before restarting UI.
-	if err := testing.Sleep(ctx, 300*time.Millisecond); err != nil {
-		return nil, errors.Wrap(err, "failed to wait for Chrome to exit")
+
+	if _, err := reader.Wait(ctx, 5*time.Second,
+		func(e *syslog.Entry) bool {
+			return strings.Contains(e.Content, readyToExitChromeLog)
+		},
+	); err != nil {
+		return nil, errors.Wrap(err, "failed to verify successful cancellation of Kiosk launch")
 	}
 
-	// Restart Chrome without closing since the current Chrome process has already
-	// exited itself.
-	cr, err := k.restartChromeNoCloseWithOptions(ctx, opts...)
+	cr, err := k.RestartChromeWithOptions(ctx, opts...)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to restart Chrome")
 	}
