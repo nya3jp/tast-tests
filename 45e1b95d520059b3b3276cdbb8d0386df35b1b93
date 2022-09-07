@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d81489cc_77c8b077",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 492,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-09-07T20:49:33Z",
+      "side": 1,
+      "message": "We didn\u0027t fail the test because of instability of bond adding bots. I\u0027m worried that this might cause a massive failures. Could you explain how does this help with the spotlight bot creation?",
+      "range": {
+        "startLine": 492,
+        "startChar": 5,
+        "endLine": 492,
+        "endChar": 11
+      },
+      "revId": "45e1b95d520059b3b3276cdbb8d0386df35b1b93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
