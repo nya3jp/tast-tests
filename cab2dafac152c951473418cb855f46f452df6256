@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f936a95a_e30f0e14",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-09-07T12:10:59Z",
+      "side": 1,
+      "message": "There is a lot of code duplication, as the test is almost the same as the one for WebUsbBlockedForUrls. Please check src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/policy/url_check.go to see if you can merge the WebUSB tests as well.",
+      "revId": "cab2dafac152c951473418cb855f46f452df6256",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
