@@ -22,6 +22,30 @@
       },
       "revId": "03e886925cd84cd0a2834099111c3715c6d4fc95",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "09cf08c9_5efcd472",
+        "filename": "src/chromiumos/tast/remote/wificell/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-09-07T18:18:55Z",
+      "side": 1,
+      "message": "I set it as 3m as that\u0027s the same delay the Tast framework waits after it triggers a reboot to stop trying to reconnect. It most cases when there isn\u0027t any issue with the DUT, this will happen in a single request successfully be likely done in a second or two.\n\nHowever, the point of this is to give it some more time to try and recover from likely a reboot that timed out. I gave it 3m to likely be plenty of time to recover. It\u0027s possible that this will timeout due to other fixture timeouts too depending on where this is called, but I\u0027d like to see if that becomes a problem to fix rather than try to get it exactly right. If it fails to connect here the test fixture fails anyway and a it\u0027s better to get an error with a connection timeout message than an error failing to try to access the DUT without a live SSH connection IMO.",
+      "parentUuid": "a5c9c4d0_25d9a2a9",
+      "range": {
+        "startLine": 251,
+        "startChar": 12,
+        "endLine": 251,
+        "endChar": 27
+      },
+      "revId": "03e886925cd84cd0a2834099111c3715c6d4fc95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
