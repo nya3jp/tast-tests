@@ -41,18 +41,7 @@ func init() {
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
-		Params: []testing.Param{
-			{
-				Name:    "enable_launcher_app_sort",
-				Val:     enableLauncherAppSort,
-				Fixture: "chromeLoggedInWith100FakeAppsAppSort",
-			},
-			{
-				Name:    "disable_launcher_app_sort",
-				Val:     disableLauncherAppSort,
-				Fixture: "chromeLoggedInWith100FakeAppsNoAppSort",
-			},
-		},
+		Fixture:      "chromeLoggedIn",
 	})
 }
 
@@ -79,21 +68,19 @@ func BubbleLaunchApp(ctx context.Context, s *testing.State) {
 	bubble := nodewith.ClassName(ash.AppListBubbleClassName)
 	settingButton := nodewith.Role(role.Button).Name(apps.Settings.Name).Ancestor(nodewith.ClassName(launcher.BubbleAppsGridViewClass))
 
-	if s.Param().(bubbleLaunchAppTestType) == enableLauncherAppSort {
-		// When the launcher app sort feature is enabled, fake apps are placed at the front. In this case, scroll the apps grid to the end to show the setting app button before launching the app.
-		if err := ui.MakeVisible(settingButton)(ctx); err != nil {
-			s.Fatal("Failed to make the settings button visible: ", err)
-		}
+	// Scroll the apps grid to make sure the setting app button is visible.
+	if err := ui.MakeVisible(settingButton)(ctx); err != nil {
+		s.Fatal("Failed to make the settings button visible: ", err)
+	}
 
-		// Wait for the settings app to appear onscreen.
-		if err := waitForOnscreen(ctx, ui, settingButton); err != nil {
-			s.Fatal("Failed to wait for settings app to appear onscreen: ", err)
-		}
+	// Wait for the settings app to appear onscreen.
+	if err := waitForOnscreen(ctx, ui, settingButton); err != nil {
+		s.Fatal("Failed to wait for settings app to appear onscreen: ", err)
+	}
 
-		// Wait until the setting app button's bounds become stable.
-		if err := ui.WaitForLocation(settingButton)(ctx); err != nil {
-			s.Fatal("Failed to wait for the setting app button location changes: ", err)
-		}
+	// Wait until the setting app button's bounds become stable.
+	if err := ui.WaitForLocation(settingButton)(ctx); err != nil {
+		s.Fatal("Failed to wait for the setting app button location changes: ", err)
 	}
 
 	if err := uiauto.Combine("close bubble by launching Settings app",
