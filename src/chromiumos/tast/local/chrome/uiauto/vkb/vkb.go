@@ -317,7 +317,7 @@ func (vkbCtx *VirtualKeyboardContext) ShowAccessPoints() uiauto.Action {
 	}
 }
 
-// SetFloatingMode returns an action changing the virtual keyboard to floating/dock layout.
+// SetFloatingMode returns an action changing the virtual keyboard to floating/dock layout.  Will be deprecated once Atlas launches.
 func (vkbCtx *VirtualKeyboardContext) SetFloatingMode(uc *useractions.UserContext, enabled bool) uiauto.Action {
 	var switchMode uiauto.Action
 	var actionName string
@@ -345,6 +345,54 @@ func (vkbCtx *VirtualKeyboardContext) SetFloatingMode(uc *useractions.UserContex
 		actionName,
 		uiauto.Combine("switch VK mode",
 			vkbCtx.ShowAccessPoints(),
+			switchMode,
+			vkbCtx.WaitLocationStable(),
+		),
+		uc,
+		&useractions.UserActionCfg{
+			Attributes: map[string]string{
+				useractions.AttributeFeature: useractions.FeatureFloatVK,
+			},
+			Tags: []useractions.ActionTag{
+				useractions.ActionTagEssentialInputs,
+			},
+			Callback: func(ctx context.Context, actionError error) error {
+				if actionError == nil {
+					uc.SetAttribute(useractions.AttributeFloatVK, strconv.FormatBool(enabled))
+				}
+				return nil
+			},
+		},
+	)
+}
+
+// SetFloatingModeInAtlas returns an action changing the virtual keyboard to floating/dock layout.
+func (vkbCtx *VirtualKeyboardContext) SetFloatingModeInAtlas(uc *useractions.UserContext, enabled bool) uiauto.Action {
+	var switchMode uiauto.Action
+	var actionName string
+	if enabled {
+		actionName = "Switch VK to floating mode"
+		flipButtonFinder := KeyFinder.Name("make virtual keyboard movable")
+		switchMode = uiauto.IfSuccessThen(
+			vkbCtx.ui.WithTimeout(5*time.Second).WaitUntilExists(flipButtonFinder),
+			// Switching to float VK is lagging (b/223081262).
+			// Using long interval to check VK locationed.
+			vkbCtx.ui.LeftClickUntil(flipButtonFinder,
+				vkbCtx.ui.WithTimeout(10*time.Second).WithInterval(2*time.Second).WaitForLocation(DragPointFinder),
+			),
+		)
+	} else {
+		actionName = "Switch VK to dock mode"
+		flipButtonFinder := KeyFinder.Name("dock virtual keyboard")
+		switchMode = uiauto.IfSuccessThen(
+			vkbCtx.ui.WithTimeout(5*time.Second).WaitUntilExists(flipButtonFinder),
+			vkbCtx.ui.LeftClickUntil(flipButtonFinder, vkbCtx.ui.WithTimeout(10*time.Second).WaitUntilGone(DragPointFinder)),
+		)
+	}
+
+	return uiauto.UserAction(
+		actionName,
+		uiauto.Combine("switch VK mode",
 			switchMode,
 			vkbCtx.WaitLocationStable(),
 		),

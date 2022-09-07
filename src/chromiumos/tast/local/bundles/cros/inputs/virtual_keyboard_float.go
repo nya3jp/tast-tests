@@ -64,9 +64,14 @@ func VirtualKeyboardFloat(ctx context.Context, s *testing.State) {
 	if err := vkbCtx.ShowVirtualKeyboard()(ctx); err != nil {
 		s.Fatal("Failed to show the virtual keyboard: ", err)
 	}
-
-	if err := vkbCtx.SetFloatingMode(uc, true)(ctx); err != nil {
-		s.Fatal("Failed to set VK to floating mode: ", err)
+	if (s.FixtValue().(fixture.FixtData)).AtlasEnabled {
+		if err := vkbCtx.SetFloatingModeInAtlas(uc, true)(ctx); err != nil {
+			s.Fatal("Failed to set VK to floating mode: ", err)
+		}
+	} else {
+		if err := vkbCtx.SetFloatingMode(uc, true)(ctx); err != nil {
+			s.Fatal("Failed to set VK to floating mode: ", err)
+		}
 	}
 	defer func(ctx context.Context) {
 		if err := uiauto.Combine("reset VK to docked mode",

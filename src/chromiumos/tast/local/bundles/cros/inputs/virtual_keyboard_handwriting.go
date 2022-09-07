@@ -20,6 +20,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/vkb"
+	"chromiumos/tast/local/chrome/useractions"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -122,6 +123,7 @@ func init() {
 }
 
 func VirtualKeyboardHandwriting(ctx context.Context, s *testing.State) {
+	var setFloatingMode func(uc *useractions.UserContext, enabled bool) func(context.Context) error
 	cr := s.FixtValue().(fixture.FixtData).Chrome
 	tconn := s.FixtValue().(fixture.FixtData).TestAPIConn
 	uc := s.FixtValue().(fixture.FixtData).UserContext
@@ -147,10 +149,15 @@ func VirtualKeyboardHandwriting(ctx context.Context, s *testing.State) {
 
 	// Switch to floating mode if needed.
 	isFloating := strings.Contains(s.TestName(), "floating")
+
+	setFloatingMode = vkbCtx.SetFloatingMode
+	if (s.FixtValue().(fixture.FixtData)).AtlasEnabled {
+		setFloatingMode = vkbCtx.SetFloatingModeInAtlas
+	}
 	if isFloating {
 		if err := uiauto.Combine("validate handwriting input",
 			its.ClickFieldUntilVKShown(inputField),
-			vkbCtx.SetFloatingMode(uc, true),
+			setFloatingMode(uc, true),
 		)(ctx); err != nil {
 			s.Fatal("Failed to switch to floating mode: ", err)
 		}
@@ -158,7 +165,7 @@ func VirtualKeyboardHandwriting(ctx context.Context, s *testing.State) {
 		defer func(ctx context.Context) {
 			if err := uiauto.Combine("switch back to docked mode and hide VK",
 				its.ClickFieldUntilVKShown(inputField),
-				vkbCtx.SetFloatingMode(uc, false),
+				setFloatingMode(uc, false),
 				vkbCtx.HideVirtualKeyboard(),
 			)(ctx); err != nil {
 				s.Log("Failed to cleanup floating mode: ", err)

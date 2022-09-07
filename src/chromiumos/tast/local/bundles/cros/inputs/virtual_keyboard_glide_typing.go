@@ -64,6 +64,17 @@ func init() {
 				ExtraSearchFlags: util.IMESearchFlags([]ime.InputMethod{ime.EnglishUSWithInternationalKeyboard}),
 			},
 			{
+				Name:    "tablet_floating_atlas",
+				Fixture: fixture.TabletVKWithAtlas,
+				// TODO(b/243336476): Remove informational
+				ExtraAttr: []string{"group:input-tools-upstream", "informational"},
+				Val: glideTypingTestParam{
+					floatLayout: true,
+					inputMethod: ime.EnglishUSWithInternationalKeyboard,
+				},
+				ExtraSearchFlags: util.IMESearchFlags([]ime.InputMethod{ime.EnglishUSWithInternationalKeyboard}),
+			},
+			{
 				Name:    "clamshell_a11y_docked",
 				Fixture: fixture.ClamshellVK,
 				// TODO(b/243336476): Remove informational
@@ -134,6 +145,7 @@ func init() {
 }
 
 func VirtualKeyboardGlideTyping(ctx context.Context, s *testing.State) {
+	var setFloatingMode func(uc *useractions.UserContext, enabled bool) func(context.Context) error
 	cr := s.FixtValue().(fixture.FixtData).Chrome
 	tconn := s.FixtValue().(fixture.FixtData).TestAPIConn
 	uc := s.FixtValue().(fixture.FixtData).UserContext
@@ -167,10 +179,14 @@ func VirtualKeyboardGlideTyping(ctx context.Context, s *testing.State) {
 	}
 	keySeq := glideTypingWord.CharacterKeySeq
 
+	setFloatingMode = vkbCtx.SetFloatingMode
+	if (s.FixtValue().(fixture.FixtData)).AtlasEnabled {
+		setFloatingMode = vkbCtx.SetFloatingModeInAtlas
+	}
 	if shouldFloatLayout {
 		if err := uiauto.Combine("set VK to floating mode",
 			vkbCtx.ShowVirtualKeyboard(),
-			vkbCtx.SetFloatingMode(uc, true),
+			setFloatingMode(uc, true),
 			vkbCtx.HideVirtualKeyboard(),
 		)(ctx); err != nil {
 			s.Fatal("Failed to set VK to floating mode: ", err)
@@ -178,7 +194,7 @@ func VirtualKeyboardGlideTyping(ctx context.Context, s *testing.State) {
 		defer func(ctx context.Context) {
 			if err := uiauto.Combine("reset VK to docked mode",
 				vkbCtx.ShowVirtualKeyboard(),
-				vkbCtx.SetFloatingMode(uc, false),
+				setFloatingMode(uc, false),
 				vkbCtx.HideVirtualKeyboard(),
 			)(ctx); err != nil {
 				s.Log("Failed to reset VK to docked mode: ", err)
