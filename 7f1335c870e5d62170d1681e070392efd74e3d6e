@@ -16,6 +16,23 @@
       "message": "Hi, PTAL. I have also added the calculator app in the policy for [this account](https://source.corp.google.com/chromeos_internal/src/platform/tast-tests-private/vars/enterprise.ARCInstallLogging.yaml;l\u003d1;bpv\u003d1). Thanks! ",
       "revId": "7f1335c870e5d62170d1681e070392efd74e3d6e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9ba7c36_842ea522",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-09-07T00:08:08Z",
+      "side": 1,
+      "message": "Looks fine from a Tast perspective, I\u0027ll defer +2 to a reviewer more familiar with the domain. Using a custom app sounds like it should be better than an app we don\u0027t have control over that could change unexpectedly, but then again I don\u0027t have any background here :)",
+      "revId": "7f1335c870e5d62170d1681e070392efd74e3d6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
