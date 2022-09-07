@@ -16,6 +16,92 @@
       "message": "Guys, it is about time to resurrect this CL.  It is also a basis for the next one (upgrade) which is important for the bug with connectivity to an upgraded (WPA2-\u003eWPA3) AP.",
       "revId": "86d1d0dac0c4c71fac9d97edaec0bb62862de2a2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a912840d_c319b1fa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-09-07T15:43:31Z",
+      "side": 1,
+      "message": "Who from the WiFi team will be looking at this?",
+      "revId": "86d1d0dac0c4c71fac9d97edaec0bb62862de2a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54f07ceb_387b7665",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/fgsec_connect.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-09-07T15:43:31Z",
+      "side": 1,
+      "message": "it is a bit amusing that this is named \"wpa2mixed\" when the mode is listed as `MixedWPA3`...",
+      "range": {
+        "startLine": 111,
+        "startChar": 11,
+        "endLine": 111,
+        "endChar": 20
+      },
+      "revId": "86d1d0dac0c4c71fac9d97edaec0bb62862de2a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e063e943_1316cd02",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/fgsec_connect.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-09-07T15:43:31Z",
+      "side": 1,
+      "message": "just move this to right after the error check on L160-162, at that point `ctx` is the context you want anyway",
+      "range": {
+        "startLine": 166,
+        "startChar": 0,
+        "endLine": 170,
+        "endChar": 15
+      },
+      "revId": "86d1d0dac0c4c71fac9d97edaec0bb62862de2a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b54c1b88_abb7a478",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/fgsec_connect.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-09-07T15:43:31Z",
+      "side": 1,
+      "message": "ditto re: move this to right after the error check and just use `ctx` there",
+      "range": {
+        "startLine": 178,
+        "startChar": 0,
+        "endLine": 182,
+        "endChar": 16
+      },
+      "revId": "86d1d0dac0c4c71fac9d97edaec0bb62862de2a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
