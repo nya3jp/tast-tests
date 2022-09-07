@@ -6,8 +6,6 @@ package typec
 
 import (
 	"context"
-	"strconv"
-	"strings"
 	"time"
 
 	"chromiumos/tast/common/testexec"
@@ -100,7 +98,7 @@ func ModeCrash(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to verify TBT & DP after login: ", err)
 	}
 
-	oldPID, err := typecdPID(ctx)
+	oldPID, err := typecutils.TypecdPID(ctx)
 	if err != nil {
 		s.Fatal("Failed to get original typecd PID: ", err)
 	}
@@ -112,7 +110,7 @@ func ModeCrash(ctx context.Context, s *testing.State) {
 
 	s.Log("Checking that typecd restarted")
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		newPID, err := typecdPID(ctx)
+		newPID, err := typecutils.TypecdPID(ctx)
 		if err != nil {
 			return errors.Wrap(err, "failed to get new typecd PID")
 		}
@@ -158,14 +156,4 @@ func ModeCrash(ctx context.Context, s *testing.State) {
 	}, &testing.PollOptions{Timeout: 20 * time.Second}); err != nil {
 		s.Fatal("Failed to verify DP monitor working at login screen: ", err)
 	}
-}
-
-// typecdPID returns the `typecd` process ID.
-func typecdPID(ctx context.Context) (int, error) {
-	out, err := testexec.CommandContext(ctx, "pgrep", "typecd").Output(testexec.DumpLogOnError)
-	if err != nil {
-		return 0, errors.Wrap(err, "failed to run pgrep to check whether typecd is running")
-	}
-
-	return strconv.Atoi(strings.TrimSpace(string(out)))
 }
