@@ -299,8 +299,8 @@ func testFileAttachedForBrowserAndFile(
 	if err := uiauto.Combine("open file",
 		files.OpenDir("test_dir"),
 		// SelectFile is necessary for some ChromeOS architectures to properly open the file.
-		files.WithTimeout(1*time.Second).SelectFile(ulFileName),
-		files.OpenFile(ulFileName),
+		files.WithTimeout(5*time.Second).SelectFile(ulFileName),
+		files.WithTimeout(5*time.Second).OpenFile(ulFileName),
 	)(ctx); err != nil {
 		s.Fatal("Failed to open file: ", err)
 	}
