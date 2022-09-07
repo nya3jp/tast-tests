@@ -61,7 +61,7 @@ func KioskWithUSS(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to enable the UserSecretStash experiment: ", err)
 	}
-	defer cleanupUSSExperiment()
+	defer cleanupUSSExperiment(ctx)
 
 	// Authenticate a new auth session, create the user, mount the vault
 	// and add kiosk credential.
