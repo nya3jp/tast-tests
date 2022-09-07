@@ -34,6 +34,24 @@
       "parentUuid": "2ab8389f_11ce43e6",
       "revId": "b64d7e708fa4ba71242a9c3db206c79801cb49f7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1983f597_c3ca438c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/fixture/fixture.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-09-07T05:38:11Z",
+      "side": 1,
+      "message": "Ah, I misunderstood the EnableWebAppInstall feature.",
+      "parentUuid": "ca08a00c_8f4ea43f",
+      "revId": "b64d7e708fa4ba71242a9c3db206c79801cb49f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
