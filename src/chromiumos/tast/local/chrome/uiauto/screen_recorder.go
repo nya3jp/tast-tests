@@ -117,14 +117,14 @@ func requestScreenShare(ctx context.Context, tconn *chrome.TestConn) (*ScreenRec
 // It chooses the entire desktop as the media stream.
 // Example:
 //
-//   screenRecorder, err := uiauto.NewScreenRecorder(ctx, tconn)
-//   if err != nil {
-//		s.Log("Failed to create ScreenRecorder: ", err)
-//   }
+//	  screenRecorder, err := uiauto.NewScreenRecorder(ctx, tconn)
+//	  if err != nil {
+//			s.Log("Failed to create ScreenRecorder: ", err)
+//	  }
 //
 // To stop, save, and release the recorder:
-//    defer uiauto.ScreenRecorderStopSaveRelease(...)
 //
+//	defer uiauto.ScreenRecorderStopSaveRelease(...)
 func NewScreenRecorder(ctx context.Context, tconn *chrome.TestConn) (*ScreenRecorder, error) {
 	sr, err := requestScreenShare(ctx, tconn)
 
@@ -135,12 +135,14 @@ func NewScreenRecorder(ctx context.Context, tconn *chrome.TestConn) (*ScreenReco
 	// Choose to record the entire desktop/screen with no audio.
 	ui := New(tconn)
 	shareScreenDialog := nodewith.Name("Choose what to share").ClassName("DesktopMediaPickerDialogView")
-	entireDesktopButton := nodewith.ClassName("DesktopMediaSourceView").Role(role.Button).Ancestor(shareScreenDialog)
+	entireScreenTab := nodewith.Name("Entire Screen").Role(role.Tab).Ancestor(shareScreenDialog)
+	builtInDisplay := nodewith.Name("Built-in display").Role(role.Button).Focusable().Ancestor(shareScreenDialog)
 	// The share button becomes focusable after the entire desktop button is clicked.
 	shareButton := nodewith.Name("Share").Role(role.Button).Ancestor(shareScreenDialog).Focusable()
 
 	if err := Combine("start screen recorder through ui",
-		ui.WithInterval(500*time.Millisecond).LeftClickUntil(entireDesktopButton, ui.Exists(shareButton)),
+		ui.WithInterval(500*time.Millisecond).LeftClickUntil(entireScreenTab, ui.Exists(builtInDisplay)),
+		ui.WithInterval(500*time.Millisecond).LeftClickUntil(builtInDisplay, ui.Exists(shareButton)),
 		ui.LeftClick(shareButton),
 	)(ctx); err != nil {
 		return nil, err
@@ -161,7 +163,7 @@ func NewWindowRecorder(ctx context.Context, tconn *chrome.TestConn, windowIndex 
 
 	ui := New(tconn)
 	shareScreenDialog := nodewith.Name("Choose what to share").ClassName("DesktopMediaPickerDialogView")
-	windowTab := nodewith.Name("Window").ClassName("Tab").Ancestor(shareScreenDialog)
+	windowTab := nodewith.Name("Window").Role(role.Tab).Ancestor(shareScreenDialog)
 	windowButton := nodewith.Role(role.Button).Ancestor(shareScreenDialog).Nth(windowIndex)
 	shareButton := nodewith.Name("Share").Role(role.Button).Ancestor(shareScreenDialog).Focusable()
 
@@ -188,7 +190,7 @@ func NewTabRecorder(ctx context.Context, tconn *chrome.TestConn, tabIndex int) (
 
 	ui := New(tconn)
 	shareScreenDialog := nodewith.Name("Choose what to share").ClassName("DesktopMediaPickerDialogView")
-	shareChromeTabOption := nodewith.NameRegex(regexp.MustCompile("(Chromium|Chrome) Tab")).ClassName("Tab").Ancestor(shareScreenDialog)
+	shareChromeTabOption := nodewith.NameRegex(regexp.MustCompile("(Chromium|Chrome) Tab")).Role(role.Tab).Ancestor(shareScreenDialog)
 	tabButton := nodewith.Role(role.Row).Ancestor(shareScreenDialog).Nth(tabIndex)
 	shareButton := nodewith.Name("Share").Role(role.Button).Ancestor(shareScreenDialog).Focusable()
 
@@ -327,11 +329,13 @@ func ScreenRecorderStopSaveRelease(ctx context.Context, r *ScreenRecorder, fileN
 // RecordScreen records the screen for the duration of the function into recording.webm.
 // For example, if you wanted to record your whole test, you would do the following:
 // func MyTest(ctx context.Context, s *testing.State) {
-//   cr := s.PreValue().(pre.PreData).Chrome
-//   tconn := s.PreValue().(pre.PreData).TestAPIConn
-//   uiauto.RecordScreen(ctx, s, tconn, func() {
-//   <all your existing test code here>
-//   })
+//
+//	cr := s.PreValue().(pre.PreData).Chrome
+//	tconn := s.PreValue().(pre.PreData).TestAPIConn
+//	uiauto.RecordScreen(ctx, s, tconn, func() {
+//	<all your existing test code here>
+//	})
+//
 // }
 func RecordScreen(ctx context.Context, s testingState, tconn *chrome.TestConn, f func()) {
 	recorder, err := NewScreenRecorder(ctx, tconn)
@@ -359,11 +363,12 @@ func RecordScreen(ctx context.Context, s testingState, tconn *chrome.TestConn, f
 // The caller should also call StopRecordFromKB to stop the screen recorder,
 // and save the record file.
 // Here is an example to call this method:
-//     if err := uiauto.StartRecordFromKB(ctx, tconn, keyboard); err != nil {
-//         s.Log("Failed to start recording: ", err)
-//     }
 //
-//     defer uiauto.StopRecordFromKBAndSaveOnError(ctx, tconn, s.HasError, s.OutDir())
+//	if err := uiauto.StartRecordFromKB(ctx, tconn, keyboard); err != nil {
+//	    s.Log("Failed to start recording: ", err)
+//	}
+//
+//	defer uiauto.StopRecordFromKBAndSaveOnError(ctx, tconn, s.HasError, s.OutDir())
 func StartRecordFromKB(ctx context.Context, tconn *chrome.TestConn, kb *input.KeyboardEventWriter, downloadsPath string) error {
 	screenRecordBtn := nodewith.Name("Screen record").Role(role.ToggleButton)
 	fullScreenBtn := nodewith.Name("Record full screen").Role(role.ToggleButton)
