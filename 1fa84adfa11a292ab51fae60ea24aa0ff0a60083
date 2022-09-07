@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0d3698d_5af2c2a7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/add_remove_factors.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1546868
+      },
+      "writtenOn": "2022-09-07T23:23:59Z",
+      "side": 1,
+      "message": "Is smart card expected to be reported as a supported factor on all hardware? That\u0027s somewhat surprising to me. If so then this is correct, I just though there would\u0027ve been some requirements for being able to use this.",
+      "revId": "1fa84adfa11a292ab51fae60ea24aa0ff0a60083",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
