@@ -386,7 +386,10 @@ func OpenExpandedView(tconn *chrome.TestConn) uiauto.Action {
 	return func(ctx context.Context) error {
 		// TODO: Call autotestPrivate API instead after http://crbug.com/1127384 is implemented.
 		ui := uiauto.New(tconn)
-		if err := ui.Exists(nodewith.ClassName(ExpandedItemsClass).First())(ctx); err == nil {
+		// The app list widget may exist and be hidden (cached), so explicitly
+		// check for a visible app list item.
+		appListItem := nodewith.ClassName(ExpandedItemsClass).Visible().First()
+		if err := ui.Exists(appListItem)(ctx); err == nil {
 			// Even if it exist, active window may cover it in tablet mode. Check for active windows.
 			windows, err := ash.FindAllWindows(ctx, tconn, func(window *ash.Window) bool {
 				return window.IsVisible
