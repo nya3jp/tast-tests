@@ -27,19 +27,23 @@ import (
 )
 
 // The models that support Cursive.
-var cursiveEnabledModels = []string{
+var cursiveManualInstallModels = []string{
 	"nautilus",
 	"phaser360",
-	"krane",
 	"bobba360",
 	"kohaku",
-	"kevin",
 	"robo360",
 	"vayne",
 	"scarlet",
-	"eve",
-	"nocturne",
 	"betty",
+}
+
+var cursiveAutoInstallModels = []string{
+	"eve",
+	"kevin",
+	"krane",
+	"hatch",
+	"nocturne",
 }
 
 func init() {
@@ -54,15 +58,36 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		Timeout:      5 * time.Minute,
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
-		HardwareDeps: hwdep.D(hwdep.Model(cursiveEnabledModels...)),
 		Vars:         []string{"cursiveServerURL"},
-		Params: []testing.Param{{
-			Fixture: fixture.LoggedIn,
-		}, {
-			Name:              "lacros",
-			Fixture:           fixture.LacrosLoggedIn,
-			ExtraSoftwareDeps: []string{"lacros"},
-		}},
+		Params: []testing.Param{
+			{
+				Name:              "manual_install",
+				Fixture:           fixture.LoggedInDisableInstall,
+				ExtraHardwareDeps: hwdep.D(hwdep.Model(cursiveManualInstallModels...)),
+				Val:               false,
+			},
+			{
+				Name:              "auto_install",
+				Fixture:           fixture.LoggedIn,
+				ExtraHardwareDeps: hwdep.D(hwdep.Model(cursiveAutoInstallModels...)),
+				Val:               true,
+			},
+			{
+				Name:              "manual_install_lacros",
+				Fixture:           fixture.LacrosLoggedInDisableInstall,
+				ExtraSoftwareDeps: []string{"lacros"},
+				ExtraHardwareDeps: hwdep.D(hwdep.Model(cursiveManualInstallModels...)),
+				Val:               false,
+			},
+			// TODO(b/245224264): Re-enable auto install testing on lacros.
+			// {
+			// 	Name:              "auto_install_lacros",
+			// 	Fixture:           fixture.LacrosLoggedIn,
+			// 	ExtraSoftwareDeps: []string{"lacros"},
+			// 	ExtraHardwareDeps: hwdep.D(hwdep.Model(cursiveAutoInstallModels...)),
+			// 	Val:               true,
+			// },
+		},
 	})
 }
 
@@ -71,84 +96,41 @@ func CursiveSmoke(ctx context.Context, s *testing.State) {
 	tconn := s.FixtValue().(fixture.FixtData).TestAPIConn
 	browserType := s.FixtValue().(fixture.FixtData).BrowserType
 
+	isAutoInstall := s.Param().(bool)
+
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
 	defer cancel()
 
 	defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "ui_tree")
 
-	ui := uiauto.New(tconn).WithInterval(2 * time.Second)
-	installIcon := nodewith.HasClass("PwaInstallView").Role(role.Button)
-	installButton := nodewith.Name("Install").Role(role.Button)
-
 	appURL := cursive.AppURL
 	if serverURL, ok := s.Var("cursiveServerURL"); ok {
 		appURL = serverURL
 	}
 
-	conn, br, closeBrowser, err := browserfixt.SetUpWithURL(ctx, cr, browserType, appURL)
-	if err != nil {
-		s.Fatal("Failed to set up browser: ", err)
-	}
-
-	shouldClose := true
-	defer func(ctx context.Context) {
-		if shouldClose {
-			closeBrowser(cleanupCtx)
-			conn.Close()
-		}
-	}(cleanupCtx)
-
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		// Wait for longer time after second launch, since it can be delayed on low-end devices.
-		if err := ui.WithTimeout(30 * time.Second).WaitUntilExists(installIcon)(ctx); err != nil {
-			testing.ContextLog(ctx, "Install button is not shown initially. See b/230413572")
-			testing.ContextLog(ctx, "Refresh page to enable installation")
-			if reloadErr := br.ReloadActiveTab(ctx); reloadErr != nil {
-				return testing.PollBreak(errors.Wrap(reloadErr, "failed to reload page"))
-			}
-			return err
-		}
-		return nil
-	}, &testing.PollOptions{Timeout: 3 * time.Minute}); err != nil {
-		s.Fatal("Failed to wait for Cursive to be installable: ", err)
-	}
-
-	if err := uiauto.Combine("",
-		ui.LeftClick(installIcon),
-		ui.LeftClick(installButton))(ctx); err != nil {
-		s.Fatal("Failed to click install button: ", err)
-	}
-
-	cursiveAppID, err := ash.WaitForChromeAppByNameInstalled(ctx, tconn, apps.Cursive.Name, 2*time.Minute)
-	if err != nil {
-		s.Fatal("Failed to wait for installed app: ", err)
-	}
-
-	// The web page is the PWA to be installed. Keeping the page opened
-	// will make it in A11y which can make the ui finder a bit harder.
-	// Besides, have the web page & PWA app launched at the same time,
-	// can potentially cause conflicts? (I guess it is possible in theory),
-	// and nice to test the PWA launch in a clean environment align with real user experience.
-	if browserType == browser.TypeLacros {
-		if err := closeBrowser(ctx); err != nil {
-			s.Fatal("Failed to close Lacros: ", err)
-		}
-		// b/244390727 Lacros needs to be opened to make PWA launchable.
-		_, closeBrowser, err := browserfixt.SetUp(ctx, cr, browser.TypeLacros)
+	var cursiveAppID string
+	var err error
+	if isAutoInstall {
+		testing.ContextLog(ctx, "Waiting for Cursive to be auto installed")
+		cursiveAppID, err = ash.WaitForChromeAppByNameInstalled(ctx, tconn, apps.Cursive.Name, 3*time.Minute)
 		if err != nil {
-			s.Fatal("Failed to set up Lacros: ", err)
+			s.Fatal("Failed to wait for Cursive auto installed: ", err)
 		}
-		defer closeBrowser(cleanupCtx)
-	}
-	shouldClose = false
+	} else {
+		cursiveAppID, err = manualInstallCursive(ctx, tconn, cr, browserType, appURL)
+		if err != nil {
+			s.Fatal("Failed to manually install Cursive: ", err)
+		}
 
-	// Close all ash apps and pages to make a clean desk.
-	targetsToClose := func(t *chrome.Target) bool {
-		return t.Type == "page" || t.Type == "app"
-	}
-	if err := cr.CloseTargets(ctx, targetsToClose); err != nil {
-		s.Fatal("Failed to close targets: ", err)
+		if browserType == browser.TypeLacros {
+			// b/244390727 Lacros needs to be opened to make PWA launchable.
+			_, closeBrowser, err := browserfixt.SetUp(ctx, cr, browser.TypeLacros)
+			if err != nil {
+				s.Fatal("Failed to setup lacros: ", err)
+			}
+			defer closeBrowser(cleanupCtx)
+		}
 	}
 
 	// Validate Cursive can be launched from shelf.
@@ -163,4 +145,59 @@ func CursiveSmoke(ctx context.Context, s *testing.State) {
 	if err := cursive.WaitForAppRendered(tconn)(ctx); err != nil {
 		s.Fatal("Failed to render Cursive: ", err)
 	}
+}
+
+func manualInstallCursive(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome, browserType browser.Type, appURL string) (string, error) {
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
+	defer cancel()
+
+	conn, br, closeBrowser, err := browserfixt.SetUpWithURL(ctx, cr, browserType, appURL)
+	if err != nil {
+		return "", errors.Wrap(err, "failed to set up browser")
+	}
+
+	defer func(ctx context.Context) {
+		closeBrowser(ctx)
+		conn.Close()
+	}(cleanupCtx)
+
+	ui := uiauto.New(tconn).WithInterval(2 * time.Second)
+	installIcon := nodewith.HasClass("PwaInstallView").Role(role.Button)
+	installButton := nodewith.Name("Install").Role(role.Button)
+
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		// Wait for longer time after second launch, since it can be delayed on low-end devices.
+		if err := ui.WithTimeout(30 * time.Second).WaitUntilExists(installIcon)(ctx); err != nil {
+			testing.ContextLog(ctx, "Install button is not shown initially. See b/230413572")
+			testing.ContextLog(ctx, "Refresh page to enable installation")
+			if reloadErr := br.ReloadActiveTab(ctx); reloadErr != nil {
+				return testing.PollBreak(errors.Wrap(reloadErr, "failed to reload page"))
+			}
+			return err
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 3 * time.Minute}); err != nil {
+		return "", errors.Wrap(err, "failed to wait for Cursive to be installable")
+	}
+
+	if err := uiauto.Combine("",
+		ui.LeftClick(installIcon),
+		ui.LeftClick(installButton))(ctx); err != nil {
+		return "", err
+	}
+
+	cursiveAppID, err := ash.WaitForChromeAppByNameInstalled(ctx, tconn, apps.Cursive.Name, 1*time.Minute)
+	if err != nil {
+		return "", errors.Wrap(err, "failed to wait for installed app")
+	}
+
+	// Close all ash apps and pages to make a clean desk.
+	targetsToClose := func(t *chrome.Target) bool {
+		return t.Type == "page" || t.Type == "app"
+	}
+	if err := cr.CloseTargets(ctx, targetsToClose); err != nil {
+		return "", errors.Wrap(err, "failed to close targets")
+	}
+	return cursiveAppID, nil
 }
