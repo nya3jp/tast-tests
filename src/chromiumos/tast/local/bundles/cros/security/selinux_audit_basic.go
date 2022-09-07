@@ -27,7 +27,8 @@ func init() {
 		Desc:         "Checks SELinux audit works as intended",
 		Contacts:     []string{"fqj@chromium.org", "jorgelo@chromium.org", "chromeos-security@google.com"},
 		SoftwareDeps: []string{"selinux"},
-		Attr:         []string{"group:mainline"},
+		// TODO(b/245411884): Re-enable this test.
+		// Attr:         []string{"group:mainline"},
 	})
 }
 
