@@ -34,6 +34,24 @@
       "parentUuid": "b27439e8_73c12965",
       "revId": "9f9f2affe40a3bf6ab3591c138262b209d8afc2a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f65c7a5c_aab1fdf3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2022-09-07T07:29:22Z",
+      "side": 1,
+      "message": "Updated the commit message, there were two problems: lock depended on default value of lock-screen-when-screen-is-off setting, and it expected dim/undim to work within 3s (changed to 10s here: https://crrev.com/c/3801891/3).",
+      "parentUuid": "e1ea3737_9e370c1a",
+      "revId": "9f9f2affe40a3bf6ab3591c138262b209d8afc2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
