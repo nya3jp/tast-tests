@@ -16,6 +16,24 @@
       "message": "Can we remove `--new_key_label` here as well?",
       "revId": "d2322139a596a2c4dc75c1e7a71dcb6dc0b0ef4d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "90d6cd97_2f4dee95",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_binary.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-09-07T16:49:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "411765c8_54063353",
+      "revId": "d2322139a596a2c4dc75c1e7a71dcb6dc0b0ef4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
