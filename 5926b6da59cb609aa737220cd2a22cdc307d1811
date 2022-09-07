@@ -34,6 +34,24 @@
       "parentUuid": "cc480c80_857540e7",
       "revId": "5926b6da59cb609aa737220cd2a22cdc307d1811",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e01ddc68_beef59d9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-09-07T11:06:29Z",
+      "side": 1,
+      "message": "Done, sorry for the big changes between patches.\n\nThis CL now slightly refactor the test `network.ProxyRetain.*` to allow logics be able to reuse.",
+      "parentUuid": "5a89357f_5f77e4ac",
+      "revId": "5926b6da59cb609aa737220cd2a22cdc307d1811",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
