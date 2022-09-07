@@ -136,7 +136,7 @@ func OverviewCombineDesks(ctx context.Context, s *testing.State) {
 	// Opens Chrome and Files. As mentioned above, if we are in lacros-chrome we
 	// will already have a chrome window, so if that is the case then we can skip
 	// opening another browser window.
-	for _, app := range []apps.App{apps.Chrome, apps.Files} {
+	for _, app := range []apps.App{apps.Chrome, apps.FilesSWA} {
 		if bt == browser.TypeLacros && app == apps.Chrome {
 			continue
 		}
