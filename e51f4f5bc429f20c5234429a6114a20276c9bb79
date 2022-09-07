@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "2fc17a4a_f4425e9a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-09-07T00:50:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e08e31f5_12bfaa55",
+      "range": {
+        "startLine": 7,
+        "startChar": 17,
+        "endLine": 7,
+        "endChar": 20
+      },
+      "revId": "e51f4f5bc429f20c5234429a6114a20276c9bb79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "1b146297_8bf3d184",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -54,6 +78,30 @@
       "writtenOn": "2022-09-06T09:52:40Z",
       "side": 1,
       "message": "`init` should contain the service dependencies as well: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#calling-grpc-services\nThis test is using 3 services, but none of it is added as dependency.\nI know that this CL is unrelated, but can I ask you to fix this as well?",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 11
+      },
+      "revId": "e51f4f5bc429f20c5234429a6114a20276c9bb79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb1cb766_af6abfb9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/apps/apps_service_grpc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-09-07T00:50:26Z",
+      "side": 1,
+      "message": "I couldn\u0027t figure out what exact strings to list here. I can follow up with another CL if you tell me what they are, or maybe Matt can take care of it.",
+      "parentUuid": "d5891b4f_b6eb74fe",
       "range": {
         "startLine": 27,
         "startChar": 0,
