@@ -16,6 +16,23 @@
       "message": "Hi Yanzhu!\n\nCan I get a review on this?",
       "revId": "bb9fc36d6ba8ac0a66897ae1c80dab85c0ad7cf3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "64806700_859e92de",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1250529
+      },
+      "writtenOn": "2022-09-07T18:13:13Z",
+      "side": 1,
+      "message": "LGTM, also adding Matthew to have a look.",
+      "revId": "bb9fc36d6ba8ac0a66897ae1c80dab85c0ad7cf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
