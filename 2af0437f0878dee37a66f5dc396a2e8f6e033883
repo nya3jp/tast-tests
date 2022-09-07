@@ -33,6 +33,24 @@
       "message": "nit: Can this message be more descriptive? Maybe referencing the number of created bots? `unexpected number of bots created with spotlight layout, got %d, expected %d`",
       "revId": "2af0437f0878dee37a66f5dc396a2e8f6e033883",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5cd3047_95a2cbb5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 474,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-09-07T22:52:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d333596_d9186326",
+      "revId": "2af0437f0878dee37a66f5dc396a2e8f6e033883",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
