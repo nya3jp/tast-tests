@@ -40,12 +40,12 @@ func init() {
 		Params: []testing.Param{
 			{
 				Val:     "--flashrom_binary=/usr/sbin/flashrom",
-				Fixture: fixture.NormalMode,
+				Fixture: fixture.DevModeGBB,
 			},
 			{
 				Name:    "libflashrom",
 				Val:     "--libflashrom",
-				Fixture: fixture.NormalMode,
+				Fixture: fixture.DevModeGBB,
 			},
 		},
 	})
@@ -59,7 +59,7 @@ func FlashromTester(ctx context.Context, s *testing.State) {
 	}
 
 	backendChoiceArg := s.Param().(string)
-	cmd := h.DUT.Conn().CommandContext(ctx, "flashrom_tester", "--debug", backendChoiceArg, "host")
+	cmd := h.DUT.Conn().CommandContext(ctx, "/usr/bin/flashrom_tester", "--debug", backendChoiceArg, "host")
 
 	stdin, err := cmd.StdinPipe()
 	if err != nil {
