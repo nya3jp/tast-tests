@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04fded6b_8f5e66e3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_keyboard.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-09-07T19:57:40Z",
+      "side": 1,
+      "message": "You should probably restart the ui service in a defer call here.",
+      "range": {
+        "startLine": 76,
+        "startChar": 1,
+        "endLine": 79,
+        "endChar": 0
+      },
+      "revId": "ba2a44f17ad2955f3834cc44f2e5d41e012325fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
