@@ -26,7 +26,8 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Test handling of an ARC++ SELinux violation",
 		Contacts:     []string{"mutexlox@google.com", "cros-telemetry@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		// TODO(b/245411884): Re-enable this test.
+		// Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"android_p", "chrome", "selinux"},
 		Timeout:      5 * time.Minute,
 	})
