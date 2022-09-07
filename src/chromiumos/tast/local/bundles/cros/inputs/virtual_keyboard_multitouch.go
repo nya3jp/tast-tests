@@ -90,7 +90,7 @@ func VirtualKeyboardMultitouch(ctx context.Context, s *testing.State) {
 	}
 	uc.SetAttribute(useractions.AttributeInputMethod, inputMethod.Name)
 
-	inputField := testserver.TextAreaNoCorrectionInputField
+	inputField := testserver.TextAreaAutoShiftInSentence
 
 	stw, err := tsw.NewSingleTouchWriter()
 	if err != nil {
@@ -130,16 +130,22 @@ func VirtualKeyboardMultitouch(ctx context.Context, s *testing.State) {
 	shiftKeyFinder := nodewith.Name("shift").Ancestor(vkb.NodeFinder.HasClass("key_pos_shift_left"))
 	zKeyFinder := vkb.KeyByNameIgnoringCase("z")
 	xKeyFinder := vkb.KeyByNameIgnoringCase("x")
+	vKeyFinder := vkb.KeyByNameIgnoringCase("v")
 
 	validateAction := uiauto.NamedCombine("Verify multitouch typing on VK",
 		// Basic multitouch typing.
 		its.ClickFieldUntilVKShown(inputField),
 		touchAndHold(zKeyFinder),
 		mousePressAndHold(xKeyFinder),
-		util.WaitForFieldTextToBe(tconn, inputField.Finder(), "z"),
+		// First character should be uppercase for autoshifted text field.
+		util.WaitForFieldTextToBe(tconn, inputField.Finder(), "Z"),
 		releaseTouch(),
+		touchAndHold(vKeyFinder),
+		// VK should now be deshifted, so remaining characters should be lowercase.
+		util.WaitForFieldTextToBe(tconn, inputField.Finder(), "Zx"),
 		mouse.Release(tconn, mouse.LeftButton),
-		util.WaitForFieldTextToBe(tconn, inputField.Finder(), "zx"),
+		releaseTouch(),
+		util.WaitForFieldTextToBe(tconn, inputField.Finder(), "Zxv"),
 
 		// Holding shift while typing.
 		touchAndHold(shiftKeyFinder),
@@ -147,7 +153,7 @@ func VirtualKeyboardMultitouch(ctx context.Context, s *testing.State) {
 		vkbCtx.TapKeys(strings.Split("AB", "")),
 		releaseTouch(),
 		vkbCtx.WaitUntilShiftStatus(vkb.ShiftStateNone),
-		util.WaitForFieldTextToBe(tconn, inputField.Finder(), "zxAB"),
+		util.WaitForFieldTextToBe(tconn, inputField.Finder(), "ZxvAB"),
 	)
 
 	if err := uiauto.UserAction("Multitouch typing on virtual keyboard",
