@@ -33,6 +33,23 @@
       "message": "Can you upload the CL for the test modification to use this new function as well, if it cleans things up?",
       "revId": "62334efccefcd9e5cc1976ed9765d732594274a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "68bbc9a7_571caf50",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-09-07T20:38:37Z",
+      "side": 1,
+      "message": "Also, if you\u0027re looking for generic golang/tast readability-type review, you can add the Tast Owners list (tast-owners@) to randomly assign from the pool of available tast reviewers.",
+      "revId": "62334efccefcd9e5cc1976ed9765d732594274a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
