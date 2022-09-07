@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d4145062_031c198a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-09-07T20:39:45Z",
+      "side": 1,
+      "message": "nit: before*",
+      "revId": "03e886925cd84cd0a2834099111c3715c6d4fc95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a5c9c4d0_25d9a2a9",
         "filename": "src/chromiumos/tast/remote/wificell/fixture.go",
         "patchSetId": 1
