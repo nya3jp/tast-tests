@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37bcf5f9_5e35b0f1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/intel/image_capture_with_aspect_ratio.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-09-07T15:41:45Z",
+      "side": 1,
+      "message": "could you move this down to put it closer to its method definitions?",
+      "revId": "e91f8ef45da64d846c9abec2b4cba9e6f8556bf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58b7a9e6_81bec6bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/intel/image_capture_with_aspect_ratio.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-09-07T15:41:45Z",
+      "side": 1,
+      "message": "This approach is the source of flakiness.\nInstead, could you wait for some condition that indicates verification is done?",
+      "range": {
+        "startLine": 85,
+        "startChar": 3,
+        "endLine": 88,
+        "endChar": 4
+      },
+      "revId": "e91f8ef45da64d846c9abec2b4cba9e6f8556bf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a3eca07_21cafe3b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/intel/image_capture_with_aspect_ratio.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-09-07T15:41:45Z",
+      "side": 1,
+      "message": "should we check the length of fileInfo before its access?\nShould we clean up files that are created by this test to avoid filling up the DUT\u0027s disk?",
+      "revId": "e91f8ef45da64d846c9abec2b4cba9e6f8556bf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ccb88c0_64916e19",
+        "filename": "src/chromiumos/tast/local/bundles/cros/intel/image_capture_with_aspect_ratio.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-09-07T15:41:45Z",
+      "side": 1,
+      "message": "comparing floating point values by \u003d\u003d often causes flakiness due to FP error, unless the bit patterns are specified.\nShould we have some (reasonably small enougH) error tolerance?",
+      "range": {
+        "startLine": 173,
+        "startChar": 5,
+        "endLine": 173,
+        "endChar": 22
+      },
+      "revId": "e91f8ef45da64d846c9abec2b4cba9e6f8556bf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
