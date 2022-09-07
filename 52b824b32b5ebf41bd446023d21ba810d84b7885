@@ -39,6 +39,30 @@
       },
       "revId": "52b824b32b5ebf41bd446023d21ba810d84b7885",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e7dbd33_e73157f1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_reboot_power_cycle.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2022-09-07T10:54:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a5fb3901_5a209b14",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 72
+      },
+      "revId": "52b824b32b5ebf41bd446023d21ba810d84b7885",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
