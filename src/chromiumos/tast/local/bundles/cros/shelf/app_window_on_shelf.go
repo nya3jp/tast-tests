@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/launcher"
@@ -43,18 +44,15 @@ func init() {
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
+		Fixture:      "chromeLoggedInWith100FakeAppsNoAppSort",
 		Params: []testing.Param{{
-			Name:    "productivity_launcher_clamshell_mode",
-			Val:     launcher.TestCase{TabletMode: false},
-			Fixture: "chromeLoggedInWith100FakeAppsNoAppSort",
+			Name: "productivity_launcher_clamshell_mode",
+			Val:  launcher.TestCase{TabletMode: false},
 		},
-		/* Disabled due to <1% pass rate over 30 days. See b/241943139
-		{
-			Name:    "productivity_launcher_tablet_mode",
-			Val:     launcher.TestCase{TabletMode: true},
-			Fixture: "chromeLoggedInWith100FakeAppsNoAppSort",
-		}
-		*/
+			{
+				Name: "productivity_launcher_tablet_mode",
+				Val:  launcher.TestCase{TabletMode: true},
+			},
 		},
 	})
 }
@@ -72,24 +70,13 @@ func AppWindowOnShelf(ctx context.Context, s *testing.State) {
 	defer cancel()
 
 	tabletMode := s.Param().(launcher.TestCase).TabletMode
-	originallyEnabled, err := ash.TabletModeEnabled(ctx, tconn)
+	cleanup, err := launcher.SetUpLauncherTest(ctx, tconn, tabletMode, true /*stabilizeAppCount*/)
 	if err != nil {
-		s.Fatal("Failed to check if DUT is in tablet mode: ", err)
-	}
-	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, tabletMode)
-	if err != nil {
-		s.Fatal("Failed to ensure clamshell / tablet mode: ", err)
+		s.Fatal("Failed to set up launcher test case: ", err)
 	}
 	defer cleanup(cleanupCtx)
 
 	defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "ui_tree")
-
-	// Ensure that the tablet launcher is closed before opening a launcher instance for test in clamshell.
-	if originallyEnabled && !tabletMode {
-		if err := ash.WaitForLauncherState(ctx, tconn, ash.Closed); err != nil {
-			s.Fatal("Launcher not closed after transition to clamshell mode: ", err)
-		}
-	}
 
 	appsGridView := nodewith.ClassName("ScrollableAppsGridView")
 	if tabletMode {
@@ -105,6 +92,15 @@ func AppWindowOnShelf(ctx context.Context, s *testing.State) {
 	// The app with `fakeAppName` doesn't necessarily be the first app in appsGridView. Pick the first fake app in node finder for the test.
 	fakeApp := nodewith.NameContaining("fake app").Ancestor(appsGridView).First()
 	ui := uiauto.New(tconn)
+
+	// SetUpLauncherTest leaves launcher in show state - hide it before the first
+	// call to openAppFromLauncherAs(), which would toggle bubble launcher when
+	// called.
+	if !tabletMode {
+		if err := launcher.HideLauncher(tconn, !tabletMode)(ctx); err != nil {
+			s.Fatal("Failed to hide the launcher at the test start: ", err)
+		}
+	}
 
 	// Open the `app` as a tab.
 	if err := openAppFromLauncherAs(ctx, tconn, tabletMode, fakeApp, tab); err != nil {
@@ -150,10 +146,9 @@ func AppWindowOnShelf(ctx context.Context, s *testing.State) {
 	}
 
 	// Check the number of tabs.
-	tabFinder := nodewith.ClassName("Tab")
-	tabs, err := ui.NodesInfo(ctx, tabFinder)
+	tabs, err := browser.CurrentTabs(ctx, tconn)
 	if err != nil {
-		s.Fatal("Failed to get the tabs in the browser: ", err)
+		s.Fatal("Unable to retrieve tabs: ", err)
 	}
 
 	if len(tabs) != 2 {
