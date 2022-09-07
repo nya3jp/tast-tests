@@ -65,7 +65,7 @@ func getLastStringValue(d LabelMap, key string) (string, bool) {
 
 // GetCellularCarrierFromHostInfoLabels return the current carrier name from host_info_labels, else return empty string
 func GetCellularCarrierFromHostInfoLabels(ctx context.Context, d LabelMap) string {
-	if c, ok := getLastStringValue(d, "label-carrier"); ok {
+	if c, ok := getLastStringValue(d, "carrier"); ok {
 		return c
 	}
 	return ""
@@ -74,7 +74,7 @@ func GetCellularCarrierFromHostInfoLabels(ctx context.Context, d LabelMap) strin
 // GetDevicePoolFromHostInfoLabels return the current device pool name from host_info_labels, else return empty string
 func GetDevicePoolFromHostInfoLabels(ctx context.Context, d LabelMap) []string {
 	var pools []string
-	for _, v := range d["label-pools"] {
+	for _, v := range d["pool"] {
 		pools = append(pools, v)
 	}
 	return pools
@@ -84,16 +84,16 @@ func GetDevicePoolFromHostInfoLabels(ctx context.Context, d LabelMap) []string {
 func GetModemInfoFromHostInfoLabels(ctx context.Context, d LabelMap) *ModemInfo {
 	var modemInfo ModemInfo
 
-	if c, ok := getLastStringValue(d, "label-modem_type"); ok {
+	if c, ok := getLastStringValue(d, "modem_type"); ok {
 		modemInfo.Type = c
 	}
-	if c, ok := getLastStringValue(d, "label-modem_imei"); ok {
+	if c, ok := getLastStringValue(d, "modem_imei"); ok {
 		modemInfo.IMEI = c
 	}
-	if c, ok := getLastStringValue(d, "label-modem_supported_bands"); ok {
+	if c, ok := getLastStringValue(d, "modem_supported_bands"); ok {
 		modemInfo.SupportedBands = c
 	}
-	if c, ok := getLastStringValue(d, "label-modem_sim_count"); ok {
+	if c, ok := getLastStringValue(d, "modem_sim_count"); ok {
 		if v, err := strconv.Atoi(c); err == nil {
 			modemInfo.SimCount = v
 		} else {
@@ -105,26 +105,26 @@ func GetModemInfoFromHostInfoLabels(ctx context.Context, d LabelMap) *ModemInfo 
 
 // GetSIMInfoFromHostInfoLabels populate SIM info from host_info_labels
 func GetSIMInfoFromHostInfoLabels(ctx context.Context, d LabelMap) []*SIMInfo {
-	numSim := len(d["label-sim_slot_id"])
+	numSim := len(d["sim_slot_id"])
 	simInfo := make([]*SIMInfo, numSim)
 
-	for i, v := range d["label-sim_slot_id"] {
+	for i, v := range d["sim_slot_id"] {
 		simID := v
 		s := &SIMInfo{}
 		if j, err := strconv.Atoi(v); err == nil {
 			s.SlotID = j
 		}
 
-		lv := "label-sim_" + simID + "_type"
+		lv := "sim_" + simID + "_type"
 		d = assignLastStringValueAndDropKey(d, &s.Type, lv)
 
-		lv = "label-sim_" + simID + "_eid"
+		lv = "sim_" + simID + "_eid"
 		d = assignLastStringValueAndDropKey(d, &s.EID, lv)
 
-		lv = "label-sim_" + simID + "_test_esim"
+		lv = "sim_" + simID + "_test_esim"
 		d = assignLastBoolValueAndDropKey(d, &s.TestEsim, lv)
 
-		lv = "label-sim_" + simID + "_num_profiles"
+		lv = "sim_" + simID + "_num_profiles"
 		numProfiles := 0
 		d = assignLastIntValueAndDropKey(d, &numProfiles, lv)
 
@@ -132,16 +132,16 @@ func GetSIMInfoFromHostInfoLabels(ctx context.Context, d LabelMap) []*SIMInfo {
 		for j := 0; j < numProfiles; j++ {
 			s.ProfileInfo[j] = &SIMProfileInfo{}
 			profileID := strconv.Itoa(j)
-			lv = "label-sim_" + simID + "_" + profileID + "_iccid"
+			lv = "sim_" + simID + "_" + profileID + "_iccid"
 			d = assignLastStringValueAndDropKey(d, &s.ProfileInfo[j].ICCID, lv)
 
-			lv = "label-sim_" + simID + "_" + profileID + "_pin"
+			lv = "sim_" + simID + "_" + profileID + "_pin"
 			d = assignLastStringValueAndDropKey(d, &s.ProfileInfo[j].SimPin, lv)
 
-			lv = "label-sim_" + simID + "_" + profileID + "_puk"
+			lv = "sim_" + simID + "_" + profileID + "_puk"
 			d = assignLastStringValueAndDropKey(d, &s.ProfileInfo[j].SimPuk, lv)
 
-			lv = "label-sim_" + simID + "_" + profileID + "_carrier_name"
+			lv = "sim_" + simID + "_" + profileID + "_carrier_name"
 			d = assignLastStringValueAndDropKey(d, &s.ProfileInfo[j].CarrierName, lv)
 		}
 		simInfo[i] = s
