@@ -1,0 +1,153 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43387507_7fee0cc6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/host_cellular_speedtest.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-09-07T15:51:20Z",
+      "side": 1,
+      "message": "Is there ever a circumstance where we wouldn\u0027t want to return an error from RunHostIPSpeedTest in this case, even if the command itself didn\u0027t fail somehow? It seems like it would only happen if we have a complete lack of connectivity.",
+      "revId": "f86f5dbeb326585e377af22e3bc1dc9a1dcf8e82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8de9d315_c3d31cd7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/host_cellular_speedtest.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-09-07T15:51:20Z",
+      "side": 1,
+      "message": "you can do this all in one call to `errors.Errorf`",
+      "revId": "f86f5dbeb326585e377af22e3bc1dc9a1dcf8e82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6c18eb5_ebb13b24",
+        "filename": "src/chromiumos/tast/local/cellular/cellular_network_utils.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-09-07T15:51:20Z",
+      "side": 1,
+      "message": "Any reason we do the conversion to Mbps here? We might as well return the raw numbers.",
+      "range": {
+        "startLine": 110,
+        "startChar": 102,
+        "endLine": 110,
+        "endChar": 111
+      },
+      "revId": "f86f5dbeb326585e377af22e3bc1dc9a1dcf8e82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ebbb9393_21eba2b3",
+        "filename": "src/chromiumos/tast/local/cellular/cellular_network_utils.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-09-07T15:51:20Z",
+      "side": 1,
+      "message": "just \"Mbps\"",
+      "range": {
+        "startLine": 125,
+        "startChar": 34,
+        "endLine": 125,
+        "endChar": 39
+      },
+      "revId": "f86f5dbeb326585e377af22e3bc1dc9a1dcf8e82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2649899_c7e70679",
+        "filename": "src/chromiumos/tast/local/cellular/cellular_network_utils.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-09-07T15:51:20Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 126,
+        "startChar": 34,
+        "endLine": 126,
+        "endChar": 39
+      },
+      "revId": "f86f5dbeb326585e377af22e3bc1dc9a1dcf8e82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9426edc_d16b4f66",
+        "filename": "src/chromiumos/tast/local/cellular/cellular_network_utils.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-09-07T15:51:20Z",
+      "side": 1,
+      "message": "For these log lines you might also want to mark which one is download and which one is upload, if you still want to log this at all. It doesn\u0027t look like that\u0027s printed anywhere.",
+      "range": {
+        "startLine": 125,
+        "startChar": 0,
+        "endLine": 126,
+        "endChar": 54
+      },
+      "revId": "f86f5dbeb326585e377af22e3bc1dc9a1dcf8e82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "529bde07_3d240e4a",
+        "filename": "src/chromiumos/tast/local/cellular/cellular_network_utils.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-09-07T15:51:20Z",
+      "side": 1,
+      "message": "should probably return 0 explicitly on failure, right?",
+      "range": {
+        "startLine": 129,
+        "startChar": 9,
+        "endLine": 129,
+        "endChar": 35
+      },
+      "revId": "f86f5dbeb326585e377af22e3bc1dc9a1dcf8e82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
