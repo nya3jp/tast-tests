@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "45011333_239d604c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-09-07T21:49:53Z",
+      "side": 1,
+      "message": "+2 % nits",
+      "revId": "446a01eab7a78c6c0f326fca8182db5f61434d43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0692848_18c44458",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/disable_enable_ec_sw_sync.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-09-07T21:49:53Z",
+      "side": 1,
+      "message": "nit: append something like:\n   \"got: RO\u003d%s, RW\u003d%s, want: RO \u003d\u003d RW\", ro1, rw1\n   \nsomething similar to L136",
+      "range": {
+        "startLine": 117,
+        "startChar": 55,
+        "endLine": 117,
+        "endChar": 76
+      },
+      "revId": "446a01eab7a78c6c0f326fca8182db5f61434d43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea6cd4df_f096502c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/disable_enable_ec_sw_sync.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-09-07T21:49:53Z",
+      "side": 1,
+      "message": "huge nit: dut -\u003e DUT",
+      "range": {
+        "startLine": 199,
+        "startChar": 19,
+        "endLine": 199,
+        "endChar": 22
+      },
+      "revId": "446a01eab7a78c6c0f326fca8182db5f61434d43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
