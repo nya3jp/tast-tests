@@ -93,6 +93,8 @@ func collectGPUPerformanceCounters(ctx context.Context, interval time.Duration) 
 	// Add and extra regexp for the overall time elapsed.
 	regexps["total"] = regexp.MustCompile("([0-9]+[.][0-9]+ s)econds time elapsed")
 
+	const dumpFile = "perf_stat_output.log"
+	dump := false
 	perfLines := strings.Split(perfOutput, "\n")
 	for _, line := range perfLines {
 		for name, r := range regexps {
@@ -101,18 +103,22 @@ func collectGPUPerformanceCounters(ctx context.Context, interval time.Duration) 
 				continue
 			}
 			// ParseDuration() cannot parse whitespaces in the input string.
-			counters[name], err = time.ParseDuration(strings.Replace(string(submatch[1]), " ", "", -1))
+			counter, err := time.ParseDuration(strings.Replace(string(submatch[1]), " ", "", -1))
 			if err != nil {
-				dir, ok := testing.ContextOutDir(ctx)
-				if !ok {
-					return nil, 0, errors.New("failed to retrieve output directory")
-				}
-				const outFile = "perf_stat_output.log"
-				if err := ioutil.WriteFile(filepath.Join(dir, outFile), stderr, 0644); err != nil {
-					testing.ContextLogf(ctx, "Failed to dump perf output to %s: %v", outFile, err)
-				}
-				return nil, 0, errors.Wrapf(err, "error parsing perf output, see %s if present", outFile)
+				testing.ContextLogf(ctx, "Error parsing performance counter %q, see %s if present", name, dumpFile)
+				dump = true
+				continue
 			}
+			counters[name] = counter
+		}
+	}
+	if dump {
+		dir, ok := testing.ContextOutDir(ctx)
+		if !ok {
+			return nil, 0, errors.New("failed to retrieve output directory")
+		}
+		if err := ioutil.WriteFile(filepath.Join(dir, dumpFile), stderr, 0644); err != nil {
+			return nil, 0, errors.Wrapf(err, "failed to dump perf output to %q", dumpFile)
 		}
 	}
 
