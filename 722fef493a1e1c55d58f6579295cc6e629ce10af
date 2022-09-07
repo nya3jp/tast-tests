@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7fc36f4e_c7808fcb",
+        "filename": "helpers/local/featured.FeatureLibrary.check.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1551433
+      },
+      "writtenOn": "2022-09-07T22:16:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6df3421c_24157c98",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 73
+      },
+      "revId": "722fef493a1e1c55d58f6579295cc6e629ce10af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a83f4d3b_1ee208b7",
@@ -54,6 +78,24 @@
       "writtenOn": "2022-09-06T15:58:15Z",
       "side": 1,
       "message": "I believe that in general there should be a newline at the end of each file; could you please change your VSCode settings to add one?",
+      "revId": "722fef493a1e1c55d58f6579295cc6e629ce10af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "32b04612_e380bffd",
+        "filename": "helpers/local/featured.FeatureLibrary.check.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1551433
+      },
+      "writtenOn": "2022-09-07T22:16:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a83f4d3b_1ee208b7",
       "revId": "722fef493a1e1c55d58f6579295cc6e629ce10af",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
