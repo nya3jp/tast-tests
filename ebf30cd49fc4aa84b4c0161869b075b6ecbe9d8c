@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4cf940ef_7773bdd6",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_binary.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-09-07T14:00:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "94b33414_523ff262",
+      "range": {
+        "startLine": 406,
+        "startChar": 95,
+        "endLine": 406,
+        "endChar": 106
+      },
+      "revId": "ebf30cd49fc4aa84b4c0161869b075b6ecbe9d8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3f645e87_904d85ea",
@@ -37,6 +61,24 @@
       "writtenOn": "2022-09-06T11:14:11Z",
       "side": 1,
       "message": "nit: Copy-paste error (there\u0027s no plan to use recovery for VaultKeyset users).",
+      "revId": "ebf30cd49fc4aa84b4c0161869b075b6ecbe9d8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "00f8fed8_6fa3f2f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/update_recovery.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-09-07T14:00:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3f645e87_904d85ea",
       "revId": "ebf30cd49fc4aa84b4c0161869b075b6ecbe9d8c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "294ff098_adea1753",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/update_recovery.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-09-07T14:00:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b63f0326_407de7f0",
+      "range": {
+        "startLine": 187,
+        "startChar": 48,
+        "endLine": 187,
+        "endChar": 61
+      },
+      "revId": "ebf30cd49fc4aa84b4c0161869b075b6ecbe9d8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7602d965_151f2803",
@@ -77,6 +143,24 @@
       "writtenOn": "2022-09-06T11:14:11Z",
       "side": 1,
       "message": "I\u0027m a bit on the fence here, because changed raw file contents don\u0027t actually imply the factor was changed for real (for example, what if cryptohome updates some AuthFactor field on every login). Also hardcoding cryptohome file structure in the test is not great.\n\nCould we replace this with a check that the RecoveryID is different across the first and the second authentication attempts?",
+      "revId": "ebf30cd49fc4aa84b4c0161869b075b6ecbe9d8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "965b0220_9b1325ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/update_recovery.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-09-07T14:00:05Z",
+      "side": 1,
+      "message": "It looks like we dont generate onboarding metadata in the auth block yet (https://osscs.corp.google.com/chromiumos/chromiumos/codesearch/+/main:src/platform2/cryptohome/auth_blocks/cryptohome_recovery_auth_block.cc;l\u003d104;drc\u003d6fb8b66465fb3127f1e4b982c10ba2e342423a56). Added a TODO.",
+      "parentUuid": "7602d965_151f2803",
       "revId": "ebf30cd49fc4aa84b4c0161869b075b6ecbe9d8c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
