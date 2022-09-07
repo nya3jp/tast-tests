@@ -68,6 +68,24 @@
       "parentUuid": "1b17939d_66c0ae9f",
       "revId": "7f1335c870e5d62170d1681e070392efd74e3d6e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6cf6434_a0507ca0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1504887
+      },
+      "writtenOn": "2022-09-07T22:43:46Z",
+      "side": 1,
+      "message": "Yes, I will add this info in the bug. This helped me catch that I actually linked the wrong bug too - thanks.",
+      "parentUuid": "e1059a61_9a4a1a0b",
+      "revId": "7f1335c870e5d62170d1681e070392efd74e3d6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
