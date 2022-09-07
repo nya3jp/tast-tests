@@ -8,6 +8,7 @@ import (
 	"context"
 	"time"
 
+	uda "chromiumos/system_api/user_data_auth_proto"
 	"chromiumos/tast/common/hwsec"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/cryptohome"
@@ -97,7 +98,7 @@ func KioskWithLegacyMount(ctx context.Context, s *testing.State) {
 	}
 
 	// Authenticate a new auth session via the new added pin auth factor and mount the user.
-	authSessionID, err := client.StartAuthSession(ctx, cryptohome.KioskUser, false /*ephemeral*/)
+	authSessionID, err := client.StartAuthSession(ctx, cryptohome.KioskUser, false /*ephemeral*/, uda.AuthIntent_AUTH_INTENT_DECRYPT)
 	if err != nil {
 		s.Fatal("Failed to start auth session for re-mounting: ", err)
 	}
@@ -122,7 +123,7 @@ func KioskWithLegacyMount(ctx context.Context, s *testing.State) {
 
 	// Ensure that Kiosk login works when USS flag is disabled, but should
 	// still work with AuthFactor API.
-	authSessionID, err = client.StartAuthSession(ctx, cryptohome.KioskUser, false /*ephemeral*/)
+	authSessionID, err = client.StartAuthSession(ctx, cryptohome.KioskUser, false /*ephemeral*/, uda.AuthIntent_AUTH_INTENT_DECRYPT)
 	if err != nil {
 		s.Fatal("Failed to start auth session for re-mounting: ", err)
 	}
@@ -153,7 +154,7 @@ func KioskWithLegacyMount(ctx context.Context, s *testing.State) {
 	defer cleanupUSSExperiment()
 
 	// Ensure that Kiosk login works when USS flag is enabled.
-	authSessionID, err = client.StartAuthSession(ctx, cryptohome.KioskUser, false /*ephemeral*/)
+	authSessionID, err = client.StartAuthSession(ctx, cryptohome.KioskUser, false /*ephemeral*/, uda.AuthIntent_AUTH_INTENT_DECRYPT)
 	if err != nil {
 		s.Fatal("Failed to start auth session for re-mounting: ", err)
 	}
