@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "23158a2c_c0339ad3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/intel/webgl_multi_window.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-09-07T05:11:36Z",
+      "side": 1,
+      "message": "We have classified the test cases based on the standard quality levels (Bronze, Silver and Gold) for different boards (Proto, EVT, DVT).\nBased on the quality level that\u0027s required, we need to use the respective param to execute the test case. Also, this was suggested by Eduardo Valdes during our initial upstream phase and we\u0027re following the same in many of our tests.\n\nBecause of this, we cannot modify it into a table-driven-test.",
+      "parentUuid": "c1445464_1d3370bb",
+      "revId": "bc5d496788e914d587c7f912fac47ea39d9adfb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4f0b6f02_24b124ed",
         "filename": "src/chromiumos/tast/local/bundles/cros/intel/webgl_multi_window.go",
         "patchSetId": 1
@@ -82,6 +100,30 @@
       "writtenOn": "2022-08-19T14:55:14Z",
       "side": 1,
       "message": "This should be available on all boards, right?",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 2
+      },
+      "revId": "bc5d496788e914d587c7f912fac47ea39d9adfb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5596a105_dc6ef43c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/intel/webgl_multi_window.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-09-07T05:11:36Z",
+      "side": 1,
+      "message": "We\u0027re also checking for the `Hardware acceleration` option is enabled or disabled for the WebGL.",
+      "parentUuid": "d2d422c5_d29b5c54",
       "range": {
         "startLine": 68,
         "startChar": 0,
