@@ -35,23 +35,16 @@ func init() {
 		Contacts:     []string{"michellegc@google.com", "essential-inputs-team@google.com"},
 		Attr:         []string{"group:mainline", "group:input-tools", "informational"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
+		HardwareDeps: hwdep.D(pre.InputsStableModels),
 		SearchFlags:  util.IMESearchFlags([]ime.InputMethod{ime.EnglishUS}),
 		Timeout:      5 * time.Minute,
 		Params: []testing.Param{
 			{
-				Name:              "informational",
-				Fixture:           fixture.TabletVK,
-				ExtraHardwareDeps: hwdep.D(pre.InputsUnstableModels),
+				Fixture: fixture.TabletVKWithMultitouch,
 			},
 			{
-				Name:              "tablet_with_multitouch",
-				Fixture:           fixture.TabletVKWithMultitouch,
-				ExtraHardwareDeps: hwdep.D(pre.InputsUnstableModels),
-			},
-			{
-				Name:              "lacros_with_multitouch",
+				Name:              "lacros",
 				Fixture:           fixture.LacrosTabletVKWithMultitouch,
-				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
 				ExtraSoftwareDeps: []string{"lacros"},
 			},
 		},
