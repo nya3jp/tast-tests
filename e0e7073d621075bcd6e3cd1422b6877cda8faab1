@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f82252d5_31937431",
+        "filename": "src/chromiumos/tast/local/chrome/ash/desks.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-09-07T21:18:48Z",
+      "side": 1,
+      "message": "I wanted to check it because it is an easy check to tell us whether or not autotestPrivate.getDesksInfo is hooked up correctly. If it\u0027s returning `\u003c\u003d0`, then something big is wrong and we probably should fail the test. It could also help us with better error message logging, because if we propogate a 0 desk count to another test, they might not be prepared to handle that specific, \"never should occur\" value.\n\nI changed it to checking NumDesks \u003c 1 though, because that makes more sense than assuming 0 is a special case.",
+      "parentUuid": "0e9fb586_9a14b3a5",
+      "range": {
+        "startLine": 122,
+        "startChar": 3,
+        "endLine": 122,
+        "endChar": 28
+      },
+      "revId": "e0e7073d621075bcd6e3cd1422b6877cda8faab1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9746c129_0d4aa0fb",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-09-07T20:59:40Z",
       "side": 1,
       "message": "optional nit: How about:\n\terr :\u003d tconn.Call(ctx, \u0026desks, \"tast.promisify(chrome.autotestPrivate.getDesksInfo)\")\n\treturn desks, err",
+      "range": {
+        "startLine": 138,
+        "startChar": 0,
+        "endLine": 141,
+        "endChar": 18
+      },
+      "revId": "e0e7073d621075bcd6e3cd1422b6877cda8faab1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "746043a9_1701ec65",
+        "filename": "src/chromiumos/tast/local/chrome/ash/desks.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-09-07T21:18:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9746c129_0d4aa0fb",
       "range": {
         "startLine": 138,
         "startChar": 0,
