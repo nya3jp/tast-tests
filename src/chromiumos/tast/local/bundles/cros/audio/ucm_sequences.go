@@ -31,11 +31,6 @@ func init() {
 		HardwareDeps: hwdep.D(
 			// TODO(b/231276793): eve hotword broken.
 			hwdep.SkipOnModel("eve"),
-			// TODO(b/245202045): Remove once we determine the HiFi.conf path correctly.
-			hwdep.SkipOnModel(
-				"astronaut", "babymega", "babytiger", "blacktip", "blacktip360",
-				"blacktiplte", "bruce", "epaulette", "lava", "nasher", "nasher360",
-				"rabbid", "robo", "robo360", "santa", "whitetip"),
 		),
 		Fixture: "crasStopped",
 		Params: []testing.Param{
