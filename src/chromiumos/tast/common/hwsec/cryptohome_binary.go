@@ -411,6 +411,15 @@ func (c *cryptohomeBinary) updateRecoveryAuthFactor(ctx context.Context, authSes
 	return c.call(ctx, args...)
 }
 
+// updatePinAuthFactor calls "cryptohome --action=update_auth_factor --pin=<pin>".
+func (c *cryptohomeBinary) updatePinAuthFactor(ctx context.Context, authSessionID, label, pin string) ([]byte, error) {
+	args := []string{"--action=update_auth_factor",
+		"--auth_session_id=" + authSessionID,
+		"--key_label=" + label,
+		"--pin=" + pin}
+	return c.call(ctx, args...)
+}
+
 // prepareGuestVault calls "cryptohome --action=prepare_guest_vault"
 func (c *cryptohomeBinary) prepareGuestVault(ctx context.Context) ([]byte, error) {
 	return c.call(ctx, "--action=prepare_guest_vault")
