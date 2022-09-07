@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56256ea0_044fab0e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2022-09-07T08:14:51Z",
+      "side": 1,
+      "message": "I think we should depend on CL:3857465?",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 27
+      },
+      "revId": "3e1b4c937d8d786ea7fd962ab526d3b56abd1de3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
