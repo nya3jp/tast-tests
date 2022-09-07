@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9fe93bd_aea262ca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-09-07T01:23:53Z",
+      "side": 1,
+      "message": "These tests don\u0027t look like they are consistently passing:\nhttps://tastboard.corp.google.com/test/firmware.FpAddEntropy\nhttps://tastboard.corp.google.com/test/firmware.FpBioWash\nhttps://tastboard.corp.google.com/test/firmware.FpCheckWriteProtect\nhttps://tastboard.corp.google.com/test/firmware.FpTpmSeed\n\nThe general criteria for promoting to critical is passing every run for the past 20 runs.\n",
+      "revId": "cc52118d53b439852b90c70addc5a590fd43edfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
