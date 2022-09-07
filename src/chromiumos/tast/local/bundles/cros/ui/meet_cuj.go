@@ -488,6 +488,9 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 			}
 			addBotsCount -= len(botList)
 		}
+		if addBotsCount > 0 {
+			s.Fatalf("Still need %d more bots not including the spotlight bot", addBotsCount)
+		}
 	}
 
 	// Create a bot with spotlight layout to request HD video.
