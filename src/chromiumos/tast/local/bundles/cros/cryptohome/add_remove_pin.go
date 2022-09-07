@@ -8,6 +8,7 @@ import (
 	"context"
 	"time"
 
+	uda "chromiumos/system_api/user_data_auth_proto"
 	"chromiumos/tast/common/hwsec"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
@@ -73,7 +74,7 @@ func AddRemovePin(ctx context.Context, s *testing.State) {
 	defer cleanupUSSExperiment()
 
 	// Create and mount the persistent user.
-	authSessionID, err := client.StartAuthSession(ctx, userName, false /*ephemeral*/)
+	authSessionID, err := client.StartAuthSession(ctx, userName, false /*ephemeral*/, uda.AuthIntent_AUTH_INTENT_DECRYPT)
 	if err != nil {
 		s.Fatal("Failed to start auth session: ", err)
 	}
@@ -103,7 +104,7 @@ func AddRemovePin(ctx context.Context, s *testing.State) {
 		}
 
 		// Authenticate a new auth session via the new added pin auth factor and mount the user.
-		authSessionID, err = client.StartAuthSession(ctx, userName, false /*ephemeral*/)
+		authSessionID, err = client.StartAuthSession(ctx, userName, false /*ephemeral*/, uda.AuthIntent_AUTH_INTENT_DECRYPT)
 		if err != nil {
 			return errors.Wrap(err, "failed to start auth session for re-mounting")
 		}
