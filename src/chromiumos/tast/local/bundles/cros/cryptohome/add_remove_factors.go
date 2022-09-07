@@ -154,9 +154,11 @@ func AddRemoveFactors(ctx context.Context, s *testing.State) {
 	var expectedAllSupported = []uda.AuthFactorType{
 		uda.AuthFactorType_AUTH_FACTOR_TYPE_PASSWORD,
 		uda.AuthFactorType_AUTH_FACTOR_TYPE_KIOSK,
+		uda.AuthFactorType_AUTH_FACTOR_TYPE_SMART_CARD,
 	}
 	var expectedNoKioskSupported = []uda.AuthFactorType{
 		uda.AuthFactorType_AUTH_FACTOR_TYPE_PASSWORD,
+		uda.AuthFactorType_AUTH_FACTOR_TYPE_SMART_CARD,
 	}
 	// The supported lists may also need PIN or RECOVERY, depending on the DUT and the test params.
 	if supportsPin {
