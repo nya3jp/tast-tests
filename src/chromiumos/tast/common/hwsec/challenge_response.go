@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package util
+package hwsec
 
 import (
 	"crypto"
@@ -14,6 +14,17 @@ import (
 
 	cpb "chromiumos/system_api/cryptohome_proto"
 	"chromiumos/tast/errors"
+)
+
+// SmartCardAlgorithms is used for listing all the possible types of algorithms that
+// a smart card can authenticate with.
+var (
+	SmartCardAlgorithms = []cpb.ChallengeSignatureAlgorithm{
+		cpb.ChallengeSignatureAlgorithm_CHALLENGE_RSASSA_PKCS1_V1_5_SHA1,
+		cpb.ChallengeSignatureAlgorithm_CHALLENGE_RSASSA_PKCS1_V1_5_SHA256,
+		cpb.ChallengeSignatureAlgorithm_CHALLENGE_RSASSA_PKCS1_V1_5_SHA384,
+		cpb.ChallengeSignatureAlgorithm_CHALLENGE_RSASSA_PKCS1_V1_5_SHA512,
+	}
 )
 
 // LogFunc represent the type of logging function, such as `s.Logf`.

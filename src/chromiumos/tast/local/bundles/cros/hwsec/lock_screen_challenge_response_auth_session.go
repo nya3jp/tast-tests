@@ -12,7 +12,6 @@ import (
 
 	cpb "chromiumos/system_api/cryptohome_proto"
 	"chromiumos/tast/common/hwsec"
-	"chromiumos/tast/local/bundles/cros/hwsec/util"
 	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/dbusutil"
 	hwseclocal "chromiumos/tast/local/hwsec"
@@ -39,12 +38,7 @@ func init() {
 			},
 			{
 				Name: "rsassa_all",
-				Val: []cpb.ChallengeSignatureAlgorithm{
-					cpb.ChallengeSignatureAlgorithm_CHALLENGE_RSASSA_PKCS1_V1_5_SHA1,
-					cpb.ChallengeSignatureAlgorithm_CHALLENGE_RSASSA_PKCS1_V1_5_SHA256,
-					cpb.ChallengeSignatureAlgorithm_CHALLENGE_RSASSA_PKCS1_V1_5_SHA384,
-					cpb.ChallengeSignatureAlgorithm_CHALLENGE_RSASSA_PKCS1_V1_5_SHA512,
-				},
+				Val:  hwsec.SmartCardAlgorithms,
 			}},
 	})
 }
@@ -64,7 +58,7 @@ func LockScreenChallengeResponseAuthSession(ctx context.Context, s *testing.Stat
 func lockScreenLogin(ctx context.Context, s *testing.State, isEphemeral bool) {
 	const (
 		ownerUser   = "owner@owner.owner"
-		keyLabel    = "fake_label"
+		keyLabel    = "smart-card-label"
 		dbusName    = "org.chromium.TestingCryptohomeKeyDelegate"
 		testUser    = "cryptohome_test@chromium.org"
 		keySizeBits = 2048
@@ -108,7 +102,7 @@ func lockScreenLogin(ctx context.Context, s *testing.State, isEphemeral bool) {
 	}
 	defer dbusConn.ReleaseName(dbusName)
 
-	keyDelegate, err := util.NewCryptohomeKeyDelegate(
+	keyDelegate, err := hwsec.NewCryptohomeKeyDelegate(
 		s.Logf, dbusConn, testUser, keyAlgs, rsaKey, pubKeySPKIDER)
 	if err != nil {
 		s.Fatal("Failed to export D-Bus key delegate: ", err)
@@ -138,7 +132,7 @@ func lockScreenLogin(ctx context.Context, s *testing.State, isEphemeral bool) {
 	}
 
 	authConfig := hwsec.NewChallengeAuthConfig(testUser, dbusName, keyDelegate.DBusPath, pubKeySPKIDER, keyAlgs)
-	cleanup, err := cryptohome.CreateUserAuthSessionWithChallengeCredential(ctx, testUser, isEphemeral, authConfig)
+	cleanup, err := cryptohome.CreateUserAuthSessionWithChallengeCredential(ctx, testUser, keyLabel, isEphemeral, authConfig)
 	if err != nil {
 		s.Fatal("Failed to create the user: ", err)
 	}

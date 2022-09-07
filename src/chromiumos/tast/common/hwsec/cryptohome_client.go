@@ -995,9 +995,9 @@ func (u *CryptohomeClient) AuthenticatePinWithAuthSession(ctx context.Context, p
 
 // AuthenticateChallengeCredentialWithAuthSession authenticates an AuthSession with a given authSessionID,
 // using a Challenge-Credential based backend dependent on flags provided through extraFlags.
-func (u *CryptohomeClient) AuthenticateChallengeCredentialWithAuthSession(ctx context.Context, authSessionID string, authConfig *AuthConfig) error {
+func (u *CryptohomeClient) AuthenticateChallengeCredentialWithAuthSession(ctx context.Context, authSessionID, label string, authConfig *AuthConfig) error {
 	extraFlags := authConfigToExtraFlags(authConfig)
-	_, err := u.binary.authenticateChallengeCredentialWithAuthSession(ctx, authSessionID, extraFlags)
+	_, err := u.binary.authenticateChallengeCredentialWithAuthSession(ctx, authSessionID, label, extraFlags)
 	return err
 }
 
@@ -1045,6 +1045,13 @@ func (u *CryptohomeClient) AuthenticateRecoveryAuthFactor(ctx context.Context, a
 	return err
 }
 
+// AuthenticateSmartCardAuthFactor authenticates an AuthSession with a given authSessionID via smart card.
+func (u *CryptohomeClient) AuthenticateSmartCardAuthFactor(ctx context.Context, authSessionID, label string, authConfig *AuthConfig) error {
+	extraFlags := authConfigToExtraFlags(authConfig)
+	_, err := u.binary.authenticateSmartCardAuthFactor(ctx, authSessionID, label, extraFlags)
+	return err
+}
+
 // AddCredentialsWithAuthSession creates the credentials for the user with given password.
 // password is ignored if publicMount is set to true.
 func (u *CryptohomeClient) AddCredentialsWithAuthSession(ctx context.Context, user, password, keyLabel, authSessionID string, publicMount bool) error {
@@ -1060,9 +1067,9 @@ func (u *CryptohomeClient) AddPinCredentialsWithAuthSession(ctx context.Context,
 
 // AddChallengeCredentialsWithAuthSession creates the credentials for the user,
 // using a Challenge-Credential based backend dependent on flags provided through extraFlags.
-func (u *CryptohomeClient) AddChallengeCredentialsWithAuthSession(ctx context.Context, user, authSessionID string, authConfig *AuthConfig) error {
+func (u *CryptohomeClient) AddChallengeCredentialsWithAuthSession(ctx context.Context, user, authSessionID, label string, authConfig *AuthConfig) error {
 	extraFlags := authConfigToExtraFlags(authConfig)
-	_, err := u.binary.addChallengeCredentialsWithAuthSession(ctx, user, authSessionID, extraFlags)
+	_, err := u.binary.addChallengeCredentialsWithAuthSession(ctx, user, authSessionID, label, extraFlags)
 	return err
 }
 
@@ -1093,6 +1100,13 @@ func (u *CryptohomeClient) AddRecoveryAuthFactor(ctx context.Context, authSessio
 // AddKioskAuthFactor creates an auth factor for kiosk user.
 func (u *CryptohomeClient) AddKioskAuthFactor(ctx context.Context, authSessionID string) error {
 	_, err := u.binary.addKioskAuthFactor(ctx, authSessionID)
+	return err
+}
+
+// AddSmartCardAuthFactor creates an auth factor for the user with given smart card.
+func (u *CryptohomeClient) AddSmartCardAuthFactor(ctx context.Context, authSessionID, label string, authConfig *AuthConfig) error {
+	extraFlags := authConfigToExtraFlags(authConfig)
+	_, err := u.binary.addSmartCardAuthFactor(ctx, authSessionID, label, extraFlags)
 	return err
 }
 
