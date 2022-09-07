@@ -113,7 +113,7 @@ func removeAllChildren(dirPath string) error {
 	return firstErr
 }
 
-func createChallengeResponseData(ctx context.Context, lf LogFunc, cryptohome *hwsec.CryptohomeClient) (*CrossVersionLoginConfig, error) {
+func createChallengeResponseData(ctx context.Context, lf hwsec.LogFunc, cryptohome *hwsec.CryptohomeClient) (*CrossVersionLoginConfig, error) {
 	const (
 		dbusName    = "org.chromium.TestingCryptohomeKeyDelegate"
 		testUser    = "challenge_response_test@chromium.org"
@@ -148,7 +148,7 @@ func createChallengeResponseData(ctx context.Context, lf LogFunc, cryptohome *hw
 	}
 	defer dbusConn.ReleaseName(dbusName)
 
-	keyDelegate, err := NewCryptohomeKeyDelegate(
+	keyDelegate, err := hwsec.NewCryptohomeKeyDelegate(
 		lf, dbusConn, testUser, keyAlgs, rsaKey, pubKeySPKIDER)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to export D-Bus key delegate")
@@ -246,7 +246,7 @@ func ecryptfsVaultExists(ctx context.Context, cryptohome *hwsec.CryptohomeClient
 }
 
 // PrepareCrossVersionLoginData prepares the login data and config for CrossVersionLogin and saves them to dataPath and configPath respectively
-func PrepareCrossVersionLoginData(ctx context.Context, lf LogFunc, cryptohome *hwsec.CryptohomeClient, daemonController *hwsec.DaemonController, dataPath, configPath string) (retErr error) {
+func PrepareCrossVersionLoginData(ctx context.Context, lf hwsec.LogFunc, cryptohome *hwsec.CryptohomeClient, daemonController *hwsec.DaemonController, dataPath, configPath string) (retErr error) {
 	var configList []CrossVersionLoginConfig
 
 	defer func() {
