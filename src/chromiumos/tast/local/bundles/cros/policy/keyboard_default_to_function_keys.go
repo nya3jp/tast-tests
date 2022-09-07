@@ -31,7 +31,7 @@ func init() {
 			"chromeos-commercial-remote-management@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:commercial_limited"},
 		Fixture:      fixture.ChromePolicyLoggedIn,
 		SearchFlags: []*testing.StringPair{
 			pci.SearchFlag(&policy.KeyboardDefaultToFunctionKeys{}, pci.VerifiedFunctionalityJS),

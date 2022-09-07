@@ -29,7 +29,7 @@ func init() {
 			"snijhara@google.com", // Test author
 			"chromeos-commercial-remote-management@google.com",
 		},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:commercial_limited"},
 		SoftwareDeps: []string{"chrome"},
 		Fixture:      fixture.FakeDMSEnrolled,
 		SearchFlags: []*testing.StringPair{

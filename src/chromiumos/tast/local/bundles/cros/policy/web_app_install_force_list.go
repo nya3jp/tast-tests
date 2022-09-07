@@ -41,7 +41,7 @@ func init() {
 			"chromeos-commercial-remote-management@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:commercial_limited"},
 		Fixture:      fixture.ChromePolicyLoggedIn,
 		Data: []string{"web_app_install_force_list_index.html",
 			"web_app_install_force_list_manifest.json",
