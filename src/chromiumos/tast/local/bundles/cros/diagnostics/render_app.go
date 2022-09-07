@@ -11,6 +11,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/diagnosticsapp"
+	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/testing"
 )
 
@@ -34,6 +35,7 @@ func init() {
 // RenderApp verifies launching an app from the launcher.
 func RenderApp(ctx context.Context, s *testing.State) {
 	tconn := s.FixtValue().(*chrome.TestConn)
+	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 	ui := uiauto.New(tconn).WithTimeout(20 * time.Second)
 
 	// Verify cpu chart is drawn.

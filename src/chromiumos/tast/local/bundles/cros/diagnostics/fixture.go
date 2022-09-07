@@ -12,7 +12,6 @@ import (
 	"chromiumos/tast/local/bundles/cros/diagnostics/utils"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto/diagnosticsapp"
-	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/testing"
 )
 
@@ -69,7 +68,6 @@ func (f *diagnosticsPrepFixture) SetUp(ctx context.Context, s *testing.FixtState
 	if err != nil {
 		s.Fatal("Failed to connect Test API: ", err)
 	}
-	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
 	success = true
 	f.cr = cr
