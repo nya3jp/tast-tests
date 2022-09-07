@@ -6,6 +6,7 @@ package hps
 
 import (
 	"context"
+	"math"
 	"time"
 
 	"github.com/golang/protobuf/ptypes/empty"
@@ -103,17 +104,17 @@ func CameraboxLoLOn(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to change setting: ", err)
 	}
 
-	// Get the delays for the quick dim.
-	delayReq := &wrappers.BoolValue{
+	// When showing ZeroPresence expect that quick dim will happen.
+	quickDimExpectedReq := &wrappers.BoolValue{
 		Value: presenceNo.numOfPerson == utils.ZeroPresence,
 	}
-	quickDimMetrics, err := client.RetrieveDimMetrics(hctx.Ctx, delayReq)
-	dimDelay, screenOffDelay, lockDelay := delayForPresence(presenceNo.numOfPerson, quickDimMetrics)
+	quickDimMetrics, err := client.RetrieveDimMetrics(hctx.Ctx, quickDimExpectedReq)
+	dimDelay, screenOffDelay := delayForPresence(presenceNo.numOfPerson, quickDimMetrics)
 	if err != nil {
 		s.Fatal("Error getting delay settings: ", err)
 	}
 
-	brightness, err := utils.GetBrightness(hctx.Ctx, dut.Conn())
+	initialBrightness, err := utils.GetBrightness(hctx.Ctx, dut.Conn())
 	if err != nil {
 		s.Fatal("Error failed to get brightness: ", err)
 	}
@@ -123,29 +124,48 @@ func CameraboxLoLOn(ctx context.Context, s *testing.State) {
 		s.Fatal("Error open hps-internals")
 	}
 
-	// It takes around 10s for hps sensor to start having proper results.
-	testing.Sleep(ctx, time.Second*10)
+	startTime := time.Now()
 
-	if err := utils.PollForDim(ctx, brightness, dimDelay, false, dut.Conn()); err != nil {
-		s.Fatal("Error when polling for brightness: ", err)
+	testing.ContextLog(ctx, "Waiting for screen to dim")
+	if err := utils.PollForDim(ctx, initialBrightness, dimDelay, false, dut.Conn()); err != nil {
+		s.Error("Error when polling for brightness: ", err)
 	}
 
-	if err := utils.PollForDim(ctx, brightness, screenOffDelay, true, dut.Conn()); err != nil {
-		s.Fatal("Error when polling for brightness: ", err)
+	dimTime := time.Now()
+
+	testing.ContextLog(ctx, "Waiting for screen to turn off")
+	if err := utils.PollForDim(ctx, initialBrightness, screenOffDelay, true, dut.Conn()); err != nil {
+		s.Error("Error when polling for brightness: ", err)
 	}
 
-	utils.WaitWithDelay(ctx, lockDelay)
-	if _, err := client.CheckForLockScreen(hctx.Ctx, &empty.Empty{}); err != nil {
-		s.Fatal("The system failed to lock: ", err)
-	}
+	screenOffTime := time.Now()
 
+	// Not waiting for the lock screen, since it's controlled by "Show lock screen after waking from sleep" setting.
+
+	dimDuration := dimTime.Sub(startTime)
+	screenOffDuration := screenOffTime.Sub(dimTime)
+	testing.ContextLog(ctx, "(expected) dimDelay: ", dimDelay.Seconds())
+	testing.ContextLog(ctx, "(actual)   dimDuration: ", dimDuration.Seconds())
+	testing.ContextLog(ctx, "(expected) screenOffDelay: ", screenOffDelay.Seconds())
+	testing.ContextLog(ctx, "(actual)   screenOffDuration: ", screenOffDuration.Seconds())
+
+	dimDelta := math.Abs(dimDuration.Seconds() - dimDelay.Seconds())
+	if dimDelta > utils.BrightnessChangeTimeoutSlackDuration.Seconds() {
+		s.Errorf("Dim duration delta (%f) is greater than allowed slack: %f", dimDelta, utils.BrightnessChangeTimeoutSlackDuration.Seconds())
+	}
+	screenOffDelta := math.Abs(screenOffDuration.Seconds() - screenOffDelay.Seconds())
+	if screenOffDelta > utils.BrightnessChangeTimeoutSlackDuration.Seconds() {
+		s.Errorf("Screen off duration delta (%f) is greater than allowed slack: %f", screenOffDelta, utils.BrightnessChangeTimeoutSlackDuration.Seconds())
+	}
 }
 
 // delayForPresence returns the expected dim time depending on the human presence.
-func delayForPresence(numPresence string, dimSettings *pb.RetrieveDimMetricsResponse) (time.Duration, time.Duration, time.Duration) {
+func delayForPresence(numPresence string, dimSettings *pb.RetrieveDimMetricsResponse) (time.Duration, time.Duration) {
 	if numPresence == utils.ZeroPresence {
-		return dimSettings.DimDelay.AsDuration(), dimSettings.ScreenOffDelay.AsDuration(), dimSettings.LockDelay.AsDuration()
+		return dimSettings.DimDelay.AsDuration(), dimSettings.ScreenOffDelay.AsDuration()
 	}
-	// When a human is present, the screen off delay is 30s from dim, and screen lock is 1min from screen off.
-	return dimSettings.DimDelay.AsDuration() * 2, 30 * time.Second, time.Minute
+	// http://cs/chromeos_public/src/platform2/power_manager/powerd/policy/state_controller.cc
+	// StateController::UpdateState() will prevent dimming the screen the first time if the HPS is positive,
+	// effectively extending the delay by 2x.
+	return 2 * dimSettings.DimDelay.AsDuration(), dimSettings.ScreenOffDelay.AsDuration()
 }
