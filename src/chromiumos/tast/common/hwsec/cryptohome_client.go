@@ -985,6 +985,12 @@ func (u *CryptohomeClient) UpdateRecoveryAuthFactor(ctx context.Context, authSes
 	return err
 }
 
+// UpdatePinAuthFactor updates the pin auth factor for the user.
+func (u *CryptohomeClient) UpdatePinAuthFactor(ctx context.Context, authSessionID, label, pin string) error {
+	_, err := u.binary.updatePinAuthFactor(ctx, authSessionID, label, pin)
+	return err
+}
+
 // PrepareGuestVault prepares vault for guest session.
 func (u *CryptohomeClient) PrepareGuestVault(ctx context.Context) error {
 	_, err := u.binary.prepareGuestVault(ctx)
