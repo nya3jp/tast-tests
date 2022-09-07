@@ -37,6 +37,40 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "879286a7_405d03d7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2604,
+      "author": {
+        "id": 1498402
+      },
+      "writtenOn": "2022-09-07T20:13:16Z",
+      "side": 1,
+      "message": "Can you `s/md5logPath/md5LogPath` with a capital L?",
+      "revId": "a101a4d2f55a34e85fc40b67a527207c777baf81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b842e809_fcf48170",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2620,
+      "author": {
+        "id": 1498402
+      },
+      "writtenOn": "2022-09-07T20:13:16Z",
+      "side": 1,
+      "message": "This line makes the assumption that every command line tool will use `--md5\u003d\u003coutput file path\u003e`. This _happens_ to be true today.\n\nCould you either:\n1. add a comment stating the assumption, or\n2. add `md5OutputPath string` to the definition of `commandBuilderDecodeFn`, and leave setting the `--md5` argument in the command builder functions?\n\nMy preference is strongly for 2, but other reviewers may have opinions about this.",
+      "revId": "a101a4d2f55a34e85fc40b67a527207c777baf81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6f9287c8_ed7a888e",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
         "patchSetId": 2
@@ -48,6 +82,24 @@
       "writtenOn": "2022-09-07T19:52:12Z",
       "side": 1,
       "message": "nit: s/Remove/Removes/",
+      "revId": "a101a4d2f55a34e85fc40b67a527207c777baf81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0be00de_3f7b9c3b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2642,
+      "author": {
+        "id": 1498402
+      },
+      "writtenOn": "2022-09-07T20:13:16Z",
+      "side": 1,
+      "message": "Can you move `defer os.Remove(md5logPath)` higher in the function. Namely before any exit paths? `defer os.Remove(md5logPath)` tells the program to \"defer (delay) removing the file until the function exits.\"\n\nWith the current patchset, if the test fails with a Fatal error, the file will be left dangling.",
+      "parentUuid": "6f9287c8_ed7a888e",
       "revId": "a101a4d2f55a34e85fc40b67a527207c777baf81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
