@@ -69,7 +69,7 @@ func (f *diagnosticsPrepFixture) SetUp(ctx context.Context, s *testing.FixtState
 	if err != nil {
 		s.Fatal("Failed to connect Test API: ", err)
 	}
-	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
+	defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "ui_dump")
 
 	success = true
 	f.cr = cr
