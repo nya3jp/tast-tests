@@ -77,14 +77,49 @@ func ShutdownWithCommandBatteryCutoff(ctx context.Context, s *testing.State) {
 		if err := pxy.Servo().RunECCommand(ctx, "reboot"); err != nil {
 			s.Fatal("Failed to reboot EC: ", err)
 		}
-		// Wait a little at the end of the test to make sure the EC finishes booting before the next test runs.
+		// Wait a little at the end of the test to make sure the EC finishes booting.
 		testing.ContextLog(ctx, "Waiting for EC to boot")
-		defer func() {
-			s.Log("Waiting for boot to finish")
-			if err := testing.Sleep(ctx, 20*time.Second); err != nil {
-				s.Fatal("Failed to sleep: ", err)
+		if err := testing.Sleep(ctx, 10*time.Second); err != nil {
+			s.Fatal("Failed to sleep: ", err)
+		}
+		testing.ContextLog(ctx, "Assuming EC has booted")
+
+		// TODO: b/232284174: Servo/Charging disconnect
+		// Verify AC is attached so the DUT can boot since we can't guarantee the battery charge.
+		if err := testing.Poll(ctx, func(ctx context.Context) error {
+			chargerAttached, err := h.Servo.GetChargerAttached(ctx)
+			if err != nil {
+				s.Fatal("Error checking whether charger is attached: ", err)
 			}
-		}()
+			if !chargerAttached {
+				s.Log("Charger not attached")
+				if err := pxy.Servo().RunECCommand(ctx, "reboot"); err != nil {
+					s.Fatal("Failed to reboot EC: ", err)
+				}
+				// Wait a little at the end of the test to make sure the EC finishes booting.
+				testing.ContextLog(ctx, "Waiting for EC to boot")
+				if err := testing.Sleep(ctx, 10*time.Second); err != nil {
+					s.Fatal("Failed to sleep: ", err)
+				}
+				return errors.New("Charger is not attached")
+			}
+			return nil
+		}, &testing.PollOptions{Timeout: 100 * time.Second, Interval: 1 * time.Second}); err != nil {
+			s.Fatal(err, "Failed to check for charger")
+		}
+		s.Log("Charger is present")
+
+		chargerAttached, err := h.Servo.GetChargerAttached(ctx)
+		if err != nil {
+			s.Fatal("Error checking whether charger is attached: ", err)
+		}
+		if !chargerAttached {
+			s.Log("Charger not attached")
+			if err := h.SetDUTPower(ctx, true); err != nil {
+				s.Fatal("Failed to attach charger: ", err)
+			}
+		}
+
 		testing.ContextLog(ctx, "Attempting to connect to DUT")
 		if !dut.Connected(ctx) {
 			if err := powercontrol.PowerOntoDUT(ctx, pxy, dut); err != nil {
@@ -109,6 +144,36 @@ func ShutdownWithCommandBatteryCutoff(ctx context.Context, s *testing.State) {
 	if err := dut.Conn().CommandContext(ctx, "ectool", "batterycutoff").Run(); err != nil {
 		s.Fatal("Failed to issue `ectool batterycutoff`: ", err)
 	}
+
+	testing.ContextLog(ctx, "Waiting after cutting off the battery")
+	if err := testing.Sleep(ctx, 2*time.Second); err != nil {
+		s.Fatal("Failed to sleep: ", err)
+	}
+
+	// TODO: b/232284174: Servo/Charging disconnect
+	// Verify AC is attached so the DUT can boot since we can't guarantee the battery charge.
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		chargerAttached, err := h.Servo.GetChargerAttached(ctx)
+		if err != nil {
+			s.Fatal("Error checking whether charger is attached: ", err)
+		}
+		if !chargerAttached {
+			s.Log("Charger not attached")
+			if err := pxy.Servo().RunECCommand(ctx, "reboot"); err != nil {
+				s.Fatal("Failed to reboot EC: ", err)
+			}
+			// Wait a little at the end of the test to make sure the EC finishes booting.
+			testing.ContextLog(ctx, "Waiting for EC to boot")
+			if err := testing.Sleep(ctx, 10*time.Second); err != nil {
+				s.Fatal("Failed to sleep: ", err)
+			}
+			return errors.New("Charger is not attached")
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 100 * time.Second, Interval: 1 * time.Second}); err != nil {
+		s.Fatal(err, "Failed to check for charger")
+	}
+	s.Log("Charger is present")
 
 	testing.ContextLog(ctx, "Shutting down the AP")
 	powerOffCtx, cancel := context.WithTimeout(ctx, 3*time.Second)
