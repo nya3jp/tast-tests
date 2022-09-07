@@ -35,6 +35,41 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f3fff6f_cd920d9f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-09-07T22:13:21Z",
+      "side": 1,
+      "message": "I am looking at this change.",
+      "parentUuid": "a912840d_c319b1fa",
+      "revId": "86d1d0dac0c4c71fac9d97edaec0bb62862de2a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b728f4e2_40a305f7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-09-07T22:13:21Z",
+      "side": 1,
+      "message": "Please rebase to resolve merge conflict :)",
+      "revId": "86d1d0dac0c4c71fac9d97edaec0bb62862de2a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "54f07ceb_387b7665",
@@ -54,6 +89,23 @@
         "endLine": 111,
         "endChar": 20
       },
+      "revId": "86d1d0dac0c4c71fac9d97edaec0bb62862de2a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0b174d6_c23d94ed",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/fgsec_connect.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-09-07T22:13:21Z",
+      "side": 1,
+      "message": "Could you please add a discription of the test steps. similar to this test:\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/remote/bundles/cros/wifi/p2p_simple_connect.go;rcl\u003d408dc0de035db3b85f9915ef0b566e96f253b4a9;l\u003d28",
       "revId": "86d1d0dac0c4c71fac9d97edaec0bb62862de2a2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -100,6 +152,40 @@
         "endLine": 182,
         "endChar": 16
       },
+      "revId": "86d1d0dac0c4c71fac9d97edaec0bb62862de2a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e5d1955_73320987",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/fgsec_connect.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-09-07T22:13:21Z",
+      "side": 1,
+      "message": "Could you defer the disconnection right after this function. Similar to here:\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go;rcl\u003d650992b837ede54696c166dcd4795202101e6130;l\u003d1346",
+      "revId": "86d1d0dac0c4c71fac9d97edaec0bb62862de2a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38354279_34901132",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/scan_util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-09-07T22:13:21Z",
+      "side": 1,
+      "message": "This function uses Shill API to wait for the scan status to be Idle then triggers scan through Shill. However, this function uses WPAMonitor to check if the scan results has been received. I think it\u0027s better to use wpa_cli/Shill API for all the steps if possible.\n\nnit: I think this function can exist in test_fixture.go",
       "revId": "86d1d0dac0c4c71fac9d97edaec0bb62862de2a2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
