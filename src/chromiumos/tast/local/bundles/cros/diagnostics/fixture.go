@@ -69,7 +69,6 @@ func (f *diagnosticsPrepFixture) SetUp(ctx context.Context, s *testing.FixtState
 	if err != nil {
 		s.Fatal("Failed to connect Test API: ", err)
 	}
-	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
 	success = true
 	f.cr = cr
@@ -130,6 +129,8 @@ func (f *diagnosticsPrepFixture) PreTest(ctx context.Context, s *testing.FixtTes
 }
 
 func (f *diagnosticsPrepFixture) PostTest(ctx context.Context, s *testing.FixtTestState) {
+	faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, f.tconn)
+
 	if err := f.api.Release(ctx); err != nil {
 		s.Log("Error releasing systemDataProvider mojo API: ", err)
 	}
