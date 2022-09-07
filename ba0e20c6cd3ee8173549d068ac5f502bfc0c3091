@@ -39,6 +39,30 @@
       },
       "revId": "ba0e20c6cd3ee8173549d068ac5f502bfc0c3091",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c16c1088_6f596eda",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 530,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-09-07T21:47:14Z",
+      "side": 1,
+      "message": "Thanks Xibin for the catch! I\u0027ll revert this in the next patchset and keep the TabSwitchCUJ2 path intact. \n\nWhile we\u0027re at this, can you confirm if `ui.TabSwitchCUJRecorder2` needs a lacros variant or not?",
+      "parentUuid": "a02f88df_85d7744b",
+      "range": {
+        "startLine": 530,
+        "startChar": 0,
+        "endLine": 530,
+        "endChar": 35
+      },
+      "revId": "ba0e20c6cd3ee8173549d068ac5f502bfc0c3091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
