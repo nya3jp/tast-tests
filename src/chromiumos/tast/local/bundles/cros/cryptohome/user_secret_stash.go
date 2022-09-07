@@ -94,45 +94,22 @@ func UserSecretStash(ctx context.Context, s *testing.State) {
 	if err := client.AddAuthFactor(ctx, authSessionID, passwordLabel, userPassword); err != nil {
 		s.Fatal("Failed to create persistent user: ", err)
 	}
-
-	authenticateWithPassword := func() error {
-		// Authenticate a new auth session via the auth factor and mount the user.
-		authSessionID, err = client.StartAuthSession(ctx, userName, false /*ephemeral*/, uda.AuthIntent_AUTH_INTENT_DECRYPT)
-		if err != nil {
-			return errors.Wrap(err, "failed to start auth session for re-mounting")
-		}
-		authReply, err := client.AuthenticateAuthFactor(ctx, authSessionID, passwordLabel, userPassword)
-		if err != nil {
-			return errors.Wrap(err, "failed to authenticate with auth session")
-		}
-		if !authReply.Authenticated {
-			return errors.New("AuthSession not authenticated despite successful reply")
-		}
-		if err := cryptohomecommon.ExpectAuthIntents(authReply.AuthorizedFor, []uda.AuthIntent{
-			uda.AuthIntent_AUTH_INTENT_DECRYPT,
-			uda.AuthIntent_AUTH_INTENT_VERIFY_ONLY,
-		}); err != nil {
-			return errors.Wrap(err, "unexpected AuthSession authorized intents")
-		}
-		if err := client.PreparePersistentVault(ctx, authSessionID, false /*ephemeral*/); err != nil {
-			return errors.Wrap(err, "failed to prepare persistent vault")
-		}
-
-		// Verify that the test file is still there.
-		if err := cryptohome.VerifyFileForPersistence(ctx, userName); err != nil {
-			return errors.Wrap(err, "failed to verify file persistence")
-		}
-		return nil
+	if err := client.InvalidateAuthSession(ctx, authSessionID); err != nil {
+		s.Fatal("Failed to invalidate auth session: ", err)
 	}
 
-	// Unmount the user.
+	// Check the unlock works while still in-session.
+	if err := testPasswordUnlock(ctx, client, userName, passwordLabel, userPassword); err != nil {
+		s.Fatal("Password unlock failed: ", err)
+	}
+
+	// Unmount the user and remount them back.
 	if err := client.UnmountAll(ctx); err != nil {
 		s.Fatal("Failed to unmount vaults for re-mounting: ", err)
 	}
-
-	// Successfully authenticate with password.
-	if err := authenticateWithPassword(); err != nil {
-		s.Fatal("Failed to authenticate with password: ", err)
+	authSessionID, err = testPasswordLogin(ctx, client, userName, passwordLabel, userPassword)
+	if err != nil {
+		s.Fatal("Password remount failed: ", err)
 	}
 
 	// Try to remove the (only) password auth factor, which should fail.
@@ -145,13 +122,68 @@ func UserSecretStash(ctx context.Context, s *testing.State) {
 		s.Fatalf("Unexpected exit code for auth factor removal: got %d; want %d", exitErr.ExitCode, cryptohomeRemoveCredentialsFailed)
 	}
 
-	// Unmount the user.
+	// Unmount the user and verify that authentication, remount and unlock still work.
 	if err := client.UnmountAll(ctx); err != nil {
 		s.Fatal("Failed to unmount vaults for re-mounting: ", err)
 	}
-
-	// Successfully authenticate with password.
-	if err := authenticateWithPassword(); err != nil {
+	if _, err := testPasswordLogin(ctx, client, userName, passwordLabel, userPassword); err != nil {
 		s.Fatal("Failed to authenticate with password after removal attempt: ", err)
 	}
+	if err := testPasswordUnlock(ctx, client, userName, passwordLabel, userPassword); err != nil {
+		s.Fatal("Password unlock failed: ", err)
+	}
+}
+
+func testPasswordLogin(ctx context.Context, cryptohomeClient *hwsec.CryptohomeClient, userName, passwordLabel, password string) (string, error) {
+	// Start AuthSession.
+	authSessionID, err := cryptohomeClient.StartAuthSession(ctx, userName, false /*ephemeral*/, uda.AuthIntent_AUTH_INTENT_DECRYPT)
+	if err != nil {
+		return "", errors.Wrap(err, "failed to start auth session")
+	}
+
+	// Authenticate.
+	authReply, err := cryptohomeClient.AuthenticateAuthFactor(ctx, authSessionID, passwordLabel, password)
+	if err != nil {
+		return "", errors.Wrap(err, "failed to authenticate with auth session")
+	}
+	if !authReply.Authenticated {
+		return "", errors.New("AuthSession not authenticated despite successful reply")
+	}
+	if err := cryptohomecommon.ExpectAuthIntents(authReply.AuthorizedFor, []uda.AuthIntent{
+		uda.AuthIntent_AUTH_INTENT_DECRYPT,
+		uda.AuthIntent_AUTH_INTENT_VERIFY_ONLY,
+	}); err != nil {
+		return "", errors.Wrap(err, "unexpected AuthSession authorized intents")
+	}
+
+	// Mount the user's vault.
+	if err := cryptohomeClient.PreparePersistentVault(ctx, authSessionID, false /*ephemeral*/); err != nil {
+		return "", errors.Wrap(err, "failed to prepare persistent vault")
+	}
+
+	// Verify that the test file is still there.
+	if err := cryptohome.VerifyFileForPersistence(ctx, userName); err != nil {
+		return "", errors.Wrap(err, "failed to verify file persistence")
+	}
+	return authSessionID, nil
+}
+
+func testPasswordUnlock(ctx context.Context, cryptohomeClient *hwsec.CryptohomeClient, userName, passwordLabel, password string) error {
+	authSessionID, err := cryptohomeClient.StartAuthSession(ctx, userName, false /*ephemeral*/, uda.AuthIntent_AUTH_INTENT_VERIFY_ONLY)
+	if err != nil {
+		return errors.Wrap(err, "failed to start auth session")
+	}
+	authReply, err := cryptohomeClient.AuthenticateAuthFactor(ctx, authSessionID, passwordLabel, password)
+	if err != nil {
+		return errors.Wrap(err, "failed to authenticate with auth session")
+	}
+	if authReply.Authenticated {
+		return errors.New("AuthSession authenticated despite verify-only intent")
+	}
+	if err := cryptohomecommon.ExpectAuthIntents(authReply.AuthorizedFor, []uda.AuthIntent{
+		uda.AuthIntent_AUTH_INTENT_VERIFY_ONLY,
+	}); err != nil {
+		return errors.Wrap(err, "unexpected AuthSession authorized intents")
+	}
+	return nil
 }
