@@ -33,7 +33,7 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		// TODO(b/232996538): reenable on taniks when it passes.
 		HardwareDeps: hwdep.D(hwdep.SkipOnModel("taniks")),
-		Fixture:      "chromeLoggedInWith100FakeAppsNoAppSort",
+		Fixture:      "chromeLoggedIn",
 	})
 }
 
