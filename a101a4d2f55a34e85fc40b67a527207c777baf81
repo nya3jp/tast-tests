@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a243d8ff_4188b75e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550623
+      },
+      "writtenOn": "2022-09-07T18:21:44Z",
+      "side": 1,
+      "message": "Addressed issues raised in comments. PTAL",
+      "revId": "a101a4d2f55a34e85fc40b67a527207c777baf81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

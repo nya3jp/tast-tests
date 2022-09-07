@@ -56,6 +56,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "13b9139e_c272c9d4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1550623
+      },
+      "writtenOn": "2022-09-07T18:21:44Z",
+      "side": 1,
+      "message": "updated to `video/platform_decoding` to be consistent with previous commits.",
+      "parentUuid": "59b8d906_e08f7d0b",
+      "revId": "5616b6772df86c1d5bd010707b8c42d5939b6a13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "795177ed_21b2c6e8",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -105,6 +123,42 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "90487118_452809d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1550623
+      },
+      "writtenOn": "2022-09-07T18:21:44Z",
+      "side": 1,
+      "message": "Using os.CreateTmp now.",
+      "parentUuid": "679b1b2c_1a52ded4",
+      "revId": "5616b6772df86c1d5bd010707b8c42d5939b6a13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e895af00_ad4cb60e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1550623
+      },
+      "writtenOn": "2022-09-07T18:21:44Z",
+      "side": 1,
+      "message": "Using the default /tmp folder as a location to dump the log file",
+      "parentUuid": "5809f3b6_e8f5a1d7",
+      "revId": "5616b6772df86c1d5bd010707b8c42d5939b6a13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fd6c65d3_94b24aa7",
@@ -118,6 +172,24 @@
       "writtenOn": "2022-09-06T20:34:19Z",
       "side": 1,
       "message": "What handles removing the checksum file after it is written to?\n\nI would expect this to call `defer os.Remove(md5logPath)`.",
+      "revId": "5616b6772df86c1d5bd010707b8c42d5939b6a13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d071f470_3f67fd8a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2617,
+      "author": {
+        "id": 1550623
+      },
+      "writtenOn": "2022-09-07T18:21:44Z",
+      "side": 1,
+      "message": "Added an os.Remove at the end of the function to handle this",
+      "parentUuid": "fd6c65d3_94b24aa7",
       "revId": "5616b6772df86c1d5bd010707b8c42d5939b6a13",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
