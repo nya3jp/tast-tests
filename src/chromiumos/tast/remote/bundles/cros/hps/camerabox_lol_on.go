@@ -132,6 +132,10 @@ func CameraboxLoLOn(ctx context.Context, s *testing.State) {
 	}
 
 	dimTime := time.Now()
+	err = utils.EnsureHpsSenseSignal(ctx, client, presenceNo.numOfPerson != utils.ZeroPresence)
+	if err != nil {
+		s.Error("Unexpected HPS Signal after dimming: ", err)
+	}
 
 	testing.ContextLog(ctx, "Waiting for screen to turn off")
 	if err := utils.PollForDim(ctx, initialBrightness, screenOffDelay, true, dut.Conn()); err != nil {
@@ -139,6 +143,10 @@ func CameraboxLoLOn(ctx context.Context, s *testing.State) {
 	}
 
 	screenOffTime := time.Now()
+	err = utils.EnsureHpsSenseSignal(ctx, client, presenceNo.numOfPerson != utils.ZeroPresence)
+	if err != nil {
+		s.Error("Unexpected HPS Signal after turning off screen: ", err)
+	}
 
 	// Not waiting for the lock screen, since it's controlled by "Show lock screen after waking from sleep" setting.
 

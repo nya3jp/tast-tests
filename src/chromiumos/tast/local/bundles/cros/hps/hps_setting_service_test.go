@@ -20,19 +20,23 @@ const (
 	2022-05-04T04:12:04.597625Z INFO powerd: [state_controller.cc(1166)] Updated settings: dim=2m quick_dim=2m screen_off=7m30s lock=0s quick_lock=8m30s idle_warn=0s idle=8m30s (no-op) lid_closed=suspend use_audio=1 use_video=1 wake_locks=\n
 	2022-05-04T04:12:04.608987Z INFO powerd: [state_controller.cc(1166)] Updated settings: dim=3m quick_dim=3m screen_off=7m30s lock=0s quick_lock=8m30s idle_warn=0s idle=8m30s (no-op) lid_closed=no-op use_audio=1 use_video=1 wake_locks=\n
 	2022-05-04T04:12:05.542450Z INFO powerd: [state_controller.cc(1166)] Updated settings: dim=4m quick_dim=4m screen_off=7m30s lock=0s quick_lock=8m30s idle_warn=0s idle=8m30s (no-op) lid_closed=shutdown use_audio=1 use_video=1 wake_locks=\n
+	2022-05-04T04:12:05.542450Z INFO powerd: [dim_advisor.cc(222)] DimAdvisor::HandleHpsSenseSignal is called with value NEGATIVE
 	2022-05-04T04:12:11.852847Z INFO powerd: [state_controller.cc(1166)] Updated settings: dim=5m quick_dim=5m screen_off=7m30s lock=0s quick_lock=8m30s idle_warn=0s idle=8m30s (no-op) lid_closed=suspend use_audio=1 use_video=1 wake_locks=\n
 	2022-05-04T04:12:13.780787Z INFO powerd: [state_controller.cc(1166)] Updated settings: dim=6m quick_dim=6m screen_off=7m30s lock=0s quick_lock=2m6s idle_warn=0s idle=8m30s (no-op) lid_closed=suspend use_audio=1 use_video=1 wake_locks=\n
 	2022-05-04T04:12:15.608926Z INFO powerd: [state_controller.cc(1166)] Updated settings: dim=8m quick_dim=7m screen_off=7m30s lock=0s quick_lock=8m30s idle_warn=0s idle=8m30s (no-op) lid_closed=suspend use_audio=1 use_video=1 wake_locks=\n
 	2022-05-04T04:12:46.090911Z INFO powerd: [state_controller.cc(1166)] Updated settings: dim=7m quick_dim=10s screen_off=7m30s lock=0s quick_lock=2m10s idle_warn=0s idle=8m30s (no-op) lid_closed=suspend use_audio=1 use_video=1 wake_locks=
 	2022-05-10T04:12:46.090911Z INFO powerd: [state_controller.cc(1166)] Updated settings
+	2022-05-10T04:12:46.090911Z INFO powerd: [dim_advisor.cc(222)] DimAdvisor::HandleHpsSenseSignal is called with value POSITIVE
 	`
 	valid2 = `
 	2022-05-04T04:12:46.835388Z INFO powerd: [state_controller.cc(1166)] Updated settings: dim=1m quick_dim=1m screen_off=7m30s lock=0s quick_lock=8m30s idle_warn=0s idle=8m30s (no-op) lid_closed=suspend use_audio=1 use_video=1 wake_locks= \n
 	2022-05-06T00:30:20.734450Z INFO powerd: [state_controller.cc(1166)] Updated settings: dim=2m quick_dim=2m screen_off=7m30s lock=0s quick_lock=8m30s idle_warn=0s idle=8m30s (no-op) lid_closed=suspend use_audio=1 use_video=1 wake_locks=\n
 	2022-05-06T00:30:20.374935Z INFO powerd: [state_controller.cc(1166)] Updated settings: dim=3m quick_dim=3m screen_off=7m30s lock=0s quick_lock=8m30s idle_warn=0s idle=8m30s (no-op) lid_closed=suspend use_audio=1 use_video=1 wake_locks=\n
+	2022-05-06T00:30:20.374935Z INFO powerd: [dim_advisor.cc(222)] DimAdvisor::HandleHpsSenseSignal is called with value POSITIVE
 	2022-05-06T00:30:20.734450Z INFO powerd: [state_controller.cc(1166)] Updated settings: dim=4m quick_dim=4m screen_off=7m30s lock=0s quick_lock=8m30s idle_warn=0s idle=8m30s (no-op) lid_closed=suspend use_audio=1 use_video=1 wake_locks=\n
 	2022-05-06T00:30:45.736758Z INFO powerd: [state_controller.cc(1166)] Updated settings: dim=6m quick_dim=5m screen_off=7m30s lock=0s quick_lock=2m10s idle_warn=0s idle=8m30s (no-op) lid_closed=suspend use_audio=1 use_video=1 wake_locks=\n
 	2022-05-09T01:48:07.360070Z INFO powerd: [state_controller.cc(1166)] Updated settings: dim=5m quick_dim=6s screen_off=5m30s lock=0s quick_lock=2m6s idle_warn=0s idle=6m30s (no-op) lid_closed=suspend use_audio=1 use_video=1 wake_locks=
+	2022-05-09T01:48:07.360070Z INFO powerd: [dim_advisor.cc(222)] DimAdvisor::HandleHpsSenseSignal is called with value NEGATIVE
 	2022-05-10T04:12:46.090911Z INFO powerd: [state_controller.cc(1166)] Updated settings
 	`
 	invalid1 = ""
@@ -73,6 +77,39 @@ func TestPowerdLastUpdatedSettings(t *testing.T) {
 		},
 	} {
 		out := powerdLastUpdatedSettings(tc.input)
+		if out != tc.output {
+			t.Errorf(`Incorrect Output: index: %v
+Expected %q
+Got      %q`, i, tc.output, out)
+		}
+	}
+}
+
+func TestPowerdLastHpsSenseSignal(t *testing.T) {
+	for i, tc := range []struct {
+		input  []byte
+		output string
+	}{
+		{
+			input:  []byte(valid1),
+			output: "POSITIVE",
+		},
+		{
+			input:  []byte(valid2),
+			output: "NEGATIVE",
+		},
+		{
+			input:  []byte(invalid1),
+			output: "",
+		},
+	} {
+		out, err := powerdLastHpsSenseSignal(tc.input)
+		if tc.output == "" {
+			if err == nil {
+				t.Errorf(`Incorrect Output: index: %v
+Expected error, Got %q (%q)`, i, out, err)
+			}
+		}
 		if out != tc.output {
 			t.Errorf(`Incorrect Output: index: %v
 Expected %q
@@ -131,7 +168,7 @@ func TestRetrieveDimMetricsValid(t *testing.T) {
 			},
 		},
 	} {
-		result, err := processContent(tc.input.content, tc.input.isQuickDim)
+		result, _, err := processContent(tc.input.content, tc.input.isQuickDim)
 		if err != nil {
 			t.Errorf("error retrieving metrics: %q", err)
 		}
@@ -191,7 +228,7 @@ func TestRetrieveDimMetricsInvalid(t *testing.T) {
 			output: nil,
 		},
 	} {
-		result, err := processContent(tc.input.content, tc.input.isQuickDim)
+		result, _, err := processContent(tc.input.content, tc.input.isQuickDim)
 		if err == nil {
 			t.Errorf("didn't generate error for invalid case")
 		}

@@ -11,7 +11,10 @@ import (
 	"strings"
 	"time"
 
+	"github.com/golang/protobuf/ptypes/empty"
+
 	"chromiumos/tast/errors"
+	pb "chromiumos/tast/services/cros/hps"
 	"chromiumos/tast/ssh"
 	"chromiumos/tast/testing"
 )
@@ -105,11 +108,40 @@ func PollForDim(ctx context.Context, initialBrightness float64, timeout time.Dur
 	}); err != nil {
 		return errors.Wrap(err, "error during polling")
 	}
+	currentBrightness2, _ := GetBrightness(ctx, conn)
+	testing.ContextLog(ctx, "brightness: ", currentBrightness2)
 	return nil
 }
 
-// WaitWithDelay return a 3s duration object
+// WaitWithDelay waits for specified duration + some slack.
 func WaitWithDelay(ctx context.Context, timeLength time.Duration) {
-	testing.ContextLog(ctx, "Waiting for: ", timeLength.Seconds())
+	testing.ContextLog(ctx, "Waiting for: ", timeLength.Seconds(), "s + 3s (slack)")
 	testing.Sleep(ctx, 3*time.Second+timeLength)
+}
+
+// GetHpsSenseSignal returns true if powerd currently sees positive HPS presence.
+func GetHpsSenseSignal(ctx context.Context, client pb.HpsServiceClient) (bool, error) {
+	result, err := client.RetrieveHpsSenseSignal(ctx, &empty.Empty{})
+	if err != nil {
+		return false, err
+	}
+	if result.RawValue == "POSITIVE" {
+		return true, nil
+	}
+	if result.RawValue == "NEGATIVE" {
+		return false, nil
+	}
+	return false, errors.Errorf("unknown HPS Sense Signal: %q", result.RawValue)
+}
+
+// EnsureHpsSenseSignal will report an error if the current positivity of HPS signal doesn't patch |expectedSignal|.
+func EnsureHpsSenseSignal(ctx context.Context, client pb.HpsServiceClient, expectedSignal bool) error {
+	result, err := GetHpsSenseSignal(ctx, client)
+	if err != nil {
+		return err
+	}
+	if result != expectedSignal {
+		return errors.Errorf("HPS Sense Signal (%t) doesn't match the expectation (%t)", result, expectedSignal)
+	}
+	return nil
 }
