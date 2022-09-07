@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a93561fc_b34c8097",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-09-07T01:02:17Z",
+      "side": 1,
+      "message": "Thanks for the review.",
+      "revId": "81e34635c84e12da4de9e1753beeb49d3605c781",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bc7abff9_bb96de02",
@@ -14,6 +31,30 @@
       "writtenOn": "2022-09-06T23:32:30Z",
       "side": 1,
       "message": "do you also need to check the error? and only use the fake microphone if it is a device-not-found error.",
+      "range": {
+        "startLine": 52,
+        "startChar": 56,
+        "endLine": 52,
+        "endChar": 59
+      },
+      "revId": "81e34635c84e12da4de9e1753beeb49d3605c781",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e347aff_164e69bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/creation_flow.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-09-07T01:02:17Z",
+      "side": 1,
+      "message": "Ack. The error is actually \"cras node(s) not in requested condition\" [1] and checking for it seems fragile if the error message ever changes. I\u0027d rather create a fake microphone if an input stream is not found for any reason. It doesn\u0027t hurt to use the fake microphone because this test just requires one to exist, not to actually transcribe any input.\n\n[1] https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/audio/cras.go;l\u003d244?q\u003df:tast%20f:chromiumos%2Ftast%2Flocal%2Faudio%20waitfordevice",
+      "parentUuid": "bc7abff9_bb96de02",
       "range": {
         "startLine": 52,
         "startChar": 56,
