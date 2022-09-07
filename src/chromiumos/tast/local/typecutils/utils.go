@@ -235,3 +235,12 @@ func CheckUSBPDMuxInfo(ctx context.Context, deviceStr string) error {
 	}
 	return nil
 }
+
+// TypecdPID returns the `typecd` process ID.
+func TypecdPID(ctx context.Context) (int, error) {
+	out, err := testexec.CommandContext(ctx, "pgrep", "typecd").Output(testexec.DumpLogOnError)
+	if err != nil {
+		return 0, errors.Wrap(err, "failed to run pgrep to check whether typecd is running")
+	}
+	return strconv.Atoi(strings.TrimSpace(string(out)))
+}
