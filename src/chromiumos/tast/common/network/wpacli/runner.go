@@ -369,7 +369,7 @@ func (r *Runner) FetchANQP(ctx context.Context, dutConn *ssh.Conn, bssid string)
 }
 
 // StartSoftAP creates a soft AP on DUT.
-func (r *Runner) StartSoftAP(ctx context.Context, freq uint32, ssid, key_mgmt, psk string) error {
+func (r *Runner) StartSoftAP(ctx context.Context, freq uint32, ssid, keyMgmt, psk string) error {
 	id, err := r.addNetwork(ctx)
 	if err != nil {
 		return err
@@ -385,7 +385,7 @@ func (r *Runner) StartSoftAP(ctx context.Context, freq uint32, ssid, key_mgmt, p
 	if err := r.setNetwork(ctx, id, "ssid", fmt.Sprintf("\"%s\"", ssid)); err != nil {
 		return errors.Wrap(err, "failed running wpa_cli set_network ssid")
 	}
-	if err := r.setNetwork(ctx, id, "key_mgmt", key_mgmt); err != nil {
+	if err := r.setNetwork(ctx, id, "key_mgmt", keyMgmt); err != nil {
 		return errors.Wrap(err, "failed running wpa_cli set_network key_mgmt")
 	}
 
