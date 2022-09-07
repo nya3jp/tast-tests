@@ -122,7 +122,7 @@ func (e *enrolledFixt) SetUp(ctx context.Context, s *testing.FixtState) interfac
 		if deadline, ok := ctx.Deadline(); !ok {
 			return testing.PollBreak(errors.Errorf("missing deadline for context %v", ctx))
 		} else if diff := deadline.Sub(time.Now()); diff < enrollmentRunTimeout {
-			return testing.PollBreak(errors.New("not enought time to perform setup and enrollment"))
+			return testing.PollBreak(errors.Errorf("not enought time to perform setup and enrollment: have %s; need %s", diff, enrollmentRunTimeout))
 		}
 
 		if out, err := s.DUT().Conn().CommandContext(ctx, "echo", "1").Output(ssh.DumpLogOnError); err != nil {
