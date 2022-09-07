@@ -33,6 +33,23 @@
       "message": "LGTM, also adding Matthew to have a look.",
       "revId": "bb9fc36d6ba8ac0a66897ae1c80dab85c0ad7cf3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "520dbbbc_84a57f05",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1522762
+      },
+      "writtenOn": "2022-09-07T22:16:27Z",
+      "side": 1,
+      "message": "lgtm!",
+      "revId": "bb9fc36d6ba8ac0a66897ae1c80dab85c0ad7cf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
