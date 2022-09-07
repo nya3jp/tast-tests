@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2521be20_fa2d7cc9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/usb_storage_functionality.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-09-07T22:40:28Z",
+      "side": 1,
+      "message": "not clear what are you doing with the range... just getting the last element?",
+      "range": {
+        "startLine": 209,
+        "startChar": 2,
+        "endLine": 209,
+        "endChar": 25
+      },
+      "revId": "241726cb3b18e0b14e17a2760c0ab753eec56d10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9f526c6_4570c99c",
+        "filename": "src/chromiumos/tast/local/usbutil/usb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 404,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-09-07T22:40:28Z",
+      "side": 1,
+      "message": "is the `All` prefix needed?\n\nasking for consistency since there is a function called `AttachedDevices`, and not `AllAttachedDevices`",
+      "range": {
+        "startLine": 404,
+        "startChar": 5,
+        "endLine": 404,
+        "endChar": 24
+      },
+      "revId": "241726cb3b18e0b14e17a2760c0ab753eec56d10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8521375f_76af5a94",
+        "filename": "src/chromiumos/tast/local/usbutil/usb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-09-07T22:40:28Z",
+      "side": 1,
+      "message": "avoid calling  | grep | head.\n\nPrefer to add a few extra lines of Go than using a complex shell script.\n\nIt is easier to debug Go code than the shell.\n\nE.g: What if grep fails? How would you know what went wrong?",
+      "range": {
+        "startLine": 408,
+        "startChar": 50,
+        "endLine": 408,
+        "endChar": 83
+      },
+      "revId": "241726cb3b18e0b14e17a2760c0ab753eec56d10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dfc4b592_09bfaae7",
+        "filename": "src/chromiumos/tast/local/usbutil/usb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 409,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-09-07T22:40:28Z",
+      "side": 1,
+      "message": "ditto above",
+      "range": {
+        "startLine": 409,
+        "startChar": 68,
+        "endLine": 409,
+        "endChar": 97
+      },
+      "revId": "241726cb3b18e0b14e17a2760c0ab753eec56d10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f25742a_d949d90c",
+        "filename": "src/chromiumos/tast/local/usbutil/usb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-09-07T22:40:28Z",
+      "side": 1,
+      "message": "can you call function `usbDevices()` ?",
+      "range": {
+        "startLine": 413,
+        "startChar": 1,
+        "endLine": 414,
+        "endChar": 31
+      },
+      "revId": "241726cb3b18e0b14e17a2760c0ab753eec56d10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "900ee5b5_6a863973",
+        "filename": "src/chromiumos/tast/local/usbutil/usb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 442,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-09-07T22:40:28Z",
+      "side": 1,
+      "message": "add comment describing what you are trying to do.\n\nfor example:\n\n  // To detect whether a device is removable we do X, Y and Z",
+      "range": {
+        "startLine": 442,
+        "startChar": 1,
+        "endLine": 442,
+        "endChar": 21
+      },
+      "revId": "241726cb3b18e0b14e17a2760c0ab753eec56d10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
