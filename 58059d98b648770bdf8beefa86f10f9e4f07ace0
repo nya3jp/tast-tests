@@ -16,6 +16,23 @@
       "message": "Hi Kamil,\n\nThis CL should fix recent consistent failures of kiosk.AppsCachedOffline. PTAL!",
       "revId": "58059d98b648770bdf8beefa86f10f9e4f07ace0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9849616a_f5ab3dd6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-09-07T16:05:33Z",
+      "side": 1,
+      "message": "LGTM. Maybe we could pull someone from the firewall package to stamp it too, WDYT?",
+      "revId": "58059d98b648770bdf8beefa86f10f9e4f07ace0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
