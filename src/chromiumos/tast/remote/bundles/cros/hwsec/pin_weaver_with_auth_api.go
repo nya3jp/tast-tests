@@ -133,7 +133,7 @@ func PINWeaverWithAuthAPI(ctx context.Context, s *testing.State) {
 		if err != nil {
 			s.Fatal("Failed to enable the UserSecretStash experiment: ", err)
 		}
-		defer cleanupUSSExperiment()
+		defer cleanupUSSExperiment(ctx)
 	}
 
 	/**Initial User Setup. Test both user 1 and user 2 can login successfully.**/

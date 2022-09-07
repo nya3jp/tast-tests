@@ -150,7 +150,7 @@ func KioskWithLegacyMount(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to enable the UserSecretStash experiment: ", err)
 	}
-	defer cleanupUSSExperiment()
+	defer cleanupUSSExperiment(ctx)
 
 	// Ensure that Kiosk login works when USS flag is enabled.
 	authSessionID, err = client.StartAuthSession(ctx, cryptohome.KioskUser, false /*ephemeral*/)

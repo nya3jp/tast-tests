@@ -76,7 +76,7 @@ func UpdatePassword(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to enable the UserSecretStash experiment: ", err)
 	}
-	defer cleanupUSSExperiment()
+	defer cleanupUSSExperiment(ctx)
 
 	// Create and mount the persistent user.
 	authSessionID, err := client.StartAuthSession(ctx, userName /*ephemeral=*/, false)
