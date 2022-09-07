@@ -22,6 +22,30 @@
       },
       "revId": "0188fa4ff1a1368ea22523191b3566bebe84473e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93ea4396_29b8ff41",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/touch_suspend_resume.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-09-07T05:14:41Z",
+      "side": 1,
+      "message": "Hi Avery,\n\nWe tried using the provided pseudo code, but because of this variable timing, the shapes of circle and box are changing. So, I guess we need to go for the static 15 milliseconds timing to get the proper shape of circle/box.",
+      "parentUuid": "82735fb9_8067ed88",
+      "range": {
+        "startLine": 304,
+        "startChar": 31,
+        "endLine": 304,
+        "endChar": 50
+      },
+      "revId": "0188fa4ff1a1368ea22523191b3566bebe84473e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
