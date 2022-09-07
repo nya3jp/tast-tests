@@ -50,12 +50,6 @@ func init() {
 				needsTpmReset: false,
 			},
 		}, {
-			Name: "pcr_key_test",
-			Val: testParams{
-				testName:      "pcr_key_test",
-				needsTpmReset: true,
-			},
-		}, {
 			Name: "decryption_key_test",
 			Val: testParams{
 				testName:      "decryption_key_test",
@@ -65,12 +59,6 @@ func init() {
 			Name: "seal_with_current_user_test",
 			Val: testParams{
 				testName:      "seal_with_current_user_test",
-				needsTpmReset: false,
-			},
-		}, {
-			Name: "nvram_test",
-			Val: testParams{
-				testName:      "nvram_test",
 				needsTpmReset: false,
 			},
 		}, {
