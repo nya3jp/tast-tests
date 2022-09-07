@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "94dfb1e7_b3802ff7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000097
+      },
+      "writtenOn": "2022-09-07T01:04:41Z",
+      "side": 1,
+      "message": "Thank you!",
+      "revId": "36a21fc9c28a18e57238d623d3a3e9ba73c12cfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "df9508b0_8e5ea3dc",
@@ -14,6 +31,30 @@
       "writtenOn": "2022-09-07T00:42:45Z",
       "side": 1,
       "message": "nit: can you comment what this is, i.e. `/*url\u003d*/\"\"`",
+      "range": {
+        "startLine": 72,
+        "startChar": 30,
+        "endLine": 72,
+        "endChar": 32
+      },
+      "revId": "36a21fc9c28a18e57238d623d3a3e9ba73c12cfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d908bff2_22a0aefc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/shared_screencast.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1000097
+      },
+      "writtenOn": "2022-09-07T01:04:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df9508b0_8e5ea3dc",
       "range": {
         "startLine": 72,
         "startChar": 30,
@@ -47,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f2afe8d_8981c9d9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/shared_screencast.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1000097
+      },
+      "writtenOn": "2022-09-07T01:04:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "49d45212_caca9b33",
+      "range": {
+        "startLine": 79,
+        "startChar": 1,
+        "endLine": 79,
+        "endChar": 10
+      },
+      "revId": "36a21fc9c28a18e57238d623d3a3e9ba73c12cfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4af6b618_388569ea",
@@ -60,6 +125,30 @@
       "writtenOn": "2022-09-07T00:42:45Z",
       "side": 1,
       "message": "nit: end comments with period.",
+      "range": {
+        "startLine": 86,
+        "startChar": 84,
+        "endLine": 86,
+        "endChar": 85
+      },
+      "revId": "36a21fc9c28a18e57238d623d3a3e9ba73c12cfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d800ce4_80f79bb6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/shared_screencast.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1000097
+      },
+      "writtenOn": "2022-09-07T01:04:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4af6b618_388569ea",
       "range": {
         "startLine": 86,
         "startChar": 84,
