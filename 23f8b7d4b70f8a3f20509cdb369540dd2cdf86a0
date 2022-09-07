@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "582d11a6_58d621ad",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1427116
+      },
+      "writtenOn": "2022-09-07T22:12:25Z",
+      "side": 1,
+      "message": "lgtm with a nit. Thank you for fixing this issue!",
+      "revId": "23f8b7d4b70f8a3f20509cdb369540dd2cdf86a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80ae6dd0_4d7f4d3c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/app_window_on_shelf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1427116
+      },
+      "writtenOn": "2022-09-07T22:12:25Z",
+      "side": 1,
+      "message": "nit: the indent here doesn\u0027t seem correct. It can be either \n}, {\n  Name: ...\n}\nor\n},\n{\n  Name: ...\n}",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 5
+      },
+      "revId": "23f8b7d4b70f8a3f20509cdb369540dd2cdf86a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
