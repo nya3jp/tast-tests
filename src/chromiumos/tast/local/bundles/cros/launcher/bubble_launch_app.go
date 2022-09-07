@@ -45,12 +45,7 @@ func init() {
 			{
 				Name:    "enable_launcher_app_sort",
 				Val:     enableLauncherAppSort,
-				Fixture: "chromeLoggedInWith100FakeAppsAppSort",
-			},
-			{
-				Name:    "disable_launcher_app_sort",
-				Val:     disableLauncherAppSort,
-				Fixture: "chromeLoggedInWith100FakeAppsNoAppSort",
+				Fixture: "chromeLoggedIn",
 			},
 		},
 	})
