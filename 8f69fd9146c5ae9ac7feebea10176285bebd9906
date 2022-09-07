@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2c179b56_4db246a9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1529893
+      },
+      "writtenOn": "2022-09-07T20:50:02Z",
+      "side": 1,
+      "message": "beacon signal avg is removed,\ncheck on the difference between beacon signal avg, signal, signal avg is also removed.",
+      "parentUuid": "bc035dae_0ad7d612",
+      "revId": "8f69fd9146c5ae9ac7feebea10176285bebd9906",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a0db707b_2266442b",
         "filename": "/COMMIT_MSG",
         "patchSetId": 4
@@ -31,6 +49,24 @@
       "writtenOn": "2022-09-07T05:24:21Z",
       "side": 1,
       "message": "I\u0027m still not entirely sure why we\u0027re removing beacon signal avg after reading this. Is it because some radios don\u0027t support it or is it because we couldn\u0027t meet the criteria you set for discrepancy between signal strength vs beacon signal strength?",
+      "revId": "8f69fd9146c5ae9ac7feebea10176285bebd9906",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee11762e_53d5a9e3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1529893
+      },
+      "writtenOn": "2022-09-07T20:50:02Z",
+      "side": 1,
+      "message": "Please see the commit message.",
+      "parentUuid": "a0db707b_2266442b",
       "revId": "8f69fd9146c5ae9ac7feebea10176285bebd9906",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -65,6 +101,24 @@
       "writtenOn": "2022-09-07T05:24:21Z",
       "side": 1,
       "message": "why\u0027d you change this?",
+      "revId": "8f69fd9146c5ae9ac7feebea10176285bebd9906",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09c89044_812259ae",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/nl80211_station_information.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1529893
+      },
+      "writtenOn": "2022-09-07T20:50:02Z",
+      "side": 1,
+      "message": "Please see the commit message.",
+      "parentUuid": "9716d52e_a5cdb8d1",
       "revId": "8f69fd9146c5ae9ac7feebea10176285bebd9906",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
