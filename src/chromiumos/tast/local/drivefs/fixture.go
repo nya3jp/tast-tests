@@ -13,6 +13,7 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
@@ -265,6 +266,9 @@ func (f *fixture) TearDown(ctx context.Context, s *testing.FixtState) {
 }
 
 func (f *fixture) Reset(ctx context.Context) error {
+	if err := ash.CloseAllWindows(ctx, f.tconn); err != nil {
+		testing.ContextLog(ctx, "Failed trying to close all windows: ", err)
+	}
 	return nil
 }
 
@@ -274,6 +278,10 @@ func (f *fixture) PostTest(ctx context.Context, s *testing.FixtTestState) {}
 
 // cleanUp makes a best effort attempt to restore the state to where it was pretest.
 func (f *fixture) cleanUp(ctx context.Context, s *testing.FixtState) {
+	if err := ash.CloseAllWindows(ctx, f.tconn); err != nil {
+		s.Error("Failed trying to close all windows: ", err)
+	}
+
 	f.tconn = nil
 
 	if len(f.drivefsOptions) > 0 && f.driveFs != nil {
