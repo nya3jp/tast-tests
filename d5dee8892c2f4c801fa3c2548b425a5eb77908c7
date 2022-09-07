@@ -22,6 +22,30 @@
       },
       "revId": "d5dee8892c2f4c801fa3c2548b425a5eb77908c7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bdace489_5521acae",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hps/camerabox_lol_off.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2022-09-07T07:28:49Z",
+      "side": 1,
+      "message": "Thanks! Squashed the next CL about cleanupCtx with this one.",
+      "parentUuid": "d508f9c1_414bb9c0",
+      "range": {
+        "startLine": 60,
+        "startChar": 26,
+        "endLine": 60,
+        "endChar": 29
+      },
+      "revId": "d5dee8892c2f4c801fa3c2548b425a5eb77908c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
