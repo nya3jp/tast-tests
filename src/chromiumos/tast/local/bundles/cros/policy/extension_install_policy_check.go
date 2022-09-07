@@ -42,7 +42,7 @@ func init() {
 			"chromeos-commercial-remote-management@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:commercial_limited"},
 		Fixture:      fixture.ChromePolicyLoggedIn,
 		Timeout:      4 * time.Minute, // There is a longer wait when installing the extension.
 		Params: []testing.Param{
