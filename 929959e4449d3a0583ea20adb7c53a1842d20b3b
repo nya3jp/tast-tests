@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e267777f_17707a93",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-09-07T20:54:32Z",
+      "side": 1,
+      "message": "tast-wise +2\n\nPlease don\u0027t add reviewers, manually, instead add tast-owners@google.com\nhttp://go/tast-reviews\n\n",
+      "revId": "929959e4449d3a0583ea20adb7c53a1842d20b3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
