@@ -30,7 +30,7 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Fixture:      "diagnosticsPrep",
-		Timeout:      8 * time.Minute,
+		Timeout:      10 * time.Minute,
 	})
 }
 
@@ -61,6 +61,15 @@ func RoutineSection(ctx context.Context, s *testing.State) {
 	if err := ui.MakeVisible(cpuButton)(ctx); err != nil {
 		s.Fatal("Failed to locate cpu button within the screen bounds: ", err)
 	}
+
+	// Clean up after the CPU test.
+	// Wait for CPU idle to make sure stress test doesn't leave a bad state.
+	defer func() {
+		if err := cpu.WaitUntilIdle(ctx); err != nil {
+			// Do not block test even if we failed to wait cpu idle time.
+			s.Log("Failed to wait cpu idle after running RoutineSection test")
+		}
+	}()
 
 	// Test CPU routine.
 	pollOpts := testing.PollOptions{Interval: time.Second, Timeout: 20 * time.Second}
