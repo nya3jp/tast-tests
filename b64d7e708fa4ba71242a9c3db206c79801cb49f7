@@ -16,6 +16,24 @@
       "message": "How about moving this into the conditional? Conceptually it belongs together with EnableWebAppInstall if I understand correctly.",
       "revId": "b64d7e708fa4ba71242a9c3db206c79801cb49f7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca08a00c_8f4ea43f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/fixture/fixture.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-09-07T05:36:18Z",
+      "side": 1,
+      "message": "Not really. This option also solves http://b/244390727. Otherwise for manual installation, I need to keep lacros window opened to launch PWA.",
+      "parentUuid": "2ab8389f_11ce43e6",
+      "revId": "b64d7e708fa4ba71242a9c3db206c79801cb49f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
