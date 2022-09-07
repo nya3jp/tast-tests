@@ -30,10 +30,12 @@ const (
 // List of fixture names for Essential Apps.
 const (
 	LoggedIn                               = "loggedIn"
+	LoggedInDisableInstall                 = "loggedInDisableAutoInstall"
 	LoggedInJP                             = "loggedInJP"
 	LoggedInGuest                          = "loggedInGuest"
 	ArcBootedWithGalleryPhotosImageFeature = "arcBootedWithGalleryPhotosImageFeature"
 	LacrosLoggedIn                         = "lacrosLoggedIn"
+	LacrosLoggedInDisableInstall           = "lacrosLoggedInDisableAutoInstall"
 	LacrosLoggedInJP                       = "lacrosLoggedInJP"
 )
 
@@ -42,7 +44,19 @@ func init() {
 		Name:            LoggedIn,
 		Desc:            "Logged into a user session for essential apps",
 		Contacts:        []string{"shengjun@chromium.org"},
-		Impl:            eaFixture(browser.TypeAsh),
+		Impl:            eaFixture(browser.TypeAsh, true),
+		PreTestTimeout:  preTestTimeout,
+		PostTestTimeout: postTestTimeout,
+		SetUpTimeout:    chrome.LoginTimeout,
+		ResetTimeout:    resetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+	})
+
+	testing.AddFixture(&testing.Fixture{
+		Name:            LoggedInDisableInstall,
+		Desc:            "Logged into a user session without installing web apps",
+		Contacts:        []string{"shengjun@chromium.org"},
+		Impl:            eaFixture(browser.TypeAsh, false),
 		PreTestTimeout:  preTestTimeout,
 		PostTestTimeout: postTestTimeout,
 		SetUpTimeout:    chrome.LoginTimeout,
@@ -54,7 +68,7 @@ func init() {
 		Name:            LoggedInJP,
 		Desc:            "Logged into a user session for essential apps in Japanese language",
 		Contacts:        []string{"shengjun@chromium.org"},
-		Impl:            eaFixture(browser.TypeAsh, chrome.Region("jp")),
+		Impl:            eaFixture(browser.TypeAsh, true, chrome.Region("jp")),
 		PreTestTimeout:  preTestTimeout,
 		PostTestTimeout: postTestTimeout,
 		SetUpTimeout:    chrome.LoginTimeout,
@@ -66,7 +80,7 @@ func init() {
 		Name:            LoggedInGuest,
 		Desc:            "Logged into a guest user session for essential apps",
 		Contacts:        []string{"shengjun@chromium.org"},
-		Impl:            eaFixture(browser.TypeAsh, chrome.GuestLogin()),
+		Impl:            eaFixture(browser.TypeAsh, true, chrome.GuestLogin()),
 		PreTestTimeout:  preTestTimeout,
 		PostTestTimeout: postTestTimeout,
 		SetUpTimeout:    chrome.LoginTimeout,
@@ -98,11 +112,23 @@ func init() {
 		Name:            LacrosLoggedIn,
 		Desc:            "Logged into a user session with Lacros for essential apps",
 		Contacts:        []string{"alvinjia@google.com", "shengjun@chromium.org"},
-		Impl:            eaFixture(browser.TypeLacros),
+		Impl:            eaFixture(browser.TypeLacros, true),
 		PreTestTimeout:  preTestTimeout,
 		PostTestTimeout: postTestTimeout,
 		SetUpTimeout:    chrome.LoginTimeout + time.Minute,
 		ResetTimeout:    chrome.ResetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+	})
+
+	testing.AddFixture(&testing.Fixture{
+		Name:            LacrosLoggedInDisableInstall,
+		Desc:            "Logged into a user session without installing web apps",
+		Contacts:        []string{"shengjun@chromium.org"},
+		Impl:            eaFixture(browser.TypeLacros, false),
+		PreTestTimeout:  preTestTimeout,
+		PostTestTimeout: postTestTimeout,
+		SetUpTimeout:    chrome.LoginTimeout,
+		ResetTimeout:    resetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
 	})
 
@@ -114,7 +140,7 @@ func init() {
 		Name:            LacrosLoggedInJP,
 		Desc:            "Logged into a user session with Lacros for essential apps in Japanese language",
 		Contacts:        []string{"alvinjia@google.com", "shengjun@chromium.org"},
-		Impl:            eaFixture(browser.TypeLacros, chrome.Region("jp")),
+		Impl:            eaFixture(browser.TypeLacros, true, chrome.Region("jp")),
 		PreTestTimeout:  preTestTimeout,
 		PostTestTimeout: postTestTimeout,
 		SetUpTimeout:    chrome.LoginTimeout + time.Minute,
@@ -132,11 +158,12 @@ type FixtData struct {
 
 // fixtureImpl implements testing.FixtureImpl.
 type fixtureImpl struct {
-	cr          *chrome.Chrome  // Underlying Chrome instance
-	browserType browser.Type    // Whether Ash or Lacros is used for test
-	fOpts       []chrome.Option // Options that are passed to chrome.New
-	tconn       *chrome.TestConn
-	recorder    *uiauto.ScreenRecorder
+	cr            *chrome.Chrome  // Underlying Chrome instance
+	browserType   browser.Type    // Whether Ash or Lacros is used for test
+	webAppInstall bool            // Whether auto install web apps such as Canvas and Cursive.
+	fOpts         []chrome.Option // Options that are passed to chrome.New
+	tconn         *chrome.TestConn
+	recorder      *uiauto.ScreenRecorder
 }
 
 func (f *fixtureImpl) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
@@ -146,9 +173,16 @@ func (f *fixtureImpl) SetUp(ctx context.Context, s *testing.FixtState) interface
 		opts = append(opts, extraOpts...)
 	}
 	opts = append(opts, f.fOpts...)
-	opts = append(opts, chrome.EnableWebAppInstall())
+	if f.webAppInstall {
+		opts = append(opts, chrome.EnableWebAppInstall())
+	}
 
-	cr, err := browserfixt.NewChrome(ctx, f.browserType, lacrosfixt.NewConfig(), opts...)
+	// According to b/245224264, default Web app installation requires Lacros to be alive.
+	lacrosOpts := []lacrosfixt.Option{lacrosfixt.KeepAlive(true)}
+	if f.webAppInstall {
+		lacrosOpts = append(lacrosOpts, lacrosfixt.EnableWebAppInstall())
+	}
+	cr, err := browserfixt.NewChrome(ctx, f.browserType, lacrosfixt.NewConfig(lacrosOpts...), opts...)
 	if err != nil {
 		s.Fatal("Failed to start Chrome: ", err)
 	}
@@ -202,9 +236,10 @@ func (f *fixtureImpl) TearDown(ctx context.Context, s *testing.FixtState) {
 	f.tconn = nil
 }
 
-func eaFixture(browserType browser.Type, opts ...chrome.Option) testing.FixtureImpl {
+func eaFixture(browserType browser.Type, webAppInstall bool, opts ...chrome.Option) testing.FixtureImpl {
 	return &fixtureImpl{
-		browserType: browserType,
-		fOpts:       opts,
+		browserType:   browserType,
+		webAppInstall: webAppInstall,
+		fOpts:         opts,
 	}
 }
