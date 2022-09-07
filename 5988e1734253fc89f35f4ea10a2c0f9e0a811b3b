@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "45f3059c_e6b73201",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-09-07T07:03:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fac1748d_6af1fe26",
+      "range": {
+        "startLine": 7,
+        "startChar": 17,
+        "endLine": 7,
+        "endChar": 21
+      },
+      "revId": "5988e1734253fc89f35f4ea10a2c0f9e0a811b3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "4d723fbf_fab870b3",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -126,6 +150,24 @@
       "side": 1,
       "message": "Yeah, you are right, I didn\u0027t notice that it was in local, and not in common.\nFor constants like these, I think it would make more sense to be in common.\nFor for now, this amount of duplication is fine I think.\nMaybe you can ask the owners of the app package to move the constants to common.\n\nAnd for the comment, I meant it for\n```\nAh, the background is that in LacrosOnly mode, the Lacros browser is called \"Chrome\", so you can\u0027t distinguish it from Ash that way.\n```\nSo add a comment in the file, it can be useful for others as well.",
       "parentUuid": "488d8c5d_788319f4",
+      "revId": "5988e1734253fc89f35f4ea10a2c0f9e0a811b3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c507f358_b2be329f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/apps/apps_service_grpc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-09-07T07:03:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "606aba3a_672ec893",
       "revId": "5988e1734253fc89f35f4ea10a2c0f9e0a811b3b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
