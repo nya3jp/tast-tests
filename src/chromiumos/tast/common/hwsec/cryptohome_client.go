@@ -8,6 +8,7 @@ import (
 	"context"
 	"encoding/hex"
 	"fmt"
+	"path/filepath"
 	"regexp"
 	"strconv"
 	"strings"
@@ -28,6 +29,7 @@ const (
 	addKeyExSuccessMessage                 = "Key added."
 	removeKeyExSuccessMessage              = "Key removed."
 	migrateKeyExSucessMessage              = "Key migration succeeded."
+	shadowHome                             = "/home/.shadow"
 )
 
 var (
@@ -893,7 +895,7 @@ func (u *CryptohomeClient) GetAccountDiskUsage(ctx context.Context, username str
 	return -1, errors.New("failed to parse GetAccountDiskUsage output")
 }
 
-// GetHomeUserPath retrieves the user specified by username's user home path.
+// GetHomeUserPath retrieves the user home path, which contains a salted hash of the username.
 func (u *CryptohomeClient) GetHomeUserPath(ctx context.Context, username string) (string, error) {
 	binaryMsg, err := u.cryptohomePathBinary.userPath(ctx, username)
 	msg := string(binaryMsg)
@@ -904,7 +906,7 @@ func (u *CryptohomeClient) GetHomeUserPath(ctx context.Context, username string)
 	return strings.TrimSpace(msg), nil
 }
 
-// GetRootUserPath retrieves the user specified by username's user root path.
+// GetRootUserPath retrieves the user root path, which contains a salted hash of the username.
 func (u *CryptohomeClient) GetRootUserPath(ctx context.Context, username string) (string, error) {
 	binaryMsg, err := u.cryptohomePathBinary.systemPath(ctx, username)
 	msg := string(binaryMsg)
@@ -929,6 +931,15 @@ func (u *CryptohomeClient) GetUserHash(ctx context.Context, username string) (st
 		return "", errors.Errorf("didn't find hash in path %q", p)
 	}
 	return m[1], nil
+}
+
+// GetUserShadowRoot returns the shadow root of the user.
+func (u *CryptohomeClient) GetUserShadowRoot(ctx context.Context, username string) (string, error) {
+	hash, err := u.GetUserHash(ctx, username)
+	if err != nil {
+		return "", errors.Wrap(err, "failed to retrieve the user hash")
+	}
+	return filepath.Join(shadowHome, hash), nil
 }
 
 // SupportsLECredentials calls GetSupportedKeyPolicies and parses the output for low entropy credential support.
