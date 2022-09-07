@@ -229,9 +229,13 @@ func testFileAttachedForBrowser(ctx context.Context, s *testing.State, browserTy
 	}
 
 	for _, params := range helpers.GetTestFileParams() {
-		s.Run(ctx, params.TestName, func(ctx context.Context, s *testing.State) {
+		if succeeded := s.Run(ctx, params.TestName, func(ctx context.Context, s *testing.State) {
 			testFileAttachedForBrowserAndFile(ctx, params, testParams, br, s, server, testDirPath, ui, tconn)
-		})
+		}); !succeeded {
+			// Stop, if the subtest fails as it might have left the state unusable.
+			// It also prevents showing wrong errors on tastboard.
+			break
+		}
 	}
 }
 
