@@ -29,7 +29,7 @@ func init() {
 			"cros-feedback-app@google.com",
 		},
 		Fixture:      "chromeLoggedInWithOsFeedback",
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome"},
 	})
 }
