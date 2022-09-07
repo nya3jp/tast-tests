@@ -1,6 +1,40 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc035dae_0ad7d612",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-09-07T05:24:21Z",
+      "side": 1,
+      "message": "aren\u0027t you removing the check on beacon signal strength specifically?",
+      "revId": "8f69fd9146c5ae9ac7feebea10176285bebd9906",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0db707b_2266442b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-09-07T05:24:21Z",
+      "side": 1,
+      "message": "I\u0027m still not entirely sure why we\u0027re removing beacon signal avg after reading this. Is it because some radios don\u0027t support it or is it because we couldn\u0027t meet the criteria you set for discrepancy between signal strength vs beacon signal strength?",
+      "revId": "8f69fd9146c5ae9ac7feebea10176285bebd9906",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "bc58a9bd_76ffc244",
@@ -14,6 +48,23 @@
       "writtenOn": "2022-09-07T01:58:48Z",
       "side": 1,
       "message": "LGTM as Tast Onwers.\nDeferring to matthewmwang@ for another review.",
+      "revId": "8f69fd9146c5ae9ac7feebea10176285bebd9906",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9716d52e_a5cdb8d1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/nl80211_station_information.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-09-07T05:24:21Z",
+      "side": 1,
+      "message": "why\u0027d you change this?",
       "revId": "8f69fd9146c5ae9ac7feebea10176285bebd9906",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
