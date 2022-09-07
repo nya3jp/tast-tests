@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "635b2f53_345723d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_multitouch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1536938
+      },
+      "writtenOn": "2022-09-07T07:09:10Z",
+      "side": 1,
+      "message": "as discussed offline, have removed the test as it is not needed.",
+      "parentUuid": "e37ff22a_1cd195f6",
+      "range": {
+        "startLine": 41,
+        "startChar": 2,
+        "endLine": 45,
+        "endChar": 5
+      },
+      "revId": "76944a36f04afb19feb6976a74324271e8014167",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "535b0965_8e91869b",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc6761f4_9742e67c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_multitouch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1536938
+      },
+      "writtenOn": "2022-09-07T07:09:10Z",
+      "side": 1,
+      "message": "Have renamed tests as discussed offline.",
+      "parentUuid": "535b0965_8e91869b",
+      "range": {
+        "startLine": 47,
+        "startChar": 24,
+        "endLine": 47,
+        "endChar": 46
+      },
+      "revId": "76944a36f04afb19feb6976a74324271e8014167",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4f6fa610_c6abc3a4",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-09-07T06:50:39Z",
       "side": 1,
       "message": "nit: move this to common HardwareDeps.",
+      "range": {
+        "startLine": 49,
+        "startChar": 35,
+        "endLine": 49,
+        "endChar": 53
+      },
+      "revId": "76944a36f04afb19feb6976a74324271e8014167",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "131a97fc_d48f746d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_multitouch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1536938
+      },
+      "writtenOn": "2022-09-07T07:09:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4f6fa610_c6abc3a4",
       "range": {
         "startLine": 49,
         "startChar": 35,
