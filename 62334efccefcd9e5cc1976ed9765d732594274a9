@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "c2832003_db0da0e5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1547388
+      },
+      "writtenOn": "2022-09-07T22:38:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1130b35a_e8bb62f7",
+      "revId": "62334efccefcd9e5cc1976ed9765d732594274a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "3f572ce4_870ad878",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -48,6 +66,24 @@
       "writtenOn": "2022-09-07T20:38:37Z",
       "side": 1,
       "message": "Also, if you\u0027re looking for generic golang/tast readability-type review, you can add the Tast Owners list (tast-owners@) to randomly assign from the pool of available tast reviewers.",
+      "revId": "62334efccefcd9e5cc1976ed9765d732594274a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cfb84e51_78c26164",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1547388
+      },
+      "writtenOn": "2022-09-07T22:38:06Z",
+      "side": 1,
+      "message": "The CL that I modified to test this wasn\u0027t actually navigating to the network page. I added this method just for verifying this behavior.",
+      "parentUuid": "3f572ce4_870ad878",
       "revId": "62334efccefcd9e5cc1976ed9765d732594274a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
