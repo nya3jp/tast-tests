@@ -13,6 +13,8 @@ import (
 
 	"github.com/google/go-cmp/cmp"
 
+	uda "chromiumos/system_api/user_data_auth_proto"
+	cryptohomecommon "chromiumos/tast/common/cryptohome"
 	"chromiumos/tast/common/hwsec"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
@@ -389,6 +391,12 @@ func authenticateWithCorrectPassword(ctx, ctxForCleanUp context.Context, testUse
 		}
 		if !reply.Authenticated {
 			return errors.New("AuthSession not authenticated despite successful reply")
+		}
+		if err := cryptohomecommon.ExpectAuthIntents(reply.AuthorizedFor, []uda.AuthIntent{
+			uda.AuthIntent_AUTH_INTENT_DECRYPT,
+			uda.AuthIntent_AUTH_INTENT_VERIFY_ONLY,
+		}); err != nil {
+			return errors.Wrap(err, "unexpected AuthSession authorized intents")
 		}
 	} else {
 		err = cryptohomeHelper.AuthenticateAuthSession(ctx, passwordAuthFactorSecret, passwordAuthFactorLabel, authSessionID, false /*kiosk_mount*/)
