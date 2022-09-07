@@ -163,6 +163,24 @@
       "parentUuid": "7602d965_151f2803",
       "revId": "ebf30cd49fc4aa84b4c0161869b075b6ecbe9d8c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5cdfdb8_b5ba768a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/update_recovery.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-09-07T14:04:09Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "965b0220_9b1325ef",
+      "revId": "ebf30cd49fc4aa84b4c0161869b075b6ecbe9d8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
