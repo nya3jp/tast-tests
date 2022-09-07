@@ -16,6 +16,52 @@
       "message": "Please review, thank you!",
       "revId": "e0e7073d621075bcd6e3cd1422b6877cda8faab1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e9fb586_9a14b3a5",
+        "filename": "src/chromiumos/tast/local/chrome/ash/desks.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-09-07T20:59:40Z",
+      "side": 1,
+      "message": "nit: If it should never happen, then how do you justify the code complexity of checking it? The function body could simply be:\n\tdesks, err :\u003d GetDesksInfo(ctx, tconn)\n\treturn desks.NumDesks, err\nIf you do check `desks.NumDesks \u003d\u003d 0` then you could just as easily write `desks.NumDesks \u003c\u003d 0` (and change the error message accordingly) so that negative numbers are detected too.",
+      "range": {
+        "startLine": 122,
+        "startChar": 3,
+        "endLine": 122,
+        "endChar": 28
+      },
+      "revId": "e0e7073d621075bcd6e3cd1422b6877cda8faab1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9746c129_0d4aa0fb",
+        "filename": "src/chromiumos/tast/local/chrome/ash/desks.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-09-07T20:59:40Z",
+      "side": 1,
+      "message": "optional nit: How about:\n\terr :\u003d tconn.Call(ctx, \u0026desks, \"tast.promisify(chrome.autotestPrivate.getDesksInfo)\")\n\treturn desks, err",
+      "range": {
+        "startLine": 138,
+        "startChar": 0,
+        "endLine": 141,
+        "endChar": 18
+      },
+      "revId": "e0e7073d621075bcd6e3cd1422b6877cda8faab1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
