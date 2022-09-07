@@ -41,12 +41,12 @@ func init() {
 			{
 				Name:              "informational",
 				Fixture:           fixture.TabletVK,
-				ExtraHardwareDeps: hwdep.D(pre.InputsUnstableModels),
+				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
 			},
 			{
 				Name:              "tablet_with_multitouch",
 				Fixture:           fixture.TabletVKWithMultitouch,
-				ExtraHardwareDeps: hwdep.D(pre.InputsUnstableModels),
+				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
 			},
 			{
 				Name:              "lacros_with_multitouch",
