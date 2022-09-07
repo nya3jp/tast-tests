@@ -71,6 +71,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2cd466b0_a06e976f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2620,
+      "author": {
+        "id": 1498402
+      },
+      "writtenOn": "2022-09-07T20:17:49Z",
+      "side": 1,
+      "message": "Elaborating about the steps needed for option 2.\n\nOn line 23, define\n```\ntype commandBuilderDecodeFn func(ctx context.Context, filename string, md5OutputPath string) (command []string)\n```\n\nIn each command builder function, make the same argument change, adding md5OutputPath string as a third input argument. The function would need to include`--md5\u003d\"+md5OutputPath` in the command list.\n\nThen, finally, remove the change on line 2620.",
+      "parentUuid": "b842e809_fcf48170",
+      "revId": "a101a4d2f55a34e85fc40b67a527207c777baf81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6f9287c8_ed7a888e",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
         "patchSetId": 2
