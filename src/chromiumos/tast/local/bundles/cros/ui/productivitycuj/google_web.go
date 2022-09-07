@@ -1,4 +1,4 @@
-// Copyright 2021 The Chromium OS Authors. All rights reserved.
+// Copyright 2021 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -278,6 +278,8 @@ func (app *GoogleDocs) VoiceToTextTesting(ctx context.Context, expectedText stri
 		}, &testing.PollOptions{Interval: time.Second, Timeout: 15 * time.Second})
 	}
 
+	pasteTableContainer := nodewith.Name("Paste table").Role(role.GenericContainer)
+	cancelButton := nodewith.Name("Cancel").Role(role.Button).Ancestor(pasteTableContainer)
 	tools := nodewith.Name("Tools").Role(role.MenuItem).Ancestor(menuBarBanner)
 	toolsExpanded := tools.Expanded()
 	voiceTypingItem := nodewith.Name("Voice typing v Ctrl+Shift+S").Role(role.MenuItem)
@@ -289,6 +291,10 @@ func (app *GoogleDocs) VoiceToTextTesting(ctx context.Context, expectedText stri
 	if err := uiauto.Combine("turn on the voice typing",
 		app.uiHdl.SwitchToChromeTabByName(docsTab),
 		app.closeDialogs,
+		uiauto.IfSuccessThen(
+			app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(cancelButton),
+			uiauto.NamedAction("click the cancel button", app.uiHdl.Click(cancelButton)),
+		),
 		app.ui.DoDefaultUntil(tools, app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(toolsExpanded)),
 		app.ui.WaitUntilExists(voiceTypingItem), // Sometimes the "Voice typing" menu item can be found but UI has not showed up yet.
 		app.ui.DoDefault(voiceTypingItem),
