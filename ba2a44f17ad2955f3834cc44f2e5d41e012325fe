@@ -22,6 +22,30 @@
       },
       "revId": "ba2a44f17ad2955f3834cc44f2e5d41e012325fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "82fb9862_9629eb01",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_keyboard.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1427718
+      },
+      "writtenOn": "2022-09-07T23:23:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "04fded6b_8f5e66e3",
+      "range": {
+        "startLine": 76,
+        "startChar": 1,
+        "endLine": 79,
+        "endChar": 0
+      },
+      "revId": "ba2a44f17ad2955f3834cc44f2e5d41e012325fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
