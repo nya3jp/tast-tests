@@ -30,8 +30,7 @@ func init() {
 			"assistive-eng@google.com",
 			"chromeos-sw-engprod@google.com",
 		},
-		// Disabled due to <1% pass rate over 30 days. See b/241943381
-		//Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		VarDeps: []string{
 			"wallpaper.googlePhotosAccountPool",
