@@ -31,7 +31,6 @@ func init() {
 		Pre:          chrome.LoggedIn(),
 		Attr: []string{
 			"group:mainline",
-			"informational",
 			"group:paper-io",
 			"paper-io_printing",
 		},
