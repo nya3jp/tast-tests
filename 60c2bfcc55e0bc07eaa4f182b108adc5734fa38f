@@ -16,6 +16,64 @@
       "message": "What do you think about making this test \"stable\"?",
       "revId": "60c2bfcc55e0bc07eaa4f182b108adc5734fa38f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca195500_7a2941b9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/fgsec_wpa_upgrade.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-09-07T15:46:31Z",
+      "side": 1,
+      "message": "Generally tests are added to unstable first and then moved to stable once they have been reliably passing in the lab for a while.",
+      "parentUuid": "c423e156_d004518b",
+      "revId": "60c2bfcc55e0bc07eaa4f182b108adc5734fa38f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e50fa18_075b4c93",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/fgsec_wpa_upgrade.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-09-07T15:46:31Z",
+      "side": 1,
+      "message": "just move this to right after the error check on L46-48 and use `ctx`",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 15
+      },
+      "revId": "60c2bfcc55e0bc07eaa4f182b108adc5734fa38f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c4ba599_3f9d8d89",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/fgsec_wpa_upgrade.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-09-07T15:46:31Z",
+      "side": 1,
+      "message": "micro nit: you don\u0027t need this log line",
+      "revId": "60c2bfcc55e0bc07eaa4f182b108adc5734fa38f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
