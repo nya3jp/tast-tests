@@ -26,14 +26,16 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Verify selinux violations are logged as expected",
 		Contacts:     []string{"mutexlox@google.com", "cros-telemetry@google.com"},
-		Attr:         []string{"group:mainline"},
+		// TODO(b/245411884): Re-enable this test.
+		// Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"selinux"},
 		Params: []testing.Param{{
 			Name:              "real_consent",
 			ExtraSoftwareDeps: []string{"chrome", "metrics_consent"},
-			ExtraAttr:         []string{"informational"},
-			Pre:               crash.ChromePreWithVerboseConsent(),
-			Val:               crash.RealConsent,
+			// Uncomment this line too.
+			// ExtraAttr:         []string{"informational"},
+			Pre: crash.ChromePreWithVerboseConsent(),
+			Val: crash.RealConsent,
 		}, {
 			Name: "mock_consent",
 			Val:  crash.MockConsent,
