@@ -11,6 +11,8 @@ import (
 	"path/filepath"
 	"time"
 
+	uda "chromiumos/system_api/user_data_auth_proto"
+	cryptohomecommon "chromiumos/tast/common/cryptohome"
 	"chromiumos/tast/common/hwsec"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
@@ -114,6 +116,12 @@ func UpdatePassword(ctx context.Context, s *testing.State) {
 		}
 		if !authReply.Authenticated {
 			return errors.New("AuthSession not authenticated despite successful reply")
+		}
+		if err := cryptohomecommon.ExpectAuthIntents(authReply.AuthorizedFor, []uda.AuthIntent{
+			uda.AuthIntent_AUTH_INTENT_DECRYPT,
+			uda.AuthIntent_AUTH_INTENT_VERIFY_ONLY,
+		}); err != nil {
+			return errors.Wrap(err, "unexpected AuthSession authorized intents")
 		}
 		if err := client.PreparePersistentVault(ctx, authSessionID, false /*ephemeral*/); err != nil {
 			return errors.Wrap(err, "failed to prepare persistent vault")

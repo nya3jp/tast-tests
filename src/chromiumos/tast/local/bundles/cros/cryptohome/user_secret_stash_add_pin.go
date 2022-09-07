@@ -8,6 +8,8 @@ import (
 	"context"
 	"time"
 
+	uda "chromiumos/system_api/user_data_auth_proto"
+	cryptohomecommon "chromiumos/tast/common/cryptohome"
 	"chromiumos/tast/common/hwsec"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/cryptohome"
@@ -110,6 +112,12 @@ func UserSecretStashAddPin(ctx context.Context, s *testing.State) {
 	}
 	if !authReply.Authenticated {
 		s.Fatal("AuthSession not authenticated despite successful reply")
+	}
+	if err := cryptohomecommon.ExpectAuthIntents(authReply.AuthorizedFor, []uda.AuthIntent{
+		uda.AuthIntent_AUTH_INTENT_DECRYPT,
+		uda.AuthIntent_AUTH_INTENT_VERIFY_ONLY,
+	}); err != nil {
+		s.Fatal("Unexpected AuthSession authorized intents: ", err)
 	}
 	if err := client.PreparePersistentVault(ctx, authSessionID /*ecryptfs=*/, false); err != nil {
 		s.Fatal("Failed to prepare persistent vault: ", err)
