@@ -16,6 +16,24 @@
       "message": "For the reven test: this looks like Landlock is disabled there but the 5.10 check isn’t sufficient to detect that. As of this writing I’m not certain the exact version used in the test -- one possibility is it’s a version of 5.10 before Landlock was backported.\n\nGoing to see if setting the cutoff at 5.15 gets better results, in parallel with looking into the board further and seeing if I need to further adjust how the test checks for Landlock being enabled.\n",
       "revId": "3b7c4d062693dad553e4c7f367f4b31ebe5bf962",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0594cd1_e05348e0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2022-09-07T12:22:33Z",
+      "side": 1,
+      "message": "Maybe we should see if Reven has a different kernel config that needs landlock to be enabled.",
+      "parentUuid": "1a9c3bb0_c80ce1d8",
+      "revId": "3b7c4d062693dad553e4c7f367f4b31ebe5bf962",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
