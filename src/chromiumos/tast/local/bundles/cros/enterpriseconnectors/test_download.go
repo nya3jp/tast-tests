@@ -192,7 +192,7 @@ func TestDownload(ctx context.Context, s *testing.State) {
 	reportOnlyUIEnabled = reportOnlyUIEnabled && testParams.AllowsImmediateDelivery
 
 	for _, params := range helpers.GetTestFileParams() {
-		s.Run(ctx, params.TestName, func(ctx context.Context, s *testing.State) {
+		if succeeded := s.Run(ctx, params.TestName, func(ctx context.Context, s *testing.State) {
 			cleanupCtx := ctx
 			ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 			defer cancel()
@@ -288,6 +288,10 @@ func TestDownload(ctx context.Context, s *testing.State) {
 					}
 				}
 			}
-		})
+		}); !succeeded {
+			// Stop, if the subtest fails as it might have left the state unusable.
+			// It also prevents showing wrong errors on tastboard.
+			break
+		}
 	}
 }
