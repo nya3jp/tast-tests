@@ -38,6 +38,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a656d06c_49472c2f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/fgsec_wpa_upgrade.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-09-07T22:21:00Z",
+      "side": 1,
+      "message": "Could you please add a description of the test steps. similar to this test:\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/remote/bundles/cros/wifi/p2p_simple_connect.go;rcl\u003d408dc0de035db3b85f9915ef0b566e96f253b4a9;l\u003d28",
+      "revId": "60c2bfcc55e0bc07eaa4f182b108adc5734fa38f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6e50fa18_075b4c93",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/fgsec_wpa_upgrade.go",
         "patchSetId": 2
@@ -55,6 +72,23 @@
         "endLine": 56,
         "endChar": 15
       },
+      "revId": "60c2bfcc55e0bc07eaa4f182b108adc5734fa38f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "683f5c2e_cee8ea1e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/fgsec_wpa_upgrade.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-09-07T22:21:00Z",
+      "side": 1,
+      "message": "defer disconnection right after this function and reserve time for it.",
       "revId": "60c2bfcc55e0bc07eaa4f182b108adc5734fa38f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
