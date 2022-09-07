@@ -111,4 +111,10 @@ func RoutineSection(ctx context.Context, s *testing.State) {
 		ctx); err != nil {
 		s.Fatal("Could not verify cancellation of routine: ", err)
 	}
+
+	// Wait for CPU idle to make sure stress test doesn't leave a bad state.
+	if err := cpu.WaitUntilIdle(ctx); err != nil {
+		// Do not block test even if we failed to wait cpu idle time.
+		s.Log("Failed to wait cpu idle after running RoutineSection test")
+	}
 }
