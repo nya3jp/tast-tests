@@ -46,6 +46,30 @@
       },
       "revId": "0188fa4ff1a1368ea22523191b3566bebe84473e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0fc50d8b_52a58ac5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/touch_suspend_resume.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-09-07T16:17:38Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "93ea4396_29b8ff41",
+      "range": {
+        "startLine": 304,
+        "startChar": 31,
+        "endLine": 304,
+        "endChar": 50
+      },
+      "revId": "0188fa4ff1a1368ea22523191b3566bebe84473e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
