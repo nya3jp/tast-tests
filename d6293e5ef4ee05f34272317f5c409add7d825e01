@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "15cb20e1_c3a6cd24",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hps/hps_setting_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1508123
+      },
+      "writtenOn": "2022-09-07T23:57:31Z",
+      "side": 1,
+      "message": "This is tying us more and more to very specific implementation details in powerd like log message wording, which might prove to be a maintenance burden in future... but if it helps us to diagnose failures and get this passing reliably then okay.",
+      "revId": "d6293e5ef4ee05f34272317f5c409add7d825e01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
