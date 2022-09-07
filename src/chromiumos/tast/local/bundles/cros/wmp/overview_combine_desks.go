@@ -111,7 +111,7 @@ func OverviewCombineDesks(ctx context.Context, s *testing.State) {
 	}
 
 	// Opens Chrome and Files.
-	for _, app := range []apps.App{apps.Chrome, apps.Files} {
+	for _, app := range []apps.App{apps.Chrome, apps.FilesSWA} {
 		if err := apps.Launch(ctx, tconn, app.ID); err != nil {
 			s.Fatalf("Failed to open %s: %v", app.Name, err)
 		}
