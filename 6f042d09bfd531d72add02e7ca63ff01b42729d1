@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "157c83cf_a014aff6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peerconnection/peer_connection.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2022-09-07T07:15:48Z",
+      "side": 1,
+      "message": "Nice catch.",
+      "parentUuid": "6ba58102_ade0f11f",
+      "range": {
+        "startLine": 114,
+        "startChar": 9,
+        "endLine": 114,
+        "endChar": 12
+      },
+      "revId": "6f042d09bfd531d72add02e7ca63ff01b42729d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7eff97cc_7bba1b76",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-09-06T21:20:17Z",
       "side": 1,
       "message": "I\u0027m confused. Wouldn\u0027t it always be an array of length 3 filled with true?",
+      "range": {
+        "startLine": 136,
+        "startChar": 44,
+        "endLine": 136,
+        "endChar": 61
+      },
+      "revId": "6f042d09bfd531d72add02e7ca63ff01b42729d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2807d41_f21a1942",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peerconnection/peer_connection.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2022-09-07T07:15:48Z",
+      "side": 1,
+      "message": "True. I inline it.",
+      "parentUuid": "7eff97cc_7bba1b76",
       "range": {
         "startLine": 136,
         "startChar": 44,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6f78935_b0563c50",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peerconnection/peer_connection.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2022-09-07T07:15:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6c3a22b4_c3ae933d",
+      "range": {
+        "startLine": 244,
+        "startChar": 24,
+        "endLine": 244,
+        "endChar": 81
+      },
+      "revId": "6f042d09bfd531d72add02e7ca63ff01b42729d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "92b13afc_713f3f69",
@@ -100,6 +172,30 @@
       "writtenOn": "2022-09-06T21:20:17Z",
       "side": 1,
       "message": "m",
+      "range": {
+        "startLine": 265,
+        "startChar": 38,
+        "endLine": 265,
+        "endChar": 39
+      },
+      "revId": "6f042d09bfd531d72add02e7ca63ff01b42729d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c47e4a6_995082b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peerconnection/peer_connection.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2022-09-07T07:15:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "92b13afc_713f3f69",
       "range": {
         "startLine": 265,
         "startChar": 38,
@@ -129,6 +225,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "40fc5906_b09c9fe7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peerconnection/peer_connection.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2022-09-07T07:15:48Z",
+      "side": 1,
+      "message": "How can I do something like Sscanf with regexp?",
+      "parentUuid": "efb99691_bb5ba594",
+      "revId": "6f042d09bfd531d72add02e7ca63ff01b42729d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1197c2f2_15c1a49b",
         "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peerconnection/peer_connection_perf.go",
         "patchSetId": 2
@@ -140,6 +254,30 @@
       "writtenOn": "2022-09-06T21:20:17Z",
       "side": 1,
       "message": "```\nif opts.simulcasts \u003e 1 {\n    return checkSimulcastEncImpl(...) \n}\n\nif opts.verify...\n```",
+      "range": {
+        "startLine": 402,
+        "startChar": 2,
+        "endLine": 404,
+        "endChar": 3
+      },
+      "revId": "6f042d09bfd531d72add02e7ca63ff01b42729d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a1d1cbb_325c2417",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peerconnection/peer_connection_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 404,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2022-09-07T07:15:48Z",
+      "side": 1,
+      "message": "I think the current code is ok.\n\nThe later code like measureRTCstats() should be done in simulcast case. \nThe opts.verfyHWEncoding is unnecessary if checkSimulcastEncImpl is executed.",
+      "parentUuid": "1197c2f2_15c1a49b",
       "range": {
         "startLine": 402,
         "startChar": 2,
