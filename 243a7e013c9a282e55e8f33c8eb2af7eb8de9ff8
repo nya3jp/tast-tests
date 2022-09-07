@@ -120,6 +120,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eba07a6a_fa2b3b23",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/cursive_smoke.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-09-07T03:39:20Z",
+      "side": 1,
+      "message": "that makes sense if the only change is to add a new model. Thanks for the clarification.",
+      "parentUuid": "4cbaef2b_5a034942",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 0
+      },
+      "revId": "243a7e013c9a282e55e8f33c8eb2af7eb8de9ff8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e4fb258f_025861f9",
