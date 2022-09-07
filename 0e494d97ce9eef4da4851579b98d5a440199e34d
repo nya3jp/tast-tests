@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2dc2ffe5_de31ccd4",
+        "filename": "helpers/local/featured.FeatureLibrary.check.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1551433
+      },
+      "writtenOn": "2022-09-07T22:47:46Z",
+      "side": 1,
+      "message": "not sure if this is the optimal way to break the line or if I should include `.find(` in the top line and finish the parameter in the second line.",
+      "range": {
+        "startLine": 44,
+        "startChar": 22,
+        "endLine": 45,
+        "endChar": 56
+      },
+      "revId": "0e494d97ce9eef4da4851579b98d5a440199e34d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f23cb00_fc04bdc1",
+        "filename": "helpers/local/featured.FeatureLibrary.check.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1551433
+      },
+      "writtenOn": "2022-09-07T22:47:46Z",
+      "side": 1,
+      "message": "I thought exiting with a non-zero code would be better than printing an empty line since I read that this would show up as a non-nil error I could check for.",
+      "range": {
+        "startLine": 48,
+        "startChar": 3,
+        "endLine": 48,
+        "endChar": 12
+      },
+      "revId": "0e494d97ce9eef4da4851579b98d5a440199e34d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
