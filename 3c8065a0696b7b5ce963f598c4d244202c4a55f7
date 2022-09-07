@@ -16,6 +16,29 @@
       "message": "We could combine this line with the previous line perhaps",
       "revId": "3c8065a0696b7b5ce963f598c4d244202c4a55f7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18934209_d40820a1",
+        "filename": "src/chromiumos/tast/local/power/read_utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-09-07T00:45:03Z",
+      "side": 1,
+      "message": "It seems to be an intended behavior according to @springerm https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2398753/comments/80ca4ff0_c6f02c4a",
+      "range": {
+        "startLine": 26,
+        "startChar": 4,
+        "endLine": 26,
+        "endChar": 7
+      },
+      "revId": "3c8065a0696b7b5ce963f598c4d244202c4a55f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
