@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "18dd39af_c7735549",
+        "filename": "src/chromiumos/tast/local/chrome/ash/desks.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-09-07T23:02:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea6ed08d_6e33026b",
+      "range": {
+        "startLine": 122,
+        "startChar": 2,
+        "endLine": 122,
+        "endChar": 3
+      },
+      "revId": "df2f330382f0c8fe5c422d153dfd1c1239f12859",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "667beab3_93352e46",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-09-07T22:45:50Z",
       "side": 1,
       "message": "`errors.Errorf(\"unexpected desk count of %d, there should always be at least 1 desk\", desks.NumDesks)`",
+      "range": {
+        "startLine": 129,
+        "startChar": 25,
+        "endLine": 129,
+        "endChar": 105
+      },
+      "revId": "df2f330382f0c8fe5c422d153dfd1c1239f12859",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "59c25819_e47a24ba",
+        "filename": "src/chromiumos/tast/local/chrome/ash/desks.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-09-07T23:02:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "667beab3_93352e46",
       "range": {
         "startLine": 129,
         "startChar": 25,
