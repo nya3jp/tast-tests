@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "00e0d263_60668ac7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/disable_enable_ec_sw_sync.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-09-07T03:41:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d65b6a00_e2076260",
+      "range": {
+        "startLine": 25,
+        "startChar": 4,
+        "endLine": 25,
+        "endChar": 5
+      },
+      "revId": "f90851104c71b120ceff4ae5753cc90c349a194a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c229a214_175bdba4",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-07-27T16:57:00Z",
       "side": 1,
       "message": "nit: const\n\n    const disableECSoftwareSync \u003d \"0x200\"",
+      "range": {
+        "startLine": 117,
+        "startChar": 1,
+        "endLine": 117,
+        "endChar": 22
+      },
+      "revId": "f90851104c71b120ceff4ae5753cc90c349a194a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0c19c01_0a6be6fc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/disable_enable_ec_sw_sync.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-09-07T03:41:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c229a214_175bdba4",
       "range": {
         "startLine": 117,
         "startChar": 1,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3154b199_cf03d74e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/disable_enable_ec_sw_sync.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-09-07T03:41:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "262ae1d6_f9023176",
+      "range": {
+        "startLine": 132,
+        "startChar": 116,
+        "endLine": 132,
+        "endChar": 126
+      },
+      "revId": "f90851104c71b120ceff4ae5753cc90c349a194a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7254fa69_90e1891d",
@@ -100,6 +172,30 @@
       "writtenOn": "2022-07-27T16:57:00Z",
       "side": 1,
       "message": "ditto above",
+      "range": {
+        "startLine": 153,
+        "startChar": 2,
+        "endLine": 153,
+        "endChar": 20
+      },
+      "revId": "f90851104c71b120ceff4ae5753cc90c349a194a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2543c20_d9c1f8c8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/disable_enable_ec_sw_sync.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-09-07T03:41:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7254fa69_90e1891d",
       "range": {
         "startLine": 153,
         "startChar": 2,
@@ -133,6 +229,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7e2d0af_2fab0f7b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/disable_enable_ec_sw_sync.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-09-07T03:41:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1f1ade52_1f2c7ad5",
+      "range": {
+        "startLine": 156,
+        "startChar": 1,
+        "endLine": 156,
+        "endChar": 21
+      },
+      "revId": "f90851104c71b120ceff4ae5753cc90c349a194a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "919146a8_64b8122b",
@@ -146,6 +266,30 @@
       "writtenOn": "2022-07-27T16:57:00Z",
       "side": 1,
       "message": "nit: ditto, print version values",
+      "range": {
+        "startLine": 171,
+        "startChar": 2,
+        "endLine": 171,
+        "endChar": 16
+      },
+      "revId": "f90851104c71b120ceff4ae5753cc90c349a194a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f565c8b_fc73a7f1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/disable_enable_ec_sw_sync.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-09-07T03:41:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "919146a8_64b8122b",
       "range": {
         "startLine": 171,
         "startChar": 2,
@@ -179,6 +323,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec855beb_fee33ab7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/disable_enable_ec_sw_sync.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-09-07T03:41:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b85d1b9a_69919eca",
+      "range": {
+        "startLine": 177,
+        "startChar": 5,
+        "endLine": 177,
+        "endChar": 30
+      },
+      "revId": "f90851104c71b120ceff4ae5753cc90c349a194a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5dbed1b2_61dab284",
@@ -192,6 +360,30 @@
       "writtenOn": "2022-07-27T16:57:00Z",
       "side": 1,
       "message": "reRWVersion",
+      "range": {
+        "startLine": 198,
+        "startChar": 89,
+        "endLine": 198,
+        "endChar": 100
+      },
+      "revId": "f90851104c71b120ceff4ae5753cc90c349a194a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d18029c1_2638fa3e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/disable_enable_ec_sw_sync.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-09-07T03:41:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5dbed1b2_61dab284",
       "range": {
         "startLine": 198,
         "startChar": 89,
