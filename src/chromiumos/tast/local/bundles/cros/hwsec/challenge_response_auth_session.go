@@ -1,4 +1,4 @@
-// Copyright 2022 The ChromiumOS Authors.
+// Copyright 2022 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -12,7 +12,6 @@ import (
 
 	cpb "chromiumos/system_api/cryptohome_proto"
 	"chromiumos/tast/common/hwsec"
-	"chromiumos/tast/local/bundles/cros/hwsec/util"
 	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/dbusutil"
 	hwseclocal "chromiumos/tast/local/hwsec"
@@ -38,12 +37,7 @@ func init() {
 			},
 			{
 				Name: "rsassa_all",
-				Val: []cpb.ChallengeSignatureAlgorithm{
-					cpb.ChallengeSignatureAlgorithm_CHALLENGE_RSASSA_PKCS1_V1_5_SHA1,
-					cpb.ChallengeSignatureAlgorithm_CHALLENGE_RSASSA_PKCS1_V1_5_SHA256,
-					cpb.ChallengeSignatureAlgorithm_CHALLENGE_RSASSA_PKCS1_V1_5_SHA384,
-					cpb.ChallengeSignatureAlgorithm_CHALLENGE_RSASSA_PKCS1_V1_5_SHA512,
-				},
+				Val:  hwsec.SmartCardAlgorithms,
 			}},
 	})
 }
@@ -54,6 +48,7 @@ func ChallengeResponseAuthSession(ctx context.Context, s *testing.State) {
 	const (
 		dbusName    = "org.chromium.TestingCryptohomeKeyDelegate"
 		testUser    = "cryptohome_test@chromium.org"
+		keyLabel    = "smart-card-label"
 		keySizeBits = 2048
 	)
 	keyAlgs := s.Param().([]cpb.ChallengeSignatureAlgorithm)
@@ -94,7 +89,7 @@ func ChallengeResponseAuthSession(ctx context.Context, s *testing.State) {
 	}
 	defer dbusConn.ReleaseName(dbusName)
 
-	keyDelegate, err := util.NewCryptohomeKeyDelegate(
+	keyDelegate, err := hwsec.NewCryptohomeKeyDelegate(
 		s.Logf, dbusConn, testUser, keyAlgs, rsaKey, pubKeySPKIDER)
 	if err != nil {
 		s.Fatal("Failed to export D-Bus key delegate: ", err)
@@ -111,7 +106,7 @@ func ChallengeResponseAuthSession(ctx context.Context, s *testing.State) {
 	}
 
 	authConfig := hwsec.NewChallengeAuthConfig(testUser, dbusName, keyDelegate.DBusPath, pubKeySPKIDER, keyAlgs)
-	cleanup, err := cryptohome.CreateUserAuthSessionWithChallengeCredential(ctx, testUser, false /*isEphemeral*/, authConfig)
+	cleanup, err := cryptohome.CreateUserAuthSessionWithChallengeCredential(ctx, testUser, keyLabel, false /*isEphemeral*/, authConfig)
 	if err != nil {
 		s.Fatal("Failed to create the user: ", err)
 	}
@@ -129,7 +124,7 @@ func ChallengeResponseAuthSession(ctx context.Context, s *testing.State) {
 
 	// Reauthenticate and remount the specific vault.
 	// Remount should succeed.
-	authSessionID, err := cryptohome.AuthenticateAuthSessionWithChallengeCredential(ctx, testUser, false /*isEphemeral*/, authConfig)
+	authSessionID, err := cryptohome.AuthenticateAuthSessionWithChallengeCredential(ctx, testUser, keyLabel, false /*isEphemeral*/, authConfig)
 	if err != nil {
 		s.Fatal("Failed to authenticate persistent user: ", err)
 	}
@@ -152,7 +147,7 @@ func ChallengeResponseAuthSession(ctx context.Context, s *testing.State) {
 	// Remount should fail.
 	// Failure occurs because of manually "corrputed" requestedUser
 	requestedUser := "corrputed_testUser"
-	_, err = cryptohome.AuthenticateAuthSessionWithChallengeCredential(ctx, requestedUser, false /*isEphemeral*/, authConfig)
+	_, err = cryptohome.AuthenticateAuthSessionWithChallengeCredential(ctx, requestedUser, keyLabel, false /*isEphemeral*/, authConfig)
 	if err == nil {
 		s.Fatal("Authentication with wrong credentials is expected to fail but succeeded: ", err)
 	}

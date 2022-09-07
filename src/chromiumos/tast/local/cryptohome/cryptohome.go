@@ -1,4 +1,4 @@
-// Copyright 2018 The Chromium OS Authors. All rights reserved.
+// Copyright 2018 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -504,7 +504,7 @@ func CreateUserWithAuthSession(ctx context.Context, username, password, keyLabel
 }
 
 // CreateUserAuthSessionWithChallengeCredential creates a persistent user via auth session API.
-func CreateUserAuthSessionWithChallengeCredential(ctx context.Context, username string, isEphemeral bool, authConfig *hwsec.AuthConfig) (func(ctx context.Context) error, error) {
+func CreateUserAuthSessionWithChallengeCredential(ctx context.Context, username, keyLabel string, isEphemeral bool, authConfig *hwsec.AuthConfig) (func(ctx context.Context) error, error) {
 	cmdRunner := hwseclocal.NewCmdRunner()
 	cryptohome := hwsec.NewCryptohomeClient(cmdRunner)
 
@@ -538,7 +538,7 @@ func CreateUserAuthSessionWithChallengeCredential(ctx context.Context, username 
 		}
 	}
 
-	if err := cryptohome.AddChallengeCredentialsWithAuthSession(ctx, username, authSessionID, authConfig); err != nil {
+	if err := cryptohome.AddChallengeCredentialsWithAuthSession(ctx, username, authSessionID, keyLabel, authConfig); err != nil {
 		cleanup(ctx)
 		return nil, errors.Wrap(err, "failed to add credentials with AuthSession")
 	}
@@ -600,7 +600,7 @@ func AuthenticateWithAuthSession(ctx context.Context, username, password, keyLab
 }
 
 // AuthenticateAuthSessionWithChallengeCredential authenticates an existing user via auth session API.
-func AuthenticateAuthSessionWithChallengeCredential(ctx context.Context, username string, isEphemeral bool, authConfig *hwsec.AuthConfig) (string, error) {
+func AuthenticateAuthSessionWithChallengeCredential(ctx context.Context, username, keyLabel string, isEphemeral bool, authConfig *hwsec.AuthConfig) (string, error) {
 	cmdRunner := hwseclocal.NewCmdRunner()
 	cryptohome := hwsec.NewCryptohomeClient(cmdRunner)
 
@@ -613,7 +613,7 @@ func AuthenticateAuthSessionWithChallengeCredential(ctx context.Context, usernam
 
 	// Authenticate the same AuthSession using authSessionID.
 	// If we cannot authenticate, do not proceed with mount and unmount.
-	if err := cryptohome.AuthenticateChallengeCredentialWithAuthSession(ctx, authSessionID, authConfig); err != nil {
+	if err := cryptohome.AuthenticateChallengeCredentialWithAuthSession(ctx, authSessionID, keyLabel, authConfig); err != nil {
 		return "", errors.Wrap(err, "failed to authenticate with AuthSession")
 	}
 	testing.ContextLog(ctx, "User authenticated successfully")
