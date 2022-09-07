@@ -22,6 +22,30 @@
       },
       "revId": "697782d98c747417231092667baf2d97dcae9fe5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "596497f7_a4549085",
+        "filename": "src/chromiumos/tast/local/croshealthd/telem.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1549388
+      },
+      "writtenOn": "2022-09-07T16:17:24Z",
+      "side": 1,
+      "message": "I used string because in `cros-health-tool` we can enter `--process_info\u003dall` to probe all processes. (details in chromium:3857465 or go/cros-healthd-multiple-process-dd) Will this be ok?",
+      "parentUuid": "a900a8f7_101a98c5",
+      "range": {
+        "startLine": 32,
+        "startChar": 1,
+        "endLine": 32,
+        "endChar": 11
+      },
+      "revId": "697782d98c747417231092667baf2d97dcae9fe5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
