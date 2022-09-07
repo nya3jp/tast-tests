@@ -98,6 +98,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4cbaef2b_5a034942",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/cursive_smoke.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1322819
+      },
+      "writtenOn": "2022-09-07T03:27:35Z",
+      "side": 1,
+      "message": "I think if anything the change in the lists would be an addition of a new model -- not a removal of a model or a change between manual and auto installation. So I think any model updates would not block or cause a test failure.",
+      "parentUuid": "094521e0_5e634a78",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 0
+      },
+      "revId": "243a7e013c9a282e55e8f33c8eb2af7eb8de9ff8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e4fb258f_025861f9",
         "filename": "src/chromiumos/tast/local/bundles/cros/apps/cursive_smoke.go",
         "patchSetId": 2
