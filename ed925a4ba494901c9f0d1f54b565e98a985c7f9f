@@ -43,6 +43,70 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6e6438d1_eb521672",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/theme_selection.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-09-07T01:54:51Z",
+      "side": 1,
+      "message": "I think in go you are free to break how you want. This breaking looks reasonable to me anyway. We don\u0027t want it to be a hugely long line if avoidable.",
+      "parentUuid": "f03f1680_ccd42a19",
+      "range": {
+        "startLine": 51,
+        "startChar": 103,
+        "endLine": 51,
+        "endChar": 110
+      },
+      "revId": "ed925a4ba494901c9f0d1f54b565e98a985c7f9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7fd8d25_7abe2232",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/theme_selection.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-09-07T01:54:51Z",
+      "side": 1,
+      "message": "nit: Go style says to not prefix with \u0027get\u0027. Consider calling this nameOfSelectedTheme or similar. Same in other locations.",
+      "range": {
+        "startLine": 53,
+        "startChar": 5,
+        "endLine": 53,
+        "endChar": 27
+      },
+      "revId": "ed925a4ba494901c9f0d1f54b565e98a985c7f9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db0fd255_eac40a3b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/theme_selection.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-09-07T01:54:51Z",
+      "side": 1,
+      "message": "Is it important that this error be easily distinguishable from a general failure of .Eval?",
+      "revId": "ed925a4ba494901c9f0d1f54b565e98a985c7f9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b6f462ca_87b0d0f1",
         "filename": "src/chromiumos/tast/local/bundles/cros/oobe/theme_selection.go",
         "patchSetId": 3
@@ -66,6 +130,40 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3faf9f25_f5c22ff6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/theme_selection.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-09-07T01:54:51Z",
+      "side": 1,
+      "message": "nit: imo okay to omit the assignment to err",
+      "revId": "ed925a4ba494901c9f0d1f54b565e98a985c7f9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5bf12455_2d927dd8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/theme_selection.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-09-07T01:54:51Z",
+      "side": 1,
+      "message": "nit: this is only called from one location right? Probably fine to inline it for now, since it\u0027s a very simple function",
+      "revId": "ed925a4ba494901c9f0d1f54b565e98a985c7f9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5ebdaa79_afc48e78",
         "filename": "src/chromiumos/tast/local/bundles/cros/oobe/theme_selection.go",
         "patchSetId": 3
@@ -83,6 +181,40 @@
         "endLine": 117,
         "endChar": 64
       },
+      "revId": "ed925a4ba494901c9f0d1f54b565e98a985c7f9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28cca4a6_c8dc572f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/theme_selection.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-09-07T01:54:51Z",
+      "side": 1,
+      "message": "recommend using a cleanupCtx here and other locations, see https://chromium.googlesource.com/chromiumos/platform/tast/+/f811fda13fa9646ad3ee8cdd43b2ae6b7d6bb970/docs/writing_tests.md#reserve-time-for-clean_up-task",
+      "revId": "ed925a4ba494901c9f0d1f54b565e98a985c7f9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3340b55_7ead7639",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/theme_selection.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-09-07T01:54:51Z",
+      "side": 1,
+      "message": "can combine previous line here, err :\u003d waitFor..; err !\u003d nil",
       "revId": "ed925a4ba494901c9f0d1f54b565e98a985c7f9f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
