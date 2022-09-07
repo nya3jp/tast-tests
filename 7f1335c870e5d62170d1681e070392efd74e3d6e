@@ -50,6 +50,24 @@
       "message": "LGTM.\n\nHow about that we briefly document (in CL description or in bug) why uploading log from the custom app is no longer needed?",
       "revId": "7f1335c870e5d62170d1681e070392efd74e3d6e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1059a61_9a4a1a0b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1519467
+      },
+      "writtenOn": "2022-09-07T22:42:19Z",
+      "side": 1,
+      "message": "Bring this to attention.",
+      "parentUuid": "1b17939d_66c0ae9f",
+      "revId": "7f1335c870e5d62170d1681e070392efd74e3d6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
