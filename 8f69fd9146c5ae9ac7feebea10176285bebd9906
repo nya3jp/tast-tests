@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1c659085_7223d4c9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-09-07T21:01:05Z",
+      "side": 1,
+      "message": "Can you update the description to specify? Or at least something more general like \"relax signal strength restrictions\"?",
+      "parentUuid": "2c179b56_4db246a9",
+      "revId": "8f69fd9146c5ae9ac7feebea10176285bebd9906",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a0db707b_2266442b",
         "filename": "/COMMIT_MSG",
         "patchSetId": 4
@@ -67,6 +85,24 @@
       "side": 1,
       "message": "Please see the commit message.",
       "parentUuid": "a0db707b_2266442b",
+      "revId": "8f69fd9146c5ae9ac7feebea10176285bebd9906",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0003de52_36e7b481",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-09-07T21:01:05Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ee11762e_53d5a9e3",
       "revId": "8f69fd9146c5ae9ac7feebea10176285bebd9906",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -119,6 +155,24 @@
       "side": 1,
       "message": "Please see the commit message.",
       "parentUuid": "9716d52e_a5cdb8d1",
+      "revId": "8f69fd9146c5ae9ac7feebea10176285bebd9906",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "614b5a9f_26ddcc03",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/nl80211_station_information.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-09-07T21:01:05Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "09c89044_812259ae",
       "revId": "8f69fd9146c5ae9ac7feebea10176285bebd9906",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
