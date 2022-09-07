@@ -24,7 +24,6 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Check basic functionalities of ScreenRecorderService",
 		Contacts:     []string{"jonfan@google.com", "chromeos-sw-engprod@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{
 			Name: "given_path",
