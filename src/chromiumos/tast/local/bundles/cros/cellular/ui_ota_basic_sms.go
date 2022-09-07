@@ -11,6 +11,7 @@ import (
 	"chromiumos/tast/common/mmconst"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/cellular"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
@@ -32,10 +33,7 @@ func init() {
 		Attr:         []string{"group:cellular", "cellular_unstable", "cellular_sim_active"},
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      10 * time.Minute,
-		Vars: []string{
-			"ui.oac_username",
-			"ui.oac_password",
-		},
+		VarDeps:      []string{"cellular.gaiaAccountPool"},
 	})
 }
 
@@ -94,8 +92,11 @@ func UIOtaBasicSms(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
 
-	uiHelper, err := cellular.NewUIHelper(ctx, s.RequiredVar("ui.oac_username"), s.RequiredVar("ui.oac_password"))
-
+	gaiaCreds, err := chrome.PickRandomCreds(s.RequiredVar("cellular.gaiaAccountPool"))
+	if err != nil {
+		s.Fatal("Failed to parse cellular user creds: ", err)
+	}
+	uiHelper, err := cellular.NewUIHelper(ctx, gaiaCreds.User, gaiaCreds.Pass)
 	if err != nil {
 		faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, uiHelper.Tconn)
 		s.Fatal("Failed to create cellular.NewUiHelper: ", err)
