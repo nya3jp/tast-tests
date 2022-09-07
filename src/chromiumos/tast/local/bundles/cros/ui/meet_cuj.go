@@ -465,8 +465,15 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 			s.Log("Failed to remove all bots: ", err)
 		}
 	}(closeCtx)
-	// We create a total of meet.num bots: meet.num - 1 bots here,
-	// and then 1 bot with spotlight layout in a separate step.
+	// Create a bot with spotlight layout to request HD video.
+	spotlightBotList, _, err := bc.AddBots(sctx, meetingCode, 1, meetTimeout+30*time.Minute, append(meet.botsOptions, bond.WithLayout("SPOTLIGHT"))...)
+	if err != nil {
+		s.Fatal("Failed to create bot with spotlight layout: ", err)
+	}
+	if len(spotlightBotList) != 1 {
+		s.Fatal("Bot with spotlight layout failed")
+	}
+	// After the spotlight bot, attempt to add meet.num - 1 more bots, for a total of meet.num.
 	addBotsCount := meet.num - 1
 	if addBotsCount > 0 {
 		wait := 100 * time.Millisecond
@@ -488,15 +495,6 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 			}
 			addBotsCount -= len(botList)
 		}
-	}
-
-	// Create a bot with spotlight layout to request HD video.
-	spotlightBotList, _, err := bc.AddBots(sctx, meetingCode, 1, meetTimeout+30*time.Minute, append(meet.botsOptions, bond.WithLayout("SPOTLIGHT"))...)
-	if err != nil {
-		s.Fatal("Failed to create bot with spotlight layout: ", err)
-	}
-	if len(spotlightBotList) != 1 {
-		s.Fatal("Bot with spotlight layout failed")
 	}
 
 	tabChecker, err := cuj.NewTabCrashChecker(ctx, tconn)
