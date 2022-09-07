@@ -159,6 +159,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5007e2ac_7d28a6ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2022-09-07T19:52:12Z",
+      "side": 1,
+      "message": "Looks good to me. Jao-ke, do you have any opinion? Or did we decide what to do with vaapi case?",
+      "parentUuid": "e895af00_ad4cb60e",
+      "revId": "5616b6772df86c1d5bd010707b8c42d5939b6a13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fd6c65d3_94b24aa7",

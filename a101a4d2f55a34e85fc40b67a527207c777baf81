@@ -16,6 +16,40 @@
       "message": "Addressed issues raised in comments. PTAL",
       "revId": "a101a4d2f55a34e85fc40b67a527207c777baf81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b928bc1d_e58f1786",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2022-09-07T19:52:12Z",
+      "side": 1,
+      "message": "LGTM.",
+      "revId": "a101a4d2f55a34e85fc40b67a527207c777baf81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f9287c8_ed7a888e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2642,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2022-09-07T19:52:12Z",
+      "side": 1,
+      "message": "nit: s/Remove/Removes/",
+      "revId": "a101a4d2f55a34e85fc40b67a527207c777baf81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
