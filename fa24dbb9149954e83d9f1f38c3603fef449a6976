@@ -16,6 +16,29 @@
       "message": "LGTM cc\u0027ing galenemco@ for the familylink tests",
       "revId": "fa24dbb9149954e83d9f1f38c3603fef449a6976",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3297f161_3dfef551",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/incognito_mode_disabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-09-07T23:44:02Z",
+      "side": 1,
+      "message": "There seems to be a few more places using this trick: http://source/search?q\u003d%5C%22Google%5CsChrome%5C%22%20f:tast\n\nBy the way, I\u0027m curious why there is the shelf name discrepancy between Chrome and LacrosOnly and if LacrosOnly can be named \"Google Chrome\" on the shelf.",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 0
+      },
+      "revId": "fa24dbb9149954e83d9f1f38c3603fef449a6976",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
