@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5c7a94e_be25a82c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1542652
+      },
+      "writtenOn": "2022-09-07T20:32:27Z",
+      "side": 1,
+      "message": "Will handle that in a new CL.",
+      "parentUuid": "37d0df68_5949c4c6",
+      "revId": "1e3192bcdfb65f6a16fc24c242ec4ac9cf618482",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ecf06b30_135a5b86",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-09-07T18:46:47Z",
       "side": 1,
       "message": "I\u0027m not certain but I think this should probably be in a defer since it\u0027s clean up work[1]. \n\nRef:\n[1] https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Reserve-time-for-clean_up-task",
+      "range": {
+        "startLine": 115,
+        "startChar": 1,
+        "endLine": 119,
+        "endChar": 2
+      },
+      "revId": "1e3192bcdfb65f6a16fc24c242ec4ac9cf618482",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "31e29bc5_d9faab1a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/diagnostics/routine_section.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1542652
+      },
+      "writtenOn": "2022-09-07T20:32:27Z",
+      "side": 1,
+      "message": "Good suggestion. Done.",
+      "parentUuid": "ecf06b30_135a5b86",
       "range": {
         "startLine": 115,
         "startChar": 1,
