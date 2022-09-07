@@ -52,6 +52,24 @@
       "parentUuid": "e0594cd1_e05348e0",
       "revId": "3b7c4d062693dad553e4c7f367f4b31ebe5bf962",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "16fa0241_cb08a424",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2022-09-07T17:47:41Z",
+      "side": 1,
+      "message": "The base config for 5.10 has it enabled.",
+      "parentUuid": "41ead18e_8898a992",
+      "revId": "3b7c4d062693dad553e4c7f367f4b31ebe5bf962",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
