@@ -8,6 +8,7 @@ import (
 	"context"
 	"time"
 
+	uda "chromiumos/system_api/user_data_auth_proto"
 	"chromiumos/tast/common/hwsec"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
@@ -59,7 +60,7 @@ func Recovery(ctx context.Context, s *testing.State) {
 	client := hwsec.NewCryptohomeClient(cmdRunner)
 
 	// Create and mount the persistent user.
-	authSessionID, err := client.StartAuthSession(ctx, userName /*ephemeral=*/, false)
+	authSessionID, err := client.StartAuthSession(ctx, userName /*ephemeral=*/, false, uda.AuthIntent_AUTH_INTENT_DECRYPT)
 	if err != nil {
 		s.Fatal("Failed to start auth session: ", err)
 	}
@@ -108,7 +109,7 @@ func Recovery(ctx context.Context, s *testing.State) {
 	}
 
 	// Authenticate a new auth session via the new added recovery auth factor and mount the user.
-	authSessionID, err = client.StartAuthSession(ctx, userName, false /*ephemeral*/)
+	authSessionID, err = client.StartAuthSession(ctx, userName, false /*ephemeral*/, uda.AuthIntent_AUTH_INTENT_DECRYPT)
 	if err != nil {
 		s.Fatal("Failed to start auth session for re-mounting: ", err)
 	}
