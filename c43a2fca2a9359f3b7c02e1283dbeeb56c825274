@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60f28ffe_a9ff9088",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-09-08T16:11:34Z",
+      "side": 1,
+      "message": "Remove the word `for` here, because the subject line should use the imperative mood. See: https://chris.beams.io/posts/git-commit/",
+      "range": {
+        "startLine": 7,
+        "startChar": 4,
+        "endLine": 7,
+        "endChar": 7
+      },
+      "revId": "c43a2fca2a9359f3b7c02e1283dbeeb56c825274",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6d938ca_e2250ebc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-09-08T16:11:34Z",
+      "side": 1,
+      "message": "I don\u0027t think the word `issue` needs to appear both here and outside the ``.",
+      "range": {
+        "startLine": 10,
+        "startChar": 31,
+        "endLine": 10,
+        "endChar": 36
+      },
+      "revId": "c43a2fca2a9359f3b7c02e1283dbeeb56c825274",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5fa26da7_06bf101d",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/filesapp/filesapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-09-08T16:11:34Z",
+      "side": 1,
+      "message": "Does it matter which one of the multiple nodes is returned here? If so, is there a more maintainable way to identify the right one? Consider `.Ancestor(something)` (among other possibilities).",
+      "range": {
+        "startLine": 72,
+        "startChar": 87,
+        "endLine": 72,
+        "endChar": 95
+      },
+      "revId": "c43a2fca2a9359f3b7c02e1283dbeeb56c825274",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff2e574e_7f9e7641",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/filesapp/filesapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-09-08T16:11:34Z",
+      "side": 1,
+      "message": "`ClassName` is deprecated. Take this opportunity to update to `HasClass`. See:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/uiauto/nodewith/nodewith.go;drc\u003dc731f70b3bf035804409f58e8d3d2827c0056af3;l\u003d596",
+      "range": {
+        "startLine": 72,
+        "startChar": 62,
+        "endLine": 72,
+        "endChar": 71
+      },
+      "revId": "c43a2fca2a9359f3b7c02e1283dbeeb56c825274",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
