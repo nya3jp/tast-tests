@@ -11,10 +11,14 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/apps"
+	"chromiumos/tast/local/audio"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/launcher"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/local/input/voice"
 	"chromiumos/tast/testing"
 )
 
@@ -35,6 +39,39 @@ func RefreshApp(ctx context.Context, tconn *chrome.TestConn) uiauto.Action {
 		}
 		return nil
 	}
+}
+
+// SetUpProjectorApp launches the Projector aka Screencast app from
+// the launcher and dimisses the onboarding dialog. It also checks the
+// microphone and sets up a fake one if necessary. A deferred call to
+// the returned cleanup function to unload aloop should be scheduled
+// by the caller if err is non-nil.
+func SetUpProjectorApp(ctx context.Context, tconn *chrome.TestConn) (func(ctx context.Context), error) {
+	if err := launcher.LaunchAndWaitForAppOpen(tconn, apps.Projector)(ctx); err != nil {
+		return nil, errors.Wrap(err, "failed to open Projector app")
+	}
+
+	if err := DismissOnboardingDialog(ctx, tconn); err != nil {
+		return nil, errors.Wrap(err, "failed to close the onboarding dialog")
+	}
+
+	if err := audio.WaitForDevice(ctx, audio.InputStream); err == nil {
+		return func(ctx context.Context) {}, nil
+	}
+
+	testing.ContextLog(ctx, "Microphone is unavailable, verifying new screencast button is disabled")
+	if err := VerifyNewScreencastButtonDisabled(ctx, tconn, "Turn on microphone"); err != nil {
+		return nil, errors.Wrap(err, "microphone is unavailable, but new screencast button is enabled")
+	}
+
+	// Set up CRAS Aloop for audio test. Set up a fake microphone
+	// so the test may proceed.
+	cleanup, err := voice.EnableAloop(ctx, tconn)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to enable aloop")
+	}
+
+	return cleanup, nil
 }
 
 // DismissOnboardingDialog closes the onboarding dialog if it exists.
