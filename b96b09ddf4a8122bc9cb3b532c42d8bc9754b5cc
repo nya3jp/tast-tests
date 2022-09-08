@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "465bf7a6_cb2da832",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-09-08T05:34:16Z",
+      "side": 1,
+      "message": "LGTM with the small nit, changing it shouldn\u0027t affect my CR+2 (I think)",
+      "revId": "b96b09ddf4a8122bc9cb3b532c42d8bc9754b5cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bb9e5152_5a020dba",
