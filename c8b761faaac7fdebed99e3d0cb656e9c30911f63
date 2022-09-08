@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd20d3c1_c8b6b7ce",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1313155
+      },
+      "writtenOn": "2022-09-08T23:29:24Z",
+      "side": 1,
+      "message": "Hi Alex,\n\nThis is the second part of this test that adds pre-provisioning using curl and deprovisioning with tape. After this I\u0027ll just need to figure out one more step with device resetting and it should be done.\n\nI\u0027m having some issues getting the yaml file needed for this CL. For some reason I can no longer repo upload to the private repo, will need to figure this out. \n\nAlso have one question for you in a comment below.\nThank you!",
+      "revId": "c8b761faaac7fdebed99e3d0cb656e9c30911f63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b00c84c_ece810df",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/gaia_zte_enrollment.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1313155
+      },
+      "writtenOn": "2022-09-08T23:29:24Z",
+      "side": 1,
+      "message": "Alex - I\u0027m not actually sure how to add multiple Vals could you help me out with this? I need the first one for the gaiaenrollment.TestParams but when I add the second one Tast complains. How can I refer to these variables from the yaml file?(CL with the yaml file will be coming later, I\u0027m having issues repo uploading to private repo for some reason)",
+      "range": {
+        "startLine": 53,
+        "startChar": 4,
+        "endLine": 53,
+        "endChar": 52
+      },
+      "revId": "c8b761faaac7fdebed99e3d0cb656e9c30911f63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
