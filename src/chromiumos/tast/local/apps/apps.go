@@ -327,7 +327,7 @@ var VMWare = App{
 
 // Projector has details about the Screencast app.
 var Projector = App{
-	ID:   "fgnpbdobngpkonkajbmelfhjkemaddhp",
+	ID:   "nblbgfbmjfjaeonhjnbbkabkdploocij",
 	Name: "Screencast",
 }
 
