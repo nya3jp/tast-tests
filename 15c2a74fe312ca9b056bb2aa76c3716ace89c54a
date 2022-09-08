@@ -22,6 +22,30 @@
       },
       "revId": "15c2a74fe312ca9b056bb2aa76c3716ace89c54a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21fc06ef_7e832b1f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/diagnostics/routine_section.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-09-08T13:47:23Z",
+      "side": 1,
+      "message": "I agreed here. WDYT, Wenyu?",
+      "parentUuid": "7769d8ae_5a13cc02",
+      "range": {
+        "startLine": 116,
+        "startChar": 4,
+        "endLine": 116,
+        "endChar": 61
+      },
+      "revId": "15c2a74fe312ca9b056bb2aa76c3716ace89c54a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
