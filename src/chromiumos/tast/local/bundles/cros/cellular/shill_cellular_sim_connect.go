@@ -6,12 +6,14 @@ package cellular
 
 import (
 	"context"
+	"time"
 
 	"chromiumos/tast/common/mmconst"
 	"chromiumos/tast/common/shillconst"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/cellular"
 	"chromiumos/tast/local/dbusutil"
+	"chromiumos/tast/local/hermes"
 	"chromiumos/tast/local/modemmanager"
 	"chromiumos/tast/testing"
 )
@@ -29,6 +31,19 @@ func init() {
 }
 
 func ShillCellularSimConnect(ctx context.Context, s *testing.State) {
+	// Start the test on the eSIM, and connect to the pSIM service
+	euicc, _, err := hermes.GetEUICC(ctx, false)
+	if err != nil {
+		s.Fatal("Unable to get Hermes euicc: ", err)
+	}
+	p, err := euicc.EnabledProfile(ctx)
+	if err != nil {
+		s.Fatal("Could not read profile status: ", err)
+	}
+	if p == nil {
+		s.Fatal("Expected a profile to be enabled on the eSIM")
+	}
+
 	simProps, primary, err := getModemSimSlots(ctx)
 	if err != nil {
 		s.Fatal("Failed to get Modem.SimSlots: ", err)
@@ -62,8 +77,10 @@ func ShillCellularSimConnect(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to get ICCID: ", err)
 	}
+
+	// If MM exports a SIM with iccid = "" , Shill creates a service with iccid="unknown-iccid"
 	if secondaryICCID == "" {
-		s.Fatalf("Empty ICCID for secondary slot: %d", secondary)
+		secondaryICCID = shillconst.UnknownICCID
 	}
 
 	helper, err := cellular.NewHelper(ctx)
@@ -81,31 +98,40 @@ func ShillCellularSimConnect(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Connecting to secondary ICCID: ", secondaryICCID)
-	if err := helper.ConnectToService(ctx, service); err != nil {
+	if err := service.Connect(ctx); err != nil {
 		s.Fatal("Failed to connect to secondary service: ", err)
 	}
 
 	// Connecting to the secondary service will change slots, causing the Modem object to be rebuilt.
 	// Request SimSlots properties from the new Modem.
-	newSimProps, newPrimary, err := getModemSimSlots(ctx)
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		_, newPrimary, err := getModemSimSlots(ctx)
+		if err != nil {
+			return errors.Wrap(err, "failed to get Modem.SimSlots")
+		}
+		if newPrimary != secondary {
+			return errors.Errorf("unexpected primary slot after connect, wanted: %d, got: %d: ", secondary, newPrimary)
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 60 * time.Second}); err != nil {
+		s.Fatal("Shill connect to secondary slot did not change slots: ", err)
+	}
+
+	// Emulate Chrome switching to the eSIM using Hermes, and then connect to it via Shill.
+	_, _, err = hermes.GetEUICC(ctx, false)
 	if err != nil {
-		s.Fatal("Failed to get Modem.SimSlots: ", err)
+		s.Fatal("Unable to get Hermes euicc: ", err)
 	}
-	if newPrimary != secondary {
-		s.Fatalf("Unexpected primary slot after connect, wanted: %d, got: %d: ", secondary, newPrimary)
-	}
-	primaryProps := newSimProps[primary]
+
+	// Get the original primary slot ICCID and connect to it.
+	primaryProps := simProps[primary]
 	if primaryProps == nil {
 		s.Fatal("Unexpected nil primary SimProperties")
 	}
 
-	// Get the original primary slot ICCID and connect to it.
 	primaryICCID, err := primaryProps.GetString(mmconst.SimPropertySimIdentifier)
 	if err != nil {
 		s.Fatal("Failed to get ICCID: ", err)
-	}
-	if primaryICCID == "" {
-		s.Fatalf("Empty ICCID for primary slot: %d", primary)
 	}
 
 	serviceProps[shillconst.ServicePropertyCellularICCID] = primaryICCID
