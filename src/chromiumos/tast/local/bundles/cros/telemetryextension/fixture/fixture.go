@@ -305,6 +305,10 @@ func (f *telemetryExtensionFixture) SetUp(ctx context.Context, s *testing.FixtSt
 		}
 	}
 
+	// TODO(b/245337406): Find fix for the actual error instead
+	// of this workaround.
+	testing.Sleep(ctx, 5*time.Second)
+
 	br, closeBr, err := browserfixt.SetUp(ctx, f.cr, f.bt)
 	if err != nil {
 		s.Fatal("Failed to open the browser: ", err)
