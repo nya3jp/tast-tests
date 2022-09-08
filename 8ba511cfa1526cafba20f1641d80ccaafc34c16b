@@ -39,6 +39,30 @@
       },
       "revId": "8ba511cfa1526cafba20f1641d80ccaafc34c16b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9fe62ba_bac09833",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/fixture/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1543127
+      },
+      "writtenOn": "2022-09-08T14:40:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "946e138d_6b31045a",
+      "range": {
+        "startLine": 310,
+        "startChar": 1,
+        "endLine": 310,
+        "endChar": 14
+      },
+      "revId": "8ba511cfa1526cafba20f1641d80ccaafc34c16b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
