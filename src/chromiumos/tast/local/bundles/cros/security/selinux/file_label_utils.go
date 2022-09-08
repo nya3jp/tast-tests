@@ -269,28 +269,3 @@ func IIOSensorDevices() ([]string, error) {
 	}
 	return devices, errors.Wrapf(firstErr, "%d errors have occurred, first error is:", errCnt)
 }
-
-// IIOSensorFilter returns pairs of FilterResult to check only files that
-// should have cros_sensor_hal_sysfs labeled.
-func IIOSensorFilter(p string, fi os.FileInfo) (skipFile, skipSubdir FilterResult) {
-	sensorFiles := map[string]bool{
-		"flush":                               true,
-		"frequency":                           true,
-		"hwfifo_flush":                        true,
-		"hwfifo_timeout":                      true,
-		"sampling_frequency":                  true,
-		"in_activity_still_change_falling_en": true,
-	}
-	ringFiles := map[string]bool{
-		"enable":          true,
-		"length":          true,
-		"current_trigger": true,
-	}
-	if sensorFiles[fi.Name()] {
-		return Check, Check
-	}
-	if strings.Contains(p, "cros-ec-ring") && ringFiles[fi.Name()] {
-		return Check, Check
-	}
-	return Skip, Check
-}
