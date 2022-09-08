@@ -13500,9 +13500,6 @@ func OpenclCts(ctx context.Context, s *testing.State) {
 		bug = "Create a bug for it under b/227134897"
 	}
 
-	if err != nil && !test.expectedPass {
-		s.Fatalf("%q: failure expected (%s) - %s", test.executable, err, bug)
-	}
 	if err == nil && !test.expectedPass {
 		s.Fatalf("%q: passed but expected to fail - %s", test.executable, bug)
 	}
