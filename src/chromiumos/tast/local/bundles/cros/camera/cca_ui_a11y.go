@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/local/a11y"
 	"chromiumos/tast/local/audio/crastestclient"
 	"chromiumos/tast/local/camera/cca"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
@@ -86,7 +87,22 @@ func CCAUIA11y(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to press Ctrl+Alt+Z keys")
 	}
 
-	// TODO(b/242471889): When Chromevox speaks the first element, remove this code and verify from the start.
+	cvconn, err := a11y.NewChromeVoxConn(ctx, cr)
+	if err != nil {
+		s.Fatal("Failed to connecto to the ChromeVox background page: ", err)
+	}
+	defer cvconn.Close()
+
+	finder := nodewith.HasClass("shutter")
+
+	if err = cvconn.WaitForFocusedNode(ctx, tconn, finder); err != nil {
+		s.Fatal("Failed to wait for the focused node: ", err)
+	}
+
+	if err = sm.Consume(ctx, []a11y.SpeechExpectation{a11y.NewRegexExpectation("ChromeVox spoken feedback is ready")}); err != nil {
+		s.Fatal("Failed to match speeches: ", err)
+	}
+
 	if err = ew.Accel(ctx, tab); err != nil {
 		s.Fatal("Failed to press tab key")
 	}
