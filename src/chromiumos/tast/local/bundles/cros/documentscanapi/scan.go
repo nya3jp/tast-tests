@@ -114,7 +114,7 @@ func Scan(ctx context.Context, s *testing.State) {
 
 	s.Log("Clicking Scan button")
 	ui := uiauto.New(tconn)
-	scanButton := nodewith.Name("Scan").Role(role.Button)
+	scanButton := nodewith.Name("Scan").Role(role.Button).Ancestor(nodewith.Name("Scanner Control").HasClass("RootView"))
 	if err := ui.WithInterval(1000*time.Millisecond).LeftClickUntil(scanButton, ui.Gone(scanButton))(ctx); err != nil {
 		s.Fatal("Failed to click Scan button: ", err)
 	}
