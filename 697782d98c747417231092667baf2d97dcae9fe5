@@ -46,6 +46,30 @@
       },
       "revId": "697782d98c747417231092667baf2d97dcae9fe5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4e1717f_5c109ba0",
+        "filename": "src/chromiumos/tast/local/croshealthd/telem.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-09-08T03:55:36Z",
+      "side": 1,
+      "message": "in the case, you can add another bool and make it mutually exclusively.\nLogically, in other language, what you want is something like:\n\nunion {\n  All,\n  PIDs(int[])\n}\n\n(pseudo code).\nIn go, it is often used just a list of members.\n\n\ntype TelemParams struct {\n  Category TelemCategory\n  AllPIDs bool\n  PIDs []int\n}\n\nThen in RunTelem.\n\nif params.AllPIDs \u0026\u0026 len(params.PIDs) \u003e 0 {\n  return nil, errors.New(...)\n}\n\nargs :\u003d []string{\"telem\"}\n...\nif params.AllPIDs {\n  args \u003d append(args, \"--process\u003dall\")\n}\nif params.PIDs {\n  var pidStrs []string\n  for _, pid :\u003d range params.PIDs {\n    pidStrs \u003d append(pidStrs, strconv.Itoa(pid))\n  }\n  args \u003d append(args, \"--process\u003d\" + strings.Join(pidStrs, \",\"))\n}\n...\n\nI don\u0027t think type safeness should be sacrificed by the reason.",
+      "parentUuid": "596497f7_a4549085",
+      "range": {
+        "startLine": 32,
+        "startChar": 1,
+        "endLine": 32,
+        "endChar": 11
+      },
+      "revId": "697782d98c747417231092667baf2d97dcae9fe5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
