@@ -12,6 +12,7 @@ import (
 	"math/rand"
 	"net"
 	"path/filepath"
+	"strings"
 	"time"
 
 	"github.com/golang/protobuf/ptypes"
@@ -164,18 +165,40 @@ func UpdateFromGS(ctx context.Context, dut *dut.DUT, outdir string, rpcHint *tes
 		}
 	}(cleanupCtx)
 
-	// There is a * in the url, but it is not a wildcard for wget.
-	// The * is understood by the server, and it will serve a file to download with that name.
+	// Find the metadata file in the GS bucket, as we need the full filename to download it from the caching server.
+	out, err := testexec.CommandContext(preparationCtx, "gsutil", "ls", gsPathPrefix+"/chromeos_*_full_dev*bin.json").Output(testexec.DumpLogOnError)
+	if err != nil {
+		return errors.Wrap(err, "failed to list files in the GS bucket")
+	}
+
+	paths := strings.Split(strings.TrimSpace(string(out)), "\n")
+
+	if len(paths) > 1 {
+		// A longer context is used here, otherwise it won't work in case of a timeout.
+		if err := bucketContentToFile(cachingCtx, gsPathPrefix, filepath.Join(outdir, "gs_bucket_content.txt")); err != nil {
+			testing.ContextLog(cachingCtx, "Could not save GS bucket content: ", err)
+		}
+
+		return errors.Errorf("unexpected number of files; got %d, want 1", len(paths))
+	}
+
+	metadataPath := paths[0]
+	metadataFilename := metadataPath[strings.LastIndex(metadataPath, "/")+1:]
+	metadataURL := url + "/" + metadataFilename
+
 	args := []string{
+		"--tries=1",
+		"--connect-timeout=20",
 		"-P", tempDir.Path, // download folder
-		url + "/chromeos_*_full_dev*bin.json", // payload metadata address
+		metadataURL, // payload metadata address
 	}
 
 	// Download the payload metadata from the caching server.
+	testing.ContextLogf(preparationCtx, "Downloading payload metadata from %q", metadataURL)
 	if err := dut.Conn().CommandContext(preparationCtx, "wget", args...).Run(); err != nil {
 		// List files to see if it contains the file we wanted to download.
 		// We are saving the whole list in case the file name pattern is changed.
-		// A longer context should be used here, otherwise it won't work in case of a timeout.
+		// A longer context is used here, otherwise it won't work in case of a timeout.
 		if err := bucketContentToFile(cachingCtx, gsPathPrefix, filepath.Join(outdir, "gs_bucket_content.txt")); err != nil {
 			testing.ContextLog(cachingCtx, "Could not save GS bucket content: ", err)
 		}
