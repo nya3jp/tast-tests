@@ -44,13 +44,13 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{
-			Name:    "productivity_launcher_clamshell_mode",
+			Name:    "clamshell_mode",
 			Val:     launcher.TestCase{TabletMode: false},
 			Fixture: "chromeLoggedInWith100FakeAppsNoAppSort",
 		},
 		/* Disabled due to <1% pass rate over 30 days. See b/241943139
 		{
-			Name:    "productivity_launcher_tablet_mode",
+			Name:    "tablet_mode",
 			Val:     launcher.TestCase{TabletMode: true},
 			Fixture: "chromeLoggedInWith100FakeAppsNoAppSort",
 		}

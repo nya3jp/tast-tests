@@ -34,20 +34,20 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      5 * time.Minute,
 		Params: []testing.Param{{
-			Name:              "productivity_launcher_clamshell_mode",
+			Name:              "clamshell_mode",
 			ExtraSoftwareDeps: []string{"android_p"},
 			Val:               launcher.TestCase{TabletMode: false},
 		}, {
-			Name:              "productivity_launcher_tablet_mode",
+			Name:              "tablet_mode",
 			Val:               launcher.TestCase{TabletMode: true},
 			ExtraSoftwareDeps: []string{"android_p"},
 			ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		}, {
-			Name:              "productivity_launcher_clamshell_mode_vm",
+			Name:              "clamshell_mode_vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
 			Val:               launcher.TestCase{TabletMode: false},
 		}, {
-			Name:              "productivity_launcher_tablet_mode_vm",
+			Name:              "tablet_mode_vm",
 			Val:               launcher.TestCase{TabletMode: true},
 			ExtraSoftwareDeps: []string{"android_vm"},
 			ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),

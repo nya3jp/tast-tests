@@ -31,13 +31,13 @@ func init() {
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{
-			Name:    "productivity_launcher_clamshell_mode",
+			Name:    "clamshell_mode",
 			Fixture: "chromeLoggedInWith100FakeAppsNoAppSort",
 			Val:     launcher.TestCase{TabletMode: false},
 			// b/229135388
 			ExtraAttr: []string{"informational"},
 		}, {
-			Name:              "productivity_launcher_tablet_mode",
+			Name:              "tablet_mode",
 			Fixture:           "chromeLoggedInWith100FakeAppsNoAppSort",
 			Val:               launcher.TestCase{TabletMode: true},
 			ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
