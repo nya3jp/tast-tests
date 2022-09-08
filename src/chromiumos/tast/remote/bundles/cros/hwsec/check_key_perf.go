@@ -9,6 +9,7 @@ import (
 	"strconv"
 	"time"
 
+	uda "chromiumos/system_api/user_data_auth_proto"
 	"chromiumos/tast/common/hwsec"
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
@@ -153,7 +154,7 @@ func setupUser(ctx context.Context, useLegacyMountFlow bool, helper *hwsecremote
 	} else {
 		// Start an Auth session and get an authSessionID.
 		isEphemeral := false
-		authSessionID, err := utility.StartAuthSession(ctx, util.FirstUsername, isEphemeral)
+		authSessionID, err := utility.StartAuthSession(ctx, util.FirstUsername, isEphemeral, uda.AuthIntent_AUTH_INTENT_DECRYPT)
 		if err != nil {
 			return errors.Wrap(err, "failed to start auth session")
 		}
