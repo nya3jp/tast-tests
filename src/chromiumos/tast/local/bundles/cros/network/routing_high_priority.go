@@ -19,7 +19,7 @@ func init() {
 		Func:         RoutingHighPriority,
 		Desc:         "Verify the routing semantics in the case that there is a dual-stack network and then another network with higher priority shows up",
 		Contacts:     []string{"jiejiang@google.com", "cros-networking@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		LacrosStatus: testing.LacrosVariantUnneeded,
 	})
 }
