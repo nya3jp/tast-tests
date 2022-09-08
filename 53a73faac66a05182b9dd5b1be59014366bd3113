@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8916d62_a6133fa3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/image_paste.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-09-08T06:17:48Z",
+      "side": 1,
+      "message": "Please remove.",
+      "revId": "53a73faac66a05182b9dd5b1be59014366bd3113",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05c4f4d8_d09e5707",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/image_paste.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-09-08T06:17:48Z",
+      "side": 1,
+      "message": "10",
+      "range": {
+        "startLine": 56,
+        "startChar": 12,
+        "endLine": 56,
+        "endChar": 16
+      },
+      "revId": "53a73faac66a05182b9dd5b1be59014366bd3113",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed96a899_6905faac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/image_paste.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-09-08T06:17:48Z",
+      "side": 1,
+      "message": "Hmm, this is expected in the case of Lacros.\n\nAlso, can you just look at the browser type to decide whether or not to do the alt tab thing? (Or do it unconditionally).",
+      "revId": "53a73faac66a05182b9dd5b1be59014366bd3113",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "956af9ad_a861dcd1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/image_paste.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-09-08T06:17:48Z",
+      "side": 1,
+      "message": "The comment is confusing because that window already has focus. See Nick\u0027s explanation for why we are doing this here.",
+      "revId": "53a73faac66a05182b9dd5b1be59014366bd3113",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
