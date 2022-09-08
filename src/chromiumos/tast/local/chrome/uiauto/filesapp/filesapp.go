@@ -69,7 +69,7 @@ type FilesApp struct {
 // WindowFinder finds the window based on the Files app type running.
 func WindowFinder(appID string) *nodewith.Finder {
 	if appID == apps.FilesSWA.ID {
-		return nodewith.NameStartingWith("Files").Role(role.Window).ClassName("BrowserFrame")
+		return nodewith.NameStartingWith("Files").Role(role.Window).HasClass("BrowserFrame").First()
 	}
 	if appID == vars.FilePickerPseudoAppID {
 		return nodewith.NameStartingWith("Select a file to open").Role(role.Window).ClassName("ExtensionViewViews")
