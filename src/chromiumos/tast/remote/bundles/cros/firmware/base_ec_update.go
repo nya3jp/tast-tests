@@ -44,7 +44,7 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		ServiceDeps:  []string{"tast.cros.firmware.UtilsService"},
 		HardwareDeps: hwdep.D(
-			hwdep.Model("krane", "kakadu", "katsu", "homestar", "mrbland", "wormdingler", "quackingstick"),
+			hwdep.Model("soraka", "krane", "kakadu", "katsu", "homestar", "mrbland", "wormdingler", "quackingstick"),
 			hwdep.ChromeEC(),
 		),
 		Fixture: fixture.DevModeGBB,
@@ -64,6 +64,13 @@ type baseECInfo struct {
 type modifiedFileDir struct {
 	onLocal string
 	onHost  string
+}
+
+//hammerRequiredVariables contains the required values for hammer command.
+type hammerRequiredVariables struct {
+	pid     string
+	vid     string
+	usbPath string
 }
 
 func BaseECUpdate(ctx context.Context, s *testing.State) {
@@ -97,10 +104,45 @@ func BaseECUpdate(ctx context.Context, s *testing.State) {
 	dut := s.DUT()
 	ecTool := firmware.NewECTool(dut, firmware.ECToolNameMain)
 
+	// hammerConfigsMap contains information about pid, vid, and usbPath values of a
+	// detachable base for different models. This information was derived from manual
+	// testing and the following hammer file:
+	// https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/board/hammer/variants.h
+	hammerConfigsMap := map[string]hammerRequiredVariables{
+		"nocturne":      {pid: "20528", vid: "6353", usbPath: "1-7"},
+		"soraka":        {pid: "20523", vid: "6353", usbPath: "1-2"},
+		"krane":         {pid: "20540", vid: "6353", usbPath: "1-1.1"},
+		"kakadu":        {pid: "20548", vid: "6353", usbPath: "1-1.1"},
+		"katsu":         {pid: "20560", vid: "6353", usbPath: "1-1.1"},
+		"homestar":      {pid: "20562", vid: "6353", usbPath: "1-1.1"},
+		"wormdingler":   {pid: "20567", vid: "6353", usbPath: "1-1.3"},
+		"quackingstick": {pid: "20571", vid: "6353", usbPath: "1-1.1"},
+	}
+
+	var hammerConfigs hammerRequiredVariables
+	assignConfigs := func() error {
+		s.Log("Attempting detachable base attributes from the hammer file")
+		modelName, err := h.Reporter.Model(ctx)
+		if err != nil {
+			s.Fatal("Failed to get the dut's model: ", err)
+		}
+		hammerConfigs.pid = hammerConfigsMap[modelName].pid
+		hammerConfigs.vid = hammerConfigsMap[modelName].vid
+		hammerConfigs.usbPath = hammerConfigsMap[modelName].usbPath
+		return nil
+	}
+
 	utilServiceClient := fwpb.NewUtilsServiceClient(h.RPCClient.Conn)
 	crosCfgRes, err := utilServiceClient.GetDetachableBaseValue(ctx, &empty.Empty{})
 	if err != nil {
-		s.Fatal("Failed to get detachable-base attribute values: ", err)
+		s.Log("Failed to get detachable-base attribute values: ", err)
+		if err := assignConfigs(); err != nil {
+			s.Fatal("Unable to set attributes: ", err)
+		}
+	} else {
+		hammerConfigs.pid = crosCfgRes.ProductId
+		hammerConfigs.vid = crosCfgRes.VendorId
+		hammerConfigs.usbPath = crosCfgRes.UsbPath
 	}
 
 	tempDir, err := ioutil.TempDir("", "BaseECUpdate")
@@ -116,7 +158,7 @@ func BaseECUpdate(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Saving the base ec firmware version before flashing an old image")
-	originalBaseEC, err := getBaseECInfo(ctx, dut, crosCfgRes.ProductId)
+	originalBaseEC, err := getBaseECInfo(ctx, dut, hammerConfigs.pid)
 	if err != nil {
 		s.Fatal("Failed to check base ec's version: ", err)
 	}
@@ -152,7 +194,7 @@ func BaseECUpdate(ctx context.Context, s *testing.State) {
 	}(cleanupCtx, &requiredReboot)
 
 	s.Log("Flashing an old image to detachable-base ec")
-	if err := flashAnOldImgToDetachableBaseEC(ctx, dut, crosCfgRes, fileDir.onHost); err != nil {
+	if err := flashAnOldImgToDetachableBaseEC(ctx, dut, hammerConfigs, fileDir.onHost); err != nil {
 		s.Fatal("Failed to flash base ec to an old version: ", err)
 	}
 
@@ -196,15 +238,15 @@ func BaseECUpdate(ctx context.Context, s *testing.State) {
 	}
 }
 
-func flashAnOldImgToDetachableBaseEC(ctx context.Context, dut *dut.DUT, crosConfig *fwpb.CrosConfigResponse, dstImg string) error {
+func flashAnOldImgToDetachableBaseEC(ctx context.Context, dut *dut.DUT, hammerConfigs hammerRequiredVariables, dstImg string) error {
 	if err := dut.Conn().CommandContext(
 		ctx,
 		"/sbin/minijail0", "-e", "-N", "-p", "-l", "-u",
 		"hammerd", "-g", "hammerd", "-c", "0002", "/usr/bin/hammerd",
 		"--ec_image_path="+dstImg,
-		"--product_id="+crosConfig.ProductId,
-		"--vendor_id="+crosConfig.VendorId,
-		"--usb_path="+crosConfig.UsbPath,
+		"--product_id="+hammerConfigs.pid,
+		"--vendor_id="+hammerConfigs.vid,
+		"--usb_path="+hammerConfigs.usbPath,
 		"--update_if=always",
 	).Run(testexec.DumpLogOnError); err != nil {
 		// Error message: libminijail[9206]: child process 9207 exited with status 14
