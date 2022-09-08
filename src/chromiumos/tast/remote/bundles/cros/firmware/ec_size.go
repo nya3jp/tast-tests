@@ -25,7 +25,7 @@ func init() {
 
 // in alphabetical order
 var chipSizeMap = map[string]int{
-	"it83xx":          512, // (512 * 1024) bytes
+	"it83xx":          1024, // (1024 * 1024) bytes
 	"ite_spi_ccd_i2c": 1024,
 	"mec1322":         256,
 	"npcx_int_spi":    512,
