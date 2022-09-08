@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c412a59e_edb78fe8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/screen_recorder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-09-08T06:15:08Z",
+      "side": 1,
+      "message": "Can you add test for lacros as well?\n\nI sort of encounter a situation that lacros is enabled, and screen recorder could not be launched. Does it need to be installed for Lacros as well?",
+      "range": {
+        "startLine": 24,
+        "startChar": 24,
+        "endLine": 24,
+        "endChar": 45
+      },
+      "revId": "843813e52e6fdddab7d4abbe81990640720e87e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30b4f0a1_b4924860",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/screen_recorder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-09-08T06:15:08Z",
+      "side": 1,
+      "message": "nit: please do not omit error info in the log. The same to following.",
+      "range": {
+        "startLine": 64,
+        "startChar": 35,
+        "endLine": 64,
+        "endChar": 43
+      },
+      "revId": "843813e52e6fdddab7d4abbe81990640720e87e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5abd469e_d2bc2ec5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/screen_recorder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-09-08T06:15:08Z",
+      "side": 1,
+      "message": "nit: remove empty line.",
+      "revId": "843813e52e6fdddab7d4abbe81990640720e87e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
