@@ -127,14 +127,19 @@ func DrivefsDssOffline(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to wait for the Available offline toggle to be enabled: ", err)
 	}
 
-	ui := uiauto.New(tconn)
 	// Try make the newly created Google doc available offline.
-	if err := uiauto.Combine(fmt.Sprintf("Make test file %q in Drive available offline", testFileNameWithExt),
-		filesApp.ToggleAvailableOfflineForFile(testFileNameWithExt),
-		ui.LeftClick(nodewith.Name("Enable Offline").Role(role.Button)),
-		filesApp.SelectFile(testFileNameWithExt),
-	)(ctx); err != nil {
+	if err := filesApp.ToggleAvailableOfflineForFile(testFileNameWithExt)(ctx); err != nil {
 		s.Fatalf("Failed to make test file %q in Drive available offline: %v", testFileNameWithExt, err)
+	}
+
+	// Sometimes offline is already enabled and the enable offline notification does not show,
+	// so add a timeout when trying to dismiss the notification.
+	ui := uiauto.New(tconn)
+	ui.WithTimeout(2 * time.Second).LeftClick(nodewith.Name("Enable Offline").Role(role.Button))(ctx)
+
+	// Reselect the file in order to query the Available offline toggle.
+	if err := filesApp.SelectFile(testFileNameWithExt)(ctx); err != nil {
+		s.Fatalf("Failed to reselect test file %q: %v", testFileNameWithExt, err)
 	}
 
 	s.Log("Waiting for the Available offline toggle to stabilize")
