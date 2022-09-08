@@ -192,6 +192,7 @@ func (i *impl) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
 	// If rebooting to recovery mode, verify the usb key.
 	if i.value.BootMode == common.BootModeRecovery || i.value.BootMode == common.BootModeUSBDev {
 		if err := i.value.Helper.RequireServo(ctx); err != nil {
+			s.Error("Test did not run")
 			s.Fatal("Failed to connect to servod: ", err)
 		}
 		skipFlashUSB := false
@@ -224,6 +225,10 @@ func (i *impl) Reset(ctx context.Context) error {
 
 // PreTest is called by the framework before each test to do a light-weight set up for the test.
 func (i *impl) PreTest(ctx context.Context, s *testing.FixtTestState) {
+	if err := i.value.Helper.RequireServo(ctx); err != nil {
+		s.Error("Test did not run")
+		s.Fatal("Failed to connect to servo: ", err)
+	}
 	if i.disallowSSH {
 		return
 	}
@@ -264,9 +269,6 @@ func (i *impl) PreTest(ctx context.Context, s *testing.FixtTestState) {
 		s.Log("GBBFlags are already proper")
 	} else {
 		s.Log("Disabling write protect to allow GBB flags to be set")
-		if err := i.value.Helper.RequireServo(ctx); err != nil {
-			s.Fatal("Failed to connect to servo: ", err)
-		}
 		if err := i.value.Helper.Servo.SetFWWPState(ctx, servo.FWWPStateOff); err != nil {
 			s.Fatal("Failed to disable write protect: ", err)
 		}
