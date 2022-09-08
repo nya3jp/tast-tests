@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d10814f_3240247e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1313340
+      },
+      "writtenOn": "2022-09-08T18:37:48Z",
+      "side": 1,
+      "message": "lgtm w/ nit",
+      "revId": "2664d6bbf5cc3f2cb23381f421faaf44a349533a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb606261_45408470",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/bubble_launch_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1313340
+      },
+      "writtenOn": "2022-09-08T18:37:48Z",
+      "side": 1,
+      "message": "nit: Can we remove this param all together now?",
+      "range": {
+        "startLine": 47,
+        "startChar": 13,
+        "endLine": 47,
+        "endChar": 34
+      },
+      "revId": "2664d6bbf5cc3f2cb23381f421faaf44a349533a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
