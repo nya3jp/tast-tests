@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "98d74005_38377bfc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/allow_cellular_policy_networks_on.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1547388
+      },
+      "writtenOn": "2022-09-08T19:18:18Z",
+      "side": 1,
+      "message": "Likely not, will remove it before submitting.",
+      "parentUuid": "ff84f227_c69e3bfe",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 54
+      },
+      "revId": "85cb9565894805362606e2075653bb7ebe663805",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7dbbc182_17c44ef7",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-09-08T19:00:18Z",
       "side": 1,
       "message": "What do you think of removing the initial `ossettings.Launch` and `SetToggleOption` and instead having the helper enable mobile?\n\n\thelper, err :\u003d cellular.NewHelper(ctx)\n\tif err !\u003d nil {\n\t\ts.Fatal(\"Failed to create cellular.Helper: \", err)\n\t}\n\tif err :\u003d helper.Enable(ctx); err !\u003d nil {\n\t\ts.Fatal(\"Failed to enable Cellular: \", err)\n\t}\n\tif err :\u003d helper.WaitForEnabledState(ctx, true); err !\u003d nil {\n\t\ts.Fatal(\"Cellular failed to become enabled: \", err)\n\t}\n\nNot sure if this is too much of an optimization, but it does simplify things a bit since we can avoid making calls to open Settings twice. WDYT?",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 2
+      },
+      "revId": "85cb9565894805362606e2075653bb7ebe663805",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85e121e3_ac6c1433",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/allow_cellular_policy_networks_on.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1547388
+      },
+      "writtenOn": "2022-09-08T19:18:18Z",
+      "side": 1,
+      "message": "Most of the failures that we have seen in ToggleCellular tast tests are happening if we instantiate Cellular helper when the Cellular functionality is disabled. To circumvent that, I have made changes here to enable cellular from UI (SetToggleOption waits until the toggle button reaches the desired state) and then instantiate the helper. That way, helper can skip the part where it attempts to enable.",
+      "parentUuid": "7dbbc182_17c44ef7",
       "range": {
         "startLine": 75,
         "startChar": 0,
