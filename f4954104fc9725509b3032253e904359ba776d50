@@ -43,6 +43,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8cd5d65f_5582205f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/add_remove_factors_ephemeral.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1546868
+      },
+      "writtenOn": "2022-09-08T23:25:29Z",
+      "side": 1,
+      "message": "I wrote it this way under the premise that it should work with either, and so why not cover both cases. I admit that this is probably influenced by me starting with the original non-ephemeral case.\n\nMaybe it\u0027s not worth it?",
+      "parentUuid": "d8378a8b_40c1b037",
+      "revId": "f4954104fc9725509b3032253e904359ba776d50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7e0db7ad_ed7990a8",
         "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/add_remove_factors_ephemeral.go",
         "patchSetId": 2
@@ -54,6 +72,30 @@
       "writtenOn": "2022-09-08T22:52:15Z",
       "side": 1,
       "message": "I believe a more standard approach is to return the error from the function.\n\nI was also pushed in this direction by Tast reviewers a few times in the past. The arguments IIUC are: that way more context will be added to the error (as, while unwinding the call stack, each frame will likely add more context to the error), or the caller might expect the error in some scenarios, or the caller might want to run a function in a poll loop (until it succeeds).",
+      "range": {
+        "startLine": 55,
+        "startChar": 34,
+        "endLine": 55,
+        "endChar": 46
+      },
+      "revId": "f4954104fc9725509b3032253e904359ba776d50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78e91d8b_14c3abe0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/add_remove_factors_ephemeral.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1546868
+      },
+      "writtenOn": "2022-09-08T23:25:29Z",
+      "side": 1,
+      "message": "Hmm, I think in the original test it just started out as refactoring a bunch of duplicated checking away, so flowing stuff back up to the top level function didn\u0027t make sense. And this helper is following the same pattern, just stripped down. Maybe if we move it to helpers (more likely, just moving the original version from the original persistent user test) then it would make more sense to have it return instead.",
+      "parentUuid": "7e0db7ad_ed7990a8",
       "range": {
         "startLine": 55,
         "startChar": 34,
@@ -83,6 +125,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "db379e08_14117970",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/add_remove_factors_ephemeral.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1546868
+      },
+      "writtenOn": "2022-09-08T23:25:29Z",
+      "side": 1,
+      "message": "Hmm, a bit tricky to refactor generically, though, because it needs to make a less function? I\u0027ll think about if there\u0027s a way I can refactor the comparison code into something we can reuse, but I\u0027m not so sure there\u0027s a good way to make calling cmp and cmpopts more reusable than what they already provide.",
+      "parentUuid": "d3e7a2fc_690b94b5",
+      "revId": "f4954104fc9725509b3032253e904359ba776d50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5475de22_d3b03051",
         "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/add_remove_factors_ephemeral.go",
         "patchSetId": 2
@@ -94,6 +154,30 @@
       "writtenOn": "2022-09-08T22:52:15Z",
       "side": 1,
       "message": "nit: \"ephemeral\". Ditto in the log in line 137.",
+      "range": {
+        "startLine": 131,
+        "startChar": 25,
+        "endLine": 131,
+        "endChar": 35
+      },
+      "revId": "f4954104fc9725509b3032253e904359ba776d50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "78aba050_2fde48ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/add_remove_factors_ephemeral.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1546868
+      },
+      "writtenOn": "2022-09-08T23:25:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5475de22_d3b03051",
       "range": {
         "startLine": 131,
         "startChar": 25,
@@ -127,6 +211,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4fd20306_1ab40a4b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/add_remove_factors_ephemeral.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1546868
+      },
+      "writtenOn": "2022-09-08T23:25:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0cb14817_6f71065e",
+      "range": {
+        "startLine": 136,
+        "startChar": 59,
+        "endLine": 136,
+        "endChar": 72
+      },
+      "revId": "f4954104fc9725509b3032253e904359ba776d50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7d859bf2_0d6b0b72",
@@ -140,6 +248,30 @@
       "writtenOn": "2022-09-08T22:52:15Z",
       "side": 1,
       "message": "nit: Not sure how to parse the second sentence - seems unfinished?",
+      "range": {
+        "startLine": 141,
+        "startChar": 56,
+        "endLine": 141,
+        "endChar": 90
+      },
+      "revId": "f4954104fc9725509b3032253e904359ba776d50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "baae8db5_cbdaa803",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/add_remove_factors_ephemeral.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1546868
+      },
+      "writtenOn": "2022-09-08T23:25:29Z",
+      "side": 1,
+      "message": "Yeah with the stripped down check it doesn\u0027t make as much sense any more to include all this text.",
+      "parentUuid": "7d859bf2_0d6b0b72",
       "range": {
         "startLine": 141,
         "startChar": 56,
@@ -173,6 +305,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d26052a_e6083002",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/add_remove_factors_ephemeral.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1546868
+      },
+      "writtenOn": "2022-09-08T23:25:29Z",
+      "side": 1,
+      "message": "Yeah, I\u0027ll trim that down as well.",
+      "parentUuid": "3096dc88_f2787e97",
+      "range": {
+        "startLine": 153,
+        "startChar": 40,
+        "endLine": 153,
+        "endChar": 70
+      },
+      "revId": "f4954104fc9725509b3032253e904359ba776d50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6104f58b_9858596b",
@@ -186,6 +342,24 @@
       "writtenOn": "2022-09-08T22:52:15Z",
       "side": 1,
       "message": "I don\u0027t think the PIN factor is supported for ephemeral users, or was planned to (at least because the in-memory verifier-based checks don\u0027t enforce any rate limiting today).\n\nI suppose this part of the test passes because cryptohome is lax and creates a credential verifier without checking the type (e.g., `AuthSession::AddAuthFactor()` immediately returns a success result for ephemeral users), but that\u0027s what I\u0027m about to fix in my chain of cryptohome CLs.",
+      "revId": "f4954104fc9725509b3032253e904359ba776d50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "320524f6_b273ccb8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/add_remove_factors_ephemeral.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1546868
+      },
+      "writtenOn": "2022-09-08T23:25:29Z",
+      "side": 1,
+      "message": "Yeah, I wasn\u0027t sure about that, seemed like maybe something that just \"worked\" by accident, and not really. Removed.",
+      "parentUuid": "6104f58b_9858596b",
       "revId": "f4954104fc9725509b3032253e904359ba776d50",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
