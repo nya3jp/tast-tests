@@ -39,6 +39,30 @@
       },
       "revId": "2664d6bbf5cc3f2cb23381f421faaf44a349533a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3ae13b0_3418f79e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/bubble_launch_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-09-08T18:45:14Z",
+      "side": 1,
+      "message": "probably - I was going to do it in a separate cl.",
+      "parentUuid": "fb606261_45408470",
+      "range": {
+        "startLine": 47,
+        "startChar": 13,
+        "endLine": 47,
+        "endChar": 34
+      },
+      "revId": "2664d6bbf5cc3f2cb23381f421faaf44a349533a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
