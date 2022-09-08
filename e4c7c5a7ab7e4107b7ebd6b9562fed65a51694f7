@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7abfae8b_0e2fec67",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/theme_selection.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1528608
+      },
+      "writtenOn": "2022-09-08T11:55:41Z",
+      "side": 1,
+      "message": "Yes, `getComputedStyle(document.documentElement).getPropertyValue(\u0027--cros-text-color-primary-%s\u0027).trim();` will return something like ` rgb( 0, 1, 2 ) ` while test api\u0027s `getHeaderTextColor()` will return `rgb(0,1,2)`.",
+      "parentUuid": "8fee9270_0ec6f8ac",
+      "revId": "e4c7c5a7ab7e4107b7ebd6b9562fed65a51694f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "840685eb_74a98963",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "19c092f0_eb824a50",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/theme_selection.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1528608
+      },
+      "writtenOn": "2022-09-08T11:55:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "840685eb_74a98963",
+      "revId": "e4c7c5a7ab7e4107b7ebd6b9562fed65a51694f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "487ff561_f7eb6145",
@@ -48,6 +84,24 @@
       "writtenOn": "2022-09-08T02:11:38Z",
       "side": 1,
       "message": "nit: make one line",
+      "revId": "e4c7c5a7ab7e4107b7ebd6b9562fed65a51694f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0807478_c0ac405c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/theme_selection.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1528608
+      },
+      "writtenOn": "2022-09-08T11:55:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "487ff561_f7eb6145",
       "revId": "e4c7c5a7ab7e4107b7ebd6b9562fed65a51694f7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
