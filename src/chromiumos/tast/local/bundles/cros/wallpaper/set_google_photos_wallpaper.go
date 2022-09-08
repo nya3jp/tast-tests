@@ -40,25 +40,17 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      5 * time.Minute,
 		Fixture:      "personalizationWithGooglePhotosWallpaper",
-		Params:       []testing.Param{
-			/* Disabled due to <1% pass rate over 30 days. See b/241943381
-			{
-				Name: "from_album",
-				Val: setGooglePhotosWallpaperParams{
-					album: constants.GooglePhotosWallpaperAlbum,
-				},
+		Params: []testing.Param{{
+			Name: "from_album",
+			Val: setGooglePhotosWallpaperParams{
+				album: constants.GooglePhotosWallpaperAlbum,
 			},
-			*/
-			/* Disabled due to <1% pass rate over 30 days. See b/241943381
-			{
-
-				Name: "from_photos",
-				Val: setGooglePhotosWallpaperParams{
-					album: "",
-				},
-			}
-			*/
-		},
+		}, {
+			Name: "from_photos",
+			Val: setGooglePhotosWallpaperParams{
+				album: "",
+			},
+		}},
 	})
 }
 
