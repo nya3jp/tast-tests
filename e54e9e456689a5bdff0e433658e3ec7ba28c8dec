@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90512f60_e71cd05e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/typecd.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1003039
+      },
+      "writtenOn": "2022-09-08T19:07:01Z",
+      "side": 1,
+      "message": "should we add chromeos-usb@google.com too?",
+      "range": {
+        "startLine": 20,
+        "startChar": 50,
+        "endLine": 20,
+        "endChar": 75
+      },
+      "revId": "e54e9e456689a5bdff0e433658e3ec7ba28c8dec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
