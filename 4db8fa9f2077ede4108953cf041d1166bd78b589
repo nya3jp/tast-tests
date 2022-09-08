@@ -16,6 +16,52 @@
       "message": "Thanks Toby! \nHi David, Could you review this CL? Thanks!",
       "revId": "4db8fa9f2077ede4108953cf041d1166bd78b589",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca821053_647c2b85",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/enabled_policy.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2022-09-08T01:24:35Z",
+      "side": 1,
+      "message": "You should reserve time for cleanup tasks:\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#reserve-time-for-clean_up-task",
+      "range": {
+        "startLine": 49,
+        "startChar": 20,
+        "endLine": 49,
+        "endChar": 21
+      },
+      "revId": "4db8fa9f2077ede4108953cf041d1166bd78b589",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "abd28bf8_67af48c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/enabled_policy.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2022-09-08T01:24:35Z",
+      "side": 1,
+      "message": "Same as above: cleanupCtx",
+      "range": {
+        "startLine": 86,
+        "startChar": 32,
+        "endLine": 86,
+        "endChar": 35
+      },
+      "revId": "4db8fa9f2077ede4108953cf041d1166bd78b589",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
