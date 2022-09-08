@@ -8,6 +8,7 @@ import (
 	"context"
 	"time"
 
+	uda "chromiumos/system_api/user_data_auth_proto"
 	"chromiumos/tast/common/hwsec"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
@@ -236,7 +237,7 @@ func UpdateCredentialAuthSession(ctx context.Context, s *testing.State) {
 // wrongSecret and then the correct secret. First should fail and second should pass.
 func loginWithCorrectAndIncorrectCredentials(ctx context.Context, client *hwsec.CryptohomeClient, userName, wrongSecret, secret, keyLabel string, isPin bool) (string, error) {
 	// Start an Auth session and get an authSessionID.
-	authSessionID, err := client.StartAuthSession(ctx, userName /*isEphemeral*/, false)
+	authSessionID, err := client.StartAuthSession(ctx, userName /*isEphemeral*/, false, uda.AuthIntent_AUTH_INTENT_DECRYPT)
 	if err != nil {
 		return authSessionID, errors.Wrap(err, "failed to start Auth session")
 	}
