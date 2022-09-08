@@ -9,7 +9,6 @@ import (
 	"encoding/base64"
 	"strings"
 
-	uda "chromiumos/system_api/user_data_auth_proto"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/shutil"
 )
@@ -264,8 +263,8 @@ func (c *cryptohomeBinary) getKeyData(ctx context.Context, username, keyLabel st
 }
 
 // startAuthSession calls "cryptohome --action=start_auth_session".
-func (c *cryptohomeBinary) startAuthSession(ctx context.Context, username string, isEphemeral bool, authIntent uda.AuthIntent) ([]byte, error) {
-	args := []string{"--action=start_auth_session", "--user=" + username, "--auth_intent=" + authIntent.String()}
+func (c *cryptohomeBinary) startAuthSession(ctx context.Context, username string, isEphemeral bool) ([]byte, error) {
+	args := []string{"--action=start_auth_session", "--user=" + username}
 	if isEphemeral {
 		args = append(args, "--ensure_ephemeral")
 	}
