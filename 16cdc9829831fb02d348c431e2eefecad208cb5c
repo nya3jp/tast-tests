@@ -34,6 +34,24 @@
       "parentUuid": "cc38856a_bcf2aa51",
       "revId": "16cdc9829831fb02d348c431e2eefecad208cb5c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "52043fbb_4a550cc6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-09-08T16:08:27Z",
+      "side": 1,
+      "message": "~/chromiumos/src/platform/tast inside chroot.",
+      "parentUuid": "d8e4b4fb_17a38d8f",
+      "revId": "16cdc9829831fb02d348c431e2eefecad208cb5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
