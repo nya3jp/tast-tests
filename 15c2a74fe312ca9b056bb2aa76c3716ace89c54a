@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7769d8ae_5a13cc02",
+        "filename": "src/chromiumos/tast/local/bundles/cros/diagnostics/routine_section.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-09-08T02:19:49Z",
+      "side": 1,
+      "message": "Personally I feel a little confused about this. I suppose if a failure happens above, it will also leave DUT into a bad state? \n- If so, maybe we should move this defer call to the beginning of the test (before the first code which can make CPU busy), to make sure the cleanup happens in all cases.\n- Otherwise (if the bad state does happen only on success), just call the cleanup directly other than wrapping it into a defer.",
+      "range": {
+        "startLine": 116,
+        "startChar": 4,
+        "endLine": 116,
+        "endChar": 61
+      },
+      "revId": "15c2a74fe312ca9b056bb2aa76c3716ace89c54a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
