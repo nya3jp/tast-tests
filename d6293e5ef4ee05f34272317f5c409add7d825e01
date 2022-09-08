@@ -16,6 +16,52 @@
       "message": "This is tying us more and more to very specific implementation details in powerd like log message wording, which might prove to be a maintenance burden in future... but if it helps us to diagnose failures and get this passing reliably then okay.",
       "revId": "d6293e5ef4ee05f34272317f5c409add7d825e01",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff957afe_66090b16",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hps/utils/screen_utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-09-08T01:38:12Z",
+      "side": 1,
+      "message": "the error should always be handled.",
+      "range": {
+        "startLine": 111,
+        "startChar": 21,
+        "endLine": 111,
+        "endChar": 22
+      },
+      "revId": "d6293e5ef4ee05f34272317f5c409add7d825e01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7cb6f78f_1ff13d80",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hps/utils/screen_utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-09-08T01:38:12Z",
+      "side": 1,
+      "message": "`Get` is a forbidden prefix in Go. http://go/go-style/decisions#getters",
+      "range": {
+        "startLine": 123,
+        "startChar": 5,
+        "endLine": 123,
+        "endChar": 22
+      },
+      "revId": "d6293e5ef4ee05f34272317f5c409add7d825e01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
