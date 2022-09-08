@@ -140,6 +140,9 @@ func LaunchCreationFlow(ctx context.Context, tconn *chrome.TestConn, launchAnnot
 		}
 	}
 
+	// Ensure the recording is at least a couple seconds long.
+	testing.Sleep(ctx, 6*time.Second)
+
 	testing.ContextLog(ctx, "Stopping recording")
 	if err := uiauto.Combine("stopping recording",
 		ui.WaitUntilExists(stopRecordingButton),
