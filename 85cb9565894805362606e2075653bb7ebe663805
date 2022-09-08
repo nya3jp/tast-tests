@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f32f7b10_cd5ab336",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-09-08T19:00:18Z",
+      "side": 1,
+      "message": "Thank you for iterating on this change! This is looking good to me, just have one other question and a nit :)\n\n\ntjohnsonkanu@, will the \"add eSIM\" button be visible when the revamp is enabled?",
+      "revId": "85cb9565894805362606e2075653bb7ebe663805",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff84f227_c69e3bfe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/allow_cellular_policy_networks_on.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-09-08T19:00:18Z",
+      "side": 1,
+      "message": "Nit: Do we need these `Vars`?",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 54
+      },
+      "revId": "85cb9565894805362606e2075653bb7ebe663805",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7dbbc182_17c44ef7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/allow_cellular_policy_networks_on.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-09-08T19:00:18Z",
+      "side": 1,
+      "message": "What do you think of removing the initial `ossettings.Launch` and `SetToggleOption` and instead having the helper enable mobile?\n\n\thelper, err :\u003d cellular.NewHelper(ctx)\n\tif err !\u003d nil {\n\t\ts.Fatal(\"Failed to create cellular.Helper: \", err)\n\t}\n\tif err :\u003d helper.Enable(ctx); err !\u003d nil {\n\t\ts.Fatal(\"Failed to enable Cellular: \", err)\n\t}\n\tif err :\u003d helper.WaitForEnabledState(ctx, true); err !\u003d nil {\n\t\ts.Fatal(\"Cellular failed to become enabled: \", err)\n\t}\n\nNot sure if this is too much of an optimization, but it does simplify things a bit since we can avoid making calls to open Settings twice. WDYT?",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 2
+      },
+      "revId": "85cb9565894805362606e2075653bb7ebe663805",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
