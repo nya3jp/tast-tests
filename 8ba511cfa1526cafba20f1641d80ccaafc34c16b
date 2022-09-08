@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3ae980e_1529cb76",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-09-08T14:11:42Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "8ba511cfa1526cafba20f1641d80ccaafc34c16b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "946e138d_6b31045a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/fixture/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-09-08T14:11:42Z",
+      "side": 1,
+      "message": "nit: handle returned error",
+      "range": {
+        "startLine": 310,
+        "startChar": 1,
+        "endLine": 310,
+        "endChar": 14
+      },
+      "revId": "8ba511cfa1526cafba20f1641d80ccaafc34c16b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
