@@ -23,7 +23,14 @@ func init() {
 		Func:         InputCheckRegionalKey,
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Input page shows expected regional keyboard layout with different region code",
-		Contacts:     []string{"jeff.lin@cienet.com", "xliu@cienet.com", "cros-peripherals@google.com"},
+		Contacts: []string{
+			"jeff.lin@cienet.com",
+			"xliu@cienet.com",
+			"dpad@google.com",
+			"ashleydp@google.com",
+			"zentaro@google.com",
+			"cros-peripherals@google.com",
+		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{
