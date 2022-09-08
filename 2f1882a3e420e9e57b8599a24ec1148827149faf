@@ -16,6 +16,24 @@
       "message": "Hi Maxsim. I believe this change broke host-packages-cq (https://ci.chromium.org/p/chromeos/builders/cq/host-packages-cq). Can you validate against that builder before relanding? see http://b/245727441#comment37 for details.",
       "revId": "2f1882a3e420e9e57b8599a24ec1148827149faf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6e77845_606e7699",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-09-08T19:39:31Z",
+      "side": 1,
+      "message": "I think the issue is that two CLs landed concurrently: mine changed an interface of some function, and another CL added a caller that uses the old interface.\n\nAnyway, let\u0027s revert the commit to unblock the tree, and I\u0027ll reland my CL (after rebasing and updating the new callsite) later.\n\nThanks.",
+      "parentUuid": "0de9253a_5a18c566",
+      "revId": "2f1882a3e420e9e57b8599a24ec1148827149faf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
