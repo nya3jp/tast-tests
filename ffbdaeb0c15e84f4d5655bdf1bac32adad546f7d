@@ -207,6 +207,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a33217ad_5be01e62",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_animation_jank.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1510928
+      },
+      "writtenOn": "2022-09-08T05:50:42Z",
+      "side": 1,
+      "message": "It contains the time for prepare test. 5 min for overall timeout should be fine. Let\u0027s leave it to tast-owner review.",
+      "parentUuid": "ee730f10_4ee3355b",
+      "revId": "ffbdaeb0c15e84f4d5655bdf1bac32adad546f7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5aa38c48_11a1fbe4",
@@ -280,6 +298,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bb4d97b5_031983f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_animation_jank.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1510928
+      },
+      "writtenOn": "2022-09-08T05:50:42Z",
+      "side": 1,
+      "message": "I think we need use \"testing.Sleep(ctx, 30 * time.Seconds)\" here, or use Poll and ps check if perfetto still running.",
+      "parentUuid": "d876a215_29d848b9",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 2
+      },
+      "revId": "ffbdaeb0c15e84f4d5655bdf1bac32adad546f7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "58fdfd62_fd8bf2cd",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_animation_jank.go",
         "patchSetId": 13
@@ -291,6 +333,30 @@
       "writtenOn": "2022-09-06T02:53:16Z",
       "side": 1,
       "message": "Shouldn\u0027t the test analyze the trace and fail under some conditions?",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 1
+      },
+      "revId": "ffbdaeb0c15e84f4d5655bdf1bac32adad546f7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5157fd0_fcd55c82",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_animation_jank.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1510928
+      },
+      "writtenOn": "2022-09-08T05:50:42Z",
+      "side": 1,
+      "message": "Discussed offline, we need add a TODO(b/xxx) here for follow up analyze and metrics output.",
+      "parentUuid": "58fdfd62_fd8bf2cd",
       "range": {
         "startLine": 84,
         "startChar": 0,
