@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac5f178c_5e60cc87",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_animation_jank.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1546145
+      },
+      "writtenOn": "2022-09-08T05:16:57Z",
+      "side": 1,
+      "message": "shouldnt this be .Device().Command()?",
+      "range": {
+        "startLine": 64,
+        "startChar": 9,
+        "endLine": 64,
+        "endChar": 20
+      },
+      "revId": "7f48da2f15516538c24b070373e3d2736150636d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

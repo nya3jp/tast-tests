@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fcbb639e_35daffd8",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1546145
+      },
+      "writtenOn": "2022-09-08T05:16:57Z",
+      "side": 1,
+      "message": "I\u0027m going to need more details.  Probably you didn\u0027t capitolize the function name? Thats how you make things public in Go",
+      "parentUuid": "e5145038_1d0b2189",
+      "range": {
+        "startLine": 140,
+        "startChar": 0,
+        "endLine": 143,
+        "endChar": 1
+      },
+      "revId": "ffbdaeb0c15e84f4d5655bdf1bac32adad546f7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2d8be0a9_3210b15e",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/data/config.pbtxt",
         "patchSetId": 13
@@ -167,6 +191,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ee730f10_4ee3355b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_animation_jank.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1546145
+      },
+      "writtenOn": "2022-09-08T05:16:57Z",
+      "side": 1,
+      "message": "I think this is way too long, the command for perfetto is only 15 seconds (as of right now).",
+      "parentUuid": "840a0cd8_75e5aad3",
+      "revId": "ffbdaeb0c15e84f4d5655bdf1bac32adad546f7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5aa38c48_11a1fbe4",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_animation_jank.go",
         "patchSetId": 13
@@ -202,6 +244,30 @@
       "side": 1,
       "message": "Thanks! ElementLayoutActivity does not seem to end, so trace is pulled while the activity is still going on. Is there a better way to deal with this?",
       "parentUuid": "5aa38c48_11a1fbe4",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 2
+      },
+      "revId": "ffbdaeb0c15e84f4d5655bdf1bac32adad546f7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d876a215_29d848b9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_animation_jank.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1546145
+      },
+      "writtenOn": "2022-09-08T05:16:57Z",
+      "side": 1,
+      "message": "The activity shouldn\u0027t end, but our perfetto trace only lasts 15 seconds based on the configuration, so the perfetto process should die after that. \n\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/common/testexec/testexec.go;rcl\u003d59e30b7f166d421549f45202ec71e4756014daff;l\u003d235",
+      "parentUuid": "ec2bdf6e_84653944",
       "range": {
         "startLine": 78,
         "startChar": 0,
