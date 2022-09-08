@@ -65,6 +65,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5ab68ef_ef20474d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/theme_selection.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1528608
+      },
+      "writtenOn": "2022-09-08T01:37:36Z",
+      "side": 1,
+      "message": "According to go/go-style/decisions#comment-line-length we should try to break at 80, yet it\u0027s not a hard requirement.\nI added breaks around 80 column to all comments.",
+      "parentUuid": "6e6438d1_eb521672",
+      "range": {
+        "startLine": 51,
+        "startChar": 103,
+        "endLine": 51,
+        "endChar": 110
+      },
+      "revId": "ed925a4ba494901c9f0d1f54b565e98a985c7f9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a7fd8d25_7abe2232",
@@ -78,6 +102,30 @@
       "writtenOn": "2022-09-07T01:54:51Z",
       "side": 1,
       "message": "nit: Go style says to not prefix with \u0027get\u0027. Consider calling this nameOfSelectedTheme or similar. Same in other locations.",
+      "range": {
+        "startLine": 53,
+        "startChar": 5,
+        "endLine": 53,
+        "endChar": 27
+      },
+      "revId": "ed925a4ba494901c9f0d1f54b565e98a985c7f9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ef3e19e_8f1d01eb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/theme_selection.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1528608
+      },
+      "writtenOn": "2022-09-08T01:37:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a7fd8d25_7abe2232",
       "range": {
         "startLine": 53,
         "startChar": 5,
@@ -105,6 +153,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1a5d96f_5a202120",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/theme_selection.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1528608
+      },
+      "writtenOn": "2022-09-08T01:37:36Z",
+      "side": 1,
+      "message": "I believe error messages in this function give correct information about the problem. Or what do you mean?",
+      "parentUuid": "db0fd255_eac40a3b",
+      "revId": "ed925a4ba494901c9f0d1f54b565e98a985c7f9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b6f462ca_87b0d0f1",
@@ -118,6 +184,30 @@
       "writtenOn": "2022-08-31T07:12:58Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 67,
+        "startChar": 101,
+        "endLine": 67,
+        "endChar": 103
+      },
+      "revId": "ed925a4ba494901c9f0d1f54b565e98a985c7f9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "51a9caa5_3e42d571",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/theme_selection.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1528608
+      },
+      "writtenOn": "2022-09-08T01:37:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b6f462ca_87b0d0f1",
       "range": {
         "startLine": 67,
         "startChar": 101,
@@ -145,6 +235,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "49f2a827_4690c6da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/theme_selection.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1528608
+      },
+      "writtenOn": "2022-09-08T01:37:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3faf9f25_f5c22ff6",
+      "revId": "ed925a4ba494901c9f0d1f54b565e98a985c7f9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5bf12455_2d927dd8",
@@ -158,6 +266,24 @@
       "writtenOn": "2022-09-07T01:54:51Z",
       "side": 1,
       "message": "nit: this is only called from one location right? Probably fine to inline it for now, since it\u0027s a very simple function",
+      "revId": "ed925a4ba494901c9f0d1f54b565e98a985c7f9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0a2a8d1_ab68ee91",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/theme_selection.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1528608
+      },
+      "writtenOn": "2022-09-08T01:37:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5bf12455_2d927dd8",
       "revId": "ed925a4ba494901c9f0d1f54b565e98a985c7f9f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -185,6 +311,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e43fc27_d822e633",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/theme_selection.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1528608
+      },
+      "writtenOn": "2022-09-08T01:37:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ebdaa79_afc48e78",
+      "range": {
+        "startLine": 117,
+        "startChar": 2,
+        "endLine": 117,
+        "endChar": 64
+      },
+      "revId": "ed925a4ba494901c9f0d1f54b565e98a985c7f9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "28cca4a6_c8dc572f",
@@ -202,6 +352,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8fb99d5_a101569c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/theme_selection.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1528608
+      },
+      "writtenOn": "2022-09-08T01:37:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "28cca4a6_c8dc572f",
+      "revId": "ed925a4ba494901c9f0d1f54b565e98a985c7f9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f3340b55_7ead7639",
@@ -215,6 +383,24 @@
       "writtenOn": "2022-09-07T01:54:51Z",
       "side": 1,
       "message": "can combine previous line here, err :\u003d waitFor..; err !\u003d nil",
+      "revId": "ed925a4ba494901c9f0d1f54b565e98a985c7f9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bdda64f1_134467aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/theme_selection.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1528608
+      },
+      "writtenOn": "2022-09-08T01:37:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f3340b55_7ead7639",
       "revId": "ed925a4ba494901c9f0d1f54b565e98a985c7f9f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
