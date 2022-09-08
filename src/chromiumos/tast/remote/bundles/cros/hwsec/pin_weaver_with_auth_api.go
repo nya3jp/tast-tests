@@ -271,7 +271,7 @@ func setupUserWithPIN(ctx, ctxForCleanUp context.Context, userName string, cmdRu
 	cryptohomeHelper := helper.CryptohomeClient()
 
 	// Start an Auth session and get an authSessionID.
-	authSessionID, err := cryptohomeHelper.StartAuthSession(ctx, userName, false /*ephemeral*/, uda.AuthIntent_AUTH_INTENT_DECRYPT)
+	authSessionID, err := cryptohomeHelper.StartAuthSession(ctx, userName, false /*ephemeral*/)
 	if err != nil {
 		return errors.Wrap(err, "failed to start auth session for PIN authentication")
 	}
@@ -330,7 +330,7 @@ func attemptWrongPIN(ctx, ctxForCleanUp context.Context, testUser string, r *hws
 	cryptohomeHelper := helper.CryptohomeClient()
 
 	// Authenticate a new auth session via the new added PIN auth factor.
-	authSessionID, err := cryptohomeHelper.StartAuthSession(ctx, testUser, false /*ephemeral*/, uda.AuthIntent_AUTH_INTENT_DECRYPT)
+	authSessionID, err := cryptohomeHelper.StartAuthSession(ctx, testUser, false /*ephemeral*/)
 	if err != nil {
 		return errors.Wrap(err, "failed to start auth session for PIN authentication")
 	}
@@ -355,7 +355,7 @@ func authenticateWithCorrectPIN(ctx, ctxForCleanUp context.Context, testUser str
 	cryptohomeHelper := helper.CryptohomeClient()
 
 	// Authenticate a new auth session via the new added PIN auth factor.
-	authSessionID, err := cryptohomeHelper.StartAuthSession(ctx, testUser, false /*ephemeral*/, uda.AuthIntent_AUTH_INTENT_DECRYPT)
+	authSessionID, err := cryptohomeHelper.StartAuthSession(ctx, testUser, false /*ephemeral*/)
 	if err != nil {
 		return errors.Wrap(err, "failed to start auth session for PIN authentication")
 	}
@@ -377,7 +377,7 @@ func authenticateWithCorrectPassword(ctx, ctxForCleanUp context.Context, testUse
 	cryptohomeHelper := helper.CryptohomeClient()
 
 	// Authenticate a new auth session via the new password auth factor and mount the user.
-	authSessionID, err := cryptohomeHelper.StartAuthSession(ctx, testUser, false /*ephemeral*/, uda.AuthIntent_AUTH_INTENT_DECRYPT)
+	authSessionID, err := cryptohomeHelper.StartAuthSession(ctx, testUser, false /*ephemeral*/)
 	if err != nil {
 		return errors.Wrap(err, "failed to start auth session for password authentication")
 	}

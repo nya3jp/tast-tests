@@ -371,7 +371,7 @@ func authConfigToExtraFlags(config *AuthConfig) []string {
 
 func (u *CryptohomeClient) createUserWithAuthSession(ctx context.Context, username, password, keyLabel string, isKioskUser bool) (string, error) {
 	// Start an Auth session and get an authSessionID.
-	authSessionID, err := u.StartAuthSession(ctx, username, false /*ephemeral*/, uda.AuthIntent_AUTH_INTENT_DECRYPT)
+	authSessionID, err := u.StartAuthSession(ctx, username, false /*ephemeral*/)
 	if err != nil {
 		return "", errors.Wrap(err, "failed to start Auth session")
 	}
@@ -396,7 +396,7 @@ func (u *CryptohomeClient) createUserWithAuthSession(ctx context.Context, userna
 
 func (u *CryptohomeClient) authenticateWithAuthSession(ctx context.Context, username, password, keyLabel string, isEphemeral, isKioskUser bool) (string, error) {
 	// Start an Auth session and get an authSessionID.
-	authSessionID, err := u.StartAuthSession(ctx, username, isEphemeral, uda.AuthIntent_AUTH_INTENT_DECRYPT)
+	authSessionID, err := u.StartAuthSession(ctx, username, isEphemeral)
 	if err != nil {
 		return "", errors.Wrap(err, "failed to start Auth session")
 	}
@@ -955,8 +955,8 @@ func (u *CryptohomeClient) GetKeyData(ctx context.Context, user, keyLabel string
 }
 
 // StartAuthSession starts an AuthSession for a given user.
-func (u *CryptohomeClient) StartAuthSession(ctx context.Context, user string, isEphemeral bool, authIntent uda.AuthIntent) (string, error) {
-	binaryMsg, err := u.binary.startAuthSession(ctx, user, isEphemeral, authIntent)
+func (u *CryptohomeClient) StartAuthSession(ctx context.Context, user string, isEphemeral bool) (string, error) {
+	binaryMsg, err := u.binary.startAuthSession(ctx, user, isEphemeral)
 	if err != nil {
 		return "", err
 	}
