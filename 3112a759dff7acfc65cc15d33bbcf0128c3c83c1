@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a6eeb88_e4ebeee4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-09-08T15:20:35Z",
+      "side": 1,
+      "message": "Please also run tast unit test: fast_build.sh -T\n\nThen, add this line to the commit log:\n\nTEST\u003dtast unit tests passed.\n\nThanks.\n",
+      "revId": "3112a759dff7acfc65cc15d33bbcf0128c3c83c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "774d9654_e676abd1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/marketing_opt_in.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-09-08T15:20:35Z",
+      "side": 1,
+      "message": "How is this function different from ash.EnsureTabletModeEnabled? What does this one do that ash.EnsureTabletModeEnabled does not do? \n\nIt seems like it does something extra for the marketing opt-in. If so, can we call  ash.EnsureTabletModeEnabled first and then do the extra actions?\n\nAlso, is this function useful for other tests? If so, this function should be in a library.",
+      "revId": "3112a759dff7acfc65cc15d33bbcf0128c3c83c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ba5ad6e_4128d926",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/marketing_opt_in.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-09-08T15:20:35Z",
+      "side": 1,
+      "message": "Why do you need to have a new chrome session twice?",
+      "revId": "3112a759dff7acfc65cc15d33bbcf0128c3c83c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
