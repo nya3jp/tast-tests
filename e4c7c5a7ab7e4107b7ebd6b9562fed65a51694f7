@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8fee9270_0ec6f8ac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/theme_selection.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-09-08T02:11:38Z",
+      "side": 1,
+      "message": "Is this something you actually observed happening, w.r.t. differing whitespace?",
+      "revId": "e4c7c5a7ab7e4107b7ebd6b9562fed65a51694f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "840685eb_74a98963",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/theme_selection.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-09-08T02:11:38Z",
+      "side": 1,
+      "message": "constants no longer used",
+      "revId": "e4c7c5a7ab7e4107b7ebd6b9562fed65a51694f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "487ff561_f7eb6145",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/theme_selection.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-09-08T02:11:38Z",
+      "side": 1,
+      "message": "nit: make one line",
+      "revId": "e4c7c5a7ab7e4107b7ebd6b9562fed65a51694f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

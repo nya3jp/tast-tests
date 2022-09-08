@@ -171,6 +171,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d407683_ff4c36f5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/theme_selection.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-09-08T02:11:38Z",
+      "side": 1,
+      "message": "It\u0027s marginally simpler to make currentThemeModeResponse a string instead of interface{}. I guessed that the reason this wasn\u0027t done was to provide some specific error message. Was just asking if you\u0027re sure it\u0027s worth it.",
+      "parentUuid": "b1a5d96f_5a202120",
+      "revId": "ed925a4ba494901c9f0d1f54b565e98a985c7f9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b6f462ca_87b0d0f1",
