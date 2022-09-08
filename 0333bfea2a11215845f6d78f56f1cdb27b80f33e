@@ -16,6 +16,23 @@
       "message": "Toni and tast-owners, please take a look.",
       "revId": "0333bfea2a11215845f6d78f56f1cdb27b80f33e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eeaf4c77_a5e35da7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-09-08T08:29:04Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "0333bfea2a11215845f6d78f56f1cdb27b80f33e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
