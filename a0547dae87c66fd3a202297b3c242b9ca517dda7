@@ -3,6 +3,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ad1c9ffc_3cd64e14",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/cloud_gaming_marketing_opt_in.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2022-09-08T18:20:04Z",
+      "side": 1,
+      "message": "we should fix the race...",
+      "range": {
+        "startLine": 63,
+        "startChar": 31,
+        "endLine": 63,
+        "endChar": 74
+      },
+      "revId": "a0547dae87c66fd3a202297b3c242b9ca517dda7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69f1cf1e_5d13a6da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/cloud_gaming_marketing_opt_in.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2022-09-08T18:20:04Z",
+      "side": 1,
+      "message": "marketing",
+      "range": {
+        "startLine": 77,
+        "startChar": 56,
+        "endLine": 77,
+        "endChar": 64
+      },
+      "revId": "a0547dae87c66fd3a202297b3c242b9ca517dda7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "381e399f_730b1381",
         "filename": "src/chromiumos/tast/local/bundles/cros/oobe/cloud_gaming_marketing_opt_in.go",
         "patchSetId": 2
