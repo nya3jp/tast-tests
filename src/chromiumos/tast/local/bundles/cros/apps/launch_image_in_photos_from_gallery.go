@@ -24,6 +24,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/cryptohome"
+	"chromiumos/tast/local/sysutil"
 	"chromiumos/tast/local/uidetection"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -55,6 +56,17 @@ func init() {
 				Name:              "unstable",
 				Fixture:           "arcBootedWithGalleryPhotosImageFeature",
 				ExtraSoftwareDeps: []string{"android_p"},
+				ExtraHardwareDeps: hwdep.D(pre.AppsUnstableModels),
+			},
+			{
+				Name:              "vm_stable",
+				Fixture:           "arcBootedWithGalleryPhotosImageFeature",
+				ExtraSoftwareDeps: []string{"android_vm"},
+				ExtraHardwareDeps: hwdep.D(pre.AppsStableModels),
+			}, {
+				Name:              "vm_unstable",
+				Fixture:           "arcBootedWithGalleryPhotosImageFeature",
+				ExtraSoftwareDeps: []string{"android_vm"},
 				ExtraHardwareDeps: hwdep.D(pre.AppsUnstableModels),
 			},
 		},
@@ -112,6 +124,12 @@ func LaunchImageInPhotosFromGallery(ctx context.Context, s *testing.State) {
 	})(ctx); err != nil {
 		s.Fatalf("Failed to copy the test image to %s: %s", localFileLocation, err)
 	}
+	// Without this the test image is owned by root and the user will not have
+	// enough permissions to edit the file in Photos.
+	err = os.Chown(localFileLocation, int(sysutil.ChronosUID), int(sysutil.ChronosGID))
+	if err != nil {
+		s.Fatalf("Failed to chown file %s: %v", localFile, err)
+	}
 	defer os.Remove(localFileLocation)
 
 	// Wait for Gallery to be installed
@@ -167,12 +185,11 @@ func LaunchImageInPhotosFromGallery(ctx context.Context, s *testing.State) {
 	// Using retry to mitigate UI flakiness.
 	closeIfShown := func(finder *uidetection.Finder) uiauto.Action {
 		return uiauto.IfSuccessThen(
-			// Long timeout is required here as the Photos first launch is very slow.
-			ud.WithTimeout(10*time.Second).WaitUntilExists(finder),
-			uiauto.Retry(3, uiauto.NamedCombine("click button and waits its gone",
-				ud.WithTimeout(10*time.Second).WaitForLocation(finder),
+			// It can take a long time to identify a word in Photos.
+			ud.WithTimeout(40*time.Second).WaitUntilExists(finder),
+			uiauto.Retry(3, uiauto.NamedCombine("click button and wait for it to disappear",
 				ud.WithTimeout(10*time.Second).LeftClick(finder),
-				ud.WithTimeout(10*time.Second).WaitUntilGone(finder),
+				ud.WithTimeout(40*time.Second).WaitUntilGone(finder),
 			)),
 		)
 	}
