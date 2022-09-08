@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b07ce8b_55002543",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/unicorn_extensions.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1309215
+      },
+      "writtenOn": "2022-09-08T18:52:42Z",
+      "side": 1,
+      "message": "Can this use WaitForSyncToComplete?",
+      "revId": "c7b381ecbd8c09f1624cd71935a5e718fc3cf0dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e87dfdcc_b08dd305",
+        "filename": "src/chromiumos/tast/local/chrome/familylink/familylink.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1309215
+      },
+      "writtenOn": "2022-09-08T18:52:42Z",
+      "side": 1,
+      "message": "Maybe target a bug with this TODO in case it has to go on the back burner?",
+      "range": {
+        "startLine": 82,
+        "startChar": 9,
+        "endLine": 82,
+        "endChar": 13
+      },
+      "revId": "c7b381ecbd8c09f1624cd71935a5e718fc3cf0dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
