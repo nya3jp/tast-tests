@@ -6,17 +6,28 @@ package policy
 
 import (
 	"context"
+	"fmt"
+	"net/http"
+	"strings"
 	"time"
 
+	"chromiumos/tast/common/tape"
 	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/remote/gaiaenrollment"
 	"chromiumos/tast/remote/policyutil"
 	"chromiumos/tast/rpc"
 	ps "chromiumos/tast/services/cros/policy"
 	"chromiumos/tast/testing"
 )
 
-type testZTEInfo struct {
-	dmserver string // device management server url
+const gaiaZTEEnrollmentTimeout = 7 * time.Minute
+
+type deviceDetails struct {
+	serialNumber         string
+	hardwareModel        string
+	deviceProvisionToken string
+	customerID           string
+	batchKey             string
 }
 
 func init() {
@@ -30,23 +41,46 @@ func init() {
 		},
 		Attr:         []string{}, // Not running in current state.
 		SoftwareDeps: []string{"reboot", "chrome"},
-		ServiceDeps:  []string{"tast.cros.policy.PolicyService"},
+		ServiceDeps:  []string{"tast.cros.policy.PolicyService", "tast.cros.tape.Service", "tast.cros.hwsec.OwnershipService"},
 		Timeout:      7 * time.Minute,
 		Params: []testing.Param{
 			{
 				Name: "autopush",
-				Val: testZTEInfo{
-					dmserver: "https://crosman-alpha.sandbox.google.com/devicemanagement/data/api",
+				Val: gaiaenrollment.TestParams{
+					DMServer: "https://crosman-alpha.sandbox.google.com/devicemanagement/data/api",
+					PoolID:   tape.ZTETestAutomation,
+				},
+				Val: deviceDetails{ // Not sure about this part.
+					serialNumber:         "policy.GAIAZTEEnrollment.serial_number",
+					hardwareModel:        "policy.GAIAZTEEnrollment.hardware_model",
+					deviceProvisionToken: "policy.GAIAZTEEnrollment.device_provision_token",
+					customerID:           "policy.GAIAZTEEnrollment.customer_id",
+					batchKey:             "policy.GAIAZTEEnrollment.batch_key",
 				},
 			},
 		},
-		Vars: []string{"ui.signinProfileTestExtensionManifestKey"},
+		Vars: []string{
+			"ui.signinProfileTestExtensionManifestKey",
+			tape.ServiceAccountVar,
+			"policy.GAIAZTEEnrollment.serial_number",
+			"policy.GAIAZTEEnrollment.hardware_model",
+			"policy.GAIAZTEEnrollment.device_provision_token",
+			"policy.GAIAZTEEnrollment.customer_id",
+			"policy.GAIAZTEEnrollment.batch_key",
+		},
 	})
 }
 
 func GAIAZTEEnrollment(ctx context.Context, s *testing.State) {
-	param := s.Param().(testZTEInfo)
-	dmServerURL := param.dmserver
+	param := s.Param().(gaiaenrollment.TestParams)
+	preProvisionDetails := s.Param().(deviceDetails)
+	dmServerURL := param.DMServer
+	poolID := param.PoolID
+	serialNumber := s.RequiredVar(preProvisionDetails.serialNumber)
+	hardwareModel := s.RequiredVar(preProvisionDetails.hardwareModel)
+	deviceProvisionToken := s.RequiredVar(preProvisionDetails.deviceProvisionToken)
+	customerID := s.RequiredVar(preProvisionDetails.customerId)
+	batchKey := s.RequiredVar(preProvisionDetails.batchKey)
 
 	defer func(ctx context.Context) {
 		if err := policyutil.EnsureTPMAndSystemStateAreResetRemote(ctx, s.DUT()); err != nil {
@@ -69,10 +103,46 @@ func GAIAZTEEnrollment(ctx context.Context, s *testing.State) {
 
 	pc := ps.NewPolicyServiceClient(cl.Conn)
 
+	tapeClient, err := tape.NewClient(ctx, []byte(s.RequiredVar(tape.ServiceAccountVar)))
+	if err != nil {
+		s.Fatal("Failed to create tape client: ", err)
+	}
+	timeout := int32(gaiaZTEEnrollmentTimeout.Seconds())
+	// Create an account manager and lease a test account for the duration of the test.
+	accManager, acc, err := tape.NewOwnedTestAccountManagerFromClient(ctx, tapeClient, false /*lock*/, tape.WithTimeout(timeout), tape.WithPoolID(poolID))
+	if err != nil {
+		s.Fatal("Failed to create an account manager and lease an account: ", err)
+	}
+	defer accManager.CleanUp(ctx)
+
 	if _, err := pc.GAIAZTEEnrollUsingChrome(ctx, &ps.GAIAZTEEnrollUsingChromeRequest{
 		DmserverURL: dmServerURL,
 		ManifestKey: s.RequiredVar("ui.signinProfileTestExtensionManifestKey"),
 	}); err != nil {
 		s.Fatal("Failed to ZTE enroll using chrome: ", err)
 	}
+
+	// Deprovision the DUT at the end of the test.
+	defer func(ctx context.Context) {
+		if err := tapeClient.DeprovisionHelper(ctx, cl, acc.CustomerID); err != nil {
+			s.Fatal("Failed to deprovision device: ", err)
+		}
+	}(ctx)
+
+	// The block below pre-provisions the device for the next run.
+	bodyCommand := fmt.Sprintf("{\"requests\": [ {\"preProvisionedDevice\":{serialNumber:\"%s\",hardwareModel:\"%s\",devicePreProvisioningToken:\"%s\",attestedDeviceId:\"%s\",customer_id:\"%s\"}}]}", serialNumber, hardwareModel, deviceProvisionToken, serialNumber, customerID)
+	urlWithBatchKey := fmt.Sprintf("https://chromecommercial.googleapis.com/v1/preProvisionedDevices:batchCreate?key=%s", batchKey)
+	body := strings.NewReader(bodyCommand)
+	req, err := http.NewRequest("POST", urlWithBatchKey, body)
+	if err != nil {
+		s.Fatal("Failed to create pre-provision request: ", err)
+	}
+	req.Header.Set("Content-Type", "application/json")
+
+	resp, err := http.DefaultClient.Do(req)
+	if err != nil {
+		s.Fatal("Failed to pre-provision device: ", err)
+	}
+	defer resp.Body.Close()
+	testing.Sleep(ctx, 1*time.Second)
 }
