@@ -11,12 +11,10 @@ import (
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/a11y"
-	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/audio"
 	"chromiumos/tast/local/chrome/projector"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
-	"chromiumos/tast/local/chrome/uiauto/launcher"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/testing"
@@ -48,12 +46,8 @@ func NewScreencastButtonCondition(ctx context.Context, s *testing.State) {
 
 	defer faillog.DumpUITreeOnError(ctxForCleanUp, s.OutDir(), s.HasError, tconn)
 
-	if err := launcher.LaunchAndWaitForAppOpen(tconn, apps.Projector)(ctx); err != nil {
-		s.Fatal("Failed to open Projector app: ", err)
-	}
-
-	if err := projector.DismissOnboardingDialog(ctx, tconn); err != nil {
-		s.Fatal("Failed to close the onboarding dialog: ", err)
+	if err := projector.SetUpProjectorApp(ctx, tconn); err != nil {
+		s.Fatal("Failed to set up Projector app: ", err)
 	}
 
 	if err := audio.WaitForDevice(ctx, audio.InputStream); err != nil {
