@@ -16,6 +16,24 @@
       "message": "it83xx (such at IT8320 as appears in Dedede) does only have 512k of Flash. it8xxx2 (such as IT81302 on Nereid) has 1M.",
       "revId": "23c2cdb09ca3ea9cdc676748c2d1749ee3d4e449",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dafc5024_a0bec6a7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-09-08T14:06:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2e5b003b_442e7f96",
+      "revId": "23c2cdb09ca3ea9cdc676748c2d1749ee3d4e449",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
