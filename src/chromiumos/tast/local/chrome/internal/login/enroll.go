@@ -1,4 +1,4 @@
-// Copyright 2021 The Chromium OS Authors. All rights reserved.
+// Copyright 2021 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -282,18 +282,17 @@ func performGAIAZTEEnrollment(ctx context.Context, cfg *config.Config, sess *dri
 		return errors.Wrap(err, "could not find OOBE connection")
 	}
 
-	//TODO rzakarian@ remove after the test using this is live and running.
-	testing.ContextLog(ctx, "Found OOBE screen")
-
 	if err := conn.WaitForExpr(ctx, "OobeAPI.screens.WelcomeScreen.isVisible()"); err != nil {
+		return errors.Wrap(err, "failed to wait for the OOBE Welcome Screen")
 	}
-	//TODO rzakarian@ remove after the test using this is live and running.
-	testing.ContextLog(ctx, "Saw Welcome Screen")
 
 	if err := conn.Eval(ctx, "OobeAPI.screens.WelcomeScreen.clickNext()", nil); err != nil {
+		return errors.Wrap(err, "failed to click on the Next button on the OOBE Welcome Screen")
 	}
-	//TODO rzakarian@ remove after the test using this is live and running.
-	testing.ContextLog(ctx, "Clicked Next on Welcome Screen")
+
+	if err := conn.WaitForExprFailOnErr(ctx, "OobeAPI.screens.EnterpriseEnrollmentScreen.successStep.isReadyForTesting()"); err != nil {
+		return errors.Wrap(err, "failed to wait for the OOBE enterprise enrollment signin screen to be ready")
+	}
 
 	defer conn.Close()
 	return nil
