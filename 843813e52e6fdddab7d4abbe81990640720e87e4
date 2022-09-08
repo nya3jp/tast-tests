@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a803f3a_5a1491ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/screen_recorder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-09-08T06:28:20Z",
+      "side": 1,
+      "message": "Cannot remember it exactly. I will share it with you if it happens to me again. Thanks.",
+      "parentUuid": "097cbc55_890dbccf",
+      "range": {
+        "startLine": 24,
+        "startChar": 24,
+        "endLine": 24,
+        "endChar": 45
+      },
+      "revId": "843813e52e6fdddab7d4abbe81990640720e87e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "30b4f0a1_b4924860",
