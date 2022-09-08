@@ -70,6 +70,30 @@
       },
       "revId": "bb36f7ac5dcf5268aace792f5574d0f34ee52bf7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "17ec5330_9994ab68",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/stateful_files.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1527467
+      },
+      "writtenOn": "2022-09-08T01:30:44Z",
+      "side": 1,
+      "message": "Yeah, I agree with that.\n\nOpened another CL (https://crrev.com/c/3881583) to change that in Lacros, and updating this.",
+      "parentUuid": "e5aecef4_b0d15b06",
+      "range": {
+        "startLine": 109,
+        "startChar": 52,
+        "endLine": 109,
+        "endChar": 63
+      },
+      "revId": "bb36f7ac5dcf5268aace792f5574d0f34ee52bf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
