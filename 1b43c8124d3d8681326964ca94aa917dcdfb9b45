@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5aaf878_d19df137",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2022-09-08T18:26:17Z",
+      "side": 1,
+      "message": "Please also update arc/selinux_violation.go",
+      "revId": "1b43c8124d3d8681326964ca94aa917dcdfb9b45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "931394c6_f59f654b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/selinux_violation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2022-09-08T18:26:17Z",
+      "side": 1,
+      "message": "Is there any reason to remove this line? We still want the test to be informational.",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 0
+      },
+      "revId": "1b43c8124d3d8681326964ca94aa917dcdfb9b45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
