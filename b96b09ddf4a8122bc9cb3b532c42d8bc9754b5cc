@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0567c4d1_f661b8fa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1335848
+      },
+      "writtenOn": "2022-09-08T05:44:16Z",
+      "side": 1,
+      "message": "Thanks!",
+      "parentUuid": "465bf7a6_cb2da832",
+      "revId": "b96b09ddf4a8122bc9cb3b532c42d8bc9754b5cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bb9e5152_5a020dba",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-09-08T05:32:13Z",
       "side": 1,
       "message": "We\u0027re also ignoring the error here as well right? can we catch the error but log it instead? like:\n```\nif err :\u003d uiauto.New(tconn).WithTimeout(2*time.Second).LeftClick(...)(ctx) {\n  s.Log(\"Could not click the available offline toggle, offline might already be enabled\")\n}\n```\nJust so we\u0027ve got a breadcrumb in the logs",
+      "range": {
+        "startLine": 138,
+        "startChar": 1,
+        "endLine": 138,
+        "endChar": 98
+      },
+      "revId": "b96b09ddf4a8122bc9cb3b532c42d8bc9754b5cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "70f8d4c3_39ce2ab5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/drivefs_dss_offline.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1335848
+      },
+      "writtenOn": "2022-09-08T05:44:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bb9e5152_5a020dba",
       "range": {
         "startLine": 138,
         "startChar": 1,
