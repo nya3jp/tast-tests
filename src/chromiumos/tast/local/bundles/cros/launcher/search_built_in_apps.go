@@ -32,12 +32,12 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Fixture:      "chromeLoggedIn",
 		Params: []testing.Param{{
-			Name: "productivity_launcher_clamshell_mode",
+			Name: "clamshell_mode",
 			Val:  launcher.TestCase{TabletMode: false},
 			// b/229135388
 			ExtraAttr: []string{"informational"},
 		}, {
-			Name:              "productivity_launcher_tablet_mode",
+			Name:              "tablet_mode",
 			Val:               launcher.TestCase{TabletMode: true},
 			ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		}},

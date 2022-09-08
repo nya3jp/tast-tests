@@ -31,13 +31,13 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{
-			Name:    "productivity_launcher_clamshell_mode",
+			Name:    "clamshell_mode",
 			Fixture: "chromeLoggedIn",
 			Val:     launcher.TestCase{TabletMode: false},
 		},
 		/* Disabled due to <1% pass rate over 30 days. See b/241943050
 		{
-			Name:              "productivity_launcher_tablet_mode",
+			Name:              "tablet_mode",
 			Fixture:           "chromeLoggedIn",
 			Val:               launcher.TestCase{TabletMode: true},
 			ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
