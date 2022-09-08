@@ -218,6 +218,30 @@
       },
       "revId": "09e94da75094d6fec45e7dcebd24882d42db6295",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97bcb9dd_4afe1d00",
+        "filename": "src/chromiumos/tast/local/bundles/cros/notifications/data/ArcNotificationTest2.apk.external",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1523288
+      },
+      "writtenOn": "2022-09-08T05:31:55Z",
+      "side": 1,
+      "message": "Thanks for the comment. After the discussion with Alfred, I am afraid we have a few concerns:\n\n1. We use this Notification Showcase app because of the suggestion from Toshiki Kikuchi (toshikikikuchi@google.com) according to the test case “arc.NotificationExperimental” and the ticket 200987545.\n2. In the current folder \"android,\" there is no \"ArcNotificationTest2\" apk file for use, and unfortunately, we do not have the source code either.\n3. I also tried to use the \"ArcNotificationTest\" apk to run the test, but sadly, it turns out this app cannot generate a grouped notification.\n\nBased on the reasons above, would you be able to help upload the source code of the Notification Showcase app to the \"android\" folder if you are still concerning the source code issue, or would it be fine if we keep using the current approach?",
+      "parentUuid": "cf0d3c6f_b9428f4c",
+      "range": {
+        "startLine": 2,
+        "startChar": 10,
+        "endLine": 2,
+        "endChar": 92
+      },
+      "revId": "09e94da75094d6fec45e7dcebd24882d42db6295",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
