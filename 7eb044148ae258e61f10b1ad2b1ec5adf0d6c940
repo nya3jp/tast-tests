@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5fd3475_4d06f2ef",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-09-08T14:08:59Z",
+      "side": 1,
+      "message": "nit: wrap up to 72 symbols",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 78
+      },
+      "revId": "7eb044148ae258e61f10b1ad2b1ec5adf0d6c940",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3617e9c1_5e41ef81",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-09-08T14:08:59Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "7eb044148ae258e61f10b1ad2b1ec5adf0d6c940",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1a27784_ced626cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/util/power_control.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-09-08T14:08:59Z",
+      "side": 1,
+      "message": "Does not testexec.CommandContext log the command it runs?",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 60
+      },
+      "revId": "7eb044148ae258e61f10b1ad2b1ec5adf0d6c940",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "980ec366_c0e27f75",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/util/test_runner.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-09-08T14:08:59Z",
+      "side": 1,
+      "message": "nit: check guidance when to add logs\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#When-to-log\n\nsame in other places",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 64
+      },
+      "revId": "7eb044148ae258e61f10b1ad2b1ec5adf0d6c940",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eab010e9_aeac5bca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/util/test_runner.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-09-08T14:08:59Z",
+      "side": 1,
+      "message": "nit: same",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 44
+      },
+      "revId": "7eb044148ae258e61f10b1ad2b1ec5adf0d6c940",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
