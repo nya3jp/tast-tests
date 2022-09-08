@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "221fea05_2c7f0949",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/remove_vault_keyset_auth_factor.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2022-09-08T09:26:08Z",
+      "side": 0,
+      "message": "I guess we should put this in the other CL(?)",
+      "revId": "bd0405618187e178317a241301f7e8000771bd82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
