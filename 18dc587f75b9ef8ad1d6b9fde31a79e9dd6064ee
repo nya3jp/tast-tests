@@ -175,6 +175,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc052c2f_dfb1f36f",
+        "filename": "android/ArcWindowAnimationJankTest/AndroidManifest.xml",
+        "patchSetId": 5
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1553967
+      },
+      "writtenOn": "2022-09-08T05:43:36Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d3d36ba3_9c1dcc4f",
+      "revId": "18dc587f75b9ef8ad1d6b9fde31a79e9dd6064ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "60574ce8_9c060db9",
@@ -474,6 +492,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5bf390f1_e8efbd84",
+        "filename": "android/ArcWindowAnimationJankTest/src/org/chromium/arc/testapp/windowanimationjank/FlowLayout.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1553967
+      },
+      "writtenOn": "2022-09-08T05:43:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7323b790_9433e602",
+      "range": {
+        "startLine": 20,
+        "startChar": 3,
+        "endLine": 26,
+        "endChar": 5
+      },
+      "revId": "18dc587f75b9ef8ad1d6b9fde31a79e9dd6064ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "85479517_54b6c7fb",
@@ -533,6 +575,30 @@
       "writtenOn": "2022-09-06T03:09:40Z",
       "side": 1,
       "message": "ArcWindowAnimationJankTest:ArcWindowAnimationJankTest",
+      "range": {
+        "startLine": 63,
+        "startChar": 5,
+        "endLine": 63,
+        "endChar": 31
+      },
+      "revId": "18dc587f75b9ef8ad1d6b9fde31a79e9dd6064ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3ea3e04_5ba98421",
+        "filename": "android/BUILD.gn",
+        "patchSetId": 5
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1553967
+      },
+      "writtenOn": "2022-09-08T05:43:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "85bd6ba2_f3a1a43a",
       "range": {
         "startLine": 63,
         "startChar": 5,
