@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "20e3e1b2_8c245528",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/image_paste.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2022-09-08T17:42:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d8916d62_a6133fa3",
+      "revId": "53a73faac66a05182b9dd5b1be59014366bd3113",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "05c4f4d8_d09e5707",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-09-08T06:17:48Z",
       "side": 1,
       "message": "10",
+      "range": {
+        "startLine": 56,
+        "startChar": 12,
+        "endLine": 56,
+        "endChar": 16
+      },
+      "revId": "53a73faac66a05182b9dd5b1be59014366bd3113",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1fc95170_f502972f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/image_paste.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2022-09-08T17:42:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "05c4f4d8_d09e5707",
       "range": {
         "startLine": 56,
         "startChar": 12,
@@ -58,6 +100,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eca04951_8fb3ba66",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/image_paste.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2022-09-08T17:42:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ed96a899_6905faac",
+      "revId": "53a73faac66a05182b9dd5b1be59014366bd3113",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "956af9ad_a861dcd1",
@@ -71,6 +131,24 @@
       "writtenOn": "2022-09-08T06:17:48Z",
       "side": 1,
       "message": "The comment is confusing because that window already has focus. See Nick\u0027s explanation for why we are doing this here.",
+      "revId": "53a73faac66a05182b9dd5b1be59014366bd3113",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e6bf784_0df6b9dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/image_paste.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2022-09-08T17:42:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "956af9ad_a861dcd1",
       "revId": "53a73faac66a05182b9dd5b1be59014366bd3113",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
