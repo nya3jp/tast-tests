@@ -43,6 +43,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f3cc2555_11729c12",
+        "filename": "src/chromiumos/tast/common/wifi/security/wpa/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2022-09-08T04:02:42Z",
+      "side": 1,
+      "message": "psk is the passphrase rather than the security class",
+      "revId": "dfa803cf0318e5b92539e054d27ebd1674607e59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0d111339_3ddaeb49",
         "filename": "src/chromiumos/tast/local/bundles/cros/wifi/shill_service.go",
         "patchSetId": 3
