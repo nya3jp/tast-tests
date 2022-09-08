@@ -8,6 +8,7 @@ import (
 	"context"
 	"time"
 
+	uda "chromiumos/system_api/user_data_auth_proto"
 	"chromiumos/tast/common/hwsec"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/cryptohome"
@@ -29,10 +30,12 @@ func init() {
 }
 
 // KioskEphemeralMount tests the following case for ephemeral mounts:
-//  Ensure that the user can login with mountEx call
-//  Ensure that the user can login with Credential APIs
-//  Ensure that the user can login with AuthFactor APIs
-//  Ensure that the user can login with AuthFactor APIs with USS Enabled
+//
+//	Ensure that the user can login with mountEx call
+//	Ensure that the user can login with Credential APIs
+//	Ensure that the user can login with AuthFactor APIs
+//	Ensure that the user can login with AuthFactor APIs with USS Enabled
+//
 // In addition it checks data does not leak across ephemeral sessions.
 func KioskEphemeralMount(ctx context.Context, s *testing.State) {
 	const (
@@ -129,7 +132,7 @@ func KioskEphemeralMount(ctx context.Context, s *testing.State) {
 
 	// ******* AuthSession With Credential API Use ***************
 	// Start a new AuthSession for ephemeral kiosk user.
-	authSessionID, err := client.StartAuthSession(ctx, cryptohome.KioskUser, true /*ephemeral*/)
+	authSessionID, err := client.StartAuthSession(ctx, cryptohome.KioskUser, true /*ephemeral*/, uda.AuthIntent_AUTH_INTENT_DECRYPT)
 	if err != nil {
 		s.Fatal("Failed to start auth session for re-mounting: ", err)
 	}
@@ -166,7 +169,7 @@ func KioskEphemeralMount(ctx context.Context, s *testing.State) {
 	// ******* AuthSession With AuthFactor and No USS API Use ***************
 	// Ensure that Kiosk login works when USS flag is disabled, but should
 	// still work with AuthFactor API.
-	authSessionID, err = client.StartAuthSession(ctx, cryptohome.KioskUser, true /*ephemeral*/)
+	authSessionID, err = client.StartAuthSession(ctx, cryptohome.KioskUser, true /*ephemeral*/, uda.AuthIntent_AUTH_INTENT_DECRYPT)
 	if err != nil {
 		s.Fatal("Failed to start auth session for re-mounting: ", err)
 	}
@@ -209,7 +212,7 @@ func KioskEphemeralMount(ctx context.Context, s *testing.State) {
 	defer cleanupUSSExperiment()
 
 	// Ensure that Kiosk login works when USS flag is enabled.
-	authSessionID, err = client.StartAuthSession(ctx, cryptohome.KioskUser, true /*ephemeral*/)
+	authSessionID, err = client.StartAuthSession(ctx, cryptohome.KioskUser, true /*ephemeral*/, uda.AuthIntent_AUTH_INTENT_DECRYPT)
 	if err != nil {
 		s.Fatal("Failed to start auth session for re-mounting: ", err)
 	}
