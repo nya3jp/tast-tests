@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "19337907_f0fd39d1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-09-08T23:56:46Z",
+      "side": 1,
+      "message": "Did you mean SavedFileToDefaultFolder?",
+      "range": {
+        "startLine": 12,
+        "startChar": 29,
+        "endLine": 12,
+        "endChar": 41
+      },
+      "revId": "efe0408ccf78a87ad4528d98d0f14a317cc19401",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "63b419ae_0e7bd269",
@@ -14,6 +37,166 @@
       "writtenOn": "2022-09-08T02:16:49Z",
       "side": 1,
       "message": "Rebased on Toby\u0027s refactor. Thanks for reviewing!",
+      "revId": "efe0408ccf78a87ad4528d98d0f14a317cc19401",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "414cefe7_1753f327",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-09-08T23:56:46Z",
+      "side": 1,
+      "message": "Thanks for working on this. Mostly looks good.",
+      "revId": "efe0408ccf78a87ad4528d98d0f14a317cc19401",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d64ba1d_229ee485",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/saved_file_to_default_folder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-09-08T23:56:46Z",
+      "side": 1,
+      "message": "Update this description to explain what this test does.",
+      "range": {
+        "startLine": 31,
+        "startChar": 17,
+        "endLine": 31,
+        "endChar": 108
+      },
+      "revId": "efe0408ccf78a87ad4528d98d0f14a317cc19401",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0945ca6c_79c98f02",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/saved_file_to_default_folder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-09-08T23:56:46Z",
+      "side": 1,
+      "message": "Add ondevice_speech to software deps. Otherwise, this test would run on devices that don\u0027t support SODA (such as VMs) and the creation flow would fail below.",
+      "revId": "efe0408ccf78a87ad4528d98d0f14a317cc19401",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9361c24_bae8e085",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/saved_file_to_default_folder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-09-08T23:56:46Z",
+      "side": 1,
+      "message": "Add hwdep.Microphone(). Some devices, such as Chromebox and Chromebit, don\u0027t have microphones, so the creation flow below would fail due to the \"turn on microphone\" error.",
+      "revId": "efe0408ccf78a87ad4528d98d0f14a317cc19401",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51e91ef2_2a2c1566",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/saved_file_to_default_folder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-09-08T23:56:46Z",
+      "side": 1,
+      "message": "I\u0027m refactoring this into SetUpProjectorApp() in crrev.com/c/3883797 to avoid code duplication. If my CL lands first, then please use SetUpProjectorApp() here. Otherwise, I\u0027ll do the refactoring in my CL.",
+      "range": {
+        "startLine": 55,
+        "startChar": 1,
+        "endLine": 61,
+        "endChar": 2
+      },
+      "revId": "efe0408ccf78a87ad4528d98d0f14a317cc19401",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d8171d8_87864e8a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/saved_file_to_default_folder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-09-08T23:56:46Z",
+      "side": 1,
+      "message": "Despite filtering for hwdep.Microphone() above, a microphone might still be unavailable (see b/241588663). Calling SetUpProjectorApp() from crrev.com/c/3883797 will automatically detect this situation and add a fake microphone to enable the test to proceed.",
+      "revId": "efe0408ccf78a87ad4528d98d0f14a317cc19401",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ffb569de_4deb9e81",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/saved_file_to_default_folder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-09-08T23:56:46Z",
+      "side": 1,
+      "message": "Nit: containerFolderPath",
+      "range": {
+        "startLine": 82,
+        "startChar": 1,
+        "endLine": 82,
+        "endChar": 13
+      },
+      "revId": "efe0408ccf78a87ad4528d98d0f14a317cc19401",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "888f5053_2c9894e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/saved_file_to_default_folder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-09-08T23:56:46Z",
+      "side": 1,
+      "message": "Nit: isValidExtension",
+      "range": {
+        "startLine": 100,
+        "startChar": 13,
+        "endLine": 100,
+        "endChar": 28
+      },
       "revId": "efe0408ccf78a87ad4528d98d0f14a317cc19401",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
