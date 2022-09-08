@@ -33,7 +33,11 @@ func init() {
 		Func:         FlashromTester,
 		Desc:         "Tast wrapper that runs flashrom_tester",
 		Contacts:     []string{"nartemiev@google.com", "cros-flashrom-team@google.com"},
+<<<<<<< PATCH SET (47ad6b flashrom_tester: Change group from mainline to flashrom)
+		Attr:         []string{"group:flashrom"},
+=======
 		Attr:         []string{}, // TODO(b/239126062): Move to custom suite/schedule.
+>>>>>>> BASE      (15f0ea tast: Skip S/R cellular tests on unstable herobrine platform)
 		SoftwareDeps: []string{"crossystem", "flashrom"},
 		HardwareDeps: hwdep.D(hwdep.ChromeEC()),
 		Timeout:      45 * time.Minute,
