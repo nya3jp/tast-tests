@@ -33,6 +33,41 @@
       "message": "LGTM. Maybe we could pull someone from the firewall package to stamp it too, WDYT?",
       "revId": "58059d98b648770bdf8beefa86f10f9e4f07ace0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "78c0fad1_ebbf722d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368301
+      },
+      "writtenOn": "2022-09-08T06:14:03Z",
+      "side": 1,
+      "message": "Sounds good. I have added reviewer who wrote the firewall package.",
+      "parentUuid": "9849616a_f5ab3dd6",
+      "revId": "58059d98b648770bdf8beefa86f10f9e4f07ace0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b013316_0ded62aa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368301
+      },
+      "writtenOn": "2022-09-08T06:14:03Z",
+      "side": 1,
+      "message": "Hi Jacek, can you please review this CL from firewall usage point of view? Thanks!",
+      "revId": "58059d98b648770bdf8beefa86f10f9e4f07ace0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
