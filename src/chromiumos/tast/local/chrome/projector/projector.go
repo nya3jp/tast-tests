@@ -1,4 +1,4 @@
-// Copyright 2022 The ChromiumOS Authors.
+// Copyright 2022 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -141,6 +141,9 @@ func LaunchCreationFlow(ctx context.Context, tconn *chrome.TestConn, launchAnnot
 			return err
 		}
 	}
+
+	// Ensure the recording is at least a couple seconds long.
+	testing.Sleep(ctx, 6*time.Second)
 
 	testing.ContextLog(ctx, "Stopping recording")
 	if err := uiauto.Combine("stopping recording",
