@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "70f36f9d_1eb49838",
+        "filename": "src/chromiumos/tast/local/chrome/projector/projector.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-09-08T17:46:55Z",
+      "side": 1,
+      "message": "Now it\u0027s possible to remove RefreshApp() entirely! It\u0027s only referenced in this file, projector.go.",
+      "parentUuid": "cdeebad2_a7013ad4",
+      "range": {
+        "startLine": 22,
+        "startChar": 5,
+        "endLine": 22,
+        "endChar": 15
+      },
+      "revId": "2d8d51da89424544b50f2f7fb1719fad57aa5ea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3407cb81_8ebd5d38",
         "filename": "src/chromiumos/tast/local/chrome/projector/projector.go",
         "patchSetId": 2
