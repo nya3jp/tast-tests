@@ -47,7 +47,7 @@ func GuestPlayStore(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to get installed apps: ", err)
 	}
-	for _, app := range []apps.App{apps.PlayStore, apps.Duo, apps.PlayBooks, apps.PlayGames, apps.PlayMovies, apps.Clock, apps.Contacts} {
+	for _, app := range []apps.App{apps.PlayStore, apps.Duo, apps.PlayBooks, apps.PlayGames, apps.GoogleTV, apps.Clock, apps.Contacts} {
 		for _, installedapp := range installedApps {
 			if app.ID == installedapp.AppID {
 				s.Fatalf("%s (%s) App is installed", app.Name, app.ID)
