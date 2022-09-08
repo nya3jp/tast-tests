@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e66736f_05dfbe8f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2604,
+      "author": {
+        "id": 1550623
+      },
+      "writtenOn": "2022-09-08T16:42:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "879286a7_405d03d7",
+      "revId": "a101a4d2f55a34e85fc40b67a527207c777baf81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b842e809_fcf48170",
@@ -87,6 +105,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3f045ec_acfc40cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2620,
+      "author": {
+        "id": 1550623
+      },
+      "writtenOn": "2022-09-08T16:42:42Z",
+      "side": 1,
+      "message": "Updated `commandBuilderDecodeFn` with inclusion of `md5OutputPath` argument. Updated logic accordingly",
+      "parentUuid": "2cd466b0_a06e976f",
+      "revId": "a101a4d2f55a34e85fc40b67a527207c777baf81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6f9287c8_ed7a888e",
@@ -118,6 +154,24 @@
       "side": 1,
       "message": "Can you move `defer os.Remove(md5logPath)` higher in the function. Namely before any exit paths? `defer os.Remove(md5logPath)` tells the program to \"defer (delay) removing the file until the function exits.\"\n\nWith the current patchset, if the test fails with a Fatal error, the file will be left dangling.",
       "parentUuid": "6f9287c8_ed7a888e",
+      "revId": "a101a4d2f55a34e85fc40b67a527207c777baf81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "19772a97_7c4822a4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2642,
+      "author": {
+        "id": 1550623
+      },
+      "writtenOn": "2022-09-08T16:42:42Z",
+      "side": 1,
+      "message": "`defer os.Remove(md5LogPath)` has been moved to right after the temp file has been created.",
+      "parentUuid": "d0be00de_3f7b9c3b",
       "revId": "a101a4d2f55a34e85fc40b67a527207c777baf81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
