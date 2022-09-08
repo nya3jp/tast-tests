@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/local/a11y"
 	"chromiumos/tast/local/audio/crastestclient"
 	"chromiumos/tast/local/camera/cca"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
@@ -62,7 +63,17 @@ func CCAUIA11y(ctx context.Context, s *testing.State) {
 	}
 	defer sm.Close()
 
-	// Connect to ChromeVox.
+	ew, err := input.Keyboard(ctx)
+	if err != nil {
+		s.Fatal("Failed to create EventWriter from keyboard")
+	}
+	defer ew.Close()
+
+	visited := make(map[string]bool)
+	tab := "Tab"
+
+	// Turning on ChromeVox by keyboard is in a11y/chromevox_toggle_on_shortcut.go
+	// Connect to ChromeVox using NewChromeVoxConn.
 	if err := a11y.SetFeatureEnabled(ctx, tconn, a11y.SpokenFeedback, true); err != nil {
 		s.Fatal("Failed to enable spoken feedback: ", err)
 	}
@@ -72,23 +83,15 @@ func CCAUIA11y(ctx context.Context, s *testing.State) {
 		}
 	}()
 
-	visited := make(map[string]bool)
-	tab := "Tab"
-	ctrlAltZ := "Ctrl+Alt+z"
-
-	ew, err := input.Keyboard(ctx)
+	cvconn, err := a11y.NewChromeVoxConn(ctx, cr)
 	if err != nil {
-		s.Fatal("Failed to create EventWriter from keyboard")
+		s.Fatal("Failed to connect to the ChromeVox background page: ", err)
 	}
-	defer ew.Close()
+	defer cvconn.Close()
 
-	if err = ew.Accel(ctx, ctrlAltZ); err != nil {
-		s.Fatal("Failed to press Ctrl+Alt+Z keys")
-	}
-
-	// TODO(b/242471889): When Chromevox speaks the first element, remove this code and verify from the start.
-	if err = ew.Accel(ctx, tab); err != nil {
-		s.Fatal("Failed to press tab key")
+	finder := nodewith.HasClass("shutter")
+	if err = cvconn.WaitForFocusedNode(ctx, tconn, finder); err != nil {
+		s.Error("Failed to wait for initial ChromeVox focus: ", err)
 	}
 
 	for true {
