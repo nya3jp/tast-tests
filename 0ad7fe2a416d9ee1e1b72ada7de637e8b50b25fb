@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6d7168d_33d42e62",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-09-08T02:13:55Z",
+      "side": 1,
+      "message": "nit: fix wrapping here.",
+      "range": {
+        "startLine": 9,
+        "startChar": 70,
+        "endLine": 9,
+        "endChar": 72
+      },
+      "revId": "0ad7fe2a416d9ee1e1b72ada7de637e8b50b25fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "4392e775_fa97a782",
@@ -14,6 +37,46 @@
       "writtenOn": "2022-09-02T18:57:43Z",
       "side": 1,
       "message": "lgtm from my side, but please wait for others\u0027 review",
+      "revId": "0ad7fe2a416d9ee1e1b72ada7de637e8b50b25fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dfbff6bb_7c77704f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-09-08T02:13:55Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "0ad7fe2a416d9ee1e1b72ada7de637e8b50b25fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3260e5d7_2a242111",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/wmp/window.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-09-08T02:13:55Z",
+      "side": 1,
+      "message": "nit: \"A race condition exists and causes this function to not guarantee a stable-drag action\"",
+      "range": {
+        "startLine": 60,
+        "startChar": 5,
+        "endLine": 60,
+        "endChar": 84
+      },
       "revId": "0ad7fe2a416d9ee1e1b72ada7de637e8b50b25fb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
