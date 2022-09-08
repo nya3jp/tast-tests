@@ -23,7 +23,14 @@ func init() {
 		Func:         InputCheckKeyState,
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Input page shows expected key states when keys are pressed and released",
-		Contacts:     []string{"jeff.lin@cienet.com", "xliu@cienet.com", "cros-peripherals@google.com"},
+		Contacts: []string{
+			"dpad@google.com",
+			"jeff.lin@cienet.com",
+			"xliu@cienet.com",
+			"ashleydp@google.com",
+			"zentaro@google.com",
+			"cros-peripherals@google.com",
+		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 	})

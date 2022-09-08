@@ -23,7 +23,14 @@ func init() {
 		Func:         InputTopRowDisrupting,
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Pressing several disruptive keys won't disrupt the test and affect other keys' states",
-		Contacts:     []string{"jeff.lin@cienet.com", "xliu@cienet.com", "cros-peripherals@google.com"},
+		Contacts: []string{
+			"dpad@google.com",
+			"jeff.lin@cienet.com",
+			"xliu@cienet.com",
+			"ashleydp@google.com",
+			"zentaro@google.com",
+			"cros-peripherals@google.com",
+		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 	})
