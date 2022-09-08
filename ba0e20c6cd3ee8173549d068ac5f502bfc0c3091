@@ -63,6 +63,30 @@
       },
       "revId": "ba0e20c6cd3ee8173549d068ac5f502bfc0c3091",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15676ee3_ad123ae3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 530,
+      "author": {
+        "id": 1497117
+      },
+      "writtenOn": "2022-09-08T15:19:30Z",
+      "side": 1,
+      "message": "Hi Hyung Tae, we don\u0027t need a lacros variant for ui.TabSwitchCUJRecorder2. Could you add LacrosVariantUnneeded for that case? Thanks!",
+      "parentUuid": "c16c1088_6f596eda",
+      "range": {
+        "startLine": 530,
+        "startChar": 0,
+        "endLine": 530,
+        "endChar": 35
+      },
+      "revId": "ba0e20c6cd3ee8173549d068ac5f502bfc0c3091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
