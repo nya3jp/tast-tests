@@ -61,6 +61,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "146f68ec_5aefcee3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/add_remove_factors_ephemeral.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-09-08T23:36:20Z",
+      "side": 1,
+      "message": "OK, I guess it\u0027s fine to have these two sub-tests, given that we know the same files that implement ephemeral users are flooded with \"if USS enabled\" checks.\n\nBut please add a comment somewhere, so that readers of this test file aren\u0027t surprised in the same way as I was. Something like:\n\n    // While the ephemeral user behavior shouldn\u0027t in theory be affected be whether the\n    // UserSecretStash is enabled in cryptohome, we have two separate sub-tests to\n    // actually verify this in both cases.",
+      "parentUuid": "8cd5d65f_5582205f",
+      "revId": "f4954104fc9725509b3032253e904359ba776d50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7e0db7ad_ed7990a8",
         "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/add_remove_factors_ephemeral.go",
         "patchSetId": 2
@@ -108,6 +126,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "be312498_9c9308eb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/add_remove_factors_ephemeral.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-09-08T23:36:20Z",
+      "side": 1,
+      "message": "Ack, I guess I\u0027ll just defer this to tast-owners@.",
+      "parentUuid": "78e91d8b_14c3abe0",
+      "range": {
+        "startLine": 55,
+        "startChar": 34,
+        "endLine": 55,
+        "endChar": 46
+      },
+      "revId": "f4954104fc9725509b3032253e904359ba776d50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d3e7a2fc_690b94b5",
         "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/add_remove_factors_ephemeral.go",
         "patchSetId": 2
@@ -137,6 +179,24 @@
       "side": 1,
       "message": "Hmm, a bit tricky to refactor generically, though, because it needs to make a less function? I\u0027ll think about if there\u0027s a way I can refactor the comparison code into something we can reuse, but I\u0027m not so sure there\u0027s a good way to make calling cmp and cmpopts more reusable than what they already provide.",
       "parentUuid": "d3e7a2fc_690b94b5",
+      "revId": "f4954104fc9725509b3032253e904359ba776d50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bab68623_4e839ecc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/add_remove_factors_ephemeral.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-09-08T23:36:20Z",
+      "side": 1,
+      "message": "Golang doesn\u0027t allow to make very generic helpers IIUC, but we could have a helper speicifcally for `AuthFactorType`s, similarly to the `ExpectAuthIntents()` function in the file I quoted above. Just as a ready-to-use tool that can tell you whether two sets of types are equal, and if not format the difference appropriately.",
+      "parentUuid": "db379e08_14117970",
       "revId": "f4954104fc9725509b3032253e904359ba776d50",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
