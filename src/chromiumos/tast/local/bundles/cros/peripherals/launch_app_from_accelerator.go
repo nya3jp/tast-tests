@@ -30,6 +30,7 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Peripherals app can be found and launched with an accelerator",
 		Contacts: []string{
+			"jimmyxgong@google.com",
 			"ashleydp@google.com",
 			"zentaro@google.com",
 			"cros-peripherals@google.com",
