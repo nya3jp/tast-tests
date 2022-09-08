@@ -16,6 +16,24 @@
       "message": "is there a reason why we are keeping two identical tests? one in `ui` and one in `cuj`",
       "revId": "9971d4d856656129da706b2b82e613850a49be2f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3c20164_7c931740",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2022-09-08T06:17:41Z",
+      "side": 1,
+      "message": "We are now in the transition period of moving performance CUJ from `ui` to `spera`. Please refer to b/242590511 for details. Once we confirm that the migration process works without any issues on Moblab, we will remove the same tests in `ui`.",
+      "parentUuid": "1d89f72a_3d31317c",
+      "revId": "9971d4d856656129da706b2b82e613850a49be2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
