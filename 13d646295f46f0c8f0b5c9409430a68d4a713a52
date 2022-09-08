@@ -68,6 +68,24 @@
       "message": "I think we may target the wrong set of the telemetryextension tests. I think the ones that we need to disable are\n\ntast.telemetryextension.APIOEMData.target_models\t\ntast.telemetryextension.APIOEMData.target_models_lacros\t\ntast.telemetryextension.APIOEMData.target_models_managed\ntast.telemetryextension.APIOEMData.target_models_managed_lacros\ntast.telemetryextension.SerialNumberPermission.target_models_lacros\t\n\nI think we can leave MessagePipe alone.",
       "revId": "13d646295f46f0c8f0b5c9409430a68d4a713a52",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9dd16e0d_eeb6f79e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-09-08T13:35:54Z",
+      "side": 1,
+      "message": "Hi Seewai,\n\nOur team is working on a new strategy for our tests and one of our goals is to minimize the amount of failure in the tast board: go/telemetry-extension-testing-strategy.\n\nGiven that, I think it makes sense to abandon this CL since there will be a lot of refactoring soon.",
+      "parentUuid": "7f0570c1_1be2edae",
+      "revId": "13d646295f46f0c8f0b5c9409430a68d4a713a52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
