@@ -22,6 +22,30 @@
       },
       "revId": "e54e9e456689a5bdff0e433658e3ec7ba28c8dec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a43cc1f_250df723",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/typecd.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2022-09-08T19:08:49Z",
+      "side": 1,
+      "message": "Yeah, in fact we don\u0027t need chromeos-power at all (we added those earlier when we were all part of Todd\u0027s team).",
+      "parentUuid": "90512f60_e71cd05e",
+      "range": {
+        "startLine": 20,
+        "startChar": 50,
+        "endLine": 20,
+        "endChar": 75
+      },
+      "revId": "e54e9e456689a5bdff0e433658e3ec7ba28c8dec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
