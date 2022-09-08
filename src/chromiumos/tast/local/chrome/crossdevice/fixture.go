@@ -23,7 +23,6 @@ import (
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/crossdevice/crossdevicesettings"
 	"chromiumos/tast/local/chrome/crossdevice/phonehub"
-	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
@@ -135,8 +134,7 @@ func init() {
 		},
 		Parent: "crossdeviceAndroidSetupPhoneHub",
 		Impl: NewCrossDeviceOnboarded(true, true, true, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
-			// TODO(b/222367920): Move to LacrosOnly when available.
-			return lacrosfixt.NewConfig(lacrosfixt.Mode(lacros.LacrosPrimary)).Opts()
+			return lacrosfixt.NewConfig().Opts()
 		}),
 		Vars: []string{
 			customCrOSUsername,
