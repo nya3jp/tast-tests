@@ -8,6 +8,7 @@ import (
 	"context"
 	"time"
 
+	uda "chromiumos/system_api/user_data_auth_proto"
 	"chromiumos/tast/common/hwsec"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/cryptohome"
@@ -60,7 +61,7 @@ func KioskWithAuthFactorAPI(ctx context.Context, s *testing.State) {
 
 	// Authenticate a new auth session, create the user, mount the vault
 	// and add kiosk credential.
-	authSessionID, err := client.StartAuthSession(ctx, cryptohome.KioskUser /*ephemeral=*/, false)
+	authSessionID, err := client.StartAuthSession(ctx, cryptohome.KioskUser /*ephemeral=*/, false, uda.AuthIntent_AUTH_INTENT_DECRYPT)
 	if err != nil {
 		s.Fatal("Failed to start auth session for re-mounting: ", err)
 	}
@@ -95,7 +96,7 @@ func KioskWithAuthFactorAPI(ctx context.Context, s *testing.State) {
 
 	// Authenticate a new auth session, create the user, mount the vault
 	// and add kiosk credential.
-	authSessionID, err = client.StartAuthSession(ctx, cryptohome.KioskUser, false /*ephemeral*/)
+	authSessionID, err = client.StartAuthSession(ctx, cryptohome.KioskUser, false /*ephemeral*/, uda.AuthIntent_AUTH_INTENT_DECRYPT)
 	if err != nil {
 		s.Fatal("Failed to start auth session for re-mounting: ", err)
 	}
@@ -125,7 +126,7 @@ func KioskWithAuthFactorAPI(ctx context.Context, s *testing.State) {
 	defer cleanupUSSExperiment()
 
 	// Ensure that Kiosk login works when USS flag is enabled.
-	authSessionID, err = client.StartAuthSession(ctx, cryptohome.KioskUser, false /*ephemeral*/)
+	authSessionID, err = client.StartAuthSession(ctx, cryptohome.KioskUser, false /*ephemeral*/, uda.AuthIntent_AUTH_INTENT_DECRYPT)
 	if err != nil {
 		s.Fatal("Failed to start auth session for re-mounting: ", err)
 	}
