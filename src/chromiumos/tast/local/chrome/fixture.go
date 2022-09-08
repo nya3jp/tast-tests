@@ -217,6 +217,34 @@ func init() {
 		ResetTimeout:    ResetTimeout,
 		TearDownTimeout: ResetTimeout,
 	})
+
+	// TODO(bohdanty): Remove this fixture before landing if crrev.com/c/3882320 lands earlier.
+	testing.AddFixture(&testing.Fixture{
+		Name:     "chromeLoggedInWithOobe",
+		Desc:     "Log in and proceed with the post-login OOBE flow",
+		Contacts: []string{"bohdanty@google.com", "cros-oobe@google.com"},
+		Impl: NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]Option, error) {
+			return []Option{DontSkipOOBEAfterLogin()}, nil
+		}),
+		SetUpTimeout:    LoginTimeout,
+		ResetTimeout:    ResetTimeout,
+		TearDownTimeout: ResetTimeout,
+	})
+
+	testing.AddFixture(&testing.Fixture{
+		Name:     "chromeLoggedInWithOobeAndAccessibilityButtonEnabled",
+		Desc:     "Log in and proceed with the post-login OOBE flow with the accessibility button enabled on the marketing opt-in screen",
+		Contacts: []string{"bohdanty@google.com", "cros-oobe@google.com"},
+		Impl: NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]Option, error) {
+			return []Option{
+				DontSkipOOBEAfterLogin(),
+				ExtraArgs("--oobe-show-accessibility-button-on-marketing-opt-in-for-testing"),
+			}, nil
+		}),
+		SetUpTimeout:    LoginTimeout,
+		ResetTimeout:    ResetTimeout,
+		TearDownTimeout: ResetTimeout,
+	})
 }
 
 // OptionsCallback is the function used to set up the fixture by returning Chrome options.
