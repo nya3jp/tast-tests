@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b484c6ff_502ed99f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-09-08T16:41:09Z",
+      "side": 1,
+      "message": "+2 % nits",
+      "revId": "8a258b781b1df4319595667764085266b9ead0d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d08f951_6e794974",
+        "filename": "src/chromiumos/tast/remote/cellular/callbox/manager/fixture.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-09-08T16:41:09Z",
+      "side": 1,
+      "message": "nit: parse IP address (?)",
+      "range": {
+        "startLine": 193,
+        "startChar": 37,
+        "endLine": 193,
+        "endChar": 60
+      },
+      "revId": "8a258b781b1df4319595667764085266b9ead0d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6801065_fcb601e5",
+        "filename": "src/chromiumos/tast/remote/cellular/callbox/manager/fixture.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-09-08T16:41:09Z",
+      "side": 1,
+      "message": "nit: unable to parse hostname",
+      "range": {
+        "startLine": 198,
+        "startChar": 28,
+        "endLine": 198,
+        "endChar": 51
+      },
+      "revId": "8a258b781b1df4319595667764085266b9ead0d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87f224e9_163728ad",
+        "filename": "src/chromiumos/tast/remote/cellular/callbox/manager/fixture.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-09-08T16:41:09Z",
+      "side": 1,
+      "message": "nit: dutHost",
+      "range": {
+        "startLine": 198,
+        "startChar": 93,
+        "endLine": 198,
+        "endChar": 107
+      },
+      "revId": "8a258b781b1df4319595667764085266b9ead0d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
