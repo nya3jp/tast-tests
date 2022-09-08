@@ -322,6 +322,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "802e72c5_ac463d15",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_animation_jank.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1546145
+      },
+      "writtenOn": "2022-09-08T08:35:08Z",
+      "side": 1,
+      "message": "No there\u0027s no need, see the link I posted, we can just wait for it to exit usig that method",
+      "parentUuid": "bb4d97b5_031983f6",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 2
+      },
+      "revId": "ffbdaeb0c15e84f4d5655bdf1bac32adad546f7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "58fdfd62_fd8bf2cd",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_animation_jank.go",
         "patchSetId": 13
