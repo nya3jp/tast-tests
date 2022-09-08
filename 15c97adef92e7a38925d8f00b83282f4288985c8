@@ -1,0 +1,158 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "33bcc576_05dd1552",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-09-08T12:14:02Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "15c97adef92e7a38925d8f00b83282f4288985c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "94f56232_580a6bee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_document_scanning.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-09-08T12:14:02Z",
+      "side": 1,
+      "message": "Have you considered to split the test suite to multiple files? It grows bigger and not good for readability.",
+      "range": {
+        "startLine": 32,
+        "startChar": 2,
+        "endLine": 32,
+        "endChar": 8
+      },
+      "revId": "15c97adef92e7a38925d8f00b83282f4288985c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9839458_9b1433e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_document_scanning.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-09-08T12:14:02Z",
+      "side": 1,
+      "message": "An option for consideration:\n\nMaking some app functions as uiauto.Action can save half code.\n\nif err :\u003d uiauto.Combine(\"...\",\n    enterDocumentMode(app),\n    app.ClickShutter,\n    app.WaitForVisibleState(cca.DocumentReview, true),\n    app.Click(cca.DocumentAddPageButton),\n    app.WaitForState(\"camera-configuring\", false),\n    app.ClickShutter,\n    app.WaitForVisibleState(cca.DocumentReview, true),\n)(ctx); err !\u003d nil{\n    ...\n}",
+      "range": {
+        "startLine": 329,
+        "startChar": 5,
+        "endLine": 329,
+        "endChar": 28
+      },
+      "revId": "15c97adef92e7a38925d8f00b83282f4288985c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81ce51b5_3b0442e3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_document_scanning.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 598,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-09-08T12:14:02Z",
+      "side": 1,
+      "message": "nit: comment should finish with full stop.",
+      "range": {
+        "startLine": 598,
+        "startChar": 0,
+        "endLine": 598,
+        "endChar": 85
+      },
+      "revId": "15c97adef92e7a38925d8f00b83282f4288985c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3836cb32_9d71a1a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_document_scanning.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 603,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-09-08T12:14:02Z",
+      "side": 1,
+      "message": "nit: remove empty line.",
+      "revId": "15c97adef92e7a38925d8f00b83282f4288985c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57369939_cb0c567e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_document_scanning.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 609,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-09-08T12:14:02Z",
+      "side": 1,
+      "message": "nit: remove empty line.",
+      "revId": "15c97adef92e7a38925d8f00b83282f4288985c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d69d9c3_5e5728b8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_document_scanning.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 615,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-09-08T12:14:02Z",
+      "side": 1,
+      "message": "nit: remove empty line.",
+      "revId": "15c97adef92e7a38925d8f00b83282f4288985c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e5b71c2_2d7b5690",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_document_scanning.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 655,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-09-08T12:14:02Z",
+      "side": 1,
+      "message": "nit: remove empty line.",
+      "revId": "15c97adef92e7a38925d8f00b83282f4288985c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
