@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "41cc0e48_4aa71a2f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-09-08T22:35:22Z",
+      "side": 1,
+      "message": "Sorry should\u0027ve made this callout, let\u0027s use the externally available URL instead of the internal go link.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 34
+      },
+      "revId": "f29215afd08efcc4698bb5eb61de20021a816d48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "d1da7a1a_390d9b53",
