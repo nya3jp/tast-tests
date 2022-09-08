@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca8ffaad_81849a24",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-09-08T18:54:10Z",
+      "side": 1,
+      "message": "A previous CL https://crrev.com/c/3828295 also has the same title. What\u0027s the main purpose of this CL? Please update.",
+      "revId": "d1f01ed1a7047d97e9e7a2d2823a2740d0444a84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7201131b_0c82cfc1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-09-08T18:54:10Z",
+      "side": 1,
+      "message": "test",
+      "range": {
+        "startLine": 9,
+        "startChar": 5,
+        "endLine": 9,
+        "endChar": 9
+      },
+      "revId": "d1f01ed1a7047d97e9e7a2d2823a2740d0444a84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4fe6cf7_0e631969",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-09-08T18:54:10Z",
+      "side": 1,
+      "message": "The test waits until the shutter button is focused.",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 7
+      },
+      "revId": "d1f01ed1a7047d97e9e7a2d2823a2740d0444a84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8cd32973_bfeb6500",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-09-08T18:54:10Z",
+      "side": 1,
+      "message": "Chromevox has",
+      "range": {
+        "startLine": 11,
+        "startChar": 16,
+        "endLine": 11,
+        "endChar": 24
+      },
+      "revId": "d1f01ed1a7047d97e9e7a2d2823a2740d0444a84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7c80a6b_87a76132",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-09-08T18:54:10Z",
+      "side": 1,
+      "message": "test",
+      "range": {
+        "startLine": 12,
+        "startChar": 31,
+        "endLine": 12,
+        "endChar": 35
+      },
+      "revId": "d1f01ed1a7047d97e9e7a2d2823a2740d0444a84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13bab250_8430c91b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-09-08T18:54:10Z",
+      "side": 1,
+      "message": "What does \"consume\" mean? In which line of code?",
+      "range": {
+        "startLine": 12,
+        "startChar": 36,
+        "endLine": 12,
+        "endChar": 44
+      },
+      "revId": "d1f01ed1a7047d97e9e7a2d2823a2740d0444a84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d232d64_b59866ce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_a11y.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-09-08T18:54:10Z",
+      "side": 1,
+      "message": "connect",
+      "range": {
+        "startLine": 92,
+        "startChar": 21,
+        "endLine": 92,
+        "endChar": 29
+      },
+      "revId": "d1f01ed1a7047d97e9e7a2d2823a2740d0444a84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
