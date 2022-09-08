@@ -46,6 +46,30 @@
       },
       "revId": "15c2a74fe312ca9b056bb2aa76c3716ace89c54a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "125b125d_0417f546",
+        "filename": "src/chromiumos/tast/local/bundles/cros/diagnostics/routine_section.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1542652
+      },
+      "writtenOn": "2022-09-08T17:00:26Z",
+      "side": 1,
+      "message": "Agree! I think it would be better to handle both CPU test success and failure scenarios. Made the code change to move the defer call to the beginning of the CPU test.",
+      "parentUuid": "21fc06ef_7e832b1f",
+      "range": {
+        "startLine": 116,
+        "startChar": 4,
+        "endLine": 116,
+        "endChar": 61
+      },
+      "revId": "15c2a74fe312ca9b056bb2aa76c3716ace89c54a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
