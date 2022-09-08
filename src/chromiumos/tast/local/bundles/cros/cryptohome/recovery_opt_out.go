@@ -31,6 +31,7 @@ func init() {
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"pinweaver"},
+		Fixture:      "ussAuthSessionFixture",
 	})
 }
 
@@ -56,27 +57,6 @@ func RecoveryOptOut(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create hwsec local helper: ", err)
 	}
 	daemonController := helper.DaemonController()
-
-	// Wait for cryptohomed becomes available if needed.
-	if err := daemonController.Ensure(ctx, hwsec.CryptohomeDaemon); err != nil {
-		s.Fatal("Failed to ensure cryptohomed: ", err)
-	}
-
-	// Clean up obsolete state, in case there's any.
-	if err := client.UnmountAll(ctx); err != nil {
-		s.Fatal("Failed to unmount vaults for preparation: ", err)
-	}
-	if err := cryptohome.RemoveVault(ctx, userName); err != nil {
-		s.Fatal("Failed to remove old vault for preparation: ", err)
-	}
-
-	// Enable the UserSecretStash experiment for the duration of the test by
-	// creating a flag file that's checked by cryptohomed.
-	cleanupUSSExperiment, err := helper.EnableUserSecretStash(ctx)
-	if err != nil {
-		s.Fatal("Failed to enable the UserSecretStash experiment: ", err)
-	}
-	defer cleanupUSSExperiment(ctx)
 
 	// Create and mount the persistent user.
 	authSessionID, err := client.StartAuthSession(ctx, userName /*ephemeral*/, false)
