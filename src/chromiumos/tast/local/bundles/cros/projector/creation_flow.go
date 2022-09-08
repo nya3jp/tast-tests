@@ -10,15 +10,11 @@ import (
 	"time"
 
 	"chromiumos/tast/ctxutil"
-	"chromiumos/tast/local/apps"
-	"chromiumos/tast/local/audio"
 	"chromiumos/tast/local/chrome/projector"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
-	"chromiumos/tast/local/chrome/uiauto/launcher"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
-	"chromiumos/tast/local/input/voice"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -46,31 +42,17 @@ func CreationFlow(ctx context.Context, s *testing.State) {
 
 	defer faillog.DumpUITreeOnError(ctxForCleanUp, s.OutDir(), s.HasError, tconn)
 
-	// Even though we filter for devices with a microphone using
-	// the hardware deps above, the microphone might still be
-	// unavailable. Turn on a fake microphone in this case.
-	if err := audio.WaitForDevice(ctx, audio.InputStream); err != nil {
-		// Setup CRAS Aloop for audio test.
-		cleanup, aloopErr := voice.EnableAloop(ctx, tconn)
-		if aloopErr != nil {
-			s.Fatal("Failed to enable aloop: ", aloopErr)
-		}
-		defer cleanup(ctxForCleanUp)
-	}
-
 	ui := uiauto.New(tconn).WithTimeout(2 * time.Minute)
 
 	screencastItem := nodewith.ClassName("screencast-media").Role(role.GenericContainer).First()
 	tutorialsText := nodewith.Name("Getting started").Role(role.StaticText)
 	closeTutorialsButton := nodewith.Name("Close tutorials").Role(role.Button)
 
-	if err := launcher.LaunchAndWaitForAppOpen(tconn, apps.Projector)(ctx); err != nil {
-		s.Fatal("Failed to open Projector app: ", err)
+	cleanup, err := projector.SetUpProjectorApp(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to set up Projector app: ", err)
 	}
-
-	if err := projector.DismissOnboardingDialog(ctx, tconn); err != nil {
-		s.Fatal("Failed to close the onboarding dialog: ", err)
-	}
+	defer cleanup(ctxForCleanUp)
 
 	// We need to clean up any screencasts after the test to
 	// prevent taking up Drive quota over time.

@@ -11,12 +11,9 @@ import (
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/a11y"
-	"chromiumos/tast/local/apps"
-	"chromiumos/tast/local/audio"
 	"chromiumos/tast/local/chrome/projector"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
-	"chromiumos/tast/local/chrome/uiauto/launcher"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/testing"
@@ -48,22 +45,11 @@ func NewScreencastButtonCondition(ctx context.Context, s *testing.State) {
 
 	defer faillog.DumpUITreeOnError(ctxForCleanUp, s.OutDir(), s.HasError, tconn)
 
-	if err := launcher.LaunchAndWaitForAppOpen(tconn, apps.Projector)(ctx); err != nil {
-		s.Fatal("Failed to open Projector app: ", err)
+	cleanup, err := projector.SetUpProjectorApp(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to set up Projector app: ", err)
 	}
-
-	if err := projector.DismissOnboardingDialog(ctx, tconn); err != nil {
-		s.Fatal("Failed to close the onboarding dialog: ", err)
-	}
-
-	if err := audio.WaitForDevice(ctx, audio.InputStream); err != nil {
-		s.Log("Microphone is unavailable, verifying new screencast button is disabled")
-		if err = projector.VerifyNewScreencastButtonDisabled(ctx, tconn, "Turn on microphone"); err != nil {
-			s.Fatal("Microphone is unavailable, but new screencast button is enabled: ", err)
-		}
-		// Pass the test and exit prematurely.
-		return
-	}
+	defer cleanup(ctxForCleanUp)
 
 	s.Log("Microphone is enabled, verifying that the new screencast button is enabled")
 	ui := uiauto.New(tconn)
