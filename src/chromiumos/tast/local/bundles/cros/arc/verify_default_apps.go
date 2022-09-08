@@ -53,11 +53,12 @@ func VerifyDefaultApps(ctx context.Context, s *testing.State) {
 		apps.PlayStore,
 		apps.PlayBooks,
 		apps.PlayGames,
-		apps.PlayMovies,
+		apps.GoogleTV,
 		apps.Photos,
 		apps.Clock,
 		apps.Contacts,
 	}
+
 	for _, app := range apps {
 		if err := ash.WaitForChromeAppInstalled(ctx, tconn, app.ID, ctxutil.MaxTimeout); err != nil {
 			s.Errorf("Failed to wait for %s (%s) to be installed: %v", app.Name, app.ID, err)

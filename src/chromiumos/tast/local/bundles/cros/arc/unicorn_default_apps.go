@@ -66,7 +66,7 @@ func UnicornDefaultApps(ctx context.Context, s *testing.State) {
 	apps := []apps.App{
 		apps.PlayBooks,
 		apps.PlayGames,
-		apps.PlayMovies,
+		apps.GoogleTV,
 		apps.Photos,
 		apps.Clock,
 		apps.Contacts,

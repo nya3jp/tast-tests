@@ -199,10 +199,10 @@ var PlayGames = App{
 	Name: "Play Games",
 }
 
-// PlayMovies has details about the Play Movies & TV app.
-var PlayMovies = App{
-	ID:   "dbbihmicnlldbflflckpafphlekmjfnm",
-	Name: "Play Movies & TV",
+// GoogleTV has details about the Google TV app.
+var GoogleTV = App{
+	ID:   "kadljooblnjdohjelobhphgeimdbcpbo",
+	Name: "Google TV",
 }
 
 // PlayStore has details about the Play Store app.
