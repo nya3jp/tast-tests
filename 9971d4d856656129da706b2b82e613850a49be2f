@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d89f72a_3d31317c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-09-08T06:12:43Z",
+      "side": 1,
+      "message": "is there a reason why we are keeping two identical tests? one in `ui` and one in `cuj`",
+      "revId": "9971d4d856656129da706b2b82e613850a49be2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
