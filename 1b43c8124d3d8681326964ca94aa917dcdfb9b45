@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "60f999f7_2ec96e10",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2022-09-08T18:33:08Z",
+      "side": 1,
+      "message": "True, but there\u0027s a separate ongoing effort to disable all informational tests that always fail, as they\u0027re a waste of lab resources and engineer time (in terms of triaging newly-failing tests).",
+      "parentUuid": "b0c01e29_44330949",
+      "revId": "1b43c8124d3d8681326964ca94aa917dcdfb9b45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "931394c6_f59f654b",
@@ -73,6 +91,30 @@
       "side": 1,
       "message": "Tast will complain otherwise. A test cannot be informational if it doesn\u0027t belong to any groups.",
       "parentUuid": "931394c6_f59f654b",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 0
+      },
+      "revId": "1b43c8124d3d8681326964ca94aa917dcdfb9b45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1369978_6422390f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/selinux_violation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2022-09-08T18:33:08Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e75779eb_5e6f1a37",
       "range": {
         "startLine": 35,
         "startChar": 0,
