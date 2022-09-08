@@ -22,6 +22,69 @@
       },
       "revId": "740d20d79deb12bb01efb1f4fb4a4a6aca551f35",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7805dbc0_852fc55e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1427116
+      },
+      "writtenOn": "2022-09-08T17:13:15Z",
+      "side": 1,
+      "message": "still lgtm with comments.",
+      "revId": "740d20d79deb12bb01efb1f4fb4a4a6aca551f35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13de5a20_0d23ccfe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/app_window_on_shelf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1427116
+      },
+      "writtenOn": "2022-09-08T17:13:15Z",
+      "side": 1,
+      "message": "optional: The appWindow assigned here is not used below so I would consider using _ and maybe merge into one line, but I\u0027m fine to keep it for the consistency.",
+      "range": {
+        "startLine": 145,
+        "startChar": 1,
+        "endLine": 148,
+        "endChar": 2
+      },
+      "revId": "740d20d79deb12bb01efb1f4fb4a4a6aca551f35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5a18097_488aaae5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/app_window_on_shelf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1427116
+      },
+      "writtenOn": "2022-09-08T17:13:15Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 155,
+        "startChar": 1,
+        "endLine": 155,
+        "endChar": 10
+      },
+      "revId": "740d20d79deb12bb01efb1f4fb4a4a6aca551f35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
