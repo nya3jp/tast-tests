@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "78b1ec89_8fc2d37d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1403852
+      },
+      "writtenOn": "2022-09-08T02:16:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c935c33d_9b2c97eb",
+      "revId": "fdcba4cca6c69f4e3da2367594940d1bcf326d5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "65fad090_02851099",
@@ -83,6 +101,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b325576_aca29125",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/creation_flow.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1403852
+      },
+      "writtenOn": "2022-09-08T02:16:49Z",
+      "side": 1,
+      "message": "Ack. Drivefs client will wait for 40s at most to stabilize. I think it should be sufficient.",
+      "parentUuid": "2ae88cc6_91727956",
+      "range": {
+        "startLine": 53,
+        "startChar": 2,
+        "endLine": 53,
+        "endChar": 55
+      },
+      "revId": "fdcba4cca6c69f4e3da2367594940d1bcf326d5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bbfc5837_1000ae32",
@@ -96,6 +138,30 @@
       "writtenOn": "2022-08-29T18:32:57Z",
       "side": 1,
       "message": "Nit: screencastInfo",
+      "range": {
+        "startLine": 130,
+        "startChar": 1,
+        "endLine": 130,
+        "endChar": 5
+      },
+      "revId": "fdcba4cca6c69f4e3da2367594940d1bcf326d5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c026f389_84cbdcf3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/creation_flow.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1403852
+      },
+      "writtenOn": "2022-09-08T02:16:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bbfc5837_1000ae32",
       "range": {
         "startLine": 130,
         "startChar": 1,
@@ -129,6 +195,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9637102b_90354e35",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/creation_flow.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1403852
+      },
+      "writtenOn": "2022-09-08T02:16:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "51dc3d1d_6d6b2919",
+      "range": {
+        "startLine": 132,
+        "startChar": 34,
+        "endLine": 132,
+        "endChar": 40
+      },
+      "revId": "fdcba4cca6c69f4e3da2367594940d1bcf326d5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3668b879_912d9998",
@@ -142,6 +232,24 @@
       "writtenOn": "2022-08-29T18:32:57Z",
       "side": 1,
       "message": "This check only verifies the container folder. What about the webm video file, metadata file, and thumbnail?",
+      "revId": "fdcba4cca6c69f4e3da2367594940d1bcf326d5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "01c7fcb5_288f9fbd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/creation_flow.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1403852
+      },
+      "writtenOn": "2022-09-08T02:16:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3668b879_912d9998",
       "revId": "fdcba4cca6c69f4e3da2367594940d1bcf326d5f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
