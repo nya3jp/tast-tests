@@ -61,3 +61,19 @@ func (*OwnershipService) EnsureTPMAndSystemStateAreReset(ctx context.Context, re
 
 	return &empty.Empty{}, nil
 }
+
+func (*OwnershipService) PreprovisionDeviceForZTE(ctx context.Context, req *empty.Empty) (*empty.Empty, error) {
+	testing.ContextLog(ctx, "Preprovisioning the device")
+
+	cmdRunner := hwseclocal.NewCmdRunner()
+	helper, err := hwseclocal.NewHelper(cmdRunner)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create local helper")
+	}
+
+	if err := helper.PreprovisionDeviceForZTE(ctx); err != nil {
+		return nil, errors.Wrap(err, "failed to preprovision device")
+	}
+
+	return &empty.Empty{}, nil
+}

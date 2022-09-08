@@ -8,16 +8,17 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/common/tape"
 	"chromiumos/tast/ctxutil"
-	"chromiumos/tast/remote/policyutil"
+	"chromiumos/tast/remote/gaiaenrollment"
+
+	//hwsecremote "chromiumos/tast/remote/hwsec"
 	"chromiumos/tast/rpc"
 	ps "chromiumos/tast/services/cros/policy"
 	"chromiumos/tast/testing"
 )
 
-type testZTEInfo struct {
-	dmserver string // device management server url
-}
+const gaiaZTEEnrollmentTimeout = 7 * time.Minute
 
 func init() {
 	testing.AddTest(&testing.Test{
@@ -30,36 +31,44 @@ func init() {
 		},
 		Attr:         []string{}, // Not running in current state.
 		SoftwareDeps: []string{"reboot", "chrome"},
-		ServiceDeps:  []string{"tast.cros.policy.PolicyService"},
+		ServiceDeps:  []string{"tast.cros.policy.PolicyService", "tast.cros.tape.Service", "tast.cros.hwsec.OwnershipService"},
 		Timeout:      7 * time.Minute,
 		Params: []testing.Param{
 			{
 				Name: "autopush",
-				Val: testZTEInfo{
-					dmserver: "https://crosman-alpha.sandbox.google.com/devicemanagement/data/api",
+				Val: gaiaenrollment.TestParams{
+					DMServer: "https://crosman-alpha.sandbox.google.com/devicemanagement/data/api",
+					PoolID:   tape.ZTETestAutomation,
 				},
 			},
 		},
-		Vars: []string{"ui.signinProfileTestExtensionManifestKey"},
+		Vars: []string{
+			"ui.signinProfileTestExtensionManifestKey",
+			tape.ServiceAccountVar,
+		},
 	})
 }
 
 func GAIAZTEEnrollment(ctx context.Context, s *testing.State) {
-	param := s.Param().(testZTEInfo)
-	dmServerURL := param.dmserver
+	param := s.Param().(gaiaenrollment.TestParams)
+	dmServerURL := param.DMServer
+	poolID := param.PoolID
 
-	defer func(ctx context.Context) {
-		if err := policyutil.EnsureTPMAndSystemStateAreResetRemote(ctx, s.DUT()); err != nil {
-			s.Error("Failed to reset TPM after test: ", err)
-		}
-	}(ctx)
-
+	/*
+		defer func(ctx context.Context) {
+			if err := policyutil.EnsureTPMAndSystemStateAreResetRemote(ctx, s.DUT()); err != nil {
+				s.Error("Failed to reset TPM after test: ", err)
+			}
+		}(ctx)
+	*/
 	ctx, cancel := ctxutil.Shorten(ctx, 3*time.Minute)
 	defer cancel()
 
-	if err := policyutil.EnsureTPMAndSystemStateAreResetRemote(ctx, s.DUT()); err != nil {
-		s.Fatal("Failed to reset TPM: ", err)
-	}
+	/*
+		if err := policyutil.EnsureTPMAndSystemStateAreResetRemote(ctx, s.DUT()); err != nil {
+			s.Fatal("Failed to reset TPM: ", err)
+		}
+	*/
 
 	cl, err := rpc.Dial(ctx, s.DUT(), s.RPCHint())
 	if err != nil {
@@ -69,10 +78,32 @@ func GAIAZTEEnrollment(ctx context.Context, s *testing.State) {
 
 	pc := ps.NewPolicyServiceClient(cl.Conn)
 
+	tapeClient, err := tape.NewClient(ctx, []byte(s.RequiredVar(tape.ServiceAccountVar)))
+	if err != nil {
+		s.Fatal("Failed to create tape client: ", err)
+	}
+	timeout := int32(gaiaZTEEnrollmentTimeout.Seconds())
+	// Create an account manager and lease a test account for the duration of the test.
+	accManager, acc, err := tape.NewOwnedTestAccountManagerFromClient(ctx, tapeClient, false /*lock*/, tape.WithTimeout(timeout), tape.WithPoolID(poolID))
+	if err != nil {
+		s.Fatal("Failed to create an account manager and lease an account: ", err)
+	}
+	defer accManager.CleanUp(ctx)
+
 	if _, err := pc.GAIAZTEEnrollUsingChrome(ctx, &ps.GAIAZTEEnrollUsingChromeRequest{
 		DmserverURL: dmServerURL,
 		ManifestKey: s.RequiredVar("ui.signinProfileTestExtensionManifestKey"),
 	}); err != nil {
 		s.Fatal("Failed to ZTE enroll using chrome: ", err)
 	}
+	testing.Sleep(ctx, 60*time.Second)
+	// Deprovision the DUT at the end of the test.
+	defer func(ctx context.Context) {
+		if err := tapeClient.DeprovisionHelper(ctx, cl, acc.CustomerID); err != nil {
+			s.Fatal("Failed to deprovision device: ", err)
+		}
+	}(ctx)
+	testing.Sleep(ctx, 5*time.Second)
+
+	testing.Sleep(ctx, 5*time.Second)
 }

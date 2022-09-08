@@ -448,3 +448,25 @@ func (h *CmdTPMClearHelper) EnableUserSecretStash(ctx context.Context) (func() e
 		return nil
 	}), nil
 }
+
+// PreprovisionDeviceForZTE calls to preprovision device before performing zero touch enrollment.
+func (h *CmdTPMClearHelper) PreprovisionDeviceForZTE(ctx context.Context) error {
+	if err := h.daemonController.WaitForAllDBusServices(ctx); err != nil {
+		return errors.Wrap(err, "failed to wait for hwsec D-Bus services to be ready")
+	}
+	//return h.ensureTPMIsReset(ctx, true)
+	//vpd -d check_enrollment -i RW_VPD
+	/*
+		if _, err := h.cmdRunner.Run(ctx, "vpd", "-d", "check_enrollment", "-i", "RW_VPD"); err != nil {
+			testing.ContextLog(ctx, "Failed to remove check_enrollment in vpd: ", err)
+		}
+	*/
+	if _, err := h.cmdRunner.Run(ctx, "curl", "-H", "Content-Type: application/json", "-d", d_command, x_c); err != nil {
+		testing.ContextLog(ctx, "Ran the preprovision command: ", err)
+	}
+
+	//if _, err := h.cmdRunner.Run(ctx, "./reset-device", "--factory"); err != nil {
+	//	testing.ContextLog(ctx, "Moved over to /: ", err)
+	//}
+	return nil
+}
