@@ -155,14 +155,22 @@ func suspendAndWakeWithLid(ctx context.Context, h *firmware.Helper, delay time.D
 	return nil
 }
 
-func shutdownWithLidClose(ctx context.Context, h *firmware.Helper, delay time.Duration) error {
+func shutdownWithLidClose(ctx context.Context, h *firmware.Helper, delay time.Duration) (reterr error) {
+	// Log variables from powerd files to monitor unexpected settings.
+	logCmd := `d="/var/lib/power_manager/"; for f in $(ls -A $d); do echo "$f: $(cat $d/$f)"; done`
+	out, err := h.DUT.Conn().CommandContext(ctx, "sh", "-c", logCmd).Output(ssh.DumpLogOnError)
+	if err != nil {
+		return errors.Wrap(err, "failed to read files in /var/lib/power_manager")
+	}
+	testing.ContextLog(ctx, "Files in /var/lib/power_manager: ", string(out))
+
 	if err := h.Servo.CloseLid(ctx); err != nil {
 		return err
 	}
 
 	// This usually takes longer than usual to reach G3/S5, so increase timeout.
 	testing.ContextLog(ctx, "Check for G3 or S5 powerstate")
-	err := h.WaitForPowerStates(ctx, firmware.PowerStateInterval, 2*firmware.PowerStateTimeout, "G3", "S5")
+	err = h.WaitForPowerStates(ctx, firmware.PowerStateInterval, 5*firmware.PowerStateTimeout, "G3", "S5")
 	if err != nil {
 		return errors.Wrap(err, "failed to get G3 or S5 powerstate")
 	}
@@ -179,6 +187,10 @@ func shutdownWithLidClose(ctx context.Context, h *firmware.Helper, delay time.Du
 	err = h.WaitForPowerStates(ctx, firmware.PowerStateInterval, firmware.PowerStateTimeout, "S0")
 	if err != nil {
 		return errors.Wrap(err, "failed to get S0 powerstate")
+	}
+
+	if err := h.WaitConnect(ctx); err != nil {
+		return errors.Wrap(err, "failed to connect to DUT")
 	}
 	return nil
 }
