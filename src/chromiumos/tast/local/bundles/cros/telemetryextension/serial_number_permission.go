@@ -33,24 +33,24 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{
 			{
-				Name:              "target_models",
+				Name:              "stable",
 				Fixture:           "telemetryExtensionOptionsPage",
-				ExtraHardwareDeps: dep.TargetModels(),
+				ExtraHardwareDeps: dep.StableModels(),
 			},
 			{
-				Name:              "non_target_models",
+				Name:              "non_stable",
 				Fixture:           "telemetryExtensionOptionsPage",
-				ExtraHardwareDeps: dep.NonTargetModels(),
+				ExtraHardwareDeps: dep.NonStableModels(),
 			},
 			{
-				Name:              "target_models_lacros",
+				Name:              "stable_lacros",
 				Fixture:           "telemetryExtensionOptionsPageLacros",
-				ExtraHardwareDeps: dep.TargetModels(),
+				ExtraHardwareDeps: dep.StableModels(),
 			},
 			{
-				Name:              "non_target_models_lacros",
+				Name:              "non_stable_lacros",
 				Fixture:           "telemetryExtensionOptionsPageLacros",
-				ExtraHardwareDeps: dep.NonTargetModels(),
+				ExtraHardwareDeps: dep.NonStableModels(),
 			},
 		},
 	})
