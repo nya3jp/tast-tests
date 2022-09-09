@@ -16,6 +16,24 @@
       "message": "is it okay in all of these cases to return an empty `FirmwareFile` and still proceed with the tests?",
       "revId": "bbe040ac67dc14d1775152531b7bd0f05819eed6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8c0e091_e197369c",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2022-09-09T22:05:26Z",
+      "side": 1,
+      "message": "I\u0027m still working on this. I\u0027m looking for a way to error out of the test here because it would be easier to read than returning and checking an error. Any idea which function does this?",
+      "parentUuid": "358291c4_df65402c",
+      "revId": "bbe040ac67dc14d1775152531b7bd0f05819eed6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
