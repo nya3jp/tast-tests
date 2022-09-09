@@ -77,6 +77,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "453d5b71_c0752efa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/add_remove_factors_ephemeral.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1546868
+      },
+      "writtenOn": "2022-09-09T16:51:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "146f68ec_5aefcee3",
+      "revId": "f4954104fc9725509b3032253e904359ba776d50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7e0db7ad_ed7990a8",
@@ -197,6 +215,24 @@
       "side": 1,
       "message": "Golang doesn\u0027t allow to make very generic helpers IIUC, but we could have a helper speicifcally for `AuthFactorType`s, similarly to the `ExpectAuthIntents()` function in the file I quoted above. Just as a ready-to-use tool that can tell you whether two sets of types are equal, and if not format the difference appropriately.",
       "parentUuid": "db379e08_14117970",
+      "revId": "f4954104fc9725509b3032253e904359ba776d50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c521abbe_f2541b99",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/add_remove_factors_ephemeral.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1546868
+      },
+      "writtenOn": "2022-09-09T16:51:49Z",
+      "side": 1,
+      "message": "Yeah, it\u0027s just that without that I\u0027m not sure a helper for this simplifies things much? If you have to supply the less function, you\u0027d probably still end up with something that looks like:\n\n```\ntypeLess :\u003d func(a, b uda.AuthFactorType) bool { return a \u003c b }\nif err :\u003d helpers.SetDiff(reply.SupportedAuthFactors, expectedSupported, typeLess); err !\u003d nil {\n    s.Error(\"Mismatch in supported auth factors before adding any factors: \", err)\n}\n```\n\nAnd then I\u0027m not sure that\u0027s any cleaner than the default here.\n\nWhat I could do is refactor the original, more complex (but more powerful) `compareReplyToExpectations` function from the original test, and then reuse that in both. However, the function would still be specific to ListAuthFactorsReply, as I can\u0027t easily genericize it.",
+      "parentUuid": "bab68623_4e839ecc",
       "revId": "f4954104fc9725509b3032253e904359ba776d50",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
