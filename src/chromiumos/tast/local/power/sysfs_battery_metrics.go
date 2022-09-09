@@ -99,6 +99,34 @@ func ReadBatteryChargeNow(devPath string) (float64, error) {
 	return float64(charge) / 1000000, nil
 }
 
+// WaitForCharge waits until the battery is charged.
+//
+// devPath - the battery to wait for.
+// charge  - [0-1] how full the battery needs to be.
+// timeout - The maximum time to wait.
+func WaitForCharge(ctx context.Context, devPath string, charge float64, timeout time.Duration) error {
+	ctx, cancel := context.WithTimeout(ctx, timeout)
+	defer cancel()
+
+	full, err := ReadBatteryProperty(devPath, "charge_full")
+	if err != nil {
+		return errors.Wrap(err, "failed to read battery charge full")
+	}
+	for {
+		now, err := ReadBatteryProperty(devPath, "charge_now")
+		if err != nil {
+			return err
+		}
+		if now/full >= charge {
+			return nil
+		}
+		testing.ContextLogf(ctx, "battery at %f%% < %f%%", 100.0*now/full, 100.0*charge)
+		if err := testing.Sleep(ctx, 30*time.Second); err != nil {
+			return errors.Wrap(err, "failed to wait for battery to charge")
+		}
+	}
+}
+
 // ReadBatteryEnergy returns the remaining energy of a battery in Wh.
 func ReadBatteryEnergy(devPath string) (float64, error) {
 	charge, err := ReadBatteryChargeNow(devPath)
