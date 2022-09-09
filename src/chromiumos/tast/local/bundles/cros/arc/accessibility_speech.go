@@ -181,11 +181,36 @@ func AccessibilitySpeech(ctx context.Context, s *testing.State) {
 		},
 	}
 
-	testActivities := []arca11y.TestActivity{arca11y.MainActivity, arca11y.LiveRegionActivity}
+	ActionActivityTestSteps := []axSpeechTestStep{
+		{
+			"Search+Right",
+			[]a11y.SpeechExpectation{a11y.NewStringExpectation("Action Activity")},
+		}, {
+			"Search+Right",
+			[]a11y.SpeechExpectation{
+				a11y.NewRegexExpectation("(?i)LONG CLICK"),
+				a11y.NewStringExpectation("Button"),
+				a11y.NewStringExpectation("Press Search plus Shift plus Space to long click"),
+			},
+		}, {
+			"Search+Shift+Space",
+			[]a11y.SpeechExpectation{a11y.NewStringExpectation("long clicked")},
+		}, {
+			"Search+Right",
+			[]a11y.SpeechExpectation{
+				a11y.NewRegexExpectation("(?i)LABEL"), a11y.NewStringExpectation("Button"),
+				a11y.NewStringExpectation("Press Search plus Space to perform click"),
+				a11y.NewStringExpectation("Press Search plus Shift plus Space to perform long click"),
+			},
+		},
+	}
+
+	testActivities := []arca11y.TestActivity{arca11y.MainActivity, arca11y.LiveRegionActivity, arca11y.ActionActivity}
 
 	speechTestSteps := map[arca11y.TestActivity][]axSpeechTestStep{
 		arca11y.MainActivity:       MainActivityTestSteps,
 		arca11y.LiveRegionActivity: LiveRegionActivityTestSteps,
+		arca11y.ActionActivity:     ActionActivityTestSteps,
 	}
 
 	testFunc := func(ctx context.Context, cvconn *a11y.ChromeVoxConn, tconn *chrome.TestConn, currentActivity arca11y.TestActivity) error {
