@@ -16,6 +16,24 @@
       "message": "Will you add a line to briefly descibe why these tests are needed to be run as informational for now, something like:\n- these tests are currently being stabilized before promoting to CQ\n- or these tests needs to be kept monitored manually\n?\n\nThe intention of the original change crrev.com/c/3841646 was that all tests currently staying in mainline-informational that is not going to be promoted to CQ should be moved its own new test suite, but I think we want to be flexible so as to minimize the impact to release/dev workflow in other teams.",
       "revId": "71a958aa8b455fdbbddc3969afe4e568be6551e0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "98be34fd_d1d27328",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000169
+      },
+      "writtenOn": "2022-09-09T07:56:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2b1e3c9b_ba1143a7",
+      "revId": "71a958aa8b455fdbbddc3969afe4e568be6551e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
