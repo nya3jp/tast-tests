@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5192e645_0423accb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/image_paste.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-09-09T17:12:14Z",
+      "side": 1,
+      "message": "cleanupCtx?",
+      "range": {
+        "startLine": 92,
+        "startChar": 15,
+        "endLine": 92,
+        "endChar": 18
+      },
+      "revId": "8510c22142fa1c6ace5e2ca6e5e7dab188d67f8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "356ac992_0a0e7712",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/image_paste.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-09-09T17:12:14Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 98,
+        "startChar": 15,
+        "endLine": 98,
+        "endChar": 18
+      },
+      "revId": "8510c22142fa1c6ace5e2ca6e5e7dab188d67f8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62867d29_4fabcdd8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/image_paste.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-09-09T17:12:14Z",
+      "side": 1,
+      "message": "nit: remove space",
+      "range": {
+        "startLine": 126,
+        "startChar": 69,
+        "endLine": 126,
+        "endChar": 70
+      },
+      "revId": "8510c22142fa1c6ace5e2ca6e5e7dab188d67f8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
