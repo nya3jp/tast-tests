@@ -73,6 +73,57 @@
       "message": "LGTM % nits.",
       "revId": "4ae13a229e3ae48a9a4e104fb19e74d2f9c2601c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f253f44d_2e14f236",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1153089
+      },
+      "writtenOn": "2022-09-09T14:41:00Z",
+      "side": 1,
+      "message": "Thanks for the CL. I recalled we had these tests, but somehow failed to find them myself during the meeting. However, please do not land it before our feature definitions in Screenplay have been reviewed and approved by the team.",
+      "revId": "4ae13a229e3ae48a9a4e104fb19e74d2f9c2601c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ea61b10_4278f489",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/enterprise_rollback_previous_version.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1153089
+      },
+      "writtenOn": "2022-09-09T14:41:00Z",
+      "side": 1,
+      "message": "Please add description and parameters of the feature as a comment. E.g.\n\n```\n// Configure rollback on a device and ensure that it is correctly rolled back.\n// rollback_target: n-1\n```",
+      "revId": "4ae13a229e3ae48a9a4e104fb19e74d2f9c2601c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1fb7bde5_7d3f39f7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/enterprise_rollback_previous_version.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1153089
+      },
+      "writtenOn": "2022-09-09T14:41:00Z",
+      "side": 1,
+      "message": "Looks like this just rolls the device back 1/2/3 versions from whatever it had before the test. This is not ideal as we ought to be testing rollback from stable. Not only does it not match the screenplay description, but also by running this test continuously on the same device we\u0027ll end up rolling devices back to versions which do not support rollback. Or does some infra ensure that devices are always on latest stable before running tests?",
+      "revId": "4ae13a229e3ae48a9a4e104fb19e74d2f9c2601c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
