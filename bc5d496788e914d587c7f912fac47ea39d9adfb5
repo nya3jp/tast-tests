@@ -55,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7884038f_8024fcf5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/intel/webgl_multi_window.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-09-09T14:52:00Z",
+      "side": 1,
+      "message": "I asked Eduardo where we could find the specification of each of these levels and he said he was no longer working on this project. Can you point me to where that documentation is available?\n\nI\u0027m not sure I follow why this means we can\u0027t make it a table-driven test, though.",
+      "parentUuid": "23158a2c_c0339ad3",
+      "revId": "bc5d496788e914d587c7f912fac47ea39d9adfb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4f0b6f02_24b124ed",
         "filename": "src/chromiumos/tast/local/bundles/cros/intel/webgl_multi_window.go",
         "patchSetId": 1
@@ -124,6 +142,30 @@
       "side": 1,
       "message": "We\u0027re also checking for the `Hardware acceleration` option is enabled or disabled for the WebGL.",
       "parentUuid": "d2d422c5_d29b5c54",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 2
+      },
+      "revId": "bc5d496788e914d587c7f912fac47ea39d9adfb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f0230e0_3f4a16da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/intel/webgl_multi_window.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-09-09T14:52:00Z",
+      "side": 1,
+      "message": "I just wanted to make sure this check should be part of the test rather than e.g. a SoftwareDep or similar.",
+      "parentUuid": "5596a105_dc6ef43c",
       "range": {
         "startLine": 68,
         "startChar": 0,
