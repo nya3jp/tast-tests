@@ -13,7 +13,6 @@ import (
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/crosdisks"
-	"chromiumos/tast/local/dbusutil"
 	"chromiumos/tast/local/procutil"
 	"chromiumos/tast/testing"
 )
@@ -25,6 +24,7 @@ func init() {
 		Contacts: []string{
 			"noel@chromium.org",
 			"benreich@chromium.org",
+			"nigeltao@chromium.org",
 			"chromeos-files-syd@google.com",
 		},
 		Attr: []string{"group:mainline"},
@@ -59,40 +59,23 @@ func Fusebox(ctx context.Context, s *testing.State) {
 	}
 	defer w.Close(cleanupCtx)
 
-	const source = "fusebox://fusebox-alive-test"
-	options := []string{"--fake"}
-	if err := cd.Mount(ctx, source, "fusebox", options); err != nil {
+	const source = "fusebox://fusebox-basic-test"
+	if err := cd.Mount(ctx, source, "fusebox", nil); err != nil {
 		s.Fatal("CrosDisks Mount call failed: ", err)
 	}
-	defer cd.Unmount(cleanupCtx, source, nil /* options */)
+	defer cd.Unmount(cleanupCtx, source, nil)
 
 	m, err := w.Wait(ctx)
 	if err != nil {
 		s.Fatal("CrosDisks MountCompleted event failed: ", err)
 	}
 
-	// Connect to the fusebox daemon D-Bus interface.
-	const (
-		dbusName      = "org.chromium.FuseBoxReverseService"
-		dbusPath      = "/org/chromium/FuseBoxReverseService"
-		dbusInterface = "org.chromium.FuseBoxReverseService"
-	)
-	_, dbusObj, err := dbusutil.Connect(ctx, dbusName, dbusPath)
-	if err != nil {
-		s.Fatal("Failed to connect to fusebox service: ", err)
-	}
-
-	// Test D-Bus: call fusebox daemon D-Bus TestIsAlive method.
-	const method = dbusInterface + ".TestIsAlive"
-	var alive bool = false
-	err = dbusObj.CallWithContext(ctx, method, 0).Store(&alive)
-	if err != nil || !alive {
-		s.Fatalf("TestIsAlive failed: %v alive %v", err, alive)
-	}
-
-	// Test FUSE request: stat(2) fake file entry "hello".
-	hello := filepath.Join(m.MountPath, "hello")
-	if _, err := os.Stat(hello); err != nil {
-		s.Fatal("Failed stat(2): ", err)
+	// The "fuse_status" and "ok\n" magic strings are defined in
+	// "platform2/fusebox/built_in.cc".
+	fuseStatusFilename := filepath.Join(m.MountPath, "built_in/fuse_status")
+	if got, err := os.ReadFile(fuseStatusFilename); err != nil {
+		s.Fatal("ReadFile failed: ", err)
+	} else if want := "ok\n"; string(got) != want {
+		s.Fatalf("ReadFile: got %q, want %q", got, want)
 	}
 }
