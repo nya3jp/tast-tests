@@ -219,6 +219,10 @@ func rawFPFrameCommand(ctx context.Context, d *dut.DUT) *ssh.Cmd {
 	return EctoolCommand(ctx, d, "fpframe", "raw")
 }
 
+func FpInfoCommand(ctx context.Context, d *dut.DUT) *ssh.Cmd {
+	return EctoolCommand(ctx, d, "fpinfo")
+}
+
 // parseColonDelimitedOutput parses colon delimited information to a map.
 func parseColonDelimitedOutput(output string) map[string]string {
 	ret := map[string]string{}
