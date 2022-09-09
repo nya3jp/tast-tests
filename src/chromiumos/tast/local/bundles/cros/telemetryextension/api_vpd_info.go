@@ -1,4 +1,4 @@
-// Copyright 2022 The Chromium OS Authors. All rights reserved.
+// Copyright 2022 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -29,44 +29,44 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{
 			{
-				Name:              "target_models",
+				Name:              "stable",
 				Fixture:           "telemetryExtension",
-				ExtraHardwareDeps: dep.TargetModels(),
+				ExtraHardwareDeps: dep.StableModels(),
 			},
 			{
-				Name:              "non_target_models",
+				Name:              "non_stable",
 				Fixture:           "telemetryExtensionOverrideOEMName",
-				ExtraHardwareDeps: dep.NonTargetModels(),
+				ExtraHardwareDeps: dep.NonStableModels(),
 			},
 			{
-				Name:              "target_models_lacros",
+				Name:              "stable_lacros",
 				Fixture:           "telemetryExtensionLacros",
-				ExtraHardwareDeps: dep.TargetModels(),
+				ExtraHardwareDeps: dep.StableModels(),
 			},
 			{
-				Name:              "non_target_models_lacros",
+				Name:              "non_stable_lacros",
 				Fixture:           "telemetryExtensionOverrideOEMNameLacros",
-				ExtraHardwareDeps: dep.NonTargetModels(),
+				ExtraHardwareDeps: dep.NonStableModels(),
 			},
 			{
-				Name:              "target_models_managed",
+				Name:              "stable_managed",
 				Fixture:           "telemetryExtensionManaged",
-				ExtraHardwareDeps: dep.TargetModels(),
+				ExtraHardwareDeps: dep.StableModels(),
 			},
 			{
-				Name:              "non_target_models_managed",
+				Name:              "non_stable_managed",
 				Fixture:           "telemetryExtensionOverrideOEMNameManaged",
-				ExtraHardwareDeps: dep.NonTargetModels(),
+				ExtraHardwareDeps: dep.NonStableModels(),
 			},
 			{
-				Name:              "target_models_managed_lacros",
+				Name:              "stable_managed_lacros",
 				Fixture:           "telemetryExtensionManagedLacros",
-				ExtraHardwareDeps: dep.TargetModels(),
+				ExtraHardwareDeps: dep.StableModels(),
 			},
 			{
-				Name:              "non_target_models_managed_lacros",
+				Name:              "non_stable_managed_lacros",
 				Fixture:           "telemetryExtensionOverrideOEMNameManagedLacros",
-				ExtraHardwareDeps: dep.NonTargetModels(),
+				ExtraHardwareDeps: dep.NonStableModels(),
 			},
 		},
 	})

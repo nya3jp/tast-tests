@@ -1,4 +1,4 @@
-// Copyright 2022 The Chromium OS Authors. All rights reserved.
+// Copyright 2022 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -24,12 +24,12 @@ func init() {
 		Attr: []string{"group:mainline", "informational"},
 		Params: []testing.Param{
 			{
-				Name:              "target_models",
-				ExtraHardwareDeps: dep.TargetModels(),
+				Name:              "stable",
+				ExtraHardwareDeps: dep.StableModels(),
 			},
 			{
-				Name:              "non_target_models",
-				ExtraHardwareDeps: dep.NonTargetModels(),
+				Name:              "non_stable",
+				ExtraHardwareDeps: dep.NonStableModels(),
 			},
 		},
 	})
