@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04cc085e_fc6bd3f4",
+        "filename": "src/chromiumos/tast/local/audio/alsa.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-09-09T15:04:06Z",
+      "side": 1,
+      "message": "micro nit: did `go fmt` do this? It\u0027s usually fine for this to all be on one line from a golang style perspective. (IMO it is also a bit weird to put arguments on separate lines from their type, like in L48 and L49.)\n\nIf you are worried about there being too many and/or complicated arguments you can also pack them into a struct and pass that.",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 9
+      },
+      "revId": "8cccfdbe6ed0449d36f625a7b6caf60796b2f18c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
