@@ -52,6 +52,87 @@
       "parentUuid": "0369923c_197df9a9",
       "revId": "12ad7573d3d18f7d741654c350f3f2eaa5a19d31",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea36d328_7ebe022c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-09-09T23:05:34Z",
+      "side": 1,
+      "message": "okay yeah --  I think we can add more functionality here -- and perf test can be all the happy cases.",
+      "parentUuid": "802d6b0e_5ae7613f",
+      "revId": "12ad7573d3d18f7d741654c350f3f2eaa5a19d31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03861e59_edda553f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/auth_session_unlock.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-09-09T23:05:34Z",
+      "side": 1,
+      "message": "Zi has a new fixture that we could use here -- alas it has not landed yet",
+      "range": {
+        "startLine": 40,
+        "startChar": 3,
+        "endLine": 43,
+        "endChar": 5
+      },
+      "revId": "12ad7573d3d18f7d741654c350f3f2eaa5a19d31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef3baebb_5324bd23",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/auth_session_unlock.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-09-09T23:05:34Z",
+      "side": 1,
+      "message": "let\u0027s get rid of these failed to -- they add noise and tast truncates messages so sometimes we dont even see past failed to",
+      "range": {
+        "startLine": 117,
+        "startChar": 32,
+        "endLine": 117,
+        "endChar": 42
+      },
+      "revId": "12ad7573d3d18f7d741654c350f3f2eaa5a19d31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21a6c37b_112c45fc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/auth_session_unlock.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-09-09T23:05:34Z",
+      "side": 1,
+      "message": "defer InvalidateAuthSession missing here",
+      "revId": "12ad7573d3d18f7d741654c350f3f2eaa5a19d31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
