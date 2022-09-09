@@ -133,6 +133,30 @@
       },
       "revId": "ade3444112ec73805dcb88709fc813264a90be34",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef4bdc45_857af874",
+        "filename": "src/chromiumos/tast/remote/updateutil/updateutil.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-09-09T07:30:28Z",
+      "side": 1,
+      "message": "I found a helper. I will update the CL.",
+      "parentUuid": "65acbfc0_3612a354",
+      "range": {
+        "startLine": 186,
+        "startChar": 21,
+        "endLine": 186,
+        "endChar": 74
+      },
+      "revId": "ade3444112ec73805dcb88709fc813264a90be34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
