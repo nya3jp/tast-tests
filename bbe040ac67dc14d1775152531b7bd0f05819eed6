@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "358291c4_df65402c",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-09-09T21:41:34Z",
+      "side": 1,
+      "message": "is it okay in all of these cases to return an empty `FirmwareFile` and still proceed with the tests?",
+      "revId": "bbe040ac67dc14d1775152531b7bd0f05819eed6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
