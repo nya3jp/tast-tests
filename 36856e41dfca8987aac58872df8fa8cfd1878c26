@@ -16,6 +16,190 @@
       "message": "Please review my redesign for DesksCUJ, thank you!",
       "revId": "36856e41dfca8987aac58872df8fa8cfd1878c26",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc3daa59_27d881fc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/desks_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-09-09T18:19:25Z",
+      "side": 1,
+      "message": "If the timeout is the same for all test variants, consider using `Timeout` directly in `testing.Test` instead.\n\t\tTimeout:      30 * time.Minute,\n\t\tParams: []testing.Param{{\n\t\t\tVal:     browser.TypeAsh,\n\t\t\tFixture: \"loggedInToCUJUser\",\n\t\t}, {\n\t\t\tName:              \"lacros\",\n\t\t\tVal:               browser.TypeLacros,\n\t\t\tExtraSoftwareDeps: []string{\"lacros\"},\n\t\t\tFixture:           \"loggedInToCUJUserLacros\",\n\t\t}},",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 5
+      },
+      "revId": "36856e41dfca8987aac58872df8fa8cfd1878c26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e6c6d55_e8fc29ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/deskscuj/desks.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-09-09T18:19:25Z",
+      "side": 1,
+      "message": "This function uses the `desk` parameter only for `desk.urls`, so it should have simply a `urls` parameter instead.",
+      "range": {
+        "startLine": 31,
+        "startChar": 78,
+        "endLine": 31,
+        "endChar": 91
+      },
+      "revId": "36856e41dfca8987aac58872df8fa8cfd1878c26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03ec83d9_931c0520",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/deskscuj/desks.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-09-09T18:19:25Z",
+      "side": 1,
+      "message": "Remove this space.",
+      "range": {
+        "startLine": 37,
+        "startChar": 60,
+        "endLine": 37,
+        "endChar": 61
+      },
+      "revId": "36856e41dfca8987aac58872df8fa8cfd1878c26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cfa76f7d_b7177de0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/deskscuj/desks.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-09-09T18:19:25Z",
+      "side": 1,
+      "message": "desks_cuj.go uses this only for the `onVisitAction` field, so it should be simply `[]action.Action`. You can write `onVisitActions :\u003d make([]action.Action, 0, len(desks))` and `onVisitActions \u003d append(onVisitActions, desk.onVisitAction)`.",
+      "range": {
+        "startLine": 83,
+        "startChar": 208,
+        "endLine": 83,
+        "endChar": 218
+      },
+      "revId": "36856e41dfca8987aac58872df8fa8cfd1878c26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bab9c5f4_1f34b9ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/deskscuj/desks.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-09-09T18:19:25Z",
+      "side": 1,
+      "message": "Inline the `deskInfo` type definition here. For each of the four elements, you can just leave out the `deskInfo` type because it is implied by the type of the whole slice.",
+      "range": {
+        "startLine": 91,
+        "startChar": 12,
+        "endLine": 91,
+        "endChar": 20
+      },
+      "revId": "36856e41dfca8987aac58872df8fa8cfd1878c26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42e7460c_ea41f9d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/deskscuj/desks_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-09-09T18:19:25Z",
+      "side": 1,
+      "message": "Run this: https://go.dev/play/p/ugkE9_B0EyC",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 51
+      },
+      "revId": "36856e41dfca8987aac58872df8fa8cfd1878c26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87a42e12_7f27331f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/deskscuj/desks_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-09-09T18:19:25Z",
+      "side": 1,
+      "message": "nit: I would inline this even though it is used three times. `desks` is a local slice, and therefore the length will be cached so there is no performance penalty in writing `len(desks)` repeatedly.",
+      "range": {
+        "startLine": 128,
+        "startChar": 0,
+        "endLine": 128,
+        "endChar": 23
+      },
+      "revId": "36856e41dfca8987aac58872df8fa8cfd1878c26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a2aa671_faa36025",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/deskscuj/deskswitcher.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-09-09T18:19:25Z",
+      "side": 1,
+      "message": "This logic is repeated three times, it constitutes most of the code complexity of the first two desk switch workflows, and it also seems like an unnecessarily complicated use of a closure. How about this:\n1. `deskSwitchWorkflow.run` has type `func(context.Context, int, int) error` where the two `int` parameters will be `fromDesk` and `toDesk`.\n2. `getKeyboardSearchBracketWorkflow` does something like this:\n\tswitch toDesk {\n\tcase fromDesk - 1:\n\t\treturn kw.Accel(ctx, \"Search+[\")\n\tcase fromDesk + 1:\n\t\treturn kw.Accel(ctx, \"Search+]\")\n\tdefault:\n\t\treturn errors.Errorf(\"invalid Search+Bracket desk switch: from %d to %d\", fromDesk, toDesk)\n\t}\n3. The other two desk switch workflows use `fromDesk` for nothing except maybe this:\n\tif fromDesk \u003d\u003d toDesk {\n\t\treturn errors.Errorf(\"supposed to switch from desk %d to itself\", fromDesk)\n\t}\n4. desks_cuj.go does something like this:\n\tdesksItinerary :\u003d []int{0, 1, 2, 3, 2, 1}\n\ti :\u003d 0\n\tfor endTime :\u003d time.Now().Add(deskSwitchingDuration); time.Now().Before(endTime); {\n\t\tfromDesk :\u003d desksItinerary[i]\n\t\ti \u003d (i + 1) % len(desksItinerary)\n\t\ttoDesk :\u003d desksItinerary[i]\n\n\t\t...\n\t}",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 34
+      },
+      "revId": "36856e41dfca8987aac58872df8fa8cfd1878c26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
