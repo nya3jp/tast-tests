@@ -14,7 +14,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: CrOSConfigHasOEMName,
+		Func: FeatureCrOSConfigHasOEMName,
 		Desc: "Verifies that CrOSConfig has OEM name",
 		Contacts: []string{
 			"lamzin@google.com", // Test and Telemetry Extension author
@@ -35,8 +35,8 @@ func init() {
 	})
 }
 
-// CrOSConfigHasOEMName tests that CrOSConfig has OEM name.
-func CrOSConfigHasOEMName(ctx context.Context, s *testing.State) {
+// FeatureCrOSConfigHasOEMName tests that CrOSConfig has OEM name.
+func FeatureCrOSConfigHasOEMName(ctx context.Context, s *testing.State) {
 	if vendor, err := crosconfig.Get(ctx, "/branding", "oem-name"); err != nil {
 		s.Error("Failed to read vendor name: ", err)
 	} else if got, want := vendor, "HP"; got != want {
