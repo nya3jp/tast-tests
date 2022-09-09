@@ -35,6 +35,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "88d7279c_f35c1cab",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003044
+      },
+      "writtenOn": "2022-09-09T07:22:51Z",
+      "side": 1,
+      "message": "Is there any more context to this you could provide -- I assume these tests going to be maintained by Intel?\n\n+alvinjia, who is currently doing most of the maintenance of our tast tests.",
+      "revId": "98a881db1971cee9db18f0b4527de9091014f446",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7085706b_31f2d350",
@@ -48,6 +65,24 @@
       "writtenOn": "2022-09-09T07:02:13Z",
       "side": 1,
       "message": "clar: Crostini team: should Intel be using one of your crostini fixtures or test preconditions here instead?",
+      "revId": "98a881db1971cee9db18f0b4527de9091014f446",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76538da6_66ac89ce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/intel/crostini_linux_terminal_functionality.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1003044
+      },
+      "writtenOn": "2022-09-09T07:22:51Z",
+      "side": 1,
+      "message": "I think this should just be on the crostiniBullseye fixture and restricted with the crostini.CrostiniStable hardware deps like other crostini tests. I don\u0027t see why we need to have installation itself as part of this test if nothing special is being done there.\n\nUsers still running Buster will be prompted to upgrade to Bullseye now, so for new tests I think it\u0027s better to just test against Bullseye unless there are special circumstances.",
+      "parentUuid": "7085706b_31f2d350",
       "revId": "98a881db1971cee9db18f0b4527de9091014f446",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
