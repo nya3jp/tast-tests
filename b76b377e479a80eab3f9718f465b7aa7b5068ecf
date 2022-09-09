@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "715d63e0_90742f2b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-09-09T21:30:28Z",
+      "side": 1,
+      "message": "Add `TEST\u003d./fast_build .sh -T`",
+      "revId": "b76b377e479a80eab3f9718f465b7aa7b5068ecf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7dc23c92_f122ad65",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-09-09T21:30:28Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "b76b377e479a80eab3f9718f465b7aa7b5068ecf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
