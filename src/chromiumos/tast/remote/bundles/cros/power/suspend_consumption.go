@@ -9,6 +9,7 @@ import (
 	"strconv"
 	"time"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/firmware"
 	"chromiumos/tast/remote/firmware/fixture"
 	"chromiumos/tast/remote/firmware/power"
@@ -26,10 +27,6 @@ const (
 	// Minimum battery life of 14 days
 	minimumBatteryLife = time.Hour * 24 * 14
 
-	// The sense resistor on the battery rail is usually the most accurate
-	powerConsumptionKey    = "ppvar_bat"
-	powerConsumptionKeyAlt = "ppvar_bat_q"
-
 	varDuration = "duration"
 	varNoGsc    = "no_gsc"
 
@@ -38,6 +35,21 @@ const (
 	gsc1V8Rail = "pp1800_gsc_z1"
 	gsc3V3Rail = "pp3300_gsc_z1"
 )
+
+func powerConsumption(results power.Results) (float32, error) {
+	powerConsumptionKeys := []string{
+		// The sense resistor on the battery rail is usually the most accurate
+		"ppvar_bat",
+		"ppvar_bat_q",
+		"ppvar_vbat",
+	}
+	for _, key := range powerConsumptionKeys {
+		if consumption, exists := results.GetMean(key); exists {
+			return consumption, nil
+		}
+	}
+	return 0, errors.Errorf("no matching power rail found in results %v", powerConsumptionKeys)
+}
 
 func init() {
 	testing.AddTest(&testing.Test{
@@ -137,12 +149,9 @@ func SuspendConsumption(ctx context.Context, s *testing.State) {
 
 	s.Log(results)
 
-	consumption, exists := results.GetMean(powerConsumptionKey)
-	if !exists {
-		consumption, exists = results.GetMean(powerConsumptionKeyAlt)
-		if !exists {
-			s.Fatalf("Failed to get system power consumption on rails %s, %s", powerConsumptionKey, powerConsumptionKeyAlt)
-		}
+	consumption, err := powerConsumption(results)
+	if err != nil {
+		s.Fatal("Failed to get system power consumption: ", err)
 	}
 
 	if consumption == 0.0 || consumption < 0.0 {
