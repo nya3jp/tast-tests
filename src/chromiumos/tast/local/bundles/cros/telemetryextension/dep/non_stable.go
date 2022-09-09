@@ -27,12 +27,9 @@ var nonStableModelList = []string{
 	"drawcia",
 	"drawlat",
 	"jinlon",
-	"kip",
-	"kip14",
 	"locke",
 	"madoo",
 	"meep",
-	"mimrock",
 	"mordin",
 	"redrix",
 	"setzer",
@@ -40,8 +37,6 @@ var nonStableModelList = []string{
 	"sona",
 	"stormfly",
 	"syndra",
-	"vorticon",
-	"vortininja",
 }
 
 // NonStableModels returns hardwareDeps condition with list of non-stable models.
