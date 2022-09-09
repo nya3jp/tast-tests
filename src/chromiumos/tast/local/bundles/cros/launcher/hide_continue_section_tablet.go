@@ -41,9 +41,7 @@ func HideContinueSectionTablet(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
 
-	opt := chrome.EnableFeatures(
-		"ProductivityLauncher",        // Enable productivity launcher
-		"LauncherHideContinueSection") // Enable the hide continue section menu item
+	opt := chrome.EnableFeatures("LauncherHideContinueSection")
 	cr, err := chrome.New(ctx, opt)
 	if err != nil {
 		s.Fatal("Chrome login failed: ", err)
