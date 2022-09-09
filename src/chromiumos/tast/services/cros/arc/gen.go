@@ -4,6 +4,7 @@
 
 //go:generate protoc -I . --go_out=plugins=grpc:../../../../.. suspend_service.proto
 //go:generate protoc -I . -I ../../../common/perf/perfpb --go_out=plugins=grpc:../../../../.. perf_boot_service.proto
+//go:generate protoc -I . -I ../../../common/perf/perfpb --go_out=plugins=grpc:../../../../.. power_perf_service.proto
 //go:generate protoc -I . --go_out=plugins=grpc:../../../../.. gmscore_cache_service.proto
 //go:generate protoc -I . --go_out=plugins=grpc:../../../../.. ureadahead_pack_service.proto
 //go:generate protoc -I . --go_out=plugins=grpc:../../../../.. adb_over_usb_service.proto

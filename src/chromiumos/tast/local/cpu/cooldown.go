@@ -66,6 +66,16 @@ func DefaultCoolDownConfig(mode CoolDownMode) CoolDownConfig {
 	}
 }
 
+// IdleCoolDownConfig returns the config to wait for the machine to cooldown for PowerIdlePerf test.
+// This overrides the default config timeout (5 minutes) and temperature threshold (46 C)
+// settings to reduce test flakes on low-end devices.
+func IdleCoolDownConfig() CoolDownConfig {
+	cdConfig := DefaultCoolDownConfig(CoolDownPreserveUI)
+	cdConfig.PollTimeout = 7 * time.Minute
+	cdConfig.TemperatureThreshold = 60000
+	return cdConfig
+}
+
 // Temperature returns the CPU temperature in milli-Celsius units. It
 // also returns the name of the thermal zone it chose.
 func Temperature(ctx context.Context) (int, string, error) {
