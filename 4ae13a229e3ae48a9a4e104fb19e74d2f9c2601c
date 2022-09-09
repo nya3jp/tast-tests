@@ -142,6 +142,24 @@
       "parentUuid": "1fb7bde5_7d3f39f7",
       "revId": "4ae13a229e3ae48a9a4e104fb19e74d2f9c2601c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42395084_6a83e716",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/enterprise_rollback_previous_version.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1153089
+      },
+      "writtenOn": "2022-09-09T15:19:38Z",
+      "side": 1,
+      "message": "\u003e These tests ensure that they restore the original image version.\n\nCan you please link the code doing this?\n\n\u003e These tests are executed on canary, dev and beta channels, for every build.\n\nThat makes sense. We also want to check that we can rollback milestones in dev before they go to stable.",
+      "parentUuid": "d1f558eb_cc3d20a1",
+      "revId": "4ae13a229e3ae48a9a4e104fb19e74d2f9c2601c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
