@@ -62,7 +62,7 @@ func TestPowerIdlePerfParamsAreGenerated(t *testing.T) {
 			{
 				"noarc",
 				"arc", // to prevent _noarc tests from running on non-ARC boards
-				"chromeLoggedIn",
+				"chromeLoggedInDisableSyncNoFwUpdate",
 			},
 			{
 				"",
