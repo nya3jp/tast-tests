@@ -959,9 +959,11 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 			if err := os.WriteFile(filepath.Join(s.OutDir(), "webrtc-internals.json"), dump, 0644); err != nil {
 				s.Error("Failed to write WebRTC internals dump to test results folder: ", err)
 			}
-			if err := reportWebRTCInternals(pv, dump, meet.num, meet.present); err != nil {
+			webRTCInternalsPV, err := reportWebRTCInternals(dump, meet.num, meet.present)
+			if err != nil {
 				s.Error("Failed to report info from WebRTC internals dump to performance metrics: ", err)
 			}
+			pv.Merge(webRTCInternalsPV)
 		}
 	}
 
@@ -1124,198 +1126,140 @@ func dumpWebRTCInternals(ctx context.Context, tconn *chrome.TestConn, ui *uiauto
 }
 
 // reportWebRTCInternals reports info from a WebRTC internals dump to performance metrics.
-// If a non-nil error is returned, all peer connections that were fully validated before
-// the error was encountered are still reported.
-func reportWebRTCInternals(pv *perf.Values, dump []byte, numBots int, present bool) error {
+func reportWebRTCInternals(dump []byte, numBots int, present bool) (*perf.Values, error) {
 	var webRTC webrtcinternals.Dump
 	if err := json.Unmarshal(dump, &webRTC); err != nil {
-		return errors.Wrap(err, "failed to unmarshal WebRTC internals dump")
+		return nil, errors.Wrap(err, "failed to unmarshal WebRTC internals dump")
 	}
 
 	expectedConns := 1
+	expectedScreenshareConns := 0
 	if present {
 		expectedConns = 2
+		expectedScreenshareConns = 1
 	}
+
 	if numConns := len(webRTC.PeerConnections); numConns != expectedConns {
-		return errors.Errorf("unexpected number of peer connections: got %d; want %d", numConns, expectedConns)
+		return nil, errors.Errorf("unexpected number of peer connections: got %d; want %d", numConns, expectedConns)
 	}
 
-	const screenshareContentType = "screenshare"
-	videoStreamRegexp := regexp.MustCompile(`^RTC(Inbound|Outbound)RTPVideoStream_(\d+)-(.+)$`)
-	statMetric := map[string]struct {
-		reporter func(interface{}) (float64, error)
-		name     string
-		unit     string
-	}{
-		"frameWidth":      {reportFloat64, "frameWidth", "px"},
-		"frameHeight":     {reportFloat64, "frameHeight", "px"},
-		"framesPerSecond": {reportFloat64, "framesPerSecond", "fps"},
-		"[codec]":         {reportVideoCodec, "codec", "unitless"},
-	}
-	var numScreenshareConns int
-	var numOtherConns int
-	type timeSeries []float64
-	type indexByStatName map[string]timeSeries
-	type indexByStreamID map[string]indexByStatName
-	type indexByDirection map[string]indexByStreamID
+	numScreenshareConns := 0
+	pv := perf.NewValues()
 	for connID, peerConn := range webRTC.PeerConnections {
-		connIDText, err := connID.MarshalText()
+		byType := peerConn.Stats.BuildIndex()
+		inTotalCount, inScreenshareCount, err := reportVideoStreams(pv, byType["inbound-rtp"], "framesReceived", ".Inbound", "bot%02d")
 		if err != nil {
-			return errors.Wrap(err, "failed to decode the peer connection id")
+			return nil, errors.Wrapf(err, "failed to report inbound-rtp video streams in peer connection %v", connID)
 		}
-		errPrefix := fmt.Sprintf("[peerConnID=%s]", connIDText)
-
-		framesTransmittedStatName := map[string]string{
-			"Inbound":  "framesReceived",
-			"Outbound": "framesSent",
+		outTotalCount, outScreenshareCount, err := reportVideoStreams(pv, byType["outbound-rtp"], "framesSent", ".Outbound", "stream%d")
+		if err != nil {
+			return nil, errors.Wrapf(err, "failed to report outbound-rtp video streams in peer connection %v", connID)
 		}
 
-		type void struct{}
-		var member void
-		type stringSet map[string]void
-		// Unlike byDirection["Outbound"], |outboundStreamIDs| will include every outbound
-		// stream, even if the stream has none of the statistics in |statMetric|.
-		outboundStreamIDs := make(stringSet)
-		// |inactiveStreamIDs| are for IDs with zero frames sent/received.
-		inactiveStreamIDs := map[string]stringSet{
-			"Inbound":  make(stringSet),
-			"Outbound": make(stringSet),
+		if inScreenshareCount != 0 {
+			return nil, errors.Errorf("unexpected number of inbound-rtp screenshare video streams in peer connection %v; got %d, want 0", connID, inScreenshareCount)
+		}
+		if outTotalCount == 0 {
+			return nil, errors.Errorf("found no outbound-rtp video streams in peer connection %v", connID)
+		}
+		expectedInTotalCount := 0
+		switch outScreenshareCount {
+		case 0:
+			expectedInTotalCount = numBots
+		case outTotalCount:
+			numScreenshareConns++
+		default:
+			return nil, errors.Errorf("found %d screenshare(s) among %d outbound-rtp video streams in peer connection %v, expected all or none", outScreenshareCount, outTotalCount, connID)
+		}
+		if inTotalCount != expectedInTotalCount {
+			return nil, errors.Errorf("unexpected number of inbound-rtp video streams in peer connection %v; got %d, want %d", connID, inTotalCount, expectedInTotalCount)
+		}
+	}
+
+	if numScreenshareConns != expectedScreenshareConns {
+		return nil, errors.Errorf("unexpected number of screenshare peer connections; got %d, want %d", numScreenshareConns, expectedScreenshareConns)
+	}
+
+	return pv, nil
+}
+
+// reportVideoStreams reports info from a webrtcinternals.StatsIndexByStatsID to performance
+// metrics. Returns the number of active video streams, and how many of them are screenshares.
+func reportVideoStreams(pv *perf.Values, byID webrtcinternals.StatsIndexByStatsID, framesTransmittedAttribute, directionSuffix, variantFormat string) (int, int, error) {
+	totalCount := 0
+	screenshareCount := 0
+	for id, byAttribute := range byID {
+		kindTimeline, ok := byAttribute["kind"]
+		if !ok {
+			return 0, 0, errors.Errorf("no kind attribute for %q", id)
+		}
+		kind, err := kindTimeline.Collapse()
+		if err != nil {
+			return 0, 0, errors.Errorf("failed to collapse timeline of kind attribute for %q", id)
+		}
+		if kind != "video" {
+			continue
 		}
 
-		var numStreamsWithContentType int
-		byDirection := make(indexByDirection)
-		for fullName, statistic := range peerConn.Stats {
-			matches := videoStreamRegexp.FindStringSubmatch(fullName)
-			if len(matches) == 0 {
-				continue
-			}
-			direction := matches[1]
-			streamID := matches[2]
-			statName := matches[3]
-
-			if direction == "Outbound" {
-				outboundStreamIDs[streamID] = member
-			}
-
-			switch statName {
-			case "contentType":
-				if direction == "Inbound" {
-					return errors.Errorf("%s found Inbound video stream with contentType statistic: %q", errPrefix, fullName)
-				}
-				numStreamsWithContentType++
-
-				if len(statistic.Values) == 0 {
-					return errors.Errorf("%s no values for %q", errPrefix, fullName)
-				}
-				for _, value := range statistic.Values {
-					if value != screenshareContentType {
-						return errors.Errorf("%s expected all content types in %q time series to be %q, got %v", errPrefix, fullName, screenshareContentType, statistic.Values)
-					}
-				}
-			case framesTransmittedStatName[direction]:
-				if len(statistic.Values) == 0 {
-					return errors.Errorf("%s no values for %q", errPrefix, fullName)
-				}
-				finalTotal, ok := statistic.Values[len(statistic.Values)-1].(float64)
-				if !ok {
-					return errors.Errorf("%s expected %q values to be numerical; got %v", errPrefix, fullName, statistic.Values)
-				}
-				if finalTotal == 0 {
-					inactiveStreamIDs[direction][streamID] = member
-				}
-			default:
-				config, ok := statMetric[statName]
-				if !ok {
-					break
-				}
-
-				var report timeSeries
-				for _, value := range statistic.Values {
-					metric, err := config.reporter(value)
-					if err != nil {
-						return errors.Wrapf(err, "%s failed to represent %q value as performance metric", errPrefix, fullName)
-					}
-					report = append(report, metric)
-				}
-
-				byStreamID, ok := byDirection[direction]
-				if !ok {
-					byStreamID = make(indexByStreamID)
-					byDirection[direction] = byStreamID
-				}
-				byStatName, ok := byStreamID[streamID]
-				if !ok {
-					byStatName = make(indexByStatName)
-					byStreamID[streamID] = byStatName
-				}
-				byStatName[statName] = report
-			}
+		framesTransmittedTimeline, ok := byAttribute[framesTransmittedAttribute]
+		if !ok {
+			return 0, 0, errors.Errorf("no %s attribute for %q", framesTransmittedAttribute, id)
 		}
-
-		isScreenshareConn := numStreamsWithContentType > 0
-		expectedNumStreamsWithContentType := 0
-		if isScreenshareConn {
-			expectedNumStreamsWithContentType = len(outboundStreamIDs)
+		if len(framesTransmittedTimeline) == 0 {
+			return 0, 0, errors.Errorf("no values for %s attribute for %q", framesTransmittedAttribute, id)
 		}
-		if numStreamsWithContentType != expectedNumStreamsWithContentType {
-			return errors.Errorf("%s unexpected number of streams with the contentType statistic: got %d; expected %d", errPrefix, numStreamsWithContentType, expectedNumStreamsWithContentType)
-		}
-
-		for direction, byStreamID := range byDirection {
-			for streamID := range inactiveStreamIDs[direction] {
-				if _, ok := byStreamID[streamID]; ok {
-					delete(byStreamID, streamID)
-				}
-			}
+		if framesTransmittedTimeline[len(framesTransmittedTimeline)-1] == 0 {
+			continue
 		}
 
 		screenShareSuffix := ""
-		expectedNumInboundStreams := 0
-		if isScreenshareConn {
-			screenShareSuffix = ".Screenshare"
-			numScreenshareConns++
-		} else {
-			expectedNumInboundStreams = numBots
-			numOtherConns++
-		}
-		if numInboundStreams := len(byDirection["Inbound"]); numInboundStreams != expectedNumInboundStreams {
-			return errors.Errorf("%s unexpected number of Inbound video streams: got %d; want %d", errPrefix, numInboundStreams, expectedNumInboundStreams)
-		}
-		if len(byDirection["Outbound"]) == 0 {
-			return errors.Errorf("%s found no Outbound video streams", errPrefix)
-		}
-
-		for direction, variantFormat := range map[string]string{
-			"Inbound":  "bot%02d",
-			"Outbound": "stream%d",
-		} {
-			var whichStream uint
-			for _, byStatName := range byDirection[direction] {
-				for statName, report := range byStatName {
-					config := statMetric[statName]
-					pv.Set(perf.Metric{
-						Name:      fmt.Sprintf("WebRTCInternals.Video%s.%s.%s", screenShareSuffix, direction, config.name),
-						Variant:   fmt.Sprintf(variantFormat, whichStream),
-						Unit:      config.unit,
-						Direction: perf.BiggerIsBetter,
-						Multiple:  true,
-					}, report...)
-				}
-				whichStream++
+		if contentTypeTimeline, ok := byAttribute["contentType"]; ok {
+			contentType, err := contentTypeTimeline.Collapse()
+			if err != nil {
+				return 0, 0, errors.Errorf("failed to collapse timeline of contentType attribute for %q", id)
+			}
+			if contentType == "screenshare" {
+				screenShareSuffix = ".Screenshare"
+				screenshareCount++
 			}
 		}
-	}
 
-	// Verify that we got the expected peer connection types
-	const expectedNumOtherConns = 1
-	expectedNumScreenshareConns := 0
-	if present {
-		expectedNumScreenshareConns = 1
+		for _, config := range []struct {
+			attribute       string
+			reporter        func(interface{}) (float64, error)
+			attributeSuffix string
+			unit            string
+		}{
+			{"frameWidth", reportFloat64, ".frameWidth", "px"},
+			{"frameHeight", reportFloat64, ".frameHeight", "px"},
+			{"framesPerSecond", reportFloat64, ".framesPerSecond", "fps"},
+			{"[codec]", reportVideoCodec, ".codec", "unitless"},
+		} {
+			timeline, ok := byAttribute[config.attribute]
+			if !ok {
+				continue
+			}
+
+			var report []float64
+			for _, value := range timeline {
+				metric, err := config.reporter(value)
+				if err != nil {
+					return 0, 0, errors.Wrapf(err, "failed to represent %s attribute for %q as performance metric", config.attribute, id)
+				}
+				report = append(report, metric)
+			}
+
+			pv.Set(perf.Metric{
+				Name:      fmt.Sprintf("WebRTCInternals.Video%s%s%s", screenShareSuffix, directionSuffix, config.attributeSuffix),
+				Variant:   fmt.Sprintf(variantFormat, totalCount),
+				Unit:      config.unit,
+				Direction: perf.BiggerIsBetter,
+				Multiple:  true,
+			}, report...)
+		}
+		totalCount++
 	}
-	if numScreenshareConns != expectedNumScreenshareConns || numOtherConns != expectedNumOtherConns {
-		return errors.Errorf("unexpected peer connection types: got %d screenshare connection(s) and %d other peer connection(s), expected %d, %d respectively", numScreenshareConns, numOtherConns, expectedNumScreenshareConns, expectedNumOtherConns)
-	}
-	return nil
+	return totalCount, screenshareCount, nil
 }
 
 // reportFloat64 simply typecasts from interface{} to float64.

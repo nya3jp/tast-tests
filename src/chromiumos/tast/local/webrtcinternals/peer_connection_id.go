@@ -17,11 +17,16 @@ const peerConnectionIDFmt = "%d-%d"
 
 // MarshalText encodes PeerConnectionID with peerConnectionIDFmt.
 func (id PeerConnectionID) MarshalText() ([]byte, error) {
-	return []byte(fmt.Sprintf(peerConnectionIDFmt, id.Rid, id.Lid)), nil
+	return []byte(id.String()), nil
 }
 
 // UnmarshalText decodes PeerConnectionID with peerConnectionIDFmt.
 func (id *PeerConnectionID) UnmarshalText(text []byte) error {
 	_, err := fmt.Sscanf(string(text), peerConnectionIDFmt, &id.Rid, &id.Lid)
 	return err
+}
+
+// String represents PeerConnectionID as a string, using peerConnectionIDFmt.
+func (id PeerConnectionID) String() string {
+	return fmt.Sprintf(peerConnectionIDFmt, id.Rid, id.Lid)
 }
