@@ -68,6 +68,24 @@
       "parentUuid": "a8e61cc9_a810dff2",
       "revId": "7940481f1d855114c56b5e3bb43e1dc8b28599e1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd79e27f_a7ecb272",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/fsp.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2022-09-09T14:23:24Z",
+      "side": 1,
+      "message": "Then, maybe the intention could be made clearer by not using `defer`?\n```\nif err :\u003d uiauto.Combine(msg,\n\t[...]\n\t)(ctx); err !\u003d nil {\n\treturn err\n}\n\n// Close the Files [...]\nreturn files.Close(ctx)\n```",
+      "parentUuid": "4bb475df_42cba558",
+      "revId": "7940481f1d855114c56b5e3bb43e1dc8b28599e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
