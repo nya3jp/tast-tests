@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "007204f2_d47916a5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/enterprise_rollback_previous_version.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1153089
+      },
+      "writtenOn": "2022-09-09T19:51:04Z",
+      "side": 1,
+      "message": "IMHO, it\u0027s better to add these comments right above `Value` in the screenplay\u0027s search flags. They meant as a description next to the UUID to save readers to screenplay, which they might not even know where to  find.",
+      "revId": "64830f97422840605ea9ca1ecb4133a08fec81b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
