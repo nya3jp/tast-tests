@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d33933b1_4e86eda0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hps/camerabox_lol_on_mix_presence.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-09-09T02:12:57Z",
+      "side": 1,
+      "message": "consider wrapping the logs in the error message, see the comment in another CL for \"when to log\"",
+      "range": {
+        "startLine": 117,
+        "startChar": 1,
+        "endLine": 118,
+        "endChar": 64
+      },
+      "revId": "4922e4372d2c1bbc4596f4f9aa11d7d028923819",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec17c35f_d0099f17",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hps/camerabox_lol_on_mix_presence.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-09-09T02:12:57Z",
+      "side": 1,
+      "message": "time.Second",
+      "range": {
+        "startLine": 124,
+        "startChar": 83,
+        "endLine": 124,
+        "endChar": 96
+      },
+      "revId": "4922e4372d2c1bbc4596f4f9aa11d7d028923819",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c05da94c_90fa5de7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hps/camerabox_lol_on_mix_presence.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-09-09T02:12:57Z",
+      "side": 1,
+      "message": "reformat to the go style: `if err!\u003d...; err!\u003dnil{}`",
+      "range": {
+        "startLine": 124,
+        "startChar": 1,
+        "endLine": 124,
+        "endChar": 109
+      },
+      "revId": "4922e4372d2c1bbc4596f4f9aa11d7d028923819",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "377062bf_07be572d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hps/camerabox_lol_on_mix_presence.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-09-09T02:12:57Z",
+      "side": 1,
+      "message": "reformat to the go style: `if err!\u003d...; err!\u003dnil{}`",
+      "range": {
+        "startLine": 133,
+        "startChar": 1,
+        "endLine": 137,
+        "endChar": 0
+      },
+      "revId": "4922e4372d2c1bbc4596f4f9aa11d7d028923819",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2dae2344_6454c5f2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hps/camerabox_lol_on_mix_presence.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-09-09T02:12:57Z",
+      "side": 1,
+      "message": "reformat to the go style: `if err!\u003d...; err!\u003dnil{}`",
+      "range": {
+        "startLine": 147,
+        "startChar": 1,
+        "endLine": 154,
+        "endChar": 2
+      },
+      "revId": "4922e4372d2c1bbc4596f4f9aa11d7d028923819",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
