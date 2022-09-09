@@ -94,6 +94,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3bfd0dc0_bbaa1915",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1153089
+      },
+      "writtenOn": "2022-09-09T15:31:40Z",
+      "side": 1,
+      "message": "Unresolving this for visibility. Please do not submit until we\u0027ve reviwed/approved our feature space in screenplay.",
+      "parentUuid": "f253f44d_2e14f236",
+      "revId": "4ae13a229e3ae48a9a4e104fb19e74d2f9c2601c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7ea61b10_4278f489",
         "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/enterprise_rollback_previous_version.go",
         "patchSetId": 2
@@ -176,6 +194,24 @@
       "side": 1,
       "message": "It is in line 92.\nThere is also a check (and restoration if needed) in the PostTest of the autoupdate fixture: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/remote/updateutil/autoupdate_fixture.go;l\u003d89",
       "parentUuid": "42395084_6a83e716",
+      "revId": "4ae13a229e3ae48a9a4e104fb19e74d2f9c2601c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "289a1f8b_3d0b1e9c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/enterprise_rollback_previous_version.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1153089
+      },
+      "writtenOn": "2022-09-09T15:31:40Z",
+      "side": 1,
+      "message": "Thanks!",
+      "parentUuid": "64d71c15_a14e6d04",
       "revId": "4ae13a229e3ae48a9a4e104fb19e74d2f9c2601c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
