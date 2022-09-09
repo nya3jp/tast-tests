@@ -80,7 +80,7 @@ func IntentForward(ctx context.Context, s *testing.State) {
 	localWebURL := server.URL + "/" // Must end with a slash
 
 	checkIntent := func(action, data, url string, bt browser.Type) {
-		ctx, cancel := context.WithTimeout(ctx, 10*time.Second)
+		ctx, cancel := context.WithTimeout(ctx, time.Minute)
 		defer cancel()
 
 		testing.ContextLogf(ctx, "Testing: %s(%s) -> %s", action, data, url)

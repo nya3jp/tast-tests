@@ -59,7 +59,7 @@ func Save(ctx context.Context, tconn *chrome.TestConn) {
 	// Save a point-of-failure faillog.
 	dir, ok := testing.ContextOutDir(ctx)
 	if !ok {
-		testing.ContextLog(ctx, "Error creating basic_faillog directory")
+		testing.ContextLog(ctx, "Failed to get out directory")
 		return
 	}
 
@@ -74,7 +74,7 @@ func Save(ctx context.Context, tconn *chrome.TestConn) {
 	}
 
 	if err := os.MkdirAll(dir, 0755); err != nil {
-		testing.ContextLog(ctx, "Error creating basic_faillog directory: ", err)
+		testing.ContextLog(ctx, "Error creating lacros faillog directory: ", err)
 		return
 	}
 	faillog.SaveToDir(ctx, dir)
@@ -97,6 +97,8 @@ func Save(ctx context.Context, tconn *chrome.TestConn) {
 	if err := fsutil.CopyFile(lacrosLogPath, filepath.Join(dir, "lacros.log")); err != nil {
 		testing.ContextLog(ctx, "Failed to save lacros logs: ", err)
 	}
+
+	testing.ContextLog(ctx, "Saved lacros faillog")
 }
 
 // StopRecordAndSaveOnError stops the screen record and saves it under lacros faillog dir if the hasError closure returns true and there is a record started.

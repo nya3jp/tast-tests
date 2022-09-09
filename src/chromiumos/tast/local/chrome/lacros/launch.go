@@ -51,8 +51,15 @@ func Setup(ctx context.Context, f interface{}, bt browser.Type) (*chrome.Chrome,
 	}
 }
 
-// Connect connects to a running lacros instance (e.g launched by the UI) and returns a Lacros object that can be used to interact with it.
-func Connect(ctx context.Context, tconn *chrome.TestConn) (l *Lacros, retErr error) {
+func connect(ctx context.Context, tconn *chrome.TestConn, saveFailLog bool) (l *Lacros, retErr error) {
+	// Reserve a few seconds for faillog capture.
+	faillogCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
+	if saveFailLog {
+		defer lacrosfaillog.SaveIf(faillogCtx, tconn, func() bool { return retErr != nil })
+	}
+
 	agg := jslog.NewAggregator()
 	defer func() {
 		if retErr != nil {
@@ -88,6 +95,11 @@ func Connect(ctx context.Context, tconn *chrome.TestConn) (l *Lacros, retErr err
 	}, nil
 }
 
+// Connect connects to a running lacros instance (e.g launched by the UI) and returns a Lacros object that can be used to interact with it.
+func Connect(ctx context.Context, tconn *chrome.TestConn) (l *Lacros, retErr error) {
+	return connect(ctx, tconn, true)
+}
+
 // Launch launches lacros. Note that this function expects lacros to be closed
 // as a precondition.
 func Launch(ctx context.Context, tconn *chrome.TestConn) (l *Lacros, retErr error) {
@@ -114,7 +126,7 @@ func Launch(ctx context.Context, tconn *chrome.TestConn) (l *Lacros, retErr erro
 		return nil, errors.Wrap(err, "failed to wait for lacros")
 	}
 
-	l, err := Connect(ctx, tconn)
+	l, err := connect(ctx, tconn, false)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to connect to lacros")
 	}
