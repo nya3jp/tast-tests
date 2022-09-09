@@ -33,6 +33,24 @@
       "message": "lgtm",
       "revId": "daefd9bc4b91af54587e024110cb00e3c52b6f9d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "75813b71_6a958d6d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1542652
+      },
+      "writtenOn": "2022-09-09T16:34:23Z",
+      "side": 1,
+      "message": "That makes sense. Put them in the PostTest seems to have the same effect as deferring it at the beginning of every test. And cleaner. Just made the change. Thanks.",
+      "parentUuid": "38c8f47f_04d4b3d5",
+      "revId": "daefd9bc4b91af54587e024110cb00e3c52b6f9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
