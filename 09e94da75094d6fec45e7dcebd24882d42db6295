@@ -242,6 +242,30 @@
       },
       "revId": "09e94da75094d6fec45e7dcebd24882d42db6295",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "db403a7c_ceed6af4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/notifications/data/ArcNotificationTest2.apk.external",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-09-09T03:36:31Z",
+      "side": 1,
+      "message": "Sorry Lance, I don\u0027t actually have access to the source code. I know there are a bunch of android apps using the old method (i.e. apks) so feel free to continue using that method as long as it works 👍",
+      "parentUuid": "97bcb9dd_4afe1d00",
+      "range": {
+        "startLine": 2,
+        "startChar": 10,
+        "endLine": 2,
+        "endChar": 92
+      },
+      "revId": "09e94da75094d6fec45e7dcebd24882d42db6295",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
