@@ -25,8 +25,7 @@ func init() {
 			"arc-storage@google.com",
 			"kimiyuki@google.org", // Tast port.
 		},
-		// b:238260020 - disable aged (>1y) unpromoted informational tests
-		// Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"android_p", "chrome"},
 		Fixture:      "arcBooted",
 	})
