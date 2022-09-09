@@ -22,6 +22,30 @@
       },
       "revId": "ca7568f858c075da32cbf00914c1a387763ad884",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "94b20a67_530ee495",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hps/camerabox_lol_on.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2022-09-09T01:19:27Z",
+      "side": 1,
+      "message": "Yes, when I was using logs for debugging this was helpful to get a more comprehensive image of what\u0027s been happening.",
+      "parentUuid": "e007cdc8_15035e08",
+      "range": {
+        "startLine": 131,
+        "startChar": 4,
+        "endLine": 131,
+        "endChar": 9
+      },
+      "revId": "ca7568f858c075da32cbf00914c1a387763ad884",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
