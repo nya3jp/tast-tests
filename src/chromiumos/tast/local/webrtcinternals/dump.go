@@ -29,18 +29,19 @@ type GetUserMediaEntry struct {
 
 // PeerConnection represents an entry in the PeerConnections field of Dump.
 type PeerConnection struct {
-	Pid              int                  `json:"pid"`
-	RTCConfiguration string               `json:"rtcConfiguration"`
-	Constraints      string               `json:"constraints"`
-	URL              string               `json:"url"`
-	Stats            map[string]Statistic `json:"stats"`
-	UpdateLog        []Update             `json:"updateLog"`
+	Pid              int      `json:"pid"`
+	RTCConfiguration string   `json:"rtcConfiguration"`
+	Constraints      string   `json:"constraints"`
+	URL              string   `json:"url"`
+	Stats            StatsMap `json:"stats"`
+	UpdateLog        []Update `json:"updateLog"`
 }
 
 // Statistic represents an entry in the Stats field of PeerConnection.
 type Statistic struct {
 	StartTime TimeWithNanoseconds       `json:"startTime"`
 	EndTime   TimeWithNanoseconds       `json:"endTime"`
+	StatsType string                    `json:"statsType"`
 	Values    SliceWithJSONQuotedString `json:"values"`
 }
 
