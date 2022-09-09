@@ -39,6 +39,30 @@
       },
       "revId": "c8b761faaac7fdebed99e3d0cb656e9c30911f63",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77bb7ad6_3f124b09",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/gaia_zte_enrollment.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-09-09T16:31:32Z",
+      "side": 1,
+      "message": "Unfortunately you cannot have multiple Vals. So in order to do that what you\u0027d need to do is create a new struct that contains gaiaenrollment.TestParams and deviceDetails or one that just contains the entries of both in a flat structure.\nI think adding the latter to the gaiaenrollment helper is probably the nicer way, so you could add this:\n\n// ZTETestParams is a helper struct to keep parameters for ZTE gaia enrollment tests.\ntype ZTETestParams struct {\n\tDMServer string // device management server url\n\tPoolID   string // poolID for the used test account\n\tSerialNumber         string\n\tHardwareModel        string\n\tDeviceProvisionToken string\n\tCustomerID           string\n\tBatchKey             string\n}\n\nhere: https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/remote/gaiaenrollment/helper.go",
+      "parentUuid": "2b00c84c_ece810df",
+      "range": {
+        "startLine": 53,
+        "startChar": 4,
+        "endLine": 53,
+        "endChar": 52
+      },
+      "revId": "c8b761faaac7fdebed99e3d0cb656e9c30911f63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
