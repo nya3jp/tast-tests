@@ -1,4 +1,4 @@
-// Copyright 2018 The Chromium OS Authors. All rights reserved.
+// Copyright 2018 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -62,6 +62,9 @@ var EditTextActivity = TestActivity{".EditTextActivity", "Edit Text Activity"}
 
 // LiveRegionActivity is the struct for the live region text activity used in test cases.
 var LiveRegionActivity = TestActivity{".LiveRegionActivity", "Live Region Activity"}
+
+// ActionActivity is the struct for the action activity used in test cases.
+var ActionActivity = TestActivity{".ActionActivity", "Action Activity"}
 
 // IsEnabledAndroid checks if accessibility is enabled in Android.
 func IsEnabledAndroid(ctx context.Context, a *arc.ARC) (bool, error) {
