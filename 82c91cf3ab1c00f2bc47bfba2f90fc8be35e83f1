@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "873dc50f_9025d9dd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-09-09T00:50:03Z",
+      "side": 1,
+      "message": "FWIW this was caused by a merge conflict with another CL which already got reverted: b/245783316.",
+      "revId": "82c91cf3ab1c00f2bc47bfba2f90fc8be35e83f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
