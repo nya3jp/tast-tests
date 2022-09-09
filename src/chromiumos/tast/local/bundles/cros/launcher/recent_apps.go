@@ -92,9 +92,7 @@ func RecentApps(ctx context.Context, s *testing.State) {
 	tabletMode := testCase.TabletMode
 	arcBoot := testCase.BootWithArc
 
-	opts := []chrome.Option{
-		chrome.EnableFeatures("ProductivityLauncher"),
-	}
+	var opts []chrome.Option
 
 	// Previous tests may depend on launching an app.
 	// If an app is launched frequently enough in previous tests, it could be bumped up as recent app.

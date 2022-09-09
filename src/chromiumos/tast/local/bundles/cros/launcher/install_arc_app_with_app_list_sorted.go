@@ -146,9 +146,9 @@ func InstallArcAppWithAppListSorted(ctx context.Context, s *testing.State) {
 		s.Fatalf("Failed to create fake apps for verifying %v: %v", testParam.SortMethod, err)
 	}
 
-	// Turn on both the App List Sort and ARC options.
-	opts = append(opts, chrome.EnableFeatures("ProductivityLauncher", "LauncherAppSort"), chrome.ARCEnabled(),
-		chrome.UnRestrictARCCPU(), chrome.ExtraArgs(arc.DisableSyncFlags()...))
+	// Turn on ARC options.
+	opts = append(opts, chrome.ARCEnabled(), chrome.UnRestrictARCCPU(),
+		chrome.ExtraArgs(arc.DisableSyncFlags()...))
 
 	cr, err := chrome.New(ctx, opts...)
 	if err != nil {

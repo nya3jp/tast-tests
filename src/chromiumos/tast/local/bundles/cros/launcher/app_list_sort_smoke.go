@@ -99,9 +99,6 @@ func AppListSortSmoke(ctx context.Context, s *testing.State) {
 		s.Fatalf("Failed to create the fake apps for verifying %v: %v", testParam.SortMethod, err)
 	}
 
-	// Enable the app list sort.
-	opts = append(opts, chrome.EnableFeatures("ProductivityLauncher", "LauncherAppSort"))
-
 	cr, err := chrome.New(ctx, opts...)
 	if err != nil {
 		s.Fatal("Chrome login failed: ", err)

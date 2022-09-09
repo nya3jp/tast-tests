@@ -58,7 +58,7 @@ func ReorderNudgeSmoke(ctx context.Context, s *testing.State) {
 		enforceModeFlag = "--force-tablet-mode=clamshell"
 	}
 
-	cr, err := chrome.New(ctx, chrome.EnableFeatures("ProductivityLauncher", "LauncherAppSort"), chrome.ExtraArgs("--skip-reorder-nudge-show-threshold-duration", enforceModeFlag))
+	cr, err := chrome.New(ctx, chrome.EnableFeatures("LauncherAppSort"), chrome.ExtraArgs("--skip-reorder-nudge-show-threshold-duration", enforceModeFlag))
 	if err != nil {
 		s.Fatalf("Failed to start the chrome with %s: %v", enforceModeFlag, err)
 	}
