@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "09d92a53_a1d7ac3f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hps/hps_setting_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2022-09-09T01:52:02Z",
+      "side": 1,
+      "message": "Timestamps shouldn\u0027t be necessary, I\u0027ll remove them.\n\nGetting HpsSenseSignal from powerd isn\u0027t necessary either. But this would be help if the Chart tablet would continue dimming unexpectedly during the tests. Otherwise you\u0027ll need to know that we have this in powerd logs.",
+      "parentUuid": "15cb20e1_c3a6cd24",
+      "revId": "d6293e5ef4ee05f34272317f5c409add7d825e01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ff957afe_66090b16",
@@ -41,6 +59,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f95ca06_a131ffdb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hps/utils/screen_utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2022-09-09T01:52:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ff957afe_66090b16",
+      "range": {
+        "startLine": 111,
+        "startChar": 21,
+        "endLine": 111,
+        "endChar": 22
+      },
+      "revId": "d6293e5ef4ee05f34272317f5c409add7d825e01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7cb6f78f_1ff13d80",
@@ -54,6 +96,30 @@
       "writtenOn": "2022-09-08T01:38:12Z",
       "side": 1,
       "message": "`Get` is a forbidden prefix in Go. http://go/go-style/decisions#getters",
+      "range": {
+        "startLine": 123,
+        "startChar": 5,
+        "endLine": 123,
+        "endChar": 22
+      },
+      "revId": "d6293e5ef4ee05f34272317f5c409add7d825e01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d249dcb6_f90e0c5f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hps/utils/screen_utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2022-09-09T01:52:02Z",
+      "side": 1,
+      "message": "Is Retrieve ok?",
+      "parentUuid": "7cb6f78f_1ff13d80",
       "range": {
         "startLine": 123,
         "startChar": 5,
