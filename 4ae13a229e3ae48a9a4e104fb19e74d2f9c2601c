@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b71983e1_1c725d2f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-09-09T13:46:15Z",
+      "side": 1,
+      "message": "PTAL\n\nThis test covers rolling back to n-1, n-2 and n-3 so I\u0027ve added the respective annotations for screenplay.\nRollback to current-ltc and current-lts is still missing.",
+      "revId": "4ae13a229e3ae48a9a4e104fb19e74d2f9c2601c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
