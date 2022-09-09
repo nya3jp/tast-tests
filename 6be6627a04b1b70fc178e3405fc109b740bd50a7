@@ -39,6 +39,30 @@
       },
       "revId": "6be6627a04b1b70fc178e3405fc109b740bd50a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9486e2f1_9c430482",
+        "filename": "src/chromiumos/tast/local/chrome/projector/projector.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-09-09T05:55:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5263e876_339454db",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 50
+      },
+      "revId": "6be6627a04b1b70fc178e3405fc109b740bd50a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
