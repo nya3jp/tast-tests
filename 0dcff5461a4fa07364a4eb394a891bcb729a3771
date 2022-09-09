@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a5fe370_352c5770",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_client.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 909,
+      "author": {
+        "id": 1505078
+      },
+      "writtenOn": "2022-09-09T18:46:16Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4f9a6d84_d7ac9859",
+      "range": {
+        "startLine": 909,
+        "startChar": 3,
+        "endLine": 909,
+        "endChar": 18
+      },
+      "revId": "0dcff5461a4fa07364a4eb394a891bcb729a3771",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f76fcec2_55f8ace6",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-09-09T00:02:06Z",
       "side": 1,
       "message": "avoid using prefix `Get` for getters\n\nhttps://g3doc.corp.google.com/go/g3doc/style/decisions.md?cl\u003dhead#getters",
+      "range": {
+        "startLine": 937,
+        "startChar": 27,
+        "endLine": 937,
+        "endChar": 44
+      },
+      "revId": "0dcff5461a4fa07364a4eb394a891bcb729a3771",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc8cfc9b_8395c363",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_client.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 937,
+      "author": {
+        "id": 1505078
+      },
+      "writtenOn": "2022-09-09T18:46:16Z",
+      "side": 1,
+      "message": "Ack. Those functions have been used in many places. Let me do it in another refactor cl. Thank you!",
+      "parentUuid": "f76fcec2_55f8ace6",
       "range": {
         "startLine": 937,
         "startChar": 27,
