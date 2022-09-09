@@ -1,4 +1,4 @@
-// Copyright 2022 The Chromium OS Authors. All rights reserved.
+// Copyright 2022 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -43,16 +43,34 @@ func init() {
 			Val: testParam{
 				previousVersionTarget: 1,
 			},
+			ExtraSearchFlags: []*testing.StringPair{{
+				Key: "feature_id",
+				// Configure rollback on a device and ensure that it is correctly
+				// rolled back and data preserved (rollback_target: n-1).
+				Value: "screenplay-d2331732-a996-44b0-8ca4-901228d26cb7",
+			}},
 		}, {
 			Name: "rollback_2_versions",
 			Val: testParam{
 				previousVersionTarget: 2,
 			},
+			ExtraSearchFlags: []*testing.StringPair{{
+				Key: "feature_id",
+				// Configure rollback on a device and ensure that it is correctly
+				// rolled back and data preserved (rollback_target: n-2).
+				Value: "screenplay-451d7650-8757-49a4-9a24-828ec037908d",
+			}},
 		}, {
 			Name: "rollback_3_versions",
 			Val: testParam{
 				previousVersionTarget: 3,
 			},
+			ExtraSearchFlags: []*testing.StringPair{{
+				Key: "feature_id",
+				// Configure rollback on a device and ensure that it is correctly
+				// rolled back and data preserved (rollback_target: n-3).
+				Value: "screenplay-7765c9ba-f7e6-4490-93d5-73a6d4e7530b",
+			}},
 		}},
 		Fixture: fixture.Autoupdate,
 	})
