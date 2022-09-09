@@ -3,6 +3,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9178776a_ec231257",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/cloud_gaming_marketing_opt_in.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-09-09T00:34:43Z",
+      "side": 1,
+      "message": "How does the gaming model be determined? If it is enabled via some USE flag, we might want to consider using SoftwareDeps for future gaming models.",
+      "range": {
+        "startLine": 36,
+        "startChar": 37,
+        "endLine": 36,
+        "endChar": 55
+      },
+      "revId": "a0547dae87c66fd3a202297b3c242b9ca517dda7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41c5e5fd_b193e589",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/cloud_gaming_marketing_opt_in.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-09-09T00:34:43Z",
+      "side": 1,
+      "message": "Consider using the fixture: \"chromeLoggedIn\".",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 0
+      },
+      "revId": "a0547dae87c66fd3a202297b3c242b9ca517dda7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ad1c9ffc_3cd64e14",
         "filename": "src/chromiumos/tast/local/bundles/cros/oobe/cloud_gaming_marketing_opt_in.go",
         "patchSetId": 2
@@ -19,6 +65,29 @@
         "startChar": 31,
         "endLine": 63,
         "endChar": 74
+      },
+      "revId": "a0547dae87c66fd3a202297b3c242b9ca517dda7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "420bae16_1787e00c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/cloud_gaming_marketing_opt_in.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-09-09T00:34:43Z",
+      "side": 1,
+      "message": "Do we need to poll for gamingTitleVisible?",
+      "range": {
+        "startLine": 72,
+        "startChar": 11,
+        "endLine": 72,
+        "endChar": 19
       },
       "revId": "a0547dae87c66fd3a202297b3c242b9ca517dda7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
