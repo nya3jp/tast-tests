@@ -24,12 +24,12 @@ func init() {
 		Attr: []string{"group:mainline", "informational"},
 		Params: []testing.Param{
 			{
-				Name:              "target_models",
-				ExtraHardwareDeps: dep.TargetModels(),
+				Name:              "stable",
+				ExtraHardwareDeps: dep.StableModels(),
 			},
 			{
-				Name:              "non_target_models",
-				ExtraHardwareDeps: dep.NonTargetModels(),
+				Name:              "non_stable",
+				ExtraHardwareDeps: dep.NonStableModels(),
 			},
 		},
 	})
