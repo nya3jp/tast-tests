@@ -38,6 +38,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3e0daaf2_b01b5aa5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/fgsec_wpa_upgrade.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-09-09T22:53:18Z",
+      "side": 1,
+      "message": "Can we actually split this off into subtests for every upgrade/downgrade type we support, and have each subtest only do one upgrade/downgrade?",
+      "revId": "60c2bfcc55e0bc07eaa4f182b108adc5734fa38f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a656d06c_49472c2f",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/fgsec_wpa_upgrade.go",
         "patchSetId": 2
@@ -72,6 +89,23 @@
         "endLine": 56,
         "endChar": 15
       },
+      "revId": "60c2bfcc55e0bc07eaa4f182b108adc5734fa38f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47f718e8_627e03bf",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/fgsec_wpa_upgrade.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-09-09T22:53:18Z",
+      "side": 1,
+      "message": "Could we leave all APs configured to ensure that shill sees everything at once? It\u0027s not strictly necessary since connecting will persist it to the profile, but it seems more robust (and realistic) this way.",
       "revId": "60c2bfcc55e0bc07eaa4f182b108adc5734fa38f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
