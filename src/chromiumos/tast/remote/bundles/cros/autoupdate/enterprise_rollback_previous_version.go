@@ -39,20 +39,39 @@ func init() {
 		},
 		Timeout: updateutil.UpdateTimeout + 12*time.Minute,
 		Params: []testing.Param{{
+			// Configure rollback on a device and ensure that it is correctly
+			// rolled back (rollback_target: n-1).
 			Name: "rollback_1_version",
 			Val: testParam{
 				previousVersionTarget: 1,
 			},
+			ExtraSearchFlags: []*testing.StringPair{{
+
+				Key:   "feature_id",
+				Value: "screenplay-d2331732-a996-44b0-8ca4-901228d26cb7",
+			}},
 		}, {
+			// Configure rollback on a device and ensure that it is correctly
+			// rolled back (rollback_target: n-2).
 			Name: "rollback_2_versions",
 			Val: testParam{
 				previousVersionTarget: 2,
 			},
+			ExtraSearchFlags: []*testing.StringPair{{
+				Key:   "feature_id",
+				Value: "screenplay-451d7650-8757-49a4-9a24-828ec037908d",
+			}},
 		}, {
+			// Configure rollback on a device and ensure that it is correctly
+			// rolled back (rollback_target: n-3).
 			Name: "rollback_3_versions",
 			Val: testParam{
 				previousVersionTarget: 3,
 			},
+			ExtraSearchFlags: []*testing.StringPair{{
+				Key:   "feature_id",
+				Value: "screenplay-7765c9ba-f7e6-4490-93d5-73a6d4e7530b",
+			}},
 		}},
 		Fixture: fixture.Autoupdate,
 	})
