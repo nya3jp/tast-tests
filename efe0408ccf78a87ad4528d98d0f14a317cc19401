@@ -58,6 +58,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b99ba97c_1efff89d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1403852
+      },
+      "writtenOn": "2022-09-09T20:58:58Z",
+      "side": 1,
+      "message": "Found a naming inconsistency with screencast folder, metadata file and video file.\nWaiting the fix[1] and need to verify the name are the same in this test.\n\n[1]https://chromium-review.googlesource.com/c/chromium/src/+/3884804 will fix this issue.",
+      "revId": "efe0408ccf78a87ad4528d98d0f14a317cc19401",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0d64ba1d_229ee485",
