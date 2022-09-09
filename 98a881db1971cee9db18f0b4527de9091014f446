@@ -16,6 +16,74 @@
       "message": "@timloh, do you think someone on your team can have a look at this?\n\nSeems to be testing functionality with crostini.",
       "revId": "98a881db1971cee9db18f0b4527de9091014f446",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2eb7e9d8_3af8f393",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-09-09T07:02:13Z",
+      "side": 1,
+      "message": "+2 from a Test Review perspective, but please wait for a look over by the crostini team.",
+      "revId": "98a881db1971cee9db18f0b4527de9091014f446",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7085706b_31f2d350",
+        "filename": "src/chromiumos/tast/local/bundles/cros/intel/crostini_linux_terminal_functionality.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-09-09T07:02:13Z",
+      "side": 1,
+      "message": "clar: Crostini team: should Intel be using one of your crostini fixtures or test preconditions here instead?",
+      "revId": "98a881db1971cee9db18f0b4527de9091014f446",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "898f7b42_104509bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/intel/crostini_linux_terminal_functionality.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-09-09T07:02:13Z",
+      "side": 1,
+      "message": "clar: What is the point of the test that does not check VTD?\nI was under the impression we already have tests checking crostini installs...",
+      "revId": "98a881db1971cee9db18f0b4527de9091014f446",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fbe4a419_9203ddcb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/intel/crostini_linux_terminal_functionality.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-09-09T07:02:13Z",
+      "side": 1,
+      "message": "nit: These are only used once, they don\u0027t seem particularly related, prefer to define them next to where they are used.",
+      "revId": "98a881db1971cee9db18f0b4527de9091014f446",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
