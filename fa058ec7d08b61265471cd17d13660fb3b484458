@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "42d10b93_579cdb18",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_obeys_rollback.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2022-09-09T23:40:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bcff135f_f294c87e",
+      "range": {
+        "startLine": 69,
+        "startChar": 8,
+        "endLine": 69,
+        "endChar": 74
+      },
+      "revId": "fa058ec7d08b61265471cd17d13660fb3b484458",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "869299ab_93876833",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c133f7e9_64f91e67",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_obeys_rollback.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2022-09-09T23:40:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "869299ab_93876833",
+      "range": {
+        "startLine": 107,
+        "startChar": 1,
+        "endLine": 107,
+        "endChar": 47
+      },
+      "revId": "fa058ec7d08b61265471cd17d13660fb3b484458",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "faabd83a_abde7b54",
@@ -77,6 +125,30 @@
       "writtenOn": "2022-09-06T23:21:35Z",
       "side": 1,
       "message": "I think you can use [dutfs.RemoveAll](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/remote/dutfs/dutfs.go;l\u003d122-132;drc\u003d49024c3171973b1a1ce31a22a2579b72c1032a1c).",
+      "range": {
+        "startLine": 127,
+        "startChar": 2,
+        "endLine": 127,
+        "endChar": 69
+      },
+      "revId": "fa058ec7d08b61265471cd17d13660fb3b484458",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9efcd9c6_8ca4ad8c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_obeys_rollback.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2022-09-09T23:40:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "faabd83a_abde7b54",
       "range": {
         "startLine": 127,
         "startChar": 2,
