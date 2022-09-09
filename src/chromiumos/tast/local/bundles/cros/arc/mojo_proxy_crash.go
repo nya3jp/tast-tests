@@ -23,8 +23,7 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Test mojo proxy crash handling",
 		Contacts:     []string{"hashimoto@chromium.org", "arc-eng@google.com"},
-		// b:238260020 - disable aged (>1y) unpromoted informational tests
-		// Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "android_vm"},
 		Timeout:      10 * time.Minute,
 	})
