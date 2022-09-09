@@ -13,6 +13,7 @@ import (
 	"os"
 	"path"
 	"strconv"
+	"strings"
 	"time"
 
 	"chromiumos/tast/errors"
@@ -21,7 +22,6 @@ import (
 
 const (
 	dutPowerCmd         = "dut-power"
-	dutPowerOutputDir   = "/tmp/dut-power-output"
 	dutPowerTmpPrefix   = "dut-power-results"
 	ecSummary           = "ec_summary.json"
 	onboardAccumSummary = "onboard.accum_summary.json"
@@ -47,19 +47,27 @@ func NewDutPowerContext(ctx context.Context, h *firmware.Helper) *DutPowerContex
 }
 
 // Measure measures power consumption through dut-power
-func (p *DutPowerContext) Measure(duration time.Duration) (Results, error) {
-	// Clear any files from a previous run
-	if err := p.h.ServoProxy.RunCommand(p.ctx, false, "rm", "-rf", dutPowerOutputDir); err != nil {
-		e := fmt.Sprintf("failed to clear tmp files on proxy: %s", err)
-		return nil, errors.New(e)
-	}
-
+//
+// allSummaries - if true, merge results from all summary files, otherwise only
+// return results from the first summary file. Summaries are checked in order:
+//  1. "onboard.accum_summary.json"
+//  2. "onboard_summary.json"
+//  3. "ec_summary.json"
+func (p *DutPowerContext) Measure(duration time.Duration, allSummaries bool) (Results, error) {
 	// Run dut-power on the servod host to get our measurements
 	time := strconv.Itoa(int(duration.Seconds()))
-	err := p.h.ServoProxy.RunCommand(p.ctx, false, dutPowerCmd, "-o", dutPowerOutputDir, "-t", time, "--save-json")
+	output, err := p.h.ServoProxy.OutputCommand(p.ctx, false, dutPowerCmd, "-t", time, "--save-json")
 	if err != nil {
 		e := fmt.Sprintf("failed to run dut-power: %s", err)
 		return nil, errors.New(e)
+	}
+
+	// Build a map of output files to their paths.
+	outputFiles := make(map[string]string)
+	for _, line := range strings.Split(string(output), "\n") {
+		if strings.Contains(line, "/power_measurements/") {
+			outputFiles[path.Base(line)] = line
+		}
 	}
 
 	dutPowerLocalDir, err := os.MkdirTemp("", dutPowerTmpPrefix)
@@ -68,44 +76,45 @@ func (p *DutPowerContext) Measure(duration time.Duration) (Results, error) {
 		return nil, errors.New(e)
 	}
 
-	// Prioritize attempt to use the onboard summaries first then fall back to the EC
-	// The accumulator summary may not be present in certain cases, e.g.
-	// short measurement times
-	logPaths := []string{
+	// Read all results from the following files, if they exist.
+	means := make(map[string]float32)
+	for _, logPath := range []string{
 		onboardAccumSummary,
 		onboardSummary,
 		ecSummary,
-	}
+	} {
+		remotePath, inLog := outputFiles[logPath]
+		if !inLog {
+			continue
+		}
+		localPath := path.Join(dutPowerLocalDir, logPath)
+		contents, err := p.readRemoteFile(remotePath, localPath)
+		if err != nil {
+			return nil, errors.Wrap(err, "failed to read dut-power result file")
+		}
 
-	var contents = []byte{}
-	for i := 0; i < len(logPaths); i++ {
-		remotePath := path.Join(dutPowerOutputDir, logPaths[i])
-		localPath := path.Join(dutPowerLocalDir, logPaths[i])
-		contents, err = p.readRemoteFile(remotePath, localPath)
-
-		if err == nil {
+		measurements := make(map[string]measurement)
+		if err := json.Unmarshal(contents, &measurements); err != nil {
+			return nil, errors.Wrap(err, "failed to decode results")
+		}
+		for key, value := range measurements {
+			if key == "Sample_msecs" || key == "timeline" || key == "time" {
+				// Don't report time related metrics, means don't make sense
+				// for them, and they'll collide anyways.
+				continue
+			}
+			if _, exists := means[key]; exists {
+				return nil, errors.Errorf("more than one result named %q", key)
+			}
+			means[key] = value.Mean
+		}
+		if !allSummaries {
 			break
 		}
 	}
 
-	if err != nil {
-		return nil, errors.New("failed to read measurement logs")
-	}
-
-	measurements := make(map[string]measurement)
-	if err := json.Unmarshal(contents, &measurements); err != nil {
-		e := fmt.Sprintf("failed to decode results: %s", err)
-		return nil, errors.New(e)
-	}
-
-	means := make(map[string]float32)
-	for key, value := range measurements {
-		means[key] = value.Mean
-	}
-
 	results := NewResultsGeneric()
 	results.AddMeans(means)
-
 	return &results, nil
 }
 
