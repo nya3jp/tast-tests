@@ -16,6 +16,46 @@
       "message": "Toni and tast-owners, please take a look.",
       "revId": "48d06f5e3c78e89f14e112679753c5b57314635c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43c0d032_07a11e83",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/app_list_sort_smoke.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-09-09T23:50:49Z",
+      "side": 1,
+      "message": "let\u0027s remove this one too (it\u0027s on by default)",
+      "range": {
+        "startLine": 103,
+        "startChar": 44,
+        "endLine": 103,
+        "endChar": 59
+      },
+      "revId": "48d06f5e3c78e89f14e112679753c5b57314635c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0075ea5_406cdad2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/install_arc_app_with_app_list_sorted.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-09-09T23:50:49Z",
+      "side": 1,
+      "message": "ditto, let\u0027s remove this one",
+      "revId": "48d06f5e3c78e89f14e112679753c5b57314635c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
