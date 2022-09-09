@@ -17,7 +17,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         APIVPDInfo,
+		Func:         PlatformAPIVPDInfo,
 		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Tests chrome.os.telemetry.getVpdInfo Chrome Extension API function exposed to Telemetry Extension",
 		Contacts: []string{
@@ -72,8 +72,8 @@ func init() {
 	})
 }
 
-// APIVPDInfo tests chrome.os.telemetry.getVpdInfo Chrome Extension API functionality.
-func APIVPDInfo(ctx context.Context, s *testing.State) {
+// PlatformAPIVPDInfo tests chrome.os.telemetry.getVpdInfo Chrome Extension API functionality.
+func PlatformAPIVPDInfo(ctx context.Context, s *testing.State) {
 	v := s.FixtValue().(*fixture.Value)
 
 	want, err := fetchVPDInfo(ctx)

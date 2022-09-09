@@ -17,7 +17,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         APICPUInfo,
+		Func:         PlatformAPICPUInfo,
 		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Tests chrome.os.telemetry.getCpuInfo Chrome Extension API function exposed to Telemetry Extension",
 		Contacts: []string{
@@ -118,8 +118,8 @@ type responseCHT struct {
 	PhysicalCPUs    []physicalCPUInfoCHT `json:"physical_cpus"`
 }
 
-// APICPUInfo tests chrome.os.telemetry.getCpuInfo Chrome Extension API functionality.
-func APICPUInfo(ctx context.Context, s *testing.State) {
+// PlatformAPICPUInfo tests chrome.os.telemetry.getCpuInfo Chrome Extension API functionality.
+func PlatformAPICPUInfo(ctx context.Context, s *testing.State) {
 	v := s.FixtValue().(*fixture.Value)
 
 	// get system info from cros-health-tool.

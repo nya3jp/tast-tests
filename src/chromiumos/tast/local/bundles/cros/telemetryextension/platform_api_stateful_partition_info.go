@@ -18,7 +18,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         APIStatefulPartitionInfo,
+		Func:         PlatformAPIStatefulPartitionInfo,
 		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Tests chrome.os.diagnostics.getStatefulPartitionInfo Chrome Extension API function exposed to Telemetry Extension",
 		Contacts: []string{
@@ -74,7 +74,7 @@ func init() {
 	})
 }
 
-func APIStatefulPartitionInfo(ctx context.Context, s *testing.State) {
+func PlatformAPIStatefulPartitionInfo(ctx context.Context, s *testing.State) {
 	v := s.FixtValue().(*fixture.Value)
 
 	// get the actual data from cros-health-tool.
