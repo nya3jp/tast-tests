@@ -202,6 +202,12 @@ func AccessibilitySpeech(ctx context.Context, s *testing.State) {
 				a11y.NewStringExpectation("Press Search plus Space to perform click"),
 				a11y.NewStringExpectation("Press Search plus Shift plus Space to perform long click"),
 			},
+		}, {
+			"Search+Right",
+			[]a11y.SpeechExpectation{
+				a11y.NewRegexExpectation("(?i)CUSTOM ACTION"), a11y.NewStringExpectation("Button"),
+				a11y.NewStringExpectation("Actions available. Press Search plus Ctrl plus A to view"),
+			},
 		},
 	}
 
