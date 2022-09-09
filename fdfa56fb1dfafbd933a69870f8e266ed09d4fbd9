@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "78daa322_2a835ecb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hps/hps_setting_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2022-09-09T06:21:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "07b8c841_8a6e08d9",
+      "range": {
+        "startLine": 127,
+        "startChar": 13,
+        "endLine": 127,
+        "endChar": 28
+      },
+      "revId": "fdfa56fb1dfafbd933a69870f8e266ed09d4fbd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a84d2379_92ae5f41",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6339d7bd_6bddbc32",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hps/hps_setting_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2022-09-09T06:21:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a84d2379_92ae5f41",
+      "range": {
+        "startLine": 128,
+        "startChar": 13,
+        "endLine": 128,
+        "endChar": 28
+      },
+      "revId": "fdfa56fb1dfafbd933a69870f8e266ed09d4fbd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f145614f_fe148310",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-09-09T02:08:35Z",
       "side": 1,
       "message": "a better way is to wrap the logs in the errors:\n```\nif err!\u003dnil{\n    return nil, errors.Wrapf(err, \"...quickDimEnabled:%s,...\",quickDimEnabled.Value)\n}\nreturn response, err\n```",
+      "range": {
+        "startLine": 183,
+        "startChar": 1,
+        "endLine": 187,
+        "endChar": 21
+      },
+      "revId": "fdfa56fb1dfafbd933a69870f8e266ed09d4fbd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ea344ff_5148abb1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hps/hps_setting_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2022-09-09T06:21:17Z",
+      "side": 1,
+      "message": "It wasn\u0027t actually for errors, it\u0027s to figure out what delays we end up using. Removed these lines.",
+      "parentUuid": "f145614f_fe148310",
       "range": {
         "startLine": 183,
         "startChar": 1,
