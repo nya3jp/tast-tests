@@ -1,4 +1,4 @@
-// Copyright 2020 The Chromium OS Authors. All rights reserved.
+// Copyright 2020 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -121,6 +121,9 @@ type periodicConfig struct {
 const (
 	enabledSyscallsBrya    string = "enabled_syscalls_brya.json"
 	enabledSyscallsNonBrya string = "enabled_syscalls.json"
+
+	syzManagerHost string = "localhost"
+	syzManagerPort int    = 56701
 )
 
 func init() {
@@ -187,6 +190,12 @@ func Wrapper(ctx context.Context, s *testing.State) {
 		s.Fatal("Unable to find syzkaller arch: ", err)
 	}
 	s.Log("syzArch found to be: ", syzArch)
+
+	kernelCommit, err := findKernelCommit(ctx, d)
+	if err != nil {
+		s.Fatal("Unable to find kernel commit: ", err)
+	}
+	s.Log("kernelCommit found to be: ", kernelCommit)
 
 	syzkallerTastDir, err := ioutil.TempDir("", "tast-syzkaller")
 	if err != nil {
@@ -264,7 +273,7 @@ func Wrapper(ctx context.Context, s *testing.State) {
 		Name:      board,
 		Target:    fmt.Sprintf("linux/%v", syzArch),
 		Reproduce: false,
-		HTTP:      "localhost:56701",
+		HTTP:      fmt.Sprintf("%v:%v", syzManagerHost, syzManagerPort),
 		Workdir:   syzkallerWorkdir,
 		Syzkaller: artifactsDir,
 		Type:      "isolated",
@@ -326,6 +335,19 @@ func Wrapper(ctx context.Context, s *testing.State) {
 		if err := testing.Sleep(ctx, syzkallerRunDuration); err != nil {
 			managerCmd.Kill()
 			s.Fatal("Failed to wait on syz-manager: ", err)
+		}
+
+		// Fetch coverage from syz-manager before stopping syz-manager.
+		if isLocal.Value() != "true" {
+			if err := saveCoverage(
+				ctx,
+				s.RequiredVar("syzkaller.Wrapper.botoCredSection"),
+				s.OutDir(),
+				board,
+				kernelCommit,
+			); err != nil {
+				s.Fatal("Failed to upload coverage info: ", err)
+			}
 		}
 
 		managerCmd.Process.Signal(os.Interrupt)
@@ -416,6 +438,44 @@ func saveCorpus(ctx context.Context, cred, board, corpusPath string) error {
 	}
 	testing.ContextLog(ctx, "Uploaded ", url)
 	return nil
+}
+
+func saveCoverage(ctx context.Context, cred, outDir, board, kernelCommit string) error {
+	timestamp := time.Now().Format("2006-01-02-15:04:05")
+	coverName := fmt.Sprintf("rawcover-%v-%v-%v", board, timestamp, kernelCommit)
+	coverFile := filepath.Join(outDir, coverName)
+
+	testing.ContextLog(ctx, "Retrieving rawcoverage to ", coverFile)
+	coverURL := fmt.Sprintf("http://%v:%v/rawcover32", syzManagerHost, syzManagerPort)
+	if err := testexec.CommandContext(ctx, "wget", coverURL, "-O", coverFile).Run(); err != nil {
+		return errors.Wrap(err, "unable to retrieve rawcover: ", err)
+	}
+
+	uploadURL := fmt.Sprintf("%s/rawcover32/%s", gsURL, coverName)
+	testing.ContextLog(ctx, "Uploading to ", uploadURL)
+	if err := gsutilCmd(ctx, cred, "copy", coverFile, uploadURL).Run(testexec.DumpLogOnError); err != nil {
+		return errors.Wrap(err, "failed to save coverage file")
+	}
+	testing.ContextLog(ctx, "Uploaded to ", uploadURL)
+	return nil
+}
+
+func findKernelCommit(ctx context.Context, d *dut.DUT) (string, error) {
+	kernelRelease, err := d.Conn().CommandContext(ctx, "uname", "-r").Output()
+	if err != nil {
+		return "", errors.Wrap(err, "failed to find uname")
+	}
+	// Release for devices with a debug kernel should look something as follows.
+	// "5.10.141-lockdep-19696-gb7597b887eec".
+	parts := strings.Split(strings.TrimSpace(string(kernelRelease)), "-")
+	if len(parts) < 2 {
+		return "", errors.Errorf("unexpected release in uname [%v]", string(kernelRelease))
+	}
+	commit := parts[len(parts)-1]
+	if !strings.HasPrefix(commit, "g") {
+		return "", errors.Errorf("unexpected commit [%v] for uname [%v]", commit, kernelRelease)
+	}
+	return commit[1:], nil
 }
 
 func findSyzkallerBoardAndArch(ctx context.Context, d *dut.DUT) (board, arch string, err error) {
