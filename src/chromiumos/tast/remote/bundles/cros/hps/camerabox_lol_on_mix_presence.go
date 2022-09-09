@@ -6,6 +6,7 @@ package hps
 
 import (
 	"context"
+	"math"
 	"time"
 
 	"github.com/golang/protobuf/ptypes/empty"
@@ -15,9 +16,11 @@ import (
 	"chromiumos/tast/common/hps/hpsutil"
 	"chromiumos/tast/common/media/caps"
 	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/bundles/cros/hps/utils"
 	"chromiumos/tast/rpc"
 	pb "chromiumos/tast/services/cros/hps"
+	"chromiumos/tast/ssh"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -95,7 +98,7 @@ func CameraboxLoLOnMixPresence(ctx context.Context, s *testing.State) {
 		s.Fatal("Error getting delay settings: ", err)
 	}
 
-	brightness, err := utils.GetBrightness(hctx.Ctx, dut.Conn())
+	initialBrightness, err := utils.GetBrightness(hctx.Ctx, dut.Conn())
 	if err != nil {
 		s.Fatal("Error failed to get brightness: ", err)
 	}
@@ -105,33 +108,53 @@ func CameraboxLoLOnMixPresence(ctx context.Context, s *testing.State) {
 		s.Fatal("Error open hps-internals")
 	}
 
-	if err := utils.PollForDim(ctx, brightness, quickDimMetrics.DimDelay.AsDuration(), false, dut.Conn()); err != nil {
+	// Expect screen will dim quickly with ZeroPresence.
+	if err := utils.PollForDim(ctx, initialBrightness, quickDimMetrics.DimDelay.AsDuration(), false, dut.Conn()); err != nil {
 		s.Fatal("Error when polling for brightness: ", err)
 	}
 
+	dimmedBrightness, err := utils.GetBrightness(hctx.Ctx, dut.Conn())
+
+	// Expect screen will undim quickly after showing a face.
+	startTime := time.Now()
 	displayChart.Display(ctx, hostPaths[utils.OnePresence])
-	newBrightness, err := utils.GetBrightness(hctx.Ctx, dut.Conn())
-	if err != nil {
-		s.Fatal("Error failed to get brightness: ", err)
-	}
-	testing.Sleep(ctx, time.Second)
-	if newBrightness != brightness {
-		s.Fatal("Did not undim screen with human presence")
+	testing.ContextLog(ctx, "Expect screen to undim with one presence")
+	if err = expectBrightnessChange(ctx, dimmedBrightness, initialBrightness, startTime, time.Second, dut.Conn()); err != nil {
+		s.Error("Expected screen to undim: ", err)
 	}
 
 	// Simulate user leaving again
+	undimTime := time.Now()
 	displayChart.Display(ctx, hostPaths[utils.ZeroPresence])
-	if err := utils.PollForDim(ctx, brightness, quickDimMetrics.DimDelay.AsDuration(), false, dut.Conn()); err != nil {
+	testing.ContextLog(ctx, "Expect screen to dim with zero presence")
+	if err = expectBrightnessChange(ctx, initialBrightness, dimmedBrightness, undimTime, quickDimMetrics.DimDelay.AsDuration(), dut.Conn()); err != nil {
+		s.Error("Expected screen to dim: ", err)
+	}
+
+	if err := utils.PollForDim(ctx, initialBrightness, quickDimMetrics.ScreenOffDelay.AsDuration(), true, dut.Conn()); err != nil {
 		s.Fatal("Error when polling for brightness: ", err)
 	}
 
-	if err := utils.PollForDim(ctx, brightness, quickDimMetrics.ScreenOffDelay.AsDuration(), true, dut.Conn()); err != nil {
-		s.Fatal("Error when polling for brightness: ", err)
-	}
+	// Not waiting for the lock screen, since it's controlled by "Show lock screen after waking from sleep" setting.
+}
 
-	utils.WaitWithDelay(ctx, quickDimMetrics.LockDelay.AsDuration())
-	if _, err := client.CheckForLockScreen(hctx.Ctx, &empty.Empty{}); err != nil {
-		s.Fatal("The system failed to lock: ", err)
+func expectBrightnessChange(ctx context.Context, initialBrightness, expectedBrightness float64, startTime time.Time, maxDuration time.Duration, conn *ssh.Conn) error {
+	if err := utils.PollForBrightnessChange(ctx, initialBrightness, maxDuration, conn); err != nil {
+		return err
 	}
-
+	endTime := time.Now()
+	newBrightness, err := utils.GetBrightness(ctx, conn)
+	if err != nil {
+		return err
+	}
+	duration := endTime.Sub(startTime)
+	testing.ContextLog(ctx, "Brightness changed to ", newBrightness, " in ", duration.Seconds(), "s")
+	if newBrightness != expectedBrightness {
+		return errors.Errorf("Brightness is not what we expected: expected %f, got %f", expectedBrightness, newBrightness)
+	}
+	delta := math.Abs(duration.Seconds() - maxDuration.Seconds())
+	if delta > utils.BrightnessChangeTimeoutSlackDuration.Seconds() {
+		return errors.Errorf("Duration delta (%f) is greater than allowed slack: %f", delta, duration.Seconds())
+	}
+	return nil
 }
