@@ -21,7 +21,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         SerialNumberPermission,
+		Func:         PlatformSerialNumberPermission,
 		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Tests that Chrome extension can have options page and request additional serial number permission at runtime",
 		Contacts: []string{
@@ -56,8 +56,8 @@ func init() {
 	})
 }
 
-// SerialNumberPermission tests Chrome extension can have options page and request additional serial number permission at runtime.
-func SerialNumberPermission(ctx context.Context, s *testing.State) {
+// PlatformSerialNumberPermission tests Chrome extension can have options page and request additional serial number permission at runtime.
+func PlatformSerialNumberPermission(ctx context.Context, s *testing.State) {
 	v := s.FixtValue().(*fixture.Value)
 
 	if err := checkPermissions(ctx, v.ExtConn); err != nil {

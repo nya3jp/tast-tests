@@ -15,7 +15,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         MessagePipe,
+		Func:         PlatformMessagePipe,
 		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Tests message pipe functionality between PWA and Chrome extension",
 		Contacts: []string{
@@ -70,8 +70,8 @@ func init() {
 	})
 }
 
-// MessagePipe tests that PWA and Chrome extension have a capability to communicate with each other.
-func MessagePipe(ctx context.Context, s *testing.State) {
+// PlatformMessagePipe tests that PWA and Chrome extension have a capability to communicate with each other.
+func PlatformMessagePipe(ctx context.Context, s *testing.State) {
 	v := s.FixtValue().(*fixture.Value)
 
 	type telemetryRequest struct {
