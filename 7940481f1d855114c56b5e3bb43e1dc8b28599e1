@@ -86,6 +86,24 @@
       "parentUuid": "4bb475df_42cba558",
       "revId": "7940481f1d855114c56b5e3bb43e1dc8b28599e1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57b3ca5f_2c773f17",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/fsp.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2022-09-09T14:25:31Z",
+      "side": 1,
+      "message": "Anyway, I\u0027d defer to vsavu@ about what is the best practice here.",
+      "parentUuid": "cd79e27f_a7ecb272",
+      "revId": "7940481f1d855114c56b5e3bb43e1dc8b28599e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
