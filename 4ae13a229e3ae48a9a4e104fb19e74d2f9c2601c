@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "67f7221d_e9cedbdf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-09-09T16:08:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "db6564d3_6a0fd134",
+      "revId": "4ae13a229e3ae48a9a4e104fb19e74d2f9c2601c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e877a476_8a82b6a7",
@@ -41,6 +59,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "82517fc2_c895662e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-09-09T16:08:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e877a476_8a82b6a7",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 73
+      },
+      "revId": "4ae13a229e3ae48a9a4e104fb19e74d2f9c2601c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "037f3049_7742abe8",
@@ -54,6 +96,30 @@
       "writtenOn": "2022-09-09T15:32:43Z",
       "side": 1,
       "message": "IMHO this is an internal site and code is public, so I\u0027d replace it with a shortlink: http://shortn/_6tVriVNFQI.",
+      "range": {
+        "startLine": 11,
+        "startChar": 8,
+        "endLine": 11,
+        "endChar": 34
+      },
+      "revId": "4ae13a229e3ae48a9a4e104fb19e74d2f9c2601c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "924dab71_51d8fc85",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-09-09T16:08:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "037f3049_7742abe8",
       "range": {
         "startLine": 11,
         "startChar": 8,
@@ -146,6 +212,24 @@
       "writtenOn": "2022-09-09T14:41:00Z",
       "side": 1,
       "message": "Please add description and parameters of the feature as a comment. E.g.\n\n```\n// Configure rollback on a device and ensure that it is correctly rolled back.\n// rollback_target: n-1\n```",
+      "revId": "4ae13a229e3ae48a9a4e104fb19e74d2f9c2601c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7378e030_231d6460",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/enterprise_rollback_previous_version.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-09-09T16:08:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ea61b10_4278f489",
       "revId": "4ae13a229e3ae48a9a4e104fb19e74d2f9c2601c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
