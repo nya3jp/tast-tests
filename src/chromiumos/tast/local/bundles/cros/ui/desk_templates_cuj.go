@@ -142,7 +142,7 @@ func DeskTemplatesCUJ(ctx context.Context, s *testing.State) {
 		defer ash.SetOverviewModeAndWait(cleanupCtx, tconn, false)
 
 		// Find the "save desk as a template" button.
-		saveDeskButton := nodewith.ClassName("SaveDeskTemplateButton")
+		saveDeskButton := nodewith.ClassName("SavedDeskSaveDeskButton")
 		desksTemplatesGridView := nodewith.ClassName("SavedDeskLibraryView")
 
 		if err := uiauto.Combine(

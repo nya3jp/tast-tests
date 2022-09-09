@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/common/fixture"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
+	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
@@ -82,6 +83,9 @@ func AdminTemplatesLaunch(ctx context.Context, s *testing.State) {
 	iurl, ihash := eds.ServePolicyData(templateJSON)
 
 	defer ash.SetOverviewModeAndWait(cleanupCtx, tconn, false)
+	if _, err := apps.PrimaryBrowser(ctx, tconn); err != nil {
+		s.Fatal("Could not find the primary browser app info: ", err)
+	}
 	policiesToServe := []policy.Policy{
 		&policy.PreconfiguredDeskTemplates{Val: &policy.PreconfiguredDeskTemplatesValue{Url: iurl, Hash: ihash}},
 		&policy.DeskTemplatesEnabled{Val: true},
@@ -120,7 +124,7 @@ func AdminTemplatesLaunch(ctx context.Context, s *testing.State) {
 			// Show admin desk template.
 			if err := uiauto.Combine(
 				"show the admin desk template",
-				ac.LeftClick(templatesButton),
+				ac.DoDefault(templatesButton),
 				// Wait for the desk templates grid shows up.
 				ac.WaitUntilExists(desksTemplatesGridView),
 			)(ctx); err != nil {
@@ -145,7 +149,7 @@ func AdminTemplatesLaunch(ctx context.Context, s *testing.State) {
 			// Launch the admin template.
 			if err := uiauto.Combine(
 				"launch the admin template",
-				ac.LeftClick(adminTemplate),
+				ac.DoDefault(adminTemplate),
 				// Wait for the new desk to appear.
 				ac.WaitUntilExists(newDeskMiniView),
 			)(ctx); err != nil {
