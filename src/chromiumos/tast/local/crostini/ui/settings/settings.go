@@ -105,6 +105,10 @@ func OpenLinuxSubpage(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Ch
 		return nil, errors.Wrap(err, "failed to go to linux subpage")
 	}
 
+	// The remove button is initially unstable in the a11y tree on low-end
+	// devices. Add a sleep for the node to be stable.
+	testing.Sleep(ctx, time.Second)
+
 	return &Settings{tconn: tconn, ui: ui}, nil
 }
 
