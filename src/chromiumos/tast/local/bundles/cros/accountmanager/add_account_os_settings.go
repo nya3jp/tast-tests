@@ -122,14 +122,9 @@ func AddAccountOSSettings(ctx context.Context, s *testing.State) {
 	}
 	accountAddedStart := time.Now()
 
-	// Make sure that the settings page is focused again.
-	if err := ui.WaitUntilExists(addAccountButton)(ctx); err != nil {
-		s.Fatal("Failed to find Add Google Account button: ", err)
-	}
-	// Find "More actions, <email>" button to make sure that account was added.
-	moreActionsButton := nodewith.Name("More actions, " + username).Role(role.Button)
-	if err := ui.WaitUntilExists(moreActionsButton)(ctx); err != nil {
-		s.Fatal("Failed to find More actions button: ", err)
+	// Check that account is present in Account Manager.
+	if err := accountmanager.CheckAccountPresentAction(tconn, cr, username)(ctx); err != nil {
+		s.Fatal("Failed to find the account in account manager: ", err)
 	}
 
 	// Check that account is present in ARC.
@@ -155,6 +150,7 @@ func AddAccountOSSettings(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to remove account from OS Settings: ", err)
 	}
 
+	moreActionsButton := nodewith.Name("More actions, " + username).Role(role.Button)
 	if err := ui.WaitUntilGone(moreActionsButton)(ctx); err != nil {
 		s.Fatal("Failed to remove account: ", err)
 	}

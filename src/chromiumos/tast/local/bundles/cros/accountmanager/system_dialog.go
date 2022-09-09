@@ -117,13 +117,8 @@ func SystemDialog(ctx context.Context, s *testing.State) {
 		}
 	}
 
-	// Make sure that the settings page is focused again.
-	if err := ui.WaitUntilExists(addAccountButton)(ctx); err != nil {
-		s.Fatal("Failed to find Add Google Account button: ", err)
-	}
-	// Find "More actions, <email>" button to make sure that account was added.
-	moreActionsButton := nodewith.Name("More actions, " + username).Role(role.Button)
-	if err := ui.WithTimeout(accountmanager.LongUITimeout).WaitUntilExists(moreActionsButton)(ctx); err != nil {
-		s.Fatal("Failed to find More actions button: ", err)
+	// Make sure that account was added.
+	if err := accountmanager.CheckAccountPresentAction(tconn, cr, username)(ctx); err != nil {
+		s.Fatal("Failed to find the account in account manager: ", err)
 	}
 }

@@ -104,15 +104,10 @@ func ChangeARCAvailability(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to add a secondary Account: ", err)
 	}
 
-	// Make sure that the settings page is focused again.
-	if err := ui.WaitUntilExists(addAccountButton)(ctx); err != nil {
-		s.Fatal("Failed to find Add Google Account button: ", err)
+	// Make sure that account was added.
+	if err := accountmanager.CheckAccountPresentAction(tconn, cr, username)(ctx); err != nil {
+		s.Fatal("Failed to find the account in account manager: ", err)
 	}
-	// Find "More actions, <email>" button to make sure that account was added.
-	if err := ui.WaitUntilExists(moreActionsButton)(ctx); err != nil {
-		s.Fatal("Failed to find More actions button: ", err)
-	}
-
 	// Check that account is present in ARC.
 	if err := accountmanager.CheckIsAccountPresentInARCAction(tconn, arcDevice, username, true /*expectedPresentInArc*/)(ctx); err != nil {
 		s.Fatal("Failed to check that account is present in ARC: ", err)

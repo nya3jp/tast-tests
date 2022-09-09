@@ -212,6 +212,23 @@ func AddAccountSAML(ctx context.Context, tconn *chrome.TestConn, email, password
 	return nil
 }
 
+// CheckAccountPresentAction returns an action that checks that account with
+// provided email is present in ChromeOS Account Manager.
+func CheckAccountPresentAction(tconn *chrome.TestConn, cr *chrome.Chrome, email string) action.Action {
+	return func(ctx context.Context) error {
+		ui := uiauto.New(tconn).WithTimeout(DefaultUITimeout)
+		// Find "More actions, <email>" button to make sure that account was added.
+		moreActionsButton := nodewith.Name("More actions, " + email).Role(role.Button)
+		if err := uiauto.Combine("Find More actions button",
+			OpenAccountManagerSettingsAction(tconn, cr),
+			ui.WaitUntilExists(moreActionsButton),
+		)(ctx); err != nil {
+			return errors.Wrap(err, "failed to find More actions button")
+		}
+		return nil
+	}
+}
+
 // CheckARCToggleStatus compares the state of the "ARC toggle" in the account
 // addition flow with the expected value.
 func CheckARCToggleStatus(ctx context.Context, tconn *chrome.TestConn, brType browser.Type, expectedVal bool) error {

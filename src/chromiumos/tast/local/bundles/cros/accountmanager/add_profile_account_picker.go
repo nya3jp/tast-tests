@@ -72,16 +72,14 @@ func AddProfileAccountPicker(ctx context.Context, s *testing.State) {
 	ui := uiauto.New(tconn).WithTimeout(accountmanager.DefaultUITimeout)
 
 	addAccountButton := nodewith.Name("Add Google Account").Role(role.Button)
-	moreActionsButton := nodewith.Name("More actions, " + username).Role(role.Button)
 	if err := uiauto.Combine("add a secondary account in OS Settings",
 		accountmanager.OpenAccountManagerSettingsAction(tconn, cr),
 		ui.DoDefault(addAccountButton),
 		func(ctx context.Context) error {
 			return accountmanager.AddAccount(ctx, tconn, username, password)
 		},
-		ui.WaitUntilExists(addAccountButton),
 		// Check that account was added.
-		ui.WaitUntilExists(moreActionsButton),
+		accountmanager.CheckAccountPresentAction(tconn, cr, username),
 	)(ctx); err != nil {
 		s.Fatal("Failed to add an account: ", err)
 	}

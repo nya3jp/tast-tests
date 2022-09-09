@@ -115,13 +115,8 @@ func AddAccountFromOGB(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Verifying that account is present in OS Settings")
-	// Find "More actions, <email>" button to make sure that account was added.
-	moreActionsButton := nodewith.Name("More actions, " + username).Role(role.Button)
-	if err := uiauto.Combine("Click Add Google Account button",
-		accountmanager.OpenAccountManagerSettingsAction(tconn, cr),
-		ui.WaitUntilExists(moreActionsButton),
-	)(ctx); err != nil {
-		s.Fatal("Failed to find More actions button: ", err)
+	if err := accountmanager.CheckAccountPresentAction(tconn, cr, username)(ctx); err != nil {
+		s.Fatal("Failed to find the account in account manager: ", err)
 	}
 
 	// Check that account is present in OGB.
