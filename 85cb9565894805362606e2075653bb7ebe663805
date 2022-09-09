@@ -158,6 +158,30 @@
       },
       "revId": "85cb9565894805362606e2075653bb7ebe663805",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b493d8bc_da3561b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/allow_cellular_policy_networks_on.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1547388
+      },
+      "writtenOn": "2022-09-09T17:16:05Z",
+      "side": 1,
+      "message": "That only works if Mobile data is enabled before the test. We won\u0027t be able to navigate to mobile data subpage without enabling mobile data.",
+      "parentUuid": "0f78ebfd_d0096eb4",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 2
+      },
+      "revId": "85cb9565894805362606e2075653bb7ebe663805",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
