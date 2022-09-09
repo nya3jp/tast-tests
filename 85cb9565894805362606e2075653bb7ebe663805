@@ -65,6 +65,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0fbe8487_95d7c036",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/allow_cellular_policy_networks_on.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-09-09T00:04:18Z",
+      "side": 1,
+      "message": "Okay, that sounds good to me! :D",
+      "parentUuid": "98d74005_38377bfc",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 54
+      },
+      "revId": "85cb9565894805362606e2075653bb7ebe663805",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7dbbc182_17c44ef7",
@@ -102,6 +126,30 @@
       "side": 1,
       "message": "Most of the failures that we have seen in ToggleCellular tast tests are happening if we instantiate Cellular helper when the Cellular functionality is disabled. To circumvent that, I have made changes here to enable cellular from UI (SetToggleOption waits until the toggle button reaches the desired state) and then instantiate the helper. That way, helper can skip the part where it attempts to enable.",
       "parentUuid": "7dbbc182_17c44ef7",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 2
+      },
+      "revId": "85cb9565894805362606e2075653bb7ebe663805",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f78ebfd_d0096eb4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/allow_cellular_policy_networks_on.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-09-09T00:04:18Z",
+      "side": 1,
+      "message": "Ah, I was wondering if that was related! Glad that we have a mechanism to sort of mitigate that at least :) what do you think of replacing\n\n\tapp, err :\u003d ossettings.Launch(ctx, tconn)\n\tif err !\u003d nil {\n\t\ts.Fatal(\"Failed to launch OS Settings: \", err)\n\t}\n\nwith\n\n\tapp, err \u003d ossettings.OpenMobileDataSubpage(ctx, tconn, cr)\n\tif err !\u003d nil {\n\t\ts.Fatal(\"Failed to open mobile data settings: \", err)\n\t}\n\nand just toggling mobile on the detailed page? Mostly just seeing if it makes sense to avoid duplicate calls to open Settings!",
+      "parentUuid": "85e121e3_ac6c1433",
       "range": {
         "startLine": 75,
         "startChar": 0,
