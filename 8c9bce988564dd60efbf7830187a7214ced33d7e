@@ -50,6 +50,23 @@
       "message": "I cannot CR+2. Maybe membership was changed or due to throttling?",
       "revId": "8c9bce988564dd60efbf7830187a7214ced33d7e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "570154db_54e035ff",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1515645
+      },
+      "writtenOn": "2022-09-09T08:03:44Z",
+      "side": 1,
+      "message": "btw- if stabilization of tests is going to take longer time (i.e. a couple months), pls move it to a less frequently running suite",
+      "revId": "8c9bce988564dd60efbf7830187a7214ced33d7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
