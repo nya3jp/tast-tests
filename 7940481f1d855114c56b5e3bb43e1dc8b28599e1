@@ -16,6 +16,23 @@
       "message": "I believe this is the right way to fix this test, as https://crrev.com/c/3849961 also adds `files.Close()` to src/chromiumos/tast/local/bundles/cros/apps/content_preview.go as well.\n\nPTAL, thanks!",
       "revId": "7940481f1d855114c56b5e3bb43e1dc8b28599e1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb59353f_3d181d8e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2022-09-09T10:35:40Z",
+      "side": 1,
+      "message": "Thank you for fixing the test!",
+      "revId": "7940481f1d855114c56b5e3bb43e1dc8b28599e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
