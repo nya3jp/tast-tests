@@ -34,6 +34,24 @@
       "parentUuid": "c0ad7359_9a1fcd7e",
       "revId": "c62a0a9c80a88e25c3f4ef9d48b2cdad38984d58",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "355751d9_179b3f1b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000169
+      },
+      "writtenOn": "2022-09-09T07:54:14Z",
+      "side": 1,
+      "message": "\u003e Hello Hashimoto-san,\n\u003e \n\u003e I double-checked, and indeed you were on the recipient list of the notifications:\n\u003e https://screenshot.googleplex.com/8vYDkJwnv72YvyF\n\nI know you have sent an email to me, and it was my bad not noticing it.\nThat said, it\u0027d be nice if you could contact test owners in different channels (e.g. assigning a TODO on the spreadsheet, or sending IMs).\nIt was a bit difficult for me to realize that my action as a test owner is actually required from an email titled \"[Action Required] Freeing up DUTs ...\" when scanning emails.\nI find the ratio of \"Pending\"s in the spreadsheet kind of high, and I\u0027m wondering how many of these tests are actually needed.\n\n\u003e \n\u003e The spreadsheet might not be showing you everything because of filters applied. I just cleared out one of the filters so that they should show all aged informational tests now.\n\u003e go/retiring-old-informational-tests-2022\n\nThank you for changing the filter.\nIt\u0027s really confusing when it\u0027s not showing everything.\n\n\u003e \n\u003e For re-enabling the test(s), there are two options. \n\u003e 1) If you plan on promoting the test to CQ very shortly (eg. \u003c2 months), then reenable it as an Informational test.\n\u003e https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/arc/concierge_crash.go;l\u003d28\n\u003e \n\u003e 2) Otherwise, move it to a custom test-suite so that it can run less frequently. If your team does not have their own test suite(s) setup, I\u0027m setting up a suite that will run tests either daily, mon/wed/fri, or weekly. You can use that as well. It\u0027s not ready yet though - ETA is roughly 1-2 weeks from now: b/244383456\n\nUploaded crrev.com/c/3886495",
+      "parentUuid": "603ff482_e6ba78f2",
+      "revId": "c62a0a9c80a88e25c3f4ef9d48b2cdad38984d58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
