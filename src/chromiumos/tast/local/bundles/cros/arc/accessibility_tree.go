@@ -21,15 +21,57 @@ import (
 // ui.FindParams is deliberately not used to avoid nesting,
 // and to avoid defining unused properties when we write an expected tree.
 type axTreeNode struct {
-	Name       string
-	Role       role.Role
-	Attributes map[string]interface{}
-	Children   []*axTreeNode
+	Name            string
+	Role            role.Role
+	Attributes      map[string]interface{}
+	Children        []*axTreeNode
+	StandardActions []string
 }
 
 type expectedNode struct {
 	CheckBoxAttributes map[string]interface{}
 	SeekBarAttributes  map[string]interface{}
+}
+
+// matches wraps the match of AutomationNode and adds checks for list attributes, because
+// match function of AutomationNode in javascript doesn't support the containment condition
+// of list attributes.
+func (n axTreeNode) matches(ctx context.Context, actual *a11y.Node) (bool, error) {
+	if n.StandardActions != nil {
+		expected := n.StandardActions
+		actual, err := actual.StandardActions(ctx)
+		if err != nil {
+			return false, errors.Wrap(err, "failed to get actual standard actions")
+		}
+		if !hasAllStandardActions(ctx, expected, actual) {
+			testing.ContextLogf(
+				ctx,
+				"standard actions didn't match. expected: %s, got: %s",
+				expected,
+				actual)
+			return false, nil
+		}
+	}
+
+	return actual.Matches(ctx, n.findParams())
+}
+
+// hasAllStandardActions returns true if actual contains all elements in expected
+// and false otherwise.
+func hasAllStandardActions(ctx context.Context, expected, actual []string) bool {
+	for _, action := range expected {
+		found := false
+		for _, actualAction := range actual {
+			if action == actualAction {
+				found = true
+				break
+			}
+		}
+		if !found {
+			return false
+		}
+	}
+	return true
 }
 
 // findParams constructs a11y.FindParams from the given axTreeNode.
@@ -70,20 +112,20 @@ func init() {
 // Error indicates an internal failure, such as connecting to Chrome or invoking the JavaScript.
 func matchTree(ctx context.Context, actualRoot *a11y.Node, expectedRoot *axTreeNode) (bool, error) {
 	// Check the root node.
-	if found, err := actualRoot.Matches(ctx, expectedRoot.findParams()); err != nil {
+	if found, err := expectedRoot.matches(ctx, actualRoot); err != nil {
 		return false, err
 	} else if !found {
 		currNodeStr, err := actualRoot.ToString(ctx)
 		if err != nil {
 			return false, err
 		}
-		testing.ContextLogf(ctx, "Node did not match, got %+v; want %v", currNodeStr, expectedRoot.findParams())
+		testing.ContextLogf(ctx, "Node did not match, got %+v; want %+v", currNodeStr, expectedRoot)
 		return false, nil
 	}
 
 	actualChildren, err := actualRoot.Children(ctx)
 	if err != nil {
-		testing.ContextLogf(ctx, "Failed to get children of %+v", expectedRoot.findParams())
+		testing.ContextLogf(ctx, "Failed to get children of %+v", expectedRoot)
 		return false, err
 	}
 	defer actualChildren.Release(ctx)
@@ -237,14 +279,55 @@ func AccessibilityTree(ctx context.Context, s *testing.State) {
 		},
 	}
 
+	ActionActivityTree := &axTreeNode{
+		Name: "Action Activity",
+		Role: role.Application,
+		Children: []*axTreeNode{
+			{
+				Role: role.GenericContainer,
+				Children: []*axTreeNode{
+					{
+						Name: "Action Activity",
+						Role: role.StaticText,
+					},
+					{
+						Role: role.Button,
+						Attributes: map[string]interface{}{
+							"name": regexp.MustCompile(
+								`(LONG CLICK|Long Click)`,
+							),
+						},
+						StandardActions: []string{
+							"longClick",
+						},
+					},
+					{
+						Role: role.Button,
+						Attributes: map[string]interface{}{
+							"name": regexp.MustCompile(
+								`(LABEL|Label)`,
+							),
+							"doDefaultLabel": "perform click",
+							"longClickLabel": "perform long click",
+						},
+						StandardActions: []string{
+							"longClick",
+						},
+					},
+				},
+			},
+		},
+	}
+
 	trees := map[arca11y.TestActivity]*axTreeNode{
 		arca11y.MainActivity:       MainActivityTree,
 		arca11y.EditTextActivity:   EditTextActivityTree,
 		arca11y.LiveRegionActivity: LiveRegionActivityTree,
+		arca11y.ActionActivity:     ActionActivityTree,
 	}
 
 	testActivities := []arca11y.TestActivity{
-		arca11y.MainActivity, arca11y.EditTextActivity, arca11y.LiveRegionActivity,
+		arca11y.MainActivity, arca11y.EditTextActivity, arca11y.LiveRegionActivity, arca11y.ActionActivity,
 	}
 
 	testFunc := func(ctx context.Context, cvconn *a11y.ChromeVoxConn, tconn *chrome.TestConn, currentActivity arca11y.TestActivity) error {
