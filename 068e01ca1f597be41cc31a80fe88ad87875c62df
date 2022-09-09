@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "746fcbe2_239fe137",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-09-09T02:05:12Z",
+      "side": 1,
+      "message": "Remember to wait for the version that the chromium change lands in to uprev as well, check http://go/pupr- to see the latest version.",
+      "revId": "068e01ca1f597be41cc31a80fe88ad87875c62df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
