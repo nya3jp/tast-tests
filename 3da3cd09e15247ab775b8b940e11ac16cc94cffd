@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "05607adc_d876090a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-09-09T22:42:08Z",
+      "side": 1,
+      "message": "thanks for adding that to description. That is helpful.",
+      "range": {
+        "startLine": 10,
+        "startChar": 17,
+        "endLine": 12,
+        "endChar": 58
+      },
+      "revId": "3da3cd09e15247ab775b8b940e11ac16cc94cffd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0401cb40_aa361b4a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-09-09T22:42:08Z",
+      "side": 1,
+      "message": "thanks for adding this! LGTM -- I\u0027ll leave the fixture addition to your discretion ",
+      "revId": "3da3cd09e15247ab775b8b940e11ac16cc94cffd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e35cadb_a4b07d79",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/add_remove_factors_ephemeral.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-09-09T22:42:08Z",
+      "side": 1,
+      "message": "we can use the new fixture that Zi has implemented here:https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3879672/5",
+      "range": {
+        "startLine": 45,
+        "startChar": 3,
+        "endLine": 48,
+        "endChar": 5
+      },
+      "revId": "3da3cd09e15247ab775b8b940e11ac16cc94cffd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
