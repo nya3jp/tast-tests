@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2022 The ChromiumOS Authors
+     Use of this source code is governed by a BSD-style license that can be
+     found in the LICENSE file.
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="8dp">
+
+  <Button
+      android:id="@+id/longClickButton"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:text="Long Click" />
+
+  <Button
+      android:id="@+id/labelButton"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:text="Label" />
+</LinearLayout>

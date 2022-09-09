@@ -303,3 +303,14 @@ func FindWithTimeout(ctx context.Context, tconn *chrome.TestConn, params FindPar
 	defer root.Release(ctx)
 	return root.DescendantWithTimeout(ctx, params, timeout)
 }
+
+// StandardActions returns the standard actions of the node.
+// If the JavaScript fails to execute, an error is returned.
+func (n *Node) StandardActions(ctx context.Context) ([]string, error) {
+	var actions []string
+	if err := n.object.Call(ctx, &actions, "function(){return this.standardActions}"); err != nil {
+		return nil, errors.Wrap(err, "failed to call standardActions() on the specified node")
+	}
+
+	return actions, nil
+}

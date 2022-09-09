@@ -33,5 +33,11 @@
             android:label="@string/live_region_activity_name"
             android:configChanges="keyboardHidden" >
         </activity>
+        <activity
+            android:name=".ActionActivity"
+            android:exported="true"
+            android:label="@string/action_activity_name"
+            android:configChanges="keyboardHidden" >
+        </activity>
     </application>
 </manifest>
