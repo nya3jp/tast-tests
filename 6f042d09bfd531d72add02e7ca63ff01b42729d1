@@ -136,6 +136,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d543387_4b82bb2f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peerconnection/peer_connection.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2022-09-09T06:06:08Z",
+      "side": 1,
+      "message": "Ok. reverted.",
+      "parentUuid": "9cf31ca2_78a36f8a",
+      "range": {
+        "startLine": 136,
+        "startChar": 44,
+        "endLine": 136,
+        "endChar": 61
+      },
+      "revId": "6f042d09bfd531d72add02e7ca63ff01b42729d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6c3a22b4_c3ae933d",
@@ -279,6 +303,24 @@
       "side": 1,
       "message": "Something like \n```\nre \u003d regexp.MustCompile(expression)\ninStr \u003d re.FindStringSubmatch(implName)\n```\nYou still have to use strings.Split to split it though..\nWDYT?",
       "parentUuid": "40fc5906_b09c9fe7",
+      "revId": "6f042d09bfd531d72add02e7ca63ff01b42729d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5376676_69add97c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peerconnection/peer_connection.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2022-09-09T06:06:08Z",
+      "side": 1,
+      "message": "That works. Thanks!",
+      "parentUuid": "0df0df65_7eb97e8e",
       "revId": "6f042d09bfd531d72add02e7ca63ff01b42729d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
