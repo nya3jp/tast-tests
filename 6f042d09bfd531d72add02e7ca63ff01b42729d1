@@ -112,6 +112,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9cf31ca2_78a36f8a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peerconnection/peer_connection.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-09-09T01:00:13Z",
+      "side": 1,
+      "message": "Ah... I\u0027m just confused as why we hardcoded three layers of simulcast here. Thought config is passed in but turns out it\u0027s not.\n\nIf that\u0027s expected, I prefer the way you did in patchset2 but initialize an array with length:simulcasts instead of length:simulcastStreams.",
+      "parentUuid": "d2807d41_f21a1942",
+      "range": {
+        "startLine": 136,
+        "startChar": 44,
+        "endLine": 136,
+        "endChar": 61
+      },
+      "revId": "6f042d09bfd531d72add02e7ca63ff01b42729d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6c3a22b4_c3ae933d",
@@ -243,6 +267,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0df0df65_7eb97e8e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peerconnection/peer_connection.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-09-09T01:00:13Z",
+      "side": 1,
+      "message": "Something like \n```\nre \u003d regexp.MustCompile(expression)\ninStr \u003d re.FindStringSubmatch(implName)\n```\nYou still have to use strings.Split to split it though..\nWDYT?",
+      "parentUuid": "40fc5906_b09c9fe7",
+      "revId": "6f042d09bfd531d72add02e7ca63ff01b42729d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1197c2f2_15c1a49b",
         "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peerconnection/peer_connection_perf.go",
         "patchSetId": 2
@@ -278,6 +320,30 @@
       "side": 1,
       "message": "I think the current code is ok.\n\nThe later code like measureRTCstats() should be done in simulcast case. \nThe opts.verfyHWEncoding is unnecessary if checkSimulcastEncImpl is executed.",
       "parentUuid": "1197c2f2_15c1a49b",
+      "range": {
+        "startLine": 402,
+        "startChar": 2,
+        "endLine": 404,
+        "endChar": 3
+      },
+      "revId": "6f042d09bfd531d72add02e7ca63ff01b42729d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf083f8f_63ae1677",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peerconnection/peer_connection_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 404,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-09-09T01:00:13Z",
+      "side": 1,
+      "message": "Oh Nice catch. You are right. We can\u0027t simply return here.",
+      "parentUuid": "8a1d1cbb_325c2417",
       "range": {
         "startLine": 402,
         "startChar": 2,
