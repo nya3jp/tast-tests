@@ -16,6 +16,24 @@
       "message": "I wasn\u0027t aware of this CL, and I don\u0027t see ConciergeCrash and other tests I own being mentioned in the spreadsheet.\nWhat is happening here?",
       "revId": "c62a0a9c80a88e25c3f4ef9d48b2cdad38984d58",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "603ff482_e6ba78f2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1515645
+      },
+      "writtenOn": "2022-09-09T05:50:33Z",
+      "side": 1,
+      "message": "Hello Hashimoto-san,\n\nI double-checked, and indeed you were on the recipient list of the notifications:\nhttps://screenshot.googleplex.com/8vYDkJwnv72YvyF\n\nThe spreadsheet might not be showing you everything because of filters applied. I just cleared out one of the filters so that they should show all aged informational tests now.\ngo/retiring-old-informational-tests-2022\n\nFor re-enabling the test(s), there are two options. \n1) If you plan on promoting the test to CQ very shortly (eg. \u003c2 months), then reenable it as an Informational test.\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/arc/concierge_crash.go;l\u003d28\n\n2) Otherwise, move it to a custom test-suite so that it can run less frequently. If your team does not have their own test suite(s) setup, I\u0027m setting up a suite that will run tests either daily, mon/wed/fri, or weekly. You can use that as well. It\u0027s not ready yet though - ETA is roughly 1-2 weeks from now: b/244383456",
+      "parentUuid": "c0ad7359_9a1fcd7e",
+      "revId": "c62a0a9c80a88e25c3f4ef9d48b2cdad38984d58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
