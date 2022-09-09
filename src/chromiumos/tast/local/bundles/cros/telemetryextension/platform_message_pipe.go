@@ -6,6 +6,7 @@ package telemetryextension
 
 import (
 	"context"
+	"time"
 
 	"chromiumos/tast/local/bundles/cros/telemetryextension/dep"
 	"chromiumos/tast/local/bundles/cros/telemetryextension/fixture"
@@ -14,9 +15,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         APIAvailableRoutines,
+		Func:         PlatformMessagePipe,
 		LacrosStatus: testing.LacrosVariantExists,
-		Desc:         "Tests chrome.os.diagnostics.getAvailableRoutines Chrome Extension API function exposed to Telemetry Extension",
+		Desc:         "Tests message pipe functionality between PWA and Chrome extension",
 		Contacts: []string{
 			"lamzin@google.com", // Test and Telemetry Extension author
 			"mgawad@google.com", // Telemetry Extension author
@@ -69,42 +70,37 @@ func init() {
 	})
 }
 
-// APIAvailableRoutines tests chrome.os.diagnostics.getAvailableRoutines Chrome Extension API functionality.
-func APIAvailableRoutines(ctx context.Context, s *testing.State) {
+// PlatformMessagePipe tests that PWA and Chrome extension have a capability to communicate with each other.
+func PlatformMessagePipe(ctx context.Context, s *testing.State) {
 	v := s.FixtValue().(*fixture.Value)
 
-	type response struct {
-		Routines []string `json:"routines"`
+	type telemetryRequest struct {
+		InfoType string `json:"infoType"`
 	}
 
+	type request struct {
+		Type      string           `json:"type"`
+		Telemetry telemetryRequest `json:"telemetry"`
+	}
+
+	type response struct {
+		Success   bool        `json:"success"`
+		Telemetry interface{} `json:"telemetry"`
+	}
+
+	ctx, cancel := context.WithTimeout(ctx, 5*time.Second)
+	defer cancel()
+
 	var resp response
-	if err := v.ExtConn.Call(ctx, &resp,
-		"tast.promisify(chrome.os.diagnostics.getAvailableRoutines)",
+	if err := v.PwaConn.Call(ctx, &resp,
+		"tast.promisify(chrome.runtime.sendMessage)",
+		v.ExtID,
+		request{Type: "telemetry", Telemetry: telemetryRequest{InfoType: "vpd"}},
 	); err != nil {
 		s.Fatal("Failed to get response from Telemetry extenion service worker: ", err)
 	}
 
-	gotRoutines := make(map[string]struct{})
-	for _, got := range resp.Routines {
-		gotRoutines[got] = struct{}{}
-	}
-
-	wantRoutines := []string{
-		"ac_power",
-		"battery_capacity",
-		"battery_health",
-		"cpu_cache",
-		"cpu_stress",
-		"cpu_floating_point_accuracy",
-		"cpu_prime_search",
-		"battery_discharge",
-		"battery_charge",
-		"memory",
-	}
-
-	for _, want := range wantRoutines {
-		if _, exist := gotRoutines[want]; !exist {
-			s.Errorf("Wanted %q routine is missing in available routines %v", want, resp.Routines)
-		}
+	if want := true; resp.Success != want {
+		s.Errorf("Unexpected response success: got %t; want %t. Response telemetry: %v", resp.Success, want, resp.Telemetry)
 	}
 }

@@ -6,18 +6,26 @@ package telemetryextension
 
 import (
 	"context"
-	"time"
+	"io/ioutil"
+	"regexp"
+	"strconv"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/telemetryextension/dep"
 	"chromiumos/tast/local/bundles/cros/telemetryextension/fixture"
 	"chromiumos/tast/testing"
 )
 
+var (
+	memTotalRegexp  = regexp.MustCompile("MemTotal: +([0-9]+) kB")
+	pageFaultRegexp = regexp.MustCompile("pgfault ([0-9]+)")
+)
+
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         MessagePipe,
+		Func:         PlatformAPIMemoryInfo,
 		LacrosStatus: testing.LacrosVariantExists,
-		Desc:         "Tests message pipe functionality between PWA and Chrome extension",
+		Desc:         "Tests chrome.os.telemetry.getMemoryInfo Chrome Extension API function exposed to Telemetry Extension",
 		Contacts: []string{
 			"lamzin@google.com", // Test and Telemetry Extension author
 			"mgawad@google.com", // Telemetry Extension author
@@ -70,37 +78,65 @@ func init() {
 	})
 }
 
-// MessagePipe tests that PWA and Chrome extension have a capability to communicate with each other.
-func MessagePipe(ctx context.Context, s *testing.State) {
+// PlatformAPIMemoryInfo tests chrome.os.telemetry.getMemoryInfo Chrome Extension API functionality.
+func PlatformAPIMemoryInfo(ctx context.Context, s *testing.State) {
 	v := s.FixtValue().(*fixture.Value)
 
-	type telemetryRequest struct {
-		InfoType string `json:"infoType"`
+	wantTotalMemory, err := fetchIntFromFile("/proc/meminfo", memTotalRegexp)
+	if err != nil {
+		s.Fatal("Failed to fetch total memory: ", err)
 	}
 
-	type request struct {
-		Type      string           `json:"type"`
-		Telemetry telemetryRequest `json:"telemetry"`
+	wantPageFaults, err := fetchIntFromFile("/proc/vmstat", pageFaultRegexp)
+	if err != nil {
+		s.Fatal("Failed to fetch total memory: ", err)
 	}
 
 	type response struct {
-		Success   bool        `json:"success"`
-		Telemetry interface{} `json:"telemetry"`
+		TotalMemoryKiB          int64 `json:"totalMemoryKiB"`
+		FreeMemoryKiB           int64 `json:"freeMemoryKiB"`
+		AvailableMemoryKiB      int64 `json:"availableMemoryKiB"`
+		PageFaultsSinceLastBoot int64 `json:"pageFaultsSinceLastBoot"`
 	}
 
-	ctx, cancel := context.WithTimeout(ctx, 5*time.Second)
-	defer cancel()
-
 	var resp response
-	if err := v.PwaConn.Call(ctx, &resp,
-		"tast.promisify(chrome.runtime.sendMessage)",
-		v.ExtID,
-		request{Type: "telemetry", Telemetry: telemetryRequest{InfoType: "vpd"}},
+	if err := v.ExtConn.Call(ctx, &resp,
+		"tast.promisify(chrome.os.telemetry.getMemoryInfo)",
 	); err != nil {
 		s.Fatal("Failed to get response from Telemetry extenion service worker: ", err)
 	}
 
-	if want := true; resp.Success != want {
-		s.Errorf("Unexpected response success: got %t; want %t. Response telemetry: %v", resp.Success, want, resp.Telemetry)
+	if resp.TotalMemoryKiB != wantTotalMemory {
+		s.Errorf("Unexpecteed total memory: got %d; want %d", resp.TotalMemoryKiB, wantTotalMemory)
 	}
+
+	if resp.FreeMemoryKiB <= 0 {
+		s.Errorf("Unexpecteed free memory: got %d; want >0", resp.FreeMemoryKiB)
+	}
+
+	if resp.AvailableMemoryKiB <= 0 {
+		s.Errorf("Unexpecteed available memory: got %d; want >0", resp.AvailableMemoryKiB)
+	}
+
+	if resp.PageFaultsSinceLastBoot < wantPageFaults {
+		s.Errorf("Unexpecteed total memory: got %d; want >=%d", resp.PageFaultsSinceLastBoot, wantPageFaults)
+	}
+}
+
+func fetchIntFromFile(filePath string, re *regexp.Regexp) (int64, error) {
+	b, err := ioutil.ReadFile(filePath)
+	if err != nil {
+		return 0, errors.Wrap(err, "failed to read file")
+	}
+
+	m := re.FindStringSubmatch(string(b))
+	if len(m) != 2 {
+		return 0, errors.Errorf("unexpected match (%q) size = got %d; want %d", m, len(m), 2)
+	}
+
+	n, err := strconv.ParseInt(m[1], 10, 64)
+	if err != nil {
+		return 0, errors.Wrapf(err, "failed to convert %q to number", string(m[1]))
+	}
+	return n, nil
 }
