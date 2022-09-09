@@ -16,6 +16,40 @@
       "message": "LGTM. Thanks!",
       "revId": "96967ffd6d426eac85e56f616a4607f7b794d414",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f437f8f_a016e007",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-09-09T17:34:20Z",
+      "side": 1,
+      "message": "Please take a look at my comment. \n\nAlso, please run tast unit test: fast_build.sh -T\n\nThen, add this line to commit log:\n\nTEST\u003dtast unit test passed.\n\nThanks.",
+      "revId": "96967ffd6d426eac85e56f616a4607f7b794d414",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0967b24_d6940224",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-09-09T17:34:20Z",
+      "side": 1,
+      "message": "Should return an error here instead of s.Fatal.",
+      "revId": "96967ffd6d426eac85e56f616a4607f7b794d414",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
