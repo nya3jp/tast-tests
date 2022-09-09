@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c4c39fe_eb675ae4",
+        "filename": "src/chromiumos/tast/remote/updateutil/updateutil.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-09-09T07:04:06Z",
+      "side": 1,
+      "message": "`testexec` executes this command on the host, and not on the DUT.\n`gsutil` needs to be called from the host, as only it has the required access rights. The DUT cannot have access to these resources.",
+      "parentUuid": "1b479883_97b677b4",
+      "range": {
+        "startLine": 169,
+        "startChar": 13,
+        "endLine": 169,
+        "endChar": 21
+      },
+      "revId": "ade3444112ec73805dcb88709fc813264a90be34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "37c75c6c_07405a15",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-09-08T18:01:42Z",
       "side": 1,
       "message": "Maybe Wrapf to include the err as well, similarly to line 206",
+      "range": {
+        "startLine": 182,
+        "startChar": 16,
+        "endLine": 182,
+        "endChar": 23
+      },
+      "revId": "ade3444112ec73805dcb88709fc813264a90be34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f7fe418_17dfda97",
+        "filename": "src/chromiumos/tast/remote/updateutil/updateutil.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-09-09T07:04:06Z",
+      "side": 1,
+      "message": "The `err` from before is just the bucket content logging error. That one is not so important. The main error here is that the number of entries in `paths` is not 1.",
+      "parentUuid": "37c75c6c_07405a15",
       "range": {
         "startLine": 182,
         "startChar": 16,
