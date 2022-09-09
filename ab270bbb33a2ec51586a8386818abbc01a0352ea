@@ -16,6 +16,125 @@
       "message": "Hey Seewai and Prashant, thanks for taking a look at this test. Your feedback has been really great. I\u0027ve addressed your comments in the latest patchset. Let me know what you think.",
       "revId": "ab270bbb33a2ec51586a8386818abbc01a0352ea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c77b6cd0_e5040dc7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-09-09T22:20:37Z",
+      "side": 1,
+      "message": "I have a few comments. Please take a look. thanks.",
+      "revId": "ab270bbb33a2ec51586a8386818abbc01a0352ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7cabc3c8_cfe30dc8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/hid_wake.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-09-09T22:20:37Z",
+      "side": 1,
+      "message": "I could not find the \"second suspend\"? I could only find the \"second resume\"?\n\nHow many suspends in total?",
+      "revId": "ab270bbb33a2ec51586a8386818abbc01a0352ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cfcf474e_61007b61",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/hid_wake.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-09-09T22:20:37Z",
+      "side": 1,
+      "message": "I don\u0027t know anything about servo wake. Please make sure you have somebody knows it well to review this line.",
+      "revId": "ab270bbb33a2ec51586a8386818abbc01a0352ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2c32873_84803fd5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/hid_wake.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-09-09T22:20:37Z",
+      "side": 1,
+      "message": "I could not find the \"first resume\"? I could only find the \"first suspend\"?\n\nHow many resume in total?",
+      "revId": "ab270bbb33a2ec51586a8386818abbc01a0352ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e347b60c_6d4b1553",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/hid_wake.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-09-09T22:20:37Z",
+      "side": 1,
+      "message": "Why don\u0027t use dutfs.ReadFile?",
+      "revId": "ab270bbb33a2ec51586a8386818abbc01a0352ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca3e2415_c02f500e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/hid_wake.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-09-09T22:20:37Z",
+      "side": 1,
+      "message": "Same question as above.\n\nIn general, we want to limit number number of ssh command calls. I have seen test flakiness dut to too many ssh command calls.",
+      "revId": "ab270bbb33a2ec51586a8386818abbc01a0352ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f46a92ec_9b863162",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/hid_wake.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-09-09T22:20:37Z",
+      "side": 1,
+      "message": "Can we use dutfs.ReadFile instead?",
+      "revId": "ab270bbb33a2ec51586a8386818abbc01a0352ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
