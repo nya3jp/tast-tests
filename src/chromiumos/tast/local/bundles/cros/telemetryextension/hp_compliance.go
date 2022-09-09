@@ -17,7 +17,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: Compliance,
+		Func: HPCompliance,
 		Desc: "Verifies that DUT satisfies all requirements to run Telemetry Extension such as has all required VPD fields and correct CrOSConfig",
 		Contacts: []string{
 			"lamzin@google.com", // Test and Telemetry Extension author
@@ -38,8 +38,8 @@ func init() {
 	})
 }
 
-// Compliance tests that DUT satisfies all requirements to run Telemetry Extension.
-func Compliance(ctx context.Context, s *testing.State) {
+// HPCompliance tests that DUT satisfies all requirements to run Telemetry Extension.
+func HPCompliance(ctx context.Context, s *testing.State) {
 	if vendor, err := vendorutils.FetchVendor(ctx); err != nil {
 		s.Error("Failed to read vendor name: ", err)
 	} else if got, want := vendor, "HP"; got != want {
