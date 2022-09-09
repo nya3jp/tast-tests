@@ -100,16 +100,6 @@ func init() {
 	})
 }
 
-// idleCoolDownConfig returns the config to wait for the machine to cooldown for PowerIdlePerf test.
-// This overrides the default config timeout (5 minutes) and temperature threshold (46 C)
-// settings to reduce test flakes on low-end devices.
-func idleCoolDownConfig() cpu.CoolDownConfig {
-	cdConfig := cpu.DefaultCoolDownConfig(cpu.CoolDownPreserveUI)
-	cdConfig.PollTimeout = 7 * time.Minute
-	cdConfig.TemperatureThreshold = 60000
-	return cdConfig
-}
-
 func PowerIdlePerf(ctx context.Context, s *testing.State) {
 	const (
 		iterationCount    = 30
@@ -158,7 +148,7 @@ func PowerIdlePerf(ctx context.Context, s *testing.State) {
 	s.Log("Finished setup")
 
 	// Wait until CPU is cooled down and idle.
-	cooldownTime, err := cpu.WaitUntilCoolDown(ctx, idleCoolDownConfig())
+	cooldownTime, err := cpu.WaitUntilCoolDown(ctx, cpu.IdleCoolDownConfig())
 	if err != nil {
 		s.Fatal("CPU failed to cool down: ", err)
 	}
