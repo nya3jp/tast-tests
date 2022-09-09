@@ -27,7 +27,7 @@ const (
 	// LockOnLeave is the Settings name for LoL.
 	LockOnLeave = "Lock-on-leave"
 	// SecondPersonAlert is the Settings name for SPA.
-	SecondPersonAlert = "Viewing protection"
+	SecondPersonAlert = "Viewing protection (Beta)"
 )
 
 // GetBrightness gets the current brightness of the dut
