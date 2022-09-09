@@ -191,10 +191,10 @@ func SaveCurrentDesk(ctx context.Context, ac *uiauto.Context, savedDeskType Save
 	var saveDeskButton *nodewith.Finder
 	var savedDeskGridView *nodewith.Finder
 	if savedDeskType == Template {
-		saveDeskButton = nodewith.ClassName("SaveDeskTemplateButton").Nth(0)
+		saveDeskButton = nodewith.ClassName("SavedDeskSaveDeskButton").Nth(0)
 		savedDeskGridView = nodewith.ClassName("SavedDeskGridView").Nth(0)
 	} else if savedDeskType == SaveAndRecall {
-		saveDeskButton = nodewith.ClassName("SaveDeskTemplateButton").Nth(1)
+		saveDeskButton = nodewith.ClassName("SavedDeskSaveDeskButton").Nth(1)
 		savedDeskGridView = nodewith.ClassName("SavedDeskGridView").Nth(1)
 	} else {
 		return errors.New("unknown savedDeskType, must be `kTemplate' or 'kSaveAndRecall'")
