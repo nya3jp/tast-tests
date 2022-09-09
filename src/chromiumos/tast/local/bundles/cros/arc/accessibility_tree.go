@@ -1,4 +1,4 @@
-// Copyright 2019 The Chromium OS Authors. All rights reserved.
+// Copyright 2019 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -224,14 +224,45 @@ func AccessibilityTree(ctx context.Context, s *testing.State) {
 		},
 	}
 
+	ActionActivityTree := &axTreeNode{
+		Name: "Action Activity",
+		Role: role.Application,
+		Children: []*axTreeNode{
+			{
+				Role: role.GenericContainer,
+				Children: []*axTreeNode{
+					{
+						Name: "Action Activity",
+						Role: role.StaticText,
+					},
+					{
+						Name: "LONG CLICK",
+						Role: role.Button,
+						Attributes: map[string]interface{}{
+							"standardActions": [2]string{"doDefault", "longClick"},
+						},
+					},
+					{
+						Name: "LABEL",
+						Role: role.Button,
+						Attributes: map[string]interface{}{
+							"longClickLabel": "perform long click",
+							"doDefaultLabel": "perform click",
+						},
+					},
+				},
+			},
+		},
+	}
 	trees := map[arca11y.TestActivity]*axTreeNode{
 		arca11y.MainActivity:       MainActivityTree,
 		arca11y.EditTextActivity:   EditTextActivityTree,
 		arca11y.LiveRegionActivity: LiveRegionActivityTree,
+		arca11y.ActionActivity:     ActionActivityTree,
 	}
 
 	testActivities := []arca11y.TestActivity{
-		arca11y.MainActivity, arca11y.EditTextActivity, arca11y.LiveRegionActivity,
+		arca11y.MainActivity, arca11y.EditTextActivity, arca11y.LiveRegionActivity, arca11y.ActionActivity,
 	}
 
 	testFunc := func(ctx context.Context, cvconn *a11y.ChromeVoxConn, tconn *chrome.TestConn, currentActivity arca11y.TestActivity) error {
