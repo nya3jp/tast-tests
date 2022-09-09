@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd76c17e_1a347550",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1268793
+      },
+      "writtenOn": "2022-09-09T04:02:51Z",
+      "side": 1,
+      "message": "Thanks for working on this.",
+      "revId": "6be6627a04b1b70fc178e3405fc109b740bd50a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5263e876_339454db",
+        "filename": "src/chromiumos/tast/local/chrome/projector/projector.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1268793
+      },
+      "writtenOn": "2022-09-09T04:02:51Z",
+      "side": 1,
+      "message": "nit: could you document the return value and what is expected to do with the return value - defer calling the cleanup method.",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 50
+      },
+      "revId": "6be6627a04b1b70fc178e3405fc109b740bd50a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
