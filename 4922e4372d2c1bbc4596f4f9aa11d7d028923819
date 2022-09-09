@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5230ea7_925425cf",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hps/camerabox_lol_on_mix_presence.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2022-09-09T04:40:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d33933b1_4e86eda0",
+      "range": {
+        "startLine": 117,
+        "startChar": 1,
+        "endLine": 118,
+        "endChar": 64
+      },
+      "revId": "4922e4372d2c1bbc4596f4f9aa11d7d028923819",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ec17c35f_d0099f17",
@@ -70,6 +94,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c02f2453_1149e6b9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hps/camerabox_lol_on_mix_presence.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2022-09-09T04:40:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c05da94c_90fa5de7",
+      "range": {
+        "startLine": 124,
+        "startChar": 1,
+        "endLine": 124,
+        "endChar": 109
+      },
+      "revId": "4922e4372d2c1bbc4596f4f9aa11d7d028923819",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e428474b_abd280c5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hps/camerabox_lol_on_mix_presence.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2022-09-09T04:40:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ec17c35f_d0099f17",
+      "range": {
+        "startLine": 124,
+        "startChar": 83,
+        "endLine": 124,
+        "endChar": 96
+      },
+      "revId": "4922e4372d2c1bbc4596f4f9aa11d7d028923819",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "377062bf_07be572d",
@@ -93,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f23d8192_df901c8f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hps/camerabox_lol_on_mix_presence.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2022-09-09T04:40:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "377062bf_07be572d",
+      "range": {
+        "startLine": 133,
+        "startChar": 1,
+        "endLine": 137,
+        "endChar": 0
+      },
+      "revId": "4922e4372d2c1bbc4596f4f9aa11d7d028923819",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2dae2344_6454c5f2",
@@ -106,6 +202,30 @@
       "writtenOn": "2022-09-09T02:12:57Z",
       "side": 1,
       "message": "reformat to the go style: `if err!\u003d...; err!\u003dnil{}`",
+      "range": {
+        "startLine": 147,
+        "startChar": 1,
+        "endLine": 154,
+        "endChar": 2
+      },
+      "revId": "4922e4372d2c1bbc4596f4f9aa11d7d028923819",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e348b0c_f681216e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hps/camerabox_lol_on_mix_presence.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2022-09-09T04:40:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2dae2344_6454c5f2",
       "range": {
         "startLine": 147,
         "startChar": 1,
