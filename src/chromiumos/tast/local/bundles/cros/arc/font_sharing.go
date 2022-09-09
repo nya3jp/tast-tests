@@ -22,8 +22,7 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Test that font-sharing from ChromeOS to ARC works",
 		Contacts:     []string{"hashimoto@chromium.org", "arc-eng@google.com"},
-		// b:238260020 - disable aged (>1y) unpromoted informational tests
-		// Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "android_vm"},
 		Fixture:      "arcBooted",
 		Timeout:      10 * time.Minute,
