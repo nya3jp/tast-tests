@@ -53,14 +53,6 @@ func Setup(ctx context.Context, f interface{}, bt browser.Type) (*chrome.Chrome,
 
 // Connect connects to a running lacros instance (e.g launched by the UI) and returns a Lacros object that can be used to interact with it.
 func Connect(ctx context.Context, tconn *chrome.TestConn) (l *Lacros, retErr error) {
-	debuggingPortPath := filepath.Join(UserDataDir, "DevToolsActivePort")
-
-	info, err := lacrosinfo.Snapshot(ctx, tconn)
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to get lacros info")
-	}
-	execPath := filepath.Join(info.LacrosPath, "chrome")
-
 	agg := jslog.NewAggregator()
 	defer func() {
 		if retErr != nil {
@@ -68,10 +60,27 @@ func Connect(ctx context.Context, tconn *chrome.TestConn) (l *Lacros, retErr err
 		}
 	}()
 
+	var execPath string
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		info, err := lacrosinfo.Snapshot(ctx, tconn)
+		if err != nil {
+			return testing.PollBreak(errors.Wrap(err, "failed to get lacros info"))
+		}
+		if len(info.LacrosPath) == 0 {
+			return errors.Wrap(err, "lacros is not yet running (received empty LacrosPath)")
+		}
+		execPath = filepath.Join(info.LacrosPath, "chrome")
+		return nil
+	}, nil); err != nil {
+		return nil, errors.Wrap(err, "lacros is not running")
+	}
+
+	debuggingPortPath := filepath.Join(UserDataDir, "DevToolsActivePort")
 	sess, err := driver.NewSession(ctx, execPath, debuggingPortPath, cdputil.WaitPort, agg)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to connect to debugging port")
 	}
+
 	return &Lacros{
 		agg:    agg,
 		sess:   sess,
