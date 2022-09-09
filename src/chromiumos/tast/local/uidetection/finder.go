@@ -144,7 +144,7 @@ func (f *Finder) Within(other *Finder) *Finder {
 	})
 }
 
-// WithinA11yNode ensures that the element returned must be above the element returned by the a11y node finder on the screen.
+// WithinA11yNode ensures that the element returned must be within the element returned by the a11y node finder on the screen.
 func (f *Finder) WithinA11yNode(other *nodewith.Finder) *Finder {
 	return f.newConstraint(func(ctx context.Context, uda *Context, scaleFactor float64) (*coords.Rect, error) {
 		loc, err := uiauto.New(uda.tconn).WithPollOpts(uda.pollOpts).Location(ctx, other)
