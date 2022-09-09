@@ -231,6 +231,7 @@ func launchAppForAmazonPrimeVideo(ctx context.Context, s *testing.State, tconn *
 	const (
 		allowButtonText      = "ALLOW"
 		enterEmailAddressID  = "ap_email"
+		letsGoButtonID       = "com.amazon.avod.thirdpartyclient:id/cs_intro_cx_modal_button"
 		passwordClassName    = "android.widget.EditText"
 		passwordID           = "ap_password"
 		passwordText         = "Amazon password"
@@ -327,6 +328,13 @@ func launchAppForAmazonPrimeVideo(ctx context.Context, s *testing.State, tconn *
 		s.Fatal("Failed to click on notNowButton: ", err)
 	}
 
+	// Click on lets go button.
+	letsGoButton := d.Object(ui.ID(letsGoButtonID))
+	if err := letsGoButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+		s.Log("LetsGo Button doesn't exists: ", err)
+	} else if err := letsGoButton.Click(ctx); err != nil {
+		s.Fatal("Failed to click on LetsGo Button: ", err)
+	}
 	// Check for captcha and OTP.
 	checkForCaptcha := d.Object(ui.TextStartsWith(importantMessageText))
 	sendOTPButton := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.Text(sendOTPText))
@@ -352,22 +360,24 @@ func launchAppForAmazonPrimeVideo(ctx context.Context, s *testing.State, tconn *
 // signOutAmazonPrimeVideo verifies app is signed out.
 func signOutAmazonPrimeVideo(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
 	const (
+		enterEmailAddressID           = "ap_email"
 		layoutClassName               = "android.widget.FrameLayout"
-		myStuffDes                    = "My Stuff"
-		settingsIconClassName         = "android.widget.ImageButton"
+		profileIconID                 = "com.amazon.avod.thirdpartyclient:id/header_bar_profile_avatar"
+		profileIconDes                = "Profiles and My Stuff"
+		settingsIconClassName         = "android.widget.ImageView"
 		settingsIconDescription       = "Settings"
 		selectSignedInOptionClassName = "android.widget.TextView"
-		selectSignedInOptionText      = "Signed in as amazonautomation"
+		selectSignedInOptionText      = "Signed in as arcapps"
 		signOutText                   = "Sign out"
 	)
 
-	// Click on my stuff icon.
-	myStuffIcon := d.Object(ui.ClassName(layoutClassName), ui.DescriptionMatches("(?i)"+myStuffDes))
-	if err := myStuffIcon.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
-		s.Log("MyStuffIcon doesn't exist and skipped logout: ", err)
+	// Click on profile icon.
+	profileIcon := d.Object(ui.ID(profileIconID), ui.DescriptionContains(profileIconDes))
+	if err := profileIcon.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
+		s.Log("profileIcon doesn't exist and skipped logout: ", err)
 		return
-	} else if err := myStuffIcon.Click(ctx); err != nil {
-		s.Fatal("Failed to click MyStuffIcon: ", err)
+	} else if err := profileIcon.Click(ctx); err != nil {
+		s.Fatal("Failed to click profileIcon: ", err)
 	}
 
 	// Click on settings icon.
@@ -377,18 +387,15 @@ func signOutAmazonPrimeVideo(ctx context.Context, s *testing.State, tconn *chrom
 	} else if err := settingsIcon.Click(ctx); err != nil {
 		s.Fatal("Failed to click on settingsIcon: ", err)
 	}
-	// Select signed in option as amazonautomation.
+	// Select signed in option as arcapps.
 	selectSignedInOption := d.Object(ui.ClassName(selectSignedInOptionClassName), ui.TextMatches("(?i)"+selectSignedInOptionText))
 	if err := selectSignedInOption.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
 		s.Error("SelectSignedInOption doesn't exist: ", err)
 	} else if err := selectSignedInOption.Click(ctx); err != nil {
 		s.Fatal("Failed to click on selectSignedInOption: ", err)
 	}
-	// Click on sign out button.
+	// Click on sign out button until email address page exists.
+	enterEmailAddress := d.Object(ui.ID(enterEmailAddressID))
 	signOutButton := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.TextMatches("(?i)"+signOutText))
-	if err := signOutButton.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
-		s.Error("SignOutButton doesn't exist: ", err)
-	} else if err := signOutButton.Click(ctx); err != nil {
-		s.Fatal("Failed to click on signOutButton: ", err)
-	}
+	testutil.ClickUntilButtonExists(ctx, s, tconn, a, d, signOutButton, enterEmailAddress)
 }
