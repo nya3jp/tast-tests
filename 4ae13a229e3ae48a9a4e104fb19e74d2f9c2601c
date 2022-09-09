@@ -160,6 +160,24 @@
       "parentUuid": "d1f558eb_cc3d20a1",
       "revId": "4ae13a229e3ae48a9a4e104fb19e74d2f9c2601c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64d71c15_a14e6d04",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/enterprise_rollback_previous_version.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-09-09T15:28:29Z",
+      "side": 1,
+      "message": "It is in line 92.\nThere is also a check (and restoration if needed) in the PostTest of the autoupdate fixture: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/remote/updateutil/autoupdate_fixture.go;l\u003d89",
+      "parentUuid": "42395084_6a83e716",
+      "revId": "4ae13a229e3ae48a9a4e104fb19e74d2f9c2601c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
