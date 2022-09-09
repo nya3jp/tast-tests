@@ -16,6 +16,24 @@
       "message": "This comment mostly seems to be explaining what helper.EnableUserSecretStash does, which doesn\u0027t seem all that useful (or appropriate; tests shouldn\u0027t care if we were to change the mechanism.",
       "revId": "08e38d9c9db8043f6dd087104f5c4e430202e5a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fafbbf2b_76945bec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/auth_session_unlock.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-09-09T20:39:21Z",
+      "side": 1,
+      "message": "Done (indeed I just copy-pasted it, and IIRC the origin of this commit goes back to the times when we didn\u0027t have a helper function and each test hardcoded this logic 😐 )",
+      "parentUuid": "933c27c8_ad0e6d53",
+      "revId": "08e38d9c9db8043f6dd087104f5c4e430202e5a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
