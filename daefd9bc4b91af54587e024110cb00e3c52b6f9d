@@ -16,6 +16,23 @@
       "message": "If we want this to run on every test, can\u0027t we put it in the PostTest Fixture method instead of deferring it at the beginning of every test? That seems to be where we actually want it (deferred in SetUp seems wrong), and go/tast-docs[1] would support that this is the intended use case for PreTest/PostTest:\n\n\u003e Fixtures also have PreTest() and PostTest() methods, which run before and after each test. They get called with testing.FixtTestState with which you can report errors as a test. It\u0027s a good place to set up logging for individual test for example.\n\n[1] https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#fixtures",
       "revId": "daefd9bc4b91af54587e024110cb00e3c52b6f9d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff798da4_9e5301b6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1513257
+      },
+      "writtenOn": "2022-09-09T15:20:42Z",
+      "side": 1,
+      "message": "lgtm",
+      "revId": "daefd9bc4b91af54587e024110cb00e3c52b6f9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
