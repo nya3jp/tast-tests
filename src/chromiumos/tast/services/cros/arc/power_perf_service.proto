@@ -1,0 +1,25 @@
+// Copyright 2022 The ChromiumOS Authors.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package tast.cros.arc;
+
+import "google/protobuf/empty.proto";
+
+import "values.proto";
+
+option go_package = "chromiumos/tast/services/cros/arc";
+
+// PowerPerfService provides RPC methods to be used by PowerIdlePerf remote test.
+service PowerPerfService {
+
+  rpc Setup (google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
+  rpc StartMeasurement (google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
+  rpc StopMeasurement (google.protobuf.Empty) returns (tast.common.perf.perfpb.Values) {}
+
+  rpc Cleanup (google.protobuf.Empty) returns (google.protobuf.Empty) {}
+}

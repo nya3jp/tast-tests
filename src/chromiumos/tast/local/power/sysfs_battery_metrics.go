@@ -99,6 +99,59 @@ func ReadBatteryChargeNow(devPath string) (float64, error) {
 	return float64(charge) / 1000000, nil
 }
 
+// WaitForCharge waits until the battery is charged.
+//
+// devPath - the battery to wait for.
+// charge  - [0-1] how full the battery needs to be.
+// timeout - The maximum time to wait.
+func WaitForCharge(ctx context.Context, devPath string, charge float64, timeout time.Duration) error {
+	ctx, cancel := context.WithTimeout(ctx, timeout)
+	defer cancel()
+
+	full, err := ReadBatteryProperty(devPath, "charge_full")
+	if err != nil {
+		return errors.Wrap(err, "failed to read battery charge full")
+	}
+
+	type chargeRecord struct {
+		charge float64
+		t      time.Time
+	}
+	var chargeLog []chargeRecord
+	for {
+		now, err := ReadBatteryProperty(devPath, "charge_now")
+		if err != nil {
+			return err
+		}
+		chargeLog = append(chargeLog, chargeRecord{charge: now, t: time.Now()})
+		if now/full >= charge {
+			return nil
+		}
+		// Fail early if there's no chance that the charge will complete before
+		// the deadline.
+		logLen := len(chargeLog)
+		const failEarlyMinSamples = 4
+		if logLen > failEarlyMinSamples {
+			deltaCharge := chargeLog[logLen-1].charge - chargeLog[0].charge
+			deltaT := chargeLog[logLen-1].t.Sub(chargeLog[0].t).Seconds()
+			rate := deltaCharge / deltaT
+			remainingT := timeout.Seconds() - deltaT
+			chargeAtTimeout := now + remainingT*rate
+
+			// Don't fail if we're within 5% of succeeding.
+			const failEarlyChargeMargin = 0.05
+			if chargeAtTimeout < (charge-0.05)*full {
+				percentAtTimeout := 100.0 * chargeAtTimeout / full
+				return errors.Errorf("charging will only restore battery to %0.2f%% before timeout", percentAtTimeout)
+			}
+		}
+		testing.ContextLogf(ctx, "battery at %f%% < %f%%", 100.0*now/full, 100.0*charge)
+		if err := testing.Sleep(ctx, 30*time.Second); err != nil {
+			return errors.Wrap(err, "failed to wait for battery to charge")
+		}
+	}
+}
+
 // ReadBatteryEnergy returns the remaining energy of a battery in Wh.
 func ReadBatteryEnergy(devPath string) (float64, error) {
 	charge, err := ReadBatteryChargeNow(devPath)
