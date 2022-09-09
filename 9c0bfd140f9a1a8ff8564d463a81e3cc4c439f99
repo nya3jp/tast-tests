@@ -16,6 +16,24 @@
       "message": "I think describing the why is even more important thant the what. How about:\n\nIn Wayland protocol, clipboard \"write\" requires previously entering the window through a user interaction. We do so using Alt+Tab.",
       "revId": "9c0bfd140f9a1a8ff8564d463a81e3cc4c439f99",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7cba02f3_bfee1475",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/image_paste.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2022-09-09T04:02:23Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "768f62cf_2327d54a",
+      "revId": "9c0bfd140f9a1a8ff8564d463a81e3cc4c439f99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
