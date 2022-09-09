@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "041ac62a_70a27d6e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-09-09T00:02:06Z",
+      "side": 1,
+      "message": "+2 % nits\n\nPlease, don\u0027t add Tast reviewers manually.\nInstead add tast-owners@google.com\n\n\nhttp://go/tast-reviews",
+      "revId": "0dcff5461a4fa07364a4eb394a891bcb729a3771",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f9a6d84_d7ac9859",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_client.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 909,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-09-09T00:02:06Z",
+      "side": 1,
+      "message": "while you are here, if you can also update the rest of the Getters",
+      "range": {
+        "startLine": 909,
+        "startChar": 3,
+        "endLine": 909,
+        "endChar": 18
+      },
+      "revId": "0dcff5461a4fa07364a4eb394a891bcb729a3771",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f76fcec2_55f8ace6",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_client.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 937,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-09-09T00:02:06Z",
+      "side": 1,
+      "message": "avoid using prefix `Get` for getters\n\nhttps://g3doc.corp.google.com/go/g3doc/style/decisions.md?cl\u003dhead#getters",
+      "range": {
+        "startLine": 937,
+        "startChar": 27,
+        "endLine": 937,
+        "endChar": 44
+      },
+      "revId": "0dcff5461a4fa07364a4eb394a891bcb729a3771",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
