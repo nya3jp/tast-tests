@@ -224,6 +224,30 @@
       },
       "revId": "36856e41dfca8987aac58872df8fa8cfd1878c26",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2347415c_4a130c9d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/deskscuj/deskswitcher.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-09-09T18:54:00Z",
+      "side": 1,
+      "message": "deskswitcher.go:\n\ttype deskSwitchWorkflow struct {\n\t\tname        string\n\t\tdescription string\n\t\titinerary   []int\n\t\tswitchDesks func(context.Context, int, int) error\n\t}\n\ndesks_cuj.go:\n\t\tfor _, deskSwitcher :\u003d range deskSwitchers {\n\t\t\t...\n\n\t\t\ti :\u003d 0\n\t\t\tfor endTime :\u003d time.Now().Add(deskSwitchingDuration); time.Now().Before(endTime); {\n\t\t\t\tfromDesk :\u003d deskSwitcher.itinerary[i]\n\t\t\t\ti \u003d (i + 1) % len(deskSwitcher.itinerary)\n\t\t\t\ttoDesk :\u003d deskSwitcher.itinerary[i]\n\n\t\t\t\t...\n\t\t\t}\n\t\t\ts.Logf(\"Switched desk by %s %d times\", deskSwitcher.name, cycles)\n\t\t}",
+      "parentUuid": "e1068f01_60962802",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 34
+      },
+      "revId": "36856e41dfca8987aac58872df8fa8cfd1878c26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
