@@ -16,6 +16,24 @@
       "message": "I think this dependency needs to go the other way; changing servo configs will break this test, but adding an unused chip to this test is fine.",
       "revId": "bdfd856cf10a8def7156507738f2982499faaa48",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9d937c1_2b2b224b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-09-09T00:20:26Z",
+      "side": 1,
+      "message": "Hmmm that\u0027s odd, that\u0027s the way I thought I had done it. Too many branches!",
+      "parentUuid": "c3db80bb_9ffa3d65",
+      "revId": "bdfd856cf10a8def7156507738f2982499faaa48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
