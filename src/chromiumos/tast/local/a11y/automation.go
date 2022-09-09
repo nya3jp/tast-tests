@@ -314,3 +314,22 @@ func (n *Node) StandardActions(ctx context.Context) ([]string, error) {
 
 	return actions, nil
 }
+
+// CustomActions returns the list of descriptions for custom actions of the node.
+// If the JavaScript fails to execute, an error is returned.
+func (n *Node) CustomActions(ctx context.Context) ([]string, error) {
+	var actions []string
+	err := n.object.Call(ctx,
+		&actions,
+		`function(){
+			if (this.customActions) {
+				return this.customActions.map(a => a.description);
+			}
+			return null;
+		}`)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get custom actions descriptions")
+	}
+
+	return actions, nil
+}
