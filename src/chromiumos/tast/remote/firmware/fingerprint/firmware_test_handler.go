@@ -79,15 +79,22 @@ func NewFirmwareTest(ctx context.Context, d *rpcdut.RPCDUT, servoSpec, outDir st
 	//   flashing.
 	// Since MakeRootfsWritable will reboot the device, we must call
 	// RPCClose/RPCDial before/after calling MakeRootfsWritable.
-	if err := t.d.RPCClose(ctx); err != nil {
-		return nil, errors.Wrap(err, "failed to close rpc")
+	rootfsIsWritable, err := sysutil.IsRootfsWritable(ctx, t.d.RPC())
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to check if rootfs is writable")
 	}
-	// Rootfs must be writable in order to disable the upstart job.
-	if err := sysutil.MakeRootfsWritable(ctx, t.d.DUT(), t.d.RPCHint()); err != nil {
-		return nil, errors.Wrap(err, "failed to make rootfs writable")
-	}
-	if err := t.d.RPCDial(ctx); err != nil {
-		return nil, errors.Wrap(err, "failed to redial rpc")
+	if !rootfsIsWritable {
+		testing.ContextLog(ctx, "Making rootfs writable")
+		if err := t.d.RPCClose(ctx); err != nil {
+			return nil, errors.Wrap(err, "failed to close rpc")
+		}
+		// Rootfs must be writable in order to disable the upstart job.
+		if err := sysutil.MakeRootfsWritable(ctx, t.d.DUT(), t.d.RPCHint()); err != nil {
+			return nil, errors.Wrap(err, "failed to make rootfs writable")
+		}
+		if err := t.d.RPCDial(ctx); err != nil {
+			return nil, errors.Wrap(err, "failed to redial rpc")
+		}
 	}
 
 	// Disable DBus bus activation for fwupd. It will prevent fwupd and
