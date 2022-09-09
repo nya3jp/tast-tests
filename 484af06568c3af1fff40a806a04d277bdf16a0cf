@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5495bc13_f598566b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hps/utils/screen_utils.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-09-09T02:05:47Z",
+      "side": 1,
+      "message": "is this log for debugging purposes? if so, you should only print it when the error happens. see https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#when-to-log\n\nsame to other usage of testing.ContextLog",
+      "range": {
+        "startLine": 55,
+        "startChar": 1,
+        "endLine": 55,
+        "endChar": 147
+      },
+      "revId": "484af06568c3af1fff40a806a04d277bdf16a0cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
