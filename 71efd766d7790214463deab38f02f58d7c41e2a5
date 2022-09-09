@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "348be745_3ac546ef",
+        "filename": "src/chromiumos/tast/local/chrome/projector/projector.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-09-09T23:57:55Z",
+      "side": 1,
+      "message": "If there\u0027s no microphone available (which can happen despite filtering for hwdep.Microphone(), see b/241588663), then the new screencast button should be disabled with the \"Turn on microphone\" error message, so this check should pass. Now both NewScreencastButtonCondition and CreationFlow tests verify this.",
+      "parentUuid": "970c2e16_3d5c73fa",
+      "range": {
+        "startLine": 63,
+        "startChar": 1,
+        "endLine": 65,
+        "endChar": 2
+      },
+      "revId": "71efd766d7790214463deab38f02f58d7c41e2a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f616f71e_d85a6f4c",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-09-09T23:33:51Z",
       "side": 1,
       "message": "How does adding this line of code affect the `NewScreencastButtonCondition` test, as it wasn\u0027t there before?",
+      "range": {
+        "startLine": 69,
+        "startChar": 1,
+        "endLine": 69,
+        "endChar": 46
+      },
+      "revId": "71efd766d7790214463deab38f02f58d7c41e2a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "065c6b89_59a9512a",
+        "filename": "src/chromiumos/tast/local/chrome/projector/projector.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-09-09T23:57:55Z",
+      "side": 1,
+      "message": "Before: if a microphone is unavailable, then the NewScreencastButtonCondition test would simply pass the test and exit prematurely. As Oleh pointed out in this comment [1], this behavior is undesirable.\n\nNow: if a microphone is unavailable, then the NewScreencastButtonCondition test would turn on a fake microphone and proceed with the test (verify that the new screencast button is now enabled).\n\n[1] https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3872246/comments/f058750e_70ee4dcc",
+      "parentUuid": "f616f71e_d85a6f4c",
       "range": {
         "startLine": 69,
         "startChar": 1,
