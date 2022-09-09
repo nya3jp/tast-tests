@@ -34,6 +34,24 @@
       "parentUuid": "7fcc7f71_16f865de",
       "revId": "12ad7573d3d18f7d741654c350f3f2eaa5a19d31",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "802d6b0e_5ae7613f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-09-09T22:41:34Z",
+      "side": 1,
+      "message": "Agreed we want this too - I looked at this existing perf test today too.\n\nBut should be one test (functional+perf) or two separate tests? I\u0027m not 100% sure, but I thought it\u0027ll be more maintainable to keep the functional test separate from the performance one.",
+      "parentUuid": "0369923c_197df9a9",
+      "revId": "12ad7573d3d18f7d741654c350f3f2eaa5a19d31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
