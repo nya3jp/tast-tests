@@ -100,7 +100,7 @@ func AppListSortSmoke(ctx context.Context, s *testing.State) {
 	}
 
 	// Enable the app list sort.
-	opts = append(opts, chrome.EnableFeatures("ProductivityLauncher", "LauncherAppSort"))
+	opts = append(opts, chrome.EnableFeatures("LauncherAppSort"))
 
 	cr, err := chrome.New(ctx, opts...)
 	if err != nil {

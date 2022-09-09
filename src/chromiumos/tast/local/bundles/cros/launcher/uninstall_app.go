@@ -95,7 +95,7 @@ func init() {
 					isTabletMode:  false,
 					arcAppPkgName: "com.google.android.calendar",
 				},
-				Fixture:           "arcBootedWithPlayStoreProductivityLauncher",
+				Fixture:           "arcBootedWithPlayStore",
 				ExtraSoftwareDeps: []string{"arc"},
 			},
 			{
@@ -107,7 +107,7 @@ func init() {
 					isTabletMode:  true,
 					arcAppPkgName: "com.google.android.calendar",
 				},
-				Fixture:           "arcBootedWithPlayStoreProductivityLauncher",
+				Fixture:           "arcBootedWithPlayStore",
 				ExtraSoftwareDeps: []string{"arc"},
 			},
 		},
