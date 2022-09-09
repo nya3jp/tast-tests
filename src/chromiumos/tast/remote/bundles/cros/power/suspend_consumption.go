@@ -26,10 +26,6 @@ const (
 	// Minimum battery life of 14 days
 	minimumBatteryLife = time.Hour * 24 * 14
 
-	// The sense resistor on the battery rail is usually the most accurate
-	powerConsumptionKey    = "ppvar_bat"
-	powerConsumptionKeyAlt = "ppvar_bat_q"
-
 	varDuration = "duration"
 	varNoGsc    = "no_gsc"
 
@@ -137,12 +133,22 @@ func SuspendConsumption(ctx context.Context, s *testing.State) {
 
 	s.Log(results)
 
-	consumption, exists := results.GetMean(powerConsumptionKey)
-	if !exists {
-		consumption, exists = results.GetMean(powerConsumptionKeyAlt)
-		if !exists {
-			s.Fatalf("Failed to get system power consumption on rails %s, %s", powerConsumptionKey, powerConsumptionKeyAlt)
+	var consumption float32
+	var exists bool
+	powerConsumptionKeys := []string{
+		// The sense resistor on the battery rail is usually the most accurate
+		"ppvar_bat",
+		"ppvar_bat_q",
+		"ppvar_vbat",
+	}
+	for _, key := range powerConsumptionKeys {
+		consumption, exists = results.GetMean(key)
+		if exists {
+			break
 		}
+	}
+	if !exists {
+		s.Fatal("Failed to get system power consumption on rails ", powerConsumptionKeys)
 	}
 
 	if consumption == 0.0 || consumption < 0.0 {

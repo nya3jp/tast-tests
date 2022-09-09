@@ -13,6 +13,7 @@ import (
 	"os"
 	"path"
 	"strconv"
+	"strings"
 	"time"
 
 	"chromiumos/tast/errors"
@@ -20,12 +21,8 @@ import (
 )
 
 const (
-	dutPowerCmd         = "dut-power"
-	dutPowerOutputDir   = "/tmp/dut-power-output"
-	dutPowerTmpPrefix   = "dut-power-results"
-	ecSummary           = "ec_summary.json"
-	onboardAccumSummary = "onboard.accum_summary.json"
-	onboardSummary      = "onboard_summary.json"
+	dutPowerCmd       = "dut-power"
+	dutPowerTmpPrefix = "dut-power-results"
 )
 
 // DutPowerContext manages power measurements taken through dut-power
@@ -48,15 +45,37 @@ func NewDutPowerContext(ctx context.Context, h *firmware.Helper) *DutPowerContex
 
 // Measure measures power consumption through dut-power
 func (p *DutPowerContext) Measure(duration time.Duration) (Results, error) {
-	// Clear any files from a previous run
-	if err := p.h.ServoProxy.RunCommand(p.ctx, false, "rm", "-rf", dutPowerOutputDir); err != nil {
-		e := fmt.Sprintf("failed to clear tmp files on proxy: %s", err)
-		return nil, errors.New(e)
+	summaries, err := p.MeasureAllSummaries(duration)
+	if err != nil {
+		return nil, err
 	}
 
+	for _, name := range []string{
+		"ec",
+		"onboard.accum",
+		"onboard",
+	} {
+		summary, exists := summaries[name]
+		if !exists {
+			continue
+		}
+		results := NewResultsGeneric()
+		results.AddMeans(summary)
+		return &results, nil
+	}
+	return nil, errors.New("failed to find any results")
+}
+
+// MeasureAllSummaries returns all summaries created by dut-power, not just the
+// most accurate value provided by Measure above.
+//
+// Returns a map of summary name (e.g. "onboard" for onboard_summary.json) to
+// a map of metrics name (e.g. "ppdut5") to mean value.
+func (p *DutPowerContext) MeasureAllSummaries(duration time.Duration) (map[string]map[string]float32, error) {
 	// Run dut-power on the servod host to get our measurements
 	time := strconv.Itoa(int(duration.Seconds()))
-	err := p.h.ServoProxy.RunCommand(p.ctx, false, dutPowerCmd, "-o", dutPowerOutputDir, "-t", time, "--save-json")
+
+	output, err := p.h.ServoProxy.OutputCommand(p.ctx, false, dutPowerCmd, "-t", time, "--save-json")
 	if err != nil {
 		e := fmt.Sprintf("failed to run dut-power: %s", err)
 		return nil, errors.New(e)
@@ -68,45 +87,30 @@ func (p *DutPowerContext) Measure(duration time.Duration) (Results, error) {
 		return nil, errors.New(e)
 	}
 
-	// Prioritize attempt to use the onboard summaries first then fall back to the EC
-	// The accumulator summary may not be present in certain cases, e.g.
-	// short measurement times
-	logPaths := []string{
-		onboardAccumSummary,
-		onboardSummary,
-		ecSummary,
-	}
-
-	var contents = []byte{}
-	for i := 0; i < len(logPaths); i++ {
-		remotePath := path.Join(dutPowerOutputDir, logPaths[i])
-		localPath := path.Join(dutPowerLocalDir, logPaths[i])
-		contents, err = p.readRemoteFile(remotePath, localPath)
-
-		if err == nil {
-			break
+	result := make(map[string]map[string]float32)
+	for _, line := range strings.Split(string(output), "\n") {
+		const summaryFileSuffix = "_summary.json"
+		if strings.HasSuffix(line, summaryFileSuffix) {
+			remotePath := line
+			file := path.Base(remotePath)
+			localPath := path.Join(dutPowerLocalDir, file)
+			contents, err := p.readRemoteFile(remotePath, localPath)
+			if err != nil {
+				return nil, errors.Wrap(err, "failed to read dut-power summary file")
+			}
+			measurements := make(map[string]measurement)
+			if err := json.Unmarshal(contents, &measurements); err != nil {
+				return nil, errors.Wrap(err, "failed to decode summary")
+			}
+			summary := make(map[string]float32)
+			for key, value := range measurements {
+				summary[key] = value.Mean
+			}
+			name := strings.TrimSuffix(file, summaryFileSuffix)
+			result[name] = summary
 		}
 	}
-
-	if err != nil {
-		return nil, errors.New("failed to read measurement logs")
-	}
-
-	measurements := make(map[string]measurement)
-	if err := json.Unmarshal(contents, &measurements); err != nil {
-		e := fmt.Sprintf("failed to decode results: %s", err)
-		return nil, errors.New(e)
-	}
-
-	means := make(map[string]float32)
-	for key, value := range measurements {
-		means[key] = value.Mean
-	}
-
-	results := NewResultsGeneric()
-	results.AddMeans(means)
-
-	return &results, nil
+	return result, nil
 }
 
 func (p *DutPowerContext) readRemoteFile(remotePath, localPath string) ([]byte, error) {
