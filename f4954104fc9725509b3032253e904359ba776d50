@@ -166,6 +166,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d2f81c7_658491a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/add_remove_factors_ephemeral.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1546868
+      },
+      "writtenOn": "2022-09-09T17:25:09Z",
+      "side": 1,
+      "message": "Okay, when making the function reusable I switched to using an error return.",
+      "parentUuid": "be312498_9c9308eb",
+      "range": {
+        "startLine": 55,
+        "startChar": 34,
+        "endLine": 55,
+        "endChar": 46
+      },
+      "revId": "f4954104fc9725509b3032253e904359ba776d50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d3e7a2fc_690b94b5",
@@ -233,6 +257,24 @@
       "side": 1,
       "message": "Yeah, it\u0027s just that without that I\u0027m not sure a helper for this simplifies things much? If you have to supply the less function, you\u0027d probably still end up with something that looks like:\n\n```\ntypeLess :\u003d func(a, b uda.AuthFactorType) bool { return a \u003c b }\nif err :\u003d helpers.SetDiff(reply.SupportedAuthFactors, expectedSupported, typeLess); err !\u003d nil {\n    s.Error(\"Mismatch in supported auth factors before adding any factors: \", err)\n}\n```\n\nAnd then I\u0027m not sure that\u0027s any cleaner than the default here.\n\nWhat I could do is refactor the original, more complex (but more powerful) `compareReplyToExpectations` function from the original test, and then reuse that in both. However, the function would still be specific to ListAuthFactorsReply, as I can\u0027t easily genericize it.",
       "parentUuid": "bab68623_4e839ecc",
+      "revId": "f4954104fc9725509b3032253e904359ba776d50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f03ea413_116a4df9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/add_remove_factors_ephemeral.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1546868
+      },
+      "writtenOn": "2022-09-09T17:25:09Z",
+      "side": 1,
+      "message": "Okay, I pulled the AuthFactorType check out into a reusable function.",
+      "parentUuid": "c521abbe_f2541b99",
       "revId": "f4954104fc9725509b3032253e904359ba776d50",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
