@@ -133,14 +133,22 @@ to update the `.ebuild` file. In particular you will need to:
 
 *   Grab the newer `.proto` from `frameworks/base/core/proto`. E.g: For
     android-10, we grab them from [here][android10-dev-proto].
-*   Rename it to `aosp-frameworks-base-proto-proto-$DATE.tar.gz`.
+*   Rename it to `aosp-frameworks-base-core-proto-$DATE.tar.gz`.
 *   Upload it to the [ChromeOS mirror][gsutil-doc]. E.g: `gsutil.py cp -n -a
     public-read aosp-frameworks-base-core-proto-20190805.tar.gz
     gs://chromeos-localmirror/distfiles/`.
-*   Update the `GIT_COMMIT` in the [.ebuild file][aosp-frameworks-proto].
-
-For reference, this CL upgraded the `.proto` files from P to Q:
-https://crrev.com/c/1802618
+*   Create a CL to adopt the new .proto (For reference
+    https://crrev.com/c/1802618 upgraded the `.proto` files from P to Q.)
+    *   Change the names of the .ebuild file and that of the symlink
+    *   Update the `HOMEPAGE`, `GIT_COMMIT` in the [.ebuild file][aosp-frameworks-proto].
+    *   Run `sudo emerge aosp-frameworks-base-proto` to update the [Manifest file][aosp-frameworks-proto].
+        If the `emerge` command fails, the errors should be mainly due to proto
+        changes on Android side, adjust the `protoc \..` commands in the `.ebuild`
+        file to address them.
+*   If in the newer Android version, new .proto dependencies are added outside of
+    `frameworks/base/core/proto`, you also need to upload them to [ChromeOS mirror][gsutil-doc].
+    For reference, in the uprev from R to T, https://crrev.com/c/3885827 introduced the
+    `proto_logging/stats` protos which are the dependencies of `base/core/proto` .
 
 To test it, do:
 
