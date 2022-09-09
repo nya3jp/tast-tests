@@ -22,6 +22,30 @@
       },
       "revId": "484af06568c3af1fff40a806a04d277bdf16a0cf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "125a7f28_6de2a838",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hps/utils/screen_utils.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2022-09-09T04:29:07Z",
+      "side": 1,
+      "message": "That section also says \"When you‘re about to do something that could take a while or even hang, log a message using Log or Logf first\", and in some cases polling is supposed to take more than 10 minutes.\n\nAlso we use variable delays which depend on the current settings and using wrong delay will break the test, so I think this should help with the triage when things break in the future.",
+      "parentUuid": "5495bc13_f598566b",
+      "range": {
+        "startLine": 55,
+        "startChar": 1,
+        "endLine": 55,
+        "endChar": 147
+      },
+      "revId": "484af06568c3af1fff40a806a04d277bdf16a0cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
