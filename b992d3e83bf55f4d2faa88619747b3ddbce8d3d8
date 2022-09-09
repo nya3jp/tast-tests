@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15bc4d1a_4ac2164a",
+        "filename": "src/chromiumos/tast/local/graphics/perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-09-09T13:59:04Z",
+      "side": 1,
+      "message": "Are you sure you want to just log this. The above check (if !ok) exits the function but here you don\u0027t.\n\nIn the previous implementation when parsing error occurred the function exited after attempting to dump stderr.",
+      "range": {
+        "startLine": 121,
+        "startChar": 3,
+        "endLine": 121,
+        "endChar": 82
+      },
+      "revId": "b992d3e83bf55f4d2faa88619747b3ddbce8d3d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
