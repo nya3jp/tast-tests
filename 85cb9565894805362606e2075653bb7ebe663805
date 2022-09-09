@@ -182,6 +182,30 @@
       },
       "revId": "85cb9565894805362606e2075653bb7ebe663805",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "042d0ff3_962a1332",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/allow_cellular_policy_networks_on.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-09-09T18:04:56Z",
+      "side": 1,
+      "message": "Ah okay, thank you for clarifying! Will close this out then :)",
+      "parentUuid": "b493d8bc_da3561b3",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 2
+      },
+      "revId": "85cb9565894805362606e2075653bb7ebe663805",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
