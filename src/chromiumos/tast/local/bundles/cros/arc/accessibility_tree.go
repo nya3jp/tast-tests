@@ -26,6 +26,7 @@ type axTreeNode struct {
 	Attributes      map[string]interface{}
 	Children        []*axTreeNode
 	StandardActions []string
+	CustomActions   []string
 }
 
 type expectedNode struct {
@@ -43,7 +44,7 @@ func (n axTreeNode) matches(ctx context.Context, actual *a11y.Node) (bool, error
 		if err != nil {
 			return false, errors.Wrap(err, "failed to get actual standard actions")
 		}
-		if !hasAllStandardActions(expected, actual) {
+		if !hasAllExpectationInStringList(expected, actual) {
 			testing.ContextLogf(
 				ctx,
 				"standard actions didn't match. expected: %s, got: %s",
@@ -53,16 +54,32 @@ func (n axTreeNode) matches(ctx context.Context, actual *a11y.Node) (bool, error
 		}
 	}
 
+	if n.CustomActions != nil {
+		expected := n.CustomActions
+		actual, err := actual.CustomActions(ctx)
+		if err != nil {
+			return false, errors.Wrap(err, "failed to get actual custom actions")
+		}
+		if !hasAllExpectationInStringList(expected, actual) {
+			testing.ContextLogf(
+				ctx,
+				"custom actions didn't match. expected: %s, got: %s",
+				expected,
+				actual)
+			return false, nil
+		}
+	}
+
 	return actual.Matches(ctx, n.findParams())
 }
 
-// hasAllStandardActions returns true if actual includes all elements in expected
-// and false otherwise.
-func hasAllStandardActions(expected, actual []string) bool {
-	for _, action := range expected {
+// hasAllExpectationInStringList returns true if actualList includes all elements in
+// expectedList and false otherwise.
+func hasAllExpectationInStringList(expectedList, actualList []string) bool {
+	for _, expected := range expectedList {
 		found := false
-		for _, actualAction := range actual {
-			if action == actualAction {
+		for _, currActual := range actualList {
+			if expected == currActual {
 				found = true
 				break
 			}
@@ -312,6 +329,17 @@ func AccessibilityTree(ctx context.Context, s *testing.State) {
 						},
 						StandardActions: []string{
 							"longClick",
+						},
+					},
+					{
+						Role: role.Button,
+						Attributes: map[string]interface{}{
+							"name": regexp.MustCompile(
+								`(CUSTOM ACTION|Custom Action)`,
+							),
+						},
+						CustomActions: []string{
+							"perform custom action",
 						},
 					},
 				},

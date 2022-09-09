@@ -46,5 +46,29 @@ public class ActionActivity extends Activity {
                                         "perform long click"));
                     }
                 });
+
+        Button customActionButton = findViewById(R.id.customActionButton);
+        customActionButton.setAccessibilityDelegate(
+                new AccessibilityDelegate() {
+                    @Override
+                    public void onInitializeAccessibilityNodeInfo(
+                            View host, AccessibilityNodeInfo info) {
+                        super.onInitializeAccessibilityNodeInfo(host, info);
+                        info.addAction(
+                                new AccessibilityNodeInfo.AccessibilityAction(
+                                        300, "perform custom action"));
+                    }
+
+                    @Override
+                    public boolean performAccessibilityAction(View host, int action, Bundle args) {
+                        switch (action) {
+                            case 300:
+                                host.announceForAccessibility("custom action performed");
+                                return true;
+                            default:
+                                return super.performAccessibilityAction(host, action, args);
+                        }
+                    }
+                });
     }
 }
