@@ -16,6 +16,52 @@
       "message": "Hi Tast Owners, this CL is ready for review.",
       "revId": "71efd766d7790214463deab38f02f58d7c41e2a5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "970c2e16_3d5c73fa",
+        "filename": "src/chromiumos/tast/local/chrome/projector/projector.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-09-09T23:33:51Z",
+      "side": 1,
+      "message": "How does adding this line of code affect the `CreationFlow` test, as it wasn\u0027t there before?",
+      "range": {
+        "startLine": 63,
+        "startChar": 1,
+        "endLine": 65,
+        "endChar": 2
+      },
+      "revId": "71efd766d7790214463deab38f02f58d7c41e2a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f616f71e_d85a6f4c",
+        "filename": "src/chromiumos/tast/local/chrome/projector/projector.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-09-09T23:33:51Z",
+      "side": 1,
+      "message": "How does adding this line of code affect the `NewScreencastButtonCondition` test, as it wasn\u0027t there before?",
+      "range": {
+        "startLine": 69,
+        "startChar": 1,
+        "endLine": 69,
+        "endChar": 46
+      },
+      "revId": "71efd766d7790214463deab38f02f58d7c41e2a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
