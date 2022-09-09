@@ -72,6 +72,57 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7f847c2e_d10067b8",
+        "filename": "src/chromiumos/tast/common/shillconst/const.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-09-09T03:26:37Z",
+      "side": 1,
+      "message": "Should we also add the enterprise ones?",
+      "revId": "86d1d0dac0c4c71fac9d97edaec0bb62862de2a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "939c265d_2c435703",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/fgsec_connect.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-09-09T03:26:37Z",
+      "side": 1,
+      "message": "I don\u0027t quite understand the purpose of this test. Even if we don\u0027t support wpa-all we still may be able to connect to the wpawpa2 AP. Is there something else that I\u0027m not getting?",
+      "revId": "86d1d0dac0c4c71fac9d97edaec0bb62862de2a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6dd98ed_b1e46b32",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/fgsec_connect.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-09-09T03:26:37Z",
+      "side": 1,
+      "message": "We basically cover all of these in SimpleConnect, no?",
+      "revId": "86d1d0dac0c4c71fac9d97edaec0bb62862de2a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "54f07ceb_387b7665",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/fgsec_connect.go",
         "patchSetId": 3
@@ -95,6 +146,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "26219426_01b3dff2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/fgsec_connect.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-09-09T03:26:37Z",
+      "side": 1,
+      "message": "Add step by step description of test.",
+      "revId": "86d1d0dac0c4c71fac9d97edaec0bb62862de2a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f0b174d6_c23d94ed",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/fgsec_connect.go",
         "patchSetId": 3
@@ -106,6 +174,23 @@
       "writtenOn": "2022-09-07T22:13:21Z",
       "side": 1,
       "message": "Could you please add a discription of the test steps. similar to this test:\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/remote/bundles/cros/wifi/p2p_simple_connect.go;rcl\u003d408dc0de035db3b85f9915ef0b566e96f253b4a9;l\u003d28",
+      "revId": "86d1d0dac0c4c71fac9d97edaec0bb62862de2a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8cc094e7_c9db5572",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/fgsec_connect.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-09-09T03:26:37Z",
+      "side": 1,
+      "message": "is there any reason you\u0027re putting all of this into a function? Do you eventually plan to run it multiple times?",
       "revId": "86d1d0dac0c4c71fac9d97edaec0bb62862de2a2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -152,6 +237,23 @@
         "endLine": 182,
         "endChar": 16
       },
+      "revId": "86d1d0dac0c4c71fac9d97edaec0bb62862de2a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0784f164_edf9dede",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/fgsec_connect.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-09-09T03:26:37Z",
+      "side": 1,
+      "message": "Prefer something like DiscoverBSSID: https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/wifi/shill_service.go;rcl\u003da825d2fd922178a0d3fdf36ff7d99c994295ace6;l\u003d359 to guarantee that this happens.",
       "revId": "86d1d0dac0c4c71fac9d97edaec0bb62862de2a2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
