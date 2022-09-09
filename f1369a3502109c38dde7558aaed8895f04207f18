@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "55cc0f04_7a6cf052",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-09-09T12:38:54Z",
+      "side": 1,
+      "message": "LGTM.\n\nDoes enrollment fixture still require actual reboot?",
+      "revId": "f1369a3502109c38dde7558aaed8895f04207f18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
