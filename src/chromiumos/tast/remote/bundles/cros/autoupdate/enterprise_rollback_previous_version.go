@@ -38,27 +38,46 @@ func init() {
 			"tast.cros.hwsec.OwnershipService",
 		},
 		Timeout: updateutil.UpdateTimeout + 12*time.Minute,
-		Params: []testing.Param{{
-			Name: "rollback_1_version",
-			Val: testParam{
-				previousVersionTarget: 1,
+		Params: []testing.Param{
+			{
+				Name: "rollback_1_version",
+				Val: testParam{
+					previousVersionTarget: 1,
+				},
+				ExtraSearchFlags: []*testing.StringPair{{
+					Key: "feature_id",
+					// Configure rollback on a device and ensure that it is correctly
+					// rolled back and data preserved (rollback_target: n-1).
+					Value: "screenplay-d2331732-a996-44b0-8ca4-901228d26cb7",
+				}},
 			},
-		}, {
-			Name: "rollback_2_versions",
-			Val: testParam{
-				previousVersionTarget: 2,
+			{
+				Name: "rollback_2_versions",
+				Val: testParam{
+					previousVersionTarget: 2,
+				},
+				ExtraSearchFlags: []*testing.StringPair{{
+					Key: "feature_id",
+					// Configure rollback on a device and ensure that it is correctly
+					// rolled back and data preserved (rollback_target: n-2).
+					Value: "screenplay-451d7650-8757-49a4-9a24-828ec037908d",
+				}},
 			},
+			/* Disabled due to <1% pass rate over 30 days. See b/246818326
+			{
+				Name: "rollback_3_versions",
+				Val: testParam{
+					previousVersionTarget: 3,
+				},
+				ExtraSearchFlags: []*testing.StringPair{{
+					Key: "feature_id",
+					// Configure rollback on a device and ensure that it is correctly
+					// rolled back and data preserved (rollback_target: n-3).
+					Value: "screenplay-7765c9ba-f7e6-4490-93d5-73a6d4e7530b",
+				}},
+			}
+			*/
 		},
-		/* Disabled due to <1% pass rate over 30 days. See b/246818326
-		{
-			Name: "rollback_3_versions",
-			Val: testParam{
-				previousVersionTarget: 3,
-			},
-		}
-		*/
-		},
-
 		Fixture: fixture.Autoupdate,
 	})
 }
