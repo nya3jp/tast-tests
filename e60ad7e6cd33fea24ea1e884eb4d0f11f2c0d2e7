@@ -16,6 +16,23 @@
       "message": "Toni and tast-owners, please take a look.",
       "revId": "e60ad7e6cd33fea24ea1e884eb4d0f11f2c0d2e7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c2ff288_9dcbd6af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/app_window_on_shelf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-09-09T17:54:35Z",
+      "side": 1,
+      "message": "potential merge conflict with https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3880617/5/src/chromiumos/tast/local/bundles/cros/shelf/app_window_on_shelf.go#b11",
+      "revId": "e60ad7e6cd33fea24ea1e884eb4d0f11f2c0d2e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
