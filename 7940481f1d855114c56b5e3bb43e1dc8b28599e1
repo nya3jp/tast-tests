@@ -104,6 +104,24 @@
       "parentUuid": "cd79e27f_a7ecb272",
       "revId": "7940481f1d855114c56b5e3bb43e1dc8b28599e1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "278e589b_7c4d4be9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/fsp.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-09-09T14:29:17Z",
+      "side": 1,
+      "message": "I prefer the defer in this case, it keeps the Close close to Launch. If leaving the window open does not cause issues, there\u0027s no need to worry about a cleanup context.",
+      "parentUuid": "57b3ca5f_2c773f17",
+      "revId": "7940481f1d855114c56b5e3bb43e1dc8b28599e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
