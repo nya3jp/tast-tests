@@ -130,6 +130,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "48b4dafa_fb33a6f8",
+        "filename": "src/chromiumos/tast/common/fixture/policyutil.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-09-09T16:01:49Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "de10de40_b7f4672e",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 42
+      },
+      "revId": "64a10d6ef05513ba9c514cd89ea643ef8a4f51c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4811a784_792e03db",
@@ -143,6 +167,30 @@
       "writtenOn": "2022-09-01T15:43:38Z",
       "side": 1,
       "message": "Can this be moved to a separate CL?",
+      "range": {
+        "startLine": 23054,
+        "startChar": 0,
+        "endLine": 23085,
+        "endChar": 79
+      },
+      "revId": "64a10d6ef05513ba9c514cd89ea643ef8a4f51c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1669984f_5b3599eb",
+        "filename": "src/chromiumos/tast/common/policy/defs.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 23085,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-09-09T16:01:49Z",
+      "side": 1,
+      "message": "I\u0027ll do this in the next cleanup. keeping it unresolved for now.",
+      "parentUuid": "4811a784_792e03db",
       "range": {
         "startLine": 23054,
         "startChar": 0,
@@ -170,6 +218,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4014f6f4_c38b14c7",
+        "filename": "src/chromiumos/tast/common/policy/fakedms/fakedms.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-09-09T16:01:49Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f1c7a144_3c9003d8",
+      "revId": "64a10d6ef05513ba9c514cd89ea643ef8a4f51c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fe77071f_d16442ff",
@@ -183,6 +249,24 @@
       "writtenOn": "2022-09-01T15:40:26Z",
       "side": 1,
       "message": "Mention here that this version is deprecated and users should prefer `NewCpp`.",
+      "revId": "64a10d6ef05513ba9c514cd89ea643ef8a4f51c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6c781b7_e3e52c4a",
+        "filename": "src/chromiumos/tast/common/policy/fakedms/fakedms.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-09-09T16:01:49Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "fe77071f_d16442ff",
       "revId": "64a10d6ef05513ba9c514cd89ea643ef8a4f51c6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -210,6 +294,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4836c3a2_a579f590",
+        "filename": "src/chromiumos/tast/common/policy/fakedms/fakedms.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-09-09T16:01:49Z",
+      "side": 1,
+      "message": "removed it and used only the new server.",
+      "parentUuid": "ab642367_f29cd687",
+      "range": {
+        "startLine": 155,
+        "startChar": 0,
+        "endLine": 175,
+        "endChar": 4
+      },
+      "revId": "64a10d6ef05513ba9c514cd89ea643ef8a4f51c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "951e0777_240d8557",
@@ -223,6 +331,24 @@
       "writtenOn": "2022-09-01T14:46:16Z",
       "side": 1,
       "message": "Since it\u0027s only used here, can we pass it as an argument to `start`?",
+      "revId": "64a10d6ef05513ba9c514cd89ea643ef8a4f51c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "32e57c91_b20b906c",
+        "filename": "src/chromiumos/tast/common/policy/fakedms/fakedms.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-09-09T16:01:49Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "951e0777_240d8557",
       "revId": "64a10d6ef05513ba9c514cd89ea643ef8a4f51c6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -244,6 +370,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ffe18a79_96fdce9f",
+        "filename": "src/chromiumos/tast/common/policy/fakedms/fakedms.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-09-09T16:01:49Z",
+      "side": 1,
+      "message": "yes, but actually it doesn\u0027t have any effects, because we terminate the cmd process from Go anyway.",
+      "parentUuid": "8ae12256_04048342",
+      "revId": "64a10d6ef05513ba9c514cd89ea643ef8a4f51c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a65c518d_8955de86",
@@ -257,6 +401,30 @@
       "writtenOn": "2022-09-01T15:10:17Z",
       "side": 1,
       "message": "nit: proto_setter might be more appropriate",
+      "range": {
+        "startLine": 80,
+        "startChar": 6,
+        "endLine": 80,
+        "endChar": 17
+      },
+      "revId": "64a10d6ef05513ba9c514cd89ea643ef8a4f51c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7f4f9a0_fac6a985",
+        "filename": "src/chromiumos/tast/common/policy/gen/policy_tast_struct_creator.py",
+        "patchSetId": 10
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-09-09T16:01:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a65c518d_8955de86",
       "range": {
         "startLine": 80,
         "startChar": 6,
@@ -290,6 +458,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "076fb59d_5ff5aeb4",
+        "filename": "src/chromiumos/tast/common/policy/gen/policy_tast_struct_creator.py",
+        "patchSetId": 10
+      },
+      "lineNbr": 441,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-09-09T16:01:49Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e445bd51_53bd3d85",
+      "range": {
+        "startLine": 441,
+        "startChar": 9,
+        "endLine": 441,
+        "endChar": 20
+      },
+      "revId": "64a10d6ef05513ba9c514cd89ea643ef8a4f51c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "da8c212c_4a8b91c3",
@@ -303,6 +495,24 @@
       "writtenOn": "2022-09-01T15:40:26Z",
       "side": 1,
       "message": "Better:\n\n```\npolicy_name, field_name \u003d device_field.split(\u0027.\u0027)\nreturn \u0027SetDeviceProto(m, \"%s\", \"%s\", p.Val)\u0027 % (policy_name, field_name)\n```",
+      "revId": "64a10d6ef05513ba9c514cd89ea643ef8a4f51c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "38e9e7dd_7d377e9b",
+        "filename": "src/chromiumos/tast/common/policy/gen/policy_tast_struct_creator.py",
+        "patchSetId": 10
+      },
+      "lineNbr": 465,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-09-09T16:01:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da8c212c_4a8b91c3",
       "revId": "64a10d6ef05513ba9c514cd89ea643ef8a4f51c6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -324,6 +534,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e7b29b4_3b42f5ad",
+        "filename": "src/chromiumos/tast/common/policy/gen/policy_tast_struct_creator.py",
+        "patchSetId": 10
+      },
+      "lineNbr": 466,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-09-09T16:01:49Z",
+      "side": 1,
+      "message": "oops, yeah it was some old trials",
+      "parentUuid": "313cc3cc_3b1ca837",
+      "revId": "64a10d6ef05513ba9c514cd89ea643ef8a4f51c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "59fb6fae_b2b57ff5",
@@ -337,6 +565,24 @@
       "writtenOn": "2022-09-01T15:40:26Z",
       "side": 1,
       "message": "Please add a TODO somewhere here to deprecate support for fields used by Python server.",
+      "revId": "64a10d6ef05513ba9c514cd89ea643ef8a4f51c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "edec9706_535f5d38",
+        "filename": "src/chromiumos/tast/common/policy/policy_blob.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-09-09T16:01:49Z",
+      "side": 1,
+      "message": "now it\u0027s deprecated and removed all the old fields. however we still have some fields that weren\u0027t used in the old server (i.e. Licenses). I\u0027ll keep them just in case it\u0027ll be used in the future.",
+      "parentUuid": "59fb6fae_b2b57ff5",
       "revId": "64a10d6ef05513ba9c514cd89ea643ef8a4f51c6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -388,6 +634,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "35b4bfa0_40bdbe0a",
+        "filename": "src/chromiumos/tast/common/policy/policy_blob.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-09-09T16:01:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7909ddee_ddec216a",
+      "range": {
+        "startLine": 29,
+        "startChar": 1,
+        "endLine": 29,
+        "endChar": 11
+      },
+      "revId": "64a10d6ef05513ba9c514cd89ea643ef8a4f51c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fd029040_59a10552",
@@ -401,6 +671,30 @@
       "writtenOn": "2022-09-01T15:40:26Z",
       "side": 1,
       "message": "Which sub-struct? I don\u0027t see it used in `Blob` above. Perhaps better:\n\n```\n// PolicyEntry struct is used to serialize various policies in Blob to JSON format\n// accepted by the policy test server.\n```\n\nAlso please change `PolicyBlob` in all comments above and below to `Blob`. Looks like struct was renamed, but comments were left unchanged.",
+      "range": {
+        "startLine": 73,
+        "startChar": 3,
+        "endLine": 73,
+        "endChar": 53
+      },
+      "revId": "64a10d6ef05513ba9c514cd89ea643ef8a4f51c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "984c66dd_a25fde2c",
+        "filename": "src/chromiumos/tast/common/policy/policy_blob.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-09-09T16:01:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fd029040_59a10552",
       "range": {
         "startLine": 73,
         "startChar": 3,
@@ -434,6 +728,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "efa6f671_a2f79c32",
+        "filename": "src/chromiumos/tast/common/policy/policy_blob.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-09-09T16:01:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9850dce8_7a9851dd",
+      "range": {
+        "startLine": 74,
+        "startChar": 5,
+        "endLine": 74,
+        "endChar": 10
+      },
+      "revId": "64a10d6ef05513ba9c514cd89ea643ef8a4f51c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ae249411_f55b72cd",
@@ -447,6 +765,30 @@
       "writtenOn": "2022-09-01T15:40:26Z",
       "side": 1,
       "message": "This needs to be updated",
+      "range": {
+        "startLine": 207,
+        "startChar": 51,
+        "endLine": 210,
+        "endChar": 49
+      },
+      "revId": "64a10d6ef05513ba9c514cd89ea643ef8a4f51c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3565b2ac_1769bfbe",
+        "filename": "src/chromiumos/tast/common/policy/policy_blob.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-09-09T16:01:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ae249411_f55b72cd",
       "range": {
         "startLine": 207,
         "startChar": 51,
@@ -480,6 +822,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b923006c_d6833cec",
+        "filename": "src/chromiumos/tast/common/policy/policy_blob.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-09-09T16:01:49Z",
+      "side": 1,
+      "message": "this was for the old python server, it should be removed if we use only the new fake_dmserver.",
+      "parentUuid": "d5b33148_7bfce9e2",
+      "range": {
+        "startLine": 277,
+        "startChar": 37,
+        "endLine": 277,
+        "endChar": 39
+      },
+      "revId": "64a10d6ef05513ba9c514cd89ea643ef8a4f51c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7f7e05ba_ec016fea",
@@ -493,6 +859,24 @@
       "writtenOn": "2022-09-01T15:10:17Z",
       "side": 1,
       "message": "nit: maybe defs_helper would be more appropriate.",
+      "revId": "64a10d6ef05513ba9c514cd89ea643ef8a4f51c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cad8865f_14f4f656",
+        "filename": "src/chromiumos/tast/common/policy/proto_helper.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-09-09T16:01:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7f7e05ba_ec016fea",
       "revId": "64a10d6ef05513ba9c514cd89ea643ef8a4f51c6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -514,6 +898,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "01d42c25_c7f53828",
+        "filename": "src/chromiumos/tast/common/policy/proto_helper.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-09-09T16:01:49Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "868f54cc_45ee1ad5",
+      "revId": "64a10d6ef05513ba9c514cd89ea643ef8a4f51c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ab44c74d_ae7d70ab",
@@ -527,6 +929,30 @@
       "writtenOn": "2022-09-01T15:10:17Z",
       "side": 1,
       "message": "Since we are in the same package, this does not need to be exported. Same below.",
+      "range": {
+        "startLine": 34,
+        "startChar": 5,
+        "endLine": 34,
+        "endChar": 28
+      },
+      "revId": "64a10d6ef05513ba9c514cd89ea643ef8a4f51c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f890974a_11252194",
+        "filename": "src/chromiumos/tast/common/policy/proto_helper.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-09-09T16:01:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ab44c74d_ae7d70ab",
       "range": {
         "startLine": 34,
         "startChar": 5,
