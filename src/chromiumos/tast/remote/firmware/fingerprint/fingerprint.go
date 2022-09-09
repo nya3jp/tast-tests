@@ -618,11 +618,11 @@ func CheckRunningFirmwareVersionMatches(ctx context.Context, d *rpcdut.RPCDUT, e
 	}
 
 	if runningRWVersion != expectedRWVersion {
-		return errors.Errorf("failed to validate the RW firmware version: got %q, want %q", expectedRWVersion, runningRWVersion)
+		return errors.Errorf("failed to validate the RW firmware version: running %q, expected %q", runningRWVersion, expectedRWVersion)
 	}
 
 	if runningROVersion != expectedROVersion {
-		return errors.Errorf("failed to validate the RO firmware version: got %q, want %q", expectedROVersion, runningROVersion)
+		return errors.Errorf("failed to validate the RO firmware version: running %q, expected %q", runningROVersion, expectedROVersion)
 	}
 
 	return nil
