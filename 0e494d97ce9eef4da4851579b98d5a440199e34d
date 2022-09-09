@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c11d95a_bd5c9410",
+        "filename": "helpers/local/featured.FeatureLibrary.check.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1551433
+      },
+      "writtenOn": "2022-09-09T22:16:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dc6a413b_d834ca70",
+      "range": {
+        "startLine": 44,
+        "startChar": 22,
+        "endLine": 45,
+        "endChar": 56
+      },
+      "revId": "0e494d97ce9eef4da4851579b98d5a440199e34d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9f23cb00_fc04bdc1",
@@ -95,6 +119,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "779a41d3_c1a07490",
+        "filename": "helpers/local/featured.FeatureLibrary.check.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1551433
+      },
+      "writtenOn": "2022-09-09T22:16:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c9dd07cc_72d55b3c",
+      "range": {
+        "startLine": 48,
+        "startChar": 3,
+        "endLine": 48,
+        "endChar": 12
+      },
+      "revId": "0e494d97ce9eef4da4851579b98d5a440199e34d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "88dbfc48_b396db55",
@@ -108,6 +156,24 @@
       "writtenOn": "2022-09-08T17:11:38Z",
       "side": 1,
       "message": "nit: there only needs to be one newline at the end of the file; there are two here. That is, it should be `}\\n` not `}\\n\\n`.",
+      "revId": "0e494d97ce9eef4da4851579b98d5a440199e34d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb397bbf_01f0cae5",
+        "filename": "helpers/local/featured.FeatureLibrary.check.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1551433
+      },
+      "writtenOn": "2022-09-09T22:16:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "88dbfc48_b396db55",
       "revId": "0e494d97ce9eef4da4851579b98d5a440199e34d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
