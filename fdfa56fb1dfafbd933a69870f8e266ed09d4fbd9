@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07b8c841_8a6e08d9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hps/hps_setting_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-09-09T02:08:35Z",
+      "side": 1,
+      "message": "just time.Second",
+      "range": {
+        "startLine": 127,
+        "startChar": 13,
+        "endLine": 127,
+        "endChar": 28
+      },
+      "revId": "fdfa56fb1dfafbd933a69870f8e266ed09d4fbd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a84d2379_92ae5f41",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hps/hps_setting_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-09-09T02:08:35Z",
+      "side": 1,
+      "message": "time.Minute",
+      "range": {
+        "startLine": 128,
+        "startChar": 13,
+        "endLine": 128,
+        "endChar": 28
+      },
+      "revId": "fdfa56fb1dfafbd933a69870f8e266ed09d4fbd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f145614f_fe148310",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hps/hps_setting_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-09-09T02:08:35Z",
+      "side": 1,
+      "message": "a better way is to wrap the logs in the errors:\n```\nif err!\u003dnil{\n    return nil, errors.Wrapf(err, \"...quickDimEnabled:%s,...\",quickDimEnabled.Value)\n}\nreturn response, err\n```",
+      "range": {
+        "startLine": 183,
+        "startChar": 1,
+        "endLine": 187,
+        "endChar": 21
+      },
+      "revId": "fdfa56fb1dfafbd933a69870f8e266ed09d4fbd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
