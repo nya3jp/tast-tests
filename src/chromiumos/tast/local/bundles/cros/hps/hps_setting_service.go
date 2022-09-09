@@ -31,6 +31,10 @@ import (
 	"chromiumos/tast/testing"
 )
 
+const (
+	powerdLog = "/var/log/power_manager/powerd.LATEST"
+)
+
 func init() {
 	testing.AddService(&testing.Service{
 		Register: func(srv *grpc.Server, s *testing.ServiceState) {
@@ -100,8 +104,30 @@ func (hss *SettingService) StartUIWithCustomScreenPrivacySetting(ctx context.Con
 		return nil, errors.Wrap(err, "could not check the status of the toggle button")
 	}
 	if isEnabled != req.Enable {
+		oldSettings, err := readPowerdLastUpdatedSettings()
+		if err != nil {
+			return nil, errors.Wrap(err, "failed to read powerd settings")
+		}
+
 		if err := ui.LeftClick(nodewith.Name(req.Setting).Role(role.ToggleButton))(ctx); err != nil {
 			return nil, errors.Wrap(err, "failed to click on the button")
+		}
+
+		testing.ContextLog(ctx, "Waiting for new settings in powerd.LATEST")
+		if err := testing.Poll(ctx, func(ctx context.Context) error {
+			settings, err := readPowerdLastUpdatedSettings()
+			if err != nil {
+				return err
+			}
+			if oldSettings != settings {
+				return nil
+			}
+			return errors.New("powerd settings not changed")
+		}, &testing.PollOptions{
+			Interval: time.Second,
+			Timeout:  time.Minute,
+		}); err != nil {
+			return nil, errors.Wrap(err, "error during polling for updated powerd setting")
 		}
 	}
 	return &empty.Empty{}, nil
@@ -149,19 +175,70 @@ func (hss *SettingService) CheckSPAEyeIcon(ctx context.Context, req *empty.Empty
 
 // RetrieveDimMetrics gets the quick dim/lock delays after the lol is enabled/disabled.
 func (hss *SettingService) RetrieveDimMetrics(ctx context.Context, quickDimEnabled *wrappers.BoolValue) (*pb.RetrieveDimMetricsResponse, error) {
-
-	dat, err := os.ReadFile("/var/log/power_manager/powerd.LATEST")
+	dat, err := os.ReadFile(powerdLog)
 	if err != nil {
 		return nil, err
 	}
-	response, err := processContent(dat, quickDimEnabled.Value)
+	response, settings, err := processContent(dat, quickDimEnabled.Value)
+	testing.ContextLog(ctx, "settings: ", settings)
+	return response, err
+}
+
+// RetrieveHpsSenseSignal gets current HpsSenseSignal from powerd.
+func (hss *SettingService) RetrieveHpsSenseSignal(ctx context.Context, req *empty.Empty) (*pb.HpsSenseSignalResponse, error) {
+	dat, err := os.ReadFile(powerdLog)
+	if err != nil {
+		return nil, err
+	}
+	rawValue, err := powerdLastHpsSenseSignal(dat)
+	if err != nil {
+		return nil, err
+	}
+	response := &pb.HpsSenseSignalResponse{
+		RawValue: rawValue,
+	}
 	return response, nil
 }
 
-func processContent(dat []byte, quickDimEnable bool) (*pb.RetrieveDimMetricsResponse, error) {
+func readPowerdLastUpdatedSettings() (string, error) {
+	dat, err := os.ReadFile(powerdLog)
+	if err != nil {
+		return "", err
+	}
+	return powerdLastUpdatedSettings(dat), nil
+}
+
+func powerdLastUpdatedSettings(dat []byte) string {
+	settingRegex := regexp.MustCompile(`Updated settings:(.+)`)
+	results := settingRegex.FindAll(dat, -1)
+
+	if len(results) < 1 {
+		return ""
+	}
+	return string(results[len(results)-1])
+}
+
+func powerdLastHpsSenseSignal(dat []byte) (string, error) {
+	r := regexp.MustCompile(`HandleHpsSenseSignal is called with value (.+)`)
+	results := r.FindAll(dat, -1)
+
+	if len(results) < 1 {
+		return "", errors.New("no HandleHpsSenseSignal found in powerd logs")
+	}
+	lastResult := results[len(results)-1]
+	sub := r.FindStringSubmatch(string(lastResult))
+	if len(sub) < 2 {
+		return "", errors.Errorf("%v doesn't have enough submatches", lastResult)
+	}
+	return sub[1], nil
+}
+
+func processContent(dat []byte, quickDimEnable bool) (*pb.RetrieveDimMetricsResponse, string, error) {
 	var dimKey, screenOffKey string
 	var dimTime, screenOffTime, lockTime time.Duration
 
+	// http://cs/chromeos_public/src/platform2/system_api/dbus/power_manager/policy.proto
+	// describes the Delays message.
 	if quickDimEnable {
 		dimKey = "quick_dim"
 		screenOffKey = "quick_lock"
@@ -169,21 +246,17 @@ func processContent(dat []byte, quickDimEnable bool) (*pb.RetrieveDimMetricsResp
 		dimKey = "dim"
 		screenOffKey = "screen_off"
 	}
-	settingRegex := regexp.MustCompile(`Updated settings:(.+)`)
-	results := settingRegex.FindAll(dat, -1)
-
-	if len(results) < 1 {
-		return nil, errors.New("no existing settings yet")
+	newestSettings := []byte(powerdLastUpdatedSettings(dat))
+	if len(newestSettings) == 0 {
+		return nil, "", errors.New("no existing settings yet")
 	}
-
-	newestSettings := results[len(results)-1]
 	dimTime, err := singleMetric(newestSettings, dimKey)
 	if err != nil {
-		return nil, errors.Wrap(err, "error getting dim delay")
+		return nil, "", errors.Wrap(err, "error getting dim delay")
 	}
 	screenOffTime, err = singleMetric(newestSettings, screenOffKey)
 	if err != nil {
-		return nil, errors.Wrap(err, "error getting screenoff delay")
+		return nil, "", errors.Wrap(err, "error getting screenoff delay")
 	}
 	if lockTime = screenOffTime + time.Minute; quickDimEnable {
 		lockTime = screenOffTime
@@ -194,7 +267,7 @@ func processContent(dat []byte, quickDimEnable bool) (*pb.RetrieveDimMetricsResp
 		ScreenOffDelay: durationpb.New(screenOffTime - dimTime),
 		LockDelay:      durationpb.New(lockTime - screenOffTime),
 	}
-	return response, nil
+	return response, string(newestSettings), nil
 }
 
 func singleMetric(settings []byte, key string) (time.Duration, error) {
