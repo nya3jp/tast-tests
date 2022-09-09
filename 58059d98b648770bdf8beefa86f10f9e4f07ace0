@@ -68,6 +68,23 @@
       "message": "Hi Jacek, can you please review this CL from firewall usage point of view? Thanks!",
       "revId": "58059d98b648770bdf8beefa86f10f9e4f07ace0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "477f53d0_636ae97f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-09-09T17:48:20Z",
+      "side": 1,
+      "message": "Everything\u0027s OK.",
+      "revId": "58059d98b648770bdf8beefa86f10f9e4f07ace0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
