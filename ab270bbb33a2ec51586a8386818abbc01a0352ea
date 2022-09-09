@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa72fee3_2ca0c861",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-09-09T18:52:33Z",
+      "side": 1,
+      "message": "Hey Seewai and Prashant, thanks for taking a look at this test. Your feedback has been really great. I\u0027ve addressed your comments in the latest patchset. Let me know what you think.",
+      "revId": "ab270bbb33a2ec51586a8386818abbc01a0352ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

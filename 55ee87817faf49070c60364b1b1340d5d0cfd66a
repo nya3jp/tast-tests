@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c686cc6_f690284b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-09-09T18:52:33Z",
+      "side": 1,
+      "message": "No, this is not inherently a type-c test. I\u0027ve moved it to the power directory because it is about how we enter and leave power states.",
+      "parentUuid": "7793c700_2302b121",
+      "revId": "55ee87817faf49070c60364b1b1340d5d0cfd66a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0a0facb9_b1a1a2d7",
@@ -65,6 +83,30 @@
       "writtenOn": "2022-09-02T21:55:38Z",
       "side": 1,
       "message": "This hwdep should be unrelated to this test.",
+      "range": {
+        "startLine": 28,
+        "startChar": 24,
+        "endLine": 28,
+        "endChar": 49
+      },
+      "revId": "55ee87817faf49070c60364b1b1340d5d0cfd66a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b5a5b07_7682a513",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/hid_wake.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-09-09T18:52:33Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "0a0facb9_b1a1a2d7",
       "range": {
         "startLine": 28,
         "startChar": 24,
@@ -92,6 +134,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6da603b9_2fe277ef",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/hid_wake.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-09-09T18:52:33Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "54f48f20_20d67d97",
+      "revId": "55ee87817faf49070c60364b1b1340d5d0cfd66a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b7af07de_3b1d4022",
@@ -115,6 +175,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2ff0fab_2192356e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/hid_wake.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-09-09T18:52:33Z",
+      "side": 1,
+      "message": "Switched to polling.",
+      "parentUuid": "b7af07de_3b1d4022",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 2
+      },
+      "revId": "55ee87817faf49070c60364b1b1340d5d0cfd66a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d407ced8_d68f0d61",
@@ -128,6 +212,24 @@
       "writtenOn": "2022-09-02T21:51:19Z",
       "side": 1,
       "message": "else is not needed because the test will end at s.Fatal.",
+      "revId": "55ee87817faf49070c60364b1b1340d5d0cfd66a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b102d8f_e85cc78a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/hid_wake.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-09-09T18:52:33Z",
+      "side": 1,
+      "message": "Removed",
+      "parentUuid": "d407ced8_d68f0d61",
       "revId": "55ee87817faf49070c60364b1b1340d5d0cfd66a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -178,6 +280,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "162ed31e_923843b2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/hid_wake.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-09-09T18:52:33Z",
+      "side": 1,
+      "message": "Changed to 10 seconds configurable by a file constant (firstSuspendDuration). 12 was just the 5 second delay for the DUT to suspend + the 5 second delay for the DUT to do nothing after the HID event + a 2 second buffer to check the device was still suspended before it woke up.",
+      "parentUuid": "f3088595_3e582133",
+      "range": {
+        "startLine": 77,
+        "startChar": 27,
+        "endLine": 77,
+        "endChar": 37
+      },
+      "revId": "55ee87817faf49070c60364b1b1340d5d0cfd66a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f715d73a_1dba1d70",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/hid_wake.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-09-09T18:52:33Z",
+      "side": 1,
+      "message": "Removed logging.",
+      "parentUuid": "f7cad4e1_b31828cf",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 39
+      },
+      "revId": "55ee87817faf49070c60364b1b1340d5d0cfd66a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0719b54c_e7667f90",
@@ -195,6 +345,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a08ca485_61aaf1d5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/hid_wake.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-09-09T18:52:33Z",
+      "side": 1,
+      "message": "Now, the variable is called \"done\" and it is used to poll the powerd_dbus_suspend command completion outside the \"go func\" block.",
+      "parentUuid": "0719b54c_e7667f90",
+      "revId": "55ee87817faf49070c60364b1b1340d5d0cfd66a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b9e8cb2e_0fbd54cb",
@@ -208,6 +376,30 @@
       "writtenOn": "2022-09-02T22:36:21Z",
       "side": 1,
       "message": "This seems brittle. What happens if something caused an aborted suspend?\n\nPolling is the more robust option.",
+      "range": {
+        "startLine": 86,
+        "startChar": 0,
+        "endLine": 86,
+        "endChar": 42
+      },
+      "revId": "55ee87817faf49070c60364b1b1340d5d0cfd66a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "08aafb16_5249ef0d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/hid_wake.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-09-09T18:52:33Z",
+      "side": 1,
+      "message": "Switched to polling.",
+      "parentUuid": "b9e8cb2e_0fbd54cb",
       "range": {
         "startLine": 86,
         "startChar": 0,
@@ -241,6 +433,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed12a885_7df6583e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/hid_wake.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-09-09T18:52:33Z",
+      "side": 1,
+      "message": "Removed logging.",
+      "parentUuid": "8c9a1947_cf84ffe9",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 95,
+        "endChar": 34
+      },
+      "revId": "55ee87817faf49070c60364b1b1340d5d0cfd66a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2d8562ac_730bd2fb",
@@ -254,6 +470,30 @@
       "writtenOn": "2022-09-02T22:36:21Z",
       "side": 1,
       "message": "Does this not return an error?",
+      "range": {
+        "startLine": 96,
+        "startChar": 1,
+        "endLine": 96,
+        "endChar": 70
+      },
+      "revId": "55ee87817faf49070c60364b1b1340d5d0cfd66a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b5bdc14_4b64d10d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/hid_wake.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-09-09T18:52:33Z",
+      "side": 1,
+      "message": "Here and elsewhere, added an error check.",
+      "parentUuid": "2d8562ac_730bd2fb",
       "range": {
         "startLine": 96,
         "startChar": 1,
@@ -287,6 +527,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b6b5efd_9739d8ce",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/hid_wake.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-09-09T18:52:33Z",
+      "side": 1,
+      "message": "Now using polling.",
+      "parentUuid": "9db4b344_2351a562",
+      "range": {
+        "startLine": 98,
+        "startChar": 1,
+        "endLine": 98,
+        "endChar": 48
+      },
+      "revId": "55ee87817faf49070c60364b1b1340d5d0cfd66a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d7d60a85_77c2444f",
@@ -300,6 +564,24 @@
       "writtenOn": "2022-09-02T21:51:19Z",
       "side": 1,
       "message": "else is not needed.",
+      "revId": "55ee87817faf49070c60364b1b1340d5d0cfd66a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "024ec7d6_34daae43",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/hid_wake.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-09-09T18:52:33Z",
+      "side": 1,
+      "message": "Removed",
+      "parentUuid": "d7d60a85_77c2444f",
       "revId": "55ee87817faf49070c60364b1b1340d5d0cfd66a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -327,6 +609,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9ffc3ff_473ef4b0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/hid_wake.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-09-09T18:52:33Z",
+      "side": 1,
+      "message": "Removed this, now using polling.",
+      "parentUuid": "c9191bf4_445a3309",
+      "range": {
+        "startLine": 108,
+        "startChar": 1,
+        "endLine": 109,
+        "endChar": 48
+      },
+      "revId": "55ee87817faf49070c60364b1b1340d5d0cfd66a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c33695ec_dd0f1418",
@@ -344,6 +650,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "df487ce3_a6f20452",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/hid_wake.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-09-09T18:52:33Z",
+      "side": 1,
+      "message": "Removed",
+      "parentUuid": "c33695ec_dd0f1418",
+      "revId": "55ee87817faf49070c60364b1b1340d5d0cfd66a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0e02dd8e_7ab45812",
@@ -357,6 +681,24 @@
       "writtenOn": "2022-09-02T21:51:19Z",
       "side": 1,
       "message": "else is not needed.",
+      "revId": "55ee87817faf49070c60364b1b1340d5d0cfd66a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "126bd589_a437a7a3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/hid_wake.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-09-09T18:52:33Z",
+      "side": 1,
+      "message": "Removed",
+      "parentUuid": "0e02dd8e_7ab45812",
       "revId": "55ee87817faf49070c60364b1b1340d5d0cfd66a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -414,6 +756,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d016abb_2e74b007",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/hid_wake.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-09-09T18:52:33Z",
+      "side": 1,
+      "message": "Thanks for your feedback here. Now using one \"done\" for both DUT suspends in this test and polling it outside the \"go func\" blocks to wait for the powerd_dbus_suspend command to complete.",
+      "parentUuid": "7d9aa512_7892e6d3",
+      "revId": "55ee87817faf49070c60364b1b1340d5d0cfd66a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "214a2de5_c9ce86d8",
@@ -427,6 +787,24 @@
       "writtenOn": "2022-09-02T21:58:00Z",
       "side": 1,
       "message": "Also, I think CombineOutput is a blocking command so I am not sure if a channel is needed here.",
+      "revId": "55ee87817faf49070c60364b1b1340d5d0cfd66a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71dc2c3d_43140e0f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/hid_wake.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-09-09T18:52:33Z",
+      "side": 1,
+      "message": "If we do not create this channel, powerd_dbus_suspend would block the test while the device is suspended. So we need the channel to be able to send HID events from the servo keyboard while the device is suspended.",
+      "parentUuid": "214a2de5_c9ce86d8",
       "revId": "55ee87817faf49070c60364b1b1340d5d0cfd66a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -448,6 +826,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6327c71_005a61ff",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/hid_wake.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-09-09T18:52:33Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "c2ea8a5a_f028e8c7",
+      "revId": "55ee87817faf49070c60364b1b1340d5d0cfd66a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "63f64a1a_1c1a8705",
@@ -465,6 +861,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b2e584a_6db03312",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/hid_wake.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-09-09T18:52:33Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "63f64a1a_1c1a8705",
+      "revId": "55ee87817faf49070c60364b1b1340d5d0cfd66a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1119a422_6d2f1af6",
@@ -478,6 +892,24 @@
       "writtenOn": "2022-09-02T21:51:19Z",
       "side": 1,
       "message": "else is needed.",
+      "revId": "55ee87817faf49070c60364b1b1340d5d0cfd66a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "78bc5459_8d93636c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/hid_wake.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-09-09T18:52:33Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "1119a422_6d2f1af6",
       "revId": "55ee87817faf49070c60364b1b1340d5d0cfd66a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -505,6 +937,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "20a3a770_712a8576",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/hid_wake.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-09-09T18:52:33Z",
+      "side": 1,
+      "message": "Removed logging.",
+      "parentUuid": "cb1bf207_49b31546",
+      "range": {
+        "startLine": 178,
+        "startChar": 0,
+        "endLine": 181,
+        "endChar": 0
+      },
+      "revId": "55ee87817faf49070c60364b1b1340d5d0cfd66a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c55c305a_883ee2e7",
@@ -518,6 +974,30 @@
       "writtenOn": "2022-09-02T22:36:21Z",
       "side": 1,
       "message": "Unnecessary log print (tast prints successes and failures after every test).",
+      "range": {
+        "startLine": 181,
+        "startChar": 0,
+        "endLine": 182,
+        "endChar": 31
+      },
+      "revId": "55ee87817faf49070c60364b1b1340d5d0cfd66a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7b60808_d0c62dbe",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/hid_wake.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-09-09T18:52:33Z",
+      "side": 1,
+      "message": "Removed logging.",
+      "parentUuid": "c55c305a_883ee2e7",
       "range": {
         "startLine": 181,
         "startChar": 0,
@@ -553,6 +1033,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9a1bcd52_a275f27e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/hid_wake.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-09-09T18:52:33Z",
+      "side": 1,
+      "message": "The actual device here is the ATMEGA32U4-MU on servo v4p1 which runs the keyboard emulator (page 8 of https://drive.google.com/file/d/1ukfL-O2pkrCOb9gEzahz3LToIHArWQrH/view). I think \"servo keyboard\" is a bit more understandable and changed it to that in this test. Both evtest and lsusb list it as a keyboard. If you still want me to use \"servo HID\", let me know and I\u0027ll change it.",
+      "parentUuid": "2462417e_2bd1287b",
+      "range": {
+        "startLine": 185,
+        "startChar": 58,
+        "endLine": 185,
+        "endChar": 66
+      },
+      "revId": "55ee87817faf49070c60364b1b1340d5d0cfd66a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8bd91210_c01b7e66",
         "filename": "src/chromiumos/tast/remote/bundles/cros/typec/hid_wake.go",
         "patchSetId": 4
@@ -576,6 +1080,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "110ed67d_ed4be89f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/hid_wake.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-09-09T18:52:33Z",
+      "side": 1,
+      "message": "Can you clarify this comment? Are you referring to updating the wake capability using a servo command?",
+      "parentUuid": "8bd91210_c01b7e66",
+      "range": {
+        "startLine": 184,
+        "startChar": 0,
+        "endLine": 187,
+        "endChar": 67
+      },
+      "revId": "55ee87817faf49070c60364b1b1340d5d0cfd66a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "672daf3d_c4607c24",
         "filename": "src/chromiumos/tast/remote/bundles/cros/typec/hid_wake.go",
         "patchSetId": 4
@@ -587,6 +1115,30 @@
       "writtenOn": "2022-09-02T22:36:21Z",
       "side": 1,
       "message": "This is only being use in 1 location. Please inline.",
+      "range": {
+        "startLine": 188,
+        "startChar": 1,
+        "endLine": 188,
+        "endChar": 5
+      },
+      "revId": "55ee87817faf49070c60364b1b1340d5d0cfd66a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ec2e224_b0900b26",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/hid_wake.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-09-09T18:52:33Z",
+      "side": 1,
+      "message": "N/A in newer version of this function.",
+      "parentUuid": "672daf3d_c4607c24",
       "range": {
         "startLine": 188,
         "startChar": 1,
@@ -622,6 +1174,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0dc881f0_7b4bd99d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/hid_wake.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-09-09T18:52:33Z",
+      "side": 1,
+      "message": "\u003e Please avoid magic strings/numbers without descriptions (hint: use constants).\nUpdated to use constants.\n\n\n\u003e Also, is the servo VID/PID always guaranteed to be this? \nYes, described on page 15 of the servo v4.1 care and feeding guide. (https://docs.google.com/document/d/12_b5CquAeclx5PZTth7qi1Ea-Qbfkxu69J73bRzOyNo/edit). 03eb:2042 is the VID/PID when the Atmel ATMEGA32U4 is correctly programmed to be a keyboard emulator. \"When programmed correctly, here is the intended listing from ‘lsusb’ Bus xxx Device yyy: ID 03eb:2042 Atmel Corp. LUFA Keyboard Demo Application\"\n\n\n\u003e If so, isn\u0027t it easier to use a libusb wrapper (gousb  maybe?) and search for a hid device with the VID/PID you have in mind? \nI spent some time trying to implement it this way, and I do not think it is currently possible with tast. gousb uses cgo to interface with libusb (see libusb.go in gousb repo). It\u0027s described in the dependencies section of the README: \"You must first install libusb-1.0. This is pretty straightforward on linux and darwin. The cgo package should be able to find it if you install it in the default manner or use your distribution\u0027s package manager\". But, we do not support cgo in tast so we cannot compile gousb. Cgo support in tast seems to be a topic that gets brought up every once in a while, but was rejected as of may 2022 (https://groups.google.com/a/google.com/g/cros-flashrom-team/c/6oxNTjvomAg/m/I158BCdEAgAJ). Seewai mentions a way to write our own API to call C in that last link, but I think using the dut filesystem is more preferable than that.\n\n\n\u003e Then you don\u0027t have to deal with the filepath acrobatics.\nI\u0027ve updated this function to be a lot simpler. Now, it just looks at the usb devices dir and checks every subdirectory for the servo keyboard.\n\n\n\u003e Also, is there a way to toggle this from the servod side? I think that would be more succinct than seraching for a HID with VID/PID.\nAssuming your referring to toggling the wake capability here. No, I don\u0027t think there is a way to do this from servod. Looks like this property is set as a constant config on L133 of https://chromium.googlesource.com/chromiumos/third_party/hdctools/+/master/servo/firmware/usbkm/KeyboardSerial/Descriptors.c (USB_CONFIG_ATTR_REMOTEWAKEUP description on https://www.fourwalledcubicle.com/files/LUFA/Doc/170418/html/group___group___std_descriptors.html is \" value to indicate that the specified configuration supports the remote wakeup feature of the USB standard, allowing a suspended USB device to wake up the host upon request.\"). Looking through the servo helpers, I don\u0027t see anyway to update this through servo. I think we need to manually do it in the device\u0027s sysfs path. Additionally, we would still need to know the sysfs path to get wake count.",
+      "parentUuid": "ebcdff7c_49164f3d",
+      "range": {
+        "startLine": 190,
+        "startChar": 70,
+        "endLine": 190,
+        "endChar": 88
+      },
+      "revId": "55ee87817faf49070c60364b1b1340d5d0cfd66a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c624431a_52dccec2",
         "filename": "src/chromiumos/tast/remote/bundles/cros/typec/hid_wake.go",
         "patchSetId": 4
@@ -633,6 +1209,30 @@
       "writtenOn": "2022-09-02T22:36:21Z",
       "side": 1,
       "message": "Please return an empty string `\"\"` for errors. `~` is a valid filepath.",
+      "range": {
+        "startLine": 215,
+        "startChar": 9,
+        "endLine": 215,
+        "endChar": 12
+      },
+      "revId": "55ee87817faf49070c60364b1b1340d5d0cfd66a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd015cbc_206961c2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/hid_wake.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-09-09T18:52:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c624431a_52dccec2",
       "range": {
         "startLine": 215,
         "startChar": 9,
@@ -666,6 +1266,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff3aa603_75595e73",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/hid_wake.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-09-09T18:52:33Z",
+      "side": 1,
+      "message": "Done. Changed the function to just go to /sys/bus/usb/devices/ and look for the servo keyboard VID/PID in all the devices.",
+      "parentUuid": "a3dd9e1a_f7bb4d60",
+      "range": {
+        "startLine": 205,
+        "startChar": 0,
+        "endLine": 220,
+        "endChar": 0
+      },
+      "revId": "55ee87817faf49070c60364b1b1340d5d0cfd66a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aee5b8dd_83a25b47",
@@ -679,6 +1303,30 @@
       "writtenOn": "2022-09-02T22:36:21Z",
       "side": 1,
       "message": "We\u0027re doing this conversion (i.e using `string(servoPath)`) multiple times in this function. Since `servodPath` is never being used in its raw form, it is better to just call `string(servoPath)` once at the very beginning and use that everywhere.",
+      "range": {
+        "startLine": 221,
+        "startChar": 26,
+        "endLine": 221,
+        "endChar": 43
+      },
+      "revId": "55ee87817faf49070c60364b1b1340d5d0cfd66a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9da21538_67ac9282",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/hid_wake.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-09-09T18:52:33Z",
+      "side": 1,
+      "message": "N/A in newer version of this function",
+      "parentUuid": "aee5b8dd_83a25b47",
       "range": {
         "startLine": 221,
         "startChar": 26,
