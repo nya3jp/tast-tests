@@ -16,9 +16,14 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// Settings name for LoL and SPA.
 const (
-	LockOnLeave       = "Lock-on-leave"
+	// BrightnessChangeTimeoutSlackDuration limits by how much the actual duration could differ from the expected duration.
+	//
+	// This discrepancy could be caused by both initial HPS startup and by it adapting to the image change.
+	BrightnessChangeTimeoutSlackDuration = 10 * time.Second
+	// LockOnLeave is the Settings name for LoL.
+	LockOnLeave = "Lock-on-leave"
+	// SecondPersonAlert is the Settings name for SPA.
 	SecondPersonAlert = "Viewing protection"
 )
 
@@ -28,8 +33,7 @@ func GetBrightness(ctx context.Context, conn *ssh.Conn) (float64, error) {
 		"--print-reply", "--type=method_call", "--dest=org.chromium.PowerManager", "/org/chromium/PowerManager",
 		"org.chromium.PowerManager.GetScreenBrightnessPercent").Output()
 	if err != nil {
-		testing.ContextLog(ctx, "Getting brightness failed")
-		return -1, err
+		return -1, errors.Wrap(err, "getting brightness failed")
 	}
 
 	mregex := regexp.MustCompile(`(.+)double ([0-9]+)`)
@@ -45,40 +49,68 @@ func GetBrightness(ctx context.Context, conn *ssh.Conn) (float64, error) {
 	return value, nil
 }
 
-// PollForDim is to see if the screen will dim during a designated amount of time
-func PollForDim(ctx context.Context, brightness float64, timeout time.Duration, checkForDark bool, conn *ssh.Conn) error {
-	counter := 0
+// PollForBrightnessChange will poll until screen brightness differs from |initialBrightness| or the |timeout| occurs, whichever comes first.
+func PollForBrightnessChange(ctx context.Context, initialBrightness float64, timeout time.Duration, conn *ssh.Conn) error {
+	// This could take very long time, depending on the settings, at least a couple of minutes.
+	testing.ContextLog(ctx, "Polling for brightness change: ", timeout.Seconds(), "s + ", BrightnessChangeTimeoutSlackDuration.Seconds(), "s (slack)")
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		autodimBrightness, err := GetBrightness(ctx, conn)
-		counter++
+		currentBrightness, err := GetBrightness(ctx, conn)
 
 		if err != nil {
 			return err
 		}
-		if autodimBrightness >= brightness {
-			return errors.Errorf("Auto dim failed. Before human presence: %f, After human presence: %f", brightness, autodimBrightness)
-		}
-		if autodimBrightness == 0 {
-			if !checkForDark {
-				return errors.New("Screen goes dark unexpectedly")
-			}
-			return nil
-		}
-
-		if autodimBrightness < brightness && autodimBrightness != 0 && !checkForDark {
+		if currentBrightness != initialBrightness {
 			return nil
 		}
 		return errors.New("Brightness not changed")
 	}, &testing.PollOptions{
 		Interval: 1 * time.Second,
-		Timeout:  timeout + 3*time.Second,
+		Timeout:  timeout + BrightnessChangeTimeoutSlackDuration,
 	}); err != nil {
-		return errors.Wrap(err, "unexpected brightness change")
+		return errors.Wrap(err, "error during polling")
+	}
+	return nil
+}
+
+func pollForDimHelper(initialBrightness, currentBrightness float64, checkForDark bool) error {
+	if currentBrightness >= initialBrightness {
+		return errors.Errorf("Auto dim failed. Before human presence: %f, After human presence: %f", initialBrightness, currentBrightness)
+	}
+	if currentBrightness == 0 {
+		if !checkForDark {
+			return errors.New("Screen went dark unexpectedly")
+		}
+		return nil
+	}
+
+	if currentBrightness < initialBrightness && currentBrightness != 0 && !checkForDark {
+		return nil
+	}
+	return errors.New("Brightness not changed")
+}
+
+// PollForDim is to see if the screen will dim during a designated amount of time.
+// Will poll for slightly longer than specified to allow for some slack.
+func PollForDim(ctx context.Context, initialBrightness float64, timeout time.Duration, checkForDark bool, conn *ssh.Conn) error {
+	// This could take very long time, depending on the settings, at least a couple of minutes.
+	testing.ContextLog(ctx, "Polling for quick dim: ", timeout.Seconds(), "s + ", BrightnessChangeTimeoutSlackDuration.Seconds(), "s (slack)")
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		currentBrightness, err := GetBrightness(ctx, conn)
+		if err != nil {
+			return err
+		}
+		return pollForDimHelper(initialBrightness, currentBrightness, checkForDark)
+	}, &testing.PollOptions{
+		Interval: 1 * time.Second,
+		Timeout:  timeout + BrightnessChangeTimeoutSlackDuration,
+	}); err != nil {
+		return errors.Wrap(err, "error during polling")
 	}
 	return nil
 }
 
 // WaitWithDelay return a 3s duration object
 func WaitWithDelay(ctx context.Context, timeLength time.Duration) {
+	testing.ContextLog(ctx, "Waiting for: ", timeLength.Seconds())
 	testing.Sleep(ctx, 3*time.Second+timeLength)
 }
