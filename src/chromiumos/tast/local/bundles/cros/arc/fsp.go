@@ -134,6 +134,8 @@ func unzipFile(ctx context.Context, tconn *chrome.TestConn, zipFile, folder, una
 	if err != nil {
 		return errors.Wrap(err, "launching the Files App failed")
 	}
+	// Close the Files App window to avoid having two windows in TestOpenWithAndroidApp.
+	defer files.Close(ctx)
 
 	return uiauto.Combine(msg,
 		files.OpenPath("Files - "+folder, folder),
