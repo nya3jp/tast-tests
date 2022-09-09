@@ -22,6 +22,23 @@
       },
       "revId": "9fe7d483ef9bc4085e22eca5de3539b46fbca46d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "241326a3_b3c889b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/kiosk_ephemeral_mount.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-09-09T15:56:18Z",
+      "side": 1,
+      "message": "Note: For some reason `gofmt` insisted on these formatting changes after the rebase. Hence another \"unnecessary\" change in this CL that needs to be re-reviewed.",
+      "revId": "9fe7d483ef9bc4085e22eca5de3539b46fbca46d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
