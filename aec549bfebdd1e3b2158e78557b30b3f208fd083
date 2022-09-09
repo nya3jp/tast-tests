@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "520cc114_3bdf795f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/minijail_landlock.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1544637
+      },
+      "writtenOn": "2022-09-09T15:26:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "15b55075_5b845c12",
+      "revId": "aec549bfebdd1e3b2158e78557b30b3f208fd083",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ba85f4a6_6042eedc",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-09-09T15:09:25Z",
       "side": 1,
       "message": "Where is tc.cmd passed in? It seems to be unused.",
+      "revId": "aec549bfebdd1e3b2158e78557b30b3f208fd083",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1ffb0d4_acd88294",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/minijail_landlock.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1544637
+      },
+      "writtenOn": "2022-09-09T15:26:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ba85f4a6_6042eedc",
       "revId": "aec549bfebdd1e3b2158e78557b30b3f208fd083",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
