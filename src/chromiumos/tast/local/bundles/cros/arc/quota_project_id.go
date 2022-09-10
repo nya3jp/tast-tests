@@ -23,7 +23,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         QuotaProjectID,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Verifies that Android's quota project ID setting logic works",
 		Contacts:     []string{"hashimoto@chromium.org", "arcvm-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
