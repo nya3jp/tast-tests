@@ -22,7 +22,7 @@ func init() {
 	// TODO(edmanp): crbug/1126302. Replace master by principal.
 	testing.AddTest(&testing.Test{
 		Func:         VTSKeymaster,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantNeeded,
 		Desc:         "Runs the Android VTS module VtsHalKeymasterV3_0Target",
 		Contacts:     []string{"edman@chromium.org", "arc-eng-muc@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
@@ -161,11 +161,14 @@ func listTests(ctx context.Context, a *arc.ARC, exec string) ([]string, error) {
 // list of test names. The format of output should be:
 //
 // TestSuiteA.
-//   TestCase1
-//   TestCase2
+//
+//	TestCase1
+//	TestCase2
+//
 // TestSuiteB.
-//   TestCase3
-//   TestCase4
+//
+//	TestCase3
+//	TestCase4
 //
 // etc. The each returned test name is formatted into "TestSuite.TestCase".
 func parseTestList(content string) []string {
