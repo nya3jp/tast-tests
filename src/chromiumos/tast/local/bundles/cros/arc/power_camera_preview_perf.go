@@ -28,7 +28,7 @@ type powerCameraPreviewPerfArgs struct {
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         PowerCameraPreviewPerf,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Measures the battery drain and camera statistics (e.g., dropped frames) during camera preview at 30/60 FPS",
 		Contacts: []string{
 			"wtlee@chromium.org",

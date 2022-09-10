@@ -23,7 +23,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         PowerAudioPlaybackPerf,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Measures the battery drain during audio playback with different performance flags",
 		Contacts: []string{
 			"judyhsiao@chromium.org",         // Author
