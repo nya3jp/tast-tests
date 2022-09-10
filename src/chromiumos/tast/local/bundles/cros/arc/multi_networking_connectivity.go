@@ -23,7 +23,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         MultiNetworkingConnectivity,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Checks connectivity while multi-networking is enabled",
 		Contacts:     []string{"jasongustaman@google.com", "arc-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
