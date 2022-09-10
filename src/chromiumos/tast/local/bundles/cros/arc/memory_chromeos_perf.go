@@ -18,7 +18,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         MemoryChromeOSPerf,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "How much memory can be allocated in ChromeOS before critical memory pressure",
 		Contacts: []string{
 			"cwd@chromium.org",
