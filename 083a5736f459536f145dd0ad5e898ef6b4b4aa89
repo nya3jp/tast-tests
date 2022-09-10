@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2194792_170ae3b8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-09-10T09:28:49Z",
+      "side": 1,
+      "message": "nit: `Add`",
+      "range": {
+        "startLine": 7,
+        "startChar": 12,
+        "endLine": 7,
+        "endChar": 15
+      },
+      "revId": "083a5736f459536f145dd0ad5e898ef6b4b4aa89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5fbdec5_b11ac85e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-09-10T09:28:49Z",
+      "side": 1,
+      "message": "nit: there is no need to add `.` to the end of the subject line.",
+      "range": {
+        "startLine": 7,
+        "startChar": 39,
+        "endLine": 7,
+        "endChar": 40
+      },
+      "revId": "083a5736f459536f145dd0ad5e898ef6b4b4aa89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "34d52aff_7e2555d2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-09-10T09:28:49Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "083a5736f459536f145dd0ad5e898ef6b4b4aa89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6bb61719_cb29251b",
+        "filename": "src/chromiumos/tast/local/cryptohome/fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-09-10T09:28:49Z",
+      "side": 1,
+      "message": "minor nit: \u0027USS\u0027",
+      "revId": "083a5736f459536f145dd0ad5e898ef6b4b4aa89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "420c4e24_2f5b4e15",
+        "filename": "src/chromiumos/tast/local/cryptohome/fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-09-10T09:28:49Z",
+      "side": 1,
+      "message": "If you do not unmount after the last test, can it cause problems in the following tests?",
+      "revId": "083a5736f459536f145dd0ad5e898ef6b4b4aa89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
