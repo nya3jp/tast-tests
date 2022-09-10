@@ -21,7 +21,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         Cgroups,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Checks that foreground/background status of ARC applications reflects properly in cgroup limits",
 		Contacts:     []string{"sonnyrao@chromium.org", "arc-eng@google.com"},
 		// b:238260020 - disable aged (>1y) unpromoted informational tests
