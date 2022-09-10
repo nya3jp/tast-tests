@@ -22,7 +22,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         MiniVM,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Ensures mini-ARCVM is functional and can be upgraded successfully",
 		Contacts: []string{
 			"wvk@chromium.org",

@@ -23,7 +23,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         CameraPerfExtraMetrics,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Measures extra camera metrics such as open/close time and snapshot time",
 		Contacts: []string{
 			"wtlee@chromium.org",
