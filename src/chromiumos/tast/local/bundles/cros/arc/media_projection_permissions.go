@@ -32,7 +32,7 @@ const (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         MediaProjectionPermissions,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Checks that Chrome permissions dialog is used when using the MediaProjection API",
 		Contacts:     []string{"domlaskowski@chromium.org", "arc-framework+tast@google.com"},
 		// b:238260020 - disable aged (>1y) unpromoted informational tests
