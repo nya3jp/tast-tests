@@ -19,7 +19,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         FontSharing,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Test that font-sharing from ChromeOS to ARC works",
 		Contacts:     []string{"hashimoto@chromium.org", "arc-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
