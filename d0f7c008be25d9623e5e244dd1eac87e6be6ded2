@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "19b7536c_fc09c3dc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-09-10T09:11:57Z",
+      "side": 1,
+      "message": "nit: `policy` or `tast-tests`",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 4
+      },
+      "revId": "d0f7c008be25d9623e5e244dd1eac87e6be6ded2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "52557655_f14f67fe",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/arc_enabled_on_tablet.go",
         "patchSetId": 2
