@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ad6c1cb_1e6c7ef4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/tpm_contest.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1549582
+      },
+      "writtenOn": "2022-09-10T19:19:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "11e4a2d2_8725d3b8",
+      "revId": "9c2a079ded69414ca72f3b38dccb2a92c9a90e26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a3559b6d_76c0c1a0",
