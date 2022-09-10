@@ -22,7 +22,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         CxxCrash,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Test handling of a C++ binary crash",
 		Contacts:     []string{"kimiyuki@google.com", "arc-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
