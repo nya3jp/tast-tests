@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "79f3a51c_80c9ea04",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-09-10T00:38:39Z",
+      "side": 1,
+      "message": "Thanks again for your feedback, Seewai. Here is a patchset to address your comments.",
+      "revId": "4c766e66e0e13272f17675c99a92f8fc8d226d89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
