@@ -27,7 +27,7 @@ const (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         OptinManaged,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "A functional test that verifies OptIn flow for managed user",
 		Contacts: []string{
 			"arc-commercial@google.com",
