@@ -20,7 +20,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         MediaSessionGain,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantNeeded,
 		Desc:         "Checks Android gain audio focus requests are forwarded to Chrome",
 		Contacts:     []string{"beccahughes@chromium.org", "arc-eng@google.com"},
 		// b:238260020 - disable aged (>1y) unpromoted informational tests

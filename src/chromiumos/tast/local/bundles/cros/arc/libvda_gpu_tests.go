@@ -15,7 +15,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         LibvdaGpuTests,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Runs the non-decoding tests targetting libvda's GPU implementation",
 		Contacts:     []string{"alexlau@chromium.org", "chromeos-video-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
