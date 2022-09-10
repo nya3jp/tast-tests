@@ -21,7 +21,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ADBOverUSB,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Checks that arc(vm)-adbd job is up and running when adb-over-usb feature available",
 		Contacts:     []string{"vraheja@chromium.org", "arc-core@google.com"},
 		HardwareDeps: hwdep.D(
