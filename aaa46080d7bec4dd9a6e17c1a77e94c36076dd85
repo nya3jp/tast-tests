@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "49826e55_c2a77304",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-09-10T13:16:33Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "aaa46080d7bec4dd9a6e17c1a77e94c36076dd85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "499fda42_8125c486",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/gaia_zte_enrollment.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-09-10T13:16:33Z",
+      "side": 1,
+      "message": "What\u0027s this for? This doesn\u0027t seem to do anything as it is just at the end of the test.",
+      "range": {
+        "startLine": 136,
+        "startChar": 1,
+        "endLine": 136,
+        "endChar": 34
+      },
+      "revId": "aaa46080d7bec4dd9a6e17c1a77e94c36076dd85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
