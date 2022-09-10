@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5c5f09a9_450d2b83",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/host_cellular_speedtest.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1441092
+      },
+      "writtenOn": "2022-09-10T23:06:15Z",
+      "side": 1,
+      "message": "True, one other possibility is that we are not able to find any speedtest server.",
+      "parentUuid": "43387507_7fee0cc6",
+      "revId": "f86f5dbeb326585e377af22e3bc1dc9a1dcf8e82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8de9d315_c3d31cd7",
         "filename": "src/chromiumos/tast/local/bundles/cros/cellular/host_cellular_speedtest.go",
         "patchSetId": 4
@@ -31,6 +49,24 @@
       "writtenOn": "2022-09-07T15:51:20Z",
       "side": 1,
       "message": "you can do this all in one call to `errors.Errorf`",
+      "revId": "f86f5dbeb326585e377af22e3bc1dc9a1dcf8e82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d93fd8d_a8446280",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/host_cellular_speedtest.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1441092
+      },
+      "writtenOn": "2022-09-10T23:06:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8de9d315_c3d31cd7",
       "revId": "f86f5dbeb326585e377af22e3bc1dc9a1dcf8e82",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -60,6 +96,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "efb961f7_969fa6bf",
+        "filename": "src/chromiumos/tast/local/cellular/cellular_network_utils.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1441092
+      },
+      "writtenOn": "2022-09-10T23:06:15Z",
+      "side": 1,
+      "message": "No, updated to send the raw data (in bps)",
+      "parentUuid": "a6c18eb5_ebb13b24",
+      "range": {
+        "startLine": 110,
+        "startChar": 102,
+        "endLine": 110,
+        "endChar": 111
+      },
+      "revId": "f86f5dbeb326585e377af22e3bc1dc9a1dcf8e82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ebbb9393_21eba2b3",
         "filename": "src/chromiumos/tast/local/cellular/cellular_network_utils.go",
         "patchSetId": 4
@@ -71,6 +131,30 @@
       "writtenOn": "2022-09-07T15:51:20Z",
       "side": 1,
       "message": "just \"Mbps\"",
+      "range": {
+        "startLine": 125,
+        "startChar": 34,
+        "endLine": 125,
+        "endChar": 39
+      },
+      "revId": "f86f5dbeb326585e377af22e3bc1dc9a1dcf8e82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "289fd39b_ac2ca799",
+        "filename": "src/chromiumos/tast/local/cellular/cellular_network_utils.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1441092
+      },
+      "writtenOn": "2022-09-10T23:06:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ebbb9393_21eba2b3",
       "range": {
         "startLine": 125,
         "startChar": 34,
@@ -127,6 +211,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6497582a_327c3209",
+        "filename": "src/chromiumos/tast/local/cellular/cellular_network_utils.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1441092
+      },
+      "writtenOn": "2022-09-10T23:06:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a2649899_c7e70679",
+      "range": {
+        "startLine": 126,
+        "startChar": 34,
+        "endLine": 126,
+        "endChar": 39
+      },
+      "revId": "f86f5dbeb326585e377af22e3bc1dc9a1dcf8e82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ac5a06a_a348d796",
+        "filename": "src/chromiumos/tast/local/cellular/cellular_network_utils.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1441092
+      },
+      "writtenOn": "2022-09-10T23:06:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f9426edc_d16b4f66",
+      "range": {
+        "startLine": 125,
+        "startChar": 0,
+        "endLine": 126,
+        "endChar": 54
+      },
+      "revId": "f86f5dbeb326585e377af22e3bc1dc9a1dcf8e82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "529bde07_3d240e4a",
@@ -140,6 +272,30 @@
       "writtenOn": "2022-09-07T15:51:20Z",
       "side": 1,
       "message": "should probably return 0 explicitly on failure, right?",
+      "range": {
+        "startLine": 129,
+        "startChar": 9,
+        "endLine": 129,
+        "endChar": 35
+      },
+      "revId": "f86f5dbeb326585e377af22e3bc1dc9a1dcf8e82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d56c8fc4_be2de1ac",
+        "filename": "src/chromiumos/tast/local/cellular/cellular_network_utils.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1441092
+      },
+      "writtenOn": "2022-09-10T23:06:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "529bde07_3d240e4a",
       "range": {
         "startLine": 129,
         "startChar": 9,
