@@ -43,6 +43,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "48f109ba_3b18d6ac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/arc_enabled.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-09-10T09:12:52Z",
+      "side": 1,
+      "message": "Can I ask you to become the owner of this test?\nIf so, you can remove me as an author.",
+      "revId": "e0607fee6997cd1e3fe437dad3a4df2ba0b56028",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e8f74a70_4540c9f7",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/arc_enabled.go",
         "patchSetId": 3
