@@ -23,7 +23,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         MIDIClient,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Checks MIDI Apps can send messages to devices",
 		Contacts:     []string{"pmalani@chromium.org", "arc-eng@google.com"},
 		SoftwareDeps: []string{"chrome"},
