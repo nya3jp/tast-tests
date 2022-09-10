@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "faf3f754_6c4326bc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-09-10T09:05:54Z",
+      "side": 1,
+      "message": "The prefix should be `tast-tests:` or `policy:`\nIf you pick policy, you can omit it from before the test name.\nThe subject line is too long. Ideally it should be no more than 50 characters.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 91
+      },
+      "revId": "e0607fee6997cd1e3fe437dad3a4df2ba0b56028",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cea01a52_2e8eac93",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-09-10T09:05:54Z",
+      "side": 1,
+      "message": "LGTM % nit, comment",
+      "revId": "e0607fee6997cd1e3fe437dad3a4df2ba0b56028",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8f74a70_4540c9f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/arc_enabled.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-09-10T09:05:54Z",
+      "side": 1,
+      "message": "Instead of marking it unstable, this part can be removed as well. I don\u0027t think that the loss of coverage is big. But this is just a suggestion.",
+      "range": {
+        "startLine": 43,
+        "startChar": 4,
+        "endLine": 51,
+        "endChar": 5
+      },
+      "revId": "e0607fee6997cd1e3fe437dad3a4df2ba0b56028",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
