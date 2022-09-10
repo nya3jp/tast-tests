@@ -30,7 +30,7 @@ type testArgsForPowerIdlePerf struct {
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         PowerIdlePerf,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Measures the battery drain of an idle system with and without ARC",
 		Contacts: []string{
 			"cwd@chromium.org", // Author
