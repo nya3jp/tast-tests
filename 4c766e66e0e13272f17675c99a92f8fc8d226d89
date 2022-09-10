@@ -16,6 +16,23 @@
       "message": "Thanks again for your feedback, Seewai. Here is a patchset to address your comments.",
       "revId": "4c766e66e0e13272f17675c99a92f8fc8d226d89",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e319d9aa_e2c1a046",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2022-09-10T03:29:07Z",
+      "side": 1,
+      "message": "Seems like Seewai already has some comments, but I\u0027ll send the rest anyway (the ones which are obsolete can be disregarded)",
+      "revId": "4c766e66e0e13272f17675c99a92f8fc8d226d89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

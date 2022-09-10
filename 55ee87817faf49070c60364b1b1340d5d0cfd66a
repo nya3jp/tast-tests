@@ -1102,6 +1102,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e115956_e95d0cf4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/hid_wake.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2022-09-10T03:29:07Z",
+      "side": 1,
+      "message": "Yes. You\u0027ve addressed this in another comment.",
+      "parentUuid": "110ed67d_ed4be89f",
+      "range": {
+        "startLine": 184,
+        "startChar": 0,
+        "endLine": 187,
+        "endChar": 67
+      },
+      "revId": "55ee87817faf49070c60364b1b1340d5d0cfd66a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "672daf3d_c4607c24",
@@ -1186,6 +1210,30 @@
       "side": 1,
       "message": "\u003e Please avoid magic strings/numbers without descriptions (hint: use constants).\nUpdated to use constants.\n\n\n\u003e Also, is the servo VID/PID always guaranteed to be this? \nYes, described on page 15 of the servo v4.1 care and feeding guide. (https://docs.google.com/document/d/12_b5CquAeclx5PZTth7qi1Ea-Qbfkxu69J73bRzOyNo/edit). 03eb:2042 is the VID/PID when the Atmel ATMEGA32U4 is correctly programmed to be a keyboard emulator. \"When programmed correctly, here is the intended listing from ‘lsusb’ Bus xxx Device yyy: ID 03eb:2042 Atmel Corp. LUFA Keyboard Demo Application\"\n\n\n\u003e If so, isn\u0027t it easier to use a libusb wrapper (gousb  maybe?) and search for a hid device with the VID/PID you have in mind? \nI spent some time trying to implement it this way, and I do not think it is currently possible with tast. gousb uses cgo to interface with libusb (see libusb.go in gousb repo). It\u0027s described in the dependencies section of the README: \"You must first install libusb-1.0. This is pretty straightforward on linux and darwin. The cgo package should be able to find it if you install it in the default manner or use your distribution\u0027s package manager\". But, we do not support cgo in tast so we cannot compile gousb. Cgo support in tast seems to be a topic that gets brought up every once in a while, but was rejected as of may 2022 (https://groups.google.com/a/google.com/g/cros-flashrom-team/c/6oxNTjvomAg/m/I158BCdEAgAJ). Seewai mentions a way to write our own API to call C in that last link, but I think using the dut filesystem is more preferable than that.\n\n\n\u003e Then you don\u0027t have to deal with the filepath acrobatics.\nI\u0027ve updated this function to be a lot simpler. Now, it just looks at the usb devices dir and checks every subdirectory for the servo keyboard.\n\n\n\u003e Also, is there a way to toggle this from the servod side? I think that would be more succinct than seraching for a HID with VID/PID.\nAssuming your referring to toggling the wake capability here. No, I don\u0027t think there is a way to do this from servod. Looks like this property is set as a constant config on L133 of https://chromium.googlesource.com/chromiumos/third_party/hdctools/+/master/servo/firmware/usbkm/KeyboardSerial/Descriptors.c (USB_CONFIG_ATTR_REMOTEWAKEUP description on https://www.fourwalledcubicle.com/files/LUFA/Doc/170418/html/group___group___std_descriptors.html is \" value to indicate that the specified configuration supports the remote wakeup feature of the USB standard, allowing a suspended USB device to wake up the host upon request.\"). Looking through the servo helpers, I don\u0027t see anyway to update this through servo. I think we need to manually do it in the device\u0027s sysfs path. Additionally, we would still need to know the sysfs path to get wake count.",
       "parentUuid": "ebcdff7c_49164f3d",
+      "range": {
+        "startLine": 190,
+        "startChar": 70,
+        "endLine": 190,
+        "endChar": 88
+      },
+      "revId": "55ee87817faf49070c60364b1b1340d5d0cfd66a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1553fec_8106b18a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/hid_wake.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2022-09-10T03:29:07Z",
+      "side": 1,
+      "message": "\u003e I spent some time trying to implement it this way, and I do not think it is currently possible with tast. gousb uses cgo to interface with libusb (see libusb.go in gousb repo). \n\nHmm. Aren\u0027t there libusb wrappers available? (https://pkg.go.dev/github.com/gotmc/libusb#section-readme ?)\n\nIn any case, searching the USB dir seems fine.\n\n\u003e  I think we need to manually do it in the device\u0027s sysfs path. Additionally, we would still need to know the sysfs path to get wake count.\n\nSounds good. Thanks for clarifying.",
+      "parentUuid": "0dc881f0_7b4bd99d",
       "range": {
         "startLine": 190,
         "startChar": 70,
