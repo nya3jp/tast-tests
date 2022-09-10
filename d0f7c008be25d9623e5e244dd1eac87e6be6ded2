@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52557655_f14f67fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/arc_enabled_on_tablet.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-09-10T09:11:19Z",
+      "side": 1,
+      "message": "You can skip the defer login part. I put that into the other test because Chrome sometimes crashes during the login, and I split the phases for debug purposes. Though I couldn\u0027t find the crash cause even after this.",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 2
+      },
+      "revId": "d0f7c008be25d9623e5e244dd1eac87e6be6ded2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ec84c6a_17a03cec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/arc_enabled_on_tablet.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-09-10T09:11:19Z",
+      "side": 1,
+      "message": "nit: you can combine this steps, as even sleep has an Action counterpart: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/uiauto/automation.go;l\u003d889\nWith this, the code can be a little more compact.",
+      "range": {
+        "startLine": 166,
+        "startChar": 0,
+        "endLine": 182,
+        "endChar": 5
+      },
+      "revId": "d0f7c008be25d9623e5e244dd1eac87e6be6ded2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
