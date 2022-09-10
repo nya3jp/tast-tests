@@ -23,7 +23,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         HWOverlayTablet,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Checks that hardware overlay works with ARC applications in tablet mode",
 		Contacts:     []string{"takise@chromium.org", "arc-framework+tast@google.com"},
 		// TODO(ricardoq): enable test once the bug that fixes hardware overlay gets fixed. See: http://b/120557146
