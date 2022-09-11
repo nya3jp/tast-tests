@@ -36,6 +36,11 @@ func AddAccountDialog() *nodewith.Finder {
 	return nodewith.Name("Sign in to add a Google account").Role(role.RootWebArea)
 }
 
+// RemoveActionButton returns a button which removes the selected account on click.
+func RemoveActionButton() *nodewith.Finder {
+	return nodewith.Name("Remove this account").Role(role.MenuItem)
+}
+
 // GetChromeProfileWindow returns a nodewith.Finder to the Chrome window which
 // matches the provided condition.
 func GetChromeProfileWindow(ctx context.Context, tconn *chrome.TestConn, condition func(uiauto.NodeInfo) bool) (*nodewith.Finder, error) {
@@ -366,8 +371,8 @@ func RemoveAccountFromOSSettings(ctx context.Context, tconn *chrome.TestConn, cr
 		// Open OS Settings again.
 		OpenAccountManagerSettingsAction(tconn, cr),
 		// Find and click "More actions, <email>" button.
-		ui.WaitUntilExists(moreActionsButton),
-		ui.LeftClick(moreActionsButton),
+		ui.FocusAndWait(moreActionsButton),
+		ui.LeftClickUntil(moreActionsButton, ui.Exists(RemoveActionButton())),
 	)(ctx); err != nil {
 		return errors.Wrap(err, "failed to click More actions button")
 	}
@@ -384,7 +389,7 @@ func removeSelectedAccountFromOSSettings(ctx context.Context, tconn *chrome.Test
 	testing.ContextLog(ctx, "Removing account")
 
 	ui := uiauto.New(tconn).WithTimeout(DefaultUITimeout)
-	removeAccountButton := nodewith.Name("Remove this account").Role(role.MenuItem)
+	removeAccountButton := RemoveActionButton()
 	if err := uiauto.Combine("Click Remove account",
 		ui.WaitUntilExists(removeAccountButton),
 		ui.LeftClick(removeAccountButton),
