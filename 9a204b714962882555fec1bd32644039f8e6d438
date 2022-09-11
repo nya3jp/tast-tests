@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b142aab_5828a829",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint/ap.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-09-11T15:06:59Z",
+      "side": 1,
+      "message": "So in hostapd, this field is still called \"roaming consortiums\" which is correct wrt the AP side. I wonder if the name error/confusion in the supplicant client code for home OIs and required home OIs came from the naming on the hostapd side.",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 28
+      },
+      "revId": "9a204b714962882555fec1bd32644039f8e6d438",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a51e4ca_36fd1103",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint/ap.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-09-11T15:06:59Z",
+      "side": 1,
+      "message": "Just curious: is it time here to use Must() instead of returning an error ? What\u0027s the preferred approach in tast ?",
+      "range": {
+        "startLine": 176,
+        "startChar": 9,
+        "endLine": 176,
+        "endChar": 22
+      },
+      "revId": "9a204b714962882555fec1bd32644039f8e6d438",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
