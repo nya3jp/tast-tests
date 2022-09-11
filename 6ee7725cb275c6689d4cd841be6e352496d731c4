@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ac8a1f9_47912d7b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/fusebox_attach_storage.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-09-11T23:41:46Z",
+      "side": 0,
+      "message": "Actually looking at your other patch, is there a way this can be altered to use signals instead of just removing the test altogether? See example of cros-disks test that uses signals over dbus\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/crosdisks/dbus.go;l\u003d205-219;drc\u003dd8f4052d3446b6a7bbea10427cdb23b72e07869c",
+      "revId": "6ee7725cb275c6689d4cd841be6e352496d731c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
