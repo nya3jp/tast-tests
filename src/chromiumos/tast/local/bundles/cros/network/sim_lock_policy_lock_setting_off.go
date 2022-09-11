@@ -70,6 +70,11 @@ func SimLockPolicyLockSettingOff(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create cellular.Helper: ", err)
 	}
 
+	// Enable and get service to set autoconnect based on test parameters.
+	if _, err := helper.Enable(ctx); err != nil {
+		s.Fatal("Failed to enable modem")
+	}
+
 	iccid, err := helper.GetCurrentICCID(ctx)
 	if err != nil {
 		s.Fatal("Could not get current ICCID: ", err)
