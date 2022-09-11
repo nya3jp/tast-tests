@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3bfb8a37_1aac5fbe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/enterprise_login.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-09-11T22:05:16Z",
+      "side": 0,
+      "message": "This variant and the one below were marked promote to critical. Please restore the two. It is fine to delete the ones above.",
+      "range": {
+        "startLine": 62,
+        "startChar": 11,
+        "endLine": 62,
+        "endChar": 34
+      },
+      "revId": "aa860db6efde8f398d15d96a98d2ffde4df57df8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b161399f_2e56b3a4",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/surface_insets.go",
         "patchSetId": 4
