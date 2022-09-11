@@ -122,9 +122,8 @@ func ChangeARCAvailability(ctx context.Context, s *testing.State) {
 		// Open OS Settings again.
 		accountmanager.OpenAccountManagerSettingsAction(tconn, cr),
 		// Find and click "More actions, <email>" > "Stop using with Android apps" button.
-		ui.WaitUntilExists(moreActionsButton),
-		ui.LeftClick(moreActionsButton),
-		ui.WaitUntilExists(removeFromARCButton),
+		ui.FocusAndWait(moreActionsButton),
+		ui.LeftClickUntil(moreActionsButton, ui.Exists(removeFromARCButton)),
 		ui.LeftClick(removeFromARCButton),
 		// Check that account is not present in ARC.
 		accountmanager.CheckIsAccountPresentInARCAction(tconn, arcDevice, username, false /*expectedPresentInArc*/),
@@ -136,9 +135,8 @@ func ChangeARCAvailability(ctx context.Context, s *testing.State) {
 		// Open OS Settings again.
 		accountmanager.OpenAccountManagerSettingsAction(tconn, cr),
 		// Find and click "More actions, <email>" > "Use with Android apps" button.
-		ui.WaitUntilExists(moreActionsButton),
-		ui.LeftClick(moreActionsButton),
-		ui.WaitUntilExists(addToARCButton),
+		ui.FocusAndWait(moreActionsButton),
+		ui.LeftClickUntil(moreActionsButton, ui.Exists(addToARCButton)),
 		ui.LeftClick(addToARCButton),
 		// Check that account is present in ARC.
 		accountmanager.CheckIsAccountPresentInARCAction(tconn, arcDevice, username, true /*expectedPresentInArc*/),
