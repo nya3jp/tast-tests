@@ -1,4 +1,4 @@
-// Copyright 2022 The ChromiumOS Authors.
+// Copyright 2022 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -68,6 +68,11 @@ func SimLockPolicyLockSettingOff(ctx context.Context, s *testing.State) {
 	helper, err := cellular.NewHelperWithLabels(ctx, labels)
 	if err != nil {
 		s.Fatal("Failed to create cellular.Helper: ", err)
+	}
+
+	// Enable and get service to set autoconnect based on test parameters.
+	if _, err := helper.Enable(ctx); err != nil {
+		s.Fatal("Failed to enable modem")
 	}
 
 	iccid, err := helper.GetCurrentICCID(ctx)
