@@ -1,4 +1,4 @@
-// Copyright 2020 The Chromium OS Authors. All rights reserved.
+// Copyright 2020 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -126,5 +126,21 @@ func OptionJumpTarget(target Target) RuleOption {
 func OptionWait(seconds int) RuleOption {
 	return func(args *[]string) {
 		*args = append(*args, "--wait", strconv.Itoa(seconds))
+	}
+}
+
+// OptionSource sets up the source address which can be either
+// a network name, a hostname, a network IP address (with /mask), or a plain IP address.
+func OptionSource(address string) RuleOption {
+	return func(args *[]string) {
+		*args = append(*args, "--source", address)
+	}
+}
+
+// OptionMatch specifies a match to use, that is, an extension module that
+// tests for a specific property.
+func OptionMatch(proto L4Proto) RuleOption {
+	return func(args *[]string) {
+		*args = append(*args, "-m", string(proto))
 	}
 }
