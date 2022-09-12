@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9aec5946_e8217fee",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/hid_wake.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2022-09-12T21:49:10Z",
+      "side": 1,
+      "message": "It seems like we\u0027re just repeating the same thing we were doing in the poll immediately before.\n\nIs there a way (use a variable as a closure maybe?) you can retain the returned directory name from within the poll function? That avoids the repetition here.",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 2
+      },
+      "revId": "8c0c03888b3e0cdefccdd46587a8aa192e7b44b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "153df53b_f3c3e88f",
         "filename": "src/chromiumos/tast/remote/bundles/cros/power/hid_wake.go",
         "patchSetId": 8
