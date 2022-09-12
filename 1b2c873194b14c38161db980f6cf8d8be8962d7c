@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80ba854d_59886b04",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/enterprise_rollback_previous_version.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-09-12T10:46:44Z",
+      "side": 1,
+      "message": "The test does not really follow the configuration steps for rollback, but simulates it worksflow to make sure it rolls back and preserves the data as expected, so I think this comment (and the description in screenplay) should be something like:\n\n`// Simulate enterprise rollback to ensure that the device rolls back \nto a previous version and preserves the required data successfully (target image: n-1).`",
+      "range": {
+        "startLine": 48,
+        "startChar": 4,
+        "endLine": 49,
+        "endChar": 42
+      },
+      "revId": "1b2c873194b14c38161db980f6cf8d8be8962d7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
