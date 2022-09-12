@@ -30,7 +30,11 @@ func init() {
 		Func:         FlashromTester,
 		Desc:         "Tast wrapper that runs flashrom_tester",
 		Contacts:     []string{"nartemiev@google.com", "cros-flashrom-team@google.com"},
+<<<<<<< HEAD   (3c7b57 Remove discovery re-attempts from NS CrOS->CrOS tests)
 		Attr:         []string{"group:crosbolt", "crosbolt_nightly"},
+=======
+		Attr:         []string{}, // TODO(b/239126062): Move to custom suite/schedule.
+>>>>>>> CHANGE (a2f98a flashrom_tester: Disable test)
 		SoftwareDeps: []string{"crossystem", "flashrom"},
 		HardwareDeps: hwdep.D(hwdep.ChromeEC()),
 		Timeout:      30 * time.Minute,
