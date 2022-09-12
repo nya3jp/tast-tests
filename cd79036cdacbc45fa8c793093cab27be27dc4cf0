@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e8b4cef_1992fb2e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2022-09-12T06:58:12Z",
+      "side": 1,
+      "message": "Hi Robert,\n\nI\u0027d like to use the dut_power code you wrote to measure power in some ARC tests, but I want to make sure my changes don\u0027t break anything.\n\npower.SuspendConsumption.s0ix fails when I run it on a hatch/helios because there is no ppvar_bat or ppvar_bat_q rails (but there is a ppvar_vbat). Do I need to run this test on a specific board?",
+      "revId": "cd79036cdacbc45fa8c793093cab27be27dc4cf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
