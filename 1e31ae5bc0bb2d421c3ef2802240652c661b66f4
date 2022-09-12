@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "960cf794_918b402b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1543127
+      },
+      "writtenOn": "2022-09-12T14:07:37Z",
+      "side": 1,
+      "message": "LGTM % nits.",
+      "revId": "1e31ae5bc0bb2d421c3ef2802240652c661b66f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46ddd5b1_b4b3e1f1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/dep/non_stable.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1543127
+      },
+      "writtenOn": "2022-09-12T14:07:37Z",
+      "side": 1,
+      "message": "Nit: maybe add \"the\": pass the telemetryextension.HasOEMNAme test.",
+      "revId": "1e31ae5bc0bb2d421c3ef2802240652c661b66f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1950a59_34ddea90",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/dep/stable.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1543127
+      },
+      "writtenOn": "2022-09-12T14:07:37Z",
+      "side": 1,
+      "message": "Nit: maybe add \"the\": pass the telemetryextension.HasOEMNAme test.",
+      "revId": "1e31ae5bc0bb2d421c3ef2802240652c661b66f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
