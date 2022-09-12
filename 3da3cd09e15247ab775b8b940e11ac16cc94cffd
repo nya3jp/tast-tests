@@ -62,6 +62,30 @@
       },
       "revId": "3da3cd09e15247ab775b8b940e11ac16cc94cffd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6fa01eae_2c264f3a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/add_remove_factors_ephemeral.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1546868
+      },
+      "writtenOn": "2022-09-12T16:49:10Z",
+      "side": 1,
+      "message": "If we\u0027re going to use the new fixture I think I\u0027d rather do that in a separate change, where I also fix the original AddRemoveFactors test.",
+      "parentUuid": "8e35cadb_a4b07d79",
+      "range": {
+        "startLine": 45,
+        "startChar": 3,
+        "endLine": 48,
+        "endChar": 5
+      },
+      "revId": "3da3cd09e15247ab775b8b940e11ac16cc94cffd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
