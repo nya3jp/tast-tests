@@ -1,4 +1,4 @@
-// Copyright 2020 The Chromium OS Authors. All rights reserved.
+// Copyright 2020 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -58,7 +58,7 @@ const (
 type meetTest struct {
 	num         int                  // Number of bots in the meeting.
 	layout      meetLayoutType       // Type of the layout in the meeting.
-	present     bool                 // Whether it is presenting the Google Docs or not. It can not be true if docs is false.
+	present     bool                 // Whether it is presenting the Google Docs/Jamboard window.
 	docs        bool                 // Whether it is running with a Google Docs window.
 	jamboard    bool                 // Whether it is running with a Jamboard window.
 	split       bool                 // Whether it is in split screen mode. It can not be true if docs is false.
@@ -348,7 +348,7 @@ func init() {
 // Pre-preparation:
 //   - Open a Meet window.
 //   - Create and enter the meeting code.
-//   - Open a Google Docs window (if necessary).
+//   - Open a Google Docs/Jamboard window (if necessary).
 //   - Enter split mode (if necessary).
 //   - Turn off camera (if necessary).
 //
@@ -358,7 +358,7 @@ func init() {
 //   - Set up the layout.
 //   - Max out the number of the maximum tiles (if necessary).
 //   - Start to present (if necessary).
-//   - Input notes to Google Docs file (if necessary).
+//   - Input notes to Google Docs/Jamboard file (if necessary).
 //   - Wait for 30 seconds before ending the meeting.
 //
 // After recording:
@@ -846,14 +846,14 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 				return errors.Wrap(err, "failed to start presentation")
 			}
 
-			// Select the second tab (Google Docs tab) to present.
+			// Select the Google Docs/Jamboard tab to present.
 			if err := action.Combine(
-				"select Google Docs tab",
+				"select Google Docs/Jamboard tab",
 				pc.Click(nodewith.Name("Chrome Tab").Role(role.ListGrid)),
 				pc.Click(nodewith.NameStartingWith("Untitled document").ClassName("AXVirtualView")),
 				kw.AccelAction("Enter"),
 			)(ctx); err != nil {
-				return errors.Wrap(err, "failed to select the Google Docs tab")
+				return errors.Wrap(err, "failed to select the Google Docs/Jamboard tab")
 			}
 		}
 
