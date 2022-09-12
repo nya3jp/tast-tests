@@ -47,7 +47,7 @@ func init() {
 			},
 			{
 				Name:              "non_stable_lacros",
-				Fixture:           "telemetryExtensionOverrideOEMNameLacros",
+				Fixture:           "telemetryExtensionLacros",
 				ExtraHardwareDeps: dep.NonStableModels(),
 			},
 			{
@@ -67,7 +67,7 @@ func init() {
 			},
 			{
 				Name:              "non_stable_managed_lacros",
-				Fixture:           "telemetryExtensionOverrideOEMNameManagedLacros",
+				Fixture:           "telemetryExtensionManagedLacros",
 				ExtraHardwareDeps: dep.NonStableModels(),
 			},
 		},
