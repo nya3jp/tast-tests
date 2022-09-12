@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b93403f_372fcd1e",
+        "filename": "src/chromiumos/tast/local/accountmanager/account_manager.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-09-12T08:32:49Z",
+      "side": 1,
+      "message": "nit: instead of returning the action, just return if the account is present or not.\n\nCheckAccountPresent(ctx, cr, email) (bool, error). error should only be returned if something goes very wrong (like settings being entirely missing).\n\ntconn can be obtained from cr (it\u0027s cached so no performance penalty).",
+      "revId": "48ee6d02d74cb4dea85b659868f00f480600beeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
