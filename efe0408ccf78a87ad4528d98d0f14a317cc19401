@@ -77,6 +77,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4dca5ebc_afbe38ec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-09-12T22:00:50Z",
+      "side": 1,
+      "message": "You can use Cq-Depend: chromium:3884804 to make this dependency explicit [1].\n\n[1] https://chromium.googlesource.com/chromiumos/docs/+/HEAD/contributing.md#cq-depend",
+      "parentUuid": "b99ba97c_1efff89d",
+      "revId": "efe0408ccf78a87ad4528d98d0f14a317cc19401",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0d64ba1d_229ee485",
         "filename": "src/chromiumos/tast/local/bundles/cros/projector/saved_file_to_default_folder.go",
         "patchSetId": 5
