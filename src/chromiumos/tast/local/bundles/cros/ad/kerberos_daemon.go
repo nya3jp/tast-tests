@@ -21,7 +21,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func: KerberosDaemon,
-		Desc: "Verifies that the Kerberos system dameon works as expected",
+		Desc: "Verifies that the Kerberos system daemon works as expected",
 		Contacts: []string{
 			"fsandrade@chromium.org",
 			"chromeos-commercial-identity@google.com",
@@ -87,7 +87,7 @@ func KerberosDaemon(ctx context.Context, s *testing.State) {
 	}
 
 	if diff := cmp.Diff(validateResp, expectedResp, protocmp.Transform()); diff != "" {
-		s.Fatal("ValidateConfigResponse message mismatch (-got +want): ", diff)
+		s.Fatalf("ValidateConfigResponse message mismatch (-got +want):\n%s", diff)
 	}
 
 	// Set a valid config on the account.
@@ -100,7 +100,7 @@ func KerberosDaemon(ctx context.Context, s *testing.State) {
 	}
 
 	// Acquire a Kerberos ticket.
-	acquireTgtResp, err := k.AcquireKerberosTgt(ctx, user, password /*rememberPassword=*/, true /*useLoginPassword=*/, false)
+	acquireTgtResp, err := k.AcquireKerberosTgt(ctx, user, password, true /*rememberPassword*/, false /*useLoginPassword*/)
 	if err != nil {
 		s.Fatal("AcquireKerberosTgt failed. D-Bus error: ", err)
 	}
