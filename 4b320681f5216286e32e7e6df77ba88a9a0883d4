@@ -136,6 +136,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a8f4079_e8eefe79",
+        "filename": "helpers/local/BUILD.gn",
+        "patchSetId": 5
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2022-09-12T16:39:31Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "914ec4d3_2ac5f1f8",
+      "range": {
+        "startLine": 76,
+        "startChar": 21,
+        "endLine": 76,
+        "endChar": 35
+      },
+      "revId": "4b320681f5216286e32e7e6df77ba88a9a0883d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "08f54910_f91a8cb0",
@@ -243,6 +267,30 @@
       "writtenOn": "2022-09-09T22:30:45Z",
       "side": 1,
       "message": "It seems like we\u0027re only ever using *one* of these at a time, so we can simplify by just having a single `ChromeParam`, rather than both the enabled and disabled one.",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 35
+      },
+      "revId": "4b320681f5216286e32e7e6df77ba88a9a0883d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1c48c70_c36cad97",
+        "filename": "src/chromiumos/tast/local/bundles/cros/featured/feature_library_late_boot.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2022-09-12T16:39:31Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "aef785b0_4be8ea8c",
       "range": {
         "startLine": 31,
         "startChar": 0,
