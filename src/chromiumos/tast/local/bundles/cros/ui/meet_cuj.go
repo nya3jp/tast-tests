@@ -833,6 +833,7 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 			if !meet.docs && !meet.jamboard {
 				return errors.New("need a Google Docs or Jamboard tab to present")
 			}
+
 			// Start presenting the tab.
 			if err := testing.Poll(ctx, func(ctx context.Context) error {
 				if err := ui.Exists(nodewith.Name("Chrome Tab").Role(role.ListGrid))(ctx); err == nil {
@@ -846,13 +847,15 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 				return errors.Wrap(err, "failed to start presentation")
 			}
 
-			// Select the second tab (Google Docs tab) to present.
+			presentTabTitle := "Untitled document"
+			if meet.jamboard {
+				presentTabTitle = "Untitled Jam"
+			}
+
+			// Select the tab to present.
 			if err := action.Combine(
-				"select Google Docs tab",
-				pc.Click(nodewith.Name("Chrome Tab").Role(role.ListGrid)),
-				// Press down twice to select the second tab, which is Google Docs.
-				kw.AccelAction("Down"),
-				kw.AccelAction("Down"),
+				"select tab to screenshare",
+				pc.Click(nodewith.NameStartingWith(presentTabTitle).HasClass("AXVirtualView")),
 				kw.AccelAction("Enter"),
 			)(ctx); err != nil {
 				return errors.Wrap(err, "failed to select the Google Docs tab")
