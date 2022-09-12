@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "74978862_128b6b39",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2022-09-12T13:56:58Z",
+      "side": 1,
+      "message": "Thanks! Added the bug id in the comment.",
+      "parentUuid": "12ba5d8a_26810e7a",
+      "revId": "f6adddc3ae4f01e42d833722b4fab047bb8aca35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a0086af8_5319a370",
