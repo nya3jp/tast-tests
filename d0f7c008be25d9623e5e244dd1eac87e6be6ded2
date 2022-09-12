@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d92ecfa_dbbe13db",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1519467
+      },
+      "writtenOn": "2022-09-12T18:56:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "19b7536c_fc09c3dc",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 4
+      },
+      "revId": "d0f7c008be25d9623e5e244dd1eac87e6be6ded2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "52557655_f14f67fe",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "292ac414_34d5e9da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/arc_enabled_on_tablet.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1519467
+      },
+      "writtenOn": "2022-09-12T18:56:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "52557655_f14f67fe",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 2
+      },
+      "revId": "d0f7c008be25d9623e5e244dd1eac87e6be6ded2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2ec84c6a_17a03cec",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-09-10T09:11:19Z",
       "side": 1,
       "message": "nit: you can combine this steps, as even sleep has an Action counterpart: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/uiauto/automation.go;l\u003d889\nWith this, the code can be a little more compact.",
+      "range": {
+        "startLine": 166,
+        "startChar": 0,
+        "endLine": 182,
+        "endChar": 5
+      },
+      "revId": "d0f7c008be25d9623e5e244dd1eac87e6be6ded2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1611904b_262d1c84",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/arc_enabled_on_tablet.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1519467
+      },
+      "writtenOn": "2022-09-12T18:56:05Z",
+      "side": 1,
+      "message": "OK. I created a function for this. Not sure if this is what you meant. Action type only accepts one parameter, while I need two.",
+      "parentUuid": "2ec84c6a_17a03cec",
       "range": {
         "startLine": 166,
         "startChar": 0,
