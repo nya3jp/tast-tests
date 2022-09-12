@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ebd6c68_e7d4c3a0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-09-12T18:32:37Z",
+      "side": 1,
+      "message": "Did you file a bug?",
+      "parentUuid": "2ddc0561_1cce785f",
+      "range": {
+        "startLine": 14,
+        "startChar": 9,
+        "endLine": 14,
+        "endChar": 42
+      },
+      "revId": "dfa803cf0318e5b92539e054d27ebd1674607e59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "d2b68315_863439b2",
@@ -131,6 +155,24 @@
       "side": 1,
       "message": "startDHCPServer() has multiple stages (IP, firewall, dnsmasq) and no dedicated teardown for handling errors in the later stages. So as its symbol is not exported, we can get away with handling it that way, everything stays in the family (+60 lines) :)",
       "parentUuid": "0d111339_3ddaeb49",
+      "revId": "dfa803cf0318e5b92539e054d27ebd1674607e59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3345f09_c87a6ff6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/shill_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 2921,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-09-12T18:32:37Z",
+      "side": 1,
+      "message": "Ooh that\u0027s interesting, that\u0027s something we should fix, filed https://b.corp.google.com/issues/246359560. Can you leave a TODO here to change this once that bug is resolved?",
+      "parentUuid": "5c453e36_e4e97086",
       "revId": "dfa803cf0318e5b92539e054d27ebd1674607e59",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -266,6 +308,30 @@
       "side": 1,
       "message": "They were actually hardcoded when SAE was used. I made it variable, but I guess we won\u0027t support TKIP the same way we don\u0027t support WAP or WPA[1]?",
       "parentUuid": "03a350a0_7f2d4bc7",
+      "range": {
+        "startLine": 90,
+        "startChar": 51,
+        "endLine": 90,
+        "endChar": 59
+      },
+      "revId": "dfa803cf0318e5b92539e054d27ebd1674607e59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4dbc755b_bba1102c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/sap_simple_connect.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-09-12T18:32:37Z",
+      "side": 1,
+      "message": "But we may support GCMP in the future, so it\u0027s best to add it for extensibility.",
+      "parentUuid": "641cddf0_089bbdca",
       "range": {
         "startLine": 90,
         "startChar": 51,
