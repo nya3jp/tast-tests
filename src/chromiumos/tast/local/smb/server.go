@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/procutil"
 	"chromiumos/tast/testing"
 )
 
@@ -83,6 +84,9 @@ func (s *Server) Start(ctx context.Context) error {
 	if s.running {
 		return errors.New("smbd already running")
 	}
+	if err := terminateRunningSmbdInstances(ctx); err != nil {
+		return err
+	}
 	s.running = true
 	go func() {
 		output, err := s.cmd.CombinedOutput()
@@ -109,4 +113,23 @@ func (s *Server) Start(ctx context.Context) error {
 		s.serverErr <- errors.Wrap(err, "smbd has crashed")
 	}()
 	return nil
+}
+
+// terminateRunningSmbdInstances finds any running instances of smbd and
+// terminates them prior to running to ensure uniqueness.
+func terminateRunningSmbdInstances(ctx context.Context) (retErr error) {
+	instances, err := procutil.FindAll(procutil.ByExe(smbdServerBinaryPath))
+	if err != nil && err != procutil.ErrNotFound {
+		return errors.Wrap(err, "failed to find running smbd instances")
+	}
+	if len(instances) == 0 {
+		return nil
+	}
+	testing.ContextLogf(ctx, "Found %d running smbd instances, terminating them", len(instances))
+	for _, proc := range instances {
+		if err = proc.SendSignal(syscall.SIGTERM); err != nil {
+			retErr = errors.Wrap(err, "failed to terminate smbd instance")
+		}
+	}
+	return
 }
