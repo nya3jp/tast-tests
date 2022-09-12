@@ -97,6 +97,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "055dc881_d2ebb81f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/auth_session_unlock.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-09-12T08:38:16Z",
+      "side": 1,
+      "message": "nit: move the comment behind the false like in line 141 otherwise autoformat will keep moving it in front of the comma.\nSame for the other functions with a boolean.",
+      "range": {
+        "startLine": 111,
+        "startChar": 60,
+        "endLine": 111,
+        "endChar": 75
+      },
+      "revId": "12ad7573d3d18f7d741654c350f3f2eaa5a19d31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ef3baebb_5324bd23",
         "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/auth_session_unlock.go",
         "patchSetId": 3
