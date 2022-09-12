@@ -119,6 +119,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0a1a856_784dfa7a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1322206
+      },
+      "writtenOn": "2022-09-12T23:08:01Z",
+      "side": 1,
+      "message": "Hi Hidehiko, sorry for the delay (I was on vacation). This is what I\u0027ve found in the official docs explaining serial value usages in the protocol [1]:\n\n\u003e To avoid race conditions, input events that are likely to trigger further \nrequests (such as button presses, key events, pointer motions) carry serial numbers, and requests such as wl_surface.set_popup require that the serial number of the triggering event is specified. The server maintains a monotonically increasing counter for these serial numbers.\n\nThere\u0027s also a more detailed explanation about the overall serial usage in wayland-book [2].\n\n[1] https://wayland.freedesktop.org/docs/html/ch04.html#sect-Protocol-data-sharing\n[2] https://wayland-book.com/seat.html#event-serials",
+      "parentUuid": "9b2f290a_e8c3eff8",
+      "revId": "7a06996f525f7f4b7941f76ce16e4889b24363ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ee22b6c2_20f630d4",
