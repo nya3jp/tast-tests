@@ -157,7 +157,7 @@ func (c *TestManager) RunOnce(ctx context.Context, testType TestType, interfaceN
 		session = iperf.NewSession(client, server)
 	}
 
-	result, err := session.Run(ctx, cfg)
+	_, result, err := session.Run(ctx, cfg)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to run Iperf session")
 	}
