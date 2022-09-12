@@ -208,9 +208,11 @@ func UnmountAllSmbMounts(ctx context.Context, cr *chrome.Chrome) error {
 		return errors.Wrap(err, "failed to create the test API conn")
 	}
 	// Open the Files App.
-	if _, err := filesapp.Launch(ctx, tconn); err != nil {
+	files, err := filesapp.Launch(ctx, tconn)
+	if err != nil {
 		return errors.Wrap(err, "failed to launch Files app")
 	}
+	defer files.Close(ctx)
 	// Get connection to foreground Files app to verify changes.
 	filesSWA := "chrome://file-manager/"
 	matchFilesApp := func(t *chrome.Target) bool {
