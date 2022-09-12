@@ -22,6 +22,30 @@
       },
       "revId": "1b2c873194b14c38161db980f6cf8d8be8962d7c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52f5eb64_02892ec0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/enterprise_rollback_previous_version.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1153089
+      },
+      "writtenOn": "2022-09-12T12:44:39Z",
+      "side": 1,
+      "message": "The \"on a device\" was meant to underline that we simulate configuration on the device as opposed to doing so on DPanel. There is a separate screenplay for that: http://shortn/_HXlibGBQlC. These descriptions are also subject to a discussion that we plan to have later today.",
+      "parentUuid": "80ba854d_59886b04",
+      "range": {
+        "startLine": 48,
+        "startChar": 4,
+        "endLine": 49,
+        "endChar": 42
+      },
+      "revId": "1b2c873194b14c38161db980f6cf8d8be8962d7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
