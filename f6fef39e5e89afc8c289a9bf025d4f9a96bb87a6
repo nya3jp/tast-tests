@@ -49,6 +49,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b4f9272a_2aaa954a",
+        "filename": "src/chromiumos/tast/common/policy/policy_blob.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1153089
+      },
+      "writtenOn": "2022-09-12T13:37:44Z",
+      "side": 1,
+      "message": "IMHO the doc explaining how to use these two fields should be here and not just on MarshalJSON function.",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 65
+      },
+      "revId": "f6fef39e5e89afc8c289a9bf025d4f9a96bb87a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3eb3b0b5_de406fca",
         "filename": "src/chromiumos/tast/common/policy/policy_blob.go",
         "patchSetId": 16
