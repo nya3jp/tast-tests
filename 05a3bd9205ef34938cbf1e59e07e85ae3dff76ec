@@ -89,6 +89,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb9239ab_e3c81ca2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/add_remove_factors.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1430007
+      },
+      "writtenOn": "2022-09-12T23:50:26Z",
+      "side": 1,
+      "message": "Yeah, I needed a reliable way to check if the TPM is operational during the run time of the test. I\u0027ll add a comment to describe this.",
+      "parentUuid": "e6f13ac9_e1feda2a",
+      "revId": "05a3bd9205ef34938cbf1e59e07e85ae3dff76ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b9333f5d_06373bb9",
@@ -102,6 +120,24 @@
       "writtenOn": "2022-09-12T16:12:21Z",
       "side": 1,
       "message": "Maybe this setup should go into a common utility helper, although I suppose that\u0027s really only more important if/when we want to start setting up this auth in other tests as well.",
+      "revId": "05a3bd9205ef34938cbf1e59e07e85ae3dff76ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "712bbdd1_8b38324f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/add_remove_factors.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1430007
+      },
+      "writtenOn": "2022-09-12T23:50:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b9333f5d_06373bb9",
       "revId": "05a3bd9205ef34938cbf1e59e07e85ae3dff76ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
