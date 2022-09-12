@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c65debd6_90b9c9da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/desks_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-09-12T16:13:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bc3daa59_27d881fc",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 5
+      },
+      "revId": "36856e41dfca8987aac58872df8fa8cfd1878c26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1e6c6d55_e8fc29ad",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-09-09T18:19:25Z",
       "side": 1,
       "message": "This function uses the `desk` parameter only for `desk.urls`, so it should have simply a `urls` parameter instead.",
+      "range": {
+        "startLine": 31,
+        "startChar": 78,
+        "endLine": 31,
+        "endChar": 91
+      },
+      "revId": "36856e41dfca8987aac58872df8fa8cfd1878c26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8760b423_fe97e941",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/deskscuj/desks.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-09-12T16:13:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1e6c6d55_e8fc29ad",
       "range": {
         "startLine": 31,
         "startChar": 78,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a00eaf0_25f66279",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/deskscuj/desks.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-09-12T16:13:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "03ec83d9_931c0520",
+      "range": {
+        "startLine": 37,
+        "startChar": 60,
+        "endLine": 37,
+        "endChar": 61
+      },
+      "revId": "36856e41dfca8987aac58872df8fa8cfd1878c26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cfa76f7d_b7177de0",
@@ -100,6 +172,30 @@
       "writtenOn": "2022-09-09T18:19:25Z",
       "side": 1,
       "message": "desks_cuj.go uses this only for the `onVisitAction` field, so it should be simply `[]action.Action`. You can write `onVisitActions :\u003d make([]action.Action, 0, len(desks))` and `onVisitActions \u003d append(onVisitActions, desk.onVisitAction)`.",
+      "range": {
+        "startLine": 83,
+        "startChar": 208,
+        "endLine": 83,
+        "endChar": 218
+      },
+      "revId": "36856e41dfca8987aac58872df8fa8cfd1878c26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4e5a093_6877755a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/deskscuj/desks.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-09-12T16:13:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cfa76f7d_b7177de0",
       "range": {
         "startLine": 83,
         "startChar": 208,
@@ -133,6 +229,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4232482_0fabc66a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/deskscuj/desks.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-09-12T16:13:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bab9c5f4_1f34b9ff",
+      "range": {
+        "startLine": 91,
+        "startChar": 12,
+        "endLine": 91,
+        "endChar": 20
+      },
+      "revId": "36856e41dfca8987aac58872df8fa8cfd1878c26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "42e7460c_ea41f9d2",
@@ -156,6 +276,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec2c63f9_f63fd1f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/deskscuj/desks_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-09-12T16:13:59Z",
+      "side": 1,
+      "message": "Very subtle, thanks for showing me this!(Done)",
+      "parentUuid": "42e7460c_ea41f9d2",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 51
+      },
+      "revId": "36856e41dfca8987aac58872df8fa8cfd1878c26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "87a42e12_7f27331f",
@@ -169,6 +313,30 @@
       "writtenOn": "2022-09-09T18:19:25Z",
       "side": 1,
       "message": "nit: I would inline this even though it is used three times. `desks` is a local slice, and therefore the length will be cached so there is no performance penalty in writing `len(desks)` repeatedly.",
+      "range": {
+        "startLine": 128,
+        "startChar": 0,
+        "endLine": 128,
+        "endChar": 23
+      },
+      "revId": "36856e41dfca8987aac58872df8fa8cfd1878c26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "53109e04_94fb2e7d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/deskscuj/desks_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-09-12T16:13:59Z",
+      "side": 1,
+      "message": "I changed the variable `desks` to `onVisitActions` as per your other comment. B/c of this, I feel better using `numDesks :\u003d len(onVisitActions)`, because `numDesks` would be more descriptive than `len(onVisitActions)` in place of the number of desks.",
+      "parentUuid": "87a42e12_7f27331f",
       "range": {
         "startLine": 128,
         "startChar": 0,
@@ -240,6 +408,30 @@
       "side": 1,
       "message": "deskswitcher.go:\n\ttype deskSwitchWorkflow struct {\n\t\tname        string\n\t\tdescription string\n\t\titinerary   []int\n\t\tswitchDesks func(context.Context, int, int) error\n\t}\n\ndesks_cuj.go:\n\t\tfor _, deskSwitcher :\u003d range deskSwitchers {\n\t\t\t...\n\n\t\t\ti :\u003d 0\n\t\t\tfor endTime :\u003d time.Now().Add(deskSwitchingDuration); time.Now().Before(endTime); {\n\t\t\t\tfromDesk :\u003d deskSwitcher.itinerary[i]\n\t\t\t\ti \u003d (i + 1) % len(deskSwitcher.itinerary)\n\t\t\t\ttoDesk :\u003d deskSwitcher.itinerary[i]\n\n\t\t\t\t...\n\t\t\t}\n\t\t\ts.Logf(\"Switched desk by %s %d times\", deskSwitcher.name, cycles)\n\t\t}",
       "parentUuid": "e1068f01_60962802",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 34
+      },
+      "revId": "36856e41dfca8987aac58872df8fa8cfd1878c26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6831ce5b_54ac9d13",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/deskscuj/deskswitcher.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-09-12T16:13:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2347415c_4a130c9d",
       "range": {
         "startLine": 40,
         "startChar": 0,
