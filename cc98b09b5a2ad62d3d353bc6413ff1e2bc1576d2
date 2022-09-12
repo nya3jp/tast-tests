@@ -1,0 +1,257 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59132472_4b7d6fea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/deskscuj/desks.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-09-12T19:48:22Z",
+      "side": 1,
+      "message": "I think these two sentences should be swapped. \"|i| is the desk index of the new desk\" is the main idea of `i`, and the other sentence is more of a detail. Also, \"because the first desk is created and activated by default\" is a reason that makes sense only if the main idea of `i` is understood in the first place.",
+      "range": {
+        "startLine": 21,
+        "startChar": 3,
+        "endLine": 23,
+        "endChar": 8
+      },
+      "revId": "cc98b09b5a2ad62d3d353bc6413ff1e2bc1576d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f854c2f5_94c18a48",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/deskscuj/desks.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-09-12T19:48:22Z",
+      "side": 1,
+      "message": "nit: Again, if the last line is this short, then the whole thing probably can be one line shorter. One way might be to write \"the index of the new desk\" instead of \"the desk index of the new desk\"",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 8
+      },
+      "revId": "cc98b09b5a2ad62d3d353bc6413ff1e2bc1576d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd27d5bd_20eae2cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/deskscuj/desks_cuj.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-09-12T19:48:22Z",
+      "side": 1,
+      "message": "Inline this.",
+      "range": {
+        "startLine": 141,
+        "startChar": 1,
+        "endLine": 141,
+        "endChar": 14
+      },
+      "revId": "cc98b09b5a2ad62d3d353bc6413ff1e2bc1576d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c6baa57_2fc4e75b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/deskscuj/desks_cuj.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-09-12T19:48:22Z",
+      "side": 1,
+      "message": "Remove this comment. Although every itinerary begins with desk 0, the code here no longer assumes that.",
+      "range": {
+        "startLine": 160,
+        "startChar": 0,
+        "endLine": 160,
+        "endChar": 52
+      },
+      "revId": "cc98b09b5a2ad62d3d353bc6413ff1e2bc1576d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "251090a5_16be3d10",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/deskscuj/desks_cuj.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-09-12T19:48:22Z",
+      "side": 1,
+      "message": "This comment belongs immediately before `if activeDesk !\u003d nextDesk {` and should refer to the desks in the order in which they appear in the comparison: \"Compare the actual active desk to the expected active desk.\"",
+      "range": {
+        "startLine": 182,
+        "startChar": 0,
+        "endLine": 182,
+        "endChar": 66
+      },
+      "revId": "cc98b09b5a2ad62d3d353bc6413ff1e2bc1576d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9e6fc23_9a7503d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/deskscuj/deskswitcher.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-09-12T19:48:22Z",
+      "side": 1,
+      "message": "Just write `activates`. Almost every function in Tast test code can fail. The word `tries` suggests that there is some scenario where this fails but the function does not return an `error` about it, or it fails but the function leaves some side effect from beginning to try, or whatever could be a reason to use a form of the word \"try\" here and not elsewhere.",
+      "range": {
+        "startLine": 23,
+        "startChar": 7,
+        "endLine": 23,
+        "endChar": 24
+      },
+      "revId": "cc98b09b5a2ad62d3d353bc6413ff1e2bc1576d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9443c4a9_38c67514",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/deskscuj/deskswitcher.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-09-12T19:48:22Z",
+      "side": 1,
+      "message": "Remove this parameter.",
+      "range": {
+        "startLine": 33,
+        "startChar": 93,
+        "endLine": 33,
+        "endChar": 105
+      },
+      "revId": "cc98b09b5a2ad62d3d353bc6413ff1e2bc1576d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0eb75db_c9788cc6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/deskscuj/deskswitcher.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-09-12T19:48:22Z",
+      "side": 1,
+      "message": "Remove this parameter.",
+      "range": {
+        "startLine": 55,
+        "startChar": 92,
+        "endLine": 55,
+        "endChar": 104
+      },
+      "revId": "cc98b09b5a2ad62d3d353bc6413ff1e2bc1576d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8637e775_bb4d07c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/deskscuj/deskswitcher.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-09-12T19:48:22Z",
+      "side": 1,
+      "message": "nit: Instead of this, I would have a `kw` parameter and put the following code directly inside this function:\n\ttopRow, err :\u003d input.KeyboardTopRowLayout(ctx, kw)\n\tif err !\u003d nil {\n\t\treturn errors.Wrap(err, \"failed to obtain the top-row layout\")\n\t}\n\n\tif err :\u003d kw.Accel(ctx, topRow.SelectTask); err !\u003d nil {\n\t\treturn errors.Wrap(err, \"failed to hit overview key\")\n\t}\n\n\tif err :\u003d ash.WaitForOverviewState(ctx, tconn, ash.Shown, 10*time.Second) {\n\t\treturn errors.Wrap(err, \"failed to wait for overview\")\n\t}",
+      "range": {
+        "startLine": 73,
+        "startChar": 69,
+        "endLine": 73,
+        "endChar": 91
+      },
+      "revId": "cc98b09b5a2ad62d3d353bc6413ff1e2bc1576d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20a08c11_3f5db778",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/deskscuj/deskswitcher.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-09-12T19:48:22Z",
+      "side": 1,
+      "message": "Remove this parameter.",
+      "range": {
+        "startLine": 73,
+        "startChar": 107,
+        "endLine": 73,
+        "endChar": 119
+      },
+      "revId": "cc98b09b5a2ad62d3d353bc6413ff1e2bc1576d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c5f9523_d1e7d8a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/deskscuj/deskswitcher.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-09-12T19:48:22Z",
+      "side": 1,
+      "message": "Check `toDesk \u003c len(desksInfo)` instead.",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 4
+      },
+      "revId": "cc98b09b5a2ad62d3d353bc6413ff1e2bc1576d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
