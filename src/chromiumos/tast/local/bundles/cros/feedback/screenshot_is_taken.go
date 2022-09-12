@@ -74,7 +74,7 @@ func ScreenshotIsTaken(ctx context.Context, s *testing.State) {
 	}
 
 	// Verify clicking screenshot button will close screenshot diaglog.
-	screenshotButton := nodewith.Name("Screenshot").Role(role.Button).Ancestor(feedbackRootNode)
+	screenshotButton := nodewith.Role(role.Button).Ancestor(feedbackRootNode).Nth(2)
 
 	if err := uiauto.Combine("Verify clicking screenshot button closes dialog",
 		ui.DoDefault(screenshotButton),
