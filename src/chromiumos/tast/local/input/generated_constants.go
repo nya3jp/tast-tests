@@ -9,10 +9,10 @@ package input
 // Do not change the above line; see https://golang.org/pkg/cmd/go/internal/generate/
 //
 // This file contains constants from include/uapi/linux/input-event-codes.h
-// in the Linux kernel repository at revision b1a4f18e49c0dab0acd49c26f14a8f418a6e6791.
+// in the Linux kernel repository at revision 45f5262744831b24d3b5cf4640708e01744113b3.
 // Run "go generate" to regenerate it.
 
-//go:generate ../../../../../../tast/tools/go.sh run gen/gen_constants.go ../../../../../../../third_party/kernel/v4.14/include/uapi/linux/input-event-codes.h generated_constants.go
+//go:generate ../../../../../../tast/tools/go.sh run gen/gen_constants.go ../../../../../../../third_party/kernel/v5.15/include/uapi/linux/input-event-codes.h generated_constants.go
 //go:generate ../../../../../../tast/tools/go.sh fmt generated_constants.go
 
 // EventType corresponds to the "type" field in the input_event C struct.
@@ -251,7 +251,7 @@ const (
 	KEY_PAUSECD                  EventCode = 0xc9
 	KEY_PROG3                    EventCode = 0xca
 	KEY_PROG4                    EventCode = 0xcb
-	KEY_DASHBOARD                EventCode = 0xcc
+	KEY_ALL_APPLICATIONS         EventCode = 0xcc
 	KEY_SUSPEND                  EventCode = 0xcd
 	KEY_CLOSE                    EventCode = 0xce
 	KEY_PLAY                     EventCode = 0xcf
@@ -387,6 +387,9 @@ const (
 	KEY_10CHANNELSUP             EventCode = 0x1b8
 	KEY_10CHANNELSDOWN           EventCode = 0x1b9
 	KEY_IMAGES                   EventCode = 0x1ba
+	KEY_NOTIFICATION_CENTER      EventCode = 0x1bc
+	KEY_PICKUP_PHONE             EventCode = 0x1bd
+	KEY_HANGUP_PHONE             EventCode = 0x1be
 	KEY_DEL_EOL                  EventCode = 0x1c0
 	KEY_DEL_EOS                  EventCode = 0x1c1
 	KEY_INS_LINE                 EventCode = 0x1c2
@@ -412,6 +415,7 @@ const (
 	KEY_FN_F                     EventCode = 0x1e2
 	KEY_FN_S                     EventCode = 0x1e3
 	KEY_FN_B                     EventCode = 0x1e4
+	KEY_FN_RIGHT_SHIFT           EventCode = 0x1e5
 	KEY_BRL_DOT1                 EventCode = 0x1f1
 	KEY_BRL_DOT2                 EventCode = 0x1f2
 	KEY_BRL_DOT3                 EventCode = 0x1f3
@@ -454,6 +458,7 @@ const (
 	KEY_ATTENDANT_TOGGLE         EventCode = 0x21d
 	KEY_LIGHTS_TOGGLE            EventCode = 0x21e
 	KEY_ALS_TOGGLE               EventCode = 0x230
+	KEY_ROTATE_LOCK_TOGGLE       EventCode = 0x231
 	KEY_BUTTONCONFIG             EventCode = 0x240
 	KEY_TASKMANAGER              EventCode = 0x241
 	KEY_JOURNAL                  EventCode = 0x242
@@ -462,6 +467,9 @@ const (
 	KEY_SCREENSAVER              EventCode = 0x245
 	KEY_VOICECOMMAND             EventCode = 0x246
 	KEY_ASSISTANT                EventCode = 0x247
+	KEY_KBD_LAYOUT_NEXT          EventCode = 0x248
+	KEY_EMOJI_PICKER             EventCode = 0x249
+	KEY_DICTATE                  EventCode = 0x24a
 	KEY_BRIGHTNESS_MIN           EventCode = 0x250
 	KEY_BRIGHTNESS_MAX           EventCode = 0x251
 	KEY_KBDINPUTASSIST_PREV      EventCode = 0x260
@@ -489,6 +497,49 @@ const (
 	KEY_SLOWREVERSE              EventCode = 0x276
 	KEY_DATA                     EventCode = 0x277
 	KEY_ONSCREEN_KEYBOARD        EventCode = 0x278
+	KEY_PRIVACY_SCREEN_TOGGLE    EventCode = 0x279
+	KEY_SELECTIVE_SCREENSHOT     EventCode = 0x27a
+	KEY_MACRO1                   EventCode = 0x290
+	KEY_MACRO2                   EventCode = 0x291
+	KEY_MACRO3                   EventCode = 0x292
+	KEY_MACRO4                   EventCode = 0x293
+	KEY_MACRO5                   EventCode = 0x294
+	KEY_MACRO6                   EventCode = 0x295
+	KEY_MACRO7                   EventCode = 0x296
+	KEY_MACRO8                   EventCode = 0x297
+	KEY_MACRO9                   EventCode = 0x298
+	KEY_MACRO10                  EventCode = 0x299
+	KEY_MACRO11                  EventCode = 0x29a
+	KEY_MACRO12                  EventCode = 0x29b
+	KEY_MACRO13                  EventCode = 0x29c
+	KEY_MACRO14                  EventCode = 0x29d
+	KEY_MACRO15                  EventCode = 0x29e
+	KEY_MACRO16                  EventCode = 0x29f
+	KEY_MACRO17                  EventCode = 0x2a0
+	KEY_MACRO18                  EventCode = 0x2a1
+	KEY_MACRO19                  EventCode = 0x2a2
+	KEY_MACRO20                  EventCode = 0x2a3
+	KEY_MACRO21                  EventCode = 0x2a4
+	KEY_MACRO22                  EventCode = 0x2a5
+	KEY_MACRO23                  EventCode = 0x2a6
+	KEY_MACRO24                  EventCode = 0x2a7
+	KEY_MACRO25                  EventCode = 0x2a8
+	KEY_MACRO26                  EventCode = 0x2a9
+	KEY_MACRO27                  EventCode = 0x2aa
+	KEY_MACRO28                  EventCode = 0x2ab
+	KEY_MACRO29                  EventCode = 0x2ac
+	KEY_MACRO30                  EventCode = 0x2ad
+	KEY_MACRO_RECORD_START       EventCode = 0x2b0
+	KEY_MACRO_RECORD_STOP        EventCode = 0x2b1
+	KEY_MACRO_PRESET_CYCLE       EventCode = 0x2b2
+	KEY_MACRO_PRESET1            EventCode = 0x2b3
+	KEY_MACRO_PRESET2            EventCode = 0x2b4
+	KEY_MACRO_PRESET3            EventCode = 0x2b5
+	KEY_KBD_LCD_MENU1            EventCode = 0x2b8
+	KEY_KBD_LCD_MENU2            EventCode = 0x2b9
+	KEY_KBD_LCD_MENU3            EventCode = 0x2ba
+	KEY_KBD_LCD_MENU4            EventCode = 0x2bb
+	KEY_KBD_LCD_MENU5            EventCode = 0x2bc
 	KEY_MAX                      EventCode = 0x2ff
 
 	// Momentary switch events
@@ -619,6 +670,7 @@ const (
 	REL_DIAL          EventCode = 0x7
 	REL_WHEEL         EventCode = 0x8
 	REL_MISC          EventCode = 0x9
+	REL_RESERVED      EventCode = 0xa
 	REL_WHEEL_HI_RES  EventCode = 0xb
 	REL_HWHEEL_HI_RES EventCode = 0xc
 	REL_MAX           EventCode = 0xf
