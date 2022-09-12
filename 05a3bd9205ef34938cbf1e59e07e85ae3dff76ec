@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6d44171_2a1af939",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-09-12T15:41:31Z",
+      "side": 1,
+      "message": "LGTM as tast reviewer, please have someone with knowledge of this area also review.",
+      "revId": "05a3bd9205ef34938cbf1e59e07e85ae3dff76ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3325e5ab_4abdd0ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/add_remove_factors.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-09-12T15:41:31Z",
+      "side": 1,
+      "message": "Does `err` not need to be handled here?",
+      "revId": "05a3bd9205ef34938cbf1e59e07e85ae3dff76ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
