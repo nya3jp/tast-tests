@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "ccdb6bcb_6d95d041",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1519467
+      },
+      "writtenOn": "2022-09-12T17:29:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "faf3f754_6c4326bc",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 91
+      },
+      "revId": "e0607fee6997cd1e3fe437dad3a4df2ba0b56028",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "cea01a52_2e8eac93",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 3
@@ -58,6 +82,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "623fdcba_d8bd5b81",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/arc_enabled.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1519467
+      },
+      "writtenOn": "2022-09-12T17:29:09Z",
+      "side": 1,
+      "message": "Sure.",
+      "parentUuid": "48f109ba_3b18d6ac",
+      "revId": "e0607fee6997cd1e3fe437dad3a4df2ba0b56028",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e8f74a70_4540c9f7",
@@ -71,6 +113,30 @@
       "writtenOn": "2022-09-10T09:05:54Z",
       "side": 1,
       "message": "Instead of marking it unstable, this part can be removed as well. I don\u0027t think that the loss of coverage is big. But this is just a suggestion.",
+      "range": {
+        "startLine": 43,
+        "startChar": 4,
+        "endLine": 51,
+        "endChar": 5
+      },
+      "revId": "e0607fee6997cd1e3fe437dad3a4df2ba0b56028",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0cfbe66e_bf0178d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/arc_enabled.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1519467
+      },
+      "writtenOn": "2022-09-12T17:29:09Z",
+      "side": 1,
+      "message": "Since I am adding a test dedicated to tablet in crrev.com/c/3887211, I am now removing tablet from here.",
+      "parentUuid": "e8f74a70_4540c9f7",
       "range": {
         "startLine": 43,
         "startChar": 4,
