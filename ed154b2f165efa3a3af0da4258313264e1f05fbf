@@ -118,6 +118,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7409436c_47b0bf95",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-09-12T23:56:30Z",
+      "side": 1,
+      "message": "Need to try `16p_jamboard` too, because your code relies on the tab name which is different for Jamboard.",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 54
+      },
+      "revId": "ed154b2f165efa3a3af0da4258313264e1f05fbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "46411c8e_cca97201",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
         "patchSetId": 2
