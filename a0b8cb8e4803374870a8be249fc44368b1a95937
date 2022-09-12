@@ -3,6 +3,98 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bb8d95f1_1f4643d4",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-09-12T17:57:46Z",
+      "side": 1,
+      "message": "nit: Let\u0027s call it `filePath` to be consistent with the `FirmwareFile` struct.",
+      "range": {
+        "startLine": 64,
+        "startChar": 21,
+        "endLine": 64,
+        "endChar": 25
+      },
+      "revId": "a0b8cb8e4803374870a8be249fc44368b1a95937",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d5d9953_fda2ca57",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-09-12T17:57:46Z",
+      "side": 1,
+      "message": "nit: Same as last comment, let\u0027s call it `keyType` to be consistent.",
+      "range": {
+        "startLine": 64,
+        "startChar": 34,
+        "endLine": 64,
+        "endChar": 37
+      },
+      "revId": "a0b8cb8e4803374870a8be249fc44368b1a95937",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d25e16d9_ccd3edb4",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-09-12T17:57:46Z",
+      "side": 1,
+      "message": "I will defer to the Tast reviewer, but I think it would be clearer to return `nil` here so that if the caller forgets to check the error it will crash rather than use an invalid object. To change to `nil`, you\u0027ll need to change the return type to `FirmwareFile*`.",
+      "range": {
+        "startLine": 72,
+        "startChar": 9,
+        "endLine": 72,
+        "endChar": 23
+      },
+      "revId": "a0b8cb8e4803374870a8be249fc44368b1a95937",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dca2c33c_7851bc0f",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/firmware_test_handler.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-09-12T17:57:46Z",
+      "side": 1,
+      "message": "For clarity/constency, I would use `NewMPFirmwareFile` here.",
+      "range": {
+        "startLine": 204,
+        "startChar": 1,
+        "endLine": 204,
+        "endChar": 56
+      },
+      "revId": "a0b8cb8e4803374870a8be249fc44368b1a95937",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "038a34e0_fb7d5753",
         "filename": "src/chromiumos/tast/remote/firmware/fingerprint/firmware_test_handler.go",
         "patchSetId": 23
@@ -19,6 +111,29 @@
         "startChar": 31,
         "endLine": 220,
         "endChar": 72
+      },
+      "revId": "a0b8cb8e4803374870a8be249fc44368b1a95937",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "878f069e_ba19565c",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/firmware_test_handler.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-09-12T17:57:46Z",
+      "side": 1,
+      "message": "Let\u0027s get rid of `BuildFwFile`. It was originally meant to return the path of the firmware file coming from the build (i.e., the firmware file in the rootfs on the DUT). However, now that we can call `NewFirmwareFile` and pass an arbitrary path, it no longer has the same meaning. I think we can just replace calls to `BuildFwFile` with calls to `FirmwareFile().filePath`. I think you\u0027ll need to rename `filePath` to `FilePath` so it\u0027s accessible.",
+      "range": {
+        "startLine": 303,
+        "startChar": 0,
+        "endLine": 306,
+        "endChar": 1
       },
       "revId": "a0b8cb8e4803374870a8be249fc44368b1a95937",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
