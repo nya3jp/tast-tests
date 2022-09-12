@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "153df53b_f3c3e88f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/hid_wake.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2022-09-12T21:16:38Z",
+      "side": 1,
+      "message": "Use `defer`, so that it is guaranteed to run even if the test fails.",
+      "range": {
+        "startLine": 167,
+        "startChar": 0,
+        "endLine": 170,
+        "endChar": 2
+      },
+      "revId": "8c0c03888b3e0cdefccdd46587a8aa192e7b44b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "225d9ce7_bf7ca1c1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/hid_wake.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2022-09-12T21:16:38Z",
+      "side": 1,
+      "message": "How about we just create the `dutfs` object once and pass it around everywhere as a pointer? It seems like this setup code is common to all the helpers.",
+      "range": {
+        "startLine": 180,
+        "startChar": 0,
+        "endLine": 184,
+        "endChar": 31
+      },
+      "revId": "8c0c03888b3e0cdefccdd46587a8aa192e7b44b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8691243_6546d2e2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/hid_wake.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2022-09-12T21:16:38Z",
+      "side": 1,
+      "message": "Use filepath utils to ensure separators are handled correctly, for example (but any other package which does the same thing is equally fine): https://pkg.go.dev/path/filepath#Join",
+      "range": {
+        "startLine": 207,
+        "startChar": 9,
+        "endLine": 207,
+        "endChar": 39
+      },
+      "revId": "8c0c03888b3e0cdefccdd46587a8aa192e7b44b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe576c0d_572a2645",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/hid_wake.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2022-09-12T21:16:38Z",
+      "side": 1,
+      "message": "Use bool or an enum here instead (you can always translate it to whatever string is required internally).",
+      "range": {
+        "startLine": 231,
+        "startChar": 103,
+        "endLine": 231,
+        "endChar": 120
+      },
+      "revId": "8c0c03888b3e0cdefccdd46587a8aa192e7b44b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

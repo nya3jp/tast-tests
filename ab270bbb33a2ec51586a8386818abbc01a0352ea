@@ -131,6 +131,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "daf3fa25_5651c518",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/hid_wake.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2022-09-12T21:16:38Z",
+      "side": 1,
+      "message": "\u003e  I\u0027ve removed that dependency and asked crosdistros for a fievel or veyron to test with.\n\nYou can also check if they have 1 in crosfleet.",
+      "parentUuid": "4678bb12_fd828ca3",
+      "range": {
+        "startLine": 36,
+        "startChar": 24,
+        "endLine": 36,
+        "endChar": 40
+      },
+      "revId": "ab270bbb33a2ec51586a8386818abbc01a0352ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8f9a0897_9db77b5c",
         "filename": "src/chromiumos/tast/remote/bundles/cros/power/hid_wake.go",
         "patchSetId": 6
