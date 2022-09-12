@@ -7,6 +7,7 @@ package telemetryextension
 import (
 	"context"
 	"io/ioutil"
+	"os"
 	"reflect"
 
 	"chromiumos/tast/errors"
@@ -101,42 +102,50 @@ type vpdInfoResponse struct {
 }
 
 func fetchVPDInfo(ctx context.Context) (vpdInfoResponse, error) {
-	activateDateBytes, err := ioutil.ReadFile("/sys/firmware/vpd/rw/ActivateDate")
+	activateDate, err := fetchOptionalVpdField("/sys/firmware/vpd/rw/ActivateDate")
 	if err != nil {
-		return vpdInfoResponse{}, errors.Wrap(err, "failed to read ActivateDate VPD field")
-	}
-	if len(activateDateBytes) == 0 {
-		return vpdInfoResponse{}, errors.New("ActivateDate VPD is empty")
+		return vpdInfoResponse{}, errors.Wrap(err, "failed to fetch ActivateDate VPD field")
 	}
 
-	modelNameBytes, err := ioutil.ReadFile("/sys/firmware/vpd/ro/model_name")
+	modelName, err := fetchOptionalVpdField("/sys/firmware/vpd/ro/model_name")
 	if err != nil {
-		return vpdInfoResponse{}, errors.Wrap(err, "failed to read model_name VPD field")
-	}
-	if len(modelNameBytes) == 0 {
-		return vpdInfoResponse{}, errors.New("model_name VPD is empty")
+		return vpdInfoResponse{}, errors.Wrap(err, "failed to fetch model_name VPD field")
 	}
 
-	serialNumberBytes, err := ioutil.ReadFile("/sys/firmware/vpd/ro/serial_number")
+	serialNumber, err := fetchOptionalVpdField("/sys/firmware/vpd/ro/serial_number")
 	if err != nil {
-		return vpdInfoResponse{}, errors.Wrap(err, "failed to read serial_number VPD field")
-	}
-	if len(serialNumberBytes) == 0 {
-		return vpdInfoResponse{}, errors.New("serial_number VPD is empty")
+		return vpdInfoResponse{}, errors.Wrap(err, "failed to fetch serial_number VPD field")
 	}
 
-	skuNumberBytes, err := ioutil.ReadFile("/sys/firmware/vpd/ro/sku_number")
+	skuNumber, err := fetchOptionalVpdField("/sys/firmware/vpd/ro/sku_number")
 	if err != nil {
-		return vpdInfoResponse{}, errors.Wrap(err, "failed to read sku_number VPD field")
-	}
-	if len(skuNumberBytes) == 0 {
-		return vpdInfoResponse{}, errors.New("sku_number VPD is empty")
+		return vpdInfoResponse{}, errors.Wrap(err, "failed to fetch sku_number VPD field")
 	}
 
 	return vpdInfoResponse{
-		ActivateDate: string(activateDateBytes),
-		ModelName:    string(modelNameBytes),
-		SerialNumber: string(serialNumberBytes),
-		SkuNumber:    string(skuNumberBytes),
+		ActivateDate: activateDate,
+		ModelName:    modelName,
+		SerialNumber: serialNumber,
+		SkuNumber:    skuNumber,
 	}, nil
+}
+
+// fetchOptionalVpdField returns the value of an optional VPD field or the empty
+// string if this VPD field does not exist. However it returns an error if the
+// existing VPD field is empty.
+func fetchOptionalVpdField(path string) (string, error) {
+	if _, err := os.Stat(path); errors.Is(err, os.ErrNotExist) {
+		return "", nil
+	} else if err != nil {
+		return "", errors.Wrapf(err, "failed to check whether %q exists", path)
+	}
+
+	bytes, err := ioutil.ReadFile(path)
+	if err != nil {
+		return "", errors.Wrapf(err, "failed to read %q", path)
+	}
+	if len(bytes) == 0 {
+		return "", errors.Errorf("%s is empty", path)
+	}
+	return string(bytes), nil
 }
