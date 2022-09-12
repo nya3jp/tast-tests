@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc2195e9_a9a20c7e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1543127
+      },
+      "writtenOn": "2022-09-12T14:20:01Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "cac212b49669074d392552a68353d54d73cbcbfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "654b9e3f_bc97e414",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/hp_compliance.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1543127
+      },
+      "writtenOn": "2022-09-12T14:20:01Z",
+      "side": 1,
+      "message": "nit: Maybe mention that this is HP specific?",
+      "revId": "cac212b49669074d392552a68353d54d73cbcbfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5809020_f61185ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/hp_compliance.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1543127
+      },
+      "writtenOn": "2022-09-12T14:20:01Z",
+      "side": 1,
+      "message": "nit: Maybe add \"on HP devices\": HPCompliance tests that DUT satisfies all requirements to run Telemetry Extension on HP devices.",
+      "revId": "cac212b49669074d392552a68353d54d73cbcbfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
