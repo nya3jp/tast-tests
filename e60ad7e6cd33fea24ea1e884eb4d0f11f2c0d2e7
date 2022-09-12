@@ -33,6 +33,24 @@
       "message": "potential merge conflict with https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3880617/5/src/chromiumos/tast/local/bundles/cros/shelf/app_window_on_shelf.go#b11",
       "revId": "e60ad7e6cd33fea24ea1e884eb4d0f11f2c0d2e7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb3999ef_fbfcf5ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/app_window_on_shelf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000045
+      },
+      "writtenOn": "2022-09-12T17:40:11Z",
+      "side": 1,
+      "message": "Thanks. Rebased.",
+      "parentUuid": "4c2ff288_9dcbd6af",
+      "revId": "e60ad7e6cd33fea24ea1e884eb4d0f11f2c0d2e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
