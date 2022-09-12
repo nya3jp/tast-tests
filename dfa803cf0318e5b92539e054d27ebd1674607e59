@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "2ddc0561_1cce785f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-09-12T16:01:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4f0a7178_45c1f1e7",
+      "range": {
+        "startLine": 14,
+        "startChar": 9,
+        "endLine": 14,
+        "endChar": 42
+      },
+      "revId": "dfa803cf0318e5b92539e054d27ebd1674607e59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "d2b68315_863439b2",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 3
@@ -58,6 +82,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b42e0983_85abb9f7",
+        "filename": "src/chromiumos/tast/common/wifi/security/wpa/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-09-12T16:01:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f3cc2555_11729c12",
+      "revId": "dfa803cf0318e5b92539e054d27ebd1674607e59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0d111339_3ddaeb49",
@@ -77,6 +119,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5c453e36_e4e97086",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/shill_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 2921,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-09-12T16:01:26Z",
+      "side": 1,
+      "message": "startDHCPServer() has multiple stages (IP, firewall, dnsmasq) and no dedicated teardown for handling errors in the later stages. So as its symbol is not exported, we can get away with handling it that way, everything stays in the family (+60 lines) :)",
+      "parentUuid": "0d111339_3ddaeb49",
+      "revId": "dfa803cf0318e5b92539e054d27ebd1674607e59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f62ec4c2_63227359",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/sap_simple_connect.go",
         "patchSetId": 3
@@ -88,6 +148,30 @@
       "writtenOn": "2022-09-08T00:38:57Z",
       "side": 1,
       "message": "wpa3",
+      "range": {
+        "startLine": 65,
+        "startChar": 75,
+        "endLine": 65,
+        "endChar": 79
+      },
+      "revId": "dfa803cf0318e5b92539e054d27ebd1674607e59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b8d8a7b_35c424ec",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/sap_simple_connect.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-09-12T16:01:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f62ec4c2_63227359",
       "range": {
         "startLine": 65,
         "startChar": 75,
@@ -121,6 +205,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "647771c2_a010821b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/sap_simple_connect.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-09-12T16:01:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0a833e5e_3de7ec3b",
+      "range": {
+        "startLine": 83,
+        "startChar": 75,
+        "endLine": 83,
+        "endChar": 79
+      },
+      "revId": "dfa803cf0318e5b92539e054d27ebd1674607e59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "03a350a0_7f2d4bc7",
@@ -134,6 +242,30 @@
       "writtenOn": "2022-09-08T00:38:57Z",
       "side": 1,
       "message": "do we actually set these ciphers anywhere?",
+      "range": {
+        "startLine": 90,
+        "startChar": 51,
+        "endLine": 90,
+        "endChar": 59
+      },
+      "revId": "dfa803cf0318e5b92539e054d27ebd1674607e59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "641cddf0_089bbdca",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/sap_simple_connect.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-09-12T16:01:26Z",
+      "side": 1,
+      "message": "They were actually hardcoded when SAE was used. I made it variable, but I guess we won\u0027t support TKIP the same way we don\u0027t support WAP or WPA[1]?",
+      "parentUuid": "03a350a0_7f2d4bc7",
       "range": {
         "startLine": 90,
         "startChar": 51,
