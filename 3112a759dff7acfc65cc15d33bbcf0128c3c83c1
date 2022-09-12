@@ -20,6 +20,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "87e899a7_98e77c65",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/marketing_opt_in.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2022-09-12T09:36:36Z",
+      "side": 1,
+      "message": "we should have two tests for this. Check https://chromium.googlesource.com/chromiumos/platform/tast/+/main/docs/writing_tests.md#parameterized-tests",
+      "range": {
+        "startLine": 24,
+        "startChar": 49,
+        "endLine": 24,
+        "endChar": 72
+      },
+      "revId": "3112a759dff7acfc65cc15d33bbcf0128c3c83c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "774d9654_e676abd1",
         "filename": "src/chromiumos/tast/local/bundles/cros/oobe/marketing_opt_in.go",
         "patchSetId": 3
