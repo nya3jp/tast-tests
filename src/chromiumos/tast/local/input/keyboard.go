@@ -18,10 +18,11 @@ import (
 
 // KeyboardEventWriter supports injecting events into a keyboard device.
 type KeyboardEventWriter struct {
-	rw   *RawEventWriter
-	virt *os.File // if non-nil, used to hold a virtual device open
-	fast bool     // if true, do not sleep after type; useful for unit tests
-	dev  string   // path to underlying device in /dev/input
+	rw               *RawEventWriter
+	virt             *os.File         // if non-nil, used to hold a virtual device open
+	fast             bool             // if true, do not sleep after type; useful for unit tests
+	dev              string           // path to underlying device in /dev/input
+	topRowLayoutType TopRowLayoutType // Layout of top row
 }
 
 var nextVirtKbdNum = 1 // appended to virtual keyboard device name
@@ -140,9 +141,20 @@ func (kw *KeyboardEventWriter) Close() error {
 func (kw *KeyboardEventWriter) Device() string { return kw.dev }
 
 // sendKey writes a EV_KEY event containing the specified code and value, followed by a EV_SYN event.
+// If kw represents a keyboard with a custom top row, we will also send a EV_MSC event mapped within topRowScanCodeMap
 // If firstErr points at a non-nil error, no events are written.
 // If an error is encountered, it is saved to the address pointed to by firstErr.
 func (kw *KeyboardEventWriter) sendKey(ec EventCode, val int32, firstErr *error) {
+	if *firstErr == nil {
+		// If top row is a custom layout, EV_MSC event must also be written for system keys (eg. Brightness) to be processed correctly
+		if kw.topRowLayoutType == LayoutCustom {
+			// Find correct scan code based on the event code
+			sc, prs := topRowScanCodeMap[ec]
+			if prs {
+				*firstErr = kw.rw.Event(EV_MSC, MSC_SCAN, sc)
+			}
+		}
+	}
 	if *firstErr == nil {
 		*firstErr = kw.rw.Event(EV_KEY, ec, val)
 	}
