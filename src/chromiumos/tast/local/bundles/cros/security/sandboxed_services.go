@@ -1,4 +1,4 @@
-// Copyright 2019 The Chromium OS Authors. All rights reserved.
+// Copyright 2019 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -132,6 +132,8 @@ func SandboxedServices(ctx context.Context, s *testing.State) {
 		{"cros_healthd", "cros_healthd", "cros_healthd", mntNS | restrictCaps | noNewPrivs | seccomp}, // main cros_healthd daemon
 		{"featured", "root", "root", 0},
 		{"cr50-disable-sl", "root", "root", 0},
+		{"rmad", "root", "root", mntNS},                                       // rmad's root-level executor
+		{"rmad", "rmad", "rmad", mntNS | restrictCaps | noNewPrivs | seccomp}, // main RMA daemon
 
 		// These processes run as root in the ARC container.
 		{"app_process", "android-root", "android-root", pidNS | mntNS},
