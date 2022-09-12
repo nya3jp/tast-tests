@@ -162,10 +162,11 @@ func DataLeakPreventionRulesListScreenshareEntireScreen(ctx context.Context, s *
 	}
 	defer closeBrowser(ctx)
 
-	var conn *browser.Conn
-	if conn, err = br.NewConn(ctx, unrestrictedURL); err != nil {
+	conn, err := br.NewConn(ctx, unrestrictedURL)
+	if err != nil {
 		s.Fatal("Failed to open page: ", err)
 	}
+	defer conn.Close()
 
 	if err := webutil.WaitForQuiescence(ctx, conn, 10*time.Second); err != nil {
 		s.Fatalf("Failed to wait for %q to achieve quiescence: %v", unrestrictedURL, err)
@@ -197,9 +198,11 @@ func DataLeakPreventionRulesListScreenshareEntireScreen(ctx context.Context, s *
 		s.Fatal("Failed to check frame status: ", err)
 	}
 
-	if conn, err = br.NewConn(ctx, url); err != nil {
+	conn, err = br.NewConn(ctx, url)
+	if err != nil {
 		s.Fatal("Failed to open page: ", err)
 	}
+	defer conn.Close()
 
 	if err := webutil.WaitForQuiescence(ctx, conn, 10*time.Second); err != nil {
 		s.Fatalf("Failed to wait for %q to achieve quiescence: %v", url, err)
@@ -241,9 +244,11 @@ func DataLeakPreventionRulesListScreenshareEntireScreen(ctx context.Context, s *
 		s.Fatal("Polling the frame status timed out: ", err)
 	}
 
-	if conn, err = br.NewConn(ctx, unrestrictedURL); err != nil {
+	conn, err = br.NewConn(ctx, unrestrictedURL)
+	if err != nil {
 		s.Fatal("Failed to open page: ", err)
 	}
+	defer conn.Close()
 
 	if err := webutil.WaitForQuiescence(ctx, conn, 10*time.Second); err != nil {
 		s.Fatalf("Failed to wait for %q to achieve quiescence: %v", unrestrictedURL, err)
@@ -274,17 +279,6 @@ func DataLeakPreventionRulesListScreenshareEntireScreen(ctx context.Context, s *
 
 		if err := screenshare.CheckFrameStatus(ctx, screenRecorder /*wantAllowed=*/, true); err != nil {
 			s.Fatal("Failed to check frame status: ", err)
-		}
-	}
-
-	// Closing all windows.
-	ws, err := ash.GetAllWindows(ctx, tconn)
-	if err != nil {
-		s.Fatal("Failed to get all open windows: ", err)
-	}
-	for _, w := range ws {
-		if err := w.CloseWindow(ctx, tconn); err != nil {
-			s.Errorf("Warning: Failed to close window (%+v): %v", w, err)
 		}
 	}
 }
