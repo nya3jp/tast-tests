@@ -33,7 +33,11 @@ func init() {
 		Func:         FlashromTester,
 		Desc:         "Tast wrapper that runs flashrom_tester",
 		Contacts:     []string{"nartemiev@google.com", "cros-flashrom-team@google.com"},
+<<<<<<< HEAD   (215c53 tast-tests: lacros variants to wmp.DesksTemplatesBasic)
 		Attr:         []string{"group:mainline", "informational"},
+=======
+		Attr:         []string{}, // TODO(b/239126062): Move to custom suite/schedule.
+>>>>>>> CHANGE (629010 flashrom_tester: Disable test)
 		SoftwareDeps: []string{"crossystem", "flashrom"},
 		HardwareDeps: hwdep.D(hwdep.ChromeEC()),
 		Timeout:      30 * time.Minute,
