@@ -1,4 +1,4 @@
-// Copyright 2022 The ChromiumOS Authors.
+// Copyright 2022 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -157,7 +157,7 @@ func (c *TestManager) RunOnce(ctx context.Context, testType TestType, interfaceN
 		session = iperf.NewSession(client, server)
 	}
 
-	result, err := session.Run(ctx, cfg)
+	_, result, err := session.Run(ctx, cfg)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to run Iperf session")
 	}

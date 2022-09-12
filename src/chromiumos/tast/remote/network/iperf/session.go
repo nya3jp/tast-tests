@@ -1,4 +1,4 @@
-// Copyright 2022 The ChromiumOS Authors.
+// Copyright 2022 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -36,7 +36,7 @@ func NewSession(client Client, server Server) *Session {
 }
 
 // Run runs multiple Iperf tests and takes the average performance values.
-func (s *Session) Run(ctx context.Context, config *Config) (History, error) {
+func (s *Session) Run(ctx context.Context, config *Config) (*Result, History, error) {
 	testing.ContextLogf(ctx, "Performing %s measurements in Iperf session", config.Protocol)
 
 	history := History{}
@@ -59,7 +59,7 @@ func (s *Session) Run(ctx context.Context, config *Config) (History, error) {
 
 		finalResult, err = NewResultFromHistory(history)
 		if err != nil {
-			return nil, errors.Wrap(err, "error calculating statistics from samples")
+			return nil, nil, errors.Wrap(err, "error calculating statistics from samples")
 		}
 		if finalResult.StdDeviation < maxStandardDeviation {
 			break
@@ -67,11 +67,11 @@ func (s *Session) Run(ctx context.Context, config *Config) (History, error) {
 	}
 
 	if finalResult == nil {
-		return nil, errors.New("failed to to measure performance, Iperf failed too many times")
+		return nil, nil, errors.New("failed to to measure performance, Iperf failed too many times")
 	}
 
 	testing.ContextLogf(ctx, "Took averaged measurement %f +/- %f Mbit/s",
 		finalResult.Throughput/Mbps, finalResult.StdDeviation/Mbps)
 
-	return history, nil
+	return finalResult, history, nil
 }
