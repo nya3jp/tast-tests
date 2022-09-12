@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "038a34e0_fb7d5753",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/firmware_test_handler.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2022-09-12T08:01:47Z",
+      "side": 1,
+      "message": "In the near future I would like to make `NewFirmwareTest` more configurable using flags. We have very simple tests, e.g. `firmware.CheckWriteProtect` and `firmware.RebootPowerCycle`. Both tests don\u0027t touch flash content, but we are flashing FPMCU while cleaning up which consumes time. Another point is that these tests don\u0027t care about SW WP, so we could save even more time leaving SW WP intact. The flags could be passed in a dictionary or as variable arguments list to `NewFirmwareTest`. The dictionary has one nice advantage over the arguments list, we can pass more information (like firmware path). We can also define default values when e.g. firmware path is not provided by the test.\n\nI\u0027m talking about this here because I think that you are trying to put decision making logic to handle edge cases into the firmware_test_handler. IMO we should make the decision in the test, provide some flag to `NewFirmwareTest` and use it in this line.",
+      "range": {
+        "startLine": 220,
+        "startChar": 31,
+        "endLine": 220,
+        "endChar": 72
+      },
+      "revId": "a0b8cb8e4803374870a8be249fc44368b1a95937",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
