@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9996285_3a8bcb10",
+        "filename": "src/chromiumos/tast/common/policy/fakedms/fakedms.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1153089
+      },
+      "writtenOn": "2022-09-12T13:36:38Z",
+      "side": 0,
+      "message": "Can we not pass a similar flag for C++?",
+      "revId": "46550090a066222c210e340773d34397336ee5d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
