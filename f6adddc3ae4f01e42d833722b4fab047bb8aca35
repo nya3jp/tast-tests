@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "12ba5d8a_26810e7a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-09-12T12:56:19Z",
+      "side": 1,
+      "message": "LGTM, but I noticed that there are bugs for the all the boards added except for `bob`. Is this intended?",
+      "revId": "f6adddc3ae4f01e42d833722b4fab047bb8aca35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0086af8_5319a370",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/alsa_conformance.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-09-12T12:56:19Z",
+      "side": 1,
+      "message": "Is there a bug for this board?",
+      "range": {
+        "startLine": 46,
+        "startChar": 242,
+        "endLine": 46,
+        "endChar": 245
+      },
+      "revId": "f6adddc3ae4f01e42d833722b4fab047bb8aca35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
