@@ -1,4 +1,4 @@
-// Copyright 2019 The Chromium OS Authors. All rights reserved.
+// Copyright 2019 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -91,8 +91,22 @@ func (*PowerManagerEmitter) emitEvent(ctx context.Context, msg proto.Message, ev
 
 	// TODO(crbug.com/1062564): Remove polling and waiting for signals.
 	return testing.Poll(ctx, func(ctx context.Context) error {
-		if err := testexec.CommandContext(ctx, "sudo", args...).Run(testexec.DumpLogOnError); err != nil {
-			return testing.PollBreak(errors.Wrap(err, "unable to emit event using dbus-send"))
+		if out, err := testexec.CommandContext(ctx, "sudo", args...).CombinedOutput(testexec.DumpLogOnError); err != nil {
+			// TODO(b/246220151): Try re-stopping powerd, and waiting 1s if we get
+			// error "already has owner". Either powerd is running (again), or
+			// previous call to dbus-send has not released ownership.
+			if strings.HasSuffix(strings.TrimSpace(string(out)), "already has owner") {
+				goal, _, _, err := upstart.JobStatus(ctx, powerdJob)
+				if err != nil {
+					return errors.Wrap(err, "dbus-send unable to check job status")
+				}
+				testing.ContextLogf(ctx, "dbus-send failed with existing owner, will restop service in state (%s) and try again", goal)
+				if err := upstart.StopJob(ctx, powerdJob); err != nil {
+					return errors.Wrap(err, "dbus-send unable to restop")
+				}
+				return errors.Wrapf(err, "dbus-send stopped service in status %s and retrying signal", goal)
+			}
+			return testing.PollBreak(errors.Wrapf(err, "unable to emit event using dbus-send: %s", string(out)))
 		}
 
 		select {
@@ -108,5 +122,5 @@ func (*PowerManagerEmitter) emitEvent(ctx context.Context, msg proto.Message, ev
 			testing.ContextLog(ctx, "dbus-send failed to send signal")
 			return errors.New("dbus-send failed to send signal")
 		}
-	}, &testing.PollOptions{Timeout: 30 * time.Second})
+	}, &testing.PollOptions{Timeout: 30 * time.Second, Interval: time.Second})
 }
