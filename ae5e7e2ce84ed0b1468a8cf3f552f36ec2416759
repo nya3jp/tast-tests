@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0be90ec_65bf0fe4",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-09-12T21:08:20Z",
+      "side": 1,
+      "message": "\u003e \"requirment\" is a possible misspelling of \"requirement\".\n\nPlease fix.",
+      "parentUuid": "c3c2f30c_6b00ca11",
+      "range": {
+        "startLine": 65,
+        "startChar": 27,
+        "endLine": 65,
+        "endChar": 37
+      },
+      "revId": "ae5e7e2ce84ed0b1468a8cf3f552f36ec2416759",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
