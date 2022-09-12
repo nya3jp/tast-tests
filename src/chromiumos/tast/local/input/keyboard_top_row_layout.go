@@ -33,6 +33,44 @@ type TopRowLayout struct {
 	MediaLaunchApp string
 }
 
+// TopRowLayoutType represents the top row keyboard type.
+type TopRowLayoutType int
+
+// Following constants represent different top row keyboard layouts taken from here:
+// https://source.chromium.org/chromium/chromium/src/+/main:ui/chromeos/events/event_rewriter_chromeos.h;l=54;drc=f54415214d7d3ed03d2e9a1382d633abb3a44f47
+const (
+	// LayoutUnknown must be 0 so KeyboardEventWriter is initialized correctly
+	LayoutUnknown TopRowLayoutType = iota
+	Layout1
+	Layout2
+	LayoutWilco
+	LayoutDrallion
+	LayoutCustom
+)
+
+// Scan codes taken from chromeos keyboard spec:
+// https://chromeos.google.com/partner/dlm/docs/hardware-specs/keyboardspec.html
+var topRowScanCodeMap = map[EventCode]int32{
+	KEY_BACK:                  0xea,
+	KEY_REFRESH:               0xe7,
+	KEY_FULL_SCREEN:           0x91,
+	KEY_SCALE:                 0x92,
+	KEY_SYSRQ:                 0x93,
+	KEY_BRIGHTNESSDOWN:        0x94,
+	KEY_BRIGHTNESSUP:          0x95,
+	KEY_PRIVACY_SCREEN_TOGGLE: 0x96,
+	KEY_MUTE:                  0xa0,
+	KEY_VOLUMEDOWN:            0xae,
+	KEY_VOLUMEUP:              0xb0,
+	KEY_KBDILLUMDOWN:          0x97,
+	KEY_KBDILLUMUP:            0x98,
+	KEY_NEXTSONG:              0x99,
+	KEY_PREVIOUSSONG:          0x90,
+	KEY_PLAYPAUSE:             0x9a,
+	KEY_FORWARD:               0xe9,
+	KEY_SLEEP:                 0xaf,
+}
+
 // KeyboardTopRowLayout returns the layout of the top row (function keys) for a given keyboard.
 // This is because not all Chromebook keyboards have the same functionality associated to the functions keys.
 // As an example, the Toggle Zoom key could be mapped to F3 or F4 depending on the Chromebook model.
@@ -69,7 +107,7 @@ func KeyboardTopRowLayout(ctx context.Context, ew *KeyboardEventWriter) (*TopRow
 	// Wilco mappings taken from:
 	// https://source.chromium.org/chromium/chromium/src/+/HEAD:ui/chromeos/events/event_rewriter_chromeos.cc;drc=3e2b7d89ce6261e00e6e723c13c52d0d41bcc69e;l=1599
 	// MEDIA_PLAY_PAUSE removed, MEDIA_LAUNCH_APP2 added.
-	mappingWilco := TopRowLayout{
+	mappingWilcoAndDrallion := TopRowLayout{
 		BrowserBack:    "search+F1",
 		BrowserRefresh: "search+F2",
 		ZoomToggle:     "search+F3",
@@ -97,35 +135,72 @@ func KeyboardTopRowLayout(ctx context.Context, ew *KeyboardEventWriter) (*TopRow
 		VolumeUp:       "volumeup",
 	}
 
-	props, err := udevProperties(ctx, ew.Device())
-	if err != nil {
-		return nil, err
-	}
-	attrs, err := udevAttributes(ctx, ew.Device())
+	layout, err := GetTopRowLayoutType(ctx, ew)
 	if err != nil {
 		return nil, err
 	}
 
-	// Logic taken from here:
-	// https://source.chromium.org/chromium/chromium/src/+/HEAD:ui/chromeos/events/event_rewriter_chromeos.h;l=56;drc=3e2b7d89ce6261e00e6e723c13c52d0d41bcc69e
-	if _, ok := attrs["function_row_physmap"]; ok {
+	switch layout {
+	case Layout1:
+		return &mapping1, nil
+	case Layout2:
+		return &mapping2, nil
+	case LayoutWilco:
+		return &mappingWilcoAndDrallion, nil
+	case LayoutDrallion:
+		return &mappingWilcoAndDrallion, nil
+	case LayoutCustom:
 		return &mappingCustom, nil
+	// If for some reason our layout does not match any of our known layouts, return mapping for Layout1.
+	default:
+		return &mapping1, nil
 	}
-	if val, ok := props["CROS_KEYBOARD_TOP_ROW_LAYOUT"]; ok {
-		switch val {
-		case "1":
-			return &mapping1, nil
-		case "2":
-			return &mapping2, nil
-		case "3", "4":
-			return &mappingWilco, nil
-		default:
-			return nil, errors.Errorf("unexpected CROS_KEYBOARD_ROW_LAYOUT: got %s, want [1-4]", val)
+}
+
+// GetTopRowLayoutType returns the TopRowLayoutType for a given KeyboardEventWriter.
+// If the type had been discovered before, this function uses the cached value within the KeyboardEventWriter.
+func GetTopRowLayoutType(ctx context.Context, ew *KeyboardEventWriter) (TopRowLayoutType, error) {
+	getTopRowLayoutTypeHelper := func(ctx context.Context, ew *KeyboardEventWriter) (TopRowLayoutType, error) {
+		props, err := udevProperties(ctx, ew.Device())
+		if err != nil {
+			return Layout1, err
 		}
+		attrs, err := udevAttributes(ctx, ew.Device())
+		if err != nil {
+			return Layout1, err
+		}
+
+		// Logic taken from here:
+		// https://source.chromium.org/chromium/chromium/src/+/HEAD:ui/chromeos/events/event_rewriter_chromeos.h;l=56;drc=3e2b7d89ce6261e00e6e723c13c52d0d41bcc69e
+		if _, ok := attrs["function_row_physmap"]; ok {
+			return LayoutCustom, nil
+		}
+		if val, ok := props["CROS_KEYBOARD_TOP_ROW_LAYOUT"]; ok {
+			switch val {
+			case "1":
+				return Layout1, nil
+			case "2":
+				return Layout2, nil
+			case "3":
+				return LayoutWilco, nil
+			case "4":
+				return LayoutDrallion, nil
+			default:
+				return Layout1, errors.Errorf("unexpected CROS_KEYBOARD_ROW_LAYOUT: got %s, want [1-4]", val)
+			}
+		}
+		// If keyboard cannot be identified, return Layout1 as defined here:
+		// https://source.chromium.org/chromium/chromium/src/+/HEAD:ui/chromeos/events/event_rewriter_chromeos.h;l=172;drc=c537d05a0cc7b74258fe1474260094923b1e4f68
+		return Layout1, nil
 	}
-	// If keyboard cannot be identified, return mappings1 as defined here:
-	// https://source.chromium.org/chromium/chromium/src/+/HEAD:ui/chromeos/events/event_rewriter_chromeos.h;l=172;drc=c537d05a0cc7b74258fe1474260094923b1e4f68
-	return &mapping1, nil
+
+	if ew.topRowLayoutType != LayoutUnknown {
+		return ew.topRowLayoutType, nil
+	}
+
+	layout, err := getTopRowLayoutTypeHelper(ctx, ew)
+	ew.topRowLayoutType = layout
+	return layout, err
 }
 
 // udevAttributes returns the attributes associated to a certain Linux udev device.

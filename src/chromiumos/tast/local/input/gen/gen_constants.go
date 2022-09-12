@@ -41,7 +41,7 @@ func main() {
 	params := genutil.Params{
 		PackageName: "input",
 		RepoName:    "Linux kernel",
-		PreludeCode: `//go:generate ` + goSh + ` run ` + thisFile + ` ../../../../../../../third_party/kernel/v4.14/include/uapi/linux/input-event-codes.h generated_constants.go
+		PreludeCode: `//go:generate ` + goSh + ` run ` + thisFile + ` ../../../../../../../third_party/kernel/v5.15/include/uapi/linux/input-event-codes.h generated_constants.go
 //go:generate ` + goSh + ` fmt generated_constants.go`,
 		CopyrightYear:  2018,
 		MainGoFilePath: thisFile,

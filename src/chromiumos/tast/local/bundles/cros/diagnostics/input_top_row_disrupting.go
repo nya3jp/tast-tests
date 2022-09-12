@@ -72,7 +72,7 @@ func InputTopRowDisrupting(ctx context.Context, s *testing.State) {
 	ui := uiauto.New(tconn)
 	inoccuousKey := "x"
 	clickDisruptiveKey := func(topRowKey, keyNodeName string) action.Action {
-		actionName := "verify disruptive key " + topRowKey + " don't disrupt the test"
+		actionName := "verify disruptive key " + topRowKey + " doesn't disrupt the test"
 		return uiauto.NamedAction(actionName, uiauto.Combine(actionName,
 			ui.WaitUntilExists(da.KeyNodeFinder(keyNodeName, da.KeyNotPressed).First()),
 			kb.AccelPressAction(topRowKey),
@@ -93,9 +93,15 @@ func InputTopRowDisrupting(ctx context.Context, s *testing.State) {
 		ui.WaitUntilExists(da.KeyNodeFinder(inoccuousKey, da.KeyTested).First()),
 		// Clicking disruptive keys than check tester is still visible and the inoccuous key still shown as tested.
 		clickDisruptiveKey(topRow.BrowserBack, "Back"),
+		clickDisruptiveKey(topRow.BrowserRefresh, "Refresh"),
 		clickDisruptiveKey(topRow.ZoomToggle, "Fullscreen"),
+		clickDisruptiveKey(topRow.SelectTask, "Overview"),
+		clickDisruptiveKey(topRow.Screenshot, "Screenshot"),
 		clickDisruptiveKey(topRow.BrightnessDown, "Display brightness down"),
 		clickDisruptiveKey(topRow.BrightnessUp, "Display brightness up"),
+		clickDisruptiveKey(topRow.VolumeMute, "Mute"),
+		clickDisruptiveKey(topRow.VolumeDown, "Volume down"),
+		clickDisruptiveKey(topRow.VolumeUp, "Volume up"),
 	)(ctx); err != nil {
 		s.Fatal("Failed to test disruptive keys: ", err)
 	}
