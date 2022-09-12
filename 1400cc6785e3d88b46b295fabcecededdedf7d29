@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "853c3ef4_d4a07b3c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/sim_lock_policy_lock_setting_off.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1310249
+      },
+      "writtenOn": "2022-09-12T17:19:37Z",
+      "side": 1,
+      "message": "Do we also need to add this to sim_lock_policy_lock_setting_on.go?",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 0
+      },
+      "revId": "1400cc6785e3d88b46b295fabcecededdedf7d29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
