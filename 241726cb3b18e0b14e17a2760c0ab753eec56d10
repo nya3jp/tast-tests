@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1d0e27e_04ce263b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/usb_storage_functionality.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-09-12T10:35:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2521be20_fa2d7cc9",
+      "range": {
+        "startLine": 209,
+        "startChar": 2,
+        "endLine": 209,
+        "endChar": 25
+      },
+      "revId": "241726cb3b18e0b14e17a2760c0ab753eec56d10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d9f526c6_4570c99c",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-09-07T22:40:28Z",
       "side": 1,
       "message": "is the `All` prefix needed?\n\nasking for consistency since there is a function called `AttachedDevices`, and not `AllAttachedDevices`",
+      "range": {
+        "startLine": 404,
+        "startChar": 5,
+        "endLine": 404,
+        "endChar": 24
+      },
+      "revId": "241726cb3b18e0b14e17a2760c0ab753eec56d10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5388a209_c7ed2b5d",
+        "filename": "src/chromiumos/tast/local/usbutil/usb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 404,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-09-12T10:35:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d9f526c6_4570c99c",
       "range": {
         "startLine": 404,
         "startChar": 5,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6502f258_a31b8f32",
+        "filename": "src/chromiumos/tast/local/usbutil/usb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-09-12T10:35:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8521375f_76af5a94",
+      "range": {
+        "startLine": 408,
+        "startChar": 50,
+        "endLine": 408,
+        "endChar": 83
+      },
+      "revId": "241726cb3b18e0b14e17a2760c0ab753eec56d10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dfc4b592_09bfaae7",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-09-07T22:40:28Z",
       "side": 1,
       "message": "ditto above",
+      "range": {
+        "startLine": 409,
+        "startChar": 68,
+        "endLine": 409,
+        "endChar": 97
+      },
+      "revId": "241726cb3b18e0b14e17a2760c0ab753eec56d10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f68d35af_890f3a9a",
+        "filename": "src/chromiumos/tast/local/usbutil/usb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 409,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-09-12T10:35:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dfc4b592_09bfaae7",
       "range": {
         "startLine": 409,
         "startChar": 68,
@@ -118,6 +214,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e53404a9_def6ae48",
+        "filename": "src/chromiumos/tast/local/usbutil/usb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-09-12T10:35:57Z",
+      "side": 1,
+      "message": "As per suggestion tried with calling usbDevices(), but in our case we require extra fields like mount point which is not there in usbDevices(). So we are unable to call usbDevices() here.",
+      "parentUuid": "7f25742a_d949d90c",
+      "range": {
+        "startLine": 413,
+        "startChar": 1,
+        "endLine": 414,
+        "endChar": 31
+      },
+      "revId": "241726cb3b18e0b14e17a2760c0ab753eec56d10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "900ee5b5_6a863973",
         "filename": "src/chromiumos/tast/local/usbutil/usb.go",
         "patchSetId": 2
@@ -129,6 +249,30 @@
       "writtenOn": "2022-09-07T22:40:28Z",
       "side": 1,
       "message": "add comment describing what you are trying to do.\n\nfor example:\n\n  // To detect whether a device is removable we do X, Y and Z",
+      "range": {
+        "startLine": 442,
+        "startChar": 1,
+        "endLine": 442,
+        "endChar": 21
+      },
+      "revId": "241726cb3b18e0b14e17a2760c0ab753eec56d10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "98bd6d2f_a640c775",
+        "filename": "src/chromiumos/tast/local/usbutil/usb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 442,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-09-12T10:35:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "900ee5b5_6a863973",
       "range": {
         "startLine": 442,
         "startChar": 1,
