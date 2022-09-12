@@ -36,8 +36,7 @@ func init() {
 		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Test behavior of DataLeakPreventionRulesList policy with clipboard blocked restriction by copy and paste from clipboard history",
 		Contacts: []string{
-			"alvinlee@google.com", // Test author
-			"chromeos-dlp@google.com",
+			"chromeos-dlp@google.com", // Feature owners
 		},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline"},
