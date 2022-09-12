@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d85de5b4_cf2595b7",
+        "filename": "src/chromiumos/tast/local/power/power_manager_emitter.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-09-12T05:36:42Z",
+      "side": 1,
+      "message": "nit: duplicated word",
+      "range": {
+        "startLine": 101,
+        "startChar": 47,
+        "endLine": 101,
+        "endChar": 53
+      },
+      "revId": "a06bfb56b84544decadd5a34b54d78c91615d048",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
