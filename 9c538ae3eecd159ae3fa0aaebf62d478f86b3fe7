@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ee121cb_ac2cb3d6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1543127
+      },
+      "writtenOn": "2022-09-12T14:10:53Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "9c538ae3eecd159ae3fa0aaebf62d478f86b3fe7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "feea0961_5640625a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/has_oem_name.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1543127
+      },
+      "writtenOn": "2022-09-12T14:10:53Z",
+      "side": 1,
+      "message": "nit: Use \":\" instead if \"\u003d\": Unexpected vendor name: got %q, want %q",
+      "revId": "9c538ae3eecd159ae3fa0aaebf62d478f86b3fe7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
