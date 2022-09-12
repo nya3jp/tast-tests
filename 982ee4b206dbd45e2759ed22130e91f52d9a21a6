@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "894afd77_7c29893c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/deskscuj/desks_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-09-12T21:31:20Z",
+      "side": 1,
+      "message": "nit: If this comment appears before `activeDesk \u003d info.ActiveDeskIndex`, then it suggests that the primary motivation of writing `activeDesk \u003d info.ActiveDeskIndex` is for the check `activeDesk !\u003d nextDesk`. On the contrary, the primary motivation of writing `activeDesk \u003d info.ActiveDeskIndex` is because `activeDesk` is used in `onVisitActions[activeDesk]` and `deskSwitcher.run(ctx, activeDesk, nextDesk)`.",
+      "range": {
+        "startLine": 184,
+        "startChar": 0,
+        "endLine": 184,
+        "endChar": 66
+      },
+      "revId": "982ee4b206dbd45e2759ed22130e91f52d9a21a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2cdc8d2a_d28c6958",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/deskscuj/deskswitcher.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-09-12T21:31:20Z",
+      "side": 1,
+      "message": "This is the `error` returned by `ash.FindDeskMiniViews` (which is guaranteed to be nil here). You need to use `errors.Errorf` instead of `errors.Wrapf`.",
+      "range": {
+        "startLine": 93,
+        "startChar": 24,
+        "endLine": 93,
+        "endChar": 27
+      },
+      "revId": "982ee4b206dbd45e2759ed22130e91f52d9a21a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

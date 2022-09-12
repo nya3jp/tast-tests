@@ -95,6 +95,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4fe6175_7422ffde",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/deskscuj/desks.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-09-12T21:31:20Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "864e8709_d547decc",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 8
+      },
+      "revId": "cc98b09b5a2ad62d3d353bc6413ff1e2bc1576d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dd27d5bd_20eae2cd",
@@ -466,6 +490,30 @@
         "startChar": 107,
         "endLine": 73,
         "endChar": 119
+      },
+      "revId": "cc98b09b5a2ad62d3d353bc6413ff1e2bc1576d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "74d49cd3_98f70f2d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/deskscuj/deskswitcher.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-09-12T21:31:20Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c49b8d72_27b70ff7",
+      "range": {
+        "startLine": 73,
+        "startChar": 69,
+        "endLine": 73,
+        "endChar": 91
       },
       "revId": "cc98b09b5a2ad62d3d353bc6413ff1e2bc1576d2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
