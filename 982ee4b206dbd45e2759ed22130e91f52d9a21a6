@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9dac668d_44b66bc8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/deskscuj/desks_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-09-12T22:25:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "894afd77_7c29893c",
+      "range": {
+        "startLine": 184,
+        "startChar": 0,
+        "endLine": 184,
+        "endChar": 66
+      },
+      "revId": "982ee4b206dbd45e2759ed22130e91f52d9a21a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2cdc8d2a_d28c6958",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-09-12T21:31:20Z",
       "side": 1,
       "message": "This is the `error` returned by `ash.FindDeskMiniViews` (which is guaranteed to be nil here). You need to use `errors.Errorf` instead of `errors.Wrapf`.",
+      "range": {
+        "startLine": 93,
+        "startChar": 24,
+        "endLine": 93,
+        "endChar": 27
+      },
+      "revId": "982ee4b206dbd45e2759ed22130e91f52d9a21a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "254306e3_a0788b3b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/deskscuj/deskswitcher.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-09-12T22:25:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2cdc8d2a_d28c6958",
       "range": {
         "startLine": 93,
         "startChar": 24,
