@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "43e99216_197f23d2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-09-12T16:04:38Z",
+      "side": 1,
+      "message": "tast-wise: +2\n\nwait for your peer\u0027s review before landing it.",
+      "revId": "1e8f3e8ae80652510abd74e4c4cf7e8a0ea4e0eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
