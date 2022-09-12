@@ -162,6 +162,9 @@ func (p *Installer) Install(ctx context.Context) error {
 		ui.WaitUntilExists(installingMsg),
 		ui.WithTimeout(installationTimeout).WaitUntilGone(installingMsg),
 	)(ctx); err != nil {
+		if message, _ := p.checkErrorMessage(cleanupCtx); message != "" {
+			return errors.Errorf("error in installer dialog: %s", message)
+		}
 		return errors.Wrap(err, "installation doesn't finish in time")
 	}
 
@@ -171,7 +174,7 @@ func (p *Installer) Install(ctx context.Context) error {
 		message, messageErr := p.checkErrorMessage(cleanupCtx)
 		if messageErr != nil {
 			testing.ContextLog(cleanupCtx, "Error checking for error message in installer: ", messageErr)
-			return err
+			return errors.Wrap(messageErr, "failed to check installer dialog for the installation failure")
 		}
 		if message != "" {
 			return errors.Errorf("error in installer dialog: %s", message)
