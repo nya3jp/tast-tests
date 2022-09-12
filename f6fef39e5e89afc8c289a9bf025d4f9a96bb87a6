@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8fe82c90_02ddf1e7",
+        "filename": "src/chromiumos/tast/common/policy/gen/policy_tast_struct_creator.py",
+        "patchSetId": 16
+      },
+      "lineNbr": 464,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-09-12T16:28:57Z",
+      "side": 1,
+      "message": "In this specific case no because we have a string with only one period, however if we use `split` it\u0027ll complain that there might be more than one period and it doesn\u0027t know what to do with the rest.\nI can use the next line instead, but I think it doesn\u0027t matter.\n```\npolicy_name, field_name \u003d device_field.split(\u0027.\u0027, maxsplit\u003d1)\n```",
+      "parentUuid": "d503eded_b503b93f",
+      "range": {
+        "startLine": 464,
+        "startChar": 48,
+        "endLine": 464,
+        "endChar": 57
+      },
+      "revId": "f6fef39e5e89afc8c289a9bf025d4f9a96bb87a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d79163cd_0a4ba6b3",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-09-12T13:36:38Z",
       "side": 1,
       "message": "Odd, but I see these lines as added even when diffing with base, despite them being on the main branch: https://chromium.googlesource.com/chromiumos/platform/tast-tests/+/main/src/chromiumos/tast/common/policy/gen/policy_tast_struct_creator.py#542. Can you please rebase this CL one more time so that they disappear in Gerrit?",
+      "range": {
+        "startLine": 556,
+        "startChar": 0,
+        "endLine": 557,
+        "endChar": 69
+      },
+      "revId": "f6fef39e5e89afc8c289a9bf025d4f9a96bb87a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "75e00f28_d69c237f",
+        "filename": "src/chromiumos/tast/common/policy/gen/policy_tast_struct_creator.py",
+        "patchSetId": 16
+      },
+      "lineNbr": 557,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-09-12T16:28:57Z",
+      "side": 1,
+      "message": "Yeah I noticed that, I\u0027ll rebase anyway in 2 weeks because me and Victor will be OOO for the next 2 weeks.",
+      "parentUuid": "d79163cd_0a4ba6b3",
       "range": {
         "startLine": 556,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "787c74b8_66e07188",
+        "filename": "src/chromiumos/tast/common/policy/policy_blob.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-09-12T16:28:57Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b4f9272a_2aaa954a",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 65
+      },
+      "revId": "f6fef39e5e89afc8c289a9bf025d4f9a96bb87a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3eb3b0b5_de406fca",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-09-12T13:36:38Z",
       "side": 1,
       "message": "Is all of this supported by C++ server? AFAICT, we only support the following properties: https://source.chromium.org/chromium/chromium/src/+/main:components/policy/test_support/fake_dmserver.cc;l\u003d33-36;drc\u003dcf1447ded73fd2f37875ba200a33bd54d7e3fcd1. If you want to keep these and add support for them later, please add a comment. Notably, some of these are supported by the PolicyStorage class (and its depedencies), but are not exposed through the FakeDMServer\u0027s JSON API, e.g. see https://source.chromium.org/chromium/chromium/src/+/main:components/policy/test_support/signature_provider.h;l\u003d77-80;drc\u003d9e249731c0b1aab0e53fb776b9c11e673e721c45 \nand https://source.chromium.org/chromium/chromium/src/+/main:components/policy/test_support/policy_storage.h;l\u003d67-72;drc\u003d67bcf8b40d5ddff3fc62f826d93be97f2fa8b63a.",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 90
+      },
+      "revId": "f6fef39e5e89afc8c289a9bf025d4f9a96bb87a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1be9d8d_db970b52",
+        "filename": "src/chromiumos/tast/common/policy/policy_blob.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-09-12T16:28:57Z",
+      "side": 1,
+      "message": "You are right, it wasn\u0027t used by the old server as well, I\u0027m not exactly sure what are the use cases for these keys, but I think we can keep them for the future, so I added a comment about that.",
+      "parentUuid": "3eb3b0b5_de406fca",
       "range": {
         "startLine": 34,
         "startChar": 0,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec852a3f_445f818b",
+        "filename": "src/chromiumos/tast/common/policy/policy_blob.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-09-12T16:28:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2e6aa191_7ef6ba99",
+      "range": {
+        "startLine": 154,
+        "startChar": 74,
+        "endLine": 154,
+        "endChar": 76
+      },
+      "revId": "f6fef39e5e89afc8c289a9bf025d4f9a96bb87a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5c07ea58_c7c0972d",
@@ -139,6 +259,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4b43bcc_bd162858",
+        "filename": "src/chromiumos/tast/common/policy/policy_blob.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-09-12T16:28:57Z",
+      "side": 1,
+      "message": "We need it for legacy device policies, it cannot be added like the normal device policies because we set multiple fields for the same policy.\nso if it\u0027s exposed to the users, they can set any device policies manually with the proto values.",
+      "parentUuid": "5c07ea58_c7c0972d",
+      "range": {
+        "startLine": 156,
+        "startChar": 0,
+        "endLine": 156,
+        "endChar": 81
+      },
+      "revId": "f6fef39e5e89afc8c289a9bf025d4f9a96bb87a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5994a0c2_aaf3a5d7",
@@ -152,6 +296,24 @@
       "writtenOn": "2022-09-12T13:36:38Z",
       "side": 1,
       "message": "Do we really want to modify the struct while serializing it to JSON? Shouldn\u0027t we just use a local variable? What\u0027s probably even better is to initialize this field in NewBlob function above.",
+      "revId": "f6fef39e5e89afc8c289a9bf025d4f9a96bb87a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f293afd0_d702d8c6",
+        "filename": "src/chromiumos/tast/common/policy/policy_blob.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-09-12T16:28:57Z",
+      "side": 1,
+      "message": "moved it to NewBlob, that looks much better now, thanks!",
+      "parentUuid": "5994a0c2_aaf3a5d7",
       "revId": "f6fef39e5e89afc8c289a9bf025d4f9a96bb87a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
