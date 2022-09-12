@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3173e0c3_98b8f0a3",
+        "filename": "src/chromiumos/tast/common/policy/policy_blob.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-09-12T10:26:47Z",
+      "side": 1,
+      "message": "Only use empb",
+      "revId": "41e1dffb7f6ce523f4db1d432758bba410498164",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e04e7321_eda18ef1",
+        "filename": "src/chromiumos/tast/common/policy/policy_blob.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-09-12T10:26:47Z",
+      "side": 1,
+      "message": "nit: cps, lifetime is short",
+      "range": {
+        "startLine": 208,
+        "startChar": 3,
+        "endLine": 208,
+        "endChar": 10
+      },
+      "revId": "41e1dffb7f6ce523f4db1d432758bba410498164",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "721dae21_13ff0cdc",
+        "filename": "src/chromiumos/tast/common/policy/policy_blob.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-09-12T10:26:47Z",
+      "side": 1,
+      "message": "What does pa stand for? Maybe \"policySettings\"?",
+      "range": {
+        "startLine": 209,
+        "startChar": 3,
+        "endLine": 209,
+        "endChar": 5
+      },
+      "revId": "41e1dffb7f6ce523f4db1d432758bba410498164",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04117eb1_a5c06256",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/device_off_hours.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-09-12T10:26:47Z",
+      "side": 1,
+      "message": "Use the same alias",
+      "revId": "41e1dffb7f6ce523f4db1d432758bba410498164",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
