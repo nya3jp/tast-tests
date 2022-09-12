@@ -70,6 +70,23 @@
       "parentUuid": "2685b93e_d134d519",
       "revId": "068e01ca1f597be41cc31a80fe88ad87875c62df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec50ead5_6e133f05",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-09-12T20:41:40Z",
+      "side": 1,
+      "message": "The error message is telling you something here:\n```\n * Line 11: u\u0027Cq-Depend: chromium:3875623\u0027: CQ-Depend must be in the last paragraph (like Change-Id:)\n```\nYou have to have a line break between the `Cq-Depend` and the `TEST\u003d` line",
+      "revId": "068e01ca1f597be41cc31a80fe88ad87875c62df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
