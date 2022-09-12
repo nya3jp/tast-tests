@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fff708b0_3b0da231",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-09-12T16:03:16Z",
+      "side": 1,
+      "message": "+2 % nit",
+      "revId": "1327e8ca4f17e3326e6462a37a27bdf81457fe0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8f9565c_74e8f837",
+        "filename": "src/chromiumos/tast/local/usbutil/usb.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 440,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-09-12T16:03:16Z",
+      "side": 1,
+      "message": "nit: \n+1 for adding examples\n-1 for adding too many lines\n\nRemove the ones that don\u0027t provide extra info",
+      "range": {
+        "startLine": 436,
+        "startChar": 2,
+        "endLine": 440,
+        "endChar": 86
+      },
+      "revId": "1327e8ca4f17e3326e6462a37a27bdf81457fe0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
