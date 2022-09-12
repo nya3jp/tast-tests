@@ -1,4 +1,4 @@
-// Copyright 2022 The Chromium OS Authors. All rights reserved.
+// Copyright 2022 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -264,8 +264,8 @@ func testFileAttachedForBrowserAndFile(
 			shouldBlockUpload = params.IsBad
 		}
 	}
-
-	dconnSafebrowsing, err := helpers.GetCleanDconnSafebrowsing(ctx, br, tconn)
+	cr := s.FixtValue().(chrome.HasChrome).Chrome()
+	dconnSafebrowsing, err := helpers.GetCleanDconnSafebrowsing(ctx, cr, br, tconn)
 	if err != nil {
 		s.Fatal("Failed to get clean safe browsing page: ", err)
 	}

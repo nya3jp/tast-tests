@@ -1,4 +1,4 @@
-// Copyright 2022 The Chromium OS Authors. All rights reserved.
+// Copyright 2022 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -7,6 +7,7 @@ package helpers
 
 import (
 	"context"
+	"fmt"
 	"net/http/httptest"
 	"os"
 	"path/filepath"
@@ -17,6 +18,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/testing"
 )
 
@@ -261,7 +263,7 @@ func GetSafeBrowsingExperimentEnabled(ctx context.Context, br *browser.Browser, 
 }
 
 // GetCleanDconnSafebrowsing returns a Dconn to chrome://safe-browsing/#tab-deep-scan for which it is ensured that there is no prior deep scanning verdict.
-func GetCleanDconnSafebrowsing(ctx context.Context, br *browser.Browser, tconn *chrome.TestConn) (*browser.Conn, error) {
+func GetCleanDconnSafebrowsing(ctx context.Context, cr *chrome.Chrome, br *browser.Browser, tconn *chrome.TestConn) (*browser.Conn, error) {
 	var dconnSafebrowsing *browser.Conn
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		cleanupCtx := ctx
@@ -292,6 +294,15 @@ func GetCleanDconnSafebrowsing(ctx context.Context, br *browser.Browser, tconn *
 			return testing.PollBreak(errors.Wrap(err, "could not verify numRows"))
 		}
 		if numRows != 0 {
+			outputDir, ok := testing.ContextOutDir(ctx)
+			if !ok {
+				testing.ContextLog(ctx, "Couldn't get the output dir: ", err)
+			} else {
+				path := filepath.Join(outputDir, fmt.Sprintf("screenshot-clean-safe-browsing-page-verdict-exists.png"))
+				if err := screenshot.CaptureChrome(ctx, cr, path); err != nil {
+					testing.ContextLog(ctx, "Failed to capture screenshot: ", err)
+				}
+			}
 			return errors.Errorf("there already exists a deep scanning verdict, even though there shouldn't. numRows: %d", numRows)
 		}
 		success = true

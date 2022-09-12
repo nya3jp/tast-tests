@@ -1,4 +1,4 @@
-// Copyright 2022 The Chromium OS Authors. All rights reserved.
+// Copyright 2022 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -197,7 +197,8 @@ func TestDownload(ctx context.Context, s *testing.State) {
 			ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 			defer cancel()
 
-			dconnSafebrowsing, err := helpers.GetCleanDconnSafebrowsing(ctx, br, tconn)
+			cr := s.FixtValue().(chrome.HasChrome).Chrome()
+			dconnSafebrowsing, err := helpers.GetCleanDconnSafebrowsing(ctx, cr, br, tconn)
 			if err != nil {
 				s.Fatal("Failed to get clean safe browsing page: ", err)
 			}
