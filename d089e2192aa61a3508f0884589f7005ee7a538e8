@@ -1,0 +1,158 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "525e4aae_cd6174bf",
+        "filename": "src/chromiumos/tast/common/policy/fakedms/fakedms.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-09-12T08:28:57Z",
+      "side": 1,
+      "message": "You don\u0027t need a reference to the directory, just use the full path.",
+      "range": {
+        "startLine": 28,
+        "startChar": 6,
+        "endLine": 28,
+        "endChar": 24
+      },
+      "revId": "d089e2192aa61a3508f0884589f7005ee7a538e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8da5f630_89e5ac84",
+        "filename": "src/chromiumos/tast/common/policy/fakedms/fakedms.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-09-12T08:28:57Z",
+      "side": 1,
+      "message": "Remove this, it\u0027s not useful.",
+      "revId": "d089e2192aa61a3508f0884589f7005ee7a538e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7a593bf_0691f5f6",
+        "filename": "src/chromiumos/tast/common/policy/gen/policy_tast_struct_creator.py",
+        "patchSetId": 11
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-09-12T08:28:57Z",
+      "side": 1,
+      "message": "Can you remove some of these other fields if they are no longer used? defs.go needs to go on a diet 😊.",
+      "revId": "d089e2192aa61a3508f0884589f7005ee7a538e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9eb38be6_f57a532e",
+        "filename": "src/chromiumos/tast/common/policy/gen/policy_tast_struct_creator.py",
+        "patchSetId": 11
+      },
+      "lineNbr": 462,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-09-12T08:28:57Z",
+      "side": 1,
+      "message": "nit: get_proto_setter",
+      "range": {
+        "startLine": 462,
+        "startChar": 6,
+        "endLine": 462,
+        "endChar": 21
+      },
+      "revId": "d089e2192aa61a3508f0884589f7005ee7a538e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2182eb93_d79a71c1",
+        "filename": "src/chromiumos/tast/common/policy/policy_blob.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-09-12T08:28:57Z",
+      "side": 1,
+      "message": "nit: alias as empb",
+      "revId": "d089e2192aa61a3508f0884589f7005ee7a538e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "377547c8_d07e6e11",
+        "filename": "src/chromiumos/tast/common/policy/policy_blob.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-09-12T08:28:57Z",
+      "side": 1,
+      "message": "Use a pointer to a proto here. You are not allowed to copy protos using \u003d , this makes the usage of Blob safer.",
+      "range": {
+        "startLine": 28,
+        "startChar": 1,
+        "endLine": 28,
+        "endChar": 12
+      },
+      "revId": "d089e2192aa61a3508f0884589f7005ee7a538e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "509feb54_0b491d5a",
+        "filename": "src/chromiumos/tast/common/policy/policy_blob.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-09-12T08:28:57Z",
+      "side": 1,
+      "message": "This is not that useful. DeviceProto is already exported.",
+      "revId": "d089e2192aa61a3508f0884589f7005ee7a538e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6acda1e1_741979f5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/device_off_hours.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-09-12T08:28:57Z",
+      "side": 1,
+      "message": "Use a pointer here.",
+      "revId": "d089e2192aa61a3508f0884589f7005ee7a538e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
