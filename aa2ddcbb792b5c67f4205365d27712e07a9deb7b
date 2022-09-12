@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f35c389_0b15214d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/screenshot_is_taken.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-09-12T23:06:47Z",
+      "side": 1,
+      "message": "I think it could be as brittle or more so than `Name`. Can we do something more flexible? Maybe `NameRegex` or `ClassNameRegex`?",
+      "range": {
+        "startLine": 77,
+        "startChar": 75,
+        "endLine": 77,
+        "endChar": 81
+      },
+      "revId": "aa2ddcbb792b5c67f4205365d27712e07a9deb7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
