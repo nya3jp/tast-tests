@@ -7,6 +7,7 @@ package fixture
 
 import (
 	"context"
+	"os"
 	"path/filepath"
 	"strings"
 	"time"
@@ -494,6 +495,13 @@ func (f *inputsFixtureImpl) SetUp(ctx context.Context, s *testing.FixtState) int
 
 func (f *inputsFixtureImpl) PreTest(ctx context.Context, s *testing.FixtTestState) {
 	f.uc.SetTestName(s.TestName())
+	// Log input tools version.
+	data, err := os.ReadFile("/usr/share/chromeos-assets/input_methods/input_tools/version.ts")
+	if err != nil {
+		testing.ContextLog(ctx, "Failed to find input tools version file: ", err)
+	} else {
+		testing.ContextLog(ctx, "Input tools version.ts: ", string(data))
+	}
 
 	recorder, err := uiauto.NewScreenRecorder(ctx, f.tconn)
 	if err != nil {
