@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3cbe88c9_955c7782",
+        "filename": "src/chromiumos/tast/remote/cellular/callbox/manager/fixture.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-09-12T23:02:46Z",
+      "side": 1,
+      "message": "Can you explain further how the DUT\u0027s hostname is used to get the callbox\u0027s hostname? This example does not reference the DUT\u0027s hostname, it is unclear where `\u003ccallbox\u003e` and `\u003cn\u003e` come from. These are also not referenced in the code, it\u0027s not clear to me how to get the callbox name from just the DUT hostname. Please provide a full example of how a DUT hostname is used to deduce its callbox hostname.\n\nWificells have routers and pcap hosts that are specific to each DUT and have hostnames that reflect this, which is why their hostnames can be deduced from the DUT hostname. Is that going to be the same for callboxes?",
+      "range": {
+        "startLine": 181,
+        "startChar": 2,
+        "endLine": 181,
+        "endChar": 101
+      },
+      "revId": "58007850a06e8f904839b15ef45ac3e9acf26947",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74dc1d7f_d6510ee6",
+        "filename": "src/chromiumos/tast/remote/cellular/callbox/manager/fixture.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-09-12T23:02:46Z",
+      "side": 1,
+      "message": "This function seems to return the DUT hostname minus the last token delineated by `-` and add `.cros` to it. \ne.g.\n`chromeos-dev-host1` \u003d\u003e `chromeos-dev.cros`. \n\nIs there something I\u0027m missing here? How does that return the hostname of a callbox (e.g. `chromeos1-donutlab-callbox1`)?",
+      "range": {
+        "startLine": 182,
+        "startChar": 0,
+        "endLine": 182,
+        "endChar": 52
+      },
+      "revId": "58007850a06e8f904839b15ef45ac3e9acf26947",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ccd2ec3_e040c249",
+        "filename": "src/chromiumos/tast/remote/cellular/callbox/manager/fixture.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-09-12T23:02:46Z",
+      "side": 1,
+      "message": "If this is a requirement you need to make sure that it is always present and that you are not adding the suffix if it is already there. \n\nA simple way to do this is by removing the suffix if it exists and then always adding it. Using `strings.TrimSuffix` you can easily ensure a string has a suffix by doing something like:\n\n```\n// assuming hostname is already resolved correctly otherwise at this point\nhostname \u003d strings.TrimSuffix(hostname, \".cros\") + \".cros\"\n```",
+      "range": {
+        "startLine": 201,
+        "startChar": 19,
+        "endLine": 201,
+        "endChar": 60
+      },
+      "revId": "58007850a06e8f904839b15ef45ac3e9acf26947",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
