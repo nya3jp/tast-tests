@@ -97,6 +97,9 @@ const (
 	// AssumeRecoveryMode cause skip checking current boot mode and assume that recovery is current boot mode
 	AssumeRecoveryMode ModeSwitchOption = iota
 
+	// ExpectDevModeAfterReboot expect developer mode after reboot from recovery
+	ExpectDevModeAfterReboot ModeSwitchOption = iota
+
 	// CheckToNoGoodScreen checks that DUT will not boot from an invalid USB,
 	// but instead boot to the NOGOOD screen.
 	CheckToNoGoodScreen ModeSwitchOption = iota
@@ -555,10 +558,14 @@ func (ms *ModeSwitcher) ModeAwareReboot(ctx context.Context, resetType ResetType
 	}
 
 	// Verify successful reboot.
-	// Dev mode should be preserved, but recovery mode will be lost in the reset.
+	// Dev mode should be preserved, but recovery mode will be lost in the reset (will go back to normal or dev mode).
 	var expectMode fwCommon.BootMode
 	if fromMode == fwCommon.BootModeRecovery {
-		expectMode = fwCommon.BootModeNormal
+		if msOptsContain(opts, ExpectDevModeAfterReboot) {
+			expectMode = fwCommon.BootModeDev
+		} else {
+			expectMode = fwCommon.BootModeNormal
+		}
 	} else {
 		expectMode = fromMode
 	}
