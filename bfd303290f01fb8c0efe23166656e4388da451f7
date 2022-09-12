@@ -22,6 +22,30 @@
       },
       "revId": "bfd303290f01fb8c0efe23166656e4388da451f7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "445d62d9_635a89a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_handwriting.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1379515
+      },
+      "writtenOn": "2022-09-12T05:58:25Z",
+      "side": 1,
+      "message": "I think I needed this to create the variable since there is no ? in golang? \n\nBut I don\u0027t really now what I am doing here",
+      "parentUuid": "c0fe6cd2_32c89472",
+      "range": {
+        "startLine": 126,
+        "startChar": 1,
+        "endLine": 126,
+        "endChar": 96
+      },
+      "revId": "bfd303290f01fb8c0efe23166656e4388da451f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
