@@ -25,6 +25,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e4964bf_f2c6f2d4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1551433
+      },
+      "writtenOn": "2022-09-12T14:33:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a45bdcc7_3ecb3215",
+      "range": {
+        "startLine": 13,
+        "startChar": 10,
+        "endLine": 13,
+        "endChar": 19
+      },
+      "revId": "4b320681f5216286e32e7e6df77ba88a9a0883d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4935a7f7_578bfb00",
@@ -38,6 +62,30 @@
       "writtenOn": "2022-09-09T22:30:45Z",
       "side": 1,
       "message": "nit: update this to (something like) `tast run $DUT featured.FeatureLibraryLateBoot.*`",
+      "range": {
+        "startLine": 17,
+        "startChar": 5,
+        "endLine": 17,
+        "endChar": 44
+      },
+      "revId": "4b320681f5216286e32e7e6df77ba88a9a0883d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9351f3c5_c4d4395b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1551433
+      },
+      "writtenOn": "2022-09-12T14:33:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4935a7f7_578bfb00",
       "range": {
         "startLine": 17,
         "startChar": 5,
@@ -111,6 +159,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f5ac634_4be449fc",
+        "filename": "helpers/local/featured.FeatureLibrary.check.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1551433
+      },
+      "writtenOn": "2022-09-12T14:33:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "08f54910_f91a8cb0",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 0
+      },
+      "revId": "4b320681f5216286e32e7e6df77ba88a9a0883d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "63e69551_d9a6a081",
@@ -124,6 +196,30 @@
       "writtenOn": "2022-09-09T22:30:45Z",
       "side": 1,
       "message": "nit: please move this to just after line 54, so that the declaration is closer to where it is used.",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 27
+      },
+      "revId": "4b320681f5216286e32e7e6df77ba88a9a0883d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "43c4b39a_33e161bf",
+        "filename": "helpers/local/featured.FeatureLibrary.check.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1551433
+      },
+      "writtenOn": "2022-09-12T14:33:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "63e69551_d9a6a081",
       "range": {
         "startLine": 42,
         "startChar": 0,
@@ -180,6 +276,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "94ce7af8_ac26d7f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/featured/feature_library_late_boot.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1551433
+      },
+      "writtenOn": "2022-09-12T14:33:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2010114f_3b5798ca",
+      "range": {
+        "startLine": 33,
+        "startChar": 1,
+        "endLine": 33,
+        "endChar": 27
+      },
+      "revId": "4b320681f5216286e32e7e6df77ba88a9a0883d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "63270b5a_3782e3b7",
@@ -193,6 +313,30 @@
       "writtenOn": "2022-09-09T22:30:45Z",
       "side": 1,
       "message": "nit: please remove this comment",
+      "range": {
+        "startLine": 51,
+        "startChar": 103,
+        "endLine": 51,
+        "endChar": 148
+      },
+      "revId": "4b320681f5216286e32e7e6df77ba88a9a0883d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3a75e1a_daceb189",
+        "filename": "src/chromiumos/tast/local/bundles/cros/featured/feature_library_late_boot.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1551433
+      },
+      "writtenOn": "2022-09-12T14:33:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "63270b5a_3782e3b7",
       "range": {
         "startLine": 51,
         "startChar": 103,
