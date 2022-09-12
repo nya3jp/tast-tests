@@ -16,6 +16,23 @@
       "message": "I forgot to actually regenerate all the params.",
       "revId": "f461b2bdc7ce0db848108d6c5659c0b09d9058e2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2973f13b_5e6d5257",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2022-09-12T07:48:36Z",
+      "side": 1,
+      "message": "What kind of power savings are you seeing for the chromeLoggedIn test with the new fixture?",
+      "revId": "f461b2bdc7ce0db848108d6c5659c0b09d9058e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
