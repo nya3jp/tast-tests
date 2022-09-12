@@ -16,6 +16,7 @@ import (
 	"github.com/golang/protobuf/ptypes/empty"
 
 	"chromiumos/tast/common/network/arping"
+	"chromiumos/tast/common/network/firewall"
 	"chromiumos/tast/common/network/ping"
 	"chromiumos/tast/common/network/protoutil"
 	"chromiumos/tast/common/network/wpacli"
@@ -29,7 +30,9 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/hwsec"
 	remotearping "chromiumos/tast/remote/network/arping"
+	remotefirewall "chromiumos/tast/remote/network/firewall"
 	remoteip "chromiumos/tast/remote/network/ip"
+	"chromiumos/tast/remote/network/iperf"
 	"chromiumos/tast/remote/network/iw"
 	remoteping "chromiumos/tast/remote/network/ping"
 	remotewpacli "chromiumos/tast/remote/network/wpacli"
@@ -1857,6 +1860,92 @@ func (tf *TestFixture) P2PAssertPingFromClient(ctx context.Context, opts ...ping
 	if res.Loss > pingLossThreshold {
 		return errors.Errorf("unexpected packet loss percentage: got %g%%, want <= %g%%", res.Loss, pingLossThreshold)
 	}
+
+	return nil
+}
+
+// Perf pings the p2p client from the group owner (GO) device.
+func (tf *TestFixture) Perf(ctx context.Context) error {
+	// p2pGOFirewallParams is a set of parameters needed for unblocking p2p tcp traffic on the p2p GO.
+	var p2pGOFirewallParams = []firewall.RuleOption{
+		firewall.OptionWait(5),
+		firewall.OptionAppendRule(firewall.InputChain),
+		firewall.OptionSource(p2pGOIPAddress),
+		firewall.OptionProto(firewall.L4ProtoTCP),
+		firewall.OptionMatch(firewall.L4ProtoTCP),
+		firewall.OptionJumpTarget(firewall.TargetAccept),
+	}
+
+	// p2pClientFirewallParams is a set of parameters needed for unblocking p2p tcp traffic on the p2p client.
+	var p2pClientFirewallParams = []firewall.RuleOption{
+		firewall.OptionWait(5),
+		firewall.OptionAppendRule(firewall.InputChain),
+		firewall.OptionSource(p2pClientIPAddress),
+		firewall.OptionProto(firewall.L4ProtoTCP),
+		firewall.OptionMatch(firewall.L4ProtoTCP),
+		firewall.OptionJumpTarget(firewall.TargetAccept),
+	}
+
+	firewallRunnerGO := remotefirewall.NewRemoteRunner(tf.p2pGO.Conn())
+	firewallRunnerClient := remotefirewall.NewRemoteRunner(tf.p2pClient.Conn())
+	if err := firewallRunnerGO.ExecuteCommand(ctx, p2pGOFirewallParams...); err != nil {
+		return errors.Wrap(err, "failed to set P2P GO iptable rule")
+	}
+	if err := firewallRunnerClient.ExecuteCommand(ctx, p2pClientFirewallParams...); err != nil {
+		return errors.Wrap(err, "failed to set P2P Client iptable rule")
+	}
+
+	testing.ContextLogf(ctx, "Arowa_2")
+
+	// Configuring the p2p GO as an iperf server and the p2p client as an iperf client.
+	p2pIperfConfig, err := iperf.NewConfig(iperf.ProtocolTCP, p2pClientIPAddress, p2pGOIPAddress, []iperf.ConfigOption{}...)
+	if err != nil {
+		return errors.Wrap(err, "failed to configure iperf on the p2p link")
+	}
+
+	testing.ContextLogf(ctx, "Arowa_3")
+
+	client, err := iperf.NewRemoteClient(ctx, tf.p2pClient.Conn())
+	if err != nil {
+		return errors.Wrap(err, "failed ot create Iperf client")
+	}
+	defer client.Close(ctx)
+
+	testing.ContextLogf(ctx, "Arowa_4")
+
+	server, err := iperf.NewRemoteServer(ctx, tf.p2pGO.Conn())
+	if err != nil {
+		return errors.Wrap(err, "failed ot create Iperf server")
+	}
+	defer server.Close(ctx)
+
+	testing.ContextLogf(ctx, "Arowa_5")
+
+	session := iperf.NewSession(client, server)
+
+	testing.ContextLogf(ctx, "Arowa_6")
+
+	res, err := session.Run(ctx, p2pIperfConfig)
+	if err != nil {
+		return errors.Wrap(err, "failed to run Iperf session")
+	}
+	/*
+	// Run tcp perf and print results.
+	ipr := iperf.NewRunner(p2pIperfConfig, tf.p2pGO.Conn(), tf.p2pClient.Conn())
+
+	testing.ContextLog(ctx, "Run iperf tcp test through the p2p link")
+	res, err := ipr.Run(ctx, 3)
+	if err != nil {
+		return err
+	}
+	*/
+	testing.ContextLogf(ctx, "Arowa_4")
+	testing.ContextLogf(ctx, "iperf statistics=%+v", res)
+	/*
+	if res.Loss > pingLossThreshold {
+		return errors.Errorf("unexpected packet loss percentage: got %g%%, want <= %g%%", res.Loss, pingLossThreshold)
+	}
+	*/
 
 	return nil
 }

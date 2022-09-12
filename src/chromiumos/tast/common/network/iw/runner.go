@@ -15,6 +15,7 @@ import (
 	"time"
 
 	"chromiumos/tast/common/network/cmd"
+	"chromiumos/tast/testing"
 	"chromiumos/tast/errors"
 )
 
@@ -335,6 +336,8 @@ func (r *Runner) TimedScan(ctx context.Context, iface string,
 		return nil, errors.Wrap(err, "iw scan failed")
 	}
 	scanOut := string(out)
+	testing.ContextLogf(ctx, "Arowa scan output: ")
+	testing.ContextLogf(ctx, scanOut)
 	bssList, err := parseScanResults(scanOut)
 	if err != nil {
 		return nil, err
