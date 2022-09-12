@@ -16,6 +16,41 @@
       "message": "Hi Robert,\n\nI\u0027d like to use the dut_power code you wrote to measure power in some ARC tests, but I want to make sure my changes don\u0027t break anything.\n\npower.SuspendConsumption.s0ix fails when I run it on a hatch/helios because there is no ppvar_bat or ppvar_bat_q rails (but there is a ppvar_vbat). Do I need to run this test on a specific board?",
       "revId": "cd79036cdacbc45fa8c793093cab27be27dc4cf0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "31f654f6_83cb1178",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2022-09-12T15:34:27Z",
+      "side": 1,
+      "message": "I\u0027d recommend that you update `power.SuspendConsumption.s0ix` to support `ppvar_vbat`. As far as I know there isn\u0027t a standard for how those rails are named so `power.SuspendConsumption.s0ix` checks a couple of different ones.",
+      "parentUuid": "4e8b4cef_1992fb2e",
+      "revId": "cd79036cdacbc45fa8c793093cab27be27dc4cf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb95f71b_ee648f62",
+        "filename": "src/chromiumos/tast/remote/firmware/power/dut_power.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2022-09-12T15:34:27Z",
+      "side": 1,
+      "message": "Is there a particular reason that you want to merge all the measurements together? The values from on-board sensors should be more accurate than the EC measurements so I want to avoid a situation where a more accurate measurement gets overwritten by a less accurate one.",
+      "revId": "cd79036cdacbc45fa8c793093cab27be27dc4cf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
