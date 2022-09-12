@@ -801,8 +801,7 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_api",
 					args:         "min_max_parameter_size",
-					expectedPass: false,
-					buganizer:    "b/227134906",
+					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
 			},
@@ -1889,8 +1888,7 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_basic",
 					args:         "parameter_types",
-					expectedPass: false,
-					buganizer:    "b/227134906",
+					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
 			},
@@ -3399,8 +3397,7 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_buffers",
 					args:         "buffer_migrate",
-					expectedPass: false,
-					buganizer:    "b/242503043",
+					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
 			},
@@ -3418,8 +3415,7 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_buffers",
 					args:         "buffer_read_array_barrier_char",
-					expectedPass: false,
-					buganizer:    "b/242503043",
+					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
 			},
@@ -3428,8 +3424,7 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_buffers",
 					args:         "buffer_read_array_barrier_float",
-					expectedPass: false,
-					buganizer:    "b/242503043",
+					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
 			},
@@ -3438,8 +3433,7 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_buffers",
 					args:         "buffer_read_array_barrier_int",
-					expectedPass: false,
-					buganizer:    "b/242503043",
+					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
 			},
@@ -3448,8 +3442,7 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_buffers",
 					args:         "buffer_read_array_barrier_long",
-					expectedPass: false,
-					buganizer:    "b/242503043",
+					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
 			},
@@ -3458,8 +3451,7 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_buffers",
 					args:         "buffer_read_array_barrier_short",
-					expectedPass: false,
-					buganizer:    "b/242503043",
+					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
 			},
@@ -3468,8 +3460,7 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_buffers",
 					args:         "buffer_read_array_barrier_uchar",
-					expectedPass: false,
-					buganizer:    "b/242503043",
+					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
 			},
@@ -3478,8 +3469,7 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_buffers",
 					args:         "buffer_read_array_barrier_uint",
-					expectedPass: false,
-					buganizer:    "b/242503043",
+					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
 			},
@@ -3488,8 +3478,7 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_buffers",
 					args:         "buffer_read_array_barrier_ulong",
-					expectedPass: false,
-					buganizer:    "b/242503043",
+					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
 			},
@@ -3498,8 +3487,7 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_buffers",
 					args:         "buffer_read_array_barrier_ushort",
-					expectedPass: false,
-					buganizer:    "b/242503043",
+					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
 			},
@@ -3877,8 +3865,7 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_buffers",
 					args:         "image_migrate",
-					expectedPass: false,
-					buganizer:    "b/242503043",
+					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
 			},
@@ -9169,8 +9156,7 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_events",
 					args:         "event_enqueue_barrier_with_event_list",
-					expectedPass: false,
-					buganizer:    "b/242503043",
+					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
 			},
@@ -9179,8 +9165,7 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_events",
 					args:         "event_enqueue_marker",
-					expectedPass: false,
-					buganizer:    "b/242503043",
+					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
 			},
@@ -9189,8 +9174,7 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_events",
 					args:         "event_enqueue_marker_with_event_list",
-					expectedPass: false,
-					buganizer:    "b/242503043",
+					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
 			},
