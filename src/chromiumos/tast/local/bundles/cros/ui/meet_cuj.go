@@ -850,9 +850,7 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 			if err := action.Combine(
 				"select Google Docs tab",
 				pc.Click(nodewith.Name("Chrome Tab").Role(role.ListGrid)),
-				// Press down twice to select the second tab, which is Google Docs.
-				kw.AccelAction("Down"),
-				kw.AccelAction("Down"),
+				pc.Click(nodewith.NameStartingWith("Untitled document").ClassName("AXVirtualView")),
 				kw.AccelAction("Enter"),
 			)(ctx); err != nil {
 				return errors.Wrap(err, "failed to select the Google Docs tab")
