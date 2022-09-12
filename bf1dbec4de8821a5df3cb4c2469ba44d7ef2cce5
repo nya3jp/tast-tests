@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96c7dfc5_052fc340",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-09-12T09:52:29Z",
+      "side": 1,
+      "message": "I\u0027d keep this in the previous CL. It\u0027s easier to see what\u0027s happening.",
+      "revId": "bf1dbec4de8821a5df3cb4c2469ba44d7ef2cce5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
