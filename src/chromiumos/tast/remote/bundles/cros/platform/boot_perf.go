@@ -1,4 +1,4 @@
-// Copyright 2020 The Chromium OS Authors. All rights reserved.
+// Copyright 2020 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -72,20 +72,20 @@ func assertRootfsVerification(ctx context.Context, s *testing.State) {
 // preReboot performs actions before rebooting the DUT:
 //   - Wait until the CPU is cool.
 //   - Stop tlsdated.
-func preReboot(fullCtx context.Context, s *testing.State) {
+func preReboot(ctx context.Context, s *testing.State) {
 	// Use a timeout of 30 seconds for waiting until the CPU cools down. A longer wait only has a marginal effect.
-	ctx, cancel := context.WithTimeout(fullCtx, 30*time.Second)
+	shortCtx, cancel := context.WithTimeout(ctx, 30*time.Second)
 	defer cancel()
 
 	cl, err := rpc.Dial(ctx, s.DUT(), s.RPCHint())
 	if err != nil {
 		s.Fatal("Failed to connect to the RPC service on the DUT: ", err)
 	}
-	defer cl.Close(fullCtx)
+	defer cl.Close(ctx)
 
 	arcPerfBootService := arc.NewPerfBootServiceClient(cl.Conn)
-	// Wait until CPU cools down.
-	if _, err = arcPerfBootService.WaitUntilCPUCoolDown(ctx, &empty.Empty{}); err != nil {
+	// Wait until CPU cools down with shortCtx.
+	if _, err = arcPerfBootService.WaitUntilCPUCoolDown(shortCtx, &empty.Empty{}); err != nil {
 		// DUT is unable to cool down, probably timed out. Treat this as a non-fatal error and continue the test with a warning.
 		s.Log("Warning: PerfBootService.WaitUntilCPUCoolDown returned an error: ", err)
 	}
@@ -97,12 +97,9 @@ func preReboot(fullCtx context.Context, s *testing.State) {
 }
 
 // bootPerfOnce runs one iteration of the boot perf test.
-func bootPerfOnce(fullCtx context.Context, s *testing.State, i, iterations int, pv *perf.Values) {
+func bootPerfOnce(ctx context.Context, s *testing.State, i, iterations int, pv *perf.Values) {
 	s.Logf("Running iteration %d/%d", i+1, iterations)
 	d := s.DUT()
-
-	ctx, cancel := ctxutil.Shorten(fullCtx, 10*time.Second)
-	defer cancel()
 
 	preReboot(ctx, s)
 
@@ -119,7 +116,7 @@ func bootPerfOnce(fullCtx context.Context, s *testing.State, i, iterations int, 
 	if err != nil {
 		s.Fatal("Failed to connect to the RPC service on the DUT: ", err)
 	}
-	defer cl.Close(fullCtx)
+	defer cl.Close(ctx)
 
 	bootPerfService := platform.NewBootPerfServiceClient(cl.Conn)
 	// Collect boot metrics through RPC call to BootPerfServiceClient. This call waits until system boot is complete and returns the metrics.
@@ -180,7 +177,7 @@ func ensureChromeLogin(ctx context.Context, s *testing.State, cl *rpc.Client) er
 }
 
 // BootPerf is the function that reboots the client and collect boot perf data.
-func BootPerf(fullCtx context.Context, s *testing.State) {
+func BootPerf(ctx context.Context, s *testing.State) {
 	d := s.DUT()
 
 	// Parse test options.
@@ -202,7 +199,8 @@ func BootPerf(fullCtx context.Context, s *testing.State) {
 	}
 
 	// Create a shorter ctx for normal operations to reserve time for cleanup.
-	ctx, cancel := ctxutil.Shorten(fullCtx, 10*time.Second)
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
 
 	if !skipRootfsCheck {
@@ -217,7 +215,7 @@ func BootPerf(fullCtx context.Context, s *testing.State) {
 		if err != nil {
 			s.Fatal("Failed to connect to the RPC service on the DUT: ", err)
 		}
-		defer cl.Close(fullCtx)
+		defer cl.Close(cleanupCtx)
 
 		// Make sure we don't boot to OOBE.
 		if err = ensureChromeLogin(ctx, s, cl); err != nil {
@@ -241,7 +239,7 @@ func BootPerf(fullCtx context.Context, s *testing.State) {
 		if err != nil {
 			s.Fatal("Failed to connect to the RPC service on the DUT: ", err)
 		}
-		defer cl.Close(fullCtx)
+		defer cl.Close(cleanupCtx)
 
 		bootPerfService := platform.NewBootPerfServiceClient(cl.Conn)
 		_, err = bootPerfService.DisableBootchart(ctx, &empty.Empty{})
