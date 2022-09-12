@@ -33,6 +33,41 @@
       "message": "Does `err` not need to be handled here?",
       "revId": "05a3bd9205ef34938cbf1e59e07e85ae3dff76ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6f13ac9_e1feda2a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/add_remove_factors.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1546868
+      },
+      "writtenOn": "2022-09-12T16:12:21Z",
+      "side": 1,
+      "message": "I think the idea is that if we can\u0027t ensure the TPM is ready then smart card auth is not available, so we just don\u0027t want to try and exercise it.\n\nSince the point of the test is to exercise the adding of smart card auth, and not the TPM, I think that\u0027s a reasonable approach to take? There are other tests which are actually responsible for testing the TPM itself, so we don\u0027t want to rely on this to catch TPM failures anyway.",
+      "parentUuid": "3325e5ab_4abdd0ad",
+      "revId": "05a3bd9205ef34938cbf1e59e07e85ae3dff76ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9333f5d_06373bb9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/add_remove_factors.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1546868
+      },
+      "writtenOn": "2022-09-12T16:12:21Z",
+      "side": 1,
+      "message": "Maybe this setup should go into a common utility helper, although I suppose that\u0027s really only more important if/when we want to start setting up this auth in other tests as well.",
+      "revId": "05a3bd9205ef34938cbf1e59e07e85ae3dff76ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
