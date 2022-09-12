@@ -39,6 +39,30 @@
       },
       "revId": "49c84b023abd4a37bb80170ca485ccbc3dc0ba9e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "12bf20b7_3c0a428f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 853,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-09-12T22:23:36Z",
+      "side": 1,
+      "message": "Talked with navin offline and there is an issue that the Docs tab is the first tab in the list on some devices that we need to fix. LGTM.",
+      "parentUuid": "22944641_c26e96a0",
+      "range": {
+        "startLine": 853,
+        "startChar": 71,
+        "endLine": 853,
+        "endChar": 84
+      },
+      "revId": "49c84b023abd4a37bb80170ca485ccbc3dc0ba9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
