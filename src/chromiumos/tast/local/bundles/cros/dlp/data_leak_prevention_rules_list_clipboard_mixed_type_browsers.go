@@ -36,8 +36,7 @@ func init() {
 		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Test behavior of DataLeakPreventionRulesList policy with clipboard blocked restrictions from Ash to Lacros and vice versa",
 		Contacts: []string{
-			"alvinlee@google.com", // Test author
-			"chromeos-dlp@google.com",
+			"chromeos-dlp@google.com", // Feature owners
 		},
 		SoftwareDeps: []string{"chrome", "lacros"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
