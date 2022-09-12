@@ -16,6 +16,23 @@
       "message": "Note: this is a tast test used when bringing up SELinux on new boards, but the selinux_experimental SoftwareDep does not appear to be used, since there are no test results for this test.",
       "revId": "9c6a98d41fed773e094e0e976187ac5d22a3580c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d01b632_a0cdb86c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2022-09-12T23:02:02Z",
+      "side": 1,
+      "message": "This is probably not going to make the CQ because of lack of Tast Owners LGTM.",
+      "revId": "9c6a98d41fed773e094e0e976187ac5d22a3580c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
