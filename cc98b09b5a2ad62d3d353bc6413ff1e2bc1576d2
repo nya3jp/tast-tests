@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d397aff0_6511b277",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/deskscuj/desks.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-09-12T21:02:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "59132472_4b7d6fea",
+      "range": {
+        "startLine": 21,
+        "startChar": 3,
+        "endLine": 23,
+        "endChar": 8
+      },
+      "revId": "cc98b09b5a2ad62d3d353bc6413ff1e2bc1576d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f854c2f5_94c18a48",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-09-12T19:48:22Z",
       "side": 1,
       "message": "nit: Again, if the last line is this short, then the whole thing probably can be one line shorter. One way might be to write \"the index of the new desk\" instead of \"the desk index of the new desk\"",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 8
+      },
+      "revId": "cc98b09b5a2ad62d3d353bc6413ff1e2bc1576d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "864e8709_d547decc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/deskscuj/desks.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-09-12T21:02:51Z",
+      "side": 1,
+      "message": "Is this a golang readability rule? Even if I change the wording to what you mentioned, if I keep the lines to less than 72 characters, I still have `// be 0` on the last line (I changed it in the latest patch). I don\u0027t really understand why having the last line hurts readability, especially if I have to spend a lot of time figuring out an equivalent way of saying something just for the file to be 1 line shorter.",
+      "parentUuid": "f854c2f5_94c18a48",
       "range": {
         "startLine": 26,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a176ecc5_762ccc37",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/deskscuj/desks_cuj.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-09-12T21:02:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dd27d5bd_20eae2cd",
+      "range": {
+        "startLine": 141,
+        "startChar": 1,
+        "endLine": 141,
+        "endChar": 14
+      },
+      "revId": "cc98b09b5a2ad62d3d353bc6413ff1e2bc1576d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0c6baa57_2fc4e75b",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-09-12T19:48:22Z",
       "side": 1,
       "message": "Remove this comment. Although every itinerary begins with desk 0, the code here no longer assumes that.",
+      "range": {
+        "startLine": 160,
+        "startChar": 0,
+        "endLine": 160,
+        "endChar": 52
+      },
+      "revId": "cc98b09b5a2ad62d3d353bc6413ff1e2bc1576d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1502f35_a730dbb5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/deskscuj/desks_cuj.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-09-12T21:02:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0c6baa57_2fc4e75b",
       "range": {
         "startLine": 160,
         "startChar": 0,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f423589d_413fca27",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/deskscuj/desks_cuj.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-09-12T21:02:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "251090a5_16be3d10",
+      "range": {
+        "startLine": 182,
+        "startChar": 0,
+        "endLine": 182,
+        "endChar": 66
+      },
+      "revId": "cc98b09b5a2ad62d3d353bc6413ff1e2bc1576d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e9e6fc23_9a7503d5",
@@ -129,6 +249,30 @@
       "writtenOn": "2022-09-12T19:48:22Z",
       "side": 1,
       "message": "Just write `activates`. Almost every function in Tast test code can fail. The word `tries` suggests that there is some scenario where this fails but the function does not return an `error` about it, or it fails but the function leaves some side effect from beginning to try, or whatever could be a reason to use a form of the word \"try\" here and not elsewhere.",
+      "range": {
+        "startLine": 23,
+        "startChar": 7,
+        "endLine": 23,
+        "endChar": 24
+      },
+      "revId": "cc98b09b5a2ad62d3d353bc6413ff1e2bc1576d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "64566377_109820d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/deskscuj/deskswitcher.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-09-12T21:02:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e9e6fc23_9a7503d5",
       "range": {
         "startLine": 23,
         "startChar": 7,
@@ -162,6 +306,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "75018754_e8bf6344",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/deskscuj/deskswitcher.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-09-12T21:02:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9443c4a9_38c67514",
+      "range": {
+        "startLine": 33,
+        "startChar": 93,
+        "endLine": 33,
+        "endChar": 105
+      },
+      "revId": "cc98b09b5a2ad62d3d353bc6413ff1e2bc1576d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f0eb75db_c9788cc6",
@@ -175,6 +343,30 @@
       "writtenOn": "2022-09-12T19:48:22Z",
       "side": 1,
       "message": "Remove this parameter.",
+      "range": {
+        "startLine": 55,
+        "startChar": 92,
+        "endLine": 55,
+        "endChar": 104
+      },
+      "revId": "cc98b09b5a2ad62d3d353bc6413ff1e2bc1576d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "81a8ea15_820e23c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/deskscuj/deskswitcher.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-09-12T21:02:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f0eb75db_c9788cc6",
       "range": {
         "startLine": 55,
         "startChar": 92,
@@ -233,6 +425,54 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c49b8d72_27b70ff7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/deskscuj/deskswitcher.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-09-12T21:02:51Z",
+      "side": 1,
+      "message": "I thought about that first, but I thought against it because I didn\u0027t like having to reobtain `input.KeyboardTopRowLayout(ctx, kw)` every time we called `run`. I know it\u0027s probably a really cheap operation, but I also figured this method was cleaner. I wouldn\u0027t have to repeatedly perform an op that has an error, and we could add in other methods to enter overview mode in the future (like 3 finger swipe up)",
+      "parentUuid": "8637e775_bb4d07c6",
+      "range": {
+        "startLine": 73,
+        "startChar": 69,
+        "endLine": 73,
+        "endChar": 91
+      },
+      "revId": "cc98b09b5a2ad62d3d353bc6413ff1e2bc1576d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "32ba4a0d_80612f0e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/deskscuj/deskswitcher.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-09-12T21:02:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "20a08c11_3f5db778",
+      "range": {
+        "startLine": 73,
+        "startChar": 107,
+        "endLine": 73,
+        "endChar": 119
+      },
+      "revId": "cc98b09b5a2ad62d3d353bc6413ff1e2bc1576d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3c5f9523_d1e7d8a5",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/deskscuj/deskswitcher.go",
         "patchSetId": 5
@@ -244,6 +484,30 @@
       "writtenOn": "2022-09-12T19:48:22Z",
       "side": 1,
       "message": "Check `toDesk \u003c len(desksInfo)` instead.",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 4
+      },
+      "revId": "cc98b09b5a2ad62d3d353bc6413ff1e2bc1576d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7bf3dbda_a84b3327",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/deskscuj/deskswitcher.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-09-12T21:02:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3c5f9523_d1e7d8a5",
       "range": {
         "startLine": 92,
         "startChar": 0,
