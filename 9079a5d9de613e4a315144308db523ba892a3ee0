@@ -16,6 +16,24 @@
       "message": "LGTM, but please add your teammate to also verify your CL.",
       "revId": "9079a5d9de613e4a315144308db523ba892a3ee0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c93f401_1678e087",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1537719
+      },
+      "writtenOn": "2022-09-12T01:16:11Z",
+      "side": 1,
+      "message": "Sure! Thanks for your review.",
+      "parentUuid": "af622c78_c61f4323",
+      "revId": "9079a5d9de613e4a315144308db523ba892a3ee0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
