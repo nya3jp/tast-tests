@@ -16,6 +16,24 @@
       "message": "this looks very familiar -- is there another Update test for credential api? If so, can we parameterize that one instead? ",
       "revId": "cd3a3bcea18c9d765ee97d9a43366d3b8ca8f00e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec7dd1fc_4a2c39fa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-09-12T13:21:38Z",
+      "side": 1,
+      "message": "There is https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/cryptohome/update_credential_auth_session.go and https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/cryptohome/update_password.go\n\nDo you mean that I should change cryptohome.UpdatePassword to test pin as well? Or should I update cryptohome.UpdateCredentialAuthSession to test both password\u0026pin updates with USS?",
+      "parentUuid": "5edbdcb0_6cd3be43",
+      "revId": "cd3a3bcea18c9d765ee97d9a43366d3b8ca8f00e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
