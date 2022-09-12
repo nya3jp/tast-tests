@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2880746a_2ce15332",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-09-12T23:39:45Z",
+      "side": 1,
+      "message": "It can be a Jamboard. I would just leave this out. `More robustly screenshare in MeetCUJ presentation variants` makes sense.",
+      "range": {
+        "startLine": 7,
+        "startChar": 26,
+        "endLine": 7,
+        "endChar": 37
+      },
+      "revId": "ed154b2f165efa3a3af0da4258313264e1f05fbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41a2b86b_213756ac",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-09-12T23:39:45Z",
+      "side": 1,
+      "message": "Remove word",
+      "range": {
+        "startLine": 12,
+        "startChar": 50,
+        "endLine": 12,
+        "endChar": 53
+      },
+      "revId": "ed154b2f165efa3a3af0da4258313264e1f05fbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80486d2c_50ac82a5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-09-12T23:39:45Z",
+      "side": 1,
+      "message": "optional nit: Refer to it as \"the Google Docs/Jamboard tab\"",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 27
+      },
+      "revId": "ed154b2f165efa3a3af0da4258313264e1f05fbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0d51f94_0b33d544",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-09-12T23:39:45Z",
+      "side": 1,
+      "message": "`\u003cDUT\u003e`",
+      "range": {
+        "startLine": 19,
+        "startChar": 13,
+        "endLine": 19,
+        "endChar": 14
+      },
+      "revId": "ed154b2f165efa3a3af0da4258313264e1f05fbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e7d42fb_102b5353",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-09-12T23:39:45Z",
+      "side": 1,
+      "message": "`\u003cDUT\u003e`",
+      "range": {
+        "startLine": 20,
+        "startChar": 13,
+        "endLine": 20,
+        "endChar": 14
+      },
+      "revId": "ed154b2f165efa3a3af0da4258313264e1f05fbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46411c8e_cca97201",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 852,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-09-12T23:39:45Z",
+      "side": 1,
+      "message": "Remove this. It clicks on the list of screensharing tabs, but now you are adding code that clicks on a specific screensharing tab in that list.",
+      "range": {
+        "startLine": 852,
+        "startChar": 0,
+        "endLine": 852,
+        "endChar": 62
+      },
+      "revId": "ed154b2f165efa3a3af0da4258313264e1f05fbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be33d792_8b87cfa2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 853,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-09-12T23:39:45Z",
+      "side": 1,
+      "message": "`ClassName` is deprecated. Use `HasClass`. See:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/uiauto/nodewith/nodewith.go;drc\u003dc731f70b3bf035804409f58e8d3d2827c0056af3;l\u003d596",
+      "range": {
+        "startLine": 853,
+        "startChar": 60,
+        "endLine": 853,
+        "endChar": 69
+      },
+      "revId": "ed154b2f165efa3a3af0da4258313264e1f05fbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
