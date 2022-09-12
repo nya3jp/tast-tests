@@ -6,6 +6,7 @@ package diagnostics
 
 import (
 	"context"
+	"regexp"
 	"time"
 
 	"chromiumos/tast/common/action"
@@ -14,6 +15,8 @@ import (
 	"chromiumos/tast/local/chrome/uiauto"
 	da "chromiumos/tast/local/chrome/uiauto/diagnosticsapp"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/pointer"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
@@ -52,12 +55,20 @@ func InputCheckDefocusing(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect Test API: ", err)
 	}
 
+	kb, err := input.Keyboard(ctx)
+	if err != nil {
+		s.Fatal("Failed to find keyboard: ", err)
+	}
+	defer kb.Close()
+
 	conn, err := cr.NewConn(ctx, "https://www.google.com")
 	if err != nil {
 		s.Fatal("Failed to create chrome: ", err)
 	}
 	defer conn.Close()
 	defer conn.CloseTarget(cleanupCtx)
+	ui := uiauto.New(tconn)
+	kb.AccelAction("alt+[")(ctx)
 
 	dxRootNode, err := da.Launch(ctx, tconn)
 	if err != nil {
@@ -65,14 +76,11 @@ func InputCheckDefocusing(ctx context.Context, s *testing.State) {
 	}
 	defer da.Close(cleanupCtx, tconn)
 	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
+	kb.AccelAction("alt+]")(ctx)
 
-	kb, err := input.Keyboard(ctx)
-	if err != nil {
-		s.Fatal("Failed to find keyboard: ", err)
-	}
-	defer kb.Close()
+	mc := pointer.NewMouse(tconn)
+	defer mc.Close()
 
-	ui := uiauto.New(tconn)
 	verifyKeyStateUnaffected := func(keyName string) action.Action {
 		actionName := "verify " + keyName + " key states when input page isn't focused"
 		return uiauto.NamedAction(actionName,
@@ -93,7 +101,7 @@ func InputCheckDefocusing(ctx context.Context, s *testing.State) {
 		kb.AccelAction("x"),
 		ui.WaitUntilExists(da.KeyNodeFinder("x", da.KeyTested).First()),
 		// Switch focus to a different window and check a pops up message when losing the focus.
-		kb.AccelAction("Alt+Tab"),
+		mc.Click(nodewith.NameRegex(regexp.MustCompile(".*(C|c)hrome.*")).First()),
 		ui.WaitUntilExists(da.DxDefocusingMsg),
 		// Pressing and releasing a few keys, each time checking keys are not reflected.
 		verifyKeyStateUnaffected("shift"),
