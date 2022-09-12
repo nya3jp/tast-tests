@@ -55,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "17c119ba_f78da29c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/add_remove_factors.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-09-12T17:05:12Z",
+      "side": 1,
+      "message": "That\u0027s fair - as a reader, `EnsureTPMIsReady` sounds like it will return `false` if it\u0027s not ready, which is different than an error that may need to be handled. I\u0027d suggest just capturing what you said/making it obvious that it was expected to ignore the error here with a comment.",
+      "parentUuid": "e6f13ac9_e1feda2a",
+      "revId": "05a3bd9205ef34938cbf1e59e07e85ae3dff76ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b9333f5d_06373bb9",
         "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/add_remove_factors.go",
         "patchSetId": 4
