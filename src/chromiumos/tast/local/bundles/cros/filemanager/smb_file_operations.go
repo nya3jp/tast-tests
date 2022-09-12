@@ -9,7 +9,9 @@ import (
 	"io/ioutil"
 	"os"
 	"path/filepath"
+	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/filesapp"
@@ -55,18 +57,23 @@ func SMBFileOperations(ctx context.Context, s *testing.State) {
 	fixt := s.FixtValue().(smb.FixtureData)
 	testFunc := s.Param().(smbFileOperationTestFunc)
 
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
+	defer cancel()
+
 	// Open the test API.
 	tconn, err := fixt.Chrome.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to create the Test API connection: ", err)
 	}
-	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
 	// Launch the files application.
 	files, err := filesapp.Launch(ctx, tconn)
 	if err != nil {
 		s.Fatal("Failed to launch the Files app: ", err)
 	}
+	defer files.Close(cleanupCtx)
+	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
 
 	// Get a handle to the input keyboard.
 	kb, err := input.Keyboard(ctx)
@@ -104,7 +111,9 @@ func testCopyOperation(ctx context.Context, kb *input.KeyboardEventWriter, s *te
 		files.ClickContextMenuItem(textFile, filesapp.Copy),
 		files.OpenPath(filesapp.FilesTitlePrefix+smb.GuestShareName, smb.GuestShareName),
 		kb.AccelAction("Ctrl+V"),
-		files.WaitForFile(textFile),
+		files.LeftClickUntil(
+			nodewith.Name("Refresh").Role(role.Button),
+			files.WithTimeout(time.Second).WaitForFile(textFile)),
 	)(ctx); err != nil {
 		s.Fatal("Failed to wait for SMB to mount: ", err)
 	}
