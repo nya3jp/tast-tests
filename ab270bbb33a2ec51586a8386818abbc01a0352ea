@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "1d9ef5be_bbea6059",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-09-12T20:59:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "367a683d_baec768e",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 6
+      },
+      "revId": "ab270bbb33a2ec51586a8386818abbc01a0352ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "fa72fee3_2ca0c861",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 6
@@ -83,6 +107,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4678bb12_fd828ca3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/hid_wake.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-09-12T20:59:39Z",
+      "side": 1,
+      "message": "Looking through the EC code, I don\u0027t really see anything there explicitly meant to wake the device. Mainly, it just interfaces with the AP and sends HID events. So, I think this test should still work with devices that do not include the EC as long as the AP is getting the expected HID events. I\u0027ve removed that dependency and asked crosdistros for a fievel or veyron to test with.",
+      "parentUuid": "12a3aebf_9aaa0a7b",
+      "range": {
+        "startLine": 36,
+        "startChar": 24,
+        "endLine": 36,
+        "endChar": 40
+      },
+      "revId": "ab270bbb33a2ec51586a8386818abbc01a0352ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8f9a0897_9db77b5c",
         "filename": "src/chromiumos/tast/remote/bundles/cros/power/hid_wake.go",
         "patchSetId": 6
@@ -94,6 +142,24 @@
       "writtenOn": "2022-09-10T03:29:07Z",
       "side": 1,
       "message": "Probably should set the keyboard emulator back off at the end of the test?",
+      "revId": "ab270bbb33a2ec51586a8386818abbc01a0352ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ef97d32_1881671a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/hid_wake.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-09-12T20:59:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8f9a0897_9db77b5c",
       "revId": "ab270bbb33a2ec51586a8386818abbc01a0352ea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -121,6 +187,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0fd4fc49_94f99a9d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/hid_wake.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-09-12T20:59:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "650184cf_a4454925",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 2
+      },
+      "revId": "ab270bbb33a2ec51586a8386818abbc01a0352ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "519d5f51_074e5525",
@@ -134,6 +224,30 @@
       "writtenOn": "2022-09-10T03:29:07Z",
       "side": 1,
       "message": "remind me: effectively, what is the difference between \"timeout\" and \"suspend_for_sec\" ?\n\nIt sounds like either one of them alone would be sufficient for your use (which IIUC is \"I want the device to wake up after x seconds at worst\").",
+      "range": {
+        "startLine": 95,
+        "startChar": 89,
+        "endLine": 95,
+        "endChar": 187
+      },
+      "revId": "ab270bbb33a2ec51586a8386818abbc01a0352ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4716366_a27a783b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/hid_wake.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-09-12T20:59:39Z",
+      "side": 1,
+      "message": "Here is what powerd_dbus_suspend says.\n\n\u003e --suspend_for_sec (Ask powerd to suspend the device for this many seconds. powerd then sets and alarm just before going to suspend.)\n\u003e --timeout (How long to wait for a resume signal).\n\n\nGoing by the above descriptions, I thought `suspend_for_sec` was meant to be used when you want the device to wakeup after a set amount of time, and `timeout` is a limit that, once hit, would cause powerd_dbus_suspend to exit with some type of error. But testing this on Brya/Hatch/Volteer, the device will not wake when the timeout is hit. And, waking the device after the timeout expires doesn\u0027t show any differences to just running powerd_dbus_suspend without a timeout. \n\n\nYou\u0027re right that these are essentially doing the same thing here. And, given the flakiness of `timeout`, I\u0027ve updated the suspends to only use `suspend_for_sec`",
+      "parentUuid": "519d5f51_074e5525",
       "range": {
         "startLine": 95,
         "startChar": 89,
@@ -192,6 +306,24 @@
       "writtenOn": "2022-09-10T03:29:07Z",
       "side": 1,
       "message": "I think it\u0027s find to just refer to this as \"suspend\" in comments and logs.",
+      "revId": "ab270bbb33a2ec51586a8386818abbc01a0352ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed080bb6_f3db40be",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/hid_wake.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-09-12T20:59:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bf6521f0_0def4504",
       "revId": "ab270bbb33a2ec51586a8386818abbc01a0352ea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -289,6 +421,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e29cde5e_14ef602c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/hid_wake.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-09-12T20:59:39Z",
+      "side": 1,
+      "message": "Done. Thanks for catching this, both say \"resume\" now.",
+      "parentUuid": "5f5113f0_ccb8546b",
+      "range": {
+        "startLine": 146,
+        "startChar": 0,
+        "endLine": 146,
+        "endChar": 54
+      },
+      "revId": "ab270bbb33a2ec51586a8386818abbc01a0352ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4a842fb7_8eb6a207",
@@ -302,6 +458,30 @@
       "writtenOn": "2022-09-10T03:29:07Z",
       "side": 1,
       "message": "This rpc + dutfs method strikes me as unnecessary work.\nWhy not just run `dut.Conn().CommandContext(...)`? The output is easily parseable and it returns errors for commands that fail.\n\nAnd, we\u0027re using it elsewhere in this function already (L197)\n\nYou might probably be able to get away with just using linuxssh.ReadFile() on the directory.\n\n\nI\u0027ll defer to Seewai on whether ssh is better or DutFS, but let\u0027s be consistent and use 1 or the other (wherever possible).",
+      "range": {
+        "startLine": 186,
+        "startChar": 12,
+        "endLine": 186,
+        "endChar": 41
+      },
+      "revId": "ab270bbb33a2ec51586a8386818abbc01a0352ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "72bbcda2_2d0f04f0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/hid_wake.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-09-12T20:59:39Z",
+      "side": 1,
+      "message": "Seewai\u0027s feedback is to use dutfs where possible because ssh calls can lead to test flakiness. I have changed all the file read/writes to use dutfs.",
+      "parentUuid": "4a842fb7_8eb6a207",
       "range": {
         "startLine": 186,
         "startChar": 12,
@@ -370,6 +550,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a84804e_54de28ea",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/hid_wake.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-09-12T20:59:39Z",
+      "side": 1,
+      "message": "Ack, using dutfs for file read/writes",
+      "parentUuid": "0f2cf7d0_f8c17898",
+      "range": {
+        "startLine": 197,
+        "startChar": 14,
+        "endLine": 197,
+        "endChar": 37
+      },
+      "revId": "ab270bbb33a2ec51586a8386818abbc01a0352ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ca3e2415_c02f500e",
@@ -418,6 +622,30 @@
       "writtenOn": "2022-09-10T03:29:07Z",
       "side": 1,
       "message": "Ditto L197",
+      "range": {
+        "startLine": 205,
+        "startChar": 14,
+        "endLine": 205,
+        "endChar": 37
+      },
+      "revId": "ab270bbb33a2ec51586a8386818abbc01a0352ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b99141fe_3b6729d8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/hid_wake.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-09-12T20:59:39Z",
+      "side": 1,
+      "message": "Ack, using dutfs for file read/writes",
+      "parentUuid": "95047212_b0e5ecb8",
       "range": {
         "startLine": 205,
         "startChar": 14,
@@ -486,6 +714,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bff2c3b6_a784052a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/hid_wake.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-09-12T20:59:39Z",
+      "side": 1,
+      "message": "Ack, using dutfs for file read/writes",
+      "parentUuid": "7f94b30e_371e97d2",
+      "range": {
+        "startLine": 222,
+        "startChar": 13,
+        "endLine": 222,
+        "endChar": 36
+      },
+      "revId": "ab270bbb33a2ec51586a8386818abbc01a0352ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f0ab03ea_31f8f9ed",
@@ -499,6 +751,30 @@
       "writtenOn": "2022-09-10T03:29:07Z",
       "side": 1,
       "message": "Replace with:\n```\n  return strconv.Atoi(strings.TrimSpace(string(out)))\n```",
+      "range": {
+        "startLine": 227,
+        "startChar": 0,
+        "endLine": 232,
+        "endChar": 18
+      },
+      "revId": "ab270bbb33a2ec51586a8386818abbc01a0352ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6112d8d1_20f3302f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/hid_wake.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-09-12T20:59:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f0ab03ea_31f8f9ed",
       "range": {
         "startLine": 227,
         "startChar": 0,

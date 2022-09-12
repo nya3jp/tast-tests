@@ -809,6 +809,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "00c3503a_06f8b1c1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/hid_wake.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-09-12T20:59:39Z",
+      "side": 1,
+      "message": "Marking as resolved after response to comment on L136. We put this CombinedOutput call in a separate thread to allow for a unreachable check when the dut is suspended.",
+      "parentUuid": "71dc2c3d_43140e0f",
+      "revId": "55ee87817faf49070c60364b1b1340d5d0cfd66a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c2ea8a5a_f028e8c7",
@@ -1234,6 +1252,30 @@
       "side": 1,
       "message": "\u003e I spent some time trying to implement it this way, and I do not think it is currently possible with tast. gousb uses cgo to interface with libusb (see libusb.go in gousb repo). \n\nHmm. Aren\u0027t there libusb wrappers available? (https://pkg.go.dev/github.com/gotmc/libusb#section-readme ?)\n\nIn any case, searching the USB dir seems fine.\n\n\u003e  I think we need to manually do it in the device\u0027s sysfs path. Additionally, we would still need to know the sysfs path to get wake count.\n\nSounds good. Thanks for clarifying.",
       "parentUuid": "0dc881f0_7b4bd99d",
+      "range": {
+        "startLine": 190,
+        "startChar": 70,
+        "endLine": 190,
+        "endChar": 88
+      },
+      "revId": "55ee87817faf49070c60364b1b1340d5d0cfd66a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cdb3e216_f3204e78",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/hid_wake.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-09-12T20:59:39Z",
+      "side": 1,
+      "message": "\u003e Hmm. Aren\u0027t there libusb wrappers available? \nThis looks like it is also using cgo (example L8-L17 https://github.com/gotmc/libusb/blob/master/device.go). \n\nMarking as resolved for now, if you\u0027d like me to look for other ways of incorporating libusb, let me know.",
+      "parentUuid": "a1553fec_8106b18a",
       "range": {
         "startLine": 190,
         "startChar": 70,
