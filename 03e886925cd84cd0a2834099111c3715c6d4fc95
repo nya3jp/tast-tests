@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ac8ef33_ed2b482f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-09-12T22:28:46Z",
+      "side": 1,
+      "message": "Oops, fixed.",
+      "parentUuid": "d4145062_031c198a",
+      "revId": "03e886925cd84cd0a2834099111c3715c6d4fc95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a5c9c4d0_25d9a2a9",
@@ -79,6 +97,30 @@
       "side": 1,
       "message": "Then how about shorten it a bit? Maybe 1 min or so? It should be practically sufficient to reboot CrOS in general, right?",
       "parentUuid": "09cf08c9_5efcd472",
+      "range": {
+        "startLine": 251,
+        "startChar": 12,
+        "endLine": 251,
+        "endChar": 27
+      },
+      "revId": "03e886925cd84cd0a2834099111c3715c6d4fc95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "45f72530_a69ab279",
+        "filename": "src/chromiumos/tast/remote/wificell/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-09-12T22:28:46Z",
+      "side": 1,
+      "message": "Done, 1 minute should be a good start. If it for whatever reason this times out at least it will be clear as to where the timeout occurred and we could adjust as needed.",
+      "parentUuid": "6726b4f6_429e7c38",
       "range": {
         "startLine": 251,
         "startChar": 12,
