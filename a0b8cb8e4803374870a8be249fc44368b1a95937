@@ -72,6 +72,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1a65683e_889f1a15",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-09-12T23:02:04Z",
+      "side": 1,
+      "message": "I think that\u0027s a good idea and it\u0027s also a commonly used pattern.",
+      "parentUuid": "d25e16d9_ccd3edb4",
+      "range": {
+        "startLine": 72,
+        "startChar": 9,
+        "endLine": 72,
+        "endChar": 23
+      },
+      "revId": "a0b8cb8e4803374870a8be249fc44368b1a95937",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dca2c33c_7851bc0f",
         "filename": "src/chromiumos/tast/remote/firmware/fingerprint/firmware_test_handler.go",
         "patchSetId": 23
