@@ -1,4 +1,4 @@
-// Copyright 2020 The Chromium OS Authors. All rights reserved.
+// Copyright 2020 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -16,6 +16,7 @@ import (
 	"github.com/golang/protobuf/ptypes/empty"
 
 	"chromiumos/tast/common/network/arping"
+	"chromiumos/tast/common/network/firewall"
 	"chromiumos/tast/common/network/ping"
 	"chromiumos/tast/common/network/protoutil"
 	"chromiumos/tast/common/network/wpacli"
@@ -29,7 +30,9 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/hwsec"
 	remotearping "chromiumos/tast/remote/network/arping"
+	remotefirewall "chromiumos/tast/remote/network/firewall"
 	remoteip "chromiumos/tast/remote/network/ip"
+	"chromiumos/tast/remote/network/iperf"
 	"chromiumos/tast/remote/network/iw"
 	remoteping "chromiumos/tast/remote/network/ping"
 	remotewpacli "chromiumos/tast/remote/network/wpacli"
@@ -58,6 +61,9 @@ const pingLossThreshold float64 = 20
 
 // The allowed packets loss percentage for the arping command.
 const arpingLossThreshold float64 = 30
+
+// The must p2p throughput requirment in Mbps.
+const p2pIperfTputThreshold iperf.BitRate = 50
 
 // The amount of time to wait before reconnecting after a router reboot.
 const routerPostRebootWaitTime = 2 * time.Minute
@@ -1856,6 +1862,69 @@ func (tf *TestFixture) P2PAssertPingFromClient(ctx context.Context, opts ...ping
 	testing.ContextLogf(ctx, "ping statistics=%+v", res)
 	if res.Loss > pingLossThreshold {
 		return errors.Errorf("unexpected packet loss percentage: got %g%%, want <= %g%%", res.Loss, pingLossThreshold)
+	}
+
+	return nil
+}
+
+// Perf pings the p2p client from the group owner (GO) device.
+func (tf *TestFixture) Perf(ctx context.Context) error {
+	// p2pGOFirewallParams is a set of parameters needed for unblocking p2p tcp traffic on the p2p GO.
+	var p2pGOFirewallParams = []firewall.RuleOption{
+		firewall.OptionWait(5),
+		firewall.OptionAppendRule(firewall.InputChain),
+		firewall.OptionSource(p2pGOIPAddress),
+		firewall.OptionProto(firewall.L4ProtoTCP),
+		firewall.OptionMatch(firewall.L4ProtoTCP),
+		firewall.OptionJumpTarget(firewall.TargetAccept),
+	}
+
+	// p2pClientFirewallParams is a set of parameters needed for unblocking p2p tcp traffic on the p2p client.
+	var p2pClientFirewallParams = []firewall.RuleOption{
+		firewall.OptionWait(5),
+		firewall.OptionAppendRule(firewall.InputChain),
+		firewall.OptionSource(p2pClientIPAddress),
+		firewall.OptionProto(firewall.L4ProtoTCP),
+		firewall.OptionMatch(firewall.L4ProtoTCP),
+		firewall.OptionJumpTarget(firewall.TargetAccept),
+	}
+
+	firewallRunnerGO := remotefirewall.NewRemoteRunner(tf.p2pGO.Conn())
+	firewallRunnerClient := remotefirewall.NewRemoteRunner(tf.p2pClient.Conn())
+	if err := firewallRunnerGO.ExecuteCommand(ctx, p2pGOFirewallParams...); err != nil {
+		return errors.Wrap(err, "failed to set P2P GO iptable rule")
+	}
+	if err := firewallRunnerClient.ExecuteCommand(ctx, p2pClientFirewallParams...); err != nil {
+		return errors.Wrap(err, "failed to set P2P Client iptable rule")
+	}
+
+	// Configuring the p2p GO as an iperf server and the p2p client as an iperf client.
+	p2pIperfConfig, err := iperf.NewConfig(iperf.ProtocolTCP, p2pClientIPAddress, p2pGOIPAddress, []iperf.ConfigOption{}...)
+	if err != nil {
+		return errors.Wrap(err, "failed to configure iperf on the p2p link")
+	}
+
+	client, err := iperf.NewRemoteClient(ctx, tf.p2pClient.Conn())
+	if err != nil {
+		return errors.Wrap(err, "failed ot create Iperf client")
+	}
+	defer client.Close(ctx)
+
+	server, err := iperf.NewRemoteServer(ctx, tf.p2pGO.Conn())
+	if err != nil {
+		return errors.Wrap(err, "failed ot create Iperf server")
+	}
+	defer server.Close(ctx)
+
+	session := iperf.NewSession(client, server)
+
+	finalResult, _, err := session.Run(ctx, p2pIperfConfig)
+	if err != nil {
+		return errors.Wrap(err, "failed to run Iperf session")
+	}
+
+	if finalResult.Throughput/iperf.Mbps < p2pIperfTputThreshold {
+		return errors.Errorf("Low throughtputs: got %v, want >= %v", finalResult.Throughput/iperf.Mbps, p2pIperfTputThreshold)
 	}
 
 	return nil
