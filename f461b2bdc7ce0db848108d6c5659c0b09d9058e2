@@ -33,6 +33,24 @@
       "message": "What kind of power savings are you seeing for the chromeLoggedIn test with the new fixture?",
       "revId": "f461b2bdc7ce0db848108d6c5659c0b09d9058e2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f5220f8_3995174a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2022-09-12T15:16:41Z",
+      "side": 1,
+      "message": "Will wait for update.",
+      "parentUuid": "9f3d6c72_e813a779",
+      "revId": "f461b2bdc7ce0db848108d6c5659c0b09d9058e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
