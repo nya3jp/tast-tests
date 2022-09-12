@@ -17,25 +17,38 @@ import (
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/optin"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/browser/browserfixt"
+	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/testing"
 )
 
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         PlayAutoInstall,
-		LacrosStatus: testing.LacrosVariantNeeded,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "A functional test that verifies PlayAutoInstall(PAI) flow, It waits PAI is triggered and verifies the minimal set of apps is schedulled for installation",
 		Contacts: []string{
 			"arc-core@google.com",
 			"khmel@chromium.org", // author.
 		},
 		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"arc_android_data_cros_access"},
+		SoftwareDeps: []string{"arc_android_data_cros_access", "chrome"},
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p", "chrome"},
+			Val:               browser.TypeAsh,
+		}, {
+			Name:              "lacros",
+			ExtraSoftwareDeps: []string{"android_p", "lacros"},
+			Val:               browser.TypeLacros,
 		}, {
 			Name:              "vm",
-			ExtraSoftwareDeps: []string{"android_vm", "chrome"},
+			ExtraSoftwareDeps: []string{"android_vm"},
+			Val:               browser.TypeAsh,
+		}, {
+			Name:              "lacros_vm",
+			ExtraSoftwareDeps: []string{"android_vm", "lacros"},
+			Val:               browser.TypeLacros,
 		}},
 		Timeout: 4 * time.Minute,
 		VarDeps: []string{"arc.PlayAutoInstall.username", "arc.PlayAutoInstall.password"},
@@ -57,11 +70,14 @@ func PlayAutoInstall(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 3*time.Second)
 	defer cancel()
 
-	// Setup Chrome.
-	cr, err := chrome.New(ctx,
+	opts := []chrome.Option{
 		chrome.GAIALogin(chrome.Creds{User: username, Pass: password}),
 		chrome.ARCSupported(),
-		chrome.ExtraArgs("--arc-disable-app-sync", "--arc-disable-locale-sync", "--arc-play-store-auto-update=off"))
+		chrome.ExtraArgs("--arc-disable-app-sync", "--arc-disable-locale-sync", "--arc-play-store-auto-update=off"),
+	}
+
+	bt := s.Param().(browser.Type)
+	cr, err := browserfixt.NewChrome(ctx, bt, lacrosfixt.NewConfig(), opts...)
 	if err != nil {
 		s.Fatal("Failed to start Chrome: ", err)
 	}

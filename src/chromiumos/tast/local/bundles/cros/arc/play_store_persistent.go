@@ -17,6 +17,9 @@ import (
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/optin"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/browser/browserfixt"
+	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/local/cpu"
 	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/testing"
@@ -25,7 +28,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         PlayStorePersistent,
-		LacrosStatus: testing.LacrosVariantNeeded,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Makes sure that Play Store remains open after it is fully initialized",
 		Contacts:     []string{"khmel@chromium.org", "jhorwich@chromium.org", "arc-core@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
@@ -35,9 +38,19 @@ func init() {
 		Timeout: 5 * time.Minute,
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
+			Val:               browser.TypeAsh,
+		}, {
+			Name:              "lacros",
+			ExtraSoftwareDeps: []string{"android_p"},
+			Val:               browser.TypeLacros,
 		}, {
 			Name:              "vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
+			Val:               browser.TypeAsh,
+		}, {
+			Name:              "lacros_vm",
+			ExtraSoftwareDeps: []string{"android_vm", "lacros"},
+			Val:               browser.TypeLacros,
 		}},
 		VarDeps: []string{"ui.gaiaPoolDefault"},
 	})
@@ -124,15 +137,23 @@ func waitForDailyHygieneDone(ctx context.Context, a *arc.ARC, user string) (bool
 }
 
 func PlayStorePersistent(ctx context.Context, s *testing.State) {
-	// Setup Chrome.
-	cr, err := chrome.New(ctx,
+
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 3*time.Second)
+	defer cancel()
+
+	opts := []chrome.Option{
 		chrome.GAIALoginPool(s.RequiredVar("ui.gaiaPoolDefault")),
 		chrome.ARCSupported(),
-		chrome.ExtraArgs(arc.DisableSyncFlags()...))
-	if err != nil {
-		s.Fatal("Failed to connect to Chrome: ", err)
+		chrome.ExtraArgs(arc.DisableSyncFlags()...),
 	}
-	defer cr.Close(ctx)
+
+	bt := s.Param().(browser.Type)
+	cr, err := browserfixt.NewChrome(ctx, bt, lacrosfixt.NewConfig(), opts...)
+	if err != nil {
+		s.Fatal("Failed to start Chrome: ", err)
+	}
+	defer cr.Close(cleanupCtx)
 
 	// Optin to Play Store.
 	s.Log("Opting into Play Store")
