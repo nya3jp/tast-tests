@@ -160,6 +160,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "91c7158e_fc2bb397",
+        "filename": "helpers/local/BUILD.gn",
+        "patchSetId": 5
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1551433
+      },
+      "writtenOn": "2022-09-12T16:43:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "914ec4d3_2ac5f1f8",
+      "range": {
+        "startLine": 76,
+        "startChar": 21,
+        "endLine": 76,
+        "endChar": 35
+      },
+      "revId": "4b320681f5216286e32e7e6df77ba88a9a0883d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "08f54910_f91a8cb0",
@@ -301,6 +325,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca01128c_b7e85f38",
+        "filename": "src/chromiumos/tast/local/bundles/cros/featured/feature_library_late_boot.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1551433
+      },
+      "writtenOn": "2022-09-12T16:43:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aef785b0_4be8ea8c",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 35
+      },
+      "revId": "4b320681f5216286e32e7e6df77ba88a9a0883d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2010114f_3b5798ca",
@@ -418,6 +466,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6dcde3d_435ec5bb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/featured/feature_library_late_boot.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1551433
+      },
+      "writtenOn": "2022-09-12T16:43:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "74a1cfa8_861a33ef",
+      "range": {
+        "startLine": 142,
+        "startChar": 0,
+        "endLine": 142,
+        "endChar": 2
+      },
+      "revId": "4b320681f5216286e32e7e6df77ba88a9a0883d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "52869651_d1a55a65",
@@ -431,6 +503,30 @@
       "writtenOn": "2022-09-09T22:30:45Z",
       "side": 1,
       "message": "Please specify which part of the test this is for (e.g. \"Results mismatch for default-enabled feature\")",
+      "range": {
+        "startLine": 147,
+        "startChar": 25,
+        "endLine": 147,
+        "endChar": 32
+      },
+      "revId": "4b320681f5216286e32e7e6df77ba88a9a0883d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2fb30898_73dcd4c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/featured/feature_library_late_boot.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1551433
+      },
+      "writtenOn": "2022-09-12T16:43:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "52869651_d1a55a65",
       "range": {
         "startLine": 147,
         "startChar": 25,
