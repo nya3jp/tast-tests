@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "54a40af7_797719fc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/tpm_contest.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1549582
+      },
+      "writtenOn": "2022-09-12T15:55:47Z",
+      "side": 1,
+      "message": "If this helper function takes an output dir as an argument, it\u0027s really not abstracting much for the caller. Also, this function is only called from one location. It might be better to just remove it, and move the logic to the caller.",
+      "parentUuid": "74f759d7_1e8a500e",
+      "range": {
+        "startLine": 32,
+        "startChar": 26,
+        "endLine": 32,
+        "endChar": 44
+      },
+      "revId": "e7e0f56da62097aedcf9f43c765577534569dcee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0d1fe08b_5ce72587",
         "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/tpm_contest.go",
         "patchSetId": 7
@@ -37,6 +61,24 @@
       "writtenOn": "2022-09-12T06:58:12Z",
       "side": 1,
       "message": "nit: const file \u003d \"failed_cmd_output.txt\"",
+      "revId": "e7e0f56da62097aedcf9f43c765577534569dcee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e27b204_223ea027",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/tpm_contest.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1549582
+      },
+      "writtenOn": "2022-09-12T15:55:47Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0d1fe08b_5ce72587",
       "revId": "e7e0f56da62097aedcf9f43c765577534569dcee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -54,6 +96,30 @@
       "writtenOn": "2022-09-12T06:58:12Z",
       "side": 1,
       "message": "nit/optional: \"worst case (i.e. success case)\"",
+      "range": {
+        "startLine": 96,
+        "startChar": 22,
+        "endLine": 96,
+        "endChar": 32
+      },
+      "revId": "e7e0f56da62097aedcf9f43c765577534569dcee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23dbdff8_58bc770d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/tpm_contest.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1549582
+      },
+      "writtenOn": "2022-09-12T15:55:47Z",
+      "side": 1,
+      "message": "I believe `len(command)*2` results will always be written (regardless of success/fail). I think it would just come down the thread scheduling. Theoretically, all of the workers could write to the channel twice before the caller reads from it. Increasing the channel size prevents workers from having to block trying to write to a full channel.",
+      "parentUuid": "2bebe8da_d9a61944",
       "range": {
         "startLine": 96,
         "startChar": 22,
