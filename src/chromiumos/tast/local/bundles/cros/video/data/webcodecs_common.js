@@ -1,4 +1,4 @@
-// Copyright 2021 The Chromium OS Authors. All rights reserved.
+// Copyright 2021 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -154,13 +154,12 @@ async function createNewFrame(frame) {
     codedWidth: frame.visibleRect.width,
     codedHeight: frame.visibleRect.height,
     timestamp: frame.timestamp,
-    // TODO(crbug.com/1270610): Sets duration.
-    // duration: frame.duration,
+    duration: frame.duration,
     layout : layout,
     visibleRect: frame.visibleRect,
     displayWidth: frame.displayWidth,
     displayHeight: frame.displayHeight,
-    colorSpace: frame.colorSpace
+    // colorSpace: frame.colorSpace
   };
 
   try {
