@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1c22c8a_ace00cd2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_obeys_rollback.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-09-12T19:01:04Z",
+      "side": 1,
+      "message": "\"should not\"",
+      "range": {
+        "startLine": 168,
+        "startChar": 23,
+        "endLine": 168,
+        "endChar": 29
+      },
+      "revId": "3cfb4436e9dab9da7c16b25436a304da2096d91e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
