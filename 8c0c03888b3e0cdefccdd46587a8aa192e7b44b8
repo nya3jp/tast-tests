@@ -49,6 +49,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "383427d2_494e1085",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/hid_wake.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-09-12T21:29:47Z",
+      "side": 1,
+      "message": "+1, Also, I think the client (cl) should be close after it is done.",
+      "parentUuid": "225d9ce7_bf7ca1c1",
+      "range": {
+        "startLine": 180,
+        "startChar": 0,
+        "endLine": 184,
+        "endChar": 31
+      },
+      "revId": "8c0c03888b3e0cdefccdd46587a8aa192e7b44b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d8691243_6546d2e2",
         "filename": "src/chromiumos/tast/remote/bundles/cros/power/hid_wake.go",
         "patchSetId": 8
