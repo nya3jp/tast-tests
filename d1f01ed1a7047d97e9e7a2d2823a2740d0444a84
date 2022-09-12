@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "400ae37b_0ea69107",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1531047
+      },
+      "writtenOn": "2022-09-12T06:15:33Z",
+      "side": 1,
+      "message": "Just skipping the 1st element w/o reading(`Consume()`) did not solve the issue. It did not read the 2nd element then. So this time I want to try reading(`Consume()`) the 1st element but skipping the matching.",
+      "parentUuid": "ca8ffaad_81849a24",
+      "revId": "d1f01ed1a7047d97e9e7a2d2823a2740d0444a84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7201131b_0c82cfc1",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -31,6 +49,30 @@
       "writtenOn": "2022-09-08T18:54:10Z",
       "side": 1,
       "message": "test",
+      "range": {
+        "startLine": 9,
+        "startChar": 5,
+        "endLine": 9,
+        "endChar": 9
+      },
+      "revId": "d1f01ed1a7047d97e9e7a2d2823a2740d0444a84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "084c1ac0_1301f842",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1531047
+      },
+      "writtenOn": "2022-09-12T06:15:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7201131b_0c82cfc1",
       "range": {
         "startLine": 9,
         "startChar": 5,
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "71690f75_a05d2c29",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1531047
+      },
+      "writtenOn": "2022-09-12T06:15:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a4fe6cf7_0e631969",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 7
+      },
+      "revId": "d1f01ed1a7047d97e9e7a2d2823a2740d0444a84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8cd32973_bfeb6500",
@@ -77,6 +143,30 @@
       "writtenOn": "2022-09-08T18:54:10Z",
       "side": 1,
       "message": "Chromevox has",
+      "range": {
+        "startLine": 11,
+        "startChar": 16,
+        "endLine": 11,
+        "endChar": 24
+      },
+      "revId": "d1f01ed1a7047d97e9e7a2d2823a2740d0444a84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "982f0400_1b919230",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1531047
+      },
+      "writtenOn": "2022-09-12T06:15:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8cd32973_bfeb6500",
       "range": {
         "startLine": 11,
         "startChar": 16,
@@ -133,6 +223,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a557a0c_64050a00",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1531047
+      },
+      "writtenOn": "2022-09-12T06:15:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c7c80a6b_87a76132",
+      "range": {
+        "startLine": 12,
+        "startChar": 31,
+        "endLine": 12,
+        "endChar": 35
+      },
+      "revId": "d1f01ed1a7047d97e9e7a2d2823a2740d0444a84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dcfec9f5_97e1c2ae",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1531047
+      },
+      "writtenOn": "2022-09-12T06:15:33Z",
+      "side": 1,
+      "message": "It is a name of function. I added more details.",
+      "parentUuid": "13bab250_8430c91b",
+      "range": {
+        "startLine": 12,
+        "startChar": 36,
+        "endLine": 12,
+        "endChar": 44
+      },
+      "revId": "d1f01ed1a7047d97e9e7a2d2823a2740d0444a84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6d232d64_b59866ce",
@@ -146,6 +284,30 @@
       "writtenOn": "2022-09-08T18:54:10Z",
       "side": 1,
       "message": "connect",
+      "range": {
+        "startLine": 92,
+        "startChar": 21,
+        "endLine": 92,
+        "endChar": 29
+      },
+      "revId": "d1f01ed1a7047d97e9e7a2d2823a2740d0444a84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1af655a_b635c0fc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_a11y.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1531047
+      },
+      "writtenOn": "2022-09-12T06:15:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d232d64_b59866ce",
       "range": {
         "startLine": 92,
         "startChar": 21,
