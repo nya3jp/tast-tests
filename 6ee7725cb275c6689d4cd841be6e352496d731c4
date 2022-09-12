@@ -16,6 +16,24 @@
       "message": "Actually looking at your other patch, is there a way this can be altered to use signals instead of just removing the test altogether? See example of cros-disks test that uses signals over dbus\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/crosdisks/dbus.go;l\u003d205-219;drc\u003dd8f4052d3446b6a7bbea10427cdb23b72e07869c",
       "revId": "6ee7725cb275c6689d4cd841be6e352496d731c4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "03c20428_ddc702ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/fusebox_attach_storage.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1237531
+      },
+      "writtenOn": "2022-09-12T06:20:16Z",
+      "side": 0,
+      "message": "IIUC the code you linked to *listens to* (or watches for) a certain signal, but it doesn\u0027t actually cause a *broadcast of* (or trigger, or emit) that signal.\n\nAs this CL\u0027s commit message says, \"it is harder to fake an FBS signal (from outside *the* FBS process).\"\n\nWe could make a more complicated test (poking the Chrome process somehow, making it serve a fake volume / file system on the D-Bus server side process, not just the D-Bus client side process), but I think that\u0027s outside the scope of this CL (or CL:3886361).",
+      "parentUuid": "1ac8a1f9_47912d7b",
+      "revId": "6ee7725cb275c6689d4cd841be6e352496d731c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
