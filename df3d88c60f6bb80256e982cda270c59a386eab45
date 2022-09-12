@@ -37,6 +37,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "47a1b8c1_86dbc99f",
+        "filename": "src/chromiumos/tast/local/bluetooth/bluez/adapter.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1525637
+      },
+      "writtenOn": "2022-09-12T09:57:42Z",
+      "side": 1,
+      "message": "The interface may grow in the future and may possibly include the methods in the other files (device.go, le_advertising_manager.go, etc), so let\u0027s place it in a separated file (Perhaps bluez.go as you\u0027ve defined the Floss struct in floss.go?).\n\nIt\u0027s also fine to me if you\u0027d like to place it in the local/bluetooth package.",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 0
+      },
+      "revId": "df3d88c60f6bb80256e982cda270c59a386eab45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d4d5f284_af179b62",
         "filename": "src/chromiumos/tast/local/bluetooth/floss/floss.go",
         "patchSetId": 10
