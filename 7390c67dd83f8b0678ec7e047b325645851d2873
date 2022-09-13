@@ -46,6 +46,121 @@
       },
       "revId": "7390c67dd83f8b0678ec7e047b325645851d2873",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "382ebe9a_15e47c9f",
+        "filename": "src/chromiumos/tast/local/audio/aloop.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-09-13T05:16:24Z",
+      "side": 1,
+      "message": "nit: Use `errors.Wrap(err, \"...\")` instead",
+      "range": {
+        "startLine": 81,
+        "startChar": 16,
+        "endLine": 81,
+        "endChar": 23
+      },
+      "revId": "7390c67dd83f8b0678ec7e047b325645851d2873",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "067b5e14_df48e186",
+        "filename": "src/chromiumos/tast/local/audio/aloop.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-09-13T05:16:24Z",
+      "side": 1,
+      "message": "Always check and handle the error:\n```\nif err :\u003d quicksettings.Show(...); err !\u003d nil {\n  ...\n}\n```\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#handle-errors",
+      "range": {
+        "startLine": 84,
+        "startChar": 1,
+        "endLine": 84,
+        "endChar": 14
+      },
+      "revId": "7390c67dd83f8b0678ec7e047b325645851d2873",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9a40281_c9bbda79",
+        "filename": "src/chromiumos/tast/local/audio/aloop.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-09-13T05:16:24Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 88,
+        "startChar": 9,
+        "endLine": 88,
+        "endChar": 22
+      },
+      "revId": "7390c67dd83f8b0678ec7e047b325645851d2873",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e08b2ee7_d25ddab6",
+        "filename": "src/chromiumos/tast/local/audio/aloop.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-09-13T05:16:24Z",
+      "side": 1,
+      "message": "ditto: check the error",
+      "range": {
+        "startLine": 93,
+        "startChar": 1,
+        "endLine": 94,
+        "endChar": 31
+      },
+      "revId": "7390c67dd83f8b0678ec7e047b325645851d2873",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5afaa15c_382a21f9",
+        "filename": "src/chromiumos/tast/local/audio/aloop.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-09-13T05:16:24Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 96,
+        "startChar": 9,
+        "endLine": 96,
+        "endChar": 22
+      },
+      "revId": "7390c67dd83f8b0678ec7e047b325645851d2873",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
