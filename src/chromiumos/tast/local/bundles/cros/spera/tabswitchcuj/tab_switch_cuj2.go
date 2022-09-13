@@ -538,42 +538,6 @@ func Run2(ctx context.Context, s *testing.State, cr *chrome.Chrome, caseLevel Le
 	if err != nil {
 		s.Fatalf("Failed to create Test API connection for %v browser: %v", bt, err)
 	}
-	defer func(ctx context.Context) {
-		// To make debug easier, if something goes wrong, take screenshot before tabs are closed.
-		faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
-		faillog.SaveScreenshotOnError(ctx, cr, s.OutDir(), s.HasError)
-		if err := closeAllTabs(ctx, cr, tconn, windows); err != nil {
-			s.Error("Failed to cleanup: ", err)
-		}
-	}(ctx)
-
-	pv := perf.NewValues()
-	pv.Set(perf.Metric{
-		Name:      "Browser.StartTime",
-		Unit:      "ms",
-		Direction: perf.SmallerIsBetter,
-	}, float64(browserStartTime.Milliseconds()))
-
-	// Open all windows and tabs.
-	if err := openAllWindowsAndTabs(ctx, br, &windows, tsAction, caseLevel); err != nil {
-		s.Fatal("Failed to open targets for tab switch: ", err)
-	}
-	// Maximize all windows to ensure a consistent state.
-	if err := ash.ForEachWindow(ctx, tconn, func(w *ash.Window) error {
-		return ash.SetWindowStateAndWait(ctx, tconn, w.ID, ash.WindowStateMaximized)
-	}); err != nil {
-		s.Fatal("Failed to maximize windows: ", err)
-	}
-
-	// Total time used from beginning to load all pages.
-	timeElapsed := time.Since(timeTabsOpenStart)
-	s.Log("All tabs opened Elapsed: ", timeElapsed)
-
-	pv.Set(perf.Metric{
-		Name:      "TabSwitchCUJ.ElapsedTime",
-		Unit:      "ms",
-		Direction: perf.SmallerIsBetter,
-	}, float64(timeElapsed.Milliseconds()))
 
 	// Shorten the context to cleanup recorder.
 	cleanUpRecorderCtx := ctx
@@ -593,15 +557,54 @@ func Run2(ctx context.Context, s *testing.State, cr *chrome.Chrome, caseLevel Le
 		recorder.EnableTracing(s.OutDir(), s.DataPath(cujrecorder.SystemTraceConfigFile))
 	}
 
-	// Shorten context a bit to allow for cleanup if Run fails.
-	shorterCtx, cancel := ctxutil.Shorten(ctx, 3*time.Second)
-	defer cancel()
+	var timeElapsed time.Duration
+	if err = recorder.Run(ctx, func(ctx context.Context) (retErr error) {
+		// Open all windows and tabs.
+		if err := openAllWindowsAndTabs(ctx, br, &windows, tsAction, caseLevel); err != nil {
+			return errors.Wrap(err, "failed to open targets for tab switch")
+		}
 
-	if err = recorder.Run(shorterCtx, func(ctx context.Context) error {
+		// Total time used from beginning to load all pages.
+		timeElapsed = time.Since(timeTabsOpenStart)
+		testing.ContextLog(ctx, "All tabs opened Elapsed: ", timeElapsed)
+
+		// Maximize all windows to ensure a consistent state.
+		if err := ash.ForEachWindow(ctx, tconn, func(w *ash.Window) error {
+			return ash.SetWindowStateAndWait(ctx, tconn, w.ID, ash.WindowStateMaximized)
+		}); err != nil {
+			return errors.Wrap(err, "failed to maximize windows")
+		}
+
+		// Given time to close all tabs.
+		cleanupCtx := ctx
+		ctx, cancel = ctxutil.Shorten(ctx, 15*time.Second)
+		defer cancel()
+
+		defer func(ctx context.Context) {
+			faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), func() bool { return retErr != nil }, cr, "ui_tree")
+			if err := closeAllTabs(ctx, cr, tconn, windows); err != nil {
+				testing.ContextLog(ctx, "Failed to cleanup: ", err)
+			}
+		}(cleanupCtx)
+
 		return tabSwitchAction(ctx, cr, tconn, &windows, tsAction, caseLevel)
 	}); err != nil {
 		s.Fatal("Failed to execute tab switch action: ", err)
 	}
+
+	pv := perf.NewValues()
+
+	pv.Set(perf.Metric{
+		Name:      "Browser.StartTime",
+		Unit:      "ms",
+		Direction: perf.SmallerIsBetter,
+	}, float64(browserStartTime.Milliseconds()))
+
+	pv.Set(perf.Metric{
+		Name:      "TabSwitchCUJ.ElapsedTime",
+		Unit:      "ms",
+		Direction: perf.SmallerIsBetter,
+	}, float64(timeElapsed.Milliseconds()))
 
 	// Use a short timeout value so it can return fast in case of failure.
 	recordCtx, cancel := context.WithTimeout(ctx, time.Minute)
