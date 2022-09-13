@@ -2735,7 +2735,7 @@ func h264decodeVAAPIargs(ctx context.Context, filename, md5OutputPath string) []
 func ffmpegMD5VAAPIargs(ctx context.Context, filename, md5OutputPath string) []string {
 	return []string{
 		"--video=" + filename,
-		"--md5=" + md5OutputPath,
+		"--output=" + md5OutputPath,
 		"--flags=-hwaccel",
 		"--flags=vaapi",
 	}
