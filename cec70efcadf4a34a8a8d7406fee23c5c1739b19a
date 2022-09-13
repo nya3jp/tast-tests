@@ -246,6 +246,24 @@
       "parentUuid": "bf00b82a_2d876487",
       "revId": "cec70efcadf4a34a8a8d7406fee23c5c1739b19a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8fc24fbe_8d8f1097",
+        "filename": "src/chromiumos/tast/services/cros/ui/chrome_service.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2022-09-13T22:39:11Z",
+      "side": 1,
+      "message": "Sure, I think it makes perfect sense to be aligned with the underlying values.  I was debating whether adding `SELECTION_UNSPECIFIED` for consistency, but then the two values carry very similar meaning. We should go with what you have right now.",
+      "parentUuid": "75fb45c1_6d470aab",
+      "revId": "cec70efcadf4a34a8a8d7406fee23c5c1739b19a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
