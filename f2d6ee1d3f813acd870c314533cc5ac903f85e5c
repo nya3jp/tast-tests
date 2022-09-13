@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2aac0f7_92ac05e1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/expectations/README.md",
+        "patchSetId": 6
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1498402
+      },
+      "writtenOn": "2022-09-13T20:28:32Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7348c38d_7771f1ec",
+      "range": {
+        "startLine": 15,
+        "startChar": 11,
+        "endLine": 15,
+        "endChar": 72
+      },
+      "revId": "f2d6ee1d3f813acd870c314533cc5ac903f85e5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "160223e4_0d30c22c",
@@ -104,6 +128,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f43d1eba_37b8c07f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/expectations/README.md",
+        "patchSetId": 6
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1498402
+      },
+      "writtenOn": "2022-09-13T20:28:32Z",
+      "side": 1,
+      "message": "I\u0027ve added chipset from the hardware_probe, but I think we should keep platform from `cros config`.",
+      "parentUuid": "d3c1cb19_67cc3d0c",
+      "range": {
+        "startLine": 28,
+        "startChar": 2,
+        "endLine": 28,
+        "endChar": 11
+      },
+      "revId": "f2d6ee1d3f813acd870c314533cc5ac903f85e5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "30c75813_a12f6426",
@@ -127,6 +175,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2099ea15_eef647a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/expectations/README.md",
+        "patchSetId": 6
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1498402
+      },
+      "writtenOn": "2022-09-13T20:28:32Z",
+      "side": 1,
+      "message": "Added examples with the latest patchset.",
+      "parentUuid": "30c75813_a12f6426",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 50
+      },
+      "revId": "f2d6ee1d3f813acd870c314533cc5ac903f85e5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6ae4898a_6cdcf266",
@@ -140,6 +212,30 @@
       "writtenOn": "2022-09-02T01:14:37Z",
       "side": 1,
       "message": "Great! But it is very rare that we have model specific failures. Very rare.",
+      "range": {
+        "startLine": 33,
+        "startChar": 1,
+        "endLine": 33,
+        "endChar": 28
+      },
+      "revId": "f2d6ee1d3f813acd870c314533cc5ac903f85e5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "44b1e07e_6f7a7a15",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/expectations/expectations.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1498402
+      },
+      "writtenOn": "2022-09-13T20:28:32Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "6ae4898a_6cdcf266",
       "range": {
         "startLine": 33,
         "startChar": 1,
@@ -175,6 +271,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8d10df8e_b24c7117",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/expectations/expectations.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1498402
+      },
+      "writtenOn": "2022-09-13T20:28:32Z",
+      "side": 1,
+      "message": "You\u0027re thinking: skip board *and* \"build board\"? If so, I can drop both. We already have tast owner approval of obtaining the build for test expectations as per crrev.com/c/3787205 and crrev.com/c/3843102.",
+      "parentUuid": "b392a131_1faecb69",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 68
+      },
+      "revId": "f2d6ee1d3f813acd870c314533cc5ac903f85e5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bb9286c6_50cceec6",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/expectations/expectations.go",
         "patchSetId": 6
@@ -186,6 +306,30 @@
       "writtenOn": "2022-09-02T01:14:37Z",
       "side": 1,
       "message": "Can you give examples of platform?\n\nFor graphics tests we like to use chipset. For now Po-Hsien did port some code from autotest and started using it in some Tast tests.\n\nlocalhost ~ # /usr/local/graphics/hardware_probe                                                                      \nalderlake",
+      "range": {
+        "startLine": 40,
+        "startChar": 1,
+        "endLine": 40,
+        "endChar": 35
+      },
+      "revId": "f2d6ee1d3f813acd870c314533cc5ac903f85e5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "13f856e0_b090b39a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/expectations/expectations.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1498402
+      },
+      "writtenOn": "2022-09-13T20:28:32Z",
+      "side": 1,
+      "message": "We talked about this over chat, but here are some samples:\n\n$ cros_config /identity platform-name\nTrogdor|Cherry|Volteer|Asurada\n\nI\u0027ll add GPU chipset to the type list as well using the hardware_probe.",
+      "parentUuid": "bb9286c6_50cceec6",
       "range": {
         "startLine": 40,
         "startChar": 1,
@@ -213,6 +357,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dff7204d_ca3e7bd9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/expectations/expectations.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1498402
+      },
+      "writtenOn": "2022-09-13T20:28:32Z",
+      "side": 1,
+      "message": "\u003e  it seems easier (both on the file system and to parse) to have a bit larger granularity, with longer expectations files.\n\nThanks. We chatted about this, but I agree with this sentiment. The plan is to have a directory for each test. I.e. `test.video.PlatformDecoding` or `test.video.ChromeStackDecoding`, not for each individual test case.\n\nI added a description of the contents of the file to the README.md file. LMK if there it isn\u0027t clear enough.",
+      "parentUuid": "154d79a4_742eab07",
+      "revId": "f2d6ee1d3f813acd870c314533cc5ac903f85e5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6c82f485_da867bbc",
@@ -226,6 +388,30 @@
       "writtenOn": "2022-09-02T01:14:37Z",
       "side": 1,
       "message": "I am trying to understand the commands. What am I doing wrong?\n\nlocalhost ~ # cros_config / name\nlocalhost ~ # cros_config /identity platform-name                                                                     \n\nWe also have a binary that gives us the chipset name.\nlocalhost ~ # /usr/local/graphics/hardware_probe                                                                      \nalderlake",
+      "range": {
+        "startLine": 70,
+        "startChar": 2,
+        "endLine": 70,
+        "endChar": 46
+      },
+      "revId": "f2d6ee1d3f813acd870c314533cc5ac903f85e5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0cd82c0_b00039db",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/expectations/expectations.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1498402
+      },
+      "writtenOn": "2022-09-13T20:28:32Z",
+      "side": 1,
+      "message": "There are cases in early bringup where `cros config` is not available (or accurate). I\u0027ve added GPU chipset to the available file types.",
+      "parentUuid": "6c82f485_da867bbc",
       "range": {
         "startLine": 70,
         "startChar": 2,
@@ -259,6 +445,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3813644b_984fd249",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/expectations/expectations.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1498402
+      },
+      "writtenOn": "2022-09-13T20:28:32Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4be805dc_b4fe749c",
+      "range": {
+        "startLine": 134,
+        "startChar": 63,
+        "endLine": 135,
+        "endChar": 63
+      },
+      "revId": "f2d6ee1d3f813acd870c314533cc5ac903f85e5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "48db3d2b_1b28c16b",
@@ -272,6 +482,30 @@
       "writtenOn": "2022-09-01T23:23:51Z",
       "side": 1,
       "message": "nit: some output on the path searched?",
+      "range": {
+        "startLine": 148,
+        "startChar": 73,
+        "endLine": 148,
+        "endChar": 77
+      },
+      "revId": "f2d6ee1d3f813acd870c314533cc5ac903f85e5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6f9cf56_86bea7ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/expectations/expectations.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1498402
+      },
+      "writtenOn": "2022-09-13T20:28:32Z",
+      "side": 1,
+      "message": "This code changed a bit with the latest patchset. An error is not being returned when there is no expectation file found.\n\nWhen I was developing the first design, I had added a log about the \"attempted\" directories, but it seemed too chatty. Let me know if you want me to add logging about not finding expectations files.",
+      "parentUuid": "48db3d2b_1b28c16b",
       "range": {
         "startLine": 148,
         "startChar": 73,
@@ -322,6 +556,48 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3df987dc_0a9ee4e7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/expectations/expectations.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1498402
+      },
+      "writtenOn": "2022-09-13T20:28:32Z",
+      "side": 1,
+      "message": "Defining ExpectPass simplifies the error handling code. I\u0027ve added checks so YAML files that specify \"PASS\" will fail with an error stating that a PASS expectation is invalid. Let me know if that doesn\u0027t suffice for your concerns.",
+      "parentUuid": "80b1ee48_30fbd310",
+      "revId": "f2d6ee1d3f813acd870c314533cc5ac903f85e5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e86faa91_b10ff332",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/expectations/expectations.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1498402
+      },
+      "writtenOn": "2022-09-13T20:28:32Z",
+      "side": 1,
+      "message": "Defining ExpectPass simplifies the error handling code. I\u0027ve added checks so YAML files that specify \"PASS\" will fail with an error stating that a PASS expectation is invalid. Let me know if that doesn\u0027t suffice for your concerns.",
+      "parentUuid": "3fe0404a_af8093cc",
+      "range": {
+        "startLine": 161,
+        "startChar": 0,
+        "endLine": 163,
+        "endChar": 25
+      },
+      "revId": "f2d6ee1d3f813acd870c314533cc5ac903f85e5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "de22de7b_e6a0a2f0",
@@ -335,6 +611,30 @@
       "writtenOn": "2022-09-02T01:14:37Z",
       "side": 1,
       "message": "We could start just with Fail to clean up most video tests.\n\nBut SKIP (don\u0027t run) and IGNORE/FLAKE (run, but don\u0027t report to Tast, or report to Tast with a bug number attached) could potentially be good to have.\n\nNotice we need something like IGNORE/FLAKE to triage and assign issues to rare problems. tast.graphics.OpenclCts does report bug numbers in the reason string. This could potentially address something Jao-ke mentioned, to run and keep known failures red, but annotate them.",
+      "range": {
+        "startLine": 166,
+        "startChar": 0,
+        "endLine": 166,
+        "endChar": 31
+      },
+      "revId": "f2d6ee1d3f813acd870c314533cc5ac903f85e5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "adcc37b0_e3f49ad9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/expectations/expectations.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1498402
+      },
+      "writtenOn": "2022-09-13T20:28:32Z",
+      "side": 1,
+      "message": "Thanks.\n\nLMK if you want me to drop \"SKIP\" support. It works functionally with the latest patchset.\n\nRe: IGNORE/FLAKE, LMK if you want me to add it. The behavior would be that it fails, but uses an error message that reads. `Test failed and has an expectation of IGNORE/FLAKE. See tickets b/1234, b/5678`.",
+      "parentUuid": "de22de7b_e6a0a2f0",
       "range": {
         "startLine": 166,
         "startChar": 0,
@@ -362,6 +662,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1db8dab7_73508a61",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/expectations/expectations.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1498402
+      },
+      "writtenOn": "2022-09-13T20:28:32Z",
+      "side": 1,
+      "message": "I asked about `ExpectFlake` in https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3842601/comments/de22de7b_e6a0a2f0.",
+      "parentUuid": "7ef3a106_024b26c1",
+      "revId": "f2d6ee1d3f813acd870c314533cc5ac903f85e5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d8232551_add6ff17",
@@ -375,6 +693,30 @@
       "writtenOn": "2022-09-02T01:14:37Z",
       "side": 1,
       "message": "Where is the test name?",
+      "range": {
+        "startLine": 172,
+        "startChar": 0,
+        "endLine": 173,
+        "endChar": 57
+      },
+      "revId": "f2d6ee1d3f813acd870c314533cc5ac903f85e5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "24395c0c_a2633924",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/expectations/expectations.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1498402
+      },
+      "writtenOn": "2022-09-13T20:28:32Z",
+      "side": 1,
+      "message": "With the latest feedback, the test expectations have a structure defined by expectations.go that contains the test name for parameterized tests.\n\nI.e.\n```\n\u003ctest package\u003e.\u003ctest name\u003e.\u003ctest case\u003e:\n  expectation: FAILURE|SKIP\n  tickets:\n  - b/1234\n  comment: Here\u0027s a comment\n  sinceBuild: R107-15112.0.0\n```\n\nFor test cases that aren\u0027t parameterized, the YAML just contains the Expectation structure.\n\n```\nexpectation: FAILURE|SKIP\ntickets:\n- b/1234\ncomment: Here\u0027s a comment\nsinceBuild: R107-15112.0.0\n```",
+      "parentUuid": "d8232551_add6ff17",
       "range": {
         "startLine": 172,
         "startChar": 0,

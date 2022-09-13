@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d021a9f_b952bab0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1498402
+      },
+      "writtenOn": "2022-09-13T20:28:32Z",
+      "side": 1,
+      "message": "The latest patchset reflects the design change mentioned in our discussion and in this ticket: https://b.corp.google.com/issues/230389196#comment8.\n\nThanks for the discussion and re-design advice. Please take a look when you get a chance.",
+      "revId": "5bce80eeab85bcf3e1ccc4a9a6ae75164aa6694a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59b28efb_61c64a8a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/expectations/expectations.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1498402
+      },
+      "writtenOn": "2022-09-13T20:28:32Z",
+      "side": 1,
+      "message": "LMK if there is opposition for caching the context. I noticed that the `testing.State` should not be stored in a structure. Maybe the context is similar?\n\nIf so, I can remove the `ctx` attribute by adding arguments to a few of the Expectation methods. No biggie.",
+      "revId": "5bce80eeab85bcf3e1ccc4a9a6ae75164aa6694a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd81697c_758734b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/expectations/expectations.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1498402
+      },
+      "writtenOn": "2022-09-13T20:28:32Z",
+      "side": 1,
+      "message": "This will keep test writers from enumerating passing tests.",
+      "revId": "5bce80eeab85bcf3e1ccc4a9a6ae75164aa6694a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8896c3a_5e6fc43f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/expectations/expectations.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1498402
+      },
+      "writtenOn": "2022-09-13T20:28:32Z",
+      "side": 1,
+      "message": "The Expectation methods `Error`, `Errorf`, `Fatal`, `Fatalf` are convenience functions to make it easier to integrate expectations into an existing test.",
+      "revId": "5bce80eeab85bcf3e1ccc4a9a6ae75164aa6694a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
