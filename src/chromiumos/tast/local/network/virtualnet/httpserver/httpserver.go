@@ -12,10 +12,7 @@ import (
 	"net"
 	"net/http"
 	"os"
-	"time"
 
-	"chromiumos/tast/common/crypto/certificate"
-	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/network/virtualnet/certs"
 	"chromiumos/tast/local/network/virtualnet/env"
@@ -27,19 +24,14 @@ const (
 	logPath = "/tmp/httpServer.log"
 )
 
-// Path in root to bind mount to for cert validation
-const (
-	sslCrtPath = "/etc/ssl/certs"
-)
-
 type httpServer struct {
 	// port is the port that the HTTP server will listen and serve on.
 	port string
-	// serveTLS is true if the server is using HTTPS. If false, the server is using HTTP.
-	serveTLS bool
-	handle   func(rw http.ResponseWriter, req *http.Request)
-	server   *http.Server
-	env      *env.Env
+	// httpsCerts is not nil if the server is using HTTPS. Otherwise, the server is using HTTP.
+	httpsCerts *certs.Certs
+	handle     func(rw http.ResponseWriter, req *http.Request)
+	server     *http.Server
+	env        *env.Env
 }
 
 // Handler creates the object to handle the response for the HTTP server.
@@ -55,15 +47,15 @@ func (h *Handler) ServeHTTP(rw http.ResponseWriter, req *http.Request) {
 // New creates a new httpServer object. The returned object can be passed to
 // Env.StartServer(), its lifetime will be managed by the Env object. The
 // httpServer will only respond with |handle|. |port| will be the port the
-// HTTP server listens and serves on. |serveTLS| is set to true if the server
-// serves HTTPS. If false, the server will serve HTTP.
-func New(port string, handle func(rw http.ResponseWriter, req *http.Request), serveTLS bool) *httpServer {
-	return &httpServer{port: port, handle: handle, serveTLS: serveTLS}
+// HTTP server listens and serves on. |httpsCerts| is set to non nil value if
+// the server serves HTTPS. If it is empty, the server will serve HTTP.
+func New(port string, handle func(rw http.ResponseWriter, req *http.Request), httpsCerts *certs.Certs) *httpServer {
+	return &httpServer{port: port, handle: handle, httpsCerts: httpsCerts}
 }
 
 // Start starts the HTTP server in a separate process. The HTTP server listens on
-// any IPv4 and IPv6 address within the namespace. If |serveTLS| is true, the server
-// will server HTTPS.
+// any IPv4 and IPv6 address within the namespace. If |httpsCerts| is not nil,
+// the server will serve HTTPS.
 func (h *httpServer) Start(ctx context.Context, env *env.Env) (retErr error) {
 	h.env = env
 	handler := &Handler{handle: h.handle}
@@ -82,20 +74,9 @@ func (h *httpServer) Start(ctx context.Context, env *env.Env) (retErr error) {
 			errChannel <- err
 			return
 		}
-		if h.serveTLS {
-			httpsCerts := certs.New(sslCrtPath, certificate.TestCert3())
-			cleanupCtx := ctx
-			ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
-			defer cancel()
-			cleanupCerts, err := httpsCerts.InstallTestCerts(ctx)
-			if err != nil {
-				cleanupCerts(ctx)
-				errChannel <- err
-				return
-			}
-			defer cleanupCerts(cleanupCtx)
+		if h.httpsCerts != nil {
 			errChannel <- nil
-			if err := h.server.ServeTLS(ln, httpsCerts.GetTestServerCertFilePath(), httpsCerts.GetTestServerKeyFilePath()); err != http.ErrServerClosed {
+			if err := h.server.ServeTLS(ln, h.httpsCerts.GetTestServerCertFilePath(), h.httpsCerts.GetTestServerKeyFilePath()); err != http.ErrServerClosed {
 				testing.ContextLog(ctx, "ServeTLS failed to start with err: ", err)
 			}
 		} else {
