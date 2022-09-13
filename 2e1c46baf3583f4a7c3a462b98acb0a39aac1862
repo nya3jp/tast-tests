@@ -16,6 +16,40 @@
       "message": "Hi Tast Owners, this CL is ready for review.",
       "revId": "2e1c46baf3583f4a7c3a462b98acb0a39aac1862",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6393fdd6_09a5f9ba",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-09-13T15:05:31Z",
+      "side": 1,
+      "message": "Looking good, just a question about timeouts",
+      "revId": "2e1c46baf3583f4a7c3a462b98acb0a39aac1862",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b435f09_c2118ffd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/local_playback.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-09-13T15:05:31Z",
+      "side": 1,
+      "message": "this seems pretty high, does anything here take multiple minutes to clean up (maybe DeleteScreencastItems)? If we can shrink this we can also shrink the test timeout.",
+      "revId": "2e1c46baf3583f4a7c3a462b98acb0a39aac1862",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
