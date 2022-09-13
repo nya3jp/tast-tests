@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a9b36be_27b32fc8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-09-13T18:37:57Z",
+      "side": 1,
+      "message": "This change LGTM, please consider adding kyleshima@ to take a look since he is reviewing the parent change :)",
+      "revId": "4f032ec34f7f5212e960232a0c76a714ff9e3348",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
