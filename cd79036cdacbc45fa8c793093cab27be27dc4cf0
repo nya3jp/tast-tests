@@ -36,6 +36,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f4f2427_195d5c8e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2022-09-13T03:56:06Z",
+      "side": 1,
+      "message": "Test now fails on a hatch/helios with:\n```\n2022-09-13T03:46:15.951415Z power.SuspendConsumption.s0ix [ FAIL ] Device battery life of 4.375000 days is less than minimum of 14.000000\n```\n\nWhich means at least the power measurement code works.",
+      "revId": "cd79036cdacbc45fa8c793093cab27be27dc4cf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eb95f71b_ee648f62",
@@ -49,6 +66,24 @@
       "writtenOn": "2022-09-12T15:34:27Z",
       "side": 1,
       "message": "Is there a particular reason that you want to merge all the measurements together? The values from on-board sensors should be more accurate than the EC measurements so I want to avoid a situation where a more accurate measurement gets overwritten by a less accurate one.",
+      "revId": "cd79036cdacbc45fa8c793093cab27be27dc4cf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "66225fa3_629b8fdc",
+        "filename": "src/chromiumos/tast/remote/firmware/power/dut_power.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2022-09-13T03:56:06Z",
+      "side": 1,
+      "message": "In the test I\u0027m writing, I\u0027d like to just log everything. That way we can compare boards even when not all rails are available.\n\nI think all the rails have unique names, so it should be save to merge them into one map.",
+      "parentUuid": "eb95f71b_ee648f62",
       "revId": "cd79036cdacbc45fa8c793093cab27be27dc4cf0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
