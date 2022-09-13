@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "912aaae3_338566be",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1543127
+      },
+      "writtenOn": "2022-09-13T09:38:31Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "58756a86ab002c86f0fec5f3a1293e7ae5f8e762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02b9e686_fd2fa601",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/platform_api_vpd_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1543127
+      },
+      "writtenOn": "2022-09-13T09:38:31Z",
+      "side": 1,
+      "message": "nit: Replace with \"fetchOptionalVpdField returns the value of an optional VPD field or the empty string if this VPD field does not exist. However it returns an error if the existing VPD field is empty.¨",
+      "range": {
+        "startLine": 133,
+        "startChar": 3,
+        "endLine": 135,
+        "endChar": 12
+      },
+      "revId": "58756a86ab002c86f0fec5f3a1293e7ae5f8e762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
