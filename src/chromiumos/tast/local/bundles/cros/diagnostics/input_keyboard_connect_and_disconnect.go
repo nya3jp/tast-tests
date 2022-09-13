@@ -1,4 +1,4 @@
-// Copyright 2022 The Chromium OS Authors. All rights reserved.
+// Copyright 2022 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -60,6 +60,14 @@ func InputKeyboardConnectAndDisconnect(ctx context.Context, s *testing.State) {
 	defer da.Close(cleanupCtx, tconn)
 	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
 
+	// Since virtual keyboard BUS_USB (0x03) doesn't work yet, use BUS_I2C (0x18).
+	// See https://crrev.com/c/1407138 for more discussion.
+	vkb, err := input.VirtualKeyboardWithBusType(ctx, 0x18)
+	if err != nil {
+		s.Fatal("Failed to create a virtual keyboard: ", err)
+	}
+	defer vkb.Close()
+
 	ui := uiauto.New(tconn)
 	inputTab := da.DxInput.Ancestor(dxRootNode)
 	virtualKeyboard := da.DxVirtualKeyboardHeading
@@ -69,14 +77,6 @@ func InputKeyboardConnectAndDisconnect(ctx context.Context, s *testing.State) {
 	)(ctx); err != nil {
 		s.Fatal("Failed to check virtual keyboard: ", err)
 	}
-
-	// Since virtual keyboard with BUS_USB (0x03) doesn't work yet, use BUS_I2C (0x18).
-	// See https://crrev.com/c/1407138 for more discussion.
-	vkb, err := input.VirtualKeyboardWithBusType(ctx, 0x18)
-	if err != nil {
-		s.Fatal("Failed to create a virtual keyboard: ", err)
-	}
-	defer vkb.Close()
 
 	disconnectKeyboard := func() action.Action {
 		return func(ctx context.Context) error {
