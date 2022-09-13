@@ -16,6 +16,24 @@
       "message": "It looks like crrev.com/c/3892150 should take care of this.",
       "revId": "b1dfcf2d61d5e31d20a659fb4b3dd78bdb95a93e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "45bd2d66_f273e229",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1244186
+      },
+      "writtenOn": "2022-09-13T09:52:57Z",
+      "side": 1,
+      "message": "Thanks for pointing that out. I\u0027ll abandon this CL.",
+      "parentUuid": "93965ed6_6ef0a3b5",
+      "revId": "b1dfcf2d61d5e31d20a659fb4b3dd78bdb95a93e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ],
   "submitRequirementResults": [
