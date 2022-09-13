@@ -89,6 +89,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c756c96_76b29da3",
+        "filename": "src/chromiumos/tast/services/cros/ui/chrome_service.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-09-13T22:11:46Z",
+      "side": 1,
+      "message": "Thanks for letting me know how to check tast go proto in google3 presubmit. Marking as resolved since it passed with the current change.",
+      "parentUuid": "18dd8da7_961a43ae",
+      "revId": "cec70efcadf4a34a8a8d7406fee23c5c1739b19a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3f332954_c965e172",
@@ -142,6 +160,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba7aa0c2_9079e9c9",
+        "filename": "src/chromiumos/tast/services/cros/ui/chrome_service.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-09-13T22:11:46Z",
+      "side": 1,
+      "message": "Sounds good to me. will prefix it with `MODE_` then.",
+      "parentUuid": "c264dd0c_1766603a",
+      "revId": "cec70efcadf4a34a8a8d7406fee23c5c1739b19a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e9836f41_961683ed",
@@ -190,6 +226,24 @@
       "writtenOn": "2022-09-13T21:51:58Z",
       "side": 1,
       "message": "How about using `UNSPECIFIED` for consistency? If `UNSELECTED` represents a separate use case, can be move that to `1`?",
+      "revId": "cec70efcadf4a34a8a8d7406fee23c5c1739b19a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75fb45c1_6d470aab",
+        "filename": "src/chromiumos/tast/services/cros/ui/chrome_service.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-09-13T22:11:46Z",
+      "side": 1,
+      "message": "I\u0027m open to changing to `SELECTION_UNSPECIFIED`.\nBtw, I was just referring to the consts defined in Tast that are related to this.\nhttps://osscs.corp.google.com/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/lacros/config.go\n\nI\u0027ll be keeping it open just to see how others (+hidehiko) think.",
+      "parentUuid": "bf00b82a_2d876487",
       "revId": "cec70efcadf4a34a8a8d7406fee23c5c1739b19a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
