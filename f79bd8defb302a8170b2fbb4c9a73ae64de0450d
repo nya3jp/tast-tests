@@ -46,6 +46,30 @@
       },
       "revId": "f79bd8defb302a8170b2fbb4c9a73ae64de0450d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "73b56741_1c3b562a",
+        "filename": "src/chromiumos/tast/local/network/virtualnet/virtualnet.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-09-13T07:46:24Z",
+      "side": 1,
+      "message": "I think it\u0027s fine now, I guess that will be only be needed by the DNS tests.",
+      "parentUuid": "054a4afc_74cc79b5",
+      "range": {
+        "startLine": 40,
+        "startChar": 4,
+        "endLine": 40,
+        "endChar": 70
+      },
+      "revId": "f79bd8defb302a8170b2fbb4c9a73ae64de0450d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
