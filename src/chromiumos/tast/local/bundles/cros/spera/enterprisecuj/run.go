@@ -74,7 +74,7 @@ func Run(ctx context.Context, cr *chrome.Chrome, scenario CitrixScenario, p *Tes
 		return errors.Wrap(err, "failed to get browser start time")
 	}
 	options := cujrecorder.NewPerformanceCUJOptions()
-	recorder, err := cujrecorder.NewRecorder(ctx, cr, nil, options)
+	recorder, err := cujrecorder.NewRecorder(ctx, cr, tconn, nil, options)
 	if err != nil {
 		return errors.Wrap(err, "failed to create a recorder")
 	}
