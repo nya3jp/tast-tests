@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7006f415_0c9a6f06",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2022-09-13T23:57:23Z",
+      "side": 1,
+      "message": "posciak@, Friendly ping. Please add the respective owner in case this doesn\u0027t belong to your team.",
+      "revId": "89be3c2cc33feafec16971d5997122315afce4b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
