@@ -547,7 +547,7 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		screenRecorder.Start(ctx, tconn)
 	}
 
-	recorder, err := cujrecorder.NewRecorder(ctx, cr, nil, cujrecorder.RecorderOptions{})
+	recorder, err := cujrecorder.NewRecorder(ctx, cr, bTconn, nil, cujrecorder.RecorderOptions{})
 	if err != nil {
 		s.Fatal("Failed to create the recorder: ", err)
 	}
