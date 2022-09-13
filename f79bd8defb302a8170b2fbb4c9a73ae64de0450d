@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f0ee223_1999c543",
+        "filename": "src/chromiumos/tast/local/network/virtualnet/virtualnet.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-09-13T05:32:45Z",
+      "side": 1,
+      "message": "(we don\u0027t have this problem before) do we expect this list to be advertised by both DHCP and radvd?",
+      "range": {
+        "startLine": 40,
+        "startChar": 4,
+        "endLine": 40,
+        "endChar": 70
+      },
+      "revId": "f79bd8defb302a8170b2fbb4c9a73ae64de0450d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
