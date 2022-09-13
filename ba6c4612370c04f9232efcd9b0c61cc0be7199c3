@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5855422_072470df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/data/run-loopback-latency.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1271167
+      },
+      "writtenOn": "2022-09-13T05:03:38Z",
+      "side": 1,
+      "message": "remove this",
+      "range": {
+        "startLine": 26,
+        "startChar": 2,
+        "endLine": 26,
+        "endChar": 9
+      },
+      "revId": "ba6c4612370c04f9232efcd9b0c61cc0be7199c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74c84914_4eafbad5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/data/run-loopback-latency.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1271167
+      },
+      "writtenOn": "2022-09-13T05:03:38Z",
+      "side": 1,
+      "message": "just `${@:2}`",
+      "range": {
+        "startLine": 27,
+        "startChar": 23,
+        "endLine": 27,
+        "endChar": 25
+      },
+      "revId": "ba6c4612370c04f9232efcd9b0c61cc0be7199c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
