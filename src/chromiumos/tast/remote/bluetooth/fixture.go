@@ -50,7 +50,9 @@ func init() {
 			"cros-connectivity@google.com",
 		},
 		Impl: newFixture(&fixtureFeatures{
-			BluetoothRevamp: true,
+			EnableFeatures:  []string{"BluetoothRevamp"},
+			DisableFeatures: []string{},
+			NoLogin:         false,
 		}),
 		SetUpTimeout:    setUpTimeout,
 		ResetTimeout:    resetTimeout,
@@ -65,7 +67,9 @@ func init() {
 			"cros-connectivity@google.com",
 		},
 		Impl: newFixture(&fixtureFeatures{
-			BluetoothRevamp: false,
+			EnableFeatures:  []string{},
+			DisableFeatures: []string{"BluetoothRevamp"},
+			NoLogin:         false,
 		}),
 		SetUpTimeout:    setUpTimeout,
 		ResetTimeout:    resetTimeout,
@@ -80,8 +84,10 @@ func init() {
 			"cros-connectivity@google.com",
 		},
 		Impl: newFixture(&fixtureFeatures{
-			BluetoothRevamp:         true,
 			BluetoothAdapterEnabled: true,
+			EnableFeatures:          []string{"BluetoothRevamp"},
+			DisableFeatures:         []string{},
+			NoLogin:                 false,
 		}),
 		SetUpTimeout:    setUpTimeout,
 		ResetTimeout:    resetTimeout,
@@ -96,9 +102,11 @@ func init() {
 			"cros-connectivity@google.com",
 		},
 		Impl: newFixture(&fixtureFeatures{
-			BluetoothRevamp:         true,
-			BluetoothAdapterEnabled: true,
 			BTPeerCount:             1,
+			BluetoothAdapterEnabled: true,
+			EnableFeatures:          []string{"BluetoothRevamp"},
+			DisableFeatures:         []string{},
+			NoLogin:                 false,
 		}),
 		Vars:            []string{fixtureVarBTPeers},
 		SetUpTimeout:    setUpTimeout + btpeerTimeoutBuffer,
@@ -114,9 +122,11 @@ func init() {
 			"cros-connectivity@google.com",
 		},
 		Impl: newFixture(&fixtureFeatures{
-			BluetoothRevamp:         true,
-			BluetoothAdapterEnabled: true,
 			BTPeerCount:             2,
+			BluetoothAdapterEnabled: true,
+			EnableFeatures:          []string{"BluetoothRevamp"},
+			DisableFeatures:         []string{},
+			NoLogin:                 false,
 		}),
 		Vars:            []string{fixtureVarBTPeers},
 		SetUpTimeout:    setUpTimeout + 2*btpeerTimeoutBuffer,
@@ -132,9 +142,11 @@ func init() {
 			"cros-connectivity@google.com",
 		},
 		Impl: newFixture(&fixtureFeatures{
-			BluetoothRevamp:         true,
-			BluetoothAdapterEnabled: true,
 			BTPeerCount:             3,
+			BluetoothAdapterEnabled: true,
+			EnableFeatures:          []string{"BluetoothRevamp"},
+			DisableFeatures:         []string{},
+			NoLogin:                 false,
 		}),
 		Vars:            []string{fixtureVarBTPeers},
 		SetUpTimeout:    setUpTimeout + 3*btpeerTimeoutBuffer,
@@ -150,9 +162,11 @@ func init() {
 			"cros-connectivity@google.com",
 		},
 		Impl: newFixture(&fixtureFeatures{
-			BluetoothRevamp:         true,
-			BluetoothAdapterEnabled: true,
 			BTPeerCount:             4,
+			BluetoothAdapterEnabled: true,
+			EnableFeatures:          []string{"BluetoothRevamp"},
+			DisableFeatures:         []string{},
+			NoLogin:                 false,
 		}),
 		Vars:            []string{fixtureVarBTPeers},
 		SetUpTimeout:    setUpTimeout + 4*btpeerTimeoutBuffer,
@@ -193,11 +207,16 @@ type fixtureFeatures struct {
 	// fixture.TearDown.
 	BluetoothAdapterEnabled bool
 
-	// BluetoothRevamp is used as the value for ChromeNewRequest.BluetoothRevamp
-	// when BTTestService.ChromeNew is called during fixture.SetUp to toggle
-	// the "BluetoothRevamp" feature during Chrome login. A true value will
-	// enable the feature and a false value will disable the feature.
-	BluetoothRevamp bool
+	// EnableFeatures list of features used in ChromeNewRequest.EnableFeatures when
+	// BTTestService.ChromeNew is called during fixture.SetUp to toggle features on.
+	EnableFeatures []string
+
+	// EnableFeatures list of features used in ChromeNewRequest.EnableFeatures when
+	// BTTestService.ChromeNew is called during fixture.SetUp to toggle features off.
+	DisableFeatures []string
+
+	// NoLogin when true will set chrome to not login and remain in OOBE.
+	NoLogin bool
 }
 
 // FixtValue is the value of the test fixture accessible within a test. All

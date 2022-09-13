@@ -6,12 +6,15 @@ package bluetooth
 
 import (
 	"context"
+	"io/ioutil"
+	"path/filepath"
 	"time"
 
 	"google.golang.org/protobuf/types/known/emptypb"
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/remote/bluetooth"
+	"chromiumos/tast/remote/dutfs"
 	"chromiumos/tast/rpc"
 	"chromiumos/tast/testing"
 )
@@ -48,8 +51,21 @@ func OobeHidMouseOnly(ctx context.Context, s *testing.State) {
 	}
 	defer cl.Close(cleanupCtx)
 
-	if _, err := fv.BTS.WaitForCancelButton(ctx, &emptypb.Empty{}); err != nil {
-		s.Fatal("Failed to find cancel button: ", err)
+	resp, error := fv.BTS.WaitForCancelButton(ctx, &emptypb.Empty{})
+	if error != nil {
+		fs := dutfs.NewClient(cl.Conn)
+
+		out, err := fs.ReadFile(ctx, resp.UiTreeFilePath)
+		if err != nil {
+			s.Fatalf("Failed to get UI tree file %s: %v", resp.UiTreeFilePath, err)
+		}
+
+		uiTreePath := filepath.Join(s.OutDir(), "ui_tree.txt")
+		if err := ioutil.WriteFile(uiTreePath, out, 0644); err != nil {
+			s.Fatalf("File write ui tree file %s: ", uiTreePath)
+		}
+
+		s.Fatal("Failed to find cancel button: ", error)
 	}
 
 	// fv := s.FixtValue().(*bluetooth.FixtValue)

@@ -226,19 +226,24 @@ func (bts *BTTestService) discoverDevices(ctx context.Context) ([]*pb.Device, er
 }
 
 // WaitForCancelButton Waits for cancel button to become available.
-func (bts *BTTestService) WaitForCancelButton(ctx context.Context, empty *emptypb.Empty) (*emptypb.Empty, error) {
+func (bts *BTTestService) WaitForCancelButton(ctx context.Context, empty *emptypb.Empty) (*pb.ServiceResponse, error) {
 	outDir, ok := testing.ContextOutDir(ctx)
 	if !ok {
 		return nil, errors.New("failed to get output directory")
 	}
 
-	defer faillog.DumpUITree(ctx, outDir, bts.tconn)
+	faillog.DumpUITree(ctx, outDir, bts.tconn)
 
 	ui := uiauto.New(bts.tconn)
 	if err := ui.WaitUntilExists(nodewith.Name("continue"))(ctx); err != nil {
-		return nil, errors.Wrap(err, "failed to find continue button from service")
+		return &pb.ServiceResponse{
+			Success:        false,
+			UiTreeFilePath: outDir,
+		}, errors.Wrap(err, "failed to find continue button from service")
 	}
 
-	return &emptypb.Empty{}, nil
+	return &pb.ServiceResponse{
+		Success: true,
+	}, nil
 
 }

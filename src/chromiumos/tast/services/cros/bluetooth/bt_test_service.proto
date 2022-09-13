@@ -35,7 +35,7 @@ service BTTestService {
 
 
   // WaitForCancelButton Waits for cancel button to become available.
-  rpc WaitForCancelButton(google.protobuf.Empty) returns (google.protobuf.Empty) {}
+  rpc WaitForCancelButton(google.protobuf.Empty) returns (ServiceResponse) {}
 }
 
 message ChromeNewRequest {
@@ -53,5 +53,10 @@ message Device {
 message DiscoverDeviceRequest {
   // The device to discover.
   Device device = 1;
+}
+
+message ServiceResponse {
+  bool success = 1;
+  string uiTreeFilePath = 2;
 }
 
