@@ -228,7 +228,7 @@ func newDoHDropRules(nss, ifs []string) []rule {
 func newVPNDropRules(ns string) []rule {
 	var rules []rule
 	r := rule{
-		chain:  "FORWARD",
+		chain:  "INPUT",
 		target: "DROP",
 	}
 	r.ipc.ns = ns
@@ -249,7 +249,7 @@ func newVPNDropRules(ns string) []rule {
 func newDoHVPNDropRules(ns string) []rule {
 	var rules []rule
 	r := rule{
-		chain:  "FORWARD",
+		chain:  "INPUT",
 		proto:  "tcp",
 		dport:  443,
 		target: "DROP",
