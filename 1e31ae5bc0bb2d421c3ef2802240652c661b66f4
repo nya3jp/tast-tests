@@ -50,6 +50,30 @@
       "message": "Nit: maybe add \"the\": pass the telemetryextension.HasOEMNAme test.",
       "revId": "1e31ae5bc0bb2d421c3ef2802240652c661b66f4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57d4495f_6edc7fe2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/dep/stable.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-09-13T00:51:36Z",
+      "side": 1,
+      "message": "\u003e \"consistenly\" is a possible misspelling of \"consistently\".\n\nPlease fix.",
+      "parentUuid": "d163c17c_a91d70a0",
+      "range": {
+        "startLine": 13,
+        "startChar": 3,
+        "endLine": 13,
+        "endChar": 14
+      },
+      "revId": "1e31ae5bc0bb2d421c3ef2802240652c661b66f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
