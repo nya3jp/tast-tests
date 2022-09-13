@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f239bb0b_bde0fa65",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/disable_enable_ec_sw_sync.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-09-13T08:37:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d0692848_18c44458",
+      "range": {
+        "startLine": 117,
+        "startChar": 55,
+        "endLine": 117,
+        "endChar": 76
+      },
+      "revId": "446a01eab7a78c6c0f326fca8182db5f61434d43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ea6cd4df_f096502c",
