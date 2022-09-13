@@ -60,6 +60,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "29dc6bda_fe2a9b26",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/boot_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2022-09-13T20:09:23Z",
+      "side": 1,
+      "message": "cleanupCtx?\n\nOr you\u0027ll naturally get this right if you follow Oleh\u0027s suggestions, I think",
+      "range": {
+        "startLine": 246,
+        "startChar": 44,
+        "endLine": 246,
+        "endChar": 47
+      },
+      "revId": "049dc1ef0775404f6627d5a4cb7d24b9ccafd676",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4b221e84_8b353550",
         "filename": "src/chromiumos/tast/remote/bundles/cros/platform/boot_perf.go",
         "patchSetId": 2
