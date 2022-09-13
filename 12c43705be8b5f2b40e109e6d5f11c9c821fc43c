@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "35cef8e5_2171888f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2022-09-13T16:56:14Z",
+      "side": 1,
+      "message": "need rereview since some conflicting CLs landed",
+      "revId": "12c43705be8b5f2b40e109e6d5f11c9c821fc43c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
