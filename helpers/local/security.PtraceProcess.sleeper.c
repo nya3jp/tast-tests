@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012 The Chromium OS Authors.
+ * Copyright 2012 The ChromiumOS Authors
  *
  * Based on:
  * http://bazaar.launchpad.net/~ubuntu-bugcontrol/qa-regression-testing/master/view/head:/scripts/kernel-security/ptrace/sleeper.c // nocheck
