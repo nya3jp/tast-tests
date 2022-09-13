@@ -1,0 +1,251 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "56ca7628_45ebd9a7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-09-13T08:37:01Z",
+      "side": 1,
+      "message": "LGTM in general for the virtualnet usage, just some nits and questions.",
+      "revId": "ccd5169f4881df93cf6aa8d5184700ef648900cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f15b9932_a650e5b9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns/dns.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-09-13T08:37:01Z",
+      "side": 1,
+      "message": "style nit: always handle errors",
+      "range": {
+        "startLine": 389,
+        "startChar": 1,
+        "endLine": 389,
+        "endChar": 16
+      },
+      "revId": "ccd5169f4881df93cf6aa8d5184700ef648900cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92a5fc16_1d8a0675",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns/dns.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 413,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-09-13T08:37:01Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 413,
+        "startChar": 5,
+        "endLine": 413,
+        "endChar": 10
+      },
+      "revId": "ccd5169f4881df93cf6aa8d5184700ef648900cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75aca3b0_9d45444b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns/dns.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 428,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-09-13T08:37:01Z",
+      "side": 1,
+      "message": "Not a suggestion: is it possible/cleaner to use env.New() instead of CreateRouterEnv() to create the first one and start the dnsmasq for DHCP in it later? Then we don\u0027t need this piece of code.",
+      "range": {
+        "startLine": 420,
+        "startChar": 1,
+        "endLine": 428,
+        "endChar": 2
+      },
+      "revId": "ccd5169f4881df93cf6aa8d5184700ef648900cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "828d7682_ab394a46",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns/dns.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 441,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-09-13T08:37:01Z",
+      "side": 1,
+      "message": "I guess you\u0027ll need to revert this change somewhere, or push a temp profile [1] before the test if the user profile does not matter in the test.\n\n[1] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/shill/manager.go;l\u003d542",
+      "range": {
+        "startLine": 438,
+        "startChar": 1,
+        "endLine": 441,
+        "endChar": 0
+      },
+      "revId": "ccd5169f4881df93cf6aa8d5184700ef648900cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d246cabe_2a9564a2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns/dns.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 487,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-09-13T08:37:01Z",
+      "side": 1,
+      "message": "I forgot the original purpuse but maybe we can just merge New() and SetUp() function since they will always be used together....",
+      "range": {
+        "startLine": 480,
+        "startChar": 1,
+        "endLine": 487,
+        "endChar": 2
+      },
+      "revId": "ccd5169f4881df93cf6aa8d5184700ef648900cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7eb782db_5c01ec00",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns/dns.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 506,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-09-13T08:37:01Z",
+      "side": 1,
+      "message": "nit: put it to the next param.",
+      "range": {
+        "startLine": 506,
+        "startChar": 47,
+        "endLine": 506,
+        "endChar": 61
+      },
+      "revId": "ccd5169f4881df93cf6aa8d5184700ef648900cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "896a4343_57062cac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns/dns.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 506,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-09-13T08:37:01Z",
+      "side": 1,
+      "message": "nit: I suppose this one should be for the next param",
+      "range": {
+        "startLine": 506,
+        "startChar": 80,
+        "endLine": 506,
+        "endChar": 95
+      },
+      "revId": "ccd5169f4881df93cf6aa8d5184700ef648900cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49c25463_8cb97626",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns/dns.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 506,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-09-13T08:37:01Z",
+      "side": 1,
+      "message": "do you need to pass in subnet here? I suppose it\u0027s only for DHCP?",
+      "range": {
+        "startLine": 506,
+        "startChar": 69,
+        "endLine": 506,
+        "endChar": 79
+      },
+      "revId": "ccd5169f4881df93cf6aa8d5184700ef648900cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "908c2055_3e2bdc15",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns_proxy.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-09-13T08:37:01Z",
+      "side": 1,
+      "message": "I guess we need to put the above two defers in the current order for the same reason? How about move this comment above?",
+      "range": {
+        "startLine": 106,
+        "startChar": 4,
+        "endLine": 106,
+        "endChar": 115
+      },
+      "revId": "ccd5169f4881df93cf6aa8d5184700ef648900cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d4c61a1_6dbcfaea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns_proxy.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-09-13T08:37:01Z",
+      "side": 1,
+      "message": "will we need this svc in other cases? How about just removing it if not?",
+      "range": {
+        "startLine": 112,
+        "startChar": 1,
+        "endLine": 112,
+        "endChar": 2
+      },
+      "revId": "ccd5169f4881df93cf6aa8d5184700ef648900cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
