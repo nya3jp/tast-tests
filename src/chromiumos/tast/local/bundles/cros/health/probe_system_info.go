@@ -1,4 +1,4 @@
-// Copyright 2021 The Chromium OS Authors. All rights reserved.
+// Copyright 2021 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -56,11 +56,12 @@ type osVersion struct {
 }
 
 type osInfo struct {
-	CodeName      string    `json:"code_name"`
-	MarketingName *string   `json:"marketing_name"`
-	OSVersion     osVersion `json:"os_version"`
-	BootMode      string    `json:"boot_mode"`
-	OEMName       *string   `json:"oem_name"`
+	CodeName        string    `json:"code_name"`
+	MarketingName   *string   `json:"marketing_name"`
+	OSVersion       osVersion `json:"os_version"`
+	BootMode        string    `json:"boot_mode"`
+	OEMName         *string   `json:"oem_name"`
+	EfiPlatformSize string    `json:"efi_platform_size"`
 }
 
 type vpdInfo struct {
@@ -154,6 +155,9 @@ func expectedOSInfo(ctx context.Context) (osInfo, error) {
 	if r.BootMode, err = expectedBootMode(); err != nil {
 		return r, err
 	}
+	// Before we have DUT boot with efi, we can assume that the result should be
+	// "unknown".
+	r.EfiPlatformSize = "unknown"
 	return r, nil
 }
 
