@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b0698b9_a8b51d04",
+        "filename": "src/chromiumos/tast/remote/cellular/callbox/manager/fixture.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1541462
+      },
+      "writtenOn": "2022-09-13T16:01:23Z",
+      "side": 1,
+      "message": "changed to \"parse hostname,\" in this case, the dut host was given as a `ip:port` combination but we were expecting a `hostname:port` format.",
+      "parentUuid": "0d08f951_6e794974",
+      "range": {
+        "startLine": 193,
+        "startChar": 37,
+        "endLine": 193,
+        "endChar": 60
+      },
+      "revId": "8a258b781b1df4319595667764085266b9ead0d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a6801065_fcb601e5",
@@ -77,6 +101,54 @@
       "writtenOn": "2022-09-08T16:41:09Z",
       "side": 1,
       "message": "nit: dutHost",
+      "range": {
+        "startLine": 198,
+        "startChar": 93,
+        "endLine": 198,
+        "endChar": 107
+      },
+      "revId": "8a258b781b1df4319595667764085266b9ead0d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fdb923e0_2e3696fc",
+        "filename": "src/chromiumos/tast/remote/cellular/callbox/manager/fixture.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1541462
+      },
+      "writtenOn": "2022-09-13T16:01:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a6801065_fcb601e5",
+      "range": {
+        "startLine": 198,
+        "startChar": 28,
+        "endLine": 198,
+        "endChar": 51
+      },
+      "revId": "8a258b781b1df4319595667764085266b9ead0d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c174948d_ffb12d69",
+        "filename": "src/chromiumos/tast/remote/cellular/callbox/manager/fixture.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1541462
+      },
+      "writtenOn": "2022-09-13T16:01:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "87f224e9_163728ad",
       "range": {
         "startLine": 198,
         "startChar": 93,

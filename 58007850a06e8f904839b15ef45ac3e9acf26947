@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ebaee82_3d3e4138",
+        "filename": "src/chromiumos/tast/remote/cellular/callbox/manager/fixture.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1541462
+      },
+      "writtenOn": "2022-09-13T16:01:23Z",
+      "side": 1,
+      "message": "Expanded the comment to give a complete example.\n\nYes, it\u0027s basically the same as what is done in wificells, here `callbox` is the hostname of the callbox and `n` is the DUT \"host number\" where each callbox can have multiple DUTs attached to it. So for a single callbox named:\n`chromeos1-donutlab-callbox1` valid DUT names could be:\n`chromeos1-donutlab-callbox1.host1`\n`chromeos1-donutlab-callbox1.host2`\n`chromeos1-donutlab-callbox1.host3`\n`...`",
+      "parentUuid": "3cbe88c9_955c7782",
+      "range": {
+        "startLine": 181,
+        "startChar": 2,
+        "endLine": 181,
+        "endChar": 101
+      },
+      "revId": "58007850a06e8f904839b15ef45ac3e9acf26947",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "74dc1d7f_d6510ee6",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "93da881e_35606976",
+        "filename": "src/chromiumos/tast/remote/cellular/callbox/manager/fixture.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1541462
+      },
+      "writtenOn": "2022-09-13T16:01:23Z",
+      "side": 1,
+      "message": "Yes, that\u0027s exactly what it does: `chromeos1-donutlab-callbox1-host1` \u003d\u003e `chromeos1-donutlab-callbox1.cros`",
+      "parentUuid": "74dc1d7f_d6510ee6",
+      "range": {
+        "startLine": 182,
+        "startChar": 0,
+        "endLine": 182,
+        "endChar": 52
+      },
+      "revId": "58007850a06e8f904839b15ef45ac3e9acf26947",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0ccd2ec3_e040c249",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-09-12T23:02:46Z",
       "side": 1,
       "message": "If this is a requirement you need to make sure that it is always present and that you are not adding the suffix if it is already there. \n\nA simple way to do this is by removing the suffix if it exists and then always adding it. Using `strings.TrimSuffix` you can easily ensure a string has a suffix by doing something like:\n\n```\n// assuming hostname is already resolved correctly otherwise at this point\nhostname \u003d strings.TrimSuffix(hostname, \".cros\") + \".cros\"\n```",
+      "range": {
+        "startLine": 201,
+        "startChar": 19,
+        "endLine": 201,
+        "endChar": 60
+      },
+      "revId": "58007850a06e8f904839b15ef45ac3e9acf26947",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e277a449_1e4b6d9f",
+        "filename": "src/chromiumos/tast/remote/cellular/callbox/manager/fixture.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1541462
+      },
+      "writtenOn": "2022-09-13T16:01:23Z",
+      "side": 1,
+      "message": "Added. \n\nThough I\u0027m not aware of a scenario in which this can actually occur since jobs run in the lab just use the DUT hostname without a .cros ending and tests launched locally would be passed in as ssh tunnels which would be caught earlier.",
+      "parentUuid": "0ccd2ec3_e040c249",
       "range": {
         "startLine": 201,
         "startChar": 19,
