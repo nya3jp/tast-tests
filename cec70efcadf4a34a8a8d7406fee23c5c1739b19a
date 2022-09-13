@@ -73,6 +73,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "18dd8da7_961a43ae",
+        "filename": "src/chromiumos/tast/services/cros/ui/chrome_service.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2022-09-13T21:51:58Z",
+      "side": 1,
+      "message": "I do not know of an automatic way to do that.\n\nThe migration cmd `go run third_party/golang/import.go -dir\u003dtast_tests -version\u003dsame` only applies to the main branch I think.\n\nI created cl/474129947 to test out the changes, and presubmit went through.",
+      "parentUuid": "c5d2ae59_113be3b2",
+      "revId": "cec70efcadf4a34a8a8d7406fee23c5c1739b19a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3f332954_c965e172",
         "filename": "src/chromiumos/tast/services/cros/ui/chrome_service.proto",
         "patchSetId": 2
@@ -108,6 +126,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c264dd0c_1766603a",
+        "filename": "src/chromiumos/tast/services/cros/ui/chrome_service.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2022-09-13T21:51:58Z",
+      "side": 1,
+      "message": "Thanks, i misread it. I was always under the impression that the first value of any enum is \"UNSPECIFIED\".\n\nGo does handle that generation gracefully. Go code gen even looks a  duplicated with the Prefix, which likely would end up like `Lacros_MODE_MODE_SIDEBYSIDE`.\nFor consistency and potential compatibility with C++, my preference is to include a prefix.",
+      "parentUuid": "93a3026b_c8d9917e",
+      "revId": "cec70efcadf4a34a8a8d7406fee23c5c1739b19a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e9836f41_961683ed",
         "filename": "src/chromiumos/tast/services/cros/ui/chrome_service.proto",
         "patchSetId": 2
@@ -137,6 +173,23 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "e9836f41_961683ed",
+      "revId": "cec70efcadf4a34a8a8d7406fee23c5c1739b19a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf00b82a_2d876487",
+        "filename": "src/chromiumos/tast/services/cros/ui/chrome_service.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2022-09-13T21:51:58Z",
+      "side": 1,
+      "message": "How about using `UNSPECIFIED` for consistency? If `UNSELECTED` represents a separate use case, can be move that to `1`?",
       "revId": "cec70efcadf4a34a8a8d7406fee23c5c1739b19a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
