@@ -1,4 +1,4 @@
-// Copyright 2020 The Chromium OS Authors. All rights reserved.
+// Copyright 2020 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -24,9 +24,10 @@ import (
 type Mode int
 
 // the mode to use in WPR
-//   Replay is the mode to use when running WPR on local side, and WPR is set to replay all recorded web traffic.
-//   Record is the mode to use when running WPR on local side, and WPR is set to record web traffic.
-//   RemoteReplay is the mode to use when WPR is running on remote side, and WPR is set to replay all recorded web traffic.
+//
+//	Replay is the mode to use when running WPR on local side, and WPR is set to replay all recorded web traffic.
+//	Record is the mode to use when running WPR on local side, and WPR is set to record web traffic.
+//	RemoteReplay is the mode to use when WPR is running on remote side, and WPR is set to replay all recorded web traffic.
 const (
 	Replay Mode = iota
 	Record
@@ -148,7 +149,11 @@ func New(ctx context.Context, mode Mode, archive string) (*WPR, error) {
 	httpAddr := fmt.Sprintf("127.0.0.1:%d", httpPort)
 	httpsAddr := fmt.Sprintf("127.0.0.1:%d", httpsPort)
 	args := chromeRuntimeArgs(httpAddr, httpsAddr)
-	opts := []chrome.Option{chrome.ExtraArgs(args...), chrome.LacrosExtraArgs(args...)}
+	opts := []chrome.Option{
+		chrome.ExtraArgs(args...),
+		chrome.LacrosExtraArgs(args...),
+		chrome.DisableFeatures("FirmwareUpdaterApp"),
+	}
 
 	wpr := &WPR{
 		HTTPPort:      httpPort,
