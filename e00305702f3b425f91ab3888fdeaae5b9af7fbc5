@@ -16,6 +16,24 @@
       "message": "Should there be a period at the end here?",
       "revId": "e00305702f3b425f91ab3888fdeaae5b9af7fbc5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed026c43_7edec520",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-09-13T16:23:00Z",
+      "side": 1,
+      "message": "Then `repo upload` says:\n\t[FAILED] chromiumos/platform/tast-tests: cros_license_check\n\t    Do not include period after \"ChromiumOS Authors\":\n\t    src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+      "parentUuid": "77821f00_ed6e415a",
+      "revId": "e00305702f3b425f91ab3888fdeaae5b9af7fbc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
