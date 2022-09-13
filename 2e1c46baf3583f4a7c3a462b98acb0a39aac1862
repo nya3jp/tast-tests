@@ -50,6 +50,24 @@
       "message": "this seems pretty high, does anything here take multiple minutes to clean up (maybe DeleteScreencastItems)? If we can shrink this we can also shrink the test timeout.",
       "revId": "2e1c46baf3583f4a7c3a462b98acb0a39aac1862",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc5ad1c6_23f5ec87",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/local_playback.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-09-13T18:49:02Z",
+      "side": 1,
+      "message": "stevensd@ asked for a 4-minute timeout in this other Tast CL review [1]. DeleteScreencastItems() has a 2 minute timeout, and then it retries deleting potentially multiple screencast items at 5 second intervals, so taking 4 minutes to clean up out of a total of 10 minutes makes sense. Note that deletion is critical to ensuring we don\u0027t explode the test account\u0027s Drive quota, and usually takes much less time than 4 minutes from manual testing.\n\n[1] https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3861378/comments/6a3d97ff_077890ba",
+      "parentUuid": "8b435f09_c2118ffd",
+      "revId": "2e1c46baf3583f4a7c3a462b98acb0a39aac1862",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
