@@ -41,10 +41,17 @@ func (bts *BTTestService) ChromeNew(ctx context.Context, request *pb.ChromeNewRe
 		return nil, errors.New("chrome already available")
 	}
 	var chromeOpts []chrome.Option
-	if request.BluetoothRevampEnabled {
-		chromeOpts = []chrome.Option{chrome.EnableFeatures("BluetoothRevamp")}
-	} else {
-		chromeOpts = []chrome.Option{chrome.DisableFeatures("BluetoothRevamp")}
+
+	if len(request.EnableFeatures) > 0 {
+		chromeOpts = append(chromeOpts, chrome.EnableFeatures(request.EnableFeatures...))
+	}
+
+	if len(request.DisableFeatures) > 0 {
+		chromeOpts = append(chromeOpts, chrome.DisableFeatures(request.DisableFeatures...))
+	}
+
+	if request.NoLogin {
+		chromeOpts = append(chromeOpts, chrome.NoLogin())
 	}
 	cr, err := chrome.New(ctx, chromeOpts...)
 	if err != nil {
