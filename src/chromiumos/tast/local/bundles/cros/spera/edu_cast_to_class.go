@@ -217,7 +217,7 @@ func EDUCastToClass(ctx context.Context, s *testing.State) {
 	defer cancel()
 
 	options := cujrecorder.NewPerformanceCUJOptions()
-	recorder, err := cujrecorder.NewRecorder(ctx, cr, nil, options)
+	recorder, err := cujrecorder.NewRecorder(ctx, cr, bTconn, nil, options)
 	if err != nil {
 		s.Fatal("Failed to create the recorder: ", err)
 	}

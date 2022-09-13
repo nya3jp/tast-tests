@@ -188,7 +188,7 @@ func FrontlineWorkerCUJ(ctx context.Context, s *testing.State) {
 	defer cancel()
 
 	options := cujrecorder.NewPerformanceCUJOptions()
-	recorder, err := cujrecorder.NewRecorder(ctx, cr, nil, options)
+	recorder, err := cujrecorder.NewRecorder(ctx, cr, tconn, nil, options)
 	if err != nil {
 		s.Fatal("Failed to create the recorder: ", err)
 	}
