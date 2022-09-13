@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "177ea378_bbc11d4f",
+        "filename": "src/chromiumos/tast/services/cros/ui/audio_service.pb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-09-13T18:37:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "74601e76_65ccd48c",
+      "revId": "cec70efcadf4a34a8a8d7406fee23c5c1739b19a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d900284a_23070ab6",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-09-13T17:29:19Z",
       "side": 1,
       "message": "The proto eventually are going to exported to Google3, which has more stringent checks on proto file.  \nhttps://source.corp.google.com/piper///depot/google3/third_party/golang/tast_tests/src/chromiumos/tast/services/cros/ui/chrome_service.proto?q\u003dchrome_service.proto\u0026ct\u003dos\nCan we verify with a Google3 presubmit to see if it adheres to the google3 recommendation?",
+      "revId": "cec70efcadf4a34a8a8d7406fee23c5c1739b19a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5d2ae59_113be3b2",
+        "filename": "src/chromiumos/tast/services/cros/ui/chrome_service.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-09-13T18:37:20Z",
+      "side": 1,
+      "message": "Curious, is there a handy way to see if it passes a google3 presubmit?",
+      "parentUuid": "d900284a_23070ab6",
       "revId": "cec70efcadf4a34a8a8d7406fee23c5c1739b19a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -54,6 +90,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "93a3026b_c8d9917e",
+        "filename": "src/chromiumos/tast/services/cros/ui/chrome_service.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-09-13T18:37:20Z",
+      "side": 1,
+      "message": "I see `UNSPECIFIED` defined once in this message. However, `MODE_UNSPECIFIED` seems to be clearer.\n\nFor a message-level enum like this, I found Golang generates `Lacros_MODE_SIDEBYSIDE` with the message name as a prefix. If it looks okay, I\u0027ll make a change in the next patchset.",
+      "parentUuid": "3f332954_c965e172",
+      "revId": "cec70efcadf4a34a8a8d7406fee23c5c1739b19a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e9836f41_961683ed",
         "filename": "src/chromiumos/tast/services/cros/ui/chrome_service.proto",
         "patchSetId": 2
@@ -65,6 +119,24 @@
       "writtenOn": "2022-09-13T17:29:19Z",
       "side": 1,
       "message": "Lacros.",
+      "revId": "cec70efcadf4a34a8a8d7406fee23c5c1739b19a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f32e299_aca21459",
+        "filename": "src/chromiumos/tast/services/cros/ui/chrome_service.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-09-13T18:37:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e9836f41_961683ed",
       "revId": "cec70efcadf4a34a8a8d7406fee23c5c1739b19a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
