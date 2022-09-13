@@ -12,6 +12,15 @@
       "type": "image/png"
     }
   ],
+  "file_handlers": [
+    {
+      "action": "/open",
+      "accept": {
+        "text/plain": [".txt"]
+      },
+      "launch_type": "single-client"
+    }
+  ],
   "share_target": {
     "action": "share",
     "method": "POST",

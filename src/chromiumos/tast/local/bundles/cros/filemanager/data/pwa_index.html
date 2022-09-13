@@ -1,0 +1,47 @@
+<!-- Copyright 2021 The ChromiumOS Authors
+     Use of this source code is governed by a BSD-style license that can be
+     found in the LICENSE file. -->
+<head>
+  <title>Web Share Target PWA</title>
+  <meta name="viewport" content="width=device-width, user-scalable=no" />
+  <link rel="manifest" href="/pwa_manifest.json" />
+  <link rel="icon" href="/pwa_icon.png" type="image/png" />
+</head>
+
+<body>
+  <h1>Test PWA to display text file</h1>
+  <script type="text/javascript">
+    if (navigator.serviceWorker) {
+      navigator.serviceWorker.register('/pwa_service.js')
+      .then(function(registration) {
+        console.log('Registered events at scope: ', registration.scope);
+      });
+    }
+    async function handleFile(fileHandle) {
+      const file = await fileHandle.getFile();
+      const $name = document.querySelector('#name');
+      const $content = document.querySelector('#raw-content');
+
+      $name.textContent = `Name: ${file.name} Size: ${file.size}`;
+      $content.textContent = await file.text();
+    
+    }
+
+    if ('launchQueue' in window) {
+      window.launchQueue.setConsumer((params) => {
+        if (!params.files.length) {
+            console.log('no files in params');
+            return;
+        }
+
+        for (const file of params.files) {
+            handleFile(file);
+        }
+      });    
+    }
+
+  </script>
+
+  <p id="name"></p>
+  <textarea id="raw-content" placeholder="Loading..."></textarea>
+</body>
