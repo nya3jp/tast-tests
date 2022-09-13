@@ -259,11 +259,17 @@ func (r *Recorder) AddCommonMetrics(tconn, bTconn *chrome.TestConn) error {
 // NewRecorderWithTestConn creates a Recorder. It also aggregates the metrics of each
 // category (animation smoothness and input latency) and creates the aggregated
 // reports.
-func NewRecorderWithTestConn(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome, a *arc.ARC, options RecorderOptions) (*Recorder, error) {
+func NewRecorderWithTestConn(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome, bTconn *chrome.TestConn, a *arc.ARC, options RecorderOptions) (*Recorder, error) {
 	if tconn == nil {
 		return nil, errors.New("tconn must never be nil")
 	}
-	r := &Recorder{cr: cr, tconn: tconn}
+	// Keep one TestConn for each browser.
+	tconns := make(map[browser.Type]*chrome.TestConn)
+	tconns[browser.TypeAsh] = tconn
+	if bTconn != nil && *tconn != *bTconn {
+		tconns[browser.TypeLacros] = bTconn
+	}
+	r := &Recorder{cr: cr, tconn: tconn, tconns: tconns}
 
 	powerTestOptions := setup.PowerTestOptions{
 		// The default for the following options is to disable these setting.
@@ -323,7 +329,7 @@ func NewRecorderWithTestConn(ctx context.Context, tconn *chrome.TestConn, cr *ch
 		return nil, errors.Wrap(batteryDischargeErr, "battery discharge failed")
 	}
 
-	r.gpuDataSource = perfSrc.NewGPUDataSource(r.tconn)
+	r.gpuDataSource = perfSrc.NewGPUDataSource(r.tconns)
 	r.tpsTimeline, err = perf.NewTimeline(ctx, []perf.TimelineDatasource{
 		perfSrc.NewCPUUsageSource("CPU"),
 		perfSrc.NewThermalDataSource(),
@@ -367,7 +373,6 @@ func NewRecorderWithTestConn(ctx context.Context, tconn *chrome.TestConn, cr *ch
 	r.loginEventRecorder = perfSrc.NewLoginEventRecorder(tpsMetricPrefix)
 
 	r.names = make(map[browser.Type][]string)
-	r.tconns = make(map[browser.Type]*chrome.TestConn)
 	r.records = make(map[browser.Type]map[string]*record)
 
 	if err := r.frameDataTracker.Start(ctx, r.tconn); err != nil {
@@ -417,12 +422,12 @@ func NewRecorderWithTestConn(ctx context.Context, tconn *chrome.TestConn, cr *ch
 // NewRecorder creates a Recorder based on the configs. It also aggregates the
 // metrics of each category (animation smoothness and input latency) and creates
 // the aggregated reports.
-func NewRecorder(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, options RecorderOptions) (*Recorder, error) {
+func NewRecorder(ctx context.Context, cr *chrome.Chrome, bTconn *chrome.TestConn, a *arc.ARC, options RecorderOptions) (*Recorder, error) {
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		return nil, errors.Wrap(err, "creating test API connection failed")
 	}
-	return NewRecorderWithTestConn(ctx, tconn, cr, a, options)
+	return NewRecorderWithTestConn(ctx, tconn, cr, bTconn, a, options)
 }
 
 // EnableTracing enables system tracing when the recorder is running a test scenario.
@@ -451,7 +456,7 @@ func (r *Recorder) Close(ctx context.Context) error {
 //
 // Out:
 // * New context (with reduced timeout) that should be used to run the test
-//   function.
+// function.
 // * Error
 func (r *Recorder) startRecording(ctx context.Context) (runCtx context.Context, e error) {
 	if !r.startedAtTm.IsZero() {
@@ -557,7 +562,7 @@ func (r *Recorder) startRecording(ctx context.Context) (runCtx context.Context, 
 //
 // In:
 // * context used to initialise recording (the one that was passed to the
-//   startRecording above).
+// startRecording above).
 // * shorted context returned from the startRecording()
 //
 // Out:
