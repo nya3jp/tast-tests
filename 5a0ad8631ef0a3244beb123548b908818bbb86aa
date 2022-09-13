@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3486ac7f_6e644b0f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-09-13T20:16:55Z",
+      "side": 1,
+      "message": "LGTM % the comment.",
+      "revId": "5a0ad8631ef0a3244beb123548b908818bbb86aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab12a845_e9c84e4a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/intel/boot_via_usb.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-09-13T20:16:55Z",
+      "side": 1,
+      "message": "I noticed we don\u0027t have Attr set. Thus, it can only be run manually. \nIs it expected?",
+      "revId": "5a0ad8631ef0a3244beb123548b908818bbb86aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
