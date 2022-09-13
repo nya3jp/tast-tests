@@ -16,6 +16,46 @@
       "message": "Jie, would you mind taking the first pass for the virtualnet + VPN changes? Thanks!",
       "revId": "5eef375cf948e060174b837057c0b208d3766670",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b909d6b_a123756d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-09-13T05:05:42Z",
+      "side": 1,
+      "message": "Thanks!",
+      "revId": "5eef375cf948e060174b837057c0b208d3766670",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48319f7c_dd93ced5",
+        "filename": "src/chromiumos/tast/local/network/virtualnet/certs/certs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-09-13T05:05:42Z",
+      "side": 1,
+      "message": "nit: \"SSLCrtPath\", acronym should be in consistent case",
+      "range": {
+        "startLine": 47,
+        "startChar": 1,
+        "endLine": 47,
+        "endChar": 4
+      },
+      "revId": "5eef375cf948e060174b837057c0b208d3766670",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
