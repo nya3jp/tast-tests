@@ -37,6 +37,8 @@ type EnvOptions struct {
 	// EnableDNS enables the DNS functionality. It only support resolving ResolvedHost
 	// to a single IP address ResolveHostToIP provided during configuration.
 	EnableDNS bool
+	// IPv4DNSServers specifies the IPv4 DNS servers to be advertised by the router (dnsmasq).
+	IPv4DNSServers []string
 	// RAServer enables the RA server in the Env. IPv6 addresses can be obtained
 	// on the interface by SLAAC.
 	RAServer bool
@@ -88,7 +90,7 @@ func CreateRouterEnv(ctx context.Context, m *shill.Manager, pool *subnet.Pool, o
 		if err != nil {
 			return nil, nil, errors.Wrap(err, "failed to allocate v4 subnet for DHCP")
 		}
-		dnsmasq := dnsmasq.New(v4Subnet, opts.EnableDNS, []string{}, opts.ResolvedHost, opts.ResolveHostToIP)
+		dnsmasq := dnsmasq.New(opts.EnableDHCP, opts.EnableDNS, v4Subnet, opts.IPv4DNSServers, opts.ResolvedHost, opts.ResolveHostToIP)
 		if err := router.StartServer(ctx, "dnsmasq", dnsmasq); err != nil {
 			return nil, nil, errors.Wrap(err, "failed to start dnsmasq")
 		}
