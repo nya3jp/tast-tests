@@ -46,10 +46,9 @@ func init() {
 		Timeout:      5 * time.Minute,
 		Params: []testing.Param{
 			{
-				Fixture:   fixture.ClamshellNonVK,
-				ExtraAttr: []string{"group:input-tools-upstream"},
-				// TODO(b/238408718): Enable test on kodama once b/238408718 solved.
-				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels, hwdep.SkipOnModel("kodama")),
+				Fixture:           fixture.ClamshellNonVK,
+				ExtraAttr:         []string{"group:input-tools-upstream"},
+				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
 			},
 			{
 				Name:              "informational",
@@ -60,7 +59,7 @@ func init() {
 			{
 				Name:              "lacros",
 				Fixture:           fixture.LacrosClamshellNonVK,
-				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels, hwdep.SkipOnModel("kodama")),
+				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
 				ExtraSoftwareDeps: []string{"lacros"},
 				ExtraAttr:         []string{"group:input-tools-upstream"},
 			},
