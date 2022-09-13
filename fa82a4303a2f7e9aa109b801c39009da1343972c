@@ -35,6 +35,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad449a9f_ba9867ae",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2022-09-13T20:28:15Z",
+      "side": 1,
+      "message": "LGTM. I am not the tast owners here though.",
+      "revId": "fa82a4303a2f7e9aa109b801c39009da1343972c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c857ea01_8a763913",
@@ -66,6 +83,24 @@
       "side": 1,
       "message": "Other tasts tests were configured previously to use md5 options for testing using the --md5 flag. The only issue was that ffmpeg_wrapper used an --output flag instead of a --md5 flag. I believe that other tasts tests are already configured for md5 options.",
       "parentUuid": "c857ea01_8a763913",
+      "revId": "fa82a4303a2f7e9aa109b801c39009da1343972c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6a75d4c_cab2097f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2738,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2022-09-13T20:28:15Z",
+      "side": 1,
+      "message": "Thanks Bijan! I actually mis-read the code.",
+      "parentUuid": "78896cb3_ceae7162",
       "revId": "fa82a4303a2f7e9aa109b801c39009da1343972c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
