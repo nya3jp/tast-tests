@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4dfcf10_6b955999",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/dep/non_stable.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-09-13T10:18:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "46ddd5b1_b4b3e1f1",
+      "revId": "1e31ae5bc0bb2d421c3ef2802240652c661b66f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a1950a59_34ddea90",
@@ -48,6 +66,24 @@
       "writtenOn": "2022-09-12T14:07:37Z",
       "side": 1,
       "message": "Nit: maybe add \"the\": pass the telemetryextension.HasOEMNAme test.",
+      "revId": "1e31ae5bc0bb2d421c3ef2802240652c661b66f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5555d90e_7552631e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/dep/stable.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-09-13T10:18:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a1950a59_34ddea90",
       "revId": "1e31ae5bc0bb2d421c3ef2802240652c661b66f4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -66,6 +102,30 @@
       "side": 1,
       "message": "\u003e \"consistenly\" is a possible misspelling of \"consistently\".\n\nPlease fix.",
       "parentUuid": "d163c17c_a91d70a0",
+      "range": {
+        "startLine": 13,
+        "startChar": 3,
+        "endLine": 13,
+        "endChar": 14
+      },
+      "revId": "1e31ae5bc0bb2d421c3ef2802240652c661b66f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7524da9e_aa1ab43e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/dep/stable.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-09-13T10:18:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "57d4495f_6edc7fe2",
       "range": {
         "startLine": 13,
         "startChar": 3,
