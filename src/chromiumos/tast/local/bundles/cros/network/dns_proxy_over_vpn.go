@@ -142,7 +142,7 @@ func DNSProxyOverVPN(ctx context.Context, s *testing.State) {
 		{Client: dns.User, ExpectErr: true},
 		{Client: dns.Chrome, ExpectErr: true},
 		{Client: dns.Crostini, ExpectErr: true},
-		{Client: dns.ARC}}
+		{Client: dns.ARC, ExpectErr: true}}
 	// Block DNS queries over VPN through iptables.
 	if errs := dns.NewVPNBlock(vpnServer.NetNSName).Run(ctx, func(ctx context.Context) {
 		if errs := dns.TestQueryDNSProxy(ctx, vpnBlockedTC, a, cont, dns.NewQueryOptions()); len(errs) != 0 {
