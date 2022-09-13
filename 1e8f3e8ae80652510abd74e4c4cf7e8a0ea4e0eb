@@ -16,6 +16,23 @@
       "message": "tast-wise: +2\n\nwait for your peer\u0027s review before landing it.",
       "revId": "1e8f3e8ae80652510abd74e4c4cf7e8a0ea4e0eb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec0f258b_6f762797",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1543127
+      },
+      "writtenOn": "2022-09-13T09:33:42Z",
+      "side": 1,
+      "message": "LGTM!",
+      "revId": "1e8f3e8ae80652510abd74e4c4cf7e8a0ea4e0eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
