@@ -1,4 +1,4 @@
-// Copyright 2021 The Chromium OS Authors. All rights reserved.
+// Copyright 2021 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -98,7 +98,7 @@ func SelectGooglePhotosPhoto(ui *uiauto.Context, name string) uiauto.Action {
 
 // SelectImage returns an action to select the image with the given image title.
 func SelectImage(ui *uiauto.Context, image string) uiauto.Action {
-	imageNode := nodewith.Role(role.ListBoxOption).HasClass("photo-inner-container").Name(image)
+	imageNode := nodewith.Role(role.ListBoxOption).Name("wallpaper-grid-item").Name(image)
 	return uiauto.Combine(fmt.Sprintf("select image %q", image),
 		ui.WaitUntilExists(imageNode),
 		ui.MakeVisible(imageNode),
