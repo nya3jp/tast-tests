@@ -1,4 +1,4 @@
-// Copyright 2021 The Chromium OS Authors. All rights reserved.
+// Copyright 2021 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -12,6 +12,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/diagnosticsapp"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
 
@@ -49,6 +50,14 @@ func Input(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to launch diagnostics app: ", err)
 	}
+
+	// Since virtual keyboard with BUS_USB (0x03) doesn't work yet, use BUS_I2C (0x18).
+	// See https://crrev.com/c/1407138 for more discussion.
+	vkb, err := input.VirtualKeyboardWithBusType(ctx, 0x18)
+	if err != nil {
+		s.Fatal("Failed to create a virtual keyboard: ", err)
+	}
+	defer vkb.Close()
 
 	// Find the Input navigation item and the keyboard list heading.
 	const timeout = 10 * time.Second
