@@ -41,6 +41,10 @@ func Run(ctx context.Context, cr *chrome.Chrome, app ProductivityApp, tier cuj.T
 		br = l.Browser()
 	}
 	app.SetBrowser(br)
+	bTconn, err := l.TestAPIConn(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to get browser TestAPIConn")
+	}
 
 	// Give 10 seconds to set initial settings. It is critical to ensure
 	// cleanupSetting can be executed with a valid context so it has its
@@ -63,7 +67,7 @@ func Run(ctx context.Context, cr *chrome.Chrome, app ProductivityApp, tier cuj.T
 
 	testing.ContextLog(ctx, "Start recording actions")
 	options := cujrecorder.NewPerformanceCUJOptions()
-	recorder, err := cujrecorder.NewRecorder(ctx, cr, nil, options)
+	recorder, err := cujrecorder.NewRecorder(ctx, cr, bTconn, nil, options)
 	if err != nil {
 		return errors.Wrap(err, "failed to create the recorder")
 	}
