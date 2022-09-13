@@ -1,4 +1,4 @@
-// Copyright 2022 The ChromiumOS Authors.
+// Copyright 2022 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -49,7 +49,9 @@ func init() {
 			"cros-connectivity@google.com",
 		},
 		Impl: newFixture(&fixtureFeatures{
-			BluetoothRevamp: true,
+			BluetoothRevamp:        true,
+			OobeHidDetectionRevamp: false,
+			NoLogin:                false,
 		}),
 		SetUpTimeout:    setUpTimeout,
 		ResetTimeout:    resetTimeout,
@@ -64,7 +66,9 @@ func init() {
 			"cros-connectivity@google.com",
 		},
 		Impl: newFixture(&fixtureFeatures{
-			BluetoothRevamp: false,
+			BluetoothRevamp:        false,
+			OobeHidDetectionRevamp: false,
+			NoLogin:                false,
 		}),
 		SetUpTimeout:    setUpTimeout,
 		ResetTimeout:    resetTimeout,
@@ -81,6 +85,8 @@ func init() {
 		Impl: newFixture(&fixtureFeatures{
 			BluetoothRevamp:         true,
 			BluetoothAdapterEnabled: true,
+			OobeHidDetectionRevamp:  false,
+			NoLogin:                 false,
 		}),
 		SetUpTimeout:    setUpTimeout,
 		ResetTimeout:    resetTimeout,
@@ -98,6 +104,8 @@ func init() {
 			BluetoothRevamp:         true,
 			BluetoothAdapterEnabled: true,
 			BTPeerCount:             1,
+			OobeHidDetectionRevamp:  false,
+			NoLogin:                 false,
 		}),
 		Vars:            []string{fixtureVarBTPeers},
 		SetUpTimeout:    setUpTimeout + btpeerTimeoutBuffer,
@@ -116,6 +124,8 @@ func init() {
 			BluetoothRevamp:         true,
 			BluetoothAdapterEnabled: true,
 			BTPeerCount:             2,
+			OobeHidDetectionRevamp:  false,
+			NoLogin:                 false,
 		}),
 		Vars:            []string{fixtureVarBTPeers},
 		SetUpTimeout:    setUpTimeout + 2*btpeerTimeoutBuffer,
@@ -134,6 +144,8 @@ func init() {
 			BluetoothRevamp:         true,
 			BluetoothAdapterEnabled: true,
 			BTPeerCount:             3,
+			OobeHidDetectionRevamp:  false,
+			NoLogin:                 false,
 		}),
 		Vars:            []string{fixtureVarBTPeers},
 		SetUpTimeout:    setUpTimeout + 3*btpeerTimeoutBuffer,
@@ -152,11 +164,33 @@ func init() {
 			BluetoothRevamp:         true,
 			BluetoothAdapterEnabled: true,
 			BTPeerCount:             4,
+			OobeHidDetectionRevamp:  false,
+			NoLogin:                 false,
 		}),
 		Vars:            []string{fixtureVarBTPeers},
 		SetUpTimeout:    setUpTimeout + 4*btpeerTimeoutBuffer,
 		ResetTimeout:    resetTimeout + 4*btpeerTimeoutBuffer,
 		TearDownTimeout: tearDownTimeout + 4*btpeerTimeoutBuffer,
+		ServiceDeps:     []string{serviceDepBTTestService},
+	})
+	testing.AddFixture(&testing.Fixture{
+		Name: "chromeOobeWith1BTPeer",
+		Desc: "Logs into a user session, enables Bluetooth, and connects to 1 btpeer",
+		Contacts: []string{
+			"chadduffin@chromium.org",
+			"cros-connectivity@google.com",
+		},
+		Impl: newFixture(&fixtureFeatures{
+			BluetoothRevamp:         true,
+			BluetoothAdapterEnabled: true,
+			OobeHidDetectionRevamp:  true,
+			BTPeerCount:             1,
+			NoLogin:                 true,
+		}),
+		Vars:            []string{fixtureVarBTPeers},
+		SetUpTimeout:    setUpTimeout + btpeerTimeoutBuffer,
+		ResetTimeout:    resetTimeout + btpeerTimeoutBuffer,
+		TearDownTimeout: tearDownTimeout + btpeerTimeoutBuffer,
 		ServiceDeps:     []string{serviceDepBTTestService},
 	})
 }
@@ -177,6 +211,15 @@ type fixtureFeatures struct {
 	// the "BluetoothRevamp" feature during Chrome login. A true value will
 	// enable the feature and a false value will disable the feature.
 	BluetoothRevamp bool
+
+	// OobeHidDetectionRevamp is used as a value for ChromeNewRequest.OobeHidDetectionRevamp
+	// when BTTestService.ChromeNew is called during fixture.SetUp to toggle
+	// the "OobeHidDetectionRevamp" feature during Chrome login. A true value will
+	// enable the feature and a false value will disable the feature.
+	OobeHidDetectionRevamp bool
+
+	// NoLogin when true will set chrome to not login and remain in OOBE.
+	NoLogin bool
 }
 
 // FixtValue is the value of the test fixture accessible within a test. All
@@ -231,7 +274,9 @@ func (tf *fixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} 
 
 	// Log into chrome.
 	if _, err := tf.fv.BTS.ChromeNew(ctx, &bts.ChromeNewRequest{
-		BluetoothRevampEnabled: tf.features.BluetoothRevamp,
+		BluetoothRevampEnabled:        tf.features.BluetoothRevamp,
+		OobeHidDetectionRevampEnabled: tf.features.OobeHidDetectionRevamp,
+		NoLogin:                       tf.features.NoLogin,
 	}); err != nil {
 		s.Fatal("Failed to log into chrome on DUT: ", err)
 	}

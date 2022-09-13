@@ -36,6 +36,8 @@ service BTTestService {
 
 message ChromeNewRequest {
   bool bluetoothRevampEnabled = 1;
+  bool oobeHidDetectionRevampEnabled = 2;
+  bool noLogin = 3;
 }
 
 message Device {
