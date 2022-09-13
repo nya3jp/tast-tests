@@ -553,7 +553,10 @@ func (conf *GoogleMeetConference) changeLayout(mode string) action.Action {
 			uiauto.NamedAction("click change layout item", ui.DoDefault(changeLayoutItem)),
 			uiauto.NamedAction("wait for change layout panel", ui.WithTimeout(longUITimeout).WaitUntilExists(changeLayoutPanel)),
 		))
-
+		modeNode := nodewith.Name(mode).Role(role.RadioButton)
+		selectLayout := uiauto.NamedAction("click layout "+mode,
+			ui.WithTimeout(mediumUITimeout).DoDefaultUntil(modeNode,
+				ui.WaitUntilExists(modeNode.Focused())))
 		setTiles := func(mode string) action.Action {
 			return func(ctx context.Context) error {
 				if mode != "Tiled" {
@@ -616,15 +619,16 @@ func (conf *GoogleMeetConference) changeLayout(mode string) action.Action {
 			}
 		}
 
-		modeNode := nodewith.Name(mode).Role(role.RadioButton)
+		closeButton := nodewith.Name("Close").Role(role.Button).Ancestor(changeLayoutPanel)
+		closePanel := uiauto.Combine("close change layout panel",
+			uiauto.NamedAction("press esc to close change layout panel", conf.kb.AccelAction("esc")),
+			uiauto.IfFailThen(ui.WaitUntilGone(changeLayoutPanel), ui.DoDefault(closeButton)))
 		return uiauto.NamedCombine("change layout to "+mode,
 			conf.closeNotifDialog(),
 			openLayout,
-			uiauto.NamedAction("click layout "+mode,
-				ui.WithTimeout(mediumUITimeout).DoDefaultUntil(modeNode,
-					ui.WaitUntilExists(modeNode.Focused()))),
+			selectLayout,
 			setTiles(mode),
-			uiauto.NamedAction("press esc to close layout panel", conf.kb.AccelAction("esc")),
+			closePanel,
 			ui.Retry(5, checkTiledGrids(mode)),
 		)(ctx)
 	}
