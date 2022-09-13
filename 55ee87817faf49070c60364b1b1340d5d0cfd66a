@@ -1073,6 +1073,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5c88d24_6510eee9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/hid_wake.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-09-13T19:50:23Z",
+      "side": 1,
+      "message": "Marking as resolved after a few patchsets. If you\u0027d still like me to change \"Servo Keyboard\" to \"Servo HID\" throughout the test, let me know.",
+      "parentUuid": "9a1bcd52_a275f27e",
+      "range": {
+        "startLine": 185,
+        "startChar": 58,
+        "endLine": 185,
+        "endChar": 66
+      },
+      "revId": "55ee87817faf49070c60364b1b1340d5d0cfd66a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8bd91210_c01b7e66",

@@ -155,6 +155,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a96c350a_482ab5be",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/hid_wake.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-09-13T19:50:23Z",
+      "side": 1,
+      "message": "I checked crossfleet for veyron and all of its variants (Fievel, Jaq, Jerry, Mickey, Mighty, Minnie, Speedy, Tiger) according to this document (https://docs.google.com/document/d/1HR58jJmHHIB1OCI7ewKzMXh1L-fAROYnatAfa3R3dv0/edit#) and could not lease any.\n\nI heard back from crosdistros, and they said there is a Frivel MP in stock which may work for this. So, I\u0027m waiting for it to be available at the Chromestop.",
+      "parentUuid": "daf3fa25_5651c518",
+      "range": {
+        "startLine": 36,
+        "startChar": 24,
+        "endLine": 36,
+        "endChar": 40
+      },
+      "revId": "ab270bbb33a2ec51586a8386818abbc01a0352ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8f9a0897_9db77b5c",
         "filename": "src/chromiumos/tast/remote/bundles/cros/power/hid_wake.go",
         "patchSetId": 6
