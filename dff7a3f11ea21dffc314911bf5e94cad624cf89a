@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42e55e12_101d83d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/arc_enabled_on_tablet.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-09-13T12:14:27Z",
+      "side": 1,
+      "message": "This is a really long timeout. Does the process this long? Is it possible to find a faster indicator? for example negating the other check. If the popup for access needed is not there is 3 seconds.",
+      "range": {
+        "startLine": 154,
+        "startChar": 30,
+        "endLine": 154,
+        "endChar": 32
+      },
+      "revId": "dff7a3f11ea21dffc314911bf5e94cad624cf89a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
