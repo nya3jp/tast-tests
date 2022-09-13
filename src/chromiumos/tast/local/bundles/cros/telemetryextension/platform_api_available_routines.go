@@ -84,6 +84,8 @@ func PlatformAPIAvailableRoutines(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get response from Telemetry extenion service worker: ", err)
 	}
 
+	s.Log("Routines: ", resp.Routines)
+
 	gotRoutines := make(map[string]struct{})
 	for _, got := range resp.Routines {
 		gotRoutines[got] = struct{}{}
@@ -91,14 +93,11 @@ func PlatformAPIAvailableRoutines(ctx context.Context, s *testing.State) {
 
 	wantRoutines := []string{
 		"ac_power",
-		"battery_capacity",
-		"battery_health",
 		"cpu_cache",
 		"cpu_stress",
 		"cpu_floating_point_accuracy",
 		"cpu_prime_search",
-		"battery_discharge",
-		"battery_charge",
+		"lan_connectivity",
 		"memory",
 	}
 
