@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5957372_d58b0b81",
+        "filename": "src/chromiumos/tast/local/bluetooth/bluez/adapter.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-09-13T18:34:31Z",
+      "side": 1,
+      "message": "Moving into a bluez.go file sounds good to me, thank you for the suggestion :)",
+      "parentUuid": "47a1b8c1_86dbc99f",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 0
+      },
+      "revId": "df3d88c60f6bb80256e982cda270c59a386eab45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d4d5f284_af179b62",
@@ -75,6 +99,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5fefdd7_b52b05e7",
+        "filename": "src/chromiumos/tast/local/bluetooth/floss/floss.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-09-13T18:34:31Z",
+      "side": 1,
+      "message": "Done!",
+      "parentUuid": "d4d5f284_af179b62",
+      "revId": "df3d88c60f6bb80256e982cda270c59a386eab45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cbdfce38_15ac2583",
@@ -88,6 +130,24 @@
       "writtenOn": "2022-09-12T09:43:08Z",
       "side": 1,
       "message": "If possible, please move LacrosStatus changes to another CL as they don\u0027t seem related to this one.",
+      "revId": "df3d88c60f6bb80256e982cda270c59a386eab45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "68ee88bb_fb1727a1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/open_bluetooth_settings_from_quick_settings.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-09-13T18:34:31Z",
+      "side": 1,
+      "message": "SGTM, reverted them all the \"Unknown\"!",
+      "parentUuid": "cbdfce38_15ac2583",
       "revId": "df3d88c60f6bb80256e982cda270c59a386eab45",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
