@@ -22,6 +22,30 @@
       },
       "revId": "d28a7d801dfed7a1238787b0ec582d5cf460092c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5fe57777_72151ea9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/boot_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2022-09-13T02:18:53Z",
+      "side": 0,
+      "message": "IIRC, it\u0027s recommended using the global timeout and don\u0027t shorten the context in the code if it\u0027s not necessary. Lots of tests just use the global timeout to make the code simpler. Close() of the RPC connection isn\u0027t using the context in its implementation: https://source.chromium.org/chromium/chromiumos/platform/tast/+/main:src/chromiumos/tast/rpc/rpc.go;l\u003d34\n\nI still need to keep L205 for undoing the persistent side effect of enabling bootchart (which adds \"cros_bootchart\" to kernel cmdline args), but it should only be used for this purpose.",
+      "parentUuid": "92f7493b_60cf2540",
+      "range": {
+        "startLine": 104,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 56
+      },
+      "revId": "d28a7d801dfed7a1238787b0ec582d5cf460092c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
