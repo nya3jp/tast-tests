@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "431b3b8c_b97879ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/shill_cellular_sim_connect.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-09-13T13:21:43Z",
+      "side": 1,
+      "message": "Should this return a PollBreak or do we expect to see this normally during the poll?",
+      "revId": "a4771b50c3c1136ee047ee478e75cd9421d099ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
