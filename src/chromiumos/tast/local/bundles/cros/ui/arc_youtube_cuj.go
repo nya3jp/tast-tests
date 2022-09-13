@@ -76,7 +76,7 @@ func ArcYoutubeCUJ(ctx context.Context, s *testing.State) {
 	}
 	defer act.Close()
 
-	recorder, err := cujrecorder.NewRecorder(ctx, cr, a, cujrecorder.RecorderOptions{})
+	recorder, err := cujrecorder.NewRecorder(ctx, cr, tconn, a, cujrecorder.RecorderOptions{})
 	if err != nil {
 		s.Fatal("Failed to create the recorder: ", err)
 	}
