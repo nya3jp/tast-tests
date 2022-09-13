@@ -188,16 +188,6 @@ func Run(ctx context.Context, cr *chrome.Chrome, bt browser.Type, a *arc.ARC, pa
 	}
 	defer cleanupSetting(cleanupSettingsCtx)
 
-	faillogCtx := ctx
-	ctx, cancel = ctxutil.Shorten(ctx, 5*time.Second)
-	defer cancel()
-	defer func(ctx context.Context) {
-		// The screenshot and ui tree dump must been taken before tabs are closed.
-		faillog.SaveScreenshotOnError(ctx, cr, params.outDir, func() bool { return retErr != nil })
-		faillog.DumpUITreeOnError(ctx, params.outDir, func() bool { return retErr != nil }, tconn)
-		cuj.CloseChrome(ctx, tconn)
-	}(faillogCtx)
-
 	// Set up the cuj.Recorder: this test will measure the combinations of
 	// animation smoothness for window-cycles (alt-tab selection), launcher,
 	// and overview.
@@ -255,27 +245,38 @@ func Run(ctx context.Context, cr *chrome.Chrome, bt browser.Type, a *arc.ARC, pa
 
 	resources := &runResources{kb: kb, topRow: topRow, ui: ui, vh: vh, uiHandler: uiHandler, recorder: recorder, browserApp: browserApp}
 
-	if err := openAndSwitchTabs(ctx, br, tconn, params, resources); err != nil {
-		return errors.Wrap(err, "failed to open and switch chrome tabs")
-	}
+	if err := recorder.Run(ctx, func(ctx context.Context) (retErr error) {
+		if err := openAndSwitchTabs(ctx, br, tconn, params, resources); err != nil {
+			return errors.Wrap(err, "failed to open and switch chrome tabs")
+		}
 
-	if err := switchWindows(ctx, tconn, params, resources); err != nil {
-		return errors.Wrap(err, "failed to switch windows")
-	}
+		// Given time to close chrome.
+		cleanupCtx := ctx
+		ctx, cancel = ctxutil.Shorten(ctx, 15*time.Second)
+		defer cancel()
 
-	testing.ContextLog(ctx, "Take photo and video")
-	if err := recorder.Run(ctx, func(ctx context.Context) error {
+		defer func(ctx context.Context) {
+			faillog.DumpUITreeWithScreenshotOnError(ctx, params.outDir, func() bool { return retErr != nil }, cr, "ui_tree")
+			cuj.CloseChrome(ctx, tconn)
+		}(cleanupCtx)
+
+		if err := switchWindows(ctx, tconn, params, resources); err != nil {
+			return errors.Wrap(err, "failed to switch windows")
+		}
+
 		return takePhotoAndVideo(ctx, cr, params.ccaScriptPaths, params.outDir)
 	}); err != nil {
 		return errors.Wrap(err, "failed to run the camera scenario")
 	}
 
 	pv := perf.NewValues()
+
 	pv.Set(perf.Metric{
 		Name:      "Browser.StartTime",
 		Unit:      "ms",
 		Direction: perf.SmallerIsBetter,
 	}, float64(browserStartTime.Milliseconds()))
+
 	if appStartTime > 0 {
 		pv.Set(perf.Metric{
 			Name:      "Apps.StartTime",
@@ -417,29 +418,24 @@ func openAndSwitchTabs(ctx context.Context, br *browser.Browser, tconn *chrome.T
 		return nil
 	}
 
-	if err := resources.recorder.Run(ctx, func(ctx context.Context) error {
-		if resources.browserApp.ID == apps.LacrosID {
-			activeWindow, err := ash.GetActiveWindow(ctx, tconn)
-			if err != nil {
-				return errors.Wrap(err, "failed to get the active window")
-			}
-			if activeWindow.WindowType != ash.WindowTypeLacros {
-				if err := resources.uiHandler.SwitchToAppWindow(resources.browserApp.Name)(ctx); err != nil {
-					return errors.Wrap(err, "failed to switch to lacros window")
-				}
+	if resources.browserApp.ID == apps.LacrosID {
+		activeWindow, err := ash.GetActiveWindow(ctx, tconn)
+		if err != nil {
+			return errors.Wrap(err, "failed to get the active window")
+		}
+		if activeWindow.WindowType != ash.WindowTypeLacros {
+			if err := resources.uiHandler.SwitchToAppWindow(resources.browserApp.Name)(ctx); err != nil {
+				return errors.Wrap(err, "failed to switch to lacros window")
 			}
 		}
-		for _, list := range pageList {
-			if err := openBrowserWithTabs(list); err != nil {
-				return errors.Wrap(err, "failed to open browser with tabs")
-			}
+	}
+	for _, list := range pageList {
+		if err := openBrowserWithTabs(list); err != nil {
+			return errors.Wrap(err, "failed to open browser with tabs")
 		}
-		if err := switchAllBrowserTabs(ctx); err != nil {
-			return errors.Wrap(err, "failed to switch all browser tabs")
-		}
-		return nil
-	}); err != nil {
-		return errors.Wrap(err, "failed to run the open tabs and switch tabs scenario")
+	}
+	if err := switchAllBrowserTabs(ctx); err != nil {
+		return errors.Wrap(err, "failed to switch all browser tabs")
 	}
 
 	return nil
@@ -510,26 +506,21 @@ func switchWindows(ctx context.Context, tconn *chrome.TestConn, params *RunParam
 
 	for _, subtest := range switchWindowTests {
 		testing.ContextLog(ctx, subtest.desc)
-		if err := resources.recorder.Run(ctx, func(ctx context.Context) error {
-			if err := resources.vh.SetVolume(ctx, initialVolume); err != nil {
-				return errors.Wrapf(err, "failed to set volume to %v percents", initialVolume)
-			}
-			testing.ContextLog(ctx, "Volume up")
-			if err := resources.vh.VerifyVolumeChanged(ctx, func() error {
-				return resources.kb.Accel(ctx, resources.topRow.VolumeUp)
-			}); err != nil {
-				return errors.Wrap(err, `volume not changed after press "VolumeUp"`)
-			}
-
-			for i := range ws {
-				// Switch between windows by calling the switch window function.
-				if err := subtest.switchWindowFunc(ctx, ws, i); err != nil {
-					return errors.Wrap(err, "failed to switch window")
-				}
-			}
-			return nil
+		if err := resources.vh.SetVolume(ctx, initialVolume); err != nil {
+			return errors.Wrapf(err, "failed to set volume to %v percents", initialVolume)
+		}
+		testing.ContextLog(ctx, "Volume up")
+		if err := resources.vh.VerifyVolumeChanged(ctx, func() error {
+			return resources.kb.Accel(ctx, resources.topRow.VolumeUp)
 		}); err != nil {
-			return errors.Wrap(err, "failed to run the switch window scenario")
+			return errors.Wrap(err, `volume not changed after press "VolumeUp"`)
+		}
+
+		for i := range ws {
+			// Switch between windows by calling the switch window function.
+			if err := subtest.switchWindowFunc(ctx, ws, i); err != nil {
+				return errors.Wrap(err, "failed to switch window")
+			}
 		}
 	}
 
@@ -537,6 +528,8 @@ func switchWindows(ctx context.Context, tconn *chrome.TestConn, params *RunParam
 }
 
 func takePhotoAndVideo(ctx context.Context, cr *chrome.Chrome, scriptPaths []string, outDir string) error {
+	testing.ContextLog(ctx, "Take photo and video")
+
 	tb, err := testutil.NewTestBridgeWithoutTestConfig(ctx, cr, testutil.UseRealCamera)
 	if err != nil {
 		return errors.Wrap(err, "failed to construct test bridge")
