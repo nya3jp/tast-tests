@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "568825fc_e60ddd42",
+        "filename": "src/chromiumos/tast/local/wallpaper/wallpaper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-09-13T18:35:16Z",
+      "side": 0,
+      "message": "I\u0027m not super familiar with this area but since multiple tests use this, I\u0027d suggest making the selector as specific as possible. https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/codelab_3.md#interacting-with-the-accessibility-tree has a lot of good information about how to dump the UI tree and find role/class names. If possible, I\u0027d suggest updating the class name (if it changed) or finding some other relevant selector to make this more specific since `image` could create a situations where callers accidentally provide a value that isn\u0027t unique.",
+      "revId": "773f7db64f06298a3810db5c5df4031488476212",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
