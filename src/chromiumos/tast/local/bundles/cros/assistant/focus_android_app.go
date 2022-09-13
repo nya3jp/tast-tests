@@ -1,4 +1,4 @@
-// Copyright 2022 The Chromium OS Authors. All rights reserved.
+// Copyright 2022 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -59,8 +59,15 @@ func FocusAndroidApp(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to wait Google News Android gets active: ", err)
 	}
 
-	_, err = browser.Launch(ctx, tconn, cr, assistant.GoogleNewsWebURL)
-	if err != nil {
+	// TODO(b/245349115): Remove this work around once the bug gets fixed.
+	// Maximize and un-maximize Google News Android app to work around Ash and Arc WM state
+	// synchronization issue.
+	s.Log("Wait 3 seconds for Ash and Arc WM state sync")
+	if testing.Sleep(ctx, 3*time.Second); err != nil {
+		s.Fatal("Failed to wait 3 seconds for Ash and Arc WM state sync: ", err)
+	}
+
+	if _, err = browser.Launch(ctx, tconn, cr, assistant.GoogleNewsWebURL); err != nil {
 		s.Fatal("Failed to launch Google News Web: ", err)
 	}
 
