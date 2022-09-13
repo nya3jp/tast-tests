@@ -21,7 +21,6 @@ import (
 
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/network/virtualnet/subnet"
 	"chromiumos/tast/testing"
 )
 
@@ -518,7 +517,7 @@ func (e *Env) ReadAndWriteLogIfExists(path string, f *os.File) error {
 // configuring static IP addresses on both in and out interface, and installing
 // routes for the subnet in both of the two netns. An additional default route
 // will be added from this Env to |router|.
-func (e *Env) ConnectToRouter(ctx context.Context, router *Env, pool *subnet.Pool) error {
+func (e *Env) ConnectToRouter(ctx context.Context, router *Env, ipv4Subnet, ipv6Subnet *net.IPNet) error {
 	// Move the out interface into |router| and bring it up.
 	if err := testexec.CommandContext(ctx, "ip", "link", "set", e.VethOutName, "netns", router.NetNSName).Run(); err != nil {
 		return errors.Wrapf(err, "failed to move the out interface of %s into %s", e.NetNSName, router.NetNSName)
@@ -528,11 +527,10 @@ func (e *Env) ConnectToRouter(ctx context.Context, router *Env, pool *subnet.Poo
 	}
 
 	// Install IPv4 addresses and routes.
-	ipv4Subnet, err := pool.AllocNextIPv4Subnet()
-	if err != nil {
-		return errors.Wrap(err, "failed to allocate IPv4 subnet for connecting Envs")
-	}
 	ipv4Addr := ipv4Subnet.IP.To4()
+	if ipv4Addr == nil {
+		return errors.Errorf("invalid IPv4 subnet for connecting Envs: %v", ipv4Subnet)
+	}
 	selfIPv4Addr := net.IPv4(ipv4Addr[0], ipv4Addr[1], ipv4Addr[2], 2)
 	routerIPv4Addr := net.IPv4(ipv4Addr[0], ipv4Addr[1], ipv4Addr[2], 1)
 	if err := e.ConfigureInterface(ctx, e.VethInName, selfIPv4Addr, ipv4Subnet); err != nil {
@@ -546,14 +544,14 @@ func (e *Env) ConnectToRouter(ctx context.Context, router *Env, pool *subnet.Poo
 	}
 
 	// Install IPv6 addresses and routes.
-	ipv6Subnet, err := pool.AllocNextIPv6Subnet()
-	if err != nil {
-		return errors.Wrap(err, "failed to allocate IPv6 subnet for connecting Envs")
+	ipv6Addr := ipv6Subnet.IP.To16()
+	if ipv6Addr == nil {
+		return errors.Errorf("invalid IPv6 subnet for connecting Envs: %v", ipv6Subnet)
 	}
 	var selfIPv6Addr, routerIPv6Addr net.IP
-	selfIPv6Addr = append([]byte{}, ipv6Subnet.IP...)
+	selfIPv6Addr = append([]byte{}, ipv6Addr...)
 	selfIPv6Addr[15] = 2
-	routerIPv6Addr = append([]byte{}, ipv6Subnet.IP...)
+	routerIPv6Addr = append([]byte{}, ipv6Addr...)
 	routerIPv6Addr[15] = 1
 	if err := e.ConfigureInterface(ctx, e.VethInName, selfIPv6Addr, ipv6Subnet); err != nil {
 		return errors.Wrapf(err, "failed to configure IPv6 on %s", e.VethInName)
