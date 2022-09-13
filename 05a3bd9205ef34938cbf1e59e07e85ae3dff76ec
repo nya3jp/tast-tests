@@ -140,6 +140,24 @@
       "parentUuid": "b9333f5d_06373bb9",
       "revId": "05a3bd9205ef34938cbf1e59e07e85ae3dff76ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e02c513d_c6d3a2e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/add_remove_factors.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1546868
+      },
+      "writtenOn": "2022-09-13T15:05:09Z",
+      "side": 1,
+      "message": "I was actually referring to the whole configure-challenge-credential block, not just the list of algorithms, although in retrospect I can see why you\u0027d have interpreted it that way.",
+      "parentUuid": "712bbdd1_8b38324f",
+      "revId": "05a3bd9205ef34938cbf1e59e07e85ae3dff76ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
