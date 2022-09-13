@@ -3,6 +3,74 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4900ba85_0dce408c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2022-09-13T17:48:14Z",
+      "side": 1,
+      "message": "typo: is",
+      "revId": "7d1e32eafc0ff8f871a00ce8b98813dabca3dfdf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b666b69_92e1d552",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2022-09-13T17:48:14Z",
+      "side": 1,
+      "message": "Thanks for the change. We definitely need",
+      "revId": "7d1e32eafc0ff8f871a00ce8b98813dabca3dfdf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7bb3082f_898fda7f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/sap_caps.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2022-09-13T17:48:14Z",
+      "side": 1,
+      "message": "typo: is",
+      "revId": "7d1e32eafc0ff8f871a00ce8b98813dabca3dfdf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c047c39_acaa7723",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/sap_caps.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2022-09-13T17:48:14Z",
+      "side": 1,
+      "message": "The frequencies are grouped by band. If we get rid of the frequency dump, then we can just check the first frequency in the band to see which band it belongs to w/o iterating through all the frequencies.",
+      "revId": "7d1e32eafc0ff8f871a00ce8b98813dabca3dfdf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "450f03e7_a065d439",
         "filename": "src/chromiumos/tast/local/bundles/cros/wifi/sap_caps.go",
         "patchSetId": 4
@@ -66,6 +134,40 @@
         "endLine": 85,
         "endChar": 75
       },
+      "revId": "7d1e32eafc0ff8f871a00ce8b98813dabca3dfdf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc12cc10_86f92d32",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/sap_caps.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2022-09-13T17:48:14Z",
+      "side": 1,
+      "message": "`iw list` result is saved to log file in line 59. Do you still need to dump the frequencies in the log?",
+      "revId": "7d1e32eafc0ff8f871a00ce8b98813dabca3dfdf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60870b9c_672a661d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/sap_caps.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2022-09-13T17:48:14Z",
+      "side": 1,
+      "message": "Concurrency information is checked and dumped in `wifi.ConcurrencyCaps`. https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/wifi/concurrency_caps.go;l\u003d30\n\nI think we can remove this from `wifi.SAPCaps`. WDYT?",
       "revId": "7d1e32eafc0ff8f871a00ce8b98813dabca3dfdf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
