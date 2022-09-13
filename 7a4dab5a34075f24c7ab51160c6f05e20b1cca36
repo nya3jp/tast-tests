@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1b4cb1d_57c6183f",
+        "filename": "src/chromiumos/tast/local/input/gen/gen_constants.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1543968
+      },
+      "writtenOn": "2022-09-13T00:06:07Z",
+      "side": 1,
+      "message": "Update from 4.14 to 5.15 is needed to have some EventCode\u0027s which were not added to older versions of the linux kernel. In this case, `KEY_PRIVACY_SCREEN_TOGGLE` was needed. I can imagine other use cases would need the complete up to date versions so this bump seemed reasonable to me.",
+      "range": {
+        "startLine": 44,
+        "startChar": 104,
+        "endLine": 44,
+        "endChar": 109
+      },
+      "revId": "7a4dab5a34075f24c7ab51160c6f05e20b1cca36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

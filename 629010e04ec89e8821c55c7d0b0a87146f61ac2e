@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02c20acd_d1eeb157",
+        "filename": "src/chromiumos/tast/local/input/generated_constants.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1543968
+      },
+      "writtenOn": "2022-09-13T00:06:07Z",
+      "side": 0,
+      "message": "This file was regenerated after gen_constants.go was changed as above. This may need special approval from Tast owners.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 63
+      },
+      "revId": "629010e04ec89e8821c55c7d0b0a87146f61ac2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
