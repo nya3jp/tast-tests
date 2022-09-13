@@ -154,6 +154,30 @@
       },
       "revId": "24646578182dcc767d8a8d9c7c906f23aa3f64b4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f1b1b1b_17b17d5b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/quicksettings/media_controls.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1189880
+      },
+      "writtenOn": "2022-09-13T22:14:03Z",
+      "side": 1,
+      "message": "Just realized this is the media controls UI in the bubble. Would it be easier if we gave the image an ID, or if you looked it up by class name?",
+      "parentUuid": "ed0d79a7_77eeaa4e",
+      "range": {
+        "startLine": 265,
+        "startChar": 0,
+        "endLine": 275,
+        "endChar": 1
+      },
+      "revId": "24646578182dcc767d8a8d9c7c906f23aa3f64b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
