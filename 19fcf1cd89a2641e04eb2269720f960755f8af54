@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "49a58c98_c3a6b0b0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-09-13T14:48:10Z",
+      "side": 1,
+      "message": "Hi all,\n\nPTAL one more time. CR+2 was removed after rebase.",
+      "revId": "19fcf1cd89a2641e04eb2269720f960755f8af54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
