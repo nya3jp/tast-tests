@@ -58,6 +58,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab84f16a_d20b59b0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-09-13T22:28:56Z",
+      "side": 1,
+      "message": "Note that we shouldn\u0027t reland this CL concurrently with Anastasiia\u0027s reland CL:3887408, so that we don\u0027t hit the same issue (tree breakage due to merge conflicts) again. One of us should go first, and then the other should be rebased accordingly.",
+      "revId": "9fe7d483ef9bc4085e22eca5de3539b46fbca46d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "241326a3_b3c889b4",
