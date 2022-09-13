@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6cd3f55e_598d9664",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/host_cellular_speedtest.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-09-13T15:02:25Z",
+      "side": 1,
+      "message": "Ah, that\u0027s fair.",
+      "parentUuid": "5c5f09a9_450d2b83",
+      "revId": "f86f5dbeb326585e377af22e3bc1dc9a1dcf8e82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8de9d315_c3d31cd7",
         "filename": "src/chromiumos/tast/local/bundles/cros/cellular/host_cellular_speedtest.go",
         "patchSetId": 4

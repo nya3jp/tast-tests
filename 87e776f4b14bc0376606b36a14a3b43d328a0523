@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5fe1634f_2abdf5e4",
+        "filename": "src/chromiumos/tast/local/cellular/cellular_network_utils.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-09-13T15:02:25Z",
+      "side": 1,
+      "message": "for logs, keeping it in Mbps might be more readable",
+      "range": {
+        "startLine": 125,
+        "startChar": 0,
+        "endLine": 126,
+        "endChar": 61
+      },
+      "revId": "87e776f4b14bc0376606b36a14a3b43d328a0523",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
