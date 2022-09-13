@@ -89,11 +89,11 @@ func init() {
 			{
 				Name: "arc",
 				Val: &appInfo{
-					name:          "Calendar",
-					id:            "decaoeahkmjpajbmlbpogjjkjbjokeed",
+					name:          "VLC",
+					id:            "faabdppbcbmkemcigbhofgomflchgocl",
 					source:        fromPlayStore,
 					isTabletMode:  false,
-					arcAppPkgName: "com.google.android.calendar",
+					arcAppPkgName: "org.videolan.vlc",
 				},
 				Fixture:           "arcBootedWithPlayStore",
 				ExtraSoftwareDeps: []string{"arc"},
@@ -101,11 +101,11 @@ func init() {
 			{
 				Name: "arc_tablet",
 				Val: &appInfo{
-					name:          "Calendar",
-					id:            "decaoeahkmjpajbmlbpogjjkjbjokeed",
+					name:          "VLC",
+					id:            "faabdppbcbmkemcigbhofgomflchgocl",
 					source:        fromPlayStore,
 					isTabletMode:  true,
-					arcAppPkgName: "com.google.android.calendar",
+					arcAppPkgName: "org.videolan.vlc",
 				},
 				Fixture:           "arcBootedWithPlayStore",
 				ExtraSoftwareDeps: []string{"arc"},
