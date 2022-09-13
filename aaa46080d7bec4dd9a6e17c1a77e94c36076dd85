@@ -39,6 +39,30 @@
       },
       "revId": "aaa46080d7bec4dd9a6e17c1a77e94c36076dd85",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "022343a7_f782ea2d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/gaia_zte_enrollment.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1313155
+      },
+      "writtenOn": "2022-09-13T18:25:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "499fda42_8125c486",
+      "range": {
+        "startLine": 136,
+        "startChar": 1,
+        "endLine": 136,
+        "endChar": 34
+      },
+      "revId": "aaa46080d7bec4dd9a6e17c1a77e94c36076dd85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
