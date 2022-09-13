@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/testing"
 )
 
 // ProxyNamespaces returns all network namespaces used by the dnsproxyd process.
@@ -291,4 +292,41 @@ func NewDoHVPNBlock(ns string) *Block {
 	return &Block{
 		rules: newDoHVPNDropRules(ns),
 	}
+}
+
+// dnsProxyRunning checks if any dnsproxyd process is running.
+func dnsProxyRunning(ctx context.Context) (bool, error) {
+	out, err := testexec.CommandContext(ctx, "ps", "-u", "dns-proxy", "--no-headers").Output()
+	if err != nil {
+		return false, errors.Wrap(err, "failed to get processes")
+	}
+	return string(out) != "", nil
+}
+
+// waitForDNSProxyProcesses polls until DNS proxy processes running / stopped.
+func waitForDNSProxyProcesses(ctx context.Context, running bool) error {
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		r, err := dnsProxyRunning(ctx)
+		if err != nil {
+			return err
+		}
+		if r == running {
+			return nil
+		}
+		return errors.New("failed to for the correct DNS proxy state")
+	}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
+		return errors.Wrap(err, "failed to wait for DNS proxy processes")
+	}
+	return nil
+}
+
+// restartDNSProxy stops dnsproxyd processes and re-start them.
+func restartDNSProxy(ctx context.Context) error {
+	if err := testexec.CommandContext(ctx, "initctl", "restart", "dns-proxy").Run(); err != nil {
+		return errors.Wrap(err, "failed to restart DNS proxy")
+	}
+	if err := waitForDNSProxyProcesses(ctx, true /*running=*/); err != nil {
+		return errors.Wrap(err, "failed to wait for DNS proxy processes")
+	}
+	return nil
 }
