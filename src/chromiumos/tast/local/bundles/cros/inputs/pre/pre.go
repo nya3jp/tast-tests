@@ -22,8 +22,6 @@ var StableModels = []string{
 	"cyan",
 	// Top VK usage board in 2020 -- convertible, ARM.
 	"hana",
-	// Kukui family, not much usage, but very small tablet.
-	"kodama",
 	"krane",
 	"kukui",
 	// Another top board -- convertible, x64.
