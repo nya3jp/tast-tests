@@ -6,10 +6,14 @@ package dns
 
 import (
 	"context"
+	"io/ioutil"
+	"net"
+	"net/http"
 	"regexp"
 	"strconv"
 	"time"
 
+	"chromiumos/tast/common/crypto/certificate"
 	"chromiumos/tast/common/shillconst"
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
@@ -22,6 +26,12 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/network/virtualnet"
+	"chromiumos/tast/local/network/virtualnet/certs"
+	"chromiumos/tast/local/network/virtualnet/dnsmasq"
+	"chromiumos/tast/local/network/virtualnet/env"
+	"chromiumos/tast/local/network/virtualnet/httpserver"
+	"chromiumos/tast/local/network/virtualnet/subnet"
 	"chromiumos/tast/local/shill"
 	"chromiumos/tast/local/vm"
 	"chromiumos/tast/testing"
@@ -55,8 +65,20 @@ const (
 	ARC
 )
 
+// Env wraps the test environment created for DNS tests.
+type Env struct {
+	Router  *env.Env
+	Server  *env.Env
+	Certs   *certs.Certs
+	Cleanup func(context.Context)
+}
+
 // GoogleDoHProvider is the Google DNS-over-HTTPS provider.
 const GoogleDoHProvider = "https://dns.google/dns-query"
+
+// ExampleDoHProvider is a fake DNS-over-HTTPS provider used for testing using virtualnet package.
+// The URL must match the CA certificate used by virtualnet/certs/cert.go.
+const ExampleDoHProvider = "https://www.example.com/dns-query"
 
 // DigProxyIPRE is the regular expressions for DNS proxy IP inside dig output.
 var DigProxyIPRE = regexp.MustCompile(`SERVER: 100.115.92.\d+#53`)
@@ -363,4 +385,191 @@ func DigMatch(ctx context.Context, re *regexp.Regexp, match bool) error {
 		return errors.New("dig used unexpected nameserver")
 	}
 	return nil
+}
+
+// queryDNS queries DNS to |addr| through UDP port 53 and returns the response.
+func queryDNS(msg []byte, addr string) ([]byte, error) {
+	conn, err := net.Dial("udp", addr+":53")
+	if err != nil {
+		return nil, err
+	}
+	defer conn.Close()
+
+	if _, err = conn.Write(msg); err != nil {
+		return nil, err
+	}
+
+	resp := make([]byte, 512)
+	n, err := conn.Read(resp)
+	if err != nil {
+		return nil, err
+	}
+	return resp[:n], nil
+}
+
+// dohResponder returns a function that responds to HTTPS queries by proxying the queries to DNS server on |addr|.
+func dohResponder(ctx context.Context, addr string) func(http.ResponseWriter, *http.Request) {
+	return func(rw http.ResponseWriter, req *http.Request) {
+		msg, err := ioutil.ReadAll(req.Body)
+		if err != nil {
+			testing.ContextLog(ctx, "Failed to read HTTPS request: ", err)
+			return
+		}
+
+		resp, err := queryDNS(msg, addr)
+		if err != nil {
+			testing.ContextLog(ctx, "Failed to query DNS: ", err)
+			return
+		}
+
+		rw.Header().Set("content-type", "application/dns-message")
+		if _, err := rw.Write(resp); err != nil {
+			testing.ContextLog(ctx, "Failed to write HTTPS response: ", err)
+		}
+	}
+}
+
+// SetupDNSEnv creates a DNS environment including router that acts as the default network and a server that responds to DNS and DoH queries.
+// On success, the caller is responsible to cleanup the router and server through its Cleanup() method and cleanup the environment through the returned |Cleanup| function.
+func SetupDNSEnv(ctx context.Context, pool *subnet.Pool) (*Env, error) {
+	success := false
+
+	// Shill-related setup.
+	m, err := shill.NewManager(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create manager proxy")
+	}
+	testing.ContextLog(ctx, "Disabling portal detection on ethernet")
+	if err := m.SetProperty(ctx, shillconst.ProfilePropertyCheckPortalList, "wifi,cellular"); err != nil {
+		return nil, errors.Wrap(err, "failed to disable portal detection on ethernet")
+	}
+	defer func() {
+		if success {
+			return
+		}
+		if err := m.SetProperty(ctx, shillconst.ProfilePropertyCheckPortalList, "ethernet,wifi,cellular"); err != nil {
+			testing.ContextLog(ctx, "Failed to revert check portal list property: ", err)
+		}
+	}()
+
+	// Install test certificates for HTTPS server. In doing so, virtualnet/certs will mount a test certificate directory.
+	// Because DNS proxy lives in its own namespace, it needs to be restarted to be able to see the test certificates.
+	httpsCerts := certs.New(certs.SSLCrtPath, certificate.TestCert3())
+	cleanupCerts, err := httpsCerts.InstallTestCerts(ctx)
+	if err != nil {
+		cleanupCerts(ctx)
+		return nil, errors.Wrap(err, "failed to setup certificates")
+	}
+	defer func() {
+		if success {
+			return
+		}
+		cleanupCerts(ctx)
+		if err := restartDNSProxy(ctx); err != nil {
+			testing.ContextLog(ctx, "Failed to restart DNS proxy: ", err)
+		}
+	}()
+	if err := restartDNSProxy(ctx); err != nil {
+		return nil, errors.Wrap(err, "failed to restart DNS proxy")
+	}
+
+	// Allocate subnet for DNS server.
+	serverIPv4Subnet, err := pool.AllocNextIPv4Subnet()
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to allocate v4 subnet")
+	}
+	serverIPv6Subnet, err := pool.AllocNextIPv6Subnet()
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to allocate v6 subnet")
+	}
+	serverSubnetAddr := serverIPv4Subnet.IP.To4()
+	serverAddr := net.IPv4(serverSubnetAddr[0], serverSubnetAddr[1], serverSubnetAddr[2], 2)
+
+	svc, router, err := virtualnet.CreateRouterEnv(ctx, m, pool, virtualnet.EnvOptions{
+		Priority:       5,
+		NameSuffix:     "",
+		IPv4DNSServers: []string{serverAddr.String()},
+		EnableDHCP:     true,
+		RAServer:       false,
+	})
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to set up router env")
+	}
+	defer func() {
+		if success {
+			return
+		}
+		if err := router.Cleanup(ctx); err != nil {
+			testing.ContextLog(ctx, "Failed to cleanup router env: ", err)
+		}
+	}()
+
+	if err := svc.WaitForProperty(ctx, shillconst.ServicePropertyState, shillconst.ServiceStateOnline, 10*time.Second); err != nil {
+		return nil, errors.Wrap(err, "failed to wait for base service online")
+	}
+
+	server, err := CreateDNSServerEnv(ctx, "server", serverIPv4Subnet, serverIPv6Subnet, router, httpsCerts)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to set up server env")
+	}
+
+	success = true
+	return &Env{
+		Router: router,
+		Server: server,
+		Certs:  httpsCerts,
+		Cleanup: func(ctx context.Context) {
+			cleanupCerts(ctx)
+			if err := restartDNSProxy(ctx); err != nil {
+				testing.ContextLog(ctx, "Failed to restart DNS proxy: ", err)
+			}
+			if err := m.SetProperty(ctx, shillconst.ProfilePropertyCheckPortalList, "ethernet,wifi,cellular"); err != nil {
+				testing.ContextLog(ctx, "Failed to revert check portal list property: ", err)
+			}
+		}}, nil
+}
+
+// CreateDNSServerEnv creates a server that responds to DNS and DoH queries.
+func CreateDNSServerEnv(ctx context.Context, envName string, ipv4Subnet, ipv6Subnet *net.IPNet, routerEnv *env.Env, httpsCerts *certs.Certs) (serverEnv *env.Env, err error) {
+	success := false
+
+	server, err := env.New(envName)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create server env")
+	}
+
+	if err := server.SetUp(ctx); err != nil {
+		return nil, errors.Wrap(err, "failed to set up server env")
+	}
+	defer func() {
+		if success {
+			return
+		}
+		if err := server.Cleanup(ctx); err != nil {
+			testing.ContextLog(ctx, "Failed to cleanup server env: ", err)
+		}
+	}()
+
+	if err := server.ConnectToRouter(ctx, routerEnv, ipv4Subnet, ipv6Subnet); err != nil {
+		return nil, errors.Wrap(err, "failed to connect server to router")
+	}
+
+	// Get server IPv4 address.
+	ipv4SubnetAddr := ipv4Subnet.IP.To4()
+	addr := net.IPv4(ipv4SubnetAddr[0], ipv4SubnetAddr[1], ipv4SubnetAddr[2], 2)
+
+	// Start a DNS server.
+	dnsmasq := dnsmasq.New(false /*enableDHCP=*/, true /*enableDNS=*/, nil /*subnet=*/, []string{} /*dnsServers=*/, "" /*resolvedHost=*/, addr)
+	if err := server.StartServer(ctx, "dnsmasq", dnsmasq); err != nil {
+		return nil, errors.Wrap(err, "failed to start dnsmasq")
+	}
+
+	// Start a DoH server.
+	httpsserver := httpserver.New("443", dohResponder(ctx, addr.String()), httpsCerts)
+	if err := server.StartServer(ctx, "httpsserver", httpsserver); err != nil {
+		return nil, errors.Wrap(err, "failed to start DoH server")
+	}
+
+	success = true
+	return server, nil
 }

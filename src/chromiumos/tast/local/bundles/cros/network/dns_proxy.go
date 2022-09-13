@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/local/multivm"
 	"chromiumos/tast/local/network"
+	"chromiumos/tast/local/network/virtualnet/subnet"
 	"chromiumos/tast/local/shill"
 	"chromiumos/tast/testing"
 )
@@ -78,12 +79,6 @@ func DNSProxy(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to ping 8.8.8.8: ", err)
 	}
 
-	// Toggle plain-text DNS or secureDNS depending on test parameter.
-	params := s.Param().(dnsProxyTestParams)
-	if err := dns.SetDoHMode(ctx, cr, tconn, params.mode, dns.GoogleDoHProvider); err != nil {
-		s.Fatal("Failed to set DNS-over-HTTPS mode: ", err)
-	}
-
 	// Ensure connectivity is available inside Crostini's container.
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		return cont.Command(ctx, "ping", "-c1", "-w1", "8.8.8.8").Run()
@@ -91,9 +86,25 @@ func DNSProxy(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to ping 8.8.8.8 from Crostini: ", err)
 	}
 
-	// Install dig in container after the DoH mode is set up properly.
+	// Install dig in container.
 	if err := dns.InstallDigInContainer(ctx, cont); err != nil {
 		s.Fatal("Failed to install dig in container: ", err)
+	}
+
+	// Set up virtualnet environment.
+	pool := subnet.NewPool()
+	env, err := dns.SetupDNSEnv(ctx, pool)
+	if err != nil {
+		s.Fatal("Failed to setup DNS env: ", err)
+	}
+	defer env.Cleanup(cleanupCtx)
+	defer env.Router.Cleanup(cleanupCtx)
+	defer env.Server.Cleanup(cleanupCtx)
+
+	// Toggle plain-text DNS or secureDNS depending on test parameter.
+	params := s.Param().(dnsProxyTestParams)
+	if err := dns.SetDoHMode(ctx, cr, tconn, params.mode, dns.ExampleDoHProvider); err != nil {
+		s.Fatal("Failed to set DNS-over-HTTPS mode: ", err)
 	}
 
 	// By default, DNS query should work.
@@ -150,7 +161,7 @@ func DNSProxy(ctx context.Context, s *testing.State) {
 			ns = append(ns, ip.NameServers...)
 		}
 		s.Log("Found nameservers: ", ns)
-		if err := m.SetDNSProxyDOHProviders(ctx, dns.GoogleDoHProvider, ns); err != nil {
+		if err := m.SetDNSProxyDOHProviders(ctx, dns.ExampleDoHProvider, ns); err != nil {
 			s.Fatal("Failed to set dns-proxy DoH providers: ", err)
 		}
 
