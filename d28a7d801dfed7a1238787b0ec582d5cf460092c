@@ -70,6 +70,23 @@
       },
       "revId": "d28a7d801dfed7a1238787b0ec582d5cf460092c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3bec532_5f2527d6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/boot_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-09-13T10:12:09Z",
+      "side": 0,
+      "message": "nit: don\u0027t change headers for all files",
+      "revId": "d28a7d801dfed7a1238787b0ec582d5cf460092c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "40e18a0e_79db19ff",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-09-13T10:12:09Z",
+      "side": 1,
+      "message": "LGMT % nits",
+      "revId": "049dc1ef0775404f6627d5a4cb7d24b9ccafd676",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d038a842_4bc34312",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/boot_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-09-13T10:12:09Z",
+      "side": 1,
+      "message": "and here should be context with name `ctx`",
+      "range": {
+        "startLine": 236,
+        "startChar": 7,
+        "endLine": 236,
+        "endChar": 13
+      },
+      "revId": "049dc1ef0775404f6627d5a4cb7d24b9ccafd676",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b221e84_8b353550",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/boot_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-09-13T10:12:09Z",
+      "side": 1,
+      "message": "nit: pass here cleanupCtx, don\u0027t bind ctx by reference, it\u0027s error-prone",
+      "range": {
+        "startLine": 251,
+        "startChar": 2,
+        "endLine": 251,
+        "endChar": 4
+      },
+      "revId": "049dc1ef0775404f6627d5a4cb7d24b9ccafd676",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
