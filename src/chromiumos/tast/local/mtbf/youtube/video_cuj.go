@@ -234,7 +234,7 @@ func Run(ctx context.Context, resources TestResources, param TestParams) error {
 	defer cancel()
 
 	options := cujrecorder.NewPerformanceCUJOptions()
-	recorder, err := cujrecorder.NewRecorder(ctx, cr, a, options)
+	recorder, err := cujrecorder.NewRecorder(ctx, cr, bTconn, a, options)
 	if err != nil {
 		return errors.Wrap(err, "failed to create a recorder")
 	}
