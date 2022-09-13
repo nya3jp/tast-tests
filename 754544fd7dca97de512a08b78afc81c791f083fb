@@ -16,6 +16,23 @@
       "message": "I\u0027ve run run_lint.sh as well as gofmt and golint on mode_crash.go and it doesn\u0027t show any diff; yet when I try to repo upload, then upload hook fails saying I didn\u0027t run gofmt on mode_crash.go.\n\nPerhaps I am missing something, but I wasn\u0027t able to figure it out, so I just repo uploaded bypassing the upload hook (after fixing any linter errors locally, of course)",
       "revId": "754544fd7dca97de512a08b78afc81c791f083fb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "552be20b_404bd4fd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1289508
+      },
+      "writtenOn": "2022-09-13T02:22:32Z",
+      "side": 1,
+      "message": "This seems fine, but there\u0027s no ebuild/eclass here and I (and ebuild-reviews@) doesn\u0027t have ownership, so I\u0027m afraid I can\u0027t really help you much.",
+      "revId": "754544fd7dca97de512a08b78afc81c791f083fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
