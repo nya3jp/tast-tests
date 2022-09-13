@@ -22,6 +22,30 @@
       },
       "revId": "7390c67dd83f8b0678ec7e047b325645851d2873",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6966c988_69adfc5f",
+        "filename": "src/chromiumos/tast/local/audio/aloop.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1271167
+      },
+      "writtenOn": "2022-09-13T05:08:48Z",
+      "side": 1,
+      "message": "And maybe we should consider extract loopback enable + loopback selection for all the audio tests\n\nBut could be done in different separated CLs",
+      "parentUuid": "81fd7d53_80449997",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 2
+      },
+      "revId": "7390c67dd83f8b0678ec7e047b325645851d2873",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
