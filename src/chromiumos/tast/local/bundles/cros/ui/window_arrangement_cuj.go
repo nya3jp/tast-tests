@@ -173,7 +173,7 @@ func WindowArrangementCUJ(ctx context.Context, s *testing.State) {
 			cujrecorder.NewLatencyMetricConfig("Ash.SplitViewResize.PresentationTime.TabletMode.MultiWindow"))
 	}
 
-	recorder, err := cujrecorder.NewRecorder(ctx, conns.Chrome, conns.ARC, cujrecorder.RecorderOptions{})
+	recorder, err := cujrecorder.NewRecorder(ctx, conns.Chrome, conns.BrowserTestConn, conns.ARC, cujrecorder.RecorderOptions{})
 	if err != nil {
 		s.Fatal("Failed to create a recorder: ", err)
 	}

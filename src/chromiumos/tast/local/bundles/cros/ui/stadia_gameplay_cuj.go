@@ -96,7 +96,21 @@ func StadiaGameplayCUJ(ctx context.Context, s *testing.State) {
 		screenRecorder.Start(ctx, tconn)
 	}
 
-	recorder, err := cujrecorder.NewRecorder(ctx, cr, nil, cujrecorder.RecorderOptions{})
+	// Set up the browser.
+	bt := s.Param().(browser.Type)
+	conn, br, closeBrowser, err := browserfixt.SetUpWithURL(ctx, cr, bt, stadiacuj.StadiaGameURL)
+	if err != nil {
+		s.Fatal("Failed to open the stadia staging instance: ", err)
+	}
+	defer closeBrowser(closeCtx)
+	defer conn.Close()
+
+	bTconn, err := br.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to get TestAPIConn: ", err)
+	}
+
+	recorder, err := cujrecorder.NewRecorder(ctx, cr, bTconn, nil, cujrecorder.RecorderOptions{})
 	if err != nil {
 		s.Fatal("Failed to create the recorder: ", err)
 	}
@@ -113,20 +127,6 @@ func StadiaGameplayCUJ(ctx context.Context, s *testing.State) {
 	}
 	if err := recorder.AddCollectedMetrics(tconn, browser.TypeAsh, ashConfigs...); err != nil {
 		s.Fatal("Failed to add Ash recorded metrics: ", err)
-	}
-
-	// Set up the browser.
-	bt := s.Param().(browser.Type)
-	conn, br, closeBrowser, err := browserfixt.SetUpWithURL(ctx, cr, bt, stadiacuj.StadiaGameURL)
-	if err != nil {
-		s.Fatal("Failed to open the stadia staging instance: ", err)
-	}
-	defer closeBrowser(closeCtx)
-	defer conn.Close()
-
-	bTconn, err := br.TestAPIConn(ctx)
-	if err != nil {
-		s.Fatal("Failed to get TestAPIConn: ", err)
 	}
 
 	// Browser metrics config, collected from ash-chrome or lacros-chrome

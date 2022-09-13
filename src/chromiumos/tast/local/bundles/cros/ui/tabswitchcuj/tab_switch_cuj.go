@@ -104,7 +104,7 @@ func runSetup(ctx context.Context, s *testing.State) (*tabSwitchVariables, error
 	}
 
 	var err error
-	vars.recorder, err = cujrecorder.NewRecorder(ctx, vars.cr, nil, cujrecorder.RecorderOptions{})
+	vars.recorder, err = cujrecorder.NewRecorder(ctx, vars.cr, vars.browserTestConn, nil, cujrecorder.RecorderOptions{})
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to create a recorder")
 	}

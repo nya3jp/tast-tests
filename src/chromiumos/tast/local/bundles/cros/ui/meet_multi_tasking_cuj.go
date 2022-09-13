@@ -65,12 +65,14 @@ func init() {
 //
 // Pre-preparation:
 //   - Open a Meet window and grant permissions.
+//
 // During recording:
 //   - Join the meeting.
 //   - Add a participant (bot) to the meeting.
 //   - Open a large Google Docs file and scroll down.
 //   - Open a large Google Slides file and go down.
 //   - Open the Gmail inbox and scroll down.
+//
 // After recording:
 //   - Record and save metrics.
 func MeetMultiTaskingCUJ(ctx context.Context, s *testing.State) {
@@ -291,7 +293,7 @@ func MeetMultiTaskingCUJ(ctx context.Context, s *testing.State) {
 	}
 
 	pv := perf.NewValues()
-	recorder, err := cujrecorder.NewRecorder(ctx, cr, nil, cujrecorder.RecorderOptions{})
+	recorder, err := cujrecorder.NewRecorder(ctx, cr, bTconn, nil, cujrecorder.RecorderOptions{})
 	if err != nil {
 		s.Fatal("Failed to create a new CUJ recorder: ", err)
 	}
