@@ -50,6 +50,24 @@
       "message": "Why do you need both \"wait\"? Is the second one (the one for normal window) sufficient?",
       "revId": "a3e42b8a28ab9443f32041adc29a23046ebc540a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a0db853_5e7dd7ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/focus_android_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1121230
+      },
+      "writtenOn": "2022-09-13T23:01:33Z",
+      "side": 1,
+      "message": "Yes, both are necessary. I tried with only normal window. It didn\u0027t work.\n\nI tried several other things:\n- Open another Android app before opening this fake Google News app.\n- Open Google News app from arc.NewActivity.\n\nNone of them worked. Now, I guess that \"wait\" is the important part.\n\nOn second thought, sleep might be better as the intention will be clear.\n\nI know it\u0027s not a good practice to add sleep. But I think it will be the best way to describe our intention here for now. It should be better than doing unnecessary OPs to wait a time.",
+      "parentUuid": "1e3b4113_36a03e5f",
+      "revId": "a3e42b8a28ab9443f32041adc29a23046ebc540a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
