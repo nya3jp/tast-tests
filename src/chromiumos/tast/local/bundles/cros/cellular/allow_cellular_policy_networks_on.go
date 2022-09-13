@@ -1,4 +1,4 @@
-// Copyright 2022 The ChromiumOS Authors.
+// Copyright 2022 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -31,7 +31,7 @@ func init() {
 			"cros-connectivity@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
-		Attr:         []string{"group:cellular", "cellular_unstable", "cellular_sim_active"},
+		Attr:         []string{"group:cellular", "cellular_unstable", "cellular_sim_test_esim"},
 		Fixture:      fixture.FakeDMSEnrolled,
 	})
 }
