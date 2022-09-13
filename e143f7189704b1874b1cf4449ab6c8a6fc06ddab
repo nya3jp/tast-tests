@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f1a9e38_1bafa04b",
+        "filename": "src/chromiumos/tast/local/perf/gpu_mem.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-09-13T20:53:49Z",
+      "side": 1,
+      "message": "nit: `there are`",
+      "range": {
+        "startLine": 148,
+        "startChar": 11,
+        "endLine": 148,
+        "endChar": 18
+      },
+      "revId": "e143f7189704b1874b1cf4449ab6c8a6fc06ddab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae0b2813_32429a41",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/recorder.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 461,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-09-13T20:53:49Z",
+      "side": 1,
+      "message": "I know this must have been done automatically by `gofmt`, but it looks silly. I guess that `gofmt` does this because the second line is indented to line up with the first line (beginning to the right of the `*` bullet). Hopefully if you write the following then `gofmt` will not mess with it:\n\t// * New context (with reduced timeout) that should be used to run the test\n\t// function.",
+      "range": {
+        "startLine": 458,
+        "startChar": 0,
+        "endLine": 461,
+        "endChar": 2
+      },
+      "revId": "e143f7189704b1874b1cf4449ab6c8a6fc06ddab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb19568c_2f6ffd17",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/recorder.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 569,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-09-13T20:53:49Z",
+      "side": 1,
+      "message": "Same deal as in the comment for `startRecording`.",
+      "range": {
+        "startLine": 566,
+        "startChar": 0,
+        "endLine": 569,
+        "endChar": 2
+      },
+      "revId": "e143f7189704b1874b1cf4449ab6c8a6fc06ddab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
