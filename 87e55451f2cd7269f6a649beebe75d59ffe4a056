@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0fee611_3913598f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 2475,
+      "author": {
+        "id": 1498402
+      },
+      "writtenOn": "2022-09-13T22:38:53Z",
+      "side": 1,
+      "message": "With setting expectations for test cases, we can move the \"update expectations\" code to a common location. Removing the updating expectations from CL.\n\nI\u0027m working on a script to use stainless results to update expectations and will follow up with the change.",
+      "parentUuid": "d2e6b009_137f226d",
+      "revId": "87e55451f2cd7269f6a649beebe75d59ffe4a056",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5504b61a_aeaf02c7",
@@ -48,6 +66,30 @@
       "writtenOn": "2022-09-02T01:19:06Z",
       "side": 1,
       "message": "I absolutely love that you are trying to automate updating expectations. We need that.\n\nOne problem is that we can\u0027t expect from the guard to pick an exotic device, flash it with an image, sync and build the chroot, run it locally for a few hours etc. just to get the expectations.\n\nThe expectations have to flow from the lab runs.\nThere are two possibilities:\n1) Query stainless or similar like Andres is doing, or Testmon.\n2) Try to aggregate on the DUT in the lab for all tests and report it to GS at the end.\n\n2) is aggregate for a few tests (like all VP9) on a single DUT. It might be possible to do in Tast.\n1) is across all lab devices for some specified builds. Obviously cleaner, but can\u0027t be done in Tast.",
+      "range": {
+        "startLine": 2486,
+        "startChar": 0,
+        "endLine": 2486,
+        "endChar": 126
+      },
+      "revId": "87e55451f2cd7269f6a649beebe75d59ffe4a056",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6812011_76cb789f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 2486,
+      "author": {
+        "id": 1498402
+      },
+      "writtenOn": "2022-09-13T22:38:53Z",
+      "side": 1,
+      "message": "With setting expectations for test cases, we can move the \"update expectations\" code to a common location. Removing the updating expectations from CL.\n\nI\u0027m working on a script to use stainless results to update expectations and will follow up with the change.",
+      "parentUuid": "5504b61a_aeaf02c7",
       "range": {
         "startLine": 2486,
         "startChar": 0,
