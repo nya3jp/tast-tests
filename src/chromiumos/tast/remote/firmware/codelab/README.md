@@ -29,7 +29,7 @@ Most firmware tests are remote tests, because they tend to disrupt the DUT, such
 Create a new remote test in the `firmware` bundle by creating a new file, `~/trunk/src/platform/tast-tests/src/chromiumos/tast/remote/bundles/cros/firmware/codelab.go`, with the following contents:
 
 ```go
-// Copyright 2021 The Chromium OS Authors. All rights reserved.
+// Copyright 2021 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
