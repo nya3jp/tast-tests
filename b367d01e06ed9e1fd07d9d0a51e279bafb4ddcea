@@ -22,6 +22,30 @@
       },
       "revId": "b367d01e06ed9e1fd07d9d0a51e279bafb4ddcea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d79f7bc_93d3869c",
+        "filename": "src/chromiumos/tast/local/network/virtualnet/env/env.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 516,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2022-09-13T06:25:05Z",
+      "side": 1,
+      "message": "Done, thanks! :D",
+      "parentUuid": "395ab21b_042bf6bc",
+      "range": {
+        "startLine": 516,
+        "startChar": 30,
+        "endLine": 516,
+        "endChar": 80
+      },
+      "revId": "b367d01e06ed9e1fd07d9d0a51e279bafb4ddcea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
