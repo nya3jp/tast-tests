@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f106187_2631ff4e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/hp_compliance.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-09-13T10:22:18Z",
+      "side": 1,
+      "message": "In this CL I wanted to just rename file to keep git history. Otherwise git might think that files are too different and this is not just file rename.",
+      "parentUuid": "654b9e3f_bc97e414",
+      "revId": "cac212b49669074d392552a68353d54d73cbcbfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a5809020_f61185ea",
@@ -48,6 +66,24 @@
       "writtenOn": "2022-09-12T14:20:01Z",
       "side": 1,
       "message": "nit: Maybe add \"on HP devices\": HPCompliance tests that DUT satisfies all requirements to run Telemetry Extension on HP devices.",
+      "revId": "cac212b49669074d392552a68353d54d73cbcbfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e2f7fb6_affc4a16",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/hp_compliance.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-09-13T10:22:18Z",
+      "side": 1,
+      "message": "In this CL I wanted to just rename file to keep git history. Otherwise git might think that files are too different and this is not just file rename.",
+      "parentUuid": "a5809020_f61185ea",
       "revId": "cac212b49669074d392552a68353d54d73cbcbfa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
