@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cff768b4_70a081ba",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/hid_wake.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-09-13T23:48:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bbe384fc_90cf6ea8",
+      "revId": "91bc03a573eb1e394a01008f23dc315f170063d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6c9342f4_f21f0c41",
@@ -52,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "16c2f6f9_73abb215",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/hid_wake.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-09-13T23:48:43Z",
+      "side": 1,
+      "message": "Yes, powerd_dbus_suspend waits for the DUT to wake before exiting. With the `--print_wakeup_type` option, it will wait for the DUT to wake and print the wake source before exiting.",
+      "parentUuid": "6c9342f4_f21f0c41",
+      "revId": "91bc03a573eb1e394a01008f23dc315f170063d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "faf58a2c_4908b95c",
@@ -65,6 +101,24 @@
       "writtenOn": "2022-09-13T20:59:40Z",
       "side": 1,
       "message": "I am not sure what happend to the parent process if the subprocess has s.Fatal.\n\nHow about \n\n```\nmatch, err :\u003d regexp.MatchString(`Wakeup\\s+type\\:\\s+other`, string(out))\nif err !\u003d nil {\n    err \u003d errors.Wrap(err, \"unable to check wakeup source for first resume\")\n    return\n}\nif !match {\n    err \u003d errors.Wrap(err, \"incorrect wakeup source for first resume\")\n    return\n}\nsuspendErr \u003c- err\n\n```",
+      "revId": "91bc03a573eb1e394a01008f23dc315f170063d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b4bca00_f07eb591",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/hid_wake.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-09-13T23:48:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "faf58a2c_4908b95c",
       "revId": "91bc03a573eb1e394a01008f23dc315f170063d5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -88,6 +142,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "421f3254_0b8e73b7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/hid_wake.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-09-13T23:48:43Z",
+      "side": 1,
+      "message": "I don\u0027t think this will work for our case. The way that other tests are using a separate context to call powerd_dbus_suspend is by putting a short timeout and expecting the the powerd_dbus_suspend command to throw a \"context deadline exceeded\" error. They then ignore that error when checking for errors from the command and continue the test. With this they can suspend the device and continue the test, but they cannot check the output of powerd_dbus_suspend, which we do to look for the wake source.\n\nSee L115 from https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/remote/bundles/cros/power/dut_wake_on_power_button_tablet_mode.go for example\n\nI think that is why the only other tast test I see which uses --print_wakeup_type also uses a separate channel for calling powerd_dbus_suspend.\n\nSee L133 of https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/wake_on_wifi_util.go",
+      "parentUuid": "4a8b5002_1d2c345b",
+      "revId": "91bc03a573eb1e394a01008f23dc315f170063d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "527ddf7b_3c491cb3",
         "filename": "src/chromiumos/tast/remote/bundles/cros/power/hid_wake.go",
         "patchSetId": 9
@@ -99,6 +171,24 @@
       "writtenOn": "2022-09-13T20:59:40Z",
       "side": 1,
       "message": "```\ndefer func() {\n    if cl !\u003d nil {\n        cl.Close(ctx)\n    }\n}()\n```",
+      "revId": "91bc03a573eb1e394a01008f23dc315f170063d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19d197b0_ae91706a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/hid_wake.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-09-13T23:48:43Z",
+      "side": 1,
+      "message": "I don\u0027t think this is necessary. `cl` is declared on L60, and a defer to close it is on L64. `cl` then gets re-assigned on L131 and L183, but in all cases the defer defined on L64 will close it when the test ends without adding another defer. \n\nWhen I try adding this it results in the below error\n\n \u003e 2022-09-13T23:19:22.009154Z power.HidWake [ FAIL ] Panic: close of closed channel",
+      "parentUuid": "527ddf7b_3c491cb3",
       "revId": "91bc03a573eb1e394a01008f23dc315f170063d5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -120,6 +210,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "969a7e97_70c4f054",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/hid_wake.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-09-13T23:48:43Z",
+      "side": 1,
+      "message": "Removed. This was needed when dutfs was initialized in this function. But now that that is moved to the main test, it is no longer needed here. Thanks for catching this!",
+      "parentUuid": "8a00fbfb_3dadffc8",
+      "revId": "91bc03a573eb1e394a01008f23dc315f170063d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "772c262b_362f58c9",
@@ -133,6 +241,30 @@
       "writtenOn": "2022-09-13T20:59:40Z",
       "side": 1,
       "message": "Why do you need testing.State here? In fact, avoid passing testing.State in general.\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#test-subpackages\n\nAlso, I don\u0027t see dut.DUT is being used. Please removed. Thanks.",
+      "range": {
+        "startLine": 241,
+        "startChar": 66,
+        "endLine": 241,
+        "endChar": 84
+      },
+      "revId": "91bc03a573eb1e394a01008f23dc315f170063d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "06eccebf_18336e7d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/hid_wake.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-09-13T23:48:43Z",
+      "side": 1,
+      "message": "Removed. This was needed when dutfs was initialized in this function. But now that that is moved to the main test, it is no longer needed here. Thanks for catching this!",
+      "parentUuid": "772c262b_362f58c9",
       "range": {
         "startLine": 241,
         "startChar": 66,
