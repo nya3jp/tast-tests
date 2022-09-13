@@ -22,6 +22,30 @@
       },
       "revId": "f79bd8defb302a8170b2fbb4c9a73ae64de0450d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "054a4afc_74cc79b5",
+        "filename": "src/chromiumos/tast/local/network/virtualnet/virtualnet.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2022-09-13T06:23:59Z",
+      "side": 1,
+      "message": "Ah good catch! I think we\u0027d want this for IPv4 only. I\u0027ll rename this to `IPv4DNSServers`.\n\nI\u0027ll leave the IPv6 one as-is for now as it is a const `googleIPv6DNSServer`. Would gladly add `IPv6DNSServers` if preferred.",
+      "parentUuid": "6f0ee223_1999c543",
+      "range": {
+        "startLine": 40,
+        "startChar": 4,
+        "endLine": 40,
+        "endChar": 70
+      },
+      "revId": "f79bd8defb302a8170b2fbb4c9a73ae64de0450d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
