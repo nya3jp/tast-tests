@@ -386,7 +386,7 @@ func LoginPerf(ctx context.Context, s *testing.State) {
 						ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 						defer cancel()
 						// Initialize CUJ recording.
-						cujRecorder, err := cujrecorder.NewRecorderWithTestConn(ctx, tLoginConn, cr, nil, cujrecorder.RecorderOptions{})
+						cujRecorder, err := cujrecorder.NewRecorderWithTestConn(ctx, tLoginConn, cr, tLoginConn, nil, cujrecorder.RecorderOptions{})
 						if err != nil {
 							s.Fatal("Failed to create a CUJ recorder: ", err)
 						}
