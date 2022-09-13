@@ -1,0 +1,146 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8f42f86_00b28c7f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-09-13T20:59:40Z",
+      "side": 1,
+      "message": "Sorry, there were a few things I missed in earlier reviews. Pleas take a look. Thanks.",
+      "revId": "91bc03a573eb1e394a01008f23dc315f170063d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bbe384fc_90cf6ea8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/hid_wake.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-09-13T20:59:40Z",
+      "side": 1,
+      "message": "How about change the name from \"done\" to \"suspendErr\"?",
+      "revId": "91bc03a573eb1e394a01008f23dc315f170063d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c9342f4_f21f0c41",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/hid_wake.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-09-13T20:59:40Z",
+      "side": 1,
+      "message": "I am not still not sure what is the conditon of powerd_dbus_suspend? Does it wait for the DUT to come back before exiting?",
+      "revId": "91bc03a573eb1e394a01008f23dc315f170063d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "faf58a2c_4908b95c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/hid_wake.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-09-13T20:59:40Z",
+      "side": 1,
+      "message": "I am not sure what happend to the parent process if the subprocess has s.Fatal.\n\nHow about \n\n```\nmatch, err :\u003d regexp.MatchString(`Wakeup\\s+type\\:\\s+other`, string(out))\nif err !\u003d nil {\n    err \u003d errors.Wrap(err, \"unable to check wakeup source for first resume\")\n    return\n}\nif !match {\n    err \u003d errors.Wrap(err, \"incorrect wakeup source for first resume\")\n    return\n}\nsuspendErr \u003c- err\n\n```",
+      "revId": "91bc03a573eb1e394a01008f23dc315f170063d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a8b5002_1d2c345b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/hid_wake.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-09-13T20:59:40Z",
+      "side": 1,
+      "message": "I am still new in using channel. Will it better to do something like this.\n\nUse\nsuspendCtx, cancel :\u003d context.WithTimeout(ctx, dutReconnectionTimeout * time.Second) \n\nfor the func that calls powerd_dbus_suspend.\n\nThen, here do something like\n\n```\n\tselect {\n\tcase err :\u003d \u003c-suspendErr:\n\t        if err !\u003d nil {\n\t            s.Fatalf(\"Failed to call powerd_dbus_suspend: %v\", err)\n\t        }\n\tcase \u003c-suspendCtx.Done():\n\t\ts.Fatal(\"Failed to wake from first suspend: \", err)\n\t}\n```\n\nBTW, I don\u0027t really know channel well at this moment, but I think it is more conform to other go test code. \n\nThanks.",
+      "revId": "91bc03a573eb1e394a01008f23dc315f170063d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "527ddf7b_3c491cb3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/hid_wake.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-09-13T20:59:40Z",
+      "side": 1,
+      "message": "```\ndefer func() {\n    if cl !\u003d nil {\n        cl.Close(ctx)\n    }\n}()\n```",
+      "revId": "91bc03a573eb1e394a01008f23dc315f170063d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a00fbfb_3dadffc8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/hid_wake.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-09-13T20:59:40Z",
+      "side": 1,
+      "message": "Why do you need testing.State here? In fact, avoid passing testing.State in general.\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#test-subpackages\n\nAlso, I don\u0027t see dut.DUT is being used. Please removed. Thanks.",
+      "revId": "91bc03a573eb1e394a01008f23dc315f170063d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "772c262b_362f58c9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/hid_wake.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-09-13T20:59:40Z",
+      "side": 1,
+      "message": "Why do you need testing.State here? In fact, avoid passing testing.State in general.\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#test-subpackages\n\nAlso, I don\u0027t see dut.DUT is being used. Please removed. Thanks.",
+      "range": {
+        "startLine": 241,
+        "startChar": 66,
+        "endLine": 241,
+        "endChar": 84
+      },
+      "revId": "91bc03a573eb1e394a01008f23dc315f170063d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
