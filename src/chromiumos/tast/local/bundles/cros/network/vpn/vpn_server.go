@@ -225,8 +225,7 @@ var (
 			"debug\n" +
 			"lock\n" +
 			"proxyarp\n" +
-			"ms-dns 8.8.8.8\n" +
-			"ms-dns 8.8.4.4\n",
+			"ms-dns {{.dns_server}}\n",
 	}
 )
 
@@ -372,12 +371,19 @@ func StartL2TPIPsecServer(ctx context.Context, env *env.Env, authType string, ip
 	runner.AddConfigTemplates(strongSwanConfigs)
 	runner.AddConfigTemplates(l2tpConfigs)
 
+	// Defaults to use the environment address as the DNS server.
+	envAddrs, err := env.GetVethInAddrs(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get env addresses")
+	}
+
 	configValues := map[string]interface{}{
 		"chap_user":                chapUser,
 		"chap_secret":              chapSecret,
 		"charon_logfile":           charonLogFile,
 		"xl2tpd_server_ip_address": xl2tpdServerIPAddress,
 		"use_underlay_ip":          underlayIPIsOverlayIP,
+		"dns_server":               envAddrs.IPv4Addr,
 	}
 
 	switch authType {
@@ -654,12 +660,4 @@ func (s *Server) Exit(ctx context.Context) error {
 	}
 
 	return lastErr
-}
-
-// SetupInternetAccess setup internet connectivity for VPN server.
-func (s *Server) SetupInternetAccess(ctx context.Context) error {
-	if err := s.serverRunner.RunChroot(ctx, []string{"/sbin/iptables", "-t", "nat", "-A", "POSTROUTING", "!", "-s", s.OverlayIP, "-j", "SNAT", "--to", s.UnderlayIP, "-w"}); err != nil {
-		return errors.Wrap(err, "failed to setup internet connectivity")
-	}
-	return nil
 }
