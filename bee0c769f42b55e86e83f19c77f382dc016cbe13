@@ -22,6 +22,30 @@
       },
       "revId": "bee0c769f42b55e86e83f19c77f382dc016cbe13",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7f0e5f8_4878f6b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/idle_perf.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-09-13T21:25:29Z",
+      "side": 0,
+      "message": "My understanding of this sleep is to get metrics recorded before the browser open. The sleep won\u0027t help anymore now since I moved the browser open out of the recorder. @ramsaroop@google.com are you ok with this change?",
+      "parentUuid": "b1053b49_98aa0360",
+      "range": {
+        "startLine": 125,
+        "startChar": 0,
+        "endLine": 128,
+        "endChar": 4
+      },
+      "revId": "bee0c769f42b55e86e83f19c77f382dc016cbe13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
