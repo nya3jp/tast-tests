@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "707d0ede_50d858df",
+        "filename": "src/chromiumos/tast/common/policy/defs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-09-13T09:13:35Z",
+      "side": 0,
+      "message": "This file is generated. Please don\u0027t change it here and we will update the generator to fix the header.",
+      "revId": "6a1945d1fb8ff6dbc15b98bbd8c041cb44f17541",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
