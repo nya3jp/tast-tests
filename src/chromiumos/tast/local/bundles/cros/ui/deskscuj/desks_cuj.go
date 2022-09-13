@@ -1,4 +1,4 @@
-// Copyright 2022 The ChromiumOS Authors.
+// Copyright 2022 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -121,7 +121,7 @@ func Run(ctx context.Context, s *testing.State) {
 
 	// Open all desks and windows for each desk. Additionally, initialize
 	// unique user input actions that will be performed on each desk.
-	onVisitActions, err := setUpDesks(ctx, tconn, bTconn, cs, kw, mw, tpw, tw)
+	onVisitActions, expectedNumWindows, err := setUpDesks(ctx, tconn, bTconn, cs, kw, mw, tpw, tw)
 	if err != nil {
 		s.Fatal("Failed to set up desks: ", err)
 	}
@@ -193,6 +193,17 @@ func Run(ctx context.Context, s *testing.State) {
 				}
 				cycles++
 			}
+
+			// Ensure that none of the windows crashed during the test.
+			ws, err := ash.GetAllWindows(ctx, tconn)
+			if err != nil {
+				return errors.Wrap(err, "failed to get all windows")
+			}
+
+			if len(ws) != expectedNumWindows {
+				return errors.Errorf("unexpected number of open windows, got %d, expected %d", len(ws), expectedNumWindows)
+			}
+
 			s.Logf("Switched desk by %s %d times", deskSwitcher.name, cycles)
 		}
 		return nil
