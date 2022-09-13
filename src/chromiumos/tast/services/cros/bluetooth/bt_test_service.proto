@@ -35,7 +35,9 @@ service BTTestService {
 }
 
 message ChromeNewRequest {
-  bool bluetoothRevampEnabled = 1;
+  repeated string enableFeatures = 1;
+  repeated string disableFeatures = 2;
+  bool noLogin = 3;
 }
 
 message Device {
@@ -47,4 +49,3 @@ message DiscoverDeviceRequest {
   // The device to discover.
   Device device = 1;
 }
-
