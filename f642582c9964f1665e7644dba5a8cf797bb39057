@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7c9ca1f_b3ce8652",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-09-13T09:55:48Z",
+      "side": 1,
+      "message": "LGTM with comments to avoid another cross TZ iterations.",
+      "revId": "f642582c9964f1665e7644dba5a8cf797bb39057",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9da1c96e_44ac538c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/tpm_contest.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-09-13T09:55:48Z",
+      "side": 1,
+      "message": "nit: s.Log() This is not an error. (error is reported at L115, already).",
+      "range": {
+        "startLine": 121,
+        "startChar": 5,
+        "endLine": 121,
+        "endChar": 12
+      },
+      "revId": "f642582c9964f1665e7644dba5a8cf797bb39057",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
