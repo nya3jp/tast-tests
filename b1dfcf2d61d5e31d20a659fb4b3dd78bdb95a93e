@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "93965ed6_6ef0a3b5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2022-09-13T09:48:22Z",
+      "side": 1,
+      "message": "It looks like crrev.com/c/3892150 should take care of this.",
+      "revId": "b1dfcf2d61d5e31d20a659fb4b3dd78bdb95a93e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
