@@ -52,6 +52,24 @@
       "parentUuid": "a497f99d_56770d53",
       "revId": "490612bd6dfff658b9bd4b4b8020ff33ec8a25c3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "07d66993_d8f915a3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-09-13T22:23:06Z",
+      "side": 1,
+      "message": "this is the error:\n\ntast-remote-tests-cros-0.0.2-r12427: src/chromiumos/tast/remote/bundles/cros/firmware/disable_enable_ec_sw_sync.go:117:3: (*chromiumos/tast/internal/testing.globalMixin).Fatal call has possible formatting directive %s\ntast-remote-tests-cros-0.0.2-r12427:  * ERROR: chromeos-base/tast-remote-tests-cros-0.0.2-r12427::chromiumos failed (compile phase):\ntast-remote-tests-cros-0.0.2-r12427:  *   (no error message)",
+      "parentUuid": "02fee392_ce24c22f",
+      "revId": "490612bd6dfff658b9bd4b4b8020ff33ec8a25c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
