@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f64fe48_c79b7c18",
+        "filename": "src/chromiumos/tast/local/bundles/cros/quicksettings/media_controls.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1189880
+      },
+      "writtenOn": "2022-09-13T22:13:13Z",
+      "side": 1,
+      "message": "also add cros-status-area-eng@google.com",
+      "range": {
+        "startLine": 31,
+        "startChar": 2,
+        "endLine": 31,
+        "endChar": 10
+      },
+      "revId": "24646578182dcc767d8a8d9c7c906f23aa3f64b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59ed5283_8f7cd40d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/quicksettings/media_controls.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1189880
+      },
+      "writtenOn": "2022-09-13T22:13:13Z",
+      "side": 1,
+      "message": "also add cros-status-area-eng@",
+      "range": {
+        "startLine": 31,
+        "startChar": 2,
+        "endLine": 31,
+        "endChar": 10
+      },
+      "revId": "24646578182dcc767d8a8d9c7c906f23aa3f64b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fde8503b_642c7281",
+        "filename": "src/chromiumos/tast/local/bundles/cros/quicksettings/media_controls.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1189880
+      },
+      "writtenOn": "2022-09-13T22:13:13Z",
+      "side": 1,
+      "message": "This is such a great test! Could we test this in tablet and clamshell mode?",
+      "range": {
+        "startLine": 38,
+        "startChar": 20,
+        "endLine": 38,
+        "endChar": 25
+      },
+      "revId": "24646578182dcc767d8a8d9c7c906f23aa3f64b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4bee0077_5414ad7f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/quicksettings/media_controls.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1189880
+      },
+      "writtenOn": "2022-09-13T22:13:13Z",
+      "side": 1,
+      "message": "great choice",
+      "range": {
+        "startLine": 83,
+        "startChar": 11,
+        "endLine": 83,
+        "endChar": 22
+      },
+      "revId": "24646578182dcc767d8a8d9c7c906f23aa3f64b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "377d345d_afed5f35",
+        "filename": "src/chromiumos/tast/local/bundles/cros/quicksettings/media_controls.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1189880
+      },
+      "writtenOn": "2022-09-13T22:13:13Z",
+      "side": 1,
+      "message": "verifyMediaControlsDoesNotExist",
+      "revId": "24646578182dcc767d8a8d9c7c906f23aa3f64b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "379802c5_2b5dd032",
+        "filename": "src/chromiumos/tast/local/bundles/cros/quicksettings/media_controls.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1189880
+      },
+      "writtenOn": "2022-09-13T22:13:13Z",
+      "side": 1,
+      "message": "would it be easier if we gave the view a view id in chromium? Then this may be a bit more robust if we change the UI.",
+      "range": {
+        "startLine": 258,
+        "startChar": 23,
+        "endLine": 258,
+        "endChar": 88
+      },
+      "revId": "24646578182dcc767d8a8d9c7c906f23aa3f64b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed0d79a7_77eeaa4e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/quicksettings/media_controls.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1189880
+      },
+      "writtenOn": "2022-09-13T22:13:13Z",
+      "side": 1,
+      "message": "Is this the ImageView in the pod, or the ImageView in the pod\u0027s tray item?\n\nIf it\u0027s the tray item:\nThe ImageView is added in the constructor, then updated OnThemeChanged (guaranteed to be called by the views framework).\n\nIMO, we don\u0027t need this part of the test. If this broke, many chrome unit tests would break too since this is a fundamental component of chromium views UI :). \n\nhttps://source.chromium.org/chromium/chromium/src/+/main:ash/system/media/media_tray.cc;l\u003d421-426;drc\u003d3a215d1e60a3b32928a50d00ea07ae52ea491a16",
+      "range": {
+        "startLine": 265,
+        "startChar": 0,
+        "endLine": 275,
+        "endChar": 1
+      },
+      "revId": "24646578182dcc767d8a8d9c7c906f23aa3f64b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
