@@ -1,4 +1,4 @@
-// Copyright 2022 The ChromiumOS Authors.
+// Copyright 2022 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -61,7 +61,11 @@ func openDesk(ctx context.Context, tconn *chrome.TestConn, cs ash.ConnSource, ur
 // and opens up a variety of windows on each desk. At the end of
 // setUpDesks, there will be a total of 4 desks, with rightmost desk
 // being active. Desk 1 has a separate window with extra tabs for
-// additional RAM pressure. Desks are arranged based on the following:
+// additional RAM pressure. This function returns a list of actions
+// to be performed on the corresponding desk, as well as the total
+// number of windows that should be open after setUpDesks completes.
+//
+// Desks are arranged based on the following:
 // Desk 1:
 //   - Windows: 8
 //   - User Input: Mouse Scroll Wheel
@@ -77,18 +81,18 @@ func openDesk(ctx context.Context, tconn *chrome.TestConn, cs ash.ConnSource, ur
 // Desk 4:
 //   - Windows: 1
 //   - User Input: Keyboard typing
-func setUpDesks(ctx context.Context, tconn, bTconn *chrome.TestConn, cs ash.ConnSource, kw *input.KeyboardEventWriter, mw *input.MouseEventWriter, tpw *input.TrackpadEventWriter, tw *input.TouchEventWriter) ([]action.Action, error) {
+func setUpDesks(ctx context.Context, tconn, bTconn *chrome.TestConn, cs ash.ConnSource, kw *input.KeyboardEventWriter, mw *input.MouseEventWriter, tpw *input.TrackpadEventWriter, tw *input.TouchEventWriter) ([]action.Action, int, error) {
 	const notes = "The quick brown fox jumps over the lazy dog in the afternoon on Saturday!"
 
 	docsURL, err := cuj.GetTestDocURL()
 	if err != nil {
-		return nil, errors.Wrap(err, "failed to get Google Doc URL")
+		return nil, 0, errors.Wrap(err, "failed to get Google Doc URL")
 	}
 
 	// Open additional tabs for RAM pressure.
 	tabs, err := cuj.NewTabs(ctx, cs, false, 3)
 	if err != nil {
-		return nil, errors.Wrap(err, "failed to open multiple tabs in a window")
+		return nil, 0, errors.Wrap(err, "failed to open multiple tabs in a window")
 	}
 
 	var totalOpenWindows int
@@ -149,7 +153,7 @@ func setUpDesks(ctx context.Context, tconn, bTconn *chrome.TestConn, cs ash.Conn
 		totalOpenWindows += desk.expectedNumWindows
 		deskTabs, err := openDesk(ctx, tconn, cs, desk.urls, totalOpenWindows, i)
 		if err != nil {
-			return nil, errors.Wrapf(err, "failed to complete setup for desk %d", i)
+			return nil, totalOpenWindows, errors.Wrapf(err, "failed to complete setup for desk %d", i)
 		}
 
 		onVisitActions = append(onVisitActions, desk.onVisitAction)
@@ -159,9 +163,9 @@ func setUpDesks(ctx context.Context, tconn, bTconn *chrome.TestConn, cs ash.Conn
 	// Close connections to each tab because we don't need them.
 	for _, tab := range tabs {
 		if err := tab.Conn.Close(); err != nil {
-			return nil, errors.Wrapf(err, "failed to close connection to %s", tab.URL)
+			return nil, totalOpenWindows, errors.Wrapf(err, "failed to close connection to %s", tab.URL)
 		}
 	}
 
-	return onVisitActions, nil
+	return onVisitActions, totalOpenWindows, nil
 }
