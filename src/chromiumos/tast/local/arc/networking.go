@@ -59,24 +59,6 @@ func NetworkInterfaceNames(ctx context.Context) ([]string, error) {
 	return ifnames, nil
 }
 
-// BlockOutbound blocks all outbound traffic from ARC.
-func BlockOutbound(ctx context.Context) error {
-	testing.ContextLog(ctx, "Blocking ARC outbound traffic")
-	if err := testexec.CommandContext(ctx, "/sbin/ip6tables", "-w", "-t", "filter", "-I", "FORWARD", "-i", "arc+", "-j", "DROP").Run(testexec.DumpLogOnError); err != nil {
-		return err
-	}
-	return testexec.CommandContext(ctx, "/sbin/iptables", "-w", "-t", "filter", "-I", "FORWARD", "-i", "arc+", "-j", "DROP").Run(testexec.DumpLogOnError)
-}
-
-// UnblockOutbound unblocks all outbound traffic from ARC.
-func UnblockOutbound(ctx context.Context) error {
-	testing.ContextLog(ctx, "Unblocking ARC outbound traffic")
-	if err := testexec.CommandContext(ctx, "/sbin/ip6tables", "-w", "-t", "filter", "-D", "FORWARD", "-i", "arc+", "-j", "DROP").Run(testexec.DumpLogOnError); err != nil {
-		return err
-	}
-	return testexec.CommandContext(ctx, "/sbin/iptables", "-w", "-t", "filter", "-D", "FORWARD", "-i", "arc+", "-j", "DROP").Run(testexec.DumpLogOnError)
-}
-
 // ExpectPingSuccess checks if 'addr' is reachable over the 'network' in ARC.
 // See ArcNetworkDebugTools#reachCmd for possible 'network' values.
 // Use an empty 'network' to test on default network.
