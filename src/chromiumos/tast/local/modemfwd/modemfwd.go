@@ -14,9 +14,11 @@ import (
 
 	"github.com/godbus/dbus/v5"
 
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/dbusutil"
 	"chromiumos/tast/local/upstart"
+	"chromiumos/tast/testing"
 )
 
 const (
@@ -175,4 +177,21 @@ func GetAutoUpdatePrefValue(ctx context.Context) bool {
 		return true
 	}
 	return false
+}
+
+// WaitForUsbDevice polls for the presence of the USB device with ID |VID:PID|
+func WaitForUsbDevice(ctx context.Context, UsbID string, maxWaitTime time.Duration) error {
+	return testing.Poll(ctx, func(context.Context) error {
+		// Check whether USB device presented as |VID:PID| exists in host
+		// If the specified device is not found, a non-zero exit code is returned
+		// by lsusb and err will not be nil
+		// |err == nil| indicates |lsusb -d XXXX:XXXX| finds the expected devices.
+		if err := testexec.CommandContext(ctx, "lsusb", "-d", UsbID).Run(testexec.DumpLogOnError); err != nil {
+			return errors.Wrap(err, "unexpected usb status in host os")
+		}
+		return nil
+	}, &testing.PollOptions{
+		Timeout:  maxWaitTime,
+		Interval: 500 * time.Millisecond,
+	})
 }

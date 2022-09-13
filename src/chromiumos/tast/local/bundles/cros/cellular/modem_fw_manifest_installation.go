@@ -7,6 +7,7 @@ package cellular
 import (
 	"context"
 	"os"
+	"strings"
 	"time"
 
 	"chromiumos/tast/ctxutil"
@@ -116,15 +117,33 @@ func ModemFWManifestInstallation(ctx context.Context, s *testing.State) {
 	// Ensure the test restores the modemfwd state.
 	defer cleanUp(cleanupCtx, s)
 
+	const numberOfRetries = 2
 	// Ensure we do a full flash at least once.
 	useModemsFwInfo := false
 	for _, carrierID := range carrierIDs {
-		s.Logf("Force flashing for device %q and uuid %q", deviceID, carrierID)
-		options := map[string]interface{}{"carrier_uuid": carrierID, "use_modems_fw_info": useModemsFwInfo}
-		useModemsFwInfo = true
-		if err := m.ForceFlash(ctx, deviceID, options); err != nil {
-			s.Fatal("Failed to flash fw: ", err)
+		// Try each FW twice to reduce flakiness due to random failure.
+		for i := 1; i <= numberOfRetries; i++ {
+			const usbPrefix = "usb:"
+			if strings.HasPrefix(deviceID, usbPrefix) {
+				if err := modemfwd.WaitForUsbDevice(ctx, strings.TrimPrefix(deviceID, usbPrefix), 40*time.Second); err != nil {
+					s.Fatal("Failed to flash fw: ", err)
+				}
+			}
+
+			s.Logf("Force flashing for device %q and uuid %q. Retry %d", deviceID, carrierID, i)
+			options := map[string]interface{}{"carrier_uuid": carrierID, "use_modems_fw_info": useModemsFwInfo}
+			useModemsFwInfo = true
+			if err := m.ForceFlash(ctx, deviceID, options); err != nil {
+				if i < numberOfRetries {
+					s.Logf("Failed to flash fw: %q. Retrying same FW", err)
+				} else {
+					s.Fatal("Failed to flash fw: ", err)
+				}
+			} else {
+				break
+			}
 		}
+
 	}
 }
 
