@@ -40,6 +40,7 @@ var (
 	serverKeyFilePath  = filepath.Join(serverPath, "server_key.key")
 	serverCertFilePath = filepath.Join(serverPath, "server_cert.crt")
 	caCertFilePath     = filepath.Join(caPath, "ca_cert.pem")
+	caCertsFilePath    = filepath.Join(caPath, "ca-certificates.crt")
 )
 
 // Default path in root to bind mount to for cert validation
@@ -148,6 +149,11 @@ func (c *Certs) installTestCertificateAuthorityCert(ctx context.Context) error {
 
 	if err := testexec.CommandContext(ctx, "c_rehash", caPath).Run(); err != nil {
 		return errors.Wrap(err, "failed to rehash tmp cert directory")
+	}
+
+	// CURL by default expects a file containing all available CA certificates for HTTPS requests.
+	if err := os.WriteFile(caCertsFilePath, []byte(c.certStore.CACred.Cert), 0644); err != nil {
+		return errors.Wrap(err, "failed to write ca cert")
 	}
 
 	if err := testexec.CommandContext(ctx, "mount", "-o", "bind", caPath, c.certDirectory).Run(); err != nil {
