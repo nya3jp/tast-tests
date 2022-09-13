@@ -95,7 +95,7 @@ func DeskTemplatesCUJ(ctx context.Context, s *testing.State) {
 	}
 
 	// Set up metrics recorder for TPS calculation
-	recorder, err := cujrecorder.NewRecorder(ctx, cr, nil, cujrecorder.RecorderOptions{})
+	recorder, err := cujrecorder.NewRecorder(ctx, cr, tconn, nil, cujrecorder.RecorderOptions{})
 	if err != nil {
 		s.Fatal("Failed to create the recorder: ", err)
 	}
