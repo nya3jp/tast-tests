@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "601205ef_6943c4fb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-09-13T03:27:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2880746a_2ce15332",
+      "range": {
+        "startLine": 7,
+        "startChar": 26,
+        "endLine": 7,
+        "endChar": 37
+      },
+      "revId": "ed154b2f165efa3a3af0da4258313264e1f05fbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "41a2b86b_213756ac",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-09-12T23:39:45Z",
       "side": 1,
       "message": "Remove word",
+      "range": {
+        "startLine": 12,
+        "startChar": 50,
+        "endLine": 12,
+        "endChar": 53
+      },
+      "revId": "ed154b2f165efa3a3af0da4258313264e1f05fbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8e1e17f_83f67df9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-09-13T03:27:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "41a2b86b_213756ac",
       "range": {
         "startLine": 12,
         "startChar": 50,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b464a035_2857a753",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-09-13T03:27:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "80486d2c_50ac82a5",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 27
+      },
+      "revId": "ed154b2f165efa3a3af0da4258313264e1f05fbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e0d51f94_0b33d544",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-09-12T23:39:45Z",
       "side": 1,
       "message": "`\u003cDUT\u003e`",
+      "range": {
+        "startLine": 19,
+        "startChar": 13,
+        "endLine": 19,
+        "endChar": 14
+      },
+      "revId": "ed154b2f165efa3a3af0da4258313264e1f05fbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8af006e9_569fd189",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-09-13T03:27:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e0d51f94_0b33d544",
       "range": {
         "startLine": 19,
         "startChar": 13,
@@ -139,6 +235,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aabed1ce_bce9237e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-09-13T03:27:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2e7d42fb_102b5353",
+      "range": {
+        "startLine": 20,
+        "startChar": 13,
+        "endLine": 20,
+        "endChar": 14
+      },
+      "revId": "ed154b2f165efa3a3af0da4258313264e1f05fbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ffb9e64c_6bcfa34f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-09-13T03:27:56Z",
+      "side": 1,
+      "message": "For reference, `16p_jamboard` does not screenshare, and thus this code change doesn\u0027t affect it. Nonetheless, I went ahead and added support for presenting a jamboard, jic we add 16p_jamboard_present_split (or something like that) in the future.",
+      "parentUuid": "7409436c_47b0bf95",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 54
+      },
+      "revId": "ed154b2f165efa3a3af0da4258313264e1f05fbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "46411c8e_cca97201",
@@ -152,6 +296,30 @@
       "writtenOn": "2022-09-12T23:39:45Z",
       "side": 1,
       "message": "Remove this. It clicks on the list of screensharing tabs, but now you are adding code that clicks on a specific screensharing tab in that list.",
+      "range": {
+        "startLine": 852,
+        "startChar": 0,
+        "endLine": 852,
+        "endChar": 62
+      },
+      "revId": "ed154b2f165efa3a3af0da4258313264e1f05fbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7001ea5c_63d8098c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 852,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-09-13T03:27:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "46411c8e_cca97201",
       "range": {
         "startLine": 852,
         "startChar": 0,
@@ -203,6 +371,54 @@
         "startChar": 22,
         "endLine": 853,
         "endChar": 59
+      },
+      "revId": "ed154b2f165efa3a3af0da4258313264e1f05fbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1635c215_a44f05da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 853,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-09-13T03:27:56Z",
+      "side": 1,
+      "message": "(discussed offline): No, but now I added support for it to work. But as per my other comment, currently we do not screenshare with jamboard.",
+      "parentUuid": "e810ebd8_b09db65e",
+      "range": {
+        "startLine": 853,
+        "startChar": 22,
+        "endLine": 853,
+        "endChar": 59
+      },
+      "revId": "ed154b2f165efa3a3af0da4258313264e1f05fbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6edd1c1_3fefb6cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 853,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-09-13T03:27:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "be33d792_8b87cfa2",
+      "range": {
+        "startLine": 853,
+        "startChar": 60,
+        "endLine": 853,
+        "endChar": 69
       },
       "revId": "ed154b2f165efa3a3af0da4258313264e1f05fbf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
