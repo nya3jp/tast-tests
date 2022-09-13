@@ -495,3 +495,15 @@ func (f *FilesApp) PerformActionAndRetryMaximizedOnFail(action uiauto.Action) ui
 		return action(ctx)
 	}
 }
+
+// ExpandOpenDropdown waits for the Open button (in the toolbar) to be a dropdown and click to display the dropdown menu.
+func (f *FilesApp) ExpandOpenDropdown() uiauto.Action {
+	openButton := nodewith.Role(role.Button).Collapsed().Name(Open)
+	dropdownMenu := nodewith.Role(role.Menu).Name(OpenWith)
+	return uiauto.Combine("ExpandOpenDropdown",
+		f.WaitUntilExists(openButton),
+		f.LeftClick(openButton),
+		f.WaitUntilExists(dropdownMenu),
+	)
+
+}
