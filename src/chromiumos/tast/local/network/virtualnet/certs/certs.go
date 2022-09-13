@@ -42,6 +42,11 @@ var (
 	caCertFilePath     = filepath.Join(caPath, "ca_cert.pem")
 )
 
+// Default path in root to bind mount to for cert validation
+const (
+	SslCrtPath = "/etc/ssl/certs"
+)
+
 // Certs holds the default cert directory and a cert store.
 type Certs struct {
 	// certDirectory is the directory of the default certs (contains CA certificates
