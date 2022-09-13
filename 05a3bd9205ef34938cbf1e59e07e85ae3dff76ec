@@ -158,6 +158,24 @@
       "parentUuid": "712bbdd1_8b38324f",
       "revId": "05a3bd9205ef34938cbf1e59e07e85ae3dff76ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "022ca4d1_926820dc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/add_remove_factors.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1430007
+      },
+      "writtenOn": "2022-09-13T21:15:21Z",
+      "side": 1,
+      "message": "I plan on merging these into a common utility file, but I plan on deleting hwsec.{LockScreenChallengeResponseAuthSession,ChallengeResponseAuthSession} first /merging the utiltiy work after they\u0027ve been replaced, in the follow up CL to this one.",
+      "parentUuid": "e02c513d_c6d3a2e4",
+      "revId": "05a3bd9205ef34938cbf1e59e07e85ae3dff76ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
