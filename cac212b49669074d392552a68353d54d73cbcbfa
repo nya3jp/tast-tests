@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "04334e38_21b5c6ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/hp_compliance.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1543127
+      },
+      "writtenOn": "2022-09-13T10:38:47Z",
+      "side": 1,
+      "message": "Ah didn\u0027t get that, makes sense!",
+      "parentUuid": "8f106187_2631ff4e",
+      "revId": "cac212b49669074d392552a68353d54d73cbcbfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a5809020_f61185ea",
@@ -84,6 +102,24 @@
       "side": 1,
       "message": "In this CL I wanted to just rename file to keep git history. Otherwise git might think that files are too different and this is not just file rename.",
       "parentUuid": "a5809020_f61185ea",
+      "revId": "cac212b49669074d392552a68353d54d73cbcbfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c430abc6_c36fd14b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/hp_compliance.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1543127
+      },
+      "writtenOn": "2022-09-13T10:38:47Z",
+      "side": 1,
+      "message": "Ah didn\u0027t get that, makes sense!",
+      "parentUuid": "1e2f7fb6_affc4a16",
       "revId": "cac212b49669074d392552a68353d54d73cbcbfa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
