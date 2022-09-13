@@ -33,6 +33,24 @@
       "message": "This is the new format, but I don\u0027t think we should be updating the copyright headers as parts of other changes.",
       "revId": "4bed769c761e7b371cbd472b32de5fb1b4cf5f49",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b04ec31_d75ba012",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/sandboxed_services.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1244186
+      },
+      "writtenOn": "2022-09-13T09:29:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ada4fcb_e8c63f91",
+      "revId": "4bed769c761e7b371cbd472b32de5fb1b4cf5f49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
