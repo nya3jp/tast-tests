@@ -1,4 +1,4 @@
-// Copyright 2022 The ChromiumOS Authors.
+// Copyright 2022 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -41,10 +41,20 @@ func (bts *BTTestService) ChromeNew(ctx context.Context, request *pb.ChromeNewRe
 		return nil, errors.New("chrome already available")
 	}
 	var chromeOpts []chrome.Option
+
 	if request.BluetoothRevampEnabled {
-		chromeOpts = []chrome.Option{chrome.EnableFeatures("BluetoothRevamp")}
+		chromeOpts = append(chromeOpts, chrome.EnableFeatures("BluetoothRevamp"))
 	} else {
-		chromeOpts = []chrome.Option{chrome.DisableFeatures("BluetoothRevamp")}
+		chromeOpts = append(chromeOpts, chrome.DisableFeatures("BluetoothRevamp"))
+	}
+	if request.OobeHidDetectionRevampEnabled {
+		chromeOpts = append(chromeOpts, chrome.EnableFeatures("OobeHidDetectionRevamp"))
+	} else {
+		chromeOpts = append(chromeOpts, chrome.EnableFeatures("OobeHidDetectionRevamp"))
+	}
+
+	if request.NoLogin {
+		chromeOpts = append(chromeOpts, chrome.NoLogin())
 	}
 	cr, err := chrome.New(ctx, chromeOpts...)
 	if err != nil {
