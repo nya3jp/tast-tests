@@ -119,7 +119,7 @@ func RoundedDisplayPerf(ctx context.Context, s *testing.State) {
 	displayBounds := displayInfo.Bounds
 	s.Log("Display bounds: ", displayBounds)
 
-	recorder, err := cujrecorder.NewRecorder(ctx, cr, nil, cujrecorder.RecorderOptions{})
+	recorder, err := cujrecorder.NewRecorder(ctx, cr, tconn, nil, cujrecorder.RecorderOptions{})
 	if err != nil {
 		s.Fatal("Failed to create a recorder: ", err)
 	}

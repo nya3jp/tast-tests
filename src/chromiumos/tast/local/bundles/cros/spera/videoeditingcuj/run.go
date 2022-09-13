@@ -93,7 +93,7 @@ func Run(ctx context.Context, outDir string, cr *chrome.Chrome, tabletMode bool,
 	defer cuj.CloseAllWindows(ctx, tconn)
 
 	options := cujrecorder.NewPerformanceCUJOptions()
-	recorder, err := cujrecorder.NewRecorder(ctx, cr, nil, options)
+	recorder, err := cujrecorder.NewRecorder(ctx, cr, bTconn, nil, options)
 	if err != nil {
 		return errors.Wrap(err, "failed to create a recorder")
 	}
