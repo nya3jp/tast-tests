@@ -1,4 +1,4 @@
-// Copyright 2020 The Chromium OS Authors. All rights reserved.
+// Copyright 2022 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -6,9 +6,9 @@ package arc
 
 import (
 	"context"
-	"syscall"
 
 	"github.com/godbus/dbus/v5"
+	"golang.org/x/sys/unix"
 
 	"chromiumos/tast/local/dbusutil"
 	"chromiumos/tast/local/sysutil"
@@ -50,7 +50,7 @@ func Appfuse(ctx context.Context, s *testing.State) {
 	if err := obj.CallWithContext(ctx, dbusInterface+".Mount", 0, uid, mountID).Store(&fd); err != nil {
 		s.Fatal("Failed to mount Appfuse: ", err)
 	}
-	defer syscall.Close(int(fd))
+	defer unix.Close(int(fd))
 
 	if err := obj.CallWithContext(ctx, dbusInterface+".Unmount", 0, uid, mountID).Err; err != nil {
 		s.Fatal("Failed to mount Appfuse: ", err)

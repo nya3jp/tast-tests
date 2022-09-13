@@ -1,4 +1,4 @@
-// Copyright 2021 The Chromium OS Authors. All rights reserved.
+// Copyright 2022 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -6,7 +6,6 @@ package arc
 
 import (
 	"context"
-	"syscall"
 	"time"
 
 	"golang.org/x/sys/unix"
@@ -70,7 +69,7 @@ func AndroidInitCrash(ctx context.Context, s *testing.State) {
 
 	// Android init crash should result in Android reboot.
 	s.Log("Inducing Android init crash")
-	if err := unix.Kill(int(oldPID), syscall.SIGTERM); err != nil {
+	if err := unix.Kill(int(oldPID), unix.SIGTERM); err != nil {
 		s.Fatal("Failed to kill Android init: ", err)
 	}
 	if err = testing.Poll(ctx, func(ctx context.Context) error {
