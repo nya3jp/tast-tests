@@ -16,6 +16,24 @@
       "message": "Thanks Eriko for the fix. I confirmed that this workaround is no longer needed to put a DUT in the tablet mode.",
       "revId": "5c2d1e133c573f720421c57e61278c05d3be744b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ccb50405_91243867",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1302660
+      },
+      "writtenOn": "2022-09-13T00:12:06Z",
+      "side": 1,
+      "message": "Thanks for the double check!",
+      "parentUuid": "2812f889_6dda4c2b",
+      "revId": "5c2d1e133c573f720421c57e61278c05d3be744b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
