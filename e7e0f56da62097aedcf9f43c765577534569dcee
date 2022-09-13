@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c3e0fac_a05f85c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/tpm_contest.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1549582
+      },
+      "writtenOn": "2022-09-13T17:15:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "54a40af7_797719fc",
+      "range": {
+        "startLine": 32,
+        "startChar": 26,
+        "endLine": 32,
+        "endChar": 44
+      },
+      "revId": "e7e0f56da62097aedcf9f43c765577534569dcee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0d1fe08b_5ce72587",
@@ -144,6 +168,30 @@
       "side": 1,
       "message": "ok, could you rephrase to make it clearer to readers? I was initially confused with this sentence.",
       "parentUuid": "23dbdff8_58bc770d",
+      "range": {
+        "startLine": 96,
+        "startChar": 22,
+        "endLine": 96,
+        "endChar": 32
+      },
+      "revId": "e7e0f56da62097aedcf9f43c765577534569dcee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c1981a5_f1a94724",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/tpm_contest.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1549582
+      },
+      "writtenOn": "2022-09-13T17:15:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ae9f205b_81ada184",
       "range": {
         "startLine": 96,
         "startChar": 22,
