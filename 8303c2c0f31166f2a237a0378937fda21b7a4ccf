@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "126c6ba1_2f18c9e9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-09-13T08:43:37Z",
+      "side": 1,
+      "message": "Only took a quick look. Question: do we need to make sure that the second DoH server is not accessible via the physical network (i.e., only accessible for the physical one). Or it\u0027s already done?",
+      "revId": "8303c2c0f31166f2a237a0378937fda21b7a4ccf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc5bf5bb_300919d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns_proxy_over_vpn.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-09-13T08:43:37Z",
+      "side": 1,
+      "message": "looks like this is the same with the dns_proxy test, is it possible to move the code into dns package to share it?",
+      "range": {
+        "startLine": 98,
+        "startChar": 0,
+        "endLine": 119,
+        "endChar": 33
+      },
+      "revId": "8303c2c0f31166f2a237a0378937fda21b7a4ccf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0733364e_343a13da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns_proxy_over_vpn.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-09-13T08:43:37Z",
+      "side": 1,
+      "message": "nit: for naming, maybe \"connectToVPN\" is better?",
+      "range": {
+        "startLine": 214,
+        "startChar": 3,
+        "endLine": 214,
+        "endChar": 18
+      },
+      "revId": "8303c2c0f31166f2a237a0378937fda21b7a4ccf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
