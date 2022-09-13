@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f393531_34c78142",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2022-09-13T07:45:04Z",
+      "side": 1,
+      "message": "Can you also add a Tree test so that we can verify properties are sent correctly?",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 28
+      },
+      "revId": "f86408e8528e6f4e3d10856494a6a71f1f0c8a3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c9ba576_2fe842a0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2022-09-13T07:45:04Z",
+      "side": 1,
+      "message": "mostly lgtm, thanks for doing this!",
+      "revId": "f86408e8528e6f4e3d10856494a6a71f1f0c8a3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cae000e9_4ea60015",
+        "filename": "android/ArcAccessibilityTest/AndroidManifest.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2022-09-13T07:45:04Z",
+      "side": 1,
+      "message": "please add this as well not to get flaky in tablet devices",
+      "range": {
+        "startLine": 34,
+        "startChar": 12,
+        "endLine": 34,
+        "endChar": 50
+      },
+      "revId": "f86408e8528e6f4e3d10856494a6a71f1f0c8a3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70c0a771_8233ab2a",
+        "filename": "android/ArcAccessibilityTest/src/org/chromium/arc/testapp/accessibilitytest/ActionActivity.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2022-09-13T07:45:04Z",
+      "side": 1,
+      "message": "addAction internally removes the action with the same id:\nhttps://cs.android.com/android/platform/superproject/+/master:frameworks/base/core/java/android/view/accessibility/AccessibilityNodeInfo.java;l\u003d1452;drc\u003d484f7b4d64b2ad72c2d6ed9dfe831c57049cca80\n\nThus only addAction is needed.",
+      "range": {
+        "startLine": 40,
+        "startChar": 12,
+        "endLine": 40,
+        "endChar": 64
+      },
+      "revId": "f86408e8528e6f4e3d10856494a6a71f1f0c8a3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d484de13_b65fd728",
+        "filename": "android/ArcAccessibilityTest/src/org/chromium/arc/testapp/accessibilitytest/ActionActivity.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2022-09-13T07:45:04Z",
+      "side": 1,
+      "message": "nit: this part is expected to have a verb. So can we do that here as well? (e.g. \"do nothing\", \"announce long click\", etc)",
+      "range": {
+        "startLine": 44,
+        "startChar": 20,
+        "endLine": 44,
+        "endChar": 33
+      },
+      "revId": "f86408e8528e6f4e3d10856494a6a71f1f0c8a3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca7cd7d6_e2fa18e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_speech.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2022-09-13T07:45:04Z",
+      "side": 1,
+      "message": "style: I know this is a valid go-format, but it\u0027s a bit hard to read.\n\nCan you reformat this to:\n```\n\t\t\t[]a11y.SpeechExpectation{\n\t\t\t\ta11y.NewStringExpectation(\"LONG CLICK\"),\n\t\t\t\ta11y.NewStringExpectation(\"Button\"),\n\t\t\t\ta11y.NewStringExpectation(\"Press Search plus Shift plus Space to long click\")\n\t\t\t},\n```\n\nSame for the below.",
+      "range": {
+        "startLine": 177,
+        "startChar": 3,
+        "endLine": 177,
+        "endChar": 185
+      },
+      "revId": "f86408e8528e6f4e3d10856494a6a71f1f0c8a3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
