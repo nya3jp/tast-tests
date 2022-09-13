@@ -86,7 +86,7 @@ func GoogleSlidesCUJ(ctx context.Context, s *testing.State) {
 		s.Fatal("Unrecognized browser type: ", bt)
 	}
 
-	recorder, err := cujrecorder.NewRecorder(ctx, cr, nil, cujrecorder.RecorderOptions{})
+	recorder, err := cujrecorder.NewRecorder(ctx, cr, bTconn, nil, cujrecorder.RecorderOptions{})
 	if err != nil {
 		s.Fatal("Failed to create a CUJ recorder: ", err)
 	}
