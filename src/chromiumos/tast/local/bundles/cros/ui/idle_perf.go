@@ -10,7 +10,6 @@ import (
 
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/ctxutil"
-	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/browser"
@@ -108,9 +107,23 @@ func IdlePerf(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 2*time.Second)
 	defer cancel()
 
+	var bTconn *chrome.TestConn
+	if idleTest.testType == testTypeBrowser {
+		conn, br, closeBrowser, err := browserfixt.SetUpWithURL(ctx, cr, idleTest.browserType, emptyWindowURL)
+		if err != nil {
+			s.Fatalf("Failed to open %s: %v", emptyWindowURL, err)
+		}
+		bTconn, err = br.TestAPIConn(ctx)
+		if err != nil {
+			s.Fatal("Failed to get browser test API connection: ", err)
+		}
+		defer closeBrowser(closeCtx)
+		defer conn.Close()
+	}
+
 	// Recorder with no additional config; it records and reports memory usage and
 	// CPU percents of browser/GPU processes.
-	recorder, err := cujrecorder.NewRecorder(ctx, cr, a, cujrecorder.RecorderOptions{})
+	recorder, err := cujrecorder.NewRecorder(ctx, cr, bTconn, a, cujrecorder.RecorderOptions{})
 	if err != nil {
 		s.Fatal("Failed to create a recorder: ", err)
 	}
@@ -121,19 +134,6 @@ func IdlePerf(ctx context.Context, s *testing.State) {
 	}()
 
 	if err := recorder.Run(ctx, func(ctx context.Context) error {
-		if idleTest.testType == testTypeBrowser {
-			// Sleep to get the baseline idle state without any browser open.
-			if err := testing.Sleep(ctx, 10*time.Second); err != nil {
-				return errors.Wrap(err, "failed to sleep")
-			}
-
-			conn, _, closeBrowser, err := browserfixt.SetUpWithURL(ctx, cr, idleTest.browserType, emptyWindowURL)
-			if err != nil {
-				s.Fatalf("Failed to open %s: %v", emptyWindowURL, err)
-			}
-			defer closeBrowser(closeCtx)
-			defer conn.Close()
-		}
 		s.Log("Just wait for ", idleDuration, " to check the load of idle status")
 		return testing.Sleep(ctx, idleDuration)
 	}); err != nil {

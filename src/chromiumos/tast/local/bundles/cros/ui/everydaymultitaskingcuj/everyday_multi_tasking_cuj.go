@@ -199,7 +199,7 @@ func Run(ctx context.Context, cr *chrome.Chrome, bt browser.Type, a *arc.ARC, pa
 
 	options := cujrecorder.NewPerformanceCUJOptions()
 	options.DoNotChangeBluetooth = params.enableBT
-	recorder, err := cujrecorder.NewRecorder(ctx, cr, a, options)
+	recorder, err := cujrecorder.NewRecorder(ctx, cr, bTconn, a, options)
 	if err != nil {
 		return errors.Wrap(err, "failed to create a recorder")
 	}
