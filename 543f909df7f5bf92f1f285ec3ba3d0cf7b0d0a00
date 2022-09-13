@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6881c66e_29280d45",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1294854
+      },
+      "writtenOn": "2022-09-13T21:44:06Z",
+      "side": 1,
+      "message": "lgtm, but you will need a tast reviewer for approval",
+      "revId": "543f909df7f5bf92f1f285ec3ba3d0cf7b0d0a00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14ecf6f9_d7f004e7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/diagnostics/input_check_defocusing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1294854
+      },
+      "writtenOn": "2022-09-13T21:44:06Z",
+      "side": 1,
+      "message": "Hmm, i\u0027ll defer to Go reviewers on this but does seem fragile",
+      "range": {
+        "startLine": 104,
+        "startChar": 2,
+        "endLine": 104,
+        "endChar": 77
+      },
+      "revId": "543f909df7f5bf92f1f285ec3ba3d0cf7b0d0a00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
