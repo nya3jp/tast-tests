@@ -12,6 +12,7 @@ import (
 
 	"chromiumos/tast/common/shillconst"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/network/virtualnet/certs"
 	"chromiumos/tast/local/network/virtualnet/dnsmasq"
 	"chromiumos/tast/local/network/virtualnet/env"
 	"chromiumos/tast/local/network/virtualnet/httpserver"
@@ -47,6 +48,8 @@ type EnvOptions struct {
 	// to customize how the server should respond to requests. If the handler is
 	// set, then this enables the HTTPS server in the Env.
 	HTTPSServerResponseHandler func(rw http.ResponseWriter, req *http.Request)
+	// HTTPS certs is the cert directory and a cert store to be used by HTTPS server.
+	HTTPSCerts *certs.Certs
 	// ResolvedHost is the hostname to force a specific IPv4 or IPv6 address.
 	// When ResolvedHost is queried from dnsmasq, dnsmasq will respond with ResolveHostToIP.
 	// If resolvedHost is not set, it matches any domain in dnsmasq configuration.
@@ -108,14 +111,17 @@ func CreateRouterEnv(ctx context.Context, m *shill.Manager, pool *subnet.Pool, o
 	}
 
 	if opts.HTTPServerResponseHandler != nil {
-		httpserver := httpserver.New("80", opts.HTTPServerResponseHandler, false)
+		httpserver := httpserver.New("80", opts.HTTPServerResponseHandler, nil)
 		if err := router.StartServer(ctx, "httpserver", httpserver); err != nil {
 			return nil, nil, errors.Wrap(err, "failed to start http server")
 		}
 	}
 
 	if opts.HTTPSServerResponseHandler != nil {
-		httpsserver := httpserver.New("443", opts.HTTPSServerResponseHandler, true)
+		if opts.HTTPSCerts == nil {
+			return nil, nil, errors.New("failed to create https server: empty certificate option")
+		}
+		httpsserver := httpserver.New("443", opts.HTTPSServerResponseHandler, opts.HTTPSCerts)
 		if err := router.StartServer(ctx, "httpsserver", httpsserver); err != nil {
 			return nil, nil, errors.Wrap(err, "failed to start https server")
 		}

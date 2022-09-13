@@ -9,9 +9,11 @@ import (
 	"net/http"
 	"time"
 
+	"chromiumos/tast/common/crypto/certificate"
 	"chromiumos/tast/common/shillconst"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/network/virtualnet"
+	"chromiumos/tast/local/network/virtualnet/certs"
 	"chromiumos/tast/local/network/virtualnet/subnet"
 	"chromiumos/tast/local/shill"
 	"chromiumos/tast/testing"
@@ -101,6 +103,17 @@ func ShillCaptivePortalHTTP(ctx context.Context, s *testing.State) {
 	defer cancel()
 
 	params := s.Param().(*params)
+
+	var httpsCerts *certs.Certs
+	if params.HTTPSResponseHandler != nil {
+		httpsCerts = certs.New(certs.SSLCrtPath, certificate.TestCert3())
+		cleanupCerts, err := httpsCerts.InstallTestCerts(ctx)
+		if err != nil {
+			s.Fatal("Failed to setup certificates: ", err)
+		}
+		defer cleanupCerts(cleanupCtx)
+	}
+
 	opts := virtualnet.EnvOptions{
 		Priority:                   5,
 		NameSuffix:                 "",
@@ -109,6 +122,7 @@ func ShillCaptivePortalHTTP(ctx context.Context, s *testing.State) {
 		RAServer:                   false,
 		HTTPSServerResponseHandler: params.HTTPSResponseHandler,
 		HTTPServerResponseHandler:  params.HTTPResponseHandler,
+		HTTPSCerts:                 httpsCerts,
 	}
 	pool := subnet.NewPool()
 	service, portalEnv, err := virtualnet.CreateRouterEnv(ctx, m, pool, opts)
