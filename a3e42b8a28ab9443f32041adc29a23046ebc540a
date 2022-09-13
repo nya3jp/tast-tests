@@ -16,6 +16,40 @@
       "message": "PTAL. Thank you!",
       "revId": "a3e42b8a28ab9443f32041adc29a23046ebc540a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "82232e9c_d4fcd0f4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-09-13T15:02:33Z",
+      "side": 1,
+      "message": "I have a comment. Please take a look. Thanks.",
+      "revId": "a3e42b8a28ab9443f32041adc29a23046ebc540a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e3b4113_36a03e5f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/focus_android_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-09-13T15:02:33Z",
+      "side": 1,
+      "message": "Why do you need both \"wait\"? Is the second one (the one for normal window) sufficient?",
+      "revId": "a3e42b8a28ab9443f32041adc29a23046ebc540a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
