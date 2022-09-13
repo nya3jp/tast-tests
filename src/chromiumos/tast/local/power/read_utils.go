@@ -1,4 +1,4 @@
-// Copyright 2020 The Chromium OS Authors. All rights reserved.
+// Copyright 2020 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -8,7 +8,8 @@ import (
 	"bufio"
 	"os"
 	"strconv"
-	"strings"
+
+	"chromiumos/tast/errors"
 )
 
 // readFirstLine reads the first line from a file.
@@ -21,11 +22,14 @@ func readFirstLine(filePath string) (string, error) {
 	}
 	defer file.Close()
 
-	reader := bufio.NewReader(file)
-	// Reader.ReadString returns error iff line does not end in \n. We can
-	// ignore this error.
-	lineContent, _ := reader.ReadString('\n')
-	return strings.TrimSuffix(lineContent, "\n"), nil
+	scanner := bufio.NewScanner(file)
+	if scanner.Scan() {
+		return scanner.Text(), nil
+	}
+	if err := scanner.Err(); err != nil {
+		return "", err
+	}
+	return "", errors.Errorf("found no content in %q", filePath)
 }
 
 // readFloat64 reads a line from a file and converts it into float64.
