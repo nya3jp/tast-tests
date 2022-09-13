@@ -1,4 +1,4 @@
-// Copyright 2022 The ChromiumOS Authors.
+// Copyright 2022 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -89,25 +89,25 @@ func init() {
 			{
 				Name: "arc",
 				Val: &appInfo{
-					name:          "Calendar",
-					id:            "decaoeahkmjpajbmlbpogjjkjbjokeed",
+					name:          "VLC",
+					id:            "faabdppbcbmkemcigbhofgomflchgocl",
 					source:        fromPlayStore,
 					isTabletMode:  false,
-					arcAppPkgName: "com.google.android.calendar",
+					arcAppPkgName: "org.videolan.vlc",
 				},
-				Fixture:           "arcBootedWithPlayStoreProductivityLauncher",
+				Fixture:           "arcBootedWithPlayStore",
 				ExtraSoftwareDeps: []string{"arc"},
 			},
 			{
 				Name: "arc_tablet",
 				Val: &appInfo{
-					name:          "Calendar",
-					id:            "decaoeahkmjpajbmlbpogjjkjbjokeed",
+					name:          "VLC",
+					id:            "faabdppbcbmkemcigbhofgomflchgocl",
 					source:        fromPlayStore,
 					isTabletMode:  true,
-					arcAppPkgName: "com.google.android.calendar",
+					arcAppPkgName: "org.videolan.vlc",
 				},
-				Fixture:           "arcBootedWithPlayStoreProductivityLauncher",
+				Fixture:           "arcBootedWithPlayStore",
 				ExtraSoftwareDeps: []string{"arc"},
 			},
 		},
