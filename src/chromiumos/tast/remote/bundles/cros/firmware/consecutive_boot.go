@@ -11,6 +11,7 @@ import (
 
 	"chromiumos/tast/common/servo"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/remote/firmware"
 	"chromiumos/tast/remote/firmware/fixture"
 	"chromiumos/tast/remote/firmware/reporters"
 	"chromiumos/tast/ssh"
@@ -99,8 +100,8 @@ func ConsecutiveBoot(ctx context.Context, s *testing.State) {
 	verifyBootMode := func(mode string) error {
 		if mainfwType, err := h.Reporter.CrossystemParam(ctx, reporters.CrossystemParamMainfwType); err != nil {
 			return errors.Wrap(err, "failed to get crossystem mainfw_type")
-		} else if mainfwType != testArgs.bootMode {
-			return errors.Errorf("expected mainfw_type to be %s, got %q", testArgs.bootMode, mainfwType)
+		} else if mainfwType != mode {
+			return errors.Errorf("expected mainfw_type to be %s, got %q", mode, mainfwType)
 		}
 		return nil
 	}
@@ -164,7 +165,7 @@ func ConsecutiveBoot(ctx context.Context, s *testing.State) {
 		shutdownFunc()
 
 		s.Log("Check for G3 powerstate")
-		if err := h.WaitForPowerStates(ctx, 1*time.Second, 30*time.Second, "G3"); err != nil {
+		if err := h.WaitForPowerStates(ctx, firmware.PowerStateInterval, firmware.PowerStateTimeout, "G3"); err != nil {
 			s.Fatal("Failed to get G3 powerstate: ", err)
 		}
 
@@ -174,7 +175,7 @@ func ConsecutiveBoot(ctx context.Context, s *testing.State) {
 		}
 
 		s.Log("Check for S0 powerstate")
-		if err := h.WaitForPowerStates(ctx, 1*time.Second, 60*time.Second, "S0"); err != nil {
+		if err := h.WaitForPowerStates(ctx, firmware.PowerStateInterval, firmware.PowerStateTimeout, "S0"); err != nil {
 			s.Fatal("Failed to get S0 powerstate: ", err)
 		}
 
