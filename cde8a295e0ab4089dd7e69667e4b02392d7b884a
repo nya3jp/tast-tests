@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e26b457b_c3652349",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1551729
+      },
+      "writtenOn": "2022-09-13T17:50:06Z",
+      "side": 1,
+      "message": "Hi Reguna and David,\n\nI found out that the set wallpaper failed because of the wrong class.\n\nI fixed the code with removing that class. Please help review when you have time.\n\n-Chenghao",
+      "revId": "cde8a295e0ab4089dd7e69667e4b02392d7b884a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
