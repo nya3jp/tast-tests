@@ -14,7 +14,6 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/remote/bluetooth"
 	"chromiumos/tast/remote/crosserverutil"
-	bts "chromiumos/tast/services/cros/bluetooth"
 	"chromiumos/tast/services/cros/ui"
 	"chromiumos/tast/testing"
 )
@@ -51,14 +50,7 @@ func OobeHidMouseOnly(ctx context.Context, s *testing.State) {
 	}
 	defer cl.Close(ctx)
 
-	defer fv.BTS.DumpUITree(cleanupCtx, &bts.DumpUiTreeRequest{
-		HasError: s.HasError(),
-	})
-
-	// test to see if log.print will log anything.
-	if _, e := fv.BTS.EnableBluetoothAdapter(ctx, &emptypb.Empty{}); e != nil {
-		s.Error("Failed to enable bluetooth adapter on DUT: ", e)
-	}
+	defer fv.BTS.DumpUITree(cleanupCtx, &emptypb.Empty{})
 
 	uiautoSvc := ui.NewAutomationServiceClient(cl.Conn)
 	continueButtonFinder := &ui.Finder{
@@ -68,16 +60,9 @@ func OobeHidMouseOnly(ctx context.Context, s *testing.State) {
 	}
 	if _, err := uiautoSvc.WaitUntilExists(ctx, &ui.WaitUntilExistsRequest{Finder: continueButtonFinder}); err != nil {
 		log.Println("==== DumpUITree error ====!")
-		// test to see if log.print will log anything.
-		if _, e := fv.BTS.DisableBluetoothAdapter(ctx, &emptypb.Empty{}); e != nil {
-			s.Error("Failed to disable bluetooth adapter on DUT: ", e)
+		if _, er := fv.BTS.DumpUITree(cleanupCtx, &emptypb.Empty{}); er != nil {
+			s.Error("Failed to DumpUITree: ", er)
 		}
-
-		// if _, er := fv.BTS.DumpUITree(cleanupCtx, &bts.DumpUiTreeRequest{
-		// 	HasError: s.HasError(),
-		// }); er != nil {
-		// 	s.Error("Failed to DumpUITree: ", er)
-		// }
 		s.Fatal("Failed to find continue button: ", err)
 	}
 	// fv := s.FixtValue().(*bluetooth.FixtValue)

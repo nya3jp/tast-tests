@@ -17,7 +17,6 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bluetooth/bluez"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/uiauto/faillog"
 	pb "chromiumos/tast/services/cros/bluetooth"
 	"chromiumos/tast/testing"
 )
@@ -43,10 +42,17 @@ func (bts *BTTestService) ChromeNew(ctx context.Context, request *pb.ChromeNewRe
 		return nil, errors.New("chrome already available")
 	}
 	var chromeOpts []chrome.Option
-	if request.BluetoothRevampEnabled {
-		chromeOpts = []chrome.Option{chrome.EnableFeatures("BluetoothRevamp")}
-	} else {
-		chromeOpts = []chrome.Option{chrome.DisableFeatures("BluetoothRevamp")}
+
+	if len(request.EnableFeatures) > 0 {
+		chromeOpts = append(chromeOpts, chrome.EnableFeatures(request.EnableFeatures[:]...))
+	}
+
+	if len(request.DisableFeatures) > 0 {
+		chromeOpts = append(chromeOpts, chrome.DisableFeatures(request.DisableFeatures[:]...))
+	}
+
+	if request.NoLogin {
+		chromeOpts = append(chromeOpts, chrome.NoLogin())
 	}
 	cr, err := chrome.New(ctx, chromeOpts...)
 	if err != nil {
@@ -203,8 +209,7 @@ func (bts *BTTestService) discoverDevices(ctx context.Context) ([]*pb.Device, er
 }
 
 // DumpUITree Dumps the current ui tree on error.
-func (bts *BTTestService) DumpUITree(ctx context.Context, request *pb.DumpUiTreeRequest) (*emptypb.Empty, error) {
-	log.Println("==== DumpUITree called ====!")
+func (bts *BTTestService) DumpUITree(ctx context.Context, empty *emptypb.Empty) (*emptypb.Empty, error) {
 	tconn, err := bts.cr.TestAPIConn(ctx)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to get mac address of found device")
@@ -215,6 +220,6 @@ func (bts *BTTestService) DumpUITree(ctx context.Context, request *pb.DumpUiTree
 		return nil, errors.Wrap(err, "failed to get output directory")
 	}
 
-	defer faillog.DumpUITreeOnError(ctx, outDir, func() bool { return request.HasError }, tconn)
+	faillog.DumpUITree(ctx, outDir, tconn)
 	return &emptypb.Empty{}, nil
 }
