@@ -51,6 +51,24 @@
       "parentUuid": "9f3d6c72_e813a779",
       "revId": "f461b2bdc7ce0db848108d6c5659c0b09d9058e2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a04344a4_40feefac",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2022-09-13T00:33:20Z",
+      "side": 1,
+      "message": "Oh, I didn\u0027t measure that. I did this because the test sometimes fails because powerd is restarted in the middle because the firmware updater depends on it. So I just copied the chrome flags from the ARC fixtures.",
+      "parentUuid": "2973f13b_5e6d5257",
+      "revId": "f461b2bdc7ce0db848108d6c5659c0b09d9058e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
