@@ -22,6 +22,30 @@
       },
       "revId": "dc4c54b341bd1f4ed7f547db2cf17865b3ed41a2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5d1e81c_8a1eadf1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2022-09-13T23:33:59Z",
+      "side": 1,
+      "message": "Yeah, the test passes with \u0027undefined\u0027.\nThe test passes with frame.colorSpace in all the decoders (hw and sw) with the following error message.\nframe.colorSpace is no problem before your CL (https://crrev.com/c/3863890).\nDo you have any idea?\n\nvideo frame creation error: TypeError: Failed to construct \u0027VideoFrame\u0027: Failed to read the \u0027colorSpace\u0027 property from \u0027VideoFrameBufferInit\u0027: Failed to read the \u0027matrix\u0027 property from \u0027VideoColorSpaceInit\u0027: The\n provided value \u0027null\u0027 is not a valid enum value of type VideoMatrixCoefficients.",
+      "parentUuid": "c02698b9_8dae1295",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 64
+      },
+      "revId": "dc4c54b341bd1f4ed7f547db2cf17865b3ed41a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
