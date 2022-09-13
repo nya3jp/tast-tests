@@ -238,6 +238,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4000ea24_41c6fa68",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/firmware_test_handler.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-09-13T22:39:47Z",
+      "side": 1,
+      "message": "Patryk, I like your idea since the logic in `firmware_test_handler` is getting complicated. Let\u0027s do it in a followup CL.",
+      "parentUuid": "038a34e0_fb7d5753",
+      "range": {
+        "startLine": 220,
+        "startChar": 31,
+        "endLine": 220,
+        "endChar": 72
+      },
+      "revId": "a0b8cb8e4803374870a8be249fc44368b1a95937",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "878f069e_ba19565c",
         "filename": "src/chromiumos/tast/remote/firmware/fingerprint/firmware_test_handler.go",
         "patchSetId": 23
