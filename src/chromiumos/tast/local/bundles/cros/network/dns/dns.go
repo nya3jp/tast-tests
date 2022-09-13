@@ -11,6 +11,7 @@ import (
 	"net/http"
 	"regexp"
 	"strconv"
+	"strings"
 	"time"
 
 	"chromiumos/tast/common/crypto/certificate"
@@ -278,7 +279,17 @@ func QueryDNS(ctx context.Context, c Client, a *arc.ARC, cont *vm.Container, opt
 	case Crostini:
 		return cont.Command(ctx, append([]string{"dig"}, args...)...).Run()
 	case ARC:
-		return a.Command(ctx, "dumpsys", "wifi", "tools", "dns", opts.Domain).Run()
+		out, err := a.Command(ctx, "dumpsys", "wifi", "tools", "dns", opts.Domain).Output()
+		if err != nil {
+			return err
+		}
+		// At least one IP response must be observed.
+		for _, l := range strings.Split(string(out), "\n") {
+			if net.ParseIP(strings.TrimSpace(l)) != nil {
+				return nil
+			}
+		}
+		return errors.New("failed to resolve domain")
 	default:
 		return errors.New("unknown client")
 	}
