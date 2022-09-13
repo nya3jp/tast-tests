@@ -95,6 +95,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "116da7f2_12b4245f",
+        "filename": "src/chromiumos/tast/remote/cellular/callbox/manager/fixture.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-09-13T20:57:21Z",
+      "side": 1,
+      "message": "Oh I didn\u0027t realize that the DUT hostnames were localized to the callbox hosts as well, that\u0027s a significant difference than every other DUT hostname. Thanks for clarifying.",
+      "parentUuid": "93da881e_35606976",
+      "range": {
+        "startLine": 182,
+        "startChar": 0,
+        "endLine": 182,
+        "endChar": 52
+      },
+      "revId": "58007850a06e8f904839b15ef45ac3e9acf26947",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0ccd2ec3_e040c249",
@@ -132,6 +156,30 @@
       "side": 1,
       "message": "Added. \n\nThough I\u0027m not aware of a scenario in which this can actually occur since jobs run in the lab just use the DUT hostname without a .cros ending and tests launched locally would be passed in as ssh tunnels which would be caught earlier.",
       "parentUuid": "0ccd2ec3_e040c249",
+      "range": {
+        "startLine": 201,
+        "startChar": 19,
+        "endLine": 201,
+        "endChar": 60
+      },
+      "revId": "58007850a06e8f904839b15ef45ac3e9acf26947",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9532a388_42405670",
+        "filename": "src/chromiumos/tast/remote/cellular/callbox/manager/fixture.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-09-13T20:57:21Z",
+      "side": 1,
+      "message": "I don\u0027t see a change in the latest patchset, where was this added?\n\nI\u0027d rather keep it flexible here since it\u0027s easy to do and then if for whatever reason our scheduling includes it (or if it\u0027s called another way without tunnels, like from the lab manually) then it just works anyways. It\u0027s just a requirement that we don\u0027t need since it can be easily accounted for.\n\nWe just don\u0027t want a case where it tries to connect to `somecallbox.cros.cros` since it isn\u0027t checked here when another `.cros` is added.",
+      "parentUuid": "e277a449_1e4b6d9f",
       "range": {
         "startLine": 201,
         "startChar": 19,
