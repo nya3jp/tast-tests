@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c02698b9_8dae1295",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1120879
+      },
+      "writtenOn": "2022-09-13T20:32:39Z",
+      "side": 1,
+      "message": "I think you should be able to pass \u0027undefined\u0027 but null is not allowed by the IDL. VideoFrame.colorSpace is never null, so copying from there should always work. Where is null coming from in this case?",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 64
+      },
+      "revId": "dc4c54b341bd1f4ed7f547db2cf17865b3ed41a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
