@@ -22,6 +22,30 @@
       },
       "revId": "dff7a3f11ea21dffc314911bf5e94cad624cf89a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c163c83_b497c700",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/arc_enabled_on_tablet.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1519467
+      },
+      "writtenOn": "2022-09-13T18:14:47Z",
+      "side": 1,
+      "message": "Great question. Now we are talking about how to verify that ARC is enabled by policy.\n\nOn non-tablet, the ArcEnabled test only checks if the Play Store icon shows up on shelf (icon is missing if ARC is disabled).\nOn tablet, the icon always shows up on shelf, thus we have to actually click on the icon and see what pops out. If ARC is disabled, a pop-up window will immediately appear, saying that you have to contact your admin. If ARC is enabled/allowed, clicking will trigger ARC opt-in and the icon will spin for a while, which eventually shows Play Store window (real ARC opt-in) or ARC opt-in failure window (we use fake policy in this test, so this is what we get).\n\nWe can possibly verify with the spinning icon (fast) OR notification about installing Play Store (fast) OR ARC opt-in failure window (slow). I feel the third would be more reliable for a few reasons:\n- spinning icon is just animation, which can change or disappear. similar reasoning applies to notification.\n- spinning icon is just a temporary status before the opt-in failure window. change in timing could result in the test pass or fail. if icon stops spinning too fast (although not likely for now), the test may not catch it. notification is also temporary (?), depending on how we access it (via UI or backend).\n- I don\u0027t know whether spinning icon appears for the ARC-disabled pop-up, at least not without having to check the code. it could have appeared for a super short period of time that human couldn\u0027t notice but could be caught by test. again, we don\u0027t want our test to depend on timing.\n\nReal ARC opt-in DOES take a long time to run, and managed ARC takes even longer to opt-in.\n\nBelow are real ARC provisioning time (from start to Play Store window showing up). P99 can be 3-4 minutes. Even P25 is close to 1 minute.\nhttps://uma.googleplex.com/p/chrome/timeline_v2/?sid\u003dd6bed6fdf9350207640b3c63e71f0486#Arc.Auth.SignIn.TimeDelta.DemoMode\n\nThis new test is when ARC is allowed by policy and clicking the Play Store icon triggers ARC opt-in. This is NOT a real opt-in thus possibly takes less time. My one-time measurement on a kukui/kakadu device (from clicking to window showing up) is about 30 seconds. So I think 50 seconds is reasonable and it\u0027s best to monitor whether 50 is enough when this test runs on various DUTs in lab.\n\nFeel free to let me know how you think.",
+      "parentUuid": "42e55e12_101d83d5",
+      "range": {
+        "startLine": 154,
+        "startChar": 30,
+        "endLine": 154,
+        "endChar": 32
+      },
+      "revId": "dff7a3f11ea21dffc314911bf5e94cad624cf89a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
