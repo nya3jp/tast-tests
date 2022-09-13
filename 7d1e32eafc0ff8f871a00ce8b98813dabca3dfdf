@@ -94,6 +94,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4d7606b7_ed3f69b8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/sap_caps.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1521657
+      },
+      "writtenOn": "2022-09-13T18:18:50Z",
+      "side": 1,
+      "message": "Public link: https://www.wi-fi.org/countries-enabling-wi-fi-in-6-ghz-wi-fi-6e",
+      "parentUuid": "450f03e7_a065d439",
+      "range": {
+        "startLine": 78,
+        "startChar": 30,
+        "endLine": 78,
+        "endChar": 34
+      },
+      "revId": "7d1e32eafc0ff8f871a00ce8b98813dabca3dfdf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e91a2705_62b4af0c",
         "filename": "src/chromiumos/tast/local/bundles/cros/wifi/sap_caps.go",
         "patchSetId": 4
