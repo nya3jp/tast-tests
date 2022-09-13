@@ -186,7 +186,7 @@ func DNSProxy(ctx context.Context, s *testing.State) {
 			{Client: dns.User, ExpectErr: true},
 			{Client: dns.Chrome, ExpectErr: true},
 			{Client: dns.Crostini, ExpectErr: true},
-			{Client: dns.ARC}}
+			{Client: dns.ARC, ExpectErr: true}}
 	case dns.DoHAlwaysOn:
 		// Verify blocking HTTPS causes queries to fail (no plaintext fallback).
 		blocks = append(blocks, dns.NewDoHBlock(nss, physIfs))
@@ -194,7 +194,7 @@ func DNSProxy(ctx context.Context, s *testing.State) {
 			{Client: dns.System, ExpectErr: true},
 			{Client: dns.User, ExpectErr: true},
 			{Client: dns.Crostini, ExpectErr: true},
-			{Client: dns.ARC}}
+			{Client: dns.ARC, ExpectErr: true}}
 	}
 
 	for _, block := range blocks {
