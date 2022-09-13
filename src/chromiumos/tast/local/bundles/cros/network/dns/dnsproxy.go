@@ -7,6 +7,7 @@ package dns
 import (
 	"context"
 	"net"
+	"regexp"
 	"strconv"
 	"strings"
 	"time"
@@ -14,6 +15,7 @@ import (
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/testing"
 )
 
 // ProxyNamespaces returns all network namespaces used by the dnsproxyd process.
@@ -52,6 +54,9 @@ func (o blockOp) String() string {
 type Block struct {
 	rules []rule
 }
+
+// dnsProxyProcName is the process name for DNS proxy.
+const dnsProxyProcName = "dnsproxyd"
 
 // do installs or deletes the blocking rules.
 func (b Block) do(ctx context.Context, op blockOp) []error {
@@ -291,4 +296,57 @@ func NewDoHVPNBlock(ns string) *Block {
 	return &Block{
 		rules: newDoHVPNDropRules(ns),
 	}
+}
+
+// dnsProxyRunning checks if dnsproxyd process is running.
+func dnsProxyRunning(ctx context.Context) (bool, error) {
+	out, err := testexec.CommandContext(ctx, "ps", "-A").Output()
+	if err != nil {
+		return false, errors.Wrap(err, "failed to get processes")
+	}
+	matched, err := regexp.MatchString(dnsProxyProcName+"\n", string(out))
+	if err != nil {
+		return false, errors.Wrap(err, "failed to parse output")
+	}
+	return matched, nil
+}
+
+// waitForDNSProxyProcesses polls until DNS proxy processes running / stopped.
+func waitForDNSProxyProcesses(ctx context.Context, running bool) error {
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		r, err := dnsProxyRunning(ctx)
+		if err != nil {
+			return err
+		}
+		if r == running {
+			return nil
+		}
+		return errors.New("failed to for the correct DNS proxy state")
+	}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
+		return errors.Wrap(err, "failed to wait for DNS proxy processes")
+	}
+	return nil
+}
+
+// restartDNSProxy stops dnsproxyd processes and re-start them.
+func restartDNSProxy(ctx context.Context) error {
+	testing.ContextLog(ctx, "Stopping DNS Proxy")
+	if err := testexec.CommandContext(ctx, "stop", "dns-proxy").Run(); err != nil {
+		return errors.Wrap(err, "failed to stop DNS proxy")
+	}
+
+	if err := waitForDNSProxyProcesses(ctx, false /*running=*/); err != nil {
+		return errors.Wrap(err, "failed to stop DNS proxy")
+	}
+
+	testing.ContextLog(ctx, "Starting DNS Proxy")
+	if err := testexec.CommandContext(ctx, "start", "dns-proxy").Run(); err != nil {
+		return errors.Wrap(err, "failed to start DNS proxy")
+	}
+
+	if err := waitForDNSProxyProcesses(ctx, true /*running=*/); err != nil {
+		return errors.Wrap(err, "failed to start DNS proxy")
+	}
+
+	return nil
 }
