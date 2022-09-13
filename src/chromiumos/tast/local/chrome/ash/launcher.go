@@ -121,7 +121,7 @@ func generateFakeAppNames(numFakeApps int) []string {
 // The function caller should always clean baseDir regardless of function
 // execution results. names specify app names.
 func GeneratePrepareFakeAppsWithNamesOptions(baseDir string, names []string) ([]chrome.Option, error) {
-	dirs, err := PrepareDefaultFakeApps(baseDir, names, true)
+	dirs, err := PrepareDefaultFakeApps(baseDir, names, true, "")
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to create fake apps")
 	}
@@ -163,7 +163,7 @@ func GeneratePrepareFakeAppsOptions(baseDir string, numFakeApps int) ([]chrome.O
 
 // prepareFakeApp creates data for a fake app with the specified app name and
 // icon (if any).
-func prepareFakeApp(baseDir, appName, iconDir string, iconFileMap map[int]string) (string, error) {
+func prepareFakeApp(baseDir, appName, iconDir string, iconFileMap map[int]string, manifestExtras string) (string, error) {
 	// The manifest.json data for the fake hosted app; it just opens google.com
 	// page on launch.
 	const manifestTmpl = `{
@@ -171,6 +171,7 @@ func prepareFakeApp(baseDir, appName, iconDir string, iconFileMap map[int]string
 		"name": "%s",
 		"manifest_version": 2,
 		"version": "0",
+		%s
 		%s
 		"app": {
 			"launch": {
@@ -199,7 +200,12 @@ func prepareFakeApp(baseDir, appName, iconDir string, iconFileMap map[int]string
 		iconJSON = fmt.Sprintf(`"icons": %s,`, string(iconJSONData))
 	}
 
-	if err := ioutil.WriteFile(filepath.Join(extDir, "manifest.json"), []byte(fmt.Sprintf(manifestTmpl, appName, iconJSON)), 0644); err != nil {
+	m := fmt.Sprintf(manifestTmpl, appName, iconJSON, manifestExtras)
+	
+	// fmt.Print(m)
+	// return "", errors.New(m)
+
+	if err := ioutil.WriteFile(filepath.Join(extDir, "manifest.json"), []byte(m), 0644); err != nil {
 		return "", errors.Wrapf(err, "failed to prepare manifest.json for %s", appName)
 	}
 
@@ -245,7 +251,7 @@ func prepareFakeAppIcon(baseDir, iconFolder string, iconData []byte) (string, ma
 // be used. The intermediate data may remain even when an error is returned. It
 // is the caller's responsibility to clean up the contents under the baseDir.
 // This also may update the ownership of baseDir.
-func PrepareDefaultFakeApps(baseDir string, appNames []string, hasIcon bool) ([]string, error) {
+func PrepareDefaultFakeApps(baseDir string, appNames []string, hasIcon bool, manifestExtras string) ([]string, error) {
 	if err := extension.ChownContentsToChrome(baseDir); err != nil {
 		return nil, errors.Wrapf(err, "failed to change ownership of %q", baseDir)
 	}
@@ -262,7 +268,7 @@ func PrepareDefaultFakeApps(baseDir string, appNames []string, hasIcon bool) ([]
 
 	var dirs []string
 	for _, appName := range appNames {
-		dir, err := prepareFakeApp(baseDir, appName, iconDir, iconFiles)
+		dir, err := prepareFakeApp(baseDir, appName, iconDir, iconFiles, "")
 		if err != nil {
 			return nil, errors.Wrapf(err, "failed to prepare data for %q", appName)
 		}
@@ -290,7 +296,7 @@ func prepareFakeAppsWithIconData(baseDir string, appNames []string, iconData [][
 			return nil, errors.Wrapf(err, "failed to parepare icons for the fake app %q", appName)
 		}
 
-		dir, err := prepareFakeApp(baseDir, appName, iconDir, iconFiles)
+		dir, err := prepareFakeApp(baseDir, appName, iconDir, iconFiles, "")
 		if err != nil {
 			return nil, errors.Wrapf(err, "failed to prepare data for %q", appName)
 		}

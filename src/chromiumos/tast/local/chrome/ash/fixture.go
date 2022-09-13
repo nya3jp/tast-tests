@@ -53,12 +53,27 @@ func init() {
 		SetUpTimeout:    fixtureTimeout,
 		TearDownTimeout: fixtureTimeout,
 	})
+
+	testing.AddFixture(&testing.Fixture{
+		Name: "install100AppsWithFileHandlers",
+		Desc: "TBD",
+		Contacts: []string{"lucmult@chromium.org"},
+		Impl: &fakeAppsFixture{numApps: 10, bt: browser.TypeAsh, manifestExtras: `
+			"file_handlers": { "extensions": [ "txt" ] },   
+			"permissions": [{
+				"fileSystem": ["requestFileSystem", "write"]
+			}],
+			`},
+		SetUpTimeout:    fixtureTimeout,
+		TearDownTimeout: fixtureTimeout,
+	})
 }
 
 type fakeAppsFixture struct {
 	extDirBase string
 	numApps    int
 	bt         browser.Type
+	manifestExtras string
 }
 
 func (f *fakeAppsFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
@@ -68,7 +83,7 @@ func (f *fakeAppsFixture) SetUp(ctx context.Context, s *testing.FixtState) inter
 	}
 	f.extDirBase = extDirBase
 
-	dirs, err := PrepareDefaultFakeApps(extDirBase, generateFakeAppNames(f.numApps), true)
+	dirs, err := PrepareDefaultFakeApps(extDirBase, generateFakeAppNames(f.numApps), true, "") //, f.manifestExtras)
 	if err != nil {
 		s.Fatal("Failed to prepare fake apps: ", err)
 	}
@@ -77,6 +92,7 @@ func (f *fakeAppsFixture) SetUp(ctx context.Context, s *testing.FixtState) inter
 		if f.bt == browser.TypeLacros {
 			opts = append(opts, chrome.LacrosUnpackedExtension(dir))
 		} else {
+			testing.ContextLogf(ctx, "OPTIONS: dir: %s", dir)
 			opts = append(opts, chrome.UnpackedExtension(dir))
 		}
 	}
