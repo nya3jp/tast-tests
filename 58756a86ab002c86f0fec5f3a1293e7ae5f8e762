@@ -39,6 +39,30 @@
       },
       "revId": "58756a86ab002c86f0fec5f3a1293e7ae5f8e762",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "518e9858_a04afbdd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/platform_api_vpd_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-09-13T10:24:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "02b9e686_fd2fa601",
+      "range": {
+        "startLine": 133,
+        "startChar": 3,
+        "endLine": 135,
+        "endChar": 12
+      },
+      "revId": "58756a86ab002c86f0fec5f3a1293e7ae5f8e762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
