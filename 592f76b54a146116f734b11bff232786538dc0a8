@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c984a9c3_6db024ce",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1551729
+      },
+      "writtenOn": "2022-09-13T18:18:32Z",
+      "side": 1,
+      "message": "Hi Reguna,\n\nThanks for review, I am working on the ImagePaste now. The fix will make resize and CompatSnap work.\n\n-Chenghao",
+      "revId": "592f76b54a146116f734b11bff232786538dc0a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
