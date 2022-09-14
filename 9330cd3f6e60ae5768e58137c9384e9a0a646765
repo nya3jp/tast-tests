@@ -34,6 +34,24 @@
       "parentUuid": "3bf262c2_c8b7bf21",
       "revId": "9330cd3f6e60ae5768e58137c9384e9a0a646765",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f5f6619_99f21ccc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1554467
+      },
+      "writtenOn": "2022-09-14T18:00:28Z",
+      "side": 1,
+      "message": "You can add a cq-depend line to the commit message to ensure this CQ gets merged in the right order: https://chromium.googlesource.com/chromiumos/docs/+/master/contributing.md#cq-depend",
+      "parentUuid": "ef543248_f0643b44",
+      "revId": "9330cd3f6e60ae5768e58137c9384e9a0a646765",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
