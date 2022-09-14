@@ -312,3 +312,16 @@ func GetCleanDconnSafebrowsing(ctx context.Context, cr *chrome.Chrome, br *brows
 	}
 	return dconnSafebrowsing, nil
 }
+
+// CloseAllWindows closes all open windows in ash, including open lacros browsers.
+func CloseAllWindows(ctx context.Context, tconn *chrome.TestConn) {
+	ws, err := ash.GetAllWindows(ctx, tconn)
+	if err != nil {
+		testing.ContextLog(ctx, "Failed to get all open windows: ", err)
+	}
+	for _, w := range ws {
+		if err := w.CloseWindow(ctx, tconn); err != nil {
+			testing.ContextLogf(ctx, "Warning: Failed to close window (%+v): %v", w, err)
+		}
+	}
+}

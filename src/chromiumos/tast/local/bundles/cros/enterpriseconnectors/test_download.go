@@ -162,6 +162,11 @@ func TestDownload(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
 
+	// Ensure that there are no windows open.
+	helpers.CloseAllWindows(ctx, tconn)
+	// Ensure that all windows are closed after test.
+	defer helpers.CloseAllWindows(cleanupCtx, tconn)
+
 	// Create Browser.
 	br, closeBrowser, err := browserfixt.SetUp(ctx, cr, testParams.BrowserType)
 	if err != nil {
