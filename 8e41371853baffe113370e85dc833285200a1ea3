@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b727e06_ce31f09b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-09-14T13:02:26Z",
+      "side": 1,
+      "message": "Thanks for catching this!",
+      "revId": "8e41371853baffe113370e85dc833285200a1ea3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6537ba47_8f763059",
@@ -31,6 +48,24 @@
       "writtenOn": "2022-09-14T11:35:59Z",
       "side": 1,
       "message": "nit: Why log here? Doesn\u0027t the error message in line 106 give us enough information?",
+      "revId": "8e41371853baffe113370e85dc833285200a1ea3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4d3670a_e3ba778b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/platform_api_available_routines.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-09-14T13:02:26Z",
+      "side": 1,
+      "message": "forgot to remove debug log.",
+      "parentUuid": "6537ba47_8f763059",
       "revId": "8e41371853baffe113370e85dc833285200a1ea3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
