@@ -111,7 +111,7 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Data:         []string{"ArcCompanionLibDemo.apk", "white_wallpaper.jpg"},
 		Fixture:      "arcBooted",
-		Timeout:      4 * time.Minute,
+		Timeout:      6 * time.Minute,
 		Params: []testing.Param{{
 			// Use the android_p dep for running on android P of the container.
 			ExtraSoftwareDeps: []string{"android_p"},
