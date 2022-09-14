@@ -1,4 +1,4 @@
-// Copyright 2019 The Chromium OS Authors. All rights reserved.
+// Copyright 2019 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -10,6 +10,7 @@ import (
 	"io/ioutil"
 	"os"
 	"path/filepath"
+	"strconv"
 	"time"
 
 	"chromiumos/tast/common/media/caps"
@@ -83,6 +84,7 @@ func V4L2(ctx context.Context, s *testing.State) {
 		extraArgs := []string{
 			"--device_path=" + devicePath,
 			"--test_list=" + testList,
+			"--is_certification=" + strconv.FormatBool(isCertification),
 		}
 
 		logFile := fmt.Sprintf("media_v4l2_test_%s.log", filepath.Base(devicePath))
