@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d6dbc37_427dbad9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-09-14T16:34:38Z",
+      "side": 1,
+      "message": "Please review this change regarding ensuring Lacros is launched with only 1 tab.  Thank you! ",
+      "revId": "f4343e97c4a9cb99ecba8984c3c9680aaa88646a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
