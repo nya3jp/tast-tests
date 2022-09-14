@@ -29,9 +29,7 @@ func init() {
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
 		}, {
-			Name: "vm",
-			// TODO(b/233565855): Re-promote to critical once virtio-blk /data is fully functional.
-			ExtraAttr:         []string{"informational"},
+			Name:              "vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
 		}},
 	})
