@@ -193,10 +193,10 @@ func (h *Helper) FindService(ctx context.Context) (*shill.Service, error) {
 	return h.Manager.WaitForServiceProperties(ctx, cellularProperties, defaultTimeout)
 }
 
-// FindServiceForDevice returns the first connectable Cellular Service matching the Device ICCID.
+// FindServiceForDeviceWithProps returns the first connectable Cellular Service matching the Device ICCID and the given props.
 // If no such Cellular Service is available, returns a nil service and an error.
-func (h *Helper) FindServiceForDevice(ctx context.Context) (*shill.Service, error) {
-	ctx, st := timing.Start(ctx, "Helper.FindServiceForDevice")
+func (h *Helper) FindServiceForDeviceWithProps(ctx context.Context, props map[string]interface{}) (*shill.Service, error) {
+	ctx, st := timing.Start(ctx, "Helper.FindServiceForDeviceWithProps")
 	defer st.End()
 
 	deviceProperties, err := h.Device.GetProperties(ctx)
@@ -210,16 +210,29 @@ func (h *Helper) FindServiceForDevice(ctx context.Context) (*shill.Service, erro
 	if deviceICCID == "" {
 		return nil, errors.Wrap(err, "device has empty ICCID")
 	}
-	props := map[string]interface{}{
+
+	necessaryProps := map[string]interface{}{
 		shillconst.ServicePropertyCellularICCID: deviceICCID,
 		shillconst.ServicePropertyConnectable:   true,
 		shillconst.ServicePropertyType:          shillconst.TypeCellular,
 	}
+	for k, v := range necessaryProps {
+		props[k] = v
+	}
+
 	service, err := h.Manager.WaitForServiceProperties(ctx, props, defaultTimeout)
 	if err != nil {
 		return nil, errors.Wrapf(err, "Service not found for: %+v", props)
 	}
 	return service, nil
+}
+
+// FindServiceForDevice is a convenience function to call FindServiceForDeviceWithProps with an empty set of extra props.
+func (h *Helper) FindServiceForDevice(ctx context.Context) (*shill.Service, error) {
+	ctx, st := timing.Start(ctx, "Helper.FindServiceForDevice")
+	defer st.End()
+
+	return h.FindServiceForDeviceWithProps(ctx, make(map[string]interface{}))
 }
 
 // AutoConnectCleanupTime provides enough time for a successful dbus operation.
