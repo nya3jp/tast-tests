@@ -139,8 +139,9 @@ func ShillCellularEnableAndConnect(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Ensure no Cellular Service while disabled")
-	const shortTimeout = 3 * time.Second
-	if _, err := helper.FindServiceForDeviceWithTimeout(ctx, shortTimeout); err == nil {
+	serviceCtx, serviceCancel := context.WithTimeout(ctx, 3*time.Second)
+	defer serviceCancel()
+	if _, err := helper.FindServiceForDevice(serviceCtx); err == nil {
 		s.Fatal("Service found while Disabled")
 	}
 

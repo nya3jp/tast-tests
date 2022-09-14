@@ -193,11 +193,10 @@ func (h *Helper) FindService(ctx context.Context) (*shill.Service, error) {
 	return h.Manager.WaitForServiceProperties(ctx, cellularProperties, defaultTimeout)
 }
 
-// FindServiceForDeviceWithTimeout returns the first connectable Cellular Service matching the Device ICCID.
+// FindServiceForDevice returns the first connectable Cellular Service matching the Device ICCID.
 // If no such Cellular Service is available, returns a nil service and an error.
-// |timeout| specifies how long to wait for a service to appear.
-func (h *Helper) FindServiceForDeviceWithTimeout(ctx context.Context, timeout time.Duration) (*shill.Service, error) {
-	ctx, st := timing.Start(ctx, "Helper.FindServiceForDeviceWithTimeout")
+func (h *Helper) FindServiceForDevice(ctx context.Context) (*shill.Service, error) {
+	ctx, st := timing.Start(ctx, "Helper.FindServiceForDevice")
 	defer st.End()
 
 	deviceProperties, err := h.Device.GetProperties(ctx)
@@ -216,21 +215,11 @@ func (h *Helper) FindServiceForDeviceWithTimeout(ctx context.Context, timeout ti
 		shillconst.ServicePropertyConnectable:   true,
 		shillconst.ServicePropertyType:          shillconst.TypeCellular,
 	}
-	service, err := h.Manager.WaitForServiceProperties(ctx, props, timeout)
+	service, err := h.Manager.WaitForServiceProperties(ctx, props, defaultTimeout)
 	if err != nil {
 		return nil, errors.Wrapf(err, "Service not found for: %+v", props)
 	}
 	return service, nil
-}
-
-// FindServiceForDevice returns the first connectable Cellular Service matching the Device ICCID.
-// If no such Cellular Service is available, returns a nil service and an error.
-// The default timeout is used for waiting for the service to appear.
-func (h *Helper) FindServiceForDevice(ctx context.Context) (*shill.Service, error) {
-	ctx, st := timing.Start(ctx, "Helper.FindServiceForDevice")
-	defer st.End()
-
-	return h.FindServiceForDeviceWithTimeout(ctx, defaultTimeout)
 }
 
 // AutoConnectCleanupTime provides enough time for a successful dbus operation.
