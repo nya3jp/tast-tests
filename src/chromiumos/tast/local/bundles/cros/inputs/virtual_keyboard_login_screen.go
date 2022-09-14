@@ -1,4 +1,4 @@
-// Copyright 2022 The Chromium OS Authors. All rights reserved.
+// Copyright 2022 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -111,15 +111,15 @@ func VirtualKeyboardLoginScreen(ctx context.Context, s *testing.State) {
 	}
 
 	// Type password "q2Aa m" to cover letters, capitals, numbers and space.
-	passwordText := uidetection.TextBlock([]string{"q2Aa", "m"})
+	passwordText := uidetection.TextBlock([]string{"q2Zs", "m"})
 
 	if err := uiauto.UserAction(
 		"VK typing input",
 		uiauto.Combine(`input and verify login password`,
 			vkbCtx.TapKeys([]string{"q", "2"}),                      // pwd: q2
 			vkbCtx.TapNode(leftShiftKey),                            // Shifted VK
-			vkbCtx.TapKey("A"),                                      // pwd: q2A
-			vkbCtx.TapKeysIgnoringCase([]string{"a", "space", "m"}), // pwd: q2Aa m
+			vkbCtx.TapKey("Z"),                                      // pwd: q2Z
+			vkbCtx.TapKeysIgnoringCase([]string{"s", "space", "m"}), // pwd: q2Zs m
 			ui.DoDefault(nodewith.Name("Show password")),
 			ud.WaitUntilExists(passwordText),
 		),
