@@ -115,6 +115,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "46aaf2cc_85af1de6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/diagnostics/input.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1543968
+      },
+      "writtenOn": "2022-09-14T19:41:08Z",
+      "side": 1,
+      "message": "Done, gofmt did the change originally, but presubmit checks did not complain about switching it back to 2021.",
+      "parentUuid": "9899d58c_25a2238b",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 40
+      },
+      "revId": "bb5f2844e7d8c12887da4ebad381e0a335565bf6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "1cd959c2_631a1dfa",
         "filename": "src/chromiumos/tast/local/bundles/cros/diagnostics/input.go",
         "patchSetId": 1
