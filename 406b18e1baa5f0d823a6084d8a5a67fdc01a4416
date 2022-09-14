@@ -16,6 +16,92 @@
       "message": "PTAL. Thanks!",
       "revId": "406b18e1baa5f0d823a6084d8a5a67fdc01a4416",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39d61091_6ff86cee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/image_paste.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2022-09-14T07:04:18Z",
+      "side": 1,
+      "message": "just curious, preupload didin\u0027t say warnings for this? Recently it\u0027s enforced to be \"ChromiumOS\" and without \"All rights reserved\"",
+      "revId": "406b18e1baa5f0d823a6084d8a5a67fdc01a4416",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2438c1b0_409921ce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/image_paste.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2022-09-14T07:04:18Z",
+      "side": 1,
+      "message": "why it\u0027s defined as a getter, not private field?",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 17
+      },
+      "revId": "406b18e1baa5f0d823a6084d8a5a67fdc01a4416",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ff89db8_279a3e3c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/image_paste.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2022-09-14T07:04:18Z",
+      "side": 1,
+      "message": "because private is visible from all files in the same package, I\u0027d name this less general, e.g. \"imagePasteRawDataFiles\"",
+      "range": {
+        "startLine": 35,
+        "startChar": 5,
+        "endLine": 35,
+        "endChar": 17
+      },
+      "revId": "406b18e1baa5f0d823a6084d8a5a67fdc01a4416",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76c0c85e_81c56f09",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/image_paste.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2022-09-14T07:04:18Z",
+      "side": 1,
+      "message": "as we\u0027re here, could you update to our names (or file a bug)?",
+      "range": {
+        "startLine": 103,
+        "startChar": 9,
+        "endLine": 103,
+        "endChar": 15
+      },
+      "revId": "406b18e1baa5f0d823a6084d8a5a67fdc01a4416",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
