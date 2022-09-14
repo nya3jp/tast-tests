@@ -16,6 +16,258 @@
       "message": "Looks great to me! Next step is to ask tast-owners@ for review 😊",
       "revId": "49873ad7fd8a038c44cdb4e0fd3b59b17716b40b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0644c94_3694471e",
+        "filename": "helpers/local/featured.FeatureLibrary.check.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-09-14T13:54:39Z",
+      "side": 1,
+      "message": "iwyu: memory, stdio.h",
+      "revId": "49873ad7fd8a038c44cdb4e0fd3b59b17716b40b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "890cd1d0_29280ebf",
+        "filename": "helpers/local/featured.FeatureLibrary.check.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-09-14T13:54:39Z",
+      "side": 1,
+      "message": "could you follow the style guide (in terms of include order)",
+      "range": {
+        "startLine": 4,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 37
+      },
+      "revId": "49873ad7fd8a038c44cdb4e0fd3b59b17716b40b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd016c14_c818abee",
+        "filename": "helpers/local/featured.FeatureLibrary.check.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-09-14T13:54:39Z",
+      "side": 1,
+      "message": "nit: constexpr",
+      "revId": "49873ad7fd8a038c44cdb4e0fd3b59b17716b40b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d67842b8_ce25ed4c",
+        "filename": "helpers/local/featured.FeatureLibrary.check.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-09-14T13:54:39Z",
+      "side": 1,
+      "message": "not C++17 standard.",
+      "range": {
+        "startLine": 18,
+        "startChar": 4,
+        "endLine": 18,
+        "endChar": 12
+      },
+      "revId": "49873ad7fd8a038c44cdb4e0fd3b59b17716b40b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89064085_d96da57d",
+        "filename": "helpers/local/featured.FeatureLibrary.check.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-09-14T13:54:39Z",
+      "side": 1,
+      "message": "nit/style: CHECK() looks better",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 3
+      },
+      "revId": "49873ad7fd8a038c44cdb4e0fd3b59b17716b40b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15b18fea_fbaef865",
+        "filename": "helpers/local/featured.FeatureLibrary.check.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-09-14T13:54:39Z",
+      "side": 1,
+      "message": "std::move(name) to avoid unneeded copy.",
+      "revId": "49873ad7fd8a038c44cdb4e0fd3b59b17716b40b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16ce3c60_5aedcb21",
+        "filename": "helpers/local/featured.FeatureLibrary.check.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-09-14T13:54:39Z",
+      "side": 1,
+      "message": "style:\n\nindent looks broken. Could you check all indents in this file?",
+      "range": {
+        "startLine": 64,
+        "startChar": 21,
+        "endLine": 64,
+        "endChar": 54
+      },
+      "revId": "49873ad7fd8a038c44cdb4e0fd3b59b17716b40b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07083145_a12f1aec",
+        "filename": "helpers/local/featured.FeatureLibrary.check.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-09-14T13:54:39Z",
+      "side": 1,
+      "message": "why not simply return the bool?\n\n    bool IsFeatureEnabled(const VariationFeature\u0026 feature_to_check,\n                          feature::PlatformFeatures* feature_lib) {\n      bool result \u003d false;\n      base::RunLoop run_loop;\n      feature_lib-\u003eIsEnabled(\n          feature_to_check,\n          base::BindLambdaForTesting([\u0026](bool enabled) {\n            result \u003d enabled;\n            run_loop.Quit();\n          });\n      run_loop.Run();\n      return result;\n    }\n\nDitto for GetParamsAndEnabled.",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 1
+      },
+      "revId": "49873ad7fd8a038c44cdb4e0fd3b59b17716b40b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ac8a755_3b75bcfb",
+        "filename": "helpers/local/featured.FeatureLibrary.check.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-09-14T13:54:39Z",
+      "side": 1,
+      "message": "You can return the struct.",
+      "range": {
+        "startLine": 103,
+        "startChar": 34,
+        "endLine": 103,
+        "endChar": 65
+      },
+      "revId": "49873ad7fd8a038c44cdb4e0fd3b59b17716b40b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1839fcd0_7831099d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/featured/feature_library_late_boot.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-09-14T13:54:39Z",
+      "side": 1,
+      "message": "cr should be closed at the end of the test.",
+      "range": {
+        "startLine": 158,
+        "startChar": 4,
+        "endLine": 158,
+        "endChar": 5
+      },
+      "revId": "49873ad7fd8a038c44cdb4e0fd3b59b17716b40b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5499ef34_edd6d540",
+        "filename": "src/chromiumos/tast/local/bundles/cros/featured/feature_library_late_boot.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-09-14T13:54:39Z",
+      "side": 1,
+      "message": "Could you use testexec.Cmd.SeparatedOutput() instead?",
+      "range": {
+        "startLine": 162,
+        "startChar": 1,
+        "endLine": 168,
+        "endChar": 17
+      },
+      "revId": "49873ad7fd8a038c44cdb4e0fd3b59b17716b40b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "acc37f89_a73d48ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/featured/feature_library_late_boot.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-09-14T13:54:39Z",
+      "side": 1,
+      "message": "cf) go/tast-writing.\n\nCould you avoid output to logging, instead, redirect to a file?",
+      "revId": "49873ad7fd8a038c44cdb4e0fd3b59b17716b40b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
