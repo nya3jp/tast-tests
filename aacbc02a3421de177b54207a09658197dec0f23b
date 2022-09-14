@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae77f4a8_ef4356d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns_proxy_over_vpn.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2022-09-14T06:57:14Z",
+      "side": 1,
+      "message": "why are you naming the returns? usually not recommended for longer functions... also \"serverEnv\" not used?",
+      "range": {
+        "startLine": 201,
+        "startChar": 101,
+        "endLine": 201,
+        "endChar": 110
+      },
+      "revId": "aacbc02a3421de177b54207a09658197dec0f23b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f204d0bb_97077263",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns_proxy_over_vpn.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2022-09-14T06:57:14Z",
+      "side": 1,
+      "message": "why do you need this? can\u0027t the underlying objects no-op correctly?",
+      "range": {
+        "startLine": 217,
+        "startChar": 2,
+        "endLine": 219,
+        "endChar": 3
+      },
+      "revId": "aacbc02a3421de177b54207a09658197dec0f23b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "592530bb_05c50229",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/connection.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2022-09-14T06:57:14Z",
+      "side": 1,
+      "message": "better name? what\u0027s the 2nd server?",
+      "range": {
+        "startLine": 88,
+        "startChar": 1,
+        "endLine": 88,
+        "endChar": 16
+      },
+      "revId": "aacbc02a3421de177b54207a09658197dec0f23b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
