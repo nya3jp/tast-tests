@@ -21,6 +21,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/ossettings"
 	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/local/chrome/webutil"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
@@ -235,6 +236,11 @@ func (g *gmailTest) openApp(ctx context.Context, res *clipboardResource) error {
 		return errors.Wrap(err, "failed to open Gmail")
 	}
 	g.conn = conn
+
+	if err := webutil.WaitForQuiescence(ctx, conn, 30*time.Second); err != nil {
+		return errors.Wrap(err, "failed to wait for Gmail quiescence")
+	}
+
 	return nil
 }
 
@@ -253,7 +259,12 @@ func (g *gmailTest) closeApp(ctx context.Context) error {
 }
 
 func (g *gmailTest) pasteAndVerify(ctx context.Context, res *clipboardResource) error {
-	rootView := nodewith.Role(role.Window).NameContaining("Mail").HasClass("BrowserFrame")
+	window, err := ash.GetActiveWindow(ctx, res.tconn)
+	if err != nil {
+		return errors.Wrap(err, "failed to get the active window for finding browser frame name")
+	}
+
+	rootView := nodewith.Role(role.Window).NameContaining(window.Title).HasClass("BrowserFrame")
 	searchbox := nodewith.Role(role.TextField).Name("Search in mail").Ancestor(rootView)
 	getStartedBtn := nodewith.Role(role.Button).Name("Get started").Ancestor(rootView)
 	chatDialog := nodewith.Role(role.AlertDialog).NameContaining("Chat conversations").Ancestor(rootView)
