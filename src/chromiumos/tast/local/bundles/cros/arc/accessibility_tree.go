@@ -1,4 +1,4 @@
-// Copyright 2019 The Chromium OS Authors. All rights reserved.
+// Copyright 2019 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -76,7 +76,7 @@ func matchTree(ctx context.Context, actualRoot *a11y.Node, expectedRoot *axTreeN
 		if err != nil {
 			return false, err
 		}
-		testing.ContextLogf(ctx, "Node did not match, got %+v; want %v", expectedRoot.findParams(), currNodeStr)
+		testing.ContextLogf(ctx, "Node did not match, got %+v; want %v", currNodeStr, expectedRoot.findParams())
 		return false, nil
 	}
 
