@@ -33,6 +33,10 @@ func NewCommand(ctx context.Context, s *testing.State, subcmd string, flags, pat
 	switch subcmd {
 	case "run":
 		args = append(args, meta.RunFlags...)
+		// We're already in a Tast test; don't redo the system log
+		// collection. This avoids non-reentrant log-cleanup
+		// pause/resume (b/246804333).
+		args = append(args, "-sysinfo=false")
 	case "list":
 		args = append(args, meta.ListFlags...)
 	}
