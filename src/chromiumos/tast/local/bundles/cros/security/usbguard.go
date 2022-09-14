@@ -1,4 +1,4 @@
-// Copyright 2019 The ChromiumOS Authors
+// Copyright 2022 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -9,8 +9,9 @@ import (
 	"io/ioutil"
 	"os"
 	"path/filepath"
-	"syscall"
 	"time"
+
+	"golang.org/x/sys/unix"
 
 	upstartcommon "chromiumos/tast/common/upstart"
 	"chromiumos/tast/errors"
@@ -112,7 +113,7 @@ func USBGuard(ctx context.Context, s *testing.State) {
 			return errors.Errorf("no pid for %v", usbguardJob)
 		}
 
-		if err := syscall.Kill(pid, syscall.SIGKILL); err != nil {
+		if err := unix.Kill(pid, unix.SIGKILL); err != nil {
 			err = errors.Wrapf(err, "failed to kill %v(%v)", usbguardProcess, pid)
 		}
 		return err
@@ -183,7 +184,7 @@ func USBGuard(ctx context.Context, s *testing.State) {
 		// Set up a timer to kill the daemon after one second.
 		timer := time.AfterFunc(1*time.Second, func() {
 			s.Log("Terminating subprocess")
-			if err := cmd.Signal(syscall.SIGTERM); err != nil {
+			if err := cmd.Signal(unix.SIGTERM); err != nil {
 				s.Error("Kill(...) failed: ", err)
 			}
 		})

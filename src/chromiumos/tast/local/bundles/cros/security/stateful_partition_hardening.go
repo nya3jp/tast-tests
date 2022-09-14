@@ -1,4 +1,4 @@
-// Copyright 2018 The ChromiumOS Authors
+// Copyright 2022 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -10,7 +10,8 @@ import (
 	"io/ioutil"
 	"os"
 	"path/filepath"
-	"syscall"
+
+	"golang.org/x/sys/unix"
 
 	"chromiumos/tast/local/bundles/cros/security/filesetup"
 	"chromiumos/tast/testing"
@@ -46,9 +47,9 @@ func StatefulPartitionHardening(ctx context.Context, s *testing.State) {
 	}
 
 	expectAccess := func(path string, expected bool) {
-		fd, err := syscall.Open(path, syscall.O_RDWR|syscall.O_NONBLOCK, 0777)
+		fd, err := unix.Open(path, unix.O_RDWR|unix.O_NONBLOCK, 0777)
 		if err == nil {
-			if err := syscall.Close(fd); err != nil {
+			if err := unix.Close(fd); err != nil {
 				s.Errorf("Failed to close FD %v: %v", fd, err)
 			}
 			if !expected {
@@ -61,7 +62,7 @@ func StatefulPartitionHardening(ctx context.Context, s *testing.State) {
 
 	expectFIFOAccess := func(parent string, expected bool) {
 		path := generateTempFilename(parent, "fifo")
-		if err := syscall.Mkfifo(path, 0666); err != nil {
+		if err := unix.Mkfifo(path, 0666); err != nil {
 			s.Fatalf("Failed to create FIFO at %v: %v", path, err)
 		}
 		defer os.Remove(path)
