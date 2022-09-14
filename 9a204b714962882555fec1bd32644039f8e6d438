@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3503a8f6_193a5a5c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint/ap.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1428748
+      },
+      "writtenOn": "2022-09-14T11:29:03Z",
+      "side": 1,
+      "message": "Indeed, I looked at the CL which introduced it but I can\u0027t tell if this is the root cause.",
+      "parentUuid": "6b142aab_5828a829",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 28
+      },
+      "revId": "9a204b714962882555fec1bd32644039f8e6d438",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6a51e4ca_36fd1103",
@@ -61,6 +85,30 @@
       "side": 1,
       "message": "https://g3doc.corp.google.com/go/g3doc/style/decisions.md?cl\u003dhead#must-functions says to avoid using Must functions like this in contexts where you could have returned an error.",
       "parentUuid": "6a51e4ca_36fd1103",
+      "range": {
+        "startLine": 176,
+        "startChar": 9,
+        "endLine": 176,
+        "endChar": 22
+      },
+      "revId": "9a204b714962882555fec1bd32644039f8e6d438",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1fe9d40_9a3586bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint/ap.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1428748
+      },
+      "writtenOn": "2022-09-14T11:29:03Z",
+      "side": 1,
+      "message": "Thanks for pointing this out 😊",
+      "parentUuid": "727486ab_e18e7550",
       "range": {
         "startLine": 176,
         "startChar": 9,
