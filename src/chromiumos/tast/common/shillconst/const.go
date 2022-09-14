@@ -1,4 +1,4 @@
-// Copyright 2020 The Chromium OS Authors. All rights reserved.
+// Copyright 2020 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -47,6 +47,8 @@ const (
 	DevicePropertyCellularAPNList            = "Cellular.APNList"
 	DevicePropertyCellularHomeProvider       = "Cellular.HomeProvider"
 	DevicePropertyCellularICCID              = "Cellular.ICCID"
+	DevicePropertyCellularIMEI               = "Cellular.IMEI"
+	DevicePropertyCellularIMSI               = "Cellular.IMSI"
 	DevicePropertyCellularMDN                = "Cellular.MDN"
 	DevicePropertyCellularPolicyAllowRoaming = "Cellular.PolicyAllowRoaming"
 	DevicePropertyCellularSIMPresent         = "Cellular.SIMPresent"
@@ -137,12 +139,13 @@ const (
 	ServicePropertyCheckPortal       = "CheckPortal"
 
 	// Cellular service property names.
-	ServicePropertyCellularEID           = "Cellular.EID"
-	ServicePropertyCellularICCID         = "Cellular.ICCID"
-	ServicePropertyCellularAllowRoaming  = "Cellular.AllowRoaming"
-	ServicePropertyCellularLastGoodAPN   = "Cellular.LastGoodAPN"
-	ServicePropertyCellularLastAttachAPN = "Cellular.LastAttachAPN"
-	ServicePropertyCellularRoamingState  = "Cellular.RoamingState"
+	ServicePropertyCellularEID             = "Cellular.EID"
+	ServicePropertyCellularICCID           = "Cellular.ICCID"
+	ServicePropertyCellularAllowRoaming    = "Cellular.AllowRoaming"
+	ServicePropertyCellularLastGoodAPN     = "Cellular.LastGoodAPN"
+	ServicePropertyCellularLastAttachAPN   = "Cellular.LastAttachAPN"
+	ServicePropertyCellularRoamingState    = "Cellular.RoamingState"
+	ServicePropertyCellularServingOperator = "Cellular.ServingOperator"
 
 	// Keys into the dictionaries exposed as properties for LastAttachAPN and LastGoodAPN
 	DevicePropertyCellularAPNInfoApnName   = "apn"
@@ -262,6 +265,7 @@ const (
 const (
 	// OperatorUUIDKey is the unique identifier of the carrier in the shill DB.
 	OperatorUUIDKey = "uuid"
+	OperatorCode    = "code"
 )
 
 // Profile property names.

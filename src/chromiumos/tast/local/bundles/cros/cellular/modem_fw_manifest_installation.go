@@ -1,4 +1,4 @@
-// Copyright 2022 The Chromium OS Authors. All rights reserved.
+// Copyright 2022 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -68,7 +68,7 @@ func ModemFWManifestInstallation(ctx context.Context, s *testing.State) {
 
 	// Try to get the carrier_id of the current SIM card in the DUT, so we can flash the corresponding
 	// FW after all the other ones. This will automatically leave the DUT with the correct FW.
-	uuid, err := helper.GetUUIDFromShill(ctx)
+	uuid, _, err := helper.GetHomeProviderFromShill(ctx)
 	if err != nil {
 		s.Log("Failed to get carrier ID from shill. Continuing anyway: ", err)
 	}
