@@ -51,6 +51,24 @@
       "parentUuid": "521a1274_592852a6",
       "revId": "244833426db1eae1818eda5cc13c552945fcdf1c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c78acb6_2049f3a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/pair_new_device_from_bluetooth_settings.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-09-14T22:25:37Z",
+      "side": 1,
+      "message": "I think that omitting this field is actually a pre-submit error-- I could skip these to get around it, but keeping it as \"unknown\" seemed like it might be okay. WDYT?",
+      "parentUuid": "5e619b43_40aadd83",
+      "revId": "244833426db1eae1818eda5cc13c552945fcdf1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
