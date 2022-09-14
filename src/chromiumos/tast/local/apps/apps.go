@@ -351,7 +351,7 @@ func getInstalledAppID(ctx context.Context, tconn *chrome.TestConn, predicate fu
 	err := testing.Poll(ctx, func(ctx context.Context) error {
 		capps, err := ash.ChromeApps(ctx, tconn)
 		if err != nil {
-			testing.PollBreak(err)
+			return testing.PollBreak(err)
 		}
 		for _, capp := range capps {
 			if predicate(capp) {

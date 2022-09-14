@@ -119,7 +119,7 @@ func AutoplayAllowed(ctx context.Context, s *testing.State) {
 			if err := testing.Poll(ctx, func(ctx context.Context) error {
 				// Check if the media is playing.
 				if err := conn.Eval(ctx, "isMediaPlaying()", &playing); err != nil {
-					testing.PollBreak(err)
+					return testing.PollBreak(err)
 				}
 				if !playing {
 					return errNotPlaying

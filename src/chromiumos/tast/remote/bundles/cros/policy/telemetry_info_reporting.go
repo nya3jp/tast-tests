@@ -247,7 +247,7 @@ func TelemetryInfoReporting(ctx context.Context, s *testing.State) {
 				return internalParam.validator(e)
 			})
 			if err != nil {
-				testing.PollBreak(errors.Wrap(err, "failed to prune events"))
+				return testing.PollBreak(errors.Wrap(err, "failed to prune events"))
 			}
 			if !param.reportingEnabled && len(prunedEvents) == 0 {
 				testing.ContextLog(ctx, "succeeded verifying test - reporting disabled: ", internalParam.name)
