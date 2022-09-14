@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "980a9099_eac8945c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-09-14T13:02:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4900ba85_0dce408c",
+      "revId": "7d1e32eafc0ff8f871a00ce8b98813dabca3dfdf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "0b666b69_92e1d552",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 4
@@ -52,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c852740_7c029552",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/sap_caps.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-09-14T13:02:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7bb3082f_898fda7f",
+      "revId": "7d1e32eafc0ff8f871a00ce8b98813dabca3dfdf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7c047c39_acaa7723",
@@ -65,6 +101,24 @@
       "writtenOn": "2022-09-13T17:48:14Z",
       "side": 1,
       "message": "The frequencies are grouped by band. If we get rid of the frequency dump, then we can just check the first frequency in the band to see which band it belongs to w/o iterating through all the frequencies.",
+      "revId": "7d1e32eafc0ff8f871a00ce8b98813dabca3dfdf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bbe6b8b6_0e07a173",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/sap_caps.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-09-14T13:02:12Z",
+      "side": 1,
+      "message": "The frequencies are stored in keys. For code simplicity, I\u0027ve changed that to use reflection, even though it has a slightly worse performance comparing to iterating approach.",
+      "parentUuid": "7c047c39_acaa7723",
       "revId": "7d1e32eafc0ff8f871a00ce8b98813dabca3dfdf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -116,6 +170,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e7b64e8_ab426423",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/sap_caps.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-09-14T13:02:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d7606b7_ed3f69b8",
+      "range": {
+        "startLine": 78,
+        "startChar": 30,
+        "endLine": 78,
+        "endChar": 34
+      },
+      "revId": "7d1e32eafc0ff8f871a00ce8b98813dabca3dfdf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e91a2705_62b4af0c",
@@ -129,6 +207,30 @@
       "writtenOn": "2022-08-19T21:09:51Z",
       "side": 1,
       "message": "And here",
+      "range": {
+        "startLine": 80,
+        "startChar": 18,
+        "endLine": 80,
+        "endChar": 34
+      },
+      "revId": "7d1e32eafc0ff8f871a00ce8b98813dabca3dfdf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "663f3bc7_10b8e194",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/sap_caps.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-09-14T13:02:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e91a2705_62b4af0c",
       "range": {
         "startLine": 80,
         "startChar": 18,
@@ -162,6 +264,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "23a542c1_cd88ccf3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/sap_caps.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-09-14T13:02:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7e09f39b_acca901f",
+      "range": {
+        "startLine": 85,
+        "startChar": 67,
+        "endLine": 85,
+        "endChar": 75
+      },
+      "revId": "7d1e32eafc0ff8f871a00ce8b98813dabca3dfdf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dc12cc10_86f92d32",
@@ -179,6 +305,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "45a2c931_da5b1dcf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/sap_caps.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-09-14T13:02:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dc12cc10_86f92d32",
+      "revId": "7d1e32eafc0ff8f871a00ce8b98813dabca3dfdf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "60870b9c_672a661d",
@@ -192,6 +336,24 @@
       "writtenOn": "2022-09-13T17:48:14Z",
       "side": 1,
       "message": "Concurrency information is checked and dumped in `wifi.ConcurrencyCaps`. https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/wifi/concurrency_caps.go;l\u003d30\n\nI think we can remove this from `wifi.SAPCaps`. WDYT?",
+      "revId": "7d1e32eafc0ff8f871a00ce8b98813dabca3dfdf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aecf34cb_44581b5e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/sap_caps.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-09-14T13:02:12Z",
+      "side": 1,
+      "message": "Indeed Caps have more comprehensive information. I added a comment instead.",
+      "parentUuid": "60870b9c_672a661d",
       "revId": "7d1e32eafc0ff8f871a00ce8b98813dabca3dfdf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
