@@ -77,7 +77,6 @@ type Config struct {
 
 // NewConfig creates a new LacrosConfig instance.
 func NewConfig(ops ...Option) *Config {
-	// TODO(crbug.com/1260037): Make lacros.LacrosPrimary the default.
 	cfg := &Config{
 		selection:     lacros.Rootfs,
 		mode:          lacros.NotSpecified,

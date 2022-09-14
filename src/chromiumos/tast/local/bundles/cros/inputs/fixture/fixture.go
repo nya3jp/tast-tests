@@ -16,7 +16,6 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/ime"
-	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/vkb"
@@ -435,7 +434,7 @@ func (f *inputsFixtureImpl) SetUp(ctx context.Context, s *testing.FixtState) int
 	}
 
 	if f.browserType == browser.TypeLacros {
-		lacrosOpts, err := lacrosfixt.NewConfig(lacrosfixt.Mode(lacros.LacrosPrimary)).Opts()
+		lacrosOpts, err := lacrosfixt.NewConfig().Opts()
 		if err != nil {
 			s.Fatal("Failed to get lacros options: ", err)
 		}
