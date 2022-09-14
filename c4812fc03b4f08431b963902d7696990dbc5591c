@@ -35,6 +35,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b05a804_db08d066",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1121230
+      },
+      "writtenOn": "2022-09-14T19:20:14Z",
+      "side": 1,
+      "message": "Thank you!",
+      "revId": "c4812fc03b4f08431b963902d7696990dbc5591c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7294e37b_8e29feef",
@@ -48,6 +65,24 @@
       "writtenOn": "2022-09-14T19:07:12Z",
       "side": 1,
       "message": "In this case, I would prefer previous verison. How do we know 3 seconds is enough?",
+      "revId": "c4812fc03b4f08431b963902d7696990dbc5591c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ebcbad4_6dddfca1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/focus_android_app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1121230
+      },
+      "writtenOn": "2022-09-14T19:20:14Z",
+      "side": 1,
+      "message": "Even for the previous version, I don\u0027t know how long it is enough.\n\nMy understanding is that the previous version was working because animation durations (wait time) for maximize+restore was long enough. I don\u0027t think the operation is important given that waiting normal state was not working. If an operation itself is doing the job, I think it should be enough to just wait normal state.\n\nWe don\u0027t know how long it is enough in both ways. But if our intent is to just wait, I think `testing.Sleep` is better as the intention is clear (especially for future readers of this source code).",
+      "parentUuid": "7294e37b_8e29feef",
       "revId": "c4812fc03b4f08431b963902d7696990dbc5591c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
