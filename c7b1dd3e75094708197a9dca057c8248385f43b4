@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9db3077b_34262132",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2022-09-14T15:41:55Z",
+      "side": 1,
+      "message": "It looks like anastasiian@ got unlucky a second time, conflicting with http://crrev.com/c/3879671.",
+      "revId": "c7b1dd3e75094708197a9dca057c8248385f43b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
