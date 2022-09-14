@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "675ff047_336b7e2f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns/dns.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2022-09-14T01:03:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f15b9932_a650e5b9",
+      "range": {
+        "startLine": 389,
+        "startChar": 1,
+        "endLine": 389,
+        "endChar": 16
+      },
+      "revId": "ccd5169f4881df93cf6aa8d5184700ef648900cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "92a5fc16_1d8a0675",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a70ac5cc_5089893d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns/dns.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 413,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2022-09-14T01:03:49Z",
+      "side": 1,
+      "message": "I guess here is fine because handling would be redundant i.e.:\n```\nerr \u003d rw.Write(resp)\nif err !\u003d nil {\n    return\n}\n```",
+      "parentUuid": "92a5fc16_1d8a0675",
+      "range": {
+        "startLine": 413,
+        "startChar": 5,
+        "endLine": 413,
+        "endChar": 10
+      },
+      "revId": "ccd5169f4881df93cf6aa8d5184700ef648900cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "75aca3b0_9d45444b",
@@ -77,6 +125,30 @@
       "writtenOn": "2022-09-13T08:37:01Z",
       "side": 1,
       "message": "Not a suggestion: is it possible/cleaner to use env.New() instead of CreateRouterEnv() to create the first one and start the dnsmasq for DHCP in it later? Then we don\u0027t need this piece of code.",
+      "range": {
+        "startLine": 420,
+        "startChar": 1,
+        "endLine": 428,
+        "endChar": 2
+      },
+      "revId": "ccd5169f4881df93cf6aa8d5184700ef648900cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9d3882a_76b49ae1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns/dns.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 428,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2022-09-14T01:03:49Z",
+      "side": 1,
+      "message": "This feels like a trade-off. It\u0027s possible to do so (and also remove the previous patch), but it also means that we\u0027ll need to dup a decent amount of virtualnet.go code:\n- manually run dnsmasq here for DHCP\n- set ephemeral to make it default network\n- disconnect + reconnect to speed up DHCP process\n\nI personally don\u0027t have a pref here, so I\u0027ll gladly change esp. if you think the `pool` arg for `ConnectToRouter` makes more sense.",
+      "parentUuid": "75aca3b0_9d45444b",
       "range": {
         "startLine": 420,
         "startChar": 1,
@@ -112,6 +184,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "1255017b_903d04b2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns/dns.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 441,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2022-09-14T01:03:49Z",
+      "side": 1,
+      "message": "Done, thanks for catching this!",
+      "parentUuid": "828d7682_ab394a46",
+      "range": {
+        "startLine": 438,
+        "startChar": 1,
+        "endLine": 441,
+        "endChar": 0
+      },
+      "revId": "ccd5169f4881df93cf6aa8d5184700ef648900cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "d246cabe_2a9564a2",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/dns/dns.go",
         "patchSetId": 2
@@ -123,6 +219,30 @@
       "writtenOn": "2022-09-13T08:37:01Z",
       "side": 1,
       "message": "I forgot the original purpuse but maybe we can just merge New() and SetUp() function since they will always be used together....",
+      "range": {
+        "startLine": 480,
+        "startChar": 1,
+        "endLine": 487,
+        "endChar": 2
+      },
+      "revId": "ccd5169f4881df93cf6aa8d5184700ef648900cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f8adbd8_81a7258c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns/dns.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 487,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2022-09-14T01:03:49Z",
+      "side": 1,
+      "message": "We can do that, but at the same time I\u0027m a bit hesitant as multiple parts of virtualnet use the same pattern i.e. dnsmasq, certs, httpserver.",
+      "parentUuid": "d246cabe_2a9564a2",
       "range": {
         "startLine": 480,
         "startChar": 1,
@@ -202,6 +322,78 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bbb3539e_96b63801",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns/dns.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 506,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2022-09-14T01:03:49Z",
+      "side": 1,
+      "message": "Nice catch thanks! Done.",
+      "parentUuid": "49c25463_8cb97626",
+      "range": {
+        "startLine": 506,
+        "startChar": 69,
+        "endLine": 506,
+        "endChar": 79
+      },
+      "revId": "ccd5169f4881df93cf6aa8d5184700ef648900cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c56965fa_8fdac79d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns/dns.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 506,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2022-09-14T01:03:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "896a4343_57062cac",
+      "range": {
+        "startLine": 506,
+        "startChar": 80,
+        "endLine": 506,
+        "endChar": 95
+      },
+      "revId": "ccd5169f4881df93cf6aa8d5184700ef648900cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "40c460e0_70e0b178",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns/dns.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 506,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2022-09-14T01:03:49Z",
+      "side": 1,
+      "message": "Ah my bad, looks like gofmt does not like my previous style. I also just realized that gofmt or go in general prefers to have the callsite comment next to the value i.e. `false /*enableDHCP\u003d*/`.\n\nFixed, thanks!",
+      "parentUuid": "7eb782db_5c01ec00",
+      "range": {
+        "startLine": 506,
+        "startChar": 47,
+        "endLine": 506,
+        "endChar": 61
+      },
+      "revId": "ccd5169f4881df93cf6aa8d5184700ef648900cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "908c2055_3e2bdc15",
@@ -225,6 +417,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "215b0ad9_ca73b0e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns_proxy.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2022-09-14T01:03:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "908c2055_3e2bdc15",
+      "range": {
+        "startLine": 106,
+        "startChar": 4,
+        "endLine": 106,
+        "endChar": 115
+      },
+      "revId": "ccd5169f4881df93cf6aa8d5184700ef648900cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4d4c61a1_6dbcfaea",
@@ -238,6 +454,30 @@
       "writtenOn": "2022-09-13T08:37:01Z",
       "side": 1,
       "message": "will we need this svc in other cases? How about just removing it if not?",
+      "range": {
+        "startLine": 112,
+        "startChar": 1,
+        "endLine": 112,
+        "endChar": 2
+      },
+      "revId": "ccd5169f4881df93cf6aa8d5184700ef648900cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2cdad0af_91633d2d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns_proxy.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2022-09-14T01:03:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d4c61a1_6dbcfaea",
       "range": {
         "startLine": 112,
         "startChar": 1,
