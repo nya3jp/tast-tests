@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/sysutil"
+	"chromiumos/tast/osrelease"
 	"chromiumos/tast/testing"
 )
 
@@ -40,12 +41,17 @@ func ConfigVerify(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get kernel version and arch: ", err)
 	}
 
+	osVer, err := osrelease.Load()
+	if err != nil {
+		s.Fatal("Failed to get os-release: ", err)
+	}
+
 	conf, err := readKernelConfig(ctx)
 	if err != nil {
 		s.Fatal("Failed to read kernel config: ", err)
 	}
 
-	newKernelConfigCheck(ver, arch).test(conf, s)
+	newKernelConfigCheck(ver, arch, osVer).test(conf, s)
 }
 
 // readKernelConfig reads the kernel config key value pairs trimming CONFIG_ prefix from the keys.
@@ -128,7 +134,7 @@ type kernelConfigCheck struct {
 	missing []string
 }
 
-func newKernelConfigCheck(ver *sysutil.KernelVersion, arch string) *kernelConfigCheck {
+func newKernelConfigCheck(ver *sysutil.KernelVersion, arch string, osVer map[string]string) *kernelConfigCheck {
 	exclusive := []*regexp.Regexp{
 		// Security; no surprise binary formats.
 		regexp.MustCompile(`^BINFMT_`),
@@ -157,8 +163,6 @@ func newKernelConfigCheck(ver *sysutil.KernelVersion, arch string) *kernelConfig
 		"USER_NS",
 		// Security; perform additional validation of credentials.
 		"DEBUG_CREDENTIALS",
-		// Security; make sure the ChromeOS LSM is in use.
-		"SECURITY_CHROMIUMOS",
 
 		// Binary formats.
 		"BINFMT_ELF",
@@ -210,9 +214,6 @@ func newKernelConfigCheck(ver *sysutil.KernelVersion, arch string) *kernelConfig
 		// compatibility with ARM binaries (even on x86) this needs to
 		// be 32k.
 		"DEFAULT_MMAP_MIN_ADDR": "32768",
-
-		// NaCl; allow mprotect+PROT_EXEC on noexec mapped files.
-		"MMAP_NOEXEC_TAINT": "0",
 
 		// Magic sysrq: we allow it on by default, but *only* for the CrOS addition sysrq-x
 		// (dump and crash / SYSRQ_ENABLE_CROS_XKEY=0x1000).
@@ -281,7 +282,7 @@ func newKernelConfigCheck(ver *sysutil.KernelVersion, arch string) *kernelConfig
 	}
 
 	if ver.IsOrLater(3, 18) {
-		builtin = append(builtin, "SND_PROC_FS", "USB_CONFIGFS_F_FS", "ESD_FS")
+		builtin = append(builtin, "SND_PROC_FS", "USB_CONFIGFS_F_FS")
 		module = append(module, "USB_F_FS")
 		enabled = append(enabled, "CONFIGFS_FS")
 		// Like FW_LOADER_USER_HELPER, these may be exploited by userspace.
@@ -384,6 +385,23 @@ func newKernelConfigCheck(ver *sysutil.KernelVersion, arch string) *kernelConfig
 		}
 		// Dangerous; disables VDSO ASLR.
 		missing = append(missing, "COMPAT_VDSO")
+	}
+
+	// The following configs are ChromeOS kernel specific.  Only check them if the device
+	// is not "Chromium OS".
+	if osVer[osrelease.Name] != "Chromium OS" {
+		// Security; make sure the ChromeOS LSM is in use.
+		builtin = append(builtin, "SECURITY_CHROMIUMOS")
+
+		// NaCl; allow mprotect+PROT_EXEC on noexec mapped files.
+		value["MMAP_NOEXEC_TAINT"] = "0"
+
+		if ver.IsOrLater(3, 18) {
+			builtin = append(builtin, "ESD_FS")
+		}
+	} else {
+		// If the device is ChromiumOS, "ESD_FS" is optional.
+		optional = append(optional, "ESD_FS")
 	}
 
 	return &kernelConfigCheck{
