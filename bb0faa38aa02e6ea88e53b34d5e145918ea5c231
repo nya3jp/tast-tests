@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b793ea4d_2143308f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/spell_check_remove_words.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-09-14T03:57:20Z",
+      "side": 1,
+      "message": "Please only use fixtures in http://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/inputs/fixture/fixture.go",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 29
+      },
+      "revId": "bb0faa38aa02e6ea88e53b34d5e145918ea5c231",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb4315b3_cfba71e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/spell_check_remove_words.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-09-14T03:57:20Z",
+      "side": 1,
+      "message": "tconn can be retrieved from fixture data as well in new fixture.",
+      "range": {
+        "startLine": 55,
+        "startChar": 1,
+        "endLine": 58,
+        "endChar": 2
+      },
+      "revId": "bb0faa38aa02e6ea88e53b34d5e145918ea5c231",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29d4e7e1_02ab05cc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/spell_check_remove_words.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-09-14T03:57:20Z",
+      "side": 1,
+      "message": "Can you wrap up a function in http://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/uiauto/imesettings/imesettings.go?\n\nI feel you can add 3 functions: SetSpellingAndGrammarCheck(bool), AddCustomizedSpellCheck(string), RemoveCustomizedSpellCheck(string)",
+      "range": {
+        "startLine": 71,
+        "startChar": 1,
+        "endLine": 81,
+        "endChar": 2
+      },
+      "revId": "bb0faa38aa02e6ea88e53b34d5e145918ea5c231",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a8aacba_e5355d2a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/spell_check_remove_words.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-09-14T03:57:20Z",
+      "side": 1,
+      "message": "Please use E14s test server for validation. You can find similar use cases in other inputs test.\n\nits, err :\u003d testserver.LaunchBrowser(ctx, s.FixtValue().(fixture.FixtData).BrowserType, cr, tconn)\n\tif err !\u003d nil {\n\t\ts.Fatal(\"Failed to launch inputs test server: \", err)\n\t}\n\tdefer its.CloseAll(cleanupCtx)",
+      "range": {
+        "startLine": 108,
+        "startChar": 1,
+        "endLine": 119,
+        "endChar": 2
+      },
+      "revId": "bb0faa38aa02e6ea88e53b34d5e145918ea5c231",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
