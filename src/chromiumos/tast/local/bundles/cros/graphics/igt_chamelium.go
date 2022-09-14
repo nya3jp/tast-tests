@@ -14,6 +14,12 @@ import (
 	"chromiumos/tast/testing"
 )
 
+var chameleonHostVar = testing.RegisterVarString(
+	"graphics.chameleonhostname",
+	"",
+	"Chameleon Host Name",
+)
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func: IgtChamelium,
@@ -36,6 +42,61 @@ func init() {
 	})
 }
 
+func setIgtrcFile(s *testing.State) {
+	igtFilePath := "/tmp/.igtrc"
+	igtFile, err := os.Create(igtFilePath)
+	if err != nil {
+		s.Fatal("Failed to create .igtrc: ", err)
+		return
+	}
+	defer igtFile.Close()
+
+	// Get Chameleon Hostname
+	// 1. Check if it's a runtime value. This is used for local dev env.
+	s.Log("Got testing.RegisterVarString")
+	chameleonHostName := ""
+	if chameleonHostVar != nil {
+		chameleonHostName = chameleonHostVar.Value()
+	}
+
+	// 2. If it's not assigned, get the DUT hostname value and append the suffix.
+	if chameleonHostName == "" {
+		if s.DUT() == nil {
+			s.Fatal("Failed to get the DUT:", s.DUT())
+			return
+		}
+		dutHostName := s.DUT().HostName()
+		if dutHostName == "" {
+			s.Fatal("Failed to get the DUT's hostname:", dutHostName)
+			return
+		}
+		chameleonHostName = dutHostName + "-chameleon"
+	}
+
+	content := `
+[Common]
+# The path to dump frames that fail comparison checks
+FrameDumpPath=/tmp
+
+[DUT]
+SuspendResumeDelay=15
+
+[Chamelium]
+URL=` + chameleonHostName + `
+
+`
+
+	// Write config content to .igtrc
+	_, err = igtFile.WriteString(content)
+	if err != nil {
+		s.Fatal("Failed to write to igtrc: ", err)
+		return
+	}
+
+	// Set the file path as env variable for IGT to find it.
+	os.Setenv("IGT_CONFIG_PATH", igtFilePath)
+}
+
 func IgtChamelium(ctx context.Context, s *testing.State) {
 	testOpt := s.Param().(graphics.IgtTest)
 	f, err := os.Create(filepath.Join(s.OutDir(), filepath.Base(testOpt.Exe)+".txt"))
@@ -43,6 +104,8 @@ func IgtChamelium(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create a log file: ", err)
 	}
 	defer f.Close()
+
+	setIgtrcFile(s)
 
 	testPath := filepath.Join("chamelium", testOpt.Exe)
 	isExitErr, exitErr, err := graphics.IgtExecuteTests(ctx, testPath, f)
