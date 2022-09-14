@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4fdd4ee_6d9219f3",
+        "filename": "src/chromiumos/tast/local/bluetooth/bluez.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1525637
+      },
+      "writtenOn": "2022-09-14T04:31:18Z",
+      "side": 1,
+      "message": "Mark as resolved",
+      "parentUuid": "8c79f205_4f040301",
+      "revId": "9b2d02f9106c3e00d73c0e78b93ad457fbffa027",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e22813e5_675577f8",
@@ -85,6 +103,24 @@
       "side": 1,
       "message": "Sounds good!",
       "parentUuid": "df7ebb7b_a6884ac5",
+      "revId": "9b2d02f9106c3e00d73c0e78b93ad457fbffa027",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f847501_364c1ed0",
+        "filename": "src/chromiumos/tast/local/bluetooth/floss.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1525637
+      },
+      "writtenOn": "2022-09-14T04:31:18Z",
+      "side": 1,
+      "message": "Mark as resolved",
+      "parentUuid": "800d4fdc_c7c92188",
       "revId": "9b2d02f9106c3e00d73c0e78b93ad457fbffa027",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -222,6 +258,30 @@
       "side": 1,
       "message": "Ah, that must be what the issue is-- moving it appears to have made everything happy except the lint related to updating the copyright header for new files. I left the notice as-is given that this file was only moved, but I can update it if need be!",
       "parentUuid": "ea994659_d4ed291c",
+      "range": {
+        "startLine": 96,
+        "startChar": 11,
+        "endLine": 96,
+        "endChar": 27
+      },
+      "revId": "9b2d02f9106c3e00d73c0e78b93ad457fbffa027",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e795794_8a7081c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1525637
+      },
+      "writtenOn": "2022-09-14T04:31:18Z",
+      "side": 1,
+      "message": "Mark as resolved",
+      "parentUuid": "569424c6_903c36ae",
       "range": {
         "startLine": 96,
         "startChar": 11,

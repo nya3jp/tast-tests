@@ -16,6 +16,23 @@
       "message": "Thank you for taking a look at this change Hsin-chen! Went ahead and made the requested changes and responded to the comments. I ran all of the tests on a machine in the lab and they passed with flying colors!",
       "revId": "244833426db1eae1818eda5cc13c552945fcdf1c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "521a1274_592852a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/pair_new_device_from_bluetooth_settings.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1525637
+      },
+      "writtenOn": "2022-09-14T04:31:18Z",
+      "side": 1,
+      "message": "Please reset it as it\u0027s not related. It seems in some files \"Unknown\" is assigned but some just leave unset.",
+      "revId": "244833426db1eae1818eda5cc13c552945fcdf1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
