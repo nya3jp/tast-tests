@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "52cd38a1_f7bd35df",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-09-14T12:40:11Z",
+      "side": 1,
+      "message": "Thank you for your time :)",
+      "parentUuid": "9d475133_8e7ea3e6",
+      "revId": "7cb540e29be469a6115b00c3cb9db3405d5520b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "329cc97b_c710fbad",
@@ -54,6 +72,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "55094ec4_9cd02546",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/proxy_setting_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-09-14T12:40:11Z",
+      "side": 1,
+      "message": "This is a helper that wraps the out-dir detail.\nWe can simply use the `faillog.DumpUITreeOnErrorToFile` or `faillog.DumpUITreeToFile`, but we will have certain duplicated logics (the out-dir detail) in that way.\n\nShould we remove this helper?",
+      "parentUuid": "329cc97b_c710fbad",
+      "revId": "7cb540e29be469a6115b00c3cb9db3405d5520b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "659b915c_a9f10c88",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/proxy_setting_service.go",
         "patchSetId": 3
@@ -65,6 +101,30 @@
       "writtenOn": "2022-09-13T22:30:45Z",
       "side": 1,
       "message": "Nit: `10 * time.Second`",
+      "range": {
+        "startLine": 135,
+        "startChar": 37,
+        "endLine": 135,
+        "endChar": 51
+      },
+      "revId": "7cb540e29be469a6115b00c3cb9db3405d5520b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4faca338_ed71518e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/proxy_setting_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-09-14T12:40:11Z",
+      "side": 1,
+      "message": "Sorry, this is automatically formatted by `gofmt`, should we use custom format here?",
+      "parentUuid": "659b915c_a9f10c88",
       "range": {
         "startLine": 135,
         "startChar": 37,
@@ -98,6 +158,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f86d973_fb990f54",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/proxy_setting_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-09-14T12:40:11Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "5a44cd29_df683f46",
+      "range": {
+        "startLine": 219,
+        "startChar": 67,
+        "endLine": 219,
+        "endChar": 70
+      },
+      "revId": "7cb540e29be469a6115b00c3cb9db3405d5520b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5e924c0e_2771d8bc",
@@ -111,6 +195,30 @@
       "writtenOn": "2022-09-13T22:30:45Z",
       "side": 1,
       "message": "I don\u0027t feel strongly here, but one of the only other instances of `shill.ResetShill` I see outputs each of the errors immediately and only returns the first in the list. WDYT of mirroring that behavior here?\n\n    for _, err :\u003d range errs {\n        testing.ContextLog(ctx, \"ResetShill error: \", err)\n    }\n    return errors.Wrap(errs[0], \"failed to reset shill\")",
+      "range": {
+        "startLine": 223,
+        "startChar": 0,
+        "endLine": 228,
+        "endChar": 63
+      },
+      "revId": "7cb540e29be469a6115b00c3cb9db3405d5520b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6187eb7_9cd62c87",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/proxy_setting_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-09-14T12:40:11Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "5e924c0e_2771d8bc",
       "range": {
         "startLine": 223,
         "startChar": 0,
@@ -144,6 +252,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4377e2e_7c71ab69",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/proxysettings/proxy_settings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-09-14T12:40:11Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "7946c9c1_7d3e2274",
+      "range": {
+        "startLine": 104,
+        "startChar": 27,
+        "endLine": 105,
+        "endChar": 38
+      },
+      "revId": "7cb540e29be469a6115b00c3cb9db3405d5520b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a3c43ec7_ff590d6d",
@@ -163,6 +295,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5b9bd96a_9d72542c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/proxysettings/proxy_settings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-09-14T12:40:11Z",
+      "side": 1,
+      "message": "Sorry, this method seems can relies on Ethernet as well, should we mention both WiFi and Ethernet, or did we misunderstand something?",
+      "parentUuid": "a3c43ec7_ff590d6d",
+      "revId": "7cb540e29be469a6115b00c3cb9db3405d5520b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a4cefbcf_4155f260",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/proxysettings/proxy_settings.go",
         "patchSetId": 3
@@ -174,6 +324,24 @@
       "writtenOn": "2022-09-13T22:30:45Z",
       "side": 1,
       "message": "There is some effort underway to add a method that will allow us to navigate to the detailed page of a specific network. This is being tracked by b/245560680-- could we add a TODO here to circle back and update this method to use that functionality when available?\n\n    // should not be ...\n    // TODO(b/245560680): Update this method to navigate directly to the detailed\n    // view of the active WiFi network when this functionality is available.\n    func Launch(ctx context.Context, ...",
+      "revId": "7cb540e29be469a6115b00c3cb9db3405d5520b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "15d38e21_e8dfe4b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/proxysettings/proxy_settings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-09-14T12:40:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a4cefbcf_4155f260",
       "revId": "7cb540e29be469a6115b00c3cb9db3405d5520b4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -201,6 +369,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "897465a4_2f1a4bbe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/proxysettings/proxy_settings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-09-14T12:40:11Z",
+      "side": 1,
+      "message": "Done, remove the `ossettings` instance from `ProxySettings` and rename `Launch` \u0026 `LaunchFromSigninScreen`\n\nHowever we didn\u0027t remove the `Close` due to the `ossettings` could either be opened or not be opened, the `Close` seems a proper helper that allows the caller to close the settings app gracefully.",
+      "parentUuid": "fb834f95_6598c226",
+      "range": {
+        "startLine": 121,
+        "startChar": 0,
+        "endLine": 124,
+        "endChar": 2
+      },
+      "revId": "7cb540e29be469a6115b00c3cb9db3405d5520b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "42be2152_676d0f95",
@@ -218,6 +410,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "db2253e6_46d171d9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/proxysettings/proxy_settings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-09-14T12:40:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "42be2152_676d0f95",
+      "revId": "7cb540e29be469a6115b00c3cb9db3405d5520b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "168f8595_a5a22f91",
@@ -231,6 +441,30 @@
       "writtenOn": "2022-09-13T22:30:45Z",
       "side": 1,
       "message": "Should we close the dialog/window that is opened when we open the proxy settings but are not logged in?",
+      "range": {
+        "startLine": 156,
+        "startChar": 4,
+        "endLine": 156,
+        "endChar": 17
+      },
+      "revId": "7cb540e29be469a6115b00c3cb9db3405d5520b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8590b1b_8b577e04",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/proxysettings/proxy_settings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-09-14T12:40:11Z",
+      "side": 1,
+      "message": "Fixed, close the dialog/window by triggering a keyboard event",
+      "parentUuid": "168f8595_a5a22f91",
       "range": {
         "startLine": 156,
         "startChar": 4,
@@ -264,6 +498,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a25ae896_f6e87692",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/proxysettings/proxy_settings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-09-14T12:40:11Z",
+      "side": 1,
+      "message": "Removed",
+      "parentUuid": "9ecbe176_69a7ae4f",
+      "range": {
+        "startLine": 166,
+        "startChar": 0,
+        "endLine": 168,
+        "endChar": 2
+      },
+      "revId": "7cb540e29be469a6115b00c3cb9db3405d5520b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d21460aa_d2338b53",
@@ -277,6 +535,30 @@
       "writtenOn": "2022-09-13T22:30:45Z",
       "side": 1,
       "message": "Do we expect this method to be used elsewhere? WDYT of removing this function and performing these actions inline in `Setup`?",
+      "range": {
+        "startLine": 194,
+        "startChar": 0,
+        "endLine": 204,
+        "endChar": 1
+      },
+      "revId": "7cb540e29be469a6115b00c3cb9db3405d5520b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5143f6a1_8204de8d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/proxysettings/proxy_settings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-09-14T12:40:11Z",
+      "side": 1,
+      "message": "Done, perform the action in `Setup` instead.",
+      "parentUuid": "d21460aa_d2338b53",
       "range": {
         "startLine": 194,
         "startChar": 0,
@@ -310,6 +592,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb5d5bf0_5d774497",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/proxysettings/proxy_settings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-09-14T12:40:11Z",
+      "side": 1,
+      "message": "The `SetToggleOption` can only work under the settings app while the proxy settings needs to support the operations with dialog/window under sign-screen.\n\nAlso the `SetToggleOption` involves `shadowPiercingQuery` which might make improving the `uiauto/automation.go` be complicated.\n\nBut we slightly refactor the logic here, hopefully it\u0027ll make more sense.",
+      "parentUuid": "8df9a259_039dd44d",
+      "range": {
+        "startLine": 223,
+        "startChar": 0,
+        "endLine": 236,
+        "endChar": 75
+      },
+      "revId": "7cb540e29be469a6115b00c3cb9db3405d5520b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8decfb9c_09a9da9a",
@@ -323,6 +629,30 @@
       "writtenOn": "2022-09-13T22:30:45Z",
       "side": 1,
       "message": "Nit: Consider removing this comment and the one below since the actions feel self-documenting.",
+      "range": {
+        "startLine": 239,
+        "startChar": 0,
+        "endLine": 239,
+        "endChar": 22
+      },
+      "revId": "7cb540e29be469a6115b00c3cb9db3405d5520b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "06882286_44c72ee2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/proxysettings/proxy_settings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-09-14T12:40:11Z",
+      "side": 1,
+      "message": "Removed",
+      "parentUuid": "8decfb9c_09a9da9a",
       "range": {
         "startLine": 239,
         "startChar": 0,
@@ -356,6 +686,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "258000ef_d5547987",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/proxysettings/proxy_settings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-09-14T12:40:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "18539d06_eb734ae0",
+      "range": {
+        "startLine": 241,
+        "startChar": 0,
+        "endLine": 242,
+        "endChar": 33
+      },
+      "revId": "7cb540e29be469a6115b00c3cb9db3405d5520b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "37d292dd_dd12ca05",
@@ -369,6 +723,30 @@
       "writtenOn": "2022-09-13T22:30:45Z",
       "side": 1,
       "message": "Nit: Consider replacing with `WaitUntilExists` if we don\u0027t necessarily need to focus the node.",
+      "range": {
+        "startLine": 266,
+        "startChar": 17,
+        "endLine": 266,
+        "endChar": 30
+      },
+      "revId": "7cb540e29be469a6115b00c3cb9db3405d5520b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7091d46_2774d799",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/proxysettings/proxy_settings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-09-14T12:40:11Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "37d292dd_dd12ca05",
       "range": {
         "startLine": 266,
         "startChar": 17,
@@ -404,6 +782,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "550e6f77_611a51eb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/proxy_retain_after_reboot.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-09-14T12:40:11Z",
+      "side": 1,
+      "message": "Sorry, this is automatically formatted by `gofmt`, should we use custom format here?",
+      "parentUuid": "336c8f21_0b5905c5",
+      "range": {
+        "startLine": 56,
+        "startChar": 37,
+        "endLine": 56,
+        "endChar": 51
+      },
+      "revId": "7cb540e29be469a6115b00c3cb9db3405d5520b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b3d520a2_9fbd5796",
         "filename": "src/chromiumos/tast/remote/bundles/cros/network/proxy_retain_after_reboot.go",
         "patchSetId": 3
@@ -415,6 +817,30 @@
       "writtenOn": "2022-09-13T22:30:45Z",
       "side": 1,
       "message": "Could we move this functionality into a helper method (in this same file) that takes a boolean as a parameter (`ShouldKeepState`) and returns an instance of `ProxySettings`? This would allow us to avoid having to place this logic into a self-invoking method and we could just call this same method below.",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 9
+      },
+      "revId": "7cb540e29be469a6115b00c3cb9db3405d5520b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "08511979_99931a4b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/proxy_retain_after_reboot.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-09-14T12:40:11Z",
+      "side": 1,
+      "message": "The instance of `ProxySettings` (a rpc service client) should be closed as the rpc-client closed, therefore we designed a self-invoking method here.\nHowever, the logic here was refactored and a helper was added as suggested to reuse the similar logic, please let us know if the original way is preferred.",
+      "parentUuid": "b3d520a2_9fbd5796",
       "range": {
         "startLine": 60,
         "startChar": 0,
@@ -448,6 +874,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cfc1903a_b8652b3c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/proxy_retain_after_reboot.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-09-14T12:40:11Z",
+      "side": 1,
+      "message": "Removed",
+      "parentUuid": "7a91f40c_7aafdf3e",
+      "range": {
+        "startLine": 81,
+        "startChar": 1,
+        "endLine": 81,
+        "endChar": 19
+      },
+      "revId": "7cb540e29be469a6115b00c3cb9db3405d5520b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2e7b0a90_5229f50c",
@@ -471,6 +921,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "074d64e2_a04a2cc0",
+        "filename": "src/chromiumos/tast/services/cros/network/proxy_setting_service.proto",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-09-14T12:40:11Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "2e7b0a90_5229f50c",
+      "range": {
+        "startLine": 21,
+        "startChar": 13,
+        "endLine": 21,
+        "endChar": 14
+      },
+      "revId": "7cb540e29be469a6115b00c3cb9db3405d5520b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "46d1dee4_50d659a1",
@@ -484,6 +958,30 @@
       "writtenOn": "2022-09-13T22:30:45Z",
       "side": 1,
       "message": "I think it might be helpful for readers if we renamed this value to something like `ResetProxySettings` or `ClearProxySettings`, WDYT?",
+      "range": {
+        "startLine": 34,
+        "startChar": 9,
+        "endLine": 34,
+        "endChar": 24
+      },
+      "revId": "7cb540e29be469a6115b00c3cb9db3405d5520b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a1b6158_b3b6140f",
+        "filename": "src/chromiumos/tast/services/cros/network/proxy_setting_service.proto",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-09-14T12:40:11Z",
+      "side": 1,
+      "message": "Thanks for the suggestion, renamed as `ClearProxySettings`",
+      "parentUuid": "46d1dee4_50d659a1",
       "range": {
         "startLine": 34,
         "startChar": 9,
