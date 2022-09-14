@@ -34,22 +34,22 @@ func init() {
 		Params: []testing.Param{
 			{
 				Name:              "stable",
-				Fixture:           "telemetryExtensionOptionsPage",
+				Fixture:           fixture.TelemetryExtensionOptionsPage,
 				ExtraHardwareDeps: dep.StableModels(),
 			},
 			{
 				Name:              "non_stable",
-				Fixture:           "telemetryExtensionOptionsPage",
+				Fixture:           fixture.TelemetryExtensionOptionsPage,
 				ExtraHardwareDeps: dep.NonStableModels(),
 			},
 			{
 				Name:              "stable_lacros",
-				Fixture:           "telemetryExtensionOptionsPageLacros",
+				Fixture:           fixture.TelemetryExtensionOptionsPageLacros,
 				ExtraHardwareDeps: dep.StableModels(),
 			},
 			{
 				Name:              "non_stable_lacros",
-				Fixture:           "telemetryExtensionOptionsPageLacros",
+				Fixture:           fixture.TelemetryExtensionOptionsPageLacros,
 				ExtraHardwareDeps: dep.NonStableModels(),
 			},
 		},
