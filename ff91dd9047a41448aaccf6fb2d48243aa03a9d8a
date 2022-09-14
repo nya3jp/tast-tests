@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99ef5859_8f03f542",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns/dns.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-09-14T03:09:24Z",
+      "side": 1,
+      "message": "style nit: merge these two lines:\n```\nif _, err \u003d conn.Write(msg); err !\u003d nil {\n  ...\n}\n```",
+      "range": {
+        "startLine": 390,
+        "startChar": 1,
+        "endLine": 390,
+        "endChar": 25
+      },
+      "revId": "ff91dd9047a41448aaccf6fb2d48243aa03a9d8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c2f0c51_01863df8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns/dns.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-09-14T03:09:24Z",
+      "side": 1,
+      "message": "too many args... How about returning an object wrapping this?",
+      "range": {
+        "startLine": 423,
+        "startChar": 58,
+        "endLine": 423,
+        "endChar": 143
+      },
+      "revId": "ff91dd9047a41448aaccf6fb2d48243aa03a9d8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b8254f3_83208dd4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns/dns.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 441,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-09-14T03:09:24Z",
+      "side": 1,
+      "message": "this defer will be ran at the end of this function. I guess this is not what we want?",
+      "range": {
+        "startLine": 439,
+        "startChar": 0,
+        "endLine": 441,
+        "endChar": 3
+      },
+      "revId": "ff91dd9047a41448aaccf6fb2d48243aa03a9d8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
