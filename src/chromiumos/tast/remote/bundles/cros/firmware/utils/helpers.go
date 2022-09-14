@@ -8,6 +8,7 @@ package utils
 
 import (
 	"context"
+	"strconv"
 	"time"
 
 	fwCommon "chromiumos/tast/common/firmware"
@@ -93,5 +94,24 @@ func CheckRecReason(ctx context.Context, h *firmware.Helper, ms *firmware.ModeSw
 		errors.Wrap(err, "failed to get expected recovery reason")
 	}
 
+	return nil
+}
+
+// CheckCrossystemWpsw returns an error if crossystem wpsw_cur value does not match expectedWpsw
+func CheckCrossystemWpsw(ctx context.Context, h *firmware.Helper, expectedWpsw int) error {
+	r := reporters.New(h.DUT)
+	testing.ContextLog(ctx, "Check crossystem for write protect state param")
+	paramMap, err := r.Crossystem(ctx, reporters.CrossystemParamWpswCur)
+	if err != nil {
+		return errors.Wrapf(err, "failed to get crossystem %v value", reporters.CrossystemParamWpswCur)
+	}
+	currWpsw, err := strconv.Atoi(paramMap[reporters.CrossystemParamWpswCur])
+	if err != nil {
+		return errors.Wrap(err, "failed to convert crossystem wpsw value to integer value")
+	}
+	testing.ContextLogf(ctx, "Current write protect state: %v, Expected state: %v", currWpsw, expectedWpsw)
+	if currWpsw != expectedWpsw {
+		return errors.Errorf("expected WP state to %v, is actually %v", expectedWpsw, currWpsw)
+	}
 	return nil
 }
