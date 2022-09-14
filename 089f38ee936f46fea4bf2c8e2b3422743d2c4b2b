@@ -16,6 +16,23 @@
       "message": "+michaelrygiel and +tast-owners to take a look, thanks!",
       "revId": "089f38ee936f46fea4bf2c8e2b3422743d2c4b2b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eaef811e_56b01afb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-09-14T21:55:14Z",
+      "side": 1,
+      "message": "Awesome! Looks great, thank you.",
+      "revId": "089f38ee936f46fea4bf2c8e2b3422743d2c4b2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
