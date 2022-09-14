@@ -1,4 +1,4 @@
-// Copyright 2019 The Chromium OS Authors. All rights reserved.
+// Copyright 2019 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -29,9 +29,7 @@ func init() {
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
 		}, {
-			Name: "vm",
-			// TODO(b/233565855): Re-promote to critical once virtio-blk /data is fully functional.
-			ExtraAttr:         []string{"informational"},
+			Name:              "vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
 		}},
 	})
