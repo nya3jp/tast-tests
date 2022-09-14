@@ -165,6 +165,24 @@
       "parentUuid": "aa524fbf_5805a459",
       "revId": "d28a7d801dfed7a1238787b0ec582d5cf460092c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "443f929d_ba7f0646",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/boot_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2022-09-14T17:00:08Z",
+      "side": 0,
+      "message": "Yeah, it\u0027s unclear what to do. Some repos were getting bulk-updated, but not this one (yet?).\n\nSooner or later, we probably should get them all updated so we don\u0027t just teach people to ignore the upload checks even more than they already do.",
+      "parentUuid": "4126542a_aed429e2",
+      "revId": "d28a7d801dfed7a1238787b0ec582d5cf460092c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
