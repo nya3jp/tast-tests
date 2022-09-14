@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a0db7a4_f2aad3fc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 29
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1545162
+      },
+      "writtenOn": "2022-09-14T02:48:45Z",
+      "side": 1,
+      "message": "Please checkout patchset 29.\nI fix patchset 27 \u0026 28\u0027s problem.\n\nBut wwcb server error is still checking.",
+      "revId": "0de39a249ef7c94e9bff3059516bb8e8ef1ef1f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
