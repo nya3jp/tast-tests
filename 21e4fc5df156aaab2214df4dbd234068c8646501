@@ -16,6 +16,92 @@
       "message": "Thanks for reviewing!",
       "revId": "21e4fc5df156aaab2214df4dbd234068c8646501",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4cd29e7_e65f7ca7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-09-14T20:53:56Z",
+      "side": 1,
+      "message": "LGTM % nits.",
+      "revId": "21e4fc5df156aaab2214df4dbd234068c8646501",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6cca991_a29bf89e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/saved_file_to_default_folder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-09-14T20:53:56Z",
+      "side": 1,
+      "message": "This test may interfere with the projector.CreationFlow test that\u0027s also running in parallel and creating and deleting screencasts at the same time, so I\u0027m curious to see how these tests will perform together on Tastboard. If the interference is causing flakiness then we might consider separate test accounts.",
+      "range": {
+        "startLine": 27,
+        "startChar": 16,
+        "endLine": 27,
+        "endChar": 40
+      },
+      "revId": "21e4fc5df156aaab2214df4dbd234068c8646501",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b2aaa00_8169b7a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/saved_file_to_default_folder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-09-14T20:53:56Z",
+      "side": 1,
+      "message": "Nit: use fmt.Sprintf() instead of operator+ for string concatenation.",
+      "range": {
+        "startLine": 80,
+        "startChar": 49,
+        "endLine": 80,
+        "endChar": 76
+      },
+      "revId": "21e4fc5df156aaab2214df4dbd234068c8646501",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eed6bef4_e02b829f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/saved_file_to_default_folder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-09-14T20:53:56Z",
+      "side": 1,
+      "message": "Nit: consider just inlining this on line 84 below.",
+      "range": {
+        "startLine": 83,
+        "startChar": 20,
+        "endLine": 83,
+        "endChar": 68
+      },
+      "revId": "21e4fc5df156aaab2214df4dbd234068c8646501",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
