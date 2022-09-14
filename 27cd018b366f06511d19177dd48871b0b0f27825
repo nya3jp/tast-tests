@@ -16,6 +16,24 @@
       "message": "Not entirely sure about these changes. Can we do them in a separate CL or can you link me to the rationale?",
       "revId": "27cd018b366f06511d19177dd48871b0b0f27825",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f4a9c83_f912f342",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/chromevox_plain_text_editing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-09-14T06:52:04Z",
+      "side": 0,
+      "message": "A git pre-upload hook is enabled for `cros_license_check`. I wasn\u0027t able to submit the patchset without fixing them as guided (unless bypassed)",
+      "parentUuid": "dc609661_448ba6a9",
+      "revId": "27cd018b366f06511d19177dd48871b0b0f27825",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
