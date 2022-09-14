@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "298a18d1_5fb00224",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-09-14T05:16:08Z",
+      "side": 1,
+      "message": "+Eric since we\u0027re touching cell code",
+      "revId": "559f7ecb791696b87cf35e39b40f9ffea33b323b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5ebec48_a282e644",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/p2p_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-09-14T05:16:08Z",
+      "side": 1,
+      "message": "This ordering doesn\u0027t look right, you can\u0027t run iperf after deconfiguring.",
+      "revId": "559f7ecb791696b87cf35e39b40f9ffea33b323b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "211871d1_2d56b258",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/p2p_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-09-14T05:16:08Z",
+      "side": 1,
+      "message": "I think each test should be able to define its own thresholds for performance. P2PPerf should just run the test and report the result. wdyt? @Kevin too.",
+      "revId": "559f7ecb791696b87cf35e39b40f9ffea33b323b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
