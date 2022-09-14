@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4bf8c0f_302a76ee",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/boot_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2022-09-14T07:52:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d038a842_4bc34312",
+      "range": {
+        "startLine": 236,
+        "startChar": 7,
+        "endLine": 236,
+        "endChar": 13
+      },
+      "revId": "049dc1ef0775404f6627d5a4cb7d24b9ccafd676",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "29dc6bda_fe2a9b26",
@@ -81,6 +105,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2983d8df_1135c8a8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/boot_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2022-09-14T07:52:34Z",
+      "side": 1,
+      "message": "Yes, this will be ctx if I bind cleanupCtx as ctx to this function.",
+      "parentUuid": "29dc6bda_fe2a9b26",
+      "range": {
+        "startLine": 246,
+        "startChar": 44,
+        "endLine": 246,
+        "endChar": 47
+      },
+      "revId": "049dc1ef0775404f6627d5a4cb7d24b9ccafd676",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4b221e84_8b353550",
@@ -94,6 +142,30 @@
       "writtenOn": "2022-09-13T10:12:09Z",
       "side": 1,
       "message": "nit: pass here cleanupCtx, don\u0027t bind ctx by reference, it\u0027s error-prone",
+      "range": {
+        "startLine": 251,
+        "startChar": 2,
+        "endLine": 251,
+        "endChar": 4
+      },
+      "revId": "049dc1ef0775404f6627d5a4cb7d24b9ccafd676",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "902dee50_dbac5b15",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/boot_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2022-09-14T07:52:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4b221e84_8b353550",
       "range": {
         "startLine": 251,
         "startChar": 2,
