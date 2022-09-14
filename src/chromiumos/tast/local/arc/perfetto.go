@@ -29,29 +29,50 @@ func (a *ARC) ForceEnableTrace(ctx context.Context) error {
 	return nil
 }
 
-// RunPerfettoTrace will push the config from configTxtPath to ARC device, run the perfetto basing on config,
-// and pull the trace result from ARC device to traceResultPath. Note that this function will return after
-// perfetto finish tracing or get error during tracing.
-func (a *ARC) RunPerfettoTrace(ctx context.Context, traceConfigTxtPath, traceResultPath string) error {
+// PerfettoTrace will push the config from traceConfigPath to ARC device, start the perfetto
+// basing on config, run the function, and pull the trace result from ARC device to
+// traceResultPath. Note that this function will return after perfetto finish tracing or get error during tracing.
+func (a *ARC) PerfettoTrace(ctx context.Context, traceConfigPath, traceResultPath string, earlyExit bool, f func(context.Context) error) error {
+	// Perfetto related path inner ARC.
 	const (
-		perfettoTraceDir     = "/data/misc/perfetto-traces/"
-		localConfigPath      = perfettoTraceDir + "config"
-		localTraceResultPath = perfettoTraceDir + "perfetto.trace"
+		localPerfettoTraceDir = "/data/misc/perfetto-traces/"
+		localTempConfigPath   = localPerfettoTraceDir + "config"
+		localTempResultPath   = localPerfettoTraceDir + "perfetto.trace"
 	)
 
-	// TODO(sstan): Currently access |perfettoTraceDir| in ARC require root permission. Need find a way to
-	// access it in general permission so that we can run it in all of build target.
+	// Currently ARC shell does not have write permission in |localPerfettoTraceDir|. So here use root permission as
+	// a workaround. Note that it may not work some ARC builds.
+	// TODO(sstan): Need change to use standin to pass config rather than create a config file.
 	a.device.Root(ctx)
-	if err := a.PushFile(ctx, traceConfigTxtPath, localConfigPath); err != nil {
-		return errors.Wrapf(err, "failed to push perfetto config file from %v to %v", traceConfigTxtPath, localConfigPath)
+
+	if err := a.PushFile(ctx, traceConfigPath, localTempConfigPath); err != nil {
+		return errors.Wrapf(err, "failed to push perfetto config file from %v to ARC path %v", traceConfigPath, localTempResultPath)
 	}
 
-	if err := a.Command(ctx, "perfetto", "--txt", "--config", localConfigPath, "-o", localTraceResultPath).Run(testexec.DumpLogOnError); err != nil {
-		return errors.Wrap(err, "failed to run perfetto")
+	cmd := a.Command(ctx, "perfetto", "--txt", "--config", localTempConfigPath, "-o", localTempResultPath)
+
+	if err := cmd.Start(); err != nil {
+		return errors.Wrap(err, "failed to start perfetto trace")
+	}
+	defer cmd.Wait()
+
+	ferr := f(ctx)
+
+	// If earlyExit, stop tracing immediately. Or wait tracing finish.
+	if earlyExit {
+		cmd.Kill()
+	} else {
+		cmd.Wait(testexec.DumpLogOnError)
 	}
 
-	if err := a.PullFile(ctx, localTraceResultPath, traceResultPath); err != nil {
-		return errors.Wrapf(err, "failed to pull perfetto from %v to %v", localTraceResultPath, traceResultPath)
+	// Pull trace result whatever test function succeeded or failed.
+	if err := a.PullFile(ctx, localTempResultPath, traceResultPath); err != nil {
+		return errors.Wrapf(err, "failed to pull perfetto from ARC path %v to %v", localTempResultPath, traceResultPath)
 	}
+
+	if ferr != nil {
+		return errors.Wrap(ferr, "finish trace but errors happen on test func")
+	}
+
 	return nil
 }
