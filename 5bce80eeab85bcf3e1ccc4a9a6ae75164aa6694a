@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "2bdd2c23_1e93fa41",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/expectations/expectations.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-09-14T21:19:28Z",
+      "side": 1,
+      "message": "AFAIK, ppl caching the ctx all the time either via context.Deadline or context.WithTimeout.",
+      "parentUuid": "59b28efb_61c64a8a",
+      "revId": "5bce80eeab85bcf3e1ccc4a9a6ae75164aa6694a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "dd81697c_758734b0",

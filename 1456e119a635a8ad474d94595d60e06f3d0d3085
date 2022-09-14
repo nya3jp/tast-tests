@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e24388a_8e084e18",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/expectations/README.md",
+        "patchSetId": 10
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-09-14T21:19:28Z",
+      "side": 1,
+      "message": "All others start with Capital letters.",
+      "range": {
+        "startLine": 31,
+        "startChar": 2,
+        "endLine": 31,
+        "endChar": 3
+      },
+      "revId": "1456e119a635a8ad474d94595d60e06f3d0d3085",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f933f1fb_398e2463",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/expectations/README.md",
+        "patchSetId": 10
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-09-14T21:19:28Z",
+      "side": 1,
+      "message": "Could you also mention the behavior when test result differs from the expecation? i.e. test pass but expect to fail, tests run when we expect it to skip.",
+      "range": {
+        "startLine": 86,
+        "startChar": 1,
+        "endLine": 86,
+        "endChar": 21
+      },
+      "revId": "1456e119a635a8ad474d94595d60e06f3d0d3085",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b135a725_bf21fc5d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/expectations/README.md",
+        "patchSetId": 10
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-09-14T21:19:28Z",
+      "side": 1,
+      "message": "I\u0027m leaning into drop the function and asks developer to use HardwareDependencies. Exposing the requirement to run the test is easier for infra to do any scheduling if needed.\n\nIt is also good to fail the test if the test runs but we expect it to skip though.",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 24
+      },
+      "revId": "1456e119a635a8ad474d94595d60e06f3d0d3085",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f431d34_38f381c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/expectations/expectations.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-09-14T21:19:28Z",
+      "side": 1,
+      "message": "This is expectation package. I feel like fileType is good enough for people to understand.\n\nWDYT?",
+      "range": {
+        "startLine": 33,
+        "startChar": 5,
+        "endLine": 33,
+        "endChar": 25
+      },
+      "revId": "1456e119a635a8ad474d94595d60e06f3d0d3085",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31fa5552_9e017efa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/expectations/expectations.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-09-14T21:19:28Z",
+      "side": 1,
+      "message": "You probably want to check s.HasError too if somebody calls s.Error/s.Fatal instead of e.Error or e.Fatal",
+      "range": {
+        "startLine": 322,
+        "startChar": 39,
+        "endLine": 322,
+        "endChar": 41
+      },
+      "revId": "1456e119a635a8ad474d94595d60e06f3d0d3085",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0657a814_0e6a7134",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/expectations/expectations.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-09-14T21:19:28Z",
+      "side": 1,
+      "message": "How about just \"See following\"? Then we don\u0027t have to overcomplicate code just for singular and plural.\n\nWDYT?",
+      "range": {
+        "startLine": 323,
+        "startChar": 45,
+        "endLine": 323,
+        "endChar": 51
+      },
+      "revId": "1456e119a635a8ad474d94595d60e06f3d0d3085",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
