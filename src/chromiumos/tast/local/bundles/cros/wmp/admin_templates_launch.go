@@ -7,7 +7,6 @@ package wmp
 import (
 	"context"
 	"encoding/json"
-	"fmt"
 	"io/ioutil"
 	"time"
 
@@ -16,6 +15,7 @@ import (
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/arc"
+	"chromiumos/tast/local/bundles/cros/wmp/wmputils"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto"
@@ -40,7 +40,7 @@ func init() {
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
-		Timeout:      chrome.GAIALoginTimeout + arc.BootTimeout + 120*time.Second,
+		Timeout:      chrome.GAIALoginTimeout + arc.BootTimeout + 180*time.Second,
 		VarDeps:      []string{"ui.gaiaPoolDefault"},
 		Data:         []string{"admin_desk_template.json"},
 		Params: []testing.Param{{
@@ -83,9 +83,6 @@ func AdminTemplatesLaunch(ctx context.Context, s *testing.State) {
 	iurl, ihash := eds.ServePolicyData(templateJSON)
 
 	defer ash.SetOverviewModeAndWait(cleanupCtx, tconn, false)
-	if _, err := apps.PrimaryBrowser(ctx, tconn); err != nil {
-		s.Fatal("Could not find the primary browser app info: ", err)
-	}
 	policiesToServe := []policy.Policy{
 		&policy.PreconfiguredDeskTemplates{Val: &policy.PreconfiguredDeskTemplatesValue{Url: iurl, Hash: ihash}},
 		&policy.DeskTemplatesEnabled{Val: true},
@@ -106,10 +103,8 @@ func AdminTemplatesLaunch(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to update desk templates enabled policies: ", err)
 			}
 
-			// Wait 10 seconds for the templates icon to show up. There is some lag
-			// for when the policy is pushed and when the templates icon will appear
-			// in the overview bar.
-			testing.Sleep(ctx, 10*time.Second)
+			// Wait for admin template sync.
+			ash.WaitForSavedDeskSync(ctx, ac)
 
 			// Enters overview mode.
 			if err := ash.SetOverviewModeAndWait(ctx, tconn, true); err != nil {
@@ -131,13 +126,7 @@ func AdminTemplatesLaunch(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to show admin desk templates: ", err)
 			}
 
-			// Find the the admin template.
-			adminTemplate := nodewith.ClassName("SavedDeskItemView")
-			newDeskMiniView :=
-				nodewith.ClassName("DeskMiniView").Name(fmt.Sprintf("Desk: %s", adminDeskTemplateName))
-
 			// Check that the admin template is there.
-
 			if err := uiauto.Combine(
 				"check that it is an admin template",
 				ac.Exists(nodewith.ClassName("SavedDeskNameView").Name(adminDeskTemplateName)),
@@ -147,14 +136,25 @@ func AdminTemplatesLaunch(ctx context.Context, s *testing.State) {
 			}
 
 			// Launch the admin template.
-			if err := uiauto.Combine(
-				"launch the admin template",
-				ac.DoDefault(adminTemplate),
-				// Wait for the new desk to appear.
-				ac.WaitUntilExists(newDeskMiniView),
-			)(ctx); err != nil {
-				s.Fatal("Failed to launch a admin template: ", err)
+			if err := ash.LaunchSavedDesk(ctx, ac, adminDeskTemplateName, 0); err != nil {
+				s.Fatal("Failed to launch admin template: ", err)
 			}
+
+			browserApp, err := apps.PrimaryBrowser(ctx, tconn)
+			if err != nil {
+				s.Fatal("Could not find the primary browser app info: ", err)
+			}
+			appsList := []apps.App{browserApp, browserApp}
+
+			// Wait for apps to launch.
+			if err := wmputils.WaitforAppsToLaunch(ctx, tconn, ac, appsList); err != nil {
+				s.Fatal("Failed to wait for apps to launch: ", err)
+			}
+			// Wait for apps to be visible.
+			if err := wmputils.WaitforAppsToBeVisible(ctx, tconn, ac, appsList); err != nil {
+				s.Fatal("Failed to wait for apps to be visible: ", err)
+			}
+
 			// Exit overview mode and wait.
 			if err = ash.SetOverviewModeAndWait(ctx, tconn, false); err != nil {
 				s.Fatal("Failed to exit overview mode: ", err)

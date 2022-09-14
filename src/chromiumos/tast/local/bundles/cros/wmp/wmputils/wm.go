@@ -89,7 +89,7 @@ func VerifyWindowCount(ctx context.Context, tconn *chrome.TestConn, windowCount 
 			return errors.Wrap(err, "failed to get all open windows")
 		}
 		if len(wc) != windowCount {
-			return errors.Wrapf(err, "found inconsistent number of window(s): got %v, want %v", len(ws), windowCount)
+			return errors.Wrapf(err, "found inconsistent number of window(s): got %v, want %v", len(wc), windowCount)
 		}
 	}
 
