@@ -1,4 +1,4 @@
-// Copyright 2022 The ChromiumOS Authors.
+// Copyright 2022 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -30,8 +30,8 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		Fixture:      fixture.NormalMode,
 		Vars:         []string{"servo"},
-		HardwareDeps: hwdep.D(hwdep.ChromeEC(), hwdep.Battery()),
 		Timeout:      5 * time.Minute,
+		HardwareDeps: hwdep.D(hwdep.ChromeEC(), hwdep.Battery(), hwdep.Model("skyrim15w360")),
 	})
 }
 
