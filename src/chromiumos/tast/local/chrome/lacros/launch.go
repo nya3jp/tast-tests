@@ -1,4 +1,4 @@
-// Copyright 2021 The Chromium OS Authors. All rights reserved.
+// Copyright 2021 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -124,6 +124,12 @@ func Launch(ctx context.Context, tconn *chrome.TestConn) (l *Lacros, retErr erro
 	testing.ContextLog(ctx, "Wait for Lacros window")
 	if err := WaitForLacrosWindow(ctx, tconn, ""); err != nil {
 		return nil, errors.Wrap(err, "failed to wait for lacros")
+	}
+
+	// Close any tabs that might have opened from a previous launch.
+	// When Lacros crashes, tabs from the previous crash are restored.
+	if err := browser.ReplaceAllTabsWithSingleNewTab(ctx, tconn); err != nil {
+		return nil, errors.Wrap(err, "failed to replace any existing tabs with a single new tab")
 	}
 
 	l, err := connect(ctx, tconn, false)
