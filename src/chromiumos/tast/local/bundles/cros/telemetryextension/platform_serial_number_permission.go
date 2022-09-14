@@ -57,6 +57,7 @@ func init() {
 }
 
 // PlatformSerialNumberPermission tests Chrome extension can have options page and request additional serial number permission at runtime.
+// TODO(b/246764355): stop using fixture for this test.
 func PlatformSerialNumberPermission(ctx context.Context, s *testing.State) {
 	v := s.FixtValue().(*fixture.Value)
 
