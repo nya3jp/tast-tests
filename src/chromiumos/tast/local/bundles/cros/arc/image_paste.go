@@ -15,9 +15,28 @@ import (
 	"chromiumos/tast/fsutil"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
+
+var imagePasteDataFiles = []string{
+	"manifest.json",
+	"background.js",
+	"foreground.html",
+	"foreground_script.js",
+	"sample.png",
+}
+
+func imagePasteRawDataFiles() []string {
+	var rawDataFiles []string
+	for _, name := range imagePasteDataFiles {
+		rawDataFiles = append(rawDataFiles, "image_paste_"+name)
+	}
+	return rawDataFiles
+}
 
 func init() {
 	testing.AddTest(&testing.Test{
@@ -27,7 +46,7 @@ func init() {
 		Contacts:     []string{"yhanada@chromium.org", "arc-framework+tast@google.com"},
 		SoftwareDeps: []string{"chrome", "android_vm"},
 		Attr:         []string{"group:mainline", "informational"},
-		Data:         []string{"image_paste_manifest.json", "image_paste_background.js", "image_paste_foreground.html", "image_paste_sample.png"},
+		Data:         imagePasteRawDataFiles(),
 		Timeout:      4 * time.Minute,
 	})
 }
@@ -39,7 +58,7 @@ func ImagePaste(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create temp dir: ", err)
 	}
 	defer os.RemoveAll(extDir)
-	for _, name := range []string{"manifest.json", "background.js", "foreground.html", "sample.png"} {
+	for _, name := range imagePasteDataFiles {
 		if err := fsutil.CopyFile(s.DataPath("image_paste_"+name), filepath.Join(extDir, name)); err != nil {
 			s.Fatalf("Failed to copy extension %s: %v", name, err)
 		}
@@ -76,26 +95,13 @@ func ImagePaste(ctx context.Context, s *testing.State) {
 		counterID    = pkg + ":id/counter"
 	)
 
-	extID, err := chrome.ComputeExtensionID(extDir)
-	if err != nil {
-		s.Fatalf("Failed to compute extension ID for %v: %v", extDir, err)
-	}
-	fgURL := "chrome-extension://" + extID + "/foreground.html"
-	conn, err := cr.NewConnForTarget(ctx, chrome.MatchTargetURL(fgURL))
-	if err != nil {
-		s.Fatalf("Could not connect to extension at %v: %v", fgURL, err)
-	}
-	defer conn.Close()
-
 	// Paste an image from Chrome. clipboard.write() is only available for the focused window,
 	// so we use a foreground page here.
-	// TODO(tetsui): Rewrite this without a custom extension so that we can use a fixture.
-	if err := conn.Call(ctx, nil, `async () => {
-	  const response = await fetch('sample.png');
-	  const blob = await response.blob();
-	  await navigator.clipboard.write([new ClipboardItem({ 'image/png': blob })]);
-	}`); err != nil {
-		s.Fatal("Failed to paste an image: ", err)
+	// TODO(yhanada): Rewrite this without a custom extension so that we can use a fixture.
+	uia := uiauto.New(tconn)
+	finder := nodewith.Role(role.Button).HasClass("copy_button").First()
+	if err := uia.WithTimeout(10 * time.Second).LeftClick(finder)(ctx); err != nil {
+		s.Fatal("Cannot click on the copy button: ", err)
 	}
 
 	if err := a.Install(ctx, arc.APKPath(apk)); err != nil {
