@@ -16,6 +16,23 @@
       "message": "Friendly Ping Reviewers",
       "revId": "11d6c191e48b45d3cf232e59a64f647c00d0e090",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf4d13a3_06713e43",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1446393
+      },
+      "writtenOn": "2022-09-14T01:12:32Z",
+      "side": 1,
+      "message": "I *think* these are ok without lacros variants, but yhanada@ will have a clearer picture than me.",
+      "revId": "11d6c191e48b45d3cf232e59a64f647c00d0e090",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
