@@ -1,4 +1,4 @@
-// Copyright 2022 The Chromium OS Authors. All rights reserved.
+// Copyright 2022 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -116,7 +116,7 @@ func (uiHelper *UIHelper) VerifyOfflineOperationSuccess(ctx context.Context) err
 func (uiHelper *UIHelper) ComponentsPageOperation(ctx context.Context) error {
 	return action.Combine("Components page operation",
 		uiHelper.waitForPageToLoad("Select which components were replaced", timeInSecondToLoadPage),
-		uiHelper.clickButton("Base Accelerometer"),
+		uiHelper.clickToggleButton("Base Accelerometer"),
 		uiHelper.clickButton("Next"),
 	)(ctx)
 }
@@ -403,6 +403,15 @@ func (uiHelper *UIHelper) waitAndClickButton(label string, timeInSecond int32) a
 func (uiHelper *UIHelper) clickButton(label string) action.Action {
 	return func(ctx context.Context) error {
 		_, err := uiHelper.Client.LeftClickButton(ctx, &pb.LeftClickButtonRequest{
+			Label: label,
+		})
+		return err
+	}
+}
+
+func (uiHelper *UIHelper) clickToggleButton(label string) action.Action {
+	return func(ctx context.Context) error {
+		_, err := uiHelper.Client.LeftClickToggleButton(ctx, &pb.LeftClickToggleButtonRequest{
 			Label: label,
 		})
 		return err

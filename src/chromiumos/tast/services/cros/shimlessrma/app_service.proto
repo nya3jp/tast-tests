@@ -30,6 +30,9 @@ service AppService {
   // Left clicks a button.
   rpc LeftClickButton (LeftClickButtonRequest) returns (google.protobuf.Empty) {}
 
+  // Left clicks a toggle button.
+  rpc LeftClickToggleButton (LeftClickToggleButtonRequest) returns (google.protobuf.Empty) {}
+
   // Waits until a button enabled.
   rpc WaitUntilButtonEnabled (WaitUntilButtonEnabledRequest) returns (google.protobuf.Empty) {}
 
@@ -72,6 +75,11 @@ message WaitForPageToLoadRequest {
 
 message LeftClickButtonRequest {
   // Provides the label of button.
+  string label = 1;
+}
+
+message LeftClickToggleButtonRequest {
+  // Provides the label of toggle button.
   string label = 1;
 }
 

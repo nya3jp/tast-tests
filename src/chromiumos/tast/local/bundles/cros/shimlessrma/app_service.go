@@ -1,4 +1,4 @@
-// Copyright 2022 The Chromium OS Authors. All rights reserved.
+// Copyright 2022 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -206,6 +206,16 @@ func (shimlessRMA *AppService) WaitForPageToLoad(ctx context.Context,
 func (shimlessRMA *AppService) LeftClickButton(ctx context.Context,
 	req *pb.LeftClickButtonRequest) (*empty.Empty, error) {
 	if err := shimlessRMA.app.LeftClickButton(req.Label)(ctx); err != nil {
+		return nil, errors.Wrapf(err, "failed to left click button: %s", req.Label)
+	}
+
+	return &empty.Empty{}, nil
+}
+
+// LeftClickToggleButton left clicks the button with label.
+func (shimlessRMA *AppService) LeftClickToggleButton(ctx context.Context,
+	req *pb.LeftClickToggleButtonRequest) (*empty.Empty, error) {
+	if err := shimlessRMA.app.LeftClickToggleButton(req.Label)(ctx); err != nil {
 		return nil, errors.Wrapf(err, "failed to left click button: %s", req.Label)
 	}
 

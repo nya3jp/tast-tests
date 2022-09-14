@@ -1,4 +1,4 @@
-// Copyright 2021 The Chromium OS Authors. All rights reserved.
+// Copyright 2021 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -163,6 +163,11 @@ func (r *RMAApp) LeftClickCancelButton() uiauto.Action {
 // LeftClickButton returns a function that clicks a button.
 func (r *RMAApp) LeftClickButton(label string) uiauto.Action {
 	return r.leftClickButton(nodewith.NameContaining(label).Role(role.Button).Visible())
+}
+
+// LeftClickToggleButton returns a function that clicks a button.
+func (r *RMAApp) LeftClickToggleButton(label string) uiauto.Action {
+	return r.leftClickButton(nodewith.NameContaining(label).Role(role.ToggleButton).Visible())
 }
 
 // WaitUntilButtonEnabled returns a function that waits |timeout| for a button to be enabled.
