@@ -1,4 +1,4 @@
-// Copyright 2021 The Chromium OS Authors. All rights reserved.
+// Copyright 2021 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -855,20 +855,33 @@ func (h *Helper) EnterIncorrectPuk(ctx context.Context, currentPuk string) error
 	return errors.Wrap(err, "unusual puk error")
 }
 
+// getCellularDeviceDictProperty gets a shill device dictionary property
+func (h *Helper) getCellularDeviceDictProperty(ctx context.Context, propertyName string) (map[string]string, error) {
+	// Verify that a connectable Cellular service exists and ensure it is connected.
+	props, err := h.Device.GetProperties(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get Device properties")
+	}
+	info, err := props.Get(propertyName)
+	if err != nil {
+		return nil, errors.Wrapf(err, "error getting property %q", propertyName)
+	}
+
+	dictProp, ok := info.(map[string]string)
+	if !ok {
+		return nil, errors.Wrapf(err, "invalid format for %q", propertyName)
+	}
+
+	return dictProp, nil
+}
+
 // GetUUIDFromShill gets the current carrier's UUID from shill.
 func (h *Helper) GetUUIDFromShill(ctx context.Context) (string, error) {
+
 	ctx, st := timing.Start(ctx, "Helper.GetUUIDFromShill")
 	defer st.End()
-	deviceProps, err := h.Device.GetProperties(ctx)
+	homeProviderMap, err := h.getCellularDeviceDictProperty(ctx, shillconst.DevicePropertyCellularHomeProvider)
 	if err != nil {
-		return "", errors.Wrap(err, "failed to get Device properties")
-	}
-	homeProvider, err := deviceProps.Get(shillconst.DevicePropertyCellularHomeProvider)
-	if err != nil {
-		return "", errors.Wrapf(err, "failed to get %q property", shillconst.DevicePropertyCellularHomeProvider)
-	}
-	homeProviderMap, ok := homeProvider.(map[string]string)
-	if !ok {
 		return "", errors.New("invalid format for Home Provider property")
 	}
 	carrierID, ok := homeProviderMap[shillconst.OperatorUUIDKey]
@@ -876,6 +889,46 @@ func (h *Helper) GetUUIDFromShill(ctx context.Context) (string, error) {
 		return "", errors.New("home provider UUID not found")
 	}
 	return carrierID, nil
+}
+
+// GetHomeProviderCodeFromShill gets the current home provider code from shill.
+func (h *Helper) GetHomeProviderCodeFromShill(ctx context.Context) (string, error) {
+
+	ctx, st := timing.Start(ctx, "Helper.GetUUIDFromShill")
+	defer st.End()
+	homeProviderMap, err := h.getCellularDeviceDictProperty(ctx, shillconst.DevicePropertyCellularHomeProvider)
+	if err != nil {
+		return "", errors.New("invalid format for Home Provider property")
+	}
+	code, ok := homeProviderMap[shillconst.OperatorCode]
+	if !ok {
+		return "", errors.New("home provider UUID not found")
+	}
+	return code, nil
+}
+
+// getCellularDeviceProperty gets a shill device string property
+func (h *Helper) getCellularDeviceProperty(ctx context.Context, propertyName string) (string, error) {
+	props, err := h.Device.GetProperties(ctx)
+	if err != nil {
+		return "", errors.Wrap(err, "failed to get Device properties")
+	}
+	info, err := props.GetString(propertyName)
+	if err != nil {
+		return "", errors.Wrapf(err, "error getting property %q", propertyName)
+	}
+
+	return info, nil
+}
+
+// GetIMEIFromShill gets the current modem IMEI from shill.
+func (h *Helper) GetIMEIFromShill(ctx context.Context) (string, error) {
+	return h.getCellularDeviceProperty(ctx, shillconst.DevicePropertyCellularIMEI)
+}
+
+// GetIMSIFromShill gets the current modem IMSI from shill.
+func (h *Helper) GetIMSIFromShill(ctx context.Context) (string, error) {
+	return h.getCellularDeviceProperty(ctx, shillconst.DevicePropertyCellularIMSI)
 }
 
 // SetServiceProvidersExclusiveOverride adds an override MODB to shill.
@@ -959,6 +1012,20 @@ func (h *Helper) GetCurrentIPType(ctx context.Context) (string, error) {
 		return ipType, nil
 	}
 	return "ipv4", nil
+}
+
+// GetServingOperatorCodeFromShill returns current serving operator code from shill.
+func (h *Helper) GetServingOperatorCodeFromShill(ctx context.Context) (string, error) {
+	operatorInfo, err := h.getCellularServiceDictProperty(ctx, shillconst.ServicePropertyCellularServingOperator)
+	if err != nil {
+		return "", errors.Wrap(err, "failed to get last good APN info")
+	}
+
+	code, ok := operatorInfo[shillconst.OperatorCode]
+	if !ok {
+		return "", errors.New("service operatorcode not found")
+	}
+	return code, nil
 }
 
 // GetNetworkProvisionedCellularIPTypes returns the currently provisioned IP types
@@ -1133,4 +1200,9 @@ func (h *Helper) GetPINAndPUKForICCID(ctx context.Context, iccid string) (string
 		}
 	}
 	return "", "", nil
+}
+
+// GetLabelCarrierName return the current carrier name
+func (h *Helper) GetLabelCarrierName(ctx context.Context) string {
+	return h.carrierName
 }
