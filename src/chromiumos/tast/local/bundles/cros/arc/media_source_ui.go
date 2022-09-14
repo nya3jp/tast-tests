@@ -101,7 +101,7 @@ func MediaSourceUI(ctx context.Context, s *testing.State) {
 			case youtube.AppName:
 				app, err = youtube.NewApp(ctx, kb, tconn, a)
 			case apps.Gallery.Name:
-				app = newGallery(ctx, tconn)
+				app = newGallery(ctx, tconn, cr, filepath.Join(s.OutDir(), appName))
 			case youtubemusic.AppName:
 				app, err = newYtMusic(ctx, kb, tconn, a)
 			default:
@@ -134,8 +134,8 @@ func MediaSourceUI(ctx context.Context, s *testing.State) {
 				}
 			}
 
-			if err := quicksettings.Show(ctx, tconn); err != nil {
-				s.Fatal("Failed to show quicksettings: ", err)
+			if err := quicksettings.Expand(ctx, tconn); err != nil {
+				s.Fatal("Failed to expand quicksettings: ", err)
 			}
 			defer quicksettings.Hide(cleanupCtx, tconn)
 			defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, outDir, s.HasError, cr, "ui_quicksettings")
@@ -174,14 +174,18 @@ func (ytm *ytMusic) Play(ctx context.Context, media *apputil.Media) error {
 // gallery represents the media app: Gallery.
 type gallery struct {
 	tconn *chrome.TestConn
+	// cr and outDir are for fail-log usage.
+	cr     *chrome.Chrome
+	outDir string
 }
 
 // gallery is built to conform to ARCMediaPlayer interface.
 var _ apputil.ARCMediaPlayer = (*gallery)(nil)
 
 // newGallery returns gallery instance.
-func newGallery(ctx context.Context, tconn *chrome.TestConn) *gallery {
-	return &gallery{tconn: tconn}
+func newGallery(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome, outDir string) *gallery {
+	// cr and outDir are for fail-log usage.
+	return &gallery{tconn: tconn, cr: cr, outDir: outDir}
 }
 
 // Install isntalls the Gallery.
@@ -198,12 +202,13 @@ func (g *gallery) Launch(ctx context.Context) (time.Duration, error) {
 }
 
 // Play searches the specified media source and plays it by Gallery.
-func (g *gallery) Play(ctx context.Context, media *apputil.Media) error {
+func (g *gallery) Play(ctx context.Context, media *apputil.Media) (retErr error) {
 	files, err := filesapp.Launch(ctx, g.tconn)
 	if err != nil {
 		return err
 	}
 	defer files.Close(ctx)
+	defer faillog.DumpUITreeWithScreenshotOnError(ctx, g.outDir, func() bool { return retErr != nil }, g.cr, "ui_filesapp")
 
 	gallery := nodewith.NameStartingWith(apps.Gallery.Name).HasClass("BrowserFrame")
 	return uiauto.Combine("play from files app",
