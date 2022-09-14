@@ -87,6 +87,30 @@
       },
       "revId": "dff7a3f11ea21dffc314911bf5e94cad624cf89a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dcf7e5b5_7f34e59d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/arc_enabled_on_tablet.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1519467
+      },
+      "writtenOn": "2022-09-14T19:06:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4bf830c1_10349eb1",
+      "range": {
+        "startLine": 154,
+        "startChar": 30,
+        "endLine": 154,
+        "endChar": 32
+      },
+      "revId": "dff7a3f11ea21dffc314911bf5e94cad624cf89a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
