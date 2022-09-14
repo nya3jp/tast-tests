@@ -143,7 +143,7 @@ func TestDownload(ctx context.Context, s *testing.State) {
 	}
 	devicePolicies, err := policyutil.PoliciesFromDUT(ctx, tconn)
 	if err != nil {
-		s.Fatal("Could not get device policies: ", err)
+		s.Fatal("Failed to get device policies: ", err)
 	}
 	_, ok := devicePolicies.Chrome["OnFileDownloadedEnterpriseConnector"]
 	testParams := s.Param().(helpers.TestParams)
@@ -162,12 +162,30 @@ func TestDownload(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
 
+	// Ensure that there are no windows open.
+	if err := ash.CloseAllWindows(ctx, tconn); err != nil {
+		s.Fatal("Failed to close all windows: ", err)
+	}
+	// Ensure that all windows are closed after test.
+	defer ash.CloseAllWindows(cleanupCtx, tconn)
+
 	// Create Browser.
 	br, closeBrowser, err := browserfixt.SetUp(ctx, cr, testParams.BrowserType)
 	if err != nil {
 		s.Fatal("Failed to open the browser: ", err)
 	}
 	defer closeBrowser(cleanupCtx)
+
+	// The browsers sometimes restore some tabs, so we manually close all unneeded tabs.
+	closeTabsFunc := browser.CloseAllTabs
+	if testParams.BrowserType == browser.TypeLacros {
+		// For lacros-Chrome, it should leave a new tab to keep the Chrome process alive.
+		closeTabsFunc = browser.ReplaceAllTabsWithSingleNewTab
+	}
+	if err := closeTabsFunc(ctx, tconn); err != nil {
+		s.Fatal("Failed to close all unneeded tabs: ", err)
+	}
+	defer closeTabsFunc(cleanupCtx, tconn)
 
 	dconn, err := br.NewConn(ctx, "chrome://policy")
 	if err != nil {
@@ -186,7 +204,7 @@ func TestDownload(ctx context.Context, s *testing.State) {
 
 	reportOnlyUIEnabled, err := helpers.GetSafeBrowsingExperimentEnabled(ctx, br, tconn, "ConnectorsScanningReportOnlyUI")
 	if err != nil {
-		s.Fatal("Could not determine value of ConnectorsScanningReportOnlyUI: ", err)
+		s.Fatal("Failed to determine value of ConnectorsScanningReportOnlyUI: ", err)
 	}
 	// ReportOnlyUI only effective if AllowsImmediateDelivery is true.
 	reportOnlyUIEnabled = reportOnlyUIEnabled && testParams.AllowsImmediateDelivery
