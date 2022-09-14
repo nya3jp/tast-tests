@@ -15,7 +15,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         PlatformAPICPUPrimeSearchRoutine,
+		Func:         APICPUPrimeSearchRoutine,
 		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Tests chrome.os.diagnostics.runCpuPrimeSearchRoutine Chrome Extension API function exposed to Telemetry Extension",
 		Contacts: []string{
@@ -70,7 +70,7 @@ func init() {
 	})
 }
 
-func PlatformAPICPUPrimeSearchRoutine(ctx context.Context, s *testing.State) {
+func APICPUPrimeSearchRoutine(ctx context.Context, s *testing.State) {
 	v := s.FixtValue().(*fixture.Value)
 
 	type response struct {
