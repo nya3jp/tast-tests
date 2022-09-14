@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a63557e5_b5da456b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_login_screen.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-09-14T00:57:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7d2e62ff_20b113ae",
+      "range": {
+        "startLine": 113,
+        "startChar": 19,
+        "endLine": 113,
+        "endChar": 25
+      },
+      "revId": "78f28aecb43db3ceb24090044df55757a55162c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ed180be4_dcf54f68",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-09-14T00:42:19Z",
       "side": 1,
       "message": "s still has accents (this one: ß) maybe we should try something else here? (although so does q but that doesn\u0027t appear to be an issue)",
+      "range": {
+        "startLine": 122,
+        "startChar": 40,
+        "endLine": 122,
+        "endChar": 41
+      },
+      "revId": "78f28aecb43db3ceb24090044df55757a55162c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f041f686_468ce722",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_login_screen.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-09-14T00:57:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ed180be4_dcf54f68",
       "range": {
         "startLine": 122,
         "startChar": 40,
