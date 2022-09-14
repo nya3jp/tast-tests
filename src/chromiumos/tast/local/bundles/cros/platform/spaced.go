@@ -1,4 +1,4 @@
-// Copyright 2021 The ChromiumOS Authors
+// Copyright 2022 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -11,7 +11,8 @@ import (
 	"path/filepath"
 	"strconv"
 	"strings"
-	"syscall"
+
+	"golang.org/x/sys/unix"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/firmware"
@@ -52,8 +53,8 @@ func sysfsRootDeviceSize(ctx context.Context) (int64, error) {
 
 // statFreeDiskSpace gets the free space on the filesystem using statfs().
 func statFreeDiskSpace(ctx context.Context, path string) (int64, error) {
-	var stat syscall.Statfs_t
-	if err := syscall.Statfs(path, &stat); err != nil {
+	var stat unix.Statfs_t
+	if err := unix.Statfs(path, &stat); err != nil {
 		return 0, errors.Wrapf(err, "failed to get disk stats for %s", path)
 	}
 
@@ -62,8 +63,8 @@ func statFreeDiskSpace(ctx context.Context, path string) (int64, error) {
 
 // statTotalDiskSpace gets the total space on the filesystem using statfs().
 func statTotalDiskSpace(ctx context.Context, path string) (int64, error) {
-	var stat syscall.Statfs_t
-	if err := syscall.Statfs(path, &stat); err != nil {
+	var stat unix.Statfs_t
+	if err := unix.Statfs(path, &stat); err != nil {
 		return 0, errors.Wrapf(err, "failed to get disk stats for %s", path)
 	}
 

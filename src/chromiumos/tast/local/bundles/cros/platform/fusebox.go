@@ -8,8 +8,9 @@ import (
 	"context"
 	"os"
 	"path/filepath"
-	"syscall"
 	"time"
+
+	"golang.org/x/sys/unix"
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/crosdisks"
@@ -39,7 +40,7 @@ func Fusebox(ctx context.Context, s *testing.State) {
 	terminateDaemonIfNeeded := func(daemon string) {
 		if proc, err := procutil.FindUnique(procutil.ByExe(daemon)); err == nil {
 			testing.ContextLog(ctx, "Terminating existing daemon")
-			if err = proc.SendSignal(syscall.SIGTERM); err != nil {
+			if err = proc.SendSignal(unix.SIGTERM); err != nil {
 				testing.ContextLog(ctx, "Failed to terminate daemon: ", err)
 			}
 		}
