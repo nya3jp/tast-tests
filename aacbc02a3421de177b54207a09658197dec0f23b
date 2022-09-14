@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9a41a8a_85a11fcc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns_proxy_over_vpn.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2022-09-14T08:09:01Z",
+      "side": 1,
+      "message": "I think this is a leftover from the previous iterations sorry. Removed now.\n\nThanks for catching!",
+      "parentUuid": "ae77f4a8_ef4356d6",
+      "range": {
+        "startLine": 201,
+        "startChar": 101,
+        "endLine": 201,
+        "endChar": 110
+      },
+      "revId": "aacbc02a3421de177b54207a09658197dec0f23b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f204d0bb_97077263",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa29c7df_cb3fa7df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns_proxy_over_vpn.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2022-09-14T08:09:01Z",
+      "side": 1,
+      "message": "This is because on successful calls, the caller is responsible to handle the cleanup. However, when the call is not successful, the func is reverting anything it has done i.e. `server.Cleanup`.\n\nThe object `server` here is only storing the data when creating an env (namespace, etc.). The cleanup call revert these changes as opposed to deleting variables.",
+      "parentUuid": "f204d0bb_97077263",
+      "range": {
+        "startLine": 217,
+        "startChar": 2,
+        "endLine": 219,
+        "endChar": 3
+      },
+      "revId": "aacbc02a3421de177b54207a09658197dec0f23b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "592530bb_05c50229",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-09-14T06:57:14Z",
       "side": 1,
       "message": "better name? what\u0027s the 2nd server?",
+      "range": {
+        "startLine": 88,
+        "startChar": 1,
+        "endLine": 88,
+        "endChar": 16
+      },
+      "revId": "aacbc02a3421de177b54207a09658197dec0f23b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7bb5f35d_296476ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/connection.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2022-09-14T08:09:01Z",
+      "side": 1,
+      "message": "This is based on the WG Tast naming i.e. on L273:\n```\nc.SecondServer, err \u003d StartWireGuardServer(ctx, c.secondServerEnv, clientKey, true /*usePSK*/, true /*isSecondServer*/)\n```\nbecause it is the only use case, I\u0027m just re-using the name for consistency.",
+      "parentUuid": "592530bb_05c50229",
       "range": {
         "startLine": 88,
         "startChar": 1,
