@@ -1,4 +1,4 @@
-// Copyright 2020 The Chromium OS Authors. All rights reserved.
+// Copyright 2020 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -74,12 +74,26 @@ func DesksTrackpadSwipePerf(ctx context.Context, s *testing.State) {
 	}
 	defer tw.Close()
 
-	w := tpw.Width()
-	h := tpw.Height()
+	// Performs a four finger horizontal scroll on the trackpad. The vertical location is always vertically
+	// centered on the trackpad. The fingers are spaced horizontally on the trackpad by 1/16th of the trackpad
+	// width.
+	fingerSpacing := tpw.Width() / 16
+	doTrackpadFourFingerSwipeScroll := func(ctx context.Context, x0, x1 input.TouchCoord) error {
+		y := tpw.Height() / 2
+		const t = time.Second
+		return tw.Swipe(ctx, x0, y, x1, y, fingerSpacing, 4, t)
+	}
+
+	// This is supposedly the distance (in trackpad units) spanned by the 4 fingers on the trackpad. It should
+	// be fingerSpacing * 3 because if there are 4 fingers then there are only 3 spaces between fingers. We
+	// still use fingerSpacing * 4, just to keep new performance data consistent with old performance data.
+	fingerDistance := fingerSpacing * 4
+
 	pv := perfutil.RunMultiple(ctx, s, cr.Browser(), perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
-		// Do a horizontal four-finger swipe across the entire width of the trackpad.
-		// The fingers are positioned at 1/8, 3/8, 5/8, and 7/8 of the trackpad height.
-		if err := tw.Swipe(ctx, 0, h/8, w-1, h/8, 0, h/4, 4, time.Second); err != nil {
+		// Do a big swipe going right. This will continuously shift to the next desk on the right.
+		// Note: The swipe should end at tpw.Width()-1-fingerDistance because a finger at tpw.Width() is
+		// off the trackpad. However, fingerDistance is already more than it should be, so this works out.
+		if err := doTrackpadFourFingerSwipeScroll(ctx, 0, tpw.Width()-fingerDistance); err != nil {
 			return errors.Wrap(err, "failed to perform four finger scroll")
 		}
 
