@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6075dc53_2bb76762",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns/dns.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2022-09-14T06:23:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "99ef5859_8f03f542",
+      "range": {
+        "startLine": 390,
+        "startChar": 1,
+        "endLine": 390,
+        "endChar": 25
+      },
+      "revId": "ff91dd9047a41448aaccf6fb2d48243aa03a9d8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4c2f0c51_01863df8",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "23a1c7cf_6ef7cd21",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns/dns.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2022-09-14T06:23:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4c2f0c51_01863df8",
+      "range": {
+        "startLine": 423,
+        "startChar": 58,
+        "endLine": 423,
+        "endChar": 143
+      },
+      "revId": "ff91dd9047a41448aaccf6fb2d48243aa03a9d8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1b8254f3_83208dd4",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-09-14T03:09:24Z",
       "side": 1,
       "message": "this defer will be ran at the end of this function. I guess this is not what we want?",
+      "range": {
+        "startLine": 439,
+        "startChar": 0,
+        "endLine": 441,
+        "endChar": 3
+      },
+      "revId": "ff91dd9047a41448aaccf6fb2d48243aa03a9d8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c86e40a3_77dc0262",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns/dns.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 441,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2022-09-14T06:23:54Z",
+      "side": 1,
+      "message": "I believe this is fine as we don\u0027t expect the ret `Cleanup` to be called when `SetupDNSEnv` is failing.\n\nBecause we are gating by |success|, this line should be called only when the function is failing -\u003e which is necessary.",
+      "parentUuid": "1b8254f3_83208dd4",
       "range": {
         "startLine": 439,
         "startChar": 0,

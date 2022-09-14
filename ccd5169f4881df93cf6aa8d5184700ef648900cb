@@ -136,6 +136,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "24086df0_7fc3ee42",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns/dns.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 413,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2022-09-14T06:23:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "adb4adea_2aa6b878",
+      "range": {
+        "startLine": 413,
+        "startChar": 5,
+        "endLine": 413,
+        "endChar": 10
+      },
+      "revId": "ccd5169f4881df93cf6aa8d5184700ef648900cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "75aca3b0_9d45444b",
