@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae92884c_62e1e59a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1546868
+      },
+      "writtenOn": "2022-09-14T19:19:39Z",
+      "side": 1,
+      "message": "Did a sync+rebase which didn\u0027t change much in the end but was enough to lose the approvals.",
+      "revId": "978da32979db23c07fe3f7c8511d5f98efb619aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
