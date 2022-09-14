@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29604ff6_6d155949",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/typecd.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-09-14T01:40:34Z",
+      "side": 1,
+      "message": "nit: merge these two line:\n```\nif _, err :\u003d typecutils.TypecdPID(ctx); err !\u003d nil {\n  ...\n}\n```",
+      "range": {
+        "startLine": 28,
+        "startChar": 1,
+        "endLine": 29,
+        "endChar": 16
+      },
+      "revId": "141e5c10de9425b5ff4e4ceadf8158da6c3ec00d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
