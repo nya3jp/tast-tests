@@ -19,6 +19,7 @@ import (
 	"chromiumos/tast/fsutil"
 	"chromiumos/tast/local/bundles/cros/enterpriseconnectors/helpers"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/local/chrome/uiauto"
@@ -156,7 +157,7 @@ func TestFileAttached(ctx context.Context, s *testing.State) {
 	}
 	devicePolicies, err := policyutil.PoliciesFromDUT(ctx, tconn)
 	if err != nil {
-		s.Fatal("Could not get device policies: ", err)
+		s.Fatal("Failed to get device policies: ", err)
 	}
 	_, ok := devicePolicies.Chrome["OnFileAttachedEnterpriseConnector"]
 	testParams := s.Param().(helpers.TestParams)
@@ -188,6 +189,13 @@ func testFileAttachedForBrowser(ctx context.Context, s *testing.State, browserTy
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
+
+	// Ensure that there are no windows open.
+	if err := ash.CloseAllWindows(ctx, tconn); err != nil {
+		s.Fatal("Failed to close all windows: ", err)
+	}
+	// Ensure that all windows are closed after test.
+	defer ash.CloseAllWindows(cleanupCtx, tconn)
 
 	// Create Browser.
 	br, closeBrowser, err := browserfixt.SetUp(ctx, cr, browserType)
