@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "02b1ecb5_3eddc75c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2022-09-14T20:15:01Z",
+      "side": 1,
+      "message": "This works, although it\u0027s possibly a heavy hammer.",
+      "revId": "75e19198e6a953db1ef55d7afd3ed1ecd2ee2a47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
