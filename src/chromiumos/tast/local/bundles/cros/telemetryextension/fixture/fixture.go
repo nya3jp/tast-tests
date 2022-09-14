@@ -33,6 +33,20 @@ import (
 	"chromiumos/tast/testing"
 )
 
+// Fixture names.
+const (
+	TelemetryExtension                             = "telemetryExtension"
+	TelemetryExtensionLacros                       = "telemetryExtensionLacros"
+	TelemetryExtensionOverrideOEMName              = "telemetryExtensionOverrideOEMName"
+	TelemetryExtensionOverrideOEMNameLacros        = "telemetryExtensionOverrideOEMNameLacros"
+	TelemetryExtensionOptionsPage                  = "telemetryExtensionOptionsPage"
+	TelemetryExtensionOptionsPageLacros            = "telemetryExtensionOptionsPageLacros"
+	TelemetryExtensionManaged                      = "telemetryExtensionManaged"
+	TelemetryExtensionManagedLacros                = "telemetryExtensionManagedLacros"
+	TelemetryExtensionOverrideOEMNameManaged       = "telemetryExtensionOverrideOEMNameManaged"
+	TelemetryExtensionOverrideOEMNameManagedLacros = "telemetryExtensionOverrideOEMNameManagedLacros"
+)
+
 const (
 	cleanupTimeout = chrome.ResetTimeout + 20*time.Second
 
@@ -41,7 +55,7 @@ const (
 
 func init() {
 	testing.AddFixture(&testing.Fixture{
-		Name: "telemetryExtension",
+		Name: TelemetryExtension,
 		Desc: "Telemetry Extension fixture with running PWA and companion Telemetry Extension",
 		Contacts: []string{
 			"lamzin@google.com", // Fixture and Telemetry Extension author
@@ -56,7 +70,7 @@ func init() {
 		Data:            extFiles(false),
 	})
 	testing.AddFixture(&testing.Fixture{
-		Name: "telemetryExtensionLacros",
+		Name: TelemetryExtensionLacros,
 		Desc: "Telemetry Extension fixture with running PWA and companion Telemetry Extension in Lacros browser",
 		Contacts: []string{
 			"lamzin@google.com", // Fixture and Telemetry Extension author
@@ -71,7 +85,7 @@ func init() {
 		Data:            extFiles(false),
 	})
 	testing.AddFixture(&testing.Fixture{
-		Name: "telemetryExtensionOverrideOEMName",
+		Name: TelemetryExtensionOverrideOEMName,
 		Desc: "Telemetry Extension fixture with running PWA and companion Telemetry Extension on devices that are not officially supported yet",
 		Contacts: []string{
 			"lamzin@google.com", // Fixture and Telemetry Extension author
@@ -86,7 +100,7 @@ func init() {
 		Data:            extFiles(false),
 	})
 	testing.AddFixture(&testing.Fixture{
-		Name: "telemetryExtensionOverrideOEMNameLacros",
+		Name: TelemetryExtensionOverrideOEMNameLacros,
 		Desc: "Telemetry Extension fixture with running PWA and companion Telemetry Extension in Lacros browser on devices that are not officially supported yet",
 		Contacts: []string{
 			"lamzin@google.com", // Fixture and Telemetry Extension author
@@ -101,7 +115,7 @@ func init() {
 		Data:            extFiles(false),
 	})
 	testing.AddFixture(&testing.Fixture{
-		Name: "telemetryExtensionOptionsPage",
+		Name: TelemetryExtensionOptionsPage,
 		Desc: "Telemetry Extension fixture with running PWA and companion Telemetry Extension with options page",
 		Contacts: []string{
 			"lamzin@google.com", // Fixture and Telemetry Extension author
@@ -116,7 +130,7 @@ func init() {
 		Data:            extFiles(true),
 	})
 	testing.AddFixture(&testing.Fixture{
-		Name: "telemetryExtensionOptionsPageLacros",
+		Name: TelemetryExtensionOptionsPageLacros,
 		Desc: "Telemetry Extension fixture with running PWA and companion Telemetry Extension with options page in Lacros browser",
 		Contacts: []string{
 			"lamzin@google.com", // Fixture and Telemetry Extension author
@@ -131,7 +145,7 @@ func init() {
 		Data:            extFiles(true),
 	})
 	testing.AddFixture(&testing.Fixture{
-		Name: "telemetryExtensionManaged",
+		Name: TelemetryExtensionManaged,
 		Desc: "Telemetry Extension fixture with running PWA and companion Telemetry Extension on managed device",
 		Contacts: []string{
 			"lamzin@google.com", // Fixture and Telemetry Extension author
@@ -147,7 +161,7 @@ func init() {
 		Vars:            []string{"policy.ManagedUser.accountPool"},
 	})
 	testing.AddFixture(&testing.Fixture{
-		Name: "telemetryExtensionManagedLacros",
+		Name: TelemetryExtensionManagedLacros,
 		Desc: "Telemetry Extension fixture with running PWA and companion Telemetry Extension in Lacros browser on managed device",
 		Contacts: []string{
 			"lamzin@google.com", // Fixture and Telemetry Extension author
@@ -163,7 +177,7 @@ func init() {
 		Vars:            []string{"policy.ManagedUser.accountPool"},
 	})
 	testing.AddFixture(&testing.Fixture{
-		Name: "telemetryExtensionOverrideOEMNameManaged",
+		Name: TelemetryExtensionOverrideOEMNameManaged,
 		Desc: "Telemetry Extension fixture with running PWA and companion Telemetry Extension on managed devices that are not officially supported yet",
 		Contacts: []string{
 			"lamzin@google.com", // Fixture and Telemetry Extension author
@@ -179,7 +193,7 @@ func init() {
 		Vars:            []string{"policy.ManagedUser.accountPool"},
 	})
 	testing.AddFixture(&testing.Fixture{
-		Name: "telemetryExtensionOverrideOEMNameManagedLacros",
+		Name: TelemetryExtensionOverrideOEMNameManagedLacros,
 		Desc: "Telemetry Extension fixture with running PWA and companion Telemetry Extension in Lacros browser on managed devices that are not officially supported yet",
 		Contacts: []string{
 			"lamzin@google.com", // Fixture and Telemetry Extension author
