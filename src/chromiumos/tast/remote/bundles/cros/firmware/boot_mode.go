@@ -1,4 +1,4 @@
-// Copyright 2019 The Chromium OS Authors. All rights reserved.
+// Copyright 2022 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -24,13 +24,14 @@ import (
 // resetType defines whether ModeAwareReboot should use a warm or a cold reset.
 // checkBootFromMain checks whether device boots from the main storage when a memory device is attached.
 type bootModeTestParams struct {
-	bootToMode          fwCommon.BootMode
-	allowGBBForce       bool
-	resetAfterBoot      bool
-	resetType           firmware.ResetType
-	checkBootFromMain   bool
-	checkToNoGoodScreen bool
-	checkToBrokenScreen bool
+	bootToMode              fwCommon.BootMode
+	allowGBBForce           bool
+	resetAfterBoot          bool
+	resetType               firmware.ResetType
+	checkBootFromMain       bool
+	checkToNoGoodScreen     bool
+	checkToBrokenScreen     bool
+	traverseAcrossFwScreens bool
 }
 
 func init() {
@@ -146,9 +147,10 @@ func init() {
 			Name:    "normal_dev",
 			Fixture: fixture.NormalMode,
 			Val: bootModeTestParams{
-				bootToMode:     fwCommon.BootModeDev,
-				allowGBBForce:  false,
-				resetAfterBoot: false,
+				bootToMode:              fwCommon.BootModeDev,
+				allowGBBForce:           false,
+				resetAfterBoot:          false,
+				traverseAcrossFwScreens: true,
 			},
 			ExtraAttr: []string{"firmware_bios", "firmware_level2"},
 			Timeout:   15 * time.Minute,
@@ -226,15 +228,19 @@ func BootMode(ctx context.Context, s *testing.State) {
 		}
 	}
 	var usbdev string
+	var opts []firmware.ModeSwitchOption
 	if tc.bootToMode != "" {
 		// Switch to tc.bootToMode.
 		// RebootToMode ensures that the DUT winds up in the expected boot mode afterward.
-		var opts []firmware.ModeSwitchOption
 		if tc.allowGBBForce {
 			opts = append(opts, firmware.AllowGBBForce)
 		} else if !pv.ForcesDevMode {
 			// Don't check the dev-force GBB flag if there's no reason for it to have been set.
 			opts = append(opts, firmware.AssumeGBBFlagsCorrect)
+		}
+
+		if tc.traverseAcrossFwScreens {
+			opts = append(opts, firmware.CheckTraverseAcrossFwScreens)
 		}
 
 		if tc.checkToNoGoodScreen {
@@ -304,7 +310,7 @@ func BootMode(ctx context.Context, s *testing.State) {
 			s.Fatalf("Wrong boot mode: got %q, want %q", curr, pv.BootMode)
 		} else if curr != fwCommon.BootModeNormal {
 			s.Logf("Transitioning back from %s to normal mode", curr)
-			if err = ms.RebootToMode(ctx, fwCommon.BootModeNormal); err != nil {
+			if err = ms.RebootToMode(ctx, fwCommon.BootModeNormal, opts...); err != nil {
 				s.Fatalf("Error returning from %s to %s: %+v", curr, fwCommon.BootModeNormal, err)
 			}
 			s.Log("Transition completed successfully")

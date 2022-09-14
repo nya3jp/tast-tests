@@ -1,4 +1,4 @@
-// Copyright 2021 The Chromium OS Authors. All rights reserved.
+// Copyright 2022 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -68,6 +68,15 @@ type KBMatrixPair struct {
 	row int
 	col int
 }
+
+// KeyControl stores the available controls, PressKey and ReleaseKey, for the kbpress cmd.
+type KeyControl int
+
+// Values for pressing and releasing a key.
+const (
+	PressKey   KeyControl = 1
+	ReleaseKey KeyControl = 0
+)
 
 // KeyMatrix is a map that stores a row/col pair for each key using KBMatrixPair
 // It's stored in order of appearance in a keyboard
@@ -379,6 +388,19 @@ func (s *Servo) OpenCCD(ctx context.Context) error {
 			return errors.Wrap(err, "failed to get gsc_ccd_level after unlocking CCD")
 		}
 		testing.ContextLogf(ctx, "CCD State: %q", checkedVal)
+	}
+	return nil
+}
+
+// SetKey presses, or releases a targetKey based on the passed in KeyControl value.
+func (s *Servo) SetKey(ctx context.Context, targetKey string, control KeyControl) error {
+	row, col, err := s.GetKeyRowCol(targetKey)
+	if err != nil {
+		return errors.Wrapf(err, "failed to get key %s column and row", targetKey)
+	}
+	targetKeyAction := fmt.Sprintf("kbpress %d %d %d", col, row, control)
+	if err := s.RunECCommand(ctx, targetKeyAction); err != nil {
+		return errors.Wrapf(err, "failed to set key %s to %d", targetKey, control)
 	}
 	return nil
 }
