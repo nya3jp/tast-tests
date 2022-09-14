@@ -51,6 +51,24 @@
       "parentUuid": "a9265fca_cb8544bb",
       "revId": "d86a604fa48c804cb5477ec799aec6b1a45a8919",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1802bc78_be030816",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_a11y.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2022-09-14T08:45:04Z",
+      "side": 1,
+      "message": "If it is simply caused by busy resources, I am okay to have some setup codes to wait until it is ready and then start the actual tests. We just want to make sure that the intention is clear enough for future readers to understand why we need these lines.",
+      "parentUuid": "5c012c74_1366ce90",
+      "revId": "d86a604fa48c804cb5477ec799aec6b1a45a8919",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
