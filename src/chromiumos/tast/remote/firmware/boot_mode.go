@@ -106,6 +106,10 @@ const (
 
 	// CheckToNormConfirmed causes DUT to stay at the to_norm_confirmed screen.
 	CheckToNormConfirmed ModeSwitchOption = iota
+
+	// CheckTraverseAcrossFwScreens checks that various fw screens are traversed across
+	// by different combinations of key presses.
+	CheckTraverseAcrossFwScreens ModeSwitchOption = iota
 )
 
 // msOptsContain determines whether a slice of ModeSwitchOptions contains a specific Option.
@@ -191,8 +195,8 @@ func (ms ModeSwitcher) RebootToMode(ctx context.Context, toMode fwCommon.BootMod
 
 	switch toMode {
 	case fwCommon.BootModeNormal:
-		// Skip disabling dev request if CheckToNormConfirmed is required.
-		if !msOptsContain(opts, CheckToNormConfirmed) {
+		// Skip disabling dev request if CheckToNormConfirmed and CheckTraverseAcrossFwScreens are required.
+		if !msOptsContain(opts, CheckToNormConfirmed) && !msOptsContain(opts, CheckTraverseAcrossFwScreens) {
 			testing.ContextLog(ctx, "Disabling dev request")
 			if err := h.DUT.Conn().CommandContext(ctx, "crossystem", "disable_dev_request=1").Run(ssh.DumpLogOnError); err != nil {
 				return errors.Wrap(err, "sending disable dev request")
@@ -650,6 +654,10 @@ func (ms *ModeSwitcher) fwScreenToNormalMode(ctx context.Context, opts ...ModeSw
 	if err := testing.Sleep(ctx, h.Config.FirmwareScreen); err != nil {
 		return errors.Wrapf(err, "sleeping for %s (FirmwareScreen) to wait for INSERT screen", h.Config.FirmwareScreen)
 	}
+	// Check for power state at S0 before proceeding to the next steps.
+	if err := h.WaitForPowerStates(ctx, PowerStateInterval, 1*time.Minute, "S0"); err != nil {
+		return errors.Wrap(err, "while booting to normal mode")
+	}
 	// Keep pressing the normal mode keys until connected, but wait a little longer for the connect each time.
 	connectTimeout := 2 * time.Second
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
@@ -747,6 +755,10 @@ func (ms *ModeSwitcher) fwScreenToDevMode(ctx context.Context, opts ...ModeSwitc
 	if err := testing.Sleep(ctx, h.Config.FirmwareScreen); err != nil {
 		return errors.Wrapf(err, "sleeping for %s (FirmwareScreen) to wait for INSERT screen", h.Config.FirmwareScreen)
 	}
+	// Check for power state at S0 before proceeding to the next steps.
+	if err := h.WaitForPowerStates(ctx, PowerStateInterval, 1*time.Minute, "S0"); err != nil {
+		return errors.Wrap(err, "while booting to dev mode")
+	}
 
 	if msOptsContain(opts, CheckToNoGoodScreen) {
 		// Check the usb on the servo host.
@@ -821,6 +833,17 @@ func (ms *ModeSwitcher) fwScreenToDevMode(ctx context.Context, opts ...ModeSwitc
 			return h.DUT.WaitConnect(ctx)
 		}, &testing.PollOptions{Timeout: reconnectTimeout}); err != nil {
 			return errors.Wrap(err, "failed to reconnect to DUT")
+		}
+		// Sometimes servo fails to release keys after pressing on them.
+		// Release all keys again just in case.
+		if err := h.Servo.SetKey(ctx, "<ctrl_l>", servo.ReleaseKey); err != nil {
+			return errors.Wrap(err, "failed to release ctrl(left)")
+		}
+		if err := h.Servo.SetKey(ctx, "d", servo.ReleaseKey); err != nil {
+			return errors.Wrap(err, "failed to release d")
+		}
+		if err := h.Servo.SetKey(ctx, "<enter>", servo.ReleaseKey); err != nil {
+			return errors.Wrap(err, "failed to release enter")
 		}
 	case TabletDetachableSwitcher:
 		// 1. Wait [FirmwareScreen] seconds for the INSERT screen to appear.
