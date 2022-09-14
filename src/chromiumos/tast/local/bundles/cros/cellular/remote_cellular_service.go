@@ -8,12 +8,14 @@ import (
 	"context"
 	"time"
 
+	"github.com/godbus/dbus/v5"
 	"github.com/golang/protobuf/ptypes/empty"
 	"google.golang.org/grpc"
 
 	"chromiumos/tast/common/shillconst"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/cellular"
+	"chromiumos/tast/local/dbusutil"
 	"chromiumos/tast/local/hermes"
 	"chromiumos/tast/local/modemfwd"
 	"chromiumos/tast/local/modemmanager"
@@ -229,4 +231,56 @@ func (s *RemoteCellularService) QueryInterface(ctx context.Context, _ *empty.Emp
 	return &cellular_pb.QueryInterfaceResponse{
 		Name: iface,
 	}, nil
+}
+
+// WaitForNextSms waits until a single sms added signal is received.
+func (s *RemoteCellularService) WaitForNextSms(ctx context.Context, _ *empty.Empty) (*cellular_pb.WaitForNextSmsResponse, error) {
+	match := dbusutil.MatchSpec{
+		Type:      "signal",
+		Interface: modemmanager.DBusModemmanagerMessageInterface,
+		Member:    "Added",
+	}
+
+	conn, err := dbusutil.SystemBus()
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to connect to system bus")
+	}
+
+	signal, err := dbusutil.GetNextSignal(ctx, conn, match)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to receive SMS Added signal")
+	}
+
+	message, err := smsFromSignal(ctx, signal)
+	if err != nil {
+		return nil, errors.Wrap(err, "faild to get SMS message from signal")
+	}
+	return &cellular_pb.WaitForNextSmsResponse{Message: message}, nil
+}
+
+func smsFromSignal(ctx context.Context, signal *dbus.Signal) (*cellular_pb.SmsMessage, error) {
+	if len(signal.Body) == 0 {
+		return nil, errors.New("SMS signal body empty")
+	}
+
+	smsPath, ok := signal.Body[0].(dbus.ObjectPath)
+	if !ok {
+		return nil, errors.Errorf("failed to get SMS path from signal %v", signal.Body)
+	}
+	ph, err := dbusutil.NewPropertyHolder(ctx, modemmanager.DBusModemmanagerService, modemmanager.DBusModemmanagerSmsInterface, smsPath)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create SMS property holder")
+	}
+
+	props, err := ph.GetProperties(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get SMS properties")
+	}
+
+	text, err := props.GetString("Text")
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get SMS text")
+	}
+
+	return &cellular_pb.SmsMessage{Text: text}, nil
 }
