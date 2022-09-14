@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ccfcd1b_0d87dc0a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/idle_perf.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-09-14T20:23:22Z",
+      "side": 1,
+      "message": "Good catch! Null check added in NewRecorderWithTestConn and ui.IdlePerf.arcvm passed now.",
+      "parentUuid": "f69fbadf_56cef35c",
+      "range": {
+        "startLine": 126,
+        "startChar": 51,
+        "endLine": 126,
+        "endChar": 57
+      },
+      "revId": "fc4ee5aef75daa38ce0ffe41f1d6a0f11a70a943",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d7f09e0e_99e39996",
@@ -37,6 +61,24 @@
       "writtenOn": "2022-09-13T22:52:47Z",
       "side": 1,
       "message": "Think we need to adjust this for lacros case. Not sure what is the best way, maybe add 512MB to it for lacros case for now.",
+      "revId": "fc4ee5aef75daa38ce0ffe41f1d6a0f11a70a943",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4043dc0b_5ba6765a",
+        "filename": "src/chromiumos/tast/local/perf/gpu_mem.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-09-14T20:23:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d7f09e0e_99e39996",
       "revId": "fc4ee5aef75daa38ce0ffe41f1d6a0f11a70a943",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
