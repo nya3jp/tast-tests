@@ -1,4 +1,4 @@
-// Copyright 2018 The Chromium OS Authors. All rights reserved.
+// Copyright 2018 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -20,10 +20,18 @@ func init() {
 			"cychiang@chromium.org", // Media team
 			"nya@chromium.org",      // Tast port author
 		},
-		// TODO(b/240269271): remove "octopus" and "hatch" when b/240269271 is fixed.
-		// TODO(b/240271671): remove "nocturne" when b/240271671 is fixed.
-		HardwareDeps: hwdep.D(hwdep.Microphone(), hwdep.SkipOnModel("octopus", "hatch", "nocturne")),
-		Attr:         []string{"group:mainline", "informational"},
+		HardwareDeps: hwdep.D(hwdep.Microphone()),
+		Attr:         []string{"group:mainline"},
+		Params: []testing.Param{{
+			// TODO(b/240269271): remove "octopus" and "hatch" when b/240269271 is fixed.
+			// TODO(b/240271671): remove "nocturne" when b/240271671 is fixed.
+			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform("octopus", "hatch", "nocturne")),
+			ExtraAttr:         []string{"informational"},
+		}, {
+			Name:              "unstable",
+			ExtraHardwareDeps: hwdep.D(hwdep.Platform("octopus", "hatch", "nocturne")),
+			ExtraAttr:         []string{"informational"},
+		}},
 	})
 }
 
