@@ -33,6 +33,23 @@
       "message": "xiaohuic@: PTAL. Thank you! I don\u0027t know why gwsq has decided to put you in CC. Maybe adding multiple gwsqs at once doesn\u0027t work?",
       "revId": "c4812fc03b4f08431b963902d7696990dbc5591c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7294e37b_8e29feef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/focus_android_app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-09-14T19:07:12Z",
+      "side": 1,
+      "message": "In this case, I would prefer previous verison. How do we know 3 seconds is enough?",
+      "revId": "c4812fc03b4f08431b963902d7696990dbc5591c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
