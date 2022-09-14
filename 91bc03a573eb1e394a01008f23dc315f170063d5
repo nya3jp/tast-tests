@@ -158,6 +158,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3553c0d3_04614f46",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/hid_wake.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-09-14T19:13:44Z",
+      "side": 1,
+      "message": "I don\u0027t exactly understnd what you mean by \"they cannot check the output of powerd_dbus_suspend\", I think the following code make sure it is the case:\n\n```\n\tcase err :\u003d \u003c-suspendErr:\n\t        if err !\u003d nil {\n\t            s.Fatalf(\"Failed to call powerd_dbus_suspend: %v\", err)\n\t        }\n```\n\nAnwyay, I will leave it up to Prashant who has more experience with this. Thanks.",
+      "parentUuid": "421f3254_0b8e73b7",
+      "revId": "91bc03a573eb1e394a01008f23dc315f170063d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "527ddf7b_3c491cb3",
@@ -189,6 +207,24 @@
       "side": 1,
       "message": "I don\u0027t think this is necessary. `cl` is declared on L60, and a defer to close it is on L64. `cl` then gets re-assigned on L131 and L183, but in all cases the defer defined on L64 will close it when the test ends without adding another defer. \n\nWhen I try adding this it results in the below error\n\n \u003e 2022-09-13T23:19:22.009154Z power.HidWake [ FAIL ] Panic: close of closed channel",
       "parentUuid": "527ddf7b_3c491cb3",
+      "revId": "91bc03a573eb1e394a01008f23dc315f170063d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "71ed87ed_59577954",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/hid_wake.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-09-14T19:13:44Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "19d197b0_ae91706a",
       "revId": "91bc03a573eb1e394a01008f23dc315f170063d5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
