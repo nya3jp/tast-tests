@@ -41,7 +41,14 @@ func CleanupUserMount(ctx context.Context, cryptohome *hwsec.CryptohomeClient) e
 // ImportKeysAndMeasure import the key specified by privKeyPath into token held by slot slot in chaps and import it times times. prefix should be a unique hex prefix between calls. It'll return the KeyInfo to the imported keys, the total duration and if an error occurred.
 func ImportKeysAndMeasure(ctx context.Context, pkcs11Util *pkcs11.Chaps, privKeyPath string, slot int, username, prefix string, times int, softwareBacked bool) (importedKeys []*pkcs11.KeyInfo, importElapsed time.Duration, retErr error) {
 	// Run hw-backed import once for warm up.
-	if _, err := pkcs11Util.ImportPrivateKeyBySlot(ctx, privKeyPath, slot, username, fmt.Sprintf("%sABCD", prefix), softwareBacked); err != nil {
+	opts := pkcs11.ImportPrivateKeyOptions{
+		PrivKeyPath:         privKeyPath,
+		Slot:                slot,
+		Username:            username,
+		ObjID:               fmt.Sprintf("%sABCD", prefix),
+		ForceSoftwareBacked: softwareBacked,
+	}
+	if _, err := pkcs11Util.ImportPrivateKeyBySlot(ctx, opts); err != nil {
 		return nil, 0, errors.Wrap(err, "warmup for import failed")
 	}
 
@@ -50,7 +57,14 @@ func ImportKeysAndMeasure(ctx context.Context, pkcs11Util *pkcs11.Chaps, privKey
 	importStart := time.Now()
 	for i := 0; i < times; i++ {
 		objID := fmt.Sprintf("%s%04X", prefix, i)
-		key, err := pkcs11Util.ImportPrivateKeyBySlot(ctx, privKeyPath, slot, username, objID, softwareBacked)
+		opts := pkcs11.ImportPrivateKeyOptions{
+			PrivKeyPath:         privKeyPath,
+			Slot:                slot,
+			Username:            username,
+			ObjID:               objID,
+			ForceSoftwareBacked: softwareBacked,
+		}
+		key, err := pkcs11Util.ImportPrivateKeyBySlot(ctx, opts)
 		if err != nil {
 			return nil, importElapsed, errors.Wrap(err, "failed to import keys")
 		}

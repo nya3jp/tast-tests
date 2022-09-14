@@ -333,11 +333,25 @@ func (p *Chaps) CreateGeneratedKey(ctx context.Context, scratchpadPath, keyType,
 	return result, nil
 }
 
-// ImportPrivateKeyBySlot creates a key by importing it from existing DER format private key file specified by privKeyPath. The key will be inserted into the token specified by slot. The object will have an ID of objID.
-func (p *Chaps) ImportPrivateKeyBySlot(ctx context.Context, privKeyPath string, slot int, username, objID string, forceSoftwareBacked bool) (*KeyInfo, error) {
+// ImportPrivateKeyOptions specifies the various options to ImportPrivateKeyBySlot.
+type ImportPrivateKeyOptions struct {
+	// PrivKeyPath is the path to the private key file in DER format.
+	PrivKeyPath string
+	// Slot is the slot to import the key into.
+	Slot int
+	// Username
+	Username string
+	// ObjID is the ID of the imported object.
+	ObjID string
+	// ForceSoftwareBacked, if true, will ensure that it is imported as software backed key.
+	ForceSoftwareBacked bool
+}
+
+// ImportPrivateKeyBySlot creates a key by importing it from existing DER format private key file specified by opt.PrivKeyPath. The key will be inserted into the token specified by opt.Slot. The object will have an ID of opt.ObjID.
+func (p *Chaps) ImportPrivateKeyBySlot(ctx context.Context, opt ImportPrivateKeyOptions) (*KeyInfo, error) {
 	// Import the private key into chaps.
-	args := []string{"--import", "--slot=" + strconv.Itoa(slot), "--path=" + privKeyPath, "--type=privkey", "--id=" + objID}
-	if forceSoftwareBacked {
+	args := []string{"--import", "--slot=" + strconv.Itoa(opt.Slot), "--path=" + opt.PrivKeyPath, "--type=privkey", "--id=" + opt.ObjID}
+	if opt.ForceSoftwareBacked {
 		args = append(args, "--force_software")
 	}
 	if _, err := p.runner.Run(ctx, "p11_replay", args...); err != nil {
@@ -346,12 +360,12 @@ func (p *Chaps) ImportPrivateKeyBySlot(ctx context.Context, privKeyPath string, 
 
 	result := &KeyInfo{
 		keyPrefix:   "",
-		privKeyPath: privKeyPath,
+		privKeyPath: opt.PrivKeyPath,
 		pubKeyPath:  "",
 		certPath:    "",
-		objID:       objID,
-		slot:        slot,
-		username:    username,
+		objID:       opt.ObjID,
+		slot:        opt.Slot,
+		username:    opt.Username,
 	}
 
 	return result, nil
