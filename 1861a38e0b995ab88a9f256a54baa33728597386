@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e77c9ac_a7005d5b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-09-14T22:19:35Z",
+      "side": 1,
+      "message": "Nit: Please re-wrap at 72 characters.",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 40
+      },
+      "revId": "1861a38e0b995ab88a9f256a54baa33728597386",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29d758f5_66134727",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-09-14T22:19:35Z",
+      "side": 1,
+      "message": "Are we able to run the tests that use the fixtures that were modified?",
+      "range": {
+        "startLine": 14,
+        "startChar": 5,
+        "endLine": 14,
+        "endChar": 8
+      },
+      "revId": "1861a38e0b995ab88a9f256a54baa33728597386",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf4a0464_2636e805",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-09-14T22:19:35Z",
+      "side": 1,
+      "message": "Thank you for sending this change my way! Overall this is looking pretty good-- thank you for diving right into this! :D",
+      "revId": "1861a38e0b995ab88a9f256a54baa33728597386",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3d1cb2f_49a5b15b",
+        "filename": "src/chromiumos/tast/remote/bluetooth/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-09-14T22:19:35Z",
+      "side": 1,
+      "message": "Nit: Swap these lines so that the order matches their declaration order.",
+      "range": {
+        "startLine": 186,
+        "startChar": 0,
+        "endLine": 187,
+        "endChar": 30
+      },
+      "revId": "1861a38e0b995ab88a9f256a54baa33728597386",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0471457f_9a08cde6",
+        "filename": "src/chromiumos/tast/services/cros/bluetooth/bt_test_service.proto",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-09-14T22:19:35Z",
+      "side": 1,
+      "message": "Is it still possible to retroactively modify this protobuf? I know we generally don\u0027t do this, but given this is solely for testing I wonder if we are allowed to. Specifically, I think it might be worthwhile to update this to be\n\n    repeated string enableFeatures \u003d 1;\n    repeated string disableFeatures \u003d 2;\n    bool noLogin \u003d 3;\n\nSo that we can readily re-use these fields for other situations while not having to add and remove fields for temporary things (e.g. feature flags). Could you take a look and see if this would be possible?",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 19
+      },
+      "revId": "1861a38e0b995ab88a9f256a54baa33728597386",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
