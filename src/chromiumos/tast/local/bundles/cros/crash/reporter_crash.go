@@ -1,4 +1,4 @@
-// Copyright 2019 The ChromiumOS Authors
+// Copyright 2022 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -9,7 +9,6 @@ import (
 	"io/ioutil"
 	"os"
 	"strings"
-	"syscall"
 	"time"
 
 	"github.com/shirou/gopsutil/v3/host"
@@ -118,7 +117,7 @@ func ReporterCrash(ctx context.Context, s *testing.State) {
 	}()
 
 	s.Log("Crashing the target process")
-	if err := unix.Kill(target.Process.Pid, syscall.SIGSEGV); err != nil {
+	if err := unix.Kill(target.Process.Pid, unix.SIGSEGV); err != nil {
 		s.Fatal("Failed to induce an artifical crash: ", err)
 	}
 
