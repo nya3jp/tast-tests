@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca7b45a2_be2d7558",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1528043
+      },
+      "writtenOn": "2022-09-14T12:39:45Z",
+      "side": 1,
+      "message": "Thanks for the review 😊",
+      "revId": "0f59f3f9468b35b7d17c652b01d172fee66b2231",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8b78d7c9_6fdb0627",
@@ -14,6 +31,30 @@
       "writtenOn": "2022-09-14T12:33:38Z",
       "side": 1,
       "message": "do you need to return in this case?",
+      "range": {
+        "startLine": 320,
+        "startChar": 2,
+        "endLine": 320,
+        "endChar": 66
+      },
+      "revId": "0f59f3f9468b35b7d17c652b01d172fee66b2231",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "77ed2c8f_793921cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterpriseconnectors/helpers/helpers.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1528043
+      },
+      "writtenOn": "2022-09-14T12:39:45Z",
+      "side": 1,
+      "message": "I would expect the range to be empty in this case, so it shouldn\u0027t really matter.\nAdded it anyways 😊",
+      "parentUuid": "8b78d7c9_6fdb0627",
       "range": {
         "startLine": 320,
         "startChar": 2,
