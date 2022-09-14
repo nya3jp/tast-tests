@@ -15,11 +15,33 @@ import (
 	"chromiumos/tast/fsutil"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
 
+func dataFiles() []string {
+	return []string{
+		"manifest.json",
+		"background.js",
+		"foreground.html",
+		"foreground_script.js",
+		"sample.png",
+	}
+}
+
+func rawDataFiles() []string {
+	var rawFileNames []string
+	for _, name := range dataFiles() {
+		rawFileNames = append(rawFileNames, "image_paste_"+name)
+	}
+	return rawFileNames
+}
+
 func init() {
+
 	testing.AddTest(&testing.Test{
 		Func:         ImagePaste,
 		LacrosStatus: testing.LacrosVariantNeeded,
@@ -27,7 +49,7 @@ func init() {
 		Contacts:     []string{"yhanada@chromium.org", "arc-framework+tast@google.com"},
 		SoftwareDeps: []string{"chrome", "android_vm"},
 		Attr:         []string{"group:mainline", "informational"},
-		Data:         []string{"image_paste_manifest.json", "image_paste_background.js", "image_paste_foreground.html", "image_paste_sample.png"},
+		Data:         rawDataFiles(),
 		Timeout:      4 * time.Minute,
 	})
 }
@@ -39,7 +61,7 @@ func ImagePaste(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create temp dir: ", err)
 	}
 	defer os.RemoveAll(extDir)
-	for _, name := range []string{"manifest.json", "background.js", "foreground.html", "sample.png"} {
+	for _, name := range dataFiles() {
 		if err := fsutil.CopyFile(s.DataPath("image_paste_"+name), filepath.Join(extDir, name)); err != nil {
 			s.Fatalf("Failed to copy extension %s: %v", name, err)
 		}
@@ -90,12 +112,10 @@ func ImagePaste(ctx context.Context, s *testing.State) {
 	// Paste an image from Chrome. clipboard.write() is only available for the focused window,
 	// so we use a foreground page here.
 	// TODO(tetsui): Rewrite this without a custom extension so that we can use a fixture.
-	if err := conn.Call(ctx, nil, `async () => {
-	  const response = await fetch('sample.png');
-	  const blob = await response.blob();
-	  await navigator.clipboard.write([new ClipboardItem({ 'image/png': blob })]);
-	}`); err != nil {
-		s.Fatal("Failed to paste an image: ", err)
+	uia := uiauto.New(tconn)
+	finder := nodewith.Role(role.Button).HasClass("copy_button").First()
+	if err := uia.WithTimeout(10 * time.Second).LeftClick(finder)(ctx); err != nil {
+		s.Fatal("Cannot click on the copy button: ", err)
 	}
 
 	if err := a.Install(ctx, arc.APKPath(apk)); err != nil {
