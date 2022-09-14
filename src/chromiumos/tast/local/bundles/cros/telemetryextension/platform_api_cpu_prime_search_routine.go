@@ -28,42 +28,42 @@ func init() {
 		Params: []testing.Param{
 			{
 				Name:              "stable",
-				Fixture:           "telemetryExtension",
+				Fixture:           fixture.TelemetryExtension,
 				ExtraHardwareDeps: dep.StableModels(),
 			},
 			{
 				Name:              "non_stable",
-				Fixture:           "telemetryExtensionOverrideOEMName",
+				Fixture:           fixture.TelemetryExtensionOverrideOEMName,
 				ExtraHardwareDeps: dep.NonStableModels(),
 			},
 			{
 				Name:              "stable_lacros",
-				Fixture:           "telemetryExtensionLacros",
+				Fixture:           fixture.TelemetryExtensionLacros,
 				ExtraHardwareDeps: dep.StableModels(),
 			},
 			{
 				Name:              "non_stable_lacros",
-				Fixture:           "telemetryExtensionOverrideOEMNameLacros",
+				Fixture:           fixture.TelemetryExtensionOverrideOEMNameLacros,
 				ExtraHardwareDeps: dep.NonStableModels(),
 			},
 			{
 				Name:              "stable_managed",
-				Fixture:           "telemetryExtensionManaged",
+				Fixture:           fixture.TelemetryExtensionManaged,
 				ExtraHardwareDeps: dep.StableModels(),
 			},
 			{
 				Name:              "non_stable_managed",
-				Fixture:           "telemetryExtensionOverrideOEMNameManaged",
+				Fixture:           fixture.TelemetryExtensionOverrideOEMNameManaged,
 				ExtraHardwareDeps: dep.NonStableModels(),
 			},
 			{
 				Name:              "stable_managed_lacros",
-				Fixture:           "telemetryExtensionManagedLacros",
+				Fixture:           fixture.TelemetryExtensionManagedLacros,
 				ExtraHardwareDeps: dep.StableModels(),
 			},
 			{
 				Name:              "non_stable_managed_lacros",
-				Fixture:           "telemetryExtensionOverrideOEMNameManagedLacros",
+				Fixture:           fixture.TelemetryExtensionOverrideOEMNameManagedLacros,
 				ExtraHardwareDeps: dep.NonStableModels(),
 			},
 		},
