@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "26c6a294_b4fa3595",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2022-09-14T01:06:18Z",
+      "side": 1,
+      "message": "\u003e do we need to make sure that the second DoH server is not accessible via the physical network\n\nWe don\u0027t have to make the second DoH server inaccessible. For this case, we only want to make sure:\n- non-system traffic goes to the VPN server.\n- system traffic does not go to the VPN server.\nAssuming we are passing the correct DNS server, only blocking the servers should be able to test those.",
+      "parentUuid": "126c6ba1_2f18c9e9",
+      "revId": "8303c2c0f31166f2a237a0378937fda21b7a4ccf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cc5bf5bb_300919d2",
@@ -41,6 +59,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d95d781a_c88566f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns_proxy_over_vpn.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2022-09-14T01:06:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cc5bf5bb_300919d2",
+      "range": {
+        "startLine": 98,
+        "startChar": 0,
+        "endLine": 119,
+        "endChar": 33
+      },
+      "revId": "8303c2c0f31166f2a237a0378937fda21b7a4ccf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0733364e_343a13da",
@@ -54,6 +96,30 @@
       "writtenOn": "2022-09-13T08:43:37Z",
       "side": 1,
       "message": "nit: for naming, maybe \"connectToVPN\" is better?",
+      "range": {
+        "startLine": 214,
+        "startChar": 3,
+        "endLine": 214,
+        "endChar": 18
+      },
+      "revId": "8303c2c0f31166f2a237a0378937fda21b7a4ccf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "24b53144_8252be02",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns_proxy_over_vpn.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2022-09-14T01:06:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0733364e_343a13da",
       "range": {
         "startLine": 214,
         "startChar": 3,
