@@ -5,6 +5,7 @@
 package passpoint
 
 import (
+	"bytes"
 	"context"
 	"crypto/sha256"
 	"encoding/base64"
@@ -16,6 +17,7 @@ import (
 	"path/filepath"
 	"strconv"
 	"strings"
+	"text/template"
 
 	"chromiumos/tast/common/crypto/certificate"
 	"chromiumos/tast/common/shillconst"
@@ -116,40 +118,58 @@ func (pc *Credentials) ToAndroidConfig(ctx context.Context) (string, error) {
 	if err != nil {
 		return "", errors.Wrap(err, "failed to prepare OMA-DM PerProviderSubscription-MO XML profile")
 	}
-	androidConfig := fmt.Sprintf(`Content-Type: multipart/mixed; boundary={boundary}
-Content-Transfer-Encoding: base64
 
---{boundary}
-Content-Type: application/x-passpoint-profile
-Content-Transfer-Encoding: base64
-
-%s
---{boundary}
-Content-Type: application/x-x509-ca-cert
-Content-Transfer-Encoding: base64
-
-%s
-`, base64.StdEncoding.EncodeToString([]byte(ppsMoProfile)), base64.StdEncoding.EncodeToString([]byte(testCerts.CACred.Cert)))
+	params := map[string]string{
+		"profile": base64.StdEncoding.EncodeToString([]byte(ppsMoProfile)),
+		"caCert":  base64.StdEncoding.EncodeToString([]byte(testCerts.CACred.Cert)),
+	}
 
 	if pc.Auth == AuthTLS {
 		pkcs12Cert, err := preparePKCS12Cert(ctx)
 		if err != nil {
 			return "", errors.Wrap(err, "failed to create PKCS#12 certificate")
 		}
-		androidConfig += fmt.Sprintf(`--{boundary}
+		params["clientCert"] = base64.StdEncoding.EncodeToString([]byte(pkcs12Cert))
+	}
+
+	tmpl, err := template.New("").Parse(`Content-Type: multipart/mixed; boundary={boundary}
+Content-Transfer-Encoding: base64
+
+--{boundary}
+Content-Type: application/x-passpoint-profile
+Content-Transfer-Encoding: base64
+
+{{.profile}}
+--{boundary}
+Content-Type: application/x-x509-ca-cert
+Content-Transfer-Encoding: base64
+
+{{.caCert}}
+{{if .clientCert}}
+--{boundary}
 Content-Type: application/x-pkcs12
 Content-Transfer-Encoding: base64
 
-%s
-`, base64.StdEncoding.EncodeToString([]byte(pkcs12Cert)))
+{{.clientCert}}
+{{end}}
+--{boundary}--`)
+	if err != nil {
+		return "", errors.Wrap(err, "failed to parse android config template")
 	}
-	androidConfig += "--{boundary}--"
-	return base64.StdEncoding.EncodeToString([]byte(androidConfig)), nil
+
+	var buf bytes.Buffer
+	if err := tmpl.Execute(&buf, params); err != nil {
+		return "", errors.Wrap(err, "failed to execute android config template")
+	}
+	return base64.StdEncoding.EncodeToString(buf.Bytes()), nil
 }
 
 // preparePPSMOProfile creates an OMA-DM PerProviderSubscription-MO XML profile based on the set of Passpoint credentials.
 func (pc *Credentials) preparePPSMOProfile() (string, error) {
-	homeSp := pc.preparePPSMOHomeSP()
+	homeSp, err := pc.preparePPSMOHomeSP()
+	if err != nil {
+		return "", errors.Wrap(err, "failed to prepare OMA-DM PerProviderSubscription Home SP node")
+	}
 	cred, err := pc.preparePPSMOCred()
 	if err != nil {
 		return "", errors.Wrap(err, "failed to prepare OMA-DM PerProviderSubscription-MO credential node")
@@ -173,76 +193,38 @@ func (pc *Credentials) preparePPSMOProfile() (string, error) {
 }
 
 // preparePPSMOHomeSP creates an OMA-DM PerProviderSubscription-MO XML Home SP node based on the set of Passpoint credentials.
-func (pc *Credentials) preparePPSMOHomeSP() string {
+func (pc *Credentials) preparePPSMOHomeSP() (string, error) {
 	type homeOI struct {
-		oi       string
-		required string
+		Value    string
+		Required string
 	}
 	var ois []homeOI
 	for _, homeOi := range pc.HomeOIs {
-		ois = append(ois, homeOI{oi: strconv.FormatUint(homeOi, 16), required: "FALSE"})
+		ois = append(ois, homeOI{
+			Value:    strconv.FormatUint(homeOi, 16),
+			Required: "FALSE",
+		})
 	}
 	for _, homeOi := range pc.RequiredHomeOIs {
-		ois = append(ois, homeOI{oi: strconv.FormatUint(homeOi, 16), required: "TRUE"})
+		ois = append(ois, homeOI{
+			Value:    strconv.FormatUint(homeOi, 16),
+			Required: "TRUE",
+		})
+	}
+	var roamingOIs []string
+	for _, oi := range pc.RoamingOIs {
+		roamingOIs = append(roamingOIs, strconv.FormatUint(oi, 16))
 	}
 
-	// Create Home OI node(s).
-	var homeOis string
-	if len(ois) > 0 {
-		var homeOiNodes string
-		for i, oi := range ois {
-			homeOiNodes += fmt.Sprintf(`          <Node>
-            <NodeName>x%d</NodeName>
-            <Node>
-              <NodeName>HomeOI</NodeName>
-              <Value>%s</Value>
-            </Node>
-            <Node>
-              <NodeName>HomeOIRequired</NodeName>
-              <Value>%s</Value>
-            </Node>
-          </Node>
-`, i+1, oi.oi, oi.required)
-		}
-		homeOis = fmt.Sprintf(`        <Node>
-          <NodeName>HomeOIList</NodeName>
-%s        </Node>`, homeOiNodes)
+	// Nodes are starting at index 1, we need a helper to fill the template.
+	funcs := template.FuncMap{
+		"inc": func(i int) int {
+			return i + 1
+		},
 	}
 
-	// Create Roaming OI node.
-	var roamingOis string
-	if len(pc.RoamingOIs) > 0 {
-		var roamingOiValues []string
-		for _, oi := range pc.RoamingOIs {
-			roamingOiValues = append(roamingOiValues, strconv.FormatUint(oi, 16))
-		}
-		roamingOis = fmt.Sprintf(`        <Node>
-          <NodeName>RoamingConsortiumOI</NodeName>
-          <Value>%s</Value>
-        </Node>`, strings.Join(roamingOiValues, ","))
-	}
-
-	// Create other home partners node.
-	var otherHomePartners string
-	if len(pc.OtherHomePartners()) > 0 {
-		var nodes []string
-		for i, partner := range pc.OtherHomePartners() {
-			nodes = append(nodes, fmt.Sprintf(`          <Node>
-            <NodeName>x%d</NodeName>
-            <Node>
-              <NodeName>FQDN</NodeName>
-              <Value>%s</Value>
-            </Node>
-          </Node>
-`, i+1, partner))
-		}
-		otherHomePartners = fmt.Sprintf(`        <Node>
-          <NodeName>OtherHomePartners</NodeName>
-%s        </Node>`, strings.Join(nodes, ""))
-	}
-
-	// Combine the OI(s) into a Home SP node.
-	return fmt.Sprintf(`      <Node>
+	tmpl, err := template.New("").Funcs(funcs).Parse(`
+      <Node>
         <NodeName>HomeSP</NodeName>
         <Node>
           <NodeName>FriendlyName</NodeName>
@@ -250,28 +232,96 @@ func (pc *Credentials) preparePPSMOHomeSP() string {
         </Node>
         <Node>
           <NodeName>FQDN</NodeName>
-          <Value>%s</Value>
+          <Value>{{.FQDN}}</Value>
         </Node>
-%s
-%s
-%s
-      </Node>`, pc.FQDN(), homeOis, roamingOis, otherHomePartners)
+{{if gt (len .HomeOIs) 0}}
+        <Node>
+          <NodeName>HomeOIList</NodeName>
+{{range $i, $oi := .HomeOIs}}
+          <Node>
+            <NodeName>h{{printf "%03d" (inc $i)}}</NodeName>
+            <Node>
+              <NodeName>HomeOI</NodeName>
+              <Value>{{$oi.Value}}</Value>
+            </Node>
+            <Node>
+              <NodeName>HomeOIRequired</NodeName>
+              <Value>{{$oi.Required}}</Value>
+            </Node>
+          </Node>
+{{end}}
+        </Node>
+{{end}}
+{{if gt (len .RoamingOIs) 0}}
+        <Node>
+          <NodeName>RoamingConsortiumOI</NodeName>
+          <Value>{{.RoamingOIs}}</Value>
+        </Node>
+{{end}}
+{{if gt (len .OtherHomePartners) 0}}
+        <Node>
+          <NodeName>OtherHomePartners</NodeName>
+{{range $i, $fqdn := .OtherHomePartners}}
+          <Node>
+            <NodeName>o{{printf "%03d" (inc $i)}}</NodeName>
+            <Node>
+              <NodeName>FQDN</NodeName>
+              <Value>{{$fqdn}}</Value>
+            </Node>
+          </Node>
+{{end}}
+        </Node>
+{{end}}
+      </Node>
+	`)
+	if err != nil {
+		return "", errors.Wrap(err, "failed to parse PPS Home SP template")
+	}
+
+	var buf bytes.Buffer
+	if err := tmpl.Execute(&buf, struct {
+		FQDN              string
+		HomeOIs           []homeOI
+		RoamingOIs        string
+		OtherHomePartners []string
+	}{
+		FQDN:              pc.FQDN(),
+		HomeOIs:           ois,
+		RoamingOIs:        strings.Join(roamingOIs, ","),
+		OtherHomePartners: pc.OtherHomePartners(),
+	}); err != nil {
+		return "", errors.Wrap(err, "failed to execute PPS Home SP template")
+	}
+	return buf.String(), nil
 }
 
 // preparePPSMOCred creates an OMA-DM PerProviderSubscription-MO XML Credential node based on the set of Passpoint credentials.
 func (pc *Credentials) preparePPSMOCred() (string, error) {
+	params := map[string]string{
+		"realm": pc.FQDN(),
+	}
 	switch pc.Auth {
 	case AuthTLS:
 		fingerprint, err := prepareCertSHA256Fingerprint()
 		if err != nil {
 			return "", errors.Wrap(err, "failed to get certificate's fingerprint")
 		}
-		return fmt.Sprintf(`      <Node>
+		params["fingerprint"] = fingerprint
+	case AuthTTLS:
+		params["user"] = testUser
+		params["password"] = base64.StdEncoding.EncodeToString([]byte(testPassword))
+	default:
+		return "", errors.Errorf("unsupported authentication method: %v", pc.Auth)
+	}
+
+	tmpl, err := template.New("").Parse(`
+      <Node>
         <NodeName>Credential</NodeName>
         <Node>
           <NodeName>Realm</NodeName>
-          <Value>%s</Value>
+          <Value>{{.realm}}</Value>
         </Node>
+{{if .fingerprint}}
         <Node>
           <NodeName>DigitalCertificate</NodeName>
           <Node>
@@ -280,47 +330,48 @@ func (pc *Credentials) preparePPSMOCred() (string, error) {
           </Node>
           <Node>
             <NodeName>CertSHA256Fingerprint</NodeName>
-            <Value>%s</Value>
+            <Value>{{.fingerprint}}</Value>
           </Node>
         </Node>
-      </Node>`, pc.FQDN(), fingerprint), nil
-	case AuthTTLS:
-		return fmt.Sprintf(`      <Node>
-      <NodeName>Credential</NodeName>
-      <Node>
-        <NodeName>Realm</NodeName>
-        <Value>%s</Value>
-      </Node>
-      <Node>
-        <NodeName>UsernamePassword</NodeName>
+{{else if and .user .password}}
         <Node>
-          <NodeName>MachineManaged</NodeName>
-          <Value>true</Value>
-        </Node>
-        <Node>
-          <NodeName>Username</NodeName>
-          <Value>%s</Value>
-        </Node>
-        <Node>
-          <NodeName>Password</NodeName>
-          <Value>%s</Value>
-        </Node>
-        <Node>
-          <NodeName>EAPMethod</NodeName>
+          <NodeName>UsernamePassword</NodeName>
           <Node>
-            <NodeName>EAPType</NodeName>
-            <Value>21</Value>
+            <NodeName>MachineManaged</NodeName>
+            <Value>true</Value>
           </Node>
           <Node>
-            <NodeName>InnerMethod</NodeName>
-            <Value>MS-CHAP-V2</Value>
+            <NodeName>Username</NodeName>
+            <Value>{{.user}}</Value>
+          </Node>
+          <Node>
+            <NodeName>Password</NodeName>
+            <Value>{{.password}}</Value>
+          </Node>
+          <Node>
+            <NodeName>EAPMethod</NodeName>
+            <Node>
+              <NodeName>EAPType</NodeName>
+              <Value>21</Value>
+            </Node>
+            <Node>
+              <NodeName>InnerMethod</NodeName>
+              <Value>MS-CHAP-V2</Value>
+            </Node>
           </Node>
         </Node>
-      </Node>
-    </Node>`, pc.FQDN(), testUser, base64.StdEncoding.EncodeToString([]byte(testPassword))), nil
-	default:
-		return "", errors.Errorf("unsupported authentication method: %v", pc.Auth)
+{{end}}
+      </Node>`)
+
+	if err != nil {
+		return "", errors.Wrap(err, "failed to parse credentials template")
 	}
+
+	var buf bytes.Buffer
+	if err := tmpl.Execute(&buf, params); err != nil {
+		return "", errors.Wrap(err, "failed to execute credentials template")
+	}
+	return buf.String(), nil
 }
 
 // prepareCertSHA256Fingerprint gets the client certificate's SHA256 fingerprint.
