@@ -249,6 +249,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0e755efe_13a2b67b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/quicksettings/media_controls.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1189880
+      },
+      "writtenOn": "2022-09-14T14:52:35Z",
+      "side": 1,
+      "message": "Sure, you could give the view a more descriptive class name in chromium for the purposes of test identification 😊 should be very easy, and much more robust.",
+      "parentUuid": "fe339599_7625772a",
+      "range": {
+        "startLine": 258,
+        "startChar": 23,
+        "endLine": 258,
+        "endChar": 88
+      },
+      "revId": "24646578182dcc767d8a8d9c7c906f23aa3f64b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ed0d79a7_77eeaa4e",
         "filename": "src/chromiumos/tast/local/bundles/cros/quicksettings/media_controls.go",
         "patchSetId": 1
@@ -308,6 +332,30 @@
       "side": 1,
       "message": "Sorry, the UI tree doesn\u0027t provide any of those informations for such image view node. (this is a similar approach as CL:3865300)",
       "parentUuid": "5f1b1b1b_17b17d5b",
+      "range": {
+        "startLine": 265,
+        "startChar": 0,
+        "endLine": 275,
+        "endChar": 1
+      },
+      "revId": "24646578182dcc767d8a8d9c7c906f23aa3f64b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14050d83_d2876167",
+        "filename": "src/chromiumos/tast/local/bundles/cros/quicksettings/media_controls.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1189880
+      },
+      "writtenOn": "2022-09-14T14:52:35Z",
+      "side": 1,
+      "message": "same response :)",
+      "parentUuid": "8f1dfa61_82887307",
       "range": {
         "startLine": 265,
         "startChar": 0,
