@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e1ea1be_eb4c1022",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1313155
+      },
+      "writtenOn": "2022-09-14T20:48:44Z",
+      "side": 1,
+      "message": "Hi Alex, \n\ncould you please look this over a bit again? I added the dutConn.CommandContext piece and moved some things around. I can now run this repeatedly with successful outcome.\n\nAt this point I just need one thing and this test should be good to go. Need to figure out how to verify that the \"Enrollment completed\" screen was visible sometime after this line: https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/internal/login/enroll.go;rcl\u003de99061f2d5c384ce5289b5b5797a41432ddb5a59;l\u003d293. Once I know that the test can check for that instead of the 60 second wait currently.\n\nThanks.",
+      "revId": "5d54fb87a16d1d91bb1d6bb3afac4d34119d34e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
