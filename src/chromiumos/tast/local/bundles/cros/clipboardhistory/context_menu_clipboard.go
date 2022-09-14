@@ -1,4 +1,4 @@
-// Copyright 2022 The ChromiumOS Authors.
+// Copyright 2022 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -253,7 +253,7 @@ func (g *gmailTest) closeApp(ctx context.Context) error {
 }
 
 func (g *gmailTest) pasteAndVerify(ctx context.Context, res *clipboardResource) error {
-	rootView := nodewith.Role(role.Window).NameContaining("Mail").HasClass("BrowserFrame")
+	rootView := nodewith.Role(role.Window).NameContaining("Inbox").HasClass("BrowserFrame")
 	searchbox := nodewith.Role(role.TextField).Name("Search in mail").Ancestor(rootView)
 	getStartedBtn := nodewith.Role(role.Button).Name("Get started").Ancestor(rootView)
 	chatDialog := nodewith.Role(role.AlertDialog).NameContaining("Chat conversations").Ancestor(rootView)
