@@ -16,6 +16,23 @@
       "message": "alvinjia is out. Adding new reviewer",
       "revId": "974bc53fbad02509c0cfa0329adb0d5877669e6b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d47b6d24_80de61c2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-09-14T10:15:23Z",
+      "side": 1,
+      "message": "Thanks all!",
+      "revId": "974bc53fbad02509c0cfa0329adb0d5877669e6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
