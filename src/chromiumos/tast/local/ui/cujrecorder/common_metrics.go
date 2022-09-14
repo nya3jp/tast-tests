@@ -71,9 +71,19 @@ func LacrosCommonMetricConfigs() []MetricConfig {
 func BrowserCommonMetricConfigs() []MetricConfig {
 	return []MetricConfig{
 		// Responsiveness.
+		// TODO (b/246634445): Replaced with Browser.Tabs.TabSwitchResult2.*, Browser.Tabs.TotalSwitchDuration2.*, Browser.Tabs.TotalIncompleteSwitchDuration2.* and removed.
 		NewCustomMetricConfig("Browser.Tabs.TotalSwitchDuration.NoSavedFrames_NotLoaded", "ms", perf.SmallerIsBetter),
 		NewCustomMetricConfig("Browser.Tabs.TotalSwitchDuration.NoSavedFrames_Loaded", "ms", perf.SmallerIsBetter),
 		NewCustomMetricConfig("Browser.Tabs.TotalSwitchDuration.WithSavedFrames", "ms", perf.SmallerIsBetter),
+		NewCustomMetricConfig("Browser.Tabs.TabSwitchResult2.NoSavedFrames_NotLoaded", "result", perf.SmallerIsBetter),
+		NewCustomMetricConfig("Browser.Tabs.TabSwitchResult2.NoSavedFrames_Loaded", "result", perf.SmallerIsBetter),
+		NewCustomMetricConfig("Browser.Tabs.TabSwitchResult2.WithSavedFrames", "result", perf.SmallerIsBetter),
+		NewCustomMetricConfig("Browser.Tabs.TotalSwitchDuration2.NoSavedFrames_NotLoaded", "ms", perf.SmallerIsBetter),
+		NewCustomMetricConfig("Browser.Tabs.TotalSwitchDuration2.NoSavedFrames_Loaded", "ms", perf.SmallerIsBetter),
+		NewCustomMetricConfig("Browser.Tabs.TotalSwitchDuration2.WithSavedFrames", "ms", perf.SmallerIsBetter),
+		NewCustomMetricConfig("Browser.Tabs.TotalIncompleteSwitchDuration2.NoSavedFrames_NotLoaded", "ms", perf.SmallerIsBetter),
+		NewCustomMetricConfig("Browser.Tabs.TotalIncompleteSwitchDuration2.NoSavedFrames_Loaded", "ms", perf.SmallerIsBetter),
+		NewCustomMetricConfig("Browser.Tabs.TotalIncompleteSwitchDuration2.WithSavedFrames", "ms", perf.SmallerIsBetter),
 		NewCustomMetricConfig("Event.Latency.ScrollUpdate.Touch.TimeToScrollUpdateSwapBegin4", "microseconds", perf.SmallerIsBetter),
 		NewCustomMetricConfig("EventLatency.GestureScrollUpdate.Touchscreen.TotalLatency", "microseconds", perf.SmallerIsBetter),
 		NewCustomMetricConfig("EventLatency.GestureScrollUpdate.Wheel.TotalLatency", "microseconds", perf.SmallerIsBetter),
