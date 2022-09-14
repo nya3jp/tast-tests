@@ -30,8 +30,8 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		Fixture:      fixture.NormalMode,
 		Vars:         []string{"servo"},
-		HardwareDeps: hwdep.D(hwdep.ChromeEC(), hwdep.Battery()),
 		Timeout:      5 * time.Minute,
+		HardwareDeps: hwdep.D(hwdep.ChromeEC(), hwdep.Battery(), hwdep.Model("skyrim15w", "skyrim15w360")),
 	})
 }
 
