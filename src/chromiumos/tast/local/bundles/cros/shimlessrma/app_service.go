@@ -212,6 +212,16 @@ func (shimlessRMA *AppService) LeftClickButton(ctx context.Context,
 	return &empty.Empty{}, nil
 }
 
+// LeftClickToggleButton left clicks the button with label.
+func (shimlessRMA *AppService) LeftClickToggleButton(ctx context.Context,
+	req *pb.LeftClickToggleButtonRequest) (*empty.Empty, error) {
+	if err := shimlessRMA.app.LeftClickToggleButton(req.Label)(ctx); err != nil {
+		return nil, errors.Wrapf(err, "failed to left click button: %s", req.Label)
+	}
+
+	return &empty.Empty{}, nil
+}
+
 // WaitUntilButtonEnabled waits for button with label enabled.
 func (shimlessRMA *AppService) WaitUntilButtonEnabled(ctx context.Context,
 	req *pb.WaitUntilButtonEnabledRequest) (*empty.Empty, error) {

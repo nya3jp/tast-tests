@@ -165,6 +165,11 @@ func (r *RMAApp) LeftClickButton(label string) uiauto.Action {
 	return r.leftClickButton(nodewith.NameContaining(label).Role(role.Button).Visible())
 }
 
+// LeftClickToggleButton returns a function that clicks a button.
+func (r *RMAApp) LeftClickToggleButton(label string) uiauto.Action {
+	return r.leftClickButton(nodewith.NameContaining(label).Role(role.ToggleButton).Visible())
+}
+
 // WaitUntilButtonEnabled returns a function that waits |timeout| for a button to be enabled.
 func (r *RMAApp) WaitUntilButtonEnabled(label string, timeout time.Duration) uiauto.Action {
 	return r.waitUntilEnabled(nodewith.NameContaining(label).Role(role.Button).Visible(), timeout)
