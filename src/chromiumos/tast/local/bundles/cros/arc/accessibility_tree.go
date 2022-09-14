@@ -76,7 +76,7 @@ func matchTree(ctx context.Context, actualRoot *a11y.Node, expectedRoot *axTreeN
 		if err != nil {
 			return false, err
 		}
-		testing.ContextLogf(ctx, "Node did not match, got %+v; want %v", expectedRoot.findParams(), currNodeStr)
+		testing.ContextLogf(ctx, "Node did not match, got %+v; want %v", currNodeStr, expectedRoot.findParams())
 		return false, nil
 	}
 
