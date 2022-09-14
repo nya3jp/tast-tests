@@ -664,6 +664,7 @@ var chromeVideoArgs = []string{
 	"--suppress-message-center-popups",
 	// Make sure ARC++ is not running.
 	"--arc-availability=none",
+	"--enable-nacl",
 }
 
 var chromeBypassPermissionsArgs = []string{

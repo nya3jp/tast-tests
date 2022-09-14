@@ -5,21 +5,21 @@
 package video
 
 import (
-//	"bytes"
+	//	"bytes"
 	"context"
-//	"encoding/base64"
-//	"image"
-//	"image/color"
+	//	"encoding/base64"
+	//	"image"
+	//	"image/color"
 	"net/http"
 	"net/http/httptest"
-//	"os"
+	//	"os"
 	"path"
-//	"strings"
+	//	"strings"
 	"time"
 
-//	"chromiumos/tast/common/media/caps"
-//	"chromiumos/tast/common/perf"
-//	"chromiumos/tast/local/bundles/cros/video/play"
+	//	"chromiumos/tast/common/media/caps"
+	//	"chromiumos/tast/common/perf"
+	//	"chromiumos/tast/local/bundles/cros/video/play"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
 )
@@ -41,13 +41,18 @@ func init() {
 		SoftwareDeps: []string{"chrome", "nacl"},
 		Params: []testing.Param{{
 			Name: "h264_360p_hw",
-			Val: pepperVideoDecodeParams{  // note: currently unused
+			Val: pepperVideoDecodeParams{ // note: currently unused
 				fileName:    "still-colors-360p.h264.mp4",
 				refFileName: "still-colors-360p.ref.png",
 			},
-			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
-			ExtraData:         []string{"pepper/video_decode.js", "pepper_video_decode.html", "pepper/background.js", "pepper/icon128.png", "pepper/manifest.json", "pepper/pnacl/Release/video_decode.nmf", "pepper/pnacl/Release/video_decode.pexe", "still-colors-360p.h264.mp4", "still-colors-360p.ref.png"},
-			Fixture:           "chromeVideo",
+			ExtraAttr: []string{"group:graphics", "graphics_video", "graphics_perbuild"},
+			ExtraData: []string{
+				"pepper/video_decode/pnacl/Release/video_decode.nmf",
+				"pepper/video_decode/pnacl/Release/video_decode.pexe",
+				"pepper/video_decode/common.js",
+				"pepper/video_decode/video_decode.html",
+			},
+			Fixture: "chromeVideo",
 		}},
 	})
 }
@@ -57,40 +62,14 @@ func PepperVideoDecode(ctx context.Context, s *testing.State) {
 	server := httptest.NewServer(http.FileServer(s.DataFileSystem()))
 	defer server.Close()
 	cr := s.FixtValue().(*chrome.Chrome)
-	url := path.Join(server.URL, "pepper_video_decode.html")
+	url := path.Join(server.URL, "pepper/video_decode/video_decode.html")
 	conn, err := cr.NewConn(ctx, url)
 	if err != nil {
 		s.Fatalf("Failed to open %v: %v", url, err)
 	}
 	defer conn.Close()
 
-	// below this is changed
-	// My pepper attempt. Not working.
-	if err := conn.WaitForExprWithTimeout(ctx, "common.hasSucceeded()", 10*time.Second); err != nil {
+	if err := conn.WaitForExprWithTimeout(ctx, "doneLoadingExample", 10*time.Second); err != nil {
 		s.Fatal("Did not succeed in message passing within timeout (that is, test failed): ", err)
 	}
-
-	if err := testing.Sleep(ctx, 2 * time.Second); err != nil {
-		s.Fatal("Failed to sleep prior to loading NaCl module", err)
-	}
-
-	if err := conn.WaitForExprWithTimeout(ctx, "common.loadNaclModule()", 10*time.Second); err != nil {
-		s.Fatal("Did not succeed in loading NaCl Module: ", err)
-	}
-
-	/*
-	if err := conn.Call(ctx, nil, "initialize"); err != nil {
-		s.Fatal("initialize() failed: ", err)
-	}
-
-	// Now we can check whether initialization worked.
-	var testPassed bool
-	if err := conn.Eval(ctx, "isInitialized()", &testPassed); err != nil {
-		s.Fatal("isInitialized() failed: ", err)
-	}
-
-	if !testPassed {
-		s.Fatal("Initialization did not work :( test failed.")
-	}
-	*/
 }

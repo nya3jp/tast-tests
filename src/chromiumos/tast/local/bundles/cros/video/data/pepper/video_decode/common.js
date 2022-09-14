@@ -1,11 +1,6 @@
-// Copyright (c) 2021 The Chromium Authors. All rights reserved.
+// Copyright (c) 2012 The Chromium Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
-
-// WHY DID I FORK common.js?
-// THIS IS THE CHANGED VERSION THAT I AM WORKING ON. IT IS NOT COMMON TO
-// OTHER TESTS. IT IS SPECIFIC TO VIDEO DECODING.
-
 
 // Set to true when the Document is loaded IFF "test=true" is in the query
 // string.
@@ -14,6 +9,8 @@ var isTest = false;
 // Set to true when loading a "Release" NaCl module, false when loading a
 // "Debug" NaCl module.
 var isRelease = true;
+
+var doneLoadingExample = false;
 
 // Javascript module pattern:
 //   see http://en.wikipedia.org/wiki/Unobtrusive_JavaScript#Namespaces
@@ -126,7 +123,6 @@ var common = (function() {
    * @param {Object} attrs Dictionary of attributes to set on the module.
    */
   function createNaClModule(name, tool, path, width, height, attrs) {
-    console.log('Creating NaCl module')
     var moduleEl = document.createElement('embed');
     moduleEl.setAttribute('name', 'nacl_module');
     moduleEl.setAttribute('id', 'nacl_module');
@@ -134,7 +130,6 @@ var common = (function() {
     moduleEl.setAttribute('height', height);
     moduleEl.setAttribute('path', path);
     moduleEl.setAttribute('src', path + '/' + name + '.nmf');
-    console.log('Set basic attributes successfully')
 
     // Add any optional arguments
     if (attrs) {
@@ -142,7 +137,6 @@ var common = (function() {
         moduleEl.setAttribute(key, attrs[key]);
       }
     }
-    console.log('Set additinal attrs')
 
     var mimetype = mimeTypeForTool(tool);
     moduleEl.setAttribute('type', mimetype);
@@ -154,13 +148,11 @@ var common = (function() {
     // event fires.
     var listenerDiv = document.getElementById('listener');
     listenerDiv.appendChild(moduleEl);
-    console.log('Appended child to listener div')
 
     // Request the offsetTop property to force a relayout. As of Apr 10, 2014
     // this is needed if the module is being loaded on a Chrome App's
     // background page (see crbug.com/350445).
     moduleEl.offsetTop;
-    console.log('Forced relayout')
 
     // Host plugins don't send a moduleDidLoad message. We'll fake it here.
     var isHost = isHostToolchain(tool);
@@ -242,13 +234,9 @@ var common = (function() {
    * This event listener is registered in attachDefaultListeners above.
    */
   function moduleDidLoad() {
-    console.log('Nacl module loaded.')
     common.naclModule = document.getElementById('nacl_module');
     updateStatus('RUNNING');
-
-    // ADDITION BY ME
-    // Send a request to the module asking about if it worked successfully
-    common.naclModule.postMessage(1);
+    doneLoadingExample = true;
 
     if (typeof window.moduleDidLoad !== 'undefined') {
       window.moduleDidLoad();
@@ -295,14 +283,6 @@ var common = (function() {
   /** An array of messages to display in the element with id "log". */
   var logMessageArray = [];
 
-  // ADDITION BY ME
-  /** Internal tracking of if we're done. */
-  var succeeded = false;
-
-  function hasSucceeded() {
-    return true;
-  }
-
   /**
    * Add a message to an element with id "log".
    *
@@ -336,17 +316,6 @@ var common = (function() {
    *     the data sent from the NaCl module.
    */
   function handleMessage(message_event) {
-    console.log('Message received!')
-    // ADDITION BY ME
-    if (typeof message_event.data === 'number') {
-      if (message_event.data == 2) {
-        // TODO we are done, need to store this somehow
-        succeeded = true;
-        updateStatus('SUCCEEDED')
-      }
-      return;
-    }
-    // END MY CHANGE
     if (typeof message_event.data === 'string') {
       for (var type in defaultMessageTypes) {
         if (defaultMessageTypes.hasOwnProperty(type)) {
@@ -380,97 +349,29 @@ var common = (function() {
    * @param {Object} attrs Optional dictionary of additional attributes.
    */
   function domContentLoaded(name, tool, path, width, height, attrs) {
-    console.log('DOM content loaded.')
     // If the page loads before the Native Client module loads, then set the
     // status message indicating that the module is still loading.  Otherwise,
     // do not change the status message.
-    updateStatus('Page loaded. Nacl Module should be loaded next.');
-  }
+    updateStatus('Page loaded.');
+    if (!browserSupportsNaCl(tool)) {
+      updateStatus(
+          'Browser does not support NaCl (' + tool + '), or NaCl is disabled');
+    } else if (common.naclModule == null) {
+      updateStatus('Creating embed: ' + tool);
 
-  function loadNaclModule() {
-    updateStatus('Loading NaCl Module.')
-    var body = document.body;
-
-    // The data-* attributes on the body can be referenced via body.dataset.
-    if (body.dataset) {
-      if (body.dataset.customLoad) {
-        return;
-      }
-
-      // From https://developer.mozilla.org/en-US/docs/DOM/window.location
-      var searchVars = {};
-      if (window.location.search.length > 1) {
-        var pairs = window.location.search.substr(1).split('&');
-        for (var key_ix = 0; key_ix < pairs.length; key_ix++) {
-          var keyValue = pairs[key_ix].split('=');
-          searchVars[unescape(keyValue[0])] =
-              keyValue.length > 1 ? unescape(keyValue[1]) : '';
-        }
-      }
-
-      var toolchains = body.dataset.tools.split(' ');
-      var configs = body.dataset.configs.split(' ');
-
-      var attrs = {};
-      if (body.dataset.attrs) {
-        var attr_list = body.dataset.attrs.split(' ');
-        for (var key in attr_list) {
-          var attr = attr_list[key].split('=');
-          var key = attr[0];
-          var value = attr[1];
-          attrs[key] = value;
-        }
-      }
-
-      var tc = toolchains.indexOf(searchVars.tc) !== -1 ?
-          searchVars.tc : toolchains[0];
-
-      // If the config value is included in the search vars, use that.
-      // Otherwise default to Release if it is valid, or the first value if
-      // Release is not valid.
-      if (configs.indexOf(searchVars.config) !== -1)
-        var config = searchVars.config;
-      else if (configs.indexOf('Release') !== -1)
-        var config = 'Release';
-      else
-        var config = configs[0];
-
-      var pathFormat = body.dataset.path;
-      var path = pathFormat.replace('{tc}', tc).replace('{config}', config);
-
-      isTest = searchVars.test === 'true';
-      isRelease = path.toLowerCase().indexOf('release') != -1;
-
-      // name, tool, path, width, height, attrs
-      var name = body.dataset.name;
-      var tool = tc;
-      var width = body.dataset.width;
-      var height = body.dataset.height;
-  
-      if (!browserSupportsNaCl(tool)) {
-        updateStatus(
-            'Browser does not support NaCl (' + tool + '), or NaCl is disabled');
-      } else if (common.naclModule == null) {
-        console.log('Creating embed...')
-        updateStatus('Creating embed: ' + tool);
-
-        // We use a non-zero sized embed to give Chrome space to place the bad
-        // plug-in graphic, if there is a problem.
-        width = typeof width !== 'undefined' ? width : 200;
-        height = typeof height !== 'undefined' ? height : 200;
-        attachDefaultListeners();
-        createNaClModule(name, tool, path, width, height, attrs);
-        console.log('Triggered creation of NaCl module')
-        return true;
-      } else {
-        // It's possible that the Native Client module onload event fired
-        // before the page's onload event.  In this case, the status message
-        // will reflect 'SUCCESS', but won't be displayed.  This call will
-        // display the current message.
-        updateStatus('Waiting.');
-      }
+      // We use a non-zero sized embed to give Chrome space to place the bad
+      // plug-in graphic, if there is a problem.
+      width = typeof width !== 'undefined' ? width : 200;
+      height = typeof height !== 'undefined' ? height : 200;
+      attachDefaultListeners();
+      createNaClModule(name, tool, path, width, height, attrs);
+    } else {
+      // It's possible that the Native Client module onload event fired
+      // before the page's onload event.  In this case, the status message
+      // will reflect 'SUCCESS', but won't be displayed.  This call will
+      // display the current message.
+      updateStatus('Waiting.');
     }
-    return false;
   }
 
   /** Saved text to display in the element with id 'statusField'. */
@@ -505,9 +406,7 @@ var common = (function() {
     hideModule: hideModule,
     removeModule: removeModule,
     logMessage: logMessage,
-    updateStatus: updateStatus,
-    hasSucceeded: hasSucceeded,
-    loadNaclModule: loadNaclModule,
+    updateStatus: updateStatus
   };
 
 }());
