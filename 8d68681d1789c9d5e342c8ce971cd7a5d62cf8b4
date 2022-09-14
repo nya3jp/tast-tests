@@ -22,6 +22,30 @@
       },
       "revId": "8d68681d1789c9d5e342c8ce971cd7a5d62cf8b4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d83b2a26_7db7dffe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/spera/videoeditingcuj/wevideo/wevideo.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2022-09-14T02:50:02Z",
+      "side": 1,
+      "message": "Thanks for suggestion!\nI found out that it should be (?i) and it\u0027s no problem to use.",
+      "parentUuid": "8bc8af5b_91e6891d",
+      "range": {
+        "startLine": 130,
+        "startChar": 36,
+        "endLine": 130,
+        "endChar": 61
+      },
+      "revId": "8d68681d1789c9d5e342c8ce971cd7a5d62cf8b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
