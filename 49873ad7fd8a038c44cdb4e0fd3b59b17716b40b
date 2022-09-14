@@ -75,6 +75,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9fbea467_f4bd95f7",
+        "filename": "helpers/local/featured.FeatureLibrary.check.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2022-09-14T16:01:03Z",
+      "side": 1,
+      "message": "No, this cannot be constexpr because the feature_library checks pointer identity of the objects that are passed in, much like base::Feature in chromium.",
+      "parentUuid": "fd016c14_c818abee",
+      "revId": "49873ad7fd8a038c44cdb4e0fd3b59b17716b40b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d67842b8_ce25ed4c",
@@ -151,6 +169,30 @@
       "writtenOn": "2022-09-14T13:54:39Z",
       "side": 1,
       "message": "style:\n\nindent looks broken. Could you check all indents in this file?",
+      "range": {
+        "startLine": 64,
+        "startChar": 21,
+        "endLine": 64,
+        "endChar": 54
+      },
+      "revId": "49873ad7fd8a038c44cdb4e0fd3b59b17716b40b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "725a3a5f_c069b9af",
+        "filename": "helpers/local/featured.FeatureLibrary.check.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2022-09-14T16:01:03Z",
+      "side": 1,
+      "message": "iiuc clang-format.py wasn\u0027t touching this file, do you know if it\u0027s configured to run for the helpers/local/ directory?",
+      "parentUuid": "16ce3c60_5aedcb21",
       "range": {
         "startLine": 64,
         "startChar": 21,
@@ -243,6 +285,30 @@
       "writtenOn": "2022-09-14T13:54:39Z",
       "side": 1,
       "message": "Could you use testexec.Cmd.SeparatedOutput() instead?",
+      "range": {
+        "startLine": 162,
+        "startChar": 1,
+        "endLine": 168,
+        "endChar": 17
+      },
+      "revId": "49873ad7fd8a038c44cdb4e0fd3b59b17716b40b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f7cb9c9_09f2fbcc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/featured/feature_library_late_boot.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2022-09-14T16:01:03Z",
+      "side": 1,
+      "message": "ooh, wonderful, didn\u0027t realize this was an option. thanks for the pointer!",
+      "parentUuid": "5499ef34_edd6d540",
       "range": {
         "startLine": 162,
         "startChar": 1,
