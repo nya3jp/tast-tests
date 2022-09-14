@@ -1,4 +1,4 @@
-// Copyright 2022 The Chromium OS Authors. All rights reserved.
+// Copyright 2022 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -7,7 +7,6 @@ package ui
 import (
 	"context"
 	"fmt"
-	"strings"
 	"time"
 
 	"chromiumos/tast/common/perf"
@@ -56,7 +55,7 @@ func DeskTemplatesCUJ(ctx context.Context, s *testing.State) {
 	cr, err := chrome.New(ctx,
 		chrome.GAIALoginPool(s.RequiredVar("ui.gaiaPoolDefault")),
 		chrome.EnableFeatures("DesksTemplates"),
-		chrome.DisableFeatures("DeskTemplateSync"),
+		chrome.DisableFeatures("DeskTemplateSync", "FirmwareUpdaterApp"),
 		chrome.ARCSupported(),
 		chrome.ExtraArgs(arc.DisableSyncFlags()...))
 	if err != nil {
@@ -119,16 +118,14 @@ func DeskTemplatesCUJ(ctx context.Context, s *testing.State) {
 		appsList := []apps.App{apps.PlayStore, apps.Chrome, apps.FilesSWA}
 		for _, app := range appsList {
 			if err := apps.Launch(ctx, tconn, app.ID); err != nil {
-				return errors.Wrapf(err, "%s can't be opened", app.Name)
+				return errors.Wrapf(err, "failed to open %s", app.Name)
 			}
 			if err := ash.WaitForApp(ctx, tconn, app.ID, time.Minute); err != nil {
 				return errors.Wrapf(err, "%s did not appear in shelf after launch", app.Name)
 			}
-			// Wait for the launched app window to become visible.
-			if err := ash.WaitForCondition(ctx, tconn, func(w *ash.Window) bool {
-				return w.IsVisible && strings.Contains(w.Title, app.Name)
-			}, &testing.PollOptions{Timeout: 30 * time.Second}); err != nil {
-				return errors.Wrapf(err, "%s app window not visible after launching", app.Name)
+			// Some apps may take a long time to load such as Play Store. Wait for launch event to be completed.
+			if err := ac.WithInterval(2*time.Second).WaitUntilNoEvent(nodewith.Root(), event.LocationChanged)(ctx); err != nil {
+				return errors.Wrap(err, "failed to wait for the app launch event to be completed")
 			}
 		}
 
@@ -147,7 +144,7 @@ func DeskTemplatesCUJ(ctx context.Context, s *testing.State) {
 
 		if err := uiauto.Combine(
 			"save a desk template",
-			ac.LeftClick(saveDeskButton),
+			ac.DoDefault(saveDeskButton),
 			// Wait for the desk templates grid shows up.
 			ac.WaitUntilExists(desksTemplatesGridView),
 		)(ctx); err != nil {
@@ -185,7 +182,7 @@ func DeskTemplatesCUJ(ctx context.Context, s *testing.State) {
 		libraryButton := nodewith.Name("Library")
 		if err := uiauto.Combine(
 			"show the saved desks template",
-			ac.LeftClick(libraryButton),
+			ac.DoDefault(libraryButton),
 			// Wait for the desks templates grid shows up.
 			ac.WaitUntilExists(desksTemplatesGridView),
 		)(ctx); err != nil {
@@ -209,7 +206,7 @@ func DeskTemplatesCUJ(ctx context.Context, s *testing.State) {
 		// Launch the saved desk template.
 		if err := uiauto.Combine(
 			"launch the saved desk template",
-			ac.LeftClick(firstDeskTemplate),
+			ac.DoDefault(firstDeskTemplate),
 			// Wait for the new desk to appear.
 			ac.WaitUntilExists(newDeskMiniView),
 		)(ctx); err != nil {
