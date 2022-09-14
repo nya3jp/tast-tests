@@ -38,6 +38,9 @@ service RemoteCellularService {
 
   // QueryInterface returns the cellular device interface properties.
   rpc QueryInterface(google.protobuf.Empty) returns (QueryInterfaceResponse) {}
+
+  // WaitForNextSms waits until a single sms added signal is received.
+  rpc WaitForNextSms(google.protobuf.Empty) returns (WaitForNextSmsResponse) {}
 }
 
 message EnableResponse {
@@ -58,6 +61,14 @@ message DisconnectResponse {
 
 message QueryInterfaceResponse {
   string name = 1;
+}
+
+message SmsMessage {
+  string text = 2;
+}
+
+message WaitForNextSmsResponse {
+  SmsMessage message = 1;
 }
 
 message QueryServiceResponse {
