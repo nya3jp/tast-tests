@@ -73,6 +73,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ae11fc3b_512c188a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-09-14T20:26:45Z",
+      "side": 1,
+      "message": "It\u0027s difficult to parameterize them since they use different APIs for basically all steps. I would need to do `if(uss) {...} else {...}` for every step, like auth factor addition etc. Here is an example https://paste.googleplex.com/4810388473380864\n\nI think it would be better to keep them separate. Are there any existing cases where we have both new and old APIs in one test?",
+      "parentUuid": "4ef29de9_12ee6de1",
+      "revId": "cd3a3bcea18c9d765ee97d9a43366d3b8ca8f00e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "43665d3f_5a427edd",
         "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/update_pin.go",
         "patchSetId": 2
