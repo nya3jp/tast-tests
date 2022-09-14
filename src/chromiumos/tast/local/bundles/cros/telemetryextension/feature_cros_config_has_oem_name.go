@@ -7,7 +7,6 @@ package telemetryextension
 import (
 	"context"
 
-	"chromiumos/tast/local/bundles/cros/telemetryextension/dep"
 	"chromiumos/tast/local/crosconfig"
 	"chromiumos/tast/testing"
 )
@@ -17,21 +16,12 @@ func init() {
 		Func: FeatureCrOSConfigHasOEMName,
 		Desc: "Verifies that CrOSConfig has OEM name",
 		Contacts: []string{
-			"lamzin@google.com", // Test and Telemetry Extension author
-			"mgawad@google.com", // Telemetry Extension author
+			"lamzin@google.com",    // Test and Telemetry Extension author
+			"mgawad@google.com",    // Telemetry Extension author
+			"bkersting@google.com", // Telemetry Extension author
 			"cros-oem-services-team@google.com",
 		},
-		Attr: []string{"group:mainline", "informational"},
-		Params: []testing.Param{
-			{
-				Name:              "stable",
-				ExtraHardwareDeps: dep.StableModels(),
-			},
-			{
-				Name:              "non_stable",
-				ExtraHardwareDeps: dep.NonStableModels(),
-			},
-		},
+		Attr: []string{"group:telemetry_extension_hw"},
 	})
 }
 
@@ -39,7 +29,7 @@ func init() {
 func FeatureCrOSConfigHasOEMName(ctx context.Context, s *testing.State) {
 	if vendor, err := crosconfig.Get(ctx, "/branding", "oem-name"); err != nil {
 		s.Error("Failed to read vendor name: ", err)
-	} else if got, want := vendor, "HP"; got != want {
-		s.Errorf("Unexpected vendor name = got %q, want %q", got, want)
+	} else if got, allowed_vendors := vendor, []string{"HP", "ASUS"}; !contains(allowed_vendors, got) {
+		s.Errorf("Unexpected vendor name = got %q, want %q", got, allowed_vendors)
 	}
 }
