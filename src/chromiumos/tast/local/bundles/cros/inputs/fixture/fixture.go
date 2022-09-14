@@ -15,8 +15,8 @@ import (
 	"chromiumos/tast/local/bundles/cros/inputs/inputactions"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/local/chrome/ime"
-	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/vkb"
@@ -434,20 +434,12 @@ func (f *inputsFixtureImpl) SetUp(ctx context.Context, s *testing.FixtState) int
 		opts = append(opts, chrome.ExtraArgs("--force-tablet-mode=clamshell"))
 	}
 
-	if f.browserType == browser.TypeLacros {
-		lacrosOpts, err := lacrosfixt.NewConfig(lacrosfixt.Mode(lacros.LacrosPrimary)).Opts()
-		if err != nil {
-			s.Fatal("Failed to get lacros options: ", err)
-		}
-		opts = append(opts, lacrosOpts...)
-	}
-
 	if f.vkEnabled && f.dm != clamshellMode {
 		// Force enable tablet VK by default. Even the device is actually in clamshell mode but not explicitly mentioned.
 		opts = append(opts, chrome.VKEnabled())
 	}
 
-	cr, err := chrome.New(ctx, opts...)
+	cr, err := browserfixt.NewChrome(ctx, f.browserType, lacrosfixt.NewConfig(), opts...)
 	if err != nil {
 		s.Fatal("Failed to start Chrome: ", err)
 	}
