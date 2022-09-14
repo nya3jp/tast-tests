@@ -16,6 +16,46 @@
       "message": "Hello, please help me review this change. Thank you.",
       "revId": "dede8b08611097b4461bed8e2faeb0507b7fe151",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "057b0b1e_37d97b53",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2022-09-14T01:30:39Z",
+      "side": 1,
+      "message": "HwSec-wise LGTM",
+      "revId": "dede8b08611097b4461bed8e2faeb0507b7fe151",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98d5f007_c42796a7",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2022-09-14T01:30:39Z",
+      "side": 1,
+      "message": "opt.ObjID",
+      "range": {
+        "startLine": 350,
+        "startChar": 221,
+        "endLine": 350,
+        "endChar": 226
+      },
+      "revId": "dede8b08611097b4461bed8e2faeb0507b7fe151",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
