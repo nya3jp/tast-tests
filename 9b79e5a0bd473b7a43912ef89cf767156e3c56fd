@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0f197ec_dc4d9933",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1412928
+      },
+      "writtenOn": "2022-09-14T06:02:33Z",
+      "side": 0,
+      "message": "This line change is needed to pass PRESUBMIT when I upload this change.",
+      "revId": "9b79e5a0bd473b7a43912ef89cf767156e3c56fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
