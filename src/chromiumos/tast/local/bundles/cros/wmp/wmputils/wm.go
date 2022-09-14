@@ -35,7 +35,7 @@ func EnsureOnlyBrowserWindowOpen(ctx context.Context, tconn *chrome.TestConn, bt
 		// Check if there is only one open window.
 		ws, err := ash.GetAllWindows(ctx, tconn)
 		if err != nil {
-			testing.PollBreak(errors.Wrap(err, "failed to get the window list"))
+			return testing.PollBreak(errors.Wrap(err, "failed to get the window list"))
 		}
 		if len(ws) != 1 {
 			return errors.Errorf("expected 1 window, got %v", len(ws))
