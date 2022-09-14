@@ -3,6 +3,92 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5e26a043_df9a613a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-09-14T02:43:19Z",
+      "side": 1,
+      "message": "D-Bus",
+      "range": {
+        "startLine": 10,
+        "startChar": 6,
+        "endLine": 10,
+        "endChar": 10
+      },
+      "revId": "7390c67dd83f8b0678ec7e047b325645851d2873",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb3b3312_a463dc2b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-09-14T02:43:19Z",
+      "side": 1,
+      "message": "the ALSA",
+      "range": {
+        "startLine": 12,
+        "startChar": 31,
+        "endLine": 12,
+        "endChar": 35
+      },
+      "revId": "7390c67dd83f8b0678ec7e047b325645851d2873",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "670426f1_b6305d21",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-09-14T02:43:19Z",
+      "side": 1,
+      "message": "via the Quick Settings UI.",
+      "range": {
+        "startLine": 14,
+        "startChar": 58,
+        "endLine": 16,
+        "endChar": 0
+      },
+      "revId": "7390c67dd83f8b0678ec7e047b325645851d2873",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ccabfbb3_21bd170c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-09-14T02:43:19Z",
+      "side": 1,
+      "message": "Is it the only viable way to select loopback device? Ask here because Chrome UI dependency increase the time and complexity to run the test. Unless it is necessary, it is better not to depend on the Chrome.",
+      "revId": "7390c67dd83f8b0678ec7e047b325645851d2873",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "81fd7d53_80449997",
         "filename": "src/chromiumos/tast/local/audio/aloop.go",
         "patchSetId": 2
@@ -90,6 +176,23 @@
         "endLine": 84,
         "endChar": 14
       },
+      "revId": "7390c67dd83f8b0678ec7e047b325645851d2873",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd1a10e4_183a1aa7",
+        "filename": "src/chromiumos/tast/local/audio/aloop.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-09-14T02:43:19Z",
+      "side": 1,
+      "message": "To promise the defer call have enough ctx to run, you need to shorten the ctx for the rest of the code.\n```\nif err :\u003d quicksettings.Show(ctx, tconn); err !\u003d nil {\n  ...\n}\nctxForCleanUp :\u003d ctx\nctx, cancel :\u003d ctxutil.Shorten(ctx, timeForCleanUp)\ndefer cancel()\ndefer quicksettings.Hide(ctxForCleanUp, tconn)\n```\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#reserve-time-for-clean_up-task",
       "revId": "7390c67dd83f8b0678ec7e047b325645851d2873",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
