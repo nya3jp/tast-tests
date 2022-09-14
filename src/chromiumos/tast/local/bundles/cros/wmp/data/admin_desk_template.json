@@ -1,56 +1,53 @@
 [
   {
-  "created_time_usec": "13281141065620048",
-  "desk": {
-    "apps": [
-      {
-        "active_tab_index": 1,
-        "app_type": "BROWSER",
-        "display_id": "2200000000",
-        "tabs": [
-          {
-            "url": "https://threadit.app/login?redirect=%2F"
+    "created_time_usec": "13291414857208246",
+    "desk": {
+      "apps": [
+        {
+          "active_tab_index": 0,
+          "app_type": "BROWSER",
+          "display_id": "13702326689085186",
+          "tabs": [
+            {
+              "url": "https://www.google.com"
+            }
+          ],
+          "title": "_crx_ajinkohnfhbdebdnggdbjkgjflfhcnkk",
+          "window_bound": {
+            "height": 867,
+            "left": 60,
+            "top": 78,
+            "width": 776
           },
-          {
-            "url": "https://chrome.google.com/webstore/detail/experimental-desk-templat/pmofhigcpodjnhicaeeidfgeppimmkgn/related"
-          }
-        ],
-        "title": "",
-        "window_bound": {
-          "height": 1284,
-          "left": 680,
-          "top": 0,
-          "width": 1100
+          "window_id": 12185,
+          "window_state": "NORMAL",
+          "z_index": 2
         },
-        "window_id": 9,
-        "window_state": "NORMAL",
-        "z_index": 1
-      },
-      {
-        "active_tab_index": 0,
-        "app_type": "BROWSER",
-        "display_id": "2200000000",
-        "tabs": [
-          {
-            "url": "https://mail.google.com/mail/u/0/#inbox"
-          }
-        ],
-        "title": "_crx_fmgjjmmmlfnkbppncabfkddbjimcfncm",
-        "window_bound": {
-          "height": 1268,
-          "left": 1101,
-          "top": 52,
-          "width": 1100
-        },
-        "window_id": 16,
-        "window_state": "NORMAL",
-        "z_index": 2
-      }
-    ]
-  },
-  "name": "Test Admin template for default user",
-  "updated_time_usec": "13281141065620048",
-  "uuid": "62056d03-7231-4813-bc5b-1a07f80d58fa",
-  "version": 1
+        {
+          "active_tab_index": 0,
+          "app_type": "BROWSER",
+          "display_id": "13702955917179649",
+          "tabs": [
+            {
+              "url": "https://www.google.com"
+            }
+          ],
+          "title": "",
+          "window_bound": {
+            "height": 980,
+            "left": 2110,
+            "top": -7,
+            "width": 984
+          },
+          "window_id": 12191,
+          "window_state": "MAXIMIZED",
+          "z_index": 0
+        }
+      ]
+    },
+    "name": "Test Admin template for default user",
+    "updated_time_usec": "13291414857208246",
+    "uuid": "00b1c358-6e00-4ce7-8ee8-3dec151cbe1d",
+    "version": 1
   }
 ]
