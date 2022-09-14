@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a22e914_41a7ce5f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-09-14T02:56:31Z",
+      "side": 1,
+      "message": "Tast",
+      "range": {
+        "startLine": 9,
+        "startChar": 14,
+        "endLine": 9,
+        "endChar": 18
+      },
+      "revId": "5528d63c46549b801bee058c91d0606f1e2da244",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed2bb703_84dda49c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-09-14T02:56:31Z",
+      "side": 1,
+      "message": "How long does it take to reset TPM? That would be a burden for every demomode test to reset TPM before and after the test. Can we consider moving it to a demomode fixture?",
+      "revId": "5528d63c46549b801bee058c91d0606f1e2da244",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7d5acc4_013057f0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/demomode/set_up.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-09-14T02:56:31Z",
+      "side": 1,
+      "message": "Similar to line 65, you need to reserve time for defer to run.\n```\nresetTPMCtx :\u003d ctx\nctx, cancel :\u003d ctxutil.Shorten(ctx, 10*time.Second)\ndefer cancel()\ndefer resetTPMAndSystemState(resetTPMCtx, s)\n```",
+      "range": {
+        "startLine": 50,
+        "startChar": 30,
+        "endLine": 50,
+        "endChar": 33
+      },
+      "revId": "5528d63c46549b801bee058c91d0606f1e2da244",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a30fa349_b6be90dc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/demomode/set_up.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-09-14T02:56:31Z",
+      "side": 1,
+      "message": "Do we want to reset the TPM after the test instead of after the SetUp() function?",
+      "revId": "5528d63c46549b801bee058c91d0606f1e2da244",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
