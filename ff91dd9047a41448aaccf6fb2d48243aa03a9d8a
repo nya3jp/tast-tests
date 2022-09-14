@@ -140,6 +140,30 @@
       },
       "revId": "ff91dd9047a41448aaccf6fb2d48243aa03a9d8a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c475510_04e37e11",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns/dns.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 441,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-09-14T06:28:48Z",
+      "side": 1,
+      "message": "Ah that\u0027s correct, I was thinking of some other things when reading this part. Thanks for the explanation!",
+      "parentUuid": "c86e40a3_77dc0262",
+      "range": {
+        "startLine": 439,
+        "startChar": 0,
+        "endLine": 441,
+        "endChar": 3
+      },
+      "revId": "ff91dd9047a41448aaccf6fb2d48243aa03a9d8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
