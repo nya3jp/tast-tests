@@ -8,6 +8,7 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/telemetryextension/dep"
 	"chromiumos/tast/local/bundles/cros/telemetryextension/fixture"
 	"chromiumos/tast/testing"
@@ -82,7 +83,7 @@ func PlatformAPICPUPrimeSearchRoutine(ctx context.Context, s *testing.State) {
 	startReq := struct {
 		LengthSeconds int64 `json:"length_seconds"`
 	}{
-		60,
+		1,
 	}
 
 	// get result from the diagnostics API.
@@ -96,9 +97,6 @@ func PlatformAPICPUPrimeSearchRoutine(ctx context.Context, s *testing.State) {
 		s.Errorf(`Unexpected routine status: got %q, want "running"`, resp.Status)
 	}
 
-	// wait for the routine to be finished.
-	testing.Sleep(ctx, 61*time.Second)
-
 	updateReq := struct {
 		ID      int64  `json:"id"`
 		Command string `json:"command"`
@@ -106,16 +104,22 @@ func PlatformAPICPUPrimeSearchRoutine(ctx context.Context, s *testing.State) {
 		resp.ID, "status",
 	}
 
-	// request a routine update.
-	if err := v.ExtConn.Call(ctx, &resp,
-		"tast.promisify(chrome.os.diagnostics.getRoutineUpdate)", &updateReq); err != nil {
-		s.Fatal("Failed to get response from Telemetry extension service worker: ", err)
-	}
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		// request a routine update.
+		if err := v.ExtConn.Call(ctx, &resp,
+			"tast.promisify(chrome.os.diagnostics.getRoutineUpdate)", &updateReq); err != nil {
+			return testing.PollBreak(errors.Wrap(err, "failed to get response from Telemetry extension service worker"))
+		}
 
-	// assert the status is "passed" or "failed". We allow a failing routine (note: no
-	// "error", "cancelled", etc.) because we can't make assumptions about the DUT's
-	// state. "passed", and "failed" signal that the request successfully reached cros_healthd.
-	if resp.Status != "passed" && resp.Status != "failed" {
-		s.Errorf(`Unexpected routine status: got %q; want "passed" or "failed" or "unsupported"`, resp.Status)
+		// assert the status is "passed" or "failed". We allow a failing routine (note: no
+		// "error", "cancelled", etc.) because we can't make assumptions about the DUT's
+		// state. "passed", and "failed" signal that the request successfully reached cros_healthd.
+		if resp.Status != "passed" && resp.Status != "failed" {
+			return errors.Errorf(`unexpected routine status: got %q; want "passed" or "failed" or "unsupported"`, resp.Status)
+		}
+
+		return nil
+	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
+		s.Fatal("Failed to wait routine to finish: ", err)
 	}
 }
