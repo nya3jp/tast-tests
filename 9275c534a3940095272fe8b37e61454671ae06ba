@@ -3,6 +3,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4e6d1b9a_3907e7f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns/dns.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2022-09-14T06:51:55Z",
+      "side": 1,
+      "message": "do you need to export these fields?",
+      "range": {
+        "startLine": 70,
+        "startChar": 1,
+        "endLine": 72,
+        "endChar": 21
+      },
+      "revId": "9275c534a3940095272fe8b37e61454671ae06ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c91c76e_28979ccc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns/dns.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2022-09-14T06:51:55Z",
+      "side": 1,
+      "message": "Wouldn\u0027t it be better to use a dialer and DialWithContext here?",
+      "range": {
+        "startLine": 392,
+        "startChar": 18,
+        "endLine": 392,
+        "endChar": 22
+      },
+      "revId": "9275c534a3940095272fe8b37e61454671ae06ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "72f32627_f865184c",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/dns/dns.go",
         "patchSetId": 4
@@ -19,6 +65,98 @@
         "startChar": 2,
         "endLine": 521,
         "endChar": 9
+      },
+      "revId": "9275c534a3940095272fe8b37e61454671ae06ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1bac5803_361833c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns/dns.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 562,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2022-09-14T06:51:55Z",
+      "side": 1,
+      "message": "nit: maybe just inline this in the next statement rather than shadow the pkg name?",
+      "range": {
+        "startLine": 562,
+        "startChar": 1,
+        "endLine": 562,
+        "endChar": 8
+      },
+      "revId": "9275c534a3940095272fe8b37e61454671ae06ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b55c5977_39f45b4e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns/dnsproxy.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2022-09-14T06:51:55Z",
+      "side": 1,
+      "message": "nit: comment not needed for unexpected const (esp since it reads like a redundant javadoc)",
+      "range": {
+        "startLine": 58,
+        "startChar": 3,
+        "endLine": 58,
+        "endChar": 19
+      },
+      "revId": "9275c534a3940095272fe8b37e61454671ae06ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ccd4767_b227782b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns/dnsproxy.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2022-09-14T06:51:55Z",
+      "side": 1,
+      "message": "checks if _any_ dnsproxy proc is running, if you want to be safe, check for the controller with \"-P 1\" maybe?\n\nalternatively, I think you can avoid the grep with \"ps -u dns-proxy --no-headers\" which should produce no output if no proc exists",
+      "range": {
+        "startLine": 301,
+        "startChar": 0,
+        "endLine": 301,
+        "endChar": 58
+      },
+      "revId": "9275c534a3940095272fe8b37e61454671ae06ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00ec65e3_3b2918c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns/dnsproxy.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2022-09-14T06:51:55Z",
+      "side": 1,
+      "message": "why not just \"initctl restart dns-proxy\"  ?",
+      "range": {
+        "startLine": 334,
+        "startChar": 33,
+        "endLine": 334,
+        "endChar": 62
       },
       "revId": "9275c534a3940095272fe8b37e61454671ae06ba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
