@@ -69,6 +69,24 @@
       "parentUuid": "5c012c74_1366ce90",
       "revId": "d86a604fa48c804cb5477ec799aec6b1a45a8919",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "862de30f_cd3e9faf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_a11y.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1531047
+      },
+      "writtenOn": "2022-09-14T09:59:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1802bc78_be030816",
+      "revId": "d86a604fa48c804cb5477ec799aec6b1a45a8919",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
