@@ -52,6 +52,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ab4360f_92725cb2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1121230
+      },
+      "writtenOn": "2022-09-14T20:06:23Z",
+      "side": 1,
+      "message": "Thank you!",
+      "revId": "c4812fc03b4f08431b963902d7696990dbc5591c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7294e37b_8e29feef",
@@ -101,6 +118,24 @@
       "side": 1,
       "message": "Okay for temporary measure. BTW, do you know what happen when it is sync? Can you check state of certain UI element?",
       "parentUuid": "3ebcbad4_6dddfca1",
+      "revId": "c4812fc03b4f08431b963902d7696990dbc5591c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "23142ca9_fe8e4532",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/focus_android_app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1121230
+      },
+      "writtenOn": "2022-09-14T20:06:23Z",
+      "side": 1,
+      "message": "Yes, there is a bug for this issue. We should be able to remove this sleep once the bug gets fixed.\n\nI don\u0027t think there is any UI visibility change. Both Ash and Arc are managing their own WM states. For this case, if we open an Android app and a Chrome browser quickly, Arc gets out of WM state sync and ends up in the following state:\n\nWindow order:\nAsh: Chrome browser is front. Android app is back.\nArc: Android app is front. Chrome browser is back.\n\nWe need a sleep between Android app launch and Chrome browser launch.\n\ntakise@: Correct me if it\u0027s not the case.",
+      "parentUuid": "28e50abb_8b487627",
       "revId": "c4812fc03b4f08431b963902d7696990dbc5591c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
