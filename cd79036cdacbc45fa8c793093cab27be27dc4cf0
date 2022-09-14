@@ -86,6 +86,24 @@
       "parentUuid": "eb95f71b_ee648f62",
       "revId": "cd79036cdacbc45fa8c793093cab27be27dc4cf0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60454cf6_d3f08708",
+        "filename": "src/chromiumos/tast/remote/firmware/power/dut_power.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2022-09-14T17:45:29Z",
+      "side": 1,
+      "message": "Would it be possible to make that an option that can be passed into the function? I\u0027m just concerned that a future change to how rails are named could cause results to get silently overwritten.",
+      "parentUuid": "66225fa3_629b8fdc",
+      "revId": "cd79036cdacbc45fa8c793093cab27be27dc4cf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
