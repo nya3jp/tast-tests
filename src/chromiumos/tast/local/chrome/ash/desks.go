@@ -1,4 +1,4 @@
-// Copyright 2019 The Chromium OS Authors. All rights reserved.
+// Copyright 2019 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -203,7 +203,7 @@ func SaveCurrentDesk(ctx context.Context, ac *uiauto.Context, savedDeskType Save
 	// Save a desk.
 	if err := uiauto.Combine(
 		"save a desk",
-		ac.LeftClick(saveDeskButton),
+		ac.DoDefault(saveDeskButton),
 		// Wait for the saved desk grid to show up.
 		ac.WaitUntilExists(savedDeskGridView),
 	)(ctx); err != nil {
@@ -272,7 +272,7 @@ func EnterLibraryPage(ctx context.Context, ac *uiauto.Context) error {
 	// Show the saved desk grid.
 	if err = uiauto.Combine(
 		"show the saved desk grid",
-		ac.LeftClick(libraryButton),
+		ac.DoDefault(libraryButton),
 		// Wait for the saved desk grid to show up.
 		ac.WaitUntilExists(savedDeskGridView),
 	)(ctx); err != nil {
@@ -306,7 +306,7 @@ func LaunchSavedDesk(ctx context.Context, ac *uiauto.Context, savedDeskName stri
 		"launch the saved desk",
 		// Verify the existence of the saved desk.
 		ac.WaitUntilExists(savedDeskNameView),
-		ac.LeftClick(savedDesk),
+		ac.DoDefault(savedDesk),
 	)(ctx); err != nil {
 		return errors.Wrap(err, "failed to launch a saved desk")
 	}
@@ -383,7 +383,7 @@ func DeleteAllSavedDesks(ctx context.Context, ac *uiauto.Context, tconn *chrome.
 		if err := uiauto.Combine(
 			"Delete saved desks",
 			ac.WaitUntilExists(closeButton),
-			ac.LeftClick(closeButton),
+			ac.DoDefault(closeButton),
 			ac.WaitUntilExists(deleteDialog),
 			kb.AccelAction("Enter"),
 		)(ctx); err != nil {

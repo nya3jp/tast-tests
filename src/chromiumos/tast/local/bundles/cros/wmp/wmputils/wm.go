@@ -1,4 +1,4 @@
-// Copyright 2022 The Chromium OS Authors. All rights reserved.
+// Copyright 2022 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -88,7 +88,7 @@ func VerifyWindowCount(ctx context.Context, tconn *chrome.TestConn, windowCount 
 			return errors.Wrap(err, "failed to get all open windows")
 		}
 		if len(wc) != windowCount {
-			return errors.Wrapf(err, "found inconsistent number of window(s): got %v, want %v", len(ws), windowCount)
+			return errors.Wrapf(err, "found inconsistent number of window(s): got %v, want %v", len(wc), windowCount)
 		}
 	}
 
