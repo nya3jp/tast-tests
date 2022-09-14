@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "7a1a16ed_51bf8cda",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-09-14T12:44:40Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "7c816e43_74c7260a",
+      "range": {
+        "startLine": 10,
+        "startChar": 10,
+        "endLine": 10,
+        "endChar": 15
+      },
+      "revId": "eeca57b454b6b30d58e6d045dea6b7646c515e66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "ded8c214_46bdc057",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -54,6 +78,30 @@
       "writtenOn": "2022-09-13T18:29:34Z",
       "side": 1,
       "message": "faillog?",
+      "range": {
+        "startLine": 37,
+        "startChar": 33,
+        "endLine": 37,
+        "endChar": 40
+      },
+      "revId": "eeca57b454b6b30d58e6d045dea6b7646c515e66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b31c1015_c624e431",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/browser/media/youtubemusic/youtube_music.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-09-14T12:44:40Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "afde89b4_0b0cebbf",
       "range": {
         "startLine": 37,
         "startChar": 33,
