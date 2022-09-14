@@ -16,6 +16,24 @@
       "message": "I\u0027m re-building tast after rebasing to resolve the merge conflict, but the contents of this commit are ready to review. Please take a look when you get a chance.",
       "revId": "6adc70cc8c91a91805c699d0ec34fa2e5fd7c3ed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "588b5a34_5bff48ad",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1498402
+      },
+      "writtenOn": "2022-09-14T00:05:49Z",
+      "side": 1,
+      "message": "Rebase and verification are done.",
+      "parentUuid": "a79258ae_bbe5eae4",
+      "revId": "6adc70cc8c91a91805c699d0ec34fa2e5fd7c3ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
