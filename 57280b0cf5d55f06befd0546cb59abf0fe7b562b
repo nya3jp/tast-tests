@@ -16,6 +16,23 @@
       "message": "Fixes applied. Please review.",
       "revId": "57280b0cf5d55f06befd0546cb59abf0fe7b562b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f623ddad_c977f16c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2022-09-14T16:42:24Z",
+      "side": 1,
+      "message": "LGTM. Thanks!",
+      "revId": "57280b0cf5d55f06befd0546cb59abf0fe7b562b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
