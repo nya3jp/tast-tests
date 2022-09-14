@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8cde823f_4ef3d65a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1294854
+      },
+      "writtenOn": "2022-09-14T22:47:52Z",
+      "side": 1,
+      "message": "Can you add additional context on why the upgrade was needed? Helpful for when revisiting this CL",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 72
+      },
+      "revId": "7a4dab5a34075f24c7ab51160c6f05e20b1cca36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e1b4cb1d_57c6183f",
         "filename": "src/chromiumos/tast/local/input/gen/gen_constants.go",
         "patchSetId": 3
@@ -19,6 +42,98 @@
         "startChar": 104,
         "endLine": 44,
         "endChar": 109
+      },
+      "revId": "7a4dab5a34075f24c7ab51160c6f05e20b1cca36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12399ba2_53b3ac62",
+        "filename": "src/chromiumos/tast/local/input/keyboard.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1294854
+      },
+      "writtenOn": "2022-09-14T22:47:52Z",
+      "side": 1,
+      "message": "\u003c80 chars",
+      "range": {
+        "startLine": 144,
+        "startChar": 0,
+        "endLine": 144,
+        "endChar": 118
+      },
+      "revId": "7a4dab5a34075f24c7ab51160c6f05e20b1cca36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de1fd5f5_033f8263",
+        "filename": "src/chromiumos/tast/local/input/keyboard.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1294854
+      },
+      "writtenOn": "2022-09-14T22:47:52Z",
+      "side": 1,
+      "message": "use backticks ` for variable names in comments",
+      "range": {
+        "startLine": 144,
+        "startChar": 6,
+        "endLine": 144,
+        "endChar": 8
+      },
+      "revId": "7a4dab5a34075f24c7ab51160c6f05e20b1cca36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4162033_0bde67d6",
+        "filename": "src/chromiumos/tast/local/input/keyboard.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1294854
+      },
+      "writtenOn": "2022-09-14T22:47:52Z",
+      "side": 1,
+      "message": "\u003c 80 chars",
+      "range": {
+        "startLine": 149,
+        "startChar": 2,
+        "endLine": 149,
+        "endChar": 128
+      },
+      "revId": "7a4dab5a34075f24c7ab51160c6f05e20b1cca36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9fea2cc_0ec69a70",
+        "filename": "src/chromiumos/tast/local/input/keyboard_top_row_layout.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1294854
+      },
+      "writtenOn": "2022-09-14T22:47:52Z",
+      "side": 1,
+      "message": "I think this can be trimmed, applies to the other link comments too",
+      "range": {
+        "startLine": 40,
+        "startChar": 109,
+        "endLine": 40,
+        "endChar": 154
       },
       "revId": "7a4dab5a34075f24c7ab51160c6f05e20b1cca36",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
