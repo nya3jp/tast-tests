@@ -16,6 +16,29 @@
       "message": "+tast-owners, PTAL. Thanks.",
       "revId": "f3c609011b8f241e46e0cd16258d23fa963c0c97",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "664f7c2b_de1712e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/image_paste.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-09-14T20:50:24Z",
+      "side": 1,
+      "message": "If you don\u0027t want to keep having to update the person this TODO is assigned to here, file a bug for it and then put the bug here instead. Then you just have to reassign the bug if someone leaves or switches teams.",
+      "range": {
+        "startLine": 100,
+        "startChar": 9,
+        "endLine": 100,
+        "endChar": 16
+      },
+      "revId": "f3c609011b8f241e46e0cd16258d23fa963c0c97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
