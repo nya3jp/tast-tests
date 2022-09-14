@@ -34,6 +34,24 @@
       "parentUuid": "431b3b8c_b97879ab",
       "revId": "a4771b50c3c1136ee047ee478e75cd9421d099ca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d62dea1b_0be97c9e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/shill_cellular_sim_connect.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-09-14T17:45:56Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "61832b19_443ea98b",
+      "revId": "a4771b50c3c1136ee047ee478e75cd9421d099ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
