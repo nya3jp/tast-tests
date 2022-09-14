@@ -16,6 +16,23 @@
       "message": "Tast review ok. Please ask your peer to review as well.",
       "revId": "d86a604fa48c804cb5477ec799aec6b1a45a8919",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9265fca_cb8544bb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_a11y.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2022-09-14T05:44:14Z",
+      "side": 1,
+      "message": "I think it worth to add comments about the intention so that the future readers know the context. And if it just a temporal workaround, please also add a TODO so that we can revisit once the underlying issue is solved.",
+      "revId": "d86a604fa48c804cb5477ec799aec6b1a45a8919",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
