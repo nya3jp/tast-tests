@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "d76a4b65_652f7f51",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2022-09-14T13:15:02Z",
+      "side": 1,
+      "message": "Could you mention that this issue (missing Text app) should be addressed separately from this test?",
+      "range": {
+        "startLine": 9,
+        "startChar": 65,
+        "endLine": 10,
+        "endChar": 39
+      },
+      "revId": "212b8800cf4d5f9b567760c2446e677198e6326c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "1e3741d9_878bc105",
@@ -14,6 +37,69 @@
       "writtenOn": "2022-09-14T12:02:57Z",
       "side": 1,
       "message": "PTAL. Thanks!",
+      "revId": "212b8800cf4d5f9b567760c2446e677198e6326c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0590cc8e_4c6a1bc2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2022-09-14T13:15:02Z",
+      "side": 1,
+      "message": "Thank you for working on this!",
+      "revId": "212b8800cf4d5f9b567760c2446e677198e6326c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d683d556_a7d5cc3a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/fsp.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2022-09-14T13:15:02Z",
+      "side": 1,
+      "message": "Note for other reviewers:\nThe issue of missing Text app seems to have some peculiar repro condition.\n1) It is only observed in lab DUTs when running test suites, and has not been observed locally. This makes it difficult to debug the issue (which is likely to be a Chrome related bug as stated in b/226240873). Hence, this CL tries to fix the test not by addressing the issue itself, but by working around it.\n2) It is not observed in other tests that use ArcFileReaderTest. Thus, this workaround / tentative fix is needed only for arc.Fsp and arc.Fsp.vm.",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 54
+      },
+      "revId": "212b8800cf4d5f9b567760c2446e677198e6326c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb852c9f_99ff3a5c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/fsp.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2022-09-14T13:15:02Z",
+      "side": 1,
+      "message": "Since this is used only for logging, maybe you can omit it and use `testing.ContextLog` instead?\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#test-subpackages\n\u003e Note that it‘s still best to practice information hiding and pass only as much data is needed. Avoid passing `testing.State` when it’s not actually necessary:\n\u003e * If a function just needs the output directory, pass a path.\n\u003e * If a function just needs to log its progress, pass a `context.Context` so it can call `testing.ContextLog`.",
+      "range": {
+        "startLine": 136,
+        "startChar": 55,
+        "endLine": 136,
+        "endChar": 71
+      },
       "revId": "212b8800cf4d5f9b567760c2446e677198e6326c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
