@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7d2e62ff_20b113ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_login_screen.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-09-14T00:51:35Z",
+      "side": 1,
+      "message": "also need to update the comment",
+      "range": {
+        "startLine": 113,
+        "startChar": 19,
+        "endLine": 113,
+        "endChar": 25
+      },
+      "revId": "78f28aecb43db3ceb24090044df55757a55162c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ed180be4_dcf54f68",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_login_screen.go",
         "patchSetId": 1
