@@ -1,4 +1,4 @@
-// Copyright 2021 The Chromium OS Authors. All rights reserved.
+// Copyright 2021 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -11,20 +11,22 @@ import "time"
 
 // ModemManager1.Modem properties
 const (
-	ModemPropertyBearers        = "Bearers"
-	ModemPropertyDevice         = "Device"
-	ModemPropertyManufacturer   = "Manufacturer"
-	ModemPropertyOwnNumbers     = "OwnNumbers"
-	ModemPropertyPowered        = "PowerState"
-	ModemPropertyPrimarySimSlot = "PrimarySimSlot"
-	ModemPropertySim            = "Sim"
-	ModemPropertySimSlots       = "SimSlots"
-	ModemPropertyState          = "State"
+	ModemPropertyBearers             = "Bearers"
+	ModemPropertyDevice              = "Device"
+	ModemPropertyEquipmentIdentifier = "EquipmentIdentifier"
+	ModemPropertyManufacturer        = "Manufacturer"
+	ModemPropertyOwnNumbers          = "OwnNumbers"
+	ModemPropertyPowered             = "PowerState"
+	ModemPropertyPrimarySimSlot      = "PrimarySimSlot"
+	ModemPropertySim                 = "Sim"
+	ModemPropertySimSlots            = "SimSlots"
+	ModemPropertyState               = "State"
 )
 
 // ModemManager1.Modem.Modem3gpp properties
 const (
 	ModemModem3gppPropertyInitialEpsBearer = "InitialEpsBearer"
+	ModemModem3gppPropertyOperatorCode     = "OperatorCode"
 )
 
 // ModemManager1.Modem.Simple properties
@@ -35,9 +37,11 @@ const (
 
 // ModemManager1.Sim properties
 const (
-	SimPropertySimIdentifier = "SimIdentifier"
-	SimPropertySimEid        = "Eid"
-	SimPropertyESimStatus    = "EsimStatus"
+	SimPropertySimIMSI               = "Imsi"
+	SimPropertySimIdentifier         = "SimIdentifier"
+	SimPropertySimEid                = "Eid"
+	SimPropertyESimStatus            = "EsimStatus"
+	SimPropertySimOperatorIdentifier = "OperatorIdentifier"
 )
 
 // ModemManager1.Bearer properties

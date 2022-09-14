@@ -1,4 +1,4 @@
-// Copyright 2021 The Chromium OS Authors. All rights reserved.
+// Copyright 2021 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -101,6 +101,20 @@ func (m *Modem) IsSAREnabled(ctx context.Context) (bool, error) {
 		return false, errors.Wrap(err, "failed to read SARState")
 	}
 	return sarState, nil
+}
+
+// GetEquipmentIdentifier - get the identity of the device. This will be the IMEI number.
+func (m *Modem) GetEquipmentIdentifier(ctx context.Context) (string, error) {
+	modemProps, err := m.GetProperties(ctx)
+	if err != nil {
+		return "", errors.Wrap(err, "failed to read modem properties")
+	}
+
+	imei, err := modemProps.GetString(mmconst.ModemPropertyEquipmentIdentifier)
+	if err != nil {
+		return "", errors.Wrap(err, "failed to read EquipmentIdentifier")
+	}
+	return imei, nil
 }
 
 // GetModem3gpp creates a PropertyHolder for the Modem3gpp object.
@@ -619,8 +633,8 @@ func SwitchSlot(ctx context.Context) (uint32, error) {
 	return uint32(setSlot), nil
 }
 
-// GetEid gets current modem sim eid, return eid if esim is active.
-func (m *Modem) GetEid(ctx context.Context) (string, error) {
+// GetSimProperty gets current modem sim property.
+func (m *Modem) GetSimProperty(ctx context.Context, propertyName string) (string, error) {
 	modemProps, err := m.GetProperties(ctx)
 	if err != nil {
 		return "", errors.Wrap(err, "failed to call getproperties on modem")
@@ -634,12 +648,50 @@ func (m *Modem) GetEid(ctx context.Context) (string, error) {
 	if err != nil {
 		return "", errors.Wrap(err, "failed to read sim properties")
 	}
-	simEid, err := simProps.GetString(mmconst.SimPropertySimEid)
+	info, err := simProps.GetString(propertyName)
 	if err != nil {
-		return "", errors.Wrap(err, "failed to get sim eid property")
+		return "", errors.Wrapf(err, "error getting property %q", propertyName)
 	}
 
-	return simEid, nil
+	return info, nil
+}
+
+// GetEid gets current modem sim eid, return eid if esim is active.
+func (m *Modem) GetEid(ctx context.Context) (string, error) {
+	return m.GetSimProperty(ctx, mmconst.SimPropertySimEid)
+}
+
+// GetIMSI gets current modem sim IMSI, return IMSI if sim is active.
+func (m *Modem) GetIMSI(ctx context.Context) (string, error) {
+	return m.GetSimProperty(ctx, mmconst.SimPropertySimIMSI)
+}
+
+// GetOperatorIdentifier gets current modem sim Operator Identifier, return Operator Identifier if sim is active.
+func (m *Modem) GetOperatorIdentifier(ctx context.Context) (string, error) {
+	return m.GetSimProperty(ctx, mmconst.SimPropertySimOperatorIdentifier)
+}
+
+// GetSimIdentifier gets current modem sim Identifier, return Identifier if sim is active.
+func (m *Modem) GetSimIdentifier(ctx context.Context) (string, error) {
+	return m.GetSimProperty(ctx, mmconst.SimPropertySimIdentifier)
+}
+
+// GetOperatorCode gets current operator code, return operator code if sim is active.
+func (m *Modem) GetOperatorCode(ctx context.Context) (string, error) {
+	modem3gpp, err := m.GetModem3gpp(ctx)
+	if err != nil {
+		return "", errors.Wrap(err, "failed to get 3gpp modem")
+	}
+	modemProps, err := modem3gpp.GetProperties(ctx)
+	if err != nil {
+		return "", errors.Wrap(err, "failed to call getproperties on modem3gpp")
+	}
+	operatorCode, err := modemProps.GetString(mmconst.ModemModem3gppPropertyOperatorCode)
+	if err != nil {
+		return "", errors.Wrapf(err, "error getting property %q", mmconst.ModemModem3gppPropertyOperatorCode)
+	}
+
+	return operatorCode, nil
 }
 
 // GetActiveSimPuk gets puk for psim iccid, sets primary slot to psim.
