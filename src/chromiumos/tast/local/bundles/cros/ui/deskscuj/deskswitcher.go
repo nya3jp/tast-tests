@@ -1,4 +1,4 @@
-// Copyright 2022 The ChromiumOS Authors.
+// Copyright 2022 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -89,8 +89,8 @@ func getOverviewWorkflow(tconn *chrome.TestConn, ac *uiauto.Context, setOverview
 				return errors.Wrap(err, "failed to get desk previews")
 			}
 
-			if toDesk < len(desksInfo) {
-				return errors.Errorf("invalid target desk: got %d, expected desk index less than %d", toDesk, len(desksInfo))
+			if numDesks := len(desksInfo); toDesk >= numDesks || toDesk < 0 {
+				return errors.Errorf("invalid target desk: got %d, expected desk index between 0 and %d", toDesk, numDesks-1)
 			}
 
 			if err := mouse.Click(tconn, desksInfo[toDesk].Location.CenterPoint(), mouse.LeftButton)(ctx); err != nil {
