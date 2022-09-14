@@ -47,6 +47,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ab21df8_80fdfb68",
+        "filename": "src/chromiumos/tast/local/bundles/cros/quicksettings/media_controls.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-09-14T12:56:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "59ed5283_8f7cd40d",
+      "range": {
+        "startLine": 31,
+        "startChar": 2,
+        "endLine": 31,
+        "endChar": 10
+      },
+      "revId": "24646578182dcc767d8a8d9c7c906f23aa3f64b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ebe0999_5fbbec6d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/quicksettings/media_controls.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-09-14T12:56:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8f64fe48_c79b7c18",
+      "range": {
+        "startLine": 31,
+        "startChar": 2,
+        "endLine": 31,
+        "endChar": 10
+      },
+      "revId": "24646578182dcc767d8a8d9c7c906f23aa3f64b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fde8503b_642c7281",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-09-13T22:13:13Z",
       "side": 1,
       "message": "This is such a great test! Could we test this in tablet and clamshell mode?",
+      "range": {
+        "startLine": 38,
+        "startChar": 20,
+        "endLine": 38,
+        "endChar": 25
+      },
+      "revId": "24646578182dcc767d8a8d9c7c906f23aa3f64b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec2a04ec_42aa6a76",
+        "filename": "src/chromiumos/tast/local/bundles/cros/quicksettings/media_controls.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-09-14T12:56:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fde8503b_642c7281",
       "range": {
         "startLine": 38,
         "startChar": 20,
@@ -110,6 +182,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "31c8ef05_b8c0132f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/quicksettings/media_controls.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-09-14T12:56:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "377d345d_afed5f35",
+      "revId": "24646578182dcc767d8a8d9c7c906f23aa3f64b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "379802c5_2b5dd032",
@@ -123,6 +213,30 @@
       "writtenOn": "2022-09-13T22:13:13Z",
       "side": 1,
       "message": "would it be easier if we gave the view a view id in chromium? Then this may be a bit more robust if we change the UI.",
+      "range": {
+        "startLine": 258,
+        "startChar": 23,
+        "endLine": 258,
+        "endChar": 88
+      },
+      "revId": "24646578182dcc767d8a8d9c7c906f23aa3f64b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe339599_7625772a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/quicksettings/media_controls.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-09-14T12:56:55Z",
+      "side": 1,
+      "message": "We use the location of the image view\u0027s sibling node to examine the existence of the image view due to the UI tree lacking details of such node.\nCould you guide us if there are better approaches?",
+      "parentUuid": "379802c5_2b5dd032",
       "range": {
         "startLine": 258,
         "startChar": 23,
@@ -170,6 +284,30 @@
       "side": 1,
       "message": "Just realized this is the media controls UI in the bubble. Would it be easier if we gave the image an ID, or if you looked it up by class name?",
       "parentUuid": "ed0d79a7_77eeaa4e",
+      "range": {
+        "startLine": 265,
+        "startChar": 0,
+        "endLine": 275,
+        "endChar": 1
+      },
+      "revId": "24646578182dcc767d8a8d9c7c906f23aa3f64b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f1dfa61_82887307",
+        "filename": "src/chromiumos/tast/local/bundles/cros/quicksettings/media_controls.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-09-14T12:56:55Z",
+      "side": 1,
+      "message": "Sorry, the UI tree doesn\u0027t provide any of those informations for such image view node. (this is a similar approach as CL:3865300)",
+      "parentUuid": "5f1b1b1b_17b17d5b",
       "range": {
         "startLine": 265,
         "startChar": 0,
