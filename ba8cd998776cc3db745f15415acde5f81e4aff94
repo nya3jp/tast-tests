@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "04256292_4b519daf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-09-14T20:25:33Z",
+      "side": 1,
+      "message": "This test, as written in autotest, is both (1) incredibly confusingly laid out, and (2) practically designed to either flake or miss what it actually is supposed to test. I have done my best to make it easier to understand here.\n\nThe original test also had two variants: one using shill (like this one), and another one that interacted with ModemManager directly. I\u0027m not sure if the latter is actually useful for our purposes as the user won\u0027t be making MM D-Bus calls, but if we do want it, I will write a separate test for that as lots of the code will be different.",
+      "revId": "ba8cd998776cc3db745f15415acde5f81e4aff94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3833d29_5bd29a7c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/shill_cellular_disable_while_connecting.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-09-14T20:25:33Z",
+      "side": 1,
+      "message": "This line causes the test to flake occasionally. If we miss it, the likely cause is that the connection succeeded before the polling noticed that the service went past Associating state. However, if we just log and go on with our day, it means this test didn\u0027t test what it was meant to at all.\n\nNot waiting for the Associating state, as in the original test, means we may end up disabling the modem before the connect request is even made.",
+      "revId": "ba8cd998776cc3db745f15415acde5f81e4aff94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
