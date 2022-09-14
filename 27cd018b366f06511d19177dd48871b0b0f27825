@@ -34,6 +34,24 @@
       "parentUuid": "dc609661_448ba6a9",
       "revId": "27cd018b366f06511d19177dd48871b0b0f27825",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6813148e_df88124d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/chromevox_plain_text_editing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-09-14T06:53:04Z",
+      "side": 0,
+      "message": "Ack, thanks.",
+      "parentUuid": "8f4a9c83_f912f342",
+      "revId": "27cd018b366f06511d19177dd48871b0b0f27825",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
