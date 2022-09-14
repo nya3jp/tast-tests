@@ -1,4 +1,4 @@
-// Copyright 2021 The Chromium OS Authors. All rights reserved.
+// Copyright 2021 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -145,9 +145,9 @@ func Chromevox(ctx context.Context, s *testing.State) {
 	}
 	defer c.Close()
 
-	// Close any existing blank tabs:
+	// Close the extra new tab page.
 	if err := br.CloseWithURL(ctx, chrome.NewTabURL); err != nil {
-		s.Fatal("Failed to close blank tab: ", err)
+		s.Fatal("Failed to close new tab page: ", err)
 	}
 
 	if err := a11y.SetFeatureEnabled(ctx, tconn, a11y.SpokenFeedback, true); err != nil {

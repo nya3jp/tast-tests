@@ -1,4 +1,4 @@
-// Copyright 2021 The Chromium OS Authors. All rights reserved.
+// Copyright 2021 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -71,6 +71,11 @@ func ChromevoxTTSProcessingWhitespace(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to open a new tab with HTML: ", err)
 	}
 	defer c.Close()
+
+	// Close the extra new tab page.
+	if err := br.CloseWithURL(ctx, chrome.NewTabURL); err != nil {
+		s.Fatal("Failed to close new tab page: ", err)
+	}
 
 	if err := a11y.SetFeatureEnabled(ctx, tconn, a11y.SpokenFeedback, true); err != nil {
 		s.Fatal("Failed to enable spoken feedback: ", err)
