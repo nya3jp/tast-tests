@@ -1,4 +1,4 @@
-// Copyright 2021 The Chromium OS Authors. All rights reserved.
+// Copyright 2021 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -43,6 +43,7 @@ const (
 	defaultTestCaseTimeout = 2 * time.Minute
 	LaunchTestCaseTimeout  = 5 * time.Minute
 	SignoutTestCaseTimeout = 3 * time.Minute
+	windowTestCaseTimeout  = 3 * time.Minute
 	DefaultUITimeout       = 20 * time.Second
 	ShortUITimeout         = 30 * time.Second
 	LongUITimeout          = 90 * time.Second
@@ -100,9 +101,9 @@ var TouchviewCommonTests = []TestCase{
 
 // ClamshellReleaseTests is a list of clamshell tests common to apps in appcompat_release suite.
 var ClamshellReleaseTests = []TestCase{
-	{Name: "Clamshell: Fullscreen app", Fn: ClamshellFullscreenApp},
+	{Name: "Clamshell: Fullscreen app", Fn: ClamshellFullscreenApp, Timeout: windowTestCaseTimeout},
 	{Name: "Clamshell: Minimise and Restore", Fn: MinimizeRestoreApp},
-	{Name: "Clamshell: Resize window", Fn: ClamshellResizeWindow},
+	{Name: "Clamshell: Resize window", Fn: ClamshellResizeWindow, Timeout: windowTestCaseTimeout},
 	{Name: "Clamshell: Reopen app", Fn: ReOpenWindow},
 }
 
@@ -114,9 +115,9 @@ var TouchviewReleaseTests = []TestCase{
 
 // ClamshellTopAppTests is a list of clamshell tests common to apps in appcompat_top_apps suite.
 var ClamshellTopAppTests = []TestCase{
-	{Name: "Clamshell: Fullscreen app", Fn: ClamshellFullscreenApp},
+	{Name: "Clamshell: Fullscreen app", Fn: ClamshellFullscreenApp, Timeout: windowTestCaseTimeout},
 	{Name: "Clamshell: Minimise and Restore", Fn: MinimizeRestoreApp},
-	{Name: "Clamshell: Resize window", Fn: ClamshellResizeWindow},
+	{Name: "Clamshell: Resize window", Fn: ClamshellResizeWindow, Timeout: windowTestCaseTimeout},
 	{Name: "Clamshell: Reopen app", Fn: ReOpenWindow},
 }
 
@@ -132,7 +133,7 @@ var ClamshellSmokeTests = []TestCase{
 	{Name: "Clamshell: Touchscreen Scroll", Fn: TouchScreenScroll},
 	{Name: "Clamshell: Physical Keyboard", Fn: TouchAndTextInputs},
 	{Name: "Clamshell: Mouse click", Fn: MouseClick},
-	{Name: "Clamshell: Resize window", Fn: ClamshellResizeWindow},
+	{Name: "Clamshell: Resize window", Fn: ClamshellResizeWindow, Timeout: windowTestCaseTimeout},
 }
 
 // TouchviewSmokeTests is a list of touchview tests common to apps in appcompat_smoke suite.
@@ -203,6 +204,7 @@ func RunTestCases(ctx context.Context, s *testing.State, appPkgName, appActivity
 		if timeout == time.Duration(0) {
 			timeout = defaultTestCaseTimeout
 		}
+
 		s.Logf("Timeout for %s test case: %s", test.Name, timeout)
 
 		testCaseCtx, cancel := ctxutil.Shorten(ctx, timeout)
@@ -408,8 +410,8 @@ func ClamshellFullscreenApp(ctx context.Context, s *testing.State, tconn *chrome
 			s.Logf("Default state of app is in: %+v", defaultState)
 			if info.Name == phoneButtonName || info.Name == tabletButtonName {
 				// CloseSplash to handle got it button.
-				if err := closeSplash(ctx, tconn); err != nil {
-					s.Log("CloseSplash doesn't exist: ", err)
+				if err := closeSplash(ctx, tconn); err == nil {
+					s.Log("CloseSplash does exist")
 				}
 
 				// Check if the compat-mode button of a fully-locked app is disabled
@@ -431,8 +433,8 @@ func ClamshellFullscreenApp(ctx context.Context, s *testing.State, tconn *chrome
 			if err := selectResizeLockMode(ctx, tconn, appPkgName); err != nil {
 				s.Fatal("Failed to click on the compat-mode dialog: ", err)
 			}
-			if err := handleConfirmDialog(ctx, tconn); err != nil {
-				s.Log("confirmDialog doesn't exist: ", err)
+			if err := handleConfirmDialog(ctx, tconn); err == nil {
+				s.Log("confirmDialog does exist")
 			}
 			s.Log("Setting the window to fullscreen")
 			if _, err := ash.SetARCAppWindowState(ctx, tconn, appPkgName, ash.WMEventFullscreen); err != nil {
@@ -590,11 +592,13 @@ func ClamshellResizeWindow(ctx context.Context, s *testing.State, tconn *chrome.
 		}
 		if len(nodes) >= 1 {
 			buttonInfo := nodes[0]
+			defaultState := buttonInfo.Name
+			s.Logf("Default state of app is in: %+v", defaultState)
 			if buttonInfo.Name == phoneButtonName || buttonInfo.Name == tabletButtonName {
 				s.Log("App is in: ", buttonInfo.Name)
 				// CloseSplash to handle got it button.
-				if err := closeSplash(ctx, tconn); err != nil {
-					s.Log("CloseSplash doesn't exist: ", err)
+				if err := closeSplash(ctx, tconn); err == nil {
+					s.Log("CloseSplash does exist")
 				}
 
 				// Check if the compat-mode button of a fully-locked app is disabled.
@@ -612,12 +616,15 @@ func ClamshellResizeWindow(ctx context.Context, s *testing.State, tconn *chrome.
 					return
 				}
 			}
-			// If compat-mode button is enabled.
-			if err := selectResizeLockMode(ctx, tconn, appPkgName); err != nil {
-				s.Fatal("Failed to click on the compat-mode dialog: ", err)
-			}
-			if err := handleConfirmDialog(ctx, tconn); err != nil {
-				s.Log("confirmDialog doesn't exist: ", err)
+			s.Logf("State of app is in: %+v", buttonInfo.Name)
+			if buttonInfo.Name != resizableButtonName {
+				// If compat-mode button is enabled.
+				if err := selectResizeLockMode(ctx, tconn, appPkgName); err != nil {
+					s.Fatal("Failed to click on the compat-mode dialog: ", err)
+				}
+				if err := handleConfirmDialog(ctx, tconn); err != nil {
+					s.Log("confirmDialog doesn't exist: ", err)
+				}
 			}
 			s.Log("Maximizing the window")
 			if _, err := ash.SetARCAppWindowState(ctx, tconn, appPkgName, ash.WMEventTypeForState(goalState)); err != nil {
@@ -626,6 +633,15 @@ func ClamshellResizeWindow(ctx context.Context, s *testing.State, tconn *chrome.
 			if err := ash.WaitForARCAppWindowState(ctx, tconn, appPkgName, goalState); err != nil {
 				s.Error("The window is not maximized: ", err)
 			}
+			s.Log("Reseting window to normal size")
+			if _, err := ash.SetARCAppWindowState(ctx, tconn, appPkgName, ash.WMEventNormal); err != nil {
+				s.Error("Failed to reset window to normal size: ", err)
+			}
+			if err := ash.WaitForARCAppWindowState(ctx, tconn, appPkgName, ash.WindowStateNormal); err != nil {
+				s.Error("The window is not normalized: ", err)
+			}
+			// Restore the window to the default window state of an app.
+			selectDefaultWindowState(ctx, s, tconn, appPkgName, defaultState)
 		}
 	}
 	DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
@@ -768,8 +784,8 @@ func selectDefaultWindowState(ctx context.Context, s *testing.State, tconn *chro
 		if info.Name == resizableButtonName {
 			s.Log("App is in: ", info.Name)
 			// CloseSplash to handle got it button.
-			if err := closeSplash(ctx, tconn); err != nil {
-				s.Log("CloseSplash doesn't exist: ", err)
+			if err := closeSplash(ctx, tconn); err == nil {
+				s.Log("CloseSplash does exist")
 			}
 
 			// Check if the compat-mode button of a fully-locked app is disabled
@@ -780,6 +796,7 @@ func selectDefaultWindowState(ctx context.Context, s *testing.State, tconn *chro
 			if err := testing.Sleep(ctx, time.Second); err != nil {
 				s.Fatal("Failed to sleep after clicking on the compat-mode button: ", err)
 			}
+
 			// Check if compat-mode button is disabled or enabled.
 			if err := checkVisibility(ctx, tconn, bubbleDialogClassName, false); err == nil {
 				// If compat-mode button is disabled.
@@ -788,9 +805,9 @@ func selectDefaultWindowState(ctx context.Context, s *testing.State, tconn *chro
 			}
 		}
 	}
-	compatModeMenuDialog := nodewith.HasClass(bubbleDialogClassName)
+	compatModeMenuDialog := nodewith.Role(role.Window).HasClass(bubbleDialogClassName)
 	if err := uia.WithTimeout(10 * time.Second).WaitUntilExists(compatModeMenuDialog)(ctx); err != nil {
-		return errors.Wrapf(err, "failed to find the compat-mode menu dialog of %s", appPkgName)
+		s.Fatal(err, "failed to find the compat-mode menu dialog of %s", appPkgName)
 	}
 	// To get back to the default window state of an app.
 	defaultWindow := resizableButtonName
@@ -802,12 +819,11 @@ func selectDefaultWindowState(ctx context.Context, s *testing.State, tconn *chro
 		s.Logf("Get back to default window state of an app: %+v", defaultState)
 		defaultWindow = tabletButtonName
 	}
-	resizeLockModeButton := nodewith.Ancestor(compatModeMenuDialog).Name(defaultWindow)
-	if err := uia.WaitUntilExists(resizeLockModeButton)(ctx); err != nil {
-		return errors.Wrapf(err, "failed to find the %s button on the compat mode menu", defaultWindow)
+	defaultModeButton := nodewith.Role(role.MenuItem).Name(defaultWindow).Ancestor(compatModeMenuDialog)
+	if err := uia.WithTimeout(10 * time.Second).WaitUntilExists(defaultModeButton)(ctx); err != nil {
+		s.Fatal(err, "failed to find the %s button on the compat mode menu", defaultWindow)
 	}
-
-	return uia.LeftClick(resizeLockModeButton)(ctx)
+	return uia.LeftClick(defaultModeButton)(ctx)
 }
 
 // handleConfirmDialog clicks on allow button for the confirmation dialog.
