@@ -31,8 +31,8 @@ func init() {
 		Attr:         []string{},
 		Fixture:      fixture.NormalMode,
 		Vars:         []string{"servo"},
-		HardwareDeps: hwdep.D(hwdep.ChromeEC(), hwdep.Battery()),
 		Timeout:      5 * time.Minute,
+		HardwareDeps: hwdep.D(hwdep.ChromeEC(), hwdep.NoBatteryBootSupported()),
 	})
 }
 
