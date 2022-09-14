@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/arc/storage"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/cws"
 	"chromiumos/tast/local/chrome/uiauto/filesapp"
@@ -92,6 +93,13 @@ func Fsp(ctx context.Context, s *testing.State) {
 		s.Fatal("Creating test API connection failed: ", err)
 	}
 
+	// Ensure the existence of Text app. This is because TestOpenWithAndroidApp expects that
+	// there is at least one app (other than ArcFileReaderTest, the Android app installed in
+	// TestOpenWithAndroidApp) that can open a text file.
+	if err := installTextAppIfNotInstalled(ctx, cr, tconn); err != nil {
+		s.Fatal("Failed to ensure the existence of Text app: ", err)
+	}
+
 	// Install the unarchiver Chrome app, that supports FSP.
 	unarchiverName := "Wicked Good Unarchiver"
 	unarchiverURL := "https://chrome.google.com/webstore/detail/wicked-good-unarchiver/mljpablpddhocfbnokacjggdbmafjnon?hl=en"
@@ -123,6 +131,25 @@ func Fsp(ctx context.Context, s *testing.State) {
 		{LabelID: storage.FileContentID, Value: storage.ExpectedFileContent}}
 
 	storage.TestOpenWithAndroidApp(ctx, s, a, cr, d, config, expect)
+}
+
+func installTextAppIfNotInstalled(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn) error {
+	const (
+		textAppName = "Text"
+		textAppURL  = "https://chrome.google.com/webstore/detail/text/mmfbcljfglbokpmkimbfghdkjmjhdgbg"
+		textAppID   = "mmfbcljfglbokpmkimbfghdkjmjhdgbg"
+	)
+
+	isInstalled, err := ash.ChromeAppInstalled(ctx, tconn, textAppID)
+	if err != nil {
+		return errors.Wrap(err, "failed to check the existence of Text app")
+	}
+	if isInstalled {
+		return nil
+	}
+	testing.ContextLog(ctx, "Installing the missing Text app")
+	textApp := cws.App{Name: textAppName, URL: textAppURL}
+	return cws.InstallApp(ctx, cr, tconn, textApp)
 }
 
 // unzipFile unzips the specified "zipFile" located at "folder" using the "unarchiver".
