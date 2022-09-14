@@ -1,4 +1,4 @@
-// Copyright 2019 The Chromium OS Authors. All rights reserved.
+// Copyright 2019 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -19,13 +19,20 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     CrasRecord,
-		Desc:     "Verifies CRAS record function works correctly",
-		Contacts: []string{"yuhsuan@chromium.org", "cychiang@chromium.org"},
-		// TODO(b/240269271): remove "octopus" and "hatch" when b/240269271 is fixed.
-		// TODO(b/240271671): remove "nocturne" when b/240271671 is fixed.
-		HardwareDeps: hwdep.D(hwdep.Microphone(), hwdep.SkipOnModel("octopus", "hatch", "nocturne")),
+		Func:         CrasRecord,
+		Desc:         "Verifies CRAS record function works correctly",
+		Contacts:     []string{"yuhsuan@chromium.org", "cychiang@chromium.org"},
+		HardwareDeps: hwdep.D(hwdep.Microphone()),
 		Attr:         []string{"group:mainline"},
+		Params: []testing.Param{{
+			// TODO(b/240269271): remove "octopus" and "hatch" when b/240269271 is fixed.
+			// TODO(b/240271671): remove "nocturne" when b/240271671 is fixed.
+			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform("octopus", "hatch", "nocturne")),
+		}, {
+			Name:              "unstable",
+			ExtraHardwareDeps: hwdep.D(hwdep.Platform("octopus", "hatch", "nocturne")),
+			ExtraAttr:         []string{"informational"},
+		}},
 	})
 }
 
