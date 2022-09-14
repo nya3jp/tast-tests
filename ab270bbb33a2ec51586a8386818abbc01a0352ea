@@ -179,6 +179,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e9036964_285650f7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/hid_wake.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-09-14T23:54:32Z",
+      "side": 1,
+      "message": "I picked up the Frivel MP from Chromestop and it is a Chromebox without any USB-C ports, so I don\u0027t think it\u0027s something I can hook to servo v4 or v4p1 to validate this test. \n\nIs this something we need to check before landing this test as informational? Or would it be OK to land it without the dependency and then add it if we see Veyron variants failing? FWIW, just looking though tastboard I don\u0027t see any Veyron varient results event for tests which do not include any hardware dependencies. For example .\n\nTest\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/remote/bundles/cros/power/dut_wake_on_power_button_tablet_mode.go\n\nTastboard\nhttps://tastboard.corp.google.com/test/power.DUTWakeOnPowerButtonTabletMode",
+      "parentUuid": "a96c350a_482ab5be",
+      "range": {
+        "startLine": 36,
+        "startChar": 24,
+        "endLine": 36,
+        "endChar": 40
+      },
+      "revId": "ab270bbb33a2ec51586a8386818abbc01a0352ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8f9a0897_9db77b5c",
         "filename": "src/chromiumos/tast/remote/bundles/cros/power/hid_wake.go",
         "patchSetId": 6
