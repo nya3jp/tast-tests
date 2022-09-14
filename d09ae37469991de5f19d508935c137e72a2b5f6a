@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e18d7203_99ef6150",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/boot_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-09-14T10:23:21Z",
+      "side": 1,
+      "message": "nit: also pass ctx by value",
+      "range": {
+        "startLine": 232,
+        "startChar": 2,
+        "endLine": 232,
+        "endChar": 4
+      },
+      "revId": "d09ae37469991de5f19d508935c137e72a2b5f6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
