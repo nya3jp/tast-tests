@@ -1,4 +1,4 @@
-// Copyright 2019 The ChromiumOS Authors
+// Copyright 2022 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -7,7 +7,6 @@ package kernel
 import (
 	"context"
 	"strings"
-	"syscall"
 
 	"golang.org/x/sys/unix"
 
@@ -43,7 +42,7 @@ func CryptoAPI(ctx context.Context, s *testing.State) {
 
 	if err := cryptoLoadMod(module); err == nil {
 		s.Error("Unexpected success on loading module (ENOENT expected)")
-	} else if err != syscall.ENOENT {
+	} else if err != unix.ENOENT {
 		s.Error("Unexpected error on loading module (ENOENT expected): ", err)
 	}
 
