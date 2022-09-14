@@ -85,6 +85,24 @@
       "parentUuid": "7294e37b_8e29feef",
       "revId": "c4812fc03b4f08431b963902d7696990dbc5591c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "28e50abb_8b487627",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/focus_android_app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-09-14T19:23:10Z",
+      "side": 1,
+      "message": "Okay for temporary measure. BTW, do you know what happen when it is sync? Can you check state of certain UI element?",
+      "parentUuid": "3ebcbad4_6dddfca1",
+      "revId": "c4812fc03b4f08431b963902d7696990dbc5591c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
