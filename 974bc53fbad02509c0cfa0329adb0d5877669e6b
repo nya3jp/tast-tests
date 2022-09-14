@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d33c1bf_4d35565d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-09-14T09:27:15Z",
+      "side": 1,
+      "message": "alvinjia is out. Adding new reviewer",
+      "revId": "974bc53fbad02509c0cfa0329adb0d5877669e6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
