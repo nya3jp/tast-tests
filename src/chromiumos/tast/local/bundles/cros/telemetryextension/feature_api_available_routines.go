@@ -78,6 +78,15 @@ func FeatureAPIAvailableRoutines(ctx context.Context, s *testing.State) {
 		Routines []string `json:"routines"`
 	}
 
+	contains := func(list []string, want string) bool {
+		for _, elem := range list {
+			if elem == want {
+				return true
+			}
+		}
+		return false
+	}
+
 	var resp response
 	if err := v.ExtConn.Call(ctx, &resp,
 		"tast.promisify(chrome.os.diagnostics.getAvailableRoutines)",
@@ -88,13 +97,4 @@ func FeatureAPIAvailableRoutines(ctx context.Context, s *testing.State) {
 	if !contains(resp.Routines, routineName) {
 		s.Errorf(`Unexpected result from "GetAvailableRoutines": expected %q to be present, but was not`, routineName)
 	}
-}
-
-func contains(list []string, want string) bool {
-	for _, elem := range list {
-		if elem == want {
-			return true
-		}
-	}
-	return false
 }
