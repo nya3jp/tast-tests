@@ -27,12 +27,11 @@ func init() {
 		Contacts:     []string{"timvp@google.com", "cros-fw-engprod@google.com"},
 		ServiceDeps:  []string{"tast.cros.security.BootLockboxService"},
 		SoftwareDeps: []string{"chrome", "reboot"},
-		// TODO(b/251478678): Add back to "group:mainline", "informational", "group:firmware", "firmware_unstable" when the test stops breaking duts
-		Attr:         []string{},
+		Attr:         []string{"group:mainline", "informational", "group:firmware", "firmware_unstable"},
 		Fixture:      fixture.NormalMode,
 		Vars:         []string{"servo"},
-		HardwareDeps: hwdep.D(hwdep.ChromeEC(), hwdep.Battery()),
 		Timeout:      5 * time.Minute,
+		HardwareDeps: hwdep.D(hwdep.ChromeEC(), hwdep.NoBatteryBootSupported()),
 	})
 }
 
