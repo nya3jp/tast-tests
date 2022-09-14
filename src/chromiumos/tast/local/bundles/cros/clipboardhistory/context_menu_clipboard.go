@@ -45,30 +45,21 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Vars:         []string{"ui.gaiaPoolDefault"},
+		Fixture:      "chromeLoggedIn",
 		Params: []testing.Param{{
-			Name:    "browser",
-			Fixture: "chromeLoggedIn",
+			Name: "browser",
 			Val: &contextMenuClipboardTestParam{
 				testName: "ash_Chrome",
 				testImpl: &browserTest{},
 			},
 		}, {
-			Name:    "gmail",
-			Fixture: "chromeLoggedInWithGaia",
-			Val: &contextMenuClipboardTestParam{
-				testName: "gmail_App",
-				testImpl: &gmailTest{},
-			},
-		}, {
-			Name:    "settings",
-			Fixture: "chromeLoggedIn",
+			Name: "settings",
 			Val: &contextMenuClipboardTestParam{
 				testName: "settings_App",
 				testImpl: &settingsTest{},
 			},
 		}, {
-			Name:    "launcher",
-			Fixture: "chromeLoggedIn",
+			Name: "launcher",
 			Val: &contextMenuClipboardTestParam{
 				testName: "bubble_launcher",
 				testImpl: &launcherTest{},
@@ -223,56 +214,6 @@ func (b *browserTest) pasteAndVerify(ctx context.Context, res *clipboardResource
 	rootView := nodewith.NameStartingWith("about:blank").HasClass("BrowserRootView")
 	searchbox := nodewith.Role(role.TextField).Name("Address and search bar").Ancestor(rootView)
 	return pasteAndVerify(res, searchbox)(ctx)
-}
-
-type gmailTest struct {
-	conn *chrome.Conn
-}
-
-func (g *gmailTest) openApp(ctx context.Context, res *clipboardResource) error {
-	conn, err := res.br.NewConn(ctx, "https://mail.google.com")
-	if err != nil {
-		return errors.Wrap(err, "failed to open Gmail")
-	}
-	g.conn = conn
-	return nil
-}
-
-func (g *gmailTest) closeApp(ctx context.Context) error {
-	if g.conn != nil {
-		if err := g.conn.CloseTarget(ctx); err != nil {
-			testing.ContextLog(ctx, "Failed to close target: ", err)
-		}
-		if err := g.conn.Close(); err != nil {
-			testing.ContextLog(ctx, "Failed to close connection: ", err)
-		}
-		g.conn = nil
-	}
-
-	return nil
-}
-
-func (g *gmailTest) pasteAndVerify(ctx context.Context, res *clipboardResource) error {
-	rootView := nodewith.Role(role.Window).NameContaining("Mail").HasClass("BrowserFrame")
-	searchbox := nodewith.Role(role.TextField).Name("Search in mail").Ancestor(rootView)
-	getStartedBtn := nodewith.Role(role.Button).Name("Get started").Ancestor(rootView)
-	chatDialog := nodewith.Role(role.AlertDialog).NameContaining("Chat conversations").Ancestor(rootView)
-	closeAlertBtn := nodewith.Role(role.Button).Name("Close").Ancestor(chatDialog)
-	clearPrompts := uiauto.IfSuccessThen(
-		res.ui.Exists(getStartedBtn),
-		uiauto.Combine("clear prompts",
-			res.ui.LeftClick(getStartedBtn),
-			res.ui.LeftClick(closeAlertBtn),
-		),
-	)
-
-	// Retry a few times in case the prompts pop up in the middle of actions.
-	return uiauto.Retry(3,
-		uiauto.Combine("clear Gmail prompts and then paste-verify",
-			clearPrompts,
-			pasteAndVerify(res, searchbox),
-		),
-	)(ctx)
 }
 
 type settingsTest struct {
