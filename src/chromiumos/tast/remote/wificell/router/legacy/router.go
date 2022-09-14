@@ -751,7 +751,7 @@ func (r *Router) waitBridgeState(ctx context.Context, br string, expectedState i
 	return testing.Poll(ctx, func(ctx context.Context) error {
 		state, err := r.ipr.State(ctx, br)
 		if err != nil {
-			testing.PollBreak(err)
+			return testing.PollBreak(err)
 		}
 		if state == expectedState {
 			return nil
