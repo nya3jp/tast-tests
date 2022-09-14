@@ -15,9 +15,9 @@ import (
 	"chromiumos/tast/common/servo"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
+	fwUtils "chromiumos/tast/remote/bundles/cros/firmware/utils"
 	"chromiumos/tast/remote/firmware"
 	"chromiumos/tast/remote/firmware/fixture"
-	"chromiumos/tast/remote/firmware/reporters"
 	pb "chromiumos/tast/services/cros/firmware"
 	"chromiumos/tast/ssh"
 	"chromiumos/tast/testing"
@@ -207,7 +207,7 @@ func testWPOverReboot(ctx context.Context, h *firmware.Helper, target wpTarget, 
 		return errors.Wrapf(err, "failed to reboot with %q", rebootMethod)
 	}
 	testing.ContextLog(ctx, "Expect write protect state to be enabled")
-	if err := checkCrossystem(ctx, h, 1); err != nil {
+	if err := fwUtils.CheckCrossystemWpsw(ctx, h, 1); err != nil {
 		return errors.Wrap(err, "failed to check crossystem")
 	}
 	testing.ContextLog(ctx, "Disable Write Protect")
@@ -219,7 +219,7 @@ func testWPOverReboot(ctx context.Context, h *firmware.Helper, target wpTarget, 
 		return errors.Wrapf(err, "failed to reboot with %q", rebootMethod)
 	}
 	testing.ContextLog(ctx, "Expect write protect state to be disabled")
-	if err := checkCrossystem(ctx, h, 0); err != nil {
+	if err := fwUtils.CheckCrossystemWpsw(ctx, h, 0); err != nil {
 		return errors.Wrap(err, "failed to check crossystem")
 	}
 	return nil
@@ -508,22 +508,4 @@ func performModeAwareReboot(ctx context.Context, h *firmware.Helper) error {
 	}
 	testing.ContextLog(ctx, "Performing mode aware reboot")
 	return ms.ModeAwareReboot(ctx, firmware.ColdReset)
-}
-
-func checkCrossystem(ctx context.Context, h *firmware.Helper, expectedWpsw int) error {
-	r := reporters.New(h.DUT)
-	testing.ContextLog(ctx, "Check crossystem for write protect state param")
-	paramMap, err := r.Crossystem(ctx, reporters.CrossystemParamWpswCur)
-	if err != nil {
-		return errors.Wrapf(err, "failed to get crossystem %v value", reporters.CrossystemParamWpswCur)
-	}
-	currWpsw, err := strconv.Atoi(paramMap[reporters.CrossystemParamWpswCur])
-	if err != nil {
-		return errors.Wrap(err, "failed to convert crossystem wpsw value to integer value")
-	}
-	testing.ContextLogf(ctx, "Current write protect state: %v, Expected state: %v", currWpsw, expectedWpsw)
-	if currWpsw != expectedWpsw {
-		return errors.Errorf("expected WP state to %v, is actually %v", expectedWpsw, currWpsw)
-	}
-	return nil
 }
