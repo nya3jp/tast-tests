@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9fd79660_124094b9",
+        "filename": "src/chromiumos/tast/local/cellular/cellular_helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 860,
+      "author": {
+        "id": 1441092
+      },
+      "writtenOn": "2022-09-14T22:24:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "54e7d539_64836f27",
+      "revId": "69ddd8ba2917418009df6a122674a3bdee29ba05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8d6b286c_b999ddc1",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-09-14T21:04:38Z",
       "side": 1,
       "message": "This actually isn\u0027t right, is it? The \"current carrier\" is actually the serving operator, not necessarily the home provider, so this comment is misleading if the test is running on a DUT which is roaming.",
+      "range": {
+        "startLine": 878,
+        "startChar": 29,
+        "endLine": 878,
+        "endChar": 44
+      },
+      "revId": "69ddd8ba2917418009df6a122674a3bdee29ba05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1aac07b4_ecf21846",
+        "filename": "src/chromiumos/tast/local/cellular/cellular_helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 878,
+      "author": {
+        "id": 1441092
+      },
+      "writtenOn": "2022-09-14T22:24:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8d6b286c_b999ddc1",
       "range": {
         "startLine": 878,
         "startChar": 29,
@@ -58,6 +100,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "57d106f1_d7a58ae4",
+        "filename": "src/chromiumos/tast/local/cellular/cellular_helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 879,
+      "author": {
+        "id": 1441092
+      },
+      "writtenOn": "2022-09-14T22:24:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb221323_d07e9a44",
+      "revId": "69ddd8ba2917418009df6a122674a3bdee29ba05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8407aa27_da5174d2",
@@ -75,6 +135,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e16eb7d3_1f53a924",
+        "filename": "src/chromiumos/tast/local/cellular/cellular_helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 880,
+      "author": {
+        "id": 1441092
+      },
+      "writtenOn": "2022-09-14T22:24:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8407aa27_da5174d2",
+      "revId": "69ddd8ba2917418009df6a122674a3bdee29ba05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "16b2f214_f8642205",
@@ -88,6 +166,24 @@
       "writtenOn": "2022-09-14T21:04:38Z",
       "side": 1,
       "message": "nit: remove this blank line",
+      "revId": "69ddd8ba2917418009df6a122674a3bdee29ba05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f140681e_436dd36e",
+        "filename": "src/chromiumos/tast/local/cellular/cellular_helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 896,
+      "author": {
+        "id": 1441092
+      },
+      "writtenOn": "2022-09-14T22:24:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "16b2f214_f8642205",
       "revId": "69ddd8ba2917418009df6a122674a3bdee29ba05",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -115,6 +211,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e6301d1_fb8ef92a",
+        "filename": "src/chromiumos/tast/local/cellular/cellular_helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 897,
+      "author": {
+        "id": 1441092
+      },
+      "writtenOn": "2022-09-14T22:24:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "89fa9c96_fa5e57df",
+      "range": {
+        "startLine": 897,
+        "startChar": 38,
+        "endLine": 897,
+        "endChar": 54
+      },
+      "revId": "69ddd8ba2917418009df6a122674a3bdee29ba05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9f877f88_269e7eec",
@@ -128,6 +248,24 @@
       "writtenOn": "2022-09-14T21:04:38Z",
       "side": 1,
       "message": "ditto re: above where maybe it\u0027s worth returning the UUID and code all at once, and we can rename this to just `GetServingOperatorFromShill`",
+      "revId": "69ddd8ba2917418009df6a122674a3bdee29ba05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f568a4b_8b2000db",
+        "filename": "src/chromiumos/tast/local/cellular/cellular_helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1018,
+      "author": {
+        "id": 1441092
+      },
+      "writtenOn": "2022-09-14T22:24:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9f877f88_269e7eec",
       "revId": "69ddd8ba2917418009df6a122674a3bdee29ba05",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -155,6 +293,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "50af5380_fd573e32",
+        "filename": "src/chromiumos/tast/local/modemmanager/modem.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1441092
+      },
+      "writtenOn": "2022-09-14T22:24:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "18dfd6eb_a97f1d7d",
+      "range": {
+        "startLine": 107,
+        "startChar": 48,
+        "endLine": 107,
+        "endChar": 92
+      },
+      "revId": "69ddd8ba2917418009df6a122674a3bdee29ba05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f03b830e_ba97464b",
@@ -168,6 +330,24 @@
       "writtenOn": "2022-09-14T21:04:38Z",
       "side": 1,
       "message": "nit: either \"IMSI\" or \"imsi\"\n\nReally we shouold fix a bunch of these to conform to golang style but that will cause a lot of churn we don\u0027t want right now.",
+      "revId": "69ddd8ba2917418009df6a122674a3bdee29ba05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b41407a3_480e231c",
+        "filename": "src/chromiumos/tast/local/modemmanager/modem.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 665,
+      "author": {
+        "id": 1441092
+      },
+      "writtenOn": "2022-09-14T22:24:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f03b830e_ba97464b",
       "revId": "69ddd8ba2917418009df6a122674a3bdee29ba05",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
