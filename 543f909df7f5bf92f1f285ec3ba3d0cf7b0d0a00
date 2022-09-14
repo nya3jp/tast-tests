@@ -20,6 +20,40 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3a24151b_247db3f1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/diagnostics/input_check_defocusing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-09-14T00:44:15Z",
+      "side": 1,
+      "message": "This doesn\u0027t seem like a commonly known shortcut. Could you add a comment saying what the shortcut does",
+      "revId": "543f909df7f5bf92f1f285ec3ba3d0cf7b0d0a00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24f57c8b_0b642eef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/diagnostics/input_check_defocusing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-09-14T00:44:15Z",
+      "side": 1,
+      "message": "This doesn\u0027t seem like a commonly known shortcut. Could you add a comment saying what the shortcut does",
+      "revId": "543f909df7f5bf92f1f285ec3ba3d0cf7b0d0a00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "14ecf6f9_d7f004e7",
         "filename": "src/chromiumos/tast/local/bundles/cros/diagnostics/input_check_defocusing.go",
         "patchSetId": 1
@@ -55,6 +89,30 @@
       "side": 1,
       "message": "I agree, I just could not figure out a better way to do it. Most navigation within tast tests is done using the keyboard, but the input diagnostics keyboard tester disables keyboard shortcuts which blocks navigation with the keyboard.",
       "parentUuid": "14ecf6f9_d7f004e7",
+      "range": {
+        "startLine": 104,
+        "startChar": 2,
+        "endLine": 104,
+        "endChar": 77
+      },
+      "revId": "543f909df7f5bf92f1f285ec3ba3d0cf7b0d0a00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2cfc533d_57c815f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/diagnostics/input_check_defocusing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-09-14T00:44:15Z",
+      "side": 1,
+      "message": "ash window manager might help here. A combination of ash.FindOnlyWindow and ash.BringWindowToForeground should probably do it.\n\ncrsrc.org/o/src/platform/tast-tests/src/chromiumos/tast/local/chrome/ash/wm.go;l\u003d216?q\u003dash%20WindowState\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch:src%2Fplatform%2Ftast-tests%2Fsrc%2Fchromiumos%2Ftast%2Flocal%2F",
+      "parentUuid": "5fa9a041_e9597446",
       "range": {
         "startLine": 104,
         "startChar": 2,
