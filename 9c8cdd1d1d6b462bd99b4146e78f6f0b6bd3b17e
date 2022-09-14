@@ -33,6 +33,23 @@
       "message": "Hi Renuga and David,\n\nI feel the dry run looks good in general, would you please help review the code?\n\n-Chenghao",
       "revId": "9c8cdd1d1d6b462bd99b4146e78f6f0b6bd3b17e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "197b3a43_c8642550",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2022-09-14T16:49:34Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "9c8cdd1d1d6b462bd99b4146e78f6f0b6bd3b17e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
