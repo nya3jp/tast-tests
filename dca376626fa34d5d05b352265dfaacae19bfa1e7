@@ -33,6 +33,23 @@
       "message": "Friendly ping hidehiko@",
       "revId": "dca376626fa34d5d05b352265dfaacae19bfa1e7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1ab7e50_9118c69d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-09-15T02:54:50Z",
+      "side": 1,
+      "message": "I\u0027ve filed a bug for the incorrect positioning of the extension window:\nhttps://bugs.chromium.org/p/chromium/issues/detail?id\u003d1359203\n\n(It doesn\u0027t matter for this test I believe.)",
+      "revId": "dca376626fa34d5d05b352265dfaacae19bfa1e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
