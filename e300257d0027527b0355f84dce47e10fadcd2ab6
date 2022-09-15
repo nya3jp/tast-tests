@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a5aa5c8_91d3f918",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510928
+      },
+      "writtenOn": "2022-09-15T00:00:25Z",
+      "side": 1,
+      "message": "Thanks for your review.",
+      "revId": "e300257d0027527b0355f84dce47e10fadcd2ab6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "456fac7d_1b08bf3d",
@@ -31,6 +48,30 @@
       "writtenOn": "2022-09-14T17:08:13Z",
       "side": 1,
       "message": "// Even after successful completion of this function, you still need to call\n// Wait to release all associated resources.\n\nDo you mind still wait for the command for the resource?",
+      "range": {
+        "startLine": 64,
+        "startChar": 2,
+        "endLine": 64,
+        "endChar": 12
+      },
+      "revId": "e300257d0027527b0355f84dce47e10fadcd2ab6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3544f9d1_68c11b96",
+        "filename": "src/chromiumos/tast/local/arc/perfetto.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1510928
+      },
+      "writtenOn": "2022-09-15T00:00:25Z",
+      "side": 1,
+      "message": "See L58, defer a cmd.Wait(), I think it work. What do you think?",
+      "parentUuid": "456fac7d_1b08bf3d",
       "range": {
         "startLine": 64,
         "startChar": 2,
