@@ -16,6 +16,63 @@
       "message": "LGTM, thank you for cleaning this up! :)",
       "revId": "24969b784045620f685a52fdafe02ab68ba58612",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3cc1676f_7c2f23d3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-09-15T14:50:18Z",
+      "side": 1,
+      "message": "LGTM with suggestions.",
+      "revId": "24969b784045620f685a52fdafe02ab68ba58612",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe9cf1f9_b70699f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint/credentials.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-09-15T14:50:18Z",
+      "side": 1,
+      "message": "nit/style: you probably want to use\n{{-if .clientCert}}\n{{-end}}\n\netc. (put - just after \"{{\")\nso that you can drop unneeded empty lines.\n\nDitto for below.",
+      "revId": "24969b784045620f685a52fdafe02ab68ba58612",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c73e590_33ff886a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint/credentials.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-09-15T14:50:18Z",
+      "side": 1,
+      "message": "optional: homeOI (as you\u0027re here?)\nditto for below.",
+      "range": {
+        "startLine": 202,
+        "startChar": 8,
+        "endLine": 202,
+        "endChar": 14
+      },
+      "revId": "24969b784045620f685a52fdafe02ab68ba58612",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
