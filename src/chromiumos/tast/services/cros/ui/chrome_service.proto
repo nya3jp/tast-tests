@@ -91,6 +91,14 @@ message NewRequest {
 
   // Describes the availability of ARC, e.g. enabled / disabled.
   ArcMode arc_mode = 12;
+
+  // If true, OOBE HID detection screen will not be skipped in OOBE.
+  bool enable_hid_screen_on_oobe = 13;
+
+  // Used to pass |ui.signinProfileTestExtensionManifestKey| string.
+  // |ui.signinProfileTestExtensionManifestKey| is used to start chrome
+  // in OOBE, by passing the value into chrome options |LoadSigninProfileExtension|.
+  string signin_profile_test_extension_id = 14;
 }
 
 // LoginMode describes the user mode for the login.
