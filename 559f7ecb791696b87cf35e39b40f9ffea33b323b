@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a011893f_22d529a2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/p2p_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-09-15T22:25:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a5ebec48_a282e644",
+      "revId": "559f7ecb791696b87cf35e39b40f9ffea33b323b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "211871d1_2d56b258",
@@ -48,6 +66,24 @@
       "writtenOn": "2022-09-14T05:16:08Z",
       "side": 1,
       "message": "I think each test should be able to define its own thresholds for performance. P2PPerf should just run the test and report the result. wdyt? @Kevin too.",
+      "revId": "559f7ecb791696b87cf35e39b40f9ffea33b323b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05df8ef6_6ba961c3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/p2p_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-09-15T22:25:42Z",
+      "side": 1,
+      "message": "I removed the check and I will add code (next CL) to report Ave Tput to crosbolt simialr to the test ScanPerf:\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/remote/bundles/cros/wifi/scan_perf.go;rcl\u003d8fbf2c53960bc8917a6a01fda5405cad7c17201e;l\u003d67\n\nhttps://croshealthmon.corp.google.com/time_series/tast.wifi.ScanPerf/scan_time_foreground_single_scan?suite\u003dwifi\u0026branch\u003dmain\u0026skuFilter\u003dgimble_12th_Gen_IntelR_CoreTM_i3_1215U_8GB",
+      "parentUuid": "211871d1_2d56b258",
       "revId": "559f7ecb791696b87cf35e39b40f9ffea33b323b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
