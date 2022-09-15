@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a4eebf5_641c976e",
+        "filename": "src/chromiumos/tast/local/cellular/cellular_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 879,
+      "author": {
+        "id": 1441092
+      },
+      "writtenOn": "2022-09-15T16:21:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d56b8cf7_72485f3b",
+      "range": {
+        "startLine": 879,
+        "startChar": 38,
+        "endLine": 879,
+        "endChar": 58
+      },
+      "revId": "b6abc79ed4bd2018e701d4a64ae625c3c013bc33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6ec6a014_edf8370e",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "506a319a_873b901a",
+        "filename": "src/chromiumos/tast/local/cellular/cellular_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 907,
+      "author": {
+        "id": 1441092
+      },
+      "writtenOn": "2022-09-15T16:21:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6ec6a014_edf8370e",
+      "range": {
+        "startLine": 907,
+        "startChar": 29,
+        "endLine": 907,
+        "endChar": 42
+      },
+      "revId": "b6abc79ed4bd2018e701d4a64ae625c3c013bc33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4bc4fb19_3bd57ed4",
@@ -77,6 +125,30 @@
       "writtenOn": "2022-09-15T14:53:22Z",
       "side": 1,
       "message": "nit: missing space here",
+      "range": {
+        "startLine": 911,
+        "startChar": 37,
+        "endLine": 911,
+        "endChar": 49
+      },
+      "revId": "b6abc79ed4bd2018e701d4a64ae625c3c013bc33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "64796f78_984f570e",
+        "filename": "src/chromiumos/tast/local/cellular/cellular_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 911,
+      "author": {
+        "id": 1441092
+      },
+      "writtenOn": "2022-09-15T16:21:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4bc4fb19_3bd57ed4",
       "range": {
         "startLine": 911,
         "startChar": 37,
