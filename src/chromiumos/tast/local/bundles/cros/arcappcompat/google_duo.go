@@ -1,4 +1,4 @@
-// Copyright 2020 The Chromium OS Authors. All rights reserved.
+// Copyright 2020 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -34,7 +34,8 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Functional test for GoogleDuo that installs the app also verifies it is logged in and that the main page is open, checks GoogleDuo correctly changes the window state in both clamshell and touchview mode",
 		Contacts:     []string{"mthiyagarajan@chromium.org", "cros-appcompat-test-team@google.com"},
-		Attr:         []string{"group:appcompat"},
+		// Disabled GoogleDuo due to b/245973232
+		// Attr:         []string{"group:appcompat"},
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{
 			Name: "clamshell_mode_default",
@@ -42,7 +43,8 @@ func init() {
 				LaunchTests: clamshellLaunchForGoogleDuo,
 				CommonTests: testutil.ClamshellCommonTests,
 			},
-			ExtraAttr:         []string{"appcompat_default"},
+			// Disabled GoogleDuo due to b/245973232
+			// ExtraAttr:         []string{"appcompat_default"},
 			ExtraSoftwareDeps: []string{"android_p"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
 			// Skip on tablet only models.
@@ -54,7 +56,8 @@ func init() {
 				LaunchTests: touchviewLaunchForGoogleDuo,
 				CommonTests: testutil.TouchviewCommonTests,
 			},
-			ExtraAttr:         []string{"appcompat_default"},
+			// Disabled GoogleDuo due to b/245973232
+			// ExtraAttr:         []string{"appcompat_default"},
 			ExtraSoftwareDeps: []string{"android_p"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
 			// Skip on clamshell only models.
@@ -66,7 +69,8 @@ func init() {
 				LaunchTests: clamshellLaunchForGoogleDuo,
 				CommonTests: testutil.ClamshellCommonTests,
 			},
-			ExtraAttr:         []string{"appcompat_default"},
+			// Disabled GoogleDuo due to b/245973232
+			// ExtraAttr:         []string{"appcompat_default"},
 			ExtraSoftwareDeps: []string{"android_vm"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
 			// Skip on tablet only models.
@@ -78,7 +82,8 @@ func init() {
 				LaunchTests: touchviewLaunchForGoogleDuo,
 				CommonTests: testutil.TouchviewCommonTests,
 			},
-			ExtraAttr:         []string{"appcompat_default"},
+			// Disabled GoogleDuo due to b/245973232
+			// ExtraAttr:         []string{"appcompat_default"},
 			ExtraSoftwareDeps: []string{"android_vm"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
 			// Skip on clamshell only models.
@@ -90,7 +95,8 @@ func init() {
 				LaunchTests: clamshellLaunchForGoogleDuo,
 				CommonTests: testutil.ClamshellSmokeTests,
 			},
-			ExtraAttr:         []string{"appcompat_smoke"},
+			// Disabled GoogleDuo due to b/245973232
+			// ExtraAttr:         []string{"appcompat_smoke"},
 			ExtraSoftwareDeps: []string{"android_p"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
 			// Skip on tablet only models.
@@ -102,7 +108,8 @@ func init() {
 				LaunchTests: touchviewLaunchForGoogleDuo,
 				CommonTests: testutil.TouchviewSmokeTests,
 			},
-			ExtraAttr:         []string{"appcompat_smoke"},
+			// Disabled GoogleDuo due to b/245973232
+			// ExtraAttr:         []string{"appcompat_smoke"},
 			ExtraSoftwareDeps: []string{"android_p"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
 			// Skip on clamshell only models.
@@ -114,7 +121,8 @@ func init() {
 				LaunchTests: clamshellLaunchForGoogleDuo,
 				CommonTests: testutil.ClamshellSmokeTests,
 			},
-			ExtraAttr:         []string{"appcompat_smoke"},
+			// Disabled GoogleDuo due to b/245973232
+			// ExtraAttr:         []string{"appcompat_smoke"},
 			ExtraSoftwareDeps: []string{"android_vm"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
 			// Skip on tablet only models.
@@ -126,7 +134,8 @@ func init() {
 				LaunchTests: touchviewLaunchForGoogleDuo,
 				CommonTests: testutil.TouchviewSmokeTests,
 			},
-			ExtraAttr:         []string{"appcompat_smoke"},
+			// Disabled GoogleDuo due to b/245973232
+			// ExtraAttr:         []string{"appcompat_smoke"},
 			ExtraSoftwareDeps: []string{"android_vm"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
 			// Skip on clamshell only models.
@@ -138,7 +147,8 @@ func init() {
 				LaunchTests: clamshellLaunchForGoogleDuo,
 				TopAppTests: testutil.ClamshellTopAppTests,
 			},
-			ExtraAttr:         []string{"appcompat_top_apps"},
+			// Disabled GoogleDuo due to b/245973232
+			// ExtraAttr:         []string{"appcompat_top_apps"},
 			ExtraSoftwareDeps: []string{"android_p"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
 			// Skip on tablet only models.
@@ -150,7 +160,8 @@ func init() {
 				LaunchTests: touchviewLaunchForGoogleDuo,
 				TopAppTests: testutil.TouchviewTopAppTests,
 			},
-			ExtraAttr:         []string{"appcompat_top_apps"},
+			// Disabled GoogleDuo due to b/245973232
+			// ExtraAttr:         []string{"appcompat_top_apps"},
 			ExtraSoftwareDeps: []string{"android_p"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
 			// Skip on clamshell only models.
@@ -162,7 +173,8 @@ func init() {
 				LaunchTests: clamshellLaunchForGoogleDuo,
 				TopAppTests: testutil.ClamshellTopAppTests,
 			},
-			ExtraAttr:         []string{"appcompat_top_apps"},
+			// Disabled GoogleDuo due to b/245973232
+			// ExtraAttr:         []string{"appcompat_top_apps"},
 			ExtraSoftwareDeps: []string{"android_vm"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
 			// Skip on tablet only models.
@@ -174,7 +186,8 @@ func init() {
 				LaunchTests: touchviewLaunchForGoogleDuo,
 				TopAppTests: testutil.TouchviewTopAppTests,
 			},
-			ExtraAttr:         []string{"appcompat_top_apps"},
+			// Disabled GoogleDuo due to b/245973232
+			// ExtraAttr:         []string{"appcompat_top_apps"},
 			ExtraSoftwareDeps: []string{"android_vm"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
 			// Skip on clamshell only models.
@@ -186,7 +199,8 @@ func init() {
 				LaunchTests:  clamshellLaunchForGoogleDuo,
 				ReleaseTests: testutil.ClamshellReleaseTests,
 			},
-			ExtraAttr:         []string{"appcompat_release"},
+			// Disabled GoogleDuo due to b/245973232
+			// ExtraAttr:         []string{"appcompat_release"},
 			ExtraSoftwareDeps: []string{"android_p"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
 			// Skip on tablet only models.
@@ -198,7 +212,8 @@ func init() {
 				LaunchTests:  touchviewLaunchForGoogleDuo,
 				ReleaseTests: testutil.TouchviewReleaseTests,
 			},
-			ExtraAttr:         []string{"appcompat_release"},
+			// Disabled GoogleDuo due to b/245973232
+			// ExtraAttr:         []string{"appcompat_release"},
 			ExtraSoftwareDeps: []string{"android_p"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
 			// Skip on clamshell only models.
@@ -210,7 +225,8 @@ func init() {
 				LaunchTests:  clamshellLaunchForGoogleDuo,
 				ReleaseTests: testutil.ClamshellReleaseTests,
 			},
-			ExtraAttr:         []string{"appcompat_release"},
+			// Disabled GoogleDuo due to b/245973232
+			// ExtraAttr:         []string{"appcompat_release"},
 			ExtraSoftwareDeps: []string{"android_vm"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
 			// Skip on tablet only models.
@@ -222,7 +238,8 @@ func init() {
 				LaunchTests:  touchviewLaunchForGoogleDuo,
 				ReleaseTests: testutil.TouchviewReleaseTests,
 			},
-			ExtraAttr:         []string{"appcompat_release"},
+			// Disabled GoogleDuo due to b/245973232
+			// ExtraAttr:         []string{"appcompat_release"},
 			ExtraSoftwareDeps: []string{"android_vm"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
 			// Skip on clamshell only models.
