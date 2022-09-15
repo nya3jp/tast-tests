@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70e90710_084b2db8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1377969
+      },
+      "writtenOn": "2022-09-15T02:27:05Z",
+      "side": 1,
+      "message": "this test doesnt run on the duts from the linked bugs.",
+      "revId": "db064dbeb85afbcd751562753bd5a1decb7dd351",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
