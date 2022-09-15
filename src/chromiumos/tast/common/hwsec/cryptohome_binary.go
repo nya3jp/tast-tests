@@ -1,4 +1,4 @@
-// Copyright 2019 The Chromium OS Authors. All rights reserved.
+// Copyright 2019 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -399,6 +399,24 @@ func (c *cryptohomeBinary) updateAuthFactor(ctx context.Context, authSessionID, 
 		"--key_label=" + label,
 		"--new_key_label=" + newKeyLabel,
 		"--password=" + password}
+	return c.call(ctx, args...)
+}
+
+// updateRecoveryAuthFactor calls "cryptohome --action=update_auth_factor --recovery_mediator_pub_key=mediatorPubKeyHex".
+func (c *cryptohomeBinary) updateRecoveryAuthFactor(ctx context.Context, authSessionID, label, mediatorPubKeyHex string) ([]byte, error) {
+	args := []string{"--action=update_auth_factor",
+		"--auth_session_id=" + authSessionID,
+		"--key_label=" + label,
+		"--recovery_mediator_pub_key=" + mediatorPubKeyHex}
+	return c.call(ctx, args...)
+}
+
+// updatePinAuthFactor calls "cryptohome --action=update_auth_factor --pin=<pin>".
+func (c *cryptohomeBinary) updatePinAuthFactor(ctx context.Context, authSessionID, label, pin string) ([]byte, error) {
+	args := []string{"--action=update_auth_factor",
+		"--auth_session_id=" + authSessionID,
+		"--key_label=" + label,
+		"--pin=" + pin}
 	return c.call(ctx, args...)
 }
 
