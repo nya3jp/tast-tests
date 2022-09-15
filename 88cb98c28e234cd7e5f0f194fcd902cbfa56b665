@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "363dca52_87cb654e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns/dns.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 466,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2022-09-15T05:46:26Z",
+      "side": 1,
+      "message": "totally forgot that you can do this in go:\n\ntype foo struct {}\nfunc (f *foo) bar() {\n  if f \u003d\u003d nil {\n    ...\n  }\n}\n\nso you could just defer e.Cleanup(ctx) and check the receiver for nil in Cleanup if you want",
+      "range": {
+        "startLine": 464,
+        "startChar": 0,
+        "endLine": 466,
+        "endChar": 3
+      },
+      "revId": "88cb98c28e234cd7e5f0f194fcd902cbfa56b665",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6026a918_f969ff6e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns/dns.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 545,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2022-09-15T05:46:26Z",
+      "side": 1,
+      "message": "update?",
+      "range": {
+        "startLine": 539,
+        "startChar": 0,
+        "endLine": 545,
+        "endChar": 3
+      },
+      "revId": "88cb98c28e234cd7e5f0f194fcd902cbfa56b665",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
