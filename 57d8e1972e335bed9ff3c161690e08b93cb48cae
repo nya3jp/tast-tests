@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "86110b66_8aa6a6ca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-09-15T20:09:38Z",
+      "side": 1,
+      "message": "I have a few questions. Please take a look. Thanks.",
+      "revId": "57d8e1972e335bed9ff3c161690e08b93cb48cae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85acdbfb_82fc16d8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzkaller/wrapper.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 450,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-09-15T20:09:38Z",
+      "side": 1,
+      "message": "Will this work without going through the dev server for the DUTs in the lab?",
+      "revId": "57d8e1972e335bed9ff3c161690e08b93cb48cae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1bcd095c_03938bf7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzkaller/wrapper.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 454,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-09-15T20:09:38Z",
+      "side": 1,
+      "message": "Is it possible to have two test session to upload the same file at the same time?",
+      "revId": "57d8e1972e335bed9ff3c161690e08b93cb48cae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "422ea106_c881d48d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzkaller/wrapper.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 463,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-09-15T20:09:38Z",
+      "side": 1,
+      "message": "I just found this function systuil.KernelVersionAndArch. Is it doing the similar thing? \n\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/sysutil/sysutil.go;rcl\u003d8fbf2c53960bc8917a6a01fda5405cad7c17201e;l\u003d125\n\nIf so, please use that instead.",
+      "revId": "57d8e1972e335bed9ff3c161690e08b93cb48cae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
