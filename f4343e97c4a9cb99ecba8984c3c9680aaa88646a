@@ -33,6 +33,24 @@
       "message": "We can\u0027t do this in lacros.Launch as it would mean one can never test session restore with Lacros. There are probably already tests that would break.\n\nAnyways, as I mentioned to you earlier this week, I\u0027m working on a fix for this and related issues.",
       "revId": "f4343e97c4a9cb99ecba8984c3c9680aaa88646a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "14adc4b2_750658f6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-09-15T00:50:13Z",
+      "side": 1,
+      "message": "Sounds good, sorry about that. We wanted to make sure that even if we mitigate our Lacros test crashes, this doesn\u0027t happen, but I will wait for any fixes you make.",
+      "parentUuid": "fea9af09_bccb3779",
+      "revId": "f4343e97c4a9cb99ecba8984c3c9680aaa88646a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ],
   "submitRequirementResults": [
