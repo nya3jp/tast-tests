@@ -47,7 +47,7 @@ func (c *ChromeUIService) DumpUITree(ctx context.Context, req *empty.Empty) (*em
 	if cr == nil {
 		return &empty.Empty{}, errors.New("Chrome has not been started")
 	}
-	tconn, err := cr.TestAPIConn(ctx)
+	tconn, err := cr.SigninProfileTestAPIConn(ctx)
 	if err != nil {
 		return &empty.Empty{}, errors.Wrap(err, "failed to create test API connection")
 	}

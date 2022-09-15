@@ -138,6 +138,10 @@ func toOptions(req *pb.NewRequest) ([]chrome.Option, error) {
 		options = append(options, chrome.TryReuseSession())
 	}
 
+	if req.EnableHidScreenOnOobe {
+		options = append(options, chrome.EnableHIDScreenOnOOBE())
+	}
+
 	switch req.GetLoginMode() {
 	case pb.LoginMode_LOGIN_MODE_NO_LOGIN:
 		options = append(options, chrome.NoLogin())
@@ -178,6 +182,10 @@ func toOptions(req *pb.NewRequest) ([]chrome.Option, error) {
 
 	if len(req.LacrosDisableFeatures) > 0 {
 		options = append(options, chrome.LacrosDisableFeatures(req.LacrosDisableFeatures...))
+	}
+
+	if len(req.SigninProfileTestExtensionId) > 0 {
+		options = append(options, chrome.LoadSigninProfileExtension(req.SigninProfileTestExtensionId))
 	}
 
 	return options, nil
