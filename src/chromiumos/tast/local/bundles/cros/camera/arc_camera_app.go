@@ -80,6 +80,17 @@ func ARCCameraApp(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to install the APK: ", err)
 	}
 
+	cleanupCtx := ctx
+	ctx, cancelCleanup := ctxutil.Shorten(ctx, 3*time.Second)
+	defer cancelCleanup()
+
+	// Prepare host-side access to Android's SDCard partition, which should store the generated photo and video files.
+	cleanupFunc, err := arc.MountSDCardPartitionOnHostWithSSHFSIfVirtioBlkDataEnabled(ctx, a, cr.NormalizedUser())
+	if err != nil {
+		s.Fatal("Failed to make Android's SDCard partition available on host: ", err)
+	}
+	defer cleanupFunc(cleanupCtx)
+
 	subTestTimeout := 30 * time.Second
 	for _, tst := range []struct {
 		name     string
