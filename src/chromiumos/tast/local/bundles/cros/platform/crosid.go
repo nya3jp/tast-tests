@@ -1,4 +1,4 @@
-// Copyright 2021 The Chromium OS Authors. All rights reserved.
+// Copyright 2021 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -20,7 +20,7 @@ func init() {
 			"chromeos-config@google.com",
 		},
 		SoftwareDeps: []string{"unibuild"},
-		Attr:         []string{"group:mainline"},
+		Attr:         []string{"group:mainline", "group:firmware", "firmware_ec"},
 	})
 }
 
