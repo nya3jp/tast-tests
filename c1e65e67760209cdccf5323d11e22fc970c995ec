@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0cfd759b_76d1a7a5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2022-09-15T19:25:24Z",
+      "side": 1,
+      "message": "I think vapier (eventually) got you covered:\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3892150\n\nBut anyway, LGTM",
+      "revId": "c1e65e67760209cdccf5323d11e22fc970c995ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
