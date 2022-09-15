@@ -34,7 +34,8 @@ func init() {
 			"assistive-eng@google.com",
 		},
 		Data:         []string{soundFile},
-		Attr:         []string{"group:assistant_audiobox"},
+		// Disabled due to <1% pass rate over 30 days. See b/246820246
+		//Attr:         []string{"group:assistant_audiobox"},
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
 		Fixture:      "assistantWithAudioBox",
 	})
