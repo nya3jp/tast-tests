@@ -16,6 +16,24 @@
       "message": "We probably don\u0027t need 5m timeout for this test since it\u0027s not submitting feedback or saving any files. Maybe we can remove it like other feedback tests.",
       "revId": "3f39929f56e0cf535cf765387ad155694b175037",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d4462ee_55d50c7e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/choose_not_share_email_will_disable_checkbox.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1538417
+      },
+      "writtenOn": "2022-09-15T17:33:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fbbf917a_f87f1ee6",
+      "revId": "3f39929f56e0cf535cf765387ad155694b175037",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
