@@ -16,6 +16,46 @@
       "message": "Sending this for the quick fix. PTAL. Thank you!",
       "revId": "1d295f897e1fac5a99bfeb8e03b7ab65e09d7762",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b15d36ea_cd8a91e3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2022-09-15T09:01:53Z",
+      "side": 1,
+      "message": "Thanks!",
+      "revId": "1d295f897e1fac5a99bfeb8e03b7ab65e09d7762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "52b368ab_eb3aba84",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/arc_camera_app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2022-09-15T09:01:53Z",
+      "side": 1,
+      "message": "This sounds like the function\u0027s purpose is to cancel cleanup operations, but I think it is to cancel the returned shortened context (`ctx` in this case) and release resources associated with it:\n- https://source.chromium.org/chromium/chromiumos/platform/tast/+/main:src/chromiumos/tast/ctxutil/ctxutil.go;l\u003d27;drc\u003d40abc47087c3e1722042ec4e01f6c085415a1f27\n- https://pkg.go.dev/context#WithDeadline\nSo, I feel the name is kind of misleading, but it might be ok as it\u0027s already used in L108...",
+      "range": {
+        "startLine": 85,
+        "startChar": 7,
+        "endLine": 85,
+        "endChar": 20
+      },
+      "revId": "1d295f897e1fac5a99bfeb8e03b7ab65e09d7762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
