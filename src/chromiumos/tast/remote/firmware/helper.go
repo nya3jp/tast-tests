@@ -1180,3 +1180,28 @@ func (h *Helper) CheckBrokenScreen(ctx context.Context, usbdev string) error {
 	}
 	return nil
 }
+
+// Wrapper function to that runs a GSC command and ensures all Python regex
+// patterns appear at least once in the response. This function will throw a
+// pretty printed error otherwise.
+func (h *Helper) CheckGSCCommandOutput(ctx context.Context, cmd string, regexs []string) error {
+	matches, err := h.Servo.RunCR50CommandGetOutput(ctx, cmd, regexs)
+	if err != nil {
+		return errors.Wrap(err, "Failed to run `"+cmd+"` on GSC, expected regex patterns = {"+strings.Join(regexs, ",")+"}: ")
+	}
+	if len(matches) == 0 {
+		// NOTE: I've never seen this case occur since `servod` will throw an
+		// XML error if no matches are found
+		return errors.New("Failed to get regex matches = {" + strings.Join(regexs, ",") + "} for `" + cmd + "`")
+	}
+	return nil
+}
+
+// Lock the CCD console by sending a GSC command
+func (h *Helper) LockCCD(ctx context.Context) error {
+	err := h.CheckGSCCommandOutput(ctx, "ccd lock", []string{`CCD locked`})
+	if err != nil {
+		return errors.Wrap(err, "Failed to run 'ccd lock' on GSC: ")
+	}
+	return nil
+}
