@@ -1,4 +1,4 @@
-// Copyright 2021 The Chromium OS Authors. All rights reserved.
+// Copyright 2021 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -16,7 +16,9 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/lockscreen"
 	"chromiumos/tast/local/logsaver"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/local/syslog"
@@ -182,6 +184,9 @@ type policyChromeFixture struct {
 
 	// Marker for per-test log.
 	logMarker *logsaver.Marker
+
+	// clean stores if Chrome is clean after PostTest.
+	clean bool
 }
 
 // FixtData is returned by the fixtures and used in tests
@@ -323,19 +328,8 @@ func (p *policyChromeFixture) TearDown(ctx context.Context, s *testing.FixtState
 }
 
 func (p *policyChromeFixture) Reset(ctx context.Context) error {
-	// Check the connection to Chrome.
-	if err := p.cr.Responded(ctx); err != nil {
-		return errors.Wrap(err, "existing Chrome connection is unusable")
-	}
-
-	// The policy blob has already been cleared.
-	if err := policyutil.RefreshChromePolicies(ctx, p.cr); err != nil {
-		return errors.Wrap(err, "failed to clear policies")
-	}
-
-	// Reset Chrome state.
-	if err := p.cr.ResetState(ctx); err != nil {
-		return errors.Wrap(err, "failed resetting existing Chrome session")
+	if !p.clean {
+		return errors.New("failed to clean up Chrome after the last test")
 	}
 
 	return nil
@@ -353,6 +347,8 @@ func (p *policyChromeFixture) PreTest(ctx context.Context, s *testing.FixtTestSt
 	}
 }
 func (p *policyChromeFixture) PostTest(ctx context.Context, s *testing.FixtTestState) {
+	p.clean = false
+
 	if p.logMarker != nil {
 		if err := p.logMarker.Save(filepath.Join(s.OutDir(), "chrome.log")); err != nil {
 			s.Error("Failed to store per-test log data: ", err)
@@ -379,4 +375,33 @@ func (p *policyChromeFixture) PostTest(ctx context.Context, s *testing.FixtTestS
 	if err := ioutil.WriteFile(filepath.Join(s.OutDir(), PolicyFileDump), b, 0644); err != nil {
 		s.Error("Failed to dump policies to file: ", err)
 	}
+
+	// Check the connection to Chrome.
+	if err := p.cr.Responded(ctx); err != nil {
+		s.Fatal("Existing Chrome connection is unusable: ", err)
+	}
+
+	// The policy blob has already been cleared.
+	if err := policyutil.RefreshChromePolicies(ctx, p.cr); err != nil {
+		s.Fatal("Failed to clear policies: ", err)
+	}
+
+	// Reset Chrome state.
+	if err := p.cr.ResetState(ctx); err != nil {
+		s.Fatal("Failed resetting existing Chrome session: ", err)
+	}
+
+	if st, err := lockscreen.GetState(ctx, tconn); err != nil {
+		s.Fatal("Failed getting the lockscreen state: ", err)
+	} else if st.Locked {
+		s.Fatal("Unexpected lockscreen state after the test, the screen is locked")
+	}
+
+	if windows, err := ash.GetAllWindows(ctx, tconn); err != nil {
+		s.Fatal("Failed to get the windows: ", err)
+	} else if len(windows) != 0 {
+		s.Fatalf("Unexpected number of windows after the test; got %d, want 0", len(windows))
+	}
+
+	p.clean = true
 }
