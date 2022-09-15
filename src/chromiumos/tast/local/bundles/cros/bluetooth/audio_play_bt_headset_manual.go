@@ -25,7 +25,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         AudioPlayBtHeadsetManual,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Verifies audio playback over BT headset",
 		Contacts:     []string{"intel-chrome-system-automation-team@intel.com"},
 		SoftwareDeps: []string{"chrome"},
