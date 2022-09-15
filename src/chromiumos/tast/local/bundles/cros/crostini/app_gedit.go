@@ -1,4 +1,4 @@
-// Copyright 2020 The Chromium OS Authors. All rights reserved.
+// Copyright 2020 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -27,9 +27,9 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         AppGedit,
 		LacrosStatus: testing.LacrosVariantUnneeded,
-		Desc:         "Test gedit in Terminal window",
-		Contacts:     []string{"alvinjia@google.com", "clumptini@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		Desc:         "Open Gedit in Terminal and do basic edits",
+		Contacts:     []string{"clumptini@google.com"},
+		Attr:         []string{"group:mainline"},
 		Vars:         screenshot.ScreenDiffVars,
 		SoftwareDeps: []string{"chrome", "vm_host"},
 		Params: []testing.Param{
