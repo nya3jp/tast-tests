@@ -16,6 +16,23 @@
       "message": "i had to rebase again, so need another CR+2.  i\u0027ll submit it this time since it\u0027s made it through the CQ a few times already.",
       "revId": "d89b5aa3723f7f4d14b291e8de83013182d35958",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "38144fbd_611d2993",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2022-09-15T09:24:21Z",
+      "side": 1,
+      "message": "going to submit to avoid another rebase/conflict cycle.  the previous CQ passes were good, and the new ones look OK too.",
+      "revId": "d89b5aa3723f7f4d14b291e8de83013182d35958",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
