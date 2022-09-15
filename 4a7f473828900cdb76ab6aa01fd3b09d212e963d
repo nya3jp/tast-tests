@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab171652_83b845cb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1313155
+      },
+      "writtenOn": "2022-09-15T19:49:30Z",
+      "side": 1,
+      "message": "Hi Alex,\n\nReally sorry about this but I added one more change to enroll.go so it revoked the +2. At this point I\u0027m done with this test. There might some minor nits later but all the major pieces are done.\n\nThanks.",
+      "revId": "4a7f473828900cdb76ab6aa01fd3b09d212e963d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
