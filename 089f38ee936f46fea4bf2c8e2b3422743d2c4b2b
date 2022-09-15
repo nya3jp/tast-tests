@@ -33,6 +33,40 @@
       "message": "Awesome! Looks great, thank you.",
       "revId": "089f38ee936f46fea4bf2c8e2b3422743d2c4b2b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e23c38cd_479a6f19",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-09-15T00:15:50Z",
+      "side": 1,
+      "message": "+2 for Tast Review",
+      "revId": "089f38ee936f46fea4bf2c8e2b3422743d2c4b2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ccdd2fb_0fc5f440",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_http.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-09-15T00:15:50Z",
+      "side": 1,
+      "message": "Normally methods will return nil for the first argument if the error. Is that different in this case?\nOtherwise, you might encounter a nil reference exception here.",
+      "revId": "089f38ee936f46fea4bf2c8e2b3422743d2c4b2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
