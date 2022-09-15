@@ -71,7 +71,7 @@ func RoutingLowPriority(ctx context.Context, s *testing.State) {
 		IPv4:      true,
 		IPv6:      true,
 		IsPrimary: true,
-		Timeout:   0,
+		Timeout:   5 * time.Second,
 	}); len(errs) != 0 {
 		for _, err := range errs {
 			s.Error("Failed to verify base network after creating test network: ", err)
