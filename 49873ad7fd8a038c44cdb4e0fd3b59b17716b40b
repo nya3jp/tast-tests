@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d7e1eb5_5b3a018e",
+        "filename": "helpers/local/featured.FeatureLibrary.check.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1551433
+      },
+      "writtenOn": "2022-09-15T20:00:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e0644c94_3694471e",
+      "revId": "49873ad7fd8a038c44cdb4e0fd3b59b17716b40b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "890cd1d0_29280ebf",
@@ -48,6 +66,30 @@
       "writtenOn": "2022-09-14T13:54:39Z",
       "side": 1,
       "message": "could you follow the style guide (in terms of include order)",
+      "range": {
+        "startLine": 4,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 37
+      },
+      "revId": "49873ad7fd8a038c44cdb4e0fd3b59b17716b40b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0f1d518_5b46f712",
+        "filename": "helpers/local/featured.FeatureLibrary.check.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1551433
+      },
+      "writtenOn": "2022-09-15T20:00:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "890cd1d0_29280ebf",
       "range": {
         "startLine": 4,
         "startChar": 0,
@@ -163,6 +205,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4d6039c_c910d4d9",
+        "filename": "helpers/local/featured.FeatureLibrary.check.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1551433
+      },
+      "writtenOn": "2022-09-15T20:00:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "89064085_d96da57d",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 3
+      },
+      "revId": "49873ad7fd8a038c44cdb4e0fd3b59b17716b40b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "15b18fea_fbaef865",
@@ -176,6 +242,24 @@
       "writtenOn": "2022-09-14T13:54:39Z",
       "side": 1,
       "message": "std::move(name) to avoid unneeded copy.",
+      "revId": "49873ad7fd8a038c44cdb4e0fd3b59b17716b40b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "63cc59a1_b001b7ba",
+        "filename": "helpers/local/featured.FeatureLibrary.check.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1551433
+      },
+      "writtenOn": "2022-09-15T20:00:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "15b18fea_fbaef865",
       "revId": "49873ad7fd8a038c44cdb4e0fd3b59b17716b40b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -229,6 +313,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5fed235e_433fa082",
+        "filename": "helpers/local/featured.FeatureLibrary.check.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1551433
+      },
+      "writtenOn": "2022-09-15T20:00:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "725a3a5f_c069b9af",
+      "range": {
+        "startLine": 64,
+        "startChar": 21,
+        "endLine": 64,
+        "endChar": 54
+      },
+      "revId": "49873ad7fd8a038c44cdb4e0fd3b59b17716b40b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "07083145_a12f1aec",
         "filename": "helpers/local/featured.FeatureLibrary.check.cc",
         "patchSetId": 6
@@ -240,6 +348,30 @@
       "writtenOn": "2022-09-14T13:54:39Z",
       "side": 1,
       "message": "why not simply return the bool?\n\n    bool IsFeatureEnabled(const VariationFeature\u0026 feature_to_check,\n                          feature::PlatformFeatures* feature_lib) {\n      bool result \u003d false;\n      base::RunLoop run_loop;\n      feature_lib-\u003eIsEnabled(\n          feature_to_check,\n          base::BindLambdaForTesting([\u0026](bool enabled) {\n            result \u003d enabled;\n            run_loop.Quit();\n          });\n      run_loop.Run();\n      return result;\n    }\n\nDitto for GetParamsAndEnabled.",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 1
+      },
+      "revId": "49873ad7fd8a038c44cdb4e0fd3b59b17716b40b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2971ca83_5fe33244",
+        "filename": "helpers/local/featured.FeatureLibrary.check.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1551433
+      },
+      "writtenOn": "2022-09-15T20:00:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "07083145_a12f1aec",
       "range": {
         "startLine": 77,
         "startChar": 0,
@@ -273,6 +405,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "793f0435_8132da99",
+        "filename": "helpers/local/featured.FeatureLibrary.check.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1551433
+      },
+      "writtenOn": "2022-09-15T20:00:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3ac8a755_3b75bcfb",
+      "range": {
+        "startLine": 103,
+        "startChar": 34,
+        "endLine": 103,
+        "endChar": 65
+      },
+      "revId": "49873ad7fd8a038c44cdb4e0fd3b59b17716b40b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1839fcd0_7831099d",
@@ -286,6 +442,30 @@
       "writtenOn": "2022-09-14T13:54:39Z",
       "side": 1,
       "message": "cr should be closed at the end of the test.",
+      "range": {
+        "startLine": 158,
+        "startChar": 4,
+        "endLine": 158,
+        "endChar": 5
+      },
+      "revId": "49873ad7fd8a038c44cdb4e0fd3b59b17716b40b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "33ab9990_13bda51a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/featured/feature_library_late_boot.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1551433
+      },
+      "writtenOn": "2022-09-15T20:00:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1839fcd0_7831099d",
       "range": {
         "startLine": 158,
         "startChar": 4,
@@ -343,6 +523,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4dccb95a_0918662e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/featured/feature_library_late_boot.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1551433
+      },
+      "writtenOn": "2022-09-15T20:00:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4f7cb9c9_09f2fbcc",
+      "range": {
+        "startLine": 162,
+        "startChar": 1,
+        "endLine": 168,
+        "endChar": 17
+      },
+      "revId": "49873ad7fd8a038c44cdb4e0fd3b59b17716b40b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "acc37f89_a73d48ef",
@@ -356,6 +560,24 @@
       "writtenOn": "2022-09-14T13:54:39Z",
       "side": 1,
       "message": "cf) go/tast-writing.\n\nCould you avoid output to logging, instead, redirect to a file?",
+      "revId": "49873ad7fd8a038c44cdb4e0fd3b59b17716b40b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0b8fc82_fbb8eb9b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/featured/feature_library_late_boot.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1551433
+      },
+      "writtenOn": "2022-09-15T20:00:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "acc37f89_a73d48ef",
       "revId": "49873ad7fd8a038c44cdb4e0fd3b59b17716b40b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
