@@ -61,11 +61,13 @@ func init() {
 				Fixture:           "telemetryExtensionManagedLacros",
 				ExtraHardwareDeps: dep.TargetModels(),
 			},
+			/* Disabled due to <1% pass rate over 30 days. See b/246818795
 			{
 				Name:              "non_target_models_managed_lacros",
 				Fixture:           "telemetryExtensionOverrideOEMNameManagedLacros",
 				ExtraHardwareDeps: dep.NonTargetModels(),
-			},
+			}
+			*/
 		},
 	})
 }
