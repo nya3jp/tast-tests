@@ -89,6 +89,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "712cfa5b_dbd12f5a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns/dns.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 535,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2022-09-15T03:08:15Z",
+      "side": 1,
+      "message": "Yea if you have all the state in Env that\u0027s nice. This wouldn\u0027t be an unreasonable spot to use those name returns either for example:\n\nNew()... (env *Env, error) {\n e :\u003d \u0026Env{}\n defer func() {\n   if e !\u003d nil {\n     e.Cleanup()\n   }\n }\n ..stuff...\n e.X \u003d ...\n ...\n ...all good...\n env \u003d e\n e \u003d nil\n}",
+      "parentUuid": "0c9fde22_393ca193",
+      "range": {
+        "startLine": 522,
+        "startChar": 11,
+        "endLine": 535,
+        "endChar": 4
+      },
+      "revId": "1653d44fd67d0807292a338c7155ee8e8e234038",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "93f63b61_8f523fe9",
