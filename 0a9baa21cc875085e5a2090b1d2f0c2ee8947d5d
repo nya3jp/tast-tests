@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "521c84e3_cfd57551",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_a11y.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2022-09-15T06:45:33Z",
+      "side": 1,
+      "message": "Should we tweak the comments here?\nFrom my understanding, the current guessing is that it is caused by busy resources but not due to specific models.",
+      "range": {
+        "startLine": 103,
+        "startChar": 4,
+        "endLine": 103,
+        "endChar": 19
+      },
+      "revId": "0a9baa21cc875085e5a2090b1d2f0c2ee8947d5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba07c81d_361965a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_a11y.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2022-09-15T06:45:33Z",
+      "side": 1,
+      "message": "Why it is changed to `s.Log()`? If it is also expected that \"ChromeVox spoken feedback is ready\" will not even be spoken when the device is busy, please add comments to mention it.",
+      "range": {
+        "startLine": 106,
+        "startChar": 4,
+        "endLine": 106,
+        "endChar": 7
+      },
+      "revId": "0a9baa21cc875085e5a2090b1d2f0c2ee8947d5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
