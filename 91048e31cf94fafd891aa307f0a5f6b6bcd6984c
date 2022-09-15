@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e3ca278_e9ca5477",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns_proxy_over_vpn.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2022-09-15T05:52:29Z",
+      "side": 1,
+      "message": "guess you could wrap the return in a new type if you wanted and do the same as the other CL. up to you",
+      "range": {
+        "startLine": 215,
+        "startChar": 0,
+        "endLine": 223,
+        "endChar": 4
+      },
+      "revId": "91048e31cf94fafd891aa307f0a5f6b6bcd6984c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3af35d5_045a07c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/connection.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2022-09-15T05:52:29Z",
+      "side": 1,
+      "message": "if there is nothing special about 2, why not just make this a slice of *Env? or have 1 field for serverEvn if that\u0027s special and a slice of add\u0027l envs?",
+      "range": {
+        "startLine": 87,
+        "startChar": 1,
+        "endLine": 88,
+        "endChar": 25
+      },
+      "revId": "91048e31cf94fafd891aa307f0a5f6b6bcd6984c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
