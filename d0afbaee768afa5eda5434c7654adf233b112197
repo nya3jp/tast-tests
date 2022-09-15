@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ffb25ccb_13b6c3de",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115907
+      },
+      "writtenOn": "2022-09-15T18:25:36Z",
+      "side": 1,
+      "message": "thanks!",
+      "revId": "d0afbaee768afa5eda5434c7654adf233b112197",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5bf0de4c_03adf1cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/image_paste.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1115907
+      },
+      "writtenOn": "2022-09-15T18:25:36Z",
+      "side": 1,
+      "message": "nit: update comment",
+      "range": {
+        "startLine": 98,
+        "startChar": 1,
+        "endLine": 99,
+        "endChar": 37
+      },
+      "revId": "d0afbaee768afa5eda5434c7654adf233b112197",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
