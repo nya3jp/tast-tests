@@ -33,7 +33,8 @@ func init() {
 		},
 		SoftwareDeps: []string{"wilco", "chrome"},
 		Timeout:      30 * time.Minute,
-		Attr:         []string{"group:wilco_bve"},
+		// Disabled due to <1% pass rate over 30 days. See b/246818601
+		//Attr:         []string{"group:wilco_bve"},
 		ServiceDeps: []string{
 			"tast.cros.hwsec.OwnershipService",
 			"tast.cros.policy.PolicyService",
