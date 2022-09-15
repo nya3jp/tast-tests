@@ -1,4 +1,4 @@
-// Copyright 2021 The Chromium OS Authors. All rights reserved.
+// Copyright 2021 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -426,11 +426,8 @@ func TestCleanup(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome)
 			return errors.Wrap(err, "failed to launch Account Manager page")
 		}
 
-		moreActionsFound, err := ui.IsNodeFound(ctx, moreActionsButton)
-		if err != nil {
-			return errors.Wrap(err, "failed to search for More actions button")
-		}
-		if !moreActionsFound {
+		// Wait for 5 seconds for the account list to appear.
+		if err := ui.WithTimeout(5 * time.Second).WaitUntilExists(moreActionsButton)(ctx); err != nil {
 			// There are no "More actions, *" buttons left. It means all secondary accounts are removed.
 			break
 		}
