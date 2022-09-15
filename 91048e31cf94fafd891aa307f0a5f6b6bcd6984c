@@ -3,6 +3,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e2fc4895_90f6ddce",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-09-15T07:51:45Z",
+      "side": 1,
+      "message": "could you also run VPNConnect tests? Thanks!",
+      "range": {
+        "startLine": 27,
+        "startChar": 5,
+        "endLine": 27,
+        "endChar": 45
+      },
+      "revId": "91048e31cf94fafd891aa307f0a5f6b6bcd6984c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d835996_84bd9df3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns_proxy_over_vpn.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-09-15T07:51:45Z",
+      "side": 1,
+      "message": "nit: leave a log on failure",
+      "range": {
+        "startLine": 110,
+        "startChar": 1,
+        "endLine": 111,
+        "endChar": 36
+      },
+      "revId": "91048e31cf94fafd891aa307f0a5f6b6bcd6984c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4e3ca278_e9ca5477",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/dns_proxy_over_vpn.go",
         "patchSetId": 9
@@ -90,6 +136,53 @@
         "startChar": 1,
         "endLine": 88,
         "endChar": 25
+      },
+      "revId": "91048e31cf94fafd891aa307f0a5f6b6bcd6984c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "07ffaef7_65503623",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/connection.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-09-15T07:51:45Z",
+      "side": 1,
+      "message": "I think this one looks good to me.",
+      "parentUuid": "6168efd9_f154e2eb",
+      "range": {
+        "startLine": 87,
+        "startChar": 1,
+        "endLine": 88,
+        "endChar": 25
+      },
+      "revId": "91048e31cf94fafd891aa307f0a5f6b6bcd6984c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9f5e764_feed2c62",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/connection.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-09-15T07:51:45Z",
+      "side": 1,
+      "message": "maybe return an error if secondEnv and config.WGTwoPeers are not set at the same time.",
+      "range": {
+        "startLine": 141,
+        "startChar": 24,
+        "endLine": 141,
+        "endChar": 33
       },
       "revId": "91048e31cf94fafd891aa307f0a5f6b6bcd6984c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
