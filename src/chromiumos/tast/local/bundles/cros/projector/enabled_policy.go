@@ -153,8 +153,12 @@ func testProjectorEnabled(ctx context.Context, cr *chrome.Chrome, fdms *fakedms.
 		return errors.Wrap(err, "failed to serve policies")
 	}
 
-	if err := ui.WaitUntilGone(screencastAppWindow)(ctx); err != nil {
-		return errors.Wrap(err, "failed to wait for the Screencast App to close")
+	if err := uiauto.Combine("Wait for the app and launcher to close",
+		ui.WaitUntilGone(screencastAppWindow),
+		// Ensures the app list view is closed before open it and launch app again.
+		ui.WaitUntilGone(nodewith.ClassName(launcher.ExpandedItemsClass).First()),
+	)(ctx); err != nil {
+		return errors.Wrap(err, "failed to wait for for Screencast and launcher to close")
 	}
 
 	if err := launcher.LaunchApp(tconn, apps.Projector.Name)(ctx); err != nil {
@@ -162,8 +166,8 @@ func testProjectorEnabled(ctx context.Context, cr *chrome.Chrome, fdms *fakedms.
 	}
 
 	blockedWindowFinder := nodewith.Role(role.Window).Name("Screencast is blocked")
-	okButton := nodewith.Role(role.Button).Name("OK")
-	if err := uiauto.Combine("Screencast is blocked",
+	okButton := nodewith.Role(role.Button).Name("OK").Ancestor(blockedWindowFinder)
+	if err := uiauto.Combine("Confirm Screencast is blocked",
 		ui.WaitUntilExists(blockedWindowFinder),
 		ui.WithInterval(time.Second).LeftClickUntil(okButton, ui.Gone(blockedWindowFinder)),
 	)(ctx); err != nil {
