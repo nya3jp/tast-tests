@@ -9494,16 +9494,6 @@ func init() {
 				Timeout: 1 * time.Minute,
 			},
 			{
-				Name: "half_vstorea_half_rtn",
-				Val: oclctsTest{
-					executable:   "test_half",
-					args:         "vstorea_half_rtn -w",
-					expectedPass: false,
-					buganizer:    "b/227136713",
-				},
-				Timeout: 1 * time.Minute,
-			},
-			{
 				Name: "half_vstorea_half_rtp",
 				Val: oclctsTest{
 					executable:   "test_half",
@@ -13408,16 +13398,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_vectors",
 					args:         "vec_align_packed_struct_arr",
-					expectedPass: false,
-					buganizer:    "b/227134903",
-				},
-				Timeout: 1 * time.Minute,
-			},
-			{
-				Name: "vectors_vec_align_packed_struct",
-				Val: oclctsTest{
-					executable:   "test_vectors",
-					args:         "vec_align_packed_struct",
 					expectedPass: false,
 					buganizer:    "b/227134903",
 				},
