@@ -47,13 +47,15 @@ func init() {
 				// Skip on grunt & zork boards due to b/213400835.
 				ExtraHardwareDeps: hwdep.D(pre.InputsUnstableModels, hwdep.SkipOnPlatform("grunt", "zork")),
 			},
+			/* Disabled due to <1% pass rate over 30 days. See b/246818430
 			{
 				Name:              "lacros",
 				Fixture:           fixture.LacrosClamshellNonVK,
 				ExtraSoftwareDeps: []string{"lacros"},
 				ExtraAttr:         []string{"informational"},
 				ExtraHardwareDeps: hwdep.D(hwdep.Model(pre.StableModels...), hwdep.SkipOnModel("kefka")),
-			},
+			}
+			*/
 		},
 	})
 }
