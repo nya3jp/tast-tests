@@ -121,8 +121,11 @@ func RunTablet(ctx, closeCtx context.Context, tconn *chrome.TestConn, ui *uiauto
 		return errors.Wrap(err, "failed to click the tab strip button")
 	}
 
+	// Get the first tab location with a polling interval of 2 seconds (meaning
+	// wait until the location is stable for 2 seconds) to work around a
+	// glitchy animation that sometimes happens when bringing up the tab strip.
 	firstTab := nodewith.Role(role.Tab).First()
-	firstTabRect, err := ui.Location(ctx, firstTab)
+	firstTabRect, err := ui.WithInterval(2*time.Second).Location(ctx, firstTab)
 	if err != nil {
 		return errors.Wrap(err, "failed to get the location of the first tab")
 	}
