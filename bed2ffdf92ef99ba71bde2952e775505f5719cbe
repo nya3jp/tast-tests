@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "00cdc6b8_6028f7fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/drag_drop.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2022-09-15T02:48:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "476b5d2b_f5290672",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "bed2ffdf92ef99ba71bde2952e775505f5719cbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "897debf3_bda5360a",
@@ -61,6 +85,30 @@
       "side": 1,
       "message": "Isn\u0027t it the same issue as in the ImagePaste test?\nhttps://bugs.chromium.org/p/chromium/issues/detail?id\u003d1359203",
       "parentUuid": "897debf3_bda5360a",
+      "range": {
+        "startLine": 295,
+        "startChar": 0,
+        "endLine": 295,
+        "endChar": 28
+      },
+      "revId": "bed2ffdf92ef99ba71bde2952e775505f5719cbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "72ea46e5_8523d3b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/drag_drop.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2022-09-15T02:48:53Z",
+      "side": 1,
+      "message": "I didn\u0027t have this crbug reference earlier which explains the problem of window position centered instead of leftside of screen for lacros. In ImagePaste test the workaround of Alt+Tab twice without changing the position of the window worked.But here the test requires the browser window to be in a particular position. Hence assumed it as different issue.\n\nAnyways if the root cause is same,should I add a TODO to the crbug for both the tests?.",
+      "parentUuid": "519ef47f_c7ced95d",
       "range": {
         "startLine": 295,
         "startChar": 0,
