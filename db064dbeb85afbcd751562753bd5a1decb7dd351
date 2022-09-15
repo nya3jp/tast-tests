@@ -16,6 +16,24 @@
       "message": "this test doesnt run on the duts from the linked bugs.",
       "revId": "db064dbeb85afbcd751562753bd5a1decb7dd351",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7ced734_ea9706f3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2022-09-15T03:48:39Z",
+      "side": 1,
+      "message": "b:245996788 can be dropped you are right however the other two are still relevant.",
+      "parentUuid": "70e90710_084b2db8",
+      "revId": "db064dbeb85afbcd751562753bd5a1decb7dd351",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
