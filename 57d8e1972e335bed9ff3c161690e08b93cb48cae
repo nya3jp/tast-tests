@@ -162,6 +162,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9825be28_0c8d3df8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzkaller/wrapper.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 454,
+      "author": {
+        "id": 1263546
+      },
+      "writtenOn": "2022-09-15T20:41:46Z",
+      "side": 1,
+      "message": "I see, yes, thanks, let me add some clarifying comments around these blocks.",
+      "parentUuid": "5f419ec7_b9dcda23",
+      "revId": "57d8e1972e335bed9ff3c161690e08b93cb48cae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "422ea106_c881d48d",
         "filename": "src/chromiumos/tast/remote/bundles/cros/syzkaller/wrapper.go",
         "patchSetId": 4
