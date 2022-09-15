@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d99f1e2e_bcc95373",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzkaller/wrapper.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 450,
+      "author": {
+        "id": 1263546
+      },
+      "writtenOn": "2022-09-15T20:26:56Z",
+      "side": 1,
+      "message": "I have only been able to test this against a leased DUT from the lab. This is a remote tast test, and the \"wget\" is fetching information from an HTTP server that is started by syz-manager; the HTTP server does not run on the DUT, but on the same machine that runs the remote tast test.\n\nDoes this answer your question? I\u0027m not very familiar with what devservers are/what interactions tests have with devservers.",
+      "parentUuid": "85acdbfb_82fc16d8",
+      "revId": "57d8e1972e335bed9ff3c161690e08b93cb48cae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1bcd095c_03938bf7",
         "filename": "src/chromiumos/tast/remote/bundles/cros/syzkaller/wrapper.go",
         "patchSetId": 4
@@ -54,6 +72,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6f59a609_11c5e384",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzkaller/wrapper.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 454,
+      "author": {
+        "id": 1263546
+      },
+      "writtenOn": "2022-09-15T20:26:56Z",
+      "side": 1,
+      "message": "We have been uploading corpus files in a similar manner so far(line 434) and have had no trouble. Rawcover files are suffixed by board name; and DKT tests run are scheduled to run on 1 DUT of a specific board at a time as part of postsubmit.",
+      "parentUuid": "1bcd095c_03938bf7",
+      "revId": "57d8e1972e335bed9ff3c161690e08b93cb48cae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "422ea106_c881d48d",
         "filename": "src/chromiumos/tast/remote/bundles/cros/syzkaller/wrapper.go",
         "patchSetId": 4
@@ -65,6 +101,24 @@
       "writtenOn": "2022-09-15T20:09:38Z",
       "side": 1,
       "message": "I just found this function systuil.KernelVersionAndArch. Is it doing the similar thing? \n\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/sysutil/sysutil.go;rcl\u003d8fbf2c53960bc8917a6a01fda5405cad7c17201e;l\u003d125\n\nIf so, please use that instead.",
+      "revId": "57d8e1972e335bed9ff3c161690e08b93cb48cae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00dc61e9_63e40aa3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzkaller/wrapper.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 463,
+      "author": {
+        "id": 1263546
+      },
+      "writtenOn": "2022-09-15T20:26:56Z",
+      "side": 1,
+      "message": "I had come across that, but it looks like it is meant to be used for local tast tests(so Uname would contain kernel information about the machine on which this remote tast test would be running). Am I missing something?",
+      "parentUuid": "422ea106_c881d48d",
       "revId": "57d8e1972e335bed9ff3c161690e08b93cb48cae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
