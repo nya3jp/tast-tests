@@ -146,6 +146,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f91f3d00_8c760235",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/recorder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2022-09-15T20:07:34Z",
+      "side": 1,
+      "message": "In that case, we can just let this be. Kind of unfortunate to have so much copy pasta",
+      "parentUuid": "b57f0d86_1493d86e",
+      "range": {
+        "startLine": 275,
+        "startChar": 82,
+        "endLine": 275,
+        "endChar": 90
+      },
+      "revId": "846cd7badeff86c536e8280471357cac8b9c03d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c529ebb9_ddef1c43",
