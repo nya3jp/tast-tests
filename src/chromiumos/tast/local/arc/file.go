@@ -204,3 +204,27 @@ func MountVirtioBlkDataDiskImageReadOnlyIfUsed(ctx context.Context, a *ARC, user
 	}
 	return cleanupFunc, nil
 }
+
+// MountSDCardPartitionOnHostWithSSHFSIfVirtioBlkDataEnabled first checks if virtio-blk /data is
+// used on the device, and if that is the case, mounts Android's SDCard partition
+// /storage/emulated/0 on the host's /home/root/<hash>/android-data/data/media/0 using SSHFS.
+func MountSDCardPartitionOnHostWithSSHFSIfVirtioBlkDataEnabled(ctx context.Context, a *ARC, user string) (func(context.Context), error) {
+	virtioBlkDataEnabled, err := a.IsVirtioBlkDataEnabled(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to check if virtio-blk /data is enabled")
+	}
+	if !virtioBlkDataEnabled {
+		// If ARCVM virtio-blk /data is not enabled, Android's /data directory is already
+		// available at the host's /home/root/<hash>/android-data/data.
+		return func(context.Context) {}, nil
+	}
+
+	// Mount SDCard partition on the host side with SSHFS.
+	if err := MountSDCardPartitionOnHostWithSSHFS(ctx, user); err != nil {
+		return nil, errors.Wrap(err, "failed to mount Android's SDCard partition on host")
+	}
+	cleanupFunc := func(ctx context.Context) {
+		UnmountSDCardPartitionFromHost(ctx, user)
+	}
+	return cleanupFunc, nil
+}
