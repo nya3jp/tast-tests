@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fdcf2d1c_7702b55f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-09-15T22:38:27Z",
+      "side": 1,
+      "message": "lgtm, defer to kevin (I didn\u0027t look closely enough to +2)",
+      "revId": "068dbe8213715843563f9776e2e63d20c3b4afaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
