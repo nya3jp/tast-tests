@@ -529,6 +529,16 @@ func (tf *TestFixture) DUTConn(dutIdx DutIdx) *ssh.Conn {
 	return tf.duts[dutIdx].dut.Conn()
 }
 
+// P2PGOIface returns the p2p GO interface name.
+func (tf *TestFixture) P2PGOIface() string {
+	return tf.p2pGOIface
+}
+
+// P2PGOConn returns connection object to the p2pGO.
+func (tf *TestFixture) P2PGOConn() *ssh.Conn {
+	return tf.p2pGO.Conn()
+}
+
 // APConn returns connection object to the first AP.
 // Currently, the test fixture only requires to control the first (0th) AP.
 func (tf *TestFixture) APConn() *ssh.Conn {
@@ -1668,7 +1678,7 @@ func (tf *TestFixture) P2PDeviceConn(ctx context.Context, device P2PDevice) (*du
 }
 
 // P2PConfigureGO configures the DUT as a p2p group owner (GO).
-func (tf *TestFixture) P2PConfigureGO(ctx context.Context, device P2PDevice) error {
+func (tf *TestFixture) P2PConfigureGO(ctx context.Context, device P2PDevice, ops ...wpacli.P2PGOOption) error {
 	// This function removes any existing P2P interfaces before adding the
 	// group owner. After that, the function waits for the p2p group owner
 	// interface to be available. The GO interface name, network SSID and
@@ -1693,7 +1703,7 @@ func (tf *TestFixture) P2PConfigureGO(ctx context.Context, device P2PDevice) err
 	defer stop()
 
 	// Add a p2p group owner (GO).
-	if err := wpar.P2PGroupAdd(ctx); err != nil {
+	if err := wpar.P2PGroupAdd(ctx, ops...); err != nil {
 		return err
 	}
 
@@ -1881,16 +1891,7 @@ func (tf *TestFixture) P2PAssertPingFromClient(ctx context.Context, opts ...ping
 }
 
 // P2PPerf pings the p2p client from the group owner (GO) device.
-func (tf *TestFixture) P2PPerf(ctx context.Context) error {
-	// Print the P2P channel configuration.
-	iwr := iw.NewRemoteRunner(tf.p2pGO.Conn())
-	chConfig, err := iwr.RadioConfig(ctx, tf.p2pGOIface)
-	if err != nil {
-		return err
-	}
-
-	testing.ContextLogf(ctx, "P2P channel configuration: Channel Number = %d, Frequency = %d, Width = %d", chConfig.Number, chConfig.Freq, chConfig.Width)
-
+func (tf *TestFixture) P2PPerf(ctx context.Context) (*iperf.Result, error) {
 	// p2pGOFirewallParams is a set of parameters needed for unblocking p2p tcp traffic on the p2p GO.
 	var p2pGOFirewallParams = []firewall.RuleOption{
 		firewall.OptionWait(5),
@@ -1914,37 +1915,38 @@ func (tf *TestFixture) P2PPerf(ctx context.Context) error {
 	firewallRunnerGO := remotefirewall.NewRemoteRunner(tf.p2pGO.Conn())
 	firewallRunnerClient := remotefirewall.NewRemoteRunner(tf.p2pClient.Conn())
 	if err := firewallRunnerGO.ExecuteCommand(ctx, p2pGOFirewallParams...); err != nil {
-		return errors.Wrap(err, "failed to set P2P GO iptable rule")
+		return nil, errors.Wrap(err, "failed to set P2P GO iptable rule")
 	}
 	if err := firewallRunnerClient.ExecuteCommand(ctx, p2pClientFirewallParams...); err != nil {
-		return errors.Wrap(err, "failed to set P2P Client iptable rule")
+		return nil, errors.Wrap(err, "failed to set P2P Client iptable rule")
 	}
 
 	// Configuring the p2p GO as an iperf server and the p2p client as an iperf client.
 	p2pIperfConfig, err := iperf.NewConfig(iperf.ProtocolTCP, p2pClientIPAddress, p2pGOIPAddress, []iperf.ConfigOption{}...)
 	if err != nil {
-		return errors.Wrap(err, "failed to configure iperf on the p2p link")
+		return nil, errors.Wrap(err, "failed to configure iperf on the p2p link")
 	}
 
 	client, err := iperf.NewRemoteClient(ctx, tf.p2pClient.Conn())
 	if err != nil {
-		return errors.Wrap(err, "failed ot create Iperf client")
+		return nil, errors.Wrap(err, "failed ot create Iperf client")
 	}
 	defer client.Close(ctx)
 
 	server, err := iperf.NewRemoteServer(ctx, tf.p2pGO.Conn())
 	if err != nil {
-		return errors.Wrap(err, "failed ot create Iperf server")
+		return nil, errors.Wrap(err, "failed ot create Iperf server")
 	}
 	defer server.Close(ctx)
 
 	session := iperf.NewSession(client, server)
 
-	if _, _, err := session.Run(ctx, p2pIperfConfig); err != nil {
-		return errors.Wrap(err, "failed to run Iperf session")
+	finalResult, _, err := session.Run(ctx, p2pIperfConfig)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to run Iperf session")
 	}
 
-	return nil
+	return finalResult, nil
 }
 
 // P2PDeconfigureGO deconfigures the p2p group owner (GO).
