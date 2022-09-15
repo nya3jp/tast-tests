@@ -16,7 +16,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         PairNewDeviceFromOSSettings,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Checks that the pairing dialog can be opened from the OS Settings",
 		Contacts: []string{
 			"chadduffin@chromium.org",
