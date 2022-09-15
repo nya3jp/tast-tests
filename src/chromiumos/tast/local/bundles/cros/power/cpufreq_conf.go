@@ -158,6 +158,13 @@ func CpufreqConf(ctx context.Context, s *testing.State) {
 			"sampling_down_factor",
 			"powersave_bias",
 		},
+		"conservative": []string{
+			"freq_step",
+			"down_threshold",
+		},
+		"schedutil": []string{
+			"rate_limit_us",
+		},
 	}
 	for gov, settings := range governorSettings {
 		for _, setting := range settings {
