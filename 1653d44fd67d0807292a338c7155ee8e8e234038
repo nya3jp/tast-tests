@@ -16,6 +16,52 @@
       "message": "Thanks for the review! PTAL, thanks.",
       "revId": "1653d44fd67d0807292a338c7155ee8e8e234038",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d45157a6_d66d8027",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns/dns.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 535,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2022-09-15T00:21:06Z",
+      "side": 1,
+      "message": "how reasonable would it be to make this the single cleanup method for this function and just set it here on success? e.g.\n\ncleanup :\u003d func() {\n  ...\n}\nclean :\u003d true\n\ndefer {\n  if !clean return\n  cleanup()\n}\n\n...\n\nclean \u003d false\nreturn Env {\n   ..\n   Cleanup: cleanup\n}\n\n\nthat would get rid of the stacked cleanup defers you\u0027re accumulating...",
+      "range": {
+        "startLine": 522,
+        "startChar": 11,
+        "endLine": 535,
+        "endChar": 4
+      },
+      "revId": "1653d44fd67d0807292a338c7155ee8e8e234038",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93f63b61_8f523fe9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns/dns.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 540,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2022-09-15T00:21:06Z",
+      "side": 1,
+      "message": "nit: is it possible to make the naming consistent between SetupDNSEnv and this func? It looks like they are the same general thing, so maybe call them both either Setup or Create (or New). Also, I would drop the \"DNS\" part since these are already in the dns package, so dns.NewEnv and dns.NewServerEnv look better to me.",
+      "range": {
+        "startLine": 540,
+        "startChar": 5,
+        "endLine": 540,
+        "endChar": 23
+      },
+      "revId": "1653d44fd67d0807292a338c7155ee8e8e234038",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
