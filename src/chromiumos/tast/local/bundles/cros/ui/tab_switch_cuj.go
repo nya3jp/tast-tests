@@ -1,4 +1,4 @@
-// Copyright 2019 The Chromium OS Authors. All rights reserved.
+// Copyright 2019 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -29,7 +29,10 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Data:         []string{cujrecorder.SystemTraceConfigFile},
 		Timeout:      22*time.Minute + cuj.CPUStablizationTimeout,
-		Vars:         []string{"mute"},
+		Vars: []string{
+			"mute",
+			"record",
+		},
 		Params: []testing.Param{{
 			ExtraData: []string{tabswitchcuj.WPRArchiveName},
 			Val: tabswitchcuj.TabSwitchParam{

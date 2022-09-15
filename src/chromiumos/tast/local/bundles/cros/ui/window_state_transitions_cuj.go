@@ -1,4 +1,4 @@
-// Copyright 2022 The ChromiumOS Authors.
+// Copyright 2022 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -6,8 +6,10 @@ package ui
 
 import (
 	"context"
+	"fmt"
 	"net/http"
 	"net/http/httptest"
+	"path/filepath"
 	"time"
 
 	"chromiumos/tast/common/action"
@@ -35,6 +37,7 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Data:         []string{"animation.html", "animation.js", cujrecorder.SystemTraceConfigFile},
 		Timeout:      15 * time.Minute,
+		Vars:         []string{"record"},
 		Params: []testing.Param{{
 			Val:     browser.TypeAsh,
 			Fixture: "loggedInToCUJUser",
@@ -176,7 +179,14 @@ func WindowStateTransitionsCUJ(ctx context.Context, s *testing.State) {
 	); err != nil {
 		s.Fatal("Failed to add window animation smoothness metrics to the recorder: ", err)
 	}
+
 	recorder.EnableTracing(s.OutDir(), s.DataPath(cujrecorder.SystemTraceConfigFile))
+
+	if _, ok := s.Var("record"); ok {
+		if err := recorder.AddScreenRecorder(ctx, tconn, filepath.Join(s.OutDir(), fmt.Sprintf("%s-record.webm", s.TestName()))); err != nil {
+			s.Fatal("Failed to add screen recorder: ", err)
+		}
+	}
 
 	// Conduct the performance measurement.
 	if err := recorder.RunFor(ctx, func(ctx context.Context) error {
