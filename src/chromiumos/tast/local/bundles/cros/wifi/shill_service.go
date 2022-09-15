@@ -2972,7 +2972,7 @@ func (s *ShillService) startSoftAP(ctx context.Context, request *wifi.TetheringR
 	return channel, nil
 }
 
-func (s *ShillService) startDHCPServer(ctx context.Context) error {
+func (s *ShillService) startDHCPServer(ctx context.Context) (ret error) {
 	r := &cmd.LocalCmdRunner{}
 
 	_ = r.Run(ctx, "killall", "dnsmasq")
@@ -2990,6 +2990,11 @@ func (s *ShillService) startDHCPServer(ctx context.Context) error {
 	if err := ipr.AddIP(ctx, iface, net.ParseIP(softAPIPAddress), 24); err != nil {
 		return errors.Wrap(err, "failed to assign IPv4 address on WiFi interface")
 	}
+	defer func() {
+		if ret != nil {
+			ipr.DeleteIP(ctx, iface, net.ParseIP(softAPIPAddress), 24)
+		}
+	}()
 
 	firewallRunner := local_firewall.NewLocalRunner()
 	args := []firewall.RuleOption{firewall.OptionAppendRule(firewall.InputChain)}
@@ -2997,6 +3002,14 @@ func (s *ShillService) startDHCPServer(ctx context.Context) error {
 	if err := firewallRunner.ExecuteCommand(ctx, args...); err != nil {
 		return errors.Wrap(err, "failed to set DHCP iptable rule")
 	}
+	defer func() {
+		if ret != nil {
+			firewallRunner := local_firewall.NewLocalRunner()
+			args := []firewall.RuleOption{firewall.OptionDeleteRule(firewall.InputChain)}
+			args = append(args, dhcpFirewallParams...)
+			firewallRunner.ExecuteCommand(ctx, args...)
+		}
+	}()
 
 	if err := r.Run(ctx, "dnsmasq", "--interface="+iface, "--port=0", "--dhcp-range=192.168.50.100,192.168.50.150,255.255.255.0,6h", "--dhcp-option=3,192.168.50.1"); err != nil {
 		return errors.Wrap(err, "failed to start dnsmasq on WiFi interface")
