@@ -162,8 +162,16 @@ func CorruptBothFWBodyAB(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to restore FW Body B: ", err)
 		}
 
-		if err := ms.ModeAwareReboot(ctx, firmware.WarmReset, firmware.AssumeRecoveryMode, firmware.SkipModeCheckAfterReboot); err != nil {
-			s.Fatal("Failed to perform mode aware reboot: ", err)
+		bootModeName := s.Param().(string)
+
+		if bootModeName == "developer" {
+			if err := ms.ModeAwareReboot(ctx, firmware.WarmReset, firmware.AssumeRecoveryMode, firmware.ExpectDevModeAfterReboot); err != nil {
+				s.Fatal("Failed to perform mode aware reboot: ", err)
+			}
+		} else {
+			if err := ms.ModeAwareReboot(ctx, firmware.WarmReset, firmware.AssumeRecoveryMode); err != nil {
+				s.Fatal("Failed to perform mode aware reboot: ", err)
+			}
 		}
 
 		s.Log(ctx, "Reestablishing connection to DUT")
@@ -172,8 +180,6 @@ func CorruptBothFWBodyAB(ctx context.Context, s *testing.State) {
 		if err := h.WaitConnect(connectCtx); err != nil {
 			s.Fatal("Failed to reconnect to DUT after booting to recovery mode: ", err)
 		}
-
-		bootModeName := s.Param().(string)
 
 		if mainFWType, err := h.Reporter.CrossystemParam(ctx, reporters.CrossystemParamMainfwType); err != nil {
 			s.Fatal("Failed to get crossystem mainfw_type: ", err)
