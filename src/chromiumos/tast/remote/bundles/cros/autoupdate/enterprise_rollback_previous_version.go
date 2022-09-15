@@ -48,12 +48,17 @@ func init() {
 			Val: testParam{
 				previousVersionTarget: 2,
 			},
-		}, {
+		},
+		/* Disabled due to <1% pass rate over 30 days. See b/246818326
+		{
 			Name: "rollback_3_versions",
 			Val: testParam{
 				previousVersionTarget: 3,
 			},
-		}},
+		}
+		*/
+		},
+
 		Fixture: fixture.Autoupdate,
 	})
 }
