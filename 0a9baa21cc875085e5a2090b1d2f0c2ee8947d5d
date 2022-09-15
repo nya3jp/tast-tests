@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa53afe8_19599721",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_a11y.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1531047
+      },
+      "writtenOn": "2022-09-15T07:17:03Z",
+      "side": 1,
+      "message": "I guess it mostly happens in tablet models, as I can see `portrait` in the error messages. But I agree that it\u0027s more correct and clear to say it\u0027s because of resources issues.",
+      "parentUuid": "521c84e3_cfd57551",
+      "range": {
+        "startLine": 103,
+        "startChar": 4,
+        "endLine": 103,
+        "endChar": 19
+      },
+      "revId": "0a9baa21cc875085e5a2090b1d2f0c2ee8947d5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ba07c81d_361965a5",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-09-15T06:45:33Z",
       "side": 1,
       "message": "Why it is changed to `s.Log()`? If it is also expected that \"ChromeVox spoken feedback is ready\" will not even be spoken when the device is busy, please add comments to mention it.",
+      "range": {
+        "startLine": 106,
+        "startChar": 4,
+        "endLine": 106,
+        "endChar": 7
+      },
+      "revId": "0a9baa21cc875085e5a2090b1d2f0c2ee8947d5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "079c210d_676e08db",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_a11y.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1531047
+      },
+      "writtenOn": "2022-09-15T07:17:03Z",
+      "side": 1,
+      "message": "As I just saw the failure case which only says `portrait`, `Back Camera active`, `Take photo`, `Button`, `Press Search plus Space to activate` and `portrait`.\n(1st element is said, but not ChromeVox starting message)\nSo currently there is no word which is said for sure.\nI added details in the comment.",
+      "parentUuid": "ba07c81d_361965a5",
       "range": {
         "startLine": 106,
         "startChar": 4,
