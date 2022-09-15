@@ -85,6 +85,24 @@
       "parentUuid": "8ccdd2fb_0fc5f440",
       "revId": "089f38ee936f46fea4bf2c8e2b3422743d2c4b2b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "69017ef9_857b0a79",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_http.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2022-09-15T04:14:25Z",
+      "side": 1,
+      "message": "Good catch! I was copying from the previous impl, but it looks like the method already perform the cleanup on failure, so this cleanup is a nil reference as you mentioned.\n\nFixed, thanks!",
+      "parentUuid": "5dca4521_7b26cda0",
+      "revId": "089f38ee936f46fea4bf2c8e2b3422743d2c4b2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
