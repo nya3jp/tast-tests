@@ -65,7 +65,7 @@ func RoutingIPv6Only(ctx context.Context, s *testing.State) {
 		return
 	}
 
-	// Trigger the DHCP timeout event, and verify that the connectivty is not affected.
+	// Trigger the DHCP timeout event, and verify that the connectivity is not affected.
 	testing.ContextLog(ctx, "Waiting for DHCP timeout event for ", routing.DHCPExtraTimeout)
 	testing.Sleep(ctx, routing.DHCPExtraTimeout)
 	testing.ContextLog(ctx, "DHCP timeout was triggered")
@@ -73,7 +73,7 @@ func RoutingIPv6Only(ctx context.Context, s *testing.State) {
 		IPv4:      false,
 		IPv6:      true,
 		IsPrimary: true,
-		Timeout:   0,
+		Timeout:   5 * time.Second,
 	}); len(errs) != 0 {
 		for _, err := range errs {
 			s.Fatal("Failed to verify connectivity to the test network after DHCP timeout: ", err)
