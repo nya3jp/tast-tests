@@ -3,6 +3,63 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e3ff3360_8290a9f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-09-15T02:49:02Z",
+      "side": 1,
+      "message": "s/a/the/\n\nBut, strictly speaking, if mode is Lacros_MODE_SIDEBYSIDE then Lacros won\u0027t be primary. How about just saying \"If |req.Lacros| is set, Lacros will be enabled.\"",
+      "range": {
+        "startLine": 55,
+        "startChar": 50,
+        "endLine": 55,
+        "endChar": 51
+      },
+      "revId": "5c45cdea82468242ab623a040c3605879ddc94f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7b086b0_ae420d76",
+        "filename": "src/chromiumos/tast/services/cros/ui/chrome_service.proto",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-09-15T02:49:02Z",
+      "side": 1,
+      "message": "See other comment.",
+      "revId": "5c45cdea82468242ab623a040c3605879ddc94f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a676384_ada93eb3",
+        "filename": "src/chromiumos/tast/services/cros/ui/chrome_service.proto",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-09-15T02:49:02Z",
+      "side": 1,
+      "message": "See other comment.",
+      "revId": "5c45cdea82468242ab623a040c3605879ddc94f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "35e96abb_dd67618d",
         "filename": "src/chromiumos/tast/services/cros/ui/chrome_service.proto",
         "patchSetId": 3
