@@ -1,4 +1,4 @@
-// Copyright 2022 The Chromium OS Authors. All rights reserved.
+// Copyright 2022 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -122,18 +122,6 @@ func MeetMultiTaskingCUJ(ctx context.Context, s *testing.State) {
 		bTconn = tconn
 	default:
 		s.Fatal("Unrecognized browser type: ", bt)
-	}
-
-	if _, ok := s.Var("record"); ok {
-		screenRecorder, err := uiauto.NewScreenRecorder(ctx, tconn)
-		if err != nil {
-			s.Fatal("Failed to create ScreenRecorder: ", err)
-		}
-		if err := screenRecorder.Start(ctx, tconn); err != nil {
-			screenRecorder.Release(closeCtx)
-			s.Fatal("Failed to start ScreenRecorder: ", err)
-		}
-		defer uiauto.ScreenRecorderStopSaveRelease(closeCtx, screenRecorder, filepath.Join(s.OutDir(), "screen_record.webm"))
 	}
 
 	inTabletMode, err := ash.TabletModeEnabled(ctx, tconn)
@@ -309,6 +297,12 @@ func MeetMultiTaskingCUJ(ctx context.Context, s *testing.State) {
 	}
 
 	recorder.EnableTracing(s.OutDir(), s.DataPath(cujrecorder.SystemTraceConfigFile))
+
+	if _, ok := s.Var("record"); ok {
+		if err := recorder.AddScreenRecorder(ctx, tconn, filepath.Join(s.OutDir(), fmt.Sprintf("%s-record.webm", s.TestName()))); err != nil {
+			s.Fatal("Failed to add screen recorder: ", err)
+		}
+	}
 
 	if err := recorder.Run(ctx, func(ctx context.Context) error {
 		// Hide notifications so that they won't overlap with other UI components.
