@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "05d0e0a3_abef2a01",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/arc_youtube_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-09-15T18:19:12Z",
+      "side": 1,
+      "message": "I don\u0027t think we can pass the testing state into the recorder, so if we want the test to fail if the screen-recorder isn\u0027t setup properly, I think we\u0027d need to keep a `Fatal` out in each test.",
+      "parentUuid": "97a5f3e5_b1327332",
+      "revId": "846cd7badeff86c536e8280471357cac8b9c03d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "77e44882_09b62c97",
         "filename": "src/chromiumos/tast/local/ui/cujrecorder/recorder.go",
         "patchSetId": 4
@@ -48,6 +66,30 @@
       "writtenOn": "2022-09-15T17:12:47Z",
       "side": 1,
       "message": "wonder if we should just take the test name here with an option to override the path? This will avoid some of the boilerplate around the default file path",
+      "range": {
+        "startLine": 275,
+        "startChar": 82,
+        "endLine": 275,
+        "endChar": 90
+      },
+      "revId": "846cd7badeff86c536e8280471357cac8b9c03d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b57f0d86_1493d86e",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/recorder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-09-15T18:19:12Z",
+      "side": 1,
+      "message": "We\u0027d still have to pass in the out directory, which is usually found using the test state `s`. I think in practice we aren\u0027t supposed to pass in the testing state into anything outside of the test file. Thus, I think our options then become: do I have a single filepath variable, or two variables (the out dir and the test name). Before I make the change to all the files, do you have an opinion on which of the options you prefer? \n\nOne note is that different teams who use the recorder might want to append different things to the name (maybe a date, the build number, etc), so I want to make sure we have options for them as well.",
+      "parentUuid": "77e44882_09b62c97",
       "range": {
         "startLine": 275,
         "startChar": 82,
