@@ -16,6 +16,9 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bluetooth/bluez"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	pb "chromiumos/tast/services/cros/bluetooth"
 	"chromiumos/tast/testing"
 )
@@ -33,6 +36,7 @@ type BTTestService struct {
 	s            *testing.ServiceState
 	cr           *chrome.Chrome
 	bluezAdapter *bluez.Adapter
+	tconn        *chrome.TestConn
 }
 
 // ChromeNew logs into chrome. ChromeClose must be called later.
@@ -41,16 +45,40 @@ func (bts *BTTestService) ChromeNew(ctx context.Context, request *pb.ChromeNewRe
 		return nil, errors.New("chrome already available")
 	}
 	var chromeOpts []chrome.Option
-	if request.BluetoothRevampEnabled {
-		chromeOpts = []chrome.Option{chrome.EnableFeatures("BluetoothRevamp")}
-	} else {
-		chromeOpts = []chrome.Option{chrome.DisableFeatures("BluetoothRevamp")}
+
+	if len(request.EnableFeatures) > 0 {
+		chromeOpts = append(chromeOpts, chrome.EnableFeatures(request.EnableFeatures[:]...))
+	}
+
+	if len(request.DisableFeatures) > 0 {
+		chromeOpts = append(chromeOpts, chrome.DisableFeatures(request.DisableFeatures[:]...))
+	}
+
+	if request.NoLogin {
+		chromeOpts = append(chromeOpts, chrome.NoLogin())
+		chromeOpts = append(chromeOpts, chrome.LoadSigninProfileExtension(request.SigninProfileTestExtensionID))
 	}
 	cr, err := chrome.New(ctx, chromeOpts...)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to create new Chrome")
 	}
 	bts.cr = cr
+
+	if request.NoLogin {
+		// Create the connection that allows us to manipulate the UI.
+		tconn, err := cr.SigninProfileTestAPIConn(ctx)
+		if err != nil {
+			return nil, err
+		}
+		bts.tconn = tconn
+	} else {
+		tconn, err := cr.TestAPIConn(ctx)
+		if err != nil {
+			return nil, err
+		}
+		bts.tconn = tconn
+	}
+
 	return &emptypb.Empty{}, nil
 }
 
@@ -145,8 +173,7 @@ func (bts *BTTestService) discoverDeviceByAddress(ctx context.Context, targetDev
 			devicesStr[i] = device.String()
 		}
 		sort.Strings(devicesStr)
-		return nil, errors.Wrapf(
-			pollErr,
+		return nil, errors.Wrapf(pollErr,
 			"timeout waiting for discover device with address %q. Found %d other devices (%v)",
 			targetDeviceAddress,
 			len(devices),
@@ -196,4 +223,22 @@ func (bts *BTTestService) discoverDevices(ctx context.Context) ([]*pb.Device, er
 		}
 	}
 	return devices, nil
+}
+
+// WaitForCancelButton Waits for cancel button to become available.
+func (bts *BTTestService) WaitForCancelButton(ctx context.Context, empty *emptypb.Empty) (*emptypb.Empty, error) {
+	outDir, ok := testing.ContextOutDir(ctx)
+	if !ok {
+		return nil, errors.New("failed to get output directory")
+	}
+
+	defer faillog.DumpUITree(ctx, outDir, bts.tconn)
+
+	ui := uiauto.New(bts.tconn)
+	if err := ui.WaitUntilExists(nodewith.Name("continue"))(ctx); err != nil {
+		return nil, errors.Wrap(err, "failed to find continue button from service")
+	}
+
+	return &emptypb.Empty{}, nil
+
 }
