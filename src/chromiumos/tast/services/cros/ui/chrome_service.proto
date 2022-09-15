@@ -88,6 +88,11 @@ message NewRequest {
   // If |lacros| is unset or lacros.Mode is set to MODE_DISABLED, Lacros
   // browser will not be enabled.
   Lacros lacros = 11;
+
+  // EnableHIDScreenOnOOBE
+   bool enable_hid_screen_on_oobe = 12;
+
+   string signin_profile_test_extension_id = 13;
 }
 
 // LoginMode describes the user mode for the login.
