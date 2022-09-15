@@ -129,6 +129,12 @@ func runSetup(ctx context.Context, s *testing.State) (*tabSwitchVariables, error
 
 	vars.recorder.EnableTracing(s.OutDir(), s.DataPath(cujrecorder.SystemTraceConfigFile))
 
+	if _, ok := s.Var("record"); ok {
+		if err := vars.recorder.AddScreenRecorder(ctx, ashTestConn, s.TestName()); err != nil {
+			s.Fatal("Failed to add screen recorder: ", err)
+		}
+	}
+
 	metricsSuccessfullyAdded = true
 	return &vars, nil
 }

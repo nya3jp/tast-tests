@@ -25,7 +25,10 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Data:         []string{cujrecorder.SystemTraceConfigFile},
 		Timeout:      25 * time.Minute,
-		Vars:         []string{"mute"},
+		Vars: []string{
+			"mute",
+			"record",
+		},
 		Params: []testing.Param{
 			{
 				ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),

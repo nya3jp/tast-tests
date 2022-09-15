@@ -53,6 +53,7 @@ func init() {
 		Timeout:      45 * time.Minute,
 		Vars: []string{
 			"mute",
+			"record",
 		},
 		VarDeps: []string{
 			"ui.VideoCUJ.ytExperiments",
@@ -205,6 +206,12 @@ func VideoCUJ(ctx context.Context, s *testing.State) {
 
 	recorder.EnableTracing(s.OutDir(), s.DataPath(cujrecorder.SystemTraceConfigFile))
 	defer recorder.Close(closeCtx)
+
+	if _, ok := s.Var("record"); ok {
+		if err := recorder.AddScreenRecorder(ctx, tconn, s.TestName()); err != nil {
+			s.Fatal("Failed to add screen recorder: ", err)
+		}
+	}
 
 	webConn, err := cs.NewConn(ctx, ui.PerftestURL)
 	if err != nil {
