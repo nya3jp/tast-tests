@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7daf303a_7bd2739d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns/dns.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 535,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2022-09-15T01:30:40Z",
+      "side": 1,
+      "message": "Unfortunately this doesn\u0027t work :(\nI tried something similar to this to make the code cleaner earlier.\n\nThis reason it does not work is because the cleanup can only be run if the action_to_be_cleaned_up is done e.g. the certs cleanup can only be done after certs creation and if the failure happened prior to the certs creation the cleanup can\u0027t be done.\n\nFor methods like shill\u0027s ProfilePropertyCheckPortalList where it does not care about the prior action, this can be done. However, the shill call is the only one within the bunch of defers here.",
+      "parentUuid": "d45157a6_d66d8027",
+      "range": {
+        "startLine": 522,
+        "startChar": 11,
+        "endLine": 535,
+        "endChar": 4
+      },
+      "revId": "1653d44fd67d0807292a338c7155ee8e8e234038",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "93f63b61_8f523fe9",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-09-15T00:21:06Z",
       "side": 1,
       "message": "nit: is it possible to make the naming consistent between SetupDNSEnv and this func? It looks like they are the same general thing, so maybe call them both either Setup or Create (or New). Also, I would drop the \"DNS\" part since these are already in the dns package, so dns.NewEnv and dns.NewServerEnv look better to me.",
+      "range": {
+        "startLine": 540,
+        "startChar": 5,
+        "endLine": 540,
+        "endChar": 23
+      },
+      "revId": "1653d44fd67d0807292a338c7155ee8e8e234038",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "928853a0_121c9974",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns/dns.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 540,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2022-09-15T01:30:40Z",
+      "side": 1,
+      "message": "SGTM, I changed it to `CreateEnv` (creating DNS environment) and `CreateServer` (creating DNS/DoH server). Let me know if this does not work, thanks!",
+      "parentUuid": "93f63b61_8f523fe9",
       "range": {
         "startLine": 540,
         "startChar": 5,
