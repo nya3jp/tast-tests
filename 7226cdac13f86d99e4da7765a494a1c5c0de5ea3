@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32117670_8104e95f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/config_verify.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-09-15T16:25:42Z",
+      "side": 1,
+      "message": "What is the case that Tast local test is not running on a ChromeOS device? I am not aware of such a case. Please let me know.\n\nAlso, I think there is a re-branding effort is going on. I think they are goi",
+      "revId": "7226cdac13f86d99e4da7765a494a1c5c0de5ea3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9321b8f0_60299363",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/config_verify.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-09-15T16:25:42Z",
+      "side": 1,
+      "message": "I took a look at bug. Should we simply not run this test on kernel v5.15.63? \n\nIn general, it is not recommended to change the test behavior based on the software/hardware feature of the test. It is recommended to use software/hardware dependenices and parameterized tests to handle different behavior based on the device features.",
+      "revId": "7226cdac13f86d99e4da7765a494a1c5c0de5ea3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
