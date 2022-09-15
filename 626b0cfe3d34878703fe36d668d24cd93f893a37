@@ -50,6 +50,23 @@
       "message": "Xinglong, can you help confirm that a11y.LiveCaption needs lacros variant? Thanks,",
       "revId": "626b0cfe3d34878703fe36d668d24cd93f893a37",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "89e589f9_c9cb1a39",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-09-15T22:18:42Z",
+      "side": 1,
+      "message": "Thanks all for reviewing this! \nXinglong, please let me know if a11y.LiveCaption is flagged inappropriately here. I can probably follow it up in a separate CL.",
+      "revId": "626b0cfe3d34878703fe36d668d24cd93f893a37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
