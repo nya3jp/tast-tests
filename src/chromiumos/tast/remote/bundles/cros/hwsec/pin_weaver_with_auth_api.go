@@ -66,14 +66,18 @@ func init() {
 				useAuthFactor:         false,
 				useLegacyAddAPIForPin: true,
 			},
-		}, {
+		},
+		/* Disabled due to <1% pass rate over 30 days. See b/246818310
+		{
 			Name: "pin_weaver_with_auth_factor_with_uss",
 			Val: pinWeaverWithAuthAPIParam{
 				useUserSecretStash:    true,
 				useAuthFactor:         true,
 				useLegacyAddAPIForPin: false,
 			},
-		}},
+		}
+		*/
+		},
 	})
 }
 
