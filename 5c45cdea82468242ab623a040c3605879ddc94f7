@@ -26,6 +26,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c57fa4d8_e8317a0b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/ui/chrome_service_grpc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-09-15T03:15:29Z",
+      "side": 1,
+      "message": "It would be good if we could test that it\u0027s actually launching Lacros instead of Ash.",
+      "revId": "5c45cdea82468242ab623a040c3605879ddc94f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b7b086b0_ae420d76",
         "filename": "src/chromiumos/tast/services/cros/ui/chrome_service.proto",
         "patchSetId": 3
