@@ -52,6 +52,24 @@
       "parentUuid": "ef543248_f0643b44",
       "revId": "9330cd3f6e60ae5768e58137c9384e9a0a646765",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64db5b49_515e1ef5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1545162
+      },
+      "writtenOn": "2022-09-15T06:05:50Z",
+      "side": 1,
+      "message": "Hi Ashley,\n\nThanks you. I will check on it.\nI just notice this comment, but already fixed this. Patchset 13 is not related to dock4.\n\nThis is how I do:\nI turn `InitFixture` this func back to original way in dock4. And I do `git pull --rebase` to merge, `repo sync` \u0026 `update_chroot` to check version before I submit. Then download this patchset to run. Not seen error msg about library now. But the result is failed.\n\nI think current changes will help us on reviewing, and reduce my mistake.\nAnd I will do another CL to update `InitFixture` func to avoid dock cached issue.\n\nTell me is that ok?",
+      "parentUuid": "4f5f6619_99f21ccc",
+      "revId": "9330cd3f6e60ae5768e58137c9384e9a0a646765",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
