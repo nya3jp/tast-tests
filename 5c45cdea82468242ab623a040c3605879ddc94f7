@@ -293,6 +293,24 @@
       "parentUuid": "954e5c22_97086d3c",
       "revId": "5c45cdea82468242ab623a040c3605879ddc94f7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae2fde70_3757818c",
+        "filename": "src/chromiumos/tast/services/cros/ui/chrome_service.proto",
+        "patchSetId": 3
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2022-09-15T17:10:41Z",
+      "side": 1,
+      "message": "I think having the flexibility is good, although now we don\u0027t have the option to either specify which Ash or Lacros binaries to use.\n\n`lacros.DeployedBinary` is implemented as a global runtime var on Tast cmd, it does not feel the right place from the encapsulation standpoint that the GRPC service has the ability to inject var into that var space.\n\nMaybe we can table this for now. We can have a chat with Seewai on how Tast remote testcases handle variables and passes the information to `cros` cmd so that GRPC service would have the same access to the runtime variables.",
+      "parentUuid": "fb3ef03c_bf2da818",
+      "revId": "5c45cdea82468242ab623a040c3605879ddc94f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
