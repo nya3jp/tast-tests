@@ -16,7 +16,9 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/lockscreen"
 	"chromiumos/tast/local/logsaver"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/local/syslog"
@@ -182,6 +184,10 @@ type policyChromeFixture struct {
 
 	// Marker for per-test log.
 	logMarker *logsaver.Marker
+
+	// clean stores if Chrome is clean after PostTest.
+	// It is considered clean if it does not interfere with the next test, e.g. with a locked screen.
+	clean bool
 }
 
 // FixtData is returned by the fixtures and used in tests
@@ -323,19 +329,15 @@ func (p *policyChromeFixture) TearDown(ctx context.Context, s *testing.FixtState
 }
 
 func (p *policyChromeFixture) Reset(ctx context.Context) error {
+	// If Chrome not in a clean state, a failure here would invoke a TearDown and SetUp of
+	// the fixture, ensuring a clean state for the next test.
+	if !p.clean {
+		return errors.New("failed to clean up Chrome after the last test")
+	}
+
 	// Check the connection to Chrome.
 	if err := p.cr.Responded(ctx); err != nil {
 		return errors.Wrap(err, "existing Chrome connection is unusable")
-	}
-
-	// The policy blob has already been cleared.
-	if err := policyutil.RefreshChromePolicies(ctx, p.cr); err != nil {
-		return errors.Wrap(err, "failed to clear policies")
-	}
-
-	// Reset Chrome state.
-	if err := p.cr.ResetState(ctx); err != nil {
-		return errors.Wrap(err, "failed resetting existing Chrome session")
 	}
 
 	return nil
@@ -353,6 +355,8 @@ func (p *policyChromeFixture) PreTest(ctx context.Context, s *testing.FixtTestSt
 	}
 }
 func (p *policyChromeFixture) PostTest(ctx context.Context, s *testing.FixtTestState) {
+	p.clean = false
+
 	if p.logMarker != nil {
 		if err := p.logMarker.Save(filepath.Join(s.OutDir(), "chrome.log")); err != nil {
 			s.Error("Failed to store per-test log data: ", err)
@@ -375,8 +379,39 @@ func (p *policyChromeFixture) PostTest(ctx context.Context, s *testing.FixtTestS
 		s.Fatal("Failed to marshal policies: ", err)
 	}
 
+	// The following checks are here in PostTest to associate any failures with the previous test.
+	// A failure here generally means that something went wrong in the previous test,
+	// or the test has insufficient cleanup.
+
 	// Dump all policies as seen by Chrome to the tests OutDir.
 	if err := ioutil.WriteFile(filepath.Join(s.OutDir(), PolicyFileDump), b, 0644); err != nil {
 		s.Error("Failed to dump policies to file: ", err)
 	}
+
+	// The policy blob has already been cleared.
+	if err := policyutil.RefreshChromePolicies(ctx, p.cr); err != nil {
+		s.Fatal("Failed to clear policies: ", err)
+	}
+
+	// Reset Chrome state.
+	if err := p.cr.ResetState(ctx); err != nil {
+		s.Fatal("Failed resetting existing Chrome session: ", err)
+	}
+
+	// Check if Chrome is not left with a locked screen.
+	if st, err := lockscreen.GetState(ctx, tconn); err != nil {
+		s.Fatal("Failed getting the lockscreen state: ", err)
+	} else if st.Locked {
+		s.Fatal("Unexpected lockscreen state after the test, the screen is locked")
+	}
+
+	// Check if a window is there after chrome.ResetState().
+	if windows, err := ash.GetAllWindows(ctx, tconn); err != nil {
+		s.Fatal("Failed to get the windows: ", err)
+	} else if len(windows) != 0 {
+		s.Fatalf("Unexpected number of windows after the test; got %d, want 0", len(windows))
+	}
+
+	// Chrome should be in a good state to execute the next test.
+	p.clean = true
 }
