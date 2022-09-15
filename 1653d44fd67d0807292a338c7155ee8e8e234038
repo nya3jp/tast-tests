@@ -65,6 +65,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c9fde22_393ca193",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns/dns.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 535,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-09-15T01:38:47Z",
+      "side": 1,
+      "message": "I will make Cleanup as a member function on Struct Env, i.e.,\n```\nfunc (e *Env) Cleanup(ctx) error {\n  ...\n}\n```\nThen make the cleanupCert also as a member in Env, and call that only when it is not nil in Cleanup().",
+      "parentUuid": "7daf303a_7bd2739d",
+      "range": {
+        "startLine": 522,
+        "startChar": 11,
+        "endLine": 535,
+        "endChar": 4
+      },
+      "revId": "1653d44fd67d0807292a338c7155ee8e8e234038",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "93f63b61_8f523fe9",
