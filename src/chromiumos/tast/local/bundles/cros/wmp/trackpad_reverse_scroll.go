@@ -29,13 +29,20 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Fixture:      "chromeLoggedIn",
-		Params: []testing.Param{{
-			Name: "reverse_on",
-			Val:  true,
-		}, {
-			Name: "reverse_off",
-			Val:  false,
-		}},
+		Params:       []testing.Param{
+			/* Disabled due to <1% pass rate over 30 days. See b/246818645
+			{
+				Name: "reverse_on",
+				Val:  true,
+			}
+			*/
+			/* Disabled due to <1% pass rate over 30 days. See b/246818645
+			{
+				Name: "reverse_off",
+				Val:  false,
+			}
+			*/
+		},
 	})
 }
 
