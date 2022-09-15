@@ -16,6 +16,24 @@
       "message": "I\u0027d prefer we keep this in Reset. We don\u0027t need to maintain state for it to work.",
       "revId": "5f59a1cf322c352b08fe9af02e73cdb846cb33f3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4face6b1_5cac67ba",
+        "filename": "src/chromiumos/tast/local/policyutil/fixtures/chrome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-09-15T13:57:31Z",
+      "side": 1,
+      "message": "It was the first check in Reset. Is it still fine if this will be the last check overall?",
+      "parentUuid": "2b05d958_6d0503a2",
+      "revId": "5f59a1cf322c352b08fe9af02e73cdb846cb33f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
