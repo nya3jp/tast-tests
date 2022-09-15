@@ -1,6 +1,40 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f0aca8b_2fa79650",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1510928
+      },
+      "writtenOn": "2022-09-15T12:55:37Z",
+      "side": 1,
+      "message": "Add tag here. For example,\n\narc: Add xxx",
+      "revId": "676351799c8e29a82f912a23e0ee1bca15b9d726",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3878353_28822a8d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1510928
+      },
+      "writtenOn": "2022-09-15T12:55:37Z",
+      "side": 1,
+      "message": "Explain the background, for example, what this test for and how this test work.",
+      "revId": "676351799c8e29a82f912a23e0ee1bca15b9d726",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "0fd3da1a_718741e9",
@@ -14,6 +48,263 @@
       "writtenOn": "2022-09-15T11:30:50Z",
       "side": 1,
       "message": "Could you review this for me? Thank you so much!",
+      "revId": "676351799c8e29a82f912a23e0ee1bca15b9d726",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47fa7588_6f2127b9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perfetto_play_store.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1510928
+      },
+      "writtenOn": "2022-09-15T12:55:37Z",
+      "side": 1,
+      "message": "You named *PlayStore* but actually test by Settings app. Recommend change to a more specific named, e.g. PerfettoWMJankness.",
+      "revId": "676351799c8e29a82f912a23e0ee1bca15b9d726",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c45a014_42773ae6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perfetto_play_store.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1510928
+      },
+      "writtenOn": "2022-09-15T12:55:37Z",
+      "side": 1,
+      "message": "Remove group: and leave a comment here.\n\n// This test currently only work for ARC T, due to no ARC T board running tast\n// test, not add this test to any group.\n// TODO(sstan): Add it to mainline once ARC T launched.",
+      "range": {
+        "startLine": 25,
+        "startChar": 25,
+        "endLine": 25,
+        "endChar": 41
+      },
+      "revId": "676351799c8e29a82f912a23e0ee1bca15b9d726",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7558367c_c4bbc1ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perfetto_play_store.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1510928
+      },
+      "writtenOn": "2022-09-15T12:55:37Z",
+      "side": 1,
+      "message": "Not related APK, please delete it.",
+      "revId": "676351799c8e29a82f912a23e0ee1bca15b9d726",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ca6a405_6ddde267",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perfetto_play_store.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1510928
+      },
+      "writtenOn": "2022-09-15T12:55:37Z",
+      "side": 1,
+      "message": "gaiaPool only use for optin. If you not use PlayStore, please delete it.",
+      "revId": "676351799c8e29a82f912a23e0ee1bca15b9d726",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56ab4cce_ac13ba2c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perfetto_play_store.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1510928
+      },
+      "writtenOn": "2022-09-15T12:55:37Z",
+      "side": 1,
+      "message": "Add comments for this test. Similar with commit message. See above.",
+      "revId": "676351799c8e29a82f912a23e0ee1bca15b9d726",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bfb87edc_4020841e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perfetto_play_store.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1510928
+      },
+      "writtenOn": "2022-09-15T12:55:37Z",
+      "side": 1,
+      "message": "d seems not be used in this test?",
+      "revId": "676351799c8e29a82f912a23e0ee1bca15b9d726",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8799ba54_d34b0468",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perfetto_play_store.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1510928
+      },
+      "writtenOn": "2022-09-15T12:55:37Z",
+      "side": 1,
+      "message": "Wrap the err, see L64",
+      "revId": "676351799c8e29a82f912a23e0ee1bca15b9d726",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a5f9cc0_b66b870c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perfetto_play_store.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1510928
+      },
+      "writtenOn": "2022-09-15T12:55:37Z",
+      "side": 1,
+      "message": "Return an error object here.\n\nreturn errors.Wrap(err, \"failed to start activity\")",
+      "range": {
+        "startLine": 64,
+        "startChar": 3,
+        "endLine": 64,
+        "endChar": 10
+      },
+      "revId": "676351799c8e29a82f912a23e0ee1bca15b9d726",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8496cde4_e2b90d6c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perfetto_play_store.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1510928
+      },
+      "writtenOn": "2022-09-15T12:55:37Z",
+      "side": 1,
+      "message": "Space\n\n// Maximize",
+      "range": {
+        "startLine": 71,
+        "startChar": 2,
+        "endLine": 71,
+        "endChar": 12
+      },
+      "revId": "676351799c8e29a82f912a23e0ee1bca15b9d726",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57d13f8e_4c57076a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perfetto_play_store.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1510928
+      },
+      "writtenOn": "2022-09-15T12:55:37Z",
+      "side": 1,
+      "message": "ditto L71\n\nAnd explain why 3 seconds.",
+      "range": {
+        "startLine": 75,
+        "startChar": 2,
+        "endLine": 75,
+        "endChar": 8
+      },
+      "revId": "676351799c8e29a82f912a23e0ee1bca15b9d726",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db1217b8_88efbabc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perfetto_play_store.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1510928
+      },
+      "writtenOn": "2022-09-15T12:55:37Z",
+      "side": 1,
+      "message": "ditto L71\n\nAnd add a empty line.",
+      "range": {
+        "startLine": 77,
+        "startChar": 2,
+        "endLine": 77,
+        "endChar": 13
+      },
+      "revId": "676351799c8e29a82f912a23e0ee1bca15b9d726",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd7e80d6_394583a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perfetto_play_store.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1510928
+      },
+      "writtenOn": "2022-09-15T12:55:37Z",
+      "side": 1,
+      "message": "ditto L71",
+      "range": {
+        "startLine": 81,
+        "startChar": 2,
+        "endLine": 81,
+        "endChar": 8
+      },
+      "revId": "676351799c8e29a82f912a23e0ee1bca15b9d726",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "166841f7_838ae02b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perfetto_play_store.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1510928
+      },
+      "writtenOn": "2022-09-15T12:55:37Z",
+      "side": 1,
+      "message": "Add TODO here about future work (analysis trace result file)",
       "revId": "676351799c8e29a82f912a23e0ee1bca15b9d726",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
