@@ -30,7 +30,8 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "TBT device enumeration check after hot plug-unplug",
 		Contacts:     []string{"pathan.jilani@intel.com", "intel-chrome-system-automation-team@intel.com"},
-		Attr:         []string{"group:typec"},
+		// Disabled due to <1% pass rate over 30 days. See b/246820340
+		//Attr:         []string{"group:typec"},
 		SoftwareDeps: []string{"chrome"},
 		Data:         []string{testConfig, "testcert.p12"},
 		Vars:         []string{"typec.dutTbtPort", "typec.cSwitchPort", "typec.domainIP", "ui.signinProfileTestExtensionManifestKey"},
@@ -42,7 +43,8 @@ func init() {
 		}, {
 			Name:      "stress",
 			Val:       500,
-			ExtraAttr: []string{"group:stress"},
+			// Disabled due to <1% pass rate over 30 days. See b/246820340
+			//ExtraAttr: []string{"group:stress"},
 			Timeout:   3 * time.Hour,
 		}},
 	})
