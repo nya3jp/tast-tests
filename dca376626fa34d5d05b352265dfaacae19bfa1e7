@@ -50,6 +50,80 @@
       "message": "I\u0027ve filed a bug for the incorrect positioning of the extension window:\nhttps://bugs.chromium.org/p/chromium/issues/detail?id\u003d1359203\n\n(It doesn\u0027t matter for this test I believe.)",
       "revId": "dca376626fa34d5d05b352265dfaacae19bfa1e7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c942e1c_8698e332",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-09-15T16:03:47Z",
+      "side": 1,
+      "message": "LGTM with comment.",
+      "revId": "dca376626fa34d5d05b352265dfaacae19bfa1e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4bbccd1a_83680c83",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/image_paste.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-09-15T16:03:47Z",
+      "side": 1,
+      "message": "To me alt+tab trick looks very hacky, and I\u0027m concerning the flakiness in the future. Probably we should get rid of it, but I wouldn\u0027t block this CL now just to move forward.\nPlease file a bug to clean up it and add TODO here.",
+      "revId": "dca376626fa34d5d05b352265dfaacae19bfa1e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a77e5c1_5fae971a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/image_paste.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-09-15T16:03:47Z",
+      "side": 1,
+      "message": "nit: Fatal",
+      "range": {
+        "startLine": 129,
+        "startChar": 4,
+        "endLine": 129,
+        "endChar": 10
+      },
+      "revId": "dca376626fa34d5d05b352265dfaacae19bfa1e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "edb3b0b1_63a399d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/image_paste.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-09-15T16:03:47Z",
+      "side": 1,
+      "message": "ditto.",
+      "revId": "dca376626fa34d5d05b352265dfaacae19bfa1e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
