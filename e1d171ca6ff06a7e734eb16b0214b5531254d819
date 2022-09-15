@@ -39,6 +39,30 @@
       },
       "revId": "e1d171ca6ff06a7e734eb16b0214b5531254d819",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3b6f10f_7e281c75",
+        "filename": "src/chromiumos/tast/local/assistant/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1121230
+      },
+      "writtenOn": "2022-09-15T23:34:58Z",
+      "side": 1,
+      "message": "Fixture doesn\u0027t have `VarDeps`: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast/src/chromiumos/tast/internal/testing/fixt.go;l\u003d66-68;drc\u003d40abc47087c3e1722042ec4e01f6c085415a1f27.",
+      "parentUuid": "dfb76b4f_295158a5",
+      "range": {
+        "startLine": 129,
+        "startChar": 2,
+        "endLine": 129,
+        "endChar": 6
+      },
+      "revId": "e1d171ca6ff06a7e734eb16b0214b5531254d819",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
