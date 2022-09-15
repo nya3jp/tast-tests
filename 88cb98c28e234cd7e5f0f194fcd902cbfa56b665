@@ -26,6 +26,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0c0bbda0_29d0e766",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns/dns.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 499,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-09-15T07:42:35Z",
+      "side": 1,
+      "message": "I have some concern on this code actually assume that ConnectToRouter() will use xx.xx.xx.2 as the server address, but that\u0027s kind of an internal implementation. The normal way should be using env.GetVethInAddrs() to get the address, but I know that here we want to know that address before creating the virtualnet.Env\nAt least we should leave a comment about this assumption here.",
+      "range": {
+        "startLine": 498,
+        "startChar": 0,
+        "endLine": 499,
+        "endChar": 89
+      },
+      "revId": "88cb98c28e234cd7e5f0f194fcd902cbfa56b665",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6026a918_f969ff6e",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/dns/dns.go",
         "patchSetId": 8
@@ -66,6 +89,75 @@
         "startChar": 0,
         "endLine": 545,
         "endChar": 3
+      },
+      "revId": "88cb98c28e234cd7e5f0f194fcd902cbfa56b665",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b94edefb_182d4c43",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns/dns.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 554,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-09-15T07:42:35Z",
+      "side": 1,
+      "message": "ditto, or just use GetVethInAddrs here.",
+      "range": {
+        "startLine": 552,
+        "startChar": 0,
+        "endLine": 554,
+        "endChar": 77
+      },
+      "revId": "88cb98c28e234cd7e5f0f194fcd902cbfa56b665",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e835cf1a_80a5a191",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns/dnsproxy.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-09-15T07:42:35Z",
+      "side": 1,
+      "message": "do we call this function with `false` in some other places?",
+      "range": {
+        "startLine": 328,
+        "startChar": 41,
+        "endLine": 328,
+        "endChar": 59
+      },
+      "revId": "88cb98c28e234cd7e5f0f194fcd902cbfa56b665",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9cab46f6_0d1c6ef7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns/dnsproxy.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-09-15T07:42:35Z",
+      "side": 1,
+      "message": "nit: \"wait for DNS proxy processes started\"?",
+      "range": {
+        "startLine": 329,
+        "startChar": 37,
+        "endLine": 329,
+        "endChar": 65
       },
       "revId": "88cb98c28e234cd7e5f0f194fcd902cbfa56b665",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
