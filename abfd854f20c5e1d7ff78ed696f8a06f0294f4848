@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cbb1413a_fb69b54e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-09-15T15:48:31Z",
+      "side": 1,
+      "message": "LGTM with comment.",
+      "revId": "abfd854f20c5e1d7ff78ed696f8a06f0294f4848",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f61bfe84_c428f6f1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/utils/helpers.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-09-15T15:48:31Z",
+      "side": 1,
+      "message": "nit/style: WPSW (all capital for acronyms in Go). Ditto for the same here and later.)",
+      "range": {
+        "startLine": 101,
+        "startChar": 20,
+        "endLine": 101,
+        "endChar": 24
+      },
+      "revId": "abfd854f20c5e1d7ff78ed696f8a06f0294f4848",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
