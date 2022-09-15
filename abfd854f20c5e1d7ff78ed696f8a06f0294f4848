@@ -39,6 +39,30 @@
       },
       "revId": "abfd854f20c5e1d7ff78ed696f8a06f0294f4848",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "30ad1e77_ae7b40b3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/utils/helpers.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1377969
+      },
+      "writtenOn": "2022-09-15T23:03:25Z",
+      "side": 1,
+      "message": "Oh that diff has killed the vote unfortunately. PTAL",
+      "parentUuid": "f61bfe84_c428f6f1",
+      "range": {
+        "startLine": 101,
+        "startChar": 20,
+        "endLine": 101,
+        "endChar": 24
+      },
+      "revId": "abfd854f20c5e1d7ff78ed696f8a06f0294f4848",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
