@@ -25,7 +25,7 @@ var bluetoothSettingsBluetoothToggleButton = nodewith.NameContaining("Bluetooth"
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ToggleBluetoothFromBluetoothSettings,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Checks that Bluetooth can be enabled and disabled from the Bluetooth Settings sub-page",
 		Contacts: []string{
 			"chadduffin@chromium.org",
