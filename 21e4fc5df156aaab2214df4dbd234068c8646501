@@ -106,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7f2cc27_eaa9a99b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/saved_file_to_default_folder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1403852
+      },
+      "writtenOn": "2022-09-15T03:43:17Z",
+      "side": 1,
+      "message": "Ack let\u0027s discuss offline",
+      "parentUuid": "aa7e14ae_f2fd7143",
+      "range": {
+        "startLine": 27,
+        "startChar": 16,
+        "endLine": 27,
+        "endChar": 40
+      },
+      "revId": "21e4fc5df156aaab2214df4dbd234068c8646501",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3b2aaa00_8169b7a6",
