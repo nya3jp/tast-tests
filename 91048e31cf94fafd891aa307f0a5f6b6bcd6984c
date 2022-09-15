@@ -45,6 +45,30 @@
       },
       "revId": "91048e31cf94fafd891aa307f0a5f6b6bcd6984c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d51c0ae_973fe39d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/connection.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2022-09-15T06:04:08Z",
+      "side": 1,
+      "message": "I\u0027ll defer the decision to Jie here as the owner.\n\nFrom what I understand, all VPNs except for WG only needs 1 server to test. WG two peers test requires 2 servers. The additional servers (after 2) would never be used in this case.\nI\u0027d also assume that if we want to use a slice, we\u0027d want to change L91 as well to be a slice of `*Server`.\n\nAs there is no WG two peer test that needs a created env, an alternative would be to just drop the `secondServerEnv` and always create a TestEnv for it - although I feel like the code looks messier this way.",
+      "parentUuid": "e3af35d5_045a07c8",
+      "range": {
+        "startLine": 87,
+        "startChar": 1,
+        "endLine": 88,
+        "endChar": 25
+      },
+      "revId": "91048e31cf94fafd891aa307f0a5f6b6bcd6984c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
