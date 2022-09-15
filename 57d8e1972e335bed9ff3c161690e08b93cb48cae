@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "588f814d_8160f0c2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzkaller/wrapper.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 450,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-09-15T20:32:12Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d99f1e2e_bcc95373",
+      "revId": "57d8e1972e335bed9ff3c161690e08b93cb48cae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1bcd095c_03938bf7",
@@ -90,6 +108,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "612ffb38_03fb705b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzkaller/wrapper.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 454,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-09-15T20:32:12Z",
+      "side": 1,
+      "message": "We will still have a problem if a user is doing a manual run and a schedule run on the same board are running at once, right? Anyway, I will leave you to decide what is the proper way to do. Thanks.",
+      "parentUuid": "6f59a609_11c5e384",
+      "revId": "57d8e1972e335bed9ff3c161690e08b93cb48cae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "422ea106_c881d48d",
         "filename": "src/chromiumos/tast/remote/bundles/cros/syzkaller/wrapper.go",
         "patchSetId": 4
@@ -119,6 +155,24 @@
       "side": 1,
       "message": "I had come across that, but it looks like it is meant to be used for local tast tests(so Uname would contain kernel information about the machine on which this remote tast test would be running). Am I missing something?",
       "parentUuid": "422ea106_c881d48d",
+      "revId": "57d8e1972e335bed9ff3c161690e08b93cb48cae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2052f1e2_5b9a9161",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzkaller/wrapper.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 463,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-09-15T20:32:12Z",
+      "side": 1,
+      "message": "Sorry,somehow I thought this was a local test. My mistake.",
+      "parentUuid": "00dc61e9_63e40aa3",
       "revId": "57d8e1972e335bed9ff3c161690e08b93cb48cae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
