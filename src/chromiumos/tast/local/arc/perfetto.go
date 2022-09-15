@@ -5,7 +5,9 @@
 package arc
 
 import (
+	"bytes"
 	"context"
+	"io/ioutil"
 
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
@@ -37,33 +39,29 @@ func (a *ARC) PerfettoTrace(ctx context.Context, traceConfigPath, traceResultPat
 	// Perfetto related path inner ARC.
 	const (
 		localPerfettoTraceDir = "/data/misc/perfetto-traces/"
-		localTempConfigPath   = localPerfettoTraceDir + "config"
 		localTempResultPath   = localPerfettoTraceDir + "perfetto.trace"
 	)
 
-	// Currently ARC shell does not have write permission in |localPerfettoTraceDir|. So here use root permission as
-	// a workaround. Note that it may not work some ARC builds.
-	// TODO(sstan): Need change to use standin to pass config rather than create a config file.
-	a.device.Root(ctx)
-
-	if err := a.PushFile(ctx, traceConfigPath, localTempConfigPath); err != nil {
-		return errors.Wrapf(err, "failed to push perfetto config file from %v to ARC path %v", traceConfigPath, localTempResultPath)
+	config, err := ioutil.ReadFile(traceConfigPath)
+	if err != nil {
+		return errors.Wrap(err, "failed to read config file")
 	}
 
-	cmd := a.Command(ctx, "perfetto", "--txt", "--config", localTempConfigPath, "-o", localTempResultPath)
+	shellCmd := a.Command(ctx, "perfetto", "-o", localTempResultPath, "--txt", "--config", "-")
+	shellCmd.Cmd.Stdin = bytes.NewReader(config)
 
-	if err := cmd.Start(); err != nil {
+	if err := shellCmd.Start(); err != nil {
 		return errors.Wrap(err, "failed to start perfetto trace")
 	}
-	defer cmd.Wait()
+	defer shellCmd.Wait()
 
 	ferr := f(ctx)
 
 	// If earlyExit, stop tracing immediately. Or wait tracing finish.
 	if earlyExit {
-		cmd.Kill()
+		shellCmd.Kill()
 	} else {
-		cmd.Wait(testexec.DumpLogOnError)
+		shellCmd.Wait(testexec.DumpLogOnError)
 	}
 
 	// Pull trace result whatever test function succeeded or failed.
