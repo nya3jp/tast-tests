@@ -1,4 +1,4 @@
-// Copyright 2022 The ChromiumOS Authors.
+// Copyright 2022 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -7,6 +7,8 @@ package taskswitchcuj
 
 import (
 	"context"
+	"fmt"
+	"path/filepath"
 	"time"
 
 	"chromiumos/tast/common/action"
@@ -106,6 +108,12 @@ func Run(ctx context.Context, s *testing.State) {
 	}
 	recorder.EnableTracing(s.OutDir(), s.DataPath(cujrecorder.SystemTraceConfigFile))
 	defer recorder.Close(closeCtx)
+
+	if _, ok := s.Var("record"); ok {
+		if err := recorder.AddScreenRecorder(ctx, tconn, filepath.Join(s.OutDir(), fmt.Sprintf("%s-record.webm", s.TestName()))); err != nil {
+			s.Fatal("Failed to add screen recorder: ", err)
+		}
+	}
 
 	topRow, err := input.KeyboardTopRowLayout(ctx, kw)
 	if err != nil {
