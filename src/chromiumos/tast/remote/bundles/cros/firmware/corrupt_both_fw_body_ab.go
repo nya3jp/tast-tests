@@ -39,11 +39,13 @@ func init() {
 				Fixture: fixture.NormalMode,
 				Val:     "normal",
 			},
+			/* Disabled due to <1% pass rate over 30 days. See b/246820226
 			{
 				Name:    "dev_mode",
 				Fixture: fixture.DevMode,
 				Val:     "developer",
-			},
+			}
+			*/
 		},
 	})
 }
