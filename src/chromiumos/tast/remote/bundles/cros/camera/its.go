@@ -21,7 +21,6 @@ import (
 	"chromiumos/tast/remote/bundles/cros/camera/pre"
 	pb "chromiumos/tast/services/cros/camerabox"
 	"chromiumos/tast/testing"
-	"chromiumos/tast/testing/hwdep"
 )
 
 type itsParam struct {
@@ -63,8 +62,9 @@ func init() {
 		SoftwareDeps: []string{"chrome", "android_p", "arc_camera3", caps.BuiltinCamera},
 		ServiceDeps:  []string{"tast.cros.camerabox.ITSService"},
 		Timeout:      15 * time.Minute,
-		Params: []testing.Param{
+		Params:       []testing.Param{
 			// X86
+			/* Disabled due to <1% pass rate over 30 days. See b/246818330
 			{
 				Name:              "scene0_back_x86",
 				ExtraAttr:         []string{"camerabox_facing_back"},
@@ -72,7 +72,8 @@ func init() {
 				ExtraHardwareDeps: hwdep.D(hwdep.X86()),
 				Pre:               pre.ITSX86Pre,
 				Val:               itsParam{0, pb.Facing_FACING_BACK, ""},
-			},
+			}
+			*/
 		},
 	})
 }
