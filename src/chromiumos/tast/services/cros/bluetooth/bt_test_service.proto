@@ -32,6 +32,10 @@ service BTTestService {
   // device. Fails if the device is not found or if the discovered matching
   // device's attributes do not match those provided.
   rpc DiscoverDevice(DiscoverDeviceRequest) returns (google.protobuf.Empty) {}
+
+
+  // DumpUITree Dumps the current ui tree on error.
+  rpc DumpUITree(google.protobuf.Empty) returns (google.protobuf.Empty) {}
 }
 
 message ChromeNewRequest {

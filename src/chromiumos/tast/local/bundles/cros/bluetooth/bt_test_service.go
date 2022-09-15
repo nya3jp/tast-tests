@@ -6,6 +6,7 @@ package bluetooth
 
 import (
 	"context"
+	"log"
 	"sort"
 	"strings"
 	"time"
@@ -16,6 +17,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bluetooth/bluez"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/uiauto/faillog"
 	pb "chromiumos/tast/services/cros/bluetooth"
 	"chromiumos/tast/testing"
 )
@@ -69,6 +71,7 @@ func (bts *BTTestService) ChromeClose(ctx context.Context, empty *emptypb.Empty)
 // EnableBluetoothAdapter powers on the bluetooth adapter and waits for it to
 // be enabled.
 func (bts *BTTestService) EnableBluetoothAdapter(ctx context.Context, empty *emptypb.Empty) (*emptypb.Empty, error) {
+	log.Println("==== EnableBluetoothAdapter called ====!")
 	if err := bluez.Enable(ctx); err != nil {
 		return nil, errors.Wrap(err, "failed to enable bluetooth adapter")
 	}
@@ -85,6 +88,7 @@ func (bts *BTTestService) EnableBluetoothAdapter(ctx context.Context, empty *emp
 
 // DisableBluetoothAdapter powers off the bluetooth adapter.
 func (bts *BTTestService) DisableBluetoothAdapter(ctx context.Context, empty *emptypb.Empty) (*emptypb.Empty, error) {
+	log.Println("==== DisableBluetoothAdapter called ====!")
 	if err := bluez.Disable(ctx); err != nil {
 		return nil, errors.Wrap(err, "failed to disable bluetooth adapter")
 	}
@@ -196,4 +200,21 @@ func (bts *BTTestService) discoverDevices(ctx context.Context) ([]*pb.Device, er
 		}
 	}
 	return devices, nil
+}
+
+// DumpUITree Dumps the current ui tree on error.
+func (bts *BTTestService) DumpUITree(ctx context.Context, empty *emptypb.Empty) (*emptypb.Empty, error) {
+	log.Println("==== DumpUITree called ====!")
+	tconn, err := bts.cr.TestAPIConn(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get mac address of found device")
+	}
+
+	outDir, ok := testing.ContextOutDir(ctx)
+	if !ok {
+		return nil, errors.Wrap(err, "failed to get output directory")
+	}
+
+	defer faillog.DumpUITree(ctx, outDir, tconn)
+	return &emptypb.Empty{}, nil
 }
