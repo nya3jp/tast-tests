@@ -29,6 +29,8 @@ import (
 // resolved based on the DUT hostname.
 const fixtureVarBTPeers = "btpeers"
 
+const fixtureVarSigninKey = "ui.signinProfileTestExtensionManifestKey"
+
 const (
 	defaultUsername = "testuser@gmail.com"
 	defaultPassword = "testpass"
@@ -161,8 +163,9 @@ func init() {
 			EnableFeatures:          []string{"OobeHidDetectionRevamp"},
 			DisableFeatures:         []string{},
 			LoginMode:               chromeService.LoginMode_LOGIN_MODE_NO_LOGIN,
+			EnableHidScreenOnOobe:   true,
 		}),
-		Vars:            []string{fixtureVarBTPeers},
+		Vars:            []string{fixtureVarBTPeers, fixtureVarSigninKey},
 		SetUpTimeout:    setUpTimeout + btpeerTimeoutBuffer,
 		ResetTimeout:    resetTimeout + btpeerTimeoutBuffer,
 		TearDownTimeout: tearDownTimeout + btpeerTimeoutBuffer,
@@ -189,6 +192,9 @@ type fixtureFeatures struct {
 
 	// LoginMode is what the resulting login mode should be after starting Chrome.
 	LoginMode chromeService.LoginMode
+
+	// EnableHidScreenOnOobe enables HID detection screen when in OOBE.
+	EnableHidScreenOnOobe bool
 }
 
 // FixtValue is the value of the test fixture accessible within a test. All
@@ -246,6 +252,15 @@ func (tf *fixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} 
 
 	tf.fv.ChromeService = chromeService.NewChromeServiceClient(tf.fv.DUTRPCClient.Conn)
 
+	var signinProfileTestExtensionID string
+	if tf.features.EnableHidScreenOnOobe {
+		var ok bool
+		signinProfileTestExtensionID, ok = s.Var(fixtureVarSigninKey)
+		if !ok {
+			s.Fatal("Failed to get sign-in key variable required for OOBE tests")
+		}
+	}
+
 	// Start Chrome with the features and login mode provided by the test fixture.
 	if _, err := tf.fv.ChromeService.New(ctx, &chromeService.NewRequest{
 		LoginMode:       tf.features.LoginMode,
@@ -255,6 +270,8 @@ func (tf *fixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} 
 			Username: defaultUsername,
 			Password: defaultPassword,
 		},
+		EnableHidScreenOnOobe:        tf.features.EnableHidScreenOnOobe,
+		SigninProfileTestExtensionId: signinProfileTestExtensionID,
 	}); err != nil {
 		s.Fatal("Failed to log into chrome on DUT: ", err)
 	}

@@ -17,6 +17,7 @@ import (
 	"google.golang.org/grpc"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/checked"
 	"chromiumos/tast/local/chrome/uiauto/mouse"
@@ -340,7 +341,16 @@ func getUIAutoContext(ctx context.Context, svc *AutomationService) (*uiauto.Cont
 	if cr == nil {
 		return nil, errors.New("Chrome is not instantiated")
 	}
-	tconn, err := cr.TestAPIConn(ctx)
+
+	// When in OOBE, use SigninProfileTestAPIConn to create the test connection.
+	var tconn *chrome.TestConn
+	var err error
+	if cr.LoginMode() == "NoLogin" {
+		tconn, err = cr.SigninProfileTestAPIConn(ctx)
+	} else {
+		tconn, err = cr.TestAPIConn(ctx)
+	}
+
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to create test API connection")
 	}
