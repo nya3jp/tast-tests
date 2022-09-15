@@ -157,281 +157,311 @@ func init() {
 				retry:     fullRetry,
 			},
 			Timeout: fullIteration * 10 * time.Minute,
-		}, {
-			Name:              "videocuj2_basic_youtube_web_crosbolt",
-			ExtraAttr:         []string{"group:crosbolt", "crosbolt_perbuild"},
-			ExtraSoftwareDeps: []string{"arc"},
-			ExtraHardwareDeps: hwdep.D(setup.PerfCUJDevices()),
-			Val: runCUJParam{
-				tests:     []string{"ui.VideoCUJ2.basic_youtube_web"},
-				iteration: crosboltIteration,
-				retry:     crosboltRetry,
+		},
+			/* Disabled due to <1% pass rate over 30 days. See b/246820092
+			{
+				Name:              "videocuj2_basic_youtube_web_crosbolt",
+				ExtraAttr:         []string{"group:crosbolt", "crosbolt_perbuild"},
+				ExtraSoftwareDeps: []string{"arc"},
+				ExtraHardwareDeps: hwdep.D(setup.PerfCUJDevices()),
+				Val: runCUJParam{
+					tests:     []string{"ui.VideoCUJ2.basic_youtube_web"},
+					iteration: crosboltIteration,
+					retry:     crosboltRetry,
+				},
+				Timeout: crosboltIteration * 10 * time.Minute,
 			},
-			Timeout: crosboltIteration * 10 * time.Minute,
-		}, {
-			Name: "videocuj2_basic_youtube_app",
-			Val: runCUJParam{
-				tests:     []string{"ui.VideoCUJ2.basic_youtube_app"},
-				iteration: fullIteration,
-				retry:     fullRetry,
+			*/
+			{
+
+				Name: "videocuj2_basic_youtube_app",
+				Val: runCUJParam{
+					tests:     []string{"ui.VideoCUJ2.basic_youtube_app"},
+					iteration: fullIteration,
+					retry:     fullRetry,
+				},
+				Timeout: fullIteration * 10 * time.Minute,
 			},
-			Timeout: fullIteration * 10 * time.Minute,
-		}, {
-			Name:              "videocuj2_basic_youtube_app_crosbolt",
-			ExtraAttr:         []string{"group:crosbolt", "crosbolt_perbuild"},
-			ExtraSoftwareDeps: []string{"arc"},
-			ExtraHardwareDeps: hwdep.D(setup.PerfCUJDevices()),
-			Val: runCUJParam{
-				tests:     []string{"ui.VideoCUJ2.basic_youtube_app"},
-				iteration: crosboltIteration,
-				retry:     crosboltRetry,
+			/* Disabled due to <1% pass rate over 30 days. See b/246820092
+			{
+				Name:              "videocuj2_basic_youtube_app_crosbolt",
+				ExtraAttr:         []string{"group:crosbolt", "crosbolt_perbuild"},
+				ExtraSoftwareDeps: []string{"arc"},
+				ExtraHardwareDeps: hwdep.D(setup.PerfCUJDevices()),
+				Val: runCUJParam{
+					tests:     []string{"ui.VideoCUJ2.basic_youtube_app"},
+					iteration: crosboltIteration,
+					retry:     crosboltRetry,
+				},
+				Timeout: crosboltIteration * 10 * time.Minute,
 			},
-			Timeout: crosboltIteration * 10 * time.Minute,
-		}, {
-			Name: "googlemeetcuj_basic_two",
-			Val: runCUJParam{
-				tests:     []string{"ui.GoogleMeetCUJ.basic_two"},
-				iteration: fullIteration,
-				retry:     fullRetry,
+			*/
+			{
+
+				Name: "googlemeetcuj_basic_two",
+				Val: runCUJParam{
+					tests:     []string{"ui.GoogleMeetCUJ.basic_two"},
+					iteration: fullIteration,
+					retry:     fullRetry,
+				},
+				Timeout: fullIteration * 10 * time.Minute,
+			}, {
+				Name:              "googlemeetcuj_basic_two_crosbolt",
+				ExtraAttr:         []string{"group:crosbolt", "crosbolt_perbuild"},
+				ExtraSoftwareDeps: []string{"arc"},
+				ExtraHardwareDeps: hwdep.D(setup.PerfCUJDevices()),
+				Val: runCUJParam{
+					tests:     []string{"ui.GoogleMeetCUJ.basic_two"},
+					iteration: crosboltIteration,
+					retry:     crosboltRetry,
+				},
+				Timeout: crosboltIteration * 10 * time.Minute,
+			}, {
+				Name: "googlemeetcuj_basic_small",
+				Val: runCUJParam{
+					tests:     []string{"ui.GoogleMeetCUJ.basic_small"},
+					iteration: fullIteration,
+					retry:     fullRetry,
+				},
+				Timeout: fullIteration * 10 * time.Minute,
+			}, {
+				Name:              "googlemeetcuj_basic_small_crosbolt",
+				ExtraAttr:         []string{"group:crosbolt", "crosbolt_perbuild"},
+				ExtraSoftwareDeps: []string{"arc"},
+				ExtraHardwareDeps: hwdep.D(setup.PerfCUJDevices()),
+				Val: runCUJParam{
+					tests:     []string{"ui.GoogleMeetCUJ.basic_small"},
+					iteration: crosboltIteration,
+					retry:     crosboltRetry,
+				},
+				Timeout: crosboltIteration * 10 * time.Minute,
+			}, {
+				Name: "googlemeetcuj_basic_large",
+				Val: runCUJParam{
+					tests:     []string{"ui.GoogleMeetCUJ.basic_large"},
+					iteration: fullIteration,
+					retry:     fullRetry,
+				},
+				Timeout: fullIteration * 10 * time.Minute,
+			}, {
+				Name:              "googlemeetcuj_basic_large_crosbolt",
+				ExtraAttr:         []string{"group:crosbolt", "crosbolt_perbuild"},
+				ExtraSoftwareDeps: []string{"arc"},
+				ExtraHardwareDeps: hwdep.D(setup.PerfCUJDevices()),
+				Val: runCUJParam{
+					tests:     []string{"ui.GoogleMeetCUJ.basic_large"},
+					iteration: crosboltIteration,
+					retry:     crosboltRetry,
+				},
+				Timeout: crosboltIteration * 10 * time.Minute,
+			}, {
+				Name: "googlemeetcuj_basic_class",
+				Val: runCUJParam{
+					tests:     []string{"ui.GoogleMeetCUJ.basic_class"},
+					iteration: fullIteration,
+					retry:     fullRetry,
+				},
+				Timeout: fullIteration * 10 * time.Minute,
+			}, {
+				Name:              "googlemeetcuj_basic_class_crosbolt",
+				ExtraAttr:         []string{"group:crosbolt", "crosbolt_perbuild"},
+				ExtraSoftwareDeps: []string{"arc"},
+				ExtraHardwareDeps: hwdep.D(setup.PerfCUJDevices()),
+				Val: runCUJParam{
+					tests:     []string{"ui.GoogleMeetCUJ.basic_class"},
+					iteration: crosboltIteration,
+					retry:     crosboltRetry,
+				},
+				Timeout: crosboltIteration * 10 * time.Minute,
+			}, {
+				Name: "tabswitchcuj2_plus_noproxy",
+				Val: runCUJParam{
+					tests:     []string{"ui.TabSwitchCUJ2.plus_noproxy"},
+					iteration: fullIteration,
+					retry:     fullRetry,
+				},
+				Timeout: fullIteration * 20 * time.Minute,
 			},
-			Timeout: fullIteration * 10 * time.Minute,
-		}, {
-			Name:              "googlemeetcuj_basic_two_crosbolt",
-			ExtraAttr:         []string{"group:crosbolt", "crosbolt_perbuild"},
-			ExtraSoftwareDeps: []string{"arc"},
-			ExtraHardwareDeps: hwdep.D(setup.PerfCUJDevices()),
-			Val: runCUJParam{
-				tests:     []string{"ui.GoogleMeetCUJ.basic_two"},
-				iteration: crosboltIteration,
-				retry:     crosboltRetry,
+			/* Disabled due to <1% pass rate over 30 days. See b/246820092
+			{
+				Name:              "tabswitchcuj2_plus_noproxy_crosbolt",
+				ExtraAttr:         []string{"group:crosbolt", "crosbolt_perbuild"},
+				ExtraSoftwareDeps: []string{"arc"},
+				ExtraHardwareDeps: hwdep.D(setup.PerfCUJDevices()),
+				Val: runCUJParam{
+					tests:     []string{"ui.TabSwitchCUJ2.plus_noproxy"},
+					iteration: crosboltIteration,
+					retry:     crosboltRetry,
+				},
+				Timeout: crosboltIteration * 20 * time.Minute,
 			},
-			Timeout: crosboltIteration * 10 * time.Minute,
-		}, {
-			Name: "googlemeetcuj_basic_small",
-			Val: runCUJParam{
-				tests:     []string{"ui.GoogleMeetCUJ.basic_small"},
-				iteration: fullIteration,
-				retry:     fullRetry,
+			*/
+			{
+
+				Name: "everydaymultitaskingcuj_plus_ytmusic",
+				Val: runCUJParam{
+					tests:     []string{"ui.EverydayMultiTaskingCUJ.plus_ytmusic"},
+					iteration: fullIteration,
+					retry:     fullRetry,
+				},
+				Timeout: fullIteration * 10 * time.Minute,
+			}, {
+				Name:              "everydaymultitaskingcuj_plus_ytmusic_crosbolt",
+				ExtraAttr:         []string{"group:crosbolt", "crosbolt_perbuild"},
+				ExtraSoftwareDeps: []string{"arc"},
+				ExtraHardwareDeps: hwdep.D(setup.PerfCUJDevices()),
+				Val: runCUJParam{
+					tests:     []string{"ui.EverydayMultiTaskingCUJ.plus_ytmusic"},
+					iteration: crosboltIteration,
+					retry:     crosboltRetry,
+				},
+				Timeout: crosboltIteration * 10 * time.Minute,
+			}, {
+				Name: "googlemeetcuj_plus_large",
+				Val: runCUJParam{
+					tests:     []string{"ui.GoogleMeetCUJ.plus_large"},
+					iteration: fullIteration,
+					retry:     fullRetry,
+				},
+				Timeout: fullIteration * 15 * time.Minute,
+			}, {
+				Name:              "googlemeetcuj_plus_large_crosbolt",
+				ExtraAttr:         []string{"group:crosbolt", "crosbolt_perbuild"},
+				ExtraSoftwareDeps: []string{"arc"},
+				ExtraHardwareDeps: hwdep.D(setup.PerfCUJDevices()),
+				Val: runCUJParam{
+					tests:     []string{"ui.GoogleMeetCUJ.plus_large"},
+					iteration: crosboltIteration,
+					retry:     crosboltRetry,
+				},
+				Timeout: crosboltIteration * 15 * time.Minute,
+			}, {
+				Name: "googlemeetcuj_plus_class",
+				Val: runCUJParam{
+					tests:     []string{"ui.GoogleMeetCUJ.plus_class"},
+					iteration: fullIteration,
+					retry:     fullRetry,
+				},
+				Timeout: fullIteration * 15 * time.Minute,
+			}, {
+				Name:              "googlemeetcuj_plus_class_crosbolt",
+				ExtraAttr:         []string{"group:crosbolt", "crosbolt_perbuild"},
+				ExtraSoftwareDeps: []string{"arc"},
+				ExtraHardwareDeps: hwdep.D(setup.PerfCUJDevices()),
+				Val: runCUJParam{
+					tests:     []string{"ui.GoogleMeetCUJ.plus_class"},
+					iteration: crosboltIteration,
+					retry:     crosboltRetry,
+				},
+				Timeout: crosboltIteration * 15 * time.Minute,
+			}, {
+				Name: "extendeddisplaycuj_plus_video_youtube_web",
+				Val: runCUJParam{
+					tests:     []string{"ui.ExtendedDisplayCUJ.plus_video_youtube_web"},
+					iteration: fullIteration,
+					retry:     fullRetry,
+				},
+				Timeout: fullIteration * 10 * time.Minute,
+			}, {
+				Name: "tabswitchcuj2_premium_noproxy",
+				Val: runCUJParam{
+					tests:     []string{"ui.TabSwitchCUJ2.premium_noproxy"},
+					iteration: fullIteration,
+					retry:     fullRetry,
+				},
+				Timeout: fullIteration * 30 * time.Minute,
 			},
-			Timeout: fullIteration * 10 * time.Minute,
-		}, {
-			Name:              "googlemeetcuj_basic_small_crosbolt",
-			ExtraAttr:         []string{"group:crosbolt", "crosbolt_perbuild"},
-			ExtraSoftwareDeps: []string{"arc"},
-			ExtraHardwareDeps: hwdep.D(setup.PerfCUJDevices()),
-			Val: runCUJParam{
-				tests:     []string{"ui.GoogleMeetCUJ.basic_small"},
-				iteration: crosboltIteration,
-				retry:     crosboltRetry,
+			/* Disabled due to <1% pass rate over 30 days. See b/246820092
+			{
+				Name:              "tabswitchcuj2_premium_noproxy_crosbolt",
+				ExtraAttr:         []string{"group:crosbolt", "crosbolt_perbuild"},
+				ExtraSoftwareDeps: []string{"arc"},
+				ExtraHardwareDeps: hwdep.D(setup.PerfCUJDevices()),
+				Val: runCUJParam{
+					tests:     []string{"ui.TabSwitchCUJ2.premium_noproxy"},
+					iteration: crosboltIteration,
+					retry:     crosboltRetry,
+				},
+				Timeout: crosboltIteration * 30 * time.Minute,
 			},
-			Timeout: crosboltIteration * 10 * time.Minute,
-		}, {
-			Name: "googlemeetcuj_basic_large",
-			Val: runCUJParam{
-				tests:     []string{"ui.GoogleMeetCUJ.basic_large"},
-				iteration: fullIteration,
-				retry:     fullRetry,
+			*/
+			{
+
+				Name: "videocuj2_premium_youtube_web",
+				Val: runCUJParam{
+					tests:     []string{"ui.VideoCUJ2.premium_youtube_web"},
+					iteration: fullIteration,
+					retry:     fullRetry,
+				},
+				Timeout: fullIteration * 5 * time.Minute,
 			},
-			Timeout: fullIteration * 10 * time.Minute,
-		}, {
-			Name:              "googlemeetcuj_basic_large_crosbolt",
-			ExtraAttr:         []string{"group:crosbolt", "crosbolt_perbuild"},
-			ExtraSoftwareDeps: []string{"arc"},
-			ExtraHardwareDeps: hwdep.D(setup.PerfCUJDevices()),
-			Val: runCUJParam{
-				tests:     []string{"ui.GoogleMeetCUJ.basic_large"},
-				iteration: crosboltIteration,
-				retry:     crosboltRetry,
+			/* Disabled due to <1% pass rate over 30 days. See b/246820092
+			{
+				Name:              "videocuj2_premium_youtube_web_crosbolt",
+				ExtraAttr:         []string{"group:crosbolt", "crosbolt_perbuild"},
+				ExtraSoftwareDeps: []string{"arc"},
+				ExtraHardwareDeps: hwdep.D(setup.PerfCUJDevices()),
+				Val: runCUJParam{
+					tests:     []string{"ui.VideoCUJ2.premium_youtube_web"},
+					iteration: crosboltIteration,
+					retry:     crosboltRetry,
+				},
+				Timeout: crosboltIteration * 5 * time.Minute,
 			},
-			Timeout: crosboltIteration * 10 * time.Minute,
-		}, {
-			Name: "googlemeetcuj_basic_class",
-			Val: runCUJParam{
-				tests:     []string{"ui.GoogleMeetCUJ.basic_class"},
-				iteration: fullIteration,
-				retry:     fullRetry,
+			*/
+			{
+
+				Name: "videocuj2_premium_youtube_app",
+				Val: runCUJParam{
+					tests:     []string{"ui.VideoCUJ2.premium_youtube_app"},
+					iteration: fullIteration,
+					retry:     fullRetry,
+				},
+				Timeout: fullIteration * 5 * time.Minute,
 			},
-			Timeout: fullIteration * 10 * time.Minute,
-		}, {
-			Name:              "googlemeetcuj_basic_class_crosbolt",
-			ExtraAttr:         []string{"group:crosbolt", "crosbolt_perbuild"},
-			ExtraSoftwareDeps: []string{"arc"},
-			ExtraHardwareDeps: hwdep.D(setup.PerfCUJDevices()),
-			Val: runCUJParam{
-				tests:     []string{"ui.GoogleMeetCUJ.basic_class"},
-				iteration: crosboltIteration,
-				retry:     crosboltRetry,
+			/* Disabled due to <1% pass rate over 30 days. See b/246820092
+			{
+				Name:              "videocuj2_premium_youtube_app_crosbolt",
+				ExtraAttr:         []string{"group:crosbolt", "crosbolt_perbuild"},
+				ExtraSoftwareDeps: []string{"arc"},
+				ExtraHardwareDeps: hwdep.D(setup.PerfCUJDevices()),
+				Val: runCUJParam{
+					tests:     []string{"ui.VideoCUJ2.premium_youtube_app"},
+					iteration: crosboltIteration,
+					retry:     crosboltRetry,
+				},
+				Timeout: crosboltIteration * 5 * time.Minute,
 			},
-			Timeout: crosboltIteration * 10 * time.Minute,
-		}, {
-			Name: "tabswitchcuj2_plus_noproxy",
-			Val: runCUJParam{
-				tests:     []string{"ui.TabSwitchCUJ2.plus_noproxy"},
-				iteration: fullIteration,
-				retry:     fullRetry,
-			},
-			Timeout: fullIteration * 20 * time.Minute,
-		}, {
-			Name:              "tabswitchcuj2_plus_noproxy_crosbolt",
-			ExtraAttr:         []string{"group:crosbolt", "crosbolt_perbuild"},
-			ExtraSoftwareDeps: []string{"arc"},
-			ExtraHardwareDeps: hwdep.D(setup.PerfCUJDevices()),
-			Val: runCUJParam{
-				tests:     []string{"ui.TabSwitchCUJ2.plus_noproxy"},
-				iteration: crosboltIteration,
-				retry:     crosboltRetry,
-			},
-			Timeout: crosboltIteration * 20 * time.Minute,
-		}, {
-			Name: "everydaymultitaskingcuj_plus_ytmusic",
-			Val: runCUJParam{
-				tests:     []string{"ui.EverydayMultiTaskingCUJ.plus_ytmusic"},
-				iteration: fullIteration,
-				retry:     fullRetry,
-			},
-			Timeout: fullIteration * 10 * time.Minute,
-		}, {
-			Name:              "everydaymultitaskingcuj_plus_ytmusic_crosbolt",
-			ExtraAttr:         []string{"group:crosbolt", "crosbolt_perbuild"},
-			ExtraSoftwareDeps: []string{"arc"},
-			ExtraHardwareDeps: hwdep.D(setup.PerfCUJDevices()),
-			Val: runCUJParam{
-				tests:     []string{"ui.EverydayMultiTaskingCUJ.plus_ytmusic"},
-				iteration: crosboltIteration,
-				retry:     crosboltRetry,
-			},
-			Timeout: crosboltIteration * 10 * time.Minute,
-		}, {
-			Name: "googlemeetcuj_plus_large",
-			Val: runCUJParam{
-				tests:     []string{"ui.GoogleMeetCUJ.plus_large"},
-				iteration: fullIteration,
-				retry:     fullRetry,
-			},
-			Timeout: fullIteration * 15 * time.Minute,
-		}, {
-			Name:              "googlemeetcuj_plus_large_crosbolt",
-			ExtraAttr:         []string{"group:crosbolt", "crosbolt_perbuild"},
-			ExtraSoftwareDeps: []string{"arc"},
-			ExtraHardwareDeps: hwdep.D(setup.PerfCUJDevices()),
-			Val: runCUJParam{
-				tests:     []string{"ui.GoogleMeetCUJ.plus_large"},
-				iteration: crosboltIteration,
-				retry:     crosboltRetry,
-			},
-			Timeout: crosboltIteration * 15 * time.Minute,
-		}, {
-			Name: "googlemeetcuj_plus_class",
-			Val: runCUJParam{
-				tests:     []string{"ui.GoogleMeetCUJ.plus_class"},
-				iteration: fullIteration,
-				retry:     fullRetry,
-			},
-			Timeout: fullIteration * 15 * time.Minute,
-		}, {
-			Name:              "googlemeetcuj_plus_class_crosbolt",
-			ExtraAttr:         []string{"group:crosbolt", "crosbolt_perbuild"},
-			ExtraSoftwareDeps: []string{"arc"},
-			ExtraHardwareDeps: hwdep.D(setup.PerfCUJDevices()),
-			Val: runCUJParam{
-				tests:     []string{"ui.GoogleMeetCUJ.plus_class"},
-				iteration: crosboltIteration,
-				retry:     crosboltRetry,
-			},
-			Timeout: crosboltIteration * 15 * time.Minute,
-		}, {
-			Name: "extendeddisplaycuj_plus_video_youtube_web",
-			Val: runCUJParam{
-				tests:     []string{"ui.ExtendedDisplayCUJ.plus_video_youtube_web"},
-				iteration: fullIteration,
-				retry:     fullRetry,
-			},
-			Timeout: fullIteration * 10 * time.Minute,
-		}, {
-			Name: "tabswitchcuj2_premium_noproxy",
-			Val: runCUJParam{
-				tests:     []string{"ui.TabSwitchCUJ2.premium_noproxy"},
-				iteration: fullIteration,
-				retry:     fullRetry,
-			},
-			Timeout: fullIteration * 30 * time.Minute,
-		}, {
-			Name:              "tabswitchcuj2_premium_noproxy_crosbolt",
-			ExtraAttr:         []string{"group:crosbolt", "crosbolt_perbuild"},
-			ExtraSoftwareDeps: []string{"arc"},
-			ExtraHardwareDeps: hwdep.D(setup.PerfCUJDevices()),
-			Val: runCUJParam{
-				tests:     []string{"ui.TabSwitchCUJ2.premium_noproxy"},
-				iteration: crosboltIteration,
-				retry:     crosboltRetry,
-			},
-			Timeout: crosboltIteration * 30 * time.Minute,
-		}, {
-			Name: "videocuj2_premium_youtube_web",
-			Val: runCUJParam{
-				tests:     []string{"ui.VideoCUJ2.premium_youtube_web"},
-				iteration: fullIteration,
-				retry:     fullRetry,
-			},
-			Timeout: fullIteration * 5 * time.Minute,
-		}, {
-			Name:              "videocuj2_premium_youtube_web_crosbolt",
-			ExtraAttr:         []string{"group:crosbolt", "crosbolt_perbuild"},
-			ExtraSoftwareDeps: []string{"arc"},
-			ExtraHardwareDeps: hwdep.D(setup.PerfCUJDevices()),
-			Val: runCUJParam{
-				tests:     []string{"ui.VideoCUJ2.premium_youtube_web"},
-				iteration: crosboltIteration,
-				retry:     crosboltRetry,
-			},
-			Timeout: crosboltIteration * 5 * time.Minute,
-		}, {
-			Name: "videocuj2_premium_youtube_app",
-			Val: runCUJParam{
-				tests:     []string{"ui.VideoCUJ2.premium_youtube_app"},
-				iteration: fullIteration,
-				retry:     fullRetry,
-			},
-			Timeout: fullIteration * 5 * time.Minute,
-		}, {
-			Name:              "videocuj2_premium_youtube_app_crosbolt",
-			ExtraAttr:         []string{"group:crosbolt", "crosbolt_perbuild"},
-			ExtraSoftwareDeps: []string{"arc"},
-			ExtraHardwareDeps: hwdep.D(setup.PerfCUJDevices()),
-			Val: runCUJParam{
-				tests:     []string{"ui.VideoCUJ2.premium_youtube_app"},
-				iteration: crosboltIteration,
-				retry:     crosboltRetry,
-			},
-			Timeout: crosboltIteration * 5 * time.Minute,
-		}, {
-			Name: "googlemeetcuj_premium_large",
-			Val: runCUJParam{
-				tests:     []string{"ui.GoogleMeetCUJ.premium_large"},
-				iteration: fullIteration,
-				retry:     fullRetry,
-			},
-			Timeout: fullIteration * 15 * time.Minute,
-		}, {
-			Name:              "googlemeetcuj_premium_large_crosbolt",
-			ExtraAttr:         []string{"group:crosbolt", "crosbolt_perbuild"},
-			ExtraSoftwareDeps: []string{"arc"},
-			ExtraHardwareDeps: hwdep.D(setup.PerfCUJDevices()),
-			Val: runCUJParam{
-				tests:     []string{"ui.GoogleMeetCUJ.premium_large"},
-				iteration: crosboltIteration,
-				retry:     crosboltRetry,
-			},
-			Timeout: crosboltIteration * 15 * time.Minute,
-		}, {
-			Name: "extendeddisplaycuj_premium_meet_large",
-			Val: runCUJParam{
-				tests:     []string{"ui.ExtendedDisplayCUJ.premium_meet_large"},
-				iteration: fullIteration,
-				retry:     fullRetry,
-			},
-			Timeout: fullIteration * 15 * time.Minute,
-		}},
+			*/
+			{
+
+				Name: "googlemeetcuj_premium_large",
+				Val: runCUJParam{
+					tests:     []string{"ui.GoogleMeetCUJ.premium_large"},
+					iteration: fullIteration,
+					retry:     fullRetry,
+				},
+				Timeout: fullIteration * 15 * time.Minute,
+			}, {
+				Name:              "googlemeetcuj_premium_large_crosbolt",
+				ExtraAttr:         []string{"group:crosbolt", "crosbolt_perbuild"},
+				ExtraSoftwareDeps: []string{"arc"},
+				ExtraHardwareDeps: hwdep.D(setup.PerfCUJDevices()),
+				Val: runCUJParam{
+					tests:     []string{"ui.GoogleMeetCUJ.premium_large"},
+					iteration: crosboltIteration,
+					retry:     crosboltRetry,
+				},
+				Timeout: crosboltIteration * 15 * time.Minute,
+			}, {
+				Name: "extendeddisplaycuj_premium_meet_large",
+				Val: runCUJParam{
+					tests:     []string{"ui.ExtendedDisplayCUJ.premium_meet_large"},
+					iteration: fullIteration,
+					retry:     fullRetry,
+				},
+				Timeout: fullIteration * 15 * time.Minute,
+			}},
 	})
 }
 
