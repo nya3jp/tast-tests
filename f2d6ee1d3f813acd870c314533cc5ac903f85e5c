@@ -516,6 +516,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd173336_918784c0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/expectations/expectations.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1498402
+      },
+      "writtenOn": "2022-09-15T17:53:54Z",
+      "side": 1,
+      "message": "I added a runtime variable `tast run -var\u003dexpectations.DebugLogging\u003dtrue \u003cDUT\u003e \u003ctest name pattern\u003e` to enable a log about the paths that were searched. It is disabled by default. LMK if you still have concerns or want a different runtime variable name.",
+      "parentUuid": "a6f9cf56_86bea7ae",
+      "range": {
+        "startLine": 148,
+        "startChar": 73,
+        "endLine": 148,
+        "endChar": 77
+      },
+      "revId": "f2d6ee1d3f813acd870c314533cc5ac903f85e5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "80b1ee48_30fbd310",
@@ -635,6 +659,30 @@
       "side": 1,
       "message": "Thanks.\n\nLMK if you want me to drop \"SKIP\" support. It works functionally with the latest patchset.\n\nRe: IGNORE/FLAKE, LMK if you want me to add it. The behavior would be that it fails, but uses an error message that reads. `Test failed and has an expectation of IGNORE/FLAKE. See tickets b/1234, b/5678`.",
       "parentUuid": "de22de7b_e6a0a2f0",
+      "range": {
+        "startLine": 166,
+        "startChar": 0,
+        "endLine": 166,
+        "endChar": 31
+      },
+      "revId": "f2d6ee1d3f813acd870c314533cc5ac903f85e5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ffe4d39a_299ad8bb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/expectations/expectations.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1498402
+      },
+      "writtenOn": "2022-09-15T17:53:54Z",
+      "side": 1,
+      "message": "Note: the latest patchset removes skip.",
+      "parentUuid": "adcc37b0_e3f49ad9",
       "range": {
         "startLine": 166,
         "startChar": 0,

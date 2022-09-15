@@ -55,6 +55,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "61a8c325_e396e4bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/expectations/expectations.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1498402
+      },
+      "writtenOn": "2022-09-15T17:53:54Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2bdd2c23_1e93fa41",
+      "revId": "5bce80eeab85bcf3e1ccc4a9a6ae75164aa6694a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "dd81697c_758734b0",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/expectations/expectations.go",
         "patchSetId": 8

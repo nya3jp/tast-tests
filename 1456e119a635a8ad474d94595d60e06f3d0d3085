@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "348b58fd_b0719597",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/expectations/README.md",
+        "patchSetId": 10
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1498402
+      },
+      "writtenOn": "2022-09-15T17:53:54Z",
+      "side": 1,
+      "message": "Good catch. Fixed capitalization.",
+      "parentUuid": "2e24388a_8e084e18",
+      "range": {
+        "startLine": 31,
+        "startChar": 2,
+        "endLine": 31,
+        "endChar": 3
+      },
+      "revId": "1456e119a635a8ad474d94595d60e06f3d0d3085",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f933f1fb_398e2463",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-09-14T21:19:28Z",
       "side": 1,
       "message": "Could you also mention the behavior when test result differs from the expecation? i.e. test pass but expect to fail, tests run when we expect it to skip.",
+      "range": {
+        "startLine": 86,
+        "startChar": 1,
+        "endLine": 86,
+        "endChar": 21
+      },
+      "revId": "1456e119a635a8ad474d94595d60e06f3d0d3085",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5744f4e7_ad289881",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/expectations/README.md",
+        "patchSetId": 10
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1498402
+      },
+      "writtenOn": "2022-09-15T17:53:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f933f1fb_398e2463",
       "range": {
         "startLine": 86,
         "startChar": 1,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7860d92_882c4cd8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/expectations/README.md",
+        "patchSetId": 10
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1498402
+      },
+      "writtenOn": "2022-09-15T17:53:54Z",
+      "side": 1,
+      "message": "Thanks. Understood about the the scheduling benefits of the HardwareDependencies. I removed ExpectSkip from the CL.",
+      "parentUuid": "b135a725_bf21fc5d",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 24
+      },
+      "revId": "1456e119a635a8ad474d94595d60e06f3d0d3085",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0f431d34_38f381c2",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-09-14T21:19:28Z",
       "side": 1,
       "message": "This is expectation package. I feel like fileType is good enough for people to understand.\n\nWDYT?",
+      "range": {
+        "startLine": 33,
+        "startChar": 5,
+        "endLine": 33,
+        "endChar": 25
+      },
+      "revId": "1456e119a635a8ad474d94595d60e06f3d0d3085",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb015108_abbe5311",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/expectations/expectations.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1498402
+      },
+      "writtenOn": "2022-09-15T17:53:54Z",
+      "side": 1,
+      "message": "👍 Done.",
+      "parentUuid": "0f431d34_38f381c2",
       "range": {
         "startLine": 33,
         "startChar": 5,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "27066619_a527a46f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/expectations/expectations.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1498402
+      },
+      "writtenOn": "2022-09-15T17:53:54Z",
+      "side": 1,
+      "message": "Nice. Good point.\n\nIf the test code calls s.Error/s.Fatal when expecting FAILURE, the test case will fail, but that is fine.",
+      "parentUuid": "31fa5552_9e017efa",
+      "range": {
+        "startLine": 322,
+        "startChar": 39,
+        "endLine": 322,
+        "endChar": 41
+      },
+      "revId": "1456e119a635a8ad474d94595d60e06f3d0d3085",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0657a814_0e6a7134",
@@ -129,6 +249,30 @@
       "writtenOn": "2022-09-14T21:19:28Z",
       "side": 1,
       "message": "How about just \"See following\"? Then we don\u0027t have to overcomplicate code just for singular and plural.\n\nWDYT?",
+      "range": {
+        "startLine": 323,
+        "startChar": 45,
+        "endLine": 323,
+        "endChar": 51
+      },
+      "revId": "1456e119a635a8ad474d94595d60e06f3d0d3085",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ffc7d91e_fa4b7fdd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/expectations/expectations.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1498402
+      },
+      "writtenOn": "2022-09-15T17:53:54Z",
+      "side": 1,
+      "message": "Thanks for the feedback. Removed the complicated plural handling in favor of \"See \".",
+      "parentUuid": "0657a814_0e6a7134",
       "range": {
         "startLine": 323,
         "startChar": 45,
