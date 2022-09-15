@@ -1865,12 +1865,12 @@ func (tf *TestFixture) P2PAssertPingFromClient(ctx context.Context, opts ...ping
 }
 
 // P2PPerf pings the p2p client from the group owner (GO) device.
-func (tf *TestFixture) P2PPerf(ctx context.Context) error {
+func (tf *TestFixture) P2PPerf(ctx context.Context) (*iperf.Result, error) {
 	// Print the P2P channel configuration.
 	iwr := iw.NewRemoteRunner(tf.p2pGO.Conn())
 	chConfig, err := iwr.RadioConfig(ctx, tf.p2pGOIface)
 	if err != nil {
-		return err
+		return nil, err
 	}
 
 	testing.ContextLogf(ctx, "P2P channel configuration: Channel Number= %d, Frequency= %d, Width= %d", chConfig.Number, chConfig.Freq, chConfig.Width)
@@ -1898,37 +1898,38 @@ func (tf *TestFixture) P2PPerf(ctx context.Context) error {
 	firewallRunnerGO := remotefirewall.NewRemoteRunner(tf.p2pGO.Conn())
 	firewallRunnerClient := remotefirewall.NewRemoteRunner(tf.p2pClient.Conn())
 	if err := firewallRunnerGO.ExecuteCommand(ctx, p2pGOFirewallParams...); err != nil {
-		return errors.Wrap(err, "failed to set P2P GO iptable rule")
+		return nil, errors.Wrap(err, "failed to set P2P GO iptable rule")
 	}
 	if err := firewallRunnerClient.ExecuteCommand(ctx, p2pClientFirewallParams...); err != nil {
-		return errors.Wrap(err, "failed to set P2P Client iptable rule")
+		return nil, errors.Wrap(err, "failed to set P2P Client iptable rule")
 	}
 
 	// Configuring the p2p GO as an iperf server and the p2p client as an iperf client.
 	p2pIperfConfig, err := iperf.NewConfig(iperf.ProtocolTCP, p2pClientIPAddress, p2pGOIPAddress, []iperf.ConfigOption{}...)
 	if err != nil {
-		return errors.Wrap(err, "failed to configure iperf on the p2p link")
+		return nil, errors.Wrap(err, "failed to configure iperf on the p2p link")
 	}
 
 	client, err := iperf.NewRemoteClient(ctx, tf.p2pClient.Conn())
 	if err != nil {
-		return errors.Wrap(err, "failed ot create Iperf client")
+		return nil, errors.Wrap(err, "failed ot create Iperf client")
 	}
 	defer client.Close(ctx)
 
 	server, err := iperf.NewRemoteServer(ctx, tf.p2pGO.Conn())
 	if err != nil {
-		return errors.Wrap(err, "failed ot create Iperf server")
+		return nil, errors.Wrap(err, "failed ot create Iperf server")
 	}
 	defer server.Close(ctx)
 
 	session := iperf.NewSession(client, server)
 
-	if _, _, err := session.Run(ctx, p2pIperfConfig); err != nil {
-		return errors.Wrap(err, "failed to run Iperf session")
+	finalResult, _, err := session.Run(ctx, p2pIperfConfig)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to run Iperf session")
 	}
 
-	return nil
+	return finalResult, nil
 }
 
 // P2PDeconfigureGO deconfigures the p2p group owner (GO).

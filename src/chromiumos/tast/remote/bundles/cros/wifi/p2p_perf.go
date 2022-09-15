@@ -7,6 +7,8 @@ package wifi
 import (
 	"context"
 
+	"chromiumos/tast/common/perf"
+	"chromiumos/tast/remote/network/iperf"
 	"chromiumos/tast/remote/wificell"
 	"chromiumos/tast/testing"
 )
@@ -76,7 +78,21 @@ func P2PPerf(ctx context.Context, s *testing.State) {
 	ctx, cancel = tf.ReserveForDeleteIPRoute(ctx)
 	defer cancel()
 
-	if err := tf.P2PPerf(ctx); err != nil {
+	finalResult, err := tf.P2PPerf(ctx)
+	if err != nil {
 		s.Fatal("Failed to run performance test: ", err)
 	}
+
+	pv := perf.NewValues()
+	defer func() {
+		if err := pv.Save(s.OutDir()); err != nil {
+			s.Error("Failed to save perf data: ", err)
+		}
+	}()
+
+	pv.Set(perf.Metric{
+		Name:      "p2p_tcp_ave_tput",
+		Unit:      "Mbps",
+		Direction: perf.BiggerIsBetter,
+	}, float64(finalResult.Throughput/iperf.Mbps))
 }
