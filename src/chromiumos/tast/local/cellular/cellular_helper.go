@@ -103,7 +103,7 @@ func NewHelper(ctx context.Context) (*Helper, error) {
 		return nil, errors.Wrap(err, "failed to unlock dut with default pin")
 	}
 	if err := helper.CaptureDBusLogs(ctx); err != nil {
-		return nil, errors.Wrap(err, "unable to start DBus log capture")
+		testing.ContextLog(ctx, "Warning: Unable to start DBus log capture: ", err)
 	}
 	return &helper, nil
 }
