@@ -91,6 +91,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "db24f995_914667da",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-09-15T00:23:47Z",
+      "side": 1,
+      "message": "https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver_with_auth_api.go?q\u003dpin_weaver_with_auth_api%20file:test%20package:%5Echromeos_(internal%7Cpublic)$\n\nHere is an example of a test that does that -- UserSecretStash is orthogonal to AuthFactor. \n\nThe for Add/Authenticate you would need an if, rest of it should be pretty clean I think",
+      "parentUuid": "ae11fc3b_512c188a",
+      "revId": "cd3a3bcea18c9d765ee97d9a43366d3b8ca8f00e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "43665d3f_5a427edd",
         "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/update_pin.go",
         "patchSetId": 2
