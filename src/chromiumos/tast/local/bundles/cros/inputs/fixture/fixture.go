@@ -1,4 +1,4 @@
-// Copyright 2022 The Chromium OS Authors. All rights reserved.
+// Copyright 2022 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -455,19 +455,19 @@ func (f *inputsFixtureImpl) SetUp(ctx context.Context, s *testing.FixtState) int
 
 	f.tconn, err = f.cr.TestAPIConn(ctx)
 	if err != nil {
-		return errors.Wrap(err, "failed to get test API connection")
+		s.Fatal("Failed to get test API connection: ", err)
 	}
 
 	if f.vkEnabled && f.dm == clamshellMode {
 		// Enable a11y virtual keyboard.
 		if err := vkb.NewContext(f.cr, f.tconn).EnableA11yVirtualKeyboard(true)(ctx); err != nil {
-			return errors.Wrap(err, "failed to enable a11y virtual keyboard")
+			s.Fatal("Failed to enable a11y virtual keyboard: ", err)
 		}
 	}
 
 	uc, err := inputactions.NewInputsUserContextWithoutState(ctx, "", s.OutDir(), f.cr, f.tconn, nil)
 	if err != nil {
-		return errors.Wrap(err, "failed to create new inputs user context")
+		s.Fatal("Failed to create new inputs user context: ", err)
 	}
 	f.uc = uc
 
