@@ -50,12 +50,17 @@ func init() {
 			Name:    "ash",
 			Fixture: fixture.ChromePolicyLoggedIn,
 			Val:     browser.TypeAsh,
-		}, {
+		},
+		/* Disabled due to <1% pass rate over 30 days. See b/246818601
+		{
 			Name:              "lacros",
 			ExtraSoftwareDeps: []string{"lacros"},
 			Fixture:           fixture.LacrosPolicyLoggedIn,
 			Val:               browser.TypeLacros,
-		}},
+		}
+		*/
+		},
+
 		SearchFlags: []*testing.StringPair{
 			pci.SearchFlag(&policy.SSLErrorOverrideAllowed{}, pci.VerifiedFunctionalityUI),
 			pci.SearchFlag(&policy.SSLErrorOverrideAllowedForOrigins{}, pci.VerifiedFunctionalityUI),
