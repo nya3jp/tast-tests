@@ -60,6 +60,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ea4ab695_1d5db390",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/saved_file_to_default_folder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1403852
+      },
+      "writtenOn": "2022-09-15T02:16:40Z",
+      "side": 1,
+      "message": "This might cause by running both projector.SavedFileToDefaultFolder and  projector.CreationFlow at the same time when using the same account.\nIs running the same test (let say projector.CreationFlow) on different devices with the same account also possible?\nIf so, could we just delete the screencast that created in the current test instead deleting all of screencasts?",
+      "parentUuid": "b6cca991_a29bf89e",
+      "range": {
+        "startLine": 27,
+        "startChar": 16,
+        "endLine": 27,
+        "endChar": 40
+      },
+      "revId": "21e4fc5df156aaab2214df4dbd234068c8646501",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3b2aaa00_8169b7a6",
         "filename": "src/chromiumos/tast/local/bundles/cros/projector/saved_file_to_default_folder.go",
         "patchSetId": 6
@@ -71,6 +95,30 @@
       "writtenOn": "2022-09-14T20:53:56Z",
       "side": 1,
       "message": "Nit: use fmt.Sprintf() instead of operator+ for string concatenation.",
+      "range": {
+        "startLine": 80,
+        "startChar": 49,
+        "endLine": 80,
+        "endChar": 76
+      },
+      "revId": "21e4fc5df156aaab2214df4dbd234068c8646501",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7ab6b89_2278d7f1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/saved_file_to_default_folder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1403852
+      },
+      "writtenOn": "2022-09-15T02:16:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3b2aaa00_8169b7a6",
       "range": {
         "startLine": 80,
         "startChar": 49,
@@ -94,6 +142,30 @@
       "writtenOn": "2022-09-14T20:53:56Z",
       "side": 1,
       "message": "Nit: consider just inlining this on line 84 below.",
+      "range": {
+        "startLine": 83,
+        "startChar": 20,
+        "endLine": 83,
+        "endChar": 68
+      },
+      "revId": "21e4fc5df156aaab2214df4dbd234068c8646501",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d667d1e9_3e4041c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/saved_file_to_default_folder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1403852
+      },
+      "writtenOn": "2022-09-15T02:16:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eed6bef4_e02b829f",
       "range": {
         "startLine": 83,
         "startChar": 20,
