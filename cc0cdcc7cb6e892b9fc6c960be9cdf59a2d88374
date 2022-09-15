@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "150b5fd8_8a2fedea",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1498402
+      },
+      "writtenOn": "2022-09-15T17:54:51Z",
+      "side": 1,
+      "message": "crrev.com/c/3892315 also fixes the pre-upload script issue. If that lands, I\u0027ll remove this after rebasing.",
+      "revId": "cc0cdcc7cb6e892b9fc6c960be9cdf59a2d88374",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
