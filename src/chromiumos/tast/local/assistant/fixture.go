@@ -126,12 +126,16 @@ func init() {
 			"yawano@google.com",
 			"assitive-eng@google.com",
 		},
+		Vars: []string{"assistant.username", "assistant.password"},
 		Impl: chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
 			return []chrome.Option{
+				chrome.GAIALogin(chrome.Creds{
+					User: s.RequiredVar("assistant.username"),
+					Pass: s.RequiredVar("assistant.password"),
+				}),
 				VerboseLogging(),
 				ashNoNudgesExtraArg(),
 				chrome.ExtraArgs(arc.DisableSyncFlags()...),
-				chrome.EnableFeatures("EnableDspHotword"),
 			}, nil
 		}),
 		SetUpTimeout:    chrome.LoginTimeout,
