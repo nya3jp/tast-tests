@@ -46,6 +46,30 @@
       },
       "revId": "50e984c791cd06c7230225a5d374dc5d4e952cb4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ccb4ad17_aaba7dc5",
+        "filename": "src/chromiumos/tast/local/accountmanager/account_manager.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 431,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-09-15T14:58:31Z",
+      "side": 1,
+      "message": "\u003e I think error type needs to be checked here.\nDo you mean checking for the \"context deadline exceeded\" substring in the error message?",
+      "parentUuid": "a6c5519d_fbf8c914",
+      "range": {
+        "startLine": 431,
+        "startChar": 3,
+        "endLine": 431,
+        "endChar": 95
+      },
+      "revId": "50e984c791cd06c7230225a5d374dc5d4e952cb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
