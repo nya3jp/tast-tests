@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/cryptohome"
+	"chromiumos/tast/testing"
 )
 
 // TestBinaryDirPath is the directory to store test binaries which run inside ARC.
@@ -200,7 +201,35 @@ func MountVirtioBlkDataDiskImageReadOnlyIfUsed(ctx context.Context, a *ARC, user
 	}
 	// Return a function to unmount the image.
 	cleanupFunc := func(ctx context.Context) {
-		testexec.CommandContext(ctx, "umount", hostMountPath).Run(testexec.DumpLogOnError)
+		if err := testexec.CommandContext(ctx, "umount", hostMountPath).Run(testexec.DumpLogOnError); err != nil {
+			testing.ContextLog(ctx, "Failed to unmount virtio-blk Android /data disk image from host: ", err)
+		}
+	}
+	return cleanupFunc, nil
+}
+
+// MountSDCardPartitionOnHostWithSSHFSIfVirtioBlkDataEnabled first checks if virtio-blk /data is
+// used on the device, and if that is the case, mounts Android's SDCard partition
+// /storage/emulated/0 on the host's /home/root/<hash>/android-data/data/media/0 using SSHFS.
+func MountSDCardPartitionOnHostWithSSHFSIfVirtioBlkDataEnabled(ctx context.Context, a *ARC, user string) (func(context.Context), error) {
+	virtioBlkDataEnabled, err := a.IsVirtioBlkDataEnabled(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to check if virtio-blk /data is enabled")
+	}
+	if !virtioBlkDataEnabled {
+		// If ARCVM virtio-blk /data is not enabled, Android's /data directory is already
+		// available at the host's /home/root/<hash>/android-data/data.
+		return func(context.Context) {}, nil
+	}
+
+	// Mount SDCard partition on the host side with SSHFS.
+	if err := MountSDCardPartitionOnHostWithSSHFS(ctx, user); err != nil {
+		return nil, errors.Wrap(err, "failed to mount Android's SDCard partition on host")
+	}
+	cleanupFunc := func(ctx context.Context) {
+		if err := UnmountSDCardPartitionFromHost(ctx, user); err != nil {
+			testing.ContextLog(ctx, "Failed to unmount Android's SDCard partition from host: ", err)
+		}
 	}
 	return cleanupFunc, nil
 }
