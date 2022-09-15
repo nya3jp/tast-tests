@@ -1,4 +1,4 @@
-// Copyright 2020 The Chromium OS Authors. All rights reserved.
+// Copyright 2020 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -502,27 +502,6 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create TabCrashChecker: ", err)
 	}
 
-	if _, ok := s.Var("record"); ok {
-		screenRecorder, err := uiauto.NewScreenRecorder(ctx, tconn)
-		if err != nil {
-			s.Fatal("Failed to create ScreenRecorder: ", err)
-		}
-		defer func(ctx context.Context) {
-			screenRecorder.Stop(ctx)
-			dir, ok := testing.ContextOutDir(ctx)
-			if ok && dir != "" {
-				if _, err := os.Stat(dir); err == nil {
-					testing.ContextLogf(ctx, "Saving screen record to %s", dir)
-					if err := screenRecorder.SaveInBytes(ctx, filepath.Join(dir, "screen_record.webm")); err != nil {
-						s.Fatal("Failed to save screen record in bytes: ", err)
-					}
-				}
-			}
-			screenRecorder.Release(ctx)
-		}(closeCtx)
-		screenRecorder.Start(ctx, tconn)
-	}
-
 	recorder, err := cujrecorder.NewRecorder(ctx, cr, nil, cujrecorder.RecorderOptions{})
 	if err != nil {
 		s.Fatal("Failed to create the recorder: ", err)
@@ -539,6 +518,12 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 	}
 
 	recorder.EnableTracing(s.OutDir(), s.DataPath(cujrecorder.SystemTraceConfigFile))
+
+	if _, ok := s.Var("record"); ok {
+		if err := recorder.AddScreenRecorder(ctx, tconn, filepath.Join(s.OutDir(), fmt.Sprintf("%s-record.webm", s.TestName()))); err != nil {
+			s.Fatal("Failed to add screen recorder: ", err)
+		}
+	}
 
 	defer func() {
 		if err := recorder.Close(closeCtx); err != nil {

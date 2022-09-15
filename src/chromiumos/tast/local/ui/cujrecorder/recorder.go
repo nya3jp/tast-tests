@@ -1,4 +1,4 @@
-// Copyright 2019 The Chromium OS Authors. All rights reserved.
+// Copyright 2019 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -16,6 +16,7 @@ import (
 	"path/filepath"
 	"time"
 
+	"chromiumos/tast/common/action"
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
@@ -23,6 +24,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/metrics"
+	"chromiumos/tast/local/chrome/uiauto"
 	perfSrc "chromiumos/tast/local/perf"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/local/power/setup"
@@ -158,6 +160,17 @@ type Recorder struct {
 	// batteryDischarge is true if battery discharge was successfully induced.
 	batteryDischarge bool
 
+	// screenRecording is true if the recorder should screen record.
+	screenRecording bool
+
+	// screenRecorderStart starts the screen recorder if
+	// screenRecording is true.
+	screenRecorderStart action.Action
+
+	// screenRecorderCleanup cleans up the screen recorder if
+	// screenRecording is true.
+	screenRecorderCleanup action.Action
+
 	tpsTimeline        *perf.Timeline
 	powerTimeline      *perf.Timeline
 	gpuDataSource      *perfSrc.GPUDataSource
@@ -252,6 +265,41 @@ func (r *Recorder) AddCommonMetrics(tconn, bTconn *chrome.TestConn) error {
 		if err := r.AddCollectedMetrics(bTconn, browser.TypeLacros, CUJAnyChromeCommonMetricConfigs()...); err != nil {
 			return errors.Wrap(err, "failed to add Lacros AnyChrome common metrics")
 		}
+	}
+	return nil
+}
+
+// AddScreenRecorder creates a screen recorder that will record the
+// device during the execution of recorder.Run. The screen recording is
+// saved to |filePath|.
+func (r *Recorder) AddScreenRecorder(ctx context.Context, tconn *chrome.TestConn, filePath string) error {
+	screenRecorder, err := uiauto.NewScreenRecorder(ctx, tconn)
+	if err != nil {
+		return errors.Wrap(err, "failed to create ScreenRecorder")
+	}
+
+	r.screenRecording = true
+
+	r.screenRecorderStart = func(ctx context.Context) error {
+		return screenRecorder.Start(ctx, tconn)
+	}
+
+	r.screenRecorderCleanup = func(ctx context.Context) error {
+		if err := screenRecorder.Stop(ctx); err != nil {
+			return errors.Wrap(err, "failed to stop ScreenRecorder")
+		}
+
+		dir, ok := testing.ContextOutDir(ctx)
+		if ok && dir != "" {
+			if _, err := os.Stat(dir); err == nil {
+				testing.ContextLogf(ctx, "Saving screen record to %s", dir)
+				if err := screenRecorder.SaveInBytes(ctx, filePath); err != nil {
+					return errors.Wrap(err, "failed to save screen record in bytes")
+				}
+			}
+		}
+		screenRecorder.Release(ctx)
+		return nil
 	}
 	return nil
 }
@@ -451,7 +499,8 @@ func (r *Recorder) Close(ctx context.Context) error {
 //
 // Out:
 // * New context (with reduced timeout) that should be used to run the test
-//   function.
+// function.
+//
 // * Error
 func (r *Recorder) startRecording(ctx context.Context) (runCtx context.Context, e error) {
 	if !r.startedAtTm.IsZero() {
@@ -480,6 +529,12 @@ func (r *Recorder) startRecording(ctx context.Context) (runCtx context.Context, 
 		r.startedAtTm = time.Time{} // Reset to zero.
 		r.mr = nil
 	}(ctx)
+
+	if r.screenRecording {
+		if err := r.screenRecorderStart(ctx); err != nil {
+			return nil, errors.Wrap(err, "failed to start screen recorder")
+		}
+	}
 
 	if r.traceDir != "" && r.perfettoCfgPath != "" {
 		sess, err := tracing.StartSession(ctx, r.perfettoCfgPath)
@@ -557,7 +612,8 @@ func (r *Recorder) startRecording(ctx context.Context) (runCtx context.Context, 
 //
 // In:
 // * context used to initialise recording (the one that was passed to the
-//   startRecording above).
+// startRecording above).
+//
 // * shorted context returned from the startRecording()
 //
 // Out:
@@ -582,6 +638,12 @@ func (r *Recorder) stopRecording(ctx, runCtx context.Context) (e error) {
 	}(ctx)
 	r.duration += time.Now().Sub(r.startedAtTm)
 	r.startedAtTm = time.Time{} // Reset to zero.
+
+	if r.screenRecording {
+		if err := r.screenRecorderCleanup(ctx); err != nil {
+			return errors.Wrap(err, "failed to clean up screen recorder")
+		}
+	}
 
 	// Collects metrics per browser type.
 	tHists := make(map[browser.Type][]*metrics.Histogram)

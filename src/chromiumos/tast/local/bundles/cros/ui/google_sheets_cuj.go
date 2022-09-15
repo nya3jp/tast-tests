@@ -1,4 +1,4 @@
-// Copyright 2022 The Chromium OS Authors. All rights reserved.
+// Copyright 2022 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -6,6 +6,8 @@ package ui
 
 import (
 	"context"
+	"fmt"
+	"path/filepath"
 	"time"
 
 	"chromiumos/tast/common/perf"
@@ -38,6 +40,7 @@ func init() {
 		Data:         []string{cujrecorder.SystemTraceConfigFile},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		Timeout:      13 * time.Minute,
+		Vars:         []string{"record"},
 		Params: []testing.Param{{
 			Val:     browser.TypeAsh,
 			Fixture: "loggedInToCUJUser",
@@ -129,6 +132,12 @@ func GoogleSheetsCUJ(ctx context.Context, s *testing.State) {
 	}
 
 	recorder.EnableTracing(s.OutDir(), s.DataPath(cujrecorder.SystemTraceConfigFile))
+
+	if _, ok := s.Var("record"); ok {
+		if err := recorder.AddScreenRecorder(ctx, tconn, filepath.Join(s.OutDir(), fmt.Sprintf("%s-record.webm", s.TestName()))); err != nil {
+			s.Fatal("Failed to add screen recorder: ", err)
+		}
+	}
 
 	// Create a virtual trackpad.
 	tpw, err := input.Trackpad(ctx)
