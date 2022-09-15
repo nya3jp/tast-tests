@@ -26,7 +26,7 @@ func init() {
 		ServiceDeps:  []string{"tast.cros.security.BootLockboxService"},
 		SoftwareDeps: []string{"chrome", "reboot"},
 		Vars:         []string{"servo"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:faft", "firmware_unstable"},
 		Fixture:      fixture.NormalMode,
 	})
 }
