@@ -34,6 +34,7 @@ func init() {
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		Data:         []string{cujrecorder.SystemTraceConfigFile},
 		Timeout:      15 * time.Minute,
+		Vars:         []string{"record"},
 		Params: []testing.Param{{
 			Val:     browser.TypeAsh,
 			Fixture: "loggedInToCUJUser",
@@ -97,6 +98,12 @@ func GoogleSlidesCUJ(ctx context.Context, s *testing.State) {
 	}
 
 	recorder.EnableTracing(s.OutDir(), s.DataPath(cujrecorder.SystemTraceConfigFile))
+
+	if _, ok := s.Var("record"); ok {
+		if err := recorder.AddScreenRecorder(ctx, tconn, s.TestName()); err != nil {
+			s.Fatal("Failed to add screen recorder: ", err)
+		}
+	}
 
 	// Create a virtual keyboard.
 	kw, err := input.Keyboard(ctx)

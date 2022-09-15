@@ -29,7 +29,10 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Data:         []string{cujrecorder.SystemTraceConfigFile},
 		Timeout:      22*time.Minute + cuj.CPUStablizationTimeout,
-		Vars:         []string{"mute"},
+		Vars: []string{
+			"mute",
+			"record",
+		},
 		Params: []testing.Param{{
 			ExtraData: []string{tabswitchcuj.WPRArchiveName},
 			Val: tabswitchcuj.TabSwitchParam{

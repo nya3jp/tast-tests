@@ -35,6 +35,7 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Data:         []string{"animation.html", "animation.js", cujrecorder.SystemTraceConfigFile},
 		Timeout:      15 * time.Minute,
+		Vars:         []string{"record"},
 		Params: []testing.Param{{
 			Val:     browser.TypeAsh,
 			Fixture: "loggedInToCUJUser",
@@ -177,6 +178,12 @@ func WindowStateTransitionsCUJ(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to add window animation smoothness metrics to the recorder: ", err)
 	}
 	recorder.EnableTracing(s.OutDir(), s.DataPath(cujrecorder.SystemTraceConfigFile))
+
+	if _, ok := s.Var("record"); ok {
+		if err := recorder.AddScreenRecorder(ctx, tconn, s.TestName()); err != nil {
+			s.Fatal("Failed to add screen recorder: ", err)
+		}
+	}
 
 	// Conduct the performance measurement.
 	if err := recorder.RunFor(ctx, func(ctx context.Context) error {

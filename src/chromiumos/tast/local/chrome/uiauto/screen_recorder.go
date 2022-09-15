@@ -222,7 +222,7 @@ func (r *ScreenRecorder) Start(ctx context.Context, tconn *chrome.TestConn) erro
 	closeNotificationButton := nodewith.Name("Notification close").Role(role.Button)
 	messagePopupAlert := nodewith.ClassName("MessagePopupView").Role(role.AlertDialog)
 	if err := ui.LeftClickUntil(closeNotificationButton, ui.WithInterval(time.Second).WaitUntilGone(messagePopupAlert))(ctx); err != nil {
-		return err
+		testing.ContextLog(ctx, "Failed to dismiss screenshare notification popup, it likely didn't appear: ", err)
 	}
 	return nil
 }
