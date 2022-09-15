@@ -22,6 +22,30 @@
       },
       "revId": "bed2ffdf92ef99ba71bde2952e775505f5719cbe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "519ef47f_c7ced95d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/drag_drop.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-09-15T00:24:00Z",
+      "side": 1,
+      "message": "Isn\u0027t it the same issue as in the ImagePaste test?\nhttps://bugs.chromium.org/p/chromium/issues/detail?id\u003d1359203",
+      "parentUuid": "897debf3_bda5360a",
+      "range": {
+        "startLine": 295,
+        "startChar": 0,
+        "endLine": 295,
+        "endChar": 28
+      },
+      "revId": "bed2ffdf92ef99ba71bde2952e775505f5719cbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
