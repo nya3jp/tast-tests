@@ -36,10 +36,11 @@ const (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         WriteProtect,
-		Desc:         "Verify enabling and disabling write protect works as expected",
-		Contacts:     []string{"tij@google.com", "cros-fw-engprod@google.com"},
-		Attr:         []string{"group:firmware", "firmware_unstable"},
+		Func:     WriteProtect,
+		Desc:     "Verify enabling and disabling write protect works as expected",
+		Contacts: []string{"tij@google.com", "cros-fw-engprod@google.com"},
+		// Disabling from running pending fixes.
+		Attr:         []string{},
 		SoftwareDeps: []string{"crossystem", "flashrom"},
 		ServiceDeps:  []string{"tast.cros.firmware.BiosService"},
 		HardwareDeps: hwdep.D(hwdep.ChromeEC()),
