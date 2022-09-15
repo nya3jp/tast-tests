@@ -1,4 +1,4 @@
-// Copyright 2022 The ChromiumOS Authors.
+// Copyright 2022 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -157,12 +157,17 @@ func testProjectorEnabled(ctx context.Context, cr *chrome.Chrome, fdms *fakedms.
 		return errors.Wrap(err, "failed to wait for the Screencast App to close")
 	}
 
+	// Ensures the app list view is closed before open it and launch app again.
+	if err := ui.WaitUntilGone(nodewith.ClassName(launcher.ExpandedItemsClass).First())(ctx); err != nil {
+		return errors.Wrap(err, "cannot wait app list view items gone")
+	}
+
 	if err := launcher.LaunchApp(tconn, apps.Projector.Name)(ctx); err != nil {
 		return errors.Wrap(err, "failed to find Screencast in the launcher")
 	}
 
 	blockedWindowFinder := nodewith.Role(role.Window).Name("Screencast is blocked")
-	okButton := nodewith.Role(role.Button).Name("OK")
+	okButton := nodewith.Role(role.Button).Name("OK").Ancestor(blockedWindowFinder)
 	if err := uiauto.Combine("Screencast is blocked",
 		ui.WaitUntilExists(blockedWindowFinder),
 		ui.WithInterval(time.Second).LeftClickUntil(okButton, ui.Gone(blockedWindowFinder)),
