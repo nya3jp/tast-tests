@@ -56,6 +56,30 @@
       },
       "revId": "606a48ce016fdcc35957273f4bdafb9ff87097a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e5d1e4f_8d1b3455",
+        "filename": "src/chromiumos/tast/local/arc/file.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1541210
+      },
+      "writtenOn": "2022-09-15T11:57:22Z",
+      "side": 1,
+      "message": "Thanks! Added logging here. Let me do the same for `MountVirtioBlkDataDiskImageReadOnlyIfUsed` as well, although it is not added in this CL.",
+      "parentUuid": "386a8937_c8549c96",
+      "range": {
+        "startLine": 227,
+        "startChar": 2,
+        "endLine": 227,
+        "endChar": 32
+      },
+      "revId": "606a48ce016fdcc35957273f4bdafb9ff87097a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
