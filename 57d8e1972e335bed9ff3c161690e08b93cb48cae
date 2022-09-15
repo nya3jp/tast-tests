@@ -178,6 +178,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "72e8ef1c_bdaae829",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzkaller/wrapper.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 454,
+      "author": {
+        "id": 1263546
+      },
+      "writtenOn": "2022-09-15T20:53:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9825be28_0c8d3df8",
+      "revId": "57d8e1972e335bed9ff3c161690e08b93cb48cae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "422ea106_c881d48d",
