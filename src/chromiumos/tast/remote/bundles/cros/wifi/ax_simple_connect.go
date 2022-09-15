@@ -12,7 +12,6 @@ import (
 
 	"chromiumos/tast/common/network/ping"
 	"chromiumos/tast/common/wifi/security"
-	"chromiumos/tast/common/wifi/security/base"
 	"chromiumos/tast/common/wifi/security/wpa"
 	"chromiumos/tast/dut"
 	"chromiumos/tast/remote/wificell"
@@ -36,6 +35,7 @@ func init() {
 		ServiceDeps: []string{wificell.TFServiceName},
 		Vars:        []string{"router", "pcap", "routertype"},
 		Params: []testing.Param{
+			/* Disabled due to <1% pass rate over 30 days. See b/246820339
 			{
 				// Verifies that DUT can connect to a broadcasted open 802.11ax on channels 100,104
 				Name: "80211ax",
@@ -50,7 +50,10 @@ func init() {
 					routerSecConfFac: ax.NewSecOpenConfigParamFac(),
 					secConfFac:       base.NewConfigFactory(),
 				}},
-			}, {
+			}
+			*/
+			/* Disabled due to <1% pass rate over 30 days. See b/246820339
+			{
 				// Verifies that DUT can connect to a hidden open 802.11ax network on channel 100, 104
 				Name: "80211axhidden",
 				Val: []axSimpleConnectTestcase{{
@@ -64,7 +67,9 @@ func init() {
 					routerSecConfFac: ax.NewSecOpenConfigParamFac(),
 					secConfFac:       base.NewConfigFactory(),
 				}},
-			},
+			}
+			*/
+			/* Disabled due to <1% pass rate over 30 days. See b/246820339
 			{
 				// Verifies that DUT can connect to a broadcasted wpa (AES) 802.11ax network on channel 100, 104
 				Name: "80211axwpaaes",
@@ -79,7 +84,9 @@ func init() {
 					routerSecConfFac: ax.NewSecWPAConfigParamFac("helloworld", ax.AES),
 					secConfFac:       wpa.NewConfigFactory("helloworld", wpa.Mode(wpa.ModePureWPA), wpa.Ciphers(wpa.CipherCCMP)),
 				}},
-			},
+			}
+			*/
+			/* Disabled due to <1% pass rate over 30 days. See b/246820339
 			{
 				// Verifies that DUT can connect to a hidden wpa (AES) 802.11ax network on channel 100, 104
 				Name: "80211axwpaaeshidden",
@@ -94,7 +101,9 @@ func init() {
 					routerSecConfFac: ax.NewSecWPAConfigParamFac("helloworld", ax.AES),
 					secConfFac:       wpa.NewConfigFactory("helloworld", wpa.Mode(wpa.ModePureWPA), wpa.Ciphers(wpa.CipherCCMP)),
 				}},
-			},
+			}
+			*/
+			/* Disabled due to <1% pass rate over 30 days. See b/246820339
 			{
 				// Verifies that DUT can connect to a broadcasted open 802.11ax on channels 100 with 40Mhz channel width on the 5ghz band
 				Name: "80211ax40mhz5ghz",
@@ -104,7 +113,9 @@ func init() {
 					routerSecConfFac: ax.NewSecOpenConfigParamFac(),
 					secConfFac:       base.NewConfigFactory(),
 				}},
-			},
+			}
+			*/
+			/* Disabled due to <1% pass rate over 30 days. See b/246820339
 			{
 				// Verifies that DUT can connect to a broadcasted open 802.11ax on channels 100 with 80Mhz channel width on the 5ghz band
 				Name: "80211ax80mhz5ghz",
@@ -114,7 +125,9 @@ func init() {
 					routerSecConfFac: ax.NewSecOpenConfigParamFac(),
 					secConfFac:       base.NewConfigFactory(),
 				}},
-			},
+			}
+			*/
+			/* Disabled due to <1% pass rate over 30 days. See b/246820339
 			{
 				// Verifies that DUT can connect to a broadcasted open 802.11ax on channels 100 with 160Mhz channel width on the 5ghz band
 				Name: "80211ax160mhz5ghz",
@@ -124,7 +137,8 @@ func init() {
 					routerSecConfFac: ax.NewSecOpenConfigParamFac(),
 					secConfFac:       base.NewConfigFactory(),
 				}},
-			},
+			}
+			*/
 			/* Disabled due to <1% pass rate over 30 days. See b/241943857
 			{
 				// Verifies that DUT can connect to a broadcasted wpa (AES) 802.11ax network on channel 85, 41 on the 6ghz band
