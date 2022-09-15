@@ -33,6 +33,23 @@
       "message": "LGTM :)",
       "revId": "9f4c607c8d0a2ed3f015021eea59c24c0ed1c83b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9edc991_72f9a6ac",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1267867
+      },
+      "writtenOn": "2022-09-15T20:51:32Z",
+      "side": 1,
+      "message": "Adding Kamil for OWNER +2.\n\nHi Kamil, We are changing the lacros status of bluetooth tast tests to unneeded. PTAL\n\nRegards\nShijin",
+      "revId": "9f4c607c8d0a2ed3f015021eea59c24c0ed1c83b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
