@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "238c7b4b_67e0b66e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/intel/crostini_linux_terminal_functionality.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-09-15T04:40:01Z",
+      "side": 1,
+      "message": "simplify these actions with `uiauto.Combine`:\n```\nuiauto.Combine(...,\n    terminalApp.RunCommand(kb, cmd),\n    cui.WithTimeout(80 * time.Second).WaitUntilExists(installSuccessElement),\n    terminalApp.RunCommand(kb, cmd),\n    ...\n)\n```",
+      "range": {
+        "startLine": 98,
+        "startChar": 1,
+        "endLine": 120,
+        "endChar": 2
+      },
+      "revId": "69a754cc7d6796413bf9172baa504fa98421bf42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
