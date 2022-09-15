@@ -144,6 +144,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5f419ec7_b9dcda23",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzkaller/wrapper.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 454,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-09-15T20:39:46Z",
+      "side": 1,
+      "message": "Then, I suggest you to add a comment here to avoid future confusion when support is needed. Thanks.",
+      "parentUuid": "7735fa68_2b34829a",
+      "revId": "57d8e1972e335bed9ff3c161690e08b93cb48cae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "422ea106_c881d48d",
         "filename": "src/chromiumos/tast/remote/bundles/cros/syzkaller/wrapper.go",
         "patchSetId": 4
