@@ -20,7 +20,7 @@ func init() {
 			"chromeos-config@google.com",
 		},
 		SoftwareDeps: []string{"unibuild"},
-		Attr:         []string{"group:mainline"},
+		Attr:         []string{"group:mainline", "group:firmware", "firmware_ec"},
 	})
 }
 
