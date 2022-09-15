@@ -2995,10 +2995,15 @@ func (s *ShillService) startDHCPServer(ctx context.Context) error {
 	args := []firewall.RuleOption{firewall.OptionAppendRule(firewall.InputChain)}
 	args = append(args, dhcpFirewallParams...)
 	if err := firewallRunner.ExecuteCommand(ctx, args...); err != nil {
+		ipr.DeleteIP(ctx, iface, net.ParseIP(softAPIPAddress), 24)
 		return errors.Wrap(err, "failed to set DHCP iptable rule")
 	}
 
 	if err := r.Run(ctx, "dnsmasq", "--interface="+iface, "--port=0", "--dhcp-range=192.168.50.100,192.168.50.150,255.255.255.0,6h", "--dhcp-option=3,192.168.50.1"); err != nil {
+		args := []firewall.RuleOption{firewall.OptionDeleteRule(firewall.InputChain)}
+		args = append(args, dhcpFirewallParams...)
+		firewallRunner.ExecuteCommand(ctx, args...)
+		ipr.DeleteIP(ctx, iface, net.ParseIP(softAPIPAddress), 24)
 		return errors.Wrap(err, "failed to start dnsmasq on WiFi interface")
 	}
 
