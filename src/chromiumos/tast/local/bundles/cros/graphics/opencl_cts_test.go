@@ -1090,7 +1090,7 @@ func TestOpenclCtsParamsAreGenerated(t *testing.T) {
 	addTest("half", "vloada_half", "-w", "pass", "", 1, nil)
 	addTest("half", "vload_half", "-w", "pass", "", 1, nil)
 	addTest("half", "vstorea_half_rte", "-w", "pass", "", 1, nil)
-	addTest("half", "vstorea_half_rtn", "-w", "fail", "b/227136713", 1, nil)
+	// addTest("half", "vstorea_half_rtn", "-w", "fail", "b/227136713", 1, nil) See b/246818311
 	addTest("half", "vstorea_half_rtp", "-w", "fail", "b/227136713", 1, nil)
 	addTest("half", "vstorea_half_rtz", "-w", "fail", "b/227136713", 1, nil)
 	addTest("half", "vstorea_half", "-w", "pass", "", 1, nil)
@@ -1521,7 +1521,7 @@ func TestOpenclCtsParamsAreGenerated(t *testing.T) {
 	addTest("vectors", "step_var", "", "pass", "", 1, nil)
 	addTest("vectors", "vec_align_array", "", "fail", "b/227134903", 1, nil)
 	addTest("vectors", "vec_align_packed_struct_arr", "", "fail", "b/227134903", 1, nil)
-	addTest("vectors", "vec_align_packed_struct", "", "fail", "b/227134903", 1, nil)
+	// addTest("vectors", "vec_align_packed_struct", "", "fail", "b/227134903", 1, nil) See b/246818311
 	addTest("vectors", "vec_align_struct_arr", "", "fail", "b/227134903", 1, nil)
 	addTest("vectors", "vec_align_struct", "", "fail", "b/227134903", 1, nil)
 
