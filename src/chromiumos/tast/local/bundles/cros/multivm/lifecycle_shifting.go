@@ -28,7 +28,7 @@ type lifecycleShiftingParam struct {
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         LifecycleShifting,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantNeeded,
 		Desc:         "Create many Apps, Tabs, Processes in turn across multiple VMs, and see how many can stay alive",
 		Contacts:     []string{"cwd@google.com", "cros-platform-kernel-core@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_nightly"},
