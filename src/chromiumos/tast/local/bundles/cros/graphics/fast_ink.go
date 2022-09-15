@@ -10,6 +10,7 @@ import (
 	"net/http/httptest"
 	"time"
 
+	"chromiumos/tast/common/action"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
@@ -22,7 +23,9 @@ import (
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/mouse"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/pointer"
 	"chromiumos/tast/local/chrome/webutil"
+	"chromiumos/tast/local/coords"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -299,8 +302,43 @@ func FastInk(ctx context.Context, s *testing.State) {
 		s.Fatal("Expected 1 window; found ", wsCount)
 	}
 
-	internalDisplayID := internalInfo.ID
 	wID := ws[0].ID
+	var fastInkAction action.Action
+	if params.arc {
+		i := 0
+		fastInkAction = func(ctx context.Context) error {
+			// Create a new touch controller every time, so that its touch
+			// coordinate converter will use the up-to-date display orientation.
+			pc, err := pointer.NewTouch(ctx, tconn)
+			if err != nil {
+				return errors.Wrap(err, "failed to create a touch controller")
+			}
+			defer pc.Close()
+
+			w, err := ash.GetWindow(ctx, tconn, wID)
+			if err != nil {
+				return errors.Wrap(err, "failed to get window info")
+			}
+
+			// Draw the first line near the top of the canvas (which is almost 100 DIPs from
+			// the top of the window), and then each line 10 DIPs below the previous line.
+			y := w.BoundsInRoot.Top + 100 + 10*i
+			if err := pc.Drag(
+				// Start the line near the left boundary.
+				coords.NewPoint(w.BoundsInRoot.Left+50, y),
+				// End the line near the right boundary.
+				pc.DragTo(coords.NewPoint(w.BoundsInRoot.Right()-51, y), time.Second),
+			)(ctx); err != nil {
+				return errors.Wrap(err, "failed to draw with finger")
+			}
+			i++
+			return nil
+		}
+	} else {
+		fastInkAction = action.Sleep(time.Second)
+	}
+
+	internalDisplayID := internalInfo.ID
 	defer display.SetDisplayRotationSync(cleanupCtx, tconn, internalDisplayID, display.Rotate0)
 	for _, displayRotation := range params.displayRotations {
 		s.Run(ctx, string(displayRotation), func(ctx context.Context, s *testing.State) {
@@ -342,12 +380,7 @@ func FastInk(ctx context.Context, s *testing.State) {
 						s.Fatal("Failed to wait a second: ", err)
 					}
 
-					hists, err := metrics.Run(ctx, tconn, func(ctx context.Context) error {
-						if err := testing.Sleep(ctx, time.Second); err != nil {
-							return errors.Wrap(err, "failed to wait a second")
-						}
-						return nil
-					}, "Viz.DisplayCompositor.OverlayStrategy")
+					hists, err := metrics.Run(ctx, tconn, fastInkAction, "Viz.DisplayCompositor.OverlayStrategy")
 					if err != nil {
 						s.Fatal("Error while recording histogram Viz.DisplayCompositor.OverlayStrategy: ", err)
 					}
