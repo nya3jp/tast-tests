@@ -1,4 +1,4 @@
-// Copyright 2022 The ChromiumOS Authors.
+// Copyright 2022 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -94,8 +94,6 @@ func Run(ctx context.Context, s *testing.State) {
 	defer d.Close(closeCtx)
 
 	ac := uiauto.New(tconn)
-
-	pv := perf.NewValues()
 
 	recorder, err := cujrecorder.NewRecorder(ctx, cr, bTconn, a, cujrecorder.RecorderOptions{})
 	if err != nil {
@@ -210,16 +208,11 @@ func Run(ctx context.Context, s *testing.State) {
 		}
 
 		s.Log("Opening Chrome Tabs")
-		initTabs, cleanupTabs, numBrowserWindows, err := openChromeTabs(ctx, tconn, bTconn, cs, testParam.BrowserType, testParam.Tablet, pv)
+		numBrowserWindows, err := openChromeTabs(ctx, tconn, bTconn, cs, testParam.BrowserType, testParam.Tablet)
 		if err != nil {
 			return errors.Wrap(err, "failed to launch apps")
 		}
 		numWindows := numAppWindows + numBrowserWindows
-
-		if err := initTabs(ctx); err != nil {
-			return errors.Wrap(err, "failed to initialize tabs")
-		}
-		defer cleanupTabs(ctx)
 
 		// Initialize task switch workflows only after launching Chrome
 		// tabs and applications, because switching by Hotseat requires
@@ -294,6 +287,7 @@ func Run(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to conduct the recorder task: ", err)
 	}
 
+	pv := perf.NewValues()
 	if err := recorder.Record(ctx, pv); err != nil {
 		s.Fatal("Failed to report: ", err)
 	}
