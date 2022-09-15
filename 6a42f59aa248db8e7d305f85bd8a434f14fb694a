@@ -16,6 +16,24 @@
       "message": "clarification: do you plan to use this in some ways in a following CL?",
       "revId": "6a42f59aa248db8e7d305f85bd8a434f14fb694a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "496aedb7_d1d34865",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_sensor_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1537719
+      },
+      "writtenOn": "2022-09-15T01:51:14Z",
+      "side": 1,
+      "message": "Yes, we make sure the output can be decoded in this CL and will verify the value in the next CL.",
+      "parentUuid": "1497cc12_c1fcb2bb",
+      "revId": "6a42f59aa248db8e7d305f85bd8a434f14fb694a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
