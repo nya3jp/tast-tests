@@ -22,6 +22,30 @@
       },
       "revId": "50e984c791cd06c7230225a5d374dc5d4e952cb4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6c5519d_fbf8c914",
+        "filename": "src/chromiumos/tast/local/accountmanager/account_manager.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 431,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-09-15T14:55:53Z",
+      "side": 1,
+      "message": "Is it possible to check for an error type? It looks like we can get only a timeout error anyways https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast/src/chromiumos/tast/internal/testingutil/poll.go;l\u003d44;drc\u003d40abc47087c3e1722042ec4e01f6c085415a1f27\n\n\u003e E.g., preparing a scenario to let chrome ensure to show the action button.\nIn the previous call `OpenAccountManagerSettingsAction` we already check that the page content was loaded, but it looks like the actual account list may take a little longer to appear. In the current state (before the CL) we just check for `ui.Exists` immediately, and this CL adds polling timeout. I\u0027m not sure what kind of errors we could miss in this case (compared to the current state) - do you have any specific situation in mind?",
+      "parentUuid": "7067aaaa_5b8fcd07",
+      "range": {
+        "startLine": 431,
+        "startChar": 3,
+        "endLine": 431,
+        "endChar": 95
+      },
+      "revId": "50e984c791cd06c7230225a5d374dc5d4e952cb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
