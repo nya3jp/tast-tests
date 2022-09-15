@@ -55,6 +55,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6020fb56_e5c2b432",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/recorder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-09-15T20:02:47Z",
+      "side": 1,
+      "message": "Instead of having this, you can just check if each function is nil before calling it.",
+      "range": {
+        "startLine": 163,
+        "startChar": 0,
+        "endLine": 164,
+        "endChar": 21
+      },
+      "revId": "846cd7badeff86c536e8280471357cac8b9c03d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be6d0f56_56600e6e",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/recorder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-09-15T20:02:47Z",
+      "side": 1,
+      "message": "This should be `func(ctx context.Context)`. When this function is called, the potentially time-consuming part of the test is already done and has successfully collected performance data that might be useful. Then if there are problems saving the screen record, you can log them, but you should not return them causing the test to fail so that the performance data goes to waste.",
+      "range": {
+        "startLine": 172,
+        "startChar": 23,
+        "endLine": 172,
+        "endChar": 36
+      },
+      "revId": "846cd7badeff86c536e8280471357cac8b9c03d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "77e44882_09b62c97",
         "filename": "src/chromiumos/tast/local/ui/cujrecorder/recorder.go",
         "patchSetId": 4
@@ -118,6 +164,29 @@
         "startChar": 13,
         "endLine": 292,
         "endChar": 34
+      },
+      "revId": "846cd7badeff86c536e8280471357cac8b9c03d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "950f123e_8ac87790",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/recorder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-09-15T20:02:47Z",
+      "side": 1,
+      "message": "This should be:\n\tr.screenRecorderCleanup \u003d func(ctx context.Context) {\n\t\tuiauto.ScreenRecorderStopSaveRelease(ctx, screenRecorder, filePath)\n\t}",
+      "range": {
+        "startLine": 287,
+        "startChar": 0,
+        "endLine": 303,
+        "endChar": 2
       },
       "revId": "846cd7badeff86c536e8280471357cac8b9c03d7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
