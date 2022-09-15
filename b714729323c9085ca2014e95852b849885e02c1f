@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "68327837_328b56ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/feature_api_available_routines.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1543127
+      },
+      "writtenOn": "2022-09-15T11:29:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e67df217_fa1d4a13",
+      "range": {
+        "startLine": 18,
+        "startChar": 141,
+        "endLine": 18,
+        "endChar": 149
+      },
+      "revId": "b714729323c9085ca2014e95852b849885e02c1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3318fbc5_7d408d10",
@@ -97,6 +121,24 @@
       "side": 1,
       "message": "I think OEMs might be thinking that only these routines are supported. Also cros_healthd implementation might change and imagine that some routine is available on all X_OEM, Z_OEM devices, but not on new coming Y_OEM devices.",
       "parentUuid": "ce451c3c_b84d9123",
+      "revId": "b714729323c9085ca2014e95852b849885e02c1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb8f66e8_a8fa122f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/feature_api_available_routines.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1543127
+      },
+      "writtenOn": "2022-09-15T11:29:52Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "ee7a9619_6dcc1461",
       "revId": "b714729323c9085ca2014e95852b849885e02c1f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
