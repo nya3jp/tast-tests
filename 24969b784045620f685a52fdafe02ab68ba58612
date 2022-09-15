@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0f9dfe9_404f3af9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint/credentials.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1428748
+      },
+      "writtenOn": "2022-09-15T15:12:53Z",
+      "side": 1,
+      "message": "Thanks for the tip!",
+      "parentUuid": "fe9cf1f9_b70699f7",
+      "revId": "24969b784045620f685a52fdafe02ab68ba58612",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3c73e590_33ff886a",
@@ -65,6 +83,30 @@
       "writtenOn": "2022-09-15T14:50:18Z",
       "side": 1,
       "message": "optional: homeOI (as you\u0027re here?)\nditto for below.",
+      "range": {
+        "startLine": 202,
+        "startChar": 8,
+        "endLine": 202,
+        "endChar": 14
+      },
+      "revId": "24969b784045620f685a52fdafe02ab68ba58612",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8fc9bf75_3056292a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint/credentials.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1428748
+      },
+      "writtenOn": "2022-09-15T15:12:53Z",
+      "side": 1,
+      "message": "I can\u0027t use `homeOI` because it conflicts with the name the struct above, I changed it to `oi`.",
+      "parentUuid": "3c73e590_33ff886a",
       "range": {
         "startLine": 202,
         "startChar": 8,
