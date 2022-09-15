@@ -39,6 +39,30 @@
       },
       "revId": "f253fb4cdee4b06c277855cbd7a8e1ed4440a95d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c3331a6_ec20f7f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/feature_api_available_routines.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1543127
+      },
+      "writtenOn": "2022-09-15T14:03:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2bb2f984_6f5c6c26",
+      "range": {
+        "startLine": 105,
+        "startChar": 0,
+        "endLine": 112,
+        "endChar": 2
+      },
+      "revId": "f253fb4cdee4b06c277855cbd7a8e1ed4440a95d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
