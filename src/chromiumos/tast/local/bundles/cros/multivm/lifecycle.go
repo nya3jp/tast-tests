@@ -1,4 +1,4 @@
-// Copyright 2020 The Chromium OS Authors. All rights reserved.
+// Copyright 2020 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -27,7 +27,7 @@ type lifecycleParam struct {
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         Lifecycle,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantNeeded,
 		Desc:         "Create many Apps, Tabs, Processes across multiple VMs, and see how many can stay alive",
 		Contacts:     []string{"cwd@google.com", "cros-platform-kernel-core@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_nightly"},
