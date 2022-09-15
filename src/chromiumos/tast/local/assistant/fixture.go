@@ -1,4 +1,4 @@
-// Copyright 2022 The Chromium OS Authors. All rights reserved.
+// Copyright 2022 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -126,8 +126,13 @@ func init() {
 			"yawano@google.com",
 			"assitive-eng@google.com",
 		},
+		Vars: []string{"assistant.username", "assistant.password"},
 		Impl: chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
 			return []chrome.Option{
+				chrome.GAIALogin(chrome.Creds{
+					User: s.RequiredVar("assistant.username"),
+					Pass: s.RequiredVar("assistant.password"),
+				}),
 				VerboseLogging(),
 				ashNoNudgesExtraArg(),
 				chrome.ExtraArgs(arc.DisableSyncFlags()...),
