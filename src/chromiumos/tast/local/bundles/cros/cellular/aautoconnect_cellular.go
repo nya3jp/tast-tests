@@ -1,4 +1,4 @@
-// Copyright 2022 The Chromium OS Authors. All rights reserved.
+// Copyright 2022 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -23,6 +23,7 @@ func init() {
 		Desc:         "Verifies that host has network connectivity via cellular interface",
 		Contacts:     []string{"pholla@google.com", "chromeos-cellular-team@google.com"},
 		Attr:         []string{"group:cellular", "cellular_unstable", "cellular_sim_active"},
+		Fixture:      "cellular",
 		Timeout:      3 * time.Minute,
 		SoftwareDeps: []string{"chrome"},
 	})
