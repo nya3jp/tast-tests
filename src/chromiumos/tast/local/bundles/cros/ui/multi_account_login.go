@@ -23,7 +23,8 @@ func init() {
 			"abergman@google.com",
 			"chromeos-perf-reliability-eng@google.com",
 		},
-		Attr:         []string{"group:crosbolt", "crosbolt_nightly"},
+		// Disabled due to <1% pass rate over 30 days. See b/246818466
+		//Attr:         []string{"group:crosbolt", "crosbolt_nightly"},
 		SoftwareDeps: []string{"chrome"},
 		VarDeps:      []string{"ui.MultiAccountLogin.accounts"},
 		Timeout:      60 * time.Minute,
