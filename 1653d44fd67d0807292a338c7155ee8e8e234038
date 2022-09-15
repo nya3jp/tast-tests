@@ -113,6 +113,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "050419b5_611f3ab2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns/dns.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 535,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2022-09-15T04:02:25Z",
+      "side": 1,
+      "message": "Looks nice! Sorry I couldn\u0027t catch this earlier and thanks for the suggestions! Done.",
+      "parentUuid": "712cfa5b_dbd12f5a",
+      "range": {
+        "startLine": 522,
+        "startChar": 11,
+        "endLine": 535,
+        "endChar": 4
+      },
+      "revId": "1653d44fd67d0807292a338c7155ee8e8e234038",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "93f63b61_8f523fe9",
