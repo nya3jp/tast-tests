@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "69433f1b_bebae92d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-09-15T12:25:35Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "f253fb4cdee4b06c277855cbd7a8e1ed4440a95d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2bb2f984_6f5c6c26",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/feature_api_available_routines.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-09-15T12:25:35Z",
+      "side": 1,
+      "message": "nit: move after line 120, closer to the first use",
+      "range": {
+        "startLine": 105,
+        "startChar": 0,
+        "endLine": 112,
+        "endChar": 2
+      },
+      "revId": "f253fb4cdee4b06c277855cbd7a8e1ed4440a95d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
