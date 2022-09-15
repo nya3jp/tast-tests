@@ -84,6 +84,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "aa7e14ae_f2fd7143",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/saved_file_to_default_folder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-09-15T02:36:12Z",
+      "side": 1,
+      "message": "1) Yes I think it\u0027s possible (ask tast-users@ to confirm). There\u0027s 20 different test accounts [1] in the gaia pool. With over 200 DUTs in the sky lab, there\u0027s a pretty high chance that two of them will run the same test on the same account at the same time.\n2) No, I think deleting all screencast items is critical to preventing the Drive quota from blowing up. Suppose there\u0027s some kind of error and screencasts start accumulating over time in the test account\u0027s Drive. One successful test run will clear all the accumulated screencasts and restore a clean state.\n\nIf this becomes an issue, one solution is to use separate test accounts for projector.CreationFlow, LocalPlayback, and SavedFileToDefaultFolder. However, the same test could run at the same time, depending on the response from tast-users@. WDYT?\n\n[1] https://source.corp.google.com/chromeos_internal/src/platform/tast-tests-private/vars/ui.yaml;l\u003d73?q\u003dgaiaPoolDefault%20f:yaml",
+      "parentUuid": "ea4ab695_1d5db390",
+      "range": {
+        "startLine": 27,
+        "startChar": 16,
+        "endLine": 27,
+        "endChar": 40
+      },
+      "revId": "21e4fc5df156aaab2214df4dbd234068c8646501",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3b2aaa00_8169b7a6",
         "filename": "src/chromiumos/tast/local/bundles/cros/projector/saved_file_to_default_folder.go",
         "patchSetId": 6
