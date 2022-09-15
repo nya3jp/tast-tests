@@ -1065,6 +1065,12 @@ func (h *Helper) RunTestOnCellularInterface(ctx context.Context, testBody func(c
 		return errors.Wrap(err, "failed to disable non cellular interface")
 	}
 	defer h.enablePreviouslyDisabledNonCellularInterfaceforTesting(ctx)
+
+	// wait for portal checks to pass and to be online.
+	if err := service.WaitForProperty(ctx, shillconst.ServicePropertyState, shillconst.ServiceStateOnline, 30*time.Second); err != nil {
+		return errors.Wrapf(err, "%s is not online", service)
+	}
+
 	return testBody(ctx)
 }
 
