@@ -1,4 +1,4 @@
-// Copyright 2019 The Chromium OS Authors. All rights reserved.
+// Copyright 2019 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -16,6 +16,7 @@ import (
 	"path/filepath"
 	"time"
 
+	"chromiumos/tast/common/action"
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
@@ -23,6 +24,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/metrics"
+	"chromiumos/tast/local/chrome/uiauto"
 	perfSrc "chromiumos/tast/local/perf"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/local/power/setup"
@@ -158,6 +160,12 @@ type Recorder struct {
 	// batteryDischarge is true if battery discharge was successfully induced.
 	batteryDischarge bool
 
+	// screenRecorderStart starts the screen recorder, if present.
+	screenRecorderStart action.Action
+
+	// screenRecorderCleanup cleans up the screen recorder, if present.
+	screenRecorderCleanup func(ctx context.Context)
+
 	tpsTimeline        *perf.Timeline
 	powerTimeline      *perf.Timeline
 	gpuDataSource      *perfSrc.GPUDataSource
@@ -252,6 +260,30 @@ func (r *Recorder) AddCommonMetrics(tconn, bTconn *chrome.TestConn) error {
 		if err := r.AddCollectedMetrics(bTconn, browser.TypeLacros, CUJAnyChromeCommonMetricConfigs()...); err != nil {
 			return errors.Wrap(err, "failed to add Lacros AnyChrome common metrics")
 		}
+	}
+	return nil
+}
+
+// AddScreenRecorder creates a screen recorder that will record the
+// device during the execution of recorder.Run. The screen recording is
+// saved with the |testName| as the filename prefix.
+func (r *Recorder) AddScreenRecorder(ctx context.Context, tconn *chrome.TestConn, testName string) error {
+	screenRecorder, err := uiauto.NewScreenRecorder(ctx, tconn)
+	if err != nil {
+		return errors.Wrap(err, "failed to create ScreenRecorder")
+	}
+
+	dir, ok := testing.ContextOutDir(ctx)
+	if !ok || dir == "" {
+		return errors.New("failed to get the out directory to save the screen recording")
+	}
+
+	r.screenRecorderStart = func(ctx context.Context) error {
+		return screenRecorder.Start(ctx, tconn)
+	}
+
+	r.screenRecorderCleanup = func(ctx context.Context) {
+		uiauto.ScreenRecorderStopSaveRelease(ctx, screenRecorder, filepath.Join(dir, fmt.Sprintf("%s-record.webm", testName)))
 	}
 	return nil
 }
@@ -486,6 +518,12 @@ func (r *Recorder) startRecording(ctx context.Context) (runCtx context.Context, 
 		r.mr = nil
 	}(ctx)
 
+	if r.screenRecorderStart != nil {
+		if err := r.screenRecorderStart(ctx); err != nil {
+			return nil, errors.Wrap(err, "failed to start screen recorder")
+		}
+	}
+
 	if r.traceDir != "" && r.perfettoCfgPath != "" {
 		sess, err := tracing.StartSession(ctx, r.perfettoCfgPath)
 		testing.ContextLog(ctx, "Starting system tracing session")
@@ -587,6 +625,10 @@ func (r *Recorder) stopRecording(ctx, runCtx context.Context) (e error) {
 	}(ctx)
 	r.duration += time.Now().Sub(r.startedAtTm)
 	r.startedAtTm = time.Time{} // Reset to zero.
+
+	if r.screenRecorderCleanup != nil {
+		r.screenRecorderCleanup(ctx)
+	}
 
 	// Collects metrics per browser type.
 	tHists := make(map[browser.Type][]*metrics.Histogram)

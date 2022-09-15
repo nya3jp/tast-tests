@@ -1,4 +1,4 @@
-// Copyright 2020 The Chromium OS Authors. All rights reserved.
+// Copyright 2020 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -25,7 +25,10 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Data:         []string{cujrecorder.SystemTraceConfigFile},
 		Timeout:      25 * time.Minute,
-		Vars:         []string{"mute"},
+		Vars: []string{
+			"mute",
+			"record",
+		},
 		Params: []testing.Param{
 			{
 				ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
