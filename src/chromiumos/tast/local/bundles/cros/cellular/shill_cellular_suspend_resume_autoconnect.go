@@ -25,8 +25,9 @@ type autoconnectTestParams struct {
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: ShillCellularSuspendResumeAutoconnect,
-		Desc: "Verifies that cellular maintains autoconnect state around Suspend/Resume",
+		Func:         ShillCellularSuspendResumeAutoconnect,
+		LacrosStatus: testing.LacrosVariantUnneeded,
+		Desc:         "Verifies that cellular maintains autoconnect state around Suspend/Resume",
 		Contacts: []string{
 			"danielwinkler@google.com",
 			"chromeos-cellular-team@google.com",
@@ -108,6 +109,10 @@ func ShillCellularSuspendResumeAutoconnect(ctx context.Context, s *testing.State
 	defer cr.Close(cleanupCtx)
 	// chrome.Chrome.Close() will not log the user out.
 	defer upstart.RestartJob(ctx, "ui")
+
+	if err := helper.WaitForEnabledState(ctx, true); err != nil {
+		s.Fatal("Cellular not enabled after resume")
+	}
 
 	service, err := helper.FindServiceForDevice(ctx)
 	if err != nil {
