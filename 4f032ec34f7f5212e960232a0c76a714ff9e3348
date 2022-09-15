@@ -16,6 +16,29 @@
       "message": "This change LGTM, please consider adding kyleshima@ to take a look since he is reviewing the parent change :)",
       "revId": "4f032ec34f7f5212e960232a0c76a714ff9e3348",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13847e54_754b0531",
+        "filename": "src/chromiumos/tast/local/bluetooth/floss/manager.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-09-15T23:34:03Z",
+      "side": 1,
+      "message": "minor nit: I think this error will look a bit awkward since it will read like `failed to verify Bluetooth status, got true, want false`, which is probably fine but maybe slightly unclear",
+      "range": {
+        "startLine": 61,
+        "startChar": 60,
+        "endLine": 61,
+        "endChar": 75
+      },
+      "revId": "4f032ec34f7f5212e960232a0c76a714ff9e3348",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
