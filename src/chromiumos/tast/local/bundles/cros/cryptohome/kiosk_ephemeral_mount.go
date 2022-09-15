@@ -23,7 +23,8 @@ func init() {
 			"hardikgoyal@chromium.org",
 			"cryptohome-core@google.com",
 		},
-		Attr: []string{"group:mainline", "informational"},
+		// Disabled due to <1% pass rate over 30 days. See b/246818505
+		//Attr: []string{"group:mainline", "informational"},
 		Data: []string{"testcert.p12"},
 	})
 }
