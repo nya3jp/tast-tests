@@ -300,9 +300,49 @@ func (r *Runner) DiscoverNetwork(ctx context.Context, dutConn *ssh.Conn, ssid st
 	return scanErr
 }
 
+// PhyMode is the type of mode setting (e.g. VHT, HT ...).
+type PhyMode string
+
+// PhyMode enum values.
+const (
+	PhyModeHT40 PhyMode = "ht40"
+	PhyModeVHT  PhyMode = "vht"
+	PhyModeHE   PhyMode = "he"
+)
+
+// setP2PGOAddConf contains the optional information for "p2p_group_add" function.
+type setP2PGroupAddConf struct {
+	freq int
+	mode PhyMode
+}
+
+// P2PGOOption is a function signature that modifies P2PGroupAdd.
+type P2PGOOption func(*setP2PGroupAddConf)
+
+// SetP2PGOFreq returns a P2PGroupAddOption which sets the first center frequency (in MHz).
+func SetP2PGOFreq(f int) P2PGOOption {
+	return func(c *setP2PGroupAddConf) {
+		c.freq = f
+	}
+}
+
+// SetP2PGOMode returns a P2PGroupAddOption which sets the mode.
+func SetP2PGOMode(m PhyMode) P2PGOOption {
+	return func(c *setP2PGroupAddConf) {
+		c.mode = m
+	}
+}
+
 // P2PGroupAdd add a new P2P group (local end as GO).
-func (r *Runner) P2PGroupAdd(ctx context.Context) error {
-	return r.run(ctx, "OK", "p2p_group_add")
+func (r *Runner) P2PGroupAdd(ctx context.Context, ops ...P2PGOOption) error {
+	conf := &setP2PGroupAddConf{
+		freq: 2462,        // Default 2462 MHz.
+		mode: PhyModeHT40, // Default ht40.
+	}
+	for _, op := range ops {
+		op(conf)
+	}
+	return r.run(ctx, "OK", "p2p_group_add", "freq="+strconv.Itoa(conf.freq), string(conf.mode))
 }
 
 // P2PGroupAddPersistent connects to a P2P GO device.

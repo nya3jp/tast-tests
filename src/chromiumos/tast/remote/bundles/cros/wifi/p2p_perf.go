@@ -6,7 +6,12 @@ package wifi
 
 import (
 	"context"
+	"strconv"
 
+	group_owner "chromiumos/tast/common/network/wpacli"
+	"chromiumos/tast/common/perf"
+	"chromiumos/tast/remote/network/iperf"
+	"chromiumos/tast/remote/network/iw"
 	"chromiumos/tast/remote/wificell"
 	"chromiumos/tast/testing"
 )
@@ -39,7 +44,7 @@ func P2PPerf(ctx context.Context, s *testing.State) {
 		8- Deconfigure the p2p GO.
 	*/
 	tf := s.FixtValue().(*wificell.TestFixture)
-	if err := tf.P2PConfigureGO(ctx, wificell.P2PDeviceDUT); err != nil {
+	if err := tf.P2PConfigureGO(ctx, wificell.P2PDeviceDUT, group_owner.SetP2PGOMode(group_owner.PhyModeHT40), group_owner.SetP2PGOFreq(5180)); err != nil {
 		s.Fatal("Failed to configure the p2p group owner (GO): ", err)
 	}
 	defer func(ctx context.Context) {
@@ -76,7 +81,30 @@ func P2PPerf(ctx context.Context, s *testing.State) {
 	ctx, cancel = tf.ReserveForDeleteIPRoute(ctx)
 	defer cancel()
 
-	if err := tf.P2PPerf(ctx); err != nil {
+	// Print the P2P channel configuration.
+	iwr := iw.NewRemoteRunner(tf.P2PGOConn())
+	chConfig, err := iwr.RadioConfig(ctx, tf.P2PGOIface())
+	if err != nil {
+		s.Error("Failed the P2P channel configuration: ", err)
+	}
+
+	testing.ContextLogf(ctx, "P2P channel configuration: Channel Number = %d, Frequency = %d, Width = %d", chConfig.Number, chConfig.Freq, chConfig.Width)
+
+	finalResult, err := tf.P2PPerf(ctx)
+	if err != nil {
 		s.Fatal("Failed to run performance test: ", err)
 	}
+
+	pv := perf.NewValues()
+	defer func() {
+		if err := pv.Save(s.OutDir()); err != nil {
+			s.Error("Failed to save perf data: ", err)
+		}
+	}()
+
+	pv.Set(perf.Metric{
+		Name:      "p2p_tcp_ave_tput_ch" + strconv.Itoa(chConfig.Number) + "_mode_" + string(group_owner.PhyModeHT40),
+		Unit:      "Mbps",
+		Direction: perf.BiggerIsBetter,
+	}, float64(finalResult.Throughput/iperf.Mbps))
 }
