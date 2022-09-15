@@ -16,6 +16,46 @@
       "message": "youkichihosoi@: Thanks for the review!\n\ntast-owners@: PTAL. Thanks!",
       "revId": "606a48ce016fdcc35957273f4bdafb9ff87097a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2a5d130_47b492f9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-09-15T11:08:00Z",
+      "side": 1,
+      "message": "shadow reviewer lgtm for tast",
+      "revId": "606a48ce016fdcc35957273f4bdafb9ff87097a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "386a8937_c8549c96",
+        "filename": "src/chromiumos/tast/local/arc/file.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-09-15T11:08:00Z",
+      "side": 1,
+      "message": "nit: make the cleanupFunc returns an error or log the error here?",
+      "range": {
+        "startLine": 227,
+        "startChar": 2,
+        "endLine": 227,
+        "endChar": 32
+      },
+      "revId": "606a48ce016fdcc35957273f4bdafb9ff87097a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
