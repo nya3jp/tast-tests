@@ -1,4 +1,4 @@
-// Copyright 2021 The ChromiumOS Authors
+// Copyright 2022 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -6,7 +6,8 @@ package wilco
 
 import (
 	"context"
-	"syscall"
+
+	"golang.org/x/sys/unix"
 
 	"chromiumos/tast/local/wilco"
 	"chromiumos/tast/testing"
@@ -52,8 +53,8 @@ func APIGetStatefulPartitionAvailableCapacityEnrolled(ctx context.Context, s *te
 	}
 
 	// Fetch information about mounted filesystem through statfs syscall.
-	var stat syscall.Statfs_t
-	if err := syscall.Statfs("/mnt/stateful_partition", &stat); err != nil {
+	var stat unix.Statfs_t
+	if err := unix.Statfs("/mnt/stateful_partition", &stat); err != nil {
 		s.Fatal("Failed to get disk stats for the stateful partition: ", err)
 	}
 
