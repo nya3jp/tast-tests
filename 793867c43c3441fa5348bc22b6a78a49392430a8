@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb520684_40f1dcfa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/fast_ink.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-09-15T22:41:28Z",
+      "side": 1,
+      "message": "nit: would be nice to have some comments about these coordinates",
+      "range": {
+        "startLine": 323,
+        "startChar": 8,
+        "endLine": 323,
+        "endChar": 39
+      },
+      "revId": "793867c43c3441fa5348bc22b6a78a49392430a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
