@@ -9493,6 +9493,7 @@ func init() {
 				},
 				Timeout: 1 * time.Minute,
 			},
+			/* Disabled due to <1% pass rate over 30 days. See b/246818311
 			{
 				Name: "half_vstorea_half_rtn",
 				Val: oclctsTest{
@@ -9502,7 +9503,8 @@ func init() {
 					buganizer:    "b/227136713",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
 			{
 				Name: "half_vstorea_half_rtp",
 				Val: oclctsTest{
@@ -13413,6 +13415,7 @@ func init() {
 				},
 				Timeout: 1 * time.Minute,
 			},
+			/* Disabled due to <1% pass rate over 30 days. See b/246818311
 			{
 				Name: "vectors_vec_align_packed_struct",
 				Val: oclctsTest{
@@ -13422,7 +13425,8 @@ func init() {
 					buganizer:    "b/227134903",
 				},
 				Timeout: 1 * time.Minute,
-			},
+			}
+			*/
 			{
 				Name: "vectors_vec_align_struct_arr",
 				Val: oclctsTest{
