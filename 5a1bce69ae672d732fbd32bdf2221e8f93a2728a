@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2419f92_17622fc9",
+        "filename": "src/chromiumos/tast/local/modemfwd/modemfwd.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-09-15T14:48:34Z",
+      "side": 1,
+      "message": "Might also be able to use gousb here after Nagi is done adding it.",
+      "revId": "5a1bce69ae672d732fbd32bdf2221e8f93a2728a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
