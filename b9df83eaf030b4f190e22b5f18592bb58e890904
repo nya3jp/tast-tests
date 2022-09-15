@@ -16,6 +16,24 @@
       "message": "One thing I\u0027m actually wondering is whether or not it\u0027s better to just use `FindServiceForDevice` and then `service.WaitForProperty` instead of having an extra variant for this, now...",
       "revId": "b9df83eaf030b4f190e22b5f18592bb58e890904",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "70dcb6dc_0f1e550c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1441092
+      },
+      "writtenOn": "2022-09-15T21:06:42Z",
+      "side": 1,
+      "message": "Having this extra variant will help reduce the number of changes across our tests for now (especially during the test week).",
+      "parentUuid": "385fcca9_9113be50",
+      "revId": "b9df83eaf030b4f190e22b5f18592bb58e890904",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
