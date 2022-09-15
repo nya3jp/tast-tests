@@ -96,6 +96,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "13dbc2e9_610300dd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1120879
+      },
+      "writtenOn": "2022-09-15T15:57:16Z",
+      "side": 1,
+      "message": "I still don\u0027t know how my CL could affect this, but I did find how null can show up.\n\nThe VideoColorSpace interface has nullable attributes, so the V8 bindings are turning missing values into null. It was intended instead that missing values should turn into undefined, but perhaps we should just change the IDL to accept null everywhere.\n\nI filed https://github.com/w3c/webcodecs/issues/561",
+      "parentUuid": "a9a4e450_246acf96",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 64
+      },
+      "revId": "dc4c54b341bd1f4ed7f547db2cf17865b3ed41a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "54bd53de_69bd8493",
