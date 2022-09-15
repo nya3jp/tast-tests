@@ -16,6 +16,24 @@
       "message": "Maybe add a comment here saying why this is needed.",
       "revId": "ef394ea8e7c8e14a2369831775cab67360c3a058",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c75679b2_348b1864",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/lacros_main_profile_login.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-09-15T07:05:26Z",
+      "side": 1,
+      "message": "Does this new tab open because of the sync?\nI agree with Georg, we need some comment here to see what is happening.",
+      "parentUuid": "6d36e998_00c5af0b",
+      "revId": "ef394ea8e7c8e14a2369831775cab67360c3a058",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
