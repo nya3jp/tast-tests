@@ -16,6 +16,24 @@
       "message": "cryptohome.UpdatePin.with_vk test is failing with the following output: http://go/paste/5245554828247040 (`Cryptohome Error reported on DBus API: Loc: kLocAuthSessionNoInputInUpdateAuthFactor/638 Actions: (): Loc: kLocNoWrappedSeedInAuthInputForAdd/657 Actions: (506)`) - any ideas about why it could happen?",
       "revId": "cb656752ae22c2711063a56528490ccead698760",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af44429d_b4f5cc7c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-09-15T19:28:32Z",
+      "side": 1,
+      "message": "I think you\u0027ll have to login with password and then update VK -- its one of the limitations of using VK for now\n\nBetul has raised this issue in the past I think",
+      "parentUuid": "41342181_a885c46c",
+      "revId": "cb656752ae22c2711063a56528490ccead698760",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
