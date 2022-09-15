@@ -16,6 +16,23 @@
       "message": "Hi all,\n\nPlease take another look after rebase. Thanks!",
       "revId": "2007b7376f4a3eab2acbcaecdc0388189da6042c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9819654_50090275",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1543127
+      },
+      "writtenOn": "2022-09-15T11:01:03Z",
+      "side": 1,
+      "message": "LGTM!",
+      "revId": "2007b7376f4a3eab2acbcaecdc0388189da6042c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
