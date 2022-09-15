@@ -1,4 +1,4 @@
-// Copyright 2022 The Chromium OS Authors. All rights reserved.
+// Copyright 2022 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -188,6 +188,15 @@ func LacrosMainProfileLogin(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to accept or decline sync: ", err)
 		}
 	}
+
+	// FRE opens a new tab page in Lacros browser. Wait for the empty tab to load,
+	// so that we don't open Settings page before completing FRE (this could lead
+	// to a situation when the new tab page opens after we open the Settings page).
+	newTabConn, err := lacros.NewConnForTarget(ctx, chrome.MatchTargetURL(chrome.NewTabURL))
+	if err != nil {
+		s.Fatal("Failed to connect to the new tab: ", err)
+	}
+	defer newTabConn.Close()
 
 	conn, err := lacros.NewConn(ctx, "chrome://settings/syncSetup")
 	if err != nil {
