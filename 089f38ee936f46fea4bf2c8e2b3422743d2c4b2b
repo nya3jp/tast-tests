@@ -67,6 +67,24 @@
       "message": "Normally methods will return nil for the first argument if the error. Is that different in this case?\nOtherwise, you might encounter a nil reference exception here.",
       "revId": "089f38ee936f46fea4bf2c8e2b3422743d2c4b2b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5dca4521_7b26cda0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_http.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-09-15T00:18:42Z",
+      "side": 1,
+      "message": "(From an API design perspective, I would probably prefer to have httpsCerts.InstallTestCerts perform the cleanup itself in the case it encounters an error, as it leads to the method offering a more standard contract. It would be easy for callers to miss this cleanupCerts in the error path... (if it is indeed non-nil and should be called))",
+      "parentUuid": "8ccdd2fb_0fc5f440",
+      "revId": "089f38ee936f46fea4bf2c8e2b3422743d2c4b2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
