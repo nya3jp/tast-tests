@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d98ad3eb_ad9d60ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1189,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2022-09-15T15:26:16Z",
+      "side": 1,
+      "message": "nit: use a more descriptive name for this variable. \u0027i\u0027 is somewhat misleading, since this isn\u0027t an index variable.",
+      "range": {
+        "startLine": 1189,
+        "startChar": 1,
+        "endLine": 1189,
+        "endChar": 2
+      },
+      "revId": "f1cbf3960cdad60cd46eef2b3f5cbbebcad6b6cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
