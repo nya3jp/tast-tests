@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "afa0d604_34192641",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/config_verify.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-09-15T16:33:17Z",
+      "side": 1,
+      "message": "As I mentioned in the related CL, It is not recommended to alter Test behavior based on device feature. Please see if you can utility software/hardware dependencies and parameterized tests. Thanks.",
+      "revId": "b50b698ad07371f36516387d94d36bea612cb418",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
