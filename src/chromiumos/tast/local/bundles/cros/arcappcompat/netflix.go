@@ -101,59 +101,71 @@ func init() {
 			// Skip on clamshell only models.
 			ExtraHardwareDeps: hwdep.D(hwdep.TouchScreen(), hwdep.SkipOnModel(testutil.ClamshellOnlyModels...)),
 			Pre:               pre.AppCompatBootedInTabletModeUsingTestAccountPool,
-		}, {
-			Name: "clamshell_mode_top_apps",
-			Val: testutil.TestParams{
-				LaunchTests:      clamshellLaunchForNetflix,
-				TopAppTests:      testutil.ClamshellTopAppTests,
-				AppSpecificTests: clamshellAppSpecificTestsForNetflix,
+		},
+			/* Disabled due to <1% pass rate over 30 days. See b/246818647
+			{
+				Name: "clamshell_mode_top_apps",
+				Val: testutil.TestParams{
+					LaunchTests:      clamshellLaunchForNetflix,
+					TopAppTests:      testutil.ClamshellTopAppTests,
+					AppSpecificTests: clamshellAppSpecificTestsForNetflix,
+				},
+				ExtraAttr:         []string{"appcompat_top_apps"},
+				ExtraSoftwareDeps: []string{"android_p"},
+				// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
+				// Skip on tablet only models.
+				ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(testutil.TabletOnlyModels...)),
+				Pre:               pre.AppCompatBootedUsingTestAccountPool,
 			},
-			ExtraAttr:         []string{"appcompat_top_apps"},
-			ExtraSoftwareDeps: []string{"android_p"},
-			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
-			// Skip on tablet only models.
-			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(testutil.TabletOnlyModels...)),
-			Pre:               pre.AppCompatBootedUsingTestAccountPool,
-		}, {
-			Name: "tablet_mode_top_apps",
-			Val: testutil.TestParams{
-				LaunchTests:      touchviewLaunchForNetflix,
-				TopAppTests:      testutil.TouchviewTopAppTests,
-				AppSpecificTests: touchviewAppSpecificTestsForNetflix,
+			*/
+			/* Disabled due to <1% pass rate over 30 days. See b/246818647
+			{
+
+				Name: "tablet_mode_top_apps",
+				Val: testutil.TestParams{
+					LaunchTests:      touchviewLaunchForNetflix,
+					TopAppTests:      testutil.TouchviewTopAppTests,
+					AppSpecificTests: touchviewAppSpecificTestsForNetflix,
+				},
+				ExtraAttr:         []string{"appcompat_top_apps"},
+				ExtraSoftwareDeps: []string{"android_p"},
+				// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
+				// Skip on clamshell only models.
+				ExtraHardwareDeps: hwdep.D(hwdep.TouchScreen(), hwdep.SkipOnModel(testutil.ClamshellOnlyModels...)),
+				Pre:               pre.AppCompatBootedInTabletModeUsingTestAccountPool,
+			}
+			*/
+			/* Disabled due to <1% pass rate over 30 days. See b/246818647
+			{
+				Name: "vm_clamshell_mode_top_apps",
+				Val: testutil.TestParams{
+					LaunchTests:      clamshellLaunchForNetflix,
+					TopAppTests:      testutil.ClamshellTopAppTests,
+					AppSpecificTests: clamshellAppSpecificTestsForNetflix,
+				},
+				ExtraAttr:         []string{"appcompat_top_apps"},
+				ExtraSoftwareDeps: []string{"android_vm"},
+				// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
+				// Skip on tablet only models.
+				ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(testutil.TabletOnlyModels...)),
+				Pre:               pre.AppCompatBootedUsingTestAccountPool,
 			},
-			ExtraAttr:         []string{"appcompat_top_apps"},
-			ExtraSoftwareDeps: []string{"android_p"},
-			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
-			// Skip on clamshell only models.
-			ExtraHardwareDeps: hwdep.D(hwdep.TouchScreen(), hwdep.SkipOnModel(testutil.ClamshellOnlyModels...)),
-			Pre:               pre.AppCompatBootedInTabletModeUsingTestAccountPool,
-		}, {
-			Name: "vm_clamshell_mode_top_apps",
-			Val: testutil.TestParams{
-				LaunchTests:      clamshellLaunchForNetflix,
-				TopAppTests:      testutil.ClamshellTopAppTests,
-				AppSpecificTests: clamshellAppSpecificTestsForNetflix,
-			},
-			ExtraAttr:         []string{"appcompat_top_apps"},
-			ExtraSoftwareDeps: []string{"android_vm"},
-			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
-			// Skip on tablet only models.
-			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(testutil.TabletOnlyModels...)),
-			Pre:               pre.AppCompatBootedUsingTestAccountPool,
-		}, {
-			Name: "vm_tablet_mode_top_apps",
-			Val: testutil.TestParams{
-				LaunchTests:      touchviewLaunchForNetflix,
-				TopAppTests:      testutil.TouchviewTopAppTests,
-				AppSpecificTests: touchviewAppSpecificTestsForNetflix,
-			},
-			ExtraAttr:         []string{"appcompat_top_apps"},
-			ExtraSoftwareDeps: []string{"android_vm"},
-			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
-			// Skip on clamshell only models.
-			ExtraHardwareDeps: hwdep.D(hwdep.TouchScreen(), hwdep.SkipOnModel(testutil.ClamshellOnlyModels...)),
-			Pre:               pre.AppCompatBootedInTabletModeUsingTestAccountPool,
-		}},
+			*/
+			{
+
+				Name: "vm_tablet_mode_top_apps",
+				Val: testutil.TestParams{
+					LaunchTests:      touchviewLaunchForNetflix,
+					TopAppTests:      testutil.TouchviewTopAppTests,
+					AppSpecificTests: touchviewAppSpecificTestsForNetflix,
+				},
+				ExtraAttr:         []string{"appcompat_top_apps"},
+				ExtraSoftwareDeps: []string{"android_vm"},
+				// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
+				// Skip on clamshell only models.
+				ExtraHardwareDeps: hwdep.D(hwdep.TouchScreen(), hwdep.SkipOnModel(testutil.ClamshellOnlyModels...)),
+				Pre:               pre.AppCompatBootedInTabletModeUsingTestAccountPool,
+			}},
 		Timeout: 20 * time.Minute,
 		Vars:    []string{"arcappcompat.gaiaPoolDefault"},
 		VarDeps: []string{"arcappcompat.Netflix.emailid", "arcappcompat.Netflix.password"},
