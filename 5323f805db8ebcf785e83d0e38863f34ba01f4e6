@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95f027f2_ff0a6e57",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/intel/sd_card_plug_unplug_during_sleep.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-09-15T07:01:30Z",
+      "side": 1,
+      "message": "This test is not in any group. Is it intentional, and is only added for manual execution?\nPlease add a comment about this into the test.",
+      "revId": "5323f805db8ebcf785e83d0e38863f34ba01f4e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c55b6357_656ec65e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/intel/sd_card_plug_unplug_during_sleep.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-09-15T07:01:30Z",
+      "side": 1,
+      "message": "Please use one of the common got want patterns:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/arc/display_test.go;l\u003d20\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/platform/p2p_client.go;l\u003d129",
+      "range": {
+        "startLine": 127,
+        "startChar": 0,
+        "endLine": 139,
+        "endChar": 2
+      },
+      "revId": "5323f805db8ebcf785e83d0e38863f34ba01f4e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e86eec7_375e1eb8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/intel/sd_card_plug_unplug_during_sleep.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-09-15T07:01:30Z",
+      "side": 1,
+      "message": "Can you split it into `plug...` and `unplug...` functions? There is no common code between the two functionality, and you only call this function once where the `isPlug` is a variable, so there is one place where the code will be longer.",
+      "range": {
+        "startLine": 149,
+        "startChar": 5,
+        "endLine": 149,
+        "endChar": 29
+      },
+      "revId": "5323f805db8ebcf785e83d0e38863f34ba01f4e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
