@@ -27,6 +27,7 @@ import (
 // This is an optional override to the usual btpeer addresses which are normally
 // resolved based on the DUT hostname.
 const fixtureVarBTPeers = "btpeers"
+const fixtureVarSigninProfileTestExtension = "ui.signinProfileTestExtensionManifestKey"
 
 const serviceDepBTTestService = "tast.cros.bluetooth.BTTestService"
 
@@ -159,6 +160,26 @@ func init() {
 		TearDownTimeout: tearDownTimeout + 4*btpeerTimeoutBuffer,
 		ServiceDeps:     []string{serviceDepBTTestService},
 	})
+	testing.AddFixture(&testing.Fixture{
+		Name: "chromeOobeWith1BTPeer",
+		Desc: "Puts the DUT into OOBE, enables Bluetooth, and connects to 1 btpeer",
+		Contacts: []string{
+			"chadduffin@chromium.org",
+			"cros-connectivity@google.com",
+		},
+		Impl: newFixture(&fixtureFeatures{
+			BTPeerCount:             1,
+			BluetoothAdapterEnabled: true,
+			EnableFeatures:          []string{"BluetoothRevamp", "OobeHidDetectionRevamp"},
+			DisableFeatures:         []string{},
+			NoLogin:                 true,
+		}),
+		Vars:            []string{fixtureVarBTPeers, fixtureVarSigninProfileTestExtension},
+		SetUpTimeout:    setUpTimeout + btpeerTimeoutBuffer,
+		ResetTimeout:    resetTimeout + btpeerTimeoutBuffer,
+		TearDownTimeout: tearDownTimeout + btpeerTimeoutBuffer,
+		ServiceDeps:     []string{serviceDepBTTestService},
+	})
 }
 
 type fixtureFeatures struct {
@@ -231,7 +252,10 @@ func (tf *fixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} 
 
 	// Log into chrome.
 	if _, err := tf.fv.BTS.ChromeNew(ctx, &bts.ChromeNewRequest{
-		BluetoothRevampEnabled: tf.features.BluetoothRevamp,
+		EnableFeatures:               tf.features.EnableFeatures,
+		DisableFeatures:              tf.features.DisableFeatures,
+		NoLogin:                      tf.features.NoLogin,
+		SigninProfileTestExtensionID: s.RequiredVar(fixtureVarSigninProfileTestExtension),
 	}); err != nil {
 		s.Fatal("Failed to log into chrome on DUT: ", err)
 	}
