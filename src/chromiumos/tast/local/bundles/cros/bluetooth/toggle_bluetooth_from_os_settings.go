@@ -16,7 +16,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ToggleBluetoothFromOSSettings,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Checks that Bluetooth can be enabled and disabled from the OS Settings",
 		Contacts: []string{
 			"chadduffin@chromium.org",

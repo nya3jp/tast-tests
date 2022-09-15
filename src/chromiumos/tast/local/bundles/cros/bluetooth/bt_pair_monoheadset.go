@@ -20,7 +20,7 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Vars:         []string{"bluetooth.monoHeadset"},
 		Fixture:      "chromeLoggedIn",
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 	})
 }
 
