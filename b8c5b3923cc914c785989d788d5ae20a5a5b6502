@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a60aaa2f_7cf6bf50",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2022-09-15T23:43:46Z",
+      "side": 1,
+      "message": "This passed. I\u0027ve left two questions as comments.",
+      "revId": "b8c5b3923cc914c785989d788d5ae20a5a5b6502",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70a0c8ed_78c8722d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_ro_can_update_rw.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2022-09-15T23:43:46Z",
+      "side": 1,
+      "message": "Both flash RW tests expect to be running RWimage, so we don\u0027t actually need this param.. I left it in for consistency and potential future changes to the test.\n\n Should I hard code ImageTypeRW?",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 61
+      },
+      "revId": "b8c5b3923cc914c785989d788d5ae20a5a5b6502",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c282121_e3592c1b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_ro_can_update_rw.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2022-09-15T23:43:46Z",
+      "side": 1,
+      "message": "Why doesn\u0027t this fail? Autotest source for reference: https://crsrc.org/o/src/third_party/autotest/files/server/site_tests/firmware_Fingerprint/tests/ro_can_update_rw.sh;drc\u003d5558dc49a9f31184fafac97c6b77fd300ad05ae1;l\u003d35\n\nLooks like almost the same as ObeysRollback flashing RB0: https://crsrc.org/o/src/third_party/autotest/files/server/site_tests/firmware_Fingerprint/tests/obeys_rollback.sh;drc\u003d5558dc49a9f31184fafac97c6b77fd300ad05ae1;l\u003d46\n\nMaybe RB0 in ObeysRollback boots to RO because it has flashed RB1 first?",
+      "range": {
+        "startLine": 139,
+        "startChar": 1,
+        "endLine": 140,
+        "endChar": 55
+      },
+      "revId": "b8c5b3923cc914c785989d788d5ae20a5a5b6502",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
