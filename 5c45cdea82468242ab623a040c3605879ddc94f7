@@ -112,6 +112,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2a0c9c95_0702f522",
+        "filename": "src/chromiumos/tast/services/cros/ui/chrome_service.proto",
+        "patchSetId": 3
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-09-15T13:20:16Z",
+      "side": 1,
+      "message": "Ok, could you elaborate it in the comment explicitly?",
+      "parentUuid": "b0fd9b81_9462d9c9",
+      "revId": "5c45cdea82468242ab623a040c3605879ddc94f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "171202db_f1ca8991",
         "filename": "src/chromiumos/tast/services/cros/ui/chrome_service.proto",
         "patchSetId": 3
@@ -141,6 +159,24 @@
       "side": 1,
       "message": "I don\u0027t think we do for consistency since it doesn\u0027t exist in the underlying consts: https://osscs.corp.google.com/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/lacros/config.go\n\nI believe the `lacros.DeployedBinary` global runtime variable can override this selection by design (https://crrev.com/c/3607412) when passed in. Please let me know if you have concerns.",
       "parentUuid": "171202db_f1ca8991",
+      "revId": "5c45cdea82468242ab623a040c3605879ddc94f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "954e5c22_97086d3c",
+        "filename": "src/chromiumos/tast/services/cros/ui/chrome_service.proto",
+        "patchSetId": 3
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-09-15T13:20:16Z",
+      "side": 1,
+      "message": "Same here. Could you make this explicit in the document?",
+      "parentUuid": "87ae579f_12c94ab8",
       "revId": "5c45cdea82468242ab623a040c3605879ddc94f7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
