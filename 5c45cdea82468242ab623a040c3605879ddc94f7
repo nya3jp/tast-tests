@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4817ae5c_91a880df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-09-15T16:44:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e3ff3360_8290a9f4",
+      "range": {
+        "startLine": 55,
+        "startChar": 50,
+        "endLine": 55,
+        "endChar": 51
+      },
+      "revId": "5c45cdea82468242ab623a040c3605879ddc94f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c57fa4d8_e8317a0b",
@@ -37,6 +61,24 @@
       "writtenOn": "2022-09-15T03:15:29Z",
       "side": 1,
       "message": "It would be good if we could test that it\u0027s actually launching Lacros instead of Ash.",
+      "revId": "5c45cdea82468242ab623a040c3605879ddc94f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e3f0c93_31fb7a80",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/ui/chrome_service_grpc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-09-15T16:44:17Z",
+      "side": 1,
+      "message": "A good idea. By the way, launching browser seems to me more of UI interaction that I believe could be better tested for another service `AutomationService`. I guess we may want to leave this test just to chrome enablement with `ChromeService`. Let me know how you\u0027d like to split tests for each service.",
+      "parentUuid": "c57fa4d8_e8317a0b",
       "revId": "5c45cdea82468242ab623a040c3605879ddc94f7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -58,6 +100,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ac47353_a6e279a6",
+        "filename": "src/chromiumos/tast/services/cros/ui/chrome_service.proto",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-09-15T16:44:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b7b086b0_ae420d76",
+      "revId": "5c45cdea82468242ab623a040c3605879ddc94f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6a676384_ada93eb3",
@@ -71,6 +131,24 @@
       "writtenOn": "2022-09-15T02:49:02Z",
       "side": 1,
       "message": "See other comment.",
+      "revId": "5c45cdea82468242ab623a040c3605879ddc94f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a096e1ce_1f1740d2",
+        "filename": "src/chromiumos/tast/services/cros/ui/chrome_service.proto",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-09-15T16:44:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6a676384_ada93eb3",
       "revId": "5c45cdea82468242ab623a040c3605879ddc94f7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -128,6 +206,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ec919ec_3207ad2f",
+        "filename": "src/chromiumos/tast/services/cros/ui/chrome_service.proto",
+        "patchSetId": 3
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-09-15T16:44:17Z",
+      "side": 1,
+      "message": "Sure, L87 explains how to set/unset |lacros| at the NewRequest message level.",
+      "parentUuid": "2a0c9c95_0702f522",
+      "revId": "5c45cdea82468242ab623a040c3605879ddc94f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "171202db_f1ca8991",
@@ -177,6 +273,24 @@
       "side": 1,
       "message": "Same here. Could you make this explicit in the document?",
       "parentUuid": "87ae579f_12c94ab8",
+      "revId": "5c45cdea82468242ab623a040c3605879ddc94f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb3ef03c_bf2da818",
+        "filename": "src/chromiumos/tast/services/cros/ui/chrome_service.proto",
+        "patchSetId": 3
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-09-15T16:44:17Z",
+      "side": 1,
+      "message": "Giving a second thought I was wondering if the `lacros.DeployBinary` tast variable could be a good option for all users of this service.\n\nJon, do you see if chrome_service users likely need a support to override with their locally built lacros binary in the future? If yes, I think we should probably add a proto field for the local deployment support in case that the tast variable can\u0027t be set by them (please correct me if they can).",
+      "parentUuid": "954e5c22_97086d3c",
       "revId": "5c45cdea82468242ab623a040c3605879ddc94f7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
