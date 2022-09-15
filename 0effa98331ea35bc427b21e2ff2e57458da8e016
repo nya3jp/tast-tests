@@ -16,6 +16,23 @@
       "message": "Thanks! shadow reviewer lgtm for tast",
       "revId": "0effa98331ea35bc427b21e2ff2e57458da8e016",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77dcc07c_c9888377",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterpriseconnectors/helpers/helpers.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-09-15T23:12:23Z",
+      "side": 1,
+      "message": "could you just use `ash.CloseAllWindows` in the tests instead?\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/ash/wm.go;l\u003d515",
+      "revId": "0effa98331ea35bc427b21e2ff2e57458da8e016",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
