@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc9e628f_4868974a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-09-15T23:09:38Z",
+      "side": 1,
+      "message": "Thank you for the speedy iteration on this change, I have a few follow up questions for you whenever you have a moment-- apologies for the slow review!",
+      "revId": "bd83ffd68ceda4be7e25d2823a12846e1829b959",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a4d0346_62f73fb6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/proxysettings/proxy_settings.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-09-15T23:09:38Z",
+      "side": 1,
+      "message": "Nit: Consider replacing with something like\n\n    setup proxy information with host: %q, port: %q",
+      "range": {
+        "startLine": 221,
+        "startChar": 39,
+        "endLine": 221,
+        "endChar": 69
+      },
+      "revId": "bd83ffd68ceda4be7e25d2823a12846e1829b959",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc8b9bb3_74f5afd4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/proxysettings/proxy_settings.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-09-15T23:09:38Z",
+      "side": 1,
+      "message": "I don\u0027t think that there is a \"save\" button when we are not signed in-- could this return an error when we aren\u0027t signed in?",
+      "range": {
+        "startLine": 232,
+        "startChar": 0,
+        "endLine": 237,
+        "endChar": 7
+      },
+      "revId": "bd83ffd68ceda4be7e25d2823a12846e1829b959",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

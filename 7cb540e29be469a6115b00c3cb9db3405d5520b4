@@ -90,6 +90,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d8cbd709_ab787d97",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/proxy_setting_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-09-15T23:09:38Z",
+      "side": 1,
+      "message": "Ahh, I see what you mean, definitely okay with keeping this helper around. I looked a bit at some similar uses, and I wanted to see if we might be able to do a couple simplifications:\n\n    func (s *ProxySetupAndVerifyService) dumpUITreeToFile(ctx context.Context, hasError func() bool, suffix string) {\n        outDir, ok :\u003d testing.ContextOutDir(ctx)\n        if !ok {\n            testing.ContextLog(ctx, \"Failed to get output dir\")\n            return\n        }\n        faillog.DumpUITreeOnError(ctx, filepath.Join(outDir, \"ProxySetupAndVerifyService-\"+suffix), hasError, s.tconn)\n    }\n\nThis removes the `if hasError()` check and changes where the file is output, but I think this might align better with existing examples. WDYT? Would this work?",
+      "parentUuid": "55094ec4_9cd02546",
+      "revId": "7cb540e29be469a6115b00c3cb9db3405d5520b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "659b915c_a9f10c88",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/proxy_setting_service.go",
         "patchSetId": 3
@@ -125,6 +143,30 @@
       "side": 1,
       "message": "Sorry, this is automatically formatted by `gofmt`, should we use custom format here?",
       "parentUuid": "659b915c_a9f10c88",
+      "range": {
+        "startLine": 135,
+        "startChar": 37,
+        "endLine": 135,
+        "endChar": 51
+      },
+      "revId": "7cb540e29be469a6115b00c3cb9db3405d5520b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d088a184_2c19650e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/proxy_setting_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-09-15T23:09:38Z",
+      "side": 1,
+      "message": "Ah, I had thought the extra spaces were preferred but I definitely defer to `gofmt` :)",
+      "parentUuid": "4faca338_ed71518e",
       "range": {
         "startLine": 135,
         "startChar": 37,
@@ -311,6 +353,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc611d22_f9c09f63",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/proxysettings/proxy_settings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-09-15T23:09:38Z",
+      "side": 1,
+      "message": "Ah, sorry I had totally forgotten to consider ethernet when I was thinking about this. You are right, thank you for clarifying!",
+      "parentUuid": "5b9bd96a_9d72542c",
+      "revId": "7cb540e29be469a6115b00c3cb9db3405d5520b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a4cefbcf_4155f260",
@@ -383,6 +443,30 @@
       "side": 1,
       "message": "Done, remove the `ossettings` instance from `ProxySettings` and rename `Launch` \u0026 `LaunchFromSigninScreen`\n\nHowever we didn\u0027t remove the `Close` due to the `ossettings` could either be opened or not be opened, the `Close` seems a proper helper that allows the caller to close the settings app gracefully.",
       "parentUuid": "fb834f95_6598c226",
+      "range": {
+        "startLine": 121,
+        "startChar": 0,
+        "endLine": 124,
+        "endChar": 2
+      },
+      "revId": "7cb540e29be469a6115b00c3cb9db3405d5520b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad243b50_da8e9b2d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/proxysettings/proxy_settings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-09-15T23:09:38Z",
+      "side": 1,
+      "message": "Thank you for those updates! I wanted to circle back on this to clarify that for the `Close` suggestion, I was thinking that if we don\u0027t ever use the `ossettings` after `CollectProxySettings`/`CollectProxySettingsFromSigninScreen` are called we could use the previous logic and add a defer,\n\n\tsettings :\u003d ossettings.New(tconn)\n\tif err :\u003d expandProxyOption(ctx, tconn, settings); err !\u003d nil {\n\t\treturn nil, errors.Wrap(err, \"failed to expand proxy option on settings\")\n\t}\n\tdefer settings.Close()\n\nso that the Settings is immediately closed (from within `CollectProxySettings`/`CollectProxySettingsFromSigninScreen`), and then we would be able to avoid having our own custom `Close` method. I don\u0027t feel strongly here though since it seems a bit trickier now that we also want to close the dialog when not signed in-- WDYT?",
+      "parentUuid": "897465a4_2f1a4bbe",
       "range": {
         "startLine": 121,
         "startChar": 0,
@@ -804,6 +888,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "effa094f_57982d0b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/proxy_retain_after_reboot.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-09-15T23:09:38Z",
+      "side": 1,
+      "message": "Same as the earlier comment!",
+      "parentUuid": "550e6f77_611a51eb",
+      "range": {
+        "startLine": 56,
+        "startChar": 37,
+        "endLine": 56,
+        "endChar": 51
+      },
+      "revId": "7cb540e29be469a6115b00c3cb9db3405d5520b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b3d520a2_9fbd5796",
@@ -841,6 +949,30 @@
       "side": 1,
       "message": "The instance of `ProxySettings` (a rpc service client) should be closed as the rpc-client closed, therefore we designed a self-invoking method here.\nHowever, the logic here was refactored and a helper was added as suggested to reuse the similar logic, please let us know if the original way is preferred.",
       "parentUuid": "b3d520a2_9fbd5796",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 9
+      },
+      "revId": "7cb540e29be469a6115b00c3cb9db3405d5520b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "658797e2_86a59b77",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/proxy_retain_after_reboot.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-09-15T23:09:38Z",
+      "side": 1,
+      "message": "I spent a little time looking over the helper and thinking about whether it could be simplified, and it seems like it actually might be more confusing as a helper-- I think that the gains in reduced code repetition are actually lost by it becoming more complex. Apologies for the back and forth on this-- what do you think of just sticking with this original approach?",
+      "parentUuid": "08511979_99931a4b",
       "range": {
         "startLine": 60,
         "startChar": 0,
