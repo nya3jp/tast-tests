@@ -109,6 +109,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f250248d_934c1159",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-09-15T12:45:05Z",
+      "side": 1,
+      "message": "\u003e UserSecretStash is orthogonal to AuthFactor. \nAh I see!\n\nOK, so I added USS parameter to both update_* tests now. Do you think I should merge both of them with cryptohome.UpdateCredentialAuthSession, or should I leave them as is?\n\nIt looks like cryptohome.UpdateCredentialAuthSession depends on PinWeaver (for pins), so I think it would make sense to have at least the update_password test separately? (since it runs on all devices)",
+      "parentUuid": "db24f995_914667da",
+      "revId": "cd3a3bcea18c9d765ee97d9a43366d3b8ca8f00e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "43665d3f_5a427edd",
         "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/update_pin.go",
         "patchSetId": 2
@@ -120,6 +138,24 @@
       "writtenOn": "2022-09-13T19:52:09Z",
       "side": 1,
       "message": "can you please parameterize this test for USS and non USS",
+      "revId": "cd3a3bcea18c9d765ee97d9a43366d3b8ca8f00e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "24ed797b_8437a311",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/update_pin.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-09-15T12:45:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "43665d3f_5a427edd",
       "revId": "cd3a3bcea18c9d765ee97d9a43366d3b8ca8f00e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
