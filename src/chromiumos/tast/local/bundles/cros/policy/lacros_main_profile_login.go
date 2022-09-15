@@ -189,6 +189,15 @@ func LacrosMainProfileLogin(ctx context.Context, s *testing.State) {
 		}
 	}
 
+	// FRE opens a new tab page in Lacros browser. Wait for the empty tab to load,
+	// so that we don't open Settings page before completing FRE (this could lead
+	// to a situation when the new tab page opens after we open the Settings page).
+	newTabConn, err := lacros.NewConnForTarget(ctx, chrome.MatchTargetURL(chrome.NewTabURL))
+	if err != nil {
+		s.Fatal("Failed to connect to the new tab: ", err)
+	}
+	defer newTabConn.Close()
+
 	conn, err := lacros.NewConn(ctx, "chrome://settings/syncSetup")
 	if err != nil {
 		s.Fatal("Failed to open a new tab in Lacros browser: ", err)
