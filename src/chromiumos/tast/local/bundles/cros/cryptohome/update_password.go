@@ -1,4 +1,4 @@
-// Copyright 2022 The ChromiumOS Authors.
+// Copyright 2022 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -21,6 +21,12 @@ import (
 	"chromiumos/tast/testing"
 )
 
+// Parameters that control test behavior.
+type updatePasswordParams struct {
+	// Specifies whether to use user secret stash.
+	useUserSecretStash bool
+}
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func: UpdatePassword,
@@ -30,6 +36,17 @@ func init() {
 			"cryptohome-core@google.com",
 		},
 		Attr: []string{"group:mainline", "informational"},
+		Params: []testing.Param{{
+			Name: "with_vk",
+			Val: updatePasswordParams{
+				useUserSecretStash: false,
+			},
+		}, {
+			Name: "with_uss",
+			Val: updatePasswordParams{
+				useUserSecretStash: true,
+			},
+		}},
 	})
 }
 
@@ -46,6 +63,7 @@ func UpdatePassword(ctx context.Context, s *testing.State) {
 		cryptohomeErrorKeyNotFound       = 15
 	)
 
+	userParam := s.Param().(updatePasswordParams)
 	ctxForCleanUp := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
@@ -71,14 +89,15 @@ func UpdatePassword(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to remove old vault for preparation: ", err)
 	}
 
-	// Enable the UserSecretStash experiment for the duration of the test by
-	// creating a flag file that's checked by cryptohomed.
-	// TODO(b/223213284): Implement the test for VaultKeyset users.
-	cleanupUSSExperiment, err := helper.EnableUserSecretStash(ctx)
-	if err != nil {
-		s.Fatal("Failed to enable the UserSecretStash experiment: ", err)
+	if userParam.useUserSecretStash {
+		// Enable the UserSecretStash experiment for the duration of the test by
+		// creating a flag file that's checked by cryptohomed.
+		cleanupUSSExperiment, err := helper.EnableUserSecretStash(ctx)
+		if err != nil {
+			s.Fatal("Failed to enable the UserSecretStash experiment: ", err)
+		}
+		defer cleanupUSSExperiment(ctxForCleanUp)
 	}
-	defer cleanupUSSExperiment(ctx)
 
 	// Create and mount the persistent user.
 	authSessionID, err := client.StartAuthSession(ctx, userName /*ephemeral=*/, false)

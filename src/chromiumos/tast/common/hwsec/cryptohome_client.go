@@ -1,4 +1,4 @@
-// Copyright 2019 The Chromium OS Authors. All rights reserved.
+// Copyright 2019 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -1072,12 +1072,6 @@ func (u *CryptohomeClient) AddAuthFactor(ctx context.Context, authSessionID, lab
 	return err
 }
 
-// UpdateAuthFactor creates an auth factor for the user with given password.
-func (u *CryptohomeClient) UpdateAuthFactor(ctx context.Context, authSessionID, label, newKeyLabel, password string) error {
-	_, err := u.binary.updateAuthFactor(ctx, authSessionID, label, newKeyLabel, password)
-	return err
-}
-
 // AddPinAuthFactor creates an auth factor for the user with given password.
 func (u *CryptohomeClient) AddPinAuthFactor(ctx context.Context, authSessionID, label, pin string) error {
 	_, err := u.binary.addPinAuthFactor(ctx, authSessionID, label, pin)
@@ -1093,6 +1087,24 @@ func (u *CryptohomeClient) AddRecoveryAuthFactor(ctx context.Context, authSessio
 // AddKioskAuthFactor creates an auth factor for kiosk user.
 func (u *CryptohomeClient) AddKioskAuthFactor(ctx context.Context, authSessionID string) error {
 	_, err := u.binary.addKioskAuthFactor(ctx, authSessionID)
+	return err
+}
+
+// UpdateAuthFactor creates an auth factor for the user with given password.
+func (u *CryptohomeClient) UpdateAuthFactor(ctx context.Context, authSessionID, label, newKeyLabel, password string) error {
+	_, err := u.binary.updateAuthFactor(ctx, authSessionID, label, newKeyLabel, password)
+	return err
+}
+
+// UpdateRecoveryAuthFactor updates the auth factor for the user.
+func (u *CryptohomeClient) UpdateRecoveryAuthFactor(ctx context.Context, authSessionID, label, mediatorPubKeyHex string) error {
+	_, err := u.binary.updateRecoveryAuthFactor(ctx, authSessionID, label, mediatorPubKeyHex)
+	return err
+}
+
+// UpdatePinAuthFactor updates the pin auth factor for the user.
+func (u *CryptohomeClient) UpdatePinAuthFactor(ctx context.Context, authSessionID, label, pin string) error {
+	_, err := u.binary.updatePinAuthFactor(ctx, authSessionID, label, pin)
 	return err
 }
 
