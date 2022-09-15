@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a41f97a_8142232e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1267867
+      },
+      "writtenOn": "2022-09-15T01:19:50Z",
+      "side": 1,
+      "message": "Hi Chad,\n\nI am marking all bluetooth tests has lacros variant not needed. PTAL\nThe rest are semi-manual bluetooth tests.\n\nRegards\nShijin",
+      "revId": "9f4c607c8d0a2ed3f015021eea59c24c0ed1c83b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
