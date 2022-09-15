@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d689f1d1_1ab80986",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-09-15T20:34:04Z",
+      "side": 1,
+      "message": "Few nits from tast-owner side but otherwise lgtm",
+      "revId": "22447f39da88c5a224c3e5c64b055931d6444a6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4fa5e65a_650a50c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/drag_drop.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-09-15T20:34:04Z",
+      "side": 1,
+      "message": "Wasn\u0027t `args` already pulled out above? You could use `switch args.bt` here I believe.",
+      "range": {
+        "startLine": 192,
+        "startChar": 0,
+        "endLine": 193,
+        "endChar": 13
+      },
+      "revId": "22447f39da88c5a224c3e5c64b055931d6444a6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "243e2a6d_b815f272",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/drag_drop.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-09-15T20:34:04Z",
+      "side": 1,
+      "message": "Same here, could you use `args.bt` rather than needing to pull out s.Param() again?",
+      "range": {
+        "startLine": 204,
+        "startChar": 66,
+        "endLine": 204,
+        "endChar": 68
+      },
+      "revId": "22447f39da88c5a224c3e5c64b055931d6444a6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c358e5b7_bee1105a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/drag_drop.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-09-15T20:34:04Z",
+      "side": 1,
+      "message": "`args.bt?`",
+      "range": {
+        "startLine": 295,
+        "startChar": 5,
+        "endLine": 295,
+        "endChar": 7
+      },
+      "revId": "22447f39da88c5a224c3e5c64b055931d6444a6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58cf1853_1bb28026",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/drag_drop.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-09-15T20:34:04Z",
+      "side": 1,
+      "message": "nit: The \"got, want\" format is more standard. i.e. \"Failed to ensure the correct number of windows were found: got: %d, want: 2\"",
+      "revId": "22447f39da88c5a224c3e5c64b055931d6444a6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
