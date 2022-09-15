@@ -340,7 +340,7 @@ func (c *Citrix) CreateGoogleKeepNote(text string) action.Action {
 // DeleteGoogleKeepNote deletes note from Google keep.
 func (c *Citrix) DeleteGoogleKeepNote(text string) action.Action {
 	const retryTimes = 3
-	noteText := uidetection.TextBlock(strings.Split(text, " ")).First()
+	noteText := uidetection.TextSentence(text).First()
 	return uiauto.Retry(retryTimes,
 		uiauto.NamedCombine("delete note from google keep",
 			c.kb.TypeAction("k"),        // Select note.
@@ -492,8 +492,7 @@ func (c *Citrix) clickIcon(prefix, name string) action.Action {
 // The prefix parameter is used to distinguish which function the action is executed in.
 // To avoid encountering the situation that different functions have the same picture and text with different coordinates.
 func (c *Citrix) clickText(prefix, name string) action.Action {
-	splitName := strings.Split(name, " ")
-	finder := uidetection.TextBlock(splitName).First()
+	finder := uidetection.TextSentence(name).First()
 	return c.clickFinder(prefix+name, finder)
 }
 
@@ -536,8 +535,7 @@ func (c *Citrix) waitIcon(prefix, name string) action.Action {
 // The prefix parameter is used to distinguish which function the action is executed in.
 // To avoid encountering the situation that different functions have the same picture and text with different wait time.
 func (c *Citrix) waitText(prefix, name string) action.Action {
-	splitName := strings.Split(name, " ")
-	finder := uidetection.TextBlock(splitName).First()
+	finder := uidetection.TextSentence(name).First()
 	return c.waitFinder(prefix+name, finder)
 }
 

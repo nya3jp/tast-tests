@@ -33,3 +33,8 @@ func TextBlock(words []string, paramList ...TextParam) *Finder {
 	}
 	return newFromRequest(detectionRequest, strings.Join(words, ","))
 }
+
+// TextSentence splits a given sentence into words and returns the finder for the text blocks.
+func TextSentence(textSentence string, paramList ...TextParam) *Finder {
+	return TextBlock(strings.Fields(textSentence), paramList...)
+}
