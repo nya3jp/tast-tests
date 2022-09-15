@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fba90e85_c7aa588c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-09-15T00:00:02Z",
+      "side": 1,
+      "message": "LGTM % nits.\n\nCCed Darren in case any questions from Inputs team.",
+      "revId": "248ef76fd9a74f283b42f2220bd2c19a1b3ef160",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "021210c5_fccc664e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/spell_check_remove_words.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-09-15T00:00:02Z",
+      "side": 1,
+      "message": "nit: complete",
+      "range": {
+        "startLine": 104,
+        "startChar": 21,
+        "endLine": 104,
+        "endChar": 29
+      },
+      "revId": "248ef76fd9a74f283b42f2220bd2c19a1b3ef160",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
