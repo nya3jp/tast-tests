@@ -12,6 +12,7 @@ import (
 	"time"
 
 	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/errors"
 	"chromiumos/tast/fsutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
@@ -113,10 +114,18 @@ func AttachFile(ctx context.Context, s *testing.State) {
 	}
 
 	// Verify the uploaded png file exists.
-	pngFileFinder := nodewith.NameContaining(pngFile).Role(
-		role.StaticText).Ancestor(feedbackRootNode)
-	if err := ui.WaitUntilExists(pngFileFinder)(ctx); err != nil {
-		s.Fatal("Failed to find png file: ", err)
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		pngFileFinder := nodewith.NameContaining(pngFile).Role(
+			role.StaticText).Ancestor(feedbackRootNode)
+		if err := ui.WaitUntilExists(pngFileFinder)(ctx); err != nil {
+			return errors.Wrap(err, "failed to find png file because still loading")
+		}
+		return nil
+	}, &testing.PollOptions{
+		Interval: 2 * time.Second,
+		Timeout:  10 * time.Second,
+	}); err != nil {
+		s.Fatal("Fail to find png file: ", err)
 	}
 
 	// Find replace button and click.
@@ -136,8 +145,16 @@ func AttachFile(ctx context.Context, s *testing.State) {
 	}
 
 	// Verify new uploaded pdf file exists.
-	newFile := nodewith.NameContaining(pdfFile).Role(role.StaticText).Ancestor(feedbackRootNode)
-	if err := ui.WaitUntilExists(newFile)(ctx); err != nil {
-		s.Fatal("Failed to find new file: ", err)
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		newFile := nodewith.NameContaining(pdfFile).Role(role.StaticText).Ancestor(feedbackRootNode)
+		if err := ui.WaitUntilExists(newFile)(ctx); err != nil {
+			return errors.Wrap(err, "failed to find new file because still loading")
+		}
+		return nil
+	}, &testing.PollOptions{
+		Interval: 2 * time.Second,
+		Timeout:  10 * time.Second,
+	}); err != nil {
+		s.Fatal("Fail to find new file: ", err)
 	}
 }
