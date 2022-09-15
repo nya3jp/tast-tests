@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "324b867f_f4cdd214",
+        "filename": "src/chromiumos/tast/local/demomode/fixture/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1519467
+      },
+      "writtenOn": "2022-09-15T07:31:07Z",
+      "side": 1,
+      "message": "@jacksontadie, would you and your team mind owning this instead?",
+      "revId": "d26d8d4ebcb04afa5f0226eef20bda450b5cc9e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

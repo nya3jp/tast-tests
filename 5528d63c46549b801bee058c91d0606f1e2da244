@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6cbad2df_a46cd4a9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1519467
+      },
+      "writtenOn": "2022-09-15T07:31:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a22e914_41a7ce5f",
+      "range": {
+        "startLine": 9,
+        "startChar": 14,
+        "endLine": 9,
+        "endChar": 18
+      },
+      "revId": "5528d63c46549b801bee058c91d0606f1e2da244",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ed2bb703_84dda49c",
@@ -37,6 +61,24 @@
       "writtenOn": "2022-09-14T02:56:31Z",
       "side": 1,
       "message": "How long does it take to reset TPM? That would be a burden for every demomode test to reset TPM before and after the test. Can we consider moving it to a demomode fixture?",
+      "revId": "5528d63c46549b801bee058c91d0606f1e2da244",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b50d2efa_4eb7e3f0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1519467
+      },
+      "writtenOn": "2022-09-15T07:31:07Z",
+      "side": 1,
+      "message": "OK I am putting it into a fixture.\n\nOn higher end device like hatch, the TPM reset in SetUp() takes 5.x seconds while the one in TearDown() takes 9.x seconds. The time on lower end device is longer.",
+      "parentUuid": "ed2bb703_84dda49c",
       "revId": "5528d63c46549b801bee058c91d0606f1e2da244",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -77,6 +119,48 @@
       "writtenOn": "2022-09-14T02:56:31Z",
       "side": 1,
       "message": "Do we want to reset the TPM after the test instead of after the SetUp() function?",
+      "revId": "5528d63c46549b801bee058c91d0606f1e2da244",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f523500_10840236",
+        "filename": "src/chromiumos/tast/local/bundles/cros/demomode/set_up.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1519467
+      },
+      "writtenOn": "2022-09-15T07:31:07Z",
+      "side": 1,
+      "message": "IDK if this still applies, since TPM reset is put into a fixture now.",
+      "parentUuid": "c7d5acc4_013057f0",
+      "range": {
+        "startLine": 50,
+        "startChar": 30,
+        "endLine": 50,
+        "endChar": 33
+      },
+      "revId": "5528d63c46549b801bee058c91d0606f1e2da244",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0aa9c4f7_ddba7882",
+        "filename": "src/chromiumos/tast/local/bundles/cros/demomode/set_up.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1519467
+      },
+      "writtenOn": "2022-09-15T07:31:07Z",
+      "side": 1,
+      "message": "I don\u0027t quite know the difference (mind giving a pointer?). But with the fixture, I guess the TPM reset is only done once before/after all tests that use fixture.",
+      "parentUuid": "a30fa349_b6be90dc",
       "revId": "5528d63c46549b801bee058c91d0606f1e2da244",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
