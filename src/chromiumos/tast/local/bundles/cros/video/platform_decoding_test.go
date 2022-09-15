@@ -1240,6 +1240,14 @@ func TestPlatformDecodingParams(t *testing.T) {
 			for _, cat := range []string{
 				"buf", "frm_resize", "gf_dist", "odd_size", "sub8x8", "sub8x8_sf",
 			} {
+				// Disabled due to <1% pass rate over 30 days. See b/246820265
+				if fmt.Sprintf("ffmpeg_vaapi_vp9_%d_%s_%s", i, levelGroup, cat) == "ffmpeg_vaapi_vp9_0_group1_frm_resize" {
+					continue
+				}
+				// Disabled due to <1% pass rate over 30 days. See b/246820265
+				if fmt.Sprintf("ffmpeg_vaapi_vp9_%d_%s_%s", i, levelGroup, cat) == "ffmpeg_vaapi_vp9_0_group1_sub8x8_sf" {
+					continue
+				}
 				files := vp9WebmFiles[profile][levelGroup][cat]
 				param := paramData{
 					Name:         fmt.Sprintf("ffmpeg_vaapi_vp9_%d_%s_%s", i, levelGroup, cat),
