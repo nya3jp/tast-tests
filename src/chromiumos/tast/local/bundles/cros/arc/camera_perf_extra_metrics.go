@@ -163,6 +163,13 @@ func CameraPerfExtraMetrics(ctx context.Context, s *testing.State) {
 		p.Append(closeCameraMetric, float64(closeTime))
 	}
 
+	// Prepare access for the package data directory of cameraAppPackage, which should store the generated photo file.
+	cleanupFunc, err := arc.MountSDCardPartitionOnHostWithSSHFSIfVirtioBlkDataEnabled(ctx, a, cr.NormalizedUser())
+	if err != nil {
+		s.Fatal("Failed to make Android's SDCard partition available on host: ", err)
+	}
+	defer cleanupFunc(cleanupCtx)
+
 	// Measure taking a photo (snapshot)
 	s.Logf("Measure snapshot time: %d warmup rounds, %d measurements", snapshotWarmupCount, snapshotCount)
 	snapshotMetric := perf.Metric{Name: "snapshot_time", Unit: "ms", Direction: perf.SmallerIsBetter, Multiple: true}

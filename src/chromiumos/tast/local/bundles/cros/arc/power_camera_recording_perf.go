@@ -229,6 +229,13 @@ func PowerCameraRecordingPerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Could not send intent: ", err)
 	}
 
+	// Prepare access for the package data directory of cameraAppPackage, which should store the generated video file.
+	cleanupFunc, err := arc.MountSDCardPartitionOnHostWithSSHFSIfVirtioBlkDataEnabled(ctx, a, cr.NormalizedUser())
+	if err != nil {
+		s.Fatal("Failed to make Android's SDCard partition available on host: ", err)
+	}
+	defer cleanupFunc(cleanupCtx)
+
 	// Check if video file was generated.
 	fileSize, err := arc.PkgFileSize(ctx, cr.NormalizedUser(), cameraAppPackage, filePath)
 	if err != nil {

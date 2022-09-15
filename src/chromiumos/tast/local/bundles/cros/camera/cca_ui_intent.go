@@ -152,18 +152,11 @@ func CCAUIIntent(ctx context.Context, s *testing.State) {
 	}
 	downloadsFolder := filepath.Join(userPath, "MyFiles", "Downloads")
 
-	virtioBlkDataEnabled, err := a.IsVirtioBlkDataEnabled(ctx)
+	cleanupFunc, err := arc.MountSDCardPartitionOnHostWithSSHFSIfVirtioBlkDataEnabled(ctx, a, cr.NormalizedUser())
 	if err != nil {
-		s.Fatal("Failed to check if virtio-blk /data is enabled: ", err)
+		s.Fatal("Failed to make Android's SDCard partition available on host: ", err)
 	}
-	if virtioBlkDataEnabled {
-		// To access |arcCameraFolderPathOnChromeOS| in ARCVM virtio-blk /data enabled devices,
-		// we need to manually mount Android's SDCard partition on the host side.
-		if err := arc.MountSDCardPartitionOnHostWithSSHFS(ctx, cr.NormalizedUser()); err != nil {
-			s.Fatal("Failed to mount Android's SDCard partition on host: ", err)
-		}
-		defer arc.UnmountSDCardPartitionFromHost(cleanupCtx, cr.NormalizedUser())
-	}
+	defer cleanupFunc(cleanupCtx)
 
 	subTestTimeout := 40 * time.Second
 	for _, tc := range []struct {
