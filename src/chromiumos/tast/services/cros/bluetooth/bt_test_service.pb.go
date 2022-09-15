@@ -201,7 +201,7 @@ var file_bt_test_service_proto_rawDesc = []byte{
 	0x12, 0x33, 0x0a, 0x06, 0x64, 0x65, 0x76, 0x69, 0x63, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b,
 	0x32, 0x1b, 0x2e, 0x74, 0x61, 0x73, 0x74, 0x2e, 0x63, 0x72, 0x6f, 0x73, 0x2e, 0x62, 0x6c, 0x75,
 	0x65, 0x74, 0x6f, 0x6f, 0x74, 0x68, 0x2e, 0x44, 0x65, 0x76, 0x69, 0x63, 0x65, 0x52, 0x06, 0x64,
-	0x65, 0x76, 0x69, 0x63, 0x65, 0x32, 0xd9, 0x03, 0x0a, 0x0d, 0x42, 0x54, 0x54, 0x65, 0x73, 0x74,
+	0x65, 0x76, 0x69, 0x63, 0x65, 0x32, 0x99, 0x04, 0x0a, 0x0d, 0x42, 0x54, 0x54, 0x65, 0x73, 0x74,
 	0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x12, 0x4c, 0x0a, 0x09, 0x43, 0x68, 0x72, 0x6f, 0x6d,
 	0x65, 0x4e, 0x65, 0x77, 0x12, 0x25, 0x2e, 0x74, 0x61, 0x73, 0x74, 0x2e, 0x63, 0x72, 0x6f, 0x73,
 	0x2e, 0x62, 0x6c, 0x75, 0x65, 0x74, 0x6f, 0x6f, 0x74, 0x68, 0x2e, 0x43, 0x68, 0x72, 0x6f, 0x6d,
@@ -230,6 +230,10 @@ var file_bt_test_service_proto_rawDesc = []byte{
 	0x73, 0x74, 0x2e, 0x63, 0x72, 0x6f, 0x73, 0x2e, 0x62, 0x6c, 0x75, 0x65, 0x74, 0x6f, 0x6f, 0x74,
 	0x68, 0x2e, 0x44, 0x69, 0x73, 0x63, 0x6f, 0x76, 0x65, 0x72, 0x44, 0x65, 0x76, 0x69, 0x63, 0x65,
 	0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x16, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65,
+	0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x22,
+	0x00, 0x12, 0x3e, 0x0a, 0x0a, 0x44, 0x75, 0x6d, 0x70, 0x55, 0x49, 0x54, 0x72, 0x65, 0x65, 0x12,
+	0x16, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75,
+	0x66, 0x2e, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x1a, 0x16, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65,
 	0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x22,
 	0x00, 0x42, 0x29, 0x5a, 0x27, 0x63, 0x68, 0x72, 0x6f, 0x6d, 0x69, 0x75, 0x6d, 0x6f, 0x73, 0x2f,
 	0x74, 0x61, 0x73, 0x74, 0x2f, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x73, 0x2f, 0x63, 0x72,
@@ -264,14 +268,16 @@ var file_bt_test_service_proto_depIdxs = []int32{
 	3, // 4: tast.cros.bluetooth.BTTestService.DisableBluetoothAdapter:input_type -> google.protobuf.Empty
 	3, // 5: tast.cros.bluetooth.BTTestService.DisconnectAllDevices:input_type -> google.protobuf.Empty
 	2, // 6: tast.cros.bluetooth.BTTestService.DiscoverDevice:input_type -> tast.cros.bluetooth.DiscoverDeviceRequest
-	3, // 7: tast.cros.bluetooth.BTTestService.ChromeNew:output_type -> google.protobuf.Empty
-	3, // 8: tast.cros.bluetooth.BTTestService.ChromeClose:output_type -> google.protobuf.Empty
-	3, // 9: tast.cros.bluetooth.BTTestService.EnableBluetoothAdapter:output_type -> google.protobuf.Empty
-	3, // 10: tast.cros.bluetooth.BTTestService.DisableBluetoothAdapter:output_type -> google.protobuf.Empty
-	3, // 11: tast.cros.bluetooth.BTTestService.DisconnectAllDevices:output_type -> google.protobuf.Empty
-	3, // 12: tast.cros.bluetooth.BTTestService.DiscoverDevice:output_type -> google.protobuf.Empty
-	7, // [7:13] is the sub-list for method output_type
-	1, // [1:7] is the sub-list for method input_type
+	3, // 7: tast.cros.bluetooth.BTTestService.DumpUITree:input_type -> google.protobuf.Empty
+	3, // 8: tast.cros.bluetooth.BTTestService.ChromeNew:output_type -> google.protobuf.Empty
+	3, // 9: tast.cros.bluetooth.BTTestService.ChromeClose:output_type -> google.protobuf.Empty
+	3, // 10: tast.cros.bluetooth.BTTestService.EnableBluetoothAdapter:output_type -> google.protobuf.Empty
+	3, // 11: tast.cros.bluetooth.BTTestService.DisableBluetoothAdapter:output_type -> google.protobuf.Empty
+	3, // 12: tast.cros.bluetooth.BTTestService.DisconnectAllDevices:output_type -> google.protobuf.Empty
+	3, // 13: tast.cros.bluetooth.BTTestService.DiscoverDevice:output_type -> google.protobuf.Empty
+	3, // 14: tast.cros.bluetooth.BTTestService.DumpUITree:output_type -> google.protobuf.Empty
+	8, // [8:15] is the sub-list for method output_type
+	1, // [1:8] is the sub-list for method input_type
 	1, // [1:1] is the sub-list for extension type_name
 	1, // [1:1] is the sub-list for extension extendee
 	0, // [0:1] is the sub-list for field type_name
@@ -366,6 +372,8 @@ type BTTestServiceClient interface {
 	// device. Fails if the device is not found or if the discovered matching
 	// device's attributes do not match those provided.
 	DiscoverDevice(ctx context.Context, in *DiscoverDeviceRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
+	// DumpUITree Dumps the current ui tree on error.
+	DumpUITree(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*emptypb.Empty, error)
 }
 
 type bTTestServiceClient struct {
@@ -430,6 +438,15 @@ func (c *bTTestServiceClient) DiscoverDevice(ctx context.Context, in *DiscoverDe
 	return out, nil
 }
 
+func (c *bTTestServiceClient) DumpUITree(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
+	err := c.cc.Invoke(ctx, "/tast.cros.bluetooth.BTTestService/DumpUITree", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // BTTestServiceServer is the server API for BTTestService service.
 type BTTestServiceServer interface {
 	// ChromeNew logs into chrome. ChromeClose must be called later.
@@ -446,6 +463,8 @@ type BTTestServiceServer interface {
 	// device. Fails if the device is not found or if the discovered matching
 	// device's attributes do not match those provided.
 	DiscoverDevice(context.Context, *DiscoverDeviceRequest) (*emptypb.Empty, error)
+	// DumpUITree Dumps the current ui tree on error.
+	DumpUITree(context.Context, *emptypb.Empty) (*emptypb.Empty, error)
 }
 
 // UnimplementedBTTestServiceServer can be embedded to have forward compatible implementations.
@@ -469,6 +488,9 @@ func (*UnimplementedBTTestServiceServer) DisconnectAllDevices(context.Context, *
 }
 func (*UnimplementedBTTestServiceServer) DiscoverDevice(context.Context, *DiscoverDeviceRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DiscoverDevice not implemented")
+}
+func (*UnimplementedBTTestServiceServer) DumpUITree(context.Context, *emptypb.Empty) (*emptypb.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DumpUITree not implemented")
 }
 
 func RegisterBTTestServiceServer(s *grpc.Server, srv BTTestServiceServer) {
@@ -583,6 +605,24 @@ func _BTTestService_DiscoverDevice_Handler(srv interface{}, ctx context.Context,
 	return interceptor(ctx, in, info, handler)
 }
 
+func _BTTestService_DumpUITree_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(emptypb.Empty)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(BTTestServiceServer).DumpUITree(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/tast.cros.bluetooth.BTTestService/DumpUITree",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(BTTestServiceServer).DumpUITree(ctx, req.(*emptypb.Empty))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 var _BTTestService_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "tast.cros.bluetooth.BTTestService",
 	HandlerType: (*BTTestServiceServer)(nil),
@@ -610,6 +650,10 @@ var _BTTestService_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "DiscoverDevice",
 			Handler:    _BTTestService_DiscoverDevice_Handler,
+		},
+		{
+			MethodName: "DumpUITree",
+			Handler:    _BTTestService_DumpUITree_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
