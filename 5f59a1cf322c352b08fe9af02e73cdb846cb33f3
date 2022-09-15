@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b05d958_6d0503a2",
+        "filename": "src/chromiumos/tast/local/policyutil/fixtures/chrome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-09-15T13:53:18Z",
+      "side": 1,
+      "message": "I\u0027d prefer we keep this in Reset. We don\u0027t need to maintain state for it to work.",
+      "revId": "5f59a1cf322c352b08fe9af02e73cdb846cb33f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
