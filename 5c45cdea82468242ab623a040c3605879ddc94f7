@@ -311,6 +311,24 @@
       "parentUuid": "fb3ef03c_bf2da818",
       "revId": "5c45cdea82468242ab623a040c3605879ddc94f7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91c52394_bcab0954",
+        "filename": "src/chromiumos/tast/services/cros/ui/chrome_service.proto",
+        "patchSetId": 3
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-09-15T17:40:13Z",
+      "side": 1,
+      "message": "Filed b/246961327 to follow up on this.\n\nHidehiko, is it okay to move on with the current implementation for the initial check in (given that there is no immediate need of the deployed binary for this service)?",
+      "parentUuid": "ae2fde70_3757818c",
+      "revId": "5c45cdea82468242ab623a040c3605879ddc94f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
