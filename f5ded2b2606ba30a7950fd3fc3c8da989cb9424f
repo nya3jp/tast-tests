@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9aaaadd_0b0aaec3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-09-15T07:11:24Z",
+      "side": 1,
+      "message": "nit: please add a prefix, e.g. `inputs: Revert four-finger swipe`",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 24
+      },
+      "revId": "f5ded2b2606ba30a7950fd3fc3c8da989cb9424f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1beb2a0e_65939736",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-09-15T07:11:24Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "f5ded2b2606ba30a7950fd3fc3c8da989cb9424f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d508dbd5_a828b588",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/touch_pad_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-09-15T07:11:24Z",
+      "side": 1,
+      "message": "Why do you create a const here?",
+      "range": {
+        "startLine": 87,
+        "startChar": 2,
+        "endLine": 87,
+        "endChar": 23
+      },
+      "revId": "f5ded2b2606ba30a7950fd3fc3c8da989cb9424f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
