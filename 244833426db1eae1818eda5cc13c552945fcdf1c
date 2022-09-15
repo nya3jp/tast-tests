@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9740e9e_4479e9e4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-09-15T23:26:02Z",
+      "side": 1,
+      "message": "Thank you for the review Hsin-chen! Kyle, whenever you have a moment could you take a look as well?",
+      "revId": "244833426db1eae1818eda5cc13c552945fcdf1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "521a1274_592852a6",
@@ -85,6 +102,24 @@
       "side": 1,
       "message": "It\u0027s fine if it\u0027s for fixing pre-submit error :)",
       "parentUuid": "4c78acb6_2049f3a5",
+      "revId": "244833426db1eae1818eda5cc13c552945fcdf1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2082f10f_b4d6bbac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/pair_new_device_from_bluetooth_settings.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-09-15T23:26:02Z",
+      "side": 1,
+      "message": "Sweet, okay :) another change is being landed that actually adds all of these, so this change likely won\u0027t even end up with this, hah!",
+      "parentUuid": "44e89643_858b19e1",
       "revId": "244833426db1eae1818eda5cc13c552945fcdf1c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
