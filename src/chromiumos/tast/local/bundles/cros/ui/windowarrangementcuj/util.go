@@ -12,6 +12,7 @@ import (
 	"net/http"
 	"net/http/httptest"
 	"net/url"
+	"regexp"
 	"strconv"
 	"time"
 
@@ -261,11 +262,13 @@ func combineTabs(ctx context.Context, tconn *chrome.TestConn, ui *uiauto.Context
 	}()
 
 	tab := nodewith.Role(role.Tab).HasClass("Tab")
-	firstTabRect, err := ui.Location(ctx, tab.First())
+	firstTabRect, err := ui.Location(ctx,
+		tab.NameRegex(regexp.MustCompile("/pip.html$")))
 	if err != nil {
 		return errors.Wrap(err, "failed to get the location of the first tab")
 	}
-	secondTabRect, err := ui.Location(ctx, tab.Nth(1))
+	secondTabRect, err := ui.Location(ctx,
+		tab.NameRegex(regexp.MustCompile("/pip.html - Video playing in picture-in-picture mode$")))
 	if err != nil {
 		return errors.Wrap(err, "failed to get the location of the second tab")
 	}
