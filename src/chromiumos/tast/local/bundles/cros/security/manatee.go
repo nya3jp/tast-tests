@@ -47,19 +47,23 @@ func init() {
 			"allenwebb@chromium.org",
 			"cros-manatee@google.com",
 		},
-		Attr: []string{"group:mainline", "informational"},
+		Attr:   []string{"group:mainline", "informational"},
 		Params: []testing.Param{
+			/* Disabled due to <1% pass rate over 30 days. See b/246820245
 			{
 				Name:              "real",
 				Val:               manateeTestCase{useSystemServices: true},
 				ExtraSoftwareDeps: []string{"manatee"},
 				ExtraAttr:         []string{"informational"},
-			},
+			}
+			*/
+			/* Disabled due to <1% pass rate over 30 days. See b/246820245
 			{
 				Name:              "fake",
 				Val:               manateeTestCase{useSystemServices: false},
 				ExtraSoftwareDeps: []string{"sirenia"},
-			},
+			}
+			*/
 		},
 	})
 }
