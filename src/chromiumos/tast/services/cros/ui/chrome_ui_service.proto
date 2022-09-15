@@ -17,4 +17,7 @@ service ChromeUIService {
 
     // DumpUITree dumps the UI tree to the context directory of the test.
     rpc DumpUITree (google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
+    // WaitForWelcomeScreen waits for welcome screen to be shown in OOBE.
+    rpc WaitForWelcomeScreen (google.protobuf.Empty) returns (google.protobuf.Empty) {}
 }
