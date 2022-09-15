@@ -212,7 +212,7 @@ func getUIAutoContext(ctx context.Context, svc *AutomationService) (*uiauto.Cont
 	if cr == nil {
 		return nil, errors.New("Chrome is not instantiated")
 	}
-	tconn, err := cr.TestAPIConn(ctx)
+	tconn, err := cr.SigninProfileTestAPIConn(ctx)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to create test API connection")
 	}
