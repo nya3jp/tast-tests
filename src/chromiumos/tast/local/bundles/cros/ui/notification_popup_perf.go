@@ -10,11 +10,12 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/bundles/cros/ui/perfutil"
+	uiperf "chromiumos/tast/local/bundles/cros/ui/perf"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/browser/browserfixt"
+	"chromiumos/tast/local/perfutil"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -74,7 +75,7 @@ func NotificationPopupPerf(ctx context.Context, s *testing.State) {
 
 	// This includes adding notifications to show popup fade in and move up animation,
 	// then remove notification in reverse order (newer then older) to show fade out and move down animation.
-	pv := perfutil.RunMultiple(ctx, s, br, perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
+	pv := perfutil.RunMultiple(ctx, cr.Browser(), uiperf.Run(s, perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
 		for _, id := range ids {
 			if err := browser.ClearNotification(ctx, bTconn, id); err != nil {
 				return errors.Wrapf(err, "failed to clear notification (id: %s): ", id)
@@ -89,7 +90,7 @@ func NotificationPopupPerf(ctx context.Context, s *testing.State) {
 
 		return nil
 	},
-		"Ash.NotificationPopup.AnimationSmoothness"),
+		"Ash.NotificationPopup.AnimationSmoothness")),
 		perfutil.StoreSmoothness)
 
 	if err := pv.Save(ctx, s.OutDir()); err != nil {

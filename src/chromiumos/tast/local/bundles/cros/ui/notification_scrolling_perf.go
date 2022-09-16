@@ -12,7 +12,7 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/ui/notification"
-	"chromiumos/tast/local/bundles/cros/ui/perfutil"
+	uiperf "chromiumos/tast/local/bundles/cros/ui/perf"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
@@ -21,6 +21,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/perfutil"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -184,7 +185,7 @@ func NotificationScrollingPerf(ctx context.Context, s *testing.State) {
 	messageCenter := nodewith.ClassName("UnifiedMessageCenterView")
 
 	// Note that ash-chrome (cr and atconn) is passed in to take traces and metrics from ash-chrome.
-	pv := perfutil.RunMultiple(ctx, s, cr.Browser(), perfutil.RunAndWaitAll(atconn, func(ctx context.Context) error {
+	pv := perfutil.RunMultiple(ctx, cr.Browser(), uiperf.Run(s, perfutil.RunAndWaitAll(atconn, func(ctx context.Context) error {
 		if err := uiauto.Combine(
 			"open the uber tray, scroll up and down the notification list, then close it",
 			ac.LeftClick(statusArea),
@@ -202,7 +203,7 @@ func NotificationScrollingPerf(ctx context.Context, s *testing.State) {
 		return nil
 	},
 		"Ash.MessageCenter.Scroll.PresentationTime",
-		"Ash.MessageCenter.Scroll.PresentationTime.MaxLatency"),
+		"Ash.MessageCenter.Scroll.PresentationTime.MaxLatency")),
 		perfutil.StoreSmoothness)
 
 	if err := pv.Save(ctx, s.OutDir()); err != nil {

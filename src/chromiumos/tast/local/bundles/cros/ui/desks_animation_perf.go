@@ -10,9 +10,10 @@ import (
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/bundles/cros/ui/perfutil"
+	uiperf "chromiumos/tast/local/bundles/cros/ui/perf"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/perfutil"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -50,7 +51,7 @@ func DesksAnimationPerf(ctx context.Context, s *testing.State) {
 	}
 
 	defer ash.CleanUpDesks(cleanupCtx, tconn)
-	pv := perfutil.RunMultiple(ctx, s, cr.Browser(), perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
+	pv := perfutil.RunMultiple(ctx, cr.Browser(), uiperf.Run(s, perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
 		// Create a new desk other than the default desk, activate it, then remove it.
 		if err = ash.CreateNewDesk(ctx, tconn); err != nil {
 			return errors.Wrap(err, "failed to create a new desk")
@@ -64,7 +65,7 @@ func DesksAnimationPerf(ctx context.Context, s *testing.State) {
 		return nil
 	},
 		"Ash.Desks.AnimationSmoothness.DeskActivation",
-		"Ash.Desks.AnimationSmoothness.DeskRemoval"),
+		"Ash.Desks.AnimationSmoothness.DeskRemoval")),
 		perfutil.StoreSmoothness)
 
 	if err := pv.Save(ctx, s.OutDir()); err != nil {

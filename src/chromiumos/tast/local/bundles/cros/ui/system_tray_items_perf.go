@@ -8,12 +8,13 @@ import (
 	"context"
 	"time"
 
-	"chromiumos/tast/local/bundles/cros/ui/perfutil"
+	uiperf "chromiumos/tast/local/bundles/cros/ui/perf"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/perfutil"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -66,7 +67,7 @@ func SystemTrayItemsPerf(ctx context.Context, s *testing.State) {
 	recordTakenLabel := nodewith.HasClass("Label").Name("Screen recording taken")
 	popupNotification := nodewith.Role(role.Window).HasClass("ash/message_center/MessagePopup")
 
-	pv := perfutil.RunMultiple(ctx, s, cr.Browser(), perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
+	pv := perfutil.RunMultiple(ctx, cr.Browser(), uiperf.Run(s, perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
 		// Take video recording so that the shelf pod bounces up, then click on the shelf pod for it to fade out,
 		// (at the same time notification counter tray item will do show animation), then we close the notification
 		// for tray item to perform hide animation.
@@ -95,7 +96,7 @@ func SystemTrayItemsPerf(ctx context.Context, s *testing.State) {
 		"Ash.StatusArea.TrayBackgroundView.BounceIn",
 		"Ash.StatusArea.TrayBackgroundView.Hide",
 		"Ash.StatusArea.TrayItemView.Show",
-		"Ash.StatusArea.TrayItemView.Hide"),
+		"Ash.StatusArea.TrayItemView.Hide")),
 		perfutil.StoreSmoothness)
 
 	if err := pv.Save(ctx, s.OutDir()); err != nil {
