@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e246b1f_ccadeccd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterpriseconnectors/test_file_attached.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-09-16T08:05:31Z",
+      "side": 1,
+      "message": "super nit: I think \"Failed to...\" is more consistent with other log messages :)",
+      "range": {
+        "startLine": 195,
+        "startChar": 11,
+        "endLine": 195,
+        "endChar": 21
+      },
+      "revId": "e591cdae36eddb0dcad41b5f22948e4d67699450",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
