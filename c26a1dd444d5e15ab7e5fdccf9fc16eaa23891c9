@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4141b6ad_0f0be0fa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-09-16T15:39:22Z",
+      "side": 1,
+      "message": "LGTM from tast perspective",
+      "revId": "c26a1dd444d5e15ab7e5fdccf9fc16eaa23891c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "12675974_0ef9db8f",
@@ -89,6 +106,29 @@
       "side": 1,
       "message": "this seems correct though",
       "parentUuid": "3d1b30bb_198e7549",
+      "revId": "c26a1dd444d5e15ab7e5fdccf9fc16eaa23891c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "104fd488_aa0bf815",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/update_pin.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-09-16T15:39:22Z",
+      "side": 1,
+      "message": "nit: Move behind the false as in line 120, otherwise gofmt will move it in front of the comma.\nSame for the others.",
+      "range": {
+        "startLine": 100,
+        "startChar": 61,
+        "endLine": 100,
+        "endChar": 75
+      },
       "revId": "c26a1dd444d5e15ab7e5fdccf9fc16eaa23891c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
