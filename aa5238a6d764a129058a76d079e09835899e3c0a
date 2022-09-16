@@ -35,6 +35,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d66ee60d_5d932675",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510928
+      },
+      "writtenOn": "2022-09-16T01:33:36Z",
+      "side": 1,
+      "message": "Thanks for your review!",
+      "revId": "aa5238a6d764a129058a76d079e09835899e3c0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1adc8d44_2d68d778",
@@ -72,6 +89,30 @@
       "side": 1,
       "message": "+1, as the guideline perfers `android_vm` over `android_vm_r`: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/test_dependencies.md#:~:text\u003dPrefer%20this%20over%20android_vm_r%20if%20possible",
       "parentUuid": "1adc8d44_2d68d778",
+      "range": {
+        "startLine": 44,
+        "startChar": 32,
+        "endLine": 44,
+        "endChar": 44
+      },
+      "revId": "aa5238a6d764a129058a76d079e09835899e3c0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "508e4454_788ef7e2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ghost_window.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1510928
+      },
+      "writtenOn": "2022-09-16T01:33:36Z",
+      "side": 1,
+      "message": "Thanks. change to android_vm_r is intentionally since it may not work on \u003e R for a while.",
+      "parentUuid": "83309f59_ff26f687",
       "range": {
         "startLine": 44,
         "startChar": 32,
