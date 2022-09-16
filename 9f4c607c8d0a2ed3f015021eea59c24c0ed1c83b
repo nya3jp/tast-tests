@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7f1f4f6_f27fe184",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-09-16T10:20:48Z",
+      "side": 1,
+      "message": "nit: I know it is a trivial change, but compilation would be a good enough check.",
+      "range": {
+        "startLine": 13,
+        "startChar": 5,
+        "endLine": 13,
+        "endChar": 9
+      },
+      "revId": "9f4c607c8d0a2ed3f015021eea59c24c0ed1c83b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "3a41f97a_8142232e",
@@ -48,6 +71,23 @@
       "writtenOn": "2022-09-15T20:51:32Z",
       "side": 1,
       "message": "Adding Kamil for OWNER +2.\n\nHi Kamil, We are changing the lacros status of bluetooth tast tests to unneeded. PTAL\n\nRegards\nShijin",
+      "revId": "9f4c607c8d0a2ed3f015021eea59c24c0ed1c83b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "41e86b04_b748eafc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-09-16T10:20:48Z",
+      "side": 1,
+      "message": "LGTM % nit.",
       "revId": "9f4c607c8d0a2ed3f015021eea59c24c0ed1c83b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
