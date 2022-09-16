@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4f729c9_7c255f69",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-09-16T15:15:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "23878042_5f8022b6",
+      "revId": "a43ee7df768b49265a097af2ddfa26b60dc2b9e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "055e8fc9_beb638eb",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-09-16T09:09:01Z",
       "side": 1,
       "message": "nit: line too long.",
+      "revId": "a43ee7df768b49265a097af2ddfa26b60dc2b9e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "43319423_7f29d2c6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-09-16T15:15:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "055e8fc9_beb638eb",
       "revId": "a43ee7df768b49265a097af2ddfa26b60dc2b9e1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -92,6 +128,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f85d13b_2a41bf00",
+        "filename": "src/chromiumos/tast/local/chrome/internal/browserwatcher/browserwatcher.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-09-16T15:15:44Z",
+      "side": 1,
+      "message": "We replaces the error here if the process terminates, because reported errors look often random. If Chrome is accidentally terminated, it causes a lot of variation of errors, but investigation of each did not help us to identify the root cause.",
+      "parentUuid": "f037492d_728557ba",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 21
+      },
+      "revId": "a43ee7df768b49265a097af2ddfa26b60dc2b9e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "780b2e0e_8dc59887",
@@ -105,6 +165,30 @@
       "writtenOn": "2022-09-16T09:09:01Z",
       "side": 1,
       "message": "I assume it is not possible that the process is not running and there is no error.\nCan you add a comment on this? At first I was looking for this case as well.",
+      "range": {
+        "startLine": 53,
+        "startChar": 2,
+        "endLine": 53,
+        "endChar": 37
+      },
+      "revId": "a43ee7df768b49265a097af2ddfa26b60dc2b9e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b1f25b0_4d69a6d5",
+        "filename": "src/chromiumos/tast/local/chrome/internal/browserwatcher/browserwatcher.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-09-16T15:15:44Z",
+      "side": 1,
+      "message": "https://github.com/shirou/gopsutil/blob/e0ec1b9cda4470db704a862282a396986d7e930c/process/process.go#L278\n\nThere is. It\u0027s very edge case, but theoretically it can happen.\nIf PID is proc caches its starting time. If PID is recycled, IsRunning checks the starting time of the cached one and the current one. If both are different, err is nil, then running is false. I do not expect this happens in Tast practically, but let\u0027s keep the semantically correct code. Briefly commented.",
+      "parentUuid": "780b2e0e_8dc59887",
       "range": {
         "startLine": 53,
         "startChar": 2,
