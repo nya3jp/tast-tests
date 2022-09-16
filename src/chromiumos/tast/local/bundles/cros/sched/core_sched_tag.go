@@ -33,7 +33,7 @@ func init() {
 		Contacts:     []string{"joelaf@google.com", "briannorris@chromium.org"},
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome", "arc", "coresched"},
-		HardwareDeps: hwdep.D(hwdep.CPUSupportsSMT()),
+		HardwareDeps: hwdep.D(hwdep.CPUSupportsSMT(), hwdep.Or(hwdep.CPUVulnerableL1TF(), hwdep.CPUVulnerableMDS())),
 		Timeout:      3 * time.Minute,
 		Pre:          chrome.LoggedIn(),
 	})
