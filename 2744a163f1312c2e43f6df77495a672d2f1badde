@@ -1,0 +1,135 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9370032_fe853c5f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-09-16T22:18:22Z",
+      "side": 1,
+      "message": "rm",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 5
+      },
+      "revId": "2744a163f1312c2e43f6df77495a672d2f1badde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "564b9db1_9007c5bd",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/bss_tm_request.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-09-16T22:18:22Z",
+      "side": 1,
+      "message": "can you rm this while you\u0027re at it?",
+      "revId": "2744a163f1312c2e43f6df77495a672d2f1badde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08d49853_d3738bc3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/bss_tm_request.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-09-16T22:18:22Z",
+      "side": 1,
+      "message": "Since you\u0027re touching this test, would you mind writing a description of what it does in a follow up CL per https://b.corp.google.com/issues/231669774?",
+      "revId": "2744a163f1312c2e43f6df77495a672d2f1badde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59cec053_22345e53",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/bss_tm_request.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-09-16T22:18:22Z",
+      "side": 1,
+      "message": "move this log line right before we actually send.",
+      "revId": "2744a163f1312c2e43f6df77495a672d2f1badde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c407a01_7d1fc5b0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/bss_tm_request.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-09-16T22:18:22Z",
+      "side": 1,
+      "message": "Can you also explain why adding it twice makes a difference here?",
+      "revId": "2744a163f1312c2e43f6df77495a672d2f1badde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb520f4b_77d66079",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/bss_tm_request.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-09-16T22:18:22Z",
+      "side": 1,
+      "message": "add",
+      "range": {
+        "startLine": 232,
+        "startChar": 23,
+        "endLine": 232,
+        "endChar": 28
+      },
+      "revId": "2744a163f1312c2e43f6df77495a672d2f1badde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ec3db04_c322042e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/bss_tm_request.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-09-16T22:18:22Z",
+      "side": 1,
+      "message": "If we clear here, we risk roaming back before triggering the roam back below right?",
+      "revId": "2744a163f1312c2e43f6df77495a672d2f1badde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
