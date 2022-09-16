@@ -5,8 +5,11 @@
 package firmware
 
 import (
+	"bufio"
 	"context"
 	"encoding/json"
+	"fmt"
+	"io"
 	"io/ioutil"
 	"os"
 	"regexp"
@@ -33,6 +36,13 @@ type fwinfo struct {
 	Board string `json:"board_name"`
 	Model string `json:"model_name"`
 	FwID  string `json:"firmware_build_cros_version"`
+}
+
+// rwInfo will contain the fmap information for a RW section.
+type rwInfo struct {
+	name   string
+	offset int64
+	size   int64
 }
 
 const (
@@ -65,7 +75,7 @@ func init() {
 		Fixture:      fixture.NormalMode,
 		Data:         []string{"shipped-firmwares.json"},
 		ServiceDeps:  []string{"tast.cros.firmware.BiosService", "tast.cros.firmware.UtilsService"},
-		HardwareDeps: hwdep.D(hwdep.ChromeEC(), hwdep.Model("vilboz", "dirinboz", "sparky360", "apel", "delbin")), // Temporarily constraining the test to a few models.
+		HardwareDeps: hwdep.D(hwdep.ChromeEC(), hwdep.Model("vilboz", "dirinboz", "sparky360", "apel", "delbin", "hayato", "astronaut", "kasumi360", "kakadu", "dragonair", "maglia")), // Temporarily constraining the test to a few models.
 	})
 }
 
@@ -168,13 +178,6 @@ func APROBootabilityPerformance(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to untar file: ", err)
 	}
 
-	// Get the current version ID of RW firmware that's running on DUT.
-	// This version would be the to-be-qualified RW_new firmware.
-	rwNewID, err := getOnlyID(ctx, h, reporters.CrossystemParamFwid)
-	if err != nil {
-		s.Fatal("Failed to get current RW version number: ", err)
-	}
-
 	// Create a copy of the RW_new firmware.
 	s.Log("Backing up AP firmware")
 	newRWfwFile, err := bs.BackupImageSection(ctx, &fwpb.FWSectionInfo{Section: fwpb.ImageSection_EmptyImageSection, Programmer: fwpb.Programmer_BIOSProgrammer})
@@ -182,11 +185,29 @@ func APROBootabilityPerformance(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to backup current AP firmware: ", err)
 	}
 
+	// Get the area_offset and area_size of the RWA and RWB section on the bin file.
+	rwA, err := getOffsetSizeName(ctx, s.DUT().Conn(), newRWfwFile.Path, "A")
+	if err != nil {
+		s.Fatal("Failed to get fmap info for section A: ", err)
+	}
+	rwB, err := getOffsetSizeName(ctx, s.DUT().Conn(), newRWfwFile.Path, "B")
+	if err != nil {
+		s.Fatal("Failed to get fmap info for section B: ", err)
+	}
+
 	// Store the backup file in a temporary directory with the name 'newRW'.
 	s.Log("Saving the AP firmware")
 	if err := linuxssh.GetFile(ctx, s.DUT().Conn(), newRWfwFile.Path, tmpDir+"/newRW", linuxssh.DereferenceSymlinks); err != nil {
 		s.Log("Failed to save the new RW firmware")
 	}
+
+	// Get the newest RW firmware version ID available on the DUT.
+	// This version would be the to-be-qualified RW_new firmware.
+	rwNewID, section, imageSection, err := getNewestRWIDAvailable(ctx, tmpDir, rwA, rwB)
+	if err != nil {
+		s.Fatal("Failed while dissecting the bin file: ", err)
+	}
+	s.Logf("Setting RW ID = %s, from section = %s as the to-be-qualified RW_new firmware", rwNewID, section)
 
 	// At the end of this test, restore AP firmware to the one found at the beginning.
 	defer func() {
@@ -224,17 +245,17 @@ func APROBootabilityPerformance(ctx context.Context, s *testing.State) {
 	if shippedFwVersions[len(shippedFwVersions)-1] == rwNewID {
 		s.Log("WARNING! Speed test skipped because RW_new is the same as RO_old. Already verified")
 	} else {
-		// Setting DUT to boot from RW section A in the next reboot.
+		// Setting DUT to boot from the RW section that contains the newest firmware ID.
 		// This will assure that the DUT will try to boot from the flashed section.
-		if err := h.DUT.Conn().CommandContext(ctx, "crossystem", "fw_try_next=A").Run(); err != nil {
-			s.Fatal("Failed to set 'crossystem fw_try_next=A': ", err)
+		if err := h.DUT.Conn().CommandContext(ctx, "crossystem", "fw_try_next="+section).Run(); err != nil {
+			s.Fatalf("Failed to set 'crossystem fw_try_next=%s': %s", section, err)
 		}
 
 		// Flashing RW_new firmware obtained from the DUT at the beginning of the test into RW section A.
 		// This will leave the DUT with the latest RO shipped fw and
 		// the to-be-qualified new RW firmware (i.e., RO_old + RW_new).
 		s.Log("Flashing the to-be-qualified new RW firmware")
-		if err := flashDUTAndReboot(ctx, h, s.DUT().Conn(), "newRW", tmpDir, fwpb.ImageSection_APRWAImageSection); err != nil {
+		if err := flashDUTAndReboot(ctx, h, s.DUT().Conn(), "newRW", tmpDir, imageSection); err != nil {
 			s.Fatal("Failed to flash DUT: ", err)
 		}
 
@@ -494,4 +515,87 @@ func untarUnknownFileName(ctx context.Context, tmpDir, fwidModel string) (string
 		}
 	}
 	return filename, nil
+}
+
+// getNewestRWIDAvailable identifies which is the newest firmware ID available
+// in the DUT by dissecting the AP bin file.
+func getNewestRWIDAvailable(ctx context.Context, tmpDir string, rwA, rwB rwInfo) (string, string, fwpb.ImageSection, error) {
+	// Open and read the bin file.
+	binFile, err := os.Open(tmpDir + "/newRW")
+	if err != nil {
+		return "", "", fwpb.ImageSection_EmptyImageSection, errors.Wrap(err, "failed to open AP bin file")
+	}
+	defer binFile.Close()
+
+	fileInfo, err := binFile.Stat()
+	if err != nil {
+		return "", "", fwpb.ImageSection_EmptyImageSection, errors.Wrap(err, "failed to read AP bin file")
+	}
+	reader := bufio.NewReader(binFile)
+	buf := make([]byte, fileInfo.Size())
+	for {
+		_, err := reader.Read(buf)
+		if err != nil {
+			if err != io.EOF {
+				return "", "", fwpb.ImageSection_EmptyImageSection, errors.Wrap(err, "unexpected error")
+			}
+			break
+		}
+	}
+	// Get only the firmware IDs numbers from section A and B.
+	splitRWA := strings.Split(strings.Trim(string(buf[rwA.offset:rwA.offset+rwA.size]), "\x00"), ".")
+	splitRWB := strings.Split(strings.Trim(string(buf[rwB.offset:rwB.offset+rwB.size]), "\x00"), ".")
+
+	testing.ContextLogf(ctx, "Found RW ID = %s, in section = %s", splitRWA, rwA.name)
+	testing.ContextLogf(ctx, "Found RW ID = %s, in section = %s", splitRWB, rwB.name)
+
+	// Compare the firmware IDs from section A and B to identify which is the newer.
+	// If they are the same, use section A as default.
+	rwDefaultStr := splitRWA[1] + "." + splitRWA[2] + "." + splitRWA[3]
+	for i := 1; i < len(splitRWA); i++ {
+		var idA, idB int
+		if _, err := fmt.Sscanf(splitRWA[i], "%d", &idA); err != nil {
+			return "", "", fwpb.ImageSection_EmptyImageSection, errors.Wrapf(err, "failed to sscanf %s", splitRWA[i])
+		}
+		if _, err := fmt.Sscanf(splitRWB[i], "%d", &idB); err != nil {
+			return "", "", fwpb.ImageSection_EmptyImageSection, errors.Wrapf(err, "failed to sscanf %s", splitRWB[i])
+		}
+
+		if idB > idA {
+			rwBStr := splitRWB[1] + "." + splitRWB[2] + "." + splitRWB[3]
+			return rwBStr, rwB.name, fwpb.ImageSection_APRWBImageSection, nil
+		}
+		if idB < idA {
+			return rwDefaultStr, rwA.name, fwpb.ImageSection_APRWAImageSection, nil
+		}
+	}
+	return rwDefaultStr, rwA.name, fwpb.ImageSection_APRWAImageSection, nil
+}
+
+// getOffsetSizeName uses the dump_fmap command to get the area_offset, area_size and area_name of a bin file.
+func getOffsetSizeName(ctx context.Context, conn *ssh.Conn, path, section string) (rwInfo, error) {
+	var data rwInfo
+
+	// Run dump_fmap command.
+	out, err := conn.CommandContext(ctx, "fmap_decode", path).Output(ssh.DumpLogOnError)
+	if err != nil {
+		return data, errors.Wrap(err, "failed to run dump_fmap command")
+	}
+	areaRange := regexp.MustCompile(`area_offset=\"(0[xX][0-9a-fA-F]+)\" area_size=\"(0[xX][0-9a-fA-F]+)\"\s*area_name=\"RW_FWID_` + section + `\"`)
+	match := areaRange.FindStringSubmatch(string(out))
+	if len(match) != 3 {
+		return data, errors.Wrapf(err, "failed to match regex %q in output: %s", areaRange, out)
+	}
+	offset, err := strconv.ParseInt(match[1], 0, 64)
+	if err != nil {
+		return data, errors.Wrapf(err, "failed to parse offset for section %q, got match: %s", section, match[1])
+	}
+	size, err := strconv.ParseInt(match[2], 0, 64)
+	if err != nil {
+		return data, errors.Wrapf(err, "failed to parse size for section %q, got match: %s", section, match[2])
+	}
+	data.name = section
+	data.offset = offset
+	data.size = size
+	return data, nil
 }
