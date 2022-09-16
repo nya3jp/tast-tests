@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5bfef12e_ae49b957",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-09-16T08:03:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "598adc7f_dd23e478",
+      "revId": "5f59a1cf322c352b08fe9af02e73cdb846cb33f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3498464e_2ec0b567",
@@ -49,6 +67,24 @@
       "writtenOn": "2022-09-16T01:01:12Z",
       "side": 1,
       "message": "At this point it\u0027s not at all clear what \"clean\" means. Could you add a sentence giving the intution?",
+      "revId": "5f59a1cf322c352b08fe9af02e73cdb846cb33f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1779bbd9_190578f9",
+        "filename": "src/chromiumos/tast/local/policyutil/fixtures/chrome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-09-16T08:03:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3498464e_2ec0b567",
       "revId": "5f59a1cf322c352b08fe9af02e73cdb846cb33f3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -106,6 +142,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b504f16_e5bdc4e1",
+        "filename": "src/chromiumos/tast/local/policyutil/fixtures/chrome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-09-16T08:03:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d6dc7544_a011f019",
+      "revId": "5f59a1cf322c352b08fe9af02e73cdb846cb33f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "191c3ca9_b0169b35",
@@ -119,6 +173,24 @@
       "writtenOn": "2022-09-16T01:01:12Z",
       "side": 1,
       "message": "Please add some explaining comment on top of this added chunk of code, since it may be a bit surprising that these things are done here rather than in Reset.",
+      "revId": "5f59a1cf322c352b08fe9af02e73cdb846cb33f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e2d32b4_02aed2ed",
+        "filename": "src/chromiumos/tast/local/policyutil/fixtures/chrome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-09-16T08:03:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "191c3ca9_b0169b35",
       "revId": "5f59a1cf322c352b08fe9af02e73cdb846cb33f3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
