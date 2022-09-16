@@ -16,6 +16,24 @@
       "message": "I think you can actually name the return variable and use that instead of using a local.",
       "revId": "6f496cedb17e550746f52b0c65c5921d1038021f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e90485d5_0482b199",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/shill_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2994,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2022-09-16T21:23:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b2095140_9d7676b8",
+      "revId": "6f496cedb17e550746f52b0c65c5921d1038021f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
