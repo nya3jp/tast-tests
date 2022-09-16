@@ -34,6 +34,7 @@ const (
 	ColumnHeader           Role = "columnHeader"
 	ComboBoxGrouping       Role = "comboBoxGrouping"
 	ComboBoxMenuButton     Role = "comboBoxMenuButton"
+	ComboBoxSelect         Role = "comboBoxSelect"
 	Comment                Role = "comment"
 	Complementary          Role = "complementary"
 	ContentDeletion        Role = "contentDeletion"

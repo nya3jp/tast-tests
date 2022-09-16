@@ -272,7 +272,7 @@ func (s *OSSettings) SetToggleOption(cr *chrome.Chrome, optionName string, expec
 
 // SetDropDownOption sets dropdown option to a value.
 func (s *OSSettings) SetDropDownOption(cr *chrome.Chrome, optionName, expected string) uiauto.Action {
-	optionFinder := nodewith.Name(optionName).Role(role.PopUpButton)
+	optionFinder := nodewith.Name(optionName).Role(role.ComboBoxSelect)
 	settingFinder := nodewith.Name(expected).Role(role.ListBoxOption)
 	return uiauto.Combine("set drop down option",
 		s.LeftClick(optionFinder),
