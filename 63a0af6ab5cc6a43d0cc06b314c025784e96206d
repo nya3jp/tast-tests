@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6ed439f_5d85eec1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perfetto_wm_jankness.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2022-09-16T04:33:33Z",
+      "side": 1,
+      "message": "nit: Please add \u0027arc-framework+tast@google.com\u0027 as well.",
+      "range": {
+        "startLine": 24,
+        "startChar": 80,
+        "endLine": 24,
+        "endChar": 84
+      },
+      "revId": "63a0af6ab5cc6a43d0cc06b314c025784e96206d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d46e78b_ffe10b68",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perfetto_wm_jankness.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2022-09-16T04:33:33Z",
+      "side": 1,
+      "message": "nit: Let\u0027s use activity.SetWindowState() instead. It\u0027s easier to read and have better support for multiple ARC++ versions.\n```\nif _, err :\u003d act.SetWindowState(ctx, tconn, ash.WMEventMaximize); err !\u003d nil {\n  ...\n}\n```",
+      "range": {
+        "startLine": 75,
+        "startChar": 14,
+        "endLine": 75,
+        "endChar": 39
+      },
+      "revId": "63a0af6ab5cc6a43d0cc06b314c025784e96206d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab4bfec5_e8b580d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perfetto_wm_jankness.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2022-09-16T04:33:33Z",
+      "side": 1,
+      "message": "Using ash.WaitForARCAppWindowState() is probably more robust. Could you try that?\n```\nif err :\u003d ash.WaitForARCAppWindowState(ctx, tconn, act.PackageName(), ash.WMEventMaximize); err !\u003d nil {\n  ...\n}\n```",
+      "range": {
+        "startLine": 80,
+        "startChar": 5,
+        "endLine": 80,
+        "endChar": 11
+      },
+      "revId": "63a0af6ab5cc6a43d0cc06b314c025784e96206d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d3e3e85_d271bb85",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perfetto_wm_jankness.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2022-09-16T04:33:33Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 83,
+        "startChar": 32,
+        "endLine": 83,
+        "endChar": 40
+      },
+      "revId": "63a0af6ab5cc6a43d0cc06b314c025784e96206d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c418c4a5_5b6caa99",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perfetto_wm_jankness.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2022-09-16T04:33:33Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 87,
+        "startChar": 11,
+        "endLine": 87,
+        "endChar": 21
+      },
+      "revId": "63a0af6ab5cc6a43d0cc06b314c025784e96206d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
