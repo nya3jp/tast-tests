@@ -47,6 +47,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dce97a5b_685fc072",
+        "filename": "src/chromiumos/tast/local/input/gen/gen_constants.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1543968
+      },
+      "writtenOn": "2022-09-16T01:27:54Z",
+      "side": 1,
+      "message": "Added this explanation to commit msg",
+      "parentUuid": "e1b4cb1d_57c6183f",
+      "range": {
+        "startLine": 44,
+        "startChar": 104,
+        "endLine": 44,
+        "endChar": 109
+      },
+      "revId": "7a4dab5a34075f24c7ab51160c6f05e20b1cca36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "12399ba2_53b3ac62",
@@ -93,6 +117,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7be38f8_1b21a71f",
+        "filename": "src/chromiumos/tast/local/input/keyboard.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1543968
+      },
+      "writtenOn": "2022-09-16T01:27:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "12399ba2_53b3ac62",
+      "range": {
+        "startLine": 144,
+        "startChar": 0,
+        "endLine": 144,
+        "endChar": 118
+      },
+      "revId": "7a4dab5a34075f24c7ab51160c6f05e20b1cca36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3562fd43_878355e1",
+        "filename": "src/chromiumos/tast/local/input/keyboard.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1543968
+      },
+      "writtenOn": "2022-09-16T01:27:54Z",
+      "side": 1,
+      "message": "I matched style with code surrounding the change, I think it might be weird to add the backticks or `|` for this change only",
+      "parentUuid": "de1fd5f5_033f8263",
+      "range": {
+        "startLine": 144,
+        "startChar": 6,
+        "endLine": 144,
+        "endChar": 8
+      },
+      "revId": "7a4dab5a34075f24c7ab51160c6f05e20b1cca36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f4162033_0bde67d6",
@@ -116,6 +188,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc8ecdde_798c8781",
+        "filename": "src/chromiumos/tast/local/input/keyboard.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1543968
+      },
+      "writtenOn": "2022-09-16T01:27:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f4162033_0bde67d6",
+      "range": {
+        "startLine": 149,
+        "startChar": 2,
+        "endLine": 149,
+        "endChar": 128
+      },
+      "revId": "7a4dab5a34075f24c7ab51160c6f05e20b1cca36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d9fea2cc_0ec69a70",
@@ -129,6 +225,30 @@
       "writtenOn": "2022-09-14T22:47:52Z",
       "side": 1,
       "message": "I think this can be trimmed, applies to the other link comments too",
+      "range": {
+        "startLine": 40,
+        "startChar": 109,
+        "endLine": 40,
+        "endChar": 154
+      },
+      "revId": "7a4dab5a34075f24c7ab51160c6f05e20b1cca36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dcf1fa69_19055753",
+        "filename": "src/chromiumos/tast/local/input/keyboard_top_row_layout.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1543968
+      },
+      "writtenOn": "2022-09-16T01:27:54Z",
+      "side": 1,
+      "message": "I think it should be left as it is the commit hash. If the file changes in the future, we want it to still point to the correct line.",
+      "parentUuid": "d9fea2cc_0ec69a70",
       "range": {
         "startLine": 40,
         "startChar": 109,
