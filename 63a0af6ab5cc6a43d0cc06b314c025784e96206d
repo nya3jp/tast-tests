@@ -312,6 +312,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a50f24a4_fa616d3b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perfetto_wm_jankness.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2022-09-16T07:35:46Z",
+      "side": 1,
+      "message": "Oh sorry I didn\u0027t know that *Wait() function also checks the field.\n\nYeah to answer Tan\u0027s question, ARC uses the same animation as the one for chrome windows for maximize/restore, so *Wait() function should be sufficent.",
+      "parentUuid": "0d83e220_b196e932",
+      "range": {
+        "startLine": 80,
+        "startChar": 5,
+        "endLine": 80,
+        "endChar": 11
+      },
+      "revId": "63a0af6ab5cc6a43d0cc06b314c025784e96206d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7d3e3e85_d271bb85",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/perfetto_wm_jankness.go",
         "patchSetId": 8
