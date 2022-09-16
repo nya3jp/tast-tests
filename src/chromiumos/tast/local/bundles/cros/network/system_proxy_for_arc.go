@@ -30,11 +30,10 @@ func init() {
 			"chromeos-commercial-networking@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
-		// Disabled due to <1% pass rate over 30 days. See b/241943012
-		//Attr:         []string{"group:mainline", "informational"},
-		Fixture: "chromeEnrolledLoggedInARC",
+		Attr:         []string{"group:mainline", "informational"},
+		Fixture:      "chromeEnrolledLoggedInARC",
 		Params: []testing.Param{{
-			ExtraSoftwareDeps: []string{"android_p"},
+			ExtraSoftwareDeps: []string{"android_vm"},
 		}},
 	})
 }
@@ -63,12 +62,9 @@ func SystemProxyForArc(ctx context.Context, s *testing.State) {
 	defer ps.Stop(ctx)
 
 	// Configure the proxy on the DUT via policy to point to the local proxy instance started via the `ProxyService`.
-	proxyPolicy := &policy.ProxySettings{
-		Val: &policy.ProxySettingsValue{
-			ProxyMode:       "fixed_servers",
-			ProxyServer:     fmt.Sprintf("http://%s", ps.HostAndPort),
-			ProxyBypassList: "www.googleapis.com",
-		}}
+	proxyModePolicy := &policy.ProxyMode{Val: "fixed_servers"}
+	proxyServerPolicy := &policy.ProxyServer{Val: fmt.Sprintf("http://%s", ps.HostAndPort)}
+
 	// Start system-proxy and configure it with the credentials of the local proxy instance.
 	systemProxySettingsPolicy := &policy.SystemProxySettings{
 		Val: &policy.SystemProxySettingsValue{
@@ -81,7 +77,7 @@ func SystemProxyForArc(ctx context.Context, s *testing.State) {
 	arcEnabledPolicy := &policy.ArcEnabled{Val: true}
 
 	// Update policies.
-	if err := policyutil.ServeAndRefresh(ctx, fdms, cr, []policy.Policy{proxyPolicy, systemProxySettingsPolicy, arcEnabledPolicy}); err != nil {
+	if err := policyutil.ServeAndRefresh(ctx, fdms, cr, []policy.Policy{proxyModePolicy, proxyServerPolicy, systemProxySettingsPolicy, arcEnabledPolicy}); err != nil {
 		s.Fatal("Failed to update policies: ", err)
 	}
 
