@@ -54,6 +54,7 @@ const (
 	LacrosClamshellNonVKWithDiacriticsOnPKLongpress = "lacrosClamshellWithDiacriticsOnPKLongpress"
 	LacrosTabletVK                                  = "lacrosTabletVK"
 	LacrosTabletVKInGuest                           = "lacrosTabletVKInGuest"
+	LacrosTabletVKRestart                           = "lacrosTabletVKRestart"
 	LacrosTabletVKWithMultitouch                    = "lacrosTabletVKWithMultitouch"
 )
 
@@ -367,6 +368,21 @@ func init() {
 			"essential-inputs-team@google.com",
 		},
 		Impl:            inputsFixture(tabletMode, true, false, browser.TypeLacros, chrome.GuestLogin()),
+		SetUpTimeout:    chrome.LoginTimeout,
+		PreTestTimeout:  preTestTimeout,
+		PostTestTimeout: postTestTimeout,
+		ResetTimeout:    resetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+	})
+	testing.AddFixture(&testing.Fixture{
+		Name: LacrosTabletVKRestart,
+		Desc: "Lacros variant: tablet mode with VK enabled restarting chrome session for every test",
+		Contacts: []string{
+			"alvinjia@google.com",
+			"shengjun@chromium.org",
+			"essential-inputs-team@google.com",
+		},
+		Impl:            inputsFixture(tabletMode, true, true, browser.TypeLacros),
 		SetUpTimeout:    chrome.LoginTimeout,
 		PreTestTimeout:  preTestTimeout,
 		PostTestTimeout: postTestTimeout,
