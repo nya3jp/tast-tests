@@ -168,6 +168,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b3b4ee94_d132830d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perfetto_wm_jankness.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1553967
+      },
+      "writtenOn": "2022-09-16T06:31:40Z",
+      "side": 1,
+      "message": "Thank you! So we need to sleep here to gather enough trace to see whether the frame is janky or not, is my understanding correct?",
+      "parentUuid": "64c51d6b_de90ef70",
+      "range": {
+        "startLine": 80,
+        "startChar": 5,
+        "endLine": 80,
+        "endChar": 11
+      },
+      "revId": "63a0af6ab5cc6a43d0cc06b314c025784e96206d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7d3e3e85_d271bb85",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/perfetto_wm_jankness.go",
         "patchSetId": 8
