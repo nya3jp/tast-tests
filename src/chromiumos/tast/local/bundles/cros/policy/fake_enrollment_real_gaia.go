@@ -6,12 +6,22 @@ package policy
 
 import (
 	"context"
+	"io/ioutil"
+	"os"
+	"path/filepath"
+	"strings"
+	"time"
 
 	"chromiumos/tast/common/fixture"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/testing"
 )
@@ -95,12 +105,49 @@ func FakeEnrollmentRealGAIA(ctx context.Context, s *testing.State) {
 	}
 	defer conn.Close()
 
-	var got string
-	if err := conn.Eval(ctx, `document.querySelector("#status-box-container > fieldset:nth-child(2) > div > div.is-affiliated").innerText`, &got); err != nil {
-		s.Fatal("Failed to retrieve is affiliated value: ", err)
+	if err := conn.Eval(ctx, `document.getElementById("export-policies").click()`, nil); err != nil {
+		s.Fatal("Failed to click export to JSON button: ", err)
 	}
 
-	if want := " Yes"; got != want {
-		s.Errorf("Unexpected is affiliated value: got %q; want %q", got, want)
+	// Clear Downloads directory.
+	downloadsPath, err := cryptohome.DownloadsPath(ctx, cr.NormalizedUser())
+	if err != nil {
+		s.Fatal("Failed to get user's Download path: ", err)
+	}
+
+	policiesPath := filepath.Join(downloadsPath, "policies.json")
+
+	if _, err := os.Stat(policiesPath); err == nil {
+		if err := os.Remove(policiesPath); err != nil {
+			s.Fatal("Failed to remove policies.json: ", err)
+		}
+	}
+
+	ui := uiauto.New(tconn)
+	saveButton := nodewith.Name("Save").Role(role.Button)
+	if err := uiauto.Combine("click Save",
+		ui.WithTimeout(10*time.Second).WaitUntilExists(saveButton),
+		ui.LeftClick(saveButton),
+	)(ctx); err != nil {
+		s.Fatal("Failed to click save file button: ", err)
+	}
+
+	// Wait until policies.json will be created.
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		if _, err := os.Stat(policiesPath); errors.Is(err, os.ErrNotExist) {
+			return err
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
+		s.Fatal("Failed to wait policies.json file to exist: ", err)
+	}
+
+	content, err := ioutil.ReadFile(policiesPath)
+	if err != nil {
+		s.Fatal("Failed to read policies.json: ", err)
+	}
+
+	if !strings.Contains(string(content), `"isAffiliated": true`) {
+		s.Fatal("policies.json does not confirm that the user is affiliated")
 	}
 }
