@@ -39,6 +39,30 @@
       },
       "revId": "e66e35906906685594ec3f1d02f94a16db067416",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb836e04_6a18d53a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/stork_profile.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-09-16T14:19:34Z",
+      "side": 1,
+      "message": "Ah, so there is a cellular-specific version of this! That explains all of those failures-- thank you Harpreet, went ahead and updated this :)",
+      "parentUuid": "2068d65f_4c7f45eb",
+      "range": {
+        "startLine": 25,
+        "startChar": 38,
+        "endLine": 25,
+        "endChar": 54
+      },
+      "revId": "e66e35906906685594ec3f1d02f94a16db067416",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
