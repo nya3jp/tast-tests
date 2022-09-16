@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d6f34de_76b30df3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1269379
+      },
+      "writtenOn": "2022-09-16T17:28:30Z",
+      "side": 1,
+      "message": "I\u0027m thinking whether we need to power on monitor anymore since monroe has reach its AUE. What will happen if we just remove this logic?",
+      "revId": "730a64e55621918a538e7496428e238389659321",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
