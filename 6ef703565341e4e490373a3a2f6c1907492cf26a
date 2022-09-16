@@ -48,6 +48,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bfb9dbb1_3b4bee00",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1363139
+      },
+      "writtenOn": "2022-09-16T19:21:03Z",
+      "side": 1,
+      "message": "Makes sense to me, thanks for the feedback. I\u0027ll wait for a tast owner to take a look.",
+      "revId": "6ef703565341e4e490373a3a2f6c1907492cf26a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "046f9fc3_61514ea7",
