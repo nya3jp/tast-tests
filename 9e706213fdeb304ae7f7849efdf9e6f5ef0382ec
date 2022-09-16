@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b8f7620_2073656c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/shill_cellular_safety_dance.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1550898
+      },
+      "writtenOn": "2022-09-16T09:21:42Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b5b9483a_3115fb64",
+      "revId": "9e706213fdeb304ae7f7849efdf9e6f5ef0382ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "007d3f04_5038f35b",
@@ -65,6 +83,24 @@
       "writtenOn": "2022-09-15T15:33:55Z",
       "side": 1,
       "message": "You should actually be able to replace a bunch of this function with `FindServiceForDeviceWithProps` after CL:3892731 goes in, I think?",
+      "revId": "9e706213fdeb304ae7f7849efdf9e6f5ef0382ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d56f144c_b6453fcc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/shill_cellular_safety_dance.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1550898
+      },
+      "writtenOn": "2022-09-16T09:21:42Z",
+      "side": 1,
+      "message": "That CL would allow me to look for a service with a specific state, right?\n\nIn this case not totally convinced that would be useful, because depending on the state I would run the next action or not, so I do want to know the state of the service.",
+      "parentUuid": "007d3f04_5038f35b",
       "revId": "9e706213fdeb304ae7f7849efdf9e6f5ef0382ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -86,6 +122,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "30ef9793_78c8545d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/shill_cellular_safety_dance.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1550898
+      },
+      "writtenOn": "2022-09-16T09:21:42Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "fc5d4387_721cb98b",
+      "revId": "9e706213fdeb304ae7f7849efdf9e6f5ef0382ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f71b4e2f_4ec76088",
@@ -99,6 +153,24 @@
       "writtenOn": "2022-09-15T15:33:55Z",
       "side": 1,
       "message": "nit: Use `shillconst.ServiceStateIdle` rather than \"idle\" here.",
+      "revId": "9e706213fdeb304ae7f7849efdf9e6f5ef0382ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "964a0a93_3041c12d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/shill_cellular_safety_dance.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1550898
+      },
+      "writtenOn": "2022-09-16T09:21:42Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f71b4e2f_4ec76088",
       "revId": "9e706213fdeb304ae7f7849efdf9e6f5ef0382ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
