@@ -159,6 +159,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aecc281f_a6040be3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1542263
+      },
+      "writtenOn": "2022-09-16T04:06:25Z",
+      "side": 1,
+      "message": "Yes, the current test that calls CRAS directly doesn\u0027t work\nThat\u0027s why we want to change to use Chrome UI",
+      "parentUuid": "ccabfbb3_21bd170c",
+      "revId": "7390c67dd83f8b0678ec7e047b325645851d2873",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "81fd7d53_80449997",
