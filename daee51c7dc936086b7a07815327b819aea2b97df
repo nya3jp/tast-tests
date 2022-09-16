@@ -120,6 +120,30 @@
       },
       "revId": "daee51c7dc936086b7a07815327b819aea2b97df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ad3d9aa_6320cb28",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_tpm_seed.go",
+        "patchSetId": 42
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2022-09-16T21:45:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eb5d3c65_b83755f7",
+      "range": {
+        "startLine": 70,
+        "startChar": 37,
+        "endLine": 70,
+        "endChar": 48
+      },
+      "revId": "daee51c7dc936086b7a07815327b819aea2b97df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
