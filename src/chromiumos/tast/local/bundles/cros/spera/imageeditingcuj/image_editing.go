@@ -26,7 +26,7 @@ import (
 )
 
 // Run implements the main logic of the EDUImageEditingCUJ test case.
-func Run(ctx context.Context, cr *chrome.Chrome, googlePhotos *GooglePhotos, bt browser.Type, tabletMode bool, outDir, testImage, testImageLocation string) (retErr error) {
+func Run(ctx context.Context, cr *chrome.Chrome, googlePhotos *GooglePhotos, bt browser.Type, tabletMode bool, outDir, traceConfigPath, testImage, testImageLocation string) (retErr error) {
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		return errors.Wrap(err, "failed to connect to the test API connection")
@@ -98,7 +98,9 @@ func Run(ctx context.Context, cr *chrome.Chrome, googlePhotos *GooglePhotos, bt 
 	if err := cuj.AddPerformanceCUJMetrics(tconn, bTconn, recorder); err != nil {
 		return errors.Wrap(err, "failed to add metrics to recorder")
 	}
-
+	if traceConfigPath != "" {
+		recorder.EnableTracing(outDir, traceConfigPath)
+	}
 	pv := perf.NewValues()
 	if err := recorder.Run(ctx, uiauto.NamedCombine("image editing on Google Photos",
 		googlePhotos.Open(),

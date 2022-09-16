@@ -58,6 +58,7 @@ type TestParams struct {
 	Tier            cuj.Tier
 	ExtendedDisplay bool
 	CheckPIP        bool
+	TraceConfigPath string
 }
 
 // VideoApp declares video operation.
@@ -123,6 +124,7 @@ func Run(ctx context.Context, resources TestResources, param TestParams) error {
 		tabletMode      = param.TabletMode
 		tier            = param.Tier
 		extendedDisplay = param.ExtendedDisplay
+		traceConfigPath = param.TraceConfigPath
 	)
 
 	testing.ContextLogf(ctx, "Run app appName: %s tabletMode: %t, extendedDisplay: %t", appName, tabletMode, extendedDisplay)
@@ -214,7 +216,9 @@ func Run(ctx context.Context, resources TestResources, param TestParams) error {
 	if err := cuj.AddPerformanceCUJMetrics(tconn, bTconn, recorder); err != nil {
 		return errors.Wrap(err, "failed to add metrics to recorder")
 	}
-
+	if traceConfigPath != "" {
+		recorder.EnableTracing(outDir, traceConfigPath)
+	}
 	run := func(ctx context.Context, videoSource VideoSrc) error {
 		var videoApp VideoApp
 		switch appName {

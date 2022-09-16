@@ -18,6 +18,7 @@ import (
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/mtbf/youtube"
+	"chromiumos/tast/local/ui/cujrecorder"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -38,9 +39,11 @@ func init() {
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		Vars: []string{
 			"spera.cuj_mode",               // Optional. Use "tablet" to force the tablet mode. Other values will be be taken as "clamshell".
+			"spera.collectTrace",           // Optional. Expecting "enable" or "disable", default is "disable".
 			"spera.chameleon_addr",         // Only needed when using chameleon board as extended display.
 			"spera.chameleon_display_port", // The port connected as extended display. Default is 3.
 		},
+		Data: []string{cujrecorder.SystemTraceConfigFile},
 		Params: []testing.Param{
 			{
 				Name:    "plus_video_youtube_web",
@@ -167,6 +170,11 @@ func ExtendedDisplayCUJ(ctx context.Context, s *testing.State) {
 
 	param := s.Param().(extendedDisplayCUJParam)
 
+	traceConfigPath := ""
+	if collect, ok := s.Var("spera.collectTrace"); ok && collect == "enable" {
+		traceConfigPath = s.DataPath(cujrecorder.SystemTraceConfigFile)
+	}
+
 	testResources := youtube.TestResources{
 		Cr:        cr,
 		Tconn:     tconn,
@@ -181,6 +189,7 @@ func ExtendedDisplayCUJ(ctx context.Context, s *testing.State) {
 		OutDir:          s.OutDir(),
 		TabletMode:      tabletMode,
 		ExtendedDisplay: true,
+		TraceConfigPath: traceConfigPath,
 	}
 
 	if err := youtube.Run(ctx, testResources, testParams); err != nil {

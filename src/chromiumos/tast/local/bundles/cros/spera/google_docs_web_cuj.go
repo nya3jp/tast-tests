@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/local/chrome/cuj"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/ui/cujrecorder"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -31,7 +32,9 @@ func init() {
 		Vars: []string{
 			"spera.sampleGDocSheetURL", // Required. The URL of sample Google Sheet. It will be copied to create a new one to perform tests on.
 			"spera.cuj_mode",           // Optional. Expecting "tablet" or "clamshell".
+			"spera.collectTrace",       // Optional. Expecting "enable" or "disable", default is "disable".
 		},
+		Data: []string{cujrecorder.SystemTraceConfigFile},
 		Params: []testing.Param{
 			{
 				Name:    "basic",
@@ -143,7 +146,11 @@ func GoogleDocsWebCUJ(ctx context.Context, s *testing.State) {
 	if p.IsLacros {
 		bt = browser.TypeLacros
 	}
-	if err := productivitycuj.Run(ctx, cr, office, p.Tier, tabletMode, bt, s.OutDir(), sampleSheetURL, expectedText, testFileLocation); err != nil {
+	traceConfigPath := ""
+	if collect, ok := s.Var("spera.collectTrace"); ok && collect == "enable" {
+		traceConfigPath = s.DataPath(cujrecorder.SystemTraceConfigFile)
+	}
+	if err := productivitycuj.Run(ctx, cr, office, p.Tier, tabletMode, bt, s.OutDir(), traceConfigPath, sampleSheetURL, expectedText, testFileLocation); err != nil {
 		s.Fatal("Failed to run productivity cuj: ", err)
 	}
 }

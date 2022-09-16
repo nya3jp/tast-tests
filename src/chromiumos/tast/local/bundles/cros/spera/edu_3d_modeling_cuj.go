@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/display"
+	"chromiumos/tast/local/ui/cujrecorder"
 	"chromiumos/tast/testing"
 )
 
@@ -24,12 +25,13 @@ func init() {
 		Desc:         "Measures the performance of editing the 3D models on TinkerCAD website",
 		Contacts:     []string{"abergman@google.com", "xliu@cienet.com", "jeff.lin@cienet.com"},
 		SoftwareDeps: []string{"chrome"},
-		Data:         []string{"rotate.png"},
+		Data:         []string{"rotate.png", cujrecorder.SystemTraceConfigFile},
 		Vars: []string{
 			// Required. The URL of initial 3D model design. It will be copied when test starts.
 			"spera.sampleDesignURL",
 			// Optional. Expecting "tablet" or "clamshell". Other values will be be taken as "clamshell".
 			"spera.cuj_mode",
+			"spera.collectTrace", // Optional. Expecting "enable" or "disable", default is "disable".
 		},
 		Params: []testing.Param{
 			{
@@ -86,10 +88,13 @@ func EDU3DModelingCUJ(ctx context.Context, s *testing.State) {
 		}
 		defer cleanup(cleanupCtx)
 	}
-
+	traceConfigPath := ""
+	if collect, ok := s.Var("spera.collectTrace"); ok && collect == "enable" {
+		traceConfigPath = s.DataPath(cujrecorder.SystemTraceConfigFile)
+	}
 	bt := s.Param().(browser.Type)
 	rotateIconPath := s.DataPath("rotate.png")
-	if err := edu3dmodelingcuj.Run(ctx, cr, tabletMode, bt, s.OutDir(), sampleDesignURL, rotateIconPath); err != nil {
+	if err := edu3dmodelingcuj.Run(ctx, cr, tabletMode, bt, s.OutDir(), traceConfigPath, sampleDesignURL, rotateIconPath); err != nil {
 		s.Fatal("Failed to run tinkercad cuj: ", err)
 	}
 }

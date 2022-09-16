@@ -18,6 +18,7 @@ import (
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/mtbf/youtube"
+	"chromiumos/tast/local/ui/cujrecorder"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -37,9 +38,11 @@ func init() {
 		SoftwareDeps: []string{"chrome", "arc"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		Vars: []string{
-			"spera.cuj_mode", // Optional. Expecting "tablet" or "clamshell". Other values will be be taken as "clamshell".
+			"spera.cuj_mode",     // Optional. Expecting "tablet" or "clamshell". Other values will be be taken as "clamshell".
+			"spera.collectTrace", // Optional. Expecting "enable" or "disable", default is "disable".
 			"spera.checkPIP",
 		},
+		Data: []string{cujrecorder.SystemTraceConfigFile},
 		Params: []testing.Param{
 			{
 				Name:    "basic_youtube_web",
@@ -219,6 +222,10 @@ func VideoCUJ2(ctx context.Context, s *testing.State) {
 	}
 	defer uiHandler.Close()
 
+	traceConfigPath := ""
+	if collect, ok := s.Var("spera.collectTrace"); ok && collect == "enable" {
+		traceConfigPath = s.DataPath(cujrecorder.SystemTraceConfigFile)
+	}
 	testResources := youtube.TestResources{
 		Cr:        cr,
 		Tconn:     tconn,
@@ -227,7 +234,6 @@ func VideoCUJ2(ctx context.Context, s *testing.State) {
 		Kb:        kb,
 		UIHandler: uiHandler,
 	}
-
 	videoCUJParams := s.Param().(videoCUJParam)
 	testParams := youtube.TestParams{
 		Tier:            videoCUJParams.tier,
@@ -236,6 +242,7 @@ func VideoCUJ2(ctx context.Context, s *testing.State) {
 		TabletMode:      tabletMode,
 		ExtendedDisplay: false,
 		CheckPIP:        checkPIP,
+		TraceConfigPath: traceConfigPath,
 	}
 
 	if err := youtube.Run(ctx, testResources, testParams); err != nil {
