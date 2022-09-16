@@ -144,6 +144,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "64c51d6b_de90ef70",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perfetto_wm_jankness.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1510928
+      },
+      "writtenOn": "2022-09-16T06:01:44Z",
+      "side": 1,
+      "message": "I think here we use Sleep because we need wait until \"WM animation finish\". However there isn\u0027t a way to indicate it. ash.WaitForARCAppWindowState just wait the window state change finished in exo side, and not related with animation.\n\nSince we want to trace how many frames are jankness during animation, so here I prefer Sleep an enough time gap for make sure animation won\u0027t terminated before finished.\n\nWhat do you think? Thanks.",
+      "parentUuid": "aec38a20_37af2d90",
+      "range": {
+        "startLine": 80,
+        "startChar": 5,
+        "endLine": 80,
+        "endChar": 11
+      },
+      "revId": "63a0af6ab5cc6a43d0cc06b314c025784e96206d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7d3e3e85_d271bb85",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/perfetto_wm_jankness.go",
         "patchSetId": 8
