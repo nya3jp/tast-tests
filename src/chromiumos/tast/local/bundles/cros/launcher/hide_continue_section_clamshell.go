@@ -39,8 +39,8 @@ func HideContinueSectionClamshell(ctx context.Context, s *testing.State) {
 	defer cancel()
 
 	opt := chrome.EnableFeatures(
-		"ProductivityLauncher",        // Enable clamshell bubble launcher
-		"LauncherHideContinueSection") // Enable the hide continue section button
+		"ProductivityLauncher:enable_continue/true", // Enable clamshell bubble launcher
+		"LauncherHideContinueSection")               // Enable the hide continue section button
 	cr, err := chrome.New(ctx, opt)
 	if err != nil {
 		s.Fatal("Chrome login failed: ", err)

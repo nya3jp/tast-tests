@@ -51,7 +51,7 @@ func ShowContinueSection(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
 
-	opt := chrome.EnableFeatures("ProductivityLauncher")
+	opt := chrome.EnableFeatures("ProductivityLauncher:enable_continue/true")
 
 	// Start a new chrome session to avoid reusing user sessions and verify that the privacy nudge gets shown.
 	cr, err := chrome.New(ctx, opt)

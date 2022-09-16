@@ -42,14 +42,13 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      3*time.Minute + cws.InstallationTimeout,
+		Fixture:      "chromeLoggedInWithLauncherContinueSection",
 		Params: []testing.Param{{
-			Name:    "clamshell_mode",
-			Val:     launcher.TestCase{TabletMode: false},
-			Fixture: "chromeLoggedIn",
+			Name: "clamshell_mode",
+			Val:  launcher.TestCase{TabletMode: false},
 		}, {
 			Name:              "tablet_mode",
 			Val:               launcher.TestCase{TabletMode: true},
-			Fixture:           "chromeLoggedIn",
 			ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		}},
 	})
