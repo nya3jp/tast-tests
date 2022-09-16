@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "287437e3_abcb7a14",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1518298
+      },
+      "writtenOn": "2022-09-16T00:43:33Z",
+      "side": 1,
+      "message": "Note that I won\u0027t be added as a tast-reviewer (in GWSQ). Just given OWNER rights for approving bulk changes (for things like metadata, disablement, etc.) or in emergencies when Seewai isn\u0027t around.",
+      "revId": "b28ba01a0e5154d77713bcfd70a7a384f04e2865",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
