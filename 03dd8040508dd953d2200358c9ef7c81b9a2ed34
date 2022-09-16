@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d450ffa0_8362e4f9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/mojo/service_manager_integration.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000169
+      },
+      "writtenOn": "2022-09-16T09:57:59Z",
+      "side": 1,
+      "message": "IIUC this tast test runs an executable which runs gtest and also launches another process for the test service (which you\u0027re trying to add in CL:3901895), and I find it very complicated.\n\nCould you do something simpler instead?\nFor exmaple, you can prepare a test server executable, and a test client executable.\nIn tast code, you can let the client do each small task (e.g. `mojo_service_manager_test_service_client --ping`)",
+      "revId": "03dd8040508dd953d2200358c9ef7c81b9a2ed34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
