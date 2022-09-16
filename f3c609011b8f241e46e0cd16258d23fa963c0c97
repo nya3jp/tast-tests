@@ -63,6 +63,30 @@
       },
       "revId": "f3c609011b8f241e46e0cd16258d23fa963c0c97",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "34c804d3_8a266cb7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/image_paste.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2022-09-16T04:40:06Z",
+      "side": 1,
+      "message": "Done in crrev.com/c/3901039",
+      "parentUuid": "7a0f0614_bb92a56e",
+      "range": {
+        "startLine": 100,
+        "startChar": 9,
+        "endLine": 100,
+        "endChar": 16
+      },
+      "revId": "f3c609011b8f241e46e0cd16258d23fa963c0c97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ],
   "submitRequirementResults": [
