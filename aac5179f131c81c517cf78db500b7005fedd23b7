@@ -34,6 +34,24 @@
       "parentUuid": "76286f24_07c80f06",
       "revId": "aac5179f131c81c517cf78db500b7005fedd23b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f965186_0ad822f7",
+        "filename": "src/chromiumos/tast/local/policyutil/fixtures/chrome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-09-16T14:02:29Z",
+      "side": 1,
+      "message": "The nit is not important, it just looks bad in gerrit 😊.\n\nShould we not report reset failures as failures of the previous test?\n\nReset does not have access to testing state, but the framework does, and it can mark the failure.",
+      "parentUuid": "8b6b26e1_0e250ec7",
+      "revId": "aac5179f131c81c517cf78db500b7005fedd23b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
