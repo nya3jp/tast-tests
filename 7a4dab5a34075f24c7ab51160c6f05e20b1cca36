@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd8ddbbd_e94f3ccc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1294854
+      },
+      "writtenOn": "2022-09-16T18:10:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8cde823f_4ef3d65a",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 72
+      },
+      "revId": "7a4dab5a34075f24c7ab51160c6f05e20b1cca36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e1b4cb1d_57c6183f",
@@ -155,6 +179,30 @@
       "side": 1,
       "message": "I matched style with code surrounding the change, I think it might be weird to add the backticks or `|` for this change only",
       "parentUuid": "de1fd5f5_033f8263",
+      "range": {
+        "startLine": 144,
+        "startChar": 6,
+        "endLine": 144,
+        "endChar": 8
+      },
+      "revId": "7a4dab5a34075f24c7ab51160c6f05e20b1cca36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "18540e9c_f08b7560",
+        "filename": "src/chromiumos/tast/local/input/keyboard.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1294854
+      },
+      "writtenOn": "2022-09-16T18:10:48Z",
+      "side": 1,
+      "message": "Bleh, that\u0027s annoying. okay lets keep it consistent then",
+      "parentUuid": "3562fd43_878355e1",
       "range": {
         "startLine": 144,
         "startChar": 6,
