@@ -10,10 +10,13 @@ import (
 	"time"
 
 	"chromiumos/tast/common/android/ui"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/local/chrome/uiauto/mouse"
 	"chromiumos/tast/testing"
 )
@@ -21,20 +24,35 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         Clipboard,
-		LacrosStatus: testing.LacrosVariantNeeded,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Tests copying and pasting from Chrome to Android and vice versa",
 		Contacts:     []string{"ruanc@chromium.org", "yhanada@chromium.org", "arc-framework+tast@google.com"},
 		SoftwareDeps: []string{"chrome"},
-		Fixture:      "arcBooted",
 		Params: []testing.Param{{
 			// b:238260020 - disable aged (>1y) unpromoted informational tests
 			// ExtraAttr:         []string{"group:mainline", "informational"},
 			ExtraSoftwareDeps: []string{"android_p"},
+			Fixture:           "arcBooted",
+			Val:               browser.TypeAsh,
 		}, {
-			Name:              "vm",
-			ExtraSoftwareDeps: []string{"android_vm"},
+			Name:              "lacros",
+			ExtraSoftwareDeps: []string{"android_p"},
+			Fixture:           "lacrosWithArcBooted",
+			Val:               browser.TypeLacros,
+		}, {
 			// b:238260020 - disable aged (>1y) unpromoted informational tests
 			// ExtraAttr:         []string{"group:mainline", "informational"},
+			Name:              "vm",
+			ExtraSoftwareDeps: []string{"android_vm"},
+			Fixture:           "arcBooted",
+			Val:               browser.TypeAsh,
+		}, {
+			// b:238260020 - disable aged (>1y) unpromoted informational tests
+			// ExtraAttr:         []string{"group:mainline", "informational"},
+			Name:              "vm_lacros",
+			ExtraSoftwareDeps: []string{"android_vm"},
+			Fixture:           "lacrosWithArcBooted",
+			Val:               browser.TypeLacros,
 		}},
 	})
 }
@@ -52,7 +70,7 @@ type pasteFunc func(context.Context) (string, error)
 
 // prepareCopyInChrome sets up a copy operation with Chrome as the source
 // clipboard.
-func prepareCopyInChrome(tconn *chrome.TestConn, format, data string) copyFunc {
+func prepareCopyInChrome(tconn *chrome.Conn, format, data string) copyFunc {
 	return func(ctx context.Context) error {
 		return tconn.Call(ctx, nil, `
 		  (format, data) => {
@@ -70,7 +88,7 @@ func prepareCopyInChrome(tconn *chrome.TestConn, format, data string) copyFunc {
 
 // preparePasteInChrome sets up a paste operation with Chrome as the
 // destination clipboard.
-func preparePasteInChrome(tconn *chrome.TestConn, format string) pasteFunc {
+func preparePasteInChrome(tconn *chrome.Conn, format string) pasteFunc {
 	return func(ctx context.Context) (string, error) {
 		var result string
 		if err := tconn.Call(ctx, &result, `
@@ -157,9 +175,24 @@ func Clipboard(ctx context.Context, s *testing.State) {
 	a := p.ARC
 	d := p.UIDevice
 
+	// Give 5 seconds to clean up
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
+	defer cancel()
+
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to create Test API connection: ", err)
+	}
+
+	br, closeBrowser, err := browserfixt.SetUp(ctx, cr, s.Param().(browser.Type))
+	if err != nil {
+		s.Fatal("Failed to open browser: ", err)
+	}
+	defer closeBrowser(cleanupCtx)
+	brconn, err := br.NewConn(ctx, "")
+	if err != nil {
+		s.Fatal("Failed to create Test API connection to a browser: ", err)
 	}
 
 	s.Log("Starting app")
@@ -174,7 +207,7 @@ func Clipboard(ctx context.Context, s *testing.State) {
 	if err := act.StartWithDefaultOptions(ctx, tconn); err != nil {
 		s.Fatal("Failed to start the activity: ", err)
 	}
-	defer act.Stop(ctx, tconn)
+	defer act.Stop(cleanupCtx, tconn)
 
 	s.Log("Waiting for App showing up")
 	if err := d.Object(ui.ID(titleID), ui.Text(title)).WaitForExists(ctx, 30*time.Second); err != nil {
@@ -192,10 +225,10 @@ func Clipboard(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to click the center of the app: ", err)
 	}
 
-	s.Log("Waiting for chrome.clipboard API to become available")
-	if err := tconn.WaitForExpr(ctx, "chrome.clipboard"); err != nil {
-		s.Fatal("chrome.clipboard API unavailable: ", err)
-	}
+	// s.Log("Waiting for navigator.clipboard API to become available")
+	// if err := brconn.WaitForExpr(ctx, "navigator.clipboard"); err != nil {
+	// 	s.Fatal("navigator.clipboard API unavailable: ", err)
+	// }
 
 	// Copy image from Chrome to Android.
 	s.Run(ctx, "CopyImageFromChromeToAndroid", func(ctx context.Context, s *testing.State) {
@@ -203,7 +236,7 @@ func Clipboard(ctx context.Context, s *testing.State) {
 
 		// Copy image in Chrome. This creates a temporary dom to be copied,
 		// and destroys it after the copy operation.
-		if err := tconn.Call(ctx, nil, `(encodedImage) => {
+		if err := brconn.Call(ctx, nil, `(encodedImage) => {
                   const img = document.createElement('img');
                   img.src = 'data:image/png;base64,' + encodedImage;
                   const container = document.createElement('div');
@@ -258,7 +291,7 @@ func Clipboard(ctx context.Context, s *testing.State) {
 
 		// Copy in Chrome, so the registered observer should paste the clipboard content in Android.
 		const content = "<b>observer</b> should paste this"
-		chromeCopy := prepareCopyInChrome(tconn, "text/html", content)
+		chromeCopy := prepareCopyInChrome(brconn, "text/html", content)
 		if err := chromeCopy(ctx); err != nil {
 			s.Fatal("Failed to copy in Chrome: ", err)
 		}
@@ -294,23 +327,23 @@ func Clipboard(ctx context.Context, s *testing.State) {
 		wantPastedData string
 	}{{
 		"CopyTextFromChromeToAndroid",
-		prepareCopyInChrome(tconn, "text/plain", testTextFromChrome),
+		prepareCopyInChrome(brconn, "text/plain", testTextFromChrome),
 		preparePasteInAndroid(d, editTextID),
 		testTextFromChrome,
 	}, {
 		"CopyTextFromAndroidToChrome",
 		prepareCopyInAndroid(d, writeTextBtnID, editTextID, expectedTextFromAndroid),
-		preparePasteInChrome(tconn, "text/plain"),
+		preparePasteInChrome(brconn, "text/plain"),
 		expectedTextFromAndroid,
 	}, {
 		"CopyHTMLFromChromeToAndroid",
-		prepareCopyInChrome(tconn, "text/plain", testHTMLFromChrome),
+		prepareCopyInChrome(brconn, "text/plain", testHTMLFromChrome),
 		preparePasteInAndroid(d, textViewID),
 		testHTMLFromChrome,
 	}, {
 		"CopyHTMLFromAndroidToChrome",
 		prepareCopyInAndroid(d, writeHTMLBtnID, textViewID, expectedHTMLFromAndroid),
-		preparePasteInChrome(tconn, "text/html"),
+		preparePasteInChrome(brconn, "text/html"),
 		expectedHTMLFromAndroid,
 	}} {
 		s.Run(ctx, row.name, func(ctx context.Context, s *testing.State) {
