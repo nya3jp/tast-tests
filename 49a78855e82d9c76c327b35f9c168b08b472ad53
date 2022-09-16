@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff46818d_79b2a570",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1528043
+      },
+      "writtenOn": "2022-09-16T15:04:07Z",
+      "side": 1,
+      "message": "I\u0027ve still observed flakes. So we do some more cleanup.",
+      "revId": "49a78855e82d9c76c327b35f9c168b08b472ad53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
