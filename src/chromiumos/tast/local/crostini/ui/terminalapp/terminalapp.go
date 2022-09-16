@@ -130,6 +130,8 @@ func LaunchSSH(ctx context.Context, tconn *chrome.TestConn, usernameAtHost, sshA
 		ui.LeftClick(nodewith.Name("Add SSH").Role(role.Button)),
 		ui.LeftClick(nodewith.Name("Command").Role(role.TextField)),
 		kb.TypeAction(usernameAtHost+" -o StrictHostKeyChecking=no "+sshArgs),
+		ui.LeftClick(nodewith.Name("SSH relay server options").Role(role.TextField)),
+		kb.TypeAction("--ssh-client-version=pnacl"),
 		ui.LeftClick(nodewith.Name("Save").Role(role.Button)),
 		ui.LeftClick(nodewith.Name(usernameAtHost).Role(role.Link)),
 		ui.LeftClick(nodewith.Name("("+usernameAtHost+") Password:").Role(role.TextField)),
@@ -165,13 +167,12 @@ func (ta *TerminalApp) RunSSHCommand(cmd string) uiauto.Action {
 
 // ExitSSH exits the current connection and closes the app.
 func (ta *TerminalApp) ExitSSH() uiauto.Action {
-	exitDialog := nodewith.NameStartingWith("Program exited with status code").
-		Role(role.StaticText).Ancestor(nodewith.Role(role.Dialog))
+	exitMsg := nodewith.NameRegex(regexp.MustCompile(`Connection to \S+ closed.`)).Role(role.StaticText)
 	terminalWebArea := nodewith.Name("Terminal").Role(role.RootWebArea)
 	return uiauto.Combine("exit ssh",
 		ta.RunSSHCommand("exit"),
-		ta.ui.WaitUntilExists(exitDialog),
-		ta.kb.TypeAction("x"),
+		ta.ui.WaitUntilExists(exitMsg),
+		ta.kb.AccelAction("Esc"),
 		ta.ui.WaitUntilExists(terminalWebArea),
 		ta.kb.AccelAction("Ctrl+Shift+W"),
 	)
