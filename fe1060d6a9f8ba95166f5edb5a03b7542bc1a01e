@@ -74,6 +74,30 @@
       },
       "revId": "fe1060d6a9f8ba95166f5edb5a03b7542bc1a01e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5e9d0b8_f6571a06",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perfetto_wm_jankness.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-09-16T18:49:33Z",
+      "side": 1,
+      "message": "Ah. It\u0027s crrev.com/c/3895452.\nDo you mind add Cq-Depend: chromium:3895452 in your commit message?",
+      "parentUuid": "ced1cdd7_106a7543",
+      "range": {
+        "startLine": 57,
+        "startChar": 13,
+        "endLine": 57,
+        "endChar": 26
+      },
+      "revId": "fe1060d6a9f8ba95166f5edb5a03b7542bc1a01e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
