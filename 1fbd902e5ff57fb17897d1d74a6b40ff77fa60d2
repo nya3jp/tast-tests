@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa865c2b_b340b567",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-09-16T07:56:43Z",
+      "side": 1,
+      "message": "shadow reviewer lgtm for tast.",
+      "revId": "1fbd902e5ff57fb17897d1d74a6b40ff77fa60d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5661f4e9_a4489a44",
+        "filename": "src/chromiumos/tast/local/audio/aloop.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-09-16T07:56:43Z",
+      "side": 1,
+      "message": "Just to check, should this defer be after the next Show() call? or it does not matter?",
+      "range": {
+        "startLine": 55,
+        "startChar": 1,
+        "endLine": 60,
+        "endChar": 0
+      },
+      "revId": "1fbd902e5ff57fb17897d1d74a6b40ff77fa60d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
