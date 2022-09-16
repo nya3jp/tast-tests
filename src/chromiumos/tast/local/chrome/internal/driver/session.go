@@ -31,11 +31,11 @@ import (
 // Session is similar to chrome.Chrome, but it has following notable
 // differences:
 //
-//  - Session interacts with a Chrome process already set up for debugging.
-//    It is out of its scope to set up / start Chrome processes.
-//  - A Session instance is tied to lifetime of a Chrome process. It maintains
-//    states that would be cleared on restarting Chrome. A Session instance
-//    cannot be reused for two different Chrome processes.
+//   - Session interacts with a Chrome process already set up for debugging.
+//     It is out of its scope to set up / start Chrome processes.
+//   - A Session instance is tied to lifetime of a Chrome process. It maintains
+//     states that would be cleared on restarting Chrome. A Session instance
+//     cannot be reused for two different Chrome processes.
 type Session struct {
 	devsess *cdputil.Session
 	watcher *browserwatcher.Watcher
@@ -55,11 +55,6 @@ func NewSession(ctx context.Context, execPath, debuggingPortPath string, portWai
 	if err != nil {
 		return nil, err
 	}
-	defer func() {
-		if retErr != nil {
-			watcher.Close()
-		}
-	}()
 
 	devsess, err := cdputil.NewSession(ctx, debuggingPortPath, portWait)
 	if err != nil {
@@ -89,8 +84,7 @@ func (s *Session) Close(ctx context.Context) error {
 		s.signinExtConn.locked = false
 		s.signinExtConn.Close()
 	}
-	s.devsess.Close(ctx)
-	return s.watcher.Close()
+	return s.devsess.Close(ctx)
 }
 
 // DebugAddrPort returns the addr:port at which Chrome is listening for DevTools connections,
