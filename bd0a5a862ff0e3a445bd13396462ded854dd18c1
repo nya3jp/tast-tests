@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56606282_fb84a54c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/smart_card_with_auth_api.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-09-16T22:33:58Z",
+      "side": 1,
+      "message": "Let us remove this and Add it once its fixed -- make that a sep test",
+      "range": {
+        "startLine": 189,
+        "startChar": 0,
+        "endLine": 190,
+        "endChar": 37
+      },
+      "revId": "bd0a5a862ff0e3a445bd13396462ded854dd18c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b5a9d2b_99a9789b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/smart_card_with_auth_api.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-09-16T22:33:58Z",
+      "side": 1,
+      "message": "this needs to move to setupUserWithSmartCard",
+      "range": {
+        "startLine": 212,
+        "startChar": 0,
+        "endLine": 216,
+        "endChar": 0
+      },
+      "revId": "bd0a5a862ff0e3a445bd13396462ded854dd18c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d07bee57_7a36f2a7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/smart_card_with_auth_api.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-09-16T22:33:58Z",
+      "side": 1,
+      "message": "there is function for this cryptohome.go",
+      "range": {
+        "startLine": 233,
+        "startChar": 0,
+        "endLine": 239,
+        "endChar": 0
+      },
+      "revId": "bd0a5a862ff0e3a445bd13396462ded854dd18c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1204be6_af2855f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/smart_card_with_auth_api.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-09-16T22:33:58Z",
+      "side": 1,
+      "message": "rename to: corrupted_user",
+      "range": {
+        "startLine": 249,
+        "startChar": 44,
+        "endLine": 249,
+        "endChar": 57
+      },
+      "revId": "bd0a5a862ff0e3a445bd13396462ded854dd18c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2583591_284165ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/smart_card_with_auth_api.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-09-16T22:33:58Z",
+      "side": 1,
+      "message": "this is not required",
+      "range": {
+        "startLine": 315,
+        "startChar": 0,
+        "endLine": 315,
+        "endChar": 60
+      },
+      "revId": "bd0a5a862ff0e3a445bd13396462ded854dd18c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a39ee01_5e61130e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/smart_card_with_auth_api.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-09-16T22:33:58Z",
+      "side": 1,
+      "message": "lets move the file creation logic here",
+      "revId": "bd0a5a862ff0e3a445bd13396462ded854dd18c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
