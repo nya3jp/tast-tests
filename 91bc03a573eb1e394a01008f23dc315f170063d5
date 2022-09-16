@@ -176,6 +176,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1419df0_64c3d10a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/hid_wake.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2022-09-16T18:09:29Z",
+      "side": 1,
+      "message": "Yeah, I think the issue with the `select` option is that the `select` would still run on the same thread as the test (it\u0027s just that it\u0027ll timeout early, which would allow the test to proceed).\n\nI think it\u0027s fine to go with the approach in the CL for now.",
+      "parentUuid": "3553c0d3_04614f46",
+      "revId": "91bc03a573eb1e394a01008f23dc315f170063d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "527ddf7b_3c491cb3",
