@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e37779ac_30e569d6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-09-16T01:55:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8447398a_2f1a31f1",
+      "range": {
+        "startLine": 7,
+        "startChar": 20,
+        "endLine": 7,
+        "endChar": 27
+      },
+      "revId": "7426e18027ff28ffe3fa3311d7587690255ca100",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "97d12720_4eb772db",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-09-16T01:34:17Z",
       "side": 1,
       "message": "promoted",
+      "range": {
+        "startLine": 9,
+        "startChar": 63,
+        "endLine": 9,
+        "endChar": 70
+      },
+      "revId": "7426e18027ff28ffe3fa3311d7587690255ca100",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5992cf4d_910e598c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-09-16T01:55:38Z",
+      "side": 1,
+      "message": "Done. Sorry I should check these mistakes more carefully. I was rushing to a meeting, and rushed this CL as well 😞",
+      "parentUuid": "97d12720_4eb772db",
       "range": {
         "startLine": 9,
         "startChar": 63,
