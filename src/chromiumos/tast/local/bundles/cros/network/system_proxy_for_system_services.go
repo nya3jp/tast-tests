@@ -32,9 +32,8 @@ func init() {
 			"chromeos-commercial-networking@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
-		// Disabled due to <1% pass rate over 30 days. See b/241943012
-		//Attr:         []string{"group:mainline", "informational"},
-		Fixture: "chromeEnrolledLoggedIn",
+		Attr:         []string{"group:mainline", "informational"},
+		Fixture:      "chromeEnrolledLoggedIn",
 	})
 }
 
@@ -56,12 +55,9 @@ func SystemProxyForSystemServices(ctx context.Context, s *testing.State) {
 	}
 
 	// Configure the proxy on the DUT via policy to point to the local proxy instance started via the `ProxyService`.
-	proxyPolicy := &policy.ProxySettings{
-		Val: &policy.ProxySettingsValue{
-			ProxyMode:       "fixed_servers",
-			ProxyServer:     fmt.Sprintf("http://%s", ps.HostAndPort),
-			ProxyBypassList: "",
-		}}
+	proxyModePolicy := &policy.ProxyMode{Val: "fixed_servers"}
+	proxyServerPolicy := &policy.ProxyServer{Val: fmt.Sprintf("http://%s", ps.HostAndPort)}
+
 	// Start system-proxy and configure it with the credentials of the local proxy instance.
 	systemProxySettingsPolicy := &policy.SystemProxySettings{
 		Val: &policy.SystemProxySettingsValue{
@@ -76,7 +72,7 @@ func SystemProxyForSystemServices(ctx context.Context, s *testing.State) {
 	}
 
 	// Update policies.
-	if err := policyutil.ServeAndRefresh(ctx, fdms, cr, []policy.Policy{proxyPolicy, systemProxySettingsPolicy}); err != nil {
+	if err := policyutil.ServeAndRefresh(ctx, fdms, cr, []policy.Policy{proxyModePolicy, proxyServerPolicy, systemProxySettingsPolicy}); err != nil {
 		s.Fatal("Failed to update policies: ", err)
 	}
 
