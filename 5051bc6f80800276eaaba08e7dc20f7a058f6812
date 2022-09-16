@@ -33,6 +33,24 @@
       "message": "Add data source about Jankness. https://perfetto.dev/docs/data-sources/frametimeline",
       "revId": "5051bc6f80800276eaaba08e7dc20f7a058f6812",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9173cab9_79dbc059",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data/perfetto_config.pbtxt",
+        "patchSetId": 7
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1553967
+      },
+      "writtenOn": "2022-09-16T04:12:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "95dca39f_8fb9f5d8",
+      "revId": "5051bc6f80800276eaaba08e7dc20f7a058f6812",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
