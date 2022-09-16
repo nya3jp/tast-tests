@@ -39,6 +39,30 @@
       },
       "revId": "4f032ec34f7f5212e960232a0c76a714ff9e3348",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "08037029_652a4a9d",
+        "filename": "src/chromiumos/tast/local/bluetooth/floss/manager.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1525637
+      },
+      "writtenOn": "2022-09-16T03:33:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "13847e54_754b0531",
+      "range": {
+        "startLine": 61,
+        "startChar": 60,
+        "endLine": 61,
+        "endChar": 75
+      },
+      "revId": "4f032ec34f7f5212e960232a0c76a714ff9e3348",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
