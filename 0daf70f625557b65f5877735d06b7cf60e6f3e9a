@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f78f0ba_9eee0251",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/windowarrangementcuj/tablet.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-09-16T15:50:22Z",
+      "side": 1,
+      "message": "I could be wrong, but I thought here we would put b/246799978 instead of the full link? (In the commit msg as well)",
+      "revId": "0daf70f625557b65f5877735d06b7cf60e6f3e9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3dd17738_637f02be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/windowarrangementcuj/tablet.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-09-16T15:50:22Z",
+      "side": 1,
+      "message": "I also could be wrong, but I\u0027ve been told in the past to put TODO(b/246799978) to reference the bug?\n\nhttps://engdoc.corp.google.com/eng/doc/devguide/practices/comments.md?cl\u003dhead#todo",
+      "revId": "0daf70f625557b65f5877735d06b7cf60e6f3e9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c049aba_f736f08d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/windowarrangementcuj/tablet.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-09-16T15:50:22Z",
+      "side": 1,
+      "message": "Can we maybe add a comment to explain why tapping the divider should help this issue / why this is the workaround?",
+      "revId": "0daf70f625557b65f5877735d06b7cf60e6f3e9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
