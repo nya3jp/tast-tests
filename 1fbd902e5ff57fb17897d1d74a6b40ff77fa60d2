@@ -39,6 +39,30 @@
       },
       "revId": "1fbd902e5ff57fb17897d1d74a6b40ff77fa60d2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "25b8a589_eb60f488",
+        "filename": "src/chromiumos/tast/local/audio/aloop.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1542263
+      },
+      "writtenOn": "2022-09-16T08:02:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5661f4e9_a4489a44",
+      "range": {
+        "startLine": 55,
+        "startChar": 1,
+        "endLine": 60,
+        "endChar": 0
+      },
+      "revId": "1fbd902e5ff57fb17897d1d74a6b40ff77fa60d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
