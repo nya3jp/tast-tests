@@ -95,9 +95,8 @@ func ImagePaste(ctx context.Context, s *testing.State) {
 		counterID    = pkg + ":id/counter"
 	)
 
-	// Paste an image from Chrome. clipboard.write() is only available for the focused window,
-	// so we use a foreground page here.
-	// TODO(yhanada): Rewrite this without a custom extension so that we can use a fixture.
+	// Copy an image from Chrome. clipboard.write() is available only after any user interaction.
+	// TODO(b/247034953): Rewrite this without a custom extension so that we can use a fixture.
 	uia := uiauto.New(tconn)
 	finder := nodewith.Role(role.Button).HasClass("copy_button").First()
 	if err := uia.WithTimeout(10 * time.Second).LeftClick(finder)(ctx); err != nil {
