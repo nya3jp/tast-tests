@@ -25,7 +25,7 @@ func init() {
 		Contacts:     []string{"chromeos-sw-engprod@google.com", "cros-oac@google.com"},
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      4 * time.Minute,
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 	})
 }
 
