@@ -305,6 +305,30 @@
       },
       "revId": "7a4dab5a34075f24c7ab51160c6f05e20b1cca36",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5058ffe_3bd75948",
+        "filename": "src/chromiumos/tast/local/input/keyboard_top_row_layout.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1543968
+      },
+      "writtenOn": "2022-09-16T18:25:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dcf1fa69_19055753",
+      "range": {
+        "startLine": 40,
+        "startChar": 109,
+        "endLine": 40,
+        "endChar": 154
+      },
+      "revId": "7a4dab5a34075f24c7ab51160c6f05e20b1cca36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
