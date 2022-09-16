@@ -22,6 +22,30 @@
       },
       "revId": "98cf479af840caf3df556d337194d208ef02f29d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "869e730f_2b020af2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ti50_demo.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2022-09-16T20:45:19Z",
+      "side": 1,
+      "message": "Good to know.  Yea wanted to make the servo part optional for this test.",
+      "parentUuid": "e13758b7_54b5a9c4",
+      "range": {
+        "startLine": 52,
+        "startChar": 15,
+        "endLine": 52,
+        "endChar": 29
+      },
+      "revId": "98cf479af840caf3df556d337194d208ef02f29d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
