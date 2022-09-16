@@ -111,6 +111,17 @@ func ECWakeOnCharge(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect to servo: ", err)
 	}
 
+	// Increase timeout in getting response from ec uart.
+	if err := h.Servo.SetString(ctx, "ec_uart_timeout", "10"); err != nil {
+		s.Fatal("Failed to extend ec uart timeout: ", err)
+	}
+	defer func() {
+		testing.ContextLog(ctx, "Restoring ec uart timeout to the default value of 3 seconds")
+		if err := h.Servo.SetString(ctx, "ec_uart_timeout", "3"); err != nil {
+			s.Fatal("Failed to restore default ec uart timeout: ", err)
+		}
+	}()
+
 	// At start of test, save some information that may
 	// be useful for debugging.
 	var checkedInfo debugInformation
@@ -277,16 +288,18 @@ func ECWakeOnCharge(ctx context.Context, s *testing.State) {
 		if err := h.WaitConnect(ctx); err != nil {
 			s.Fatal("Unable to reconnect to DUT: ", err)
 		}
-		// Check for tablet mode angles, and if they are different
-		// than the default values, restore them to default.
-		cmd := firmware.NewECTool(s.DUT(), firmware.ECToolNameMain)
-		tabletModeAngleInit, hysInit, err := cmd.SaveTabletModeAngles(ctx)
-		if err != nil {
-			s.Fatal("Failed to read tablet mode angles: ", err)
-		} else if tabletModeAngleInit != "180" || hysInit != "20" {
-			s.Log("Restoring ectool tablet mode angles to the default settings")
-			if err := cmd.ForceTabletModeAngle(ctx, "180", "20"); err != nil {
-				s.Fatal("Failed to restore tablet mode angles to the default settings: ", err)
+		if args.formFactor == "convertible" {
+			// Check for tablet mode angles, and if they are different
+			// than the default values, restore them to default.
+			cmd := firmware.NewECTool(s.DUT(), firmware.ECToolNameMain)
+			tabletModeAngleInit, hysInit, err := cmd.SaveTabletModeAngles(ctx)
+			if err != nil {
+				s.Fatal("Failed to read tablet mode angles: ", err)
+			} else if tabletModeAngleInit != "180" || hysInit != "20" {
+				s.Log("Restoring ectool tablet mode angles to the default settings")
+				if err := cmd.ForceTabletModeAngle(ctx, "180", "20"); err != nil {
+					s.Fatal("Failed to restore tablet mode angles to the default settings: ", err)
+				}
 			}
 		}
 	}(cleanupCtx, args)
@@ -379,13 +392,15 @@ func ECWakeOnCharge(ctx context.Context, s *testing.State) {
 			}
 			deviceHasHibernated = true
 		} else {
-			// For DUTs that do not support the ec hibernation command, we would use
-			// a long power button press instead.
-			s.Logf("Long pressing on power key for %s to put DUT into deep sleep mode", h.Config.HoldPwrButtonPowerOff)
-			if err := h.Servo.KeypressWithDuration(ctx, servo.PowerKey, servo.Dur(h.Config.HoldPwrButtonPowerOff)); err != nil {
-				s.Fatal("Failed to set a KeypressControl by servo: ", err)
+			// For DUTs that do not support the ec hibernation command, when lid is open, we could use
+			// a long power button press instead to put DUT in deep sleep. But, when lid is closed without
+			// log-in, power state will eventually reach G3.
+			if tc.lidOpen == "yes" {
+				s.Logf("Long pressing on power key for %s to put DUT into deep sleep mode", h.Config.HoldPwrButtonPowerOff)
+				if err := h.Servo.KeypressWithDuration(ctx, servo.PowerKey, servo.Dur(h.Config.HoldPwrButtonPowerOff)); err != nil {
+					s.Fatal("Failed to set a KeypressControl by servo: ", err)
+				}
 			}
-
 			s.Log("Waiting for power state to become G3 or S3")
 			if err := h.WaitForPowerStates(ctx, firmware.PowerStateInterval, 1*time.Minute, "G3", "S3"); err != nil {
 				s.Fatal("Failed to get powerstates at G3 or S3: ", err)
