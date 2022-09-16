@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b5f8385_78154132",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/image_paste.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2022-09-16T17:29:51Z",
+      "side": 1,
+      "message": "yhanada@, With this new change, Alt+Tab doesn\u0027t work and the test fails at the last line \"[ FAIL ] Failed to paste the image: text does not match: got \"\"; want \"1\"\" for lacros.",
+      "range": {
+        "startLine": 156,
+        "startChar": 0,
+        "endLine": 156,
+        "endChar": 91
+      },
+      "revId": "d9e380f0f79ba12cc48e56589565ce92142a6e1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
