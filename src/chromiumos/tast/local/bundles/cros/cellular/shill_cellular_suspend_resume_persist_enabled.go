@@ -13,6 +13,7 @@ import (
 	"chromiumos/tast/local/cellular"
 	"chromiumos/tast/local/modemmanager"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 type persistEnabledTestParams struct {
@@ -30,6 +31,8 @@ func init() {
 		Attr:    []string{"group:cellular", "cellular_unstable", "cellular_sim_active"},
 		Fixture: "cellular",
 		Timeout: 2 * time.Minute,
+		// TODO(b/217106877): Skip on herobrine as S/R is unstable
+		HardwareDeps: hwdep.D(hwdep.SkipOnPlatform("herobrine")),
 		Params: []testing.Param{{
 			Name: "enabled",
 			Val: persistEnabledTestParams{
