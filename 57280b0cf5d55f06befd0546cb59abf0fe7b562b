@@ -50,6 +50,69 @@
       "message": "Adding back Jun Sheng (tast owner).",
       "revId": "57280b0cf5d55f06befd0546cb59abf0fe7b562b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "badd9743_3351dafa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-09-16T02:03:22Z",
+      "side": 1,
+      "message": "LGTM % nits.",
+      "revId": "57280b0cf5d55f06befd0546cb59abf0fe7b562b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "703d2b57_d57a05ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/sap_caps.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-09-16T02:03:22Z",
+      "side": 1,
+      "message": "This comment is redundant. If it is more accurate, you should probably update the desc in init().",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 73
+      },
+      "revId": "57280b0cf5d55f06befd0546cb59abf0fe7b562b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1a614af_49df0435",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/sap_caps.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-09-16T02:03:22Z",
+      "side": 1,
+      "message": "Nit: The punctuation used in each bullet is not consistent. Can you all use period?",
+      "range": {
+        "startLine": 36,
+        "startChar": 22,
+        "endLine": 36,
+        "endChar": 23
+      },
+      "revId": "57280b0cf5d55f06befd0546cb59abf0fe7b562b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
