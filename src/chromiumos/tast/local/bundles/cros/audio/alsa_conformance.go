@@ -58,8 +58,14 @@ func ALSAConformance(ctx context.Context, s *testing.State) {
 	)
 
 	// Turn on a display to re-enable an internal speaker on monroe.
-	if err := power.TurnOnDisplay(ctx); err != nil {
-		s.Error("Failed to turn on display: ", err)
+	// Ensure display on to record ui performance correctly. Keep trying for 2 min
+	// since it could take 2 min for `powerd` dbus service to be accessible via
+	// dbus from tast.
+	if err := testing.Poll(ctx, power.TurnOnDisplay, &testing.PollOptions{
+		Interval: 10 * time.Second,
+		Timeout:  2 * time.Minute,
+	}); err != nil {
+		s.Fatal("Failed to turn on display: ", err)
 	}
 
 	// Stop UI in advance for this test to avoid the node being selected by UI.
