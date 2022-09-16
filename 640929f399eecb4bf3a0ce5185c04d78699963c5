@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8b761f5_419693d6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-09-16T23:38:10Z",
+      "side": 1,
+      "message": "optional small nit, but overall LGTM",
+      "revId": "640929f399eecb4bf3a0ce5185c04d78699963c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e679ae80_f59ce302",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/bt_test_service.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-09-16T23:38:10Z",
+      "side": 1,
+      "message": "nit: Why sub-slice for all items and not just use it as-is as it is already a slice?\n\n```\nchrome.EnableFeatures(request.EnableFeatures...)\n```",
+      "range": {
+        "startLine": 46,
+        "startChar": 78,
+        "endLine": 46,
+        "endChar": 81
+      },
+      "revId": "640929f399eecb4bf3a0ce5185c04d78699963c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d97dd056_1fdd5d12",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/bt_test_service.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-09-16T23:38:10Z",
+      "side": 1,
+      "message": "nit: ditto",
+      "range": {
+        "startLine": 50,
+        "startChar": 80,
+        "endLine": 50,
+        "endChar": 83
+      },
+      "revId": "640929f399eecb4bf3a0ce5185c04d78699963c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
