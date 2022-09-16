@@ -1,20 +1,24 @@
--- Sample output of battery counters from the query:
+-- Here is an example of battery counters in the trace data:
 -- select id, ts, name, value from counters where name like 'batt.%'
--- id                   ts                   name                 value
--- -------------------- -------------------- -------------------- --------------------
---                    0     1802253909102978 batt.charge_uah            3005000.000000
---                    1     1802253909102978 batt.capacity_pct              100.000000
---                    2     1802253909102978 batt.current_ua                  0.000000
---                    3     1802254000349096 batt.charge_uah            3005000.000000
---                    4     1802254000349096 batt.capacity_pct              100.000000
---                    5     1802254000349096 batt.current_ua                  0.000000
+-- id    ts                 name                                              value
+-- ----- ------------------ ------------------------------------------------- ---------------------
+--     0      2828870663872 batt.hid-0018:27C6:0E52.0001-battery.capacity_pct              0.000000
+--     1      2828870818377 batt.sbs-12-000b.charge_uah                              5450000.000000
+--     2      2828870818377 batt.sbs-12-000b.capacity_pct                                100.000000
+--     3      2828870818377 batt.sbs-12-000b.current_ua                                    0.000000
 --
--- This query file outputs average capacity percent, coulomb counter (in uAh) and current (in uA).
+-- The counter name is in the form of batt.BATTERY_NAME.COUNTER_NAME.
+-- BATTERY_NAME is optional and will be present only when the system has multiple batteries.
+-- Note that there are 2 reported batteries
+--   hid-0018:27C6:0E52.0001-battery - the stylus battery. It only reports capacity.
+--   sbs-12-000b - the main battery. It reports capacity, charge and current counters.
+--
+-- This query file outputs the counter names and average counter values.
 -- Sample output:
--- "capacity_percent","charge_uah","current_ua"
--- 100.000000,3005000.000000,18454.545455
-select * from (
-  (select avg(value) as capacity_percent from counters where name='batt.capacity_pct'),
-  (select avg(value) as charge_uah from counters where name='batt.charge_uah'),
-  (select avg(value) as current_ua from counters where name='batt.current_ua')
-);
+-- "name","avg(value)"
+-- "batt.hid-0018:27C6:0E52.0001-battery.capacity_pct","0.000000"
+-- "batt.sbs-12-000b.capacity_pct","100.000000"
+-- "batt.sbs-12-000b.charge_uah","5450000.000000"
+-- "batt.sbs-12-000b.current_ua","0.000000"
+--
+select name, avg(value) from counters where name like 'batt.%' group by name
