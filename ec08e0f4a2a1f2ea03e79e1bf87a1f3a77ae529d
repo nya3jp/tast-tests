@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e99c9db_3ab71586",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510928
+      },
+      "writtenOn": "2022-09-16T07:06:00Z",
+      "side": 1,
+      "message": "Thanks for your view.\n\nTakise san, could you answer our question about how ARC animation implemented in Chrome side? e.g. Is it use chrome animation layer?",
+      "revId": "ec08e0f4a2a1f2ea03e79e1bf87a1f3a77ae529d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
