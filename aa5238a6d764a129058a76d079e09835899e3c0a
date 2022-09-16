@@ -121,6 +121,30 @@
       },
       "revId": "aa5238a6d764a129058a76d079e09835899e3c0a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "80e770bd_9af321fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ghost_window.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-09-16T01:37:55Z",
+      "side": 1,
+      "message": "maybe add a comment to clarify that?",
+      "parentUuid": "508e4454_788ef7e2",
+      "range": {
+        "startLine": 44,
+        "startChar": 32,
+        "endLine": 44,
+        "endChar": 44
+      },
+      "revId": "aa5238a6d764a129058a76d079e09835899e3c0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
