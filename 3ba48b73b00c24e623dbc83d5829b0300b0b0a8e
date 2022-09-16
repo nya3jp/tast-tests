@@ -22,6 +22,30 @@
       },
       "revId": "3ba48b73b00c24e623dbc83d5829b0300b0b0a8e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b10e98f2_3543ccf1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perfetto_wm_jankness.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1553967
+      },
+      "writtenOn": "2022-09-16T02:02:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "49251c4e_15fc029a",
+      "range": {
+        "startLine": 30,
+        "startChar": 26,
+        "endLine": 30,
+        "endChar": 38
+      },
+      "revId": "3ba48b73b00c24e623dbc83d5829b0300b0b0a8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
