@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28b0788b_fe51169c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/connection.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-09-16T08:03:20Z",
+      "side": 1,
+      "message": "nit: I would change this check to `config.WGTwoPeers !\u003d (secondEnv !\u003d nil)`, since even if only secondEnv is set it should also be a mistake.",
+      "range": {
+        "startLine": 139,
+        "startChar": 1,
+        "endLine": 140,
+        "endChar": 66
+      },
+      "revId": "01ebb0354c05a95e3b4de693cab0676cb598b819",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
