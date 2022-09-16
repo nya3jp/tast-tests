@@ -39,6 +39,30 @@
       },
       "revId": "8cccfdbe6ed0449d36f625a7b6caf60796b2f18c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "72231af2_4d8d76dd",
+        "filename": "src/chromiumos/tast/local/audio/alsa.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1542263
+      },
+      "writtenOn": "2022-09-16T02:12:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "04cc085e_fc6bd3f4",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 9
+      },
+      "revId": "8cccfdbe6ed0449d36f625a7b6caf60796b2f18c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
