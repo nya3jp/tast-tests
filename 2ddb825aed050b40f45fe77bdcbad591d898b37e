@@ -52,6 +52,24 @@
       "parentUuid": "93e84f2d_8fb8fbe5",
       "revId": "2ddb825aed050b40f45fe77bdcbad591d898b37e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dcb72d0c_217febb0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/shill_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2992,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2022-09-16T18:41:12Z",
+      "side": 1,
+      "message": "Ah, I see your points now. Patchset updated.",
+      "parentUuid": "3877eda2_372385c5",
+      "revId": "2ddb825aed050b40f45fe77bdcbad591d898b37e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
