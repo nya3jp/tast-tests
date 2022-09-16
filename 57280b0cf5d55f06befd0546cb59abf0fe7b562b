@@ -92,6 +92,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7613545b_b0e3ad9a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/sap_caps.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-09-16T15:27:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "703d2b57_d57a05ef",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 73
+      },
+      "revId": "57280b0cf5d55f06befd0546cb59abf0fe7b562b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e1a614af_49df0435",
@@ -105,6 +129,30 @@
       "writtenOn": "2022-09-16T02:03:22Z",
       "side": 1,
       "message": "Nit: The punctuation used in each bullet is not consistent. Can you all use period?",
+      "range": {
+        "startLine": 36,
+        "startChar": 22,
+        "endLine": 36,
+        "endChar": 23
+      },
+      "revId": "57280b0cf5d55f06befd0546cb59abf0fe7b562b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4fb0214b_2b33e7f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/sap_caps.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-09-16T15:27:23Z",
+      "side": 1,
+      "message": "All-periods are reserved for full sentences.\nReformatted according to _Garner’s Modern American Usage_.",
+      "parentUuid": "e1a614af_49df0435",
       "range": {
         "startLine": 36,
         "startChar": 22,
