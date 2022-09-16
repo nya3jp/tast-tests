@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "edbb2f98_166823e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/config_verify.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-09-16T15:15:31Z",
+      "side": 1,
+      "message": "How about the software dependency cros_internal?\n\nSee https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/test_dependencies.md\n\ncros_internal - Functionality that is only available in internal builds of ChromeOS (i.e. ones built using chromeos-overlay).",
+      "parentUuid": "7ee2b0c3_87946f81",
+      "revId": "7226cdac13f86d99e4da7765a494a1c5c0de5ea3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9321b8f0_60299363",
         "filename": "src/chromiumos/tast/local/bundles/cros/kernel/config_verify.go",
         "patchSetId": 3

@@ -52,6 +52,24 @@
       "parentUuid": "7204996d_ba956eba",
       "revId": "abd737bc0c82da2d8e766e40f0c0ffff3cbf6106",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e839c2c_ae17c866",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/config_verify.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-09-16T15:15:31Z",
+      "side": 0,
+      "message": "Not sure if I understand correctly. Do you mean there is a bug in the current kernel that SECURITY_CHROMIUMOS is not set and there is a patch coming that fix the issue? If so, the test is doing what it is supposed to do, right? Look like what you do right now is to hide the bug. I would suggest to add a software dependency on the kernal version to disable the test in certain patches.",
+      "parentUuid": "dc717936_d5733d41",
+      "revId": "abd737bc0c82da2d8e766e40f0c0ffff3cbf6106",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
