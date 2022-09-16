@@ -13,13 +13,14 @@ import (
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/bundles/cros/ui/perfutil"
+	uiperf "chromiumos/tast/local/bundles/cros/ui/perf"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/perfutil"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/local/ui"
 	"chromiumos/tast/testing"
@@ -419,7 +420,7 @@ func OverviewDragWindowPerf(ctx context.Context, s *testing.State) {
 
 		// Run the drag and collect histogram.
 		suffix := fmt.Sprintf("%dwindows", currentWindows)
-		runner.RunMultiple(ctx, s, suffix, perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
+		runner.RunMultiple(ctx, suffix, uiperf.Run(s, perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
 			if err := drag.df(ctx, tsw, stw, tconn); err != nil {
 				return errors.Wrap(err, "failed to run drag")
 			}
@@ -439,7 +440,7 @@ func OverviewDragWindowPerf(ctx context.Context, s *testing.State) {
 				}
 			}
 			return nil
-		}, histName),
+		}, histName)),
 			perfutil.StoreAll(perf.SmallerIsBetter, "ms", drag.l+"."+suffix))
 	}
 
