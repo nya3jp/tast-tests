@@ -16,6 +16,24 @@
       "message": "vs :\u003d perfutil.Values()\n\nThen you don\u0027t need a hack of \"nil\" assignment for br.",
       "revId": "02ab306cc15d197e40b40076f4540e80f196643d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8a58c33_192b9b9e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/docs_cuj.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1520127
+      },
+      "writtenOn": "2022-09-16T20:17:15Z",
+      "side": 1,
+      "message": "\u003e vs :\u003d perfutil.Values()\n\n`vs :\u003d perfutil.NewValues()` you meant? Done.",
+      "parentUuid": "8c1a7fe1_a5aa0623",
+      "revId": "02ab306cc15d197e40b40076f4540e80f196643d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

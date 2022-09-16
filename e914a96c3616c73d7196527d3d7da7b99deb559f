@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c8d1a0e_a7b8b1cf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1520127
+      },
+      "writtenOn": "2022-09-16T20:17:15Z",
+      "side": 1,
+      "message": "Thanks again for the review Hidehiko! PTAL. ",
+      "revId": "e914a96c3616c73d7196527d3d7da7b99deb559f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
