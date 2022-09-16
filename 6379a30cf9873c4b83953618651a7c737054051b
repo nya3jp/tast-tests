@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "308d96bf_58e8ad54",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2022-09-16T12:43:59Z",
+      "side": 1,
+      "message": "Hi Pavol!! \n\nI\u0027m adding you as a reviewer since you may have a bit more context. It think the tests failed because of a changed introduced in https://chromium-review.googlesource.com/c/chromium/src/+/3017712.\n\nThe policy ProxySettings is not working (as it used to at least). I can see on the policy page a couple of errors which don\u0027t make much sense so I think ProxySettings may be broken on Chrome OS. Do you know if we have an open bugs regarding ProxySettings?",
+      "revId": "6379a30cf9873c4b83953618651a7c737054051b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
