@@ -329,6 +329,24 @@
       "parentUuid": "ae2fde70_3757818c",
       "revId": "5c45cdea82468242ab623a040c3605879ddc94f7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69f1c13b_2f3ccb42",
+        "filename": "src/chromiumos/tast/services/cros/ui/chrome_service.proto",
+        "patchSetId": 3
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-09-16T08:21:41Z",
+      "side": 1,
+      "message": "Yes, but could you add TODO with brief comment here, so that people who think it is needed can find it easily.",
+      "parentUuid": "91c52394_bcab0954",
+      "revId": "5c45cdea82468242ab623a040c3605879ddc94f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
