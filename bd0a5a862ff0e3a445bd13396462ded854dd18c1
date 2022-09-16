@@ -1,6 +1,46 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c0749ff_1927368c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-09-16T22:53:03Z",
+      "side": 1,
+      "message": "I see two tests are removed and a new one is added. Is this completely a new test, or is it seen so because of the name change?",
+      "revId": "bd0a5a862ff0e3a445bd13396462ded854dd18c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5e2df2a_0a048714",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/smart_card_with_auth_api.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-09-16T22:53:03Z",
+      "side": 1,
+      "message": "Does this mean AuthFactor APIs are included in the test, but not AuthSession APIs?",
+      "range": {
+        "startLine": 33,
+        "startChar": 19,
+        "endLine": 33,
+        "endChar": 79
+      },
+      "revId": "bd0a5a862ff0e3a445bd13396462ded854dd18c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "56606282_fb84a54c",
