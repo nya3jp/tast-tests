@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/display"
+	"chromiumos/tast/local/ui/cujrecorder"
 	"chromiumos/tast/testing"
 )
 
@@ -30,8 +31,10 @@ func init() {
 		Contacts:     []string{"xliu@cienet.com", "jane.yang@cienet.com"},
 		SoftwareDeps: []string{"chrome"},
 		Vars: []string{
-			"spera.cuj_mode", // Optional. Expecting "tablet" or "clamshell".
+			"spera.cuj_mode",     // Optional. Expecting "tablet" or "clamshell".
+			"spera.collectTrace", // Optional. Expecting "enable" or "disable", default is "disable".
 		},
+		Data: []string{cujrecorder.SystemTraceConfigFile},
 		Params: []testing.Param{
 			{
 				Name:    "basic_h264_1080p_60fps",
@@ -170,8 +173,11 @@ func GamingProxyCUJ(ctx context.Context, s *testing.State) {
 		}
 		defer cleanup(cleanupCtx)
 	}
-
-	if err := gamingproxycuj.Run(ctx, cr, s.OutDir(), tabletMode, p.browserType, p.videoOption); err != nil {
+	traceConfigPath := ""
+	if collect, ok := s.Var("spera.collectTrace"); ok && collect == "enable" {
+		traceConfigPath = s.DataPath(cujrecorder.SystemTraceConfigFile)
+	}
+	if err := gamingproxycuj.Run(ctx, cr, s.OutDir(), traceConfigPath, tabletMode, p.browserType, p.videoOption); err != nil {
 		s.Fatal("Failed to run gaming proxy cuj: ", err)
 	}
 }

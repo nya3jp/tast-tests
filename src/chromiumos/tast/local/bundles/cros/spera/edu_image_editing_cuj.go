@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/local/chrome/cuj"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/ui/cujrecorder"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -30,9 +31,10 @@ func init() {
 		Contacts:     []string{"xliu@cienet.com", "alston.huang@cienet.com", "cienet-development@googlegroups.com"},
 		SoftwareDeps: []string{"chrome"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
-		Data:         []string{testImage},
+		Data:         []string{testImage, cujrecorder.SystemTraceConfigFile},
 		Vars: []string{
-			"spera.cuj_mode", // Optional. Expecting "tablet" or "clamshell".
+			"spera.cuj_mode",     // Optional. Expecting "tablet" or "clamshell".
+			"spera.collectTrace", // Optional. Expecting "enable" or "disable", default is "disable".
 		},
 		Params: []testing.Param{
 			{
@@ -107,9 +109,13 @@ func EDUImageEditingCUJ(ctx context.Context, s *testing.State) {
 	testImageLocation := s.DataPath(testImage)
 	bt := s.Param().(browser.Type)
 
+	traceConfigPath := ""
+	if collect, ok := s.Var("spera.collectTrace"); ok && collect == "enable" {
+		traceConfigPath = s.DataPath(cujrecorder.SystemTraceConfigFile)
+	}
 	googlePhotos := imageeditingcuj.NewGooglePhotos(tconn, uiHdl, kb, cr.Creds().Pass, tabletMode)
 
-	if err := imageeditingcuj.Run(ctx, cr, googlePhotos, bt, tabletMode, s.OutDir(), testImage, testImageLocation); err != nil {
+	if err := imageeditingcuj.Run(ctx, cr, googlePhotos, bt, tabletMode, s.OutDir(), traceConfigPath, testImage, testImageLocation); err != nil {
 		s.Fatal("Failed to run image editing cuj: ", err)
 	}
 }
