@@ -240,6 +240,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7e6bf4a6_2088b15e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perfetto_wm_jankness.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2022-09-16T07:13:30Z",
+      "side": 1,
+      "message": "I don\u0027t think either SetWindowState or SetARCAppWindowStateAndWait is sufficient but in a case like this we usually use window.IsAnimating in wm.go. Would you mind trying that?\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/ash/wm.go;l\u003d177;drc\u003d8fbf2c53960bc8917a6a01fda5405cad7c17201e\n\nFor example, our PIP tast tests use this inside a Poll() function to wait for animation to finish:\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/arc/pip.go;l\u003d802-834;drc\u003d8fbf2c53960bc8917a6a01fda5405cad7c17201e",
+      "parentUuid": "b18ce9f1_e62f064d",
+      "range": {
+        "startLine": 80,
+        "startChar": 5,
+        "endLine": 80,
+        "endChar": 11
+      },
+      "revId": "63a0af6ab5cc6a43d0cc06b314c025784e96206d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7d3e3e85_d271bb85",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/perfetto_wm_jankness.go",
         "patchSetId": 8
