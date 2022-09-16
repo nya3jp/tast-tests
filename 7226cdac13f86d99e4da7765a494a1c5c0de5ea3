@@ -70,6 +70,30 @@
       },
       "revId": "7226cdac13f86d99e4da7765a494a1c5c0de5ea3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28433e6a_507c1558",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/config_verify.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1544064
+      },
+      "writtenOn": "2022-09-16T21:36:43Z",
+      "side": 0,
+      "message": "let\u0027s sync on meeting. Thanks.",
+      "parentUuid": "433629cd_59b69e6b",
+      "range": {
+        "startLine": 299,
+        "startChar": 29,
+        "endLine": 299,
+        "endChar": 43
+      },
+      "revId": "7226cdac13f86d99e4da7765a494a1c5c0de5ea3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
