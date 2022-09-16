@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d837e798_3365fd35",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1363139
+      },
+      "writtenOn": "2022-09-16T18:53:58Z",
+      "side": 1,
+      "message": "NIT don\u0027t we need tast: tag here?",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 3
+      },
+      "revId": "6ef703565341e4e490373a3a2f6c1907492cf26a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "046f9fc3_61514ea7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/shill_cellular_disable_while_connecting.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1363139
+      },
+      "writtenOn": "2022-09-16T18:53:58Z",
+      "side": 1,
+      "message": "How long do we expect to be in associating state? I think WaitForProperty is a 100ms poll, is there any risk that we miss this state?",
+      "range": {
+        "startLine": 88,
+        "startChar": 34,
+        "endLine": 88,
+        "endChar": 45
+      },
+      "revId": "6ef703565341e4e490373a3a2f6c1907492cf26a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
