@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "26fc08a3_133a18d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/proxysettings/proxy_settings.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-09-16T12:36:34Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "9a4d0346_62f73fb6",
+      "range": {
+        "startLine": 221,
+        "startChar": 39,
+        "endLine": 221,
+        "endChar": 69
+      },
+      "revId": "bd83ffd68ceda4be7e25d2823a12846e1829b959",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bc8b9bb3_74f5afd4",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-09-15T23:09:38Z",
       "side": 1,
       "message": "I don\u0027t think that there is a \"save\" button when we are not signed in-- could this return an error when we aren\u0027t signed in?",
+      "range": {
+        "startLine": 232,
+        "startChar": 0,
+        "endLine": 237,
+        "endChar": 7
+      },
+      "revId": "bd83ffd68ceda4be7e25d2823a12846e1829b959",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62e4d7a0_c2c5e5ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/proxysettings/proxy_settings.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-09-16T12:36:34Z",
+      "side": 1,
+      "message": "Sorry, we did find the \"save\" button on both ossettings page and the dialog/window on sign-in screen (R107-15112.0.0), or will it be removed soon and we should consider that in advance?",
+      "parentUuid": "bc8b9bb3_74f5afd4",
       "range": {
         "startLine": 232,
         "startChar": 0,
