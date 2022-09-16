@@ -8,7 +8,6 @@ package browserwatcher
 
 import (
 	"context"
-	"sync"
 	"time"
 
 	"github.com/shirou/gopsutil/v3/process"
@@ -24,13 +23,8 @@ const (
 
 // Watcher watches the browser process to attempt to identify situations where Chrome is crashing.
 type Watcher struct {
-	done   chan bool  // used to tell the watcher's goroutine to exit
-	closed chan error // used to wait for the goroutine to exit
-
-	proc *process.Process // browser process.
-
-	mutex      sync.Mutex // protects browserErr
-	browserErr error      // error that was detected, if any
+	proc       *process.Process // browser process
+	browserErr error            // error that was detected, if any
 }
 
 // NewWatcher creates a new Watcher and starts it.
@@ -49,51 +43,25 @@ func NewWatcher(ctx context.Context, execPath string) (*Watcher, error) {
 		return nil, err
 	}
 
-	bw := &Watcher{
-		done:   make(chan bool, 1),
-		closed: make(chan error, 1),
-		proc:   proc,
-	}
-
-	go func() {
-		defer func() {
-			bw.closed <- bw.Err()
-		}()
-		for {
-			select {
-			case <-bw.done:
-				return
-			case <-time.After(checkBrowserInterval):
-				if !bw.check() {
-					return
-				}
-			}
-		}
-	}()
-
-	return bw, nil
-}
-
-// Close synchronously stops the watch goroutine.
-func (bw *Watcher) Close() error {
-	bw.done <- true
-	return <-bw.closed
-}
-
-// Err returns the first error that was observed or nil if no error was observed.
-func (bw *Watcher) Err() error {
-	bw.mutex.Lock()
-	defer bw.mutex.Unlock()
-	return bw.browserErr
+	return &Watcher{proc: proc}, nil
 }
 
 // ReplaceErr returns the first error that was observed if any. Otherwise, it
 // returns err as-is.
-func (bw *Watcher) ReplaceErr(err error) error {
-	if werr := bw.Err(); werr != nil {
-		return werr
+func (bw *Watcher) ReplaceErr(inErr error) error {
+	if bw.browserErr == nil {
+		// Check both running and err here to avoid edge cases
+		// like recycling process ID.
+		// See IsRunning implementation for details.
+		running, err := bw.proc.IsRunning()
+		if err == nil && running {
+			// No error is found, so return the original error.
+			return inErr
+		}
+		bw.browserErr = errors.Wrapf(err, "browser process %d exited; Chrome probably crashed", bw.proc.Pid)
 	}
-	return err
+	// Some error was found, so return it instead of the given err.
+	return bw.browserErr
 }
 
 // WaitExit polls until the *Watcher's target process is no longer running.
@@ -104,16 +72,4 @@ func (bw *Watcher) WaitExit(ctx context.Context) error {
 		}
 		return nil
 	}, &testing.PollOptions{Interval: checkBrowserInterval})
-}
-
-// check is an internal method that checks the browser process, updating browserErr as needed.
-// Returns false after an error has been encountered, indicating that no further calls are needed.
-func (bw *Watcher) check() bool {
-	if running, err := bw.proc.IsRunning(); err != nil || !running {
-		bw.mutex.Lock()
-		defer bw.mutex.Unlock()
-		bw.browserErr = errors.Wrapf(err, "browser process %d exited; Chrome probably crashed", bw.proc.Pid)
-		return false
-	}
-	return true
 }
