@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7ee2b0c3_87946f81",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/config_verify.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2022-09-16T06:28:08Z",
+      "side": 1,
+      "message": "\u003e What is the case that Tast local test is not running on a ChromeOS device?\n\nThis patch is for Tast local test runs on a ChromiumOS device (but not a ChromeOS).\n\nThe ChromiumOS was built based on public manifest, and also it replaced the kernel to the upstream version.\n\n\u003e I think Chromium OS will become ChromioumOS and Chrome OS will become ChromeOS. Not sure if this string will be changed.\n\nCorrect, but it\u0027s not yet happened for /etc/os-release.",
+      "parentUuid": "35691081_b4a68503",
+      "revId": "7226cdac13f86d99e4da7765a494a1c5c0de5ea3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9321b8f0_60299363",
         "filename": "src/chromiumos/tast/local/bundles/cros/kernel/config_verify.go",
         "patchSetId": 3
@@ -49,6 +67,24 @@
       "writtenOn": "2022-09-15T16:25:42Z",
       "side": 1,
       "message": "I took a look at bug. Should we simply not run this test on kernel v5.15.63? \n\nIn general, it is not recommended to change the test behavior based on the software/hardware feature of the test. It is recommended to use software/hardware dependenices and parameterized tests to handle different behavior based on the device features.",
+      "revId": "7226cdac13f86d99e4da7765a494a1c5c0de5ea3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e709359c_249e5103",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/config_verify.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2022-09-16T06:28:08Z",
+      "side": 1,
+      "message": "\u003e Should we simply not run this test on kernel v5.15.63?\n\nThat\u0027s also a way to resolve the issue if we couldn\u0027t figure out a better way.\n\nThe failures are because we have Chromium specific kernel patches that aren\u0027t upstreamed.  I prefer to preserve the tests as most as possible to reuse the efforts.",
+      "parentUuid": "9321b8f0_60299363",
       "revId": "7226cdac13f86d99e4da7765a494a1c5c0de5ea3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

@@ -34,6 +34,24 @@
       "parentUuid": "eaf230ae_9854922a",
       "revId": "abd737bc0c82da2d8e766e40f0c0ffff3cbf6106",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc717936_d5733d41",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/config_verify.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2022-09-16T06:28:08Z",
+      "side": 0,
+      "message": "\u003e It is important to have this check for ChromeOS.\n\nThe check is still enforced in ChromeOS.  It moves to code below.\n\nHowever, for a ChromiumOS without Chromium specific kernel patches, \"SECURITY_CHROMIUMOS\" isn\u0027t there.  After applying the patch, the code checks the config if and only if the device is ChromeOS.\n\n\u003e please feel free to setup meeting with me\n\nI will re-phrase the wordings.  Let\u0027s have a meeting if there is still misunderstanding.",
+      "parentUuid": "7204996d_ba956eba",
+      "revId": "abd737bc0c82da2d8e766e40f0c0ffff3cbf6106",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
