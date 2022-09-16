@@ -29,7 +29,7 @@ func init() {
 			"joelhockey@chromium.org",
 			"chrome-hterm@google.com",
 		},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      2 * time.Minute,
 	})
