@@ -32,7 +32,7 @@ func init() {
 			"chromeos-wmp@google.com",
 		},
 		Attr:         []string{"group:mainline"},
-		SoftwareDeps: []string{"chrome"},
+		SoftwareDeps: []string{"chrome", "no_kernel_upstream"},
 		Params: []testing.Param{{
 			Fixture: "chromeLoggedIn",
 		}, {
@@ -76,18 +76,6 @@ func WindowCycle(ctx context.Context, s *testing.State) {
 	// since they include additional waiting for UI elements to load. This prevents the window
 	// order from changing while cycling. If a window has not completely loaded, it may appear on
 	// top once it finishes loading. If this happens while cycling windows, the test will likely fail.
-	const numApps = 3
-	browserApp, err := apps.PrimaryBrowser(ctx, tconn)
-	if err != nil {
-		s.Fatal("Could not find browser app info: ", err)
-	}
-	if err := apps.Launch(ctx, tconn, browserApp.ID); err != nil {
-		s.Fatal("Failed to launch browser: ", err)
-	}
-	if err := ash.WaitForApp(ctx, tconn, browserApp.ID, time.Minute); err != nil {
-		s.Fatal("Browser did not appear in shelf after launch: ", err)
-	}
-
 	settings, err := ossettings.Launch(ctx, tconn)
 	if err != nil {
 		s.Fatal("Failed to launch Settings: ", err)
@@ -100,18 +88,6 @@ func WindowCycle(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to launch Files app: ", err)
 	}
 
-	// GetAllWindows returns windows in the order of most recent, matching the order they will appear in the cycle window.
-	// We'll use this slice to find the expected window that should be brought to the top after each Alt+Tab cycle,
-	// based on the number of times Tab was pressed. After successfully cycling windows, we'll update this to reflect
-	// the expected order of the windows for the next Alt+Tab cycle.
-	windows, err := ash.GetAllWindows(ctx, tconn)
-	if err != nil {
-		s.Fatal("Failed to get windows: ", err)
-	}
-	if len(windows) != numApps {
-		s.Fatalf("Unexpected number of windows open; wanted %v, got %v", numApps, len(windows))
-	}
-
 	// Get the keyboard
 	keyboard, err := input.Keyboard(ctx)
 	if err != nil {
@@ -119,52 +95,158 @@ func WindowCycle(ctx context.Context, s *testing.State) {
 	}
 	defer keyboard.Close()
 
+	ac := uiauto.New(tconn)
+	// Finder for the window cycle menu when there is only one desk.
+	windowCycleView := nodewith.ClassName("WindowCycleView")
+	// GetAllWindows returns windows in the order of most recent, matching the order they will appear in the cycle window.
+	// We'll use this slice to find the expected window that should be brought to the top after each Alt+Tab cycle,
+	// based on the number of times Tab was pressed. After successfully cycling windows, we'll update this to reflect
+	// the expected order of the windows for the next Alt+Tab cycle.
+	windows, err := ash.GetAllWindows(ctx, tconn)
+
+	// 1. Tests that when there is only one desk with multiple browsers/apps, we can press alt-tab to cycle all windows.
+	verifyWindowsForCycleMenu(ctx, s, tconn, ac, windowCycleView, keyboard, windows)
+
+	// 2. Tests that when there are 8 desks and each desk has at least one browser/app, we can cycle all the apps/browsers
+	// that are opened in all desks when the default status of the alt-tab window is "All desks".
+	// Add 7 desks for a total of 8. Remove them at the end of the test.
+	const totalDesks = 8
+	for i := 0; i < totalDesks-1; i++ {
+		if err = ash.CreateNewDesk(ctx, tconn); err != nil {
+			s.Error("Failed to create a new desk: ", err)
+		}
+
+		// Active the new created desk.
+		if err = ash.ActivateDeskAtIndex(ctx, tconn, i+1); err != nil {
+			s.Fatalf("Failed to activate desk %d: %v", i+1, err)
+		}
+		// Open one browser on the desk.
+		browserApp, err := apps.PrimaryBrowser(ctx, tconn)
+		if err != nil {
+			s.Fatal("Could not find browser app info: ", err)
+		}
+		if err := apps.Launch(ctx, tconn, browserApp.ID); err != nil {
+			s.Fatal("Failed to launch browser: ", err)
+		}
+		if err := ash.WaitForApp(ctx, tconn, browserApp.ID, time.Minute); err != nil {
+			s.Fatal("Browser did not appear in shelf after launch: ", err)
+		}
+	}
+	windows, err = ash.GetAllWindows(ctx, tconn)
+	verifyWindowsForCycleMenu(ctx, s, tconn, ac, windowCycleView, keyboard, windows)
+
+	// 3. Tests that when we active any desk (desk 5) and press alt-tab keys and enable the "Current desk" option.
+	if err = ash.ActivateDeskAtIndex(ctx, tconn, 5); err != nil {
+		s.Fatal("Failed to activate desk 5: ", err)
+	}
+	currentDeskToggleButton := nodewith.HasClass("WindowCycleTabSliderButton").Name("Current desk")
+
+	// Make sure the cycle menu isn't open already before we try to alt+tab.
+	if err := ac.WithTimeout(5 * time.Second).WaitUntilGone(windowCycleView)(ctx); err != nil {
+		s.Fatal("Cycle menu unexpectedly open before pressing alt+tab: ", err)
+	}
+	if err := uiauto.Combine(
+		"click the current desk button",
+		keyboard.AccelPressAction("Alt"),
+		uiauto.Sleep(500*time.Millisecond),
+		keyboard.AccelAction("Tab"),
+		ac.WithTimeout(5*time.Second).WaitUntilExists(windowCycleView),
+		ac.LeftClick(currentDeskToggleButton),
+		uiauto.Sleep(1*time.Second),
+		keyboard.AccelReleaseAction("Alt"),
+	)(ctx); err != nil {
+		s.Fatal("Failed to click current desk button: ", err)
+	}
+
+	// 4. Tests that when we traversal all of the desks and enter the alt-tab window, the "Current desk" should be
+	// enabled based on the test 3.
+	for i := 0; i < totalDesks; i++ {
+		if err = ash.ActivateDeskAtIndex(ctx, tconn, i); err != nil {
+			s.Fatalf("Failed to activate desk %d: %v", i, err)
+		}
+		s.Log("Active desk: ", i)
+		// FindAllWindows returns the windows existing on the active desk.
+		windows, err = ash.FindAllWindows(ctx, tconn, func(w *ash.Window) bool {
+			return w.OnActiveDesk
+		})
+		if err != nil {
+			s.Fatal("Failed to get all windows on active desk: ", err)
+		}
+		verifyWindowsForCycleMenu(ctx, s, tconn, ac, windowCycleView, keyboard, windows)
+	}
+
+	// 5. Delete all desks and press alt-tab keys. All the active apps and browsers should be shown without any option
+	// at the top of the alt-tab window.
+	ash.CleanUpDesks(cleanupCtx, tconn)
+	// WindowCycleTabSlider contains the All desks button and Current desk button.
+	windowCycleTabSlider := nodewith.ClassName("WindowCycleTabSlider").Ancestor(windowCycleView)
+
+	// Make sure the cycle menu isn't open already before we try to alt+tab.
+	if err := ac.WithTimeout(5 * time.Second).WaitUntilGone(windowCycleView)(ctx); err != nil {
+		s.Fatal("Cycle menu unexpectedly open before pressing alt+tab: ", err)
+	}
+	if err := uiauto.Combine(
+		"check no window cycle tab slider when there is only one desk",
+		keyboard.AccelPressAction("Alt"),
+		uiauto.Sleep(500*time.Millisecond),
+		keyboard.AccelAction("Tab"),
+		ac.WithTimeout(5*time.Second).WaitUntilGone(windowCycleTabSlider),
+		uiauto.Sleep(1*time.Second),
+		keyboard.AccelReleaseAction("Alt"),
+	)(ctx); err != nil {
+		s.Fatal("Failed to bring up the cycle window: ", err)
+	}
+}
+
+func verifyWindowsForCycleMenu(ctx context.Context, s *testing.State, tconn *chrome.TestConn, ac *uiauto.Context, cycleMenu *nodewith.Finder, kb *input.KeyboardEventWriter, windows []*ash.Window) {
+	numWindows := len(windows)
+	s.Log("Get the number of windows is: ", numWindows)
 	// Index of the window we'll cycle to.
 	var target int
 
-	// Finder for the window cycle menu.
-	cycleMenu := nodewith.ClassName("WindowCycleList (Alt+Tab)")
-
-	ui := uiauto.New(tconn)
 	// Cycle forwards (Alt + Tab) and backwards (Alt + Shift + Tab).
 	for _, direction := range []string{"forward", "backward"} {
 		s.Log("Cycle direction: ", direction)
-		// Press 'tab' 1, 2, 3, and 4 times to verify cycling behavior.
+		// Press 'tab' 1, 2, 3, ..., until `numWindows` times to verify cycling behavior.
 		// This verifies we can tab to all open windows, and checks the
-		// cycling behavior since 4 tab presses will cycle back around.
-		for i := 0; i < 4; i++ {
+		// cycling behavior since numWindows+1 tab presses will cycle back around.
+		for i := 0; i < numWindows+1; i++ {
 			func() {
 				// Make sure the cycle menu isn't open already before we try to alt+tab.
-				if err := ui.WithTimeout(5 * time.Second).WaitUntilGone(cycleMenu)(ctx); err != nil {
+				if err := ac.WithTimeout(5 * time.Second).WaitUntilGone(cycleMenu)(ctx); err != nil {
 					s.Fatal("Cycle menu unexpectedly open before pressing alt+tab: ", err)
 				}
 
+				// Make sure the Alt key and Shift key already released.
+				kb.AccelRelease(ctx, "Alt")
+				kb.AccelRelease(ctx, "Shift")
+
 				// Open cycle window and get app order.
-				if err := keyboard.AccelPress(ctx, "Alt"); err != nil {
+				if err := kb.AccelPress(ctx, "Alt"); err != nil {
 					s.Fatal("Failed to long press Alt: ", err)
 				}
-				defer keyboard.AccelRelease(ctx, "Alt")
+				defer kb.AccelRelease(ctx, "Alt")
 
 				if direction == "backward" {
-					if err := keyboard.AccelPress(ctx, "Shift"); err != nil {
+					if err := kb.AccelPress(ctx, "Shift"); err != nil {
 						s.Fatal("Failed to long press Shift: ", err)
 					}
-					defer keyboard.AccelRelease(ctx, "Shift")
+					defer kb.AccelRelease(ctx, "Shift")
 				}
 
 				testing.Sleep(ctx, 500*time.Millisecond)
 
-				if err := keyboard.Accel(ctx, "Tab"); err != nil {
+				if err := kb.Accel(ctx, "Tab"); err != nil {
 					s.Fatal("Failed to press Tab: ", err)
 				}
 
 				// Verify that the cycle window appears in the UI with the right number of windows.
-				if err := ui.WithTimeout(5 * time.Second).WaitUntilExists(cycleMenu)(ctx); err != nil {
+				if err := ac.WithTimeout(5 * time.Second).WaitUntilExists(cycleMenu)(ctx); err != nil {
 					s.Fatal("Failed to get Alt+Tab cycle menu: ", err)
 				}
 
-				// Check that there are 3 windows in the cycle menu.
-				openApps, err := ui.NodesInfo(ctx, nodewith.Role(role.Window).Focusable().Ancestor(cycleMenu))
+				// Check that there are `numApps` windows in the cycle menu.
+				openApps, err := ac.NodesInfo(ctx, nodewith.Role(role.Window).Focusable().Ancestor(cycleMenu))
 				if err != nil {
 					s.Fatal("Failed to get open windows in the cycle menu: ", err)
 				}
@@ -186,7 +268,7 @@ func WindowCycle(ctx context.Context, s *testing.State) {
 				}
 
 				for j := 0; j < i; j++ {
-					if err := keyboard.Accel(ctx, "Tab"); err != nil {
+					if err := kb.Accel(ctx, "Tab"); err != nil {
 						s.Fatal("Failed to press Tab: ", err)
 					}
 				}
