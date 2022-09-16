@@ -42,7 +42,9 @@ func init() {
 			"spera.password",       // Required. It is necessary to have account to use Google Sheets.
 			"spera.sampleSheetURL", // Required. The URL of sample Google Sheet. It will be copied to create a new one to perform tests on.
 			"spera.cuj_mode",       // Optional. Expecting "tablet" or "clamshell".
+			"spera.collectTrace",   // Optional. Expecting "enable" or "disable", default is "disable".
 		},
+		Data: []string{cujrecorder.SystemTraceConfigFile},
 		Params: []testing.Param{
 			{
 				Name:    "basic_browsing",
@@ -194,7 +196,9 @@ func FrontlineWorkerCUJ(ctx context.Context, s *testing.State) {
 	if err := cuj.AddPerformanceCUJMetrics(tconn, nil, recorder); err != nil {
 		s.Fatal("Failed to add metrics to recorder: ", err)
 	}
-
+	if collect, ok := s.Var("spera.collectTrace"); ok && collect == "enable" {
+		recorder.EnableTracing(s.OutDir(), s.DataPath(cujrecorder.SystemTraceConfigFile))
+	}
 	numberOfTabs := 13
 	if workload == collaborating {
 		numberOfTabs = 26

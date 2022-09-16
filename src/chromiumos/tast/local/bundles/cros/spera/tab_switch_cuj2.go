@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/display"
+	"chromiumos/tast/local/ui/cujrecorder"
 	"chromiumos/tast/local/wpr"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -35,11 +36,13 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Vars: []string{
 			"spera.cuj_mute",
-			"spera.cuj_mode", // Expecting "tablet" or "clamshell".
+			"spera.cuj_mode",     // Expecting "tablet" or "clamshell".
+			"spera.collectTrace", // Optional. Expecting "enable" or "disable", default is "disable".
 			// WPR addresses are only required when running with WPR Proxy.
 			"ui.wpr_http_addr",
 			"ui.wpr_https_addr",
 		},
+		Data: []string{cujrecorder.SystemTraceConfigFile},
 		Params: []testing.Param{
 			{
 				Name:    "basic",
