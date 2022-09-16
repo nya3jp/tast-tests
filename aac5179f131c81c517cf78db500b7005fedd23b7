@@ -16,6 +16,24 @@
       "message": "nit: reflow comment\n\nCan you also file a bug for the tast framework. A reset failure should also be associated with the previous test. The current test never had a chance to run. +link it here.",
       "revId": "aac5179f131c81c517cf78db500b7005fedd23b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b6b26e1_0e250ec7",
+        "filename": "src/chromiumos/tast/local/policyutil/fixtures/chrome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-09-16T12:54:34Z",
+      "side": 1,
+      "message": "Any suggestions for the reflow? I kind of want to start with \"The following checks\", as that is the most important part.\n\nFor the bug: I think this is by design. Reset does not have access to the testing state. It might not even have any information on which test it follows.",
+      "parentUuid": "76286f24_07c80f06",
+      "revId": "aac5179f131c81c517cf78db500b7005fedd23b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
