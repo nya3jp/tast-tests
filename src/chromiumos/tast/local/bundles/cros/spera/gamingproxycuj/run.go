@@ -36,7 +36,7 @@ const (
 )
 
 // Run runs the GamingProxyCUJ test.
-func Run(ctx context.Context, cr *chrome.Chrome, outDir string, tabletMode bool, bt browser.Type, videoOption VideoOption) (retErr error) {
+func Run(ctx context.Context, cr *chrome.Chrome, outDir, traceConfigPath string, tabletMode bool, bt browser.Type, videoOption VideoOption) (retErr error) {
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 15*time.Second)
 	defer cancel()
@@ -108,7 +108,9 @@ func Run(ctx context.Context, cr *chrome.Chrome, outDir string, tabletMode bool,
 	if err := cuj.AddPerformanceCUJMetrics(tconn, bTconn, recorder); err != nil {
 		return errors.Wrap(err, "failed to add metrics to recorder")
 	}
-
+	if traceConfigPath != "" {
+		recorder.EnableTracing(outDir, traceConfigPath)
+	}
 	chromeApp, err := apps.PrimaryBrowser(ctx, tconn)
 	if err != nil {
 		return errors.Wrap(err, "could not find the Chrome app")

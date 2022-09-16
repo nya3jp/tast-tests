@@ -214,6 +214,9 @@ func Run(ctx context.Context, s *testing.State, cr *chrome.Chrome, pauseMode Pau
 	if err := cuj.AddPerformanceCUJMetrics(tconn, bTconn, recorder); err != nil {
 		s.Fatal("Failed to add metrics to recorder: ", err)
 	}
+	if collect, ok := s.Var("spera.collectTrace"); ok && collect == "enable" {
+		recorder.EnableTracing(s.OutDir(), s.DataPath(cujrecorder.SystemTraceConfigFile))
+	}
 
 	var totalElapsed time.Duration
 	if err = recorder.Run(ctx, func(ctx context.Context) error {

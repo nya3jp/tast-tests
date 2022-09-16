@@ -41,7 +41,7 @@ const (
 )
 
 // Run runs the EDUVideoEditingCUJ test.
-func Run(ctx context.Context, outDir string, cr *chrome.Chrome, tabletMode bool, bt browser.Type) error {
+func Run(ctx context.Context, outDir, traceConfigPath string, cr *chrome.Chrome, tabletMode bool, bt browser.Type) error {
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 15*time.Second)
 	defer cancel()
@@ -101,7 +101,9 @@ func Run(ctx context.Context, outDir string, cr *chrome.Chrome, tabletMode bool,
 	if err := cuj.AddPerformanceCUJMetrics(tconn, bTconn, recorder); err != nil {
 		return errors.Wrap(err, "failed to add metrics to recorder")
 	}
-
+	if traceConfigPath != "" {
+		recorder.EnableTracing(outDir, traceConfigPath)
+	}
 	if err := recorder.Run(ctx, func(ctx context.Context) error {
 		return videoEditingScenario(ctx, tconn, cr, kb, uiHdl, tabletMode, outDir, br)
 	}); err != nil {
