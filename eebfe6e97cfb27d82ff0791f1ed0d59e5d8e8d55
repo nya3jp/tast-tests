@@ -33,6 +33,24 @@
       "message": "Remove this file.",
       "revId": "eebfe6e97cfb27d82ff0791f1ed0d59e5d8e8d55",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "328f6fc6_d7cc7c35",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perfetto_play_store.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1553967
+      },
+      "writtenOn": "2022-09-16T01:45:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3d097e82_e9640047",
+      "revId": "eebfe6e97cfb27d82ff0791f1ed0d59e5d8e8d55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

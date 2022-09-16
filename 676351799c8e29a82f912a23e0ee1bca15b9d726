@@ -55,6 +55,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "0f53359a_8b2a9540",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1553967
+      },
+      "writtenOn": "2022-09-16T01:45:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c3878353_28822a8d",
+      "revId": "676351799c8e29a82f912a23e0ee1bca15b9d726",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "0fd3da1a_718741e9",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 3
@@ -359,6 +377,24 @@
       "side": 1,
       "message": "s.Fatal(\"F^*:\", err)\n\nSo that the error report can be a chain.",
       "parentUuid": "c682cd05_c7c307c8",
+      "revId": "676351799c8e29a82f912a23e0ee1bca15b9d726",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e209a835_7eb9e2f0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perfetto_play_store.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1553967
+      },
+      "writtenOn": "2022-09-16T01:45:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "be6ee307_c178ebb7",
       "revId": "676351799c8e29a82f912a23e0ee1bca15b9d726",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
