@@ -46,6 +46,30 @@
       },
       "revId": "7226cdac13f86d99e4da7765a494a1c5c0de5ea3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "433629cd_59b69e6b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/config_verify.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2022-09-16T06:28:15Z",
+      "side": 0,
+      "message": "I will re-phrase the wordings.  Let\u0027s have a meeting if there is still misunderstanding.",
+      "parentUuid": "07153bfb_92aefc04",
+      "range": {
+        "startLine": 299,
+        "startChar": 29,
+        "endLine": 299,
+        "endChar": 43
+      },
+      "revId": "7226cdac13f86d99e4da7765a494a1c5c0de5ea3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
