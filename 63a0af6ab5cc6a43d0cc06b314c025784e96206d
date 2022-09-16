@@ -192,6 +192,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8e4ca037_ad45fa03",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perfetto_wm_jankness.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2022-09-16T06:42:26Z",
+      "side": 1,
+      "message": "Good point. I re-checked the implementation of activity.SetWindowState().\nIt calls ash.SetWindowState() [1] with \u0027false\u0027 for waitForStateChange.\nSo, using ash.SetARCAppWindowStateAndWait()[2] is probably better in this case. Sorry for the confusion!\n\nI am not sure whether we can remove the sleep at all by using \u0027AndWait\u0027 variant or not. It waits for animation finished on Chrome side, so might not be suitable for this case.\n\n\n[1]: https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/arc/activity.go;l\u003d876\n[2]: https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/ash/wm.go;l\u003d313?q\u003dWaitForARCAppWindowState",
+      "parentUuid": "b3b4ee94_d132830d",
+      "range": {
+        "startLine": 80,
+        "startChar": 5,
+        "endLine": 80,
+        "endChar": 11
+      },
+      "revId": "63a0af6ab5cc6a43d0cc06b314c025784e96206d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7d3e3e85_d271bb85",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/perfetto_wm_jankness.go",
         "patchSetId": 8
