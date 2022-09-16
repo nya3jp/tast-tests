@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "782019d5_a7180b4a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-09-16T19:08:52Z",
+      "side": 1,
+      "message": "I mean, this is the tast-tests repo, so unless we\u0027re putting it on every CL...",
+      "parentUuid": "d837e798_3365fd35",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 3
+      },
+      "revId": "6ef703565341e4e490373a3a2f6c1907492cf26a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "046f9fc3_61514ea7",
         "filename": "src/chromiumos/tast/local/bundles/cros/cellular/shill_cellular_disable_while_connecting.go",
         "patchSetId": 2
@@ -37,6 +61,30 @@
       "writtenOn": "2022-09-16T18:53:58Z",
       "side": 1,
       "message": "How long do we expect to be in associating state? I think WaitForProperty is a 100ms poll, is there any risk that we miss this state?",
+      "range": {
+        "startLine": 88,
+        "startChar": 34,
+        "endLine": 88,
+        "endChar": 45
+      },
+      "revId": "6ef703565341e4e490373a3a2f6c1907492cf26a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00abf56b_c08ba092",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/shill_cellular_disable_while_connecting.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-09-16T19:08:52Z",
+      "side": 1,
+      "message": "It\u0027s 100ms in this as well as in the version that used FindServiceForDeviceWithProps, so I figured it doesn\u0027t matter one way or the other.\n\nWe would often miss the state if the bearer were just disconnected rather than toggling disable/enable at the beginning of the test, but the latter seems to be reliable enough in my tests. We can also gather results from the flaky board once this is in to figure out if we need to be able to configure the interval.",
+      "parentUuid": "046f9fc3_61514ea7",
       "range": {
         "startLine": 88,
         "startChar": 34,
