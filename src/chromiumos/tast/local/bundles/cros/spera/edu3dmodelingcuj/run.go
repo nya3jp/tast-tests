@@ -32,7 +32,7 @@ const (
 )
 
 // Run runs the EDU3DModelingCUJ test.
-func Run(ctx context.Context, cr *chrome.Chrome, isTablet bool, bt browser.Type, outDir, sampleDesignURL, rotateIconPath string) error {
+func Run(ctx context.Context, cr *chrome.Chrome, isTablet bool, bt browser.Type, outDir, traceConfigPath, sampleDesignURL, rotateIconPath string) error {
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		return errors.Wrap(err, "failed to connect to the test API connection")
@@ -96,7 +96,9 @@ func Run(ctx context.Context, cr *chrome.Chrome, isTablet bool, bt browser.Type,
 	if err := cuj.AddPerformanceCUJMetrics(tconn, bTconn, recorder); err != nil {
 		return errors.Wrap(err, "failed to add metrics to recorder")
 	}
-
+	if traceConfigPath != "" {
+		recorder.EnableTracing(outDir, traceConfigPath)
+	}
 	kb, err := input.Keyboard(ctx)
 	if err != nil {
 		return errors.Wrap(err, "failed to find keyboard")

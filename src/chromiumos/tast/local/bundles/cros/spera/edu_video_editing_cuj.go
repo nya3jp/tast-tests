@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/display"
+	"chromiumos/tast/local/ui/cujrecorder"
 	"chromiumos/tast/testing"
 )
 
@@ -27,7 +28,9 @@ func init() {
 		Vars: []string{
 			// Optional. Expecting "tablet" or "clamshell". Other values will be be taken as "clamshell".
 			"spera.cuj_mode",
+			"spera.collectTrace", // Optional. Expecting "enable" or "disable", default is "disable".
 		},
+		Data: []string{cujrecorder.SystemTraceConfigFile},
 		Params: []testing.Param{
 			{
 				Name:    "premium_wevideo",
@@ -81,7 +84,11 @@ func EDUVideoEditingCUJ(ctx context.Context, s *testing.State) {
 		}
 		defer cleanup(cleanupCtx)
 	}
-	if err := videoeditingcuj.Run(ctx, s.OutDir(), cr, tabletMode, s.Param().(browser.Type)); err != nil {
+	traceConfigPath := ""
+	if collect, ok := s.Var("spera.collectTrace"); ok && collect == "enable" {
+		traceConfigPath = s.DataPath(cujrecorder.SystemTraceConfigFile)
+	}
+	if err := videoeditingcuj.Run(ctx, s.OutDir(), traceConfigPath, cr, tabletMode, s.Param().(browser.Type)); err != nil {
 		s.Fatal("Failed to run the video editing on the web cuj: ", err)
 	}
 }

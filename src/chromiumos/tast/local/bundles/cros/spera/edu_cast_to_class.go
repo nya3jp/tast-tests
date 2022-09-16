@@ -40,8 +40,10 @@ func init() {
 		SoftwareDeps: []string{"chrome", "arc"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		Vars: []string{
-			"spera.cuj_mode", // Optional. Expecting "tablet" or "clamshell". Other values will be be taken as "clamshell".
+			"spera.cuj_mode",     // Optional. Expecting "tablet" or "clamshell". Other values will be be taken as "clamshell".
+			"spera.collectTrace", // Optional. Expecting "enable" or "disable", default is "disable".
 		},
+		Data: []string{cujrecorder.SystemTraceConfigFile},
 		Params: []testing.Param{
 			{
 				Name:    "plus_cast",
@@ -225,7 +227,9 @@ func EDUCastToClass(ctx context.Context, s *testing.State) {
 	if err := cuj.AddPerformanceCUJMetrics(tconn, bTconn, recorder); err != nil {
 		s.Fatal("Failed to add metrics to recorder: ", err)
 	}
-
+	if collect, ok := s.Var("spera.collectTrace"); ok && collect == "enable" {
+		recorder.EnableTracing(s.OutDir(), s.DataPath(cujrecorder.SystemTraceConfigFile))
+	}
 	pv := perf.NewValues()
 	if err = recorder.Run(ctx, func(ctx context.Context) error {
 		if err := googleapps.NewGoogleSlides(ctx, tconn, br, uiHandler, false); err != nil {
