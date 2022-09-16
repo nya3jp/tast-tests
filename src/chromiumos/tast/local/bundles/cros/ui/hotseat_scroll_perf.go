@@ -10,7 +10,7 @@ import (
 
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/bundles/cros/ui/perfutil"
+	uiperf "chromiumos/tast/local/bundles/cros/ui/perf"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
@@ -18,6 +18,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/launcher"
 	"chromiumos/tast/local/chrome/uiauto/touch"
 	"chromiumos/tast/local/coords"
+	"chromiumos/tast/local/perfutil"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -322,14 +323,14 @@ func HotseatScrollPerf(ctx context.Context, s *testing.State) {
 		if setting.state == overviewIsVisible {
 			suffix = "OverviewShown"
 		}
-		passed := runner.RunMultiple(ctx, s, setting.state.String(), perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
+		runnerError := runner.RunMultiple(ctx, setting.state.String(), uiperf.Run(s, perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
 			return runShelfScroll(ctx, tconn)
-		}, shelfAnimationHistogramName(setting.mode, setting.state)),
+		}, shelfAnimationHistogramName(setting.mode, setting.state))),
 			perfutil.StoreAll(perf.BiggerIsBetter, "percent", suffix))
 		if err := cleanupFunc(ctx); err != nil {
 			s.Fatalf("Failed to cleanup for %v: %v", setting.state, err)
 		}
-		if !passed {
+		if runnerError != nil {
 			return
 		}
 	}

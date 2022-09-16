@@ -10,7 +10,7 @@ import (
 
 	"chromiumos/tast/common/action"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/bundles/cros/ui/perfutil"
+	uiperf "chromiumos/tast/local/bundles/cros/ui/perf"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto"
@@ -18,6 +18,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/mouse"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/local/perfutil"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/local/ui"
 	"chromiumos/tast/testing"
@@ -107,7 +108,7 @@ func DragTabInClamshellPerf(ctx context.Context, s *testing.State) {
 	}
 	start := tabRect.CenterPoint()
 
-	pv := perfutil.RunMultiple(ctx, s, cr.Browser(), perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
+	pv := perfutil.RunMultiple(ctx, cr.Browser(), uiperf.Run(s, perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
 		return uiauto.Combine("drag and move a tab",
 			mouse.Drag(tconn, start, end, time.Second),
 			ac.Retry(10, checkWindowsNum(ctx, tconn, 2)),
@@ -118,7 +119,7 @@ func DragTabInClamshellPerf(ctx context.Context, s *testing.State) {
 		)(ctx)
 	},
 		"Ash.TabDrag.PresentationTime.ClamshellMode",
-		"Ash.TabDrag.PresentationTime.MaxLatency.ClamshellMode"),
+		"Ash.TabDrag.PresentationTime.MaxLatency.ClamshellMode")),
 		perfutil.StoreLatency)
 	if err := pv.Save(ctx, s.OutDir()); err != nil {
 		s.Error("Failed to save perf data: ", err)

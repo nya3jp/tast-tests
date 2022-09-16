@@ -13,7 +13,7 @@ import (
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/bundles/cros/ui/perfutil"
+	uiperf "chromiumos/tast/local/bundles/cros/ui/perf"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
@@ -26,6 +26,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/cpu"
+	"chromiumos/tast/local/perfutil"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/testing"
 )
@@ -167,10 +168,10 @@ func BubbleLauncherAnimationPerf(ctx context.Context, s *testing.State) {
 	// Note that the test needs to take traces in ash-chrome, and grab the metrics from ash-chrome.
 	// So, ash-chrome (cr) should be used for perfutil.NewRunner and ash test APIs (tconn) for RunAndWaitAll here in this test.
 	runner := perfutil.NewRunner(cr.Browser())
-	runner.RunMultiple(ctx, s, name,
+	runner.RunMultiple(ctx, name, uiperf.Run(s,
 		perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
 			return openAndCloseLauncher(ctx, tconn, ui)
-		}, openHistogramName, closeHistogramName),
+		}, openHistogramName, closeHistogramName)),
 		perfutil.StoreAll(perf.BiggerIsBetter, "percent", name))
 
 	// Open 2 browser windows with web contents playing an animation.
@@ -203,10 +204,10 @@ func BubbleLauncherAnimationPerf(ctx context.Context, s *testing.State) {
 	// Run the the flow again with 2 browser windows open.
 	// This aligns with ui.LauncherAnimationPerf for the legacy launcher.
 	name = "2windows"
-	runner.RunMultiple(ctx, s, name,
+	runner.RunMultiple(ctx, name, uiperf.Run(s,
 		perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
 			return openAndCloseLauncher(ctx, tconn, ui)
-		}, openHistogramName, closeHistogramName),
+		}, openHistogramName, closeHistogramName)),
 		perfutil.StoreAll(perf.BiggerIsBetter, "percent", name))
 
 	if err := runner.Values().Save(ctx, s.OutDir()); err != nil {

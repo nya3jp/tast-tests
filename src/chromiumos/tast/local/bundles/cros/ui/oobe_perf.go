@@ -9,9 +9,10 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/bundles/cros/ui/perfutil"
+	uiperf "chromiumos/tast/local/bundles/cros/ui/perf"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/metrics"
+	"chromiumos/tast/local/perfutil"
 	"chromiumos/tast/testing"
 )
 
@@ -39,24 +40,23 @@ func OobePerf(ctx context.Context, s *testing.State) {
 		histogramName = "OOBE.WebUI.LoadTime.FirstRun"
 	)
 	r := perfutil.NewRunner(nil)
-	r.RunMultiple(ctx, s, "OobePerf",
-		func(ctx context.Context) ([]*metrics.Histogram, error) {
-			// Load OOBE Welcome Screen (first OOBE screen). Test extension is required to fetch histograms.
-			cr, err := chrome.New(ctx, chrome.NoLogin(), chrome.LoadSigninProfileExtension(s.RequiredVar("ui.signinProfileTestExtensionManifestKey")))
-			if err != nil {
-				s.Fatal("Failed to start Chrome: ", err)
-			}
+	r.RunMultiple(ctx, "OobePerf", uiperf.Run(s, func(ctx context.Context, name string) ([]*metrics.Histogram, error) {
+		// Load OOBE Welcome Screen (first OOBE screen). Test extension is required to fetch histograms.
+		cr, err := chrome.New(ctx, chrome.NoLogin(), chrome.LoadSigninProfileExtension(s.RequiredVar("ui.signinProfileTestExtensionManifestKey")))
+		if err != nil {
+			s.Fatal("Failed to start Chrome: ", err)
+		}
 
-			defer cr.Close(ctx)
+		defer cr.Close(ctx)
 
-			tLoginConn, err := cr.SigninProfileTestAPIConn(ctx)
-			if err != nil {
-				return nil, errors.Wrap(err, "creating login test api connection failed")
-			}
-			// Wait for the WebUI load time histogram reported. 10 seconds should be enough even on the slowest boards. Making it 15 just in case.
-			hist, err := metrics.WaitForHistogram(ctx, tLoginConn, histogramName, 15*time.Second)
-			return []*metrics.Histogram{hist}, err
-		},
+		tLoginConn, err := cr.SigninProfileTestAPIConn(ctx)
+		if err != nil {
+			return nil, errors.Wrap(err, "creating login test api connection failed")
+		}
+		// Wait for the WebUI load time histogram reported. 10 seconds should be enough even on the slowest boards. Making it 15 just in case.
+		hist, err := metrics.WaitForHistogram(ctx, tLoginConn, histogramName, 15*time.Second)
+		return []*metrics.Histogram{hist}, err
+	}),
 		perfutil.StoreAllWithHeuristics("Duration"))
 
 	if err := r.Values().Save(ctx, s.OutDir()); err != nil {

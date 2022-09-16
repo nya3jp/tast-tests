@@ -12,7 +12,7 @@ import (
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/bundles/cros/ui/perfutil"
+	uiperf "chromiumos/tast/local/bundles/cros/ui/perf"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
@@ -20,6 +20,7 @@ import (
 	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/uiauto/mouse"
 	"chromiumos/tast/local/coords"
+	"chromiumos/tast/local/perfutil"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/local/ui"
 	"chromiumos/tast/testing"
@@ -133,7 +134,7 @@ func WindowResizePerf(ctx context.Context, s *testing.State) {
 		}
 
 		suffix := fmt.Sprintf("%dwindows", numWindows)
-		runner.RunMultiple(ctx, s, suffix, perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
+		runner.RunMultiple(ctx, suffix, uiperf.Run(s, perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
 			w0, err := ash.GetWindow(ctx, tconn, id0)
 			if err != nil {
 				s.Error("Failed to get windows: ", err)
@@ -188,7 +189,7 @@ func WindowResizePerf(ctx context.Context, s *testing.State) {
 			}
 			released = true
 			return testing.Sleep(ctx, time.Second)
-		}, metricsName),
+		}, metricsName)),
 			perfutil.StoreAll(perf.SmallerIsBetter, "ms", suffix))
 	}
 

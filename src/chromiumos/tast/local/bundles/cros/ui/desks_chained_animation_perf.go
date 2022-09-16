@@ -10,9 +10,10 @@ import (
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/bundles/cros/ui/perfutil"
+	uiperf "chromiumos/tast/local/bundles/cros/ui/perf"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/perfutil"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -58,7 +59,7 @@ func DesksChainedAnimationPerf(ctx context.Context, s *testing.State) {
 		defer ash.CleanUpDesks(cleanupCtx, tconn)
 	}
 
-	pv := perfutil.RunMultiple(ctx, s, cr.Browser(), perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
+	pv := perfutil.RunMultiple(ctx, cr.Browser(), uiperf.Run(s, perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
 		// Starting at desk 1, activate desk 4 by activating each adjacent desk until we reach it.
 		if err = ash.ActivateAdjacentDesksToTargetIndex(ctx, tconn, 3); err != nil {
 			return errors.Wrap(err, "failed to activate the fourth desk")
@@ -69,7 +70,7 @@ func DesksChainedAnimationPerf(ctx context.Context, s *testing.State) {
 		}
 		return nil
 	},
-		"Ash.Desks.AnimationSmoothness.DeskActivation"),
+		"Ash.Desks.AnimationSmoothness.DeskActivation")),
 		perfutil.StoreSmoothness)
 
 	if err := pv.Save(ctx, s.OutDir()); err != nil {

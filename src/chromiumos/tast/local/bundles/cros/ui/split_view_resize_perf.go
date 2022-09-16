@@ -13,7 +13,7 @@ import (
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/bundles/cros/ui/perfutil"
+	uiperf "chromiumos/tast/local/bundles/cros/ui/perf"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
@@ -23,6 +23,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/pointer"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/coords"
+	"chromiumos/tast/local/perfutil"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/local/ui"
 	"chromiumos/tast/testing"
@@ -374,7 +375,7 @@ func SplitViewResizePerf(ctx context.Context, s *testing.State) {
 			// status. Still this is not a problem, as RunAndWaitAll function will
 			// wait for the metrics for the divider animation which is generated
 			// after the divider animation finishes.
-			runner.RunMultiple(ctx, s, testCase.name,
+			runner.RunMultiple(ctx, testCase.name, uiperf.Run(s,
 				perfutil.RunAndWaitAll(tconn,
 					uiauto.Combine("drag resizing the splitview",
 						pc.Drag(dragPoints[0], gestures...),
@@ -385,7 +386,7 @@ func SplitViewResizePerf(ctx context.Context, s *testing.State) {
 						},
 					),
 					histogramNames...,
-				),
+				)),
 				func(ctx context.Context, pv *perfutil.Values, hists []*metrics.Histogram) error {
 					for _, hist := range hists {
 						value, err := hist.Mean()
