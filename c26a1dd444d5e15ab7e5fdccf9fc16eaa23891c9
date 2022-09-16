@@ -20,6 +20,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "12675974_0ef9db8f",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_binary.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-09-16T14:53:18Z",
+      "side": 1,
+      "message": "Can you now rename this as UpdatePasswordAuthFactor?",
+      "range": {
+        "startLine": 396,
+        "startChar": 27,
+        "endLine": 396,
+        "endChar": 43
+      },
+      "revId": "c26a1dd444d5e15ab7e5fdccf9fc16eaa23891c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bd5a2c95_d13f732a",
         "filename": "src/chromiumos/tast/common/hwsec/cryptohome_client.go",
         "patchSetId": 4
@@ -54,6 +77,47 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8243e6ac_1cc73b4a",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_client.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1099,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-09-16T14:53:18Z",
+      "side": 1,
+      "message": "this seems correct though",
+      "parentUuid": "3d1b30bb_198e7549",
+      "revId": "c26a1dd444d5e15ab7e5fdccf9fc16eaa23891c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee5a0948_dd69167e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/update_pin.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-09-16T14:53:18Z",
+      "side": 1,
+      "message": "For the VaultKeysets you should authenticate with password and add the PIN after that. There are some secrets (reset_seed) that need to be copied from password VK to PIN VK. So the cryptohome implementation fails other trials like adding a password or PIN after authenticating with PIN",
+      "range": {
+        "startLine": 139,
+        "startChar": 18,
+        "endLine": 139,
+        "endChar": 30
+      },
+      "revId": "c26a1dd444d5e15ab7e5fdccf9fc16eaa23891c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7607d6c6_2e7c760a",
         "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/update_pin.go",
         "patchSetId": 4
@@ -65,6 +129,29 @@
       "writtenOn": "2022-09-15T18:13:34Z",
       "side": 1,
       "message": "Invalidate\n\nsame for all the calls",
+      "revId": "c26a1dd444d5e15ab7e5fdccf9fc16eaa23891c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc938e8a_72ba2e2c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/update_pin.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-09-16T14:53:18Z",
+      "side": 1,
+      "message": "These AuthenticateWithPinAuthFactor()\u0027s should all be changed by AuthenticateWithPasswordAuthFactor because of the reason I mentioned above. Update operation is also remove+add, and add cannot succeed after authenticating with PIN",
+      "range": {
+        "startLine": 154,
+        "startChar": 22,
+        "endLine": 154,
+        "endChar": 47
+      },
       "revId": "c26a1dd444d5e15ab7e5fdccf9fc16eaa23891c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
