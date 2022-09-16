@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aea6380b_55fe0a69",
+        "filename": "helpers/local/featured.FeatureLibrary.check.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1551433
+      },
+      "writtenOn": "2022-09-16T18:10:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b0e6e66e_93fd0991",
+      "range": {
+        "startLine": 4,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 0
+      },
+      "revId": "968d914ff2154bc4bb26cf8ab072be0711c9bc6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "99542976_33076bd8",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7eef2a67_4a9132fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/featured/feature_library_late_boot.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1551433
+      },
+      "writtenOn": "2022-09-16T18:10:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "99542976_33076bd8",
+      "range": {
+        "startLine": 134,
+        "startChar": 1,
+        "endLine": 135,
+        "endChar": 40
+      },
+      "revId": "968d914ff2154bc4bb26cf8ab072be0711c9bc6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "22c36eff_4c28826f",
@@ -77,6 +125,24 @@
       "writtenOn": "2022-09-16T01:44:14Z",
       "side": 1,
       "message": "nit: const fileName \u003d \"check_stderr\"",
+      "revId": "968d914ff2154bc4bb26cf8ab072be0711c9bc6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a6402fe_2b598e04",
+        "filename": "src/chromiumos/tast/local/bundles/cros/featured/feature_library_late_boot.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1551433
+      },
+      "writtenOn": "2022-09-16T18:10:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "22c36eff_4c28826f",
       "revId": "968d914ff2154bc4bb26cf8ab072be0711c9bc6c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
