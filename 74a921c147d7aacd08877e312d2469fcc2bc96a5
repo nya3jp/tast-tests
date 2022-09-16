@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65cffa03_f10d02e4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-09-16T08:19:20Z",
+      "side": 1,
+      "message": "nit: please use some prefix, like `tast-tests:` or `browserwatcher`.\nNo need for  `.` at the end of the subject title.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 39
+      },
+      "revId": "74a921c147d7aacd08877e312d2469fcc2bc96a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90c2f0cc_7ab59897",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-09-16T08:19:20Z",
+      "side": 1,
+      "message": "nit: `cannot be neglected` ot `is not negligible`",
+      "range": {
+        "startLine": 18,
+        "startChar": 44,
+        "endLine": 18,
+        "endChar": 64
+      },
+      "revId": "74a921c147d7aacd08877e312d2469fcc2bc96a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa01ba2d_ec0701ee",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-09-16T08:19:20Z",
+      "side": 1,
+      "message": "nit: commit message lines should not be longer than 72 characters.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 20
+      },
+      "revId": "74a921c147d7aacd08877e312d2469fcc2bc96a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1ce249b_e7155e43",
+        "filename": "src/chromiumos/tast/local/chrome/internal/browserwatcher/browserwatcher.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-09-16T08:19:20Z",
+      "side": 1,
+      "message": "minor nit: dot can be removed.",
+      "range": {
+        "startLine": 26,
+        "startChar": 47,
+        "endLine": 26,
+        "endChar": 48
+      },
+      "revId": "74a921c147d7aacd08877e312d2469fcc2bc96a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0609781d_77b91545",
+        "filename": "src/chromiumos/tast/local/chrome/internal/browserwatcher/browserwatcher.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-09-16T08:19:20Z",
+      "side": 1,
+      "message": "Which `err` is this? the one from `ReplaceErr(err error)`, or `running, err :\u003d bw.proc.IsRunning()`?\nI think the `err` from `ReplaceErr(err error)` is overwritten at this point.",
+      "range": {
+        "startLine": 56,
+        "startChar": 10,
+        "endLine": 56,
+        "endChar": 13
+      },
+      "revId": "74a921c147d7aacd08877e312d2469fcc2bc96a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
