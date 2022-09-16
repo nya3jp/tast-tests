@@ -52,6 +52,24 @@
       "parentUuid": "8b6b26e1_0e250ec7",
       "revId": "aac5179f131c81c517cf78db500b7005fedd23b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "12921faf_b9ae10f2",
+        "filename": "src/chromiumos/tast/local/policyutil/fixtures/chrome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-09-16T19:45:13Z",
+      "side": 1,
+      "message": "I am using diff width 100, so it looks nice in my Gerrit.",
+      "parentUuid": "0f965186_0ad822f7",
+      "revId": "aac5179f131c81c517cf78db500b7005fedd23b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
