@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76286f24_07c80f06",
+        "filename": "src/chromiumos/tast/local/policyutil/fixtures/chrome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-09-16T12:42:31Z",
+      "side": 1,
+      "message": "nit: reflow comment\n\nCan you also file a bug for the tast framework. A reset failure should also be associated with the previous test. The current test never had a chance to run. +link it here.",
+      "revId": "aac5179f131c81c517cf78db500b7005fedd23b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
