@@ -16,6 +16,23 @@
       "message": "Could you review this for me? Thank you so much!",
       "revId": "eebfe6e97cfb27d82ff0791f1ed0d59e5d8e8d55",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d097e82_e9640047",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perfetto_play_store.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1510928
+      },
+      "writtenOn": "2022-09-16T01:01:32Z",
+      "side": 1,
+      "message": "Remove this file.",
+      "revId": "eebfe6e97cfb27d82ff0791f1ed0d59e5d8e8d55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
