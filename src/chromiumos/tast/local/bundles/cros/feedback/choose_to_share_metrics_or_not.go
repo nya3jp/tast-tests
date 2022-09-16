@@ -14,8 +14,6 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/browser"
-	"chromiumos/tast/local/chrome/localstate"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/feedbackapp"
@@ -24,12 +22,15 @@ import (
 	"chromiumos/tast/testing"
 )
 
+const metrics = "histograms.zip"
+
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         ReportContainsEmail,
+		Func:         ChooseToShareMetricsOrNot,
 		LacrosStatus: testing.LacrosVariantUnneeded,
-		Desc:         "Verify feedback report contains user email",
+		Desc:         "Verify user can share metrics or not",
 		Contacts: []string{
+			"wangdanny@google.com",
 			"zhangwenyu@google.com",
 			"xiangdongkong@google.com",
 			"cros-feedback-app@google.com",
@@ -38,17 +39,17 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      5 * time.Minute,
 		Params: []testing.Param{{
-			Name: "include_email",
+			Name: "share_metrics",
 			Val:  true,
 		}, {
-			Name: "not_include_email",
+			Name: "not_share_metrics",
 			Val:  false,
 		}},
 	})
 }
 
-// ReportContainsEmail verifies feedback report contains user email.
-func ReportContainsEmail(ctx context.Context, s *testing.State) {
+// ChooseToShareMetricsOrNot verifies user can choose to share metrics or not.
+func ChooseToShareMetricsOrNot(ctx context.Context, s *testing.State) {
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
 	defer cancel()
@@ -76,7 +77,7 @@ func ReportContainsEmail(ctx context.Context, s *testing.State) {
 	}()
 
 	ui := uiauto.New(tconn).WithTimeout(20 * time.Second)
-	expectedEmailInFeedback := s.Param().(bool)
+	shareMetrics := s.Param().(bool)
 
 	// Launch feedback app and go to share data page.
 	feedbackRootNode, err := feedbackapp.LaunchAndGoToShareDataPage(ctx, tconn)
@@ -84,34 +85,16 @@ func ReportContainsEmail(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to launch feedback app and navigating to share data page: ", err)
 	}
 
-	// Find default selected email address.
-	var localState struct {
-		Emails []string `json:"LoggedInUsers"`
-	}
-
-	if err := localstate.Unmarshal(browser.TypeAsh, &localState); err != nil {
-		s.Fatal("Failed to extract Local State: ", err)
-	}
-
-	var selectedEmail string
-	for _, email := range localState.Emails {
-		if err := ui.WaitUntilExists(nodewith.NameContaining(email).First())(
-			ctx); err == nil {
-			selectedEmail = email
-		}
-	}
-
-	emailDropdown := nodewith.Name("Select email").Role(role.ListBox)
-	dontIncludeEmailOption := nodewith.Name("anonymous user").Role(role.ListBoxOption)
-
-	// Choose not to include email if needed.
-	if !expectedEmailInFeedback {
-		if err := uiauto.Combine("choose not to include Email",
-			ui.LeftClickUntil(emailDropdown, ui.WithTimeout(
-				2*time.Second).WaitUntilExists(dontIncludeEmailOption)),
-			ui.LeftClick(dontIncludeEmailOption),
+	// Uncheck the share diagnostic data checkbox if needed.
+	if !shareMetrics {
+		checkboxContainer := nodewith.Name("Send system and app info and metrics").Role(
+			role.GenericContainer).Ancestor(feedbackRootNode)
+		checkbox := nodewith.Role(role.CheckBox).Ancestor(checkboxContainer)
+		if err := uiauto.Combine("Uncheck the share diagnostic data checkbox",
+			ui.DoDefault(checkbox),
+			ui.WaitUntilExists(checkbox.Attribute("checked", "false")),
 		)(ctx); err != nil {
-			s.Fatal("Failed to choose not include Email: ", err)
+			s.Fatal("Failed to uncheck the share diagnostic data checkbox: ", err)
 		}
 	}
 
@@ -142,16 +125,15 @@ func ReportContainsEmail(ctx context.Context, s *testing.State) {
 	}
 
 	actualContent := strings.ToValidUTF8(string(content), "")
-	expectedEmail := selectedEmail
 
-	// Verify feedback report contains email based on user selection.
-	if expectedEmailInFeedback {
-		if !strings.Contains(actualContent, expectedEmail) {
-			s.Fatalf("Expected email %s does not exist", expectedEmail)
+	// Verify feedback report contains metrics based on user selection.
+	if shareMetrics {
+		if !strings.Contains(actualContent, metrics) {
+			s.Fatalf("Expected metrics %s does not exist", metrics)
 		}
 	} else {
-		if strings.Contains(actualContent, expectedEmail) {
-			s.Fatalf("Unexpected email %s does exist", expectedEmail)
+		if strings.Contains(actualContent, metrics) {
+			s.Fatalf("Unexpected metrics %s does exist", metrics)
 		}
 	}
 }
