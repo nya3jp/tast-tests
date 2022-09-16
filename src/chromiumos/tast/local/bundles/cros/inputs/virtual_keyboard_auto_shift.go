@@ -41,12 +41,12 @@ func init() {
 		Params: []testing.Param{
 			{
 				// Auto-shift is primarily designed for tablet mode.
-				Fixture:   fixture.TabletVK,
+				Fixture:   fixture.TabletVKRestart,
 				ExtraAttr: []string{"group:input-tools-upstream"},
 			},
 			{
 				Name:              "lacros",
-				Fixture:           fixture.LacrosTabletVK,
+				Fixture:           fixture.LacrosTabletVKRestart,
 				ExtraAttr:         []string{"informational"},
 				ExtraSoftwareDeps: []string{"lacros"},
 			},
