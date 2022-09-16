@@ -51,6 +51,29 @@
       "parentUuid": "2c2395a6_73d8f1e3",
       "revId": "fe1060d6a9f8ba95166f5edb5a03b7542bc1a01e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ced1cdd7_106a7543",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perfetto_wm_jankness.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-09-16T18:31:34Z",
+      "side": 1,
+      "message": "Strange. I can\u0027t find this function. Am I missing something?\n\nhttps://source.corp.google.com/search?q\u003d%5CbPerfettoTrace%5Cb\u0026sq\u003dpackage:%5Echromeos_(internal%7Cpublic)$",
+      "range": {
+        "startLine": 57,
+        "startChar": 13,
+        "endLine": 57,
+        "endChar": 26
+      },
+      "revId": "fe1060d6a9f8ba95166f5edb5a03b7542bc1a01e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
