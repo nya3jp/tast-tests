@@ -36,6 +36,9 @@ tbegin@chromium.org
 vsavu@google.com
 yamaguchi@chromium.org
 
+# Tast team for bulk/emergencies
+jessemcguire@google.com #{LAST_RESORT_SUGGESTION}
+
 # Green Stainless team
 # They frequently send changes to demote/disable flaky tests. Those changes are
 # exempted from Tast reviews since they are trivial test attribute changes
