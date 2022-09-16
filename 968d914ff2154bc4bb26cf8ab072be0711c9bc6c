@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "120f819c_08c727f6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-09-16T01:44:14Z",
+      "side": 1,
+      "message": "LGTM with comments",
+      "revId": "968d914ff2154bc4bb26cf8ab072be0711c9bc6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0e6e66e_93fd0991",
+        "filename": "helpers/local/featured.FeatureLibrary.check.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-09-16T01:44:14Z",
+      "side": 1,
+      "message": "style: https://google.github.io/styleguide/cppguide.html#Names_and_Order_of_Includes\n\ncould you fix the order?\n\n#inlcude \u003cstdio.h\u003e\n\n#include \u003cmemory\u003e\n#include \u003cstring\u003e\n\n#include \u003cbase/callback.h\u003e\n...",
+      "range": {
+        "startLine": 4,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 0
+      },
+      "revId": "968d914ff2154bc4bb26cf8ab072be0711c9bc6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99542976_33076bd8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/featured/feature_library_late_boot.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-09-16T01:44:14Z",
+      "side": 1,
+      "message": "nit: splitOut :\u003d bytes.split(out, []byte(\"\\n\"))",
+      "range": {
+        "startLine": 134,
+        "startChar": 1,
+        "endLine": 135,
+        "endChar": 40
+      },
+      "revId": "968d914ff2154bc4bb26cf8ab072be0711c9bc6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22c36eff_4c28826f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/featured/feature_library_late_boot.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-09-16T01:44:14Z",
+      "side": 1,
+      "message": "nit: const fileName \u003d \"check_stderr\"",
+      "revId": "968d914ff2154bc4bb26cf8ab072be0711c9bc6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
