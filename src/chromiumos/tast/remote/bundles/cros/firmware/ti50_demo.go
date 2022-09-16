@@ -9,6 +9,7 @@ import (
 	"time"
 
 	"chromiumos/tast/common/firmware/ti50"
+	"chromiumos/tast/common/servo"
 	"chromiumos/tast/remote/firmware/ti50/fixture"
 	"chromiumos/tast/testing"
 )
@@ -24,6 +25,7 @@ func init() {
 		},
 		Attr:    []string{"group:firmware"},
 		Fixture: fixture.Ti50,
+		Vars:    []string{"servo"},
 	})
 }
 
@@ -43,7 +45,35 @@ func Ti50Demo(ctx context.Context, s *testing.State) {
 	// that flashing still works after the console command.
 	testing.Sleep(ctx, 5*time.Second)
 
+	var svo *servo.Servo
+
+	// Capture CCD output using the gsc_uart_capture servo control
+	if servoHost, ok := s.Var("servo"); ok {
+		svop, err := servo.NewProxy(ctx, servoHost, "", "")
+		if err != nil {
+			s.Fatal("Open servo: ", err)
+		}
+		defer svop.Close(ctx)
+
+		svo = svop.Servo()
+
+		if err = svo.SetString(ctx, "gsc_uart_capture", "on"); err != nil {
+			s.Fatal("gsc_uart_capture=on Failed: ", err)
+		}
+		defer svo.SetString(ctx, "gsc_uart_capture", "off")
+	} else {
+		s.Log("Skipping CCD output collection via servo")
+	}
+
 	if err = ti50.Demo(ctx, board, ""); err != nil {
 		s.Fatal("Ti50Demo Failed: ", err)
+	}
+
+	if svo != nil {
+		ccdOutput, err := svo.GetString(ctx, "gsc_uart_stream")
+		if err != nil {
+			s.Fatal("Get gsc_uart_stream: ", err)
+		}
+		s.Log("CCD output via servo: ", ccdOutput)
 	}
 }
