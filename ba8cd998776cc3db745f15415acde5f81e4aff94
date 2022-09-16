@@ -33,6 +33,24 @@
       "message": "This line causes the test to flake occasionally. If we miss it, the likely cause is that the connection succeeded before the polling noticed that the service went past Associating state. However, if we just log and go on with our day, it means this test didn\u0027t test what it was meant to at all.\n\nNot waiting for the Associating state, as in the original test, means we may end up disabling the modem before the connect request is even made.",
       "revId": "ba8cd998776cc3db745f15415acde5f81e4aff94",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "00965d84_3a6fa388",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/shill_cellular_disable_while_connecting.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-09-16T14:34:45Z",
+      "side": 1,
+      "message": "I think the new changes might have made this better? It passed 10 consecutive times in my testing.",
+      "parentUuid": "f3833d29_5bd29a7c",
+      "revId": "ba8cd998776cc3db745f15415acde5f81e4aff94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
