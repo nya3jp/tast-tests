@@ -55,6 +55,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b438e999_f4445e9c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perfetto_wm_jankness.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-09-16T20:01:35Z",
+      "side": 1,
+      "message": "To run only on ARC-T, please add `android_vm_t` to the software deps",
+      "range": {
+        "startLine": 25,
+        "startChar": 46,
+        "endLine": 26,
+        "endChar": 9
+      },
+      "revId": "fe1060d6a9f8ba95166f5edb5a03b7542bc1a01e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ced1cdd7_106a7543",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/perfetto_wm_jankness.go",
         "patchSetId": 11
@@ -95,6 +118,29 @@
         "startChar": 13,
         "endLine": 57,
         "endChar": 26
+      },
+      "revId": "fe1060d6a9f8ba95166f5edb5a03b7542bc1a01e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2bb420d_8e8482d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perfetto_wm_jankness.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-09-16T20:01:35Z",
+      "side": 1,
+      "message": "Please move these to consts",
+      "range": {
+        "startLine": 59,
+        "startChar": 33,
+        "endLine": 59,
+        "endChar": 68
       },
       "revId": "fe1060d6a9f8ba95166f5edb5a03b7542bc1a01e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
