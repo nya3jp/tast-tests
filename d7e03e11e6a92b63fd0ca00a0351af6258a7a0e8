@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff73da79_425e8e68",
+        "filename": "src/chromiumos/tast/remote/firmware/boot_mode.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 847,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-09-16T15:04:36Z",
+      "side": 1,
+      "message": "This will fail on wilco or other duts that don\u0027t have ec keyboard emulation. And while releasing keys that you didn\u0027t press shouldn\u0027t have bad effects, some duts don\u0027t use the same keyboard matrix as what is listed in ec.go, so we should avoid using that code whenever possible.\n\nIf you have some logs of cases where servo didn\u0027t release keys, maybe we could file a bug with the servo team instead.",
+      "range": {
+        "startLine": 837,
+        "startChar": 2,
+        "endLine": 847,
+        "endChar": 3
+      },
+      "revId": "d7e03e11e6a92b63fd0ca00a0351af6258a7a0e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
