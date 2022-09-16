@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e197af52_a562e1a1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/windowarrangementcuj/util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-09-16T15:44:45Z",
+      "side": 1,
+      "message": "Is this tab name likely to change? I\u0027m just worried that such a specific regex wouldn\u0027t be as resilient, especially if the differences between the two tabs could be something simpler like ```\"/pip.html -\"```",
+      "revId": "cb169f1b9db78f3a5fb520c32cfc19c74836feaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
