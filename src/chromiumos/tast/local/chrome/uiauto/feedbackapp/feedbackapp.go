@@ -22,6 +22,9 @@ import (
 // IssueText export is used to enter the issue description.
 const IssueText = "Test only - please ignore"
 
+// ReportPath export is used to find the feedback report path.
+const ReportPath = "/tmp/feedback-report/feedback-report"
+
 // Launch starts the Feedback app via the default method.
 func Launch(ctx context.Context, tconn *chrome.TestConn) (*nodewith.Finder, error) {
 	if err := apps.Launch(ctx, tconn, apps.Feedback.ID); err != nil {
