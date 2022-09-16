@@ -16,6 +16,23 @@
       "message": "approach lgtm, definitely do need to get tast reviewers on this",
       "revId": "e98f88dad5baaade4419ad85239d6f7262170b56",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2874b1ab_aefae32e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1551729
+      },
+      "writtenOn": "2022-09-16T18:51:53Z",
+      "side": 1,
+      "message": "LGTM, however, I am not familiar with src/chromiumos/tast/local/input/generated_constants.go, will see if Dean has more insights. ",
+      "revId": "e98f88dad5baaade4419ad85239d6f7262170b56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
