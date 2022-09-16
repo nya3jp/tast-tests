@@ -22,6 +22,30 @@
       },
       "revId": "c08acbd84e47886f433a7add77ab20033879d0f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "048ad675_aa8424ce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/host_cellular_speedtest.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1441092
+      },
+      "writtenOn": "2022-09-16T18:17:38Z",
+      "side": 1,
+      "message": "yes, I was surprised too.",
+      "parentUuid": "f7f2e6b0_15ce2b01",
+      "range": {
+        "startLine": 29,
+        "startChar": 26,
+        "endLine": 31,
+        "endChar": 4
+      },
+      "revId": "c08acbd84e47886f433a7add77ab20033879d0f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
