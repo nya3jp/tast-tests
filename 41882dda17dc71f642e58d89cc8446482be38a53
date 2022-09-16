@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "62d06604_c77ffdbb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-09-16T14:42:26Z",
+      "side": 1,
+      "message": "Thanks for implementing the RemoveAuthFactorTest.\nI think this test should also include a success scenario, can you please add that? ",
+      "revId": "41882dda17dc71f642e58d89cc8446482be38a53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "845d161e_d6a836e3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/remove_vault_keyset_auth_factor.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-09-16T14:42:26Z",
+      "side": 1,
+      "message": "Please use a not shortened ctx for cleanup:\ncleanupTime \u003d 10*time.Second\ncleanupCtx :\u003d ctx\nctx, cancel :\u003d ctxutil.Shorten(ctx, cleanupTime)\ndefer cancel()\n\nIt is descibed in https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#reserve-time-for-clean_up-task",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 15
+      },
+      "revId": "41882dda17dc71f642e58d89cc8446482be38a53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2dc7e89_cfab6eeb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/remove_vault_keyset_auth_factor.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-09-16T14:42:26Z",
+      "side": 1,
+      "message": "Lets not have this in the VaultKeyset test. With the current case this doesn\u0027t create a difference but with the upcoming changes for the migration this is may result in unexpected failures in this test.",
+      "range": {
+        "startLine": 69,
+        "startChar": 1,
+        "endLine": 71,
+        "endChar": 2
+      },
+      "revId": "41882dda17dc71f642e58d89cc8446482be38a53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f302dc6_d7c8e13e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/remove_vault_keyset_auth_factor.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-09-16T14:42:26Z",
+      "side": 1,
+      "message": "nit: Removing",
+      "range": {
+        "startLine": 82,
+        "startChar": 4,
+        "endLine": 82,
+        "endChar": 10
+      },
+      "revId": "41882dda17dc71f642e58d89cc8446482be38a53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
