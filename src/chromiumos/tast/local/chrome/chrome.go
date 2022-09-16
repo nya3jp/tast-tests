@@ -380,9 +380,8 @@ func (c *Chrome) Close(ctx context.Context) error {
 		panic("Do not call Close while precondition is being used")
 	}
 
-	var firstErr error
 	if c.sess != nil {
-		firstErr = c.sess.Close(ctx)
+		c.sess.Close(ctx)
 	}
 
 	if dir, ok := testing.ContextOutDir(ctx); ok {
@@ -393,7 +392,8 @@ func (c *Chrome) Close(ctx context.Context) error {
 	// As the chronos home directory is cleared during chrome.New(), we
 	// should manually move these crashes from the user crash directory to
 	// the system crash directory.
-	if err := moveUserCrashDumps(); err != nil && firstErr == nil {
+	var firstErr error
+	if err := moveUserCrashDumps(); err != nil {
 		firstErr = err
 	}
 
