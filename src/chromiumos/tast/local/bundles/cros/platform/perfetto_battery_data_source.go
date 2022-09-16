@@ -7,6 +7,7 @@ package platform
 import (
 	"context"
 	"strconv"
+	"strings"
 
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/local/tracing"
@@ -50,19 +51,17 @@ func PerfettoBatteryDataSource(ctx context.Context, s *testing.State) {
 	// See the content of batteryTraceQueryFile for details.
 	// Example result:
 	// {
-	//   { "capacity_percent", "charge_uah", "current_ua" }
-	//   { "100.000000", "3005000.000000", "18454.545455" }
+	//   { "name", "avg(value)" }
+	//   { "batt.hid-0018:27C6:0E52.0001-battery.capacity_pct", "0.000000" }
+	//   { "batt.sbs-12-000b.capacity_pct", "100.000000" }
+	//   { "batt.sbs-12-000b.charge_uah", "5450000.000000" }
+	//   { "batt.sbs-12-000b.current_ua", "0.000000" }
 	// }
 	batt, err := sess.RunQuery(ctx, s.DataPath(tracing.TraceProcessor()), s.DataPath(batteryTraceQueryFile))
 	if err != nil {
 		s.Fatal("Failed to process the trace data: ", err)
 	}
 	s.Log("Battery counters: ", batt)
-
-	names := batt[0]
-	if names[0] != "capacity_percent" || names[1] != "charge_uah" || names[2] != "current_ua" {
-		s.Fatal("Unexpected query column names: ", names)
-	}
 
 	status, err := power.GetStatus(ctx)
 	// Battery is not always available (e.g. on VM). Skip validation if the device is equipped with a battery.
@@ -71,28 +70,53 @@ func PerfettoBatteryDataSource(ctx context.Context, s *testing.State) {
 		return
 	}
 
-	capacity, charge, current := batt[1][0], batt[1][1], batt[1][2]
-	if status.BatteryPercent != 0.0 {
-		c, err := strconv.ParseFloat(capacity, 64)
-		if err != nil || c < 0.0 || c > 100.0 {
-			s.Fatalf("Invalid battery capacity value: %s", capacity)
+	var capacity, charge, current []float64 // Use slices since there can be multiple batteries.
+	for _, row := range batt[1:] {          // Skip the 1st row of column names.
+		name, val := row[0], row[1]
+		v, err := strconv.ParseFloat(val, 64)
+		if err != nil {
+			s.Fatalf("Invalid battery counter: %s: %s", name, val)
 		}
+		if strings.HasSuffix(name, "capacity_pct") {
+			capacity = append(capacity, v)
+		} else if strings.HasSuffix(name, "charge_uah") {
+			charge = append(charge, v)
+		} else if strings.HasSuffix(name, "current_ua") {
+			current = append(current, v)
+		} else {
+			s.Fatalf("Unexpected battery counter: %s", name)
+		}
+	}
 
+	validateValueRange := func(vals []float64, lower, upper float64) bool {
+		if vals == nil {
+			return false
+		}
+		for _, v := range vals {
+			if v > upper || v < lower {
+				return false
+			}
+		}
+		return true
+	}
+
+	if status.BatteryPercent != 0.0 {
+		if !validateValueRange(capacity, 0.0, 100.0) {
+			s.Fatal("Invalid battery capacity value: ", capacity)
+		}
 	}
 	// Note that status.BatteryCharge is in Ah, while charge is in mAh.
 	if status.BatteryCharge != 0.0 {
-		c, err := strconv.ParseFloat(charge, 64)
-		if err != nil || c < 0.0 {
-			s.Fatalf("Invalid battery charge value: %s", charge)
+		if !validateValueRange(charge, 0.0, 100.0) {
+			s.Fatal("Invalid battery charge value: ", charge)
 		}
 	}
 	// Note that status.BatteryCurrent is in A, while current is in mA.
 	if status.BatteryCurrent != 0.0 {
-		_, err = strconv.ParseFloat(current, 64)
 		// Don't assert the value of current since it can be positive or negative.
 		// The kernel doc states that for batteries, negative values are used for discharge, but not all drivers follow that.
-		if err != nil {
-			s.Fatalf("Invalid battery current value: %s", current)
+		if current == nil {
+			s.Fatal("Battery current counter is missing")
 		}
 	}
 }
