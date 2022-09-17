@@ -66,14 +66,14 @@ func compareReplyToExpectations(when string, reply *uda.ListAuthFactorsReply, ex
 	// reducing the configured factors in the reply to a list of
 	// expectedConfiguredFactor instances, so that we can do a direct diff of
 	// the two lists (actual vs expected). Order does not matter.
-	if len(reply.GetConfiguredAuthFactors()) != len(expectedConfigured) {
-		s.Fatalf("ListAuthFactors reported the wrong number of factors (got %d, want %d) %s", len(reply.GetConfiguredAuthFactors()), len(expectedConfigured), when)
+	if len(reply.GetConfiguredAuthFactorsWithStatus()) != len(expectedConfigured) {
+		s.Fatalf("ListAuthFactors reported the wrong number of factors (got %d, want %d) %s", len(reply.GetConfiguredAuthFactorsWithStatus()), len(expectedConfigured), when)
 	}
-	actualConfigured := make([]expectedConfiguredFactor, 0, len(reply.ConfiguredAuthFactors))
-	for _, configured := range reply.ConfiguredAuthFactors {
+	actualConfigured := make([]expectedConfiguredFactor, 0, len(reply.ConfiguredAuthFactorsWithStatus))
+	for _, configured := range reply.ConfiguredAuthFactorsWithStatus {
 		newConfigured := expectedConfiguredFactor{
-			Type:  configured.Type,
-			Label: configured.Label,
+			Type:  configured.AuthFactor.Type,
+			Label: configured.AuthFactor.Label,
 		}
 		actualConfigured = append(actualConfigured, newConfigured)
 	}
