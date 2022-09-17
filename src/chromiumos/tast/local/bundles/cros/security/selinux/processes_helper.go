@@ -22,13 +22,16 @@ type Process struct {
 	Cmdline   string
 	Exe       string
 	Comm      string
+	Euid      uint32 // effective UID
 	SEContext string
 }
 
 // String returns a human-readable string representation for struct Process.
 func (p Process) String() string {
-	// Cmdline is usually enough for most cases for human inspection.
-	return fmt.Sprintf("[%d %q %s]", p.PID, p.Cmdline, p.SEContext)
+	// Exe and Cmdline can differ if the initial executable is a symlink.
+	// Since some checks match Exe and others match Cmdline, print both, so that
+	// exceptions can be easily added.
+	return fmt.Sprintf("[exe=%q cmdline=%q uid=%d domain=%s]", p.Exe, p.Cmdline, p.Euid, p.SEContext)
 }
 
 // GetProcesses returns currently-running processes.
@@ -50,6 +53,12 @@ func GetProcesses() ([]Process, error) {
 		}
 		if proc.Cmdline, err = p.Cmdline(); err != nil {
 			continue
+		}
+
+		if uids, err := p.Uids(); err != nil {
+			continue
+		} else {
+			proc.Euid = uint32(uids[1])
 		}
 
 		if comm, err := ioutil.ReadFile(fmt.Sprintf("/proc/%d/comm", proc.PID)); os.IsNotExist(err) {
@@ -79,14 +88,14 @@ func GetProcesses() ([]Process, error) {
 }
 
 // FindProcessesByExe returns processes from ps with Exe fields matching exeRegex.
-func FindProcessesByExe(ps []Process, exeRegex string, revese bool) ([]Process, error) {
+func FindProcessesByExe(ps []Process, exeRegex string, reverse bool) ([]Process, error) {
 	var found []Process
 	for _, proc := range ps {
 		matched, err := regexp.MatchString("^"+exeRegex+"$", proc.Exe)
 		if err != nil {
 			return nil, err
 		}
-		if matched != revese {
+		if matched != reverse {
 			found = append(found, proc)
 		}
 	}

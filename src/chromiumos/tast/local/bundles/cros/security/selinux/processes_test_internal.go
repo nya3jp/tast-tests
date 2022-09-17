@@ -77,6 +77,12 @@ func ProcessesTestInternal(ctx context.Context, s *testing.State, testSelector [
 					s.Error(errorLine.String())
 				}
 			case notString:
+				// TODO(b/247124653): Move this check to process collection time
+				// so that we can avoid collecting processes that we don't care about.
+				if proc.Euid != 0 {
+					// Don't enforce non-root processes in the notString case.
+					continue
+				}
 				if strings.Contains(proc.SEContext, ":"+testCase.context+":") {
 					fmt.Fprintf(&errorLine, "; expected to have its own SELinux domain and not %q", testCase.context)
 					if testCase.errorMsg != "" {
@@ -197,7 +203,8 @@ func ProcessesTestInternal(ctx context.Context, s *testing.State, testSelector [
 				// mkdir is for crbug.com/1156295.
 				{notCmdline, ".*(frecon|agetty|ping|recover_dts|udevadm|update_rw_vpd|mosys|vpd|flashrom|moblab|autotest|devserver|rotatelogs|apache2|envoy|containerd|python3|mkdir).*", notString, "chromeos", zeroProcs, domainIsolationErrorMessage},
 				{notCmdline, ".*(frecon|agetty|ping|recover_duts).*", notString, "unconfined_proc", zeroProcs, domainIsolationErrorMessage},
-				{notExe, "(/sbin/init|/bin/bash)", notString, "cros_init", zeroProcs, domainIsolationErrorMessage},
+				// python3.6m is for nebraska.py (b/247248201).
+				{notExe, "(/sbin/init|/bin/bash|/usr/local/bin/python3.6m)", notString, "cros_init", zeroProcs, domainIsolationErrorMessage},
 				// coreutils and ping are excluded for recover_duts scripts.
 				// logger is common to redirect output widely used from init conf scripts.
 				{notExe, "(/bin/([db]a)?sh|/usr/bin/coreutils|/usr/bin/logger|/bin/ping|brcm_patchram_plus)", notString, "cros_init_scripts", zeroProcs, domainIsolationErrorMessage},
@@ -233,7 +240,6 @@ func ProcessesTestInternal(ctx context.Context, s *testing.State, testSelector [
 			s.Error("Failed to find processes: ", err)
 			continue
 		}
-		s.Logf("Processes for %v: %v", testCase.query, p)
 		if len(p) < testCase.minProcessCount {
 			s.Errorf("Found %d process(es) for %v; require at least %d",
 				len(p), testCase.query, testCase.minProcessCount)
