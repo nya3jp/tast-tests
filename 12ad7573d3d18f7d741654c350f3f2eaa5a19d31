@@ -142,6 +142,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ff4036b_bbcee92f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/auth_session_unlock.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-09-17T01:40:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "055dc881_d2ebb81f",
+      "range": {
+        "startLine": 111,
+        "startChar": 60,
+        "endLine": 111,
+        "endChar": 75
+      },
+      "revId": "12ad7573d3d18f7d741654c350f3f2eaa5a19d31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ef3baebb_5324bd23",
@@ -202,6 +226,24 @@
       "writtenOn": "2022-09-09T23:05:34Z",
       "side": 1,
       "message": "defer InvalidateAuthSession missing here",
+      "revId": "12ad7573d3d18f7d741654c350f3f2eaa5a19d31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "153b4f2f_f0dd951f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/auth_session_unlock.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-09-17T01:40:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "21a6c37b_112c45fc",
       "revId": "12ad7573d3d18f7d741654c350f3f2eaa5a19d31",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
