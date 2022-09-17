@@ -95,6 +95,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb3443f1_c9f286ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/auth_session_unlock.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-09-17T01:37:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "03861e59_edda553f",
+      "range": {
+        "startLine": 40,
+        "startChar": 3,
+        "endLine": 43,
+        "endChar": 5
+      },
+      "revId": "12ad7573d3d18f7d741654c350f3f2eaa5a19d31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "055dc881_d2ebb81f",
@@ -131,6 +155,30 @@
       "writtenOn": "2022-09-09T23:05:34Z",
       "side": 1,
       "message": "let\u0027s get rid of these failed to -- they add noise and tast truncates messages so sometimes we dont even see past failed to",
+      "range": {
+        "startLine": 117,
+        "startChar": 32,
+        "endLine": 117,
+        "endChar": 42
+      },
+      "revId": "12ad7573d3d18f7d741654c350f3f2eaa5a19d31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "613fd51e_ea0ee2b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/auth_session_unlock.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-09-17T01:37:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef3baebb_5324bd23",
       "range": {
         "startLine": 117,
         "startChar": 32,
