@@ -86,16 +86,16 @@ func GetTestFileParams() []TestFileParams {
 // WaitForDMTokenRegistered waits until a valid DM token exists.
 // This is done by downloading unknown_malware.zip from `download.html`.
 // This function fails if scanning is disabled.
-func WaitForDMTokenRegistered(ctx context.Context, br *browser.Browser, tconn *chrome.TestConn, server *httptest.Server, downloadsPath string) error {
+func WaitForDMTokenRegistered(ctx context.Context, br *browser.Browser, tconnAsh *chrome.TestConn, server *httptest.Server, downloadsPath string) error {
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		return checkDMTokenRegistered(ctx, br, tconn, server, downloadsPath)
+		return checkDMTokenRegistered(ctx, br, tconnAsh, server, downloadsPath)
 	}, &testing.PollOptions{Timeout: 2 * time.Minute, Interval: 5 * time.Second}); err != nil {
 		return errors.Wrap(err, "failed to wait for dm token to be registered")
 	}
 	return nil
 }
 
-func checkDMTokenRegistered(ctx context.Context, br *browser.Browser, tconn *chrome.TestConn, server *httptest.Server, downloadsPath string) error {
+func checkDMTokenRegistered(ctx context.Context, br *browser.Browser, tconnAsh *chrome.TestConn, server *httptest.Server, downloadsPath string) error {
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
@@ -112,7 +112,7 @@ func checkDMTokenRegistered(ctx context.Context, br *browser.Browser, tconn *chr
 	defer dconn.CloseTarget(cleanupCtx)
 
 	// Close all prior notifications.
-	if err := ash.CloseNotifications(ctx, tconn); err != nil {
+	if err := ash.CloseNotifications(ctx, tconnAsh); err != nil {
 		return testing.PollBreak(errors.Wrap(err, "failed to close notifications"))
 	}
 
@@ -125,7 +125,7 @@ func checkDMTokenRegistered(ctx context.Context, br *browser.Browser, tconn *chr
 
 	if _, err := ash.WaitForNotification(
 		ctx,
-		tconn,
+		tconnAsh,
 		timeout,
 		ash.WaitIDContains("notification-ui-manager"),
 		ash.WaitMessageContains("unknown_malware.zip"),
@@ -245,7 +245,7 @@ func VerifyDeepScanningVerdict(ctx context.Context, dconnSafebrowsing *browser.C
 }
 
 // GetSafeBrowsingExperimentEnabled checks whether the given safe browsing experiment is enabled.
-func GetSafeBrowsingExperimentEnabled(ctx context.Context, br *browser.Browser, tconn *chrome.TestConn, experimentName string) (bool, error) {
+func GetSafeBrowsingExperimentEnabled(ctx context.Context, br *browser.Browser, experimentName string) (bool, error) {
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
@@ -263,7 +263,7 @@ func GetSafeBrowsingExperimentEnabled(ctx context.Context, br *browser.Browser, 
 }
 
 // GetCleanDconnSafebrowsing returns a Dconn to chrome://safe-browsing/#tab-deep-scan for which it is ensured that there is no prior deep scanning verdict.
-func GetCleanDconnSafebrowsing(ctx context.Context, cr *chrome.Chrome, br *browser.Browser, tconn *chrome.TestConn) (*browser.Conn, error) {
+func GetCleanDconnSafebrowsing(ctx context.Context, cr *chrome.Chrome, br *browser.Browser) (*browser.Conn, error) {
 	var dconnSafebrowsing *browser.Conn
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		cleanupCtx := ctx
