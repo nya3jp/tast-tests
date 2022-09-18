@@ -323,6 +323,24 @@ func (s *OSSettings) DropdownValue(ctx context.Context, cr *chrome.Chrome, dropd
 	return value, nil
 }
 
+// RoamingSubLabel fetches the sub-label associated with the roaming toggle setting.
+func (s *OSSettings) RoamingSubLabel(ctx context.Context, cr *chrome.Chrome) (string, error) {
+	toggleNode := `div[id="sub-label"][class="cr-secondary-text"][aria-hidden="true"]`
+	expr := fmt.Sprintf(`
+		var optionNode = shadowPiercingQuery(%q);
+		if(optionNode == undefined){
+			throw new Error("%s node not found.");
+		}
+		optionNode.innerText;
+		`, toggleNode, "Roaming sublabel")
+
+	var subLabel string
+	if err := s.EvalJSWithShadowPiercer(ctx, cr, expr, &subLabel); err != nil {
+		return subLabel, errors.Wrap(err, "failed to fetch sublabel")
+	}
+	return subLabel, nil
+}
+
 // WaitUntilToggleOption returns an action to wait until the toggle option enabled or disabled.
 func (s *OSSettings) WaitUntilToggleOption(cr *chrome.Chrome, optionName string, expected bool) uiauto.Action {
 	return func(ctx context.Context) error {
