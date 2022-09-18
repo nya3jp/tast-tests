@@ -137,11 +137,11 @@ func TestDownload(ctx context.Context, s *testing.State) {
 	}
 
 	// Verify policy.
-	tconn, err := cr.TestAPIConn(ctx)
+	tconnAsh, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to connect to test API: ", err)
 	}
-	devicePolicies, err := policyutil.PoliciesFromDUT(ctx, tconn)
+	devicePolicies, err := policyutil.PoliciesFromDUT(ctx, tconnAsh)
 	if err != nil {
 		s.Fatal("Failed to get device policies: ", err)
 	}
@@ -163,11 +163,11 @@ func TestDownload(ctx context.Context, s *testing.State) {
 	defer cancel()
 
 	// Ensure that there are no windows open.
-	if err := ash.CloseAllWindows(ctx, tconn); err != nil {
+	if err := ash.CloseAllWindows(ctx, tconnAsh); err != nil {
 		s.Fatal("Failed to close all windows: ", err)
 	}
 	// Ensure that all windows are closed after test.
-	defer ash.CloseAllWindows(cleanupCtx, tconn)
+	defer ash.CloseAllWindows(cleanupCtx, tconnAsh)
 
 	// Create Browser.
 	br, closeBrowser, err := browserfixt.SetUp(ctx, cr, testParams.BrowserType)
@@ -176,16 +176,21 @@ func TestDownload(ctx context.Context, s *testing.State) {
 	}
 	defer closeBrowser(cleanupCtx)
 
+	tconnBrowser, err := br.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to connect to browser's test API: ", err)
+	}
+
 	// The browsers sometimes restore some tabs, so we manually close all unneeded tabs.
 	closeTabsFunc := browser.CloseAllTabs
 	if testParams.BrowserType == browser.TypeLacros {
 		// For lacros-Chrome, it should leave a new tab to keep the Chrome process alive.
 		closeTabsFunc = browser.ReplaceAllTabsWithSingleNewTab
 	}
-	if err := closeTabsFunc(ctx, tconn); err != nil {
+	if err := closeTabsFunc(ctx, tconnBrowser); err != nil {
 		s.Fatal("Failed to close all unneeded tabs: ", err)
 	}
-	defer closeTabsFunc(cleanupCtx, tconn)
+	defer closeTabsFunc(cleanupCtx, tconnBrowser)
 
 	dconn, err := br.NewConn(ctx, "chrome://policy")
 	if err != nil {
@@ -197,12 +202,12 @@ func TestDownload(ctx context.Context, s *testing.State) {
 	// Need to wait for a valid dm token, i.e., the proper initialization of the enterprise connectors.
 	if testParams.ScansEnabled {
 		s.Log("Checking for dm token")
-		if err := helpers.WaitForDMTokenRegistered(ctx, br, tconn, server, downloadsPath); err != nil {
+		if err := helpers.WaitForDMTokenRegistered(ctx, br, tconnAsh, server, downloadsPath); err != nil {
 			s.Fatal("Failed to wait for DM token: ", err)
 		}
 	}
 
-	reportOnlyUIEnabled, err := helpers.GetSafeBrowsingExperimentEnabled(ctx, br, tconn, "ConnectorsScanningReportOnlyUI")
+	reportOnlyUIEnabled, err := helpers.GetSafeBrowsingExperimentEnabled(ctx, br, "ConnectorsScanningReportOnlyUI")
 	if err != nil {
 		s.Fatal("Failed to determine value of ConnectorsScanningReportOnlyUI: ", err)
 	}
@@ -216,7 +221,7 @@ func TestDownload(ctx context.Context, s *testing.State) {
 			defer cancel()
 
 			cr := s.FixtValue().(chrome.HasChrome).Chrome()
-			dconnSafebrowsing, err := helpers.GetCleanDconnSafebrowsing(ctx, cr, br, tconn)
+			dconnSafebrowsing, err := helpers.GetCleanDconnSafebrowsing(ctx, cr, br)
 			if err != nil {
 				s.Fatal("Failed to get clean safe browsing page: ", err)
 			}
@@ -243,7 +248,7 @@ func TestDownload(ctx context.Context, s *testing.State) {
 			defer dconn.CloseTarget(cleanupCtx)
 
 			// Close all prior notifications.
-			if err := ash.CloseNotifications(ctx, tconn); err != nil {
+			if err := ash.CloseNotifications(ctx, tconnAsh); err != nil {
 				s.Fatal("Failed to close notifications: ", err)
 			}
 
@@ -265,7 +270,7 @@ func TestDownload(ctx context.Context, s *testing.State) {
 			s.Log("Context deadline is ", deadline)
 			ntfctn, err := ash.WaitForNotification(
 				ctx,
-				tconn,
+				tconnAsh,
 				helpers.ScanningTimeOut,
 				ash.WaitIDContains("notification-ui-manager"),
 				ash.WaitMessageContains(dlFileName),
