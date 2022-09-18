@@ -1,4 +1,4 @@
-// Copyright 2021 The Chromium OS Authors. All rights reserved.
+// Copyright 2021 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -315,6 +315,24 @@ func (s *OSSettings) DropdownValue(ctx context.Context, cr *chrome.Chrome, dropd
 		return value, errors.Wrapf(err, "failed to get the value of dropdown: %q", dropdownName)
 	}
 	return value, nil
+}
+
+// RoamingSubLabel fetches the sub-label associated with the roaming toggle setting.
+func (s *OSSettings) RoamingSubLabel(ctx context.Context, cr *chrome.Chrome) (string, error) {
+	toggleNode := `div[id="sub-label"][class="cr-secondary-text"][aria-hidden="true"]`
+	expr := fmt.Sprintf(`
+		var optionNode = shadowPiercingQuery(%q);
+		if(optionNode == undefined){
+			throw new Error("%s node not found.");
+		}
+		optionNode.innerText;
+		`, toggleNode, "Roaming sublabel")
+
+	var subLabel string
+	if err := s.EvalJSWithShadowPiercer(ctx, cr, expr, &subLabel); err != nil {
+		return subLabel, errors.Wrap(err, "failed to fetch sublabel")
+	}
+	return subLabel, nil
 }
 
 // WaitUntilToggleOption returns an action to wait until the toggle option enabled or disabled.
