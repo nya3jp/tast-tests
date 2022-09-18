@@ -152,11 +152,11 @@ func TestFileAttached(ctx context.Context, s *testing.State) {
 	}
 
 	// Verify policy.
-	tconn, err := cr.TestAPIConn(ctx)
+	tconnAsh, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to connect to test API: ", err)
 	}
-	devicePolicies, err := policyutil.PoliciesFromDUT(ctx, tconn)
+	devicePolicies, err := policyutil.PoliciesFromDUT(ctx, tconnAsh)
 	if err != nil {
 		s.Fatal("Failed to get device policies: ", err)
 	}
@@ -176,12 +176,12 @@ func testFileAttachedForBrowser(ctx context.Context, s *testing.State, browserTy
 	testParams := s.Param().(helpers.TestParams)
 
 	cr := s.FixtValue().(chrome.HasChrome).Chrome()
-	tconn, err := cr.TestAPIConn(ctx)
+	tconnAsh, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to connect to test API: ", err)
 	}
 
-	ui := uiauto.New(tconn)
+	ui := uiauto.New(tconnAsh)
 
 	// Setup test HTTP server.
 	server := httptest.NewServer(http.FileServer(s.DataFileSystem()))
@@ -192,11 +192,11 @@ func testFileAttachedForBrowser(ctx context.Context, s *testing.State, browserTy
 	defer cancel()
 
 	// Ensure that there are no windows open.
-	if err := ash.CloseAllWindows(ctx, tconn); err != nil {
+	if err := ash.CloseAllWindows(ctx, tconnAsh); err != nil {
 		s.Fatal("Failed to close all windows: ", err)
 	}
 	// Ensure that all windows are closed after test.
-	defer ash.CloseAllWindows(cleanupCtx, tconn)
+	defer ash.CloseAllWindows(cleanupCtx, tconnAsh)
 
 	// Create Browser.
 	br, closeBrowser, err := browserfixt.SetUp(ctx, cr, browserType)
@@ -205,16 +205,21 @@ func testFileAttachedForBrowser(ctx context.Context, s *testing.State, browserTy
 	}
 	defer closeBrowser(cleanupCtx)
 
+	tconnBrowser, err := br.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to connect to browser's test API: ", err)
+	}
+
 	// The browsers sometimes restore some tabs, so we manually close all unneeded tabs.
 	closeTabsFunc := browser.CloseAllTabs
 	if testParams.BrowserType == browser.TypeLacros {
 		// For lacros-Chrome, it should leave a new tab to keep the Chrome process alive.
 		closeTabsFunc = browser.ReplaceAllTabsWithSingleNewTab
 	}
-	if err := closeTabsFunc(ctx, tconn); err != nil {
+	if err := closeTabsFunc(ctx, tconnBrowser); err != nil {
 		s.Fatal("Failed to close all unneeded tabs: ", err)
 	}
-	defer closeTabsFunc(cleanupCtx, tconn)
+	defer closeTabsFunc(cleanupCtx, tconnBrowser)
 
 	dconn, err := br.NewConn(ctx, "chrome://policy")
 	if err != nil {
@@ -230,7 +235,7 @@ func testFileAttachedForBrowser(ctx context.Context, s *testing.State, browserTy
 		if err != nil {
 			s.Fatal("Failed to get user's Download path: ", err)
 		}
-		if err := helpers.WaitForDMTokenRegistered(ctx, br, tconn, server, downloadsPath); err != nil {
+		if err := helpers.WaitForDMTokenRegistered(ctx, br, tconnAsh, server, downloadsPath); err != nil {
 			s.Fatal("Failed to wait for DM token: ", err)
 		}
 	}
@@ -250,7 +255,7 @@ func testFileAttachedForBrowser(ctx context.Context, s *testing.State, browserTy
 
 	for _, params := range helpers.GetTestFileParams() {
 		if succeeded := s.Run(ctx, params.TestName, func(ctx context.Context, s *testing.State) {
-			testFileAttachedForBrowserAndFile(ctx, params, testParams, br, s, server, testDirPath, ui, tconn)
+			testFileAttachedForBrowserAndFile(ctx, params, testParams, br, s, server, testDirPath, ui, tconnAsh)
 		}); !succeeded {
 			// Stop, if the subtest fails as it might have left the state unusable.
 			// It also prevents showing wrong errors on tastboard.
@@ -268,7 +273,7 @@ func testFileAttachedForBrowserAndFile(
 	server *httptest.Server,
 	testDirPath string,
 	ui *uiauto.Context,
-	tconn *chrome.TestConn,
+	tconnAsh *chrome.TestConn,
 ) {
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
@@ -285,7 +290,7 @@ func testFileAttachedForBrowserAndFile(
 		}
 	}
 	cr := s.FixtValue().(chrome.HasChrome).Chrome()
-	dconnSafebrowsing, err := helpers.GetCleanDconnSafebrowsing(ctx, cr, br, tconn)
+	dconnSafebrowsing, err := helpers.GetCleanDconnSafebrowsing(ctx, cr, br)
 	if err != nil {
 		s.Fatal("Failed to get clean safe browsing page: ", err)
 	}
@@ -314,7 +319,7 @@ func testFileAttachedForBrowserAndFile(
 		s.Fatal("Failed to press file input button: ", err)
 	}
 
-	files, err := filepicker.Find(ctx, tconn)
+	files, err := filepicker.Find(ctx, tconnAsh)
 	if err != nil {
 		s.Fatal("Failed to get window of picker: ", err)
 	}
@@ -337,7 +342,7 @@ func testFileAttachedForBrowserAndFile(
 		s.Fatal("Failed to wait for File picker to close: ", err)
 	}
 
-	verifyUIForFileAttached(ctx, shouldBlockUpload, params, testParams, br, s, server, testDirPath, ui, tconn)
+	verifyUIForFileAttached(ctx, shouldBlockUpload, params, testParams, br, s, server, testDirPath, ui)
 
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		// Ensure file was or was not attached, by checking javascript output.
@@ -384,8 +389,7 @@ func verifyUIForFileAttached(
 	s *testing.State,
 	server *httptest.Server,
 	testDirPath string,
-	ui *uiauto.Context,
-	tconn *chrome.TestConn) {
+	ui *uiauto.Context) {
 	// Check whether the scanning dialog is shown correctly.
 	if !testParams.AllowsImmediateDelivery && testParams.ScansEnabled {
 		// Wait for scanning dialog to show and complete scanning.
