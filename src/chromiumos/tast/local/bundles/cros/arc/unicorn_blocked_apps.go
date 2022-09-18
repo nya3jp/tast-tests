@@ -1,4 +1,4 @@
-// Copyright 2021 The ChromiumOS Authors
+// Copyright 2022 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -12,6 +12,7 @@ import (
 	"chromiumos/tast/common/android/ui"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/testexec"
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome/familylink"
 	"chromiumos/tast/local/policyutil"
@@ -23,7 +24,7 @@ func init() {
 		Func:         UnicornBlockedApps,
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Checks if blocked apps cannot be installed from Child Account",
-		Contacts:     []string{"rnanjappan@chromium.org", "cros-arc-te@google.com"},
+		Contacts:     []string{"mhasank@google.com", "arc-commercial@google.com"},
 		Attr:         []string{"group:mainline", "informational", "group:arc-functional"},
 		SoftwareDeps: []string{
 			"chrome",
@@ -51,13 +52,24 @@ func UnicornBlockedApps(ctx context.Context, s *testing.State) {
 		playStorePackage     = "com.android.vending"
 		assetBrowserActivity = "com.android.vending.AssetBrowserActivity"
 		logcatBufferSize     = "10M"
+		blockedPackage       = "com.google.android.apps.youtube.creator"
 	)
 	fdms := s.FixtValue().(*familylink.FixtData).FakeDMS
 	cr := s.FixtValue().(*familylink.FixtData).Chrome
 	tconn := s.FixtValue().(*familylink.FixtData).TestConn
 	arcEnabledPolicy := &policy.ArcEnabled{Val: true}
-
-	policies := []policy.Policy{arcEnabledPolicy}
+	blockedApps := []policy.Application{
+		{
+			PackageName: blockedPackage,
+			InstallType: "BLOCKED",
+		},
+	}
+	blockedAppsPolicy := &policy.ArcPolicy{
+		Val: &policy.ArcPolicyValue{
+			Applications: blockedApps,
+		},
+	}
+	policies := []policy.Policy{blockedAppsPolicy, arcEnabledPolicy}
 	pb := policy.NewBlob()
 	pb.PolicyUser = s.FixtValue().(*familylink.FixtData).PolicyUser
 	pb.AddPolicies(policies)
@@ -117,7 +129,6 @@ func UnicornBlockedApps(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to click on KEYCODE_ENTER button: ", err)
 	}
 
-	// Verify that install button is disabled for the blocked app.
 	installButton := d.Object(ui.ClassName("android.widget.Button"), ui.TextMatches("(?i)"+installButtonText))
 	if err := installButton.WaitForExists(ctx, DefaultUITimeout); err != nil {
 		s.Fatal("Failed to find the install button for blocked app: ", err)
@@ -125,10 +136,52 @@ func UnicornBlockedApps(ctx context.Context, s *testing.State) {
 
 	if enabled, err := installButton.IsEnabled(ctx); err != nil {
 		s.Fatal("Failed to check install button state")
-	} else if enabled {
-		if err := a.BugReport(ctx, filepath.Join(s.OutDir(), "bugreport.zip")); err != nil {
-			testing.ContextLog(ctx, "Failed to get bug report: ", err)
+	} else if !enabled {
+		testing.ContextLog(ctx, "Install button is disabled")
+	} else if err := validateAutoUninstall(ctx, a, installButton, blockedPackage); err != nil {
+		dumpBugReport(ctx, a, s.OutDir())
+		s.Fatal("Blocked package did not uninstall: ", err)
+	}
+}
+
+func validateAutoUninstall(ctx context.Context, a *arc.ARC, installButton *ui.Object, blockedPackage string) error {
+	testing.ContextLog(ctx, "Install button is enabled. Attempting install")
+	if err := installButton.Click(ctx); err != nil {
+		return errors.Wrap(err, "failed to click the install button")
+	}
+
+	testing.ContextLog(ctx, "Waiting for package to install")
+	if err := a.WaitForPackages(ctx, []string{blockedPackage}); err != nil {
+		return errors.Wrap(err, "package installation failed")
+	}
+
+	testing.ContextLog(ctx, "Waiting for package to uninstall")
+	if err := waitForUninstall(ctx, a, blockedPackage); err != nil {
+		return errors.Wrap(err, "package not uninstalled")
+	}
+
+	return nil
+}
+
+func waitForUninstall(ctx context.Context, a *arc.ARC, blockedPackage string) error {
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		packages, err := a.InstalledPackages(ctx)
+		if err != nil {
+			return testing.PollBreak(err)
 		}
-		s.Fatal("Install button is enabled")
+
+		for p := range packages {
+			if p == blockedPackage {
+				return errors.New("Package not yet uninstalled")
+			}
+		}
+
+		return nil
+	}, &testing.PollOptions{Interval: time.Second})
+}
+
+func dumpBugReport(ctx context.Context, a *arc.ARC, outDir string) {
+	if err := a.BugReport(ctx, filepath.Join(outDir, "bugreport.zip")); err != nil {
+		testing.ContextLog(ctx, "Failed to get bug report: ", err)
 	}
 }
