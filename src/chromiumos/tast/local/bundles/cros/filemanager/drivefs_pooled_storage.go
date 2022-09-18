@@ -99,10 +99,12 @@ func DrivefsPooledStorage(ctx context.Context, s *testing.State) {
 	defer cancel()
 	defer cr.Close(cleanupCtx)
 
-	if _, err := drivefs.NewDriveFs(ctx, s.RequiredVar(tc.user)); err != nil {
+	driveFsClient, err := drivefs.NewDriveFs(ctx, s.RequiredVar(tc.user))
+	if err != nil {
 		s.Fatal("Failed waiting for DriveFS to start: ", err)
 	}
 	s.Log("drivefs fully started")
+	defer driveFsClient.SaveLogsOnError(cleanupCtx, s.HasError)
 
 	// Open the test API.
 	tconn, err := cr.TestAPIConn(ctx)
