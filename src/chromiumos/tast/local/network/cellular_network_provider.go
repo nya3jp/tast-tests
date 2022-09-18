@@ -30,6 +30,8 @@ type CellularNetworkProvider interface {
 	NetworkNames(ctx context.Context) ([]string, error)
 	// RenameESimProfiles renames all eSIM profiles to be unique and follow the pattern: prefix1, prefix2 .... prefixN.
 	RenameESimProfiles(ctx context.Context, prefix string) error
+	// Fetches network name by iccid
+	GetNetworkNameByIccid(ctx context.Context, iccid string) (string, error)
 }
 
 // CellularNetworkProperties represents the current properties of a cellular network.
@@ -274,6 +276,40 @@ func (c *cellularNetworkProvider) NetworkNames(ctx context.Context) ([]string, e
 	}
 
 	return append(pSims, eSims...), nil
+}
+
+func (c *cellularNetworkProvider) GetNetworkNameByIccid(ctx context.Context, iccid string) (string, error) {
+	pSims, err := c.PSimNetworks(ctx)
+	if err != nil {
+		return "", err
+	}
+
+	for _, network := range pSims {
+		properties, err := network.Properties(ctx)
+		if err != nil {
+			return "", errors.Wrap(err, "failed to get network properties")
+		}
+		if properties.Iccid == iccid {
+			return properties.Name, nil
+		}
+	}
+
+	eSims, err := c.ESimNetworks(ctx)
+	if err != nil {
+		return "", err
+	}
+
+	for _, network := range eSims {
+		properties, err := network.Properties(ctx)
+		if err != nil {
+			return "", errors.Wrap(err, "failed to get network properties")
+		}
+		if properties.Iccid == iccid {
+			return properties.Name, nil
+		}
+	}
+
+	return "", nil
 }
 
 // RenameESimProfiles implements CellularNetworkProvider.RenameESimProfiles.
