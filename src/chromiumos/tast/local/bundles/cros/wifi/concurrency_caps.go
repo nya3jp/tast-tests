@@ -85,13 +85,6 @@ func supportsConcurrency(combination iw.IfaceCombination, concurrentIfaces []iw.
 					if ifaceCounts[i] > limit.MaxCount {
 						return false
 					}
-					// P2P-device limits act as limits for the sum of P2P-GO and
-					// P2P-client devices, so we check this explicitly here.
-				} else if iface == iw.IfTypeP2PDevice && (concurrentIface == iw.IfTypeP2PGO || concurrentIface == iw.IfTypeP2PClient) {
-					ifaceCounts[i]++
-					if ifaceCounts[i] > limit.MaxCount {
-						return false
-					}
 				}
 			}
 		}
