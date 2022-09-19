@@ -73,6 +73,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b04f88b5_40a51462",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/sap_simple_connect.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-09-19T18:46:57Z",
+      "side": 1,
+      "message": "I had assumed that we didn\u0027t want to use s.Fatal because we still cared about the test results from the other runs. I\u0027m fine either way.",
+      "parentUuid": "dac6db3f_d8a80555",
+      "revId": "f409d8e9a81c4efdaed83134760964f1a202f7c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ef09a717_348fbf1a",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/sap_simple_connect.go",
         "patchSetId": 5
