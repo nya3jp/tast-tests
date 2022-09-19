@@ -16,6 +16,40 @@
       "message": "Answers provided.",
       "revId": "f409d8e9a81c4efdaed83134760964f1a202f7c5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef09a717_348fbf1a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/sap_simple_connect.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-09-19T17:17:14Z",
+      "side": 1,
+      "message": "shouldn\u0027t this return too?",
+      "revId": "f409d8e9a81c4efdaed83134760964f1a202f7c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8cb80c3a_7326e717",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/sap_simple_connect.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-09-19T17:17:14Z",
+      "side": 1,
+      "message": "here too",
+      "revId": "f409d8e9a81c4efdaed83134760964f1a202f7c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
