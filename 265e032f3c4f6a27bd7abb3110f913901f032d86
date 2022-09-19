@@ -46,6 +46,30 @@
       },
       "revId": "265e032f3c4f6a27bd7abb3110f913901f032d86",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24920e54_f1cca56f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/p2p_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-09-19T21:26:03Z",
+      "side": 1,
+      "message": "I think that would be the case, it will be somthing similar to ScanPerf test:\nhttps://croshealthmon.corp.google.com/time_series/tast.wifi.ScanPerf/scan_time_background_full?suite\u003dwifi\u0026branch\u003dmain\u0026skuFilter\u003ddelbin_11th_Gen_IntelR_CoreTM_i3_1115G4_3_00GHz_8GB",
+      "parentUuid": "efbd7289_ec0868bc",
+      "range": {
+        "startLine": 94,
+        "startChar": 14,
+        "endLine": 94,
+        "endChar": 30
+      },
+      "revId": "265e032f3c4f6a27bd7abb3110f913901f032d86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
