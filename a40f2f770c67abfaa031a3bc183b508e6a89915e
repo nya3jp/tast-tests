@@ -16,6 +16,47 @@
       "message": "@Alvin, Do I need to modify other cases that can use TextSentense?",
       "revId": "a40f2f770c67abfaa031a3bc183b508e6a89915e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1fe94411_2fef4610",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-09-19T05:14:03Z",
+      "side": 1,
+      "message": "probably not, since this change is backward compatible.",
+      "parentUuid": "a4ae9c55_c6fe24c9",
+      "revId": "a40f2f770c67abfaa031a3bc183b508e6a89915e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab2f19b6_d6c4c652",
+        "filename": "src/chromiumos/tast/local/uidetection/textblock_finder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-09-19T05:14:03Z",
+      "side": 1,
+      "message": "Renaming to `TextBlockFromSentence` is more appropriate.",
+      "range": {
+        "startLine": 38,
+        "startChar": 5,
+        "endLine": 38,
+        "endChar": 17
+      },
+      "revId": "a40f2f770c67abfaa031a3bc183b508e6a89915e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
