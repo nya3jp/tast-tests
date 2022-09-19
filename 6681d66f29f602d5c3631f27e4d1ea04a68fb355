@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46f1ae8b_cc71e78b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/roaming_label_test_common.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-09-19T13:21:00Z",
+      "side": 1,
+      "message": "this should be deferred at ~L83 right?",
+      "revId": "6681d66f29f602d5c3631f27e4d1ea04a68fb355",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9ffab48_45344553",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/ossettings/ossettings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-09-19T13:21:00Z",
+      "side": 1,
+      "message": "don\u0027t think we need Sprintf here as there are no variables -- this is just a string literal",
+      "revId": "6681d66f29f602d5c3631f27e4d1ea04a68fb355",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
