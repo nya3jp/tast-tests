@@ -8,7 +8,6 @@ import (
 	"context"
 	"time"
 
-	"chromiumos/tast/common/mmconst"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/cellular"
 	"chromiumos/tast/testing"
@@ -88,7 +87,7 @@ func ShillCellularSimPinLock(ctx context.Context, s *testing.State) {
 
 	locked := helper.IsSimPinLocked(ctx)
 	if !locked {
-		s.Log("SIM lock was not locked by pin: ", mmconst.DefaultSimPin)
+		s.Log("SIM lock was not locked by pin: ", currentPin)
 	}
 	if enabled || locked {
 		if err := helper.Device.EnterPin(ctx, currentPin); err != nil {

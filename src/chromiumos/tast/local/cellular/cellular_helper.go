@@ -16,12 +16,10 @@ import (
 	"strings"
 	"time"
 
-	"chromiumos/tast/common/mmconst"
 	"chromiumos/tast/common/shillconst"
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/modemmanager"
 	"chromiumos/tast/local/shill"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
@@ -98,10 +96,8 @@ func NewHelper(ctx context.Context) (*Helper, error) {
 			return nil, errors.Wrap(err, "unable to enable Cellular")
 		}
 	}
-	// Disable pin lock with default pin and puk with dut puk if locked.
-	if err := helper.ClearSIMLock(ctx, mmconst.DefaultSimPin, ""); err != nil {
-		return nil, errors.Wrap(err, "failed to unlock dut with default pin")
-	}
+
+	// Start collecting DBus logs
 	if err := helper.CaptureDBusLogs(ctx); err != nil {
 		testing.ContextLog(ctx, "Warning: Unable to start DBus log capture: ", err)
 	}
@@ -117,6 +113,21 @@ func NewHelperWithLabels(ctx context.Context, labels []string) (*Helper, error) 
 
 	if err := helper.GetHostInfoLabels(ctx, labels); err != nil {
 		return nil, errors.Wrap(err, "unable to read labels")
+	}
+
+	// Get ICCID and PIN/PUK codes
+	iccid, err := helper.GetCurrentICCID(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "could not get current ICCID")
+	}
+	currentPin, currentPuk, err := helper.GetPINAndPUKForICCID(ctx, iccid)
+	if err != nil {
+		return nil, errors.Wrap(err, "could not get Pin and Puk")
+	}
+
+	// Disable pin lock with default pin and puk with dut puk if locked.
+	if err := helper.ClearSIMLock(ctx, currentPin, currentPuk); err != nil {
+		return nil, errors.Wrap(err, "failed to unlock dut with default pin")
 	}
 
 	return helper, nil
@@ -663,14 +674,7 @@ func (h *Helper) ClearSIMLock(ctx context.Context, pin, puk string) error {
 	// Clear puk lock if puk locked which is unusual.
 	if h.IsSimPukLocked(ctx) {
 		if len(puk) == 0 {
-			modem, err := modemmanager.NewModemWithSim(ctx)
-			if err != nil {
-				return errors.Wrap(err, "could not find mm dbus object with a valid sim")
-			}
-			puk, err = modem.GetActiveSimPuk(ctx)
-			if err != nil {
-				return errors.Wrap(err, "failed to get active sim puk in clearsimlock")
-			}
+			return errors.New("ClearSIMLock needs PUK code to unlock SIM")
 		}
 		if err := h.Device.UnblockPin(ctx, puk, pin); err != nil {
 			return errors.Wrap(err, "failed to UnblockPin")
@@ -847,13 +851,13 @@ func (h *Helper) EnterIncorrectPin(ctx context.Context, currentPin string) error
 }
 
 // EnterIncorrectPuk generates bad puk and tries to unlock.
-func (h *Helper) EnterIncorrectPuk(ctx context.Context, currentPuk string) error {
+func (h *Helper) EnterIncorrectPuk(ctx context.Context, currentPin, currentPuk string) error {
 	badPuk, err := h.BadPuk(ctx, currentPuk)
 	if err != nil {
 		return errors.Wrap(err, "failed to generate bad puk")
 	}
 
-	if err = h.Device.UnblockPin(ctx, badPuk, mmconst.DefaultSimPin); err == nil {
+	if err = h.Device.UnblockPin(ctx, badPuk, currentPin); err == nil {
 		return errors.Wrap(err, "failed to send bad puk: "+badPuk)
 	}
 
