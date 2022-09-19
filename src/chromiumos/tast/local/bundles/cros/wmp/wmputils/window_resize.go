@@ -130,7 +130,7 @@ func (ra *ResizeApp) MoveWindowToCenter(tconn *chrome.TestConn, window *nodewith
 
 		resizeArea, err := wmp.ResizableArea(ctx, tconn)
 		if err != nil {
-			return errors.Wrap(err, "failed to get resizeable area")
+			return errors.Wrap(err, "failed to get resizable area")
 		}
 
 		dest := coords.NewPoint(resizeArea.CenterX(), resizeArea.CenterY()-windowInfo.Location.Height/2)
