@@ -22,6 +22,30 @@
       },
       "revId": "55cc7e0776019e00482ee9495e2f0274ed3db6d3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9c98498_7bb442c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_gedit.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-09-19T03:13:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "97a2d26d_0d79c86f",
+      "range": {
+        "startLine": 31,
+        "startChar": 26,
+        "endLine": 31,
+        "endChar": 35
+      },
+      "revId": "55cc7e0776019e00482ee9495e2f0274ed3db6d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
