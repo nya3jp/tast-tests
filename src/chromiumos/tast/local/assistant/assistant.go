@@ -10,6 +10,7 @@ import (
 	"path/filepath"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/framework/protocol"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
@@ -18,6 +19,7 @@ import (
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 // QueryResponse contains a subset of the results returned from the Assistant server
@@ -75,6 +77,21 @@ func Cleanup(ctx context.Context, hasError func() bool, cr *chrome.Chrome, tconn
 // NEW_READY signal and returns any errors.
 func EnableAndWaitForReady(ctx context.Context, tconn *chrome.TestConn) error {
 	return tconn.Call(ctx, nil, `tast.promisify(chrome.autotestPrivate.enableAssistantAndWaitForReady)`)
+}
+
+// ResolveAssistantHotkey resolves an Assistant hotkey of a device. Search+A is a hotkey to activate
+// the Assistant if a device does not have an Assistant key.
+func ResolveAssistantHotkey(dutFeatures *protocol.DUTFeatures) (Accelerator, error) {
+	satisfied, _, err := hwdep.AssistantKey().Satisfied(dutFeatures.GetHardware())
+	if err != nil {
+		return Accelerator{}, errors.Wrap(err, "failed to resolve existence of an Assistant key on a device")
+	}
+
+	if satisfied {
+		return AccelAssistantKey, nil
+	}
+
+	return AccelSearchPlusA, nil
 }
 
 // SendTextQuery sends text query to Assistant and returns the query status.

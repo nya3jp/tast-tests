@@ -12,7 +12,6 @@ import (
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/testing"
-	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -24,26 +23,16 @@ func init() {
 		Contacts:     []string{"yawano@google.com", "assistive-eng@google.com"},
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
 		Fixture:      "assistant",
-		Params: []testing.Param{
-			{
-				Name:              "assistant_key",
-				Val:               assistant.AccelAssistantKey,
-				ExtraHardwareDeps: hwdep.D(hwdep.AssistantKey()),
-			},
-			{
-				Name:              "search_plus_a",
-				Val:               assistant.AccelSearchPlusA,
-				ExtraHardwareDeps: hwdep.D(hwdep.NoAssistantKey()),
-			},
-		},
 	})
 }
 
 func Hotkey(ctx context.Context, s *testing.State) {
-	accel := s.Param().(assistant.Accelerator)
-
 	fixtData := s.FixtValue().(*assistant.FixtData)
 	cr := fixtData.Chrome
+	accel, err := assistant.ResolveAssistantHotkey(s.Features(""))
+	if err != nil {
+		s.Fatal("Failed to resolve assistant hotkey: ", err)
+	}
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
