@@ -155,6 +155,10 @@ func AdminTemplatesLaunch(ctx context.Context, s *testing.State) {
 			)(ctx); err != nil {
 				s.Fatal("Failed to launch a admin template: ", err)
 			}
+
+			// Clean up all existing windows including lacros.
+			defer ash.CloseAllWindows(ctx, tconn)
+
 			// Exit overview mode and wait.
 			if err = ash.SetOverviewModeAndWait(ctx, tconn, false); err != nil {
 				s.Fatal("Failed to exit overview mode: ", err)
@@ -170,6 +174,10 @@ func AdminTemplatesLaunch(ctx context.Context, s *testing.State) {
 			}
 			if len(ws) != 2 {
 				s.Fatalf("Got %v window(s), should have %v windows", len(ws), 2)
+			}
+			// Close all existing windows.
+			if err := ash.CloseAllWindows(ctx, tconn); err != nil {
+				s.Fatal("Failed to close all windows: ", err)
 			}
 		})
 	}
