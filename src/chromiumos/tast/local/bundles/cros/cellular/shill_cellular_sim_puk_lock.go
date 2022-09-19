@@ -46,9 +46,7 @@ func ShillCellularSimPukLock(ctx context.Context, s *testing.State) {
 		s.Fatal("Could not get Pin and Puk : ", err)
 	}
 	if currentPuk == "" {
-		// Do graceful exit, not to run tests on unknown puk duts.
-		s.Logf("Unable to find PUK code for ICCID : %s, skipping the test", iccid)
-		return
+		s.Fatal("Unable to find PUK code for ICCID : ", iccid)
 	}
 
 	s.Log("Attempting to enable sim pin lock and set in puk lock state")
