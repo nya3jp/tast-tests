@@ -7,7 +7,9 @@ package rmaweb
 
 import (
 	"context"
+	"fmt"
 	"regexp"
+	"strings"
 	"time"
 
 	"github.com/golang/protobuf/ptypes/empty"
@@ -29,6 +31,9 @@ type DestinationOption string
 // WriteProtectDisableOption indicates write protection disabling approach.
 type WriteProtectDisableOption string
 
+// StoreLogFlag indicates whether to store log to USB during test.
+type StoreLogFlag bool
+
 const (
 	// SameUser indicates devices goes to same user.
 	SameUser DestinationOption = "SAME_USER"
@@ -45,10 +50,17 @@ const (
 	// WaitForRebootStart indicates the time to wait before reboot starting.
 	WaitForRebootStart = 10 * time.Second
 
+	// StoreLog indicates that log will be stored into usb during test.
+	StoreLog StoreLogFlag = true
+
+	// NotStoreLog indicates that log will not be stored into usb during test.
+	NotStoreLog StoreLogFlag = false
+
 	timeInSecondToLoadPage         = 30
 	timeInSecondToEnableButton     = 5
 	longTimeInSecondToEnableButton = 60
 	firmwareInstallationTime       = 240 * time.Second
+	usbTempMountDir                = "/media/usb-drive"
 )
 
 // UIHelper holds the resources required to communicate with Shimless RMA App.
@@ -228,11 +240,61 @@ func (uiHelper *UIHelper) FinalizingRepairPageOperation(ctx context.Context) err
 }
 
 // RepairCompletedPageOperation handles all operations on repair completed Page.
-func (uiHelper *UIHelper) RepairCompletedPageOperation(ctx context.Context) error {
+func (uiHelper *UIHelper) RepairCompletedPageOperation(ctx context.Context, storeLog StoreLogFlag) error {
+	if storeLog {
+		if err := uiHelper.FirmwareHelper.Servo.SetUSBMuxState(ctx, servo.USBMuxDUT); err != nil {
+			return err
+		}
+		testing.Sleep(ctx, 5*time.Second) // Wait for USB connection.
+		if err := uiHelper.deleteLogsIfExisting(ctx); err != nil {
+			return err
+		}
+
+		return action.Combine("Repair Completed page operation",
+			uiHelper.waitForPageToLoad("Almost done!", longTimeInSecondToEnableButton),
+			uiHelper.clickButton("See RMA logs"),
+			uiHelper.clickButton("Save to USB"),
+			uiHelper.clickButton("Done"),
+			uiHelper.clickButton("Reboot"),
+		)(ctx)
+	}
+
 	return action.Combine("Repair Completed page operation",
 		uiHelper.waitForPageToLoad("Almost done!", longTimeInSecondToEnableButton),
 		uiHelper.clickButton("Reboot"),
 	)(ctx)
+}
+
+// VerifyLogIsSaved verifies that the log is saved in usb.
+func (uiHelper *UIHelper) VerifyLogIsSaved(ctx context.Context) error {
+	// Output is supposed to be something like /dev/sda1.
+	usb, err := uiHelper.findUSBName(ctx)
+	if err != nil {
+		return errors.Wrap(err, "Fail to get USB")
+	}
+	testing.ContextLogf(ctx, "USB is %s", usb)
+
+	if err = uiHelper.mountUSB(ctx, usb); err != nil {
+		return errors.Wrap(err, "Fail to mount USB")
+	}
+
+	// Verify that we can get rma log.
+	err = uiHelper.Dut.Conn().CommandContext(ctx, "sh", "-c", fmt.Sprintf("ls %s/rma-*", usbTempMountDir)).Run()
+	if err != nil {
+		return errors.Wrap(err, "Fail to find Shimless RMA log")
+	}
+	testing.ContextLog(ctx, "Found Shimless RMA log successfully")
+
+	// Remove log.
+	if err = uiHelper.Dut.Conn().CommandContext(ctx, "sh", "-c", fmt.Sprintf("rm %s/rma-*", usbTempMountDir)).Run(); err != nil {
+		return errors.Wrap(err, "Fail to delete Shimless RMA log")
+	}
+
+	if err = uiHelper.umountUSB(ctx); err != nil {
+		return errors.Wrap(err, "Fail to umount USB")
+	}
+
+	return uiHelper.FirmwareHelper.Servo.SetUSBMuxState(ctx, servo.USBMuxHost)
 }
 
 // RSUPageOperation handles all operations on RSU Page.
@@ -312,6 +374,50 @@ func (uiHelper *UIHelper) SetupInitStatus(ctx context.Context, enroll bool) erro
 		uiHelper.changeWriteProtectStatus(servo.FWWPStateOn),
 		uiHelper.changeEnrollment(enroll),
 	)(ctx)
+}
+
+func (uiHelper *UIHelper) deleteLogsIfExisting(ctx context.Context) error {
+	// Output is supposed to be something like /dev/sda1.
+	usb, err := uiHelper.findUSBName(ctx)
+	if err != nil {
+		return errors.Wrap(err, "Fail to get USB")
+	}
+	testing.ContextLogf(ctx, "USB is %s", usb)
+
+	if err = uiHelper.mountUSB(ctx, usb); err != nil {
+		return errors.Wrap(err, "Fail to mount USB")
+	}
+
+	// Ignore the error since rma log may not exist at all.
+	_ = uiHelper.Dut.Conn().CommandContext(ctx, "sh", "-c", fmt.Sprintf("rm %s/rma-*", usbTempMountDir)).Run()
+
+	if err = uiHelper.umountUSB(ctx); err != nil {
+		return errors.Wrap(err, "Fail to umount USB")
+	}
+
+	return nil
+}
+
+func (uiHelper *UIHelper) findUSBName(ctx context.Context) (string, error) {
+	output, err := uiHelper.Dut.Conn().CommandContext(ctx, "sh", "-c", "ls /dev/sd[a-z]1").Output()
+
+	if err != nil {
+		return "", err
+	}
+
+	return strings.TrimSuffix(string(output), "\n") /** remove new line from ls output **/, nil
+}
+
+func (uiHelper *UIHelper) mountUSB(ctx context.Context, usb string) error {
+	if err := uiHelper.Dut.Conn().CommandContext(ctx, "mkdir", "-p", usbTempMountDir).Run(); err != nil {
+		return err
+	}
+
+	return uiHelper.Dut.Conn().CommandContext(ctx, "mount", usb, usbTempMountDir).Run()
+}
+
+func (uiHelper *UIHelper) umountUSB(ctx context.Context) error {
+	return uiHelper.Dut.Conn().CommandContext(ctx, "umount", usbTempMountDir).Run()
 }
 
 func (uiHelper *UIHelper) changeEnrollment(toEnroll bool) action.Action {

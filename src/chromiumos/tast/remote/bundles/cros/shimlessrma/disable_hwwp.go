@@ -209,10 +209,19 @@ func DisableHWWP(ctx context.Context, s *testing.State) {
 	s.Log("Init Shimless RMA successfully after enable CCD")
 	*/
 
-	if err := action.Combine("Navigate to Repair Complete page",
-		uiHelper.RepairCompletedPageOperation,
-	)(ctx); err != nil {
+	storeLogFlag := rmaweb.NotStoreLog
+	if wpOption == rmaweb.Manual {
+		storeLogFlag = rmaweb.StoreLog
+	}
+
+	if err := uiHelper.RepairCompletedPageOperation(ctx, storeLogFlag); err != nil {
 		s.Fatal("Fail to navigate to Repair Complete page: ", err)
+	}
+
+	if storeLogFlag == rmaweb.StoreLog {
+		if err := uiHelper.VerifyLogIsSaved(ctx); err != nil {
+			s.Fatal("Fail to verify that the log is saved in usb: ", err)
+		}
 	}
 }
 
