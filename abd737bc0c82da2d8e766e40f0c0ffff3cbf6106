@@ -88,6 +88,24 @@
       "parentUuid": "8e839c2c_ae17c866",
       "revId": "abd737bc0c82da2d8e766e40f0c0ffff3cbf6106",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc2e259c_db3df8f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/config_verify.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1544064
+      },
+      "writtenOn": "2022-09-19T20:17:00Z",
+      "side": 0,
+      "message": "I think it is better to move ChromiumOS test to its own testcase, the reasons are two:\n\n1\u003e Avoid the branch in the test:\ngo/unit-testing-practices#logic\ngo/tott-510\nThis comment is often provided by  GO readability approvals. \n \nI know this test already uses kernel versions for branch, but if possible, let\u0027s not introduce another layer of complexity in this testcase. \n\n2\u003e  config_verify.go, in history, is used to keep track of security features in ChromeOS. Since Chromiumos and ChromeOS are now different in security feature, it is better that chromiumos has its own testcase.",
+      "parentUuid": "daaa1ee0_862da383",
+      "revId": "abd737bc0c82da2d8e766e40f0c0ffff3cbf6106",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
