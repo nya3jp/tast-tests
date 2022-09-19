@@ -23,13 +23,7 @@ import (
 	"chromiumos/tast/local/cpu"
 	uiconsts "chromiumos/tast/local/ui"
 	"chromiumos/tast/testing"
-	"chromiumos/tast/testing/hwdep"
 )
-
-type testParam struct {
-	accel assistant.Accelerator
-	bt    browser.Type
-}
 
 func init() {
 	testing.AddTest(&testing.Test{
@@ -40,26 +34,12 @@ func init() {
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
 		Params: []testing.Param{{
-			Name:              "assistant_key",
-			Val:               testParam{accel: assistant.AccelAssistantKey, bt: browser.TypeAsh},
-			ExtraHardwareDeps: hwdep.D(hwdep.AssistantKey()),
-			Fixture:           "assistantPerf",
+			Val:     browser.TypeAsh,
+			Fixture: "assistantPerf",
 		}, {
-			Name:              "search_plus_a",
-			Val:               testParam{accel: assistant.AccelSearchPlusA, bt: browser.TypeAsh},
-			ExtraHardwareDeps: hwdep.D(hwdep.NoAssistantKey()),
-			Fixture:           "assistantPerf",
-		}, {
-			Name:              "assistant_key_lacros",
-			Val:               testParam{accel: assistant.AccelAssistantKey, bt: browser.TypeLacros},
+			Name:              "lacros",
+			Val:               browser.TypeLacros,
 			ExtraSoftwareDeps: []string{"lacros"},
-			ExtraHardwareDeps: hwdep.D(hwdep.AssistantKey()),
-			Fixture:           "assistantLacrosPerf",
-		}, {
-			Name:              "search_plus_a_lacros",
-			Val:               testParam{accel: assistant.AccelSearchPlusA, bt: browser.TypeLacros},
-			ExtraSoftwareDeps: []string{"lacros"},
-			ExtraHardwareDeps: hwdep.D(hwdep.NoAssistantKey()),
 			Fixture:           "assistantLacrosPerf",
 		}},
 	})
@@ -75,11 +55,14 @@ func CardElementAnimationPerf(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(cleanupCtx, 10*time.Second)
 	defer cancel()
 
-	accel := s.Param().(testParam).accel
-	bt := s.Param().(testParam).bt
+	bt := s.Param().(browser.Type)
 
 	fixtData := s.FixtValue().(*assistant.FixtData)
 	cr := fixtData.Chrome
+	accel, err := assistant.ResolveAssistantHotkey(s.Features(""))
+	if err != nil {
+		s.Fatal("Failed to resolve assistant hotkey: ", err)
+	}
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
