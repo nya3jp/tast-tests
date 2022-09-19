@@ -183,7 +183,7 @@ func (i *IMESettings) setAutoCorrection(cr *chrome.Chrome, isVK bool, expected s
 	if isVK {
 		index = 1
 	}
-	optionFinder := nodewith.Name(string(VKAutoCorrection)).Role(role.PopUpButton).Nth(index)
+	optionFinder := nodewith.Name(string(VKAutoCorrection)).Nth(index)
 	settingFinder := nodewith.Name(expected).Role(role.ListBoxOption)
 	return uiauto.Combine("set drop down option",
 		i.LeftClick(optionFinder),
