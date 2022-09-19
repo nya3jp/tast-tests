@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "864c3610_96536ea3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/stork_profile.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1108324
+      },
+      "writtenOn": "2022-09-19T22:35:18Z",
+      "side": 1,
+      "message": "Since the test is deemed to be stable, please remove this.",
+      "range": {
+        "startLine": 25,
+        "startChar": 54,
+        "endLine": 25,
+        "endChar": 71
+      },
+      "revId": "59a3a5ce8f1a55907102e2f08e0209e8204405bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
