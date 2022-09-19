@@ -224,7 +224,7 @@ func TestSupportsConcurrency(t *testing.T) {
 				MaxChannels: 1,
 			},
 			[]iw.IfType{iw.IfTypeP2PGO, iw.IfTypeP2PClient},
-			false,
+			true,
 		},
 	} {
 		result := supportsConcurrency(tc.combination, tc.concurrentIfaces)
