@@ -11,6 +11,8 @@ import (
 
 	"chromiumos/tast/remote/bundles/cros/shimlessrma/rmaweb"
 	"chromiumos/tast/remote/firmware/fixture"
+	"chromiumos/tast/remote/wificell"
+	ap "chromiumos/tast/remote/wificell/hostapd"
 	"chromiumos/tast/testing"
 )
 
@@ -28,6 +30,7 @@ func init() {
 			"chromeos-engprod-syd@google.com",
 		},
 		Attr: []string{"group:shimless_rma", "shimless_rma_experimental"},
+		Vars: []string{"router"},
 		VarDeps: []string{
 			"ui.signinProfileTestExtensionManifestKey",
 		},
@@ -35,6 +38,7 @@ func init() {
 		ServiceDeps: []string{
 			"tast.cros.browser.ChromeService",
 			"tast.cros.shimlessrma.AppService",
+			wificell.TFServiceName,
 		},
 		Fixture: fixture.NormalMode,
 		Timeout: 10 * time.Minute,
@@ -47,6 +51,44 @@ func WifiConnection(ctx context.Context, s *testing.State) {
 	key := s.RequiredVar("ui.signinProfileTestExtensionManifestKey")
 	if err := firmwareHelper.RequireServo(ctx); err != nil {
 		s.Fatal("Fail to init servo: ", err)
+	}
+
+	s.Log("Wifi config start")
+	var tfOps []wificell.TFOption
+	if router, ok := s.Var("router"); ok && router != "" {
+		tfOps = append(tfOps, wificell.TFRouter(router))
+	}
+	tf, err := wificell.NewTestFixture(ctx, ctx, dut, s.RPCHint(), tfOps...)
+	if err != nil {
+		s.Fatal("Failed to set up test fixture: ", err)
+	}
+	s.Log("wificell.NewTestFixture succeeds")
+
+	options := []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)}
+	apIface, err := tf.ConfigureAP(ctx, options, nil)
+	if err != nil {
+		s.Fatal("Failed to configure ap, err: ", err)
+	}
+
+	defer func(ctx context.Context) {
+		if err := tf.DeconfigAP(ctx, apIface); err != nil {
+			s.Error("Failed to deconfig ap, err: ", err)
+		}
+	}(ctx)
+
+	ctx, cancel := tf.ReserveForDeconfigAP(ctx, apIface)
+	defer cancel()
+	s.Logf("AP setup done. AP name is %s", apIface.Config().SSID)
+
+	// Get idea from https://buganizer.corp.google.com/issues/182202226#comment52
+	script := "iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE;" +
+		"iptables -A INPUT -i managed0 -j ACCEPT;" +
+		"iptables -A INPUT -i eth0 -m state --state ESTABLISHED,RELATED -j ACCEPT;" +
+		"iptables -A OUTPUT -j ACCEPT;" +
+		"echo 1 > /proc/sys/net/ipv4/ip_forward"
+	apConn := tf.APConn(0)
+	if _, err := apConn.CommandContext(ctx, "sh", "-c", script).Output(); err != nil {
+		s.Fatal("Fail to run iptables commands: ", err)
 	}
 
 	uiHelper, err := rmaweb.NewUIHelper(ctx, dut, firmwareHelper, s.RPCHint(), key, false)
@@ -66,7 +108,7 @@ func WifiConnection(ctx context.Context, s *testing.State) {
 	// Ignore any error in the following gRPC call,
 	// because ethernet is turned off in that call.
 	// As a result, we always get gRPC connection error.
-	_ = uiHelper.WelcomeAndNetworkPageOperationOffline(offlineCtx)
+	_ = uiHelper.WelcomeAndNetworkPageOperationOffline(offlineCtx, apIface.Config().SSID)
 
 	s.Log("Offline time is completed")
 

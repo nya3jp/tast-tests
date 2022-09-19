@@ -95,8 +95,10 @@ func (uiHelper *UIHelper) PrepareOfflineTest(ctx context.Context) error {
 }
 
 // WelcomeAndNetworkPageOperationOffline handles all operations on Welcome Page and Network Connection Page in offline mode.
-func (uiHelper *UIHelper) WelcomeAndNetworkPageOperationOffline(ctx context.Context) error {
-	_, err := uiHelper.Client.TestWelcomeAndNetworkConnection(ctx, &empty.Empty{})
+func (uiHelper *UIHelper) WelcomeAndNetworkPageOperationOffline(ctx context.Context, wifiName string) error {
+	_, err := uiHelper.Client.TestWelcomeAndNetworkConnection(ctx, &pb.TestWelcomeAndNetworkConnectionRequest{
+		WifiName: wifiName,
+	})
 	return err
 }
 
