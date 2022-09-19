@@ -263,6 +263,10 @@ func ECLaptopMode(ctx context.Context, s *testing.State) {
 			// Close chrome instance at the end of the test.
 			defer screenLockService.CloseChrome(ctx, &empty.Empty{})
 
+			// Allow some delay for enhancing stability.
+			if err := testing.Sleep(ctx, 10*time.Second); err != nil {
+				s.Fatal("Failed to sleep for 10 seconds: ", err)
+			}
 			// lockScreen calls the js function 'chrome.autotestPrivate.lockScreen()'.
 			// While this function locked the screen, it also turned the display off.
 			// If display was off, send a tap on the power button to bring it on before
