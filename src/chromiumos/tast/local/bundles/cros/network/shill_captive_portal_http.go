@@ -44,6 +44,12 @@ func noContentHandler(rw http.ResponseWriter, req *http.Request) {
 	rw.WriteHeader(http.StatusNoContent)
 }
 
+func tempRedirectHandler(url string) func(http.ResponseWriter, *http.Request) {
+	return func(rw http.ResponseWriter, req *http.Request) {
+		http.Redirect(rw, req, url, http.StatusTemporaryRedirect)
+	}
+}
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:     ShillCaptivePortalHTTP,
@@ -77,6 +83,13 @@ func init() {
 			Val: &params{
 				ServiceState:         shillconst.ServiceStateNoConnectivity,
 				HTTPResponseHandler:  nil,
+				HTTPSResponseHandler: nil,
+			},
+		}, {
+			Name: "redirectfoundtempredirect",
+			Val: &params{
+				ServiceState:         shillconst.ServiceStateRedirectFound,
+				HTTPResponseHandler:  tempRedirectHandler(redirectURL),
 				HTTPSResponseHandler: nil,
 			},
 		}},
