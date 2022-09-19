@@ -19,7 +19,7 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// ResizableArea setups resizeable area before performing resizing.
+// ResizableArea setups resizable area before performing resizing.
 func ResizableArea(ctx context.Context, tconn *chrome.TestConn) (*coords.Rect, error) {
 	ui := uiauto.New(tconn)
 
@@ -68,6 +68,6 @@ func StableDrag(tconn *chrome.TestConn, window *nodewith.Finder, srcPt, endPt co
 				return errors.New("location hasn't changed")
 			}
 			return nil
-		}, &testing.PollOptions{Timeout: 5*time.Second + dragDuration})
+		}, &testing.PollOptions{Timeout: 15*time.Second + dragDuration})
 	}
 }
