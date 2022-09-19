@@ -209,6 +209,11 @@ func ActivityIndicators(ctx context.Context, s *testing.State) {
 func numberOfActivityIndicators(ctx context.Context, tconn *chrome.TestConn) (int, error) {
 	ui := uiauto.New(tconn)
 
+	// Wait for shelf icons to complete animation before checking the number of activity indicators.
+	if err := ash.WaitUntilShelfIconAnimationFinishAction(tconn)(ctx); err != nil {
+		return -1, errors.Wrap(err, "failed to wait until the shelf icon animation finishes")
+	}
+
 	activityIndicators, err := ui.NodesInfo(ctx, nodewith.ClassName("ShelfAppButton::AppStatusIndicatorView"))
 	if err != nil {
 		return -1, errors.Wrap(err, "failed to find ShelfAppButton activity indicators")
