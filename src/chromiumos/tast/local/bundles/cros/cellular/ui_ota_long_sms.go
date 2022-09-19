@@ -12,6 +12,7 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/cellular"
 	"chromiumos/tast/local/chrome"
+
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
@@ -34,6 +35,7 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      10 * time.Minute,
 		VarDeps:      []string{"cellular.gaiaAccountPool"},
+		Vars:         []string{"autotest_host_info_labels"},
 	})
 }
 
@@ -48,7 +50,13 @@ func UIOtaLongSms(ctx context.Context, s *testing.State) {
 
 	messageToSend := "Hello Googol is a mathematical term named by Milton Sirotta, mathematician Edward Kasner's nephew. It means 10 raised to the power of 100, or 1 followed by 100 zeros." + time.Now().Format(time.UnixDate)
 
-	helper, err := cellular.NewHelper(ctx)
+	// Device properties from host info store labels.
+	labels, err := cellular.GetLabelsAsStringArray(ctx, s.Var, "autotest_host_info_labels")
+	if err != nil {
+		s.Fatal("Failed to read autotest_host_info_labels: ", err)
+	}
+
+	helper, err := cellular.NewHelperWithLabels(ctx, labels)
 	if err != nil {
 		s.Fatal("Failed to create cellular.Helper: ", err)
 	}
@@ -58,34 +66,13 @@ func UIOtaLongSms(ctx context.Context, s *testing.State) {
 		s.Fatal("Unable to find Cellular Service: ", err)
 	}
 
-	// Read modem property OwnNumbers.
-	modem, err := modemmanager.NewModem(ctx)
-	if err != nil {
-		s.Fatal("Failed to create modem: ", err)
+	// Read modem property OwnNumber from labels.
+	phoneNumber := helper.modemInfo.OwnNumber
+	if phoneNumber == nil {
+		s.Fatal("OwnNumber property empty")
 	}
 
-	props, err := modem.GetProperties(ctx)
-	if err != nil {
-		s.Fatal("Failed to call GetProperties on modem: ", err)
-	}
-
-	value, err := props.Get(mmconst.ModemPropertyOwnNumbers)
-	if err != nil {
-		s.Fatal("Failed to read OwnNumbers property: ", err)
-	}
-	if value == nil {
-		s.Fatal("OwnNumbers property does not exist")
-	}
-
-	phoneNumbers, ok := value.([]string)
-	if !ok {
-		s.Fatal("OwnNumbers property type conversion failed")
-	}
-	if len(phoneNumbers) < 1 {
-		s.Fatal("Empty OwnNumbers property")
-	}
-
-	s.Logf("Phone number: %s to send message: %s", phoneNumbers[0], messageToSend)
+	s.Logf("Phone number: %s to send message: %s", phoneNumber, messageToSend)
 
 	// Create cleanup context to ensure UI tree dumps correctly.
 	cleanupCtx := ctx
