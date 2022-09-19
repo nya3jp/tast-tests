@@ -216,6 +216,9 @@ const (
 // DutIdx is the type used for DUT Index.
 type DutIdx int
 
+// ApIdx is the type used for AP Index.
+type ApIdx int
+
 // TestFixture sets up the context for a basic WiFi test.
 type TestFixture struct {
 	duts       []*dutData
@@ -524,6 +527,11 @@ func (tf *TestFixture) DUT(dutIdx DutIdx) *dut.DUT {
 // DUTConn returns connection object to particular DUT.
 func (tf *TestFixture) DUTConn(dutIdx DutIdx) *ssh.Conn {
 	return tf.duts[dutIdx].dut.Conn()
+}
+
+// APConn returns connection object to particular AP.
+func (tf *TestFixture) APConn(apIdx ApIdx) *ssh.Conn {
+	return tf.routers[apIdx].host
 }
 
 // ReserveForClose returns a shorter ctx and cancel function for tf.Close().

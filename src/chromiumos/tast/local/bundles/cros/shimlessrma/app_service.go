@@ -32,7 +32,6 @@ const (
 	testFile              = "/var/lib/rmad/.test"
 	offlineLogFile        = "/var/lib/rmad/offline.log"
 	offlineExecuteSuccess = "Success"
-	wifiName              = "GoogleGuest-IPv4"
 	googleURL             = "google.com"
 )
 
@@ -135,12 +134,12 @@ func (shimlessRMA *AppService) PrepareOfflineTest(ctx context.Context, req *empt
 // TestWelcomeAndNetworkConnection tests welcome page and network page in local test mode.
 // We turn off ethernet in this method, so we cannot pass the error back to the gRPC caller.
 // Instead, we write error (or Success) to a temp log and Host will verify the content of log later.
-func (shimlessRMA *AppService) TestWelcomeAndNetworkConnection(ctx context.Context, req *empty.Empty) (*empty.Empty, error) {
+func (shimlessRMA *AppService) TestWelcomeAndNetworkConnection(ctx context.Context, req *pb.TestWelcomeAndNetworkConnectionRequest) (*empty.Empty, error) {
 	file, _ := os.OpenFile(offlineLogFile, os.O_RDWR, 0644)
 	defer file.Close()
 
 	if err := action.Combine("test welcome page and network connection page in offline mode",
-		shimlessRMA.handleUntilWifiConnectionWithoutEthernet,
+		shimlessRMA.handleUntilWifiConnectionWithoutEthernet(req.WifiName),
 		shimlessRMA.cancelShimlessRMA,
 	)(ctx); err != nil {
 		file.WriteString(err.Error())
@@ -313,40 +312,45 @@ func (shimlessRMA *AppService) handleWelcomePage(ctx context.Context) error {
 	)(ctx)
 }
 
-func (shimlessRMA *AppService) connectWifiAndVerifyInternetConnection(ctx context.Context) error {
-	return action.Combine("Fail to click wifi",
-		shimlessRMA.app.WaitForPageToLoad("Get connected", time.Minute),
-		shimlessRMA.app.LeftClickGenericContainer(wifiName),
-		uiauto.Sleep(5*time.Second),
-		shimlessRMA.app.LeftClickButton("Next"),
-	)(ctx)
+func (shimlessRMA *AppService) connectWifiAndVerifyInternetConnection(wifiName string) action.Action {
+	return func(ctx context.Context) error {
+		return action.Combine("Fail to click wifi",
+			shimlessRMA.app.WaitForPageToLoad("Get connected", time.Minute),
+			uiauto.Sleep(time.Minute), // Wait for searching WIFI.
+			shimlessRMA.app.LeftClickGenericContainer(wifiName),
+			uiauto.Sleep(5*time.Second), //  Wait for Wifi Connection.
+			shimlessRMA.app.LeftClickButton("Next"),
+		)(ctx)
+	}
 }
 
-func (shimlessRMA *AppService) handleUntilWifiConnectionWithoutEthernet(ctx context.Context) error {
-	cleanupCtx := ctx
-	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
-	defer cancel()
+func (shimlessRMA *AppService) handleUntilWifiConnectionWithoutEthernet(wifiName string) action.Action {
+	return func(ctx context.Context) error {
+		cleanupCtx := ctx
+		ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+		defer cancel()
 
-	manager, err := shill.NewManager(ctx)
-	if err != nil {
-		return errors.Wrap(err, "failed creating shill manager proxy")
-	}
-	// Disable ethernet and wifi to ensure the tethered connection is being used.
-	ethEnableFunc, err := manager.DisableTechnologyForTesting(ctx, shill.TechnologyEthernet)
-	if err != nil {
-		return errors.Wrap(err, "Unable to disable ethernet")
-	}
-	defer ethEnableFunc(cleanupCtx)
+		manager, err := shill.NewManager(ctx)
+		if err != nil {
+			return errors.Wrap(err, "failed creating shill manager proxy")
+		}
+		// Disable ethernet and wifi to ensure the tethered connection is being used.
+		ethEnableFunc, err := manager.DisableTechnologyForTesting(ctx, shill.TechnologyEthernet)
+		if err != nil {
+			return errors.Wrap(err, "Unable to disable ethernet")
+		}
+		defer ethEnableFunc(cleanupCtx)
 
-	if networkAvailable(ctx) {
-		return errors.New("Still access to Internet after ethernet is disabled")
-	}
+		if networkAvailable(ctx) {
+			return errors.New("Still access to Internet after ethernet is disabled")
+		}
 
-	return action.Combine("Handle until Wifi Connection without Ethernet",
-		shimlessRMA.handleWelcomePage,
-		shimlessRMA.connectWifiAndVerifyInternetConnection,
-		shimlessRMA.app.WaitForPageToLoad("Select which components were replaced", time.Minute),
-	)(ctx)
+		return action.Combine("Handle until Wifi Connection without Ethernet",
+			shimlessRMA.handleWelcomePage,
+			shimlessRMA.connectWifiAndVerifyInternetConnection(wifiName),
+			shimlessRMA.app.WaitForPageToLoad("Select which components were replaced", time.Minute),
+		)(ctx)
+	}
 }
 
 func (shimlessRMA *AppService) cancelShimlessRMA(ctx context.Context) error {
