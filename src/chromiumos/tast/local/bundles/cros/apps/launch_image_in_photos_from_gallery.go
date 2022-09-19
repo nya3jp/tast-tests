@@ -43,7 +43,7 @@ func init() {
 			"shengjun@chromium.org",
 		},
 		Attr:         []string{"group:mainline", "informational"},
-		Timeout:      5 * time.Minute,
+		Timeout:      8 * time.Minute,
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
 		Data:         []string{testImageFileWithText},
 		Params: []testing.Param{
