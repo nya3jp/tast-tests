@@ -129,3 +129,8 @@ const (
 	ESimStatusNoProfile    = 1
 	ESimStatusWithProfiles = 2
 )
+
+// Static value for Own Number/Phone Number
+const (
+	StaticModemOwnNumber = "1234567890"
+)

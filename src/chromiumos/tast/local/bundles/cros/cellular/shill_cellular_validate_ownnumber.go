@@ -22,10 +22,17 @@ func init() {
 		Contacts: []string{"srikanthkumar@google.com", "chromeos-cellular-team@google.com"},
 		Attr:     []string{"group:cellular", "cellular_unstable", "cellular_sim_active"},
 		Fixture:  "cellular",
+		Vars:     []string{"autotest_host_info_labels"},
 	})
 }
 
 func ShillCellularValidateOwnnumber(ctx context.Context, s *testing.State) {
+
+	// Gather Device properties from host info store labels.
+	labels, err := cellular.GetLabelsAsStringArray(ctx, s.Var, "autotest_host_info_labels")
+	if err != nil {
+		s.Fatal("Failed to read autotest_host_info_labels: ", err)
+	}
 	// Gather ModemManager properties
 	modem, err := modemmanager.NewModemWithSim(ctx)
 	if err != nil {
@@ -34,6 +41,18 @@ func ShillCellularValidateOwnnumber(ctx context.Context, s *testing.State) {
 	modemProps, err := modem.GetProperties(ctx)
 	if err != nil {
 		s.Fatal("Failed to call GetProperties on Modem: ", err)
+	}
+
+	// Skip test on duts not having phone number/own number(amarisoft connected)
+	helper, err := cellular.NewHelperWithLabels(ctx, labels)
+	if err != nil {
+		s.Fatal("Failed to create cellular.Helper: ", err)
+	}
+
+	labelOwnNumber := helper.modemInfo.OwnNumber
+	if labelOwnNumber == mmconst.StaticModemOwnNumber {
+		s.Log("Skip test as its no OwnNumber dut")
+		return
 	}
 
 	// Read modem property OwnNumbers from ModemManager.
@@ -55,11 +74,6 @@ func ShillCellularValidateOwnnumber(ctx context.Context, s *testing.State) {
 	modemOwnNumber := phoneNumbers[0]
 	s.Logf("OwnNumber on modem: %s", modemOwnNumber)
 
-	// Gather Shill Device properties
-	helper, err := cellular.NewHelper(ctx)
-	if err != nil {
-		s.Fatal("Failed to create cellular.simOwnNumberHelper")
-	}
 	deviceProps, err := helper.Device.GetProperties(ctx)
 
 	if err != nil {
