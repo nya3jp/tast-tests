@@ -18,6 +18,7 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
+	"chromiumos/tast/local/bundles/cros/arc/inputlatency"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto"
@@ -253,6 +254,44 @@ func TapOverlayButton(kb *input.KeyboardEventWriter, key string, params *TestPar
 		}
 		return nil
 	}
+}
+
+// PopulateReceivedTimes populates the given array of events with event timestamps,
+// as presented in logcat.
+func PopulateReceivedTimes(ctx context.Context, params TestParams, numLines int) ([]inputlatency.InputEvent, error) {
+	out, err := params.Arc.OutputLogcatGrep(ctx, "InputOverlayPerf")
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to execute logcat command")
+	}
+	lines := strings.Split(strings.Replace(string(out), ",", "", -1), "\n")
+	// Last line can be empty.
+	if len(lines) > 0 && lines[len(lines)-1] == "" {
+		lines = lines[:len(lines)-1]
+	}
+	// Make sure that the length of the array is at least as long as expected.
+	if len(lines) < numLines {
+		return nil, errors.Errorf("only %v lines returned by logcat: %s", len(lines), lines[0])
+	}
+	lines = lines[len(lines)-numLines:]
+
+	/*
+	  An example line is shown below:
+
+	  "09-19 13:01:22.298  4049  4049 V InputOverlayPerf: ACTION_UP 4146633898335"
+
+	  For this test, all we do is to extract the timestamp shown at the end.
+	*/
+
+	events := make([]inputlatency.InputEvent, 0, numLines)
+	for _, line := range lines {
+		lineSplit := strings.Split(line, " ")
+		timestamp, err := strconv.ParseInt(lineSplit[len(lineSplit)-1], 10, 64)
+		if err != nil {
+			return nil, errors.Wrap(err, "could not parse timestamp")
+		}
+		events = append(events, inputlatency.InputEvent{EventTimeNS: 0, RecvTimeNS: timestamp})
+	}
+	return events, nil
 }
 
 // pollTouchedCorrectly makes sure the feedback for a tap touch injection is correct.
