@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f22da945_b659fd28",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1531792
+      },
+      "writtenOn": "2022-09-19T03:06:37Z",
+      "side": 1,
+      "message": "\u003e \"Provice\" is a possible misspelling of \"Provide\" or \"Province\".\n\nPlease fix.",
+      "parentUuid": "19d4d8a1_bf3d69c5",
+      "range": {
+        "startLine": 7,
+        "startChar": 12,
+        "endLine": 7,
+        "endChar": 19
+      },
+      "revId": "efca52b2c2ce09614196aca705bc8f43758f31c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
