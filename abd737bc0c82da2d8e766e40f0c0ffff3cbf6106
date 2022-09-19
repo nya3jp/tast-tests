@@ -70,6 +70,24 @@
       "parentUuid": "dc717936_d5733d41",
       "revId": "abd737bc0c82da2d8e766e40f0c0ffff3cbf6106",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "daaa1ee0_862da383",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/config_verify.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2022-09-19T02:24:10Z",
+      "side": 0,
+      "message": "\u003e Do you mean there is a bug in the current kernel that SECURITY_CHROMIUMOS is not set\n\nNo.  If you would notice that, SECURITY_CHROMIUMOS doesn\u0027t exist in upstream kernel[1] but in Chromium kernel[2].  When booting a ChromiumOS with upstream kernel, the option isn\u0027t able to set.\n\n[1]: https://elixir.bootlin.com/linux/v5.19.9/source/security/\n[2]: https://chromium.googlesource.com/chromiumos/third_party/kernel/+/refs/heads/chromeos-5.15/security/chromiumos/",
+      "parentUuid": "8e839c2c_ae17c866",
+      "revId": "abd737bc0c82da2d8e766e40f0c0ffff3cbf6106",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
