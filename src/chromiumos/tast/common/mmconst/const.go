@@ -50,6 +50,18 @@ const (
 	BearerPropertyProperties = "Properties"
 )
 
+// BearerIPFamily IP families from Modemmanager-enums.h
+type BearerIPFamily uint32
+
+// All the bearer IP families
+const (
+	BearerIPFamilyNone   BearerIPFamily = 0
+	BearerIPFamilyIPv4   BearerIPFamily = 1 << 0
+	BearerIPFamilyIPv6   BearerIPFamily = 1 << 1
+	BearerIPFamilyIPv4v6 BearerIPFamily = 1 << 2
+	BearerIPFamilyAny    BearerIPFamily = 0xFFFFFFFF
+)
+
 // Wait times for modem at Modemmanager operations
 const (
 	ModemPollTime = 1 * time.Minute
