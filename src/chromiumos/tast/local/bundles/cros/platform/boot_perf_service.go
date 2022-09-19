@@ -7,13 +7,11 @@ package platform
 import (
 	"context"
 	"math"
-	"os"
 	"strings"
 
 	"github.com/golang/protobuf/ptypes/empty"
 	"google.golang.org/grpc"
 
-	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/platform/bootperf"
 	"chromiumos/tast/services/cros/platform"
 	"chromiumos/tast/testing"
@@ -54,14 +52,8 @@ func (*BootPerfService) DisableBootchart(ctx context.Context, _ *empty.Empty) (*
 
 // EnsureTlsdatedStopped ensures that tlsdated is stopped.
 func (*BootPerfService) EnsureTlsdatedStopped(ctx context.Context, _ *empty.Empty) (*empty.Empty, error) {
-	const syncRTCBootstatFile = "/tmp/sync-rtc-tlsdated-stop"
-
-	if err := bootperf.StopTlsdatedWithDiagnostics(ctx); err != nil {
+	if err := bootperf.EnsureTlsdatedStopped(ctx); err != nil {
 		return nil, err
-	}
-
-	if _, err := os.Stat(syncRTCBootstatFile); err != nil {
-		return nil, errors.Wrapf(err, "failed to regenerate %s", syncRTCBootstatFile)
 	}
 
 	return &empty.Empty{}, nil
