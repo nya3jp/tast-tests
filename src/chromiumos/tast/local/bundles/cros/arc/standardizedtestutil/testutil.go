@@ -163,20 +163,20 @@ var TabletHardwareDep = hwdep.SkipOnModel(ClamshellOnlyModels...)
 
 // RunTest runs the provided test cases and handles cleanup between tests.
 func RunTest(ctx context.Context, s *testing.State, apkName, appPkgName, appActivity string, t Test) {
-	runTest(ctx, s, apkName, appPkgName, appActivity, false /* fromPlayStore */, t)
+	runTest(ctx, s, apkName, appPkgName, appActivity, false /* isResizeLockTest */, t)
 }
 
 // RunResizeLockTest runs the provided test cases with ResizeLock enabled, and handles cleanup between tests.
 func RunResizeLockTest(ctx context.Context, s *testing.State, apkName, appPkgName, appActivity string, t Test) {
-	runTest(ctx, s, apkName, appPkgName, appActivity, true /* fromPlayStore */, t)
+	runTest(ctx, s, apkName, appPkgName, appActivity, true /* isResizeLockTest */, t)
 }
 
-func runTest(ctx context.Context, s *testing.State, apkName, appPkgName, appActivity string, fromPlayStore bool, t Test) {
+func runTest(ctx context.Context, s *testing.State, apkName, appPkgName, appActivity string, isResizeLockTest bool, t Test) {
 	cr := s.FixtValue().(*arc.PreData).Chrome
 	a := s.FixtValue().(*arc.PreData).ARC
 	d := s.FixtValue().(*arc.PreData).UIDevice
 
-	if fromPlayStore {
+	if isResizeLockTest {
 		if err := a.Install(ctx, arc.APKPath(apkName), adb.InstallOptionFromPlayStore); err != nil {
 			s.Fatal("Failed to install the APK with Play Store install option: ", err)
 		}
@@ -221,7 +221,7 @@ func runTest(ctx context.Context, s *testing.State, apkName, appPkgName, appActi
 
 			// When an app is installed from Play Store and not allowlisted, ResizeLock will be enabled.
 			// Close the ResizeLock splash screen.
-			if fromPlayStore {
+			if isResizeLockTest {
 				if err := wm.CheckVisibility(ctx, tconn, wm.BubbleDialogClassName, true); err != nil {
 					s.Fatal("Failed to wait for splash: ", err)
 				}
@@ -284,10 +284,12 @@ func runTest(ctx context.Context, s *testing.State, apkName, appPkgName, appActi
 					s.Fatal("Failed to find the display: ", err)
 				}
 
-				// Adjust the window to fill up most of the screen.
-				newBounds := wInfo.Bounds.WithInset(80, 80)
-				if _, _, err := ash.SetWindowBounds(workCtx, tconn, w.ID, newBounds, w.DisplayID); err != nil {
-					s.Fatal("Failed to set ARC window bounds: ", err)
+				if isResizeLockTest == false {
+					// Adjust the window to fill up most of the screen.
+					newBounds := wInfo.Bounds.WithInset(80, 80)
+					if _, _, err := ash.SetWindowBounds(workCtx, tconn, w.ID, newBounds, w.DisplayID); err != nil {
+						s.Fatal("Failed to set ARC window bounds: ", err)
+					}
 				}
 			}
 
