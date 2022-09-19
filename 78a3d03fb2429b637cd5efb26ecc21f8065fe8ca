@@ -34,6 +34,24 @@
       "parentUuid": "28324412_2a2b6afd",
       "revId": "78a3d03fb2429b637cd5efb26ecc21f8065fe8ca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab6fa173_112e791e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-09-19T02:04:46Z",
+      "side": 1,
+      "message": "These two tests will block the uprev if not fixed or not demoted. Might just revert https://crrev.com/c/3868204 since it is the culprit breaking the tests.",
+      "parentUuid": "b4166528_87e8c710",
+      "revId": "78a3d03fb2429b637cd5efb26ecc21f8065fe8ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
