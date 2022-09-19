@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c436470a_0d48bd8e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns_proxy_over_vpn.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-09-19T19:31:42Z",
+      "side": 1,
+      "message": "You can also name the `error` in the return type of `connectToVPN`, and then check whether or not `err \u003d\u003d nil` in the two deferred functions here rather than have a whole separate `success` variable",
+      "revId": "01ebb0354c05a95e3b4de693cab0676cb598b819",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "28b0788b_fe51169c",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/connection.go",
         "patchSetId": 11
