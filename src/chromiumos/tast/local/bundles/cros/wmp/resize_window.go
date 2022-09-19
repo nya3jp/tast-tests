@@ -8,6 +8,7 @@ import (
 	"context"
 	"fmt"
 	"path/filepath"
+	"regexp"
 	"strings"
 	"time"
 
@@ -20,6 +21,9 @@ import (
 	"chromiumos/tast/local/bundles/cros/wmp/wmputils"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/browser/browserfixt"
+	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/cws"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
@@ -27,20 +31,41 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/launcher"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/ossettings"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
 
 const resizeWindowArcAppApkFileName = "ArcNotificationTest2.apk"
 
+// subTestType indicates the type of sub test.
+type subTestType int
+
+const (
+	// browserCase indicates the browser-type case.
+	browserCase subTestType = iota
+	// appCase indicates the app-type case.
+	appCase
+	// arcCase indicates the ARC app-type case.
+	arcCase
+)
+
+// resizeWindowTestParams holds parameters for ResizeWindow Tests.
+type resizeWindowTestParams struct {
+	// caseType indicates the type of sub test.
+	caseType subTestType
+	// browserType is the type of browser to be used in the test.
+	browserType browser.Type
+}
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ResizeWindow,
-		LacrosStatus: testing.LacrosVariantUnneeded,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Resize different windows by dragging 4 corners and 4 sides",
 		Contacts: []string{
-			"alfred.yu@cienet.com",
 			"lance.wang@cienet.com",
+			"alfred.yu@cienet.com",
 			"cienet-development@googlegroups.com",
 			"chromeos-sw-engprod@google.com",
 		},
@@ -49,40 +74,74 @@ func init() {
 		Vars:         []string{"ui.gaiaPoolDefault"}, // GAIA is required to install an app from Chrome Webstore.
 		Params: []testing.Param{
 			{
-				Val:     false, // Expect not to test on ARC++ app.
-				Timeout: 5*time.Minute + cws.InstallationTimeout,
-			}, {
-				Name:              "arc",
-				Val:               true, // Expect to test on ARC++ app.
+				Val: resizeWindowTestParams{
+					caseType:    browserCase,
+					browserType: browser.TypeAsh,
+				},
+				Timeout: 2 * time.Minute,
+			},
+			{
+				Name: "lacros",
+				Val: resizeWindowTestParams{
+					caseType:    browserCase,
+					browserType: browser.TypeLacros,
+				},
+				ExtraSoftwareDeps: []string{"lacros"},
+				Timeout:           2 * time.Minute,
+			},
+			{
+				Name: "apps",
+				Val: resizeWindowTestParams{
+					caseType:    appCase,
+					browserType: browser.TypeAsh,
+				},
+				Timeout: 4*time.Minute + cws.InstallationTimeout,
+			},
+			{
+				Name: "arc",
+				Val: resizeWindowTestParams{
+					caseType:    arcCase,
+					browserType: browser.TypeAsh,
+				},
 				ExtraSoftwareDeps: []string{"arc"},
 				ExtraData:         []string{resizeWindowArcAppApkFileName},
 				Timeout:           2*time.Minute + apputil.InstallationTimeout,
-			}},
+			},
+		},
 	})
 }
 
 // ResizeWindow tests that resizing windows by dragging 4 corners and 4 sides.
 func ResizeWindow(ctx context.Context, s *testing.State) {
-	isArc := s.Param().(bool)
+	param := s.Param().(resizeWindowTestParams)
 
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
 
+	const (
+		fakeAccount  = "testuser@gmail.com"
+		fakePassword = "test1234"
+	)
+
 	opts := []chrome.Option{chrome.ExtraArgs("--force-tablet-mode=clamshell")}
-	if isArc {
-		opts = append(opts, chrome.ARCEnabled(), chrome.UnRestrictARCCPU(),
-			chrome.FakeLogin(chrome.Creds{User: "testuser@gmail.com", Pass: "test1234"}))
-	} else {
+	switch param.caseType {
+	case browserCase:
+		opts = append(opts, chrome.FakeLogin(chrome.Creds{User: fakeAccount, Pass: fakePassword}))
+	case appCase:
 		opts = append(opts, chrome.GAIALoginPool(s.RequiredVar("ui.gaiaPoolDefault")))
+	case arcCase:
+		opts = append(opts, chrome.ARCEnabled(), chrome.UnRestrictARCCPU(),
+			chrome.FakeLogin(chrome.Creds{User: fakeAccount, Pass: fakePassword}))
+	default:
+		s.Fatal("Unknown case type: ", param.caseType)
 	}
 
-	// Avoid share session with other tests to ensure the window size is in initial state.
-	cr, err := chrome.New(ctx, opts...)
+	cr, _, closeBrowser, err := browserfixt.SetUpWithNewChrome(ctx, param.browserType, lacrosfixt.NewConfig(), opts...)
 	if err != nil {
-		s.Fatal("Failed to Chrome login: ", err)
+		s.Fatal("Failed to set up chrome and browser: ", err)
 	}
-	defer cr.Close(cleanupCtx)
+	defer closeBrowser(cleanupCtx)
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
@@ -92,7 +151,31 @@ func ResizeWindow(ctx context.Context, s *testing.State) {
 	defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "ui_dump")
 
 	var appList []*wmputils.ResizeApp
-	if !isArc {
+	switch param.caseType {
+	case browserCase:
+		// Find correct Chrome browser app.
+		chromeApp, err := apps.PrimaryBrowser(ctx, tconn)
+		if err != nil {
+			s.Fatal("Failed to find Chrome or Chromium app: ", err)
+		}
+
+		var browserRoot *nodewith.Finder
+		if param.browserType == browser.TypeLacros {
+			classNameRegexp := regexp.MustCompile(`^ExoShellSurface(-\d+)?$`)
+			browserRoot = nodewith.Role(role.Window).ClassNameRegex(classNameRegexp).NameContaining("Chrome")
+		} else {
+			browserRoot = nodewith.Role(role.Window).HasClass("BrowserFrame")
+		}
+
+		appList = []*wmputils.ResizeApp{
+			{
+				Name:         chromeApp.Name,
+				ID:           chromeApp.ID,
+				IsArcApp:     false,
+				WindowFinder: browserRoot,
+			},
+		}
+	case appCase:
 		// Install CWS app: Text.
 		cwsApp := newCwsAppText(cr, tconn)
 
@@ -101,31 +184,21 @@ func ResizeWindow(ctx context.Context, s *testing.State) {
 		}
 		defer cwsApp.uninstall(cleanupCtx)
 
-		// Find correct Chrome browser app.
-		chromeApp, err := apps.ChromeOrChromium(ctx, tconn)
-		if err != nil {
-			s.Fatal("Failed to find Chrome or Chromium app: ", err)
-		}
-
 		appList = []*wmputils.ResizeApp{
 			{
 				Name:         cwsApp.App.Name,
 				ID:           cwsApp.id,
 				IsArcApp:     false,
 				WindowFinder: cwsApp.windowFinder,
-			}, {
-				Name:         chromeApp.Name,
-				ID:           chromeApp.ID,
-				IsArcApp:     false,
-				WindowFinder: nodewith.HasClass("BrowserFrame").NameContaining(chromeApp.Name),
-			}, {
+			},
+			{
 				Name:         apps.Files.Name,
 				ID:           apps.FilesSWA.ID,
 				IsArcApp:     false,
 				WindowFinder: filesapp.WindowFinder(apps.FilesSWA.ID),
 			},
 		}
-	} else {
+	case arcCase:
 		kb, err := input.Keyboard(ctx)
 		if err != nil {
 			s.Fatal("Failed to get the keyboard: ", err)
@@ -160,6 +233,8 @@ func ResizeWindow(ctx context.Context, s *testing.State) {
 				WindowFinder: nodewith.HasClass("RootView").NameContaining(notificationshowcase.AppName),
 			},
 		}
+	default:
+		s.Fatal("Unknown case type: ", param.caseType)
 	}
 
 	screenRecorder, err := uiauto.NewScreenRecorder(ctx, tconn)
@@ -275,13 +350,17 @@ func waitUntilWindowStable(ctx context.Context, tconn *chrome.TestConn, resizeAp
 		// Find the window that has the correct name.
 		// One exception is Play Store (see comment on below).
 		window, err := ash.FindWindow(ctx, tconn, func(w *ash.Window) bool {
-			// For regular apps(i.e., apps with valid ID), we use app name to find the correct window.
-			if resizeApp.ID != "" {
+			switch resizeApp.ID {
+			case "":
+				// For Play Store, we use exact string "Google Play Store" to find the window.
+				return w.Title == "Google Play Store"
+			case apps.LacrosID:
+				// For browser, we use exact string "New Tab - Google Chrome" to find the window.
+				return strings.Contains(w.Title, "New Tab - Google Chrome")
+			default:
+				// For regular apps(i.e., apps with valid ID), we use app name to find the correct window.
 				return strings.Contains(w.Title, resizeApp.Name)
 			}
-			// For Play Store, we use exact string "Google Play Store" to find the window.
-			return w.Title == "Google Play Store"
-
 		})
 		if err != nil {
 			return errors.Wrapf(err, "failed to find window with app name %q", resizeApp.Name)
