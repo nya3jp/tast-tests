@@ -150,7 +150,6 @@ func StressAudioPlaybackOnboardSpeaker(ctx context.Context, s *testing.State) {
 		if err != nil {
 			s.Fatal("Failed to launch the Files App: ", err)
 		}
-		defer files.Close(cleanupCtx)
 
 		if err := files.OpenDownloads()(ctx); err != nil {
 			s.Fatal("Failed to open Downloads folder in files app: ", err)
@@ -193,6 +192,8 @@ func StressAudioPlaybackOnboardSpeaker(ctx context.Context, s *testing.State) {
 		if err := closeAudioPlayer(ctx, kb); err != nil {
 			s.Fatal("Failed to close audio player: ", err)
 		}
+
+		files.Close(ctx)
 	}
 }
 
