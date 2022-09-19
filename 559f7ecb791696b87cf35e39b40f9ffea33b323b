@@ -86,6 +86,24 @@
       "parentUuid": "211871d1_2d56b258",
       "revId": "559f7ecb791696b87cf35e39b40f9ffea33b323b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b259e791_a6f88fb5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/p2p_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2022-09-19T20:52:25Z",
+      "side": 1,
+      "message": "Yep, I agree with this. It\u0027s an opportunity to do things better than they were done in Autotest. (bear in mind that we probably still want to centralize the requirements instead of defining them inside of each test).",
+      "parentUuid": "05df8ef6_6ba961c3",
+      "revId": "559f7ecb791696b87cf35e39b40f9ffea33b323b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

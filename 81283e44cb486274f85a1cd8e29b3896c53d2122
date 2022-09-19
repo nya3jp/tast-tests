@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "425d2836_21104052",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2022-09-19T20:52:25Z",
+      "side": 1,
+      "message": "LGTM % style nits.",
+      "revId": "81283e44cb486274f85a1cd8e29b3896c53d2122",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8640b600_a176a721",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/p2p_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2022-09-19T20:52:25Z",
+      "side": 1,
+      "message": "Nit: this comment mixes grammatical forms. It should, either all be descriptive (\"configures\", \"connects\") or all be imperative (\"run\", \"delete\").",
+      "range": {
+        "startLine": 32,
+        "startChar": 2,
+        "endLine": 39,
+        "endChar": 28
+      },
+      "revId": "81283e44cb486274f85a1cd8e29b3896c53d2122",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b712833_a027d184",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1876,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2022-09-19T20:52:25Z",
+      "side": 1,
+      "message": "Nit: let\u0027s use consistent spacing on these \u003d signs. So either \"Frequency\u003d%d\" or \"Frequency \u003d %d\". I think I prefer the former.",
+      "range": {
+        "startLine": 1876,
+        "startChar": 54,
+        "endLine": 1876,
+        "endChar": 99
+      },
+      "revId": "81283e44cb486274f85a1cd8e29b3896c53d2122",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "00728323_a513a6ab",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1927,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2022-09-19T20:52:25Z",
+      "side": 1,
+      "message": "I assume the results of this are logged within the Iperf implementation?",
+      "range": {
+        "startLine": 1927,
+        "startChar": 17,
+        "endLine": 1927,
+        "endChar": 29
+      },
+      "revId": "81283e44cb486274f85a1cd8e29b3896c53d2122",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
