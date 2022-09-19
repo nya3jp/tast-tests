@@ -16,6 +16,23 @@
       "message": "Thanks for the patch Kshitij!\n\nEvan, could you take a look at this please?",
       "revId": "d1bf1aed7db5eab2efb51159887de9ad18b8d690",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b35fab86_0c810e71",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1377969
+      },
+      "writtenOn": "2022-09-19T23:40:07Z",
+      "side": 1,
+      "message": "Here I was working on adding this to a new flashrom suite: https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3881649\n\nBut I had an AI to talk to the faft / chops / someone who owns that pool of duts first. Do you know who that is?",
+      "revId": "d1bf1aed7db5eab2efb51159887de9ad18b8d690",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
