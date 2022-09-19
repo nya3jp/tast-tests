@@ -17,6 +17,7 @@ import (
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/remote/bundles/cros/audio/internal"
 	"chromiumos/tast/remote/dutfs"
 	"chromiumos/tast/remote/firmware/fingerprint/rpcdut"
 	"chromiumos/tast/testing"
@@ -72,9 +73,6 @@ const (
 
 	// soundCardInitRunTimeFile is the file stores previous sound_card_init run time.
 	soundCardInitRunTimeFile = "/var/lib/sound_card_init/%s/run"
-
-	// crasStopTimeFile is the file stores previous CRAS stop time.
-	crasStopTimeFile = "/var/lib/cras/stop"
 
 	// calibrationFiles is the file stores previous calibration values.
 	calibrationFiles = "/var/lib/sound_card_init/%s/calib_%d"
@@ -207,8 +205,8 @@ func parseSoundCardID(dump string) (string, error) {
 // removeSoundCardInitFiles removes all sound_card_init files.
 func removeSoundCardInitFiles(ctx context.Context, d *rpcdut.RPCDUT, soundCardID string) error {
 	fs := dutfs.NewClient(d.RPC().Conn)
-	if err := fs.Remove(ctx, crasStopTimeFile); err != nil && !os.IsNotExist(err) {
-		return errors.Wrapf(err, "failed to rm file: %s", crasStopTimeFile)
+	if err := fs.Remove(ctx, internal.CrasStopTimeFile); err != nil && !os.IsNotExist(err) {
+		return errors.Wrapf(err, "failed to rm file: %s", internal.CrasStopTimeFile)
 	}
 	file := fmt.Sprintf(soundCardInitRunTimeFile, soundCardID)
 	if err := fs.Remove(ctx, file); err != nil && !os.IsNotExist(err) {
