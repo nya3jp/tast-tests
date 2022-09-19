@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "38ae7225_768ef5b7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2022-09-19T06:12:37Z",
+      "side": 1,
+      "message": "It seems that a device with \"-router\" suffix (`dut.CompanionSuffixRouter`) would be used if not overridden:\nhttp://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/remote/wificell/test_fixture.go?l\u003d397\n\nBut I\u0027m not sure how to properly configure it since it\u0027s not a DUT.",
+      "parentUuid": "1dc49773_0b63cf71",
+      "revId": "84ddc20e1b54dad3c6da4b23a8194648d8462d44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "be18870d_232f9ee3",
         "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/wifi_connection.go",
         "patchSetId": 2
