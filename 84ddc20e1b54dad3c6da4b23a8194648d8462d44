@@ -71,6 +71,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "42f38b11_2f65b87a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/wifi_connection.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1531792
+      },
+      "writtenOn": "2022-09-19T06:15:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "be18870d_232f9ee3",
+      "revId": "84ddc20e1b54dad3c6da4b23a8194648d8462d44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7caee659_fd65660f",
@@ -106,6 +124,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8253cd8d_103c9d2b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/wifi_connection.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1531792
+      },
+      "writtenOn": "2022-09-19T06:15:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "414b703c_64d9ff66",
+      "revId": "84ddc20e1b54dad3c6da4b23a8194648d8462d44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e73143b1_efa7429a",
@@ -119,6 +155,24 @@
       "writtenOn": "2022-09-19T05:45:07Z",
       "side": 1,
       "message": "1. Better use `http://b/182202226#comment52`\n2. nit: Get → Got",
+      "revId": "84ddc20e1b54dad3c6da4b23a8194648d8462d44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c52cf185_ae3c0f13",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/wifi_connection.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1531792
+      },
+      "writtenOn": "2022-09-19T06:15:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e73143b1_efa7429a",
       "revId": "84ddc20e1b54dad3c6da4b23a8194648d8462d44",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -158,6 +212,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0cc9f04_fa7c5e37",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/wifi_connection.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1531792
+      },
+      "writtenOn": "2022-09-19T06:15:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "106df646_1ac4bbab",
+      "revId": "84ddc20e1b54dad3c6da4b23a8194648d8462d44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4f097997_ed297062",
@@ -171,6 +243,24 @@
       "writtenOn": "2022-09-19T05:45:07Z",
       "side": 1,
       "message": "Maybe it\u0027s better to explicitly check that the error we get is an gRPC error? Otherwise we might be getting other error before the ethernet is turned off.",
+      "revId": "84ddc20e1b54dad3c6da4b23a8194648d8462d44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6444f869_6ec39a20",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/wifi_connection.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1531792
+      },
+      "writtenOn": "2022-09-19T06:15:41Z",
+      "side": 1,
+      "message": "It may be not necessary since Ethernet is almost the first thing in the operation.",
+      "parentUuid": "4f097997_ed297062",
       "revId": "84ddc20e1b54dad3c6da4b23a8194648d8462d44",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -210,6 +300,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "01901305_e7926cac",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1531792
+      },
+      "writtenOn": "2022-09-19T06:15:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7d0ffede_0aa787cc",
+      "revId": "84ddc20e1b54dad3c6da4b23a8194648d8462d44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6038d1b8_fca4d0ef",
@@ -223,6 +331,24 @@
       "writtenOn": "2022-09-19T05:45:07Z",
       "side": 1,
       "message": "Maybe `ApIdx` would be better to make it consistent with `DutIdx`?",
+      "revId": "84ddc20e1b54dad3c6da4b23a8194648d8462d44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "53602d23_77485da0",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1531792
+      },
+      "writtenOn": "2022-09-19T06:15:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6038d1b8_fca4d0ef",
       "revId": "84ddc20e1b54dad3c6da4b23a8194648d8462d44",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
