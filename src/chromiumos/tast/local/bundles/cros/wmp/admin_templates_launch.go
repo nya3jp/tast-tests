@@ -86,6 +86,11 @@ func AdminTemplatesLaunch(ctx context.Context, s *testing.State) {
 	if _, err := apps.PrimaryBrowser(ctx, tconn); err != nil {
 		s.Fatal("Could not find the primary browser app info: ", err)
 	}
+	// Close all existing windows.
+	if err := ash.CloseAllWindows(ctx, tconn); err != nil {
+		s.Fatal("Failed to close all windows: ", err)
+	}
+
 	policiesToServe := []policy.Policy{
 		&policy.PreconfiguredDeskTemplates{Val: &policy.PreconfiguredDeskTemplatesValue{Url: iurl, Hash: ihash}},
 		&policy.DeskTemplatesEnabled{Val: true},
@@ -155,6 +160,14 @@ func AdminTemplatesLaunch(ctx context.Context, s *testing.State) {
 			)(ctx); err != nil {
 				s.Fatal("Failed to launch a admin template: ", err)
 			}
+
+			// Close all existing windows.
+			defer func() {
+				if err := ash.CloseAllWindows(ctx, tconn); err != nil {
+					s.Fatal("Failed to close all windows: ", err)
+				}
+			}()
+
 			// Exit overview mode and wait.
 			if err = ash.SetOverviewModeAndWait(ctx, tconn, false); err != nil {
 				s.Fatal("Failed to exit overview mode: ", err)
