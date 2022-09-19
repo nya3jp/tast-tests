@@ -56,6 +56,30 @@
       },
       "revId": "af280653e3c0662b095185462e272f6377b2c8b3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93292417_6cf45d20",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/offline.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-09-19T11:46:57Z",
+      "side": 1,
+      "message": "The general screenplay documentation can be found here: go/screenplay\n\nA documentation specific for screenplay usage in ChromeOS will also be added later.\nThe whole thing is for tracking the CUJ test coverage in ChromeOS in the wake of the code yellow for product health.",
+      "parentUuid": "b7cc79f6_bc9eeeaa",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 5
+      },
+      "revId": "af280653e3c0662b095185462e272f6377b2c8b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
