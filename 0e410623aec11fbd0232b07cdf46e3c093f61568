@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "650cf514_ab1ee2ee",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/recorder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-09-19T16:11:44Z",
+      "side": 1,
+      "message": "Put this before the call to `uiauto.NewScreenRecorder` so that if the error here is encountered, you don\u0027t have to worry about releasing the screen recorder.",
+      "range": {
+        "startLine": 276,
+        "startChar": 0,
+        "endLine": 279,
+        "endChar": 2
+      },
+      "revId": "0e410623aec11fbd0232b07cdf46e3c093f61568",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78461272_b1f6c9df",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/recorder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-09-19T16:11:44Z",
+      "side": 1,
+      "message": "optional nit: I would not put a blank line here.",
+      "revId": "0e410623aec11fbd0232b07cdf46e3c093f61568",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
