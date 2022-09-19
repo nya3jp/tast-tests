@@ -83,6 +83,10 @@ func AdminTemplatesLaunch(ctx context.Context, s *testing.State) {
 	iurl, ihash := eds.ServePolicyData(templateJSON)
 
 	defer ash.SetOverviewModeAndWait(cleanupCtx, tconn, false)
+	if _, err := apps.PrimaryBrowser(ctx, tconn); err != nil {
+		s.Fatal("Could not find the primary browser app info: ", err)
+	}
+
 	policiesToServe := []policy.Policy{
 		&policy.PreconfiguredDeskTemplates{Val: &policy.PreconfiguredDeskTemplatesValue{Url: iurl, Hash: ihash}},
 		&policy.DeskTemplatesEnabled{Val: true},
@@ -92,6 +96,11 @@ func AdminTemplatesLaunch(ctx context.Context, s *testing.State) {
 		s.Run(ctx, subtestName, func(ctx context.Context, s *testing.State) {
 			defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "ui_tree_"+subtestName)
 			ac := uiauto.New(tconn)
+
+			// Close all existing windows.
+			if err := ash.CloseAllWindows(ctx, tconn); err != nil {
+				s.Fatal("Failed to close all windows: ", err)
+			}
 
 			// Perform cleanup.
 			if err := policyutil.ResetChrome(ctx, fdms, cr); err != nil {
@@ -154,6 +163,12 @@ func AdminTemplatesLaunch(ctx context.Context, s *testing.State) {
 			if err := wmputils.WaitforAppsToBeVisible(ctx, tconn, ac, appsList); err != nil {
 				s.Fatal("Failed to wait for apps to be visible: ", err)
 			}
+
+			defer func() {
+				if err := ash.CloseAllWindows(ctx, tconn); err != nil {
+					s.Fatal("Failed to close all windows at cleanup: ", err)
+				}
+			}()
 
 			// Exit overview mode and wait.
 			if err = ash.SetOverviewModeAndWait(ctx, tconn, false); err != nil {
