@@ -6,12 +6,11 @@ package clipboardhistory
 
 import (
 	"context"
-	"time"
 
 	"chromiumos/tast/local/a11y"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
-	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/clipboardhistory"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
@@ -101,8 +100,8 @@ func init() {
 func Paste(ctx context.Context, s *testing.State) {
 	// Set up a browser window with a text input field.
 	const (
-		html      = "<input id='text' type='text' label='textfield' autofocus>"
-		inputText = "abc"
+		html = "<input id='text' type='text' label='textfield' autofocus>"
+		text = "abc"
 	)
 
 	params := s.Param().(pasteTestParams)
@@ -111,79 +110,49 @@ func Paste(ctx context.Context, s *testing.State) {
 	// item to clipboard history and expect it to be the menu's top item.
 	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 
-	tconn, err := cr.TestAPIConn(ctx)
+	env, err := clipboardhistory.SetUpEnv(ctx, cr, params.browserType)
 	if err != nil {
-		s.Fatal("Failed to create Test API connection: ", err)
+		s.Fatal("Failed to set up test environment: ", err)
 	}
-	ui := uiauto.New(tconn).WithTimeout(10 * time.Second)
-	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
+	defer env.Kb.Close()
+	defer env.Cb(ctx)
+
+	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, env.Tconn)
 	defer faillog.SaveScreenshotOnError(ctx, cr, s.OutDir(), s.HasError)
 
-	br, closeBrowser, err := browserfixt.SetUp(ctx, cr, params.browserType)
-	if err != nil {
-		s.Fatal("Failed to open the browser: ", err)
-	}
-	defer closeBrowser(ctx)
-
-	c, err := a11y.NewTabWithHTML(ctx, br, html)
+	c, err := a11y.NewTabWithHTML(ctx, env.Br, html)
 	if err != nil {
 		s.Fatal("Failed to open a new tab with HTML: ", err)
 	}
 	defer c.Close()
 
-	kbd, err := input.Keyboard(ctx)
-	if err != nil {
-		s.Fatal("Failed to open keyboard device: ", err)
-	}
-	defer kbd.Close()
-
 	// Use the text input field to put an item in the clipboard history menu.
 	emptyTextbox := nodewith.NameContaining("label='textfield'").Role(role.StaticText).Onscreen()
-	populatedTextbox := nodewith.Name(inputText).Role(role.InlineTextBox)
-	if err := uiauto.Combine("populate clipboard history",
-		// The textfield should be empty initially.
-		ui.WaitUntilExists(emptyTextbox),
-
-		// The textfield auto-focuses, so we can begin typing once it exists.
-		kbd.TypeAction(inputText),
-
-		// The textfield should now contain the user's input.
-		ui.WaitUntilExists(populatedTextbox),
-
-		// Copy the user's input to the clipboard.
-		kbd.AccelAction("Ctrl+A"),
-		kbd.AccelAction("Ctrl+C"),
-	)(ctx); err != nil {
-		s.Fatal("Failed to populate clipboard history: ", err)
+	populatedTextbox := nodewith.Name(text).Role(role.InlineTextBox)
+	if err := ash.SetClipboard(ctx, env.Tconn, text); err != nil {
+		s.Fatalf("Failed to populate clipboard history with %q: %v", text, err)
 	}
 
-	if err := uiauto.Combine("clear textfield",
-		ui.LeftClick(populatedTextbox),
-		kbd.AccelAction("Ctrl+A"),
-		kbd.AccelAction("Backspace"),
-		ui.WaitUntilExists(emptyTextbox),
+	if err := uiauto.Combine("open menu",
+		env.UI.LeftClick(emptyTextbox),
+		env.Kb.AccelAction("Search+V"),
 	)(ctx); err != nil {
-		s.Fatal("Failed to clear textfield: ", err)
-	}
-
-	// Open the clipboard history menu and paste into the now-empty textfield.
-	if err := kbd.Accel(ctx, "Search+V"); err != nil {
-		s.Fatal("Failed to launch clipboard history menu: ", err)
+		s.Fatal("Failed to open clipboard history menu: ", err)
 	}
 
 	item := clipboardhistory.FindFirstTextItem()
 	if err := uiauto.Combine("paste from clipboard history",
 		// Make sure the clipboard history menu is pulled up and populated with the
 		// previously-copied item.
-		ui.WaitUntilExists(item),
+		env.UI.WaitUntilExists(item),
 
 		// Test one of the actions that pastes from clipboard history.
-		params.testFn(pasteActionParams{item, ui, kbd}),
+		params.testFn(pasteActionParams{item, env.UI, env.Kb}),
 
 		// Make sure that once the clipboard history item is pasted, the menu is
 		// closed and the textfield contains the item's text.
-		ui.WaitUntilGone(item),
-		ui.WaitUntilExists(populatedTextbox),
+		env.UI.WaitUntilGone(item),
+		env.UI.WaitUntilExists(populatedTextbox),
 	)(ctx); err != nil {
 		s.Fatal("Failed to paste from clipboard history: ", err)
 	}
