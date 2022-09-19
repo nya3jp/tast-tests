@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1a55be6_b996c187",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2022-09-19T02:25:17Z",
+      "side": 1,
+      "message": "so this is a stress test? what test criteria we want to validate by this test?\n\nall the command is runned sequentially becaues everything goes through trunks an async yet single-threaded dbus service. you are technically testing the dbus calls contention at trunks side. is it really what you want?",
+      "revId": "064bef9384ae90cfd0ae286ae5a408a401a3c08a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b636b51_2bc9e02b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/tpm_contest.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2022-09-19T02:25:17Z",
+      "side": 1,
+      "message": "this should not be used due to the ongoing deprecation of this CLI tool.",
+      "range": {
+        "startLine": 76,
+        "startChar": 26,
+        "endLine": 76,
+        "endChar": 37
+      },
+      "revId": "064bef9384ae90cfd0ae286ae5a408a401a3c08a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
