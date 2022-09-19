@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "57e18b57_65d90f30",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2022-09-19T05:45:31Z",
+      "side": 1,
+      "message": "So there is no real way to test the install button disabled. Hope the test will be stable now.",
+      "revId": "466d44736480dc6a3d8520c078eedbb3735ae237",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
