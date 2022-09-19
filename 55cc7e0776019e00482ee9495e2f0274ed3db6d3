@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97a2d26d_0d79c86f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_gedit.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2022-09-19T03:04:23Z",
+      "side": 1,
+      "message": "clumptini+oncall",
+      "range": {
+        "startLine": 31,
+        "startChar": 26,
+        "endLine": 31,
+        "endChar": 35
+      },
+      "revId": "55cc7e0776019e00482ee9495e2f0274ed3db6d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
