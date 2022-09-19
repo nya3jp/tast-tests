@@ -22,6 +22,30 @@
       },
       "revId": "dbb7a9720eb12c7e9c25487b30e3ce799cdc5155",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8407966b_e99c5dc6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_auto_shift.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1379515
+      },
+      "writtenOn": "2022-09-19T01:46:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "47c6eab5_411acf6a",
+      "range": {
+        "startLine": 49,
+        "startChar": 31,
+        "endLine": 49,
+        "endChar": 52
+      },
+      "revId": "dbb7a9720eb12c7e9c25487b30e3ce799cdc5155",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
