@@ -25,6 +25,8 @@ const (
 	// Zoom supports up to 1080p HD video (Business, Education, or Enterprise account only),
 	// while Google Meet supports 720p. So here use 720p HD video as test video.
 	CameraVideo = "720p_camera_video.mjpeg"
+	// TraceConfigFile is the data path of the trace config file in text proto format.
+	TraceConfigFile = "perfetto/system_trace_config.pbtxt"
 )
 
 // TestParameters defines the test parameters for conference.
