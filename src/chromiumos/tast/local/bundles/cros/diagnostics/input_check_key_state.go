@@ -6,14 +6,11 @@ package diagnostics
 
 import (
 	"context"
-	"time"
 
 	"chromiumos/tast/common/action"
-	"chromiumos/tast/ctxutil"
-	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/bundles/cros/diagnostics/utils"
 	"chromiumos/tast/local/chrome/uiauto"
 	da "chromiumos/tast/local/chrome/uiauto/diagnosticsapp"
-	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -32,6 +29,7 @@ func init() {
 			"zentaro@google.com",
 			"cros-peripherals@google.com",
 		},
+		Fixture:      "diagnosticsPrepForInputDiagnostics",
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		HardwareDeps: hwdep.D(hwdep.InternalKeyboard()),
@@ -39,27 +37,7 @@ func init() {
 }
 
 func InputCheckKeyState(ctx context.Context, s *testing.State) {
-	cleanupCtx := ctx
-	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
-	defer cancel()
-
-	cr, err := chrome.New(ctx, chrome.Region("us"), chrome.EnableFeatures("DiagnosticsAppNavigation", "EnableInputInDiagnosticsApp"))
-	if err != nil {
-		s.Fatal("Failed to start Chrome: ", err)
-	}
-	defer cr.Close(cleanupCtx)
-
-	tconn, err := cr.TestAPIConn(ctx)
-	if err != nil {
-		s.Fatal("Failed to connect Test API: ", err)
-	}
-
-	dxRootNode, err := da.Launch(ctx, tconn)
-	if err != nil {
-		s.Fatal("Failed to launch diagnostics app: ", err)
-	}
-	defer da.Close(cleanupCtx, tconn)
-	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
+	tconn := s.FixtValue().(*utils.FixtureData).Tconn
 
 	kb, err := input.Keyboard(ctx)
 	if err != nil {
@@ -80,7 +58,7 @@ func InputCheckKeyState(ctx context.Context, s *testing.State) {
 			))
 	}
 
-	inputTab := da.DxInput.Ancestor(dxRootNode)
+	inputTab := da.DxInput.Ancestor(da.DxRootNode)
 	if err := uiauto.Combine("verify the specific keys' states after pressing and releasing the key",
 		ui.LeftClick(inputTab),
 		ui.LeftClick(da.DxInternalKeyboardTestButton),

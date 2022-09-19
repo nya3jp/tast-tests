@@ -9,11 +9,9 @@ import (
 	"time"
 
 	"chromiumos/tast/common/action"
-	"chromiumos/tast/ctxutil"
-	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/bundles/cros/diagnostics/utils"
 	"chromiumos/tast/local/chrome/uiauto"
 	da "chromiumos/tast/local/chrome/uiauto/diagnosticsapp"
-	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
@@ -31,6 +29,7 @@ func init() {
 			"zentaro@google.com",
 			"cros-peripherals@google.com",
 		},
+		Fixture:      "diagnosticsPrepForInputDiagnostics",
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      3 * time.Minute,
@@ -38,27 +37,7 @@ func init() {
 }
 
 func InputKeyboardConnectAndDisconnect(ctx context.Context, s *testing.State) {
-	cleanupCtx := ctx
-	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
-	defer cancel()
-
-	cr, err := chrome.New(ctx, chrome.Region("us"), chrome.EnableFeatures("DiagnosticsAppNavigation", "EnableInputInDiagnosticsApp"))
-	if err != nil {
-		s.Fatal("Failed to start Chrome: ", err)
-	}
-	defer cr.Close(cleanupCtx)
-
-	tconn, err := cr.TestAPIConn(ctx)
-	if err != nil {
-		s.Fatal("Failed to connect Test API: ", err)
-	}
-
-	dxRootNode, err := da.Launch(ctx, tconn)
-	if err != nil {
-		s.Fatal("Failed to launch diagnostics app: ", err)
-	}
-	defer da.Close(cleanupCtx, tconn)
-	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
+	tconn := s.FixtValue().(*utils.FixtureData).Tconn
 
 	// Since virtual keyboard BUS_USB (0x03) doesn't work yet, use BUS_I2C (0x18).
 	// See https://crrev.com/c/1407138 for more discussion.
@@ -69,7 +48,7 @@ func InputKeyboardConnectAndDisconnect(ctx context.Context, s *testing.State) {
 	defer vkb.Close()
 
 	ui := uiauto.New(tconn)
-	inputTab := da.DxInput.Ancestor(dxRootNode)
+	inputTab := da.DxInput.Ancestor(da.DxRootNode)
 	virtualKeyboard := da.DxVirtualKeyboardHeading
 	if err := uiauto.Combine("check no virtual keyboard exists in input device list",
 		ui.LeftClick(inputTab),

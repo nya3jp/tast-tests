@@ -6,15 +6,12 @@ package diagnostics
 
 import (
 	"context"
-	"time"
 
 	"chromiumos/tast/common/action"
-	"chromiumos/tast/ctxutil"
-	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/bundles/cros/diagnostics/utils"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto"
 	da "chromiumos/tast/local/chrome/uiauto/diagnosticsapp"
-	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/pointer"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
@@ -34,6 +31,7 @@ func init() {
 			"zentaro@google.com",
 			"cros-peripherals@google.com",
 		},
+		Fixture:      "diagnosticsPrepForInputDiagnostics",
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		HardwareDeps: hwdep.D(hwdep.InternalKeyboard()),
@@ -41,20 +39,7 @@ func init() {
 }
 
 func InputCheckDefocusing(ctx context.Context, s *testing.State) {
-	cleanupCtx := ctx
-	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
-	defer cancel()
-
-	cr, err := chrome.New(ctx, chrome.Region("us"), chrome.EnableFeatures("DiagnosticsAppNavigation", "EnableInputInDiagnosticsApp"))
-	if err != nil {
-		s.Fatal("Failed to start Chrome: ", err)
-	}
-	defer cr.Close(cleanupCtx)
-
-	tconn, err := cr.TestAPIConn(ctx)
-	if err != nil {
-		s.Fatal("Failed to connect Test API: ", err)
-	}
+	cr, tconn := s.FixtValue().(*utils.FixtureData).Cr, s.FixtValue().(*utils.FixtureData).Tconn
 
 	kb, err := input.Keyboard(ctx)
 	if err != nil {
@@ -62,12 +47,15 @@ func InputCheckDefocusing(ctx context.Context, s *testing.State) {
 	}
 	defer kb.Close()
 
+	// Lock diagnostics window to right side of the screen
+	kb.AccelAction("alt+]")(ctx)
+
 	conn, err := cr.NewConn(ctx, "https://www.google.com")
 	if err != nil {
 		s.Fatal("Failed to create chrome: ", err)
 	}
 	defer conn.Close()
-	defer conn.CloseTarget(cleanupCtx)
+	defer conn.CloseTarget(ctx)
 	ui := uiauto.New(tconn)
 
 	// Lock chrome window to left side of the screen
@@ -87,16 +75,6 @@ func InputCheckDefocusing(ctx context.Context, s *testing.State) {
 		}
 	}
 
-	dxRootNode, err := da.Launch(ctx, tconn)
-	if err != nil {
-		s.Fatal("Failed to launch diagnostics app: ", err)
-	}
-	defer da.Close(cleanupCtx, tconn)
-	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
-
-	// Lock diagnostics window to right side of the screen
-	kb.AccelAction("alt+]")(ctx)
-
 	mc := pointer.NewMouse(tconn)
 	defer mc.Close()
 
@@ -112,7 +90,7 @@ func InputCheckDefocusing(ctx context.Context, s *testing.State) {
 			))
 	}
 
-	inputTab := da.DxInput.Ancestor(dxRootNode)
+	inputTab := da.DxInput.Ancestor(da.DxRootNode)
 	if err := uiauto.Combine("verify pressing and releasing key won't affect key states",
 		ui.LeftClick(inputTab),
 		ui.LeftClick(da.DxInternalKeyboardTestButton),
