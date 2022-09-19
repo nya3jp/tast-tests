@@ -33,6 +33,11 @@ func init() {
 		Attr:         []string{"group:mainline"},
 		VarDeps:      []string{"ui.signinProfileTestExtensionManifestKey"},
 		Timeout:      2*chrome.LoginTimeout + 25*time.Second,
+		SearchFlags: []*testing.StringPair{{
+			Key: "feature_id",
+			// Offline Authentication.
+			Value: "screenplay-2ea06509-cb85-4122-9145-900e47707e94",
+		}},
 	})
 }
 
