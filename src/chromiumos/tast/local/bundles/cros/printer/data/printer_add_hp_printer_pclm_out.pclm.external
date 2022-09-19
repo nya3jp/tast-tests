@@ -1,5 +1,5 @@
 {
-  "url": "gs://chromiumos-test-assets-public/tast/cros/printer/printer_add_hp_pclm_out_20201008.pclm",
-  "size": 552612,
-  "sha256sum": "af12e235b5f18c02a75bc05a584f2e0c852d6452a9bebcfcff38b570a24004ff"
+  "url": "gs://chromiumos-test-assets-public/tast/cros/printer/printer_add_hp_pclm_out_20220919.pclm",
+  "size": 552616,
+  "sha256sum": "c44103669c30ca47c77b15dcb00e4a3ec34f6abd96ca898cfe545704b25fa3c7"
 }
