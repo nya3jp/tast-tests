@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1aec685e_f4df7179",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/windowarrangementcuj/tablet.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-09-19T16:57:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2f78f0ba_9eee0251",
+      "revId": "0daf70f625557b65f5877735d06b7cf60e6f3e9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3dd17738_637f02be",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ba0dbe8_3e3721a1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/windowarrangementcuj/tablet.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-09-19T16:57:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3dd17738_637f02be",
+      "revId": "0daf70f625557b65f5877735d06b7cf60e6f3e9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4c049aba_f736f08d",
@@ -48,6 +84,24 @@
       "writtenOn": "2022-09-16T15:50:22Z",
       "side": 1,
       "message": "Can we maybe add a comment to explain why tapping the divider should help this issue / why this is the workaround?",
+      "revId": "0daf70f625557b65f5877735d06b7cf60e6f3e9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a23ff1c9_a84e3cc6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/windowarrangementcuj/tablet.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-09-19T16:57:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4c049aba_f736f08d",
       "revId": "0daf70f625557b65f5877735d06b7cf60e6f3e9a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
