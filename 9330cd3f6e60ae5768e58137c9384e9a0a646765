@@ -70,6 +70,24 @@
       "parentUuid": "4f5f6619_99f21ccc",
       "revId": "9330cd3f6e60ae5768e58137c9384e9a0a646765",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93646131_5408e126",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1554467
+      },
+      "writtenOn": "2022-09-19T03:35:03Z",
+      "side": 1,
+      "message": "Hi Newman,\n\nAre you saying I need to rebase in order to get this code to build?  I checked out Patch 13 and I still see this error:\n\n2022-09-19T03:32:48.573765Z Command line: tast run -var\u003dutils.WWCBIP\u003dpenguin -var\u003dDockingID\u003d1912901 -var\u003d1stExtDispID\u003d2007901 -var\u003dEthernetID\u003dj45sw01 localhost:2222 wwcb.Dock5NetworkSwitch\n2022-09-19T03:32:48.573843Z Writing results to /tmp/tast/results/20220919-033248\n2022-09-19T03:32:48.574463Z Starting ephemeral devserver at http://127.0.0.1:46479 for remote tests\n2022-09-19T03:32:48.575123Z Connecting to localhost:2222\n2022-09-19T03:32:48.948277Z Building remote_test_runner, cros\n2022-09-19T03:32:51.843219Z ../platform/tast-tests/src/chromiumos/tast/common/servo/proxy.go:25:2: cannot find package \"github.com/docker/docker/pkg/stdcopy\" in any of:\n2022-09-19T03:32:51.843314Z     /usr/lib/go/src/github.com/docker/docker/pkg/stdcopy (from $GOROOT)\n2022-09-19T03:32:51.843360Z     /home/acwans/chromiumos/src/platform/tast-tests/src/github.com/docker/docker/pkg/stdcopy (from $GOPATH)\n2022-09-19T03:32:51.843416Z     /home/acwans/chromiumos/src/platform/tast/src/github.com/docker/docker/pkg/stdcopy\n2022-09-19T03:32:51.843446Z     /usr/lib/gopath/src/github.com/docker/docker/pkg/stdcopy\n2022-09-19T03:32:52.717010Z Failed to run tests: failed to build and push primary DUT: build failed: failed to build chromiumos/tast/remote/bundles/cros: exit status 1",
+      "parentUuid": "64db5b49_515e1ef5",
+      "revId": "9330cd3f6e60ae5768e58137c9384e9a0a646765",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
