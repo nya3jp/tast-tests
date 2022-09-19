@@ -1,0 +1,130 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ff128dc_c211edbf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-09-19T12:19:48Z",
+      "side": 1,
+      "message": "LGTM % nits about comments.",
+      "revId": "8a15582f6cdedbfcbd72dbe4ca84c9eaaf765c11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38f9e43d_4a8fa4c0",
+        "filename": "src/chromiumos/tast/local/audio/loopback_latency.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-09-19T12:19:48Z",
+      "side": 1,
+      "message": "nit: End comments with a dot.",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 42
+      },
+      "revId": "8a15582f6cdedbfcbd72dbe4ca84c9eaaf765c11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e486b4e8_0ef716b5",
+        "filename": "src/chromiumos/tast/local/audio/loopback_latency.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-09-19T12:19:48Z",
+      "side": 1,
+      "message": "nit: End comments with a dot.",
+      "revId": "8a15582f6cdedbfcbd72dbe4ca84c9eaaf765c11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9cbe8778_48bf3c99",
+        "filename": "src/chromiumos/tast/local/audio/loopback_latency.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-09-19T12:19:48Z",
+      "side": 1,
+      "message": "nit: End comments with a dot.",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 42
+      },
+      "revId": "8a15582f6cdedbfcbd72dbe4ca84c9eaaf765c11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9743d8a5_692238fa",
+        "filename": "src/chromiumos/tast/local/audio/loopback_latency.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-09-19T12:19:48Z",
+      "side": 1,
+      "message": "nit: End comments with a dot.",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 14
+      },
+      "revId": "8a15582f6cdedbfcbd72dbe4ca84c9eaaf765c11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b048b26_73151b58",
+        "filename": "src/chromiumos/tast/local/audio/loopback_latency.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-09-19T12:19:48Z",
+      "side": 1,
+      "message": "nit: End comments with a dot.",
+      "range": {
+        "startLine": 126,
+        "startChar": 0,
+        "endLine": 128,
+        "endChar": 50
+      },
+      "revId": "8a15582f6cdedbfcbd72dbe4ca84c9eaaf765c11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
