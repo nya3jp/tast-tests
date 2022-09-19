@@ -65,6 +65,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "594b4f65_a3012d7e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-09-19T09:46:52Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "6ef703565341e4e490373a3a2f6c1907492cf26a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "046f9fc3_61514ea7",
@@ -107,6 +124,29 @@
         "startChar": 34,
         "endLine": 88,
         "endChar": 45
+      },
+      "revId": "6ef703565341e4e490373a3a2f6c1907492cf26a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6edca38c_d0bd4c6a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/shill_cellular_disable_while_connecting.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-09-19T09:46:52Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be a Fatal if the connection fails?\nOtherwise the test would just wait until it times out.",
+      "range": {
+        "startLine": 98,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 2
       },
       "revId": "6ef703565341e4e490373a3a2f6c1907492cf26a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
