@@ -529,6 +529,12 @@ func (tf *TestFixture) DUTConn(dutIdx DutIdx) *ssh.Conn {
 	return tf.duts[dutIdx].dut.Conn()
 }
 
+// APConn returns connection object to the first AP.
+// Currently, the test fixture only requires to control the first (0th) AP.
+func (tf *TestFixture) APConn() *ssh.Conn {
+	return tf.routers[0].host
+}
+
 // ReserveForClose returns a shorter ctx and cancel function for tf.Close().
 func (tf *TestFixture) ReserveForClose(ctx context.Context) (context.Context, context.CancelFunc) {
 	return ctxutil.Shorten(ctx, 10*time.Second)
