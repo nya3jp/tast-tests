@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "192c3d70_317d2cc9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-09-19T21:12:33Z",
+      "side": 1,
+      "message": "I have two comments. Please also run Tast unit test: fast_build.sh -T\n\nThen, add this line to commit log\nTEST\u003dtast unit test passed.\n\nThanks.",
+      "revId": "8f83a64412e28b52059a9f4bf38b8eedff4b84db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7549d2a_a8217c3c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/clipboardhistory/context_menu_clipboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-09-19T21:12:33Z",
+      "side": 1,
+      "message": "Please add a comment on why a 30-second wait is needed. It seems quite long. I have looked around other code. It is usually 10 seconds.",
+      "revId": "8f83a64412e28b52059a9f4bf38b8eedff4b84db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d2f4b49_7b7c70bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/clipboardhistory/context_menu_clipboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-09-19T21:12:33Z",
+      "side": 1,
+      "message": "I am not that familiar with the UI. What will happen if Mail window is not the active window? Is Mail always the active window for this test?",
+      "revId": "8f83a64412e28b52059a9f4bf38b8eedff4b84db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
