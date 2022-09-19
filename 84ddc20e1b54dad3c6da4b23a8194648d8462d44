@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1dc49773_0b63cf71",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1531792
+      },
+      "writtenOn": "2022-09-19T06:07:32Z",
+      "side": 1,
+      "message": "I think we don\u0027t do anything. It should be supported automatically.",
+      "parentUuid": "95fe0cca_51c0ad97",
+      "revId": "84ddc20e1b54dad3c6da4b23a8194648d8462d44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "be18870d_232f9ee3",
@@ -48,6 +66,24 @@
       "writtenOn": "2022-09-19T05:45:07Z",
       "side": 1,
       "message": "Why use these specific options? Could add a comment to describe that?",
+      "revId": "84ddc20e1b54dad3c6da4b23a8194648d8462d44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "414b703c_64d9ff66",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/wifi_connection.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1531792
+      },
+      "writtenOn": "2022-09-19T06:07:32Z",
+      "side": 1,
+      "message": "I think it can be others as well.",
+      "parentUuid": "7caee659_fd65660f",
       "revId": "84ddc20e1b54dad3c6da4b23a8194648d8462d44",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -88,6 +124,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "106df646_1ac4bbab",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/wifi_connection.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1531792
+      },
+      "writtenOn": "2022-09-19T06:07:32Z",
+      "side": 1,
+      "message": "I think http://b/182202226#comment52 contains the details.",
+      "parentUuid": "b2c2d15c_4b876784",
+      "revId": "84ddc20e1b54dad3c6da4b23a8194648d8462d44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4f097997_ed297062",
         "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/wifi_connection.go",
         "patchSetId": 2
@@ -122,6 +176,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7d0ffede_0aa787cc",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1531792
+      },
+      "writtenOn": "2022-09-19T06:07:32Z",
+      "side": 1,
+      "message": "I will add after I get approval from our team.",
+      "parentUuid": "ad843888_34e931e5",
+      "revId": "84ddc20e1b54dad3c6da4b23a8194648d8462d44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6038d1b8_fca4d0ef",
         "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
         "patchSetId": 2
@@ -150,6 +222,24 @@
       "writtenOn": "2022-09-19T05:45:07Z",
       "side": 1,
       "message": "Why request a router by id if number of routers is not exposed externally? Maybe it\u0027s better to always return first router if the slice is non-empty?",
+      "revId": "84ddc20e1b54dad3c6da4b23a8194648d8462d44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4185c40_f6ac20da",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 535,
+      "author": {
+        "id": 1531792
+      },
+      "writtenOn": "2022-09-19T06:07:32Z",
+      "side": 1,
+      "message": "Not sure about it. I follow the existing behavior of DutConn. WifiCell Owner may help us verify it.",
+      "parentUuid": "e9a2a01d_8dc0f0bb",
       "revId": "84ddc20e1b54dad3c6da4b23a8194648d8462d44",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
