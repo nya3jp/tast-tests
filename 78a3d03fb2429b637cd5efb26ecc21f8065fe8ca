@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28324412_2a2b6afd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-09-19T01:37:03Z",
+      "side": 1,
+      "message": "The fix results in failures in ChromeOS repo as the change is in Chrome side and hasn\u0027t been uprevved. If these tests are still not demoted, the uprev will be blocked by these tests.\n\nCan we just remove the roles in these nodes?",
+      "revId": "78a3d03fb2429b637cd5efb26ecc21f8065fe8ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
