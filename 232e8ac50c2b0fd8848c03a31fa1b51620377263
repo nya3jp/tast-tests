@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bde89533_7825900c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1528043
+      },
+      "writtenOn": "2022-09-19T19:38:55Z",
+      "side": 1,
+      "message": "Thanks for the reviews.\nRenaming them is to avoid confusion and can safe development time, so I think that renaming these is useful.\n\n@muhamedp: you are now a domain-expert reviewer :P (mainly so you learn not to repeat my mistakes...)",
+      "revId": "232e8ac50c2b0fd8848c03a31fa1b51620377263",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f9f28fd0_1a3b618b",
@@ -35,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb66633e_e46c411c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterpriseconnectors/helpers/helpers.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1528043
+      },
+      "writtenOn": "2022-09-19T19:38:55Z",
+      "side": 1,
+      "message": "The bug reason: I thought there\u0027s only one tconn and I don\u0027t ever need any other.\n\nNaming them explicitly (tconnAsh) is to prevent maintainers (including future-me) from making/repeating these errors. So I think while this change isn\u0027t necessary, it helps prevent future problems.",
+      "parentUuid": "f9f28fd0_1a3b618b",
+      "revId": "232e8ac50c2b0fd8848c03a31fa1b51620377263",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "85c3e4f2_8c37a5e5",
@@ -48,6 +83,24 @@
       "writtenOn": "2022-09-19T17:28:08Z",
       "side": 1,
       "message": "See question above.",
+      "revId": "232e8ac50c2b0fd8848c03a31fa1b51620377263",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b7ea4ee_fd807ce5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterpriseconnectors/helpers/helpers.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1528043
+      },
+      "writtenOn": "2022-09-19T19:38:55Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "85c3e4f2_8c37a5e5",
       "revId": "232e8ac50c2b0fd8848c03a31fa1b51620377263",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -82,6 +135,24 @@
       "writtenOn": "2022-09-19T17:28:08Z",
       "side": 1,
       "message": "I don\u0027t think this change is necessary.",
+      "revId": "232e8ac50c2b0fd8848c03a31fa1b51620377263",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b3610cb_ae07ceb4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterpriseconnectors/test_file_attached.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1528043
+      },
+      "writtenOn": "2022-09-19T19:38:55Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1107e752_9cae8cc9",
       "revId": "232e8ac50c2b0fd8848c03a31fa1b51620377263",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
