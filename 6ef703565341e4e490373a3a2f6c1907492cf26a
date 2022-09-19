@@ -150,6 +150,30 @@
       },
       "revId": "6ef703565341e4e490373a3a2f6c1907492cf26a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ad08b6a_75748bf3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/shill_cellular_disable_while_connecting.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-09-19T13:24:50Z",
+      "side": 1,
+      "message": "We actually expect the connection to fail most of the time, as the disable operation in the goroutine will interrupt it. The fatal we really don\u0027t want is the one for the re-enable in L69, as this test is attempting to confirm that these sorts of simultaneous options don\u0027t leave us in a bad state.\n\nRegarding the timeout, we use a different context for this and it times out after 3 minutes on its own. I can use a shorter timeout for the connect if you would like, but figured that if the default connect parameters had a long timeout, we should just stick with those.",
+      "parentUuid": "6edca38c_d0bd4c6a",
+      "range": {
+        "startLine": 98,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 2
+      },
+      "revId": "6ef703565341e4e490373a3a2f6c1907492cf26a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
