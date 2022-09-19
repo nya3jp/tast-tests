@@ -28,6 +28,10 @@ class ReceivedEvent {
     actionButton = actionButtonToString(event);
   }
 
+  public String toString() {
+    return action + " " + String.valueOf(receiveTimeNs);
+  }
+
    private String sourceToString(InputEvent event) {
     final int source = event.getSource();
     switch (source) {
