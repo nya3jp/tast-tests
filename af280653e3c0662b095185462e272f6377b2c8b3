@@ -16,6 +16,46 @@
       "message": "PTAL",
       "revId": "af280653e3c0662b095185462e272f6377b2c8b3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cfcf7e7b_dd211469",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2022-09-19T10:40:38Z",
+      "side": 1,
+      "message": "lgtm with a question",
+      "revId": "af280653e3c0662b095185462e272f6377b2c8b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7cc79f6_bc9eeeaa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/offline.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2022-09-19T10:40:38Z",
+      "side": 1,
+      "message": "Is there a documentation around that?",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 5
+      },
+      "revId": "af280653e3c0662b095185462e272f6377b2c8b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
