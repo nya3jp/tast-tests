@@ -27,8 +27,11 @@ func init() {
 		ServiceDeps: []string{
 			"tast.cros.spera.ConferenceService2",
 		},
-		Data: []string{conference.CameraVideo},
-		Vars: []string{"spera.use_real_camera"},
+		Data: []string{conference.CameraVideo, conference.TraceConfigFile},
+		Vars: []string{
+			"spera.use_real_camera",
+			"spera.collectTrace", // Optional. Expecting "enable" or "disable", default is "disable".
+		},
 		Params: []testing.Param{
 			{
 				Name:    "basic_two",
@@ -178,6 +181,13 @@ func ZoomConfCUJ(ctx context.Context, s *testing.State) {
 		defer dut.Conn().CommandContext(ctx, "rm", remoteCameraVideoPath).Run()
 	}
 
+	if collect, ok := s.Var("spera.collectTrace"); ok && collect == "enable" {
+		remoteTraceConfigFilePath, err := conference.PushFileToTmpDir(ctx, s, dut, conference.TraceConfigFile)
+		if err != nil {
+			s.Fatal("Failed to push file to DUT's tmp directory: ", err)
+		}
+		defer dut.Conn().CommandContext(ctx, "rm", remoteTraceConfigFilePath).Run()
+	}
 	client := pb.NewConferenceService2Client(c.Conn)
 	if _, err := client.RunZoomScenario(ctx, &pb.MeetScenarioRequest{
 		Tier:            param.Tier,
