@@ -70,6 +70,30 @@
       },
       "revId": "265e032f3c4f6a27bd7abb3110f913901f032d86",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14d5855e_33ccebc2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/p2p_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-09-19T21:30:42Z",
+      "side": 1,
+      "message": "The possible solution is to introduce subtests with different channel widths and freqs (I need to figure out how to to create the link with specified freq and channel width), or change the metric name to have the chosen freq and channel width as suffix.",
+      "parentUuid": "24920e54_f1cca56f",
+      "range": {
+        "startLine": 94,
+        "startChar": 14,
+        "endLine": 94,
+        "endChar": 30
+      },
+      "revId": "265e032f3c4f6a27bd7abb3110f913901f032d86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
