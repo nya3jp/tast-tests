@@ -21,7 +21,7 @@ func init() {
 		Func:     ShillCellularRoaming,
 		Desc:     "Verifies that AllowRoaming is respected by Shill",
 		Contacts: []string{"pholla@google.com", "cros-network-health@google.com", "chromeos-cellular-team@google.com"},
-		Attr:     []string{"group:cellular", "cellular_unstable", "cellular_sim_roaming"},
+		Attr:     []string{"group:cellular", "cellular_sim_roaming"},
 		Fixture:  "cellular",
 		Timeout:  240 * time.Second,
 	})
