@@ -16,6 +16,29 @@
       "message": "PTAL. Thank you!",
       "revId": "02d6dca21f4a78b7e54811857dffbbd4a922886a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe6f3636_dc4cd684",
+        "filename": "src/chromiumos/tast/local/assistant/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1121230
+      },
+      "writtenOn": "2022-09-19T21:29:46Z",
+      "side": 1,
+      "message": "I realized that hardware info is not available in fixtures. Those fields are not filled at this stage. I\u0027ll update this code to read them in a test body.",
+      "range": {
+        "startLine": 343,
+        "startChar": 22,
+        "endLine": 343,
+        "endChar": 82
+      },
+      "revId": "02d6dca21f4a78b7e54811857dffbbd4a922886a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
