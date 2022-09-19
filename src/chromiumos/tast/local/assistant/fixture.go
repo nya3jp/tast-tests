@@ -18,6 +18,7 @@ import (
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/cpu"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 const (
@@ -323,6 +324,7 @@ type enabledFixture struct {
 type FixtData struct {
 	Chrome *chrome.Chrome
 	ARC    *arc.ARC
+	Hotkey Accelerator
 }
 
 // NewAssistantFixture returns new assistant fixture.
@@ -335,6 +337,18 @@ func NewAssistantFixture(cb parentFixtDataCallback) testing.FixtureImpl {
 func (f *enabledFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
 	fixtData := f.cb(s)
 	f.cr = fixtData.Chrome
+
+	// Resolve Assistant hotkey. Search+A is an Assistant hotkey if a device does not
+	// have an Assistant key.
+	satisfied, _, err := hwdep.AssistantKey().Satisfied(s.Features("").GetHardware())
+	if err != nil {
+		s.Fatal("Failed to obtain existence of an Assistant key on a device: ", err)
+	}
+	if satisfied {
+		fixtData.Hotkey = AccelAssistantKey
+	} else {
+		fixtData.Hotkey = AccelSearchPlusA
+	}
 
 	return &fixtData
 }
