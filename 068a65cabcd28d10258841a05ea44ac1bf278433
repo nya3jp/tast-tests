@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc4264d2_e51d3148",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shimlessrma/app_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2022-09-19T23:17:16Z",
+      "side": 1,
+      "message": "We need to move this higher after line 338. If we end up affecting ethernet with disabletechnology, but the error code isn\u0027t 0, we won\u0027t actually repair with this ethenablefunc.",
+      "range": {
+        "startLine": 342,
+        "startChar": 1,
+        "endLine": 342,
+        "endChar": 33
+      },
+      "revId": "068a65cabcd28d10258841a05ea44ac1bf278433",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db72b19d_70c64433",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shimlessrma/app_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2022-09-19T23:17:16Z",
+      "side": 1,
+      "message": "To increase clarity of the error message, I recommend adding another sentence describing the intended state.\n\nperhaps something like\n```\nreturn errors.New(\"WAN access is still available ethernet is disabled. WAN is intended to be unreachable\")\n```",
+      "range": {
+        "startLine": 345,
+        "startChar": 22,
+        "endLine": 345,
+        "endChar": 73
+      },
+      "revId": "068a65cabcd28d10258841a05ea44ac1bf278433",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "808e8d4e_cdd3d0b4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/wifi_connection.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2022-09-19T23:17:16Z",
+      "side": 1,
+      "message": "Might also be worth adding why this is important.",
+      "range": {
+        "startLine": 86,
+        "startChar": 1,
+        "endLine": 86,
+        "endChar": 40
+      },
+      "revId": "068a65cabcd28d10258841a05ea44ac1bf278433",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9840592_d2fe9aac",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/wifi_connection.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2022-09-19T23:17:16Z",
+      "side": 1,
+      "message": "We should have a defer routine that removes these iptables rules. We should return the AP back to its original state.",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 95,
+        "endChar": 2
+      },
+      "revId": "068a65cabcd28d10258841a05ea44ac1bf278433",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

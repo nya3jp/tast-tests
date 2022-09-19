@@ -422,6 +422,24 @@
       "parentUuid": "e9a2a01d_8dc0f0bb",
       "revId": "84ddc20e1b54dad3c6da4b23a8194648d8462d44",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27f30527_ab4ce86b",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 535,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2022-09-19T23:17:16Z",
+      "side": 1,
+      "message": "Hi, I\u0027d prefer to also just have a function that returns the first (0th) router. I don\u0027t believe there are wifi test fixtures that require controllability outside of the first AP.",
+      "parentUuid": "f4185c40_f6ac20da",
+      "revId": "84ddc20e1b54dad3c6da4b23a8194648d8462d44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
