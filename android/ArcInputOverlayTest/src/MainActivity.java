@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 The Chromium OS Authors. All rights reserved.
+ * Copyright 2022 The ChromiumOS Authors
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -28,6 +28,7 @@ import java.util.concurrent.TimeUnit;
 
 public class MainActivity extends Activity {
   final static String TAG = "InputOverlayTest";
+  final static String PERF = "InputOverlayPerf";
 
   private Button mButton;
   private EditText mEdit;
@@ -89,6 +90,7 @@ public class MainActivity extends Activity {
   private void printAndDisplayEvent(InputEvent event) {
     Log.v(TAG, event.toString());
     ReceivedEvent ev = new ReceivedEvent(event, SystemClock.elapsedRealtimeNanos());
+    Log.v(PERF, ev.toString());
     mEvents.add(ev);
     mAdapter.notifyDataSetChanged();
   }
