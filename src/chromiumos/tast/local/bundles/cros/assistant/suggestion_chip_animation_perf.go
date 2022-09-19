@@ -21,7 +21,6 @@ import (
 	"chromiumos/tast/local/cpu"
 	uiconsts "chromiumos/tast/local/ui"
 	"chromiumos/tast/testing"
-	"chromiumos/tast/testing/hwdep"
 )
 
 var uiPollOptions = testing.PollOptions{
@@ -38,18 +37,6 @@ func init() {
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
 		Fixture:      "assistantPerf",
-		Params: []testing.Param{
-			{
-				Name:              "assistant_key",
-				Val:               assistant.AccelAssistantKey,
-				ExtraHardwareDeps: hwdep.D(hwdep.AssistantKey()),
-			},
-			{
-				Name:              "search_plus_a",
-				Val:               assistant.AccelSearchPlusA,
-				ExtraHardwareDeps: hwdep.D(hwdep.NoAssistantKey()),
-			},
-		},
 	})
 }
 
@@ -57,10 +44,12 @@ func init() {
 // and hiding assistant suggestion chips upon executing a query and clicking on
 // suggestions.
 func SuggestionChipAnimationPerf(ctx context.Context, s *testing.State) {
-	accel := s.Param().(assistant.Accelerator)
-
 	fixtData := s.FixtValue().(*assistant.FixtData)
 	cr := fixtData.Chrome
+	accel, err := assistant.ResolveAssistantHotkey(s.Features(""))
+	if err != nil {
+		s.Fatal("Failed to resolve assistant hotkey: ", err)
+	}
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {

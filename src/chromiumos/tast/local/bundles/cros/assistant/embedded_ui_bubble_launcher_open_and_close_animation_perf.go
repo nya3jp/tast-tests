@@ -16,7 +16,6 @@ import (
 	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/local/ui"
 	"chromiumos/tast/testing"
-	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -30,26 +29,16 @@ func init() {
 		Fixture:      "assistantClamshellPerf",
 		// Due to b/238758287, first close animation can always take 2 mins.
 		Timeout: 6 * time.Minute,
-		Params: []testing.Param{
-			{
-				Name:              "assistant_key",
-				Val:               assistant.AccelAssistantKey,
-				ExtraHardwareDeps: hwdep.D(hwdep.AssistantKey()),
-			},
-			{
-				Name:              "search_plus_a",
-				Val:               assistant.AccelSearchPlusA,
-				ExtraHardwareDeps: hwdep.D(hwdep.NoAssistantKey()),
-			},
-		},
 	})
 }
 
 func EmbeddedUIBubbleLauncherOpenAndCloseAnimationPerf(ctx context.Context, s *testing.State) {
-	accel := s.Param().(assistant.Accelerator)
-
 	fixtData := s.FixtValue().(*assistant.FixtData)
 	cr := fixtData.Chrome
+	accel, err := assistant.ResolveAssistantHotkey(s.Features(""))
+	if err != nil {
+		s.Fatal("Failed to resolve assistant hotkey: ", err)
+	}
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
