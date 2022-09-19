@@ -70,6 +70,24 @@
       "parentUuid": "ab6fa173_112e791e",
       "revId": "78a3d03fb2429b637cd5efb26ecc21f8065fe8ca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40320f2d_0872c4ea",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-09-19T02:26:56Z",
+      "side": 1,
+      "message": "Yes, the tests will still block the uprev unless demoted. That file only disables tests in Chrome builders, the uprev is in ChromeOS and the tests are still running there.\n\nhere are the other options besides changing :\n1, remove roles\n2, make the tests compatible with both roles now, and remove the old one after uprev.",
+      "parentUuid": "63eb7bae_702e2d48",
+      "revId": "78a3d03fb2429b637cd5efb26ecc21f8065fe8ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
