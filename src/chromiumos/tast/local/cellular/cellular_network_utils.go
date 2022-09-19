@@ -22,6 +22,25 @@ const (
 	googleDotComIPv4 = "ipv4.google.com"
 )
 
+// SupportedPerfNetworks returns the currently supported performance networks.
+var SupportedPerfNetworks []testing.Param = []testing.Param{
+	{
+		ExtraAttr: []string{"cellular_crosbolt_carrier_local"},
+	},
+	{
+		Name:      "att",
+		ExtraAttr: []string{"cellular_crosbolt_carrier_att"},
+	},
+	{
+		Name:      "tmobile",
+		ExtraAttr: []string{"cellular_crosbolt_carrier_tmobile"},
+	},
+	{
+		Name:      "verizon",
+		ExtraAttr: []string{"cellular_crosbolt_carrier_verizon"},
+	},
+}
+
 func verifyCrostiniIPv4Ping(ctx context.Context, cmd func(context.Context, ...string) *testexec.Cmd) error {
 	testing.ContextLog(ctx, "Verify IPv4 connectivity")
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
