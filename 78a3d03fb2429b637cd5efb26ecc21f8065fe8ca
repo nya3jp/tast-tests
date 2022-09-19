@@ -88,6 +88,24 @@
       "parentUuid": "63eb7bae_702e2d48",
       "revId": "78a3d03fb2429b637cd5efb26ecc21f8065fe8ca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "af4a0e8d_785e5a6d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-09-19T12:40:10Z",
+      "side": 1,
+      "message": "For AC setting, I think it is fine to remove the role.\nFor OS setting, I make it a failover.",
+      "parentUuid": "40320f2d_0872c4ea",
+      "revId": "78a3d03fb2429b637cd5efb26ecc21f8065fe8ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
