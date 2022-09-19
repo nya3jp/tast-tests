@@ -18,8 +18,6 @@ import (
 	"strings"
 	"time"
 
-	"github.com/shirou/gopsutil/v3/process"
-
 	"chromiumos/tast/common/testexec"
 	upstartcommon "chromiumos/tast/common/upstart"
 	"chromiumos/tast/errors"
@@ -171,69 +169,10 @@ func WaitUntilBootComplete(ctx context.Context) error {
 	return pollOnce(ctx, metricRequired)
 }
 
-// logRTCUser logs process information of the RTC device file user for debugging.
-func logRTCUser(ctx context.Context) {
-	out, err := testexec.CommandContext(ctx, "/usr/local/bin/fuser", "/dev/rtc").Output()
-	if err != nil {
-		testing.ContextLog(ctx, "Failed to check /dev/rtc status: ", err)
-		return
-	}
-	// Parse the output of fuser /dev/rtc. Output is space-seperated numbers.
-	// Example: 4810 5192
-	outStr := strings.TrimSpace(string(out))
-	if outStr == "" {
-		testing.ContextLog(ctx, "/dev/rtc is not opened")
-		return
-	}
-
-	// The regex only matches one PID because /dev/rtc can have only one user.
-	re := regexp.MustCompile(`\s*(\d+).*$`)
-	m := re.FindStringSubmatch(outStr)
-	if m == nil {
-		testing.ContextLogf(ctx, "Unexpected fuser output: %s", outStr)
-		return
-	}
-
-	pid, err := strconv.ParseInt(m[1], 10, 32)
-	if err != nil {
-		testing.ContextLogf(ctx, "Failed to parse PID %s", m[1])
-		return
-	}
-
-	proc, err := process.NewProcess(int32(pid))
-	if err != nil {
-		testing.ContextLogf(ctx, "Failed to get the information of process %d: %v", pid, err)
-		return
-	}
-
-	// Log PID, name and cmdline of the RTC device file user.
-	name, err := proc.Name()
-	if err != nil {
-		testing.ContextLogf(ctx, "Failed to get the name of process %d: %v", pid, err)
-		return
-	}
-	cmdline, err := proc.Cmdline()
-	if err != nil {
-		testing.ContextLogf(ctx, "Failed to get the cmdline of process %d: %v", pid, err)
-		return
-	}
-
-	testing.ContextLogf(ctx, "/dev/rtc user: PID: %d, name: %s, cmdline: %s", pid, name, cmdline)
-}
-
-// StopTlsdatedWithDiagnostics stops tlsdated with diagnostics if tlsdated
-// didn't produce the sync-rtc-tlsdated-start event (probably the RTC device
-// is occupied by some other process).
-func StopTlsdatedWithDiagnostics(ctx context.Context) error {
+// EnsureTlsdatedStopped stops tlsdated and checks if the sync-rtc-tlsdated-* bootstat files are present.
+func EnsureTlsdatedStopped(ctx context.Context) error {
 	syncRtcTlsdatedStartFile := filepath.Join(bootstatCurrentDir, syncRtcTlsdatedStart)
-
-	ok := false
-	defer func() {
-		if ok {
-			return
-		}
-		logRTCUser(ctx)
-	}()
+	syncRtcTlsdatedStopFile := filepath.Join(bootstatCurrentDir, syncRtcTlsdatedStop)
 
 	// tlsdated should be running.
 	_, state, _, err := upstart.JobStatus(ctx, "tlsdated")
@@ -246,13 +185,16 @@ func StopTlsdatedWithDiagnostics(ctx context.Context) error {
 
 	// sync-rtc-tlsdated-start is generated before tlsdated starts. See /etc/init/tlsdated.conf for more details.
 	if _, err := os.Stat(syncRtcTlsdatedStartFile); err != nil {
-		return err
+		return errors.Wrapf(err, "failed to check the existence of %s", syncRtcTlsdatedStartFile)
 	}
 	if err := upstart.StopJob(ctx, "tlsdated"); err != nil {
 		return err
 	}
+	// sync-rtc-tlsdated-stop is generated after tlsdated stops.
+	if _, err := os.Stat(syncRtcTlsdatedStopFile); err != nil {
+		return errors.Wrapf(err, "failed to check the existence of %s", syncRtcTlsdatedStopFile)
+	}
 
-	ok = true
 	return nil
 }
 
