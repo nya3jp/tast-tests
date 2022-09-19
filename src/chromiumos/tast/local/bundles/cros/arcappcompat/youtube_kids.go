@@ -1,4 +1,4 @@
-// Copyright 2022 The ChromiumOS Authors.
+// Copyright 2022 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -127,6 +127,54 @@ func init() {
 				TopAppTests: testutil.TouchviewTopAppTests,
 			},
 			ExtraAttr:         []string{"appcompat_top_apps"},
+			ExtraSoftwareDeps: []string{"android_vm"},
+			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
+			// Skip on clamshell only models.
+			ExtraHardwareDeps: hwdep.D(hwdep.TouchScreen(), hwdep.SkipOnModel(testutil.ClamshellOnlyModels...)),
+			Pre:               pre.AppCompatBootedInTabletModeUsingTestAccountPool,
+		}, {
+			Name: "clamshell_mode_release",
+			Val: testutil.TestParams{
+				LaunchTests:  clamshellLaunchForYoutubeKids,
+				ReleaseTests: testutil.ClamshellReleaseTests,
+			},
+			ExtraAttr:         []string{"appcompat_release"},
+			ExtraSoftwareDeps: []string{"android_p"},
+			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
+			// Skip on tablet only models.
+			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(testutil.TabletOnlyModels...)),
+			Pre:               pre.AppCompatBootedUsingTestAccountPool,
+		}, {
+			Name: "tablet_mode_release",
+			Val: testutil.TestParams{
+				LaunchTests:  touchviewLaunchForYoutubeKids,
+				ReleaseTests: testutil.TouchviewReleaseTests,
+			},
+			ExtraAttr:         []string{"appcompat_release"},
+			ExtraSoftwareDeps: []string{"android_p"},
+			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
+			// Skip on clamshell only models.
+			ExtraHardwareDeps: hwdep.D(hwdep.TouchScreen(), hwdep.SkipOnModel(testutil.ClamshellOnlyModels...)),
+			Pre:               pre.AppCompatBootedInTabletModeUsingTestAccountPool,
+		}, {
+			Name: "vm_clamshell_mode_release",
+			Val: testutil.TestParams{
+				LaunchTests:  clamshellLaunchForYoutubeKids,
+				ReleaseTests: testutil.ClamshellReleaseTests,
+			},
+			ExtraAttr:         []string{"appcompat_release"},
+			ExtraSoftwareDeps: []string{"android_vm"},
+			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
+			// Skip on tablet only models.
+			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(testutil.TabletOnlyModels...)),
+			Pre:               pre.AppCompatBootedUsingTestAccountPool,
+		}, {
+			Name: "vm_tablet_mode_release",
+			Val: testutil.TestParams{
+				LaunchTests:  touchviewLaunchForYoutubeKids,
+				ReleaseTests: testutil.TouchviewReleaseTests,
+			},
+			ExtraAttr:         []string{"appcompat_release"},
 			ExtraSoftwareDeps: []string{"android_vm"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
 			// Skip on clamshell only models.
