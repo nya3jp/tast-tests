@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46482e47_44733eb8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/attach_file.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-09-19T00:29:35Z",
+      "side": 1,
+      "message": "clar: WaitUntilExists already does a poll internally:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/uiauto/automation.go;l\u003d504?q\u003dWaitUntilExists\u0026type\u003dcs\n\nDo you need to adjust the timeout or interval on WaitUntilExists instead? (It currently seems set to be 20sec timeout + 300ms poll interval, so how a 10sec timeout/2sec poll interval helps is unclear...?)",
+      "range": {
+        "startLine": 120,
+        "startChar": 15,
+        "endLine": 120,
+        "endChar": 30
+      },
+      "revId": "1582289e282e377106a02e997cc975504f29839e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
