@@ -51,6 +51,24 @@
       "parentUuid": "e197af52_a562e1a1",
       "revId": "cb169f1b9db78f3a5fb520c32cfc19c74836feaa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "279f2e76_3d75cfec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/windowarrangementcuj/util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-09-19T22:36:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eef56dd9_f2559db6",
+      "revId": "cb169f1b9db78f3a5fb520c32cfc19c74836feaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
