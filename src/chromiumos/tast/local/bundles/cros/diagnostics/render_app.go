@@ -8,7 +8,7 @@ import (
 	"context"
 	"time"
 
-	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/bundles/cros/diagnostics/utils"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/diagnosticsapp"
 	"chromiumos/tast/testing"
@@ -33,7 +33,7 @@ func init() {
 
 // RenderApp verifies launching an app from the launcher.
 func RenderApp(ctx context.Context, s *testing.State) {
-	tconn := s.FixtValue().(*chrome.TestConn)
+	tconn := s.FixtValue().(*utils.FixtureData).Tconn
 	ui := uiauto.New(tconn).WithTimeout(20 * time.Second)
 
 	// Verify cpu chart is drawn.
