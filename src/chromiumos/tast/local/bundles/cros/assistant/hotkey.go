@@ -24,6 +24,9 @@ func init() {
 		Contacts:     []string{"yawano@google.com", "assistive-eng@google.com"},
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
 		Fixture:      "assistant",
+		// Parametrize this test case with Assistant hotkeys as the hotkey is the main part of this
+		// test. If we don't parameterize a test case, a test scheduler might just assign a DUT for
+		// a test case, i.e. only one of those hotkeys might get tested.
 		Params: []testing.Param{
 			{
 				Name:              "assistant_key",

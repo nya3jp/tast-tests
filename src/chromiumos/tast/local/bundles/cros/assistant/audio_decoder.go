@@ -16,7 +16,6 @@ import (
 	"chromiumos/tast/local/assistant"
 	"chromiumos/tast/local/chrome/chromeproc"
 	"chromiumos/tast/testing"
-	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -29,18 +28,6 @@ func init() {
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
 		Fixture:      "assistantWithStartAudioDecoderOnDemand",
 		Timeout:      5 * time.Minute,
-		Params: []testing.Param{
-			{
-				Name:              "assistant_key",
-				Val:               assistant.AccelAssistantKey,
-				ExtraHardwareDeps: hwdep.D(hwdep.AssistantKey()),
-			},
-			{
-				Name:              "search_plus_a",
-				Val:               assistant.AccelSearchPlusA,
-				ExtraHardwareDeps: hwdep.D(hwdep.NoAssistantKey()),
-			},
-		},
 	})
 }
 
@@ -108,10 +95,12 @@ func expectAudioDecoderUtilityProcess() error {
 }
 
 func AudioDecoder(ctx context.Context, s *testing.State) {
-	accel := s.Param().(assistant.Accelerator)
-
 	fixtData := s.FixtValue().(*assistant.FixtData)
 	cr := fixtData.Chrome
+	accel, err := assistant.ResolveAssistantHotkey(s.Features(""))
+	if err != nil {
+		s.Fatal("Failed to resolve assistant hotkey: ", err)
+	}
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
