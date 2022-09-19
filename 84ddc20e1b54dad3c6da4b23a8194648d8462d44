@@ -1,0 +1,157 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95fe0cca_51c0ad97",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2022-09-19T05:45:07Z",
+      "side": 1,
+      "message": "How do we need to configure the Gale so it would be automatically discovered when we run the test using `crosfleet`?",
+      "revId": "84ddc20e1b54dad3c6da4b23a8194648d8462d44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be18870d_232f9ee3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/wifi_connection.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2022-09-19T05:45:07Z",
+      "side": 1,
+      "message": "nit: Ops → Opts?",
+      "revId": "84ddc20e1b54dad3c6da4b23a8194648d8462d44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7caee659_fd65660f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/wifi_connection.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2022-09-19T05:45:07Z",
+      "side": 1,
+      "message": "Why use these specific options? Could add a comment to describe that?",
+      "revId": "84ddc20e1b54dad3c6da4b23a8194648d8462d44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e73143b1_efa7429a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/wifi_connection.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2022-09-19T05:45:07Z",
+      "side": 1,
+      "message": "1. Better use `http://b/182202226#comment52`\n2. nit: Get → Got",
+      "revId": "84ddc20e1b54dad3c6da4b23a8194648d8462d44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2c2d15c_4b876784",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/wifi_connection.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2022-09-19T05:45:07Z",
+      "side": 1,
+      "message": "Add a comment why the iptables command is necessary.",
+      "revId": "84ddc20e1b54dad3c6da4b23a8194648d8462d44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f097997_ed297062",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/wifi_connection.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2022-09-19T05:45:07Z",
+      "side": 1,
+      "message": "Maybe it\u0027s better to explicitly check that the error we get is an gRPC error? Otherwise we might be getting other error before the ethernet is turned off.",
+      "revId": "84ddc20e1b54dad3c6da4b23a8194648d8462d44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad843888_34e931e5",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2022-09-19T05:45:07Z",
+      "side": 1,
+      "message": "Please add wificell OWNER to review this file.",
+      "revId": "84ddc20e1b54dad3c6da4b23a8194648d8462d44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6038d1b8_fca4d0ef",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2022-09-19T05:45:07Z",
+      "side": 1,
+      "message": "Maybe `ApIdx` would be better to make it consistent with `DutIdx`?",
+      "revId": "84ddc20e1b54dad3c6da4b23a8194648d8462d44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9a2a01d_8dc0f0bb",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 535,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2022-09-19T05:45:07Z",
+      "side": 1,
+      "message": "Why request a router by id if number of routers is not exposed externally? Maybe it\u0027s better to always return first router if the slice is non-empty?",
+      "revId": "84ddc20e1b54dad3c6da4b23a8194648d8462d44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
