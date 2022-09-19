@@ -16,6 +16,24 @@
       "message": "Is there a different way we could do this that would be robust against future changes on Gmail\u0027s side?",
       "revId": "9486c9a5324762585450bcca5589db2ef3e7bf3d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77eab955_a752c7e1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/clipboardhistory/context_menu_clipboard.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1538804
+      },
+      "writtenOn": "2022-09-19T02:45:58Z",
+      "side": 1,
+      "message": "We tried to get the title of the window against future changes, thanks!",
+      "parentUuid": "829d7697_f34f7f51",
+      "revId": "9486c9a5324762585450bcca5589db2ef3e7bf3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
