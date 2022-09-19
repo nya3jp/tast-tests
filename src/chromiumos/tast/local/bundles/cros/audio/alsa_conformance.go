@@ -16,7 +16,6 @@ import (
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/audio"
-	"chromiumos/tast/local/power"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -70,17 +69,6 @@ func ALSAConformance(ctx context.Context, s *testing.State) {
 		rateCriteria    = 0.1
 		rateErrCriteria = 100.0
 	)
-
-	// Turn on a display to re-enable an internal speaker on monroe.
-	// Ensure display on to record ui performance correctly. Keep trying for 2 min
-	// since it could take 2 min for `powerd` dbus service to be accessible via
-	// dbus from tast.
-	if err := testing.Poll(ctx, power.TurnOnDisplay, &testing.PollOptions{
-		Interval: 10 * time.Second,
-		Timeout:  2 * time.Minute,
-	}); err != nil {
-		s.Fatal("Failed to turn on display: ", err)
-	}
 
 	// Stop UI in advance for this test to avoid the node being selected by UI.
 	if err := upstart.StopJob(ctx, "ui"); err != nil {
