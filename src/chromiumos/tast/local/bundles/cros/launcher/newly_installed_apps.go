@@ -232,6 +232,11 @@ func closeAppAndUninstallViaSettings(ctx context.Context, cr *chrome.Chrome, tco
 		settings := ossettings.New(tconn)
 		settings.Close(ctx)
 	}()
+
 	testing.ContextLogf(ctx, "Uninstall app: %q", name)
-	return ossettings.UninstallApp(ctx, tconn, cr, name, id)
+	if err := ossettings.UninstallApp(ctx, tconn, cr, name, id); err != nil {
+		return errors.Wrap(err, "failed to uninstall the app via os settings")
+	}
+
+	return ash.WaitForChromeAppUninstalled(ctx, tconn, id, 30*time.Second)
 }

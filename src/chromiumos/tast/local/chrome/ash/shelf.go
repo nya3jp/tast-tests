@@ -456,6 +456,18 @@ func WaitForChromeAppInstalled(ctx context.Context, tconn *chrome.TestConn, appI
 	}, &testing.PollOptions{Timeout: timeout, Interval: uiPollingInterval})
 }
 
+// WaitForChromeAppUninstalled waits for the app specified by appID to disappear from installed apps.
+func WaitForChromeAppUninstalled(ctx context.Context, tconn *chrome.TestConn, appID string, timeout time.Duration) error {
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		if installed, err := ChromeAppInstalled(ctx, tconn, appID); err != nil {
+			return testing.PollBreak(err)
+		} else if installed {
+			return errors.New("failed to wait for uninstalled app by id: " + appID)
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: timeout, Interval: uiPollingInterval})
+}
+
 // WaitForChromeAppByNameInstalled is similar to WaitForChromeAppInstalled. But the target app
 // is specified by name rather than id. Returns the target app's id and the error message if any.
 func WaitForChromeAppByNameInstalled(ctx context.Context, tconn *chrome.TestConn, appName string, timeout time.Duration) (string, error) {
