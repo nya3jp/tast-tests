@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "674af380_ad5992c1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-09-20T14:22:35Z",
+      "side": 1,
+      "message": "The commit message\u0027s column width is 72. Please wrap the line accordingly.",
+      "revId": "419ef6edf79d1de0505b80776618df185d78d1c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
