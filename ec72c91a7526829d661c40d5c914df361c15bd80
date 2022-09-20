@@ -20,6 +20,40 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "95a08cbb_08d1b0c0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115680
+      },
+      "writtenOn": "2022-09-20T02:47:58Z",
+      "side": 1,
+      "message": "LGTM with two tiny nits. Thanks!!",
+      "revId": "ec72c91a7526829d661c40d5c914df361c15bd80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8dafa1fb_2bab9644",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115680
+      },
+      "writtenOn": "2022-09-20T02:47:58Z",
+      "side": 1,
+      "message": "LGTM with two tiny nits. Thanks!!",
+      "revId": "ec72c91a7526829d661c40d5c914df361c15bd80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "f6ff8f68_b04501a3",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
         "patchSetId": 2
@@ -36,6 +70,46 @@
         "startChar": 74,
         "endLine": 883,
         "endChar": 112
+      },
+      "revId": "ec72c91a7526829d661c40d5c914df361c15bd80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8dc22ac1_cbfc3660",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1111,
+      "author": {
+        "id": 1115680
+      },
+      "writtenOn": "2022-09-20T02:47:58Z",
+      "side": 1,
+      "message": "nit: maybe add a \n\n  // TODO(b/...): Remove per-platform hwDeps and rely on SoftwareDeps instead.",
+      "revId": "ec72c91a7526829d661c40d5c914df361c15bd80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d3b7f40_36ea539a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1112,
+      "author": {
+        "id": 1115680
+      },
+      "writtenOn": "2022-09-20T02:47:58Z",
+      "side": 1,
+      "message": "QQ: Should we add herobrine here as well?",
+      "range": {
+        "startLine": 1112,
+        "startChar": 45,
+        "endLine": 1112,
+        "endChar": 47
       },
       "revId": "ec72c91a7526829d661c40d5c914df361c15bd80",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
