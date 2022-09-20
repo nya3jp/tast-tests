@@ -118,7 +118,7 @@ func BrightnessVolumeSlider(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed initial value check for volume slider: ", err)
 	}
-	s.Log("Initial volume slider value: ", initialVolume)
+	s.Log("ROG!!! ROG!!! Initial volume slider value: ", initialVolume)
 
 	decreaseVolume, err := quicksettings.DecreaseSlider(ctx, tconn, kb, quicksettings.SliderTypeVolume)
 	if err != nil {
