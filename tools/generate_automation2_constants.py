@@ -5,12 +5,12 @@
 # found in the LICENSE file.
 """Tool for generating go code from automation.js
 
-Used to create src/chromiumos/tast/local/chrome/ui2/nodewith/*/constants.go.
+Used to create src/chromiumos/tast/local/chrome/uiauto/*/constants.go.
 
 Usage example:
 # ./generate_automation_constants.py \
   /path/to/chromium/src/third_party/closure_compiler/externs/automation.js \
-  /path/to/chromeos/src/platform/tast-tests/src/chromiumos/tast/local/chrome/ui2/
+  /path/to/chromeos/src/platform/tast-tests/src/chromiumos/tast/local/chrome/uiauto/
 
 Make sure to apply gofmt to the output of this script.
 
