@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3725431a_0bf7651b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/remote_cellular_service.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1541462
+      },
+      "writtenOn": "2022-09-20T19:48:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "222b3595_87e896e1",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 1
+      },
+      "revId": "b58535d5381f447f9af0aa9092041d9041b68909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7645f5e6_f8e71b39",
@@ -71,6 +95,30 @@
       "writtenOn": "2022-09-20T15:24:51Z",
       "side": 1,
       "message": "This function is fine like this for now, but there are several assumptions here:\n  - there is a unique Cellular Device.\n  - the \"interface\" field of the Cell Device corresponds to the data connection.\nCould we document these assumptions here ?\n  \nWe started to introduce support for multiple simultaneous cellular connection over the same SIM card, and eventually we will very likely need to rewrite this function at some point (for instance the whole shill Device concept may stop making sense). Documenting the assumptions here will help the migration.",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 83
+      },
+      "revId": "b58535d5381f447f9af0aa9092041d9041b68909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "73b2ed70_0eee07da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/remote_cellular_service.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1541462
+      },
+      "writtenOn": "2022-09-20T19:48:06Z",
+      "side": 1,
+      "message": "Thanks for the heads up! noted in the comment.",
+      "parentUuid": "7645f5e6_f8e71b39",
       "range": {
         "startLine": 33,
         "startChar": 0,
