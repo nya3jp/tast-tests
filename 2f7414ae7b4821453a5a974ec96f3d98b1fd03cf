@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e17e080_c46096ef",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-09-20T12:54:28Z",
+      "side": 1,
+      "message": "Seems like there are a few failures on stainless? What about the run on version R107-15109.0.0?",
+      "revId": "2f7414ae7b4821453a5a974ec96f3d98b1fd03cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
