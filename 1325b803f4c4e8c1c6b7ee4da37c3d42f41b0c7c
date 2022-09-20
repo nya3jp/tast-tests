@@ -65,6 +65,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "171b8aa2_19d1539d",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-09-20T10:04:05Z",
+      "side": 1,
+      "message": "I\u0027ve rewritten it slightly, are you okay with the new version? Please submit if so.",
+      "parentUuid": "6962080d_da0dd943",
+      "range": {
+        "startLine": 68,
+        "startChar": 5,
+        "endLine": 68,
+        "endChar": 32
+      },
+      "revId": "1325b803f4c4e8c1c6b7ee4da37c3d42f41b0c7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "645507d3_5151893e",
