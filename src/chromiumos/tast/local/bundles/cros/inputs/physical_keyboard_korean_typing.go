@@ -39,7 +39,7 @@ func init() {
 		Params: []testing.Param{
 			{
 				Fixture:   fixture.ClamshellNonVK,
-				ExtraAttr: []string{"group:input-tools-upstream"},
+				ExtraAttr: []string{"group:input-tools-upstream", "informational"},
 			},
 			{
 				Name:              "lacros",
@@ -50,7 +50,6 @@ func init() {
 		},
 	})
 }
-
 type koreanKeyboardLayout string
 
 const (
