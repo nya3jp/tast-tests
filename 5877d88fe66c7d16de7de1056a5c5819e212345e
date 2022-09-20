@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d77db62_d8b38405",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1335848
+      },
+      "writtenOn": "2022-09-20T14:39:46Z",
+      "side": 1,
+      "message": "build failures are unrelated to CL and this is blocking Chrome uprev",
+      "revId": "5877d88fe66c7d16de7de1056a5c5819e212345e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
