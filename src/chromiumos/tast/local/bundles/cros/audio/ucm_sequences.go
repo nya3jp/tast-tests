@@ -149,7 +149,6 @@ func UCMSequences(ctx context.Context, s *testing.State) {
 	if err != nil && !crosconfig.IsNotFound(err) {
 		s.Fatal("Cannot get ucm suffix: ", err)
 	}
-	hasUCMSuffix := !crosconfig.IsNotFound(err)
 
 	for _, card := range cards {
 		isExternal, err := card.IsExternal()
@@ -166,35 +165,26 @@ func UCMSequences(ctx context.Context, s *testing.State) {
 		if ucmSuffix != "" && !boardConfig.ShouldIgnoreUCMSuffix(card.ShortName) {
 			ucmName += "." + ucmSuffix
 		}
-		ucmSequencesTestCard(ctx, s, param.alsaucmCommander, ucmName, hasUCMSuffix)
+		ucmSequencesTestCard(ctx, s, param.alsaucmCommander, ucmName)
 	}
 }
 
-func ucmSequencesTestCard(ctx context.Context, s *testing.State, c alsaucmCommander, ucmName string, hasUCMSuffix bool) {
+func ucmSequencesTestCard(ctx context.Context, s *testing.State, c alsaucmCommander, ucmName string) {
 	const ucmBasePath = "/usr/share/alsa/ucm"
 
 	ucmConf := filepath.Join(ucmBasePath, ucmName, ucmName+".conf")
 	s.Logf("Testing %s UCM: %s", ucmName, ucmConf)
 
-	// Check we have a complete UCM.
-	// If the file is rightfully absent or empty (placeholder during bringup), skip the test.
-	if stat, err := os.Stat(ucmConf); err != nil {
+	// Fail early if UCM does not exist.
+	if _, err := os.Stat(ucmConf); err != nil {
 		if os.IsNotExist(err) {
-			if !hasUCMSuffix {
-				s.Log("Skipping due to missing UCM and ucm-suffix")
-				return
-			}
-			// If ucm-suffix is set, but the UCM config is missing, then it
-			// is likely that the sound card name found on the live system
-			// disagrees with the one in the configuration (boxster and UCM).
-			s.Errorf("Missing %s but ucm-suffix is set", ucmConf)
+			// err formats as "stat: /path/to/ucm/conf: no such file or directory".
+			// As this is the common case, craft the error message ourselves
+			// to avoid listing the file path twice.
+			s.Errorf("Missing %s", ucmConf)
 			return
 		}
-		if stat.Size() == 0 {
-			s.Log("Skipping due to empty UCM")
-			return
-		}
-		s.Error("Failed to stat UCM: ", err)
+		s.Errorf("Cannot stat %s: %s", ucmConf, err)
 		return
 	}
 
