@@ -50,6 +50,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "aabfed7c_bf71d08f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2022-09-20T12:24:20Z",
+      "side": 1,
+      "message": "Chrome is \"aggressively\" validating proxy settings now and in this case it doesn\u0027t like that `ProxySettings.ProxyPacMandatory` is set to false because the proxy mode is set to \"proxy_servers\".\n\n(tast initiates all the values of ProxySettings with the default language values so booleans are false and strings are empty)",
+      "parentUuid": "7ca344d8_64944377",
+      "range": {
+        "startLine": 11,
+        "startChar": 22,
+        "endLine": 11,
+        "endChar": 70
+      },
+      "revId": "6379a30cf9873c4b83953618651a7c737054051b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "308d96bf_58e8ad54",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
