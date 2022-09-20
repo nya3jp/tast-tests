@@ -21,12 +21,16 @@ import (
 	"chromiumos/tast/local/input"
 )
 
-// OpenPersonalizationHub returns an action to open the personalization app.
+// OpenPersonalizationHub returns an action to open the personalization app by right clicking on the desktop.
 func OpenPersonalizationHub(ui *uiauto.Context) uiauto.Action {
-	return ui.RetryUntil(uiauto.Combine("open personalization hub",
-		ui.MouseClickAtLocation(1, coords.Point{X: rand.Intn(200), Y: rand.Intn(200)}), // right click a random pixel
-		ui.WithInterval(300*time.Millisecond).LeftClickUntil(SetPersonalizationMenu, ui.Gone(SetPersonalizationMenu))),
-		ui.Exists(PersonalizationHubWindow))
+	return uiauto.Retry(3, uiauto.Combine("Open personalization hub from right click desktop",
+		// Open the menu by right click on desktop random coord in upper left corner.
+		ui.WithInterval(500*time.Millisecond).RetryUntil(ui.MouseClickAtLocation(1, coords.Point{X: rand.Intn(200), Y: rand.Intn(200)}), ui.Exists(SetPersonalizationMenu)),
+		// Click the menu item to open Personalization.
+		ui.WithTimeout(500*time.Millisecond).RetryUntil(ui.LeftClick(SetPersonalizationMenu), ui.Gone(SetPersonalizationMenu)),
+		// Wait for Personalization window to appear.
+		ui.WithTimeout(3*time.Second).WaitUntilExists(PersonalizationHubWindow),
+	))
 }
 
 // OpenWallpaperSubpage returns an action to open the wallpaper subpage.
