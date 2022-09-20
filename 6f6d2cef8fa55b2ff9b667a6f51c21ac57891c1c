@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "533b1c22_92370250",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/enabled_policy.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1403852
+      },
+      "writtenOn": "2022-09-20T22:09:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e75971c7_78e4c493",
+      "range": {
+        "startLine": 161,
+        "startChar": 14,
+        "endLine": 161,
+        "endChar": 27
+      },
+      "revId": "6f6d2cef8fa55b2ff9b667a6f51c21ac57891c1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e31c8cc3_25f4829d",
@@ -71,6 +95,30 @@
       "writtenOn": "2022-09-19T20:13:27Z",
       "side": 1,
       "message": "FYI, I think this call will sometimes flakily fail to launch the \"Screencast is blocked\" error dialog, even though the app is already disabled. Not sure why. Manually clicking the disabled launcher icon opens the error dialog, so you may need to wait until the disabled launcher icon exists and try left clicking it until the error dialog appears.",
+      "range": {
+        "startLine": 165,
+        "startChar": 20,
+        "endLine": 165,
+        "endChar": 29
+      },
+      "revId": "6f6d2cef8fa55b2ff9b667a6f51c21ac57891c1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0200215c_92d82eb0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/enabled_policy.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1403852
+      },
+      "writtenOn": "2022-09-20T22:09:20Z",
+      "side": 1,
+      "message": "I also saw an error like \"testProjectorEnabled: Failed to run subtest testProjectorEnabled: failed to verify the screencast is blocked when policy is disabled.....\" in the tastboard, which could be fixed by line 169 below. Not sure whether it is the issue you mentioned? \nLet see if there\u0027s any other failure after submitting this CL.",
+      "parentUuid": "e31c8cc3_25f4829d",
       "range": {
         "startLine": 165,
         "startChar": 20,
