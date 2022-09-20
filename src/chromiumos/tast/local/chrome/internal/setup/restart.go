@@ -150,8 +150,6 @@ func RestartChromeForTesting(ctx context.Context, cfg *config.Config, extArgs, l
 		args = append(args, "--arc-availability=none")
 	case config.ARCEnabled:
 		args = append(args,
-			// Disable ARC opt-in verification to test ARC with mock GAIA accounts.
-			"--disable-arc-opt-in-verification",
 			// Always start ARC to avoid unnecessarily stopping mini containers.
 			"--arc-start-mode=always-start-with-no-play-store")
 	case config.ARCSupported:
