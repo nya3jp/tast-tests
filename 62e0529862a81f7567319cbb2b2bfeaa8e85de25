@@ -16,6 +16,23 @@
       "message": "Hi tast-owner and hanada san, PTAL thanks.",
       "revId": "62e0529862a81f7567319cbb2b2bfeaa8e85de25",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "741bf791_06e79fd8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-09-20T07:57:11Z",
+      "side": 1,
+      "message": "LGTM.",
+      "revId": "62e0529862a81f7567319cbb2b2bfeaa8e85de25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
