@@ -7,6 +7,7 @@ package cellular
 import (
 	"context"
 	"math/rand"
+	"strconv"
 	"time"
 
 	"chromiumos/tast/ctxutil"
@@ -25,6 +26,7 @@ func init() {
 		HardwareDeps: hwdep.D(hwdep.Cellular()),
 		Timeout:      10 * time.Minute,
 		Fixture:      "cellular",
+		Vars:         []string{"cellular.ShillCellularSafetyDance.seed"},
 	})
 }
 
@@ -52,8 +54,17 @@ func ShillCellularSafetyDance(ctx context.Context, s *testing.State) {
 		}(ctxForAutoConnectCleanUp)
 	}
 
-	// Run random sequence of N operations
-	seed := time.Now().UnixNano()
+	// Run setup random sequence
+	var seed int64
+	if seedStr, ok := s.Var("cellular.ShillCellularSafetyDance.seed"); ok {
+		val, err := strconv.ParseInt(seedStr, 10, 64)
+		if err != nil {
+			s.Fatalf("Invalid seed value given: %s", seedStr)
+		}
+		seed = val
+	} else {
+		seed = time.Now().UnixNano()
+	}
 	rsource := rand.NewSource(seed)
 	s.Logf("Running test with seed: %d", seed)
 
