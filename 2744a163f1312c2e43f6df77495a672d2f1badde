@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5c1d5bc_c1342b89",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2022-09-20T22:04:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f9370032_fe853c5f",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 5
+      },
+      "revId": "2744a163f1312c2e43f6df77495a672d2f1badde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "564b9db1_9007c5bd",
@@ -37,6 +61,24 @@
       "writtenOn": "2022-09-16T22:18:22Z",
       "side": 1,
       "message": "can you rm this while you\u0027re at it?",
+      "revId": "2744a163f1312c2e43f6df77495a672d2f1badde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0fd5e148_60b2a4c6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/bss_tm_request.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2022-09-20T22:04:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "564b9db1_9007c5bd",
       "revId": "2744a163f1312c2e43f6df77495a672d2f1badde",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -58,6 +100,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb0ac476_38dc4f7b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/bss_tm_request.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2022-09-20T22:04:17Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "08d49853_d3738bc3",
+      "revId": "2744a163f1312c2e43f6df77495a672d2f1badde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "59cec053_22345e53",
@@ -75,6 +135,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f7aa6f3_9aec91bf",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/bss_tm_request.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2022-09-20T22:04:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "59cec053_22345e53",
+      "revId": "2744a163f1312c2e43f6df77495a672d2f1badde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9c407a01_7d1fc5b0",
@@ -88,6 +166,24 @@
       "writtenOn": "2022-09-16T22:18:22Z",
       "side": 1,
       "message": "Can you also explain why adding it twice makes a difference here?",
+      "revId": "2744a163f1312c2e43f6df77495a672d2f1badde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ea9640d_5001b329",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/bss_tm_request.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2022-09-20T22:04:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9c407a01_7d1fc5b0",
       "revId": "2744a163f1312c2e43f6df77495a672d2f1badde",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -115,6 +211,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "848a8484_47a158e3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/bss_tm_request.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2022-09-20T22:04:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb520f4b_77d66079",
+      "range": {
+        "startLine": 232,
+        "startChar": 23,
+        "endLine": 232,
+        "endChar": 28
+      },
+      "revId": "2744a163f1312c2e43f6df77495a672d2f1badde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4ec3db04_c322042e",
@@ -128,6 +248,24 @@
       "writtenOn": "2022-09-16T22:18:22Z",
       "side": 1,
       "message": "If we clear here, we risk roaming back before triggering the roam back below right?",
+      "revId": "2744a163f1312c2e43f6df77495a672d2f1badde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36658027_4a7b6aa4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/bss_tm_request.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2022-09-20T22:04:17Z",
+      "side": 1,
+      "message": "Yeah. I also realized that this implementation actually interferes with the DisassocImminent test. That test asserts that we fail to reconnect to the original AP in some cases, and ignorelisting that AP might make that happen for other reasons. I\u0027ve pulled all of the blocklisting out of this function, and am now calling it surrounding the funtion, but not calling it in the DisassocImminent case.",
+      "parentUuid": "4ec3db04_c322042e",
       "revId": "2744a163f1312c2e43f6df77495a672d2f1badde",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
