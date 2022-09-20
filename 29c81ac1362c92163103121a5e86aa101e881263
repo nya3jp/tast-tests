@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a5560f6_41aff8ca",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/rmaweb/ui.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1531792
+      },
+      "writtenOn": "2022-09-20T03:55:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9e817156_697d2a1f",
+      "revId": "29c81ac1362c92163103121a5e86aa101e881263",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4187a188_8f2968cc",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "45a57ec5_76c779ea",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/rmaweb/ui.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1531792
+      },
+      "writtenOn": "2022-09-20T03:55:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4187a188_8f2968cc",
+      "revId": "29c81ac1362c92163103121a5e86aa101e881263",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2fccde3d_e72ae164",
@@ -48,6 +84,24 @@
       "writtenOn": "2022-09-20T00:58:15Z",
       "side": 1,
       "message": "nit: Find → Found",
+      "revId": "29c81ac1362c92163103121a5e86aa101e881263",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2b9513a_9512327c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/rmaweb/ui.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1531792
+      },
+      "writtenOn": "2022-09-20T03:55:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2fccde3d_e72ae164",
       "revId": "29c81ac1362c92163103121a5e86aa101e881263",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
