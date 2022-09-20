@@ -165,17 +165,11 @@ func validateAutoUninstall(ctx context.Context, a *arc.ARC, installButton *ui.Ob
 
 func waitForUninstall(ctx context.Context, a *arc.ARC, blockedPackage string) error {
 	return testing.Poll(ctx, func(ctx context.Context) error {
-		packages, err := a.InstalledPackages(ctx)
-		if err != nil {
+		if installed, err := a.PackageInstalled(ctx, blockedPackage); err != nil {
 			return testing.PollBreak(err)
+		} else if installed {
+			return errors.New("Package not yet uninstalled")
 		}
-
-		for p := range packages {
-			if p == blockedPackage {
-				return errors.New("Package not yet uninstalled")
-			}
-		}
-
 		return nil
 	}, &testing.PollOptions{Interval: time.Second})
 }
