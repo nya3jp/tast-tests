@@ -51,6 +51,24 @@
       "parentUuid": "1646a1ea_def5c27e",
       "revId": "3977bd0cd3baaa5b29ab6a2ed4bedf24b9a2e32d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04f3de21_06ecaee1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1121230
+      },
+      "writtenOn": "2022-09-20T17:06:17Z",
+      "side": 1,
+      "message": "Thank you for the info! I didn\u0027t know that a test scheduler might work in that way.\n\nAs I have updated the CL description, Assistant hotkey is not the main part of a test case except `assistant.Hotkey`. For `assistant.Hotkey`, I have reverted my change and added a comment about why we have a parameterized version.",
+      "parentUuid": "114e282a_b1be8cb0",
+      "revId": "3977bd0cd3baaa5b29ab6a2ed4bedf24b9a2e32d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
