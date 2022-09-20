@@ -8,13 +8,14 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/common/fixture"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
 
 func init() {
 	testing.AddFixture(&testing.Fixture{
-		Name:            "crasStopped",
+		Name:            fixture.CrasStopped,
 		Desc:            "Ensure CRAS is stopped and audio devices are available",
 		Contacts:        []string{"aaronyu@google.com"},
 		Impl:            crasStoppedFixture{},

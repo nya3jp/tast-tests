@@ -13,6 +13,7 @@ import (
 	"strings"
 	"time"
 
+	"chromiumos/tast/common/fixture"
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/audio"
@@ -32,7 +33,7 @@ func init() {
 			// TODO(b/231276793): eve hotword broken.
 			hwdep.SkipOnModel("eve"),
 		),
-		Fixture: "crasStopped",
+		Fixture: fixture.CrasStopped,
 		Params: []testing.Param{
 			{
 				Name: "section_verb",
