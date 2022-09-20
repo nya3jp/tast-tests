@@ -33,6 +33,24 @@
       "message": "I remember it was preferred to have separate tests if we want to cover both cases of HW variants in the CQ/CI tests. Otherwise test scheduler (in infra) may get satisfied by assigning the test to just one DUT in the future. Has it been changed by F20--\u003eCFT change?",
       "revId": "3977bd0cd3baaa5b29ab6a2ed4bedf24b9a2e32d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "114e282a_b1be8cb0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2022-09-20T05:49:10Z",
+      "side": 1,
+      "message": "If the UI transition by accelerator keys are verified by another test and this test just want to verify other thing (accelerator key is just used for making precondition), I think this change is OK, and suggest to note in the CL description that the UI transition using accelerator key is not main focus of these tests.",
+      "parentUuid": "1646a1ea_def5c27e",
+      "revId": "3977bd0cd3baaa5b29ab6a2ed4bedf24b9a2e32d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
