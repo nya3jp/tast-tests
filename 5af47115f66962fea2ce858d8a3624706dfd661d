@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04876a9c_e3bc5742",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/wifi_connection.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2022-09-20T23:12:02Z",
+      "side": 1,
+      "message": "nit: Since this is part of cleanup, we can probably just report as Error and not as Fatal.",
+      "range": {
+        "startLine": 106,
+        "startChar": 5,
+        "endLine": 106,
+        "endChar": 10
+      },
+      "revId": "5af47115f66962fea2ce858d8a3624706dfd661d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
