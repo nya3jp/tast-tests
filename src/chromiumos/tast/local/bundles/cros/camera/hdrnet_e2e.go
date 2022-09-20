@@ -146,6 +146,28 @@ func assertHistogramEq(value float64) histogramVerifier {
 	}
 }
 
+// assertHistogramIn returns a HistogramVerifier that can be used to check if a
+// histogram's value is in |values|.
+func assertHistogramIn(values ...float64) histogramVerifier {
+	return func(m *metrics.Histogram) error {
+		// We assume that there's only one sample hence we can check
+		// against the histogram mean.
+		if len(m.Buckets) != 1 {
+			return errors.Errorf("invalid %s: %v", m.Name, m.Buckets)
+		}
+		mean, err := m.Mean()
+		if err != nil {
+			return errors.Wrap(err, "failed to get histogram mean")
+		}
+		for _, v := range values {
+			if v == mean {
+				return nil
+			}
+		}
+		return errors.Errorf("unexpected value of %s: %v is not one of %v", m.Name, mean, values)
+	}
+}
+
 // assertHistogramMeanGt returns a HistogramVerifier that can be used to check
 // if a histogram's mean value is greater than |value|.
 func assertHistogramMeanGt(value float64) histogramVerifier {
@@ -169,21 +191,21 @@ func testPhotoTaking(ctx context.Context, app *cca.App, tconn *chrome.TestConn) 
 	const minProcessingLatency = 1.0
 	// There should be no error.
 	const hdrnetNoError = 0.0
-	// There should be two concurrent streams.
-	const expectedConcurrentStreams = 2.0
 	// There should be one still shot taken.
 	const expectedStillShotsTaken = 1.0
-	// For CCA photo mode we should have one YUV stream with BLOB.
+	// For CCA photo mode we should have one or more YUV stream with BLOB
+	// depending on the feature set enabled.
 	const singleYUVWithBLOB = 1.0
+	const multipleYUVWithBLOB = 3.0
+	const multipleYUVOfDifferentAspectRatioWithBLOB = 5.0
 
 	histogramTests := histogramTests{
 		"ChromeOS.Camera.HDRnet.AverageLatency.Preprocessing":  assertHistogramMeanGt(minProcessingLatency),
 		"ChromeOS.Camera.HDRnet.AverageLatency.RgbPipeline":    assertHistogramMeanGt(minProcessingLatency),
 		"ChromeOS.Camera.HDRnet.AverageLatency.Postprocessing": assertHistogramMeanGt(minProcessingLatency),
 		"ChromeOS.Camera.HDRnet.Error":                         assertHistogramEq(hdrnetNoError),
-		"ChromeOS.Camera.HDRnet.NumConcurrentStreams":          assertHistogramEq(expectedConcurrentStreams),
 		"ChromeOS.Camera.HDRnet.NumStillShotsTaken":            assertHistogramEq(expectedStillShotsTaken),
-		"ChromeOS.Camera.HDRnet.StreamConfiguration":           assertHistogramEq(singleYUVWithBLOB),
+		"ChromeOS.Camera.HDRnet.StreamConfiguration":           assertHistogramIn(singleYUVWithBLOB, multipleYUVWithBLOB, multipleYUVOfDifferentAspectRatioWithBLOB),
 	}
 
 	// Open CCA, take a picture and then close CCA. The histograms are
@@ -211,21 +233,21 @@ func testVideoRecording(ctx context.Context, app *cca.App, tconn *chrome.TestCon
 	const minProcessingLatency = 1.0
 	// There should be no error.
 	const hdrnetNoError = 0.0
-	// There should be two concurrent streams.
-	const expectedConcurrentStreams = 2.0
 	// There should be no still shot taken.
 	const expectedStillShotsTaken = 0.0
-	// For CCA video mode we should have one YUV stream with BLOB.
+	// For CCA photo mode we should have one or more YUV stream with BLOB
+	// depending on the feature set enabled.
 	const singleYUVWithBLOB = 1.0
+	const multipleYUVWithBLOB = 3.0
+	const multipleYUVOfDifferentAspectRatioWithBLOB = 5.0
 
 	histogramTests := histogramTests{
 		"ChromeOS.Camera.HDRnet.AverageLatency.Preprocessing":  assertHistogramMeanGt(minProcessingLatency),
 		"ChromeOS.Camera.HDRnet.AverageLatency.RgbPipeline":    assertHistogramMeanGt(minProcessingLatency),
 		"ChromeOS.Camera.HDRnet.AverageLatency.Postprocessing": assertHistogramMeanGt(minProcessingLatency),
 		"ChromeOS.Camera.HDRnet.Error":                         assertHistogramEq(hdrnetNoError),
-		"ChromeOS.Camera.HDRnet.NumConcurrentStreams":          assertHistogramEq(expectedConcurrentStreams),
 		"ChromeOS.Camera.HDRnet.NumStillShotsTaken":            assertHistogramEq(expectedStillShotsTaken),
-		"ChromeOS.Camera.HDRnet.StreamConfiguration":           assertHistogramEq(singleYUVWithBLOB),
+		"ChromeOS.Camera.HDRnet.StreamConfiguration":           assertHistogramIn(singleYUVWithBLOB, multipleYUVWithBLOB, multipleYUVOfDifferentAspectRatioWithBLOB),
 	}
 
 	// Open CCA, record a 5-second video and then close CCA. The histograms
