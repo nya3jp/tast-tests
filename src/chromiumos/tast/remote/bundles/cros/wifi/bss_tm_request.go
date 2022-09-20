@@ -58,6 +58,37 @@ func init() {
 	})
 }
 
+/*
+	This test vefifies a device's behavior when it receives a BSS Transition
+	Management Request. Specifically, it is expected that a device should move
+	away from it's current BSS when it receives a BSSTM Request from that BSS.
+	This is verified by first, monitoring the Shill RoamState property and
+	asserting that the device roams away from the current BSS, and second,
+	conducting a ping test to ensure connectivity at the resultant BSS.
+
+	Here are the full steps this test takes:
+	1- Disallow roaming from locally requested scans and turn off background
+		scans to ensure that the only roams that happen are those triggered by the
+		BSSTM Request
+	2- Set up an AP "AP0" and connect to it.
+	3- Set up another AP "AP1".
+	4- Add the BSSID at AP0 into the DUT's ignorelist.
+	5- Send a BSSTM request from AP0.
+	6- Assert that the Shill property RoamState transitions from configuration
+		-> ready -> idle, which indicates a roam has occurred.
+	7- Assert that the BSSID property in Shill is equal to the BSSID from AP1.
+	8- Conduct a ping test to ensure we are connected to AP1.
+	9- If "disassoc_imminent" is enabled, send another BSSTM Request from AP1,
+		but this time assert that the roam fails due to the reassociation
+		delay.
+	10- Send a BSSTM Request from AP1 without dissasoc imminent.
+	11- Assert that the Shill property RoamState transitions from configuration
+		-> ready -> idle, which indicates a roam has occurred.
+	12- Assert that the BSSID property in Shill is equal to the BSSID from AP0.
+	13- Conduct a ping test to ensure we are connected to AP0.
+	14. Clean up state and revert the steps from (1).
+*/
+
 func BSSTMRequest(ctx context.Context, s *testing.State) {
 	tf := s.FixtValue().(*wificell.TestFixture)
 
