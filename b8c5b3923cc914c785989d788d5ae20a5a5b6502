@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d09a685_06337bbe",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_ro_can_update_rw.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-09-20T00:03:10Z",
+      "side": 1,
+      "message": "I think it\u0027s ok to keep it how it is since the caller makes it clear which image type we want.",
+      "parentUuid": "70a0c8ed_78c8722d",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 61
+      },
+      "revId": "b8c5b3923cc914c785989d788d5ae20a5a5b6502",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5c282121_e3592c1b",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-09-15T23:43:46Z",
       "side": 1,
       "message": "Why doesn\u0027t this fail? Autotest source for reference: https://crsrc.org/o/src/third_party/autotest/files/server/site_tests/firmware_Fingerprint/tests/ro_can_update_rw.sh;drc\u003d5558dc49a9f31184fafac97c6b77fd300ad05ae1;l\u003d35\n\nLooks like almost the same as ObeysRollback flashing RB0: https://crsrc.org/o/src/third_party/autotest/files/server/site_tests/firmware_Fingerprint/tests/obeys_rollback.sh;drc\u003d5558dc49a9f31184fafac97c6b77fd300ad05ae1;l\u003d46\n\nMaybe RB0 in ObeysRollback boots to RO because it has flashed RB1 first?",
+      "range": {
+        "startLine": 139,
+        "startChar": 1,
+        "endLine": 140,
+        "endChar": 55
+      },
+      "revId": "b8c5b3923cc914c785989d788d5ae20a5a5b6502",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d707e373_42bbb186",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_ro_can_update_rw.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-09-20T00:03:10Z",
+      "side": 1,
+      "message": "\u003e Maybe RB0 in ObeysRollback boots to RO because it has flashed RB1 first?\n\nCorrect. The \"rollback\" value is a [counter that prevents firmware from being \"rolled back\" if the counter has been incremented](https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-authentication-design-doc.md#anti_rollback). So if the rollback value is set to `1`, it should not be possible to flash a version of the firmware that has a rollback value of `0`. If the rollback value is equal or greater, it\u0027s allowed.",
+      "parentUuid": "5c282121_e3592c1b",
       "range": {
         "startLine": 139,
         "startChar": 1,
