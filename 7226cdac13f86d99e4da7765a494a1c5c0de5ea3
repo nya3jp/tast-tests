@@ -74,6 +74,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "28dc0c34_e789c8c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/config_verify.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2022-09-20T21:34:03Z",
+      "side": 1,
+      "message": "I\u0027d rather not use cros_internal as a softwaredep. It\u0027s important for this test to run in as many places as possible, including amd64-generic and arm-generic.\n\nThis should add a new softwaredep \"upstream_kernel\" and the test should avoid running on those builds.\n\nI want this test to run by *default* unless someone actively exempts a device from it. Therefore, I want the softwaredep to be something that boards have to actively opt into, therefore the name \"upstream_kernel\".\n\nAlso, I disagree with your naming -- ChromiumOS devices use ChromiumOS kernels. Some of the options that you\u0027re disabling in this test are clearly named CHROMIUMOS, not CHROMEOS. So the right thing to do here is not to say \"ChromiumOS but not ChromeOS\" but rather \"Upstream kernel but not ChromiumOS kernel\".",
+      "parentUuid": "edbb2f98_166823e6",
+      "revId": "7226cdac13f86d99e4da7765a494a1c5c0de5ea3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9321b8f0_60299363",
         "filename": "src/chromiumos/tast/local/bundles/cros/kernel/config_verify.go",
         "patchSetId": 3
