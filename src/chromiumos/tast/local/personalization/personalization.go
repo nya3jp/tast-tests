@@ -88,7 +88,9 @@ func toggleThemeButton(themeButton string, ui *uiauto.Context) uiauto.Action {
 	toggleThemeButton := nodewith.Role(role.ToggleButton).Name(themeButton)
 	return uiauto.Combine(fmt.Sprintf("toggle theme button - %s", themeButton),
 		ui.WaitUntilExists(toggleThemeButton),
-		ui.LeftClick(toggleThemeButton))
+		ui.LeftClick(toggleThemeButton),
+		// Wait for a second as the system may take some time to update its UI.
+		uiauto.Sleep(time.Second))
 }
 
 // NavigateHome returns an action to navigate Personalization Hub Main page.
