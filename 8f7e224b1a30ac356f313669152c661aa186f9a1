@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8eee093_dba57831",
+        "filename": "src/chromiumos/tast/local/personalization/personalization.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1211724
+      },
+      "writtenOn": "2022-09-20T22:59:03Z",
+      "side": 1,
+      "message": "Is there any indicator we can use to detect the update instead of sleep?",
+      "range": {
+        "startLine": 92,
+        "startChar": 2,
+        "endLine": 93,
+        "endChar": 28
+      },
+      "revId": "8f7e224b1a30ac356f313669152c661aa186f9a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
