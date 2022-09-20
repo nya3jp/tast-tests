@@ -50,6 +50,23 @@
       "message": "Hi David,\n\nI run the arc.Standardized* on following models and it passed in 10 consecutive runs.\n\ngrunt-arc-r/R107-15080.0.0,\ndedede/R106-15054.56.0,\nhatch/R107-15112.0.0,\n\n-Chenghao",
       "revId": "58810fe97f36ceaa65377beb4125bcd2eaba91dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "66697f1c_43031cf9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-09-20T20:05:23Z",
+      "side": 1,
+      "message": "Thanks!",
+      "revId": "58810fe97f36ceaa65377beb4125bcd2eaba91dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
