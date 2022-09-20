@@ -77,9 +77,6 @@ func CUJLacrosCommonMetricConfigs() []MetricConfig {
 // defined in BrowserCommonMetricConfigs and adds more.
 func CUJBrowserCommonMetricConfigs() []MetricConfig {
 	return append(BrowserCommonMetricConfigs(),
-		// Browser Render Latenecy.
-		NewCustomMetricConfig("Browser.Responsiveness.JankyIntervalsPerThirtySeconds3", "janks", perf.SmallerIsBetter),
-
 		// Other metrics to monitor.
 		NewCustomMetricConfig("MPArch.RWH_TabSwitchPaintDuration", "ms", perf.SmallerIsBetter),
 		NewCustomMetricConfig("Media.DroppedFrameCount", "count", perf.SmallerIsBetter),
