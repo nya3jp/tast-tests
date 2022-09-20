@@ -1021,3 +1021,10 @@ func (ac *Context) ResetScrollOffset(finder *nodewith.Finder) Action {
 	}
 
 }
+
+// Call is a wrapper for tconn.Call that returns an Action.
+func (ac *Context) Call(code string, out interface{}, args ...interface{}) Action {
+	return func(ctx context.Context) error {
+		return ac.tconn.Call(ctx, out, code, args...)
+	}
+}

@@ -390,12 +390,19 @@ func FindSystemWebAppByOrigin(ctx context.Context, tconn *chrome.TestConn, origi
 	return nil, nil
 }
 
-// LaunchSystemWebApp launches a system web app specifide by its name and URL.
-func LaunchSystemWebApp(ctx context.Context, tconn *chrome.TestConn, appName, url string) error {
-	return tconn.Call(ctx, nil, `async (appName, url) => {
+var launchCode = `async (appName, url) => {
 		await tast.promisify(chrome.autotestPrivate.waitForSystemWebAppsInstall)();
 		await tast.promisify(chrome.autotestPrivate.launchSystemWebApp)(appName, url);
-	}`, appName, url)
+	}`
+
+// LaunchSystemWebApp launches a system web app specified by its name and URL.
+func LaunchSystemWebApp(ctx context.Context, tconn *chrome.TestConn, appName, url string) error {
+	return tconn.Call(ctx, nil, launchCode, appName, url)
+}
+
+// LaunchSystemWebAppAction returns a uiauto.Action to launch a system web app specified by its name and URL.
+func LaunchSystemWebAppAction(ui *uiauto.Context, appName, url string) uiauto.Action {
+	return ui.Call(launchCode, nil, appName, url)
 }
 
 // SystemWebApp corresponds to `SystemWebApp` defined in autotest_private.idl

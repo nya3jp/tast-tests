@@ -23,6 +23,9 @@ const (
 	// Personalization Hub Name
 	Personalization = "Personalization"
 
+	// URL is the starting url of Personalization Hub
+	URL = "chrome://personalization/"
+
 	// SettingsAppName is the name of settings app.
 	SettingsAppName = "Settings, Installed App"
 	// SettingsSetWallpaper is an option title in Settings app to open Personalization hub.

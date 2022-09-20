@@ -10,23 +10,18 @@ import (
 	"fmt"
 	"image"
 	"image/jpeg"
-	"math/rand"
 	"os"
-	"time"
 
+	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
-	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/input"
 )
 
 // OpenPersonalizationHub returns an action to open the personalization app.
 func OpenPersonalizationHub(ui *uiauto.Context) uiauto.Action {
-	return ui.RetryUntil(uiauto.Combine("open personalization hub",
-		ui.MouseClickAtLocation(1, coords.Point{X: rand.Intn(200), Y: rand.Intn(200)}), // right click a random pixel
-		ui.WithInterval(300*time.Millisecond).LeftClickUntil(SetPersonalizationMenu, ui.Gone(SetPersonalizationMenu))),
-		ui.Exists(PersonalizationHubWindow))
+	return apps.LaunchSystemWebAppAction(ui, Personalization, URL)
 }
 
 // OpenWallpaperSubpage returns an action to open the wallpaper subpage.
