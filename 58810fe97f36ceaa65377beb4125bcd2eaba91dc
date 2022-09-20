@@ -33,6 +33,23 @@
       "message": "LGTM but can you verify the `arc.Standardized*` tests run without any obvious issues as well? `runTest` is the basis for all of these tests so including that as an additional TEST\u003d line would be helpful.",
       "revId": "58810fe97f36ceaa65377beb4125bcd2eaba91dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cfcb3ea1_1bf3d292",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1551729
+      },
+      "writtenOn": "2022-09-20T19:50:14Z",
+      "side": 1,
+      "message": "Hi David,\n\nI run the arc.Standardized* on following models and it passed in 10 consecutive runs.\n\ngrunt-arc-r/R107-15080.0.0,\ndedede/R106-15054.56.0,\nhatch/R107-15112.0.0,\n\n-Chenghao",
+      "revId": "58810fe97f36ceaa65377beb4125bcd2eaba91dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
