@@ -24,9 +24,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         DiagnosticsAppSaveSessionLog,
+		Func:         DiagnosticsApp,
 		LacrosStatus: testing.LacrosVariantUnneeded,
-		Desc:         "Checks that session logs saved from Diagnostics App appear in Holding Space",
+		Desc:         "Verifies that Diagnostics app logs appear in holding space",
 		Contacts: []string{
 			"angelsan@chromium.org",
 			"dmblack@chromium.org",
@@ -39,9 +39,8 @@ func init() {
 	})
 }
 
-// DiagnosticsAppSaveSessionLog tests the functionality of files existing in Holding Space by
-// saving a session log from the Diagnostics app.
-func DiagnosticsAppSaveSessionLog(ctx context.Context, s *testing.State) {
+// DiagnosticsApp verifies that Diagnostics app logs appear in holding space.
+func DiagnosticsApp(ctx context.Context, s *testing.State) {
 	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 
 	cleanupCtx := ctx
@@ -75,14 +74,16 @@ func DiagnosticsAppSaveSessionLog(ctx context.Context, s *testing.State) {
 
 	dxRootnode, err := diagnosticsapp.Launch(ctx, tconn)
 	if err != nil {
-		s.Fatal("Could not open diagnostics app: ", err)
+		s.Fatal("Could not launch Diagnostics app: ", err)
 	}
 
 	ui := uiauto.New(tconn)
-	uiauto.Combine("Save session log and verify file appears in holding space",
+	if err := uiauto.Combine("Save logs and verify file appears in holding space",
 		ui.LeftClick(diagnosticsapp.DxLogButton.Ancestor(dxRootnode)),
 		ui.LeftClick(nodewith.Name("Save").Role(role.Button)),
 		ui.LeftClick(holdingspace.FindTray()),
 		ui.WaitUntilExists(holdingspace.FindDownloadChip().Name(filename)),
-	)(ctx)
+	)(ctx); err != nil {
+		s.Fatal("Failed to save logs and verify file appears in holding space: ", err)
+	}
 }
