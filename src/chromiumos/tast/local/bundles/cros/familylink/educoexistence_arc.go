@@ -1,4 +1,4 @@
-// Copyright 2022 The Chromium OS Authors. All rights reserved.
+// Copyright 2022 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -11,6 +11,7 @@ import (
 
 	androidui "chromiumos/tast/common/android/ui"
 	"chromiumos/tast/common/policy"
+	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/familylink"
@@ -40,9 +41,9 @@ func init() {
 }
 
 func EducoexistenceArc(ctx context.Context, s *testing.State) {
-	cr := s.FixtValue().(*familylink.FixtData).Chrome
-	tconn := s.FixtValue().(*familylink.FixtData).TestConn
-	fdms := s.FixtValue().(*familylink.FixtData).FakeDMS
+	cr := s.FixtValue().(chrome.HasChrome).Chrome()
+	tconn := s.FixtValue().(familylink.HasTestConn).TestConn()
+	fdms := s.FixtValue().(fakedms.HasFakeDMS).FakeDMS()
 
 	parentUser := s.RequiredVar("arc.parentUser")
 	parentPass := s.RequiredVar("arc.parentPassword")

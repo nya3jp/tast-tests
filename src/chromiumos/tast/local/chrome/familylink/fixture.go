@@ -1,4 +1,4 @@
-// Copyright 2021 The Chromium OS Authors. All rights reserved.
+// Copyright 2021 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -213,16 +213,57 @@ type familyLinkFixture struct {
 // FixtData holds information made available to tests that specify this Fixture.
 type FixtData struct {
 	// Chrome is the running chrome instance.
-	Chrome *chrome.Chrome
+	chrome *chrome.Chrome
 
 	// FakeDMS is the running DMS server if any.
-	FakeDMS *fakedms.FakeDMS
+	fakeDMS *fakedms.FakeDMS
 
 	// TestConn is a connection to the test extension.
-	TestConn *chrome.TestConn
+	testConn *chrome.TestConn
 
 	// PolicyUser is the user account used in the policy blob.
-	PolicyUser string
+	policyUser string
+}
+
+// Chrome implements the HasChrome interface.
+func (f FixtData) Chrome() *chrome.Chrome {
+	if f.chrome == nil {
+		panic("Chrome is called with nil Chrome instance")
+	}
+	return f.chrome
+}
+
+// HasTestConn is an interface for fixture values that contain a TestConn instance. It allows
+// retrieval of the underlying TestConn object.
+type HasTestConn interface {
+	TestConn() *chrome.TestConn
+}
+
+// TestConn implements the HasTestConn interface.
+func (f FixtData) TestConn() *chrome.TestConn {
+	if f.testConn == nil {
+		panic("TestConn is called with nil TestConn instance")
+	}
+	return f.testConn
+}
+
+// FakeDMS implements the HasFakeDMS interface.
+func (f FixtData) FakeDMS() *fakedms.FakeDMS {
+	if f.fakeDMS == nil {
+		panic("FakeDMS is called with nil fakeDMS instance")
+	}
+	return f.fakeDMS
+}
+
+// HasPolicyUser is an interface for fixture values that contain a policy user. It allows
+// retrieval of the underlying policy user string.
+type HasPolicyUser interface {
+	PolicyUser() string
+}
+
+// PolicyUser implements the HasPolicyUser interface.
+func (f FixtData) PolicyUser() string {
+	return f.policyUser
 }
 
 func (f *familyLinkFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
@@ -313,10 +354,10 @@ func (f *familyLinkFixture) SetUp(ctx context.Context, s *testing.FixtState) int
 	f.cr = cr
 	f.fdms = fdms
 	fixtData := &FixtData{
-		Chrome:     cr,
-		FakeDMS:    fdms,
-		TestConn:   tconn,
-		PolicyUser: f.policyUser,
+		chrome:     cr,
+		fakeDMS:    fdms,
+		testConn:   tconn,
+		policyUser: f.policyUser,
 	}
 
 	// Lock chrome after all Setup is complete so we don't block other fixtures.

@@ -1,4 +1,4 @@
-// Copyright 2021 The Chromium OS Authors. All rights reserved.
+// Copyright 2021 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -37,7 +37,7 @@ func MultipleSignInDisabled(ctx context.Context, s *testing.State) {
 	// After the fixture runs, the DUT has two users on the
 	// device: a regular owner and a Unicorn secondary user. The
 	// Unicorn user is logged in.
-	tconn := s.FixtValue().(*familylink.FixtData).TestConn
+	tconn := s.FixtValue().(familylink.HasTestConn).TestConn()
 
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 	ui := uiauto.New(tconn)

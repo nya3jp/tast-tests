@@ -9,10 +9,12 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/common/fixture"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/familylink"
 	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/testing"
 )
@@ -65,6 +67,60 @@ func init() {
 		PreTestTimeout:  resetTimeout,
 		PostTestTimeout: resetTimeout,
 	})
+
+	// Identical to the familyLinkUnicornLogin fixture, but uses a
+	// different test account and isolates sessions for Projector
+	// tests.
+	testing.AddFixture(&testing.Fixture{
+		Name:     "projectorUnicornLogin",
+		Desc:     "Supervised Family Link user login with Unicorn account for Projector tests",
+		Contacts: []string{"tobyhuang@chromium.org", "cros-families-eng+test@google.com"},
+		Impl:     familylink.NewFamilyLinkFixture("projector.parentEmail", "projector.parentPassword", "projector.childEmail", "projector.childPassword", true /*isOwner*/),
+		Vars: []string{
+			"projector.parentEmail",
+			"projector.parentPassword",
+			"projector.childEmail",
+			"projector.childPassword",
+		},
+		SetUpTimeout:    chrome.GAIALoginChildTimeout,
+		ResetTimeout:    resetTimeout,
+		TearDownTimeout: resetTimeout,
+		PreTestTimeout:  resetTimeout,
+		PostTestTimeout: resetTimeout,
+	})
+
+	testing.AddFixture(&testing.Fixture{
+		Name:     "projectorRegularLogin",
+		Desc:     "Non-supervised user login with regular consumer account for Projector tests",
+		Contacts: []string{"tobyhuang@chromium.org", "cros-families-eng+test@google.com"},
+		Impl:     familylink.NewFamilyLinkFixture("projector.regularEmail", "projector.regularPassword", "", "", true /*isOwner*/),
+		Vars: []string{
+			"projector.regularEmail",
+			"projector.regularPassword",
+		},
+		SetUpTimeout:    chrome.GAIALoginTimeout,
+		ResetTimeout:    resetTimeout,
+		TearDownTimeout: resetTimeout,
+		PreTestTimeout:  resetTimeout,
+		PostTestTimeout: resetTimeout,
+	})
+
+	testing.AddFixture(&testing.Fixture{
+		Name:     "projectorEduLogin",
+		Desc:     "Managed EDU user login with fakeDMS policy setup for Projector tests",
+		Contacts: []string{"tobyhuang@chromium.org", "cros-families-eng+test@google.com"},
+		Impl:     familylink.NewFamilyLinkFixture("projector.eduEmail", "projector.eduPassword", "", "", true /*isOwner*/),
+		Vars: []string{
+			"projector.eduEmail",
+			"projector.eduPassword",
+		},
+		SetUpTimeout:    chrome.ManagedUserLoginTimeout,
+		ResetTimeout:    resetTimeout,
+		TearDownTimeout: resetTimeout,
+		PreTestTimeout:  resetTimeout,
+		PostTestTimeout: resetTimeout,
+		Parent:          fixture.PersistentProjectorEDU,
+	})
 }
 
 type projectorFixture struct {
@@ -75,9 +131,25 @@ type projectorFixture struct {
 // FixtData holds information made available to tests that specify this Fixture.
 type FixtData struct {
 	// Chrome is the running chrome instance.
-	Chrome *chrome.Chrome
+	chrome *chrome.Chrome
 	// TestConn is a connection to the test extension.
-	TestConn *chrome.TestConn
+	testConn *chrome.TestConn
+}
+
+// Chrome implements the HasChrome interface.
+func (f FixtData) Chrome() *chrome.Chrome {
+	if f.chrome == nil {
+		panic("Chrome is called with nil chrome instance")
+	}
+	return f.chrome
+}
+
+// TestConn implements the HasTestConn interface.
+func (f FixtData) TestConn() *chrome.TestConn {
+	if f.testConn == nil {
+		panic("TestConn is called with nil testConn instance")
+	}
+	return f.testConn
 }
 
 func (f *projectorFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
@@ -103,8 +175,8 @@ func (f *projectorFixture) SetUp(ctx context.Context, s *testing.FixtState) inte
 	// Lock chrome after all Setup is complete so we don't block other fixtures.
 	chrome.Lock()
 	return &FixtData{
-		Chrome:   cr,
-		TestConn: tconn,
+		chrome:   cr,
+		testConn: tconn,
 	}
 }
 

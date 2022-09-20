@@ -7,6 +7,7 @@ package projector
 
 import (
 	"context"
+	"fmt"
 	"regexp"
 	"time"
 
@@ -14,6 +15,8 @@ import (
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/audio"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/launcher"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
@@ -216,6 +219,36 @@ func DeleteScreencastItems(ctx context.Context, tconn *chrome.TestConn) error {
 
 	if err := ui.WithInterval(5*time.Second).RetryUntil(deleteScreencastItem, ui.Gone(screencastItem))(ctx); err != nil {
 		return errors.Wrap(err, "failed to delete all leftover screencast items")
+	}
+
+	return nil
+}
+
+// OpenSharedScreencast opens a new browser window and launches the Projector app from a share link.
+func OpenSharedScreencast(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome, browserType browser.Type, sharedScreencastLink string) error {
+	// Set up browser.
+	br, closeBrowser, err := browserfixt.SetUp(ctx, cr, browserType)
+	if err != nil {
+		return errors.Wrap(err, "failed to set up browser")
+	}
+	defer closeBrowser(ctx)
+
+	// Open a new window. Don't set the share link URL here
+	// because it navigates the browser to the PWA instead of
+	// launching the SWA.
+	conn, err := br.NewConn(ctx, "" /*url=*/)
+	if err != nil {
+		return errors.Wrap(err, "failed to open a new browser window")
+	}
+	defer conn.Close()
+
+	// Open and launch the Screencast SWA.
+	if err := conn.Eval(ctx, fmt.Sprintf("window.location.href = '%s';", sharedScreencastLink), nil); err != nil {
+		return errors.Wrap(err, "failed to open the shared screencast")
+	}
+
+	if err := DismissOnboardingDialog(ctx, tconn); err != nil {
+		return errors.Wrap(err, "failed to close the onboarding dialog")
 	}
 
 	return nil

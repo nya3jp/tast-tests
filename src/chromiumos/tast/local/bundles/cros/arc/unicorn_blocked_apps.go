@@ -1,4 +1,4 @@
-// Copyright 2021 The Chromium OS Authors. All rights reserved.
+// Copyright 2021 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -11,8 +11,10 @@ import (
 
 	"chromiumos/tast/common/android/ui"
 	"chromiumos/tast/common/policy"
+	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/local/arc"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/familylink"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/testing"
@@ -52,14 +54,14 @@ func UnicornBlockedApps(ctx context.Context, s *testing.State) {
 		assetBrowserActivity = "com.android.vending.AssetBrowserActivity"
 		logcatBufferSize     = "10M"
 	)
-	fdms := s.FixtValue().(*familylink.FixtData).FakeDMS
-	cr := s.FixtValue().(*familylink.FixtData).Chrome
-	tconn := s.FixtValue().(*familylink.FixtData).TestConn
+	fdms := s.FixtValue().(fakedms.HasFakeDMS).FakeDMS()
+	cr := s.FixtValue().(chrome.HasChrome).Chrome()
+	tconn := s.FixtValue().(familylink.HasTestConn).TestConn()
 	arcEnabledPolicy := &policy.ArcEnabled{Val: true}
 
 	policies := []policy.Policy{arcEnabledPolicy}
 	pb := policy.NewBlob()
-	pb.PolicyUser = s.FixtValue().(*familylink.FixtData).PolicyUser
+	pb.PolicyUser = s.FixtValue().(familylink.HasPolicyUser).PolicyUser()
 	pb.AddPolicies(policies)
 
 	if err := policyutil.ServeBlobAndRefresh(ctx, fdms, cr, pb); err != nil {

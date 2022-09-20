@@ -1,4 +1,4 @@
-// Copyright 2021 The Chromium OS Authors. All rights reserved.
+// Copyright 2021 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -76,4 +76,6 @@ const (
 	PersistentFamilyLink = "persistentFamilyLink"
 	// PersistentFamilyLinkARC is a fixture name.
 	PersistentFamilyLinkARC = "persistentFamilyLinkARC"
+	// PersistentProjectorEDU is a fixture name.
+	PersistentProjectorEDU = "persistentProjectorEDU"
 )
