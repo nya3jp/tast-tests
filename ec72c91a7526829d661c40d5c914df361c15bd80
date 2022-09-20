@@ -133,6 +133,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "42464d95_9e12e0fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1111,
+      "author": {
+        "id": 1498402
+      },
+      "writtenOn": "2022-09-20T17:14:54Z",
+      "side": 1,
+      "message": "Thanks. Done.",
+      "parentUuid": "8dc22ac1_cbfc3660",
+      "revId": "ec72c91a7526829d661c40d5c914df361c15bd80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0d3b7f40_36ea539a",
@@ -146,6 +164,30 @@
       "writtenOn": "2022-09-20T02:47:58Z",
       "side": 1,
       "message": "QQ: Should we add herobrine here as well?",
+      "range": {
+        "startLine": 1112,
+        "startChar": 45,
+        "endLine": 1112,
+        "endChar": 47
+      },
+      "revId": "ec72c91a7526829d661c40d5c914df361c15bd80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0df70730_fe3ca88c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1112,
+      "author": {
+        "id": 1498402
+      },
+      "writtenOn": "2022-09-20T17:14:54Z",
+      "side": 1,
+      "message": "HEVC decoding is broken due to an issue with the driver. I am going to delay enabling the tests for herobrine/hoglin here until the driver is in better shape.",
+      "parentUuid": "0d3b7f40_36ea539a",
       "range": {
         "startLine": 1112,
         "startChar": 45,
