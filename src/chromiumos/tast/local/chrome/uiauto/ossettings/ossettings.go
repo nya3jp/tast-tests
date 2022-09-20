@@ -414,7 +414,9 @@ func UninstallApp(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome
 
 	return uiauto.Combine("uninstall the app",
 		ui.LeftClick(uninstall),
-		ui.LeftClick(uninstall.Ancestor(uninstallWindow)))(ctx)
+		ui.WaitUntilExists(uninstallWindow),
+		ui.LeftClick(uninstall.Ancestor(uninstallWindow)),
+		ui.WaitUntilGone(uninstallWindow))(ctx)
 }
 
 // CommonSections returns a map that contains *nodewith.Finder for OS-Settings UI elements of common sections.
