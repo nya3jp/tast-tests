@@ -32,12 +32,14 @@ func init() {
 			"dru",
 			"druwl",
 			"dumo",
+			"elm",  // AUE on Container-R
 			"edgar",
+			"hana",  // AUE on Container-R
 			"kevin",
 			"ultima",
 		)),
 
-		SoftwareDeps: []string{"android_vm", "chrome"},
+		SoftwareDeps: []string{"arc", "chrome"},
 		Fixture:      "arcBooted",
 		Timeout:      4 * time.Minute,
 
