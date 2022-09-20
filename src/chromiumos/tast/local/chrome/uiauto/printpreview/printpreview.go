@@ -8,6 +8,7 @@ package printpreview
 
 import (
 	"context"
+	"strings"
 	"time"
 
 	"chromiumos/tast/errors"
@@ -98,7 +99,18 @@ func SetLayout(ctx context.Context, tconn *chrome.TestConn, layout Layout) error
 		ui.WithTimeout(10*time.Second).WaitUntilExists(layoutList),
 		ui.LeftClick(layoutList),
 	)(ctx); err != nil {
-		return err
+		if strings.Contains(err.Error(), nodewith.ErrNotFound) {
+			// TODO(crbug/1365169): Make this the first choice once Chrome is past 107.0.5304.0.
+			layoutListCombo := layoutList.Role(role.ComboBoxSelect)
+			if err := uiauto.Combine("find and click layout list as ComboBox",
+				ui.WithTimeout(1*time.Second).WaitUntilExists(layoutListCombo),
+				ui.LeftClick(layoutListCombo),
+			)(ctx); err != nil {
+				return err
+			}
+		} else {
+			return err
+		}
 	}
 
 	// Find the landscape layout option to verify the layout list has expanded.
@@ -138,7 +150,18 @@ func SetPages(ctx context.Context, tconn *chrome.TestConn, pages string) error {
 		ui.WithTimeout(10*time.Second).WaitUntilExists(pageList),
 		ui.LeftClick(pageList),
 	)(ctx); err != nil {
-		return err
+		if strings.Contains(err.Error(), nodewith.ErrNotFound) {
+			// TODO(crbug/1365169): Make this the first choice once Chrome is past 107.0.5304.0.
+			pageListCombo := pageList.Role(role.ComboBoxSelect)
+			if err := uiauto.Combine("find and click page list as ComboBox",
+				ui.WithTimeout(1*time.Second).WaitUntilExists(pageListCombo),
+				ui.LeftClick(pageListCombo),
+			)(ctx); err != nil {
+				return err
+			}
+		} else {
+			return err
+		}
 	}
 
 	// Find the custom pages option to verify the pages list has expanded.
