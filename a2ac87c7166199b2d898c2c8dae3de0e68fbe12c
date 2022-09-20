@@ -16,6 +16,23 @@
       "message": "Hi tast owner, PTAL thanks.",
       "revId": "a2ac87c7166199b2d898c2c8dae3de0e68fbe12c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3a9a7e8_c7f4a826",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510928
+      },
+      "writtenOn": "2022-09-20T02:39:31Z",
+      "side": 1,
+      "message": "Thanks for your review!",
+      "revId": "a2ac87c7166199b2d898c2c8dae3de0e68fbe12c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
