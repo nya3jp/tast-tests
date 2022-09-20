@@ -104,8 +104,9 @@ func init() {
 				browserType: browser.TypeAsh,
 			},
 		}, {
-			Name:    "ash_allowed",
-			Fixture: fixture.ChromePolicyLoggedIn,
+			Name:      "ash_allowed",
+			ExtraAttr: []string{"informational"},
+			Fixture:   fixture.ChromePolicyLoggedIn,
 			Val: printingTestParams{
 				name:        "allowed",
 				url:         "https://www.chromium.com/",
