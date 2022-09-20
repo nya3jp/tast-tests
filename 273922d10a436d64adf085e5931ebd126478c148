@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ba4f39e_ce6085ad",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-09-20T12:43:49Z",
+      "side": 1,
+      "message": "LGTM to move forward. It should be at least better than now.\n\nThough, \"wait for a certain period and check if something happens or not\" is a common flakiness pattern, so I\u0027d recommend to come up with some alternative conditions that we can explicitly wait for, in near future.\nE.g., add some marker / logs if there\u0027s no more secondary accounts, and let Tast wait for it.",
+      "revId": "273922d10a436d64adf085e5931ebd126478c148",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
