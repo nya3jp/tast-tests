@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "181fe308_73c0870e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perfetto_battery_data_source.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2022-09-20T06:44:52Z",
+      "side": 1,
+      "message": "Oops. Thanks for the catch!",
+      "parentUuid": "ffddf237_9d719082",
+      "range": {
+        "startLine": 96,
+        "startChar": 16,
+        "endLine": 96,
+        "endChar": 18
+      },
+      "revId": "004c1a75336ceaa87cc3a6131031fe5075a5c6a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d50a0ba6_7df0fd22",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-09-20T06:39:09Z",
       "side": 1,
       "message": "Previously |charge| seems to only have the lower bound. Just to make sure it\u0027s what you intend to add :)",
+      "range": {
+        "startLine": 110,
+        "startChar": 38,
+        "endLine": 110,
+        "endChar": 43
+      },
+      "revId": "004c1a75336ceaa87cc3a6131031fe5075a5c6a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "70e21c32_237b18ca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perfetto_battery_data_source.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2022-09-20T06:44:52Z",
+      "side": 1,
+      "message": "I found that the upper is inclusive since the returned percent_pct can be 100 if the battery is fully charged.",
+      "parentUuid": "d50a0ba6_7df0fd22",
       "range": {
         "startLine": 110,
         "startChar": 38,
