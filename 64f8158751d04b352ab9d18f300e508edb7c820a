@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6636d301_bc8ef7ec",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-09-20T11:07:37Z",
+      "side": 1,
+      "message": "Please do a fastbuild run locally as well before sending to CQ.",
+      "revId": "64f8158751d04b352ab9d18f300e508edb7c820a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9cb6fa69_7d42225f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-09-20T11:07:37Z",
+      "side": 1,
+      "message": "LGTM\nPlease wait for a +1 form the domain expert before submitting.",
+      "revId": "64f8158751d04b352ab9d18f300e508edb7c820a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
