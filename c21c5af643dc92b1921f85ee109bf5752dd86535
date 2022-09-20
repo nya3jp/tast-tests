@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d90caf59_4b82a3e3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-09-20T08:22:44Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "c21c5af643dc92b1921f85ee109bf5752dd86535",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56be388e_4b5956bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns/dns.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-09-20T08:22:44Z",
+      "side": 1,
+      "message": "nit: usually it helps in debugging if the error is wrapped, so I suggest to do that.",
+      "revId": "c21c5af643dc92b1921f85ee109bf5752dd86535",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
