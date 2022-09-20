@@ -3,6 +3,23 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "14ab89a8_6a1ca438",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-09-20T02:29:04Z",
+      "side": 1,
+      "message": "shadow reviewer lgtm",
+      "revId": "ec72c91a7526829d661c40d5c914df361c15bd80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "f6ff8f68_b04501a3",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
         "patchSetId": 2
