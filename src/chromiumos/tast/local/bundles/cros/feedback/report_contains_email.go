@@ -153,6 +153,12 @@ func ReportContainsEmail(ctx context.Context, s *testing.State) {
 	actualContent := strings.ToValidUTF8(string(content), "")
 	expectedEmail := selectedEmail
 
+	reportContainsFeedbackUserCtlConsent := strings.Contains(actualContent, "feedbackUserCtlConsent")
+	indexOfFeedbackUserCtlConsent := strings.Index(actualContent, "feedbackUserCtlConsent")
+	s.Log("======report contains feedbackUserCtlConsent: ", reportContainsFeedbackUserCtlConsent)
+	s.Log("======this is the index of feedbackUserCtlConsent: ", indexOfFeedbackUserCtlConsent)
+	s.Log("======this is the key and value: ", actualContent[indexOfFeedbackUserCtlConsent:indexOfFeedbackUserCtlConsent+len("feedbackUserCtlConsent")+7])
+
 	// Verify feedback report contains email based on user selection.
 	if expectedEmailInFeedback {
 		if !strings.Contains(actualContent, expectedEmail) {
