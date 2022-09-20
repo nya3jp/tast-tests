@@ -70,6 +70,24 @@
       "parentUuid": "0f965186_0ad822f7",
       "revId": "aac5179f131c81c517cf78db500b7005fedd23b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a644eef1_da264e42",
+        "filename": "src/chromiumos/tast/local/policyutil/fixtures/chrome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-09-20T00:31:27Z",
+      "side": 1,
+      "message": "My guess is Reset returning non-nil is meant more as \"I can\u0027t cheaply clean up, let\u0027s just teardown and restart\" rather than \"There is something wrong\".",
+      "parentUuid": "12921faf_b9ae10f2",
+      "revId": "aac5179f131c81c517cf78db500b7005fedd23b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ],
   "submitRequirementResults": [
