@@ -34,6 +34,24 @@
       "parentUuid": "c2596a20_36cca60a",
       "revId": "34ead01e01725c181dd4d048212dc62c1f6e09a8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "09fe2540_88074c54",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/printpreview/printpreview.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2022-09-20T22:51:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "67f0875a_d49f4c39",
+      "revId": "34ead01e01725c181dd4d048212dc62c1f6e09a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
