@@ -16,6 +16,23 @@
       "message": "While we haven’t reached 20+ passes yet, all the builds so far have passed and I wanted to send this out for review so it’s fully ready when we do reach that point.",
       "revId": "deaf5092a108eaecf8741ad7be6381a834f884fd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a355f30d_ccca14b1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-09-20T02:35:33Z",
+      "side": 1,
+      "message": "Since it\u0027s only 7 builds I think this is too early though...",
+      "revId": "deaf5092a108eaecf8741ad7be6381a834f884fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
