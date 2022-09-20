@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b198689_72949a12",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/hid_wake.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-09-20T23:12:02Z",
+      "side": 1,
+      "message": "I\u0027ve simplified where we wait for the suspend to end. Previously I wrote an inline func to poll \u003c-suspendErr, but any access to \u003c-suspendErr is already blocking. So, that was redundant. Now it\u0027s just reads \u003c- suspendErr into \"err\".",
+      "range": {
+        "startLine": 115,
+        "startChar": 4,
+        "endLine": 115,
+        "endChar": 29
+      },
+      "revId": "94ccbbd06b11cbbc056cf9a05c40edb62716805a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
