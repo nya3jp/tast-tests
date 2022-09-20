@@ -1,0 +1,2 @@
+# Upstream Flashrom codebase has a programmer `dummyflasher`
+dummy
