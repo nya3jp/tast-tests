@@ -56,6 +56,14 @@ func init() {
 				},
 			},
 			{
+				Name:      "virtiofs_uncached_boot",
+				ExtraData: []string{"fio_boot.job"},
+				Val: param{
+					kind: "virtiofs_uncached",
+					job:  "fio_boot.job",
+				},
+			},
+			{
 				Name:      "virtiofs_dax_boot",
 				ExtraData: []string{"fio_boot.job"},
 				Val: param{
@@ -65,6 +73,14 @@ func init() {
 				// TODO(b/176129399): Remove this line once virtiofs DAX is enabled
 				// on ARM.
 				ExtraSoftwareDeps: []string{"amd64"},
+			},
+			{
+				Name:      "virtiofs_dax_uncached_boot",
+				ExtraData: []string{"fio_boot.job"},
+				Val: param{
+					kind: "virtiofs_dax_uncached",
+					job:  "fio_boot.job",
+				},
 			},
 			{
 				Name:      "p9_boot",
@@ -91,6 +107,14 @@ func init() {
 				},
 			},
 			{
+				Name:      "virtiofs_uncached_login",
+				ExtraData: []string{"fio_login.job"},
+				Val: param{
+					kind: "virtiofs_uncached",
+					job:  "fio_login.job",
+				},
+			},
+			{
 				Name:      "virtiofs_dax_login",
 				ExtraData: []string{"fio_login.job"},
 				Val: param{
@@ -100,6 +124,14 @@ func init() {
 				// TODO(b/176129399): Remove this line once virtiofs DAX is enabled
 				// on ARM.
 				ExtraSoftwareDeps: []string{"amd64"},
+			},
+			{
+				Name:      "virtiofs_dax_uncached_login",
+				ExtraData: []string{"fio_login.job"},
+				Val: param{
+					kind: "virtiofs_dax_uncached",
+					job:  "fio_login.job",
+				},
 			},
 			{
 				Name:      "p9_login",
@@ -126,6 +158,14 @@ func init() {
 				},
 			},
 			{
+				Name:      "virtiofs_uncached_surfing",
+				ExtraData: []string{"fio_surfing.job"},
+				Val: param{
+					kind: "virtiofs_uncached",
+					job:  "fio_surfing.job",
+				},
+			},
+			{
 				Name:      "virtiofs_dax_surfing",
 				ExtraData: []string{"fio_surfing.job"},
 				Val: param{
@@ -135,6 +175,14 @@ func init() {
 				// TODO(b/176129399): Remove this line once virtiofs DAX is enabled
 				// on ARM.
 				ExtraSoftwareDeps: []string{"amd64"},
+			},
+			{
+				Name:      "virtiofs_dax_uncached_surfing",
+				ExtraData: []string{"fio_surfing.job"},
+				Val: param{
+					kind: "virtiofs_dax_uncached",
+					job:  "fio_surfing.job",
+				},
 			},
 			{
 				Name:      "p9_surfing",
@@ -161,6 +209,14 @@ func init() {
 				},
 			},
 			{
+				Name:      "virtiofs_uncached_randread",
+				ExtraData: []string{"fio_randread.job"},
+				Val: param{
+					kind: "virtiofs_uncached",
+					job:  "fio_randread.job",
+				},
+			},
+			{
 				Name:      "virtiofs_dax_randread",
 				ExtraData: []string{"fio_randread.job"},
 				Val: param{
@@ -170,6 +226,14 @@ func init() {
 				// TODO(b/176129399): Remove this line once virtiofs DAX is enabled
 				// on ARM.
 				ExtraSoftwareDeps: []string{"amd64"},
+			},
+			{
+				Name:      "virtiofs_dax_uncached_randread",
+				ExtraData: []string{"fio_randread.job"},
+				Val: param{
+					kind: "virtiofs_dax_uncached",
+					job:  "fio_randread.job",
+				},
 			},
 			{
 				Name:      "p9_randread",
@@ -196,6 +260,14 @@ func init() {
 				},
 			},
 			{
+				Name:      "virtiofs_uncached_randwrite",
+				ExtraData: []string{"fio_randwrite.job"},
+				Val: param{
+					kind: "virtiofs_uncached",
+					job:  "fio_randwrite.job",
+				},
+			},
+			{
 				Name:      "virtiofs_dax_randwrite",
 				ExtraData: []string{"fio_randwrite.job"},
 				Val: param{
@@ -205,6 +277,14 @@ func init() {
 				// TODO(b/176129399): Remove this line once virtiofs DAX is enabled
 				// on ARM.
 				ExtraSoftwareDeps: []string{"amd64"},
+			},
+			{
+				Name:      "virtiofs_dax_uncached_randwrite",
+				ExtraData: []string{"fio_randwrite.job"},
+				Val: param{
+					kind: "virtiofs_dax_uncached",
+					job:  "fio_randwrite.job",
+				},
 			},
 			{
 				Name:      "p9_randwrite",
@@ -231,6 +311,14 @@ func init() {
 				},
 			},
 			{
+				Name:      "virtiofs_uncached_seqread",
+				ExtraData: []string{"fio_seqread.job"},
+				Val: param{
+					kind: "virtiofs_uncached",
+					job:  "fio_seqread.job",
+				},
+			},
+			{
 				Name:      "virtiofs_dax_seqread",
 				ExtraData: []string{"fio_seqread.job"},
 				Val: param{
@@ -240,6 +328,14 @@ func init() {
 				// TODO(b/176129399): Remove this line once virtiofs DAX is enabled
 				// on ARM.
 				ExtraSoftwareDeps: []string{"amd64"},
+			},
+			{
+				Name:      "virtiofs_dax_uncached_seqread",
+				ExtraData: []string{"fio_seqread.job"},
+				Val: param{
+					kind: "virtiofs_dax_uncached",
+					job:  "fio_seqread.job",
+				},
 			},
 			{
 				Name:      "p9_seqread",
@@ -266,6 +362,14 @@ func init() {
 				},
 			},
 			{
+				Name:      "virtiofs_uncached_seqwrite",
+				ExtraData: []string{"fio_seqwrite.job"},
+				Val: param{
+					kind: "virtiofs_uncached",
+					job:  "fio_seqwrite.job",
+				},
+			},
+			{
 				Name:      "virtiofs_dax_seqwrite",
 				ExtraData: []string{"fio_seqwrite.job"},
 				Val: param{
@@ -275,6 +379,14 @@ func init() {
 				// TODO(b/176129399): Remove this line once virtiofs DAX is enabled
 				// on ARM.
 				ExtraSoftwareDeps: []string{"amd64"},
+			},
+			{
+				Name:      "virtiofs_dax_uncached_seqwrite",
+				ExtraData: []string{"fio_seqwrite.job"},
+				Val: param{
+					kind: "virtiofs_dax_uncached",
+					job:  "fio_seqwrite.job",
+				},
 			},
 			{
 				Name:      "p9_seqwrite",
@@ -301,6 +413,14 @@ func init() {
 				},
 			},
 			{
+				Name:      "virtiofs_uncached_stress_rw",
+				ExtraData: []string{"fio_stress_rw.job"},
+				Val: param{
+					kind: "virtiofs_uncached",
+					job:  "fio_stress_rw.job",
+				},
+			},
+			{
 				Name:      "virtiofs_dax_stress_rw",
 				ExtraData: []string{"fio_stress_rw.job"},
 				Val: param{
@@ -310,6 +430,14 @@ func init() {
 				// TODO(b/176129399): Remove this line once virtiofs DAX is enabled
 				// on ARM.
 				ExtraSoftwareDeps: []string{"amd64"},
+			},
+			{
+				Name:      "virtiofs_dax_uncached_stress_rw",
+				ExtraData: []string{"fio_stress_rw.job"},
+				Val: param{
+					kind: "virtiofs_dax_uncached",
+					job:  "fio_stress_rw.job",
+				},
 			},
 			{
 				Name:      "p9_stress_rw",
@@ -370,11 +498,20 @@ func Fio(ctx context.Context, s *testing.State) {
 	if kind == "block" {
 		tag = "/dev/vda"
 		args = append(args, "--rwdisk", block)
-	} else if kind == "virtiofs" || kind == "virtiofs_dax" {
+	} else if strings.HasPrefix(kind, "virtiofs") {
+		isDAX := strings.Contains(kind, "dax")
+		isUncached := strings.Contains(kind, "uncached")
+		cache := "always"
+		if isUncached {
+			cache = "never"
+		}
+
 		tag = "shared"
 		args = append(args, "--shared-dir",
-			fmt.Sprintf("%s:%s:type=fs:cache=always:timeout=3600:writeback=true:dax=%t",
-				shared, tag, kind == "virtiofs_dax"))
+			fmt.Sprintf("%s:%s:type=fs:cache=%s:timeout=3600:writeback=true:dax=%t",
+				shared, tag,
+				cache,
+				isDAX))
 	} else if kind == "p9" {
 		tag = "shared"
 		args = append(args, "--shared-dir", fmt.Sprintf("%s:%s", shared, tag))

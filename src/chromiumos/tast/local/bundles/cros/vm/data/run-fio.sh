@@ -48,10 +48,10 @@ main() {
             -o "trans=virtio,version=9p2000.L,access=client,cache=loose" \
             "${src}" "${mountpoint}"
       ;;
-    virtiofs)
+    virtiofs | virtiofs_uncached )
       mount -t virtiofs "${src}" "${mountpoint}"
       ;;
-    virtiofs_dax)
+    virtiofs_dax | virtiofs_dax_uncached )
         mount -t virtiofs -o dax "${src}" "${mountpoint}"
         ;;
     *)
