@@ -63,6 +63,7 @@ func testBig(ctx context.Context, s *testing.State, cd *crosdisks.CrosDisks, dat
 			if err != nil {
 				return err
 			}
+			s.Logf("Hashed %q", p)
 
 			// Check file size.
 			if want := int64(6777995272); n != want {
@@ -119,7 +120,11 @@ func CrosDisksArchiveBig(ctx context.Context, s *testing.State) {
 	// Create a FAT filesystem containing all our test archive files.
 	err = c.WithLoopbackDeviceDo(ctx, cd, 512*1024*1024, "mkfs.vfat -n ARCHIVES", func(ctx context.Context, ld *crosdisks.LoopbackDevice) (err error) {
 		// Mounting it through CrosDisks will put the archives where we expect users to have them, so they are already in a permitted location.
-		return c.WithMountDo(ctx, cd, ld.DevicePath(), "", []string{"rw"}, func(ctx context.Context, mountPath string) error {
+		return c.WithMountDo(ctx, cd, ld.DevicePath(), "", []string{"rw"}, func(ctx context.Context, mountPath string, readOnly bool) error {
+			if readOnly {
+				return errors.Errorf("unexpected read-only flag for %q: got %v; want false", mountPath, readOnly)
+			}
+
 			s.Logf("Copying archives to loopback device mounted at %q", mountPath)
 			for _, name := range PreparedArchives {
 				s.Logf("Copying %q to %q", name, mountPath)
@@ -139,6 +144,6 @@ func CrosDisksArchiveBig(ctx context.Context, s *testing.State) {
 	})
 
 	if err != nil {
-		s.Fatal("Cannot initialize test suite: ", err)
+		s.Fatal("Error while running tests: ", err)
 	}
 }
