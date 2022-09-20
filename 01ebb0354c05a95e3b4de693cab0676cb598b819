@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2df1c6c7_0a35b663",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns_proxy_over_vpn.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2022-09-20T07:06:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c436470a_0d48bd8e",
+      "revId": "01ebb0354c05a95e3b4de693cab0676cb598b819",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "28b0788b_fe51169c",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-09-16T08:03:20Z",
       "side": 1,
       "message": "nit: I would change this check to `config.WGTwoPeers !\u003d (secondEnv !\u003d nil)`, since even if only secondEnv is set it should also be a mistake.",
+      "range": {
+        "startLine": 139,
+        "startChar": 1,
+        "endLine": 140,
+        "endChar": 66
+      },
+      "revId": "01ebb0354c05a95e3b4de693cab0676cb598b819",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5123c03_90dc4aec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/connection.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2022-09-20T07:06:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "28b0788b_fe51169c",
       "range": {
         "startLine": 139,
         "startChar": 1,
