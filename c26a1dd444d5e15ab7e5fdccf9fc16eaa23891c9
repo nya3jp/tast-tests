@@ -75,6 +75,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1766f1d_69327d3c",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_binary.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-09-20T08:38:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "12675974_0ef9db8f",
+      "range": {
+        "startLine": 396,
+        "startChar": 27,
+        "endLine": 396,
+        "endChar": 43
+      },
+      "revId": "c26a1dd444d5e15ab7e5fdccf9fc16eaa23891c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bd5a2c95_d13f732a",
@@ -163,6 +187,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "54e963dc_ebe8546d",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_client.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1099,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-09-20T08:38:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "916cd9d1_339f8974",
+      "revId": "c26a1dd444d5e15ab7e5fdccf9fc16eaa23891c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "104fd488_aa0bf815",
@@ -186,6 +228,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2af2087d_79fb6469",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/update_pin.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-09-20T08:38:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "104fd488_aa0bf815",
+      "range": {
+        "startLine": 100,
+        "startChar": 61,
+        "endLine": 100,
+        "endChar": 75
+      },
+      "revId": "c26a1dd444d5e15ab7e5fdccf9fc16eaa23891c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ee5a0948_dd69167e",
@@ -199,6 +265,30 @@
       "writtenOn": "2022-09-16T14:53:18Z",
       "side": 1,
       "message": "For the VaultKeysets you should authenticate with password and add the PIN after that. There are some secrets (reset_seed) that need to be copied from password VK to PIN VK. So the cryptohome implementation fails other trials like adding a password or PIN after authenticating with PIN",
+      "range": {
+        "startLine": 139,
+        "startChar": 18,
+        "endLine": 139,
+        "endChar": 30
+      },
+      "revId": "c26a1dd444d5e15ab7e5fdccf9fc16eaa23891c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b696b5d0_de204a72",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/update_pin.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-09-20T08:38:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ee5a0948_dd69167e",
       "range": {
         "startLine": 139,
         "startChar": 18,
@@ -249,6 +339,48 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a818f6f_8a548c73",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/update_pin.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-09-20T08:38:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cc938e8a_72ba2e2c",
+      "range": {
+        "startLine": 154,
+        "startChar": 22,
+        "endLine": 154,
+        "endChar": 47
+      },
+      "revId": "c26a1dd444d5e15ab7e5fdccf9fc16eaa23891c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "608b41b2_d24d1d5c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/update_pin.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-09-20T08:38:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7607d6c6_2e7c760a",
+      "revId": "c26a1dd444d5e15ab7e5fdccf9fc16eaa23891c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d4cef09f_7baeb5ac",
@@ -262,6 +394,24 @@
       "writtenOn": "2022-09-15T18:13:34Z",
       "side": 1,
       "message": "defer InvalidateAuthSession",
+      "revId": "c26a1dd444d5e15ab7e5fdccf9fc16eaa23891c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "24bcab8f_6357ae97",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/update_pin.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-09-20T08:38:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d4cef09f_7baeb5ac",
       "revId": "c26a1dd444d5e15ab7e5fdccf9fc16eaa23891c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
