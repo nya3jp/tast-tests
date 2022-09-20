@@ -88,12 +88,7 @@ func init() {
 			"xiyuan@chromium.org",
 			"chromeos-perfmetrics-eng@google.com",
 		},
-		Impl: &loggedInToCUJUserFixture{
-			chromeExtraOpts: []chrome.Option{
-				chrome.EnableFeatures("WebUITabStrip", "WebUITabStripTabDragIntegration"),
-			},
-			bt: browser.TypeAsh,
-		},
+		Impl:            &loggedInToCUJUserFixture{bt: browser.TypeAsh},
 		Parent:          "prepareForCUJ",
 		SetUpTimeout:    chrome.GAIALoginTimeout + optin.OptinTimeout + arc.BootTimeout + 2*time.Minute,
 		ResetTimeout:    resetTimeout,
@@ -125,11 +120,7 @@ func init() {
 			"xiyuan@chromium.org",
 			"chromeos-perfmetrics-eng@google.com",
 		},
-		Impl: &loggedInToCUJUserFixture{
-			keepState:       true,
-			chromeExtraOpts: []chrome.Option{chrome.EnableFeatures("WebUITabStrip")},
-			bt:              browser.TypeAsh,
-		},
+		Impl:            &loggedInToCUJUserFixture{keepState: true, bt: browser.TypeAsh},
 		Parent:          "cpuIdleForCUJ",
 		SetUpTimeout:    chrome.GAIALoginTimeout + optin.OptinTimeout + arc.BootTimeout + 2*time.Minute,
 		ResetTimeout:    resetTimeout,
@@ -157,14 +148,7 @@ func init() {
 			"xliu@cienet.com",
 			"chromeos-perfmetrics-eng@google.com",
 		},
-		Impl: &loggedInToCUJUserFixture{
-			keepState: true,
-			chromeExtraOpts: []chrome.Option{
-				chrome.EnableFeatures("WebUITabStrip"),
-				chrome.LacrosEnableFeatures("WebUITabStrip"),
-			},
-			bt: browser.TypeLacros,
-		},
+		Impl:            &loggedInToCUJUserFixture{keepState: true, bt: browser.TypeLacros},
 		Parent:          "cpuIdleForCUJ",
 		SetUpTimeout:    chrome.GAIALoginTimeout + optin.OptinTimeout + arc.BootTimeout + 2*time.Minute,
 		ResetTimeout:    resetTimeout,
@@ -178,9 +162,7 @@ func init() {
 			"alston.huang@cienet.com",
 			"chromeos-perfmetrics-eng@google.com",
 		},
-		Impl: &loggedInToCUJUserFixture{
-			chromeExtraOpts: []chrome.Option{chrome.EnableFeatures("WebUITabStrip")},
-		},
+		Impl:            &loggedInToCUJUserFixture{},
 		Parent:          "cpuIdleForEnrolledCUJ",
 		SetUpTimeout:    chrome.EnrollmentAndLoginTimeout + chrome.GAIALoginTimeout + optin.OptinTimeout + 2*time.Minute,
 		ResetTimeout:    resetTimeout,
@@ -196,13 +178,7 @@ func init() {
 			"jane.yang@cienet.com",
 			"chromeos-perfmetrics-eng@google.com",
 		},
-		Impl: &loggedInToCUJUserFixture{
-			chromeExtraOpts: []chrome.Option{
-				chrome.EnableFeatures("WebUITabStrip"),
-				chrome.LacrosEnableFeatures("WebUITabStrip"),
-			},
-			bt: browser.TypeLacros,
-		},
+		Impl:            &loggedInToCUJUserFixture{bt: browser.TypeLacros},
 		Parent:          "cpuIdleForEnrolledCUJ",
 		SetUpTimeout:    chrome.EnrollmentAndLoginTimeout + chrome.GAIALoginTimeout + optin.OptinTimeout + 2*time.Minute,
 		ResetTimeout:    resetTimeout,
