@@ -116,6 +116,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9cbaa1d7_532c050c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 883,
+      "author": {
+        "id": 1498402
+      },
+      "writtenOn": "2022-09-20T18:03:39Z",
+      "side": 1,
+      "message": "Thanks. Done.",
+      "parentUuid": "ae8c9110_182476c3",
+      "range": {
+        "startLine": 883,
+        "startChar": 74,
+        "endLine": 883,
+        "endChar": 112
+      },
+      "revId": "ec72c91a7526829d661c40d5c914df361c15bd80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8dc22ac1_cbfc3660",
