@@ -94,6 +94,30 @@
       },
       "revId": "7226cdac13f86d99e4da7765a494a1c5c0de5ea3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "afecb81e_9589dc85",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/config_verify.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1544064
+      },
+      "writtenOn": "2022-09-20T20:14:45Z",
+      "side": 0,
+      "message": "same comment as the other CL, I would suggest to have two different testcases to cover chromeOS and chromiumOS.",
+      "parentUuid": "28433e6a_507c1558",
+      "range": {
+        "startLine": 299,
+        "startChar": 29,
+        "endLine": 299,
+        "endChar": 43
+      },
+      "revId": "7226cdac13f86d99e4da7765a494a1c5c0de5ea3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
