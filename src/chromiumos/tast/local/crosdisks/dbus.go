@@ -165,6 +165,7 @@ type MountCompleted struct {
 	SourcePath string
 	SourceType uint32
 	MountPath  string
+	ReadOnly   bool
 }
 
 // DeviceOperationCompleted holds status of the operation done.
@@ -179,7 +180,7 @@ func (m *MountCompletedWatcher) Wait(ctx context.Context) (MountCompleted, error
 	var ret MountCompleted
 	select {
 	case s := <-m.Signals:
-		if err := dbus.Store(s.Body, &ret.Status, &ret.SourcePath, &ret.SourceType, &ret.MountPath); err != nil {
+		if err := dbus.Store(s.Body, &ret.Status, &ret.SourcePath, &ret.SourceType, &ret.MountPath, &ret.ReadOnly); err != nil {
 			return ret, errors.Wrap(err, "failed to store MountCompleted data")
 		}
 		return ret, nil

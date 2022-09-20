@@ -74,10 +74,15 @@ func WithLoopbackDeviceDo(ctx context.Context, cd *crosdisks.CrosDisks, sizeByte
 // an error if unsuccessful.
 func testMountFilesystem(ctx context.Context, cd *crosdisks.CrosDisks, ld *crosdisks.LoopbackDevice, label string) error {
 	expectedMountPath := filepath.Join("/media/removable", label)
-	return WithMountDo(ctx, cd, ld.DevicePath(), "", []string{"rw"}, func(ctx context.Context, mountPath string) error {
+	return WithMountDo(ctx, cd, ld.DevicePath(), "", []string{"rw"}, func(ctx context.Context, mountPath string, readOnly bool) error {
 		if expectedMountPath != mountPath {
 			return errors.Errorf("unexpected mount_path: got %q; want %q", mountPath, expectedMountPath)
 		}
+
+		if readOnly {
+			return errors.Errorf("unexpected read-only flag for %q: got %v; want false", mountPath, readOnly)
+		}
+
 		// Test writes.
 		dir := filepath.Join(mountPath, "mydir")
 		if err := execAsUser(ctx, chronos, []string{"mkdir", dir}); err != nil {

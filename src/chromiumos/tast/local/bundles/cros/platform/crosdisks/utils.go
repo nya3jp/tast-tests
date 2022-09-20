@@ -50,9 +50,9 @@ func mount(ctx context.Context, cd *crosdisks.CrosDisks, source, fsType string, 
 
 // WithMountDo mounts the specified source and if it succeeds calls the provided
 // function, cleaning up the mount afterwards.
-func WithMountDo(ctx context.Context, cd *crosdisks.CrosDisks, source, fsType string, options []string, f func(ctx context.Context, mountPath string) error) (err error) {
+func WithMountDo(ctx context.Context, cd *crosdisks.CrosDisks, source, fsType string, options []string, f func(ctx context.Context, mountPath string, readOnly bool) error) (err error) {
 	ctxForUnmount := ctx
-	ctx, unmount := ctxutil.Shorten(ctx, time.Second*5)
+	ctx, unmount := ctxutil.Shorten(ctx, time.Second*10)
 	defer unmount()
 
 	m, err := mount(ctx, cd, source, fsType, options)
@@ -78,7 +78,7 @@ func WithMountDo(ctx context.Context, cd *crosdisks.CrosDisks, source, fsType st
 		}
 	}()
 
-	return f(ctx, m.MountPath)
+	return f(ctx, m.MountPath, m.ReadOnly)
 }
 
 // verifyMountStatus checks that mounting yields the expected status.
