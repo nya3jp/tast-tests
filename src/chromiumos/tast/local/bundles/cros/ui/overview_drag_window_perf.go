@@ -343,6 +343,20 @@ func OverviewDragWindowPerf(ctx context.Context, s *testing.State) {
 	}
 	defer cleanup(cleanupCtx)
 
+	// Sets the display zoom factor to minimum, to ensure that the work area
+	// length is at least twice the minimum length of a browser window, so that
+	// browser windows can be snapped in split view.
+	info, err := display.GetPrimaryInfo(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to get the primary display info: ", err)
+	}
+	zoomInitial := info.DisplayZoomFactor
+	zoomMin := info.AvailableDisplayZoomFactors[0]
+	if err := display.SetDisplayProperties(ctx, tconn, info.ID, display.DisplayProperties{DisplayZoomFactor: &zoomMin}); err != nil {
+		s.Fatalf("Failed to set display zoom factor to minimum %f: %v", zoomMin, err)
+	}
+	defer display.SetDisplayProperties(cleanupCtx, tconn, info.ID, display.DisplayProperties{DisplayZoomFactor: &zoomInitial})
+
 	tsw, err := input.Touchscreen(ctx)
 	if err != nil {
 		s.Fatal("Failed to open touchscreen device: ", err)
