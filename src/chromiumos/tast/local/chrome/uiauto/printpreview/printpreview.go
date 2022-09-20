@@ -92,7 +92,7 @@ func SelectPrinter(ctx context.Context, tconn *chrome.TestConn, printerName stri
 // the provided layout.
 func SetLayout(ctx context.Context, tconn *chrome.TestConn, layout Layout) error {
 	// Find and expand the layout list.
-	layoutList := nodewith.Name("Layout").Role(role.PopUpButton)
+	layoutList := nodewith.Name("Layout").Role(role.ComboBoxSelect)
 	ui := uiauto.New(tconn)
 	if err := uiauto.Combine("find and click layout list",
 		ui.WithTimeout(10*time.Second).WaitUntilExists(layoutList),
@@ -132,7 +132,7 @@ func SetLayout(ctx context.Context, tconn *chrome.TestConn, layout Layout) error
 // SetPages interacts with Chrome print preview to set the selected pages.
 func SetPages(ctx context.Context, tconn *chrome.TestConn, pages string) error {
 	// Find and expand the pages list.
-	pageList := nodewith.Name("Pages").Role(role.PopUpButton)
+	pageList := nodewith.Name("Pages").Role(role.ComboBoxSelect)
 	ui := uiauto.New(tconn)
 	if err := uiauto.Combine("find and click page list",
 		ui.WithTimeout(10*time.Second).WaitUntilExists(pageList),
