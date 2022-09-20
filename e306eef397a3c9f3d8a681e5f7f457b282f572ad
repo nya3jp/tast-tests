@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "685e623b_66a841c9",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1025,
+      "author": {
+        "id": 1429709
+      },
+      "writtenOn": "2022-09-20T23:57:15Z",
+      "side": 1,
+      "message": "I couldn\u0027t find a better way to accomplish what I wanted than to add this until automation.go. Personalization test code relies heavily on uiauto.Action, and I didn\u0027t want to modify all call sites of `OpenPersonalizationHub` to also pass along a `tconn` when it was already present in `uiauto.Context`.\n\nis this acceptable, or are there other suggestions for mixing the SWA code with `uiauto.Action` in a better way?",
+      "revId": "e306eef397a3c9f3d8a681e5f7f457b282f572ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
