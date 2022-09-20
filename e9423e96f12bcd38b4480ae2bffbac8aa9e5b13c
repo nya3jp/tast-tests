@@ -43,6 +43,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bf8f7915_01e41170",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/smart_card_lock_screen_with_auth_api.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-09-20T22:14:26Z",
+      "side": 1,
+      "message": "why does this function has the same name as the one in the other file?",
+      "range": {
+        "startLine": 105,
+        "startChar": 0,
+        "endLine": 105,
+        "endChar": 66
+      },
+      "revId": "e9423e96f12bcd38b4480ae2bffbac8aa9e5b13c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "451c7515_5e60f600",
         "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/smart_card_with_auth_api.go",
         "patchSetId": 14
