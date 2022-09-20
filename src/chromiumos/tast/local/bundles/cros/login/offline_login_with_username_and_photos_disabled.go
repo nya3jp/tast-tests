@@ -35,6 +35,12 @@ func init() {
 			"ui.signinProfileTestExtensionManifestKey",
 		},
 		Timeout: 3*chrome.LoginTimeout + 45*time.Second,
+		SearchFlags: []*testing.StringPair{{
+			Key: "feature_id",
+			// Offline Authentication with network offline and usernames
+			// and photos disabled by policy.
+			Value: "screenplay-ed77a405-6f9c-45f1-b1dc-5787f741e82a",
+		}},
 	})
 }
 

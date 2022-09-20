@@ -53,6 +53,11 @@ func init() {
 			Name: "oobe_enroll_autosubmit",
 			Val:  testParam{true, true},
 		}},
+		SearchFlags: []*testing.StringPair{{
+			Key: "feature_id",
+			// Pin login and unlock.
+			Value: "screenplay-0c901f0b-a092-4f23-9eaa-36f8acfb0220",
+		}},
 	})
 }
 
