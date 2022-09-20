@@ -106,6 +106,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "15dfd298_f133610d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-09-20T14:58:32Z",
+      "side": 1,
+      "message": "Tast reviewers/owners are not necessary the expert for specific field for the CL. For example, I know nothing about bluetooth, ... and enterprise connector. We ensure Tast tests are following certain coding standards and convention. We rely on the domain experts to review whether the test are testing a specific area correctly. I assume that Muhamed Parić on enterprise connectors. I will give a +2 on this one.",
+      "parentUuid": "66406d60_edbdcd9e",
+      "revId": "232e8ac50c2b0fd8848c03a31fa1b51620377263",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f9f28fd0_1a3b618b",
