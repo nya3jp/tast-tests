@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b56ad117_0d3136bd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1528043
+      },
+      "writtenOn": "2022-09-20T08:07:50Z",
+      "side": 1,
+      "message": "Thanks for the review 😊",
+      "revId": "eed4a21553d0e7843c5b4e603dcee4fd54e39d8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bdea19c0_3da5512b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1528043
+      },
+      "writtenOn": "2022-09-20T08:07:50Z",
+      "side": 1,
+      "message": "Thanks for the review 😊",
+      "revId": "eed4a21553d0e7843c5b4e603dcee4fd54e39d8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
