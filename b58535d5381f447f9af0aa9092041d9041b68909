@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a26eb697_63ad0940",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-09-20T14:11:21Z",
+      "side": 1,
+      "message": "Just a nit. Sorry for being late as I was in a biz travel.",
+      "revId": "b58535d5381f447f9af0aa9092041d9041b68909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "222b3595_87e896e1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/remote_cellular_service.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-09-20T14:11:21Z",
+      "side": 1,
+      "message": "s is too short for member naming. How about \"state\"?",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 1
+      },
+      "revId": "b58535d5381f447f9af0aa9092041d9041b68909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
