@@ -22,6 +22,30 @@
       },
       "revId": "8f7e224b1a30ac356f313669152c661aa186f9a1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "186cf671_619a0021",
+        "filename": "src/chromiumos/tast/local/personalization/personalization.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1510098
+      },
+      "writtenOn": "2022-09-20T23:09:32Z",
+      "side": 1,
+      "message": "Unfortunately no, I don\u0027t think we can reliably tell that the UI has updated because it happens async and doesn\u0027t provide us with a response.",
+      "parentUuid": "f8eee093_dba57831",
+      "range": {
+        "startLine": 92,
+        "startChar": 2,
+        "endLine": 93,
+        "endChar": 28
+      },
+      "revId": "8f7e224b1a30ac356f313669152c661aa186f9a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
