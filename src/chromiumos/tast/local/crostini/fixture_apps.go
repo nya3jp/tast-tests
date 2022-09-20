@@ -126,7 +126,7 @@ func (f *crostiniAppsFixture) PreTest(ctx context.Context, s *testing.FixtTestSt
 }
 
 func (f *crostiniAppsFixture) PostTest(ctx context.Context, s *testing.FixtTestState) {
-	if f.screenDiffer.differ != nil {
+	if (*f.screenDiffer.differ) != nil {
 		(*f.screenDiffer.differ).GetFailedDiffs()
 	}
 
