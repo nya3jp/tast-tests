@@ -481,13 +481,31 @@ func AppRearrangement(ctx context.Context, s *testing.State) {
 		s.Fatalf("Failed to unpin %s(%s): %v", targetAppName, targetAppID, err)
 	}
 
+	var pinnedApps []string
+	var numPinnedApps int
+
+	if pinnedApps, err = ash.GetPinnedAppIds(ctx, tconn); err != nil {
+		s.Fatal("Failed to get the pinned app ids before dragging the unpinned app: ", err)
+	}
+
+	numPinnedApps = len(pinnedApps)
+
 	if err := getDragAndDropAction(tconn, "move the unpinned app with the activated window from the last slot to the first slot", lastSlotCenter, firstSlotCenter)(ctx); err != nil {
 		s.Fatal("Failed to move the unpinned app from the last slot to the first slot: ", err)
 	}
 
-	// Verify that an unpinned app with the activated window should not be able to be placed in front of the pinned apps.
-	if err := ash.VerifyShelfIconIndices(ctx, tconn, defaultAppIDsInPinOrder); err != nil {
+	// Verify that an unpinned app can be moved across the separator to the pinned apps and pin the app.
+	if err := ash.VerifyShelfIconIndices(ctx, tconn, updatedAppIDsInPinOrder); err != nil {
 		s.Fatal("Failed to verify shelf icon indices after the unpinned app is dragged then dropped: ", err)
+	}
+
+	if pinnedApps, err = ash.GetPinnedAppIds(ctx, tconn); err != nil {
+		s.Fatal("Failed to get the pinned app ids after dragging the unpinned app: ", err)
+	}
+
+	// The number of pinned apps should be increased by 1 after pinning the unpinned app by dragging.
+	if len(pinnedApps) != numPinnedApps+1 {
+		s.Fatal("Failed to pin the dragged unpinned app")
 	}
 
 	// Cleanup.

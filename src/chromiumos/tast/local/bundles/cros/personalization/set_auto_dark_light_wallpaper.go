@@ -126,7 +126,7 @@ func SetAutoDarkLightWallpaper(ctx context.Context, s *testing.State) {
 
 // selectDLWallpaper selects an image in a D/L collection and sets it as wallpaper.
 func selectDLWallpaper(ctx context.Context, ui *uiauto.Context, collection string) error {
-	imagesFinder := nodewith.Role(role.ListBoxOption).HasClass("photo-inner-container")
+	imagesFinder := nodewith.Role(role.ListBoxOption).Ancestor(nodewith.Role(role.Main).Name(collection))
 
 	images, err := ui.NodesInfo(ctx, imagesFinder)
 	if err != nil {
