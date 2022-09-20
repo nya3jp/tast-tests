@@ -16,6 +16,29 @@
       "message": "LGTM. Thanks!",
       "revId": "72fb6febb6961a25c2237845a9551bc3d1a53b80",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "316b2a08_b40fe321",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perfetto_battery_data_source.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-09-20T19:46:04Z",
+      "side": 1,
+      "message": "Since we\u0027re only using `append` here, it seems like the three arrays can be out of sync with each other if not every suffix is present on every battery (except I guess the last one). For example, in the example output given on L55-L58, we would end up with the `hid-0018:27C6:0E52.0001-battery` percentage in the zero index, but in the other two slices there would be values for the `sbs-12-000b` battery.\n\nIs that OK? I guess it might be fine since we\u0027re just collecting them in these slices to do consistent bounds checks on each?",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 85,
+        "endChar": 31
+      },
+      "revId": "72fb6febb6961a25c2237845a9551bc3d1a53b80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
