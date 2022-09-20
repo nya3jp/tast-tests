@@ -36,6 +36,11 @@ func init() {
 			"ui.signinProfileTestExtensionManifestKey",
 		},
 		Timeout: chrome.GAIALoginTimeout + 2*chrome.LoginTimeout + userutil.TakingOwnershipTimeout + time.Minute,
+		SearchFlags: []*testing.StringPair{{
+			Key: "feature_id",
+			// Credentials sync - password change failure.
+			Value: "screenplay-e48269d3-5309-4db0-aafa-ffdce9a79dbf",
+		}},
 	})
 }
 
