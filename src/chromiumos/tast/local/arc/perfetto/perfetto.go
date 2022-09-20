@@ -2,7 +2,8 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package arc
+// Package perfetto provides set of util functions used to run perfetto tool set.
+package perfetto
 
 import (
 	"bytes"
@@ -11,12 +12,14 @@ import (
 
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/arc"
 )
 
 // ForceEnableTrace will overwrite tracing_on flag in kernel tracefs. In some cases this flag
-// are occupied by unknown reason during ARC booting. Failure may caused by permission issue or
+// are occupied by unknown reason during ARC booting.
+// Root permission is needed for this function. Failure may caused by permission issue or
 // wrong debugfs path.
-func (a *ARC) ForceEnableTrace(ctx context.Context) error {
+func ForceEnableTrace(ctx context.Context, a *arc.ARC) error {
 	const (
 		cmd = "echo 0 > "
 		// TODO(sstan): Figure out different tracePath for R/T and x86/arm.
@@ -24,18 +27,17 @@ func (a *ARC) ForceEnableTrace(ctx context.Context) error {
 		tracePath = "/sys/kernel/tracing/tracing_on"
 	)
 
-	a.device.Root(ctx)
-	if err := a.device.Command(ctx, "shell", cmd+tracePath).Run(testexec.DumpLogOnError); err != nil {
+	if err := a.Command(ctx, cmd+tracePath).Run(testexec.DumpLogOnError); err != nil {
 		return errors.Wrap(err, "failed to force enable trace")
 	}
 	return nil
 }
 
-// PerfettoTrace will push the config from traceConfigPath to ARC device, start the perfetto
+// Trace will push the config from traceConfigPath to ARC device, start the perfetto
 // basing on config, run the function, and pull the trace result from ARC device to
 // traceResultPath. Note that if earlyExit is true, the perfetto tracing will be stopped
 // after test function return.
-func (a *ARC) PerfettoTrace(ctx context.Context, traceConfigPath, traceResultPath string, earlyExit bool, f func(context.Context) error) error {
+func Trace(ctx context.Context, a *arc.ARC, traceConfigPath, traceResultPath string, earlyExit bool, f func(context.Context) error) error {
 	// Perfetto related path inner ARC.
 	const (
 		localPerfettoTraceDir = "/data/misc/perfetto-traces/"
