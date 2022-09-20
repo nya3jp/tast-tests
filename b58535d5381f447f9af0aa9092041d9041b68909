@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "db10d523_1483db78",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-09-20T15:24:51Z",
+      "side": 1,
+      "message": "+R ejcaruso@",
+      "revId": "b58535d5381f447f9af0aa9092041d9041b68909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "222b3595_87e896e1",
@@ -36,6 +53,29 @@
         "startChar": 0,
         "endLine": 30,
         "endChar": 1
+      },
+      "revId": "b58535d5381f447f9af0aa9092041d9041b68909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7645f5e6_f8e71b39",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/remote_cellular_service.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-09-20T15:24:51Z",
+      "side": 1,
+      "message": "This function is fine like this for now, but there are several assumptions here:\n  - there is a unique Cellular Device.\n  - the \"interface\" field of the Cell Device corresponds to the data connection.\nCould we document these assumptions here ?\n  \nWe started to introduce support for multiple simultaneous cellular connection over the same SIM card, and eventually we will very likely need to rewrite this function at some point (for instance the whole shill Device concept may stop making sense). Documenting the assumptions here will help the migration.",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 83
       },
       "revId": "b58535d5381f447f9af0aa9092041d9041b68909",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
