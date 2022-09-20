@@ -67,6 +67,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0055bc17_8387c741",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_ro_can_update_rw.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-09-20T00:05:36Z",
+      "side": 1,
+      "message": "Wrong comment?",
+      "range": {
+        "startLine": 139,
+        "startChar": 3,
+        "endLine": 139,
+        "endChar": 60
+      },
+      "revId": "b8c5b3923cc914c785989d788d5ae20a5a5b6502",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5c282121_e3592c1b",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_ro_can_update_rw.go",
         "patchSetId": 2
