@@ -7,6 +7,7 @@ package notifications
 import (
 	"context"
 	"fmt"
+	"path/filepath"
 	"time"
 
 	"chromiumos/tast/ctxutil"
@@ -100,6 +101,16 @@ func BundlingNotifications(ctx context.Context, s *testing.State) {
 		outDir: s.OutDir(),
 	}
 
+	screenRecorder, err := uiauto.NewScreenRecorder(ctx, tconn)
+	if err != nil {
+		s.Log("Failed to create ScreenRecorder: ", err)
+	}
+
+	if err := screenRecorder.Start(ctx, tconn); err != nil {
+		s.Log("Failed to start ScreenRecorder: ", err)
+	}
+	defer uiauto.ScreenRecorderStopSaveRelease(cleanupCtx, screenRecorder, filepath.Join(s.OutDir(), "record.webm"))
+
 	if _, err := app.Launch(ctx); err != nil {
 		s.Fatal("Failed to launch Notification Showcase app: ", err)
 	}
@@ -120,6 +131,7 @@ func BundlingNotifications(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to get notification bounds for single notification: ", err)
 	}
+	s.Logf("Height of single notification: %d", singleNotificationBounds.Height)
 
 	s.Log("Generating bundling notifications")
 	// Remove all notifications before generating a new ones.
@@ -149,6 +161,7 @@ func BundlingNotifications(ctx context.Context, s *testing.State) {
 	// Therefore, we use the equation "HeightOfGroupNotification ÷ HeightOfSingleNotification"
 	// to retrieve the number of notifications inside the grouped notification.
 	notificationGroupCnt := groupedNotificationBounds.Height / singleNotificationBounds.Height
+	s.Logf("%d notifications are grouped into one notification", notificationGroupCnt)
 
 	s.Log("Verifying bundling notifications")
 	for _, mode := range []verifyMode{collapse, expand, click} {
@@ -288,8 +301,8 @@ func verifyGroupedNotifications(ctx context.Context, res *bundlingNotificationTe
 	switch mode {
 	case collapse:
 		// If the notification is collapsed, the height value will be smaller than the original one.
-		if bundledBoundsAfter.Height > 2*singleNotificationHeight {
-			return errors.Errorf("the height of grouped notification does not match the regulation while 'collapse': height of grouped notification %v, number of expected notifications %v", bundledBoundsAfter.Height, notificationGroupCnt)
+		if bundledBoundsAfter.Height >= 2*singleNotificationHeight {
+			return errors.Errorf("the height of grouped notification does not match the regulation while 'collapse': height of grouped notification %v, height of collapsed grouped notification %v", bundledBoundsBefore.Height, bundledBoundsAfter.Height)
 		}
 	case expand:
 		// If the notification is expanded, the expected height will be somewhere between
@@ -298,6 +311,12 @@ func verifyGroupedNotifications(ctx context.Context, res *bundlingNotificationTe
 			return errors.Errorf("the height of grouped notification does not match the regulation while 'expand': height of grouped notification %v, number of expected notifications %v", bundledBoundsAfter.Height, notificationGroupCnt)
 		}
 	case click:
+		// If notificationGroupCnt is one, clicking the notification will not change the height
+		if notificationGroupCnt == 1 {
+			testing.ContextLog(ctx, "There are only one notification inside the grouped notification, skip verification for clicking")
+			return nil
+		}
+
 		// If the notification is clicked, the reduced height value will be exact the height of single notification.
 		if bundledBoundsBefore.Height != bundledBoundsAfter.Height+singleNotificationHeight+1 /* The border width of notification */ {
 			return errors.Errorf("the height of grouped notification does not match the regulation while 'click': before %v, after %v", bundledBoundsBefore.Height, bundledBoundsAfter.Height)
