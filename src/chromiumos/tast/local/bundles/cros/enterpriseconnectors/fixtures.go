@@ -20,6 +20,7 @@ func init() {
 		Desc: "Fixture that allows usage of Lacros, with a gaia login with production policy and enabled WebProtect scanning which allows immediate file transfers, large and encrypted files",
 		Contacts: []string{
 			"sseckler@google.com",
+			"cros-enterprise-connectors@google.com",
 			"webprotect-eng@google.com",
 		},
 		Impl: CreateFixture(
@@ -39,6 +40,7 @@ func init() {
 		Desc: "Fixture that allows usage of Lacros, with a gaia login with production policy and enabled WebProtect scanning which blocks immediate file transfers, large and encrypted files",
 		Contacts: []string{
 			"sseckler@google.com",
+			"cros-enterprise-connectors@google.com",
 			"webprotect-eng@google.com",
 		},
 		Impl: CreateFixture(
@@ -58,6 +60,7 @@ func init() {
 		Desc: "Fixture that allows usage of Lacros, with a gaia login with production policy and disabled WebProtect scanning",
 		Contacts: []string{
 			"sseckler@google.com",
+			"cros-enterprise-connectors@google.com",
 			"webprotect-eng@google.com",
 		},
 		Impl: CreateFixture(
