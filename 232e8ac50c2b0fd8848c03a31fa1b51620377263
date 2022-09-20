@@ -70,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "411f5a3c_bb9cf7e3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-09-20T00:48:45Z",
+      "side": 1,
+      "message": "Just add one more line\n\nTEST\u003dtast unit test passed\n\nin you commit log\n\nIs Joseph the domain expert? If yes, either of us can give you +2.\n\nIf not, please ask the domain expert to give you +2.\n\nMy +1 should be good for owner approval.",
+      "parentUuid": "19224fbd_49b2d3e4",
+      "revId": "232e8ac50c2b0fd8848c03a31fa1b51620377263",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f9f28fd0_1a3b618b",
