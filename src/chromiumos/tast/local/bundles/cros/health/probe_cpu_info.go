@@ -83,15 +83,6 @@ type cpuInfo struct {
 	Vulnerabilities     map[string]vulnerabilityInfo `json:"vulnerabilities"`
 }
 
-type cpuInfoTestParams struct {
-	// Whether to check vulnerabilities.
-	checkVulnerability bool
-	// Whether to check virtualization.
-	checkVirtualization bool
-	// Whether to check cpu virtualization.
-	checkCPUVirtualization bool
-}
-
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ProbeCPUInfo,
@@ -106,13 +97,6 @@ func init() {
 		SoftwareDeps: []string{"chrome", "diagnostics"},
 		Fixture:      "crosHealthdRunning",
 		Timeout:      3 * time.Minute,
-		Params: []testing.Param{{
-			Val: cpuInfoTestParams{
-				checkVulnerability:     true,
-				checkVirtualization:    true,
-				checkCPUVirtualization: true,
-			},
-		}},
 	})
 }
 
@@ -215,7 +199,7 @@ func getExpectedCPUVirtualization(flags map[string]bool) (*cpuVirtualizationInfo
 	return nil, nil
 }
 
-func verifyPhysicalCPU(physicalCPU *physicalCPUInfo, checkCPUVirtualization bool) error {
+func verifyPhysicalCPU(physicalCPU *physicalCPUInfo) error {
 	if len(physicalCPU.LogicalCPUs) < 1 {
 		return errors.Errorf("invalid LogicalCPUs, got %d; want 1+", len(physicalCPU.LogicalCPUs))
 	}
@@ -230,29 +214,27 @@ func verifyPhysicalCPU(physicalCPU *physicalCPUInfo, checkCPUVirtualization bool
 		return errors.New("empty CPU model name")
 	}
 
-	if checkCPUVirtualization {
-		expectedFlags, err := getFlags()
-		if err != nil {
-			return err
-		}
+	expectedFlags, err := getFlags()
+	if err != nil {
+		return err
+	}
 
-		receivedFlags := make(map[string]bool)
-		for _, flag := range physicalCPU.Flags {
-			receivedFlags[flag] = true
-		}
+	receivedFlags := make(map[string]bool)
+	for _, flag := range physicalCPU.Flags {
+		receivedFlags[flag] = true
+	}
 
-		if diff := cmp.Diff(expectedFlags, receivedFlags); diff != "" {
-			return errors.Errorf("Flag reported incorrectly: (-got +want) %s", diff)
-		}
+	if diff := cmp.Diff(expectedFlags, receivedFlags); diff != "" {
+		return errors.Errorf("Flag reported incorrectly: (-got +want) %s", diff)
+	}
 
-		expectedPhysicalCPUVirtualization, err := getExpectedCPUVirtualization(expectedFlags)
-		if err != nil {
-			return err
-		}
+	expectedPhysicalCPUVirtualization, err := getExpectedCPUVirtualization(expectedFlags)
+	if err != nil {
+		return err
+	}
 
-		if diff := cmp.Diff(expectedPhysicalCPUVirtualization, physicalCPU.CPUVirtualization); diff != "" {
-			return errors.Errorf("CPU virtualization reported incorrectly: (-got +want) %s", diff)
-		}
+	if diff := cmp.Diff(expectedPhysicalCPUVirtualization, physicalCPU.CPUVirtualization); diff != "" {
+		return errors.Errorf("CPU virtualization reported incorrectly: (-got +want) %s", diff)
 	}
 
 	return nil
@@ -276,7 +258,7 @@ func verifyCState(cState cStateInfo) error {
 	return nil
 }
 
-func validateCPUData(info *cpuInfo, checkCPUVirtualization bool) error {
+func validateCPUData(info *cpuInfo) error {
 	// Every board should have at least one physical CPU
 	if len(info.PhysicalCPUs) < 1 {
 		return errors.Errorf("invalid PhysicalCPUs, got %d; want 1+", len(info.PhysicalCPUs))
@@ -294,14 +276,12 @@ func validateCPUData(info *cpuInfo, checkCPUVirtualization bool) error {
 	//
 	// Until then, we check to see if all CPU report the same information (flags
 	// and msr).
-	if checkCPUVirtualization {
-		if err := validateCPUEquality(info.PhysicalCPUs); err != nil {
-			return err
-		}
+	if err := validateCPUEquality(info.PhysicalCPUs); err != nil {
+		return err
 	}
 
 	for _, physicalCPU := range info.PhysicalCPUs {
-		if err := verifyPhysicalCPU(&physicalCPU, checkCPUVirtualization); err != nil {
+		if err := verifyPhysicalCPU(&physicalCPU); err != nil {
 			return errors.Wrap(err, "failed to verify physical CPU")
 		}
 	}
@@ -427,27 +407,22 @@ func validateCPUEquality(physicalCPUs []physicalCPUInfo) error {
 
 func ProbeCPUInfo(ctx context.Context, s *testing.State) {
 	params := croshealthd.TelemParams{Category: croshealthd.TelemCategoryCPU}
-	testParam := s.Param().(cpuInfoTestParams)
 
 	var info cpuInfo
 	if err := croshealthd.RunAndParseJSONTelem(ctx, params, s.OutDir(), &info); err != nil {
 		s.Fatal("Failed to run telem command: ", err)
 	}
 
-	if err := validateCPUData(&info, testParam.checkCPUVirtualization); err != nil {
+	if err := validateCPUData(&info); err != nil {
 		s.Fatal("Failed to validate cpu data: ", err)
 	}
 
-	if testParam.checkVirtualization {
-		if err := validateVirtualization(info.Virtualization); err != nil {
-			s.Fatal("Failed to validate virtualization: ", err)
-		}
+	if err := validateVirtualization(info.Virtualization); err != nil {
+		s.Fatal("Failed to validate virtualization: ", err)
 	}
 
-	if testParam.checkVulnerability {
-		if err := validateVulnerabilities(info.Vulnerabilities); err != nil {
-			s.Fatal("Failed to validate cpu vulnerabilities: ", err)
-		}
+	if err := validateVulnerabilities(info.Vulnerabilities); err != nil {
+		s.Fatal("Failed to validate cpu vulnerabilities: ", err)
 	}
 
 	out, err := ioutil.ReadFile("/proc/crypto")
