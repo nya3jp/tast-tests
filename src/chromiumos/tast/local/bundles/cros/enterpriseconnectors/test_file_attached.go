@@ -40,6 +40,7 @@ func init() {
 		Timeout:      10 * time.Minute,
 		Contacts: []string{
 			"sseckler@google.com",
+			"cros-enterprise-connectors@google.com",
 			"webprotect-eng@google.com",
 		},
 		SoftwareDeps: []string{
