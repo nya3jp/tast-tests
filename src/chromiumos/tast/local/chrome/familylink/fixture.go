@@ -1,4 +1,4 @@
-// Copyright 2021 The Chromium OS Authors. All rights reserved.
+// Copyright 2021 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -152,6 +152,22 @@ func init() {
 			"arc.parentPassword",
 		},
 		SetUpTimeout:    chrome.GAIALoginTimeout + arc.BootTimeout,
+		ResetTimeout:    resetTimeout,
+		TearDownTimeout: resetTimeout,
+		PreTestTimeout:  resetTimeout,
+		PostTestTimeout: resetTimeout,
+	})
+
+	testing.AddFixture(&testing.Fixture{
+		Name:     "familyLinkParentLogin",
+		Desc:     "Non-supervised Family Link user login with regular parent account",
+		Contacts: []string{"tobyhuang@chromium.org", "cros-families-eng+test@google.com"},
+		Impl:     NewFamilyLinkFixture("family.parentEmail", "family.parentPassword", "", "", true),
+		Vars: []string{
+			"family.parentEmail",
+			"family.parentPassword",
+		},
+		SetUpTimeout:    chrome.GAIALoginTimeout,
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: resetTimeout,
 		PreTestTimeout:  resetTimeout,
