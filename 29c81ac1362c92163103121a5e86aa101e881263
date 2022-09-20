@@ -69,6 +69,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f637ceac_f0bd699d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/rmaweb/ui.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1531792
+      },
+      "writtenOn": "2022-09-20T01:01:37Z",
+      "side": 1,
+      "message": "2 difference:\n(1) We need to verify file exists.\n(2) We don\u0027t ignore error if we cannot delete logs.",
+      "parentUuid": "e3f68699_09acfac8",
+      "revId": "29c81ac1362c92163103121a5e86aa101e881263",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5733cd93_0c1ffd4c",
@@ -82,6 +100,24 @@
       "writtenOn": "2022-09-20T00:58:15Z",
       "side": 1,
       "message": "I wonder if `sd[a-z]\\d` would be better...",
+      "revId": "29c81ac1362c92163103121a5e86aa101e881263",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e855941_e4db9240",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/rmaweb/ui.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 391,
+      "author": {
+        "id": 1531792
+      },
+      "writtenOn": "2022-09-20T01:01:37Z",
+      "side": 1,
+      "message": "There are multiple matches. /dev/sda1, /dev/sda2, etc. Shimless RMA will only store log to the first partition (which is stateful partition in our case).",
+      "parentUuid": "5733cd93_0c1ffd4c",
       "revId": "29c81ac1362c92163103121a5e86aa101e881263",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
