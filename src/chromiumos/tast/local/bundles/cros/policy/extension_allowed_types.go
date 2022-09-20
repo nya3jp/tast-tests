@@ -175,17 +175,22 @@ func canInstallExtension(ctx context.Context, tconn *chrome.TestConn, br *browse
 		return false, err
 	}
 
-	// Remove extension if needed. If it is not removed, the next subtests will fail.
-	// A theme can only be removed here, or by installing a new one.
 	if installed {
+		// Remove extension if needed. If it is not removed, the next subtests will fail.
+		// A theme can only be removed here, or by installing a new one.
 		if err := uia.LeftClick(undoButton)(ctx); err != nil {
 			return false, errors.Wrap(err, "failed to click Undo button")
 		}
-
-		// Wait until removing is complete.
-		if err := uia.WaitUntilExists(addButton)(ctx); err != nil {
-			return false, errors.Wrap(err, "failed to wait for Add to Chrome button")
+	} else {
+		// Until the dialog is closed, Chrome thinks that the theme installation is still ongoing.
+		if err := uia.LeftClickUntil(blockedButton, uia.WithTimeout(time.Second).WaitUntilGone(blockedButton))(ctx); err != nil {
+			return false, errors.Wrap(err, "failed to close the dialog")
 		}
+	}
+
+	// Wait until removing is complete.
+	if err := uia.WaitUntilExists(addButton)(ctx); err != nil {
+		return false, errors.Wrap(err, "failed to wait for Add to Chrome button")
 	}
 
 	return installed, nil
