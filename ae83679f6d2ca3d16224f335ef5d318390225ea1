@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06e8de21_b05ffe2c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-09-20T03:09:38Z",
+      "side": 1,
+      "message": "It normally requires 20+ passes to promote a test https://chrome-internal.googlesource.com/chromeos/chromeos-admin/+/HEAD/doc/tast_add_test.md#step-4_remove-attribute-to-make-it-run-on-infra maybe wait a few days?\n\nI am okay if you are confident about the stability of this test and promote it now.",
+      "revId": "ae83679f6d2ca3d16224f335ef5d318390225ea1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
