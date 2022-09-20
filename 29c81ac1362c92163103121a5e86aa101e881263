@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e817156_697d2a1f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/rmaweb/ui.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2022-09-20T00:58:15Z",
+      "side": 1,
+      "message": "I guess technically it\u0027s not a File, but a Dir. maybe `usbTempMountDir` is a better name?",
+      "revId": "29c81ac1362c92163103121a5e86aa101e881263",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4187a188_8f2968cc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/rmaweb/ui.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2022-09-20T00:58:15Z",
+      "side": 1,
+      "message": "nit: creating a enum rather than bool would be better, since when `RepairCompletedPageOperation(true)` is called it\u0027s not obvious that it\u0027s going to save the logs as well.",
+      "revId": "29c81ac1362c92163103121a5e86aa101e881263",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2fccde3d_e72ae164",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/rmaweb/ui.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2022-09-20T00:58:15Z",
+      "side": 1,
+      "message": "nit: Find → Found",
+      "revId": "29c81ac1362c92163103121a5e86aa101e881263",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3f68699_09acfac8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/rmaweb/ui.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2022-09-20T00:58:15Z",
+      "side": 1,
+      "message": "Why not use `deleteLogsIfExisting`?",
+      "revId": "29c81ac1362c92163103121a5e86aa101e881263",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5733cd93_0c1ffd4c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/rmaweb/ui.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 391,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2022-09-20T00:58:15Z",
+      "side": 1,
+      "message": "I wonder if `sd[a-z]\\d` would be better...",
+      "revId": "29c81ac1362c92163103121a5e86aa101e881263",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
