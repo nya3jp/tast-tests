@@ -85,7 +85,13 @@ var PreparedArchives = []string{
 }
 
 func WithMountedArchiveDo(ctx context.Context, cd *crosdisks.CrosDisks, archivePath string, options []string, f func(ctx context.Context, mountPath string) error) error {
-	return WithMountDo(ctx, cd, archivePath, filepath.Ext(archivePath), options, f)
+	return WithMountDo(ctx, cd, archivePath, filepath.Ext(archivePath), options, func(ctx context.Context, mountPath string, readOnly bool) error {
+		if !readOnly {
+			return errors.Errorf("unexpected read-only flag for %q: got %v; want true", mountPath, readOnly)
+		}
+
+		return f(ctx, mountPath)
+	})
 }
 
 func VerifyArchiveContent(ctx context.Context, cd *crosdisks.CrosDisks, archivePath string, options []string, expectedContent DirectoryContents) error {
@@ -511,7 +517,11 @@ func RunArchiveTests(ctx context.Context, s *testing.State) {
 	err = WithLoopbackDeviceDo(ctx, cd, 512*1024*1024, "mkfs.vfat -n ARCHIVES", func(ctx context.Context, ld *crosdisks.LoopbackDevice) (err error) {
 		// Mounting it through CrosDisks will put the archives where we expect users
 		// to have them, so they are already in a permitted location.
-		return WithMountDo(ctx, cd, ld.DevicePath(), "", []string{"rw"}, func(ctx context.Context, mountPath string) error {
+		return WithMountDo(ctx, cd, ld.DevicePath(), "", []string{"rw"}, func(ctx context.Context, mountPath string, readOnly bool) error {
+			if readOnly {
+				return errors.Errorf("unexpected read-only flag for %q: got %v; want false", mountPath, readOnly)
+			}
+
 			s.Logf("Copying archives to loopback device mounted at %q", mountPath)
 			for _, name := range PreparedArchives {
 				s.Logf("Copying %q to %q", name, mountPath)
@@ -562,7 +572,8 @@ func RunArchiveTests(ctx context.Context, s *testing.State) {
 			return nil
 		})
 	})
+
 	if err != nil {
-		s.Fatal("Cannot initialize test suite: ", err)
+		s.Fatal("Error while running tests: ", err)
 	}
 }

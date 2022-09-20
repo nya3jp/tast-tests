@@ -102,10 +102,15 @@ func RunSSHFSTests(ctx context.Context, s *testing.State) {
 		const src = "sshfs://chronos@localhost:"
 		const mnt = "/media/fuse/chronos@localhost:"
 		opts := []string{fmt.Sprintf("IdentityBase64=%s", identity), fmt.Sprintf("UserKnownHostsBase64=%s", knownHosts)}
-		if err := WithMountDo(ctx, cd, src, "sshfs", opts, func(ctx context.Context, mountPath string) error {
+		if err := WithMountDo(ctx, cd, src, "sshfs", opts, func(ctx context.Context, mountPath string, readOnly bool) error {
 			if mountPath != mnt {
 				return errors.Errorf("mounth path mismatch: got %q; expected %q", mountPath, mnt)
 			}
+
+			if readOnly {
+				return errors.Errorf("unexpected read-only flag for %q: got %v; want false", mountPath, readOnly)
+			}
+
 			expectedFile := filepath.Join(mountPath, ".ssh/authorized_keys")
 			if _, err := os.Stat(expectedFile); err != nil {
 				return errors.Wrapf(err, "could not stat file %q that should have existed", expectedFile)
