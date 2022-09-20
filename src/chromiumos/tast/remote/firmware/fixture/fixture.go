@@ -39,9 +39,9 @@ func init() {
 		Vars:            []string{"servo", "dutHostname", "powerunitHostname", "powerunitOutlet", "hydraHostname", "firmware.no_ec_sync", "firmware.skipFlashUSB", "noSSH"},
 		SetUpTimeout:    10 * time.Second,
 		ResetTimeout:    10 * time.Second,
-		PreTestTimeout:  5 * time.Minute,
-		PostTestTimeout: 5 * time.Minute,
-		TearDownTimeout: 5 * time.Minute,
+		PreTestTimeout:  10 * time.Minute,
+		PostTestTimeout: 10 * time.Minute,
+		TearDownTimeout: 10 * time.Minute,
 		Data:            []string{firmware.ConfigFile},
 	})
 	testing.AddFixture(&testing.Fixture{
@@ -52,9 +52,9 @@ func init() {
 		Vars:            []string{"servo", "dutHostname", "powerunitHostname", "powerunitOutlet", "hydraHostname", "firmware.no_ec_sync", "firmware.skipFlashUSB", "noSSH"},
 		SetUpTimeout:    10 * time.Second,
 		ResetTimeout:    10 * time.Second,
-		PreTestTimeout:  5 * time.Minute,
-		PostTestTimeout: 5 * time.Minute,
-		TearDownTimeout: 5 * time.Minute,
+		PreTestTimeout:  10 * time.Minute,
+		PostTestTimeout: 10 * time.Minute,
+		TearDownTimeout: 10 * time.Minute,
 		Data:            []string{firmware.ConfigFile},
 	})
 	testing.AddFixture(&testing.Fixture{
@@ -65,9 +65,9 @@ func init() {
 		Vars:            []string{"servo", "dutHostname", "powerunitHostname", "powerunitOutlet", "hydraHostname", "firmware.no_ec_sync", "firmware.skipFlashUSB", "noSSH"},
 		SetUpTimeout:    10 * time.Second,
 		ResetTimeout:    10 * time.Second,
-		PreTestTimeout:  5 * time.Minute,
-		PostTestTimeout: 5 * time.Minute,
-		TearDownTimeout: 5 * time.Minute,
+		PreTestTimeout:  10 * time.Minute,
+		PostTestTimeout: 10 * time.Minute,
+		TearDownTimeout: 10 * time.Minute,
 		Data:            []string{firmware.ConfigFile},
 	})
 	testing.AddFixture(&testing.Fixture{
@@ -78,9 +78,9 @@ func init() {
 		Vars:            []string{"servo", "dutHostname", "powerunitHostname", "powerunitOutlet", "hydraHostname", "firmware.no_ec_sync", "firmware.skipFlashUSB", "noSSH"},
 		SetUpTimeout:    60 * time.Minute, // Setting up USB key is slow
 		ResetTimeout:    10 * time.Second,
-		PreTestTimeout:  5 * time.Minute,
-		PostTestTimeout: 5 * time.Minute,
-		TearDownTimeout: 5 * time.Minute,
+		PreTestTimeout:  10 * time.Minute,
+		PostTestTimeout: 10 * time.Minute,
+		TearDownTimeout: 10 * time.Minute,
 		Data:            []string{firmware.ConfigFile},
 	})
 	testing.AddFixture(&testing.Fixture{
@@ -91,9 +91,9 @@ func init() {
 		Vars:            []string{"servo", "dutHostname", "powerunitHostname", "powerunitOutlet", "hydraHostname", "firmware.no_ec_sync", "firmware.skipFlashUSB", "noSSH"},
 		SetUpTimeout:    60 * time.Minute, // Setting up USB key is slow
 		ResetTimeout:    10 * time.Second,
-		PreTestTimeout:  5 * time.Minute,
-		PostTestTimeout: 5 * time.Minute,
-		TearDownTimeout: 5 * time.Minute,
+		PreTestTimeout:  10 * time.Minute,
+		PostTestTimeout: 10 * time.Minute,
+		TearDownTimeout: 10 * time.Minute,
 		Data:            []string{firmware.ConfigFile},
 	})
 	testing.AddFixture(&testing.Fixture{
@@ -104,9 +104,9 @@ func init() {
 		Vars:            []string{"servo", "dutHostname", "powerunitHostname", "powerunitOutlet", "hydraHostname", "firmware.no_ec_sync", "firmware.skipFlashUSB", "noSSH"},
 		SetUpTimeout:    60 * time.Minute, // Setting up USB key is slow
 		ResetTimeout:    10 * time.Second,
-		PreTestTimeout:  5 * time.Minute,
-		PostTestTimeout: 5 * time.Minute,
-		TearDownTimeout: 5 * time.Minute,
+		PreTestTimeout:  10 * time.Minute,
+		PostTestTimeout: 10 * time.Minute,
+		TearDownTimeout: 10 * time.Minute,
 		Data:            []string{firmware.ConfigFile},
 	})
 }
@@ -455,14 +455,33 @@ func (i *impl) rebootToMode(ctx context.Context, mode common.BootMode, opts ...f
 	if err != nil {
 		return errors.Wrap(err, "failed to create mode switcher")
 	}
+	checkPowerState := func() string {
+		powerState := "unknown"
+		testing.ContextLog(ctx, "Checking for the DUT's power state")
+		if hasEC, err := i.value.Helper.Servo.HasControl(ctx, string(servo.ECSystemPowerState)); err != nil {
+			testing.ContextLog(ctx, "Failed to check for chrome ec: ", err)
+			return powerState
+		} else if hasEC {
+			out, err := i.value.Helper.Servo.GetECSystemPowerState(ctx)
+			if err != nil {
+				testing.ContextLog(ctx, "Failed to check for power state: ", err)
+				return powerState
+			}
+			powerState = out
+		}
+		return powerState
+	}
 	if mode == common.BootModeUnspecified {
 		if err := ms.ModeAwareReboot(ctx, firmware.WarmReset); err != nil {
-			return errors.Wrap(err, "failed to warm reboot")
+			powerState := checkPowerState()
+			return errors.Wrapf(err, "failed to warm reboot, got power state %s", powerState)
 		}
 		return nil
 	}
 	if err := ms.RebootToMode(ctx, mode, opts...); err != nil {
-		return errors.Wrapf(err, "failed to reboot to mode %q", mode)
+		powerState := checkPowerState()
+		return errors.Wrapf(err, "failed to reboot to mode %q, got power state %s", mode, powerState)
 	}
+
 	return nil
 }
