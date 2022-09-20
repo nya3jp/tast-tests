@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "0fc213f1_1046d8e7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-09-20T08:09:58Z",
+      "side": 1,
+      "message": "I am not sure if you did it but compiling tast even for such a trivial change may save you some time.",
+      "range": {
+        "startLine": 12,
+        "startChar": 5,
+        "endLine": 12,
+        "endChar": 7
+      },
+      "revId": "deaf5092a108eaecf8741ad7be6381a834f884fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "aa1c04ea_b01a9ed5",
@@ -31,6 +54,23 @@
       "writtenOn": "2022-09-20T02:35:33Z",
       "side": 1,
       "message": "Since it\u0027s only 7 builds I think this is too early though...",
+      "revId": "deaf5092a108eaecf8741ad7be6381a834f884fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3a5992b_c7129f14",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-09-20T08:09:58Z",
+      "side": 1,
+      "message": "LGTM.",
       "revId": "deaf5092a108eaecf8741ad7be6381a834f884fd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
