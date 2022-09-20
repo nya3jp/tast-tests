@@ -36,15 +36,16 @@ func Run(ctx context.Context, cr *chrome.Chrome, app ProductivityApp, tier cuj.T
 		return errors.Wrap(err, "failed to get browser start time")
 	}
 	br := cr.Browser()
+	var bTconn *chrome.TestConn
 	if l != nil {
 		defer l.Close(ctx)
+		bTconn, err = l.TestAPIConn(ctx)
+		if err != nil {
+			return errors.Wrap(err, "failed to get lacros test API conn")
+		}
 		br = l.Browser()
 	}
 	app.SetBrowser(br)
-	bTconn, err := l.TestAPIConn(ctx)
-	if err != nil {
-		return errors.Wrap(err, "failed to get browser TestAPIConn")
-	}
 
 	// Give 10 seconds to set initial settings. It is critical to ensure
 	// cleanupSetting can be executed with a valid context so it has its
@@ -72,7 +73,7 @@ func Run(ctx context.Context, cr *chrome.Chrome, app ProductivityApp, tier cuj.T
 		return errors.Wrap(err, "failed to create the recorder")
 	}
 	defer recorder.Close(cleanUpRecorderCtx)
-	if err := cuj.AddPerformanceCUJMetrics(tconn, nil, recorder); err != nil {
+	if err := cuj.AddPerformanceCUJMetrics(tconn, bTconn, recorder); err != nil {
 		return errors.Wrap(err, "failed to add metrics to recorder")
 	}
 
