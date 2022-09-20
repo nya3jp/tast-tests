@@ -51,6 +51,23 @@
       "message": "lgtm! nice stuff!",
       "revId": "a166a3456249ca9942952ddd47d24abd0257f73f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c97ccdc1_db59b439",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-09-20T17:49:43Z",
+      "side": 1,
+      "message": "lgtm!\nYou will need to add tast-owners@google.com for a +2.",
+      "revId": "a166a3456249ca9942952ddd47d24abd0257f73f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
