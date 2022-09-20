@@ -257,6 +257,25 @@ func WindowArrangementCUJ(ctx context.Context, s *testing.State) {
 		}
 	}
 
+	// Activate the tab on the left.
+	var tabs []map[string]interface{}
+	if err := conns.BrowserTestConn.Call(ctx, &tabs,
+		"tast.promisify(chrome.tabs.query)",
+		map[string]interface{}{},
+	); err != nil {
+		s.Fatal("Failed to fetch browser tabs: ", err)
+	}
+	if len(tabs) != 2 {
+		s.Errorf("Unexpected number of browser tabs; got %d, want 2", len(tabs))
+	}
+	if err := conns.BrowserTestConn.Call(ctx, nil,
+		"tast.promisify(chrome.tabs.update)",
+		int(tabs[0]["id"].(float64)),
+		map[string]interface{}{"active": true},
+	); err != nil {
+		s.Fatal("Failed to activate first tab: ", err)
+	}
+
 	var pc pointer.Context
 	if !tabletMode {
 		pc = pointer.NewMouse(conns.TestConn)
