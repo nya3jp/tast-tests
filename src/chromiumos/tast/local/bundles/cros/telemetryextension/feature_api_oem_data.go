@@ -24,7 +24,7 @@ func init() {
 			"mgawad@google.com", // Telemetry Extension author
 			"cros-oem-services-team@google.com",
 		},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:telemetry_extension_hw"},
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{
 			{
