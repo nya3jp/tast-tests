@@ -16,6 +16,24 @@
       "message": "Pending run of tast test",
       "revId": "a166a3456249ca9942952ddd47d24abd0257f73f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "befae22c_40bfa10e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1554792
+      },
+      "writtenOn": "2022-09-20T17:06:11Z",
+      "side": 1,
+      "message": "Tast test run successfully",
+      "parentUuid": "18e7272d_21de01a2",
+      "revId": "a166a3456249ca9942952ddd47d24abd0257f73f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
