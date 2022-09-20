@@ -16,6 +16,24 @@
       "message": "Seems like there are a few failures on stainless? What about the run on version R107-15109.0.0?",
       "revId": "2f7414ae7b4821453a5a974ec96f3d98b1fd03cf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ed8c566_e5766797",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1524593
+      },
+      "writtenOn": "2022-09-20T15:37:45Z",
+      "side": 1,
+      "message": "The last failure is from the DUT that has invalid roaming SIM, and the DUT has been removed from the device pool for roaming test. The latest roaming test is all PASS.  The latest stainless results at https://stainless.corp.google.com/search?view\u003dmatrix\u0026row\u003dboard_model\u0026col\u003dbuild\u0026first_date\u003d2022-09-14\u0026last_date\u003d2022-09-20\u0026test\u003dcellular.ShillCellularRoaming\u0026exclude_cts\u003dtrue\u0026exclude_not_run\u003dfalse\u0026exclude_non_release\u003dtrue\u0026exclude_au\u003dtrue\u0026exclude_acts\u003dtrue\u0026exclude_retried\u003dfalse\u0026exclude_non_production\u003dfalse\u0026exclude_non_critical\u003dfalse",
+      "parentUuid": "5e17e080_c46096ef",
+      "revId": "2f7414ae7b4821453a5a974ec96f3d98b1fd03cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
