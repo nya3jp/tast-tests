@@ -88,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e3da8e5_67d09913",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_ro_can_update_rw.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2022-09-20T19:51:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0055bc17_8387c741",
+      "range": {
+        "startLine": 139,
+        "startChar": 3,
+        "endLine": 139,
+        "endChar": 60
+      },
+      "revId": "b8c5b3923cc914c785989d788d5ae20a5a5b6502",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5c282121_e3592c1b",
@@ -125,6 +149,30 @@
       "side": 1,
       "message": "\u003e Maybe RB0 in ObeysRollback boots to RO because it has flashed RB1 first?\n\nCorrect. The \"rollback\" value is a [counter that prevents firmware from being \"rolled back\" if the counter has been incremented](https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-authentication-design-doc.md#anti_rollback). So if the rollback value is set to `1`, it should not be possible to flash a version of the firmware that has a rollback value of `0`. If the rollback value is equal or greater, it\u0027s allowed.",
       "parentUuid": "5c282121_e3592c1b",
+      "range": {
+        "startLine": 139,
+        "startChar": 1,
+        "endLine": 140,
+        "endChar": 55
+      },
+      "revId": "b8c5b3923cc914c785989d788d5ae20a5a5b6502",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f9ab21f_95d69c45",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_ro_can_update_rw.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2022-09-20T19:51:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d707e373_42bbb186",
       "range": {
         "startLine": 139,
         "startChar": 1,
