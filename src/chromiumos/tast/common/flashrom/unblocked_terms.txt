@@ -1,0 +1,4 @@
+# Upstream Flashrom codebase has a programmer `dummyflasher`
+dummy
+# Upstream flashrom branch name
+master
