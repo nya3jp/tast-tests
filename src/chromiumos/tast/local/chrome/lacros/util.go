@@ -6,12 +6,16 @@ package lacros
 
 import (
 	"context"
+	"os"
 	"strings"
 	"time"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/internal/chromeproc"
+	"chromiumos/tast/local/chrome/lacros/lacrosinfo"
+	"chromiumos/tast/local/procutil"
 	"chromiumos/tast/testing"
 )
 
@@ -41,4 +45,38 @@ func CloseLacros(ctx context.Context, l *Lacros) {
 	if l != nil {
 		l.Close(ctx) // Ignore error.
 	}
+}
+
+// ResetState terminates Lacros and removes its user data directory, unless KeepAlive is enabled.
+func ResetState(ctx context.Context, tconn *chrome.TestConn) error {
+	info, err := lacrosinfo.Snapshot(ctx, tconn)
+	if err != nil {
+		return errors.Wrap(err, "failed to retrieve lacrosinfo")
+	}
+	if info.KeepAlive {
+		testing.ContextLog(ctx, "Skipping resetting Lacros's state due to KeepAlive")
+		return nil
+	}
+
+	testing.ContextLog(ctx, "Resetting Lacros's state")
+
+	if len(info.LacrosPath) != 0 {
+		lacrosProc, err := chromeproc.Root(info.LacrosPath + "/chrome")
+		if err != nil && err != procutil.ErrNotFound {
+			return errors.Wrap(err, "failed to get Lacros process")
+		}
+		if err != procutil.ErrNotFound {
+			testing.ContextLog(ctx, "Lacros is still running, trying to terminate it now")
+			lacrosProc.TerminateWithContext(ctx)
+			if err := procutil.WaitForTerminated(ctx, lacrosProc, 3*time.Second); err != nil {
+				return errors.Wrap(err, "failed to wait for process termination")
+			}
+		}
+	}
+
+	if err := os.RemoveAll(UserDataDir); err != nil {
+		return errors.Wrap(err, "failed to delete Lacros user data directory")
+	}
+
+	return nil
 }
