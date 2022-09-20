@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ca344d8_64944377",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2022-09-20T08:37:06Z",
+      "side": 1,
+      "message": "I\u0027m taking another look now... I didn\u0027t see anything in the CL which may have caused the issue so I think the problem must be with the tast env. \n\nThe chrome://policy page shows an error validating the ProxySettings policy:\n\n\"Error at ProxySettings.ProxyServerMode: Ignored because it was overridden by ProxyMode. Error at ProxySettings.ProxyPacMandatory: Proxy is set to use fixed proxy servers, not a .pac script URL.\"\n\nwhile ProxyMode is unset and ProxySetings.ProxyPacMandatory is false.",
+      "parentUuid": "6fd3218d_e00c9922",
+      "range": {
+        "startLine": 11,
+        "startChar": 22,
+        "endLine": 11,
+        "endChar": 70
+      },
+      "revId": "6379a30cf9873c4b83953618651a7c737054051b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "308d96bf_58e8ad54",
