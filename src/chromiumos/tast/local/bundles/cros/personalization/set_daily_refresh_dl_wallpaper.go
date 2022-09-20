@@ -82,6 +82,7 @@ func SetDailyRefreshDLWallpaper(ctx context.Context, s *testing.State) {
 	if err := uiauto.Combine("enable dark mode and validate daily refresh wallpaper",
 		personalization.NavigateHome(ui),
 		personalization.ToggleDarkMode(ui),
+		uiauto.Sleep(time.Second),
 		personalization.OpenWallpaperSubpage(ui),
 		ui.WaitUntilExists(darkWallpaper),
 	)(ctx); err != nil {
@@ -92,6 +93,7 @@ func SetDailyRefreshDLWallpaper(ctx context.Context, s *testing.State) {
 	if err := uiauto.Combine("enable light mode and validate daily refresh wallpaper",
 		personalization.NavigateHome(ui),
 		personalization.ToggleLightMode(ui),
+		uiauto.Sleep(time.Second),
 		personalization.OpenWallpaperSubpage(ui),
 		ui.WaitUntilExists(dailyRefreshWallpaper),
 	)(ctx); err != nil {
