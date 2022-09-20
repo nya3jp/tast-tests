@@ -5,10 +5,7 @@
 package cryptohome
 
 import (
-	"bytes"
 	"context"
-	"io/ioutil"
-	"path/filepath"
 	"time"
 
 	uda "chromiumos/system_api/user_data_auth_proto"
@@ -19,51 +16,53 @@ import (
 	"chromiumos/tast/local/cryptohome"
 	hwseclocal "chromiumos/tast/local/hwsec"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 // Parameters that control test behavior.
-type updatePasswordParams struct {
+type updatePinParams struct {
 	// Specifies whether to use user secret stash.
 	useUserSecretStash bool
 }
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: UpdatePassword,
-		Desc: "Update password auth factor and authenticate with the new password",
+		Func: UpdatePin,
+		Desc: "Update pin auth factor and authenticate with the new pin",
 		Contacts: []string{
 			"anastasiian@chromium.org",
 			"cryptohome-core@google.com",
 		},
 		Attr: []string{"group:mainline", "informational"},
+		// TODO(b/195385797): Run on gooey when the bug is fixed.
+		HardwareDeps: hwdep.D(hwdep.SkipOnModel("gooey")),
+		SoftwareDeps: []string{"pinweaver"},
 		Params: []testing.Param{{
 			Name: "with_vk",
-			Val: updatePasswordParams{
+			Val: updatePinParams{
 				useUserSecretStash: false,
 			},
 		}, {
 			Name: "with_uss",
-			Val: updatePasswordParams{
+			Val: updatePinParams{
 				useUserSecretStash: true,
 			},
 		}},
 	})
 }
 
-func UpdatePassword(ctx context.Context, s *testing.State) {
+func UpdatePin(ctx context.Context, s *testing.State) {
 	const (
 		userName                         = "foo@bar.baz"
-		oldUserPassword                  = "old secret"
-		newUserPassword                  = "new secret"
+		userPassword                     = "secret"
+		oldUserPin                       = "123456"
+		newUserPin                       = "098765"
 		passwordLabel                    = "online-password"
-		wrongLabel                       = "wrong label"
-		testFile                         = "file"
-		testFileContent                  = "content"
+		pinLabel                         = "test-pin"
 		cryptohomeAuthorizationKeyFailed = 3
-		cryptohomeErrorKeyNotFound       = 15
 	)
 
-	userParam := s.Param().(updatePasswordParams)
+	userParam := s.Param().(updatePinParams)
 	ctxForCleanUp := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
@@ -100,7 +99,7 @@ func UpdatePassword(ctx context.Context, s *testing.State) {
 	}
 
 	// Create and mount the persistent user.
-	authSessionID, err := client.StartAuthSession(ctx, userName /*ephemeral=*/, false)
+	authSessionID, err := client.StartAuthSession(ctx, userName, false/*ephemeral*/)
 	if err != nil {
 		s.Fatal("Failed to start auth session: ", err)
 	}
@@ -108,23 +107,18 @@ func UpdatePassword(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create persistent user: ", err)
 	}
 	defer cryptohome.RemoveVault(ctxForCleanUp, userName)
-	if err := client.PreparePersistentVault(ctx, authSessionID /*ecryptfs=*/, false); err != nil {
+	if err := client.PreparePersistentVault(ctx, authSessionID, false /*ecryptfs*/); err != nil {
 		s.Fatal("Failed to prepare persistent vault: ", err)
 	}
 	defer client.UnmountAll(ctxForCleanUp)
 
 	// Write a test file to verify persistence.
-	userPath, err := cryptohome.UserPath(ctx, userName)
-	if err != nil {
-		s.Fatal("Failed to get user vault path: ", err)
-	}
-	filePath := filepath.Join(userPath, testFile)
-	if err := ioutil.WriteFile(filePath, []byte(testFileContent), 0644); err != nil {
+	if err := cryptohome.WriteFileForPersistence(ctx, userName); err != nil {
 		s.Fatal("Failed to write a file to the vault: ", err)
 	}
 
-	authenticateWithPassword := func(password string) (string, error) {
-		// Authenticate a new auth session via the auth factor and mount the user.
+	authenticatePasswordAuthFactor := func(password string) (string, error) {
+		// Authenticate a new auth session via the new added pin auth factor and mount the user.
 		authSessionID, err = client.StartAuthSession(ctx, userName, false /*ephemeral*/)
 		if err != nil {
 			return "", errors.Wrap(err, "failed to start auth session for re-mounting")
@@ -142,60 +136,61 @@ func UpdatePassword(ctx context.Context, s *testing.State) {
 		}); err != nil {
 			return authSessionID, errors.Wrap(err, "unexpected AuthSession authorized intents")
 		}
-		if err := client.PreparePersistentVault(ctx, authSessionID, false /*ephemeral*/); err != nil {
+		if err := client.PreparePersistentVault(ctx, authSessionID, false /*ecryptfs*/); err != nil {
 			return authSessionID, errors.Wrap(err, "failed to prepare persistent vault")
 		}
 
-		// Verify that the test file is still there.
-		if content, err := ioutil.ReadFile(filePath); err != nil {
-			return authSessionID, errors.Wrap(err, "failed to read back test file")
-		} else if bytes.Compare(content, []byte(testFileContent)) != 0 {
-			return authSessionID, errors.Errorf("incorrect tests file content. got: %q, want: %q", content, testFileContent)
+		// Verify that file is still there.
+		if err := cryptohome.VerifyFileForPersistence(ctx, userName); err != nil {
+			return authSessionID, errors.Wrap(err, "failed to verify test file")
+		}
+		return authSessionID, nil
+	}
+
+	authenticatePinAuthFactor := func(pin string) (string, error) {
+		// Authenticate a new auth session via the new added pin auth factor and mount the user.
+		authSessionID, err = client.StartAuthSession(ctx, userName, false /*ephemeral*/)
+		if err != nil {
+			return "", errors.Wrap(err, "failed to start auth session for re-mounting")
+		}
+		if err := client.AuthenticatePinAuthFactor(ctx, authSessionID, pinLabel, pin); err != nil {
+			return authSessionID, errors.Wrap(err, "failed to authenticate with auth session")
+		}
+		if err := client.PreparePersistentVault(ctx, authSessionID, false /*ecryptfs*/); err != nil {
+			return authSessionID, errors.Wrap(err, "failed to prepare persistent vault")
+		}
+
+		// Verify that file is still there.
+		if err := cryptohome.VerifyFileForPersistence(ctx, userName); err != nil {
+			return authSessionID, errors.Wrap(err, "failed to verify test file")
 		}
 		return authSessionID, nil
 	}
 
 	// Add a password auth factor to the user.
-	if err := client.AddAuthFactor(ctx, authSessionID, passwordLabel, oldUserPassword); err != nil {
+	if err := client.AddAuthFactor(ctx, authSessionID, passwordLabel, userPassword); err != nil {
 		s.Fatal("Failed to create persistent user: ", err)
 	}
 
+	// Add a pin auth factor to the user.
+	if err := client.AddPinAuthFactor(ctx, authSessionID, pinLabel, oldUserPin); err != nil {
+		s.Fatal("Failed to add pin auth factor: ", err)
+	}
+
 	// Unmount the user.
 	if err := client.UnmountAll(ctx); err != nil {
 		s.Fatal("Failed to unmount vaults for re-mounting: ", err)
 	}
 
-	// Successfully authenticate with password.
-	authSessionID, err = authenticateWithPassword(oldUserPassword)
+	// Authenticate via password.
+	authSessionID, err = authenticatePasswordAuthFactor(userPassword)
 	if err != nil {
-		s.Fatal("Failed to authenticate with password: ", err)
+		s.Fatal("Failed to authenticate with pin authfactor: ", err)
 	}
 	defer client.InvalidateAuthSession(ctxForCleanUp, authSessionID)
 
-	// Try to update password auth factor with wrong label.
-	err = client.UpdatePasswordAuthFactor(ctx, authSessionID, wrongLabel /*label*/, wrongLabel /*newKeyLabel*/, newUserPassword)
-	var exitErr *hwsec.CmdExitError
-	if !errors.As(err, &exitErr) {
-		s.Fatalf("Unexpected error for auth factor update: got %q; want *hwsec.CmdExitError", err)
-	}
-	if exitErr.ExitCode != cryptohomeErrorKeyNotFound {
-		s.Fatalf("Unexpected exit code for auth factor update: got %d; want %d", exitErr.ExitCode, cryptohomeErrorKeyNotFound)
-	}
-
-	// Unmount the user.
-	if err := client.UnmountAll(ctx); err != nil {
-		s.Fatal("Failed to unmount vaults for re-mounting: ", err)
-	}
-
-	// Successfully authenticate with old password.
-	authSessionID, err = authenticateWithPassword(oldUserPassword)
-	if err != nil {
-		s.Fatal("Failed to authenticate with password after update attempt: ", err)
-	}
-	defer client.InvalidateAuthSession(ctxForCleanUp, authSessionID)
-
-	// Update password auth factor.
-	if err := client.UpdatePasswordAuthFactor(ctx, authSessionID, passwordLabel /*label*/, passwordLabel /*newKeyLabel*/, newUserPassword); err != nil {
+	// Update pin auth factor.
+	if err := client.UpdatePinAuthFactor(ctx, authSessionID, pinLabel /*label*/, newUserPin); err != nil {
 		s.Fatal("Failed to unmount vaults for re-mounting: ", err)
 	}
 
@@ -204,21 +199,20 @@ func UpdatePassword(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to unmount vaults for re-mounting: ", err)
 	}
 
-	// Authentication with old password fails.
-	authSessionID, err = authenticateWithPassword(oldUserPassword)
+	// Authentication with old pin fails.
+	authSessionID, err = authenticatePinAuthFactor(oldUserPin)
 	var authExitErr *hwsec.CmdExitError
 	if !errors.As(err, &authExitErr) {
-		s.Fatalf("Unexpected error for authentication with old password: got %q; want *hwsec.CmdExitError", err)
+		s.Fatalf("Unexpected error for authentication with old pin: got %q; want *hwsec.CmdExitError", err)
 	}
 	if authExitErr.ExitCode != cryptohomeAuthorizationKeyFailed {
-		s.Fatalf("Unexpected exit code for authentication with old password: got %d; want %d",
+		s.Fatalf("Unexpected exit code for authentication with old pin: got %d; want %d",
 			authExitErr.ExitCode, cryptohomeAuthorizationKeyFailed)
 	}
 
-	// Successfully authenticate with new password.
-	authSessionID, err = authenticateWithPassword(newUserPassword)
-	if err != nil {
-		s.Fatal("Failed to authenticate with password: ", err)
+	// Successfully authenticate with new pin.
+	if _, err := authenticatePinAuthFactor(newUserPin); err != nil {
+		s.Fatal("Failed to authenticate with new pin after update: ", err)
 	}
 	defer client.InvalidateAuthSession(ctxForCleanUp, authSessionID)
 }
