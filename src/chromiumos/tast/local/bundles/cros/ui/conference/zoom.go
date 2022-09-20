@@ -173,7 +173,7 @@ func (conf *ZoomConference) Join(ctx context.Context, room string, toBlur bool) 
 		stopVideoButton := nodewith.NameRegex(regexp.MustCompile(stopVideoRegexCapture)).Role(role.Button)
 		// Start video requires camera permission.
 		// Allow permission doesn't succeed every time. So add retry here.
-		return ui.Retry(3, uiauto.NamedCombine("start video",
+		return ui.Retry(retryTimes, uiauto.NamedCombine("start video",
 			conf.showInterface,
 			uiauto.NamedAction("to detect camera button within 15 seconds", ui.WaitUntilExists(cameraButton)),
 			// Some DUTs start playing video for the first time.
@@ -192,7 +192,7 @@ func (conf *ZoomConference) Join(ctx context.Context, room string, toBlur bool) 
 	// In Zoom website, the join button may be hidden in tablet mode.
 	// Make it visible before clicking.
 	// Since ui.MakeVisible() is not always successful, add a retry here.
-	clickJoinButton := ui.Retry(3, uiauto.Combine("click join button",
+	clickJoinButton := ui.Retry(retryTimes, uiauto.Combine("click join button",
 		ui.WaitForLocation(joinButton),
 		ui.MakeVisible(joinButton),
 		ui.LeftClickUntil(joinButton, ui.WithTimeout(shortUITimeout).WaitUntilGone(joinButton)),
@@ -213,7 +213,7 @@ func (conf *ZoomConference) Join(ctx context.Context, room string, toBlur bool) 
 		// Sometimes participants number caught at the beginning is wrong, it will be correct after a while.
 		// Add retry to get the correct participants number.
 		ui.WithInterval(time.Second).Retry(10, checkParticipantsNum),
-		ui.Retry(3, joinAudio),
+		ui.Retry(retryTimes, joinAudio),
 		startVideo,
 	)(ctx)
 }
@@ -283,7 +283,7 @@ func (conf *ZoomConference) changeLayout(mode string) action.Action {
 
 		modeNode := nodewith.Name(mode).Role(role.MenuItem)
 		actionName := "Change layout to " + mode
-		return ui.Retry(3, uiauto.NamedCombine(actionName,
+		return ui.Retry(retryTimes, uiauto.NamedCombine(actionName,
 			conf.showInterface,
 			uiauto.IfSuccessThen(ui.Gone(modeNode), ui.LeftClick(viewButton)),
 			ui.LeftClick(modeNode),
@@ -373,13 +373,16 @@ func (conf *ZoomConference) TypingInChat(ctx context.Context) error {
 	manageChatPanel := nodewith.Name("Manage Chat Panel").Role(role.PopUpButton)
 	manageChatPanelMenu := nodewith.Name("Manage Chat Panel").Role(role.Menu)
 	closeButton := nodewith.Name("Close").Role(role.MenuItem).Ancestor(manageChatPanelMenu)
+	typeMessage := uiauto.NamedCombine("type message : "+message,
+		conf.ui.LeftClickUntil(chatTextField, conf.ui.WithTimeout(shortUITimeout).WaitUntilExists(chatTextField.Focused())),
+		conf.kb.AccelAction("Ctrl+A"),
+		conf.kb.TypeAction(message),
+		conf.kb.AccelAction("enter"),
+		conf.ui.WaitUntilExists(messageText))
 	return uiauto.NamedCombine("open chat window and type",
 		conf.ui.DoDefault(chatButton),
 		conf.ui.WaitUntilExists(chatTextField),
-		conf.ui.LeftClickUntil(chatTextField, conf.ui.WithTimeout(shortUITimeout).WaitUntilExists(chatTextField.Focused())),
-		conf.kb.TypeAction(message),
-		conf.kb.AccelAction("enter"),
-		conf.ui.WaitUntilExists(messageText),
+		conf.ui.Retry(retryTimes, typeMessage),
 		uiauto.Sleep(viewingTime), // After typing, wait 5 seconds for viewing.
 		conf.ui.LeftClick(manageChatPanel),
 		conf.ui.LeftClick(closeButton),
@@ -428,7 +431,7 @@ func (conf *ZoomConference) BackgroundChange(ctx context.Context) error {
 			return nil
 		}
 		return uiauto.NamedCombine("change background to "+backgroundOption,
-			ui.Retry(3, openBackgroundPanel), // Open "Background" panel.
+			ui.Retry(retryTimes, openBackgroundPanel), // Open "Background" panel.
 			// Some low end DUTs need more time to load the background settings.
 			ui.WithTimeout(longUITimeout).DoDefaultUntil(backgroundItem,
 				ui.WithTimeout(shortUITimeout).WaitUntilExists(backgroundItem.Focused())),
