@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b229f46e_5ebfb7eb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510928
+      },
+      "writtenOn": "2022-09-20T06:59:35Z",
+      "side": 1,
+      "message": "Hi tast-owner and hanada san, PTAL thanks.",
+      "revId": "62e0529862a81f7567319cbb2b2bfeaa8e85de25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
