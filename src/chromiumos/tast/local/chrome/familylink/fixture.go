@@ -1,4 +1,4 @@
-// Copyright 2021 The Chromium OS Authors. All rights reserved.
+// Copyright 2021 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -156,6 +156,60 @@ func init() {
 		TearDownTimeout: resetTimeout,
 		PreTestTimeout:  resetTimeout,
 		PostTestTimeout: resetTimeout,
+	})
+
+	// Identical to the familyLinkUnicornLogin fixture above, but
+	// uses a different test account and isolates sessions for
+	// Projector tests.
+	testing.AddFixture(&testing.Fixture{
+		Name:     "projectorUnicornLogin",
+		Desc:     "Supervised Family Link user login with Unicorn account for Projector tests",
+		Contacts: []string{"tobyhuang@chromium.org", "cros-families-eng+test@google.com"},
+		Impl:     NewFamilyLinkFixture("projector.parentEmail", "projector.parentPassword", "projector.childEmail", "projector.childPassword", true /*isOwner*/),
+		Vars: []string{
+			"projector.parentEmail",
+			"projector.parentPassword",
+			"projector.childEmail",
+			"projector.childPassword",
+		},
+		SetUpTimeout:    chrome.GAIALoginChildTimeout,
+		ResetTimeout:    resetTimeout,
+		TearDownTimeout: resetTimeout,
+		PreTestTimeout:  resetTimeout,
+		PostTestTimeout: resetTimeout,
+	})
+
+	testing.AddFixture(&testing.Fixture{
+		Name:     "projectorRegularLogin",
+		Desc:     "Non-supervised user login with regular consumer account for Projector tests",
+		Contacts: []string{"tobyhuang@chromium.org", "cros-families-eng+test@google.com"},
+		Impl:     NewFamilyLinkFixture("projector.regularEmail", "projector.regularPassword", "", "", true /*isOwner*/),
+		Vars: []string{
+			"projector.regularEmail",
+			"projector.regularPassword",
+		},
+		SetUpTimeout:    chrome.GAIALoginTimeout,
+		ResetTimeout:    resetTimeout,
+		TearDownTimeout: resetTimeout,
+		PreTestTimeout:  resetTimeout,
+		PostTestTimeout: resetTimeout,
+	})
+
+	testing.AddFixture(&testing.Fixture{
+		Name:     "projectorEduLogin",
+		Desc:     "Managed EDU user login with fakeDMS policy setup for Projector tests",
+		Contacts: []string{"tobyhuang@chromium.org", "cros-families-eng+test@google.com"},
+		Impl:     NewFamilyLinkFixture("projector.eduEmail", "projector.eduPassword", "", "", true /*isOwner*/),
+		Vars: []string{
+			"projector.eduEmail",
+			"projector.eduPassword",
+		},
+		SetUpTimeout:    chrome.ManagedUserLoginTimeout,
+		ResetTimeout:    resetTimeout,
+		TearDownTimeout: resetTimeout,
+		PreTestTimeout:  resetTimeout,
+		PostTestTimeout: resetTimeout,
+		Parent:          fixture.PersistentProjectorEDU,
 	})
 
 	testing.AddFixture(&testing.Fixture{
