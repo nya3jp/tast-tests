@@ -17,8 +17,10 @@ import (
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
-	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/lacros"
+	uifaillog "chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/lockscreen"
+	"chromiumos/tast/local/faillog"
 	"chromiumos/tast/local/logsaver"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/local/syslog"
@@ -279,7 +281,7 @@ func (p *policyChromeFixture) SetUp(ctx context.Context, s *testing.FixtState) i
 		}
 	}()
 
-	defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "ui_tree")
+	defer uifaillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "ui_tree")
 
 	if p.waitForARC {
 		if arcType, ok := arc.Type(); ok && arcType == arc.Container {
@@ -393,19 +395,29 @@ func (p *policyChromeFixture) PostTest(ctx context.Context, s *testing.FixtTestS
 		s.Fatal("Failed to clear policies: ", err)
 	}
 
-	// Reset Chrome state.
+	// Save screenshot etc. if any of the following goes wrong.
+	defer func() {
+		if s.HasError() {
+			faillog.Save(ctx)
+		}
+	}()
+
+	// Reset Chrome state, including Lacros.
+	if err := lacros.ResetState(ctx, tconn); err != nil {
+		s.Fatal("Failed resetting Lacros state: ", err)
+	}
 	if err := p.cr.ResetState(ctx); err != nil {
 		s.Fatal("Failed resetting existing Chrome session: ", err)
 	}
 
-	// Check if Chrome is not left with a locked screen.
+	// Check that Chrome is not left with a locked screen.
 	if st, err := lockscreen.GetState(ctx, tconn); err != nil {
 		s.Fatal("Failed getting the lockscreen state: ", err)
 	} else if st.Locked {
 		s.Fatal("Unexpected lockscreen state after the test, the screen is locked")
 	}
 
-	// Check if a window is there after chrome.ResetState().
+	// Check that no windows remain.
 	if windows, err := ash.GetAllWindows(ctx, tconn); err != nil {
 		s.Fatal("Failed to get the windows: ", err)
 	} else if len(windows) != 0 {
