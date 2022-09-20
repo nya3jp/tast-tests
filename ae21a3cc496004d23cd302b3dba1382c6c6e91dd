@@ -39,6 +39,30 @@
       },
       "revId": "ae21a3cc496004d23cd302b3dba1382c6c6e91dd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b172a7de_7eab581c",
+        "filename": "src/chromiumos/tast/services/cros/ui/chrome_service.proto",
+        "patchSetId": 4
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-09-20T20:20:46Z",
+      "side": 1,
+      "message": "Ack. changed to \"if unset, the system default browser will be used\" to avoid any confusion. Thanks,",
+      "parentUuid": "83f78c44_a02d31b8",
+      "range": {
+        "startLine": 87,
+        "startChar": 49,
+        "endLine": 87,
+        "endChar": 75
+      },
+      "revId": "ae21a3cc496004d23cd302b3dba1382c6c6e91dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
