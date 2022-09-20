@@ -1108,7 +1108,8 @@ func TestPlatformDecodingParams(t *testing.T) {
 	for _, testGroup := range []string{"main"} {
 		files := hevcFiles[testGroup]
 
-		hardwareDeps := []string{"hwdep.SupportsV4L2StatefulVideoDecoding()"}
+		hardwareDeps := []string{"hwdep.SupportsV4L2StatefulVideoDecoding()",
+			"hwdep.Platform(\"trogdor\", \"strongbad\")"}
 		params = append(params, paramData{
 			Name:         fmt.Sprintf("v4l2_hevc_%s", testGroup),
 			Decoder:      "v4l2_stateful_decoder",
@@ -1116,7 +1117,7 @@ func TestPlatformDecodingParams(t *testing.T) {
 			Files:        files,
 			Timeout:      defaultTimeout,
 			HardwareDeps: strings.Join(hardwareDeps, ", "),
-			SoftwareDeps: []string{"v4l2_codec", caps.HWDecodeHEVC},
+			SoftwareDeps: []string{"v4l2_codec"},
 			Metadata:     genExtraData(files),
 			Attr:         []string{"graphics_video_hevc"},
 		})
