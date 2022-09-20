@@ -203,19 +203,6 @@ func WindowArrangementCUJ(ctx context.Context, s *testing.State) {
 
 	defer faillog.DumpUITreeOnError(closeCtx, s.OutDir(), s.HasError, conns.TestConn)
 
-	connPiP, err := conns.Source.NewConn(ctx, conns.PipVideoTestURL)
-	if err != nil {
-		s.Fatal("Failed to load pip.html: ", err)
-	}
-	defer connPiP.Close()
-	// Close the browser window at the end of the test. If it is left playing a video, it
-	// will cause the test server's Close() function to block for a few minutes.
-	defer connPiP.CloseTarget(closeCtx)
-
-	if err := webutil.WaitForQuiescence(ctx, connPiP, timeout); err != nil {
-		s.Fatal("Failed to wait for pip.html to achieve quiescence: ", err)
-	}
-
 	connNoPiP, err := conns.Source.NewConn(ctx, conns.PipVideoTestURL)
 	if err != nil {
 		s.Fatal("Failed to load pip.html: ", err)
@@ -226,6 +213,19 @@ func WindowArrangementCUJ(ctx context.Context, s *testing.State) {
 	defer connNoPiP.CloseTarget(closeCtx)
 
 	if err := webutil.WaitForQuiescence(ctx, connNoPiP, timeout); err != nil {
+		s.Fatal("Failed to wait for pip.html to achieve quiescence: ", err)
+	}
+
+	connPiP, err := conns.Source.NewConn(ctx, conns.PipVideoTestURL)
+	if err != nil {
+		s.Fatal("Failed to load pip.html: ", err)
+	}
+	defer connPiP.Close()
+	// Close the browser window at the end of the test. If it is left playing a video, it
+	// will cause the test server's Close() function to block for a few minutes.
+	defer connPiP.CloseTarget(closeCtx)
+
+	if err := webutil.WaitForQuiescence(ctx, connPiP, timeout); err != nil {
 		s.Fatal("Failed to wait for pip.html to achieve quiescence: ", err)
 	}
 
