@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "470a2434_387712ff",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 14
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-09-20T22:10:34Z",
+      "side": 1,
+      "message": "Add body in the commit.\n\nWhat does the test do?\nAnd also, why does the test ChallengeResponse* was removed ?",
+      "range": {
+        "startLine": 7,
+        "startChar": 12,
+        "endLine": 7,
+        "endChar": 57
+      },
+      "revId": "e9423e96f12bcd38b4480ae2bffbac8aa9e5b13c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "b1a4c429_8f2afe5c",
