@@ -105,6 +105,24 @@
       "parentUuid": "9321b8f0_60299363",
       "revId": "7226cdac13f86d99e4da7765a494a1c5c0de5ea3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12f6233c_d9ddcb0b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/config_verify.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2022-09-20T21:20:02Z",
+      "side": 1,
+      "message": "As Seewai points out, the right way to fix this is to use softwaredeps.",
+      "parentUuid": "e709359c_249e5103",
+      "revId": "7226cdac13f86d99e4da7765a494a1c5c0de5ea3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
