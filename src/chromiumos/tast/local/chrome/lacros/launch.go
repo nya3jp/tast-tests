@@ -153,6 +153,9 @@ func LaunchWithURL(ctx context.Context, tconn *chrome.TestConn, url string) (*La
 	}
 
 	conn, err := l.NewConnForTarget(ctx, chrome.MatchTargetID(ts[0].TargetID))
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to connect to target")
+	}
 	if err := conn.Navigate(ctx, url); err != nil {
 		return nil, errors.Wrap(err, "failed to navigate to url")
 	}
