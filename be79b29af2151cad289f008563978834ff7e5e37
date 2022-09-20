@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1acf00d1_e63a7feb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1513257
+      },
+      "writtenOn": "2022-09-20T23:01:17Z",
+      "side": 1,
+      "message": "Can you run this against all the diagnostics tests since it changes the render-app, connectivity, and routine-section tests and update the \"TEST\u003d\" to reflect that? If it passes when run against the additional tests I\u0027m good with the change.",
+      "revId": "be79b29af2151cad289f008563978834ff7e5e37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
