@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "086d3ceb_59b4ccad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_arrangement_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-09-21T21:36:45Z",
+      "side": 1,
+      "message": "any reason we can\u0027t just go right to `int`?",
+      "revId": "f33284a993a8af19682632b84401f1f8fc0e2938",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
