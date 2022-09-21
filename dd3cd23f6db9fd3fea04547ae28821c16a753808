@@ -67,6 +67,46 @@
       "message": "This LGTM as a tast-owner but can you have someone with knowledge of this area review for context?",
       "revId": "dd3cd23f6db9fd3fea04547ae28821c16a753808",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "814ff897_0ea11203",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1121230
+      },
+      "writtenOn": "2022-09-21T22:03:43Z",
+      "side": 1,
+      "message": "Thank you!",
+      "revId": "dd3cd23f6db9fd3fea04547ae28821c16a753808",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d02dc661_d9c71dfd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/personalization/set_default_user_avatar.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1121230
+      },
+      "writtenOn": "2022-09-21T22:03:43Z",
+      "side": 1,
+      "message": "How about adding `personalizationWithAvatarCloudMigration` fixture to https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/personalization/fixture.go to keep a structure simple?",
+      "range": {
+        "startLine": 57,
+        "startChar": 2,
+        "endLine": 61,
+        "endChar": 21
+      },
+      "revId": "dd3cd23f6db9fd3fea04547ae28821c16a753808",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
