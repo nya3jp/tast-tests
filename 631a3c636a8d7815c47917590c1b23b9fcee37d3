@@ -22,6 +22,30 @@
       },
       "revId": "631a3c636a8d7815c47917590c1b23b9fcee37d3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "00ab2c29_3595a486",
+        "filename": "src/chromiumos/tast/local/power/read_utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-09-21T23:23:09Z",
+      "side": 1,
+      "message": "Now I have modified this to try to hurry before starting exponential backoff.",
+      "parentUuid": "34e85c3f_0aa22257",
+      "range": {
+        "startLine": 39,
+        "startChar": 4,
+        "endLine": 39,
+        "endChar": 18
+      },
+      "revId": "631a3c636a8d7815c47917590c1b23b9fcee37d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
