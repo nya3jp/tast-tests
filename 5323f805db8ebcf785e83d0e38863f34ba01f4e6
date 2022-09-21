@@ -83,6 +83,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5f24403_d8dd2948",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/intel/sd_card_plug_unplug_during_sleep.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-09-21T06:14:45Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0024ef71_d18c20b1",
+      "range": {
+        "startLine": 127,
+        "startChar": 0,
+        "endLine": 139,
+        "endChar": 2
+      },
+      "revId": "5323f805db8ebcf785e83d0e38863f34ba01f4e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0e86eec7_375e1eb8",
