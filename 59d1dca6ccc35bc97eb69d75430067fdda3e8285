@@ -16,6 +16,24 @@
       "message": "I don\u0027t know A11y tree enough to review this line. I need somebody that is familiary with using A11y tree to review this one.",
       "revId": "59d1dca6ccc35bc97eb69d75430067fdda3e8285",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e355d957_a9a689ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/clipboardhistory/context_menu_clipboard.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1511087
+      },
+      "writtenOn": "2022-09-21T19:42:05Z",
+      "side": 1,
+      "message": "I spoke to zork@ about this, and we decided that we should not move forward with the Gmail test case. Gmail\u0027s unpredictable prompts that need to be cleared, as well as its ability to change its UI further in the future, make this test case unreliable. Since any browser input field (other than the address bar, which is tested separately) will exercise the same functionality, I would prefer a test case that navigates to google.com and checks the search box\u0027s context menu. Please delete the Gmail test case in this CL and add the Google test case in a follow-up CL. Thank you!",
+      "parentUuid": "914bc5bc_b032b135",
+      "revId": "59d1dca6ccc35bc97eb69d75430067fdda3e8285",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
