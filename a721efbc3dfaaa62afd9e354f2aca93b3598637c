@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "39d32d31_d8ddf011",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-09-21T21:42:16Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "a721efbc3dfaaa62afd9e354f2aca93b3598637c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3f6f2fe_b51a4c22",
+        "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-09-21T21:42:16Z",
+      "side": 1,
+      "message": "nit: Can you please add a comment here of an example output of the successful command?",
+      "revId": "a721efbc3dfaaa62afd9e354f2aca93b3598637c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
