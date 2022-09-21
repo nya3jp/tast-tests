@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "914bc5bc_b032b135",
+        "filename": "src/chromiumos/tast/local/bundles/cros/clipboardhistory/context_menu_clipboard.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-09-21T18:35:29Z",
+      "side": 1,
+      "message": "I don\u0027t know A11y tree enough to review this line. I need somebody that is familiary with using A11y tree to review this one.",
+      "revId": "59d1dca6ccc35bc97eb69d75430067fdda3e8285",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
