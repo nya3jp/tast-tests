@@ -93,6 +93,30 @@
       },
       "revId": "8a23d1dde8463ab3ab44728c69b3f5464e472791",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b98d62f_9da6f9da",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/bss_tm_request.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-09-21T21:35:29Z",
+      "side": 1,
+      "message": "Yes, you have explained it in the NB section but may you also added a shorter version for reader to easier understand it is done on purpose. \n\nmaybe something like \"We called it twice purposely to have enough ignore duration\"?\n\nOverall, the existing explanation is sufficient.",
+      "parentUuid": "df6d9928_e228cd4c",
+      "range": {
+        "startLine": 265,
+        "startChar": 6,
+        "endLine": 265,
+        "endChar": 37
+      },
+      "revId": "8a23d1dde8463ab3ab44728c69b3f5464e472791",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
