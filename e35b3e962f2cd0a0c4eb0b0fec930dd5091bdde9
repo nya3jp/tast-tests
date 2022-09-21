@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7b24ce2_69ca1803",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1554683
+      },
+      "writtenOn": "2022-09-21T07:20:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "132ef95f_1eed1f5a",
+      "range": {
+        "startLine": 7,
+        "startChar": 41,
+        "endLine": 7,
+        "endChar": 45
+      },
+      "revId": "e35b3e962f2cd0a0c4eb0b0fec930dd5091bdde9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "232ae88f_aa3d150e",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-09-21T06:16:29Z",
       "side": 1,
       "message": "nit: line too long. It should not be longer thatn 72 characters.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 100
+      },
+      "revId": "e35b3e962f2cd0a0c4eb0b0fec930dd5091bdde9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d689e5a6_03ec3633",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1554683
+      },
+      "writtenOn": "2022-09-21T07:20:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "232ae88f_aa3d150e",
       "range": {
         "startLine": 9,
         "startChar": 0,
