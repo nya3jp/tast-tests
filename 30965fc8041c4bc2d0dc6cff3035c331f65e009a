@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d978456_1cad4f99",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-09-21T07:41:00Z",
+      "side": 1,
+      "message": "temporarily marking -1 as what you\u0027re doing in the latest PS is conflicting what you said.",
+      "revId": "30965fc8041c4bc2d0dc6cff3035c331f65e009a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
