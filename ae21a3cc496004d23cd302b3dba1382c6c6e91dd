@@ -111,6 +111,30 @@
       },
       "revId": "ae21a3cc496004d23cd302b3dba1382c6c6e91dd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "965d81b7_e5c44fdf",
+        "filename": "src/chromiumos/tast/services/cros/ui/chrome_service.proto",
+        "patchSetId": 4
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-09-21T17:57:22Z",
+      "side": 1,
+      "message": "The source of LacrosMode is defined here.\n\nhttps://source.chromium.org/chromium/chromium/src/+/main:chrome/browser/ash/crosapi/browser_util.h;l\u003d106\n\nSo, we have 4 kinds: DISABLED, SxS, Primary, and Only.\nI\u0027m ok to have \"unspecified\" in testing, meaning that it is deferred to the current OS\u0027s configuration, in this context.\n\nlacros.Mode has different \"unspecified\", as the intention of the value is \"enabling lacros, but which mode can be deferred to Tast test\u0027s default value for consistency\". This is kind of exception, because chrome itself does not have default-enabled-value now, since lacros is still under the flag.\n\nOTOH, This service is, IIUC, the interface that is talked from outside of Tast, so not the case, right? (So, in the sense, my code review for the previous PS was wrong, as unspecified is forcibly setting Only. Sorry about it).\n\nI have clear two requests:\n- Could you change the implementation of MODE_UNSPECIFIED not to override the ash-chrome\u0027s value?\n- Could you support DISABLED? Or, if you think it should be done via disabled feature as commented, could you explicitly document so? So that future readers can understand the background of the gap from the original enum.\n\nI\u0027m also still open for discussion, if you have different thoughts, so pls let me know then.",
+      "parentUuid": "6fd038fc_bb245053",
+      "range": {
+        "startLine": 87,
+        "startChar": 49,
+        "endLine": 87,
+        "endChar": 75
+      },
+      "revId": "ae21a3cc496004d23cd302b3dba1382c6c6e91dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
