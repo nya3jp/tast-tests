@@ -268,6 +268,24 @@
       "parentUuid": "4ec3db04_c322042e",
       "revId": "2744a163f1312c2e43f6df77495a672d2f1badde",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e15ffec_cffb933a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/bss_tm_request.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-09-21T00:34:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "36658027_4a7b6aa4",
+      "revId": "2744a163f1312c2e43f6df77495a672d2f1badde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
