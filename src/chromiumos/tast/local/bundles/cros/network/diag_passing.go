@@ -45,9 +45,11 @@ func init() {
 		}, {
 			Name: "dns_resolution",
 			Val:  newNetDiagParams(diagcommon.RoutineDNSResolution),
+			ExtraAttr: []string{"informational"},
 		}, {
 			Name: "dns_latency",
 			Val:  newNetDiagParams(diagcommon.RoutineDNSLatency),
+			ExtraAttr: []string{"informational"},
 		}, {
 			Name: "http_firewall",
 			Val:  newNetDiagParams(diagcommon.RoutineHTTPFirewall),
@@ -60,6 +62,7 @@ func init() {
 		}, {
 			Name: "captive_portal",
 			Val:  newNetDiagParams(diagcommon.RoutineCaptivePortal),
+			ExtraAttr: []string{"informational"},
 		}, {
 			Name:      "video_conferencing",
 			Val:       newNetDiagParams(diagcommon.RoutineVideoConferencing),
