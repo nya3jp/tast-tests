@@ -15,6 +15,7 @@ import (
 
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
+	cupstart "chromiumos/tast/common/upstart"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
@@ -450,6 +451,8 @@ func StartFromSignInScreen(ctx context.Context, ui *uiauto.Context, name string)
 // started with given options. It verifies a successful cancel by checking for
 // cancelled message on the screen.
 func (k *Kiosk) CancelKioskLaunch(ctx context.Context, opts ...chrome.Option) (*chrome.Chrome, error) {
+	const disableChromeRestartFile = "/run/disable_chrome_restart"
+
 	testing.ContextLog(ctx, "Cancelling Kiosk launch via Ctrl+Alt+S")
 	kw, err := input.Keyboard(ctx)
 	if err != nil {
@@ -457,14 +460,36 @@ func (k *Kiosk) CancelKioskLaunch(ctx context.Context, opts ...chrome.Option) (*
 	}
 	defer kw.Close()
 
+	if err := chrome.PrepareForRestart(); err != nil {
+		return nil, errors.Wrap(err, "failed to remove old dev tools port file")
+	}
+
+	// Create the flag file to make sure session_manager exits after Chrome stops
+	// session.
+	_, err = os.Create(disableChromeRestartFile)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create Chrome flag file")
+	}
+	defer func(ctx context.Context) {
+		if err := os.RemoveAll(disableChromeRestartFile); err != nil && !os.IsNotExist(err) {
+			testing.ContextLog(ctx, "Failed to remove flag file: ", err)
+		}
+	}(ctx)
+
 	if err := kw.Accel(ctx, "Ctrl+Alt+S"); err != nil {
 		return nil, errors.Wrap(err, "failed to hit Ctrl+Alt+S and attempt to quit a kiosk app")
 	}
-	// The current Chrome process will exit after pressing Ctrl+Alt+S. Waiting for
-	// UI events is therefore not possible. A short delay is needed to make sure
-	// launch error event will be triggered before restarting UI.
-	if err := testing.Sleep(ctx, 300*time.Millisecond); err != nil {
-		return nil, errors.Wrap(err, "failed to wait for Chrome to exit")
+
+	// The current Chrome process will exit, which also stops session_manager. We
+	// wait for ui Upstart task to stop since UI respawn has been disabled.
+	if err := upstart.WaitForJobStatus(ctx, "ui", cupstart.StopGoal, cupstart.WaitingState, upstart.TolerateWrongGoal, 5*time.Second); err != nil {
+		return nil, errors.Wrap(err, "ui process did not stop")
+	}
+
+	// Remove flag file so that session_manager will start Chrome after UI task is
+	// started.
+	if err := os.RemoveAll(disableChromeRestartFile); err != nil {
+		return nil, errors.Wrap(err, "failed to remove flag file")
 	}
 
 	// Restart Chrome without closing since the current Chrome process has already
