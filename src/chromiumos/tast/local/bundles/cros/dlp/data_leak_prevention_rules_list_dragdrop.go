@@ -9,6 +9,7 @@ import (
 	"net/http"
 	"net/http/httptest"
 	"net/url"
+	"sort"
 	"time"
 
 	"chromiumos/tast/common/fixture"
@@ -81,19 +82,25 @@ func DataLeakPreventionRulesListDragdrop(ctx context.Context, s *testing.State) 
 		s.Fatal("Failed to connect to test API: ", err)
 	}
 
-	// Sets the display zoom factor to minimum, to ensure that the work area
-	// length is at least twice the minimum length of a browser window, so that
-	// browser windows can be snapped in split view.
+	// Ensures that the display zoom factor is 90% (allowing for rounding error) or
+	// less, to ensure that the work area length is at least twice the minimum length
+	// of a browser window, so that browser windows can be snapped in split view.
+	const zoomMaximum = 0.90000005
 	info, err := display.GetPrimaryInfo(ctx, tconn)
 	if err != nil {
 		s.Fatal("Failed to get the primary display info: ", err)
 	}
-	zoomInitial := info.DisplayZoomFactor
-	zoomMin := info.AvailableDisplayZoomFactors[0]
-	if err := display.SetDisplayProperties(ctx, tconn, info.ID, display.DisplayProperties{DisplayZoomFactor: &zoomMin}); err != nil {
-		s.Fatalf("Failed to set display zoom factor to minimum %f: %v", zoomMin, err)
+	if zoomInitial := info.DisplayZoomFactor; zoomInitial > zoomMaximum {
+		i := sort.Search(len(info.AvailableDisplayZoomFactors), func(i int) bool { return info.AvailableDisplayZoomFactors[i] > zoomMaximum })
+		if i == 0 {
+			s.Fatalf("Lowest available display zoom factor is %f; want 90%% (allowing for rounding error) or less", info.AvailableDisplayZoomFactors[0])
+		}
+		zoomForTest := info.AvailableDisplayZoomFactors[i-1]
+		if err := display.SetDisplayProperties(ctx, tconn, info.ID, display.DisplayProperties{DisplayZoomFactor: &zoomForTest}); err != nil {
+			s.Fatalf("Failed to set display zoom factor to %f: %v", zoomForTest, err)
+		}
+		defer display.SetDisplayProperties(cleanupCtx, tconn, info.ID, display.DisplayProperties{DisplayZoomFactor: &zoomInitial})
 	}
-	defer display.SetDisplayProperties(cleanupCtx, tconn, info.ID, display.DisplayProperties{DisplayZoomFactor: &zoomInitial})
 
 	keyboard, err := input.VirtualKeyboard(ctx)
 	if err != nil {
