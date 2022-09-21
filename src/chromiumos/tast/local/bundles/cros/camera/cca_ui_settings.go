@@ -44,7 +44,7 @@ func CCAUISettings(ctx context.Context, s *testing.State) {
 	bt := s.FixtValue().(cca.FixtureData).BrowserType
 	runTestWithApp := s.FixtValue().(cca.FixtureData).RunTestWithApp
 
-	subTestTimeout := 30 * time.Second
+	subTestTimeout := 40 * time.Second
 	for _, tst := range []struct {
 		name     string
 		testFunc func(context.Context, *chrome.Chrome, browser.Type, *cca.App) error
