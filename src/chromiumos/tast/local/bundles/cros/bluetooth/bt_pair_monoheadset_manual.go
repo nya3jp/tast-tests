@@ -14,7 +14,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         BTPairMonoheadset,
+		Func:         BTPairMonoheadsetManual,
 		Desc:         "Verify bluetooth mono-headset pair",
 		Contacts:     []string{"pathan.jilani@intel.com", "intel-chrome-system-automation-team@intel.com"},
 		SoftwareDeps: []string{"chrome"},
@@ -24,8 +24,8 @@ func init() {
 	})
 }
 
-// BTPairMonoheadset enables bluetooth and pair BT mono headset.
-func BTPairMonoheadset(ctx context.Context, s *testing.State) {
+// BTPairMonoheadsetManual enables bluetooth and pair BT mono headset.
+func BTPairMonoheadsetManual(ctx context.Context, s *testing.State) {
 	monoHeadset := s.RequiredVar("bluetooth.monoHeadset")
 
 	adapters, err := bluez.Adapters(ctx)
