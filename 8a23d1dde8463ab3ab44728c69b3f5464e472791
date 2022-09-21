@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "72b36efa_e794d0eb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/bss_tm_request.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2022-09-21T21:30:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "389690b4_48e36f5c",
+      "range": {
+        "startLine": 259,
+        "startChar": 10,
+        "endLine": 259,
+        "endChar": 13
+      },
+      "revId": "8a23d1dde8463ab3ab44728c69b3f5464e472791",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b9005c79_a43eb818",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-09-21T20:53:50Z",
       "side": 1,
       "message": "Do you mind also adding a short sentence explaining why we call twice?",
+      "range": {
+        "startLine": 265,
+        "startChar": 6,
+        "endLine": 265,
+        "endChar": 37
+      },
+      "revId": "8a23d1dde8463ab3ab44728c69b3f5464e472791",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df6d9928_e228cd4c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/bss_tm_request.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2022-09-21T21:30:01Z",
+      "side": 1,
+      "message": "I\u0027m not sure exactly what you\u0027re requesting. Isn\u0027t it already explained that calling it twice is what we need to make the duration 120 seconds?",
+      "parentUuid": "b9005c79_a43eb818",
       "range": {
         "startLine": 265,
         "startChar": 6,
