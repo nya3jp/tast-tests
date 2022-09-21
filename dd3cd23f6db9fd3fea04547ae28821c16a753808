@@ -33,6 +33,23 @@
       "message": "PTAL",
       "revId": "dd3cd23f6db9fd3fea04547ae28821c16a753808",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c923ee1_be794859",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1551729
+      },
+      "writtenOn": "2022-09-21T21:09:35Z",
+      "side": 1,
+      "message": "LGTM, glad to learn the parametrized tests.",
+      "revId": "dd3cd23f6db9fd3fea04547ae28821c16a753808",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
