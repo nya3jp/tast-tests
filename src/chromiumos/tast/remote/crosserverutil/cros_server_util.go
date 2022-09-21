@@ -117,24 +117,16 @@ func Dial(ctx context.Context, d *dut.DUT, hostname string, port int, useForward
 
 // startCrosServer initiates the cros server process and grpc server on DUT through SSH
 func (c *Client) startCrosServer(ctx context.Context) error {
-	args := []string{"-rpctcp", "-port", strconv.Itoa(c.port)}
-	testing.ContextLog(ctx, "Start CrOS server with parameters: ", args)
 
 	// Try to kill any process using the desired port
 	if err := c.stopCrosServer(ctx); err != nil {
 		return errors.Wrapf(err, "failed to kill existing process using the TCP port: %d", c.port)
 	}
 
-	// Open up TCP port for incoming traffic
-	ipTableArgs := []string{"-A", "INPUT", "-p", "tcp", "--dport", strconv.Itoa(c.port), "-j", "ACCEPT"}
-	if err := c.sshConn.CommandContext(ctx, "iptables", ipTableArgs...).Run(); err != nil {
-		return errors.Wrapf(err, "failed to open up TCP port: %d for incoming traffic", c.port)
-	}
-
 	// Start CrOS server as a separate process
-	// TODO(jonfan): To keep the path of cros private and encapsulated from the users, create a
-	// shell script or symlink, e.g. /usr/bin/cros, that resolves the path for cros
-	cmd := c.sshConn.CommandContext(ctx, "/usr/local/libexec/tast/bundles/local_pushed/cros", args...)
+	cmdStr := fmt.Sprintf("PATH=$PATH:/usr/local/libexec/tast/bundles/local_pushed:/usr/local/libexec/tast/bundles/local cros -rpctcp -port %d", c.port)
+	testing.ContextLog(ctx, "Start CrOS server: ", cmdStr)
+	cmd := c.sshConn.CommandContext(ctx, "bash", "-c", cmdStr)
 
 	cmdStdOutReader, err := cmd.StdoutPipe()
 	if err != nil {
@@ -169,7 +161,7 @@ func (c *Client) startCrosServer(ctx context.Context) error {
 	}()
 
 	if err := cmd.Start(); err != nil {
-		return errors.Wrapf(err, "failed to start CrOS server with parameter: %v", args)
+		return errors.Wrapf(err, "failed to start CrOS server cmd: %v", cmdStr)
 	}
 	c.cmd = cmd
 
