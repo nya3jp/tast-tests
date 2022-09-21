@@ -3,6 +3,75 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "056ebadb_8f33ddf5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shimlessrma/app_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-09-21T00:19:50Z",
+      "side": 1,
+      "message": "just `return action.Combine(\"Fail to click wifi\",...)`",
+      "range": {
+        "startLine": 316,
+        "startChar": 1,
+        "endLine": 324,
+        "endChar": 2
+      },
+      "revId": "5af47115f66962fea2ce858d8a3624706dfd661d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60c4f643_a58ff175",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/wifi_connection.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-09-21T00:19:50Z",
+      "side": 1,
+      "message": "reserve time for cleanup tasks",
+      "range": {
+        "startLine": 79,
+        "startChar": 3,
+        "endLine": 79,
+        "endChar": 6
+      },
+      "revId": "5af47115f66962fea2ce858d8a3624706dfd661d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b862e35_5f251c92",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/wifi_connection.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-09-21T00:19:50Z",
+      "side": 1,
+      "message": "ditto, and reformat to\n`defer func(ctx context.Context){...}(cleanupCtx)`",
+      "range": {
+        "startLine": 104,
+        "startChar": 1,
+        "endLine": 104,
+        "endChar": 15
+      },
+      "revId": "5af47115f66962fea2ce858d8a3624706dfd661d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "04876a9c_e3bc5742",
         "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/wifi_connection.go",
         "patchSetId": 4
