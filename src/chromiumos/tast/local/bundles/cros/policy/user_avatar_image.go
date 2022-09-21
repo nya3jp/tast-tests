@@ -26,7 +26,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         UserAvatarImagePersHub,
+		Func:         UserAvatarImage,
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Behavior of the UserAvatarImage policy when the PersonalizationHub flag is enabled: verify that the user cannot change the device account image when the policy is set, otherwise, the user can change it",
 		Contacts: []string{
@@ -43,7 +43,7 @@ func init() {
 	})
 }
 
-func UserAvatarImagePersHub(ctx context.Context, s *testing.State) {
+func UserAvatarImage(ctx context.Context, s *testing.State) {
 	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 	fdms := s.FixtValue().(fakedms.HasFakeDMS).FakeDMS()
 

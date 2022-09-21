@@ -39,23 +39,6 @@ func init() {
 		Parent:          fixture.FakeDMS,
 	})
 
-	// TODO(b/230901276): Remove once policy.UserAvatarImage is either removed or updated.
-	testing.AddFixture(&testing.Fixture{
-		Name:     fixture.ChromePolicyLoggedInWithoutPersonalizationHub,
-		Desc:     "Logged into a user session with \"Personalization Hub\" turned off",
-		Contacts: []string{"pzliu@google.com", "chromeos-commercial-remote-management@google.com"},
-		Impl: &policyChromeFixture{
-			extraOptsFunc: func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
-				return []chrome.Option{chrome.DisablePersonalizationHub()}, nil
-			},
-		},
-		SetUpTimeout:    chrome.ManagedUserLoginTimeout,
-		ResetTimeout:    chrome.ResetTimeout,
-		TearDownTimeout: chrome.ResetTimeout,
-		PostTestTimeout: 15 * time.Second,
-		Parent:          fixture.FakeDMS,
-	})
-
 	// ChromePolicyLoggedInLockscreen is identical to ChromePolicyLoggedIn, but will isolate test failures better.
 	// TODO(b/231276590): Remove once ChromePolicyLoggedIn can clear the lockscreen.
 	testing.AddFixture(&testing.Fixture{
