@@ -69,7 +69,7 @@ func ShillCellularSmoke(ctx context.Context, s *testing.State) {
 		}
 		bytesRead := len(body)
 		if bytesRead != downloadBytes {
-			return errors.New("read wrong number of bytes:" + fmt.Sprintf(" got %d, want %d", bytesRead, downloadBytes))
+			return errors.Errorf("read wrong number of bytes: got %d, want %d", bytesRead, downloadBytes)
 		}
 		return nil
 	}
