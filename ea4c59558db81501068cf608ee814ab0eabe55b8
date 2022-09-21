@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98a57199_893ce01d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/shutdown_with_command_battery_cutoff.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-09-21T00:56:11Z",
+      "side": 1,
+      "message": "I don\u0027t thinkwe need these deps if we\u0027re explicitly specifying models.",
+      "revId": "ea4c59558db81501068cf608ee814ab0eabe55b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5aa29ec7_686e2828",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/shutdown_with_command_battery_cutoff.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-09-21T00:56:11Z",
+      "side": 1,
+      "message": "maybe we should add something like hwdep.SupportsLowBatteryBoot()",
+      "revId": "ea4c59558db81501068cf608ee814ab0eabe55b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
