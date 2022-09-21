@@ -33,7 +33,12 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      3 * time.Minute,
-		Fixture:      "chromeLoggedIn",
+		Params: []testing.Param{{
+			Fixture: "chromeLoggedIn",
+		}, {
+			Name:    "cloud",
+			Fixture: "personalizationWithAvatarsCloudMigration",
+		}},
 	})
 }
 
