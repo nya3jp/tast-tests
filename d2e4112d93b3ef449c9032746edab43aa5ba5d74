@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ae4c882_155dbe10",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/choose_to_share_metrics_or_not.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1542652
+      },
+      "writtenOn": "2022-09-21T23:52:35Z",
+      "side": 1,
+      "message": "Keyboard seems unnecessary in this test.",
+      "revId": "d2e4112d93b3ef449c9032746edab43aa5ba5d74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
