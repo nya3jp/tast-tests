@@ -43,7 +43,7 @@ func HideContinueSectionTablet(ctx context.Context, s *testing.State) {
 
 	opt := chrome.EnableFeatures(
 		"ProductivityLauncher:enable_continue/true", // Enable continue section
-		"LauncherHideContinueSection")               // Enable the hide continue section menu item
+		"ForceShowContinueSection")                  // Populate continue section with items
 	cr, err := chrome.New(ctx, opt)
 	if err != nil {
 		s.Fatal("Chrome login failed: ", err)
@@ -65,19 +65,6 @@ func HideContinueSectionTablet(ctx context.Context, s *testing.State) {
 	// Dismiss the sorting nudge.
 	if err := launcher.DismissSortNudgeIfExists(ctx, tconn); err != nil {
 		s.Fatal("Failed to dismiss sort nudge: ", err)
-	}
-
-	// Create temp files and open them via Files app to populate the continue section.
-	cleanupFiles, _, err := launcher.SetupContinueSectionFiles(
-		ctx, tconn, cr, true /* tabletMode */)
-	if err != nil {
-		s.Fatal("Failed to set up continue section: ", err)
-	}
-	defer cleanupFiles()
-
-	// Ensure launcher is visible.
-	if err := launcher.OpenProductivityLauncher(ctx, tconn, true /*tabletMode*/); err != nil {
-		s.Fatal("Failed to open launcher: ", err)
 	}
 
 	// Ensure continue section exists.

@@ -40,7 +40,7 @@ func HideContinueSectionClamshell(ctx context.Context, s *testing.State) {
 
 	opt := chrome.EnableFeatures(
 		"ProductivityLauncher:enable_continue/true", // Enable continue section
-		"LauncherHideContinueSection")               // Enable the hide continue section button
+		"ForceShowContinueSection")                  // Populate continue section with items
 	cr, err := chrome.New(ctx, opt)
 	if err != nil {
 		s.Fatal("Chrome login failed: ", err)
@@ -50,14 +50,6 @@ func HideContinueSectionClamshell(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect Test API: ", err)
 	}
 
-	// Create temp files and open them via Files app to populate the continue section.
-	cleanupFiles, _, err := launcher.SetupContinueSectionFiles(
-		ctx, tconn, cr, false /* tabletMode */)
-	if err != nil {
-		s.Fatal("Failed to set up continue section: ", err)
-	}
-	defer cleanupFiles()
-
 	// Bubble launcher requires clamshell mode.
 	cleanup, err := launcher.SetUpLauncherTest(ctx, tconn, false /*tabletMode*/, false /*stabilizeAppCount*/)
 	if err != nil {
@@ -66,6 +58,25 @@ func HideContinueSectionClamshell(ctx context.Context, s *testing.State) {
 	defer cleanup(cleanupCtx)
 
 	defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "ui_tree")
+
+	// Dismiss the sort nudge. This nudge is shown when the user opens the
+	// launcher for the first time. If the nudge is visible, the continue
+	// section privacy notice (which needs to be acknowledged before showing the
+	// continue section) will be delayed until the sort nudge is accepted.
+	// Generally, continue section privacy notice has higher precedence, but if
+	// there's a delay when retrieving zero state results, sort nudge may be
+	// shown before zero state results are returned. In this case, sort nudge
+	// needs to be dismissed in order for continue section to show up.
+	if err := launcher.DismissSortNudgeIfExists(ctx, tconn); err != nil {
+		s.Fatal("Failed to dismiss sort nudge: ", err)
+	}
+
+	if err := uiauto.Combine("close and reopen bubble launcher",
+		launcher.CloseBubbleLauncher(tconn),
+		launcher.OpenBubbleLauncher(tconn),
+	)(ctx); err != nil {
+		s.Fatal("Failed to close and reopen the launcher: ", err)
+	}
 
 	// Ensure continue section exists.
 	ui := uiauto.New(tconn)
