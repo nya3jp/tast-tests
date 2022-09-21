@@ -12,6 +12,7 @@ import (
 	"github.com/golang/protobuf/ptypes/empty"
 	"google.golang.org/grpc"
 
+	"chromiumos/tast/common/mmconst"
 	"chromiumos/tast/common/shillconst"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/cellular"
@@ -200,12 +201,72 @@ func (s *RemoteCellularService) QueryService(ctx context.Context, _ *empty.Empty
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to get service connection status from properties")
 	}
+	strength, err := props.GetUint8(shillconst.ServicePropertyStrength)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get service strength from properties")
+	}
+	networkTechnology, err := props.GetString(shillconst.ServicePropertyCellularNetworkTechnology)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get service strength from properties")
+	}
 
 	return &cellular_pb.QueryServiceResponse{
-		Name:        name,
-		Device:      string(device),
-		State:       state,
-		IsConnected: isConnected,
+		Name:              name,
+		Device:            string(device),
+		State:             state,
+		IsConnected:       isConnected,
+		Strength:          int64(strength),
+		NetworkTechnology: networkTechnology,
+	}, nil
+}
+
+// QueryLTESignal returns information about the attached LTE signal.
+func (s *RemoteCellularService) QueryLTESignal(ctx context.Context, _ *empty.Empty) (*cellular_pb.QueryLTESignalResponse, error) {
+	// make sure that there is an LTE network available
+	if resp, err := s.QueryService(ctx, &empty.Empty{}); err != nil {
+		return nil, errors.Wrap(err, "failed to get service properties")
+	} else if resp.NetworkTechnology != shillconst.CellularNetworkTechnologyLte {
+		return nil, errors.Errorf("failed to find requested network: want %q, got %q", shillconst.CellularNetworkTechnologyLte, resp.NetworkTechnology)
+	}
+
+	modem, err := modemmanager.NewModem(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create modem")
+	}
+
+	ph, err := dbusutil.NewPropertyHolder(ctx, modemmanager.DBusModemmanagerService, modemmanager.DBusModemmanagerSignalInterface, modem.ObjectPath())
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create modem property holder")
+	}
+
+	// get all signal properties
+	props, err := ph.GetProperties(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get modem properties")
+	}
+
+	props, err = props.GetMap(mmconst.SignalPropertyLte)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get LTE signal properties")
+	}
+
+	rsrp, err := props.GetFloat64(mmconst.SignalPropertyLteRsrp)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get signal RSRP from properties")
+	}
+	rsrq, err := props.GetFloat64(mmconst.SignalPropertyLteRsrq)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get signal RSRQ from properties")
+	}
+	snr, err := props.GetFloat64(mmconst.SignalPropertyLteSnr)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get signal SNR from properties")
+	}
+
+	return &cellular_pb.QueryLTESignalResponse{
+		Rsrp: rsrp,
+		Rsrq: rsrq,
+		Snr:  snr,
 	}, nil
 }
 
