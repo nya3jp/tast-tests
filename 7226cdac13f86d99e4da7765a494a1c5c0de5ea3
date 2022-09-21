@@ -128,6 +128,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d898adea_7ca5659e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/config_verify.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-09-21T23:45:24Z",
+      "side": 1,
+      "message": "Once you seperate the parameterized tests with ExtraSoftwareDeps, you can use \"Val\" to fine tune the behavior of your tests. Here is one example: \n\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/video/encode_accel_perf.go;rcl\u003d8fbf2c53960bc8917a6a01fda5405cad7c17201e;l\u003d44",
+      "parentUuid": "917fef8a_7b961432",
+      "revId": "7226cdac13f86d99e4da7765a494a1c5c0de5ea3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9321b8f0_60299363",
         "filename": "src/chromiumos/tast/local/bundles/cros/kernel/config_verify.go",
         "patchSetId": 3
