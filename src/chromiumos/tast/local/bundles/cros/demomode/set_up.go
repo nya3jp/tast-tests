@@ -48,7 +48,7 @@ func init() {
 func SetUp(ctx context.Context, s *testing.State) {
 	cr, err := chrome.New(ctx,
 		chrome.NoLogin(),
-		chrome.ARCEnabled(),
+		chrome.ARCSupported(),
 		// TODO(crbug.com/1291183): Parameterize this test to also run a version that tests the
 		// Consolidated Consent screen instead of EULA + ARC TOS
 		chrome.DisableFeatures("OobeConsolidatedConsent"),
