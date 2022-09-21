@@ -144,7 +144,7 @@ func verifyDirSELinuxContext(ctx context.Context, directoryPath, outDir string) 
 		err := errors.Errorf("SELinux context verification failed for %v", directoryPath)
 		return err
 	}
-	// Remove the mathcpathcon output file if SELinux verification succeeds.
+	// Remove the matchpathcon output file if SELinux verification succeeds.
 	if err = os.Remove(matchPathConFileLocation); err != nil {
 		return errors.Wrapf(err, "failed to remove file %s", matchPathConFileLocation)
 	}
