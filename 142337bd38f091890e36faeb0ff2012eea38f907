@@ -69,6 +69,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fed33bbc_c2687edc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2022-09-21T23:06:32Z",
+      "side": 1,
+      "message": "If I\u0027m reading right, Hidehiko is also OOO\n\nIf you think things are alright in terms of lacros, I\u0027ll just look for tast-owners@ to find a final approver",
+      "parentUuid": "252c9a24_67ca1211",
+      "revId": "142337bd38f091890e36faeb0ff2012eea38f907",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7c2d6e8f_5d6a5ed5",
