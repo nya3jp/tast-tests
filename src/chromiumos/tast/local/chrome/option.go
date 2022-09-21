@@ -506,11 +506,3 @@ func TestExtOAuthClientID(clientID string) Option {
 		return nil
 	}
 }
-
-// DisablePersonalizationHub returns an Option that disables the Personalization Hub.
-func DisablePersonalizationHub() Option {
-	return func(cfg *config.MutableConfig) error {
-		cfg.EnablePersonalizationHub = false
-		return nil
-	}
-}
