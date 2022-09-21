@@ -59,7 +59,7 @@ func FindUnique(m Matcher) (*process.Process, error) {
 }
 
 // FindAll returns a list of all process.Process instances which are matched with
-// the given mathcer.
+// the given matcher.
 // If process it not found, this returns ErrNotFound.
 func FindAll(m Matcher) ([]*process.Process, error) {
 	found, _, err := findAllInternal(m)
