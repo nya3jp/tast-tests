@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a86925a_9675105a",
+        "filename": "src/chromiumos/tast/common/flashrom/flashrom_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1377969
+      },
+      "writtenOn": "2022-09-21T02:56:43Z",
+      "side": 1,
+      "message": "I think these are \n\nFLASHROM_MSG_DEBUG\nFLASHROM_MSG_DEBUG2\nFLASHROM_MSG_SPEW\n\nwith the NOP being FLASHROM_MSG_DEBUG. Can we use the same name in the comment at least? Maybe the name of the binding too?\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/44ed4b5313f0261f0d79ca4a2e3bbbb71603609f:src/third_party/flashrom/cli_output.c;l\u003d24",
+      "revId": "8f2c975a093cc590a34964a12ebc7dc204802982",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e40ac4c0_babd5a26",
+        "filename": "src/chromiumos/tast/common/flashrom/flashrom_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1377969
+      },
+      "writtenOn": "2022-09-21T02:56:43Z",
+      "side": 1,
+      "message": "if we can make all these functions methods on a flashrom object we will have an easier time possibly swapping to libflashrom later. WDYT?\n\nUser EG: \n\n```\nf :\u003d FlashromBuilder.programmer(\"host\").verbosity(Very).finalise()\nf.WpStatus()\n```\n\nI\u0027m not sure if that is idiomatic golang though.\n\nAPI might mimic FlashromTester:\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/44ed4b5313f0261f0d79ca4a2e3bbbb71603609f:src/third_party/flashrom/util/flashrom_tester/flashrom/src/lib.rs;l\u003d128",
+      "revId": "8f2c975a093cc590a34964a12ebc7dc204802982",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "476e6409_3894b9a5",
+        "filename": "src/chromiumos/tast/common/flashrom/flashrom_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1377969
+      },
+      "writtenOn": "2022-09-21T02:56:43Z",
+      "side": 1,
+      "message": "can we say software write protect",
+      "revId": "8f2c975a093cc590a34964a12ebc7dc204802982",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
