@@ -87,6 +87,30 @@
       },
       "revId": "ae21a3cc496004d23cd302b3dba1382c6c6e91dd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6fd038fc_bb245053",
+        "filename": "src/chromiumos/tast/services/cros/ui/chrome_service.proto",
+        "patchSetId": 4
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-09-21T16:50:31Z",
+      "side": 1,
+      "message": "I\u0027m not quite following why MODE_DISABLED matters much here in that\n(1) `lacros.Mode` doesn\u0027t include MODE_DISABLED http://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/lacros/config.go?l\u003d48\n(2) disabling lacros could better be handled in Ash by `disable_features` field in this proto if needed\n(3) we are rolling out lacros with lacrosonly enabled and well getting past the point where lacros as non-primary particularly in Tast environment.\n\nShould it be blocking this CL submission?",
+      "parentUuid": "5223355f_25eafb6e",
+      "range": {
+        "startLine": 87,
+        "startChar": 49,
+        "endLine": 87,
+        "endChar": 75
+      },
+      "revId": "ae21a3cc496004d23cd302b3dba1382c6c6e91dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
