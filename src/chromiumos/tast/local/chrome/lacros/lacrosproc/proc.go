@@ -7,6 +7,7 @@ package lacrosproc
 
 import (
 	"context"
+	"path/filepath"
 	"strings"
 
 	"github.com/shirou/gopsutil/v3/process"
@@ -30,7 +31,7 @@ func Root(ctx context.Context, tconn *chrome.TestConn) (*process.Process, error)
 	if len(info.LacrosPath) == 0 {
 		return nil, errors.Wrap(err, "lacros is not running (received empty LacrosPath)")
 	}
-	return chromeproc.Root(info.LacrosPath + "/chrome")
+	return chromeproc.Root(filepath.Join(info.LacrosPath, "chrome"))
 }
 
 // ProcsFromPath returns the pids of all processes with a given path in their
@@ -52,4 +53,17 @@ func ProcsFromPath(ctx context.Context, path string) ([]*process.Process, error)
 	testing.ContextLog(ctx, procs)
 
 	return procs, nil
+}
+
+// RendererProcesses returns lacros-chrome renderer processes. See also
+// chromiumos/tast/local/chrome/chromeproc's RendererProcesses(), for ash-chrome.
+func RendererProcesses(ctx context.Context, tconn *chrome.TestConn) ([]*process.Process, error) {
+	info, err := lacrosinfo.Snapshot(ctx, tconn)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to retrieve lacrosinfo")
+	}
+	if len(info.LacrosPath) == 0 {
+		return nil, errors.Wrap(err, "lacros is not running (received empty LacrosPath)")
+	}
+	return chromeproc.RendererProcesses(filepath.Join(info.LacrosPath, "chrome"))
 }
