@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "38e599a9_d72e0161",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/intel/sd_card_plug_unplug_during_sleep.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-09-21T05:10:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "95f027f2_ff0a6e57",
+      "revId": "5323f805db8ebcf785e83d0e38863f34ba01f4e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c55b6357_656ec65e",
@@ -43,6 +61,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0024ef71_d18c20b1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/intel/sd_card_plug_unplug_during_sleep.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-09-21T05:10:25Z",
+      "side": 1,
+      "message": "Here, we\u0027re unable to follow got want pattern to handle failure, as we\u0027re comparing SLP and Package values before and after suspend.",
+      "parentUuid": "c55b6357_656ec65e",
+      "range": {
+        "startLine": 127,
+        "startChar": 0,
+        "endLine": 139,
+        "endChar": 2
+      },
+      "revId": "5323f805db8ebcf785e83d0e38863f34ba01f4e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0e86eec7_375e1eb8",
         "filename": "src/chromiumos/tast/remote/bundles/cros/intel/sd_card_plug_unplug_during_sleep.go",
         "patchSetId": 1
@@ -54,6 +96,30 @@
       "writtenOn": "2022-09-15T07:01:30Z",
       "side": 1,
       "message": "Can you split it into `plug...` and `unplug...` functions? There is no common code between the two functionality, and you only call this function once where the `isPlug` is a variable, so there is one place where the code will be longer.",
+      "range": {
+        "startLine": 149,
+        "startChar": 5,
+        "endLine": 149,
+        "endChar": 29
+      },
+      "revId": "5323f805db8ebcf785e83d0e38863f34ba01f4e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "15f0d474_b7870a30",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/intel/sd_card_plug_unplug_during_sleep.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-09-21T05:10:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0e86eec7_375e1eb8",
       "range": {
         "startLine": 149,
         "startChar": 5,
