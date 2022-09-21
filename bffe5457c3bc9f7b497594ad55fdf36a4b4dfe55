@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c76b2a9_17774558",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/hid_wake.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2022-09-21T22:02:23Z",
+      "side": 1,
+      "message": "I\u0027m afraid I didn\u0027t follow your previous explanation completely.\n\nWhy can this block (L104-L117) not be folded into `attemptSuspendAndWake()` ? That entire block, taken together, looks synchronous to me . Then, the channel creation can be moved into the function itself.\n\n`attemptSuspendAndWake()` then just needs to return an `err`",
+      "range": {
+        "startLine": 104,
+        "startChar": 1,
+        "endLine": 116,
+        "endChar": 46
+      },
+      "revId": "bffe5457c3bc9f7b497594ad55fdf36a4b4dfe55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aefee2e6_453beb41",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/hid_wake.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2022-09-21T22:02:23Z",
+      "side": 1,
+      "message": "Do you need the forward slash (doesn\u0027t filepath.Join() handle the separators for you) ?",
+      "range": {
+        "startLine": 207,
+        "startChar": 78,
+        "endLine": 207,
+        "endChar": 79
+      },
+      "revId": "bffe5457c3bc9f7b497594ad55fdf36a4b4dfe55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55ae22e9_71d44530",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/hid_wake.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2022-09-21T22:02:23Z",
+      "side": 1,
+      "message": "Do you really need to write the new line character as well?",
+      "range": {
+        "startLine": 234,
+        "startChar": 24,
+        "endLine": 234,
+        "endChar": 26
+      },
+      "revId": "bffe5457c3bc9f7b497594ad55fdf36a4b4dfe55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
