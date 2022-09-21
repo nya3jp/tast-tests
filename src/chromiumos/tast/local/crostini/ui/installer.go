@@ -158,8 +158,7 @@ func (p *Installer) Install(ctx context.Context) error {
 	installButton := nodewith.Name("Install").Role(role.Button)
 	installingMsg := nodewith.NameStartingWith("Installing Linux").Role(role.StaticText)
 	if err := uiauto.Combine("click install and wait it to finish",
-		ui.LeftClick(installButton),
-		ui.WaitUntilExists(installingMsg),
+		ui.LeftClickUntil(installButton, ui.WithTimeout(3*time.Second).WaitUntilExists(installingMsg)),
 		ui.WithTimeout(installationTimeout).WaitUntilGone(installingMsg),
 	)(ctx); err != nil {
 		if message, _ := p.checkErrorMessage(cleanupCtx); message != "" {
