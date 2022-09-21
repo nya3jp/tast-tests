@@ -34,6 +34,24 @@
       "parentUuid": "247ce4bf_26e604c1",
       "revId": "b3fadb5336df046c9f593c3c60ca0406932a05a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ff783fb_8e891fd4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000169
+      },
+      "writtenOn": "2022-09-21T08:19:26Z",
+      "side": 1,
+      "message": "A fixture named mojoServiceManagerRunning is confusing because it looks like it\u0027s necessary to use this fixture if the test needs the service manager to be running which is not true.\n\nYou should rely on our crash reporting infrastructure to debug crash bugs instead of having a confusing tast fixture.",
+      "parentUuid": "b9470978_0293e094",
+      "revId": "b3fadb5336df046c9f593c3c60ca0406932a05a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
