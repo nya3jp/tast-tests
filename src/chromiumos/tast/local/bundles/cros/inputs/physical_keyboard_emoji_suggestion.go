@@ -24,6 +24,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/chrome/useractions"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/mountns"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -88,6 +89,17 @@ func init() {
 }
 
 func PhysicalKeyboardEmojiSuggestion(ctx context.Context, s *testing.State) {
+	// In order for the "guest_lacros" case to work correctly, we need to
+	// run the test body in the user mount namespace. See b/244513681.
+	if err := mountns.WithUserSessionMountNS(ctx, func(ctx context.Context) error {
+		physicalKeyboardEmojiSuggestion(ctx, s)
+		return nil
+	}); err != nil {
+		s.Fatal("Failed to run test in correct mount namespace: ", err)
+	}
+}
+
+func physicalKeyboardEmojiSuggestion(ctx context.Context, s *testing.State) {
 	cr := s.FixtValue().(fixture.FixtData).Chrome
 	tconn := s.FixtValue().(fixture.FixtData).TestAPIConn
 	uc := s.FixtValue().(fixture.FixtData).UserContext
