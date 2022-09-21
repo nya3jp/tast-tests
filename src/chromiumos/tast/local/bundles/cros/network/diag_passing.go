@@ -34,7 +34,7 @@ func init() {
 			"cros-network-health@google.com", // network-health team
 		},
 		SoftwareDeps: []string{"chrome", "no_qemu"},
-		Attr:         []string{"group:mainline"},
+		Attr:         []string{"group:mainline", "informational"},
 		Fixture:      "networkDiagnostics",
 		Params: []testing.Param{{
 			Name: "lan_connectivity",
