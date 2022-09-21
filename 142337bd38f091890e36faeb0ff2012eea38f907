@@ -87,6 +87,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "46f21d39_fce144d1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-09-21T23:15:21Z",
+      "side": 1,
+      "message": "Sounds good to me.",
+      "parentUuid": "fed33bbc_c2687edc",
+      "revId": "142337bd38f091890e36faeb0ff2012eea38f907",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7c2d6e8f_5d6a5ed5",
@@ -124,6 +142,30 @@
       "side": 1,
       "message": "It\u0027s a little unclear to me why, exactly. Both fixtures just return *chrome.Chrome. Is the \u0027HasChrome\u0027 interface there just in case those fixtures diverge some day?\n\nAnyway, done.",
       "parentUuid": "7c2d6e8f_5d6a5ed5",
+      "range": {
+        "startLine": 164,
+        "startChar": 7,
+        "endLine": 164,
+        "endChar": 37
+      },
+      "revId": "142337bd38f091890e36faeb0ff2012eea38f907",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b9eda00_e4a04801",
+        "filename": "src/chromiumos/tast/local/bundles/cros/sched/core_sched_tag.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-09-21T23:15:21Z",
+      "side": 1,
+      "message": "unsure if they are diverging in the future, but it would be good to have consistency with the porting guideline and make it just a little clearer that the fixture returned should contain a chrome instance by using that interface.",
+      "parentUuid": "e5efa62e_fc41f5ca",
       "range": {
         "startLine": 164,
         "startChar": 7,
