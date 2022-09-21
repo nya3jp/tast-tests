@@ -46,11 +46,11 @@ func NewBatteryInfoTracker(ctx context.Context, metricPrefix string) (*BatteryIn
 		return nil, nil
 	}
 
-	chargeFullDesign, err := power.ReadBatteryProperty(batteryPath, "charge_full_design")
+	chargeFullDesign, err := power.ReadBatteryProperty(ctx, batteryPath, "charge_full_design")
 	if err != nil {
 		return nil, err
 	}
-	voltageMinDesign, err := power.ReadBatteryProperty(batteryPath, "voltage_min_design")
+	voltageMinDesign, err := power.ReadBatteryProperty(ctx, batteryPath, "voltage_min_design")
 	if err != nil {
 		return nil, err
 	}
@@ -75,11 +75,11 @@ func (t *BatteryInfoTracker) Start(ctx context.Context) error {
 	t.collecting = make(chan bool)
 	t.collectingErr = make(chan error, 1)
 
-	chargeNow, err := power.ReadBatteryProperty(t.batteryPath, "charge_now")
+	chargeNow, err := power.ReadBatteryProperty(ctx, t.batteryPath, "charge_now")
 	if err != nil {
 		return err
 	}
-	capacityNow, err := power.ReadBatteryCapacity(t.batteryPath)
+	capacityNow, err := power.ReadBatteryCapacity(ctx, t.batteryPath)
 	if err != nil {
 		return err
 	}
@@ -99,7 +99,7 @@ func (t *BatteryInfoTracker) Start(ctx context.Context) error {
 				close(t.collectingErr)
 				return
 			case <-ticker.C:
-				watt, err := power.ReadSystemPower(t.batteryPath)
+				watt, err := power.ReadSystemPower(ctx, t.batteryPath)
 				if err != nil {
 					t.collectingErr <- errors.Wrapf(err, "failed to read system power from %q", t.batteryPath)
 					return
@@ -127,11 +127,11 @@ func (t *BatteryInfoTracker) Stop(ctx context.Context) error {
 		return errors.New("not started")
 	}
 
-	chargeNow, err := power.ReadBatteryProperty(t.batteryPath, "charge_now")
+	chargeNow, err := power.ReadBatteryProperty(ctx, t.batteryPath, "charge_now")
 	if err != nil {
 		return err
 	}
-	capacityNow, err := power.ReadBatteryCapacity(t.batteryPath)
+	capacityNow, err := power.ReadBatteryCapacity(ctx, t.batteryPath)
 	if err != nil {
 		return err
 	}
@@ -147,7 +147,7 @@ func (t *BatteryInfoTracker) Stop(ctx context.Context) error {
 	select {
 	case err := <-t.collectingErr:
 		if err != nil {
-			// On boards like `drallion`, power.ReadSystemPower() could occasionally
+			// On boards like `drallion`, power.ReadSystemPower(ctx) could occasionally
 			// fail. Record the error to skip reporting battery info for such boards.
 			testing.ContextLog(ctx, "Energe collecting routine returned error: ", err)
 			testing.ContextLog(ctx, "Battery info will not be reported")
