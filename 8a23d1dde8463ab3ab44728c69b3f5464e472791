@@ -117,6 +117,30 @@
       },
       "revId": "8a23d1dde8463ab3ab44728c69b3f5464e472791",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9e06d13_535ac755",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/bss_tm_request.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2022-09-21T21:39:48Z",
+      "side": 1,
+      "message": "Ah, thanks for explaining. Done.",
+      "parentUuid": "5b98d62f_9da6f9da",
+      "range": {
+        "startLine": 265,
+        "startChar": 6,
+        "endLine": 265,
+        "endChar": 37
+      },
+      "revId": "8a23d1dde8463ab3ab44728c69b3f5464e472791",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
