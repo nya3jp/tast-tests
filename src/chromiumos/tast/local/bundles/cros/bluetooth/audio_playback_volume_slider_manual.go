@@ -25,7 +25,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         AudioPlaybackVolumeSlider,
+		Func:         AudioPlaybackVolumeSliderManual,
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "System volume slider works fine for audio playback on Bluetooth headset",
 		Contacts:     []string{"ambalavanan.m.m@intel.com", "intel-chrome-system-automation-team@intel.com"},
@@ -35,8 +35,8 @@ func init() {
 	})
 }
 
-// AudioPlaybackVolumeSlider tests the volume slider works fine for audio playback on Bluetooth headset.
-func AudioPlaybackVolumeSlider(ctx context.Context, s *testing.State) {
+// AudioPlaybackVolumeSliderManual tests the volume slider works fine for audio playback on Bluetooth headset.
+func AudioPlaybackVolumeSliderManual(ctx context.Context, s *testing.State) {
 	Headset := s.RequiredVar("bluetooth.btHeadset")
 	cr := s.FixtValue().(*chrome.Chrome)
 
