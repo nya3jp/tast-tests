@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c84681a_be10761c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/admin_templates_launch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-09-21T23:28:42Z",
+      "side": 1,
+      "message": "Does this need to be included twice?",
+      "revId": "caa8d0d8894eba599b783f31a01e547bfe84bf1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
