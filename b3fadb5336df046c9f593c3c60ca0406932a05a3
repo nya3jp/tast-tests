@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "247ce4bf_26e604c1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000169
+      },
+      "writtenOn": "2022-09-21T07:13:29Z",
+      "side": 1,
+      "message": "Why do we need this?\n\nFor example, we don\u0027t have a fixture for dbus-daemon because we can expect it to be always running.",
+      "revId": "b3fadb5336df046c9f593c3c60ca0406932a05a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
