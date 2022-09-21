@@ -103,6 +103,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5224edb_19ecc77e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1211724
+      },
+      "writtenOn": "2022-09-21T23:26:33Z",
+      "side": 1,
+      "message": "Done.\nAlso the newest patch is adding a fixture instead, please take another look.",
+      "parentUuid": "a38d43e4_416ab534",
+      "revId": "dd3cd23f6db9fd3fea04547ae28821c16a753808",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d02dc661_d9c71dfd",
@@ -116,6 +134,30 @@
       "writtenOn": "2022-09-21T22:03:43Z",
       "side": 1,
       "message": "How about adding `personalizationWithAvatarCloudMigration` fixture to https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/personalization/fixture.go to keep a structure simple?",
+      "range": {
+        "startLine": 57,
+        "startChar": 2,
+        "endLine": 61,
+        "endChar": 21
+      },
+      "revId": "dd3cd23f6db9fd3fea04547ae28821c16a753808",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd4c5d5c_5ca52975",
+        "filename": "src/chromiumos/tast/local/bundles/cros/personalization/set_default_user_avatar.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1211724
+      },
+      "writtenOn": "2022-09-21T23:26:33Z",
+      "side": 1,
+      "message": "That is a really good point, thanks!\nDone.",
+      "parentUuid": "d02dc661_d9c71dfd",
       "range": {
         "startLine": 57,
         "startChar": 2,
