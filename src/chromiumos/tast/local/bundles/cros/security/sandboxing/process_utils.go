@@ -12,9 +12,9 @@ import (
 	"regexp"
 	"strconv"
 	"strings"
-	"syscall"
 
 	"github.com/shirou/gopsutil/v3/process"
+	"golang.org/x/sys/unix"
 
 	"chromiumos/tast/errors"
 )
@@ -187,7 +187,7 @@ func GetProcSandboxInfo(proc *process.Process) (*ProcSandboxInfo, error) {
 	// Check whether any mounts that only occur in test images are available to the process.
 	// These are limited to the init mount namespace, so if a process has its own namespace,
 	// it shouldn't have these (assuming that it called pivot_root()).
-	if mnts, err := ReadProcMountpoints(proc.Pid); os.IsNotExist(err) || err == syscall.EINVAL {
+	if mnts, err := ReadProcMountpoints(proc.Pid); os.IsNotExist(err) || err == unix.EINVAL {
 		// mounts files are sometimes missing or unreadable: https://crbug.com/936703#c14
 	} else if err != nil {
 		saveErr(errors.Wrap(err, "failed reading mountpoints"))
@@ -202,7 +202,7 @@ func GetProcSandboxInfo(proc *process.Process) (*ProcSandboxInfo, error) {
 		}
 	}
 
-	if mountInfos, err := ReadProcMountinfo(proc.Pid); os.IsNotExist(err) || err == syscall.EINVAL {
+	if mountInfos, err := ReadProcMountinfo(proc.Pid); os.IsNotExist(err) || err == unix.EINVAL {
 		// mountinfo files are sometimes missing or unreadable.
 	} else if err != nil {
 		saveErr(errors.Wrap(err, "failed reading mountinfo"))

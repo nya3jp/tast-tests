@@ -11,8 +11,9 @@ import (
 	"context"
 	"fmt"
 	"net"
-	"syscall"
 	"time"
+
+	"golang.org/x/sys/unix"
 
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
@@ -179,7 +180,7 @@ func (w *WPR) Close(ctx context.Context) error {
 	var firstErr error
 	if w.proc != nil {
 		// Send SIGINT to exit properly in recording mode.
-		if err := w.proc.Signal(syscall.SIGINT); err != nil {
+		if err := w.proc.Signal(unix.SIGINT); err != nil {
 			firstErr = err
 		}
 
@@ -189,7 +190,7 @@ func (w *WPR) Close(ctx context.Context) error {
 		proc := w.proc
 		go func() {
 			<-ctx.Done()
-			proc.Signal(syscall.SIGKILL)
+			proc.Signal(unix.SIGKILL)
 		}()
 
 		if err := w.proc.Wait(); err != nil && firstErr == nil {
@@ -197,7 +198,7 @@ func (w *WPR) Close(ctx context.Context) error {
 			ws, ok := testexec.GetWaitStatus(err)
 			if !ok {
 				firstErr = errors.Wrap(err, "failed to get wait status")
-			} else if !ws.Signaled() || ws.Signal() != syscall.SIGINT {
+			} else if !ws.Signaled() || ws.Signal() != unix.SIGINT {
 				firstErr = err
 			}
 		}

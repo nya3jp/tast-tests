@@ -11,10 +11,10 @@ import (
 	"net"
 	"net/http"
 	"os"
-	"syscall"
 	"time"
 
 	"github.com/shirou/gopsutil/v3/process"
+	"golang.org/x/sys/unix"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/printing/usbprinter"
@@ -86,7 +86,7 @@ func Kill(ctx context.Context, devInfo usbprinter.DevInfo) error {
 		}
 
 		testing.ContextLog(ctx, "Killing ippusb_bridge with pid ", p.Pid)
-		if err := syscall.Kill(int(p.Pid), syscall.SIGINT); err != nil && err != syscall.ESRCH {
+		if err := unix.Kill(int(p.Pid), unix.SIGINT); err != nil && err != unix.ESRCH {
 			return errors.Wrap(err, "failed to kill ippusb_bridge")
 		}
 

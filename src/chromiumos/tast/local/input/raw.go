@@ -10,9 +10,10 @@ import (
 	"encoding/binary"
 	"io"
 	"os"
-	"syscall"
 	"time"
 	"unsafe"
+
+	"golang.org/x/sys/unix"
 
 	"chromiumos/tast/errors"
 )
@@ -39,7 +40,7 @@ func (ew *RawEventWriter) Close() error {
 
 // Event injects an event containing the supplied values into the device.
 func (ew *RawEventWriter) Event(et EventType, ec EventCode, val int32) error {
-	tv := syscall.NsecToTimeval(ew.nowFunc().UnixNano())
+	tv := unix.NsecToTimeval(ew.nowFunc().UnixNano())
 
 	// input_event contains a timeval struct, which uses "long" for its members.
 	// binary.Write wants explicitly-sized data, so we need to pass a different
@@ -66,7 +67,7 @@ type event32 struct {
 
 // event64 corresponds to a 64-bit input_event struct.
 type event64 struct {
-	Tv         syscall.Timeval
+	Tv         unix.Timeval
 	Type, Code uint16
 	Val        int32
 }

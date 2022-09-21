@@ -6,11 +6,11 @@ package wilco
 
 import (
 	"context"
-	"syscall"
 	"time"
 
 	"github.com/golang/protobuf/proto"
 	"github.com/golang/protobuf/ptypes/empty"
+	"golang.org/x/sys/unix"
 	"google.golang.org/grpc"
 
 	"chromiumos/tast/errors"
@@ -309,8 +309,8 @@ func (c *WilcoService) TestGetStatefulPartitionAvailableCapacity(ctx context.Con
 		return nil, errors.Errorf("unexpected status %d", response.Status)
 	}
 
-	var stat syscall.Statfs_t
-	if err := syscall.Statfs("/mnt/stateful_partition", &stat); err != nil {
+	var stat unix.Statfs_t
+	if err := unix.Statfs("/mnt/stateful_partition", &stat); err != nil {
 		return nil, errors.Wrap(err, "failed to get disk stats for the stateful partition")
 	}
 

@@ -8,11 +8,11 @@ import (
 	"bufio"
 	"context"
 	"encoding/json"
-	"syscall"
 	"time"
 
 	"github.com/golang/protobuf/descriptor"
 	"github.com/golang/protobuf/jsonpb"
+	"golang.org/x/sys/unix"
 
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
@@ -184,7 +184,7 @@ func NewDPSLMessageReceiver(ctx context.Context, opts ...option) (*DPSLMessageRe
 func (rec *DPSLMessageReceiver) Stop(ctx context.Context) {
 	close(rec.stop)
 
-	if err := rec.cmd.Signal(syscall.SIGINT); err != nil {
+	if err := rec.cmd.Signal(unix.SIGINT); err != nil {
 		testing.ContextLog(ctx, "Failed to send signal to the dpsl receiver: ", err)
 	}
 

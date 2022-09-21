@@ -15,10 +15,10 @@ import (
 	"regexp"
 	"strconv"
 	"strings"
-	"syscall"
 	"time"
 
 	"github.com/shirou/gopsutil/v3/process"
+	"golang.org/x/sys/unix"
 
 	"chromiumos/tast/common/testexec"
 	upstartcommon "chromiumos/tast/common/upstart"
@@ -176,7 +176,7 @@ func killMatchingProcesses(ctx context.Context, match func(ctx context.Context, 
 		}
 
 		testing.ContextLogf(ctx, "Killing orphan process (pid=%d, pgid=%d)", p.Pid, pgid)
-		if err := syscall.Kill(-pgid, syscall.SIGKILL); err != nil {
+		if err := unix.Kill(-pgid, unix.SIGKILL); err != nil {
 			testing.ContextLog(ctx, "Failed to kill process: ", err)
 		}
 	}

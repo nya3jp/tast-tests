@@ -40,6 +40,8 @@ import (
 	"syscall"
 	"unsafe"
 
+	"golang.org/x/sys/unix"
+
 	"chromiumos/tast/errors"
 	tastexec "chromiumos/tast/exec"
 	"chromiumos/tast/shutil"
@@ -287,11 +289,11 @@ func (c *Cmd) blockUntilWaitable() error {
 		// Use the same strategy with os/wait_waitid.go.
 		var siginfo [16]uint64
 		const P_PID = 1 // Taken from syscall. NOLINT
-		_, _, err := syscall.Syscall6(syscall.SYS_WAITID, P_PID, uintptr(c.Process.Pid), uintptr(unsafe.Pointer(&siginfo)), syscall.WEXITED|syscall.WNOWAIT, 0, 0)
+		_, _, err := unix.Syscall6(unix.SYS_WAITID, P_PID, uintptr(c.Process.Pid), uintptr(unsafe.Pointer(&siginfo)), unix.WEXITED|unix.WNOWAIT, 0, 0)
 		if err == 0 {
 			return nil
 		}
-		if err != syscall.EINTR {
+		if err != unix.EINTR {
 			return err
 		}
 	}
@@ -316,7 +318,7 @@ func (c *Cmd) done() bool {
 //
 // Even after successful completion of this function, you still need to call
 // Wait to release all associated resources.
-func (c *Cmd) Signal(signal syscall.Signal) error {
+func (c *Cmd) Signal(signal unix.Signal) error {
 	if c.Process == nil {
 		return errNotStarted
 	}
@@ -339,7 +341,7 @@ func (c *Cmd) Signal(signal syscall.Signal) error {
 	}
 
 	// Negative PID means the process group led by the process.
-	return syscall.Kill(-c.Process.Pid, signal)
+	return unix.Kill(-c.Process.Pid, signal)
 }
 
 // Kill sends SIGKILL to the process tree.
@@ -349,7 +351,7 @@ func (c *Cmd) Signal(signal syscall.Signal) error {
 // Even after successful completion of this function, you still need to call
 // Wait to release all associated resources.
 func (c *Cmd) Kill() error {
-	return c.Signal(syscall.SIGKILL)
+	return c.Signal(unix.SIGKILL)
 }
 
 // Cred is a helper function that sets SysProcAttr.Credential to control

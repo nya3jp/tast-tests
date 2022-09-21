@@ -1,11 +1,11 @@
 // Copyright 2018 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
-// found in the LICENSE
+// found in the LICENSE file.
 
 package input
 
 import (
-	"syscall"
+	"golang.org/x/sys/unix"
 )
 
 // iocDir describes the direction data will be transferred during an ioctl.
@@ -62,7 +62,7 @@ func iow(typ, nr uint, size uintptr) uint {
 
 // ioctl makes an ioctl system call against fd using the supplied encoded request and data.
 func ioctl(fd int, req uint, data uintptr) error {
-	if _, _, errno := syscall.RawSyscall(syscall.SYS_IOCTL, uintptr(fd), uintptr(req), data); errno != 0 {
+	if _, _, errno := unix.RawSyscall(unix.SYS_IOCTL, uintptr(fd), uintptr(req), data); errno != 0 {
 		return errno
 	}
 	return nil
