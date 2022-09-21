@@ -90,7 +90,7 @@ func CpufreqConf(ctx context.Context, s *testing.State) {
 		if err != nil {
 			return errors.Wrap(err, "failed to get battery path")
 		}
-		status, err := localpower.ReadBatteryStatus(batteryPath)
+		status, err := localpower.ReadBatteryStatus(ctx, batteryPath)
 		if err != nil {
 			return errors.Wrap(err, "failed to read battery status")
 		}
