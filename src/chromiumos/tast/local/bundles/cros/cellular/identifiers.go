@@ -68,8 +68,10 @@ func Identifiers(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to read Operator Identifier from modemmanager: ", err)
 	}
-	if err := validateIdentifiers("HomeProvide.Code", homeProviderCode, operatorIdentifier, 5, 6); err != nil {
-		s.Fatal("HomeProvide.Code validation failed: ", err)
+	if operatorIdentifier != "" {
+		if err := validateIdentifiers("HomeProvide.Code", homeProviderCode, operatorIdentifier, 5, 6); err != nil {
+			s.Fatal("HomeProvide.Code validation failed: ", err)
+		}
 	}
 
 	iccid, err := helper.GetCurrentICCID(ctx)
