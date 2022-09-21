@@ -33,6 +33,69 @@
       "message": "not sure if Eliot is the best lacros reviewer (he moved around some of the proc stuff already), or someone else. Eliot is out for a few days",
       "revId": "142337bd38f091890e36faeb0ff2012eea38f907",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "97d29d78_2cb47d9c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-09-21T20:40:12Z",
+      "side": 1,
+      "message": "LGTM! Sadly I don\u0027t have an owner\u0027s review, but I believe Eliot can.",
+      "revId": "142337bd38f091890e36faeb0ff2012eea38f907",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c2d6e8f_5d6a5ed5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/sched/core_sched_tag.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-09-21T20:40:12Z",
+      "side": 1,
+      "message": "nit: `cr :\u003d s.FixtValue().(chrome.HasChrome).Chrome()`",
+      "range": {
+        "startLine": 164,
+        "startChar": 7,
+        "endLine": 164,
+        "endChar": 37
+      },
+      "revId": "142337bd38f091890e36faeb0ff2012eea38f907",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf45b92e_31e0115d",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacrosproc/proc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-09-21T20:40:12Z",
+      "side": 1,
+      "message": "nit: filepath.Join(info.LacrosPath, \"chrome\")",
+      "range": {
+        "startLine": 67,
+        "startChar": 37,
+        "endLine": 67,
+        "endChar": 64
+      },
+      "revId": "142337bd38f091890e36faeb0ff2012eea38f907",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
