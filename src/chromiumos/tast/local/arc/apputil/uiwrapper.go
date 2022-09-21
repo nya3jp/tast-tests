@@ -7,11 +7,15 @@ package apputil
 
 import (
 	"context"
+	"strconv"
 	"time"
 
 	"chromiumos/tast/common/action"
 	"chromiumos/tast/common/android/ui"
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/arc"
+	"chromiumos/tast/local/coords"
 	"chromiumos/tast/testing"
 )
 
@@ -104,5 +108,13 @@ func WaitUntilGone(obj *ui.Object, timeout time.Duration) action.Action {
 func SwipeRight(obj *ui.Object, steps int) action.Action {
 	return func(ctx context.Context) error {
 		return obj.SwipeRight(ctx, steps)
+	}
+}
+
+// DragAndDrop performs drag at start point to end point via ADB command.
+func DragAndDrop(a *arc.ARC, start, end coords.Point, duration time.Duration) action.Action {
+	return func(ctx context.Context) error {
+		speed := int(duration.Milliseconds())
+		return a.Command(ctx, "input", "draganddrop", strconv.Itoa(start.X), strconv.Itoa(start.Y), strconv.Itoa(end.X), strconv.Itoa(end.Y), strconv.Itoa(speed)).Run(testexec.DumpLogOnError)
 	}
 }

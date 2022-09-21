@@ -83,7 +83,7 @@ func (yt *Youtube) ClearPrompts(ctx context.Context) error {
 }
 
 // Play opens and plays a video on youtube app.
-func (yt *Youtube) Play(ctx context.Context, media *apputil.Media) (err error) {
+func (yt *Youtube) Play(ctx context.Context, media *apputil.Media) error {
 	if err := yt.ClearPrompts(ctx); err != nil {
 		return errors.Wrap(err, "failed to clear prompts")
 	}
@@ -92,14 +92,17 @@ func (yt *Youtube) Play(ctx context.Context, media *apputil.Media) (err error) {
 
 	searchButton := yt.Device.Object(ui.ID(idPrefix + "menu_item_1"))
 	searchEditText := yt.Device.Object(ui.ID(idPrefix + "search_edit_text"))
-	resultsView := yt.Device.Object(ui.ID(idPrefix + "results"))
+	searchLayoutView := yt.Device.Object(ui.ID(idPrefix + "search_layout"))
 
 	if err := uiauto.Combine("search video by url",
 		apputil.FindAndClick(searchButton, defaultUITimeout),
 		apputil.FindAndClick(searchEditText, defaultUITimeout),
 		yt.KB.TypeAction(media.Query),
-		yt.KB.AccelAction("enter"),
-		apputil.WaitForExists(resultsView, defaultUITimeout),
+		// Press "enter" until the search layout is gone.
+		uiauto.New(yt.Tconn).RetryUntil(
+			yt.KB.AccelAction("enter"),
+			apputil.WaitUntilGone(searchLayoutView, shortTimeout),
+		),
 	)(ctx); err != nil {
 		return err
 	}
@@ -125,5 +128,17 @@ func (yt *Youtube) Play(ctx context.Context, media *apputil.Media) (err error) {
 		}
 	}
 
-	return nil
+	return yt.startFromBeginning(ctx)
+}
+
+// startFromBeginning starts the video to the beginning by dragging the current time node to the most left of the bar.
+func (yt *Youtube) startFromBeginning(ctx context.Context) error {
+	timeBarObj := yt.Device.Object(ui.ClassName("android.widget.SeekBar"))
+
+	timestampsRect, err := timeBarObj.GetBounds(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to get node bounds")
+	}
+
+	return apputil.DragAndDrop(yt.ARC, timestampsRect.CenterPoint(), timestampsRect.LeftCenter(), time.Second)(ctx)
 }
