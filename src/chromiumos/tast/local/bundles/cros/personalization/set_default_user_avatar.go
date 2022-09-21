@@ -33,7 +33,13 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      3 * time.Minute,
-		Fixture:      "chromeLoggedIn",
+		Params: []testing.Param{{
+			Val:     false,
+			Fixture: "chromeLoggedIn",
+		}, {
+			Name: "cloud",
+			Val:  true,
+		}},
 	})
 }
 
@@ -45,7 +51,17 @@ func SetDefaultUserAvatar(ctx context.Context, s *testing.State) {
 		secondImageID   = "53"
 	)
 
-	cr := s.FixtValue().(*chrome.Chrome)
+	var cr *chrome.Chrome
+	if s.Param().(bool) {
+		var err error
+		// TODO(updowndota): remove this when AvatarsCloudMigration is enabled by default.
+		if cr, err = chrome.New(ctx, chrome.EnableFeatures("AvatarsCloudMigration")); err != nil {
+			s.Fatal("Failed to connect to Chrome: ", err)
+		}
+		defer cr.Close(ctx)
+	} else {
+		cr = s.FixtValue().(*chrome.Chrome)
+	}
 
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
