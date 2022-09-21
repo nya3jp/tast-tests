@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea9838bd_b282f7b0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510928
+      },
+      "writtenOn": "2022-09-21T12:39:50Z",
+      "side": 1,
+      "message": "Hi Tast-owner, PTAL thanks.",
+      "revId": "3961c4e240d71f31a47e786532211a7404c91ed5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2840a86a_4240f8a8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510928
+      },
+      "writtenOn": "2022-09-21T12:39:50Z",
+      "side": 1,
+      "message": "Hi Tast-owner, PTAL thanks.",
+      "revId": "3961c4e240d71f31a47e786532211a7404c91ed5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
