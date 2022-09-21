@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5748c982_45c780eb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/bss_tm_request.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2022-09-21T19:25:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df8cfa01_4179226d",
+      "revId": "7c058e5fe94e6367899e9c846ed626119f4f187f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "23c9c70f_a2a964d5",
@@ -48,6 +66,30 @@
       "writtenOn": "2022-09-21T00:03:54Z",
       "side": 1,
       "message": "reassociation delay",
+      "range": {
+        "startLine": 81,
+        "startChar": 54,
+        "endLine": 81,
+        "endChar": 66
+      },
+      "revId": "7c058e5fe94e6367899e9c846ed626119f4f187f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "33c5a184_cdc84692",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/bss_tm_request.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2022-09-21T19:25:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "23c9c70f_a2a964d5",
       "range": {
         "startLine": 81,
         "startChar": 54,
