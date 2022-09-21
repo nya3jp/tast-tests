@@ -16,7 +16,7 @@ import (
 
 const (
 	pingTimeout      = 10 * time.Second
-	googleDotComIPv6 = "ipv6.google.com"
+	googleDotComIPv6 = "ipv6test.google.com"
 	googleDotComIPv4 = "ipv4.google.com"
 )
 
