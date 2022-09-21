@@ -98,6 +98,30 @@
       },
       "revId": "2a899e8ce673fb7b86d6b7567ac9d0d9cf47ac88",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "690a74f5_5283f2a1",
+        "filename": "src/chromiumos/tast/local/mojo/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-09-21T08:11:36Z",
+      "side": 1,
+      "message": "The fixture name should be in the \"chromiumos/tast/common/fixture\" package I linked above. We want to have a central place with all fixture names so you can easily look up which fixtures actually exist.\nJust create a new file in the package for mojo fixtures like this one: https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/common/fixture/autoupdate.go",
+      "parentUuid": "96911c39_4aee5223",
+      "range": {
+        "startLine": 22,
+        "startChar": 8,
+        "endLine": 22,
+        "endChar": 35
+      },
+      "revId": "2a899e8ce673fb7b86d6b7567ac9d0d9cf47ac88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
