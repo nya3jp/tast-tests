@@ -21,6 +21,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/vkb"
 	"chromiumos/tast/local/chrome/useractions"
+	"chromiumos/tast/local/mountns"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -70,6 +71,17 @@ func init() {
 }
 
 func VirtualKeyboardTypingUserMode(ctx context.Context, s *testing.State) {
+	// In order for the "guest_lacros" case to work correctly, we need to
+	// run the test body in the user mount namespace. See b/244513681.
+	if err := mountns.WithUserSessionMountNS(ctx, func(ctx context.Context) error {
+		virtualKeyboardTypingUserMode(ctx, s)
+		return nil
+	}); err != nil {
+		s.Fatal("Failed to run test in correct mount namespace: ", err)
+	}
+}
+
+func virtualKeyboardTypingUserMode(ctx context.Context, s *testing.State) {
 	cr := s.FixtValue().(fixture.FixtData).Chrome
 	tconn := s.FixtValue().(fixture.FixtData).TestAPIConn
 	uc := s.FixtValue().(fixture.FixtData).UserContext
