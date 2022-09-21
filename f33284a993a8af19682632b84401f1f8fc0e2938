@@ -16,6 +16,24 @@
       "message": "any reason we can\u0027t just go right to `int`?",
       "revId": "f33284a993a8af19682632b84401f1f8fc0e2938",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8fb47e97_6a6da97c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_arrangement_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-09-21T22:38:17Z",
+      "side": 1,
+      "message": "Because `interface` just doesn\u0027t work that way. https://go.dev/play/p/V2qcsCh9HlC",
+      "parentUuid": "086d3ceb_59b4ccad",
+      "revId": "f33284a993a8af19682632b84401f1f8fc0e2938",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
