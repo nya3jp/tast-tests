@@ -13,6 +13,9 @@ import (
 	"path/filepath"
 	"strings"
 
+	"android.googlesource.com/platform/external/perfetto/protos/perfetto/metrics/github.com/google/perfetto/perfetto_proto"
+	"github.com/gogo/protobuf/proto"
+
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
@@ -137,13 +140,22 @@ func Trace(ctx context.Context, a *arc.ARC, traceConfigPath, traceResultPath str
 // Metrics use the higher-level query interface that run pre-baked queries called metrics.
 // They defined in Android-AOSP path: external/perfetto/protos/perfetto/metrics/android/
 // It also support customized metrics, see https://perfetto.dev/docs/analysis/metrics
-func Metrics(ctx context.Context, traceResultPath string, metrics ...string) ([]byte, error) {
+func Metrics(ctx context.Context, traceResultPath string, metrics ...string) (*perfetto_proto.TraceMetrics, error) {
 	if err := ensureTraceProcessorExistence(ctx); err != nil {
 		return nil, errors.Wrap(err, "failed to initialize trace processor")
 	}
 
 	// Explicit use python since the tmp filesystem may be mounted with "noexec" option.
-	return testexec.CommandContext(ctx, "python", traceProcessorPath, "--run-metrics", strings.Join(metrics, ","), traceResultPath).Output(testexec.DumpLogOnError)
+	output, err := testexec.CommandContext(ctx, "python", traceProcessorPath, "--run-metrics", strings.Join(metrics, ","), traceResultPath).Output(testexec.DumpLogOnError)
+	if err != nil {
+		return nil, err
+	}
+	metricsProto := &perfetto_proto.TraceMetrics{}
+	if err := proto.UnmarshalText(string(output), metricsProto); err != nil {
+		return nil, errors.Wrap(err, "failed to unmarshal metrics result")
+	}
+
+	return metricsProto, nil
 }
 
 func ensureTempDir() error {
