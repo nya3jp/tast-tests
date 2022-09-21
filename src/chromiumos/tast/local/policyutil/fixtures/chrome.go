@@ -20,7 +20,6 @@ import (
 	"chromiumos/tast/local/chrome/lacros"
 	uifaillog "chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/lockscreen"
-	"chromiumos/tast/local/faillog"
 	"chromiumos/tast/local/logsaver"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/local/syslog"
@@ -394,13 +393,6 @@ func (p *policyChromeFixture) PostTest(ctx context.Context, s *testing.FixtTestS
 	if err := policyutil.RefreshChromePolicies(ctx, p.cr); err != nil {
 		s.Fatal("Failed to clear policies: ", err)
 	}
-
-	// Save screenshot etc. if any of the following goes wrong.
-	defer func() {
-		if s.HasError() {
-			faillog.Save(ctx)
-		}
-	}()
 
 	// Reset Chrome state, including Lacros.
 	if err := lacros.ResetState(ctx, tconn); err != nil {

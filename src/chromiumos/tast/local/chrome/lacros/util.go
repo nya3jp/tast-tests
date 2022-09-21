@@ -68,7 +68,7 @@ func ResetState(ctx context.Context, tconn *chrome.TestConn) error {
 			return errors.Wrap(err, "failed to get Lacros process")
 		} else {
 			testing.ContextLog(ctx, "Lacros is still running, trying to terminate it now")
-			lacrosProc.TerminateWithContext(ctx)
+			lacrosProc.Terminate()
 			if err := procutil.WaitForTerminated(ctx, lacrosProc, 3*time.Second); err != nil {
 				return errors.Wrap(err, "failed to wait for process termination")
 			}
