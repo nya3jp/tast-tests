@@ -92,4 +92,19 @@ func init() {
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
 	})
+	testing.AddFixture(&testing.Fixture{
+		Name: "personalizationWithAvatarsCloudMigration",
+		Desc: "Login with Personalization Hub and Avatars Cloud migration enabled",
+		Contacts: []string{
+			"updowndota@google.com",
+			"chromeos-sw-engprod@google.com",
+			"assistive-eng@google.com",
+		},
+		Impl: chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			return []chrome.Option{chrome.EnableFeatures("AvatarsCloudMigration")}, nil
+		}),
+		SetUpTimeout:    chrome.LoginTimeout,
+		ResetTimeout:    chrome.ResetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+	})
 }
