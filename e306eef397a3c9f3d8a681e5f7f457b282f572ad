@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5165f097_590eeb42",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1429709
+      },
+      "writtenOn": "2022-09-21T20:03:20Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "cbaab7db_f7bca30b",
+      "range": {
+        "startLine": 7,
+        "startChar": 17,
+        "endLine": 7,
+        "endChar": 20
+      },
+      "revId": "e306eef397a3c9f3d8a681e5f7f457b282f572ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c292380b_7902976d",
@@ -37,6 +61,24 @@
       "writtenOn": "2022-09-21T06:35:16Z",
       "side": 1,
       "message": "Kyle, are you working on the UI package now? If so, can you take a look? If not, do you know who is working on it?",
+      "revId": "e306eef397a3c9f3d8a681e5f7f457b282f572ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "09318d96_2d4dab9e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1429709
+      },
+      "writtenOn": "2022-09-21T20:03:20Z",
+      "side": 1,
+      "message": "Obsolete for now",
+      "parentUuid": "c292380b_7902976d",
       "revId": "e306eef397a3c9f3d8a681e5f7f457b282f572ad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -72,6 +114,24 @@
       "side": 1,
       "message": "My suggestion is not to mix JS calls into ui action. You are not using the UI library, and it just adds additional complexity.\nI would prefer changing all the tests that are using `OpenPersonalizationHub`.",
       "parentUuid": "685e623b_66a841c9",
+      "revId": "e306eef397a3c9f3d8a681e5f7f457b282f572ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d2c01fa_7550547c",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1025,
+      "author": {
+        "id": 1429709
+      },
+      "writtenOn": "2022-09-21T20:03:20Z",
+      "side": 1,
+      "message": "Instead of taking that approach, I decided to keep `OpenPersonalizationHub` as right click -\u003e left click on \"Set Wallpaper \u0026 style\". I just made the implementation more robust.",
+      "parentUuid": "f4df4132_cf27818d",
       "revId": "e306eef397a3c9f3d8a681e5f7f457b282f572ad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
