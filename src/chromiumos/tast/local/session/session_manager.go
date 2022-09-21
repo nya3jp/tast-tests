@@ -99,6 +99,16 @@ func (m *SessionManager) EnableChromeTesting(ctx context.Context, forceRelaunch 
 	return filepath, nil
 }
 
+// DisableUIRespawn calls SessionManager.DisableUIRespawn D-Bus method to
+// prevent session_manager from restarting after stopping session.
+func (m *SessionManager) DisableUIRespawn(ctx context.Context) (err error) {
+	ctx, st := timing.Start(ctx, "disable_ui_respawn")
+	defer st.End()
+
+	c := m.call(ctx, "DisableUIRespawn")
+	return c.Err
+}
+
 // EnableChromeTestingAndWait calls EnableChromeTesting and waits for the new
 // chrome process to start up.
 func (m *SessionManager) EnableChromeTestingAndWait(ctx context.Context, forceRelaunch bool,
