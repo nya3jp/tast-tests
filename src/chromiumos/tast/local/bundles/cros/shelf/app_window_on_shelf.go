@@ -7,6 +7,7 @@ package shelf
 import (
 	"context"
 	"fmt"
+	"strings"
 	"time"
 
 	"chromiumos/tast/ctxutil"
@@ -23,6 +24,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/pointer"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 type newInstanceType string
@@ -49,8 +51,9 @@ func init() {
 			Name: "clamshell_mode",
 			Val:  launcher.TestCase{TabletMode: false},
 		}, {
-			Name: "tablet_mode",
-			Val:  launcher.TestCase{TabletMode: true},
+			Name:              "tablet_mode",
+			Val:               launcher.TestCase{TabletMode: true},
+			ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		}},
 	})
 }
@@ -100,7 +103,7 @@ func AppWindowOnShelf(ctx context.Context, s *testing.State) {
 		}
 	}
 
-	// Open the `app` as a tab.
+	// Open the `app` as a tab. The tab should be in the chrome browser window.
 	if err := openAppFromLauncherAs(ctx, tconn, tabletMode, fakeApp, tab); err != nil {
 		s.Fatal("Failed to open app in a new tab for the first time: ", err)
 	}
@@ -111,7 +114,7 @@ func AppWindowOnShelf(ctx context.Context, s *testing.State) {
 	}
 
 	// Wait for the chrome window to open.
-	appWindow, err := ash.WaitForAnyWindowWithTitle(ctx, tconn, chromeBrowser.Name)
+	appWindow, err := waitForAnyVisibleWindowWithTitle(ctx, tconn, chromeBrowser.Name)
 	if err != nil {
 		s.Fatal("Could not find the opened chrome browser that contains the fake app instance: ", err)
 	}
@@ -129,12 +132,16 @@ func AppWindowOnShelf(ctx context.Context, s *testing.State) {
 		s.Fatal("The chrome app is not opened in a new window with an icon on shelf: ", err)
 	}
 
-	appWindow, err = ash.WaitForAnyWindowWithTitle(ctx, tconn, "fake app")
-	if err != nil {
+	// The fake app open its window with the same title as the website title, which is "Google" in this case.
+	if _, err := waitForAnyVisibleWindowWithTitle(ctx, tconn, "Google"); err != nil {
 		s.Fatal("Could not find the opened fake app window: ", err)
 	}
-	if err := ash.SetWindowStateAndWait(ctx, tconn, appWindow.ID, ash.WindowStateMinimized); err != nil {
-		s.Fatal("Could not minimize the opened fake app window: ", err)
+
+	// Close all windows to make sure `waitForAnyVisibleWindowWithTitle` called next time can wait for the newly opened window.
+	if err := ash.ForEachWindow(ctx, tconn, func(w *ash.Window) error {
+		return ash.SetWindowStateAndWait(ctx, tconn, w.ID, ash.WindowStateMinimized)
+	}); err != nil {
+		s.Fatal("Could not minimize all browser app windows: ", err)
 	}
 
 	// Open the `app` as a window.
@@ -142,16 +149,24 @@ func AppWindowOnShelf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to open app in a new window for the second time: ", err)
 	}
 
-	if _, err := ash.WaitForAnyWindowWithTitle(ctx, tconn, "fake app"); err != nil {
+	// The fake app open its window with the same title as the website title, which is "Google" in this case.
+	if _, err := waitForAnyVisibleWindowWithTitle(ctx, tconn, "Google"); err != nil {
 		s.Fatal("Could not find the opened fake app window: ", err)
 	}
 
-	// Open the `app` as a tab.
+	// Close all windows to make sure `waitForAnyVisibleWindowWithTitle` called next time can wait for the newly opened window.
+	if err := ash.ForEachWindow(ctx, tconn, func(w *ash.Window) error {
+		return ash.SetWindowStateAndWait(ctx, tconn, w.ID, ash.WindowStateMinimized)
+	}); err != nil {
+		s.Fatal("Could not minimize all browser app windows: ", err)
+	}
+
+	// Open the `app` as a tab. The tab should be in the chrome browser window.
 	if err := openAppFromLauncherAs(ctx, tconn, tabletMode, fakeApp, tab); err != nil {
 		s.Fatal("Failed to open app in a new tab for the second time: ", err)
 	}
 
-	if _, err := ash.WaitForAnyWindowWithTitle(ctx, tconn, chromeBrowser.Name); err != nil {
+	if _, err := waitForAnyVisibleWindowWithTitle(ctx, tconn, chromeBrowser.Name); err != nil {
 		s.Fatal("Could not find the opened chrome browser that contains the fake app instance: ", err)
 	}
 
@@ -274,4 +289,11 @@ func setLaunchAppAs(ctx context.Context, tconn *chrome.TestConn, newInstanceMenu
 	}
 
 	return nil
+}
+
+// waitForAnyVisibleWindowWithTitle waits for the first window whose title is title to be visible.
+func waitForAnyVisibleWindowWithTitle(ctx context.Context, tconn *chrome.TestConn, title string) (*ash.Window, error) {
+	return ash.WaitForAnyWindow(ctx, tconn, func(w *ash.Window) bool {
+		return strings.Contains(w.Title, title) && w.IsVisible
+	})
 }
