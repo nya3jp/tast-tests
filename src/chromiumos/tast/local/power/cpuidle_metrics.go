@@ -59,11 +59,11 @@ func computeCpuidleStateFiles(ctx context.Context) (map[string][]cpuidleTimeFile
 				continue
 			}
 
-			stateName, err := readFirstLine(path.Join(cpuDir, cpuidle.Name(), "name"))
+			stateName, err := readFirstLine(ctx, path.Join(cpuDir, cpuidle.Name(), "name"))
 			if err != nil {
 				return nil, 0, errors.Wrap(err, "failed to read cpuidle name")
 			}
-			latency, err := readFirstLine(path.Join(cpuDir, cpuidle.Name(), "latency"))
+			latency, err := readFirstLine(ctx, path.Join(cpuDir, cpuidle.Name(), "latency"))
 			if err != nil {
 				return nil, 0, errors.Wrap(err, "failed to read cpuidle latency")
 			}
@@ -121,11 +121,11 @@ func (cs *CpuidleStateMetrics) Setup(ctx context.Context, prefix string) error {
 
 // readCpuidleStateTimes reads the cpuidle timings and return a mapping from cpu idle states and cpu names
 // to the time spent in the state & cpu pairs so far.
-func readCpuidleStateTimes(cpuidleTimeFiles map[string][]cpuidleTimeFile) (map[string](map[string]int64), time.Time, error) {
+func readCpuidleStateTimes(ctx context.Context, cpuidleTimeFiles map[string][]cpuidleTimeFile) (map[string](map[string]int64), time.Time, error) {
 	ret := make(map[string](map[string]int64))
 	for cpuName, files := range cpuidleTimeFiles {
 		for _, file := range files {
-			t, err := readInt64(file.path)
+			t, err := readInt64(ctx, file.path)
 			if err != nil {
 				return nil, time.Time{}, errors.Wrap(err, "failed to read cpuidle timing")
 			}
@@ -145,7 +145,7 @@ func (cs *CpuidleStateMetrics) Start(ctx context.Context) error {
 		return nil
 	}
 
-	stats, statTime, err := readCpuidleStateTimes(cs.cpuidleTimeFiles)
+	stats, statTime, err := readCpuidleStateTimes(ctx, cs.cpuidleTimeFiles)
 	if err != nil {
 		return errors.Wrap(err, "failed to collect initial metrics")
 	}
@@ -186,7 +186,7 @@ func (cs *CpuidleStateMetrics) Snapshot(ctx context.Context, values *perf.Values
 		return nil
 	}
 
-	stats, statTime, err := readCpuidleStateTimes(cs.cpuidleTimeFiles)
+	stats, statTime, err := readCpuidleStateTimes(ctx, cs.cpuidleTimeFiles)
 	if err != nil {
 		return errors.Wrap(err, "failed to collect metrics")
 	}

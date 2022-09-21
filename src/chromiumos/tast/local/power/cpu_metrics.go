@@ -45,7 +45,7 @@ func (c *ProcfsCPUMetrics) Setup(ctx context.Context, prefix string) error {
 
 // Start takes the first snapshot of CPU metrics.
 func (c *ProcfsCPUMetrics) Start(ctx context.Context) error {
-	jiffies, err := readJiffies()
+	jiffies, err := readJiffies(ctx)
 	if err != nil {
 		return errors.Wrap(err, "unable to read CPU usage from /proc/stat")
 	}
@@ -59,8 +59,8 @@ func (c *ProcfsCPUMetrics) Start(ctx context.Context) error {
 // all CPUs. The aggregated value (first line) is used in readJiffies.
 // Therefore, a reported CPU load value of 1.0 indicates 100% CPU usage on all
 // CPUs.
-func readJiffies() (CPUUsageJiffies, error) {
-	line, err := readFirstLine("/proc/stat")
+func readJiffies(ctx context.Context) (CPUUsageJiffies, error) {
+	line, err := readFirstLine(ctx, "/proc/stat")
 	if err != nil {
 		return CPUUsageJiffies{}, err
 	}
@@ -90,7 +90,7 @@ func readJiffies() (CPUUsageJiffies, error) {
 
 // Snapshot takes a snapshot of CPU metrics.
 func (c *ProcfsCPUMetrics) Snapshot(ctx context.Context, values *perf.Values) error {
-	jiffies, err := readJiffies()
+	jiffies, err := readJiffies(ctx)
 	if err != nil {
 		return errors.Wrap(err, "unable to read CPU usage from /proc/stat")
 	}

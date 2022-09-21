@@ -609,7 +609,7 @@ func MeasureSystemPowerConsumption(ctx context.Context, c *chrome.TestConn, t ti
 			return errors.Wrap(err, "error sleeping")
 		}
 
-		power, err := power.ReadSystemPower(battery)
+		power, err := power.ReadSystemPower(ctx, battery)
 		if err != nil {
 			return err
 		}
