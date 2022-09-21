@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66947b48_e4e9fe37",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/intel/lid_close_open_suspend_stress.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-09-21T21:41:06Z",
+      "side": 1,
+      "message": "is this used across many tests? If not, according to https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#test-runtime-variables it should be named `intel.LidCloseOpenSuspendStress.iterations`",
+      "range": {
+        "startLine": 28,
+        "startChar": 34,
+        "endLine": 28,
+        "endChar": 52
+      },
+      "revId": "cb508f6eb4412572754215f59960204005959ced",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9387e497_75cfce0e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/intel/lid_close_open_suspend_stress.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-09-21T21:41:06Z",
+      "side": 1,
+      "message": "The 500 is a default for the var, right? It might be more or less than that?\n\nMaybe just make this a straight hour and leave out the comment.",
+      "revId": "cb508f6eb4412572754215f59960204005959ced",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
