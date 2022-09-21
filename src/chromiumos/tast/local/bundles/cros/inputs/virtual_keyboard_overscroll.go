@@ -38,11 +38,13 @@ func init() {
 				Name:      "tablet",
 				Fixture:   fixture.TabletVK,
 				ExtraAttr: []string{"group:input-tools-upstream"},
+				ExtraAttr: []string{"informational"},
 			},
 			{
 				Name:      "clamshell",
 				Fixture:   fixture.ClamshellVK,
 				ExtraAttr: []string{"group:input-tools-upstream"},
+				ExtraAttr: []string{"informational"},
 			},
 			{
 				Name:              "lacros",
