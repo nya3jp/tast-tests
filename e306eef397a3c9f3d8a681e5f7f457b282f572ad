@@ -3,6 +3,46 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cbaab7db_f7bca30b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-09-21T06:35:16Z",
+      "side": 1,
+      "message": "nit: `Use`",
+      "range": {
+        "startLine": 7,
+        "startChar": 17,
+        "endLine": 7,
+        "endChar": 20
+      },
+      "revId": "e306eef397a3c9f3d8a681e5f7f457b282f572ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c292380b_7902976d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-09-21T06:35:16Z",
+      "side": 1,
+      "message": "Kyle, are you working on the UI package now? If so, can you take a look? If not, do you know who is working on it?",
+      "revId": "e306eef397a3c9f3d8a681e5f7f457b282f572ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "685e623b_66a841c9",
         "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
         "patchSetId": 1
@@ -14,6 +54,24 @@
       "writtenOn": "2022-09-20T23:57:15Z",
       "side": 1,
       "message": "I couldn\u0027t find a better way to accomplish what I wanted than to add this until automation.go. Personalization test code relies heavily on uiauto.Action, and I didn\u0027t want to modify all call sites of `OpenPersonalizationHub` to also pass along a `tconn` when it was already present in `uiauto.Context`.\n\nis this acceptable, or are there other suggestions for mixing the SWA code with `uiauto.Action` in a better way?",
+      "revId": "e306eef397a3c9f3d8a681e5f7f457b282f572ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4df4132_cf27818d",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1025,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-09-21T06:35:16Z",
+      "side": 1,
+      "message": "My suggestion is not to mix JS calls into ui action. You are not using the UI library, and it just adds additional complexity.\nI would prefer changing all the tests that are using `OpenPersonalizationHub`.",
+      "parentUuid": "685e623b_66a841c9",
       "revId": "e306eef397a3c9f3d8a681e5f7f457b282f572ad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
