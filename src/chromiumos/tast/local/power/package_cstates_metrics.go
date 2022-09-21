@@ -150,7 +150,7 @@ func fetchPackageStates() (map[string]int64, error) {
 }
 
 // findCPUPerPackage returns a slice that contains 1 CPU from each package.
-func findCPUPerPackage() ([]int, error) {
+func findCPUPerPackage(ctx context.Context) ([]int, error) {
 	packages := make(map[int]int)
 	cpuInfos, err := ioutil.ReadDir("/dev/cpu")
 	if err != nil {
@@ -170,7 +170,7 @@ func findCPUPerPackage() ([]int, error) {
 			return nil, errors.Wrap(err, "failed to determine package")
 		}
 
-		pkg, err := readInt64(path)
+		pkg, err := readInt64(ctx, path)
 		if err != nil {
 			return nil, errors.Wrap(err, "failed to parse package")
 		}
@@ -256,7 +256,7 @@ func (cs *PackageCStatesMetrics) Setup(ctx context.Context, prefix string) error
 		testing.ContextLog(ctx, "Failed to find package C-states")
 		return nil
 	}
-	perPackageCPUs, err := findCPUPerPackage()
+	perPackageCPUs, err := findCPUPerPackage(ctx)
 	if err != nil {
 		return errors.Wrap(err, "error finding per package cpus")
 	}
