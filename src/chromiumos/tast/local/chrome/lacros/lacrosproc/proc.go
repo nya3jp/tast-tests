@@ -53,3 +53,16 @@ func ProcsFromPath(ctx context.Context, path string) ([]*process.Process, error)
 
 	return procs, nil
 }
+
+// RendererProcesses returns lacros-chrome renderer processes. See also
+// chromiumos/tast/local/chrome/chromeproc's RendererProcesses(), for ash-chrome.
+func RendererProcesses(ctx context.Context, tconn *chrome.TestConn) ([]*process.Process, error) {
+	info, err := lacrosinfo.Snapshot(ctx, tconn)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to retrieve lacrosinfo")
+	}
+	if len(info.LacrosPath) == 0 {
+		return nil, errors.Wrap(err, "lacros is not running (received empty LacrosPath)")
+	}
+	return chromeproc.RendererProcesses(info.LacrosPath + "/chrome")
+}
