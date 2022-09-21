@@ -37,6 +37,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "893cccc1_b4d9b847",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2022-09-21T14:14:44Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "64fdaed0_7c283566",
+      "revId": "06299b0af20e2a6adbc4f7043fe4128c0d9c4f30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "728ba225_4bdf604b",
         "filename": "src/chromiumos/tast/local/chrome/uiauto/printpreview/printpreview.go",
         "patchSetId": 2
