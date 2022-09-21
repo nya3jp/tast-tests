@@ -122,6 +122,30 @@
       },
       "revId": "2a899e8ce673fb7b86d6b7567ac9d0d9cf47ac88",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1396a6ba_2d6b14bf",
+        "filename": "src/chromiumos/tast/local/mojo/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2022-09-21T08:51:57Z",
+      "side": 1,
+      "message": "I think I have already done that. What do I missing?",
+      "parentUuid": "690a74f5_5283f2a1",
+      "range": {
+        "startLine": 22,
+        "startChar": 8,
+        "endLine": 22,
+        "endChar": 35
+      },
+      "revId": "2a899e8ce673fb7b86d6b7567ac9d0d9cf47ac88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
