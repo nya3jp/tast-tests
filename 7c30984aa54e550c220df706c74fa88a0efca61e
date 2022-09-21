@@ -16,6 +16,24 @@
       "message": "I would still `return server, conn, nil` here just to make things explicit.",
       "revId": "7c30984aa54e550c220df706c74fa88a0efca61e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9952e789_b289bd44",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns_proxy_over_vpn.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2022-09-21T01:02:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c1aef829_31834194",
+      "revId": "7c30984aa54e550c220df706c74fa88a0efca61e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
