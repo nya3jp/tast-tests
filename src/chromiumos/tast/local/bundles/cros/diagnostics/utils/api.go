@@ -6,7 +6,8 @@ package utils
 
 import (
 	"context"
-	"fmt"
+	// Used to embed api_wrapper.js in string variable `systemDataProviderJs`.
+	_ "embed"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
@@ -14,38 +15,8 @@ import (
 
 // systemDataProviderJs is a stringified JS file that exposes the SystemDataProvider mojo
 // API.
-const systemDataProviderJs = `
-/**
- * @fileoverview A wrapper file around the diagnostics API.
- */
-function() {
-	return {
-    /**
-     * SystemDataProvider mojo remote.
-     * @private {?chromeos.diagnostics.mojom.SystemDataProviderRemote}
-     */
-    systemDataProvider_: null,
-
-		getSystemDataProvider() {
-			if (!this.systemDataProvider_) {
-				const hasAshMojom = typeof ash !== "undefined" &&
-                            typeof ash.diagnostics !== "undefined";
-        this.systemDataProvider_ = hasAshMojom ?
-						ash.diagnostics.mojom.SystemDataProvider.getRemote() :
-            chromeos.diagnostics.mojom.SystemDataProvider.getRemote();
-			}
-			return this.systemDataProvider_;
-		},
-
-		async fetchSystemInfo() {
-			const result = await this.getSystemDataProvider().getSystemInfo();
-			// Log for debug purpose.
-			console.log("result.systemInfo from tast: ", result.systemInfo);
-			return result.systemInfo;
-		}
-	}
-}
-`
+//go:embed api_wrapper.js
+var systemDataProviderJs string
 
 // MojoAPI is a struct that encapsulates a SystemDataProvider mojo remote.
 type MojoAPI struct {
@@ -66,7 +37,7 @@ func SystemDataProviderMojoAPI(ctx context.Context, conn *chrome.Conn) (*MojoAPI
 
 // RunFetchSystemInfo calls into the injected SystemDataProvider mojo API.
 func (m *MojoAPI) RunFetchSystemInfo(ctx context.Context) error {
-	jsWrap := fmt.Sprintf("function() { return this.fetchSystemInfo() }")
+	jsWrap := "function() { return this.fetchSystemInfo() }"
 	if err := m.mojoRemote.Call(ctx, nil, jsWrap); err != nil {
 		return errors.Wrap(err, "failed to run fetchSystemInfo")
 	}
