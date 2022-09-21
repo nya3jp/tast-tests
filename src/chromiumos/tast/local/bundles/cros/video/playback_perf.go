@@ -48,7 +48,8 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Data: []string{"video.html", "playback.js",
 			tracing.TraceProcessorAmd64, tracing.TraceProcessorArm, tracing.TraceProcessorArm64,
-			playback.TraceConfigFile, playback.GPUThreadSchedSQLFile},
+			playback.TraceConfigFile, playback.GPUThreadSchedSQLFile,
+			playback.CPUIdleWakeupsSQLFile},
 		// Default timeout (i.e. 2 minutes) is not enough for low-end devices.
 		Timeout: 5 * time.Minute,
 		Params: []testing.Param{

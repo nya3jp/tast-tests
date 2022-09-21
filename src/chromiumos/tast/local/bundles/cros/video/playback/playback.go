@@ -57,6 +57,9 @@ const (
 	// GPUThreadSchedSQLFile is the sql script to count the number of context
 	// switches and its waiting duration from the perfetto output.
 	GPUThreadSchedSQLFile = "gpu_thread_sched.sql"
+	// CPUIdleWakeupsSQLFile is the sql script to count the number of CPU idle
+	// wake ups.
+	CPUIdleWakeupsSQLFile = "cpu_idle_wakeups.sql"
 
 	// Video Element in the page to play a video.
 	videoElement = "document.getElementsByTagName('video')[0]"
@@ -171,6 +174,7 @@ func measurePerformance(ctx context.Context, s *testing.State, cs ash.ConnSource
 	}
 
 	var roughness float64
+	var idleWakeups uint64
 	var gpuCSStat, gpuDecCSStat contextSwitchStat
 	var gpuErr, cStateErr, cpuErr, fdErr, dramErr, batErr, roughnessErr, traceErr error
 	var wg sync.WaitGroup
@@ -213,7 +217,7 @@ func measurePerformance(ctx context.Context, s *testing.State, cs ash.ConnSource
 		wg.Add(1)
 		go func() {
 			defer wg.Done()
-			gpuCSStat, gpuDecCSStat, traceErr = measureContextSwitch(ctx, s)
+			gpuCSStat, gpuDecCSStat, idleWakeups, traceErr = measureTraceEvents(ctx, s)
 		}()
 	}
 
@@ -284,6 +288,11 @@ func measurePerformance(ctx context.Context, s *testing.State, cs ash.ConnSource
 			Unit:      "ms",
 			Direction: perf.SmallerIsBetter,
 		}, float64(gpuDecCSStat.avgDuration.Milliseconds()))
+		p.Set(perf.Metric{
+			Name:      "cpu_idle_wakeups",
+			Unit:      "count",
+			Direction: perf.SmallerIsBetter,
+		}, float64(idleWakeups))
 	}
 	if err := conn.Eval(ctx, videoElement+".pause()", nil); err != nil {
 		return errors.Wrap(err, "failed to stop video")
@@ -327,38 +336,9 @@ func sampleDroppedFrames(ctx context.Context, conn *chrome.Conn, p *perf.Values)
 	return nil
 }
 
-// measureContextSwitch measure the number of context switches in GPU process and its average waiting duration.
-// gpu represents the values of all the threads in GPU process.
-// gpuDec represents the values of hardware decoder threads.
-func measureContextSwitch(ctx context.Context, s *testing.State) (gpu, gpuDec contextSwitchStat, err error) {
-	if err := testing.Sleep(ctx, stabilizationDuration); err != nil {
-		return gpu, gpuDec, err
-	}
-
-	testing.ContextLog(ctx, "Tracing scheduler events")
-	// Record system events for |measurementDuration|.
-	sess, err := tracing.StartSession(ctx, s.DataPath(TraceConfigFile))
-	if err != nil {
-		return gpu, gpuDec, errors.Wrap(err, "failed to start tracing")
-	}
-	// Stop tracing even if context deadline exceeds during sleep.
-	stopped := false
-	defer func() {
-		if !stopped {
-			sess.Stop()
-		}
-	}()
-
-	if err := testing.Sleep(ctx, measurementDuration); err != nil {
-		return gpu, gpuDec, errors.Wrap(err, "failed to sleep to wait for the tracing session")
-	}
-	stopped = true
-	if err := sess.Stop(); err != nil {
-		return gpu, gpuDec, errors.Wrap(err, "failed to stop tracing")
-	}
-	defer sess.RemoveTraceResultFile()
-	testing.ContextLog(ctx, "Completed tracing events")
-
+// computeContextSwitches acquires the number of thread context switches in GPU process
+// and its average waiting duration from the tracing session.
+func computeContextSwitches(ctx context.Context, s *testing.State, sess *tracing.Session) (gpu, gpuDec contextSwitchStat, err error) {
 	results, err := sess.RunQuery(ctx, s.DataPath(tracing.TraceProcessor()), s.DataPath(GPUThreadSchedSQLFile))
 	if err != nil {
 		return gpu, gpuDec, errors.Wrap(err, "failed in querying")
@@ -406,4 +386,85 @@ func measureContextSwitch(ctx context.Context, s *testing.State) (gpu, gpuDec co
 	gpuDec.count = decThreadsSwitches
 	gpuDec.avgDuration = time.Duration(decThreadsSumRunnableDur/decThreadsRunnableCnt) * time.Microsecond
 	return gpu, gpuDec, nil
+}
+
+func computeIdleWakeups(ctx context.Context, s *testing.State, sess *tracing.Session) (idleWakeups uint64, err error) {
+	results, err := sess.RunQuery(ctx, s.DataPath(tracing.TraceProcessor()), s.DataPath(CPUIdleWakeupsSQLFile))
+	if err != nil {
+		return idleWakeups, errors.Wrap(err, "failed in querying")
+	}
+
+	for i, res := range results[1:] { // Skip, the first line, "utid", "name", "name", "count(*)"
+		const (
+			utidIdx = iota
+			thNameIdx
+			prNameIdx
+			cntIdx
+		)
+		thName := res[thNameIdx]
+		prName := res[prNameIdx]
+
+		cnt, err := strconv.ParseUint(res[cntIdx], 10, 64)
+		if err != nil {
+			return idleWakeups, errors.Wrapf(err, "failed to convert to integer, %s", res[cntIdx])
+		}
+
+		// Output the top 10 threads causing the cpu idle wakeups.
+		if i < 10 {
+			testing.ContextLogf(ctx, "%d: thread=%s, process=%s, wakeups=%d", i, thName, prName, cnt)
+		}
+
+		// Don't count wakeups by traced and traced_probes.
+		if !strings.Contains(prName, "traced") {
+			idleWakeups += cnt
+		}
+
+	}
+	testing.ContextLogf(ctx, "idle wakeups: %d", idleWakeups)
+	return idleWakeups, nil
+}
+
+// measureTraceEvents gets the following metrics using tracing:
+// * the number of thread context switches in GPU process
+// * the average waiting duration of the switches
+// * the number of cpu idle wakeups on the entire system
+func measureTraceEvents(ctx context.Context, s *testing.State) (gpu, gpuDec contextSwitchStat, idleWakeups uint64, err error) {
+	if err := testing.Sleep(ctx, stabilizationDuration); err != nil {
+		return gpu, gpuDec, idleWakeups, err
+	}
+
+	testing.ContextLog(ctx, "Tracing scheduler events")
+	// Record system events for |measurementDuration|.
+	sess, err := tracing.StartSession(ctx, s.DataPath(TraceConfigFile))
+	if err != nil {
+		return gpu, gpuDec, idleWakeups, errors.Wrap(err, "failed to start tracing")
+	}
+	// Stop tracing even if context deadline exceeds during sleep.
+	stopped := false
+	defer func() {
+		if !stopped {
+			sess.Stop()
+		}
+	}()
+
+	if err := testing.Sleep(ctx, measurementDuration); err != nil {
+		return gpu, gpuDec, idleWakeups, errors.Wrap(err, "failed to sleep to wait for the tracing session")
+	}
+	stopped = true
+	if err := sess.Stop(); err != nil {
+		return gpu, gpuDec, idleWakeups, errors.Wrap(err, "failed to stop tracing")
+	}
+	defer sess.RemoveTraceResultFile()
+	testing.ContextLog(ctx, "Completed tracing events")
+
+	gpu, gpuDec, err = computeContextSwitches(ctx, s, sess)
+	if err != nil {
+		return gpu, gpuDec, idleWakeups, errors.Wrap(err, "failed to get context switches")
+	}
+	idleWakeups, err = computeIdleWakeups(ctx, s, sess)
+	if err != nil {
+		return gpu, gpuDec, idleWakeups, errors.Wrap(err, "failed to get cpu idle wakeups")
+
+	}
+	return gpu, gpuDec, idleWakeups, nil
 }
