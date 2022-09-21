@@ -92,6 +92,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e331b90f_c393b038",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/config_verify.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2022-09-21T05:04:02Z",
+      "side": 1,
+      "message": "To make sure I am not misunderstanding, if we add a new softwaredep \"upstream_kernel\", does it need to be determined at build time?\n\nFor example, what if a DUT installed ChromeOS image (without \"upstream_kernel\" flag), however, we replaced the kernel version to upstream kernel?\n\nI agree with the naming part.  Will fix it if the patch has next version.",
+      "parentUuid": "28dc0c34_e789c8c3",
+      "revId": "7226cdac13f86d99e4da7765a494a1c5c0de5ea3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9321b8f0_60299363",
         "filename": "src/chromiumos/tast/local/bundles/cros/kernel/config_verify.go",
         "patchSetId": 3
@@ -139,6 +157,24 @@
       "side": 1,
       "message": "As Seewai points out, the right way to fix this is to use softwaredeps.",
       "parentUuid": "e709359c_249e5103",
+      "revId": "7226cdac13f86d99e4da7765a494a1c5c0de5ea3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9bcc5926_36a3a00c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/config_verify.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2022-09-21T05:04:02Z",
+      "side": 1,
+      "message": "To make sure I understand: using softwaredeps implies we should separate the testcases for ChromeOS and ChromiumOS (as what Jeff suggested)?",
+      "parentUuid": "12f6233c_d9ddcb0b",
       "revId": "7226cdac13f86d99e4da7765a494a1c5c0de5ea3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
