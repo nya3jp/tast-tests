@@ -76,6 +76,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "88f0967c_31cdcfbe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/proxysettings/proxy_settings.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-09-21T11:33:40Z",
+      "side": 1,
+      "message": "Done, added the descriptions to [proxy_settings.go:5](https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3831752/9/src/chromiumos/tast/local/bundles/cros/network/proxysettings/proxy_settings.go#5)",
+      "parentUuid": "2f9ebafa_94c174df",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 45
+      },
+      "revId": "c5c98c7b39839ff75457c0fe643c5d737131e49f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7596bbc9_fea98f35",
@@ -99,6 +123,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e829adbd_6533c772",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/proxysettings/proxy_settings.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-09-21T11:33:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7596bbc9_fea98f35",
+      "range": {
+        "startLine": 114,
+        "startChar": 5,
+        "endLine": 114,
+        "endChar": 25
+      },
+      "revId": "c5c98c7b39839ff75457c0fe643c5d737131e49f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dc9c5804_faf5f8c1",
@@ -112,6 +160,30 @@
       "writtenOn": "2022-09-20T07:32:09Z",
       "side": 1,
       "message": "Nit: See renaming comment above.",
+      "range": {
+        "startLine": 133,
+        "startChar": 5,
+        "endLine": 133,
+        "endChar": 41
+      },
+      "revId": "c5c98c7b39839ff75457c0fe643c5d737131e49f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "32202dee_e8a13962",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/proxysettings/proxy_settings.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-09-21T11:33:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dc9c5804_faf5f8c1",
       "range": {
         "startLine": 133,
         "startChar": 5,
