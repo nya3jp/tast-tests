@@ -35,6 +35,14 @@ const (
 	SimpleModemPropertyRegState = "m3gpp-registration-state"
 )
 
+// ModemManager1.Modem.Signal properties
+const (
+	SignalPropertyLte     = "Lte"
+	SignalPropertyLteRsrp = "rsrp"
+	SignalPropertyLteRsrq = "rsrq"
+	SignalPropertyLteSnr  = "snr"
+)
+
 // ModemManager1.Sim properties
 const (
 	SimPropertySimIMSI               = "Imsi"

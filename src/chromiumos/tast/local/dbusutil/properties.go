@@ -49,6 +49,19 @@ func (p *Properties) Get(prop string) (interface{}, error) {
 	return value, nil
 }
 
+// GetMap returns the property value as nested set of properties.
+func (p *Properties) GetMap(prop string) (*Properties, error) {
+	value, err := p.Get(prop)
+	if err != nil {
+		return nil, err
+	}
+	ret, ok := value.(map[string]interface{})
+	if !ok {
+		return nil, errors.Errorf("property %s is not a map: %q", prop, value)
+	}
+	return NewProperties(ret), nil
+}
+
 // GetString returns string property value.
 func (p *Properties) GetString(prop string) (string, error) {
 	value, err := p.Get(prop)
@@ -162,6 +175,19 @@ func (p *Properties) GetUint32(prop string) (uint32, error) {
 	ret, ok := value.(uint32)
 	if !ok {
 		return 0, errors.Errorf("property %s is not a uint32: %q", prop, value)
+	}
+	return ret, nil
+}
+
+// GetFloat64 returns the property value as float64.
+func (p *Properties) GetFloat64(prop string) (float64, error) {
+	value, err := p.Get(prop)
+	if err != nil {
+		return 0, err
+	}
+	ret, ok := value.(float64)
+	if !ok {
+		return 0, errors.Errorf("property %s is not a float64: %q", prop, value)
 	}
 	return ret, nil
 }
