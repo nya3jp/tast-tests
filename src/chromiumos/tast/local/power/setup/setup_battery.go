@@ -47,15 +47,15 @@ func SetBatteryDischarge(ctx context.Context, expectedMaxCapacityDischarge float
 	if err != nil {
 		return nil, err
 	}
-	capacity, err := power.ReadBatteryCapacity(devPath)
+	capacity, err := power.ReadBatteryCapacity(ctx, devPath)
 	if err != nil {
 		return nil, err
 	}
-	energy, err := power.ReadBatteryEnergy(devPath)
+	energy, err := power.ReadBatteryEnergy(ctx, devPath)
 	if err != nil {
 		return nil, err
 	}
-	status, err := power.ReadBatteryStatus(devPath)
+	status, err := power.ReadBatteryStatus(ctx, devPath)
 	if err != nil {
 		return nil, err
 	}
@@ -75,11 +75,11 @@ func SetBatteryDischarge(ctx context.Context, expectedMaxCapacityDischarge float
 	return func(ctx context.Context) error {
 		dischargePercent := 0.0
 		dischargeWh := 0.0
-		capacityAfterTest, err := power.ReadBatteryCapacity(devPath)
+		capacityAfterTest, err := power.ReadBatteryCapacity(ctx, devPath)
 		if err == nil {
 			dischargePercent = capacity - capacityAfterTest
 		}
-		energyAfterTest, err := power.ReadBatteryEnergy(devPath)
+		energyAfterTest, err := power.ReadBatteryEnergy(ctx, devPath)
 		if err == nil {
 			dischargeWh = energy - energyAfterTest
 		}

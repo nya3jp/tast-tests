@@ -87,9 +87,9 @@ type batteryState struct {
 
 var _ perf.TimelineDatasource = &batteryState{}
 
-func (b *batteryState) Setup(_ context.Context, prefix string) error {
+func (b *batteryState) Setup(ctx context.Context, prefix string) error {
 	// Obtain the status before modifying internal state.
-	status, err := power.ReadBatteryStatus(b.sysfsPowerPath)
+	status, err := power.ReadBatteryStatus(ctx, b.sysfsPowerPath)
 	if err != nil {
 		return err
 	}
