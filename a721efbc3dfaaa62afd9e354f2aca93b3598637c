@@ -33,6 +33,24 @@
       "message": "nit: Can you please add a comment here of an example output of the successful command?",
       "revId": "a721efbc3dfaaa62afd9e354f2aca93b3598637c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8fcf7d33_60b7f104",
+        "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2022-09-21T21:57:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b3f6f2fe_b51a4c22",
+      "revId": "a721efbc3dfaaa62afd9e354f2aca93b3598637c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
