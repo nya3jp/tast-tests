@@ -70,7 +70,7 @@ func CCAUIQRCode(ctx context.Context, s *testing.State) {
 		"qrcode_text_1280x960.mjpeg",
 		qrcodeTestParams{
 			format:     "text",
-			expected:   "Chrome OS is the speedy, simple and secure operating system that powers every Chromebook.",
+			expected:   "ChromeOS is the speedy, simple and secure operating system that powers every Chromebook.",
 			chip:       cca.BarcodeChipText,
 			copyButton: cca.BarcodeCopyTextButton,
 			canOpen:    false,
