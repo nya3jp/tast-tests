@@ -34,6 +34,24 @@
       "parentUuid": "28eafbf1_476f79ad",
       "revId": "10c92e793ee4efb38497d5199611fcdb21d7ce2e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72ec6743_9cb72d0b",
+        "filename": "src/chromiumos/tast/local/modemmanager/modem.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 648,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2022-09-21T11:10:02Z",
+      "side": 0,
+      "message": "ok, So far I do not see we have requested PIN/PUK codes from operators. Have to do for all such duts having eSIM.",
+      "parentUuid": "ac87645f_f53512ca",
+      "revId": "10c92e793ee4efb38497d5199611fcdb21d7ce2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
