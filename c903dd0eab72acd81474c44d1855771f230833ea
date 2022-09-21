@@ -39,6 +39,30 @@
       },
       "revId": "c903dd0eab72acd81474c44d1855771f230833ea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd72719b_adc3102b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hdrnet_e2e.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1001646
+      },
+      "writtenOn": "2022-09-21T02:33:21Z",
+      "side": 1,
+      "message": "We assert there\u0027s only one value in the histogram buckets (line 155), so what we really verify is the exact value of the histogram. I get the value using `m.Mean()` because it\u0027s easier than parsing the contents of `m.Buckets`.",
+      "parentUuid": "e14f7dbf_17340f2a",
+      "range": {
+        "startLine": 150,
+        "startChar": 15,
+        "endLine": 150,
+        "endChar": 20
+      },
+      "revId": "c903dd0eab72acd81474c44d1855771f230833ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
