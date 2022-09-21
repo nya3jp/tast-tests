@@ -23,6 +23,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/pointer"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 type newInstanceType string
@@ -49,8 +50,9 @@ func init() {
 			Name: "clamshell_mode",
 			Val:  launcher.TestCase{TabletMode: false},
 		}, {
-			Name: "tablet_mode",
-			Val:  launcher.TestCase{TabletMode: true},
+			Name:              "tablet_mode",
+			Val:               launcher.TestCase{TabletMode: true},
+			ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		}},
 	})
 }
@@ -129,7 +131,7 @@ func AppWindowOnShelf(ctx context.Context, s *testing.State) {
 		s.Fatal("The chrome app is not opened in a new window with an icon on shelf: ", err)
 	}
 
-	appWindow, err = ash.WaitForAnyWindowWithTitle(ctx, tconn, "fake app")
+	appWindow, err = ash.WaitForAnyWindowWithTitle(ctx, tconn, chromeBrowser.Name)
 	if err != nil {
 		s.Fatal("Could not find the opened fake app window: ", err)
 	}
@@ -142,7 +144,7 @@ func AppWindowOnShelf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to open app in a new window for the second time: ", err)
 	}
 
-	if _, err := ash.WaitForAnyWindowWithTitle(ctx, tconn, "fake app"); err != nil {
+	if _, err := ash.WaitForAnyWindowWithTitle(ctx, tconn, chromeBrowser.Name); err != nil {
 		s.Fatal("Could not find the opened fake app window: ", err)
 	}
 
