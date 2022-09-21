@@ -35,8 +35,9 @@ func init() {
 		Vars:         []string{"ui.gaiaPoolDefault"},
 		HardwareDeps: hwdep.D(hwdep.FormFactor(hwdep.Clamshell)),
 		Params: []testing.Param{{
-			Name: "default_fake_login",
-			Val:  &pb.NewRequest{},
+			Name:      "default_fake_login",
+			Val:       &pb.NewRequest{},
+			ExtraAttr: []string{"group:mainline", "informational"},
 		}, {
 			Name: "fake_login",
 			Val: &pb.NewRequest{
