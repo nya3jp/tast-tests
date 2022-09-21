@@ -85,6 +85,11 @@ func (s *Spotify) Play(ctx context.Context, song *apputil.Media) error {
 			return errors.Wrap(err, "failed to search song and play")
 		}
 	}
+	// Sometimes the plan page will pop up, click "DISMISS" to skip the page.
+	dismissButton := s.Device.Object(ui.Text("DISMISS"))
+	if err := apputil.ClickIfExist(dismissButton, shortUITimeout)(ctx); err != nil {
+		return errors.Wrap(err, "failed to dismiss the plan page")
+	}
 
 	testing.ContextLog(ctx, "Verify that Spotify is playing")
 	pauseButton := s.Device.Object(ui.ID(playPauseButtonID), ui.Enabled(true), ui.Description("Pause"))
