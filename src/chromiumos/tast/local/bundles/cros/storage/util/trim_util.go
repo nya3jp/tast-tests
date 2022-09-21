@@ -9,8 +9,9 @@ import (
 	"encoding/hex"
 	"math/rand"
 	"os"
-	"syscall"
 	"unsafe"
+
+	"golang.org/x/sys/unix"
 
 	"chromiumos/tast/errors"
 )
@@ -32,8 +33,8 @@ type trimArgs struct {
 
 // RunTrim invokes ioctl trim command.
 func RunTrim(f *os.File, offset, size uint64) error {
-	_, _, errCode := syscall.RawSyscall(
-		syscall.SYS_IOCTL,
+	_, _, errCode := unix.RawSyscall(
+		unix.SYS_IOCTL,
 		uintptr(f.Fd()),
 		blkdiscardIoctlCommand,
 		uintptr(unsafe.Pointer(&trimArgs{offset: offset * TrimChunkSize, size: size})))

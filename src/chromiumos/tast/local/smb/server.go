@@ -9,8 +9,9 @@ import (
 	"io/ioutil"
 	"path/filepath"
 	"strings"
-	"syscall"
 	"time"
+
+	"golang.org/x/sys/unix"
 
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/ctxutil"
@@ -58,7 +59,7 @@ func (s *Server) Stop(ctx context.Context) error {
 	defer cancel()
 
 	// Attempt to send a SIGTERM to smbd.
-	if err := s.cmd.Signal(syscall.SIGTERM); err != nil {
+	if err := s.cmd.Signal(unix.SIGTERM); err != nil {
 		return errors.Wrap(err, "failed to send SIGTERM to smbd")
 	}
 
@@ -127,7 +128,7 @@ func terminateRunningSmbdInstances(ctx context.Context) (retErr error) {
 	}
 	testing.ContextLogf(ctx, "Found %d running smbd instances, terminating them", len(instances))
 	for _, proc := range instances {
-		if err = proc.SendSignal(syscall.SIGTERM); err != nil {
+		if err = proc.SendSignal(unix.SIGTERM); err != nil {
 			retErr = errors.Wrap(err, "failed to terminate smbd instance")
 		}
 	}

@@ -8,9 +8,10 @@ import (
 	"bytes"
 	"fmt"
 	"reflect"
-	"syscall"
 	"testing"
 	"time"
+
+	"golang.org/x/sys/unix"
 )
 
 func TestEventWriterTouch(t *testing.T) {
@@ -54,7 +55,7 @@ func TestEventWriterTouch(t *testing.T) {
 		t.Error("Failed to read events: ", err)
 	}
 
-	tv := syscall.NsecToTimeval(now.UnixNano())
+	tv := unix.NsecToTimeval(now.UnixNano())
 	syn := eventString(tv, uint16(EV_SYN), uint16(SYN_REPORT), 0)
 	expected := []string{
 		eventString(tv, uint16(EV_ABS), uint16(ABS_MT_SLOT), 0),
@@ -153,7 +154,7 @@ func TestRotate(t *testing.T) {
 				t.Fatal("Failed to read events: ", err)
 			}
 
-			tv := syscall.NsecToTimeval(now.UnixNano())
+			tv := unix.NsecToTimeval(now.UnixNano())
 			syn := eventString(tv, uint16(EV_SYN), uint16(SYN_REPORT), 0)
 			expected := []string{
 				eventString(tv, uint16(EV_ABS), uint16(ABS_MT_SLOT), 0),

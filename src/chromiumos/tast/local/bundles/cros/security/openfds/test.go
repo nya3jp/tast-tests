@@ -16,6 +16,7 @@ import (
 	"syscall"
 
 	"github.com/shirou/gopsutil/v3/process"
+	"golang.org/x/sys/unix"
 
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
@@ -66,8 +67,8 @@ func DumpFDs(ctx context.Context, path string) error {
 func expectType(mode uint32) bool {
 	// This is allowed fd-type check, suitable for Chrome processes.
 	// Notably, this omits S_ISDIR.
-	switch mode & syscall.S_IFMT {
-	case syscall.S_IFCHR, syscall.S_IFSOCK, syscall.S_IFIFO, syscall.S_IFREG:
+	switch mode & unix.S_IFMT {
+	case unix.S_IFCHR, unix.S_IFSOCK, unix.S_IFIFO, unix.S_IFREG:
 		return true
 	}
 

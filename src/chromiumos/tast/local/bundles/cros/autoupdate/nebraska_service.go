@@ -9,10 +9,10 @@ import (
 	"io/ioutil"
 	"os"
 	"path/filepath"
-	"syscall"
 	"time"
 
 	"github.com/golang/protobuf/ptypes/empty"
+	"golang.org/x/sys/unix"
 	"google.golang.org/grpc"
 
 	"chromiumos/tast/common/testexec"
@@ -117,7 +117,7 @@ func (nebraska *NebraskaService) Stop(ctx context.Context, req *empty.Empty) (*e
 
 	testing.ContextLog(ctx, "Stopping Nebraska")
 
-	if err := nebraska.cmd.Process.Signal(syscall.SIGINT); err != nil {
+	if err := nebraska.cmd.Process.Signal(unix.SIGINT); err != nil {
 		testing.ContextLog(ctx, "Failed to interrupt the Nebraska process: ", err)
 		return nil, errors.Wrap(err, "failed to interrupt the Nebraska process")
 	}

@@ -13,10 +13,10 @@ import (
 	"os"
 	"path/filepath"
 	"strings"
-	"syscall"
 	"time"
 
 	"github.com/google/go-cmp/cmp"
+	"golang.org/x/sys/unix"
 
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
@@ -138,7 +138,7 @@ func (k *Kmsvnc) Stop(ctx context.Context) error {
 		k.conn = nil
 	}
 	// In case this fails, the watchdog routine created by cmd.Start() will kill it when the context expires.
-	if err := k.cmd.Signal(syscall.SIGTERM); err != nil {
+	if err := k.cmd.Signal(unix.SIGTERM); err != nil {
 		return err
 	}
 

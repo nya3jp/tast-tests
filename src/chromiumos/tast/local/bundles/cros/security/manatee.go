@@ -14,10 +14,10 @@ import (
 	"os/exec"
 	"strconv"
 	"strings"
-	"syscall"
 	"time"
 
 	"github.com/godbus/dbus/v5"
+	"golang.org/x/sys/unix"
 
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/ctxutil"
@@ -71,7 +71,7 @@ func init() {
 func stopCmd(cmd *testexec.Cmd) error {
 	// SIGKILL (sent by Cmd.Kill()) does not allow cleanup hooks to run. Upstart uses SIGTERM to notify daemons when
 	// their job is being stopped, so it is used here.
-	if err := cmd.Signal(syscall.SIGTERM); err != nil {
+	if err := cmd.Signal(unix.SIGTERM); err != nil {
 		return err
 	}
 
@@ -85,7 +85,7 @@ func stopCmd(cmd *testexec.Cmd) error {
 	}
 
 	// Handle the case the process didn't catch the signal.
-	if status.Signaled() && status.Signal() == syscall.SIGTERM {
+	if status.Signaled() && status.Signal() == unix.SIGTERM {
 		return nil
 	}
 

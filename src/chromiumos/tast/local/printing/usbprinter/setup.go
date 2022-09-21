@@ -14,7 +14,8 @@ import (
 	"io/ioutil"
 	"os"
 	"path"
-	"syscall"
+
+	"golang.org/x/sys/unix"
 
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
@@ -232,13 +233,13 @@ func absoluteConfigPath(configPath string) string {
 
 func terminatePrinterProcess(ctx context.Context, cmd *testexec.Cmd) error {
 	testing.ContextLogf(ctx, "Terminating virtual-usb-printer with PID %d", cmd.Cmd.Process.Pid)
-	if err := cmd.Signal(syscall.SIGTERM); err != nil {
+	if err := cmd.Signal(unix.SIGTERM); err != nil {
 		return errors.Wrap(err, "failed to send SIGTERM to virtual-usb-printer")
 	}
 	if err := cmd.Wait(); err != nil {
 		// We're expecting the exit status to be non-zero if the process was killed by SIGTERM.
 		// Anything else indicates a problem.
-		if ws, ok := testexec.GetWaitStatus(err); !ok || !ws.Signaled() || ws.Signal() != syscall.SIGTERM {
+		if ws, ok := testexec.GetWaitStatus(err); !ok || !ws.Signaled() || ws.Signal() != unix.SIGTERM {
 			return errors.Wrap(err, "failed to wait for virtual-usb-printer termination")
 		}
 	}
@@ -312,7 +313,7 @@ func Start(ctx context.Context, opts ...Option) (pr *Printer, err error) {
 		if err == nil {
 			return
 		}
-		if cleanupErr := cmd.Signal(syscall.SIGTERM); cleanupErr != nil {
+		if cleanupErr := cmd.Signal(unix.SIGTERM); cleanupErr != nil {
 			testing.ContextLogf(ctx, "Virtual printer termination failed (%q)", cleanupErr)
 		}
 		if cleanupErr := cmd.Wait(); cleanupErr != nil {

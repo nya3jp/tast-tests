@@ -9,8 +9,9 @@ import (
 	"os"
 	"path/filepath"
 	"strconv"
-	"syscall"
 	"time"
+
+	"golang.org/x/sys/unix"
 
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
@@ -109,7 +110,7 @@ func newTop(ctx context.Context, outDir string, opts *TopOpts) (instance, error)
 // end interrupts the top command and ends the recording of top.data.
 func (t *top) end(ctx context.Context) error {
 	// Interrupt the cmd to stop recording.
-	t.cmdTop.Signal(syscall.SIGINT)
+	t.cmdTop.Signal(unix.SIGINT)
 	errTop := t.cmdTop.Wait()
 	errAwk := t.cmdAwk.Wait()
 	if errClose := t.out.Close(); errClose != nil {

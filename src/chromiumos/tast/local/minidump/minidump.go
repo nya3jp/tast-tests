@@ -12,9 +12,9 @@ import (
 	"io/ioutil"
 	"os"
 	"path/filepath"
-	"syscall"
 
 	"github.com/shirou/gopsutil/v3/process"
+	"golang.org/x/sys/unix"
 
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/testing"
@@ -85,7 +85,7 @@ func freeze(ctx context.Context, matchers ...Matcher) []*process.Process {
 	for _, p := range all {
 		for _, m := range matchers {
 			if m(p) {
-				if err := p.SendSignal(syscall.SIGSTOP); err != nil {
+				if err := p.SendSignal(unix.SIGSTOP); err != nil {
 					continue
 				}
 				matched = append(matched, p)
@@ -100,7 +100,7 @@ func freeze(ctx context.Context, matchers ...Matcher) []*process.Process {
 // unfreeze sends SIGCONT to procs.
 func unfreeze(ctx context.Context, procs []*process.Process) {
 	for _, p := range procs {
-		if err := p.SendSignal(syscall.SIGCONT); err != nil {
+		if err := p.SendSignal(unix.SIGCONT); err != nil {
 			testing.ContextLog(ctx, "Failed sending SIGCONT to ", p.Pid)
 		}
 	}

@@ -13,8 +13,9 @@ import (
 	"path/filepath"
 	"regexp"
 	"strings"
-	"syscall"
 	"time"
+
+	"golang.org/x/sys/unix"
 
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/ctxutil"
@@ -365,7 +366,7 @@ func FpmcuUnittest(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to start servod: ", err)
 	}
 	defer cmdServod.Wait(testexec.DumpLogOnError)
-	defer cmdServod.Signal(syscall.SIGINT)
+	defer cmdServod.Signal(unix.SIGINT)
 
 	// Reboot the FPMCU for a clean state.
 	if err := rebootFpmcu(ctx); err != nil {
@@ -377,7 +378,7 @@ func FpmcuUnittest(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get FPMCU console path: ", err)
 	}
 
-	console, err := os.OpenFile(consolePath, os.O_APPEND|os.O_RDWR|syscall.O_NOCTTY, 0644)
+	console, err := os.OpenFile(consolePath, os.O_APPEND|os.O_RDWR|unix.O_NOCTTY, 0644)
 	if err != nil {
 		s.Fatal("Failed to open FPMCU console: ", err)
 	}

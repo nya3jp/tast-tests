@@ -9,9 +9,9 @@ import (
 	"context"
 	"os"
 	"path/filepath"
-	"syscall"
 
 	"github.com/shirou/gopsutil/v3/process"
+	"golang.org/x/sys/unix"
 
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
@@ -51,7 +51,7 @@ func KillADBLocalServer(ctx context.Context) error {
 			continue
 		}
 
-		if err := syscall.Kill(int(p.Pid), syscall.SIGKILL); err != nil {
+		if err := unix.Kill(int(p.Pid), unix.SIGKILL); err != nil {
 			// In a very rare race condition, the server process might be already gone.
 			// Just log the error rather than reporting it to the caller.
 			testing.ContextLog(ctx, "Failed to kill ADB local server process: ", err)

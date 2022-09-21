@@ -13,10 +13,10 @@ import (
 	"os"
 	"runtime"
 	"strings"
-	"syscall"
 
 	"android.googlesource.com/platform/external/perfetto/protos/perfetto/metrics/github.com/google/perfetto/perfetto_proto"
 	"github.com/golang/protobuf/proto"
+	"golang.org/x/sys/unix"
 
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
@@ -40,7 +40,7 @@ func createTempFileForTrace() (*os.File, error) {
 // milliseconds), so that perfetto_cmd has time to register the signal handler
 // to handle SIGTERM properly.
 func (sess *Session) Stop() error {
-	if err := sess.cmd.Signal(syscall.SIGTERM); err != nil {
+	if err := sess.cmd.Signal(unix.SIGTERM); err != nil {
 		return errors.Wrap(err, "failed to terminate the tracing session")
 	}
 
