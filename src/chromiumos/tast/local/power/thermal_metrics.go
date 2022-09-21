@@ -36,13 +36,13 @@ func ListSysfsThermalSensors(ctx context.Context) (map[string]string, error) {
 		}
 
 		devPath := path.Join(sysfsThermalPath, file.Name())
-		_, err := readInt64(path.Join(devPath, "temp"))
+		_, err := readInt64(ctx, path.Join(devPath, "temp"))
 		if err != nil {
 			testing.ContextLogf(ctx, "%v is not readable", devPath)
 			continue
 		}
 
-		name, err := readFirstLine(path.Join(devPath, "type"))
+		name, err := readFirstLine(ctx, path.Join(devPath, "type"))
 		if err != nil {
 			testing.ContextLogf(ctx, "%v is not readable", devPath)
 			continue
@@ -114,7 +114,7 @@ func (b *SysfsThermalMetrics) SnapshotValues(ctx context.Context) (map[perf.Metr
 
 	for _, metric := range b.metrics {
 		tempFile := path.Join(metric.path, "temp")
-		temp, err := readInt64(tempFile)
+		temp, err := readInt64(ctx, tempFile)
 		if err != nil {
 			return nil, errors.Wrapf(err, "cannot read temperature from %s", tempFile)
 		}
