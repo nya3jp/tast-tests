@@ -16,6 +16,29 @@
       "message": "a",
       "revId": "217fe983f18c0ac45edeaafc7e3b6b6a406403e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79f5eb57_a4c80ffc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_emoji_suggestion.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-09-21T22:45:19Z",
+      "side": 1,
+      "message": "may put the setup in fixture? instead of using `mountns.WithUserSessionMountNS`, might be better using these code https://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform/tast-tests/src/chromiumos/tast/local/mountns/mountns.go;l\u003d88-94 in the fixture with a condition checking if it is guest_lacros?",
+      "range": {
+        "startLine": 94,
+        "startChar": 1,
+        "endLine": 99,
+        "endChar": 2
+      },
+      "revId": "217fe983f18c0ac45edeaafc7e3b6b6a406403e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
