@@ -33,6 +33,24 @@
       "message": "nit: usually it helps in debugging if the error is wrapped, so I suggest to do that.",
       "revId": "c21c5af643dc92b1921f85ee109bf5752dd86535",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a9f0f01_db277865",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns/dns.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2022-09-21T01:02:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "56be388e_4b5956bc",
+      "revId": "c21c5af643dc92b1921f85ee109bf5752dd86535",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
