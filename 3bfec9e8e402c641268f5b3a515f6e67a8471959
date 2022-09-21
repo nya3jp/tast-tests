@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9cef3cb_587be98a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-09-21T08:25:44Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "3bfec9e8e402c641268f5b3a515f6e67a8471959",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cbcd7bb5_d3cf6bd4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_ro_can_update_rw.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-09-21T08:25:44Z",
+      "side": 1,
+      "message": "According to guidance logging should only be done for parts that either take a while or can hang:\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#When-to-log\n\nIs this the case for all of these log massages?",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 117
+      },
+      "revId": "3bfec9e8e402c641268f5b3a515f6e67a8471959",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e81cc2f5_a0a7c184",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_ro_can_update_rw.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-09-21T08:25:44Z",
+      "side": 1,
+      "message": "Use s.Log/s.Logf when testing.State is available.",
+      "range": {
+        "startLine": 105,
+        "startChar": 1,
+        "endLine": 105,
+        "endChar": 66
+      },
+      "revId": "3bfec9e8e402c641268f5b3a515f6e67a8471959",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
