@@ -408,8 +408,8 @@ func (c *cryptohomeBinary) addSmartCardAuthFactor(ctx context.Context, authSessi
 	return c.call(ctx, args...)
 }
 
-// updateAuthFactor calls "cryptohome --action=update_auth_factor".
-func (c *cryptohomeBinary) updateAuthFactor(ctx context.Context, authSessionID, label, newKeyLabel, password string) ([]byte, error) {
+// updatePasswordAuthFactor calls "cryptohome --action=update_auth_factor".
+func (c *cryptohomeBinary) updatePasswordAuthFactor(ctx context.Context, authSessionID, label, newKeyLabel, password string) ([]byte, error) {
 	args := []string{"--action=update_auth_factor",
 		"--auth_session_id=" + authSessionID,
 		"--key_label=" + label,
@@ -424,6 +424,15 @@ func (c *cryptohomeBinary) updateRecoveryAuthFactor(ctx context.Context, authSes
 		"--auth_session_id=" + authSessionID,
 		"--key_label=" + label,
 		"--recovery_mediator_pub_key=" + mediatorPubKeyHex}
+	return c.call(ctx, args...)
+}
+
+// updatePinAuthFactor calls "cryptohome --action=update_auth_factor --pin=<pin>".
+func (c *cryptohomeBinary) updatePinAuthFactor(ctx context.Context, authSessionID, label, pin string) ([]byte, error) {
+	args := []string{"--action=update_auth_factor",
+		"--auth_session_id=" + authSessionID,
+		"--key_label=" + label,
+		"--pin=" + pin}
 	return c.call(ctx, args...)
 }
 
