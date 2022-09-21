@@ -16,6 +16,7 @@ const (
 	DBusModemmanager3gppModemInterface   = "org.freedesktop.ModemManager1.Modem.Modem3gpp"
 	DBusModemmanagerSimpleModemInterface = "org.freedesktop.ModemManager1.Modem.Simple"
 	DBusModemmanagerSARInterface         = "org.freedesktop.ModemManager1.Modem.Sar"
+	DBusModemmanagerSignalInterface      = "org.freedesktop.ModemManager1.Modem.Signal"
 	DBusModemmanagerSimInterface         = "org.freedesktop.ModemManager1.Sim"
 	DBusModemmanagerSmsInterface         = "org.freedesktop.ModemManager1.Sms"
 )
