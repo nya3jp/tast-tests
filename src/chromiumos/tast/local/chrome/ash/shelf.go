@@ -1188,7 +1188,7 @@ func WaitForStableShelfBounds(ctx context.Context, tconn *chrome.TestConn) error
 		}
 
 		return nil
-	}, &testing.PollOptions{Timeout: 5 * time.Second, Interval: 500 * time.Millisecond}); err != nil {
+	}, &testing.PollOptions{Timeout: 7 * time.Second, Interval: 500 * time.Millisecond}); err != nil {
 		return errors.Wrap(err, "Shelf bounds unstable")
 	}
 
