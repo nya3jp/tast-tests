@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "47c5634e_0fba861e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/hide_continue_section_clamshell.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1000045
+      },
+      "writtenOn": "2022-09-21T20:38:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b5d576b7_db38a41a",
+      "revId": "06588126945e3e4be13483f86acc693910bce141",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ca33f82f_03581feb",
@@ -48,6 +66,30 @@
       "writtenOn": "2022-09-21T20:23:54Z",
       "side": 1,
       "message": "optional nit: How about:\n\n\tif err :\u003d action.Combine(\"close and reopen bubble launcher\",\n\t\tlauncher.CloseBubbleLauncher(tconn),\n\t\tlauncher.OpenBubbleLauncher(tconn),\n\t)(ctx); err !\u003d nil {\n\t\ts.Fatal(\"Failed to close and reopen the launcher: \", err)\n\t}",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 2
+      },
+      "revId": "06588126945e3e4be13483f86acc693910bce141",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c0ea247_5711ced0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/hide_continue_section_clamshell.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1000045
+      },
+      "writtenOn": "2022-09-21T20:38:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ca33f82f_03581feb",
       "range": {
         "startLine": 68,
         "startChar": 0,
