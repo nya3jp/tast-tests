@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ba2124c_00ac08d0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/disable_hwwp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1531792
+      },
+      "writtenOn": "2022-09-21T00:31:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5b52c2c6_51e8a0c3",
+      "range": {
+        "startLine": 212,
+        "startChar": 1,
+        "endLine": 219,
+        "endChar": 0
+      },
+      "revId": "2be72591149a62c8ea662727c0f51d4afbded058",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ae5c8e5d_0bdee392",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-09-20T05:10:55Z",
       "side": 1,
       "message": "is there an alternative to get ride of the sleep?",
+      "range": {
+        "startLine": 246,
+        "startChar": 2,
+        "endLine": 246,
+        "endChar": 62
+      },
+      "revId": "2be72591149a62c8ea662727c0f51d4afbded058",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "89ddc31c_c973dd98",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/rmaweb/ui.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1531792
+      },
+      "writtenOn": "2022-09-21T00:31:16Z",
+      "side": 1,
+      "message": "I think it is properly the easiest way to implement. It shouldn\u0027t be flaky (at least I hope so), since it should be quick for CrOS to detect USB connection.",
+      "parentUuid": "ae5c8e5d_0bdee392",
       "range": {
         "startLine": 246,
         "startChar": 2,
@@ -93,6 +141,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6006bbf1_b39aee63",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/rmaweb/ui.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1531792
+      },
+      "writtenOn": "2022-09-21T00:31:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "813bab43_5b6bab87",
+      "range": {
+        "startLine": 268,
+        "startChar": 49,
+        "endLine": 268,
+        "endChar": 53
+      },
+      "revId": "2be72591149a62c8ea662727c0f51d4afbded058",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f8b7e88_e0357988",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/rmaweb/ui.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1531792
+      },
+      "writtenOn": "2022-09-21T00:31:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0975400b_bdf9b278",
+      "range": {
+        "startLine": 268,
+        "startChar": 4,
+        "endLine": 268,
+        "endChar": 10
+      },
+      "revId": "2be72591149a62c8ea662727c0f51d4afbded058",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f4417994_f7a414e0",
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6f996b1_179a8e96",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/rmaweb/ui.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 399,
+      "author": {
+        "id": 1531792
+      },
+      "writtenOn": "2022-09-21T00:31:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f4417994_f7a414e0",
+      "range": {
+        "startLine": 399,
+        "startChar": 26,
+        "endLine": 399,
+        "endChar": 32
+      },
+      "revId": "2be72591149a62c8ea662727c0f51d4afbded058",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "da5dc886_12711ab8",
@@ -129,6 +249,30 @@
       "writtenOn": "2022-09-20T05:10:55Z",
       "side": 1,
       "message": "return uiHelper.Dut.Conn().CommandContext(ctx, \"mount\", usb, usbTempMountDir).Run()",
+      "range": {
+        "startLine": 414,
+        "startChar": 1,
+        "endLine": 415,
+        "endChar": 11
+      },
+      "revId": "2be72591149a62c8ea662727c0f51d4afbded058",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c639a56_129a99d8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/rmaweb/ui.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 415,
+      "author": {
+        "id": 1531792
+      },
+      "writtenOn": "2022-09-21T00:31:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da5dc886_12711ab8",
       "range": {
         "startLine": 414,
         "startChar": 1,
