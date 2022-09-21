@@ -20,6 +20,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b5d576b7_db38a41a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/hide_continue_section_clamshell.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-09-21T20:24:25Z",
+      "side": 1,
+      "message": "add some context - something like:\n\nSort nudge is shown when the user opens the launcher for the first time. If the sort nudge is visible, continue section privacy notice (which needs to be acknowledged before showing the continue section) will be delayed until the sort nudge is accepted. Generally, continue section privacy notice has higher precedence, but if there\u0027s a delay when retrieving zero state results, sort nudge may be shown before zero state results are returned. In this case, sort nudge needs to be dismissed in order for continue section to show up.",
+      "revId": "06588126945e3e4be13483f86acc693910bce141",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ca33f82f_03581feb",
         "filename": "src/chromiumos/tast/local/bundles/cros/launcher/hide_continue_section_clamshell.go",
         "patchSetId": 3
