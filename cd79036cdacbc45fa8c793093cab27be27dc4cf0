@@ -104,6 +104,24 @@
       "parentUuid": "66225fa3_629b8fdc",
       "revId": "cd79036cdacbc45fa8c793093cab27be27dc4cf0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bdcec0d6_5736d492",
+        "filename": "src/chromiumos/tast/remote/firmware/power/dut_power.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2022-09-21T04:47:18Z",
+      "side": 1,
+      "message": "I added an `allSummaries` flag, when false it reverts back to only picking the first summary file in the list.\n\nWe also return an error if there are duplicate names for any of the metrics.\n\nThis caused power.SuspendConsumption.s0ix to fail though, because onboard_summary.json exists, and only contains ppchg5 and ppdut5. So when we look for ppvar_vbat, it\u0027s not there.\n\nI\u0027ve updated the test to read power from ppdut5 as well, but I\u0027m not sure this is the correct thing to do.",
+      "parentUuid": "60454cf6_d3f08708",
+      "revId": "cd79036cdacbc45fa8c793093cab27be27dc4cf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
