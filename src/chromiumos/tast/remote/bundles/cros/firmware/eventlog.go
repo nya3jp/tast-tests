@@ -1,4 +1,4 @@
-// Copyright 2020 The Chromium OS Authors. All rights reserved.
+// Copyright 2020 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -117,7 +117,7 @@ func init() {
 				Fixture:   fixture.NormalMode,
 				Val: eventLogParams{
 					bootToMode:        fwCommon.BootModeRecovery,
-					requiredEventSets: [][]string{{`System boot`, `Chrome ?OS Recovery Mode \| Recovery Button|boot_mode=Manual recovery`}},
+					requiredEventSets: [][]string{{`System boot`, `(?i)Chrome ?OS Recovery Mode \| Recovery Button|boot_mode=Manual recovery`}},
 					prohibitedEvents:  `Developer Mode|Sleep|FW Wake|ACPI Wake \| S3`,
 				},
 				Timeout: 60 * time.Minute,
@@ -351,8 +351,21 @@ func Eventlog(ctx context.Context, s *testing.State) {
 		}
 		s.Log("Reconnected to DUT")
 	}
-	events, err := r.EventlogListAfter(ctx, cutoffEvent)
-	if err != nil {
+	// Sometimes events are missing if you check too quickly after boot.
+	var events []reporters.Event
+	if err := testing.Poll(ctx, func(context.Context) error {
+		var err error
+		events, err = r.EventlogListAfter(ctx, cutoffEvent)
+		if err != nil {
+			return testing.PollBreak(err)
+		}
+		if len(events) == 0 {
+			return errors.New("no new events found")
+		}
+		return nil
+	}, &testing.PollOptions{
+		Timeout: 1 * time.Minute, Interval: 5 * time.Second,
+	}); err != nil {
 		s.Fatal("Gathering events: ", err)
 	}
 	for _, event := range events {
