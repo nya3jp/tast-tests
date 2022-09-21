@@ -39,6 +39,30 @@
       },
       "revId": "217fe983f18c0ac45edeaafc7e3b6b6a406403e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2a21b54_67e49d2f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_emoji_suggestion.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-09-21T23:50:16Z",
+      "side": 1,
+      "message": "Unfortunately doing it in the fixture is not an option because fixture code might run in a different thread. See https://buganizer.corp.google.com/issues/229131841.",
+      "parentUuid": "79f5eb57_a4c80ffc",
+      "range": {
+        "startLine": 94,
+        "startChar": 1,
+        "endLine": 99,
+        "endChar": 2
+      },
+      "revId": "217fe983f18c0ac45edeaafc7e3b6b6a406403e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
