@@ -1104,15 +1104,21 @@ func (u *CryptohomeClient) AddSmartCardAuthFactor(ctx context.Context, authSessi
 	return err
 }
 
-// UpdateAuthFactor creates an auth factor for the user with given password.
-func (u *CryptohomeClient) UpdateAuthFactor(ctx context.Context, authSessionID, label, newKeyLabel, password string) error {
-	_, err := u.binary.updateAuthFactor(ctx, authSessionID, label, newKeyLabel, password)
+// UpdatePasswordAuthFactor creates an auth factor for the user with given password.
+func (u *CryptohomeClient) UpdatePasswordAuthFactor(ctx context.Context, authSessionID, label, newKeyLabel, password string) error {
+	_, err := u.binary.updatePasswordAuthFactor(ctx, authSessionID, label, newKeyLabel, password)
 	return err
 }
 
-// UpdateRecoveryAuthFactor updates the auth factor for the user.
+// UpdateRecoveryAuthFactor updates the recovery auth factor for the user.
 func (u *CryptohomeClient) UpdateRecoveryAuthFactor(ctx context.Context, authSessionID, label, mediatorPubKeyHex string) error {
 	_, err := u.binary.updateRecoveryAuthFactor(ctx, authSessionID, label, mediatorPubKeyHex)
+	return err
+}
+
+// UpdatePinAuthFactor updates the pin auth factor for the user.
+func (u *CryptohomeClient) UpdatePinAuthFactor(ctx context.Context, authSessionID, label, pin string) error {
+	_, err := u.binary.updatePinAuthFactor(ctx, authSessionID, label, pin)
 	return err
 }
 
