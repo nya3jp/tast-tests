@@ -680,6 +680,8 @@ var chromeVideoArgs = []string{
 	"--suppress-message-center-popups",
 	// Make sure ARC++ is not running.
 	"--arc-availability=none",
+	// Disable firmware update to stop chrome from executing fwupd that restarts powerd.
+	"--disable-features=FirmwareUpdaterApp",
 }
 
 var chromeVideoArgsWithEnablingVaapiVEAMinResolution = []string{
@@ -702,6 +704,8 @@ var chromeVideoArgsWithEnablingVaapiVEAMinResolution = []string{
 	"--suppress-message-center-popups",
 	// Make sure ARC++ is not running.
 	"--arc-availability=none",
+	// Disable firmware update to stop chrome from executing fwupd that restarts powerd.
+	"--disable-features=FirmwareUpdaterApp",
 }
 
 var chromeBypassPermissionsArgs = []string{
