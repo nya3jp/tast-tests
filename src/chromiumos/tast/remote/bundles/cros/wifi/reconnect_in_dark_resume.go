@@ -32,7 +32,7 @@ func init() {
 			"yenlinlai@google.com",            // Test author.
 			"chromeos-wifi-champs@google.com", // WiFi oncall rotation; or http://b/new?component=893827
 		},
-		Attr:        []string{"group:wificell", "wificell_suspend", "wificell_unstable"},
+		Attr:        []string{"group:wificell", "wificell_unstable"},
 		VarDeps:     []string{"servo"},
 		ServiceDeps: []string{wificell.TFServiceName},
 		// TODO(b/187362093): Extend the platforms when WoWLAN is known to be good on them.
