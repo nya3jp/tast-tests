@@ -38,6 +38,7 @@ func init() {
 			Val:               launcher.TestCase{TabletMode: true},
 			ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		}},
+		Timeout: 3 * time.Minute,
 	})
 }
 
