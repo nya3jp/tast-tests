@@ -31,6 +31,7 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Check basic functionality of ChromeService",
 		Contacts:     []string{"jonfan@google.com", "chromeos-sw-engprod@google.com"},
+		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Vars:         []string{"ui.gaiaPoolDefault"},
 		HardwareDeps: hwdep.D(hwdep.FormFactor(hwdep.Clamshell)),
