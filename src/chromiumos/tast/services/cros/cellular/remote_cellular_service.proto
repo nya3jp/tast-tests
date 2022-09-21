@@ -36,6 +36,9 @@ service RemoteCellularService {
   // QueryInterface returns information about the cellular device interface.
   rpc QueryInterface(google.protobuf.Empty) returns (QueryInterfaceResponse) {}
 
+  // QueryLTESignal returns information about the attached LTE signal.
+  rpc QueryLTESignal(google.protobuf.Empty) returns (QueryLTESignalResponse) {}
+
   // WaitForNextSms waits until a single sms added signal is received.
   rpc WaitForNextSms(google.protobuf.Empty) returns (WaitForNextSmsResponse) {}
 }
@@ -60,17 +63,24 @@ message QueryInterfaceResponse {
   string name = 1;
 }
 
+message QueryServiceResponse {
+  string name = 1;
+  string device = 2;
+  string state = 3;
+  bool is_connected = 4;
+  int64 strength = 5;
+}
+
+message QueryLTESignalResponse {
+  double rsrp = 1;
+  double rsrq = 2;
+  double snr = 3;
+}
+
 message SmsMessage {
   string text = 1;
 }
 
 message WaitForNextSmsResponse {
   SmsMessage message = 1;
-}
-
-message QueryServiceResponse {
-  string name = 1;
-  string device = 2;
-  string state = 3;
-  bool is_connected = 4;
 }
