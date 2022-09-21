@@ -140,14 +140,15 @@ const (
 	ServicePropertyCheckPortal       = "CheckPortal"
 
 	// Cellular service property names.
-	ServicePropertyCellularEID             = "Cellular.EID"
-	ServicePropertyCellularICCID           = "Cellular.ICCID"
-	ServicePropertyCellularAllowRoaming    = "Cellular.AllowRoaming"
-	ServicePropertyCellularAPN             = "Cellular.APN"
-	ServicePropertyCellularLastGoodAPN     = "Cellular.LastGoodAPN"
-	ServicePropertyCellularLastAttachAPN   = "Cellular.LastAttachAPN"
-	ServicePropertyCellularRoamingState    = "Cellular.RoamingState"
-	ServicePropertyCellularServingOperator = "Cellular.ServingOperator"
+	ServicePropertyCellularEID               = "Cellular.EID"
+	ServicePropertyCellularICCID             = "Cellular.ICCID"
+	ServicePropertyCellularAllowRoaming      = "Cellular.AllowRoaming"
+	ServicePropertyCellularAPN               = "Cellular.APN"
+	ServicePropertyCellularLastGoodAPN       = "Cellular.LastGoodAPN"
+	ServicePropertyCellularLastAttachAPN     = "Cellular.LastAttachAPN"
+	ServicePropertyCellularNetworkTechnology = "Cellular.NetworkTechnology"
+	ServicePropertyCellularRoamingState      = "Cellular.RoamingState"
+	ServicePropertyCellularServingOperator   = "Cellular.ServingOperator"
 
 	// Keys into the dictionaries exposed as properties for LastAttachAPN and LastGoodAPN
 	DevicePropertyCellularAPNInfoApnName           = "apn"
@@ -217,6 +218,11 @@ const (
 	ServiceStateDisconnect        = "disconnecting"
 	ServiceStateFailure           = "failure"
 	ServiceStateActivationFailure = "activation-failure"
+)
+
+// Cellular network technology values defined in dbus-constants.h
+const (
+	CellularNetworkTechnologyLTE = "LTE"
 )
 
 // Roam state values defined in dbus-constants.h
