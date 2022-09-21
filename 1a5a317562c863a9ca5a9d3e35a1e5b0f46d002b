@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ecb6f65f_54f79a52",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-09-21T13:13:19Z",
+      "side": 1,
+      "message": "I\u0027m worried this might cause a regression in the test? Which is ok if we are aware of it, but do you think jumping to the smallest display size, as opposed to going 1 size down, is the optimal workaround?",
+      "revId": "1a5a317562c863a9ca5a9d3e35a1e5b0f46d002b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
