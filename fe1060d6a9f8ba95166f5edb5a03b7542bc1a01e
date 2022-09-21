@@ -76,6 +76,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "12833de4_c27c74a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perfetto_wm_jankness.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1553967
+      },
+      "writtenOn": "2022-09-21T02:52:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b438e999_f4445e9c",
+      "range": {
+        "startLine": 25,
+        "startChar": 46,
+        "endLine": 26,
+        "endChar": 9
+      },
+      "revId": "fe1060d6a9f8ba95166f5edb5a03b7542bc1a01e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ced1cdd7_106a7543",
@@ -125,6 +149,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "304459c5_6e3ab4b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perfetto_wm_jankness.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1553967
+      },
+      "writtenOn": "2022-09-21T02:52:56Z",
+      "side": 1,
+      "message": "I think crrev.com/c/3895452 is already merged, so maybe there\u0027s no need to add it anymore. Thank you so much!",
+      "parentUuid": "d5e9d0b8_f6571a06",
+      "range": {
+        "startLine": 57,
+        "startChar": 13,
+        "endLine": 57,
+        "endChar": 26
+      },
+      "revId": "fe1060d6a9f8ba95166f5edb5a03b7542bc1a01e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d2bb420d_8e8482d6",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/perfetto_wm_jankness.go",
         "patchSetId": 11
@@ -136,6 +184,30 @@
       "writtenOn": "2022-09-16T20:01:35Z",
       "side": 1,
       "message": "Please move these to consts",
+      "range": {
+        "startLine": 59,
+        "startChar": 33,
+        "endLine": 59,
+        "endChar": 68
+      },
+      "revId": "fe1060d6a9f8ba95166f5edb5a03b7542bc1a01e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0de1cc07_f44ed931",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perfetto_wm_jankness.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1553967
+      },
+      "writtenOn": "2022-09-21T02:52:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d2bb420d_8e8482d6",
       "range": {
         "startLine": 59,
         "startChar": 33,
