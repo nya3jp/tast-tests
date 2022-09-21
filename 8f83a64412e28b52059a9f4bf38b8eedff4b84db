@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a4bb369_e2fe95e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/clipboardhistory/context_menu_clipboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1538804
+      },
+      "writtenOn": "2022-09-21T09:03:31Z",
+      "side": 1,
+      "message": "I tested WaitForQuiescence() on different platforms ten times for each, and the max time it spends is 7s, so I think changing its timeout to 10s is a better choice, thank you for your advice :)",
+      "parentUuid": "f7549d2a_a8217c3c",
+      "revId": "8f83a64412e28b52059a9f4bf38b8eedff4b84db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6d2f4b49_7b7c70bf",
@@ -48,6 +66,24 @@
       "writtenOn": "2022-09-19T21:12:33Z",
       "side": 1,
       "message": "I am not that familiar with the UI. What will happen if Mail window is not the active window? Is Mail always the active window for this test?",
+      "revId": "8f83a64412e28b52059a9f4bf38b8eedff4b84db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "05d9b13c_c9611d3e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/clipboardhistory/context_menu_clipboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1538804
+      },
+      "writtenOn": "2022-09-21T09:03:31Z",
+      "side": 1,
+      "message": "If the Mail window is not the active window, that will can\u0027t find the title.\nI evaluate the JavaScript expression to find the tab title, that can void this problem, thanks.",
+      "parentUuid": "6d2f4b49_7b7c70bf",
       "revId": "8f83a64412e28b52059a9f4bf38b8eedff4b84db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
