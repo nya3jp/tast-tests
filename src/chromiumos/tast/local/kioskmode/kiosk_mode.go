@@ -17,11 +17,13 @@ import (
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash/ashproc"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/local/policyutil/fixtures"
+	"chromiumos/tast/local/procutil"
 	"chromiumos/tast/local/syslog"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
@@ -450,6 +452,8 @@ func StartFromSignInScreen(ctx context.Context, ui *uiauto.Context, name string)
 // started with given options. It verifies a successful cancel by checking for
 // cancelled message on the screen.
 func (k *Kiosk) CancelKioskLaunch(ctx context.Context, opts ...chrome.Option) (*chrome.Chrome, error) {
+	const disableChromeRestartFile = "/run/disable_chrome_restart"
+
 	testing.ContextLog(ctx, "Cancelling Kiosk launch via Ctrl+Alt+S")
 	kw, err := input.Keyboard(ctx)
 	if err != nil {
@@ -457,14 +461,41 @@ func (k *Kiosk) CancelKioskLaunch(ctx context.Context, opts ...chrome.Option) (*
 	}
 	defer kw.Close()
 
+	if err := chrome.PrepareForRestart(); err != nil {
+		return nil, errors.Wrap(err, "failed to remove old dev tools port file")
+	}
+
+	// Create the flag file to make sure session_manager does not start Chrome
+	// again after Chrome exits.
+	_, err = os.Create(disableChromeRestartFile)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create Chrome flag file")
+	}
+	defer func(ctx context.Context) {
+		if err := os.RemoveAll(disableChromeRestartFile); err != nil && !os.IsNotExist(err) {
+			testing.ContextLog(ctx, "Failed to remove flag file: ", err)
+		}
+	}(ctx)
+
+	// Find the current Chrome process to wait for it to shut down later.
+	old, err := ashproc.WaitForRoot(ctx, time.Minute)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to find the browser process")
+	}
+
 	if err := kw.Accel(ctx, "Ctrl+Alt+S"); err != nil {
 		return nil, errors.Wrap(err, "failed to hit Ctrl+Alt+S and attempt to quit a kiosk app")
 	}
-	// The current Chrome process will exit after pressing Ctrl+Alt+S. Waiting for
-	// UI events is therefore not possible. A short delay is needed to make sure
-	// launch error event will be triggered before restarting UI.
-	if err := testing.Sleep(ctx, 300*time.Millisecond); err != nil {
-		return nil, errors.Wrap(err, "failed to wait for Chrome to exit")
+
+	// Wait for the current Chrome to shut down.
+	if err := procutil.WaitForTerminated(ctx, old, 10*time.Second); err != nil {
+		return nil, errors.Wrap(err, "browser process didn't terminate")
+	}
+
+	// Remove flag file so that session_manager will start Chrome after UI task is
+	// restarted.
+	if err := os.RemoveAll(disableChromeRestartFile); err != nil {
+		return nil, errors.Wrap(err, "failed to remove flag file")
 	}
 
 	// Restart Chrome without closing since the current Chrome process has already
