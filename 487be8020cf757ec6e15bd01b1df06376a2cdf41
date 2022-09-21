@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "217e29d2_a0a542f5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-09-21T18:39:57Z",
+      "side": 1,
+      "message": "Please run tast unit tests: fast_build.sh -T\n\nThen, add this line to the commit log\n\nTEST\u003dtast unit tests passed.",
+      "revId": "487be8020cf757ec6e15bd01b1df06376a2cdf41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
