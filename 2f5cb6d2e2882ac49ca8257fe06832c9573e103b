@@ -39,6 +39,30 @@
       },
       "revId": "2f5cb6d2e2882ac49ca8257fe06832c9573e103b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "412b60c7_739fbdde",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_drag_window_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-09-21T19:21:13Z",
+      "side": 1,
+      "message": "This is a format string where percent signs are for format specifiers like `%f`, and you have to write `%%` if you want to actually print a percent sign.",
+      "parentUuid": "37e7bfc6_2df4cdb8",
+      "range": {
+        "startLine": 358,
+        "startChar": 65,
+        "endLine": 358,
+        "endChar": 66
+      },
+      "revId": "2f5cb6d2e2882ac49ca8257fe06832c9573e103b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
