@@ -8,26 +8,18 @@ import (
 	"context"
 	"math"
 	"os"
+	"sort"
 	"strconv"
 	"strings"
 
+	"github.com/google/go-cmp/cmp"
+
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/bundles/cros/health/iioservice"
 	"chromiumos/tast/local/croshealthd"
 	"chromiumos/tast/testing"
 )
-
-type sensorInfo struct {
-	LidAngle *uint16            `json:"lid_angle"`
-	Sensors  []sensorAttributes `json:"sensors"`
-}
-
-type sensorAttributes struct {
-	Name     *string `json:"name"`
-	DeviceID int32   `json:"device_id"`
-	Type     string  `json:"type"`
-	Location string  `json:"location"`
-}
 
 func init() {
 	testing.AddTest(&testing.Test{
@@ -39,6 +31,18 @@ func init() {
 		SoftwareDeps: []string{"chrome", "diagnostics"},
 		Fixture:      "crosHealthdRunning",
 	})
+}
+
+type sensorInfo struct {
+	LidAngle *uint16            `json:"lid_angle"`
+	Sensors  []sensorAttributes `json:"sensors"`
+}
+
+type sensorAttributes struct {
+	Name     *string `json:"name"`
+	DeviceID int32   `json:"device_id"`
+	Type     string  `json:"type"`
+	Location string  `json:"location"`
 }
 
 // rawLidAngle parses the output of ectool and gets the raw value of lid angle.
@@ -98,6 +102,26 @@ func validateLidAngle(ctx context.Context, info *sensorInfo) error {
 	return nil
 }
 
+func validateSensorAttributes(ctx context.Context, info *sensorInfo) error {
+	var got []iioservice.SensorAttributes
+	for _, sensor := range info.Sensors {
+		got = append(got, iioservice.SensorAttributes{
+			Name:     sensor.Name,
+			DeviceID: sensor.DeviceID,
+			Type:     sensor.Type,
+			Location: sensor.Location,
+		})
+	}
+	expected, err := iioservice.ExpectedSensorAttributes(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to get expected sensor attributes")
+	}
+	if diff := cmp.Diff(expected, got); diff != "" {
+		return errors.Wrapf(err, "sensor attributes mismatch (-expected + got): %s", diff)
+	}
+	return nil
+}
+
 func ProbeSensorInfo(ctx context.Context, s *testing.State) {
 	params := croshealthd.TelemParams{Category: croshealthd.TelemCategorySensor}
 	var info sensorInfo
@@ -105,7 +129,12 @@ func ProbeSensorInfo(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get sensor telemetry info: ", err)
 	}
 
+	sort.Slice(info.Sensors, func(i, j int) bool { return info.Sensors[i].DeviceID < info.Sensors[j].DeviceID })
+	if err := validateSensorAttributes(ctx, &info); err != nil {
+		s.Fatal("Failed to validate sensor attributes: ", err)
+	}
+
 	if err := validateLidAngle(ctx, &info); err != nil {
-		s.Fatalf("Failed to validate sensor data, err [%v]", err)
+		s.Fatal("Failed to validate lid angle: ", err)
 	}
 }
