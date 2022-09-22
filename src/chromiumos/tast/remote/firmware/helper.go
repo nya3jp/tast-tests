@@ -1180,3 +1180,44 @@ func (h *Helper) CheckBrokenScreen(ctx context.Context, usbdev string) error {
 	}
 	return nil
 }
+
+// Lock the CCD console by sending a GSC command
+func (h *Helper) LockCCD(ctx context.Context) error {
+	err := h.Servo.RunCR50Command(ctx, "ccd lock")
+	if err != nil {
+		return errors.Wrap(err, "failed to run 'ccd lock' on GSC")
+	}
+	return nil
+}
+
+// Wrapper function to that runs a GSC command and ensures all Python regex
+// patterns appear in the response. This function will throw a pretty printed
+// error otherwise.
+func (h *Helper) CheckGSCCommandOutput(ctx context.Context, cmd string, regexs []string) error {
+	matches, err := h.Servo.RunCR50CommandGetOutput(ctx, cmd, regexs)
+	if err != nil {
+		return errors.Wrap(err, "Failed to run `"+cmd+"`on GSC, expected regex patterns = {"+strings.Join(regexs, ",")+"}: ")
+	}
+	if len(matches) == 0 {
+		// NOTE: I've never seen this case occur since `servod` will throw an
+		// XML error if no matches are found
+		return errors.New("Failed to get regex matches = {" + strings.Join(regexs, ",") + "} for `" + cmd + "`")
+	}
+	return nil
+}
+
+// Tell the GSC to force connect/disconnect battery presence
+func (h *Helper) SetForceBatteryPresence(ctx context.Context, force_connect bool) error {
+	cmd := "bpforce connect"
+	regexs := []string{`.*forced connect.*`}
+	if !force_connect {
+		cmd = "bpforce disconnect"
+		regexs = []string{`.*forced disconnect.*`}
+	}
+
+	err := h.CheckGSCCommandOutput(ctx, cmd, regexs)
+	if err != nil {
+		return errors.Wrap(err, "Failed to SetForceBatteryPresence: ")
+	}
+	return nil
+}
