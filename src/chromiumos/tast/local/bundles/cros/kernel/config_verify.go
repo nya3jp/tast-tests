@@ -30,6 +30,10 @@ func init() {
 		},
 		Attr: []string{"group:mainline"},
 		Params: []testing.Param{{
+			Name:		"chromeos",
+			Val:		addExtraCheckForChromeOS,
+			ExtraSoftwareDeps: []string{"cros_internal"},
+		}, {
 			Name:		"chromiumos_kernel",
 			Val:		addExtraCheckForChromiumOSKernel,
 			ExtraSoftwareDeps: []string{"chromiumos_kernel"},
@@ -302,8 +306,6 @@ func newCommonKernelConfigCheck(ver *sysutil.KernelVersion, arch string) *kernel
 		// Security; make sure usermode helper is our tool for linux-4.4+.
 		builtin = append(builtin, "STATIC_USERMODEHELPER")
 		value["STATIC_USERMODEHELPER_PATH"] = `"/sbin/usermode-helper"`
-		// Security; prevent overflows that can be checked at compile-time.
-		builtin = append(builtin, "FORTIFY_SOURCE")
 	} else {
 		// For kernels older than linux-4.4.
 		builtin = append(builtin, "EXT4_USE_FOR_EXT23")
@@ -404,6 +406,19 @@ func newCommonKernelConfigCheck(ver *sysutil.KernelVersion, arch string) *kernel
 		optional:  optional,
 		missing:   missing,
 	}
+}
+
+func addExtraCheckForChromeOS(kcc *kernelConfigCheck, ver *sysutil.KernelVersion,
+	arch string) *kernelConfigCheck {
+
+	kcc = addExtraCheckForChromiumOSKernel(kcc, ver, arch)
+
+	if ver.IsOrLater(4, 4) {
+		// Security; prevent overflows that can be checked at compile-time.
+		kcc.builtin = append(kcc.builtin, "FORTIFY_SOURCE")
+	}
+
+	return kcc
 }
 
 func addExtraCheckForChromiumOSKernel(kcc *kernelConfigCheck, ver *sysutil.KernelVersion,
