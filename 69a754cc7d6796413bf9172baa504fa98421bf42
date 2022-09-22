@@ -22,6 +22,30 @@
       },
       "revId": "69a754cc7d6796413bf9172baa504fa98421bf42",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b98a8361_8d1d7226",
+        "filename": "src/chromiumos/tast/local/bundles/cros/intel/crostini_linux_terminal_functionality.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-09-22T11:01:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "238c7b4b_67e0b66e",
+      "range": {
+        "startLine": 98,
+        "startChar": 1,
+        "endLine": 120,
+        "endChar": 2
+      },
+      "revId": "69a754cc7d6796413bf9172baa504fa98421bf42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
