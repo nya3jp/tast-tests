@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64b61cd8_b88e814c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_sensor_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2022-09-22T05:59:32Z",
+      "side": 1,
+      "message": "I\u0027m not sure if this is always true?\n\nFrom my DUT (jinlon):\n```\nlocalhost ~ # iioservice_query --device_type\u003d0 --attributes\u003dname location                        \n2022-09-22T05:54:13.163490Z INFO iioservice_query: [query_impl.cc(125)] (9461) GetAttributesCallback(): Device id: 0\n2022-09-22T05:54:13.163585Z INFO iioservice_query: [query_impl.cc(128)] (9461) GetAttributesCallback(): Type: ACCEL\n2022-09-22T05:54:13.163594Z INFO iioservice_query: [query_impl.cc(131)] (9461) GetAttributesCallback(): name: cros-ec-accel\n2022-09-22T05:54:13.163702Z INFO iioservice_query: [query_impl.cc(125)] (9461) GetAttributesCallback(): Device id: 1\n2022-09-22T05:54:13.163716Z INFO iioservice_query: [query_impl.cc(128)] (9461) GetAttributesCallback(): Type: ANGL\n2022-09-22T05:54:13.163723Z INFO iioservice_query: [query_impl.cc(131)] (9461) GetAttributesCallback(): name: cros-ec-lid-angle\n2022-09-22T05:54:13.163790Z INFO iioservice_query: [query_impl.cc(125)] (9461) GetAttributesCallback(): Device id: 2\n...\n```",
+      "range": {
+        "startLine": 179,
+        "startChar": 1,
+        "endLine": 180,
+        "endChar": 51
+      },
+      "revId": "313778794911ce3c88cdbfb6ec490add55634aa4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "882177c6_acf66583",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_sensor_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2022-09-22T05:59:32Z",
+      "side": 1,
+      "message": "Maybe use \"expected\" and \"got\"?",
+      "range": {
+        "startLine": 201,
+        "startChar": 1,
+        "endLine": 201,
+        "endChar": 2
+      },
+      "revId": "313778794911ce3c88cdbfb6ec490add55634aa4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e026487_11391bf0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_sensor_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2022-09-22T05:59:32Z",
+      "side": 1,
+      "message": "I think it\u0027s not \"failed to validate\", it should be \"mismatch\"?",
+      "range": {
+        "startLine": 208,
+        "startChar": 28,
+        "endLine": 208,
+        "endChar": 46
+      },
+      "revId": "313778794911ce3c88cdbfb6ec490add55634aa4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
