@@ -90,7 +90,7 @@ func Scan(ctx context.Context, s *testing.State) {
 	var scannerParams = scanning.ScannerStruct{
 		Descriptors: scanning.Descriptors,
 		Attributes:  scanning.Attributes,
-		EsclCaps:    scanning.EsclCapabilities,
+		EsclCaps:    scanapp.EsclCapabilities,
 	}
 
 	scanning.RunAppSettingsTests(ctx, s, cr, scanTests, scannerParams)
