@@ -97,7 +97,7 @@ func SimLockPolicyLockSettingOff(ctx context.Context, s *testing.State) {
 		s.Fatal("Could not get name: ", err)
 	}
 
-	var networkNameDetail = nodewith.NameContaining(networkName).Role(role.Button).ClassName("layout horizontal center flex")
+	var networkNameDetail = nodewith.NameContaining(networkName).Role(role.Button)
 
 	if err != nil {
 		s.Fatal("Failed to ensure sim unlocked: ", err)
