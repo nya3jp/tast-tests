@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "445318ff_ace63cf1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1429709
+      },
+      "writtenOn": "2022-09-22T01:09:46Z",
+      "side": 1,
+      "message": "not sure why gwsq set you as cc instead of reviewer",
+      "revId": "c5eb60c9f558f6868d526235086cf8e54ab87875",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
