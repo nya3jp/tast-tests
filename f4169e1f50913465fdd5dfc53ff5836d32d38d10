@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "140c2701_b2ec61c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/intel/arc_rotate_camera.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-09-22T08:34:31Z",
+      "side": 1,
+      "message": "Defer setting rotation to display.Rotate0 angle. The same for the recording video.",
+      "range": {
+        "startLine": 89,
+        "startChar": 2,
+        "endLine": 91,
+        "endChar": 3
+      },
+      "revId": "f4169e1f50913465fdd5dfc53ff5836d32d38d10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
