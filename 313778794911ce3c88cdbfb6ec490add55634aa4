@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1e882ba9_3761d60a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_sensor_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2022-09-22T06:37:12Z",
+      "side": 1,
+      "message": "Should we use `regexp` package to parse the output?",
+      "range": {
+        "startLine": 136,
+        "startChar": 2,
+        "endLine": 136,
+        "endChar": 110
+      },
+      "revId": "313778794911ce3c88cdbfb6ec490add55634aa4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "64b61cd8_b88e814c",
         "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_sensor_info.go",
         "patchSetId": 2
@@ -113,6 +136,29 @@
         "startChar": 28,
         "endLine": 208,
         "endChar": 46
+      },
+      "revId": "313778794911ce3c88cdbfb6ec490add55634aa4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9aefb2dc_c157c409",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_sensor_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2022-09-22T06:37:12Z",
+      "side": 1,
+      "message": "We can use `s.Fatal(\"Failed to validate sensor attributes: \", err)` directly.",
+      "range": {
+        "startLine": 221,
+        "startChar": 2,
+        "endLine": 221,
+        "endChar": 65
       },
       "revId": "313778794911ce3c88cdbfb6ec490add55634aa4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
