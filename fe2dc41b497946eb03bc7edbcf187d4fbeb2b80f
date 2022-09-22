@@ -39,6 +39,30 @@
       },
       "revId": "fe2dc41b497946eb03bc7edbcf187d4fbeb2b80f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c8a41b0_c2de328f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/unicorn_translation.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-09-22T23:43:34Z",
+      "side": 1,
+      "message": "Done for regular and Unicorn, but I encountered an issue with managed users. I\u0027ll ask tast-users@ for advice on how to resolve.",
+      "parentUuid": "7f9d1716_84e4ac96",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 31
+      },
+      "revId": "fe2dc41b497946eb03bc7edbcf187d4fbeb2b80f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
