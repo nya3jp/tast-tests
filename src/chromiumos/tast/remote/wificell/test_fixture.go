@@ -22,6 +22,7 @@ import (
 	"chromiumos/tast/common/network/wpacli"
 	"chromiumos/tast/common/pkcs11/netcertstore"
 	"chromiumos/tast/common/shillconst"
+	"chromiumos/tast/common/utils"
 	"chromiumos/tast/common/wifi/security"
 	"chromiumos/tast/common/wifi/security/base"
 	"chromiumos/tast/common/wifi/security/wpa"
@@ -48,7 +49,6 @@ import (
 	"chromiumos/tast/remote/wificell/router/legacy"
 	"chromiumos/tast/remote/wificell/router/openwrt"
 	"chromiumos/tast/remote/wificell/tethering"
-	"chromiumos/tast/remote/wificell/wifiutil"
 	"chromiumos/tast/rpc"
 	"chromiumos/tast/services/cros/wifi"
 	"chromiumos/tast/ssh"
@@ -551,7 +551,7 @@ func (tf *TestFixture) CollectLogs(ctx context.Context) error {
 		}
 		err := r.CollectLogs(ctx)
 		if err != nil {
-			wifiutil.CollectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to collect logs"))
+			utils.CollectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to collect logs"))
 		}
 	}
 	return firstErr
@@ -573,7 +573,7 @@ func (tf *TestFixture) Close(ctx context.Context) error {
 	var firstErr error
 	for i := range tf.duts {
 		if err := tf.resetNetCertStore(ctx, DutIdx(i)); err != nil {
-			wifiutil.CollectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to reset the NetCertStore"))
+			utils.CollectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to reset the NetCertStore"))
 		}
 	}
 
@@ -597,10 +597,10 @@ func (tf *TestFixture) Close(ctx context.Context) error {
 	// If pcap was created specifically for this purpose, close it.
 	if tf.pcap != nil {
 		if err := tf.pcap.Close(ctx); err != nil {
-			wifiutil.CollectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to close pcap"))
+			utils.CollectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to close pcap"))
 		}
 		if err := tf.pcapHost.Close(ctx); err != nil {
-			wifiutil.CollectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to close pcap ssh"))
+			utils.CollectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to close pcap ssh"))
 		}
 		tf.pcap = nil
 	}
@@ -609,13 +609,13 @@ func (tf *TestFixture) Close(ctx context.Context) error {
 		router := tf.routers[i]
 		if router.object != nil {
 			if err := router.object.Close(ctx); err != nil {
-				wifiutil.CollectFirstErr(ctx, &firstErr, errors.Wrapf(err, "failed to close router %s", router.target))
+				utils.CollectFirstErr(ctx, &firstErr, errors.Wrapf(err, "failed to close router %s", router.target))
 			}
 		}
 		router.object = nil
 		if router.host != nil {
 			if err := router.host.Close(ctx); err != nil {
-				wifiutil.CollectFirstErr(ctx, &firstErr, errors.Wrapf(err, "failed to close router %s ssh", router.target))
+				utils.CollectFirstErr(ctx, &firstErr, errors.Wrapf(err, "failed to close router %s ssh", router.target))
 			}
 		}
 		router.host = nil
@@ -624,11 +624,11 @@ func (tf *TestFixture) Close(ctx context.Context) error {
 		if d.wifiClient != nil {
 			if tf.setLogging {
 				if err := setLoggingConfig(ctx, d.wifiClient, d.originalLogLevel, d.originalLogTags); err != nil {
-					wifiutil.CollectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to tear down test state"))
+					utils.CollectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to tear down test state"))
 				}
 			}
 			if _, err := d.wifiClient.TearDown(ctx, &empty.Empty{}); err != nil {
-				wifiutil.CollectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to tear down test state"))
+				utils.CollectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to tear down test state"))
 			}
 			d.wifiClient = nil
 		}
@@ -849,11 +849,11 @@ func (tf *TestFixture) DeconfigAP(ctx context.Context, ap *APIface) error {
 	capturer := tf.capturers[ap]
 	delete(tf.capturers, ap)
 	if err := ap.Stop(ctx); err != nil {
-		wifiutil.CollectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to stop APIface"))
+		utils.CollectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to stop APIface"))
 	}
 	if capturer != nil {
 		if err := p.StopCapture(ctx, capturer); err != nil {
-			wifiutil.CollectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to stop capturer"))
+			utils.CollectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to stop capturer"))
 		}
 	}
 	delete(tf.aps, ap)
@@ -866,7 +866,7 @@ func (tf *TestFixture) DeconfigAllAPs(ctx context.Context) error {
 	var firstErr error
 	for ap := range tf.aps {
 		if err := tf.DeconfigAP(ctx, ap); err != nil {
-			wifiutil.CollectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to deconfig AP"))
+			utils.CollectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to deconfig AP"))
 		}
 	}
 	return firstErr
