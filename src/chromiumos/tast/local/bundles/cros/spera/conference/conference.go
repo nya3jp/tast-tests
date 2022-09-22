@@ -6,6 +6,7 @@ package conference
 
 import (
 	"context"
+	"fmt"
 	"regexp"
 	"strings"
 	"time"
@@ -15,6 +16,7 @@ import (
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
 )
 
 const (
@@ -42,8 +44,10 @@ type Conference interface {
 	DisplayAllParticipantsTime() time.Duration
 }
 
-const participantError = "number of participants is incorrect (ERROR - PARTICIPANT NUMBER)"
-const signedOutError = "the account has been signed out: "
+const (
+	participantError = "number of participants is incorrect (ERROR - PARTICIPANT NUMBER)"
+	signedOutError   = "the account has been signed out: "
+)
 
 // ParticipantError wraps the given error with participant error specific information
 // which can be used to identify the error type with IsParticipantError() function.
@@ -73,4 +77,23 @@ func CheckSignedOutError(ctx context.Context, tconn *chrome.TestConn, err error)
 		return err
 	}
 	return errors.Wrap(err, signedOutError+info.Name)
+}
+
+// CheckCommonError checks for common error messages.
+// If exist, wrap the given error with error-specific information.
+// If there is no specific error message, return the original error.
+func CheckCommonError(ctx context.Context, tconn *chrome.TestConn, err error) error {
+	errorMessages := []string{
+		"Unable to load file",
+		"Something went wrong",
+	}
+	ui := uiauto.New(tconn)
+	for _, m := range errorMessages {
+		errorMessageFinder := nodewith.NameContaining(m).Role(role.StaticText).First()
+		if existsErr := ui.Exists(errorMessageFinder)(ctx); existsErr == nil {
+			errorMessage := fmt.Sprintf("got unexpected error message: \"%s\"", m)
+			return errors.Wrap(err, errorMessage)
+		}
+	}
+	return err
 }
