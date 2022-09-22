@@ -33,7 +33,7 @@ func init() {
 		},
 		SoftwareDeps: []string{"chrome"},
 		HardwareDeps: hwdep.D(hwdep.PrivacyScreen()),
-		Attr:         []string{"group:mainline"},
+		Attr:         []string{"group:mainline", "informational"},
 		Fixture:      "chromePolicyLoggedIn",
 	})
 }
