@@ -16,6 +16,24 @@
       "message": "Does this need to be included twice?",
       "revId": "caa8d0d8894eba599b783f31a01e547bfe84bf1b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea42749b_f94ae797",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/admin_templates_launch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1522762
+      },
+      "writtenOn": "2022-09-22T18:59:20Z",
+      "side": 1,
+      "message": "Yes, when the template is launched, there will be two chrome windows. The verification methods takes in a list to make sure that the correct number of windows is equal to the number of expected apps in the `appsList`",
+      "parentUuid": "8c84681a_be10761c",
+      "revId": "caa8d0d8894eba599b783f31a01e547bfe84bf1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
