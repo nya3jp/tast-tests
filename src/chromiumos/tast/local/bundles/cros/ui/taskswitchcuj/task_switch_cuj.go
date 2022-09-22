@@ -116,6 +116,24 @@ func Run(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to obtain the top-row layout: ", err)
 	}
 
+	setOverviewModeWithKeyboard := func(ctx context.Context) error {
+		if err := kw.Accel(ctx, topRow.SelectTask); err != nil {
+			return errors.Wrap(err, "failed to hit overview key")
+		}
+		if err := ash.WaitForOverviewState(ctx, tconn, ash.Shown, 30*time.Second); err != nil {
+			return errors.Wrap(err, "failed to wait for overview state")
+		}
+
+		// Add a stabilization delay after entering overview mode to
+		// mitigate Lacros crashes on lower-end devices. This delay
+		// ensures that the previews are properly loaded before we
+		// interact with the windows in overview mode.
+		if err := ac.WithInterval(2*time.Second).WithTimeout(10*time.Second).WaitUntilNoEvent(nodewith.Root(), event.LocationChanged)(ctx); err != nil {
+			s.Log("Failed to wait for overview stabilization: ", err)
+		}
+		return nil
+	}
+
 	var setOverviewMode action.Action
 	var tcc *input.TouchCoordConverter
 	var stw *input.SingleTouchEventWriter
@@ -148,12 +166,8 @@ func Run(ctx context.Context, s *testing.State) {
 			// Press the overview button to emulate an external keyboard,
 			// due to the flakiness of swiping to overview mode on
 			// lower-end devices.
-			if err := kw.Accel(ctx, topRow.SelectTask); err != nil {
-				return errors.Wrap(err, "failed to hit overview key")
-			}
-
-			if err := ash.WaitForOverviewState(ctx, tconn, ash.Shown, 30*time.Second); err != nil {
-				return errors.Wrap(err, "failed to wait for overview state")
+			if err := setOverviewModeWithKeyboard(ctx); err != nil {
+				return err
 			}
 
 			if err := stw.Swipe(ctx, startX, startY, endX, endY, 2*time.Second); err != nil {
@@ -163,26 +177,11 @@ func Run(ctx context.Context, s *testing.State) {
 			if err := stw.End(); err != nil {
 				return errors.Wrap(err, "failed to end swipe animation")
 			}
-
-			if err := ac.WithInterval(2*time.Second).WaitUntilNoEvent(nodewith.Root(), event.LocationChanged)(ctx); err != nil {
-				s.Log("Failed to wait for the swipe animation to stabilize: ", err)
-			}
 			return nil
 		}
 	} else {
 		pc = pointer.NewMouse(tconn)
 		defer pc.Close()
-
-		setOverviewMode = func(ctx context.Context) error {
-			if err := kw.Accel(ctx, topRow.SelectTask); err != nil {
-				return errors.Wrap(err, "failed to hit overview key")
-			}
-
-			if err := ash.WaitForOverviewState(ctx, tconn, ash.Shown, 30*time.Second); err != nil {
-				return errors.Wrap(err, "failed to wait for overview state")
-			}
-			return nil
-		}
 	}
 
 	defer ash.CloseAllWindows(closeCtx, tconn)
