@@ -32,7 +32,7 @@ func init() {
 			"rzakarian@google.com", // Test author
 			"chromeos-commercial-remote-management@google.com",
 		},
-		Attr:         []string{}, // Not running in current state.
+		Attr:         []string{"group:dmserver-zteenrollment-daily"},
 		SoftwareDeps: []string{"reboot", "chrome"},
 		ServiceDeps:  []string{"tast.cros.policy.PolicyService", "tast.cros.tape.Service", "tast.cros.hwsec.OwnershipService"},
 		Timeout:      7 * time.Minute,
