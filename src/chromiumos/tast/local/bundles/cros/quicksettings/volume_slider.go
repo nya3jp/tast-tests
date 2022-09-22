@@ -23,9 +23,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         BrightnessVolumeSlider,
+		Func:         VolumeSlider,
 		LacrosStatus: testing.LacrosVariantUnneeded,
-		Desc:         "Checks that the Quick Settings brightness and volume slider can be adjusted",
+		Desc:         "Checks that the Quick Settings volume slider can be adjusted by keyboard",
 		Contacts: []string{
 			"chromeos-sw-engprod@google.com",
 			"sylvieliu@chromium.org",
@@ -72,8 +72,8 @@ func muteUnmuteVolume(ctx context.Context, tconn *chrome.TestConn, vh *audio.Hel
 	return nil
 }
 
-// BrightnessVolumeSlider tests that the brightness and volume slider can be adjusted up and down.
-func BrightnessVolumeSlider(ctx context.Context, s *testing.State) {
+// VolumeSlider tests that the volume slider can be adjusted up and down.
+func VolumeSlider(ctx context.Context, s *testing.State) {
 	cr := s.PreValue().(*chrome.Chrome)
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
@@ -93,25 +93,6 @@ func BrightnessVolumeSlider(ctx context.Context, s *testing.State) {
 	}
 	defer quicksettings.Hide(ctx, tconn)
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
-
-	// Test the brightness slider.
-	initialBrightness, err := quicksettings.SliderValue(ctx, tconn, quicksettings.SliderTypeBrightness)
-	if err != nil {
-		s.Fatal("Failed initial value check for brightness slider: ", err)
-	}
-	s.Log("Initial brightness slider value: ", initialBrightness)
-
-	decreaseBrightness, err := quicksettings.DecreaseSlider(ctx, tconn, kb, quicksettings.SliderTypeBrightness)
-	if err != nil {
-		s.Fatal("Failed to decrease brightness slider: ", err)
-	}
-	s.Log("Decreased brightness slider value: ", decreaseBrightness)
-
-	increaseBrightness, err := quicksettings.IncreaseSlider(ctx, tconn, kb, quicksettings.SliderTypeBrightness)
-	if err != nil {
-		s.Fatal("Failed to increase brightness slider: ", err)
-	}
-	s.Log("Increased brightness slider value: ", increaseBrightness)
 
 	// Test the volume slider.
 	initialVolume, err := quicksettings.SliderValue(ctx, tconn, quicksettings.SliderTypeVolume)
