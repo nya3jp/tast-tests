@@ -29,6 +29,13 @@ func init() {
 			"oka@chromium.org", // Tast port author
 		},
 		Attr: []string{"group:mainline"},
+		Params: []testing.Param{{
+			Val:		addExtraCheckForChromeOS,
+		}, {
+			Name:		"chromeos_kernelci",
+			Val:		addExtraCheckForChromeOSKernelCI,
+			ExtraSoftwareDeps: []string{"chromeos_kernelci"},
+		}},
 	})
 }
 
@@ -45,7 +52,12 @@ func ConfigVerify(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to read kernel config: ", err)
 	}
 
-	newKernelConfigCheck(ver, arch).test(conf, s)
+	kcc := newCommonKernelConfigCheck(ver, arch)
+
+	addExtraFunc := s.Param().(func(*kernelConfigCheck, *sysutil.KernelVersion, string) *kernelConfigCheck)
+	kcc = addExtraFunc(kcc, ver, arch)
+
+	kcc.test(conf, s)
 }
 
 // readKernelConfig reads the kernel config key value pairs trimming CONFIG_ prefix from the keys.
@@ -128,7 +140,7 @@ type kernelConfigCheck struct {
 	missing []string
 }
 
-func newKernelConfigCheck(ver *sysutil.KernelVersion, arch string) *kernelConfigCheck {
+func newCommonKernelConfigCheck(ver *sysutil.KernelVersion, arch string) *kernelConfigCheck {
 	exclusive := []*regexp.Regexp{
 		// Security; no surprise binary formats.
 		regexp.MustCompile(`^BINFMT_`),
@@ -411,6 +423,18 @@ func newKernelConfigCheck(ver *sysutil.KernelVersion, arch string) *kernelConfig
 		optional:  optional,
 		missing:   missing,
 	}
+}
+
+func addExtraCheckForChromeOS(kcc *kernelConfigCheck, ver *sysutil.KernelVersion,
+	arch string) *kernelConfigCheck {
+
+	return kcc
+}
+
+func addExtraCheckForChromeOSKernelCI(kcc *kernelConfigCheck, ver *sysutil.KernelVersion,
+	arch string) *kernelConfigCheck {
+
+	return kcc
 }
 
 func (c *kernelConfigCheck) test(conf map[string]string, s *testing.State) {
