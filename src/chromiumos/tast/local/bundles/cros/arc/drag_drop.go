@@ -58,6 +58,7 @@ func init() {
 			},
 		}, {
 			Name:              "chrome_to_android_lacros",
+			ExtraAttr:         []string{"informational"},
 			ExtraSoftwareDeps: []string{"android_p", "lacros"},
 			Val: &dragDropTestArgs{
 				extensionPrefix: "drag_source_",
