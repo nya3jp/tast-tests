@@ -358,6 +358,29 @@ func RecordScreen(ctx context.Context, s testingState, tconn *chrome.TestConn, f
 	f()
 }
 
+// CreateAndStartScreenRecorder creates a ScreenRecorder and starts to record
+// the screen. Returns nil and writes logs through the context on error.
+// Example usage:
+//
+//	recorder := uiauto.CreateAndStartScreenRecorder(ctx, tconn)
+//	if recorder != nil {
+//		defer recorder.StopAndSaveOnError(cleanupCtx, filepath.Join(s.OutDir(), "screen_recording.webm"), s.HasError)
+//	}
+func CreateAndStartScreenRecorder(ctx context.Context, tconn *chrome.TestConn) *ScreenRecorder {
+	recorder, err := NewScreenRecorder(ctx, tconn)
+	if err != nil {
+		testing.ContextLog(ctx, "Failed to create screen recorder: ", err)
+		return nil
+	}
+	if recorder != nil {
+		if err := recorder.Start(ctx, tconn); err != nil {
+			testing.ContextLog(ctx, "Failed to start screen recorder: ", err)
+			return nil
+		}
+	}
+	return recorder
+}
+
 // StartRecordFromKB starts screen record from keyboard.
 // It clicks Ctrl+Shift+F5 then select to record the whole desktop.
 // The caller should also call StopRecordFromKB to stop the screen recorder,
