@@ -76,6 +76,16 @@ type TestCase struct {
 	TabletMode bool // Whether the test runs in tablet mode
 }
 
+// SearchTestCase describes modes in which the launcher UI can be shown, and by which launcher test should generally be parameterized.
+// It additionally provides a search query and the expected result.
+// Use a struct because it makes the individual test cases more readable.
+type SearchTestCase struct {
+	TabletMode     bool
+	SearchKeyword  string
+	ExpectedResult *nodewith.Finder
+	Retries        int
+}
+
 // SortType Indicates the order that the launcher is sorted with.
 type SortType string
 
