@@ -127,6 +127,30 @@
       },
       "revId": "6f6d2cef8fa55b2ff9b667a6f51c21ac57891c1c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2faf1520_c79dbcf3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/enabled_policy.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-09-22T00:51:27Z",
+      "side": 1,
+      "message": "Here\u0027s the actual error message:\n\n2022-09-19T20:07:13.365620Z projector.EnabledPolicy [ FAIL ] testProjectorEnabled: Failed to run subtest testProjectorEnabled: failed to verify the screencast is blocked when policy is disabled: failed to Screencast is blocked on step 1: context deadline exceeded during a poll with timeout 10s; last error follows: Uncaught (in promise): \"failed to find node with properties: {name: /^Screencast is blocked$/, role: window}\"\n\nAdding Ancestor(blockedWindowFinder) to the ok button on line 169 below won\u0027t fix the issue because it actually fails at line 171 during ui.WaitUntilExists(blockedWindowFinder). The error dialog doesn\u0027t appear at all. Feel free to file a bug, leave a TODO, and address in a follow-up CL.",
+      "parentUuid": "0200215c_92d82eb0",
+      "range": {
+        "startLine": 165,
+        "startChar": 20,
+        "endLine": 165,
+        "endChar": 29
+      },
+      "revId": "6f6d2cef8fa55b2ff9b667a6f51c21ac57891c1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
