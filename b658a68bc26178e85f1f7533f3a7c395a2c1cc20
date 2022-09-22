@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "67d6db02_912b4490",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-09-22T18:33:08Z",
+      "side": 1,
+      "message": "Looks good in general.",
+      "revId": "b658a68bc26178e85f1f7533f3a7c395a2c1cc20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c42c753_be31a71b",
+        "filename": "src/chromiumos/tast/local/cellular/cellular_helper_utils.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-09-22T18:33:08Z",
+      "side": 1,
+      "message": "This looks like it comes from `src/chromiumos/tast/local/bundles/cros/cellular/fixture.go`. Can we remove it from there?",
+      "revId": "b658a68bc26178e85f1f7533f3a7c395a2c1cc20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2786f2d_350cd5e8",
+        "filename": "src/chromiumos/tast/remote/cellular/callbox/manager/fixture.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-09-22T18:33:08Z",
+      "side": 1,
+      "message": "Looks like this is a lot shorter than it used to be. Is this going to cause any issues?\n\n(Also, micro nit: I think PollOptions are usually created with Timeout first and then Interval, which might make it a bit easier to read quickly. YMMV.)",
+      "revId": "b658a68bc26178e85f1f7533f3a7c395a2c1cc20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "276d0df2_8672f1dd",
+        "filename": "src/chromiumos/tast/remote/cellular/callbox/manager/fixture.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-09-22T18:33:08Z",
+      "side": 1,
+      "message": "nit: ...disables and then re-enables the device, and then...",
+      "range": {
+        "startLine": 194,
+        "startChar": 20,
+        "endLine": 194,
+        "endChar": 32
+      },
+      "revId": "b658a68bc26178e85f1f7533f3a7c395a2c1cc20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
