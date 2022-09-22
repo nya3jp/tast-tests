@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "675e9a11_0ea5c3e2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_sensor_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1537719
+      },
+      "writtenOn": "2022-09-22T06:23:53Z",
+      "side": 1,
+      "message": "You could try `iioservice_query --device_type\u003d0 --attributes\u003d\"name location\"`.",
+      "parentUuid": "64b61cd8_b88e814c",
+      "range": {
+        "startLine": 179,
+        "startChar": 1,
+        "endLine": 180,
+        "endChar": 51
+      },
+      "revId": "313778794911ce3c88cdbfb6ec490add55634aa4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "882177c6_acf66583",
         "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_sensor_info.go",
         "patchSetId": 2
