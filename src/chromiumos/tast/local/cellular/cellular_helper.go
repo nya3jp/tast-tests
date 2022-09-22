@@ -290,6 +290,14 @@ func (h *Helper) ConnectToServiceWithTimeout(ctx context.Context, service *shill
 	}
 
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		// check if we are already connected, since services may choose to return an error if Connect is attempted on an already connected service.
+		isConnected, err := service.IsConnected(ctx)
+		if err != nil {
+			return err
+		}
+		if isConnected {
+			return nil
+		}
 		if err := service.Connect(ctx); err != nil {
 			return err
 		}
