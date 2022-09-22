@@ -9,8 +9,8 @@ import (
 	"fmt"
 
 	"chromiumos/tast/common/network/ip"
+	"chromiumos/tast/common/utils"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/remote/wificell/wifiutil"
 	"chromiumos/tast/testing"
 )
 
@@ -35,9 +35,9 @@ func NewBridge(ctx context.Context, ipr *ip.Runner, bridgeID int) (string, error
 // ReleaseBridge releases the bridge.
 func ReleaseBridge(ctx context.Context, ipr *ip.Runner, br string) error {
 	var firstErr error
-	wifiutil.CollectFirstErr(ctx, &firstErr, ipr.FlushIP(ctx, br))
-	wifiutil.CollectFirstErr(ctx, &firstErr, ipr.SetLinkDown(ctx, br))
-	wifiutil.CollectFirstErr(ctx, &firstErr, ipr.DeleteLink(ctx, br))
+	utils.CollectFirstErr(ctx, &firstErr, ipr.FlushIP(ctx, br))
+	utils.CollectFirstErr(ctx, &firstErr, ipr.SetLinkDown(ctx, br))
+	utils.CollectFirstErr(ctx, &firstErr, ipr.DeleteLink(ctx, br))
 	return firstErr
 }
 
