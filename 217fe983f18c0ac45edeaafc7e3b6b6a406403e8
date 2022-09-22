@@ -87,6 +87,30 @@
       },
       "revId": "217fe983f18c0ac45edeaafc7e3b6b6a406403e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed3e637c_bf5fbf9f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_emoji_suggestion.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-09-22T02:22:28Z",
+      "side": 1,
+      "message": "Conceptually, the \"guest\" test should be run the same way, as it\u0027s more of a coincidence that it currently works.\n\nI can duplicate the test file, but isn\u0027t that worse than having the small wrapper around the test body? Other variants aren\u0027t really affected by the wrapping, they behave the same as before.",
+      "parentUuid": "1d8e598b_861640bc",
+      "range": {
+        "startLine": 94,
+        "startChar": 1,
+        "endLine": 99,
+        "endChar": 2
+      },
+      "revId": "217fe983f18c0ac45edeaafc7e3b6b6a406403e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
