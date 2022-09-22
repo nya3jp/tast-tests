@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "905781b7_c881cca6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/intel/perform_cold_reboot_during_s0ix.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-09-22T07:49:08Z",
+      "side": 1,
+      "message": "Yeah, \"; got: %d, want: %d\" format is added in powercontrol.VerifyPowerdConfigSuspendValue() definition.",
+      "parentUuid": "eb518799_5ed89d5c",
+      "revId": "e29e765aef39a1ffb2c0fcdf48e1441d92fed781",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2f82cd05_6f583ff9",
         "filename": "src/chromiumos/tast/remote/bundles/cros/intel/perform_cold_reboot_during_s0ix.go",
         "patchSetId": 1
@@ -48,6 +66,30 @@
       "writtenOn": "2022-09-21T15:59:25Z",
       "side": 1,
       "message": "Sleeps are generally discouraged. Is there another way to poll on a state for this? If not, I\u0027d suggest putting a more descriptive comment about why this sleep is needed, and why 1 second is relevant.",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 2
+      },
+      "revId": "e29e765aef39a1ffb2c0fcdf48e1441d92fed781",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ca1e170_61a099c3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/intel/perform_cold_reboot_during_s0ix.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-09-22T07:49:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2f82cd05_6f583ff9",
       "range": {
         "startLine": 80,
         "startChar": 0,
@@ -71,6 +113,24 @@
       "writtenOn": "2022-09-21T15:59:25Z",
       "side": 1,
       "message": "Same suggestion here, would got: want: be beneficial for debugging in the case of errors?",
+      "revId": "e29e765aef39a1ffb2c0fcdf48e1441d92fed781",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69bee3f9_257eb79c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/intel/perform_cold_reboot_during_s0ix.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-09-22T07:49:08Z",
+      "side": 1,
+      "message": "Yeah, \"; got: %d, want: %d\" format is added in powercontrol.ValidatePrevSleepState() definition.",
+      "parentUuid": "56a7f328_7d7b4a61",
       "revId": "e29e765aef39a1ffb2c0fcdf48e1441d92fed781",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
