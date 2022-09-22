@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b4431cc_fd701abf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/roaming_label_test_common.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1547388
+      },
+      "writtenOn": "2022-09-22T18:02:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "46f1ae8b_cc71e78b",
+      "revId": "6681d66f29f602d5c3631f27e4d1ea04a68fb355",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c9ffab48_45344553",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-09-19T13:21:00Z",
       "side": 1,
       "message": "don\u0027t think we need Sprintf here as there are no variables -- this is just a string literal",
+      "revId": "6681d66f29f602d5c3631f27e4d1ea04a68fb355",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "25e4c00c_7e89d087",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/ossettings/ossettings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1547388
+      },
+      "writtenOn": "2022-09-22T18:02:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c9ffab48_45344553",
       "revId": "6681d66f29f602d5c3631f27e4d1ea04a68fb355",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
