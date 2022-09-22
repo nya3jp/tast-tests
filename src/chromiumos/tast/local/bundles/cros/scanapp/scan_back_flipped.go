@@ -61,7 +61,7 @@ func ScanBackFlipped(ctx context.Context, s *testing.State) {
 	var scannerParams = scanning.ScannerStruct{
 		Descriptors: scanning.FlipTestDescriptors,
 		Attributes:  scanning.Attributes,
-		EsclCaps:    scanning.EsclCapabilities,
+		EsclCaps:    scanapp.EsclCapabilities,
 	}
 	scanning.RunAppSettingsTests(ctx, s, cr, backFlippedTests, scannerParams)
 }

@@ -100,7 +100,7 @@ func MultiPageScan(ctx context.Context, s *testing.State) {
 	printer, err := usbprinter.Start(ctx,
 		usbprinter.WithIPPUSBDescriptors(),
 		usbprinter.WithGenericIPPAttributes(),
-		usbprinter.WithESCLCapabilities(scanning.EsclCapabilities),
+		usbprinter.WithESCLCapabilities(scanapp.EsclCapabilities),
 		usbprinter.ExpectUdevEventOnStop(),
 		usbprinter.WaitUntilConfigured())
 	if err != nil {
@@ -152,12 +152,12 @@ func MultiPageScan(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to retrieve users MyFiles path: ", err)
 	}
-	defaultScanPattern := filepath.Join(myFilesPath, scanning.DefaultScanFilePattern)
+	defaultScanPattern := filepath.Join(myFilesPath, scanapp.DefaultScanFilePattern)
 	for _, test := range multiPageScanTests {
 		s.Run(ctx, test.name, func(ctx context.Context, s *testing.State) {
 			defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "ui_tree_multi_page_scan")
 			defer func() {
-				if err := scanning.RemoveScans(defaultScanPattern); err != nil {
+				if err := scanapp.RemoveScans(defaultScanPattern); err != nil {
 					s.Error("Failed to remove scans: ", err)
 				}
 			}()
@@ -195,7 +195,7 @@ func MultiPageScan(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to save scan scan: ", err)
 			}
 
-			scan, err := scanning.GetScan(defaultScanPattern)
+			scan, err := scanapp.GetScan(defaultScanPattern)
 			if err != nil {
 				s.Fatal("Failed to find scan: ", err)
 			}
