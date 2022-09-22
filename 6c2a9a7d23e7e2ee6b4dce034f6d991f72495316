@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2cc5ebc9_84ac29f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/mojo/service_manager_test_service.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2022-09-22T05:29:29Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "e23d5e56_874d0f55",
+      "range": {
+        "startLine": 14,
+        "startChar": 1,
+        "endLine": 14,
+        "endChar": 9
+      },
+      "revId": "6c2a9a7d23e7e2ee6b4dce034f6d991f72495316",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6d2f393e_61d894cf",
@@ -58,6 +82,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aebfc5e3_93241840",
+        "filename": "src/chromiumos/tast/local/bundles/cros/mojo/service_manager_test_service.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2022-09-22T05:29:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d2f393e_61d894cf",
+      "revId": "6c2a9a7d23e7e2ee6b4dce034f6d991f72495316",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "31645534_14a16e47",
@@ -71,6 +113,24 @@
       "writtenOn": "2022-09-21T07:22:37Z",
       "side": 1,
       "message": "How about installing the test binary to /usr/local/bin, and giving it a more specific name? (e.g. mojo_service_manager_test_tool)\n\nThen you can avoid this file, and just directly call testexec.CommandContext(ctx, \"mojo_service_manager_test_tool\", \"--action\u003dfoo\").Run() in tests make them easier to read.",
+      "revId": "6c2a9a7d23e7e2ee6b4dce034f6d991f72495316",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "15605d8c_acde97b1",
+        "filename": "src/chromiumos/tast/local/mojo/test_tool.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2022-09-22T05:29:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "31645534_14a16e47",
       "revId": "6c2a9a7d23e7e2ee6b4dce034f6d991f72495316",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
