@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4419d07_4c76e162",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1522762
+      },
+      "writtenOn": "2022-09-22T17:20:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1f88e78d_6be5bf79",
+      "revId": "932f16e91316051965ec17ad8de5a7c41e921998",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "849da56d_7cd13e9f",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-09-22T15:35:25Z",
       "side": 1,
       "message": "Is this duplicated with the other invocation by the defer statement?\n(error reporting may be useful, though)",
+      "revId": "932f16e91316051965ec17ad8de5a7c41e921998",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43443971_c2c4374f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/admin_templates_launch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1522762
+      },
+      "writtenOn": "2022-09-22T17:20:54Z",
+      "side": 1,
+      "message": "That is correct. In this case, if we want to keep the error in the log, is it fine to keep this here?",
+      "parentUuid": "849da56d_7cd13e9f",
       "revId": "932f16e91316051965ec17ad8de5a7c41e921998",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
