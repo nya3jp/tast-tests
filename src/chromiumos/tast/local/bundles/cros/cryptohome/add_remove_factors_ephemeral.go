@@ -122,7 +122,7 @@ func AddRemoveFactorsEphemeral(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to list auth factors before adding any factors: ", err)
 	}
 	if err := cryptohomecommon.ExpectAuthFactorsWithTypeAndLabel(
-		listFactorsAtStartReply.ConfiguredAuthFactorsWithStatus,
+		listFactorsAtStartReply.ConfiguredAuthFactors,
 		nil); err != nil {
 		s.Fatal("Mismatch in configured auth factors before adding factors (-got, +want): ", err)
 	}
@@ -143,12 +143,10 @@ func AddRemoveFactorsEphemeral(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to list auth factors after adding password: ", err)
 	}
 	if err := cryptohomecommon.ExpectAuthFactorsWithTypeAndLabel(
-		listFactorsAfterAddPasswordReply.ConfiguredAuthFactorsWithStatus,
-		[]*uda.AuthFactorWithStatus{{
-			AuthFactor: &uda.AuthFactor{
-				Type:  uda.AuthFactorType_AUTH_FACTOR_TYPE_PASSWORD,
-				Label: passwordLabel,
-			},
+		listFactorsAfterAddPasswordReply.ConfiguredAuthFactors,
+		[]*uda.AuthFactor{{
+			Type:  uda.AuthFactorType_AUTH_FACTOR_TYPE_PASSWORD,
+			Label: passwordLabel,
 		}}); err != nil {
 		s.Fatal("Mismatch in configured auth factors after adding password (-got, +want): ", err)
 	}

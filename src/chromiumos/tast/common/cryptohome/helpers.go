@@ -38,16 +38,15 @@ func ExpectAuthFactorTypes(types, expectedTypes []uda.AuthFactorType) error {
 	return errors.New(diff)
 }
 
-// ExpectAuthFactorsWithTypeAndLabel checks whether AuthFactorWithStatus proto
-// contains expected AuthFactors, looking only at the types and labels of the
-// factors. If they are not equal then this returns an error containing the
-// formatted difference.
-func ExpectAuthFactorsWithTypeAndLabel(factors, expectedFactors []*uda.AuthFactorWithStatus) error {
-	eq := func(a, b *uda.AuthFactorWithStatus) bool {
-		return a.AuthFactor.Type == b.AuthFactor.Type && a.AuthFactor.Label == b.AuthFactor.Label
+// ExpectAuthFactorsWithTypeAndLabel checks whether two given sets of auth factors
+// are equal, looking only at the types and labels of the factors. If they are
+// not equal then this returns an error containing the formatted difference.
+func ExpectAuthFactorsWithTypeAndLabel(factors, expectedFactors []*uda.AuthFactor) error {
+	eq := func(a, b *uda.AuthFactor) bool {
+		return a.Type == b.Type && a.Label == b.Label
 	}
-	less := func(a, b *uda.AuthFactorWithStatus) bool {
-		return a.AuthFactor.Type < b.AuthFactor.Type || (a.AuthFactor.Type == b.AuthFactor.Type && a.AuthFactor.Label < b.AuthFactor.Label)
+	less := func(a, b *uda.AuthFactor) bool {
+		return a.Type < b.Type || (a.Type == b.Type && a.Label < b.Label)
 	}
 	diff := cmp.Diff(factors, expectedFactors, cmp.Comparer(eq), cmpopts.SortSlices(less))
 	if diff == "" {
