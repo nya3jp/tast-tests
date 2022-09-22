@@ -1,4 +1,4 @@
-// Copyright 2022 The ChromiumOS Authors.
+// Copyright 2022 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -24,7 +24,7 @@ func init() {
 		Contacts:     []string{"ejcaruso@google.com", "chromeos-cellular-team@google.com"},
 		Attr:         []string{"group:cellular", "cellular_unstable", "cellular_sim_active"},
 		HardwareDeps: hwdep.D(hwdep.Cellular()),
-		Timeout:      5 * time.Minute,
+		Timeout:      3 * time.Minute,
 		Fixture:      "cellular",
 	})
 }
@@ -81,11 +81,12 @@ func ShillCellularDisableWhileConnecting(ctx context.Context, s *testing.State) 
 	go func() {
 		defer wg.Done()
 
-		// Wait for service to move to the "Associating" state. This means
+		// Wait for service to move to the "Associating" or "Configuring" state. This means
 		// the service has started connecting.
 		s.Log("Waiting for service to start connecting")
-		if err := service.WaitForProperty(ctx, shillconst.ServicePropertyState, shillconst.ServiceStateAssociation, 10*time.Second); err != nil {
-			s.Fatal("Service never reached associating state: ", err)
+		states := []interface{}{shillconst.ServiceStateAssociation, shillconst.ServiceStateConfiguration}
+		if err := service.WaitForPropertyInSetWithOptions(ctx, shillconst.ServicePropertyState, states, &testing.PollOptions{Timeout: 10 * time.Second, Interval: 20 * time.Millisecond}); err != nil {
+			s.Fatal("Service never started connecting: ", err)
 		}
 
 		// Now we can disable the device.
@@ -96,7 +97,7 @@ func ShillCellularDisableWhileConnecting(ctx context.Context, s *testing.State) 
 	}()
 
 	s.Log("Connecting service")
-	if err := helper.ConnectToService(ctx, service); err != nil {
+	if err := helper.ConnectToServiceWithTimeout(ctx, service, time.Minute); err != nil {
 		s.Log("Connection failed: ", err)
 	} else {
 		s.Log("Connection succeeded")
