@@ -39,7 +39,6 @@ const pkgName = "org.chromium.arc.testapp.pictureinpicturevideo"
 type TestParam struct {
 	BrowserType browser.Type
 	Tablet      bool
-	Validation  bool
 }
 
 // Connections holds things that facilitate interaction with the DUT.
