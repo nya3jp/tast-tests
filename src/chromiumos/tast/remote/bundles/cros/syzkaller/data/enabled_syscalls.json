@@ -747,7 +747,7 @@
 	},
 	{
 		"driver": "drm_syncobj(CONFIG_DRM)",
-		"boards": ["trogdor", "strongbad"],
+		"boards": ["trogdor"],
 		"syscalls": [
 			"ioctl$DRM_IOCTL_SYNCOBJ_CREATE",
 			"ioctl$DRM_IOCTL_SYNCOBJ_DESTROY",
@@ -833,7 +833,7 @@
 	},
 	{
 		"driver": "virtio-net-vmsockets(CONFIG_VIRTIO_NET)",
-		"exclude_boards": ["octopus", "kukui", "jacuzzi", "cherry", "dedede"],
+		"exclude_boards": ["octopus", "kukui", "jacuzzi", "cherry", "dedede", "strongbad"],
 		"syscalls": [
 			"setsockopt$SO_VM_SOCKETS_BUFFER_SIZE",
 			"setsockopt$SO_VM_SOCKETS_BUFFER_MAX_SIZE",
