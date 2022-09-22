@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "321c0639_39337c92",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2022-09-22T13:19:34Z",
+      "side": 1,
+      "message": "I would mark all the comments as \"Done\".  Please review PS#5.\n\nI would need to perform more tests (and add required code) for the newly added USE flag and the SoftwareDeps.",
+      "revId": "8bbf26a507682f3a8b7e42a7d61f3dcca80e6764",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

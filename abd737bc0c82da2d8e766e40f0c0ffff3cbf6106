@@ -106,6 +106,24 @@
       "parentUuid": "daaa1ee0_862da383",
       "revId": "abd737bc0c82da2d8e766e40f0c0ffff3cbf6106",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6053b5e_f87fc477",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/config_verify.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2022-09-22T13:19:34Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "cc2e259c_db3df8f6",
+      "revId": "abd737bc0c82da2d8e766e40f0c0ffff3cbf6106",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
