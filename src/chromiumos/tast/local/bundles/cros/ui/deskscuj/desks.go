@@ -14,6 +14,8 @@ import (
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/cuj"
 	"chromiumos/tast/local/chrome/cuj/inputsimulations"
+	"chromiumos/tast/local/chrome/display"
+	"chromiumos/tast/local/chrome/uiauto/mouse"
 	"chromiumos/tast/local/input"
 )
 
@@ -40,7 +42,7 @@ func openDesk(ctx context.Context, tconn *chrome.TestConn, cs ash.ConnSource, ur
 	}
 
 	if err := ash.ForEachWindow(ctx, tconn, func(w *ash.Window) error {
-		return ash.SetWindowStateAndWait(ctx, tconn, w.ID, ash.WindowStateNormal)
+		return ash.SetWindowStateAndWait(ctx, tconn, w.ID, ash.WindowStateMaximized)
 	}); err != nil {
 		return nil, errors.Wrap(err, "failed to set each window state to normal")
 	}
@@ -67,7 +69,7 @@ func openDesk(ctx context.Context, tconn *chrome.TestConn, cs ash.ConnSource, ur
 //
 // Desks are arranged based on the following:
 // Desk 1:
-//   - Windows: 8
+//   - Windows: 6
 //   - User Input: Mouse Scroll Wheel
 //
 // Desk 2:
@@ -95,6 +97,13 @@ func setUpDesks(ctx context.Context, tconn, bTconn *chrome.TestConn, cs ash.Conn
 		return nil, 0, errors.Wrap(err, "failed to open multiple tabs in a window")
 	}
 
+	info, err := display.GetPrimaryInfo(ctx, tconn)
+	if err != nil {
+		return nil, 0, errors.Wrap(err, "failed to get the primary display info")
+	}
+
+	clickCenterOfDisplay := mouse.Click(tconn, info.Bounds.CenterPoint(), mouse.LeftButton)
+
 	var totalOpenWindows int
 	var onVisitActions []action.Action
 	for i, desk := range []struct {
@@ -105,26 +114,28 @@ func setUpDesks(ctx context.Context, tconn, bTconn *chrome.TestConn, cs ash.Conn
 		{
 			urls: []string{
 				"https://crosvideo.appspot.com/?codec=h264_60&loop=true&mute=true",
-				"https://webglsamples.org/aquarium/aquarium.html?numFish=1000",
 				"https://bugs.chromium.org/p/chromium/issues/list",
 				"https://docs.google.com/document",
-				"https://chrome.google.com/webstore/category/extensions",
 				"https://news.google.com/?hl=en-US&gl=US&ceid=US:en",
-				docsURL,
+				"https://docs.google.com/presentation/d/1lItrhkgBqXF_bsP-tOqbjcbBFa86--m3DT5cLxegR2k/edit?usp=sharing&resourcekey=0-FmuN4N-UehRS2q4CdQzRXA",
 			},
 			onVisitAction: func(ctx context.Context) error {
 				return inputsimulations.ScrollMouseDownFor(ctx, mw, 500*time.Millisecond, 6*time.Second)
 			},
-			expectedNumWindows: 8, // This includes the 7 websites defined in urls, and the additional window for RAM pressure.
+			expectedNumWindows: 6, // This includes the 5 websites defined in urls, and the additional window for RAM pressure.
 		},
 		{
 			urls: []string{
-				"https://bugs.chromium.org/p/chromium/issues/list",
+				"https://chrome.google.com/webstore/category/extensions",
 				"https://mail.google.com",
-				"https://docs.google.com/presentation/d/1lItrhkgBqXF_bsP-tOqbjcbBFa86--m3DT5cLxegR2k/edit?usp=sharing&resourcekey=0-FmuN4N-UehRS2q4CdQzRXA",
-				"https://docs.google.com/spreadsheets/d/1I9jmmdWkBaH6Bdltc2j5KVSyrJYNAhwBqMmvTdmVOgM/edit?usp=sharing&resourcekey=0-60wBsoTfOkoQ6t4yx2w7FQ",
+				"https://www.nytimes.com/",
+				docsURL,
 			},
 			onVisitAction: func(ctx context.Context) error {
+				if err := clickCenterOfDisplay(ctx); err != nil {
+					return errors.Wrap(err, "failed to click the center of the display")
+				}
+
 				if err := inputsimulations.ScrollDownFor(ctx, tpw, tw, time.Second, 6*time.Second); err != nil {
 					return errors.Wrap(err, "failed to scroll down with trackpad")
 				}
@@ -134,10 +145,14 @@ func setUpDesks(ctx context.Context, tconn, bTconn *chrome.TestConn, cs ash.Conn
 		},
 		{
 			urls: []string{
-				"https://crosvideo.appspot.com/?codec=h264_60&loop=true&mute=true",
+				"https://docs.google.com/document/d/19R_RWgGAqcHtgXic_YPQho7EwZyUAuUZyBq4n_V-BJ0/edit?usp=sharing",
 				"https://webglsamples.org/aquarium/aquarium.html?numFish=1000",
 			},
 			onVisitAction: func(ctx context.Context) error {
+				if err := clickCenterOfDisplay(ctx); err != nil {
+					return errors.Wrap(err, "failed to click the center of the display")
+				}
+
 				return inputsimulations.MoveMouseFor(ctx, tconn, 6*time.Second)
 			},
 			expectedNumWindows: 2,
