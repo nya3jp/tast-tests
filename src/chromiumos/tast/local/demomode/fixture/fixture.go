@@ -52,7 +52,7 @@ func (f *fixtureImpl) PreTest(ctx context.Context, s *testing.FixtTestState) {}
 func (f *fixtureImpl) PostTest(ctx context.Context, s *testing.FixtTestState) {}
 
 func (f *fixtureImpl) TearDown(ctx context.Context, s *testing.FixtState) {
-	resetTPMAndSystemState(ctx, s)
+	//resetTPMAndSystemState(ctx, s)
 }
 
 // resetTPMAndSystemState resets TPM, which can take a few seconds.

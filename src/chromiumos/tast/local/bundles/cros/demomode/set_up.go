@@ -19,6 +19,10 @@ import (
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/session"
 	"chromiumos/tast/testing"
+
+	// XXX(yaohuali)
+
+	"chromiumos/tast/local/apps"
 )
 
 func init() {
@@ -38,6 +42,8 @@ func init() {
 		// is only shown for chrome-branded builds when the device is ARC-capable.
 		SoftwareDeps: []string{"chrome", "chrome_internal", "arc", "tpm"},
 		VarDeps:      []string{"ui.signinProfileTestExtensionManifestKey"},
+		// XXX(yaohuali)
+		Timeout: 10 * time.Minute,
 	})
 }
 
@@ -48,11 +54,12 @@ func init() {
 func SetUp(ctx context.Context, s *testing.State) {
 	cr, err := chrome.New(ctx,
 		chrome.NoLogin(),
-		chrome.ARCEnabled(),
+		chrome.ARCSupported(),
 		// TODO(crbug.com/1291183): Parameterize this test to also run a version that tests the
 		// Consolidated Consent screen instead of EULA + ARC TOS
 		chrome.DisableFeatures("OobeConsolidatedConsent"),
 		chrome.DontSkipOOBEAfterLogin(),
+		//chrome.ExtraArgs("--arc-start-mode=always-start", "--enable-crash-reporter-for-testing"),
 		chrome.ExtraArgs("--arc-start-mode=always-start"),
 		chrome.LoadSigninProfileExtension(s.RequiredVar("ui.signinProfileTestExtensionManifestKey")),
 	)
@@ -76,7 +83,8 @@ func SetUp(ctx context.Context, s *testing.State) {
 	}
 	defer faillog.DumpUITreeOnError(clearUpCtx, s.OutDir(), s.HasError, tconn)
 
-	ui := uiauto.New(tconn).WithTimeout(50 * time.Second)
+	// XXX(yaohuali)
+	ui := uiauto.New(tconn)//.WithTimeout(50 * time.Second)
 
 	findAndClickButton := func(buttonApiMethod string) {
 		var buttonName string
@@ -182,5 +190,50 @@ func SetUp(ctx context.Context, s *testing.State) {
 		s.Log("Got SessionStateChanged signal")
 	case <-ctx.Done():
 		s.Fatal("Didn't get SessionStateChanged signal: ", ctx.Err())
+	}
+
+	s.Log("============= OutDir: ", s.OutDir())
+
+	// Look for the Play Store icon and click.
+	// Polling till the icon is found or the timeout is reached.
+	uia := uiauto.New(tconn)
+	/*
+	notFoundError := errors.New("Play Store icon is not found yet")
+	err = testing.Poll(ctx, func(ctx context.Context) error {
+		if found, err := uia.IsNodeFound(ctx, nodewith.Name(apps.PlayStore.Name).ClassName("ash/ShelfAppButton")); err != nil {
+			if errors.Is(err, context.DeadlineExceeded) {
+				return err
+			}
+			return testing.PollBreak(errors.Wrap(err, "failed to check Play Store icon"))
+		} else if found {
+			return nil
+		}
+		return notFoundError
+	}, &testing.PollOptions{Timeout: 15 * time.Second, Interval: time.Second})
+	*/
+
+	s.Log("=============== Start to wait for Play Store")
+	if err = uia.WithTimeout(50 * time.Second).WaitUntilExists(nodewith.Name(apps.PlayStore.Name).ClassName("ash/ShelfAppButton"))(ctx); err != nil {
+		s.Fatal("Failed to wait for Play Store icon on shelf: ", err)
+	}
+	s.Log("=============== Play Store appears")
+	testing.Sleep(ctx, 3 * time.Second)
+	s.Log("=============== Sleep done")
+
+	// We expect Play icon to always appear on tablet, regardless whether ARC is enabled by policy.
+	if err != nil {
+		s.Fatal("Failed to confirm the Play Store icon: ", err)
+	}
+
+	// Click on Play Store icon and see what pops out.
+	if err := apps.Launch(ctx, tconn, apps.PlayStore.ID); err != nil {
+		s.Fatal("Failed to launch Play Store: ", err)
+	}
+
+	// ARC opt-in is expected to happen (but fail, due to the fake policy we gave).
+	// This will take a long time, e.g. 30s on kakadu, thus a long timeout value.
+	arcOptInUI := nodewith.Name("Google Play apps and services").Role(role.StaticText)
+	if err := uia.WithTimeout(50 * time.Second).WaitUntilExists(arcOptInUI)(ctx); err != nil {
+		s.Fatal("Failed to see ARC Opt-In UI: ", err)
 	}
 }
