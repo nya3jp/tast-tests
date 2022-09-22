@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c588534_42ba5110",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/window_cycle.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-09-22T09:57:56Z",
+      "side": 1,
+      "message": "nit: maybe start from 1 if you always use i+1?",
+      "range": {
+        "startLine": 114,
+        "startChar": 10,
+        "endLine": 114,
+        "endChar": 11
+      },
+      "revId": "bdf0e7a3daa03b5700707c77fe21edfc99861a74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d57ccd9_3f51cb71",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/window_cycle.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-09-22T09:57:56Z",
+      "side": 1,
+      "message": "don\u0027t ignore error",
+      "range": {
+        "startLine": 135,
+        "startChar": 10,
+        "endLine": 135,
+        "endChar": 13
+      },
+      "revId": "bdf0e7a3daa03b5700707c77fe21edfc99861a74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b170c178_d312f4e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/window_cycle.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-09-22T09:57:56Z",
+      "side": 1,
+      "message": "usually cleanupCtx used in defer statement, otherwise you should use ctx",
+      "range": {
+        "startLine": 180,
+        "startChar": 18,
+        "endLine": 180,
+        "endChar": 28
+      },
+      "revId": "bdf0e7a3daa03b5700707c77fe21edfc99861a74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af00c86d_696141b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/window_cycle.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-09-22T09:57:56Z",
+      "side": 1,
+      "message": "don\u0027t pass testing.State to function, instead return error",
+      "range": {
+        "startLine": 201,
+        "startChar": 52,
+        "endLine": 201,
+        "endChar": 68
+      },
+      "revId": "bdf0e7a3daa03b5700707c77fe21edfc99861a74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9fc2b9cb_ab800645",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/window_cycle.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-09-22T09:57:56Z",
+      "side": 1,
+      "message": "nit: check when to log\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#When-to-log",
+      "range": {
+        "startLine": 203,
+        "startChar": 0,
+        "endLine": 203,
+        "endChar": 52
+      },
+      "revId": "bdf0e7a3daa03b5700707c77fe21edfc99861a74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8dba7667_064026fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/window_cycle.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-09-22T09:57:56Z",
+      "side": 1,
+      "message": "nit: maybe move it to a separate function?",
+      "range": {
+        "startLine": 214,
+        "startChar": 3,
+        "endLine": 214,
+        "endChar": 9
+      },
+      "revId": "bdf0e7a3daa03b5700707c77fe21edfc99861a74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c10d347a_cedaf3f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/window_cycle.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-09-22T09:57:56Z",
+      "side": 1,
+      "message": "nit: also don\u0027t ignore returned error",
+      "range": {
+        "startLine": 221,
+        "startChar": 4,
+        "endLine": 221,
+        "endChar": 19
+      },
+      "revId": "bdf0e7a3daa03b5700707c77fe21edfc99861a74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a988c4f3_a9d77d45",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/window_cycle.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-09-22T09:57:56Z",
+      "side": 1,
+      "message": "don\u0027t ignore returned error, check other places",
+      "range": {
+        "startLine": 237,
+        "startChar": 0,
+        "endLine": 237,
+        "endChar": 17
+      },
+      "revId": "bdf0e7a3daa03b5700707c77fe21edfc99861a74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d6e1d61_77b775d7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/window_cycle.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-09-22T09:57:56Z",
+      "side": 1,
+      "message": "nit: pass ctx directly to this function, otherwise if you bind by reference, it\u0027s error-prone",
+      "range": {
+        "startLine": 275,
+        "startChar": 4,
+        "endLine": 275,
+        "endChar": 6
+      },
+      "revId": "bdf0e7a3daa03b5700707c77fe21edfc99861a74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
