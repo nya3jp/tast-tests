@@ -29,7 +29,6 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/browser/browserfixt"
-	"chromiumos/tast/local/chrome/cuj"
 	"chromiumos/tast/local/chrome/webutil"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/ui/cujrecorder"
@@ -46,7 +45,6 @@ const (
 // TabSwitchParam holds parameters of tab switch cuj test variations.
 type TabSwitchParam struct {
 	BrowserType browser.Type // Chrome type.
-	Validation  bool         // Whether to add extra cpu loads before collecting metrics.
 }
 
 // tabSwitchVariables holds all the necessary variables used by the test.
@@ -370,19 +368,6 @@ func Run(ctx context.Context, s *testing.State) {
 
 	if err := muteDevice(ctx, s); err != nil {
 		s.Log("(non-error) Failed to mute device: ", err)
-	}
-
-	// Validation Specific Setup
-	if setupVars.param.Validation {
-		validationHelper := cuj.NewTPSValidationHelper(closeCtx)
-		if err := validationHelper.Stress(); err != nil {
-			s.Fatal("Failed to stress: ", err)
-		}
-		defer func() {
-			if err := validationHelper.Release(); err != nil {
-				s.Fatal("Failed to release validationHelper: ", err)
-			}
-		}()
 	}
 
 	// Execute Test

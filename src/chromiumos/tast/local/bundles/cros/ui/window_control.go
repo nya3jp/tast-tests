@@ -103,7 +103,7 @@ func WindowControl(ctx context.Context, s *testing.State) {
 	ws, err := ash.GetAllWindows(ctx, tconn)
 	if err != nil {
 		s.Fatal("Failed to get the windows: ", err)
-	}
+    }
 
 	r := perfutil.NewRunner(br)
 	r.Runs = 5
