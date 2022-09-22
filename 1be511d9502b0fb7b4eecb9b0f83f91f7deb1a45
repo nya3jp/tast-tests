@@ -22,6 +22,30 @@
       },
       "revId": "1be511d9502b0fb7b4eecb9b0f83f91f7deb1a45",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "771e8e2e_d0390654",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/taskswitchcuj/task_switch_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-09-22T23:24:10Z",
+      "side": 0,
+      "message": "I removed it because waiting for stabilization before swiping did eliminate the need for this. Basically, once all the previews loaded properly, the swipe always started and ended cleanly, because the DUT wasn\u0027t in parallel loading windows.\n\nI think this wait should always have been before the swipe... I added it here in the past, incorrectly thinking that the inconsistencies I was seeing in overview mode were because of swipe, when in reality it was likely because of loading previews.\n\nLastly, I have a hardcoded sleep in taskswitcher.go after we finish going to overview mode / swiping in tablet mode, so that we can mimic a user actually finding the window they want to click on. I think that should be more than enough.",
+      "parentUuid": "c09a5582_01b8bca9",
+      "range": {
+        "startLine": 166,
+        "startChar": 0,
+        "endLine": 169,
+        "endChar": 4
+      },
+      "revId": "1be511d9502b0fb7b4eecb9b0f83f91f7deb1a45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
