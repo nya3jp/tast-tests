@@ -37,7 +37,6 @@ func init() {
 			"group:mainline",
 			"group:paper-io",
 			"paper-io_printing",
-			"informational",
 		},
 		SoftwareDeps: []string{"chrome", "cups", "virtual_usb_printer"},
 		Fixture:      "virtualUsbPrinterModulesLoadedWithArcBooted",
