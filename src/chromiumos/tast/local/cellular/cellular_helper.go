@@ -1206,3 +1206,23 @@ func (h *Helper) GetPINAndPUKForICCID(ctx context.Context, iccid string) (string
 func (h *Helper) GetLabelCarrierName(ctx context.Context) string {
 	return h.carrierName
 }
+
+// ConnectAndCheck verifies that cellular is connected and has sufficient signal coverage to run test cases
+func (h *Helper) ConnectAndCheck(ctx context.Context) error {
+	service, err := h.FindServiceForDevice(ctx)
+	if err != nil {
+		return errors.Wrap(err, "unable to find cellular service for device")
+	}
+
+	// Ensure service's state matches expectations.
+	if err := service.WaitForProperty(ctx, shillconst.ServicePropertyState, shillconst.ServiceStateOnline, 150*time.Second); err != nil {
+		return errors.Wrap(err, "failed to get service state")
+	}
+
+	// Ensure service's signal quality matches expectations.
+	signalStrength, _ := service.GetSignalStrength(ctx)
+	testing.ContextLog(ctx, "SignalStrength: ", signalStrength)
+	if signalStrength < shillconst.CellularServiceMinSignalStrength {
+		return errors.Wrapf(err, "signal strength below minimum acceptable threshold - %d < %d ", signalStrength, shillconst.CellularServiceMinSignalStrength)
+	}
+}

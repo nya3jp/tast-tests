@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/common/fixture"
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/cellular"
 	"chromiumos/tast/local/hermes"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
@@ -34,7 +35,7 @@ func init() {
 		PreTestTimeout:  1 * time.Second,
 		PostTestTimeout: 1 * time.Second,
 		TearDownTimeout: 5 * time.Second,
-		Impl:            &cellularFixture{modemfwdStopped: false},
+		Impl:            &cellularFixture{modemfwdStopped: false, connectService: false},
 	})
 	testing.AddFixture(&testing.Fixture{
 		Name: "cellularWithFakeDMSEnrolled",
@@ -51,12 +52,28 @@ func init() {
 		Impl:            &cellularFixture{modemfwdStopped: false, useFakeDMS: true},
 		Parent:          fixture.FakeDMSEnrolled,
 	})
+	testing.AddFixture(&testing.Fixture{
+		Name: "cellularConnected",
+		Desc: "Cellular tests are safe to run after cellular is connected and verified",
+		Contacts: []string{
+			"nmarupaka@google.com",
+			"chromeos-cellular-team@google.com",
+		},
+		SetUpTimeout:    3 * time.Minute,
+		ResetTimeout:    5 * time.Second,
+		PreTestTimeout:  1 * time.Second,
+		PostTestTimeout: 1 * time.Second,
+		TearDownTimeout: 5 * time.Second,
+		Impl:            &cellularFixture{modemfwdStopped: false, connectService: true},
+		Parent:          "cellular",
+	})
 }
 
 // cellularFixture implements testing.FixtureImpl.
 type cellularFixture struct {
 	modemfwdStopped bool
 	useFakeDMS      bool
+	connectService  bool
 }
 
 // FixtData holds information made available to tests that specify this fixture.
@@ -105,6 +122,16 @@ func (f *cellularFixture) SetUp(ctx context.Context, s *testing.FixtState) inter
 		s.Logf("Could not confirm if Hermes is idle: %s", err)
 	}
 
+	if f.connectService {
+		helper, err := cellular.NewHelper(ctx)
+		if err != nil {
+			s.Fatal("Failed to create cellular.Helper: ", err)
+		}
+		// Ensure cellular is connected and has sufficient coverage.
+		if err := helper.ConnectAndCheck(ctx); err != nil {
+			s.Fatal("Failed to setup well connected cellular service: ", err)
+		}
+	}
 	return &FixtData{fdms}
 }
 
@@ -121,6 +148,16 @@ func (f *cellularFixture) TearDown(ctx context.Context, s *testing.FixtState) {
 			s.Fatalf("Failed to start %q: %s", modemfwdJobName, err)
 		}
 		s.Logf("Started %q", modemfwdJobName)
+	}
+	if f.connectService {
+		helper, err := cellular.NewHelper(ctx)
+		if err != nil {
+			s.Fatal("Failed to create cellular.Helper: ", err)
+		}
+		// Ensure cellular is disconnected.
+		if err := helper.Disconnect(ctx); err != nil {
+			s.Fatal("Failed to disconnect cellular service: ", err)
+		}
 	}
 }
 
