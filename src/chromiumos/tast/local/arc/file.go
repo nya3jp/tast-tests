@@ -167,9 +167,9 @@ func UnmountSDCardPartitionFromHost(ctx context.Context, user string) error {
 	return cmd.Run(testexec.DumpLogOnError)
 }
 
-// MountVirtioBlkDataDiskImageReadOnlyIfUsed first checks if ARCVM virtio-blk /data is used on the
-// device, and if that is the case, mounts the virtio-blk disk image on the host's
-// /home/root/<hash>/android-data/data as read-only.
+// MountVirtioBlkDataDiskImageReadOnlyIfUsed first checks if ARCVM virtio-blk /data is used
+// on the device, and if that is the case, finds the path to the virtio-blk disk image
+// and mounts the disk on the host's /home/root/<hash>/android-data/data as read-only.
 func MountVirtioBlkDataDiskImageReadOnlyIfUsed(ctx context.Context, a *ARC, user string) (func(context.Context), error) {
 	virtioBlkDataEnabled, err := a.IsVirtioBlkDataEnabled(ctx)
 	if err != nil {
@@ -192,10 +192,29 @@ func MountVirtioBlkDataDiskImageReadOnlyIfUsed(ctx context.Context, a *ARC, user
 		return nil, errors.Wrap(err, "failed to get cryptohome root dir")
 	}
 
+	userHash, err := cryptohome.UserHash(ctx, user)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get user hash")
+	}
+
+	// virtio-blk disk exists at one of these paths.
+	crosvmDiskPath := filepath.Join(rootCryptDir, "crosvm/YXJjdm0=.img")
+	lvmDiskPath := filepath.Join("/dev/mapper/vm", fmt.Sprintf("dmcrypt-%s-arcvm", userHash[0:8]))
+
+	diskPath := ""
+	for _, path := range []string{crosvmDiskPath, lvmDiskPath} {
+		if _, err := os.Stat(path); err == nil {
+			diskPath = path
+			break
+		}
+	}
+	if diskPath == "" {
+		return nil, errors.Errorf("neither of [%s, %s] exists", crosvmDiskPath, lvmDiskPath)
+	}
+
 	// Mount virtio-blk disk image.
-	diskImagePath := filepath.Join(rootCryptDir, "/crosvm/YXJjdm0=.img")
 	hostMountPath := filepath.Join(rootCryptDir, "/android-data/data")
-	mountCmd := testexec.CommandContext(ctx, "mount", "-o", "loop,ro,noload", diskImagePath, hostMountPath)
+	mountCmd := testexec.CommandContext(ctx, "mount", "-o", "loop,ro,noload", diskPath, hostMountPath)
 	if err := mountCmd.Run(testexec.DumpLogOnError); err != nil {
 		return nil, errors.Wrap(err, "failed to mount virtio-blk Android /data disk image on host")
 	}
