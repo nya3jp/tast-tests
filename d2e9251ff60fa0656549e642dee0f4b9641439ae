@@ -16,6 +16,24 @@
       "message": "Under which cases does MM not expose this property? Is that a bug?",
       "revId": "d2e9251ff60fa0656549e642dee0f4b9641439ae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "75d241ea_8efd768d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1441092
+      },
+      "writtenOn": "2022-09-22T18:06:47Z",
+      "side": 1,
+      "message": "MM does not expose this property for QMI modems if the service is not connected. This is similar to what we do in autotest.",
+      "parentUuid": "3a449670_fce27bb9",
+      "revId": "d2e9251ff60fa0656549e642dee0f4b9641439ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
