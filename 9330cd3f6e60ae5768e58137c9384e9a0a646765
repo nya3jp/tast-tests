@@ -124,6 +124,24 @@
       "parentUuid": "f5fa7a59_6fe83305",
       "revId": "9330cd3f6e60ae5768e58137c9384e9a0a646765",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed052580_775514f3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1554467
+      },
+      "writtenOn": "2022-09-22T20:03:41Z",
+      "side": 1,
+      "message": "Hi Newman,\n\nUpdating chroot worked to resolve the previous build error on patchset 14.  \n\nI see this error now:\n\n2022-09-22T20:01:01.124573Z Command line: tast run -var\u003dutils.WWCBIP\u003dpenguin -var\u003dDockingID\u003d1912901 -var\u003d1stExtDispID\u003d2007901 -var\u003dEthernetID\u003dj45sw01 localhost:2223 wwcb.Dock5NetworkSwitch\n2022-09-22T20:01:01.124723Z Writing results to /tmp/tast/results/20220922-200101\n2022-09-22T20:01:01.126987Z Starting ephemeral devserver at http://127.0.0.1:45631 for remote tests\n2022-09-22T20:01:01.130765Z Connecting to localhost:2223\n2022-09-22T20:01:01.506445Z Building remote_test_runner, cros\n2022-09-22T20:01:19.675140Z Built in 18.169s\n2022-09-22T20:01:19.740656Z Building local_test_runner, cros\n2022-09-22T20:02:13.673640Z # chromiumos/tast/local/bundles/cros/cryptohome\n2022-09-22T20:02:13.673885Z ../platform/tast-tests/src/chromiumos/tast/local/bundles/cros/cryptohome/add_remove_factors.go:69:15: reply.GetConfiguredAuthFactors undefined (type *user_data_auth_proto.ListAuthFactorsReply has no field or method GetConfiguredAuthFactors)\n2022-09-22T20:02:13.673910Z ../platform/tast-tests/src/chromiumos/tast/local/bundles/cros/cryptohome/add_remove_factors.go:70:99: reply.GetConfiguredAuthFactors undefined (type *user_data_auth_proto.ListAuthFactorsReply has no field or method GetConfiguredAuthFactors)\n2022-09-22T20:02:13.673920Z ../platform/tast-tests/src/chromiumos/tast/local/bundles/cros/cryptohome/add_remove_factors.go:72:68: reply.ConfiguredAuthFactors undefined (type *user_data_auth_proto.ListAuthFactorsReply has no field or method ConfiguredAuthFactors)\n2022-09-22T20:02:13.673934Z ../platform/tast-tests/src/chromiumos/tast/local/bundles/cros/cryptohome/add_remove_factors.go:73:35: reply.ConfiguredAuthFactors undefined (type *user_data_auth_proto.ListAuthFactorsReply has no field or method ConfiguredAuthFactors)\n2022-09-22T20:02:13.698405Z Failed to run tests: failed to build and push primary DUT: failed to prepare DUT localhost:2223: build failed: failed to build chromiumos/tast/local/bundles/cros: exit status 2\n\nAshley",
+      "parentUuid": "0c9cae7a_7538611e",
+      "revId": "9330cd3f6e60ae5768e58137c9384e9a0a646765",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
