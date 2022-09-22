@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "7346d8fb_b80159c0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/dev_mode_fw_screen.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1545397
+      },
+      "writtenOn": "2022-09-22T13:31:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "14d6d843_357ad7a8",
+      "revId": "d3ec14150fe0395aaee87129499b854a12cbb711",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "69c09bb5_8fd71cd2",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/dev_mode_fw_screen.go",
         "patchSetId": 1
@@ -55,6 +73,30 @@
       "side": 1,
       "message": "+1. I was concerned that if s.CloudStorage() does some initialization like starting up a server.",
       "parentUuid": "69c09bb5_8fd71cd2",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 2
+      },
+      "revId": "d3ec14150fe0395aaee87129499b854a12cbb711",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3fda9766_da5448ef",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/dev_mode_fw_screen.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1545397
+      },
+      "writtenOn": "2022-09-22T13:31:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e618a6dd_3822c6b8",
       "range": {
         "startLine": 57,
         "startChar": 0,
