@@ -135,6 +135,30 @@
       },
       "revId": "217fe983f18c0ac45edeaafc7e3b6b6a406403e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "352f4c1e_48967756",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_emoji_suggestion.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-09-22T06:14:47Z",
+      "side": 1,
+      "message": "Thanks for the note, I\u0027ve included an analogous change in this CL.",
+      "parentUuid": "1f4614bd_80f7cbaf",
+      "range": {
+        "startLine": 94,
+        "startChar": 1,
+        "endLine": 99,
+        "endChar": 2
+      },
+      "revId": "217fe983f18c0ac45edeaafc7e3b6b6a406403e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
