@@ -65,7 +65,6 @@ type meetTest struct {
 	cam         bool                 // Whether the camera is on or not.
 	duration    time.Duration        // Duration of the meet call. Must be less than test timeout.
 	browserType browser.Type         // Ash Chrome browser or Lacros.
-	validation  bool                 // Whether to add extra cpu loads before collecting metrics.
 	botsOptions []bond.AddBotsOption // Customizes the meeting participant bots.
 }
 
@@ -233,18 +232,6 @@ func init() {
 			},
 			Fixture:           "loggedInToCUJUserWithWebRTCEventLoggingLacros",
 			ExtraSoftwareDeps: []string{"lacros"},
-		}, {
-			// Validation test for big meeting.
-			Name:    "16p_validation",
-			Timeout: defaultTestTimeout + 10*time.Minute,
-			Val: meetTest{
-				num:         15,
-				layout:      meetLayoutTiled,
-				cam:         true,
-				browserType: browser.TypeAsh,
-				validation:  true,
-			},
-			Fixture: "loggedInToCUJUserWithWebRTCEventLogging",
 		}, {
 			// Big meeting with notes.
 			Name:    "16p_notes",
@@ -530,18 +517,6 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 			s.Error("Failed to stop recorder: ", err)
 		}
 	}()
-
-	if meet.validation {
-		validationHelper := cuj.NewTPSValidationHelper(closeCtx)
-		if err := validationHelper.Stress(); err != nil {
-			s.Fatal("Failed to stress: ", err)
-		}
-		defer func() {
-			if err := validationHelper.Release(); err != nil {
-				s.Fatal("Failed to release validationHelper: ", err)
-			}
-		}()
-	}
 
 	// Open chrome://webrtc-internals now so it will collect data on the meeting's streams.
 	webrtcInternals, err := cs.NewConn(ctx, "chrome://webrtc-internals", browser.WithNewWindow())

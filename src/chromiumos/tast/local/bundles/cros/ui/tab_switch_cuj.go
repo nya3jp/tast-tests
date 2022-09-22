@@ -46,14 +46,6 @@ func init() {
 			},
 			Fixture:           "tabSwitchCUJWPRLacros",
 			ExtraSoftwareDeps: []string{"lacros"},
-		}, {
-			Name:      "validation",
-			ExtraData: []string{tabswitchcuj.WPRArchiveName},
-			Val: tabswitchcuj.TabSwitchParam{
-				BrowserType: browser.TypeAsh,
-				Validation:  true,
-			},
-			Pre: wpr.ReplayMode(tabswitchcuj.WPRArchiveName),
 		}},
 	})
 }
