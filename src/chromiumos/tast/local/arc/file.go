@@ -191,10 +191,29 @@ func MountVirtioBlkDataDiskImageReadOnlyIfUsed(ctx context.Context, a *ARC, user
 		return nil, errors.Wrap(err, "failed to get cryptohome root dir")
 	}
 
+	userHash, err := cryptohome.UserHash(ctx, user)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get user hash")
+	}
+
+	// virtio-blk disk exists at one of these paths.
+	crosvmDiskPath := filepath.Join(rootCryptDir, "crosvm/YXJjdm0=.img")
+	lvmDiskPath := filepath.Join("/dev/mapper/vm", fmt.Sprintf("dmcrypt-%s-arcvm", userHash[0:8]))
+
+	diskPath := ""
+	for _, path := range []string{crosvmDiskPath, lvmDiskPath} {
+		if _, err := os.Stat(path); err == nil {
+			diskPath = path
+			break
+		}
+	}
+	if diskPath == "" {
+		return nil, errors.Errorf("neither of [%s, %s] exists", crosvmDiskPath, lvmDiskPath)
+	}
+
 	// Mount virtio-blk disk image.
-	diskImagePath := filepath.Join(rootCryptDir, "/crosvm/YXJjdm0=.img")
 	hostMountPath := filepath.Join(rootCryptDir, "/android-data/data")
-	mountCmd := testexec.CommandContext(ctx, "mount", "-o", "loop,ro,noload", diskImagePath, hostMountPath)
+	mountCmd := testexec.CommandContext(ctx, "mount", "-o", "loop,ro,noload", diskPath, hostMountPath)
 	if err := mountCmd.Run(testexec.DumpLogOnError); err != nil {
 		return nil, errors.Wrap(err, "failed to mount virtio-blk Android /data disk image on host")
 	}
