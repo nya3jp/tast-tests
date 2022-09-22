@@ -33,6 +33,24 @@
       "message": "I noticed we don\u0027t have Attr set. Thus, it can only be run manually. \nIs it expected?",
       "revId": "5a0ad8631ef0a3244beb123548b908818bbb86aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9aae7b4_510abe85",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/intel/boot_via_usb.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-09-22T08:16:02Z",
+      "side": 1,
+      "message": "Yes, that\u0027s right. We are in the process of creating new suites for Intel. So, we will be adding the appropriate Attr. later.",
+      "parentUuid": "ab12a845_e9c84e4a",
+      "revId": "5a0ad8631ef0a3244beb123548b908818bbb86aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
