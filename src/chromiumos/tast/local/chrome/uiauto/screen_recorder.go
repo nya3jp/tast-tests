@@ -358,6 +358,54 @@ func RecordScreen(ctx context.Context, s testingState, tconn *chrome.TestConn, f
 	f()
 }
 
+// CreateAndStartScreenRecorder creates a ScreenRecorder and starts to record
+// the screen. Handles errors by logging them via the context and returning nil.
+// To handle errors manually, call CreateAndStartScreenRecorderWithError.
+//
+// Example usage:
+//
+//	recorder := uiauto.CreateAndStartScreenRecorder(ctx, tconn)
+//	defer uiauto.StopAndSaveOnError(cleanupCtx, recorder, filepath.Join(s.OutDir(), "screen_recording.webm"), s.HasError)
+func CreateAndStartScreenRecorder(ctx context.Context, tconn *chrome.TestConn) *ScreenRecorder {
+	recorder, err := CreateAndStartScreenRecorderWithError(ctx, tconn)
+	if err != nil {
+		testing.ContextLog(ctx, "Failed to create and start the screen recorder: ", err)
+	}
+	return recorder
+}
+
+// CreateAndStartScreenRecorderWithError creates a ScreenRecorder and starts to
+// record the screen. To handle errors automatically, call
+// CreateAndStartScreenRecorder.
+//
+// Example usage:
+//
+//	recorder, err := uiauto.CreateAndStartScreenRecorderWithError(ctx, tconn)
+//	if err != nil {
+//		s.Log(ctx, "Failed to create and start the screen recorder: ", err)
+//	}
+//	defer uiauto.StopAndSaveOnError(cleanupCtx, recorder, filepath.Join(s.OutDir(), "screen_recording.webm"), s.HasError)
+func CreateAndStartScreenRecorderWithError(ctx context.Context, tconn *chrome.TestConn) (*ScreenRecorder, error) {
+	recorder, err := NewScreenRecorder(ctx, tconn)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create screen recorder")
+	}
+	if recorder != nil {
+		if err := recorder.Start(ctx, tconn); err != nil {
+			return nil, errors.Wrap(err, "failed to start screen recorder")
+		}
+	}
+	return recorder, nil
+}
+
+// StopAndSaveOnError ends the screen recording, and saves it on error.
+// Skips if the recorder is nil.
+func StopAndSaveOnError(ctx context.Context, sr *ScreenRecorder, filepath string, hasError func() bool) {
+	if sr != nil {
+		sr.StopAndSaveOnError(ctx, filepath, hasError)
+	}
+}
+
 // StartRecordFromKB starts screen record from keyboard.
 // It clicks Ctrl+Shift+F5 then select to record the whole desktop.
 // The caller should also call StopRecordFromKB to stop the screen recorder,
