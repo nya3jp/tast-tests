@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9107c224_bd72ed0f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/remote_cellular_service.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-09-22T16:54:49Z",
+      "side": 1,
+      "message": "Just wondering: Does `Manager.DeviceByType` return an error if there are multiple, or does it just arbitrarily return one?",
+      "revId": "e7821f299b02a830b28128444f7f5af07e61adaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
