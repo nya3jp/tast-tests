@@ -46,6 +46,30 @@
       },
       "revId": "d9e380f0f79ba12cc48e56589565ce92142a6e1c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ee45a2e_3f061031",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/image_paste.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2022-09-22T01:51:00Z",
+      "side": 1,
+      "message": "Thanks yhanada@, Will check and merge here and resend it.",
+      "parentUuid": "0a1a1565_8c697f11",
+      "range": {
+        "startLine": 156,
+        "startChar": 0,
+        "endLine": 156,
+        "endChar": 91
+      },
+      "revId": "d9e380f0f79ba12cc48e56589565ce92142a6e1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
