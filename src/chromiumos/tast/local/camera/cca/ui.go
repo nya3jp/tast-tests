@@ -157,7 +157,7 @@ var (
 	// DocumentFixModeImage is the preview image of fix mode in multi-page document mode.
 	DocumentFixModeImage = UIComponent{"document fix mode image", []string{".document-fix-mode .image"}}
 	// DocumentFixButton is the entry button of fix mode in multi-page document mode.
-	DocumentFixButton = UIComponent{"document enter fix mode button", []string{".document-preview-mode button[i18n-aria=label_fix_document]"}}
+	DocumentFixButton = UIComponent{"document enter fix mode button", []string{".document-preview-mode button[i18n-aria=label_fix_document]", ".document-preview-mode button[i18n-aria=fix_page_button]"}}
 	// DocumentFixModeCorner is the crop area dragging point in fix mode in multi-page document mode.
 	DocumentFixModeCorner = UIComponent{"document corner dragging point", []string{".document-fix-mode .dot"}}
 	// DocumentDoneFixButton is the exit button of fix mode in multi-page document mode.
@@ -310,18 +310,6 @@ func (a *App) Exist(ctx context.Context, ui UIComponent) (bool, error) {
 // OptionExist returns if the option exists.
 func (a *App) OptionExist(ctx context.Context, option Option) (bool, error) {
 	return a.Exist(ctx, option.ui)
-}
-
-// WaitForExist waits until the ui exists.
-func (a *App) WaitForExist(ctx context.Context, ui UIComponent) error {
-	return testing.Poll(ctx, func(ctx context.Context) error {
-		if exist, err := a.Exist(ctx, ui); err != nil {
-			return testing.PollBreak(err)
-		} else if !exist {
-			return errors.Errorf("failed to wait existence for %v", ui.Name)
-		}
-		return nil
-	}, &testing.PollOptions{Timeout: 5 * time.Second})
 }
 
 // Visible returns whether a UI component is visible on the screen.

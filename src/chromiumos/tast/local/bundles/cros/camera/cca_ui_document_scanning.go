@@ -567,10 +567,10 @@ func testMultiPageFixCropArea(ctx context.Context, app *cca.App, cr *chrome.Chro
 		return errors.Wrap(err, "failed to wait for review UI to show up")
 	}
 
-	if exist, err := app.Exist(ctx, cca.DocumentPreviewModeImage); err != nil {
-		return errors.Wrap(err, "failed to check if preview mode image exists")
-	} else if !exist {
-		return errors.New("preview mode image does not exist")
+	if visible, err := app.Visible(ctx, cca.DocumentPreviewModeImage); err != nil {
+		return errors.Wrap(err, "failed to check the visibility of preview mode image")
+	} else if !visible {
+		return errors.New("preview mode image is not visible")
 	}
 
 	imageElSize, err := app.Size(ctx, cca.DocumentPreviewModeImage)
@@ -586,7 +586,7 @@ func testMultiPageFixCropArea(ctx context.Context, app *cca.App, cr *chrome.Chro
 		return errors.Wrap(err, "failed to click the fix button")
 	}
 
-	if err := app.WaitForExist(ctx, cca.DocumentFixModeImage); err != nil {
+	if err := app.WaitForVisibleState(ctx, cca.DocumentFixModeImage, true); err != nil {
 		return errors.Wrap(err, "failed to wait for fix mode image to show up")
 	}
 
@@ -657,7 +657,7 @@ func testMultiPageFixCropArea(ctx context.Context, app *cca.App, cr *chrome.Chro
 		return errors.Wrap(err, "failed to click the done button")
 	}
 
-	if err := app.WaitForExist(ctx, cca.DocumentPreviewModeImage); err != nil {
+	if err := app.WaitForVisibleState(ctx, cca.DocumentPreviewModeImage, true); err != nil {
 		return errors.Wrap(err, "failed to wait for preview mode image to show up")
 	}
 
