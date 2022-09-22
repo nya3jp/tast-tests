@@ -20,6 +20,7 @@ func init() {
 		Desc:         "Verifies that host has signal quality above threshold via cellular interface",
 		Contacts:     []string{"nmarupaka@google.com", "chromeos-cellular-team@google.com"},
 		Attr:         []string{"group:cellular", "cellular_unstable", "cellular_sim_active"},
+		Fixture:      "cellular",
 		Timeout:      3 * time.Minute,
 		SoftwareDeps: []string{"chrome"},
 	})

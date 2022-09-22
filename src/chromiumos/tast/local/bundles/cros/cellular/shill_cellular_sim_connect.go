@@ -27,6 +27,7 @@ func init() {
 		Desc:     "Verifies that Shill can connect to a service in a different slot",
 		Contacts: []string{"stevenjb@google.com", "cros-network-health@google.com", "chromeos-cellular-team@google.com"},
 		Attr:     []string{"group:cellular", "cellular_sim_dual_active", "cellular_ota_avl"},
+		Fixture:  "cellular",
 	})
 }
 
