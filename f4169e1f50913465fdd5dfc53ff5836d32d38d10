@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8bee34ce_629b1f35",
+        "filename": "src/chromiumos/tast/local/bundles/cros/intel/arc_rotate_camera.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-09-22T17:18:46Z",
+      "side": 1,
+      "message": "Please add a comment here to detail what the function is doing",
+      "revId": "f4169e1f50913465fdd5dfc53ff5836d32d38d10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "140c2701_b2ec61c8",
         "filename": "src/chromiumos/tast/local/bundles/cros/intel/arc_rotate_camera.go",
         "patchSetId": 1
@@ -19,6 +36,69 @@
         "startChar": 2,
         "endLine": 91,
         "endChar": 3
+      },
+      "revId": "f4169e1f50913465fdd5dfc53ff5836d32d38d10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0963fb4_507f7315",
+        "filename": "src/chromiumos/tast/local/bundles/cros/intel/arc_rotate_camera.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-09-22T17:18:46Z",
+      "side": 1,
+      "message": "Please use a table-driven format here\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#table_driven-tests",
+      "range": {
+        "startLine": 87,
+        "startChar": 1,
+        "endLine": 103,
+        "endChar": 2
+      },
+      "revId": "f4169e1f50913465fdd5dfc53ff5836d32d38d10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be363f09_03e31d10",
+        "filename": "src/chromiumos/tast/local/bundles/cros/intel/arc_rotate_camera.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-09-22T17:18:46Z",
+      "side": 1,
+      "message": "Please add a comment here to detail what the function is doing",
+      "revId": "f4169e1f50913465fdd5dfc53ff5836d32d38d10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f5094ec_a1c19c32",
+        "filename": "src/chromiumos/tast/local/bundles/cros/intel/arc_rotate_camera.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-09-22T17:18:46Z",
+      "side": 1,
+      "message": "Please use a table-driven format here\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#table_driven-tests",
+      "range": {
+        "startLine": 116,
+        "startChar": 1,
+        "endLine": 121,
+        "endChar": 2
       },
       "revId": "f4169e1f50913465fdd5dfc53ff5836d32d38d10",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
