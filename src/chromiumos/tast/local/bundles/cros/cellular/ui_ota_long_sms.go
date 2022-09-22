@@ -31,6 +31,7 @@ func init() {
 		Desc:         "Verifies that MT Long SMS is received appears as notificatoin on UI",
 		Contacts:     []string{"srikanthkumar@google.com", "chromeos-cellular-team@google.com"},
 		Attr:         []string{"group:cellular", "cellular_unstable", "cellular_sim_active"},
+		Fixture:      "cellular",
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      10 * time.Minute,
 		VarDeps:      []string{"cellular.gaiaAccountPool"},

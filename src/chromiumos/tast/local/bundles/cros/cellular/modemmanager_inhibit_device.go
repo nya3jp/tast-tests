@@ -24,6 +24,7 @@ func init() {
 			"chromeos-cellular-team@google.com",
 		},
 		Attr:    []string{"group:cellular", "cellular_sim_active", "cellular_ota_avl"},
+		Fixture: "cellular",
 		Timeout: 5 * time.Minute,
 	})
 }

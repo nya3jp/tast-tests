@@ -22,6 +22,7 @@ func init() {
 		Desc:         "Verifies that host has network connectivity via cellular interface",
 		Contacts:     []string{"madhavadas@google.com", "chromeos-cellular-team@google.com"},
 		Attr:         []string{"group:cellular", "cellular_unstable", "cellular_sim_active"},
+		Fixture:      "cellular",
 		Timeout:      4 * time.Minute,
 	})
 }
