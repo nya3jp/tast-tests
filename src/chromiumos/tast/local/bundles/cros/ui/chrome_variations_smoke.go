@@ -18,10 +18,13 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/localstate"
 	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/mouse"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/local/variations"
 	"chromiumos/tast/testing"
@@ -62,11 +65,25 @@ func readVariationsSeed(ctx context.Context) (*variations.SeedData, error) {
 
 // injectVariationsSeed injects the given seed into Local State. The seed will be loaded and take effect on the next run of Chrome (i.e. next user session).
 func injectVariationsSeed(ctx context.Context, tconn *chrome.TestConn, seed *variations.SeedData) error {
-	if err := tconn.Call(ctx, nil, "tast.promisify(chrome.autotestPrivate.setAllowedPref)", variations.SeedSignaturePref, seed.SeedSignature); err != nil {
-		return errors.Wrapf(err, "failed to set %v", variations.SeedSignaturePref)
-	}
-	if err := tconn.Call(ctx, nil, "tast.promisify(chrome.autotestPrivate.setAllowedPref)", variations.CompressedSeedPref, seed.CompressedSeed); err != nil {
-		return errors.Wrapf(err, "failed to set %v", variations.CompressedSeedPref)
+	// The call to chrome.autotestPrivate.setAllowedPref can sometimes fail if called immediately after Chrome starts up.
+	// To work around this, keep trying to inject the test seed until it sticks.
+	if err := testing.Poll(ctx, func(context.Context) error {
+		currentSeed, err := readVariationsSeed(ctx)
+		if err != nil {
+			return errors.Wrap(err, "failed to read variations seed info")
+		}
+		if currentSeed.CompressedSeed != seed.CompressedSeed || currentSeed.SeedSignature != seed.SeedSignature {
+			if err := tconn.Call(ctx, nil, "tast.promisify(chrome.autotestPrivate.setAllowedPref)", variations.SeedSignaturePref, seed.SeedSignature); err != nil {
+				return errors.Wrapf(err, "failed to set %v", variations.SeedSignaturePref)
+			}
+			if err := tconn.Call(ctx, nil, "tast.promisify(chrome.autotestPrivate.setAllowedPref)", variations.CompressedSeedPref, seed.CompressedSeed); err != nil {
+				return errors.Wrapf(err, "failed to set %v", variations.CompressedSeedPref)
+			}
+			return errors.New("Local State has not updated with the test seed, injecting again")
+		}
+		return nil
+	}, &testing.PollOptions{Interval: time.Second}); err != nil {
+		return errors.Wrap(err, "the test seed was not injected")
 	}
 	return nil
 }
@@ -140,20 +157,6 @@ func ChromeVariationsSmoke(ctx context.Context, s *testing.State) {
 		if err := injectVariationsSeed(ctx, tconn, &testSeed); err != nil {
 			s.Fatal("Failed to inject test seed: ", err)
 		}
-
-		// Ensure the seed was injected. It can take some time for Local State to update with the injected seed.
-		if err := testing.Poll(ctx, func(context.Context) error {
-			currentSeed, err := readVariationsSeed(ctx)
-			if err != nil {
-				return errors.Wrap(err, "failed to read variations seed info")
-			}
-			if currentSeed.CompressedSeed != testSeed.CompressedSeed || currentSeed.SeedSignature != testSeed.SeedSignature {
-				return errors.New("Local State has not updated with the test seed")
-			}
-			return nil
-		}, nil); err != nil {
-			s.Fatal("The test seed was not injected: ", err)
-		}
 	}()
 
 	// Restart Chrome with the test seed injected.
@@ -223,6 +226,16 @@ func ChromeVariationsSmoke(ctx context.Context, s *testing.State) {
 				s.Fatalf("Failed to find text %q on page %q: %v", t.text, t.url, err)
 			}
 
+			// Move cursor to the bottom-right of the screen before starting diff test to prevent any tool-tips from appearing on the browser.
+			info, err := display.GetPrimaryInfo(ctx, tconn)
+			if err != nil {
+				s.Fatal("Failed to get info about the primary display: ", err)
+			}
+			pos := coords.Point{X: info.Bounds.Width, Y: info.Bounds.Height}
+			s.Logf("X: %v, Y: %v", info.Bounds.Width, info.Bounds.Height)
+			if err := mouse.Move(tconn, pos, 0)(ctx); err != nil {
+				s.Fatal("Failed to move mouse to bottom right corner: ", err)
+			}
 			if len(t.skiaGoldImage) > 0 {
 				d, err := screenshot.NewDifferFromChrome(ctx, s, cr, screenshot.Config{DefaultOptions: screenshot.Options{WindowWidthDP: 1024, WindowHeightDP: 720}})
 				if err != nil {
