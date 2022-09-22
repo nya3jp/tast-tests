@@ -72,8 +72,9 @@ func (h *PropertyHolder) CreateWatcher(ctx context.Context) (*PropertiesWatcher,
 	return NewPropertiesWatcher(ctx, h.DBusObject)
 }
 
-// WaitForProperty polls for the specified Shill property state to match |expected|.
-func (h *PropertyHolder) WaitForProperty(ctx context.Context, property string, expected interface{}, timeout time.Duration) error {
+// WaitForPropertyInSetWithOptions polls for the specified Shill property state to match any of |expected| using the
+// poll options in |options|.
+func (h *PropertyHolder) WaitForPropertyInSetWithOptions(ctx context.Context, property string, expected []interface{}, options *testing.PollOptions) error {
 	return testing.Poll(ctx, func(ctx context.Context) error {
 		props, err := h.GetProperties(ctx)
 		if err != nil {
@@ -83,14 +84,25 @@ func (h *PropertyHolder) WaitForProperty(ctx context.Context, property string, e
 		if err != nil {
 			return err
 		}
-		if value != expected {
-			return errors.Errorf("unexpected property state for %q, got %v, expected %v", property, value, expected)
+		found := false
+		for _, ex := range expected {
+			if value == ex {
+				found = true
+			}
+		}
+		if !found {
+			if len(expected) == 1 {
+				return errors.Errorf("unexpected property state for %q, got %v, expected %v", property, value, expected[0])
+			}
+			return errors.Errorf("unexpected property state for %q, got %v, expected any of %v", property, value, expected)
 		}
 		return nil
-	}, &testing.PollOptions{
-		Timeout:  timeout,
-		Interval: 100 * time.Millisecond,
-	})
+	}, options)
+}
+
+// WaitForProperty polls for the specified Shill property state to match |expected|.
+func (h *PropertyHolder) WaitForProperty(ctx context.Context, property string, expected interface{}, timeout time.Duration) error {
+	return h.WaitForPropertyInSetWithOptions(ctx, property, []interface{}{expected}, &testing.PollOptions{Timeout: timeout, Interval: 100 * time.Millisecond})
 }
 
 // WaitForShillProperty polls for the specified Shill property state to match |expected|
