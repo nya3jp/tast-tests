@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "14d6d843_357ad7a8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/dev_mode_fw_screen.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2022-09-22T08:35:52Z",
+      "side": 1,
+      "message": "This can be moved to before line 52 to narrow the scope.",
+      "revId": "d3ec14150fe0395aaee87129499b854a12cbb711",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "69c09bb5_8fd71cd2",
@@ -14,6 +31,30 @@
       "writtenOn": "2022-09-21T21:19:01Z",
       "side": 1,
       "message": "Optional nit: I see that s.CloudStorage is just a simple field access, so it\u0027s not like it is currently an expensive operation, but since that may one day change usually people prefer to initialize this in the opposite order. e.g.:\n\n     var cs *testing.CloudStorage\n     if !skipFlashUSB {\n        cs \u003d s.CloudStorage\n     }\n \nMy suggestion is more verbose, though.",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 2
+      },
+      "revId": "d3ec14150fe0395aaee87129499b854a12cbb711",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e618a6dd_3822c6b8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/dev_mode_fw_screen.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2022-09-22T08:35:52Z",
+      "side": 1,
+      "message": "+1. I was concerned that if s.CloudStorage() does some initialization like starting up a server.",
+      "parentUuid": "69c09bb5_8fd71cd2",
       "range": {
         "startLine": 57,
         "startChar": 0,
