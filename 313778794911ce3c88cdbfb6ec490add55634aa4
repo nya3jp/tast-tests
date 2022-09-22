@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e084cae_13c736ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_sensor_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1537719
+      },
+      "writtenOn": "2022-09-22T09:50:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1e882ba9_3761d60a",
+      "range": {
+        "startLine": 136,
+        "startChar": 2,
+        "endLine": 136,
+        "endChar": 110
+      },
+      "revId": "313778794911ce3c88cdbfb6ec490add55634aa4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "64b61cd8_b88e814c",
@@ -118,6 +142,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f1a530f_13180b13",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_sensor_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1537719
+      },
+      "writtenOn": "2022-09-22T09:50:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "882177c6_acf66583",
+      "range": {
+        "startLine": 201,
+        "startChar": 1,
+        "endLine": 201,
+        "endChar": 2
+      },
+      "revId": "313778794911ce3c88cdbfb6ec490add55634aa4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2e026487_11391bf0",
@@ -141,6 +189,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "117a0ac6_1079aed5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_sensor_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1537719
+      },
+      "writtenOn": "2022-09-22T09:50:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2e026487_11391bf0",
+      "range": {
+        "startLine": 208,
+        "startChar": 28,
+        "endLine": 208,
+        "endChar": 46
+      },
+      "revId": "313778794911ce3c88cdbfb6ec490add55634aa4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9aefb2dc_c157c409",
@@ -154,6 +226,30 @@
       "writtenOn": "2022-09-22T06:37:12Z",
       "side": 1,
       "message": "We can use `s.Fatal(\"Failed to validate sensor attributes: \", err)` directly.",
+      "range": {
+        "startLine": 221,
+        "startChar": 2,
+        "endLine": 221,
+        "endChar": 65
+      },
+      "revId": "313778794911ce3c88cdbfb6ec490add55634aa4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a02fb4c_009e8048",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_sensor_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1537719
+      },
+      "writtenOn": "2022-09-22T09:50:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9aefb2dc_c157c409",
       "range": {
         "startLine": 221,
         "startChar": 2,
