@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "82d6acce_1e6d9a50",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-09-22T19:08:13Z",
+      "side": 1,
+      "message": "Yes, it\u0027s backed by general, non-board specific UMA data for desk usage. Because it\u0027s not board specific, I went for values _around_ the 90th percentile, with the intent of having our low end, 4gb RAM devices still pass the test.\n\nUMA data: https://uma.googleplex.com/p/chrome/timeline_v2?sid\u003df4036a1919b08ec75b3890209028f8eb",
+      "parentUuid": "958d44fc_0ab5255a",
+      "range": {
+        "startLine": 10,
+        "startChar": 38,
+        "endLine": 11,
+        "endChar": 5
+      },
+      "revId": "317d223f040bfc5c395de8c4c488dfbd8a66c76a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "296d55bc_e9deb5cc",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 3
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "66c1ff15_8f0ee72b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/deskscuj/desks.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-09-22T19:08:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d7fd9372_8f47d2a3",
+      "range": {
+        "startLine": 105,
+        "startChar": 14,
+        "endLine": 105,
+        "endChar": 20
+      },
+      "revId": "317d223f040bfc5c395de8c4c488dfbd8a66c76a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2651402b_9afeeaad",
@@ -77,6 +125,30 @@
       "writtenOn": "2022-09-22T16:39:00Z",
       "side": 1,
       "message": "`mouse.Click` returns an `action.Action` so you don\u0027t have to use `func` here. I would just write:\n`clickCenterOfDisplay :\u003d mouse.Click(tconn, info.Bounds.CenterPoint(), mouse.LeftButton)`\nThen I would use `errors.Wrap` directly in the `onVisitAction` functions. It is a little bit of code repetition but it is more consistent with error reporting in Tast tests in general.\n\nFor example, among all the calls to `display.GetPrimaryInfo` that are already in the code base, how common is it to see a string literal similar to `\"failed to get the primary display info\"`? That description could just as easily be added inside `display.GetPrimaryInfo` instead of at every call site individually. Based on the precedent, I think if the whole purpose of `clickCenterOfScreen` is to click in the center of the display, then it shouldn\u0027t wrap an `error` just to mention clicking in the center of the display.\n\nI will admit this might be a bad design decision. From what you can observe at https://play.golang.com/p/sDgief8YgWP, it seems that some people who worked on the Go language made the opposite decision. The `error` returned by `strconv.Atoi` even includes the name of the function! But I think that the most important consideration here is just consistency across the code base.",
+      "range": {
+        "startLine": 105,
+        "startChar": 24,
+        "endLine": 110,
+        "endChar": 2
+      },
+      "revId": "317d223f040bfc5c395de8c4c488dfbd8a66c76a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dead2809_f9174e43",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/deskscuj/desks.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-09-22T19:08:13Z",
+      "side": 1,
+      "message": "Thank you, I learned something new! (Done)",
+      "parentUuid": "2651402b_9afeeaad",
       "range": {
         "startLine": 105,
         "startChar": 24,
