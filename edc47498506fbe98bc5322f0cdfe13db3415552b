@@ -33,6 +33,23 @@
       "message": "Friendly ping cwd@",
       "revId": "edc47498506fbe98bc5322f0cdfe13db3415552b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "80bcb58a_661b4a89",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2022-09-22T04:01:44Z",
+      "side": 1,
+      "message": "PowerIdlePerf doesn\u0027t need a Lacros variant, so long as we\u0027re measuring the power cost of Lacros some other way.",
+      "revId": "edc47498506fbe98bc5322f0cdfe13db3415552b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
