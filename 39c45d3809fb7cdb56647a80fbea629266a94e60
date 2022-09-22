@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f331f128_1b7951af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/bt_test_service.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-09-22T18:30:16Z",
+      "side": 1,
+      "message": "I think you can omit this",
+      "range": {
+        "startLine": 46,
+        "startChar": 78,
+        "endLine": 46,
+        "endChar": 81
+      },
+      "revId": "39c45d3809fb7cdb56647a80fbea629266a94e60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b414c0a1_fb99bf46",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/bt_test_service.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-09-22T18:30:16Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 50,
+        "startChar": 80,
+        "endLine": 50,
+        "endChar": 83
+      },
+      "revId": "39c45d3809fb7cdb56647a80fbea629266a94e60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
