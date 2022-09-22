@@ -5,8 +5,11 @@
 package hwsec
 
 import (
+	"context"
 	"crypto"
 	"crypto/rsa"
+	"crypto/x509"
+	"math/rand"
 	"reflect"
 
 	"github.com/godbus/dbus/v5"
@@ -44,6 +47,42 @@ type CryptohomeKeyDelegate struct {
 	RsaKey           *rsa.PrivateKey
 	PubKeySPKIDER    []byte
 	ChallengeCallCnt int
+}
+
+// SetupSmartCard sets smart card and a corresponding AuthConfig.
+func SetupSmartCard(ctx context.Context, keyAlgs []cpb.ChallengeSignatureAlgorithm) (*hwsec.AuthConfig, error) {
+	// Use a pseudorandom generator with a fixed seed, to make the values used by
+	// the test predictable.
+	randReader := rand.New(rand.NewSource(0 /* seed */))
+
+	rsaKey, err := rsa.GenerateKey(randReader, keySizeBits)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to generate RSA key")
+	}
+	pubKeySPKIDER, err := x509.MarshalPKIXPublicKey(&rsaKey.PublicKey)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to generate SubjectPublicKeyInfo")
+	}
+
+	dbusConn, err := dbusutil.SystemBus()
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to connect to system D-Bus bus")
+	}
+	if _, err := dbusConn.RequestName(dbusName, 0 /* flags */); err != nil {
+		return nil, errors.Wrap(err, "failed to request the well-known D-Bus name")
+	}
+	defer dbusConn.ReleaseName(dbusName)
+
+	// Set up KeyDelegate for the Smart Card.
+	keyDelegate, err := hwsec.NewCryptohomeKeyDelegate(
+		s.Logf, dbusConn, testUser, keyAlgs, rsaKey, pubKeySPKIDER)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to export D-Bus key delegate")
+	}
+	defer keyDelegate.Close()
+
+	// Prepare Smart Card config.
+	return hwsec.NewChallengeAuthConfig(testUser, dbusName, keyDelegate.DBusPath, pubKeySPKIDER, keyAlgs), nil
 }
 
 // ChallengeKey handles the incoming ChallengeKey D-Bus call. It returns the

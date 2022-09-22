@@ -20,13 +20,14 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: ChallengeResponseAuthSession,
-		Desc: "Tests for creation and remounting through AuthSession and Smart Card backed authentication",
+		Func: SmartCardLockScreenAuthSession,
+		Desc: "Tests for Lock Screen verification with Smart Card backend, for both persistent and ephemeral users, based on the old AuthSession based CheckKey verificaiton",
 		Contacts: []string{
 			"thomascedeno@google.com",
 			"cryptohome-core@chromium.org",
 		},
 		Attr:         []string{"group:mainline", "informational"},
+		Data:         []string{"testcert.p12"},
 		SoftwareDeps: []string{"tpm"},
 		Params: []testing.Param{
 			{
@@ -42,13 +43,24 @@ func init() {
 	})
 }
 
-// ChallengeResponseAuthSession initializes the persistent Creation and remounting of
-// Challenge Credentials through AuthSession
-func ChallengeResponseAuthSession(ctx context.Context, s *testing.State) {
+// SmartCardLockScreenAuthSession initializes and calls the respective tests.
+func SmartCardLockScreenAuthSession(ctx context.Context, s *testing.State) {
+	for _, tc := range []struct {
+		isEphemeral bool
+	}{
+		{true},
+		{false},
+	} {
+		lockScreenLogin(ctx, s, tc.isEphemeral)
+	}
+}
+
+func lockScreenLogin(ctx context.Context, s *testing.State, isEphemeral bool) {
 	const (
+		ownerUser   = "owner@owner.owner"
+		keyLabel    = "smart-card-label"
 		dbusName    = "org.chromium.TestingCryptohomeKeyDelegate"
 		testUser    = "cryptohome_test@chromium.org"
-		keyLabel    = "smart-card-label"
 		keySizeBits = 2048
 	)
 	keyAlgs := s.Param().([]cpb.ChallengeSignatureAlgorithm)
@@ -60,6 +72,7 @@ func ChallengeResponseAuthSession(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to create hwsec local helper: ", err)
 	}
+	utility := helper.CryptohomeClient()
 	daemonController := helper.DaemonController()
 
 	// Ensure cryptohomed is started and wait for it to be available.
@@ -105,55 +118,42 @@ func ChallengeResponseAuthSession(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to remove old vault for preparation: ", err)
 	}
 
+	if isEphemeral {
+		// Set up the first user as the owner. It is required to mount ephemeral.
+		if err := hwseclocal.SetUpVaultAndUserAsOwner(ctx, s.DataPath("testcert.p12"), ownerUser, "password_not_needed", "label_not_needed", utility); err != nil {
+			client.UnmountAll(ctx)
+			client.RemoveVault(ctx, ownerUser)
+			s.Fatal("Failed to setup vault and user as owner: ", err)
+		}
+		if err := client.UnmountAll(ctx); err != nil {
+			s.Fatal("Failed to unmount vaults for preparation: ", err)
+		}
+		defer client.RemoveVault(ctx, ownerUser)
+	}
+
 	authConfig := hwsec.NewChallengeAuthConfig(testUser, dbusName, keyDelegate.DBusPath, pubKeySPKIDER, keyAlgs)
-	cleanup, err := cryptohome.CreateUserAuthSessionWithChallengeCredential(ctx, testUser, keyLabel, false /*isEphemeral*/, authConfig)
+	cleanup, err := cryptohome.CreateUserAuthSessionWithChallengeCredential(ctx, testUser, keyLabel, isEphemeral, authConfig)
 	if err != nil {
 		s.Fatal("Failed to create the user: ", err)
 	}
 	defer cleanup(ctx)
 
-	// Write a test file to verify persistence.
-	if err := cryptohome.WriteFileForPersistence(ctx, testUser); err != nil {
-		s.Fatal("Failed to write test file: ", err)
-	}
-
-	// Unmount recently mounted vaults.
-	if err := client.UnmountAll(ctx); err != nil {
-		s.Fatal("Failed to unmount vaults for preparation: ", err)
-	}
-
-	// Reauthenticate and remount the specific vault.
-	// Remount should succeed.
-	authSessionID, err := cryptohome.AuthenticateAuthSessionWithChallengeCredential(ctx, testUser, keyLabel, false /*isEphemeral*/, authConfig)
+	// Authenticate while the cryptohome is still mounted (modeling the case of
+	// the user unlocking the device from the Lock Screen).
+	// In this case the check should succeed.
+	_, err = utility.CheckVault(ctx, keyLabel, authConfig)
+	// Verify.
 	if err != nil {
-		s.Fatal("Failed to authenticate persistent user: ", err)
+		s.Fatal("Failed to check the key for the mounted cryptohome: ", err)
 	}
 
-	if err := client.PreparePersistentVault(ctx, authSessionID, false); err != nil {
-		s.Fatal("Failed to prepare persistent vault: ", err)
-	}
-
-	// Verify that file is still there.
-	if err := cryptohome.VerifyFileForPersistence(ctx, testUser); err != nil {
-		s.Fatal("Failed to verify file persistence: ", err)
-	}
-
-	// Clear AuthSession and unmount previously mounted vault.
-	client.InvalidateAuthSession(ctx, authSessionID)
-	if err := client.UnmountAll(ctx); err != nil {
-		s.Fatal("Failed to unmount vaults for preparation: ", err)
-	}
-
-	// Remount should fail.
-	// Failure occurs because of manually "corrputed" requestedUser
-	requestedUser := "corrputed_testUser"
-	_, err = cryptohome.AuthenticateAuthSessionWithChallengeCredential(ctx, requestedUser, keyLabel, false /*isEphemeral*/, authConfig)
+	// "Corrput" key check request by intentionally providing wrong user.
+	// In this case the check should fail.
+	corruptedUsername := "corrputed_testUser"
+	_, err = utility.CheckVault(ctx, keyLabel, hwsec.NewChallengeAuthConfig(corruptedUsername, dbusName, keyDelegate.DBusPath, pubKeySPKIDER, keyAlgs))
+	// Verify.
 	if err == nil {
-		s.Fatal("Authentication with wrong credentials is expected to fail but succeeded: ", err)
+		s.Fatal("Failure expected, but key check succeeded with wrong credentials: ", err)
 	}
 
-	// Unauthenticated authsession should not allow the file to be read.
-	if err := cryptohome.VerifyFileUnreadability(ctx, testUser); err != nil {
-		s.Fatal("File is readable when it should not be: ", err)
-	}
 }
