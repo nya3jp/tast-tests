@@ -163,10 +163,17 @@ func (t *Timeline) Start(ctx context.Context) error {
 
 // snapshot takes a snapshot of all metrics.
 func (t *Timeline) snapshot(ctx context.Context, v *Values) error {
+	start := time.Now()
+	sourceTimes := []time.Duration{}
 	for _, s := range t.sources {
+		startSource := time.Now()
 		if err := s.Snapshot(ctx, v); err != nil {
 			return err
 		}
+		sourceTimes = append(sourceTimes, time.Now().Sub(startSource))
+	}
+	if time.Now().Sub(start) > 5*time.Second {
+		testing.ContextLogf(ctx, "SNAPSHOT TIMELINE FAILED: %v", sourceTimes)
 	}
 	return nil
 }
