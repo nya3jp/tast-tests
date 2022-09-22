@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "114cda43_439b113e",
+        "filename": "src/chromiumos/tast/local/cellular/cellular_helper_utils.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1541462
+      },
+      "writtenOn": "2022-09-22T21:52:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0c42c753_be31a71b",
+      "revId": "b658a68bc26178e85f1f7533f3a7c395a2c1cc20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f2786f2d_350cd5e8",
@@ -52,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc08d9e2_0ec93c40",
+        "filename": "src/chromiumos/tast/remote/cellular/callbox/manager/fixture.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1541462
+      },
+      "writtenOn": "2022-09-22T21:52:03Z",
+      "side": 1,
+      "message": "I think the 200 seconds used previously was too long. IME, if it can\u0027t access the internet in the first one or two attempts it\u0027s probably not going to be able to later. I guess it\u0027s still possible that there\u0027s an intermittent lab issue preventing it from accessing the internet but at that point I think it might just be better to fail.",
+      "parentUuid": "f2786f2d_350cd5e8",
+      "revId": "b658a68bc26178e85f1f7533f3a7c395a2c1cc20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "276d0df2_8672f1dd",
@@ -65,6 +101,30 @@
       "writtenOn": "2022-09-22T18:33:08Z",
       "side": 1,
       "message": "nit: ...disables and then re-enables the device, and then...",
+      "range": {
+        "startLine": 194,
+        "startChar": 20,
+        "endLine": 194,
+        "endChar": 32
+      },
+      "revId": "b658a68bc26178e85f1f7533f3a7c395a2c1cc20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5617efc4_f8280491",
+        "filename": "src/chromiumos/tast/remote/cellular/callbox/manager/fixture.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1541462
+      },
+      "writtenOn": "2022-09-22T21:52:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "276d0df2_8672f1dd",
       "range": {
         "startLine": 194,
         "startChar": 20,
