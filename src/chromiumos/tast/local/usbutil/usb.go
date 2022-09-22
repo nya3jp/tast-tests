@@ -16,11 +16,13 @@ import (
 	"sort"
 	"strconv"
 	"strings"
+	"time"
 
 	"github.com/google/uuid"
 
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/testing"
 )
 
 // Device represents a USB device.
@@ -533,4 +535,30 @@ type MountFileDetails struct {
 type RemovableDeviceDetail struct {
 	// RemovableDevices holds connected USB devices details.
 	RemovableDevices []MountFileDetails
+}
+
+// USBStorageDevicePath returns USB storage device path of provided usbDeviceType.
+func USBStorageDevicePath(ctx context.Context, usbDeviceType string) (string, error) {
+	var usbDevicePath string
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		removableDevicesList, err := RemovableDevices(ctx)
+		if err != nil {
+			return errors.Wrap(err, "failed to get device list")
+		}
+		if len(removableDevicesList.RemovableDevices) == 0 {
+			return errors.New("failed to get removable devices info")
+		}
+		usbType := removableDevicesList.RemovableDevices[0].UsbType
+		if usbType != usbDeviceType {
+			return errors.Errorf("unexpected USB version type: got %q, want %q", usbType, usbDeviceType)
+		}
+		usbDevicePath = removableDevicesList.RemovableDevices[0].Mountpoint
+		if usbDevicePath == "" {
+			return errors.New("failed to get valid devicePath")
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 15 * time.Second}); err != nil {
+		return "", errors.Wrap(err, "timeout waiting to get storage path")
+	}
+	return usbDevicePath, nil
 }
