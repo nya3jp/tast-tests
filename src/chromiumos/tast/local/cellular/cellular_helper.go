@@ -20,6 +20,8 @@ import (
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/modemmanager"
 	"chromiumos/tast/local/shill"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
@@ -130,6 +132,22 @@ func NewHelperWithLabels(ctx context.Context, labels []string) (*Helper, error) 
 		return nil, errors.Wrap(err, "failed to unlock dut with default pin")
 	}
 
+	return helper, nil
+}
+
+// NewHelperWithConnectedCellular creates a Helper object with label info and ensures that Cellular is connected.
+func NewHelperWithConnectedCellular(ctx context.Context) (*Helper, error) {
+	if _, err := modemmanager.NewModemWithSim(ctx); err != nil {
+		return nil, errors.Wrap(err, "could not find MM dbus object with a valid sim")
+	}
+	helper, err := NewHelper(ctx)
+	if err != nil {
+		return nil, err
+	}
+	err = helper.ConnectAndCheck(ctx)
+	if err != nil {
+		return nil, err
+	}
 	return helper, nil
 }
 
@@ -1217,4 +1235,59 @@ func (h *Helper) GetPINAndPUKForICCID(ctx context.Context, iccid string) (string
 // GetLabelCarrierName return the current carrier name
 func (h *Helper) GetLabelCarrierName(ctx context.Context) string {
 	return h.carrierName
+}
+
+// ConnectAndCheck verifies that cellular is connected and has sufficient signal coverage to run test cases
+func (h *Helper) ConnectAndCheck(ctx context.Context) error {
+	service, err := h.FindServiceForDevice(ctx)
+	if err != nil {
+		return errors.Wrap(err, "unable to find cellular service for device")
+	}
+	properties, err := service.GetProperties(ctx)
+	if err != nil {
+		return errors.Wrap(err, "unable to get properties")
+	}
+	// The connection will not occur from the login screen, so we log in.
+	cr, err := chrome.New(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to start Chrome")
+	}
+	defer cr.Close(ctx)
+	// chrome.Chrome.Close() will not log the user out.
+	defer upstart.RestartJob(ctx, "ui")
+	// Check if cellular is set to AutoConnect.
+	autoConnect, err := properties.GetBool(shillconst.ServicePropertyAutoConnect)
+	if err != nil {
+		return errors.Wrap(err, "unable to get AutoConnect")
+	}
+	testing.ContextLog(ctx, "AutoConnect: ", autoConnect)
+	// Check if cellular is already connected.
+	isConnected, err := properties.GetBool(shillconst.ServicePropertyIsConnected)
+	if err != nil {
+		return errors.Wrap(err, "unable to get IsConnected")
+	}
+	testing.ContextLog(ctx, "IsConnected: ", isConnected)
+	if !isConnected {
+		// If Cellular is not connected, either connect or wait to go to connected state
+		// If Cellular is not set to AutoConnect, connect with default settings
+		if !autoConnect {
+			timeToConnect, err := h.ConnectToDefault(ctx)
+			if err != nil {
+				return errors.Wrap(err, "unable to Connect to default service")
+			}
+			testing.ContextLog(ctx, "Time to Connect: ", timeToConnect)
+		} else {
+			// If Cellular is set to Autoconnect, wait for the service to connect
+			if err := service.WaitForProperty(ctx, shillconst.ServicePropertyIsConnected, true, defaultTimeout); err != nil {
+				return err
+			}
+		}
+	}
+	// Ensure service's signal quality matches expectations.
+	signalStrength, _ := service.GetSignalStrength(ctx)
+	testing.ContextLog(ctx, "SignalStrength: ", signalStrength)
+	if signalStrength < shillconst.CellularServiceMinSignalStrength {
+		return errors.Wrapf(err, "signal strength below minimum acceptable threshold - %d < %d ", signalStrength, shillconst.CellularServiceMinSignalStrength)
+	}
+	return nil
 }

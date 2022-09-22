@@ -8,7 +8,6 @@ import (
 	"context"
 	"time"
 
-	"chromiumos/tast/common/shillconst"
 	"chromiumos/tast/local/cellular"
 	"chromiumos/tast/testing"
 )
@@ -28,25 +27,9 @@ func init() {
 
 // CheckSignalQuality needs to be run to verify that the DUT has sufficient signal coverage to execute other network related test cases
 func CheckSignalQuality(ctx context.Context, s *testing.State) {
-	helper, err := cellular.NewHelper(ctx)
+	_, err := cellular.NewHelperWithConnectedCellular(ctx)
 	if err != nil {
 		s.Fatal("Failed to create cellular.Helper: ", err)
 	}
-
-	service, err := helper.FindServiceForDevice(ctx)
-	if err != nil {
-		s.Fatal("Unable to find Cellular Service for Device: ", err)
-	}
-
-	// Ensure service's state matches expectations.
-	if err := service.WaitForProperty(ctx, shillconst.ServicePropertyState, shillconst.ServiceStateOnline, 150*time.Second); err != nil {
-		s.Fatal("Failed to get service state: ", err)
-	}
-
-	// Ensure service's signal quality matches expectations.
-	signalStrength, _ := service.GetSignalStrength(ctx)
-	testing.ContextLog(ctx, "SignalStrength: ", signalStrength)
-	if signalStrength < shillconst.CellularServiceMinSignalStrength {
-		s.Fatalf("Signal strength below minimum acceptable threshold - %d < %d ", signalStrength, shillconst.CellularServiceMinSignalStrength)
-	}
+	// Nothing else to be done in this test. Creating the helper validates the cellular test environment.
 }
