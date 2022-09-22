@@ -98,7 +98,7 @@ func SelectGooglePhotosPhoto(ui *uiauto.Context, name string) uiauto.Action {
 
 // SelectImage returns an action to select the image with the given image title.
 func SelectImage(ui *uiauto.Context, image string) uiauto.Action {
-	imageNode := nodewith.Role(role.ListBoxOption).Name("wallpaper-grid-item").Name(image)
+	imageNode := nodewith.Role(role.ListBoxOption).Name(image)
 	return uiauto.Combine(fmt.Sprintf("select image %q", image),
 		ui.WaitUntilExists(imageNode),
 		ui.MakeVisible(imageNode),
