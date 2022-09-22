@@ -156,16 +156,16 @@ func Run(ctx context.Context, s *testing.State) {
 				return errors.Wrap(err, "failed to wait for overview state")
 			}
 
+			if err := ac.WithInterval(2*time.Second).WithTimeout(10*time.Second).WaitUntilNoEvent(nodewith.Root(), event.LocationChanged)(ctx); err != nil {
+				s.Log("Failed to wait for overview stabilization: ", err)
+			}
+
 			if err := stw.Swipe(ctx, startX, startY, endX, endY, 2*time.Second); err != nil {
 				return errors.Wrap(err, "failed to swipe horizontally in overview mode")
 			}
 
 			if err := stw.End(); err != nil {
 				return errors.Wrap(err, "failed to end swipe animation")
-			}
-
-			if err := ac.WithInterval(2*time.Second).WaitUntilNoEvent(nodewith.Root(), event.LocationChanged)(ctx); err != nil {
-				s.Log("Failed to wait for the swipe animation to stabilize: ", err)
 			}
 			return nil
 		}
@@ -180,6 +180,10 @@ func Run(ctx context.Context, s *testing.State) {
 
 			if err := ash.WaitForOverviewState(ctx, tconn, ash.Shown, 30*time.Second); err != nil {
 				return errors.Wrap(err, "failed to wait for overview state")
+			}
+
+			if err := ac.WithInterval(2*time.Second).WithTimeout(10*time.Second).WaitUntilNoEvent(nodewith.Root(), event.LocationChanged)(ctx); err != nil {
+				s.Log("Failed to wait for overview stabilization: ", err)
 			}
 			return nil
 		}
