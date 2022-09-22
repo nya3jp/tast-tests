@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b612498_cac86870",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/taskswitchcuj/task_switch_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-09-22T22:01:38Z",
+      "side": 1,
+      "message": "All of this code is also part of the `setOverviewMode` function for tablet mode. Please cut down on the code duplication.",
+      "range": {
+        "startLine": 182,
+        "startChar": 0,
+        "endLine": 195,
+        "endChar": 13
+      },
+      "revId": "6542ea8fb25a03cb7687cdb0b5ba05f471c9323a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
