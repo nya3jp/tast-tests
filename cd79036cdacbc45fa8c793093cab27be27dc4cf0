@@ -122,6 +122,24 @@
       "parentUuid": "60454cf6_d3f08708",
       "revId": "cd79036cdacbc45fa8c793093cab27be27dc4cf0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10a029b5_137b2b65",
+        "filename": "src/chromiumos/tast/remote/firmware/power/dut_power.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2022-09-22T05:21:01Z",
+      "side": 1,
+      "message": "Oh, I updated this too soon,\n\nI needed to remove all the time related means, since they have the same name for each.\n\nIf that\u0027s a problem, I think we should probably just explicitly return all the different results and not hide them behind the Results interface.",
+      "parentUuid": "bdcec0d6_5736d492",
+      "revId": "cd79036cdacbc45fa8c793093cab27be27dc4cf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
