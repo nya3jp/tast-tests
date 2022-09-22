@@ -157,7 +157,7 @@ var (
 	// DocumentFixModeImage is the preview image of fix mode in multi-page document mode.
 	DocumentFixModeImage = UIComponent{"document fix mode image", []string{".document-fix-mode .image"}}
 	// DocumentFixButton is the entry button of fix mode in multi-page document mode.
-	DocumentFixButton = UIComponent{"document enter fix mode button", []string{".document-preview-mode button[i18n-aria=label_fix_document]"}}
+	DocumentFixButton = UIComponent{"document enter fix mode button", []string{".document-preview-mode button[i18n-aria=fix_page_button]"}}
 	// DocumentFixModeCorner is the crop area dragging point in fix mode in multi-page document mode.
 	DocumentFixModeCorner = UIComponent{"document corner dragging point", []string{".document-fix-mode .dot"}}
 	// DocumentDoneFixButton is the exit button of fix mode in multi-page document mode.
