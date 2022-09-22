@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b45ab177_67f8164f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_dragdrop.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-09-22T21:40:20Z",
+      "side": 1,
+      "message": "Maybe not exactly. The API documentation doesn\u0027t have any stipulations on the order. It is just that I have seen the values always in ascending order and I don\u0027t see why that would change.",
+      "parentUuid": "b5dc3339_7e553ca5",
+      "revId": "fd6fe404f962c473c87c2496c82498e69eb86f47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7ba9c222_72a5e037",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-09-22T17:01:42Z",
       "side": 1,
       "message": "If the assumption about sorting is true, is there any reason we actually need to do this if we want 90% or less, rather than only checking the first element to see that it\u0027s less than 90% and returning that if it is (or else just erroring out)?",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 54
+      },
+      "revId": "fd6fe404f962c473c87c2496c82498e69eb86f47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "925b9edb_b9545d45",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_dragdrop.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-09-22T21:40:20Z",
+      "side": 1,
+      "message": "I think that this might as well be consistent with similar code in performance tests. In those tests, the display zoom factor may affect the measured performance and so we don\u0027t want it to be unnecessarily extreme.",
+      "parentUuid": "7ba9c222_72a5e037",
       "range": {
         "startLine": 95,
         "startChar": 0,
