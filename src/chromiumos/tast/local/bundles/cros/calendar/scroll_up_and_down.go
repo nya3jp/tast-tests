@@ -17,6 +17,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/touch"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -31,6 +32,7 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Fixture:      "chromeLoggedInWithCalendarView",
+		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 	})
 }
 
