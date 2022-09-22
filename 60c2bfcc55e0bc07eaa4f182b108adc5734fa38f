@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7da5e66b_291b1281",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/fgsec_wpa_upgrade.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1496163
+      },
+      "writtenOn": "2022-09-22T17:16:53Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ca195500_7a2941b9",
+      "revId": "60c2bfcc55e0bc07eaa4f182b108adc5734fa38f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3e0daaf2_b01b5aa5",
@@ -53,6 +71,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "356accf3_d27fa1bf",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/fgsec_wpa_upgrade.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1496163
+      },
+      "writtenOn": "2022-09-22T17:16:53Z",
+      "side": 1,
+      "message": "I guess we can but the test was written more from the perspective of the end user.  More on this in the next comment (so I\u0027m closing this one).",
+      "parentUuid": "3e0daaf2_b01b5aa5",
+      "revId": "60c2bfcc55e0bc07eaa4f182b108adc5734fa38f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a656d06c_49472c2f",
@@ -66,6 +102,24 @@
       "writtenOn": "2022-09-07T22:21:00Z",
       "side": 1,
       "message": "Could you please add a description of the test steps. similar to this test:\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/remote/bundles/cros/wifi/p2p_simple_connect.go;rcl\u003d408dc0de035db3b85f9915ef0b566e96f253b4a9;l\u003d28",
+      "revId": "60c2bfcc55e0bc07eaa4f182b108adc5734fa38f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9cfc2294_cf4ce8a9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/fgsec_wpa_upgrade.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1496163
+      },
+      "writtenOn": "2022-09-22T17:16:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a656d06c_49472c2f",
       "revId": "60c2bfcc55e0bc07eaa4f182b108adc5734fa38f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -112,6 +166,48 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5962541d_b2835723",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/fgsec_wpa_upgrade.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1496163
+      },
+      "writtenOn": "2022-09-22T17:16:53Z",
+      "side": 1,
+      "message": "OK.  This test was written from the perspective of the chromebook user who upgrades security of his AP (this is the original problem for b/244620824).  So the intent is not to match environment with different BSSes resulting in the Security of the service to be upgraded (in which case as you\u0027ve noticed it would be better to have them configured).  The unit tests and the test in the previous CL is for that.\n\nHere I wanted to test scenario of user upgrading his AP so it is written as single run as \"wpa\" down/up as \"wpa2\" (security change to wpawpa2) down/up as \"wpa3\" (security change to wpa-all).\n\nRegarding split.  I could do it but that would be two different scenarios:\n- wpa down/up as wpa2 (security wpawpa2)\n- wpa2 down/up as wpa3 (security wpa2wpa3 since we have not seen wpa).\nIf the user decides to \"forget\" the network and add it again after the first upgrade then this would be appropriate.  However if he doesn\u0027t then single scenario seems to be more likely.\n\nLet me know what you think.",
+      "parentUuid": "47f718e8_627e03bf",
+      "revId": "60c2bfcc55e0bc07eaa4f182b108adc5734fa38f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "51bd2375_ae9e4b0c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/fgsec_wpa_upgrade.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1496163
+      },
+      "writtenOn": "2022-09-22T17:16:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e50fa18_075b4c93",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 15
+      },
+      "revId": "60c2bfcc55e0bc07eaa4f182b108adc5734fa38f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "683f5c2e_cee8ea1e",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/fgsec_wpa_upgrade.go",
         "patchSetId": 2
@@ -123,6 +219,24 @@
       "writtenOn": "2022-09-07T22:21:00Z",
       "side": 1,
       "message": "defer disconnection right after this function and reserve time for it.",
+      "revId": "60c2bfcc55e0bc07eaa4f182b108adc5734fa38f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4933b0df_2e854816",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/fgsec_wpa_upgrade.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1496163
+      },
+      "writtenOn": "2022-09-22T17:16:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "683f5c2e_cee8ea1e",
       "revId": "60c2bfcc55e0bc07eaa4f182b108adc5734fa38f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -140,6 +254,24 @@
       "writtenOn": "2022-09-07T15:46:31Z",
       "side": 1,
       "message": "micro nit: you don\u0027t need this log line",
+      "revId": "60c2bfcc55e0bc07eaa4f182b108adc5734fa38f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c114257f_7a27f8f5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/fgsec_wpa_upgrade.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1496163
+      },
+      "writtenOn": "2022-09-22T17:16:53Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1c4ba599_3f9d8d89",
       "revId": "60c2bfcc55e0bc07eaa4f182b108adc5734fa38f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
