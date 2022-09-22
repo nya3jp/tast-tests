@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f88e78d_6be5bf79",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2022-09-22T15:35:25Z",
+      "side": 1,
+      "message": "https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#startup-and-shutdown\n\u003e If a test requires the system to be in a particular state before it runs, it should include code that tries to get the system into that state if it isn‘t there already. Previous tests may have aborted mid-run; it’s not safe to make assumptions that they undid all temporary changes that they made.\n\nIn this case, how about making sure to close all the windows at the beginning instead?",
+      "revId": "932f16e91316051965ec17ad8de5a7c41e921998",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "849da56d_7cd13e9f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/admin_templates_launch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2022-09-22T15:35:25Z",
+      "side": 1,
+      "message": "Is this duplicated with the other invocation by the defer statement?\n(error reporting may be useful, though)",
+      "revId": "932f16e91316051965ec17ad8de5a7c41e921998",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
