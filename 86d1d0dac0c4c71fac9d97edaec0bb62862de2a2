@@ -87,6 +87,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "abb4b0ed_c2defe2d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1496163
+      },
+      "writtenOn": "2022-09-22T16:55:33Z",
+      "side": 1,
+      "message": "Sorry for the delay.  I was busy with MAR related changes.",
+      "parentUuid": "dd2bb599_a8e0ceae",
+      "revId": "86d1d0dac0c4c71fac9d97edaec0bb62862de2a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7f847c2e_d10067b8",
@@ -100,6 +118,24 @@
       "writtenOn": "2022-09-09T03:26:37Z",
       "side": 1,
       "message": "Should we also add the enterprise ones?",
+      "revId": "86d1d0dac0c4c71fac9d97edaec0bb62862de2a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d2a49eb_3f58953a",
+        "filename": "src/chromiumos/tast/common/shillconst/const.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1496163
+      },
+      "writtenOn": "2022-09-22T16:55:33Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7f847c2e_d10067b8",
       "revId": "86d1d0dac0c4c71fac9d97edaec0bb62862de2a2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -123,6 +159,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7856c34d_22a4980f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/fgsec_connect.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1496163
+      },
+      "writtenOn": "2022-09-22T16:55:33Z",
+      "side": 1,
+      "message": "The purpose of this test is mainly to test at component level (not unit tests) that correct Security property is being configured in various situations.\n\nSo there is some overlap with SimpleConnect: in some test cases only single AP is being used.  What differs this from SimpleConnect is:\n- I am checking the Security\n- I am also having configurations with multiple endpoints.\n\nSecurity check could be added to SimpleConnect, but IMHO adding multiple endpoints to SimpleConnect would make it not so simple so I\u0027ve decided to have another test for that.  Note that here the emphasis is on resulting Security property of the service.\n\nIf you are OK with that then please mark as resolved if not please suggest what to do.",
+      "parentUuid": "939c265d_2c435703",
+      "revId": "86d1d0dac0c4c71fac9d97edaec0bb62862de2a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c6dd98ed_b1e46b32",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/fgsec_connect.go",
         "patchSetId": 3
@@ -134,6 +188,24 @@
       "writtenOn": "2022-09-09T03:26:37Z",
       "side": 1,
       "message": "We basically cover all of these in SimpleConnect, no?",
+      "revId": "86d1d0dac0c4c71fac9d97edaec0bb62862de2a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aecc933e_fe9cb249",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/fgsec_connect.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1496163
+      },
+      "writtenOn": "2022-09-22T16:55:33Z",
+      "side": 1,
+      "message": "See answer to the above: not all - connection to single BSS are covered (and I could add check for Security in SimpleConnect).  Connections to network with multiple BSSes are not covered in SimpleConnect.",
+      "parentUuid": "c6dd98ed_b1e46b32",
       "revId": "86d1d0dac0c4c71fac9d97edaec0bb62862de2a2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -161,6 +233,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "145cb6b2_72b7da59",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/fgsec_connect.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1496163
+      },
+      "writtenOn": "2022-09-22T16:55:33Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "54f07ceb_387b7665",
+      "range": {
+        "startLine": 111,
+        "startChar": 11,
+        "endLine": 111,
+        "endChar": 20
+      },
+      "revId": "86d1d0dac0c4c71fac9d97edaec0bb62862de2a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "26219426_01b3dff2",
@@ -174,6 +270,24 @@
       "writtenOn": "2022-09-09T03:26:37Z",
       "side": 1,
       "message": "Add step by step description of test.",
+      "revId": "86d1d0dac0c4c71fac9d97edaec0bb62862de2a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b386dd9_e83b143f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/fgsec_connect.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1496163
+      },
+      "writtenOn": "2022-09-22T16:55:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "26219426_01b3dff2",
       "revId": "86d1d0dac0c4c71fac9d97edaec0bb62862de2a2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -195,6 +309,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "85f62f9d_4ceed340",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/fgsec_connect.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1496163
+      },
+      "writtenOn": "2022-09-22T16:55:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f0b174d6_c23d94ed",
+      "revId": "86d1d0dac0c4c71fac9d97edaec0bb62862de2a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8cc094e7_c9db5572",
@@ -212,6 +344,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bbebf411_e3f2c3dc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/fgsec_connect.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1496163
+      },
+      "writtenOn": "2022-09-22T16:55:33Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8cc094e7_c9db5572",
+      "revId": "86d1d0dac0c4c71fac9d97edaec0bb62862de2a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e063e943_1316cd02",
@@ -225,6 +375,30 @@
       "writtenOn": "2022-09-07T15:43:31Z",
       "side": 1,
       "message": "just move this to right after the error check on L160-162, at that point `ctx` is the context you want anyway",
+      "range": {
+        "startLine": 166,
+        "startChar": 0,
+        "endLine": 170,
+        "endChar": 15
+      },
+      "revId": "86d1d0dac0c4c71fac9d97edaec0bb62862de2a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "511c8a15_105250ef",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/fgsec_connect.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1496163
+      },
+      "writtenOn": "2022-09-22T16:55:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e063e943_1316cd02",
       "range": {
         "startLine": 166,
         "startChar": 0,
@@ -258,6 +432,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4949ef5b_a2c8705f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/fgsec_connect.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1496163
+      },
+      "writtenOn": "2022-09-22T16:55:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b54c1b88_abb7a478",
+      "range": {
+        "startLine": 178,
+        "startChar": 0,
+        "endLine": 182,
+        "endChar": 16
+      },
+      "revId": "86d1d0dac0c4c71fac9d97edaec0bb62862de2a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0784f164_edf9dede",
@@ -271,6 +469,24 @@
       "writtenOn": "2022-09-09T03:26:37Z",
       "side": 1,
       "message": "Prefer something like DiscoverBSSID: https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/wifi/shill_service.go;rcl\u003da825d2fd922178a0d3fdf36ff7d99c994295ace6;l\u003d359 to guarantee that this happens.",
+      "revId": "86d1d0dac0c4c71fac9d97edaec0bb62862de2a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae8a9ae3_94131954",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/fgsec_connect.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1496163
+      },
+      "writtenOn": "2022-09-22T16:55:33Z",
+      "side": 1,
+      "message": "Nice tip, thanks.",
+      "parentUuid": "0784f164_edf9dede",
       "revId": "86d1d0dac0c4c71fac9d97edaec0bb62862de2a2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -292,6 +508,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9520f32c_afd3f1fe",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/fgsec_connect.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1496163
+      },
+      "writtenOn": "2022-09-22T16:55:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e5d1955_73320987",
+      "revId": "86d1d0dac0c4c71fac9d97edaec0bb62862de2a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "38354279_34901132",
@@ -305,6 +539,24 @@
       "writtenOn": "2022-09-07T22:13:21Z",
       "side": 1,
       "message": "This function uses Shill API to wait for the scan status to be Idle then triggers scan through Shill. However, this function uses WPAMonitor to check if the scan results has been received. I think it\u0027s better to use wpa_cli/Shill API for all the steps if possible.\n\nnit: I think this function can exist in test_fixture.go",
+      "revId": "86d1d0dac0c4c71fac9d97edaec0bb62862de2a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4ef94d9_8b043e51",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/scan_util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1496163
+      },
+      "writtenOn": "2022-09-22T16:55:33Z",
+      "side": 1,
+      "message": "It is now removed.",
+      "parentUuid": "38354279_34901132",
       "revId": "86d1d0dac0c4c71fac9d97edaec0bb62862de2a2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
