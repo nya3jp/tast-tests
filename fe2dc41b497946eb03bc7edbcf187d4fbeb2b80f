@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ee05bf6_6ae96771",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1268793
+      },
+      "writtenOn": "2022-09-22T03:59:08Z",
+      "side": 1,
+      "message": "Looking good. Thanks for working on this. One question.",
+      "revId": "fe2dc41b497946eb03bc7edbcf187d4fbeb2b80f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f9d1716_84e4ac96",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/unicorn_translation.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1268793
+      },
+      "writtenOn": "2022-09-22T03:59:08Z",
+      "side": 1,
+      "message": "Question: can we add multiple tests in this init function?\n\nIf so, can we make this a translation test and add one test for each account type - consumer, FL and Managed user.\n\nIf not, maybe we can refactor the test into a helper function so we can easily create multiple tests for different account type.",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 31
+      },
+      "revId": "fe2dc41b497946eb03bc7edbcf187d4fbeb2b80f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
