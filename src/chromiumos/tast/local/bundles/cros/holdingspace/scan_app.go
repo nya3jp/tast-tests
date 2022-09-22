@@ -1,8 +1,8 @@
-// Copyright 2021 The ChromiumOS Authors
+// Copyright 2022 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package scanapp
+package holdingspace
 
 import (
 	"context"
@@ -10,12 +10,10 @@ import (
 	"time"
 
 	"chromiumos/tast/ctxutil"
-	"chromiumos/tast/local/apps"
-	"chromiumos/tast/local/bundles/cros/scanapp/scanning"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
-	"chromiumos/tast/local/chrome/uiauto/filesapp"
+	"chromiumos/tast/local/chrome/uiauto/holdingspace"
 	"chromiumos/tast/local/chrome/uiauto/scanapp"
 	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/testing"
@@ -23,23 +21,24 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         OpenScanInFilesApp,
+		Func:         ScanApp,
 		LacrosStatus: testing.LacrosVariantUnneeded,
-		Desc:         "Tests that a scan can be opened in the Files app",
+		Desc:         "Checks that scanned filed saved from Scan App appear in Holding Space",
 		Contacts: []string{
-			"cros-peripherals@google.com",
-			"project-bolton@google.com",
+			"angelsan@chromium.org",
+			"dmblack@chromium.org",
+			"chromeos-sw-engprod@google.com",
+			"cros-system-ui-eng@google.com",
 		},
-		Attr: []string{
-			"group:mainline",
-			"informational",
-			"group:paper-io",
-			"paper-io_scanning",
-		},
-		SoftwareDeps: []string{"chrome", "virtual_usb_printer"},
-		Fixture:      "virtualUsbPrinterModulesLoaded",
-		Data:         []string{scanning.SourceImage},
+		Attr:         []string{"group:mainline", "informational"},
+		SoftwareDeps: []string{"virtual_usb_printer", "cups", "chrome"},
+		Fixture:      "virtualUsbPrinterModulesLoadedWithChromeLoggedIn",
 	})
+}
+
+type virtualScannerParams struct {
+	name             string
+	esclCapabilities string
 }
 
 var settings = scanapp.ScanSettings{
@@ -50,24 +49,27 @@ var settings = scanapp.ScanSettings{
 	Resolution: scanapp.Resolution300DPI,
 }
 
-func OpenScanInFilesApp(ctx context.Context, s *testing.State) {
-	// Use cleanupCtx for any deferred cleanups in case of timeouts or
-	// cancellations on the shortened context.
+// ScanApp tests the functionality of files existing in Holding Space by
+// saving a scanned file from the Scan app.
+func ScanApp(ctx context.Context, s *testing.State) {
+	cr := s.FixtValue().(chrome.HasChrome).Chrome()
+
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
 	defer cancel()
 
-	cr, err := chrome.New(ctx)
-	if err != nil {
-		s.Fatal("Failed to create Chrome instance: ", err)
-	}
-	defer cr.Close(cleanupCtx)
-
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
-		s.Fatal("Failed to connect Test API: ", err)
+		s.Fatal("Failed to create Test API connection: ", err)
 	}
-	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
+
+	defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "ui_dump")
+
+	// Reset the holding space.
+	if err := holdingspace.ResetHoldingSpace(ctx, tconn,
+		holdingspace.ResetHoldingSpaceOptions{}); err != nil {
+		s.Fatal("Failed to reset holding space: ", err)
+	}
 
 	printer, err := scanapp.StartPrinter(ctx, tconn)
 	if err != nil {
@@ -91,44 +93,31 @@ func OpenScanInFilesApp(ctx context.Context, s *testing.State) {
 		}
 	}()
 
-	if err := uiauto.Combine("Launch Files App by clicking My Files link",
-		app.ClickMyFilesLink(),
-	)(ctx); err != nil {
-		s.Fatal("Failed to open Files App: ", err)
-	}
-
 	myFilesPath, err := cryptohome.MyFilesPath(ctx, cr.NormalizedUser())
 	if err != nil {
 		s.Fatal("Failed to retrieve users MyFiles path: ", err)
 	}
-	defaultScanPattern := filepath.Join(myFilesPath, scanapp.DefaultScanFilePattern)
+
 	// Remove scans after the test completes.
+	defaultScanPattern := filepath.Join(myFilesPath, scanapp.DefaultScanFilePattern)
 	defer func() {
 		if err := scanapp.RemoveScans(defaultScanPattern); err != nil {
 			s.Error("Failed to remove scans: ", err)
 		}
 	}()
 
-	// Verify the scan can be found in the Files app.
-	// scan, err := scanning.GetScan(defaultScanPattern)
+	// Verify the scan can be found.
 	scan, err := scanapp.GetScan(defaultScanPattern)
 	if err != nil {
 		s.Fatal("Failed to find scan: ", err)
 	}
 
-	_, file := filepath.Split(scan)
-
-	f, err := filesapp.App(ctx, tconn, apps.FilesSWA.ID)
-	if err != nil {
-		s.Fatal("Failed to get Files app: ", err)
-	}
-
-	s.Logf("Searching for %s in Files app: ", file)
-	if err := f.WaitForFile(file)(ctx); err != nil {
-		s.Fatal("Failed to find scan in Files app: ", err)
-	}
-
-	if err := f.Close(ctx); err != nil {
-		s.Fatal("Failed to close Files app: ", err)
+	// Verify the scan can be found in the holding space.
+	ui := uiauto.New(tconn)
+	if err := uiauto.Combine("open holdingspace and verify scanned png file appears in holding space",
+		ui.LeftClick(holdingspace.FindTray()),
+		ui.WaitUntilExists(holdingspace.FindDownloadChip().Name(filepath.Base(scan))),
+	)(ctx); err != nil {
+		s.Fatal("Failed to open holdingspace and verify scanned png file appears in holding space: ", err)
 	}
 }
