@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dcc2034e_cb60a451",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/hid_wake.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-09-22T18:21:58Z",
+      "side": 1,
+      "message": "I think I misunderstood your original suggestion.\n\nBased on the string return in comment #129, I thought you wanted `attemptSuspendAndWake(...)` to suspend the DUT, wait for it to wake, then return the text output of powerd_dbus_suspend to be checked in `HidWake(...)`. That is not possible because we would need `attemptSuspendAndWake(...)` to be non-blocking to check power state and send the key press in `HidWake(...)`. But we would also need it to be blocking so that we could wait for `attemptSuspendAndWake(...)` to return the powerd_dbus_suspend output.\n\nBut if you\u0027re suggesting we move all of the suspend/wake functionality into a function because as a block it is synchronous, then yes this is possible. I\u0027ve moved L104-L117 into `attemptSuspendAndWake(...)` for patchset #13. Now `attemptSuspendAndWake(...)` has it\u0027s own internal anonymous function which takes the place of `attemptSuspendAndWake(...)` from patchset #12. As you suggested, channel creation is now handled by `attemptSuspendAndWake(...)`.",
+      "parentUuid": "5c76b2a9_17774558",
+      "range": {
+        "startLine": 104,
+        "startChar": 1,
+        "endLine": 116,
+        "endChar": 46
+      },
+      "revId": "bffe5457c3bc9f7b497594ad55fdf36a4b4dfe55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "aefee2e6_453beb41",
         "filename": "src/chromiumos/tast/remote/bundles/cros/power/hid_wake.go",
         "patchSetId": 12
@@ -37,6 +61,30 @@
       "writtenOn": "2022-09-21T22:02:23Z",
       "side": 1,
       "message": "Do you need the forward slash (doesn\u0027t filepath.Join() handle the separators for you) ?",
+      "range": {
+        "startLine": 207,
+        "startChar": 78,
+        "endLine": 207,
+        "endChar": 79
+      },
+      "revId": "bffe5457c3bc9f7b497594ad55fdf36a4b4dfe55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "71186066_a8ec7b46",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/hid_wake.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-09-22T18:21:58Z",
+      "side": 1,
+      "message": "No, removed.",
+      "parentUuid": "aefee2e6_453beb41",
       "range": {
         "startLine": 207,
         "startChar": 78,
@@ -60,6 +108,30 @@
       "writtenOn": "2022-09-21T22:02:23Z",
       "side": 1,
       "message": "Do you really need to write the new line character as well?",
+      "range": {
+        "startLine": 234,
+        "startChar": 24,
+        "endLine": 234,
+        "endChar": 26
+      },
+      "revId": "bffe5457c3bc9f7b497594ad55fdf36a4b4dfe55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a84196db_daca5bbe",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/hid_wake.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-09-22T18:21:58Z",
+      "side": 1,
+      "message": "No, removed.",
+      "parentUuid": "55ae22e9_71d44530",
       "range": {
         "startLine": 234,
         "startChar": 24,
