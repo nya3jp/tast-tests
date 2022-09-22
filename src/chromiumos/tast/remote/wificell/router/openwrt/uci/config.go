@@ -8,8 +8,8 @@ import (
 	"context"
 	"path"
 
+	"chromiumos/tast/common/utils"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/remote/wificell/wifiutil"
 	"chromiumos/tast/testing"
 )
 
@@ -122,7 +122,7 @@ func ResetConfigs(ctx context.Context, uci *Runner, expectBackupsToExist bool, c
 	for _, config := range configs {
 		// Restore from backup
 		if updated, err := RestoreConfig(ctx, uci, config, "", !expectBackupsToExist); err != nil {
-			wifiutil.CollectFirstErr(ctx, &firstRestoreError, errors.Wrapf(err, "failed to restore config %q from backup", config))
+			utils.CollectFirstErr(ctx, &firstRestoreError, errors.Wrapf(err, "failed to restore config %q from backup", config))
 		} else if !updated && !expectBackupsToExist {
 			// Backup what is there since a backup does not exist yet
 			if _, err := BackupConfig(ctx, uci, config, ""); err != nil {

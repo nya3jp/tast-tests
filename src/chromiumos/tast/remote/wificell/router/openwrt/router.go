@@ -14,6 +14,7 @@ import (
 
 	"chromiumos/tast/common/network/ip"
 	"chromiumos/tast/common/network/iw"
+	"chromiumos/tast/common/utils"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	remoteIp "chromiumos/tast/remote/network/ip"
@@ -26,7 +27,6 @@ import (
 	"chromiumos/tast/remote/wificell/pcap"
 	"chromiumos/tast/remote/wificell/router/common"
 	"chromiumos/tast/remote/wificell/router/common/support"
-	"chromiumos/tast/remote/wificell/wifiutil"
 	"chromiumos/tast/ssh"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/timing"
@@ -161,46 +161,46 @@ func (r *Router) Close(ctx context.Context) error {
 
 	// Collect closing log to facilitate debugging.
 	if err := common.CollectSyslogdLogs(ctx, r, r.syslogdCollector, "pre_close"); err != nil {
-		wifiutil.CollectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to collect syslogd logs before close actions"))
+		utils.CollectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to collect syslogd logs before close actions"))
 	}
 
 	// Remove the interfaces that we created.
 	for _, nd := range r.im.Available {
 		if err := r.im.Remove(ctx, nd.IfName); err != nil {
-			wifiutil.CollectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to remove interfaces"))
+			utils.CollectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to remove interfaces"))
 		}
 	}
 	for _, nd := range r.im.Busy {
 		testing.ContextLogf(ctx, "iface %s not yet freed", nd.IfName)
 		if err := r.im.Remove(ctx, nd.IfName); err != nil {
-			wifiutil.CollectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to remove interfaces"))
+			utils.CollectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to remove interfaces"))
 		}
 	}
 
 	// Stop any services that were not manually stopped already.
 	if err := r.closeActiveServices(ctx); err != nil {
-		wifiutil.CollectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to stop still active services"))
+		utils.CollectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to stop still active services"))
 	}
 
 	// Clean up any lingering bridge and veth ifaces.
 	if err := common.RemoveAllBridgeIfaces(ctx, r.ipr); err != nil {
-		wifiutil.CollectFirstErr(ctx, &firstErr, err)
+		utils.CollectFirstErr(ctx, &firstErr, err)
 	}
 	if err := common.RemoveAllVethIfaces(ctx, r.ipr); err != nil {
-		wifiutil.CollectFirstErr(ctx, &firstErr, err)
+		utils.CollectFirstErr(ctx, &firstErr, err)
 	}
 
 	// Clean working dir.
 	if err := r.host.CommandContext(ctx, "rm", "-rf", r.workDir()).Run(); err != nil {
-		wifiutil.CollectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to remove working dir"))
+		utils.CollectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to remove working dir"))
 	}
 
 	// Collect closing log to facilitate debugging.
 	if err := common.CollectSyslogdLogs(ctx, r, r.syslogdCollector, "post_close"); err != nil {
-		wifiutil.CollectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to collect syslogd logs after close actions"))
+		utils.CollectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to collect syslogd logs after close actions"))
 	}
 	if err := r.syslogdCollector.Close(); err != nil {
-		wifiutil.CollectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to stop syslogd log collector"))
+		utils.CollectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to stop syslogd log collector"))
 	}
 
 	testing.ContextLogf(ctx, "Closed OpenWrt router controller for router %q", r.name)
@@ -212,22 +212,22 @@ func (r *Router) closeActiveServices(ctx context.Context) error {
 	var firstError error
 	for len(r.activeServices.hostapd) != 0 {
 		if err := r.StopHostapd(ctx, r.activeServices.hostapd[0]); err != nil {
-			wifiutil.CollectFirstErr(ctx, &firstError, err)
+			utils.CollectFirstErr(ctx, &firstError, err)
 		}
 	}
 	for len(r.activeServices.dhcp) != 0 {
 		if err := r.StopDHCP(ctx, r.activeServices.dhcp[0]); err != nil {
-			wifiutil.CollectFirstErr(ctx, &firstError, err)
+			utils.CollectFirstErr(ctx, &firstError, err)
 		}
 	}
 	for len(r.activeServices.capture) != 0 {
 		if err := r.StopCapture(ctx, r.activeServices.capture[0]); err != nil {
-			wifiutil.CollectFirstErr(ctx, &firstError, err)
+			utils.CollectFirstErr(ctx, &firstError, err)
 		}
 	}
 	for len(r.activeServices.rawCapture) != 0 {
 		if err := r.StopRawCapturer(ctx, r.activeServices.rawCapture[0]); err != nil {
-			wifiutil.CollectFirstErr(ctx, &firstError, err)
+			utils.CollectFirstErr(ctx, &firstError, err)
 		}
 	}
 	return firstError
@@ -272,22 +272,22 @@ func (r *Router) killHostapdDHCP(ctx context.Context) error {
 	defer st.End()
 	var firstErr error
 	if err := r.host.CommandContext(shortCtx, "/etc/init.d/dnsmasq", "stop").Run(); err != nil {
-		wifiutil.CollectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to stop dnsmasq service which manages core OpenWrt DHCP servers"))
+		utils.CollectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to stop dnsmasq service which manages core OpenWrt DHCP servers"))
 	}
 	if err := r.host.CommandContext(shortCtx, "/etc/init.d/dnsmasq", "disable").Run(); err != nil {
-		wifiutil.CollectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to disable dnsmasq service which manages core OpenWrt DHCP servers"))
+		utils.CollectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to disable dnsmasq service which manages core OpenWrt DHCP servers"))
 	}
 	if err := r.host.CommandContext(shortCtx, "/etc/init.d/wpad", "stop").Run(); err != nil {
-		wifiutil.CollectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to stop wpad service which manages core OpenWrt hostapd processes"))
+		utils.CollectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to stop wpad service which manages core OpenWrt hostapd processes"))
 	}
 	if err := r.host.CommandContext(shortCtx, "/etc/init.d/wpad", "disable").Run(); err != nil {
-		wifiutil.CollectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to disable wpad service which manages core OpenWrt hostapd processes"))
+		utils.CollectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to disable wpad service which manages core OpenWrt hostapd processes"))
 	}
 	if err := hostapd.KillAll(shortCtx, r.host); err != nil {
-		wifiutil.CollectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to kill all hostapd processes"))
+		utils.CollectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to kill all hostapd processes"))
 	}
 	if err := dhcp.KillAll(shortCtx, r.host); err != nil {
-		wifiutil.CollectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to kill all dhcp processes"))
+		utils.CollectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to kill all dhcp processes"))
 	}
 	return nil
 }
@@ -358,9 +358,9 @@ func (r *Router) StopHostapd(ctx context.Context, hs *hostapd.Server) error {
 	var firstErr error
 	iface := hs.Interface()
 	if err := hs.Close(ctx); err != nil {
-		wifiutil.CollectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to stop hostapd"))
+		utils.CollectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to stop hostapd"))
 	}
-	wifiutil.CollectFirstErr(ctx, &firstErr, r.ipr.SetLinkDown(ctx, iface))
+	utils.CollectFirstErr(ctx, &firstErr, r.ipr.SetLinkDown(ctx, iface))
 	r.im.SetAvailable(iface)
 
 	// Remove from active services.
@@ -521,9 +521,9 @@ func (r *Router) StopDHCP(ctx context.Context, ds *dhcp.Server) error {
 	var firstErr error
 	iface := ds.Interface()
 	if err := ds.Close(ctx); err != nil {
-		wifiutil.CollectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to stop dhcpd"))
+		utils.CollectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to stop dhcpd"))
 	}
-	wifiutil.CollectFirstErr(ctx, &firstErr, r.ipr.FlushIP(ctx, iface))
+	utils.CollectFirstErr(ctx, &firstErr, r.ipr.FlushIP(ctx, iface))
 
 	// Remove from active services.
 	for i, service := range r.activeServices.dhcp {
@@ -610,10 +610,10 @@ func (r *Router) StopCapture(ctx context.Context, capturer *pcap.Capturer) error
 	var firstErr error
 	iface := capturer.Interface()
 	if err := capturer.Close(ctx); err != nil {
-		wifiutil.CollectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to stop capturer"))
+		utils.CollectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to stop capturer"))
 	}
 	if err := r.ipr.SetLinkDown(ctx, iface); err != nil {
-		wifiutil.CollectFirstErr(ctx, &firstErr, err)
+		utils.CollectFirstErr(ctx, &firstErr, err)
 	}
 	r.im.SetAvailable(iface)
 

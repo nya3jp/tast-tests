@@ -9,6 +9,7 @@ import (
 	"time"
 
 	"chromiumos/tast/common/shillconst"
+	"chromiumos/tast/common/utils"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/bundles/cros/wifi/wifiutil"
 	"chromiumos/tast/remote/wificell"
@@ -74,17 +75,6 @@ func ChannelHop(ctx context.Context, s *testing.State) {
 		},
 	}
 
-	// collectFirstErr is an utility function for collecting errors in defer.
-	collectFirstErr := func(firstErr *error, err error) {
-		if err == nil {
-			return
-		}
-		if *firstErr == nil {
-			*firstErr = err
-		}
-		s.Log("Found error: ", err)
-	}
-
 	// Sets up AP with connection verification; then deconfigures the AP.
 	var servicePath string
 	err = func() (retErr error) {
@@ -95,7 +85,7 @@ func ChannelHop(ctx context.Context, s *testing.State) {
 				// Not connected, just return.
 			}
 			if err := wifiutil.WaitServiceIdle(ctx, tf, servicePath); err != nil {
-				collectFirstErr(&retErr, errors.Wrap(err, "failed to wait for DUT leaving initial AP"))
+				utils.CollectFirstErr(ctx, &retErr, errors.Wrap(err, "failed to wait for DUT leaving initial AP"))
 			}
 		}(ctx)
 		ctx, cancel := wifiutil.ReserveForWaitServiceIdle(ctx)
@@ -107,7 +97,7 @@ func ChannelHop(ctx context.Context, s *testing.State) {
 		}
 		defer func(ctx context.Context) {
 			if err := tf.DeconfigAP(ctx, ap); err != nil {
-				collectFirstErr(&retErr, errors.Wrap(err, "failed to deconfig the initial AP"))
+				utils.CollectFirstErr(ctx, &retErr, errors.Wrap(err, "failed to deconfig the initial AP"))
 			}
 		}(ctx)
 		ctx, cancel = tf.ReserveForDeconfigAP(ctx, ap)
@@ -140,7 +130,7 @@ func ChannelHop(ctx context.Context, s *testing.State) {
 		defer func(ctx context.Context) {
 			s.Log("Waiting for service idle")
 			if err := wifiutil.WaitServiceIdle(ctx, tf, servicePath); err != nil {
-				collectFirstErr(&retErr, errors.Wrap(err, "failed to wait for service idle"))
+				utils.CollectFirstErr(ctx, &retErr, errors.Wrap(err, "failed to wait for service idle"))
 			}
 		}(ctx)
 		ctx, cancel = wifiutil.ReserveForWaitServiceIdle(ctx)
@@ -152,7 +142,7 @@ func ChannelHop(ctx context.Context, s *testing.State) {
 		}
 		defer func(ctx context.Context) {
 			if err := tf.DeconfigAP(ctx, ap); err != nil {
-				collectFirstErr(&retErr, errors.Wrap(err, "failed to deconfig the AP"))
+				utils.CollectFirstErr(ctx, &retErr, errors.Wrap(err, "failed to deconfig the AP"))
 			}
 		}(ctx)
 		ctx, cancel = tf.ReserveForDeconfigAP(ctx, ap)

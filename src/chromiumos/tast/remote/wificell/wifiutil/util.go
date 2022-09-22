@@ -5,25 +5,8 @@
 package wifiutil
 
 import (
-	"context"
-
-	"chromiumos/tast/caller"
 	"chromiumos/tast/remote/wificell/hostapd"
-	"chromiumos/tast/testing"
 )
-
-// CollectFirstErr collects the first error into firstErr and logs the others.
-// This can be useful when you have several steps in a function but cannot early
-// return on error. e.g. cleanup functions.
-func CollectFirstErr(ctx context.Context, firstErr *error, err error) {
-	if err == nil {
-		return
-	}
-	testing.ContextLogf(ctx, "Error in %s: %s", caller.Get(2), err)
-	if *firstErr == nil {
-		*firstErr = err
-	}
-}
 
 // CommonAPOptions generates a set of options with common settings on protocol
 // and channel appended with given extra options.

@@ -9,13 +9,13 @@ import (
 	"net"
 	"net/http"
 
+	"chromiumos/tast/common/utils"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/wificell/dhcp"
 	"chromiumos/tast/remote/wificell/hostapd"
 	httpServer "chromiumos/tast/remote/wificell/http"
 	"chromiumos/tast/remote/wificell/router"
 	"chromiumos/tast/remote/wificell/router/common/support"
-	"chromiumos/tast/remote/wificell/wifiutil"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/timing"
 )
@@ -213,14 +213,14 @@ func (h *APIface) Stop(ctx context.Context) error {
 	// Stop DHCP
 	if h.dhcpd != nil {
 		if err := h.router.StopDHCP(ctx, h.dhcpd); err != nil {
-			wifiutil.CollectFirstErr(ctx, &retErr, errors.Wrap(err, "failed to stop dhcp server"))
+			utils.CollectFirstErr(ctx, &retErr, errors.Wrap(err, "failed to stop dhcp server"))
 		}
 	}
 
 	// Stop Hostapd
 	if h.hostapd != nil {
 		if err := h.router.StopHostapd(ctx, h.hostapd); err != nil {
-			wifiutil.CollectFirstErr(ctx, &retErr, errors.Wrap(err, "failed to stop hostapd"))
+			utils.CollectFirstErr(ctx, &retErr, errors.Wrap(err, "failed to stop hostapd"))
 		}
 	}
 

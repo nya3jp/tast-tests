@@ -15,6 +15,7 @@ import (
 
 	"chromiumos/tast/common/network/ip"
 	"chromiumos/tast/common/network/iw"
+	"chromiumos/tast/common/utils"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	remote_ip "chromiumos/tast/remote/network/ip"
@@ -27,7 +28,6 @@ import (
 	"chromiumos/tast/remote/wificell/pcap"
 	"chromiumos/tast/remote/wificell/router/common"
 	"chromiumos/tast/remote/wificell/router/common/support"
-	"chromiumos/tast/remote/wificell/wifiutil"
 	"chromiumos/tast/ssh"
 	"chromiumos/tast/ssh/linuxssh"
 	"chromiumos/tast/testing"
@@ -304,33 +304,33 @@ func (r *Router) Close(ctx context.Context) error {
 	// Remove the interfaces that we created.
 	for _, nd := range r.im.Available {
 		if err := r.im.Remove(ctx, nd.IfName); err != nil {
-			wifiutil.CollectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to remove interfaces"))
+			utils.CollectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to remove interfaces"))
 		}
 	}
 	for _, nd := range r.im.Busy {
 		testing.ContextLogf(ctx, "iface %s not yet freed", nd.IfName)
 		if err := r.im.Remove(ctx, nd.IfName); err != nil {
-			wifiutil.CollectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to remove interfaces"))
+			utils.CollectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to remove interfaces"))
 		}
 	}
 
 	if err := common.RemoveAllBridgeIfaces(ctx, r.ipr); err != nil {
-		wifiutil.CollectFirstErr(ctx, &firstErr, err)
+		utils.CollectFirstErr(ctx, &firstErr, err)
 	}
 	if err := common.RemoveAllVethIfaces(ctx, r.ipr); err != nil {
-		wifiutil.CollectFirstErr(ctx, &firstErr, err)
+		utils.CollectFirstErr(ctx, &firstErr, err)
 	}
 
 	// Collect closing log to facilitate debugging for error occurs in
 	// r.initialize() or after r.CollectLogs().
 	if err := common.CollectLogs(ctx, r, r.logCollectors, logsToCollect, ".close"); err != nil {
-		wifiutil.CollectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to collect logs"))
+		utils.CollectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to collect logs"))
 	}
 	if err := common.StopLogCollectors(ctx, r.logCollectors); err != nil {
-		wifiutil.CollectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to stop loggers"))
+		utils.CollectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to stop loggers"))
 	}
 	if err := r.host.CommandContext(ctx, "rm", "-rf", r.workDir()).Run(); err != nil {
-		wifiutil.CollectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to remove working dir"))
+		utils.CollectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to remove working dir"))
 	}
 	return firstErr
 }
@@ -473,9 +473,9 @@ func (r *Router) StopHostapd(ctx context.Context, hs *hostapd.Server) error {
 	var firstErr error
 	iface := hs.Interface()
 	if err := hs.Close(ctx); err != nil {
-		wifiutil.CollectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to stop hostapd"))
+		utils.CollectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to stop hostapd"))
 	}
-	wifiutil.CollectFirstErr(ctx, &firstErr, r.ipr.SetLinkDown(ctx, iface))
+	utils.CollectFirstErr(ctx, &firstErr, r.ipr.SetLinkDown(ctx, iface))
 	r.im.SetAvailable(iface)
 	return firstErr
 }
@@ -530,9 +530,9 @@ func (r *Router) StopDHCP(ctx context.Context, ds *dhcp.Server) error {
 	var firstErr error
 	iface := ds.Interface()
 	if err := ds.Close(ctx); err != nil {
-		wifiutil.CollectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to stop dhcpd"))
+		utils.CollectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to stop dhcpd"))
 	}
-	wifiutil.CollectFirstErr(ctx, &firstErr, r.ipr.FlushIP(ctx, iface))
+	utils.CollectFirstErr(ctx, &firstErr, r.ipr.FlushIP(ctx, iface))
 	return firstErr
 }
 
@@ -549,7 +549,7 @@ func (r *Router) StartHTTP(ctx context.Context, name, iface, redirectAddr string
 func (r *Router) StopHTTP(ctx context.Context, httpServer *http.Server) error {
 	var firstErr error
 	if err := httpServer.Close(ctx); err != nil {
-		wifiutil.CollectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to stop http server"))
+		utils.CollectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to stop http server"))
 	}
 	return firstErr
 }
@@ -622,10 +622,10 @@ func (r *Router) StopCapture(ctx context.Context, capturer *pcap.Capturer) error
 	var firstErr error
 	iface := capturer.Interface()
 	if err := capturer.Close(ctx); err != nil {
-		wifiutil.CollectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to stop capturer"))
+		utils.CollectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to stop capturer"))
 	}
 	if err := r.ipr.SetLinkDown(ctx, iface); err != nil {
-		wifiutil.CollectFirstErr(ctx, &firstErr, err)
+		utils.CollectFirstErr(ctx, &firstErr, err)
 	}
 	r.im.SetAvailable(iface)
 	return firstErr

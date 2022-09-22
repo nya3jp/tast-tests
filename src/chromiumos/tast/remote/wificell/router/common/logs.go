@@ -12,11 +12,11 @@ import (
 	"strings"
 	"time"
 
+	"chromiumos/tast/common/utils"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/wificell/fileutil"
 	"chromiumos/tast/remote/wificell/log"
 	"chromiumos/tast/remote/wificell/router/common/support"
-	"chromiumos/tast/remote/wificell/wifiutil"
 	"chromiumos/tast/ssh"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/timing"
@@ -40,7 +40,7 @@ func StopLogCollectors(ctx context.Context, logCollectors map[string]*log.Collec
 	var firstErr error
 	for _, c := range logCollectors {
 		if err := c.Close(); err != nil {
-			wifiutil.CollectFirstErr(ctx, &firstErr, err)
+			utils.CollectFirstErr(ctx, &firstErr, err)
 		}
 	}
 	return firstErr
@@ -60,18 +60,18 @@ func CollectLogs(ctx context.Context, r support.Router, logCollectors map[string
 		collector := logCollectors[src]
 		if collector == nil {
 			testing.ContextLogf(ctx, "No log collector for %s found", src)
-			wifiutil.CollectFirstErr(ctx, &firstErr, errors.Errorf("failed to find log collector %q", src))
+			utils.CollectFirstErr(ctx, &firstErr, errors.Errorf("failed to find log collector %q", src))
 			continue
 		}
 		f, err := fileutil.PrepareOutDirFile(ctx, dst)
 		if err != nil {
 			testing.ContextLogf(ctx, "Failed to collect %q, err: %v", src, err)
-			wifiutil.CollectFirstErr(ctx, &firstErr, errors.Wrapf(err, "failed to collect %q", src))
+			utils.CollectFirstErr(ctx, &firstErr, errors.Wrapf(err, "failed to collect %q", src))
 			continue
 		}
 		if err := collector.Dump(f); err != nil {
 			testing.ContextLogf(ctx, "Failed to dump %q logs, err: %v", src, err)
-			wifiutil.CollectFirstErr(ctx, &firstErr, errors.Wrapf(err, "failed to dump %q logs", src))
+			utils.CollectFirstErr(ctx, &firstErr, errors.Wrapf(err, "failed to dump %q logs", src))
 		}
 	}
 	return firstErr
