@@ -34,6 +34,24 @@
       "parentUuid": "914bc5bc_b032b135",
       "revId": "59d1dca6ccc35bc97eb69d75430067fdda3e8285",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "da6a362d_a81efcb9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/clipboardhistory/context_menu_clipboard.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1538804
+      },
+      "writtenOn": "2022-09-22T08:42:33Z",
+      "side": 1,
+      "message": "Thank you for your discussion :)\nI removed the Gmail test in clipboardhistory.ContextMenuClipboard, and I will add the Google test case in a follow-up CL.",
+      "parentUuid": "e355d957_a9a689ec",
+      "revId": "59d1dca6ccc35bc97eb69d75430067fdda3e8285",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

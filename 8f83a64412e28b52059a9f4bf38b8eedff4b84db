@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "08384f0b_7f8d0b2d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1538804
+      },
+      "writtenOn": "2022-09-22T08:42:33Z",
+      "side": 1,
+      "message": "The Gmail test had been removed.",
+      "parentUuid": "903a25ac_65394eb4",
+      "revId": "8f83a64412e28b52059a9f4bf38b8eedff4b84db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f7549d2a_a8217c3c",
