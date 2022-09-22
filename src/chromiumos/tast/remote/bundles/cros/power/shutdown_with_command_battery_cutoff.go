@@ -27,7 +27,7 @@ func init() {
 		Contacts:     []string{"timvp@google.com", "cros-fw-engprod@google.com"},
 		ServiceDeps:  []string{"tast.cros.security.BootLockboxService"},
 		SoftwareDeps: []string{"chrome", "reboot"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline", "informational", "group:firmware", "firmware_unstable"},
 		Fixture:      fixture.NormalMode,
 		Vars:         []string{"servo"},
 		HardwareDeps: hwdep.D(hwdep.ChromeEC(), hwdep.Battery()),
