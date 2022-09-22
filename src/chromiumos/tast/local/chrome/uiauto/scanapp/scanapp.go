@@ -8,16 +8,23 @@ package scanapp
 import (
 	"context"
 	"fmt"
+	"os"
+	"path/filepath"
 	"strconv"
 	"strings"
 	"time"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/chrome/uiauto/state"
+	"chromiumos/tast/local/printing/cups"
+	"chromiumos/tast/local/printing/ippusbbridge"
+	"chromiumos/tast/local/printing/usbprinter"
 	"chromiumos/tast/testing"
 )
 
@@ -120,6 +127,16 @@ type ScanSettings struct {
 	PageSize   PageSize
 	Resolution Resolution
 }
+
+const (
+	// EsclCapabilities is the path to the capabilities used to configure the
+	// virtual USB scanner.
+	EsclCapabilities = "/usr/local/etc/virtual-usb-printer/escl_capabilities.json"
+
+	// DefaultScanFilePattern is the pattern used to find files in the default
+	// scan-to location, this pattern is appended to the user's MyFiles path.
+	DefaultScanFilePattern = "scan*_*.*"
+)
 
 // Launch launches the Scan App and returns it.
 // An error is returned if the app fails to launch.
@@ -298,4 +315,96 @@ func (s *ScanApp) RescanPage() uiauto.Action {
 		// Click the dialog's Rescan button to confirm the dialog and rescan the page.
 		s.LeftClick(nodewith.Name("Rescan").Role(role.Button)),
 	)
+}
+
+// RemoveScans removes all of the scanned files found using pattern.
+func RemoveScans(pattern string) error {
+	scans, err := filepath.Glob(pattern)
+	if err != nil {
+		return err
+	}
+
+	for _, scan := range scans {
+		if err = os.Remove(scan); err != nil {
+			return errors.Wrapf(err, "failed to remove %s", scan)
+		}
+	}
+
+	return nil
+}
+
+// GetScan returns the filepath of the scanned file found using pattern.
+func GetScan(pattern string) (string, error) {
+	scans, err := filepath.Glob(pattern)
+	if err != nil {
+		return "", err
+	}
+
+	if len(scans) != 1 {
+		return "", errors.Errorf("found too many scans: got %v; want 1", len(scans))
+	}
+
+	return scans[0], nil
+}
+
+// StartPrinter sets up the printer.
+func StartPrinter(ctx context.Context, tconn *chrome.TestConn) (*usbprinter.Printer, error) {
+	printer, err := usbprinter.Start(ctx,
+		usbprinter.WithIPPUSBDescriptors(),
+		usbprinter.WithGenericIPPAttributes(),
+		usbprinter.WithESCLCapabilities(EsclCapabilities),
+		usbprinter.ExpectUdevEventOnStop(),
+		usbprinter.WaitUntilConfigured())
+	if err != nil {
+		testing.ContextLog(ctx, "Failed to attach virtual printer: ", err)
+		return nil, err
+	}
+	if err = ippusbbridge.WaitForSocket(ctx, printer.DevInfo); err != nil {
+		testing.ContextLog(ctx, "Failed to wait for ippusb_bridge socket: ", err)
+		return nil, err
+	}
+	if err = cups.RestartPrintingSystem(ctx); err != nil {
+		testing.ContextLog(ctx, "Failed to reset printing system: ", err)
+		return nil, err
+	}
+	if _, err := ash.WaitForNotification(ctx, tconn, 30*time.Second, ash.WaitMessageContains(printer.VisibleName)); err != nil {
+		testing.ContextLog(ctx, "Failed to wait for printer notification: ", err)
+		return nil, err
+	}
+	if err = ippusbbridge.ContactPrinterEndpoint(ctx, printer.DevInfo, "/eSCL/ScannerCapabilities"); err != nil {
+		testing.ContextLog(ctx, "Failed to get scanner status over ippusb_bridge socket: ", err)
+		return nil, err
+	}
+
+	return printer, err
+}
+
+// LaunchAndStartScanWithSettings will launch and start scanning with given settings.
+func LaunchAndStartScanWithSettings(ctx context.Context, tconn *chrome.TestConn, settings ScanSettings) (*ScanApp, error) {
+	// Launch the Scan app, configure the settings and perform a scan.
+	testing.ContextLog(ctx, "Launching Scan app")
+	app, err := Launch(ctx, tconn)
+	if err != nil {
+		testing.ContextLog(ctx, "Failed to launch app: ", err)
+		return nil, err
+	}
+
+	// Make sure printer connected notifications don't cover the Scan button.
+	if err := ash.CloseNotifications(ctx, tconn); err != nil {
+		testing.ContextLog(ctx, "Failed to close notifications: ", err)
+		return nil, err
+	}
+
+	testing.ContextLog(ctx, "Starting scan")
+	scanSettings := settings
+	if err := uiauto.Combine("scan",
+		app.ClickMoreSettings(),
+		app.SetScanSettings(scanSettings),
+		app.Scan(),
+	)(ctx); err != nil {
+		testing.ContextLog(ctx, "Failed to perform scan: ", err)
+		return nil, err
+	}
+
+	return app, err
 }
