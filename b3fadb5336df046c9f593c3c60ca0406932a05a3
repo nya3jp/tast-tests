@@ -88,6 +88,24 @@
       "parentUuid": "54b2fd2e_9afa85d8",
       "revId": "b3fadb5336df046c9f593c3c60ca0406932a05a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "691a69c2_b290aadd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2022-09-22T05:55:34Z",
+      "side": 1,
+      "message": "As the offline discussion result, this will be removed. We only have two tast test using this so we can just check the pid there. We don\u0027t have plan to enforce others to use this. Also, the functionality test could cover the crashing (if crashes the test will fail). So remove it.",
+      "parentUuid": "41b69fd6_b8c71597",
+      "revId": "b3fadb5336df046c9f593c3c60ca0406932a05a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
