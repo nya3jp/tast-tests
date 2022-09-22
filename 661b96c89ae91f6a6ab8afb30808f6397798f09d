@@ -22,6 +22,30 @@
       },
       "revId": "661b96c89ae91f6a6ab8afb30808f6397798f09d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d246584_c86a78b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_variations_smoke.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-09-22T21:02:32Z",
+      "side": 1,
+      "message": "unfortunately not that I know of :(",
+      "parentUuid": "b770a941_42d9bee1",
+      "range": {
+        "startLine": 229,
+        "startChar": 78,
+        "endLine": 229,
+        "endChar": 132
+      },
+      "revId": "661b96c89ae91f6a6ab8afb30808f6397798f09d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
