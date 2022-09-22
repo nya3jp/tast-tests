@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31f79fb8_169f795e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/fgsec_connect.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-09-22T23:55:05Z",
+      "side": 1,
+      "message": "For the single AP tests, let\u0027s just merge these into SimpleConnect to avoid redundant tests.",
+      "revId": "445a7990aacf3aec91a5241bdd64bff261090557",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f432d1ac_94d80fa0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/fgsec_connect.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-09-22T23:55:05Z",
+      "side": 1,
+      "message": "wdyt about adding either or both of these additional subtests: wpa2wpa3 + wpa2 \u003d wpa2wpa3 and wpa2wpa3 + wpa3 \u003d wpa3?",
+      "revId": "445a7990aacf3aec91a5241bdd64bff261090557",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b50317e_90700e5e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/fgsec_connect.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-09-22T23:55:05Z",
+      "side": 1,
+      "message": "can we also add wpa + wpa2 + wpa3 \u003d wpaall and wpa + wpa2wpa3 \u003d wpaall?",
+      "revId": "445a7990aacf3aec91a5241bdd64bff261090557",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8263a67_fd124ad8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/fgsec_connect.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-09-22T23:55:05Z",
+      "side": 1,
+      "message": "Do you need to make sure AP1 is discovered as well? The Connect function you used below only makes sure that the SSID is discovered IIUC.",
+      "revId": "445a7990aacf3aec91a5241bdd64bff261090557",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

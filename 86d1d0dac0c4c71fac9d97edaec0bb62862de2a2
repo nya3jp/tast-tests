@@ -177,6 +177,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a3793280_c18ac702",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/fgsec_connect.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-09-22T23:55:05Z",
+      "side": 1,
+      "message": "I understand that this is not just a duplicate of SimpleConnect. My issue is that the way the test is written right now, it\u0027s possible that we pass the test without merging the endpoints like we expect.\n\nCould we add an additional check to make sure that, in addition to the security being correct, we also group the two endpoints in the same service? Even a security change or similar would be fine since I don\u0027t know that there\u0027s a direct way to check that the two endpoints end up together.",
+      "parentUuid": "7856c34d_22a4980f",
+      "revId": "86d1d0dac0c4c71fac9d97edaec0bb62862de2a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c6dd98ed_b1e46b32",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/fgsec_connect.go",
         "patchSetId": 3
