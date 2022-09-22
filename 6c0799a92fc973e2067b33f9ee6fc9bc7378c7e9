@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76351d9e_1bbb1c5f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_privacy_screen.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-09-22T17:54:17Z",
+      "side": 1,
+      "message": "We really need a separate perbuild or daily suite for these tests.",
+      "range": {
+        "startLine": 40,
+        "startChar": 25,
+        "endLine": 40,
+        "endChar": 41
+      },
+      "revId": "6c0799a92fc973e2067b33f9ee6fc9bc7378c7e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
