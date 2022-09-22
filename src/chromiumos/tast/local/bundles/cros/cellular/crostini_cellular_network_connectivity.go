@@ -51,7 +51,7 @@ func CrostiniCellularNetworkConnectivity(ctx context.Context, s *testing.State) 
 	}
 	ipv4, ipv6, err := helper.GetNetworkProvisionedCellularIPTypes(ctx)
 	if err != nil {
-		s.Fatal("Failed to read APN info: ", err)
+		s.Fatal("Failed to read network provisioned IP types: ", err)
 	}
 	s.Log("ipv4: ", ipv4, " ipv6: ", ipv6)
 	cont := s.FixtValue().(crostini.FixtureData).Cont
