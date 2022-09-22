@@ -27,10 +27,15 @@ func init() {
 		Params: []testing.Param{{
 			// TODO(b/240269271): remove "octopus" and "hatch" when b/240269271 is fixed.
 			// TODO(b/240271671): remove "nocturne" when b/240271671 is fixed.
-			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform("octopus", "hatch", "nocturne")),
+			// TODO(b/244254621) : remove "sasukette" when b/244254621 is fixed.
+			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform("octopus", "hatch", "nocturne"), hwdep.SkipOnModel("sasukette")),
 		}, {
-			Name:              "unstable",
+			Name:              "unstable_platform",
 			ExtraHardwareDeps: hwdep.D(hwdep.Platform("octopus", "hatch", "nocturne")),
+			ExtraAttr:         []string{"informational"},
+		}, {
+			Name:              "unstable_model",
+			ExtraHardwareDeps: hwdep.D(hwdep.Model("sasukette")),
 			ExtraAttr:         []string{"informational"},
 		}},
 	})
