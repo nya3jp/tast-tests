@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ada5757_bbfef7b9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1539397
+      },
+      "writtenOn": "2022-09-22T20:51:32Z",
+      "side": 1,
+      "message": "Thank you Oleh for so many great advice! It helps me a lot!",
+      "revId": "f640936e578e8e479c3fe8f54645c0d17a47a2a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
