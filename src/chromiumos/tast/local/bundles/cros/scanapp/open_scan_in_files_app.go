@@ -13,15 +13,11 @@ import (
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/bundles/cros/scanapp/scanning"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/filesapp"
 	"chromiumos/tast/local/chrome/uiauto/scanapp"
 	"chromiumos/tast/local/cryptohome"
-	"chromiumos/tast/local/printing/cups"
-	"chromiumos/tast/local/printing/ippusbbridge"
-	"chromiumos/tast/local/printing/usbprinter"
 	"chromiumos/tast/testing"
 )
 
@@ -73,51 +69,21 @@ func OpenScanInFilesApp(ctx context.Context, s *testing.State) {
 	}
 	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
 
-	printer, err := usbprinter.Start(ctx,
-		usbprinter.WithIPPUSBDescriptors(),
-		usbprinter.WithGenericIPPAttributes(),
-		usbprinter.WithESCLCapabilities(scanning.EsclCapabilities),
-		usbprinter.ExpectUdevEventOnStop(),
-		usbprinter.WaitUntilConfigured())
+	printer, err := scanapp.StartPrinter(ctx, tconn)
 	if err != nil {
-		s.Fatal("Failed to attach virtual printer: ", err)
+		s.Fatal("Failed to start printer: ", err)
 	}
 	defer func(ctx context.Context) {
 		if err := printer.Stop(ctx); err != nil {
 			s.Error("Failed to stop printer: ", err)
 		}
-	}(cleanupCtx)
-	if err = ippusbbridge.WaitForSocket(ctx, printer.DevInfo); err != nil {
-		s.Fatal("Failed to wait for ippusb_bridge socket: ", err)
-	}
-	if err = cups.RestartPrintingSystem(ctx); err != nil {
-		s.Fatal("Failed to reset printing system: ", err)
-	}
-	if _, err := ash.WaitForNotification(ctx, tconn, 30*time.Second, ash.WaitMessageContains(printer.VisibleName)); err != nil {
-		s.Fatal("Failed to wait for printer notification: ", err)
-	}
-	if err = ippusbbridge.ContactPrinterEndpoint(ctx, printer.DevInfo, "/eSCL/ScannerCapabilities"); err != nil {
-		s.Fatal("Failed to get scanner status over ippusb_bridge socket: ", err)
-	}
+	}(ctx)
 
-	myFilesPath, err := cryptohome.MyFilesPath(ctx, cr.NormalizedUser())
-	if err != nil {
-		s.Fatal("Failed to retrieve users MyFiles path: ", err)
-	}
-	defaultScanPattern := filepath.Join(myFilesPath, scanning.DefaultScanFilePattern)
-	// Remove scans after the test completes.
-	defer func() {
-		if err := scanning.RemoveScans(defaultScanPattern); err != nil {
-			s.Error("Failed to remove scans: ", err)
-		}
-	}()
+	settings.Scanner = printer.VisibleName
 
-	// Launch the Scan app, configure the settings, perform a scan, and open the
-	// scan in the Files app.
-	s.Log("Launching Scan app")
-	app, err := scanapp.Launch(ctx, tconn)
+	app, err := scanapp.LaunchAndStartScanWithSettings(ctx, tconn, settings)
 	if err != nil {
-		s.Fatal("Failed to launch app: ", err)
+		s.Fatal("Failed to Launch scan app and start scan: ", err)
 	}
 	defer func() {
 		if err := app.Close(ctx); err != nil {
@@ -125,25 +91,26 @@ func OpenScanInFilesApp(ctx context.Context, s *testing.State) {
 		}
 	}()
 
-	// Make sure printer connected notifications don't cover the Scan button.
-	if err := ash.CloseNotifications(ctx, tconn); err != nil {
-		s.Fatal("Failed to close notifications: ", err)
-	}
-
-	s.Log("Starting scan")
-	scanSettings := settings
-	scanSettings.Scanner = printer.VisibleName
-	if err := uiauto.Combine("scan",
-		app.ClickMoreSettings(),
-		app.SetScanSettings(scanSettings),
-		app.Scan(),
+	if err := uiauto.Combine("Launch Files App by clicking My Files link",
 		app.ClickMyFilesLink(),
 	)(ctx); err != nil {
-		s.Fatal("Failed to perform scan: ", err)
+		s.Fatal("Failed to open Files App: ", err)
 	}
 
+	myFilesPath, err := cryptohome.MyFilesPath(ctx, cr.NormalizedUser())
+	if err != nil {
+		s.Fatal("Failed to retrieve users MyFiles path: ", err)
+	}
+	defaultScanPattern := filepath.Join(myFilesPath, scanapp.DefaultScanFilePattern)
+	// Remove scans after the test completes.
+	defer func() {
+		if err := scanapp.RemoveScans(defaultScanPattern); err != nil {
+			s.Error("Failed to remove scans: ", err)
+		}
+	}()
+
 	// Verify the scan can be found in the Files app.
-	scan, err := scanning.GetScan(defaultScanPattern)
+	scan, err := scanapp.GetScan(defaultScanPattern)
 	if err != nil {
 		s.Fatal("Failed to find scan: ", err)
 	}

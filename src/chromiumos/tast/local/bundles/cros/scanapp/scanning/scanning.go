@@ -14,7 +14,6 @@ import (
 	"math"
 	"math/rand"
 	"net/http"
-	"os"
 	"path/filepath"
 	"regexp"
 	"strconv"
@@ -54,14 +53,6 @@ const (
 	// USB scanner with settings that will trigger duplex back page rotation in Chrome.
 	FlipTestDescriptors = "/usr/local/etc/virtual-usb-printer/ippusb_backflip_printer.json"
 
-	// EsclCapabilities is the path to the capabilities used to configure the
-	// virtual USB scanner.
-	EsclCapabilities = "/usr/local/etc/virtual-usb-printer/escl_capabilities.json"
-
-	// DefaultScanFilePattern is the pattern used to find files in the default
-	// scan-to location, this pattern is appended to the user's MyFiles path.
-	DefaultScanFilePattern = "scan*_*.*"
-
 	// MMPerInch is the conversion factor from inches to mm.
 	MMPerInch = 25.4
 )
@@ -82,36 +73,6 @@ const (
 // identifyOutputRegex parses out the width, height and colorspace from the
 // output of `identify someImage`.
 var identifyOutputRegex = regexp.MustCompile(`^.+ PNG (?P<width>[0-9]+)x(?P<height>[0-9]+).+ 8-bit (?P<colorspace>sRGB|Gray 256c|Gray 2c)`)
-
-// GetScan returns the filepath of the scanned file found using pattern.
-func GetScan(pattern string) (string, error) {
-	scans, err := filepath.Glob(pattern)
-	if err != nil {
-		return "", err
-	}
-
-	if len(scans) != 1 {
-		return "", errors.Errorf("found too many scans: got %v; want 1", len(scans))
-	}
-
-	return scans[0], nil
-}
-
-// RemoveScans removes all of the scanned files found using pattern.
-func RemoveScans(pattern string) error {
-	scans, err := filepath.Glob(pattern)
-	if err != nil {
-		return err
-	}
-
-	for _, scan := range scans {
-		if err = os.Remove(scan); err != nil {
-			return errors.Wrapf(err, "failed to remove %s", scan)
-		}
-	}
-
-	return nil
-}
 
 // generateSettingsLists adjusts the input color modes, page sizes and
 // resolutions depending on the given `mode`. More specifically:
@@ -518,14 +479,14 @@ func RunAppSettingsTests(ctx context.Context, s *testing.State, cr *chrome.Chrom
 	if err != nil {
 		s.Fatal("Failed to retrieve users MyFiles path: ", err)
 	}
-	defaultScanPattern := filepath.Join(myFilesPath, DefaultScanFilePattern)
+	defaultScanPattern := filepath.Join(myFilesPath, scanapp.DefaultScanFilePattern)
 	for _, test := range testParams {
 		settings := test.Settings
 		settings.Scanner = printer.VisibleName
 		s.Run(ctx, test.Name, func(ctx context.Context, s *testing.State) {
 			defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "ui_tree_"+test.Name)
 			defer func() {
-				if err := RemoveScans(defaultScanPattern); err != nil {
+				if err := scanapp.RemoveScans(defaultScanPattern); err != nil {
 					s.Error("Failed to remove scans: ", err)
 				}
 			}()
@@ -545,7 +506,7 @@ func RunAppSettingsTests(ctx context.Context, s *testing.State, cr *chrome.Chrom
 			}
 
 			s.Log("Looking for scanned output")
-			scan, err := GetScan(defaultScanPattern)
+			scan, err := scanapp.GetScan(defaultScanPattern)
 			if err != nil {
 				s.Fatal("Failed to find scan: ", err)
 			}
@@ -619,7 +580,7 @@ func RunHardwareTests(ctx context.Context, s *testing.State, cr *chrome.Chrome, 
 	if err != nil {
 		s.Fatal("Failed to retrieve users MyFiles path: ", err)
 	}
-	defaultScanPattern := filepath.Join(myFilesPath, DefaultScanFilePattern)
+	defaultScanPattern := filepath.Join(myFilesPath, scanapp.DefaultScanFilePattern)
 	for _, source := range scanner.SupportedSources {
 		s.Log("Testing source: ", source.SourceType)
 
@@ -638,7 +599,7 @@ func RunHardwareTests(ctx context.Context, s *testing.State, cr *chrome.Chrome, 
 		// combinations until each setting has been tested at least once.
 		if source.SourceType == scanapp.SourceFlatbed {
 			defer func() {
-				if err := RemoveScans(defaultScanPattern); err != nil {
+				if err := scanapp.RemoveScans(defaultScanPattern); err != nil {
 					s.Error("Failed to remove scans: ", err)
 				}
 			}()
@@ -699,7 +660,7 @@ func RunHardwareTests(ctx context.Context, s *testing.State, cr *chrome.Chrome, 
 				s.Fatal("Failed to perform scan: ", err)
 			}
 
-			scan, err := GetScan(defaultScanPattern)
+			scan, err := scanapp.GetScan(defaultScanPattern)
 			if err != nil {
 				s.Fatal("Failed to find scan: ", err)
 			}
@@ -709,7 +670,7 @@ func RunHardwareTests(ctx context.Context, s *testing.State, cr *chrome.Chrome, 
 				s.Error("Failed to verify scanned image: ", err)
 			}
 
-			err = RemoveScans(defaultScanPattern)
+			err = scanapp.RemoveScans(defaultScanPattern)
 			if err != nil {
 				s.Error("Failed to remove scans: ", err)
 			}
