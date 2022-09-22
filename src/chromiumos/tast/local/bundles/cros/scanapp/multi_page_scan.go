@@ -17,10 +17,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/scanapp"
 	"chromiumos/tast/local/cryptohome"
-	"chromiumos/tast/local/printing/cups"
 	"chromiumos/tast/local/printing/document"
-	"chromiumos/tast/local/printing/ippusbbridge"
-	"chromiumos/tast/local/printing/usbprinter"
 	"chromiumos/tast/testing"
 )
 
@@ -97,32 +94,12 @@ func MultiPageScan(ctx context.Context, s *testing.State) {
 	}
 	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
 
-	printer, err := usbprinter.Start(ctx,
-		usbprinter.WithIPPUSBDescriptors(),
-		usbprinter.WithGenericIPPAttributes(),
-		usbprinter.WithESCLCapabilities(scanning.EsclCapabilities),
-		usbprinter.ExpectUdevEventOnStop(),
-		usbprinter.WaitUntilConfigured())
-	if err != nil {
-		s.Fatal("Failed to attach virtual printer: ", err)
-	}
+	printer, err := scanapp.StartPrinter(ctx, tconn)
 	defer func(ctx context.Context) {
 		if err := printer.Stop(ctx); err != nil {
 			s.Error("Failed to stop printer: ", err)
 		}
 	}(cleanupCtx)
-	if err := ippusbbridge.WaitForSocket(ctx, printer.DevInfo); err != nil {
-		s.Fatal("Failed to wait for ippusb_bridge socket: ", err)
-	}
-	if err := cups.RestartPrintingSystem(ctx); err != nil {
-		s.Fatal("Failed to restart printing system: ", err)
-	}
-	if _, err := ash.WaitForNotification(ctx, tconn, 30*time.Second, ash.WaitMessageContains(printer.VisibleName)); err != nil {
-		s.Fatal("Failed to wait for printer notification: ", err)
-	}
-	if err := ippusbbridge.ContactPrinterEndpoint(ctx, printer.DevInfo, "/eSCL/ScannerCapabilities"); err != nil {
-		s.Fatal("Failed to get scanner status over ippusb_bridge socket: ", err)
-	}
 
 	// Launch the Scan app, configure the settings, and perform scans.
 	app, err := scanapp.Launch(ctx, tconn)
@@ -152,12 +129,12 @@ func MultiPageScan(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to retrieve users MyFiles path: ", err)
 	}
-	defaultScanPattern := filepath.Join(myFilesPath, scanning.DefaultScanFilePattern)
+	defaultScanPattern := filepath.Join(myFilesPath, scanapp.DefaultScanFilePattern)
 	for _, test := range multiPageScanTests {
 		s.Run(ctx, test.name, func(ctx context.Context, s *testing.State) {
 			defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "ui_tree_multi_page_scan")
 			defer func() {
-				if err := scanning.RemoveScans(defaultScanPattern); err != nil {
+				if err := scanapp.RemoveScans(defaultScanPattern); err != nil {
 					s.Error("Failed to remove scans: ", err)
 				}
 			}()
@@ -195,7 +172,7 @@ func MultiPageScan(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to save scan scan: ", err)
 			}
 
-			scan, err := scanning.GetScan(defaultScanPattern)
+			scan, err := scanapp.GetScan(defaultScanPattern)
 			if err != nil {
 				s.Fatal("Failed to find scan: ", err)
 			}
