@@ -156,16 +156,21 @@ func Run(ctx context.Context, s *testing.State) {
 				return errors.Wrap(err, "failed to wait for overview state")
 			}
 
+			// Add a stabilization delay after entering overview mode
+			// and before swiping to the right, to mitigate Lacros
+			// crashes on lower-end devices. This delay ensures that
+			// the previews are properly loaded before we interact with
+			// the windows in overview mode.
+			if err := ac.WithInterval(2*time.Second).WithTimeout(10*time.Second).WaitUntilNoEvent(nodewith.Root(), event.LocationChanged)(ctx); err != nil {
+				s.Log("Failed to wait for overview stabilization: ", err)
+			}
+
 			if err := stw.Swipe(ctx, startX, startY, endX, endY, 2*time.Second); err != nil {
 				return errors.Wrap(err, "failed to swipe horizontally in overview mode")
 			}
 
 			if err := stw.End(); err != nil {
 				return errors.Wrap(err, "failed to end swipe animation")
-			}
-
-			if err := ac.WithInterval(2*time.Second).WaitUntilNoEvent(nodewith.Root(), event.LocationChanged)(ctx); err != nil {
-				s.Log("Failed to wait for the swipe animation to stabilize: ", err)
 			}
 			return nil
 		}
@@ -177,9 +182,15 @@ func Run(ctx context.Context, s *testing.State) {
 			if err := kw.Accel(ctx, topRow.SelectTask); err != nil {
 				return errors.Wrap(err, "failed to hit overview key")
 			}
-
 			if err := ash.WaitForOverviewState(ctx, tconn, ash.Shown, 30*time.Second); err != nil {
 				return errors.Wrap(err, "failed to wait for overview state")
+			}
+
+			// Similar to setting overview mode on tablets, wait for
+			// overview mode to stabilize before interacting with
+			// each window.
+			if err := ac.WithInterval(2*time.Second).WithTimeout(10*time.Second).WaitUntilNoEvent(nodewith.Root(), event.LocationChanged)(ctx); err != nil {
+				s.Log("Failed to wait for overview stabilization: ", err)
 			}
 			return nil
 		}
