@@ -111,6 +111,30 @@
       },
       "revId": "217fe983f18c0ac45edeaafc7e3b6b6a406403e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f4614bd_80f7cbaf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_emoji_suggestion.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-09-22T03:16:54Z",
+      "side": 1,
+      "message": "I just wanted to avoid the confusion caused to the eng team who will be maintaining the tests. But I guess it is probably fine adding a wrapper here. btw, you may also want to revise inputs.VirtualKeyboardTypingUserMode.guest_lacros which is the other test that faces the same issue.",
+      "parentUuid": "ed3e637c_bf5fbf9f",
+      "range": {
+        "startLine": 94,
+        "startChar": 1,
+        "endLine": 99,
+        "endChar": 2
+      },
+      "revId": "217fe983f18c0ac45edeaafc7e3b6b6a406403e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
