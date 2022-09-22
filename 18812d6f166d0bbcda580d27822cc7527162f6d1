@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "79c94b5c_bc1439a4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_power_button.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1427718
+      },
+      "writtenOn": "2022-09-22T00:13:26Z",
+      "side": 1,
+      "message": "Yes, brought back constants and updated constant values to allow more time to detect power state.",
+      "parentUuid": "44ed4932_a84b18e6",
+      "range": {
+        "startLine": 112,
+        "startChar": 37,
+        "endLine": 112,
+        "endChar": 66
+      },
+      "revId": "18812d6f166d0bbcda580d27822cc7527162f6d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2e01bd8e_91e82618",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-05-31T16:34:13Z",
       "side": 1,
       "message": "This has to be defined too",
+      "range": {
+        "startLine": 177,
+        "startChar": 34,
+        "endLine": 177,
+        "endChar": 37
+      },
+      "revId": "18812d6f166d0bbcda580d27822cc7527162f6d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ccd85c40_d3242f3b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_power_button.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1427718
+      },
+      "writtenOn": "2022-09-22T00:13:26Z",
+      "side": 1,
+      "message": "Changed to look for KEY_POWER instead of random keycode",
+      "parentUuid": "2e01bd8e_91e82618",
       "range": {
         "startLine": 177,
         "startChar": 34,
