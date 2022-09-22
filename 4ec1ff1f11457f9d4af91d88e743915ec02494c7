@@ -16,6 +16,24 @@
       "message": "nit: end with a period",
       "revId": "4ec1ff1f11457f9d4af91d88e743915ec02494c7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7cf2ccf0_d1691296",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/smart_card_with_auth_api.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1430007
+      },
+      "writtenOn": "2022-09-22T22:39:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8a35b7d3_29837b9b",
+      "revId": "4ec1ff1f11457f9d4af91d88e743915ec02494c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "bc5d3ad0_7165dbde",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 14
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1430007
+      },
+      "writtenOn": "2022-09-22T22:39:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "470a2434_387712ff",
+      "range": {
+        "startLine": 7,
+        "startChar": 12,
+        "endLine": 7,
+        "endChar": 57
+      },
+      "revId": "e9423e96f12bcd38b4480ae2bffbac8aa9e5b13c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "b1a4c429_8f2afe5c",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 14
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "95ccb2b5_11b5a395",
+        "filename": "src/chromiumos/tast/common/hwsec/challenge_response.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1430007
+      },
+      "writtenOn": "2022-09-22T22:39:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b11c7485_78dbddc7",
+      "range": {
+        "startLine": 54,
+        "startChar": 1,
+        "endLine": 54,
+        "endChar": 10
+      },
+      "revId": "e9423e96f12bcd38b4480ae2bffbac8aa9e5b13c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "44cf0728_b3ff6cbf",
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c3af25c_40caa075",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/smart_card_lock_screen_with_auth_api.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1430007
+      },
+      "writtenOn": "2022-09-22T22:39:35Z",
+      "side": 1,
+      "message": "In this case, I think it would be better to do it like this:\nsmart_card_with_auth_api.go will replace challenge_reponse_auth_session.go.\nSince AuthFactors use AuthenticateAuthFactor for lightweight verification, this test will cover both light and full auth IIUC. \nlock_screen_challenge_response_auth_session will stay as-is, and cover our legacy AuthSession based check. I believe this scheme covers every scenario for Smart Cards testing.",
+      "parentUuid": "44cf0728_b3ff6cbf",
+      "range": {
+        "startLine": 60,
+        "startChar": 4,
+        "endLine": 60,
+        "endChar": 29
+      },
+      "revId": "e9423e96f12bcd38b4480ae2bffbac8aa9e5b13c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e5408874_e4b1ffb2",
@@ -100,6 +172,30 @@
       "writtenOn": "2022-09-22T05:40:33Z",
       "side": 1,
       "message": "hwsec.SmartCardAlgorithms includes cpb.ChallengeSignatureAlgorithm_CHALLENGE_RSASSA_PKCS1_V1_5_SHA1: https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/common/hwsec/challenge_response.go;l\u003d23?q\u003dSmartCardAlgorithms\u0026ss\u003dpiper%2FGoogle%2Fchromeos_public:src%2Fplatform%2Ftast-tests%2F\n\nWhy do we need to add it as an other parameter? Is it only SHA1 vs multiple options?",
+      "range": {
+        "startLine": 86,
+        "startChar": 25,
+        "endLine": 86,
+        "endChar": 50
+      },
+      "revId": "e9423e96f12bcd38b4480ae2bffbac8aa9e5b13c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "55641bfd_cd0e6eb1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/smart_card_lock_screen_with_auth_api.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1430007
+      },
+      "writtenOn": "2022-09-22T22:39:35Z",
+      "side": 1,
+      "message": "Yes, this test is parameterized to see how it handles one or multiple options - shouldn\u0027t make a difference in behavior but other tests related to Smart Cards covers this as well.",
+      "parentUuid": "e5408874_e4b1ffb2",
       "range": {
         "startLine": 86,
         "startChar": 25,
@@ -157,6 +253,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "74a29dc6_ec78d280",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/smart_card_lock_screen_with_auth_api.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1430007
+      },
+      "writtenOn": "2022-09-22T22:39:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "911b596b_77765b3d",
+      "range": {
+        "startLine": 105,
+        "startChar": 0,
+        "endLine": 105,
+        "endChar": 66
+      },
+      "revId": "e9423e96f12bcd38b4480ae2bffbac8aa9e5b13c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1d6fefec_7e6a75b7",
@@ -170,6 +290,30 @@
       "writtenOn": "2022-09-22T05:40:33Z",
       "side": 1,
       "message": "is this forgotten?",
+      "range": {
+        "startLine": 179,
+        "startChar": 0,
+        "endLine": 184,
+        "endChar": 0
+      },
+      "revId": "e9423e96f12bcd38b4480ae2bffbac8aa9e5b13c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce18a229_5b825b7d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/smart_card_lock_screen_with_auth_api.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1430007
+      },
+      "writtenOn": "2022-09-22T22:39:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1d6fefec_7e6a75b7",
       "range": {
         "startLine": 179,
         "startChar": 0,
@@ -203,6 +347,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3bd485e_83b10990",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/smart_card_lock_screen_with_auth_api.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1430007
+      },
+      "writtenOn": "2022-09-22T22:39:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a6a97359_0f22c984",
+      "range": {
+        "startLine": 188,
+        "startChar": 21,
+        "endLine": 188,
+        "endChar": 31
+      },
+      "revId": "e9423e96f12bcd38b4480ae2bffbac8aa9e5b13c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a44f0d8d_0803d4ac",
@@ -216,6 +384,30 @@
       "writtenOn": "2022-09-22T05:40:33Z",
       "side": 1,
       "message": "Smartcard is always the only factor, you can only add an initial smartcard and thats the only AuthFactor/Credential",
+      "range": {
+        "startLine": 231,
+        "startChar": 0,
+        "endLine": 236,
+        "endChar": 0
+      },
+      "revId": "e9423e96f12bcd38b4480ae2bffbac8aa9e5b13c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2536a67e_d5e5841d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/smart_card_with_auth_api.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1430007
+      },
+      "writtenOn": "2022-09-22T22:39:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a44f0d8d_0803d4ac",
       "range": {
         "startLine": 231,
         "startChar": 0,
@@ -249,6 +441,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0300faf5_b8b8e097",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/smart_card_with_auth_api.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1430007
+      },
+      "writtenOn": "2022-09-22T22:39:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "451c7515_5e60f600",
+      "range": {
+        "startLine": 252,
+        "startChar": 0,
+        "endLine": 262,
+        "endChar": 1
+      },
+      "revId": "e9423e96f12bcd38b4480ae2bffbac8aa9e5b13c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9e365f39_706a2359",
@@ -262,6 +478,30 @@
       "writtenOn": "2022-09-22T05:40:33Z",
       "side": 1,
       "message": "I\u0027m also fine with the current approach if you want to submit this way but I think it would be better to have one AuthSession file and one AuthFactor file, that only parametrize USS. In that case we wouldn\u0027t need to separate out Add/Authenticate functions and tracking the test flow would be easier. Also removing the test after AuthSession depreciation would be easier.",
+      "range": {
+        "startLine": 268,
+        "startChar": 5,
+        "endLine": 268,
+        "endChar": 30
+      },
+      "revId": "e9423e96f12bcd38b4480ae2bffbac8aa9e5b13c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ebb11905_7bac145a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/smart_card_with_auth_api.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1430007
+      },
+      "writtenOn": "2022-09-22T22:39:35Z",
+      "side": 1,
+      "message": "I\u0027m going to keep this as is, the only place where it differs in behavior are the two if branches with userParam.useAuthFactor, which shouldn\u0027t be difficult as is.",
+      "parentUuid": "9e365f39_706a2359",
       "range": {
         "startLine": 268,
         "startChar": 5,

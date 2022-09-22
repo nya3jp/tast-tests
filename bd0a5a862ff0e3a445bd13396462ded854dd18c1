@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "71a142f9_0c4f8a39",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/smart_card_with_auth_api.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1430007
+      },
+      "writtenOn": "2022-09-22T22:39:35Z",
+      "side": 1,
+      "message": "AuthSession API\u0027s are included",
+      "parentUuid": "b5e2df2a_0a048714",
+      "range": {
+        "startLine": 33,
+        "startChar": 19,
+        "endLine": 33,
+        "endChar": 79
+      },
+      "revId": "bd0a5a862ff0e3a445bd13396462ded854dd18c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "56606282_fb84a54c",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-09-16T22:33:58Z",
       "side": 1,
       "message": "Let us remove this and Add it once its fixed -- make that a sep test",
+      "range": {
+        "startLine": 189,
+        "startChar": 0,
+        "endLine": 190,
+        "endChar": 37
+      },
+      "revId": "bd0a5a862ff0e3a445bd13396462ded854dd18c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "65fb8a7c_053354da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/smart_card_with_auth_api.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1430007
+      },
+      "writtenOn": "2022-09-22T22:39:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "56606282_fb84a54c",
       "range": {
         "startLine": 189,
         "startChar": 0,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fca0ec85_b945898e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/smart_card_with_auth_api.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1430007
+      },
+      "writtenOn": "2022-09-22T22:39:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9b5a9d2b_99a9789b",
+      "range": {
+        "startLine": 212,
+        "startChar": 0,
+        "endLine": 216,
+        "endChar": 0
+      },
+      "revId": "bd0a5a862ff0e3a445bd13396462ded854dd18c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d07bee57_7a36f2a7",
@@ -100,6 +172,30 @@
       "writtenOn": "2022-09-16T22:33:58Z",
       "side": 1,
       "message": "there is function for this cryptohome.go",
+      "range": {
+        "startLine": 233,
+        "startChar": 0,
+        "endLine": 239,
+        "endChar": 0
+      },
+      "revId": "bd0a5a862ff0e3a445bd13396462ded854dd18c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a00233e_6b754540",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/smart_card_with_auth_api.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1430007
+      },
+      "writtenOn": "2022-09-22T22:39:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d07bee57_7a36f2a7",
       "range": {
         "startLine": 233,
         "startChar": 0,
@@ -133,6 +229,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e847399_d00747f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/smart_card_with_auth_api.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1430007
+      },
+      "writtenOn": "2022-09-22T22:39:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f1204be6_af2855f4",
+      "range": {
+        "startLine": 249,
+        "startChar": 44,
+        "endLine": 249,
+        "endChar": 57
+      },
+      "revId": "bd0a5a862ff0e3a445bd13396462ded854dd18c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f2583591_284165ef",
@@ -156,6 +276,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e82f551d_82de0e66",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/smart_card_with_auth_api.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1430007
+      },
+      "writtenOn": "2022-09-22T22:39:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f2583591_284165ef",
+      "range": {
+        "startLine": 315,
+        "startChar": 0,
+        "endLine": 315,
+        "endChar": 60
+      },
+      "revId": "bd0a5a862ff0e3a445bd13396462ded854dd18c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1a39ee01_5e61130e",
@@ -169,6 +313,24 @@
       "writtenOn": "2022-09-16T22:33:58Z",
       "side": 1,
       "message": "lets move the file creation logic here",
+      "revId": "bd0a5a862ff0e3a445bd13396462ded854dd18c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d0a4e93_2a645e48",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/smart_card_with_auth_api.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1430007
+      },
+      "writtenOn": "2022-09-22T22:39:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a39ee01_5e61130e",
       "revId": "bd0a5a862ff0e3a445bd13396462ded854dd18c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
