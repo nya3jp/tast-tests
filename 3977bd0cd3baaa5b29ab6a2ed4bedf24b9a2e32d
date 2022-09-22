@@ -69,6 +69,24 @@
       "parentUuid": "114e282a_b1be8cb0",
       "revId": "3977bd0cd3baaa5b29ab6a2ed4bedf24b9a2e32d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5d2c355_bbd33a82",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2022-09-22T12:49:33Z",
+      "side": 1,
+      "message": "LGTM! Actually I am not sure if current schedulers always minimize DUT reduncancy like the way I described above, however, still, a random (seemingly unrelated) change of the board subsets to run tests can potentially cause similar situation. So I think it is good to expose such test difference as parameterized tests. The usage of hwdep information in other tests looks the right thing.",
+      "parentUuid": "04f3de21_06ecaee1",
+      "revId": "3977bd0cd3baaa5b29ab6a2ed4bedf24b9a2e32d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
