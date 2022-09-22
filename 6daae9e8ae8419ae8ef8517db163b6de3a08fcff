@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5f5d4d7_b85ecaa5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-09-22T18:47:29Z",
+      "side": 1,
+      "message": "nit: Add Tast test to do what? :)",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 28
+      },
+      "revId": "6daae9e8ae8419ae8ef8517db163b6de3a08fcff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f17792c5_556b33d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/print_to_pdf.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-09-22T18:47:29Z",
+      "side": 1,
+      "message": "`LacrosVariantExists` since it is also implemented in this CL :)",
+      "range": {
+        "startLine": 36,
+        "startChar": 24,
+        "endLine": 36,
+        "endChar": 43
+      },
+      "revId": "6daae9e8ae8419ae8ef8517db163b6de3a08fcff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d6b4989_d1dc39c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/print_to_pdf.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-09-22T18:47:29Z",
+      "side": 1,
+      "message": "nit: Move closer to usage :)",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 24
+      },
+      "revId": "6daae9e8ae8419ae8ef8517db163b6de3a08fcff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d8cbf7d_f9660899",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/print_to_pdf.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-09-22T18:47:29Z",
+      "side": 1,
+      "message": "Check for `err !\u003d nil`?",
+      "range": {
+        "startLine": 86,
+        "startChar": 7,
+        "endLine": 86,
+        "endChar": 10
+      },
+      "revId": "6daae9e8ae8419ae8ef8517db163b6de3a08fcff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4e525a0_3960fde6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/print_to_pdf.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-09-22T18:47:29Z",
+      "side": 1,
+      "message": "Will the \"Save\" button exist if \"Save as PDF\" isn\u0027t the default? Do we need to wait for this at all?",
+      "range": {
+        "startLine": 107,
+        "startChar": 0,
+        "endLine": 107,
+        "endChar": 70
+      },
+      "revId": "6daae9e8ae8419ae8ef8517db163b6de3a08fcff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe6c9852_b6486035",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/print_to_pdf.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-09-22T18:47:29Z",
+      "side": 1,
+      "message": "nit: Use %q and `printerName`?",
+      "range": {
+        "startLine": 116,
+        "startChar": 28,
+        "endLine": 116,
+        "endChar": 39
+      },
+      "revId": "6daae9e8ae8419ae8ef8517db163b6de3a08fcff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bff96d28_9ac4e376",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/print_to_pdf.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-09-22T18:47:29Z",
+      "side": 1,
+      "message": "This is unfortunate :) What kind of notifications are you seeing?",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 126,
+        "endChar": 2
+      },
+      "revId": "6daae9e8ae8419ae8ef8517db163b6de3a08fcff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a0556e8_7f796372",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/print_to_pdf.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-09-22T18:47:29Z",
+      "side": 1,
+      "message": "Should we use `EnsureFocused()` instead?",
+      "range": {
+        "startLine": 135,
+        "startChar": 11,
+        "endLine": 135,
+        "endChar": 70
+      },
+      "revId": "6daae9e8ae8419ae8ef8517db163b6de3a08fcff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "518fbff3_3c3dc3d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/print_to_pdf.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-09-22T18:47:29Z",
+      "side": 1,
+      "message": "At a glance it looks like most of these code blocks are actions so we can merge them into a single combine :) e.g.\n\n```\nif err :\u003d uiauto.Combine(\"Save as PDF and verify presence in holding space\",\n  // Open print dialog.\n  ...,\n  \n  // Select printer.\n  ...,\n  \n  // Select destination.\n  ...,\n  \n  // Verify presence in holding space.\n  ...,\n); err !\u003d nil {\n  s.Fatal(\"Failed to save as PDF and verify presence in holding space: \", err)\n}\n```",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 167,
+        "endChar": 2
+      },
+      "revId": "6daae9e8ae8419ae8ef8517db163b6de3a08fcff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
