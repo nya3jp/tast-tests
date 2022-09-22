@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67bb9643_d1b33001",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-09-22T15:54:19Z",
+      "side": 1,
+      "message": "nit:\n`audio: Skip sasukette in CrasPlay and CrasRecord`",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 37
+      },
+      "revId": "540a6d262b69667735568a92b4c52ba23ea68ec9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
