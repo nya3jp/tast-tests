@@ -63,6 +63,30 @@
       },
       "revId": "217fe983f18c0ac45edeaafc7e3b6b6a406403e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d8e598b_861640bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_emoji_suggestion.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-09-22T01:59:56Z",
+      "side": 1,
+      "message": "i see, thanks for the clarification. In that case, I think it is better to create a separate test file specifically for the guest_lacros tests and leave the existing test untouched? it doesn\u0027t feel reasonable to affect non-guest_lacros tests to fix guest_lacros tests.",
+      "parentUuid": "d2a21b54_67e49d2f",
+      "range": {
+        "startLine": 94,
+        "startChar": 1,
+        "endLine": 99,
+        "endChar": 2
+      },
+      "revId": "217fe983f18c0ac45edeaafc7e3b6b6a406403e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
