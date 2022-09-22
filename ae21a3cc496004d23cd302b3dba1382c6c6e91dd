@@ -135,6 +135,30 @@
       },
       "revId": "ae21a3cc496004d23cd302b3dba1382c6c6e91dd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53955868_2518ffc0",
+        "filename": "src/chromiumos/tast/services/cros/ui/chrome_service.proto",
+        "patchSetId": 4
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-09-22T04:34:11Z",
+      "side": 1,
+      "message": "\u003e Could you change the implementation of MODE_UNSPECIFIED not to override the ash-chrome\u0027s value?\n\n`LacrosMode` in production and `lacros.Mode` in Tast seems to have diverged in the context you mentioned. By the way,\n\nMODE_UNSPECIFIED: Could it be the same as `lacros.Mode.Unspecified` for consistency? Most gRPC users would not care much about the specific transient mode (SxS or Primary) but would be just fine with LacrosOnly since that is where we are going to end up at.\nI\u0027m a bit unsure if we still need to support the \"let the system decide\" mode for gRPC users.\n\n\u003e Could you support DISABLED? Or, if you think it should be done via disabled feature as commented, could you explicitly document so? So that future readers can understand the background of the gap from the original enum.\n\nMODE_DISABLED: Yes, I can add it to this proto in a next patch.",
+      "parentUuid": "965d81b7_e5c44fdf",
+      "range": {
+        "startLine": 87,
+        "startChar": 49,
+        "endLine": 87,
+        "endChar": 75
+      },
+      "revId": "ae21a3cc496004d23cd302b3dba1382c6c6e91dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
