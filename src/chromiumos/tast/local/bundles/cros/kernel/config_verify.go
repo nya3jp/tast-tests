@@ -169,8 +169,6 @@ func newCommonKernelConfigCheck(ver *sysutil.KernelVersion, arch string) *kernel
 		"USER_NS",
 		// Security; perform additional validation of credentials.
 		"DEBUG_CREDENTIALS",
-		// Security; make sure the ChromeOS LSM is in use.
-		"SECURITY_CHROMIUMOS",
 
 		// Binary formats.
 		"BINFMT_ELF",
@@ -222,9 +220,6 @@ func newCommonKernelConfigCheck(ver *sysutil.KernelVersion, arch string) *kernel
 		// compatibility with ARM binaries (even on x86) this needs to
 		// be 32k.
 		"DEFAULT_MMAP_MIN_ADDR": "32768",
-
-		// NaCl; allow mprotect+PROT_EXEC on noexec mapped files.
-		"MMAP_NOEXEC_TAINT": "0",
 
 		// Magic sysrq: we allow it on by default, but *only* for the CrOS addition sysrq-x
 		// (dump and crash / SYSRQ_ENABLE_CROS_XKEY=0x1000).
@@ -293,7 +288,7 @@ func newCommonKernelConfigCheck(ver *sysutil.KernelVersion, arch string) *kernel
 	}
 
 	if ver.IsOrLater(3, 18) {
-		builtin = append(builtin, "SND_PROC_FS", "USB_CONFIGFS_F_FS", "ESD_FS")
+		builtin = append(builtin, "SND_PROC_FS", "USB_CONFIGFS_F_FS")
 		module = append(module, "USB_F_FS")
 		enabled = append(enabled, "CONFIGFS_FS")
 		// Like FW_LOADER_USER_HELPER, these may be exploited by userspace.
@@ -428,11 +423,24 @@ func newCommonKernelConfigCheck(ver *sysutil.KernelVersion, arch string) *kernel
 func addExtraCheckForChromeOS(kcc *kernelConfigCheck, ver *sysutil.KernelVersion,
 	arch string) *kernelConfigCheck {
 
+	// Security; make sure the ChromeOS LSM is in use.
+	kcc.builtin = append(kcc.builtin, "SECURITY_CHROMIUMOS")
+
+	// NaCl; allow mprotect+PROT_EXEC on noexec mapped files.
+	kcc.value["MMAP_NOEXEC_TAINT"] = "0"
+
+	if ver.IsOrLater(3, 18) {
+		kcc.builtin = append(kcc.builtin, "ESD_FS")
+	}
+
 	return kcc
 }
 
 func addExtraCheckForChromeOSKernelCI(kcc *kernelConfigCheck, ver *sysutil.KernelVersion,
 	arch string) *kernelConfigCheck {
+
+	// "ESD_FS" is optional.
+	kcc.optional = append(kcc.optional, "ESD_FS")
 
 	return kcc
 }
