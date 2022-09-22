@@ -173,6 +173,7 @@ func Run(ctx context.Context, cr *chrome.Chrome, conf Conference, prepare Prepar
 		}
 		return nil
 	}); err != nil {
+		err = CheckCommonError(ctx, tconn, err)
 		return errors.Wrap(err, "failed to conduct the recorder task")
 	}
 
