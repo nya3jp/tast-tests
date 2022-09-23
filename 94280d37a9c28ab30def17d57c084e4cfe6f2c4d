@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f55f4c5f_a1180752",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/config_verify.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2022-09-23T01:59:35Z",
+      "side": 1,
+      "message": "You are reviewing the wrong CL.  Please see https://crrev.com/c/3912867 for the change.\n\nAnd https://crrev.com/c/3912903 for the softwaredeps.",
+      "parentUuid": "ac8956a4_b9e5539c",
+      "revId": "94280d37a9c28ab30def17d57c084e4cfe6f2c4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "da67d4b4_b3a28ec2",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-09-22T17:25:52Z",
       "side": 1,
       "message": "Why does non_chromiumos_kernel not having a software dep? Does it apply to all platform? Base on the name, it sound like it is for all non-chromeos device. I think you may want to add software deps to software_deps.go",
+      "revId": "94280d37a9c28ab30def17d57c084e4cfe6f2c4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "03f8a0bd_f6007380",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/config_verify.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2022-09-23T01:59:35Z",
+      "side": 1,
+      "message": "The change was not made by the CL.  Please see https://crrev.com/c/3912867.\n\nAnd yes, it has no software dep.  Non-ChromiumOS kernel is less strict than ChromiumOS kernel (anything o.",
+      "parentUuid": "da67d4b4_b3a28ec2",
       "revId": "94280d37a9c28ab30def17d57c084e4cfe6f2c4d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
