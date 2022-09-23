@@ -47,7 +47,7 @@ type Options struct {
 
 // FindAndDismissDialog finds a dialog containing text with a corresponding button and presses the button.
 func FindAndDismissDialog(ctx context.Context, d *ui.Device, dialogText, buttonText string, timeout time.Duration) error {
-	if err := d.Object(ui.TextMatches("(?i)" + dialogText)).Exists(ctx); err == nil {
+	if err := d.Object(ui.TextMatches("(?i)"+dialogText)).WaitForExists(ctx, time.Second); err == nil {
 		testing.ContextLogf(ctx, `%q popup found. Skipping`, dialogText)
 		okButton := d.Object(ui.ClassName("android.widget.Button"), ui.TextMatches("(?i)"+buttonText))
 		if err := okButton.WaitForExists(ctx, timeout); err != nil {
@@ -57,7 +57,6 @@ func FindAndDismissDialog(ctx context.Context, d *ui.Device, dialogText, buttonT
 			return err
 		}
 	}
-
 	return nil
 }
 
@@ -226,6 +225,11 @@ func installOrUpdate(ctx context.Context, a *arc.ARC, d *ui.Device, pkgName stri
 			} else {
 				return testing.PollBreak(errors.Errorf("hit %s attempt limit of %d times", op, tryLimit))
 			}
+		}
+
+		// Grant permissions if necessary.
+		if err := FindAndDismissDialog(ctx, d, permissionsText, acceptButtonText, defaultUITimeout); err != nil {
+			return testing.PollBreak(err)
 		}
 
 		// Handle "Want to link your PayPal account" if necessary.
