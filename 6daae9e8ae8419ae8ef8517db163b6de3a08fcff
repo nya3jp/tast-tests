@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "52003c6c_c10aae5a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1547842
+      },
+      "writtenOn": "2022-09-23T19:03:18Z",
+      "side": 1,
+      "message": "I was trying to keep it short and I thought it was useful enough to know this commit adds a Tast test to holding space, then if you care about that read the rest of the commit message otherwise you could easily ignore it.\n\nI\u0027ve changed it to `holding_space: Tast test print to pdf`, is that better? Or any suggestions if not?!",
+      "parentUuid": "b5f5d4d7_b85ecaa5",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 28
+      },
+      "revId": "6daae9e8ae8419ae8ef8517db163b6de3a08fcff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f17792c5_556b33d5",
         "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/print_to_pdf.go",
         "patchSetId": 7
@@ -37,6 +61,30 @@
       "writtenOn": "2022-09-22T18:47:29Z",
       "side": 1,
       "message": "`LacrosVariantExists` since it is also implemented in this CL :)",
+      "range": {
+        "startLine": 36,
+        "startChar": 24,
+        "endLine": 36,
+        "endChar": 43
+      },
+      "revId": "6daae9e8ae8419ae8ef8517db163b6de3a08fcff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9598884_1f9f9d7a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/print_to_pdf.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1547842
+      },
+      "writtenOn": "2022-09-23T19:03:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f17792c5_556b33d5",
       "range": {
         "startLine": 36,
         "startChar": 24,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab418de7_69c8d8b9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/print_to_pdf.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1547842
+      },
+      "writtenOn": "2022-09-23T19:03:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5d6b4989_d1dc39c6",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 24
+      },
+      "revId": "6daae9e8ae8419ae8ef8517db163b6de3a08fcff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4d8cbf7d_f9660899",
@@ -93,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "610391c5_7b7efe59",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/print_to_pdf.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1547842
+      },
+      "writtenOn": "2022-09-23T19:03:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d8cbf7d_f9660899",
+      "range": {
+        "startLine": 86,
+        "startChar": 7,
+        "endLine": 86,
+        "endChar": 10
+      },
+      "revId": "6daae9e8ae8419ae8ef8517db163b6de3a08fcff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c4e525a0_3960fde6",
@@ -106,6 +202,30 @@
       "writtenOn": "2022-09-22T18:47:29Z",
       "side": 1,
       "message": "Will the \"Save\" button exist if \"Save as PDF\" isn\u0027t the default? Do we need to wait for this at all?",
+      "range": {
+        "startLine": 107,
+        "startChar": 0,
+        "endLine": 107,
+        "endChar": 70
+      },
+      "revId": "6daae9e8ae8419ae8ef8517db163b6de3a08fcff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d533564_ef0b92a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/print_to_pdf.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1547842
+      },
+      "writtenOn": "2022-09-23T19:03:18Z",
+      "side": 1,
+      "message": "Removed as not needed",
+      "parentUuid": "c4e525a0_3960fde6",
       "range": {
         "startLine": 107,
         "startChar": 0,
@@ -141,6 +261,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5ad40b25_4185bdc3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/print_to_pdf.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1547842
+      },
+      "writtenOn": "2022-09-23T19:03:18Z",
+      "side": 1,
+      "message": "That doesn\u0027t seem to work with `s.Fatal`?\n\ni.e. this code `s.Fatal(\"Failed to select %q as a printer: \", printerName, err)` prints\n```\nFailed to select %q as a printer: Save as PDF\u003cnil\u003e\n```\n\nbut it does append any variable you pass in to the output, so I just changed the wording slightly and passed the variable in. Have I done that right?",
+      "parentUuid": "fe6c9852_b6486035",
+      "range": {
+        "startLine": 116,
+        "startChar": 28,
+        "endLine": 116,
+        "endChar": 39
+      },
+      "revId": "6daae9e8ae8419ae8ef8517db163b6de3a08fcff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bff96d28_9ac4e376",
         "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/print_to_pdf.go",
         "patchSetId": 7
@@ -152,6 +296,30 @@
       "writtenOn": "2022-09-22T18:47:29Z",
       "side": 1,
       "message": "This is unfortunate :) What kind of notifications are you seeing?",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 126,
+        "endChar": 2
+      },
+      "revId": "6daae9e8ae8419ae8ef8517db163b6de3a08fcff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02db986c_acd87392",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/print_to_pdf.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1547842
+      },
+      "writtenOn": "2022-09-23T19:03:18Z",
+      "side": 1,
+      "message": "So actually this and the previous snippet I copied from the printer test, but I do always see a notification eventually pop up about being out of disk space and the test will fail without it. This is on the VM though so might not happen on a real device. Should I remove this or find another way?",
+      "parentUuid": "bff96d28_9ac4e376",
       "range": {
         "startLine": 123,
         "startChar": 0,
@@ -185,6 +353,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b445f42_e11d6636",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/print_to_pdf.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1547842
+      },
+      "writtenOn": "2022-09-23T19:03:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2a0556e8_7f796372",
+      "range": {
+        "startLine": 135,
+        "startChar": 11,
+        "endLine": 135,
+        "endChar": 70
+      },
+      "revId": "6daae9e8ae8419ae8ef8517db163b6de3a08fcff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "518fbff3_3c3dc3d8",
@@ -198,6 +390,30 @@
       "writtenOn": "2022-09-22T18:47:29Z",
       "side": 1,
       "message": "At a glance it looks like most of these code blocks are actions so we can merge them into a single combine :) e.g.\n\n```\nif err :\u003d uiauto.Combine(\"Save as PDF and verify presence in holding space\",\n  // Open print dialog.\n  ...,\n  \n  // Select printer.\n  ...,\n  \n  // Select destination.\n  ...,\n  \n  // Verify presence in holding space.\n  ...,\n); err !\u003d nil {\n  s.Fatal(\"Failed to save as PDF and verify presence in holding space: \", err)\n}\n```",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 167,
+        "endChar": 2
+      },
+      "revId": "6daae9e8ae8419ae8ef8517db163b6de3a08fcff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a57585ff_f558937f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/print_to_pdf.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1547842
+      },
+      "writtenOn": "2022-09-23T19:03:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "518fbff3_3c3dc3d8",
       "range": {
         "startLine": 102,
         "startChar": 0,
