@@ -16,6 +16,46 @@
       "message": "s",
       "revId": "49472866f409d88488987ca218050a605d606b02",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28c46502_02680ce3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/modem_fw_manifest_verification.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1377951
+      },
+      "writtenOn": "2022-09-23T16:11:38Z",
+      "side": 1,
+      "message": "will modemfwd be running after th fixture runs?",
+      "range": {
+        "startLine": 38,
+        "startChar": 19,
+        "endLine": 38,
+        "endChar": 26
+      },
+      "revId": "49472866f409d88488987ca218050a605d606b02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "effac0b5_11c02393",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/modem_helper_manifest_verification.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1377951
+      },
+      "writtenOn": "2022-09-23T16:11:38Z",
+      "side": 1,
+      "message": "this test doesn\u0027t interact with any daemons. it only reads files, so there shouldn\u0027t be a need to make it part of the fixture",
+      "revId": "49472866f409d88488987ca218050a605d606b02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
