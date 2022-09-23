@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa25096e_d2d5926f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1402113
+      },
+      "writtenOn": "2022-09-23T05:15:11Z",
+      "side": 1,
+      "message": "Updated OWNERS file to point to existing OWNERS file in third-party/flashrom.\nThis also required to add one more entry to unblocked terms.",
+      "revId": "32dad9e2af3e639b5562a33af736826f335a09f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
