@@ -13,7 +13,6 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
@@ -41,7 +40,7 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      3 * time.Minute,
-		Fixture:      "personalizationWithDarkLightMode",
+		Fixture:      "personalizationWithClamshell",
 		Params: []testing.Param{
 			{
 				Name: "dark",
@@ -71,14 +70,6 @@ func SetAutoDarkLightWallpaper(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to create Test API connection: ", err)
 	}
-
-	// Force Chrome to be in clamshell mode to make sure wallpaper preview is not
-	// enabled.
-	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, false)
-	if err != nil {
-		s.Fatal("Failed to ensure DUT is not in tablet mode: ", err)
-	}
-	defer cleanup(cleanupCtx)
 
 	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
 

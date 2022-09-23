@@ -8,21 +8,21 @@ import (
 	"context"
 
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/testing"
 )
 
 func init() {
 	testing.AddFixture(&testing.Fixture{
-		Name: "personalizationWithDarkLightMode",
-		Desc: "Login with Personalization Hub and Dark Light mode enabled",
+		Name: "personalizationWithClamshell",
+		Desc: "Login with Personalization Hub in clamshell mode",
 		Contacts: []string{
 			"thuongphan@google.com",
 			"chromeos-sw-engprod@google.com",
 			"assistive-eng@google.com",
 		},
-		Impl: chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
-			return []chrome.Option{chrome.EnableFeatures("DarkLightMode")}, nil
-		}),
+		Impl:            &clamshellFixture{},
+		Parent:          "chromeLoggedIn",
 		SetUpTimeout:    chrome.LoginTimeout,
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
@@ -43,6 +43,24 @@ func init() {
 				}),
 			}, nil
 		}),
+		SetUpTimeout:    chrome.GAIALoginTimeout,
+		ResetTimeout:    chrome.ResetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+		Vars: []string{
+			"ambient.username",
+			"ambient.password",
+		},
+	})
+	testing.AddFixture(&testing.Fixture{
+		Name: "personalizationWithGaiaLoginClamshell",
+		Desc: "Login using Gaia account with Personalization Hub enabled",
+		Contacts: []string{
+			"thuongphan@google.com",
+			"chromeos-sw-engprod@google.com",
+			"assistive-eng@google.com",
+		},
+		Impl:            &clamshellFixture{},
+		Parent:          "personalizationWithGaiaLogin",
 		SetUpTimeout:    chrome.GAIALoginTimeout,
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
@@ -108,3 +126,42 @@ func init() {
 		TearDownTimeout: chrome.ResetTimeout,
 	})
 }
+
+type clamshellFixture struct {
+	cleanup func(ctx context.Context) error
+}
+
+func (f *clamshellFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
+	cr := s.ParentValue().(*chrome.Chrome)
+
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to create test API connection: ", err)
+	}
+
+	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, false)
+	if err != nil {
+		s.Fatal("Failed to ensure DUT is not in tablet mode: ", err)
+	}
+	f.cleanup = cleanup
+
+	// If a DUT switches from Tablet mode to Clamshell mode, it can take a while
+	// until launcher gets settled down.
+	if err := ash.WaitForLauncherState(ctx, tconn, ash.Closed); err != nil {
+		s.Fatal("Failed to wait the launcher state Closed: ", err)
+	}
+
+	return cr
+}
+
+func (f *clamshellFixture) TearDown(ctx context.Context, s *testing.FixtState) {
+	if f.cleanup != nil {
+		f.cleanup(ctx)
+	}
+}
+
+func (f *clamshellFixture) Reset(ctx context.Context) error {
+	return nil
+}
+func (f *clamshellFixture) PreTest(ctx context.Context, s *testing.FixtTestState)  {}
+func (f *clamshellFixture) PostTest(ctx context.Context, s *testing.FixtTestState) {}
