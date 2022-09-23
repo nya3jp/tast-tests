@@ -3,6 +3,23 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "32bb3e06_6be9fbac",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1139659
+      },
+      "writtenOn": "2022-09-23T21:30:51Z",
+      "side": 1,
+      "message": "Forgot to use tast-owners.",
+      "revId": "f72030ecef59012bcbd3429f135db229a366364a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "3f3d262a_63ae3a97",
         "filename": "src/chromiumos/tast/local/bundles/cros/personalization/set_screensaver.go",
         "patchSetId": 2
