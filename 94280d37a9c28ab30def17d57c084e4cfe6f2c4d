@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "02a34150_1d448319",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/config_verify.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-09-23T17:27:46Z",
+      "side": 1,
+      "message": "I have a few concern on this chain of CLs.\n\n1. https://crrev.com/c/3912867 is earlier CL in the chain of CLs, but it has no reviewers. Should the one earlier one in the chain to be review first? It is really confusing to me.\n\n2. I took a look at https://crrev.com/c/3912903 and I had comment on it. I don\u0027t see any corresponding change in https://source.corp.google.com/chromeos_public/src/third_party/chromiumos-overlay/chromeos-base/tast-use-flags/tast-use-flags-9999.ebuild for chromiumos_kernel. Please have the whole chain and dependent CLs ready so that we have a whole picture of your design.\n\n3. If I understand correctly, you only want the parameterized tests to be run on one set of boards ( chrome_internal, chromiumos but not it chrome_internal, and non-chrome) If so, my first question is what is non_chromiumos_kernel. I think tast local bundle only exists on chromeos test image. The second question is whether you want chromeos and chromiumos_kernel (one for internal and one for public)  to cover two exclusive sets of of boards. If so I think it will be better to create a new software dependency like this \"cros_external\": `!\"internal\"`",
+      "parentUuid": "f55f4c5f_a1180752",
+      "revId": "94280d37a9c28ab30def17d57c084e4cfe6f2c4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "da67d4b4_b3a28ec2",
         "filename": "src/chromiumos/tast/local/bundles/cros/kernel/config_verify.go",
         "patchSetId": 4
