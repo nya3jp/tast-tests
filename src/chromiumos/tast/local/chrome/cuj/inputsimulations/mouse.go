@@ -6,6 +6,7 @@ package inputsimulations
 
 import (
 	"context"
+	"fmt"
 	"math"
 	"time"
 
@@ -83,6 +84,29 @@ func ScrollMouseDownFor(ctx context.Context, mw *input.MouseEventWriter, delay, 
 		action.Sleep(delay),
 	)); err != nil {
 		return errors.Wrap(err, "failed to scroll down repeatedly")
+	}
+	return nil
+}
+
+// RepeatMouseScroll scrolls in the direction indicated by
+// |shouldScrollDown| |n| times, with a |delay| in between
+// each scroll tick.
+func RepeatMouseScroll(ctx context.Context, mw *input.MouseEventWriter, shouldScrollDown bool, delay time.Duration, n int) error {
+	dir := "up"
+	scroll := mw.ScrollUp
+	if shouldScrollDown {
+		scroll = mw.ScrollDown
+		dir = "down"
+	}
+
+	for i := 0; i < n; i++ {
+		if err := action.Combine(
+			fmt.Sprintf("scroll %s and sleep", dir),
+			func(ctx context.Context) error { return scroll() },
+			action.Sleep(delay),
+		)(ctx); err != nil {
+			return err
+		}
 	}
 	return nil
 }
