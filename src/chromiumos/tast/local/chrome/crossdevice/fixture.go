@@ -32,15 +32,24 @@ import (
 	"chromiumos/tast/testing"
 )
 
+// FixtureOptions contains the options that we set for various crossDeviceFixture.
+type FixtureOptions struct {
+	allFeatures         bool // Whether or not to enable all cross device features.
+	saveScreenRecording bool
+	lockFixture         bool // Whether or not to lock the fixture preventing chrome from being torn down outside of fixture teardown.
+	noSignIn            bool // Whether or not to sign in with the specified GAIA account. True will not skip OOBE.
+}
+
 // NewCrossDeviceOnboarded creates a fixture that logs in to CrOS, pairs it with an Android device,
 // and ensures the features in the "Connected devices" section of OS Settings are ready to use (Smart Lock, Phone Hub, etc.).
 // Note that crossdevice fixtures inherit from crossdeviceAndroidSetup.
-func NewCrossDeviceOnboarded(allFeatures, saveScreenRecording, lockFixture bool, fOpt chrome.OptionsCallback) testing.FixtureImpl {
+func NewCrossDeviceOnboarded(opt FixtureOptions, fOpt chrome.OptionsCallback) testing.FixtureImpl {
 	return &crossdeviceFixture{
 		fOpt:                fOpt,
-		allFeatures:         allFeatures,
-		saveScreenRecording: saveScreenRecording,
-		lockFixture:         lockFixture,
+		allFeatures:         opt.allFeatures,
+		saveScreenRecording: opt.saveScreenRecording,
+		lockFixture:         opt.lockFixture,
+		noSignIn:            opt.noSignIn,
 	}
 }
 
@@ -65,7 +74,7 @@ func init() {
 			"chromeos-sw-engprod@google.com",
 		},
 		Parent: "crossdeviceAndroidSetupPhoneHub",
-		Impl: NewCrossDeviceOnboarded(true, true, true, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+		Impl: NewCrossDeviceOnboarded(FixtureOptions{true, true, true, false}, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
 			return nil, nil
 		}),
 		Vars: []string{
@@ -87,13 +96,36 @@ func init() {
 			"chromeos-sw-engprod@google.com",
 		},
 		Parent: "crossdeviceAndroidSetupSmartLock",
-		Impl: NewCrossDeviceOnboarded(false, false, true, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+		Impl: NewCrossDeviceOnboarded(FixtureOptions{false, false, true, false}, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
 			return nil, nil
 		}),
 		Vars: []string{
 			customCrOSUsername,
 			customCrOSPassword,
 			KeepStateVar,
+		},
+		SetUpTimeout:    10*time.Minute + BugReportDuration,
+		ResetTimeout:    resetTimeout,
+		TearDownTimeout: resetTimeout,
+		PreTestTimeout:  resetTimeout,
+		PostTestTimeout: postTestTimeout,
+	})
+	testing.AddFixture(&testing.Fixture{
+		Name: "crossdeviceNoSignIn",
+		Desc: "User is not signed in (with GAIA) to CrOS but fixture requires control of an Android phone. Does not skip OOBE",
+		Contacts: []string{
+			"kyleshima@chromium.org",
+			"chromeos-sw-engprod@google.com",
+		},
+		Parent: "crossdeviceAndroidSetupPhoneHub",
+		Impl: NewCrossDeviceOnboarded(FixtureOptions{false, false, true, true}, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			return nil, nil
+		}),
+		Vars: []string{
+			customCrOSUsername,
+			customCrOSPassword,
+			KeepStateVar,
+			SignInProfileTestExtensionManifestKey,
 		},
 		SetUpTimeout:    10*time.Minute + BugReportDuration,
 		ResetTimeout:    resetTimeout,
@@ -109,7 +141,7 @@ func init() {
 			"chromeos-sw-engprod@google.com",
 		},
 		Parent: "crossdeviceAndroidSetupSmartLockLogin",
-		Impl: NewCrossDeviceOnboarded(false, false, false, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+		Impl: NewCrossDeviceOnboarded(FixtureOptions{false, false, false, false}, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
 			return nil, nil
 		}),
 		Vars: []string{
@@ -133,7 +165,7 @@ func init() {
 			"chromeos-sw-engprod@google.com",
 		},
 		Parent: "crossdeviceAndroidSetupPhoneHub",
-		Impl: NewCrossDeviceOnboarded(true, true, true, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+		Impl: NewCrossDeviceOnboarded(FixtureOptions{true, true, true, false}, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
 			return lacrosfixt.NewConfig().Opts()
 		}),
 		Vars: []string{
@@ -163,6 +195,7 @@ type crossdeviceFixture struct {
 	saveAndroidScreenRecordingOnError func(context.Context, func() bool) error
 	saveScreenRecording               bool
 	lockFixture                       bool
+	noSignIn                          bool
 	logcatStartTime                   adb.LogcatTimestamp
 	downloadsPath                     string
 }
@@ -228,7 +261,7 @@ func (f *crossdeviceFixture) SetUp(ctx context.Context, s *testing.FixtState) in
 		"ble_*=3",
 	}
 	opts = append(opts, chrome.ExtraArgs("--enable-logging", "--vmodule="+strings.Join(tags, ",")))
-	opts = append(opts, chrome.EnableFeatures("PhoneHubCameraRoll", "SmartLockUIRevamp"))
+	opts = append(opts, chrome.EnableFeatures("PhoneHubCameraRoll", "SmartLockUIRevamp", "OobeQuickStart"))
 
 	customUser, userOk := s.Var(customCrOSUsername)
 	customPass, passOk := s.Var(customCrOSPassword)
@@ -239,7 +272,11 @@ func (f *crossdeviceFixture) SetUp(ctx context.Context, s *testing.FixtState) in
 	} else {
 		s.Log("Logging in with default GAIA credentials")
 	}
-	opts = append(opts, chrome.GAIALogin(chrome.Creds{User: crosUsername, Pass: crosPassword}))
+	if f.noSignIn {
+		opts = append(opts, chrome.DontSkipOOBEAfterLogin())
+	} else {
+		opts = append(opts, chrome.GAIALogin(chrome.Creds{User: crosUsername, Pass: crosPassword}))
+	}
 	if val, ok := s.Var(KeepStateVar); ok {
 		b, err := strconv.ParseBool(val)
 		if err != nil {
@@ -293,40 +330,33 @@ func (f *crossdeviceFixture) SetUp(ctx context.Context, s *testing.FixtState) in
 		return errors.Wrap(err, "failed to enable bluetooth debug logging")
 	}
 
-	// Sometimes during login the tcp connection to the snippet server on Android is lost.
-	// If the Pair RPC fails, reconnect to the snippet server and try again.
-	if err := androidDevice.Pair(ctx); err != nil {
-		s.Log("Lost connection to the Snippet server. Reconnecting")
-		if err := androidDevice.ReconnectToSnippet(ctx); err != nil {
-			s.Fatal("Failed to reconnect to the snippet server: ", err)
+	// Phone and Chromebook will not be paired if we are not signed in to the Chromebook yet.
+	if !f.noSignIn {
+		// Sometimes during login the tcp connection to the snippet server on Android is lost.
+		// If the Pair RPC fails, reconnect to the snippet server and try again.
+		if err := f.PairWithAndroid(ctx, tconn, cr); err != nil {
+			s.Fatal("Pairing with Android failed: ", err)
 		}
-		if err := androidDevice.Pair(ctx); err != nil {
-			s.Fatal("Failed to connect the Android device to CrOS: ", err)
-		}
-	}
-	if err := crossdevicesettings.WaitForConnectedDevice(ctx, tconn, cr); err != nil {
-		s.Fatal("Failed waiting for the connected device to appear in OS settings: ", err)
-	}
-	if f.allFeatures {
-		// Wait for the "Smart Lock is turned on" notification to appear,
-		// since it will cause Phone Hub to close if it's open before the notification pops up.
-		if _, err := ash.WaitForNotification(ctx, tconn, 30*time.Second, ash.WaitTitleContains("Smart Lock is turned on")); err != nil {
-			s.Log("Smart Lock notification did not appear after 30 seconds, proceeding anyways")
-		}
+		if f.allFeatures {
+			// Wait for the "Smart Lock is turned on" notification to appear,
+			// since it will cause Phone Hub to close if it's open before the notification pops up.
+			if _, err := ash.WaitForNotification(ctx, tconn, 30*time.Second, ash.WaitTitleContains("Smart Lock is turned on")); err != nil {
+				s.Log("Smart Lock notification did not appear after 30 seconds, proceeding anyways")
+			}
 
-		if err := phonehub.Enable(ctx, tconn, cr); err != nil {
-			s.Fatal("Failed to enable Phone Hub: ", err)
+			if err := phonehub.Enable(ctx, tconn, cr); err != nil {
+				s.Fatal("Failed to enable Phone Hub: ", err)
+			}
+			if err := phonehub.Hide(ctx, tconn); err != nil {
+				s.Fatal("Failed to hide Phone Hub after enabling it: ", err)
+			}
+			if err := androidDevice.EnablePhoneHubNotifications(ctx); err != nil {
+				s.Fatal("Failed to enable Phone Hub notifications: ", err)
+			}
 		}
-		if err := phonehub.Hide(ctx, tconn); err != nil {
-			s.Fatal("Failed to hide Phone Hub after enabling it: ", err)
+		if _, err := ash.WaitForNotification(ctx, tconn, 90*time.Second, ash.WaitTitleContains("Connected to")); err != nil {
+			s.Fatal("Did not receive notification that Chromebook and Phone are paired")
 		}
-		if err := androidDevice.EnablePhoneHubNotifications(ctx); err != nil {
-			s.Fatal("Failed to enable Phone Hub notifications: ", err)
-		}
-	}
-
-	if _, err := ash.WaitForNotification(ctx, tconn, 90*time.Second, ash.WaitTitleContains("Connected to")); err != nil {
-		s.Fatal("Did not receive notification that Chromebook and Phone are paired")
 	}
 
 	// Store Android attributes for reporting.
@@ -489,6 +519,22 @@ func (f *crossdeviceFixture) PostTest(ctx context.Context, s *testing.FixtTestSt
 			s.Error("Failed to save Android bug report: ", err)
 		}
 	}
+}
+
+// Verify that pairing between Android and Chromebook is successful.
+func (f *crossdeviceFixture) PairWithAndroid(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome) error {
+	if err := f.androidDevice.Pair(ctx); err != nil {
+		if err := f.androidDevice.ReconnectToSnippet(ctx); err != nil {
+			return errors.Wrap(err, "failed to reconnect to the snippet server")
+		}
+		if err := f.androidDevice.Pair(ctx); err != nil {
+			return errors.Wrap(err, "failed to connect the Android device to CrOS")
+		}
+	}
+	if err := crossdevicesettings.WaitForConnectedDevice(ctx, tconn, cr); err != nil {
+		return errors.Wrap(err, "failed waiting for the connected device to appear in OS settings")
+	}
+	return nil
 }
 
 // saveDeviceAttributes saves the CrOS and Android device attributes as a formatted JSON at the specified filepath.
