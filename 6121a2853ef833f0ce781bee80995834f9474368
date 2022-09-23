@@ -16,6 +16,29 @@
       "message": "Please take a look. Thanks.",
       "revId": "6121a2853ef833f0ce781bee80995834f9474368",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab4feaed_8af9a05a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perfetto_battery_data_source.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1349355
+      },
+      "writtenOn": "2022-09-23T09:23:25Z",
+      "side": 1,
+      "message": "Do we want to remove this line as well?",
+      "range": {
+        "startLine": 54,
+        "startChar": 1,
+        "endLine": 54,
+        "endChar": 73
+      },
+      "revId": "6121a2853ef833f0ce781bee80995834f9474368",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
