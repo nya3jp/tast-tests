@@ -39,6 +39,30 @@
       },
       "revId": "fc2a13e95fb0882846a9163916012411b5468ce1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "875fd18e_b64437e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/auto_framing_e2e.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1318626
+      },
+      "writtenOn": "2022-09-23T06:20:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e44cf0e_556845e8",
+      "range": {
+        "startLine": 133,
+        "startChar": 3,
+        "endLine": 133,
+        "endChar": 43
+      },
+      "revId": "fc2a13e95fb0882846a9163916012411b5468ce1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
