@@ -16,6 +16,29 @@
       "message": "Refactored this to run on CCA and check histograms. PTAL",
       "revId": "fc2a13e95fb0882846a9163916012411b5468ce1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e44cf0e_556845e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/auto_framing_e2e.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1001646
+      },
+      "writtenOn": "2022-09-23T06:08:52Z",
+      "side": 1,
+      "message": "From the action sequence above it looks like framing was enabled 6 times. Can you add a short comment explaining why it\u0027s 3 here?",
+      "range": {
+        "startLine": 133,
+        "startChar": 3,
+        "endLine": 133,
+        "endChar": 43
+      },
+      "revId": "fc2a13e95fb0882846a9163916012411b5468ce1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
