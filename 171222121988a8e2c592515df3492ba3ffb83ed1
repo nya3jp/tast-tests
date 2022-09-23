@@ -16,6 +16,23 @@
       "message": "Hello Tast Owners,\n\nI\u0027d like to promote tast.arc.StandardizedMouseScroll to critical. The failure in recent 20 runs are not related with the test itself and its total passing rate is higher than 99%.\n\nhttps://tastboard.corp.google.com/test/arc.StandardizedMouseScroll\n\nThank you.",
       "revId": "171222121988a8e2c592515df3492ba3ffb83ed1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "db8b9329_60863015",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-09-23T10:39:47Z",
+      "side": 1,
+      "message": "LGTM % \nRecently there were few failures, probably not related to the test, but check it before submitting.",
+      "revId": "171222121988a8e2c592515df3492ba3ffb83ed1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
