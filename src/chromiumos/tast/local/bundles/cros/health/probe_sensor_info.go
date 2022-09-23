@@ -6,6 +6,7 @@ package health
 
 import (
 	"context"
+	"math"
 	"os"
 	"regexp"
 	"sort"
@@ -89,7 +90,11 @@ func validateLidAngle(ctx context.Context, info *sensorInfo) error {
 		if info.LidAngle == nil {
 			return errors.Errorf("failed. LidAngle doesn't match: got nil; want %v", lidAngle)
 		}
-		if *info.LidAngle != uint16(lidAngle) {
+		// The value of lid angle comes from the value of accelerometers on lid and
+		// base, which is dynamic without user interaction. We should have the lid
+		// angle tolerance.
+		const lidAngleTolerance = 1
+		if math.Abs(float64(*info.LidAngle)-float64(lidAngle)) > lidAngleTolerance {
 			return errors.Errorf("failed. LidAngle doesn't match: got %v; want %v", *info.LidAngle, lidAngle)
 		}
 	}
