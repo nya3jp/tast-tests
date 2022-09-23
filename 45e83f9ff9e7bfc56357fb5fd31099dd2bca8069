@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5cd3c89d_599d7fcc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001410
+      },
+      "writtenOn": "2022-09-23T21:21:57Z",
+      "side": 1,
+      "message": "Still working on it, but intermediate update",
+      "revId": "45e83f9ff9e7bfc56357fb5fd31099dd2bca8069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aaabb32c_0191d679",
@@ -35,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "18418ad2_cc2936bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1001410
+      },
+      "writtenOn": "2022-09-23T21:21:57Z",
+      "side": 1,
+      "message": "Changed to the description as described in the public Go page.",
+      "parentUuid": "aaabb32c_0191d679",
+      "revId": "45e83f9ff9e7bfc56357fb5fd31099dd2bca8069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "78040715_d911e201",
@@ -48,6 +83,30 @@
       "writtenOn": "2022-08-05T03:21:30Z",
       "side": 1,
       "message": "How about openInAshAsApplication for clarity?",
+      "range": {
+        "startLine": 31,
+        "startChar": 1,
+        "endLine": 31,
+        "endChar": 10
+      },
+      "revId": "45e83f9ff9e7bfc56357fb5fd31099dd2bca8069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c03a7fb3_46f3dd2a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1001410
+      },
+      "writtenOn": "2022-09-23T21:21:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "78040715_d911e201",
       "range": {
         "startLine": 31,
         "startChar": 1,
@@ -104,6 +163,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "db04210c_ebbe4998",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1001410
+      },
+      "writtenOn": "2022-09-23T21:21:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "88e52ee9_38ec5938",
+      "range": {
+        "startLine": 147,
+        "startChar": 1,
+        "endLine": 147,
+        "endChar": 4
+      },
+      "revId": "45e83f9ff9e7bfc56357fb5fd31099dd2bca8069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "88e24d67_a6f41c82",
@@ -117,6 +200,30 @@
       "writtenOn": "2022-08-04T23:41:54Z",
       "side": 1,
       "message": "if this prerequisite is not met, wouldn\u0027t you like to close all open windows here and go on testing rather than exiting here (likely subsequent parameterized tests may end up exiting here unless it\u0027s resolved as a part of setup)?",
+      "range": {
+        "startLine": 150,
+        "startChar": 1,
+        "endLine": 150,
+        "endChar": 62
+      },
+      "revId": "45e83f9ff9e7bfc56357fb5fd31099dd2bca8069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "77a604ba_eb2900e1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1001410
+      },
+      "writtenOn": "2022-09-23T21:21:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "88e24d67_a6f41c82",
       "range": {
         "startLine": 150,
         "startChar": 1,
@@ -150,6 +257,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6bdb03e7_8de293bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1001410
+      },
+      "writtenOn": "2022-09-23T21:21:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a98807c5_8581bd1c",
+      "range": {
+        "startLine": 158,
+        "startChar": 27,
+        "endLine": 158,
+        "endChar": 30
+      },
+      "revId": "45e83f9ff9e7bfc56357fb5fd31099dd2bca8069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d86b3acb_aef4da5f",
@@ -163,6 +294,30 @@
       "writtenOn": "2022-08-04T23:41:54Z",
       "side": 1,
       "message": "tconn should be from ash-chrome",
+      "range": {
+        "startLine": 175,
+        "startChar": 42,
+        "endLine": 175,
+        "endChar": 53
+      },
+      "revId": "45e83f9ff9e7bfc56357fb5fd31099dd2bca8069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "304f3f81_f7d93bb1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1001410
+      },
+      "writtenOn": "2022-09-23T21:21:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d86b3acb_aef4da5f",
       "range": {
         "startLine": 175,
         "startChar": 42,
@@ -220,6 +375,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "deda8cce_c7e3ff19",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1001410
+      },
+      "writtenOn": "2022-09-23T21:21:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "09e7d0cd_c401687d",
+      "range": {
+        "startLine": 172,
+        "startChar": 0,
+        "endLine": 179,
+        "endChar": 2
+      },
+      "revId": "45e83f9ff9e7bfc56357fb5fd31099dd2bca8069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "682ca68d_d9c83e4c",
@@ -266,6 +445,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ec90511_aae865f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1001410
+      },
+      "writtenOn": "2022-09-23T21:21:57Z",
+      "side": 1,
+      "message": "It is verifying a security feature. Trying to navigate to a page which shouldn\u0027t be possible, should produce a \"blocked\" URL - which is different from the params.url.\n\nNote: As the window title gets checked later on, this particular case will be detected.",
+      "parentUuid": "682ca68d_d9c83e4c",
+      "range": {
+        "startLine": 190,
+        "startChar": 61,
+        "endLine": 190,
+        "endChar": 91
+      },
+      "revId": "45e83f9ff9e7bfc56357fb5fd31099dd2bca8069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8ef8d261_7e6531c4",
@@ -279,6 +482,30 @@
       "writtenOn": "2022-08-04T23:41:54Z",
       "side": 1,
       "message": "```\nappWindow, err \u003d ash.WaitForAnyWindow(ctx, tconnAsh, ash.BrowserTypeMatch(browser.TypeAsh))\nif err !\u003d nil {\n\ts.Fatal(\"Waiting for app failed with error: \", err)\n}\n``` \nif you wait for a ash-chrome window?",
+      "range": {
+        "startLine": 200,
+        "startChar": 0,
+        "endLine": 207,
+        "endChar": 3
+      },
+      "revId": "45e83f9ff9e7bfc56357fb5fd31099dd2bca8069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "88d3777e_c4628e3b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1001410
+      },
+      "writtenOn": "2022-09-23T21:21:57Z",
+      "side": 1,
+      "message": "That would have been much better - but it does not detect app windows. There is also a similar app window finding function in the w.go test harness - however - it does only check the existence without returning the actual window. As such I had to change this a bit.",
+      "parentUuid": "8ef8d261_7e6531c4",
       "range": {
         "startLine": 200,
         "startChar": 0,
@@ -323,6 +550,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b368ea43_dc049e63",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1001410
+      },
+      "writtenOn": "2022-09-23T21:21:57Z",
+      "side": 1,
+      "message": "I had that there for testing purposes (e.g. looking at the result before it disappears quickly again)\n\nRemoved",
+      "parentUuid": "6f1778c5_5f9080e5",
+      "revId": "45e83f9ff9e7bfc56357fb5fd31099dd2bca8069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fa890887_395df660",
@@ -336,6 +581,30 @@
       "writtenOn": "2022-08-04T22:45:49Z",
       "side": 1,
       "message": "chrome://newtab/",
+      "range": {
+        "startLine": 322,
+        "startChar": 54,
+        "endLine": 322,
+        "endChar": 65
+      },
+      "revId": "45e83f9ff9e7bfc56357fb5fd31099dd2bca8069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c47d753e_a384900d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1001410
+      },
+      "writtenOn": "2022-09-23T21:21:57Z",
+      "side": 1,
+      "message": "I am confused - why did this change in the testing framework?\nDone",
+      "parentUuid": "fa890887_395df660",
       "range": {
         "startLine": 322,
         "startChar": 54,
@@ -394,6 +663,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9f3efb3e_181b16fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1001410
+      },
+      "writtenOn": "2022-09-23T21:21:57Z",
+      "side": 1,
+      "message": "I renamed - but I am confused.\n\nThe test enters the search URL into Lacros - so I get the Lacros browser and the Lacros UI to control it? Why should I use the Ash tconn here then?\n\nBut I am sure that I am misunderstanding something here.",
+      "parentUuid": "d0dc97dd_58e98f02",
+      "range": {
+        "startLine": 327,
+        "startChar": 87,
+        "endLine": 327,
+        "endChar": 98
+      },
+      "revId": "45e83f9ff9e7bfc56357fb5fd31099dd2bca8069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7b71178e_0cb877ba",
         "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
         "patchSetId": 7
@@ -405,6 +698,30 @@
       "writtenOn": "2022-08-04T22:45:49Z",
       "side": 1,
       "message": "chrome.NewTabURL",
+      "range": {
+        "startLine": 332,
+        "startChar": 71,
+        "endLine": 332,
+        "endChar": 84
+      },
+      "revId": "45e83f9ff9e7bfc56357fb5fd31099dd2bca8069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "611bc6ab_59b82017",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1001410
+      },
+      "writtenOn": "2022-09-23T21:21:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b71178e_0cb877ba",
       "range": {
         "startLine": 332,
         "startChar": 71,
@@ -438,6 +755,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "37fffe12_4ae13693",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1001410
+      },
+      "writtenOn": "2022-09-23T21:21:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a661ff56_5848208c",
+      "range": {
+        "startLine": 334,
+        "startChar": 45,
+        "endLine": 334,
+        "endChar": 60
+      },
+      "revId": "45e83f9ff9e7bfc56357fb5fd31099dd2bca8069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "09c71f01_48353f0e",
@@ -451,6 +792,30 @@
       "writtenOn": "2022-08-04T22:45:49Z",
       "side": 1,
       "message": "ditto: rename properly as it should be from ash-chrome.",
+      "range": {
+        "startLine": 341,
+        "startChar": 18,
+        "endLine": 341,
+        "endChar": 29
+      },
+      "revId": "45e83f9ff9e7bfc56357fb5fd31099dd2bca8069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "adb06deb_3ba5731f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1001410
+      },
+      "writtenOn": "2022-09-23T21:21:57Z",
+      "side": 1,
+      "message": "I renamed to tconn as requested. Question already mentioned above.",
+      "parentUuid": "09c71f01_48353f0e",
       "range": {
         "startLine": 341,
         "startChar": 18,
@@ -478,6 +843,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef29ac0c_67d453f0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1001410
+      },
+      "writtenOn": "2022-09-23T21:21:57Z",
+      "side": 1,
+      "message": "Needed to look that up again (I think I did read that earlier but have forgotten). \n\nWell this Go - rule feels rather silly, but sure - done.",
+      "parentUuid": "21d44fa7_74222f13",
+      "revId": "45e83f9ff9e7bfc56357fb5fd31099dd2bca8069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5ea27b0f_59f37ea9",
@@ -501,6 +884,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5140eab8_3ff7e008",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1001410
+      },
+      "writtenOn": "2022-09-23T21:21:57Z",
+      "side": 1,
+      "message": "Many thanks! \n(Clearly... I am not a tast expert)",
+      "parentUuid": "5ea27b0f_59f37ea9",
+      "range": {
+        "startLine": 356,
+        "startChar": 0,
+        "endLine": 367,
+        "endChar": 2
+      },
+      "revId": "45e83f9ff9e7bfc56357fb5fd31099dd2bca8069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0c2c033b_75d2559c",
@@ -514,6 +921,24 @@
       "writtenOn": "2022-08-05T03:21:30Z",
       "side": 1,
       "message": "This probably applies to more than just Lacros windows.\nCan you do what ash.BrowserTypeMatch does instead?",
+      "revId": "45e83f9ff9e7bfc56357fb5fd31099dd2bca8069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd20561e_e3f4e2f1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1001410
+      },
+      "writtenOn": "2022-09-23T21:21:57Z",
+      "side": 1,
+      "message": "Yepp - if ARC++ or Crostini would run this would trigger as well. However - if it would, it would also be an error as we do not want to trigger one of those with this tests. (and / or running into those as a missing pre-condition). So I think that should be okay?\n\nOn the other hand I changed this to the other way as requested by Hyung.\n\nPlease feel free to re-open if you disagree!",
+      "parentUuid": "0c2c033b_75d2559c",
       "revId": "45e83f9ff9e7bfc56357fb5fd31099dd2bca8069",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

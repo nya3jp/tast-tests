@@ -129,6 +129,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e50db97_ce497696",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1001410
+      },
+      "writtenOn": "2022-09-23T21:21:57Z",
+      "side": 1,
+      "message": "It takes about 2 minutes to run through everything running remotely with my DUT via SSH.\n\nI think that that should be ok?",
+      "parentUuid": "e52ccb42_4585127a",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 33
+      },
+      "revId": "bae29fde61c9a51e377d520efdf3a3f715eb050b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a2a35f87_fddd3ac8",
@@ -332,6 +356,30 @@
       "side": 1,
       "message": "ltconn, atconn is consistent currently, so I\u0027d recommend at least for now.\nThere\u0027s on-going discussion to change the naming policy, though.",
       "parentUuid": "ae0bc6ce_1a8c8f16",
+      "range": {
+        "startLine": 156,
+        "startChar": 1,
+        "endLine": 156,
+        "endChar": 12
+      },
+      "revId": "bae29fde61c9a51e377d520efdf3a3f715eb050b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc6b037d_acef5f24",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1001410
+      },
+      "writtenOn": "2022-09-23T21:21:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f0bb43c2_534c17f4",
       "range": {
         "startLine": 156,
         "startChar": 1,
