@@ -91,18 +91,26 @@ func OpenPlayStoreAccountSettings(ctx context.Context, arcDevice *androidui.Devi
 
 // SwitchPlayStoreAccount switches between the ARC account in PlayStore.
 func SwitchPlayStoreAccount(ctx context.Context, arcDevice *androidui.Device, tconn *chrome.TestConn, accountEmail string) error {
-	if err := OpenPlayStoreAccountSettings(ctx, arcDevice, tconn); err != nil {
-		return errors.Wrap(err, "failed to open Play Store account settings")
-	}
+	// The added new account sometimes need more time to be reflected in Play Store settings.
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		if err := OpenPlayStoreAccountSettings(ctx, arcDevice, tconn); err != nil {
+			return errors.Wrap(err, "failed to open Play Store account settings")
+		}
 
-	accountNameButton := arcDevice.Object(androidui.ClassName("android.widget.TextView"), androidui.Text(accountEmail))
-	if err := accountNameButton.WaitForExists(ctx, 30*time.Second); err != nil {
-		return errors.Wrap(err, "failed to find Account Name")
-	}
-	if err := accountNameButton.Click(ctx); err != nil {
-		return errors.Wrap(err, "failed to click Account Name")
-	}
-	return nil
+		accountNameButton := arcDevice.Object(androidui.ClassName("android.widget.TextView"), androidui.Text(accountEmail))
+		if err := accountNameButton.WaitForExists(ctx, 30*time.Second); err != nil {
+			return errors.Wrap(err, "failed to find Account Name")
+		}
+
+		if err := accountNameButton.Click(ctx); err != nil {
+			return errors.Wrap(err, "failed to click Account Name")
+		}
+
+		return nil
+	}, &testing.PollOptions{
+		Timeout:  3 * time.Minute,
+		Interval: 30 * time.Second,
+	})
 }
 
 // ClickAddAccountInSettings clicks Add account > Google in ARC Settings. Settings window should be already open.
