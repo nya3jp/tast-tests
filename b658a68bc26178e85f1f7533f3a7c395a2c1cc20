@@ -88,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "503ab144_21603eae",
+        "filename": "src/chromiumos/tast/remote/cellular/callbox/manager/fixture.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-09-23T15:48:42Z",
+      "side": 1,
+      "message": "Sounds good.",
+      "parentUuid": "fc08d9e2_0ec93c40",
+      "revId": "b658a68bc26178e85f1f7533f3a7c395a2c1cc20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "276d0df2_8672f1dd",
