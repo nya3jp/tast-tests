@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b89b5242_c50523f1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_dragdrop.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-09-23T15:50:22Z",
+      "side": 1,
+      "message": "OK, if that\u0027s not something we can rely on then using sort.Search is fragile here. That\u0027s all I was worried about.",
+      "parentUuid": "b45ab177_67f8164f",
+      "revId": "fd6fe404f962c473c87c2496c82498e69eb86f47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7ba9c222_72a5e037",
@@ -73,6 +91,30 @@
       "side": 1,
       "message": "I think that this might as well be consistent with similar code in performance tests. In those tests, the display zoom factor may affect the measured performance and so we don\u0027t want it to be unnecessarily extreme.",
       "parentUuid": "7ba9c222_72a5e037",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 54
+      },
+      "revId": "fd6fe404f962c473c87c2496c82498e69eb86f47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "586ec634_1ee58e5e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_dragdrop.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-09-23T15:50:22Z",
+      "side": 1,
+      "message": "OK, sounds fine then.",
+      "parentUuid": "925b9edb_b9545d45",
       "range": {
         "startLine": 95,
         "startChar": 0,
