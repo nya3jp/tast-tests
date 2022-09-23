@@ -26,7 +26,7 @@ import (
 type FirmwareTest struct {
 	d                        *rpcdut.RPCDUT
 	servo                    *servo.Proxy
-	fpBoard                  fp.FPBoardName
+	fpBoard                  fp.BoardName
 	firmwareFile             FirmwareFile
 	daemonState              []daemonState
 	needsRebootAfterFlashing bool
@@ -329,7 +329,7 @@ func (t *FirmwareTest) DUTTempDir() string {
 }
 
 // FPBoard gets the fingerprint board name.
-func (t *FirmwareTest) FPBoard() fp.FPBoardName {
+func (t *FirmwareTest) FPBoard() fp.BoardName {
 	return t.fpBoard
 }
 
