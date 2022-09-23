@@ -324,6 +324,9 @@ func GetLoginCredentials(ctx context.Context, s *testing.FixtState, feature Feat
 		case PhoneHub:
 			username = defaultCrossDeviceUsername
 			password = defaultCrossDevicePassword
+		case QuickStart:
+			username = defaultCrossDeviceUsername
+			password = defaultCrossDevicePassword
 		default:
 			return "", "", errors.New("unknown Cross Device feature specified")
 		}

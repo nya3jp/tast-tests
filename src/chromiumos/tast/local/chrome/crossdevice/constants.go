@@ -22,6 +22,9 @@ const AccountUtilApk = "GoogleAccountUtil.apk"
 // KeepStateVar is the runtime variable name used to specify the chrome.KeepState parameter to preserve the DUT's user accounts.
 const KeepStateVar = "keepState"
 
+// SignInProfileTestExtensionManifestKey is id required for signin screen autotestPrivate.
+const SignInProfileTestExtensionManifestKey = "ui.signinProfileTestExtensionManifestKey"
+
 // Feature defines the Cross Device feature we are testing.
 type Feature struct {
 	Name       FeatureName
@@ -40,6 +43,8 @@ const (
 	NearbyShare
 	// Exo defines Exo
 	Exo
+	// QuickStart defines Quickstart
+	QuickStart
 )
 
 // SubFeature is the specific part of a feature we are testing.
