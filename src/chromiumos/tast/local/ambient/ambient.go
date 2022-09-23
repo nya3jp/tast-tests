@@ -17,6 +17,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/mtbf/youtube"
 	"chromiumos/tast/local/personalization"
 )
 
@@ -51,6 +52,14 @@ const (
 	// through 2 full animation cycles, giving it sufficient test coverage.
 	AnimationDefaultPlaybackSpeed = 20
 )
+
+// TestVideoSrc contains an example Youtube video to play for testing
+// "media string" in ambient mode. Taken from the BasicYoutubeCUJ test.
+var TestVideoSrc = youtube.VideoSrc{
+	URL:     "https://www.youtube.com/watch?v=LXb3EKWsInQ",
+	Title:   "COSTA RICA IN 4K 60fps HDR (ULTRA HD)",
+	Quality: "1080p60",
+}
 
 // TestParams for each test case.
 type TestParams struct {
@@ -241,8 +250,19 @@ func waitForAmbientStart(tconn *chrome.TestConn, ui *uiauto.Context, timeout tim
 		); err != nil {
 			return errors.Wrap(err, "failed to wait for photo transitions")
 		}
-
-		return ui.Exists(nodewith.ClassName("LockScreenAmbientModeContainer").Role(role.Window))(ctx)
+		// For the media string condition:
+		// .First() is needed because there are actually 2 media string "nodes"
+		// present in the UI tree during slideshow mode. The second node is
+		// invisible in the background and is a product of how slideshow mode is
+		// implemented. Without ".First()"" though, this condition fails saying
+		// that here are multiple matching nodes.
+		if err := uiauto.Combine("validate ambient screen and media string",
+			ui.WaitUntilExists(nodewith.ClassName("LockScreenAmbientModeContainer").Role(role.Window)),
+			ui.WaitUntilExists(nodewith.NameContaining(TestVideoSrc.Title).First()),
+		)(ctx); err != nil {
+			return errors.Wrap(err, "failed to validate ambient screen and media string exist")
+		}
+		return nil
 	}
 }
 
