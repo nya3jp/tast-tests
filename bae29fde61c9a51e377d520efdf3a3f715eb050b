@@ -271,6 +271,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e357f8f5_923ca2b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1001410
+      },
+      "writtenOn": "2022-09-23T23:06:17Z",
+      "side": 1,
+      "message": "Thanks for the link!\n\nIt seems to contradict all other language styles, but if this is how GO is defined, so be it!",
+      "parentUuid": "eb3f1c9b_63d30cc2",
+      "range": {
+        "startLine": 150,
+        "startChar": 0,
+        "endLine": 154,
+        "endChar": 31
+      },
+      "revId": "bae29fde61c9a51e377d520efdf3a3f715eb050b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e97875cf_4b05c643",

@@ -140,6 +140,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "00a6d3ba_19021aef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1001410
+      },
+      "writtenOn": "2022-09-23T23:06:17Z",
+      "side": 1,
+      "message": "Not entirely sure I know what you were referring to, but I have moved to the top and added a special Init comment here.",
+      "parentUuid": "93b31e32_6b5a4500",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 42
+      },
+      "revId": "45e83f9ff9e7bfc56357fb5fd31099dd2bca8069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "88e52ee9_38ec5938",
@@ -469,6 +493,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "23e3e9e3_a272e8ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1001410
+      },
+      "writtenOn": "2022-09-23T23:06:17Z",
+      "side": 1,
+      "message": "Thanks for the comment!\n\nAh. Okay - yes, it appears that there is currently no URL left anymore without a \u0027/\u0027 which was not true throughout the development.\n\nBut for explanation: Yes, the browser appends automatically a \"/\" at the end (as far as I know in most cases). As such I usually prefer a rather clean way of tests where they are a bit fault tolerant than extremely strict. Someone will add another test case at some point in time and spend hours trying to figure out why that is.",
+      "parentUuid": "d4e73487_919e45c8",
+      "range": {
+        "startLine": 190,
+        "startChar": 32,
+        "endLine": 190,
+        "endChar": 57
+      },
+      "revId": "45e83f9ff9e7bfc56357fb5fd31099dd2bca8069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8ef8d261_7e6531c4",
@@ -529,6 +577,24 @@
       "writtenOn": "2022-08-05T03:21:30Z",
       "side": 1,
       "message": "It\u0027s a bit strange that you\u0027re again fetching the window here after you have already captured it as \u0027appWindow\u0027 above.",
+      "revId": "45e83f9ff9e7bfc56357fb5fd31099dd2bca8069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2488d800_cd20097b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1001410
+      },
+      "writtenOn": "2022-09-23T23:06:17Z",
+      "side": 1,
+      "message": "This is an additional helper to get around the problem that the title didn\u0027t update yet. Yes, we might be able to remove this with the introduction of the sleep after navigation, but as this might cause flakiness later on I rather keep it there. If you feel strongly - or you have a good idea to handle this without: Let me know!",
+      "parentUuid": "e5654434_41b6278c",
       "revId": "45e83f9ff9e7bfc56357fb5fd31099dd2bca8069",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -680,6 +746,54 @@
         "startChar": 87,
         "endLine": 327,
         "endChar": 98
+      },
+      "revId": "45e83f9ff9e7bfc56357fb5fd31099dd2bca8069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b5d6f25_b412704d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1001410
+      },
+      "writtenOn": "2022-09-23T23:06:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9f3efb3e_181b16fd",
+      "range": {
+        "startLine": 327,
+        "startChar": 87,
+        "endLine": 327,
+        "endChar": 98
+      },
+      "revId": "45e83f9ff9e7bfc56357fb5fd31099dd2bca8069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c950efee_c336bcd2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1001410
+      },
+      "writtenOn": "2022-09-23T23:06:17Z",
+      "side": 1,
+      "message": "Done. \n\nWe might want to have a chat about this rule though: As there is no debugger and the only way to debug is logging and the logging is keyed off the state, there is no way to output any logging in a sub function?\nFurthermore - in some cases it is better to error out and/or show error/warning conditions in a sub function than doing it tens of times in the main test - which helps with readability. I would as such like to understand the reasoning for this rule as it does (in this case) I do not see the reason.\n\nSo let\u0027s discuss this rule offline as I think that it is wrong that way.",
+      "parentUuid": "46f6e958_403651ac",
+      "range": {
+        "startLine": 327,
+        "startChar": 154,
+        "endLine": 327,
+        "endChar": 170
       },
       "revId": "45e83f9ff9e7bfc56357fb5fd31099dd2bca8069",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
