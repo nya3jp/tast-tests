@@ -9,6 +9,7 @@ import (
 	"path/filepath"
 	"time"
 
+	fp "chromiumos/tast/common/fingerprint"
 	"chromiumos/tast/common/servo"
 	"chromiumos/tast/common/upstart"
 	"chromiumos/tast/errors"
@@ -25,7 +26,7 @@ import (
 type FirmwareTest struct {
 	d                        *rpcdut.RPCDUT
 	servo                    *servo.Proxy
-	fpBoard                  FPBoardName
+	fpBoard                  fp.FPBoardName
 	firmwareFile             FirmwareFile
 	daemonState              []daemonState
 	needsRebootAfterFlashing bool
@@ -328,7 +329,7 @@ func (t *FirmwareTest) DUTTempDir() string {
 }
 
 // FPBoard gets the fingerprint board name.
-func (t *FirmwareTest) FPBoard() FPBoardName {
+func (t *FirmwareTest) FPBoard() fp.FPBoardName {
 	return t.fpBoard
 }
 
