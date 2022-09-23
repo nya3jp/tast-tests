@@ -113,10 +113,8 @@ func VirtualKeyboardEnglishSettings(ctx context.Context, s *testing.State) {
 	for _, subTest := range subTests {
 		s.Run(ctx, subTest.name, func(ctx context.Context, s *testing.State) {
 			defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "ui_tree_"+subTest.name)
-			if !subTest.capitalizationEnabled {
-				if err := imesettings.SetVKAutoCapitalization(uc, subTest.ime, subTest.capitalizationEnabled)(ctx); err != nil {
-					s.Fatal("Failed to change IME settings: ", err)
-				}
+			if err := imesettings.SetVKAutoCapitalization(uc, subTest.ime, subTest.capitalizationEnabled)(ctx); err != nil {
+				s.Fatal("Failed to change IME settings: ", err)
 			}
 
 			vkbCtx := vkb.NewContext(cr, tconn)
