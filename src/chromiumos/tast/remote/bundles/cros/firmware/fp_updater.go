@@ -14,6 +14,7 @@ import (
 
 	empty "github.com/golang/protobuf/ptypes/empty"
 
+	fp "chromiumos/tast/common/fingerprint"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/dutfs"
@@ -53,15 +54,15 @@ func init() {
 }
 
 // getOldFirmwarePath returns the path to a known out-dated firmware.
-func getOldFirmwarePath(s *testing.State, fpBoard fingerprint.FPBoardName) (string, error) {
+func getOldFirmwarePath(s *testing.State, fpBoard fp.FPBoardName) (string, error) {
 	switch fpBoard {
-	case fingerprint.FPBoardNameNocturne:
+	case fp.FPBoardNameNocturne:
 		return s.DataPath("nocturne_fp_v2.0.3266-99b5e2c98_20201214.bin"), nil
-	case fingerprint.FPBoardNameNami:
+	case fp.FPBoardNameNami:
 		return s.DataPath("nami_fp_v2.0.3266-99b5e2c98_20201214.bin"), nil
-	case fingerprint.FPBoardNameBloonchipper:
+	case fp.FPBoardNameBloonchipper:
 		return s.DataPath("bloonchipper_v2.0.14206-ad46faf_20220718.bin"), nil
-	case fingerprint.FPBoardNameDartmonkey:
+	case fp.FPBoardNameDartmonkey:
 		return s.DataPath("dartmonkey_v2.0.2887-311310808_20201214.bin"), nil
 	default:
 		return "", errors.Errorf("no old firmware for %q", fpBoard)
