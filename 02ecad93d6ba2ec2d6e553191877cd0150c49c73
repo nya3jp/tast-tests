@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d019895_f98754ea",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/fixtures/services_on_boot_fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2022-09-23T14:59:48Z",
+      "side": 1,
+      "message": "Can we wait for \"started boot-complete\" or other startup event here?\nhttps://www.chromium.org/chromium-os/chromiumos-design-docs/boot-design/#upstart-events-during-chrome-startup",
+      "range": {
+        "startLine": 80,
+        "startChar": 1,
+        "endLine": 83,
+        "endChar": 0
+      },
+      "revId": "02ecad93d6ba2ec2d6e553191877cd0150c49c73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae68befa_6655bb14",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/fixtures/services_on_boot_fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2022-09-23T14:59:48Z",
+      "side": 1,
+      "message": "Please help to provide an example error message in the comment, thanks!",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 136
+      },
+      "revId": "02ecad93d6ba2ec2d6e553191877cd0150c49c73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
