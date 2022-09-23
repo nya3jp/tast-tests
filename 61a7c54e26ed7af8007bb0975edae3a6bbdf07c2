@@ -184,6 +184,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3c091719_e05b5170",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/check_shutdown_crash.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1121230
+      },
+      "writtenOn": "2022-09-23T23:40:56Z",
+      "side": 1,
+      "message": "I guess that you cannot use the old connection after a restart. How about trying steps described in this comment (call PrepareForRestart and reconnect)?\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/chrome.go;l\u003d562-566;drc\u003d8fbf2c53960bc8917a6a01fda5405cad7c17201e",
+      "parentUuid": "656904aa_955ed79d",
+      "range": {
+        "startLine": 102,
+        "startChar": 19,
+        "endLine": 102,
+        "endChar": 23
+      },
+      "revId": "61a7c54e26ed7af8007bb0975edae3a6bbdf07c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "500698d1_a277ca19",
         "filename": "src/chromiumos/tast/local/bundles/cros/assistant/check_shutdown_crash.go",
         "patchSetId": 6
