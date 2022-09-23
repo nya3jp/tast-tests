@@ -182,6 +182,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ea52fff7_69e6e329",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/config_verify.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-09-23T21:20:29Z",
+      "side": 1,
+      "message": "Sorry, my previous comment is for another CL.",
+      "parentUuid": "d732bacc_12d324b1",
+      "revId": "7226cdac13f86d99e4da7765a494a1c5c0de5ea3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9321b8f0_60299363",
         "filename": "src/chromiumos/tast/local/bundles/cros/kernel/config_verify.go",
         "patchSetId": 3
