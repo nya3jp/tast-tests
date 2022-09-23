@@ -73,7 +73,7 @@ func (conf *ZoomConference) Join(ctx context.Context, room string, toBlur bool) 
 		}
 
 		zoomMainWebArea := nodewith.NameContaining("Zoom").Role(role.RootWebArea)
-		zoomMainPage := nodewith.NameRegex(regexp.MustCompile("(MY ACCOUNT|SIGN IN)")).Role(role.Link).Ancestor(zoomMainWebArea)
+		zoomMainPage := nodewith.NameRegex(regexp.MustCompile("(?i)sign in|MY ACCOUNT")).Role(role.Link).Ancestor(zoomMainWebArea)
 		if err := ui.WithTimeout(mediumUITimeout).WaitUntilExists(zoomMainPage)(ctx); err != nil {
 			return errors.Wrap(err, "failed to load the zoom website")
 		}
