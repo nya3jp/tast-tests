@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0c847ae6_4fb8d6a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/modem_fw_manifest_verification.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1425417
+      },
+      "writtenOn": "2022-09-23T17:00:53Z",
+      "side": 1,
+      "message": "I think the test must start modemfwd if modemfwd was running previously. Also, probably makes sense to test for modemfwd quiescence at the end of the test.",
+      "parentUuid": "28c46502_02680ce3",
+      "range": {
+        "startLine": 38,
+        "startChar": 19,
+        "endLine": 38,
+        "endChar": 26
+      },
+      "revId": "49472866f409d88488987ca218050a605d606b02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "effac0b5_11c02393",
         "filename": "src/chromiumos/tast/local/bundles/cros/cellular/modem_helper_manifest_verification.go",
         "patchSetId": 1
@@ -54,6 +78,24 @@
       "writtenOn": "2022-09-23T16:11:38Z",
       "side": 1,
       "message": "this test doesn\u0027t interact with any daemons. it only reads files, so there shouldn\u0027t be a need to make it part of the fixture",
+      "revId": "49472866f409d88488987ca218050a605d606b02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7bd1072_13313aee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/modem_helper_manifest_verification.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1425417
+      },
+      "writtenOn": "2022-09-23T17:00:53Z",
+      "side": 1,
+      "message": "I think the fixture is harmless for the test currently, so I added it. If we don\u0027t add the fixture, this will be the only cellular test that doesn\u0027t use the fixture. I understand we don\u0027t need it, but I added it for the sake of consistency among all cellular tests. LMK if you feel strongly against it.",
+      "parentUuid": "effac0b5_11c02393",
       "revId": "49472866f409d88488987ca218050a605d606b02",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
