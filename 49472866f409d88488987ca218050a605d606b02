@@ -67,6 +67,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3aa02bdb_45e973b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/modem_fw_manifest_verification.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1425417
+      },
+      "writtenOn": "2022-09-23T17:02:06Z",
+      "side": 1,
+      "message": "Nagi, FYI. This test is probably something to keep note of once modemfwd is up and running in the fixture.",
+      "parentUuid": "0c847ae6_4fb8d6a8",
+      "range": {
+        "startLine": 38,
+        "startChar": 19,
+        "endLine": 38,
+        "endChar": 26
+      },
+      "revId": "49472866f409d88488987ca218050a605d606b02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "effac0b5_11c02393",
         "filename": "src/chromiumos/tast/local/bundles/cros/cellular/modem_helper_manifest_verification.go",
         "patchSetId": 1
