@@ -13,6 +13,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/media/webmedia/vimeo"
@@ -24,7 +25,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         PlaybackSimultaneous,
-		LacrosStatus: testing.LacrosVariantNeeded, // TODO(b/240890145): support lacros for this test once the lacros fixture for MTBF is ready.
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Plays multiple videos simultaneously in different tabs",
 		Contacts: []string{
 			"abergman@google.com",
@@ -36,7 +37,17 @@ func init() {
 		// Purposely leave the empty Attr here. MTBF tests are not included in mainline or crosbolt for now.
 		Attr:    []string{},
 		Timeout: 5 * time.Minute,
-		Fixture: mtbf.LoginReuseFixture,
+		Params: []testing.Param{
+			{
+				Fixture: mtbf.LoginReuseFixture,
+				Val:     browser.TypeAsh,
+			}, {
+				Name:              "lacros",
+				ExtraSoftwareDeps: []string{"lacros"},
+				Fixture:           mtbf.LoginReuseLacrosFixture,
+				Val:               browser.TypeLacros,
+			},
+		},
 	})
 }
 
@@ -48,7 +59,6 @@ var (
 // PlaybackSimultaneous verifies that multiple videos in different tabs can be played simultaneously.
 func PlaybackSimultaneous(ctx context.Context, s *testing.State) {
 	cr := s.FixtValue().(chrome.HasChrome).Chrome()
-	br := cr.Browser()
 
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
@@ -70,6 +80,12 @@ func PlaybackSimultaneous(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to find keyboard: ", err)
 	}
 	defer kb.Close()
+
+	br, closeBrowser, err := browserfixt.SetUp(ctx, cr, s.Param().(browser.Type))
+	if err != nil {
+		s.Fatal("Failed to open the browser: ", err)
+	}
+	defer closeBrowser(cleanupCtx)
 
 	type videoPlayer interface {
 		Open(context.Context, *browser.Browser) error
@@ -106,6 +122,17 @@ func PlaybackSimultaneous(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to check video is playing: ", err)
 		} else if !playing {
 			s.Fatal("Video isn't playing")
+		}
+	}
+
+	// Close extra lacros tabs after all videos are opened.
+	targets, err := br.FindTargets(ctx, chrome.MatchTargetURL(chrome.NewTabURL))
+	if err != nil {
+		s.Fatal("Failed to check the existence of empty tab: ", err)
+	}
+	for _, target := range targets {
+		if err := br.CloseTarget(ctx, target.TargetID); err != nil {
+			s.Fatal("Failed to close empty tab: ", err)
 		}
 	}
 
