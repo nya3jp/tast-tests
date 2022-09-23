@@ -88,7 +88,7 @@ func (a *DUTControlAndreiboard) FlashImage(ctx context.Context, image string) (e
 		return errors.Wrap(err, "bootstrap request")
 	}
 	if resp.Err != "" {
-		return errors.Errorf("bootstrap operation failed: %s", resp.Err)
+		return errors.Errorf("bootstrap operation failed: %s, stdout: %s, stderr: %s", resp.Err, resp.Output, resp.ErrOutput)
 	}
 	return nil
 }
@@ -105,7 +105,7 @@ func (a *DUTControlAndreiboard) PlainCommand(ctx context.Context, cmd string, ar
 		return nil, errors.Wrapf(err, "request %s %s", cmd, strings.Join(args, " "))
 	}
 	if resp.Err != "" {
-		return resp.Output, errors.Errorf("operation %s %s: %s", cmd, strings.Join(args, " "), resp.Err)
+		return resp.Output, errors.Errorf("operation %s %s: %s, stderr: %s", cmd, strings.Join(args, " "), resp.Err, resp.ErrOutput)
 	}
 	return resp.Output, nil
 }
@@ -113,6 +113,32 @@ func (a *DUTControlAndreiboard) PlainCommand(ctx context.Context, cmd string, ar
 // OpenTitanToolCommand runs an arbitrary OpenTitan tool command (without up-/downloading any files).
 func (a *DUTControlAndreiboard) OpenTitanToolCommand(ctx context.Context, cmd string, args ...string) (output []byte, err error) {
 	return a.PlainCommand(ctx, cmd, args...)
+}
+
+// GSCToolCommand executes a gsctool command as: gsctool [args...] [image].
+func (a *DUTControlAndreiboard) GSCToolCommand(ctx context.Context, image string, args ...string) (output []byte, err error) {
+	var cArgs []*dutcontrol.CommandArg
+	for _, a := range args {
+		cArgs = append(cArgs, &dutcontrol.CommandArg{Type: &dutcontrol.CommandArg_Plain{Plain: a}})
+	}
+
+	if image != "" {
+		imageBytes, err := ioutil.ReadFile(image)
+		if err != nil {
+			return nil, errors.Wrapf(err, "reading image file %q", image)
+		}
+		cArgs = append(cArgs, &dutcontrol.CommandArg{Type: &dutcontrol.CommandArg_File{File: imageBytes}})
+	}
+
+	req := &dutcontrol.CommandRequest{Args: cArgs}
+	resp, err := a.client.GSCToolCommand(ctx, req)
+	if err != nil {
+		return nil, errors.Wrapf(err, "gsctool request %s %s", strings.Join(args, " "), image)
+	}
+	if resp.Err != "" {
+		return resp.Output, errors.Errorf("gsctool operation %s %s: %s, stderr: %s", strings.Join(args, " "), image, resp.Err, resp.ErrOutput)
+	}
+	return resp.Output, nil
 }
 
 // Reset resets the board via spiflash, causing the image to reboot.
