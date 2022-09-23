@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f3d262a_63ae3a97",
+        "filename": "src/chromiumos/tast/local/bundles/cros/personalization/set_screensaver.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1139659
+      },
+      "writtenOn": "2022-09-23T21:29:13Z",
+      "side": 1,
+      "message": "FYI, I\u0027m going to wait until https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3914296 submits before submitting this CL since that coincidentally puts it into clamshell mode for different reasons.",
+      "range": {
+        "startLine": 128,
+        "startChar": 25,
+        "endLine": 128,
+        "endChar": 50
+      },
+      "revId": "f72030ecef59012bcbd3429f135db229a366364a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
