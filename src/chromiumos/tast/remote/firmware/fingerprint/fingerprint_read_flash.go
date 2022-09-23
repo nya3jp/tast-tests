@@ -16,8 +16,8 @@ const (
 	rollbackFlashOffsetDartmonkey   = "0xe0000"
 )
 
-func rollbackFlashOffset(fpBoard fp.FPBoardName) string {
-	if fpBoard == fp.FPBoardNameBloonchipper {
+func rollbackFlashOffset(fpBoard fp.BoardName) string {
+	if fpBoard == fp.BoardNameBloonchipper {
 		return rollbackFlashOffsetBloonchipper
 	}
 	return rollbackFlashOffsetDartmonkey
@@ -25,7 +25,7 @@ func rollbackFlashOffset(fpBoard fp.FPBoardName) string {
 
 // ReadFromRollbackFlash attempts to read bytes from the rollback section of the FPMCU's flash.
 // The directory containing outputFile must already exist on the DUT.
-func ReadFromRollbackFlash(ctx context.Context, d *dut.DUT, fpBoard fp.FPBoardName, outputFile string) error {
+func ReadFromRollbackFlash(ctx context.Context, d *dut.DUT, fpBoard fp.BoardName, outputFile string) error {
 	offset := rollbackFlashOffset(fpBoard)
 	return EctoolCommand(ctx, d, "flashread", offset, "0x1000", outputFile).Run()
 }
