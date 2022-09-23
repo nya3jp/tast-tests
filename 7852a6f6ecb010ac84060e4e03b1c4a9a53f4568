@@ -1,0 +1,124 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a4d3f17_db1b0434",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-09-23T19:10:13Z",
+      "side": 1,
+      "message": "Mostly looks good, though the poll-inside-poll is a bit funny.",
+      "revId": "7852a6f6ecb010ac84060e4e03b1c4a9a53f4568",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5ea7ef6_e08e6215",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/remote_cellular_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-09-23T19:10:13Z",
+      "side": 1,
+      "message": "any reason to use \u003c 1 instead of \u003d\u003d 0?",
+      "revId": "7852a6f6ecb010ac84060e4e03b1c4a9a53f4568",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61fda4df_7716c3e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/remote_cellular_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-09-23T19:10:13Z",
+      "side": 1,
+      "message": "nit: I think this can go all on one line.",
+      "range": {
+        "startLine": 284,
+        "startChar": 0,
+        "endLine": 287,
+        "endChar": 7
+      },
+      "revId": "7852a6f6ecb010ac84060e4e03b1c4a9a53f4568",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84707d0d_5eb65af8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/cellular/assert_sms.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-09-23T19:10:13Z",
+      "side": 1,
+      "message": "Do we actually need to use `doneCh` here or can we just lift the `errorCh` and `messageCh` checks into this poll and remove `doneCh` entirely?",
+      "revId": "7852a6f6ecb010ac84060e4e03b1c4a9a53f4568",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8700aad3_c0b43939",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/cellular/assert_sms.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-09-23T19:10:13Z",
+      "side": 1,
+      "message": "does it matter that we don\u0027t close these if we fatal on L93? (Shouldn\u0027t we instead close these from the sender side, in the goroutine?)",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 15
+      },
+      "revId": "7852a6f6ecb010ac84060e4e03b1c4a9a53f4568",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45c53deb_991ab4f9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/cellular/assert_sms.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-09-23T19:10:13Z",
+      "side": 1,
+      "message": "checking the message succeeded, the problem here is rather that we got an unexpected value, right?",
+      "range": {
+        "startLine": 104,
+        "startChar": 22,
+        "endLine": 104,
+        "endChar": 27
+      },
+      "revId": "7852a6f6ecb010ac84060e4e03b1c4a9a53f4568",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
