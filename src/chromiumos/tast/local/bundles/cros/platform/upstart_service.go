@@ -10,6 +10,7 @@ import (
 	"github.com/golang/protobuf/ptypes/empty"
 	"google.golang.org/grpc"
 
+	upstartcommon "chromiumos/tast/common/upstart"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/services/cros/platform"
 	"chromiumos/tast/testing"
@@ -73,4 +74,15 @@ func (*UpstartService) DisableJob(ctx context.Context, request *platform.Disable
 func (*UpstartService) IsJobEnabled(ctx context.Context, request *platform.IsJobEnabledRequest) (*platform.IsJobEnabledResponse, error) {
 	enabled, err := upstart.IsJobEnabled(request.JobName)
 	return &platform.IsJobEnabledResponse{Enabled: enabled}, err
+}
+
+// WaitForJobStatus waits for the given upstart job to have the status described by goal/state.
+func (*UpstartService) WaitForJobStatus(ctx context.Context, request *platform.WaitForJobStatusRequest) (*empty.Empty, error) {
+	return &empty.Empty{}, upstart.WaitForJobStatus(ctx,
+		request.JobName,
+		upstartcommon.Goal(request.Goal),
+		upstartcommon.State(request.State),
+		upstart.TolerateWrongGoal,
+		request.Timeout.AsDuration(),
+	)
 }
