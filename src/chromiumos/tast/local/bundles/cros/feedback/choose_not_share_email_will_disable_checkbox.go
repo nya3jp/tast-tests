@@ -1,4 +1,4 @@
-// Copyright 2022 The ChromiumOS Authors.
+// Copyright 2022 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -16,7 +16,6 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/feedbackapp"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
-	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
 
@@ -26,6 +25,7 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Verify the checkbox is disabled if user chooses not to share email",
 		Contacts: []string{
+			"wangdanny@google.com",
 			"zhangwenyu@google.com",
 			"xiangdongkong@google.com",
 			"cros-feedback-app@google.com",
@@ -53,12 +53,6 @@ func ChooseNotShareEmailWillDisableCheckbox(ctx context.Context, s *testing.Stat
 		"ui_dump")
 
 	ui := uiauto.New(tconn).WithTimeout(20 * time.Second)
-
-	kb, err := input.Keyboard(ctx)
-	if err != nil {
-		s.Fatal("Failed to find keyboard: ", err)
-	}
-	defer kb.Close()
 
 	// Launch feedback app and go to share data page.
 	_, err = feedbackapp.LaunchAndGoToShareDataPage(ctx, tconn)
