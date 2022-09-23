@@ -33,7 +33,7 @@ type typingPerfTestParam struct {
 var enUSTestData = "Alice was beginning to get very tired of sitting by her sister on the bank, and of having nothing to do: once or twice she had peeped into the book her sister was reading, but it had no pictures or conversations in it, 'and what is the use of a book,' thought Alice 'without pictures or conversations?'"
 
 // From go/3828217 with random concatenation.
-var pinyinTestData = "ke yi zuo ziji xiang zuodeshi chuan lai de ziji de shengyin henyou yisi de zhe yang xian ba zai zhe bian hai yu dao le zhe ming de zhu chiren li chen zhe ci lai shi weile xin chang pian de shi buguo da jia buyong dan xinwo hui jin kuaihao qi laide dan mei ci doumei you jihui quyou lan yi xiazai yan chu qian wojie shou le zhuan fang"
+var pinyinTestData = "ke yi zuo ziji xiang zuodeshi chuan lai de ziji de shengyin henyou yisi de zhe yang xian ba zai zhe bian hai yu dao le zhe ming de zhu chiren li chen zhe ci lai shi weile xin chang pian de shi buguo da jia buyong dan xinwo hui jin kuaihao qi laide dan mei ci doumei you jihui quyou lan yi xiazai yan chu qian wojie shou le zhuan fang you de shi hou sihu zong shiganjueshi jian guodetai kuai lebu guohai shixiwang zai mingnian nengyouxin de zhuan jidai gei dajia xinqing zaileng qi fangli kaishi chen dian jian qiyi gebeikefangzai er bian tingshuyuda hai deshengyin rang womenyiqi zai weilai de lv cheng zhong bi ci doubuyao fangqi zhun que di shuoying gai shi bian han lengle dang ran zhe doushi zai bu kun de qian ti xia wan chengde"
 
 func init() {
 	testing.AddTest(&testing.Test{
