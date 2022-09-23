@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1abb2e64_ac3b8a2e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/app_info_web_store.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1534667
+      },
+      "writtenOn": "2022-09-23T01:01:43Z",
+      "side": 1,
+      "message": "You\u0027re right! Thank you.",
+      "parentUuid": "3900beb5_e76fa9a0",
+      "range": {
+        "startLine": 25,
+        "startChar": 2,
+        "endLine": 25,
+        "endChar": 6
+      },
+      "revId": "b3c7be5272dc03c32f0493cf12621bda523a56c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f51032d8_eea18b30",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "55c89266_40e98bf6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/app_info_web_store.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1534667
+      },
+      "writtenOn": "2022-09-23T01:01:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f51032d8_eea18b30",
+      "range": {
+        "startLine": 66,
+        "startChar": 1,
+        "endLine": 76,
+        "endChar": 2
+      },
+      "revId": "b3c7be5272dc03c32f0493cf12621bda523a56c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3de2af4a_e9b1d36a",
@@ -77,6 +125,30 @@
       "writtenOn": "2022-09-21T22:04:07Z",
       "side": 1,
       "message": "keyboard is not used.",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 17
+      },
+      "revId": "b3c7be5272dc03c32f0493cf12621bda523a56c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5ed08dc_3d2595cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/app_info_web_store.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1534667
+      },
+      "writtenOn": "2022-09-23T01:01:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3de2af4a_e9b1d36a",
       "range": {
         "startLine": 79,
         "startChar": 0,
