@@ -42,6 +42,8 @@ func init() {
 			"resolution",
 			// Overrides the default measure duration (in seconds).
 			"duration",
+			// Overrides the default camera framerate.
+			"fps",
 			// Comma separated list of profilers to run (cpu, gpu, perf_record, top).
 			"profilers",
 		},
@@ -197,6 +199,15 @@ func HDRnetPerf(ctx context.Context, s *testing.State) {
 		subtestTimeout = measureDuration + defaultStableDuration + 30*time.Second
 	}
 
+	frameRate := 30.0
+	if fps, hasFPS := s.Var("fps"); hasFPS {
+		v, err := strconv.ParseFloat(fps, 64)
+		if err != nil {
+			s.Fatal("Invalid frame rate: ", err)
+		}
+		frameRate = v
+	}
+
 	var profList []camperf.ProfilerType
 	if plist, hasProfilers := s.Var("profilers"); hasProfilers {
 		for _, v := range strings.Split(plist, ",") {
@@ -222,7 +233,7 @@ func HDRnetPerf(ctx context.Context, s *testing.State) {
 				}
 
 				page := testpage.New(server.URL)
-				cst := testpage.NewConstraints(r.width, r.height, testpage.UserFacing)
+				cst := testpage.NewConstraints(r.width, r.height, testpage.UserFacing, frameRate)
 				if err := page.OpenWithConstraints(subTestCtx, cr, cst); err != nil {
 					s.Fatal("Failed to open camera test page: ", err)
 				}

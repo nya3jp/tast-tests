@@ -46,6 +46,7 @@ type TrackConstraints struct {
 	Width      ConstraintRange `json:"width,omitempty"`
 	Height     ConstraintRange `json:"height,omitempty"`
 	FacingMode ConstraintRange `json:"facingMode,omitempty"`
+	FrameRate  ConstraintRange `json:"frameRate,omitempty"`
 }
 
 // MediaConstraints holds the TrackConstraints for the audio and video tracks.
@@ -59,13 +60,14 @@ type MediaConstraints struct {
 
 // NewConstraints creates a MediaConstraints based on the given stream
 // resolution |width| x |height| and camera facing |facing|.
-func NewConstraints(width, height int, facing CameraFacing) *MediaConstraints {
+func NewConstraints(width, height int, facing CameraFacing, framerate float64) *MediaConstraints {
 	return &MediaConstraints{
 		Audio: false,
 		Video: TrackConstraints{
 			Width:      ConstraintRange{Exact: width},
 			Height:     ConstraintRange{Exact: height},
-			FacingMode: ConstraintRange{Exact: facing}}}
+			FacingMode: ConstraintRange{Exact: facing},
+			FrameRate:  ConstraintRange{Exact: framerate}}}
 }
 
 // New creates a CameraWebPage from the given base HTTP server URL.
