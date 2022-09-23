@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "128e5064_559ca31e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_sensor_info.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2022-09-23T01:32:18Z",
+      "side": 1,
+      "message": "Maybe using the following? So we don\u0027t need to parse the \":\" again.\n```\nregexp.MustCompile(`.* INFO iioservice_query: .* GetAttributesCallback\\(\\): ([a-zA-Z ]+): ([a-zA-Z0-9\\-]+)`)\n```",
+      "range": {
+        "startLine": 132,
+        "startChar": 40,
+        "endLine": 132,
+        "endChar": 102
+      },
+      "revId": "d45978d2ce355b334adf6c11d32001d052bcb720",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
