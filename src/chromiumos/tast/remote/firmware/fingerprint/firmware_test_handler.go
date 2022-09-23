@@ -417,7 +417,7 @@ func restoreDaemons(ctx context.Context, upstartService platform.UpstartServiceC
 // IsFPUpdaterEnabled returns true if the fingerprint updater is enabled.
 func IsFPUpdaterEnabled(ctx context.Context, d *rpcdut.RPCDUT) (bool, error) {
 	fs := dutfs.NewClient(d.RPC().Conn)
-	disabled, err := fs.Exists(ctx, filepath.Join(fingerprintFirmwarePathBase, disableFpUpdaterFile))
+	disabled, err := fs.Exists(ctx, filepath.Join(fp.FirmwareFilePath, disableFpUpdaterFile))
 	return !disabled, err
 }
 
@@ -425,7 +425,7 @@ func IsFPUpdaterEnabled(ctx context.Context, d *rpcdut.RPCDUT) (bool, error) {
 func EnableFPUpdater(ctx context.Context, d *rpcdut.RPCDUT) error {
 	fs := dutfs.NewClient(d.RPC().Conn)
 	testing.ContextLog(ctx, "Enabling the fingerprint updater")
-	disableFpUpdaterPath := filepath.Join(fingerprintFirmwarePathBase, disableFpUpdaterFile)
+	disableFpUpdaterPath := filepath.Join(fp.FirmwareFilePath, disableFpUpdaterFile)
 	if err := fs.Remove(ctx, disableFpUpdaterPath); err != nil {
 		return errors.Wrapf(err, "failed to remove %q", disableFpUpdaterPath)
 	}
@@ -440,7 +440,7 @@ func EnableFPUpdater(ctx context.Context, d *rpcdut.RPCDUT) error {
 func DisableFPUpdater(ctx context.Context, d *rpcdut.RPCDUT) error {
 	fs := dutfs.NewClient(d.RPC().Conn)
 	testing.ContextLog(ctx, "Disabling the fingerprint updater")
-	disableFpUpdaterPath := filepath.Join(fingerprintFirmwarePathBase, disableFpUpdaterFile)
+	disableFpUpdaterPath := filepath.Join(fp.FirmwareFilePath, disableFpUpdaterFile)
 	if err := fs.WriteFile(ctx, disableFpUpdaterPath, nil, 0); err != nil {
 		return errors.Wrapf(err, "failed to create %q", disableFpUpdaterPath)
 	}

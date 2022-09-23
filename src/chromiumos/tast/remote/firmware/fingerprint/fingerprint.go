@@ -88,7 +88,6 @@ func NewMPFirmwareFile(ctx context.Context, d *rpcdut.RPCDUT) (*FirmwareFile, er
 }
 
 const (
-	fingerprintFirmwarePathBase = "/opt/google/biod/fw/"
 	// WaitForBiodToStartTimeout is the time to wait for biod to start.
 	WaitForBiodToStartTimeout = 30 * time.Second
 	// timeForCleanup is the amount of time to reserve for cleaning up firmware tests.
@@ -354,7 +353,7 @@ func Board(ctx context.Context, d *rpcdut.RPCDUT) (fp.BoardName, error) {
 
 // FirmwarePath returns the path to the fingerprint firmware file on device.
 func FirmwarePath(ctx context.Context, d *rpcdut.RPCDUT, fpBoard fp.BoardName) (string, error) {
-	cmd := fmt.Sprintf("ls %s%s*.bin", fingerprintFirmwarePathBase, fpBoard)
+	cmd := "ls " + fp.FirmwareFilePattern(fpBoard)
 	out, err := d.Conn().CommandContext(ctx, "bash", "-c", cmd).Output(ssh.DumpLogOnError)
 	if err != nil {
 		return "", err
