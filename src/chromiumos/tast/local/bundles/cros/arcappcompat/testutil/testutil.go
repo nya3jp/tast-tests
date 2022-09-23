@@ -34,11 +34,15 @@ import (
 
 // Variables used by other tast tests
 const (
-	AndroidButtonClassName = "android.widget.Button"
-	notNowText             = "Not now"
-	asphaltPkgName         = "com.gameloft.android.ANMP.GloftA9HM"
-	homescapesPkgName      = "com.playrix.homescapes"
-	skypePkgName           = "com.skype.raider"
+	AndroidButtonClassName           = "android.widget.Button"
+	notNowText                       = "Not now"
+	asphaltPkgName                   = "com.gameloft.android.ANMP.GloftA9HM"
+	homescapesPkgName                = "com.playrix.homescapes"
+	skypePkgName                     = "com.skype.raider"
+	toontasticPkgName                = "com.google.toontastic"
+	playButtonText                   = "Play"
+	clamshellLaunchTestForToontastic = "Launch app in Clamshell"
+	tabletLaunchTestForToontastic    = "Launch app in Touchview"
 
 	defaultTestCaseTimeout = 2 * time.Minute
 	LaunchTestCaseTimeout  = 5 * time.Minute
@@ -167,15 +171,16 @@ func RunTestCases(ctx context.Context, s *testing.State, appPkgName, appActivity
 		s.Fatal("Failed to request the device to keep awake: ", err)
 	}
 	defer resetKeepAwake(ctx, tconn)
+	if appPkgName != toontasticPkgName { // Skip StartWithDefaultOptions for Toontastic app only.
+		if err := act.StartWithDefaultOptions(ctx, tconn); err != nil {
+			s.Fatal("Failed to start app before test cases: ", err)
+		}
 
-	if err := act.StartWithDefaultOptions(ctx, tconn); err != nil {
-		s.Fatal("Failed to start app before test cases: ", err)
+		if err := a.Command(ctx, "am", "force-stop", appPkgName).Run(testexec.DumpLogOnError); err != nil {
+			s.Fatal("Failed to stop app before test cases: ", err)
+		}
+		s.Log("Successfully tested launching and closing the app")
 	}
-
-	if err := a.Command(ctx, "am", "force-stop", appPkgName).Run(testexec.DumpLogOnError); err != nil {
-		s.Fatal("Failed to stop app before test cases: ", err)
-	}
-	s.Log("Successfully tested launching and closing the app")
 
 	// AllTests will have LaunchTests, CommonTests, ReleaseTests, TopAppTests and AppSpecificTests.
 	var AllTests = []TestCase{}
@@ -215,8 +220,13 @@ func RunTestCases(ctx context.Context, s *testing.State, appPkgName, appActivity
 			ctx, cancel := ctxutil.Shorten(cleanupCtx, 20*time.Second)
 			defer cancel()
 
-			// Launch the app.
-			if err := act.StartWithDefaultOptions(ctx, tconn); err != nil {
+			if appPkgName == toontasticPkgName { // Skip StartWithDefaultOptions if app is Toontastic and if test cases are clamshell / tablet launch test cases.
+				if test.Name != clamshellLaunchTestForToontastic && test.Name != tabletLaunchTestForToontastic {
+					if err := act.StartWithDefaultOptions(ctx, tconn); err != nil {
+						s.Fatal("Failed to start app: ", err)
+					}
+				}
+			} else if err := act.StartWithDefaultOptions(ctx, tconn); err != nil {
 				s.Fatal("Failed to start app: ", err)
 			}
 			s.Log("App launched successfully")
@@ -231,6 +241,11 @@ func RunTestCases(ctx context.Context, s *testing.State, appPkgName, appActivity
 			defer func(ctx context.Context) {
 				if appPkgName == asphaltPkgName {
 					HandleDialogBoxes(ctx, s, d, appPkgName)
+				}
+				if appPkgName == toontasticPkgName {
+					if err := apps.Close(ctx, tconn, apps.PlayStore.ID); err != nil {
+						s.Log("Failed to close Play Store: ", err)
+					}
 				}
 				if err := a.Command(ctx, "am", "force-stop", appPkgName).Run(testexec.DumpLogOnError); err != nil {
 					s.Fatal("Failed to stop app: ", err)
@@ -347,8 +362,15 @@ func setUpDevice(ctx context.Context, s *testing.State, appPkgName, appActivity 
 		s.Fatal("Failed to install app: ", err)
 	}
 	versionName, err := GetAppVersion(ctx, s, a, d, appPkgName)
-
-	if err := apps.Close(ctx, tconn, apps.PlayStore.ID); err != nil {
+	if appPkgName == toontasticPkgName {
+		// Click on play button to launch Toontastic app
+		playButton := d.Object(ui.ClassName(AndroidButtonClassName), ui.TextMatches("(?i)"+playButtonText))
+		if err := playButton.WaitForExists(ctx, ShortUITimeout); err != nil {
+			s.Fatal("playbutton doesn't exist: ", err)
+		} else if err := playButton.Click(ctx); err != nil {
+			s.Fatal("Failed to click on play button: ", err)
+		}
+	} else if err := apps.Close(ctx, tconn, apps.PlayStore.ID); err != nil {
 		s.Log("Failed to close Play Store: ", err)
 	}
 	return cr, tconn, a, versionName
@@ -367,7 +389,14 @@ func ClamshellFullscreenApp(ctx context.Context, s *testing.State, tconn *chrome
 	// If ARC-P.
 	if t == arc.Container {
 		s.Log("Setting the window to fullscreen")
-		if _, err := ash.SetARCAppWindowState(ctx, tconn, appPkgName, ash.WMEventFullscreen); err != nil {
+		if appPkgName == toontasticPkgName {
+			if _, err := SetARCAppWindowStateForSplApps(ctx, tconn, appPkgName, ash.WMEventFullscreen); err != nil {
+				s.Log(" window not yet set to fullscreen: ", err)
+			}
+			if err := restartApp(ctx, d, appPkgName); err != nil {
+				s.Fatal("Failed to restart app: ", err)
+			}
+		} else if _, err := ash.SetARCAppWindowState(ctx, tconn, appPkgName, ash.WMEventFullscreen); err != nil {
 			s.Fatal(" Failed to set the window to fullscreen: ", err)
 		}
 		if err := ash.WaitForARCAppWindowState(ctx, tconn, appPkgName, ash.WindowStateFullscreen); err != nil {
@@ -456,6 +485,15 @@ func ClamshellFullscreenApp(ctx context.Context, s *testing.State, tconn *chrome
 	DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
 }
 
+// SetARCAppWindowStateForSplApps sends WM event to ARC app window to change its window state, and returns the window state type.
+func SetARCAppWindowStateForSplApps(ctx context.Context, tconn *chrome.TestConn, pkgName string, et ash.WMEventType) (ash.WindowStateType, error) {
+	window, err := ash.GetARCAppWindowInfo(ctx, tconn, pkgName)
+	if err != nil {
+		return ash.WindowStateNormal, err
+	}
+	return ash.SetWindowState(ctx, tconn, window.ID, et, false /* waitForStateChange */)
+}
+
 // MinimizeRestoreApp Test "minimize and relaunch the app" and verifies app relaunch successfully without crash or ANR.
 func MinimizeRestoreApp(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
 	s.Log("Minimizing the window")
@@ -524,6 +562,20 @@ func ClamshellResizeWindow(ctx context.Context, s *testing.State, tconn *chrome.
 			return
 		}
 
+		if appPkgName == toontasticPkgName {
+			s.Log("N-apps start maximized. Reseting window to normal size")
+			if _, err := SetARCAppWindowStateForSplApps(ctx, tconn, appPkgName, ash.WMEventNormal); err != nil {
+				s.Log(" window not yet set to normal screen: ", err)
+			}
+			if err := restartApp(ctx, d, appPkgName); err != nil {
+				s.Fatal("Failed to restart app: ", err)
+			}
+			if err := ash.WaitForARCAppWindowState(ctx, tconn, appPkgName, ash.WindowStateNormal); err != nil {
+				s.Error("The window is not normalized: ", err)
+			}
+			DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
+			return
+		}
 		if isNApp(ctx, d) {
 			s.Log("N-apps start maximized. Reseting window to normal size")
 			if _, err := ash.SetARCAppWindowState(ctx, tconn, appPkgName, ash.WMEventNormal); err != nil {
@@ -532,7 +584,6 @@ func ClamshellResizeWindow(ctx context.Context, s *testing.State, tconn *chrome.
 			if err := ash.WaitForARCAppWindowState(ctx, tconn, appPkgName, ash.WindowStateNormal); err != nil {
 				s.Error("The window is not normalized: ", err)
 			}
-
 			DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
 		}
 
