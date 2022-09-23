@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f49f3e0_dd41ba23",
+        "filename": "src/chromiumos/tast/local/cellular/cellular_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-09-23T15:52:03Z",
+      "side": 1,
+      "message": "Shouldn\u0027t we do this outside of the poll? If we were connected by a prior call to service.Connect on L301 then we should pass WaitForConnectedOrError on L304 and return from the poll on L307.",
+      "range": {
+        "startLine": 294,
+        "startChar": 0,
+        "endLine": 300,
+        "endChar": 3
+      },
+      "revId": "874c244810acccc2eb41a2ef5901a078b86b8f4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
