@@ -14,8 +14,11 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/mtbf"
+	"chromiumos/tast/local/uidetection"
 	"chromiumos/tast/testing"
 )
+
+const recordingDuration = 5 * time.Second
 
 func init() {
 	testing.AddTest(&testing.Test{
@@ -26,6 +29,8 @@ func init() {
 		// Purposely leave the empty Attr here. MTBF tests are not included in mainline or crosbolt for now.
 		Attr:         []string{},
 		SoftwareDeps: []string{"chrome", "arc"},
+		VarDeps:      []string{"uidetection.key_type", "uidetection.key", "uidetection.server"},
+		Data:         []string{voicerecorder.PlayingIcon},
 		Fixture:      mtbf.LoginReuseFixture,
 		Timeout:      3*time.Minute + apputil.InstallationTimeout,
 	})
@@ -73,14 +78,14 @@ func AudioRecordAndPlayback(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Recording audio")
-	audioName, err := vr.RecordAudio(ctx)
-	if err != nil {
+	if err := vr.RecordAudioFor(cr, recordingDuration)(ctx); err != nil {
 		s.Fatal("Failed to record audio: ", err)
 	}
-	defer vr.DeleteAudio(cleanupCtx, cr, audioName)
+	defer vr.DeleteLatestRecord(cleanupCtx, cr)
 
 	s.Log("Playing back the recorded audio")
-	if err := vr.PlayFile(audioName)(ctx); err != nil {
+	ud := uidetection.New(tconn, s.RequiredVar("uidetection.key_type"), s.RequiredVar("uidetection.key"), s.RequiredVar("uidetection.server"))
+	if err := vr.PlayLatestRecord(ud, s.DataPath(voicerecorder.PlayingIcon))(ctx); err != nil {
 		s.Fatal("Failed to play the record: ", err)
 	}
 }
