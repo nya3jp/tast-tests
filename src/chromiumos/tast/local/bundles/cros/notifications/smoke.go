@@ -87,7 +87,9 @@ func Smoke(ctx context.Context, s *testing.State) {
 	// Ensure mouse is not hovered over the area the notification shows up in, this
 	// would result in the notification dismiss timer staying paused
 	s.Log("Moving mouse pointer to home button")
-	ui.MouseMoveTo(nodewith.ClassName("ash/HomeButton"), 0)
+	if err := ui.MouseMoveTo(nodewith.ClassName("ash/HomeButton"), 0)(ctx); err != nil {
+		s.Fatal("Failed to move mouse: ", err)
+	}
 
 	notification := nodewith.Role(role.Window).ClassName("ash/message_center/MessagePopup")
 	if err := ui.WithTimeout(uiTimeout).WaitUntilExists(notification)(ctx); err != nil {
