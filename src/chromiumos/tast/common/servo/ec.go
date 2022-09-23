@@ -331,7 +331,8 @@ func (s *Servo) CheckUnresponsiveEC(ctx context.Context) error {
 		}
 		if !strings.Contains(err.Error(), "No data was sent from the pty") &&
 			!strings.Contains(err.Error(), "EC: Timeout waiting for response.") &&
-			!strings.Contains(err.Error(), "Timed out waiting for interfaces to become available") {
+			!strings.Contains(err.Error(), "Timed out waiting for interfaces to become available") &&
+			!strings.Contains(err.Error(), "Client.Timeout exceeded while awaiting headers") {
 			return errors.Wrap(err, "unexpected EC error")
 		}
 		return nil
