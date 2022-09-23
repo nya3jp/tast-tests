@@ -14,10 +14,13 @@ import (
 	"chromiumos/tast/local/ambient"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/cuj"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/mtbf/youtube"
 	"chromiumos/tast/local/personalization"
 	"chromiumos/tast/testing"
 )
@@ -124,6 +127,27 @@ func SetScreensaver(ctx context.Context, s *testing.State) {
 	if err := prepareScreensaver(ctx, tconn, ui, testParams); err != nil {
 		s.Fatalf("Failed to prepare %v/%v screensaver: %v", testParams.TopicSource, testParams.Theme, err)
 	}
+
+	kb, err := input.VirtualKeyboard(ctx)
+	if err != nil {
+		s.Fatal("Failed to open the keyboard: ", err)
+	}
+	defer kb.Close()
+
+	var uiHandler cuj.UIActionHandler
+	if uiHandler, err = cuj.NewClamshellActionHandler(ctx, tconn); err != nil {
+		s.Fatal("Failed to create clamshell action handler: ", err)
+	}
+	defer uiHandler.Close()
+
+	// Open up an arbitrary Youtube video to test "media string". The name of
+	// the media playing should be displayed in the screensaver.
+	const extendedDisplay = false
+	videoApp := youtube.NewYtWeb(cr.Browser(), tconn, kb, ambient.TestVideoSrc, extendedDisplay, ui, uiHandler)
+	if err := videoApp.OpenAndPlayVideo(ctx); err != nil {
+		s.Fatalf("Failed to open %s: %v", ambient.TestVideoSrc.URL, err)
+	}
+	defer videoApp.Close(cleanupCtx)
 
 	if err := ambient.TestLockScreenIdle(ctx, cr, tconn, ui, testParams.AnimationStartTimeout); err != nil {
 		s.Fatal("Failed to start ambient mode: ", err)
