@@ -64,6 +64,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b437f128_970fbc86",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/intel/rec_mode_time.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-09-23T06:45:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "de37542d_a0a28015",
+      "range": {
+        "startLine": 105,
+        "startChar": 5,
+        "endLine": 105,
+        "endChar": 21
+      },
+      "revId": "96160b628e1a00c4d3f8fb9a6c23c01897e2ce86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f161c51_81a21f9e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/intel/rec_mode_time.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-09-23T06:45:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5f8ce235_68c20422",
+      "range": {
+        "startLine": 105,
+        "startChar": 1,
+        "endLine": 105,
+        "endChar": 4
+      },
+      "revId": "96160b628e1a00c4d3f8fb9a6c23c01897e2ce86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a8eca29e_97a547e6",
@@ -110,6 +158,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "655d4bc5_016dd0cb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/intel/rec_mode_time.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-09-23T06:45:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ad0f9b5d_0be8c5a7",
+      "range": {
+        "startLine": 107,
+        "startChar": 58,
+        "endLine": 107,
+        "endChar": 66
+      },
+      "revId": "96160b628e1a00c4d3f8fb9a6c23c01897e2ce86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f9db047_74027ad9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/intel/rec_mode_time.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-09-23T06:45:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a8eca29e_97a547e6",
+      "range": {
+        "startLine": 107,
+        "startChar": 54,
+        "endLine": 107,
+        "endChar": 56
+      },
+      "revId": "96160b628e1a00c4d3f8fb9a6c23c01897e2ce86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4021127f_85e43d9e",
@@ -133,6 +229,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b91388b_cf715062",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/intel/rec_mode_time.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-09-23T06:45:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4021127f_85e43d9e",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 112,
+        "endChar": 89
+      },
+      "revId": "96160b628e1a00c4d3f8fb9a6c23c01897e2ce86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b677342b_55e1f15d",
@@ -146,6 +266,30 @@
       "writtenOn": "2022-08-29T12:39:09Z",
       "side": 1,
       "message": "nit: remove get prefix\nhttps://go.dev/doc/effective_go#Getters",
+      "range": {
+        "startLine": 113,
+        "startChar": 5,
+        "endLine": 113,
+        "endChar": 33
+      },
+      "revId": "96160b628e1a00c4d3f8fb9a6c23c01897e2ce86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4211c432_18ed1c54",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/intel/rec_mode_time.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-09-23T06:45:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b677342b_55e1f15d",
       "range": {
         "startLine": 113,
         "startChar": 5,
