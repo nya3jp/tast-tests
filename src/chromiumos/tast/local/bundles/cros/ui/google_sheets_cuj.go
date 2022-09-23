@@ -19,8 +19,10 @@ import (
 	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/mouse"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/ui/cujrecorder"
 	"chromiumos/tast/testing"
@@ -56,7 +58,7 @@ func GoogleSheetsCUJ(ctx context.Context, s *testing.State) {
 		timeout                 = 10 * time.Second
 		sheetURL                = "https://docs.google.com/spreadsheets/d/1I9jmmdWkBaH6Bdltc2j5KVSyrJYNAhwBqMmvTdmVOgM/edit?usp=sharing&resourcekey=0-60wBsoTfOkoQ6t4yx2w7FQ"
 		overallScrollTimeout    = 10 * time.Minute
-		individualScrollTimeout = overallScrollTimeout / 3
+		individualScrollTimeout = overallScrollTimeout / 4
 	)
 
 	// Shorten context a bit to allow for cleanup.
@@ -163,6 +165,8 @@ func GoogleSheetsCUJ(ctx context.Context, s *testing.State) {
 	}
 	defer mw.Close()
 
+	ac := uiauto.New(tconn)
+
 	if err := recorder.Run(ctx, func(ctx context.Context) error {
 		// Open Google Sheets file.
 		sheetConn, err := cs.NewConn(ctx, sheetURL, browser.WithNewWindow())
@@ -180,6 +184,25 @@ func GoogleSheetsCUJ(ctx context.Context, s *testing.State) {
 		}
 
 		s.Logf("Scrolling down the Google Sheets file for %s", overallScrollTimeout)
+
+		s.Log("Pressing down arrow")
+		scrollbar := nodewith.Role("genericContainer").HasClass("grid-scrollable-wrapper")
+		sheetBounds, err := ac.Location(ctx, scrollbar)
+		if err != nil {
+			return errors.Wrap(err, "failed to get the sheet location on the display")
+		}
+
+		// Select the point slightly to the right and above the bottom
+		// corner of the sheet bounds. This is where the down arrow is.
+		scrollArrowOffset := coords.NewPoint(4, -4)
+		downArrow := sheetBounds.BottomRight().Add(scrollArrowOffset)
+		if err := mouse.Move(tconn, downArrow, time.Second)(ctx); err != nil {
+			return errors.Wrap(err, "failed to move mouse to the down arrow")
+		}
+
+		if err := inputsimulations.RepeatMousePressFor(ctx, mw, 500*time.Millisecond, 3*time.Second, individualScrollTimeout); err != nil {
+			return errors.Wrap(err, "failed to scroll by clicking on the down arrow")
+		}
 
 		s.Log("Using scroll wheel")
 		if err := inputsimulations.ScrollMouseDownFor(ctx, mw, 200*time.Millisecond, individualScrollTimeout); err != nil {
