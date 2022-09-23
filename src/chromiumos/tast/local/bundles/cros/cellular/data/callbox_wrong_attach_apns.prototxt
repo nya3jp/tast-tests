@@ -1,0 +1,20 @@
+mno {
+  data {
+    uuid : "d433d22c-02ac-43b5-b2b3-91f96c4b2d7a"
+    country : "us"
+    localized_name {
+      name : "Cros Cellular Network"
+    }
+    mccmnc : "00101"
+    mobile_apn {
+      apn : "callbox-wrong-attach"
+      ip_type: IPV4
+      is_attach_apn : true
+    }
+    mobile_apn {
+      apn : "callbox-wrong-attach2"
+      ip_type: IPV4
+      is_attach_apn : true
+    }
+  }
+}

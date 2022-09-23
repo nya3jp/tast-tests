@@ -142,6 +142,7 @@ const (
 	ServicePropertyCellularEID             = "Cellular.EID"
 	ServicePropertyCellularICCID           = "Cellular.ICCID"
 	ServicePropertyCellularAllowRoaming    = "Cellular.AllowRoaming"
+	ServicePropertyCellularAPN             = "Cellular.APN"
 	ServicePropertyCellularLastGoodAPN     = "Cellular.LastGoodAPN"
 	ServicePropertyCellularLastAttachAPN   = "Cellular.LastAttachAPN"
 	ServicePropertyCellularRoamingState    = "Cellular.RoamingState"

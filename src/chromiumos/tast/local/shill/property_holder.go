@@ -48,6 +48,11 @@ func (h *PropertyHolder) SetProperty(ctx context.Context, prop string, value int
 	return h.Call(ctx, "SetProperty", prop, value).Err
 }
 
+// SetProperties calls SetProperties method of shill to set a property of the object.
+func (h *PropertyHolder) SetProperties(ctx context.Context, prop string, value map[string]interface{}) error {
+	return h.Call(ctx, "SetProperty", prop, value).Err
+}
+
 // GetAndSetProperty returns the current value of a property and sets the property to a new value.
 func (h *PropertyHolder) GetAndSetProperty(ctx context.Context, prop string, value interface{}) (interface{}, error) {
 	properties, err := h.GetProperties(ctx)
