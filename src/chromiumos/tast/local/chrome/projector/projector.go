@@ -7,6 +7,7 @@ package projector
 
 import (
 	"context"
+	"fmt"
 	"regexp"
 	"time"
 
@@ -189,33 +190,44 @@ func LaunchAnnotator(ctx context.Context, tconn *chrome.TestConn) error {
 	return nil
 }
 
-// DeleteScreencastItems deletes all screencast items in the gallery
-// view.
+// DeleteScreencastItems deletes all "old" screencast items in the
+// gallery view. Since screencasts are sorted in reverse chronological
+// order on the gallery, "old" is defined as the nth screencast item
+// or older. It is important to only delete old screencast items to
+// avoid interfering with concurrently running tests who are still
+// using the more recent screencasts. This cleanup is important for
+// freeing up Drive quota for the test accounts.
 func DeleteScreencastItems(ctx context.Context, tconn *chrome.TestConn) error {
-	testing.ContextLog(ctx, "Deleting screencasts")
+	testing.ContextLog(ctx, "Deleting old screencasts")
 
 	ui := uiauto.New(tconn).WithTimeout(2 * time.Minute)
 
-	screencastItem := nodewith.ClassName("screencast-media").Role(role.GenericContainer).First()
+	n := 7
+	screencastItem := nodewith.ClassName("screencast-media").Role(role.GenericContainer).Nth(n)
 	screencastItemMoreOptionsButton := nodewith.Name("More options").Role(role.PopUpButton).Ancestor(screencastItem)
 	deleteMenuItem := nodewith.Name("Delete").Role(role.MenuItem)
 	deleteButton := nodewith.Name("Delete").Role(role.Button)
 
+	if err := ui.WaitUntilExists(screencastItem)(ctx); err != nil {
+		testing.ContextLogf(ctx, "There are %d or fewer screencast items on the gallery, no deletion required", n)
+		return nil
+	}
+
 	deleteScreencastItem := func(ctx context.Context) error {
-		if err := uiauto.Combine("delete first screencast item",
+		if err := uiauto.Combine(fmt.Sprintf("deleting the %dth screencast item", n+1),
 			ui.WaitUntilExists(screencastItemMoreOptionsButton),
 			ui.MakeVisible(screencastItemMoreOptionsButton),
 			ui.LeftClickUntil(screencastItemMoreOptionsButton, ui.Exists(deleteMenuItem)),
 			ui.LeftClickUntil(deleteMenuItem, ui.Exists(deleteButton)),
 			ui.LeftClickUntil(deleteButton, ui.Gone(deleteButton)),
 		)(ctx); err != nil {
-			return errors.Wrap(err, "failed to delete screencast item")
+			return errors.Wrapf(err, "failed to delete %dth screencast item", n+1)
 		}
 		return nil
 	}
 
 	if err := ui.WithInterval(5*time.Second).RetryUntil(deleteScreencastItem, ui.Gone(screencastItem))(ctx); err != nil {
-		return errors.Wrap(err, "failed to delete all leftover screencast items")
+		return errors.Wrap(err, "failed to delete all old screencast items")
 	}
 
 	return nil
