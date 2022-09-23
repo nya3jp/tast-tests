@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e9d428a_d90299e5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1121230
+      },
+      "writtenOn": "2022-09-23T16:18:03Z",
+      "side": 1,
+      "message": "lgtm. Thank you!",
+      "revId": "61a7c54e26ed7af8007bb0975edae3a6bbdf07c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "198802d5_bf69f9bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/check_shutdown_crash.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1121230
+      },
+      "writtenOn": "2022-09-23T16:18:03Z",
+      "side": 1,
+      "message": "optional nit: This is not a security application. But if it\u0027s easy to use sha256, maybe sha256?\n\nhttps://pkg.go.dev/crypto/md5#:~:text\u003dMD5%20is%20cryptographically%20broken%20and%20should%20not%20be%20used%20for%20secure%20applications.",
+      "range": {
+        "startLine": 43,
+        "startChar": 6,
+        "endLine": 43,
+        "endChar": 15
+      },
+      "revId": "61a7c54e26ed7af8007bb0975edae3a6bbdf07c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e148fe0_f7d953aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/check_shutdown_crash.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1121230
+      },
+      "writtenOn": "2022-09-23T16:18:03Z",
+      "side": 1,
+      "message": "nit: maybe unnecessary. Default is `ScanLines`.\n\nhttps://pkg.go.dev/bufio#Scanner.Split:~:text\u003dThe%20default%20split%20function%20is%20ScanLines.",
+      "range": {
+        "startLine": 60,
+        "startChar": 1,
+        "endLine": 60,
+        "endChar": 34
+      },
+      "revId": "61a7c54e26ed7af8007bb0975edae3a6bbdf07c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e84dc8ea_41f34f1a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/check_shutdown_crash.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1121230
+      },
+      "writtenOn": "2022-09-23T16:18:03Z",
+      "side": 1,
+      "message": "Should this be `s.Fatal`. We cannot continue this test if we couldn\u0027t calculate a hash above.",
+      "range": {
+        "startLine": 91,
+        "startChar": 4,
+        "endLine": 91,
+        "endChar": 7
+      },
+      "revId": "61a7c54e26ed7af8007bb0975edae3a6bbdf07c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "500698d1_a277ca19",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/check_shutdown_crash.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1121230
+      },
+      "writtenOn": "2022-09-23T16:18:03Z",
+      "side": 1,
+      "message": "nit: `s.Fatal` as this is a critical error for this test, i.e. a test has not performed correctly if it has reached this line.",
+      "range": {
+        "startLine": 118,
+        "startChar": 4,
+        "endLine": 118,
+        "endChar": 9
+      },
+      "revId": "61a7c54e26ed7af8007bb0975edae3a6bbdf07c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
