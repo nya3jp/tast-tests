@@ -6,6 +6,8 @@ package arc
 
 import (
 	"context"
+	"net/http"
+	"net/http/httptest"
 	"regexp"
 	"time"
 
@@ -14,7 +16,10 @@ import (
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/mouse"
+	"chromiumos/tast/local/chrome/webutil"
+	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
 
@@ -26,6 +31,7 @@ func init() {
 		Contacts:     []string{"ruanc@chromium.org", "yhanada@chromium.org", "arc-framework+tast@google.com"},
 		SoftwareDeps: []string{"chrome"},
 		Fixture:      "arcBooted",
+		Data:         []string{"clipboard_image.html"},
 		Params: []testing.Param{{
 			// b:238260020 - disable aged (>1y) unpromoted informational tests
 			// ExtraAttr:         []string{"group:mainline", "informational"},
@@ -139,6 +145,86 @@ func preparePasteInAndroid(d *ui.Device, viewIDForGetText string) pasteFunc {
 	}
 }
 
+func testCopyImageFromChromeToAndroid(ctx context.Context, p *arc.PreData, tconn *chrome.TestConn, fs http.FileSystem) error {
+	const (
+		apk = "ArcClipboardTest.apk"
+		pkg = "org.chromium.arc.testapp.clipboard"
+		cls = "org.chromium.arc.testapp.clipboard.ClipboardActivity"
+
+		titleID = idPrefix + "text_view"
+		title   = "HTML tags goes here"
+
+		textViewID = idPrefix + "text_view"
+	)
+
+	cr := p.Chrome
+	a := p.ARC
+	d := p.UIDevice
+
+	keyboard, err := input.VirtualKeyboard(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to get keyboard")
+	}
+	defer keyboard.Close()
+
+	server := httptest.NewServer(http.FileServer(fs))
+	defer server.Close()
+
+	// Open the html with an image.
+	conn, err := cr.NewConn(ctx, server.URL+"/clipboard_image.html")
+	if err != nil {
+		return errors.Wrap(err, "failed to open clipboard_image.html")
+	}
+	defer conn.Close()
+
+	if err := webutil.WaitForQuiescence(ctx, conn, 10*time.Second); err != nil {
+		return errors.Wrap(err, "failed to wait for the page loaded")
+	}
+
+	encodedImage := ""
+	conn.Eval(ctx, "document.getElementById('image').getAttribute('src')", &encodedImage)
+
+	if err := uiauto.Combine("copy all text from source website",
+		keyboard.AccelAction("Ctrl+A"),
+		keyboard.AccelAction("Ctrl+C"))(ctx); err != nil {
+		return errors.Wrap(err, "failed to copy text from source browser")
+	}
+
+	conn.CloseTarget(ctx)
+
+	act, err := arc.NewActivity(a, pkg, cls)
+	if err != nil {
+		return errors.Wrap(err, "failed to create a new activity")
+	}
+	defer act.Close()
+	if err := act.StartWithDefaultOptions(ctx, tconn); err != nil {
+		return errors.Wrap(err, "failed to start the activity")
+	}
+	defer act.Stop(ctx, tconn)
+
+	if err := d.Object(ui.ID(titleID), ui.Text(title)).WaitForExists(ctx, 30*time.Second); err != nil {
+		return errors.Wrap(err, "failed to wait for the app shown")
+	}
+
+	pasteAndroid := preparePasteInAndroid(d, textViewID)
+	// Paste in Android.
+	androidHTML, err := pasteAndroid(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to obtain pasted image")
+	}
+
+	// Verify the result.
+	// Note: style attribute is added by Chrome before the image is copied to Android.
+	re := regexp.MustCompile(`^<img id="image" src="(.+?)" style=".+?">$`)
+	if m := re.FindStringSubmatch(androidHTML); m == nil {
+		return errors.Wrapf(err, "failed to find pasted image in Android: got %q", androidHTML)
+	} else if m[1] != encodedImage {
+		return errors.Wrapf(err, "unexpected paste result: got %q; want %q", m[1], encodedImage)
+	}
+
+	return nil
+}
+
 func Clipboard(ctx context.Context, s *testing.State) {
 	const (
 		apk = "ArcClipboardTest.apk"
@@ -162,10 +248,18 @@ func Clipboard(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create Test API connection: ", err)
 	}
 
-	s.Log("Starting app")
 	if err := a.Install(ctx, arc.APKPath(apk)); err != nil {
 		s.Fatal("Failed installing app: ", err)
 	}
+
+	// Copy image from Chrome to Android.
+	s.Run(ctx, "CopyImageFromChromeToAndroid", func(ctx context.Context, s *testing.State) {
+		if err := testCopyImageFromChromeToAndroid(ctx, p, tconn, s.DataFileSystem()); err != nil {
+			s.Fatal("Failed to verify copying an image from a browser to an app: ", err)
+		}
+	})
+
+	s.Log("Starting app")
 	act, err := arc.NewActivity(a, pkg, cls)
 	if err != nil {
 		s.Fatal("Failed to create a new activity: ", err)
@@ -191,54 +285,6 @@ func Clipboard(ctx context.Context, s *testing.State) {
 	if err := mouse.Click(tconn, info.BoundsInRoot.CenterPoint(), mouse.LeftButton)(ctx); err != nil {
 		s.Fatal("Failed to click the center of the app: ", err)
 	}
-
-	s.Log("Waiting for chrome.clipboard API to become available")
-	if err := tconn.WaitForExpr(ctx, "chrome.clipboard"); err != nil {
-		s.Fatal("chrome.clipboard API unavailable: ", err)
-	}
-
-	// Copy image from Chrome to Android.
-	s.Run(ctx, "CopyImageFromChromeToAndroid", func(ctx context.Context, s *testing.State) {
-		const encodedImage = "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"
-
-		// Copy image in Chrome. This creates a temporary dom to be copied,
-		// and destroys it after the copy operation.
-		if err := tconn.Call(ctx, nil, `(encodedImage) => {
-                  const img = document.createElement('img');
-                  img.src = 'data:image/png;base64,' + encodedImage;
-                  const container = document.createElement('div');
-                  container.appendChild(img);
-                  document.body.appendChild(container);
-                  try {
-                    const range = document.createRange();
-                    range.selectNodeContents(container);
-                    const selection = window.getSelection();
-                    selection.removeAllRanges();
-                    selection.addRange(range);
-                    return document.execCommand('copy');
-                  } finally {
-                    document.body.removeChild(container);
-                  }
-                }`, encodedImage); err != nil {
-			s.Fatal("Failed to copy image in Chrome: ", err)
-		}
-
-		pasteAndroid := preparePasteInAndroid(d, textViewID)
-		// Paste in Android.
-		androidHTML, err := pasteAndroid(ctx)
-		if err != nil {
-			s.Fatal("Failed to obtain pasted text: ", err)
-		}
-
-		// Verify the result.
-		// Note: style attribute is added by Chrome before the image is copied to Android.
-		re := regexp.MustCompile(`^<img src="data:image/png;base64,(.+?)" style=".+?">$`)
-		if m := re.FindStringSubmatch(androidHTML); m == nil {
-			s.Fatalf("Failed to find pasted image in Android: got %q", androidHTML)
-		} else if m[1] != encodedImage {
-			s.Fatalf("Unexpected paste result: got %q; want %q", m[1], encodedImage)
-		}
-	})
 
 	s.Run(ctx, "CopyHTMLFromChromeToAndroidWithObserver", func(ctx context.Context, s *testing.State) {
 		const (
