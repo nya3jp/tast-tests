@@ -35,7 +35,7 @@ func init() {
 		VarDeps:      []string{"ambient.username", "ambient.password"},
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      5 * time.Minute,
-		Fixture:      "personalizationWithGaiaLogin",
+		Fixture:      "personalizationWithGaiaLoginClamshell",
 		Params: []testing.Param{
 			{
 				Name: "google_photos",
