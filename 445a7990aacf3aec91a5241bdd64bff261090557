@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c85c0cd8_a7f02bf3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/fgsec_connect.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1496163
+      },
+      "writtenOn": "2022-09-23T13:50:29Z",
+      "side": 1,
+      "message": "OK.  Those single AP test will be merged to SimpleConnect, that is I will modify it to query service Security after connection and will check against expected value there.  This will remain as multi endpoint connections.",
+      "parentUuid": "31f79fb8_169f795e",
+      "revId": "445a7990aacf3aec91a5241bdd64bff261090557",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f432d1ac_94d80fa0",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/fgsec_connect.go",
         "patchSetId": 4
@@ -31,6 +49,24 @@
       "writtenOn": "2022-09-22T23:55:05Z",
       "side": 1,
       "message": "wdyt about adding either or both of these additional subtests: wpa2wpa3 + wpa2 \u003d wpa2wpa3 and wpa2wpa3 + wpa3 \u003d wpa3?",
+      "revId": "445a7990aacf3aec91a5241bdd64bff261090557",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44fce9f0_ba6df2fb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/fgsec_connect.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1496163
+      },
+      "writtenOn": "2022-09-23T13:50:29Z",
+      "side": 1,
+      "message": "Will do.",
+      "parentUuid": "f432d1ac_94d80fa0",
       "revId": "445a7990aacf3aec91a5241bdd64bff261090557",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -54,6 +90,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "45f716fb_da276d81",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/fgsec_connect.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1496163
+      },
+      "writtenOn": "2022-09-23T13:50:29Z",
+      "side": 1,
+      "message": "I\u0027m not sure how to create more then 2 APs for the 1 + 2 + 3 case.  Can I create more APs on the same band?  I\u0027ll take a look at existing test cases.",
+      "parentUuid": "3b50317e_90700e5e",
+      "revId": "445a7990aacf3aec91a5241bdd64bff261090557",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d8263a67_fd124ad8",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/fgsec_connect.go",
         "patchSetId": 4
@@ -65,6 +119,24 @@
       "writtenOn": "2022-09-22T23:55:05Z",
       "side": 1,
       "message": "Do you need to make sure AP1 is discovered as well? The Connect function you used below only makes sure that the SSID is discovered IIUC.",
+      "revId": "445a7990aacf3aec91a5241bdd64bff261090557",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "572ac13b_c4b5cbb6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/fgsec_connect.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1496163
+      },
+      "writtenOn": "2022-09-23T13:50:29Z",
+      "side": 1,
+      "message": "I\u0027m first starting AP1, then AP2 and discover AP2.  AP1 should be already in the scan where AP2 is being reported.",
+      "parentUuid": "d8263a67_fd124ad8",
       "revId": "445a7990aacf3aec91a5241bdd64bff261090557",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
