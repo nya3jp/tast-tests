@@ -7,7 +7,9 @@ package assistant
 
 import (
 	"context"
+	"fmt"
 	"path/filepath"
+	"time"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
@@ -15,6 +17,7 @@ import (
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/testing"
@@ -198,6 +201,180 @@ func VerboseLogging() chrome.Option {
 		"--vmodule=*/assistant/*=3",
 		"--enable-features=AssistantDebugging",
 	)
+}
+
+// OobeScreen contains set of actions for an OOBE screen
+type OobeScreen struct {
+	oobeAPIName  string
+	preCondition func(ctx context.Context, oobescreen *OobeScreen, oobeCtx *OobeContext) error
+	action       func(ctx context.Context, oobescreen *OobeScreen, oobeCtx *OobeContext) error
+}
+
+// OobeContext holds a context for OOBE flow. Note that Tconn is a test API connection for a signin
+// profile.
+type OobeContext struct {
+	OobeConn *chrome.Conn
+	Tconn    *chrome.TestConn
+	Chrome   *chrome.Chrome
+}
+
+// UI constants of Assistant screens.
+// TODO(b/248583415): Add class names for tast tests and remove those constants.
+const (
+	oobeRelatedInfoHeadingName     = "Google Assistant works here too"
+	oobeRelatedInfoAgreeButtonName = "I agree"
+	oobeVoiceMatchHeadingName      = "Access your Assistant with “Hey Google”"
+	oobeVoiceMatchAgreeButtonName  = "I agree"
+	oobeVoiceMatchReadyHeadingName = "Voice Match is ready"
+)
+
+var (
+	// WelcomeScreen goes through a welcome screen with clicking next
+	WelcomeScreen = OobeScreen{
+		oobeAPIName:  "WelcomeScreen",
+		preCondition: isVisible,
+		action:       clickNext,
+	}
+	// UserCreationScreen goes through a user creation screen with clicking next
+	UserCreationScreen = OobeScreen{
+		oobeAPIName:  "UserCreationScreen",
+		preCondition: isVisible,
+		action:       clickNext,
+	}
+	// GaiaScreen goes through a gaia login screen with Chrome.ContinueLogin
+	GaiaScreen = OobeScreen{
+		oobeAPIName:  "GaiaScreen",
+		preCondition: isReadyForTesting,
+		action: func(ctx context.Context, _ *OobeScreen, oobeCtx *OobeContext) error {
+			return oobeCtx.Chrome.ContinueLogin(ctx)
+		},
+	}
+	// ConsolidatedConsentScreen goes through a consolidated consent screen with clicking next
+	ConsolidatedConsentScreen = OobeScreen{
+		oobeAPIName:  "ConsolidatedConsentScreen",
+		preCondition: isVisible,
+		action:       clickNext,
+	}
+	// SyncScreen goes through a sync screen with accepting it
+	SyncScreen = OobeScreen{
+		oobeAPIName:  "SyncScreen",
+		preCondition: isReadyForTesting,
+		action: func(ctx context.Context, _ *OobeScreen, oobeCtx *OobeContext) error {
+			return clickButtonWithName(ctx, oobeCtx, "Accept and continue")
+		},
+	}
+	// PinSetupScreen goes through PIN setup screen with skipping it
+	PinSetupScreen = OobeScreen{
+		oobeAPIName:  "PinSetupScreen",
+		preCondition: isVisible,
+		action: func(ctx context.Context, _ *OobeScreen, oobeCtx *OobeContext) error {
+			return clickButtonWithName(ctx, oobeCtx, "Skip")
+		},
+	}
+	// AssistantScreenRelatedInfoAgree goes through an Assistant related info screen with clicking
+	// an agree button
+	AssistantScreenRelatedInfoAgree = OobeScreen{
+		oobeAPIName: "AssistantScreen",
+		preCondition: func(ctx context.Context, _ *OobeScreen, oobeCtx *OobeContext) error {
+			return headingExists(ctx, oobeCtx, oobeRelatedInfoHeadingName)
+		},
+		action: func(ctx context.Context, _ *OobeScreen, oobeCtx *OobeContext) error {
+			return clickButtonWithName(ctx, oobeCtx, oobeRelatedInfoAgreeButtonName)
+		},
+	}
+	// AssistantScreenHotwordAgree goes through an Assistant hotword screen with clicking an agree
+	// button
+	AssistantScreenHotwordAgree = OobeScreen{
+		oobeAPIName: "AssistantScreen",
+		preCondition: func(ctx context.Context, _ *OobeScreen, oobeCtx *OobeContext) error {
+			return headingExists(ctx, oobeCtx, oobeVoiceMatchHeadingName)
+		},
+		action: func(ctx context.Context, _ *OobeScreen, oobeCtx *OobeContext) error {
+			return clickButtonWithName(ctx, oobeCtx, oobeVoiceMatchAgreeButtonName)
+		},
+	}
+	// AssistantScreenHotwordReady waits an Assistant voice match ready screen. Note that Assistant
+	// voice match ready screen automatically advances into a next screen.
+	AssistantScreenHotwordReady = OobeScreen{
+		oobeAPIName: "AssistantScreen",
+		preCondition: func(ctx context.Context, _ *OobeScreen, oobeCtx *OobeContext) error {
+			return headingExists(ctx, oobeCtx, oobeVoiceMatchReadyHeadingName)
+		},
+		action: func(ctx context.Context, _ *OobeScreen, oobeCtx *OobeContext) error {
+			// Voice match ready screen forwards to a next screen automatically. No action is necessary.
+			return nil
+		},
+	}
+	// ThemeSelectionScreen goes through a theme selection screen with clicking next
+	ThemeSelectionScreen = OobeScreen{
+		oobeAPIName:  "ThemeSelectionScreen",
+		preCondition: isReadyForTesting,
+		action: func(ctx context.Context, _ *OobeScreen, oobeCtx *OobeContext) error {
+			return clickButtonWithName(ctx, oobeCtx, "Next")
+		},
+	}
+	// OobeCompleteScreen goes through an oobe complete screen with clicking get started
+	OobeCompleteScreen = OobeScreen{
+		// OobeCompleteScreen does not exist in OobeAPI.screens.
+		oobeAPIName: "OobeCompleteScreen",
+		preCondition: func(ctx context.Context, _ *OobeScreen, oobeCtx *OobeContext) error {
+			return headingExists(ctx, oobeCtx, "You are all set!")
+		},
+		action: func(ctx context.Context, _ *OobeScreen, oobeCtx *OobeContext) error {
+			return clickButtonWithName(ctx, oobeCtx, "Get started")
+		},
+	}
+)
+
+// GoThroughOobeScreen goes through an OOBE screen with a provided oobeScreen.
+func GoThroughOobeScreen(ctx context.Context, oobeScreen *OobeScreen, oobeCtx *OobeContext) error {
+	if err := oobeScreen.preCondition(ctx, oobeScreen, oobeCtx); err != nil {
+		return errors.Wrapf(err, "failed to wait preCondition for %s", oobeScreen.oobeAPIName)
+	}
+	if err := oobeScreen.action(ctx, oobeScreen, oobeCtx); err != nil {
+		return errors.Wrapf(err, "failed to perform an action for %s", oobeScreen.oobeAPIName)
+	}
+	return nil
+}
+
+func isReadyForTesting(ctx context.Context, oobeScreen *OobeScreen, oobeCtx *OobeContext) error {
+	expr := fmt.Sprintf("OobeAPI.screens.%s.isReadyForTesting()", oobeScreen.oobeAPIName)
+	if err := oobeCtx.OobeConn.WaitForExprFailOnErr(ctx, expr); err != nil {
+		return errors.Wrapf(err, "failed to wait %s", expr)
+	}
+	return nil
+}
+
+func headingExists(ctx context.Context, oobeCtx *OobeContext, headingName string) error {
+	heading := nodewith.Role(role.Heading).Name(headingName)
+
+	// Screen transition in Assistant screen can take long as it might make a network request.
+	// Extend timeout to 1 min from uiauto default 15 seconds.
+	return uiauto.New(oobeCtx.Tconn).WithTimeout(1 * time.Minute).WaitUntilExists(heading)(ctx)
+}
+
+func isVisible(ctx context.Context, oobeScreen *OobeScreen, oobeCtx *OobeContext) error {
+	expr := fmt.Sprintf("OobeAPI.screens.%s.isVisible()", oobeScreen.oobeAPIName)
+	if err := oobeCtx.OobeConn.WaitForExprFailOnErr(ctx, expr); err != nil {
+		return errors.Wrapf(err, "failed to wait %s", expr)
+	}
+	return nil
+}
+
+func clickNext(ctx context.Context, oobeScreen *OobeScreen, oobeCtx *OobeContext) error {
+	expr := fmt.Sprintf("OobeAPI.screens.%s.clickNext()", oobeScreen.oobeAPIName)
+	if err := oobeCtx.OobeConn.Eval(ctx, expr, nil); err != nil {
+		return errors.Wrapf(err, "failed to click next %s", expr)
+	}
+	return nil
+}
+
+func clickButtonWithName(ctx context.Context, oobeCtx *OobeContext, btnName string) error {
+	btn := nodewith.Role(role.Button).Name(btnName)
+	ui := uiauto.New(oobeCtx.Tconn)
+	return uiauto.Combine(fmt.Sprintf("Press button with name %s", btnName),
+		ui.WaitUntilExists(btn),
+		ui.LeftClick(btn))(ctx)
 }
 
 // VerboseLoggingEnabled creates a new precondition which can be shared by
