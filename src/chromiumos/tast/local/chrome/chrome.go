@@ -123,6 +123,7 @@ var prePackages = []string{
 	"chromiumos/tast/local/accountmanager",
 	"chromiumos/tast/local/crostini",
 	"chromiumos/tast/local/drivefs",
+	"chromiumos/tast/local/graphics",
 	"chromiumos/tast/local/kioskmode/fixtures",
 	"chromiumos/tast/local/chrome/lacros/lacrosfixt",
 	"chromiumos/tast/local/multivm",
