@@ -6,6 +6,7 @@ syntax = "proto3";
 
 package tast.cros.platform;
 
+import "google/protobuf/duration.proto";
 import "google/protobuf/empty.proto";
 
 option go_package = "chromiumos/tast/services/cros/platform";
@@ -26,6 +27,8 @@ service UpstartService {
   rpc DisableJob(DisableJobRequest) returns (google.protobuf.Empty) {}
   // IsJobEnabled checks if the given upstart job is enabled.
   rpc IsJobEnabled(IsJobEnabledRequest) returns (IsJobEnabledResponse) {}
+  // WaitForJobStatus waits for the given upstart job to have the status described by goal/state.
+  rpc WaitForJobStatus(WaitForJobStatusRequest) returns (google.protobuf.Empty) {}
 }
 
 message CheckJobRequest {
@@ -68,6 +71,13 @@ message IsJobEnabledRequest {
 
 message IsJobEnabledResponse {
   bool enabled = 1;
+}
+
+message WaitForJobStatusRequest {
+  string job_name = 1;
+  string goal = 2;
+  string state = 3;
+  google.protobuf.Duration timeout = 4;
 }
 
 message Arg {
