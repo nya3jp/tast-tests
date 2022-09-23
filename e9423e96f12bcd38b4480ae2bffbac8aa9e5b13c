@@ -67,6 +67,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "447265a8_17219557",
+        "filename": "src/chromiumos/tast/common/hwsec/challenge_response.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-09-23T21:47:44Z",
+      "side": 1,
+      "message": "why did you remove the function? It is a good simplification for the test code. We don\u0027t need to see the details of the smartcard setup in the test code. Also it is called by different tests.",
+      "range": {
+        "startLine": 53,
+        "startChar": 5,
+        "endLine": 53,
+        "endChar": 20
+      },
+      "revId": "e9423e96f12bcd38b4480ae2bffbac8aa9e5b13c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b11c7485_78dbddc7",
         "filename": "src/chromiumos/tast/common/hwsec/challenge_response.go",
         "patchSetId": 14
@@ -149,6 +172,30 @@
       "side": 1,
       "message": "In this case, I think it would be better to do it like this:\nsmart_card_with_auth_api.go will replace challenge_reponse_auth_session.go.\nSince AuthFactors use AuthenticateAuthFactor for lightweight verification, this test will cover both light and full auth IIUC. \nlock_screen_challenge_response_auth_session will stay as-is, and cover our legacy AuthSession based check. I believe this scheme covers every scenario for Smart Cards testing.",
       "parentUuid": "44cf0728_b3ff6cbf",
+      "range": {
+        "startLine": 60,
+        "startChar": 4,
+        "endLine": 60,
+        "endChar": 29
+      },
+      "revId": "e9423e96f12bcd38b4480ae2bffbac8aa9e5b13c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e26bd428_ba5dd514",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/smart_card_lock_screen_with_auth_api.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-09-23T21:47:44Z",
+      "side": 1,
+      "message": "\u003e Since AuthFactors use AuthenticateAuthFactor for lightweight verification, this test will cover both light and full auth IIUC\n\nIs it going to be the full Authentication path or lightsec verification?",
+      "parentUuid": "0c3af25c_40caa075",
       "range": {
         "startLine": 60,
         "startChar": 4,
