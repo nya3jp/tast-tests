@@ -137,9 +137,9 @@ var keyIDMap = map[string]KeyType{
 
 // Map of attributes for a given board's various firmware file releases.
 // Two purposes:
-//   1) Documents the exact versions and keys used for a given firmware file.
-//   2) Used to verify that files that end up in the build (and therefore
-//      what we release) is exactly what we expect.
+//  1. Documents the exact versions and keys used for a given firmware file.
+//  2. Used to verify that files that end up in the build (and therefore
+//     what we release) is exactly what we expect.
 var firmwareVersionMap = map[FPBoardName]map[string]firmwareMetadata{
 	FPBoardNameBloonchipper: {
 		"bloonchipper_v2.0.4277-9f652bb3-RO_v2.0.14348-e5fb0b9-RW.bin": {
