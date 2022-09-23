@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "4442dc5e_a6560e26",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1352219
+      },
+      "writtenOn": "2022-09-23T18:08:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a1bbd616_62976550",
+      "revId": "ac6434189d2286af8927de568b5977f8471f8cb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "b897f5d1_bb0ac098",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -48,6 +66,30 @@
       "writtenOn": "2022-09-22T23:50:58Z",
       "side": 1,
       "message": "Let\u0027s get some air miles in \"firmware_unstable\" (i.e. build up a good result sample to confirm stability) before going to \"firmware_ec.\"",
+      "range": {
+        "startLine": 30,
+        "startChar": 79,
+        "endLine": 30,
+        "endChar": 90
+      },
+      "revId": "ac6434189d2286af8927de568b5977f8471f8cb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "31507f68_f26ad224",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/shutdown_with_command_battery_cutoff.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1352219
+      },
+      "writtenOn": "2022-09-23T18:08:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dc6408ac_eb9f4eb5",
       "range": {
         "startLine": 30,
         "startChar": 79,
