@@ -23,6 +23,7 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/common/action"
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
@@ -30,6 +31,11 @@ import (
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/local/chrome/cuj"
+	sim "chromiumos/tast/local/chrome/cuj/inputsimulations"
+	"chromiumos/tast/local/chrome/display"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/mouse"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/webutil"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/ui/cujrecorder"
@@ -54,11 +60,12 @@ type tabSwitchVariables struct {
 	param    TabSwitchParam // Test Parameters
 	webPages []webPage      // List of sites to visit
 
-	cr              *chrome.Chrome
-	br              *browser.Browser
-	closeBrowser    func(context.Context) error
-	browserTestConn *chrome.TestConn
-	recorder        *cujrecorder.Recorder
+	cr           *chrome.Chrome
+	br           *browser.Browser
+	closeBrowser func(context.Context) error
+	tconn        *chrome.TestConn
+	bTconn       *chrome.TestConn
+	recorder     *cujrecorder.Recorder
 }
 
 // webPage holds the info used to visit new sites in the test.
@@ -92,12 +99,12 @@ func runSetup(ctx context.Context, s *testing.State) (*tabSwitchVariables, error
 		return nil, errors.Wrap(err, "failed to open the browser")
 	}
 
-	vars.browserTestConn, err = vars.br.TestAPIConn(ctx)
+	vars.bTconn, err = vars.br.TestAPIConn(ctx)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to get browser TestAPIConn")
 	}
 
-	vars.recorder, err = cujrecorder.NewRecorder(ctx, vars.cr, vars.browserTestConn, nil, cujrecorder.RecorderOptions{})
+	vars.recorder, err = cujrecorder.NewRecorder(ctx, vars.cr, vars.bTconn, nil, cujrecorder.RecorderOptions{})
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to create a recorder")
 	}
@@ -110,27 +117,19 @@ func runSetup(ctx context.Context, s *testing.State) (*tabSwitchVariables, error
 		vars.recorder.Close(ctx)
 	}(ctx)
 
-	var ashTestConn *chrome.TestConn
-	if ashTestConn, err = vars.cr.TestAPIConn(ctx); err != nil {
+	vars.tconn, err = vars.cr.TestAPIConn(ctx)
+	if err != nil {
 		return nil, errors.Wrap(err, "failed to get ash-chrome test connection")
 	}
 
-	if err := vars.recorder.AddCollectedMetrics(ashTestConn, vars.param.BrowserType, cujrecorder.AshCommonMetricConfigs()...); err != nil {
-		return nil, errors.Wrap(err, "failed to add ash common metrics to recorder")
-	}
-
-	if err := vars.recorder.AddCollectedMetrics(vars.browserTestConn, vars.param.BrowserType, cujrecorder.BrowserCommonMetricConfigs()...); err != nil {
-		return nil, errors.Wrap(err, "failed to add browser common metrics to recorder")
-	}
-
-	if err := vars.recorder.AddCollectedMetrics(vars.browserTestConn, vars.param.BrowserType, cujrecorder.AnyChromeCommonMetricConfigs()...); err != nil {
-		return nil, errors.Wrap(err, "failed to add any chrome common metrics to recorder")
+	if err := vars.recorder.AddCommonMetrics(vars.tconn, vars.bTconn); err != nil {
+		s.Fatal("Failed to add common metrics to the recorder: ", err)
 	}
 
 	vars.recorder.EnableTracing(s.OutDir(), s.DataPath(cujrecorder.SystemTraceConfigFile))
 
 	if _, ok := s.Var("record"); ok {
-		if err := vars.recorder.AddScreenRecorder(ctx, ashTestConn, s.TestName()); err != nil {
+		if err := vars.recorder.AddScreenRecorder(ctx, vars.tconn, s.TestName()); err != nil {
 			s.Fatal("Failed to add screen recorder: ", err)
 		}
 	}
@@ -263,20 +262,32 @@ func closeConnections(ctx context.Context, s *testing.State, conns []*chrome.Con
 }
 
 func testBody(ctx context.Context, s *testing.State, test *tabSwitchVariables) error {
-	// Lacros Specific Setup
-	var tabOffset int
-	switch test.param.BrowserType {
-	case browser.TypeLacros:
-		tabOffset = 1
-	case browser.TypeAsh:
-		tabOffset = 0
-	default:
-		return errors.Errorf("unsupported browser type: %v", test.param.BrowserType)
+	const (
+		numPages         = 7
+		tabSwitchTimeout = 20 * time.Second
+	)
+
+	info, err := display.GetPrimaryInfo(ctx, test.tconn)
+	if err != nil {
+		return errors.Wrap(err, "failed to get the primary display info")
 	}
 
+	kw, err := input.Keyboard(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to open the keyboard")
+	}
+	defer kw.Close()
+
+	// Create a virtual mouse.
+	mw, err := input.Mouse(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to create a mouse")
+	}
+	defer mw.Close()
+
+	ac := uiauto.New(test.tconn)
+
 	for _, data := range test.webPages {
-		const numPages = 7
-		const numExtraPages = numPages - 1
 		conns := make([]*chrome.Conn, 0, numPages)
 
 		// Create the homepage of the site.
@@ -286,13 +297,19 @@ func testBody(ctx context.Context, s *testing.State, test *tabSwitchVariables) e
 		}
 		conns = append(conns, firstPage)
 
-		// Find extra urls to navigate to
-		urls, err := findAnchorURLs(ctx, firstPage, data.urlPattern, numExtraPages)
+		if test.param.BrowserType == browser.TypeLacros {
+			if err := browser.CloseTabByTitle(ctx, test.bTconn, "New Tab"); err != nil {
+				return errors.Wrap(err, `failed to close "New Tab" tab`)
+			}
+		}
+
+		// Find extra urls to navigate to.
+		urls, err := findAnchorURLs(ctx, firstPage, data.urlPattern, numPages-1)
 		if err != nil {
 			return errors.Wrapf(err, "failed to get URLs for %s", data.startURL)
 		}
 
-		// Open those found URLs as new tabs
+		// Open those found URLs as new tabs.
 		for _, url := range urls {
 			newConnection, err := test.br.NewConn(ctx, url)
 			if err != nil {
@@ -302,52 +319,79 @@ func testBody(ctx context.Context, s *testing.State, test *tabSwitchVariables) e
 		}
 
 		// Ensure that all tabs are properly loaded before starting test.
-		if err := waitUntilAllTabsLoaded(ctx, test.browserTestConn, time.Minute); err != nil {
+		if err := waitUntilAllTabsLoaded(ctx, test.bTconn, time.Minute); err != nil {
 			s.Log("Some tabs are still in loading state, but proceeding with the test: ", err)
 		}
-
-		currentTab := 0
-		const tabSwitchTimeout = 20 * time.Second
 
 		// Repeat the test as many times as necessary to fulfill its time requirements.
 		// e.g. If there are two windows that need to be tested sequentially, and the
 		// total core test duration is 10 mins, each window will be tested for 5 mins.
 		//
-		// Note: Test runs for *approximately* coreTestDuration minutes.
+		// Note: Test runs for coreTestDuration minutes.
 		if len(test.webPages) == 0 {
 			return errors.New("test scenario does not specify any web pages")
 		}
-		endTime := time.Now().Add(coreTestDuration/time.Duration(len(test.webPages)) + time.Second)
 
-		// Get all tabs
-		tabs, err := retrieveAllTabs(ctx, test.browserTestConn, tabSwitchTimeout)
-		if err != nil {
-			return errors.Wrap(err, "failed to retrieve tabs from browser")
-		}
+		s.Log("Start switching tabs")
 
 		// Switch through tabs in a skip-order fashion.
 		// Note: when skipSize = N-1, then the skip-order is 1,1,1,1 ... N times
 		// Therefore i + skipSize + 1 % N holds when 0 <= skipSize < N-1
+		skipSize := 0
+		i := 0
+		currentTab := 0
+		endTime := time.Now().Add(coreTestDuration/time.Duration(len(test.webPages)) + time.Second)
 		for time.Now().Before(endTime) {
-			for skipSize := range conns {
-				for range conns {
-					inBrowserTabIndex := currentTab + tabOffset
-					if err := focusTab(ctx, test.browserTestConn, &tabs, inBrowserTabIndex, tabSwitchTimeout); err != nil {
-						return errors.Wrapf(err, "failed to switch to tab index %d", currentTab)
-					}
+			tabToClick := nodewith.HasClass("TabIcon").Nth(currentTab)
+			if err := action.Combine(
+				"click on tab and move mouse back to the center of the display",
+				ac.MouseMoveTo(tabToClick, 500*time.Millisecond),
+				ac.LeftClick(tabToClick),
+				mouse.Move(test.tconn, info.Bounds.CenterPoint(), 500*time.Millisecond),
+			)(ctx); err != nil {
+				return err
+			}
 
-					if err := webutil.WaitForRender(ctx, conns[currentTab], tabSwitchTimeout); err != nil {
-						return errors.Wrap(err, "failed to wait for the tab to be visible")
-					}
+			if err := webutil.WaitForQuiescence(ctx, conns[currentTab], tabSwitchTimeout); err != nil {
+				return errors.Wrap(err, "failed to wait for the tab to quiesce")
+			}
 
-					currentTab = (currentTab + skipSize + 1) % len(conns)
+			for _, key := range []string{"Down", "Up"} {
+				if err := sim.RepeatKeyPress(ctx, kw, key, 200*time.Millisecond, 3); err != nil {
+					return errors.Wrapf(err, "failed to repeatedly press %s in between tab switches", key)
 				}
+			}
+			for _, scrollDown := range []bool{true, false} {
+				if err := sim.RepeatMouseScroll(ctx, mw, scrollDown, 50*time.Millisecond, 20); err != nil {
+					return errors.Wrap(err, "failed to scroll in between tab switches")
+				}
+			}
+
+			currentTab = (currentTab + skipSize + 1) % len(conns)
+
+			// Once we have seen every tab, adjust the skipSize to
+			// vary the tab visitation order.
+			if i == len(conns)-1 {
+				i = 0
 				currentTab = 0
+				skipSize = (skipSize + 1) % len(conns)
+			} else {
+				i++
 			}
 		}
 
-		// Close previously opened tabs/window.
-		closeConnections(ctx, s, conns)
+		switch test.param.BrowserType {
+		case browser.TypeLacros:
+			if err := browser.ReplaceAllTabsWithSingleNewTab(ctx, test.bTconn); err != nil {
+				return errors.Wrap(err, "failed to close all tabs and leave a single new tab open")
+			}
+		case browser.TypeAsh:
+			if err := browser.CloseAllTabs(ctx, test.bTconn); err != nil {
+				return errors.Wrap(err, "failed to close all tabs")
+			}
+		default:
+			return errors.Errorf("unsupported browser type %v", test.param.BrowserType)
+		}
 	}
 
 	return nil
