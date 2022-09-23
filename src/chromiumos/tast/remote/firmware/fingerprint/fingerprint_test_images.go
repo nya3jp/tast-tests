@@ -14,6 +14,7 @@ import (
 	"strconv"
 	"strings"
 
+	fp "chromiumos/tast/common/fingerprint"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/fsutil"
 	"chromiumos/tast/remote/dutfs"
@@ -35,11 +36,11 @@ const (
 	NocturneFPDevKey = "fingerprint_dev_keys/nocturne_fp/dev_key.pem"
 )
 
-var devKeyMap = map[FPBoardName]string{
-	FPBoardNameBloonchipper: BloonchipperDevKey,
-	FPBoardNameDartmonkey:   DartmonkeyDevKey,
-	FPBoardNameNami:         NamiFPDevKey,
-	FPBoardNameNocturne:     NocturneFPDevKey,
+var devKeyMap = map[fp.FPBoardName]string{
+	fp.FPBoardNameBloonchipper: BloonchipperDevKey,
+	fp.FPBoardNameDartmonkey:   DartmonkeyDevKey,
+	fp.FPBoardNameNami:         NamiFPDevKey,
+	fp.FPBoardNameNocturne:     NocturneFPDevKey,
 }
 
 const (
@@ -122,7 +123,7 @@ type firmwareImageGenerator struct {
 }
 
 // DevKeyForFPBoard gets the dev key for the given fpBoard.
-func DevKeyForFPBoard(fpBoard FPBoardName) string {
+func DevKeyForFPBoard(fpBoard fp.FPBoardName) string {
 	return devKeyMap[fpBoard]
 }
 
@@ -402,7 +403,7 @@ func readFMAPSection(ctx context.Context, futilityPath, firmwareFilePath string,
 }
 
 // GenerateTestFirmwareImages generates a set of test firmware images from the firmware that is on the DUT.
-func GenerateTestFirmwareImages(ctx context.Context, d *rpcdut.RPCDUT, futilityPath, keyFilePath string, fpBoard FPBoardName, buildFWFile, dutTempDir string) (ret TestImages, retErr error) {
+func GenerateTestFirmwareImages(ctx context.Context, d *rpcdut.RPCDUT, futilityPath, keyFilePath string, fpBoard fp.FPBoardName, buildFWFile, dutTempDir string) (ret TestImages, retErr error) {
 	testing.ContextLog(ctx, "Creating temp dir")
 	serverTmpDir, err := ioutil.TempDir("", "*")
 	if err != nil {
