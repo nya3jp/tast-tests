@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b3323fb_a7bb78ba",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-09-23T23:43:45Z",
+      "side": 1,
+      "message": "LGTM! Thanks so much for taking time to address the comments, and very excited to see this coming in.",
+      "revId": "de09962075f5795aad81446a2b7d09ee8b8c0789",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93ed50c0_38bdfc50",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-09-23T23:43:45Z",
+      "side": 1,
+      "message": "(not blocking this CL submission, maybe in a follow up) now that ash.Window includes the app ID associated with the windows, you can probably do this:\n\n    return w.AppID \u003d\u003d apps.LacrosID \u0026\u0026 w.IsVisible\nalso the one above for ash windows with\n\n    return (w.AppID \u003d\u003d apps.Chrome.ID || w.AppID \u003d\u003d apps.Chromium.ID) \u0026\u0026 w.IsVisible",
+      "range": {
+        "startLine": 379,
+        "startChar": 0,
+        "endLine": 379,
+        "endChar": 53
+      },
+      "revId": "de09962075f5795aad81446a2b7d09ee8b8c0789",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

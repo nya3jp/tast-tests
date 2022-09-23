@@ -799,6 +799,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "32980794_498e0be3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-09-23T23:43:45Z",
+      "side": 1,
+      "message": "AFAICT the \"ash\" test connection here is more of the interactions with system wide a11y tree (that your lacros browser window is a part of) but is less of \"ash\" as a browser.",
+      "parentUuid": "9f3efb3e_181b16fd",
+      "range": {
+        "startLine": 327,
+        "startChar": 87,
+        "endLine": 327,
+        "endChar": 98
+      },
+      "revId": "45e83f9ff9e7bfc56357fb5fd31099dd2bca8069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7b71178e_0cb877ba",
