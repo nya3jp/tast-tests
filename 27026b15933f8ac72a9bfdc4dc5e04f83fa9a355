@@ -1,0 +1,112 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3734d044_cffc0a99",
+        "filename": "src/chromiumos/tast/local/bundles/cros/biod/cros_config.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-09-23T15:57:49Z",
+      "side": 1,
+      "message": "nit: this comment doesn\u0027t really explain much, can we remove it? and can we remove the two surrounding blank lines while we\u0027re at it?",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 0
+      },
+      "revId": "27026b15933f8ac72a9bfdc4dc5e04f83fa9a355",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76f432b7_017a792d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/biod/cros_config.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-09-23T15:57:49Z",
+      "side": 1,
+      "message": "Maybe this could be an Errorf instead of a Fatalf so we can also try to fetch board or fingerprint-sensor-type and surface errors with those as well? Or are we expected to fail all of these if we fail one?",
+      "revId": "27026b15933f8ac72a9bfdc4dc5e04f83fa9a355",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01fc63c9_ab7a29e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/biod/cros_config.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-09-23T15:57:49Z",
+      "side": 1,
+      "message": "nit: this comment doesn\u0027t really explain much (like above it just seems to be the name of the crosconfig file, so it\u0027s kind of redundant with L52 in the same way)",
+      "revId": "27026b15933f8ac72a9bfdc4dc5e04f83fa9a355",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ca272bf_1e3adedc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/biod/cros_config.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-09-23T15:57:49Z",
+      "side": 1,
+      "message": "ditto re: Error vs. Fatal",
+      "revId": "27026b15933f8ac72a9bfdc4dc5e04f83fa9a355",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8cd376c_3a244e01",
+        "filename": "src/chromiumos/tast/local/bundles/cros/biod/cros_config.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-09-23T15:57:49Z",
+      "side": 1,
+      "message": "nit: ditto re: comment",
+      "revId": "27026b15933f8ac72a9bfdc4dc5e04f83fa9a355",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f7d1102_5e7ab99f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/biod/cros_config.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-09-23T15:57:49Z",
+      "side": 1,
+      "message": "This comment doesn\u0027t really explain much, can we remove it?",
+      "revId": "27026b15933f8ac72a9bfdc4dc5e04f83fa9a355",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
