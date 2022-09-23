@@ -106,6 +106,13 @@ const (
 
 	// CheckToNormConfirmed causes DUT to stay at the to_norm_confirmed screen.
 	CheckToNormConfirmed ModeSwitchOption = iota
+
+	// UseFwScreenToDevMode uses fwScreenToDevMode instead of
+	// devModeFWScreenBypass. When cold resetting the DUT in dev mode with
+	// ModeAwareReboot(), fwScreenToDevMode is less likely to leave the DUT
+	// stuck at a firmware screen. This would happen if dev mode is disabled,
+	// for example, by the FWMP.
+	UseFwScreenToDevMode ModeSwitchOption = iota
 )
 
 // msOptsContain determines whether a slice of ModeSwitchOptions contains a specific Option.
@@ -536,8 +543,14 @@ func (ms *ModeSwitcher) ModeAwareReboot(ctx context.Context, resetType ResetType
 
 	// If in dev mode, bypass the TO_DEV screen.
 	if fromMode == fwCommon.BootModeDev {
-		if err := ms.devModeFWScreenBypass(ctx); err != nil {
-			return errors.Wrap(err, "bypassing fw screen")
+		if msOptsContain(opts, UseFwScreenToDevMode) {
+			if err := ms.fwScreenToDevMode(ctx); err != nil {
+				return errors.Wrap(err, "fw screen to developer mode")
+			}
+		} else {
+			if err := ms.devModeFWScreenBypass(ctx); err != nil {
+				return errors.Wrap(err, "bypassing fw screen")
+			}
 		}
 	} else if fromMode == fwCommon.BootModeUSBDev {
 		if err := ms.fwScreenToUSBDevMode(ctx); err != nil {

@@ -26,7 +26,7 @@ func init() {
 		Contacts: []string{"cienet-firmware@cienet.corp-partner.google.com", "chromeos-firmware@google.com"},
 		// TODO(b/235742217): This test might be leaving broken DUTS that can't be auto-repaired. Add attr firmware_unstable when fixed.
 		Attr:         []string{"group:firmware"},
-		Timeout:      10 * time.Minute,
+		Timeout:      15 * time.Minute,
 		Fixture:      fixture.DevMode,
 		HardwareDeps: hwdep.D(hwdep.ChromeEC(), hwdep.Vboot2()),
 	})
@@ -130,11 +130,21 @@ func FwmpDevDisableBoot(ctx context.Context, s *testing.State) {
 	ownershipID := strings.TrimSpace(string(ownershipData))
 
 	// When dev mode is disabled by FWMP, DUT is expected to boot into normal mode.
+	rebootCtx, cancelRebootCtx := context.WithTimeout(ctx, 10*time.Minute)
+	defer cancelRebootCtx()
+
 	var opts []firmware.ModeSwitchOption
-	opts = append(opts, firmware.SkipModeCheckAfterReboot)
-	if err := ms.ModeAwareReboot(ctx, firmware.ColdReset, opts...); err != nil {
+	opts = append(opts, firmware.SkipModeCheckAfterReboot, firmware.UseFwScreenToDevMode)
+	if err := ms.ModeAwareReboot(rebootCtx, firmware.ColdReset, opts...); err != nil {
 		s.Fatal("Unexpected error occurred while attempting to boot DUT: ", err)
 	}
+
+	// For debugging purposes, log current boot mode after the reboot.
+	mode, err := h.Reporter.CurrentBootMode(ctx)
+	if err != nil {
+		s.Fatal("Failed to check boot mode: ", err)
+	}
+	s.Logf("Boot mode after reboot: %s", mode)
 
 	// Confirm TPM ownership changed.
 	s.Log("Checking that TPM ownership changed at the end of the test")
