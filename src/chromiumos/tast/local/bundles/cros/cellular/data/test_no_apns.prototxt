@@ -1,0 +1,14 @@
+mno {
+  data {
+    uuid : "d433d22c-02ac-43b5-b2b3-91f96c4b2d7a"
+    country : "us"
+    localized_name {
+      name : "Cros Cellular Network"
+    }
+    mccmnc : "00101"
+    mccmnc : "310260" #Tmobile
+    mccmnc : "310280" #ATT
+    mccmnc : "310410"
+    mccmnc : "311480" #Verizon
+  }
+}
