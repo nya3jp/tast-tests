@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9fcbbce7_ef3cc095",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/screen_recorder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1551182
+      },
+      "writtenOn": "2022-09-23T00:58:48Z",
+      "side": 1,
+      "message": "Nice idea! I renamed them to `Begin/Finish ScreenRecording` to avoid name duplication. I think we can abstract the concepts of creating/starting/stopping/saving now anyways.",
+      "parentUuid": "0cd4a043_db451a36",
+      "range": {
+        "startLine": 365,
+        "startChar": 2,
+        "endLine": 367,
+        "endChar": 113
+      },
+      "revId": "379285533713f8a055d78c56a6a09b8d5595760b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1ee860fd_a835a0f8",
         "filename": "src/chromiumos/tast/local/chrome/uiauto/screen_recorder.go",
         "patchSetId": 5
@@ -37,6 +61,30 @@
       "writtenOn": "2022-09-22T22:41:44Z",
       "side": 1,
       "message": "also return error, like `return nil, err`. Let the user decide how to handle errors. In general, it is not a good practice to block/silence errors in the helper functions.",
+      "range": {
+        "startLine": 373,
+        "startChar": 9,
+        "endLine": 373,
+        "endChar": 12
+      },
+      "revId": "379285533713f8a055d78c56a6a09b8d5595760b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25ccffa9_222b644d",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/screen_recorder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 1551182
+      },
+      "writtenOn": "2022-09-23T00:58:48Z",
+      "side": 1,
+      "message": "Nothing seemed like a perfect option, but I decided not to return `err` because:\n1. It could cause duplicate error logs: go/go-style/best-practices.md?cl\u003dhead#error-logging\n2. We\u0027d have to recommend the use of _ to ignore the errors: go/go-style/decisions#handle-errors\n\nWDYT is most idiomatic? Options are we either return and ignore `err`, have the caller log it properly, or don\u0027t pass errors at all.",
+      "parentUuid": "1ee860fd_a835a0f8",
       "range": {
         "startLine": 373,
         "startChar": 9,
