@@ -88,10 +88,6 @@ func NewMPFirmwareFile(ctx context.Context, d *rpcdut.RPCDUT) (*FirmwareFile, er
 }
 
 const (
-	// nocturne and nami are special cases and have "_fp" appended.
-	// Newer FPMCUs have unique names.
-	// See go/cros-fingerprint-firmware-branching-and-signing.
-	fingerprintBoardNameSuffix  = "_fp"
 	fingerprintFirmwarePathBase = "/opt/google/biod/fw/"
 	// WaitForBiodToStartTimeout is the time to wait for biod to start.
 	WaitForBiodToStartTimeout = 30 * time.Second
@@ -349,28 +345,11 @@ func calculateSha256sum(ctx context.Context, d *rpcdut.RPCDUT, buildFwFile strin
 	return strings.Split(string(out), " ")[0], nil
 }
 
-// boardFromCrosConfig returns the fingerprint board name from cros_config.
-func boardFromCrosConfig(ctx context.Context, d *rpcdut.RPCDUT) (fp.BoardName, error) {
-	out, err := d.Conn().CommandContext(ctx, "cros_config", "/fingerprint", "board").Output(ssh.DumpLogOnError)
-	return fp.BoardName(out), err
-}
-
 // Board returns the name of the fingerprint EC on the DUT
 func Board(ctx context.Context, d *rpcdut.RPCDUT) (fp.BoardName, error) {
-	// For devices that don't have unibuild support (which is required to
-	// use cros_config).
-	// TODO(https://crbug.com/1030862): remove when nocturne has cros_config
-	// support.
-	board, err := reporters.New(d.DUT()).Board(ctx)
-	if err != nil {
-		return fp.BoardName(""), err
-	}
-	if board == "nocturne" {
-		return fp.BoardName(board + fingerprintBoardNameSuffix), nil
-	}
-
 	// Use cros_config to get fingerprint board.
-	return boardFromCrosConfig(ctx, d)
+	out, err := d.Conn().CommandContext(ctx, "cros_config", "/fingerprint", "board").Output(ssh.DumpLogOnError)
+	return fp.BoardName(out), err
 }
 
 // FirmwarePath returns the path to the fingerprint firmware file on device.
