@@ -49,7 +49,7 @@ func ShowEvents(ctx context.Context, s *testing.State) {
 	// Comparing the time before and after opening the calendar view just in case this test is run at the very end of a year, e.g. Dec 31 23:59:59.
 	beforeOpeningCalendarYear := time.Now().Year()
 
-	// Open calendar view.
+	// Opens calendar view.
 	if err := ui.DoDefault(dateTray)(ctx); err != nil {
 		s.Fatal("Failed to click the date tray: ", err)
 	}
@@ -80,7 +80,7 @@ func ShowEvents(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to find year label after opening calendar view: ", err)
 	}
 
-	// Click on a Monday's cell to show the event list view.
+	// Clicks on a Monday's cell to show the event list view.
 	scrollView := nodewith.HasClass("ScrollView").Ancestor(calendarView).Nth(0)
 	scrollViewport := nodewith.HasClass("ScrollView::Viewport").Ancestor(scrollView).Nth(0)
 	contentView := nodewith.HasClass("View").Ancestor(scrollViewport).Nth(0)
@@ -104,7 +104,8 @@ func ShowEvents(ctx context.Context, s *testing.State) {
 	const findCellTimes = 20
 	cellPositionY := 0
 	eventListView := nodewith.HasClass("CalendarEventListView").Ancestor(calendarView)
-	eventCloseButtonView := nodewith.HasClass("View").Ancestor(eventListView).Nth(0)
+	eventCloseButtonViewContainer := nodewith.HasClass("View").Ancestor(eventListView).Nth(0)
+	eventCloseButtonView := nodewith.HasClass("IconButton").Ancestor(eventCloseButtonViewContainer).Nth(0)
 	for i := 0; i < findCellTimes; i++ {
 		s.Logf("Moving towards the first Monday cell (iteration %d of %d)", i+1, findCellTimes)
 		cellPositionY += 5
@@ -119,7 +120,7 @@ func ShowEvents(ctx context.Context, s *testing.State) {
 		}
 	}
 
-	// Show the 3 events on Monday's event list view.
+	// Shows the 3 events on Monday's event list view.
 	eventScrollView := nodewith.HasClass("ScrollView").Ancestor(eventListView).Nth(0)
 	eventScrollViewport := nodewith.HasClass("ScrollView::Viewport").Ancestor(eventScrollView).Nth(0)
 	eventContentView := nodewith.HasClass("View").Ancestor(eventScrollViewport).Nth(0)
@@ -151,15 +152,21 @@ func ShowEvents(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to find the third event label after clicking on the first Monday date cell: ", err)
 	}
 
-	// Close event list view.
-	if err := ui.LeftClick(eventCloseButtonView)(ctx); err != nil {
-		s.Fatal("Failed to click the close button in calendar event list view after open Monday's event list: ", err)
+	// Closes event list view.
+	// TODO(b/234673735): Should click on the finder directly after this bug is fixed.
+	// Currently the vertical location of the event close button fetched from |ui.Location| is not correct.
+	// Uses the CenterY() for the view containing the close button as the vertical location for the close button.
+	eventCloseButtonBounds, err := ui.Location(ctx, eventCloseButtonView)
+	eventCloseButtonViewContainerBounds, err := ui.Location(ctx, eventCloseButtonViewContainer)
+	eventCloseButtonPt := coords.NewPoint(eventCloseButtonBounds.CenterX(), eventCloseButtonViewContainerBounds.CenterY())
+	if err := mouse.Click(tconn, eventCloseButtonPt, mouse.LeftButton)(ctx); err != nil {
+		s.Fatal("Failed to click the close button in calendar event list view after opening Monday's event list: ", err)
 	}
 
-	// Click on a deate with no events.
+	// Clicks on a date with no events.
 	firstTuesdayDateCellBounds, err := ui.Location(ctx, firstTuesdayDateCell)
 	if err != nil {
-		s.Fatal("Failed to find calendar first Monday cell bounds: ", err)
+		s.Fatal("Failed to find calendar first Tuesday cell bounds: ", err)
 	}
 	cellPositionY = 0
 	for i := 0; i < findCellTimes; i++ {
@@ -184,12 +191,12 @@ func ShowEvents(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to find the Open in Google calendar label after clicking on the first Tuesday date cell: ", err)
 	}
 
-	// Close event list view.
-	if err := ui.LeftClick(eventCloseButtonView)(ctx); err != nil {
-		s.Fatal("Failed to click the close button in calendar event list view: ", err)
+	// Closes event list view.
+	if err := mouse.Click(tconn, eventCloseButtonPt, mouse.LeftButton)(ctx); err != nil {
+		s.Fatal("Failed to click the close button in calendar event list view after opening Tuesday's event list: ", err)
 	}
 
-	// Close the calendar view.
+	// Closes the calendar view.
 	calendarViewBounds, err := ui.Location(ctx, calendarView)
 	if err != nil {
 		s.Fatal("Failed to find calendar view bounds: ", err)
