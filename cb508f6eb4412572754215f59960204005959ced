@@ -99,6 +99,24 @@
       "parentUuid": "c0f9f490_0ca9520b",
       "revId": "cb508f6eb4412572754215f59960204005959ced",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1aaaeb5c_446e7385",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/intel/lid_close_open_suspend_stress.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-09-23T09:27:44Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1d67daf5_639ceff5",
+      "revId": "cb508f6eb4412572754215f59960204005959ced",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
