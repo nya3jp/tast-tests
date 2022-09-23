@@ -116,12 +116,12 @@ func BreadcrumbNodeFinder(breadcrumb string) *nodewith.Finder {
 // SearchForAppInLauncher returns an action to search and select result in launcher.
 func SearchForAppInLauncher(query, result string, kb *input.KeyboardEventWriter, ui *uiauto.Context) uiauto.Action {
 	searchResult := nodewith.Role("listBoxOption").NameContaining(result).HasClass("ui/app_list/SearchResultView").First()
-	return uiauto.Combine("search and select result in launcher",
+	return ui.RetrySilently(2, uiauto.Combine("search and select result in launcher",
 		kb.AccelAction("Search"),
 		ui.WaitUntilExists(nodewith.Role(role.TextField).HasClass("Textfield")),
 		kb.TypeAction(query),
 		ui.LeftClick(searchResult),
-	)
+	))
 }
 
 // GetImgFromFilePath returns bytes of the image with the filePath.
