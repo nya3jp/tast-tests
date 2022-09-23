@@ -100,6 +100,40 @@ func init() {
 		PostTestTimeout: resetTimeout,
 	})
 	testing.AddFixture(&testing.Fixture{
+		Name: "crossdeviceAndroidQuickStart",
+		Desc: "Set up Android device for CrOS crossdevice testing of Quick Start",
+		Impl: NewCrossDeviceAndroid(Feature{Name: QuickStart}),
+		Data: []string{AccountUtilZip, MultideviceSnippetZipName},
+		Contacts: []string{
+			"kyleshima@chromium.org",
+			"chromeos-sw-engprod@google.com",
+		},
+		Vars: []string{
+			defaultCrossDeviceUsername,
+			defaultCrossDevicePassword,
+			skipAndroidLogin,
+			crossDevicePerBoxUsername1,
+			crossDevicePerBoxUsername2,
+			crossDevicePerBoxUsername3,
+			crossDevicePerBoxUsername4,
+			crossDevicePerBoxUsername5,
+			crossDevicePerBoxUsername6,
+			crossDevicePerBoxUsername7,
+			crossDevicePerBoxUsername8,
+			crossDevicePerBoxUsername9,
+			crossDevicePerBoxUsername10,
+			crossDevicePerBoxUsername11,
+			crossDevicePerBoxUsername12,
+			crossDevicePerBoxUsername13,
+			crossDevicePerBoxPassword,
+		},
+		SetUpTimeout:    3 * time.Minute,
+		ResetTimeout:    resetTimeout,
+		TearDownTimeout: resetTimeout,
+		PreTestTimeout:  resetTimeout,
+		PostTestTimeout: resetTimeout,
+	})
+	testing.AddFixture(&testing.Fixture{
 		Name: "crossdeviceAndroidSetupSmartLock",
 		Desc: "Set up Android device for CrOS crossdevice testing of Smart Lock",
 		Impl: NewCrossDeviceAndroid(Feature{Name: SmartLock, SubFeature: SmartLockUnlock}),
@@ -322,6 +356,9 @@ func GetLoginCredentials(ctx context.Context, s *testing.FixtState, feature Feat
 				return "", "", errors.New("unknown subfeature specified for Smart Lock")
 			}
 		case PhoneHub:
+			username = defaultCrossDeviceUsername
+			password = defaultCrossDevicePassword
+		case QuickStart:
 			username = defaultCrossDeviceUsername
 			password = defaultCrossDevicePassword
 		default:

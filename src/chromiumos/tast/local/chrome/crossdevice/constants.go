@@ -40,6 +40,8 @@ const (
 	NearbyShare
 	// Exo defines Exo
 	Exo
+	// QuickStart defines Quickstart
+	QuickStart
 )
 
 // SubFeature is the specific part of a feature we are testing.
