@@ -16,6 +16,29 @@
       "message": "not sure why gwsq set you as cc instead of reviewer",
       "revId": "c5eb60c9f558f6868d526235086cf8e54ab87875",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "787e58db_a70519b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wallpaper/set_and_clear_guest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1123899
+      },
+      "writtenOn": "2022-09-23T00:28:52Z",
+      "side": 1,
+      "message": "curious, does this kill the previous session? otherwise how do we make sure we wait for the logout to complete.",
+      "range": {
+        "startLine": 71,
+        "startChar": 14,
+        "endLine": 71,
+        "endChar": 25
+      },
+      "revId": "c5eb60c9f558f6868d526235086cf8e54ab87875",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
