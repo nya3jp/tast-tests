@@ -142,16 +142,26 @@ const (
 	ServicePropertyCellularEID             = "Cellular.EID"
 	ServicePropertyCellularICCID           = "Cellular.ICCID"
 	ServicePropertyCellularAllowRoaming    = "Cellular.AllowRoaming"
+	ServicePropertyCellularAPN             = "Cellular.APN"
 	ServicePropertyCellularLastGoodAPN     = "Cellular.LastGoodAPN"
 	ServicePropertyCellularLastAttachAPN   = "Cellular.LastAttachAPN"
 	ServicePropertyCellularRoamingState    = "Cellular.RoamingState"
 	ServicePropertyCellularServingOperator = "Cellular.ServingOperator"
 
 	// Keys into the dictionaries exposed as properties for LastAttachAPN and LastGoodAPN
-	DevicePropertyCellularAPNInfoApnName   = "apn"
-	DevicePropertyCellularAPNInfoApnSource = "apn_source"
-	DevicePropertyCellularAPNInfoApnAttach = "attach"
-	DevicePropertyCellularAPNInfoApnIPType = "ip_type"
+	DevicePropertyCellularAPNInfoApnName           = "apn"
+	DevicePropertyCellularAPNInfoApnSource         = "apn_source"
+	DevicePropertyCellularAPNInfoApnAttach         = "attach"
+	DevicePropertyCellularAPNInfoApnIPType         = "ip_type"
+	DevicePropertyCellularAPNInfoApnAuthentication = "authentication"
+
+	// APN related enums
+	DevicePropertyCellularAPNInfoApnIPTypeIPv4         = "ipv4"
+	DevicePropertyCellularAPNInfoApnIPTypeIPv4v6       = "ipv4v6"
+	DevicePropertyCellularAPNInfoApnIPTypeIPv6         = "ipv6"
+	DevicePropertyCellularAPNInfoApnAttachTrue         = "attach"
+	DevicePropertyCellularAPNInfoApnAuthenticationCHAP = "CHAP"
+	DevicePropertyCellularAPNInfoApnAuthenticationPAP  = "PAP"
 
 	// WiFi service property names.
 	ServicePropertyPassphrase          = "Passphrase"
