@@ -16,6 +16,29 @@
       "message": "Please review, thank you!",
       "revId": "535e10133e1680c64eab45de77feb9df9ca7e417",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6a02fb6_ea10fede",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/google_sheets_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-09-23T22:51:07Z",
+      "side": 1,
+      "message": "nit: A little worried about the fixed offset but I can\u0027t think of any better way to do it either.",
+      "range": {
+        "startLine": 197,
+        "startChar": 23,
+        "endLine": 197,
+        "endChar": 45
+      },
+      "revId": "535e10133e1680c64eab45de77feb9df9ca7e417",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
