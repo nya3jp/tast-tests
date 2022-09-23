@@ -16,6 +16,40 @@
       "message": "LGTM",
       "revId": "149b6e5848e6fad6c4709a634d7ae6db5274edcb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "17c75f66_e4e8aebe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-09-23T17:26:52Z",
+      "side": 1,
+      "message": "LGTM, please get +1 from a team mate before submission.",
+      "revId": "149b6e5848e6fad6c4709a634d7ae6db5274edcb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55fd2979_f7b72bff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/runtimeprobe/verify_sandbox_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-09-23T17:26:52Z",
+      "side": 1,
+      "message": "Please add a comment for exported functions.",
+      "revId": "149b6e5848e6fad6c4709a634d7ae6db5274edcb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
