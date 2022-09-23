@@ -20,6 +20,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "33781b30_ef578b75",
+        "filename": "src/chromiumos/tast/common/fingerprint/firmware_file.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-09-23T21:25:53Z",
+      "side": 1,
+      "message": "If this function is not used anywhere else, can you please move it to the `fingerprint.go` file?",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 1
+      },
+      "revId": "3dd7e87bafc7bb95e888f753c72c60d67f93b29d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f4e02a55_a4b71b97",
         "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
         "patchSetId": 1
