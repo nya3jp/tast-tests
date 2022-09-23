@@ -186,6 +186,25 @@ func ECWakeOnCharge(ctx context.Context, s *testing.State) {
 				return errors.Wrap(err, "failed to connect charger")
 			}
 
+			// On babytiger and babymega, leased from the lab,
+			// it appeared that even though the servo command was
+			// successful, the pd role didn't change. Check whether
+			// this would also happen on the other DUTs. If it did,
+			// exit from the test, and restore connection to the DUT
+			// by the deferred cleanup.
+			if err := testing.Sleep(ctx, 5*time.Second); err != nil {
+				return errors.Wrap(err, "failed to sleep")
+			}
+			if checkedInfo.servoConnectionType == "type-c" {
+				role, err := h.Servo.GetPDRole(ctx)
+				if err != nil {
+					return errors.Wrap(err, "failed to retrieve USB PD role for servo")
+				}
+				if role != servo.PDRoleSrc {
+					return errors.Wrapf(err, "setting pd role to src, but got: %q", role)
+				}
+			}
+
 			// If DUT has hibernated before, reconnecting power supply will wake up the device.
 			// Wait for DUT to reconnect.
 			if hasHibernated {
@@ -273,20 +292,18 @@ func ECWakeOnCharge(ctx context.Context, s *testing.State) {
 
 	args := s.Param().(*testArgsForECWakeOnCharge)
 	defer func(ctx context.Context, args *testArgsForECWakeOnCharge) {
-		switch args.hasLid {
-		case true:
-			if err := h.Servo.OpenLid(ctx); err != nil {
-				s.Fatal("Failed to set lid state: ", err)
-			}
-		case false:
-			s.Log("Cold resetting DUT at the end of test")
-			if err := h.Servo.SetPowerState(ctx, servo.PowerStateReset); err != nil {
-				s.Fatal("Failed to cold reset DUT at the end of test: ", err)
-			}
+		s.Log("Cold resetting DUT at the end of test")
+		if err := h.Servo.SetPowerState(ctx, servo.PowerStateReset); err != nil {
+			s.Fatal("Failed to cold reset DUT at the end of test: ", err)
 		}
 		s.Log("Waiting for reconnection to DUT")
 		if err := h.WaitConnect(ctx); err != nil {
 			s.Fatal("Unable to reconnect to DUT: ", err)
+		}
+		if args.hasLid {
+			if err := h.Servo.OpenLid(ctx); err != nil {
+				s.Fatal("Failed to set lid state: ", err)
+			}
 		}
 		if args.formFactor == "convertible" {
 			// Check for tablet mode angles, and if they are different
