@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/launcher"
 	"chromiumos/tast/testing"
 )
@@ -91,17 +92,26 @@ func OpenPlayStoreAccountSettings(ctx context.Context, arcDevice *androidui.Devi
 
 // SwitchPlayStoreAccount switches between the ARC account in PlayStore.
 func SwitchPlayStoreAccount(ctx context.Context, arcDevice *androidui.Device, tconn *chrome.TestConn, accountEmail string) error {
-	if err := OpenPlayStoreAccountSettings(ctx, arcDevice, tconn); err != nil {
-		return errors.Wrap(err, "failed to open Play Store account settings")
+	accountNameButton := arcDevice.Object(androidui.ClassName("android.widget.TextView"), androidui.Text(accountEmail))
+
+	if err := uiauto.Retry(3, func(ctx context.Context) error {
+		// The added new account sometimes need more time to be reflected in Play Store settings.
+		if err := OpenPlayStoreAccountSettings(ctx, arcDevice, tconn); err != nil {
+			return errors.Wrap(err, "failed to open Play Store account settings")
+		}
+
+		if err := accountNameButton.WaitForExists(ctx, 30*time.Second); err != nil {
+			return errors.Wrap(err, "failed to find Account Name")
+		}
+		return nil
+	})(ctx); err != nil {
+		return errors.Wrap(err, "failed to open Play Store account settings and find account name")
 	}
 
-	accountNameButton := arcDevice.Object(androidui.ClassName("android.widget.TextView"), androidui.Text(accountEmail))
-	if err := accountNameButton.WaitForExists(ctx, 30*time.Second); err != nil {
-		return errors.Wrap(err, "failed to find Account Name")
-	}
 	if err := accountNameButton.Click(ctx); err != nil {
 		return errors.Wrap(err, "failed to click Account Name")
 	}
+
 	return nil
 }
 
