@@ -208,6 +208,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "811cc135_90c871bb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/fgsec_wpa_upgrade.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-09-23T00:19:06Z",
+      "side": 1,
+      "message": "I see what you mean. How about we test all paths to wpaall? For example:\n\n1 -\u003e 12 -\u003e 123\n2 -\u003e 12 -\u003e 123\n1 -\u003e(+wpa3 or +wpa2wpa3) 123\n2 -\u003e 23 -\u003e 123\n3 -\u003e(+wpa or +wpawpa2) -\u003e 123\n3 -\u003e 23 -\u003e 123\n12 -\u003e 123\n23 -\u003e 123\n\nWe can also rename the test to something more general than just upgrade. Maybe FgsecWpaChange.",
+      "parentUuid": "5962541d_b2835723",
+      "revId": "60c2bfcc55e0bc07eaa4f182b108adc5734fa38f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "683f5c2e_cee8ea1e",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/fgsec_wpa_upgrade.go",
         "patchSetId": 2
