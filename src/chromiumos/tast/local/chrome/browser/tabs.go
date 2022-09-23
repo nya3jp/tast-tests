@@ -37,7 +37,10 @@ func CurrentTabs(ctx context.Context, tconn *TestConn) ([]Tab, error) {
 // The browser is given via |tconn|.
 func AllTabs(ctx context.Context, tconn *TestConn) ([]Tab, error) {
 	var tabs []Tab
-	if err := tconn.Eval(ctx, "tast.promisify(chrome.tabs.query)({})", &tabs); err != nil {
+	if err := tconn.Eval(ctx, `(async () => {
+		const tabs = await tast.promisify(chrome.tabs.query)({});
+		return tabs.filter((tab) => tab.id);
+	})()`, &tabs); err != nil {
 		return nil, err
 	}
 	return tabs, nil
