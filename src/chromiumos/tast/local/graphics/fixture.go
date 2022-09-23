@@ -18,6 +18,7 @@ import (
 	"chromiumos/tast/fsutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
+	"chromiumos/tast/local/cpu"
 	"chromiumos/tast/local/crash"
 	"chromiumos/tast/local/syslog"
 	"chromiumos/tast/local/upstart"
@@ -88,6 +89,28 @@ func init() {
 		Impl:            &graphicsIgtFixture{},
 		SetUpTimeout:    upstart.UIRestartTimeout,
 		TearDownTimeout: upstart.UIRestartTimeout,
+	})
+
+	testing.AddFixture(&testing.Fixture{
+		Name:            "chromeGraphicsIdle",
+		Desc:            "Logged into a user session for graphics Idle testing. This fixture starts a chrome dedicated for graphics.Idle tests",
+		Contacts:        []string{"ddmail@google.com", "chromeos-gfx@google.com"},
+		Parent:          "gpuWatchDog",
+		Impl:            &graphicsIdleFixture{fOpt: []chrome.Option{}},
+		SetUpTimeout:    chrome.LoginTimeout,
+		ResetTimeout:    chrome.ResetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+	})
+
+	testing.AddFixture(&testing.Fixture{
+		Name:            "chromeGraphicsIdleArc",
+		Desc:            "Logged into a user session for graphics Idle testiang. This fixture starts an arc enabled chrome dedicated for graphics.Idle.*arc tests",
+		Contacts:        []string{"ddmail@google.com", "chromeos-gfx@google.com"},
+		Parent:          "gpuWatchDog",
+		Impl:            &graphicsIdleFixture{fOpt: []chrome.Option{chrome.ARCEnabled()}},
+		SetUpTimeout:    chrome.LoginTimeout,
+		ResetTimeout:    chrome.ResetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
 	})
 }
 
@@ -352,4 +375,50 @@ func (f *graphicsIgtFixture) SetUp(ctx context.Context, s *testing.FixtState) in
 func (f *graphicsIgtFixture) TearDown(ctx context.Context, s *testing.FixtState) {
 	s.Log("TearDown: Start tlsdated")
 	upstart.EnsureJobRunning(ctx, "tlsdated")
+}
+
+// graphicsIdleFixture starts chrome, waits till the machine is cooled down then proceed.
+type graphicsIdleFixture struct {
+	cr   *chrome.Chrome
+	fOpt []chrome.Option // Function to generate Chrome Options
+}
+
+func (f *graphicsIdleFixture) Reset(ctx context.Context) error {
+	if err := f.cr.Responded(ctx); err != nil {
+		return errors.Wrap(err, "existing Chrome connection is unusable")
+	}
+	return nil
+}
+
+func (f *graphicsIdleFixture) PreTest(ctx context.Context, s *testing.FixtTestState) {
+}
+
+func (f *graphicsIdleFixture) PostTest(ctx context.Context, s *testing.FixtTestState) {
+}
+
+func (f *graphicsIdleFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
+	cr, err := chrome.New(ctx, f.fOpt...)
+	if err != nil {
+		s.Fatal("Failed to start Chrome: ", err)
+	}
+	if err := cpu.WaitUntilStabilized(ctx, cpu.CoolDownConfig{
+		PollTimeout:              2 * time.Minute,
+		PollInterval:             2 * time.Second,
+		TemperatureThresholdMode: cpu.TemperatureThresholdPerModel,
+		TemperatureThreshold:     55000,
+		CoolDownMode:             cpu.CoolDownPreserveUI,
+	}); err != nil {
+		s.Log("Failed to get stable CPU before running tests: ", err)
+	}
+	chrome.Lock()
+	f.cr = cr
+	return cr
+}
+
+func (f *graphicsIdleFixture) TearDown(ctx context.Context, s *testing.FixtState) {
+	chrome.Unlock()
+	if err := f.cr.Close(ctx); err != nil {
+		s.Log("Failed to close Chrome connection: ", err)
+	}
+	f.cr = nil
 }
