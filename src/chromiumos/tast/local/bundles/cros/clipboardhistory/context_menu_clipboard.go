@@ -8,22 +8,25 @@ import (
 	"context"
 	"fmt"
 	"strings"
-	"time"
 
-	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
-	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/clipboardhistory"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/launcher"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/ossettings"
 	"chromiumos/tast/local/chrome/uiauto/role"
-	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
+
+type clipboardTest interface {
+	openApp(ctx context.Context, f *clipboardhistory.FixtData) error
+	closeApp(ctx context.Context) error
+	pasteAndVerify(ctx context.Context, f *clipboardhistory.FixtData, text string) error
+}
 
 type contextMenuClipboardTestParam struct {
 	testName string
@@ -33,35 +36,39 @@ type contextMenuClipboardTestParam struct {
 func init() {
 	testing.AddTest(&testing.Test{
 		Func: ContextMenuClipboard,
-		// TODO(b/243339088): There is no timeline for adding a clipboard option to the Lacros context menu,
-		// therefore, lacros will not be added to this test for now.
+		// TODO(b/243339088): There is no timeline for adding a clipboard option to
+		// the Lacros address bar context menu. Therefore, no Lacros variant will
+		// be added to this test for now.
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Verifies the clipboard option in the context menu is working properly within several apps by left-clicking an option",
 		Contacts: []string{
 			"cienet-development@googlegroups.com",
 			"chromeos-sw-engprod@google.com",
+			"multipaste-eng@google.com",
 			"victor.chen@cienet.com",
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Vars:         []string{"ui.gaiaPoolDefault"},
-		Fixture:      "chromeLoggedIn",
 		Params: []testing.Param{{
-			Name: "browser",
+			Name:    "ash_chrome",
+			Fixture: "clipboardHistory",
 			Val: &contextMenuClipboardTestParam{
-				testName: "ash_Chrome",
+				testName: "ash_chrome",
 				testImpl: &browserTest{},
 			},
 		}, {
-			Name: "settings",
+			Name:    "settings",
+			Fixture: "clipboardHistory",
 			Val: &contextMenuClipboardTestParam{
-				testName: "settings_App",
+				testName: "settings",
 				testImpl: &settingsTest{},
 			},
 		}, {
-			Name: "launcher",
+			Name:    "launcher",
+			Fixture: "clipboardHistory",
 			Val: &contextMenuClipboardTestParam{
-				testName: "bubble_launcher",
+				testName: "launcher",
 				testImpl: &launcherTest{},
 			},
 		},
@@ -69,130 +76,106 @@ func init() {
 	})
 }
 
-type clipboardResource struct {
-	ui           *uiauto.Context
-	kb           *input.KeyboardEventWriter
-	br           *browser.Browser
-	tconn        *chrome.TestConn
-	testContents []string
-}
-
-// ContextMenuClipboard verifies that it is possible to open clipboard history via various surfaces' context menus.
+// ContextMenuClipboard verifies that it is possible to open clipboard history
+// via various surfaces' context menus.
 func ContextMenuClipboard(ctx context.Context, s *testing.State) {
-	cr := s.FixtValue().(chrome.HasChrome).Chrome()
+	f := s.FixtValue().(*clipboardhistory.FixtData)
 
-	tconn, err := cr.TestAPIConn(ctx)
-	if err != nil {
-		s.Fatal("Failed to connect to test API: ", err)
-	}
-
-	kb, err := input.Keyboard(ctx)
-	if err != nil {
-		s.Fatal("Failed to get keyboard: ", err)
-	}
-	defer kb.Close()
-
-	cleanUpCtx := ctx
-	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
-	defer cancel()
-
-	resource := &clipboardResource{
-		ui:           uiauto.New(tconn),
-		kb:           kb,
-		br:           cr.Browser(),
-		tconn:        tconn,
-		testContents: []string{"abc", "123"},
-	}
-
-	s.Log("Setup clipboard history")
-	for _, text := range resource.testContents {
-		if err := ash.SetClipboard(ctx, tconn, text); err != nil {
+	clipboardItems := []string{"abc", "123"}
+	for _, text := range clipboardItems {
+		if err := ash.SetClipboard(ctx, f.TestConn, text); err != nil {
 			s.Fatalf("Failed to set up %q into clipboard history: %v", text, err)
 		}
 	}
 
 	param := s.Param().(*contextMenuClipboardTestParam)
+	defer faillog.DumpUITreeWithScreenshotOnError(
+		ctx, s.OutDir(), s.HasError, f.Chrome, fmt.Sprintf("%s_dump", param.testName))
 
-	if err := param.testImpl.openApp(ctx, resource); err != nil {
+	if err := param.testImpl.openApp(ctx, f); err != nil {
 		s.Fatal("Failed to open app: ", err)
 	}
-	defer param.testImpl.closeApp(cleanUpCtx)
-	defer faillog.DumpUITreeWithScreenshotOnError(cleanUpCtx, s.OutDir(), s.HasError, cr, fmt.Sprintf("%s_dump", param.testName))
+	defer param.testImpl.closeApp(ctx)
 
-	if err := param.testImpl.pasteAndVerify(ctx, resource); err != nil {
-		s.Fatal("Failed to paste and verify: ", err)
+	for _, text := range clipboardItems {
+		if err := param.testImpl.pasteAndVerify(ctx, f, text); err != nil {
+			s.Fatal("Failed to paste and verify: ", err)
+		}
 	}
 }
 
 // clearInputField clears the input field before pasting new contents.
-func clearInputField(ctx context.Context, res *clipboardResource, inputFinder *nodewith.Finder) error {
+func clearInputField(ctx context.Context, f *clipboardhistory.FixtData, inputFinder *nodewith.Finder) error {
+	ui := f.UI
+	kb := f.Keyboard
+
 	if err := uiauto.Combine("clear input field",
-		res.ui.LeftClick(inputFinder),
-		res.ui.WaitUntilExists(inputFinder.Focused()),
-		res.kb.AccelAction("Ctrl+A"),
-		res.kb.AccelAction("Backspace"),
+		ui.LeftClick(inputFinder),
+		ui.WaitUntilExists(inputFinder.Focused()),
+		kb.AccelAction("Ctrl+A"),
+		kb.AccelAction("Backspace"),
 	)(ctx); err != nil {
 		return err
 	}
 
-	nodeInfo, err := res.ui.Info(ctx, inputFinder)
+	nodeInfo, err := ui.Info(ctx, inputFinder)
 	if err != nil {
 		return errors.Wrap(err, "failed to get info for the input field")
 	}
+
 	if nodeInfo.Value != "" {
 		return errors.Errorf("failed to clear value: %q", nodeInfo.Value)
 	}
+
 	return nil
 }
 
-// pasteAndVerify returns a function that pastes contents from clipboard and verifies the context menu behavior.
-func pasteAndVerify(res *clipboardResource, inputFinder *nodewith.Finder) uiauto.Action {
+// pasteAndVerify returns a function that pastes contents from clipboard and
+// verifies the context menu behavior.
+func pasteAndVerify(f *clipboardhistory.FixtData, inputFinder *nodewith.Finder, text string) uiauto.Action {
 	return func(ctx context.Context) error {
-		for _, text := range res.testContents {
-			testing.ContextLogf(ctx, "Paste %q", text)
+		ui := f.UI
 
-			if err := clearInputField(ctx, res, inputFinder); err != nil {
-				return errors.Wrap(err, "failed to clear input field before paste")
-			}
+		testing.ContextLogf(ctx, "Paste %q", text)
 
-			item := nodewith.Name(text).Role(role.MenuItem).HasClass("ClipboardHistoryTextItemView").First()
-			if err := uiauto.Combine(fmt.Sprintf("paste %q from clipboard history", text),
-				res.ui.RightClick(inputFinder),
-				res.ui.DoDefault(nodewith.NameStartingWith("Clipboard").Role(role.MenuItem)),
-				res.ui.WaitUntilGone(nodewith.HasClass("MenuItemView")),
-				res.ui.LeftClick(item),
-				res.ui.WaitForLocation(inputFinder),
-			)(ctx); err != nil {
-				return err
-			}
-
-			nodeInfo, err := res.ui.Info(ctx, inputFinder)
-			if err != nil {
-				return errors.Wrap(err, "failed to get info for the input field")
-			}
-			if !strings.Contains(nodeInfo.Value, text) {
-				return errors.Wrapf(nil, "input field didn't contain the word: got %q; want %q", nodeInfo.Value, text)
-			}
+		if err := clearInputField(ctx, f, inputFinder); err != nil {
+			return errors.Wrap(err, "failed to clear input field before paste")
 		}
+
+		item := nodewith.Name(text).Role(role.MenuItem).HasClass("ClipboardHistoryTextItemView").First()
+		if err := uiauto.Combine(fmt.Sprintf("paste %q from clipboard history", text),
+			ui.RightClick(inputFinder),
+			ui.DoDefault(nodewith.NameStartingWith("Clipboard").Role(role.MenuItem)),
+			ui.WaitUntilGone(nodewith.HasClass("MenuItemView")),
+			ui.LeftClick(item),
+			ui.WaitForLocation(inputFinder),
+		)(ctx); err != nil {
+			return err
+		}
+
+		nodeInfo, err := ui.Info(ctx, inputFinder)
+		if err != nil {
+			return errors.Wrap(err, "failed to get info for the input field")
+		}
+
+		if !strings.Contains(nodeInfo.Value, text) {
+			return errors.Wrapf(nil, "input field didn't contain the word: got %q; want %q", nodeInfo.Value, text)
+		}
+
 		return nil
 	}
-}
-
-type clipboardTest interface {
-	openApp(ctx context.Context, res *clipboardResource) error
-	closeApp(ctx context.Context) error
-	pasteAndVerify(ctx context.Context, res *clipboardResource) error
 }
 
 type browserTest struct {
 	conn *chrome.Conn
 }
 
-func (b *browserTest) openApp(ctx context.Context, res *clipboardResource) error {
-	conn, err := res.br.NewConn(ctx, "")
+func (b *browserTest) openApp(ctx context.Context, f *clipboardhistory.FixtData) error {
+	conn, err := f.Browser.NewConn(ctx, "")
 	if err != nil {
 		return errors.Wrap(err, "failed to connect to chrome")
 	}
+
 	b.conn = conn
 	return nil
 }
@@ -210,21 +193,22 @@ func (b *browserTest) closeApp(ctx context.Context) error {
 	return nil
 }
 
-func (b *browserTest) pasteAndVerify(ctx context.Context, res *clipboardResource) error {
+func (b *browserTest) pasteAndVerify(ctx context.Context, f *clipboardhistory.FixtData, text string) error {
 	rootView := nodewith.NameStartingWith("about:blank").HasClass("BrowserRootView")
 	searchbox := nodewith.Role(role.TextField).Name("Address and search bar").Ancestor(rootView)
-	return pasteAndVerify(res, searchbox)(ctx)
+	return pasteAndVerify(f, searchbox, text)(ctx)
 }
 
 type settingsTest struct {
 	app *ossettings.OSSettings
 }
 
-func (s *settingsTest) openApp(ctx context.Context, res *clipboardResource) error {
-	settings, err := ossettings.Launch(ctx, res.tconn)
+func (s *settingsTest) openApp(ctx context.Context, f *clipboardhistory.FixtData) error {
+	settings, err := ossettings.Launch(ctx, f.TestConn)
 	if err != nil {
 		return errors.Wrap(err, "failed to launch OS settings")
 	}
+
 	s.app = settings
 	return nil
 }
@@ -234,21 +218,22 @@ func (s *settingsTest) closeApp(ctx context.Context) error {
 		if err := s.app.Close(ctx); err != nil {
 			return err
 		}
+
 		s.app = nil
 	}
 	return nil
 }
 
-func (s *settingsTest) pasteAndVerify(ctx context.Context, res *clipboardResource) error {
-	return pasteAndVerify(res, ossettings.SearchBoxFinder)(ctx)
+func (s *settingsTest) pasteAndVerify(ctx context.Context, f *clipboardhistory.FixtData, text string) error {
+	return pasteAndVerify(f, ossettings.SearchBoxFinder, text)(ctx)
 }
 
 type launcherTest struct {
 	tconn *chrome.TestConn
 }
 
-func (l *launcherTest) openApp(ctx context.Context, res *clipboardResource) error {
-	l.tconn = res.tconn
+func (l *launcherTest) openApp(ctx context.Context, f *clipboardhistory.FixtData) error {
+	l.tconn = f.TestConn
 	return launcher.OpenBubbleLauncher(l.tconn)(ctx)
 }
 
@@ -256,8 +241,8 @@ func (l *launcherTest) closeApp(ctx context.Context) error {
 	return launcher.CloseBubbleLauncher(l.tconn)(ctx)
 }
 
-func (l *launcherTest) pasteAndVerify(ctx context.Context, res *clipboardResource) error {
+func (l *launcherTest) pasteAndVerify(ctx context.Context, f *clipboardhistory.FixtData, text string) error {
 	search := nodewith.HasClass("SearchBoxView")
 	searchbox := nodewith.HasClass("Textfield").Role(role.TextField).Ancestor(search)
-	return pasteAndVerify(res, searchbox)(ctx)
+	return pasteAndVerify(f, searchbox, text)(ctx)
 }

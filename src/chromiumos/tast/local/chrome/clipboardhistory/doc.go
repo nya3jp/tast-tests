@@ -2,5 +2,5 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-// Package clipboardhistory exports methods for interacting with clipboard history.
+// Package clipboardhistory exports utilities for interacting with clipboard history.
 package clipboardhistory
