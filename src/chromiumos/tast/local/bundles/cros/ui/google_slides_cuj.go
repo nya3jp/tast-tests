@@ -8,6 +8,7 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/common/action"
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
@@ -15,8 +16,12 @@ import (
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/cuj/inputsimulations"
+	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/lacros"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/mouse"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/ui/cujrecorder"
 	"chromiumos/tast/testing"
@@ -112,22 +117,56 @@ func GoogleSlidesCUJ(ctx context.Context, s *testing.State) {
 	}
 	defer kw.Close()
 
-	if err := recorder.Run(ctx, func(ctx context.Context) (retErr error) {
-		hasError := func() bool { return retErr != nil }
+	// Create a virtual mouse.
+	mw, err := input.Mouse(ctx)
+	if err != nil {
+		s.Fatal("Failed to create a mouse: ", err)
+	}
+	defer mw.Close()
+
+	info, err := display.GetPrimaryInfo(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to get the primary display info: ", err)
+	}
+
+	ac := uiauto.New(tconn)
+
+	fileMenu := nodewith.Name("File").HasClass("menu-button")
+
+	if err := recorder.Run(ctx, func(ctx context.Context) error {
 		slidesConn, err := cs.NewConn(ctx, slidesURL, browser.WithNewWindow())
 		if err != nil {
-			return errors.Wrap(err, "failed to open the google slides website")
+			return errors.Wrap(err, "failed to open the Google Slides website")
 		}
 		defer slidesConn.Close()
 		defer slidesConn.CloseTarget(closeCtx)
 
-		defer faillog.DumpUITreeOnError(closeCtx, s.OutDir(), hasError, tconn)
-		defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), hasError, cr, "ui_dump")
+		defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "ui_dump")
 
-		// Go through the Slides deck.
 		s.Logf("Going through the Google Slides file for %s", slidesScrollTimeout)
-		if err := inputsimulations.RepeatKeyPressFor(ctx, kw, "Down", time.Second, slidesScrollTimeout); err != nil {
-			return errors.Wrap(err, "failed to scroll down with down arrow key")
+
+		// At fixed intervals, stop scrolling and click a menu item
+		// to ensure we collect mouse metrics.
+		for endTime := time.Now().Add(slidesScrollTimeout); time.Now().Before(endTime); {
+			if err := inputsimulations.RepeatKeyPress(ctx, kw, "Down", time.Second, 10); err != nil {
+				return errors.Wrap(err, "failed to scroll down with down arrow")
+			}
+
+			if err := action.Combine(
+				"click on File menu and then refocus on the presentation",
+				// Open file menu.
+				ac.MouseMoveTo(fileMenu, 500*time.Millisecond),
+				ac.LeftClick(fileMenu),
+				action.Sleep(time.Second),
+
+				// Close file menu.
+				ac.LeftClick(fileMenu),
+
+				// Refocus on the presentation.
+				mouse.Move(tconn, info.Bounds.CenterPoint(), 500*time.Millisecond),
+			)(ctx); err != nil {
+				return err
+			}
 		}
 
 		// Ensure the slides deck gets scrolled.
