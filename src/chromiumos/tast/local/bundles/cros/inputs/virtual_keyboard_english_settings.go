@@ -37,19 +37,19 @@ func init() {
 		Timeout:      5 * time.Minute,
 		Params: []testing.Param{
 			{
-				Fixture:           fixture.TabletVK,
+				Fixture:           fixture.TabletVKRestart,
 				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
 				ExtraAttr:         []string{"group:input-tools-upstream"},
 			},
 			{
 				Name:              "informational",
-				Fixture:           fixture.TabletVK,
+				Fixture:           fixture.TabletVKRestart,
 				ExtraAttr:         []string{"informational"},
 				ExtraHardwareDeps: hwdep.D(pre.InputsUnstableModels),
 			},
 			{
 				Name:              "lacros",
-				Fixture:           fixture.LacrosTabletVK,
+				Fixture:           fixture.LacrosTabletVKRestart,
 				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
 				ExtraAttr:         []string{"informational"},
 				ExtraSoftwareDeps: []string{"lacros"},
@@ -113,10 +113,8 @@ func VirtualKeyboardEnglishSettings(ctx context.Context, s *testing.State) {
 	for _, subTest := range subTests {
 		s.Run(ctx, subTest.name, func(ctx context.Context, s *testing.State) {
 			defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "ui_tree_"+subTest.name)
-			if !subTest.capitalizationEnabled {
-				if err := imesettings.SetVKAutoCapitalization(uc, subTest.ime, subTest.capitalizationEnabled)(ctx); err != nil {
-					s.Fatal("Failed to change IME settings: ", err)
-				}
+			if err := imesettings.SetVKAutoCapitalization(uc, subTest.ime, subTest.capitalizationEnabled)(ctx); err != nil {
+				s.Fatal("Failed to change IME settings: ", err)
 			}
 
 			vkbCtx := vkb.NewContext(cr, tconn)
