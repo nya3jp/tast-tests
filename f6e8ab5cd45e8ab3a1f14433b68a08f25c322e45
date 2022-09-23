@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b85a214e_caf95799",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-09-23T07:53:44Z",
+      "side": 1,
+      "message": "nit: Start the commit message with either of those:\n- package name (audio: Skip...)\n- tast-tests: (when CL affects more packages\n- tast: (pure Tast change)",
+      "revId": "f6e8ab5cd45e8ab3a1f14433b68a08f25c322e45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed43fe67_b6926ae9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-09-23T07:53:44Z",
+      "side": 1,
+      "message": "LGTM % nit.",
+      "revId": "f6e8ab5cd45e8ab3a1f14433b68a08f25c322e45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
