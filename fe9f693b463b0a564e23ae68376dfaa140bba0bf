@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e7054d4_4eb93d6e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/check_shutdown_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1228419
+      },
+      "writtenOn": "2022-09-23T04:04:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1bb22dfe_ceb308c2",
+      "range": {
+        "startLine": 40,
+        "startChar": 1,
+        "endLine": 46,
+        "endChar": 2
+      },
+      "revId": "fe9f693b463b0a564e23ae68376dfaa140bba0bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c7709120_b21b3b3c",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-09-22T17:47:21Z",
       "side": 1,
       "message": "nit: You can write this as `defer logFile.Close()`.",
+      "range": {
+        "startLine": 47,
+        "startChar": 1,
+        "endLine": 49,
+        "endChar": 4
+      },
+      "revId": "fe9f693b463b0a564e23ae68376dfaa140bba0bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d496c4a_6407a92b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/check_shutdown_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1228419
+      },
+      "writtenOn": "2022-09-23T04:04:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c7709120_b21b3b3c",
       "range": {
         "startLine": 47,
         "startChar": 1,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb48ed28_d1f6ed53",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/check_shutdown_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1228419
+      },
+      "writtenOn": "2022-09-23T04:04:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b5d39cfa_30aca676",
+      "range": {
+        "startLine": 68,
+        "startChar": 1,
+        "endLine": 68,
+        "endChar": 19
+      },
+      "revId": "fe9f693b463b0a564e23ae68376dfaa140bba0bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f3c2117b_ed130df5",
@@ -100,6 +172,30 @@
       "writtenOn": "2022-09-22T17:47:21Z",
       "side": 1,
       "message": "`testing.Poll` does:\n\n1. Run the provided function.\n2. Returns if the function returned nil.\n3. Wait for the specified interval and go back to the step 1.\n\nIf `testing.Poll` has run before `chrome.PREVIOUS` is updated, we will check the old `chrome.PREVIOUS` (one for a previous test). If that old one doesn\u0027t have a crash, this test passes.\n\nHow about to modify this as:\n\n1. Take a hash of `chrome.PREVIOUS` at the beginning of this test.\n2. Restart ui.\n3. Wait until a hash of `chrome.PREVIOUS` changes.\n4. Check whether the `chrome.PREVIOUS` contains a crash or not.",
+      "range": {
+        "startLine": 75,
+        "startChar": 11,
+        "endLine": 75,
+        "endChar": 23
+      },
+      "revId": "fe9f693b463b0a564e23ae68376dfaa140bba0bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa1f97f6_202285ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/check_shutdown_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1228419
+      },
+      "writtenOn": "2022-09-23T04:04:12Z",
+      "side": 1,
+      "message": "sg. Thanks.",
+      "parentUuid": "f3c2117b_ed130df5",
       "range": {
         "startLine": 75,
         "startChar": 11,
