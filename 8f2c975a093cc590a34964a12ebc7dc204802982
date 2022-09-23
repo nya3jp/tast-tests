@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "73a4f3c3_0970ac8f",
+        "filename": "src/chromiumos/tast/common/flashrom/flashrom_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1402113
+      },
+      "writtenOn": "2022-09-23T05:03:34Z",
+      "side": 1,
+      "message": "Yes I forgot the first option \"not verbose at all\". I added, and renamed options.",
+      "parentUuid": "46fec459_f5c015f7",
+      "revId": "8f2c975a093cc590a34964a12ebc7dc204802982",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e40ac4c0_babd5a26",
@@ -66,6 +84,24 @@
       "writtenOn": "2022-09-21T02:56:43Z",
       "side": 1,
       "message": "can we say software write protect",
+      "revId": "8f2c975a093cc590a34964a12ebc7dc204802982",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1362a987_8fa30517",
+        "filename": "src/chromiumos/tast/common/flashrom/flashrom_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1402113
+      },
+      "writtenOn": "2022-09-23T05:03:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "476e6409_3894b9a5",
       "revId": "8f2c975a093cc590a34964a12ebc7dc204802982",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
