@@ -20,6 +20,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "784d7490_99b11ce9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/check_signal_quality.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1487102
+      },
+      "writtenOn": "2022-09-23T17:36:45Z",
+      "side": 1,
+      "message": "You can ignore this test for now, as it is getting refactored into ValidateTestEnv test case.",
+      "revId": "49472866f409d88488987ca218050a605d606b02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "28c46502_02680ce3",
         "filename": "src/chromiumos/tast/local/bundles/cros/cellular/modem_fw_manifest_verification.go",
         "patchSetId": 1
@@ -79,6 +96,30 @@
       "side": 1,
       "message": "Nagi, FYI. This test is probably something to keep note of once modemfwd is up and running in the fixture.",
       "parentUuid": "0c847ae6_4fb8d6a8",
+      "range": {
+        "startLine": 38,
+        "startChar": 19,
+        "endLine": 38,
+        "endChar": 26
+      },
+      "revId": "49472866f409d88488987ca218050a605d606b02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e458b1bb_2363e16d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/modem_fw_manifest_verification.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1487102
+      },
+      "writtenOn": "2022-09-23T17:36:45Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3aa02bdb_45e973b6",
       "range": {
         "startLine": 38,
         "startChar": 19,
