@@ -86,3 +86,16 @@ func ScrollMouseDownFor(ctx context.Context, mw *input.MouseEventWriter, delay, 
 	}
 	return nil
 }
+
+// RepeatMousePressFor presses the left mouse button at the current
+// location for |pressDuration| and then releases it. This action
+// is repeated until |totalDuration| has passed.
+func RepeatMousePressFor(ctx context.Context, mw *input.MouseEventWriter, delay, pressDuration, totalDuration time.Duration) error {
+	return runActionFor(ctx, totalDuration, action.Combine(
+		"mouse press, sleep, and mouse release",
+		func(ctx context.Context) error { return mw.Press() },
+		action.Sleep(pressDuration),
+		func(ctx context.Context) error { return mw.Release() },
+		action.Sleep(delay),
+	))
+}
