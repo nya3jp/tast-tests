@@ -7,13 +7,19 @@ package mtbf
 
 import (
 	"context"
+	"strings"
 	"time"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/optin"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/browser/browserfixt"
+	"chromiumos/tast/local/chrome/lacros"
+	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/testing"
 )
 
@@ -24,15 +30,19 @@ const (
 	// chromeLoggedInReuseFixture is a fixture name that will be registered to tast.
 	chromeLoggedInReuseFixture = "mtbfChromeLogInReuse"
 
+	// chromeLoggedInReuseLacrosFixture is a fixture name that will be registered to tast.
+	chromeLoggedInReuseLacrosFixture = "mtbfChromeLogInReuseLacros"
+
 	// LoginReuseFixture is a fixture name that will be registered to tast.
 	LoginReuseFixture = "mtbfLoginReuseCleanTabs"
+
+	// LoginReuseLacrosFixture is a fixture name that will be registered to tast.
+	LoginReuseLacrosFixture = "mtbfLoginReuseCleanTabsLacros"
 )
 
 // LoginReuseOptions returns the login option for MTBF tests.
 func LoginReuseOptions(accountPool string) []chrome.Option {
 	return []chrome.Option{
-		// Only the legacy launcher is being exercised in MTBF tests currently.
-		chrome.DisableFeatures("ProductivityLauncher"),
 		chrome.KeepState(),
 		chrome.ARCSupported(),
 		chrome.GAIALoginPool(accountPool),
@@ -41,17 +51,50 @@ func LoginReuseOptions(accountPool string) []chrome.Option {
 	}
 }
 
-func optionsCallBack(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+// LoginReuseLacrosOptions returns the login option for MTBF lacros tests.
+func LoginReuseLacrosOptions(accountPool string) ([]chrome.Option, error) {
+	lacrosOpts, err := lacrosfixt.NewConfig(
+		lacrosfixt.Mode(lacros.LacrosPrimary),
+		// According to fixture: "lacrosKeepAlive", KeepAlive should be used by tests
+		// that will launch lacros from the ChromeOS UI (e.g shelf) instead of by command line.
+		// Lacros will be launched by ChromeOS UI in MTBF tests.
+		lacrosfixt.KeepAlive(true),
+		lacrosfixt.ChromeOptions(chrome.ExtraArgs("--lacros-availability-ignore")),
+	).Opts()
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create configs for lacros")
+	}
+	return append(LoginReuseOptions(accountPool), lacrosOpts...), nil
+}
+
+func loginReuseOptionsCallBack(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
 	return LoginReuseOptions(s.RequiredVar(AccountPool)), nil
+}
+
+func loginReuseLacrosOptionsCallBack(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+	return LoginReuseLacrosOptions(s.RequiredVar(AccountPool))
 }
 
 func init() {
 	testing.AddFixture(&testing.Fixture{
 		Name:            chromeLoggedInReuseFixture,
+		Desc:            "Reuse the existing user login session and boot ARC",
+		Contacts:        []string{"xliu@cienet.com", "alfredyu@cienet.com", "abergman@google.com"},
+		Impl:            arc.NewMtbfArcBootedFixture(loginReuseOptionsCallBack),
+		SetUpTimeout:    chrome.GAIALoginTimeout + optin.OptinTimeout + arc.BootTimeout,
+		ResetTimeout:    chrome.ResetTimeout,
+		PreTestTimeout:  arc.PreTestTimeout,
+		PostTestTimeout: arc.PostTestTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+		Vars:            []string{AccountPool},
+	})
+
+	testing.AddFixture(&testing.Fixture{
+		Name:            chromeLoggedInReuseLacrosFixture,
 		Desc:            "Reuse the existing user login session",
-		Contacts:        []string{"xliu@cienet.com"},
-		Impl:            arc.NewMtbfArcBootedFixture(optionsCallBack),
-		SetUpTimeout:    chrome.GAIALoginTimeout + arc.BootTimeout + optin.OptinTimeout,
+		Contacts:        []string{"xliu@cienet.com", "alfredyu@cienet.com", "abergman@google.com"},
+		Impl:            arc.NewMtbfArcBootedFixture(loginReuseLacrosOptionsCallBack),
+		SetUpTimeout:    chrome.GAIALoginTimeout + optin.OptinTimeout + arc.BootTimeout,
 		ResetTimeout:    chrome.ResetTimeout,
 		PreTestTimeout:  arc.PreTestTimeout,
 		PostTestTimeout: arc.PostTestTimeout,
@@ -62,9 +105,18 @@ func init() {
 	testing.AddFixture(&testing.Fixture{
 		Name:           LoginReuseFixture,
 		Desc:           "Reuse the existing user login session and clean chrome tabs",
-		Contacts:       []string{"xliu@cienet.com"},
+		Contacts:       []string{"xliu@cienet.com", "alfredyu@cienet.com", "abergman@google.com"},
 		Parent:         chromeLoggedInReuseFixture,
-		Impl:           &mtbfCleanTabsFixture{},
+		Impl:           &mtbfCleanTabsFixture{browserType: browser.TypeAsh},
+		PreTestTimeout: 4 * clearTabsTimeout,
+	})
+
+	testing.AddFixture(&testing.Fixture{
+		Name:           LoginReuseLacrosFixture,
+		Desc:           "Reuse the existing user login session and clean chrome tabs with lacros variation",
+		Contacts:       []string{"xliu@cienet.com", "alfredyu@cienet.com", "abergman@google.com"},
+		Parent:         chromeLoggedInReuseLacrosFixture,
+		Impl:           &mtbfCleanTabsFixture{browserType: browser.TypeLacros},
 		PreTestTimeout: 4 * clearTabsTimeout,
 	})
 }
@@ -84,7 +136,8 @@ type FixtValue struct {
 func (f FixtValue) Chrome() *chrome.Chrome { return f.cr }
 
 type mtbfCleanTabsFixture struct {
-	fixtValue *FixtValue
+	fixtValue   *FixtValue
+	browserType browser.Type
 }
 
 func (f *mtbfCleanTabsFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
@@ -103,36 +156,87 @@ func (f *mtbfCleanTabsFixture) TearDown(ctx context.Context, s *testing.FixtStat
 func (f *mtbfCleanTabsFixture) Reset(ctx context.Context) error { return nil }
 
 func (f *mtbfCleanTabsFixture) PreTest(ctx context.Context, s *testing.FixtTestState) {
-	if err := closeExistingAndLeftOffTabs(ctx, f.fixtValue.cr); err != nil {
+	br := f.fixtValue.cr.Browser()
+	if f.browserType == browser.TypeLacros {
+		tconn, err := f.fixtValue.cr.TestAPIConn(ctx)
+		if err != nil {
+			s.Fatal("Failed to get test API connection: ", err)
+		}
+
+		var closeBrowser func(context.Context) error
+		if br, closeBrowser, err = PrepareLacros(ctx, f.fixtValue.cr, tconn); err != nil {
+			s.Fatal("Failed to prepare lacros: ", err)
+		}
+		defer closeBrowser(ctx)
+
+		// Maximize the lacros window to avoid the node location issue.
+		// TODO(b/236799853): remove this once the lacros node location issue fixed.
+		s.Log("Maximize the lacros window")
+		lacrosWindow, err := ash.FindOnlyWindow(ctx, tconn, func(w *ash.Window) bool {
+			return w.IsVisible && w.IsActive && strings.HasPrefix(w.Name, "ExoShellSurface")
+		})
+		if err != nil {
+			s.Fatal("Failed to find lacros window: ", err)
+		}
+		if err := ash.SetWindowStateAndWait(ctx, tconn, lacrosWindow.ID, ash.WindowStateMaximized); err != nil {
+			s.Fatal("Failed to maximize the lacros window : ", err)
+		}
+	}
+
+	if err := closeExistingAndLeftOffTabs(ctx, br); err != nil {
 		s.Fatal("Failed to close existing and left-off tab(s): ", err)
 	}
 }
 
 func (f *mtbfCleanTabsFixture) PostTest(ctx context.Context, s *testing.FixtTestState) {}
 
+// PrepareLacros prepares the Lacros browser for MTBF tests.
+// It connects to existing Lacros if the Lacros is running, set up a new Lacros browser otherwise.
+func PrepareLacros(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn) (*browser.Browser, func(context.Context) error, error) {
+	lacrosApp, err := apps.Lacros(ctx, tconn)
+	if err != nil {
+		return nil, nil, errors.Wrap(err, "failed to get lacros app")
+	}
+
+	lacrosRunning, err := ash.AppRunning(ctx, tconn, lacrosApp.ID)
+	if err != nil {
+		return nil, nil, errors.Wrap(err, "failed to check if Lacros is not running before launch")
+	}
+
+	if lacrosRunning {
+		l, err := lacros.Connect(ctx, tconn)
+		if err != nil {
+			return nil, nil, errors.Wrap(err, "failed to connect to lacros")
+		}
+		return l.Browser(), l.Close, nil
+	}
+
+	return browserfixt.SetUp(ctx, cr, browser.TypeLacros)
+}
+
 // closeExistingAndLeftOffTabs closes the existing and left-off tabs.
-func closeExistingAndLeftOffTabs(ctx context.Context, cr *chrome.Chrome) error {
-	tconn, err := cr.TestAPIConn(ctx)
+func closeExistingAndLeftOffTabs(ctx context.Context, br *browser.Browser) error {
+	btconn, err := br.TestAPIConn(ctx)
 	if err != nil {
 		return errors.Wrap(err, "failed to get test API connection")
 	}
 
 	for {
-		tabsCnt, err := countExistingTabs(ctx, tconn)
+		tabsCnt, err := countExistingTabs(ctx, btconn)
 		if err != nil {
 			return err
 		}
 		if tabsCnt > 0 {
 			// The last session did not clanup properly, remove existing tabs can ensure tabs are cleaned.
 			testing.ContextLogf(ctx, "Removing %d existing page(s)", tabsCnt)
-			return removeExistingTabs(ctx, tconn)
+			return removeExistingTabs(ctx, btconn)
 		}
 
 		// Depending on the settings, Chrome might open all left-off pages automatically from last session,
 		// which the left-off pages might casues test case fail.
 		// Launch Chrome browser by open a blank page to bring up all left-off pages to further remove them.
 		testing.ContextLog(ctx, "Opening empty Chrome tab to bring up left-off page(s)")
-		conn, err := cr.NewConn(ctx, "", browser.WithNewWindow())
+		conn, err := br.NewConn(ctx, "", browser.WithNewWindow())
 		if err != nil {
 			return errors.Wrap(err, "failed to launch Chrome browser")
 		}
@@ -147,16 +251,8 @@ func countExistingTabs(ctx context.Context, tconn *chrome.TestConn) (int, error)
 	execCtx, cancel := context.WithTimeout(ctx, clearTabsTimeout)
 	defer cancel()
 
-	queryTabs := `(async () => {
-		const tabs = await tast.promisify(chrome.tabs.query)({});
-		return tabs.filter((tab) => tab.id);
-	})()`
-
-	var tabs []struct {
-		Title string `json:"title"`
-		URL   string `json:"url"`
-	}
-	if err := tconn.Eval(execCtx, queryTabs, &tabs); err != nil {
+	tabs, err := browser.AllTabs(execCtx, tconn)
+	if err != nil {
 		return 0, err
 	}
 
@@ -171,15 +267,10 @@ func removeExistingTabs(ctx context.Context, tconn *chrome.TestConn) error {
 	execCtx, cancel := context.WithTimeout(ctx, clearTabsTimeout)
 	defer cancel()
 
-	expr := `(async () => {
-		const tabs = await tast.promisify(chrome.tabs.query)({});
-		await tast.promisify(chrome.tabs.remove)(tabs.filter((tab) => tab.id).map((tab) => tab.id));
-	})()`
-
 	// If there exist unsave changes on web page, e.g. media content is playing or online document is editing,
 	// "leave site" prompt will prevent the tab from closing and block the process,
 	// therefore, a short context is required.
-	if err := tconn.Eval(execCtx, expr, nil); err != nil {
+	if err := browser.CloseAllTabs(execCtx, tconn); err != nil {
 		return errors.Wrap(err, "failed to remove tabs")
 	}
 
