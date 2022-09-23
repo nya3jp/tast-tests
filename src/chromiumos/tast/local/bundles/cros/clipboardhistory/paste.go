@@ -8,8 +8,8 @@ import (
 	"context"
 	"time"
 
-	"chromiumos/tast/local/a11y"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/local/chrome/uiauto"
@@ -21,14 +21,8 @@ import (
 	"chromiumos/tast/testing"
 )
 
-type pasteActionParams struct {
-	item *nodewith.Finder
-	ui   *uiauto.Context
-	kbd  *input.KeyboardEventWriter
-}
-
 type pasteTestParams struct {
-	testFn      func(pasteActionParams) uiauto.Action
+	testFn      func(*uiauto.Context, *input.KeyboardEventWriter, *nodewith.Finder) uiauto.Action
 	browserType browser.Type
 }
 
@@ -101,8 +95,7 @@ func init() {
 func Paste(ctx context.Context, s *testing.State) {
 	// Set up a browser window with a text input field.
 	const (
-		html      = "<input id='text' type='text' label='textfield' autofocus>"
-		inputText = "abc"
+		text = "abc"
 	)
 
 	params := s.Param().(pasteTestParams)
@@ -125,81 +118,47 @@ func Paste(ctx context.Context, s *testing.State) {
 	}
 	defer closeBrowser(ctx)
 
-	c, err := a11y.NewTabWithHTML(ctx, br, html)
+	conn, err := br.NewConn(ctx, "")
 	if err != nil {
-		s.Fatal("Failed to open a new tab with HTML: ", err)
+		s.Fatal("Failed to connect to chrome: ", err)
 	}
-	defer c.Close()
+	defer conn.Close()
+	defer conn.CloseTarget(ctx)
 
-	kbd, err := input.Keyboard(ctx)
+	kb, err := input.Keyboard(ctx)
 	if err != nil {
 		s.Fatal("Failed to open keyboard device: ", err)
 	}
-	defer kbd.Close()
+	defer kb.Close()
 
-	// Use the text input field to put an item in the clipboard history menu.
-	emptyTextbox := nodewith.NameContaining("label='textfield'").Role(role.StaticText).Onscreen()
-	populatedTextbox := nodewith.Name(inputText).Role(role.InlineTextBox)
-	if err := uiauto.Combine("populate clipboard history",
-		// The textfield should be empty initially.
-		ui.WaitUntilExists(emptyTextbox),
-
-		// The textfield auto-focuses, so we can begin typing once it exists.
-		kbd.TypeAction(inputText),
-
-		// The textfield should now contain the user's input.
-		ui.WaitUntilExists(populatedTextbox),
-
-		// Copy the user's input to the clipboard.
-		kbd.AccelAction("Ctrl+A"),
-		kbd.AccelAction("Ctrl+C"),
-	)(ctx); err != nil {
-		s.Fatal("Failed to populate clipboard history: ", err)
+	if err := ash.SetClipboard(ctx, tconn, text); err != nil {
+		s.Fatalf("Failed to add %q to clipboard history: %v", text, err)
 	}
 
-	if err := uiauto.Combine("clear textfield",
-		ui.LeftClick(populatedTextbox),
-		kbd.AccelAction("Ctrl+A"),
-		kbd.AccelAction("Backspace"),
-		ui.WaitUntilExists(emptyTextbox),
-	)(ctx); err != nil {
-		s.Fatal("Failed to clear textfield: ", err)
-	}
-
-	// Open the clipboard history menu and paste into the now-empty textfield.
-	if err := kbd.Accel(ctx, "Search+V"); err != nil {
-		s.Fatal("Failed to launch clipboard history menu: ", err)
-	}
-
-	item := clipboardhistory.FindFirstTextItem()
-	if err := uiauto.Combine("paste from clipboard history",
-		// Make sure the clipboard history menu is pulled up and populated with the
-		// previously-copied item.
-		ui.WaitUntilExists(item),
-
-		// Test one of the actions that pastes from clipboard history.
-		params.testFn(pasteActionParams{item, ui, kbd}),
-
-		// Make sure that once the clipboard history item is pasted, the menu is
-		// closed and the textfield contains the item's text.
-		ui.WaitUntilGone(item),
-		ui.WaitUntilExists(populatedTextbox),
-	)(ctx); err != nil {
+	rootView := nodewith.NameStartingWith("about:blank").HasClass("BrowserRootView")
+	searchbox := nodewith.Role(role.TextField).Name("Address and search bar").Ancestor(rootView)
+	if err := clipboardhistory.PasteAndVerify(ui, kb, searchbox /*contextMenu=*/, false, params.testFn, text)(ctx); err != nil {
 		s.Fatal("Failed to paste from clipboard history: ", err)
 	}
 }
 
-// pasteOnClick pastes `params.item` by clicking on it.
-func pasteOnClick(params pasteActionParams) uiauto.Action {
-	return params.ui.LeftClick(params.item)
+// pasteOnClick pastes `item` by clicking on it.
+func pasteOnClick(ui *uiauto.Context, kb *input.KeyboardEventWriter, item *nodewith.Finder) uiauto.Action {
+	return ui.LeftClick(item.Focused())
 }
 
-// pasteOnEnter pastes `params.item` by pressing Enter.
-func pasteOnEnter(params pasteActionParams) uiauto.Action {
-	return params.kbd.AccelAction("Enter")
+// pasteOnEnter pastes `item` by pressing Enter.
+func pasteOnEnter(ui *uiauto.Context, kb *input.KeyboardEventWriter, item *nodewith.Finder) uiauto.Action {
+	return uiauto.Combine("paste by pressing enter with item selected",
+		ui.WaitUntilExists(item.Focused()),
+		kb.AccelAction("Enter"),
+	)
 }
 
-// pasteOnToggle pastes `params.item` by toggling the menu closed.
-func pasteOnToggle(params pasteActionParams) uiauto.Action {
-	return params.kbd.AccelAction("Search+V")
+// pasteOnToggle pastes `item` by toggling the menu closed.
+func pasteOnToggle(ui *uiauto.Context, kb *input.KeyboardEventWriter, item *nodewith.Finder) uiauto.Action {
+	return uiauto.Combine("paste by toggling clipboard history with item selected",
+		ui.WaitUntilExists(item.Focused()),
+		kb.AccelAction("Search+V"),
+	)
 }
