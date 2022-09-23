@@ -164,6 +164,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d732bacc_12d324b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/config_verify.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-09-23T17:49:59Z",
+      "side": 1,
+      "message": "BTW, I think cros_internal is more appropriate than chrome_internal based on description in go/tast-deps\n\n```\nchrome_internal - Functionality that is only available in internal builds of Chrome \n...\ncros_internal - Functionality that is only available in internal builds of ChromeOS (i.e. ones built using chromeos-overlay).\n```",
+      "parentUuid": "edbb2f98_166823e6",
+      "revId": "7226cdac13f86d99e4da7765a494a1c5c0de5ea3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9321b8f0_60299363",
         "filename": "src/chromiumos/tast/local/bundles/cros/kernel/config_verify.go",
         "patchSetId": 3
