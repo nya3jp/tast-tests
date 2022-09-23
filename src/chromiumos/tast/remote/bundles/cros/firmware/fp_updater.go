@@ -54,15 +54,15 @@ func init() {
 }
 
 // getOldFirmwarePath returns the path to a known out-dated firmware.
-func getOldFirmwarePath(s *testing.State, fpBoard fp.FPBoardName) (string, error) {
+func getOldFirmwarePath(s *testing.State, fpBoard fp.BoardName) (string, error) {
 	switch fpBoard {
-	case fp.FPBoardNameNocturne:
+	case fp.BoardNameNocturne:
 		return s.DataPath("nocturne_fp_v2.0.3266-99b5e2c98_20201214.bin"), nil
-	case fp.FPBoardNameNami:
+	case fp.BoardNameNami:
 		return s.DataPath("nami_fp_v2.0.3266-99b5e2c98_20201214.bin"), nil
-	case fp.FPBoardNameBloonchipper:
+	case fp.BoardNameBloonchipper:
 		return s.DataPath("bloonchipper_v2.0.14206-ad46faf_20220718.bin"), nil
-	case fp.FPBoardNameDartmonkey:
+	case fp.BoardNameDartmonkey:
 		return s.DataPath("dartmonkey_v2.0.2887-311310808_20201214.bin"), nil
 	default:
 		return "", errors.Errorf("no old firmware for %q", fpBoard)
