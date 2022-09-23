@@ -13,19 +13,26 @@ import (
 	"time"
 
 	"chromiumos/tast/common/android/ui"
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/apputil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/uidetection"
 	"chromiumos/tast/testing"
 )
 
 // VoiceRecorder creates a struct that contains *apputil.App
 type VoiceRecorder struct {
 	app *apputil.App
+
+	latestRecordName     string
+	latestRecordDuration time.Duration
 }
 
 const (
@@ -46,8 +53,8 @@ const (
 	internalStorageID      = idPrefix + "node_value"
 	locSelectID            = idPrefix + "btn_ok_folder"
 	locCloseID             = idPrefix + "btn_close"
-	tabMainID              = idPrefix + "btn_tab_recorder"
 	dashboardID            = idPrefix + "sc_view"
+	adViewID               = idPrefix + "layout_ads"
 
 	defaultUITimeout = 15 * time.Second
 )
@@ -78,12 +85,12 @@ func (vr *VoiceRecorder) Launch(ctx context.Context) error {
 		return err
 	}
 
-	if _, err := vr.app.Launch(ctx); err != nil {
-		return err
+	if err := vr.grantPermissions(ctx); err != nil {
+		return errors.Wrap(err, "failed to grant permission")
 	}
 
-	if err := vr.skipPrompts(ctx); err != nil {
-		return errors.Wrap(err, "failed to skip prompt")
+	if _, err := vr.app.Launch(ctx); err != nil {
+		return err
 	}
 
 	startOrStopRecordBtn := vr.app.Device.Object(ui.ID(startOrStopRecordBtnID))
@@ -94,42 +101,42 @@ func (vr *VoiceRecorder) Launch(ctx context.Context) error {
 	return nil
 }
 
-// skipPrompts verifies if prompt appears or not. If so, accept it and continue.
-func (vr *VoiceRecorder) skipPrompts(ctx context.Context) error {
-	// There are 3 possible prompts in total, two of them are identical on UI tree.
-	prompts := []*ui.Object{
-		vr.app.Device.Object(ui.Text("WHILE USING THE APP")),
-		vr.app.Device.Object(ui.Text("ALLOW")),
-		vr.app.Device.Object(ui.Text("ALLOW")),
-	}
-	for _, prompt := range prompts {
-		if err := apputil.ClickIfExist(prompt, 3*time.Second)(ctx); err != nil {
-			return err
+// grantPermissions grants permissions to the app.
+func (vr *VoiceRecorder) grantPermissions(ctx context.Context) error {
+	for _, permission := range []string{
+		"android.permission.RECORD_AUDIO",
+		"android.permission.READ_EXTERNAL_STORAGE",
+	} {
+		if err := vr.app.ARC.Command(ctx, "pm", "grant", pkgName, permission).Run(testexec.DumpLogOnError); err != nil {
+			return errors.Wrap(err, "failed to grant access permission")
 		}
 	}
 
 	return nil
 }
 
-// UpdateOutDir updates the output directory from default to downloads.
+// UpdateOutDir updates the output directory of recording from default to Downloads/Recorders.
 func (vr *VoiceRecorder) UpdateOutDir(ctx context.Context) error {
-	// Check path first, see if path match Download/Recorders.
+	// Go to the setting page to check where the output directory of recording is set now.
 	if err := apputil.FindAndClick(vr.app.Device.Object(ui.ID(tabSettingID)), defaultUITimeout)(ctx); err != nil {
 		return errors.Wrap(err, "failed to click setting tab")
 	}
 
-	// To avoid ad blocking download location, scroll down until download location shows.
 	dashboard := vr.app.Device.Object(ui.ID(dashboardID))
 	if err := dashboard.WaitForExists(ctx, defaultUITimeout); err != nil {
-		return errors.Wrap(err, "failed to go to setting page")
+		return errors.Wrap(err, "failed to wait setting dashboard to exist")
+	}
+
+	// To avoid the ad blocking the location path, scroll down to make the location path show.
+	// Refer to: https://developer.android.com/reference/androidx/test/uiautomator/UiScrollable#scrollforward_1
+	// Perfoem a forward scroll with the default number of scroll steps, 55.
+	if _, err := dashboard.ScrollForward(ctx, 55); err != nil {
+		return errors.Wrap(err, "failed to scroll forward")
 	}
 
 	locPath := vr.app.Device.Object(ui.ID(locPathID))
-	if err := dashboard.ScrollTo(ctx, locPath); err != nil {
-		return errors.Wrap(err, "failed to scroll to location node")
-	}
 	if err := locPath.WaitForExists(ctx, defaultUITimeout); err != nil {
-		return errors.Wrap(err, "failed to find the location node")
+		return errors.Wrap(err, "failed to find the location path node")
 	}
 
 	pathText, err := locPath.GetText(ctx)
@@ -139,10 +146,7 @@ func (vr *VoiceRecorder) UpdateOutDir(ctx context.Context) error {
 
 	// If path is not set to Download folder, make the change.
 	if !strings.Contains(pathText, "Download/Recorders") {
-		testing.ContextLog(ctx, "Setting the output path")
-
-		// Open setting and set location to Download.
-		if err := uiauto.Combine("enter setting page and open location of recording",
+		if err := uiauto.Combine("update the location path",
 			apputil.FindAndClick(vr.app.Device.Object(ui.ID(locSettingID)), defaultUITimeout),
 			apputil.FindAndClick(vr.app.Device.Object(ui.ID(internalStorageID)), defaultUITimeout),
 			apputil.FindAndClick(vr.app.Device.Object(ui.Text("Download")), defaultUITimeout),
@@ -152,48 +156,69 @@ func (vr *VoiceRecorder) UpdateOutDir(ctx context.Context) error {
 			return err
 		}
 	}
-	if err := apputil.FindAndClick(vr.app.Device.Object(ui.ID(tabMainID)), defaultUITimeout)(ctx); err != nil {
-		return errors.Wrap(err, "failed to click main tab")
+
+	if err := vr.app.Device.PressKeyCode(ctx, ui.KEYCODE_BACK, 0); err != nil {
+		return errors.Wrap(err, "failed to go back to main page")
 	}
 
 	return nil
 }
 
-// RecordAudio clicks on record button to record audio and returns the name of recorded file.
-func (vr *VoiceRecorder) RecordAudio(ctx context.Context) (string, error) {
-	// Button for starting recording and button for stoping recording are identical object.
-	// The share the same id. And there is no text or description to identify them.
-	startOrStopRecordBtn := vr.app.Device.Object(ui.ID(startOrStopRecordBtnID))
-	testing.ContextLog(ctx, "Start to record sound")
-	if err := uiauto.Combine("record sound",
-		apputil.FindAndClick(startOrStopRecordBtn, defaultUITimeout), // First click is for starting recording sound.
-		uiauto.Sleep(10*time.Second),                                 // For recording sound, sleep for some time after clicking recording button.
-		apputil.FindAndClick(startOrStopRecordBtn, defaultUITimeout), // Second click is for stopping recording sound.
-	)(ctx); err != nil {
-		return "", err
-	}
+// RecordAudioFor clicks on record button to record audio and
+// checks if the recorded file is stored in file system after the recording is completed.
+func (vr *VoiceRecorder) RecordAudioFor(cr *chrome.Chrome, fileDuration time.Duration) uiauto.Action {
+	return func(ctx context.Context) error {
+		// Button for starting recording and button for stoping recording are identical object.
+		// The share the same id. And there is no text or description to identify them.
+		startOrStopRecordBtn := vr.app.Device.Object(ui.ID(startOrStopRecordBtnID))
+		testing.ContextLog(ctx, "Start to record sound")
+		if err := uiauto.Combine("record sound",
+			apputil.FindAndClick(startOrStopRecordBtn, defaultUITimeout), // First click is for starting recording sound.
+			uiauto.Sleep(fileDuration),                                   // For recording sound, sleep for some time after clicking recording button.
+			apputil.FindAndClick(startOrStopRecordBtn, defaultUITimeout), // Second click is for stopping recording sound.
+		)(ctx); err != nil {
+			return err
+		}
 
-	editFileNameDialog := vr.app.Device.Object(ui.ID(editFileNameDialogID))
-	if err := editFileNameDialog.WaitForExists(ctx, defaultUITimeout); err != nil {
-		return "", errors.Wrap(err, "failed to find edit file name")
-	}
-	name, err := editFileNameDialog.GetText(ctx)
-	if err != nil {
-		return "", errors.Wrapf(err, "failed to get the recorded audio file name in app %q", vr.app.AppName)
-	}
-	name = name + ".mp3"
+		editFileNameDialog := vr.app.Device.Object(ui.ID(editFileNameDialogID))
+		if err := editFileNameDialog.WaitForExists(ctx, defaultUITimeout); err != nil {
+			return errors.Wrap(err, "failed to find edit file name")
+		}
+		name, err := editFileNameDialog.GetText(ctx)
+		if err != nil {
+			return errors.Wrapf(err, "failed to get the recorded audio file name in app %q", vr.app.AppName)
+		}
+		name = name + ".mp3"
 
-	testing.ContextLogf(ctx, "Save the file: %s", name)
-	okBtn := vr.app.Device.Object(ui.Text("OK"))
-	if err := apputil.FindAndClick(okBtn, defaultUITimeout)(ctx); err != nil {
-		return "", errors.Wrap(err, "failed to save the audio file")
-	}
+		testing.ContextLogf(ctx, "Save the file: %s", name)
+		okBtn := vr.app.Device.Object(ui.Text("OK"))
+		if err := apputil.FindAndClick(okBtn, defaultUITimeout)(ctx); err != nil {
+			return errors.Wrap(err, "failed to save the audio file")
+		}
 
-	return name, nil
+		testing.ContextLog(ctx, "Check whether recorded file is in file system")
+		downloadsPath, err := cryptohome.DownloadsPath(ctx, cr.NormalizedUser())
+		if err != nil {
+			return errors.Wrap(err, "failed to retrieve users Downloads path")
+		}
+
+		path := filepath.Join(downloadsPath, "Recorders", name)
+		if _, err := os.Stat(path); err != nil {
+			if os.IsNotExist(err) {
+				return errors.Wrap(err, "file is not in file system")
+			}
+			return err
+		}
+		vr.latestRecordDuration = fileDuration
+		vr.latestRecordName = name
+
+		return nil
+	}
 }
 
-// PlayFile plays a specified file.
-func (vr *VoiceRecorder) PlayFile(fileName string) uiauto.Action {
+// PlayLatestRecord plays the latest recorded file and use uidetection to
+// detect playing icon because the frame will be dynamic while playing the record.
+func (vr *VoiceRecorder) PlayLatestRecord(ud *uidetection.Context, iconSource string) uiauto.Action {
 	return func(ctx context.Context) error {
 		testing.ContextLog(ctx, "Enter playing page which details display on")
 		// After clicking playCurrentRecordBtn, the audio will be played automatically, the frame will be dynamic.
@@ -201,6 +226,18 @@ func (vr *VoiceRecorder) PlayFile(fileName string) uiauto.Action {
 		playCurrentRecordBtn := vr.app.Device.Object(ui.ID(playCurrentRecordBtnID))
 		if err := apputil.FindAndClick(playCurrentRecordBtn, defaultUITimeout)(ctx); err != nil {
 			return err
+		}
+
+		// Use uidetection to detect playing icon because the frame will be dynamic while playing the record.
+		playingIcon := uidetection.CustomIcon(iconSource).WithinA11yNode(nodewith.Name("Voice Recorder").HasClass("RootView").Role(role.Window))
+		if err := ud.WithScreenshotStrategy(uidetection.ImmediateScreenshot).WaitUntilExists(playingIcon)(ctx); err != nil {
+			return errors.Wrap(err, "failed to find the playing icon")
+		}
+
+		// The app won't be idle while an audio is playing and the uiautomator can only work under idle state.
+		// Wait until the audio finished playing to stabilize the following operations.
+		if err := uiauto.Sleep(vr.latestRecordDuration)(ctx); err != nil {
+			return errors.Wrapf(err, "failed to sleep for %v secs", vr.latestRecordDuration)
 		}
 
 		fileObj := vr.app.Device.Object(ui.ID(fileNameID))
@@ -212,37 +249,22 @@ func (vr *VoiceRecorder) PlayFile(fileName string) uiauto.Action {
 		if err != nil {
 			return errors.Wrap(err, "failed to get the file name of the record at the detail fragment")
 		}
-		if fnText != fileName {
+		if fnText != vr.latestRecordName {
 			return errors.New("the audio is not the one just recorded")
 		}
 		testing.ContextLogf(ctx, "Found recorded file: %s", fnText)
 
-		splitRecordBtn := vr.app.Device.Object(ui.ID(splitRecordBtnID))
-		closeBtn := vr.app.Device.Object(ui.Text("Close"))
-		playBtn := vr.app.Device.Object(ui.ID(playBtnID))
-		startMarker := vr.app.Device.Object(ui.ID(startMarkerID))
-		zoomIn := vr.app.Device.Object(ui.ID(zoomInID))
-
-		// To verify if the audio is playing, enter "editing audio" page.
-		return uiauto.Combine("enter editing audio page and play",
-			apputil.FindAndClick(splitRecordBtn, defaultUITimeout),
-			apputil.ClickIfExist(closeBtn, defaultUITimeout),
-			apputil.ClickIfExist(zoomIn, defaultUITimeout), // Zoom in to let start marker disappear from screen easier.
-			apputil.ClickIfExist(zoomIn, defaultUITimeout),
-			apputil.ClickIfExist(zoomIn, defaultUITimeout),
-			apputil.FindAndClick(playBtn, defaultUITimeout),
-			func(ctx context.Context) error { return startMarker.WaitUntilGone(ctx, defaultUITimeout) }, // Wait for the audio to finish playing. If start marker doesn't disappear, it means the audio doesn't play.
-		)(ctx)
+		return nil
 	}
 }
 
-// DeleteAudio deletes the audio file created by RecordSound method.
+// DeleteLatestRecord deletes the audio file created by RecordAudioFor method.
 // The file deletion functionality provide by Voice Recorder might comes with ads show up,
 // to avoid dealing with ads, here delete those files by os.Remove().
-func (vr *VoiceRecorder) DeleteAudio(ctx context.Context, cr *chrome.Chrome, fileName string) error {
+func (vr *VoiceRecorder) DeleteLatestRecord(ctx context.Context, cr *chrome.Chrome) error {
 	downloadsPath, err := cryptohome.DownloadsPath(ctx, cr.NormalizedUser())
 	if err != nil {
 		return errors.Wrap(err, "failed to retrieve users Downloads path")
 	}
-	return os.Remove(filepath.Join(downloadsPath, "Recorders", fileName))
+	return os.Remove(filepath.Join(downloadsPath, "Recorders", vr.latestRecordName))
 }
