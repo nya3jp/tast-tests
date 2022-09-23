@@ -22,6 +22,30 @@
       },
       "revId": "fd07d49e6562f876ffca6c5b27b9f2360033057f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a346c83_7f176b7f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/personalization/set_screensaver.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1510098
+      },
+      "writtenOn": "2022-09-23T19:04:36Z",
+      "side": 1,
+      "message": "I think we need to add a new fixture to achieve that as this ash.EnsureTabletMode() requires a chrome instance. I\u0027ll explore that option and follow up if it\u0027s feasible.",
+      "parentUuid": "4d22531a_30d70169",
+      "range": {
+        "startLine": 39,
+        "startChar": 17,
+        "endLine": 39,
+        "endChar": 45
+      },
+      "revId": "fd07d49e6562f876ffca6c5b27b9f2360033057f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
