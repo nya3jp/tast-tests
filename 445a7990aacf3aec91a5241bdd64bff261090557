@@ -108,6 +108,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d7c4e268_f91a1b3c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/fgsec_connect.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-09-23T20:48:26Z",
+      "side": 1,
+      "message": "you can create 1 BSS on each band for each Gale. You should be able to indicate which router you want to create the BSS on.",
+      "parentUuid": "45f716fb_da276d81",
+      "revId": "445a7990aacf3aec91a5241bdd64bff261090557",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d8263a67_fd124ad8",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/fgsec_connect.go",
         "patchSetId": 4
@@ -137,6 +155,24 @@
       "side": 1,
       "message": "I\u0027m first starting AP1, then AP2 and discover AP2.  AP1 should be already in the scan where AP2 is being reported.",
       "parentUuid": "d8263a67_fd124ad8",
+      "revId": "445a7990aacf3aec91a5241bdd64bff261090557",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52371089_65aa1b8d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/fgsec_connect.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-09-23T20:48:26Z",
+      "side": 1,
+      "message": "I\u0027d rather not make the assumption. If AP1 is broken for some reason, we should catch that sooner rather than later.",
+      "parentUuid": "572ac13b_c4b5cbb6",
       "revId": "445a7990aacf3aec91a5241bdd64bff261090557",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
