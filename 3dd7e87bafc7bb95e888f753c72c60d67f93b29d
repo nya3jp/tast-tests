@@ -16,6 +16,29 @@
       "message": "Waiting for the shadow reviewer to do the review first.",
       "revId": "3dd7e87bafc7bb95e888f753c72c60d67f93b29d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4e02a55_a4b71b97",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-09-23T18:37:29Z",
+      "side": 1,
+      "message": "Should this be `ls`?",
+      "range": {
+        "startLine": 356,
+        "startChar": 9,
+        "endLine": 356,
+        "endChar": 14
+      },
+      "revId": "3dd7e87bafc7bb95e888f753c72c60d67f93b29d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
