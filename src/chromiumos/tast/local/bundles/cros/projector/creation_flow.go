@@ -11,10 +11,7 @@ import (
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/chrome/projector"
-	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
-	"chromiumos/tast/local/chrome/uiauto/nodewith"
-	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -42,12 +39,6 @@ func CreationFlow(ctx context.Context, s *testing.State) {
 
 	defer faillog.DumpUITreeOnError(ctxForCleanUp, s.OutDir(), s.HasError, tconn)
 
-	ui := uiauto.New(tconn).WithTimeout(2 * time.Minute)
-
-	screencastItem := nodewith.ClassName("screencast-media").Role(role.GenericContainer).First()
-	tutorialsText := nodewith.Name("Getting started").Role(role.StaticText)
-	closeTutorialsButton := nodewith.Name("Close tutorials").Role(role.Button)
-
 	cleanup, err := projector.SetUpProjectorApp(ctx, tconn)
 	if err != nil {
 		s.Fatal("Failed to set up Projector app: ", err)
@@ -58,18 +49,7 @@ func CreationFlow(ctx context.Context, s *testing.State) {
 	// prevent taking up Drive quota over time.
 	defer projector.DeleteScreencastItems(ctxForCleanUp, tconn)
 
-	s.Log("Setting up the new screencast creation flow")
-	if err := uiauto.Combine("Setting up the new screencast creation flow",
-		// Make sure there are no existing screencasts before
-		// starting the test.
-		ui.Gone(screencastItem),
-		// Dismiss the tutorial videos in case they hide the screencast item on small screens.
-		ui.WaitUntilExists(closeTutorialsButton),
-		ui.LeftClickUntil(closeTutorialsButton, ui.Gone(tutorialsText)),
-	)(ctx); err != nil {
-		s.Fatal("Failed to set up the new screencast creation flow: ", err)
-	}
-
+	s.Log("Launching the new screencast creation flow")
 	if err := projector.LaunchCreationFlow(ctx, tconn, true /*launchAnnotator*/); err != nil {
 		s.Fatal("Failed to go through the new screencast creation flow: ", err)
 	}
