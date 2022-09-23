@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6356d921_310efada",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/ucm_sequences.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1512777
+      },
+      "writtenOn": "2022-09-23T02:13:28Z",
+      "side": 1,
+      "message": "PS3-\u003ePS5:\n\nI think we should still check the existence of the UCM.\nThe direct output of `alsaucm` is much less useful:\n\n```\n2022-09-23T01:37:49.026489Z audio.UCMSequences.section_device   [ FAIL ] Cannot get UCM commands: failed to list modifiers: exit status 1\n2022-09-23T01:37:49.026489Z audio.UCMSequences.section_modifier [ FAIL ] Cannot get UCM commands: failed to list modifiers: exit status 1\n2022-09-23T01:37:49.026489Z audio.UCMSequences.section_verb     [ FAIL ] Command /usr/bin/alsaucm -csof-m8195_m98390_5682s.dojo set _verb HiFi failed:\nALSA lib /build/cherry/tmp/portage/media-libs/alsa-lib-1.2.1.2-r2/work/alsa-lib-1.2.1.2/src/ucm/utils.c:261:(uc_mgr_config_load) could not open configuration file /usr/share/alsa/ucm2/sof-m8195_m98390_5682s.dojo/sof-m8195_m98390_5682s.dojo.conf\nALSA lib /build/cherry/tmp/portage/media-libs/alsa-lib-1.2.1.2-r2/work/alsa-lib-1.2.1.2/src/ucm/parser.c:1605:(load_master_config) error: could not parse configuration for card sof-m8195_m98390_5682s.dojo\nALSA lib /build/cherry/tmp/portage/media-libs/alsa-lib-1.2.1.2-r2/work/alsa-lib-1.2.1.2/src/ucm/main.c:963:(snd_use_case_mgr_open) error: failed to import sof-m8195_m98390_5682s.dojo use case configuration -2\nalsaucm: error failed to open sound card sof-m8195_m98390_5682s.dojo: No such file or directory\n```\n\nIt even suggests the path for ucm2: `/usr/share/alsa/ucm2/sof-m8195_m98390_5682s.dojo/sof-m8195_m98390_5682s.dojo.conf`",
+      "range": {
+        "startLine": 178,
+        "startChar": 14,
+        "endLine": 178,
+        "endChar": 30
+      },
+      "revId": "8d8ea548e54e6c874b7c8398be53acaff6b2e106",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
