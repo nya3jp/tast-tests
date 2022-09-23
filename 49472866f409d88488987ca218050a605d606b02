@@ -122,6 +122,24 @@
       "parentUuid": "effac0b5_11c02393",
       "revId": "49472866f409d88488987ca218050a605d606b02",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ab205e5_37f35591",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/modem_helper_manifest_verification.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1377951
+      },
+      "writtenOn": "2022-09-23T17:03:09Z",
+      "side": 1,
+      "message": "it\u0027s fine. you can keep it with the fixture",
+      "parentUuid": "b7bd1072_13313aee",
+      "revId": "49472866f409d88488987ca218050a605d606b02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
