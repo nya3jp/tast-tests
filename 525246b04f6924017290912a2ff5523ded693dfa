@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94851b99_cad64ae9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback_simultaneous.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-09-23T10:34:41Z",
+      "side": 1,
+      "message": "nit: does CloseTargets work for you?\n\nhttp://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/chrome.go?l\u003d426",
+      "range": {
+        "startLine": 128,
+        "startChar": 0,
+        "endLine": 138,
+        "endChar": 0
+      },
+      "revId": "525246b04f6924017290912a2ff5523ded693dfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
