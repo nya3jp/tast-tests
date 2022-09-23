@@ -1010,6 +1010,21 @@ func (h *Helper) getCellularServiceProperty(ctx context.Context, propertyName st
 	return info, nil
 }
 
+// SetAPN sets the Custom/OTHER APN property `Cellular.APN`.
+func (h *Helper) SetAPN(ctx context.Context, apn map[string]string) error {
+	ctx, st := timing.Start(ctx, "Helper.SetApn")
+	defer st.End()
+
+	service, err := h.FindServiceForDevice(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to get Cellular Service")
+	}
+	if err := service.SetProperty(ctx, shillconst.ServicePropertyCellularAPN, apn); err != nil {
+		return errors.Wrap(err, "failed to set Cellular.APN")
+	}
+	return nil
+}
+
 // GetCellularLastAttachAPN gets Cellular.LastAttachAPN dictionary from shill properties.
 func (h *Helper) GetCellularLastAttachAPN(ctx context.Context) (map[string]string, error) {
 	return h.getCellularServiceDictProperty(ctx, shillconst.ServicePropertyCellularLastAttachAPN)
