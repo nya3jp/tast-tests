@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d786fc7_fa80399a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/privacy_indicators.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1189880
+      },
+      "writtenOn": "2022-09-23T20:49:40Z",
+      "side": 1,
+      "message": "did you mean to leave this in?",
+      "range": {
+        "startLine": 123,
+        "startChar": 1,
+        "endLine": 123,
+        "endChar": 40
+      },
+      "revId": "030447df26a189459a8ceda2266b58d00e55185a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
