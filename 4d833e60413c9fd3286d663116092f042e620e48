@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ab09857_51aeb69f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/scan_app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-09-23T19:19:56Z",
+      "side": 1,
+      "message": "This code looks to be mostly copied from existing tests. Have you talked to scan app owners about exposing reusable APIs for this or adding a test in the scanapp package so that existing logic can be reused?",
+      "revId": "4d833e60413c9fd3286d663116092f042e620e48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
