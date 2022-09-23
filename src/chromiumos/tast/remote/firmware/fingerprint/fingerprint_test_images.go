@@ -36,11 +36,11 @@ const (
 	NocturneFPDevKey = "fingerprint_dev_keys/nocturne_fp/dev_key.pem"
 )
 
-var devKeyMap = map[fp.FPBoardName]string{
-	fp.FPBoardNameBloonchipper: BloonchipperDevKey,
-	fp.FPBoardNameDartmonkey:   DartmonkeyDevKey,
-	fp.FPBoardNameNami:         NamiFPDevKey,
-	fp.FPBoardNameNocturne:     NocturneFPDevKey,
+var devKeyMap = map[fp.BoardName]string{
+	fp.BoardNameBloonchipper: BloonchipperDevKey,
+	fp.BoardNameDartmonkey:   DartmonkeyDevKey,
+	fp.BoardNameNami:         NamiFPDevKey,
+	fp.BoardNameNocturne:     NocturneFPDevKey,
 }
 
 const (
@@ -123,7 +123,7 @@ type firmwareImageGenerator struct {
 }
 
 // DevKeyForFPBoard gets the dev key for the given fpBoard.
-func DevKeyForFPBoard(fpBoard fp.FPBoardName) string {
+func DevKeyForFPBoard(fpBoard fp.BoardName) string {
 	return devKeyMap[fpBoard]
 }
 
@@ -403,7 +403,7 @@ func readFMAPSection(ctx context.Context, futilityPath, firmwareFilePath string,
 }
 
 // GenerateTestFirmwareImages generates a set of test firmware images from the firmware that is on the DUT.
-func GenerateTestFirmwareImages(ctx context.Context, d *rpcdut.RPCDUT, futilityPath, keyFilePath string, fpBoard fp.FPBoardName, buildFWFile, dutTempDir string) (ret TestImages, retErr error) {
+func GenerateTestFirmwareImages(ctx context.Context, d *rpcdut.RPCDUT, futilityPath, keyFilePath string, fpBoard fp.BoardName, buildFWFile, dutTempDir string) (ret TestImages, retErr error) {
 	testing.ContextLog(ctx, "Creating temp dir")
 	serverTmpDir, err := ioutil.TempDir("", "*")
 	if err != nil {

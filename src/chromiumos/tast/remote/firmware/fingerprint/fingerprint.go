@@ -130,8 +130,8 @@ var keyIDMap = map[string]KeyType{
 //  1. Documents the exact versions and keys used for a given firmware file.
 //  2. Used to verify that files that end up in the build (and therefore
 //     what we release) is exactly what we expect.
-var firmwareVersionMap = map[fp.FPBoardName]map[string]firmwareMetadata{
-	fp.FPBoardNameBloonchipper: {
+var firmwareVersionMap = map[fp.BoardName]map[string]firmwareMetadata{
+	fp.BoardNameBloonchipper: {
 		"bloonchipper_v2.0.4277-9f652bb3-RO_v2.0.14348-e5fb0b9-RW.bin": {
 			sha256sum: "e7d8029216a9003fa467b23067ee4d216f052980e2419211beebcb26b2738f31",
 			roVersion: "bloonchipper_v2.0.4277-9f652bb3",
@@ -145,7 +145,7 @@ var firmwareVersionMap = map[fp.FPBoardName]map[string]firmwareMetadata{
 			keyID:     "1c590ef36399f6a2b2ef87079c135b69ef89eb60",
 		},
 	},
-	fp.FPBoardNameNocturne: {
+	fp.BoardNameNocturne: {
 		"nocturne_fp_v2.2.64-58cf5974e-RO_v2.0.14340-6c1587ca-RW.bin": {
 			sha256sum: "88c9a45f35d7344251a6945f40701bca2ab2581633c23f4e29e43774e0c2c80f",
 			roVersion: "nocturne_fp_v2.2.64-58cf5974e",
@@ -153,7 +153,7 @@ var firmwareVersionMap = map[fp.FPBoardName]map[string]firmwareMetadata{
 			keyID:     "6f38c866182bd9bf7a4462c06ac04fa6a0074351",
 		},
 	},
-	fp.FPBoardNameNami: {
+	fp.BoardNameNami: {
 		"nami_fp_v2.2.144-7a08e07eb-RO_v2.0.14340-6c1587ca70-RW.bin": {
 			sha256sum: "8f8e8cc6e541b4312ad79bd2b6736e31434c88677117b86c2dd3b7e41e8f28e9",
 			roVersion: "nami_fp_v2.2.144-7a08e07eb",
@@ -161,7 +161,7 @@ var firmwareVersionMap = map[fp.FPBoardName]map[string]firmwareMetadata{
 			keyID:     "35486c0090ca390408f1fbbf2a182966084fe2f8",
 		},
 	},
-	fp.FPBoardNameDartmonkey: {
+	fp.BoardNameDartmonkey: {
 		"dartmonkey_v2.0.2887-311310808-RO_v2.0.14340-6c1587ca7-RW.bin": {
 			sha256sum: "9f53319deb1cf049e2ceea70865c4f4cdb561ebc8c94d7a9cd1f5ed33a9f3451",
 			roVersion: "dartmonkey_v2.0.2887-311310808",
@@ -197,7 +197,7 @@ func NeedsRebootAfterFlashing(ctx context.Context, d *rpcdut.RPCDUT) (bool, erro
 }
 
 // getExpectedFwInfo returns expected firmware info for a given firmware file name.
-func getExpectedFwInfo(fpBoard fp.FPBoardName, buildFwFile string, infoType fwInfoType) (string, error) {
+func getExpectedFwInfo(fpBoard fp.BoardName, buildFwFile string, infoType fwInfoType) (string, error) {
 	boardExpectedFwInfo, ok := firmwareVersionMap[fpBoard]
 	if !ok {
 		return "", errors.Errorf("failed to get firmware info for board %s", fpBoard)
@@ -221,7 +221,7 @@ func getExpectedFwInfo(fpBoard fp.FPBoardName, buildFwFile string, infoType fwIn
 }
 
 // ValidateBuildFwFile checks that all attributes in the given firmware file match their expected values.
-func ValidateBuildFwFile(ctx context.Context, d *rpcdut.RPCDUT, fpBoard fp.FPBoardName, buildFwFile string) error {
+func ValidateBuildFwFile(ctx context.Context, d *rpcdut.RPCDUT, fpBoard fp.BoardName, buildFwFile string) error {
 	// Check hash on device.
 	actualHash, err := calculateSha256sum(ctx, d, buildFwFile)
 	if err != nil {
@@ -350,23 +350,23 @@ func calculateSha256sum(ctx context.Context, d *rpcdut.RPCDUT, buildFwFile strin
 }
 
 // boardFromCrosConfig returns the fingerprint board name from cros_config.
-func boardFromCrosConfig(ctx context.Context, d *rpcdut.RPCDUT) (fp.FPBoardName, error) {
+func boardFromCrosConfig(ctx context.Context, d *rpcdut.RPCDUT) (fp.BoardName, error) {
 	out, err := d.Conn().CommandContext(ctx, "cros_config", "/fingerprint", "board").Output(ssh.DumpLogOnError)
-	return fp.FPBoardName(out), err
+	return fp.BoardName(out), err
 }
 
 // Board returns the name of the fingerprint EC on the DUT
-func Board(ctx context.Context, d *rpcdut.RPCDUT) (fp.FPBoardName, error) {
+func Board(ctx context.Context, d *rpcdut.RPCDUT) (fp.BoardName, error) {
 	// For devices that don't have unibuild support (which is required to
 	// use cros_config).
 	// TODO(https://crbug.com/1030862): remove when nocturne has cros_config
 	// support.
 	board, err := reporters.New(d.DUT()).Board(ctx)
 	if err != nil {
-		return fp.FPBoardName(""), err
+		return fp.BoardName(""), err
 	}
 	if board == "nocturne" {
-		return fp.FPBoardName(board + fingerprintBoardNameSuffix), nil
+		return fp.BoardName(board + fingerprintBoardNameSuffix), nil
 	}
 
 	// Use cros_config to get fingerprint board.
@@ -374,7 +374,7 @@ func Board(ctx context.Context, d *rpcdut.RPCDUT) (fp.FPBoardName, error) {
 }
 
 // FirmwarePath returns the path to the fingerprint firmware file on device.
-func FirmwarePath(ctx context.Context, d *rpcdut.RPCDUT, fpBoard fp.FPBoardName) (string, error) {
+func FirmwarePath(ctx context.Context, d *rpcdut.RPCDUT, fpBoard fp.BoardName) (string, error) {
 	cmd := fmt.Sprintf("ls %s%s*.bin", fingerprintFirmwarePathBase, fpBoard)
 	out, err := d.Conn().CommandContext(ctx, "bash", "-c", cmd).Output(ssh.DumpLogOnError)
 	if err != nil {
@@ -466,7 +466,7 @@ func ReimageFPMCU(ctx context.Context, d *rpcdut.RPCDUT, pxy *servo.Proxy, firmw
 }
 
 // InitializeKnownState checks that the AP can talk to FPMCU. If not, it flashes the FPMCU.
-func InitializeKnownState(ctx context.Context, d *rpcdut.RPCDUT, outdir string, pxy *servo.Proxy, fpBoard fp.FPBoardName, firmwareFile FirmwareFile, needsRebootAfterFlashing bool) error {
+func InitializeKnownState(ctx context.Context, d *rpcdut.RPCDUT, outdir string, pxy *servo.Proxy, fpBoard fp.BoardName, firmwareFile FirmwareFile, needsRebootAfterFlashing bool) error {
 	// Check if the FPMCU even responds to a friendly hello (query version).
 	// Save the version string in a file for later.
 	out, err := CheckFirmwareIsFunctional(ctx, d.DUT())
@@ -497,7 +497,7 @@ func InitializeKnownState(ctx context.Context, d *rpcdut.RPCDUT, outdir string, 
 
 // CheckValidFlashState validates the rollback state and the running firmware versions (RW and RO).
 // It returns an error if any of the values are incorrect.
-func CheckValidFlashState(ctx context.Context, d *rpcdut.RPCDUT, fpBoard fp.FPBoardName, firmwareFile FirmwareFile) error {
+func CheckValidFlashState(ctx context.Context, d *rpcdut.RPCDUT, fpBoard fp.BoardName, firmwareFile FirmwareFile) error {
 	// Check that RO and RW versions are what we expect.
 	if err := CheckRunningFirmwareVersionMatches(ctx, d, firmwareFile.ROVersion, firmwareFile.RWVersion); err != nil {
 		return err
@@ -530,7 +530,7 @@ func CheckValidFlashState(ctx context.Context, d *rpcdut.RPCDUT, fpBoard fp.FPBo
 }
 
 // InitializeHWAndSWWriteProtect ensures hardware and software write protect are initialized as requested.
-func InitializeHWAndSWWriteProtect(ctx context.Context, d *rpcdut.RPCDUT, pxy *servo.Proxy, fpBoard fp.FPBoardName, enableHWWP, enableSWWP bool) error {
+func InitializeHWAndSWWriteProtect(ctx context.Context, d *rpcdut.RPCDUT, pxy *servo.Proxy, fpBoard fp.BoardName, enableHWWP, enableSWWP bool) error {
 	testing.ContextLogf(ctx, "Initializing HW WP to %t, SW WP to %t", enableHWWP, enableSWWP)
 	// The HW write protect level must match the desired SW write protect
 	// level prior to modifying SW write protect. Once the SW write protect
