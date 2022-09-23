@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9bf6359d_9033b2fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/shill_cellular_smoke.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-09-23T21:34:05Z",
+      "side": 1,
+      "message": "Single space before got?",
+      "revId": "a5e47b23ef7983670b83d0259d0244a8ac2d842a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
