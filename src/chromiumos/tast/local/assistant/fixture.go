@@ -120,6 +120,20 @@ func init() {
 	})
 
 	testing.AddFixture(&testing.Fixture{
+		Name: "assistantOobeAsUsedVmReady",
+		Desc: "Assistant OOBE screen with a gaia which has used Assistant before and whose Voice Match is ready",
+		Contacts: []string{
+			"yawano@google.com",
+			"assistive-eng@google.com",
+		},
+		Vars:            []string{"assistant.username", "assistant.password", "ui.signinProfileTestExtensionManifestKey"},
+		Impl:            NewOobeFixture(),
+		SetUpTimeout:    30 * time.Second,
+		PostTestTimeout: 30 * time.Second,
+		PreTestTimeout:  chrome.GAIALoginTimeout + 3*time.Minute,
+	})
+
+	testing.AddFixture(&testing.Fixture{
 		Name: "assistantBaseWithHotword",
 		Desc: "Chrome session for assistant testing with Hotword enabled",
 		Contacts: []string{
@@ -484,3 +498,113 @@ func (f *audioBoxFixture) PreTest(ctx context.Context, s *testing.FixtTestState)
 
 func (f *audioBoxFixture) PostTest(ctx context.Context, s *testing.FixtTestState) {
 }
+
+type oobeFixture struct {
+	fixtData   *OobeFixtData
+	chromeOpts []chrome.Option
+}
+
+// OobeFixtData is a fixture data for Assistant OOBE.
+//
+// Note:
+// OobeFixtureData is accessible from oobeFixture. A pointer of OobeFixtData might be copied by a
+// framework and shared between tests. Do not change a pointer in PreTest/Reset/PostTest.
+type OobeFixtData struct {
+	OobeCtx OobeContext
+}
+
+// NewOobeFixture returns an Assistant OOBE fixture
+func NewOobeFixture() testing.FixtureImpl {
+	return &oobeFixture{}
+}
+
+func (f *oobeFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
+	f.chromeOpts = []chrome.Option{
+		VerboseLogging(),
+		ashNoNudgesExtraArg(),
+		chrome.NoLogin(),
+		chrome.DeferLogin(),
+		chrome.GAIALogin(chrome.Creds{
+			User: s.RequiredVar("assistant.username"),
+			Pass: s.RequiredVar("assistant.password"),
+		}),
+		chrome.DontSkipOOBEAfterLogin(),
+		chrome.LoadSigninProfileExtension(s.RequiredVar("ui.signinProfileTestExtensionManifestKey")),
+	}
+	oobeFixtData := OobeFixtData{}
+	f.fixtData = &oobeFixtData
+
+	return f.fixtData
+}
+
+func (f *oobeFixture) PreTest(ctx context.Context, s *testing.FixtTestState) {
+	// Go through OOBE in PreTest as we cannot re-use this instance after a test.
+	cr, err := chrome.New(ctx, f.chromeOpts...)
+	if err != nil {
+		s.Fatal("Failed to create a Chrome: ", err)
+	}
+
+	oobeConn, err := cr.WaitForOOBEConnection(ctx)
+	if err != nil {
+		s.Fatal("Failed to create an OOBE connection: ", err)
+	}
+
+	tconn, err := cr.SigninProfileTestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to obtain a test API Conn: ", err)
+	}
+
+	oobeCtx := OobeContext{
+		OobeConn: oobeConn,
+		Chrome:   cr,
+		Tconn:    tconn,
+	}
+	f.fixtData.OobeCtx = oobeCtx
+
+	if err := GoThroughOobeScreen(ctx, &WelcomeScreen, &oobeCtx); err != nil {
+		s.Fatal("Failed to go through welcome screen: ", err)
+	}
+	if err := GoThroughOobeScreen(ctx, &UserCreationScreen, &oobeCtx); err != nil {
+		s.Fatal("Failed to go through user creation screen: ", err)
+	}
+	if err := GoThroughOobeScreen(ctx, &GaiaScreen, &oobeCtx); err != nil {
+		s.Fatal("Failed to go through gaia screen: ", err)
+	}
+	if err := GoThroughOobeScreen(ctx, &ConsolidatedConsentScreen, &oobeCtx); err != nil {
+		s.Fatal("Failed to go through consolidated consent screen: ", err)
+	}
+	if err := GoThroughOobeScreen(ctx, &SyncScreen, &oobeCtx); err != nil {
+		s.Fatal("Failed to go through sync screen: ", err)
+	}
+	if err := GoThroughOobeScreen(ctx, &PinSetupScreen, &oobeCtx); err != nil {
+		s.Fatal("Failed to go through pin setup screen: ", err)
+	}
+
+	// Wait Assistant screen before go into a test body
+	if err := isVisible(ctx, &OobeScreen{oobeAPIName: "AssistantScreen"}, &oobeCtx); err != nil {
+		s.Fatal("Failed to wait assistant screen: ", err)
+	}
+}
+func (f *oobeFixture) Reset(ctx context.Context) error {
+	return nil
+}
+func (f *oobeFixture) PostTest(ctx context.Context, s *testing.FixtTestState) {
+	defer func() {
+		// Reset fixtData. Do not reset fixtData pointer as it can be copied and shared between
+		// tests by a framework.
+		f.fixtData.OobeCtx = OobeContext{}
+	}()
+
+	if f.fixtData.OobeCtx.OobeConn != nil {
+		if err := f.fixtData.OobeCtx.OobeConn.Close(); err != nil {
+			s.Fatal("Failed to close OobeConn: ", err)
+		}
+	}
+
+	if f.fixtData.OobeCtx.Chrome != nil {
+		if err := f.fixtData.OobeCtx.Chrome.Close(ctx); err != nil {
+			s.Fatal("Failed to close Chrome: ", err)
+		}
+	}
+}
+func (f *oobeFixture) TearDown(ctx context.Context, s *testing.FixtState) {}
