@@ -6,6 +6,7 @@ package inputsimulations
 
 import (
 	"context"
+	"fmt"
 	"math"
 	"time"
 
@@ -13,6 +14,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/display"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/mouse"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/input"
@@ -118,5 +120,25 @@ func RunDragMouseCycle(ctx context.Context, tconn *chrome.TestConn, info *displa
 		mouse.Move(tconn, info.Bounds.CenterPoint(), 500*time.Millisecond),
 		mouse.Release(tconn, mouse.LeftButton),
 		action.Sleep(500*time.Millisecond),
+	)(ctx)
+}
+
+// RepeatMouseScroll scrolls down if |scrollDown| is true and up if it
+// is false |n| times, with a |delay| in between each scroll tick.
+func RepeatMouseScroll(ctx context.Context, mw *input.MouseEventWriter, scrollDown bool, delay time.Duration, n int) error {
+	dir := "up"
+	scroll := mw.ScrollUp
+	if scrollDown {
+		scroll = mw.ScrollDown
+		dir = "down"
+	}
+
+	return uiauto.Repeat(
+		n,
+		action.Combine(
+			fmt.Sprintf("scroll %s and sleep", dir),
+			func(ctx context.Context) error { return scroll() },
+			action.Sleep(delay),
+		),
 	)(ctx)
 }
