@@ -97,6 +97,16 @@ const (
 	FPBoardNameNami         FPBoardName = "nami_fp"
 )
 
+// IsValid checks if the FPBoardName is a valid fingerprint board name.
+func (b FPBoardName) IsValid() bool {
+	switch b {
+	case FPBoardNameBloonchipper, FPBoardNameDartmonkey, FPBoardNameNocturne, FPBoardNameNami:
+		return true
+	default:
+		return false
+	}
+}
+
 const (
 	// nocturne and nami are special cases and have "_fp" appended.
 	// Newer FPMCUs have unique names.
