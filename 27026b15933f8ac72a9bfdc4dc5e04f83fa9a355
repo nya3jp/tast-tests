@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "142204dd_039ead83",
+        "filename": "src/chromiumos/tast/common/fingerprint/config.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2022-09-23T20:40:21Z",
+      "side": 1,
+      "message": "Just trying to be consistent with the `IsValid` implementations throughout this source file to lower the human parsing/reading load. It is possible that new types could appear.",
+      "parentUuid": "2cc4f380_e16d11b4",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 92,
+        "endChar": 2
+      },
+      "revId": "27026b15933f8ac72a9bfdc4dc5e04f83fa9a355",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3734d044_cffc0a99",
         "filename": "src/chromiumos/tast/local/bundles/cros/biod/cros_config.go",
         "patchSetId": 10
@@ -37,6 +61,30 @@
       "writtenOn": "2022-09-23T15:57:49Z",
       "side": 1,
       "message": "nit: this comment doesn\u0027t really explain much, can we remove it? and can we remove the two surrounding blank lines while we\u0027re at it?",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 0
+      },
+      "revId": "27026b15933f8ac72a9bfdc4dc5e04f83fa9a355",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "09a662c5_dd094fd4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/biod/cros_config.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2022-09-23T20:40:21Z",
+      "side": 1,
+      "message": "I just wanted to have section dividers/headers, so that you don\u0027t need to scan the code to find the section that checks that given property, but I can remove.",
+      "parentUuid": "3734d044_cffc0a99",
       "range": {
         "startLine": 31,
         "startChar": 0,
@@ -66,6 +114,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0e534fc0_e591e702",
+        "filename": "src/chromiumos/tast/local/bundles/cros/biod/cros_config.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2022-09-23T20:40:21Z",
+      "side": 1,
+      "message": "Good point, but this one property either means fp unsupported or fp supported, which means that further errors may or may not be relevant.\nFor example, \"\" as sensor-location probably means unsupported, thus further parsing is invalid.\n\nI added more fallthrough errors for the remaining checks. Let me know if you think I should change it.",
+      "parentUuid": "76f432b7_017a792d",
+      "revId": "27026b15933f8ac72a9bfdc4dc5e04f83fa9a355",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "01fc63c9_ab7a29e9",
         "filename": "src/chromiumos/tast/local/bundles/cros/biod/cros_config.go",
         "patchSetId": 10
@@ -77,6 +143,24 @@
       "writtenOn": "2022-09-23T15:57:49Z",
       "side": 1,
       "message": "nit: this comment doesn\u0027t really explain much (like above it just seems to be the name of the crosconfig file, so it\u0027s kind of redundant with L52 in the same way)",
+      "revId": "27026b15933f8ac72a9bfdc4dc5e04f83fa9a355",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8dcd3cd8_e1cf332a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/biod/cros_config.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2022-09-23T20:40:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "01fc63c9_ab7a29e9",
       "revId": "27026b15933f8ac72a9bfdc4dc5e04f83fa9a355",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -98,6 +182,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "27869b28_c2d5827c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/biod/cros_config.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2022-09-23T20:40:21Z",
+      "side": 1,
+      "message": "Good point.",
+      "parentUuid": "8ca272bf_1e3adedc",
+      "revId": "27026b15933f8ac72a9bfdc4dc5e04f83fa9a355",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f8cd376c_3a244e01",
@@ -115,6 +217,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ece3930_f0578804",
+        "filename": "src/chromiumos/tast/local/bundles/cros/biod/cros_config.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2022-09-23T20:40:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f8cd376c_3a244e01",
+      "revId": "27026b15933f8ac72a9bfdc4dc5e04f83fa9a355",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5f7d1102_5e7ab99f",
@@ -128,6 +248,24 @@
       "writtenOn": "2022-09-23T15:57:49Z",
       "side": 1,
       "message": "This comment doesn\u0027t really explain much, can we remove it?",
+      "revId": "27026b15933f8ac72a9bfdc4dc5e04f83fa9a355",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e08ada5_1a3e7377",
+        "filename": "src/chromiumos/tast/local/bundles/cros/biod/cros_config.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2022-09-23T20:40:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5f7d1102_5e7ab99f",
       "revId": "27026b15933f8ac72a9bfdc4dc5e04f83fa9a355",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
