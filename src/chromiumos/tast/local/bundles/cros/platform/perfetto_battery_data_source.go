@@ -38,7 +38,6 @@ func init() {
 func PerfettoBatteryDataSource(ctx context.Context, s *testing.State) {
 	// Start a trace session using the perfetto command line tool.
 	traceConfigPath := s.DataPath(batteryTraceConfigFile)
-	s.Log(traceConfigPath)
 	sess, err := tracing.StartSessionAndWaitUntilDone(ctx, traceConfigPath)
 	// The temporary file of trace data is no longer needed when returned.
 	defer sess.RemoveTraceResultFile()
@@ -105,13 +104,15 @@ func PerfettoBatteryDataSource(ctx context.Context, s *testing.State) {
 			s.Fatal("Invalid battery capacity value: ", capacity)
 		}
 	}
-	// Note that status.BatteryCharge is in Ah, while charge is in mAh.
+	// 100 Ah is a huge battery that we should not have a device with this large battery.
+	const maxBatteryChargeUAH = 100 * 1e6
+	// Note that status.BatteryCharge is in Ah, while charge is in uAh.
 	if status.BatteryCharge != 0.0 {
-		if !validateValueRange(charge, 0.0, 100.0) {
+		if !validateValueRange(charge, 0.0, maxBatteryChargeUAH) {
 			s.Fatal("Invalid battery charge value: ", charge)
 		}
 	}
-	// Note that status.BatteryCurrent is in A, while current is in mA.
+	// Note that status.BatteryCurrent is in A, while current is in uA.
 	if status.BatteryCurrent != 0.0 {
 		// Don't assert the value of current since it can be positive or negative.
 		// The kernel doc states that for batteries, negative values are used for discharge, but not all drivers follow that.
