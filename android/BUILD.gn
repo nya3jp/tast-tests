@@ -54,6 +54,7 @@ group("all") {
     "ArcPreImeKeyEventTest:ArcPreImeKeyEventTest",
     "ArcQuarterSizedWindowZoomingTest:ArcQuarterSizedWindowZoomingTest",
     "ArcQuotaProjectIdTest:ArcQuotaProjectIdTest",
+    "ArcRandomUIElementsApp:ArcRandomUIElementsApp",
     "ArcResizeLockTest:ArcResizeLockTest",
     "ArcSensorLatencyTest:ArcSensorLatencyTest",
     "ArcSoftInputModeTest:ArcSoftInputModeTest",
