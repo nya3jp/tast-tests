@@ -137,6 +137,12 @@ type ARC struct {
 	logcatFile   *os.File      // file currently being written to
 }
 
+// ActivateTracing turns on tracing
+func (a *ARC) ActivateTracing(ctx context.Context) error {
+	a.device.Root(ctx)
+	return a.device.Command(ctx, "shell", "echo 0 > /sys/kernel/tracing/tracing_on").Run(testexec.DumpLogOnError)
+}
+
 // Close releases testing-related resources associated with ARC.
 // ARC itself is not stopped.
 func (a *ARC) Close(ctx context.Context) error {
