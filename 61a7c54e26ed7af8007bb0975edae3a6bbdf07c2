@@ -206,6 +206,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "912102c5_12839a1c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/check_shutdown_crash.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1228419
+      },
+      "writtenOn": "2022-09-24T02:23:14Z",
+      "side": 1,
+      "message": "Thanks. I realized it is not connection issue, it is not login and cannot use assistant functions.",
+      "parentUuid": "3c091719_e05b5170",
+      "range": {
+        "startLine": 102,
+        "startChar": 19,
+        "endLine": 102,
+        "endChar": 23
+      },
+      "revId": "61a7c54e26ed7af8007bb0975edae3a6bbdf07c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "500698d1_a277ca19",
