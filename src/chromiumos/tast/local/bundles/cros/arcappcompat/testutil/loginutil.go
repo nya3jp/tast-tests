@@ -11,6 +11,7 @@ import (
 
 	"chromiumos/tast/common/action"
 	"chromiumos/tast/common/android/ui"
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
@@ -237,4 +238,21 @@ func ClickUntilButtonExists(ctx context.Context, s *testing.State, tconn *chrome
 	}, &testing.PollOptions{Timeout: ShortUITimeout}); err != nil {
 		s.Log("targetElement doesn't exist: ", err)
 	}
+}
+
+// CloseAndRelaunchApp to skip ads.
+func CloseAndRelaunchApp(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
+	if err := a.Command(ctx, "am", "force-stop", appPkgName).Run(testexec.DumpLogOnError); err != nil {
+		s.Fatal("Failed to stop app: ", err)
+	}
+	act, err := arc.NewActivity(a, appPkgName, appActivity)
+	if err != nil {
+		s.Fatal("Failed to create new app activity: ", err)
+	}
+	defer act.Close()
+	// Launch the app.
+	if err := act.StartWithDefaultOptions(ctx, tconn); err != nil {
+		s.Fatal("Failed to start app: ", err)
+	}
+	s.Log("Closed and relaunch the app successfully")
 }
