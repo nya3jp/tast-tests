@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+   Copyright 2022 The ChromiumOS Authors
+   Use of this source code is governed by a BSD-style license that can be
+   found in the LICENSE file.
+-->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+     package="org.chromium.arc.testapp.randomuielements">
+
+  <application>
+      <activity android:name="RandomUIElementsActivity"
+           android:label="RandomUIElementsActivity"
+           android:taskAffinity="org.chromium.arc.testapp.randomuielements.RandomUIElementsActivity"
+           android:exported="true">
+          <intent-filter>
+              <action android:name="android.intent.action.MAIN"/>
+              <category android:name="android.intent.category.LAUNCHER"/>
+          </intent-filter>
+      </activity>
+  </application>
+
+</manifest>
