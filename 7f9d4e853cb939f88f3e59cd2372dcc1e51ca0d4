@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "f66da648_c75eaafd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1318626
+      },
+      "writtenOn": "2022-09-24T04:57:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fed2b23d_f537cc5b",
+      "range": {
+        "startLine": 7,
+        "startChar": 22,
+        "endLine": 7,
+        "endChar": 23
+      },
+      "revId": "7f9d4e853cb939f88f3e59cd2372dcc1e51ca0d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "7abc3a22_9404d57f",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -54,6 +78,30 @@
       "writtenOn": "2022-09-23T15:55:58Z",
       "side": 1,
       "message": "nit: Should this be `histograms`?",
+      "range": {
+        "startLine": 5,
+        "startChar": 72,
+        "endLine": 5,
+        "endChar": 81
+      },
+      "revId": "7f9d4e853cb939f88f3e59cd2372dcc1e51ca0d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5ec746d_6690087d",
+        "filename": "src/chromiumos/tast/local/camera/histogramutil/histogramutil.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1318626
+      },
+      "writtenOn": "2022-09-24T04:57:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "01f596a2_24d37b56",
       "range": {
         "startLine": 5,
         "startChar": 72,
