@@ -16,6 +16,29 @@
       "message": "Updated OWNERS file to point to existing OWNERS file in third-party/flashrom.\nThis also required to add one more entry to unblocked terms.",
       "revId": "32dad9e2af3e639b5562a33af736826f335a09f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62b96b80_9d77b809",
+        "filename": "src/chromiumos/tast/common/flashrom/flashrom_library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1408939
+      },
+      "writtenOn": "2022-09-25T04:55:51Z",
+      "side": 1,
+      "message": "Do we need to have separate Write() and ProbeAndWrite() functions? \n\nI think Write() will still need to probe for the chip right?\n\n(likewise for other functions with two variants, e.g. ProbeAndRead() etc)",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 125,
+        "endChar": 1
+      },
+      "revId": "32dad9e2af3e639b5562a33af736826f335a09f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
