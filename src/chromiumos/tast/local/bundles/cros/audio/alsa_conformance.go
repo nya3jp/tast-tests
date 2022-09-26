@@ -50,11 +50,12 @@ func init() {
 				// TODO(b/245061122) : remove "dumo" and "dru" when b/245061122 is fixed.
 				// TODO(b/245063090) : remove "nasher" when b/245063090 is fixed.
 				// TODO(b/244254621) : remove "sasukette" when b/244254621 is fixed.
-				ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel("chronicler", "nautilus", "nautiluslte", "soraka", "karma", "beetley", "redrix", "gimble", "primus", "anahera", "babymega", "babytiger", "blacktiplte", "taniks", "bob", "dumo", "dru", "nasher", "sasukette")),
+				// TODO(b/248997612) : remove "kevin" when b/248997612 is fixed.
+				ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel("chronicler", "nautilus", "nautiluslte", "soraka", "karma", "beetley", "redrix", "gimble", "primus", "anahera", "babymega", "babytiger", "blacktiplte", "taniks", "bob", "dumo", "dru", "nasher", "sasukette", "kevin")),
 			},
 			{
 				Name:              "unstable",
-				ExtraHardwareDeps: hwdep.D(hwdep.Model("chronicler", "nautilus", "nautiluslte", "soraka", "karma", "beetley", "redrix", "gimble", "primus", "anahera", "babymega", "babytiger", "blacktiplte", "taniks", "bob", "dumo", "dru", "nasher", "sasukette")),
+				ExtraHardwareDeps: hwdep.D(hwdep.Model("chronicler", "nautilus", "nautiluslte", "soraka", "karma", "beetley", "redrix", "gimble", "primus", "anahera", "babymega", "babytiger", "blacktiplte", "taniks", "bob", "dumo", "dru", "nasher", "sasukette", "kevin")),
 			},
 		},
 	})
