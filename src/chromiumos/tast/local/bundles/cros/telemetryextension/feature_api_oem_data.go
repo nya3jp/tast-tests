@@ -9,7 +9,6 @@ import (
 
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/bundles/cros/telemetryextension/dep"
 	"chromiumos/tast/local/bundles/cros/telemetryextension/fixture"
 	"chromiumos/tast/testing"
 )
@@ -26,48 +25,7 @@ func init() {
 		},
 		Attr:         []string{"group:telemetry_extension_hw"},
 		SoftwareDeps: []string{"chrome"},
-		Params: []testing.Param{
-			{
-				Name:              "stable",
-				Fixture:           fixture.TelemetryExtension,
-				ExtraHardwareDeps: dep.StableModels(),
-			},
-			{
-				Name:              "non_stable",
-				Fixture:           fixture.TelemetryExtensionOverrideOEMName,
-				ExtraHardwareDeps: dep.NonStableModels(),
-			},
-			{
-				Name:              "stable_lacros",
-				Fixture:           fixture.TelemetryExtensionLacros,
-				ExtraHardwareDeps: dep.StableModels(),
-			},
-			{
-				Name:              "non_stable_lacros",
-				Fixture:           fixture.TelemetryExtensionOverrideOEMNameLacros,
-				ExtraHardwareDeps: dep.NonStableModels(),
-			},
-			{
-				Name:              "stable_managed",
-				Fixture:           fixture.TelemetryExtensionManaged,
-				ExtraHardwareDeps: dep.StableModels(),
-			},
-			{
-				Name:              "non_stable_managed",
-				Fixture:           fixture.TelemetryExtensionOverrideOEMNameManaged,
-				ExtraHardwareDeps: dep.NonStableModels(),
-			},
-			{
-				Name:              "stable_managed_lacros",
-				Fixture:           fixture.TelemetryExtensionManagedLacros,
-				ExtraHardwareDeps: dep.StableModels(),
-			},
-			{
-				Name:              "non_stable_managed_lacros",
-				Fixture:           fixture.TelemetryExtensionOverrideOEMNameManagedLacros,
-				ExtraHardwareDeps: dep.NonStableModels(),
-			},
-		},
+		Fixture:      fixture.TelemetryExtension,
 	})
 }
 
