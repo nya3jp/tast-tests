@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2249784a_f1d56e0e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1415512
+      },
+      "writtenOn": "2022-09-26T19:29:58Z",
+      "side": 1,
+      "message": "Please add a description with a little more detail about what this accomplishes. And since it\u0027s the start of a longer effort go ahead and link to your E2E testing design doc.",
+      "revId": "1a6ad42bf4ec49b21e38fed33f2a250fe0c209fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0c86c97_6eb930e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/quickstart/single_account_onboarding.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1415512
+      },
+      "writtenOn": "2022-09-26T19:29:58Z",
+      "side": 1,
+      "message": "It\u0027d be good to have a real description even if it\u0027s something vague like \"Test Quick Start\" for now.",
+      "range": {
+        "startLine": 19,
+        "startChar": 16,
+        "endLine": 19,
+        "endChar": 44
+      },
+      "revId": "1a6ad42bf4ec49b21e38fed33f2a250fe0c209fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8eedcfa4_a517a41d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/quickstart/single_account_onboarding.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1415512
+      },
+      "writtenOn": "2022-09-26T19:29:58Z",
+      "side": 1,
+      "message": "I think we want to add these contacts:\n```\n\"chromeos-sw-engprod@google.com\",\n\"chromeos-cross-device-eng@google.com\",\n```",
+      "revId": "1a6ad42bf4ec49b21e38fed33f2a250fe0c209fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d11dbb1_8b3b2336",
+        "filename": "src/chromiumos/tast/local/bundles/cros/quickstart/single_account_onboarding.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1415512
+      },
+      "writtenOn": "2022-09-26T19:29:58Z",
+      "side": 1,
+      "message": "Why is it called SingleAccountOnboarding? Should we name the test something to do with Quick Start?",
+      "range": {
+        "startLine": 29,
+        "startChar": 5,
+        "endLine": 29,
+        "endChar": 28
+      },
+      "revId": "1a6ad42bf4ec49b21e38fed33f2a250fe0c209fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5067142_b2e462bf",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1415512
+      },
+      "writtenOn": "2022-09-26T19:29:58Z",
+      "side": 1,
+      "message": "Is the plan to piggyback on this fixture? I had the impression that we were going to create a new fixture.",
+      "revId": "1a6ad42bf4ec49b21e38fed33f2a250fe0c209fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
