@@ -22,14 +22,12 @@ func init() {
 		Func:         WindowOutsideDisplay,
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Ensures an ARC window can move outside the display",
-		Contacts:     []string{"yhanada@chromium.org", "arc-framework+tast@google.com"},
+		Contacts:     []string{"takise@chromium.org", "arc-framework+tast@google.com"},
 		SoftwareDeps: []string{"chrome"},
 		Fixture:      "arcBootedInClamshellMode",
 		Attr:         []string{"group:mainline", "informational"},
 		Timeout:      4 * time.Minute,
 		Params: []testing.Param{{
-			ExtraSoftwareDeps: []string{"android_p"},
-		}, {
 			Name:              "vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
 		}},
