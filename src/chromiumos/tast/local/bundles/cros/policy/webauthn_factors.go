@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/common/pci"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
@@ -305,17 +306,26 @@ func getExpectedWebAuthnCapabilities(quickUnlockModeAllowlist *policy.QuickUnloc
 }
 
 func verifyInSessionAuthDialog(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn, pinEnabled bool) error {
+	// Reserve ten seconds for cleanup.
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
+
 	// TODO(b/210418148): Use an internal site for testing to prevent flakiness.
 	conn, err := cr.NewConn(ctx, "https://webauthn.io/")
 	if err != nil {
 		return errors.Wrap(err, "failed to navigate to test website")
 	}
-	defer conn.Close()
+	defer func(ctx context.Context, conn *chrome.Conn) {
+		conn.Navigate(ctx, "https://webauthn.io/logout")
+		conn.CloseTarget(ctx)
+		conn.Close()
+	}(cleanupCtx, conn)
 
 	name := randomUsername()
 	testing.ContextLogf(ctx, "Username: %s", name)
 	// Use a random username because webauthn.io keeps state for each username for a period of time.
-	err = conn.Eval(ctx, fmt.Sprintf(`document.getElementById('input-email').value = "%s"`, name), nil)
+	err = conn.Eval(ctx, fmt.Sprintf(`document.getElementById('input-email')._x_model.set("%s")`, name), nil)
 	if err != nil {
 		return errors.Wrap(err, "failed to execute JS expression to set username")
 	}
@@ -344,10 +354,6 @@ func verifyInSessionAuthDialog(ctx context.Context, cr *chrome.Chrome, tconn *ch
 		if err := ui.WithTimeout(5 * time.Second).WaitUntilExists(dialog)(ctx); err != nil {
 			return errors.Wrap(err, "ChromeOS dialog did not show up")
 		}
-	}
-
-	if err := conn.CloseTarget(ctx); err != nil {
-		return errors.Wrap(err, "failed to close target")
 	}
 
 	return nil
