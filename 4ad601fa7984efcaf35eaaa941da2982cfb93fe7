@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c3cda32_c58b07aa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1551729
+      },
+      "writtenOn": "2022-09-26T18:53:38Z",
+      "side": 1,
+      "message": "Hey David, \n\nI tried to wait in sub steps and it won\u0027t work until I relaunch the Play Store.\n\nThanks for your review. \n\n-Chenghao",
+      "revId": "4ad601fa7984efcaf35eaaa941da2982cfb93fe7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3b547a17_5ad0e462",
@@ -31,6 +48,24 @@
       "writtenOn": "2022-09-26T18:47:46Z",
       "side": 1,
       "message": "Is the issue that the entire flow needs to be retried or that `accountNameButton.WaitForExists` needed to be extended? If the first, action.Retry or uiauto.Retry may represent this case better, if the second (which is what the error messages show), would changing `accountNameButton.WaitForExists(ctx, 30*time.Second) to some longer time (i.e. 60 * time.Second) better address the issue?",
+      "revId": "4ad601fa7984efcaf35eaaa941da2982cfb93fe7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "935fb6c7_65299830",
+        "filename": "src/chromiumos/tast/local/arc/ui.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1551729
+      },
+      "writtenOn": "2022-09-26T18:53:38Z",
+      "side": 1,
+      "message": "Hi David, thanks for the review. We need to reopen the Play Store to make the second account shown, I tried to wait for longer time and it didn\u0027t work, so I chose to poll the whole process.",
+      "parentUuid": "3b547a17_5ad0e462",
       "revId": "4ad601fa7984efcaf35eaaa941da2982cfb93fe7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
