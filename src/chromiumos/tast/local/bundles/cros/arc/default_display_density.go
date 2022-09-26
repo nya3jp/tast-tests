@@ -10,6 +10,7 @@ import (
 	"time"
 
 	"chromiumos/tast/local/arc"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/testing"
 )
@@ -24,7 +25,6 @@ func init() {
 		// Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"android_vm", "chrome"},
 		Timeout:      4 * time.Minute,
-		Fixture:      "arcBooted",
 	})
 }
 
@@ -36,13 +36,22 @@ func DefaultDisplayDensity(ctx context.Context, s *testing.State) {
 		UniformScaleFactor = 1.20
 	)
 
-	cr := s.FixtValue().(*arc.PreData).Chrome
-	a := s.FixtValue().(*arc.PreData).ARC
+	cr, err := chrome.New(ctx, chrome.ARCEnabled(), chrome.UnRestrictARCCPU())
+	if err != nil {
+		s.Fatal("Failed to start Chrome: ", err)
+	}
+	defer cr.Close(ctx)
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to create Test API connection: ", err)
 	}
+
+	a, err := arc.New(ctx, s.OutDir())
+	if err != nil {
+		s.Fatal("Failed to start ARC: ", err)
+	}
+	defer a.Close(ctx)
 
 	var defaultDeviceScaleFactor float64
 	dispInfo, err := display.GetInternalInfo(ctx, tconn)
