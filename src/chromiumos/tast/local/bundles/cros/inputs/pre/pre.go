@@ -56,3 +56,11 @@ var InputsStableModels = hwdep.Model(StableModels...)
 // kevin64 is an experimental board does not support nacl, which fails Canvas installation.
 // To stabilize the tests, have to exclude entire kevin model as no distinguish between kevin and kevin64.
 var InputsUnstableModels = hwdep.SkipOnModel(append(StableModels, "kevin")...)
+
+// PhysicalKeyboardPerfModels is a list of models that are useful for performance testing.
+// This should be a mix of devices with a variety of performance characteristics.
+var PhysicalKeyboardPerfModels = hwdep.Model(
+	"kuldax", // High-end Chromebox
+	"redrix", // High-end laptop
+	"krane",  // Low-end tablet
+)
