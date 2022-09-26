@@ -24,17 +24,8 @@ func init() {
 			"mgawad@google.com", // Telemetry Extension author
 			"cros-oem-services-team@google.com",
 		},
-		Attr: []string{"group:mainline", "informational"},
-		Params: []testing.Param{
-			{
-				Name:              "stable",
-				ExtraHardwareDeps: dep.StableModels(),
-			},
-			{
-				Name:              "non_stable",
-				ExtraHardwareDeps: dep.NonStableModels(),
-			},
-		},
+		Attr:         []string{"group:telemetry_extension_hw"},
+		HardwareDeps: dep.HPModels(),
 	})
 }
 
