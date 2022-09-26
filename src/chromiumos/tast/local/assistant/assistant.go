@@ -9,6 +9,7 @@ import (
 	"context"
 	"fmt"
 	"path/filepath"
+	"regexp"
 	"time"
 
 	"chromiumos/tast/errors"
@@ -99,9 +100,26 @@ func ResolveAssistantHotkey(dutFeatures *protocol.DUTFeatures) (Accelerator, err
 
 // SendTextQuery sends text query to Assistant and returns the query status.
 func SendTextQuery(ctx context.Context, tconn *chrome.TestConn, query string) (QueryStatus, error) {
+	regexp := regexp.MustCompile("^Error: Session state must be ACTIVE to send a text query\\.")
+
 	var status QueryStatus
-	err := tconn.Call(ctx, &status, `tast.promisify(chrome.autotestPrivate.sendAssistantTextQuery)`, query, 30*1000 /* timeout_ms */)
-	return status, err
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		err := tconn.Call(ctx, &status, `tast.promisify(chrome.autotestPrivate.sendAssistantTextQuery)`, query, 30*1000 /* timeout_ms */)
+		if err != nil {
+			// Retry if the API call fails with session state error as it can get resolved if we wait a little.
+			if regexp.MatchString(err.Error()) {
+				return err
+			}
+
+			// Do not retry with other errors to avoid hiding them with a retry.
+			return testing.PollBreak(err)
+		}
+		return nil
+	}, &testing.PollOptions{}); err != nil {
+		return QueryStatus{}, errors.Wrap(err, "failed to call sendAssistantTextQuery API")
+	}
+
+	return status, nil
 }
 
 // SendTextQueryViaUI sends a text query via launcher.
