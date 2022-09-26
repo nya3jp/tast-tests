@@ -22,6 +22,30 @@
       },
       "revId": "ed4575720d4e2c0293e11732b7e6889b6e0f263f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ebdad02f_5f1495e2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/biod/cros_config.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2022-09-26T20:16:55Z",
+      "side": 1,
+      "message": "We can. I thought this looked cleaner, but I will try the other way.",
+      "parentUuid": "81f41854_785477c2",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 62
+      },
+      "revId": "ed4575720d4e2c0293e11732b7e6889b6e0f263f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
