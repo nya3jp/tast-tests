@@ -42,7 +42,7 @@ func init() {
 			},
 			{
 				Name:              "lacros",
-				Fixture:           "lacrosPrimaryDisableSync",
+				Fixture:           "lacrosDisableSync",
 				Val:               false,
 				ExtraSoftwareDeps: []string{"lacros", "no_tablet_form_factor"},
 				ExtraAttr:         []string{"informational"},
@@ -56,7 +56,7 @@ func init() {
 			},
 			{
 				Name:              "tablet_form_factor_lacros",
-				Fixture:           "lacrosPrimaryDisableSync",
+				Fixture:           "lacrosDisableSync",
 				Val:               true,
 				ExtraSoftwareDeps: []string{"lacros", "tablet_form_factor"},
 			},
@@ -80,7 +80,7 @@ func LaunchedApps(ctx context.Context, s *testing.State) {
 	}
 
 	// Chrome app name doesn't exactly match the chrome shelf name so modify it here for simpler code later.
-	if browserApp.Name == apps.Chrome.Name {
+	if browserApp.ID == apps.Chrome.ID {
 		browserApp.Name = "Google Chrome"
 	}
 
