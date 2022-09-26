@@ -53,7 +53,7 @@ func ModemfwdFallbackToRootfsFailedToInstallDlc(ctx context.Context, s *testing.
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
 	defer cancel()
-	// Ensure the test restores the modemfwd state.
+	// Ensure the test restores the dlcservice state.
 	defer func(ctx context.Context) {
 		ctx, st := timing.Start(ctx, "cleanUp")
 		defer st.End()
@@ -87,12 +87,17 @@ func ModemfwdFallbackToRootfsFailedToInstallDlc(ctx context.Context, s *testing.
 	}
 	s.Log("dlcservice has started successfully")
 
+	// Shorten deadline to leave time for cleanup.
+	cleanupCtxModemFwd := ctx
+	ctx, cancelModemFwd := ctxutil.Shorten(ctx, 5*time.Second)
+	defer cancelModemFwd()
 	defer func(ctx context.Context) {
 		if err := upstart.StopJob(ctx, modemfwd.JobName); err != nil {
 			s.Fatalf("Failed to stop %q: %s", modemfwd.JobName, err)
 		}
 		s.Log("modemfwd has stopped successfully")
-	}(ctx)
+	}(cleanupCtxModemFwd)
+
 	// modemfwd is initially stopped in the fixture SetUp
 	if err := modemfwd.StartAndWaitForQuiescence(ctx); err != nil {
 		s.Fatal("modemfwd failed during initialization: ", err)
