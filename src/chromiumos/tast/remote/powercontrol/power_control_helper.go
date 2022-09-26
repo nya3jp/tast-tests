@@ -193,6 +193,27 @@ func SlpAndC10PackageValues(ctx context.Context, dut *dut.DUT) (int, string, err
 	return slpOpSetValue, pkgOpSetValue, nil
 }
 
+// AssertSLPAndC10 asserts the SLP  and pkgC10 counter value post Resume with SLP counter
+// value before Suspend.
+func AssertSLPAndC10(slpOpSetPre, slpOpSetPost int, pkgOpSetPre, pkgOpSetPost string) error {
+	if slpOpSetPre == slpOpSetPost {
+		return errors.Errorf("failed: SLP counter value %q should be different from the one before suspend %q", slpOpSetPost, slpOpSetPre)
+	}
+
+	if slpOpSetPost == 0 {
+		return errors.Errorf("failed SLP counter value must be non-zero, got: %q", slpOpSetPost)
+	}
+
+	if pkgOpSetPre == pkgOpSetPost {
+		return errors.Errorf("Failed: Package C10 value %q must be different from the one before suspend %q", pkgOpSetPost, pkgOpSetPre)
+	}
+
+	if pkgOpSetPost == "0x0" || pkgOpSetPost == "0" {
+		return errors.New("Failed: Package C10 should be non-zero")
+	}
+	return nil
+}
+
 // ValidateG3PowerState verify power state G3 after shutdown.
 func ValidateG3PowerState(ctx context.Context, pxy *servo.Proxy) error {
 	return testing.Poll(ctx, func(ctx context.Context) error {
