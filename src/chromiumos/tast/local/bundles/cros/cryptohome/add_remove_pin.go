@@ -20,14 +20,20 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func: AddRemovePin,
-		Desc: "Adds, removes and re-adds pin in user secret stash",
+		Desc: "Adds, removes and re-adds pin with specified backing store",
 		Contacts: []string{
 			"anastasiian@chromium.org",
 			"cryptohome-core@google.com",
 		},
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"pinweaver", "reboot"},
-		Fixture:      "ussAuthSessionFixture",
+		Params: []testing.Param{{
+			Name:    "with_uss",
+			Fixture: "ussAuthSessionFixture",
+		}, {
+			Name: "with_vk",
+		},
+		},
 	})
 }
 
@@ -78,6 +84,8 @@ func AddRemovePin(ctx context.Context, s *testing.State) {
 			return errors.Wrap(err, "failed to unmount vaults for re-mounting")
 		}
 
+		client.InvalidateAuthSession(ctx, authSessionID)
+
 		// Authenticate a new auth session via the new added pin auth factor and mount the user.
 		authSessionID, err = client.StartAuthSession(ctx, userName, false /*ephemeral*/, uda.AuthIntent_AUTH_INTENT_DECRYPT)
 		if err != nil {
@@ -94,6 +102,7 @@ func AddRemovePin(ctx context.Context, s *testing.State) {
 		if err := cryptohome.VerifyFileForPersistence(ctx, userName); err != nil {
 			s.Fatal("Failed to verify test file: ", err)
 		}
+		client.InvalidateAuthSession(ctx, authSessionID)
 		return nil
 	}
 
@@ -107,11 +116,18 @@ func AddRemovePin(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to add and authenticate with pin authfactor: ", err)
 	}
 
-	// Remove the pin auth factor.
+	authSessionID, err = client.StartAuthSession(ctx, userName, false /*ephemeral*/, uda.AuthIntent_AUTH_INTENT_DECRYPT)
+	if err != nil {
+		return errors.Wrap(err, "failed to start auth session for removing session")
+	}
+	if err := client.AuthenticateAuthFactor(ctx, authSessionID, passwordLabel, userPassword); err != nil {
+		return errors.Wrap(err, "failed to authenticate with auth session with user password")
+	}
 	if err := client.RemoveAuthFactor(ctx, authSessionID, pinLabel); err != nil {
-		s.Fatal("Failed to create persistent user: ", err)
+		s.Fatal("Failed to remove Pin AuthFactor: ", err)
 	}
 
+	// Authentication in the same session should fail as well.
 	err = client.AuthenticatePinAuthFactor(ctx, authSessionID, pinLabel, userPin)
 	var exitErr *hwsec.CmdExitError
 	if !errors.As(err, &exitErr) {
