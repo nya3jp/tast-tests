@@ -10,6 +10,7 @@ import (
 	"math/rand"
 	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/browser"
@@ -24,6 +25,11 @@ func WebAuthnInWebAuthnIo(ctx context.Context, cr *chrome.Chrome, br *browser.Br
 	// We need truly random values for username strings so that different test runs don't affect each other.
 	rand.Seed(time.Now().UnixNano())
 
+	// Reserve ten seconds for cleanup.
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
+
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		return errors.Wrap(err, "failed to get test API connection")
@@ -33,7 +39,11 @@ func WebAuthnInWebAuthnIo(ctx context.Context, cr *chrome.Chrome, br *browser.Br
 	if err != nil {
 		return errors.Wrap(err, "failed to navigate to test website")
 	}
-	defer conn.Close()
+	defer func(ctx context.Context, conn *chrome.Conn) {
+		conn.Navigate(ctx, "https://webauthn.io/logout")
+		conn.CloseTarget(ctx)
+		conn.Close()
+	}(cleanupCtx, conn)
 
 	// Perform MakeCredential on the test website.
 
@@ -41,7 +51,7 @@ func WebAuthnInWebAuthnIo(ctx context.Context, cr *chrome.Chrome, br *browser.Br
 	name := randomUsername()
 	testing.ContextLogf(ctx, "Username: %s", name)
 	// Use a random username because webauthn.io keeps state for each username for a period of time.
-	err = conn.Eval(ctx, fmt.Sprintf(`document.getElementById('input-email').value = "%s"`, name), nil)
+	err = conn.Eval(ctx, fmt.Sprintf(`document.getElementById('input-email')._x_model.set("%s")`, name), nil)
 	if err != nil {
 		return errors.Wrap(err, "failed to execute JS expression to set username")
 	}
@@ -116,9 +126,7 @@ func randomUsername() string {
 func CheckMakeCredentialSuccessInWebAuthnIo(ctx context.Context, conn *chrome.Conn) error {
 	return testing.Poll(ctx, func(context.Context) error {
 		result := true
-		// There's no good way of querying the popup dialog itself as there's no explicitly set className or id. The only good
-		// way is to monitor the added attribute `aria-describedby` on the login button after the popup showed up.
-		err := conn.Eval(ctx, `document.getElementById('login-button').getAttribute('aria-describedby') !== null`, &result)
+		err := conn.Eval(ctx, `document.getElementsByClassName('alert-success').length > 0`, &result)
 		if err != nil {
 			return err
 		}
@@ -135,9 +143,8 @@ func CheckMakeCredentialSuccessInWebAuthnIo(ctx context.Context, conn *chrome.Co
 func CheckGetAssertionSuccessInWebAuthnIo(ctx context.Context, conn *chrome.Conn) error {
 	return testing.Poll(ctx, func(context.Context) error {
 		result := true
-		// The easiest way to check that Get Assertion is successful is to see if webauthn.io redirected to the dashboard path.
-		// No component with meaningful className or id appears that can be queried instead.
-		err := conn.Eval(ctx, `location.pathname === '/dashboard'`, &result)
+		// The only component with meaningful className or id appears that can be queried is the party cat.
+		err := conn.Eval(ctx, `document.getElementsByClassName('party-cat').length > 0`, &result)
 		if err != nil {
 			return err
 		}

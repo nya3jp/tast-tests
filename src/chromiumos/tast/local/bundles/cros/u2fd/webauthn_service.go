@@ -108,22 +108,25 @@ func (c *WebauthnService) Close(ctx context.Context, req *empty.Empty) (*empty.E
 }
 
 func (c *WebauthnService) StartWebauthn(ctx context.Context, req *hwsec.StartWebauthnRequest) (*empty.Empty, error) {
-	// TODO(b/210418148): Use an internal site for testing to prevent flakiness.
-	conn, err := c.br.NewConn(ctx, "https://webauthn.io/")
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to navigate to test website")
-	}
-	c.conn = conn
 	c.cfg = webauthnConfig{
 		userVerification:  req.GetUserVerification(),
 		authenticatorType: req.GetAuthenticatorType(),
 		hasDialog:         req.GetHasDialog(),
 	}
+	// TODO(b/210418148): Use an internal site for testing to prevent flakiness.
+	conn, err := c.br.NewConn(ctx, "https://webauthn.io/?"+getQueryStringByConfiguration(c.cfg))
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to navigate to test website")
+	}
+	c.conn = conn
+
 	return &empty.Empty{}, nil
 }
 
 func (c *WebauthnService) EndWebauthn(ctx context.Context, req *empty.Empty) (*empty.Empty, error) {
 	if c.conn != nil {
+		c.conn.Navigate(ctx, "https://webauthn.io/logout")
+		c.conn.CloseTarget(ctx)
 		c.conn.Close()
 		c.conn = nil
 	}
@@ -138,8 +141,10 @@ func (c *WebauthnService) StartMakeCredential(ctx context.Context, req *hwsec.St
 		return nil, errors.Wrap(err, "failed to get test API connection")
 	}
 
-	if err = setUsernameAndConfiguration(ctx, c.conn, req.GetUsername(), c.cfg); err != nil {
-		return nil, err
+	testing.ContextLogf(ctx, "Username: %s", req.GetUsername())
+	err = c.conn.Eval(ctx, fmt.Sprintf(`document.getElementById('input-email')._x_model.set("%s")`, req.GetUsername()), nil)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to execute JS expression to set username")
 	}
 
 	ui := uiauto.New(tconn)
@@ -202,8 +207,9 @@ func (c *WebauthnService) StartGetAssertion(ctx context.Context, req *hwsec.Star
 		return nil, errors.Wrap(err, "failed to get test API connection")
 	}
 
-	if err = setUsernameAndConfiguration(ctx, c.conn, req.GetUsername(), c.cfg); err != nil {
-		return nil, err
+	err = c.conn.Eval(ctx, fmt.Sprintf(`document.getElementById('input-email')._x_model.set("%s")`, req.GetUsername()), nil)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to execute JS expression to set username")
 	}
 
 	ui := uiauto.New(tconn)
@@ -253,48 +259,25 @@ func (c *WebauthnService) EnterPassword(ctx context.Context, req *hwsec.EnterPas
 	return &empty.Empty{}, nil
 }
 
-func userVerificationToValue(uv hwsec.UserVerification) string {
-	switch uv {
-	case hwsec.UserVerification_DISCOURAGED:
-		return "discouraged"
-	case hwsec.UserVerification_PREFERRED:
-		return "preferred"
-	case hwsec.UserVerification_REQUIRED:
-		return "required"
-	}
-	return "unknown"
-}
-
 func authenticatorTypeToValue(t hwsec.AuthenticatorType) string {
 	switch t {
 	case hwsec.AuthenticatorType_UNSPECIFIED:
 		return ""
 	case hwsec.AuthenticatorType_CROSS_PLATFORM:
-		return "cross-platform"
+		return "cross_platform"
 	case hwsec.AuthenticatorType_PLATFORM:
 		return "platform"
 	}
 	return "unknown"
 }
 
-func setUsernameAndConfiguration(ctx context.Context, conn *chrome.Conn, name string, cfg webauthnConfig) error {
-	testing.ContextLogf(ctx, "Username: %s", name)
-	// Use a random username because webauthn.io keeps state for each username for a period of time.
-	err := conn.Eval(ctx, fmt.Sprintf(`document.getElementById('input-email').value = "%s"`, name), nil)
-	if err != nil {
-		return errors.Wrap(err, "failed to execute JS expression to set username")
-	}
-
-	// Select "Authenticator Type".
-	err = conn.Eval(ctx, fmt.Sprintf(`document.getElementById('select-authenticator').value= "%s"`, authenticatorTypeToValue(cfg.authenticatorType)), nil)
-	if err != nil {
-		return errors.Wrap(err, "failed to execute JS expression to select authenticator type")
-	}
-
-	// Select "User Verification".
-	err = conn.Eval(ctx, fmt.Sprintf(`document.getElementById('select-verification').value= "%s"`, userVerificationToValue(cfg.userVerification)), nil)
-	if err != nil {
-		return errors.Wrap(err, "failed to execute JS expression to select user verification")
-	}
-	return nil
+func getQueryStringByConfiguration(cfg webauthnConfig) string {
+	requireUv := cfg.userVerification == hwsec.UserVerification_REQUIRED
+	return fmt.Sprintf(
+		"regRequireUserVerification=%t"+
+			"&attestation=none"+
+			"&attachment=%s"+
+			"&algES256=true&algRS256=true"+
+			"&authRequireUserVerification=%t",
+		requireUv, authenticatorTypeToValue(cfg.authenticatorType), requireUv)
 }
