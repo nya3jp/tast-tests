@@ -34,6 +34,24 @@
       "parentUuid": "9bf6359d_9033b2fa",
       "revId": "a5e47b23ef7983670b83d0259d0244a8ac2d842a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6cb5ec32_a563aac9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/shill_cellular_smoke.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-09-26T19:31:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "404cd456_f89f6d16",
+      "revId": "a5e47b23ef7983670b83d0259d0244a8ac2d842a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
