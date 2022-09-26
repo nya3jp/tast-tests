@@ -23,6 +23,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/quicksettings"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -35,9 +36,34 @@ func init() {
 			"pteerapong@chromium.org",        // Author
 		},
 		SoftwareDeps: []string{"chrome"},
-		Fixture:      "arcBooted",
-		Attr:         []string{"group:mainline", "informational"},
-		Timeout:      3 * time.Minute,
+		HardwareDeps: hwdep.D(
+			// TODO(b/248994464) Test is flaky on low performance devices, mostly on octopus and dedede.
+			// Skip the flaky models until the issue is fixed.
+			hwdep.SkipOnModel(
+				// dedede
+				"beadrix", "beetley", "blipper", "bookem", "boten", "bugzzy", "cret", "cret360", "drawcia",
+				"drawlat", "drawman", "drawper", "galith", "galith360", "gallop", "galnat", "galnat360",
+				"galtic", "galtic360", "kracko", "kracko360", "landia", "landrid", "lantis", "madoo",
+				"magister", "maglet", "maglia", "maglith", "magma", "magneto", "magolor", "magpie",
+				"metaknight", "pasara", "pirette", "pirika", "sasuke", "sasukette", "storo", "storo360",
+				// octopus
+				"ampton", "apel", "bloog", "blooglet", "blooguard", "blorb", "bluebird", "bobba", "bobba360",
+				"casta", "dood", "dorp", "droid", "fleex", "foob", "foob360", "garfour", "garg", "garg360",
+				"grabbiter", "laser14", "lick", "meep", "mimrock", "nospike", "orbatrix", "phaser", "phaser360",
+				"sparky", "sparky360", "vorticon", "vortininja",
+				// fizz
+				"jax",
+				// hatch
+				"akemi", "nightfury",
+				// puff
+				"kaisa", "wyvern",
+				// volteer
+				"chronicler",
+			),
+		),
+		Fixture: "arcBooted",
+		Attr:    []string{"group:mainline", "informational"},
+		Timeout: 3 * time.Minute,
 		Params: []testing.Param{
 			{
 				Name: "stereo_48000",
