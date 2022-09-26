@@ -39,7 +39,6 @@ func init() {
 		Desc:         "Behavior of WindowCaptureAllowedByOrigins policy",
 		Contacts: []string{
 			"dandrader@google.com", // Test author
-			"chromeos-commercial-remote-management@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline", "informational"},

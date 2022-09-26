@@ -26,7 +26,6 @@ func init() {
 			"lamzin@google.com", // Test author
 			"vsavu@google.com",  // Test author
 			"chromeos-wilco@google.com",
-			"chromeos-commercial-remote-management@google.com",
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "vm_host", "wilco"},

@@ -31,7 +31,6 @@ func init() {
 		Desc:         "Behavior of HistoryClustersVisible policy",
 		Contacts: []string{
 			"rodmartin@google.com", // Test author
-			"chromeos-commercial-remote-management@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline"},

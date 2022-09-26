@@ -37,7 +37,6 @@ func init() {
 		Desc:         "Behavior of DefaultSearchProviderSuggestURL policy: check if provided search provider is being used for suggestions",
 		Contacts: []string{
 			"fabiansommer@chromium.org", // Test author
-			"chromeos-commercial-remote-management@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline", "informational"},

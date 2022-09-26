@@ -25,7 +25,6 @@ func init() {
 		Contacts: []string{
 			"sergiyb@google.com",   // Migrated from autotest to tast.
 			"rzakarian@google.com", // Original autotest author.
-			"chromeos-commercial-remote-management@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline", "informational"},

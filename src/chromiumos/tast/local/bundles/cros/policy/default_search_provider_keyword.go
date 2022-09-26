@@ -33,7 +33,6 @@ func init() {
 		Desc:         "Behavior of DefaultSearchProviderKeyword policy: check if specified keyword triggers the search for search provider",
 		Contacts: []string{
 			"anastasiian@chromium.org", // Test author
-			"chromeos-commercial-remote-management@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline", "informational"},

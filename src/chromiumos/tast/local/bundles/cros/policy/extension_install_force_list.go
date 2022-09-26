@@ -24,7 +24,6 @@ func init() {
 		Desc:         "Behavior of ExtensionForceList policy",
 		Contacts: []string{
 			"swapnilgupta@google.com", // Test author
-			"chromeos-commercial-remote-management@google.com",
 		},
 		Attr:         []string{"group:commercial_limited"},
 		VarDeps:      []string{"policy.ExtensionInstallForceList.username", "policy.ExtensionInstallForceList.password"},

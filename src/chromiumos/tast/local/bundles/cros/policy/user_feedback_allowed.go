@@ -32,7 +32,6 @@ func init() {
 		Desc:         "Behavior of UserFeedbackAllowed policy on both Ash and Lacros browser",
 		Contacts: []string{
 			"crisguerrero@chromium.org", // Test author
-			"chromeos-commercial-remote-management@google.com",
 		},
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
 		Attr:         []string{"group:mainline"},

@@ -29,7 +29,6 @@ func init() {
 		Desc:         "Check that the DefaultJavaScript policy blocks or allows JavaScript",
 		Contacts: []string{
 			"mpolzer@google.com", // Test author
-			"chromeos-commercial-remote-management@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline"},

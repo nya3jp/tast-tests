@@ -26,7 +26,6 @@ func init() {
 		Desc:         "Check ReportUploadFrequency by observing /var/log/messages",
 		Contacts: []string{
 			"zubeil@google.com", // Test author
-			"chromeos-commercial-remote-management@google.com",
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},

@@ -26,7 +26,6 @@ func init() {
 		Desc:         "Verify behavior of PrintersBulkAccessMode user policy",
 		Contacts: []string{
 			"mohamedaomar@google.com", // Test author
-			"chromeos-commercial-remote-management@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline", "informational"},

@@ -41,7 +41,6 @@ func init() {
 		Desc:         "Behavior of SSlErrorOverrideAllowed and SSLErrorOverrideAllowedForOrigins policy on both Ash and Lacros browser",
 		Contacts: []string{
 			"hendrich@chromium.com", // Test author
-			"chromeos-commercial-remote-management@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline", "informational"},

@@ -31,7 +31,6 @@ func init() {
 		Desc:         "Behavior of ManagedBookmarks policy",
 		Contacts: []string{
 			"sergiyb@google.com",
-			"chromeos-commercial-remote-management@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline"},

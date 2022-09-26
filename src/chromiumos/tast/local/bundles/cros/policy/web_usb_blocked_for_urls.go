@@ -32,7 +32,6 @@ func init() {
 		Desc:         "Behavior of WebUsbBlockedForUrls policy, checking that blocked URLs don't request for access to a USB device",
 		Contacts: []string{
 			"adikov@google.com", // Test author
-			"chromeos-commercial-remote-management@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline", "informational"},

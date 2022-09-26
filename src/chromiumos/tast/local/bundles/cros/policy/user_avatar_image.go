@@ -31,7 +31,6 @@ func init() {
 		Desc:         "Behavior of the UserAvatarImage policy when the PersonalizationHub flag is enabled: verify that the user cannot change the device account image when the policy is set, otherwise, the user can change it",
 		Contacts: []string{
 			"pzliu@google.com", // Test author
-			"chromeos-commercial-remote-management@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline", "informational"},

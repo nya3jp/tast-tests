@@ -28,7 +28,6 @@ func init() {
 		Desc:         "Test behavior of ScreenBrightnessPercent policy: check if the screen brightness matches the value of the policy",
 		Contacts: []string{
 			"alexanderhartl@google.com", // Test author
-			"chromeos-commercial-remote-management@google.com",
 		},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		// no_qemu: VMs don't support brightness control.

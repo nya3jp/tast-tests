@@ -37,12 +37,11 @@ func init() {
 		Desc:         "Checks that the HTTPSOnlyMode policy is properly applied",
 		Contacts: []string{
 			"jityao@google.com", // Test author
-			"chromeos-commercial-remote-management@google.com",
 		},
 		SoftwareDeps: []string{"chrome", "lacros"},
 		// Disabled due to <1% pass rate over 30 days. See b/246818601
 		//Attr:         []string{"group:mainline", "informational"},
-		Fixture:      fixture.LacrosPolicyLoggedIn,
+		Fixture: fixture.LacrosPolicyLoggedIn,
 		SearchFlags: []*testing.StringPair{
 			pci.SearchFlag(&policy.HttpsOnlyMode{}, pci.VerifiedFunctionalityUI),
 		},

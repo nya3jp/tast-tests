@@ -34,7 +34,6 @@ func init() {
 		Desc:         "Behavior of SafeBrowsingExtendedReportingEnabled policy, checking the correspoding toggle button states (restriction and checked) after setting the policy",
 		Contacts: []string{
 			"laurila@google.com", // Test author
-			"chromeos-commercial-remote-management@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline", "informational"},

@@ -32,7 +32,6 @@ func init() {
 		Desc:         "Behavior of ExtensionAllowedTypes policy, checking if a theme can be added to Chrome",
 		Contacts: []string{
 			"gabormagda@google.com", // Test author
-			"chromeos-commercial-remote-management@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline", "informational"},

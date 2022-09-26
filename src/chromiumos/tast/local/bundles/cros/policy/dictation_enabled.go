@@ -29,7 +29,6 @@ func init() {
 		Desc:         "Behavior of DictationEnabled policy: checking if dictation is enabled or not",
 		Contacts: []string{
 			"swapnilgupta@google.com", // Test author
-			"chromeos-commercial-remote-management@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
 		// TODO(crbug.com/1238027): Close dialog before the next test.

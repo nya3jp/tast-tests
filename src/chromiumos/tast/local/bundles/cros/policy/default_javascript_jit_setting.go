@@ -29,7 +29,6 @@ func init() {
 		Desc:         "Check that the DefaultJavaScriptJitSetting policy blocks or allows the JIT compiler",
 		Contacts: []string{
 			"eariassoto@google.com", // Test author
-			"chromeos-commercial-remote-management@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline", "informational"},
