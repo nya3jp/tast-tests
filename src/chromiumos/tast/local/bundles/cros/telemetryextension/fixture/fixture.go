@@ -153,7 +153,7 @@ func init() {
 			"cros-oem-services-team@google.com",
 		},
 		Impl:            newTelemetryExtensionFixture(managed()),
-		Parent:          fixture.FakeDMSEnrolled,
+		Parent:          fixture.FakeDMS,
 		SetUpTimeout:    chrome.LoginTimeout + 30*time.Second + cleanupTimeout,
 		TearDownTimeout: cleanupTimeout,
 		PreTestTimeout:  10 * time.Second,
@@ -169,7 +169,7 @@ func init() {
 			"cros-oem-services-team@google.com",
 		},
 		Impl:            newTelemetryExtensionFixture(managed(), lacros()),
-		Parent:          fixture.PersistentLacrosEnrolled,
+		Parent:          fixture.PersistentLacros,
 		SetUpTimeout:    chrome.LoginTimeout + 30*time.Second + cleanupTimeout,
 		TearDownTimeout: cleanupTimeout,
 		PreTestTimeout:  10 * time.Second,
@@ -185,7 +185,7 @@ func init() {
 			"cros-oem-services-team@google.com",
 		},
 		Impl:            newTelemetryExtensionFixture(overrideOEMName(), managed()),
-		Parent:          fixture.FakeDMSEnrolled,
+		Parent:          fixture.FakeDMS,
 		SetUpTimeout:    chrome.LoginTimeout + 30*time.Second + cleanupTimeout,
 		TearDownTimeout: cleanupTimeout,
 		PreTestTimeout:  10 * time.Second,
@@ -201,7 +201,7 @@ func init() {
 			"cros-oem-services-team@google.com",
 		},
 		Impl:            newTelemetryExtensionFixture(overrideOEMName(), managed(), lacros()),
-		Parent:          fixture.PersistentLacrosEnrolled,
+		Parent:          fixture.PersistentLacros,
 		SetUpTimeout:    chrome.LoginTimeout + 30*time.Second + cleanupTimeout,
 		TearDownTimeout: cleanupTimeout,
 		PreTestTimeout:  10 * time.Second,
@@ -321,7 +321,7 @@ func (f *telemetryExtensionFixture) SetUp(ctx context.Context, s *testing.FixtSt
 
 	// TODO(b/245337406): Find fix for the actual error instead
 	// of this workaround.
-	if err := testing.Sleep(ctx, 5*time.Second); err != nil {
+	if err := testing.Sleep(ctx, 30*time.Second); err != nil {
 		s.Fatal("Unable to pause between Ash and Lacros launch")
 	}
 
@@ -465,21 +465,25 @@ func (f *telemetryExtensionFixture) setupChromeForConsumers(ctx context.Context,
 }
 
 func (f *telemetryExtensionFixture) setupChromeForManagedUsers(ctx context.Context, fdms *fakedms.FakeDMS, username, password string) error {
+	const (
+		Username = "tast-user@managedchrome.com"
+		Password = "test0000"
+	)
+
 	pb := policy.NewBlob()
-	pb.PolicyUser = username
+	// // pb.PolicyUser = username
 
-	// Telemetry Extension works only for affiliated users.
-	pb.DeviceAffiliationIds = []string{"default_affiliation_id"}
-	pb.UserAffiliationIds = []string{"default_affiliation_id"}
+	// // // Telemetry Extension works only for affiliated users.
+	// // pb.DeviceAffiliationIds = []string{"default_affiliation_id"}
+	// // pb.UserAffiliationIds = []string{"default_affiliation_id"}
 
-	// We have to update fake DMS policy user and affiliation IDs before starting Chrome.
-	if err := fdms.WritePolicyBlob(pb); err != nil {
-		return errors.Wrap(err, "failed to write policy blob before starting Chrome")
-	}
+	// // We have to update fake DMS policy user and affiliation IDs before starting Chrome.
+	// if err := fdms.WritePolicyBlob(pb); err != nil {
+	// 	return errors.Wrap(err, "failed to write policy blob before starting Chrome")
+	// }
 
 	opts := []chrome.Option{
-		chrome.KeepEnrollment(),
-		chrome.GAIALogin(chrome.Creds{User: username, Pass: password}),
+		chrome.FakeLogin(chrome.Creds{User: Username, Pass: Password}),
 		chrome.DMSPolicy(fdms.URL),
 		chrome.CustomLoginTimeout(chrome.ManagedUserLoginTimeout),
 	}
@@ -488,7 +492,8 @@ func (f *telemetryExtensionFixture) setupChromeForManagedUsers(ctx context.Conte
 	}
 	if f.bt == browser.TypeLacros {
 		extraOpts, err := lacrosfixt.NewConfig(
-			lacrosfixt.ChromeOptions(chrome.GAIALogin(chrome.Creds{User: username, Pass: password}))).Opts()
+			// lacrosfixt.ChromeOptions(chrome.GAIALogin(chrome.Creds{User: username, Pass: password}))).Opts()
+			lacrosfixt.ChromeOptions(chrome.FakeLogin(chrome.Creds{User: Username, Pass: Password}))).Opts()
 		if err != nil {
 			return errors.Wrap(err, "failed to get lacros options")
 		}
