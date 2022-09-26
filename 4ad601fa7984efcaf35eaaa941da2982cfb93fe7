@@ -16,6 +16,23 @@
       "message": "Hello David and Renuga,\n\nI\u0027d like to add polling for ARC multiple account testing.\n\nPlease help review when you have time.\n\n-Chenghao",
       "revId": "4ad601fa7984efcaf35eaaa941da2982cfb93fe7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b547a17_5ad0e462",
+        "filename": "src/chromiumos/tast/local/arc/ui.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-09-26T18:47:46Z",
+      "side": 1,
+      "message": "Is the issue that the entire flow needs to be retried or that `accountNameButton.WaitForExists` needed to be extended? If the first, action.Retry or uiauto.Retry may represent this case better, if the second (which is what the error messages show), would changing `accountNameButton.WaitForExists(ctx, 30*time.Second) to some longer time (i.e. 60 * time.Second) better address the issue?",
+      "revId": "4ad601fa7984efcaf35eaaa941da2982cfb93fe7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
