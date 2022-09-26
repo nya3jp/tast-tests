@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b93738e_d8db60b8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/hid_wake.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2022-09-26T18:20:55Z",
+      "side": 1,
+      "message": "nit: can collapse this into just `return fs.WriteFile(...)`; the logs will make the error location and cause apparent.",
+      "range": {
+        "startLine": 236,
+        "startChar": 1,
+        "endLine": 239,
+        "endChar": 11
+      },
+      "revId": "9e62ff6e436eb872adc462ef03233f1e4c66aab5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

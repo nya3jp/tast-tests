@@ -201,6 +201,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e252f385_c556fa67",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/hid_wake.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2022-09-26T18:20:55Z",
+      "side": 1,
+      "message": "It\u0027s fine to leave it as informational and observe what devices it runs on.",
+      "parentUuid": "e9036964_285650f7",
+      "range": {
+        "startLine": 36,
+        "startChar": 24,
+        "endLine": 36,
+        "endChar": 40
+      },
+      "revId": "ab270bbb33a2ec51586a8386818abbc01a0352ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8f9a0897_9db77b5c",
