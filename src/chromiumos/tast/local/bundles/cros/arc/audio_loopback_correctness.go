@@ -23,6 +23,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/quicksettings"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -35,9 +36,14 @@ func init() {
 			"pteerapong@chromium.org",        // Author
 		},
 		SoftwareDeps: []string{"chrome"},
-		Fixture:      "arcBooted",
-		Attr:         []string{"group:mainline", "informational"},
-		Timeout:      3 * time.Minute,
+		HardwareDeps: hwdep.D(
+			// TODO(b/248994464) Test is flaky on low performance devices, mostly on octopus and dedede.
+			// Skip the flaky boards until the issue is fixed.
+			hwdep.SkipOnPlatform("octopus", "dedede"),
+		),
+		Fixture: "arcBooted",
+		Attr:    []string{"group:mainline", "informational"},
+		Timeout: 3 * time.Minute,
 		Params: []testing.Param{
 			{
 				Name: "stereo_48000",
