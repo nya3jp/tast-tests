@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "348d57cc_58c7d141",
+        "filename": "src/chromiumos/tast/local/bundles/cros/intel/crostini_linux_terminal_functionality.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-09-26T04:56:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ec7d3607_8a3e55b0",
+      "range": {
+        "startLine": 30,
+        "startChar": 26,
+        "endLine": 30,
+        "endChar": 66
+      },
+      "revId": "14f76032523cdd99c83bc8d493a50d355ff06c2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f472211f_008e957b",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-09-25T12:24:16Z",
       "side": 1,
       "message": "Better to move this after other cleanup tasks (e.g., line 56), otherwise it cannot catch the state where the test fails.",
+      "range": {
+        "startLine": 50,
+        "startChar": 1,
+        "endLine": 50,
+        "endChar": 75
+      },
+      "revId": "14f76032523cdd99c83bc8d493a50d355ff06c2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "83ef8a39_0028e4a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/intel/crostini_linux_terminal_functionality.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-09-26T04:56:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f472211f_008e957b",
       "range": {
         "startLine": 50,
         "startChar": 1,
