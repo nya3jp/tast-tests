@@ -72,7 +72,7 @@ type pipTestParams struct {
 	initMethod initializationType
 }
 
-var pipTests = []pipTestParams{
+var pipVMTests = []pipTestParams{
 	{name: "PIP Move", fn: testPIPMove, initMethod: enterPip},
 	{name: "PIP Resize To Max", fn: testPIPResizeToMax, initMethod: enterPip},
 	{name: "PIP GravityQuickSettings", fn: testPIPGravityQuickSettings, initMethod: enterPip},
@@ -80,6 +80,17 @@ var pipTests = []pipTestParams{
 	{name: "PIP AutoPIP New Android Window", fn: testPIPAutoPIPNewAndroidWindow, initMethod: doNothing},
 	{name: "PIP AutoPIP Minimize", fn: testPIPAutoPIPMinimize, initMethod: startActivity},
 	{name: "PIP ExpandPIP Shelf Icon", fn: testPIPExpandViaShelfIcon, initMethod: startActivity},
+	{name: "PIP ExpandPIP Menu Touch", fn: testPIPExpandViaMenuTouch, initMethod: startActivity},
+	{name: "PIP Toggle Tablet mode", fn: testPIPToggleTabletMode, initMethod: enterPip},
+}
+
+// TODO(b/249015149): Fix flakiness and readd missing tests.
+var pipContainerTests = []pipTestParams{
+	{name: "PIP Move", fn: testPIPMove, initMethod: enterPip},
+	{name: "PIP Resize To Max", fn: testPIPResizeToMax, initMethod: enterPip},
+	{name: "PIP GravityQuickSettings", fn: testPIPGravityQuickSettings, initMethod: enterPip},
+	{name: "PIP AutoPIP New Chrome Window", fn: testPIPAutoPIPNewChromeWindow, initMethod: startActivity},
+	{name: "PIP AutoPIP Minimize", fn: testPIPAutoPIPMinimize, initMethod: startActivity},
 	{name: "PIP ExpandPIP Menu Touch", fn: testPIPExpandViaMenuTouch, initMethod: startActivity},
 	{name: "PIP Toggle Tablet mode", fn: testPIPToggleTabletMode, initMethod: enterPip},
 }
@@ -95,12 +106,12 @@ func init() {
 		Fixture:      "arcBooted",
 		Timeout:      4 * time.Minute,
 		Params: []testing.Param{{
-			Val:               pipTests,
+			Val:               pipContainerTests,
 			ExtraAttr:         []string{"group:mainline", "informational"},
 			ExtraSoftwareDeps: []string{"android_p"},
 		}, {
 			Name:              "vm",
-			Val:               pipTests,
+			Val:               pipVMTests,
 			ExtraAttr:         []string{"group:mainline", "informational"},
 			ExtraSoftwareDeps: []string{"android_vm"},
 		}},
