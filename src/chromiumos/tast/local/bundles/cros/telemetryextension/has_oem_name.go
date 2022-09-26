@@ -20,7 +20,7 @@ func init() {
 			"lamzin@google.com", // Test and Telemetry Extension author
 			"cros-oem-services-team@google.com",
 		},
-		Attr: []string{"group:mainline", "informational"},
+		Attr: []string{"group:telemetry_extension_hw"},
 		Params: []testing.Param{
 			{
 				Name:              "asus",
