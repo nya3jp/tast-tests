@@ -20,6 +20,7 @@ import (
 	"chromiumos/tast/local/chrome/useractions"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 type typingPerfTestParam struct {
@@ -43,6 +44,7 @@ func init() {
 		Contacts:     []string{"shend@chromium.org", "essential-inputs-team@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
+		HardwareDeps: hwdep.D(pre.InputsStableModels),
 		SearchFlags:  util.IMESearchFlags([]ime.InputMethod{ime.EnglishUS, ime.ChinesePinyin}),
 		Timeout:      5 * time.Minute,
 		Params: []testing.Param{
