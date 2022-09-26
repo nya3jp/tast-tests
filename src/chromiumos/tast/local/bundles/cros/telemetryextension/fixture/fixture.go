@@ -19,6 +19,7 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/fsutil"
+	"chromiumos/tast/local/bundles/cros/telemetryextension/fakecws"
 	"chromiumos/tast/local/bundles/cros/telemetryextension/vendorutils"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/browser"
@@ -153,7 +154,8 @@ func init() {
 			"cros-oem-services-team@google.com",
 		},
 		Impl:            newTelemetryExtensionFixture(managed()),
-		Parent:          fixture.FakeDMSEnrolled,
+		// Parent:          fixture.FakeDMSEnrolled,
+		Parent:          fixture.FakeDMS,
 		SetUpTimeout:    chrome.LoginTimeout + 30*time.Second + cleanupTimeout,
 		TearDownTimeout: cleanupTimeout,
 		PreTestTimeout:  10 * time.Second,
@@ -276,6 +278,8 @@ type telemetryExtensionFixture struct {
 
 	healthdPID int
 
+	cwsServer *fakecws.Server
+
 	v Value
 }
 
@@ -299,6 +303,13 @@ func (f *telemetryExtensionFixture) SetUp(ctx context.Context, s *testing.FixtSt
 		}
 	}(cleanupCtx)
 
+	server, err := fakecws.NewServer(ctx)
+	if err != nil {
+		s.Fatal("Failed to start Fake Chrome Web Store")
+	}
+	f.cwsServer = server
+	s.Log("Started Fake Chrome Web Store server on URL: ", f.cwsServer.URL())
+
 	if f.managed {
 		fdms, ok := s.ParentValue().(*fakedms.FakeDMS)
 		if !ok {
@@ -321,7 +332,7 @@ func (f *telemetryExtensionFixture) SetUp(ctx context.Context, s *testing.FixtSt
 
 	// TODO(b/245337406): Find fix for the actual error instead
 	// of this workaround.
-	if err := testing.Sleep(ctx, 5*time.Second); err != nil {
+	if err := testing.Sleep(ctx, 60*time.Second); err != nil {
 		s.Fatal("Unable to pause between Ash and Lacros launch")
 	}
 
@@ -387,6 +398,12 @@ func (f *telemetryExtensionFixture) TearDown(ctx context.Context, s *testing.Fix
 			s.Error("Failed to remove directory with Telemetry Extension: ", err)
 		}
 		f.dir = ""
+	}
+
+	if f.cwsServer != nil {
+		if err := f.cwsServer.Stop(ctx); err != nil {
+			s.Error("Failed to stop fake Chrome Web Store server: ", err)
+		}
 	}
 }
 
@@ -466,34 +483,40 @@ func (f *telemetryExtensionFixture) setupChromeForConsumers(ctx context.Context,
 
 func (f *telemetryExtensionFixture) setupChromeForManagedUsers(ctx context.Context, fdms *fakedms.FakeDMS, username, password string) error {
 	pb := policy.NewBlob()
-	pb.PolicyUser = username
+	// pb.PolicyUser = username
 
-	// Telemetry Extension works only for affiliated users.
-	pb.DeviceAffiliationIds = []string{"default_affiliation_id"}
-	pb.UserAffiliationIds = []string{"default_affiliation_id"}
+	// // Telemetry Extension works only for affiliated users.
+	// pb.DeviceAffiliationIds = []string{"default_affiliation_id"}
+	// pb.UserAffiliationIds = []string{"default_affiliation_id"}
 
 	// We have to update fake DMS policy user and affiliation IDs before starting Chrome.
 	if err := fdms.WritePolicyBlob(pb); err != nil {
 		return errors.Wrap(err, "failed to write policy blob before starting Chrome")
 	}
 
+	const (
+		Username = "tast-user@managedchrome.com"
+		Password = "test0000"
+	)
+
 	opts := []chrome.Option{
-		chrome.KeepEnrollment(),
-		chrome.GAIALogin(chrome.Creds{User: username, Pass: password}),
+		// chrome.KeepEnrollment(),
+		// chrome.GAIALogin(chrome.Creds{User: username, Pass: password}),
+		chrome.FakeLogin(chrome.Creds{User: Username, Pass: Password}),
 		chrome.DMSPolicy(fdms.URL),
 		chrome.CustomLoginTimeout(chrome.ManagedUserLoginTimeout),
 	}
 	if err := f.addOverrideOEMNameChromeArg(ctx, &opts); err != nil {
 		return err
 	}
-	if f.bt == browser.TypeLacros {
-		extraOpts, err := lacrosfixt.NewConfig(
-			lacrosfixt.ChromeOptions(chrome.GAIALogin(chrome.Creds{User: username, Pass: password}))).Opts()
-		if err != nil {
-			return errors.Wrap(err, "failed to get lacros options")
-		}
-		opts = append(opts, extraOpts...)
-	}
+	// if f.bt == browser.TypeLacros {
+	// 	extraOpts, err := lacrosfixt.NewConfig(
+	// 		lacrosfixt.ChromeOptions(chrome.GAIALogin(chrome.Creds{User: username, Pass: password}))).Opts()
+	// 	if err != nil {
+	// 		return errors.Wrap(err, "failed to get lacros options")
+	// 	}
+	// 	opts = append(opts, extraOpts...)
+	// }
 
 	cr, err := chrome.New(ctx, opts...)
 	if err != nil {
@@ -502,9 +525,13 @@ func (f *telemetryExtensionFixture) setupChromeForManagedUsers(ctx context.Conte
 	f.cr = cr
 
 	// Force install Telemetry Extension by policy.
-	pb.AddPolicy(&policy.ExtensionInstallForcelist{Val: []string{f.v.ExtID}})
+	pb.AddPolicy(&policy.ExtensionInstallForcelist{Val: []string{
+		// f.v.ExtID + ";" + f.cwsServer.URL(),
+		f.v.ExtID,
+		"emelalhagcpibaiiiijjlkmhhbekaidg;https://satd-proxy.dell.com/remote-config/saChromeUIAppUpdates",
+	}})
 	// Allow DevTools on force installed extensions. Value 1 here means "allowed".
-	pb.AddPolicy(&policy.DeveloperToolsAvailability{Val: 1})
+	// pb.AddPolicy(&policy.DeveloperToolsAvailability{Val: 1})
 
 	if err := policyutil.ServeBlobAndRefresh(ctx, fdms, cr, pb); err != nil {
 		return errors.Wrap(err, "failed to serve and refresh")
