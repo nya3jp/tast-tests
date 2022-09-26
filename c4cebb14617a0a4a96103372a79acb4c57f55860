@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5efd57b6_dc523742",
+        "filename": "src/chromiumos/tast/local/shill/property_holder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-09-26T01:32:10Z",
+      "side": 1,
+      "message": "nit: Rewrap the comment at 80 chars just for consistency.\n\nhttps://g3doc.corp.google.com/go/g3doc/style/decisions.md?cl\u003dhead#comment-line-length",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 29
+      },
+      "revId": "c4cebb14617a0a4a96103372a79acb4c57f55860",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e77104c_53875542",
+        "filename": "src/chromiumos/tast/local/shill/property_holder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-09-26T01:32:10Z",
+      "side": 1,
+      "message": "does it make sense to use reflect.DeepEqual() here?",
+      "range": {
+        "startLine": 89,
+        "startChar": 12,
+        "endLine": 89,
+        "endChar": 14
+      },
+      "revId": "c4cebb14617a0a4a96103372a79acb4c57f55860",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "392abbac_721e2f0f",
+        "filename": "src/chromiumos/tast/local/shill/property_holder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-09-26T01:32:10Z",
+      "side": 1,
+      "message": "nit: just return nil here to avoid this |found| variable?",
+      "range": {
+        "startLine": 90,
+        "startChar": 4,
+        "endLine": 90,
+        "endChar": 16
+      },
+      "revId": "c4cebb14617a0a4a96103372a79acb4c57f55860",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
