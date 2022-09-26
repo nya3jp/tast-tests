@@ -66,8 +66,24 @@ func SMBPassword(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
 
+	// Open the test API.
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Creating test API connection failed: ", err)
+	}
+
+	// Launch the files application.
+	files, err := filesapp.Launch(ctx, tconn)
+	if err != nil {
+		s.Fatal("Launching the Files App failed: ", err)
+	}
+
 	// Unmount the SMB mount and close Chrome.
 	defer func() {
+		faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
+		if err := files.Close(cleanupCtx); err != nil {
+			s.Log("Failed to close existing Files app window: ", err)
+		}
 		if cr != nil {
 			if err := smb.UnmountAllSmbMounts(cleanupCtx, cr); err != nil {
 				s.Fatal("Failed to unmount all SMB mounts: ", err)
@@ -84,19 +100,6 @@ func SMBPassword(ctx context.Context, s *testing.State) {
 		s.Fatalf("Failed to create file %q: %s", testFileLocation, err)
 	}
 	defer os.Remove(testFileLocation)
-
-	// Open the test API.
-	tconn, err := cr.TestAPIConn(ctx)
-	if err != nil {
-		s.Fatal("Creating test API connection failed: ", err)
-	}
-	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
-
-	// Launch the files application.
-	files, err := filesapp.Launch(ctx, tconn)
-	if err != nil {
-		s.Fatal("Launching the Files App failed: ", err)
-	}
 
 	// Get a handle to the input keyboard.
 	kb, err := input.Keyboard(ctx)
