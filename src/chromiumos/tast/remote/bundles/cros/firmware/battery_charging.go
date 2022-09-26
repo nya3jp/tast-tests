@@ -147,6 +147,13 @@ func BatteryCharging(ctx context.Context, s *testing.State) {
 			}
 			// Check for DUT in S0ix, S3, S5, or G3 power state.
 			if err := h.WaitForPowerStates(ctx, firmware.PowerStateInterval, 1*time.Minute, "S0ix", "S3", "S5", "G3"); err != nil {
+				// When tested on one of the devices leased from the lab, for example trogdor[lazor],
+				// connection to the DUT dropped, but the DUT's power state remained at S0. Check if
+				// this would also happen on other DUTs, and if so document this behavior in the returned
+				// error message.
+				if !h.DUT.Connected(ctx) {
+					return errors.New("did not get power state at S0ix, S3, S5 or G3, but got dut disconnected")
+				}
 				return errors.Wrap(err, "failed to get power state at S0ix, S3, S5, or G3")
 			}
 			return nil
@@ -191,7 +198,17 @@ func BatteryCharging(ctx context.Context, s *testing.State) {
 		defer cancelWaitConnect()
 
 		if err := h.WaitConnect(waitConnectCtx); err != nil {
-			s.Fatal("Failed to reconnect to DUT after waking DUT from suspend: ", err)
+			checkPowerState := func() string {
+				s.Log("Checking for the DUT's power state")
+				state, err := h.Servo.GetECSystemPowerState(ctx)
+				if err != nil {
+					s.Log("Error getting power state: ", err)
+					return "unknown"
+				}
+				return state
+			}
+			value := checkPowerState()
+			s.Fatalf("Failed to reconnect to DUT after waking DUT from suspend: %v, got DUT at power state: %s", err, value)
 		}
 
 		// CCD might be locked after DUT has woken up.
