@@ -38,7 +38,6 @@ func init() {
 		Contacts: []string{
 			"alexanderhartl@google.com", // Test author
 			"phweiss@google.com",        // Test author of customization test cases
-			"chromeos-commercial-remote-management@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:commercial_limited"},

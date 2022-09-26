@@ -33,7 +33,6 @@ func init() {
 		Desc:         "Behavior of AutoclickEnabled policy: checking if autoclick is enabled or not",
 		Contacts: []string{
 			"alexanderhartl@google.com", // Test author
-			"chromeos-commercial-remote-management@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
 		// TODO(crbug.com/1186655): Enable test when the policy can be disabled.

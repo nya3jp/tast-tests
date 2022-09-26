@@ -26,7 +26,6 @@ func init() {
 		Desc:         "Attempts to remove the default user profile in Lacros",
 		Contacts: []string{
 			"eariassoto@google.com", // Test author
-			"chromeos-commercial-remote-management@google.com",
 		},
 		// TODO(b/229003599): This test is failing on tablets and Chromeboxes.
 		// We are disabling until the root cause is fixed.

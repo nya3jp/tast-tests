@@ -42,7 +42,6 @@ func init() {
 		Desc:         "Checking if files are auto-opened depending on the value of this policy",
 		Contacts: []string{
 			"cmfcmf@google.com", // Test author
-			"chromeos-commercial-remote-management@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline"},

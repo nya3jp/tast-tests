@@ -25,7 +25,6 @@ func init() {
 		Desc:         "Test the behavior of ArcBackupRestoreServiceEnabled policy: check the Backup Manager state after setting the policy",
 		Contacts: []string{
 			"gabormagda@google.com", // Test author
-			"chromeos-commercial-remote-management@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
 		// TODO(http://b/172073846): Test is disabled until it can be fixed

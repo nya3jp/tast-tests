@@ -22,8 +22,8 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Test showing the low disk space notification",
 		Contacts: []string{
-			"vsavu@google.com", // Test author
-			"chromeos-commercial-remote-management@google.com",
+			"vsavu@google.com",     // Test author
+			"gwendal@chromium.com", // Lead for ChromeOS Storage
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},

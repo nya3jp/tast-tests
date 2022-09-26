@@ -35,7 +35,6 @@ func init() {
 		Contacts: []string{
 			"cmfcmf@google.com", // Test author
 			"project-bolton@google.com",
-			"chromeos-commercial-remote-management@google.com",
 		},
 		SoftwareDeps: []string{"chrome", "lacros"},
 		Attr: []string{

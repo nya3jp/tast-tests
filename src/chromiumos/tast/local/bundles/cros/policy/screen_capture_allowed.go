@@ -32,7 +32,6 @@ func init() {
 		Desc:         "Checks that the ScreenCaptureAllowed policy is correctly applied",
 		Contacts: []string{
 			"jityao@google.com", // Test author
-			"chromeos-commercial-remote-management@google.com",
 		},
 		SoftwareDeps: []string{"chrome", "lacros"},
 		Attr:         []string{"group:mainline", "informational"},

@@ -34,7 +34,6 @@ func init() {
 		Desc:         "Behavior of BrowserLabsEnabled policy,checking the existence of the experimental features icon in the toolbar after setting the policy",
 		Contacts: []string{
 			"samicolon@google.com", // Test author
-			"chromeos-commercial-remote-management@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline"},

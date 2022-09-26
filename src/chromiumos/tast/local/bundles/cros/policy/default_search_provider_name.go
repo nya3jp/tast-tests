@@ -33,7 +33,6 @@ func init() {
 		Desc:         "Behavior of DefaultSearchProviderName policy: check if specified provider name is displayed correctly",
 		Contacts: []string{
 			"jaflis@google.org", // Test author
-			"chromeos-commercial-remote-management@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline", "informational"},

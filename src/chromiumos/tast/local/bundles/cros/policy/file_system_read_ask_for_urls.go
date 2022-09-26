@@ -30,7 +30,6 @@ func init() {
 			"vivian.tsai@cienet.com",
 			"cienet-development@googlegroups.com",
 			"chromeos-sw-engprod@google.com",
-			"chromeos-commercial-remote-management@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline", "informational"},
