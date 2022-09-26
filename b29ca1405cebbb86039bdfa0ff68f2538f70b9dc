@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8cdacf28_df21e7bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterpriseconnectors/helpers/helpers.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1408939
+      },
+      "writtenOn": "2022-09-26T09:15:41Z",
+      "side": 1,
+      "message": "I found this a bit confusing, if `ScanningTimeOut` is the intended timeout, then this will actually wait twice as long (i.e. 6 minutes not 3).\n\nOTOH, if `ScanningTimeOut` is the typical (i.e. expected) time for a scan, then it makes sense to make the timeout twice as long, but I\u0027d change it to something like `TypicalScanTime \u003d 3 * time.Minute`.",
+      "range": {
+        "startLine": 92,
+        "startChar": 34,
+        "endLine": 92,
+        "endChar": 53
+      },
+      "revId": "b29ca1405cebbb86039bdfa0ff68f2538f70b9dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
