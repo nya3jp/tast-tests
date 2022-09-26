@@ -29,7 +29,6 @@ func init() {
 		Desc:         "Check if YouTube content restrictions work as specified by the ForceYouTubeRestrict policy",
 		Contacts: []string{
 			"sinhak@google.com",
-			"chromeos-commercial-remote-management@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:commercial_limited"},

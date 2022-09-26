@@ -40,7 +40,6 @@ func init() {
 		Desc:         "Test behavior of PromptForDownloadLocation policy: checking if a prompt for the download location appears based on the value of the policy",
 		Contacts: []string{
 			"alexanderhartl@google.com", // Test author
-			"chromeos-commercial-remote-management@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:commercial_limited"},

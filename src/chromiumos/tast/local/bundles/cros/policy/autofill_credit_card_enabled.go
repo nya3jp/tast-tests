@@ -49,7 +49,6 @@ func init() {
 		Desc:         "Behavior of AutofillCreditCardEnabled policy, checking the correspoding toggle button states (restriction and checked) after setting the policy",
 		Contacts: []string{
 			"chrome-autofill@google.com", // Feature owner
-			"chromeos-commercial-remote-management@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{},

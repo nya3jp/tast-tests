@@ -30,7 +30,6 @@ func init() {
 		Desc:         "Behavior of NotificationsAllowedForUrls policy: checking if notifications are allowed for a specified url",
 		Contacts: []string{
 			"swapnilgupta@google.com", // Test author
-			"chromeos-commercial-remote-management@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline"},

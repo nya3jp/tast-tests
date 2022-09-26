@@ -33,7 +33,6 @@ func init() {
 		Desc:         "Behavior of SearchSuggestEnabled policy, check if a search suggestions are shown based on the value of the policy",
 		Contacts: []string{
 			"alexanderhartl@google.com", // Test author
-			"chromeos-commercial-remote-management@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:commercial_limited"},

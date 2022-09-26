@@ -30,7 +30,6 @@ func init() {
 		Desc:         "Checking if audio capture is allowed on websites or not, depending on the value of the policy",
 		Contacts: []string{
 			"alexanderhartl@google.com", // Test author
-			"chromeos-commercial-remote-management@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline", "informational"},

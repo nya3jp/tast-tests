@@ -44,7 +44,6 @@ func init() {
 			"snijhara@google.com", // Test author
 			"gabormagda@google.com",
 			"alexanderhartl@google.com",
-			"chromeos-commercial-remote-management@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline"},

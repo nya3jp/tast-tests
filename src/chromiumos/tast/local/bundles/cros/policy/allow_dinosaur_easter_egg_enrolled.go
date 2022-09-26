@@ -23,7 +23,6 @@ func init() {
 		Desc:         "Behavior of AllowDinosaurEasterEgg policy on an enrolled device",
 		Contacts: []string{
 			"vsavu@google.com", // Test author
-			"chromeos-commercial-remote-management@google.com",
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},

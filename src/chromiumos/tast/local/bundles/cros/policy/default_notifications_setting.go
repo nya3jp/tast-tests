@@ -32,7 +32,6 @@ func init() {
 		Desc:         "Behavior of DefaultNotificationsSetting policy, checks the notification permission in JavaScript at different policy values",
 		Contacts: []string{
 			"gabormagda@google.com", // Test author
-			"chromeos-commercial-remote-management@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline"},

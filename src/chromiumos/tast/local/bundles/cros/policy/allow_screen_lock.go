@@ -31,7 +31,6 @@ func init() {
 		Desc:         "Behavior of AllowScreenLock policy, checking whether the screen can be locked after setting the policy",
 		Contacts: []string{
 			"gabormagda@google.com", // Test author
-			"chromeos-commercial-remote-management@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline", "informational"},

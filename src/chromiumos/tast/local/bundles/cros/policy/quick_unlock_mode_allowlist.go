@@ -39,7 +39,6 @@ func init() {
 		Desc:         "Checks that quick unlock options are enabled or disabled based on the policy value",
 		Contacts: []string{
 			"janagrill@google.com", // Test author
-			"chromeos-commercial-remote-management@google.com",
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},

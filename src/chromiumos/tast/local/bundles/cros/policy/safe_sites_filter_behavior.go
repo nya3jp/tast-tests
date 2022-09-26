@@ -30,7 +30,6 @@ func init() {
 		Desc:         "Check that the SafeSitesFilterBehavior policy can block/allow unsafe sites",
 		Contacts: []string{
 			"jeroendh@google.com", // Test author
-			"chromeos-commercial-remote-management@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline", "informational"},
