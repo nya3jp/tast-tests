@@ -37,7 +37,7 @@ func init() {
 		Func:         TestFileAttached,
 		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Enterprise connector test for uploading files",
-		Timeout:      10 * time.Minute,
+		Timeout:      20 * time.Minute,
 		Contacts: []string{
 			"sseckler@google.com",
 			"cros-enterprise-connectors@google.com",
@@ -333,7 +333,7 @@ func testFileAttachedForBrowserAndFile(
 	)(ctx); err != nil {
 		s.Fatal("Failed to open file: ", err)
 	}
-	if err := ui.WithInterval(20 * time.Millisecond).WithTimeout(time.Second).WaitUntilGone(nodewith.Name("Files").HasClass("WebContentsViewAura"))(ctx); err != nil {
+	if err := ui.WithInterval(20 * time.Millisecond).WithTimeout(5 * time.Second).WaitUntilGone(nodewith.Name("Files").HasClass("WebContentsViewAura"))(ctx); err != nil {
 		cr := s.FixtValue().(chrome.HasChrome).Chrome()
 		path := filepath.Join(s.OutDir(), fmt.Sprintf("screenshot-failed-to-close-file-picker-%s.png", params.TestName))
 		if err := screenshot.CaptureChrome(ctx, cr, path); err != nil {
@@ -434,7 +434,7 @@ func verifyUIForFileAttached(
 	} else {
 		// Check that no dialog will be opened.
 		scanningDialogFinder := nodewith.HasClass("DialogClientView")
-		if err := ui.EnsureGoneFor(scanningDialogFinder, time.Second)(ctx); err != nil {
+		if err := ui.EnsureGoneFor(scanningDialogFinder, 2*time.Second)(ctx); err != nil {
 			s.Error("Scanning dialog detected, but none was expected: ", err)
 		}
 	}
