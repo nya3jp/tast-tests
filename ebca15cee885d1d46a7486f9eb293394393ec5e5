@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "62f9ece5_5876dc14",
+        "filename": "src/chromiumos/tast/local/mtbf/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-09-26T02:55:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f072a1f7_c60f49b4",
+      "range": {
+        "startLine": 82,
+        "startChar": 29,
+        "endLine": 82,
+        "endChar": 44
+      },
+      "revId": "ebca15cee885d1d46a7486f9eb293394393ec5e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "26461dc3_33047ab2",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-09-24T00:43:51Z",
       "side": 1,
       "message": "nit: location",
+      "range": {
+        "startLine": 172,
+        "startChar": 50,
+        "endLine": 172,
+        "endChar": 57
+      },
+      "revId": "ebca15cee885d1d46a7486f9eb293394393ec5e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a925ae57_c76a9321",
+        "filename": "src/chromiumos/tast/local/mtbf/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-09-26T02:55:45Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "26461dc3_33047ab2",
       "range": {
         "startLine": 172,
         "startChar": 50,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0eea70f_8306518c",
+        "filename": "src/chromiumos/tast/local/mtbf/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-09-26T02:55:45Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "633466ee_5dbd4eee",
+      "range": {
+        "startLine": 173,
+        "startChar": 57,
+        "endLine": 173,
+        "endChar": 64
+      },
+      "revId": "ebca15cee885d1d46a7486f9eb293394393ec5e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "574c5b89_7e6a0fbd",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-09-24T00:43:51Z",
       "side": 1,
       "message": "why not run it directly? I do not understand the purpose of wrapping a function here.",
+      "range": {
+        "startLine": 174,
+        "startChar": 2,
+        "endLine": 186,
+        "endChar": 5
+      },
+      "revId": "ebca15cee885d1d46a7486f9eb293394393ec5e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "49601d8c_f7f8ec76",
+        "filename": "src/chromiumos/tast/local/mtbf/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-09-26T02:55:45Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "574c5b89_7e6a0fbd",
       "range": {
         "startLine": 174,
         "startChar": 2,
