@@ -53,10 +53,13 @@ func AddRemovePin(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to start auth session: ", err)
 	}
+	defer client.InvalidateAuthSession(ctxForCleanUp, authSessionID)
+
 	if err := client.CreatePersistentUser(ctx, authSessionID); err != nil {
 		s.Fatal("Failed to create persistent user: ", err)
 	}
 	defer cryptohome.RemoveVault(ctxForCleanUp, userName)
+
 	if err := client.PreparePersistentVault(ctx, authSessionID, false /*ecryptfs*/); err != nil {
 		s.Fatal("Failed to prepare new persistent vault: ", err)
 	}
@@ -67,34 +70,41 @@ func AddRemovePin(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to write a file to the vault: ", err)
 	}
 
-	addAndAuthenticatePinAuthFactor := func() error {
-		// Add a pin auth factor to the user.
-		if err := client.AddPinAuthFactor(ctx, authSessionID, pinLabel, userPin); err != nil {
-			return errors.Wrap(err, "failed to create persistent user")
-		}
-
+	authenticateWithPinAuthFactor := func() (string, error) {
 		// Unmount the user.
 		if err := client.UnmountAll(ctx); err != nil {
-			return errors.Wrap(err, "failed to unmount vaults for re-mounting")
+			return "", errors.Wrap(err, "failed to unmount vaults for re-mounting")
 		}
 
 		// Authenticate a new auth session via the new added pin auth factor and mount the user.
 		authSessionID, err = client.StartAuthSession(ctx, userName, false /*ephemeral*/, uda.AuthIntent_AUTH_INTENT_DECRYPT)
 		if err != nil {
-			return errors.Wrap(err, "failed to start auth session for re-mounting")
+			return "", errors.Wrap(err, "failed to start auth session for re-mounting")
 		}
 		if err := client.AuthenticatePinAuthFactor(ctx, authSessionID, pinLabel, userPin); err != nil {
-			return errors.Wrap(err, "failed to authenticate with auth session")
+			return authSessionID, errors.Wrap(err, "failed to authenticate with pin")
 		}
 		if err := client.PreparePersistentVault(ctx, authSessionID, false /*ecryptfs*/); err != nil {
-			return errors.Wrap(err, "failed to prepare persistent vault")
+			return authSessionID, errors.Wrap(err, "failed to prepare persistent vault")
 		}
 
 		// Verify that file is still there.
 		if err := cryptohome.VerifyFileForPersistence(ctx, userName); err != nil {
-			s.Fatal("Failed to verify test file: ", err)
+			return authSessionID, errors.Wrap(err, "failed to verify test file")
 		}
-		return nil
+		return authSessionID, nil
+	}
+
+	unlockWithPinAuthFactor := func() (string, error) {
+		// Authenticate a new auth session via the new added pin auth factor and mount the user.
+		authSessionID, err = client.StartAuthSession(ctx, userName, false /*ephemeral*/, uda.AuthIntent_AUTH_INTENT_VERIFY_ONLY)
+		if err != nil {
+			return "", errors.Wrap(err, "failed to start auth session for re-mounting")
+		}
+		if err := client.AuthenticatePinAuthFactor(ctx, authSessionID, pinLabel, userPin); err != nil {
+			return authSessionID, errors.Wrap(err, "failed to authenticate with pin")
+		}
+		return authSessionID, nil
 	}
 
 	// Add a password auth factor to the user.
@@ -103,26 +113,75 @@ func AddRemovePin(ctx context.Context, s *testing.State) {
 	}
 
 	// Can add and successfully authenticate via pin.
-	if err := addAndAuthenticatePinAuthFactor(); err != nil {
-		s.Fatal("Failed to add and authenticate with pin authfactor: ", err)
+	if err := client.AddPinAuthFactor(ctx, authSessionID, pinLabel, userPin); err != nil {
+		s.Fatal("Failed to add pin auth factor: ", err)
 	}
+	authSessionID, err = authenticateWithPinAuthFactor()
+	if err != nil {
+		s.Fatal("Failed to authenticate with pin authfactor: ", err)
+	}
+	defer client.InvalidateAuthSession(ctxForCleanUp, authSessionID)
+	authSessionID, err = unlockWithPinAuthFactor()
+	if err != nil {
+		s.Fatal("Failed to unlock with pin authfactor: ", err)
+	}
+	defer client.InvalidateAuthSession(ctxForCleanUp, authSessionID)
 
 	// Remove the pin auth factor.
 	if err := client.RemoveAuthFactor(ctx, authSessionID, pinLabel); err != nil {
-		s.Fatal("Failed to create persistent user: ", err)
+		s.Fatal("Failed to remove pin authfactor: ", err)
 	}
 
-	err = client.AuthenticatePinAuthFactor(ctx, authSessionID, pinLabel, userPin)
+	// Unlock with pin fails.
+	authSessionID, err = client.StartAuthSession(ctx, userName, false /*ephemeral*/, uda.AuthIntent_AUTH_INTENT_VERIFY_ONLY)
+	if err != nil {
+		s.Fatal("Failed to start auth session: ", err)
+	}
 	var exitErr *hwsec.CmdExitError
+	err = client.AuthenticatePinAuthFactor(ctx, authSessionID, pinLabel, userPin)
 	if !errors.As(err, &exitErr) {
-		s.Fatalf("Unexpected error: got %q; want *hwsec.CmdExitError", err)
+		s.Fatalf("Unexpected error during unlock with pin: got %q; want *hwsec.CmdExitError", err)
 	}
 	if exitErr.ExitCode != cryptohomeErrorKeyNotFound {
-		s.Fatalf("Unexpected exit code: got %d; want %d", exitErr.ExitCode, cryptohomeErrorKeyNotFound)
+		s.Fatalf("Unexpected exit code during unlock with pin: got %d; want %d", exitErr.ExitCode, cryptohomeErrorKeyNotFound)
+	}
+
+	// Unmount the user.
+	if err := client.UnmountAll(ctx); err != nil {
+		s.Fatal("Failed to unmount vaults for re-mounting: ", err)
+	}
+	// Authentication with pin fails.
+	authSessionID, err = client.StartAuthSession(ctx, userName, false /*ephemeral*/, uda.AuthIntent_AUTH_INTENT_DECRYPT)
+	if err != nil {
+		s.Fatal("Failed to start auth session: ", err)
+	}
+	err = client.AuthenticatePinAuthFactor(ctx, authSessionID, pinLabel, userPin)
+	if !errors.As(err, &exitErr) {
+		s.Fatalf("Unexpected error during authentication with pin: got %q; want *hwsec.CmdExitError", err)
+	}
+	if exitErr.ExitCode != cryptohomeErrorKeyNotFound {
+		s.Fatalf("Unexpected exit code during authentication with pin: got %d; want %d", exitErr.ExitCode, cryptohomeErrorKeyNotFound)
 	}
 
 	// Can add and successfully authenticate via pin.
-	if err := addAndAuthenticatePinAuthFactor(); err != nil {
-		s.Fatal("Failed to add and authenticate with pin authfactor: ", err)
+	authSessionID, err = client.StartAuthSession(ctx, userName, false /*ephemeral*/, uda.AuthIntent_AUTH_INTENT_DECRYPT)
+	if err != nil {
+		s.Fatal("Failed to start auth session: ", err)
 	}
+	if _, err := client.AuthenticateAuthFactor(ctx, authSessionID, passwordLabel, userPassword); err != nil {
+		s.Fatal("Failed to authenticate with password: ", err)
+	}
+	if err := client.AddPinAuthFactor(ctx, authSessionID, pinLabel, userPin); err != nil {
+		s.Fatal("Failed to re-add pin auth factor: ", err)
+	}
+	authSessionID, err = authenticateWithPinAuthFactor()
+	if err != nil {
+		s.Fatal("Failed to authenticate with pin after re-adding: ", err)
+	}
+	defer client.InvalidateAuthSession(ctxForCleanUp, authSessionID)
+	authSessionID, err = unlockWithPinAuthFactor()
+	if err != nil {
+		s.Fatal("Failed to unlock with pin after re-adding: ", err)
+	}
+	defer client.InvalidateAuthSession(ctxForCleanUp, authSessionID)
 }
