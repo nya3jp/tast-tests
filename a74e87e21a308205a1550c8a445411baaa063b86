@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "92a81208_ef0ec07b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/gio/testutil.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-09-26T17:56:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eb89f826_92338b57",
+      "range": {
+        "startLine": 282,
+        "startChar": 28,
+        "endLine": 282,
+        "endChar": 30
+      },
+      "revId": "a74e87e21a308205a1550c8a445411baaa063b86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "13c0925a_1ff460db",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-09-26T17:28:32Z",
       "side": 1,
       "message": "Is there any issue to have waitMS \u003d 250?",
+      "range": {
+        "startLine": 23,
+        "startChar": 1,
+        "endLine": 23,
+        "endChar": 7
+      },
+      "revId": "a74e87e21a308205a1550c8a445411baaa063b86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a72fe99_7a12782d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/input_overlay_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-09-26T17:56:43Z",
+      "side": 1,
+      "message": "Not that I can see. What issues were you thinking of?",
+      "parentUuid": "13c0925a_1ff460db",
       "range": {
         "startLine": 23,
         "startChar": 1,
