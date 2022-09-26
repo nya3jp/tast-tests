@@ -16,6 +16,24 @@
       "message": "Single space before got?",
       "revId": "a5e47b23ef7983670b83d0259d0244a8ac2d842a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "404cd456_f89f6d16",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/shill_cellular_smoke.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-09-26T12:41:59Z",
+      "side": 1,
+      "message": "Ah, forgot to reupload...",
+      "parentUuid": "9bf6359d_9033b2fa",
+      "revId": "a5e47b23ef7983670b83d0259d0244a8ac2d842a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
