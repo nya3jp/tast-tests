@@ -18,6 +18,29 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "a33d481c_991404f4",
+        "filename": "src/chromiumos/tast/local/ambient/ambient.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-09-26T17:29:37Z",
+      "side": 1,
+      "message": "Wrap this error please",
+      "range": {
+        "startLine": 259,
+        "startChar": 2,
+        "endLine": 262,
+        "endChar": 8
+      },
+      "revId": "f72030ecef59012bcbd3429f135db229a366364a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "3f3d262a_63ae3a97",
@@ -37,6 +60,23 @@
         "endLine": 128,
         "endChar": 50
       },
+      "revId": "f72030ecef59012bcbd3429f135db229a366364a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "adb29544_3a61d7bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/personalization/set_screensaver.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-09-26T17:29:37Z",
+      "side": 1,
+      "message": "Make this a const please",
       "revId": "f72030ecef59012bcbd3429f135db229a366364a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
