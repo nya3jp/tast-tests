@@ -23,7 +23,7 @@ func init() {
 		},
 		Attr:         []string{"group:telemetry_extension_hw"},
 		SoftwareDeps: []string{"chrome"},
-		Fixture:      "telemetryExtension",
+		Fixture:      fixture.TelemetryExtension,
 		Params: []testing.Param{
 			// Available everywhere.
 			{
