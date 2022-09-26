@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ccb23848_9abc43cf",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/screen_recorder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1551182
+      },
+      "writtenOn": "2022-09-26T05:46:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7593df56_dcfca1d7",
+      "range": {
+        "startLine": 365,
+        "startChar": 2,
+        "endLine": 367,
+        "endChar": 113
+      },
+      "revId": "379285533713f8a055d78c56a6a09b8d5595760b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1ee860fd_a835a0f8",
@@ -133,6 +157,30 @@
       "side": 1,
       "message": "yeah, that makes sense. How about creating two functions? `StartXXXX` and `StartXXXWithError`, and let the users decide whether they want to handle error or not.",
       "parentUuid": "25ccffa9_222b644d",
+      "range": {
+        "startLine": 373,
+        "startChar": 9,
+        "endLine": 373,
+        "endChar": 12
+      },
+      "revId": "379285533713f8a055d78c56a6a09b8d5595760b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4544a437_d67108b7",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/screen_recorder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 1551182
+      },
+      "writtenOn": "2022-09-26T05:46:29Z",
+      "side": 1,
+      "message": "I like this approach, either delegate error handling to the library (2 LOC) or handle it yourself (5 LOC).",
+      "parentUuid": "256c866b_16bf330a",
       "range": {
         "startLine": 373,
         "startChar": 9,
