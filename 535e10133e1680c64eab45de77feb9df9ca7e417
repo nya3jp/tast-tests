@@ -20,6 +20,23 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "f26ba2b7_25a8b8ad",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-09-26T14:13:09Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "535e10133e1680c64eab45de77feb9df9ca7e417",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "d6a02fb6_ea10fede",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/google_sheets_cuj.go",
         "patchSetId": 4
@@ -36,6 +53,52 @@
         "startChar": 23,
         "endLine": 197,
         "endChar": 45
+      },
+      "revId": "535e10133e1680c64eab45de77feb9df9ca7e417",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8615d174_b73b7466",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/google_slides_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-09-26T14:13:09Z",
+      "side": 1,
+      "message": "do you really use it?",
+      "range": {
+        "startLine": 121,
+        "startChar": 0,
+        "endLine": 121,
+        "endChar": 28
+      },
+      "revId": "535e10133e1680c64eab45de77feb9df9ca7e417",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "314071fd_f72a9d59",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/google_slides_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-09-26T14:13:09Z",
+      "side": 1,
+      "message": "nit: move closer to the first use\n\nsame for other variables",
+      "range": {
+        "startLine": 132,
+        "startChar": 0,
+        "endLine": 135,
+        "endChar": 0
       },
       "revId": "535e10133e1680c64eab45de77feb9df9ca7e417",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
