@@ -38,7 +38,7 @@ func CrosConfig(ctx context.Context, s *testing.State) {
 	// for not-defined. Let's be strict with this rule here.
 	if crosconfig.IsNotFound(err) ||
 		fp.SensorLoc(sensorLocation) == fp.SensorLocNone {
-		s.Log("Fingerprint is properly unsupported on device")
+		// Fingerprint appears to be properly unsupported on device.
 		return
 	}
 	if !fp.SensorLoc(sensorLocation).IsValid() {
