@@ -64,13 +64,11 @@ func TrimFileFrom(ctx context.Context, oldFileName, newFileName string, startTim
 	return nil
 }
 
-// CheckRecordingQuality checks the recording file to see whether internal mic works normally.
-// A qualified file must meet these requirements:
-// 1. The RMS must be smaller than the threshold. If not, it may be the static noise inside.
-// 2. The recorded samples can not be all zeros. It is impossible for a normal internal mic.
-func CheckRecordingQuality(ctx context.Context, fileName string) error {
-	const threshold = -10.0 // dB
-
+// CheckRecordingNotZero checks the recording file to see whether internal mic works normally.
+// The recorded samples can not be all zeros. It is impossible for a normal internal mic.
+//
+//	TODO (b/250472324): Re-enable the checking for internal static noise after we found a solution (either audiobox, or through filtering)
+func CheckRecordingNotZero(ctx context.Context, fileName string) error {
 	out, err := testexec.CommandContext(ctx, "sox", fileName, "-n", "stats").CombinedOutput(testexec.DumpLogOnError)
 	if err != nil {
 		return errors.Wrap(err, "sox failed")
@@ -95,9 +93,6 @@ func CheckRecordingQuality(ctx context.Context, fileName string) error {
 	testing.ContextLogf(ctx, "Left channel RMS: %f dB", rmsLeft)
 	testing.ContextLogf(ctx, "Right channel RMS: %f dB", rmsRight)
 
-	if rmsLeft > threshold || rmsRight > threshold {
-		return errors.Errorf("the RMS (%f, %f) is too large", rmsLeft, rmsRight)
-	}
 	// If all samples are zeros, the rms is -inf.
 	if math.IsInf(rmsLeft, -1) || math.IsInf(rmsRight, -1) {
 		return errors.New("the samples are all zeros")
