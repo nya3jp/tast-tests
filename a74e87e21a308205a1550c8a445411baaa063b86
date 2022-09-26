@@ -110,6 +110,30 @@
       },
       "revId": "a74e87e21a308205a1550c8a445411baaa063b86",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22de4612_cdd09dee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/input_overlay_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1284845
+      },
+      "writtenOn": "2022-09-26T19:52:01Z",
+      "side": 1,
+      "message": "Sorry, I mean is there any reason for 250ms? It looks a big number. How about 50 or something else?",
+      "parentUuid": "4a72fe99_7a12782d",
+      "range": {
+        "startLine": 23,
+        "startChar": 1,
+        "endLine": 23,
+        "endChar": 7
+      },
+      "revId": "a74e87e21a308205a1550c8a445411baaa063b86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
