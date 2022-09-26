@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8639fd9d_b8d707cd",
+        "filename": "src/chromiumos/tast/local/personalization/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1429709
+      },
+      "writtenOn": "2022-09-26T21:20:36Z",
+      "side": 1,
+      "message": "this fixture isn\u0027t necessary anymore now that DarkLight is always on. So we could delete this entirely in this CL too",
+      "range": {
+        "startLine": 17,
+        "startChar": 9,
+        "endLine": 17,
+        "endChar": 41
+      },
+      "revId": "eb9e0207429c79fc1b26d292030ec8d8c326067c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
