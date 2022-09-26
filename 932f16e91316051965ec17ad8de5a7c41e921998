@@ -54,6 +54,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "73112487_67d4364b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1522762
+      },
+      "writtenOn": "2022-09-26T17:51:10Z",
+      "side": 1,
+      "message": "Right. Uploaded. Thanks!",
+      "parentUuid": "5f51b1cd_06ab556d",
+      "revId": "932f16e91316051965ec17ad8de5a7c41e921998",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "849da56d_7cd13e9f",
@@ -103,6 +121,24 @@
       "side": 1,
       "message": "How about handling the both paths by defer?\n\n```\n  defer func() {\n    if err :\u003d ash.CloseAllWindows(ctx, tconn); err !\u003d nil {\n      s.Fatal(...) // if we want to fail the test for a cleanup failure\n      s.Log(...) // or if we are OK with passing the test and just log\n    }\n  }()\n```",
       "parentUuid": "43443971_c2c4374f",
+      "revId": "932f16e91316051965ec17ad8de5a7c41e921998",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "11ab2976_70b36274",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/admin_templates_launch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1522762
+      },
+      "writtenOn": "2022-09-26T17:51:10Z",
+      "side": 1,
+      "message": "Done. Thanks for the suggestion!",
+      "parentUuid": "bba6f1d8_f36ad6ae",
       "revId": "932f16e91316051965ec17ad8de5a7c41e921998",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
