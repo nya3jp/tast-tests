@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3323e16_92d1ed6b",
+        "filename": "src/chromiumos/tast/local/input/keyboard.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-09-26T18:05:44Z",
+      "side": 1,
+      "message": "This seems like a formatting mistake.",
+      "range": {
+        "startLine": 163,
+        "startChar": 1,
+        "endLine": 165,
+        "endChar": 2
+      },
+      "revId": "92193424a45f56e1d632b9e0358fc0c05c1db488",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28a8a511_001a6123",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_power_button.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-09-26T18:05:44Z",
+      "side": 1,
+      "message": "Remove this comment.",
+      "range": {
+        "startLine": 44,
+        "startChar": 4,
+        "endLine": 44,
+        "endChar": 139
+      },
+      "revId": "92193424a45f56e1d632b9e0358fc0c05c1db488",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac58c917_068d3e6b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_power_button.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-09-26T18:05:44Z",
+      "side": 1,
+      "message": "If you are stopping, you should stop fwupd and then powerd. If you are starting, you should reverse that, and start powerd first, then fwupd.\n\nI think start and stop can take multiple arguments though, and should stop or start in the right order, so if you combine them, it should be fine.\n\nAlso, why run status? Starting something that is running is not an error. Stopping something that is already stopped probably isn\u0027t an error.",
+      "range": {
+        "startLine": 212,
+        "startChar": 0,
+        "endLine": 212,
+        "endChar": 109
+      },
+      "revId": "92193424a45f56e1d632b9e0358fc0c05c1db488",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
