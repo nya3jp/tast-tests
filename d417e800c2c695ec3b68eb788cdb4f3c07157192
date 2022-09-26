@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b2972bd_bba88bd0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/intel/record_audio.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-09-26T23:25:34Z",
+      "side": 1,
+      "message": "nit: can you document what each of these are for future maintainence? something like:\n```\n[]string{\"-Dhw:0,1\",  // Does a thing.\n         \"-d\",        // Does something else.\n         ...\n         }\n```",
+      "range": {
+        "startLine": 64,
+        "startChar": 25,
+        "endLine": 64,
+        "endChar": 71
+      },
+      "revId": "d417e800c2c695ec3b68eb788cdb4f3c07157192",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3279c1fc_61bc53ce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/intel/record_audio.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-09-26T23:25:34Z",
+      "side": 1,
+      "message": "Catch and log this error please.",
+      "range": {
+        "startLine": 75,
+        "startChar": 2,
+        "endLine": 75,
+        "endChar": 18
+      },
+      "revId": "d417e800c2c695ec3b68eb788cdb4f3c07157192",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f22d96c_16ca08ca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/intel/record_audio.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-09-26T23:25:34Z",
+      "side": 1,
+      "message": "Let\u0027s use a cleanup context here. If we fail to close the previous window the next test _may_ end up failing as the existing window could still be there.",
+      "range": {
+        "startLine": 82,
+        "startChar": 3,
+        "endLine": 82,
+        "endChar": 6
+      },
+      "revId": "d417e800c2c695ec3b68eb788cdb4f3c07157192",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7916417c_8a31a136",
+        "filename": "src/chromiumos/tast/local/bundles/cros/intel/record_audio.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-09-26T23:25:34Z",
+      "side": 1,
+      "message": "nit: combine these 2 using `uiauto.Combine`, e.g.\n```\nif err :\u003d uiauto.Combine(\"open wav file in downloads\",\n    files.OpenDownloads(),\n    files.OpenFile(recWavFileName),\n); err !\u003d nil {\n    s.Fatal(\"Failed to open file in downloads: \", err)\n}\n```",
+      "range": {
+        "startLine": 84,
+        "startChar": 1,
+        "endLine": 89,
+        "endChar": 2
+      },
+      "revId": "d417e800c2c695ec3b68eb788cdb4f3c07157192",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "880f7161_bcfb5c35",
+        "filename": "src/chromiumos/tast/local/bundles/cros/intel/record_audio.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-09-26T23:25:34Z",
+      "side": 1,
+      "message": "Should there be some verification that the audio played? What is the pass criteria here? If nothing, let\u0027s document what this is trying to achieve. Otherwise add a condition to verify for.",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 2
+      },
+      "revId": "d417e800c2c695ec3b68eb788cdb4f3c07157192",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
