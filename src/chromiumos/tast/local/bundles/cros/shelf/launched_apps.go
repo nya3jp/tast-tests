@@ -89,7 +89,7 @@ func LaunchedApps(ctx context.Context, s *testing.State) {
 	if tabletMode {
 		defaultAppsPartial = []apps.App{browserApp}
 	} else {
-		defaultAppsPartial = []apps.App{browserApp, apps.Files}
+		defaultAppsPartial = []apps.App{browserApp, apps.FilesSWA}
 	}
 	defaultAppsFull := append(defaultAppsPartial, apps.Gmail, apps.Docs, apps.Youtube)
 
