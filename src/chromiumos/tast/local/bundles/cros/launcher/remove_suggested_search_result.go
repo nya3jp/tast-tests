@@ -96,20 +96,13 @@ func RemoveSuggestedSearchResult(ctx context.Context, s *testing.State) {
 	}
 	defer conn.Close()
 
-	browserRootFinder := nodewith.Role(role.Window).HasClass("BrowserRootView")
-	expectedNode := browserRootFinder.NameContaining(testQuery)
-
-	if err := uiauto.New(tconn).WaitUntilExists(expectedNode)(ctx); err != nil {
-		s.Fatal("Failed to verify test query was handled: ", err)
-	}
-
-	// Close the (active) browser window.
-	activeWindow, err := ash.GetActiveWindow(ctx, tconn)
+	browserWindow, err := ash.WaitForAnyWindowWithTitle(ctx, tconn, testQuery)
 	if err != nil {
-		s.Fatal("Failed to get the active window: ", err)
+		s.Fatal("Failed to get the browser window: ", err)
 	}
-	if err := activeWindow.CloseWindow(ctx, tconn); err != nil {
-		s.Fatalf("Failed to close the window(%s): %v", activeWindow.Name, err)
+
+	if err := browserWindow.CloseWindow(ctx, tconn); err != nil {
+		s.Fatalf("Failed to close the window(%s): %v", browserWindow.Name, err)
 	}
 
 	// SetUpLauncherTest opens the launcher.
