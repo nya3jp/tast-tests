@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5de74a01_0776d198",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1524179
+      },
+      "writtenOn": "2022-09-26T00:55:07Z",
+      "side": 1,
+      "message": "This CL bypasses CQ and is directly merged.",
+      "revId": "10c7730a38bf1a2ca996fcfcb3848d94f9236896",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
