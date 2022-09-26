@@ -12,7 +12,6 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/local/chrome/uiauto"
@@ -101,15 +100,6 @@ func RemoveSuggestedSearchResult(ctx context.Context, s *testing.State) {
 
 	if err := uiauto.New(tconn).WaitUntilExists(expectedNode)(ctx); err != nil {
 		s.Fatal("Failed to verify test query was handled: ", err)
-	}
-
-	// Close the (active) browser window.
-	activeWindow, err := ash.GetActiveWindow(ctx, tconn)
-	if err != nil {
-		s.Fatal("Failed to get the active window: ", err)
-	}
-	if err := activeWindow.CloseWindow(ctx, tconn); err != nil {
-		s.Fatalf("Failed to close the window(%s): %v", activeWindow.Name, err)
 	}
 
 	// SetUpLauncherTest opens the launcher.
