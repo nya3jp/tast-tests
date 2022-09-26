@@ -46,26 +46,6 @@ func init() {
 				Fixture:           fixture.TelemetryExtensionLacros,
 				ExtraHardwareDeps: dep.NonStableModels(),
 			},
-			{
-				Name:              "stable_managed",
-				Fixture:           fixture.TelemetryExtensionManaged,
-				ExtraHardwareDeps: dep.StableModels(),
-			},
-			{
-				Name:              "non_stable_managed",
-				Fixture:           fixture.TelemetryExtensionManaged,
-				ExtraHardwareDeps: dep.NonStableModels(),
-			},
-			{
-				Name:              "stable_managed_lacros",
-				Fixture:           fixture.TelemetryExtensionManagedLacros,
-				ExtraHardwareDeps: dep.StableModels(),
-			},
-			{
-				Name:              "non_stable_managed_lacros",
-				Fixture:           fixture.TelemetryExtensionManagedLacros,
-				ExtraHardwareDeps: dep.NonStableModels(),
-			},
 		},
 	})
 }

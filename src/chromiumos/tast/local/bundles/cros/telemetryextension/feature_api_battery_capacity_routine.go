@@ -45,26 +45,6 @@ func init() {
 				Fixture:           fixture.TelemetryExtensionOverrideOEMNameLacros,
 				ExtraHardwareDeps: dep.NonStableModels(),
 			},
-			{
-				Name:              "stable_managed",
-				Fixture:           fixture.TelemetryExtensionManaged,
-				ExtraHardwareDeps: dep.StableModels(),
-			},
-			{
-				Name:              "non_stable_managed",
-				Fixture:           fixture.TelemetryExtensionOverrideOEMNameManaged,
-				ExtraHardwareDeps: dep.NonStableModels(),
-			},
-			{
-				Name:              "stable_managed_lacros",
-				Fixture:           fixture.TelemetryExtensionManagedLacros,
-				ExtraHardwareDeps: dep.StableModels(),
-			},
-			{
-				Name:              "non_stable_managed_lacros",
-				Fixture:           fixture.TelemetryExtensionOverrideOEMNameManagedLacros,
-				ExtraHardwareDeps: dep.NonStableModels(),
-			},
 		},
 	})
 }

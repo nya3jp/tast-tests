@@ -13,9 +13,6 @@ import (
 	"path/filepath"
 	"time"
 
-	"chromiumos/tast/common/fixture"
-	"chromiumos/tast/common/policy"
-	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/fsutil"
@@ -27,7 +24,6 @@ import (
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
-	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/local/sysutil"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
@@ -35,16 +31,12 @@ import (
 
 // Fixture names.
 const (
-	TelemetryExtension                             = "telemetryExtension"
-	TelemetryExtensionLacros                       = "telemetryExtensionLacros"
-	TelemetryExtensionOverrideOEMName              = "telemetryExtensionOverrideOEMName"
-	TelemetryExtensionOverrideOEMNameLacros        = "telemetryExtensionOverrideOEMNameLacros"
-	TelemetryExtensionOptionsPage                  = "telemetryExtensionOptionsPage"
-	TelemetryExtensionOptionsPageLacros            = "telemetryExtensionOptionsPageLacros"
-	TelemetryExtensionManaged                      = "telemetryExtensionManaged"
-	TelemetryExtensionManagedLacros                = "telemetryExtensionManagedLacros"
-	TelemetryExtensionOverrideOEMNameManaged       = "telemetryExtensionOverrideOEMNameManaged"
-	TelemetryExtensionOverrideOEMNameManagedLacros = "telemetryExtensionOverrideOEMNameManagedLacros"
+	TelemetryExtension                      = "telemetryExtension"
+	TelemetryExtensionLacros                = "telemetryExtensionLacros"
+	TelemetryExtensionOverrideOEMName       = "telemetryExtensionOverrideOEMName"
+	TelemetryExtensionOverrideOEMNameLacros = "telemetryExtensionOverrideOEMNameLacros"
+	TelemetryExtensionOptionsPage           = "telemetryExtensionOptionsPage"
+	TelemetryExtensionOptionsPageLacros     = "telemetryExtensionOptionsPageLacros"
 )
 
 const (
@@ -144,70 +136,6 @@ func init() {
 		PostTestTimeout: 10 * time.Second,
 		Data:            extFiles(true),
 	})
-	testing.AddFixture(&testing.Fixture{
-		Name: TelemetryExtensionManaged,
-		Desc: "Telemetry Extension fixture with running PWA and companion Telemetry Extension on managed device",
-		Contacts: []string{
-			"lamzin@google.com", // Fixture and Telemetry Extension author
-			"mgawad@google.com", // Telemetry Extension author
-			"cros-oem-services-team@google.com",
-		},
-		Impl:            newTelemetryExtensionFixture(managed()),
-		Parent:          fixture.FakeDMSEnrolled,
-		SetUpTimeout:    chrome.LoginTimeout + 30*time.Second + cleanupTimeout,
-		TearDownTimeout: cleanupTimeout,
-		PreTestTimeout:  10 * time.Second,
-		PostTestTimeout: 10 * time.Second,
-		Vars:            []string{"policy.ManagedUser.accountPool"},
-	})
-	testing.AddFixture(&testing.Fixture{
-		Name: TelemetryExtensionManagedLacros,
-		Desc: "Telemetry Extension fixture with running PWA and companion Telemetry Extension in Lacros browser on managed device",
-		Contacts: []string{
-			"lamzin@google.com", // Fixture and Telemetry Extension author
-			"mgawad@google.com", // Telemetry Extension author
-			"cros-oem-services-team@google.com",
-		},
-		Impl:            newTelemetryExtensionFixture(managed(), lacros()),
-		Parent:          fixture.PersistentLacrosEnrolled,
-		SetUpTimeout:    chrome.LoginTimeout + 30*time.Second + cleanupTimeout,
-		TearDownTimeout: cleanupTimeout,
-		PreTestTimeout:  10 * time.Second,
-		PostTestTimeout: 10 * time.Second,
-		Vars:            []string{"policy.ManagedUser.accountPool"},
-	})
-	testing.AddFixture(&testing.Fixture{
-		Name: TelemetryExtensionOverrideOEMNameManaged,
-		Desc: "Telemetry Extension fixture with running PWA and companion Telemetry Extension on managed devices that are not officially supported yet",
-		Contacts: []string{
-			"lamzin@google.com", // Fixture and Telemetry Extension author
-			"mgawad@google.com", // Telemetry Extension author
-			"cros-oem-services-team@google.com",
-		},
-		Impl:            newTelemetryExtensionFixture(overrideOEMName(), managed()),
-		Parent:          fixture.FakeDMSEnrolled,
-		SetUpTimeout:    chrome.LoginTimeout + 30*time.Second + cleanupTimeout,
-		TearDownTimeout: cleanupTimeout,
-		PreTestTimeout:  10 * time.Second,
-		PostTestTimeout: 10 * time.Second,
-		Vars:            []string{"policy.ManagedUser.accountPool"},
-	})
-	testing.AddFixture(&testing.Fixture{
-		Name: TelemetryExtensionOverrideOEMNameManagedLacros,
-		Desc: "Telemetry Extension fixture with running PWA and companion Telemetry Extension in Lacros browser on managed devices that are not officially supported yet",
-		Contacts: []string{
-			"lamzin@google.com", // Fixture and Telemetry Extension author
-			"mgawad@google.com", // Telemetry Extension author
-			"cros-oem-services-team@google.com",
-		},
-		Impl:            newTelemetryExtensionFixture(overrideOEMName(), managed(), lacros()),
-		Parent:          fixture.PersistentLacrosEnrolled,
-		SetUpTimeout:    chrome.LoginTimeout + 30*time.Second + cleanupTimeout,
-		TearDownTimeout: cleanupTimeout,
-		PreTestTimeout:  10 * time.Second,
-		PostTestTimeout: 10 * time.Second,
-		Vars:            []string{"policy.ManagedUser.accountPool"},
-	})
 }
 
 func manifestFile(optionsPage bool) string {
@@ -239,12 +167,6 @@ func optionsPage() func(*telemetryExtensionFixture) {
 	}
 }
 
-func managed() func(*telemetryExtensionFixture) {
-	return func(f *telemetryExtensionFixture) {
-		f.managed = true
-	}
-}
-
 func overrideOEMName() func(*telemetryExtensionFixture) {
 	return func(f *telemetryExtensionFixture) {
 		f.overrideOEMName = true
@@ -266,7 +188,6 @@ func newTelemetryExtensionFixture(opts ...option) *telemetryExtensionFixture {
 type telemetryExtensionFixture struct {
 	bt              browser.Type
 	optionsPage     bool
-	managed         bool
 	overrideOEMName bool
 
 	dir     string
@@ -299,24 +220,8 @@ func (f *telemetryExtensionFixture) SetUp(ctx context.Context, s *testing.FixtSt
 		}
 	}(cleanupCtx)
 
-	if f.managed {
-		fdms, ok := s.ParentValue().(*fakedms.FakeDMS)
-		if !ok {
-			s.Fatal("Parent is not a FakeDMS fixture")
-		}
-
-		gaiaCreds, err := chrome.PickRandomCreds(s.RequiredVar("policy.ManagedUser.accountPool"))
-		if err != nil {
-			s.Fatal("Failed to parse managed user creds: ", err)
-		}
-
-		if err := f.setupChromeForManagedUsers(ctx, fdms, gaiaCreds.User, gaiaCreds.Pass); err != nil {
-			s.Fatal("Failed to setup Chrome for managed users: ", err)
-		}
-	} else {
-		if err := f.setupChromeForConsumers(ctx, s.DataPath); err != nil {
-			s.Fatal("Failed to setup Chrome for consumers: ", err)
-		}
+	if err := f.setupChromeForConsumers(ctx, s.DataPath); err != nil {
+		s.Fatal("Failed to setup Chrome for consumers: ", err)
 	}
 
 	if f.bt == browser.TypeLacros {
@@ -463,54 +368,6 @@ func (f *telemetryExtensionFixture) setupChromeForConsumers(ctx context.Context,
 	}
 	f.cr = cr
 
-	return nil
-}
-
-func (f *telemetryExtensionFixture) setupChromeForManagedUsers(ctx context.Context, fdms *fakedms.FakeDMS, username, password string) error {
-	pb := policy.NewBlob()
-	pb.PolicyUser = username
-
-	// Telemetry Extension works only for affiliated users.
-	pb.DeviceAffiliationIds = []string{"default_affiliation_id"}
-	pb.UserAffiliationIds = []string{"default_affiliation_id"}
-
-	// We have to update fake DMS policy user and affiliation IDs before starting Chrome.
-	if err := fdms.WritePolicyBlob(pb); err != nil {
-		return errors.Wrap(err, "failed to write policy blob before starting Chrome")
-	}
-
-	opts := []chrome.Option{
-		chrome.KeepEnrollment(),
-		chrome.GAIALogin(chrome.Creds{User: username, Pass: password}),
-		chrome.DMSPolicy(fdms.URL),
-		chrome.CustomLoginTimeout(chrome.ManagedUserLoginTimeout),
-	}
-	if err := f.addOverrideOEMNameChromeArg(ctx, &opts); err != nil {
-		return err
-	}
-	if f.bt == browser.TypeLacros {
-		extraOpts, err := lacrosfixt.NewConfig(
-			lacrosfixt.ChromeOptions(chrome.GAIALogin(chrome.Creds{User: username, Pass: password}))).Opts()
-		if err != nil {
-			return errors.Wrap(err, "failed to get lacros options")
-		}
-		opts = append(opts, extraOpts...)
-	}
-
-	cr, err := chrome.New(ctx, opts...)
-	if err != nil {
-		return errors.Wrap(err, "Chrome startup failed")
-	}
-	f.cr = cr
-
-	// Force install Telemetry Extension by policy.
-	pb.AddPolicy(&policy.ExtensionInstallForcelist{Val: []string{f.v.ExtID}})
-	// Allow DevTools on force installed extensions. Value 1 here means "allowed".
-	pb.AddPolicy(&policy.DeveloperToolsAvailability{Val: 1})
-
-	if err := policyutil.ServeBlobAndRefresh(ctx, fdms, cr, pb); err != nil {
-		return errors.Wrap(err, "failed to serve and refresh")
-	}
 	return nil
 }
 
