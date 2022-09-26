@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc/optin"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/testing"
 )
@@ -369,8 +370,6 @@ type bootedFixture struct {
 	arcvmConfig       string // Append config to arcvm_dev.conf
 
 	fOpt chrome.OptionsCallback // Function to return chrome options.
-
-	useParentChrome bool // Whether chrome is created by parent fixture.
 }
 
 // NewArcBootedFixture returns a FixtureImpl with a OptionsCallback function provided.
@@ -448,11 +447,6 @@ func NewArcBootedWithPlayStoreFixture(fOpts chrome.OptionsCallback) testing.Fixt
 			return append(opts, chrome.ARCSupported()), nil
 		},
 	}
-}
-
-// NewArcBootedWithParentChromeFixture returns a FixtureImpl that gets Chrome from a parent fixture.
-func NewArcBootedWithParentChromeFixture() testing.FixtureImpl {
-	return &bootedFixture{useParentChrome: true}
 }
 
 func (f *bootedFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
@@ -537,9 +531,7 @@ func (f *bootedFixture) SetUp(ctx context.Context, s *testing.FixtState) interfa
 	// Prevent the arc and chrome package's New and Close functions from
 	// being called while this bootedFixture is active.
 	Lock()
-	if !f.useParentChrome {
-		chrome.Lock()
-	}
+	chrome.Lock()
 
 	f.cr = cr
 	f.arc = arc
@@ -573,11 +565,9 @@ func (f *bootedFixture) TearDown(ctx context.Context, s *testing.FixtState) {
 	}
 	f.arc = nil
 
-	if !f.useParentChrome {
-		chrome.Unlock()
-		if err := f.cr.Close(ctx); err != nil {
-			s.Log("Failed to close Chrome: ", err)
-		}
+	chrome.Unlock()
+	if err := f.cr.Close(ctx); err != nil {
+		s.Log("Failed to close Chrome: ", err)
 	}
 	f.cr = nil
 }
@@ -586,10 +576,15 @@ func (f *bootedFixture) Reset(ctx context.Context) error {
 	if f.d != nil && !f.d.Alive(ctx) {
 		return errors.New("UI Automator is dead")
 	}
-	if !f.useParentChrome {
-		if err := f.cr.ResetState(ctx); err != nil {
-			return errors.Wrap(err, "failed to reset chrome")
-		}
+	tconn, err := f.cr.TestAPIConn(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to connect Test API")
+	}
+	if err := lacros.ResetState(ctx, tconn); err != nil {
+		return errors.Wrap(err, "failed to reset lacros")
+	}
+	if err := f.cr.ResetState(ctx); err != nil {
+		return errors.Wrap(err, "failed to reset chrome")
 	}
 	return f.init.Restore(ctx, f.arc)
 }
