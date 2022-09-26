@@ -192,6 +192,11 @@ func WebauthnU2fMode(ctx context.Context, s *testing.State) {
 			authCallback:      passwordAuthCallback,
 		},
 	} {
+		// TODO(b/210418148): Use an internal site for testing as webauthn.io no longer
+		// supports UserVerification = preferred.
+		if tc.userVerification == webauthnpb.UserVerification_PREFERRED {
+			continue
+		}
 		result := s.Run(ctx, tc.name, func(ctx context.Context, s *testing.State) {
 			if _, err := cr.StartWebauthn(ctx, &webauthnpb.StartWebauthnRequest{
 				UserVerification:  tc.userVerification,

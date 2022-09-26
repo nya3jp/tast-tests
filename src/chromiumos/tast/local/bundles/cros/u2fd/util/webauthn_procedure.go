@@ -41,7 +41,7 @@ func WebAuthnInWebAuthnIo(ctx context.Context, cr *chrome.Chrome, br *browser.Br
 	name := randomUsername()
 	testing.ContextLogf(ctx, "Username: %s", name)
 	// Use a random username because webauthn.io keeps state for each username for a period of time.
-	err = conn.Eval(ctx, fmt.Sprintf(`document.getElementById('input-email').value = "%s"`, name), nil)
+	err = conn.Eval(ctx, fmt.Sprintf(`document.getElementById('input-email')._x_model.set("%s")`, name), nil)
 	if err != nil {
 		return errors.Wrap(err, "failed to execute JS expression to set username")
 	}
