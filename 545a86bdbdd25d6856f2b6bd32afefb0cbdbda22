@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c713811_096368e7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-09-26T20:00:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8570a2d7_ef66620a",
+      "range": {
+        "startLine": 306,
+        "startChar": 33,
+        "endLine": 306,
+        "endChar": 35
+      },
+      "revId": "545a86bdbdd25d6856f2b6bd32afefb0cbdbda22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8608d067_bcd978ab",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-09-26T18:10:35Z",
       "side": 1,
       "message": "nit: missing a period here",
+      "range": {
+        "startLine": 312,
+        "startChar": 34,
+        "endLine": 312,
+        "endChar": 38
+      },
+      "revId": "545a86bdbdd25d6856f2b6bd32afefb0cbdbda22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c88d6c5f_57422881",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-09-26T20:00:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8608d067_bcd978ab",
       "range": {
         "startLine": 312,
         "startChar": 34,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9989e769_a7d19fb5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-09-26T20:00:51Z",
+      "side": 1,
+      "message": "Ah good readability point, fixed!",
+      "parentUuid": "790791f4_3b83b54e",
+      "range": {
+        "startLine": 364,
+        "startChar": 10,
+        "endLine": 364,
+        "endChar": 26
+      },
+      "revId": "545a86bdbdd25d6856f2b6bd32afefb0cbdbda22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4c8f76b3_e03fb998",
@@ -93,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ed63ca6_ac4ecce9",
+        "filename": "src/chromiumos/tast/local/chrome/cuj/inputsimulations/mouse.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-09-26T20:00:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4c8f76b3_e03fb998",
+      "range": {
+        "startLine": 94,
+        "startChar": 72,
+        "endLine": 94,
+        "endChar": 88
+      },
+      "revId": "545a86bdbdd25d6856f2b6bd32afefb0cbdbda22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3e0c3ddc_9e5eb6fc",
@@ -106,6 +202,30 @@
       "writtenOn": "2022-09-26T18:10:35Z",
       "side": 1,
       "message": "nit: i personally like to pass `dir` and `scroll` in RepeatMouseScroll but it\u0027s up to you :)",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 2
+      },
+      "revId": "545a86bdbdd25d6856f2b6bd32afefb0cbdbda22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a548e38_6aaf9ce2",
+        "filename": "src/chromiumos/tast/local/chrome/cuj/inputsimulations/mouse.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-09-26T20:00:51Z",
+      "side": 1,
+      "message": "I\u0027m worried about passing in a string into RepeatMouseScroll because people might misspell or mis-capitalize \"up\" or \"down\". I tried making a scroll direction type, but that just felt unnecessarily complex for a boolean action (up or down)...\n\nI might be misunderstanding your idea though!",
+      "parentUuid": "3e0c3ddc_9e5eb6fc",
       "range": {
         "startLine": 95,
         "startChar": 0,
