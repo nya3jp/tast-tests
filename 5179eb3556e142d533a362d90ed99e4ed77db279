@@ -16,6 +16,103 @@
       "message": "Hi Eric, PTAL as owner. Thank you.",
       "revId": "5179eb3556e142d533a362d90ed99e4ed77db279",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0747413_71509a58",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/check_shutdown_crash.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-09-26T15:30:55Z",
+      "side": 1,
+      "message": "nit: did you mean \"to get to the\"?",
+      "range": {
+        "startLine": 95,
+        "startChar": 19,
+        "endLine": 95,
+        "endChar": 25
+      },
+      "revId": "5179eb3556e142d533a362d90ed99e4ed77db279",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff5ac282_137d39cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/check_shutdown_crash.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-09-26T15:30:55Z",
+      "side": 1,
+      "message": "nit: missing \\` at the end of `chrome.PREVIOUS`. Also, this is the error message that will show up if the poll fails because the file hasn\u0027t changed yet, so it could be formatted more like an error message (\"\\`chrome.PREVIOUS\\` was not updated\" or something like that).",
+      "revId": "5179eb3556e142d533a362d90ed99e4ed77db279",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72470597_bde99ac7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/check_shutdown_crash.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-09-26T15:30:55Z",
+      "side": 1,
+      "message": "If this is an error, I\u0027m not sure we want to say \"WARNING:\" here. The test may fatal with this message and it can be confusing for readers to know if this is an actual issue or not.",
+      "revId": "5179eb3556e142d533a362d90ed99e4ed77db279",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c4cf2f3_dbca07fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/check_shutdown_crash.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-09-26T15:30:55Z",
+      "side": 1,
+      "message": "You can also use `testing.PollBreak` here instead of directly using Fatal, if you want the error to be reported on L119.",
+      "revId": "5179eb3556e142d533a362d90ed99e4ed77db279",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e22a5989_72ee8185",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/check_shutdown_crash.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-09-26T15:30:55Z",
+      "side": 1,
+      "message": "nit: have",
+      "range": {
+        "startLine": 115,
+        "startChar": 52,
+        "endLine": 115,
+        "endChar": 55
+      },
+      "revId": "5179eb3556e142d533a362d90ed99e4ed77db279",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
