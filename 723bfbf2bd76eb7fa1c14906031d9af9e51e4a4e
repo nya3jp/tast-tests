@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "337f7362_ab23af16",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_typing_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-09-26T01:44:47Z",
+      "side": 1,
+      "message": "In InputsStableModels, there are a few tablet devices, I wonder you might not want to use the same list.",
+      "range": {
+        "startLine": 48,
+        "startChar": 28,
+        "endLine": 48,
+        "endChar": 46
+      },
+      "revId": "723bfbf2bd76eb7fa1c14906031d9af9e51e4a4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
