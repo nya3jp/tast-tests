@@ -110,6 +110,7 @@ func Mtab(ctx context.Context, s *testing.State) {
 		"/run/imageloader":         {nil, "tmpfs", defaultRW + ",mode=755"},
 		"/run/namespaces":          {nil, "tmpfs", defaultRW + ",mode=755"}, // This is a bind mount
 		"/run/netns":               {nil, "tmpfs", defaultRW + ",mode=755"},
+		"/run/lacros":              {loopDev, "squashfs", "ro,seclabel,relatime"},
 		"/run/lock":                {nil, "tmpfs", defaultRW + ",mode=755"},
 
 		"/sys/fs/cgroup":            {nil, "tmpfs", defaultRW + ",mode=755"},
