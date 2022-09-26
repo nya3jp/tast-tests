@@ -181,16 +181,14 @@ func init() {
 		TearDownTimeout: chrome.ResetTimeout,
 	})
 
-	// lacrosUIKeepAlive is similar to lacros but should be used
-	// by tests that will launch lacros from the ChromeOS UI (e.g shelf) instead
-	// of by command line, and this test assuming that Lacros will be keep alive
-	// in the background even if the browser is turned off.
+	// lacrosKeepAlive is the same as lacros but has KeepAlive enabled, i.e.
+	// Lacros keeps running in the background even when the browser is closed.
 	testing.AddFixture(&testing.Fixture{
 		Name:     "lacrosKeepAlive",
-		Desc:     "Lacros Chrome from a pre-built image using the UI and the Lacros chrome will stay alive even when the browser terminated",
+		Desc:     "Lacros Chrome with KeepAlive enabled",
 		Contacts: []string{"mxcai@chromium.org", "hidehiko@chromium.org"},
 		Impl: chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
-			return NewConfig(KeepAlive(true), Mode(lacros.LacrosPrimary)).Opts()
+			return NewConfig(KeepAlive(true)).Opts()
 		}),
 		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
 		ResetTimeout:    chrome.ResetTimeout,
