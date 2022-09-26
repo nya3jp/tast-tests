@@ -32,7 +32,6 @@ func init() {
 		Desc:         "Behavior of ShowFullUrlsInAddressBar policy on both Ash and Lacros browser",
 		Contacts: []string{
 			"mpetrisor@chromium.org",
-			"chromeos-commercial-remote-management@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline", "informational"},

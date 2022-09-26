@@ -29,7 +29,6 @@ func init() {
 		Desc:         "Test the behavior of deprecated ForceSafeSearch policy: check if Google and YouTube safe search is enabled based on the value of the policy",
 		Contacts: []string{
 			"cmfcmf@google.com", // Test author
-			"chromeos-commercial-remote-management@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline", "informational"},

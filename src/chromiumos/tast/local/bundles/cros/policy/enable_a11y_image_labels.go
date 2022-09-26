@@ -36,7 +36,6 @@ func init() {
 		Desc:         "Verifies that the AccessibilityImageLabels policy works as intended",
 		Contacts: []string{
 			"eariassoto@google.com", // Test author
-			"chromeos-commercial-remote-management@google.com",
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},

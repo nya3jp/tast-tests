@@ -31,7 +31,6 @@ func init() {
 		Desc:         "Verify the maximum length of the unlock PIN",
 		Contacts: []string{
 			"janagrill@google.com", // Test author
-			"chromeos-commercial-remote-management@google.com",
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},

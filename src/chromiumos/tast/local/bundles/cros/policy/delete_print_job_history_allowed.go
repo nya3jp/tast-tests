@@ -31,7 +31,6 @@ func init() {
 		Desc:         "Behavior of DeletePrintJobHistoryAllowed policy, checking the corresponding button state after setting the policy",
 		Contacts: []string{
 			"poromov@chromium.org", // Test author
-			"chromeos-commercial-remote-management@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline", "informational"},

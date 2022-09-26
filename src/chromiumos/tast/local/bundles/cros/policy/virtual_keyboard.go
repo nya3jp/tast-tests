@@ -41,7 +41,6 @@ func init() {
 			"kamilszarek@google.com",    // Test author of the merge.
 			"giovax@google.com",         // Test author of the initial test for policy.VirtualKeyboardEnabled.
 			"alexanderhartl@google.com", // Test author of the initial test for policy.TouchVirtualKeyboardEnabled.
-			"chromeos-commercial-remote-management@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline", "informational"},

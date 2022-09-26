@@ -34,7 +34,6 @@ func init() {
 		Desc:         "Checks that the SpellcheckLanguage policy is correctly applied for each language including text markers and word suggestions",
 		Contacts: []string{
 			"eariassoto@google.com", // Test author
-			"chromeos-commercial-remote-management@google.com",
 		},
 		SoftwareDeps: []string{"chrome", "lacros"},
 		Attr:         []string{"group:mainline", "informational"},

@@ -25,7 +25,6 @@ func init() {
 		Desc:         "Behavior of the AlternateErrorPagesEnabled policy: check that an alternate set of error pages is shown based on the policy",
 		Contacts: []string{
 			"mpolzer@google.com", // Test author
-			"chromeos-commercial-remote-management@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline"},

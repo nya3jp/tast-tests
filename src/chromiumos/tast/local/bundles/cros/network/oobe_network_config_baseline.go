@@ -22,7 +22,6 @@ func init() {
 		Desc:         "Use the CrosNetworkConfig API during OOBE to configure a basic network configuration and check it is setup as expected",
 		Contacts: []string{
 			"crisguerrero@chromium.com", // Test author
-			"chromeos-commercial-remote-management@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline", "informational"},
