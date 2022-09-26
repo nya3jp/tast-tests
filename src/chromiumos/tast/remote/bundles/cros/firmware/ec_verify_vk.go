@@ -18,6 +18,7 @@ import (
 	"chromiumos/tast/remote/firmware"
 	"chromiumos/tast/remote/firmware/fixture"
 	pb "chromiumos/tast/services/cros/ui"
+	"chromiumos/tast/ssh/linuxssh"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -141,6 +142,12 @@ func ECVerifyVK(ctx context.Context, s *testing.State) {
 			s.Log("Unable to save the recording: ", err)
 		} else {
 			s.Logf("Screen recording saved to %s", res.FileName)
+		}
+
+		testing.ContextLog(ctx, "Copying screen recording from DUT to local machine")
+		destPath := filepath.Join(s.OutDir(), filepath.Base(res.FileName))
+		if err := linuxssh.GetFile(ctx, s.DUT().Conn(), res.FileName, destPath, linuxssh.DereferenceSymlinks); err != nil {
+			s.Fatal("Failed to copy screen recording to local machine: ", err)
 		}
 	}(cleanupCtx)
 
