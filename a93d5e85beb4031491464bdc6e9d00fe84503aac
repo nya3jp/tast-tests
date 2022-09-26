@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8aba30b5_f7acb73f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/add_remove_pin.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-09-26T15:02:13Z",
+      "side": 1,
+      "message": "Yes! but cryptohome supports it, and that\u0027s a good way to test lighweight verification right now -- when we support two passwords nothing is going to change in cryptohome.\n\nYes Only password cannot be removed, but if a password and a pin is setup, it can be removed",
+      "parentUuid": "15c0c521_8e68409f",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 0
+      },
+      "revId": "a93d5e85beb4031491464bdc6e9d00fe84503aac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a599f2d2_79f2d66e",
         "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/add_remove_pin.go",
         "patchSetId": 1
