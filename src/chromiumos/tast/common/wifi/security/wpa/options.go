@@ -14,6 +14,15 @@ func Mode(mode ModeEnum) Option {
 	}
 }
 
+// KeyMgmt returns an Option which sets key management suite list in
+// Config. This config overwrites the keyMgmt values implied by other
+// configs.
+func KeyMgmt(keyMgmt []string) Option {
+	return func(c *Config) {
+		c.keyMgmt = keyMgmt
+	}
+}
+
 // Ciphers returns an Option which sets the used WPA ciphers in Config.
 func Ciphers(ciphers ...Cipher) Option {
 	return func(c *Config) {
