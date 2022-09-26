@@ -65,6 +65,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2d8a0de_e2317ebf",
+        "filename": "src/chromiumos/tast/common/fingerprint/firmware_file.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-09-26T17:29:56Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0331422f_7e9b8b58",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 1
+      },
+      "revId": "3dd7e87bafc7bb95e888f753c72c60d67f93b29d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f4e02a55_a4b71b97",
