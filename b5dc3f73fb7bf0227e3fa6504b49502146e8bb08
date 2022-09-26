@@ -22,6 +22,30 @@
       },
       "revId": "b5dc3f73fb7bf0227e3fa6504b49502146e8bb08",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38a27425_e2c327f0",
+        "filename": "src/chromiumos/tast/local/shill/property_holder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-09-26T18:31:13Z",
+      "side": 1,
+      "message": "It\u0027s not strictly necessary, but as-is that would change an error message that already exists, so I figured I would try to make the fact that the underlying implementation changed a little as invisible as possible in case someone is looking for something specific in the logs.",
+      "parentUuid": "7ee1f020_39a57f45",
+      "range": {
+        "startLine": 93,
+        "startChar": 2,
+        "endLine": 95,
+        "endChar": 3
+      },
+      "revId": "b5dc3f73fb7bf0227e3fa6504b49502146e8bb08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
