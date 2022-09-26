@@ -31,10 +31,8 @@ type LauncherState string
 // LauncherState as defined in
 // https://cs.chromium.org/chromium/src/ash/public/cpp/app_list/app_list_types.h
 const (
-	Peeking           LauncherState = "Peeking"
 	FullscreenAllApps LauncherState = "FullscreenAllApps"
 	FullscreenSearch  LauncherState = "FullscreenSearch"
-	Half              LauncherState = "Half"
 	Closed            LauncherState = "Closed"
 )
 
