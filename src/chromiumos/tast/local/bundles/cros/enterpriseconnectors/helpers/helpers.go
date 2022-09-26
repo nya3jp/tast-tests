@@ -40,7 +40,7 @@ type TestFileParams struct {
 }
 
 // ScanningTimeOut describes the typical time out for a scan.
-const ScanningTimeOut = time.Minute
+const ScanningTimeOut = 3 * time.Minute
 
 // GetTestFileParams returns the list of parameters for the files that should be tested.
 func GetTestFileParams() []TestFileParams {
@@ -89,7 +89,7 @@ func GetTestFileParams() []TestFileParams {
 func WaitForDMTokenRegistered(ctx context.Context, br *browser.Browser, tconnAsh *chrome.TestConn, server *httptest.Server, downloadsPath string) error {
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		return checkDMTokenRegistered(ctx, br, tconnAsh, server, downloadsPath)
-	}, &testing.PollOptions{Timeout: 2 * time.Minute, Interval: 5 * time.Second}); err != nil {
+	}, &testing.PollOptions{Timeout: 2 * ScanningTimeOut, Interval: 5 * time.Second}); err != nil {
 		return errors.Wrap(err, "failed to wait for dm token to be registered")
 	}
 	return nil
@@ -121,7 +121,7 @@ func checkDMTokenRegistered(ctx context.Context, br *browser.Browser, tconnAsh *
 	}
 
 	// Check for notification (this might take some time in case of throttling).
-	timeout := 2 * time.Minute
+	timeout := 2 * ScanningTimeOut
 
 	if _, err := ash.WaitForNotification(
 		ctx,
