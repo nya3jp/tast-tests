@@ -21,16 +21,33 @@ import (
 	"chromiumos/tast/testing"
 )
 
+type params struct {
+	//Set up based on the need for a USB.
+	usbPresent bool
+}
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         DevModeFwScreen,
 		Desc:         "Verify the functionality of Ctrl+D and Ctrl+U while on the dev screen",
 		Contacts:     []string{"cienet-firmware@cienet.corp-partner.google.com", "chromeos-firmware@google.com"},
-		Attr:         []string{"group:firmware", "firmware_unstable", "firmware_usb"},
+		Attr:         []string{"group:firmware", "firmware_unstable"},
 		SoftwareDeps: []string{"crossystem"},
 		Vars:         []string{"firmware.skipFlashUSB"},
 		Fixture:      fixture.DevMode,
-		Timeout:      20 * time.Minute,
+		Params: []testing.Param{{
+			Val: &params{
+				usbPresent: false,
+			},
+			Timeout: 20 * time.Minute,
+		}, {
+			Name: "usb",
+			Val: &params{
+				usbPresent: true,
+			},
+			ExtraAttr: []string{"firmware_usb"},
+			Timeout:   60 * time.Minute,
+		}},
 	})
 }
 
@@ -45,23 +62,32 @@ func DevModeFwScreen(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create config: ", err)
 	}
 
-	s.Log("Setup USB key")
-	skipFlashUSB := false
-	if skipFlashUSBStr, ok := s.Var("firmware.skipFlashUSB"); ok {
-		var err error
-		skipFlashUSB, err = strconv.ParseBool(skipFlashUSBStr)
-		if err != nil {
-			s.Fatalf("Invalid value for var firmware.skipFlashUSB: got %q, want true/false", skipFlashUSBStr)
+	// Set up USB when there is one present, and
+	// for cases that depend on it.
+	testOpt := s.Param().(*params)
+	if testOpt.usbPresent {
+		s.Log("Setup USB key")
+		skipFlashUSB := false
+		if skipFlashUSBStr, ok := s.Var("firmware.skipFlashUSB"); ok {
+			var err error
+			skipFlashUSB, err = strconv.ParseBool(skipFlashUSBStr)
+			if err != nil {
+				s.Fatalf("Invalid value for var firmware.skipFlashUSB: got %q, want true/false", skipFlashUSBStr)
+			}
+		}
+		var cs *testing.CloudStorage
+		if !skipFlashUSB {
+			cs = s.CloudStorage()
+		}
+		if err := h.SetupUSBKey(ctx, cs); err != nil {
+			s.Fatal("USBKey not working: ", err)
+		}
+
+		s.Logf("Setting USBMux to %s", servo.USBMuxDUT)
+		if err := h.Servo.SetUSBMuxState(ctx, servo.USBMuxDUT); err != nil {
+			s.Fatal("Failed to set USBMux: ", err)
 		}
 	}
-	var cs *testing.CloudStorage
-	if !skipFlashUSB {
-		cs = s.CloudStorage()
-	}
-	if err := h.SetupUSBKey(ctx, cs); err != nil {
-		s.Fatal("USBKey not working: ", err)
-	}
-
 	// For DUTs using MenuSwitcher, or TabletDetachableSwitcher, we would
 	// use a goroutine to keep pressing the <up> key in the background,
 	// to prevent exit from firmware screen because of timeout.
@@ -96,6 +122,9 @@ func DevModeFwScreen(ctx context.Context, s *testing.State) {
 	}(cleanupCtx, pressedKey, releaseUp)
 
 	/*
+		Notes: This test is parameterized so that steps 1~4 are run in
+		'DevModeFwScreen.usb', and steps 5~8 in 'DevModeFwScreen'.
+
 		Ctrl+D/Ctrl+U functionality is tested for scenarios as follows:
 		1. Set 'crossystem dev_boot_usb=0', attach USB device to DUT,
 			reboot, press ctrl+D and expect boot success into dev mode
@@ -124,6 +153,7 @@ func DevModeFwScreen(ctx context.Context, s *testing.State) {
 			with ctrl+D would allow boot to continue into dev mode and
 			from main storage.
 	*/
+
 	done := make(chan bool, 1)
 	defer func() {
 		close(done)
@@ -131,25 +161,26 @@ func DevModeFwScreen(ctx context.Context, s *testing.State) {
 	for _, steps := range []struct {
 		devBootUSB      string
 		testedShortCuts []servo.KeypressControl
-		USBState        servo.USBMuxState
+		usbRequired     bool
 		expectedMode    fwCommon.BootMode
 	}{
-		{"0", []servo.KeypressControl{servo.CtrlD}, servo.USBMuxDUT, fwCommon.BootModeDev},
-		{"1", []servo.KeypressControl{servo.CtrlD}, servo.USBMuxDUT, fwCommon.BootModeDev},
-		{"0", []servo.KeypressControl{servo.CtrlU, servo.CtrlD}, servo.USBMuxDUT, fwCommon.BootModeDev},
-		{"1", []servo.KeypressControl{servo.CtrlU, servo.CtrlD}, servo.USBMuxDUT, fwCommon.BootModeUSBDev},
-		{"0", []servo.KeypressControl{servo.CtrlD}, servo.USBMuxOff, fwCommon.BootModeDev},
-		{"1", []servo.KeypressControl{servo.CtrlD}, servo.USBMuxOff, fwCommon.BootModeDev},
-		{"0", []servo.KeypressControl{servo.CtrlU, servo.CtrlD}, servo.USBMuxOff, fwCommon.BootModeDev},
-		{"1", []servo.KeypressControl{servo.CtrlU, servo.CtrlD}, servo.USBMuxOff, fwCommon.BootModeDev},
+		{"0", []servo.KeypressControl{servo.CtrlD}, true, fwCommon.BootModeDev},
+		{"1", []servo.KeypressControl{servo.CtrlD}, true, fwCommon.BootModeDev},
+		{"0", []servo.KeypressControl{servo.CtrlU, servo.CtrlD}, true, fwCommon.BootModeDev},
+		{"1", []servo.KeypressControl{servo.CtrlU, servo.CtrlD}, true, fwCommon.BootModeUSBDev},
+		{"0", []servo.KeypressControl{servo.CtrlD}, false, fwCommon.BootModeDev},
+		{"1", []servo.KeypressControl{servo.CtrlD}, false, fwCommon.BootModeDev},
+		{"0", []servo.KeypressControl{servo.CtrlU, servo.CtrlD}, false, fwCommon.BootModeDev},
+		{"1", []servo.KeypressControl{servo.CtrlU, servo.CtrlD}, false, fwCommon.BootModeDev},
 	} {
+		// Run test steps that depend on a usb when there's one present.
+		if testOpt.usbPresent != steps.usbRequired {
+			continue
+		}
+
 		s.Logf("Setting dev boot usb value to %s", steps.devBootUSB)
 		if err := h.DUT.Conn().CommandContext(ctx, "crossystem", fmt.Sprintf("dev_boot_usb=%s", steps.devBootUSB)).Run(testexec.DumpLogOnError); err != nil {
 			s.Fatalf("Failed to set crossystem dev_boot_usb to %s", steps.devBootUSB)
-		}
-		s.Logf("Setting USBMux to %s", steps.USBState)
-		if err := h.Servo.SetUSBMuxState(ctx, steps.USBState); err != nil {
-			s.Fatal("Failed to set USBMux: ", err)
 		}
 
 		s.Log("Power-cycling DUT with a warm reset")
