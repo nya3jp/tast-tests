@@ -49,7 +49,7 @@ func ToggleCellularFromQuickSettings(ctx context.Context, s *testing.State) {
 
 	ui := uiauto.New(tconn)
 
-	if err := quicksettings.NavigateToNetworkDetailedView(ctx, tconn, false); err != nil {
+	if err := quicksettings.NavigateToNetworkDetailedView(ctx, tconn, true); err != nil {
 		s.Fatal("Failed to navigate to the detailed Network view: ", err)
 	}
 

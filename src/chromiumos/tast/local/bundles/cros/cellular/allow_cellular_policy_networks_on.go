@@ -102,7 +102,7 @@ func AllowCellularPolicyNetworksOn(ctx context.Context, s *testing.State) {
 		s.Fatal("Add cellular button is not disabled: ", err)
 	}
 
-	if err := quicksettings.NavigateToNetworkDetailedView(ctx, tconn, false); err != nil {
+	if err := quicksettings.NavigateToNetworkDetailedView(ctx, tconn, true); err != nil {
 		s.Fatal("Failed to navigate to the detailed Network view: ", err)
 	}
 
