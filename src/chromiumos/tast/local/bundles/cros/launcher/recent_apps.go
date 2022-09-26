@@ -124,14 +124,22 @@ func RecentApps(ctx context.Context, s *testing.State) {
 	}
 	defer cleanup(cleanupCtx)
 
-	//For tablet mode launcher, trigger an update for RecentApps to show.
-	if tabletMode {
-		if err := launcher.HideTabletModeLauncher(tconn)(ctx); err != nil {
-			s.Fatal("Failed to hide the launcher in tablet: ", err)
-		}
-		if err := launcher.OpenProductivityLauncher(ctx, tconn, tabletMode); err != nil {
-			s.Fatal("Failed to open launcher: ", err)
-		}
+	// Dismiss the sort nudge. This nudge is shown when the user opens the
+	// launcher for the first time. If the nudge is visible, the continue
+	// section (and thus the recent apps) will be blocked from showing until the sort nudge is accepted.
+	// Generally, recent apps will show before the sort nudge, but if
+	// there's a delay when retrieving zero state results, sort nudge may be
+	// shown before zero state results are returned. In this case, sort nudge
+	// needs to be dismissed in order for continue section to show up.
+	if err := launcher.DismissSortNudgeIfExists(ctx, tconn); err != nil {
+		s.Fatal("Failed to dismiss sort nudge: ", err)
+	}
+
+	// Reopen launcher. Recent apps always show the first time with default suggestions.
+	if err := uiauto.Combine("close and reopen launcher",
+		launcher.HideLauncher(tconn, !tabletMode),
+		launcher.ShowLauncher(tconn, !tabletMode))(ctx); err != nil {
+		s.Fatal("Failed to show recent apps section: ", err)
 	}
 
 	// Recent apps always show the first time with default suggestions.
