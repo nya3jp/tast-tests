@@ -9,6 +9,7 @@ import (
 	"context"
 	"fmt"
 	"path/filepath"
+	"regexp"
 	"time"
 
 	"chromiumos/tast/errors"
@@ -99,9 +100,31 @@ func ResolveAssistantHotkey(dutFeatures *protocol.DUTFeatures) (Accelerator, err
 
 // SendTextQuery sends text query to Assistant and returns the query status.
 func SendTextQuery(ctx context.Context, tconn *chrome.TestConn, query string) (QueryStatus, error) {
+	return sendTextQueryInternal(ctx, tconn, query, 1)
+}
+
+func sendTextQueryInternal(ctx context.Context, tconn *chrome.TestConn, query string, retryCount int) (QueryStatus, error) {
+	regexp, err := regexp.Compile("^Error: Session state must be ACTIVE to send a text query\\.")
+	if err != nil {
+		return QueryStatus{}, errors.Wrap(err, "failed to compile regexp for autotestPrivate error message")
+	}
+
 	var status QueryStatus
-	err := tconn.Call(ctx, &status, `tast.promisify(chrome.autotestPrivate.sendAssistantTextQuery)`, query, 30*1000 /* timeout_ms */)
-	return status, err
+	err = tconn.Call(ctx, &status, `tast.promisify(chrome.autotestPrivate.sendAssistantTextQuery)`, query, 30*1000 /* timeout_ms */)
+	if err != nil {
+		// Retry if the API call fails with session state error as it can get resolved if we wait a little.
+		// Do not retry with other errors to avoid hiding them with a retry.
+		if retryCount > 0 && regexp.MatchString(err.Error()) {
+			testing.ContextLogf(ctx, "Session state is not ACTIVE. Will retry %d time with 5 seconds interval: %s", retryCount, err.Error())
+			if err := testing.Sleep(ctx, 5*time.Second); err != nil {
+				return QueryStatus{}, errors.Wrap(err, "failed to sleep 5 seconds")
+			}
+			return sendTextQueryInternal(ctx, tconn, query, retryCount-1)
+		}
+
+		return QueryStatus{}, errors.Wrap(err, "failed to call sendAssistantTextQuery API")
+	}
+	return status, nil
 }
 
 // SendTextQueryViaUI sends a text query via launcher.
