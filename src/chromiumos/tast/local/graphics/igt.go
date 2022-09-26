@@ -12,7 +12,6 @@ import (
 	"os/exec"
 	"path/filepath"
 	"regexp"
-	"strings"
 
 	"chromiumos/tast/common/testexec"
 )
@@ -89,15 +88,8 @@ func IgtProcessResults(testExe string, file *os.File, isExitErr bool, exitErr *e
 	} else if len(failedSubtests) > 0 {
 		outputLog = fmt.Sprintf("Error running %s: %v\n", testExe, err)
 		outputLog += fmt.Sprintf("%s\n", summary)
-		outputLog += fmt.Sprintf("failed subtests: %s\n", failedSubtests)
-
-		failedSubtestsMessage := ""
-		if len(failedSubtests) <= 3 {
-			failedSubtestsMessage = strings.Join(failedSubtests, " ")
-		} else {
-			failedSubtestsMessage = failedSubtests[0] + " ... " + failedSubtests[len(failedSubtests)-1]
-		}
-		outputLog += fmt.Sprintf("%s Pass:%d Fail:%d (%s)", testExe, results.passed, results.failed, failedSubtestsMessage)
+		outputLog += fmt.Sprintf("Failed subtests: %s\n", failedSubtests)
+		outputLog += fmt.Sprintf("%s Pass:%d Fail:%d", testExe, results.passed, results.failed)
 		isError = true
 	} else {
 		outputLog = fmt.Sprintf("%s\n", summary)
