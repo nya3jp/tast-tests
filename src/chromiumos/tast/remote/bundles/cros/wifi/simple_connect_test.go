@@ -269,6 +269,25 @@ func simpleConnectWPA() []simpleConnectParams {
 		ExtraAttr: []string{"wificell_cq"},
 		Val:       mkOps("ap.PMF(ap.PMFRequired)", "PureWPA2", 0, ccmp),
 	}, {
+		Name: "wpa2pmfsha256",
+		Doc: append(simpleConnectDocPref("an AP broadcasting a WPA2 network using AES based CCMP."),
+			"In addition, the client must also support 802.11w protected management frames.",
+			"And the client uses WPA-PSK-SHA256 for key management suite"),
+		ExtraAttr: []string{"wificell_cq", "wificell_unstable"},
+		Val: []simpleConnectParamsVal{{
+			APOpts: simpleConnectCommonSecApOpts + ", ap.PMF(ap.PMFRequired)",
+			SecConfFac: fmt.Sprintf(`wpa.NewConfigFactory(
+				"chromeos", wpa.Mode(wpa.ModePureWPA2), wpa.KeyMgmt("WPA-PSK-SHA256"),
+				wpa.Ciphers2(wpa.CipherCCMP),
+		            )`),
+		}, {
+			APOpts: simpleConnectCommonSecApOpts + ", ap.PMF(ap.PMFRequired)",
+			SecConfFac: fmt.Sprintf(`wpa.NewConfigFactory(
+				"chromeos", wpa.Mode(wpa.ModePureWPA2), wpa.KeyMgmt("WPA-PSK WPA-PSK-SHA256"),
+				wpa.Ciphers2(wpa.CipherCCMP),
+		            )`),
+		}},
+	}, {
 		Name: "wpa2pmfoptional",
 		Doc: append(simpleConnectDocPref("an AP broadcasting a WPA2 network using AES based CCMP."),
 			"In addition, the client may also negotiate use of 802.11w protected management frames."),
