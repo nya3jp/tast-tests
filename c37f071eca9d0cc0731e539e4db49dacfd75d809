@@ -16,6 +16,24 @@
       "message": "Maybe using another variable to save the list is better.",
       "revId": "c37f071eca9d0cc0731e539e4db49dacfd75d809",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "de1c121b_7752ff84",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2022-09-26T14:20:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "87b18533_fe6e7fe1",
+      "revId": "c37f071eca9d0cc0731e539e4db49dacfd75d809",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
