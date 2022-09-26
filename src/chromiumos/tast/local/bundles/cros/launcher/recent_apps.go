@@ -19,7 +19,6 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/launcher"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/ossettings"
-	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -118,21 +117,20 @@ func RecentApps(ctx context.Context, s *testing.State) {
 
 	ui := uiauto.New(tconn)
 
+	// Wait for system web apps to finish installation to ensure the launcher
+	// gets opened, and recent apps get initialized after system apps have been
+	// installed. Otherwise, some system apps may get dropped from the recent apps view.
+	// Although we invoke waitForSystemWebAppsInstall on SetUpLauncherTest, the
+	// launcher shows before waiting for the apps to stabilize.
+	if err := tconn.Call(ctx, nil, "tast.promisify(chrome.autotestPrivate.waitForSystemWebAppsInstall)"); err != nil {
+		s.Fatal("Failed to wait for system web apps to be installed: ", err)
+	}
+
 	cleanup, err := launcher.SetUpLauncherTest(ctx, tconn, tabletMode, true /*stabilizeAppCount*/)
 	if err != nil {
 		s.Fatal("Failed to set up launcher test case: ", err)
 	}
 	defer cleanup(cleanupCtx)
-
-	//For tablet mode launcher, trigger an update for RecentApps to show.
-	if tabletMode {
-		if err := launcher.HideTabletModeLauncher(tconn)(ctx); err != nil {
-			s.Fatal("Failed to hide the launcher in tablet: ", err)
-		}
-		if err := launcher.OpenProductivityLauncher(ctx, tconn, tabletMode); err != nil {
-			s.Fatal("Failed to open launcher: ", err)
-		}
-	}
 
 	// Recent apps always show the first time with default suggestions.
 	recentApps := nodewith.ClassName("RecentAppsView")
@@ -214,6 +212,10 @@ func RecentApps(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to launch the chrome app")
 	}
 
+	if err := ash.WaitForAppWindow(ctx, tconn, chromeApp.ID); err != nil {
+		s.Fatal("Chrome app did not become visible: ", err)
+	}
+
 	if err := launcher.OpenProductivityLauncher(ctx, tconn, tabletMode); err != nil {
 		s.Fatal("Failed to open launcher: ", err)
 	}
@@ -232,20 +234,8 @@ func RecentApps(ctx context.Context, s *testing.State) {
 		s.Fatalf("App %s never opened: %v", appName, err)
 	}
 
-	// Wait for the window to finish initialization after they show in the shelf.
-	windowNode := nodewith.Role(role.Window).ClassName("RootView")
-	if arcBoot {
-		windowNode = windowNode.NameContaining("InstallAppWithAppList")
-	} else {
-		windowNode = windowNode.Name("Google Wallpaper Art")
-	}
-
-	if err := ui.WaitUntilExists(windowNode.First())(ctx); err != nil {
-		s.Fatal("Failed to wait for app window: ", err)
-	}
-
-	if err := apps.Close(ctx, tconn, appID); err != nil {
-		s.Fatalf("Failed to close %s(%s): %v", appName, appID, err)
+	if err := ash.WaitForAppWindow(ctx, tconn, appID); err != nil {
+		s.Fatalf("App %s did not become visible: %v", appName, err)
 	}
 
 	if err := launcher.OpenProductivityLauncher(ctx, tconn, tabletMode); err != nil {
