@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5f51b1cd_06ab556d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2022-09-26T09:21:57Z",
+      "side": 1,
+      "message": "Did you mean to upload a new patch?",
+      "parentUuid": "e4419d07_4c76e162",
+      "revId": "932f16e91316051965ec17ad8de5a7c41e921998",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "849da56d_7cd13e9f",
         "filename": "src/chromiumos/tast/local/bundles/cros/wmp/admin_templates_launch.go",
         "patchSetId": 1
@@ -67,6 +85,24 @@
       "side": 1,
       "message": "That is correct. In this case, if we want to keep the error in the log, is it fine to keep this here?",
       "parentUuid": "849da56d_7cd13e9f",
+      "revId": "932f16e91316051965ec17ad8de5a7c41e921998",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bba6f1d8_f36ad6ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/admin_templates_launch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2022-09-26T09:21:57Z",
+      "side": 1,
+      "message": "How about handling the both paths by defer?\n\n```\n  defer func() {\n    if err :\u003d ash.CloseAllWindows(ctx, tconn); err !\u003d nil {\n      s.Fatal(...) // if we want to fail the test for a cleanup failure\n      s.Log(...) // or if we are OK with passing the test and just log\n    }\n  }()\n```",
+      "parentUuid": "43443971_c2c4374f",
       "revId": "932f16e91316051965ec17ad8de5a7c41e921998",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
