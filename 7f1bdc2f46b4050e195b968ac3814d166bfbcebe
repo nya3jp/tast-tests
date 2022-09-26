@@ -50,6 +50,80 @@
       "message": "LGTM",
       "revId": "7f1bdc2f46b4050e195b968ac3814d166bfbcebe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f70aa37e_2b48504a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/sap_simple_connect.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-09-26T19:19:00Z",
+      "side": 1,
+      "message": "You can use `s.Fatal` inside a subtest that is kicked off with `s.Run` and it only fails the subtest.",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 124,
+        "endChar": 9
+      },
+      "revId": "7f1bdc2f46b4050e195b968ac3814d166bfbcebe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a8deb7f_61365b69",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/sap_simple_connect.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-09-26T19:19:00Z",
+      "side": 1,
+      "message": "ditto re: Fatal",
+      "revId": "7f1bdc2f46b4050e195b968ac3814d166bfbcebe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce9ac68e_4b588ac5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/sap_simple_connect.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-09-26T19:19:00Z",
+      "side": 1,
+      "message": "ditto re: Fatal",
+      "revId": "7f1bdc2f46b4050e195b968ac3814d166bfbcebe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f9433c9_e36e4b71",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1941,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-09-26T19:19:00Z",
+      "side": 1,
+      "message": "if `fac \u003d\u003d nil` is this set?",
+      "revId": "7f1bdc2f46b4050e195b968ac3814d166bfbcebe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
