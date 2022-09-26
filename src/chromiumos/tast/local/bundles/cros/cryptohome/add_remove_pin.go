@@ -27,7 +27,13 @@ func init() {
 		},
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"pinweaver", "reboot"},
-		Fixture:      "ussAuthSessionFixture",
+		Params: []testing.Param{{
+			Name:    "with_uss",
+			Fixture: "ussAuthSessionFixture",
+		}, {
+			Name: "with_vk",
+		},
+		},
 	})
 }
 
