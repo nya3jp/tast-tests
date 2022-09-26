@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b9458f1_5e57da19",
+        "filename": "src/chromiumos/tast/local/shill/property_holder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-09-26T14:08:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5efd57b6_dc523742",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 29
+      },
+      "revId": "c4cebb14617a0a4a96103372a79acb4c57f55860",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1e77104c_53875542",
@@ -49,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "14453d44_8adc375f",
+        "filename": "src/chromiumos/tast/local/shill/property_holder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-09-26T14:08:17Z",
+      "side": 1,
+      "message": "I didn\u0027t really consider it... but the original code just used !\u003d so I figured this was fine.",
+      "parentUuid": "1e77104c_53875542",
+      "range": {
+        "startLine": 89,
+        "startChar": 12,
+        "endLine": 89,
+        "endChar": 14
+      },
+      "revId": "c4cebb14617a0a4a96103372a79acb4c57f55860",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "392abbac_721e2f0f",
         "filename": "src/chromiumos/tast/local/shill/property_holder.go",
         "patchSetId": 1
@@ -60,6 +108,30 @@
       "writtenOn": "2022-09-26T01:32:10Z",
       "side": 1,
       "message": "nit: just return nil here to avoid this |found| variable?",
+      "range": {
+        "startLine": 90,
+        "startChar": 4,
+        "endLine": 90,
+        "endChar": 16
+      },
+      "revId": "c4cebb14617a0a4a96103372a79acb4c57f55860",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6185a239_30afa9de",
+        "filename": "src/chromiumos/tast/local/shill/property_holder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-09-26T14:08:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "392abbac_721e2f0f",
       "range": {
         "startLine": 90,
         "startChar": 4,
