@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "97ee8c8a_5d1d0dfe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/remote_cellular_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1541462
+      },
+      "writtenOn": "2022-09-26T17:30:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d5ea7ef6_e08e6215",
+      "revId": "7852a6f6ecb010ac84060e4e03b1c4a9a53f4568",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "61fda4df_7716c3e4",
@@ -48,6 +66,30 @@
       "writtenOn": "2022-09-23T19:10:13Z",
       "side": 1,
       "message": "nit: I think this can go all on one line.",
+      "range": {
+        "startLine": 284,
+        "startChar": 0,
+        "endLine": 287,
+        "endChar": 7
+      },
+      "revId": "7852a6f6ecb010ac84060e4e03b1c4a9a53f4568",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc3e488b_009cbff8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/remote_cellular_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1541462
+      },
+      "writtenOn": "2022-09-26T17:30:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "61fda4df_7716c3e4",
       "range": {
         "startLine": 284,
         "startChar": 0,
@@ -75,6 +117,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ccc699a3_c7b6a6ba",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/cellular/assert_sms.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1541462
+      },
+      "writtenOn": "2022-09-26T17:30:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "84707d0d_5eb65af8",
+      "revId": "7852a6f6ecb010ac84060e4e03b1c4a9a53f4568",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8700aad3_c0b43939",
@@ -98,6 +158,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "902c4d37_5cab46ca",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/cellular/assert_sms.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1541462
+      },
+      "writtenOn": "2022-09-26T17:30:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8700aad3_c0b43939",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 15
+      },
+      "revId": "7852a6f6ecb010ac84060e4e03b1c4a9a53f4568",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "45c53deb_991ab4f9",
@@ -111,6 +195,30 @@
       "writtenOn": "2022-09-23T19:10:13Z",
       "side": 1,
       "message": "checking the message succeeded, the problem here is rather that we got an unexpected value, right?",
+      "range": {
+        "startLine": 104,
+        "startChar": 22,
+        "endLine": 104,
+        "endChar": 27
+      },
+      "revId": "7852a6f6ecb010ac84060e4e03b1c4a9a53f4568",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "960e0b41_c4e4fa0b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/cellular/assert_sms.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1541462
+      },
+      "writtenOn": "2022-09-26T17:30:57Z",
+      "side": 1,
+      "message": "Exactly, it\u0027s just checking that message that we received was the same as the one we sent.",
+      "parentUuid": "45c53deb_991ab4f9",
       "range": {
         "startLine": 104,
         "startChar": 22,
