@@ -166,6 +166,8 @@ func CompanionLibrary(ctx context.Context, s *testing.State) {
 		s.Error("Failed to set wallpaper: ", err)
 	}
 
+	defer setWallpaper(ctx, tconn, "file:///usr/share/chromeos-assets/wallpaper/default_large.jpg")
+
 	for _, tc := range s.Param().([]companionLibTestEntry) {
 		s.Run(ctx, tc.name, func(ctx context.Context, s *testing.State) {
 			act, err := arc.NewActivity(a, companionLibDemoPkg, tc.actName)
