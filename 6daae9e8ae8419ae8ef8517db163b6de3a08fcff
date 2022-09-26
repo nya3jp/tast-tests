@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "026cd786_78e17f13",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-09-26T20:07:41Z",
+      "side": 1,
+      "message": "That works :)\n\nWe generally want to be as specific as possible while keeping length to one line so that when reading commit logs [1] we have minimal ambiguity :)\n\n[1] https://chromium.googlesource.com/chromiumos/platform/tast-tests/+log",
+      "parentUuid": "52003c6c_c10aae5a",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 28
+      },
+      "revId": "6daae9e8ae8419ae8ef8517db163b6de3a08fcff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f17792c5_556b33d5",
         "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/print_to_pdf.go",
         "patchSetId": 7
@@ -285,6 +309,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f19e6107_63d4876e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/print_to_pdf.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-09-26T20:07:41Z",
+      "side": 1,
+      "message": "I think you want `Fatalf()`, it formats args using `fmt.Sprintf()` :)\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast/src/chromiumos/tast/internal/testing/state.go;l\u003d399",
+      "parentUuid": "5ad40b25_4185bdc3",
+      "range": {
+        "startLine": 116,
+        "startChar": 28,
+        "endLine": 116,
+        "endChar": 39
+      },
+      "revId": "6daae9e8ae8419ae8ef8517db163b6de3a08fcff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bff96d28_9ac4e376",
         "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/print_to_pdf.go",
         "patchSetId": 7
@@ -320,6 +368,30 @@
       "side": 1,
       "message": "So actually this and the previous snippet I copied from the printer test, but I do always see a notification eventually pop up about being out of disk space and the test will fail without it. This is on the VM though so might not happen on a real device. Should I remove this or find another way?",
       "parentUuid": "bff96d28_9ac4e376",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 126,
+        "endChar": 2
+      },
+      "revId": "6daae9e8ae8419ae8ef8517db163b6de3a08fcff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd0cabc0_23b8ed22",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/print_to_pdf.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-09-26T20:07:41Z",
+      "side": 1,
+      "message": "I would remove it for now, we can always add it back in after seeing how things run in the lab. If this does become an issue, we\u0027ll probably want to add a switch to suppress all notifications while a test is in progress if that test would flake due to unexpected notification activity :)",
+      "parentUuid": "02db986c_acd87392",
       "range": {
         "startLine": 123,
         "startChar": 0,
