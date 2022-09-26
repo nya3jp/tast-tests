@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3b700d6_f2280f61",
+        "filename": "src/chromiumos/tast/common/fingerprint/config.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-09-26T14:10:11Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "142204dd_039ead83",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 92,
+        "endChar": 2
+      },
+      "revId": "27026b15933f8ac72a9bfdc4dc5e04f83fa9a355",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3734d044_cffc0a99",
@@ -126,6 +150,24 @@
       "side": 1,
       "message": "Good point, but this one property either means fp unsupported or fp supported, which means that further errors may or may not be relevant.\nFor example, \"\" as sensor-location probably means unsupported, thus further parsing is invalid.\n\nI added more fallthrough errors for the remaining checks. Let me know if you think I should change it.",
       "parentUuid": "76f432b7_017a792d",
+      "revId": "27026b15933f8ac72a9bfdc4dc5e04f83fa9a355",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "25b22636_5dd56680",
+        "filename": "src/chromiumos/tast/local/bundles/cros/biod/cros_config.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-09-26T14:10:11Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0e534fc0_e591e702",
       "revId": "27026b15933f8ac72a9bfdc4dc5e04f83fa9a355",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
