@@ -67,7 +67,7 @@ func CrosConfigMatchesDevice(ctx context.Context, s *testing.State) {
 	}
 
 	if !cfgFpSupported {
-		s.Log("Fingerprint is properly unsupported on device")
+		// Fingerprint appears to be properly unsupported on device.
 		return
 	}
 
