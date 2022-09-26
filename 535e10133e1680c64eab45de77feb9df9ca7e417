@@ -81,6 +81,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c581046_a758604f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/google_slides_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-09-26T14:37:05Z",
+      "side": 1,
+      "message": "Good catch -- removed.",
+      "parentUuid": "8615d174_b73b7466",
+      "range": {
+        "startLine": 121,
+        "startChar": 0,
+        "endLine": 121,
+        "endChar": 28
+      },
+      "revId": "535e10133e1680c64eab45de77feb9df9ca7e417",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "314071fd_f72a9d59",
@@ -94,6 +118,30 @@
       "writtenOn": "2022-09-26T14:13:09Z",
       "side": 1,
       "message": "nit: move closer to the first use\n\nsame for other variables",
+      "range": {
+        "startLine": 132,
+        "startChar": 0,
+        "endLine": 135,
+        "endChar": 0
+      },
+      "revId": "535e10133e1680c64eab45de77feb9df9ca7e417",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "483525f4_950d3f0e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/google_slides_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-09-26T14:37:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "314071fd_f72a9d59",
       "range": {
         "startLine": 132,
         "startChar": 0,
