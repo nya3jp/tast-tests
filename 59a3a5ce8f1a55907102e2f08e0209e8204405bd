@@ -22,6 +22,30 @@
       },
       "revId": "59a3a5ce8f1a55907102e2f08e0209e8204405bd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f11920d6_81a6a10d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/stork_profile.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-09-26T21:22:14Z",
+      "side": 1,
+      "message": "Ah good catch, done! Thank you!",
+      "parentUuid": "864c3610_96536ea3",
+      "range": {
+        "startLine": 25,
+        "startChar": 54,
+        "endLine": 25,
+        "endChar": 71
+      },
+      "revId": "59a3a5ce8f1a55907102e2f08e0209e8204405bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
