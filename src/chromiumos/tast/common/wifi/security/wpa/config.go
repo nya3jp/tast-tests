@@ -35,6 +35,12 @@ const (
 	ModeMixedWPA3 = ModePureWPA2 | ModePureWPA3
 )
 
+// Key management (AKM) suites
+const (
+	KeyMgmtWPAPSK       = "WPA-PSK"
+	KeyMgmtWPAPSKSHA256 = "WPA-PSK-SHA256"
+)
+
 // Cipher is the type for specifying WPA cipher algorithms.
 type Cipher string
 
@@ -61,6 +67,7 @@ type Config struct {
 
 	psk            string
 	mode           ModeEnum
+	keyMgmt        []string
 	ciphers        []Cipher // ciphers used for WPA.
 	ciphers2       []Cipher // ciphers used for WPA2.
 	ptkRekeyPeriod int
@@ -92,9 +99,11 @@ func (c *Config) HostapdConfig() (map[string]string, error) {
 	var keyMgmt []string
 	if c.ftMode&FTModeNone > 0 {
 		if c.mode&ModeMixed > 0 {
-			keyMgmt = append(keyMgmt, "WPA-PSK")
+			keyMgmt = append(keyMgmt, KeyMgmtWPAPSK)
 		}
 		if c.mode&ModePureWPA3 > 0 {
+			// TODO(b/249582789): tast-tests: const-ify key
+			// management suites in tast.wifi lib and tests
 			keyMgmt = append(keyMgmt, "SAE")
 		}
 	}
@@ -106,6 +115,13 @@ func (c *Config) HostapdConfig() (map[string]string, error) {
 			keyMgmt = append(keyMgmt, "FT-SAE")
 		}
 	}
+
+	// user can specify the key management suites for some corner
+	// cases. Ex. b/243601430#comment17
+	if len(c.keyMgmt) > 0 {
+		keyMgmt = c.keyMgmt
+	}
+
 	ret["wpa_key_mgmt"] = strings.Join(keyMgmt, " ")
 
 	if len(c.psk) == RawPSKLen {
