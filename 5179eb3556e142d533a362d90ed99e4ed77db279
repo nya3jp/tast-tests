@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "283a6aaf_c2a82c4b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/check_shutdown_crash.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1228419
+      },
+      "writtenOn": "2022-09-26T19:03:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e0747413_71509a58",
+      "range": {
+        "startLine": 95,
+        "startChar": 19,
+        "endLine": 95,
+        "endChar": 25
+      },
+      "revId": "5179eb3556e142d533a362d90ed99e4ed77db279",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ff5ac282_137d39cb",
@@ -58,6 +82,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a586ec41_1732b00f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/check_shutdown_crash.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1228419
+      },
+      "writtenOn": "2022-09-26T19:03:20Z",
+      "side": 1,
+      "message": "Thanks for finding it.\nDone.",
+      "parentUuid": "ff5ac282_137d39cb",
+      "revId": "5179eb3556e142d533a362d90ed99e4ed77db279",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "72470597_bde99ac7",
@@ -71,6 +113,24 @@
       "writtenOn": "2022-09-26T15:30:55Z",
       "side": 1,
       "message": "If this is an error, I\u0027m not sure we want to say \"WARNING:\" here. The test may fatal with this message and it can be confusing for readers to know if this is an actual issue or not.",
+      "revId": "5179eb3556e142d533a362d90ed99e4ed77db279",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f058f5e5_2d6a1715",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/check_shutdown_crash.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1228419
+      },
+      "writtenOn": "2022-09-26T19:03:20Z",
+      "side": 1,
+      "message": "Done\nWe decided this is an error based on previous comments.",
+      "parentUuid": "72470597_bde99ac7",
       "revId": "5179eb3556e142d533a362d90ed99e4ed77db279",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -105,6 +165,48 @@
       "writtenOn": "2022-09-26T15:30:55Z",
       "side": 1,
       "message": "nit: have",
+      "range": {
+        "startLine": 115,
+        "startChar": 52,
+        "endLine": 115,
+        "endChar": 55
+      },
+      "revId": "5179eb3556e142d533a362d90ed99e4ed77db279",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "53c403e8_ae94ad70",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/check_shutdown_crash.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1228419
+      },
+      "writtenOn": "2022-09-26T19:03:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3c4cf2f3_dbca07fd",
+      "revId": "5179eb3556e142d533a362d90ed99e4ed77db279",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e1842c9_dc2fa457",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/check_shutdown_crash.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1228419
+      },
+      "writtenOn": "2022-09-26T19:03:20Z",
+      "side": 1,
+      "message": "Done. \nI changed it to another phase used in the tests: `Chrome probably crashed`",
+      "parentUuid": "e22a5989_72ee8185",
       "range": {
         "startLine": 115,
         "startChar": 52,
