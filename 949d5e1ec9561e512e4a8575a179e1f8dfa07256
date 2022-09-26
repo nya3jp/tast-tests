@@ -16,6 +16,23 @@
       "message": "Thank you Eric for reviewing. PTAL.",
       "revId": "949d5e1ec9561e512e4a8575a179e1f8dfa07256",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0581b8b_d09a25cc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1228419
+      },
+      "writtenOn": "2022-09-26T19:35:07Z",
+      "side": 1,
+      "message": "Thank you.",
+      "revId": "949d5e1ec9561e512e4a8575a179e1f8dfa07256",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
