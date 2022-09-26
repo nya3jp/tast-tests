@@ -22,6 +22,30 @@
       },
       "revId": "723bfbf2bd76eb7fa1c14906031d9af9e51e4a4e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d095607_b17dc86a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_typing_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2022-09-26T03:37:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "337f7362_ab23af16",
+      "range": {
+        "startLine": 48,
+        "startChar": 28,
+        "endLine": 48,
+        "endChar": 46
+      },
+      "revId": "723bfbf2bd76eb7fa1c14906031d9af9e51e4a4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
