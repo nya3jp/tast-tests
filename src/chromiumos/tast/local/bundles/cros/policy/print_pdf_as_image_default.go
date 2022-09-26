@@ -36,7 +36,6 @@ func init() {
 		Desc:         "Checking if the 'Print as image' option is set by default depending on the value of this policy",
 		Contacts: []string{
 			"cmfcmf@google.com", // Test author
-			"chromeos-commercial-remote-management@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline", "informational"},

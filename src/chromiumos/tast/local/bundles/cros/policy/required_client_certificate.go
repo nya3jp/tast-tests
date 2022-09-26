@@ -33,7 +33,6 @@ func init() {
 			"alexanderhartl@google.com", // Test author
 			"pmarko@google.com",         // Feature owner
 			"miersh@google.com",         // Feature owner
-			"chromeos-commercial-remote-management@google.com",
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},

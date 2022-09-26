@@ -28,7 +28,6 @@ func init() {
 		Desc:         "Behavior of AllowedLanguages policy, checking the correspoding checkbox states (count) after setting the policy",
 		Contacts: []string{
 			"mohamedaomar@google.com", // Test author
-			"chromeos-commercial-remote-management@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline"},

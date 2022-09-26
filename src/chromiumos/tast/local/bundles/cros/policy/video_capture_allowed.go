@@ -34,7 +34,6 @@ func init() {
 		Desc:         "Behavior of VideoCaptureAllowed policy, checking if a website is allowed to capture video",
 		Contacts: []string{
 			"alexanderhartl@google.com", // Test author
-			"chromeos-commercial-remote-management@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline", "informational"},

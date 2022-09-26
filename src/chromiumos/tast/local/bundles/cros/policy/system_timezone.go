@@ -34,7 +34,6 @@ func init() {
 		Contacts: []string{
 			"vsavu@google.com",          // Test author
 			"alexanderhartl@google.com", // Original author of the remote test.
-			"chromeos-commercial-remote-management@google.com",
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},

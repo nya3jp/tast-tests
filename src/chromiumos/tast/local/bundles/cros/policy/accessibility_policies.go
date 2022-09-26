@@ -32,7 +32,6 @@ func init() {
 		Desc:         "Checks set values for the Accessability polices in the chrome.accessibilityFeatures map",
 		Contacts: []string{
 			"kamilszarek@google.com", // Test author.
-			"chromeos-commercial-remote-management@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
 		// autoclick case needs to be disabled.

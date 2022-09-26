@@ -31,7 +31,6 @@ func init() {
 		Desc:         "Tests the behavior of the SerialAskForUrls policy by checking that it correctly configures access to the serial port selection prompt",
 		Contacts: []string{
 			"cmfcmf@google.com", // Test author
-			"chromeos-commercial-remote-management@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
 		Attr: []string{
