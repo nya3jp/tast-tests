@@ -61,6 +61,7 @@ type Config struct {
 
 	psk            string
 	mode           ModeEnum
+	keyMgmt        string
 	ciphers        []Cipher // ciphers used for WPA.
 	ciphers2       []Cipher // ciphers used for WPA2.
 	ptkRekeyPeriod int
@@ -106,6 +107,13 @@ func (c *Config) HostapdConfig() (map[string]string, error) {
 			keyMgmt = append(keyMgmt, "FT-SAE")
 		}
 	}
+
+	// user can specify the key management suites for some corner
+	// cases. Ex. b/243601430#comment17
+	if len(c.keyMgmt) > 0 {
+		keyMgmt = []string{c.keyMgmt}
+	}
+
 	ret["wpa_key_mgmt"] = strings.Join(keyMgmt, " ")
 
 	if len(c.psk) == RawPSKLen {
