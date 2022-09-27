@@ -16,6 +16,23 @@
       "message": "For reference, this solution to the tast test failure was also discussed:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform2/+/3917635",
       "revId": "894fd85725aa1d3eef87e3d389e99c1347b41bf2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72dac6f1_add28e40",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-09-27T13:55:04Z",
+      "side": 1,
+      "message": "tast side lgtm, but has this been looked at by any security folk? adding test owners",
+      "revId": "894fd85725aa1d3eef87e3d389e99c1347b41bf2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
