@@ -19,13 +19,14 @@ import (
 )
 
 const (
-	jobName                 = "patchpanel"
-	dbusName                = "org.chromium.PatchPanel"
-	dbusPath                = "/org/chromium/PatchPanel"
-	connectNamespaceMethod  = "org.chromium.PatchPanel.ConnectNamespace"
-	getDevicesMethod        = "org.chromium.PatchPanel.GetDevices"
-	terminaVMStartupMethod  = "org.chromium.PatchPanel.TerminaVmStartup"
-	terminaVMShutdownMethod = "org.chromium.PatchPanel.TerminaVmShutdown"
+	jobName                  = "patchpanel"
+	dbusName                 = "org.chromium.PatchPanel"
+	dbusPath                 = "/org/chromium/PatchPanel"
+	connectNamespaceMethod   = "org.chromium.PatchPanel.ConnectNamespace"
+	getDevicesMethod         = "org.chromium.PatchPanel.GetDevices"
+	getTrafficCountersMethod = "org.chromium.PatchPanel.GetTrafficCounters"
+	terminaVMStartupMethod   = "org.chromium.PatchPanel.TerminaVmStartup"
+	terminaVMShutdownMethod  = "org.chromium.PatchPanel.TerminaVmShutdown"
 )
 
 // Client is a wrapper around patchpanel DBus API.
@@ -152,6 +153,28 @@ func (c *Client) GetDevices(ctx context.Context) (*pp.GetDevicesResponse, error)
 	response := &pp.GetDevicesResponse{}
 	if err = proto.Unmarshal(result, response); err != nil {
 		return nil, errors.Wrapf(err, "failed unmarshaling %s response", getDevicesMethod)
+	}
+	return response, nil
+}
+
+// GetTrafficCounters retrieves the current traffic counters for the specified devices.
+func (c *Client) GetTrafficCounters(ctx context.Context, devices []string) (*pp.TrafficCountersResponse, error) {
+	request := &pp.TrafficCountersRequest{
+		Devices: devices,
+	}
+	buf, err := proto.Marshal(request)
+	if err != nil {
+		return nil, errors.Wrapf(err, "failed marshaling %s request", getTrafficCountersMethod)
+	}
+
+	var result []uint8
+	if err = c.obj.CallWithContext(ctx, getTrafficCountersMethod, 0, buf).Store(&result); err != nil {
+		return nil, errors.Wrapf(err, "failed reading %s response", getTrafficCountersMethod)
+	}
+
+	response := &pp.TrafficCountersResponse{}
+	if err = proto.Unmarshal(result, response); err != nil {
+		return nil, errors.Wrapf(err, "failed unmarshaling %s response", getTrafficCountersMethod)
 	}
 	return response, nil
 }
