@@ -214,4 +214,18 @@ func init() {
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
 	})
+
+	// lacrosOsFeedback is is similar to lacros but should be used
+	// by tests that will launch lacros with OsFeedback enabled.
+	testing.AddFixture(&testing.Fixture{
+		Name:     "lacrosOsFeedback",
+		Desc:     "Lacros Chrome from a pre-built image with OsFeedback enabled",
+		Contacts: []string{"wangdanny@google.com", "cros-feedback-app@google.com"},
+		Impl: chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			return NewConfig(ChromeOptions(chrome.ExtraArgs("--enable-features=OsFeedback"))).Opts()
+		}),
+		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
+		ResetTimeout:    chrome.ResetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+	})
 }
