@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22761106_c3d772d1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio_loopback_correctness.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2022-09-27T07:28:39Z",
+      "side": 1,
+      "message": "For chronicler, is it a device issue or a test issue?",
+      "range": {
+        "startLine": 64,
+        "startChar": 4,
+        "endLine": 65,
+        "endChar": 17
+      },
+      "revId": "59959a5e2467c9ae9a178a9ebb25ecf8e8f8858b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
