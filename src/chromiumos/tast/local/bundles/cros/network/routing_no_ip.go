@@ -20,7 +20,7 @@ func init() {
 		Func:         RoutingNoIP,
 		Desc:         "Verify the shill and routing behavior that there is a new network but no IP is provided on it",
 		Contacts:     []string{"jiejiang@google.com", "cros-networking@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		LacrosStatus: testing.LacrosVariantUnneeded,
 	})
 }
