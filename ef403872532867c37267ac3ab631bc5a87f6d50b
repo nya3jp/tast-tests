@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a87d3248_481af8fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/dep/asus.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1543127
+      },
+      "writtenOn": "2022-09-27T12:22:46Z",
+      "side": 0,
+      "message": "According to [this] doc this should probably be \"apel-e\".\n\n[this]: https://docs.google.com/spreadsheets/d/1U_FuCbZFxqInaMyQD9biPGpkOZfDqiGgKy-4De2vV10/edit#gid\u003d0",
+      "revId": "ef403872532867c37267ac3ab631bc5a87f6d50b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
