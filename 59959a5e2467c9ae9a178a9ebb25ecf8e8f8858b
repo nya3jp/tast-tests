@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5c32c1b_ebb3db89",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-09-27T18:48:20Z",
+      "side": 1,
+      "message": "LGTM but please wait domain expert to agree on the list of device to skip.",
+      "revId": "59959a5e2467c9ae9a178a9ebb25ecf8e8f8858b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "22761106_c3d772d1",
