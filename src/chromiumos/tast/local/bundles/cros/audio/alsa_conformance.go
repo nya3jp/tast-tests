@@ -66,7 +66,7 @@ func init() {
 func ALSAConformance(ctx context.Context, s *testing.State) {
 	// TODO(yuhsuan): Tighten the ratio if the current version is stable. (b/136614687)
 	const (
-		rateCriteria    = 0.1
+		rateCriteria    = 0.15
 		rateErrCriteria = 100.0
 	)
 
