@@ -12,8 +12,14 @@ import (
 // https://plx.corp.google.com/scripts2/script_61._62eca9_0000_2e5b_930b_30fd38187cc4
 //
 // Also manually added next models:
+//   - agah
+//   - joxer
+//   - joxton
 //   - vell
+//   - vorticon
+//   - vortininja
 var hpModelList = []string{
+	"agah",
 	"alan",
 	"anahera",
 	"barla",
@@ -46,6 +52,8 @@ var hpModelList = []string{
 	"habokay",
 	"haboki",
 	"jinlon",
+	"joxer",
+	"joxton",
 	"kappa",
 	"kench",
 	"kingoftown",
@@ -68,6 +76,8 @@ var hpModelList = []string{
 	"sylas",
 	"syndra",
 	"vell",
+	"vorticon",
+	"vortininja",
 }
 
 // HPModels returns hardwareDeps condition with list of all HP models.
