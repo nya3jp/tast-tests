@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "95d16caf_34fb0521",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-09-27T05:44:00Z",
+      "side": 1,
+      "message": "\u003e \"swtich\" is a possible misspelling of \"switch\".\n\nPlease fix.",
+      "parentUuid": "2d352cf9_c610faf9",
+      "range": {
+        "startLine": 10,
+        "startChar": 48,
+        "endLine": 10,
+        "endChar": 54
+      },
+      "revId": "ffaf6c2a635bffc0b6349fc1ba072fc937b1a15b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
