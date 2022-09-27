@@ -16,6 +16,24 @@
       "message": "Is it possible to only increase the criteria on some specific boards? Since most of boards are okay with this criteria.",
       "revId": "78d829f3c4780d9cb3baeca65fd19d8b6d1750af",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "849d5e0c_abf58be6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2022-09-27T09:20:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d0f21a50_08c470ef",
+      "revId": "78d829f3c4780d9cb3baeca65fd19d8b6d1750af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
