@@ -28,7 +28,6 @@ var asusModelList = []string{
 	"corori360",
 	"damu",
 	"delbin",
-	"delbin",
 	"delbing",
 	"drobit",
 	"duffy",
