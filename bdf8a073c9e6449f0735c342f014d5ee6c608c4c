@@ -16,6 +16,104 @@
       "message": "Hi, could test owners take the first look? Thanks!",
       "revId": "bdf8a073c9e6449f0735c342f014d5ee6c608c4c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "59aea91b_64832a9f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-09-27T06:23:19Z",
+      "side": 1,
+      "message": "Resolved",
+      "parentUuid": "4fdd4e75_6692d111",
+      "revId": "bdf8a073c9e6449f0735c342f014d5ee6c608c4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3295f6c_ec2d1bbc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/intel/bt_connection_stability_with_wifi.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-09-27T06:23:19Z",
+      "side": 1,
+      "message": "Can you add a TODO and bug for writing a lacros version of this test (and assign the bug to someone)?",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 44
+      },
+      "revId": "bdf8a073c9e6449f0735c342f014d5ee6c608c4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a13fb45e_e357f456",
+        "filename": "src/chromiumos/tast/local/bundles/cros/intel/bt_connection_stability_with_wifi.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-09-27T06:23:19Z",
+      "side": 1,
+      "message": "maybe put this next to where it is used",
+      "revId": "bdf8a073c9e6449f0735c342f014d5ee6c608c4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55107def_859e8124",
+        "filename": "src/chromiumos/tast/local/bundles/cros/intel/bt_connection_stability_with_wifi.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-09-27T06:23:19Z",
+      "side": 1,
+      "message": "IMO we shouldn\u0027t hit non-google servers in a test, particularly not for something this size. How often will this test run?",
+      "revId": "bdf8a073c9e6449f0735c342f014d5ee6c608c4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "693592c9_1190ef7c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/intel/bt_connection_stability_with_wifi.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-09-27T06:23:19Z",
+      "side": 1,
+      "message": "can be const",
+      "range": {
+        "startLine": 241,
+        "startChar": 0,
+        "endLine": 241,
+        "endChar": 1
+      },
+      "revId": "bdf8a073c9e6449f0735c342f014d5ee6c608c4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
