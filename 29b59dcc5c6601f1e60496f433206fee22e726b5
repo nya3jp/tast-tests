@@ -118,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "62234c53_68d4f311",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/hid_wake.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-09-27T22:31:48Z",
+      "side": 1,
+      "message": "resolving before submitting to cq",
+      "parentUuid": "7529e67e_cf0e31aa",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 129,
+        "endChar": 0
+      },
+      "revId": "29b59dcc5c6601f1e60496f433206fee22e726b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fef2b79d_317f36f3",

@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb5a3dd4_fd10ef98",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/hid_wake.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-09-27T22:31:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6321dff3_38b370b4",
+      "range": {
+        "startLine": 68,
+        "startChar": 1,
+        "endLine": 68,
+        "endChar": 31
+      },
+      "revId": "132ad846b711181465327b9a1e78dc407c5d2859",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b3ba8c0a_afea80ee",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c0839fa_bec5c473",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/hid_wake.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-09-27T22:31:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b3ba8c0a_afea80ee",
+      "range": {
+        "startLine": 86,
+        "startChar": 2,
+        "endLine": 89,
+        "endChar": 12
+      },
+      "revId": "132ad846b711181465327b9a1e78dc407c5d2859",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fe1d4a31_d0b72ac5",
@@ -77,6 +125,30 @@
       "writtenOn": "2022-09-27T19:09:42Z",
       "side": 1,
       "message": "nit: I think this can be collapsed to just `return err`, since the original error messages are sufficiently descriptive regarding what failed.",
+      "range": {
+        "startLine": 184,
+        "startChar": 25,
+        "endLine": 188,
+        "endChar": 11
+      },
+      "revId": "132ad846b711181465327b9a1e78dc407c5d2859",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6990efa3_113d7d97",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/hid_wake.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-09-27T22:31:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fe1d4a31_d0b72ac5",
       "range": {
         "startLine": 184,
         "startChar": 25,
