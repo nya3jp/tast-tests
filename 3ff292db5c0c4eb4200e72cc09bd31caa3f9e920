@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76b250f3_814615fa",
+        "filename": "src/chromiumos/tast/local/network/virtualnet/udpserver/udpserver.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-09-27T23:12:52Z",
+      "side": 1,
+      "message": "there seems to be a potential issue here: if the test reaches timeout and doesn\u0027t close the server properly, the server will hang forever despite being timed out.\n\nYou may take a look at https://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform/tast-tests/src/chromiumos/tast/local/crostini/lxd/server.go;l\u003d305 regarding how to close the server when reaching the timeout.",
+      "range": {
+        "startLine": 71,
+        "startChar": 17,
+        "endLine": 71,
+        "endChar": 22
+      },
+      "revId": "3ff292db5c0c4eb4200e72cc09bd31caa3f9e920",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3848cee9_370abd5f",
+        "filename": "src/chromiumos/tast/local/network/virtualnet/udpserver/udpserver.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-09-27T23:12:52Z",
+      "side": 1,
+      "message": "why do you need this method if it does nothing? if the server implements some interface that has this method, I am not seeing it in this file.",
+      "range": {
+        "startLine": 134,
+        "startChar": 17,
+        "endLine": 134,
+        "endChar": 26
+      },
+      "revId": "3ff292db5c0c4eb4200e72cc09bd31caa3f9e920",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
