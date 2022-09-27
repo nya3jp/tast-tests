@@ -110,6 +110,10 @@ func enumerateDP(ctx context.Context, svo *servo.Servo, d *dut.DUT, s *testing.S
 		return errors.Wrap(err, "failed CC off and wait")
 	}
 
+	if err := d.Disconnect(ctx); err != nil {
+		return errors.Wrap(err, "failed to close the current DUT ssh connection")
+	}
+
 	if err := svo.RunUSBCDPConfigCommand(ctx, "disable"); err != nil {
 		return errors.Wrap(err, "failed to disable DP support")
 	}
