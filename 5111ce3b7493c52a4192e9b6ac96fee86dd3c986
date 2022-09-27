@@ -142,6 +142,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cfbe88e4_0672dd05",
+        "filename": "android/ArcRandomElementsApp/res/layout/layout.xml",
+        "patchSetId": 5
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1510928
+      },
+      "writtenOn": "2022-09-27T03:55:15Z",
+      "side": 1,
+      "message": "Found a layout may suitable for our cases: https://developer.android.com/develop/ui/views/layout/constraint-layout",
+      "parentUuid": "61c8bfea_4fe569b8",
+      "revId": "5111ce3b7493c52a4192e9b6ac96fee86dd3c986",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "105cb390_fe5a24ea",
         "filename": "android/ArcRandomElementsApp/src/org/chromium/arc/testapp/randomelements/RandomUIElementsActivity.java",
         "patchSetId": 5
