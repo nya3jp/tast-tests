@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8d559d8_5b84398b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2022-09-27T22:40:02Z",
+      "side": 1,
+      "message": "Please add a Cq-Depend from this change to the other, so that the test can\u0027t get submitted without the code under test being submitted.",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 52
+      },
+      "revId": "bf151eeef0c0044a488185aea308c75f3298ca2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d1c35e5_8675a00f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2022-09-27T22:40:02Z",
+      "side": 1,
+      "message": "Thanks for writing this test, Anastasiia!",
+      "revId": "bf151eeef0c0044a488185aea308c75f3298ca2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22a16011_8959c078",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/recovery_failure.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2022-09-27T22:40:02Z",
+      "side": 1,
+      "message": "nit: recovery failures, not service failures",
+      "range": {
+        "startLine": 52,
+        "startChar": 65,
+        "endLine": 53,
+        "endChar": 12
+      },
+      "revId": "bf151eeef0c0044a488185aea308c75f3298ca2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9e63510_88915c1a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/recovery_failure.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2022-09-27T22:40:02Z",
+      "side": 1,
+      "message": "It\u0027s not obvious to me why this is needed for this test; can you please clarify in a comment?",
+      "range": {
+        "startLine": 135,
+        "startChar": 0,
+        "endLine": 135,
+        "endChar": 44
+      },
+      "revId": "bf151eeef0c0044a488185aea308c75f3298ca2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
