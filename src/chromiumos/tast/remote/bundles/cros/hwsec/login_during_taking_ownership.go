@@ -20,18 +20,26 @@ func init() {
 		Contacts:     []string{"cylai@chromium.org", "cros-hwsec@google.com"},
 		SoftwareDeps: []string{"reboot", "tpm"},
 		Attr:         []string{"group:hwsec_destructive_func"},
+		Params: []testing.Param{{
+			Name: "auth_session_api",
+			Val:  &hwsec.CryptohomeMountAPIParam{MountAPI: hwsec.AuthSessionMountAPI},
+		}, {
+			Name: "auth_factor_api",
+			Val:  &hwsec.CryptohomeMountAPIParam{MountAPI: hwsec.AuthFactorMountAPI},
+		}},
 	})
 }
 
 func LoginDuringTakingOwnership(ctx context.Context, s *testing.State) {
-	r := hwsecremote.NewCmdRunner(s.DUT())
+	cmdRunner := hwsecremote.NewCmdRunner(s.DUT())
 
-	helper, err := hwsecremote.NewHelper(r, s.DUT())
+	helper, err := hwsecremote.NewHelper(cmdRunner, s.DUT())
 	if err != nil {
 		s.Fatal("Helper creation error: ", err)
 	}
 
 	utility := helper.CryptohomeClient()
+	utility.SetMountAPIParam(s.Param().(*hwsec.CryptohomeMountAPIParam))
 
 	s.Log("Start resetting TPM if needed")
 	if err := helper.EnsureTPMAndSystemStateAreReset(ctx); err != nil {
