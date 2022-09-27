@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a92087a_337eabf0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-09-27T06:58:04Z",
+      "side": 1,
+      "message": "Hi Victor, please review this new Tast test CL for owner\u0027s approval.",
+      "revId": "9f8c5f2717ca569347c465714b4affe1b9e1cd47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

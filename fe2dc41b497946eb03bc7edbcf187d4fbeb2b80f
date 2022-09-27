@@ -87,6 +87,30 @@
       },
       "revId": "fe2dc41b497946eb03bc7edbcf187d4fbeb2b80f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7feffef5_7a260a05",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/unicorn_translation.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-09-27T06:58:04Z",
+      "side": 1,
+      "message": "Done. Thanks to Xiqi\u0027s help, I figured out how to add a fixture for managed users.",
+      "parentUuid": "6783f019_613e8888",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 31
+      },
+      "revId": "fe2dc41b497946eb03bc7edbcf187d4fbeb2b80f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
