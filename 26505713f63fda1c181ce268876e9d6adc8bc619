@@ -16,6 +16,23 @@
       "message": "Hi Dean, PTAL",
       "revId": "26505713f63fda1c181ce268876e9d6adc8bc619",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "280e7a48_bbfe0b65",
+        "filename": "src/chromiumos/tast/local/arc/file.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-09-27T07:18:03Z",
+      "side": 1,
+      "message": "Please update this, too.",
+      "revId": "26505713f63fda1c181ce268876e9d6adc8bc619",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
