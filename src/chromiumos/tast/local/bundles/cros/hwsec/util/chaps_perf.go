@@ -25,6 +25,8 @@ const (
 	SignHWTimes = 16
 	// SignSWTimes is the number of times we'll sign with sw-backed key during performance test.
 	SignSWTimes = 16
+	// GenerateHWTimes is the number of times we'll run the hw-backed key generation during performance test.
+	GenerateHWTimes = 16
 )
 
 // CleanupUserMount unmounts and removes the vault of util.FirstUsername.
@@ -36,6 +38,28 @@ func CleanupUserMount(ctx context.Context, cryptohome *hwsec.CryptohomeClient) e
 		return errors.Wrap(err, "failed to remove vault")
 	}
 	return nil
+}
+
+// GenerateKeysAndMeasure generate Elliptic curve based keys and measure the time taken.
+func GenerateKeysAndMeasure(ctx context.Context, pkcs11Util *pkcs11.Chaps, keyType string, slot int, username, prefix string, times int) (generatedKeys []*pkcs11.KeyInfo, generateElapsed time.Duration, retErr error) {
+	// Run generation once for warm up.
+	if _, err := pkcs11Util.CreateGeneratedKeyBySlot(ctx, keyType, slot, username, fmt.Sprintf("%sABCD", prefix)); err != nil {
+		return nil, 0, errors.Wrap(err, "warmup for generate failed")
+	}
+
+	// Time the generate operations.
+	// We run generate many times because there's a large variance in run time, and we want to reduce that variance.
+	generateStart := time.Now()
+	for i := 0; i < times; i++ {
+		objID := fmt.Sprintf("%s%04X", prefix, i)
+		key, err := pkcs11Util.CreateGeneratedKeyBySlot(ctx, keyType, slot, username, objID)
+		if err != nil {
+			return nil, generateElapsed, errors.Wrap(err, "failed to generate keys")
+		}
+		generatedKeys = append(generatedKeys, key)
+	}
+	generateElapsed = time.Since(generateStart)
+	return generatedKeys, generateElapsed, nil
 }
 
 // ImportKeysAndMeasure import the key specified by privKeyPath into token held by slot slot in chaps and import it times times. prefix should be a unique hex prefix between calls. It'll return the KeyInfo to the imported keys, the total duration and if an error occurred.
