@@ -1,0 +1,51 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4fcb7b21_7af24d85",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_typing_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-09-27T22:41:04Z",
+      "side": 1,
+      "message": "\u003e \"concatentation\" is a possible misspelling of \"concatenation\".\n\nPlease fix.",
+      "parentUuid": "908f3281_7c422f8e",
+      "range": {
+        "startLine": 40,
+        "startChar": 31,
+        "endLine": 40,
+        "endChar": 45
+      },
+      "revId": "f5c6e61be1991c84b2a4020eb748fe96743ed8b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80173d95_f9c2cc9e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_typing_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-09-27T22:41:04Z",
+      "side": 1,
+      "message": "you don\u0027t need this attr (as well as those in en or pinyin) for perf testing as this test will not run in the inputs uprev (ChromeOS) or G3.",
+      "range": {
+        "startLine": 98,
+        "startChar": 4,
+        "endLine": 98,
+        "endChar": 54
+      },
+      "revId": "f5c6e61be1991c84b2a4020eb748fe96743ed8b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
