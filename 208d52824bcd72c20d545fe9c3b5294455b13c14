@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "12e8727c_af0da325",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-09-27T08:12:23Z",
+      "side": 1,
+      "message": "This test seems keeping failing on some model:\nhttps://tastboard.corp.google.com/test/hammerd.TriggeredOnBoot\n\nWon\u0027t this block CQ? Should we fix the issue before the promotion? (Usually the test should pass consistently for at least 20 builds before promoting it to CQ)\n\nhttps://chrome-internal.googlesource.com/chromeos/chromeos-admin/+/HEAD/doc/tast_add_test.md#step-4_remove-attribute-to-make-it-run-on-infra",
+      "revId": "208d52824bcd72c20d545fe9c3b5294455b13c14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
