@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "20e079e9_5e2755cc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1551729
+      },
+      "writtenOn": "2022-09-27T01:23:34Z",
+      "side": 1,
+      "message": "LGTM, I\u0027d like to wait for someone else +2 as I am in the shadowing group",
+      "revId": "bb4fd657ce4603394842954c6e8d1fd0122164b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
