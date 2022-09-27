@@ -44,7 +44,7 @@ func init() {
 				Name:              "check_key_press",
 				Val:               checkKeyPresses,
 				ExtraHardwareDeps: hwdep.D(hwdep.Keyboard()),
-				ExtraAttr:         []string{"firmware_ec"},
+				ExtraAttr:         []string{"firmware_unstable"},
 			},
 			{
 				Name: "open_lid_to_boot",
