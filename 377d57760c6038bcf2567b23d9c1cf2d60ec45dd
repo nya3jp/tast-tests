@@ -16,6 +16,24 @@
       "message": "Hidehiko is OOO this week, please find another reviewer (I can\u0027t +2).\n\nDo you see any problem with your change in combination with https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3915031 ?",
       "revId": "377d57760c6038bcf2567b23d9c1cf2d60ec45dd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23b3b17c_91139102",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-09-27T20:05:21Z",
+      "side": 1,
+      "message": "I don\u0027t think that change should not cause any issues when combined with this one, but I will test locally before landing this cl.",
+      "parentUuid": "98c5e705_97c5e46c",
+      "revId": "377d57760c6038bcf2567b23d9c1cf2d60ec45dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
