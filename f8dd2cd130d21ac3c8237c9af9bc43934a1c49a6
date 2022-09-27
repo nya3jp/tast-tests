@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7045810_1987d09b",
+        "filename": "src/chromiumos/tast/local/ambient/ambient.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-09-27T23:49:33Z",
+      "side": 1,
+      "message": "`ui.WaitUntilExists` might be more stable, I think `ui.Exists` is evaluated immediately",
+      "range": {
+        "startLine": 260,
+        "startChar": 6,
+        "endLine": 260,
+        "endChar": 12
+      },
+      "revId": "f8dd2cd130d21ac3c8237c9af9bc43934a1c49a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
