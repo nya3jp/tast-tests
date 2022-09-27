@@ -33,6 +33,23 @@
       "message": "hwsec-wise LGTM.",
       "revId": "839aff174af2f0955d53aff8a1e09c85338c215a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "db668c3c_a852d602",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-09-27T20:06:41Z",
+      "side": 1,
+      "message": "LGTM, please run tast unit tests: fast_build.sh -T\n\nThen, add this line to commit log\n\nTEST\u003dtast unit tests passed.",
+      "revId": "839aff174af2f0955d53aff8a1e09c85338c215a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
