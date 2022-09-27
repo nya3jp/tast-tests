@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e965aa44_3b813a23",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-09-27T16:43:59Z",
+      "side": 1,
+      "message": "Thank you for all of the discussions on comments throughout this review Alfred! This LGTM with a couple final nits :)",
+      "revId": "78269addc82e330c74e6a2ad377ae9791378d548",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5101f966_459e5a71",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/proxy_setting_service.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-09-27T16:43:59Z",
+      "side": 1,
+      "message": "Nit: Remove extra line.",
+      "revId": "78269addc82e330c74e6a2ad377ae9791378d548",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e965f7ce_2def53d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/proxysettings/proxy_settings.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-09-27T16:43:59Z",
+      "side": 1,
+      "message": "Nit: within",
+      "range": {
+        "startLine": 105,
+        "startChar": 21,
+        "endLine": 105,
+        "endChar": 27
+      },
+      "revId": "78269addc82e330c74e6a2ad377ae9791378d548",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

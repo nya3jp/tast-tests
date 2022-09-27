@@ -519,6 +519,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bfc5c02c_5e55c534",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/proxysettings/proxy_settings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-09-27T16:43:59Z",
+      "side": 1,
+      "message": "\u003e Sorry for not being more clear.\n\nNo problem at all, I think your comments have helped me wrap my head around these changes!\n\nAh, I was thinking that we might not need the Settings to remain open but looking over this we definitely do, thank you for clarifying this! I think the current approach LGTM-- renaming to `Launch*` SGTM too since we aren\u0027t actually collecting any information here and are only opening the Settings.",
+      "parentUuid": "d9e87ef3_b4f76cf8",
+      "range": {
+        "startLine": 121,
+        "startChar": 0,
+        "endLine": 124,
+        "endChar": 2
+      },
+      "revId": "7cb540e29be469a6115b00c3cb9db3405d5520b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "42be2152_676d0f95",

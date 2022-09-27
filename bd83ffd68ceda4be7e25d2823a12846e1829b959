@@ -110,6 +110,30 @@
       },
       "revId": "bd83ffd68ceda4be7e25d2823a12846e1829b959",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e71f33f5_db100989",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/proxysettings/proxy_settings.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-09-27T16:43:59Z",
+      "side": 1,
+      "message": "You are totally correct, it is under the proxy settings themselves and not the top-level dialog. Thank you for confirming!",
+      "parentUuid": "62e4d7a0_c2c5e5ae",
+      "range": {
+        "startLine": 232,
+        "startChar": 0,
+        "endLine": 237,
+        "endChar": 7
+      },
+      "revId": "bd83ffd68ceda4be7e25d2823a12846e1829b959",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
