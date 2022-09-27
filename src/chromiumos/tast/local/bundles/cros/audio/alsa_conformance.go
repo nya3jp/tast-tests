@@ -21,6 +21,12 @@ import (
 	"chromiumos/tast/testing/hwdep"
 )
 
+// alsaConformanceTestParam holds test criteria.
+type alsaConformanceTestParam struct {
+	rateCriteria    float32
+	rateErrCriteria float32
+}
+
 // TODO(b/213524693) : remove "chronicler" when b/213524693 is fixed.
 // TODO(b/238591902) : remove "nautilus" and "nautiluslte" when b/238591902 is fixed.
 // TODO(b/238591444) : remove "soraka" when b/238591444 is fixed.
@@ -43,6 +49,9 @@ import (
 // TODO(b/249207920) : remove "astronaut", "blacktip", "blacktip360", "epaulette", "lava", "nasher360", "rabbid", "robo", "robo360", "santa", "whitetip" when b/249207920 is fixed.
 var unstableModels = []string{"chronicler", "nautilus", "nautiluslte", "soraka", "karma", "beetley", "redrix", "gimble", "primus", "anahera", "babymega", "babytiger", "blacktiplte", "taniks", "bob", "dumo", "dru", "nasher", "sasukette", "kevin", "vell", "astronaut", "blacktip", "blacktip360", "epaulette", "lava", "nasher360", "rabbid", "robo", "robo360", "santa", "whitetip"}
 
+// TODO(b/136614687): Relex the criteria for grunt devices, the audio still sounds fine as CRAS can compensate the rate, if the rate error is not huge.
+var relexedCriteriaModels = []string{"aleena", "barla", "careena", "kasumi", "kasumi360", "liara", "treeya360", "treeya"}
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ALSAConformance,
@@ -54,22 +63,37 @@ func init() {
 		Params: []testing.Param{
 			{
 				Name:              "stable",
-				ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(unstableModels...)),
+				ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(unstableModels...), hwdep.SkipOnModel(relexedCriteriaModels...)),
+				Val: alsaConformanceTestParam{
+					rateCriteria:    0.1,
+					rateErrCriteria: 100.0,
+				},
+			},
+			{
+				Name:              "stable_relexed_critieria",
+				ExtraHardwareDeps: hwdep.D(hwdep.Model(relexedCriteriaModels...)),
+				Val: alsaConformanceTestParam{
+					rateCriteria:    0.15,
+					rateErrCriteria: 100.0,
+				},
 			},
 			{
 				Name:              "unstable",
 				ExtraHardwareDeps: hwdep.D(hwdep.Model(unstableModels...)),
+				Val: alsaConformanceTestParam{
+					rateCriteria:    0.1,
+					rateErrCriteria: 100.0,
+				},
 			},
 		},
 	})
 }
 
 func ALSAConformance(ctx context.Context, s *testing.State) {
-	// TODO(yuhsuan): Tighten the ratio if the current version is stable. (b/136614687)
-	const (
-		rateCriteria    = 0.1
-		rateErrCriteria = 100.0
-	)
+
+	rateCriteria := s.Param().(alsaConformanceTestParam).rateCriteria
+	rateErrCriteria := s.Param().(alsaConformanceTestParam).rateErrCriteria
+	s.Logf("rateCriteria %f rateErrCriteria: %f", rateCriteria, rateErrCriteria)
 
 	// Stop UI in advance for this test to avoid the node being selected by UI.
 	if err := upstart.StopJob(ctx, "ui"); err != nil {
