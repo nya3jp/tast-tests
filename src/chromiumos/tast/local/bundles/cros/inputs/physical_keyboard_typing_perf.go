@@ -35,6 +35,9 @@ var enUSTestData = "Alice was beginning to get very tired of sitting by her sist
 // From go/3828217 with random concatenation.
 var pinyinTestData = "ke yi zuo ziji xiang zuodeshi chuan lai de ziji de shengyin henyou yisi de zhe yang xian ba zai zhe bian hai yu dao le zhe ming de zhu chiren li chen zhe ci lai shi weile xin chang pian de shi buguo da jia buyong dan xinwo hui jin kuaihao qi laide dan mei ci doumei you jihui quyou lan yi xiazai yan chu qian wojie shou le zhuan fang"
 
+// From a Google translated version of 'Alice in Wonderland' with random concatenation.
+var japaneseTestData = "arisu wa, ginkou de imoutonosoba ni suwatte nani mosuru koto ga naikoto ni totemo unzari shi hajimeteimashita.ichido kanido,imouto ga yonde iruhon onozoki mi shimashitaga, sokoni wae mokaiwa mo arimasendeshita. arisuwa shashin yakaiwa nashi de hono tsukau no? toomoimashita. sorede kanojowa kokoro no nakade kangaete imashita (atsuihi wa totemonemukute orokadattakaradesu), deijicheen o tsukurutanoshimi wa okite hinagikuo tsumu noni kurou surukachigaaru ka douka o kangaete imashita. totsuzen,pinku no meo shita shirousagi ga kanojono sobaohashitte kimashita."
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         PhysicalKeyboardTypingPerf,
@@ -81,6 +84,15 @@ func init() {
 					keys:        pinyinTestData,
 				},
 				ExtraSoftwareDeps: []string{"lacros"},
+			},
+			{
+				Name:    "ja",
+				Fixture: fixture.ClamshellNonVK,
+				Val: typingPerfTestParam{
+					inputMethod: ime.Japanese,
+					keys:        japaneseTestData,
+				},
+				ExtraAttr: []string{"group:input-tools-upstream"},
 			},
 		},
 	})
