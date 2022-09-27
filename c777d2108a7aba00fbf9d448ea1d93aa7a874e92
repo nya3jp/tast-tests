@@ -92,6 +92,30 @@
       },
       "revId": "c777d2108a7aba00fbf9d448ea1d93aa7a874e92",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6e20ad8_504483bb",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 932,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-09-27T04:56:17Z",
+      "side": 1,
+      "message": "what do you mean for 2 implementations? you just need one implementation (a private function) and two wrappers, something like:\n```\nfunc IfSuccessThen(preFunc, action Action) Action {\n\treturn IfSuccessThenWithLog(preFunc, action, false)\n}\n\nfunc IfSuccessThenWithLog(preFunc, action Action) Action {\n\treturn IfSuccessThenWithLog(preFunc, action, true)\n}\n\nfunc ifSuccessThenWithLogOption(preFunc, fn Action, logError bool) Action {\n...//actual implementation\n}\n```\n\nbtw, why not just log the message by default and only change `IfSuccessThen`? this message is always useful for debugging, as long as it is not something with `Error:` to make the log scary?",
+      "parentUuid": "fc04b831_8f0aaae3",
+      "range": {
+        "startLine": 932,
+        "startChar": 45,
+        "endLine": 932,
+        "endChar": 59
+      },
+      "revId": "c777d2108a7aba00fbf9d448ea1d93aa7a874e92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
