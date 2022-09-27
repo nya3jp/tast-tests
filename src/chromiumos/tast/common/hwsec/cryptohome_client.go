@@ -53,8 +53,12 @@ func getLastLine(s string) string {
 const (
 	// OldCryptohomeMountAPI makes the client use old api.
 	OldCryptohomeMountAPI = iota
-	// NewCryptohomeMountAPI makes the client use new api.
-	NewCryptohomeMountAPI
+	// AuthSessionMountAPI makes the client use the
+	// {AddCredentials,Authenticate} credentials based api.
+	AuthSessionMountAPI
+	// AuthFactorMountAPI makes the client use the
+	// {AddAuthFactor/AuthenticateAuthFactor} AuthFactor based api.
+	AuthFactorMountAPI
 )
 
 // CryptohomeMountAPI denotes Mount API type to use.
@@ -410,7 +414,7 @@ func (u *CryptohomeClient) authenticateWithAuthSession(ctx context.Context, user
 	return authSessionID, nil
 }
 
-func (u *CryptohomeClient) mountVaultWithNewAPI(ctx context.Context, label string, authConfig *AuthConfig, create bool, vaultConfig *VaultConfig) error {
+func (u *CryptohomeClient) mountVaultWithAuthSession(ctx context.Context, label string, authConfig *AuthConfig, create bool, vaultConfig *VaultConfig) error {
 	var authSessionID string
 	var err error
 
@@ -439,10 +443,51 @@ func (u *CryptohomeClient) mountVaultWithNewAPI(ctx context.Context, label strin
 	return nil
 }
 
+func (u *CryptohomeClient) mountVaultWithAuthFactor(ctx context.Context, label string, authConfig *AuthConfig, create bool, vaultConfig *VaultConfig) error {
+	// Start an Auth session and get an authSessionID.
+	_, authSessionID, err := u.StartAuthSession(ctx, authConfig.Username, vaultConfig.Ephemeral, uda.AuthIntent_AUTH_INTENT_DECRYPT)
+	if err != nil {
+		return errors.Wrap(err, "failed to start Auth session")
+	}
+
+	if create {
+		if err := u.CreatePersistentUser(ctx, authSessionID); err != nil {
+			return errors.Wrap(err, "failed to create persistent user")
+		}
+
+		if err := u.AddAuthFactor(ctx, authSessionID, label, authConfig.Password); err != nil {
+			return errors.Wrap(err, "failed to add credentials with AuthSession")
+		}
+	} else {
+		// Authenticate the same AuthSession using authSessionID.
+		// If we cannot authenticate, do not proceed with mount and unmount.
+		if _, err := u.AuthenticateAuthFactor(ctx, authSessionID, label, authConfig.Password); err != nil {
+			return errors.Wrap(err, "failed to authenticate AuthFactor")
+		}
+	}
+
+	if !vaultConfig.Ephemeral {
+		if err := u.PreparePersistentVault(ctx, authSessionID, vaultConfig.Ecryptfs); err != nil {
+			return errors.Wrap(err, "failed to prepare persistent vault")
+		}
+	} else {
+		if err := u.PrepareEphemeralVault(ctx, authSessionID); err != nil {
+			return errors.Wrap(err, "failed to prepare ephemeral vault")
+		}
+	}
+
+	return nil
+}
+
 // MountVault mounts the vault for username; creates a new vault if no vault yet if create is true. error is nil if the operation completed successfully.
 func (u *CryptohomeClient) MountVault(ctx context.Context, label string, authConfig *AuthConfig, create bool, vaultConfig *VaultConfig) error {
-	if u.mountAPI == NewCryptohomeMountAPI {
-		return u.mountVaultWithNewAPI(ctx, label, authConfig, create, vaultConfig)
+	switch u.mountAPI {
+	case AuthSessionMountAPI:
+		return u.mountVaultWithAuthSession(ctx, label, authConfig, create, vaultConfig)
+	case AuthFactorMountAPI:
+		return u.mountVaultWithAuthFactor(ctx, label, authConfig, create, vaultConfig)
+	default:
+		return errors.New("unrecognized mountAPI parameter in tast test")
 	}
 
 	extraFlags := vaultConfigToExtraFlags(vaultConfig)
