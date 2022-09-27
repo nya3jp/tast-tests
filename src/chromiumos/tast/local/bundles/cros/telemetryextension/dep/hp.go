@@ -13,7 +13,13 @@ import (
 //
 // Also manually added next models:
 //   - vell
+//   - agah
+//   - joxer
+//   - joxton
+//   - vorticon
+//   - vortininja
 var hpModelList = []string{
+	"agah",
 	"alan",
 	"anahera",
 	"barla",
@@ -46,6 +52,8 @@ var hpModelList = []string{
 	"habokay",
 	"haboki",
 	"jinlon",
+	"joxer",
+	"joxton",
 	"kappa",
 	"kench",
 	"kingoftown",
@@ -68,6 +76,8 @@ var hpModelList = []string{
 	"sylas",
 	"syndra",
 	"vell",
+	"vorticon",
+	"vortininja",
 }
 
 // HPModels returns hardwareDeps condition with list of all HP models.
