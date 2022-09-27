@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "10ad2cfb_f7363869",
+        "filename": "src/chromiumos/tast/common/action/action.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-09-27T04:15:13Z",
+      "side": 1,
+      "message": "eh, these are done by lint.",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 3
+      },
+      "revId": "c777d2108a7aba00fbf9d448ea1d93aa7a874e92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dcecb616_1b20cef2",
+        "filename": "src/chromiumos/tast/common/action/action.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-09-27T04:15:13Z",
+      "side": 1,
+      "message": "ditto.",
+      "range": {
+        "startLine": 109,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 6
+      },
+      "revId": "c777d2108a7aba00fbf9d448ea1d93aa7a874e92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
