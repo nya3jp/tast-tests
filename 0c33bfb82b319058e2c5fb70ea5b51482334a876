@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d5e2b7b_99fbc0c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/privacy_indicators.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-09-27T00:44:12Z",
+      "side": 1,
+      "message": "Nit: cleanupCtx is the conventional name for this",
+      "revId": "0c33bfb82b319058e2c5fb70ea5b51482334a876",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e177f492_7f73fecc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/privacy_indicators.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-09-27T00:44:12Z",
+      "side": 1,
+      "message": "Nit: this should be after the if err !\u003d nil",
+      "revId": "0c33bfb82b319058e2c5fb70ea5b51482334a876",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
