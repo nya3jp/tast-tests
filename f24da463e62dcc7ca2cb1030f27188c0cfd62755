@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9faf637_80506c5f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1451097
+      },
+      "writtenOn": "2022-09-27T10:05:25Z",
+      "side": 1,
+      "message": "Sorry for leaving this CL for a long time (its birthday is next month!)\nThe tests are passing on duffy (chromebox) and nami (chromeobook).\n\nRoman, PTAL again since I\u0027ve lost your LGTM.",
+      "revId": "f24da463e62dcc7ca2cb1030f27188c0cfd62755",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
