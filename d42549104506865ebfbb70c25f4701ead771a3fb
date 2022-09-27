@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e0298f6_9ddce76c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-09-27T22:48:55Z",
+      "side": 1,
+      "message": "Thanks for working on this.",
+      "revId": "d42549104506865ebfbb70c25f4701ead771a3fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "83356a25_e027eb51",
@@ -31,6 +48,30 @@
       "writtenOn": "2022-09-27T15:38:34Z",
       "side": 1,
       "message": "Given that this opens the browser, I think we need LaCrOS variant.",
+      "range": {
+        "startLine": 25,
+        "startChar": 2,
+        "endLine": 25,
+        "endChar": 46
+      },
+      "revId": "d42549104506865ebfbb70c25f4701ead771a3fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af44f3b5_e2fc22d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/parental_controls_link.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-09-27T22:48:55Z",
+      "side": 1,
+      "message": "+1 to LacrosVariantNeeded. Specifically, the familiesURL should open in the Lacros browser in the Lacros version of this test.",
+      "parentUuid": "83356a25_e027eb51",
       "range": {
         "startLine": 25,
         "startChar": 2,
@@ -89,6 +130,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "21fbbdd2_799ec77e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/parental_controls_link.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-09-27T22:48:55Z",
+      "side": 1,
+      "message": "Could you add cros-families-eng+test@google.com here?",
+      "revId": "d42549104506865ebfbb70c25f4701ead771a3fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "22d62351_92966e72",
         "filename": "src/chromiumos/tast/local/bundles/cros/familylink/parental_controls_link.go",
         "patchSetId": 1
@@ -105,6 +163,75 @@
         "startChar": 0,
         "endLine": 35,
         "endChar": 40
+      },
+      "revId": "d42549104506865ebfbb70c25f4701ead771a3fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a361614e_e2003e46",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/parental_controls_link.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-09-27T22:48:55Z",
+      "side": 1,
+      "message": "Can you move this function earlier in this test? If this test fails to open the accounts page or fails to open the parental controls link, then this cleanup code won\u0027t run and you won\u0027t get a screenshot for debugging purposes.",
+      "range": {
+        "startLine": 63,
+        "startChar": 2,
+        "endLine": 63,
+        "endChar": 34
+      },
+      "revId": "d42549104506865ebfbb70c25f4701ead771a3fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3cefa0a8_1fa2e58a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/parental_controls_link.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-09-27T22:48:55Z",
+      "side": 1,
+      "message": "Could you use uiauto.Combine() to combine this block with ui.LeftClick(parentalControls) and shorten this test while reducing the number of if statements and error messages?",
+      "range": {
+        "startLine": 71,
+        "startChar": 14,
+        "endLine": 71,
+        "endChar": 29
+      },
+      "revId": "d42549104506865ebfbb70c25f4701ead771a3fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d490fc2_19b9df2d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/parental_controls_link.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-09-27T22:48:55Z",
+      "side": 1,
+      "message": "Nit: no need for else. This test will terminate if the previous condition failed.",
+      "range": {
+        "startLine": 82,
+        "startChar": 3,
+        "endLine": 82,
+        "endChar": 7
       },
       "revId": "d42549104506865ebfbb70c25f4701ead771a3fb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
