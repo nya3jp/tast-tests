@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "be4ab3dc_65dc7b4c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1529147
+      },
+      "writtenOn": "2022-09-27T19:50:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2249784a_f1d56e0e",
+      "revId": "1a6ad42bf4ec49b21e38fed33f2a250fe0c209fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f0c86c97_6eb930e8",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-09-26T19:29:58Z",
       "side": 1,
       "message": "It\u0027d be good to have a real description even if it\u0027s something vague like \"Test Quick Start\" for now.",
+      "range": {
+        "startLine": 19,
+        "startChar": 16,
+        "endLine": 19,
+        "endChar": 44
+      },
+      "revId": "1a6ad42bf4ec49b21e38fed33f2a250fe0c209fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "335f001d_44eef482",
+        "filename": "src/chromiumos/tast/local/bundles/cros/quickstart/single_account_onboarding.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1529147
+      },
+      "writtenOn": "2022-09-27T19:50:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f0c86c97_6eb930e8",
       "range": {
         "startLine": 19,
         "startChar": 16,
@@ -58,6 +100,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "425808dc_b3c250ce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/quickstart/single_account_onboarding.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1529147
+      },
+      "writtenOn": "2022-09-27T19:50:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8eedcfa4_a517a41d",
+      "revId": "1a6ad42bf4ec49b21e38fed33f2a250fe0c209fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9d11dbb1_8b3b2336",
@@ -81,6 +141,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "371dd66d_e969feca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/quickstart/single_account_onboarding.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1529147
+      },
+      "writtenOn": "2022-09-27T19:50:43Z",
+      "side": 1,
+      "message": "The test space is quickstart and the specific test name is SingleAccountOnboarding. This is the happy path test for 1 user account on the phone. The overall test name will be called quickstart.SingleAccountOnboarding",
+      "parentUuid": "9d11dbb1_8b3b2336",
+      "range": {
+        "startLine": 29,
+        "startChar": 5,
+        "endLine": 29,
+        "endChar": 28
+      },
+      "revId": "1a6ad42bf4ec49b21e38fed33f2a250fe0c209fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c5067142_b2e462bf",
@@ -94,6 +178,24 @@
       "writtenOn": "2022-09-26T19:29:58Z",
       "side": 1,
       "message": "Is the plan to piggyback on this fixture? I had the impression that we were going to create a new fixture.",
+      "revId": "1a6ad42bf4ec49b21e38fed33f2a250fe0c209fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2013ff66_ed84aa00",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1529147
+      },
+      "writtenOn": "2022-09-27T19:50:43Z",
+      "side": 1,
+      "message": "crossDeviceSignIn is the new fixture. I am adding the noSignIn option for fixture creation so that we can differentiate crossDeviceSignIn from the other existing fixtures in fixture SetUp.",
+      "parentUuid": "c5067142_b2e462bf",
       "revId": "1a6ad42bf4ec49b21e38fed33f2a250fe0c209fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
