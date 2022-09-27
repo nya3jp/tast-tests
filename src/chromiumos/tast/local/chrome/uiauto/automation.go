@@ -928,6 +928,11 @@ func IfSuccessThen(preFunc, fn Action) Action {
 	return action.IfSuccessThen(preFunc, fn)
 }
 
+// IfSuccessThenWithLog returns a function that runs action only if the first function succeeds with a logging option.
+func IfSuccessThenWithLog(preFunc, fn Action, logError bool) Action {
+	return action.IfSuccessThenWithLog(preFunc, fn, logError)
+}
+
 // IfFailThen returns a function that runs action only if the first function fails.
 // The function returns an error only if the preFunc and action both fail,
 // It returns nil in all other situations.
