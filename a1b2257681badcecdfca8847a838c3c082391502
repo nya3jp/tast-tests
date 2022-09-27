@@ -16,6 +16,24 @@
       "message": "Should this description be updated?",
       "revId": "a1b2257681badcecdfca8847a838c3c082391502",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "22ee8b5d_90b86c4c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/add_remove_pin.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-09-27T17:35:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "09132b6b_43456091",
+      "revId": "a1b2257681badcecdfca8847a838c3c082391502",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
