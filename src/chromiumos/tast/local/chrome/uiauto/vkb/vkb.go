@@ -576,9 +576,9 @@ func (vkbCtx *VirtualKeyboardContext) selectFromSuggestionFunc(candidateText str
 // leftClickIfExist returns an action that checks the existence of a node within a short timeout,
 // then clicks it if it exists and does nothing if not.
 func (vkbCtx *VirtualKeyboardContext) leftClickIfExist(finder *nodewith.Finder) uiauto.Action {
-	return uiauto.IfSuccessThen(
-		vkbCtx.ui.WithTimeout(500*time.Millisecond).WaitUntilExists(finder),
-		vkbCtx.ui.LeftClick(finder))
+	return uiauto.IfSuccessThenWithLog(
+		vkbCtx.ui.WithTimeout(2*time.Second).WaitUntilExists(finder),
+		vkbCtx.ui.LeftClick(finder), true)
 }
 
 // ShiftState describes the shift state of the virtual keyboard.
