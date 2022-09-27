@@ -76,20 +76,29 @@ func validateProcessInfo(info *processInfo, p *process.Process) error {
 	return nil
 }
 
-// ProbeProcessInfo tests that process info with pid=1 (init) can be successfully and correctly fetched.
-func ProbeProcessInfo(ctx context.Context, s *testing.State) {
+// validateSingleProcessInfo tests that process info with pid=1 (init) can be successfully and correctly fetched.
+func validateSingleProcessInfo(ctx context.Context, outDir string) error {
 	params := croshealthd.TelemParams{PIDs: []int{1}}
 	var info processInfo
-	if err := croshealthd.RunAndParseJSONTelem(ctx, params, s.OutDir(), &info); err != nil {
-		s.Fatal("Failed to get process telemetry info: ", err)
+	if err := croshealthd.RunAndParseJSONTelem(ctx, params, outDir, &info); err != nil {
+		return errors.Wrap(err, "failed to get process telemetry info")
 	}
 
 	p, err := process.NewProcess(1)
 	if err != nil {
-		s.Fatal("Process with pid=1 does not exist: ", err)
+		return errors.Wrap(err, "process with pid=1 does not exist")
 	}
 
 	if err := validateProcessInfo(&info, p); err != nil {
-		s.Fatal("Failed to validate process info data: ", err)
+		return errors.Wrap(err, "failed to validate process info data")
+	}
+
+	return nil
+}
+
+// ProbeProcessInfo tests that different processes can be successfully and correctly fetched.
+func ProbeProcessInfo(ctx context.Context, s *testing.State) {
+	if err := validateSingleProcessInfo(ctx, s.OutDir()); err != nil {
+		s.Fatal("Failed to validate single process data: ", err)
 	}
 }
