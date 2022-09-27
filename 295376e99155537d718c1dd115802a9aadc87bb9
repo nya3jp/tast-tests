@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8745375_dfef9019",
+        "filename": "src/chromiumos/tast/local/assistant/assistant.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1121230
+      },
+      "writtenOn": "2022-09-27T17:16:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d893ced4_180fc7ba",
+      "range": {
+        "startLine": 207,
+        "startChar": 5,
+        "endLine": 207,
+        "endChar": 15
+      },
+      "revId": "295376e99155537d718c1dd115802a9aadc87bb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ebe9fe92_a3b32685",
@@ -71,6 +95,30 @@
       "writtenOn": "2022-09-27T14:58:42Z",
       "side": 1,
       "message": "ditto above: Should be TConn (or tconn)\n\nhttps://g3doc.corp.google.com/go/g3doc/style/decisions.md?cl\u003dhead#initialisms",
+      "range": {
+        "startLine": 217,
+        "startChar": 1,
+        "endLine": 217,
+        "endChar": 6
+      },
+      "revId": "295376e99155537d718c1dd115802a9aadc87bb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b61b2991_c2080d68",
+        "filename": "src/chromiumos/tast/local/assistant/assistant.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1121230
+      },
+      "writtenOn": "2022-09-27T17:16:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ebe9fe92_a3b32685",
       "range": {
         "startLine": 217,
         "startChar": 1,
@@ -104,6 +152,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff68a980_e25e3cb3",
+        "filename": "src/chromiumos/tast/local/assistant/assistant.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1121230
+      },
+      "writtenOn": "2022-09-27T17:16:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "db6149cd_4cb8824a",
+      "range": {
+        "startLine": 232,
+        "startChar": 65,
+        "endLine": 232,
+        "endChar": 66
+      },
+      "revId": "295376e99155537d718c1dd115802a9aadc87bb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3111fe2b_ae852ce0",
@@ -117,6 +189,30 @@
       "writtenOn": "2022-09-27T14:58:42Z",
       "side": 1,
       "message": "nit: document struct",
+      "range": {
+        "startLine": 502,
+        "startChar": 5,
+        "endLine": 502,
+        "endChar": 16
+      },
+      "revId": "295376e99155537d718c1dd115802a9aadc87bb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "884fd080_3eac7af2",
+        "filename": "src/chromiumos/tast/local/assistant/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 502,
+      "author": {
+        "id": 1121230
+      },
+      "writtenOn": "2022-09-27T17:16:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3111fe2b_ae852ce0",
       "range": {
         "startLine": 502,
         "startChar": 5,
@@ -150,6 +246,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f50eda32_a6d1ef0d",
+        "filename": "src/chromiumos/tast/local/assistant/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 506,
+      "author": {
+        "id": 1121230
+      },
+      "writtenOn": "2022-09-27T17:16:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9fd9b8c5_b52c094f",
+      "range": {
+        "startLine": 506,
+        "startChar": 1,
+        "endLine": 506,
+        "endChar": 11
+      },
+      "revId": "295376e99155537d718c1dd115802a9aadc87bb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "abade209_6e76bdac",
@@ -173,6 +293,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "432dffeb_7a42252b",
+        "filename": "src/chromiumos/tast/local/assistant/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 589,
+      "author": {
+        "id": 1121230
+      },
+      "writtenOn": "2022-09-27T17:16:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "abade209_6e76bdac",
+      "range": {
+        "startLine": 589,
+        "startChar": 0,
+        "endLine": 589,
+        "endChar": 4
+      },
+      "revId": "295376e99155537d718c1dd115802a9aadc87bb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0131e51e_d3ee792a",
@@ -186,6 +330,30 @@
       "writtenOn": "2022-09-27T14:58:42Z",
       "side": 1,
       "message": "nit: I\u0027d use a more descriptive name here, like: \"OOBEGaiaSomething...\"",
+      "range": {
+        "startLine": 27,
+        "startChar": 5,
+        "endLine": 27,
+        "endChar": 9
+      },
+      "revId": "295376e99155537d718c1dd115802a9aadc87bb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9ef940c_e3e1b4fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/oobe.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1121230
+      },
+      "writtenOn": "2022-09-27T17:16:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0131e51e_d3ee792a",
       "range": {
         "startLine": 27,
         "startChar": 5,
