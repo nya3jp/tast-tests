@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4dc9eb47_d9ae8165",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1543127
+      },
+      "writtenOn": "2022-09-27T09:29:45Z",
+      "side": 1,
+      "message": "Hi Oleh, PTAL.",
+      "revId": "56b0c352ad56efc79e7de793e68485ea16c15054",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
