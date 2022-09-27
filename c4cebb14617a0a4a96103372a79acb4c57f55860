@@ -95,6 +95,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a945e2f_92656dd3",
+        "filename": "src/chromiumos/tast/local/shill/property_holder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-09-27T01:17:33Z",
+      "side": 1,
+      "message": "Ack. We can change that when there is a need.",
+      "parentUuid": "14453d44_8adc375f",
+      "range": {
+        "startLine": 89,
+        "startChar": 12,
+        "endLine": 89,
+        "endChar": 14
+      },
+      "revId": "c4cebb14617a0a4a96103372a79acb4c57f55860",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "392abbac_721e2f0f",
