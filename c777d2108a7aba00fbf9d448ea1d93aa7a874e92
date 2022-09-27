@@ -45,6 +45,29 @@
       },
       "revId": "c777d2108a7aba00fbf9d448ea1d93aa7a874e92",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1f9de09_8df4d523",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 932,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-09-27T04:23:26Z",
+      "side": 1,
+      "message": "I don\u0027t think you need this param. `IfSuccessThen` prints no log and `IfSuccessThenWithLog` prints log. Alternatively, you may just merge these two functions with the param. `IfSuccessThen` and `IfSuccessThenWithLog(...,false)` are duplicates.",
+      "range": {
+        "startLine": 932,
+        "startChar": 45,
+        "endLine": 932,
+        "endChar": 59
+      },
+      "revId": "c777d2108a7aba00fbf9d448ea1d93aa7a874e92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
