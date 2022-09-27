@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2b4043a_13558e3e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/services_on_boot.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2022-09-27T01:58:08Z",
+      "side": 1,
+      "message": "Does it means that after sound_card_init finished successfully it should come to WaitingState?\nThanks!",
+      "range": {
+        "startLine": 43,
+        "startChar": 80,
+        "endLine": 43,
+        "endChar": 92
+      },
+      "revId": "f252fc90bdd32e17b999bebfd7d4d9d93e7be40e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
