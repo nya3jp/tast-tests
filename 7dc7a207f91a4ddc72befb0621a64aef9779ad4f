@@ -16,6 +16,24 @@
       "message": "nit: remove blank line",
       "revId": "7dc7a207f91a4ddc72befb0621a64aef9779ad4f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "28731bb8_a7ed6ec8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/kexec.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1459152
+      },
+      "writtenOn": "2022-09-27T18:11:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "73ac4a6e_0a9891bf",
+      "revId": "7dc7a207f91a4ddc72befb0621a64aef9779ad4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
