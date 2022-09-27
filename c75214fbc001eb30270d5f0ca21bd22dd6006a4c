@@ -33,6 +33,41 @@
       "message": "./repeat-test.sh -s -r 3 -- $DUT arc.MultipleArcProfile* might be low as the attempt here is to stabilize the test. Hence recommend identifying the model on which the failure is seen more and run 30-50 times instead of 3 to confirm it stable.",
       "revId": "c75214fbc001eb30270d5f0ca21bd22dd6006a4c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c33a5889_13bbd026",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1551729
+      },
+      "writtenOn": "2022-09-27T17:42:22Z",
+      "side": 1,
+      "message": "Sure, thanks for the suggestions. \nI\u0027ve run the test on helios, foob360, kasumi for 30 times, and I haven\u0027t seen the \"Find account\" issue, it was failed because of \"Fail to install the app\" for couple times.  I feel it should be another issue.\n\n-Chenghao",
+      "parentUuid": "216c1a45_2941eccb",
+      "revId": "c75214fbc001eb30270d5f0ca21bd22dd6006a4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2e645b2_07b9a405",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1551729
+      },
+      "writtenOn": "2022-09-27T17:42:22Z",
+      "side": 1,
+      "message": "Hey Renuga,\n\nThanks for the suggestions and I\u0027ve run the test on some models. It looks like the \"Find account\" issue is fine now.\n\n-Chenghao",
+      "revId": "c75214fbc001eb30270d5f0ca21bd22dd6006a4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
