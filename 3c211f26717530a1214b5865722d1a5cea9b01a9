@@ -1,0 +1,234 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12296156_258d2624",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/traffic_counters.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-09-27T05:01:49Z",
+      "side": 1,
+      "message": "perhaps `server` is a better name?",
+      "range": {
+        "startLine": 43,
+        "startChar": 5,
+        "endLine": 43,
+        "endChar": 11
+      },
+      "revId": "3c211f26717530a1214b5865722d1a5cea9b01a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c8fb20f_42400ef3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/traffic_counters.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-09-27T05:01:49Z",
+      "side": 1,
+      "message": "defer a cleanup to reset this or use the test profile [1]?\n\n[1] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/shill/manager.go;drc\u003d8fbf2c53960bc8917a6a01fda5405cad7c17201e;l\u003d542",
+      "range": {
+        "startLine": 66,
+        "startChar": 43,
+        "endLine": 66,
+        "endChar": 73
+      },
+      "revId": "3c211f26717530a1214b5865722d1a5cea9b01a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83b90d3b_c3cf7b0e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/traffic_counters.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-09-27T05:01:49Z",
+      "side": 1,
+      "message": "how about merge these two into a loop to simplify the code?",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 30
+      },
+      "revId": "3c211f26717530a1214b5865722d1a5cea9b01a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2919ea5f_e96144d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/traffic_counters.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-09-27T05:01:49Z",
+      "side": 1,
+      "message": "nit: need some comments to make it easier to understand",
+      "range": {
+        "startLine": 116,
+        "startChar": 1,
+        "endLine": 116,
+        "endChar": 5
+      },
+      "revId": "3c211f26717530a1214b5865722d1a5cea9b01a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6aeae228_a3766fcf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/traffic_counters.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-09-27T05:01:49Z",
+      "side": 1,
+      "message": "|dst| is a const for a cfg, right? How about make it as a property/getter in cfg?",
+      "range": {
+        "startLine": 120,
+        "startChar": 4,
+        "endLine": 126,
+        "endChar": 47
+      },
+      "revId": "3c211f26717530a1214b5865722d1a5cea9b01a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c6ab291_92afa74e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/traffic_counters.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-09-27T05:01:49Z",
+      "side": 1,
+      "message": "maybe passing a cfg directly is cleaner?",
+      "range": {
+        "startLine": 127,
+        "startChar": 32,
+        "endLine": 127,
+        "endChar": 59
+      },
+      "revId": "3c211f26717530a1214b5865722d1a5cea9b01a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f44478c_24b4cf52",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/traffic_counters.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-09-27T05:01:49Z",
+      "side": 1,
+      "message": "This is worth a comment. Why we need a Sleep? Why 5 seconds is enough?",
+      "range": {
+        "startLine": 133,
+        "startChar": 2,
+        "endLine": 133,
+        "endChar": 35
+      },
+      "revId": "3c211f26717530a1214b5865722d1a5cea9b01a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b7c7c9a_dd0c64e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/traffic_counters.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-09-27T05:01:49Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be an Error?",
+      "range": {
+        "startLine": 168,
+        "startChar": 3,
+        "endLine": 168,
+        "endChar": 61
+      },
+      "revId": "3c211f26717530a1214b5865722d1a5cea9b01a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "789f706d_c57381d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/traffic_counters.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-09-27T05:01:49Z",
+      "side": 1,
+      "message": "IIUC, we only verify that the counter is no smaller than expected (so that means that this test cannot catch the issue if we double all the counters in the code)\nCould we also mention this behavior in the function comment or test description?",
+      "range": {
+        "startLine": 171,
+        "startChar": 5,
+        "endLine": 171,
+        "endChar": 65
+      },
+      "revId": "3c211f26717530a1214b5865722d1a5cea9b01a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38eaf5a0_48471e48",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/traffic_counters.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-09-27T05:01:49Z",
+      "side": 1,
+      "message": "So we rely on the behavior that \"IPv6 host on the local subnet of the secondary network is reachable\". Maybe it\u0027s better to document what network we set up for this test in the test comments.",
+      "range": {
+        "startLine": 190,
+        "startChar": 0,
+        "endLine": 192,
+        "endChar": 21
+      },
+      "revId": "3c211f26717530a1214b5865722d1a5cea9b01a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
