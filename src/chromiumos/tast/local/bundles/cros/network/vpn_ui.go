@@ -196,7 +196,7 @@ func (v *vpnDialogConfigger) inputTextField(ctx context.Context, name, value str
 }
 
 func (v *vpnDialogConfigger) selectListOption(ctx context.Context, name, value string) error {
-	btn := nodewith.Name(name).Role(role.PopUpButton)
+	btn := nodewith.Name(name).Role(role.ComboBoxSelect)
 	return uiauto.Combine("Select "+name,
 		v.ui.MakeVisible(btn),
 		v.ui.LeftClick(btn),
