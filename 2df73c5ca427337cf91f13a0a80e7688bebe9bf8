@@ -16,6 +16,75 @@
       "message": "thanks for the review",
       "revId": "2df73c5ca427337cf91f13a0a80e7688bebe9bf8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ffb7f69_a2fb7b8b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/traffic_counters.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-09-27T08:01:08Z",
+      "side": 1,
+      "message": "nit: do you want to add yourself here?",
+      "range": {
+        "startLine": 37,
+        "startChar": 25,
+        "endLine": 37,
+        "endChar": 26
+      },
+      "revId": "2df73c5ca427337cf91f13a0a80e7688bebe9bf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c3f4046_e8bcfc7f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/traffic_counters.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-09-27T08:01:08Z",
+      "side": 1,
+      "message": "nit: this comment does not add a lot of information. Perhaps \"Generate traffic again and verify that counters increased\"? Or just remove it.",
+      "range": {
+        "startLine": 180,
+        "startChar": 1,
+        "endLine": 180,
+        "endChar": 20
+      },
+      "revId": "2df73c5ca427337cf91f13a0a80e7688bebe9bf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83b5298b_3a83d4da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/traffic_counters.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-09-27T08:01:08Z",
+      "side": 1,
+      "message": "Just a question, is it possible / what can we observe if the port is already in use?",
+      "range": {
+        "startLine": 270,
+        "startChar": 88,
+        "endLine": 270,
+        "endChar": 142
+      },
+      "revId": "2df73c5ca427337cf91f13a0a80e7688bebe9bf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

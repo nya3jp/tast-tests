@@ -424,6 +424,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a01d546_6da585d7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/traffic_counters.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-09-27T08:01:08Z",
+      "side": 1,
+      "message": "Ah I couldn\u0027t remember...",
+      "parentUuid": "1cf26a6a_43b4eaad",
+      "range": {
+        "startLine": 171,
+        "startChar": 5,
+        "endLine": 171,
+        "endChar": 65
+      },
+      "revId": "3c211f26717530a1214b5865722d1a5cea9b01a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "38eaf5a0_48471e48",
