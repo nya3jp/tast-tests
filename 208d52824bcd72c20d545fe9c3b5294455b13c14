@@ -16,6 +16,24 @@
       "message": "This test seems keeping failing on some model:\nhttps://tastboard.corp.google.com/test/hammerd.TriggeredOnBoot\n\nWon\u0027t this block CQ? Should we fix the issue before the promotion? (Usually the test should pass consistently for at least 20 builds before promoting it to CQ)\n\nhttps://chrome-internal.googlesource.com/chromeos/chromeos-admin/+/HEAD/doc/tast_add_test.md#step-4_remove-attribute-to-make-it-run-on-infra",
       "revId": "208d52824bcd72c20d545fe9c3b5294455b13c14",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5857e47c_8b1a2ecb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1302705
+      },
+      "writtenOn": "2022-09-27T08:45:45Z",
+      "side": 1,
+      "message": "Sorry I forgot about the fact that Tast failures block CQ... I thought that I can promote the test first and enforce the team to fix the issue.\n\nI\u0027ll send another patch to skip on those models and get back to this after the test goes stable, and try to push the stakeholders to fix the issue - I filed bugs for those but there has been no response for months.",
+      "parentUuid": "12e8727c_af0da325",
+      "revId": "208d52824bcd72c20d545fe9c3b5294455b13c14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
