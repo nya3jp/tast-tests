@@ -88,6 +88,10 @@ func runDPTest(ctx context.Context, svo *servo.Servo, d *dut.DUT, s *testing.Sta
 		return errors.Wrap(err, "failed CC off and wait")
 	}
 
+	if err := d.Disconnect(ctx); err != nil {
+		return errors.Wrap(err, "failed to close the current DUT ssh connection")
+	}
+
 	s.Log("Configuring Servo to enable DP")
 	if err := setServoDPMode(ctx, svo, pinAssign); err != nil {
 		return errors.Wrap(err, "failed to configure servo for DP")
