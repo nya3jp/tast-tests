@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e1d6840_0d456f36",
+        "filename": "src/chromiumos/tast/local/input/keyboard.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1427718
+      },
+      "writtenOn": "2022-09-27T10:51:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d3323e16_92d1ed6b",
+      "range": {
+        "startLine": 163,
+        "startChar": 1,
+        "endLine": 165,
+        "endChar": 2
+      },
+      "revId": "92193424a45f56e1d632b9e0358fc0c05c1db488",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "28a8a511_001a6123",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "783429cb_9d244fb9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_power_button.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1427718
+      },
+      "writtenOn": "2022-09-27T10:51:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "28a8a511_001a6123",
+      "range": {
+        "startLine": 44,
+        "startChar": 4,
+        "endLine": 44,
+        "endChar": 139
+      },
+      "revId": "92193424a45f56e1d632b9e0358fc0c05c1db488",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ac58c917_068d3e6b",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-09-26T18:05:44Z",
       "side": 1,
       "message": "If you are stopping, you should stop fwupd and then powerd. If you are starting, you should reverse that, and start powerd first, then fwupd.\n\nI think start and stop can take multiple arguments though, and should stop or start in the right order, so if you combine them, it should be fine.\n\nAlso, why run status? Starting something that is running is not an error. Stopping something that is already stopped probably isn\u0027t an error.",
+      "range": {
+        "startLine": 212,
+        "startChar": 0,
+        "endLine": 212,
+        "endChar": 109
+      },
+      "revId": "92193424a45f56e1d632b9e0358fc0c05c1db488",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a96f24b_272270b5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_power_button.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1427718
+      },
+      "writtenOn": "2022-09-27T10:51:06Z",
+      "side": 1,
+      "message": "`start` now starts powerd before fwpupd, `stop` now stops fwupd before powerd.\n\nBoth starting and stopping already started/stopped jobs gives an error code:\n```\nlocalhost ~ # status powerd\npowerd start/running, process 1075\nlocalhost ~ # start powerd\nstart: Job is already running: powerd\nlocalhost ~ # echo $?\n1\nlocalhost ~ # stop powerd\npowerd stop/waiting\nlocalhost ~ # stop powerd\nstop: Unknown instance: \nlocalhost ~ # echo $?\n1\n```\n\nBoth `start` and `stop` only take one job:\n```\nlocalhost ~ # stop fwupd powerd\nstop: Env must be KEY\u003dVALUE pairs\nlocalhost ~ # start powerd fwupd\nstart: Env must be KEY\u003dVALUE pairs\n```",
+      "parentUuid": "ac58c917_068d3e6b",
       "range": {
         "startLine": 212,
         "startChar": 0,
