@@ -86,6 +86,24 @@
       "parentUuid": "935fb6c7_65299830",
       "revId": "4ad601fa7984efcaf35eaaa941da2982cfb93fe7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "53238caf_69455da7",
+        "filename": "src/chromiumos/tast/local/arc/ui.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1551729
+      },
+      "writtenOn": "2022-09-27T01:53:50Z",
+      "side": 1,
+      "message": "Hey David,\n\nAgree, the way you suggested is better. I have changed the code accordingly.\n\nThank you.\n\n-Chenghao",
+      "parentUuid": "7bcaa48d_71e7af4d",
+      "revId": "4ad601fa7984efcaf35eaaa941da2982cfb93fe7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
