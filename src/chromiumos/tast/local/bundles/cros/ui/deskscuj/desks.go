@@ -130,6 +130,7 @@ func setUpDesks(ctx context.Context, tconn, bTconn *chrome.TestConn, cs ash.Conn
 				"https://mail.google.com",
 				"https://www.nytimes.com/",
 				docsURL,
+				"https://docs.google.com/spreadsheets/d/1I9jmmdWkBaH6Bdltc2j5KVSyrJYNAhwBqMmvTdmVOgM/edit?usp=sharing&resourcekey=0-60wBsoTfOkoQ6t4yx2w7FQ"
 			},
 			onVisitAction: func(ctx context.Context) error {
 				if err := clickCenterOfDisplay(ctx); err != nil {
