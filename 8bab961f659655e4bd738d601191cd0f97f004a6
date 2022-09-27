@@ -16,6 +16,24 @@
       "message": "Is this new test?",
       "revId": "8bab961f659655e4bd738d601191cd0f97f004a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ffd65910_02a924d5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2022-09-27T22:55:45Z",
+      "side": 1,
+      "message": "I think you meant \"Is this for new test?\". Please correct me if I am wrong.\nYes, this CL is needed for installing Tootastic app successfully. Without this CL app is failed to install, b/248091102.",
+      "parentUuid": "f3d7d0af_97eea65a",
+      "revId": "8bab961f659655e4bd738d601191cd0f97f004a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
