@@ -116,6 +116,30 @@
       },
       "revId": "c777d2108a7aba00fbf9d448ea1d93aa7a874e92",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4aa91be8_bc091fae",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 932,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-09-27T05:41:01Z",
+      "side": 1,
+      "message": "Done. To answer the other question, I do not want to touch any existing use cases. I hope it is okay.",
+      "parentUuid": "e6e20ad8_504483bb",
+      "range": {
+        "startLine": 932,
+        "startChar": 45,
+        "endLine": 932,
+        "endChar": 59
+      },
+      "revId": "c777d2108a7aba00fbf9d448ea1d93aa7a874e92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
