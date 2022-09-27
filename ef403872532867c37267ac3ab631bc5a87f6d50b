@@ -16,6 +16,24 @@
       "message": "According to [this] doc this should probably be \"apel-e\".\n\n[this]: https://docs.google.com/spreadsheets/d/1U_FuCbZFxqInaMyQD9biPGpkOZfDqiGgKy-4De2vV10/edit#gid\u003d0",
       "revId": "ef403872532867c37267ac3ab631bc5a87f6d50b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4775fb7_69172ab2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/dep/asus.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-09-27T14:39:28Z",
+      "side": 0,
+      "message": "That\u0027s correct, but the scope of this CL to make sure that list is sorted and does not have duplicate. Either I will rebase on your CL, or you have to rebase on my CL depending on which will be merged first.",
+      "parentUuid": "a87d3248_481af8fd",
+      "revId": "ef403872532867c37267ac3ab631bc5a87f6d50b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
