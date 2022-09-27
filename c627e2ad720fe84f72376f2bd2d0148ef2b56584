@@ -1,0 +1,152 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "10ad1b09_86e7eb01",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-09-27T23:37:15Z",
+      "side": 1,
+      "message": "Looks good! Just a few minor comments and suggestions",
+      "revId": "c627e2ad720fe84f72376f2bd2d0148ef2b56584",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc815279_bec8f5de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/quickstart/single_account_onboarding.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-09-27T23:37:15Z",
+      "side": 1,
+      "message": "since the test is still in progress and doesn\u0027t do much yet, you could comment this out so it won\u0027t run in the lab until it\u0027s further along",
+      "revId": "c627e2ad720fe84f72376f2bd2d0148ef2b56584",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4e51561_991869d3",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/android_fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-09-27T23:37:15Z",
+      "side": 1,
+      "message": "I think you could just use the `crossDeviceAndroidSetupPhoneHub` fixture since it looks identical (you could rename it to something more generic if you want as well). I don\u0027t think we need a new Android setup fixture unless it\u0027s going to do something differently than the others with respect to Android setup",
+      "revId": "c627e2ad720fe84f72376f2bd2d0148ef2b56584",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0c0c338_d481c9ab",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-09-27T23:37:15Z",
+      "side": 1,
+      "message": "we should make a struct for these options since it keeps growing. not strictly necessary for this CL but it might be nice while you\u0027re here :)",
+      "range": {
+        "startLine": 38,
+        "startChar": 29,
+        "endLine": 38,
+        "endChar": 89
+      },
+      "revId": "c627e2ad720fe84f72376f2bd2d0148ef2b56584",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fcb87edb_a87f33e0",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-09-27T23:37:15Z",
+      "side": 1,
+      "message": "maybe delete this comment and just mention it in `Desc` (since there is a fixture below this that skips OOBE)",
+      "range": {
+        "startLine": 105,
+        "startChar": 1,
+        "endLine": 105,
+        "endChar": 29
+      },
+      "revId": "c627e2ad720fe84f72376f2bd2d0148ef2b56584",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21868797_cca490b1",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-09-27T23:37:15Z",
+      "side": 1,
+      "message": "FYI you might need to include the `ui.signinProfileTestExtensionManifestKey` private var here once you start adding OOBE automation. I forget what exactly it\u0027s required for (maybe `autotestPrivate` calls and `uiauto` usage), but might be worth adding now to prevent you from getting stuck on some mysterious errors later on",
+      "revId": "c627e2ad720fe84f72376f2bd2d0148ef2b56584",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af8bbdb3_252e79b1",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-09-27T23:37:15Z",
+      "side": 1,
+      "message": "this is fine for now, but just thinking that you may need to extract this as a utility function if your Quick Start tests end with verifying that the user was able to sign in, since you might hit the same behavior in those cases",
+      "revId": "c627e2ad720fe84f72376f2bd2d0148ef2b56584",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf5a8fda_238b968d",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 462,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-09-27T23:37:15Z",
+      "side": 1,
+      "message": "might be worth double-checking that all the logs get saved as expected here even when we\u0027re not signed in",
+      "revId": "c627e2ad720fe84f72376f2bd2d0148ef2b56584",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
