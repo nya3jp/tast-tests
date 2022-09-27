@@ -34,6 +34,24 @@
       "parentUuid": "12e8727c_af0da325",
       "revId": "208d52824bcd72c20d545fe9c3b5294455b13c14",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9552c9d2_9b8e0164",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-09-27T13:51:14Z",
+      "side": 1,
+      "message": "Sgtm, agree with not promoting this to critical before it passes consistently.",
+      "parentUuid": "5857e47c_8b1a2ecb",
+      "revId": "208d52824bcd72c20d545fe9c3b5294455b13c14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
