@@ -107,7 +107,10 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Test all ARC++ companion library",
 		Contacts:     []string{"sstan@google.com", "arc-framework+tast@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		// ARC team decide move this test out of mainline, since:
+		// (1) The tested feature already deprecated in ChromeOS.
+		// (2) P and R WM related features has done, R is the last support version.
+		// (3) The flakness issue (UI automator and touch screen drag)
 		SoftwareDeps: []string{"chrome"},
 		Data:         []string{"ArcCompanionLibDemo.apk", "white_wallpaper.jpg"},
 		Fixture:      "arcBooted",
