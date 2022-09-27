@@ -9,6 +9,7 @@ import (
 	"time"
 
 	"chromiumos/tast/common/mmconst"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/cellular"
 	"chromiumos/tast/local/dbusutil"
 	"chromiumos/tast/local/modemmanager"
@@ -30,31 +31,34 @@ func init() {
 }
 
 func ModemmanagerInhibitDevice(ctx context.Context, s *testing.State) {
+	modem, err := modemmanager.NewModemWithSim(ctx)
+	if err != nil {
+		s.Fatal("Could not find MM dbus object with a valid sim: ", err)
+	}
 	helper, err := cellular.NewHelper(ctx)
 	if err != nil {
 		s.Fatal("Failed to create cellular.Helper: ", err)
 	}
 
-	modem, err := modemmanager.NewModem(ctx)
-	if err != nil {
-		s.Fatal("Failed to create Modem: ", err)
-	}
-	props, err := modem.GetProperties(ctx)
-	if err != nil {
-		s.Fatal("Failed to call GetProperties on Modem: ", err)
-	}
-	device, err := props.GetString(mmconst.ModemPropertyDevice)
-	if err != nil {
-		s.Fatal("Missing Device property: ", err)
-	}
-	defer func() {
+	cleanupCtx, cancel := ctxutil.Shorten(ctx, 30*time.Second)
+	defer cancel()
+
+	defer func(ctx context.Context) {
 		// Restart ModemManager after Inhibit test
 		if err := helper.RestartModemManager(ctx, true); err != nil {
 			s.Fatal("Failed to restart ModemManager: ", err)
 		}
-	}()
+	}(cleanupCtx)
 
 	for i := 0; i < 3; i++ {
+		props, err := modem.GetProperties(ctx)
+		if err != nil {
+			s.Fatal("Failed to call GetProperties on Modem: ", err)
+		}
+		device, err := props.GetString(mmconst.ModemPropertyDevice)
+		if err != nil {
+			s.Fatal("Missing Device property: ", err)
+		}
 		obj, err := dbusutil.NewDBusObject(ctx, modemmanager.DBusModemmanagerService, modemmanager.DBusModemmanagerInterface, modemmanager.DBusModemmanagerPath)
 		if err != nil {
 			s.Fatal("Unable to connect to ModemManager1: ", err)
@@ -66,7 +70,7 @@ func ModemmanagerInhibitDevice(ctx context.Context, s *testing.State) {
 			s.Fatal("InhibitDevice(false) failed: ", err)
 		}
 
-		modem2, err := modemmanager.NewModem(ctx)
+		modem2, err := modemmanager.NewModemWithSim(ctx)
 		if err != nil {
 			s.Fatal("Failed to create Modem after Un-Inhibit: ", err)
 		}
