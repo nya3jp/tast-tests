@@ -118,6 +118,30 @@
       },
       "revId": "ca3f77670b8608e533ca627570edb7925d908782",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "792c02ae_2a5ca968",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/tablet_mode_check.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-09-27T11:44:00Z",
+      "side": 1,
+      "message": "Yes, testexec.CommandContext().Output() returns error if command execution fails or given command requires input from user. Whereas, while using exec.Command().CombinedOutput() we\u0027ll get both output log as well error message if command requires any input from user. So by neglecting error message like exit(1) status we can use CombinedOutput() returned output data for getting evtest event number here.",
+      "parentUuid": "0850082e_38092e6b",
+      "range": {
+        "startLine": 134,
+        "startChar": 36,
+        "endLine": 134,
+        "endChar": 52
+      },
+      "revId": "ca3f77670b8608e533ca627570edb7925d908782",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
