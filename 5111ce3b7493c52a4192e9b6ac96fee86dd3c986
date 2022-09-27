@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "1b0cbd7e_4120b447",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1553967
+      },
+      "writtenOn": "2022-09-27T02:45:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ff9bde97_7b20d623",
+      "revId": "5111ce3b7493c52a4192e9b6ac96fee86dd3c986",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "e60a9bc1_735fb0d3",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 5
@@ -48,6 +66,24 @@
       "writtenOn": "2022-09-27T01:28:06Z",
       "side": 1,
       "message": "Where you use this library?",
+      "revId": "5111ce3b7493c52a4192e9b6ac96fee86dd3c986",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8799783c_7b583304",
+        "filename": "android/ArcRandomElementsApp/AndroidManifest.xml",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1553967
+      },
+      "writtenOn": "2022-09-27T02:45:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2a138d80_a84e3d58",
       "revId": "5111ce3b7493c52a4192e9b6ac96fee86dd3c986",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -88,6 +124,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "61c8bfea_4fe569b8",
+        "filename": "android/ArcRandomElementsApp/res/layout/layout.xml",
+        "patchSetId": 5
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1553967
+      },
+      "writtenOn": "2022-09-27T02:45:57Z",
+      "side": 1,
+      "message": "Do you have any suggestions on what kind of layout I should use? Thank you!",
+      "parentUuid": "b5afacc8_e88e5188",
+      "revId": "5111ce3b7493c52a4192e9b6ac96fee86dd3c986",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "105cb390_fe5a24ea",
         "filename": "android/ArcRandomElementsApp/src/org/chromium/arc/testapp/randomelements/RandomUIElementsActivity.java",
         "patchSetId": 5
@@ -99,6 +153,24 @@
       "writtenOn": "2022-09-27T01:28:06Z",
       "side": 1,
       "message": "Are you still use this listener?",
+      "revId": "5111ce3b7493c52a4192e9b6ac96fee86dd3c986",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb472d1d_e2589f3b",
+        "filename": "android/ArcRandomElementsApp/src/org/chromium/arc/testapp/randomelements/RandomUIElementsActivity.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1553967
+      },
+      "writtenOn": "2022-09-27T02:45:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "105cb390_fe5a24ea",
       "revId": "5111ce3b7493c52a4192e9b6ac96fee86dd3c986",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
