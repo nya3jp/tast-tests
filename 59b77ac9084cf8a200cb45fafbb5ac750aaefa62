@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "969c2e74_5b592953",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-09-27T03:39:40Z",
+      "side": 1,
+      "message": "HostapdConfig",
+      "range": {
+        "startLine": 9,
+        "startChar": 53,
+        "endLine": 9,
+        "endChar": 63
+      },
+      "revId": "59b77ac9084cf8a200cb45fafbb5ac750aaefa62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74a58f49_80702dbc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-09-27T03:39:40Z",
+      "side": 1,
+      "message": "let\u0027s not add this to the cq yet.",
+      "range": {
+        "startLine": 306,
+        "startChar": 25,
+        "endLine": 306,
+        "endChar": 36
+      },
+      "revId": "59b77ac9084cf8a200cb45fafbb5ac750aaefa62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eea7129b_07847c66",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-09-27T03:39:40Z",
+      "side": 1,
+      "message": "could you const-ify the key managements? I know existing ones are inlined, but now seems like a good time to change that.",
+      "range": {
+        "startLine": 310,
+        "startChar": 59,
+        "endLine": 310,
+        "endChar": 73
+      },
+      "revId": "59b77ac9084cf8a200cb45fafbb5ac750aaefa62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
