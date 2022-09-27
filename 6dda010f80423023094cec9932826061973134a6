@@ -67,6 +67,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c132597d_2d5ba822",
+        "filename": "src/chromiumos/tast/common/fingerprint/config.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2022-09-27T00:05:03Z",
+      "side": 1,
+      "message": "crrev.com/c/3920277",
+      "parentUuid": "456594b3_bbd512db",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 63
+      },
+      "revId": "6dda010f80423023094cec9932826061973134a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3de5f0f7_cd1d4166",
         "filename": "src/chromiumos/tast/common/fingerprint/config.go",
         "patchSetId": 14
@@ -114,6 +138,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f5327939_a6fba6f6",
+        "filename": "src/chromiumos/tast/common/fingerprint/config.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2022-09-27T00:05:03Z",
+      "side": 1,
+      "message": "crrev.com/c/3920277",
+      "parentUuid": "ac945718_61ac394f",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 71
+      },
+      "revId": "6dda010f80423023094cec9932826061973134a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4060de59_4bb09025",
         "filename": "src/chromiumos/tast/local/bundles/cros/biod/cros_config.go",
         "patchSetId": 14
@@ -149,6 +197,30 @@
       "side": 1,
       "message": "Ah, that\u0027s fair. I really only did this to instill confidence that the test ran, for users that are running the manually.\n\nCan I so this in a follow-up CL so that I don\u0027t need tast-owner\u0027s attention again for this review?",
       "parentUuid": "4060de59_4bb09025",
+      "range": {
+        "startLine": 41,
+        "startChar": 24,
+        "endLine": 41,
+        "endChar": 32
+      },
+      "revId": "6dda010f80423023094cec9932826061973134a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a3684d1_15d1ac58",
+        "filename": "src/chromiumos/tast/local/bundles/cros/biod/cros_config.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2022-09-27T00:05:03Z",
+      "side": 1,
+      "message": "crrev.com/c/3920275",
+      "parentUuid": "e2a6bf7c_6159e5af",
       "range": {
         "startLine": 41,
         "startChar": 24,
@@ -220,6 +292,30 @@
       "side": 1,
       "message": "Can I do this in a follow-up CL so that I don\u0027t need tast-owner\u0027s attention again for this review?",
       "parentUuid": "e14c6079_ef3a5a54",
+      "range": {
+        "startLine": 64,
+        "startChar": 53,
+        "endLine": 64,
+        "endChar": 76
+      },
+      "revId": "6dda010f80423023094cec9932826061973134a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df27d666_fcc11f07",
+        "filename": "src/chromiumos/tast/local/bundles/cros/biod/cros_config.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2022-09-27T00:05:03Z",
+      "side": 1,
+      "message": "crrev.com/c/3920276",
+      "parentUuid": "c1ff80a3_2b284f02",
       "range": {
         "startLine": 64,
         "startChar": 53,
