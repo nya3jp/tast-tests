@@ -24,9 +24,9 @@ func init() {
 }
 
 func LoginDuringTakingOwnership(ctx context.Context, s *testing.State) {
-	r := hwsecremote.NewCmdRunner(s.DUT())
+	cmdRunner := hwsecremote.NewCmdRunner(s.DUT())
 
-	helper, err := hwsecremote.NewHelper(r, s.DUT())
+	helper, err := hwsecremote.NewHelper(cmdRunner, s.DUT())
 	if err != nil {
 		s.Fatal("Helper creation error: ", err)
 	}
