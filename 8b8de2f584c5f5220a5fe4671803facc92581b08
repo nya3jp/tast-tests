@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "907df920_38832683",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-09-27T02:55:08Z",
+      "side": 1,
+      "message": "+2 for Tast Review % comment",
+      "revId": "8b8de2f584c5f5220a5fe4671803facc92581b08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb5d91a6_5b04e729",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/default_display_density.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-09-27T02:55:08Z",
+      "side": 1,
+      "message": "Does the timeout need to be adjusted now?",
+      "revId": "8b8de2f584c5f5220a5fe4671803facc92581b08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
