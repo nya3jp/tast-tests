@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd18514b_7a3fd84a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-09-27T14:28:01Z",
+      "side": 1,
+      "message": "also b:249124829 (which you may even want to reassign to yourself now)",
+      "revId": "6f6484a622d30ec6153dfd6fc7d41391124bf083",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
