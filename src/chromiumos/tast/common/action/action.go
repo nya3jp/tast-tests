@@ -32,9 +32,12 @@ func Named(name string, fn Action) Action {
 // Combine combines a list of functions from Context to error into one function.
 // Combine adds the name of the operation into the error message to clarify the step.
 // It is recommended to start the name of operations with a verb, e.g.,
-//     "open Downloads and right click a folder"
+//
+//	"open Downloads and right click a folder"
+//
 // Then the failure msg would be like:
-//     "failed to open Downloads and right click a folder on step ..."
+//
+//	"failed to open Downloads and right click a folder on step ..."
 func Combine(name string, steps ...Action) Action {
 	return func(ctx context.Context) error {
 		for i, f := range steps {
@@ -103,18 +106,30 @@ func retry(n int, action Action, interval time.Duration, base int64, verboseLog 
 // The function returns an error only if the preFunc succeeds but action fails,
 // It returns nil in all other situations.
 // Example:
-//   dialog := nodewith.Name("Dialog").Role(role.Dialog)
-//   button := nodewith.Name("Ok").Role(role.Button).Ancestor(dialog)
-//   ui := uiauto.New(tconn)
-//   if err := action.IfSuccessThen(ui.Withtimeout(5*time.Second).WaitUntilExists(dialog), ui.LeftClick(button))(ctx); err != nil {
-//	    ...
-//   }
+//
+//	  dialog := nodewith.Name("Dialog").Role(role.Dialog)
+//	  button := nodewith.Name("Ok").Role(role.Button).Ancestor(dialog)
+//	  ui := uiauto.New(tconn)
+//	  if err := action.IfSuccessThen(ui.Withtimeout(5*time.Second).WaitUntilExists(dialog), ui.LeftClick(button))(ctx); err != nil {
+//		    ...
+//	  }
 func IfSuccessThen(preFunc, action Action) Action {
+	return ifSuccessThenWithLogOption(preFunc, action, false)
+}
+
+// IfSuccessThenWithLog returns a function that runs action only if the first function succeeds with logging on first action failure.
+func IfSuccessThenWithLog(preFunc, action Action) Action {
+	return ifSuccessThenWithLogOption(preFunc, action, true)
+}
+
+func ifSuccessThenWithLogOption(preFunc, action Action, logError bool) Action {
 	return func(ctx context.Context) error {
 		if err := preFunc(ctx); err == nil {
 			if err := action(ctx); err != nil {
 				return err
 			}
+		} else if logError {
+			testing.ContextLog(ctx, "Error in performing preFunc: ", err)
 		}
 		return nil
 	}
