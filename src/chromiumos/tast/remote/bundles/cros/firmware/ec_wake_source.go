@@ -53,7 +53,7 @@ func init() {
 				Name:              "keypress",
 				ExtraHardwareDeps: hwdep.D(hwdep.Keyboard()),
 				Val:               wakeByKeyboard,
-				ExtraAttr:         []string{"firmware_ec"},
+				ExtraAttr:         []string{"firmware_unstable"},
 			},
 			{
 				Name:              "lid",
