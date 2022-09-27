@@ -16,6 +16,75 @@
       "message": "Sorry for leaving this CL for a long time (its birthday is next month!)\nThe tests are passing on duffy (chromebox) and nami (chromeobook).\n\nRoman, PTAL again since I\u0027ve lost your LGTM.",
       "revId": "f24da463e62dcc7ca2cb1030f27188c0cfd62755",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d83eacd_d2136fd6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/hid_screen.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-09-27T23:16:18Z",
+      "side": 1,
+      "message": "nit: please move this above chrome.New(). cleanup usually sits together with the caller.\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#reserve-time-for-clean_up-task",
+      "range": {
+        "startLine": 65,
+        "startChar": 1,
+        "endLine": 67,
+        "endChar": 15
+      },
+      "revId": "f24da463e62dcc7ca2cb1030f27188c0cfd62755",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7aee0e9_3b646ed4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/hid_screen.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-09-27T23:16:18Z",
+      "side": 1,
+      "message": "nit: mouse",
+      "range": {
+        "startLine": 124,
+        "startChar": 54,
+        "endLine": 124,
+        "endChar": 62
+      },
+      "revId": "f24da463e62dcc7ca2cb1030f27188c0cfd62755",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3cb20bf1_3324c0d9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/hid_screen.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-09-27T23:16:18Z",
+      "side": 1,
+      "message": "nit: This is not required. WaitUntilEnabled will waits for its existence.",
+      "range": {
+        "startLine": 151,
+        "startChar": 3,
+        "endLine": 151,
+        "endChar": 34
+      },
+      "revId": "f24da463e62dcc7ca2cb1030f27188c0cfd62755",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
