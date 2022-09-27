@@ -22,6 +22,30 @@
       },
       "revId": "59959a5e2467c9ae9a178a9ebb25ecf8e8f8858b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc335c48_4b4a91a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio_loopback_correctness.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1543263
+      },
+      "writtenOn": "2022-09-27T07:52:23Z",
+      "side": 1,
+      "message": "It\u0027s a device issue. From the test result, it has a dual-core Intel(R) Celeron(R) 6305 @ 1.80GHz, which I think counts as a low performance device.",
+      "parentUuid": "22761106_c3d772d1",
+      "range": {
+        "startLine": 64,
+        "startChar": 4,
+        "endLine": 65,
+        "endChar": 17
+      },
+      "revId": "59959a5e2467c9ae9a178a9ebb25ecf8e8f8858b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
