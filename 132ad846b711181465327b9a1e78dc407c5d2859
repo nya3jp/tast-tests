@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c01db529_30c7f74d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2022-09-27T19:09:42Z",
+      "side": 1,
+      "message": "Sorry, just have a few remaining nits that I noticed on re-review, but apart from those LGTM.",
+      "revId": "132ad846b711181465327b9a1e78dc407c5d2859",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6321dff3_38b370b4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/hid_wake.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2022-09-27T19:09:42Z",
+      "side": 1,
+      "message": "nit: Please move this declaration closer to where it is being first used.",
+      "range": {
+        "startLine": 68,
+        "startChar": 1,
+        "endLine": 68,
+        "endChar": 31
+      },
+      "revId": "132ad846b711181465327b9a1e78dc407c5d2859",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3ba8c0a_afea80ee",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/hid_wake.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2022-09-27T19:09:42Z",
+      "side": 1,
+      "message": "nit: This can just be `return err`.",
+      "range": {
+        "startLine": 86,
+        "startChar": 2,
+        "endLine": 89,
+        "endChar": 12
+      },
+      "revId": "132ad846b711181465327b9a1e78dc407c5d2859",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe1d4a31_d0b72ac5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/hid_wake.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2022-09-27T19:09:42Z",
+      "side": 1,
+      "message": "nit: I think this can be collapsed to just `return err`, since the original error messages are sufficiently descriptive regarding what failed.",
+      "range": {
+        "startLine": 184,
+        "startChar": 25,
+        "endLine": 188,
+        "endChar": 11
+      },
+      "revId": "132ad846b711181465327b9a1e78dc407c5d2859",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
