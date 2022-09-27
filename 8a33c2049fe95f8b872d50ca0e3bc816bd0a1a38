@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5fb1b92_1abad79b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/recent_apps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-09-27T20:07:17Z",
+      "side": 1,
+      "message": "I don\u0027t think this correctly describes what\u0027s going on. Recent apps container should not be blocked by continue section privacy notice, so even if we show the sort nudge, recent apps would be present.\n\nI think the reason for flakiness is that the launcher is shown immediately after login, and races with system / default apps installation. Hiding and showing the launcher again works because SetUpLauncherTest will wait for system apps to finish installing (though, it will open the launcher first, so recent apps may not be present on first run).\n\nI\u0027d be fine with the test closing and reopening the launcher, but we should clearly document why we need it. Alternatively, we could also add a waiter for SWA installation before starting the test setup up (again, with clear documentation).",
+      "range": {
+        "startLine": 129,
+        "startChar": 13,
+        "endLine": 129,
+        "endChar": 37
+      },
+      "revId": "8a33c2049fe95f8b872d50ca0e3bc816bd0a1a38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
