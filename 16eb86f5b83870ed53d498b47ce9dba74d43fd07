@@ -22,6 +22,30 @@
       },
       "revId": "16eb86f5b83870ed53d498b47ce9dba74d43fd07",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d06a548e_1503ae66",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/bloxels.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2022-09-27T22:58:05Z",
+      "side": 1,
+      "message": "yes, image is used to identify \"got it\" button. Added a image file with this CL.",
+      "parentUuid": "938fe259_920e65cf",
+      "range": {
+        "startLine": 183,
+        "startChar": 1,
+        "endLine": 183,
+        "endChar": 12
+      },
+      "revId": "16eb86f5b83870ed53d498b47ce9dba74d43fd07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
