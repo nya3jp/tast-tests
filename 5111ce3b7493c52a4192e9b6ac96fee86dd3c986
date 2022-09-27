@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff9bde97_7b20d623",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1510928
+      },
+      "writtenOn": "2022-09-27T01:28:06Z",
+      "side": 1,
+      "message": "Maybe more clear\n\nnew test app: ArcRandomUIElementsApp",
+      "revId": "5111ce3b7493c52a4192e9b6ac96fee86dd3c986",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e60a9bc1_735fb0d3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510928
+      },
+      "writtenOn": "2022-09-27T01:28:06Z",
+      "side": 1,
+      "message": "Great. Basically two points:\n\n1. Linear vertical layout seems not able to show enough UI elements.\n\n2. Remove useless import.",
+      "revId": "5111ce3b7493c52a4192e9b6ac96fee86dd3c986",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a138d80_a84e3d58",
+        "filename": "android/ArcRandomElementsApp/AndroidManifest.xml",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1510928
+      },
+      "writtenOn": "2022-09-27T01:28:06Z",
+      "side": 1,
+      "message": "Where you use this library?",
+      "revId": "5111ce3b7493c52a4192e9b6ac96fee86dd3c986",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6628788_06713a3e",
+        "filename": "android/ArcRandomElementsApp/BUILD.gn",
+        "patchSetId": 5
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1510928
+      },
+      "writtenOn": "2022-09-27T01:28:06Z",
+      "side": 1,
+      "message": "You can try to remove this line and /res/ dir at the same time, if you want to get rid of layout.xml",
+      "revId": "5111ce3b7493c52a4192e9b6ac96fee86dd3c986",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5afacc8_e88e5188",
+        "filename": "android/ArcRandomElementsApp/res/layout/layout.xml",
+        "patchSetId": 5
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1510928
+      },
+      "writtenOn": "2022-09-27T01:28:06Z",
+      "side": 1,
+      "message": "Vertical linear layout sounds not enough for show all UI elements.",
+      "revId": "5111ce3b7493c52a4192e9b6ac96fee86dd3c986",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "105cb390_fe5a24ea",
+        "filename": "android/ArcRandomElementsApp/src/org/chromium/arc/testapp/randomelements/RandomUIElementsActivity.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1510928
+      },
+      "writtenOn": "2022-09-27T01:28:06Z",
+      "side": 1,
+      "message": "Are you still use this listener?",
+      "revId": "5111ce3b7493c52a4192e9b6ac96fee86dd3c986",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
