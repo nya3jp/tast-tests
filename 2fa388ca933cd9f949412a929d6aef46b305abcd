@@ -16,6 +16,23 @@
       "message": "posted a few update to the test",
       "revId": "2fa388ca933cd9f949412a929d6aef46b305abcd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "72af6678_234df097",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1546868
+      },
+      "writtenOn": "2022-09-27T18:14:11Z",
+      "side": 1,
+      "message": "Please update the test description to reflect the additional changes, which are more substantial than just adding a VK run of the test",
+      "revId": "2fa388ca933cd9f949412a929d6aef46b305abcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
