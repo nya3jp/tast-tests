@@ -98,6 +98,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "ef9c5eb7_33e6378b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2022-09-27T10:35:54Z",
+      "side": 1,
+      "message": "Done!\n\nAnd it looks like:\n-  ProxySettings.ProxyPacMandatory comes from CL:991416\n-  ProxySettings.ProxyServerMode errors (most likely) comes from the fact that CL:3490092 initialises ProxyMode with direct connection \n\n\nhttps://chromium-review.googlesource.com/c/chromium/src/+/2991416\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3490092",
+      "parentUuid": "a9c20c5d_d920df7a",
+      "range": {
+        "startLine": 11,
+        "startChar": 22,
+        "endLine": 11,
+        "endChar": 70
+      },
+      "revId": "6379a30cf9873c4b83953618651a7c737054051b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "308d96bf_58e8ad54",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
