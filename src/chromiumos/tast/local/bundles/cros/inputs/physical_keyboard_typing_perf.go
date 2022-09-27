@@ -37,6 +37,9 @@ var enUSTestData = "Alice was beginning to get very tired of sitting by her sist
 // From go/3828217 with random concatenation.
 var pinyinTestData = "ke yi zuo ziji xiang zuodeshi chuan lai de ziji de shengyin henyou yisi de zhe yang xian ba zai zhe bian hai yu dao le zhe ming de zhu chiren li chen zhe ci lai shi weile xin chang pian de shi buguo da jia buyong dan xinwo hui jin kuaihao qi laide dan mei ci doumei you jihui quyou lan yi xiazai yan chu qian wojie shou le zhuan fang you de shi hou sihu zong shiganjueshi jian guodetai kuai lebu guohai shixiwang zai mingnian nengyouxin de zhuan jidai gei dajia xinqing zaileng qi fangli kaishi chen dian jian qiyi gebeikefangzai er bian tingshuyuda hai deshengyin rang womenyiqi zai weilai de lv cheng zhong bi ci doubuyao fangqi zhun que di shuoying gai shi bian han lengle dang ran zhe doushi zai bu kun de qian ti xia wan chengde"
 
+// From go/3921098 with random concatenation.
+var japaneseTestData = "wagahai wa nekodearu. na ma e wa mada nai. doko de uma reta ka tonto kentou ga tsukanu. nani demo usugurai jimejime shita tokoro de nya nya naite ita koto dake haki oku shite iru. nani demo usugurai jimejime shita tokoro de nya nya naite ita koto dake haki oku shite iru. wagahai wa koko de hajimete nin gen to iu mono o mita. shikamo ato de kiku to soreha sho seitoiu ni n gen chi yuudeichibandouakunashuzokudeattasouda. kono sho sei to iu no wa tokidoki wareware o toraete nite kuu to iu hanashidearu. shikashi sono touji wa nani to iu kou mo nakattakara betsudan kowashi ito mo omowanakatta. tada kare notenohirani nose rarete suu to mochiage rareta toki nandaka fuwafuwa shita kanji ga atta bakaridearu."
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         PhysicalKeyboardTypingPerf,
@@ -56,7 +59,6 @@ func init() {
 					inputMethod: ime.EnglishUS,
 					keys:        enUSTestData,
 				},
-				ExtraAttr: []string{"group:input-tools-upstream"},
 			},
 			{
 				Name:    "en_us_lacros",
@@ -74,7 +76,6 @@ func init() {
 					inputMethod: ime.ChinesePinyin,
 					keys:        pinyinTestData,
 				},
-				ExtraAttr: []string{"group:input-tools-upstream"},
 			},
 			{
 				Name:    "pinyin_lacros",
@@ -84,6 +85,14 @@ func init() {
 					keys:        pinyinTestData,
 				},
 				ExtraSoftwareDeps: []string{"lacros"},
+			},
+			{
+				Name:    "ja",
+				Fixture: fixture.ClamshellNonVK,
+				Val: typingPerfTestParam{
+					inputMethod: ime.Japanese,
+					keys:        japaneseTestData,
+				},
 			},
 		},
 	})
