@@ -81,6 +81,30 @@
       },
       "revId": "a83cd715381eca5dfa348e106b7493446be03aec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "20f48293_48e1d110",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/window_cycle_per_desk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1551729
+      },
+      "writtenOn": "2022-09-27T17:48:44Z",
+      "side": 1,
+      "message": "Thank you Hongyu for the info.",
+      "parentUuid": "588f4c00_31deb8f8",
+      "range": {
+        "startLine": 109,
+        "startChar": 4,
+        "endLine": 109,
+        "endChar": 5
+      },
+      "revId": "a83cd715381eca5dfa348e106b7493446be03aec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
