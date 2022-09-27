@@ -33,6 +33,41 @@
       "message": "Thanks for the clean up!\n\nSmall suggestion: Looks like we have a lot usage for LaunchProjectorCreationFlow + DeleteScreencastItem. Would it be simpler to put those flow in a fixture(Launch creation flow in setup() and delete screencast in teardown())?  Though I don\u0027t have strong preference right now.",
       "revId": "ad2b520aa9345deb304dfe3fa5c9ee14f99e49b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a0993eb_373ffcc4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-09-27T22:00:59Z",
+      "side": 1,
+      "message": "Hi Tast owners, this CL is ready for review.",
+      "revId": "ad2b520aa9345deb304dfe3fa5c9ee14f99e49b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "879642d1_3bc26bf6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-09-27T22:00:59Z",
+      "side": 1,
+      "message": "Ack. Not for this CL, but we can consider migrating later.\n\nPros:\n* Reduces code duplication among the 3/7 Projector.* tests that create screencasts.\n* Avoids the problem of developers forgetting to clean up screencast items afterwards.\n\nCons:\n* Test-specific logic shouldn\u0027t go into the fixture.\n* Not every test needs to create new screencasts (eg projector.SharedScreencast) so we\u0027ll need messy flags to control the logic in the fixture.",
+      "parentUuid": "2f0bfa74_c3330a04",
+      "revId": "ad2b520aa9345deb304dfe3fa5c9ee14f99e49b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
