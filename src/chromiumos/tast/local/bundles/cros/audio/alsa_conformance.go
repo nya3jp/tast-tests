@@ -40,7 +40,8 @@ import (
 // TODO(b/244254621) : remove "sasukette" when b/244254621 is fixed.
 // TODO(b/248997612) : remove "kevin" when b/248997612 is fixed.
 // TODO(b/249023249) : remove "vell" when b/249023249 is fixed.
-var unstableModels = []string{"chronicler", "nautilus", "nautiluslte", "soraka", "karma", "beetley", "redrix", "gimble", "primus", "anahera", "babymega", "babytiger", "blacktiplte", "taniks", "bob", "dumo", "dru", "nasher", "sasukette", "kevin", "vell"}
+// TODO(b/249207920) : remove "astronaut", "blacktip", "blacktip360", "epaulette", "lava", "nasher360", "rabbid", "robo", "robo360", "santa", "whitetip" when b/249207920 is fixed.
+var unstableModels = []string{"chronicler", "nautilus", "nautiluslte", "soraka", "karma", "beetley", "redrix", "gimble", "primus", "anahera", "babymega", "babytiger", "blacktiplte", "taniks", "bob", "dumo", "dru", "nasher", "sasukette", "kevin", "vell", "astronaut", "blacktip", "blacktip360", "epaulette", "lava", "nasher360", "rabbid", "robo", "robo360", "santa", "whitetip"}
 
 func init() {
 	testing.AddTest(&testing.Test{
