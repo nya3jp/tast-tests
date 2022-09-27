@@ -136,7 +136,10 @@ func (r *RollbackService) VerifyRollback(ctx context.Context, request *aupb.Veri
 		return nil, errors.Wrapf(err, "failed to convert milestone %s to integer", lsbContent[lsbrelease.Milestone])
 	}
 
-	cr, err := chrome.New(ctx, chrome.DeferLogin())
+	// Chrome would send an auto re-enrollment request to the real DMServer
+	// which will fail because the device wasn't enrolled at all.
+	// Try to prevent that by setting DMServer URL to nonsense.
+	cr, err := chrome.New(ctx, chrome.DMSPolicy("do-not-call-any-dmserver"), chrome.DeferLogin())
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to restart Chrome for testing after rollback")
 	}
