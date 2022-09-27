@@ -9,11 +9,11 @@ import (
 	"time"
 
 	"chromiumos/tast/ctxutil"
-	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/feedbackapp"
@@ -24,7 +24,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         OpenChromebookHelpForum,
-		LacrosStatus: testing.LacrosVariantUnneeded,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "User is able to open chromebook help forum",
 		Contacts: []string{
 			"wangdanny@google.com",
@@ -32,17 +32,25 @@ func init() {
 			"xiangdongkong@google.com",
 			"cros-feedback-app@google.com",
 		},
-		Fixture:      "chromeLoggedInWithOsFeedback",
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
+		Params: []testing.Param{{
+			Name:    "ash",
+			Fixture: "chromeLoggedInWithOsFeedback",
+			Val:     browser.TypeAsh,
+		}, {
+			Name:    "lacros",
+			Fixture: "lacrosOsFeedback",
+			Val:     browser.TypeLacros,
+		}},
 	})
 }
 
-const chromebookHelpForumAddress = "https://support.google.com/chromebook/?hl=en#topic=3399709"
+const linkAddress = "https://support.google.com/chromebook/?hl=en#topic=3399709"
 
 // OpenChromebookHelpForum verifies the user is able to open chromebook help forum.
 func OpenChromebookHelpForum(ctx context.Context, s *testing.State) {
-	cr := s.FixtValue().(*chrome.Chrome)
+	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
@@ -69,25 +77,27 @@ func OpenChromebookHelpForum(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to find link: ", err)
 	}
 
+	bt := s.Param().(browser.Type)
+
 	// Verify browser is opened.
-	if err = ash.WaitForApp(ctx, tconn, apps.Chrome.ID, time.Minute); err != nil {
+	id := apps.Chrome.ID
+	if bt != browser.TypeAsh {
+		id = apps.LacrosID
+	}
+	if err = ash.WaitForApp(ctx, tconn, id, time.Minute); err != nil {
 		s.Fatal("Could not find browser in shelf after launch: ", err)
 	}
 
 	// Verify browser contains correct address.
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		tabs, err := browser.CurrentTabs(ctx, tconn)
-		if err != nil {
-			return errors.Wrap(err, "failed to get the current tabs")
-		}
-		if tabs[0].URL != chromebookHelpForumAddress {
-			return errors.Wrap(err, "failed to get correct url address")
-		}
-		return nil
-	}, &testing.PollOptions{
-		Interval: 5 * time.Second,
-		Timeout:  30 * time.Second,
-	}); err != nil {
-		s.Fatal("Failed to find chromebook help forum address: ", err)
+	br, brCleanUp, err := browserfixt.Connect(ctx, cr, bt)
+	if err != nil {
+		s.Fatalf("Failed to connect to active browser for %v: %v", linkAddress, err)
 	}
+	defer brCleanUp(ctx)
+	c, err := br.NewConnForTarget(ctx, chrome.MatchTargetURL(linkAddress))
+	if err != nil {
+		s.Fatalf("Failed to find browser window for %v: %v", linkAddress, err)
+	}
+	defer c.Close()
+	defer c.CloseTarget(ctx)
 }
