@@ -37,6 +37,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "0d91279d_99e9570c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/admin_templates_launch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1522762
+      },
+      "writtenOn": "2022-09-27T19:05:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "de3d400f_b7d42782",
+      "revId": "1a9b9d6e1dc04ebad9f0f6acec313ff510967ad6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "05260606_a054efa7",
         "filename": "src/chromiumos/tast/local/bundles/cros/wmp/admin_templates_launch.go",
         "patchSetId": 2
@@ -48,6 +66,24 @@
       "writtenOn": "2022-09-27T08:47:18Z",
       "side": 1,
       "message": "Not a focus of this CL, but I am curious why this is made with a single subtest. Was the plain scope block below used as a loop in the past?",
+      "revId": "1a9b9d6e1dc04ebad9f0f6acec313ff510967ad6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "66537118_abbf1529",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/admin_templates_launch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1522762
+      },
+      "writtenOn": "2022-09-27T19:05:42Z",
+      "side": 1,
+      "message": "Since this was a combination of two policies, there is a plan to create more as a combination of unset and set values for these two polices. However, at the moment these two policies must be set together.",
+      "parentUuid": "05260606_a054efa7",
       "revId": "1a9b9d6e1dc04ebad9f0f6acec313ff510967ad6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -69,6 +105,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2345193_f3c52ce4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/admin_templates_launch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1522762
+      },
+      "writtenOn": "2022-09-27T19:05:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "319a0b9d_7f9394f2",
+      "revId": "1a9b9d6e1dc04ebad9f0f6acec313ff510967ad6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d0a9314e_234bfddf",
@@ -82,6 +136,24 @@
       "writtenOn": "2022-09-27T08:47:18Z",
       "side": 1,
       "message": "optional: add \"at cleanup\" to make the error more easily distinguishable with the setup error",
+      "revId": "1a9b9d6e1dc04ebad9f0f6acec313ff510967ad6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "79796d96_280310fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/admin_templates_launch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1522762
+      },
+      "writtenOn": "2022-09-27T19:05:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d0a9314e_234bfddf",
       "revId": "1a9b9d6e1dc04ebad9f0f6acec313ff510967ad6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
