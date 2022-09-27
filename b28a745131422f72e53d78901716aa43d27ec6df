@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4fdfc25f_b8a935f9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_keyboard.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-09-27T16:16:06Z",
+      "side": 1,
+      "message": "I thought the usb_keyboard test didn\u0027t work. Shouldn\u0027t we disable it completely?",
+      "range": {
+        "startLine": 45,
+        "startChar": 10,
+        "endLine": 45,
+        "endChar": 22
+      },
+      "revId": "b28a745131422f72e53d78901716aa43d27ec6df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
