@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "caebd8d9_b5375f11",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1248360
+      },
+      "writtenOn": "2022-09-27T15:38:34Z",
+      "side": 1,
+      "message": "Thank you!",
+      "revId": "d42549104506865ebfbb70c25f4701ead771a3fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83356a25_e027eb51",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/parental_controls_link.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1248360
+      },
+      "writtenOn": "2022-09-27T15:38:34Z",
+      "side": 1,
+      "message": "Given that this opens the browser, I think we need LaCrOS variant.",
+      "range": {
+        "startLine": 25,
+        "startChar": 2,
+        "endLine": 25,
+        "endChar": 46
+      },
+      "revId": "d42549104506865ebfbb70c25f4701ead771a3fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7834f7b_2728b999",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/parental_controls_link.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1248360
+      },
+      "writtenOn": "2022-09-27T15:38:34Z",
+      "side": 1,
+      "message": "Nit: Append with additional details \u0027when Play Store is disabled\u0027\n(If Play Store is enabled then this will open FL app in Play Store)",
+      "range": {
+        "startLine": 26,
+        "startChar": 16,
+        "endLine": 26,
+        "endChar": 88
+      },
+      "revId": "d42549104506865ebfbb70c25f4701ead771a3fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e816c270_26e32a19",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/parental_controls_link.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1248360
+      },
+      "writtenOn": "2022-09-27T15:38:34Z",
+      "side": 1,
+      "message": "Nit: \u0027Parental controls\u0027 setting\n(Or similar, it is a little unclear what the \u0027Parental controls\u0027 is)",
+      "range": {
+        "startLine": 26,
+        "startChar": 24,
+        "endLine": 26,
+        "endChar": 43
+      },
+      "revId": "d42549104506865ebfbb70c25f4701ead771a3fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22d62351_92966e72",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/parental_controls_link.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1248360
+      },
+      "writtenOn": "2022-09-27T15:38:34Z",
+      "side": 1,
+      "message": "Nit: Maybe add a comment that it is expected for ARC to be disabled in this fixture.",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 40
+      },
+      "revId": "d42549104506865ebfbb70c25f4701ead771a3fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
