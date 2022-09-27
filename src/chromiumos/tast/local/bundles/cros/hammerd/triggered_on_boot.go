@@ -23,7 +23,7 @@ func init() {
 		Func:         TriggeredOnBoot,
 		Desc:         "Hammerd smoke test to check if Hammerd is triggered on boot",
 		Contacts:     []string{"fshao@chromium.org"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"hammerd"},
 		HardwareDeps: hwdep.D(hwdep.ChromeEC(), hwdep.ECFeatureDetachableBase()),
 		Timeout:      1 * time.Minute,
