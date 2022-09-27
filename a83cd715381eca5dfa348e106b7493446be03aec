@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f78ebbf1_5a91c875",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1551729
+      },
+      "writtenOn": "2022-09-27T17:27:47Z",
+      "side": 1,
+      "message": "LGTM, small ask for the comments. Also, I see some sleep in the main process, is that possible for using WaitUntilExists in some place?",
+      "revId": "a83cd715381eca5dfa348e106b7493446be03aec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86b6da7b_4727e3ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/window_cycle_per_desk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1551729
+      },
+      "writtenOn": "2022-09-27T17:27:47Z",
+      "side": 1,
+      "message": "Maybe I missed something, I didn\u0027t see No.1 and No.2, is 3(4 below as well) here for steps?",
+      "range": {
+        "startLine": 109,
+        "startChar": 4,
+        "endLine": 109,
+        "endChar": 5
+      },
+      "revId": "a83cd715381eca5dfa348e106b7493446be03aec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
