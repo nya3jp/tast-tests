@@ -16,6 +16,24 @@
       "message": "From the perspective of test runtime, it would be preferable if the chrome + ARC state could be re-used, with the display density reset to its default value.\nBut as I do not know if this is possible, I am approving.",
       "revId": "fbec327399cefc309f4dfabd8f3f6e4df0054c63",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d468cb28_8949ddc8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/default_display_density.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2022-09-27T02:56:48Z",
+      "side": 0,
+      "message": "Ack",
+      "parentUuid": "e0e60154_195a5c57",
+      "revId": "fbec327399cefc309f4dfabd8f3f6e4df0054c63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

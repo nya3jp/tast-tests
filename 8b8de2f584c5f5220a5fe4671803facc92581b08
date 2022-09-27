@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "82bc34f5_cf6b42bf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2022-09-27T02:56:48Z",
+      "side": 1,
+      "message": "Thanks for the review!",
+      "revId": "8b8de2f584c5f5220a5fe4671803facc92581b08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bb5d91a6_5b04e729",
@@ -31,6 +48,24 @@
       "writtenOn": "2022-09-27T02:55:08Z",
       "side": 1,
       "message": "Does the timeout need to be adjusted now?",
+      "revId": "8b8de2f584c5f5220a5fe4671803facc92581b08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a29c52c4_50fb4df0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/default_display_density.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2022-09-27T02:56:48Z",
+      "side": 1,
+      "message": "Confirmed 4 min is sufficient with this CL.",
+      "parentUuid": "bb5d91a6_5b04e729",
       "revId": "8b8de2f584c5f5220a5fe4671803facc92581b08",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
