@@ -1180,3 +1180,81 @@ func (h *Helper) CheckBrokenScreen(ctx context.Context, usbdev string) error {
 	}
 	return nil
 }
+
+// Lock the CCD console by sending a GSC command
+func (h *Helper) LockCCD(ctx context.Context) error {
+	err := h.Servo.RunCR50Command(ctx, "ccd lock")
+	if err != nil {
+		return errors.Wrap(err, "failed to run 'ccd lock' on GSC")
+	}
+	return nil
+}
+
+// Tell the GSC to force connect/disconnect battery presence
+func (h *Helper) SetForceBatteryPresence(ctx context.Context, force_connect bool) error {
+	cmd := "bpforce connect"
+	regexs := []string{`.*forced connect.*`}
+	if !force_connect {
+		cmd = "bpforce disconnect"
+		regexs = []string{`.*forced disconnect.*`}
+	}
+	matches, err := h.Servo.RunCR50CommandGetOutput(ctx, cmd, regexs)
+	if err != nil {
+		return errors.Wrap(err, "failed to run `"+cmd+"`on GSC, regex patterns = {"+strings.Join(regexs, ",")+"}")
+	}
+	if len(matches) == 0 {
+		return errors.New("failed to get regexp matches = {" + strings.Join(regexs, ",") + "} for `" + cmd + "`")
+	}
+	return nil
+}
+
+// Check if physical presence is required for `ccd open` with a hint about whether it is expected or not
+func (h *Helper) AssertPhysicalPresenceRequiredForCCDOpen(ctx context.Context, should_be_required bool) error {
+	regexs := []string{`.*Console unlock allowed.*`, `.*CCD opened.*`}
+	if should_be_required {
+		regexs = []string{`Press the physical button now!`}
+	}
+	matches, err := h.Servo.RunCR50CommandGetOutput(ctx, "ccd open", regexs)
+	if err != nil {
+		return errors.Wrap(err, "failed to run `ccd open` on GSC, regex patterns = {"+strings.Join(regexs, ",")+"}")
+	}
+	if len(matches) == 0 {
+		return errors.New("failed to get regexp matches = {" + strings.Join(regexs, ",") + "} for `ccd open`")
+	}
+	return nil
+}
+
+// Check if physical presence is required for `ccd unlock` with a hint about whether it is expected or not
+func (h *Helper) AssertPhysicalPresenceRequiredForCCDUnlock(ctx context.Context, should_be_required bool) error {
+	regexs := []string{`.*Console unlock allowed.*`, `.*CCD opened.*`}
+	if should_be_required {
+		regexs = []string{`Access Denied`}
+	}
+	matches, err := h.Servo.RunCR50CommandGetOutput(ctx, "ccd unlock", regexs)
+	if err != nil {
+		return errors.Wrap(err, "failed to run `ccd unlock` on GSC, regex patterns = {"+strings.Join(regexs, ",")+"}")
+	}
+	if len(matches) == 0 {
+		return errors.New("failed to get regexp matches = {" + strings.Join(regexs, ",") + "} for `ccd unlock`")
+	}
+	return nil
+}
+
+// Call `gsctool`` to disable factory mode
+func (h *Helper) gsctoolDisableFactoryMode(ctx context.Context) error {
+	_, err := h.DUT.Conn().CommandContext(ctx, "gsctool", "-a", "-F", "disable").Output(ssh.DumpLogOnError)
+	if err != nil {
+		return errors.Wrap(err, "failed to run 'gsctool -aF disable'")
+	}
+	return nil
+}
+
+// Check if physical presence is required for `gsctool -aF disable`
+func (h *Helper) IsPhysicalPresenceRequiredForGsctool(ctx context.Context) (bool, error) {
+	err := h.gsctoolDisableFactoryMode(ctx)
+	if err != nil {
+		return true, nil
+	}
+
+	return false, nil
+}
