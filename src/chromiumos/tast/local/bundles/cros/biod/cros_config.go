@@ -61,7 +61,7 @@ func CrosConfig(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to invoke cros_config for sensor_type: ", err)
 	}
 	if crosconfig.IsNotFound(err) {
-		s.Logf("Not using %q for fingerprint-sensor-type", fp.SensorTypeStandAlone)
+		s.Log("Config /fingerprint fingerprint-sensor-type is missing")
 		return
 	}
 	if !fp.SensorType(sensorType).IsValid() {
