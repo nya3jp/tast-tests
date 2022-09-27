@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ddb8f434_eb7a385b",
+        "filename": "src/chromiumos/tast/local/network/virtualnet/udpserver/udpserver.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2022-09-27T05:32:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e220a888_eacdd1e1",
+      "range": {
+        "startLine": 20,
+        "startChar": 52,
+        "endLine": 20,
+        "endChar": 60
+      },
+      "revId": "c5fcb62246a7c3a625fb6a515a85929dc5eb4716",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "df90b3b3_c6c910ec",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-09-27T03:24:26Z",
       "side": 1,
       "message": "Perhaps create a enum for address family here instead of using string?\n(I assume fam is in {\"udp\", \"udp4\", \"udp6\"})\n\nAnd for the naming itself, perhaps family?",
+      "range": {
+        "startLine": 22,
+        "startChar": 9,
+        "endLine": 22,
+        "endChar": 19
+      },
+      "revId": "c5fcb62246a7c3a625fb6a515a85929dc5eb4716",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a40f7f7a_7338d62b",
+        "filename": "src/chromiumos/tast/local/network/virtualnet/udpserver/udpserver.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2022-09-27T05:32:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df90b3b3_c6c910ec",
       "range": {
         "startLine": 22,
         "startChar": 9,
