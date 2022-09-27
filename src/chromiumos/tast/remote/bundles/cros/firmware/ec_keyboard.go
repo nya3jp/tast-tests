@@ -34,18 +34,16 @@ func init() {
 		Func:         ECKeyboard,
 		Desc:         "Test EC Keyboard interface",
 		Contacts:     []string{"tij@google.com", "cros-fw-engprod@google.com"},
-		Attr:         []string{"group:firmware"},
+		Attr:         []string{"group:firmware", "firmware_ec"},
 		HardwareDeps: hwdep.D(hwdep.ChromeEC(), hwdep.Keyboard()),
 		Fixture:      fixture.NormalMode,
 		Timeout:      2 * time.Minute,
 		ServiceDeps:  []string{"tast.cros.firmware.UtilsService"},
 		Params: []testing.Param{{
-			Val:       servoECKeyboard,
-			ExtraAttr: []string{"firmware_ec"},
+			Val: servoECKeyboard,
 		}, {
-			Name:      "usb_keyboard",
-			Val:       servoUSBKeyboard,
-			ExtraAttr: []string{"firmware_unstable"},
+			Name: "usb_keyboard",
+			Val:  servoUSBKeyboard,
 		}},
 	})
 }
