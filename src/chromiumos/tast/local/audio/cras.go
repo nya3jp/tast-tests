@@ -178,7 +178,7 @@ func (c *Cras) SetActiveNodeByType(ctx context.Context, nodeType string) error {
 		n, err := c.GetNodeByType(ctx, nodeType)
 		node = n
 		return err
-	}, &testing.PollOptions{Timeout: time.Second}); err != nil {
+	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
 		return errors.Errorf("failed to wait node %s", nodeType)
 	}
 
@@ -196,7 +196,7 @@ func (c *Cras) SetActiveNodeByType(ctx context.Context, nodeType string) error {
 			return errors.New("node is not active")
 		}
 		return nil
-	}, &testing.PollOptions{Timeout: time.Second}); err != nil {
+	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
 		return errors.Errorf("failed to wait node %s to be active", nodeType)
 	}
 
