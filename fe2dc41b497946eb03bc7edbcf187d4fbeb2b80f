@@ -63,6 +63,30 @@
       },
       "revId": "fe2dc41b497946eb03bc7edbcf187d4fbeb2b80f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6783f019_613e8888",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/unicorn_translation.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-09-27T00:44:19Z",
+      "side": 1,
+      "message": "Hey Li, I couldn\u0027t resolve the issue with managed users. I tried making the fixture inherit from fixture.FakeDMS and using the chromePolicyLoggedIn fixture, but they had other issues. I think the important thing is to run this test for Unicorn users. I left a TODO to add a test for managed users.",
+      "parentUuid": "8c8a41b0_c2de328f",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 31
+      },
+      "revId": "fe2dc41b497946eb03bc7edbcf187d4fbeb2b80f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
