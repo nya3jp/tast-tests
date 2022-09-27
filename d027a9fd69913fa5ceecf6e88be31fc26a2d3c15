@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "337d5681_eab6053e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1414062
+      },
+      "writtenOn": "2022-09-27T17:47:34Z",
+      "side": 1,
+      "message": "Hi Victor, PTAL.\n\nI hope you agree, but happy to discuss options, of course.\n\nCheers,\nRoland",
+      "revId": "d027a9fd69913fa5ceecf6e88be31fc26a2d3c15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
