@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b1ac219_d523b294",
+        "filename": "src/chromiumos/tast/local/bundles/cros/intel/cca_digital_zoom.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-09-27T15:04:29Z",
+      "side": 1,
+      "message": "why not fail here? \nIf it is not an error, then why call this function?\n\n(ditto below)",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 52
+      },
+      "revId": "652c445facf9f013ee178a47c6e65f201357eb29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34964a32_6efbaa02",
+        "filename": "src/chromiumos/tast/local/bundles/cros/intel/cca_digital_zoom.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-09-27T15:04:29Z",
+      "side": 1,
+      "message": "see below",
+      "range": {
+        "startLine": 73,
+        "startChar": 2,
+        "endLine": 75,
+        "endChar": 3
+      },
+      "revId": "652c445facf9f013ee178a47c6e65f201357eb29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b720ec8a_7b8c3b96",
+        "filename": "src/chromiumos/tast/local/bundles/cros/intel/cca_digital_zoom.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-09-27T15:04:29Z",
+      "side": 1,
+      "message": "see below",
+      "range": {
+        "startLine": 82,
+        "startChar": 2,
+        "endLine": 84,
+        "endChar": 3
+      },
+      "revId": "652c445facf9f013ee178a47c6e65f201357eb29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a10d5898_624ef54b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/intel/cca_digital_zoom.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-09-27T15:04:29Z",
+      "side": 1,
+      "message": "why is it taking the phone in the middle of the loop? \nadd comment",
+      "range": {
+        "startLine": 100,
+        "startChar": 2,
+        "endLine": 102,
+        "endChar": 3
+      },
+      "revId": "652c445facf9f013ee178a47c6e65f201357eb29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3cda4848_04cf3015",
+        "filename": "src/chromiumos/tast/local/bundles/cros/intel/cca_digital_zoom.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-09-27T15:04:29Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 109,
+        "startChar": 2,
+        "endLine": 111,
+        "endChar": 3
+      },
+      "revId": "652c445facf9f013ee178a47c6e65f201357eb29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
