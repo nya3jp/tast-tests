@@ -17,6 +17,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/quickanswers"
 	"chromiumos/tast/testing"
 )
 
@@ -67,13 +68,13 @@ func DefinitionWithNonEnglishWords(ctx context.Context, s *testing.State) {
 
 	ui := uiauto.New(tconn)
 
-	if err := tconn.Call(ctx, nil, `tast.promisify(chrome.autotestPrivate.setWhitelistedPref)`, "settings.quick_answers.enabled", true); err != nil {
+	if err := quickanswers.SetPrefValue(ctx, tconn, "settings.quick_answers.enabled", true); err != nil {
 		s.Fatal("Failed to enable Quick Answers: ", err)
 	}
 
 	const languagesList = "en,es,it,fr,pt,de"
 
-	if err := tconn.Call(ctx, nil, `tast.promisify(chrome.settingsPrivate.setPref)`, "settings.language.preferred_languages", languagesList); err != nil {
+	if err := quickanswers.SetPrefValue(ctx, tconn, "settings.language.preferred_languages", languagesList); err != nil {
 		s.Fatal("Failed to set preferred languages: ", err)
 	}
 
