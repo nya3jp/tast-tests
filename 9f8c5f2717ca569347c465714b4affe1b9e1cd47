@@ -16,6 +16,75 @@
       "message": "Hi Victor, please review this new Tast test CL for owner\u0027s approval.",
       "revId": "9f8c5f2717ca569347c465714b4affe1b9e1cd47",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab68f731_53602032",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/transcript_translation.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1248360
+      },
+      "writtenOn": "2022-09-27T14:33:19Z",
+      "side": 1,
+      "message": "Family parent account is not a best representation for a regular consumer. Consider adding separate account for that test and the separate fixture.",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 37
+      },
+      "revId": "9f8c5f2717ca569347c465714b4affe1b9e1cd47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34469d83_b392ff55",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/transcript_translation.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1248360
+      },
+      "writtenOn": "2022-09-27T14:33:19Z",
+      "side": 1,
+      "message": "This fixture is really overloaded now. That is more complex, but isolating projector tests within a separate test account and fixture would have been more bullet proof.",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 38
+      },
+      "revId": "9f8c5f2717ca569347c465714b4affe1b9e1cd47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c75434a0_583563cf",
+        "filename": "src/chromiumos/tast/local/chrome/familylink/fixture.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1248360
+      },
+      "writtenOn": "2022-09-27T14:33:19Z",
+      "side": 1,
+      "message": "IMO this a shortcut to add those fixtures to familylink code and use the credentials as general consumer and general EDU user.",
+      "range": {
+        "startLine": 161,
+        "startChar": 0,
+        "endLine": 192,
+        "endChar": 3
+      },
+      "revId": "9f8c5f2717ca569347c465714b4affe1b9e1cd47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
