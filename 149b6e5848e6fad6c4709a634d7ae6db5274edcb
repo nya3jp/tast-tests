@@ -37,6 +37,46 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "347d815d_2c15ab5b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/runtimeprobe/verify_sandbox.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1368699
+      },
+      "writtenOn": "2022-09-27T07:56:29Z",
+      "side": 1,
+      "message": "Verify `resFactory`.",
+      "revId": "149b6e5848e6fad6c4709a634d7ae6db5274edcb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ce4b9f4_c0625635",
+        "filename": "src/chromiumos/tast/local/bundles/cros/runtimeprobe/verify_sandbox.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1368699
+      },
+      "writtenOn": "2022-09-27T07:56:29Z",
+      "side": 1,
+      "message": "Use the term \"category\" to align with Runtime Probe itself.",
+      "range": {
+        "startLine": 100,
+        "startChar": 27,
+        "endLine": 100,
+        "endChar": 31
+      },
+      "revId": "149b6e5848e6fad6c4709a634d7ae6db5274edcb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "55fd2979_f7b72bff",
         "filename": "src/chromiumos/tast/local/bundles/cros/runtimeprobe/verify_sandbox_test.go",
         "patchSetId": 1
