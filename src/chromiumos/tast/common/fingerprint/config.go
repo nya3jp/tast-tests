@@ -5,7 +5,7 @@
 package fingerprint
 
 // Possible fingerprint cros-config enum values can be seen at the following:
-// source.chromium.org/chromium/chromiumos/platform2/+/main:chromeos-config/cros_config_host/cros_config_schema.yaml
+// crsrc.org/o/src/platform2/chromeos-config/cros_config_host/cros_config_schema.yaml?q=content:%22fingerprint:%22
 
 // BoardName is the board name of the FPMCU. This is also the cros-config
 // fingerprint board value.
@@ -36,6 +36,9 @@ func (b BoardName) IsValid() bool {
 type SensorLoc string
 
 // Possible values for cros-config fingerprint sensor-location.
+//
+// See the following for valid fields:
+// crsrc.org/o/src/platform2/chromeos-config/cros_config_host/cros_config_schema.yaml?q=content:%22sensor-location:%22
 const (
 	SensorLocNone                      SensorLoc = "none"
 	SensorLocPowerButtonTopLeft        SensorLoc = "power-button-top-left"
@@ -77,6 +80,9 @@ func (l SensorLoc) IsSupported() bool {
 type SensorType string
 
 // Possible values for cros-config fingerprint fingerprint-sensor-type.
+//
+// See the following for valid fields:
+// crsrc.org/o/src/platform2/chromeos-config/cros_config_host/cros_config_schema.yaml?q=content:%22fingerprint-sensor-type:%22
 const (
 	SensorTypeStandAlone    SensorType = "stand-alone"
 	SensorTypeOnPowerButton SensorType = "on-power-button"
