@@ -22,6 +22,30 @@
       },
       "revId": "8a33c2049fe95f8b872d50ca0e3bc816bd0a1a38",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e536b55_0cda562c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/recent_apps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1368351
+      },
+      "writtenOn": "2022-09-27T23:53:12Z",
+      "side": 1,
+      "message": "Oh, ok. That makes much more sense.",
+      "parentUuid": "e5fb1b92_1abad79b",
+      "range": {
+        "startLine": 129,
+        "startChar": 13,
+        "endLine": 129,
+        "endChar": 37
+      },
+      "revId": "8a33c2049fe95f8b872d50ca0e3bc816bd0a1a38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
