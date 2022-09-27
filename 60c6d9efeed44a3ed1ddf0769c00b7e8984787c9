@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b1bbf94_072e6225",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/smb_password.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1345446
+      },
+      "writtenOn": "2022-09-27T00:27:59Z",
+      "side": 1,
+      "message": "If we want to be consistent with the other error messages, this should probably start with \"Failed to \"...",
+      "range": {
+        "startLine": 72,
+        "startChar": 11,
+        "endLine": 72,
+        "endChar": 46
+      },
+      "revId": "60c6d9efeed44a3ed1ddf0769c00b7e8984787c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a81f97a_605dca23",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/smb_password.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1345446
+      },
+      "writtenOn": "2022-09-27T00:27:59Z",
+      "side": 1,
+      "message": "Same here...",
+      "range": {
+        "startLine": 78,
+        "startChar": 11,
+        "endLine": 78,
+        "endChar": 43
+      },
+      "revId": "60c6d9efeed44a3ed1ddf0769c00b7e8984787c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
