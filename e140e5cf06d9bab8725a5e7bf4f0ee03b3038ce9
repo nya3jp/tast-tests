@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "42681869_3e3ab00b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1465072
+      },
+      "writtenOn": "2022-09-28T05:39:30Z",
+      "side": 1,
+      "message": "Hi there,\n\nRequesting review from deanliao@ for OWNERS approval and Tast readability, rosokin@ for OOBE and policy perspective, and yaohuali@ as Demo Mode Tast contributor.\n\nThanks a ton!",
+      "revId": "e140e5cf06d9bab8725a5e7bf4f0ee03b3038ce9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
