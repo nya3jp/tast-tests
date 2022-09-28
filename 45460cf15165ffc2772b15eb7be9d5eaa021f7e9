@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "90497c0b_ea9cdadd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_perf_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2022-09-28T07:29:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "41409b63_ec68f06b",
+      "range": {
+        "startLine": 55,
+        "startChar": 5,
+        "endLine": 55,
+        "endChar": 12
+      },
+      "revId": "45460cf15165ffc2772b15eb7be9d5eaa021f7e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "14193025_4d6472fe",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-09-20T14:33:54Z",
       "side": 1,
       "message": "you probably should do cleanup in the reverse order",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 29
+      },
+      "revId": "45460cf15165ffc2772b15eb7be9d5eaa021f7e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3731153e_08d9767a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_perf_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2022-09-28T07:29:06Z",
+      "side": 1,
+      "message": "The defer reverses them: https://go.dev/play/p/6PT3hDy9Swb\n\nI\u0027ve added a comment.",
+      "parentUuid": "14193025_4d6472fe",
       "range": {
         "startLine": 57,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d344e5a_1a12655b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_perf_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2022-09-28T07:29:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d85f27b_a4fa5793",
+      "range": {
+        "startLine": 60,
+        "startChar": 2,
+        "endLine": 60,
+        "endChar": 4
+      },
+      "revId": "45460cf15165ffc2772b15eb7be9d5eaa021f7e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9b744bcc_1b7f3dd9",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-09-20T14:33:54Z",
       "side": 1,
       "message": "don\u0027t ignore returned error. At least log it\n\nsame in other places",
+      "range": {
+        "startLine": 72,
+        "startChar": 55,
+        "endLine": 72,
+        "endChar": 63
+      },
+      "revId": "45460cf15165ffc2772b15eb7be9d5eaa021f7e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab516c8b_3e9936da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_perf_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2022-09-28T07:29:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9b744bcc_1b7f3dd9",
       "range": {
         "startLine": 72,
         "startChar": 55,
@@ -118,6 +214,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "47be40b3_faa5f930",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_perf_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2022-09-28T07:29:06Z",
+      "side": 1,
+      "message": "We might fail, but at least the battery will get charged a bit first.",
+      "parentUuid": "acf0fb26_5a2d31e1",
+      "range": {
+        "startLine": 101,
+        "startChar": 56,
+        "endLine": 101,
+        "endChar": 70
+      },
+      "revId": "45460cf15165ffc2772b15eb7be9d5eaa021f7e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "aa24a5e2_5a49c214",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_perf_service.go",
         "patchSetId": 3
@@ -129,6 +249,30 @@
       "writtenOn": "2022-09-20T14:33:54Z",
       "side": 1,
       "message": "swap them:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast/src/chromiumos/tast/errors/errors.go;l\u003d161?q\u003derrors.Is",
+      "range": {
+        "startLine": 105,
+        "startChar": 22,
+        "endLine": 105,
+        "endChar": 45
+      },
+      "revId": "45460cf15165ffc2772b15eb7be9d5eaa021f7e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f77e821_a150cb72",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_perf_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2022-09-28T07:29:06Z",
+      "side": 1,
+      "message": "Thanks, I\u0027ve made this mistake before and it can be confusing to debug.",
+      "parentUuid": "aa24a5e2_5a49c214",
       "range": {
         "startLine": 105,
         "startChar": 22,
@@ -162,6 +306,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5995438_0e15b470",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_perf_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2022-09-28T07:29:06Z",
+      "side": 1,
+      "message": "Yep, I removed the unused code but not the comment...",
+      "parentUuid": "6b90e552_7145a1e9",
+      "range": {
+        "startLine": 151,
+        "startChar": 0,
+        "endLine": 153,
+        "endChar": 0
+      },
+      "revId": "45460cf15165ffc2772b15eb7be9d5eaa021f7e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fc3f2cb4_ac096069",
@@ -175,6 +343,30 @@
       "writtenOn": "2022-09-20T14:33:54Z",
       "side": 1,
       "message": "check when to log:\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#When-to-log",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 30
+      },
+      "revId": "45460cf15165ffc2772b15eb7be9d5eaa021f7e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "01247592_3d1ae8ed",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/remote_power_idle_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2022-09-28T07:29:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fc3f2cb4_ac096069",
       "range": {
         "startLine": 61,
         "startChar": 0,
@@ -208,6 +400,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d20e572_ded791fe",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/remote_power_idle_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2022-09-28T07:29:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "77cba406_26568b0a",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 16
+      },
+      "revId": "45460cf15165ffc2772b15eb7be9d5eaa021f7e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b86b9c66_08620d6f",
@@ -231,6 +447,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e67b462_b83991d3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/remote_power_idle_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2022-09-28T07:29:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b86b9c66_08620d6f",
+      "range": {
+        "startLine": 94,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 0
+      },
+      "revId": "45460cf15165ffc2772b15eb7be9d5eaa021f7e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "50e75e0b_d4219958",
@@ -244,6 +484,30 @@
       "writtenOn": "2022-09-20T14:33:54Z",
       "side": 1,
       "message": "nit: maybe split this into 2 functions: get perf values and perform cleanup?\nvery weird that cleanup returns perf values",
+      "range": {
+        "startLine": 21,
+        "startChar": 6,
+        "endLine": 21,
+        "endChar": 18
+      },
+      "revId": "45460cf15165ffc2772b15eb7be9d5eaa021f7e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "429c9524_55ae662f",
+        "filename": "src/chromiumos/tast/services/cros/arc/power_perf_service.proto",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2022-09-28T07:29:06Z",
+      "side": 1,
+      "message": "Ah, that makes more sense.\n\nI made it four functions, Setup, Cleanup, StartMeasurement, StopMeasurement.",
+      "parentUuid": "50e75e0b_d4219958",
       "range": {
         "startLine": 21,
         "startChar": 6,
