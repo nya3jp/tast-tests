@@ -6,6 +6,7 @@
 package trace
 
 import (
+	"bufio"
 	"context"
 	"encoding/json"
 	"fmt"
@@ -124,6 +125,51 @@ func getSystemInfo(sysInfo *comm.SystemInfo) error {
 	}
 
 	sysInfo.ChromeOSVersion = lsbReleaseData[lsbrelease.Version]
+	return nil
+}
+
+func modifyHostSwappiness(ctx context.Context, tuneValue uint32) error {
+	return testexec.CommandContext(ctx, "sudo", "sysctl", "vm.swappiness="+strconv.FormatUint(uint64(tuneValue), 10)).Run()
+}
+
+func readHostSwappiness() (uint32, error) {
+	path := "/proc/sys/vm/swappiness"
+	f, err := os.Open(path)
+	if err != nil {
+		return 0, err
+	}
+	defer f.Close()
+	scanner := bufio.NewScanner(f)
+	var swappiness string
+	for scanner.Scan() {
+		fmt.Sprintf("loading Swappiness: %s", scanner.Text())
+		swappiness = scanner.Text()
+		break
+	}
+	convert, err := strconv.ParseUint(swappiness, 10, 32)
+	return uint32(convert), nil
+}
+
+func setupSwappiness(ctx context.Context, tuneValue uint32) error {
+	// Read current swappiness.
+	swappinessValueCurrent, err := readHostSwappiness()
+	if err != nil {
+		return errors.Wrap(err, "failed to get swappiness value")
+	}
+	testing.ContextLog(ctx, "Current swappiness value is: ", swappinessValueCurrent)
+	testing.ContextLog(ctx, "Target swappiness is:", tuneValue)
+	// Modify swappiness to tuneValue.
+	if tuneValue > 0 {
+		if err := modifyHostSwappiness(ctx, tuneValue); err != nil {
+			return errors.Wrap(err, "failed to modify swappiness value")
+		}
+	}
+	// Read it again for validation.
+	swappinessValueModified, err := readHostSwappiness()
+	if err != nil {
+		return errors.Wrap(err, "failed to get swappiness value")
+	}
+	testing.ContextLog(ctx, "After update, swappiness value is: ", swappinessValueModified)
 	return nil
 }
 
@@ -580,6 +626,94 @@ func runTraceReplayExtendedInVM(ctx context.Context, resultDir string, guest IGu
 	return nil
 }
 
+// runTraceReplayTuningInVM first setup the configuration to be tuned for the DUT
+// e.g. swappiness, then runs trace_replay multiple times on guest with `replayArgs`,
+// and generate a report of average FPS for the configuration over multiple runs.
+func runTraceReplayTuningInVM(ctx context.Context, resultDir string, guest IGuestOS, group *comm.TestGroupConfig) error {
+	testing.ContextLog(ctx, "Extended Replay repeat count: ", group.RepeatCount)
+	replayArgs, err := json.Marshal(*group)
+	if err != nil {
+		return errors.Wrap(err, "failed to marshal TestGroupConfig")
+	}
+
+	// defaultSwappinessValue is used to keep record of the default swappiness of the DUT,
+	// it will be used to recover the default setting after the replays are done.
+	var defaultSwappinessValue uint32
+	if group.Swappiness > 0 {
+		swappinessValue, err := readHostSwappiness()
+		if err != nil {
+			return errors.Wrap(err, "failed to get swappiness value")
+		}
+		defaultSwappinessValue = swappinessValue
+		testing.ContextLog(ctx, "Default swappiness value is: ", defaultSwappinessValue)
+		// modify the host's swappiness to the given value.
+		errSetup := setupSwappiness(ctx, group.Swappiness)
+		if errSetup != nil {
+			return errors.Wrap(errSetup, "failed to setup swappiness value")
+		}
+	}
+
+	// Run the trace replay in Guest through the cmd, which is implemented in graphics-utils-go.
+	testing.ContextLog(ctx, "Running extended replay with args: "+string(replayArgs))
+	replayOutput, err := guest.Command(ctx, path.Join(guest.GetBinPath(), replayAppName), string(replayArgs)).Output(testexec.DumpLogOnError)
+	if err != nil {
+		return errors.Wrap(err, "failed while running trace_replay")
+	}
+
+	testing.ContextLog(ctx, "Extended Replay output: "+string(replayOutput))
+
+	var testResult comm.TestGroupResult
+	if err := json.Unmarshal(replayOutput, &testResult); err != nil {
+		return errors.Wrapf(err, "unable to parse test group result output: %q", string(replayOutput))
+	}
+
+	if testResult.Result != comm.TestResultSuccess {
+		return errors.Errorf("%s", testResult.Message)
+	}
+	// Generate Avg FPS over multiple runs.
+	failedEntries := 0
+	perfValues := perf.NewValues()
+	// An sample of the replayOutput: https://paste.googleplex.com/6164898517090304
+	for _, resultEntry := range testResult.Entries {
+		if resultEntry.Message != "" {
+			testing.ContextLog(ctx, resultEntry.Message)
+		}
+		if resultEntry.Result != comm.TestResultSuccess {
+			failedEntries++
+			continue
+		}
+		var totalFPS float64
+		runs := 0
+		for key, value := range resultEntry.Values {
+			// Get rid of the 1st run
+			if strings.Contains(key, "replay001") {
+				continue
+			}
+			if strings.Contains(key, "fps") {
+				runs++
+				totalFPS += float64(value.Value)
+			}
+		}
+		perfValues.Set(perf.Metric{
+			Name:      resultEntry.Name + "_swappiness_" + strconv.FormatUint(uint64(group.Swappiness), 10),
+			Unit:      "fps",
+			Direction: perf.BiggerIsBetter,
+		}, totalFPS/float64(runs))
+	}
+	if err := perfValues.Save(resultDir); err != nil {
+		return errors.Wrap(err, "unable to save performance values")
+	}
+
+	// Set swappiness value back to the DUT's default value
+	if group.Swappiness > 0 {
+		errSetup := setupSwappiness(ctx, defaultSwappinessValue)
+		if errSetup != nil {
+			return errors.Wrap(errSetup, "failed to recover the deafult swappiness value")
+		}
+	}
+	return nil
+}
+
 // RunTraceReplayTest starts the VM and replays all the traces in the test config.
 func RunTraceReplayTest(ctx context.Context, resultDir string, cloudStorage *testing.CloudStorage, guest IGuestOS, group *comm.TestGroupConfig, testVars *comm.TestVars) error {
 	// Guest is unable to use the VM network interface to access it's host because of security reason,
@@ -612,6 +746,8 @@ func RunTraceReplayTest(ctx context.Context, resultDir string, cloudStorage *tes
 			testing.ContextLog(ctx, "WARNING: Unable to get ", entry.entryName)
 		}
 	}
+
+	testing.ContextLog(ctx, "Running params: repeat count: ", group.RepeatCount)
 
 	if err := getSystemInfo(&group.Host); err != nil {
 		return errors.Wrap(err, "failed to get system info")
@@ -667,8 +803,14 @@ func RunTraceReplayTest(ctx context.Context, resultDir string, cloudStorage *tes
 	}
 
 	if group.ExtendedDuration > 0 {
+		testing.ContextLog(ctx, "running extended mode")
 		return runTraceReplayExtendedInVM(shortCtx, resultDir, guest, group)
 	}
+	if group.RepeatCount > 0 {
+		testing.ContextLog(ctx, "running tuning mode")
+		return runTraceReplayTuningInVM(shortCtx, resultDir, guest, group)
+	}
+	testing.ContextLog(ctx, "running single mode")
 	err = runTraceReplayInVM(shortCtx, resultDir, guest, group)
 
 	// Dump logs from the guest

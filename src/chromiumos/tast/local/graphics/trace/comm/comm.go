@@ -88,6 +88,8 @@ type TestGroupConfig struct {
 	ProxyServer      ProxyServerInfo `json:"ProxyServer"`
 	Timeout          uint32          `json:"Timeout,string"`
 	ExtendedDuration uint32          `json:"ExtendedDuration,string"`
+	RepeatCount      uint32          `json:"RepeatCount,string"`
+	Swappiness       uint32          `json:"Swappiness,string"`
 }
 
 // ValueEntry struct contains the result metrics for one trace replay test
