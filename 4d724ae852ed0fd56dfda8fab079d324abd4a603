@@ -89,6 +89,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e8a92f2_e3c0a02f",
+        "filename": "src/chromiumos/tast/common/wifi/security/wpa/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1521657
+      },
+      "writtenOn": "2022-09-28T21:55:01Z",
+      "side": 1,
+      "message": "Understood. I worried about there are various tests need update other than SimpleConnect and config.go. Added a TODO.",
+      "parentUuid": "51bbd145_c2e84978",
+      "range": {
+        "startLine": 105,
+        "startChar": 30,
+        "endLine": 105,
+        "endChar": 33
+      },
+      "revId": "4d724ae852ed0fd56dfda8fab079d324abd4a603",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e9face04_574d270f",
