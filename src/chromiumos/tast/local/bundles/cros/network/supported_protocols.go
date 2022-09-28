@@ -9,7 +9,6 @@ import (
 	"context"
 	"os"
 	"strings"
-	"syscall"
 
 	"golang.org/x/sys/unix"
 
@@ -58,10 +57,10 @@ func SupportedProtocols(ctx context.Context, s *testing.State) {
 		required[info.name] = struct{}{}
 
 		// Log but discard errors; we're just doing this to load modules.
-		if fd, err := syscall.Socket(info.domain, info.typ, info.protocol); err != nil {
+		if fd, err := unix.Socket(info.domain, info.typ, info.protocol); err != nil {
 			s.Logf("Couldn't create socket (%v, %v, %v) for %v: %v",
 				info.domain, info.typ, info.protocol, info.name, err)
-		} else if err := syscall.Close(fd); err != nil {
+		} else if err := unix.Close(fd); err != nil {
 			s.Errorf("Failed to close socket (%v, %v, %v) for %v: %v",
 				info.domain, info.typ, info.protocol, info.name, err)
 		}
