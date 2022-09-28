@@ -34,6 +34,23 @@
       "parentUuid": "c1f3490e_4841a026",
       "revId": "cd47643197eabf47dcc2ce637b5f2293276ae64e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dfc5521b_0108ecda",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-09-28T17:03:25Z",
+      "side": 1,
+      "message": "This looks OK as a tast-owner but I\u0027m not familiar with the context.",
+      "revId": "cd47643197eabf47dcc2ce637b5f2293276ae64e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
