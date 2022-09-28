@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf7a7237_17f539e3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/biod/cros_config_matches_device.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2022-09-28T04:45:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d6e47d8_bde18609",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 72
+      },
+      "revId": "07c8beb6977dd2b8267318b4ac971a7850b70966",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9a926cd8_e7000204",
@@ -58,6 +82,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cac3403d_d9a79156",
+        "filename": "src/chromiumos/tast/local/bundles/cros/biod/cros_config_matches_device.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2022-09-28T04:45:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a926cd8_e7000204",
+      "revId": "07c8beb6977dd2b8267318b4ac971a7850b70966",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "229b05dd_bd267b9b",
@@ -71,6 +113,30 @@
       "writtenOn": "2022-09-27T10:19:18Z",
       "side": 1,
       "message": "Check when to log:\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#When-to-log",
+      "range": {
+        "startLine": 41,
+        "startChar": 26,
+        "endLine": 41,
+        "endChar": 88
+      },
+      "revId": "07c8beb6977dd2b8267318b4ac971a7850b70966",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "644bc8ce_dc4b7cdb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/biod/cros_config_matches_device.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2022-09-28T04:45:38Z",
+      "side": 1,
+      "message": "I thought this was pretty great, since it directly tells the human what they should be doing and `If you want to log a verbose piece of information to help determine the cause of an error, only do it after the error has occurred.`, but I can hide it in code.",
+      "parentUuid": "229b05dd_bd267b9b",
       "range": {
         "startLine": 41,
         "startChar": 26,
@@ -104,6 +170,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cbe2ce5e_4413d144",
+        "filename": "src/chromiumos/tast/local/bundles/cros/biod/cros_config_matches_device.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2022-09-28T04:45:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bb801130_afd5a136",
+      "range": {
+        "startLine": 47,
+        "startChar": 1,
+        "endLine": 47,
+        "endChar": 65
+      },
+      "revId": "07c8beb6977dd2b8267318b4ac971a7850b70966",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f5d7d7eb_e8c28dc9",
@@ -127,6 +217,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3fa4aec6_20e29a86",
+        "filename": "src/chromiumos/tast/local/bundles/cros/biod/cros_config_matches_device.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2022-09-28T04:45:38Z",
+      "side": 1,
+      "message": "Ohh interesting. Done",
+      "parentUuid": "f5d7d7eb_e8c28dc9",
+      "range": {
+        "startLine": 77,
+        "startChar": 4,
+        "endLine": 77,
+        "endChar": 9
+      },
+      "revId": "07c8beb6977dd2b8267318b4ac971a7850b70966",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f054ab6d_7dea50b4",
@@ -140,6 +254,30 @@
       "writtenOn": "2022-09-27T10:19:18Z",
       "side": 1,
       "message": "nit: maybe swap (i.e. !cfgFpSupported \u0026\u0026 fpDevExists) to be consistent with other if statements",
+      "range": {
+        "startLine": 84,
+        "startChar": 4,
+        "endLine": 84,
+        "endChar": 34
+      },
+      "revId": "07c8beb6977dd2b8267318b4ac971a7850b70966",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c105d666_368225a7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/biod/cros_config_matches_device.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2022-09-28T04:45:38Z",
+      "side": 1,
+      "message": "Right, I could see that it would look more consistent with the previous statement, but then it doesn\u0027t match our comment about what we are doing (\"2.\", the Log message, and the commit message). I\u0027d rather keep it like this.",
+      "parentUuid": "f054ab6d_7dea50b4",
       "range": {
         "startLine": 84,
         "startChar": 4,
