@@ -16,6 +16,24 @@
       "message": "I guess we could also put this after the for loop, but I\u0027m fine either way",
       "revId": "623ad94f2e6135d269739eaa28a53d8865bdd17f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "20ffdc3a_ee4e7aae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/answer_cards.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1317950
+      },
+      "writtenOn": "2022-09-28T23:41:49Z",
+      "side": 1,
+      "message": "I am unsure how that would affect the deferred screenshot, it may make more sense to have the s.Fatal() happen before kb.TypeKey(ctx, input.KEY_ESC)",
+      "parentUuid": "b660fec6_e0b5e537",
+      "revId": "623ad94f2e6135d269739eaa28a53d8865bdd17f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
