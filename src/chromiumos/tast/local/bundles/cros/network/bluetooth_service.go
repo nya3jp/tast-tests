@@ -95,6 +95,9 @@ func (s *BluetoothService) SetBluetoothPowered(ctx context.Context, req *network
 		return nil, errors.Errorf("got %d adapters, expected 1 adapter", len(adapters))
 	}
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		if err := adapters[0].SetPowered(ctx, req.Powered); err != nil {
+			return errors.Wrapf(err, "could not set Bluetooth power state to %t", req.Powered)
+		}
 		if res, err := adapters[0].Powered(ctx); err != nil {
 			return errors.Wrap(err, "could not get Bluetooth power state")
 		} else if res != req.Powered {
