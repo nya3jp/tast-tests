@@ -22,6 +22,30 @@
       },
       "revId": "f8dd2cd130d21ac3c8237c9af9bc43934a1c49a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d794b9b_b94e8ab4",
+        "filename": "src/chromiumos/tast/local/ambient/ambient.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1139659
+      },
+      "writtenOn": "2022-09-28T18:39:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f7045810_1987d09b",
+      "range": {
+        "startLine": 260,
+        "startChar": 6,
+        "endLine": 260,
+        "endChar": 12
+      },
+      "revId": "f8dd2cd130d21ac3c8237c9af9bc43934a1c49a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
