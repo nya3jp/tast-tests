@@ -52,6 +52,24 @@
       "parentUuid": "56e17f30_eb15cdd0",
       "revId": "46550090a066222c210e340773d34397336ee5d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c415b35a_ec9712b9",
+        "filename": "src/chromiumos/tast/common/policy/fakedms/fakedms.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-09-28T14:46:18Z",
+      "side": 0,
+      "message": "I couldn\u0027t find any, please correct me if I\u0027m mistaken, otherwise we can mark it as resolved.",
+      "parentUuid": "c237cbb9_60b51130",
+      "revId": "46550090a066222c210e340773d34397336ee5d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

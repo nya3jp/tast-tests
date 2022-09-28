@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac34898f_e9ad44a2",
+        "filename": "src/chromiumos/tast/common/policy/policy_blob.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-09-28T14:46:18Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "cd020c58_09390004",
+      "range": {
+        "startLine": 34,
+        "startChar": 64,
+        "endLine": 34,
+        "endChar": 94
+      },
+      "revId": "2d86c28f584084c02f2bc849e5119a557856fe53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2c6137ec_23a3507f",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-09-28T10:30:31Z",
       "side": 1,
       "message": "Can this not be exported? Also move it closed to where it\u0027s used.",
+      "range": {
+        "startLine": 68,
+        "startChar": 5,
+        "endLine": 68,
+        "endChar": 10
+      },
+      "revId": "2d86c28f584084c02f2bc849e5119a557856fe53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "863a321d_d976b60b",
+        "filename": "src/chromiumos/tast/common/policy/policy_blob.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-09-28T14:46:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2c6137ec_23a3507f",
       "range": {
         "startLine": 68,
         "startChar": 5,
@@ -64,6 +112,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e8e8794_a5f6a2c1",
+        "filename": "src/chromiumos/tast/common/policy/policy_blob.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-09-28T14:46:18Z",
+      "side": 1,
+      "message": "Well, when this was added it was used directly in the test, but now I think the tests should take care of that and initialize the map in the test.",
+      "parentUuid": "6acf635a_11cb11c3",
+      "revId": "2d86c28f584084c02f2bc849e5119a557856fe53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "95f3b93e_d2512f67",
@@ -77,6 +143,24 @@
       "writtenOn": "2022-09-28T10:30:31Z",
       "side": 1,
       "message": "nit: Add some comments about what\u0027s happening.",
+      "revId": "2d86c28f584084c02f2bc849e5119a557856fe53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4714fb8a_e351682a",
+        "filename": "src/chromiumos/tast/common/policy/policy_blob.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-09-28T14:46:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "95f3b93e_d2512f67",
       "revId": "2d86c28f584084c02f2bc849e5119a557856fe53",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
