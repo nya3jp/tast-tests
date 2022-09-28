@@ -33,3 +33,8 @@ func (a *ARC) WaitForLogcatLine(ctx context.Context, pred func(string) bool, qui
 func (a *ARC) OutputLogcatGrep(ctx context.Context, grepArg string) ([]byte, error) {
 	return a.device.OutputLogcatGrep(ctx, grepArg)
 }
+
+// ClearLogcat clears all logcat buffers.
+func (a *ARC) ClearLogcat(ctx context.Context) error {
+	return a.device.ClearLogcat(ctx)
+}
