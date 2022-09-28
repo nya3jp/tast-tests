@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "38f8dd88_a30ece2e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/traffic_counters.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2022-09-28T05:16:38Z",
+      "side": 1,
+      "message": "I\u0027m not sure how consistently it\u0027s enforced. It\u0027s definitely possible that some tast reviewers aren\u0027t aware of that part of the golang style guide. IMO, it is a little surprising that a language (in)famous for not having line length requirements actually has comment length recommendations.",
+      "parentUuid": "ce3bcd81_9a390002",
+      "range": {
+        "startLine": 139,
+        "startChar": 0,
+        "endLine": 139,
+        "endChar": 103
+      },
+      "revId": "530c01ebd7dd383d761d429da55aff67fd43f5fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6c8d2e8e_c166b249",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/traffic_counters.go",
         "patchSetId": 5
