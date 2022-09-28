@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3990b39a_406ee648",
+        "filename": "src/chromiumos/tast/local/bundles/cros/runtimeprobe/verify_sandbox.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2022-09-28T05:12:30Z",
+      "side": 1,
+      "message": "The above has checked that res is equal to resFactory. So we can only check res here.",
+      "parentUuid": "347d815d_2c15ab5b",
+      "revId": "149b6e5848e6fad6c4709a634d7ae6db5274edcb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2ce4b9f4_c0625635",
@@ -75,6 +93,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e9070cf_d141d1f5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/runtimeprobe/verify_sandbox.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2022-09-28T05:12:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2ce4b9f4_c0625635",
+      "range": {
+        "startLine": 100,
+        "startChar": 27,
+        "endLine": 100,
+        "endChar": 31
+      },
+      "revId": "149b6e5848e6fad6c4709a634d7ae6db5274edcb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "55fd2979_f7b72bff",
@@ -88,6 +130,24 @@
       "writtenOn": "2022-09-23T17:26:52Z",
       "side": 1,
       "message": "Please add a comment for exported functions.",
+      "revId": "149b6e5848e6fad6c4709a634d7ae6db5274edcb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8345aa50_7609d340",
+        "filename": "src/chromiumos/tast/local/bundles/cros/runtimeprobe/verify_sandbox_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2022-09-28T05:12:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "55fd2979_f7b72bff",
       "revId": "149b6e5848e6fad6c4709a634d7ae6db5274edcb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
