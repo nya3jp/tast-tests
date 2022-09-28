@@ -163,9 +163,10 @@ func (t *tab) waitForQuiescence(ctx context.Context, timeout time.Duration) erro
 	start := time.Now()
 	if err := webutil.WaitForQuiescence(ctx, t.conn, timeout); err != nil {
 		if !errors.Is(ctx.Err(), context.DeadlineExceeded) {
-			return errors.Wrap(err, "failed to wait for tab quiesce")
+			testing.ContextLogf(ctx, "Failed to wait for tab quiesce (%v), error: %v", timeout, err)
+		} else {
+			testing.ContextLogf(ctx, "Ignoring tab quiesce timeout (%v)", timeout)
 		}
-		testing.ContextLogf(ctx, "Ignoring tab quiesce timeout (%v)", timeout)
 	} else {
 		testing.ContextLog(ctx, "Tab quiescence time: ", time.Now().Sub(start))
 	}
@@ -732,9 +733,10 @@ func Run(ctx context.Context, outDir string, cr *chrome.Chrome, arc *arc.ARC, p 
 	}
 	info, err := display.GetInternalInfo(ctx, tconn)
 	if err != nil {
-		return errors.Wrap(err, "cannot get screen dimensions")
+		testing.ContextLog(ctx, "Cannot get screen dimensions: ", err)
+	} else {
+		testing.ContextLogf(ctx, "Display: screen %vx%v", info.Bounds.Width, info.Bounds.Height)
 	}
-	testing.ContextLogf(ctx, "Display: screen %vx%v", info.Bounds.Width, info.Bounds.Height)
 
 	// -----------------
 	// Phase 1: Open several pinned tabs, and then continue to open more tabs until a tab is discarded.
