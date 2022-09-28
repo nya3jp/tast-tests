@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a0e32b56_f7716640",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/shill_cellular_custom_apn.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1377951
+      },
+      "writtenOn": "2022-09-28T22:40:02Z",
+      "side": 1,
+      "message": "I think so. I\u0027ve asked Aleksander for the bug number. I\u0027ll update the comment when I get it",
+      "parentUuid": "10767526_2bbbd2ab",
+      "revId": "27fb7c22eb508256b487a822f69374824667ceac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "32c8c8ce_729334a5",
         "filename": "src/chromiumos/tast/local/bundles/cros/cellular/shill_cellular_custom_apn.go",
         "patchSetId": 5
@@ -48,6 +66,30 @@
       "writtenOn": "2022-09-28T21:35:14Z",
       "side": 1,
       "message": "Should we defer a call to reset the attach APN?",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 91
+      },
+      "revId": "27fb7c22eb508256b487a822f69374824667ceac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4793e76_0d8f1d0c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/shill_cellular_custom_apn.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1377951
+      },
+      "writtenOn": "2022-09-28T22:40:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "32c8c8ce_729334a5",
       "range": {
         "startLine": 59,
         "startChar": 0,
@@ -83,6 +125,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d5525990_f798f9bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/shill_cellular_custom_apn.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1377951
+      },
+      "writtenOn": "2022-09-28T22:40:02Z",
+      "side": 1,
+      "message": "this is a UI limitation, but the test tries to mimic the real behavior. If I send the ip_type and authentication, the test might pass, while the same APN will fail when using the UI. This would prevent us from catching bugs like the ipv4 issue in Japan.\nMy guess is that we will never remove this in this test, since the existing UI will not be updated, but for the new test for Cellular.UserAPNList, we won\u0027t need to delete these values. I need to delete these in this test so I can reuse GetKnownAPNsForOperator() in all tests",
+      "parentUuid": "a9c7de3c_c0166093",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 87
+      },
+      "revId": "27fb7c22eb508256b487a822f69374824667ceac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "386180ba_734e3a48",
         "filename": "src/chromiumos/tast/local/bundles/cros/cellular/shill_cellular_custom_apn.go",
         "patchSetId": 5
@@ -94,6 +160,30 @@
       "writtenOn": "2022-09-28T21:35:14Z",
       "side": 1,
       "message": "Is the problem that we don\u0027t actually know when a ReAttach might happen or might destroy the service? Otherwise we should be able to grab the service above before SetAPN and compare it to the service returned by FindServiceForDevice.\n\nOtherwise if the service is recreated on every SetAPN that sets an attach APN we should be able to use that to figure out of we can skip waiting here and poll for the new service otherwise.",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 119,
+        "endChar": 101
+      },
+      "revId": "27fb7c22eb508256b487a822f69374824667ceac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80cb9224_51519198",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/shill_cellular_custom_apn.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1377951
+      },
+      "writtenOn": "2022-09-28T22:40:02Z",
+      "side": 1,
+      "message": "The service is only recreated when the previous APN was Attach and the current isn\u0027t, or if the new APN is an Attach. We can remove this when b/217767378 is fixed. I\u0027ll add a bug number to the comment",
+      "parentUuid": "386180ba_734e3a48",
       "range": {
         "startLine": 117,
         "startChar": 0,
@@ -127,6 +217,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0204d4a5_9b9dddca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/shill_cellular_custom_apn.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1377951
+      },
+      "writtenOn": "2022-09-28T22:40:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c8e956fa_3204bc3c",
+      "range": {
+        "startLine": 147,
+        "startChar": 0,
+        "endLine": 148,
+        "endChar": 59
+      },
+      "revId": "27fb7c22eb508256b487a822f69374824667ceac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ace920c4_be78e397",
@@ -140,6 +254,41 @@
       "writtenOn": "2022-09-28T21:35:14Z",
       "side": 1,
       "message": "Should we also use this in `ModemmanagerEnableAndConnect`?",
+      "revId": "27fb7c22eb508256b487a822f69374824667ceac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "568520ff_af10666d",
+        "filename": "src/chromiumos/tast/local/cellular/apn_utils.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1377951
+      },
+      "writtenOn": "2022-09-28T22:40:02Z",
+      "side": 1,
+      "message": "wow, the empty APN should not be used. I\u0027ll update ModemmanagerEnableAndConnect when this one lands and I add the missing MCCMNCs",
+      "parentUuid": "ace920c4_be78e397",
+      "revId": "27fb7c22eb508256b487a822f69374824667ceac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "24f5010c_dadaf951",
+        "filename": "src/chromiumos/tast/local/cellular/apn_utils.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1377951
+      },
+      "writtenOn": "2022-09-28T22:40:02Z",
+      "side": 1,
+      "message": "I\u0027ll add more MCCMNCs once the test runs once and the MCCMNCs are listed in the error codes.",
       "revId": "27fb7c22eb508256b487a822f69374824667ceac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
