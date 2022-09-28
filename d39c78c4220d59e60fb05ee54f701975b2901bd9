@@ -16,6 +16,154 @@
       "message": "Thanks Georg for all the comments!\n+Eliot for an owner\u0027s review.",
       "revId": "d39c78c4220d59e60fb05ee54f701975b2901bd9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d5a953f_fd74a35d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/shelf_launch_omaha.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-09-28T08:03:24Z",
+      "side": 1,
+      "message": "Is this necessary to do at the end of the test, if it succeeds? We shouldn\u0027t modify stateful partition during a test (and leave it that way) IIUC",
+      "revId": "d39c78c4220d59e60fb05ee54f701975b2901bd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d93e878b_cb4a3d7a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/shelf_launch_omaha.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-09-28T08:03:24Z",
+      "side": 1,
+      "message": "nit: Is it necessary to check anything other than appID?",
+      "range": {
+        "startLine": 208,
+        "startChar": 79,
+        "endLine": 208,
+        "endChar": 107
+      },
+      "revId": "d39c78c4220d59e60fb05ee54f701975b2901bd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c365c5a7_6e6019e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/shelf_launch_omaha.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-09-28T08:03:24Z",
+      "side": 1,
+      "message": "same, is this necessary if checking appid?",
+      "range": {
+        "startLine": 228,
+        "startChar": 40,
+        "endLine": 228,
+        "endChar": 71
+      },
+      "revId": "d39c78c4220d59e60fb05ee54f701975b2901bd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6261bb53_c251296f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/shelf_launch_omaha.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-09-28T08:03:24Z",
+      "side": 1,
+      "message": "Any reason to explicitly launch via shelf rather than the normal way? You can avoid the connect() etc using the normal way.",
+      "revId": "d39c78c4220d59e60fb05ee54f701975b2901bd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b83a47df_94d061ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/shelf_launch_omaha.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-09-28T08:03:24Z",
+      "side": 1,
+      "message": "nit: use CloseLacros?",
+      "revId": "d39c78c4220d59e60fb05ee54f701975b2901bd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b42b512_94040d4f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/shelf_launch_omaha.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-09-28T08:03:24Z",
+      "side": 1,
+      "message": "nit: Why not use chrome.NewTab url (since you are opening a new tab, not about:blank)?",
+      "revId": "d39c78c4220d59e60fb05ee54f701975b2901bd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d183c8d2_f135927b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/shelf_launch_omaha.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-09-28T08:03:24Z",
+      "side": 1,
+      "message": "nit: You can write this as two defer statements, seems more common to me.",
+      "revId": "d39c78c4220d59e60fb05ee54f701975b2901bd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3668e11f_6aeb109a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/shelf_launch_omaha.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-09-28T08:03:24Z",
+      "side": 1,
+      "message": "nit: what is the purpose of this line?",
+      "revId": "d39c78c4220d59e60fb05ee54f701975b2901bd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
