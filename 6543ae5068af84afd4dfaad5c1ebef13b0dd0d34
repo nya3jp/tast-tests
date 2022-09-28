@@ -49,6 +49,54 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "c5e6965d_71defe73",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1538417
+      },
+      "writtenOn": "2022-09-28T17:44:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d62b9ae8_c186c1b3",
+      "range": {
+        "startLine": 7,
+        "startChar": 69,
+        "endLine": 7,
+        "endChar": 73
+      },
+      "revId": "6543ae5068af84afd4dfaad5c1ebef13b0dd0d34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c8f69f7_6605a3fb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1538417
+      },
+      "writtenOn": "2022-09-28T17:44:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a4320449_aa731877",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 1
+      },
+      "revId": "6543ae5068af84afd4dfaad5c1ebef13b0dd0d34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "882e64ad_5e9bd926",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 3
@@ -77,6 +125,30 @@
       "writtenOn": "2022-09-28T08:00:01Z",
       "side": 1,
       "message": "nit: Please add a team/mailing list as a contact too.",
+      "range": {
+        "startLine": 227,
+        "startChar": 2,
+        "endLine": 227,
+        "endChar": 45
+      },
+      "revId": "6543ae5068af84afd4dfaad5c1ebef13b0dd0d34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e2469ce_650e93ee",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacrosfixt/fixtimpl.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1538417
+      },
+      "writtenOn": "2022-09-28T17:44:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2b3c4821_8ee9f8f0",
       "range": {
         "startLine": 227,
         "startChar": 2,
