@@ -33,6 +33,24 @@
       "message": "For now, what about making MODE_UNSPECIFIED map to lacros.NotSpecified?",
       "revId": "c9e64fd3322081b3589fb200d6c7df277f3cf76a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f378e77c_10f017e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_service.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-09-28T04:13:43Z",
+      "side": 1,
+      "message": "Sure. Let\u0027s do that.",
+      "parentUuid": "464e6f92_7733515e",
+      "revId": "c9e64fd3322081b3589fb200d6c7df277f3cf76a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
