@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "cd834c07_8e7d6f74",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-09-28T11:36:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b8d559d8_5b84398b",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 52
+      },
+      "revId": "bf151eeef0c0044a488185aea308c75f3298ca2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "1d1c35e5_8675a00f",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 3
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c044ccb9_67fb0fe5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/recovery_failure.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-09-28T11:36:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "22a16011_8959c078",
+      "range": {
+        "startLine": 52,
+        "startChar": 65,
+        "endLine": 53,
+        "endChar": 12
+      },
+      "revId": "bf151eeef0c0044a488185aea308c75f3298ca2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b9e63510_88915c1a",
@@ -77,6 +125,30 @@
       "writtenOn": "2022-09-27T22:40:02Z",
       "side": 1,
       "message": "It\u0027s not obvious to me why this is needed for this test; can you please clarify in a comment?",
+      "range": {
+        "startLine": 135,
+        "startChar": 0,
+        "endLine": 135,
+        "endChar": 44
+      },
+      "revId": "bf151eeef0c0044a488185aea308c75f3298ca2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d6b586f_fcea05ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/recovery_failure.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-09-28T11:36:33Z",
+      "side": 1,
+      "message": "Ah, this is actually not needed",
+      "parentUuid": "b9e63510_88915c1a",
       "range": {
         "startLine": 135,
         "startChar": 0,
