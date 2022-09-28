@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "88462fc0_4088674a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/shelf_launch_omaha.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-09-28T15:34:19Z",
+      "side": 1,
+      "message": "Good point. It would be okay to do this clean up just at the end of the test (although it would leave a DUT with the lacros shelf icon that can\u0027t launch lacros after this cleanup even if succeeded).\nBtw, this cleanup is still necessary to clean up stateful partition for subsequent tests since this test would end up modifying stateful partition while downloading stateful-lacros from Omaha.\n\nDone moving to the end of the test.",
+      "parentUuid": "8d5a953f_fd74a35d",
+      "revId": "d39c78c4220d59e60fb05ee54f701975b2901bd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d93e878b_cb4a3d7a",
@@ -48,6 +66,30 @@
       "writtenOn": "2022-09-28T08:03:24Z",
       "side": 1,
       "message": "nit: Is it necessary to check anything other than appID?",
+      "range": {
+        "startLine": 208,
+        "startChar": 79,
+        "endLine": 208,
+        "endChar": 107
+      },
+      "revId": "d39c78c4220d59e60fb05ee54f701975b2901bd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "27999074_556d981e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/shelf_launch_omaha.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-09-28T15:34:19Z",
+      "side": 1,
+      "message": "(L197-284 is copied from `lacros.ShelfLaunch`, so I\u0027ll be looking to move those to somewhere it can be shared between tests in common in a follow up along with some other code)\n\nFor the name check, I think it\u0027s one of the checkpoints that this test is trying to verify with `ash.ChromeApps` (or `ShelfItems` down below) along with the app ID and the app type. I\u0027d like to keep it as is.",
+      "parentUuid": "d93e878b_cb4a3d7a",
       "range": {
         "startLine": 208,
         "startChar": 79,
@@ -81,6 +123,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "56e53a8e_00fb7481",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/shelf_launch_omaha.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-09-28T15:34:19Z",
+      "side": 1,
+      "message": "same as above.",
+      "parentUuid": "c365c5a7_6e6019e0",
+      "range": {
+        "startLine": 228,
+        "startChar": 40,
+        "endLine": 228,
+        "endChar": 71
+      },
+      "revId": "d39c78c4220d59e60fb05ee54f701975b2901bd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6261bb53_c251296f",
@@ -94,6 +160,24 @@
       "writtenOn": "2022-09-28T08:03:24Z",
       "side": 1,
       "message": "Any reason to explicitly launch via shelf rather than the normal way? You can avoid the connect() etc using the normal way.",
+      "revId": "d39c78c4220d59e60fb05ee54f701975b2901bd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "202217a4_0f35842c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/shelf_launch_omaha.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-09-28T15:34:19Z",
+      "side": 1,
+      "message": "I would say that\u0027s exactly what this `ShelfLaunchOmaha` test is verifying.",
+      "parentUuid": "6261bb53_c251296f",
       "revId": "d39c78c4220d59e60fb05ee54f701975b2901bd9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -115,6 +199,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ada2074f_7940d082",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/shelf_launch_omaha.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-09-28T15:34:19Z",
+      "side": 1,
+      "message": "Removed this defer block entirely as L277 closes it and L238 checks any open windows (and closes them if any)",
+      "parentUuid": "b83a47df_94d061ba",
+      "revId": "d39c78c4220d59e60fb05ee54f701975b2901bd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5b42b512_94040d4f",
@@ -128,6 +230,24 @@
       "writtenOn": "2022-09-28T08:03:24Z",
       "side": 1,
       "message": "nit: Why not use chrome.NewTab url (since you are opening a new tab, not about:blank)?",
+      "revId": "d39c78c4220d59e60fb05ee54f701975b2901bd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "966f491d_fc98a34f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/shelf_launch_omaha.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-09-28T15:34:19Z",
+      "side": 1,
+      "message": "NewTab is already open when launching from the shelf at L241. This is to check one more tab page other than that.\nChanged to `chrome.BlankURL` for consistency.",
+      "parentUuid": "5b42b512_94040d4f",
       "revId": "d39c78c4220d59e60fb05ee54f701975b2901bd9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -149,6 +269,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "50839b12_191c4524",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/shelf_launch_omaha.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-09-28T15:34:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d183c8d2_f135927b",
+      "revId": "d39c78c4220d59e60fb05ee54f701975b2901bd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3668e11f_6aeb109a",
@@ -162,6 +300,24 @@
       "writtenOn": "2022-09-28T08:03:24Z",
       "side": 1,
       "message": "nit: what is the purpose of this line?",
+      "revId": "d39c78c4220d59e60fb05ee54f701975b2901bd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "00eed2c9_df5a20b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/shelf_launch_omaha.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-09-28T15:34:19Z",
+      "side": 1,
+      "message": "Removed (was copied from ShelfLaunch)",
+      "parentUuid": "3668e11f_6aeb109a",
       "revId": "d39c78c4220d59e60fb05ee54f701975b2901bd9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

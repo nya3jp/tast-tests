@@ -54,6 +54,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "08e8074d_39bc2a58",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/shelf_launch_omaha.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-09-28T15:34:19Z",
+      "side": 1,
+      "message": "The else-case would be \u0027dev\u0027, \u0027beta\u0027 or \u0027stable\u0027 which is still valid.\n\nI\u0027ll be able to update the regexp condition to limit it to only known values: dev, beta, stable and testimage.\nWith that if something else unexpected is in the ReleaseTrack key (very unlikely though), it would be caught at L62.",
+      "parentUuid": "99747c55_3d53d68f",
+      "revId": "09def52fc250ec1994f0be6497e66a55a1cea4bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "db15c708_55c645fb",
