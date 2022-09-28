@@ -161,6 +161,10 @@ func GoogleSlidesCUJ(ctx context.Context, s *testing.State) {
 			)(ctx); err != nil {
 				return err
 			}
+
+			if err := inputsimulations.RunDragMouseCycle(ctx, tconn, info); err != nil {
+				return err
+			}
 		}
 
 		// Ensure the slides deck gets scrolled.
