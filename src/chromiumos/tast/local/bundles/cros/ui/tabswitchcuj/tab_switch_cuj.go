@@ -34,6 +34,7 @@ import (
 	sim "chromiumos/tast/local/chrome/cuj/inputsimulations"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/event"
 	"chromiumos/tast/local/chrome/uiauto/mouse"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/webutil"
@@ -365,6 +366,14 @@ func testBody(ctx context.Context, s *testing.State, test *tabSwitchVariables) e
 				if err := sim.RepeatMouseScroll(ctx, mw, scrollDown, 50*time.Millisecond, 20); err != nil {
 					return errors.Wrap(err, "failed to scroll in between tab switches")
 				}
+			}
+
+			if err := ac.WithInterval(time.Second).WithTimeout(5*time.Second).WaitUntilNoEvent(nodewith.Root(), event.LocationChanged)(ctx); err != nil {
+				s.Log("Scroll animations haven't stabilized yet, continuing anyway: ", err)
+			}
+
+			if err := sim.RunDragMouseCycle(ctx, test.tconn, info); err != nil {
+				return err
 			}
 
 			currentTab = (currentTab + skipSize + 1) % len(conns)
