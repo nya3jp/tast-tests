@@ -36,7 +36,7 @@ func init() {
 		Contacts:     []string{"joelaf@google.com", "briannorris@chromium.org"},
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome", "arc", "coresched"},
-		HardwareDeps: hwdep.D(hwdep.CPUSupportsSMT(), hwdep.CPUNeedsCoreScheduling()),
+		HardwareDeps: hwdep.D(hwdep.CPUSupportsSMT()),
 		Timeout:      3 * time.Minute,
 		Params: []testing.Param{{
 			Val:     browser.TypeAsh,
