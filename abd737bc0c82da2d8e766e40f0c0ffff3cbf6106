@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e2015d3_f9557743",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/shared_screencast.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1403852
+      },
+      "writtenOn": "2022-09-28T21:53:10Z",
+      "side": 0,
+      "message": "Maybe keep this to reserve the 5s to DumpUITreeOnError? Same for transcript_translation.go",
+      "range": {
+        "startLine": 53,
+        "startChar": 1,
+        "endLine": 53,
+        "endChar": 14
+      },
+      "revId": "abd737bc0c82da2d8e766e40f0c0ffff3cbf6106",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

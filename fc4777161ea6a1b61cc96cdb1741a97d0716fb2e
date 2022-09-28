@@ -18,6 +18,46 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f508c5bb_8644451e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1403852
+      },
+      "writtenOn": "2022-09-28T21:53:10Z",
+      "side": 1,
+      "message": "Thanks for working on this test",
+      "revId": "fc4777161ea6a1b61cc96cdb1741a97d0716fb2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f060d55b_d56c8b24",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/transcript_translation.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1403852
+      },
+      "writtenOn": "2022-09-28T21:53:10Z",
+      "side": 1,
+      "message": "defer kb.Close()?",
+      "range": {
+        "startLine": 94,
+        "startChar": 12,
+        "endLine": 94,
+        "endChar": 27
+      },
+      "revId": "fc4777161ea6a1b61cc96cdb1741a97d0716fb2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "07070333_7403b562",
@@ -59,6 +99,29 @@
         "startChar": 12,
         "endLine": 186,
         "endChar": 32
+      },
+      "revId": "fc4777161ea6a1b61cc96cdb1741a97d0716fb2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3763e0ad_4d6d804b",
+        "filename": "src/chromiumos/tast/local/chrome/projector/projector.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1403852
+      },
+      "writtenOn": "2022-09-28T21:53:10Z",
+      "side": 1,
+      "message": "Maybe reserve 5s and do this and conn.close below with cleanupCtx?",
+      "range": {
+        "startLine": 234,
+        "startChar": 1,
+        "endLine": 234,
+        "endChar": 24
       },
       "revId": "fc4777161ea6a1b61cc96cdb1741a97d0716fb2e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
