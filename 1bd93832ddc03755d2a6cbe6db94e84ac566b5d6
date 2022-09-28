@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6842022b_9498c138",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1451097
+      },
+      "writtenOn": "2022-09-28T14:25:26Z",
+      "side": 1,
+      "message": "Thanks Roman \u0026 Jun!",
+      "revId": "1bd93832ddc03755d2a6cbe6db94e84ac566b5d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

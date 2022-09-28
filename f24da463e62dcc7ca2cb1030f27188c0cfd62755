@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b9d3ea5_4f827899",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/hid_screen.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1451097
+      },
+      "writtenOn": "2022-09-28T14:25:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d83eacd_d2136fd6",
+      "range": {
+        "startLine": 65,
+        "startChar": 1,
+        "endLine": 67,
+        "endChar": 15
+      },
+      "revId": "f24da463e62dcc7ca2cb1030f27188c0cfd62755",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f7aee0e9_3b646ed4",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7de88cd5_e05cd7f9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/hid_screen.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1451097
+      },
+      "writtenOn": "2022-09-28T14:25:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f7aee0e9_3b646ed4",
+      "range": {
+        "startLine": 124,
+        "startChar": 54,
+        "endLine": 124,
+        "endChar": 62
+      },
+      "revId": "f24da463e62dcc7ca2cb1030f27188c0cfd62755",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3cb20bf1_3324c0d9",
@@ -77,6 +125,30 @@
       "writtenOn": "2022-09-27T23:16:18Z",
       "side": 1,
       "message": "nit: This is not required. WaitUntilEnabled will waits for its existence.",
+      "range": {
+        "startLine": 151,
+        "startChar": 3,
+        "endLine": 151,
+        "endChar": 34
+      },
+      "revId": "f24da463e62dcc7ca2cb1030f27188c0cfd62755",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "85ef90ea_905e8a44",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/hid_screen.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1451097
+      },
+      "writtenOn": "2022-09-28T14:25:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3cb20bf1_3324c0d9",
       "range": {
         "startLine": 151,
         "startChar": 3,
