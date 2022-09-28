@@ -92,6 +92,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "52a14e38_61091c3c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/config_verify.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-09-28T17:56:13Z",
+      "side": 1,
+      "message": "Let\u0027s resolve the earlier CLs in the chain first before we come back to this one.",
+      "parentUuid": "df46bc90_eb03b7ad",
+      "revId": "94280d37a9c28ab30def17d57c084e4cfe6f2c4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "da67d4b4_b3a28ec2",
         "filename": "src/chromiumos/tast/local/bundles/cros/kernel/config_verify.go",
         "patchSetId": 4
