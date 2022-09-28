@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "166abe33_f58628cc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2022-09-28T01:30:44Z",
+      "side": 1,
+      "message": "As this app is top apps which we will run only for ARC-R or ARC-T, lets run only on ARC-R devices and have this extra logic for ARC-P removed as it is getting too much of ifs in testutil.",
+      "revId": "208b961b1f33840597424c4902851cb85ea9a737",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
