@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ce56bd8_bcbf619f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001410
+      },
+      "writtenOn": "2022-09-28T02:08:09Z",
+      "side": 1,
+      "message": "Many thanks for the review! Can you please have another look?",
+      "revId": "de09962075f5795aad81446a2b7d09ee8b8c0789",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "88c4f7a6_e51b6c65",
@@ -31,6 +48,30 @@
       "writtenOn": "2022-09-26T04:36:00Z",
       "side": 1,
       "message": "internal",
+      "range": {
+        "startLine": 143,
+        "startChar": 44,
+        "endLine": 143,
+        "endChar": 52
+      },
+      "revId": "de09962075f5795aad81446a2b7d09ee8b8c0789",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0103f7e_8a9d4200",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1001410
+      },
+      "writtenOn": "2022-09-28T02:08:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "88c4f7a6_e51b6c65",
       "range": {
         "startLine": 143,
         "startChar": 44,
@@ -64,6 +105,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "871135d6_04a9b1ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1001410
+      },
+      "writtenOn": "2022-09-28T02:08:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "954b3cf4_f46cc4b2",
+      "range": {
+        "startLine": 145,
+        "startChar": 35,
+        "endLine": 145,
+        "endChar": 40
+      },
+      "revId": "de09962075f5795aad81446a2b7d09ee8b8c0789",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d82704b3_b60369d3",
@@ -77,6 +142,30 @@
       "writtenOn": "2022-09-26T04:36:00Z",
       "side": 1,
       "message": "Please update the comment.",
+      "range": {
+        "startLine": 190,
+        "startChar": 46,
+        "endLine": 190,
+        "endChar": 78
+      },
+      "revId": "de09962075f5795aad81446a2b7d09ee8b8c0789",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "54966a54_4b227f30",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1001410
+      },
+      "writtenOn": "2022-09-28T02:08:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d82704b3_b60369d3",
       "range": {
         "startLine": 190,
         "startChar": 46,
@@ -104,6 +193,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "02c8f3c4_6ff99dc9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1001410
+      },
+      "writtenOn": "2022-09-28T02:08:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1d63a4aa_d1520890",
+      "revId": "de09962075f5795aad81446a2b7d09ee8b8c0789",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "372e7197_02ca8fc9",
@@ -117,6 +224,30 @@
       "writtenOn": "2022-09-26T04:36:00Z",
       "side": 1,
       "message": "produces",
+      "range": {
+        "startLine": 256,
+        "startChar": 41,
+        "endLine": 256,
+        "endChar": 48
+      },
+      "revId": "de09962075f5795aad81446a2b7d09ee8b8c0789",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b39fdf7b_8ebc20c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1001410
+      },
+      "writtenOn": "2022-09-28T02:08:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "372e7197_02ca8fc9",
       "range": {
         "startLine": 256,
         "startChar": 41,
@@ -146,6 +277,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e3165bac_70dbef5b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1001410
+      },
+      "writtenOn": "2022-09-28T02:08:09Z",
+      "side": 1,
+      "message": "I agree - that would be true. However - I do not really like such long case statements either (and creating sub-functions for each case would require a lot of passed variables. \nNote also that this is the only place where this gets looked at. So if someone would add a new enum up there something would need to be added here too.\n\n\nSo unless you really want this to be a case statement I would rather like to keep it this way.",
+      "parentUuid": "11c45c5a_160a6720",
+      "revId": "de09962075f5795aad81446a2b7d09ee8b8c0789",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "18ddd977_e92aef04",
         "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
         "patchSetId": 9
@@ -157,6 +306,24 @@
       "writtenOn": "2022-09-26T04:36:00Z",
       "side": 1,
       "message": "I think this should be: Connect to the new tab and ...",
+      "revId": "de09962075f5795aad81446a2b7d09ee8b8c0789",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3c522b4_b7b05fc5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1001410
+      },
+      "writtenOn": "2022-09-28T02:08:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "18ddd977_e92aef04",
       "revId": "de09962075f5795aad81446a2b7d09ee8b8c0789",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -180,6 +347,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bfedc79c_34626be7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1001410
+      },
+      "writtenOn": "2022-09-28T02:08:09Z",
+      "side": 1,
+      "message": "Hmm. This was from another example as provided by Hidehiko.\n\nI am not sure which of the two is more prone of being broken at some point in time as things might change. I have heard that there was some effort underway which re-thinks keyboard shortcuts. So I think it might be safer to keep it as it is now?",
+      "parentUuid": "4f9e72b2_9c7822d5",
+      "revId": "de09962075f5795aad81446a2b7d09ee8b8c0789",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ccdb71e7_187f0091",
         "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
         "patchSetId": 9
@@ -191,6 +376,24 @@
       "writtenOn": "2022-09-26T04:36:00Z",
       "side": 1,
       "message": "There\u0027s a good chance this will still flake sometimes.\nCan you instead wait for some condition to become true (probably depending on the openLocation mode)?",
+      "revId": "de09962075f5795aad81446a2b7d09ee8b8c0789",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78aab096_6d786acd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1001410
+      },
+      "writtenOn": "2022-09-28T02:08:09Z",
+      "side": 1,
+      "message": "I would appreciate a suggestion here...",
+      "parentUuid": "ccdb71e7_187f0091",
       "revId": "de09962075f5795aad81446a2b7d09ee8b8c0789",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -242,6 +445,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a741b86_6b0c1d27",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1001410
+      },
+      "writtenOn": "2022-09-28T02:08:09Z",
+      "side": 1,
+      "message": "I tired that and it did not work - because of the application window. If not mistaken I left previously a comment about that.",
+      "parentUuid": "cf6ea495_07ec2730",
+      "range": {
+        "startLine": 379,
+        "startChar": 0,
+        "endLine": 379,
+        "endChar": 53
+      },
+      "revId": "de09962075f5795aad81446a2b7d09ee8b8c0789",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "22898de5_3847d49f",
@@ -255,6 +482,30 @@
       "writtenOn": "2022-09-26T04:36:00Z",
       "side": 1,
       "message": "unsuccessful",
+      "range": {
+        "startLine": 389,
+        "startChar": 18,
+        "endLine": 389,
+        "endChar": 31
+      },
+      "revId": "de09962075f5795aad81446a2b7d09ee8b8c0789",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cbf9e004_591d734a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1001410
+      },
+      "writtenOn": "2022-09-28T02:08:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "22898de5_3847d49f",
       "range": {
         "startLine": 389,
         "startChar": 18,
