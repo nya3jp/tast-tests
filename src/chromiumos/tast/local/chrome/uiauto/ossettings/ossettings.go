@@ -22,6 +22,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/chrome/webutil"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/network/netconfig"
 	"chromiumos/tast/testing"
 )
 
@@ -337,25 +338,42 @@ func (s *OSSettings) WaitUntilToggleOption(cr *chrome.Chrome, optionName string,
 	}
 }
 
-// OpenNetworkDetailPage navigates Settings app to the network detail page.
-func OpenNetworkDetailPage(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome, networkName string) (*OSSettings, error) {
+// OpenNetworkDetailPage navigates to the detail page for a particular Cellular or WiFi network.
+func OpenNetworkDetailPage(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome, networkName string, networkType netconfig.NetworkType) (*OSSettings, error) {
 	ui := uiauto.New(tconn)
+
 	app, err := Launch(ctx, tconn)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to launch settings page")
 	}
 
-	if err := app.SetToggleOption(cr, "Mobile data enable", true)(ctx); err != nil {
-		return nil, errors.Wrap(err, "failed to enable mobile data")
-	}
+	subpageArrowFinder := nodewith.Role(role.Button).ClassName("subpage-arrow")
+	subpageArrowFinderWithName, err := func() (*nodewith.Finder, error) {
+		var technology string
+		if networkType == netconfig.Cellular {
+			technology = "Mobile data"
+		} else if networkType == netconfig.WiFi {
+			technology = "Wi-Fi"
+		} else {
+			return nil, errors.New("Network technology must be Cellular or WiFi")
+		}
+		// We append " enable" here since SetToggleOption requires the exact toggle name.
+		if err := app.SetToggleOption(cr, technology+" enable", true)(ctx); err != nil {
+			return nil, errors.Wrap(err, "failed to enable network technology: "+technology)
+		}
+		return subpageArrowFinder.NameContaining(technology), nil
+	}()
 
-	app, err = OpenMobileDataSubpage(ctx, tconn, cr)
 	if err != nil {
-		return nil, errors.Wrap(err, "failed to open mobile data subpage")
+		return nil, errors.Wrap(err, "failed to determine network subpage finder")
 	}
 
-	var networkNameDetail = nodewith.NameContaining(networkName).Role(role.Button).ClassName("subpage-arrow").First()
-	if err := ui.LeftClick(networkNameDetail)(ctx); err != nil {
+	if err = ui.LeftClick(subpageArrowFinderWithName)(ctx); err != nil {
+		return nil, errors.Wrap(err, "failed to navigate to the network subpage")
+	}
+
+	networkDetailPageFinder := subpageArrowFinder.NameContaining(networkName).First()
+	if err = ui.LeftClick(networkDetailPageFinder)(ctx); err != nil {
 		return nil, errors.Wrap(err, "failed to open detail page")
 	}
 
