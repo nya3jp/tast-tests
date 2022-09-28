@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "61d1b942_bf5861bc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1553967
+      },
+      "writtenOn": "2022-09-28T09:36:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "43d3d8ac_f641bd6d",
+      "range": {
+        "startLine": 15,
+        "startChar": 4,
+        "endLine": 15,
+        "endChar": 8
+      },
+      "revId": "f7624487a211b175db616f0d37690bff58598035",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "2cce0c61_9fdc98ca",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 11
@@ -54,6 +78,30 @@
       "writtenOn": "2022-09-28T08:35:20Z",
       "side": 1,
       "message": "We still want to use mRandom for generating random numbers. Because mRandom is not accessible from here, let\u0027s add an argument here, and get Random from it, and use it.",
+      "range": {
+        "startLine": 47,
+        "startChar": 35,
+        "endLine": 47,
+        "endChar": 48
+      },
+      "revId": "f7624487a211b175db616f0d37690bff58598035",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "51705c48_5657d677",
+        "filename": "android/ArcRandomUIElementsApp/src/org/chromium/arc/testapp/randomuielements/RandomUIElementsActivity.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1553967
+      },
+      "writtenOn": "2022-09-28T09:36:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dcac918d_78d3f1f7",
       "range": {
         "startLine": 47,
         "startChar": 35,
