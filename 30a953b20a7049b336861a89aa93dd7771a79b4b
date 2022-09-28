@@ -16,6 +16,24 @@
       "message": "Alternative where we do this both in tablet mode and clamshell mode would be OK by me too.",
       "revId": "30a953b20a7049b336861a89aa93dd7771a79b4b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc9966f4_d602d2cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/recent_apps.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1368351
+      },
+      "writtenOn": "2022-09-28T17:16:48Z",
+      "side": 0,
+      "message": "Was considering both options, and I think it could make more sense to reopen then, as I do not like the idea of using tconnn.Call, not sure why.\n\nOn the other hand, the idea of hiding and showing the launcher, specially in tablet mode, has me feeling like it is slower specially on some devices from what I\u0027ve seen.\n\nI think I\u0027ll wait for system apps before the test",
+      "parentUuid": "683e9f53_1ab9d8bb",
+      "revId": "30a953b20a7049b336861a89aa93dd7771a79b4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
