@@ -9,7 +9,6 @@ import (
 	"io/ioutil"
 	"os"
 	"strings"
-	"syscall"
 	"time"
 
 	"github.com/shirou/gopsutil/v3/host"
@@ -118,7 +117,7 @@ func ReporterCrash(ctx context.Context, s *testing.State) {
 	}()
 
 	s.Log("Crashing the target process")
-	if err := unix.Kill(target.Process.Pid, syscall.SIGSEGV); err != nil {
+	if err := unix.Kill(target.Process.Pid, unix.SIGSEGV); err != nil {
 		s.Fatal("Failed to induce an artifical crash: ", err)
 	}
 
