@@ -23,7 +23,7 @@ const ffmpegMD5Path = "/usr/local/graphics/ffmpeg_md5sum"
 // regenerate the test parameters by running the following in a chroot:
 // TAST_GENERATE_UPDATE=1 ~/trunk/src/platform/tast/tools/go.sh test -count=1 chromiumos/tast/local/bundles/cros/video
 
-var vaapiAv1Files = []string{
+var av1Files = []string{
 	"test_vectors/av1/8-bit/00000527.ivf",
 	"test_vectors/av1/8-bit/00000535.ivf",
 	"test_vectors/av1/8-bit/00000548.ivf",
@@ -986,11 +986,11 @@ func TestPlatformDecodingParams(t *testing.T) {
 		Name:       "vaapi_av1",
 		Decoder:    filepath.Join(chrome.BinTestDir, "decode_test"),
 		CmdBuilder: "av1decodeVAAPIargs",
-		Files:      vaapiAv1Files,
+		Files:      av1Files,
 		Timeout:    defaultTimeout,
 		// These SoftwareDeps do not include the 10 bit version of AV1.
 		SoftwareDeps: []string{"vaapi", caps.HWDecodeAV1},
-		Metadata:     genExtraData(vaapiAv1Files),
+		Metadata:     genExtraData(av1Files),
 		Attr:         []string{"graphics_video_av1"},
 	})
 
@@ -1288,11 +1288,11 @@ func TestPlatformDecodingParams(t *testing.T) {
 		Name:       "ffmpeg_vaapi_av1",
 		Decoder:    filepath.Join(chrome.BinTestDir, "decode_test"),
 		CmdBuilder: "av1decodeVAAPIargs",
-		Files:      vaapiAv1Files,
+		Files:      av1Files,
 		Timeout:    defaultTimeout,
 		// These SoftwareDeps do not include the 10 bit version of AV1.
 		SoftwareDeps: []string{"vaapi", caps.HWDecodeAV1},
-		Metadata:     genExtraData(vaapiAv1Files),
+		Metadata:     genExtraData(av1Files),
 		Attr:         []string{"graphics_video_av1"},
 	})
 
@@ -1351,7 +1351,6 @@ func TestPlatformDecodingParams(t *testing.T) {
 	// Generate ffmpeg HEVC tests.
 	for _, group := range []string{"main"} {
 		files := hevcFiles[group]
-
 		param := paramData{
 			Name:         fmt.Sprintf("ffmpeg_vaapi_hevc_%s", group),
 			Decoder:      ffmpegMD5Path,
@@ -1364,7 +1363,6 @@ func TestPlatformDecodingParams(t *testing.T) {
 		}
 		params = append(params, param)
 	}
-
 	// Generate ffmpeg HEVC tests from bugs.
 	for _, testGroup := range []string{"main"} {
 		bugIDs := make([]string, 0, len(hevcFilesFromBugs[testGroup]))
@@ -1375,7 +1373,6 @@ func TestPlatformDecodingParams(t *testing.T) {
 		sort.Strings(bugIDs)
 		for _, bugID := range bugIDs {
 			files := hevcFilesFromBugs[testGroup][bugID]
-
 			params = append(params, paramData{
 				Name:         fmt.Sprintf("ffmpeg_vaapi_hevc_%s_bug_%s", testGroup, bugID),
 				Decoder:      ffmpegMD5Path,
@@ -1386,6 +1383,40 @@ func TestPlatformDecodingParams(t *testing.T) {
 				Metadata:     genExtraData(files),
 				Attr:         []string{"graphics_video_hevc"},
 			})
+		}
+	}
+
+	// Generate V4L2 AV1 tests.
+	params = append(params, paramData{
+		Name:         "v4l2_stateless_av1",
+		Decoder:      filepath.Join(chrome.BinTestDir, "v4l2_stateless_decoder"),
+		CmdBuilder:   "v4l2StatelessDecodeArgs",
+		Files:        av1Files,
+		Timeout:      defaultTimeout,
+		SoftwareDeps: []string{"v4l2_codec"},
+		// TODO(b/242075797): use HW capabilities
+		HardwareDeps: "hwdep.SupportsV4L2StatelessVideoDecoding(), hwdep.Model(\"tomato\", \"dojo\")",
+		Metadata:     genExtraData(av1Files),
+		Attr:         []string{"graphics_video_av1"},
+	})
+
+	for _, bit := range []string{"8bit"} {
+		for _, cat := range []string{"quantizer", "size", "allintra", "cdfupdate", "motionvec", "svc"} {
+			files := av1AomFiles[bit][cat]
+			param := paramData{
+				Name:         fmt.Sprintf("v4l2_stateless_av1_%s_%s", bit, cat),
+				Decoder:      filepath.Join(chrome.BinTestDir, "v4l2_stateless_decoder"),
+				CmdBuilder:   "v4l2StatelessDecodeArgs",
+				Files:        files,
+				Timeout:      defaultTimeout,
+				SoftwareDeps: []string{"v4l2_codec"},
+				// TODO(b/242075797): use HW capabilities
+				HardwareDeps: "hwdep.SupportsV4L2StatelessVideoDecoding(), hwdep.Model(\"tomato\", \"dojo\")",
+				Metadata:     genExtraData(files),
+				Attr:         []string{"graphics_video_av1"},
+			}
+
+			params = append(params, param)
 		}
 	}
 
