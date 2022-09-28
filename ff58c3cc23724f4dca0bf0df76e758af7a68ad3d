@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "60319419_1a796503",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-09-28T17:12:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ac435375_9cf86462",
+      "revId": "ff58c3cc23724f4dca0bf0df76e758af7a68ad3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f97055ec_ee1c0e8e",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-09-28T01:54:12Z",
       "side": 1,
       "message": "See above.",
+      "range": {
+        "startLine": 21,
+        "startChar": 29,
+        "endLine": 21,
+        "endChar": 57
+      },
+      "revId": "ff58c3cc23724f4dca0bf0df76e758af7a68ad3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "698a27bc_5b01bf72",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-09-28T17:12:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f97055ec_ee1c0e8e",
       "range": {
         "startLine": 21,
         "startChar": 29,
@@ -71,6 +113,24 @@
       "writtenOn": "2022-09-28T01:54:12Z",
       "side": 1,
       "message": "Why does the test have to close the browser window? Keeping it open would avoid the need for the old and new code.",
+      "revId": "ff58c3cc23724f4dca0bf0df76e758af7a68ad3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9097aad8_a3aa4e20",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-09-28T17:12:29Z",
+      "side": 1,
+      "message": "yeah, good point, I think the test should work even if we keep the window open (and this is not an essential step of the test scenario) - removed this step.",
+      "parentUuid": "f77dd2b4_80f11619",
       "revId": "ff58c3cc23724f4dca0bf0df76e758af7a68ad3d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
