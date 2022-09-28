@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4bda3a78_221580aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/print_to_pdf.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1547842
+      },
+      "writtenOn": "2022-09-28T10:44:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "50c48037_594a5dcb",
+      "range": {
+        "startLine": 103,
+        "startChar": 27,
+        "endLine": 103,
+        "endChar": 66
+      },
+      "revId": "30cbec8b0ed7c44e360e8e9992e343c4035cbbb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "baf5ca2d_1d921a33",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec2d1f8d_a4cf3651",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/print_to_pdf.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1547842
+      },
+      "writtenOn": "2022-09-28T10:44:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "baf5ca2d_1d921a33",
+      "range": {
+        "startLine": 112,
+        "startChar": 23,
+        "endLine": 112,
+        "endChar": 42
+      },
+      "revId": "30cbec8b0ed7c44e360e8e9992e343c4035cbbb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ddb618b8_e96aff2f",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-09-26T20:07:41Z",
       "side": 1,
       "message": "We should probably do this before the `uiauto.Combine()` block since we don\u0027t know at what point the test may fail but still want to do our best effort to perform clean up :)",
+      "range": {
+        "startLine": 145,
+        "startChar": 0,
+        "endLine": 151,
+        "endChar": 34
+      },
+      "revId": "30cbec8b0ed7c44e360e8e9992e343c4035cbbb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0b376b4_88ccd729",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/print_to_pdf.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1547842
+      },
+      "writtenOn": "2022-09-28T10:44:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ddb618b8_e96aff2f",
       "range": {
         "startLine": 145,
         "startChar": 0,

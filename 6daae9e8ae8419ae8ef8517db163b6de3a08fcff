@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0af80949_ceec1213",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1547842
+      },
+      "writtenOn": "2022-09-28T10:44:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "026cd786_78e17f13",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 28
+      },
+      "revId": "6daae9e8ae8419ae8ef8517db163b6de3a08fcff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f17792c5_556b33d5",
@@ -331,6 +355,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb730892_9b005493",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/print_to_pdf.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1547842
+      },
+      "writtenOn": "2022-09-28T10:44:13Z",
+      "side": 1,
+      "message": "Ah yes thank you",
+      "parentUuid": "f19e6107_63d4876e",
+      "range": {
+        "startLine": 116,
+        "startChar": 28,
+        "endLine": 116,
+        "endChar": 39
+      },
+      "revId": "6daae9e8ae8419ae8ef8517db163b6de3a08fcff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bff96d28_9ac4e376",
@@ -392,6 +440,30 @@
       "side": 1,
       "message": "I would remove it for now, we can always add it back in after seeing how things run in the lab. If this does become an issue, we\u0027ll probably want to add a switch to suppress all notifications while a test is in progress if that test would flake due to unexpected notification activity :)",
       "parentUuid": "02db986c_acd87392",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 126,
+        "endChar": 2
+      },
+      "revId": "6daae9e8ae8419ae8ef8517db163b6de3a08fcff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6cc6870_bd7f8833",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/print_to_pdf.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1547842
+      },
+      "writtenOn": "2022-09-28T10:44:13Z",
+      "side": 1,
+      "message": "Ok removed",
+      "parentUuid": "cd0cabc0_23b8ed22",
       "range": {
         "startLine": 123,
         "startChar": 0,
