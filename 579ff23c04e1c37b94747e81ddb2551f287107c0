@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2119ee92_f51fe1b2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/thunderbolt_dock_station_functionality.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-09-28T04:42:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f47b3fb7_bc0892d1",
+      "revId": "579ff23c04e1c37b94747e81ddb2551f287107c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "26441a7f_e304d59d",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-09-27T06:07:06Z",
       "side": 1,
       "message": "This seems to conflict with your comment on line 303. Are we \"verifying that audio is routing through BT\" or are we \"waiting for the 3.5mm headset\"",
+      "revId": "579ff23c04e1c37b94747e81ddb2551f287107c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c47c5ba_d87e5722",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/thunderbolt_dock_station_functionality.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-09-28T04:42:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "26441a7f_e304d59d",
       "revId": "579ff23c04e1c37b94747e81ddb2551f287107c0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
