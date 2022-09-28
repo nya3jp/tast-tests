@@ -1,4 +1,4 @@
-// Copyright 2018 The ChromiumOS Authors
+// Copyright 2022 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -6,8 +6,9 @@ package ui
 
 import (
 	"context"
-	"syscall"
 	"time"
+
+	"golang.org/x/sys/unix"
 
 	ups "chromiumos/tast/common/upstart"
 	"chromiumos/tast/errors"
@@ -45,7 +46,7 @@ func SessionManagerRespawn(ctx context.Context, s *testing.State) {
 	s.Log("Repeatedly killing session_manager to check that ui-respawn stops restarting it eventually")
 	for i := 0; i < maxRespawns && !respawnStopped; i++ {
 		s.Logf("Killing %d and watching for respawn", pid)
-		if err := syscall.Kill(pid, syscall.SIGKILL); err != nil {
+		if err := unix.Kill(pid, unix.SIGKILL); err != nil {
 			s.Fatalf("Failed to kill %d: %v", pid, err)
 		}
 		err = testing.Poll(ctx, func(ctx context.Context) error {
