@@ -525,12 +525,6 @@ func (f *loggedInToCUJUserFixture) Reset(ctx context.Context) error {
 		}
 	}
 
-	if f.bt == browser.TypeLacros {
-		if err := lacros.ResetState(ctx, tconn); err != nil {
-			return errors.Wrap(err, "failed to reset Lacros state")
-		}
-	}
-
 	// Unlike ARC.preImpl, this does not uninstall apps. This is because we
 	// typically want to reuse the same list of applications, and additional
 	// installed apps wouldn't affect the test scenarios.

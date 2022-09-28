@@ -15,7 +15,6 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc/optin"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/testing"
 )
@@ -575,13 +574,6 @@ func (f *bootedFixture) TearDown(ctx context.Context, s *testing.FixtState) {
 func (f *bootedFixture) Reset(ctx context.Context) error {
 	if f.d != nil && !f.d.Alive(ctx) {
 		return errors.New("UI Automator is dead")
-	}
-	tconn, err := f.cr.TestAPIConn(ctx)
-	if err != nil {
-		return errors.Wrap(err, "failed to connect Test API")
-	}
-	if err := lacros.ResetState(ctx, tconn); err != nil {
-		return errors.Wrap(err, "failed to reset lacros")
 	}
 	if err := f.cr.ResetState(ctx); err != nil {
 		return errors.Wrap(err, "failed to reset chrome")
