@@ -70,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "df100359_6c1ec168",
+        "filename": "src/chromiumos/tast/local/bundles/cros/runtimeprobe/verify_sandbox.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1368699
+      },
+      "writtenOn": "2022-09-28T06:56:13Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3990b39a_406ee648",
+      "revId": "149b6e5848e6fad6c4709a634d7ae6db5274edcb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2ce4b9f4_c0625635",
