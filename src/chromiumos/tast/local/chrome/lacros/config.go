@@ -4,11 +4,14 @@
 
 package lacros
 
-import "chromiumos/tast/testing"
+import (
+	internal "chromiumos/tast/local/chrome/internal/lacros"
+	"chromiumos/tast/testing"
+)
 
 const (
 	// UserDataDir is the directory that contains the user data of lacros.
-	UserDataDir = "/home/chronos/user/lacros/"
+	UserDataDir = internal.UserDataDir
 
 	// LacrosSquashFSPath indicates the location of the rootfs lacros squashfs filesystem.
 	LacrosSquashFSPath = "/opt/google/lacros/lacros.squash"

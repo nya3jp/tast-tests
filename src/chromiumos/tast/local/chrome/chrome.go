@@ -25,6 +25,7 @@ import (
 	"chromiumos/tast/local/chrome/internal/config"
 	"chromiumos/tast/local/chrome/internal/driver"
 	"chromiumos/tast/local/chrome/internal/extension"
+	"chromiumos/tast/local/chrome/internal/lacros"
 	"chromiumos/tast/local/chrome/internal/login"
 	"chromiumos/tast/local/chrome/internal/setup"
 	"chromiumos/tast/local/chrome/jslog"
@@ -470,6 +471,17 @@ func (c *Chrome) ResetState(ctx context.Context) error {
 	ctx, st := timing.Start(ctx, "reset_chrome")
 	defer st.End()
 
+	tconn, err := c.TestAPIConn(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to get test API connection")
+	}
+
+	// First deal with Lacros, which may or may not be enabled.
+	if err := lacros.ResetState(ctx, tconn); err != nil {
+		return errors.Wrap(err, "failed to reset Lacros's state")
+	}
+
+	// Now deal with Ash.
 	if err := c.CloseTargets(ctx, shouldCloseOnReset); err != nil {
 		return errors.Wrap(err, "not all targets finished closing")
 	}
@@ -487,11 +499,6 @@ func (c *Chrome) ResetState(ctx context.Context) error {
 		if _, err := c.sess.StopTracing(ctx); err != nil {
 			testing.ContextLog(ctx, "Failed to stop tracing: ", err)
 		}
-	}
-
-	tconn, err := c.TestAPIConn(ctx)
-	if err != nil {
-		return errors.Wrap(err, "failed to get test API connection")
 	}
 
 	// Free all remote JS objects in the test extension.
