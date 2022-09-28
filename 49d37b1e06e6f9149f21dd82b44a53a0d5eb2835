@@ -16,6 +16,23 @@
       "message": "LGTM",
       "revId": "49d37b1e06e6f9149f21dd82b44a53a0d5eb2835",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c414c86_d74cb900",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-09-28T23:50:39Z",
+      "side": 1,
+      "message": "Unfortunately hidehiko is OOO for a while. Please remove him and add tast-owners once again to request a new reviewer (I can\u0027t do it).",
+      "revId": "49d37b1e06e6f9149f21dd82b44a53a0d5eb2835",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
