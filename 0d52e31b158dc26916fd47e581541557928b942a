@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b066e4bc_4399e2f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/enabled_policy.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-09-28T18:24:17Z",
+      "side": 1,
+      "message": "I don\u0027t think this works in tablet mode, because the launcher is never dismissed [1].\n\nError at enabled_policy.go:103: testProjectorEnabled: Failed to run subtest testProjectorEnabled: failed to wait for for Screencast and launcher to close: failed to Wait for the app and launcher to close on step 2: context deadline exceeded during a poll with timeout 10s; last error follows: node still exists\n\n[1] https://screenshot.googleplex.com/3XWBtGzcFis2Nn8.png",
+      "range": {
+        "startLine": 159,
+        "startChar": 2,
+        "endLine": 159,
+        "endChar": 75
+      },
+      "revId": "0d52e31b158dc26916fd47e581541557928b942a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ac8650a_93421eb1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/enabled_policy.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-09-28T18:24:17Z",
+      "side": 1,
+      "message": "Nit: wait for",
+      "range": {
+        "startLine": 161,
+        "startChar": 37,
+        "endLine": 161,
+        "endChar": 49
+      },
+      "revId": "0d52e31b158dc26916fd47e581541557928b942a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
