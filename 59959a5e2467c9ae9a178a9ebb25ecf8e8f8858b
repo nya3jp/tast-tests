@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dbfd6917_f128d524",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2022-09-28T00:57:40Z",
+      "side": 1,
+      "message": "My concern is that even NEW devices have the chance to fail this test, this test may not be able to mark as critical in the future. \nWe need other solution to fix the test or improve our audio correctness. \n+2 for now.\nThanks!",
+      "revId": "59959a5e2467c9ae9a178a9ebb25ecf8e8f8858b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "22761106_c3d772d1",
@@ -55,6 +72,30 @@
       "side": 1,
       "message": "It\u0027s a device issue. From the test result, it has a dual-core Intel(R) Celeron(R) 6305 @ 1.80GHz, which I think counts as a low performance device.",
       "parentUuid": "22761106_c3d772d1",
+      "range": {
+        "startLine": 64,
+        "startChar": 4,
+        "endLine": 65,
+        "endChar": 17
+      },
+      "revId": "59959a5e2467c9ae9a178a9ebb25ecf8e8f8858b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2feddf5_504fd4fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio_loopback_correctness.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2022-09-28T00:57:40Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "fc335c48_4b4a91a0",
       "range": {
         "startLine": 64,
         "startChar": 4,
