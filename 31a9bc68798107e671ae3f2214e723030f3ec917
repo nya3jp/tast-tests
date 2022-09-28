@@ -18,6 +18,57 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "763f7521_b1acf321",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2022-09-28T20:43:00Z",
+      "side": 1,
+      "message": "Thanks! w/ nits and requests",
+      "revId": "31a9bc68798107e671ae3f2214e723030f3ec917",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9cb58377_2c1ba79c",
+        "filename": "src/chromiumos/tast/local/arc/gmscore/gmscore.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2022-09-28T20:43:00Z",
+      "side": 1,
+      "message": "Given that the pref name is not stable, can you:\n\n1) Add a URL (to GmsCore source code) where we can find the pref name? Since this is public, let\u0027s use a go/ link.\n2) Check if this is still in use in T?",
+      "revId": "31a9bc68798107e671ae3f2214e723030f3ec917",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd9572f0_7df55a3b",
+        "filename": "src/chromiumos/tast/local/arc/gmscore/gmscore.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2022-09-28T20:43:00Z",
+      "side": 1,
+      "message": "Does this mean this function is no-op in P? If so, can you mention that in a code comment?",
+      "revId": "31a9bc68798107e671ae3f2214e723030f3ec917",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fb820594_d76fa7ed",
@@ -37,6 +88,23 @@
         "endLine": 62,
         "endChar": 98
       },
+      "revId": "31a9bc68798107e671ae3f2214e723030f3ec917",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba7a01ca_f370cc93",
+        "filename": "src/chromiumos/tast/local/arc/gmscore/gmscore.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2022-09-28T20:43:00Z",
+      "side": 1,
+      "message": "Please include the pref name in the error message.",
       "revId": "31a9bc68798107e671ae3f2214e723030f3ec917",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
