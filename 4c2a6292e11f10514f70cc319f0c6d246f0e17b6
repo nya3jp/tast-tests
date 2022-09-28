@@ -163,6 +163,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "140898ee_cd44c125",
+        "filename": "android/ArcRandomUIElementsApp/src/org/chromium/arc/testapp/randomuielements/RandomUIElementsActivity.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2022-09-28T05:50:15Z",
+      "side": 1,
+      "message": "Oops, sorry for the incomplete sentence. This value is not read by other classes. I\u0027d make it private until it\u0027s needed to be exposed.",
+      "parentUuid": "5eb3d710_882d6f64",
+      "range": {
+        "startLine": 26,
+        "startChar": 4,
+        "endLine": 26,
+        "endChar": 10
+      },
+      "revId": "4c2a6292e11f10514f70cc319f0c6d246f0e17b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9801da86_4d01b0e9",
         "filename": "android/ArcRandomUIElementsApp/src/org/chromium/arc/testapp/randomuielements/RandomUIElementsActivity.java",
         "patchSetId": 8

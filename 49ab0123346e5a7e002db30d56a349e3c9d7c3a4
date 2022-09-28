@@ -26,6 +26,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "060fa074_48da4de7",
+        "filename": "android/ArcRandomUIElementsApp/src/org/chromium/arc/testapp/randomuielements/RandomUIElementsActivity.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2022-09-28T05:50:15Z",
+      "side": 1,
+      "message": "Let\u0027s use a constant `Color.GREEN` from android.graphics\n\nhttps://developer.android.com/reference/android/graphics/Color#GREEN",
+      "range": {
+        "startLine": 29,
+        "startChar": 48,
+        "endLine": 29,
+        "endChar": 58
+      },
+      "revId": "49ab0123346e5a7e002db30d56a349e3c9d7c3a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3034f607_8241442f",
         "filename": "android/ArcRandomUIElementsApp/src/org/chromium/arc/testapp/randomuielements/RandomUIElementsActivity.java",
         "patchSetId": 9
@@ -88,6 +111,76 @@
         "startChar": 8,
         "endLine": 70,
         "endChar": 22
+      },
+      "revId": "49ab0123346e5a7e002db30d56a349e3c9d7c3a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a516c89_bc2c2e77",
+        "filename": "android/ArcRandomUIElementsApp/src/org/chromium/arc/testapp/randomuielements/RandomUIElementsActivity.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2022-09-28T05:50:15Z",
+      "side": 1,
+      "message": "related question, setContentView is already done just after onCreate(). I guess the first one is not necessary?",
+      "parentUuid": "ad25e0a1_08898ab8",
+      "range": {
+        "startLine": 70,
+        "startChar": 8,
+        "endLine": 70,
+        "endChar": 22
+      },
+      "revId": "49ab0123346e5a7e002db30d56a349e3c9d7c3a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91785fb1_9d36ef84",
+        "filename": "android/ArcRandomUIElementsApp/src/org/chromium/arc/testapp/randomuielements/RandomUIElementsActivity.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2022-09-28T05:50:15Z",
+      "side": 1,
+      "message": "nit: you can just do `textView.setText(\"Line:\" + mRandom.nextInt());`",
+      "range": {
+        "startLine": 74,
+        "startChar": 7,
+        "endLine": 76,
+        "endChar": 33
+      },
+      "revId": "49ab0123346e5a7e002db30d56a349e3c9d7c3a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "123c11c1_3d94da7f",
+        "filename": "android/ArcRandomUIElementsApp/src/org/chromium/arc/testapp/randomuielements/RandomUIElementsActivity.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2022-09-28T05:50:15Z",
+      "side": 1,
+      "message": "Why we need to use TableRow.LayoutParams for this?\n\nView.setLayoutParams accepts `ViewGroup.LayoutParams` as a parameter: \nhttps://developer.android.com/reference/android/view/View#setLayoutParams(android.view.ViewGroup.LayoutParams)\n\nBecause TableRow.LayoutParams inherits ViewGroup.LayoutParams, this code works, but I guess we don\u0027t need to use this specified class.\nCan you use ViewGroup.LayoutParams instead unless we have any reason to use \"TableRow\"?",
+      "range": {
+        "startLine": 77,
+        "startChar": 8,
+        "endLine": 77,
+        "endChar": 90
       },
       "revId": "49ab0123346e5a7e002db30d56a349e3c9d7c3a4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
