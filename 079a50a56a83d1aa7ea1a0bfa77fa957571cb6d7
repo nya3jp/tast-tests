@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d0d2f35_d68ee785",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/config_verify.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-09-28T17:54:04Z",
+      "side": 1,
+      "message": "I don\u0027t see any non_chromiumos_kernel in https://chromium-review.googlesource.com/3912903. Also, I think it will be better to call new software dependencis kernalci and no_kernelci.",
+      "revId": "079a50a56a83d1aa7ea1a0bfa77fa957571cb6d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
