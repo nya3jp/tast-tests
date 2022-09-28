@@ -7,7 +7,8 @@ package security
 import (
 	"context"
 	"os"
-	"syscall"
+
+	"golang.org/x/sys/unix"
 
 	"chromiumos/tast/local/bundles/cros/security/selinux"
 	"chromiumos/tast/testing"
@@ -37,7 +38,7 @@ func SELinuxFilesSystemInformational(ctx context.Context, s *testing.State) {
 				return selinux.Skip, selinux.Check
 			}
 
-			isWritable := mode.IsRegular() && ((mode.Perm() & (syscall.S_IWUSR | syscall.S_IWGRP | syscall.S_IWOTH)) > 0)
+			isWritable := mode.IsRegular() && ((mode.Perm() & (unix.S_IWUSR | unix.S_IWGRP | unix.S_IWOTH)) > 0)
 			// Writable files
 			if isWritable != (writableFilter == writable) {
 				return selinux.Skip, selinux.Check
