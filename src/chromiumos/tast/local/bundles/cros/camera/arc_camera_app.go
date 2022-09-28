@@ -6,8 +6,8 @@ package camera
 
 import (
 	"context"
+	"os"
 	"path/filepath"
-	"strings"
 	"time"
 
 	"chromiumos/tast/common/media/caps"
@@ -20,15 +20,14 @@ import (
 )
 
 const (
-	cameraAppActivity    = ".CameraActivity"
-	cameraAppApk         = "ArcCameraFpsTest.apk"
-	cameraAppPackage     = "org.chromium.arc.testapp.camerafps"
-	intentGetCameraIDs   = "org.chromium.arc.testapp.camerafps.ACTION_GET_CAMERA_IDS"
-	intentSetCameraID    = "org.chromium.arc.testapp.camerafps.ACTION_SET_CAMERA_ID"
-	intentTakePhoto      = "org.chromium.arc.testapp.camerafps.ACTION_TAKE_PHOTO"
-	intentStartRecording = "org.chromium.arc.testapp.camerafps.ACTION_START_RECORDING"
-	intentStopRecording  = "org.chromium.arc.testapp.camerafps.ACTION_STOP_RECORDING"
-	intentResetCamera    = "org.chromium.arc.testapp.camerafps.ACTION_RESET_CAMERA"
+	cameraAppActivity    = ".MainActivity"
+	cameraAppApk         = "ArcCameraTest.apk"
+	cameraAppPackage     = "chromeos.camera.app.arccameratest"
+	intentSwitchCamera   = "chromeos.camera.app.arccameratest.ACTION_SWITCH_CAMERA"
+	intentTakePhoto      = "chromeos.camera.app.arccameratest.ACTION_TAKE_PHOTO"
+	intentStartRecording = "chromeos.camera.app.arccameratest.ACTION_START_RECORDING"
+	intentStopRecording  = "chromeos.camera.app.arccameratest.ACTION_STOP_RECORDING"
+	keyCameraFacing      = "chromeos.camera.app.arccameratest.KEY_CAMERA_FACING"
 
 	// Snapshots can be really small if the room is dark, but JPEGs and MP4s are never smaller than 100 bytes.
 	minExpectedFileSize = 100
@@ -44,28 +43,6 @@ func init() {
 		SoftwareDeps: []string{"chrome", caps.BuiltinOrVividCamera},
 		Fixture:      "arcBootedRestricted",
 	})
-}
-
-// parseCameraIDs parses a raw string returned by ArcCameraFpsApp via
-// ACTION_GET_CAMERA_IDS intent and returns a string array which contains the
-// camera IDs with the same order as they are in the raw string.
-func parseCameraIDs(ctx context.Context, raw string) []string {
-	// Format: [0: {CamId0}, 1: {CamId1}, ]. Example: [0: 0, 1: 1, ].
-	// TODO(b/238846980): Change to use a common format such as JSON.
-	pairs := strings.Split(raw[1:len(raw)-1], ", ")
-	var ids []string
-	for _, pair := range pairs {
-		if len(pair) == 0 {
-			continue
-		}
-		values := strings.Split(pair, ": ")
-		if len(values) <= 1 {
-			testing.ContextLogf(ctx, "Unrecognized pair string: %v. Ignore it", pair)
-			continue
-		}
-		ids = append(ids, values[1])
-	}
-	return ids
 }
 
 func ARCCameraApp(ctx context.Context, s *testing.State) {
@@ -130,17 +107,14 @@ func ARCCameraApp(ctx context.Context, s *testing.State) {
 			}
 			defer activity.Stop(cleanupCtx, tconn)
 
-			rawCameraIds, err := a.BroadcastIntentGetData(ctx, intentGetCameraIDs)
-			if err != nil {
-				s.Fatal("Failed to get camera ids: ", err)
-			}
-			cameraIDs := parseCameraIDs(ctx, rawCameraIds)
-
-			for _, id := range cameraIDs {
-				if _, err := a.BroadcastIntent(ctx, intentSetCameraID, "--ei", "id", id); err != nil {
-					s.Fatalf("Failed to switch to camera: %v, %v", id, err)
+			for _, facing := range []string{"0", "1"} {
+				testing.ContextLog(ctx, "Switch to camera ", facing)
+				if success, err := a.BroadcastIntentGetData(ctx, intentSwitchCamera, "--ei", keyCameraFacing, facing); err != nil {
+					s.Fatalf("Failed to switch to camera: %v, %v", facing, err)
+				} else if success == "FALSE" {
+					// Continue when there is no camera with such facing.
+					continue
 				}
-				testing.ContextLog(ctx, "Switch to camera ", id)
 
 				if err := tst.testFunc(ctx, cr, a); err != nil {
 					s.Fatalf("Failed when running sub test %v: %v", tst.name, err)
@@ -159,10 +133,8 @@ func takePhoto(ctx context.Context, cr *chrome.Chrome, a *arc.ARC) error {
 		return errors.Wrap(err, "could not send intent")
 	}
 
-	filePath := filepath.Join("files/DCIM", outputFile)
-	testing.ContextLog(ctx, "Output file: ", filePath)
 	// Check if photo file was generated.
-	if fileSize, err := arc.PkgFileSize(ctx, cr.NormalizedUser(), cameraAppPackage, filePath); err != nil {
+	if fileSize, err := fileSizeInDCIM(ctx, cr.NormalizedUser(), outputFile); err != nil {
 		return errors.Wrap(err, "could not determine size of photo file")
 	} else if fileSize < minExpectedFileSize {
 		return errors.Wrapf(err, "photo file is smaller than expected: got %d, want >= %d", fileSize, minExpectedFileSize)
@@ -174,22 +146,36 @@ func takePhoto(ctx context.Context, cr *chrome.Chrome, a *arc.ARC) error {
 // ensures that the captured video is saved successfully.
 func recordVideo(ctx context.Context, cr *chrome.Chrome, a *arc.ARC) error {
 	// Start record video
-	outputFile, err := a.BroadcastIntentGetData(ctx, intentStartRecording)
+	if _, err := a.BroadcastIntent(ctx, intentStartRecording); err != nil {
+		return errors.Wrap(err, "could not send intent")
+	}
+
+	testing.Sleep(ctx, 5*time.Second)
+	outputFile, err := a.BroadcastIntentGetData(ctx, intentStopRecording)
 	if err != nil {
 		return errors.Wrap(err, "could not send intent")
 	}
-	filePath := filepath.Join("files/DCIM", outputFile)
-	testing.ContextLog(ctx, "Output file: ", filePath)
 
-	testing.Sleep(ctx, 5*time.Second)
-	if _, err = a.BroadcastIntent(ctx, intentStopRecording); err != nil {
-		return errors.Wrap(err, "could not send intent")
-	}
 	// Check if video file was generated.
-	if fileSize, err := arc.PkgFileSize(ctx, cr.NormalizedUser(), cameraAppPackage, filePath); err != nil {
+	if fileSize, err := fileSizeInDCIM(ctx, cr.NormalizedUser(), outputFile); err != nil {
 		return errors.Wrap(err, "could not determine size of video file")
 	} else if fileSize < minExpectedFileSize {
 		return errors.Wrapf(err, "video file is smaller than expected: got %d, want >= %d", fileSize, minExpectedFileSize)
 	}
 	return nil
+}
+
+// fileSizeInDCIM searches the file inside Android DCIM folder and returns its size.
+func fileSizeInDCIM(ctx context.Context, user, filename string) (int64, error) {
+	androidDir, err := arc.AndroidDataDir(ctx, user)
+	if err != nil {
+		return -1, errors.Wrap(err, "failed to get Android data dir")
+	}
+	filePathInDCIM := filepath.Join(androidDir, "data/media/0/DCIM/", filename)
+
+	info, err := os.Stat(filePathInDCIM)
+	if err != nil {
+		return -1, errors.Wrapf(err, "unable to access file: %s", filePathInDCIM)
+	}
+	return info.Size(), nil
 }
