@@ -293,6 +293,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3489dbc8_e7df7d5a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/expectations/expectations.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-09-28T19:40:42Z",
+      "side": 1,
+      "message": "Ok, if we have this then lets drop platform and keep board/build board.",
+      "parentUuid": "8d10df8e_b24c7117",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 68
+      },
+      "revId": "f2d6ee1d3f813acd870c314533cc5ac903f85e5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bb9286c6_50cceec6",
