@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dba1026c_32e78087",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368301
+      },
+      "writtenOn": "2022-09-28T05:15:26Z",
+      "side": 1,
+      "message": "Hi Kamil. It turns out that we don\u0027t need to change session manager code to fix this test. Please take a look!",
+      "revId": "63e73cbcdcf016d2716400d69a5b019f59bf5568",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
