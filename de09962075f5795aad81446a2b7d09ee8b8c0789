@@ -295,6 +295,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f0cb6701_bc1ff73c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-09-28T03:52:56Z",
+      "side": 1,
+      "message": "My point is solely about seeing which case we\u0027re in. Right now, as a reader, I have to not only scroll up to see the definition of the enum but also check all cases handled by the previous if statements and then subtract them to see what\u0027s left. If you use a switch-case then I can immediately see it.\n\nThe points about length of code blocks and extending the enum are orthogonal to my suggestion.\n\nSo yes, I think I really want this to be a case statemtent. Thankfully, in Go, the indentation won\u0027t get deeper.",
+      "parentUuid": "e3165bac_70dbef5b",
+      "revId": "de09962075f5795aad81446a2b7d09ee8b8c0789",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "18ddd977_e92aef04",
         "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
         "patchSetId": 9
