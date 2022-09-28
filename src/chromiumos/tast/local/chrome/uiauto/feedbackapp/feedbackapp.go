@@ -22,6 +22,12 @@ import (
 // IssueText export is used to enter the issue description.
 const IssueText = "Test only - please ignore"
 
+// PngFile and PdfFile are used to define the file names.
+const (
+	PngFile = "attach_file_upload_01.png"
+	PdfFile = "attach_file_upload_02.pdf"
+)
+
 // Launch starts the Feedback app via the default method.
 func Launch(ctx context.Context, tconn *chrome.TestConn) (*nodewith.Finder, error) {
 	if err := apps.Launch(ctx, tconn, apps.Feedback.ID); err != nil {
