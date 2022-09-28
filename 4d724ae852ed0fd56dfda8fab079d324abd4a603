@@ -67,6 +67,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "51bbd145_c2e84978",
+        "filename": "src/chromiumos/tast/common/wifi/security/wpa/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-09-28T21:49:03Z",
+      "side": 1,
+      "message": "I was just hoping you could take care of it in a follow up patch, but that\u0027s fine if you\u0027d rather push it off. Can you at least leave a TODO?",
+      "parentUuid": "e28edf52_33a8a7c4",
+      "range": {
+        "startLine": 105,
+        "startChar": 30,
+        "endLine": 105,
+        "endChar": 33
+      },
+      "revId": "4d724ae852ed0fd56dfda8fab079d324abd4a603",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e9face04_574d270f",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect_test.go",
         "patchSetId": 4
