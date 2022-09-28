@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2634d8bd_055437a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/biod/cros_config_matches_device.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-09-28T12:56:31Z",
+      "side": 1,
+      "message": "nit: pass ctx by value, don\u0027t bind by reference",
+      "range": {
+        "startLine": 62,
+        "startChar": 3,
+        "endLine": 62,
+        "endChar": 5
+      },
+      "revId": "b86e1a9a7c4db4b58cdc97f4fa71a5b251de9678",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
