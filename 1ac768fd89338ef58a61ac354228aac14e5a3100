@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "54621863_00a637a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/auto_framing_e2e.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1318626
+      },
+      "writtenOn": "2022-09-28T01:04:58Z",
+      "side": 1,
+      "message": "Done. Renamed it to AutoFramingUIToggle",
+      "parentUuid": "0b84c028_eb3d29a3",
+      "range": {
+        "startLine": 21,
+        "startChar": 27,
+        "endLine": 21,
+        "endChar": 30
+      },
+      "revId": "1ac768fd89338ef58a61ac354228aac14e5a3100",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4e882f55_42125c48",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-09-27T18:19:21Z",
       "side": 1,
       "message": "consider renaming to something like `ccaTakePhotoNTimes` to make it easier to understand in the action sequences below",
+      "range": {
+        "startLine": 58,
+        "startChar": 1,
+        "endLine": 58,
+        "endChar": 13
+      },
+      "revId": "1ac768fd89338ef58a61ac354228aac14e5a3100",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cfa1612a_868e0f87",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/auto_framing_e2e.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1318626
+      },
+      "writtenOn": "2022-09-28T01:04:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4e882f55_42125c48",
       "range": {
         "startLine": 58,
         "startChar": 1,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "83170f80_ee301db4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/auto_framing_e2e.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1318626
+      },
+      "writtenOn": "2022-09-28T01:04:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "78114fd3_7ac1be62",
+      "range": {
+        "startLine": 64,
+        "startChar": 6,
+        "endLine": 64,
+        "endChar": 16
+      },
+      "revId": "1ac768fd89338ef58a61ac354228aac14e5a3100",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "75813421_3214c753",
@@ -93,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "58cd1596_3af581eb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/auto_framing_e2e.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1318626
+      },
+      "writtenOn": "2022-09-28T01:04:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "75813421_3214c753",
+      "range": {
+        "startLine": 91,
+        "startChar": 1,
+        "endLine": 93,
+        "endChar": 26
+      },
+      "revId": "1ac768fd89338ef58a61ac354228aac14e5a3100",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1294beaa_93856df1",
@@ -106,6 +202,30 @@
       "writtenOn": "2022-09-27T18:19:21Z",
       "side": 1,
       "message": "consider pulling this out as a variable, since the same sleep time is  being used everywhere",
+      "range": {
+        "startLine": 117,
+        "startChar": 10,
+        "endLine": 117,
+        "endChar": 25
+      },
+      "revId": "1ac768fd89338ef58a61ac354228aac14e5a3100",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "da81e52a_2738a0de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/auto_framing_e2e.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1318626
+      },
+      "writtenOn": "2022-09-28T01:04:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1294beaa_93856df1",
       "range": {
         "startLine": 117,
         "startChar": 10,
