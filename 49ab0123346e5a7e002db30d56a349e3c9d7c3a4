@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "198349ae_b688ad37",
+        "filename": "android/ArcRandomUIElementsApp/src/org/chromium/arc/testapp/randomuielements/RandomUIElementsActivity.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1546145
+      },
+      "writtenOn": "2022-09-28T04:17:51Z",
+      "side": 1,
+      "message": "Insert space here",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 1
+      },
+      "revId": "49ab0123346e5a7e002db30d56a349e3c9d7c3a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3034f607_8241442f",
+        "filename": "android/ArcRandomUIElementsApp/src/org/chromium/arc/testapp/randomuielements/RandomUIElementsActivity.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1546145
+      },
+      "writtenOn": "2022-09-28T04:17:51Z",
+      "side": 1,
+      "message": "nit:final",
+      "range": {
+        "startLine": 32,
+        "startChar": 4,
+        "endLine": 32,
+        "endChar": 11
+      },
+      "revId": "49ab0123346e5a7e002db30d56a349e3c9d7c3a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6c620b8_79a6cb0e",
+        "filename": "android/ArcRandomUIElementsApp/src/org/chromium/arc/testapp/randomuielements/RandomUIElementsActivity.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1546145
+      },
+      "writtenOn": "2022-09-28T04:17:51Z",
+      "side": 1,
+      "message": "for some safety, can you replace the numbers iwth an enum backed by ints?",
+      "range": {
+        "startLine": 50,
+        "startChar": 17,
+        "endLine": 50,
+        "endChar": 18
+      },
+      "revId": "49ab0123346e5a7e002db30d56a349e3c9d7c3a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad25e0a1_08898ab8",
+        "filename": "android/ArcRandomUIElementsApp/src/org/chromium/arc/testapp/randomuielements/RandomUIElementsActivity.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1546145
+      },
+      "writtenOn": "2022-09-28T04:17:51Z",
+      "side": 1,
+      "message": "Isn\u0027t the test to test jank as the UI changes? So shouldn\u0027t we set the content view first?",
+      "range": {
+        "startLine": 70,
+        "startChar": 8,
+        "endLine": 70,
+        "endChar": 22
+      },
+      "revId": "49ab0123346e5a7e002db30d56a349e3c9d7c3a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "622d829b_900ab5b1",
+        "filename": "android/ArcRandomUIElementsApp/src/org/chromium/arc/testapp/randomuielements/RandomUIElementsActivity.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1546145
+      },
+      "writtenOn": "2022-09-28T04:17:51Z",
+      "side": 1,
+      "message": "All these methods should have spaces between them",
+      "range": {
+        "startLine": 109,
+        "startChar": 4,
+        "endLine": 109,
+        "endChar": 6
+      },
+      "revId": "49ab0123346e5a7e002db30d56a349e3c9d7c3a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
