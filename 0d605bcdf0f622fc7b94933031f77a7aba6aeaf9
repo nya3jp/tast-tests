@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a17a71b0_99ba0b92",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_process_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2022-09-28T06:49:38Z",
+      "side": 1,
+      "message": "Add a period at the end of the sentence.",
+      "range": {
+        "startLine": 153,
+        "startChar": 56,
+        "endLine": 153,
+        "endChar": 63
+      },
+      "revId": "0d605bcdf0f622fc7b94933031f77a7aba6aeaf9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf7e3ee2_23b63159",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_process_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2022-09-28T06:49:38Z",
+      "side": 1,
+      "message": "typo: `fetched`",
+      "range": {
+        "startLine": 157,
+        "startChar": 51,
+        "endLine": 157,
+        "endChar": 58
+      },
+      "revId": "0d605bcdf0f622fc7b94933031f77a7aba6aeaf9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
