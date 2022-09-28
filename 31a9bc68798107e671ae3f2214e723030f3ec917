@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "898655bb_0138a303",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2022-09-28T04:40:24Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "31a9bc68798107e671ae3f2214e723030f3ec917",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb820594_d76fa7ed",
+        "filename": "src/chromiumos/tast/local/arc/gmscore/gmscore.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2022-09-28T04:40:24Z",
+      "side": 1,
+      "message": "nit: can this be a const variable?",
+      "range": {
+        "startLine": 62,
+        "startChar": 38,
+        "endLine": 62,
+        "endChar": 98
+      },
+      "revId": "31a9bc68798107e671ae3f2214e723030f3ec917",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe392f95_9b087d7e",
+        "filename": "src/chromiumos/tast/local/arc/gmscore/gmscore.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2022-09-28T04:40:24Z",
+      "side": 1,
+      "message": "nit: \"failed to wait for* GMS...\"",
+      "range": {
+        "startLine": 69,
+        "startChar": 27,
+        "endLine": 69,
+        "endChar": 45
+      },
+      "revId": "31a9bc68798107e671ae3f2214e723030f3ec917",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
