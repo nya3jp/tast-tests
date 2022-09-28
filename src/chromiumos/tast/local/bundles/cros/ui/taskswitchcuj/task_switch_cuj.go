@@ -7,6 +7,7 @@ package taskswitchcuj
 
 import (
 	"context"
+	"strings"
 	"time"
 
 	"chromiumos/tast/common/perf"
@@ -17,10 +18,12 @@ import (
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/cuj"
 	"chromiumos/tast/local/chrome/cuj/inputsimulations"
+	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/event"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/mouse"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/pointer"
 	"chromiumos/tast/local/chrome/uiauto/touch"
@@ -79,6 +82,18 @@ func Run(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to open the keyboard: ", err)
 	}
 	defer kw.Close()
+
+	// Create a virtual mouse.
+	mw, err := input.Mouse(ctx)
+	if err != nil {
+		s.Fatal("Failed to create a mouse: ", err)
+	}
+	defer mw.Close()
+
+	info, err := display.GetPrimaryInfo(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to get the primary display info: ", err)
+	}
 
 	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, testParam.Tablet)
 	if err != nil {
@@ -242,11 +257,11 @@ func Run(ctx context.Context, s *testing.State) {
 					return errors.Wrapf(err, "failed to switch to next window using %s", taskSwitcher.name)
 				}
 
-				w, err := ash.GetActiveWindow(ctx, tconn)
+				activeWindow, err := ash.GetActiveWindow(ctx, tconn)
 				if err != nil {
 					return errors.Wrap(err, "failed to find active window")
 				}
-				if err := ash.WaitWindowFinishAnimating(ctx, tconn, w.ID); err != nil {
+				if err := ash.WaitWindowFinishAnimating(ctx, tconn, activeWindow.ID); err != nil {
 					return errors.Wrap(err, "failed to wait for window to finish animating")
 				}
 
@@ -257,6 +272,12 @@ func Run(ctx context.Context, s *testing.State) {
 					return errors.Wrap(err, "failed to sleep")
 				}
 
+				// Move mouse to center of window to ensure we are
+				// scrolling on the currently active window.
+				if err := mouse.Move(tconn, activeWindow.BoundsInRoot.CenterPoint(), 500*time.Millisecond)(ctx); err != nil {
+					return errors.Wrap(err, "failed to move mouse to center of window")
+				}
+
 				// Try to scroll down and up by pressing the down and up
 				// arrow key. This gives us some input latency metrics
 				// while delaying between each task switch. This also
@@ -265,6 +286,25 @@ func Run(ctx context.Context, s *testing.State) {
 				for _, key := range []string{"Down", "Up"} {
 					if err := inputsimulations.RepeatKeyPress(ctx, kw, key, 300*time.Millisecond, 10); err != nil {
 						return errors.Wrapf(err, "failed to repeatedly press %q in between task switches", key)
+					}
+
+					if err := inputsimulations.RepeatMouseScroll(ctx, mw, key == "Down", 100*time.Millisecond, 20); err != nil {
+						return errors.Wrapf(err, "failed to repeatedly mouse scroll %s", key)
+					}
+				}
+
+				// Give a fixed delay between scrolling and dragging,
+				// to limit action overlap.
+				if err := testing.Sleep(ctx, time.Second); err != nil {
+					return errors.Wrap(err, "failed to sleep")
+				}
+
+				// If we are on Google Slides, drag the
+				// mouse to the left and right of the screen, to ensure
+				// we collect mouse drag input latency.
+				if strings.Contains(activeWindow.Title, "Slides") {
+					if err := inputsimulations.RunDragMouseCycle(ctx, tconn, info); err != nil {
+						return errors.Wrap(err, "failed to run drag mouse cycle")
 					}
 				}
 
