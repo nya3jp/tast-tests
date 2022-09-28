@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e5ef9d0_d38b5a74",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-09-28T09:36:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7f38cb1f_e88052b3",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 23
+      },
+      "revId": "53672934e63b24f4861b8ecd54a13bb3b894041e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0b3e7b8e_484c7b92",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-09-28T07:59:23Z",
       "side": 1,
       "message": "Please test the CL locally with `fast_build`.",
+      "range": {
+        "startLine": 10,
+        "startChar": 5,
+        "endLine": 10,
+        "endChar": 7
+      },
+      "revId": "53672934e63b24f4861b8ecd54a13bb3b894041e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "37b10ca0_fe590e95",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-09-28T09:36:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0b3e7b8e_484c7b92",
       "range": {
         "startLine": 10,
         "startChar": 5,
