@@ -238,6 +238,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9ce27d5f_d5e6b1fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_perf_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-09-28T13:28:04Z",
+      "side": 1,
+      "message": "I don\u0027t think it\u0027s the purpose of the test. If you know that you will fail, you should fail fast. This is one of core Tast ideas.",
+      "parentUuid": "47be40b3_faa5f930",
+      "range": {
+        "startLine": 101,
+        "startChar": 56,
+        "endLine": 101,
+        "endChar": 70
+      },
+      "revId": "45460cf15165ffc2772b15eb7be9d5eaa021f7e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "aa24a5e2_5a49c214",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_perf_service.go",
         "patchSetId": 3

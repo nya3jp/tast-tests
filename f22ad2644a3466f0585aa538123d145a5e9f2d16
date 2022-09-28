@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a220d94_f5db6e75",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_perf_service.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-09-28T13:28:04Z",
+      "side": 1,
+      "message": "nit: maybe change lines a bit:\n\n```\nif c.metrics \u003d\u003d nil {\n  return nil, errors.New(\"no metrics to stop measuring\")\n}\n\ndefer func() {\n   c.metrics \u003d nil\n}()\n```\n\notherwise it\u0027s error prone, i.e. you used `c.metrics` instead of `metrics`",
+      "range": {
+        "startLine": 185,
+        "startChar": 0,
+        "endLine": 190,
+        "endChar": 0
+      },
+      "revId": "f22ad2644a3466f0585aa538123d145a5e9f2d16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fffb5f29_bf01e5d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_perf_service.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-09-28T13:28:04Z",
+      "side": 1,
+      "message": "not need to check that. Just iterate over them",
+      "range": {
+        "startLine": 192,
+        "startChar": 4,
+        "endLine": 192,
+        "endChar": 20
+      },
+      "revId": "f22ad2644a3466f0585aa538123d145a5e9f2d16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe50335d_9ba9f835",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_perf_service.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-09-28T13:28:04Z",
+      "side": 1,
+      "message": "this should be `metrics`. Same below",
+      "range": {
+        "startLine": 193,
+        "startChar": 25,
+        "endLine": 193,
+        "endChar": 34
+      },
+      "revId": "f22ad2644a3466f0585aa538123d145a5e9f2d16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe05487c_e97de762",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/remote_power_idle_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-09-28T13:28:04Z",
+      "side": 1,
+      "message": "Does it make sense to continue test? if no, use s.Fatal",
+      "range": {
+        "startLine": 67,
+        "startChar": 4,
+        "endLine": 67,
+        "endChar": 9
+      },
+      "revId": "f22ad2644a3466f0585aa538123d145a5e9f2d16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d18c111b_b59380cf",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/remote_power_idle_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-09-28T13:28:04Z",
+      "side": 1,
+      "message": "Use s.Fatal instead and drop \"else\" statement, e.g.\n\n```\nif ... {\n  s.Fatal(...)\n}\nif ppvar, ok :\u003d results.GetMean(\"ppvar_vbat\"); ok {\n  ...\n}\n...\n```",
+      "range": {
+        "startLine": 74,
+        "startChar": 4,
+        "endLine": 74,
+        "endChar": 9
+      },
+      "revId": "f22ad2644a3466f0585aa538123d145a5e9f2d16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72f809ec_e7e923a2",
+        "filename": "src/chromiumos/tast/services/cros/arc/tts_cache_service.pb.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-09-28T13:28:04Z",
+      "side": 1,
+      "message": "move such changes to a separate CL",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 25
+      },
+      "revId": "f22ad2644a3466f0585aa538123d145a5e9f2d16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
