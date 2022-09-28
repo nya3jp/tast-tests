@@ -20,6 +20,149 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dd2b84ce_639d537c",
+        "filename": "android/ArcRandomUIElementsApp/AndroidManifest.xml",
+        "patchSetId": 8
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2022-09-28T05:05:03Z",
+      "side": 1,
+      "message": "Please use ChromeOS copyright notice.",
+      "range": {
+        "startLine": 2,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 4
+      },
+      "revId": "4c2a6292e11f10514f70cc319f0c6d246f0e17b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27ba7595_6fea6517",
+        "filename": "android/ArcRandomUIElementsApp/AndroidManifest.xml",
+        "patchSetId": 8
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2022-09-28T05:05:03Z",
+      "side": 1,
+      "message": "Are we using this permission?\n\nIf not, please remove. If yes, could you add a comment the purpose?",
+      "revId": "4c2a6292e11f10514f70cc319f0c6d246f0e17b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b1d794f_ea86892f",
+        "filename": "android/ArcRandomUIElementsApp/res/layout/layout.xml",
+        "patchSetId": 8
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2022-09-28T05:05:03Z",
+      "side": 1,
+      "message": "why it\u0027s commented out?\nUsually layout xml files has this line...",
+      "revId": "4c2a6292e11f10514f70cc319f0c6d246f0e17b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5bd17598_f9964a2f",
+        "filename": "android/ArcRandomUIElementsApp/res/layout/layout.xml",
+        "patchSetId": 8
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2022-09-28T05:05:03Z",
+      "side": 1,
+      "message": "Update to the ChromeOS notice",
+      "range": {
+        "startLine": 3,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 33
+      },
+      "revId": "4c2a6292e11f10514f70cc319f0c6d246f0e17b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a687e8c_9c264130",
+        "filename": "android/ArcRandomUIElementsApp/res/layout/layout.xml",
+        "patchSetId": 8
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2022-09-28T05:05:03Z",
+      "side": 1,
+      "message": "Wrap by 100 characters\nhttps://google.github.io/styleguide/javaguide.html#s4.4-column-limit",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 131
+      },
+      "revId": "4c2a6292e11f10514f70cc319f0c6d246f0e17b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d756344e_6593dfbd",
+        "filename": "android/ArcRandomUIElementsApp/src/org/chromium/arc/testapp/randomuielements/RandomUIElementsActivity.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2022-09-28T05:05:03Z",
+      "side": 1,
+      "message": "Can you try applying `google-java-format` on this file?",
+      "revId": "4c2a6292e11f10514f70cc319f0c6d246f0e17b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5eb3d710_882d6f64",
+        "filename": "android/ArcRandomUIElementsApp/src/org/chromium/arc/testapp/randomuielements/RandomUIElementsActivity.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2022-09-28T05:05:03Z",
+      "side": 1,
+      "message": "why this is public? It seems",
+      "range": {
+        "startLine": 26,
+        "startChar": 4,
+        "endLine": 26,
+        "endChar": 10
+      },
+      "revId": "4c2a6292e11f10514f70cc319f0c6d246f0e17b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9801da86_4d01b0e9",
         "filename": "android/ArcRandomUIElementsApp/src/org/chromium/arc/testapp/randomuielements/RandomUIElementsActivity.java",
         "patchSetId": 8
