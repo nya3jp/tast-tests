@@ -33,6 +33,69 @@
       "message": "PTAL",
       "revId": "7999034b46f3221aa838df8f1a5d1c7b64d5094e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "39054233_a4c9606a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-09-28T01:30:02Z",
+      "side": 1,
+      "message": "shadow reviewer lgtm",
+      "revId": "7999034b46f3221aa838df8f1a5d1c7b64d5094e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ff5ab52_a244e511",
+        "filename": "src/chromiumos/tast/local/quickanswers/quickanswers.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-09-28T01:30:02Z",
+      "side": 1,
+      "message": "should this be something like \"contains helper functions\"?",
+      "range": {
+        "startLine": 5,
+        "startChar": 33,
+        "endLine": 5,
+        "endChar": 49
+      },
+      "revId": "7999034b46f3221aa838df8f1a5d1c7b64d5094e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7f3da70_1e3ca94a",
+        "filename": "src/chromiumos/tast/local/quickanswers/quickanswers.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-09-28T01:30:02Z",
+      "side": 1,
+      "message": "Just curious, does it make sense to make this function as `Enable(ctx, tconn, bool)` which hardcodes \"settings.quick_answers.enabled\" to call `tconn.Call()`?\n\nIt seems that all occurrences use this |prefName|",
+      "range": {
+        "startLine": 17,
+        "startChar": 5,
+        "endLine": 17,
+        "endChar": 17
+      },
+      "revId": "7999034b46f3221aa838df8f1a5d1c7b64d5094e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
