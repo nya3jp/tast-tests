@@ -136,6 +136,24 @@ func validateMultipleProcessInfo(ctx context.Context, outDir string) error {
 	return nil
 }
 
+// validateAllProcessInfo tests that a suitable number of process is fetched when fetching all process info.
+func validateAllProcessInfo(ctx context.Context, outDir string) error {
+	params := croshealthd.TelemParams{AllPIDs: true}
+	var info multipleProcessInfo
+	if err := croshealthd.RunAndParseJSONTelem(ctx, params, outDir, &info); err != nil {
+		return errors.Wrap(err, "failed to get process telemetry info")
+	}
+
+	// At least 3 processes must exist: init, kthreadd and healthd.
+	// We don't check the number of errors as there might be race condition where a process has died between
+	// finding all process and collecting individual process data.
+	if len(info.ProcessInfos) < 3 {
+		return errors.Errorf("less than 3 processes were fetched %s", len(info.ProcessInfos))
+	}
+
+	return nil
+}
+
 // ProbeProcessInfo tests that different processes can be successfully and correctly fetched.
 func ProbeProcessInfo(ctx context.Context, s *testing.State) {
 	if err := validateSingleProcessInfo(ctx, s.OutDir()); err != nil {
@@ -143,5 +161,8 @@ func ProbeProcessInfo(ctx context.Context, s *testing.State) {
 	}
 	if err := validateMultipleProcessInfo(ctx, s.OutDir()); err != nil {
 		s.Fatal("Failed to validate multiple process data: ", err)
+	}
+	if err := validateAllProcessInfo(ctx, s.OutDir()); err != nil {
+		s.Fatal("Failed to validate all process data: ", err)
 	}
 }
