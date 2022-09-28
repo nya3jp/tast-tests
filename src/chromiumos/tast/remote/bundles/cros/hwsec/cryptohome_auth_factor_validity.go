@@ -95,7 +95,7 @@ func checkFactors(ctx context.Context, client *hwsec.CryptohomeClient, expectedF
 
 // testAuthenticate tests that Authenticating via password works as expected.
 func testAuthenticate(ctx context.Context, client *hwsec.CryptohomeClient, username, label, correctPassword, incorrectPassword string) error {
-	authSessionID, err := client.StartAuthSession(ctx, username, false /*ephemeral*/, uda.AuthIntent_AUTH_INTENT_VERIFY_ONLY)
+	_, authSessionID, err := client.StartAuthSession(ctx, username, false /*ephemeral*/, uda.AuthIntent_AUTH_INTENT_VERIFY_ONLY)
 	if err != nil {
 		return errors.Wrap(err, "failed to start session to check passwords")
 	}
@@ -118,7 +118,7 @@ func testAuthenticate(ctx context.Context, client *hwsec.CryptohomeClient, usern
 func testAddRemoveFactor(ctx context.Context, client *hwsec.CryptohomeClient, hf *files.HomedirFiles) error {
 	// Add the new factor.
 	err := func() error {
-		authSessionID, err := client.StartAuthSession(ctx, util.FirstUsername, false /*ephemeral*/, uda.AuthIntent_AUTH_INTENT_DECRYPT)
+		_, authSessionID, err := client.StartAuthSession(ctx, util.FirstUsername, false /*ephemeral*/, uda.AuthIntent_AUTH_INTENT_DECRYPT)
 		if err != nil {
 			return errors.Wrap(err, "failed to start auth session")
 		}
@@ -152,7 +152,7 @@ func testAddRemoveFactor(ctx context.Context, client *hwsec.CryptohomeClient, hf
 
 	// Mount using the new factor.
 	err = func() error {
-		authSessionID, err := client.StartAuthSession(ctx, util.FirstUsername, false /*ephemeral*/, uda.AuthIntent_AUTH_INTENT_DECRYPT)
+		_, authSessionID, err := client.StartAuthSession(ctx, util.FirstUsername, false /*ephemeral*/, uda.AuthIntent_AUTH_INTENT_DECRYPT)
 		if err != nil {
 			return errors.Wrap(err, "failed to start auth session")
 		}
@@ -185,7 +185,7 @@ func testAddRemoveFactor(ctx context.Context, client *hwsec.CryptohomeClient, hf
 
 	// Mount using the old factor.
 	err = func() error {
-		authSessionID, err := client.StartAuthSession(ctx, util.FirstUsername, false /*ephemeral*/, uda.AuthIntent_AUTH_INTENT_DECRYPT)
+		_, authSessionID, err := client.StartAuthSession(ctx, util.FirstUsername, false /*ephemeral*/, uda.AuthIntent_AUTH_INTENT_DECRYPT)
 		if err != nil {
 			return errors.Wrap(err, "failed to start auth session")
 		}
@@ -218,7 +218,7 @@ func testAddRemoveFactor(ctx context.Context, client *hwsec.CryptohomeClient, hf
 
 	// Remove the new factor.
 	err = func() error {
-		authSessionID, err := client.StartAuthSession(ctx, util.FirstUsername, false /*ephemeral*/, uda.AuthIntent_AUTH_INTENT_DECRYPT)
+		_, authSessionID, err := client.StartAuthSession(ctx, util.FirstUsername, false /*ephemeral*/, uda.AuthIntent_AUTH_INTENT_DECRYPT)
 		if err != nil {
 			return errors.Wrap(err, "failed to start auth session")
 		}
@@ -237,7 +237,7 @@ func testAddRemoveFactor(ctx context.Context, client *hwsec.CryptohomeClient, hf
 
 	// After the new factor is removed it should no longer be able to mount.
 	err = func() error {
-		authSessionID, err := client.StartAuthSession(ctx, util.FirstUsername, false /*ephemeral*/, uda.AuthIntent_AUTH_INTENT_DECRYPT)
+		_, authSessionID, err := client.StartAuthSession(ctx, util.FirstUsername, false /*ephemeral*/, uda.AuthIntent_AUTH_INTENT_DECRYPT)
 		if err != nil {
 			return errors.Wrap(err, "failed to start auth session")
 		}
@@ -261,7 +261,7 @@ func testAddRemoveFactor(ctx context.Context, client *hwsec.CryptohomeClient, hf
 func testUpdateFactor(ctx context.Context, client *hwsec.CryptohomeClient, hf *files.HomedirFiles) error {
 	// Update the existing factor.
 	err := func() error {
-		authSessionID, err := client.StartAuthSession(ctx, util.FirstUsername, false /*ephemeral*/, uda.AuthIntent_AUTH_INTENT_DECRYPT)
+		_, authSessionID, err := client.StartAuthSession(ctx, util.FirstUsername, false /*ephemeral*/, uda.AuthIntent_AUTH_INTENT_DECRYPT)
 		if err != nil {
 			return errors.Wrap(err, "failed to start auth session")
 		}
@@ -290,7 +290,7 @@ func testUpdateFactor(ctx context.Context, client *hwsec.CryptohomeClient, hf *f
 	// The old factor should no longer be able to authenticate but the new one
 	// should be able to authenticate, mount and then change the factor back.
 	err = func() error {
-		authSessionID, err := client.StartAuthSession(ctx, util.FirstUsername, false /*ephemeral*/, uda.AuthIntent_AUTH_INTENT_DECRYPT)
+		_, authSessionID, err := client.StartAuthSession(ctx, util.FirstUsername, false /*ephemeral*/, uda.AuthIntent_AUTH_INTENT_DECRYPT)
 		if err != nil {
 			return errors.Wrap(err, "failed to start auth session")
 		}
@@ -397,7 +397,7 @@ func CryptohomeAuthFactorValidity(ctx context.Context, s *testing.State) {
 	// Create the user and check it is correctly mounted and can be unmounted.
 	func() {
 		// Start a session and set up a new user with a password factor.
-		authSessionID, err := client.StartAuthSession(ctx, util.FirstUsername, false /*ephemeral*/, uda.AuthIntent_AUTH_INTENT_DECRYPT)
+		_, authSessionID, err := client.StartAuthSession(ctx, util.FirstUsername, false /*ephemeral*/, uda.AuthIntent_AUTH_INTENT_DECRYPT)
 		if err != nil {
 			s.Fatal("Failed to start auth session: ", err)
 		}

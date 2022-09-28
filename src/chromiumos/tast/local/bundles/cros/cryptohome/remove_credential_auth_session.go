@@ -121,7 +121,7 @@ func RemoveCredentialAuthSession(ctx context.Context, s *testing.State) {
 
 	// Step 9: Check we can use login with pin. This also checks if wrong pin
 	// attempt fails.
-	authSessionID, err = client.StartAuthSession(ctx, userName /*isEphemeral*/, false, uda.AuthIntent_AUTH_INTENT_DECRYPT)
+	_, authSessionID, err = client.StartAuthSession(ctx, userName /*isEphemeral*/, false, uda.AuthIntent_AUTH_INTENT_DECRYPT)
 	if err != nil {
 		s.Fatal("Failed to start Auth session: ", err)
 	}
@@ -153,7 +153,7 @@ func RemoveCredentialAuthSession(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to unmount vaults for re-mounting: ", err)
 	}
 
-	authSessionID, err = client.StartAuthSession(ctx, userName /*isEphemeral*/, false, uda.AuthIntent_AUTH_INTENT_DECRYPT)
+	_, authSessionID, err = client.StartAuthSession(ctx, userName /*isEphemeral*/, false, uda.AuthIntent_AUTH_INTENT_DECRYPT)
 	if err != nil {
 		s.Fatal("Failed to start Auth session: ", err)
 	}

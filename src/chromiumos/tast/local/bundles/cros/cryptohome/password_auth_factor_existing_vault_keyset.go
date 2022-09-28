@@ -94,7 +94,7 @@ func PasswordAuthFactorExistingVaultKeyset(ctx context.Context, s *testing.State
 	}
 
 	// Authenticate a new auth session via the auth factor and mount the user.
-	authSessionID, err := client.StartAuthSession(ctx, userName /*ephemeral=*/, false, uda.AuthIntent_AUTH_INTENT_DECRYPT)
+	_, authSessionID, err := client.StartAuthSession(ctx, userName /*ephemeral=*/, false, uda.AuthIntent_AUTH_INTENT_DECRYPT)
 	if err != nil {
 		s.Fatal("Failed to start auth session for re-mounting: ", err)
 	}

@@ -47,7 +47,7 @@ func UserSecretStash(ctx context.Context, s *testing.State) {
 	client := hwsec.NewCryptohomeClient(cmdRunner)
 
 	// Create and mount the persistent user.
-	authSessionID, err := client.StartAuthSession(ctx, userName /*ephemeral=*/, false, uda.AuthIntent_AUTH_INTENT_DECRYPT)
+	_, authSessionID, err := client.StartAuthSession(ctx, userName /*ephemeral=*/, false, uda.AuthIntent_AUTH_INTENT_DECRYPT)
 	if err != nil {
 		s.Fatal("Failed to start auth session: ", err)
 	}
@@ -111,7 +111,7 @@ func UserSecretStash(ctx context.Context, s *testing.State) {
 
 func testPasswordLogin(ctx context.Context, cryptohomeClient *hwsec.CryptohomeClient, userName, passwordLabel, password string) (string, error) {
 	// Start AuthSession.
-	authSessionID, err := cryptohomeClient.StartAuthSession(ctx, userName, false /*ephemeral*/, uda.AuthIntent_AUTH_INTENT_DECRYPT)
+	_, authSessionID, err := cryptohomeClient.StartAuthSession(ctx, userName, false /*ephemeral*/, uda.AuthIntent_AUTH_INTENT_DECRYPT)
 	if err != nil {
 		return "", errors.Wrap(err, "failed to start auth session")
 	}
@@ -144,7 +144,7 @@ func testPasswordLogin(ctx context.Context, cryptohomeClient *hwsec.CryptohomeCl
 }
 
 func testPasswordUnlock(ctx context.Context, cryptohomeClient *hwsec.CryptohomeClient, userName, passwordLabel, password string) error {
-	authSessionID, err := cryptohomeClient.StartAuthSession(ctx, userName, false /*ephemeral*/, uda.AuthIntent_AUTH_INTENT_VERIFY_ONLY)
+	_, authSessionID, err := cryptohomeClient.StartAuthSession(ctx, userName, false /*ephemeral*/, uda.AuthIntent_AUTH_INTENT_VERIFY_ONLY)
 	if err != nil {
 		return errors.Wrap(err, "failed to start auth session")
 	}

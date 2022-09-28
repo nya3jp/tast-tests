@@ -6,7 +6,6 @@ package hwsec
 
 import (
 	"context"
-	"regexp"
 	"sort"
 	"strings"
 	"time"
@@ -67,16 +66,14 @@ func init() {
 				useLegacyAddAPIForPin: true,
 			},
 		},
-		/* Disabled due to <1% pass rate over 30 days. See b/246818310
-		{
-			Name: "pin_weaver_with_auth_factor_with_uss",
-			Val: pinWeaverWithAuthAPIParam{
-				useUserSecretStash:    true,
-				useAuthFactor:         true,
-				useLegacyAddAPIForPin: false,
+			{
+				Name: "pin_weaver_with_auth_factor_with_uss",
+				Val: pinWeaverWithAuthAPIParam{
+					useUserSecretStash:    true,
+					useAuthFactor:         true,
+					useLegacyAddAPIForPin: false,
+				},
 			},
-		}
-		*/
 		},
 	})
 }
@@ -101,6 +98,7 @@ func PINWeaverWithAuthAPI(ctx context.Context, s *testing.State) {
 	cmdRunner := hwsecremote.NewCmdRunner(s.DUT())
 	client := hwsec.NewCryptohomeClient(cmdRunner)
 	helper, err := hwsecremote.NewHelper(cmdRunner, s.DUT())
+	cryptohomeHelper := helper.CryptohomeClient()
 
 	if err != nil {
 		s.Fatal("Helper creation error: ", err)
@@ -147,10 +145,10 @@ func PINWeaverWithAuthAPI(ctx context.Context, s *testing.State) {
 	if err = setupUserWithPIN(ctx, ctxForCleanUp, testUser1, cmdRunner, helper, userParam); err != nil {
 		s.Fatal("Failed to run setupUserWithPIN with error: ", err)
 	}
-	defer removeLeCredential(ctx, ctxForCleanUp, testUser1, cmdRunner, helper)
+	defer removeLeCredential(ctx, ctxForCleanUp, testUser1, authFactorLabelPIN, cmdRunner, helper, userParam)
 
 	// Ensure we can authenticate with correct pin.
-	if err = authenticateWithCorrectPIN(ctx, ctxForCleanUp, testUser1, cmdRunner, helper, userParam, true /*shouldAuthenticate*/); err != nil {
+	if _, err = authenticateWithCorrectPIN(ctx, ctxForCleanUp, testUser1, cmdRunner, helper, userParam, true /*shouldAuthenticate*/); err != nil {
 		s.Fatal("Failed to run authenticateWithCorrectPIN with error: ", err)
 	}
 
@@ -163,7 +161,7 @@ func PINWeaverWithAuthAPI(ctx context.Context, s *testing.State) {
 	if err = setupUserWithPIN(ctx, ctxForCleanUp, testUser2, cmdRunner, helper, userParam); err != nil {
 		s.Fatal("Failed to run setupUserWithPIN with error: ", err)
 	}
-	defer removeLeCredential(ctx, ctxForCleanUp, testUser2, cmdRunner, helper)
+	defer removeLeCredential(ctx, ctxForCleanUp, testUser2, authFactorLabelPIN, cmdRunner, helper, userParam)
 
 	// Ensure we can authenticate with correct password for testUser2.
 	if err = authenticateWithCorrectPassword(ctx, ctxForCleanUp, testUser2, cmdRunner, helper, userParam); err != nil {
@@ -171,12 +169,12 @@ func PINWeaverWithAuthAPI(ctx context.Context, s *testing.State) {
 	}
 
 	// Ensure we can authenticate with correct pin for testUser2.
-	if err = authenticateWithCorrectPIN(ctx, ctxForCleanUp, testUser2, cmdRunner, helper, userParam, true /*shouldAuthenticate*/); err != nil {
+	if _, err = authenticateWithCorrectPIN(ctx, ctxForCleanUp, testUser2, cmdRunner, helper, userParam, true /*shouldAuthenticate*/); err != nil {
 		s.Fatal("Failed to run authenticateWithCorrectPIN with error: ", err)
 	}
 
 	// Ensure that testUser1 still works wth pin.
-	if err = authenticateWithCorrectPIN(ctx, ctxForCleanUp, testUser1, cmdRunner, helper, userParam, true /*shouldAuthenticate*/); err != nil {
+	if _, err = authenticateWithCorrectPIN(ctx, ctxForCleanUp, testUser1, cmdRunner, helper, userParam, true /*shouldAuthenticate*/); err != nil {
 		s.Fatal("Failed to run authenticateWithCorrectPIN with error: ", err)
 	}
 
@@ -187,29 +185,52 @@ func PINWeaverWithAuthAPI(ctx context.Context, s *testing.State) {
 
 	/** Running test where we try to almost lock out PIN with 4 attempts twice, but the user is able to log back in **/
 	// Attempt four wrong PIN.
-	if err = attemptWrongPIN(ctx, ctxForCleanUp, testUser1, cmdRunner, helper, userParam, 4 /*attempts*/); err != nil {
+	if _, err = attemptWrongPIN(ctx, ctxForCleanUp, testUser1, cmdRunner, helper, userParam, 4 /*attempts*/); err != nil {
 		s.Fatal("Failed to run attemptWrongPIN with error: ", err)
 	}
 
 	// Since the pin is not locked out yet, we should be able to log back in again.
-	if err = authenticateWithCorrectPIN(ctx, ctxForCleanUp, testUser1, cmdRunner, helper, userParam, true /*shouldAuthenticate*/); err != nil {
+	if _, err = authenticateWithCorrectPIN(ctx, ctxForCleanUp, testUser1, cmdRunner, helper, userParam, true /*shouldAuthenticate*/); err != nil {
 		s.Fatal("Failed to run authenticateWithCorrectPIN with error: ", err)
 	}
 
 	// Attempt four wrong PIN again.
-	if err = attemptWrongPIN(ctx, ctxForCleanUp, testUser1, cmdRunner, helper, userParam, 4 /*attempts*/); err != nil {
+	replyWithError, err := attemptWrongPIN(ctx, ctxForCleanUp, testUser1, cmdRunner, helper, userParam, 4 /*attempts*/)
+	if err != nil {
 		s.Fatal("Failed to run attemptWrongPIN with error: ", err)
 	}
 
+	// Ensure AutheneticateAuthFactor error code relays TPM is not locked out.
+	if userParam.useAuthFactor && replyWithError.Error != uda.CryptohomeErrorCode_CRYPTOHOME_ERROR_AUTHORIZATION_KEY_FAILED {
+		s.Fatal("TPM is locked out: ", replyWithError.Error)
+	}
+
 	// Since the pin is not locked out yet, we should be able to log back in again.
-	if err = authenticateWithCorrectPIN(ctx, ctxForCleanUp, testUser1, cmdRunner, helper, userParam, true /*shouldAuthenticate*/); err != nil {
+	if _, err = authenticateWithCorrectPIN(ctx, ctxForCleanUp, testUser1, cmdRunner, helper, userParam, true /*shouldAuthenticate*/); err != nil {
 		s.Fatal("Failed to run authenticateWithCorrectPIN with error: ", err)
 	}
 
 	/** Test whether the attempt counter persists after reboot **/
 	// Attempt four wrong PIN.
-	if err = attemptWrongPIN(ctx, ctxForCleanUp, testUser1, cmdRunner, helper, userParam, 4 /*attempts*/); err != nil {
+	if _, err = attemptWrongPIN(ctx, ctxForCleanUp, testUser1, cmdRunner, helper, userParam, 4 /*attempts*/); err != nil {
 		s.Fatal("Failed to run attemptWrongPIN with error: ", err)
+	}
+
+	// Check to make sure that PIN AuthFactor appears in StartAuthSessionReply.
+	reply, authSessionID, err := cryptohomeHelper.StartAuthSession(ctx, testUser1, false /*isEphemeral*/, uda.AuthIntent_AUTH_INTENT_DECRYPT)
+	if err != nil {
+		s.Fatal("Failed to start auth session when searching for PIN factor in reply: ", err)
+	}
+	defer cryptohomeHelper.InvalidateAuthSession(ctx, authSessionID)
+	// Search for PIN-based AuthFactor in reply.
+	hasPinAuthFactor := false
+	for _, authFactor := range reply.AuthFactors {
+		if authFactor.Type == uda.AuthFactorType_AUTH_FACTOR_TYPE_PIN {
+			hasPinAuthFactor = true
+		}
+	}
+	if !hasPinAuthFactor {
+		s.Fatal("PIN-based AuthFactor was not found in StartAuthSessionReply")
 	}
 
 	// Because Cr50 stores state in the firmware, that persists across reboots, this test
@@ -219,21 +240,38 @@ func PINWeaverWithAuthAPI(ctx context.Context, s *testing.State) {
 	}
 
 	// Lockout the PIN this time.
-	if err = attemptWrongPIN(ctx, ctxForCleanUp, testUser1, cmdRunner, helper, userParam, 1 /*attempts*/); err != nil {
+	_, err = attemptWrongPIN(ctx, ctxForCleanUp, testUser1, cmdRunner, helper, userParam, 1 /*attempts*/)
+	if err != nil {
 		s.Fatal("Failed to run attemptWrongPIN with error: ", err)
 	}
-
-	// After the PIN lock out we should not be able to authenticate with correct PIN.
-	if err = authenticateWithCorrectPIN(ctx, ctxForCleanUp, testUser1, cmdRunner, helper, userParam, false /*shouldAuthenticate*/); err != nil {
-		s.Fatal("Failed to run authenticateWithCorrectPIN with error: ", err)
-	}
-
 	if err = ensurePINLockedOut(ctx, testUser1, client); err != nil {
 		s.Fatal("Failed to run ensurePINLockedOut with error: ", err)
 	}
 
+	// After the PIN lock out we should not be able to authenticate with correct PIN.
+	if replyWithError, err = authenticateWithCorrectPIN(ctx, ctxForCleanUp, testUser1, cmdRunner, helper, userParam, false /*shouldAuthenticate*/); err != nil {
+		s.Fatal("Failed to run authenticateWithCorrectPIN with error: ", err)
+	}
+	// Ensure AutheneticateAuthFactor error code relays TPM is locked out.
+	if userParam.useAuthFactor && replyWithError.Error != uda.CryptohomeErrorCode_CRYPTOHOME_ERROR_TPM_DEFEND_LOCK {
+		s.Fatal("AuthenticateAuthFactor indicates that the TPM is not locked out: ", replyWithError.Error)
+	}
+
+	// Check to make sure that PIN AuthFactor does not appear in StartAuthSessionReply.
+	reply, authSessionID, err = cryptohomeHelper.StartAuthSession(ctx, testUser1, false /*isEphemeral*/, uda.AuthIntent_AUTH_INTENT_DECRYPT)
+	if err != nil {
+		s.Fatal("Failed to start auth session when searching for PIN factor in reply: ", err)
+	}
+	defer cryptohomeHelper.InvalidateAuthSession(ctx, authSessionID)
+	// Search for PIN-based AuthFactor in reply.
+	for _, authFactor := range reply.AuthFactors {
+		if authFactor.Type == uda.AuthFactorType_AUTH_FACTOR_TYPE_PIN {
+			s.Fatal("PIN-based AuthFactor was found in StartAuthSessionReply")
+		}
+	}
+
 	/** Ensure that testUser2 can still use PIN **/
-	if err = authenticateWithCorrectPIN(ctx, ctxForCleanUp, testUser2, cmdRunner, helper, userParam, true /*shouldAuthenticate*/); err != nil {
+	if _, err = authenticateWithCorrectPIN(ctx, ctxForCleanUp, testUser2, cmdRunner, helper, userParam, true /*shouldAuthenticate*/); err != nil {
 		s.Fatal("Failed to run authenticateWithCorrectPIN with error: ", err)
 	}
 
@@ -243,17 +281,17 @@ func PINWeaverWithAuthAPI(ctx context.Context, s *testing.State) {
 	}
 
 	// Ensure pin login now works again for testUser1.
-	if err = authenticateWithCorrectPIN(ctx, ctxForCleanUp, testUser1, cmdRunner, helper, userParam, true /*shouldAuthenticate*/); err != nil {
+	if _, err = authenticateWithCorrectPIN(ctx, ctxForCleanUp, testUser1, cmdRunner, helper, userParam, true /*shouldAuthenticate*/); err != nil {
 		s.Fatal("Failed to run authenticateWithCorrectPIN with error: ", err)
 	}
 
 	// Remove the added PIN and check to see if le_credential file was updated.
-	if err = removeLeCredential(ctx, ctxForCleanUp, testUser2, cmdRunner, helper); err != nil {
+	if err = removeLeCredential(ctx, ctxForCleanUp, testUser2, authFactorLabelPIN, cmdRunner, helper, userParam); err != nil {
 		s.Fatal("Failed to run removeLeCredential with error: ", err)
 	}
 
 	/** Ensure test user 1 can still login with PIN**/
-	if err = authenticateWithCorrectPIN(ctx, ctxForCleanUp, testUser1, cmdRunner, helper, userParam, true /*shouldAuthenticate*/); err != nil {
+	if _, err = authenticateWithCorrectPIN(ctx, ctxForCleanUp, testUser1, cmdRunner, helper, userParam, true /*shouldAuthenticate*/); err != nil {
 		s.Fatal("Failed to run authenticateWithCorrectPIN with error: ", err)
 	}
 }
@@ -275,7 +313,7 @@ func setupUserWithPIN(ctx, ctxForCleanUp context.Context, userName string, cmdRu
 	cryptohomeHelper := helper.CryptohomeClient()
 
 	// Start an Auth session and get an authSessionID.
-	authSessionID, err := cryptohomeHelper.StartAuthSession(ctx, userName, false /*ephemeral*/, uda.AuthIntent_AUTH_INTENT_DECRYPT)
+	_, authSessionID, err := cryptohomeHelper.StartAuthSession(ctx, userName, false /*ephemeral*/, uda.AuthIntent_AUTH_INTENT_DECRYPT)
 	if err != nil {
 		return errors.Wrap(err, "failed to start auth session for PIN authentication")
 	}
@@ -330,50 +368,53 @@ func setupUserWithPIN(ctx, ctxForCleanUp context.Context, userName string, cmdRu
 }
 
 // attemptWrongPIN attempts to try wrong PIN for authentication for given number of attempts.
-func attemptWrongPIN(ctx, ctxForCleanUp context.Context, testUser string, r *hwsecremote.CmdRunnerRemote, helper *hwsecremote.CmdHelperRemote, userParam pinWeaverWithAuthAPIParam, numberOfWrongAttempts int) error {
+func attemptWrongPIN(ctx, ctxForCleanUp context.Context, testUser string, r *hwsecremote.CmdRunnerRemote, helper *hwsecremote.CmdHelperRemote, userParam pinWeaverWithAuthAPIParam, numberOfWrongAttempts int) (*uda.AuthenticateAuthFactorReply, error) {
 	cryptohomeHelper := helper.CryptohomeClient()
 
 	// Authenticate a new auth session via the new added PIN auth factor.
-	authSessionID, err := cryptohomeHelper.StartAuthSession(ctx, testUser, false /*ephemeral*/, uda.AuthIntent_AUTH_INTENT_DECRYPT)
+	_, authSessionID, err := cryptohomeHelper.StartAuthSession(ctx, testUser, false /*ephemeral*/, uda.AuthIntent_AUTH_INTENT_DECRYPT)
 	if err != nil {
-		return errors.Wrap(err, "failed to start auth session for PIN authentication")
+		return nil, errors.Wrap(err, "failed to start auth session for PIN authentication")
 	}
 	defer cryptohomeHelper.InvalidateAuthSession(ctxForCleanUp, authSessionID)
 
+	reply := &uda.AuthenticateAuthFactorReply{}
 	// Supply invalid credentials five times to trigger firmware lockout of the credential.
 	for i := 0; i < numberOfWrongAttempts; i++ {
 		if userParam.useAuthFactor {
-			_, err = cryptohomeHelper.AuthenticatePinAuthFactor(ctx, authSessionID, authFactorLabelPIN, incorrectPINSecret)
+			reply, err = cryptohomeHelper.AuthenticatePinAuthFactor(ctx, authSessionID, authFactorLabelPIN, incorrectPINSecret)
 		} else {
 			err = cryptohomeHelper.AuthenticatePinWithAuthSession(ctx, incorrectPINSecret, authFactorLabelPIN, authSessionID)
 		}
 		if err == nil {
-			return errors.Wrap(err, "authentication with wrong PIN succeeded unexpectedly")
+			return nil, errors.Wrap(err, "authentication with wrong PIN succeeded unexpectedly")
 		}
 	}
-	return nil
+
+	return reply, nil
 }
 
 // authenticateWithCorrectPIN authenticates a given user with the correct PIN.
-func authenticateWithCorrectPIN(ctx, ctxForCleanUp context.Context, testUser string, r *hwsecremote.CmdRunnerRemote, helper *hwsecremote.CmdHelperRemote, userParam pinWeaverWithAuthAPIParam, shouldAuthenticate bool) error {
+func authenticateWithCorrectPIN(ctx, ctxForCleanUp context.Context, testUser string, r *hwsecremote.CmdRunnerRemote, helper *hwsecremote.CmdHelperRemote, userParam pinWeaverWithAuthAPIParam, shouldAuthenticate bool) (*uda.AuthenticateAuthFactorReply, error) {
 	cryptohomeHelper := helper.CryptohomeClient()
 
 	// Authenticate a new auth session via the new added PIN auth factor.
-	authSessionID, err := cryptohomeHelper.StartAuthSession(ctx, testUser, false /*ephemeral*/, uda.AuthIntent_AUTH_INTENT_DECRYPT)
+	_, authSessionID, err := cryptohomeHelper.StartAuthSession(ctx, testUser, false /*ephemeral*/, uda.AuthIntent_AUTH_INTENT_DECRYPT)
 	if err != nil {
-		return errors.Wrap(err, "failed to start auth session for PIN authentication")
+		return nil, errors.Wrap(err, "failed to start auth session for PIN authentication")
 	}
 	defer cryptohomeHelper.InvalidateAuthSession(ctxForCleanUp, authSessionID)
 
+	reply := &uda.AuthenticateAuthFactorReply{}
 	if userParam.useAuthFactor {
-		_, err = cryptohomeHelper.AuthenticatePinAuthFactor(ctx, authSessionID, authFactorLabelPIN, correctPINSecret)
+		reply, err = cryptohomeHelper.AuthenticatePinAuthFactor(ctx, authSessionID, authFactorLabelPIN, correctPINSecret)
 	} else {
 		err = cryptohomeHelper.AuthenticatePinWithAuthSession(ctx, correctPINSecret, authFactorLabelPIN, authSessionID)
 	}
 	if (err == nil) != shouldAuthenticate {
-		return errors.Wrapf(err, "failed to authenticated auth factor with correct PIN. got %v, want %v", (err == nil), shouldAuthenticate)
+		return reply, errors.Wrapf(err, "failed to authenticated auth factor with correct PIN. got %v, want %v", (err == nil), shouldAuthenticate)
 	}
-	return nil
+	return reply, nil
 }
 
 // authenticateWithCorrectPassword authenticates a given user with the correct password.
@@ -381,7 +422,7 @@ func authenticateWithCorrectPassword(ctx, ctxForCleanUp context.Context, testUse
 	cryptohomeHelper := helper.CryptohomeClient()
 
 	// Authenticate a new auth session via the new password auth factor and mount the user.
-	authSessionID, err := cryptohomeHelper.StartAuthSession(ctx, testUser, false /*ephemeral*/, uda.AuthIntent_AUTH_INTENT_DECRYPT)
+	_, authSessionID, err := cryptohomeHelper.StartAuthSession(ctx, testUser, false /*ephemeral*/, uda.AuthIntent_AUTH_INTENT_DECRYPT)
 	if err != nil {
 		return errors.Wrap(err, "failed to start auth session for password authentication")
 	}
@@ -413,15 +454,43 @@ func authenticateWithCorrectPassword(ctx, ctxForCleanUp context.Context, testUse
 }
 
 // removeLeCredential removes testUser and checks to see if the leCreds on disk was updated.
-func removeLeCredential(ctx, ctxForCleanUp context.Context, testUser string, r *hwsecremote.CmdRunnerRemote, helper *hwsecremote.CmdHelperRemote) error {
+func removeLeCredential(ctx, ctxForCleanUp context.Context, testUser, label string, r *hwsecremote.CmdRunnerRemote, helper *hwsecremote.CmdHelperRemote, userParam pinWeaverWithAuthAPIParam) error {
 	cryptohomeHelper := helper.CryptohomeClient()
+
+	_, authSessionID, err := cryptohomeHelper.StartAuthSession(ctx, testUser, false /*isEphemeral*/, uda.AuthIntent_AUTH_INTENT_DECRYPT)
+	if err != nil {
+		return errors.Wrap(err, "failed to start auth session for authentication")
+	}
+	defer cryptohomeHelper.InvalidateAuthSession(ctxForCleanUp, authSessionID)
+
+	// Authenticate with correct password.
+	if userParam.useAuthFactor {
+		reply, err := cryptohomeHelper.AuthenticateAuthFactor(ctx, authSessionID, passwordAuthFactorLabel, passwordAuthFactorSecret)
+		if err != nil {
+			return errors.Wrap(err, "failed to authenticate auth factor")
+		}
+		if !reply.Authenticated {
+			return errors.New("AuthSession not authenticated despite successful reply")
+		}
+		if err := cryptohomecommon.ExpectAuthIntents(reply.AuthorizedFor, []uda.AuthIntent{
+			uda.AuthIntent_AUTH_INTENT_DECRYPT,
+			uda.AuthIntent_AUTH_INTENT_VERIFY_ONLY,
+		}); err != nil {
+			return errors.Wrap(err, "unexpected AuthSession authorized intents")
+		}
+	} else {
+		err = cryptohomeHelper.AuthenticateAuthSession(ctx, passwordAuthFactorSecret, passwordAuthFactorLabel, authSessionID, false /*kiosk_mount*/)
+		if err != nil {
+			return errors.Wrap(err, "failed to authenticate AuthSession")
+		}
+	}
 
 	leCredsBeforeRemove, err := getLeCredsFromDisk(ctx, r)
 	if err != nil {
 		return errors.Wrap(err, "failed to get le creds from disk")
 	}
 
-	if _, err := cryptohomeHelper.RemoveVault(ctx, testUser); err != nil {
+	if err := cryptohomeHelper.RemoveAuthFactor(ctx, authSessionID, label); err != nil {
 		return errors.Wrap(err, "failed to remove vault")
 	}
 
@@ -437,17 +506,27 @@ func removeLeCredential(ctx, ctxForCleanUp context.Context, testUser string, r *
 }
 
 func ensurePINLockedOut(ctx context.Context, testUser string, cryptohomeClient *hwsec.CryptohomeClient) error {
-	output, err := cryptohomeClient.GetKeyData(ctx, testUser, authFactorLabelPIN)
+	output, err := cryptohomeClient.ListAuthFactors(ctx, testUser)
 	if err != nil {
-		return errors.Wrap(err, "failed to get key data")
+		return errors.Wrap(err, "failed to list auth factors")
 	}
-	exp := regexp.MustCompile("auth_locked: (true|false)\n")
-	m := exp.FindStringSubmatch(output)
-	if m == nil {
-		return errors.Wrap(err, "Auth locked could not parsed from key data: %s"+output)
+
+	// Search for the first PIN-based AuthFactor, and parse if it is locked out.
+	var pinAuthFactor *uda.AuthFactorWithStatus
+	for _, authFactor := range output.ConfiguredAuthFactorsWithStatus {
+		if authFactor.AuthFactor.Type == uda.AuthFactorType_AUTH_FACTOR_TYPE_PIN {
+			pinAuthFactor = authFactor
+			break
+		}
 	}
-	if m[1] != "true" {
-		return errors.Wrap(err, "PIN marked not locked when it should have been")
+
+	if pinAuthFactor != nil {
+		for _, authIntent := range pinAuthFactor.AvailableForIntents {
+			if authIntent == uda.AuthIntent_AUTH_INTENT_DECRYPT {
+				return errors.New("PIN not locked when it should have been")
+			}
+		}
+		return nil
 	}
-	return nil
+	return errors.New(testUser + " does not have any PIN-based AuthFactors.")
 }

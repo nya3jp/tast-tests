@@ -265,7 +265,7 @@ func (c *cryptohomeBinary) getKeyData(ctx context.Context, username, keyLabel st
 
 // startAuthSession calls "cryptohome --action=start_auth_session".
 func (c *cryptohomeBinary) startAuthSession(ctx context.Context, username string, isEphemeral bool, authIntent uda.AuthIntent) ([]byte, error) {
-	args := []string{"--action=start_auth_session", "--user=" + username, "--auth_intent=" + authIntent.String()}
+	args := []string{"--action=start_auth_session", "--output-format=binary-protobuf", "--user=" + username, "--auth_intent=" + authIntent.String()}
 	if isEphemeral {
 		args = append(args, "--ensure_ephemeral")
 	}
