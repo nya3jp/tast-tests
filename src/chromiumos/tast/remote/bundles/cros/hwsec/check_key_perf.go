@@ -154,7 +154,7 @@ func setupUser(ctx context.Context, useLegacyMountFlow bool, helper *hwsecremote
 	} else {
 		// Start an Auth session and get an authSessionID.
 		isEphemeral := false
-		authSessionID, err := utility.StartAuthSession(ctx, util.FirstUsername, isEphemeral, uda.AuthIntent_AUTH_INTENT_DECRYPT)
+		_, authSessionID, err := utility.StartAuthSession(ctx, util.FirstUsername, isEphemeral, uda.AuthIntent_AUTH_INTENT_DECRYPT)
 		if err != nil {
 			return errors.Wrap(err, "failed to start auth session")
 		}
