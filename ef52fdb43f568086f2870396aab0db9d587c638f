@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa3fe6eb_e8a61aa7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/recovery_failure.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-09-28T11:48:44Z",
+      "side": 1,
+      "message": "Maybe call it `CryptohomeRecoveryFailure`, to be more specific and not to be confused with other types of recoveries?",
+      "range": {
+        "startLine": 26,
+        "startChar": 8,
+        "endLine": 26,
+        "endChar": 23
+      },
+      "revId": "ef52fdb43f568086f2870396aab0db9d587c638f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
