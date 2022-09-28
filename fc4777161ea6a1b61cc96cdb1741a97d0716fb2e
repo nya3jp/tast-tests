@@ -16,6 +16,52 @@
       "message": "Hi Xiqi, ready to submit when you are.",
       "revId": "fc4777161ea6a1b61cc96cdb1741a97d0716fb2e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07070333_7403b562",
+        "filename": "src/chromiumos/tast/local/chrome/familylink/fixture.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1248360
+      },
+      "writtenOn": "2022-09-28T21:22:56Z",
+      "side": 1,
+      "message": "Cam you move those fixtures to projector code?",
+      "range": {
+        "startLine": 160,
+        "startChar": 0,
+        "endLine": 163,
+        "endChar": 20
+      },
+      "revId": "fc4777161ea6a1b61cc96cdb1741a97d0716fb2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08ee3b04_064e66b7",
+        "filename": "src/chromiumos/tast/local/chrome/familylink/fixture.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1248360
+      },
+      "writtenOn": "2022-09-28T21:22:56Z",
+      "side": 1,
+      "message": "Why does regular user use FamilyLinkFixture?\nSame for EDU user?",
+      "range": {
+        "startLine": 186,
+        "startChar": 12,
+        "endLine": 186,
+        "endChar": 32
+      },
+      "revId": "fc4777161ea6a1b61cc96cdb1741a97d0716fb2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
