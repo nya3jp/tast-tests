@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1f3490e_4841a026",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1145774
+      },
+      "writtenOn": "2022-09-28T01:24:17Z",
+      "side": 1,
+      "message": "Waiting for a chrome roll past 108.0.5313.0",
+      "revId": "cd47643197eabf47dcc2ce637b5f2293276ae64e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
