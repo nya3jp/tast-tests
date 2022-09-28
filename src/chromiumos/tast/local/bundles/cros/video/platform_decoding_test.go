@@ -36,6 +36,14 @@ var vaapiAv1Files = []string{
 	"test_vectors/av1/8-bit/test-25fps-192x288-tile-rows-3-tile-cols-3.ivf",
 }
 
+var v4l2Av1Files = []string{
+	"test_vectors/av1/8-bit/00000527.ivf",
+	"test_vectors/av1/8-bit/00000535.ivf",
+	"test_vectors/av1/8-bit/00000548.ivf",
+	"test_vectors/av1/8-bit/av1-1-b8-02-allintra.ivf",
+	"test_vectors/av1/8-bit/non_uniform_tiling.ivf",
+}
+
 var av1AomFiles = map[string]map[string][]string{
 	"8bit": {
 		"quantizer": {
@@ -1347,6 +1355,20 @@ func TestPlatformDecodingParams(t *testing.T) {
 		}
 		params = append(params, param)
 	}
+
+	// Generate V4L2 AV1 tests.
+	params = append(params, paramData{
+		Name:         "v4l2_stateless_av1",
+		Decoder:      filepath.Join(chrome.BinTestDir, "v4l2_stateless_decoder"),
+		CmdBuilder:   "v4l2StatelessDecodeArgs",
+		Files:        v4l2Av1Files,
+		Timeout:      defaultTimeout,
+		SoftwareDeps: []string{"v4l2_codec"},
+		// TODO(b/242075797): use HW capabilities
+		HardwareDeps: "hwdep.SupportsV4L2StatelessVideoDecoding(), hwdep.Model(\"tomato\", \"dojo\")",
+		Metadata:     genExtraData(v4l2Av1Files),
+		Attr:         []string{"graphics_video_av1"},
+	})
 
 	code := genparams.Template(t, `{{ range . }}{
 		Name: {{ .Name | fmt }},

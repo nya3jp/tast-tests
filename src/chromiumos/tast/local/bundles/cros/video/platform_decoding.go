@@ -2531,6 +2531,19 @@ func init() {
 				ExtraData:         []string{"test_vectors/h264/baseline/BA1_FT_C.h264", "test_vectors/h264/baseline/BA1_FT_C.h264.json", "test_vectors/h264/baseline/BASQP1_Sony_C.h264", "test_vectors/h264/baseline/BASQP1_Sony_C.h264.json", "test_vectors/h264/baseline/CI1_FT_B.h264", "test_vectors/h264/baseline/CI1_FT_B.h264.json", "test_vectors/h264/baseline/SVA_Base_B.h264", "test_vectors/h264/baseline/SVA_Base_B.h264.json", "test_vectors/h264/baseline/SVA_CL1_E.h264", "test_vectors/h264/baseline/SVA_CL1_E.h264.json", "test_vectors/h264/baseline/SVA_FM1_E.h264", "test_vectors/h264/baseline/SVA_FM1_E.h264.json", "test_vectors/h264/baseline/MR1_BT_A.h264", "test_vectors/h264/baseline/MR1_BT_A.h264.json", "test_vectors/h264/main/CABACI3_Sony_B.h264", "test_vectors/h264/main/CABACI3_Sony_B.h264.json", "test_vectors/h264/main/CABAST3_Sony_E.h264", "test_vectors/h264/main/CABAST3_Sony_E.h264.json", "test_vectors/h264/main/CABASTBR3_Sony_B.h264", "test_vectors/h264/main/CABASTBR3_Sony_B.h264.json", "test_vectors/h264/main/SL1_SVA_B.h264", "test_vectors/h264/main/SL1_SVA_B.h264.json"},
 				ExtraAttr:         []string{"graphics_video_h264"},
 			},
+			{
+				Name: "v4l2_stateless_av1",
+				Val: platformDecodingParams{
+					filenames:      []string{"test_vectors/av1/8-bit/00000527.ivf", "test_vectors/av1/8-bit/00000535.ivf", "test_vectors/av1/8-bit/00000548.ivf", "test_vectors/av1/8-bit/av1-1-b8-02-allintra.ivf", "test_vectors/av1/8-bit/non_uniform_tiling.ivf"},
+					decoder:        "/usr/local/libexec/chrome-binary-tests/v4l2_stateless_decoder",
+					commandBuilder: v4l2StatelessDecodeArgs,
+				},
+				Timeout:           10 * time.Minute,
+				ExtraHardwareDeps: hwdep.D(hwdep.SupportsV4L2StatelessVideoDecoding(), hwdep.Model("tomato", "dojo")),
+				ExtraSoftwareDeps: []string{"v4l2_codec"},
+				ExtraData:         []string{"test_vectors/av1/8-bit/00000527.ivf", "test_vectors/av1/8-bit/00000527.ivf.json", "test_vectors/av1/8-bit/00000535.ivf", "test_vectors/av1/8-bit/00000535.ivf.json", "test_vectors/av1/8-bit/00000548.ivf", "test_vectors/av1/8-bit/00000548.ivf.json", "test_vectors/av1/8-bit/av1-1-b8-02-allintra.ivf", "test_vectors/av1/8-bit/av1-1-b8-02-allintra.ivf.json", "test_vectors/av1/8-bit/non_uniform_tiling.ivf", "test_vectors/av1/8-bit/non_uniform_tiling.ivf.json"},
+				ExtraAttr:         []string{"graphics_video_av1"},
+			},
 		},
 	})
 }
@@ -2565,13 +2578,11 @@ func shouldStopOnFailure(s *testing.State) bool {
 // and cause decoding to break for reasons unrelated to Chrome.
 func PlatformDecoding(ctx context.Context, s *testing.State) {
 	testOpt := s.Param().(platformDecodingParams)
-
 	vl, err := logging.NewVideoLogger()
 	if err != nil {
 		s.Fatal("Failed to create new video logger: ", err)
 	}
 	defer vl.Close()
-
 	// Creates temporary md5 checksum log file
 	f, err := os.CreateTemp("", "frame_checksums.*.md5")
 	if err != nil {
@@ -2581,10 +2592,8 @@ func PlatformDecoding(ctx context.Context, s *testing.State) {
 	if err := f.Close(); err != nil {
 		s.Fatal("Failed to close md5 checksum log: ", err)
 	}
-
 	// Defers removal of temporary md5 log file
 	defer os.Remove(md5LogPath)
-
 	// Run the decode_test binary for vaapi or the v4l2_stateful_decoder binary or
 	// v4l2_stateless_decoder binary for v4l2, propagating its errors: the binary fails
 	// if the VAAPI or V4l2 calls themselves error, the binary is called on unsupported
@@ -2592,7 +2601,6 @@ func PlatformDecoding(ctx context.Context, s *testing.State) {
 	// The test may also fail if the decoded results do not match expected MD5 hashes.
 	exec := testOpt.decoder
 	stopOnFailure := shouldStopOnFailure(s)
-
 	for _, filename := range testOpt.filenames {
 		testing.ContextLogf(ctx, "Running %s on %s", exec, filename)
 		args := testOpt.commandBuilder(ctx, s.DataPath(filename), md5LogPath)
@@ -2604,7 +2612,6 @@ func PlatformDecoding(ctx context.Context, s *testing.State) {
 			fmt.Sprintf("--metadata=%s.json", s.DataPath(filename)),
 			fmt.Sprintf("--md5=%s", md5LogPath),
 		).SeparatedOutput(testexec.DumpLogOnError)
-
 		if err != nil {
 			output := append(stdout, stderr...)
 			testing.ContextLogf(ctx, "%v failed unexpectedly: %s", exec, string(output))
