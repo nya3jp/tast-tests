@@ -14,7 +14,9 @@ import (
 	"time"
 
 	"chromiumos/tast/common/servo"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/remote/firmware/fixture"
+	"chromiumos/tast/ssh"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -36,7 +38,7 @@ func init() {
 		Attr:         []string{}, // TODO(b/239126062): Move to custom suite/schedule.
 		SoftwareDeps: []string{"crossystem", "flashrom"},
 		HardwareDeps: hwdep.D(hwdep.ChromeEC()),
-		Timeout:      45 * time.Minute,
+		Timeout:      60 * time.Minute,
 		Params: []testing.Param{
 			{
 				Val:     "--flashrom_binary=/usr/sbin/flashrom",
@@ -57,6 +59,44 @@ func FlashromTester(ctx context.Context, s *testing.State) {
 	if err := h.RequireServo(ctx); err != nil {
 		s.Fatal("Failed to connect to servo: ", err)
 	}
+
+	// Create a backup of AP flash to restore.
+	// flashrom_tester normally does this, but can't if it times out.
+	backupTmpFileStdout, err := h.DUT.Conn().CommandContext(ctx, "mktemp", "-t", "FlashromTesterAPFW.XXXXXXXXXX").Output(ssh.DumpLogOnError)
+	if err != nil {
+		s.Fatal("Failed to create a temp file: ", err)
+	}
+	backupTmpFile := strings.TrimSpace(string(backupTmpFileStdout))
+	defer func() {
+		h.DUT.Conn().CommandContext(ctx, "rm", backupTmpFile).Output(ssh.DumpLogOnError)
+	}()
+	if _, err := h.DUT.Conn().CommandContext(ctx, "flashrom", "-p", "host", "-r", backupTmpFile).Output(ssh.DumpLogOnError); err != nil {
+		s.Fatal("Failed to create a AP firmware backup: ", err)
+	}
+
+	// Reserve time for the backup to be restored if flashrom_tester times out
+	// This time is also used by the faft fixture.
+	cleanupContext := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Minute)
+	defer cancel()
+	defer func(ctx context.Context) {
+		s.Log("Reset hardware write protect")
+		if err := h.Servo.SetFWWPState(ctx, servo.FWWPStateOff); err != nil {
+			s.Error("Failed to reset hardware write protect: ", err)
+		}
+
+		s.Log("Reset software write protect")
+		if _, err := h.DUT.Conn().CommandContext(ctx, "flashrom", "-p", "host", "--wp-disable", "--wp-range=0,0").Output(ssh.DumpLogOnError); err != nil {
+			s.Error("Failed to reset software write protect: ", err)
+		}
+
+		// TODO only do this when flashrom_tester timed out?
+		// TODO is there a more correct way, eg using futility. Problem is we want to restore hwid and friends as well as firmware.
+		s.Log("Restore AP firmware")
+		if _, err := h.DUT.Conn().CommandContext(ctx, "flashrom", "-p", "host", "--noverify", "-w", backupTmpFile).Output(ssh.DumpLogOnError); err != nil {
+			s.Error("Failed to restore AP firmware backup: ", err)
+		}
+	}(cleanupContext)
 
 	backendChoiceArg := s.Param().(string)
 	cmd := h.DUT.Conn().CommandContext(ctx, "flashrom_tester", "--debug", backendChoiceArg, "host")
