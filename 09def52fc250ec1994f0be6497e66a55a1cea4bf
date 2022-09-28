@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f003b51_f7a73c37",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/shelf_launch_omaha.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-09-28T06:57:20Z",
+      "side": 1,
+      "message": "If we were to continue with \"dev\" OS channel pre-branch, the test would download the stateful-lacros from \"lacros-dogfood-dev\", which is likely older than rootfs-lacros. so, ash would end up with `Error loading lacros component image: 4`",
+      "parentUuid": "db15c708_55c645fb",
+      "revId": "09def52fc250ec1994f0be6497e66a55a1cea4bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "239136d7_cc7f8c28",
@@ -48,6 +66,24 @@
       "writtenOn": "2022-09-28T05:48:27Z",
       "side": 1,
       "message": "Please add some comment on why this excludes \"canary\" (canary seems to be a special case).",
+      "revId": "09def52fc250ec1994f0be6497e66a55a1cea4bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f49c877d_30931bb2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/shelf_launch_omaha.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-09-28T06:57:20Z",
+      "side": 1,
+      "message": "Ack. Added a function comment that points out \"canary\" is a special channel. Hope that helps clarify it a bit more.",
+      "parentUuid": "239136d7_cc7f8c28",
       "revId": "09def52fc250ec1994f0be6497e66a55a1cea4bf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -75,6 +111,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9bb4a72_120fa8e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/shelf_launch_omaha.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-09-28T06:57:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c4535984_361ae76a",
+      "range": {
+        "startLine": 100,
+        "startChar": 5,
+        "endLine": 100,
+        "endChar": 40
+      },
+      "revId": "09def52fc250ec1994f0be6497e66a55a1cea4bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5272c713_620d1ccc",
@@ -88,6 +148,24 @@
       "writtenOn": "2022-09-28T05:48:27Z",
       "side": 1,
       "message": "Nit: just inline this code at the one call site, no need for a function.",
+      "revId": "09def52fc250ec1994f0be6497e66a55a1cea4bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b2bd5ed_3735bf72",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/shelf_launch_omaha.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-09-28T06:57:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5272c713_620d1ccc",
       "revId": "09def52fc250ec1994f0be6497e66a55a1cea4bf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -109,6 +187,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "841d61d0_ee27c66b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/shelf_launch_omaha.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-09-28T06:57:20Z",
+      "side": 1,
+      "message": "Ack. Btw, is it okay if I can do it in a separate CL as it may need more time to find the right place for this and some other code to share between tests?",
+      "parentUuid": "df517c76_b9844ced",
+      "revId": "09def52fc250ec1994f0be6497e66a55a1cea4bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "30a2005d_40c6cd6d",
@@ -122,6 +218,24 @@
       "writtenOn": "2022-09-28T05:48:27Z",
       "side": 1,
       "message": "Please check error.",
+      "revId": "09def52fc250ec1994f0be6497e66a55a1cea4bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dbb62bf6_48c4cd17",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/shelf_launch_omaha.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-09-28T06:57:20Z",
+      "side": 1,
+      "message": "Done logging the error (but moving on without exit since it is not in the critical path for the verification)",
+      "parentUuid": "30a2005d_40c6cd6d",
       "revId": "09def52fc250ec1994f0be6497e66a55a1cea4bf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
