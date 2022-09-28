@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "43e868e1_e76a8212",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/sata_storage.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-09-28T09:41:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c2ac4af6_5b652f0a",
+      "revId": "e5678005b7115394dfaca4ec6f4f7793ce71af58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5bee7a59_45159c42",
@@ -48,6 +66,24 @@
       "writtenOn": "2022-07-07T01:46:12Z",
       "side": 1,
       "message": "Is this intended to pick the last element in the array slice?",
+      "revId": "e5678005b7115394dfaca4ec6f4f7793ce71af58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9fcd5bc_cebe7e3b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/sata_storage.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-09-28T09:41:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5bee7a59_45159c42",
       "revId": "e5678005b7115394dfaca4ec6f4f7793ce71af58",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
