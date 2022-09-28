@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "932bda2e_7a327c9b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-09-28T17:24:18Z",
+      "side": 1,
+      "message": "nit: The RecentApps test expects system web apps to be installed by the time the launcher is opened, so explicitly wait for their installation before calling SetUpLauncherTest (and opening the launcher).",
+      "range": {
+        "startLine": 16,
+        "startChar": 5,
+        "endLine": 19,
+        "endChar": 18
+      },
+      "revId": "b646dd856abc352537c57e88a37320f7b7dcd30a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9880302_674915f9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-09-28T17:24:18Z",
+      "side": 1,
+      "message": "is to wait",
+      "range": {
+        "startLine": 33,
+        "startChar": 18,
+        "endLine": 33,
+        "endChar": 36
+      },
+      "revId": "b646dd856abc352537c57e88a37320f7b7dcd30a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18f7a580_6568561d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-09-28T17:24:18Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 7
+      },
+      "revId": "b646dd856abc352537c57e88a37320f7b7dcd30a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4caf7588_e24fedbe",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-09-28T17:24:18Z",
+      "side": 1,
+      "message": "I\u0027d just drop this part of the sentence. Or rephrase to something like:\n\nAs a speculative fix, the test now waits for the app window...\n\n\n(also, merge this with the previous paragraph)",
+      "range": {
+        "startLine": 34,
+        "startChar": 44,
+        "endLine": 35,
+        "endChar": 2
+      },
+      "revId": "b646dd856abc352537c57e88a37320f7b7dcd30a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
