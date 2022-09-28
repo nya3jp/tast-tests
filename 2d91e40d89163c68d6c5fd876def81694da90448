@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61e9cae0_a408063f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-09-28T17:42:03Z",
+      "side": 1,
+      "message": "LGTM for submission after verifying unit tests, and updating the message as mentioned below:\n\nFor the sake of this CL, the TEST\u003d is most likely just ./fast_build.sh -T. Can you ensure that runs and update the line?\n\nAdditionally, the message just needs to mention that a function for clearing logcat was added, rather than discussing any specific implementation (since none are done here).",
+      "revId": "2d91e40d89163c68d6c5fd876def81694da90448",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
