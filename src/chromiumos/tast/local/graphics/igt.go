@@ -86,10 +86,8 @@ func IgtProcessResults(testExe string, file *os.File, isExitErr bool, exitErr *e
 		outputLog += fmt.Sprintf("ALL %d subtests were SKIPPED: %s\n", results.skipped, err.Error())
 		outputLog += "----------------------------------------------------"
 	} else if len(failedSubtests) > 0 {
-		outputLog = fmt.Sprintf("Error running %s: %v\n", testExe, err)
-		outputLog += fmt.Sprintf("%s\n", summary)
-		outputLog += fmt.Sprintf("Failed subtests: %s\n", failedSubtests)
-		outputLog += fmt.Sprintf("%s Pass:%d Fail:%d", testExe, results.passed, results.failed)
+		outputLog = fmt.Sprintf("FAIL: Test:%s - Pass:%d Fail:%d - FailedSubtests:%s - Summary:%s\n",
+			testExe, results.passed, results.failed, failedSubtests, summary)
 		isError = true
 	} else {
 		outputLog = fmt.Sprintf("%s\n", summary)
