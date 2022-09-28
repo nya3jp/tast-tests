@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f05a18ad_7f430b06",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2022-09-28T00:05:23Z",
+      "side": 1,
+      "message": "Yes, we need Lacros variants for all those, since they all collect memory metrics.",
+      "revId": "4d3d5f82da4a56a144cea4ea9bf6677746a6f6cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
