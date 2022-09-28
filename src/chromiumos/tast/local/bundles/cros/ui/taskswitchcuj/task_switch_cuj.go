@@ -17,10 +17,12 @@ import (
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/cuj"
 	"chromiumos/tast/local/chrome/cuj/inputsimulations"
+	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/event"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/mouse"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/pointer"
 	"chromiumos/tast/local/chrome/uiauto/touch"
@@ -79,6 +81,18 @@ func Run(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to open the keyboard: ", err)
 	}
 	defer kw.Close()
+
+	// Create a virtual mouse.
+	mw, err := input.Mouse(ctx)
+	if err != nil {
+		s.Fatal("Failed to create a mouse: ", err)
+	}
+	defer mw.Close()
+
+	info, err := display.GetPrimaryInfo(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to get the primary display info: ", err)
+	}
 
 	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, testParam.Tablet)
 	if err != nil {
@@ -257,6 +271,12 @@ func Run(ctx context.Context, s *testing.State) {
 					return errors.Wrap(err, "failed to sleep")
 				}
 
+				// Move mouse to center of screen to ensure we are
+				// scrolling on the currently active window.
+				if err := mouse.Move(tconn, info.Bounds.CenterPoint(), 500*time.Millisecond)(ctx); err != nil {
+					return errors.Wrap(err, "failed to move mouse to center of screen")
+				}
+
 				// Try to scroll down and up by pressing the down and up
 				// arrow key. This gives us some input latency metrics
 				// while delaying between each task switch. This also
@@ -265,6 +285,10 @@ func Run(ctx context.Context, s *testing.State) {
 				for _, key := range []string{"Down", "Up"} {
 					if err := inputsimulations.RepeatKeyPress(ctx, kw, key, 300*time.Millisecond, 10); err != nil {
 						return errors.Wrapf(err, "failed to repeatedly press %q in between task switches", key)
+					}
+
+					if err := inputsimulations.RepeatMouseScroll(ctx, mw, key == "Down", 100*time.Millisecond, 20); err != nil {
+						return errors.Wrapf(err, "failed to repeatedly mouse scroll %s", key)
 					}
 				}
 
