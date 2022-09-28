@@ -1,4 +1,4 @@
-// Copyright 2018 The ChromiumOS Authors
+// Copyright 2022 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -14,7 +14,8 @@ import (
 	"regexp"
 	"strconv"
 	"strings"
-	"syscall"
+
+	"golang.org/x/sys/unix"
 
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
@@ -89,13 +90,13 @@ func ASLR(ctx context.Context, s *testing.State) {
 			end := uintptr(parseNum(group[2], 16))
 			prot := 0
 			if group[3][0] == 'r' {
-				prot |= syscall.PROT_READ
+				prot |= unix.PROT_READ
 			}
 			if group[4][0] == 'w' {
-				prot |= syscall.PROT_WRITE
+				prot |= unix.PROT_WRITE
 			}
 			if group[5][0] == 'x' {
-				prot |= syscall.PROT_EXEC
+				prot |= unix.PROT_EXEC
 			}
 			shared := (group[6][0] == 's')
 			offset := parseNum(group[7], 16)
@@ -134,9 +135,9 @@ func ASLR(ctx context.Context, s *testing.State) {
 					prot += f
 				}
 			}
-			add(mapping.prot&syscall.PROT_READ != 0, "r", "-")
-			add(mapping.prot&syscall.PROT_WRITE != 0, "w", "-")
-			add(mapping.prot&syscall.PROT_EXEC != 0, "x", "-")
+			add(mapping.prot&unix.PROT_READ != 0, "r", "-")
+			add(mapping.prot&unix.PROT_WRITE != 0, "w", "-")
+			add(mapping.prot&unix.PROT_EXEC != 0, "x", "-")
 			add(mapping.shared, "s", "p")
 
 			line := fmt.Sprintf("%016x-%016x %v %8x %02x:%02x %-10d %v\n",
