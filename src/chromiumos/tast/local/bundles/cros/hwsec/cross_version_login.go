@@ -249,7 +249,7 @@ func prefixToVersion(prefix string) ([3]int, error) {
 
 // authenticateAuthFactor authenticates the factor with the given label.
 func authenticateAuthFactor(ctx context.Context, cryptohome *hwsec.CryptohomeClient, username, label string, authConfig *hwsec.AuthConfig, lowEntropy bool) (bool, error) {
-	authSessionID, err := cryptohome.StartAuthSession(ctx, username, false /*ephemeral*/, uda.AuthIntent_AUTH_INTENT_VERIFY_ONLY)
+	_, authSessionID, err := cryptohome.StartAuthSession(ctx, username, false /*ephemeral*/, uda.AuthIntent_AUTH_INTENT_VERIFY_ONLY)
 	if err != nil {
 		return false, errors.Wrap(err, "failed to start auth session")
 	}
@@ -514,7 +514,7 @@ func testConfigViaCryptohome(ctx context.Context, lf hwsec.LogFunc, cryptohome *
 			return errors.Wrap(err, "failed to check vault")
 		}
 		// AuthSession check.
-		authID, err := cryptohome.StartAuthSession(ctx, username, false /* isEphemeral */, uda.AuthIntent_AUTH_INTENT_DECRYPT)
+		_, authID, err := cryptohome.StartAuthSession(ctx, username, false /* isEphemeral */, uda.AuthIntent_AUTH_INTENT_DECRYPT)
 		if err != nil {
 			return errors.Wrap(err, "failed to start auth session")
 		}
@@ -557,7 +557,7 @@ func testConfigViaCryptohome(ctx context.Context, lf hwsec.LogFunc, cryptohome *
 			return errors.Wrap(err, "failed to properly migrate key")
 		}
 		// AuthSession check.
-		authID, err := cryptohome.StartAuthSession(ctx, username, false /* isEphemeral */, uda.AuthIntent_AUTH_INTENT_DECRYPT)
+		_, authID, err := cryptohome.StartAuthSession(ctx, username, false /* isEphemeral */, uda.AuthIntent_AUTH_INTENT_DECRYPT)
 		if err != nil {
 			return errors.Wrap(err, "failed to start auth session")
 		}
@@ -566,7 +566,7 @@ func testConfigViaCryptohome(ctx context.Context, lf hwsec.LogFunc, cryptohome *
 			return errors.Wrap(err, "unexpectedly authenticate auth session with invalid password")
 		}
 
-		authID, err = cryptohome.StartAuthSession(ctx, username, false /* isEphemeral */, uda.AuthIntent_AUTH_INTENT_DECRYPT)
+		_, authID, err = cryptohome.StartAuthSession(ctx, username, false /* isEphemeral */, uda.AuthIntent_AUTH_INTENT_DECRYPT)
 		if err != nil {
 			return errors.Wrap(err, "failed to start auth session")
 		}
