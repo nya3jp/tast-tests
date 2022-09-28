@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c6b5374_4c3283b3",
+        "filename": "src/chromiumos/tast/local/network/virtualnet/udpserver/udpserver.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-09-28T02:43:06Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e67ae32f_925d6261",
+      "range": {
+        "startLine": 71,
+        "startChar": 17,
+        "endLine": 71,
+        "endChar": 22
+      },
+      "revId": "3ff292db5c0c4eb4200e72cc09bd31caa3f9e920",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3848cee9_370abd5f",
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/network/virtualnet/env/env.go;rcl\u003db60e6934990b94b9e1b2fc14f049092eb419a883;l\u003d65",
       "parentUuid": "3848cee9_370abd5f",
+      "range": {
+        "startLine": 134,
+        "startChar": 17,
+        "endLine": 134,
+        "endChar": 26
+      },
+      "revId": "3ff292db5c0c4eb4200e72cc09bd31caa3f9e920",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "067b0047_011f68b9",
+        "filename": "src/chromiumos/tast/local/network/virtualnet/udpserver/udpserver.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-09-28T02:43:06Z",
+      "side": 1,
+      "message": "That is a private interface, which is not supposed to affect this file.\n\nIf you want to connect your implementation here to that interface, you will need to:\n1, make that interface public\n2, declare in this file that `udpserver.server` is an implementation of that interface by add the following code:\n```\nvar _ server \u003d (*env.Server)(nil)\n```",
+      "parentUuid": "ce7a7c04_afb4500c",
       "range": {
         "startLine": 134,
         "startChar": 17,
