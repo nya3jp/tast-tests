@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1d5af4a_e132aa3c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/traffic_counters.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2022-09-28T02:35:23Z",
+      "side": 1,
+      "message": "Although golang doesn\u0027t have line length limits, it is still recommended to keep comments to \u003c80 lines if possible [1].\n\n[1] go/go-style/decisions#comment-line-length",
+      "range": {
+        "startLine": 139,
+        "startChar": 0,
+        "endLine": 139,
+        "endChar": 103
+      },
+      "revId": "530c01ebd7dd383d761d429da55aff67fd43f5fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c8d2e8e_c166b249",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/traffic_counters.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2022-09-28T02:35:23Z",
+      "side": 1,
+      "message": "Comment line length",
+      "range": {
+        "startLine": 150,
+        "startChar": 0,
+        "endLine": 153,
+        "endChar": 29
+      },
+      "revId": "530c01ebd7dd383d761d429da55aff67fd43f5fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "395e1171_4997f188",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/traffic_counters.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2022-09-28T02:35:23Z",
+      "side": 1,
+      "message": "Can this ever be nil? It looks like any server returned by setup will have rt properly initialized.",
+      "range": {
+        "startLine": 194,
+        "startChar": 1,
+        "endLine": 194,
+        "endChar": 17
+      },
+      "revId": "530c01ebd7dd383d761d429da55aff67fd43f5fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42d2a095_5adb01ca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/traffic_counters.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2022-09-28T02:35:23Z",
+      "side": 1,
+      "message": "There should be time reserved for this cleanup.",
+      "range": {
+        "startLine": 216,
+        "startChar": 14,
+        "endLine": 216,
+        "endChar": 17
+      },
+      "revId": "530c01ebd7dd383d761d429da55aff67fd43f5fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c51379d_4eef714f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/traffic_counters.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2022-09-28T02:35:23Z",
+      "side": 1,
+      "message": "What\u0027s this value?",
+      "range": {
+        "startLine": 223,
+        "startChar": 9,
+        "endLine": 223,
+        "endChar": 14
+      },
+      "revId": "530c01ebd7dd383d761d429da55aff67fd43f5fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ad45d08_b56e32db",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/traffic_counters.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2022-09-28T02:35:23Z",
+      "side": 1,
+      "message": "Is there anything that\u0027s preventing another program from claiming the port after `c.Close()` is executed? I guess there\u0027s probably not much else happening on the DUT while this test is running, but that could still result in random failures. I don\u0027t know how likely such failures would be, but is there a more reliable way that `txrx` could be implemented? Otherwise, I guess we can leave a comment and see if there are actually failures in practice.",
+      "range": {
+        "startLine": 262,
+        "startChar": 0,
+        "endLine": 263,
+        "endChar": 41
+      },
+      "revId": "530c01ebd7dd383d761d429da55aff67fd43f5fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
