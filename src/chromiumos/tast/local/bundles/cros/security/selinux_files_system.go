@@ -39,7 +39,7 @@ func SELinuxFilesSystem(ctx context.Context, s *testing.State) {
 		{Path: "/bin/kmod", Context: "cros_modprobe_exec"},
 		{Path: "/bin/sh", Context: "sh_exec"},
 		{Path: "/etc", Context: "cros_conf_file", Recursive: true, Filter: selinux.IgnorePaths([]string{
-			"/etc/hosts.d", "/etc/localtime", "/etc/passwd", "/etc/group", "/etc/shadow", "/etc/selinux",
+			"/etc/hosts.d", "/etc/localtime", "/etc/passwd", "/etc/group", "/etc/shadow", "/etc/selinux", "/etc/featured",
 		})},
 		{Path: "/etc/group", Context: "cros_passwd_file"},
 		{Path: "/etc/hosts.d", Recursive: true, Context: "cros_run_crosdns", IgnoreErrors: true},
@@ -47,6 +47,7 @@ func SELinuxFilesSystem(ctx context.Context, s *testing.State) {
 		{Path: "/etc/passwd", Context: "cros_passwd_file"},
 		{Path: "/etc/selinux", Context: "cros_selinux_config_file", Recursive: true},
 		{Path: "/etc/shadow", Context: "cros_shadow_file"},
+		{Path: "/etc/featured", Context: "cros_featured_file", Recursive: true},
 		{Path: "/opt/google/easy_unlock/easy_unlock", Context: "cros_easy_unlock_exec", IgnoreErrors: true, Log: true}, // not found on amd64-generic-full builder. crbug.com/1085813
 		{Path: "/run/avahi-daemon", Context: "cros_run_avahi_daemon", Recursive: true, Filter: selinux.IgnorePaths([]string{
 			"/run/avahi-daemon/pid", "/run/avahi-daemon/socket",
