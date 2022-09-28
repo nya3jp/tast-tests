@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "06b0bfc4_5d34aceb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/shelf_launch_omaha.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-09-28T07:13:46Z",
+      "side": 1,
+      "message": "Not sure if it\u0027s always true, but likely true for automated tests using testimage. It would be safe to keep this condition for error prevention in case it is not. Please reopen this if you see it differently.",
+      "parentUuid": "54fef2d6_6be2b747",
+      "revId": "09def52fc250ec1994f0be6497e66a55a1cea4bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "db15c708_55c645fb",

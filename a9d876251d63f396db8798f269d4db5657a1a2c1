@@ -70,6 +70,24 @@
       "parentUuid": "256922a4_b66d9eb8",
       "revId": "a9d876251d63f396db8798f269d4db5657a1a2c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5da204c_0d071b5c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-09-28T07:13:46Z",
+      "side": 1,
+      "message": "Ack. Marking as resolved leaving a note on the tracking bug for a follow up.",
+      "parentUuid": "0c33624d_dacb6dd9",
+      "revId": "a9d876251d63f396db8798f269d4db5657a1a2c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
