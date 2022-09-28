@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e28edf52_33a8a7c4",
+        "filename": "src/chromiumos/tast/common/wifi/security/wpa/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1521657
+      },
+      "writtenOn": "2022-09-28T21:43:06Z",
+      "side": 1,
+      "message": "OK. Filed b/249582789",
+      "parentUuid": "ad91ea66_3fc60ec8",
+      "range": {
+        "startLine": 105,
+        "startChar": 30,
+        "endLine": 105,
+        "endChar": 33
+      },
+      "revId": "4d724ae852ed0fd56dfda8fab079d324abd4a603",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e9face04_574d270f",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-09-27T15:58:34Z",
       "side": 1,
       "message": "can you just inline it here?",
+      "range": {
+        "startLine": 280,
+        "startChar": 66,
+        "endLine": 280,
+        "endChar": 67
+      },
+      "revId": "4d724ae852ed0fd56dfda8fab079d324abd4a603",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "81570c04_0ea06f62",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1521657
+      },
+      "writtenOn": "2022-09-28T21:43:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e9face04_574d270f",
       "range": {
         "startLine": 280,
         "startChar": 66,
