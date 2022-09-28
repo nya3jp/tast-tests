@@ -108,7 +108,7 @@ func AuthSessionUnlock(ctx context.Context, s *testing.State) {
 }
 
 func createUserWithPasswordFactor(ctx context.Context, client *hwsec.CryptohomeClient, userName, password, passwordLabel string) (func(context.Context), error) {
-	authSessionID, err := client.StartAuthSession(ctx, userName, false /*ephemeral*/, uda.AuthIntent_AUTH_INTENT_DECRYPT)
+	_, authSessionID, err := client.StartAuthSession(ctx, userName, false /*ephemeral*/, uda.AuthIntent_AUTH_INTENT_DECRYPT)
 	if err != nil {
 		return nil, errors.Wrap(err, "start auth session")
 	}
@@ -130,7 +130,7 @@ func createUserWithPasswordFactor(ctx context.Context, client *hwsec.CryptohomeC
 }
 
 func mountUserWithPasswordFactor(ctx context.Context, client *hwsec.CryptohomeClient, userName, password, passwordLabel string) error {
-	authSessionID, err := client.StartAuthSession(ctx, userName, false /*ephemeral*/, uda.AuthIntent_AUTH_INTENT_DECRYPT)
+	_, authSessionID, err := client.StartAuthSession(ctx, userName, false /*ephemeral*/, uda.AuthIntent_AUTH_INTENT_DECRYPT)
 	if err != nil {
 		return errors.Wrap(err, "start auth session")
 	}
@@ -146,7 +146,7 @@ func mountUserWithPasswordFactor(ctx context.Context, client *hwsec.CryptohomeCl
 
 func testAuthSessionUnlock(ctx context.Context, client *hwsec.CryptohomeClient, userName, password, passwordLabel string) error {
 	// Check VERIFY_ONLY authentication using the correct password.
-	authSessionID, err := client.StartAuthSession(ctx, userName, false /*ephemeral*/, uda.AuthIntent_AUTH_INTENT_VERIFY_ONLY)
+	_, authSessionID, err := client.StartAuthSession(ctx, userName, false /*ephemeral*/, uda.AuthIntent_AUTH_INTENT_VERIFY_ONLY)
 	if err != nil {
 		return errors.Wrap(err, "start AuthSession")
 	}
@@ -163,7 +163,7 @@ func testAuthSessionUnlock(ctx context.Context, client *hwsec.CryptohomeClient, 
 	}
 
 	// Check VERIFY_ONLY authentication fails when using a wrong password.
-	authSessionID, err = client.StartAuthSession(ctx, userName /*ephemeral=*/, false, uda.AuthIntent_AUTH_INTENT_VERIFY_ONLY)
+	_, authSessionID, err = client.StartAuthSession(ctx, userName /*ephemeral=*/, false, uda.AuthIntent_AUTH_INTENT_VERIFY_ONLY)
 	if err != nil {
 		return errors.Wrap(err, "start second AuthSession")
 	}
