@@ -75,6 +75,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e11721c_976d191d",
+        "filename": "src/chromiumos/tast/local/quickanswers/quickanswers.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1211724
+      },
+      "writtenOn": "2022-09-28T21:58:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2ff5ab52_a244e511",
+      "range": {
+        "startLine": 5,
+        "startChar": 33,
+        "endLine": 5,
+        "endChar": 49
+      },
+      "revId": "7999034b46f3221aa838df8f1a5d1c7b64d5094e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a7f3da70_1e3ca94a",
@@ -88,6 +112,30 @@
       "writtenOn": "2022-09-28T01:30:02Z",
       "side": 1,
       "message": "Just curious, does it make sense to make this function as `Enable(ctx, tconn, bool)` which hardcodes \"settings.quick_answers.enabled\" to call `tconn.Call()`?\n\nIt seems that all occurrences use this |prefName|",
+      "range": {
+        "startLine": 17,
+        "startChar": 5,
+        "endLine": 17,
+        "endChar": 17
+      },
+      "revId": "7999034b46f3221aa838df8f1a5d1c7b64d5094e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eca572d7_c98cb08e",
+        "filename": "src/chromiumos/tast/local/quickanswers/quickanswers.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1211724
+      },
+      "writtenOn": "2022-09-28T21:58:09Z",
+      "side": 1,
+      "message": "Not all occurrences use this pref name (L77 in definition_with_non_english_words.go), also we will have use cases for other pref names in the future.",
+      "parentUuid": "a7f3da70_1e3ca94a",
       "range": {
         "startLine": 17,
         "startChar": 5,
