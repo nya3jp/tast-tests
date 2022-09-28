@@ -16,6 +16,24 @@
       "message": "Waiting for a chrome roll past 108.0.5313.0",
       "revId": "cd47643197eabf47dcc2ce637b5f2293276ae64e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d0e9954_5b1710b9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1145774
+      },
+      "writtenOn": "2022-09-28T14:29:40Z",
+      "side": 1,
+      "message": "Chrome is now 108.0.5323.0 crrev.com/c/3917777",
+      "parentUuid": "c1f3490e_4841a026",
+      "revId": "cd47643197eabf47dcc2ce637b5f2293276ae64e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
