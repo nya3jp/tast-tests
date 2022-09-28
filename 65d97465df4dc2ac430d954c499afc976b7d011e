@@ -34,6 +34,24 @@
       "parentUuid": "faf30fae_6b89f9de",
       "revId": "65d97465df4dc2ac430d954c499afc976b7d011e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7aed3d2e_5a362fa1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/expectations/expectations.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1498402
+      },
+      "writtenOn": "2022-09-28T22:36:21Z",
+      "side": 1,
+      "message": "I changed the prefixes. `Error*` uses the prefix \"Error: \". `Fatal*` uses the prefix: \"Fatal:\".\n\nThe summary log in `HandleFinalExpectation` when `if e.Expectation \u003d\u003d ExpectFailure \u0026\u0026 e.hasError` explains that the errors were ignored.",
+      "parentUuid": "bc7ff9cc_526efd4f",
+      "revId": "65d97465df4dc2ac430d954c499afc976b7d011e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
