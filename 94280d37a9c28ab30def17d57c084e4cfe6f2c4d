@@ -74,6 +74,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "df46bc90_eb03b7ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/config_verify.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2022-09-28T08:10:53Z",
+      "side": 1,
+      "message": "\u003e 1. https://crrev.com/c/3912867 is earlier CL ...\n\nSupposedly, you are the reviewer.  As you suggested me to use parameterized tests.  The CL is a no-op but transform to use parameterized tests.\n\n\u003e 2. I took a look at https://crrev.com/c/3912903 and ...\n\nI guess you already figured it out.\n\n\u003e 3. ... tast local bundle only exists on chromeos test image\n\nChromiumOS is an open source project.  TAST also exists in ChromiumOS test image.  https://chromeos.kernelci.org/ uses ChromiumOS with upstream kernel to run TAST tests.\n\n\u003e chrome_internal vs. cros_internal\n\nAck.",
+      "parentUuid": "316768e9_2016b903",
+      "revId": "94280d37a9c28ab30def17d57c084e4cfe6f2c4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "da67d4b4_b3a28ec2",
         "filename": "src/chromiumos/tast/local/bundles/cros/kernel/config_verify.go",
         "patchSetId": 4
