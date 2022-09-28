@@ -16,6 +16,24 @@
       "message": "can we simplify this a bit - maybe extract s.Run into a separate method\n\nrunAnswerCardTestCase that returns bool indicating whether the test case succeeded, I think this would be easier to follow:\n\n```\ndefer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, \"ui_tree_\"+string(testCase.SearchKeyword))\n\nfor i :\u003d 0; i \u003c retries; i++ {\n  if runAswerCardTestCase() {\n    // Test succeeded - no need for retries.\n    return;\n  }\n  \n  s.Log(\"\")\n  \n  if i \u003d\u003d retries - 1 {\n     s.Fatal(\"Failed to search: \", testCase.SearchKeyword)\n  } \n  \n  // Clear the input and try again.\n  kb.TypeKey(ctx, input.KEY_ESC)\n}\n\n```",
       "revId": "439f62ed5b362f157ced4a241de33793b4e3f995",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d5ae856_8db04f08",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/answer_cards.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1317950
+      },
+      "writtenOn": "2022-09-28T21:58:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4f55f742_ab0cd311",
+      "revId": "439f62ed5b362f157ced4a241de33793b4e3f995",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
