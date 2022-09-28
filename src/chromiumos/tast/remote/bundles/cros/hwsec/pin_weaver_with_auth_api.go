@@ -6,7 +6,6 @@ package hwsec
 
 import (
 	"context"
-	"regexp"
 	"sort"
 	"strings"
 	"time"
@@ -75,7 +74,7 @@ func init() {
 				useAuthFactor:         true,
 				useLegacyAddAPIForPin: false,
 			},
-		}
+		},
 		*/
 		},
 	})
@@ -101,6 +100,7 @@ func PINWeaverWithAuthAPI(ctx context.Context, s *testing.State) {
 	cmdRunner := hwsecremote.NewCmdRunner(s.DUT())
 	client := hwsec.NewCryptohomeClient(cmdRunner)
 	helper, err := hwsecremote.NewHelper(cmdRunner, s.DUT())
+	cryptohomeHelper := helper.CryptohomeClient()
 
 	if err != nil {
 		s.Fatal("Helper creation error: ", err)
@@ -212,6 +212,23 @@ func PINWeaverWithAuthAPI(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to run attemptWrongPIN with error: ", err)
 	}
 
+	// Check to make sure that PIN AuthFactor appears in StartAuthSessionReply.
+	reply, authSessionID, err := cryptohomeHelper.StartAuthSession(ctx, testUser1, false /*isEphemeral*/, uda.AuthIntent_AUTH_INTENT_DECRYPT)
+	if err != nil {
+		s.Fatal("Failed to start auth session: ", err)
+	}
+	defer cryptohomeHelper.InvalidateAuthSession(ctx, authSessionID)
+	// Search for PIN-based AuthFactor in reply.
+	hasPinAuthFactor := false
+	for _, authFactor := range reply.AuthFactors {
+		if authFactor.Type == uda.AuthFactorType_AUTH_FACTOR_TYPE_PIN {
+			hasPinAuthFactor = true
+		}
+	}
+	if !hasPinAuthFactor {
+		s.Fatal("PIN-based AuthFactor was not found in StartAuthSessionReply")
+	}
+
 	// Because Cr50 stores state in the firmware, that persists across reboots, this test
 	// needs to run before and after a reboot.
 	if err = helper.Reboot(ctx); err != nil {
@@ -230,6 +247,19 @@ func PINWeaverWithAuthAPI(ctx context.Context, s *testing.State) {
 
 	if err = ensurePINLockedOut(ctx, testUser1, client); err != nil {
 		s.Fatal("Failed to run ensurePINLockedOut with error: ", err)
+	}
+
+	// Check to make sure that PIN AuthFactor does not appear in StartAuthSessionReply.
+	reply, authSessionID, err = cryptohomeHelper.StartAuthSession(ctx, testUser1, false /*isEphemeral*/, uda.AuthIntent_AUTH_INTENT_DECRYPT)
+	if err != nil {
+		s.Fatal("Failed to start auth session: ", err)
+	}
+	defer cryptohomeHelper.InvalidateAuthSession(ctx, authSessionID)
+	// Search for PIN-based AuthFactor in reply.
+	for _, authFactor := range reply.AuthFactors {
+		if authFactor.Type == uda.AuthFactorType_AUTH_FACTOR_TYPE_PIN {
+			s.Fatal("PIN-based AuthFactor was found in StartAuthSessionReply")
+		}
 	}
 
 	/** Ensure that testUser2 can still use PIN **/
@@ -275,7 +305,7 @@ func setupUserWithPIN(ctx, ctxForCleanUp context.Context, userName string, cmdRu
 	cryptohomeHelper := helper.CryptohomeClient()
 
 	// Start an Auth session and get an authSessionID.
-	authSessionID, err := cryptohomeHelper.StartAuthSession(ctx, userName, false /*ephemeral*/, uda.AuthIntent_AUTH_INTENT_DECRYPT)
+	_, authSessionID, err := cryptohomeHelper.StartAuthSession(ctx, userName, false /*ephemeral*/, uda.AuthIntent_AUTH_INTENT_DECRYPT)
 	if err != nil {
 		return errors.Wrap(err, "failed to start auth session for PIN authentication")
 	}
@@ -334,7 +364,7 @@ func attemptWrongPIN(ctx, ctxForCleanUp context.Context, testUser string, r *hws
 	cryptohomeHelper := helper.CryptohomeClient()
 
 	// Authenticate a new auth session via the new added PIN auth factor.
-	authSessionID, err := cryptohomeHelper.StartAuthSession(ctx, testUser, false /*ephemeral*/, uda.AuthIntent_AUTH_INTENT_DECRYPT)
+	_, authSessionID, err := cryptohomeHelper.StartAuthSession(ctx, testUser, false /*ephemeral*/, uda.AuthIntent_AUTH_INTENT_DECRYPT)
 	if err != nil {
 		return errors.Wrap(err, "failed to start auth session for PIN authentication")
 	}
@@ -359,7 +389,7 @@ func authenticateWithCorrectPIN(ctx, ctxForCleanUp context.Context, testUser str
 	cryptohomeHelper := helper.CryptohomeClient()
 
 	// Authenticate a new auth session via the new added PIN auth factor.
-	authSessionID, err := cryptohomeHelper.StartAuthSession(ctx, testUser, false /*ephemeral*/, uda.AuthIntent_AUTH_INTENT_DECRYPT)
+	_, authSessionID, err := cryptohomeHelper.StartAuthSession(ctx, testUser, false /*ephemeral*/, uda.AuthIntent_AUTH_INTENT_DECRYPT)
 	if err != nil {
 		return errors.Wrap(err, "failed to start auth session for PIN authentication")
 	}
@@ -381,7 +411,7 @@ func authenticateWithCorrectPassword(ctx, ctxForCleanUp context.Context, testUse
 	cryptohomeHelper := helper.CryptohomeClient()
 
 	// Authenticate a new auth session via the new password auth factor and mount the user.
-	authSessionID, err := cryptohomeHelper.StartAuthSession(ctx, testUser, false /*ephemeral*/, uda.AuthIntent_AUTH_INTENT_DECRYPT)
+	_, authSessionID, err := cryptohomeHelper.StartAuthSession(ctx, testUser, false /*ephemeral*/, uda.AuthIntent_AUTH_INTENT_DECRYPT)
 	if err != nil {
 		return errors.Wrap(err, "failed to start auth session for password authentication")
 	}
@@ -437,17 +467,21 @@ func removeLeCredential(ctx, ctxForCleanUp context.Context, testUser string, r *
 }
 
 func ensurePINLockedOut(ctx context.Context, testUser string, cryptohomeClient *hwsec.CryptohomeClient) error {
-	output, err := cryptohomeClient.GetKeyData(ctx, testUser, authFactorLabelPIN)
+	output, err := cryptohomeClient.ListAuthFactors(ctx, testUser)
 	if err != nil {
-		return errors.Wrap(err, "failed to get key data")
+		return errors.Wrap(err, "failed to list auth factors")
 	}
-	exp := regexp.MustCompile("auth_locked: (true|false)\n")
-	m := exp.FindStringSubmatch(output)
-	if m == nil {
-		return errors.Wrap(err, "Auth locked could not parsed from key data: %s"+output)
-	}
-	if m[1] != "true" {
-		return errors.Wrap(err, "PIN marked not locked when it should have been")
+
+	// Search for PIN-based AuthFactor, and parse if it is locked out.
+	for _, authFactor := range output.ConfiguredAuthFactorsWithStatus {
+		if authFactor.AuthFactor.Type == uda.AuthFactorType_AUTH_FACTOR_TYPE_PIN {
+			for _, authIntent := range authFactor.AvailableForIntents {
+				if authIntent == uda.AuthIntent_AUTH_INTENT_DECRYPT {
+					return errors.Wrap(err, "PIN not locked when it should have been")
+				}
+			}
+			return nil
+		}
 	}
 	return nil
 }

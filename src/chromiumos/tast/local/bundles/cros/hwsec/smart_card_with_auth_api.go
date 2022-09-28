@@ -226,7 +226,7 @@ func setupUserWithSmartCard(ctx context.Context, testUser string, isEphemeral bo
 	cryptohome := hwsec.NewCryptohomeClient(cmdRunner)
 
 	// Start an Auth session and get an authSessionID.
-	authSessionID, err := cryptohome.StartAuthSession(ctx, testUser, isEphemeral, uda.AuthIntent_AUTH_INTENT_DECRYPT)
+	_, authSessionID, err := cryptohome.StartAuthSession(ctx, testUser, isEphemeral, uda.AuthIntent_AUTH_INTENT_DECRYPT)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to start auth session for Smart Card authentication")
 	}
@@ -278,7 +278,7 @@ func authenticateWithSmartCard(ctx context.Context, testUser string, userParam s
 	cmdRunner := hwseclocal.NewCmdRunner()
 	cryptohome := hwsec.NewCryptohomeClient(cmdRunner)
 	// Authenticate a new auth session via the new added Smart Card auth factor.
-	authSessionID, err := cryptohome.StartAuthSession(ctx, testUser /*isEphemeral=*/, false, uda.AuthIntent_AUTH_INTENT_DECRYPT)
+	_, authSessionID, err := cryptohome.StartAuthSession(ctx, testUser /*isEphemeral=*/, false, uda.AuthIntent_AUTH_INTENT_DECRYPT)
 	if err != nil {
 		return "", errors.Wrap(err, "failed to start auth session for Smart Card authentication")
 	}
