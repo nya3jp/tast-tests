@@ -49,7 +49,7 @@ func AddRemovePin(ctx context.Context, s *testing.State) {
 	client := hwsec.NewCryptohomeClient(cmdRunner)
 
 	// Create and mount the persistent user.
-	authSessionID, err := client.StartAuthSession(ctx, userName, false /*ephemeral*/, uda.AuthIntent_AUTH_INTENT_DECRYPT)
+	_, authSessionID, err := client.StartAuthSession(ctx, userName, false /*ephemeral*/, uda.AuthIntent_AUTH_INTENT_DECRYPT)
 	if err != nil {
 		s.Fatal("Failed to start auth session: ", err)
 	}
@@ -77,7 +77,7 @@ func AddRemovePin(ctx context.Context, s *testing.State) {
 		}
 
 		// Authenticate a new auth session via the new added pin auth factor and mount the user.
-		authSessionID, err = client.StartAuthSession(ctx, userName, false /*ephemeral*/, uda.AuthIntent_AUTH_INTENT_DECRYPT)
+		_, authSessionID, err = client.StartAuthSession(ctx, userName, false /*ephemeral*/, uda.AuthIntent_AUTH_INTENT_DECRYPT)
 		if err != nil {
 			return "", errors.Wrap(err, "failed to start auth session for re-mounting")
 		}
@@ -97,7 +97,7 @@ func AddRemovePin(ctx context.Context, s *testing.State) {
 
 	unlockWithPinAuthFactor := func() (string, error) {
 		// Authenticate a new auth session via the new added pin auth factor and mount the user.
-		authSessionID, err = client.StartAuthSession(ctx, userName, false /*ephemeral*/, uda.AuthIntent_AUTH_INTENT_VERIFY_ONLY)
+		_, authSessionID, err = client.StartAuthSession(ctx, userName, false /*ephemeral*/, uda.AuthIntent_AUTH_INTENT_VERIFY_ONLY)
 		if err != nil {
 			return "", errors.Wrap(err, "failed to start auth session for re-mounting")
 		}
@@ -133,7 +133,7 @@ func AddRemovePin(ctx context.Context, s *testing.State) {
 	}
 
 	// Unlock with pin fails.
-	authSessionID, err = client.StartAuthSession(ctx, userName, false /*ephemeral*/, uda.AuthIntent_AUTH_INTENT_VERIFY_ONLY)
+	_, authSessionID, err = client.StartAuthSession(ctx, userName, false /*ephemeral*/, uda.AuthIntent_AUTH_INTENT_VERIFY_ONLY)
 	if err != nil {
 		s.Fatal("Failed to start auth session: ", err)
 	}
@@ -151,7 +151,7 @@ func AddRemovePin(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to unmount vaults for re-mounting: ", err)
 	}
 	// Authentication with pin fails.
-	authSessionID, err = client.StartAuthSession(ctx, userName, false /*ephemeral*/, uda.AuthIntent_AUTH_INTENT_DECRYPT)
+	_, authSessionID, err = client.StartAuthSession(ctx, userName, false /*ephemeral*/, uda.AuthIntent_AUTH_INTENT_DECRYPT)
 	if err != nil {
 		s.Fatal("Failed to start auth session: ", err)
 	}
@@ -164,7 +164,7 @@ func AddRemovePin(ctx context.Context, s *testing.State) {
 	}
 
 	// Can add and successfully authenticate via pin.
-	authSessionID, err = client.StartAuthSession(ctx, userName, false /*ephemeral*/, uda.AuthIntent_AUTH_INTENT_DECRYPT)
+	_, authSessionID, err = client.StartAuthSession(ctx, userName, false /*ephemeral*/, uda.AuthIntent_AUTH_INTENT_DECRYPT)
 	if err != nil {
 		s.Fatal("Failed to start auth session: ", err)
 	}

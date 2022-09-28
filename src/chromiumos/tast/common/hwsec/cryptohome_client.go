@@ -37,10 +37,6 @@ var (
 	// Example: "/home/.shadow/118c4648065f5cd3660e17a53533ec7bc924d01f"
 	userHashRegexp = regexp.MustCompile("^/home/user/([[:xdigit:]]+)$")
 
-	// authSessionIDRegexp matches the auth session ID.
-	// It would match "auth_session_id:*"
-	authSessionIDRegexp = regexp.MustCompile(`(auth_session_id:)(.+)(\n)`)
-
 	// recoveryRequestRegexp matches the recovery request value.
 	// It would match "recovery_request:*"
 	recoveryRequestRegexp = regexp.MustCompile(`recovery_request:(.+)\n`)
@@ -373,7 +369,7 @@ func authConfigToExtraFlags(config *AuthConfig) []string {
 
 func (u *CryptohomeClient) createUserWithAuthSession(ctx context.Context, username, password, keyLabel string, isKioskUser bool) (string, error) {
 	// Start an Auth session and get an authSessionID.
-	authSessionID, err := u.StartAuthSession(ctx, username, false /*ephemeral*/, uda.AuthIntent_AUTH_INTENT_DECRYPT)
+	_, authSessionID, err := u.StartAuthSession(ctx, username, false /*ephemeral*/, uda.AuthIntent_AUTH_INTENT_DECRYPT)
 	if err != nil {
 		return "", errors.Wrap(err, "failed to start Auth session")
 	}
@@ -396,9 +392,32 @@ func (u *CryptohomeClient) createUserWithAuthSession(ctx context.Context, userna
 	return authSessionID, nil
 }
 
+func (u *CryptohomeClient) createUserWithAuthFactor(ctx context.Context, username, password, keyLabel string) (string, error) {
+	// Start an Auth session and get an authSessionID.
+	_, authSessionID, err := u.StartAuthSession(ctx, username, false /*ephemeral*/, uda.AuthIntent_AUTH_INTENT_DECRYPT)
+	if err != nil {
+		return "", errors.Wrap(err, "failed to start Auth session")
+	}
+
+	if err := u.AddAuthFactor(ctx, authSessionID, keyLabel, password); err != nil {
+		return "", errors.Wrap(err, "failed to add credentials with AuthSession")
+	}
+
+	if _, err := u.AuthenticateAuthFactor(ctx, authSessionID, keyLabel, password); err != nil {
+		return "", errors.Wrap(err, "failed to authenticate with AuthSession")
+	}
+
+	// This is a no-op for now since AddCredentials.. above will already create
+	// the user.
+	if err := u.CreatePersistentUser(ctx, authSessionID); err != nil {
+		return "", errors.Wrap(err, "failed to create persistent user")
+	}
+	return authSessionID, nil
+}
+
 func (u *CryptohomeClient) authenticateWithAuthSession(ctx context.Context, username, password, keyLabel string, isEphemeral, isKioskUser bool) (string, error) {
 	// Start an Auth session and get an authSessionID.
-	authSessionID, err := u.StartAuthSession(ctx, username, isEphemeral, uda.AuthIntent_AUTH_INTENT_DECRYPT)
+	_, authSessionID, err := u.StartAuthSession(ctx, username, isEphemeral, uda.AuthIntent_AUTH_INTENT_DECRYPT)
 	if err != nil {
 		return "", errors.Wrap(err, "failed to start Auth session")
 	}
@@ -410,6 +429,22 @@ func (u *CryptohomeClient) authenticateWithAuthSession(ctx context.Context, user
 		return "", errors.Wrap(err, "failed to authenticate with AuthSession")
 	}
 	testing.ContextLog(ctx, "User authenticated successfully")
+
+	return authSessionID, nil
+}
+
+func (u *CryptohomeClient) authenticateWithAuthFactor(ctx context.Context, username, password, keyLabel string, isEphemeral bool) (string, error) {
+	// Start an Auth session and get an authSessionID.
+	_, authSessionID, err := u.StartAuthSession(ctx, username, isEphemeral, uda.AuthIntent_AUTH_INTENT_DECRYPT)
+	if err != nil {
+		return "", errors.Wrap(err, "failed to start Auth session")
+	}
+
+	// Authenticate the same AuthSession using authSessionID.
+	// If we cannot authenticate, do not proceed with mount and unmount.
+	if _, err := u.AuthenticateAuthFactor(ctx, authSessionID, keyLabel, password); err != nil {
+		return "", errors.Wrap(err, "failed to authenticate with AuthSession")
+	}
 
 	return authSessionID, nil
 }
@@ -966,17 +1001,23 @@ func (u *CryptohomeClient) GetKeyData(ctx context.Context, user, keyLabel string
 }
 
 // StartAuthSession starts an AuthSession for a given user.
-func (u *CryptohomeClient) StartAuthSession(ctx context.Context, user string, isEphemeral bool, authIntent uda.AuthIntent) (string, error) {
+func (u *CryptohomeClient) StartAuthSession(ctx context.Context, user string, isEphemeral bool, authIntent uda.AuthIntent) (*uda.StartAuthSessionReply, string, error) {
+	reply := &uda.StartAuthSessionReply{}
 	binaryMsg, err := u.binary.startAuthSession(ctx, user, isEphemeral, authIntent)
 	if err != nil {
-		return "", err
+		return reply, "", err
 	}
 
-	m := authSessionIDRegexp.FindSubmatch(binaryMsg)
-	if m == nil {
-		return "", errors.Errorf("didn't find auth session in output %q", string(binaryMsg))
+	if err := proto.Unmarshal(binaryMsg, reply); err != nil {
+		return reply, "", err
 	}
-	return strings.TrimSpace(string(m[2])), nil
+
+	authSessionID := reply.AuthSessionId
+	if authSessionID == nil {
+		return reply, "", errors.New("didn't find auth session in output")
+	}
+
+	return reply, hex.EncodeToString(authSessionID), nil
 }
 
 // AuthenticateAuthSession authenticates an AuthSession with a given authSessionID.
