@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "c7a601b9_dd161e19",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2022-09-28T02:41:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4cd39666_8d717258",
+      "revId": "00d20588e8b521472aceaba6d3b11c8778f266e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "5d7521d0_fbe0451a",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -58,6 +76,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e55802a_f2a323be",
+        "filename": "src/chromiumos/tast/local/arc/gmscore/gmscore.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2022-09-28T02:41:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "835e14ea_00484a66",
+      "range": {
+        "startLine": 28,
+        "startChar": 5,
+        "endLine": 28,
+        "endChar": 30
+      },
+      "revId": "00d20588e8b521472aceaba6d3b11c8778f266e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ca7f4e75_ca5648a4",
@@ -71,6 +113,30 @@
       "writtenOn": "2022-09-28T02:17:13Z",
       "side": 1,
       "message": "to become ready",
+      "range": {
+        "startLine": 29,
+        "startChar": 72,
+        "endLine": 29,
+        "endChar": 74
+      },
+      "revId": "00d20588e8b521472aceaba6d3b11c8778f266e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ec57b47_e44c4d24",
+        "filename": "src/chromiumos/tast/local/arc/gmscore/gmscore.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2022-09-28T02:41:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ca7f4e75_ca5648a4",
       "range": {
         "startLine": 29,
         "startChar": 72,
@@ -104,6 +170,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b70f217_f78f1350",
+        "filename": "src/chromiumos/tast/local/arc/gmscore/gmscore.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2022-09-28T02:41:42Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9f28bec1_ef802643",
+      "range": {
+        "startLine": 41,
+        "startChar": 4,
+        "endLine": 41,
+        "endChar": 19
+      },
+      "revId": "00d20588e8b521472aceaba6d3b11c8778f266e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a8027950_69feb2bc",
@@ -121,6 +211,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5317db8f_394e2565",
+        "filename": "src/chromiumos/tast/local/arc/gmscore/gmscore.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2022-09-28T02:41:42Z",
+      "side": 1,
+      "message": "I eliminated this for better handling.",
+      "parentUuid": "a8027950_69feb2bc",
+      "revId": "00d20588e8b521472aceaba6d3b11c8778f266e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cb6a9e09_f416cf91",
@@ -134,6 +242,24 @@
       "writtenOn": "2022-09-28T02:17:13Z",
       "side": 1,
       "message": "Does it make sense to continue polling if this fails? Even if it fails with something other than NotFound? You might want to use PollBreak here to save time in case of failure.",
+      "revId": "00d20588e8b521472aceaba6d3b11c8778f266e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3aa48dc_d6aa7ec7",
+        "filename": "src/chromiumos/tast/local/arc/gmscore/gmscore.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2022-09-28T02:41:42Z",
+      "side": 1,
+      "message": "Yes, it might be not yet ready.",
+      "parentUuid": "cb6a9e09_f416cf91",
       "revId": "00d20588e8b521472aceaba6d3b11c8778f266e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
