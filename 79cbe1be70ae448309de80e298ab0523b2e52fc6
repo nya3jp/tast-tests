@@ -16,6 +16,46 @@
       "message": "Moving myself to cc until Matthew\u0027s review is completed, please reassign me when ready",
       "revId": "79cbe1be70ae448309de80e298ab0523b2e52fc6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "95640123_d00405b0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-09-28T19:00:32Z",
+      "side": 1,
+      "message": "lgtm",
+      "revId": "79cbe1be70ae448309de80e298ab0523b2e52fc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2751fe2_bd8dd7ba",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/fgsec_wpa_change.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-09-28T19:00:32Z",
+      "side": 1,
+      "message": "nit: no longer just upgraded",
+      "range": {
+        "startLine": 26,
+        "startChar": 44,
+        "endLine": 26,
+        "endChar": 52
+      },
+      "revId": "79cbe1be70ae448309de80e298ab0523b2e52fc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
