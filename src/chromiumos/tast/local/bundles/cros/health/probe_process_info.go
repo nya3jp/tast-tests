@@ -6,6 +6,7 @@ package health
 
 import (
 	"context"
+	"strconv"
 	"time"
 
 	"github.com/shirou/gopsutil/v3/process"
@@ -38,6 +39,18 @@ type processInfo struct {
 	UptimeTicks           jsontypes.Uint64 `json:"uptime_ticks"`
 	UserID                jsontypes.Uint32 `json:"user_id"`
 	WriteSystemCalls      jsontypes.Uint64 `json:"write_system_calls"`
+}
+
+// ProbeError includes a msg and a type. Possible values of type can be found here:
+// http://cs/chromeos_public/src/platform2/diagnostics/mojom/public/cros_healthd_probe.mojom
+type probeError struct {
+	Msg       string `json:"msg"`
+	ErrorType string `json:"type"`
+}
+
+type multipleProcessInfo struct {
+	Errors       map[jsontypes.Uint32]probeError `json:"errors"`
+	ProcessInfos map[string]*processInfo         `json:"process_infos"`
 }
 
 func init() {
@@ -96,9 +109,39 @@ func validateSingleProcessInfo(ctx context.Context, outDir string) error {
 	return nil
 }
 
+// validateMultipleProcessInfo tests that multiple process info with pid=1 (init) and pid=2 (kthreadd) can be successfully and correctly fetched.
+func validateMultipleProcessInfo(ctx context.Context, outDir string) error {
+	testingPids := []int{1, 2}
+	params := croshealthd.TelemParams{PIDs: testingPids}
+	var info multipleProcessInfo
+	if err := croshealthd.RunAndParseJSONTelem(ctx, params, outDir, &info); err != nil {
+		return errors.Wrap(err, "failed to get process telemetry info")
+	}
+
+	for _, pid := range testingPids {
+		pHealthd, ok := info.ProcessInfos[strconv.Itoa(pid)]
+		if !ok {
+			return errors.Errorf("process with pid=%v is not captured by healthd", pid)
+		}
+
+		pSystem, err := process.NewProcess(int32(pid))
+		if err != nil {
+			return errors.Wrapf(err, "process with pid=%v does not exist", pid)
+		}
+
+		if err := validateProcessInfo(pHealthd, pSystem); err != nil {
+			return errors.Wrapf(err, "failed to validate process (pid=%v) info data", pid)
+		}
+	}
+	return nil
+}
+
 // ProbeProcessInfo tests that different processes can be successfully and correctly fetched.
 func ProbeProcessInfo(ctx context.Context, s *testing.State) {
 	if err := validateSingleProcessInfo(ctx, s.OutDir()); err != nil {
 		s.Fatal("Failed to validate single process data: ", err)
+	}
+	if err := validateMultipleProcessInfo(ctx, s.OutDir()); err != nil {
+		s.Fatal("Failed to validate multiple process data: ", err)
 	}
 }
