@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "86e70ab8_06c91f6d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-09-28T16:04:43Z",
+      "side": 1,
+      "message": "LGTM, you\u0027ll also need approval from tast-owners@ to merge :)",
+      "revId": "fe361e659ae588c255c6f53f8e05a82feb208b32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f952e68f_75cfaf6c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/print_to_pdf.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-09-28T16:04:43Z",
+      "side": 1,
+      "message": "nit: move closer to use :)",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 31
+      },
+      "revId": "fe361e659ae588c255c6f53f8e05a82feb208b32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
