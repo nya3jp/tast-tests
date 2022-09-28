@@ -18,6 +18,69 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bdf7f6fc_b77425b2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-09-28T07:37:48Z",
+      "side": 1,
+      "message": "+1 to Jie\u0027s comments.\nPlease create a follow up CL where you change `Pin` in function and variable names to `PIN`, and `pin` in comments and error messages to `PIN`. For the function, I think it is better to do the Pin -\u003e PIN change in this CL, as you already modifying the test names by adding parameters.",
+      "revId": "c0cb00de12caf97d8f3d8e4263b785b408f3de3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e72eb97a_1e37c3c5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/add_remove_pin.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-09-28T07:37:48Z",
+      "side": 1,
+      "message": "nit: `AddRemovePIN`",
+      "range": {
+        "startLine": 22,
+        "startChar": 8,
+        "endLine": 22,
+        "endChar": 20
+      },
+      "revId": "c0cb00de12caf97d8f3d8e4263b785b408f3de3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2fc14b6e_a845c4fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/add_remove_pin.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-09-28T07:37:48Z",
+      "side": 1,
+      "message": "I would prefer if the new test case is added as informational.",
+      "range": {
+        "startLine": 34,
+        "startChar": 3,
+        "endLine": 34,
+        "endChar": 19
+      },
+      "revId": "c0cb00de12caf97d8f3d8e4263b785b408f3de3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bf2bf496_1adf3cc0",
