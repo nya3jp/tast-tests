@@ -41,6 +41,10 @@ var (
 	// It would match "auth_session_id:*"
 	authSessionIDRegexp = regexp.MustCompile(`(auth_session_id:)(.+)(\n)`)
 
+	// authIntentsIDRegexp finds if
+	// It would match "auth_session_id:*"
+	authFactorPINRegexp = regexp.MustCompile(`(type: AUTH_FACTOR_TYPE_PIN)(\n)`)
+
 	// recoveryRequestRegexp matches the recovery request value.
 	// It would match "recovery_request:*"
 	recoveryRequestRegexp = regexp.MustCompile(`recovery_request:(.+)\n`)
@@ -977,6 +981,33 @@ func (u *CryptohomeClient) StartAuthSession(ctx context.Context, user string, is
 		return "", errors.Errorf("didn't find auth session in output %q", string(binaryMsg))
 	}
 	return strings.TrimSpace(string(m[2])), nil
+}
+
+// StartAuthSessionAndCheckForPIN starts an AuthSession for a given user, checks for the presence of PIN AuthFactor in reply.
+func (u *CryptohomeClient) StartAuthSessionAndCheckForPIN(ctx context.Context, user string, isEphemeral bool, authIntent uda.AuthIntent) (string, bool, error) {
+	binaryMsg, err := u.binary.startAuthSession(ctx, user, isEphemeral, authIntent)
+	if err != nil {
+		return "", false, err
+	}
+
+	authSessionID := authSessionIDRegexp.FindSubmatch(binaryMsg)
+	if authSessionID == nil {
+		return "", false, errors.Errorf("didn't find auth session in output %q", string(binaryMsg))
+	}
+
+	reply := &uda.StartAuthSessionReply{}
+	if err := proto.Unmarshal(binaryMsg, reply); err != nil {
+		return strings.TrimSpace(string(authSessionID[2])), false, nil
+	}
+
+	// Search for PIN-based AuthFactor, if it is appears in StartAuthFactorReply
+	for _, authFactor := range reply.AuthFactors {
+		if authFactor.Type == uda.AuthFactorType_AUTH_FACTOR_TYPE_PIN {
+			return strings.TrimSpace(string(authSessionID[2])), true, nil
+		}
+	}
+
+	return strings.TrimSpace(string(authSessionID[2])), false, nil
 }
 
 // AuthenticateAuthSession authenticates an AuthSession with a given authSessionID.
