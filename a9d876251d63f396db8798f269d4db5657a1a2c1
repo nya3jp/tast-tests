@@ -52,6 +52,24 @@
       "parentUuid": "18277c96_45241087",
       "revId": "a9d876251d63f396db8798f269d4db5657a1a2c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c33624d_dacb6dd9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-09-28T05:20:00Z",
+      "side": 1,
+      "message": "A good point. That\u0027s what I would like to see after checking this test in and soaking for at least one milestone.\n\nIf it runs into that situation for a while and likely gets disabled by the policy, I\u0027ll be able to follow up and let the stateful-lacros test skipped. (avoiding this initial check-in getting too big)",
+      "parentUuid": "256922a4_b66d9eb8",
+      "revId": "a9d876251d63f396db8798f269d4db5657a1a2c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
