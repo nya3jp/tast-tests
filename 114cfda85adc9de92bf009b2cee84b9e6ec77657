@@ -20,6 +20,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0aaa06ca_bfec5137",
+        "filename": "src/chromiumos/tast/local/demomode/fixture/fixture.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1519467
+      },
+      "writtenOn": "2022-09-28T19:06:52Z",
+      "side": 1,
+      "message": "I encountered issue here about \"mkdir /etc/opt: read-only file system\". This is after I flash the latest dev image (it worked before flashing).\n\nHow about using fakedms instead? (Search \"chrome.DMSPolicy\" for examples)",
+      "revId": "114cfda85adc9de92bf009b2cee84b9e6ec77657",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "80831988_c34d0c9e",
         "filename": "src/chromiumos/tast/local/demomode/fixture/fixture.go",
         "patchSetId": 6
