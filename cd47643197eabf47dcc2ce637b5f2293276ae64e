@@ -51,6 +51,23 @@
       "message": "This looks OK as a tast-owner but I\u0027m not familiar with the context.",
       "revId": "cd47643197eabf47dcc2ce637b5f2293276ae64e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee0fc800_27b9d631",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-09-28T19:20:44Z",
+      "side": 1,
+      "message": "LGTM.",
+      "revId": "cd47643197eabf47dcc2ce637b5f2293276ae64e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
