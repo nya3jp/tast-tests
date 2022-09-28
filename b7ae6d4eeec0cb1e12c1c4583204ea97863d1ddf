@@ -22,6 +22,30 @@
       },
       "revId": "b7ae6d4eeec0cb1e12c1c4583204ea97863d1ddf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "48fb9ddc_46904dbb",
+        "filename": "src/chromiumos/tast/local/demomode/fixture/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1465072
+      },
+      "writtenOn": "2022-09-28T05:35:33Z",
+      "side": 1,
+      "message": "Fixed. Issue was the DeveloperToolsAvailability policy.",
+      "parentUuid": "c5f229be_6e1ff99a",
+      "range": {
+        "startLine": 196,
+        "startChar": 1,
+        "endLine": 199,
+        "endChar": 2
+      },
+      "revId": "b7ae6d4eeec0cb1e12c1c4583204ea97863d1ddf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
