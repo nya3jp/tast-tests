@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a199c0e_9d28dcea",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1427116
+      },
+      "writtenOn": "2022-09-28T20:27:05Z",
+      "side": 1,
+      "message": "I changed some behavior in the tests to make sure the test flow works as expected. Please take a look. Thanks!",
+      "revId": "02c616ab268a2cb9b6cf2cb1b870e6e484811f0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "608e7a74_052328f2",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1191,
+      "author": {
+        "id": 1427116
+      },
+      "writtenOn": "2022-09-28T20:27:05Z",
+      "side": 1,
+      "message": "This is changed because according to https://source.chromium.org/chromium/chromium/src/+/main:ash/shelf/home_to_overview_nudge_controller.cc;l\u003d220, when swiping up in homecher in tablet mode, the overview nudge will animate for 6.6 seconds in total (0.6 + 5 * 0.6 * 2). Update to 7 seconds to make sure it becomes stable.",
+      "revId": "02c616ab268a2cb9b6cf2cb1b870e6e484811f0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
