@@ -140,6 +140,24 @@
       "parentUuid": "bdcec0d6_5736d492",
       "revId": "cd79036cdacbc45fa8c793093cab27be27dc4cf0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "623ba491_a93edf74",
+        "filename": "src/chromiumos/tast/remote/firmware/power/dut_power.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2022-09-28T22:26:11Z",
+      "side": 1,
+      "message": "Do you mean returning all results from all files? I.e. make the results from the onboard sensors it\u0027s own map, and a separate map for the EC results? I think that would be a good idea. It would make things a bit more flexible and each individual test could determine which results they want to prioritize.",
+      "parentUuid": "10a029b5_137b2b65",
+      "revId": "cd79036cdacbc45fa8c793093cab27be27dc4cf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
