@@ -107,7 +107,7 @@ func AddRemoveFactorsEphemeral(ctx context.Context, s *testing.State) {
 	}
 
 	// Create and mount the ephemeral user.
-	authSessionID, err := client.StartAuthSession(ctx, userName /*ephemeral=*/, true, uda.AuthIntent_AUTH_INTENT_VERIFY_ONLY)
+	_, authSessionID, err := client.StartAuthSession(ctx, userName /*ephemeral=*/, true, uda.AuthIntent_AUTH_INTENT_VERIFY_ONLY)
 	if err != nil {
 		s.Fatal("Failed to start auth session: ", err)
 	}
