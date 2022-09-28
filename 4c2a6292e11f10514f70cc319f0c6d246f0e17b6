@@ -231,6 +231,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4faa74c4_2aee2a6d",
+        "filename": "android/ArcRandomUIElementsApp/res/layout/layout.xml",
+        "patchSetId": 8
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1553967
+      },
+      "writtenOn": "2022-09-28T08:10:51Z",
+      "side": 1,
+      "message": "The copyright and the number of characters in one line weren\u0027t checked when I presubmitted, could you file a bug for me? Thank you!",
+      "parentUuid": "f63232fc_2e1fbca6",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 131
+      },
+      "revId": "4c2a6292e11f10514f70cc319f0c6d246f0e17b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d756344e_6593dfbd",
         "filename": "android/ArcRandomUIElementsApp/src/org/chromium/arc/testapp/randomuielements/RandomUIElementsActivity.java",
         "patchSetId": 8
