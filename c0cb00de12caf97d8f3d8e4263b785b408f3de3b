@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "53674cf8_05944b8d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/add_remove_pin.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-09-28T18:30:17Z",
+      "side": 1,
+      "message": "tbh, i think either way is fine. PIN is common enough these days, where I think people have forgotten that its infact an abbreviation. \n\nhaving said that, I\u0027ve made the change for this test.",
+      "parentUuid": "e72eb97a_1e37c3c5",
+      "range": {
+        "startLine": 22,
+        "startChar": 8,
+        "endLine": 22,
+        "endChar": 20
+      },
+      "revId": "c0cb00de12caf97d8f3d8e4263b785b408f3de3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2fc14b6e_a845c4fd",
@@ -71,6 +95,30 @@
       "writtenOn": "2022-09-28T07:37:48Z",
       "side": 1,
       "message": "I would prefer if the new test case is added as informational.",
+      "range": {
+        "startLine": 34,
+        "startChar": 3,
+        "endLine": 34,
+        "endChar": 19
+      },
+      "revId": "c0cb00de12caf97d8f3d8e4263b785b408f3de3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "82f6e0c7_4965ff7e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/add_remove_pin.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-09-28T18:30:17Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2fc14b6e_a845c4fd",
       "range": {
         "startLine": 34,
         "startChar": 3,
@@ -104,6 +152,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "086bf11f_13e0150a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/add_remove_pin.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-09-28T18:30:17Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "bf2bf496_1adf3cc0",
+      "range": {
+        "startLine": 87,
+        "startChar": 9,
+        "endLine": 87,
+        "endChar": 30
+      },
+      "revId": "c0cb00de12caf97d8f3d8e4263b785b408f3de3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "12986244_41ab95be",
@@ -127,6 +199,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7467002d_14e97da2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/add_remove_pin.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-09-28T18:30:17Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "12986244_41ab95be",
+      "range": {
+        "startLine": 105,
+        "startChar": 9,
+        "endLine": 105,
+        "endChar": 30
+      },
+      "revId": "c0cb00de12caf97d8f3d8e4263b785b408f3de3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7b321e39_40a82660",
@@ -140,6 +236,30 @@
       "writtenOn": "2022-09-28T06:48:07Z",
       "side": 1,
       "message": "nit: typo?",
+      "range": {
+        "startLine": 124,
+        "startChar": 11,
+        "endLine": 124,
+        "endChar": 33
+      },
+      "revId": "c0cb00de12caf97d8f3d8e4263b785b408f3de3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "111f29e9_6a461a32",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/add_remove_pin.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-09-28T18:30:17Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7b321e39_40a82660",
       "range": {
         "startLine": 124,
         "startChar": 11,
