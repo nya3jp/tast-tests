@@ -105,6 +105,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd566675_65aba8ba",
+        "filename": "android/ArcRandomElementsApp/BUILD.gn",
+        "patchSetId": 5
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1553967
+      },
+      "writtenOn": "2022-09-28T02:55:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b6628788_06713a3e",
+      "revId": "5111ce3b7493c52a4192e9b6ac96fee86dd3c986",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b5afacc8_e88e5188",
@@ -154,6 +172,24 @@
       "side": 1,
       "message": "Found a layout may suitable for our cases: https://developer.android.com/develop/ui/views/layout/constraint-layout",
       "parentUuid": "61c8bfea_4fe569b8",
+      "revId": "5111ce3b7493c52a4192e9b6ac96fee86dd3c986",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d630a08_afce6b11",
+        "filename": "android/ArcRandomElementsApp/res/layout/layout.xml",
+        "patchSetId": 5
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1553967
+      },
+      "writtenOn": "2022-09-28T02:55:47Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "cfbe88e4_0672dd05",
       "revId": "5111ce3b7493c52a4192e9b6ac96fee86dd3c986",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
