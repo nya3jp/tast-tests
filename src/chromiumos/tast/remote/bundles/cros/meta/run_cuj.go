@@ -275,7 +275,7 @@ func RunCUJ(ctx context.Context, s *testing.State) {
 
 		if stdout, _, err := tastrun.Exec(ctx, s, "run", flags, param.tests); err != nil {
 			lines := strings.Split(strings.TrimSpace(string(stdout)), "\n")
-			s.Fatalf("Failed to run tast: %v (last line: %q)", err, lines[len(lines)-1])
+			s.Errorf("Failed to run tast: %v (last line: %q)", err, lines[len(lines)-1])
 		}
 
 		results, err := tastrun.ParseResultsJSON(resultsDir)
