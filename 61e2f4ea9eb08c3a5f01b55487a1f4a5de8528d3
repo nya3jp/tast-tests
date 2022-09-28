@@ -16,6 +16,40 @@
       "message": "Hello Kyle and Jared, whenever y\u0027all have a moment could you take a look at this change? Thank you for your help!",
       "revId": "61e2f4ea9eb08c3a5f01b55487a1f4a5de8528d3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8564f5d3_87028f17",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-09-28T22:20:14Z",
+      "side": 1,
+      "message": "Overall looks like a good change, just one small thing to cleanup",
+      "revId": "61e2f4ea9eb08c3a5f01b55487a1f4a5de8528d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d79621c_49417e77",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/bt_test_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-09-28T22:20:14Z",
+      "side": 1,
+      "message": "Since this will no longer be managing chrome, also remove `cr` from the struct.",
+      "revId": "61e2f4ea9eb08c3a5f01b55487a1f4a5de8528d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
