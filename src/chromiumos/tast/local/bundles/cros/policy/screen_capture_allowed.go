@@ -117,16 +117,19 @@ func ScreenCaptureAllowed(ctx context.Context, s *testing.State) {
 						s.Fatal("Failed to create Test API connection: ", err)
 					}
 
-					desktopMediaSourceView := nodewith.ClassName("DesktopMediaSourceView").First()
+					mediaPicker := nodewith.Role(role.Window).ClassName("DesktopMediaPickerDialogView")
+					screenTab := nodewith.Name("Entire Screen").ClassName("Tab").Ancestor(mediaPicker)
+					shareTarget := nodewith.ClassName("DesktopMediaSourceView").First()
 					shareButton := nodewith.Name("Share").Role(role.Button)
 
 					ui := uiauto.New(tconn)
 
-					// Click on Desktop media source and then click on Share button.
+					// Click on "Entire Screen" tab, then on the desktop media source view, and then
+					// click on Share button.
 					if err := uiauto.Combine("Select media source",
-						ui.WaitUntilExists(desktopMediaSourceView),
-						ui.WaitUntilExists(shareButton),
-						ui.LeftClick(desktopMediaSourceView),
+						ui.WaitUntilExists(mediaPicker),
+						ui.LeftClick(screenTab),
+						ui.LeftClick(shareTarget),
 						ui.LeftClick(shareButton),
 					)(uiCtx); err != nil {
 						s.Fatal("Failed to select media source: ", err)
@@ -137,14 +140,14 @@ func ScreenCaptureAllowed(ctx context.Context, s *testing.State) {
 			// Check that getDisplayMedia() permissions are correctly allowed or denied.
 			actual := false
 			if err := conn.Eval(uiCtx, `navigator.mediaDevices.getDisplayMedia()
-				.then(() => true)
-				.catch((err) => {
-					if (err instanceof DOMException && err.message == "Permission denied") {
-						return false;
-					}
-					throw  err;
-				})
-			`, &actual); err != nil {
+                                .then(() => true)
+                                .catch((err) => {
+                                        if (err instanceof DOMException && err.message == "Permission denied") {
+                                                return false;
+                                        }
+                                        throw  err;
+                                })
+                        `, &actual); err != nil {
 				s.Fatal("Could not request for display media: ", err)
 			}
 
