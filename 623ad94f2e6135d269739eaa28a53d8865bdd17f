@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b660fec6_e0b5e537",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/answer_cards.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-09-28T22:08:23Z",
+      "side": 1,
+      "message": "I guess we could also put this after the for loop, but I\u0027m fine either way",
+      "revId": "623ad94f2e6135d269739eaa28a53d8865bdd17f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
