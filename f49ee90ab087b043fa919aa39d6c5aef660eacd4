@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4eadbc2f_22af7908",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-09-28T22:04:02Z",
+      "side": 1,
+      "message": "lgtm, I think the two tests look pretty similar right now, but once we add the D-Bus interaction, they should be sufficiently different.",
+      "revId": "f49ee90ab087b043fa919aa39d6c5aef660eacd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5fc8d200_6defecbc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/fgsec_multi_connect.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-09-28T22:04:02Z",
+      "side": 1,
+      "message": "After this step, can we check the expected security?",
+      "revId": "f49ee90ab087b043fa919aa39d6c5aef660eacd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
