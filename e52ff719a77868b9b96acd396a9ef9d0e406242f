@@ -16,6 +16,46 @@
       "message": "Thanks for reviewing.",
       "revId": "e52ff719a77868b9b96acd396a9ef9d0e406242f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "395d7243_45858432",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-09-28T12:07:20Z",
+      "side": 1,
+      "message": "Waiting for a review from Xiqi",
+      "revId": "e52ff719a77868b9b96acd396a9ef9d0e406242f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28949d07_bd411e75",
+        "filename": "src/chromiumos/tast/local/chrome/projector/projector.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-09-28T12:07:20Z",
+      "side": 1,
+      "message": "Can the URL not be set directly? If not, add a comment.",
+      "range": {
+        "startLine": 237,
+        "startChar": 30,
+        "endLine": 237,
+        "endChar": 41
+      },
+      "revId": "e52ff719a77868b9b96acd396a9ef9d0e406242f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
