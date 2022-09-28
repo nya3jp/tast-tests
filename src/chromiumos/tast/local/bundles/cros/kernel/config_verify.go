@@ -162,6 +162,8 @@ func newKernelConfigCheck(ver *sysutil.KernelVersion, arch string) *kernelConfig
 
 		// Binary formats.
 		"BINFMT_ELF",
+		"BINFMT_SCRIPT",
+		"BINFMT_MISC",
 
 		// Filesystem formats.
 		"DEBUG_FS",
@@ -169,6 +171,9 @@ func newKernelConfigCheck(ver *sysutil.KernelVersion, arch string) *kernelConfig
 		"EXT4_FS",
 		"PROC_FS",
 		"SCSI_PROC_FS",
+		"SND_PROC_FS",
+		"USB_CONFIGFS_F_FS",
+		"ESD_FS",
 
 		// Partition formats.
 		"EFI_PARTITION",
@@ -183,6 +188,14 @@ func newKernelConfigCheck(ver *sysutil.KernelVersion, arch string) *kernelConfig
 		// CONFIG_SHUFFLE_PAGE_ALLOCATOR=y (since v5.2)
 
 		// CONFIG_INIT_ON_ALLOC_DEFAULT_ON=y (since v5.3)
+
+		"HARDENED_USERCOPY",
+
+		// Security; make sure usermode helper is our tool for linux-4.4+.
+		"STATIC_USERMODEHELPER",
+
+		// Security; prevent overflows that can be checked at compile-time.
+		"FORTIFY_SOURCE",
 	}
 	module := []string{
 		// Validity checks; should be present in builds as modules.
@@ -198,10 +211,15 @@ func newKernelConfigCheck(ver *sysutil.KernelVersion, arch string) *kernelConfig
 		"ISO9660_FS",
 		"UDF_FS",
 		"VFAT_FS",
+		"NFS_FS",
+		"USB_F_FS",
+
+		"TEST_ASYNC_DRIVER_PROBE",
 	}
 	enabled := []string{
 		// Either module or enabled, depending on platform.
 		"VIDEO_V4L2",
+		"CONFIGFS_FS",
 	}
 	value := map[string]string{
 		// Security; NULL-address hole should be as large as possible.
@@ -219,6 +237,9 @@ func newKernelConfigCheck(ver *sysutil.KernelVersion, arch string) *kernelConfig
 		// The default should match the verified-mode choice we make in
 		// src/platform2/init/cros_sysrq_init.cc.
 		"MAGIC_SYSRQ_DEFAULT_ENABLE": "0x1000",
+
+		// Security; make sure usermode helper is our tool for linux-4.4+.
+		"STATIC_USERMODEHELPER_PATH": "/sbin/usermode-helper",
 	}
 	var same [][2]string
 	optional := []string{
@@ -265,40 +286,12 @@ func newKernelConfigCheck(ver *sysutil.KernelVersion, arch string) *kernelConfig
 		// Validity checks (partition); one disabled, one does not exist.
 		"LDM_PARTITION",
 		"IMPOSSIBLE_PARTITION",
-	}
 
-	if ver.IsOrLater(3, 10) {
-		builtin = append(builtin, "BINFMT_SCRIPT")
-	}
-
-	if ver.IsOrLater(3, 14) {
-		builtin = append(builtin, "BINFMT_SCRIPT", "BINFMT_MISC")
-		builtin = append(builtin, "HARDENED_USERCOPY")
-		module = append(module, "TEST_ASYNC_DRIVER_PROBE", "NFS_FS")
-	} else {
-		// Assists heap memory attacks; best to keep interface disabled.
-		missing = append(missing, "INET_DIAG")
-	}
-
-	if ver.IsOrLater(3, 18) {
-		builtin = append(builtin, "SND_PROC_FS", "USB_CONFIGFS_F_FS", "ESD_FS")
-		module = append(module, "USB_F_FS")
-		enabled = append(enabled, "CONFIGFS_FS")
 		// Like FW_LOADER_USER_HELPER, these may be exploited by userspace.
 		// We run udev everywhere which uses netlink sockets for event
 		// propagation rather than executing programs, so don't need this.
-		missing = append(missing, "UEVENT_HELPER", "UEVENT_HELPER_PATH")
-	}
-
-	if ver.IsOrLater(4, 4) {
-		// Security; make sure usermode helper is our tool for linux-4.4+.
-		builtin = append(builtin, "STATIC_USERMODEHELPER")
-		value["STATIC_USERMODEHELPER_PATH"] = `"/sbin/usermode-helper"`
-		// Security; prevent overflows that can be checked at compile-time.
-		builtin = append(builtin, "FORTIFY_SOURCE")
-	} else {
-		// For kernels older than linux-4.4.
-		builtin = append(builtin, "EXT4_USE_FOR_EXT23")
+		"UEVENT_HELPER",
+		"UEVENT_HELPER_PATH",
 	}
 
 	if arch == "aarch64" && ver.IsOrLater(4, 10) {
@@ -393,9 +386,7 @@ func newKernelConfigCheck(ver *sysutil.KernelVersion, arch string) *kernelConfig
 		// builtin = append(builtin, "RANDOMIZE_MEMORY")
 
 		// Retpoline is a Spectre v2 mitigation.
-		if ver.IsOrLater(3, 18) {
-			builtin = append(builtin, "RETPOLINE")
-		}
+		builtin = append(builtin, "RETPOLINE")
 		// Dangerous; disables VDSO ASLR.
 		missing = append(missing, "COMPAT_VDSO")
 	}
