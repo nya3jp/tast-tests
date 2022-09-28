@@ -71,6 +71,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "35735410_be8f6de4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-09-28T05:23:01Z",
+      "side": 1,
+      "message": "Let\u0027s explicitly wait for the title to appear then. Otherwise we\u0027ll have flakes.",
+      "revId": "f81156c25e7d5761a6ff2c5e99fa08fb5df556ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a1bf9381_bf72b60a",
         "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
         "patchSetId": 10
