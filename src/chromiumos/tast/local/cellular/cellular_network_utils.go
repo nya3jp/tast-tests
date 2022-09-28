@@ -26,11 +26,11 @@ func verifyCrostiniIPv4Ping(ctx context.Context, cmd func(context.Context, ...st
 	testing.ContextLog(ctx, "Verify IPv4 connectivity")
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		if err := cmd(ctx, "/bin/ping", "-c1", "-w1", googleDotComIPv4).Run(); err != nil {
-			return errors.Wrap(err, "failed ipv4 ping test in Crostini")
+			return errors.Wrapf(err, "failed to ping %s in Crostini", googleDotComIPv4)
 		}
 		return nil
 	}, &testing.PollOptions{Timeout: pingTimeout}); err != nil {
-		return errors.Wrap(err, "failed ipv4 ping test in Crostini")
+		return errors.Wrapf(err, "failed to ping %s in Crostini", googleDotComIPv4)
 	}
 	return nil
 }
@@ -39,11 +39,11 @@ func verifyCrostiniIPv6Ping(ctx context.Context, cmd func(context.Context, ...st
 	testing.ContextLog(ctx, "Verify IPv6 connectivity")
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		if err := cmd(ctx, "/bin/ping6", "-c1", "-w1", googleDotComIPv6).Run(); err != nil {
-			return errors.Wrap(err, "failed ipv6 ping test in Crostini")
+			return errors.Wrapf(err, "failed to ping %s in Crostini", googleDotComIPv6)
 		}
 		return nil
 	}, &testing.PollOptions{Timeout: pingTimeout}); err != nil {
-		return errors.Wrap(err, "failed ipv6 ping test in Crostini")
+		return errors.Wrapf(err, "failed to ping %s in Crostini", googleDotComIPv6)
 	}
 	return nil
 }
@@ -67,11 +67,11 @@ func verifyIPv4Ping(ctx context.Context, cmd func(context.Context, string, ...st
 	testing.ContextLog(ctx, "Verify IPv4 connectivity")
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		if err := cmd(ctx, filepath.Join(bindir, "ping"), "-c1", "-w1", googleDotComIPv4).Run(); err != nil {
-			return errors.Wrap(err, "failed ipv4 ping test")
+			return errors.Wrapf(err, "failed to ping %s", googleDotComIPv4)
 		}
 		return nil
 	}, &testing.PollOptions{Timeout: pingTimeout}); err != nil {
-		return errors.Wrap(err, "failed ipv4 ping test")
+		return errors.Wrapf(err, "failed to ping %s", googleDotComIPv4)
 	}
 	return nil
 }
@@ -80,11 +80,11 @@ func verifyIPv6Ping(ctx context.Context, cmd func(context.Context, string, ...st
 	testing.ContextLog(ctx, "Verify IPv6 connectivity")
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		if err := cmd(ctx, filepath.Join(bindir, "ping6"), "-c1", "-w1", googleDotComIPv6).Run(); err != nil {
-			return errors.Wrap(err, "failed ipv6 ping test")
+			return errors.Wrapf(err, "failed to ping %s", googleDotComIPv6)
 		}
 		return nil
 	}, &testing.PollOptions{Timeout: pingTimeout}); err != nil {
-		return errors.Wrap(err, "failed ipv6 ping test")
+		return errors.Wrapf(err, "failed to ping %s", googleDotComIPv6)
 	}
 	return nil
 }
