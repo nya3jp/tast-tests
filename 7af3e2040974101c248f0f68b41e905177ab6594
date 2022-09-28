@@ -16,6 +16,29 @@
       "message": "LGTM, need someone to +2 as I am in shadowing group",
       "revId": "7af3e2040974101c248f0f68b41e905177ab6594",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46c6e000_ef72275a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/choose_to_share_page_url_or_not.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-09-28T21:22:13Z",
+      "side": 1,
+      "message": "Can we replace params with a table-driven test? See https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Table_driven-tests",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 5
+      },
+      "revId": "7af3e2040974101c248f0f68b41e905177ab6594",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
