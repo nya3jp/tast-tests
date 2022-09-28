@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "31717a83_19366539",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-09-28T17:58:08Z",
+      "side": 1,
+      "message": "I will leave it to the expert to determine this one. However, I think you add add Jorge and Jeff to all CLs the chain, and CC them on the use flag changes. Thanks.",
+      "revId": "c0eb3270d5fcb900a6d2b13df071d368b9a51787",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
