@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "428e267a_1c701fd6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-09-28T12:49:05Z",
+      "side": 1,
+      "message": "LGTM % comment",
+      "revId": "6f69aeadaeff764eef5c12454cede5a1d86be20f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "339cab53_ade30d28",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_sensor_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-09-28T12:49:05Z",
+      "side": 1,
+      "message": "update error message",
+      "range": {
+        "startLine": 98,
+        "startChar": 33,
+        "endLine": 98,
+        "endChar": 55
+      },
+      "revId": "6f69aeadaeff764eef5c12454cede5a1d86be20f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
