@@ -253,6 +253,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2587d5b2_58f53491",
+        "filename": "android/ArcRandomUIElementsApp/res/layout/layout.xml",
+        "patchSetId": 8
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1553967
+      },
+      "writtenOn": "2022-09-28T10:36:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4faa74c4_2aee2a6d",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 131
+      },
+      "revId": "4c2a6292e11f10514f70cc319f0c6d246f0e17b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d756344e_6593dfbd",
