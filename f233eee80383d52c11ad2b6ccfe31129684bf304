@@ -39,6 +39,30 @@
       },
       "revId": "f233eee80383d52c11ad2b6ccfe31129684bf304",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5d1238e_829daaf8",
+        "filename": "android/ArcRandomUIElementsApp/src/org/chromium/arc/testapp/randomuielements/RandomUIElementsActivity.java",
+        "patchSetId": 13
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1553967
+      },
+      "writtenOn": "2022-09-28T10:04:48Z",
+      "side": 1,
+      "message": "Changed as we discussed! Thank you!",
+      "parentUuid": "20b43e25_2084966c",
+      "range": {
+        "startLine": 115,
+        "startChar": 15,
+        "endLine": 115,
+        "endChar": 21
+      },
+      "revId": "f233eee80383d52c11ad2b6ccfe31129684bf304",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
