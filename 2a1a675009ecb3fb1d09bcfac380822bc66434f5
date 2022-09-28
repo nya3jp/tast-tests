@@ -33,6 +33,24 @@
       "message": "Would it be too difficult to search through both cellular and WiFi subpages for the network name in question (or would there be name collisions, etc.)?",
       "revId": "2a1a675009ecb3fb1d09bcfac380822bc66434f5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc33490d_86295ccd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-09-28T22:20:20Z",
+      "side": 1,
+      "message": "I don\u0027t think it would be too difficult and there likely won\u0027t be name collisions, but I think my concerns there would be\n\n - In some number of tests we would search for a network in a page where it won\u0027t exist.\n - We would need to add logic to navigate back up to the top-level Settings page and then back down (not that big of a deal though). This is mostly because I wanted this method to manually navigate to the network rather than relying on opening the Settings at a specific page/url since users likely won\u0027t do this much.\n\nI don\u0027t really feel strongly here though so I can update it if this is the preferred approach.\n\n\nAlso, I added a note to the commit message but one thing I meant to call out was that this change also puts the burden on the test author to make sure the technology is enabled (or else you can\u0027t navigate to the detailed page).",
+      "parentUuid": "75eb8cfb_29631760",
+      "revId": "2a1a675009ecb3fb1d09bcfac380822bc66434f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
