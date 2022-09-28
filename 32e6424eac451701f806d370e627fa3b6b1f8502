@@ -33,6 +33,24 @@
       "message": "How does it different from doing in line 344?",
       "revId": "32e6424eac451701f806d370e627fa3b6b1f8502",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef5955c5_6b533b5b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/config_verify.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1544064
+      },
+      "writtenOn": "2022-09-28T18:22:59Z",
+      "side": 1,
+      "message": "BPF related setting has its own block. \nSo those settings are structured per CONFIG, not per kernel version.",
+      "parentUuid": "dde857f1_bcf6937d",
+      "revId": "32e6424eac451701f806d370e627fa3b6b1f8502",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
