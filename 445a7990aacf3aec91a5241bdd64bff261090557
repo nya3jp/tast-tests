@@ -247,6 +247,24 @@
       "parentUuid": "52371089_65aa1b8d",
       "revId": "445a7990aacf3aec91a5241bdd64bff261090557",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "751f1650_02e95bd8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/fgsec_connect.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-09-28T18:21:13Z",
+      "side": 1,
+      "message": "Continuing this discussion in the FgsecMultiConnect patch.",
+      "parentUuid": "ffbb1c4a_70765a6d",
+      "revId": "445a7990aacf3aec91a5241bdd64bff261090557",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

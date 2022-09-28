@@ -229,6 +229,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b001fbb_6dea3773",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/fgsec_connect.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-09-28T18:21:13Z",
+      "side": 1,
+      "message": "I think there are two distinct scenarios worth testing here. One is security being updated before we connect and freeze it, and the other is security being updated afterward. FgsecWpaChange handles the latter, and we should still have something that handles the former (now FgsecMultiConnect). Let\u0027s close on this in the relevant patch. Resolving this for now.",
+      "parentUuid": "4b55ba72_748fc7d8",
+      "revId": "86d1d0dac0c4c71fac9d97edaec0bb62862de2a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c6dd98ed_b1e46b32",
