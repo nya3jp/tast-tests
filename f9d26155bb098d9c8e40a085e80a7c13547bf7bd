@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f14b5cfe_0c9905dd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-09-28T14:59:37Z",
+      "side": 1,
+      "message": "LGTM % nit about deprecating preconditions and use fixtures instead.",
+      "revId": "f9d26155bb098d9c8e40a085e80a7c13547bf7bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d67899b_b3ea8842",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-09-28T14:59:37Z",
+      "side": 1,
+      "message": "Can you please create a bug to deprecate the preconditions and use fixtures instead? and please fix it in a follow up CL!",
+      "range": {
+        "startLine": 90,
+        "startChar": 2,
+        "endLine": 90,
+        "endChar": 52
+      },
+      "revId": "f9d26155bb098d9c8e40a085e80a7c13547bf7bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
