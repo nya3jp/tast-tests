@@ -33,6 +33,7 @@ import (
 	sim "chromiumos/tast/local/chrome/cuj/inputsimulations"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/event"
 	"chromiumos/tast/local/chrome/uiauto/mouse"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/webutil"
@@ -259,7 +260,7 @@ func closeConnections(ctx context.Context, s *testing.State, conns []*chrome.Con
 	}
 }
 
-func testBody(ctx context.Context, s *testing.State, test *tabSwitchVariables) error {
+func testBody(ctx context.Context, test *tabSwitchVariables) error {
 	const (
 		numPages         = 7
 		tabSwitchTimeout = 20 * time.Second
@@ -318,7 +319,7 @@ func testBody(ctx context.Context, s *testing.State, test *tabSwitchVariables) e
 
 		// Ensure that all tabs are properly loaded before starting test.
 		if err := waitUntilAllTabsLoaded(ctx, test.bTconn, time.Minute); err != nil {
-			s.Log("Some tabs are still in loading state, but proceeding with the test: ", err)
+			testing.ContextLog(ctx, "Some tabs are still in loading state, but proceeding with the test: ", err)
 		}
 
 		// Repeat the test as many times as necessary to fulfill its time requirements.
@@ -330,7 +331,7 @@ func testBody(ctx context.Context, s *testing.State, test *tabSwitchVariables) e
 			return errors.New("test scenario does not specify any web pages")
 		}
 
-		s.Log("Start switching tabs")
+		testing.ContextLog(ctx, "Start switching tabs")
 
 		// Switch through tabs in a skip-order fashion.
 		// Note: when skipSize = N-1, then the skip-order is 1,1,1,1 ... N times
@@ -363,6 +364,14 @@ func testBody(ctx context.Context, s *testing.State, test *tabSwitchVariables) e
 				if err := sim.RepeatMouseScroll(ctx, mw, scrollDown, 50*time.Millisecond, 20); err != nil {
 					return errors.Wrap(err, "failed to scroll in between tab switches")
 				}
+			}
+
+			if err := ac.WithInterval(time.Second).WithTimeout(5*time.Second).WaitUntilNoEvent(nodewith.Root(), event.LocationChanged)(ctx); err != nil {
+				testing.ContextLog(ctx, "Scroll animations haven't stabilized yet, continuing anyway: ", err)
+			}
+
+			if err := sim.RunDragMouseCycle(ctx, test.tconn, info); err != nil {
+				return errors.Wrap(err, "failed to run the mouse drag cycle")
 			}
 
 			currentTab = (currentTab + skipSize + 1) % len(conns)
@@ -416,7 +425,7 @@ func Run(ctx context.Context, s *testing.State) {
 
 	// Execute Test
 	if err := setupVars.recorder.Run(ctx, func(ctx context.Context) error {
-		return testBody(ctx, s, setupVars)
+		return testBody(ctx, setupVars)
 	}); err != nil {
 		s.Fatal("Failed to conduct the test scenario, or collect the histogram data: ", err)
 	}
