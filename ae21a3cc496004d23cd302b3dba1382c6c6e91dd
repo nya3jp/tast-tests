@@ -159,6 +159,30 @@
       },
       "revId": "ae21a3cc496004d23cd302b3dba1382c6c6e91dd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f0125d0_6a8ddb48",
+        "filename": "src/chromiumos/tast/services/cros/ui/chrome_service.proto",
+        "patchSetId": 4
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-09-28T00:00:41Z",
+      "side": 1,
+      "message": "Marking as resolved as MODE_DISABLED is added (btw, MODE_UNSPECIFIED remains unchanged as a default value for test users for the reason I mentioned above) Please feel free to reopen this or leave a new comment if there is anything else to address. Thanks,",
+      "parentUuid": "53955868_2518ffc0",
+      "range": {
+        "startLine": 87,
+        "startChar": 49,
+        "endLine": 87,
+        "endChar": 75
+      },
+      "revId": "ae21a3cc496004d23cd302b3dba1382c6c6e91dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
