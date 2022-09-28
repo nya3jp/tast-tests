@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ddb5dc76_c61bb67c",
+        "filename": "android/ArcRandomUIElementsApp/src/org/chromium/arc/testapp/randomuielements/RandomUIElementsActivity.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1553967
+      },
+      "writtenOn": "2022-09-28T07:57:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "198349ae_b688ad37",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 1
+      },
+      "revId": "49ab0123346e5a7e002db30d56a349e3c9d7c3a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "060fa074_48da4de7",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-09-28T05:50:15Z",
       "side": 1,
       "message": "Let\u0027s use a constant `Color.GREEN` from android.graphics\n\nhttps://developer.android.com/reference/android/graphics/Color#GREEN",
+      "range": {
+        "startLine": 29,
+        "startChar": 48,
+        "endLine": 29,
+        "endChar": 58
+      },
+      "revId": "49ab0123346e5a7e002db30d56a349e3c9d7c3a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ef73536_c68af90e",
+        "filename": "android/ArcRandomUIElementsApp/src/org/chromium/arc/testapp/randomuielements/RandomUIElementsActivity.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1553967
+      },
+      "writtenOn": "2022-09-28T07:57:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "060fa074_48da4de7",
       "range": {
         "startLine": 29,
         "startChar": 48,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc649113_f5920708",
+        "filename": "android/ArcRandomUIElementsApp/src/org/chromium/arc/testapp/randomuielements/RandomUIElementsActivity.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1553967
+      },
+      "writtenOn": "2022-09-28T07:57:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3034f607_8241442f",
+      "range": {
+        "startLine": 32,
+        "startChar": 4,
+        "endLine": 32,
+        "endChar": 11
+      },
+      "revId": "49ab0123346e5a7e002db30d56a349e3c9d7c3a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d6c620b8_79a6cb0e",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-09-28T04:17:51Z",
       "side": 1,
       "message": "for some safety, can you replace the numbers iwth an enum backed by ints?",
+      "range": {
+        "startLine": 50,
+        "startChar": 17,
+        "endLine": 50,
+        "endChar": 18
+      },
+      "revId": "49ab0123346e5a7e002db30d56a349e3c9d7c3a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "76c7062f_da08504b",
+        "filename": "android/ArcRandomUIElementsApp/src/org/chromium/arc/testapp/randomuielements/RandomUIElementsActivity.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1553967
+      },
+      "writtenOn": "2022-09-28T07:57:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d6c620b8_79a6cb0e",
       "range": {
         "startLine": 50,
         "startChar": 17,
@@ -140,6 +236,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "da62f5fd_3bbba5b7",
+        "filename": "android/ArcRandomUIElementsApp/src/org/chromium/arc/testapp/randomuielements/RandomUIElementsActivity.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1553967
+      },
+      "writtenOn": "2022-09-28T07:57:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ad25e0a1_08898ab8",
+      "range": {
+        "startLine": 70,
+        "startChar": 8,
+        "endLine": 70,
+        "endChar": 22
+      },
+      "revId": "49ab0123346e5a7e002db30d56a349e3c9d7c3a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "91785fb1_9d36ef84",
@@ -153,6 +273,30 @@
       "writtenOn": "2022-09-28T05:50:15Z",
       "side": 1,
       "message": "nit: you can just do `textView.setText(\"Line:\" + mRandom.nextInt());`",
+      "range": {
+        "startLine": 74,
+        "startChar": 7,
+        "endLine": 76,
+        "endChar": 33
+      },
+      "revId": "49ab0123346e5a7e002db30d56a349e3c9d7c3a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "96c83156_ccce4f0b",
+        "filename": "android/ArcRandomUIElementsApp/src/org/chromium/arc/testapp/randomuielements/RandomUIElementsActivity.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1553967
+      },
+      "writtenOn": "2022-09-28T07:57:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "91785fb1_9d36ef84",
       "range": {
         "startLine": 74,
         "startChar": 7,
@@ -188,6 +332,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8e36e629_f51cafd5",
+        "filename": "android/ArcRandomUIElementsApp/src/org/chromium/arc/testapp/randomuielements/RandomUIElementsActivity.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1553967
+      },
+      "writtenOn": "2022-09-28T07:57:24Z",
+      "side": 1,
+      "message": "Thank you! ViewGroup.LayoutParams cannot take weight as an argument, but I wanted the elements to fill the screen by making the elements\u0027 width equal, that\u0027s why I used TableRow.",
+      "parentUuid": "123c11c1_3d94da7f",
+      "range": {
+        "startLine": 77,
+        "startChar": 8,
+        "endLine": 77,
+        "endChar": 90
+      },
+      "revId": "49ab0123346e5a7e002db30d56a349e3c9d7c3a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "622d829b_900ab5b1",
         "filename": "android/ArcRandomUIElementsApp/src/org/chromium/arc/testapp/randomuielements/RandomUIElementsActivity.java",
         "patchSetId": 9
@@ -199,6 +367,30 @@
       "writtenOn": "2022-09-28T04:17:51Z",
       "side": 1,
       "message": "All these methods should have spaces between them",
+      "range": {
+        "startLine": 109,
+        "startChar": 4,
+        "endLine": 109,
+        "endChar": 6
+      },
+      "revId": "49ab0123346e5a7e002db30d56a349e3c9d7c3a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2a811e6_1a19bf89",
+        "filename": "android/ArcRandomUIElementsApp/src/org/chromium/arc/testapp/randomuielements/RandomUIElementsActivity.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1553967
+      },
+      "writtenOn": "2022-09-28T07:57:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "622d829b_900ab5b1",
       "range": {
         "startLine": 109,
         "startChar": 4,

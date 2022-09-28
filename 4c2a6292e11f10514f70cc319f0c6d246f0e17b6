@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "abd8f895_6a0095e8",
+        "filename": "android/ArcRandomUIElementsApp/AndroidManifest.xml",
+        "patchSetId": 8
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1553967
+      },
+      "writtenOn": "2022-09-28T07:57:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dd2b84ce_639d537c",
+      "range": {
+        "startLine": 2,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 4
+      },
+      "revId": "4c2a6292e11f10514f70cc319f0c6d246f0e17b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "27ba7595_6fea6517",
@@ -54,6 +78,24 @@
       "writtenOn": "2022-09-28T05:05:03Z",
       "side": 1,
       "message": "Are we using this permission?\n\nIf not, please remove. If yes, could you add a comment the purpose?",
+      "revId": "4c2a6292e11f10514f70cc319f0c6d246f0e17b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cfe512fa_d85f1607",
+        "filename": "android/ArcRandomUIElementsApp/AndroidManifest.xml",
+        "patchSetId": 8
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1553967
+      },
+      "writtenOn": "2022-09-28T07:57:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "27ba7595_6fea6517",
       "revId": "4c2a6292e11f10514f70cc319f0c6d246f0e17b6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -75,6 +117,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f36b3696_71306f74",
+        "filename": "android/ArcRandomUIElementsApp/res/layout/layout.xml",
+        "patchSetId": 8
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1553967
+      },
+      "writtenOn": "2022-09-28T07:57:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5b1d794f_ea86892f",
+      "revId": "4c2a6292e11f10514f70cc319f0c6d246f0e17b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5bd17598_f9964a2f",
@@ -88,6 +148,30 @@
       "writtenOn": "2022-09-28T05:05:03Z",
       "side": 1,
       "message": "Update to the ChromeOS notice",
+      "range": {
+        "startLine": 3,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 33
+      },
+      "revId": "4c2a6292e11f10514f70cc319f0c6d246f0e17b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ebbd876_52d4828a",
+        "filename": "android/ArcRandomUIElementsApp/res/layout/layout.xml",
+        "patchSetId": 8
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1553967
+      },
+      "writtenOn": "2022-09-28T07:57:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5bd17598_f9964a2f",
       "range": {
         "startLine": 3,
         "startChar": 0,
@@ -121,6 +205,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f63232fc_2e1fbca6",
+        "filename": "android/ArcRandomUIElementsApp/res/layout/layout.xml",
+        "patchSetId": 8
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1553967
+      },
+      "writtenOn": "2022-09-28T07:57:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6a687e8c_9c264130",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 131
+      },
+      "revId": "4c2a6292e11f10514f70cc319f0c6d246f0e17b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d756344e_6593dfbd",
@@ -134,6 +242,24 @@
       "writtenOn": "2022-09-28T05:05:03Z",
       "side": 1,
       "message": "Can you try applying `google-java-format` on this file?",
+      "revId": "4c2a6292e11f10514f70cc319f0c6d246f0e17b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b668962_de338b7e",
+        "filename": "android/ArcRandomUIElementsApp/src/org/chromium/arc/testapp/randomuielements/RandomUIElementsActivity.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1553967
+      },
+      "writtenOn": "2022-09-28T07:57:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d756344e_6593dfbd",
       "revId": "4c2a6292e11f10514f70cc319f0c6d246f0e17b6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -175,6 +301,30 @@
       "side": 1,
       "message": "Oops, sorry for the incomplete sentence. This value is not read by other classes. I\u0027d make it private until it\u0027s needed to be exposed.",
       "parentUuid": "5eb3d710_882d6f64",
+      "range": {
+        "startLine": 26,
+        "startChar": 4,
+        "endLine": 26,
+        "endChar": 10
+      },
+      "revId": "4c2a6292e11f10514f70cc319f0c6d246f0e17b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7064dc24_b5514225",
+        "filename": "android/ArcRandomUIElementsApp/src/org/chromium/arc/testapp/randomuielements/RandomUIElementsActivity.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1553967
+      },
+      "writtenOn": "2022-09-28T07:57:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "140898ee_cd44c125",
       "range": {
         "startLine": 26,
         "startChar": 4,
