@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "fd59d5df_e3bb201a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1163784
+      },
+      "writtenOn": "2022-09-28T08:01:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f5fd3475_4d06f2ef",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 78
+      },
+      "revId": "7eb044148ae258e61f10b1ad2b1ec5adf0d6c940",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "3617e9c1_5e41ef81",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "671e5a1d_c48a95ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/util/power_control.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1163784
+      },
+      "writtenOn": "2022-09-28T08:01:32Z",
+      "side": 1,
+      "message": "It doesn\u0027t seem to log the command, but I switched to just logging the command below, which matches what we are doing for the other commands in this test.",
+      "parentUuid": "e1a27784_ced626cf",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 60
+      },
+      "revId": "7eb044148ae258e61f10b1ad2b1ec5adf0d6c940",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "980ec366_c0e27f75",
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8af1a15_01511c80",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/util/test_runner.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1163784
+      },
+      "writtenOn": "2022-09-28T08:01:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "980ec366_c0e27f75",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 64
+      },
+      "revId": "7eb044148ae258e61f10b1ad2b1ec5adf0d6c940",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eab010e9_aeac5bca",
@@ -100,6 +172,30 @@
       "writtenOn": "2022-09-08T14:08:59Z",
       "side": 1,
       "message": "nit: same",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 44
+      },
+      "revId": "7eb044148ae258e61f10b1ad2b1ec5adf0d6c940",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e2cf019_c00ce42d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/util/test_runner.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1163784
+      },
+      "writtenOn": "2022-09-28T08:01:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eab010e9_aeac5bca",
       "range": {
         "startLine": 54,
         "startChar": 0,
