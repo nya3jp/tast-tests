@@ -14,7 +14,10 @@ import (
 	"time"
 
 	"chromiumos/tast/common/servo"
+	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/remote/firmware"
 	"chromiumos/tast/remote/firmware/fixture"
+	"chromiumos/tast/ssh"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -36,7 +39,7 @@ func init() {
 		Attr:         []string{"group:flashrom"},
 		SoftwareDeps: []string{"crossystem", "flashrom"},
 		HardwareDeps: hwdep.D(hwdep.ChromeEC()),
-		Timeout:      45 * time.Minute,
+		Timeout:      60 * time.Minute,
 		Params: []testing.Param{
 			{
 				Val:     "--flashrom_binary=/usr/sbin/flashrom",
@@ -57,6 +60,42 @@ func FlashromTester(ctx context.Context, s *testing.State) {
 	if err := h.RequireServo(ctx); err != nil {
 		s.Fatal("Failed to connect to servo: ", err)
 	}
+
+	// Create a backup of AP flash to restore.
+	// flashrom_tester normally does this, but can't if it times out.
+	backupTmpFileStdout, err := h.DUT.Conn().CommandContext(ctx, "mktemp", "-t", "FlashromTesterAPFW.XXXXXXXXXX").Output(ssh.DumpLogOnError)
+	if err != nil {
+		s.Fatal("Failed to create a temp file: ", err)
+	}
+	backupTmpFile := strings.TrimSpace(string(backupTmpFileStdout))
+	defer func() {
+		h.DUT.Conn().CommandContext(ctx, "rm", backupTmpFile).Output(ssh.DumpLogOnError)
+	}()
+	if err := aPFirmwareRead(ctx, h, backupTmpFile); err != nil {
+		s.Fatal("Failed to create a AP firmware backup: ", err)
+	}
+
+	// Reserve time for the backup to be restored if flashrom_tester times out
+	// This time is also used by the faft fixture.
+	cleanupContext := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Minute)
+	defer cancel()
+	defer func(ctx context.Context) {
+		s.Log("Reset hardware write protect")
+		if err := h.Servo.SetFWWPState(ctx, servo.FWWPStateOff); err != nil {
+			s.Error("Failed to reset hardware write protect: ", err)
+		}
+
+		s.Log("Reset software write protect")
+		if err := aPSoftwareWriteProtectDisable(ctx, h); err != nil {
+			s.Error("Failed to reset software write protect: ", err)
+		}
+
+		s.Log("Restore AP firmware")
+		if err := aPFirmwareWrite(ctx, h, backupTmpFile); err != nil {
+			s.Error("Failed to restore AP firmware backup: ", err)
+		}
+	}(cleanupContext)
 
 	backendChoiceArg := s.Param().(string)
 	cmd := h.DUT.Conn().CommandContext(ctx, "flashrom_tester", "--debug", backendChoiceArg, "host")
@@ -144,4 +183,19 @@ func FlashromTester(ctx context.Context, s *testing.State) {
 	if err := stdoutSc.Err(); err != nil {
 		s.Fatal("Reading standard output failed: ", err)
 	}
+}
+
+func aPSoftwareWriteProtectDisable(ctx context.Context, h *firmware.Helper) error {
+	_, err := h.DUT.Conn().CommandContext(ctx, "flashrom", "-p", "host", "--wp-disable", "--wp-range=0,0").Output(ssh.DumpLogOnError)
+	return err
+}
+
+func aPFirmwareRead(ctx context.Context, h *firmware.Helper, path string) error {
+	_, err := h.DUT.Conn().CommandContext(ctx, "flashrom", "-p", "host", "-r", path).Output(ssh.DumpLogOnError)
+	return err
+}
+
+func aPFirmwareWrite(ctx context.Context, h *firmware.Helper, path string) error {
+	_, err := h.DUT.Conn().CommandContext(ctx, "flashrom", "-p", "host", "--noverify", "-w", path).Output(ssh.DumpLogOnError)
+	return err
 }
