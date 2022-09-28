@@ -6,6 +6,7 @@ package health
 
 import (
 	"context"
+	"strconv"
 	"time"
 
 	"github.com/shirou/gopsutil/v3/process"
@@ -38,6 +39,17 @@ type processInfo struct {
 	UptimeTicks           jsontypes.Uint64 `json:"uptime_ticks"`
 	UserID                jsontypes.Uint32 `json:"user_id"`
 	WriteSystemCalls      jsontypes.Uint64 `json:"write_system_calls"`
+}
+
+type probeError struct {
+	Msg       string `json:"msg"`
+	ErrorType string `json:"type"`
+}
+
+type multipleProcessInfo struct {
+	Errors       map[jsontypes.Uint32]probeError `json:"errors"`
+	ProcessInfos map[string]*processInfo         `json:"process_infos"`
+	//TODO: Define the correct error types. errors is so complicated...
 }
 
 func init() {
@@ -96,9 +108,48 @@ func validateSingleProcessInfo(ctx context.Context, s *testing.State) error {
 	return nil
 }
 
+// validateMultipleProcessInfo tests that multiple process info with pid=1 (init) and pid=2 (kthreadd) can be successfully and correctly fetched.
+func validateMultipleProcessInfo(ctx context.Context, s *testing.State) error {
+	testingPids := []int{1, 2}
+	params := croshealthd.TelemParams{PIDs: testingPids}
+	var info multipleProcessInfo
+	if err := croshealthd.RunAndParseJSONTelem(ctx, params, s.OutDir(), &info); err != nil {
+		return errors.Errorf("failed to get process telemetry info: %s", err)
+	}
+
+	for _, pid := range testingPids {
+		if _, ok := info.ProcessInfos[strconv.Itoa(pid)]; !ok {
+			return errors.Errorf("process with pid=%v is not captured by healthd", pid)
+		}
+	}
+
+	pInit, err := process.NewProcess(1)
+	if err != nil {
+		return errors.Errorf("process with pid=1 does not exist: %s", err)
+	}
+
+	pKthreadd, err := process.NewProcess(2)
+	if err != nil {
+		return errors.Errorf("process with pid=2 does not exist: %s", err)
+	}
+
+	if err := validateProcessInfo(info.ProcessInfos["1"], pInit); err != nil {
+		return errors.Errorf("failed to validate init process info data: %s", err)
+	}
+
+	if err := validateProcessInfo(info.ProcessInfos["2"], pKthreadd); err != nil {
+		return errors.Errorf("failed to validate kthreadd process info data: %s", err)
+	}
+
+	return nil
+}
+
 // ProbeProcessInfo tests that different processes can be successfully and correctly fetched.
 func ProbeProcessInfo(ctx context.Context, s *testing.State) {
 	if err := validateSingleProcessInfo(ctx, s); err != nil {
 		s.Fatal("Failed to validate single process data: ", err)
+	}
+	if err := validateMultipleProcessInfo(ctx, s); err != nil {
+		s.Fatal("Failed to validate multiple process data: ", err)
 	}
 }
