@@ -213,6 +213,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4b55ba72_748fc7d8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/fgsec_connect.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1496163
+      },
+      "writtenOn": "2022-09-28T17:12:52Z",
+      "side": 1,
+      "message": "I\u0027ve failed to figure out how to check endpoints of a service from tast.\n\nThat leaves me basically with doing things sequentially:\n- either connecting to AP1 then trying to discover new endpoints and checking if the Security changed or\n- connecting to AP1 and then roaming to other endpoints and checking if Security changed.\n\nThis makes it pretty similar to updated FgsecWpaChange test (where I go down/up on the AP with changed security), so I\u0027m not sure how much of a value added that would be.  So I\u0027ve posted the updated SimpleConnect and FgsecWpaChange and will wait for your opinion if we should continue with this FgsecConnect (which is now named FgsecMultiConnect).",
+      "parentUuid": "ddff9e11_aef1a462",
+      "revId": "86d1d0dac0c4c71fac9d97edaec0bb62862de2a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c6dd98ed_b1e46b32",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/fgsec_connect.go",
         "patchSetId": 3

@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e123c1b_f8ffe474",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/fgsec_connect.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1496163
+      },
+      "writtenOn": "2022-09-28T17:12:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c85c0cd8_a7f02bf3",
+      "revId": "445a7990aacf3aec91a5241bdd64bff261090557",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f432d1ac_94d80fa0",
@@ -67,6 +85,24 @@
       "side": 1,
       "message": "Will do.",
       "parentUuid": "f432d1ac_94d80fa0",
+      "revId": "445a7990aacf3aec91a5241bdd64bff261090557",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9322b855_1585df9e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/fgsec_connect.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1496163
+      },
+      "writtenOn": "2022-09-28T17:12:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "44fce9f0_ba6df2fb",
       "revId": "445a7990aacf3aec91a5241bdd64bff261090557",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -124,6 +160,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "699f050c_74344ff3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/fgsec_connect.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1496163
+      },
+      "writtenOn": "2022-09-28T17:12:52Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d7c4e268_f91a1b3c",
+      "revId": "445a7990aacf3aec91a5241bdd64bff261090557",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d8263a67_fd124ad8",
@@ -173,6 +227,24 @@
       "side": 1,
       "message": "I\u0027d rather not make the assumption. If AP1 is broken for some reason, we should catch that sooner rather than later.",
       "parentUuid": "572ac13b_c4b5cbb6",
+      "revId": "445a7990aacf3aec91a5241bdd64bff261090557",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ffbb1c4a_70765a6d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/fgsec_connect.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1496163
+      },
+      "writtenOn": "2022-09-28T17:12:52Z",
+      "side": 1,
+      "message": "Yeah, I could discover each BSS and then connect and check Security, but this never protects us from failing earlier AP and using only later/last one.\n\nHowever as mentioned above I\u0027ve pushed changes to SimpleConnect and FgsecWpaChange (where I also check service path).  After them there is reworked FgsecConnect (now named FgsecMultiConnect) which is somewhat overlapping probably now with FgsecWpaChange in functionality being tested.  Let me know what you think about it.",
+      "parentUuid": "52371089_65aa1b8d",
       "revId": "445a7990aacf3aec91a5241bdd64bff261090557",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
