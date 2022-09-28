@@ -17,7 +17,6 @@ import (
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
-	"chromiumos/tast/local/chrome/lacros"
 	uifaillog "chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/lockscreen"
 	"chromiumos/tast/local/logsaver"
@@ -377,10 +376,7 @@ func (p *policyChromeFixture) PostTest(ctx context.Context, s *testing.FixtTestS
 		s.Fatal("Failed to clear policies: ", err)
 	}
 
-	// Reset Chrome state, including Lacros.
-	if err := lacros.ResetState(ctx, tconn); err != nil {
-		s.Fatal("Failed resetting Lacros state: ", err)
-	}
+	// Reset Chrome state.
 	if err := p.cr.ResetState(ctx); err != nil {
 		s.Fatal("Failed resetting existing Chrome session: ", err)
 	}
