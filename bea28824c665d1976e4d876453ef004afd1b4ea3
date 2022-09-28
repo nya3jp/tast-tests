@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4b7dba8_a9eda2b6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-09-28T11:13:10Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "bea28824c665d1976e4d876453ef004afd1b4ea3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb4be09a_6d89be82",
+        "filename": "src/chromiumos/tast/local/bundles/cros/quicksettings/brightness_slider.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-09-28T11:13:10Z",
+      "side": 1,
+      "message": "Preconditions are deprecated, use a Fixture instead, e.g. like here: https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/a11y/chromevox.go;l\u003d43",
+      "range": {
+        "startLine": 30,
+        "startChar": 2,
+        "endLine": 30,
+        "endChar": 34
+      },
+      "revId": "bea28824c665d1976e4d876453ef004afd1b4ea3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ba9b3b3_3f3c9c08",
+        "filename": "src/chromiumos/tast/local/bundles/cros/quicksettings/brightness_slider.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-09-28T11:13:10Z",
+      "side": 1,
+      "message": "nit: According to guidelines we shouldn\u0027t log verbose information like this:\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#When-to-log\n\nYou could incorporate it in the error messages if you need that information to debug failures, e.g. s.Fatalf(\"Failed to decrease brightness slider from %d: %v\", initialBrightness, err)",
+      "range": {
+        "startLine": 61,
+        "startChar": 1,
+        "endLine": 61,
+        "endChar": 62
+      },
+      "revId": "bea28824c665d1976e4d876453ef004afd1b4ea3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c68fbf01_47282ce5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/quicksettings/volume_slider.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-09-28T11:13:10Z",
+      "side": 1,
+      "message": "Same as with the other test. If you can, please replace it with a Fixture.",
+      "range": {
+        "startLine": 36,
+        "startChar": 2,
+        "endLine": 36,
+        "endChar": 34
+      },
+      "revId": "bea28824c665d1976e4d876453ef004afd1b4ea3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
