@@ -25,6 +25,12 @@ const IssueText = "Test only - please ignore"
 // ReportPath export is used to find the feedback report path.
 const ReportPath = "/tmp/feedback-report/feedback-report"
 
+// PngFile and PdfFile are used to define the file names.
+const (
+	PngFile = "attach_file_upload_01.png"
+	PdfFile = "attach_file_upload_02.pdf"
+)
+
 // Launch starts the Feedback app via the default method.
 func Launch(ctx context.Context, tconn *chrome.TestConn) (*nodewith.Finder, error) {
 	if err := apps.Launch(ctx, tconn, apps.Feedback.ID); err != nil {
