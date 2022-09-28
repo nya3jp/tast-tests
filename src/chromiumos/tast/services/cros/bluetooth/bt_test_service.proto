@@ -13,12 +13,6 @@ option go_package = "chromiumos/tast/services/cros/bluetooth";
 // BTTestService allows bluetooth remote tests make calls to local,
 // bluetooth-specific functions necessary for testing bluetooth features.
 service BTTestService {
-  // ChromeNew logs into chrome. ChromeClose must be called later.
-  rpc ChromeNew(ChromeNewRequest) returns (google.protobuf.Empty) {}
-
-  // ChromeClose cleans up resources from ChromeNew.
-  rpc ChromeClose(google.protobuf.Empty) returns (google.protobuf.Empty) {}
-
   // EnableBluetoothAdapter powers on the bluetooth adapter.
   rpc EnableBluetoothAdapter(google.protobuf.Empty) returns (google.protobuf.Empty) {}
 
@@ -32,12 +26,6 @@ service BTTestService {
   // device. Fails if the device is not found or if the discovered matching
   // device's attributes do not match those provided.
   rpc DiscoverDevice(DiscoverDeviceRequest) returns (google.protobuf.Empty) {}
-}
-
-message ChromeNewRequest {
-  repeated string enableFeatures = 1;
-  repeated string disableFeatures = 2;
-  bool noLogin = 3;
 }
 
 message Device {

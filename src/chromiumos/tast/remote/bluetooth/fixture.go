@@ -17,6 +17,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/rpc"
 	bts "chromiumos/tast/services/cros/bluetooth"
+	chromeService "chromiumos/tast/services/cros/ui"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/timing"
 )
@@ -28,7 +29,15 @@ import (
 // resolved based on the DUT hostname.
 const fixtureVarBTPeers = "btpeers"
 
-const serviceDepBTTestService = "tast.cros.bluetooth.BTTestService"
+const (
+	defaultUsername = "testuser@gmail.com"
+	defaultPassword = "testpass"
+)
+
+const (
+	serviceDepBTTestService = "tast.cros.bluetooth.BTTestService"
+	serviceDepChromeService = "tast.cros.browser.ChromeService"
+)
 
 const (
 	setUpTimeout    = 20 * time.Second
@@ -51,12 +60,12 @@ func init() {
 		Impl: newFixture(&fixtureFeatures{
 			EnableFeatures:  []string{"BluetoothRevamp"},
 			DisableFeatures: []string{},
-			NoLogin:         false,
+			LoginMode:       chromeService.LoginMode_LOGIN_MODE_FAKE_LOGIN,
 		}),
 		SetUpTimeout:    setUpTimeout,
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: tearDownTimeout,
-		ServiceDeps:     []string{serviceDepBTTestService},
+		ServiceDeps:     []string{serviceDepBTTestService, serviceDepChromeService},
 	})
 	testing.AddFixture(&testing.Fixture{
 		Name: "chromeLoggedInWithBluetoothRevampDisabled",
@@ -68,12 +77,12 @@ func init() {
 		Impl: newFixture(&fixtureFeatures{
 			EnableFeatures:  []string{},
 			DisableFeatures: []string{"BluetoothRevamp"},
-			NoLogin:         false,
+			LoginMode:       chromeService.LoginMode_LOGIN_MODE_FAKE_LOGIN,
 		}),
 		SetUpTimeout:    setUpTimeout,
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: tearDownTimeout,
-		ServiceDeps:     []string{serviceDepBTTestService},
+		ServiceDeps:     []string{serviceDepBTTestService, serviceDepChromeService},
 	})
 	testing.AddFixture(&testing.Fixture{
 		Name: "chromeLoggedInWithBluetoothEnabled",
@@ -86,12 +95,12 @@ func init() {
 			BluetoothAdapterEnabled: true,
 			EnableFeatures:          []string{"BluetoothRevamp"},
 			DisableFeatures:         []string{},
-			NoLogin:                 false,
+			LoginMode:               chromeService.LoginMode_LOGIN_MODE_FAKE_LOGIN,
 		}),
 		SetUpTimeout:    setUpTimeout,
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: tearDownTimeout,
-		ServiceDeps:     []string{serviceDepBTTestService},
+		ServiceDeps:     []string{serviceDepBTTestService, serviceDepChromeService},
 	})
 	testing.AddFixture(&testing.Fixture{
 		Name: "chromeLoggedInWith1BTPeer",
@@ -105,13 +114,13 @@ func init() {
 			BluetoothAdapterEnabled: true,
 			EnableFeatures:          []string{"BluetoothRevamp"},
 			DisableFeatures:         []string{},
-			NoLogin:                 false,
+			LoginMode:               chromeService.LoginMode_LOGIN_MODE_FAKE_LOGIN,
 		}),
 		Vars:            []string{fixtureVarBTPeers},
 		SetUpTimeout:    setUpTimeout + btpeerTimeoutBuffer,
 		ResetTimeout:    resetTimeout + btpeerTimeoutBuffer,
 		TearDownTimeout: tearDownTimeout + btpeerTimeoutBuffer,
-		ServiceDeps:     []string{serviceDepBTTestService},
+		ServiceDeps:     []string{serviceDepBTTestService, serviceDepChromeService},
 	})
 	testing.AddFixture(&testing.Fixture{
 		Name: "chromeLoggedInWith2BTPeers",
@@ -125,13 +134,13 @@ func init() {
 			BluetoothAdapterEnabled: true,
 			EnableFeatures:          []string{"BluetoothRevamp"},
 			DisableFeatures:         []string{},
-			NoLogin:                 false,
+			LoginMode:               chromeService.LoginMode_LOGIN_MODE_FAKE_LOGIN,
 		}),
 		Vars:            []string{fixtureVarBTPeers},
 		SetUpTimeout:    setUpTimeout + 2*btpeerTimeoutBuffer,
 		ResetTimeout:    resetTimeout + 2*btpeerTimeoutBuffer,
 		TearDownTimeout: tearDownTimeout + 2*btpeerTimeoutBuffer,
-		ServiceDeps:     []string{serviceDepBTTestService},
+		ServiceDeps:     []string{serviceDepBTTestService, serviceDepChromeService},
 	})
 	testing.AddFixture(&testing.Fixture{
 		Name: "chromeLoggedInWith3BTPeers",
@@ -145,13 +154,13 @@ func init() {
 			BluetoothAdapterEnabled: true,
 			EnableFeatures:          []string{"BluetoothRevamp"},
 			DisableFeatures:         []string{},
-			NoLogin:                 false,
+			LoginMode:               chromeService.LoginMode_LOGIN_MODE_FAKE_LOGIN,
 		}),
 		Vars:            []string{fixtureVarBTPeers},
 		SetUpTimeout:    setUpTimeout + 3*btpeerTimeoutBuffer,
 		ResetTimeout:    resetTimeout + 3*btpeerTimeoutBuffer,
 		TearDownTimeout: tearDownTimeout + 3*btpeerTimeoutBuffer,
-		ServiceDeps:     []string{serviceDepBTTestService},
+		ServiceDeps:     []string{serviceDepBTTestService, serviceDepChromeService},
 	})
 	testing.AddFixture(&testing.Fixture{
 		Name: "chromeLoggedInWith4BTPeers",
@@ -165,13 +174,13 @@ func init() {
 			BluetoothAdapterEnabled: true,
 			EnableFeatures:          []string{"BluetoothRevamp"},
 			DisableFeatures:         []string{},
-			NoLogin:                 false,
+			LoginMode:               chromeService.LoginMode_LOGIN_MODE_FAKE_LOGIN,
 		}),
 		Vars:            []string{fixtureVarBTPeers},
 		SetUpTimeout:    setUpTimeout + 4*btpeerTimeoutBuffer,
 		ResetTimeout:    resetTimeout + 4*btpeerTimeoutBuffer,
 		TearDownTimeout: tearDownTimeout + 4*btpeerTimeoutBuffer,
-		ServiceDeps:     []string{serviceDepBTTestService},
+		ServiceDeps:     []string{serviceDepBTTestService, serviceDepChromeService},
 	})
 	testing.AddFixture(&testing.Fixture{
 		Name: "chromeOobeWith1BTPeer",
@@ -185,13 +194,13 @@ func init() {
 			BluetoothAdapterEnabled: true,
 			EnableFeatures:          []string{"BluetoothRevamp", "OobeHidDetectionRevamp"},
 			DisableFeatures:         []string{},
-			NoLogin:                 true,
+			LoginMode:               chromeService.LoginMode_LOGIN_MODE_NO_LOGIN,
 		}),
 		Vars:            []string{fixtureVarBTPeers},
 		SetUpTimeout:    setUpTimeout + btpeerTimeoutBuffer,
 		ResetTimeout:    resetTimeout + btpeerTimeoutBuffer,
 		TearDownTimeout: tearDownTimeout + btpeerTimeoutBuffer,
-		ServiceDeps:     []string{serviceDepBTTestService},
+		ServiceDeps:     []string{serviceDepBTTestService, serviceDepChromeService},
 	})
 }
 
@@ -206,16 +215,14 @@ type fixtureFeatures struct {
 	// fixture.TearDown.
 	BluetoothAdapterEnabled bool
 
-	// EnableFeatures list of features used in ChromeNewRequest.EnableFeatures when
-	// BTTestService.ChromeNew is called during fixture.SetUp to toggle features on.
+	// EnableFeatures is the list of features that will be enabled when starting Chrome.
 	EnableFeatures []string
 
-	// EnableFeatures list of features used in ChromeNewRequest.EnableFeatures when
-	// BTTestService.ChromeNew is called during fixture.SetUp to toggle features off.
+	// DisableFeatures is the list of features that will be enabled when starting Chrome.
 	DisableFeatures []string
 
-	// NoLogin when true will set chrome to not login and remain in OOBE.
-	NoLogin bool
+	// LoginMode is what the resulting login mode should be after starting Chrome.
+	LoginMode chromeService.LoginMode
 }
 
 // FixtValue is the value of the test fixture accessible within a test. All
@@ -233,6 +240,9 @@ type FixtValue struct {
 
 	// BTS is a client of the BTTestService that uses the DUTRPCClient connection.
 	BTS bts.BTTestServiceClient
+
+	// ChromeService is a gRPC client that is used to start Chrome.
+	ChromeService chromeService.ChromeServiceClient
 }
 
 type fixture struct {
@@ -268,11 +278,17 @@ func (tf *fixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} 
 	}
 	tf.fv.BTS = bts.NewBTTestServiceClient(tf.fv.DUTRPCClient.Conn)
 
+	tf.fv.ChromeService = chromeService.NewChromeServiceClient(tf.fv.DUTRPCClient.Conn)
+
 	// Log into chrome.
-	if _, err := tf.fv.BTS.ChromeNew(ctx, &bts.ChromeNewRequest{
+	if _, err := tf.fv.ChromeService.New(ctx, &chromeService.NewRequest{
+		LoginMode:       tf.features.LoginMode,
 		EnableFeatures:  tf.features.EnableFeatures,
 		DisableFeatures: tf.features.DisableFeatures,
-		NoLogin:         tf.features.NoLogin,
+		Credentials: &chromeService.NewRequest_Credentials{
+			Username: defaultUsername,
+			Password: defaultPassword,
+		},
 	}); err != nil {
 		s.Fatal("Failed to log into chrome on DUT: ", err)
 	}
@@ -334,8 +350,8 @@ func (tf *fixture) TearDown(ctx context.Context, s *testing.FixtState) {
 	}
 
 	// Clean up chrome login state.
-	if _, err := tf.fv.BTS.ChromeClose(ctx, &emptypb.Empty{}); err != nil {
-		s.Error("Failed to call ChromeClose: ", err)
+	if _, err := tf.fv.ChromeService.Close(ctx, &emptypb.Empty{}); err != nil {
+		s.Error("Failed to close Chrome on the DUT: ", err)
 	}
 
 	// Close gRPC connection to DUT.
