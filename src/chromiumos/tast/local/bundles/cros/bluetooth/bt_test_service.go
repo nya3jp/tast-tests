@@ -15,7 +15,6 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bluetooth/bluez"
-	"chromiumos/tast/local/chrome"
 	pb "chromiumos/tast/services/cros/bluetooth"
 	"chromiumos/tast/testing"
 )
@@ -31,46 +30,7 @@ func init() {
 // BTTestService implements tast.cros.bluetooth.BTTestService.
 type BTTestService struct {
 	s            *testing.ServiceState
-	cr           *chrome.Chrome
 	bluezAdapter *bluez.Adapter
-}
-
-// ChromeNew logs into chrome. ChromeClose must be called later.
-func (bts *BTTestService) ChromeNew(ctx context.Context, request *pb.ChromeNewRequest) (*emptypb.Empty, error) {
-	if bts.cr != nil {
-		return nil, errors.New("chrome already available")
-	}
-	var chromeOpts []chrome.Option
-
-	if len(request.EnableFeatures) > 0 {
-		chromeOpts = append(chromeOpts, chrome.EnableFeatures(request.EnableFeatures...))
-	}
-
-	if len(request.DisableFeatures) > 0 {
-		chromeOpts = append(chromeOpts, chrome.DisableFeatures(request.DisableFeatures...))
-	}
-
-	if request.NoLogin {
-		chromeOpts = append(chromeOpts, chrome.NoLogin())
-	}
-	cr, err := chrome.New(ctx, chromeOpts...)
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to create new Chrome")
-	}
-	bts.cr = cr
-	return &emptypb.Empty{}, nil
-}
-
-// ChromeClose cleans up resources from ChromeNew.
-func (bts *BTTestService) ChromeClose(ctx context.Context, empty *emptypb.Empty) (*emptypb.Empty, error) {
-	if bts.cr == nil {
-		return nil, errors.New("no chrome to close, call ChromeNew first")
-	}
-	if err := bts.cr.Close(ctx); err != nil {
-		return nil, errors.Wrap(err, "failed to close chrome")
-	}
-	bts.cr = nil
-	return &emptypb.Empty{}, nil
 }
 
 // EnableBluetoothAdapter powers on the bluetooth adapter and waits for it to
