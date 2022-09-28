@@ -76,6 +76,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa176ae5_2bdc6048",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/window_cycle_per_desk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1539397
+      },
+      "writtenOn": "2022-09-28T20:54:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "45581884_59159324",
+      "range": {
+        "startLine": 41,
+        "startChar": 3,
+        "endLine": 41,
+        "endChar": 48
+      },
+      "revId": "a83cd715381eca5dfa348e106b7493446be03aec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "560e36b9_8dd2ff83",
@@ -89,6 +113,30 @@
       "writtenOn": "2022-09-28T00:33:56Z",
       "side": 1,
       "message": "Should this be coupled with a `continue` ? Otherwise it\u0027ll continue executing the functions below but overall fail. Might make sense to try it again in the next loop",
+      "range": {
+        "startLine": 88,
+        "startChar": 3,
+        "endLine": 88,
+        "endChar": 48
+      },
+      "revId": "a83cd715381eca5dfa348e106b7493446be03aec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "96034d83_f7344abf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/window_cycle_per_desk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1539397
+      },
+      "writtenOn": "2022-09-28T20:54:45Z",
+      "side": 1,
+      "message": "I think we should use Fatal here.",
+      "parentUuid": "560e36b9_8dd2ff83",
       "range": {
         "startLine": 88,
         "startChar": 3,
@@ -193,6 +241,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "17ad954a_1e5649b9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/window_cycle_per_desk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1539397
+      },
+      "writtenOn": "2022-09-28T20:54:45Z",
+      "side": 1,
+      "message": "Use Fatal in for loop above.",
+      "parentUuid": "bdb036f7_6300d5ec",
+      "range": {
+        "startLine": 110,
+        "startChar": 11,
+        "endLine": 110,
+        "endChar": 49
+      },
+      "revId": "a83cd715381eca5dfa348e106b7493446be03aec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "296a52e2_7ddacceb",
@@ -206,6 +278,30 @@
       "writtenOn": "2022-09-28T00:33:56Z",
       "side": 1,
       "message": "Can you be more descriptive here? If the error is already descriptive enough, just use `Fatal(err)` instead.",
+      "range": {
+        "startLine": 125,
+        "startChar": 11,
+        "endLine": 125,
+        "endChar": 16
+      },
+      "revId": "a83cd715381eca5dfa348e106b7493446be03aec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6a42c8f_7f58ab5c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/window_cycle_per_desk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1539397
+      },
+      "writtenOn": "2022-09-28T20:54:45Z",
+      "side": 1,
+      "message": "When I try to use s.Fatal(err), I got a message:  `Use s.Fatal(\"Something failed: \", err) instead of s.Fatal(err)`.",
+      "parentUuid": "296a52e2_7ddacceb",
       "range": {
         "startLine": 125,
         "startChar": 11,
@@ -239,6 +335,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c5192b9_4d454271",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/window_cycle_per_desk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1539397
+      },
+      "writtenOn": "2022-09-28T20:54:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c5f15730_b438d752",
+      "range": {
+        "startLine": 128,
+        "startChar": 26,
+        "endLine": 128,
+        "endChar": 35
+      },
+      "revId": "a83cd715381eca5dfa348e106b7493446be03aec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e40e8278_cc7890e5",
@@ -252,6 +372,30 @@
       "writtenOn": "2022-09-28T00:33:56Z",
       "side": 1,
       "message": "Include the `err` here",
+      "range": {
+        "startLine": 150,
+        "startChar": 36,
+        "endLine": 150,
+        "endChar": 38
+      },
+      "revId": "a83cd715381eca5dfa348e106b7493446be03aec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "87df2332_53bae9ce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/window_cycle_per_desk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1539397
+      },
+      "writtenOn": "2022-09-28T20:54:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e40e8278_cc7890e5",
       "range": {
         "startLine": 150,
         "startChar": 36,
@@ -285,6 +429,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0900a8d6_1a6d7e82",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/window_cycle_per_desk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1539397
+      },
+      "writtenOn": "2022-09-28T20:54:45Z",
+      "side": 1,
+      "message": "Good idea! Thanks!",
+      "parentUuid": "9d273dad_fa2744d9",
+      "range": {
+        "startLine": 163,
+        "startChar": 2,
+        "endLine": 165,
+        "endChar": 30
+      },
+      "revId": "a83cd715381eca5dfa348e106b7493446be03aec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "155d3efe_7f29fd73",
@@ -298,6 +466,30 @@
       "writtenOn": "2022-09-28T00:33:56Z",
       "side": 1,
       "message": "Is this necessary? Is the WaitUntilGone not sufficient enough?",
+      "range": {
+        "startLine": 167,
+        "startChar": 2,
+        "endLine": 167,
+        "endChar": 29
+      },
+      "revId": "a83cd715381eca5dfa348e106b7493446be03aec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb005097_6e663acc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/window_cycle_per_desk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1539397
+      },
+      "writtenOn": "2022-09-28T20:54:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "155d3efe_7f29fd73",
       "range": {
         "startLine": 167,
         "startChar": 2,
