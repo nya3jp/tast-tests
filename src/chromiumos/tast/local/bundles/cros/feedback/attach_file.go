@@ -16,16 +16,11 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
-	"chromiumos/tast/local/chrome/uiauto/feedbackapp"
+	fa "chromiumos/tast/local/chrome/uiauto/feedbackapp"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/testing"
-)
-
-const (
-	pngFile = "attach_file_upload_01.png"
-	pdfFile = "attach_file_upload_02.pdf"
 )
 
 func init() {
@@ -40,7 +35,7 @@ func init() {
 		},
 		Fixture:      "chromeLoggedInWithOsFeedback",
 		Attr:         []string{"group:mainline", "informational"},
-		Data:         []string{pngFile, pdfFile},
+		Data:         []string{fa.PngFile, fa.PdfFile},
 		SoftwareDeps: []string{"chrome"},
 	})
 }
@@ -82,7 +77,7 @@ func AttachFile(ctx context.Context, s *testing.State) {
 	ui := uiauto.New(tconn).WithTimeout(20 * time.Second)
 
 	// Copy the file to Downloads for uploading purpose.
-	files := []string{pngFile, pdfFile}
+	files := []string{fa.PngFile, fa.PdfFile}
 	for _, fileName := range files {
 		if err := fsutil.CopyFile(
 			s.DataPath(fileName), filepath.Join(downloadsPath, fileName)); err != nil {
@@ -91,7 +86,7 @@ func AttachFile(ctx context.Context, s *testing.State) {
 	}
 
 	// Launch feedback app and go to share data page.
-	feedbackRootNode, err := feedbackapp.LaunchAndGoToShareDataPage(ctx, tconn)
+	feedbackRootNode, err := fa.LaunchAndGoToShareDataPage(ctx, tconn)
 	if err != nil {
 		s.Fatal("Failed to launch feedback app and go to share data page: ", err)
 	}
@@ -106,14 +101,14 @@ func AttachFile(ctx context.Context, s *testing.State) {
 	// Open Downloads dir and select the png file to upload.
 	if err := uiauto.Combine("Open Downloads dir and select PNG file",
 		ui.LeftClick(nodewith.Name("Downloads").Role(role.TreeItem)),
-		ui.LeftClick(nodewith.NameContaining(pngFile).Role(role.StaticText).First()),
+		ui.LeftClick(nodewith.NameContaining(fa.PngFile).Role(role.StaticText).First()),
 		ui.LeftClick(nodewith.Name("Open").Role(role.Button)),
 	)(ctx); err != nil {
 		s.Fatal("Failed to open Downloads dir and select PNG file: ", err)
 	}
 
 	// Verify the uploaded png file exists.
-	pngFileFinder := nodewith.NameContaining(pngFile).Role(
+	pngFileFinder := nodewith.NameContaining(fa.PngFile).Role(
 		role.StaticText).Ancestor(feedbackRootNode)
 	if err := ui.WaitUntilExists(pngFileFinder)(ctx); err != nil {
 		s.Fatal("Failed to find png file: ", err)
@@ -129,14 +124,14 @@ func AttachFile(ctx context.Context, s *testing.State) {
 	// Upload pdf file.
 	if err := uiauto.Combine("Open Downloads dir and select pdf file",
 		ui.LeftClick(nodewith.Name("Downloads").Role(role.TreeItem)),
-		ui.LeftClick(nodewith.NameContaining(pdfFile).Role(role.StaticText).First()),
+		ui.LeftClick(nodewith.NameContaining(fa.PdfFile).Role(role.StaticText).First()),
 		ui.LeftClick(nodewith.Name("Open").Role(role.Button)),
 	)(ctx); err != nil {
 		s.Fatal("Failed to open Downloads dir and select pdf file: ", err)
 	}
 
 	// Verify new uploaded pdf file exists.
-	newFile := nodewith.NameContaining(pdfFile).Role(role.StaticText).Ancestor(feedbackRootNode)
+	newFile := nodewith.NameContaining(fa.PdfFile).Role(role.StaticText).Ancestor(feedbackRootNode)
 	if err := ui.WaitUntilExists(newFile)(ctx); err != nil {
 		s.Fatal("Failed to find new file: ", err)
 	}
