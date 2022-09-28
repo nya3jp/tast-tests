@@ -20,7 +20,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ShelfLaunch,
 		LacrosStatus: testing.LacrosVariantExists,
-		Desc:         "Tests launching and interacting with lacros launched from the Shelf",
+		Desc:         "Tests launching and interacting with rootfs-lacros launched from the Shelf",
 		Contacts:     []string{"lacros-team@google.com", "chromeos-sw-engprod@google.com"},
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome", "lacros"},
@@ -41,25 +41,7 @@ func init() {
 			Fixture:           "lacrosPrimary",
 			ExtraSoftwareDeps: []string{"lacros_unstable"},
 			ExtraAttr:         []string{"informational"},
-		}, {
-			Name:              "only",
-			Fixture:           "lacrosOnly",
-			ExtraSoftwareDeps: []string{"lacros_stable"},
-		}, {
-			Name:              "only_unstable",
-			Fixture:           "lacrosOnly",
-			ExtraSoftwareDeps: []string{"lacros_unstable"},
-			ExtraAttr:         []string{"informational"},
-		},
-		/* Disabled due to <1% pass rate over 30 days. See b/246818834
-		{
-			Name:              "omaha",
-			Fixture:           "lacrosOmaha",
-			ExtraHardwareDeps: hwdep.D(hwdep.Model("kled", "enguarde", "samus", "sparky")), // Only run on a subset of devices since it downloads from omaha and it will not use our lab's caching mechanisms. We don't want to overload our lab.
-			ExtraAttr:         []string{"informational"},
-		}
-		*/
-		},
+		}},
 	})
 }
 
