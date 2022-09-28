@@ -36,6 +36,19 @@ var vaapiAv1Files = []string{
 	"test_vectors/av1/8-bit/test-25fps-192x288-tile-rows-3-tile-cols-3.ivf",
 }
 
+var v4l2Av1Files = []string{
+	"test_vectors/av1/8-bit/00000527.ivf",
+	"test_vectors/av1/8-bit/00000535.ivf",
+	"test_vectors/av1/8-bit/00000548.ivf",
+	"test_vectors/av1/8-bit/48_delayed.ivf",
+	"test_vectors/av1/8-bit/av1-1-b8-02-allintra.ivf",
+	"test_vectors/av1/8-bit/frames_refs_short_signaling.ivf",
+	"test_vectors/av1/8-bit/non_uniform_tiling.ivf",
+	"test_vectors/av1/8-bit/test-25fps-192x288-only-tile-cols-is-power-of-2.ivf",
+	"test_vectors/av1/8-bit/test-25fps-192x288-only-tile-rows-is-power-of-2.ivf",
+	"test_vectors/av1/8-bit/test-25fps-192x288-tile-rows-3-tile-cols-3.ivf",
+}
+
 var av1AomFiles = map[string]map[string][]string{
 	"8bit": {
 		"quantizer": {
@@ -1351,7 +1364,6 @@ func TestPlatformDecodingParams(t *testing.T) {
 	// Generate ffmpeg HEVC tests.
 	for _, group := range []string{"main"} {
 		files := hevcFiles[group]
-
 		param := paramData{
 			Name:         fmt.Sprintf("ffmpeg_vaapi_hevc_%s", group),
 			Decoder:      ffmpegMD5Path,
@@ -1364,7 +1376,6 @@ func TestPlatformDecodingParams(t *testing.T) {
 		}
 		params = append(params, param)
 	}
-
 	// Generate ffmpeg HEVC tests from bugs.
 	for _, testGroup := range []string{"main"} {
 		bugIDs := make([]string, 0, len(hevcFilesFromBugs[testGroup]))
@@ -1375,7 +1386,6 @@ func TestPlatformDecodingParams(t *testing.T) {
 		sort.Strings(bugIDs)
 		for _, bugID := range bugIDs {
 			files := hevcFilesFromBugs[testGroup][bugID]
-
 			params = append(params, paramData{
 				Name:         fmt.Sprintf("ffmpeg_vaapi_hevc_%s_bug_%s", testGroup, bugID),
 				Decoder:      ffmpegMD5Path,
@@ -1386,6 +1396,40 @@ func TestPlatformDecodingParams(t *testing.T) {
 				Metadata:     genExtraData(files),
 				Attr:         []string{"graphics_video_hevc"},
 			})
+		}
+	}
+
+	// Generate V4L2 AV1 tests.
+	params = append(params, paramData{
+		Name:         "v4l2_stateless_av1",
+		Decoder:      filepath.Join(chrome.BinTestDir, "v4l2_stateless_decoder"),
+		CmdBuilder:   "v4l2StatelessDecodeArgs",
+		Files:        v4l2Av1Files,
+		Timeout:      defaultTimeout,
+		SoftwareDeps: []string{"v4l2_codec"},
+		// TODO(b/242075797): use HW capabilities
+		HardwareDeps: "hwdep.SupportsV4L2StatelessVideoDecoding(), hwdep.Model(\"tomato\", \"dojo\")",
+		Metadata:     genExtraData(v4l2Av1Files),
+		Attr:         []string{"graphics_video_av1"},
+	})
+
+	for _, bit := range []string{"8bit"} {
+		for _, cat := range []string{"quantizer", "size", "allintra", "cdfupdate", "motionvec", "svc"} {
+			files := av1AomFiles[bit][cat]
+			param := paramData{
+				Name:         fmt.Sprintf("v4l2_stateless_av1_%s_%s", bit, cat),
+				Decoder:      filepath.Join(chrome.BinTestDir, "v4l2_stateless_decoder"),
+				CmdBuilder:   "v4l2StatelessDecodeArgs",
+				Files:        files,
+				Timeout:      defaultTimeout,
+				SoftwareDeps: []string{"v4l2_codec"},
+				// TODO(b/242075797): use HW capabilities
+				HardwareDeps: "hwdep.SupportsV4L2StatelessVideoDecoding(), hwdep.Model(\"tomato\", \"dojo\")",
+				Metadata:     genExtraData(files),
+				Attr:         []string{"graphics_video_av1"},
+			}
+
+			params = append(params, param)
 		}
 	}
 
