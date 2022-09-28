@@ -207,6 +207,30 @@
       },
       "revId": "ae21a3cc496004d23cd302b3dba1382c6c6e91dd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9739527d_b044eea9",
+        "filename": "src/chromiumos/tast/services/cros/ui/chrome_service.proto",
+        "patchSetId": 4
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-09-28T02:13:34Z",
+      "side": 1,
+      "message": "I think we can go about with this version as the (most) comments that matter have been addressed. Can anyone give the owner\u0027s review?\nI\u0027ll be able to follow up in a separate CL if anything is missing.",
+      "parentUuid": "ae87a83e_005cd6d4",
+      "range": {
+        "startLine": 87,
+        "startChar": 49,
+        "endLine": 87,
+        "endChar": 75
+      },
+      "revId": "ae21a3cc496004d23cd302b3dba1382c6c6e91dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
