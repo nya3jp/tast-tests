@@ -198,6 +198,24 @@
       "parentUuid": "c5067142_b2e462bf",
       "revId": "1a6ad42bf4ec49b21e38fed33f2a250fe0c209fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d008508_ec484cab",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1415512
+      },
+      "writtenOn": "2022-09-28T23:48:51Z",
+      "side": 1,
+      "message": "Sounds good, thanks for answering my questions!",
+      "parentUuid": "2013ff66_ed84aa00",
+      "revId": "1a6ad42bf4ec49b21e38fed33f2a250fe0c209fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
