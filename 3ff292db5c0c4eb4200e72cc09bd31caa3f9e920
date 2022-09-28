@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e67ae32f_925d6261",
+        "filename": "src/chromiumos/tast/local/network/virtualnet/udpserver/udpserver.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2022-09-28T00:00:00Z",
+      "side": 1,
+      "message": "like httpserver [1] lifetime is managed by [2]\n\n[1] http://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/network/virtualnet/httpserver/httpserver.go\n[2] http://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/network/virtualnet/env/env.go",
+      "parentUuid": "76b250f3_814615fa",
+      "range": {
+        "startLine": 71,
+        "startChar": 17,
+        "endLine": 71,
+        "endChar": 22
+      },
+      "revId": "3ff292db5c0c4eb4200e72cc09bd31caa3f9e920",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3848cee9_370abd5f",
         "filename": "src/chromiumos/tast/local/network/virtualnet/udpserver/udpserver.go",
         "patchSetId": 3
@@ -37,6 +61,30 @@
       "writtenOn": "2022-09-27T23:12:52Z",
       "side": 1,
       "message": "why do you need this method if it does nothing? if the server implements some interface that has this method, I am not seeing it in this file.",
+      "range": {
+        "startLine": 134,
+        "startChar": 17,
+        "endLine": 134,
+        "endChar": 26
+      },
+      "revId": "3ff292db5c0c4eb4200e72cc09bd31caa3f9e920",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce7a7c04_afb4500c",
+        "filename": "src/chromiumos/tast/local/network/virtualnet/udpserver/udpserver.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2022-09-28T00:00:00Z",
+      "side": 1,
+      "message": "https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/network/virtualnet/env/env.go;rcl\u003db60e6934990b94b9e1b2fc14f049092eb419a883;l\u003d65",
+      "parentUuid": "3848cee9_370abd5f",
       "range": {
         "startLine": 134,
         "startChar": 17,
