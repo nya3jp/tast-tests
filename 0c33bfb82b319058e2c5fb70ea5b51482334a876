@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "90462ea1_37719545",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/privacy_indicators.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1359584
+      },
+      "writtenOn": "2022-09-28T17:31:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9d5e2b7b_99fbc0c9",
+      "revId": "0c33bfb82b319058e2c5fb70ea5b51482334a876",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e177f492_7f73fecc",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-09-27T00:44:12Z",
       "side": 1,
       "message": "Nit: this should be after the if err !\u003d nil",
+      "revId": "0c33bfb82b319058e2c5fb70ea5b51482334a876",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e1006c2_3cac85fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/privacy_indicators.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1359584
+      },
+      "writtenOn": "2022-09-28T17:31:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e177f492_7f73fecc",
       "revId": "0c33bfb82b319058e2c5fb70ea5b51482334a876",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
