@@ -16,6 +16,23 @@
       "message": "The latest patchset is just a rebase, but has been verified nonetheless.",
       "revId": "a1e5046061a2dbbc70acb4e9d757672f13863a3c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6eb4b7f1_a8c496b6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-09-28T18:40:35Z",
+      "side": 1,
+      "message": "Looks fine.",
+      "revId": "a1e5046061a2dbbc70acb4e9d757672f13863a3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
