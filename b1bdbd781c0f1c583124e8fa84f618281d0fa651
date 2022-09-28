@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "afd160c6_e48349ac",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-09-28T14:48:57Z",
+      "side": 1,
+      "message": "+2 % nit\n\n(sorry for the delay)",
+      "revId": "b1bdbd781c0f1c583124e8fa84f618281d0fa651",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc0f0b49_2f997a67",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hdrnet_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-09-28T14:48:57Z",
+      "side": 1,
+      "message": "nit: Fps -\u003e FPS\n\nhttps://g3doc.corp.google.com/go/g3doc/style/decisions.md?cl\u003dhead#initialisms",
+      "range": {
+        "startLine": 203,
+        "startChar": 12,
+        "endLine": 203,
+        "endChar": 15
+      },
+      "revId": "b1bdbd781c0f1c583124e8fa84f618281d0fa651",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
