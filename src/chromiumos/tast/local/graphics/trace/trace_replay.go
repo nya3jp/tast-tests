@@ -580,6 +580,68 @@ func runTraceReplayExtendedInVM(ctx context.Context, resultDir string, guest IGu
 	return nil
 }
 
+// runTraceReplayTuningInVM runs trace_replay multiple times on guest with `replayArgs`,
+// and generate a report of average FPS for the configuration over multiple runs.
+func runTraceReplayTuningInVM(ctx context.Context, resultDir string, guest IGuestOS, group *comm.TestGroupConfig) error {
+	testing.ContextLog(ctx, "Extended Replay repeat count: ", group.RepeatCount)
+	replayArgs, err := json.Marshal(*group)
+	if err != nil {
+		return errors.Wrap(err, "failed to marshal TestGroupConfig")
+	}
+
+	// Run the trace replay in Guest through the cmd, which is implemented in graphics-utils-go.
+	testing.ContextLog(ctx, "Running extended replay with args: "+string(replayArgs))
+	replayOutput, err := guest.Command(ctx, path.Join(guest.GetBinPath(), replayAppName), string(replayArgs)).Output(testexec.DumpLogOnError)
+	if err != nil {
+		return errors.Wrap(err, "failed while running trace_replay")
+	}
+
+	testing.ContextLog(ctx, "Extended Replay output: "+string(replayOutput))
+
+	var testResult comm.TestGroupResult
+	if err := json.Unmarshal(replayOutput, &testResult); err != nil {
+		return errors.Wrapf(err, "unable to parse test group result output: %q", string(replayOutput))
+	}
+
+	if testResult.Result != comm.TestResultSuccess {
+		return errors.Errorf("%s", testResult.Message)
+	}
+	// Generate Avg FPS over multiple runs.
+	failedEntries := 0
+	perfValues := perf.NewValues()
+	// An sample of the replayOutput: https://paste.googleplex.com/6164898517090304
+	for _, resultEntry := range testResult.Entries {
+		if resultEntry.Message != "" {
+			testing.ContextLog(ctx, resultEntry.Message)
+		}
+		if resultEntry.Result != comm.TestResultSuccess {
+			failedEntries++
+			continue
+		}
+		var totalFPS float64
+		runs := 0
+		for key, value := range resultEntry.Values {
+			// Get rid of the 1st run
+			if strings.Contains(key, "replay001") {
+				continue
+			}
+			if strings.Contains(key, "fps") {
+				runs++
+				totalFPS += float64(value.Value)
+			}
+		}
+		perfValues.Set(perf.Metric{
+			Name:      resultEntry.Name,
+			Unit:      "fps",
+			Direction: perf.BiggerIsBetter,
+		}, totalFPS/float64(runs))
+	}
+	if err := perfValues.Save(resultDir); err != nil {
+		return errors.Wrap(err, "unable to save performance values")
+	}
+	return nil
+}
+
 // RunTraceReplayTest starts the VM and replays all the traces in the test config.
 func RunTraceReplayTest(ctx context.Context, resultDir string, cloudStorage *testing.CloudStorage, guest IGuestOS, group *comm.TestGroupConfig, testVars *comm.TestVars) error {
 	// Guest is unable to use the VM network interface to access it's host because of security reason,
@@ -612,6 +674,8 @@ func RunTraceReplayTest(ctx context.Context, resultDir string, cloudStorage *tes
 			testing.ContextLog(ctx, "WARNING: Unable to get ", entry.entryName)
 		}
 	}
+
+	testing.ContextLog(ctx, "Running params: repeat count: ", group.RepeatCount)
 
 	if err := getSystemInfo(&group.Host); err != nil {
 		return errors.Wrap(err, "failed to get system info")
@@ -667,8 +731,14 @@ func RunTraceReplayTest(ctx context.Context, resultDir string, cloudStorage *tes
 	}
 
 	if group.ExtendedDuration > 0 {
+		testing.ContextLog(ctx, "running extended mode")
 		return runTraceReplayExtendedInVM(shortCtx, resultDir, guest, group)
 	}
+	if group.RepeatCount > 0 {
+		testing.ContextLog(ctx, "running tuning mode")
+		return runTraceReplayTuningInVM(shortCtx, resultDir, guest, group)
+	}
+	testing.ContextLog(ctx, "running single mode")
 	err = runTraceReplayInVM(shortCtx, resultDir, guest, group)
 
 	// Dump logs from the guest
