@@ -16,6 +16,40 @@
       "message": "LGTM % comment",
       "revId": "ccb862d7d199a8e77c1164ce037da9b5d332895e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "167d4cd2_0398e41f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/dep/asus_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-09-28T01:01:27Z",
+      "side": 1,
+      "message": "It would be good to say here and/or in the CL description why this is important (or that it\u0027s just for hygiene).",
+      "revId": "ccb862d7d199a8e77c1164ce037da9b5d332895e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d635638e_4592bed0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/dep/asus_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-09-28T01:01:27Z",
+      "side": 1,
+      "message": "In the case of duplicate entries the error message will be confusing (foo must be after foo). How about something like \"Asus models are not in alphabetical order or contain duplicates: %q is followed by %q\"?",
+      "revId": "ccb862d7d199a8e77c1164ce037da9b5d332895e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
