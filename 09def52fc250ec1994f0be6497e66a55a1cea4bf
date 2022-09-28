@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "99747c55_3d53d68f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/shelf_launch_omaha.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-09-28T07:36:08Z",
+      "side": 1,
+      "message": "Please add some logging for the unexpected else-case at least.",
+      "parentUuid": "06b0bfc4_5d34aceb",
+      "revId": "09def52fc250ec1994f0be6497e66a55a1cea4bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "db15c708_55c645fb",
@@ -219,6 +237,24 @@
       "side": 1,
       "message": "Ack. Btw, is it okay if I can do it in a separate CL as it may need more time to find the right place for this and some other code to share between tests?",
       "parentUuid": "df517c76_b9844ced",
+      "revId": "09def52fc250ec1994f0be6497e66a55a1cea4bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b62df699_f952d3c0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/shelf_launch_omaha.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-09-28T07:36:08Z",
+      "side": 1,
+      "message": "Yes.",
+      "parentUuid": "841d61d0_ee27c66b",
       "revId": "09def52fc250ec1994f0be6497e66a55a1cea4bf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },

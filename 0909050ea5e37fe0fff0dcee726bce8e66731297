@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "102bc681_bd75ae34",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/shelf_launch_omaha.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-09-28T07:36:08Z",
+      "side": 1,
+      "message": "We didn\u0027t really verify this part, so let\u0027s remove it from the message.",
+      "range": {
+        "startLine": 188,
+        "startChar": 17,
+        "endLine": 188,
+        "endChar": 41
+      },
+      "revId": "0909050ea5e37fe0fff0dcee726bce8e66731297",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69ff36a1_eb524aef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/shelf_launch_omaha.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-09-28T07:36:08Z",
+      "side": 1,
+      "message": "You could use the big hammer lacros.ResetState() in place of lines 237 to 250.",
+      "revId": "0909050ea5e37fe0fff0dcee726bce8e66731297",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
