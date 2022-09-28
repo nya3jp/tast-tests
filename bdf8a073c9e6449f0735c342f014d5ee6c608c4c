@@ -59,6 +59,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a82e2f1d_d450c962",
+        "filename": "src/chromiumos/tast/local/bundles/cros/intel/bt_connection_stability_with_wifi.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-09-28T10:56:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d3295f6c_ec2d1bbc",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 44
+      },
+      "revId": "bdf8a073c9e6449f0735c342f014d5ee6c608c4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a13fb45e_e357f456",
@@ -72,6 +96,24 @@
       "writtenOn": "2022-09-27T06:23:19Z",
       "side": 1,
       "message": "maybe put this next to where it is used",
+      "revId": "bdf8a073c9e6449f0735c342f014d5ee6c608c4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c958f97_05bcae77",
+        "filename": "src/chromiumos/tast/local/bundles/cros/intel/bt_connection_stability_with_wifi.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-09-28T10:56:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a13fb45e_e357f456",
       "revId": "bdf8a073c9e6449f0735c342f014d5ee6c608c4c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -95,6 +137,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "eb9e8859_67338b2a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/intel/bt_connection_stability_with_wifi.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-09-28T10:56:08Z",
+      "side": 1,
+      "message": "We will be running this once in a week only, that too manually.",
+      "parentUuid": "55107def_859e8124",
+      "revId": "bdf8a073c9e6449f0735c342f014d5ee6c608c4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "693592c9_1190ef7c",
         "filename": "src/chromiumos/tast/local/bundles/cros/intel/bt_connection_stability_with_wifi.go",
         "patchSetId": 1
@@ -106,6 +166,30 @@
       "writtenOn": "2022-09-27T06:23:19Z",
       "side": 1,
       "message": "can be const",
+      "range": {
+        "startLine": 241,
+        "startChar": 0,
+        "endLine": 241,
+        "endChar": 1
+      },
+      "revId": "bdf8a073c9e6449f0735c342f014d5ee6c608c4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ecf04dce_0fd8c37f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/intel/bt_connection_stability_with_wifi.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-09-28T10:56:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "693592c9_1190ef7c",
       "range": {
         "startLine": 241,
         "startChar": 0,
