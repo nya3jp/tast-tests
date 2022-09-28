@@ -51,6 +51,23 @@
       "parentUuid": "b35fab86_0c810e71",
       "revId": "d1bf1aed7db5eab2efb51159887de9ad18b8d690",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1dc46d1e_9cf58c29",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1377969
+      },
+      "writtenOn": "2022-09-28T00:57:13Z",
+      "side": 1,
+      "message": "I am pushing that: https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3881649\n\nso we can drop this",
+      "revId": "d1bf1aed7db5eab2efb51159887de9ad18b8d690",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
