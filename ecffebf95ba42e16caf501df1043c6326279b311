@@ -22,6 +22,29 @@
       },
       "revId": "ecffebf95ba42e16caf501df1043c6326279b311",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53fbebe4_67b8df77",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/flashrom_tester.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2022-09-28T04:45:47Z",
+      "side": 1,
+      "message": "make the raw flashrom subprocess calls their own mini helper functions. aklm will need to leverage off that for her work to consolidate them.",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 3
+      },
+      "revId": "ecffebf95ba42e16caf501df1043c6326279b311",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
