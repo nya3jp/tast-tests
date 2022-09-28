@@ -50,6 +50,24 @@
       "message": "I guess this means it no longer uses policy from the server side? That would mean other policies are also different than normal demo mode. Possibly the reason Play Store didn\u0027t show up for me.",
       "revId": "114cfda85adc9de92bf009b2cee84b9e6ec77657",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d362c0c_d9169023",
+        "filename": "src/chromiumos/tast/local/demomode/fixture/fixture.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1465072
+      },
+      "writtenOn": "2022-09-28T19:09:10Z",
+      "side": 1,
+      "message": "It actually only overrides the DeveloperToolsAvailability policy directly. All other policies are untouched (otherwise the Highlights App and Attract Loop Chrome Apps wouldn\u0027t show up at all, since they\u0027re force-installed via policy)",
+      "parentUuid": "80831988_c34d0c9e",
+      "revId": "114cfda85adc9de92bf009b2cee84b9e6ec77657",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
