@@ -6,7 +6,6 @@ package security
 
 import (
 	"context"
-	"syscall"
 
 	"golang.org/x/sys/unix"
 
@@ -63,9 +62,9 @@ func ProtocolFamilies(ctx context.Context, s *testing.State) {
 	// The socket type that succeeded is also returned.
 	familyAvailable := func(pf int) (avail bool, typ int) {
 		for _, typ := range types {
-			fd, err := syscall.Socket(pf, typ, 0)
+			fd, err := unix.Socket(pf, typ, 0)
 			if err == nil {
-				if err := syscall.Close(fd); err != nil {
+				if err := unix.Close(fd); err != nil {
 					s.Errorf("Failed to close socket with protocol family %v and type %v: %v", pf, typ, err)
 				}
 				return true, typ
