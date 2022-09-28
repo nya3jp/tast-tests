@@ -46,8 +46,6 @@ func init() {
 			Name:    "fake",
 			Fixture: "ccaLaunchedWithFakeCamera",
 			Val:     none,
-			// TODO(b/209833758): Removed from CQ due to flake in VM.
-			ExtraAttr: []string{"informational"},
 		}, {
 			Name:    "photo_fake",
 			Fixture: "ccaLaunchedWithFakeCamera",
