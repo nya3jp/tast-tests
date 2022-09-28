@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c590478e_891275ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/transcript_translation.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-09-28T06:23:57Z",
+      "side": 1,
+      "message": "Done. I created a new projectorRegularLogin fixture with fresh test account.",
+      "parentUuid": "ab68f731_53602032",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 37
+      },
+      "revId": "9f8c5f2717ca569347c465714b4affe1b9e1cd47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "34469d83_b392ff55",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5b22d06_40f374fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/transcript_translation.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-09-28T06:23:57Z",
+      "side": 1,
+      "message": "Done. I created a new projectorUnicornLogin fixture with fresh test accounts.",
+      "parentUuid": "34469d83_b392ff55",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 38
+      },
+      "revId": "9f8c5f2717ca569347c465714b4affe1b9e1cd47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c75434a0_583563cf",
@@ -77,6 +125,30 @@
       "writtenOn": "2022-09-27T14:33:19Z",
       "side": 1,
       "message": "IMO this a shortcut to add those fixtures to familylink code and use the credentials as general consumer and general EDU user.",
+      "range": {
+        "startLine": 161,
+        "startChar": 0,
+        "endLine": 192,
+        "endChar": 3
+      },
+      "revId": "9f8c5f2717ca569347c465714b4affe1b9e1cd47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "298f53fb_885d9930",
+        "filename": "src/chromiumos/tast/local/chrome/familylink/fixture.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-09-28T06:23:57Z",
+      "side": 1,
+      "message": "Done. I created a new projectorEduLogin fixture with fresh test account.",
+      "parentUuid": "c75434a0_583563cf",
       "range": {
         "startLine": 161,
         "startChar": 0,
