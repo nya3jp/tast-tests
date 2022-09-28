@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80831988_c34d0c9e",
+        "filename": "src/chromiumos/tast/local/demomode/fixture/fixture.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1519467
+      },
+      "writtenOn": "2022-09-28T18:46:13Z",
+      "side": 1,
+      "message": "I guess this means it no longer uses policy from the server side? That would mean other policies are also different than normal demo mode. Possibly the reason Play Store didn\u0027t show up for me.",
+      "revId": "114cfda85adc9de92bf009b2cee84b9e6ec77657",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

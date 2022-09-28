@@ -46,6 +46,30 @@
       },
       "revId": "b7ae6d4eeec0cb1e12c1c4583204ea97863d1ddf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bdf28606_849a0e2c",
+        "filename": "src/chromiumos/tast/local/demomode/fixture/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1519467
+      },
+      "writtenOn": "2022-09-28T18:46:13Z",
+      "side": 1,
+      "message": "This might be the reason that I saw crash when trying to wait for and open Play Store. But when I try this CL out, Play Store icon didn\u0027t show up on shelf.",
+      "parentUuid": "48fb9ddc_46904dbb",
+      "range": {
+        "startLine": 196,
+        "startChar": 1,
+        "endLine": 199,
+        "endChar": 2
+      },
+      "revId": "b7ae6d4eeec0cb1e12c1c4583204ea97863d1ddf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
