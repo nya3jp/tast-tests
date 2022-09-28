@@ -14,6 +14,8 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/cuj/inputsimulations"
+	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
@@ -216,6 +218,16 @@ func QuickCheckCUJ(ctx context.Context, s *testing.State) {
 		s.Log("Waiting to simulate a user passively reading the email thread (bottom scroll position)")
 		if err := testing.Sleep(ctx, 5*time.Second); err != nil {
 			return errors.Wrap(err, "failed to sleep (bottom scroll position)")
+		}
+
+		info, err := display.GetPrimaryInfo(ctx, tconn)
+		if err != nil {
+			return errors.Wrap(err, "failed to get the primary display info")
+		}
+
+		// Drag the mouse to ensure we collect additional mouse drag metrics.
+		if err := inputsimulations.RunDragMouseCycle(ctx, tconn, info); err != nil {
+			return err
 		}
 
 		// Navigate away to record PageLoad.PaintTiming.NavigationToLargestContentfulPaint2.
