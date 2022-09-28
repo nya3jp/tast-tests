@@ -16,6 +16,23 @@
       "message": "Unforunately hidehiko is OOO for a while.",
       "revId": "c9e64fd3322081b3589fb200d6c7df277f3cf76a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "464e6f92_7733515e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_service.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-09-28T03:37:25Z",
+      "side": 1,
+      "message": "For now, what about making MODE_UNSPECIFIED map to lacros.NotSpecified?",
+      "revId": "c9e64fd3322081b3589fb200d6c7df277f3cf76a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
