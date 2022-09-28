@@ -693,6 +693,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8de8d73a_583ebc2b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/expectations/expectations.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-09-28T19:36:25Z",
+      "side": 1,
+      "message": "Ok, lets start this without skip.",
+      "parentUuid": "ffe4d39a_299ad8bb",
+      "range": {
+        "startLine": 166,
+        "startChar": 0,
+        "endLine": 166,
+        "endChar": 31
+      },
+      "revId": "f2d6ee1d3f813acd870c314533cc5ac903f85e5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7ef3a106_024b26c1",

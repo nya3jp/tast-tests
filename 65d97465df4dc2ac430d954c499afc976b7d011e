@@ -16,6 +16,24 @@
       "message": "I have something of a judegment question. Do people think that \"Expected error:\" a reasonable error prefix for an \"ignored\" error?\n\nHere\u0027s a sample log line: `2022-09-16T21:08:09.457286Z [21:08:08.940] [Expected error: v4l2_stateful_decoder failed unexpectedly on test_vectors/vp9/Profile_0_8bit/frm_resize/crowd_run_256X144_fr15_bd8_frm_resize_l1.ivf:  command \"/usr/local/graphics/validate --exec\u003dv4l2_stateful_decoder --args\u003d--file\u003d/usr/local/share/tast/data_pushed/chromiumos/tast/local/bundles/cros/video/data/test_vectors/vp9/Profile_0_8bit/frm_resize/crowd_run_256X144_fr15_bd8_frm_resize_l1.ivf --md5\u003d/usr/local/tmp/tast/run_tmp/frame_checksums.1816940404.md5 --log_level\u003d1 --metadata\u003d/usr/local/share/tast/data_pushed/chromiumos/tast/local/bundles/cros/video/data/test_vectors/vp9/Profile_0_8bit/frm_resize/crowd_run_256X144_fr15_bd8_frm_resize_l1.ivf.json --md5\u003d/usr/local/tmp/tast/run_tmp/frame_checksums.1816940404.md5\" returned non-zero error code: exit status 1]`\n\nI am thinking that we need to be more descriptive. Maybe `Ignoring the following test error due to an expectations file: `? Thanks!\n\nAlso, I think I should move the prefix string to a constant to be shared within each of `Error`, `Errorf`, `Fatal` and `Fatalf` instead of repeating it.",
       "revId": "65d97465df4dc2ac430d954c499afc976b7d011e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc7ff9cc_526efd4f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/expectations/expectations.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-09-28T19:36:25Z",
+      "side": 1,
+      "message": "I am also very unhappy how Tast abuses control flow via \"Error\", \"Errorf\", \"Fatal*\" to obtain a FAIL.",
+      "parentUuid": "faf30fae_6b89f9de",
+      "revId": "65d97465df4dc2ac430d954c499afc976b7d011e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
