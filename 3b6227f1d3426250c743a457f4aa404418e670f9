@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d654cbaa_c0f0a9ac",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-09-28T22:06:17Z",
+      "side": 1,
+      "message": "CL changed slightly as another CL landed that had modification to the same file. The intent of the CL is still the same",
+      "revId": "3b6227f1d3426250c743a457f4aa404418e670f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
