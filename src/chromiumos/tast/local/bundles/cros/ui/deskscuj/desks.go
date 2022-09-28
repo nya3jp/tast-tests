@@ -15,7 +15,6 @@ import (
 	"chromiumos/tast/local/chrome/cuj"
 	"chromiumos/tast/local/chrome/cuj/inputsimulations"
 	"chromiumos/tast/local/chrome/display"
-	"chromiumos/tast/local/chrome/uiauto/mouse"
 	"chromiumos/tast/local/input"
 )
 
@@ -102,8 +101,6 @@ func setUpDesks(ctx context.Context, tconn, bTconn *chrome.TestConn, cs ash.Conn
 		return nil, 0, errors.Wrap(err, "failed to get the primary display info")
 	}
 
-	clickCenterOfDisplay := mouse.Click(tconn, info.Bounds.CenterPoint(), mouse.LeftButton)
-
 	var totalOpenWindows int
 	var onVisitActions []action.Action
 	for i, desk := range []struct {
@@ -120,6 +117,10 @@ func setUpDesks(ctx context.Context, tconn, bTconn *chrome.TestConn, cs ash.Conn
 				"https://docs.google.com/presentation/d/1lItrhkgBqXF_bsP-tOqbjcbBFa86--m3DT5cLxegR2k/edit?usp=sharing&resourcekey=0-FmuN4N-UehRS2q4CdQzRXA",
 			},
 			onVisitAction: func(ctx context.Context) error {
+				if err := inputsimulations.RunDragMouseCycle(ctx, tconn, info); err != nil {
+					return err
+				}
+
 				return inputsimulations.ScrollMouseDownFor(ctx, mw, 500*time.Millisecond, 6*time.Second)
 			},
 			expectedNumWindows: 6, // This includes the 5 websites defined in urls, and the additional window for RAM pressure.
@@ -132,8 +133,8 @@ func setUpDesks(ctx context.Context, tconn, bTconn *chrome.TestConn, cs ash.Conn
 				docsURL,
 			},
 			onVisitAction: func(ctx context.Context) error {
-				if err := clickCenterOfDisplay(ctx); err != nil {
-					return errors.Wrap(err, "failed to click the center of the display")
+				if err := inputsimulations.RunDragMouseCycle(ctx, tconn, info); err != nil {
+					return err
 				}
 
 				if err := inputsimulations.ScrollDownFor(ctx, tpw, tw, time.Second, 6*time.Second); err != nil {
@@ -149,10 +150,6 @@ func setUpDesks(ctx context.Context, tconn, bTconn *chrome.TestConn, cs ash.Conn
 				"https://webglsamples.org/aquarium/aquarium.html?numFish=1000",
 			},
 			onVisitAction: func(ctx context.Context) error {
-				if err := clickCenterOfDisplay(ctx); err != nil {
-					return errors.Wrap(err, "failed to click the center of the display")
-				}
-
 				return inputsimulations.MoveMouseFor(ctx, tconn, 6*time.Second)
 			},
 			expectedNumWindows: 2,

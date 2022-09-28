@@ -99,3 +99,24 @@ func RepeatMousePressFor(ctx context.Context, mw *input.MouseEventWriter, delay,
 		action.Sleep(delay),
 	))
 }
+
+// RunDragMouseCycle presses the left mouse button at the center of the
+// screen, and moves the mouse to the leftmost side of the screen and
+// then to the rightmost side, then releases the mouse back at the
+// center of the screen. This function can easily incorporate mouse
+// drag actions on the screen, by highlighting elements of the page
+// with minimal side effects for the test itself. This function works
+// best when the center of the screen is a highlightable webpage, such
+// as a Google Sheet or a Google Doc.
+func RunDragMouseCycle(ctx context.Context, tconn *chrome.TestConn, info *display.Info) error {
+	return action.Combine(
+		"drag mouse from center of page to the left and right sides and then back to the center",
+		mouse.Move(tconn, info.Bounds.CenterPoint(), 500*time.Millisecond),
+		mouse.Press(tconn, mouse.LeftButton),
+		mouse.Move(tconn, info.Bounds.LeftCenter(), 500*time.Millisecond),
+		mouse.Move(tconn, info.Bounds.RightCenter(), time.Second),
+		mouse.Move(tconn, info.Bounds.CenterPoint(), 500*time.Millisecond),
+		mouse.Release(tconn, mouse.LeftButton),
+		action.Sleep(500*time.Millisecond),
+	)(ctx)
+}

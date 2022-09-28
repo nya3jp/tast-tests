@@ -165,6 +165,11 @@ func GoogleSheetsCUJ(ctx context.Context, s *testing.State) {
 	}
 	defer mw.Close()
 
+	info, err := display.GetPrimaryInfo(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to get the primary display info: ", err)
+	}
+
 	if err := recorder.Run(ctx, func(ctx context.Context) error {
 		// Open Google Sheets file.
 		sheetConn, err := cs.NewConn(ctx, sheetURL, browser.WithNewWindow())
@@ -183,38 +188,56 @@ func GoogleSheetsCUJ(ctx context.Context, s *testing.State) {
 
 		s.Logf("Scrolling down the Google Sheets file for %s", overallScrollTimeout)
 
-		s.Log("Pressing down arrow")
-		ac := uiauto.New(tconn)
-		sheetBounds, err := ac.Location(ctx, nodewith.Role("genericContainer").HasClass("grid-scrollable-wrapper"))
-		if err != nil {
-			return errors.Wrap(err, "failed to get the sheet location on the display")
-		}
+		for _, scroller := range []struct {
+			description string
+			run         func(ctx context.Context) error
+		}{
+			{
+				description: "Pressing the down arrow with the mouse",
+				run: func(ctx context.Context) error {
+					sheetBounds, err := ui.Location(ctx, nodewith.Role("genericContainer").HasClass("grid-scrollable-wrapper"))
+					if err != nil {
+						return errors.Wrap(err, "failed to get the sheet location on the display")
+					}
 
-		// Select the point slightly to the right and above the bottom
-		// corner of the sheet bounds. This is where the down arrow is.
-		scrollArrowOffset := coords.NewPoint(4, -4)
-		downArrow := sheetBounds.BottomRight().Add(scrollArrowOffset)
-		if err := mouse.Move(tconn, downArrow, time.Second)(ctx); err != nil {
-			return errors.Wrap(err, "failed to move mouse to the down arrow")
-		}
+					// Select the point slightly to the right and above the bottom
+					// corner of the sheet bounds. This is where the down arrow is.
+					scrollArrowOffset := coords.NewPoint(4, -4)
+					downArrow := sheetBounds.BottomRight().Add(scrollArrowOffset)
+					if err := mouse.Move(tconn, downArrow, time.Second)(ctx); err != nil {
+						return errors.Wrap(err, "failed to move mouse to the down arrow")
+					}
 
-		if err := inputsimulations.RepeatMousePressFor(ctx, mw, 500*time.Millisecond, 3*time.Second, individualScrollTimeout); err != nil {
-			return errors.Wrap(err, "failed to scroll by clicking on the down arrow")
-		}
+					return inputsimulations.RepeatMousePressFor(ctx, mw, 500*time.Millisecond, 3*time.Second, individualScrollTimeout)
+				},
+			},
+			{
+				description: "Using the scroll wheel",
+				run: func(ctx context.Context) error {
+					return inputsimulations.ScrollMouseDownFor(ctx, mw, 200*time.Millisecond, individualScrollTimeout)
+				},
+			},
+			{
+				description: "Using trackpad gestures",
+				run: func(ctx context.Context) error {
+					return inputsimulations.ScrollDownFor(ctx, tpw, tw, 500*time.Millisecond, individualScrollTimeout)
+				},
+			},
+			{
+				description: "Using the down arrow key",
+				run: func(ctx context.Context) error {
+					return inputsimulations.RepeatKeyPressFor(ctx, kw, "Down", 500*time.Millisecond, individualScrollTimeout)
+				},
+			},
+		} {
+			s.Log(scroller.description)
+			if err := scroller.run(ctx); err != nil {
+				return errors.Wrapf(err, "failed to scroll %s", scroller.description)
+			}
 
-		s.Log("Using scroll wheel")
-		if err := inputsimulations.ScrollMouseDownFor(ctx, mw, 200*time.Millisecond, individualScrollTimeout); err != nil {
-			return errors.Wrap(err, "failed to scroll with scroll wheel")
-		}
-
-		s.Log("Using trackpad gestures")
-		if err := inputsimulations.ScrollDownFor(ctx, tpw, tw, 500*time.Millisecond, individualScrollTimeout); err != nil {
-			return errors.Wrap(err, "failed to scroll with trackpad")
-		}
-
-		s.Log("Using down arrow")
-		if err := inputsimulations.RepeatKeyPressFor(ctx, kw, "Down", 500*time.Millisecond, individualScrollTimeout); err != nil {
-			return errors.Wrap(err, "failed to scroll with down arrow key")
+			if err := inputsimulations.RunDragMouseCycle(ctx, tconn, info); err != nil {
+				return err
+			}
 		}
 
 		var scrollTop int
