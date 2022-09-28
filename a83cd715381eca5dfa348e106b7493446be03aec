@@ -55,6 +55,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "45581884_59159324",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/window_cycle_per_desk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-09-28T00:33:56Z",
+      "side": 1,
+      "message": "nit: don\u0027t really need this just yet (both tests are informational)",
+      "range": {
+        "startLine": 41,
+        "startChar": 3,
+        "endLine": 41,
+        "endChar": 48
+      },
+      "revId": "a83cd715381eca5dfa348e106b7493446be03aec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "560e36b9_8dd2ff83",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/window_cycle_per_desk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-09-28T00:33:56Z",
+      "side": 1,
+      "message": "Should this be coupled with a `continue` ? Otherwise it\u0027ll continue executing the functions below but overall fail. Might make sense to try it again in the next loop",
+      "range": {
+        "startLine": 88,
+        "startChar": 3,
+        "endLine": 88,
+        "endChar": 48
+      },
+      "revId": "a83cd715381eca5dfa348e106b7493446be03aec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "86b6da7b_4727e3ff",
         "filename": "src/chromiumos/tast/local/bundles/cros/wmp/window_cycle_per_desk.go",
         "patchSetId": 1
@@ -119,6 +165,144 @@
         "startChar": 4,
         "endLine": 109,
         "endChar": 5
+      },
+      "revId": "a83cd715381eca5dfa348e106b7493446be03aec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bdb036f7_6300d5ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/window_cycle_per_desk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-09-28T00:33:56Z",
+      "side": 1,
+      "message": "In the event that the for loop above failed to create all 7 new desks, 5 won\u0027t be available. Might be worth keeping a counter in the for loop for created desks, then after the for loop assert at least 5 have been successfully created, `Fatal` otherwise",
+      "range": {
+        "startLine": 110,
+        "startChar": 11,
+        "endLine": 110,
+        "endChar": 49
+      },
+      "revId": "a83cd715381eca5dfa348e106b7493446be03aec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "296a52e2_7ddacceb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/window_cycle_per_desk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-09-28T00:33:56Z",
+      "side": 1,
+      "message": "Can you be more descriptive here? If the error is already descriptive enough, just use `Fatal(err)` instead.",
+      "range": {
+        "startLine": 125,
+        "startChar": 11,
+        "endLine": 125,
+        "endChar": 16
+      },
+      "revId": "a83cd715381eca5dfa348e106b7493446be03aec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5f15730_b438d752",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/window_cycle_per_desk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-09-28T00:33:56Z",
+      "side": 1,
+      "message": "nit: traverse",
+      "range": {
+        "startLine": 128,
+        "startChar": 26,
+        "endLine": 128,
+        "endChar": 35
+      },
+      "revId": "a83cd715381eca5dfa348e106b7493446be03aec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e40e8278_cc7890e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/window_cycle_per_desk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-09-28T00:33:56Z",
+      "side": 1,
+      "message": "Include the `err` here",
+      "range": {
+        "startLine": 150,
+        "startChar": 36,
+        "endLine": 150,
+        "endChar": 38
+      },
+      "revId": "a83cd715381eca5dfa348e106b7493446be03aec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d273dad_fa2744d9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/window_cycle_per_desk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-09-28T00:33:56Z",
+      "side": 1,
+      "message": "any reason you don\u0027t just use `AccelPressAction(\"Alt+Tab\")` here?",
+      "range": {
+        "startLine": 163,
+        "startChar": 2,
+        "endLine": 165,
+        "endChar": 30
+      },
+      "revId": "a83cd715381eca5dfa348e106b7493446be03aec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "155d3efe_7f29fd73",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/window_cycle_per_desk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-09-28T00:33:56Z",
+      "side": 1,
+      "message": "Is this necessary? Is the WaitUntilGone not sufficient enough?",
+      "range": {
+        "startLine": 167,
+        "startChar": 2,
+        "endLine": 167,
+        "endChar": 29
       },
       "revId": "a83cd715381eca5dfa348e106b7493446be03aec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
