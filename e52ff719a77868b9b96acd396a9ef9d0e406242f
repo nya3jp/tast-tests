@@ -56,6 +56,30 @@
       },
       "revId": "e52ff719a77868b9b96acd396a9ef9d0e406242f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce08eefa_abb6983d",
+        "filename": "src/chromiumos/tast/local/chrome/projector/projector.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-09-28T18:45:10Z",
+      "side": 1,
+      "message": "Done. Setting the URL here directly doesn\u0027t work because it doesn\u0027t launch the SWA (not sure why). The line below that sets window.location.href or another reload seems to be necessary.",
+      "parentUuid": "28949d07_bd411e75",
+      "range": {
+        "startLine": 237,
+        "startChar": 30,
+        "endLine": 237,
+        "endChar": 41
+      },
+      "revId": "e52ff719a77868b9b96acd396a9ef9d0e406242f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
