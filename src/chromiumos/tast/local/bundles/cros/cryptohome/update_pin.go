@@ -99,7 +99,7 @@ func UpdatePin(ctx context.Context, s *testing.State) {
 	}
 
 	// Create and mount the persistent user.
-	authSessionID, err := client.StartAuthSession(ctx, userName, false /*ephemeral*/, uda.AuthIntent_AUTH_INTENT_DECRYPT)
+	_, authSessionID, err := client.StartAuthSession(ctx, userName, false /*ephemeral*/, uda.AuthIntent_AUTH_INTENT_DECRYPT)
 	if err != nil {
 		s.Fatal("Failed to start auth session: ", err)
 	}
@@ -119,7 +119,7 @@ func UpdatePin(ctx context.Context, s *testing.State) {
 
 	authenticatePasswordAuthFactor := func(password string) (string, error) {
 		// Authenticate a new auth session via the new added pin auth factor and mount the user.
-		authSessionID, err = client.StartAuthSession(ctx, userName, false /*ephemeral*/, uda.AuthIntent_AUTH_INTENT_DECRYPT)
+		_, authSessionID, err = client.StartAuthSession(ctx, userName, false /*ephemeral*/, uda.AuthIntent_AUTH_INTENT_DECRYPT)
 		if err != nil {
 			return "", errors.Wrap(err, "failed to start auth session for re-mounting")
 		}
@@ -149,7 +149,7 @@ func UpdatePin(ctx context.Context, s *testing.State) {
 
 	authenticatePinAuthFactor := func(pin string) (string, error) {
 		// Authenticate a new auth session via the new added pin auth factor and mount the user.
-		authSessionID, err = client.StartAuthSession(ctx, userName, false /*ephemeral*/, uda.AuthIntent_AUTH_INTENT_DECRYPT)
+		_, authSessionID, err = client.StartAuthSession(ctx, userName, false /*ephemeral*/, uda.AuthIntent_AUTH_INTENT_DECRYPT)
 		if err != nil {
 			return "", errors.Wrap(err, "failed to start auth session for re-mounting")
 		}
