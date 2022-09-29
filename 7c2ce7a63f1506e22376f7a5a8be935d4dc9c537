@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "67b57f73_01238a14",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1396815
+      },
+      "writtenOn": "2022-09-29T12:59:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0cc10501_8bcfab7a",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 48
+      },
+      "revId": "7c2ce7a63f1506e22376f7a5a8be935d4dc9c537",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f0ac9b3a_962528c2",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-09-29T11:06:56Z",
       "side": 1,
       "message": "What is the purpose of this change?",
+      "range": {
+        "startLine": 143,
+        "startChar": 0,
+        "endLine": 150,
+        "endChar": 49
+      },
+      "revId": "7c2ce7a63f1506e22376f7a5a8be935d4dc9c537",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a28801f9_d5c3bcf2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/screen_capture_allowed.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1396815
+      },
+      "writtenOn": "2022-09-29T12:59:49Z",
+      "side": 1,
+      "message": "This was part of gofmt\u0027s formatting of the file. I got a presubmit error that the file is not formatted with gofmt.",
+      "parentUuid": "f0ac9b3a_962528c2",
       "range": {
         "startLine": 143,
         "startChar": 0,
