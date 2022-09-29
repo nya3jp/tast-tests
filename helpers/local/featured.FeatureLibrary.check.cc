@@ -119,10 +119,14 @@ int main(int argc, char* argv[]) {
 
   TestFeatureState enabled_feature = GetTestFeatureStateAndParams(
       kCrOSLateBootDefaultEnabled, feature_lib.get());
+  LOG(INFO) << "Finished getting state and params for Default Enabled Feature";
 
   TestFeatureState disabled_feature = GetTestFeatureStateAndParams(
       kCrOSLateBootDefaultDisabled, feature_lib.get());
+  LOG(INFO) << "Finished getting state and params for Default Disabled Feature";
 
   LogTestFeatureState(enabled_feature);
+  LOG(INFO) << "Finished logging Default Enabled Feature";
   LogTestFeatureState(disabled_feature);
+  LOG(INFO) << "Finished logging Default Disabled Feature";
 }
