@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f33f6cd3_8e650e37",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1498402
+      },
+      "writtenOn": "2022-09-29T15:03:22Z",
+      "side": 1,
+      "message": "The latest patchsets (14 and 15) include comment and commit message fixes.",
+      "revId": "7f02edb6c0bfe62f75e5d1a5d47488e15e101605",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
