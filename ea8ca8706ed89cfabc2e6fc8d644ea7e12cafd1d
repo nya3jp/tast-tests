@@ -39,6 +39,30 @@
       },
       "revId": "ea8ca8706ed89cfabc2e6fc8d644ea7e12cafd1d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2213656_021d7adf",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-09-29T07:16:34Z",
+      "side": 1,
+      "message": "Just read the linked bug, thanks for CCing me!",
+      "parentUuid": "b0e7c9f5_27b40d24",
+      "range": {
+        "startLine": 35,
+        "startChar": 1,
+        "endLine": 35,
+        "endChar": 21
+      },
+      "revId": "ea8ca8706ed89cfabc2e6fc8d644ea7e12cafd1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
