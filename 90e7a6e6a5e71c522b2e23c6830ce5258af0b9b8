@@ -16,6 +16,69 @@
       "message": "nhebert@ PTAL\n\njchinlee@ if you file a bug to track in go/platformdecoding please\nfeel free to link this CL.\n\nOthers FYI",
       "revId": "90e7a6e6a5e71c522b2e23c6830ce5258af0b9b8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d5b5c51_f9da32fe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1498402
+      },
+      "writtenOn": "2022-09-29T18:52:38Z",
+      "side": 1,
+      "message": "LGTM with one optional feedback.",
+      "revId": "90e7a6e6a5e71c522b2e23c6830ce5258af0b9b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "103f89dd_d294dae1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1339,
+      "author": {
+        "id": 1498402
+      },
+      "writtenOn": "2022-09-29T18:52:38Z",
+      "side": 1,
+      "message": "Thanks. This helps readability!\n\nOptional: maybe move this to its own commit in case the FFMPEG test additions need to be reverted?",
+      "range": {
+        "startLine": 1339,
+        "startChar": 0,
+        "endLine": 1339,
+        "endChar": 60
+      },
+      "revId": "90e7a6e6a5e71c522b2e23c6830ce5258af0b9b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ab747cc_1f43de06",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1370,
+      "author": {
+        "id": 1498402
+      },
+      "writtenOn": "2022-09-29T18:52:38Z",
+      "side": 1,
+      "message": "Interesting. I should probably add these for V4L2 stateful tests.",
+      "range": {
+        "startLine": 1370,
+        "startChar": 34,
+        "endLine": 1370,
+        "endChar": 51
+      },
+      "revId": "90e7a6e6a5e71c522b2e23c6830ce5258af0b9b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
