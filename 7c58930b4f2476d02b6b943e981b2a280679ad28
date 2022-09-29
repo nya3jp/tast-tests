@@ -16,6 +16,24 @@
       "message": "Oh, don\u0027t change the license file comment",
       "revId": "7c58930b4f2476d02b6b943e981b2a280679ad28",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4711c6fc_f2de8fdf",
+        "filename": "src/chromiumos/tast/local/input/ioctl.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-09-29T23:46:58Z",
+      "side": 1,
+      "message": "Never mind. The original one is wrong.",
+      "parentUuid": "a67db97a_496b8af9",
+      "revId": "7c58930b4f2476d02b6b943e981b2a280679ad28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
