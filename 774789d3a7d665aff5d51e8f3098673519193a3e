@@ -103,6 +103,24 @@
       "message": "nit: Let\u0027s use a constant, e.g. testProxyConfig (defined below httpsPortalURL) and maybe just use \"test proxy config\" for the string so that it is not confused with the property key.",
       "revId": "774789d3a7d665aff5d51e8f3098673519193a3e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68c0ee1f_2263a407",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_http.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-09-29T22:47:54Z",
+      "side": 1,
+      "message": "Question here: are we fine with just using a string here, or should we try to make it some valid json string? I believe the `SetProxyConfig` does not do any validation for json string (https://source.corp.google.com/chromeos_public/src/platform2/shill/service.cc;rcl\u003d1522a981c4a6e982c2769e7901701f65fcd280ae;l\u003d2098)",
+      "parentUuid": "c00f5ae0_d819c63b",
+      "revId": "774789d3a7d665aff5d51e8f3098673519193a3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
