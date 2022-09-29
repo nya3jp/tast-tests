@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/arc/wm"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/display"
 	uiauto "chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/mouse"
@@ -70,39 +71,57 @@ type pipTestParams struct {
 	name       string
 	fn         pipTestFunc
 	initMethod initializationType
+	bT         browser.Type
 }
 
 var pipTests = []pipTestParams{
-	{name: "PIP Move", fn: testPIPMove, initMethod: enterPip},
-	{name: "PIP Resize To Max", fn: testPIPResizeToMax, initMethod: enterPip},
-	{name: "PIP GravityQuickSettings", fn: testPIPGravityQuickSettings, initMethod: enterPip},
-	{name: "PIP AutoPIP New Chrome Window", fn: testPIPAutoPIPNewChromeWindow, initMethod: startActivity},
-	{name: "PIP AutoPIP New Android Window", fn: testPIPAutoPIPNewAndroidWindow, initMethod: doNothing},
-	{name: "PIP AutoPIP Minimize", fn: testPIPAutoPIPMinimize, initMethod: startActivity},
-	{name: "PIP ExpandPIP Shelf Icon", fn: testPIPExpandViaShelfIcon, initMethod: startActivity},
-	{name: "PIP ExpandPIP Menu Touch", fn: testPIPExpandViaMenuTouch, initMethod: startActivity},
-	{name: "PIP Toggle Tablet mode", fn: testPIPToggleTabletMode, initMethod: enterPip},
+	{name: "PIP Move", fn: testPIPMove, initMethod: enterPip, bT: browser.TypeAsh},
+	{name: "PIP Resize To Max", fn: testPIPResizeToMax, initMethod: enterPip, bT: browser.TypeAsh},
+	{name: "PIP GravityQuickSettings", fn: testPIPGravityQuickSettings, initMethod: enterPip, bT: browser.TypeAsh},
+	{name: "PIP AutoPIP New Chrome Window", fn: testPIPAutoPIPNewChromeWindow, initMethod: startActivity, bT: browser.TypeAsh},
+	{name: "PIP AutoPIP New Android Window", fn: testPIPAutoPIPNewAndroidWindow, initMethod: doNothing, bT: browser.TypeAsh},
+	{name: "PIP AutoPIP Minimize", fn: testPIPAutoPIPMinimize, initMethod: startActivity, bT: browser.TypeAsh},
+	{name: "PIP ExpandPIP Shelf Icon", fn: testPIPExpandViaShelfIcon, initMethod: startActivity, bT: browser.TypeAsh},
+	{name: "PIP ExpandPIP Menu Touch", fn: testPIPExpandViaMenuTouch, initMethod: startActivity, bT: browser.TypeAsh},
+	{name: "PIP Toggle Tablet mode", fn: testPIPToggleTabletMode, initMethod: enterPip, bT: browser.TypeAsh},
+}
+
+var lacrospipTests = []pipTestParams{
+	{name: "PIP AutoPIP New Chrome Window", fn: testPIPAutoPIPNewChromeWindow, initMethod: startActivity, bT: browser.TypeLacros},
 }
 
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         PIP,
-		LacrosStatus: testing.LacrosVariantNeeded,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Checks that ARC++ Picture-in-Picture works as expected",
 		Contacts:     []string{"takise@chromium.org", "arc-framework+tast@google.com", "cros-arc-te@google.com"},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:arc-functional"},
-		Fixture:      "arcBooted",
 		Timeout:      4 * time.Minute,
 		Params: []testing.Param{{
 			Val:               pipTests,
 			ExtraAttr:         []string{"group:mainline", "informational"},
 			ExtraSoftwareDeps: []string{"android_p"},
+			Fixture:           "arcBooted",
+		}, {
+			Name:              "lacros",
+			Val:               lacrospipTests,
+			ExtraAttr:         []string{"group:mainline", "informational"},
+			ExtraSoftwareDeps: []string{"android_p", "lacros"},
+			Fixture:           "lacrosWithArcBooted",
 		}, {
 			Name:              "vm",
 			Val:               pipTests,
 			ExtraAttr:         []string{"group:mainline", "informational"},
 			ExtraSoftwareDeps: []string{"android_vm"},
+			Fixture:           "arcBooted",
+		}, {
+			Name:              "lacros_vm",
+			Val:               lacrospipTests,
+			ExtraAttr:         []string{"group:mainline", "informational"},
+			ExtraSoftwareDeps: []string{"android_vm", "lacros"},
+			Fixture:           "lacrosWithArcBooted",
 		}},
 	})
 }
