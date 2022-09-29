@@ -189,12 +189,6 @@ func DataCollector(ctx context.Context, s *testing.State) {
 		// needed for occasional OptIn instability on ARC development builds. Only
 		// lower count if for sure OptIn is completely stable.
 		retryCount = 2
-
-		// If true, TTS cache generation will run.
-		// TODO(b/225222472): TTS Cache usage causes significant percentage of newly classified
-		// ANRs in ARC. Please keep TTS Cache generation disabled by default or it can break
-		// uprev (b/249625651) until the feature is fixed and enabled again.
-		ttsCacheEnabled = false
 	)
 
 	d := s.DUT()
@@ -411,20 +405,18 @@ func DataCollector(ctx context.Context, s *testing.State) {
 		s.Log("Retrying generating ureadahead, previous attempt failed: ", err)
 	}
 
-	if ttsCacheEnabled {
-		attempts = 0
-		for {
-			err := genTTSCache(ctx, s, cl, filepath.Join(dataDir, ttsCache), v, &du)
-			if err == nil {
-				break
-			}
-			attempts = attempts + 1
-			dumpLogcat("tts", attempts)
-			if attempts > retryCount {
-				s.Fatal("Failed to generate TTS cache. No more retries left: ", err)
-			}
-			s.Log("Retrying generating TTS cache, previous attempt failed: ", err)
+	attempts = 0
+	for {
+		err := genTTSCache(ctx, s, cl, filepath.Join(dataDir, ttsCache), v, &du)
+		if err == nil {
+			break
 		}
+		attempts = attempts + 1
+		dumpLogcat("tts", attempts)
+		if attempts > retryCount {
+			s.Fatal("Failed to generate TTS cache. No more retries left: ", err)
+		}
+		s.Log("Retrying generating TTS cache, previous attempt failed: ", err)
 	}
 }
 
