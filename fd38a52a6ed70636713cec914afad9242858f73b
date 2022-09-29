@@ -33,6 +33,23 @@
       "message": "Thanks for fixing this.",
       "revId": "fd38a52a6ed70636713cec914afad9242858f73b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "90c8c4fd_48cd012a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2022-09-29T17:54:06Z",
+      "side": 1,
+      "message": "\u003e tast-remote-tests-cros-0.0.2-r12720: src/chromiumos/tast/local/bundles/cros/network/bluetooth_service.go:99:11: chromiumos/tast/errors.Wrapf format %s has arg req.Powered of wrong type bool",
+      "revId": "fd38a52a6ed70636713cec914afad9242858f73b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
