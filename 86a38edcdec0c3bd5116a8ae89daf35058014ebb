@@ -69,6 +69,23 @@
       "parentUuid": "943b7b69_813c74fd",
       "revId": "86a38edcdec0c3bd5116a8ae89daf35058014ebb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d0433c9_08af0cec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-09-29T05:57:43Z",
+      "side": 1,
+      "message": "Going a bit off-topic, does the connectivity diagnostics app work with lacros enabled? I just tested two corp chromebooks on the latest dev image and found it crashed consistently. not sure if it\u0027s just me. is there any bug to follow along?",
+      "revId": "86a38edcdec0c3bd5116a8ae89daf35058014ebb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
