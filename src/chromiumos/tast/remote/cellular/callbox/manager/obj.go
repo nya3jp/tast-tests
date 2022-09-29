@@ -4,6 +4,10 @@
 
 package manager
 
+import (
+	"fmt"
+)
+
 // ConfigureCallboxRequestBody is the request body for ConfigureCallbox requests.
 type ConfigureCallboxRequestBody struct {
 	Callbox       string   `json:"callbox,omitempty"`
@@ -15,6 +19,80 @@ type ConfigureCallboxRequestBody struct {
 // BeginSimulationRequestBody is the request body for BeginSimulation requests.
 type BeginSimulationRequestBody struct {
 	Callbox string `json:"callbox,omitempty"`
+}
+
+// RxPower is a predefined callbox Rx (downlink) power level in dBm.
+// Note: the CallboxManager expects these to be passed as strings.
+type RxPower string
+
+const (
+	// LteRxPowerExcellent is a predefined excellent downlink power level.
+	LteRxPowerExcellent RxPower = "-88"
+	// LteRxPowerHigh is a predefined high downlink power level.
+	LteRxPowerHigh = "-98"
+	// LteRxPowerMedium is a predefined medium downlink power level.
+	LteRxPowerMedium = "-108"
+	// LteRxPowerWeak is a predefined weak downlink power level.
+	LteRxPowerWeak = "-118"
+	// LteRxPowerDisconnected is a predefined disconnected downlink power level.
+	LteRxPowerDisconnected = "-170"
+)
+
+// NewRxPower returns a RxPower from an exact value in dBm.
+func NewRxPower(power float64) RxPower {
+	return RxPower(fmt.Sprintf("%f", power))
+}
+
+// ConfigureRxPowerRequestBody is the request body for ConfigureRxPower requests.
+type ConfigureRxPowerRequestBody struct {
+	Callbox string  `json:"callbox,omitempty"`
+	Power   RxPower `json:"pdl,omitempty"`
+}
+
+// TxPower is a predefined callbox Tx (uplink) power level in dBm.
+// Note: the CallboxManager expects these to be passed as strings.
+type TxPower string
+
+const (
+	// LteTxPowerMax is a predefined max uplink power level.
+	LteTxPowerMax TxPower = "24"
+	// LteTxPowerHigh is a predefined high uplink power level.
+	LteTxPowerHigh = "13"
+	// LteTxPowerMedium is a predefined medium uplink power level.
+	LteTxPowerMedium = "3"
+	// LteTxPowerLow is a predefined low uplink power level.
+	LteTxPowerLow = "-20"
+)
+
+// NewTxPower returns a TxPower from an exact value in dBm.
+func NewTxPower(power float64) TxPower {
+	return TxPower(fmt.Sprintf("%f", power))
+}
+
+// ConfigureTxPowerRequestBody is the request body for ConfigureTxPower requests.
+type ConfigureTxPowerRequestBody struct {
+	Callbox string  `json:"callbox,omitempty"`
+	Power   TxPower `json:"pul,omitempty"`
+}
+
+// FetchTxPowerRequestBody is the request body for FetchTxPower requests.
+type FetchTxPowerRequestBody struct {
+	Callbox string `json:"callbox,omitempty"`
+}
+
+// FetchTxPowerResponseBody is the response body for FetchTRxPower requests.
+type FetchTxPowerResponseBody struct {
+	Power float64 `json:"pul,omitempty"`
+}
+
+// FetchRxPowerRequestBody is the request body for FetchRxPower requests.
+type FetchRxPowerRequestBody struct {
+	Callbox string `json:"callbox,omitempty"`
+}
+
+// FetchRxPowerResponseBody is the response body for FetchRxPower requests.
+type FetchRxPowerResponseBody struct {
+	Power float64 `json:"pdl,omitempty"`
 }
 
 // SendSmsRequestBody is the request body for SendSms requests.
