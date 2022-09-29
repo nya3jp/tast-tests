@@ -10,6 +10,7 @@ import (
 	"time"
 
 	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/local/chrome/familylink"
 	"chromiumos/tast/local/chrome/projector"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/testing"
@@ -35,7 +36,7 @@ func CreationFlow(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 4*time.Minute)
 	defer cancel()
 
-	tconn := s.FixtValue().(*projector.FixtData).TestConn
+	tconn := s.FixtValue().(familylink.HasTestConn).TestConn()
 
 	defer faillog.DumpUITreeOnError(ctxForCleanUp, s.OutDir(), s.HasError, tconn)
 
