@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4de7963f_aeb67ace",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/virtual_desks_tablet_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-09-29T22:50:39Z",
+      "side": 1,
+      "message": "I believe there\u0027s an appropriate ARC fixture that can be used here. Please go through the list and choose one that fits your needs, then add it to this test:\n\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/arc/fixture.go?q\u003darcbooted",
+      "range": {
+        "startLine": 45,
+        "startChar": 1,
+        "endLine": 51,
+        "endChar": 2
+      },
+      "revId": "6d15c1a09dc4bee6821703ac0116a760f19842c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "66582662_b4878a26",
         "filename": "src/chromiumos/tast/local/bundles/cros/wmp/virtual_desks_tablet_mode.go",
         "patchSetId": 1
