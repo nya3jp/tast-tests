@@ -11,8 +11,9 @@ import (
 	"io/ioutil"
 	"os"
 	"path/filepath"
-	"syscall"
 	"time"
+
+	"golang.org/x/sys/unix"
 
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
@@ -72,7 +73,7 @@ func (n *Nebraska) Stop(s *testing.State, name string) error {
 	s.Log("Stopping Nebraska")
 	// Kill the Nebraska. with SIGINT so it has time to remove port/pid files
 	// and cleanup properly.
-	n.cmd.Signal(syscall.SIGINT)
+	n.cmd.Signal(unix.SIGINT)
 	n.cmd.Wait()
 
 	if !s.HasError() {
