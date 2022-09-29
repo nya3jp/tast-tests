@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28e0129b_8e6b988e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/crypto_api.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2022-09-29T17:58:43Z",
+      "side": 1,
+      "message": "nit: I don\u0027t think it\u0027s typical to update the copyright line every time you change something. Is there a reason for this?",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "43ecffea7196cb03e3f029c51e795078e2e090d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
