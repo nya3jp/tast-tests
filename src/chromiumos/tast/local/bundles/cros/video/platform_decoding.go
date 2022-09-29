@@ -2496,7 +2496,7 @@ func init() {
 				ExtraAttr:         []string{"graphics_video_vp8"},
 			},
 			{
-				Name: "ffmpeg_h264_baseline",
+				Name: "ffmpeg_vaapi_h264_baseline",
 				Val: platformDecodingParams{
 					filenames:      []string{"test_vectors/h264/baseline/AUD_MW_E.h264", "test_vectors/h264/baseline/BA1_Sony_D.h264", "test_vectors/h264/baseline/BA2_Sony_F.h264", "test_vectors/h264/baseline/BAMQ1_JVC_C.h264", "test_vectors/h264/baseline/BAMQ2_JVC_C.h264", "test_vectors/h264/baseline/BANM_MW_D.h264", "test_vectors/h264/baseline/BA_MW_D.h264", "test_vectors/h264/baseline/CI_MW_D.h264", "test_vectors/h264/baseline/CVSE2_Sony_B.h264", "test_vectors/h264/baseline/HCBP1_HHI_A.h264", "test_vectors/h264/baseline/HCBP2_HHI_A.h264", "test_vectors/h264/baseline/LS_SVA_D.h264", "test_vectors/h264/baseline/MIDR_MW_D.h264", "test_vectors/h264/baseline/MPS_MW_A.h264", "test_vectors/h264/baseline/MR1_MW_A.h264", "test_vectors/h264/baseline/MR2_MW_A.h264", "test_vectors/h264/baseline/NL1_Sony_D.h264", "test_vectors/h264/baseline/NL2_Sony_H.h264", "test_vectors/h264/baseline/NLMQ1_JVC_C.h264", "test_vectors/h264/baseline/NLMQ2_JVC_C.h264", "test_vectors/h264/baseline/NRF_MW_E.h264", "test_vectors/h264/baseline/SVA_BA1_B.h264", "test_vectors/h264/baseline/SVA_BA2_D.h264", "test_vectors/h264/baseline/SVA_NL1_B.h264", "test_vectors/h264/baseline/SVA_NL2_E.h264"},
 					decoder:        "/usr/local/graphics/ffmpeg_md5sum",
@@ -2508,7 +2508,7 @@ func init() {
 				ExtraAttr:         []string{"graphics_video_h264"},
 			},
 			{
-				Name: "ffmpeg_h264_main",
+				Name: "ffmpeg_vaapi_h264_main",
 				Val: platformDecodingParams{
 					filenames:      []string{"test_vectors/h264/main/CABA1_SVA_B.h264", "test_vectors/h264/main/CABA1_Sony_D.h264", "test_vectors/h264/main/CABA2_SVA_B.h264", "test_vectors/h264/main/CABA2_Sony_E.h264", "test_vectors/h264/main/CABA3_SVA_B.h264", "test_vectors/h264/main/CABA3_Sony_C.h264", "test_vectors/h264/main/CABA3_TOSHIBA_E.h264", "test_vectors/h264/main/CACQP3_Sony_D.h264", "test_vectors/h264/main/CANL1_SVA_B.h264", "test_vectors/h264/main/CANL1_Sony_E.h264", "test_vectors/h264/main/CANL1_TOSHIBA_G.h264", "test_vectors/h264/main/CANL2_SVA_B.h264", "test_vectors/h264/main/CANL2_Sony_E.h264", "test_vectors/h264/main/CANL3_SVA_B.h264", "test_vectors/h264/main/CANL3_Sony_C.h264", "test_vectors/h264/main/CANL4_SVA_B.h264", "test_vectors/h264/main/CAPCM1_Sand_E.h264", "test_vectors/h264/main/CAPCMNL1_Sand_E.h264", "test_vectors/h264/main/CAPM3_Sony_D.h264", "test_vectors/h264/main/CAQP1_Sony_B.h264", "test_vectors/h264/main/CAWP1_TOSHIBA_E.h264", "test_vectors/h264/main/CAWP5_TOSHIBA_E.h264", "test_vectors/h264/main/CVBS3_Sony_C.h264", "test_vectors/h264/main/CVPCMNL1_SVA_C.h264", "test_vectors/h264/main/CVPCMNL2_SVA_C.h264", "test_vectors/h264/main/CVSE3_Sony_H.h264", "test_vectors/h264/main/CVSEFDFT3_Sony_E.h264", "test_vectors/h264/main/CVWP1_TOSHIBA_E.h264", "test_vectors/h264/main/CVWP2_TOSHIBA_E.h264", "test_vectors/h264/main/CVWP3_TOSHIBA_E.h264", "test_vectors/h264/main/CVWP5_TOSHIBA_E.h264", "test_vectors/h264/main/NL3_SVA_E.h264", "test_vectors/h264/main/camp_mot_frm0_full.h264", "test_vectors/h264/main/cvmp_mot_frm0_full_B.h264", "test_vectors/h264/main/src19td.IBP.h264", "test_vectors/h264/main/HCMP1_HHI_A.h264"},
 					decoder:        "/usr/local/graphics/ffmpeg_md5sum",
@@ -2520,7 +2520,7 @@ func init() {
 				ExtraAttr:         []string{"graphics_video_h264"},
 			},
 			{
-				Name: "ffmpeg_h264_first_mb_in_slice",
+				Name: "ffmpeg_vaapi_h264_first_mb_in_slice",
 				Val: platformDecodingParams{
 					filenames:      []string{"test_vectors/h264/baseline/BA1_FT_C.h264", "test_vectors/h264/baseline/BASQP1_Sony_C.h264", "test_vectors/h264/baseline/CI1_FT_B.h264", "test_vectors/h264/baseline/SVA_Base_B.h264", "test_vectors/h264/baseline/SVA_CL1_E.h264", "test_vectors/h264/baseline/SVA_FM1_E.h264", "test_vectors/h264/baseline/MR1_BT_A.h264", "test_vectors/h264/main/CABACI3_Sony_B.h264", "test_vectors/h264/main/CABAST3_Sony_E.h264", "test_vectors/h264/main/CABASTBR3_Sony_B.h264", "test_vectors/h264/main/SL1_SVA_B.h264"},
 					decoder:        "/usr/local/graphics/ffmpeg_md5sum",
@@ -2530,6 +2530,138 @@ func init() {
 				ExtraSoftwareDeps: []string{"vaapi", "autotest-capability:hw_dec_vp8_1080_30"},
 				ExtraData:         []string{"test_vectors/h264/baseline/BA1_FT_C.h264", "test_vectors/h264/baseline/BA1_FT_C.h264.json", "test_vectors/h264/baseline/BASQP1_Sony_C.h264", "test_vectors/h264/baseline/BASQP1_Sony_C.h264.json", "test_vectors/h264/baseline/CI1_FT_B.h264", "test_vectors/h264/baseline/CI1_FT_B.h264.json", "test_vectors/h264/baseline/SVA_Base_B.h264", "test_vectors/h264/baseline/SVA_Base_B.h264.json", "test_vectors/h264/baseline/SVA_CL1_E.h264", "test_vectors/h264/baseline/SVA_CL1_E.h264.json", "test_vectors/h264/baseline/SVA_FM1_E.h264", "test_vectors/h264/baseline/SVA_FM1_E.h264.json", "test_vectors/h264/baseline/MR1_BT_A.h264", "test_vectors/h264/baseline/MR1_BT_A.h264.json", "test_vectors/h264/main/CABACI3_Sony_B.h264", "test_vectors/h264/main/CABACI3_Sony_B.h264.json", "test_vectors/h264/main/CABAST3_Sony_E.h264", "test_vectors/h264/main/CABAST3_Sony_E.h264.json", "test_vectors/h264/main/CABASTBR3_Sony_B.h264", "test_vectors/h264/main/CABASTBR3_Sony_B.h264.json", "test_vectors/h264/main/SL1_SVA_B.h264", "test_vectors/h264/main/SL1_SVA_B.h264.json"},
 				ExtraAttr:         []string{"graphics_video_h264"},
+			},
+			{
+				Name: "ffmpeg_vaapi_hevc_main",
+				Val: platformDecodingParams{
+					filenames:      []string{"test_vectors/hevc/main/AMP_A_Samsung_7.hevc", "test_vectors/hevc/main/AMP_B_Samsung_7.hevc", "test_vectors/hevc/main/AMP_D_Hisilicon.hevc", "test_vectors/hevc/main/AMP_E_Hisilicon.hevc", "test_vectors/hevc/main/AMP_F_Hisilicon_3.hevc", "test_vectors/hevc/main/AMVP_A_MTK_4.hevc", "test_vectors/hevc/main/AMVP_B_MTK_4.hevc", "test_vectors/hevc/main/AMVP_C_Samsung_7.hevc", "test_vectors/hevc/main/CAINIT_A_SHARP_4.hevc", "test_vectors/hevc/main/CAINIT_B_SHARP_4.hevc", "test_vectors/hevc/main/CAINIT_C_SHARP_3.hevc", "test_vectors/hevc/main/CAINIT_D_SHARP_3.hevc", "test_vectors/hevc/main/CAINIT_E_SHARP_3.hevc", "test_vectors/hevc/main/CAINIT_F_SHARP_3.hevc", "test_vectors/hevc/main/CAINIT_G_SHARP_3.hevc", "test_vectors/hevc/main/CAINIT_H_SHARP_3.hevc", "test_vectors/hevc/main/CIP_A_Panasonic_3.hevc", "test_vectors/hevc/main/cip_B_NEC_3.hevc", "test_vectors/hevc/main/CIP_C_Panasonic_2.hevc", "test_vectors/hevc/main/DBLK_A_SONY_3.hevc", "test_vectors/hevc/main/DBLK_B_SONY_3.hevc", "test_vectors/hevc/main/DBLK_C_SONY_3.hevc", "test_vectors/hevc/main/DBLK_D_VIXS_2.hevc", "test_vectors/hevc/main/DBLK_E_VIXS_2.hevc", "test_vectors/hevc/main/DBLK_F_VIXS_2.hevc", "test_vectors/hevc/main/DBLK_G_VIXS_2.hevc", "test_vectors/hevc/main/DELTAQP_A_BRCM_4.hevc", "test_vectors/hevc/main/DELTAQP_B_SONY_3.hevc", "test_vectors/hevc/main/DELTAQP_C_SONY_3.hevc", "test_vectors/hevc/main/DSLICE_A_HHI_5.hevc", "test_vectors/hevc/main/DSLICE_B_HHI_5.hevc", "test_vectors/hevc/main/DSLICE_C_HHI_5.hevc", "test_vectors/hevc/main/ENTP_A_Qualcomm_1.hevc", "test_vectors/hevc/main/ENTP_B_Qualcomm_1.hevc", "test_vectors/hevc/main/ENTP_C_Qualcomm_1.hevc", "test_vectors/hevc/main/EXT_A_ericsson_4.hevc", "test_vectors/hevc/main/FILLER_A_Sony_1.hevc", "test_vectors/hevc/main/HRD_A_Fujitsu_3.hevc", "test_vectors/hevc/main/INITQP_A_Sony_1.hevc", "test_vectors/hevc/main/ipcm_A_NEC_3.hevc", "test_vectors/hevc/main/ipcm_B_NEC_3.hevc", "test_vectors/hevc/main/ipcm_C_NEC_3.hevc", "test_vectors/hevc/main/ipcm_D_NEC_3.hevc", "test_vectors/hevc/main/ipcm_E_NEC_2.hevc", "test_vectors/hevc/main/IPRED_A_docomo_2.hevc", "test_vectors/hevc/main/IPRED_C_Mitsubishi_3.hevc", "test_vectors/hevc/main/LS_A_Orange_2.hevc", "test_vectors/hevc/main/LS_B_Orange_4.hevc", "test_vectors/hevc/main/LTRPSPS_A_Qualcomm_1.hevc", "test_vectors/hevc/main/MAXBINS_A_TI_5.hevc", "test_vectors/hevc/main/MAXBINS_B_TI_5.hevc", "test_vectors/hevc/main/MAXBINS_C_TI_5.hevc", "test_vectors/hevc/main/MERGE_A_TI_3.hevc", "test_vectors/hevc/main/MERGE_B_TI_3.hevc", "test_vectors/hevc/main/MERGE_C_TI_3.hevc", "test_vectors/hevc/main/MERGE_D_TI_3.hevc", "test_vectors/hevc/main/MERGE_E_TI_3.hevc", "test_vectors/hevc/main/MERGE_F_MTK_4.hevc", "test_vectors/hevc/main/MERGE_G_HHI_4.hevc", "test_vectors/hevc/main/MVCLIP_A_qualcomm_3.hevc", "test_vectors/hevc/main/MVDL1ZERO_A_docomo_4.hevc", "test_vectors/hevc/main/MVEDGE_A_qualcomm_3.hevc", "test_vectors/hevc/main/OPFLAG_A_Qualcomm_1.hevc", "test_vectors/hevc/main/OPFLAG_B_Qualcomm_1.hevc", "test_vectors/hevc/main/OPFLAG_C_Qualcomm_1.hevc", "test_vectors/hevc/main/PMERGE_A_TI_3.hevc", "test_vectors/hevc/main/PMERGE_B_TI_3.hevc", "test_vectors/hevc/main/PMERGE_C_TI_3.hevc", "test_vectors/hevc/main/PMERGE_D_TI_3.hevc", "test_vectors/hevc/main/PMERGE_E_TI_3.hevc", "test_vectors/hevc/main/PPS_A_qualcomm_7.hevc", "test_vectors/hevc/main/PS_B_VIDYO_3.hevc", "test_vectors/hevc/main/RPLM_A_qualcomm_4.hevc", "test_vectors/hevc/main/RPS_A_docomo_5.hevc", "test_vectors/hevc/main/RPS_B_qualcomm_5.hevc", "test_vectors/hevc/main/RPS_E_qualcomm_5.hevc", "test_vectors/hevc/main/RPS_F_docomo_2.hevc", "test_vectors/hevc/main/RQT_A_HHI_4.hevc", "test_vectors/hevc/main/RQT_B_HHI_4.hevc", "test_vectors/hevc/main/RQT_C_HHI_4.hevc", "test_vectors/hevc/main/RQT_D_HHI_4.hevc", "test_vectors/hevc/main/RQT_E_HHI_4.hevc", "test_vectors/hevc/main/RQT_F_HHI_4.hevc", "test_vectors/hevc/main/RQT_G_HHI_4.hevc", "test_vectors/hevc/main/SAO_A_MediaTek_4.hevc", "test_vectors/hevc/main/SAO_B_MediaTek_5.hevc", "test_vectors/hevc/main/SAO_C_Samsung_5.hevc", "test_vectors/hevc/main/SAODBLK_A_MainConcept_4.hevc", "test_vectors/hevc/main/SAODBLK_B_MainConcept_4.hevc", "test_vectors/hevc/main/SAO_D_Samsung_5.hevc", "test_vectors/hevc/main/SAO_E_Canon_4.hevc", "test_vectors/hevc/main/SAO_F_Canon_3.hevc", "test_vectors/hevc/main/SAO_G_Canon_3.hevc", "test_vectors/hevc/main/SAO_H_Parabola_1.hevc", "test_vectors/hevc/main/SDH_A_Orange_4.hevc", "test_vectors/hevc/main/SLICES_A_Rovi_3.hevc", "test_vectors/hevc/main/SLPPLP_A_VIDYO_2.hevc", "test_vectors/hevc/main/STRUCT_A_Samsung_7.hevc", "test_vectors/hevc/main/STRUCT_B_Samsung_7.hevc", "test_vectors/hevc/main/TILES_A_Cisco_2.hevc", "test_vectors/hevc/main/TILES_B_Cisco_1.hevc", "test_vectors/hevc/main/TMVP_A_MS_3.hevc", "test_vectors/hevc/main/TSCL_A_VIDYO_5.hevc", "test_vectors/hevc/main/TSCL_B_VIDYO_4.hevc", "test_vectors/hevc/main/TSKIP_A_MS_3.hevc", "test_vectors/hevc/main/TUSIZE_A_Samsung_1.hevc", "test_vectors/hevc/main/VPSID_A_VIDYO_2.hevc", "test_vectors/hevc/main/WP_A_Toshiba_3.hevc", "test_vectors/hevc/main/WP_B_Toshiba_3.hevc", "test_vectors/hevc/main/WPP_A_ericsson_MAIN_2.hevc", "test_vectors/hevc/main/WPP_B_ericsson_MAIN_2.hevc", "test_vectors/hevc/main/WPP_C_ericsson_MAIN_2.hevc", "test_vectors/hevc/main/WPP_D_ericsson_MAIN_2.hevc", "test_vectors/hevc/main/WPP_E_ericsson_MAIN_2.hevc", "test_vectors/hevc/main/WPP_F_ericsson_MAIN_2.hevc", "test_vectors/hevc/main_still_picture/IPRED_B_Nokia_3.hevc"},
+					decoder:        "/usr/local/graphics/ffmpeg_md5sum",
+					commandBuilder: ffmpegMD5VAAPIargs,
+				},
+				Timeout:           10 * time.Minute,
+				ExtraSoftwareDeps: []string{"vaapi", "autotest-capability:hw_dec_hevc_1080_30"},
+				ExtraData:         []string{"test_vectors/hevc/main/AMP_A_Samsung_7.hevc", "test_vectors/hevc/main/AMP_A_Samsung_7.hevc.json", "test_vectors/hevc/main/AMP_B_Samsung_7.hevc", "test_vectors/hevc/main/AMP_B_Samsung_7.hevc.json", "test_vectors/hevc/main/AMP_D_Hisilicon.hevc", "test_vectors/hevc/main/AMP_D_Hisilicon.hevc.json", "test_vectors/hevc/main/AMP_E_Hisilicon.hevc", "test_vectors/hevc/main/AMP_E_Hisilicon.hevc.json", "test_vectors/hevc/main/AMP_F_Hisilicon_3.hevc", "test_vectors/hevc/main/AMP_F_Hisilicon_3.hevc.json", "test_vectors/hevc/main/AMVP_A_MTK_4.hevc", "test_vectors/hevc/main/AMVP_A_MTK_4.hevc.json", "test_vectors/hevc/main/AMVP_B_MTK_4.hevc", "test_vectors/hevc/main/AMVP_B_MTK_4.hevc.json", "test_vectors/hevc/main/AMVP_C_Samsung_7.hevc", "test_vectors/hevc/main/AMVP_C_Samsung_7.hevc.json", "test_vectors/hevc/main/CAINIT_A_SHARP_4.hevc", "test_vectors/hevc/main/CAINIT_A_SHARP_4.hevc.json", "test_vectors/hevc/main/CAINIT_B_SHARP_4.hevc", "test_vectors/hevc/main/CAINIT_B_SHARP_4.hevc.json", "test_vectors/hevc/main/CAINIT_C_SHARP_3.hevc", "test_vectors/hevc/main/CAINIT_C_SHARP_3.hevc.json", "test_vectors/hevc/main/CAINIT_D_SHARP_3.hevc", "test_vectors/hevc/main/CAINIT_D_SHARP_3.hevc.json", "test_vectors/hevc/main/CAINIT_E_SHARP_3.hevc", "test_vectors/hevc/main/CAINIT_E_SHARP_3.hevc.json", "test_vectors/hevc/main/CAINIT_F_SHARP_3.hevc", "test_vectors/hevc/main/CAINIT_F_SHARP_3.hevc.json", "test_vectors/hevc/main/CAINIT_G_SHARP_3.hevc", "test_vectors/hevc/main/CAINIT_G_SHARP_3.hevc.json", "test_vectors/hevc/main/CAINIT_H_SHARP_3.hevc", "test_vectors/hevc/main/CAINIT_H_SHARP_3.hevc.json", "test_vectors/hevc/main/CIP_A_Panasonic_3.hevc", "test_vectors/hevc/main/CIP_A_Panasonic_3.hevc.json", "test_vectors/hevc/main/cip_B_NEC_3.hevc", "test_vectors/hevc/main/cip_B_NEC_3.hevc.json", "test_vectors/hevc/main/CIP_C_Panasonic_2.hevc", "test_vectors/hevc/main/CIP_C_Panasonic_2.hevc.json", "test_vectors/hevc/main/DBLK_A_SONY_3.hevc", "test_vectors/hevc/main/DBLK_A_SONY_3.hevc.json", "test_vectors/hevc/main/DBLK_B_SONY_3.hevc", "test_vectors/hevc/main/DBLK_B_SONY_3.hevc.json", "test_vectors/hevc/main/DBLK_C_SONY_3.hevc", "test_vectors/hevc/main/DBLK_C_SONY_3.hevc.json", "test_vectors/hevc/main/DBLK_D_VIXS_2.hevc", "test_vectors/hevc/main/DBLK_D_VIXS_2.hevc.json", "test_vectors/hevc/main/DBLK_E_VIXS_2.hevc", "test_vectors/hevc/main/DBLK_E_VIXS_2.hevc.json", "test_vectors/hevc/main/DBLK_F_VIXS_2.hevc", "test_vectors/hevc/main/DBLK_F_VIXS_2.hevc.json", "test_vectors/hevc/main/DBLK_G_VIXS_2.hevc", "test_vectors/hevc/main/DBLK_G_VIXS_2.hevc.json", "test_vectors/hevc/main/DELTAQP_A_BRCM_4.hevc", "test_vectors/hevc/main/DELTAQP_A_BRCM_4.hevc.json", "test_vectors/hevc/main/DELTAQP_B_SONY_3.hevc", "test_vectors/hevc/main/DELTAQP_B_SONY_3.hevc.json", "test_vectors/hevc/main/DELTAQP_C_SONY_3.hevc", "test_vectors/hevc/main/DELTAQP_C_SONY_3.hevc.json", "test_vectors/hevc/main/DSLICE_A_HHI_5.hevc", "test_vectors/hevc/main/DSLICE_A_HHI_5.hevc.json", "test_vectors/hevc/main/DSLICE_B_HHI_5.hevc", "test_vectors/hevc/main/DSLICE_B_HHI_5.hevc.json", "test_vectors/hevc/main/DSLICE_C_HHI_5.hevc", "test_vectors/hevc/main/DSLICE_C_HHI_5.hevc.json", "test_vectors/hevc/main/ENTP_A_Qualcomm_1.hevc", "test_vectors/hevc/main/ENTP_A_Qualcomm_1.hevc.json", "test_vectors/hevc/main/ENTP_B_Qualcomm_1.hevc", "test_vectors/hevc/main/ENTP_B_Qualcomm_1.hevc.json", "test_vectors/hevc/main/ENTP_C_Qualcomm_1.hevc", "test_vectors/hevc/main/ENTP_C_Qualcomm_1.hevc.json", "test_vectors/hevc/main/EXT_A_ericsson_4.hevc", "test_vectors/hevc/main/EXT_A_ericsson_4.hevc.json", "test_vectors/hevc/main/FILLER_A_Sony_1.hevc", "test_vectors/hevc/main/FILLER_A_Sony_1.hevc.json", "test_vectors/hevc/main/HRD_A_Fujitsu_3.hevc", "test_vectors/hevc/main/HRD_A_Fujitsu_3.hevc.json", "test_vectors/hevc/main/INITQP_A_Sony_1.hevc", "test_vectors/hevc/main/INITQP_A_Sony_1.hevc.json", "test_vectors/hevc/main/ipcm_A_NEC_3.hevc", "test_vectors/hevc/main/ipcm_A_NEC_3.hevc.json", "test_vectors/hevc/main/ipcm_B_NEC_3.hevc", "test_vectors/hevc/main/ipcm_B_NEC_3.hevc.json", "test_vectors/hevc/main/ipcm_C_NEC_3.hevc", "test_vectors/hevc/main/ipcm_C_NEC_3.hevc.json", "test_vectors/hevc/main/ipcm_D_NEC_3.hevc", "test_vectors/hevc/main/ipcm_D_NEC_3.hevc.json", "test_vectors/hevc/main/ipcm_E_NEC_2.hevc", "test_vectors/hevc/main/ipcm_E_NEC_2.hevc.json", "test_vectors/hevc/main/IPRED_A_docomo_2.hevc", "test_vectors/hevc/main/IPRED_A_docomo_2.hevc.json", "test_vectors/hevc/main/IPRED_C_Mitsubishi_3.hevc", "test_vectors/hevc/main/IPRED_C_Mitsubishi_3.hevc.json", "test_vectors/hevc/main/LS_A_Orange_2.hevc", "test_vectors/hevc/main/LS_A_Orange_2.hevc.json", "test_vectors/hevc/main/LS_B_Orange_4.hevc", "test_vectors/hevc/main/LS_B_Orange_4.hevc.json", "test_vectors/hevc/main/LTRPSPS_A_Qualcomm_1.hevc", "test_vectors/hevc/main/LTRPSPS_A_Qualcomm_1.hevc.json", "test_vectors/hevc/main/MAXBINS_A_TI_5.hevc", "test_vectors/hevc/main/MAXBINS_A_TI_5.hevc.json", "test_vectors/hevc/main/MAXBINS_B_TI_5.hevc", "test_vectors/hevc/main/MAXBINS_B_TI_5.hevc.json", "test_vectors/hevc/main/MAXBINS_C_TI_5.hevc", "test_vectors/hevc/main/MAXBINS_C_TI_5.hevc.json", "test_vectors/hevc/main/MERGE_A_TI_3.hevc", "test_vectors/hevc/main/MERGE_A_TI_3.hevc.json", "test_vectors/hevc/main/MERGE_B_TI_3.hevc", "test_vectors/hevc/main/MERGE_B_TI_3.hevc.json", "test_vectors/hevc/main/MERGE_C_TI_3.hevc", "test_vectors/hevc/main/MERGE_C_TI_3.hevc.json", "test_vectors/hevc/main/MERGE_D_TI_3.hevc", "test_vectors/hevc/main/MERGE_D_TI_3.hevc.json", "test_vectors/hevc/main/MERGE_E_TI_3.hevc", "test_vectors/hevc/main/MERGE_E_TI_3.hevc.json", "test_vectors/hevc/main/MERGE_F_MTK_4.hevc", "test_vectors/hevc/main/MERGE_F_MTK_4.hevc.json", "test_vectors/hevc/main/MERGE_G_HHI_4.hevc", "test_vectors/hevc/main/MERGE_G_HHI_4.hevc.json", "test_vectors/hevc/main/MVCLIP_A_qualcomm_3.hevc", "test_vectors/hevc/main/MVCLIP_A_qualcomm_3.hevc.json", "test_vectors/hevc/main/MVDL1ZERO_A_docomo_4.hevc", "test_vectors/hevc/main/MVDL1ZERO_A_docomo_4.hevc.json", "test_vectors/hevc/main/MVEDGE_A_qualcomm_3.hevc", "test_vectors/hevc/main/MVEDGE_A_qualcomm_3.hevc.json", "test_vectors/hevc/main/OPFLAG_A_Qualcomm_1.hevc", "test_vectors/hevc/main/OPFLAG_A_Qualcomm_1.hevc.json", "test_vectors/hevc/main/OPFLAG_B_Qualcomm_1.hevc", "test_vectors/hevc/main/OPFLAG_B_Qualcomm_1.hevc.json", "test_vectors/hevc/main/OPFLAG_C_Qualcomm_1.hevc", "test_vectors/hevc/main/OPFLAG_C_Qualcomm_1.hevc.json", "test_vectors/hevc/main/PMERGE_A_TI_3.hevc", "test_vectors/hevc/main/PMERGE_A_TI_3.hevc.json", "test_vectors/hevc/main/PMERGE_B_TI_3.hevc", "test_vectors/hevc/main/PMERGE_B_TI_3.hevc.json", "test_vectors/hevc/main/PMERGE_C_TI_3.hevc", "test_vectors/hevc/main/PMERGE_C_TI_3.hevc.json", "test_vectors/hevc/main/PMERGE_D_TI_3.hevc", "test_vectors/hevc/main/PMERGE_D_TI_3.hevc.json", "test_vectors/hevc/main/PMERGE_E_TI_3.hevc", "test_vectors/hevc/main/PMERGE_E_TI_3.hevc.json", "test_vectors/hevc/main/PPS_A_qualcomm_7.hevc", "test_vectors/hevc/main/PPS_A_qualcomm_7.hevc.json", "test_vectors/hevc/main/PS_B_VIDYO_3.hevc", "test_vectors/hevc/main/PS_B_VIDYO_3.hevc.json", "test_vectors/hevc/main/RPLM_A_qualcomm_4.hevc", "test_vectors/hevc/main/RPLM_A_qualcomm_4.hevc.json", "test_vectors/hevc/main/RPS_A_docomo_5.hevc", "test_vectors/hevc/main/RPS_A_docomo_5.hevc.json", "test_vectors/hevc/main/RPS_B_qualcomm_5.hevc", "test_vectors/hevc/main/RPS_B_qualcomm_5.hevc.json", "test_vectors/hevc/main/RPS_E_qualcomm_5.hevc", "test_vectors/hevc/main/RPS_E_qualcomm_5.hevc.json", "test_vectors/hevc/main/RPS_F_docomo_2.hevc", "test_vectors/hevc/main/RPS_F_docomo_2.hevc.json", "test_vectors/hevc/main/RQT_A_HHI_4.hevc", "test_vectors/hevc/main/RQT_A_HHI_4.hevc.json", "test_vectors/hevc/main/RQT_B_HHI_4.hevc", "test_vectors/hevc/main/RQT_B_HHI_4.hevc.json", "test_vectors/hevc/main/RQT_C_HHI_4.hevc", "test_vectors/hevc/main/RQT_C_HHI_4.hevc.json", "test_vectors/hevc/main/RQT_D_HHI_4.hevc", "test_vectors/hevc/main/RQT_D_HHI_4.hevc.json", "test_vectors/hevc/main/RQT_E_HHI_4.hevc", "test_vectors/hevc/main/RQT_E_HHI_4.hevc.json", "test_vectors/hevc/main/RQT_F_HHI_4.hevc", "test_vectors/hevc/main/RQT_F_HHI_4.hevc.json", "test_vectors/hevc/main/RQT_G_HHI_4.hevc", "test_vectors/hevc/main/RQT_G_HHI_4.hevc.json", "test_vectors/hevc/main/SAO_A_MediaTek_4.hevc", "test_vectors/hevc/main/SAO_A_MediaTek_4.hevc.json", "test_vectors/hevc/main/SAO_B_MediaTek_5.hevc", "test_vectors/hevc/main/SAO_B_MediaTek_5.hevc.json", "test_vectors/hevc/main/SAO_C_Samsung_5.hevc", "test_vectors/hevc/main/SAO_C_Samsung_5.hevc.json", "test_vectors/hevc/main/SAODBLK_A_MainConcept_4.hevc", "test_vectors/hevc/main/SAODBLK_A_MainConcept_4.hevc.json", "test_vectors/hevc/main/SAODBLK_B_MainConcept_4.hevc", "test_vectors/hevc/main/SAODBLK_B_MainConcept_4.hevc.json", "test_vectors/hevc/main/SAO_D_Samsung_5.hevc", "test_vectors/hevc/main/SAO_D_Samsung_5.hevc.json", "test_vectors/hevc/main/SAO_E_Canon_4.hevc", "test_vectors/hevc/main/SAO_E_Canon_4.hevc.json", "test_vectors/hevc/main/SAO_F_Canon_3.hevc", "test_vectors/hevc/main/SAO_F_Canon_3.hevc.json", "test_vectors/hevc/main/SAO_G_Canon_3.hevc", "test_vectors/hevc/main/SAO_G_Canon_3.hevc.json", "test_vectors/hevc/main/SAO_H_Parabola_1.hevc", "test_vectors/hevc/main/SAO_H_Parabola_1.hevc.json", "test_vectors/hevc/main/SDH_A_Orange_4.hevc", "test_vectors/hevc/main/SDH_A_Orange_4.hevc.json", "test_vectors/hevc/main/SLICES_A_Rovi_3.hevc", "test_vectors/hevc/main/SLICES_A_Rovi_3.hevc.json", "test_vectors/hevc/main/SLPPLP_A_VIDYO_2.hevc", "test_vectors/hevc/main/SLPPLP_A_VIDYO_2.hevc.json", "test_vectors/hevc/main/STRUCT_A_Samsung_7.hevc", "test_vectors/hevc/main/STRUCT_A_Samsung_7.hevc.json", "test_vectors/hevc/main/STRUCT_B_Samsung_7.hevc", "test_vectors/hevc/main/STRUCT_B_Samsung_7.hevc.json", "test_vectors/hevc/main/TILES_A_Cisco_2.hevc", "test_vectors/hevc/main/TILES_A_Cisco_2.hevc.json", "test_vectors/hevc/main/TILES_B_Cisco_1.hevc", "test_vectors/hevc/main/TILES_B_Cisco_1.hevc.json", "test_vectors/hevc/main/TMVP_A_MS_3.hevc", "test_vectors/hevc/main/TMVP_A_MS_3.hevc.json", "test_vectors/hevc/main/TSCL_A_VIDYO_5.hevc", "test_vectors/hevc/main/TSCL_A_VIDYO_5.hevc.json", "test_vectors/hevc/main/TSCL_B_VIDYO_4.hevc", "test_vectors/hevc/main/TSCL_B_VIDYO_4.hevc.json", "test_vectors/hevc/main/TSKIP_A_MS_3.hevc", "test_vectors/hevc/main/TSKIP_A_MS_3.hevc.json", "test_vectors/hevc/main/TUSIZE_A_Samsung_1.hevc", "test_vectors/hevc/main/TUSIZE_A_Samsung_1.hevc.json", "test_vectors/hevc/main/VPSID_A_VIDYO_2.hevc", "test_vectors/hevc/main/VPSID_A_VIDYO_2.hevc.json", "test_vectors/hevc/main/WP_A_Toshiba_3.hevc", "test_vectors/hevc/main/WP_A_Toshiba_3.hevc.json", "test_vectors/hevc/main/WP_B_Toshiba_3.hevc", "test_vectors/hevc/main/WP_B_Toshiba_3.hevc.json", "test_vectors/hevc/main/WPP_A_ericsson_MAIN_2.hevc", "test_vectors/hevc/main/WPP_A_ericsson_MAIN_2.hevc.json", "test_vectors/hevc/main/WPP_B_ericsson_MAIN_2.hevc", "test_vectors/hevc/main/WPP_B_ericsson_MAIN_2.hevc.json", "test_vectors/hevc/main/WPP_C_ericsson_MAIN_2.hevc", "test_vectors/hevc/main/WPP_C_ericsson_MAIN_2.hevc.json", "test_vectors/hevc/main/WPP_D_ericsson_MAIN_2.hevc", "test_vectors/hevc/main/WPP_D_ericsson_MAIN_2.hevc.json", "test_vectors/hevc/main/WPP_E_ericsson_MAIN_2.hevc", "test_vectors/hevc/main/WPP_E_ericsson_MAIN_2.hevc.json", "test_vectors/hevc/main/WPP_F_ericsson_MAIN_2.hevc", "test_vectors/hevc/main/WPP_F_ericsson_MAIN_2.hevc.json", "test_vectors/hevc/main_still_picture/IPRED_B_Nokia_3.hevc", "test_vectors/hevc/main_still_picture/IPRED_B_Nokia_3.hevc.json"},
+				ExtraAttr:         []string{"graphics_video_hevc"},
+			},
+			{
+				Name: "ffmpeg_vaapi_hevc_main_bug_239819547",
+				Val: platformDecodingParams{
+					filenames:      []string{"test_vectors/hevc/main/BUMPING_A_ericsson_1.hevc", "test_vectors/hevc/main/NoOutPrior_B_Qualcomm_1.hevc"},
+					decoder:        "/usr/local/graphics/ffmpeg_md5sum",
+					commandBuilder: ffmpegMD5VAAPIargs,
+				},
+				Timeout:           1 * time.Minute,
+				ExtraSoftwareDeps: []string{"vaapi", "autotest-capability:hw_dec_hevc_1080_30"},
+				ExtraData:         []string{"test_vectors/hevc/main/BUMPING_A_ericsson_1.hevc", "test_vectors/hevc/main/BUMPING_A_ericsson_1.hevc.json", "test_vectors/hevc/main/NoOutPrior_B_Qualcomm_1.hevc", "test_vectors/hevc/main/NoOutPrior_B_Qualcomm_1.hevc.json"},
+				ExtraAttr:         []string{"graphics_video_hevc"},
+			},
+			{
+				Name: "ffmpeg_vaapi_hevc_main_bug_239927523",
+				Val: platformDecodingParams{
+					filenames:      []string{"test_vectors/hevc/main/NUT_A_ericsson_5.hevc", "test_vectors/hevc/main/RAP_A_docomo_6.hevc", "test_vectors/hevc/main/RAP_B_Bossen_2.hevc"},
+					decoder:        "/usr/local/graphics/ffmpeg_md5sum",
+					commandBuilder: ffmpegMD5VAAPIargs,
+				},
+				Timeout:           1 * time.Minute,
+				ExtraSoftwareDeps: []string{"vaapi", "autotest-capability:hw_dec_hevc_1080_30"},
+				ExtraData:         []string{"test_vectors/hevc/main/NUT_A_ericsson_5.hevc", "test_vectors/hevc/main/NUT_A_ericsson_5.hevc.json", "test_vectors/hevc/main/RAP_A_docomo_6.hevc", "test_vectors/hevc/main/RAP_A_docomo_6.hevc.json", "test_vectors/hevc/main/RAP_B_Bossen_2.hevc", "test_vectors/hevc/main/RAP_B_Bossen_2.hevc.json"},
+				ExtraAttr:         []string{"graphics_video_hevc"},
+			},
+			{
+				Name: "ffmpeg_vaapi_hevc_main_bug_239936640",
+				Val: platformDecodingParams{
+					filenames:      []string{"test_vectors/hevc/main/SLIST_A_Sony_5.hevc", "test_vectors/hevc/main/SLIST_B_Sony_9.hevc", "test_vectors/hevc/main/SLIST_C_Sony_4.hevc", "test_vectors/hevc/main/SLIST_D_Sony_9.hevc"},
+					decoder:        "/usr/local/graphics/ffmpeg_md5sum",
+					commandBuilder: ffmpegMD5VAAPIargs,
+				},
+				Timeout:           1 * time.Minute,
+				ExtraSoftwareDeps: []string{"vaapi", "autotest-capability:hw_dec_hevc_1080_30"},
+				ExtraData:         []string{"test_vectors/hevc/main/SLIST_A_Sony_5.hevc", "test_vectors/hevc/main/SLIST_A_Sony_5.hevc.json", "test_vectors/hevc/main/SLIST_B_Sony_9.hevc", "test_vectors/hevc/main/SLIST_B_Sony_9.hevc.json", "test_vectors/hevc/main/SLIST_C_Sony_4.hevc", "test_vectors/hevc/main/SLIST_C_Sony_4.hevc.json", "test_vectors/hevc/main/SLIST_D_Sony_9.hevc", "test_vectors/hevc/main/SLIST_D_Sony_9.hevc.json"},
+				ExtraAttr:         []string{"graphics_video_hevc"},
+			},
+			{
+				Name: "ffmpeg_vaapi_hevc_main_bug_241727534",
+				Val: platformDecodingParams{
+					filenames:      []string{"test_vectors/hevc/main/RPLM_B_qualcomm_4.hevc"},
+					decoder:        "/usr/local/graphics/ffmpeg_md5sum",
+					commandBuilder: ffmpegMD5VAAPIargs,
+				},
+				Timeout:           1 * time.Minute,
+				ExtraSoftwareDeps: []string{"vaapi", "autotest-capability:hw_dec_hevc_1080_30"},
+				ExtraData:         []string{"test_vectors/hevc/main/RPLM_B_qualcomm_4.hevc", "test_vectors/hevc/main/RPLM_B_qualcomm_4.hevc.json"},
+				ExtraAttr:         []string{"graphics_video_hevc"},
+			},
+			{
+				Name: "ffmpeg_vaapi_hevc_main_bug_241731425",
+				Val: platformDecodingParams{
+					filenames:      []string{"test_vectors/hevc/main/VPSSPSPPS_A_MainConcept_1.hevc"},
+					decoder:        "/usr/local/graphics/ffmpeg_md5sum",
+					commandBuilder: ffmpegMD5VAAPIargs,
+				},
+				Timeout:           1 * time.Minute,
+				ExtraSoftwareDeps: []string{"vaapi", "autotest-capability:hw_dec_hevc_1080_30"},
+				ExtraData:         []string{"test_vectors/hevc/main/VPSSPSPPS_A_MainConcept_1.hevc", "test_vectors/hevc/main/VPSSPSPPS_A_MainConcept_1.hevc.json"},
+				ExtraAttr:         []string{"graphics_video_hevc"},
+			},
+			{
+				Name: "ffmpeg_vaapi_hevc_main_bug_241731431",
+				Val: platformDecodingParams{
+					filenames:      []string{"test_vectors/hevc/main/RPS_D_ericsson_6.hevc"},
+					decoder:        "/usr/local/graphics/ffmpeg_md5sum",
+					commandBuilder: ffmpegMD5VAAPIargs,
+				},
+				Timeout:           1 * time.Minute,
+				ExtraSoftwareDeps: []string{"vaapi", "autotest-capability:hw_dec_hevc_1080_30"},
+				ExtraData:         []string{"test_vectors/hevc/main/RPS_D_ericsson_6.hevc", "test_vectors/hevc/main/RPS_D_ericsson_6.hevc.json"},
+				ExtraAttr:         []string{"graphics_video_hevc"},
+			},
+			{
+				Name: "ffmpeg_vaapi_hevc_main_bug_241733687",
+				Val: platformDecodingParams{
+					filenames:      []string{"test_vectors/hevc/main/CONFWIN_A_Sony_1.hevc"},
+					decoder:        "/usr/local/graphics/ffmpeg_md5sum",
+					commandBuilder: ffmpegMD5VAAPIargs,
+				},
+				Timeout:           1 * time.Minute,
+				ExtraSoftwareDeps: []string{"vaapi", "autotest-capability:hw_dec_hevc_1080_30"},
+				ExtraData:         []string{"test_vectors/hevc/main/CONFWIN_A_Sony_1.hevc", "test_vectors/hevc/main/CONFWIN_A_Sony_1.hevc.json"},
+				ExtraAttr:         []string{"graphics_video_hevc"},
+			},
+			{
+				Name: "ffmpeg_vaapi_hevc_main_bug_241772308",
+				Val: platformDecodingParams{
+					filenames:      []string{"test_vectors/hevc/main/NoOutPrior_A_Qualcomm_1.hevc"},
+					decoder:        "/usr/local/graphics/ffmpeg_md5sum",
+					commandBuilder: ffmpegMD5VAAPIargs,
+				},
+				Timeout:           1 * time.Minute,
+				ExtraSoftwareDeps: []string{"vaapi", "autotest-capability:hw_dec_hevc_1080_30"},
+				ExtraData:         []string{"test_vectors/hevc/main/NoOutPrior_A_Qualcomm_1.hevc", "test_vectors/hevc/main/NoOutPrior_A_Qualcomm_1.hevc.json"},
+				ExtraAttr:         []string{"graphics_video_hevc"},
+			},
+			{
+				Name: "ffmpeg_vaapi_hevc_main_bug_241775056",
+				Val: platformDecodingParams{
+					filenames:      []string{"test_vectors/hevc/main/POC_A_Bossen_3.hevc"},
+					decoder:        "/usr/local/graphics/ffmpeg_md5sum",
+					commandBuilder: ffmpegMD5VAAPIargs,
+				},
+				Timeout:           1 * time.Minute,
+				ExtraSoftwareDeps: []string{"vaapi", "autotest-capability:hw_dec_hevc_1080_30"},
+				ExtraData:         []string{"test_vectors/hevc/main/POC_A_Bossen_3.hevc", "test_vectors/hevc/main/POC_A_Bossen_3.hevc.json"},
+				ExtraAttr:         []string{"graphics_video_hevc"},
+			},
+			{
+				Name: "ffmpeg_vaapi_hevc_main_bug_242708185",
+				Val: platformDecodingParams{
+					filenames:      []string{"test_vectors/hevc/main/RPS_C_ericsson_5.hevc"},
+					decoder:        "/usr/local/graphics/ffmpeg_md5sum",
+					commandBuilder: ffmpegMD5VAAPIargs,
+				},
+				Timeout:           1 * time.Minute,
+				ExtraSoftwareDeps: []string{"vaapi", "autotest-capability:hw_dec_hevc_1080_30"},
+				ExtraData:         []string{"test_vectors/hevc/main/RPS_C_ericsson_5.hevc", "test_vectors/hevc/main/RPS_C_ericsson_5.hevc.json"},
+				ExtraAttr:         []string{"graphics_video_hevc"},
 			},
 		},
 	})

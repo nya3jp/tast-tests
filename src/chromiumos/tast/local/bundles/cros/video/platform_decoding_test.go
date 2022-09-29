@@ -1336,7 +1336,7 @@ func TestPlatformDecodingParams(t *testing.T) {
 		files := h264Files[group]
 
 		param := paramData{
-			Name:         fmt.Sprintf("ffmpeg_h264_%s", group),
+			Name:         fmt.Sprintf("ffmpeg_vaapi_h264_%s", group),
 			Decoder:      ffmpegMD5Path,
 			CmdBuilder:   "ffmpegMD5VAAPIargs",
 			Files:        files,
@@ -1346,6 +1346,47 @@ func TestPlatformDecodingParams(t *testing.T) {
 			Attr:         []string{"graphics_video_h264"},
 		}
 		params = append(params, param)
+	}
+
+	// Generate ffmpeg HEVC tests.
+	for _, group := range []string{"main"} {
+		files := hevcFiles[group]
+
+		param := paramData{
+			Name:         fmt.Sprintf("ffmpeg_vaapi_hevc_%s", group),
+			Decoder:      ffmpegMD5Path,
+			CmdBuilder:   "ffmpegMD5VAAPIargs",
+			Files:        files,
+			Timeout:      defaultTimeout,
+			SoftwareDeps: []string{"vaapi", caps.HWDecodeHEVC},
+			Metadata:     genExtraData(files),
+			Attr:         []string{"graphics_video_hevc"},
+		}
+		params = append(params, param)
+	}
+
+	// Generate ffmpeg HEVC tests from bugs.
+	for _, testGroup := range []string{"main"} {
+		bugIDs := make([]string, 0, len(hevcFilesFromBugs[testGroup]))
+		// Sort the keys so the order of output of the tests is deterministic.
+		for k := range hevcFilesFromBugs[testGroup] {
+			bugIDs = append(bugIDs, k)
+		}
+		sort.Strings(bugIDs)
+		for _, bugID := range bugIDs {
+			files := hevcFilesFromBugs[testGroup][bugID]
+
+			params = append(params, paramData{
+				Name:         fmt.Sprintf("ffmpeg_vaapi_hevc_%s_bug_%s", testGroup, bugID),
+				Decoder:      ffmpegMD5Path,
+				CmdBuilder:   "ffmpegMD5VAAPIargs",
+				Files:        files,
+				Timeout:      time.Minute,
+				SoftwareDeps: []string{"vaapi", caps.HWDecodeHEVC},
+				Metadata:     genExtraData(files),
+				Attr:         []string{"graphics_video_hevc"},
+			})
+		}
 	}
 
 	code := genparams.Template(t, `{{ range . }}{
