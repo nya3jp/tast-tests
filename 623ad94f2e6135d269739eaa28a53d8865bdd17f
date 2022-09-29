@@ -3,6 +3,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2763843a_bfb8d977",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/answer_cards.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-09-29T00:40:13Z",
+      "side": 1,
+      "message": "could you also specify `Timeout` field?",
+      "range": {
+        "startLine": 33,
+        "startChar": 26,
+        "endLine": 33,
+        "endChar": 30
+      },
+      "revId": "623ad94f2e6135d269739eaa28a53d8865bdd17f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "074469df_7d804637",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/answer_cards.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-09-29T00:40:13Z",
+      "side": 1,
+      "message": "you can use `uiauto.Retry(...)` instead of implementing the retry logic yourself here.",
+      "range": {
+        "startLine": 138,
+        "startChar": 1,
+        "endLine": 139,
+        "endChar": 31
+      },
+      "revId": "623ad94f2e6135d269739eaa28a53d8865bdd17f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b660fec6_e0b5e537",
         "filename": "src/chromiumos/tast/local/bundles/cros/launcher/answer_cards.go",
         "patchSetId": 6
