@@ -13,8 +13,9 @@ import (
 	"regexp"
 	"strconv"
 	"sync"
-	"syscall"
 	"time"
+
+	"golang.org/x/sys/unix"
 
 	"chromiumos/tast/common/testexec"
 	upstartcommon "chromiumos/tast/common/upstart"
@@ -91,7 +92,7 @@ func MeasureProcessUsage(ctx context.Context, duration time.Duration,
 			if !ok {
 				retErr = errors.Wrap(err, "failed to get wait status")
 				testing.ContextLog(ctx, retErr)
-			} else if !ws.Signaled() || ws.Signal() != syscall.SIGKILL {
+			} else if !ws.Signaled() || ws.Signal() != unix.SIGKILL {
 				retErr = errors.Wrap(err, "process did not terminate with SIGKILL signal")
 				testing.ContextLog(ctx, retErr)
 			}
@@ -241,11 +242,11 @@ type cpuConfigEntry struct {
 // set to always run at their maximum frequency. A function is returned so the
 // caller can restore the original CPU frequency scaling configuration.
 // Depending on the platform different mechanisms are present:
-//  - Some Intel-based platforms (e.g. Eve and Nocturne) ignore the values set
-//    in the scaling_governor, and instead use the intel_pstate application to
-//    control CPU frequency scaling.
-//  - Most platforms use the scaling_governor to control CPU frequency scaling.
-//  - Some platforms (e.g. Dru) use a different CPU frequency scaling governor.
+//   - Some Intel-based platforms (e.g. Eve and Nocturne) ignore the values set
+//     in the scaling_governor, and instead use the intel_pstate application to
+//     control CPU frequency scaling.
+//   - Most platforms use the scaling_governor to control CPU frequency scaling.
+//   - Some platforms (e.g. Dru) use a different CPU frequency scaling governor.
 func disableCPUFrequencyScaling(ctx context.Context) (func(ctx context.Context) error, error) {
 	configPatterns := []cpuConfigEntry{
 		// crbug.com/938729: BIOS settings might prevent us from overwriting intel_pstate/no_turbo.
