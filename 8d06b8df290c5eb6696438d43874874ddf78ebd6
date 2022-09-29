@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "715b2169_a9c2a97f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-09-29T13:32:03Z",
+      "side": 1,
+      "message": "nit: I think there\u0027s some spacing issues in this line?",
+      "revId": "8d06b8df290c5eb6696438d43874874ddf78ebd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "85ef1b62_fa5747e9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-09-29T13:32:03Z",
+      "side": 1,
+      "message": "Can you check the permission for the drive file? I can\u0027t see it.",
+      "revId": "8d06b8df290c5eb6696438d43874874ddf78ebd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
