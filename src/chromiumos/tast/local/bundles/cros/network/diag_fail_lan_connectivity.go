@@ -16,7 +16,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         DiagFailLANConnectivity,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantNeeded,
 		Desc:         "Tests that the LANConnectivity network diagnostic test fails when ethernet is disabled",
 		Contacts: []string{
 			"khegde@chromium.org",            // test maintainer
