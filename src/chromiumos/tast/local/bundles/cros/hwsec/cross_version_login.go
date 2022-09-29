@@ -16,6 +16,7 @@ import (
 	"github.com/google/go-cmp/cmp"
 	"github.com/google/go-cmp/cmp/cmpopts"
 
+	uda "chromiumos/system_api/user_data_auth_proto"
 	"chromiumos/tast/common/hwsec"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
@@ -398,6 +399,11 @@ func testConfigViaCryptohome(ctx context.Context, lf hwsec.LogFunc, cryptohome *
 		return errors.Errorf("unknown auth type %d", authConfig.AuthType)
 	}
 
+	authID, err := cryptohome.StartAuthSession(ctx, username, false /* isEphemeral */, uda.AuthIntent_AUTH_INTENT_DECRYPT)
+	if err != nil {
+		return errors.Wrap(err, "failed to start auth session")
+	}
+
 	// Common check
 	labels, err := cryptohome.ListVaultKeys(ctx, username)
 	if err != nil {
@@ -419,7 +425,11 @@ func testConfigViaCryptohome(ctx context.Context, lf hwsec.LogFunc, cryptohome *
 		if _, err := cryptohome.CheckVault(ctx, keyLabel, &authConfig); err != nil {
 			return errors.Wrap(err, "failed to check vault")
 		}
+		if err := cryptohome.AuthenticateChallengeCredentialWithAuthSession(ctx, authID, keyLabel, &authConfig); err != nil {
+			return errors.Wrap(err, "failed to authenticate challenge Credentail with auth session")
+		}
 	case hwsec.PassAuth:
+		// VaultKeySet check
 		if err := testCheckKey(ctx, cryptohome, username, util.NewVaultKeyInfo(password, keyLabel, false), invalidPassword); err != nil {
 			return errors.Wrap(err, "failed to properly check key")
 		}
@@ -446,6 +456,13 @@ func testConfigViaCryptohome(ctx context.Context, lf hwsec.LogFunc, cryptohome *
 		}
 		if err := testMigrateKey(ctx, cryptohome, username, password, keyLabel, changedPassword, invalidPassword); err != nil {
 			return errors.Wrap(err, "failed to properly migrate key")
+		}
+		// AuthSession check
+		if err := cryptohome.AuthenticateAuthSession(ctx, password, keyLabel, authID, false); err != nil {
+			return errors.Wrap(err, "failed to authenticate auth session")
+		}
+		if err := cryptohome.AuthenticateAuthSession(ctx, invalidPassword, keyLabel, authID, false); err == nil {
+			return errors.Wrap(err, "unexpectedly authenticate auth session with invalid password")
 		}
 	}
 
