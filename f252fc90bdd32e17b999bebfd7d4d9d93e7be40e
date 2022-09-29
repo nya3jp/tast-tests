@@ -3,6 +3,121 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ef0efdd4_bf5fdbef",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/fixtures/services_on_boot_fixt.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2022-09-29T19:16:05Z",
+      "side": 1,
+      "message": "Is this only because of limitations of log demarkation? See below about croslog.\n\nBut I guess another problem is if a lot of tests have run before this fixture, they might have purposely induced service failures, which would cause this test to flake.\n\nSo maybe you need this reboot either way, but if so, you should document it.",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 2
+      },
+      "revId": "f252fc90bdd32e17b999bebfd7d4d9d93e7be40e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc97d87b_0623d34b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/fixtures/services_on_boot_fixt.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2022-09-29T19:16:05Z",
+      "side": 1,
+      "message": "this seems pretty suspect, per:\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#contexts-and-timeouts\n\n\"Sleeping without polling for a condition is discouraged, since it makes tests flakier (when the sleep duration isn\u0027t long enough) or slower (when the duration is too long).\"\n\nIs there something specific we can wait for? Maybe one of the \"wait for CPU activity to subside\" helpers? I think most of those check for temperature (WaitUntilCoolDown()), although I\u0027m not sure if that\u0027s a great fit.",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 34
+      },
+      "revId": "f252fc90bdd32e17b999bebfd7d4d9d93e7be40e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "002dcd7d_35becf1d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/fixtures/services_on_boot_fixt.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2022-09-29T19:16:05Z",
+      "side": 1,
+      "message": "dmesg doesn\u0027t have a very large ring buffer, so it wouldn\u0027t be unheard of for this to cycle out pretty quick. It also *requires* you to reboot, since it very well might have been cleared (see above notes).\n\nHow about using croslog, which tracks reboots nicely, and collates a few different log sources?\n\ne.g.:\n\n```\nlocalhost ~ # start early-failure\nstart: Job failed to start\nlocalhost ~ # croslog --boot --identifier\u003dkernel | grep \u0027init: .* process\u0027\n2022-09-29T01:22:21.381381Z WARNING kernel: [    1.083212] init: early-failure main process (250) terminated with status 124\n2022-09-29T01:22:25.733729Z WARNING kernel: [    7.592595] init: failsafe-delay main process (863) killed by TERM signal\n2022-09-29T01:22:28.541788Z WARNING kernel: [   10.401191] init: ac-only pre-start process (3129) terminated with status 1\n2022-09-29T01:22:35.886785Z WARNING kernel: [   17.745797] init: send-uptime-metrics main process (2106) terminated with status 2\n2022-09-29T01:29:23.233098Z WARNING kernel: [  425.091912] init: ml-service (mojo_service) post-start process (5212) terminated with status 2\n2022-09-29T18:22:58.275848Z WARNING kernel: [61240.132419] init: early-failure main process (9870) terminated with status 124\n```\n\nThen you don\u0027t really *have* to reboot at all. (Or if you want a clean reboot still, you could have a fixture that only ensures a fresh/clean reboot, and the rest of this test could be a local test.)\n\n+yoshiki",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 86,
+        "endChar": 33
+      },
+      "revId": "f252fc90bdd32e17b999bebfd7d4d9d93e7be40e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a1dbfb8_365cb485",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/services_on_boot.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2022-09-29T19:16:05Z",
+      "side": 1,
+      "message": "I\u0027ll defer to Tast owners, but this \"fixture\" doesn\u0027t really feel like a fixture. It\u0027s actually the meat of your test, and it makes some pretty important assumptions about tests (for example, that they don\u0027t reboot, or induce any other service failures). And I doubt it\u0027s reusable beyond this test.\n\nIs there a reason you don\u0027t just import the fixture logic into this test? I don\u0027t even think there\u0027s all that much value in making these sub-cases (\u003ctest-name\u003e.smoke, \u003ctest-name\u003e.cras, etc.). Can\u0027t they simply be line items in a single test?\n\nI guess one reason not to combine: if different services are likely to have different levels of reliability, and need to be disabled/exonerated/marked-informational individually over time.",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 44
+      },
+      "revId": "f252fc90bdd32e17b999bebfd7d4d9d93e7be40e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d058194d_ed57f71b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/services_on_boot.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2022-09-29T19:16:05Z",
+      "side": 1,
+      "message": "you\u0027ve done all this nice work on parsing out every service; would it be useful to make a case that checks that *nothing* unexpected fails? We really shouldn\u0027t have arbitrary jobs failing, and they are the source of all kinds of problems (not to mention log spam, which adds mental burden on developers). That\u0027s also more likely to prevent all kinds of future issues, with services we\u0027re not paying special attention to.",
+      "range": {
+        "startLine": 27,
+        "startChar": 2,
+        "endLine": 27,
+        "endChar": 8
+      },
+      "revId": "f252fc90bdd32e17b999bebfd7d4d9d93e7be40e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c2b4043a_13558e3e",
         "filename": "src/chromiumos/tast/remote/bundles/cros/platform/services_on_boot.go",
         "patchSetId": 4
