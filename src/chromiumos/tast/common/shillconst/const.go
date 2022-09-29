@@ -136,6 +136,7 @@ const (
 	ServicePropertyGUID              = "GUID"
 	ServicePropertyProvider          = "Provider"
 	ServicePropertyPriority          = "Priority"
+	ServicePropertyProxyConfig       = "ProxyConfig"
 	ServicePropertyEphemeralPriority = "EphemeralPriority"
 	ServicePropertyCheckPortal       = "CheckPortal"
 
