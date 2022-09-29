@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ac8316d_d5d6ff0d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1518777
+      },
+      "writtenOn": "2022-09-29T23:11:52Z",
+      "side": 1,
+      "message": "Because syscall package is locked down. Callers should use the corresponding package in the golang.org/x/sys repository instead. https://b.corp.google.com/issues/187787902\nthank you for asking",
+      "parentUuid": "9e2e9915_d83edee0",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 80
+      },
+      "revId": "a6877376293abc9d938c07e0673ab9ac9bd2b1b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d49227fc_215dc5fa",
