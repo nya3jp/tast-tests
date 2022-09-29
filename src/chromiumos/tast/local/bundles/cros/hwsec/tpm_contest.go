@@ -1,4 +1,4 @@
-// Copyright 2022 The ChromiumOS Authors.
+// Copyright 2022 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -73,7 +73,7 @@ func TPMContest(ctx context.Context, s *testing.State) {
 	defer cancel()
 
 	const minTestIterations = 1
-	commands := [][]string{{"tpm-manager", "get_random", "4096"},
+	commands := [][]string{{"libhwsec_client", "get_random", "4096"},
 		// oemcrypto_hw_ref_tests tasks the TPM from a trusted application context
 		{"oemcrypto_hw_ref_tests", "-v", "-v", "-v", "-v",
 			"--gtest_filter=*OEMCryptoSessionTests.OEMCryptoMemoryCreateUsageTableHeaderForHugeHeaderBufferLength"},
