@@ -46,6 +46,30 @@
       },
       "revId": "f21e2fd9b3541869e2437f9b0d76fca6050624b3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a2cca0f_7954ca41",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1055,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-09-29T10:05:43Z",
+      "side": 1,
+      "message": "Ack, thanks!",
+      "parentUuid": "1e4652a4_9e82bef5",
+      "range": {
+        "startLine": 1055,
+        "startChar": 63,
+        "endLine": 1055,
+        "endChar": 71
+      },
+      "revId": "f21e2fd9b3541869e2437f9b0d76fca6050624b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
