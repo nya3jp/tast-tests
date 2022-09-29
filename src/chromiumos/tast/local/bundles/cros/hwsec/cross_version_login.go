@@ -359,7 +359,7 @@ func testConfigViaCryptohome(ctx context.Context, lf hwsec.LogFunc, cryptohome *
 	const (
 		newPasswordLabel = "newPasswordLabel"
 		newPinLabel      = "newPinLabel"
-		newPassword      = "testpass"
+		newPassword      = "newpass"
 		newPin           = "654321"
 		invalidPassword  = "wrongPass"
 		invalidPin       = "000000"
@@ -391,7 +391,7 @@ func testConfigViaCryptohome(ctx context.Context, lf hwsec.LogFunc, cryptohome *
 		for _, vaultKey := range config.ExtraVaultKeys {
 			targetPasswords = append(targetPasswords, vaultKey.Password)
 		}
-		if usedPasswords := []string{changedPassword, invalidPassword, invalidPin}; hasSharedElement(targetPasswords, usedPasswords) {
+		if usedPasswords := []string{changedPassword, newPassword, invalidPassword, invalidPin}; hasSharedElement(targetPasswords, usedPasswords) {
 			return errors.Errorf("some passwords in config are identical to the passwords we would use: %q vs %q", targetPasswords, usedPasswords)
 		}
 	default:
