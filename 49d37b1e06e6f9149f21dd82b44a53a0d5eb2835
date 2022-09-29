@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "1d3fbceb_8a8d0584",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1179424
+      },
+      "writtenOn": "2022-09-29T09:07:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d51f09fb_3a75f944",
+      "revId": "49d37b1e06e6f9149f21dd82b44a53a0d5eb2835",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "29672d31_d00a21ac",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -65,6 +83,24 @@
       "writtenOn": "2022-09-29T07:14:59Z",
       "side": 1,
       "message": "Why are you continuing if you are encountering an error different from a timeout? Please check for specific errors again if possible.",
+      "revId": "49d37b1e06e6f9149f21dd82b44a53a0d5eb2835",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3904fd9d_fc70f044",
+        "filename": "src/chromiumos/tast/local/memory/mempressure/mempressure.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1179424
+      },
+      "writtenOn": "2022-09-29T09:07:20Z",
+      "side": 1,
+      "message": "On stainless, most of the platform.MemoryPressure test [failures](https://stainless.corp.google.com/search?view\u003dmatrix\u0026row\u003dboard_model\u0026col\u003dbuild\u0026first_date\u003d2022-09-23\u0026last_date\u003d2022-09-29\u0026test\u003dplatform.MemoryPressure\u0026exclude_cts\u003dfalse\u0026exclude_not_run\u003dfalse\u0026exclude_non_release\u003dtrue\u0026exclude_au\u003dtrue\u0026exclude_acts\u003dtrue\u0026exclude_retried\u003dfalse\u0026exclude_non_production\u003dfalse\u0026exclude_non_critical\u003dfalse) are due to WaitForQuiescence failure. It indicates the condition (if !errors\\.Is(ctx\\.Err(), context.DeadlineExceeded)) is not working. I uploaded a new patch to remove the condition. I couldn\u0027t find a way to distinguish timeout error of WaitForQuiescence. the [previous fix](https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3506951) doesn\u0027t work.\n\nThe error message on stainless platform.MemoryPressure failure:\nRun failed: failed to wait for quiescence: failed to wait for tab quiesce: context deadline exceeded during a poll with timeout 20s; last error follows: \"!!(\\n\\t\\t(function() {\\n\\t\\t\\tif (document.readyState !\u003d\u003d \u0027complete\u0027) {\\n\\t\\t\\t\\treturn false;\\n\\t\\t\\t}\\n\\n\\t\\t\\tconst QUIESCENCE_TIMEOUT_MS \u003d 2000;\\n\\t\\t\\tlet lastEventTime \u003d performance.timing.loadEventEnd -\\n\\t\\t\\t\\t\\tperformance.timing.navigationStart;\\n\\t\\t\\tconst resourceTimings \u003d performance.getEntriesByType(\u0027resource\u0027);\\n\\t\\t\\tlastEventTime \u003d resourceTimings.reduce(\\n\\t\\t\\t\\t\\t(current, timing) \u003d\u003e Math.max(current, timing.responseEnd),\\n\\t\\t\\t\\t\\tlastEventTime);\\n\\t\\t\\treturn performance.now() \u003e\u003d lastEventTime + QUIESCENCE_TIMEOUT_MS;\\n\\t\\t})())\" is false",
+      "parentUuid": "e01c2725_5f2e7ad2",
       "revId": "49d37b1e06e6f9149f21dd82b44a53a0d5eb2835",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
