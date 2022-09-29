@@ -1336,7 +1336,7 @@ func TestPlatformDecodingParams(t *testing.T) {
 		files := h264Files[group]
 
 		param := paramData{
-			Name:         fmt.Sprintf("ffmpeg_h264_%s", group),
+			Name:         fmt.Sprintf("ffmpeg_vaapi_h264_%s", group),
 			Decoder:      ffmpegMD5Path,
 			CmdBuilder:   "ffmpegMD5VAAPIargs",
 			Files:        files,
