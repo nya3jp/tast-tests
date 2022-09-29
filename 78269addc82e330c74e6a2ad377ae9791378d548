@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "810c3551_097b9927",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/proxy_setting_service.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-09-29T06:59:23Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "5101f966_459e5a71",
+      "revId": "78269addc82e330c74e6a2ad377ae9791378d548",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e965f7ce_2def53d5",
@@ -48,6 +66,30 @@
       "writtenOn": "2022-09-27T16:43:59Z",
       "side": 1,
       "message": "Nit: within",
+      "range": {
+        "startLine": 105,
+        "startChar": 21,
+        "endLine": 105,
+        "endChar": 27
+      },
+      "revId": "78269addc82e330c74e6a2ad377ae9791378d548",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "76ba1b62_9334dbb1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/proxysettings/proxy_settings.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-09-29T06:59:23Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "e965f7ce_2def53d5",
       "range": {
         "startLine": 105,
         "startChar": 21,
