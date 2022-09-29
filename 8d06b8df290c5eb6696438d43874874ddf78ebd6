@@ -126,6 +126,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a9c11bbd_84f6ca7e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-09-29T20:23:18Z",
+      "side": 1,
+      "message": "I think having lacros logs regardless of pass/fail would be helpful, because then we can compare what logs are expected on a passing run, and which are out of place in a failing run.",
+      "parentUuid": "0465210b_f362f42d",
+      "revId": "8d06b8df290c5eb6696438d43874874ddf78ebd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1a121f49_9e2164c6",
         "filename": "src/chromiumos/tast/local/chrome/lacros/lacros.go",
         "patchSetId": 4
