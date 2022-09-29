@@ -66,16 +66,13 @@ func init() {
 				vmEnabled: false,
 			},
 		},
-		/* Disabled due to <1% pass rate over 30 days. See b/241943132
-		{
-			Name:              "r",
-			ExtraSoftwareDeps: []string{"android_vm"},
-			Val: testParamCacheValidation{
-				vmEnabled: true,
-			},
-		}
-		*/
-		},
+			{
+				Name:              "r",
+				ExtraSoftwareDeps: []string{"android_vm"},
+				Val: testParamCacheValidation{
+					vmEnabled: true,
+				},
+			}},
 		Timeout: 10 * time.Minute,
 	})
 }
