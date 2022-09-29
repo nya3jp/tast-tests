@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e2e9915_d83edee0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2022-09-29T18:32:18Z",
+      "side": 1,
+      "message": "Please also add some more details in the description (why are we making this change?), or a link to a doc where you discuss this change if it\u0027s an LSC",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 80
+      },
+      "revId": "a6877376293abc9d938c07e0673ab9ac9bd2b1b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d49227fc_215dc5fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/reporter_crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2022-09-29T18:32:18Z",
+      "side": 1,
+      "message": "copyright headers should not be updated when a file is changed, only when it is created",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "a6877376293abc9d938c07e0673ab9ac9bd2b1b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
