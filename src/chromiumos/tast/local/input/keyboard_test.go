@@ -13,10 +13,11 @@ import (
 	"os"
 	"path/filepath"
 	"reflect"
-	"syscall"
 	"testing"
 	"time"
 	"unsafe"
+
+	"golang.org/x/sys/unix"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/testutil"
@@ -41,7 +42,7 @@ func (b *testBuffer) Close() error { return nil }
 
 // eventString returns a string representation of the passed-in event details
 // as "[<time> <event-type> <event-code> <value>]".
-func eventString(tv syscall.Timeval, et, ec uint16, val int32) string {
+func eventString(tv unix.Timeval, et, ec uint16, val int32) string {
 	sec := (time.Duration(tv.Nano()) * time.Nanosecond).Seconds()
 	return fmt.Sprintf("[%0.3f 0x%x 0x%x %d]", sec, et, ec, val)
 }
@@ -54,7 +55,7 @@ func readEvent(r io.Reader) (string, error) {
 		if err := binary.Read(r, binary.LittleEndian, &ev); err != nil {
 			return "", err
 		}
-		return eventString(syscall.Timeval{Sec: int64(ev.Sec), Usec: int64(ev.Usec)}, ev.Type, ev.Code, ev.Val), nil
+		return eventString(unix.Timeval{Sec: int64(ev.Sec), Usec: int64(ev.Usec)}, ev.Type, ev.Code, ev.Val), nil
 	case 8:
 		ev := event64{}
 		if err := binary.Read(r, binary.LittleEndian, &ev); err != nil {
@@ -109,7 +110,7 @@ func TestEventWriterSuccess(t *testing.T) {
 		t.Error("Failed to read events: ", err)
 	}
 
-	tv := syscall.NsecToTimeval(now.UnixNano())
+	tv := unix.NsecToTimeval(now.UnixNano())
 	expected := []string{
 		eventString(tv, uint16(EV_KEY), uint16(KEY_A), 1),
 		eventString(tv, uint16(EV_SYN), uint16(SYN_REPORT), 0),
@@ -159,7 +160,7 @@ func TestEventWriterType(t *testing.T) {
 		t.Error("Failed to read events: ", err)
 	}
 
-	tv := syscall.NsecToTimeval(now.UnixNano())
+	tv := unix.NsecToTimeval(now.UnixNano())
 	syn := eventString(tv, uint16(EV_SYN), uint16(SYN_REPORT), 0)
 	expected := []string{
 		eventString(tv, uint16(EV_KEY), uint16(KEY_LEFTSHIFT), 1), syn,
@@ -195,7 +196,7 @@ func TestEventWriterAccel(t *testing.T) {
 		t.Error("Failed to read events: ", err)
 	}
 
-	tv := syscall.NsecToTimeval(now.UnixNano())
+	tv := unix.NsecToTimeval(now.UnixNano())
 	syn := eventString(tv, uint16(EV_SYN), uint16(SYN_REPORT), 0)
 	expected := []string{
 		eventString(tv, uint16(EV_KEY), uint16(KEY_LEFTCTRL), 1), syn,
@@ -225,7 +226,7 @@ func TestEventWriterTypeSequence(t *testing.T) {
 		t.Error("Failed to read events: ", err)
 	}
 
-	tv := syscall.NsecToTimeval(now.UnixNano())
+	tv := unix.NsecToTimeval(now.UnixNano())
 	syn := eventString(tv, uint16(EV_SYN), uint16(SYN_REPORT), 0)
 	expected := []string{
 		eventString(tv, uint16(EV_KEY), uint16(KEY_LEFTSHIFT), 1), syn,
@@ -268,7 +269,7 @@ func TestEventWriterAccelPressesAndReleases(t *testing.T) {
 		t.Error("Failed to read events: ", err)
 	}
 
-	tv := syscall.NsecToTimeval(now.UnixNano())
+	tv := unix.NsecToTimeval(now.UnixNano())
 	syn := eventString(tv, uint16(EV_SYN), uint16(SYN_REPORT), 0)
 	expected := []string{
 		eventString(tv, uint16(EV_KEY), uint16(KEY_LEFTCTRL), 1), syn,
