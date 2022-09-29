@@ -23,6 +23,9 @@ import (
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/optin"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/browser/browserfixt"
+	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/local/cpu"
 	"chromiumos/tast/local/disk"
 	"chromiumos/tast/local/power"
@@ -31,8 +34,9 @@ import (
 )
 
 type testParam struct {
-	username string
-	password string
+	browserType browser.Type
+	username    string
+	password    string
 	// maxErrorBootCount is the number of maximum allowed boot errors.
 	maxErrorBootCount int
 	chromeArgs        []string
@@ -45,7 +49,7 @@ var resultPropRegexp = regexp.MustCompile(`OK,(\d+)`)
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         AuthPerf,
-		LacrosStatus: testing.LacrosVariantNeeded,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Measure auth times in ARC",
 		Contacts: []string{
 			"khmel@chromium.org", // Original author.
@@ -60,6 +64,7 @@ func init() {
 			Name:              "managed",
 			ExtraSoftwareDeps: []string{"android_p"},
 			Val: testParam{
+				browserType:       browser.TypeAsh,
 				username:          "arc.AuthPerf.managed_username",
 				password:          "arc.AuthPerf.managed_password",
 				maxErrorBootCount: 1,
@@ -68,6 +73,7 @@ func init() {
 			Name:              "managed_vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
 			Val: testParam{
+				browserType:       browser.TypeAsh,
 				username:          "arc.AuthPerf.managed_username",
 				password:          "arc.AuthPerf.managed_password",
 				maxErrorBootCount: 3,
@@ -76,12 +82,21 @@ func init() {
 			Name:              "unmanaged",
 			ExtraSoftwareDeps: []string{"android_p"},
 			Val: testParam{
+				browserType:       browser.TypeAsh,
+				maxErrorBootCount: 1,
+			},
+		}, {
+			Name:              "unmanaged_lacros",
+			ExtraSoftwareDeps: []string{"android_p", "lacros"},
+			Val: testParam{
+				browserType:       browser.TypeLacros,
 				maxErrorBootCount: 1,
 			},
 		}, {
 			Name:              "unmanaged_o_direct_vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
 			Val: testParam{
+				browserType:       browser.TypeAsh,
 				dropCaches:        true,
 				maxErrorBootCount: 3,
 				oDirect:           true,
@@ -90,6 +105,7 @@ func init() {
 			Name:              "unmanaged_rt_vcpu_vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
 			Val: testParam{
+				browserType:       browser.TypeAsh,
 				maxErrorBootCount: 3,
 				chromeArgs:        []string{"--enable-features=ArcRtVcpuDualCore,ArcRtVcpuQuadCore"},
 			},
@@ -97,6 +113,7 @@ func init() {
 			Name:              "unmanaged_dalvik_memory_profile_vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
 			Val: testParam{
+				browserType:       browser.TypeAsh,
 				maxErrorBootCount: 3,
 				chromeArgs:        []string{"--enable-features=ArcUseDalvikMemoryProfile"},
 			},
@@ -104,6 +121,7 @@ func init() {
 			Name:              "unmanaged_virtio_blk_vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
 			Val: testParam{
+				browserType:       browser.TypeAsh,
 				maxErrorBootCount: 3,
 				chromeArgs:        []string{"--enable-features=ArcEnableVirtioBlkForData"},
 			},
@@ -111,6 +129,14 @@ func init() {
 			Name:              "unmanaged_vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
 			Val: testParam{
+				browserType:       browser.TypeAsh,
+				maxErrorBootCount: 3,
+			},
+		}, {
+			Name:              "unmanaged_vm_lacros",
+			ExtraSoftwareDeps: []string{"android_vm", "lacros"},
+			Val: testParam{
+				browserType:       browser.TypeLacros,
 				maxErrorBootCount: 3,
 			},
 		}},
@@ -141,7 +167,10 @@ func createChrome(ctx context.Context, gaia chrome.Option, param testParam) (*ch
 		args = append(args, param.chromeArgs...)
 	}
 
-	cr, err := chrome.New(ctx,
+	cr, err := browserfixt.NewChrome(
+		ctx,
+		param.browserType,
+		lacrosfixt.NewConfig(),
 		chrome.ARCSupported(),
 		gaia,
 		chrome.ExtraArgs(args...))
@@ -183,6 +212,7 @@ func AuthPerf(ctx context.Context, s *testing.State) {
 	}
 	defer func() {
 		cr.Close(ctx)
+		//closeBrowser(ctx)
 	}()
 
 	errorCount := 0
