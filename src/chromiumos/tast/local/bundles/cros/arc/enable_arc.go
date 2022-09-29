@@ -50,8 +50,8 @@ func init() {
 
 func EnableArc(ctx context.Context, s *testing.State) {
 
-	cr := s.FixtValue().(*familylink.FixtData).Chrome
-	tconn := s.FixtValue().(*familylink.FixtData).TestConn
+	cr := s.FixtValue().(chrome.HasChrome).Chrome()
+	tconn := s.FixtValue().(familylink.HasTestConn).TestConn()
 
 	if err := optin.SetPlayStoreEnabled(ctx, tconn, false); err != nil {
 		s.Fatal("Failed to set Play Store off prior to test: ", err)
