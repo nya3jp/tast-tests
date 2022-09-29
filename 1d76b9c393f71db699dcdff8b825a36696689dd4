@@ -39,6 +39,24 @@
       "message": "The other option is to move fixture out of the chrome package. I think they are not essential part of the package, it could be one level below it.\nIt should be considered vs the current approach of splitting the lacros package.",
       "revId": "1d76b9c393f71db699dcdff8b825a36696689dd4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05ee46d1_4209fef1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-09-29T12:33:34Z",
+      "side": 1,
+      "message": "I know (we discussed it). My thinking is that we want to reset Lacros wherever we currently call chrome.ResetState, and that includes other places besides the chrome fixture Reset. So we\u0027d have to move not only the chrome fixture into a new package but also chrome.ResetState. What do you think?",
+      "parentUuid": "0703c2b6_ff5dbb15",
+      "revId": "1d76b9c393f71db699dcdff8b825a36696689dd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
