@@ -6,7 +6,8 @@ package cuj
 
 import (
 	"context"
-	"syscall"
+
+	"golang.org/x/sys/unix"
 
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
@@ -51,7 +52,7 @@ func (vh *TPSValidationHelper) Release() error {
 	if ok {
 		return nil
 	}
-	if status.Signaled() && status.Signal() == syscall.SIGKILL {
+	if status.Signaled() && status.Signal() == unix.SIGKILL {
 		return nil
 	}
 	return err
