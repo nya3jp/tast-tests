@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9feacdfa_3a3c6d49",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_get_stateful_partition_available_capacity_enrolled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-09-29T13:09:33Z",
+      "side": 0,
+      "message": "nit: don\u0027t update existing headers",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "4d3baaa5d8bebcefb57c4c4ce6586053e32ecf5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
