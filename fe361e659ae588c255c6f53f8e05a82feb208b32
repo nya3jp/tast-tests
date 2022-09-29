@@ -1,6 +1,52 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "36b1591e_4eb60047",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 12
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-09-29T12:00:25Z",
+      "side": 1,
+      "message": "nit: add line break after should",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 117
+      },
+      "revId": "fe361e659ae588c255c6f53f8e05a82feb208b32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f00ef8a6_eee0b5f2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 12
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-09-29T12:00:25Z",
+      "side": 1,
+      "message": "nit: add line bread after needed.",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 84
+      },
+      "revId": "fe361e659ae588c255c6f53f8e05a82feb208b32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "86e70ab8_06c91f6d",
@@ -31,6 +77,69 @@
       "writtenOn": "2022-09-28T21:01:56Z",
       "side": 1,
       "message": "+tast-owners for review please",
+      "revId": "fe361e659ae588c255c6f53f8e05a82feb208b32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "60a546d8_c1502975",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-09-29T12:00:25Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "fe361e659ae588c255c6f53f8e05a82feb208b32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23bc4315_caac9feb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/print_to_pdf.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-09-29T12:00:25Z",
+      "side": 1,
+      "message": "FYI: This TestAPIConn works only for the ash browser.\nMake sure that for the lacros variant all usages of the TestAPIConn still do what they are supposed to do.\nIf not you need a second TestAPIConn created from br instead of cr (you will still need this one for the ui interaction as that requires a TestAPIConn from the ash browser).",
+      "range": {
+        "startLine": 73,
+        "startChar": 1,
+        "endLine": 73,
+        "endChar": 34
+      },
+      "revId": "fe361e659ae588c255c6f53f8e05a82feb208b32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5058bc6a_2a61f441",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/print_to_pdf.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-09-29T12:00:25Z",
+      "side": 1,
+      "message": "You can use DumpUITreeWithScreenshotOnError instead.",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 69
+      },
       "revId": "fe361e659ae588c255c6f53f8e05a82feb208b32",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
