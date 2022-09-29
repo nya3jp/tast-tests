@@ -1052,7 +1052,7 @@ func LaunchAppFromShelf(ctx context.Context, tconn *chrome.TestConn, appName, ap
 	if err := ShowHotseat(ctx, tconn); err != nil {
 		return errors.Wrap(err, "failed to show hot seat")
 	}
-	params := nodewith.Name(appName).ClassName(ShelfIconClassName)
+	params := nodewith.Name(appName).ClassName(ShelfIconClassName).First()
 	if err := uiauto.New(tconn).WithTimeout(10 * time.Second).LeftClick(params)(ctx); err != nil {
 		return errors.Wrapf(err, "failed to launch app %q", appName)
 	}
