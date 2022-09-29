@@ -16,6 +16,24 @@
       "message": "If any previous Fatal\u0027s execute, this won\u0027t be called and lacros will be left open. What\u0027s wrong with using defer CloseLacros?",
       "revId": "3454172e618a3dfee129351351fc912c2c110fbc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f47aa2d_81d12e40",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/shelf_launch_omaha.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-09-29T01:44:21Z",
+      "side": 1,
+      "message": "Correct. Added back `CloseLacros` but with `s.HasError()` so that it can close the window on Fatal\u0027s exit. \nFWIW I realized that `defer lacros.CloseLacros(cleanupCtx, l)` should not be used here in order to avoid a nil pointer exception as the arg `l` is evaluated immediately but then gets invalidated at L262 `l.Close(ctx)` before the deferred statement is executed.\nThanks!",
+      "parentUuid": "c864361b_4e1a15ee",
+      "revId": "3454172e618a3dfee129351351fc912c2c110fbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

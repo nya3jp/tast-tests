@@ -73,6 +73,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "eac383ea_7aae8d41",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/shelf_launch_omaha.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-09-29T01:44:21Z",
+      "side": 1,
+      "message": "Not exactly, but close. The lacros shelf icon will be broken when `clearStatefulLacros` is called at the end of this test no matter what.\nBut, it should not affect test results since all verification is already done. The main reason for doing it is to restore dirty stateful partition to a reset state for subsequent tests.",
+      "parentUuid": "48726c08_d76e29f2",
+      "revId": "d39c78c4220d59e60fb05ee54f701975b2901bd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d93e878b_cb4a3d7a",
         "filename": "src/chromiumos/tast/local/bundles/cros/lacros/shelf_launch_omaha.go",
         "patchSetId": 9
