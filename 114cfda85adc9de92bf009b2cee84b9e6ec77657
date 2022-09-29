@@ -1,6 +1,74 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "49d36acb_709dd00c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-09-29T10:25:44Z",
+      "side": 1,
+      "message": "tast: Move demomode.SetUp to fixture",
+      "revId": "114cfda85adc9de92bf009b2cee84b9e6ec77657",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92fb4857_b56c47d1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-09-29T10:25:44Z",
+      "side": 1,
+      "message": "Move demomode.SetUp to fixture so that multiple demomode tests can be run after single environment setup flow to save test time.\n\nTo make sure the fixture works as expected, the CL adds a test to assert that the core Demo Chrome Apps have launched.",
+      "revId": "114cfda85adc9de92bf009b2cee84b9e6ec77657",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88672345_8d4e6e02",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-09-29T10:25:44Z",
+      "side": 1,
+      "message": "The width of commit message is 72 columns. Please use it and don\u0027t wrap the line too early.",
+      "revId": "114cfda85adc9de92bf009b2cee84b9e6ec77657",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67f1d6d9_2a65991f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-09-29T10:25:44Z",
+      "side": 1,
+      "message": "The CL also overrides the DeveloperToolsAvailability policy in SetUp to enable devtools in demo mode as we need devtools to connect to the test API extension.",
+      "revId": "114cfda85adc9de92bf009b2cee84b9e6ec77657",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "0cfd7899_b496e0b2",
@@ -14,6 +82,23 @@
       "writtenOn": "2022-09-28T18:59:14Z",
       "side": 1,
       "message": "LGTM. More policy value can be added later as needed.",
+      "revId": "114cfda85adc9de92bf009b2cee84b9e6ec77657",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d38a012_48fae2a8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-09-29T10:25:44Z",
+      "side": 1,
+      "message": "Will review the code later.",
       "revId": "114cfda85adc9de92bf009b2cee84b9e6ec77657",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
