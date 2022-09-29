@@ -341,27 +341,12 @@ func newKernelConfigCheck(ver *sysutil.KernelVersion, arch string) *kernelConfig
 	}
 
 	if ver.IsOrLater(4, 19) {
-		builtin = append(builtin, "STACKPROTECTOR", "STACKPROTECTOR_STRONG")
+		builtin = append(builtin, "HAVE_EBPF_JIT", "BPF_JIT_ALWAYS_ON", "STACKPROTECTOR", "STACKPROTECTOR_STRONG")
 	} else {
 		// Security; adds stack buffer overflow protections.
 		builtin = append(builtin, "CC_STACKPROTECTOR")
-	}
-
-	// Needed for Spectre.
-	if ver.IsOrLater(4, 19) {
-		builtin = append(builtin, "HAVE_EBPF_JIT", "BPF_JIT_ALWAYS_ON")
-	}
-
-	// BPF_SYSCALL is in kernel 4.19 and 5.4 because BPF_JIT_ALWAYS_ON depends on it.
-	// We don't check it for 4.19 and 5.4 because bpf syscall is blocked by LSM.
-	// BPF_SYSCALL is not in kernels <= 4.14.
-	if ver.IsOrLess(4, 14) {
-		builtin = append(missing, "BPF_SYSCALL")
-	}
-
-	// BPF_SYSCALL is in kernels >= 5.10.
-	if ver.IsOrLater(5, 10) {
-		builtin = append(builtin, "BPF_SYSCALL")
+		// bpf(2) syscall can be used to generate code patterns in kernel memory.
+		missing = append(missing, "BPF_SYSCALL")
 	}
 
 	if arch == "aarch64" && ver.IsOrLater(5, 0) {
