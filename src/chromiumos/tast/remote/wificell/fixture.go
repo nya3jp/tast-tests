@@ -393,6 +393,7 @@ func (f *tastFixtureImpl) SetUp(ctx context.Context, s *testing.FixtState) inter
 		if cd == nil {
 			s.Fatal("Failed to get companion DUT cd1")
 		}
+		ops = append(ops, TFRouterRequired(false))
 		ops = append(ops, TFCompanionDUT(cd))
 		if err := f.recoverUnhealthyDUT(ctx, cd, s); err != nil {
 			s.Fatal("Failed to recover unhealthy DUT: ", err)
