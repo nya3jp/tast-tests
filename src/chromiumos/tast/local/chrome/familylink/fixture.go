@@ -10,7 +10,6 @@ import (
 	"time"
 
 	"chromiumos/tast/common/fixture"
-	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
@@ -375,10 +374,6 @@ func (f *familyLinkFixture) SetUp(ctx context.Context, s *testing.FixtState) int
 
 func (f *familyLinkFixture) TearDown(ctx context.Context, s *testing.FixtState) {
 	chrome.Unlock()
-	if f.fdms != nil {
-		f.fdms.Stop(ctx)
-		f.fdms = nil
-	}
 	if err := f.cr.Close(ctx); err != nil {
 		s.Log("Failed to close Chrome connection: ", err)
 	}
@@ -386,15 +381,6 @@ func (f *familyLinkFixture) TearDown(ctx context.Context, s *testing.FixtState) 
 }
 
 func (f *familyLinkFixture) Reset(ctx context.Context) error {
-	if f.fdms != nil {
-		pb := policy.NewBlob()
-		pb.PolicyUser = f.policyUser
-		if err := policyutil.ResetChromeWithBlob(ctx, f.fdms, f.cr, pb); err != nil {
-			return errors.Wrap(err, "failed to reset chrome")
-		}
-		return nil
-	}
-
 	if err := f.cr.Responded(ctx); err != nil {
 		return errors.Wrap(err, "existing Chrome connection is unusable")
 	}
