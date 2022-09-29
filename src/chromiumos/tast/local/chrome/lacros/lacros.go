@@ -6,6 +6,7 @@ package lacros
 
 import (
 	"context"
+	"path/filepath"
 	"time"
 
 	"android.googlesource.com/platform/external/perfetto/protos/perfetto/trace/github.com/google/perfetto/perfetto_proto"
@@ -18,6 +19,7 @@ import (
 	"chromiumos/tast/local/chrome/internal/driver"
 	"chromiumos/tast/local/chrome/jslog"
 	"chromiumos/tast/local/chrome/lacros/lacrosinfo"
+	"chromiumos/tast/local/logsaver"
 	"chromiumos/tast/testing"
 )
 
@@ -27,6 +29,9 @@ type Lacros struct {
 	agg    *jslog.Aggregator
 	sess   *driver.Session  // Debug session connected lacros-chrome.
 	ctconn *chrome.TestConn // Ash TestConn.
+
+	logFilename string
+	logMarker   *logsaver.Marker
 }
 
 // Browser returns a Browser instance.
@@ -69,6 +74,16 @@ func (l *Lacros) CloseResources(ctx context.Context) {
 
 // Close closes all lacros chrome targets and the dev session.
 func (l *Lacros) Close(ctx context.Context) error {
+	// Save the entire lacros log to outDir.
+	if outDir, ok := testing.ContextOutDir(ctx); ok {
+		if err := l.logMarker.Save(filepath.Join(outDir, "lacros.log")); err != nil {
+			testing.ContextLog(ctx, "Failed to save the entire lacros log: ", err)
+		}
+	} else {
+		testing.ContextLog(ctx, "No output directory exists, not saving log file")
+	}
+	testing.ContextLog(ctx, "Lacros log file saved")
+
 	// Get all pages. Note that we can't get all targets, because one of them
 	// will be the test extension or devtools and we don't want to kill that.
 	// Further note that this will mean pages are not restored, compared to killing
