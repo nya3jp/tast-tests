@@ -26,7 +26,7 @@ func newNetDiagParams(routine string) netDiagParams {
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         DiagPassing,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantNeeded,
 		Desc:         "Tests that the network diagnostic routines can pass in a normal environment",
 		Contacts: []string{
 			"khegde@chromium.org",            // test maintainer
