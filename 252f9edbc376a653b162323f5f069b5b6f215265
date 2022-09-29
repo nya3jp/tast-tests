@@ -16,6 +16,29 @@
       "message": "tast-owners@: PTAL. Thank you!",
       "revId": "252f9edbc376a653b162323f5f069b5b6f215265",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ada651a_9e1308fd",
+        "filename": "src/chromiumos/tast/local/assistant/assistant.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-09-29T19:39:34Z",
+      "side": 1,
+      "message": "sleep is often a source of flakiness. Is testing.Poll help here?\nYou can return testing.Pollbreak to terminate the poll immediately.",
+      "range": {
+        "startLine": 119,
+        "startChar": 13,
+        "endLine": 119,
+        "endChar": 26
+      },
+      "revId": "252f9edbc376a653b162323f5f069b5b6f215265",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
