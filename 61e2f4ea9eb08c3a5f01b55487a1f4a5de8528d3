@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f371995b_9fabd084",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-09-29T15:57:51Z",
+      "side": 1,
+      "message": "Thank you for the speedy review! :)",
+      "parentUuid": "8564f5d3_87028f17",
+      "revId": "61e2f4ea9eb08c3a5f01b55487a1f4a5de8528d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0d79621c_49417e77",
@@ -48,6 +66,24 @@
       "writtenOn": "2022-09-28T22:20:14Z",
       "side": 1,
       "message": "Since this will no longer be managing chrome, also remove `cr` from the struct.",
+      "revId": "61e2f4ea9eb08c3a5f01b55487a1f4a5de8528d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "84a183b2_23669751",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/bt_test_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-09-29T15:57:51Z",
+      "side": 1,
+      "message": "Ah, good catch!",
+      "parentUuid": "0d79621c_49417e77",
       "revId": "61e2f4ea9eb08c3a5f01b55487a1f4a5de8528d3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
