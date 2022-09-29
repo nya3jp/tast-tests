@@ -16,6 +16,75 @@
       "message": "PTAL",
       "revId": "6a60466375e63fa9044cec74d0654effb0c97459",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e670ee60_2667ee4e",
+        "filename": "src/chromiumos/tast/local/cpu/idle.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2022-09-29T23:05:58Z",
+      "side": 1,
+      "message": "nit: CPUUsagePercentMax",
+      "range": {
+        "startLine": 20,
+        "startChar": 20,
+        "endLine": 20,
+        "endChar": 42
+      },
+      "revId": "6a60466375e63fa9044cec74d0654effb0c97459",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0fb8ccff_f9f89467",
+        "filename": "src/chromiumos/tast/local/cpu/idle.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2022-09-29T23:05:58Z",
+      "side": 1,
+      "message": "It\u0027s not clear from this comment what this field does. How about something like:\n\nnumber of steps to take while relaxing target CPU idle percentage from CPUUsagePercentBase to CPUUsagePercentMax. Each step has a duration of Timeout/Steps.",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 30
+      },
+      "revId": "6a60466375e63fa9044cec74d0654effb0c97459",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c89ff7df_ef18aa06",
+        "filename": "src/chromiumos/tast/local/cpu/idle.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2022-09-29T23:05:58Z",
+      "side": 1,
+      "message": "This is not well defined if config.Steps \u003c 2. We could change the API to something like config.intermediateSteps, but I think it\u0027s probably just fine to return an error and document that Steps must be \u003e\u003d 2 in the IdleConfig comment.",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 103
+      },
+      "revId": "6a60466375e63fa9044cec74d0654effb0c97459",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
