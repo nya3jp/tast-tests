@@ -50,6 +50,24 @@
       "message": "Does the scroll arrow not have a UI tree node?",
       "revId": "c5fd15f0723a1991ffc0d06a3bd5c24aeeec2d54",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7efea1d0_0ce22616",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/google_sheets_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-09-29T13:54:25Z",
+      "side": 1,
+      "message": "It might, but I tried my best and I couldn\u0027t find it... thus if that node ever changes, it might be difficult to find it again. Whereas, the sheet bounds is a pretty consistent/easy UI tree node to find.",
+      "parentUuid": "fb532e57_3a347083",
+      "revId": "c5fd15f0723a1991ffc0d06a3bd5c24aeeec2d54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
