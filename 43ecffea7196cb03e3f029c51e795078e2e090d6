@@ -22,6 +22,30 @@
       },
       "revId": "43ecffea7196cb03e3f029c51e795078e2e090d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "df11ff69_38ce769a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/crypto_api.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1518777
+      },
+      "writtenOn": "2022-09-29T18:14:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "28e0129b_8e6b988e",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "43ecffea7196cb03e3f029c51e795078e2e090d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
