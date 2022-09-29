@@ -46,7 +46,7 @@ func (c *TTSCacheService) Generate(ctx context.Context, request *arcpb.TTSCacheR
 		}
 	}()
 
-	args := []string{"--enable-features=ArcEnableTTSCaching"}
+	args := []string{"--enable-features=ArcEnableTTSCacheSetup"}
 	if !request.TtsCacheSetupEnabled {
 		args = append(args, "--arc-disable-tts-cache")
 	}
