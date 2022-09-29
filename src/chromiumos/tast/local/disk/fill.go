@@ -7,7 +7,8 @@ package disk
 import (
 	"io/ioutil"
 	"os"
-	"syscall"
+
+	"golang.org/x/sys/unix"
 
 	"chromiumos/tast/errors"
 )
@@ -22,7 +23,7 @@ func Fill(dir string, tofill uint64) (string, error) {
 	defer file.Close()
 
 	// Allocate disk space without writing content
-	if err := syscall.Fallocate(int(file.Fd()), 0, 0, int64(tofill)); err != nil {
+	if err := unix.Fallocate(int(file.Fd()), 0, 0, int64(tofill)); err != nil {
 		return "", errors.Wrapf(err, "failed to allocate %v bytes in %s", tofill, file.Name())
 	}
 
@@ -60,16 +61,16 @@ type Refiller struct {
 //
 // Example:
 //
-//     refiller := NewRefiller(...)
-//     defer func() {
-//       if err := refiller.Close(); err != nil {
-//         s.Error(...)
-//       }
-//     }()
-//     refiller.RefillUntil(...)
-//     ...
-//     refiller.RefillUntil(...)
-//     ...
+//	refiller := NewRefiller(...)
+//	defer func() {
+//	  if err := refiller.Close(); err != nil {
+//	    s.Error(...)
+//	  }
+//	}()
+//	refiller.RefillUntil(...)
+//	...
+//	refiller.RefillUntil(...)
+//	...
 func NewRefiller(dir string) Refiller {
 	return Refiller{dir: dir, filePath: ""}
 }
