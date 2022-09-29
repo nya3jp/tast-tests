@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "d51f09fb_3a75f944",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-09-29T07:14:59Z",
+      "side": 1,
+      "message": "Can you rephrase this sentence?",
+      "revId": "49d37b1e06e6f9149f21dd82b44a53a0d5eb2835",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "29672d31_d00a21ac",
@@ -31,6 +48,23 @@
       "writtenOn": "2022-09-28T23:50:39Z",
       "side": 1,
       "message": "Unfortunately hidehiko is OOO for a while. Please remove him and add tast-owners once again to request a new reviewer (I can\u0027t do it).",
+      "revId": "49d37b1e06e6f9149f21dd82b44a53a0d5eb2835",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e01c2725_5f2e7ad2",
+        "filename": "src/chromiumos/tast/local/memory/mempressure/mempressure.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-09-29T07:14:59Z",
+      "side": 1,
+      "message": "Why are you continuing if you are encountering an error different from a timeout? Please check for specific errors again if possible.",
       "revId": "49d37b1e06e6f9149f21dd82b44a53a0d5eb2835",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
