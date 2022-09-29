@@ -69,6 +69,24 @@
       "parentUuid": "bc33490d_86295ccd",
       "revId": "2a1a675009ecb3fb1d09bcfac380822bc66434f5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4acd06b_7d34a489",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-09-29T19:27:00Z",
+      "side": 1,
+      "message": "Ended up iterating on it to also enable the technology that we are trying to navigate to the detailed view of, please take a look whenever you have a moment and let me know if you think this ends up adding too much logic!",
+      "parentUuid": "55042485_8627efc4",
+      "revId": "2a1a675009ecb3fb1d09bcfac380822bc66434f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

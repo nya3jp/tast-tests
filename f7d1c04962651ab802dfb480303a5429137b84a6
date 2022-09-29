@@ -22,6 +22,30 @@
       },
       "revId": "f7d1c04962651ab802dfb480303a5429137b84a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dfa9b1a5_54a20147",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/ossettings/ossettings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-09-29T19:27:00Z",
+      "side": 1,
+      "message": "I was originally going to make the client of this code have the burden of enabling the technology, but I ended up iterating on this and making this code also make sure the toggle is enabled for whichever technology was chosen.\n\nI tested this locally and everything passed with flying colors except when I have WiFi disabled initially, and I believe it is because I end up having connection issues to the DUT since I suspect it begins prioritizing WiFi over my tethered ethernet (which has no internet connectivity). I will validate this case on a DUT in the lab and will circle back here.",
+      "parentUuid": "2c0ad6e5_8f6f2397",
+      "range": {
+        "startLine": 363,
+        "startChar": 23,
+        "endLine": 363,
+        "endChar": 49
+      },
+      "revId": "f7d1c04962651ab802dfb480303a5429137b84a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
