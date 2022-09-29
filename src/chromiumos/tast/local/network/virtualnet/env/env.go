@@ -14,7 +14,6 @@ import (
 	"path/filepath"
 	"runtime"
 	"strings"
-	"syscall"
 	"time"
 
 	"golang.org/x/sys/unix"
@@ -318,8 +317,8 @@ func (e *Env) EnterNetNS(ctx context.Context) (func() error, error) {
 	}()
 
 	// Open the current ns which will be used later in the cleanup closure.
-	pid := syscall.Getpid()
-	tid := syscall.Gettid()
+	pid := unix.Getpid()
+	tid := unix.Gettid()
 	currentNSFile, currentNSClose, err := openNSByPath(fmt.Sprintf("/proc/%d/task/%d/ns/net", pid, tid))
 	if err != nil {
 		return nil, err
@@ -345,7 +344,7 @@ func (e *Env) EnterNetNS(ctx context.Context) (func() error, error) {
 		// File should always be closed.
 		defer currentNSClose()
 
-		tidNow := syscall.Gettid()
+		tidNow := unix.Gettid()
 		if tid != tidNow {
 			return errors.Errorf("cleanup func does not run on the same thread as the one that enters the netns %s", e.NetNSName)
 		}
