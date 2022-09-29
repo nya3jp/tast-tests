@@ -33,6 +33,46 @@
       "message": "Could we add all 10 tests even though some of them are failing?\n\nJao-ke, what do you think?",
       "revId": "68cdd8d851ab4cb7e85acd16e6a4845f653ebb1b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68500948_15a432f9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1498402
+      },
+      "writtenOn": "2022-09-29T19:02:41Z",
+      "side": 1,
+      "message": "Is there a reason for defining a short list rather than files from `av1AomFiles[\"8bit\"]`? If so, please add a code comment or TODO explaining why. \n\nIf not, please create test cases for the different categories of clips in `av1AomFiles`. My guess is that we don\u0027t want the `filmgrain` files in an MD5-based decode test, though, since the film grain makes the decoder non-deterministic.\n\nOther reviewers, LMK if that sounds unreasonable. Thanks.",
+      "revId": "68cdd8d851ab4cb7e85acd16e6a4845f653ebb1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f3cf7ba_7d1abc6e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1368,
+      "author": {
+        "id": 1498402
+      },
+      "writtenOn": "2022-09-29T19:02:41Z",
+      "side": 1,
+      "message": "👍",
+      "range": {
+        "startLine": 1368,
+        "startChar": 61,
+        "endLine": 1368,
+        "endChar": 94
+      },
+      "revId": "68cdd8d851ab4cb7e85acd16e6a4845f653ebb1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
