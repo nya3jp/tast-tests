@@ -21,6 +21,7 @@ type params struct {
 	ServiceState         string
 	HTTPResponseHandler  func(rw http.ResponseWriter, req *http.Request)
 	HTTPSResponseHandler func(rw http.ResponseWriter, req *http.Request)
+	ProxyConfig          string
 }
 
 var (
@@ -61,6 +62,23 @@ func init() {
 				ServiceState:         shillconst.ServiceStateRedirectFound,
 				HTTPResponseHandler:  redirectHandler(redirectURL),
 				HTTPSResponseHandler: nil,
+				ProxyConfig:          nil,
+			},
+		}, {
+			Name: "proxyconfigenabled",
+			Val: &params{
+				ServiceState:         shillconst.ServiceStateOnline,
+				HTTPResponseHandler:  redirectHandler(redirectURL),
+				HTTPSResponseHandler: nil,
+				ProxyConfig:          "ProxyConfig",
+			},
+		}, {
+			Name: "checkportal",
+			Val: &params{
+				ServiceState:         shillconst.ServiceStateOnline,
+				HTTPResponseHandler:  redirectHandler(redirectURL),
+				HTTPSResponseHandler: nil,
+				ProxyConfig:          "ProxyConfig",
 			},
 		}, {
 			Name: "portalsuspected",
@@ -68,6 +86,7 @@ func init() {
 				ServiceState:         shillconst.ServiceStatePortalSuspected,
 				HTTPResponseHandler:  redirectWithNoLocationHandler,
 				HTTPSResponseHandler: nil,
+				ProxyConfig:          nil,
 			},
 		}, {
 			Name: "online",
@@ -75,6 +94,7 @@ func init() {
 				ServiceState:         shillconst.ServiceStateOnline,
 				HTTPResponseHandler:  noContentHandler,
 				HTTPSResponseHandler: noContentHandler,
+				ProxyConfig:          nil,
 			},
 		}, {
 			Name: "noconnectivity",
@@ -82,6 +102,7 @@ func init() {
 				ServiceState:         shillconst.ServiceStateNoConnectivity,
 				HTTPResponseHandler:  nil,
 				HTTPSResponseHandler: nil,
+				ProxyConfig:          nil,
 			},
 		}, {
 			Name: "redirectfoundtempredirect",
@@ -89,6 +110,7 @@ func init() {
 				ServiceState:         shillconst.ServiceStateRedirectFound,
 				HTTPResponseHandler:  tempRedirectHandler(redirectURL),
 				HTTPSResponseHandler: nil,
+				ProxyConfig:          nil,
 			},
 		}},
 	})
@@ -100,6 +122,15 @@ func ShillCaptivePortalHTTP(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create manager proxy: ", err)
 	}
 
+	//testing for ProxyConfig or CheckPortal - no portal state to send in this case
+	if err := service.SetProperty(ctx, shillconst.ServicePropertyProxyConfig, "test"); err != nil {
+		s.Fatal("Portal detection disabled by ProxyConfig service: ", err)
+	}
+
+	//	if err := m.SetProperty(ctx, shillconst.CheckPortal, httpsPortalURL); err != nil {
+	//		continue
+	//	}
+
 	testing.ContextLog(ctx, "Enabling portal detection on ethernet")
 	// Relying on shillReset test fixture to undo the enabling of portal detection.
 	if err := m.EnablePortalDetection(ctx); err != nil {
@@ -109,6 +140,7 @@ func ShillCaptivePortalHTTP(ctx context.Context, s *testing.State) {
 	if err := m.SetProperty(ctx, shillconst.ManagerPropertyPortalHTTPSURL, httpsPortalURL); err != nil {
 		s.Fatal("Failed to set portal httpsurl: ", err)
 	}
+
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
