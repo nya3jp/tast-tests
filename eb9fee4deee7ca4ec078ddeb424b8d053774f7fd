@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3990230_6508630e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/choose_to_share_selected_file_or_not.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1542652
+      },
+      "writtenOn": "2022-09-29T16:08:03Z",
+      "side": 1,
+      "message": "keyboard doesn\u0027t seem to be used.",
+      "revId": "eb9fee4deee7ca4ec078ddeb424b8d053774f7fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
