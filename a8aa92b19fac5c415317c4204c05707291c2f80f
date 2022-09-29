@@ -16,6 +16,46 @@
       "message": "There were a lot of change since Jie\u0027s comments.\n@jiejiang@chromium.org can I ask you to take a look at the CL again, first?",
       "revId": "a8aa92b19fac5c415317c4204c05707291c2f80f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0eb68987_41663c6b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-09-29T12:09:54Z",
+      "side": 1,
+      "message": "still lgtm, thanks for polishing the code!",
+      "revId": "a8aa92b19fac5c415317c4204c05707291c2f80f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5955d98_67a1eb4f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/add_remove_pin.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-09-29T12:09:54Z",
+      "side": 1,
+      "message": "super nit: I would use `err :\u003d` here just for consistency. Same below.",
+      "range": {
+        "startLine": 133,
+        "startChar": 8,
+        "endLine": 133,
+        "endChar": 9
+      },
+      "revId": "a8aa92b19fac5c415317c4204c05707291c2f80f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
