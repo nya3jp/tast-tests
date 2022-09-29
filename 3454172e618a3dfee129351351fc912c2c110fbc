@@ -52,6 +52,24 @@
       "parentUuid": "6f47aa2d_81d12e40",
       "revId": "3454172e618a3dfee129351351fc912c2c110fbc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1fbc48c0_92d2f1b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/shelf_launch_omaha.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-09-29T04:05:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6a074a94_72dfba83",
+      "revId": "3454172e618a3dfee129351351fc912c2c110fbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
