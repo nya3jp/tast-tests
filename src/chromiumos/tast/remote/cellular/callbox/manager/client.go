@@ -132,6 +132,62 @@ func (s CallboxManagerClient) BeginSimulation(ctx context.Context, requestBody *
 	return err
 }
 
+// ConfigureTxPower sets the callbox Tx (uplink) power.
+func (s CallboxManagerClient) ConfigureTxPower(ctx context.Context, requestBody *ConfigureTxPowerRequestBody) error {
+	if requestBody.Callbox == "" {
+		requestBody.Callbox = s.defaultCallbox
+	}
+	_, err := s.sendJSONPost(ctx, "/config/power/uplink", nil, requestBody)
+	return err
+}
+
+// ConfigureRxPower sets the callbox Rx (downlink) power.
+func (s CallboxManagerClient) ConfigureRxPower(ctx context.Context, requestBody *ConfigureRxPowerRequestBody) error {
+	if requestBody.Callbox == "" {
+		requestBody.Callbox = s.defaultCallbox
+	}
+	_, err := s.sendJSONPost(ctx, "/config/power/downlink", nil, requestBody)
+	return err
+}
+
+// FetchTxPower queries the closed loop Tx (uplink) power set on the callbox.
+func (s CallboxManagerClient) FetchTxPower(ctx context.Context, requestBody *FetchTxPowerRequestBody) (*FetchTxPowerResponseBody, error) {
+	if requestBody.Callbox == "" {
+		requestBody.Callbox = s.defaultCallbox
+	}
+
+	resp, err := s.sendJSONGet(ctx, "/config/fetch/power/uplink", nil, requestBody)
+	if err != nil {
+		return nil, err
+	}
+
+	var res FetchTxPowerResponseBody
+	if err := unmarshalResponse(resp, &res); err != nil {
+		return nil, err
+	}
+
+	return &res, nil
+}
+
+// FetchRxPower queries the Rx (downlink) power set on the callbox.
+func (s CallboxManagerClient) FetchRxPower(ctx context.Context, requestBody *FetchRxPowerRequestBody) (*FetchRxPowerResponseBody, error) {
+	if requestBody.Callbox == "" {
+		requestBody.Callbox = s.defaultCallbox
+	}
+
+	resp, err := s.sendJSONGet(ctx, "/config/fetch/power/downlink", nil, requestBody)
+	if err != nil {
+		return nil, err
+	}
+
+	var res FetchRxPowerResponseBody
+	if err := unmarshalResponse(resp, &res); err != nil {
+		return nil, err
+	}
+
+	return &res, nil
+}
+
 // SendSms instructs the server's configured callbox to send an sms message.
 //
 // Before calling this method, configure the callbox with ConfigureCallbox.

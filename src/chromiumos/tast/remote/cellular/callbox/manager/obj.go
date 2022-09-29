@@ -4,6 +4,10 @@
 
 package manager
 
+import (
+	"fmt"
+)
+
 // ConfigureCallboxRequestBody is the request body for ConfigureCallbox requests.
 type ConfigureCallboxRequestBody struct {
 	Callbox       string   `json:"callbox,omitempty"`
@@ -15,6 +19,78 @@ type ConfigureCallboxRequestBody struct {
 // BeginSimulationRequestBody is the request body for BeginSimulation requests.
 type BeginSimulationRequestBody struct {
 	Callbox string `json:"callbox,omitempty"`
+}
+
+// RxPower is a predefined callbox Rx (downlink) power level.
+type RxPower string
+
+const (
+	// RxPowerExcellent is a predefined excellent downlink power level.
+	RxPowerExcellent RxPower = "excellent"
+	// RxPowerHigh is a predefined high downlink power level.
+	RxPowerHigh = "high"
+	// RxPowerMedium is a predefined medium downlink power level.
+	RxPowerMedium = "medium"
+	// RxPowerWeak is a predefined weak downlink power level.
+	RxPowerWeak = "weak"
+	// RxPowerDisconnected is a predefined disconnected downlink power level.
+	RxPowerDisconnected = "disconnected"
+)
+
+// NewRxPower returns a RxPower from an exact value.
+func NewRxPower(power float64) RxPower {
+	return RxPower(fmt.Sprintf("%f", power))
+}
+
+// ConfigureRxPowerRequestBody is the request body for ConfigureRxPower requests.
+type ConfigureRxPowerRequestBody struct {
+	Callbox string  `json:"callbox,omitempty"`
+	Power   RxPower `json:"pdl,omitempty"`
+}
+
+// TxPower is a predefined callbox Tx (uplink) power level.
+type TxPower string
+
+const (
+	// TxPowerMax is a predefined max uplink power level.
+	TxPowerMax TxPower = "max"
+	// TxPowerHigh is a predefined high uplink power level.
+	TxPowerHigh = "high"
+	// TxPowerMedium is a predefined medium uplink power level.
+	TxPowerMedium = "medium"
+	// TxPowerLow is a predefined low uplink power level.
+	TxPowerLow = "low"
+)
+
+// NewTxPower returns a TxPower from an exact value.
+func NewTxPower(power float64) TxPower {
+	return TxPower(fmt.Sprintf("%f", power))
+}
+
+// ConfigureTxPowerRequestBody is the request body for ConfigureTxPower requests.
+type ConfigureTxPowerRequestBody struct {
+	Callbox string  `json:"callbox,omitempty"`
+	Power   TxPower `json:"pul,omitempty"`
+}
+
+// FetchTxPowerRequestBody is the request body for FetchTxPower requests.
+type FetchTxPowerRequestBody struct {
+	Callbox string `json:"callbox,omitempty"`
+}
+
+// FetchTxPowerResponseBody is the response body for FetchTRxPower requests.
+type FetchTxPowerResponseBody struct {
+	Power float64 `json:"pul,omitempty"`
+}
+
+// FetchRxPowerRequestBody is the request body for FetchRxPower requests.
+type FetchRxPowerRequestBody struct {
+	Callbox string `json:"callbox,omitempty"`
+}
+
+// FetchRxPowerResponseBody is the response body for FetchRxPower requests.
+type FetchRxPowerResponseBody struct {
+	Power float64 `json:"pdl,omitempty"`
 }
 
 // SendSmsRequestBody is the request body for SendSms requests.
