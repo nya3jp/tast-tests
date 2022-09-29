@@ -297,6 +297,13 @@ func UIInput(ctx context.Context, s *testing.State) {
 	if err := quicksettings.SelectAudioOption(shortCtx, tconn, "Loopback Playback"); err != nil {
 		s.Fatal("Failed to select ALSA loopback output: ", err)
 	}
+
+	// After selecting Loopback Playback, SelectAudioOption() sometimes detected that audio setting
+	// is still opened while it is actually fading out, and failed to select Loopback Capture.
+	// Call Hide() and Show() to reset the quicksettings menu first.
+	quicksettings.Hide(shortCtx, tconn)
+	quicksettings.Show(shortCtx, tconn)
+
 	if err := quicksettings.SelectAudioOption(shortCtx, tconn, "Loopback Capture"); err != nil {
 		s.Fatal("Failed to select ALSA loopback input: ", err)
 	}
