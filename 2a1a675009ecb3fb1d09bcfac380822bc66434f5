@@ -51,6 +51,24 @@
       "parentUuid": "75eb8cfb_29631760",
       "revId": "2a1a675009ecb3fb1d09bcfac380822bc66434f5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55042485_8627efc4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-09-29T13:25:17Z",
+      "side": 1,
+      "message": "I guess it would probably not be easy to check if the technology is enabled and just throw an error from inside OpenNetworkDetailPage, right? Might at least be worth it to put something in the error message that whoever is running the test should check if the technology is enabled if we get that failure (on L359 or L363?).\n\nSeems like the added complexity probably isn\u0027t worth keeping the API the same on this one. Thanks for the other input.",
+      "parentUuid": "bc33490d_86295ccd",
+      "revId": "2a1a675009ecb3fb1d09bcfac380822bc66434f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
