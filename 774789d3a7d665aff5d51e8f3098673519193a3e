@@ -121,6 +121,24 @@
       "parentUuid": "c00f5ae0_d819c63b",
       "revId": "774789d3a7d665aff5d51e8f3098673519193a3e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d0f1adb_8219d25c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_http.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-09-29T22:50:14Z",
+      "side": 1,
+      "message": "At some point Shill should parse the proxy configuration and check whether it is \u0027direct\u0027, at which point we will need to switch to a proper configuration, but until then using any-old-string actually makes it more clear that no validation is done.",
+      "parentUuid": "68c0ee1f_2263a407",
+      "revId": "774789d3a7d665aff5d51e8f3098673519193a3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
