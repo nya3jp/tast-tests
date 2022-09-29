@@ -56,6 +56,7 @@ var (
 	evTouchpad    evtestEvent = "touchpad"
 	evTouchscreen evtestEvent = "touchscreen"
 	evDisplay     evtestEvent = "display"
+	evPowerButton evtestEvent = "powerbtn"
 )
 
 // Below are the respective stdout scanners for devices monitored with evtest.
@@ -64,6 +65,7 @@ var (
 	scannTouchpad    *bufio.Scanner
 	scannTouchscreen *bufio.Scanner
 	scannDisplay     *bufio.Scanner
+	scannPowerBtn    *bufio.Scanner
 )
 
 // Note: while in tablet mode, some models were observed to still have their keyboards seen
@@ -265,6 +267,19 @@ func ScreenWakeTabletMode(ctx context.Context, s *testing.State) {
 				return nil, errors.Wrap(err, "during FindPhysicalTouchscreen")
 			}
 			devPath = res.Path
+		case evPowerButton:
+			findDevPath := "udevadm info --export-db | awk '(/cros_ec_buttons/)||(/Power Button/),/DEVNAME/'"
+			out, err := h.DUT.Conn().CommandContext(ctx, "bash", "-c", findDevPath).Output()
+			if err != nil {
+				return nil, errors.Wrap(err, "unable to export the content of udev database")
+			}
+			expMatch := regexp.MustCompile(`DEVNAME=\S*`)
+			foundMatch := expMatch.FindSubmatch(out)
+			if foundMatch == nil {
+				return nil, errors.New("did not find device path for testing the power button")
+			}
+			testing.ContextLogf(ctx, "Found device path for power button: %s", string(foundMatch[0]))
+			devPath = strings.TrimLeft(string(foundMatch[0]), "DEVNAME=")
 		}
 		var cmd *ssh.Cmd
 		if evEvent == evDisplay {
@@ -299,6 +314,9 @@ func ScreenWakeTabletMode(ctx context.Context, s *testing.State) {
 			expMatch = regexp.MustCompile(regex)
 		case evDisplay:
 			regex := `UDEV.*change.*\s+\(` + `backlight` + `\)`
+			expMatch = regexp.MustCompile(regex)
+		case evPowerButton:
+			regex := `Event.*time.*code\s(\d*)\s\(` + `KEY_POWER` + `\)`
 			expMatch = regexp.MustCompile(regex)
 		}
 
@@ -628,7 +646,8 @@ func ScreenWakeTabletMode(ctx context.Context, s *testing.State) {
 
 	// Check from a list of names that might be relevant to DUT's screen based on
 	// the ec code, and if one exists, save it for future use in verifying screen state.
-	possibleNames := []firmware.GpioName{firmware.ECEDPBLEN, firmware.BLDISABLEL, firmware.ENBLOD, firmware.ENABLEBACKLIGHT}
+	possibleNames := []firmware.GpioName{
+		firmware.ECEDPBLEN, firmware.BLDISABLEL, firmware.ENBLOD, firmware.ENABLEBACKLIGHT, firmware.ECBLENOD}
 	cmd := firmware.NewECTool(s.DUT(), firmware.ECToolNameMain)
 	foundNames, err := cmd.FindBaseGpio(ctx, possibleNames)
 	if err != nil {
@@ -715,7 +734,25 @@ func ScreenWakeTabletMode(ctx context.Context, s *testing.State) {
 
 	s.Log("Tab power button to turn display off")
 	if err := turnDisplayOffWithPower(ctx); err != nil {
-		s.Fatal("During setting tabletmode on and a tab on power button: ", err)
+		s.Log("Verifying a servo press on power is detectable")
+		validatePressOnPwr := func() bool {
+			scannPowerBtn, err := deviceScanner(ctx, evPowerButton)
+			if err != nil {
+				s.Log("While scanning for the power button: ", err)
+				return false
+			}
+			if err := h.Servo.KeypressWithDuration(ctx, servo.PowerKey, servo.DurTab); err != nil {
+				s.Log("Error in pressing power button: ", err)
+				return false
+			}
+			if err := evtestMonitor(ctx, evPowerButton, scannPowerBtn, true); err != nil {
+				s.Log("During evtest for power button: ", err)
+				return false
+			}
+			return true
+		}
+		powerBtnDetectable := validatePressOnPwr()
+		s.Fatalf("During setting tabletmode on and a tab on power button: %v, servo press on pwr validated: %t", err, powerBtnDetectable)
 	}
 
 	if scannKeyboard != nil && h.Config.HasKeyboard {
