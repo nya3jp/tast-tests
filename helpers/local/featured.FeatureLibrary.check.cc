@@ -74,7 +74,9 @@ bool IsFeatureEnabled(const VariationsFeature& feature_to_check,
                            result = enabled;
                            run_loop.Quit();
                          }));
+  LOG(INFO) << "Called IsEnabled";
   run_loop.Run();
+  LOG(INFO) << "Successfully ran IsEnabled";
   return result;
 }
 
@@ -90,7 +92,9 @@ GetParamsAndEnabled(const VariationsFeature& feature_to_check,
             result = params;
             run_loop.Quit();
           }));
+  LOG(INFO) << "Called GetParamsAndEnabled";
   run_loop.Run();
+  LOG(INFO) << "Successfully ran GetParamsAndEnabled";
   return result;
 }
 
@@ -101,8 +105,10 @@ GetTestFeatureStateAndParams(const VariationsFeature& feature_to_check,
   feature_state.feature_name = feature_to_check.name;
   feature_state.enabled_callback_enabled_result =
       IsFeatureEnabled(feature_to_check, feature_lib);
+  LOG(INFO) << "Successfully returned from IsFeatureEnabled.";
   feature_state.params_callback_result =
       GetParamsAndEnabled(feature_to_check, feature_lib);
+  LOG(INFO) << "Successfully returned from GetParamsAndEnabled.";
   return feature_state;
 }
 
@@ -119,10 +125,14 @@ int main(int argc, char* argv[]) {
 
   TestFeatureState enabled_feature = GetTestFeatureStateAndParams(
       kCrOSLateBootDefaultEnabled, feature_lib.get());
+  LOG(INFO) << "Finished getting state and params for Default Enabled Feature";
 
   TestFeatureState disabled_feature = GetTestFeatureStateAndParams(
       kCrOSLateBootDefaultDisabled, feature_lib.get());
+  LOG(INFO) << "Finished getting state and params for Default Disabled Feature";
 
   LogTestFeatureState(enabled_feature);
+  LOG(INFO) << "Finished logging Default Enabled Feature";
   LogTestFeatureState(disabled_feature);
+  LOG(INFO) << "Finished logging Default Disabled Feature";
 }
