@@ -33,6 +33,24 @@
       "message": "Hi Alvin:\n\nJust want to check if you want to take a look. I think you have modified one of those files. If not, I can do +2. Thanks.\n\nSeewai",
       "revId": "6f5d443a2b21e00318b40477e68a2cdbd38643ca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2a49871_6eb616cb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-09-29T22:41:31Z",
+      "side": 1,
+      "message": "Thanks for the heads up! LGTM.",
+      "parentUuid": "9d4bf64a_adcd7ff3",
+      "revId": "6f5d443a2b21e00318b40477e68a2cdbd38643ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
