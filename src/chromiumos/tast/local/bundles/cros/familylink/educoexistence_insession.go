@@ -30,8 +30,8 @@ func init() {
 }
 
 func EducoexistenceInsession(ctx context.Context, s *testing.State) {
-	tconn := s.FixtValue().(*familylink.FixtData).TestConn
-	cr := s.FixtValue().(*familylink.FixtData).Chrome
+	tconn := s.FixtValue().(familylink.HasTestConn).TestConn()
+	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 
 	parentUser := s.RequiredVar("family.parentEmail")
 	parentPass := s.RequiredVar("family.parentPassword")

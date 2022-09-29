@@ -12,6 +12,8 @@ import (
 	"time"
 
 	"chromiumos/tast/common/policy"
+	"chromiumos/tast/common/policy/fakedms"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/familylink"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/lockscreen"
@@ -37,8 +39,8 @@ func init() {
 }
 
 func BedTimeLimit(ctx context.Context, s *testing.State) {
-	cr := s.FixtValue().(*familylink.FixtData).Chrome
-	tconn := s.FixtValue().(*familylink.FixtData).TestConn
+	cr := s.FixtValue().(chrome.HasChrome).Chrome()
+	tconn := s.FixtValue().(familylink.HasTestConn).TestConn()
 
 	// Make sure screen is not locked.
 	s.Log("Assert the screen is not locked")
@@ -47,7 +49,7 @@ func BedTimeLimit(ctx context.Context, s *testing.State) {
 		s.Fatal("Waiting for screen to be unlocked failed: ", err)
 	}
 
-	fdms := s.FixtValue().(*familylink.FixtData).FakeDMS
+	fdms := s.FixtValue().(fakedms.HasFakeDMS).FakeDMS()
 
 	now := time.Now()
 	bedTimeDuration := time.Minute
@@ -81,7 +83,7 @@ func BedTimeLimit(ctx context.Context, s *testing.State) {
 	}
 
 	pb := policy.NewBlob()
-	pb.PolicyUser = s.FixtValue().(*familylink.FixtData).PolicyUser
+	pb.PolicyUser = s.FixtValue().(familylink.HasPolicyUser).PolicyUser()
 	pb.AddPolicies(policies)
 
 	if err := policyutil.ServeBlobAndRefresh(ctx, fdms, cr, pb); err != nil {

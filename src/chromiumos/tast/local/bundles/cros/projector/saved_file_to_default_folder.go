@@ -13,6 +13,8 @@ import (
 	"time"
 
 	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/familylink"
 	"chromiumos/tast/local/chrome/projector"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
@@ -42,8 +44,8 @@ func SavedFileToDefaultFolder(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 4*time.Minute)
 	defer cancel()
 
-	tconn := s.FixtValue().(*projector.FixtData).TestConn
-	cr := s.FixtValue().(*projector.FixtData).Chrome
+	tconn := s.FixtValue().(familylink.HasTestConn).TestConn()
+	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 	driveFsClient, err := drivefs.NewDriveFs(ctx, cr.NormalizedUser())
 	if err != nil {
 		s.Fatal("Failed waiting for DriveFS to start: ", err)

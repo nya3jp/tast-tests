@@ -33,8 +33,8 @@ func init() {
 }
 
 func NonEducoexistenceInsession(ctx context.Context, s *testing.State) {
-	tconn := s.FixtValue().(*familylink.FixtData).TestConn
-	cr := s.FixtValue().(*familylink.FixtData).Chrome
+	tconn := s.FixtValue().(familylink.HasTestConn).TestConn()
+	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 
 	unicornParentUser := s.RequiredVar("family.parentEmail")
 	unicornParentPass := s.RequiredVar("family.parentPassword")
