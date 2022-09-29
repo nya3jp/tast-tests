@@ -57,7 +57,7 @@ func init() {
 	})
 	testing.AddFixture(&testing.Fixture{
 		Name:     fixture.PersistentFamilyLink,
-		Desc:     "Fixture settig persistent policy user for a Family Link account",
+		Desc:     "Fixture setting persistent policy user for a Family Link account",
 		Contacts: []string{"xiqiruan@chromium.org", "vsavu@google.com", "chromeos-commercial-remote-management@google.com"},
 		Vars: []string{
 			"family.unicornEmail",
@@ -73,13 +73,29 @@ func init() {
 	})
 	testing.AddFixture(&testing.Fixture{
 		Name:     fixture.PersistentFamilyLinkARC,
-		Desc:     "Fixture settig persistent policy user for a Family Link account",
+		Desc:     "Fixture setting persistent policy user for a Family Link account",
 		Contacts: []string{"xiqiruan@chromium.org", "vsavu@google.com", "chromeos-commercial-remote-management@google.com"},
 		Vars: []string{
 			"arc.childUser",
 		},
 		Impl: &persistentFixture{
 			policyUserVar: "arc.childUser",
+		},
+		SetUpTimeout:    5 * time.Second,
+		ResetTimeout:    5 * time.Second,
+		TearDownTimeout: 5 * time.Second,
+		PostTestTimeout: 5 * time.Second,
+		Parent:          fixture.FakeDMS,
+	})
+	testing.AddFixture(&testing.Fixture{
+		Name:     fixture.PersistentProjectorEDU,
+		Desc:     "Fixture setting persistent policy user for a managed EDU account",
+		Contacts: []string{"tobyhuang@chromium.org", "vsavu@google.com", "chromeos-commercial-remote-management@google.com"},
+		Vars: []string{
+			"projector.eduEmail",
+		},
+		Impl: &persistentFixture{
+			policyUserVar: "projector.eduEmail",
 		},
 		SetUpTimeout:    5 * time.Second,
 		ResetTimeout:    5 * time.Second,
