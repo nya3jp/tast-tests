@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c31d3bb_077b19b8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-09-29T05:49:38Z",
+      "side": 1,
+      "message": "This is the change I told you about recently.\n\nThings I\u0027m not sure about:\n- Name of the internal package.\n- How to avoid duplicated documentation.",
+      "revId": "8693337846ed670225d5fa2280a69d2042d73e1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
