@@ -10,8 +10,9 @@ import (
 	"os"
 	"strconv"
 	"strings"
-	"syscall"
 	"time"
+
+	"golang.org/x/sys/unix"
 
 	"chromiumos/tast/common/shillconst"
 	"chromiumos/tast/errors"
@@ -37,7 +38,7 @@ func checkPidExists(pidFile string) (bool, error) {
 	if err != nil {
 		return false, errors.Wrapf(err, "failed to find process: %d", pid)
 	}
-	err = process.Signal(syscall.Signal(0))
+	err = process.Signal(unix.Signal(0))
 	return err == nil, nil
 }
 
