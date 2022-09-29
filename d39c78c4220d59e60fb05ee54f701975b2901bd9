@@ -55,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "48726c08_d76e29f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/shelf_launch_omaha.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-09-29T01:11:24Z",
+      "side": 1,
+      "message": "I didn\u0027t quite understand this response. Are you saying this will break lacros shelf icon for subsequent tests no matter what?",
+      "parentUuid": "88462fc0_4088674a",
+      "revId": "d39c78c4220d59e60fb05ee54f701975b2901bd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d93e878b_cb4a3d7a",
         "filename": "src/chromiumos/tast/local/bundles/cros/lacros/shelf_launch_omaha.go",
         "patchSetId": 9
@@ -178,6 +196,24 @@
       "side": 1,
       "message": "I would say that\u0027s exactly what this `ShelfLaunchOmaha` test is verifying.",
       "parentUuid": "6261bb53_c251296f",
+      "revId": "d39c78c4220d59e60fb05ee54f701975b2901bd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7abac14c_29cf73a1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/shelf_launch_omaha.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-09-29T01:11:24Z",
+      "side": 1,
+      "message": "alright fair fair that\u0027s pretty fair lol",
+      "parentUuid": "202217a4_0f35842c",
       "revId": "d39c78c4220d59e60fb05ee54f701975b2901bd9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
