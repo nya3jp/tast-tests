@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a573037_742fe09a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-09-29T14:30:09Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "729130f00033a1078397523335d1714570415d54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5fc43120_b345a466",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-09-29T14:30:09Z",
+      "side": 1,
+      "message": "This can be removed. You are only using it for logging, and it can be done with `testing.ContextLog(ctx, ...)` as well.",
+      "range": {
+        "startLine": 265,
+        "startChar": 35,
+        "endLine": 265,
+        "endChar": 51
+      },
+      "revId": "729130f00033a1078397523335d1714570415d54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fef97f28_db76d8ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 376,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-09-29T14:30:09Z",
+      "side": 1,
+      "message": "It is nice to wrap the error, it makes it easier to debug a failure later.",
+      "range": {
+        "startLine": 376,
+        "startChar": 11,
+        "endLine": 376,
+        "endChar": 14
+      },
+      "revId": "729130f00033a1078397523335d1714570415d54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
