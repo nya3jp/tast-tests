@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c95a29b_7b89a9d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2568,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2022-09-29T21:22:20Z",
+      "side": 0,
+      "message": "Are these changes to remove blank lines intended change?",
+      "revId": "f8a077a47422e2d181c6c34927397af1696d780d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
