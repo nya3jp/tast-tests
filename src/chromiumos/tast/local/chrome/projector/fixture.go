@@ -9,11 +9,14 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/common/policy"
+	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
+	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/testing"
 )
 
@@ -68,16 +71,54 @@ func init() {
 }
 
 type projectorFixture struct {
-	cr    *chrome.Chrome
-	fOpts chrome.OptionsCallback
+	cr         *chrome.Chrome
+	fOpts      chrome.OptionsCallback
+	fdms       *fakedms.FakeDMS
+	policyUser string
 }
 
 // FixtData holds information made available to tests that specify this Fixture.
 type FixtData struct {
 	// Chrome is the running chrome instance.
-	Chrome *chrome.Chrome
+	chrome *chrome.Chrome
 	// TestConn is a connection to the test extension.
-	TestConn *chrome.TestConn
+	testConn *chrome.TestConn
+	// FakeDMS is the running DMS server if any.
+	fakeDMS *fakedms.FakeDMS
+	// PolicyUser is the user account used in the policy blob.
+	policyUser string
+}
+
+// Chrome implements the HasChrome interface.
+func (f FixtData) Chrome() *chrome.Chrome {
+	if f.chrome == nil {
+		panic("Chrome is called with nil chrome instance")
+	}
+	return f.chrome
+}
+
+// TestConn implements the HasTestConn interface.
+func (f FixtData) TestConn() *chrome.TestConn {
+	if f.testConn == nil {
+		panic("TestConn is called with nil testConn instance")
+	}
+	return f.testConn
+}
+
+// FakeDMS implements the HasFakeDMS interface.
+func (f FixtData) FakeDMS() *fakedms.FakeDMS {
+	if f.fakeDMS == nil {
+		panic("FakeDMS is called with nil fakeDMS instance")
+	}
+	return f.fakeDMS
+}
+
+// PolicyUser implements the HasPolicyUser interface.
+func (f FixtData) PolicyUser() string {
+	if f.policyUser == "" {
+		panic("PolicyUser is called with empty policyUser")
+	}
+	return f.policyUser
 }
 
 func (f *projectorFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
@@ -85,6 +126,19 @@ func (f *projectorFixture) SetUp(ctx context.Context, s *testing.FixtState) inte
 	if err != nil {
 		s.Fatal("Failed to obtain Chrome options: ", err)
 	}
+
+	// Checks whether the current fixture has a FakeDMS parent fixture.
+	fdms, isPolicyTest := s.ParentValue().(*fakedms.FakeDMS)
+	if isPolicyTest {
+		if err := fdms.Ping(ctx); err != nil {
+			s.Fatal("Failed to ping FakeDMS: ", err)
+		}
+
+		f.policyUser = s.RequiredVar("projector.eduEmail")
+		opts = append(opts, chrome.DMSPolicy(fdms.URL))
+		opts = append(opts, chrome.DisablePolicyKeyVerification())
+	}
+
 	cr, err := chrome.New(ctx, opts...)
 	if err != nil {
 		s.Fatal("Chrome login failed: ", err)
@@ -93,23 +147,39 @@ func (f *projectorFixture) SetUp(ctx context.Context, s *testing.FixtState) inte
 	if err != nil {
 		s.Fatal("Creating test API connection failed: ", err)
 	}
+
+	if isPolicyTest {
+		if err := policyutil.RefreshChromePolicies(ctx, cr); err != nil {
+			s.Fatal("Failed to serve policies: ", err)
+		}
+	}
+
 	f.cr = cr
+	f.fdms = fdms
+
 	// SWA installation is not guaranteed during startup.
 	// Wait for installation finished before starting test.
 	s.Log("Wait for Screencast app to be installed")
 	if err := ash.WaitForChromeAppInstalled(ctx, tconn, apps.Projector.ID, 2*time.Minute); err != nil {
 		s.Fatal("Failed to wait for installed app: ", err)
 	}
+
 	// Lock chrome after all Setup is complete so we don't block other fixtures.
 	chrome.Lock()
 	return &FixtData{
-		Chrome:   cr,
-		TestConn: tconn,
+		chrome:     cr,
+		testConn:   tconn,
+		fakeDMS:    fdms,
+		policyUser: f.policyUser,
 	}
 }
 
 func (f *projectorFixture) TearDown(ctx context.Context, s *testing.FixtState) {
 	chrome.Unlock()
+	if f.fdms != nil {
+		f.fdms.Stop(ctx)
+		f.fdms = nil
+	}
 	if err := f.cr.Close(ctx); err != nil {
 		s.Log("Failed to close Chrome connection: ", err)
 	}
@@ -117,12 +187,23 @@ func (f *projectorFixture) TearDown(ctx context.Context, s *testing.FixtState) {
 }
 
 func (f *projectorFixture) Reset(ctx context.Context) error {
+	if f.fdms != nil {
+		pb := policy.NewBlob()
+		pb.PolicyUser = f.policyUser
+		if err := policyutil.ResetChromeWithBlob(ctx, f.fdms, f.cr, pb); err != nil {
+			return errors.Wrap(err, "failed to reset chrome")
+		}
+		return nil
+	}
+
 	if err := f.cr.Responded(ctx); err != nil {
 		return errors.Wrap(err, "existing Chrome connection is unusable")
 	}
+
 	if err := f.cr.ResetState(ctx); err != nil {
 		return errors.Wrap(err, "failed resetting existing Chrome session")
 	}
+
 	return nil
 }
 
