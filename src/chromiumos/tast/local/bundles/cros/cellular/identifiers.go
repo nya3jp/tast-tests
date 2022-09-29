@@ -22,6 +22,7 @@ func init() {
 		Contacts:     []string{"madhavadas@google.com", "chromeos-cellular-team@google.com"},
 		Attr:         []string{"group:cellular", "cellular_unstable", "cellular_sim_active"},
 		Timeout:      4 * time.Minute,
+		Fixture:      "cellular",
 	})
 }
 
@@ -34,6 +35,11 @@ func Identifiers(ctx context.Context, s *testing.State) {
 	helper, err := cellular.NewHelper(ctx)
 	if err != nil {
 		s.Fatal("Failed to create cellular.Helper: ", err)
+	}
+
+	// Enable and get service to set autoconnect based on test parameters.
+	if _, err := helper.Connect(ctx); err != nil {
+		s.Fatal("Failed to connect to cellular service")
 	}
 
 	shillImei, err := helper.GetIMEIFromShill(ctx)
