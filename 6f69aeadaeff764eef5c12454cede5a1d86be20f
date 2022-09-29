@@ -39,6 +39,30 @@
       },
       "revId": "6f69aeadaeff764eef5c12454cede5a1d86be20f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "13324c00_07de580c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_sensor_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1537719
+      },
+      "writtenOn": "2022-09-29T05:48:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "339cab53_ade30d28",
+      "range": {
+        "startLine": 98,
+        "startChar": 33,
+        "endLine": 98,
+        "endChar": 55
+      },
+      "revId": "6f69aeadaeff764eef5c12454cede5a1d86be20f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
