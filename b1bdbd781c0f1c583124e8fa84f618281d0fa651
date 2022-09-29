@@ -39,6 +39,30 @@
       },
       "revId": "b1bdbd781c0f1c583124e8fa84f618281d0fa651",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e8b8353_7a6e9349",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hdrnet_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1001646
+      },
+      "writtenOn": "2022-09-29T00:12:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cc0f0b49_2f997a67",
+      "range": {
+        "startLine": 203,
+        "startChar": 12,
+        "endLine": 203,
+        "endChar": 15
+      },
+      "revId": "b1bdbd781c0f1c583124e8fa84f618281d0fa651",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
