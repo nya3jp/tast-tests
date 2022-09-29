@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0df7e2de_53b02841",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cross_version_login.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 402,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-09-29T11:38:17Z",
+      "side": 1,
+      "message": "It\u0027s better to start a separate AuthSession for each check. It\u0027s not well-defined what happens when an `Authenticate` method is called on an already authenticated AuthSession (and, practically, Chrome never does it).",
+      "revId": "e7a3a1662eff22562e1d6cff4ce73f901629ee90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0fff6b52_313141e7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cross_version_login.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 429,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-09-29T11:38:17Z",
+      "side": 1,
+      "message": "nit: typo in \"credential\"",
+      "range": {
+        "startLine": 429,
+        "startChar": 61,
+        "endLine": 429,
+        "endChar": 71
+      },
+      "revId": "e7a3a1662eff22562e1d6cff4ce73f901629ee90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
