@@ -154,6 +154,8 @@ const (
 	ENABLEBACKLIGHT GpioName = "ENABLE_BACKLIGHT"
 	// ENABLEBACKLIGHTL for the 'ectool gpioget ENABLE_BACKLIGHT_L' cmd.
 	ENABLEBACKLIGHTL GpioName = "ENABLE_BACKLIGHT_L"
+	// ECBLENOD for the 'ectool gpioget EC_BL_EN_OD' cmd.
+	ECBLENOD GpioName = "EC_BL_EN_OD"
 )
 
 // FindBaseGpio iterates through a passed in list of gpios, relevant to control on a detachable base,
@@ -165,7 +167,7 @@ func (ec *ECTool) FindBaseGpio(ctx context.Context, gpios []GpioName) (map[GpioN
 		reFoundGpio := regexp.MustCompile(fmt.Sprintf(`GPIO\s*%s\s*=\s*(\d+)`, string(name)))
 		out, err := ec.Command(ctx, "gpioget", string(name)).CombinedOutput()
 		if err != nil {
-			testing.ContextLogf(ctx, "running 'ectool gpioget %s' on DUT failed: %v, and received: %v", name, err, string(out))
+			testing.ContextLogf(ctx, "running 'ectool gpioget %s' on DUT failed: %v, and received: %v", name, err, strings.TrimSpace(string(out)))
 		}
 		if match := reFoundGpio.FindStringSubmatch(string(out)); match == nil {
 			testing.ContextLogf(ctx, "Did not find gpio with name %s", string(name))
