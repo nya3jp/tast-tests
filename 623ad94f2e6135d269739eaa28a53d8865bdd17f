@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8442eca5_39441e88",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/answer_cards.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1317950
+      },
+      "writtenOn": "2022-09-29T17:15:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2763843a_bfb8d977",
+      "range": {
+        "startLine": 33,
+        "startChar": 26,
+        "endLine": 33,
+        "endChar": 30
+      },
+      "revId": "623ad94f2e6135d269739eaa28a53d8865bdd17f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "074469df_7d804637",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-09-29T00:40:13Z",
       "side": 1,
       "message": "you can use `uiauto.Retry(...)` instead of implementing the retry logic yourself here.",
+      "range": {
+        "startLine": 138,
+        "startChar": 1,
+        "endLine": 139,
+        "endChar": 31
+      },
+      "revId": "623ad94f2e6135d269739eaa28a53d8865bdd17f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1f6284e_ec625c32",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/answer_cards.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1317950
+      },
+      "writtenOn": "2022-09-29T17:15:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "074469df_7d804637",
       "range": {
         "startLine": 138,
         "startChar": 1,
