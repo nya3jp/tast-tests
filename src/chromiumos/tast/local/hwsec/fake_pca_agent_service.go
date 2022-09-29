@@ -6,7 +6,8 @@ package hwsec
 
 import (
 	"context"
-	"syscall"
+
+	"golang.org/x/sys/unix"
 
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
@@ -29,7 +30,7 @@ func (f *FakePCAAgent) Start() error {
 
 // Stop signals the fake pca agent with SIGTERM as upstart does to daemons, and waits for its termination.
 func (f *FakePCAAgent) Stop() error {
-	if err := f.cmd.Signal(syscall.SIGTERM); err != nil {
+	if err := f.cmd.Signal(unix.SIGTERM); err != nil {
 		return errors.Wrap(err, "failed signal the process")
 	}
 	if err := f.cmd.Wait(); err != nil {
