@@ -36,9 +36,9 @@ func HostCellularNetworkConnectivity(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to create cellular.Helper: ", err)
 	}
-	// Enable and get service to set autoconnect based on test parameters.
-	if _, err := helper.Enable(ctx); err != nil {
-		s.Fatal("Failed to enable modem")
+	// Verify that a connectable Cellular service exists and ensure it is connected.
+	if _, err := helper.Connect(ctx); err != nil {
+		s.Fatal("Failed to connect to cellular service")
 	}
 	ipv4, ipv6, err := helper.GetNetworkProvisionedCellularIPTypes(ctx)
 	if err != nil {
