@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b53c56ce_354878cb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/flashrom_tester.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1377969
+      },
+      "writtenOn": "2022-09-29T03:43:08Z",
+      "side": 1,
+      "message": "OK better to just run it then keep it simple. I noticed futility update uses --noverify (sometimes? always?) what do you think for here?",
+      "parentUuid": "3807a654_6d63e127",
+      "range": {
+        "startLine": 94,
+        "startChar": 10,
+        "endLine": 94,
+        "endChar": 38
+      },
+      "revId": "ecffebf95ba42e16caf501df1043c6326279b311",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "53fbebe4_67b8df77",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/flashrom_tester.go",
         "patchSetId": 1
@@ -37,6 +61,30 @@
       "writtenOn": "2022-09-28T04:45:47Z",
       "side": 1,
       "message": "make the raw flashrom subprocess calls their own mini helper functions. aklm will need to leverage off that for her work to consolidate them.",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 3
+      },
+      "revId": "ecffebf95ba42e16caf501df1043c6326279b311",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a164aba2_85a72b69",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/flashrom_tester.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1377969
+      },
+      "writtenOn": "2022-09-29T03:43:08Z",
+      "side": 1,
+      "message": "are you asking me to wait for aklm work before landing this?",
+      "parentUuid": "53fbebe4_67b8df77",
       "range": {
         "startLine": 95,
         "startChar": 0,
