@@ -13,6 +13,7 @@ import (
 	"time"
 
 	"golang.org/x/sync/errgroup"
+	"golang.org/x/sys/unix"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/testing"
@@ -60,14 +61,14 @@ func (s *dhcpTestServer) setupAndBindSocket(ctx context.Context) error {
 	lc := net.ListenConfig{Control: func(network, address string, c syscall.RawConn) error {
 		var err error
 		if cerr := c.Control(func(fd uintptr) {
-			if err = syscall.SetsockoptInt(int(fd), syscall.SOL_SOCKET, syscall.SO_REUSEADDR, 1); err != nil {
+			if err = unix.SetsockoptInt(int(fd), unix.SOL_SOCKET, unix.SO_REUSEADDR, 1); err != nil {
 				return
 			}
-			if err = syscall.SetsockoptInt(int(fd), syscall.SOL_SOCKET, syscall.SO_BROADCAST, 1); err != nil {
+			if err = unix.SetsockoptInt(int(fd), unix.SOL_SOCKET, unix.SO_BROADCAST, 1); err != nil {
 				return
 			}
 			if len(s.iface) > 0 {
-				if err = syscall.SetsockoptString(int(fd), syscall.SOL_SOCKET, syscall.SO_BINDTODEVICE, s.iface); err != nil {
+				if err = unix.SetsockoptString(int(fd), unix.SOL_SOCKET, unix.SO_BINDTODEVICE, s.iface); err != nil {
 					return
 				}
 			}
