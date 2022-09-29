@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "760479b9_c8ee4664",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2022-09-29T05:45:14Z",
+      "side": 1,
+      "message": "please wait for team member technical approval before submitting.",
+      "revId": "e2297f7258f9163a1be635cc142b4616a74e416f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13825523_9e0c1fb3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/tpm_contest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2022-09-29T05:45:14Z",
+      "side": 1,
+      "message": "why the change in the header?",
+      "revId": "e2297f7258f9163a1be635cc142b4616a74e416f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
