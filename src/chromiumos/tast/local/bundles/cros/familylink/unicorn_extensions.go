@@ -91,8 +91,8 @@ func waitForBoolPrefValueFromAshOrLacros(ctx context.Context, tconn *chrome.Test
 }
 
 func UnicornExtensions(ctx context.Context, s *testing.State) {
-	cr := s.FixtValue().(*familylink.FixtData).Chrome
-	tconn := s.FixtValue().(*familylink.FixtData).TestConn
+	cr := s.FixtValue().(chrome.HasChrome).Chrome()
+	tconn := s.FixtValue().(familylink.HasTestConn).TestConn()
 
 	if cr == nil {
 		s.Fatal("Failed to start Chrome")

@@ -11,8 +11,10 @@ import (
 	"time"
 
 	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/browser/browserfixt"
+	"chromiumos/tast/local/chrome/familylink"
 	"chromiumos/tast/local/chrome/projector"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
@@ -54,8 +56,8 @@ func SharedScreencast(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
 
-	tconn := s.FixtValue().(*projector.FixtData).TestConn
-	cr := s.FixtValue().(*projector.FixtData).Chrome
+	tconn := s.FixtValue().(familylink.HasTestConn).TestConn()
+	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 
 	sharedScreencast := s.RequiredVar("projector.sharedScreencastLink")
 
