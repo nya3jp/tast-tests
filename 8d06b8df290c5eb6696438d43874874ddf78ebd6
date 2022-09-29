@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "384b8ef2_02185e74",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-09-29T20:14:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "715b2169_a9c2a97f",
+      "revId": "8d06b8df290c5eb6696438d43874874ddf78ebd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "85ef1b62_fa5747e9",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 4
@@ -52,6 +70,42 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "75724f07_4303fcdb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-09-29T20:14:34Z",
+      "side": 1,
+      "message": "Thanks for the info! Since we store chrome.log even when test succeeds, we probably can do the same for lacros?",
+      "parentUuid": "329ab42d_55153a73",
+      "revId": "8d06b8df290c5eb6696438d43874874ddf78ebd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd5f3772_358a0c29",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-09-29T20:14:34Z",
+      "side": 1,
+      "message": "Could you check it now? It should be visible to P\u0026E.",
+      "parentUuid": "85ef1b62_fa5747e9",
+      "revId": "8d06b8df290c5eb6696438d43874874ddf78ebd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1a121f49_9e2164c6",
@@ -65,6 +119,24 @@
       "writtenOn": "2022-09-29T16:12:41Z",
       "side": 1,
       "message": "Add comment to this section to match other sections",
+      "revId": "8d06b8df290c5eb6696438d43874874ddf78ebd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2bef4167_df812b3c",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacros.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-09-29T20:14:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a121f49_9e2164c6",
       "revId": "8d06b8df290c5eb6696438d43874874ddf78ebd6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
