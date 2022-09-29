@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9f6db9da_23d8e514",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-09-29T22:42:47Z",
+      "side": 1,
+      "message": "Fix wrapping of these lines (the limit is 72 characters).",
+      "parentUuid": "a9c2a02f_e7de85cf",
+      "range": {
+        "startLine": 10,
+        "startChar": 55,
+        "endLine": 10,
+        "endChar": 66
+      },
+      "revId": "774789d3a7d665aff5d51e8f3098673519193a3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "556fca96_eff67c78",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -43,6 +67,40 @@
         "endLine": 13,
         "endChar": 52
       },
+      "revId": "774789d3a7d665aff5d51e8f3098673519193a3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a13b4048_d90b53c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_http.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-09-29T22:42:47Z",
+      "side": 1,
+      "message": "nit: s/enabled/set (or maybe just \u0027proxyconfig\u0027)",
+      "revId": "774789d3a7d665aff5d51e8f3098673519193a3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c00f5ae0_d819c63b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_http.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-09-29T22:42:47Z",
+      "side": 1,
+      "message": "nit: Let\u0027s use a constant, e.g. testProxyConfig (defined below httpsPortalURL) and maybe just use \"test proxy config\" for the string so that it is not confused with the property key.",
       "revId": "774789d3a7d665aff5d51e8f3098673519193a3e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
