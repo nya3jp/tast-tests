@@ -37,6 +37,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "05eb9a5e_40b4bb05",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-09-29T14:29:23Z",
+      "side": 1,
+      "message": "For the whole relation chain: The commit message subject should start with a prefix, like the package name that is changed. E.g: `ui: Add mouse drag actions to multiple CUJ tests`",
+      "revId": "c5fd15f0723a1991ffc0d06a3bd5c24aeeec2d54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fb532e57_3a347083",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/google_sheets_cuj.go",
         "patchSetId": 2
