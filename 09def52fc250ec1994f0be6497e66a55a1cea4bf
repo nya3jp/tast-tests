@@ -72,6 +72,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad890e18_0a910a6f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/shelf_launch_omaha.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-09-29T00:36:39Z",
+      "side": 1,
+      "message": "I\u0027m not asking to abort in the else case, just to log it since we think it should never happen (we don\u0027t run tast tests non-test images). Maybe it\u0027s a good idea to log the original match[1] value in any case.",
+      "parentUuid": "08e8074d_39bc2a58",
+      "revId": "09def52fc250ec1994f0be6497e66a55a1cea4bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "db15c708_55c645fb",
