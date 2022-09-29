@@ -15,10 +15,10 @@ import (
 	"regexp"
 	"strconv"
 	"strings"
-	"syscall"
 	"time"
 
 	"github.com/shirou/gopsutil/v3/process"
+	"golang.org/x/sys/unix"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome/ash/ashproc"
@@ -482,8 +482,8 @@ func (ct *CrashTester) killNonBrowser(ctx context.Context, dirs []string) error 
 		}
 
 		testing.ContextLogf(ctx, "Sending SIGSEGV to target Chrome %s pid %d", ct.ptype, toKill.Pid)
-		if err := toKill.SendSignal(syscall.SIGSEGV); err != nil {
-			if errno, ok := err.(syscall.Errno); ok && errno == syscall.ESRCH {
+		if err := toKill.SendSignal(unix.SIGSEGV); err != nil {
+			if errno, ok := err.(unix.Errno); ok && errno == unix.ESRCH {
 				return errors.Errorf("target process %d does not exist", toKill.Pid)
 			}
 			return testing.PollBreak(errors.Wrapf(err, "could not kill target process %d", toKill.Pid))
@@ -548,7 +548,7 @@ func (ct *CrashTester) killBrowser(ctx context.Context) error {
 		return errors.Wrap(err, "failed to get Chrome root process")
 	}
 	testing.ContextLog(ctx, "Sending SIGSEGV to root Chrome process ", rp)
-	if err := rp.SendSignal(syscall.SIGSEGV); err != nil {
+	if err := rp.SendSignal(unix.SIGSEGV); err != nil {
 		return errors.Wrap(err, "failed to kill process")
 	}
 	ct.killedPID = rp.Pid
@@ -688,7 +688,7 @@ func KillCrashpad(ctx context.Context) error {
 			if exe, err := process.Exe(); err == nil && exe == crashpadExecPath {
 				foundCrashpadProcess = true
 				testing.ContextLog(ctx, "Sending SIGKILL to chrome_crashpad_handler process ", process.Pid)
-				if err = syscall.Kill(int(process.Pid), syscall.SIGKILL); err != nil {
+				if err = unix.Kill(int(process.Pid), unix.SIGKILL); err != nil {
 					return errors.Wrap(err, "failed to kill chrome_crashpad_handler process")
 				}
 			}
