@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0cc10501_8bcfab7a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-09-29T11:06:56Z",
+      "side": 1,
+      "message": "nit:\n`tast-tests: Fix policy.ScreenCaptureAllowed` or\n`policy: Fix ScreenCaptureAllowed` just to remove some redundancy.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 48
+      },
+      "revId": "7c2ce7a63f1506e22376f7a5a8be935d4dc9c537",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0ac9b3a_962528c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/screen_capture_allowed.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-09-29T11:06:56Z",
+      "side": 1,
+      "message": "What is the purpose of this change?",
+      "range": {
+        "startLine": 143,
+        "startChar": 0,
+        "endLine": 150,
+        "endChar": 49
+      },
+      "revId": "7c2ce7a63f1506e22376f7a5a8be935d4dc9c537",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
