@@ -338,6 +338,30 @@ func (h *Helper) ConnectToService(ctx context.Context, service *shill.Service) e
 	return h.ConnectToServiceWithTimeout(ctx, service, defaultTimeout*6)
 }
 
+// Connect to default service if the current cellular service is not connected, otherwise return an error
+func (h *Helper) Connect(ctx context.Context) (*shill.Service, error) {
+	ctx, st := timing.Start(ctx, "Helper.Connect")
+	defer st.End()
+	service, err := h.FindServiceForDevice(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "unable to find Cellular Service for Device")
+	}
+
+	if isConnected, err := service.IsConnected(ctx); err != nil {
+		return nil, errors.Wrap(err, "unable to get IsConnected for Service")
+	} else if !isConnected {
+		if _, err := h.ConnectToDefault(ctx); err != nil {
+			return nil, errors.Wrap(err, "unable to Connect to default service")
+		}
+	}
+	// Ensure service's state matches expectations.
+	if err := service.WaitForProperty(ctx, shillconst.ServicePropertyState, shillconst.ServiceStateOnline, 30*time.Second); err != nil {
+		return nil, errors.Wrap(err, "failed to get service state")
+	}
+
+	return service, nil
+}
+
 // Disconnect from the Cellular Service and ensure that the disconnect succeeded, otherwise return an error.
 func (h *Helper) Disconnect(ctx context.Context) (time.Duration, error) {
 	ctx, st := timing.Start(ctx, "Helper.Disconnect")
@@ -1033,17 +1057,11 @@ func (h *Helper) GetCurrentIPType(ctx context.Context) (string, error) {
 // GetNetworkProvisionedCellularIPTypes returns the currently provisioned IP types
 func (h *Helper) GetNetworkProvisionedCellularIPTypes(ctx context.Context) (ipv4, ipv6 bool, err error) {
 	// Verify that a connectable Cellular service exists and ensure it is connected.
-	service, err := h.FindServiceForDevice(ctx)
+	service, err := h.Connect(ctx)
 	if err != nil {
 		return false, false, errors.Wrap(err, "unable to find Cellular Service")
 	}
-	if isConnected, err := service.IsConnected(ctx); err != nil {
-		return false, false, errors.Wrap(err, "unable to get IsConnected for Service")
-	} else if !isConnected {
-		if _, err := h.ConnectToDefault(ctx); err != nil {
-			return false, false, errors.Wrap(err, "unable to Connect to default service")
-		}
-	}
+
 	configs, err := service.GetIPConfigs(ctx)
 	if err != nil {
 		return false, false, errors.Wrap(err, "failed to get IPConfigs from service")
@@ -1117,28 +1135,14 @@ func (h *Helper) enablePreviouslyDisabledNonCellularInterfaceforTesting(ctx cont
 
 // RunTestOnCellularInterface setup the device for cellular tests.
 func (h *Helper) RunTestOnCellularInterface(ctx context.Context, testBody func(ctx context.Context) error) error {
-	// Verify that a connectable Cellular service exists and ensure it is connected.
-	service, err := h.FindServiceForDevice(ctx)
-	if err != nil {
-		return errors.Wrap(err, "unable to find Cellular Service")
-	}
-	if isConnected, err := service.IsConnected(ctx); err != nil {
-		return errors.Wrap(err, "unable to get IsConnected for Service")
-	} else if !isConnected {
-		if _, err := h.ConnectToDefault(ctx); err != nil {
-			return errors.Wrap(err, "unable to Connect to default service")
-		}
+	if _, err := h.Connect(ctx); err != nil {
+		return errors.Wrap(err, "failed to connect to cellular service")
 	}
 
 	if err := h.disableNonCellularInterfaceforTesting(ctx); err != nil {
 		return errors.Wrap(err, "failed to disable non cellular interface")
 	}
 	defer h.enablePreviouslyDisabledNonCellularInterfaceforTesting(ctx)
-
-	// wait for portal checks to pass and to be online.
-	if err := service.WaitForProperty(ctx, shillconst.ServicePropertyState, shillconst.ServiceStateOnline, 30*time.Second); err != nil {
-		return errors.Wrapf(err, "%s is not online", service)
-	}
 
 	return testBody(ctx)
 }
