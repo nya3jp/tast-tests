@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6229c2e9_fb250629",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 578,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-09-29T20:42:20Z",
+      "side": 1,
+      "message": "can we move this into a helper function?",
+      "revId": "c2ef35ab3d098893cd895cdb0ef2bc196630306d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
