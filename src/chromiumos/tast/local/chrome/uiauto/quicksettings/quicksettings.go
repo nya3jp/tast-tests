@@ -604,7 +604,7 @@ func MicEnabled(ctx context.Context, tconn *chrome.TestConn) (bool, error) {
 	if err := kb.Accel(ctx, "Tab"); err != nil {
 		return false, errors.Wrap(err, "failed to press Tab to bring focus into Quick Settings")
 	}
-	if err := ui.FocusAndWait(MicToggle)(ctx); err != nil {
+	if err := ui.EnsureFocused(MicToggle)(ctx); err != nil {
 		return false, errors.Wrap(err, "failed to scroll mic toggle into view")
 	}
 	info, err := ui.Info(ctx, MicToggle)
