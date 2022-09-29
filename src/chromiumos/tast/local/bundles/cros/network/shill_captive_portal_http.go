@@ -21,11 +21,13 @@ type params struct {
 	ServiceState         string
 	HTTPResponseHandler  func(rw http.ResponseWriter, req *http.Request)
 	HTTPSResponseHandler func(rw http.ResponseWriter, req *http.Request)
+	ProxyConfig          string
 }
 
 var (
-	redirectURL    = "http://www.example.com"
-	httpsPortalURL = "https://www.example.com"
+	redirectURL     = "http://www.example.com"
+	httpsPortalURL  = "https://www.example.com"
+	testProxyConfig = "test proxy config"
 )
 
 func redirectHandler(url string) func(http.ResponseWriter, *http.Request) {
@@ -61,6 +63,23 @@ func init() {
 				ServiceState:         shillconst.ServiceStateRedirectFound,
 				HTTPResponseHandler:  redirectHandler(redirectURL),
 				HTTPSResponseHandler: nil,
+				ProxyConfig:          testProxyConfig,
+			},
+		}, {
+			Name: "proxyconfig",
+			Val: &params{
+				ServiceState:         shillconst.ServiceStateOnline,
+				HTTPResponseHandler:  redirectHandler(redirectURL),
+				HTTPSResponseHandler: nil,
+				ProxyConfig:          testProxyConfig,
+			},
+		}, {
+			Name: "checkportal",
+			Val: &params{
+				ServiceState:         shillconst.ServiceStateOnline,
+				HTTPResponseHandler:  redirectHandler(redirectURL),
+				HTTPSResponseHandler: nil,
+				ProxyConfig:          testProxyConfig,
 			},
 		}, {
 			Name: "portalsuspected",
@@ -68,6 +87,7 @@ func init() {
 				ServiceState:         shillconst.ServiceStatePortalSuspected,
 				HTTPResponseHandler:  redirectWithNoLocationHandler,
 				HTTPSResponseHandler: nil,
+				ProxyConfig:          "",
 			},
 		}, {
 			Name: "online",
@@ -75,6 +95,7 @@ func init() {
 				ServiceState:         shillconst.ServiceStateOnline,
 				HTTPResponseHandler:  noContentHandler,
 				HTTPSResponseHandler: noContentHandler,
+				ProxyConfig:          "",
 			},
 		}, {
 			Name: "noconnectivity",
@@ -82,6 +103,7 @@ func init() {
 				ServiceState:         shillconst.ServiceStateNoConnectivity,
 				HTTPResponseHandler:  nil,
 				HTTPSResponseHandler: nil,
+				ProxyConfig:          "",
 			},
 		}, {
 			Name: "redirectfoundtempredirect",
@@ -89,6 +111,7 @@ func init() {
 				ServiceState:         shillconst.ServiceStateRedirectFound,
 				HTTPResponseHandler:  tempRedirectHandler(redirectURL),
 				HTTPSResponseHandler: nil,
+				ProxyConfig:          "",
 			},
 		}},
 	})
@@ -109,6 +132,7 @@ func ShillCaptivePortalHTTP(ctx context.Context, s *testing.State) {
 	if err := m.SetProperty(ctx, shillconst.ManagerPropertyPortalHTTPSURL, httpsPortalURL); err != nil {
 		s.Fatal("Failed to set portal httpsurl: ", err)
 	}
+
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
@@ -135,6 +159,17 @@ func ShillCaptivePortalHTTP(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create watcher: ", err)
 	}
 	defer pw.Close(cleanupCtx)
+
+	//testing for ProxyConfig or CheckPortal - no portal state to send in this case
+	if params.ProxyConfig != "" {
+		if err := service.SetProperty(ctx, shillconst.ServicePropertyProxyConfig, params.ProxyConfig); err != nil {
+			s.Fatal("Portal detection disabled by ProxyConfig service: ", err)
+		}
+	}
+
+	//	if err := m.SetProperty(ctx, shillconst.ServicePropertyCheckPortal, "test"); err != nil {
+	//		s.Fatal("Portal detection disabled by CheckPortal service: ", err)
+	//	}
 
 	s.Log("Make service restart portal detector")
 	if err := m.RecheckPortal(ctx); err != nil {
