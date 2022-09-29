@@ -31,6 +31,8 @@ type testParam struct {
 	upload bool
 	// if set, keep local data in this directory.
 	dataDir string
+	// if set, TTS cache generation will run.
+	ttsCacheEnabled bool
 }
 
 const (
@@ -124,39 +126,43 @@ func init() {
 		// produce test and release images. Not collecting this data leads to performance
 		// regression and failure of other tests. Please consider fixing the issue rather
 		// then disabling this in Android PFQ. At this time missing the data is allowed
-		// for the grace perioid however it will be a build stopper after.
+		// for the grace period however it will be a build stopper after.
 		Params: []testing.Param{{
 			ExtraAttr:         []string{"group:arc-data-collector"},
 			ExtraSoftwareDeps: []string{"android_p"},
 			Val: testParam{
-				vmEnabled: false,
-				upload:    true,
-				dataDir:   "",
+				vmEnabled:       false,
+				upload:          true,
+				dataDir:         "",
+				ttsCacheEnabled: false,
 			},
 		}, {
 			Name:              "vm",
 			ExtraAttr:         []string{"group:arc-data-collector"},
 			ExtraSoftwareDeps: []string{"android_vm"},
 			Val: testParam{
-				vmEnabled: true,
-				upload:    true,
-				dataDir:   "",
+				vmEnabled:       true,
+				upload:          true,
+				dataDir:         "",
+				ttsCacheEnabled: false,
 			},
 		}, {
 			Name:              "local",
 			ExtraSoftwareDeps: []string{"android_p"},
 			Val: testParam{
-				vmEnabled: false,
-				upload:    false,
-				dataDir:   "/tmp/data_collector",
+				vmEnabled:       false,
+				upload:          false,
+				dataDir:         "/tmp/data_collector",
+				ttsCacheEnabled: true,
 			},
 		}, {
 			Name:              "vm_local",
 			ExtraSoftwareDeps: []string{"android_vm"},
 			Val: testParam{
-				vmEnabled: true,
-				upload:    false,
-				dataDir:   "/tmp/data_collector",
+				vmEnabled:       true,
+				upload:          false,
+				dataDir:         "/tmp/data_collector",
+				ttsCacheEnabled: false,
 			},
 		}},
 		VarDeps: []string{"arc.perfAccountPool"},
@@ -405,18 +411,23 @@ func DataCollector(ctx context.Context, s *testing.State) {
 		s.Log("Retrying generating ureadahead, previous attempt failed: ", err)
 	}
 
-	attempts = 0
-	for {
-		err := genTTSCache(ctx, s, cl, filepath.Join(dataDir, ttsCache), v, &du)
-		if err == nil {
-			break
+	// TODO(b/225222472): TTS Cache usage causes significant percentage of newly classified
+	// ANRs in ARC. Please keep TTS Cache generation disabled by default in production or it can
+	// break uprev (b/249625651) until the feature is fixed and enabled again.
+	if param.ttsCacheEnabled {
+		attempts = 0
+		for {
+			err := genTTSCache(ctx, s, cl, filepath.Join(dataDir, ttsCache), v, &du)
+			if err == nil {
+				break
+			}
+			attempts = attempts + 1
+			dumpLogcat("tts", attempts)
+			if attempts > retryCount {
+				s.Fatal("Failed to generate TTS cache. No more retries left: ", err)
+			}
+			s.Log("Retrying generating TTS cache, previous attempt failed: ", err)
 		}
-		attempts = attempts + 1
-		dumpLogcat("tts", attempts)
-		if attempts > retryCount {
-			s.Fatal("Failed to generate TTS cache. No more retries left: ", err)
-		}
-		s.Log("Retrying generating TTS cache, previous attempt failed: ", err)
 	}
 }
 
