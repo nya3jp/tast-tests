@@ -97,6 +97,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "68dbf714_04f11074",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/traffic_counters.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-09-29T06:57:13Z",
+      "side": 1,
+      "message": "\u003e seeing flaky cleanup issues - charon.pid still hanging around\nI believe this should not cause any flaky now since we have a workaround implemented for that in tast. It works and may just be not very elegant but it can be fixed by Arisa\u0027s patch soon.\n\nAnd according to the tast results for VPNConnect tests, all VPN types except for those need certs are quite stable. Personally I\u0027m not worried about the stability.\n\n\u003e WG has been stable - is there a reason not to?\n\nWG is not available on all kernels so maybe we don\u0027t have good enough coverage :)",
+      "parentUuid": "8a933212_464d571a",
+      "range": {
+        "startLine": 55,
+        "startChar": 22,
+        "endLine": 55,
+        "endChar": 44
+      },
+      "revId": "2dff1235237614dcb641ba81582a4e585ddec5cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "61aeadf4_9b3d21a7",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/traffic_counters.go",
         "patchSetId": 1
@@ -132,6 +156,30 @@
       "side": 1,
       "message": "Doing so in this test wouldn\u0027t matter right? Are you suggesting adding the vpn user to the existing (\"users\") test case?",
       "parentUuid": "61aeadf4_9b3d21a7",
+      "range": {
+        "startLine": 227,
+        "startChar": 3,
+        "endLine": 227,
+        "endChar": 36
+      },
+      "revId": "2dff1235237614dcb641ba81582a4e585ddec5cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ef0150f_e43751af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/traffic_counters.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-09-29T06:57:13Z",
+      "side": 1,
+      "message": "I mean this test verified VPN as the SOURCE but we also want to verify VPN as the DEVICE?",
+      "parentUuid": "8351b30a_83df7ec6",
       "range": {
         "startLine": 227,
         "startChar": 3,
