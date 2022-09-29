@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c1301e8_6231eac1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2022-09-29T01:43:01Z",
+      "side": 1,
+      "message": "nhebert@ PTAL\n\njchinlee@ if you file a bug to track in go/platformdecoding please\nfeel free to link this CL.\n\nOthers FYI",
+      "revId": "90e7a6e6a5e71c522b2e23c6830ce5258af0b9b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
