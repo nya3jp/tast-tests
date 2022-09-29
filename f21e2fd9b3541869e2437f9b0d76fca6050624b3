@@ -22,6 +22,30 @@
       },
       "revId": "f21e2fd9b3541869e2437f9b0d76fca6050624b3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e4652a4_9e82bef5",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1055,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2022-09-29T08:06:51Z",
+      "side": 1,
+      "message": "Return an error directly.\n`multiple nodes matched, if you expect this and only want the first use First()`",
+      "parentUuid": "cb5b7958_da0c5c70",
+      "range": {
+        "startLine": 1055,
+        "startChar": 63,
+        "endLine": 1055,
+        "endChar": 71
+      },
+      "revId": "f21e2fd9b3541869e2437f9b0d76fca6050624b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
