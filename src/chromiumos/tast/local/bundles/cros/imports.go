@@ -105,6 +105,7 @@ import (
 	_ "chromiumos/tast/local/bundles/cros/shimlessrma"
 	_ "chromiumos/tast/local/bundles/cros/smartlock"
 	_ "chromiumos/tast/local/bundles/cros/spera"
+	_ "chromiumos/tast/local/bundles/cros/starfish"
 	_ "chromiumos/tast/local/bundles/cros/storage"
 	_ "chromiumos/tast/local/bundles/cros/system"
 	_ "chromiumos/tast/local/bundles/cros/tape"
