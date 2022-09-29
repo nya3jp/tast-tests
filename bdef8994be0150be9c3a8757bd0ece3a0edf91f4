@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c134a235_d32ac39a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/shelf_launch_omaha.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-09-29T04:26:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "434050c3_4359897e",
+      "revId": "bdef8994be0150be9c3a8757bd0ece3a0edf91f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "24a7800a_7d664e16",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-09-29T04:10:39Z",
       "side": 1,
       "message": "Can we log if this fails?",
+      "revId": "bdef8994be0150be9c3a8757bd0ece3a0edf91f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a944118_ee3c8e2f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/shelf_launch_omaha.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-09-29T04:26:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "24a7800a_7d664e16",
       "revId": "bdef8994be0150be9c3a8757bd0ece3a0edf91f4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
