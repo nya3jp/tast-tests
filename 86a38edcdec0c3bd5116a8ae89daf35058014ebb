@@ -51,6 +51,24 @@
       "parentUuid": "0eedcad4_bacc83fc",
       "revId": "86a38edcdec0c3bd5116a8ae89daf35058014ebb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed4f89b5_4ea3041d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-09-29T05:40:54Z",
+      "side": 1,
+      "message": "You can find the porting guideline here at http://go/lacros-tast-porting, or please contact hidehiko@, neis@ or me.\n\nGenerally speaking, lacros-chrome (new browser) and ash-chrome (old browser) will keep co-existing for quite some time (think about 2023 and beyond).\nIn other words, what we need here is (1) adding \u0027lacros\u0027 variant tests and also (2) keeping both \u0027ash\u0027 and \u0027lacros\u0027 tests running until the ash browser is completely turned down everywhere in one or two years. Past this point we can probably remove all the \u0027ash\u0027 tests for cleanup.",
+      "parentUuid": "943b7b69_813c74fd",
+      "revId": "86a38edcdec0c3bd5116a8ae89daf35058014ebb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
