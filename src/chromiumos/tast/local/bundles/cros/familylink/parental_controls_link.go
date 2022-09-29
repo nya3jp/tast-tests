@@ -9,6 +9,7 @@ import (
 	"time"
 
 	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/familylink"
 	"chromiumos/tast/local/chrome/uiauto"
@@ -43,8 +44,8 @@ const familiesURL = "https://families.google.com/families"
 // ParentalControlsLink verifies 'Parental controls' opens https://families.google.com/families.
 func ParentalControlsLink(ctx context.Context, s *testing.State) {
 	var (
-		cr    = s.FixtValue().(*familylink.FixtData).Chrome
-		tconn = s.FixtValue().(*familylink.FixtData).TestConn
+		cr    = s.FixtValue().(chrome.HasChrome).Chrome()
+		tconn = s.FixtValue().(familylink.HasTestConn).TestConn()
 		ui    = uiauto.New(tconn)
 	)
 

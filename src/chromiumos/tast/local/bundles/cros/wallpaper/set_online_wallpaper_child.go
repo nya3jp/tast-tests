@@ -43,7 +43,7 @@ func SetOnlineWallpaperChild(ctx context.Context, s *testing.State) {
 	collection := s.RequiredVar("unicorn.wallpaperCategory")
 	image := s.RequiredVar("unicorn.wallpaperName")
 
-	tconn := s.FixtValue().(*familylink.FixtData).TestConn
+	tconn := s.FixtValue().(familylink.HasTestConn).TestConn()
 
 	// Force Chrome to be in clamshell mode to make sure wallpaper preview is not
 	// enabled.

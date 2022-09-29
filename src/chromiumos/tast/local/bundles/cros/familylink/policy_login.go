@@ -9,6 +9,8 @@ import (
 	"time"
 
 	"chromiumos/tast/common/policy"
+	"chromiumos/tast/common/policy/fakedms"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/familylink"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/testing"
@@ -28,9 +30,9 @@ func init() {
 }
 
 func PolicyLogin(ctx context.Context, s *testing.State) {
-	fdms := s.FixtValue().(*familylink.FixtData).FakeDMS
-	cr := s.FixtValue().(*familylink.FixtData).Chrome
-	tconn := s.FixtValue().(*familylink.FixtData).TestConn
+	fdms := s.FixtValue().(fakedms.HasFakeDMS).FakeDMS()
+	cr := s.FixtValue().(chrome.HasChrome).Chrome()
+	tconn := s.FixtValue().(familylink.HasTestConn).TestConn()
 
 	// The ForceGoogleSafeSearch policy is arbitrarily chosen just to illustrate
 	// that setting policies works for Family Link users.
@@ -39,7 +41,7 @@ func PolicyLogin(ctx context.Context, s *testing.State) {
 	}
 
 	pb := policy.NewBlob()
-	pb.PolicyUser = s.FixtValue().(*familylink.FixtData).PolicyUser
+	pb.PolicyUser = s.FixtValue().(familylink.HasPolicyUser).PolicyUser()
 	pb.AddPolicies(policies)
 
 	if err := policyutil.ServeBlobAndRefresh(ctx, fdms, cr, pb); err != nil {

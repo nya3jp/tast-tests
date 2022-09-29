@@ -9,6 +9,7 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/familylink"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
@@ -32,8 +33,8 @@ func init() {
 }
 
 func MatureSitesBlocked(ctx context.Context, s *testing.State) {
-	tconn := s.FixtValue().(*familylink.FixtData).TestConn
-	cr := s.FixtValue().(*familylink.FixtData).Chrome
+	tconn := s.FixtValue().(familylink.HasTestConn).TestConn()
+	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 
 	matureSite := s.RequiredVar("unicorn.matureSite")
 
