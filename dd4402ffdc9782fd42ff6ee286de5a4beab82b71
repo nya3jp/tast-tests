@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98ec083c_38345fa1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/auth_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-09-29T23:33:44Z",
+      "side": 1,
+      "message": "This looks like it shouldn\u0027t be here. Please either remove it or uncomment it",
+      "revId": "dd4402ffdc9782fd42ff6ee286de5a4beab82b71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
