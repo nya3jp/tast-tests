@@ -346,15 +346,15 @@ func (f *Finder) locationPx(ctx context.Context, uda *Context, scaleFactor float
 		return failure(errors.New(ErrNotFound))
 	case numMatches == 1:
 		if f.nth > 0 {
-			return failure(errors.Errorf("%s: find only one element, but want the %d-th one", ErrNthNotFound, f.nth))
+			return failure(errors.Errorf("%s: found only one element, but want the %d-th one", ErrNthNotFound, f.nth))
 		}
 		return &locations[0], nil
 	default: // case numMatches > 1.
 		if f.nth < 0 {
-			return failure(errors.Errorf("%s: found %d elementf. If it is expected, consider using First() or Nth()", ErrMultipleMatch, numMatches))
+			return failure(errors.Errorf("%s: found %d elements. If it is expected, consider using First() or Nth()", ErrMultipleMatch, numMatches))
 		}
 		if f.nth > numMatches-1 {
-			return failure(errors.Errorf("%s: find %d elements, but want the %d-th one", ErrNthNotFound, numMatches, f.nth))
+			return failure(errors.Errorf("%s: found %d elements, but want the %d-th one", ErrNthNotFound, numMatches, f.nth))
 		}
 		return &locations[f.nth], nil
 	}
