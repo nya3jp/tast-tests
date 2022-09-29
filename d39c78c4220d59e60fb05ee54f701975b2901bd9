@@ -107,6 +107,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "113553b7_d8be7b40",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/shelf_launch_omaha.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-09-29T04:02:44Z",
+      "side": 1,
+      "message": "Discussed offline: 1. won\u0027t break subsequent tests, 2. let\u0027s keep clear stateful at the end to not leave unnecessary files taking up space",
+      "parentUuid": "645edfe4_8416943a",
+      "revId": "d39c78c4220d59e60fb05ee54f701975b2901bd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d93e878b_cb4a3d7a",
