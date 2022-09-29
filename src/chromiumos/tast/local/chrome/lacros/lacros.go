@@ -6,16 +6,20 @@ package lacros
 
 import (
 	"context"
+	"os"
+	"path/filepath"
 	"time"
 
 	"android.googlesource.com/platform/external/perfetto/protos/perfetto/trace/github.com/google/perfetto/perfetto_proto"
 	"github.com/mafredri/cdp/protocol/target"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/fsutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/internal/cdputil"
 	"chromiumos/tast/local/chrome/internal/driver"
+	"chromiumos/tast/local/chrome/internal/lacros"
 	"chromiumos/tast/local/chrome/jslog"
 	"chromiumos/tast/local/chrome/lacros/lacrosinfo"
 	"chromiumos/tast/testing"
@@ -69,6 +73,29 @@ func (l *Lacros) CloseResources(ctx context.Context) {
 
 // Close closes all lacros chrome targets and the dev session.
 func (l *Lacros) Close(ctx context.Context) error {
+	// Save lacros.log* to outDir.
+	if outDir, ok := testing.ContextOutDir(ctx); ok {
+		dstDir := filepath.Join(outDir, "lacros_logs")
+		if err := os.MkdirAll(dstDir, 0755); err != nil {
+			testing.ContextLog(ctx, "Error creating lacros log directory: ", err)
+		}
+
+		pattern := filepath.Join(lacros.UserDataDir, "lacros.log*")
+		if files, err := filepath.Glob(pattern); err != nil {
+			testing.ContextLogf(ctx, "Failed to list files with pattern %v: %v", pattern, err)
+		} else {
+			for _, file := range files {
+				if err := fsutil.CopyFile(file, filepath.Join(dstDir, filepath.Base(file))); err != nil {
+					testing.ContextLogf(ctx, "Failed to save %s to %s: %v", file, dstDir, err)
+				} else {
+					testing.ContextLogf(ctx, "%s saved to %s", file, dstDir)
+				}
+			}
+		}
+	} else {
+		testing.ContextLog(ctx, "No output directory exists, not saving lacros log file")
+	}
+
 	// Get all pages. Note that we can't get all targets, because one of them
 	// will be the test extension or devtools and we don't want to kill that.
 	// Further note that this will mean pages are not restored, compared to killing
