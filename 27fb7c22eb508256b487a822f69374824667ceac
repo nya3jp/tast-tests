@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ccf824d_d47f74f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/shill_cellular_custom_apn.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1377951
+      },
+      "writtenOn": "2022-09-29T20:04:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a0e32b56_f7716640",
+      "revId": "27fb7c22eb508256b487a822f69374824667ceac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "32c8c8ce_729334a5",
@@ -184,6 +202,30 @@
       "side": 1,
       "message": "The service is only recreated when the previous APN was Attach and the current isn\u0027t, or if the new APN is an Attach. We can remove this when b/217767378 is fixed. I\u0027ll add a bug number to the comment",
       "parentUuid": "386180ba_734e3a48",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 119,
+        "endChar": 101
+      },
+      "revId": "27fb7c22eb508256b487a822f69374824667ceac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ade1ba7_e4bad01c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/shill_cellular_custom_apn.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1377951
+      },
+      "writtenOn": "2022-09-29T20:04:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "80cb9224_51519198",
       "range": {
         "startLine": 117,
         "startChar": 0,
