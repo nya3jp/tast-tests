@@ -10,15 +10,16 @@ package fscaps
 import (
 	"fmt"
 	"strings"
-	"syscall"
 	"unsafe"
+
+	"golang.org/x/sys/unix"
 
 	"chromiumos/tast/errors"
 )
 
 func init() {
 	var err error
-	if attrName, err = syscall.BytePtrFromString("security.capability"); err != nil {
+	if attrName, err = unix.BytePtrFromString("security.capability"); err != nil {
 		panic(fmt.Sprintf("Failed to allocate extended attribute byte pointer: %v", err))
 	}
 }
@@ -188,7 +189,7 @@ func (c Caps) String() string {
 // GetCaps returns Linux capabilities defined for the file at path.
 // No error is returned if the filesystem does not support capabilities.
 func GetCaps(path string) (Caps, error) {
-	pathPtr, err := syscall.BytePtrFromString(path)
+	pathPtr, err := unix.BytePtrFromString(path)
 	if err != nil {
 		return Caps{}, err
 	}
@@ -197,11 +198,11 @@ func GetCaps(path string) (Caps, error) {
 		magicEtc uint32
 		data     [2]struct{ permitted, inheritable uint32 }
 	}
-	size, _, errno := syscall.Syscall6(syscall.SYS_LGETXATTR, uintptr(unsafe.Pointer(pathPtr)),
+	size, _, errno := unix.Syscall6(unix.SYS_LGETXATTR, uintptr(unsafe.Pointer(pathPtr)),
 		uintptr(unsafe.Pointer(attrName)), uintptr(unsafe.Pointer(&capsStruct)), unsafe.Sizeof(capsStruct), 0, 0)
 
 	// ENODATA is returned if there are no attributes, and ENOTSUP is returned for e.g. FUSE filesystems.
-	if errno == syscall.ENODATA || errno == syscall.ENOTSUP {
+	if errno == unix.ENODATA || errno == unix.ENOTSUP {
 		return Caps{}, nil
 	}
 	if errno != 0 {
