@@ -16,6 +16,24 @@
       "message": "Please add a TODO to re-enable on other architectures and explain why it\u0027s currently only enabled on AMD devices.",
       "revId": "51fa530fffa3d4b38e2043a348a5ed82fe298fe0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b842e2e_3139a36f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/tpm_contest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1549582
+      },
+      "writtenOn": "2022-09-29T16:13:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5c62e2da_8ecb9107",
+      "revId": "51fa530fffa3d4b38e2043a348a5ed82fe298fe0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
