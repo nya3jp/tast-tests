@@ -6,12 +6,16 @@ package lacros
 
 import (
 	"context"
+	"os"
+	"path/filepath"
+	"regexp"
 	"time"
 
 	"android.googlesource.com/platform/external/perfetto/protos/perfetto/trace/github.com/google/perfetto/perfetto_proto"
 	"github.com/mafredri/cdp/protocol/target"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/fsutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/internal/cdputil"
@@ -20,6 +24,8 @@ import (
 	"chromiumos/tast/local/chrome/lacros/lacrosinfo"
 	"chromiumos/tast/testing"
 )
+
+const LacrosLogDirPath = "/home/chronos/user/lacros"
 
 // Lacros contains all state associated with a lacros-chrome instance
 // that has been launched. Must call Close() to release resources.
@@ -69,6 +75,35 @@ func (l *Lacros) CloseResources(ctx context.Context) {
 
 // Close closes all lacros chrome targets and the dev session.
 func (l *Lacros) Close(ctx context.Context) error {
+	// Save lacros.log* to outDir.
+	if outDir, ok := testing.ContextOutDir(ctx); ok {
+		dstDir := filepath.Join(outDir, "lacros_logs")
+		if err := os.MkdirAll(dstDir, 0755); err != nil {
+			testing.ContextLog(ctx, "Error creating lacros log directory: ", err)
+		}
+
+		srcDir := LacrosLogDirPath
+		re := regexp.MustCompile("lacros.log(.*)")
+		filepath.Walk(srcDir, func(path string, info os.FileInfo, err error) error {
+			if err != nil {
+				testing.ContextLogf(ctx, "Failed to walk through files in %s: %v", srcDir, err)
+				return err
+			}
+			if re.MatchString(info.Name()) {
+				if err := fsutil.CopyFile(
+					filepath.Join(srcDir, info.Name()),
+					filepath.Join(dstDir, info.Name())); err != nil {
+					testing.ContextLogf(ctx, "Failed to save %s to %s: %v", info.Name(), dstDir, err)
+				} else {
+					testing.ContextLogf(ctx, "%s saved to %s", info.Name(), dstDir)
+				}
+			}
+			return nil
+		})
+	} else {
+		testing.ContextLog(ctx, "No output directory exists, not saving log file")
+	}
+
 	// Get all pages. Note that we can't get all targets, because one of them
 	// will be the test extension or devtools and we don't want to kill that.
 	// Further note that this will mean pages are not restored, compared to killing
