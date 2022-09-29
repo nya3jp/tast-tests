@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "81de16f8_4432b513",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_sensor_info.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1537719
+      },
+      "writtenOn": "2022-09-29T05:59:39Z",
+      "side": 1,
+      "message": "After checking most of files under `src/platform/tast-tests/src/chromiumos/tast/`, I think third party packages should be import between built-in packages and local packages.\n\nI think this order is more reasonable because we may want to import third party packages before any local packages.\nAnd the commit message in `goimports` provide an example. We could get the formatted import with the `-local chromiumos`.\n\n[1] https://github.com/golang/tools/commit/ed69e84b1518b5857a9f4e01d1f9cefdcc45246e",
+      "parentUuid": "932bd656_cf3a4fe1",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 31
+      },
+      "revId": "cbd896b523087b5cd283b63a7c8f2ca83a2647cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a4f39018_91e95cfc",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-09-28T12:47:06Z",
       "side": 1,
       "message": "i\u0027d move this and ProbeSensorInfo on top of the file since it\u0027s the most important in the test file",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 1
+      },
+      "revId": "cbd896b523087b5cd283b63a7c8f2ca83a2647cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2bdccf68_8a0ad84f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_sensor_info.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1537719
+      },
+      "writtenOn": "2022-09-29T05:59:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a4f39018_91e95cfc",
       "range": {
         "startLine": 35,
         "startChar": 0,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "919daefd_11877e61",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_sensor_info.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1537719
+      },
+      "writtenOn": "2022-09-29T05:59:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d60e5888_91d8b540",
+      "range": {
+        "startLine": 100,
+        "startChar": 14,
+        "endLine": 100,
+        "endChar": 20
+      },
+      "revId": "cbd896b523087b5cd283b63a7c8f2ca83a2647cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b90089c8_53871957",
@@ -100,6 +172,30 @@
       "writtenOn": "2022-09-28T12:47:06Z",
       "side": 1,
       "message": "nit: maybe use switch instead?",
+      "range": {
+        "startLine": 104,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 24
+      },
+      "revId": "cbd896b523087b5cd283b63a7c8f2ca83a2647cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c809f25e_65be1c40",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_sensor_info.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1537719
+      },
+      "writtenOn": "2022-09-29T05:59:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b90089c8_53871957",
       "range": {
         "startLine": 104,
         "startChar": 0,
@@ -133,6 +229,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6cbdf6e1_bbcee2bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_sensor_info.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1537719
+      },
+      "writtenOn": "2022-09-29T05:59:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b42e92c_6c734876",
+      "range": {
+        "startLine": 119,
+        "startChar": 18,
+        "endLine": 119,
+        "endChar": 24
+      },
+      "revId": "cbd896b523087b5cd283b63a7c8f2ca83a2647cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c9959b6f_7a863b6b",
@@ -146,6 +266,30 @@
       "writtenOn": "2022-09-28T12:47:06Z",
       "side": 1,
       "message": "nit: rawLocation?",
+      "range": {
+        "startLine": 120,
+        "startChar": 20,
+        "endLine": 120,
+        "endChar": 31
+      },
+      "revId": "cbd896b523087b5cd283b63a7c8f2ca83a2647cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "46ed72a7_e9eef111",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_sensor_info.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1537719
+      },
+      "writtenOn": "2022-09-29T05:59:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c9959b6f_7a863b6b",
       "range": {
         "startLine": 120,
         "startChar": 20,
@@ -173,6 +317,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "83daddb8_5acd6e1d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_sensor_info.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1537719
+      },
+      "writtenOn": "2022-09-29T05:59:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ef48d46_aa7c6d52",
+      "revId": "cbd896b523087b5cd283b63a7c8f2ca83a2647cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "403489fd_0e18e451",
@@ -186,6 +348,30 @@
       "writtenOn": "2022-09-28T12:47:06Z",
       "side": 1,
       "message": "no need to return *[], just return []. You can return nil if error occurred",
+      "range": {
+        "startLine": 172,
+        "startChar": 52,
+        "endLine": 172,
+        "endChar": 53
+      },
+      "revId": "cbd896b523087b5cd283b63a7c8f2ca83a2647cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ef6674a_52b37149",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_sensor_info.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1537719
+      },
+      "writtenOn": "2022-09-29T05:59:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "403489fd_0e18e451",
       "range": {
         "startLine": 172,
         "startChar": 52,
@@ -219,6 +405,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d86bc60_2ba129a2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_sensor_info.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1537719
+      },
+      "writtenOn": "2022-09-29T05:59:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ec232859_7fe75a11",
+      "range": {
+        "startLine": 200,
+        "startChar": 55,
+        "endLine": 200,
+        "endChar": 58
+      },
+      "revId": "cbd896b523087b5cd283b63a7c8f2ca83a2647cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "35b3b547_377b294e",
@@ -232,6 +442,30 @@
       "writtenOn": "2022-09-28T12:47:06Z",
       "side": 1,
       "message": "I\u0027d prefer to don\u0027t sort slices here, because it might not be expected by the caller. Instead sort slice in expectedSensorAttributes and after (or inside) RunAndParseJSONTelem",
+      "range": {
+        "startLine": 205,
+        "startChar": 1,
+        "endLine": 205,
+        "endChar": 11
+      },
+      "revId": "cbd896b523087b5cd283b63a7c8f2ca83a2647cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "72e59b87_56ee7151",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_sensor_info.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1537719
+      },
+      "writtenOn": "2022-09-29T05:59:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "35b3b547_377b294e",
       "range": {
         "startLine": 205,
         "startChar": 1,
