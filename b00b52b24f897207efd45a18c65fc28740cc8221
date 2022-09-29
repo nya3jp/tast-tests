@@ -16,6 +16,29 @@
       "message": "Hi Jun, can you please take a look?",
       "revId": "b00b52b24f897207efd45a18c65fc28740cc8221",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e270481_a60f80e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/link_capturing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-09-29T03:16:50Z",
+      "side": 1,
+      "message": "This is not right. The err returned by ui.LeftClick is not visible outside the if block. So you are actually returning the error from ossettings.LaunchAtAppMgmtPage, which is always nil here.\n\nif err :\u003d ui.LeftClick(settingRadioButton)(ctx); err !\u003d nil {\n    // Dump UI tree before OS Settings closes to help diagnose timeouts.\n    faillog.DumpUITreeToFile(ctx, outDir, tconn, \"app_management_ui_tree.txt\")\n    return err\n}\nreturn nil",
+      "range": {
+        "startLine": 300,
+        "startChar": 8,
+        "endLine": 300,
+        "endChar": 11
+      },
+      "revId": "b00b52b24f897207efd45a18c65fc28740cc8221",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
