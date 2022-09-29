@@ -9,6 +9,7 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/common/fixture"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/errors"
@@ -67,6 +68,62 @@ func init() {
 		TearDownTimeout: resetTimeout,
 		PreTestTimeout:  resetTimeout,
 		PostTestTimeout: resetTimeout,
+	})
+
+	// Similar to the familyLinkUnicornLogin fixture, but uses a
+	// different test account and isolates sessions for Projector
+	// tests.
+	testing.AddFixture(&testing.Fixture{
+		Name:     "projectorUnicornLogin",
+		Desc:     "Supervised Family Link user login with Unicorn account for Projector tests",
+		Contacts: []string{"tobyhuang@chromium.org", "cros-families-eng+test@google.com"},
+		Impl: NewProjectorFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			return []chrome.Option{
+				chrome.EnableFeatures("Projector, ProjectorAppDebug, ProjectorAnnotator, ProjectorTutorialVideoView, ProjectorLocalPlayback"),
+				chrome.GAIALogin(chrome.Creds{
+					User:       s.RequiredVar("projector.childEmail"),
+					Pass:       s.RequiredVar("projector.childPassword"),
+					ParentUser: s.RequiredVar("projector.parentEmail"),
+					ParentPass: s.RequiredVar("projector.parentPassword"),
+				}),
+			}, nil
+		}),
+		Vars: []string{
+			"projector.childEmail",
+			"projector.childPassword",
+			"projector.parentEmail",
+			"projector.parentPassword",
+		},
+		SetUpTimeout:    chrome.GAIALoginChildTimeout,
+		ResetTimeout:    resetTimeout,
+		TearDownTimeout: resetTimeout,
+		PreTestTimeout:  resetTimeout,
+		PostTestTimeout: resetTimeout,
+	})
+
+	testing.AddFixture(&testing.Fixture{
+		Name:     "projectorEduLogin",
+		Desc:     "Managed EDU user login with fakeDMS policy setup for Projector tests",
+		Contacts: []string{"tobyhuang@chromium.org", "cros-families-eng+test@google.com"},
+		Impl: NewProjectorFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			return []chrome.Option{
+				chrome.EnableFeatures("Projector, ProjectorAppDebug, ProjectorAnnotator, ProjectorTutorialVideoView, ProjectorLocalPlayback"),
+				chrome.GAIALogin(chrome.Creds{
+					User: s.RequiredVar("projector.eduEmail"),
+					Pass: s.RequiredVar("projector.eduPassword"),
+				}),
+			}, nil
+		}),
+		Vars: []string{
+			"projector.eduEmail",
+			"projector.eduPassword",
+		},
+		SetUpTimeout:    chrome.ManagedUserLoginTimeout,
+		ResetTimeout:    resetTimeout,
+		TearDownTimeout: resetTimeout,
+		PreTestTimeout:  resetTimeout,
+		PostTestTimeout: resetTimeout,
+		Parent:          fixture.PersistentProjectorEDU,
 	})
 }
 
