@@ -13,8 +13,9 @@ import (
 	"context"
 	"runtime"
 	"strings"
-	"syscall"
 	"time"
+
+	"golang.org/x/sys/unix"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/resourced"
@@ -56,12 +57,12 @@ func (c *ChromeOSAllocator) Allocate(size int) error {
 			mmapSize = MiB
 		}
 		size -= mmapSize
-		buffer, err := syscall.Mmap(
+		buffer, err := unix.Mmap(
 			-1,
 			0,
 			mmapSize,
-			syscall.PROT_READ|syscall.PROT_WRITE,
-			syscall.MAP_PRIVATE|syscall.MAP_ANONYMOUS,
+			unix.PROT_READ|unix.PROT_WRITE,
+			unix.MAP_PRIVATE|unix.MAP_ANONYMOUS,
 		)
 		if err != nil {
 			var stats runtime.MemStats
@@ -90,7 +91,7 @@ func (c *ChromeOSAllocator) FreeLast() (uint64, error) {
 	size := uint64(len(buffer))
 	c.size -= size
 
-	if err := syscall.Munmap(buffer); err != nil {
+	if err := unix.Munmap(buffer); err != nil {
 		return 0, errors.Wrap(err, "unable to free buffer")
 	}
 	return size, nil
