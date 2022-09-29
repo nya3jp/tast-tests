@@ -160,6 +160,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "93c6ec30_7183a37f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-09-29T20:34:16Z",
+      "side": 1,
+      "message": "I am okay to always have lacros logs collected. We could go with this CL and see what owners say. Now we would be more prepared.",
+      "parentUuid": "a9c11bbd_84f6ca7e",
+      "revId": "8d06b8df290c5eb6696438d43874874ddf78ebd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1a121f49_9e2164c6",
