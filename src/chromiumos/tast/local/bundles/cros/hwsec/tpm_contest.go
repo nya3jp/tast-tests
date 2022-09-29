@@ -23,7 +23,9 @@ func init() {
 			"markhas@google.com",       // Test author
 			"cros-proj-amd@google.com", // Backup mailing list
 		},
-		SoftwareDeps: []string{"tpm2", "protected_content", "amd64"},
+		// TODO: This test does not have to be specific to AMD cpus, but is
+		// failing and/or untested on other platforms.
+		SoftwareDeps: []string{"tpm2", "protected_content", "amd_cpu"},
 		Attr:         []string{"group:mainline", "informational"},
 		Timeout:      3 * time.Minute,
 	})
@@ -34,7 +36,7 @@ func init() {
 // If #iterations < 0, the command will be executed infinitely
 // Returns (cmd, cmdOutput, error), cmdOutput is only populated on error
 func runCmdRepeatedly(ctx context.Context, cmd []string, iterations int) (string, []byte, error) {
-	r := libhwseclocal.NewCmdRunner()
+	r := libhwseclocal.NewLoglessCmdRunner()
 	cmdStr := strings.Join(cmd, " ")
 	for i := 0; i < iterations || iterations < 0; i++ {
 		if output, err := r.RunWithCombinedOutput(ctx, cmd[0], cmd[1:]...); err != nil {
@@ -72,12 +74,11 @@ func TPMContest(ctx context.Context, s *testing.State) {
 	workerCtx, cancel := context.WithCancel(ctx)
 	defer cancel()
 
-	const minTestIterations = 1
-	commands := [][]string{{"libhwsec_client", "get_random", "4096"},
+	const minTestIterations = 50
+	commands := [][]string{{"cat", "/sys/class/tpm/tpm0/ph_enable"},
 		// oemcrypto_hw_ref_tests tasks the TPM from a trusted application context
 		{"oemcrypto_hw_ref_tests", "-v", "-v", "-v", "-v",
-			"--gtest_filter=*OEMCryptoSessionTests.OEMCryptoMemoryCreateUsageTableHeaderForHugeHeaderBufferLength"},
-		{"trunks_client", "--key_create", "--rsa=2048", "--usage=decrypt", "--key_blob=/tmp/key", "--print_time"}}
+			"--gtest_filter=*OEMCryptoSessionTests.OEMCryptoMemoryCreateUsageTableHeaderForHugeHeaderBufferLength"}}
 
 	// A result is written to the #done channel every time #runCmdRepeatedly finishes executing.
 	// For this test, every worker thread calls #runCmdRepeatedly twice. The first call runs a
@@ -92,6 +93,7 @@ func TPMContest(ctx context.Context, s *testing.State) {
 		c := cmd
 		go func() {
 			var r result
+			s.Logf("Running %s a minimum of %d times", c, minTestIterations)
 			r.cmd, r.output, r.err = runCmdRepeatedly(workerCtx, c, minTestIterations)
 			done <- r
 			if r.err == nil {
