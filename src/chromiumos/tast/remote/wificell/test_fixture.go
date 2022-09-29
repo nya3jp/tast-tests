@@ -148,6 +148,13 @@ func TFLogLevel(level int) TFOption {
 	}
 }
 
+// TFRouterRequired defines if the router is required for the test fixture.
+func TFRouterRequired(req bool) TFOption {
+	return func(tf *TestFixture) {
+		tf.option.routerRequired = req
+	}
+}
+
 // TFRouterType sets the router type used in the test fixture.
 func TFRouterType(rtype support.RouterType) TFOption {
 	return func(tf *TestFixture) {
@@ -251,6 +258,7 @@ type TestFixture struct {
 		packetCapture   bool
 		withUI          bool
 		routerAsCapture bool
+		routerRequired  bool
 	}
 
 	apID      int
@@ -353,6 +361,8 @@ func NewTestFixture(fullCtx, daemonCtx context.Context, d *dut.DUT, rpcHint *tes
 		// (connection + dbus + device + link + manager + portal + service)
 		logTags: []string{"wifi"},
 	}
+	// By default we require router presence.
+	tf.option.routerRequired = true
 
 	for _, op := range ops {
 		op(tf)
@@ -401,7 +411,24 @@ func NewTestFixture(fullCtx, daemonCtx context.Context, d *dut.DUT, rpcHint *tes
 		if err != nil {
 			return nil, errors.Wrap(err, "failed to synthesize default router name")
 		}
-		tf.routers = append(tf.routers, &routerData{target: name})
+		// Check if the router is accessible at all.
+		_, err = net.LookupIP(name)
+		if err != nil {
+			// For some reason, .cros is not always in search domain.
+			name = fmt.Sprintf("%s.cros", name)
+			_, err = net.LookupIP(name)
+			// Report error only when router presence is required.
+			if err != nil && tf.option.routerRequired {
+				return nil, errors.Errorf("could not resolve IP for host %s", name)
+			}
+		}
+		// If default router is present, add it.
+		if err == nil {
+			tf.routers = append(tf.routers, &routerData{target: name})
+		} else {
+			testing.ContextLog(ctx, "Default router not found, but not required")
+		}
+
 	}
 	for i := range tf.routers {
 		rt := tf.routers[i]
@@ -419,7 +446,7 @@ func NewTestFixture(fullCtx, daemonCtx context.Context, d *dut.DUT, rpcHint *tes
 		testing.ContextLogf(ctx, "Successfully instantiated %s router controller for router[%d]", routerObj.RouterType().String(), i)
 		rt.object = routerObj
 	}
-	if tf.option.routerAsCapture {
+	if tf.option.routerAsCapture && len(tf.routers) > 0 {
 		testing.ContextLog(ctx, "Using router as pcap")
 		tf.pcapTarget = tf.routers[0].target
 	}
@@ -488,13 +515,13 @@ func NewTestFixture(fullCtx, daemonCtx context.Context, d *dut.DUT, rpcHint *tes
 	}
 
 	// Finally, fallback to use the first router as pcap if needed.
-	if tf.pcapHost == nil {
+	if tf.pcapHost == nil && len(tf.routers) > 0 {
 		testing.ContextLog(ctx, "Fallback to use router 0 as pcap")
 		tf.pcapHost = tf.routers[0].host
 		tf.pcap = tf.routers[0].object
 	}
 
-	if tf.attenuatorTarget != "" {
+	if tf.attenuatorTarget != "" && len(tf.routers) > 0 {
 		testing.ContextLog(ctx, "Opening Attenuator: ", tf.attenuatorTarget)
 		var err error
 		// openWrtRouter #0 should always be present, thus we use it as a proxy.
@@ -532,6 +559,9 @@ func (tf *TestFixture) DUTConn(dutIdx DutIdx) *ssh.Conn {
 // APConn returns connection object to the first AP.
 // Currently, the test fixture only requires to control the first (0th) AP.
 func (tf *TestFixture) APConn() *ssh.Conn {
+	if len(tf.routers) == 0 {
+		return nil
+	}
 	return tf.routers[0].host
 }
 
@@ -754,6 +784,11 @@ func (tf *TestFixture) UniqueAPName() string {
 func (tf *TestFixture) ConfigureAPOnRouterID(ctx context.Context, idx int, ops []hostapd.Option, fac security.ConfigFactory, enableDNS, enableHTTP bool) (ret *APIface, retErr error) {
 	ctx, st := timing.Start(ctx, "tf.ConfigureAP")
 	defer st.End()
+
+	if len(tf.routers) <= idx {
+		return nil, errors.Errorf("router index (%d) out of range [0, %d)", idx, len(tf.routers))
+	}
+
 	r := tf.routers[idx].object
 	name := tf.UniqueAPName()
 
@@ -768,10 +803,6 @@ func (tf *TestFixture) ConfigureAPOnRouterID(ctx context.Context, idx int, ops [
 	config, err := hostapd.NewConfig(ops...)
 	if err != nil {
 		return nil, err
-	}
-
-	if len(tf.routers) <= idx {
-		return nil, errors.Errorf("router index (%d) out of range [0, %d)", idx, len(tf.routers))
 	}
 
 	var capturer *pcap.Capturer
