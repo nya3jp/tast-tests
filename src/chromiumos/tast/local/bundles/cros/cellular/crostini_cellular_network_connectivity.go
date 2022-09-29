@@ -8,10 +8,12 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/cellular"
 	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/local/modemmanager"
+	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
 
@@ -29,7 +31,7 @@ func init() {
 			{
 				ExtraSoftwareDeps: []string{"dlc"},
 				ExtraHardwareDeps: crostini.CrostiniStable,
-				Fixture:           "crostiniBullseye",
+				Fixture:           "crostiniBullseyeGaia",
 				Timeout:           10 * time.Minute,
 			},
 		},
@@ -37,6 +39,11 @@ func init() {
 }
 
 func CrostiniCellularNetworkConnectivity(ctx context.Context, s *testing.State) {
+	cont := s.FixtValue().(crostini.FixtureData).Cont
+	defer upstart.RestartJob(ctx, "ui")
+	ctx, cancel := ctxutil.Shorten(ctx, 30*time.Second)
+	defer cancel()
+
 	if _, err := modemmanager.NewModemWithSim(ctx); err != nil {
 		s.Fatal("Could not find MM dbus object with a valid sim: ", err)
 	}
@@ -46,17 +53,21 @@ func CrostiniCellularNetworkConnectivity(ctx context.Context, s *testing.State) 
 		s.Fatal("Failed to create cellular.Helper: ", err)
 	}
 	// Enable and get service to set autoconnect based on test parameters.
-	if _, err := helper.Enable(ctx); err != nil {
-		s.Fatal("Failed to enable modem")
+	if _, err := helper.Connect(ctx); err != nil {
+		s.Fatal("Failed to connect to cellular service")
 	}
 	ipv4, ipv6, err := helper.GetNetworkProvisionedCellularIPTypes(ctx)
 	if err != nil {
 		s.Fatal("Failed to read network provisioned IP types: ", err)
 	}
 	s.Log("ipv4: ", ipv4, " ipv6: ", ipv6)
-	cont := s.FixtValue().(crostini.FixtureData).Cont
 
 	verifyIPConnectivity := func(ctx context.Context) error {
+		containerIP, err := cont.GetIPv4Address(ctx)
+		if err != nil {
+			return errors.Wrap(err, "failed to get container IP address")
+		}
+		testing.ContextLog(ctx, "ContainerIP: ", containerIP)
 		if err := cellular.VerifyCrostiniIPConnectivity(ctx, cont.Command, ipv4, ipv6); err != nil {
 			return errors.Wrap(err, "failed connectivity test")
 		}
