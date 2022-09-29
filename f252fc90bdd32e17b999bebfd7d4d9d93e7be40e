@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4f498eca_68df8b36",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/fixtures/services_on_boot_fixt.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2022-09-29T22:26:16Z",
+      "side": 1,
+      "message": "Sure. Could have a comment for that?",
+      "parentUuid": "881c1849_a407ff46",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 2
+      },
+      "revId": "f252fc90bdd32e17b999bebfd7d4d9d93e7be40e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cc97d87b_0623d34b",
         "filename": "src/chromiumos/tast/remote/bundles/cros/platform/fixtures/services_on_boot_fixt.go",
         "patchSetId": 4
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "IMO, the doc for polling applies to the opposite case: in the happy path the polling condition is satisfied shortly. In the sad path we also waited long enough to be confident to fail the test for the timeout.\n\nHere I don\u0027t think we have a good way to tell if a service has finished its initialization sequence. So we wait for services to _fail_ instead. In the happy path we would be waiting for the _timeout_ and declare that the service is running successfully only if we find nothing wrong after _timeout_ passed. The happy path is either slow or flaky. Polling would make the sad path faster, which I don\u0027t find useful.\n\nAgree this is a code smell, I should probably put this into the comment.\n\n\u003e Maybe one of the \"wait for CPU activity to subside\"\n\nFrom my experiences CPU activity fluctuates a lot: my hatch devices\u0027 CPUs seem to be busy for a long while on boot, compared to other platforms.",
       "parentUuid": "cc97d87b_0623d34b",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 34
+      },
+      "revId": "f252fc90bdd32e17b999bebfd7d4d9d93e7be40e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b315137_c8eebdc8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/fixtures/services_on_boot_fixt.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2022-09-29T22:26:16Z",
+      "side": 1,
+      "message": "\u003e IMO, the doc for polling applies to the opposite case: in the happy path the polling condition is satisfied shortly. In the sad path we also waited long enough to be confident to fail the test for the timeout.\n\nI\u0027d say this feels exactly like that comment. If the sleep is long, the test is excessively slow. If the sleep is short, it\u0027s flaky (erring on the side of passing, but that\u0027s still bad -- we\u0027re missing errors, and the flake may be exposed by arbitrary other actions, like somebody\u0027s CL that makes things boot faster).\n\n\u003e Here I don\u0027t think we have a good way to tell if a service has finished its initialization sequence. [...]\n\nThat\u0027s mostly right. You could possibly look for anything that\u0027s not in a steady state, via \u0027initctl list\u0027:\n\nhttps://upstart.ubuntu.com/cookbook/#job-states\n\n(so, anything in \"starting\", \"stopping\", etc.)\n\nBut that\u0027s still not quite right, since failing services tend to fail soon after they\u0027ve reached steady state (because the process exits with a failure code).\n\n\u003e From my experiences CPU activity fluctuates a lot: my hatch devices\u0027 CPUs seem to be busy for a long while on boot, compared to other platforms.\n\nYeah, it\u0027s not a great one. I just wanted to brainstorm something that\u0027s better than an arbitrary \"wait 30 seconds.\"\n\nMaybe we don\u0027t have anything better. Or maybe we could look at \u0027initctl list\u0027 and still have a short sleep afterward.",
+      "parentUuid": "85d9272d_73968b2c",
       "range": {
         "startLine": 80,
         "startChar": 0,
@@ -191,6 +239,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "843e8208_be9edcd0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/services_on_boot.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2022-09-29T22:26:16Z",
+      "side": 1,
+      "message": "(Sorry, perhaps a comment like this should have had a clearer direction/AI on it.) Your 3 points/goals are reasonable, and I guess what I was hoping for was simply clarification.\n\nMaybe that also deserves a comment, if this \"weird use of fixtures\" is the best solution.",
+      "parentUuid": "c400499c_e1ea75ef",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 44
+      },
+      "revId": "f252fc90bdd32e17b999bebfd7d4d9d93e7be40e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d058194d_ed57f71b",
         "filename": "src/chromiumos/tast/remote/bundles/cros/platform/services_on_boot.go",
         "patchSetId": 4
@@ -226,6 +298,30 @@
       "side": 1,
       "message": "Sounds like a good idea. I would expect this catch all sub-test to fail, but that would gives us something actionable.",
       "parentUuid": "d058194d_ed57f71b",
+      "range": {
+        "startLine": 27,
+        "startChar": 2,
+        "endLine": 27,
+        "endChar": 8
+      },
+      "revId": "f252fc90bdd32e17b999bebfd7d4d9d93e7be40e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd76da27_1228de36",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/services_on_boot.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2022-09-29T22:26:16Z",
+      "side": 1,
+      "message": "Simple example: this already caused me to pay attention to this one:\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform2/+/3928609\n\nHere\u0027s another older one, with some real impacts: https://b.corp.google.com/issues/240492701\n\nThere\u0027s a constant stream of new services like this (or new buggy shell logic added to old ones), and I think it would be good to pay attention to them. There are real bugs hiding in many of those.\n\nWe\u0027d likely need an allow-list for some things (e.g., you already noticed \u0027failsafe-delay\u0027), but I suspect we could get it stable, after which it should provide long-term value.",
+      "parentUuid": "c5aa8af4_75df1d08",
       "range": {
         "startLine": 27,
         "startChar": 2,
