@@ -20,6 +20,7 @@ import (
 	"chromiumos/tast/local/chrome/jslog"
 	"chromiumos/tast/local/chrome/lacros/lacrosfaillog"
 	"chromiumos/tast/local/chrome/lacros/lacrosinfo"
+	"chromiumos/tast/local/logsaver"
 	"chromiumos/tast/testing"
 )
 
@@ -87,11 +88,14 @@ func connect(ctx context.Context, tconn *chrome.TestConn, saveFailLog bool) (l *
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to connect to debugging port")
 	}
+	lacrosLogPath := filepath.Join(UserDataDir, "lacros.log")
 
 	return &Lacros{
-		agg:    agg,
-		sess:   sess,
-		ctconn: tconn,
+		agg:         agg,
+		sess:        sess,
+		ctconn:      tconn,
+		logFilename: lacrosLogPath,
+		logMarker:   logsaver.NewMarkerNoOffset(lacrosLogPath),
 	}, nil
 }
 
