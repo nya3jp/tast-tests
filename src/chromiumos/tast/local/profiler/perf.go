@@ -13,7 +13,8 @@ import (
 	"regexp"
 	"strconv"
 	"strings"
-	"syscall"
+
+	"golang.org/x/sys/unix"
 
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
@@ -386,11 +387,11 @@ func (p *perf) handleOutput(ctx context.Context) error {
 // end interrupts the perf command and ends the recording of perf.data.
 func (p *perf) end(ctx context.Context) error {
 	// Interrupt the cmd to stop recording perf.
-	p.cmd.Signal(syscall.SIGINT)
+	p.cmd.Signal(unix.SIGINT)
 	err := p.cmd.Wait()
 	// The signal is interrupt intentionally, so we check the wait status
 	// instead of refusing the error.
-	if ws, ok := testexec.GetWaitStatus(err); !ok || !ws.Signaled() || ws.Signal() != syscall.SIGINT {
+	if ws, ok := testexec.GetWaitStatus(err); !ok || !ws.Signaled() || ws.Signal() != unix.SIGINT {
 		return errors.Wrap(err, "failed waiting for the command to exit")
 	}
 	return p.handleOutput(ctx)
