@@ -33,6 +33,23 @@
       "message": "Can you check the permission for the drive file? I can\u0027t see it.",
       "revId": "8d06b8df290c5eb6696438d43874874ddf78ebd6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "329ab42d_55153a73",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-09-29T16:09:13Z",
+      "side": 1,
+      "message": "The impl looks good to me. We would copy lacros log for every test run regardless of whether success or not. I was thinking about that when I commented on the bug.\n\nNow that I also found there is a `lacrosfaillog` package\n\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/lacros/lacrosfaillog/faillog.go\n\nand one example usage of that \n\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/lacros/basic.go;rcl\u003d8fbf2c53960bc8917a6a01fda5405cad7c17201e;l\u003d87\n\n\nMy question is whether we want to collect lacros log all the time, or only when tests fail.",
+      "revId": "8d06b8df290c5eb6696438d43874874ddf78ebd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
