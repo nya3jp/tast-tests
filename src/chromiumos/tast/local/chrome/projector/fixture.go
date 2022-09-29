@@ -75,9 +75,25 @@ type projectorFixture struct {
 // FixtData holds information made available to tests that specify this Fixture.
 type FixtData struct {
 	// Chrome is the running chrome instance.
-	Chrome *chrome.Chrome
+	chrome *chrome.Chrome
 	// TestConn is a connection to the test extension.
-	TestConn *chrome.TestConn
+	testConn *chrome.TestConn
+}
+
+// Chrome implements the HasChrome interface.
+func (f FixtData) Chrome() *chrome.Chrome {
+	if f.chrome == nil {
+		panic("Chrome is called with nil chrome instance")
+	}
+	return f.chrome
+}
+
+// TestConn implements the HasTestConn interface.
+func (f FixtData) TestConn() *chrome.TestConn {
+	if f.testConn == nil {
+		panic("TestConn is called with nil testConn instance")
+	}
+	return f.testConn
 }
 
 func (f *projectorFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
@@ -103,8 +119,8 @@ func (f *projectorFixture) SetUp(ctx context.Context, s *testing.FixtState) inte
 	// Lock chrome after all Setup is complete so we don't block other fixtures.
 	chrome.Lock()
 	return &FixtData{
-		Chrome:   cr,
-		TestConn: tconn,
+		chrome:   cr,
+		testConn: tconn,
 	}
 }
 
