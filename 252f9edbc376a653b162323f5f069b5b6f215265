@@ -39,6 +39,30 @@
       },
       "revId": "252f9edbc376a653b162323f5f069b5b6f215265",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dcf63f82_8aa9c103",
+        "filename": "src/chromiumos/tast/local/assistant/assistant.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1121230
+      },
+      "writtenOn": "2022-09-29T23:54:09Z",
+      "side": 1,
+      "message": "Thank you! Good point! testing.Poll should simplify the design. Updated the code.",
+      "parentUuid": "3ada651a_9e1308fd",
+      "range": {
+        "startLine": 119,
+        "startChar": 13,
+        "endLine": 119,
+        "endChar": 26
+      },
+      "revId": "252f9edbc376a653b162323f5f069b5b6f215265",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
