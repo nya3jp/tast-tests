@@ -11,13 +11,14 @@ const crosNetworkConfigJs = `
  * @fileoverview A wrapper file for the cros network config API.
  */
 async function() {
+  const networkConfigMojoModule = await import('chrome://resources/mojo/chromeos/services/network_config/public/mojom/cros_network_config.mojom-webui.js');
+
   return {
     crosNetworkConfig_: null,
 
     getCrosNetworkConfig() {
       if (!this.crosNetworkConfig_) {
-        this.crosNetworkConfig_ =
-          chromeos.networkConfig.mojom.CrosNetworkConfig.getRemote();
+        this.crosNetworkConfig_ = networkConfigMojoModule.CrosNetworkConfig.getRemote();
       }
       return this.crosNetworkConfig_;
     },
