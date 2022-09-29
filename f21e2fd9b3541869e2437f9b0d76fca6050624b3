@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb5b7958_da0c5c70",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1055,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-09-29T07:53:27Z",
+      "side": 1,
+      "message": "Just a question, what is the behavior of LeftClick if there are multiple nodes?",
+      "range": {
+        "startLine": 1055,
+        "startChar": 63,
+        "endLine": 1055,
+        "endChar": 71
+      },
+      "revId": "f21e2fd9b3541869e2437f9b0d76fca6050624b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
