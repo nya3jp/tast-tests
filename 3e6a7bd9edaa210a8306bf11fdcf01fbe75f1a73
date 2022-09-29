@@ -46,6 +46,30 @@
       },
       "revId": "3e6a7bd9edaa210a8306bf11fdcf01fbe75f1a73",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2729fbc_8b1b9ab2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/autoupdate/rollback_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-09-29T11:47:32Z",
+      "side": 1,
+      "message": "Ok, that is a good point. Maybe call it `do-not-call-any-dmserver`) then? and we could explain in the comment it will fail so we do not want to log any error as a result? Also, please break the comment is shorter lines",
+      "parentUuid": "77444a11_d1d6112a",
+      "range": {
+        "startLine": 140,
+        "startChar": 45,
+        "endLine": 140,
+        "endChar": 73
+      },
+      "revId": "3e6a7bd9edaa210a8306bf11fdcf01fbe75f1a73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
