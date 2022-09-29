@@ -91,6 +91,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "645edfe4_8416943a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/shelf_launch_omaha.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-09-29T01:56:02Z",
+      "side": 1,
+      "message": "I think we shouldn\u0027t break anything - that\u0027s a recipe for causing other tests to fail randomly. Can you make it so it won\u0027t break anything for subsequent tests?",
+      "parentUuid": "eac383ea_7aae8d41",
+      "revId": "d39c78c4220d59e60fb05ee54f701975b2901bd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d93e878b_cb4a3d7a",
         "filename": "src/chromiumos/tast/local/bundles/cros/lacros/shelf_launch_omaha.go",
         "patchSetId": 9

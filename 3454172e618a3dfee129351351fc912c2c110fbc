@@ -34,6 +34,24 @@
       "parentUuid": "c864361b_4e1a15ee",
       "revId": "3454172e618a3dfee129351351fc912c2c110fbc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a074a94_72dfba83",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/shelf_launch_omaha.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-09-29T01:56:02Z",
+      "side": 1,
+      "message": "What about putting the WaitForAppClosed call into the defer and running it unconditionally? I guess you can still .Fatal the test even if it\u0027s in a defer. The current implementation breaks if WaitForAppClosed fails, unless you put l\u003dnil back in.",
+      "parentUuid": "6f47aa2d_81d12e40",
+      "revId": "3454172e618a3dfee129351351fc912c2c110fbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
