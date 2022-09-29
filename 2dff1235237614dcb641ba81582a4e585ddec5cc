@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd90cc8a_0ea78aa4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/traffic_counters.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-09-29T05:46:11Z",
+      "side": 1,
+      "message": "introduce them only when used?",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 11
+      },
+      "revId": "2dff1235237614dcb641ba81582a4e585ddec5cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "abfbf64f_492ac401",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/traffic_counters.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-09-29T05:46:11Z",
+      "side": 1,
+      "message": "Any special reason to use wg? Maybe use l2tp_ipsec_psk instead to avoid this software dep?",
+      "range": {
+        "startLine": 55,
+        "startChar": 22,
+        "endLine": 55,
+        "endChar": 44
+      },
+      "revId": "2dff1235237614dcb641ba81582a4e585ddec5cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61aeadf4_9b3d21a7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/traffic_counters.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-09-29T05:46:11Z",
+      "side": 1,
+      "message": "If I understand this correctly, this verify the counters of (VPN, physical interface). Should we also verify the counters of (user, VPN)?",
+      "range": {
+        "startLine": 227,
+        "startChar": 3,
+        "endLine": 227,
+        "endChar": 36
+      },
+      "revId": "2dff1235237614dcb641ba81582a4e585ddec5cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2bcd60e5_4f953687",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/traffic_counters.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-09-29T05:46:11Z",
+      "side": 1,
+      "message": "I suppose we shouldn\u0027t call cancel here? This may close the VPN server at the end of this function...",
+      "range": {
+        "startLine": 300,
+        "startChar": 1,
+        "endLine": 300,
+        "endChar": 15
+      },
+      "revId": "2dff1235237614dcb641ba81582a4e585ddec5cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60bb0138_cce05637",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/traffic_counters.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-09-29T05:46:11Z",
+      "side": 1,
+      "message": "nit: conn, nil",
+      "range": {
+        "startLine": 315,
+        "startChar": 8,
+        "endLine": 315,
+        "endChar": 17
+      },
+      "revId": "2dff1235237614dcb641ba81582a4e585ddec5cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
