@@ -155,6 +155,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6f026289_9ba5fe82",
+        "filename": "src/chromiumos/tast/local/bundles/cros/intel/bt_connection_stability_with_wifi.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-09-29T05:18:27Z",
+      "side": 1,
+      "message": "We had discussions regarding accessing external web site in Tast reviewer meetings today. The consensus was that we should not access external web site except for some special circumstance for following reason.\n\n1. Owners of external web site may not want us to use their web site for testing.\n\n2. It makes the test flaky. What if the site went down.\n\nSomebody in the meeting mentioned that we could host a web site internally to do testing. Therefore, please don\u0027t access the external web site.\n\nThanks.",
+      "parentUuid": "eb9e8859_67338b2a",
+      "revId": "bdf8a073c9e6449f0735c342f014d5ee6c608c4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "693592c9_1190ef7c",
         "filename": "src/chromiumos/tast/local/bundles/cros/intel/bt_connection_stability_with_wifi.go",
         "patchSetId": 1
