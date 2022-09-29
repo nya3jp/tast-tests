@@ -39,6 +39,30 @@
       },
       "revId": "b00b52b24f897207efd45a18c65fc28740cc8221",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3a9d684_569df451",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/link_capturing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1130680
+      },
+      "writtenOn": "2022-09-29T03:34:08Z",
+      "side": 1,
+      "message": "Oops, thanks for the explanation",
+      "parentUuid": "5e270481_a60f80e8",
+      "range": {
+        "startLine": 300,
+        "startChar": 8,
+        "endLine": 300,
+        "endChar": 11
+      },
+      "revId": "b00b52b24f897207efd45a18c65fc28740cc8221",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
