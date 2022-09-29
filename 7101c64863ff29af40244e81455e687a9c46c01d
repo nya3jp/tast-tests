@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2214fb5_0204ac92",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2022-09-29T04:28:58Z",
+      "side": 1,
+      "message": "Recommend running test with command - ../platform/tast-tests/tools/repeat-test.sh -s -r 30 \u003cDUT\u003e test and verify before merging for stability.",
+      "revId": "7101c64863ff29af40244e81455e687a9c46c01d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
