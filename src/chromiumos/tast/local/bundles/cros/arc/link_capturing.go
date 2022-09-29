@@ -185,7 +185,7 @@ func LinkCapturing(ctx context.Context, s *testing.State) {
 	} {
 		s.Run(ctx, tc.name, func(ctx context.Context, s *testing.State) {
 			if tc.setting != openInDefault {
-				if err := changeLinkCapturingSetting(ctx, tconn, cr, tc.setting == openInApp); err != nil {
+				if err := changeLinkCapturingSetting(ctx, tconn, cr, tc.setting == openInApp, s.OutDir()); err != nil {
 					s.Fatal("Failed to change link capturing setting: ", err)
 				}
 			}
@@ -272,7 +272,7 @@ func clickAndroidLinkAndVerify(ctx context.Context, tconn *chrome.TestConn, arcD
 // management for the test app. If openInApp is true, the setting will be
 // enabled and links will open in the app. Otherwise, the setting will be
 // disabled and links will open in the browser.
-func changeLinkCapturingSetting(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome, openInApp bool) error {
+func changeLinkCapturingSetting(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome, openInApp bool, outDir string) error {
 	const (
 		testAppName                = "Link Capturing Test App"
 		testAppID                  = "cacnggingocklkpmmmniidnncakhjgob"
@@ -280,7 +280,7 @@ func changeLinkCapturingSetting(ctx context.Context, tconn *chrome.TestConn, cr 
 		linkCapturingOpenInBrowser = "Open in Chrome browser"
 	)
 
-	ui := uiauto.New(tconn)
+	ui := uiauto.New(tconn).WithTimeout(30 * time.Second)
 	appHeader := nodewith.Name(testAppName).Role(role.Heading).Ancestor(ossettings.WindowFinder)
 	osSettings, err := ossettings.LaunchAtAppMgmtPage(ctx, tconn, cr, testAppID, ui.Exists(appHeader))
 	if err != nil {
@@ -293,5 +293,9 @@ func changeLinkCapturingSetting(ctx context.Context, tconn *chrome.TestConn, cr 
 		settingRadioButton = nodewith.Name(linkCapturingOpenInApp).Role(role.RadioButton)
 	}
 
-	return ui.LeftClick(settingRadioButton)(ctx)
+	if err := ui.LeftClick(settingRadioButton)(ctx); err != nil {
+		// Dump UI tree before OS Settings closes to help diagnose timeouts.
+		faillog.DumpUITreeToFile(ctx, outDir, tconn, "app_management_ui_tree.txt")
+	}
+	return err
 }
