@@ -2496,7 +2496,7 @@ func init() {
 				ExtraAttr:         []string{"graphics_video_vp8"},
 			},
 			{
-				Name: "ffmpeg_h264_baseline",
+				Name: "ffmpeg_vaapi_h264_baseline",
 				Val: platformDecodingParams{
 					filenames:      []string{"test_vectors/h264/baseline/AUD_MW_E.h264", "test_vectors/h264/baseline/BA1_Sony_D.h264", "test_vectors/h264/baseline/BA2_Sony_F.h264", "test_vectors/h264/baseline/BAMQ1_JVC_C.h264", "test_vectors/h264/baseline/BAMQ2_JVC_C.h264", "test_vectors/h264/baseline/BANM_MW_D.h264", "test_vectors/h264/baseline/BA_MW_D.h264", "test_vectors/h264/baseline/CI_MW_D.h264", "test_vectors/h264/baseline/CVSE2_Sony_B.h264", "test_vectors/h264/baseline/HCBP1_HHI_A.h264", "test_vectors/h264/baseline/HCBP2_HHI_A.h264", "test_vectors/h264/baseline/LS_SVA_D.h264", "test_vectors/h264/baseline/MIDR_MW_D.h264", "test_vectors/h264/baseline/MPS_MW_A.h264", "test_vectors/h264/baseline/MR1_MW_A.h264", "test_vectors/h264/baseline/MR2_MW_A.h264", "test_vectors/h264/baseline/NL1_Sony_D.h264", "test_vectors/h264/baseline/NL2_Sony_H.h264", "test_vectors/h264/baseline/NLMQ1_JVC_C.h264", "test_vectors/h264/baseline/NLMQ2_JVC_C.h264", "test_vectors/h264/baseline/NRF_MW_E.h264", "test_vectors/h264/baseline/SVA_BA1_B.h264", "test_vectors/h264/baseline/SVA_BA2_D.h264", "test_vectors/h264/baseline/SVA_NL1_B.h264", "test_vectors/h264/baseline/SVA_NL2_E.h264"},
 					decoder:        "/usr/local/graphics/ffmpeg_md5sum",
@@ -2508,7 +2508,7 @@ func init() {
 				ExtraAttr:         []string{"graphics_video_h264"},
 			},
 			{
-				Name: "ffmpeg_h264_main",
+				Name: "ffmpeg_vaapi_h264_main",
 				Val: platformDecodingParams{
 					filenames:      []string{"test_vectors/h264/main/CABA1_SVA_B.h264", "test_vectors/h264/main/CABA1_Sony_D.h264", "test_vectors/h264/main/CABA2_SVA_B.h264", "test_vectors/h264/main/CABA2_Sony_E.h264", "test_vectors/h264/main/CABA3_SVA_B.h264", "test_vectors/h264/main/CABA3_Sony_C.h264", "test_vectors/h264/main/CABA3_TOSHIBA_E.h264", "test_vectors/h264/main/CACQP3_Sony_D.h264", "test_vectors/h264/main/CANL1_SVA_B.h264", "test_vectors/h264/main/CANL1_Sony_E.h264", "test_vectors/h264/main/CANL1_TOSHIBA_G.h264", "test_vectors/h264/main/CANL2_SVA_B.h264", "test_vectors/h264/main/CANL2_Sony_E.h264", "test_vectors/h264/main/CANL3_SVA_B.h264", "test_vectors/h264/main/CANL3_Sony_C.h264", "test_vectors/h264/main/CANL4_SVA_B.h264", "test_vectors/h264/main/CAPCM1_Sand_E.h264", "test_vectors/h264/main/CAPCMNL1_Sand_E.h264", "test_vectors/h264/main/CAPM3_Sony_D.h264", "test_vectors/h264/main/CAQP1_Sony_B.h264", "test_vectors/h264/main/CAWP1_TOSHIBA_E.h264", "test_vectors/h264/main/CAWP5_TOSHIBA_E.h264", "test_vectors/h264/main/CVBS3_Sony_C.h264", "test_vectors/h264/main/CVPCMNL1_SVA_C.h264", "test_vectors/h264/main/CVPCMNL2_SVA_C.h264", "test_vectors/h264/main/CVSE3_Sony_H.h264", "test_vectors/h264/main/CVSEFDFT3_Sony_E.h264", "test_vectors/h264/main/CVWP1_TOSHIBA_E.h264", "test_vectors/h264/main/CVWP2_TOSHIBA_E.h264", "test_vectors/h264/main/CVWP3_TOSHIBA_E.h264", "test_vectors/h264/main/CVWP5_TOSHIBA_E.h264", "test_vectors/h264/main/NL3_SVA_E.h264", "test_vectors/h264/main/camp_mot_frm0_full.h264", "test_vectors/h264/main/cvmp_mot_frm0_full_B.h264", "test_vectors/h264/main/src19td.IBP.h264", "test_vectors/h264/main/HCMP1_HHI_A.h264"},
 					decoder:        "/usr/local/graphics/ffmpeg_md5sum",
@@ -2520,7 +2520,7 @@ func init() {
 				ExtraAttr:         []string{"graphics_video_h264"},
 			},
 			{
-				Name: "ffmpeg_h264_first_mb_in_slice",
+				Name: "ffmpeg_vaapi_h264_first_mb_in_slice",
 				Val: platformDecodingParams{
 					filenames:      []string{"test_vectors/h264/baseline/BA1_FT_C.h264", "test_vectors/h264/baseline/BASQP1_Sony_C.h264", "test_vectors/h264/baseline/CI1_FT_B.h264", "test_vectors/h264/baseline/SVA_Base_B.h264", "test_vectors/h264/baseline/SVA_CL1_E.h264", "test_vectors/h264/baseline/SVA_FM1_E.h264", "test_vectors/h264/baseline/MR1_BT_A.h264", "test_vectors/h264/main/CABACI3_Sony_B.h264", "test_vectors/h264/main/CABAST3_Sony_E.h264", "test_vectors/h264/main/CABASTBR3_Sony_B.h264", "test_vectors/h264/main/SL1_SVA_B.h264"},
 					decoder:        "/usr/local/graphics/ffmpeg_md5sum",
