@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "473f3bb6_ef62cf54",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/basic.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1108259
+      },
+      "writtenOn": "2022-09-30T08:03:10Z",
+      "side": 1,
+      "message": "I think vm_host is not avaialble on manatee, so if we have this here, the test will still skip?",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 46
+      },
+      "revId": "5734749bd2bd7a88578611f490ed6d71987daa50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
