@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<!-- Copyright 2021 The ChromiumOS Authors
+     Use of this source code is governed by a BSD-style license that can be
+     found in the LICENSE file.
+-->
+<html>
+<head lang="en">
+    <meta charset=utf-8>
+</head>
+<body>
+  <script>
+    onClick = async function() {
+        const image = await fetch('image_paste_sample.png');
+        const blob = await image.blob();
+        await navigator.clipboard.write([new ClipboardItem({ 'image/png': blob })]);
+    };
+
+    document.addEventListener("DOMContentLoaded", function() {
+        document.querySelector('.copy_button').addEventListener('click', onClick);
+    });
+  </script>
+  <script src="foreground_script.js"></script>
+  <button type="button" class="copy_button">Click to copy the image</button>
+</body>
+</html>
