@@ -6,42 +6,23 @@ package arc
 
 import (
 	"context"
-	"io/ioutil"
-	"os"
-	"path/filepath"
+	"net/http"
+	"net/http/httptest"
 	"time"
 
 	"chromiumos/tast/common/android/ui"
 	"chromiumos/tast/ctxutil"
-	"chromiumos/tast/fsutil"
 	"chromiumos/tast/local/arc"
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/browser/browserfixt"
-	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/local/chrome/webutil"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
-
-var imagePasteDataFiles = []string{
-	"manifest.json",
-	"background.js",
-	"foreground.html",
-	"foreground_script.js",
-	"sample.png",
-}
-
-func imagePasteRawDataFiles() []string {
-	var rawDataFiles []string
-	for _, name := range imagePasteDataFiles {
-		rawDataFiles = append(rawDataFiles, "image_paste_"+name)
-	}
-	return rawDataFiles
-}
 
 func init() {
 	testing.AddTest(&testing.Test{
@@ -51,15 +32,17 @@ func init() {
 		Contacts:     []string{"yhanada@chromium.org", "arc-framework+tast@google.com"},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline", "informational"},
-		Data:         imagePasteRawDataFiles(),
+		Data:         []string{"image_paste.html", "image_paste_sample.png"},
 		Timeout:      4 * time.Minute,
 		Params: []testing.Param{{
 			Name:              "vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
+			Fixture:           "arcBooted",
 			Val:               browser.TypeAsh,
 		}, {
 			Name:              "lacros_vm",
 			ExtraSoftwareDeps: []string{"android_vm", "lacros"},
+			Fixture:           "lacrosWithArcBooted",
 			Val:               browser.TypeLacros,
 		}},
 	})
@@ -71,33 +54,9 @@ func ImagePaste(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
 
-	s.Log("Copying extension to temp directory")
-	extDir, err := ioutil.TempDir("", "tast.arc.ImagePasteExtension")
-	if err != nil {
-		s.Fatal("Failed to create temp dir: ", err)
-	}
-	defer os.RemoveAll(extDir)
-	for _, name := range imagePasteDataFiles {
-		if err := fsutil.CopyFile(s.DataPath("image_paste_"+name), filepath.Join(extDir, name)); err != nil {
-			s.Fatalf("Failed to copy extension %s: %v", name, err)
-		}
-	}
-	opts := []chrome.Option{chrome.ARCEnabled(), chrome.ExtraArgs("--force-tablet-mode=clamshell")}
-
-	bt := s.Param().(browser.Type)
-	switch bt {
-	case browser.TypeLacros:
-		opts = append(opts, chrome.LacrosUnpackedExtension(extDir))
-	case browser.TypeAsh:
-		opts = append(opts, chrome.UnpackedExtension(extDir))
-	}
-
-	cr, br, closeBrowser, err := browserfixt.SetUpWithNewChrome(ctx, bt, lacrosfixt.NewConfig(), opts...)
-	if err != nil {
-		s.Fatal("Failed to start Chrome: ", err)
-	}
-	defer cr.Close(cleanupCtx)
-	defer closeBrowser(cleanupCtx)
+	a := s.FixtValue().(*arc.PreData).ARC
+	cr := s.FixtValue().(*arc.PreData).Chrome
+	d := s.FixtValue().(*arc.PreData).UIDevice
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
@@ -105,17 +64,9 @@ func ImagePaste(ctx context.Context, s *testing.State) {
 	}
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
-	a, err := arc.New(ctx, s.OutDir())
-	if err != nil {
-		s.Fatal("Failed to start ARC: ", err)
-	}
-	defer a.Close(cleanupCtx)
-
-	d, err := a.NewUIDevice(ctx)
-	if err != nil {
-		s.Fatal("Failed initializing UI Automator: ", err)
-	}
-	defer d.Close(cleanupCtx)
+	s.Log("Start the Web server")
+	server := httptest.NewServer(http.FileServer(s.DataFileSystem()))
+	defer server.Close()
 
 	const (
 		apk          = "ArcImagePasteTest.apk"
@@ -125,39 +76,27 @@ func ImagePaste(ctx context.Context, s *testing.State) {
 		counterID    = pkg + ":id/counter"
 	)
 
-	extID, err := chrome.ComputeExtensionID(extDir)
+	br, closeBrowser, err := browserfixt.SetUp(ctx, cr, s.Param().(browser.Type))
 	if err != nil {
-		s.Fatalf("Failed to compute extension ID for %v: %v", extDir, err)
+		s.Fatal("Failed to open the browser: ", err)
 	}
-	fgURL := "chrome-extension://" + extID + "/foreground.html"
-	conn, err := br.NewConnForTarget(ctx, chrome.MatchTargetURL(fgURL))
+	defer closeBrowser(cleanupCtx)
+
+	pageURL := server.URL + "/image_paste.html"
+	conn, err := br.NewConn(ctx, pageURL)
 	if err != nil {
-		s.Fatalf("Could not connect to extension at %v: %v", fgURL, err)
+		s.Fatalf("Could not connect to page at %v: %v", pageURL, err)
 	}
 	defer conn.Close()
 
+	if err := webutil.WaitForQuiescence(ctx, conn, 10*time.Second); err != nil {
+		s.Fatal("Failed to wait for the page loaded: ", err)
+	}
+
 	// Copy an image from Chrome. clipboard.write() is available only after any user interaction.
-	// TODO(b/247034953): Rewrite this without a custom extension so that we can use a fixture.
 	uia := uiauto.New(tconn)
-	// Find the extension window and focus it to make sure the UI tree is updated.
-	window := nodewith.Role(role.Window).Name("Image Paste Extension").ClassName("Widget").First()
-	if err := uia.WithTimeout(10 * time.Second).FocusAndWait(window)(ctx); err != nil {
-		s.Fatal("Failed to focus the extension window: ", err)
-	}
-	// Click the center of the extension window. The copy button should be there.
-	// TODO(yhanada): This is a workaround until finding the copy button and clicking it works correctly with lacros.
-	// uiauto.Location() returns the location which origin is the left-top of the extension window rather than
-	// the location from the left top of the screen. Once the issue is fixed, the following simple code should work.
-	/*
-	   finder := nodewith.Role(role.Button).HasClass("copy_button")
-	   if err := uia.LeftClick(finder)(ctx); err != nil {
-	     ...
-	*/
-	windowLoc, err := uia.Location(ctx, window)
-	if err != nil {
-		s.Fatal("Cannot get the location of the extension window: ", err)
-	}
-	if err := uia.WithTimeout(10*time.Second).MouseClickAtLocation(0, windowLoc.CenterPoint())(ctx); err != nil {
+	finder := nodewith.Role(role.Button).HasClass("copy_button")
+	if err := uia.LeftClick(finder)(ctx); err != nil {
 		s.Fatal("Cannot click on the copy button: ", err)
 	}
 
