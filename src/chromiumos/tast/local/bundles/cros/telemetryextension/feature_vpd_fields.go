@@ -52,7 +52,7 @@ func FeatureVPDFields(ctx context.Context, s *testing.State) {
 	}
 
 	if _, err := os.Stat(vpdPath); errors.Is(err, os.ErrNotExist) {
-		s.Fatalf("Failed to check whether %q exists", vpdPath)
+		s.Fatalf("VPD field %q does not exists", vpdPath)
 	}
 
 	bytes, err := ioutil.ReadFile(vpdPath)
