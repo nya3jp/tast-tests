@@ -1,0 +1,205 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f6fab31_d6909426",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-09-30T09:50:22Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "b2ea6b99f8db2efe310b6060e88200a2a479079c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31a71ccb_96d58c4b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/virtual_desks_tablet_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-09-30T09:50:22Z",
+      "side": 1,
+      "message": "nit: Node for the New desk button when there is only 1 desk.",
+      "range": {
+        "startLine": 21,
+        "startChar": 3,
+        "endLine": 21,
+        "endChar": 7
+      },
+      "revId": "b2ea6b99f8db2efe310b6060e88200a2a479079c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7b6e816_32553cf9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/virtual_desks_tablet_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-09-30T09:50:22Z",
+      "side": 1,
+      "message": "nit: five",
+      "range": {
+        "startLine": 41,
+        "startChar": 12,
+        "endLine": 41,
+        "endChar": 15
+      },
+      "revId": "b2ea6b99f8db2efe310b6060e88200a2a479079c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5384856_20d20e5e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/virtual_desks_tablet_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-09-30T09:50:22Z",
+      "side": 1,
+      "message": "I would recommend to use DumpUITreeWithScreenshotOnError as it can be very helpful for debugging errors.",
+      "range": {
+        "startLine": 53,
+        "startChar": 15,
+        "endLine": 53,
+        "endChar": 32
+      },
+      "revId": "b2ea6b99f8db2efe310b6060e88200a2a479079c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ce2f5df_573246ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/virtual_desks_tablet_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-09-30T09:50:22Z",
+      "side": 1,
+      "message": "nit: verifies",
+      "range": {
+        "startLine": 76,
+        "startChar": 30,
+        "endLine": 76,
+        "endChar": 38
+      },
+      "revId": "b2ea6b99f8db2efe310b6060e88200a2a479079c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7541e6f_215a74a7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/virtual_desks_tablet_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-09-30T09:50:22Z",
+      "side": 1,
+      "message": "nit: \"unexpected number of desks found; want: 1, got: %d\"\nto be more inline with other error messages of this kind.",
+      "range": {
+        "startLine": 84,
+        "startChar": 28,
+        "endLine": 84,
+        "endChar": 83
+      },
+      "revId": "b2ea6b99f8db2efe310b6060e88200a2a479079c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ad73e8d_6eac8380",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/virtual_desks_tablet_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-09-30T09:50:22Z",
+      "side": 1,
+      "message": "nit: verifies",
+      "range": {
+        "startLine": 109,
+        "startChar": 31,
+        "endLine": 109,
+        "endChar": 39
+      },
+      "revId": "b2ea6b99f8db2efe310b6060e88200a2a479079c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52bd59d7_1ea25cd5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/virtual_desks_tablet_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-09-30T09:50:22Z",
+      "side": 1,
+      "message": "nit: as above:\nunexpected number of desks found; want: 2, got: %d\"",
+      "range": {
+        "startLine": 120,
+        "startChar": 27,
+        "endLine": 120,
+        "endChar": 84
+      },
+      "revId": "b2ea6b99f8db2efe310b6060e88200a2a479079c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7942d11_16faaa70",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/virtual_desks_tablet_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-09-30T09:50:22Z",
+      "side": 1,
+      "message": "nit: as above:\nunexpected number of desks found; want: 3, got: %d\"",
+      "range": {
+        "startLine": 154,
+        "startChar": 27,
+        "endLine": 154,
+        "endChar": 59
+      },
+      "revId": "b2ea6b99f8db2efe310b6060e88200a2a479079c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
