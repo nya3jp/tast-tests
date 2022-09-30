@@ -1,0 +1,35 @@
+// Copyright 2022 The ChromiumOS Authors
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package tast.cros.chrome.uiauto.ossettings;
+
+import "google/protobuf/empty.proto";
+
+option go_package = "chromiumos/tast/services/cros/chrome/uiauto/ossettings";
+
+// OsSettingsService provides functions for interacting with the OS Settings on
+// ChromeOS devices.
+service OsSettingsService {
+  // OpenNetworkDetailPage will open the OS Settings application and navigate
+  // to the detail page for the specified network.
+  rpc OpenNetworkDetailPage(OpenNetworkDetailPageRequest) returns (google.protobuf.Empty) {}
+
+  // Close will close the open OS Settings application.
+  rpc Close(google.protobuf.Empty) returns (google.protobuf.Empty) {}
+}
+
+message OpenNetworkDetailPageRequest {
+  enum NetworkType {
+    CELLULAR = 0;
+    WIFI = 1;
+  }
+
+  // The name of the network.
+  string network_name = 1;
+
+  // The type of the network.
+  NetworkType network_type = 2;
+}
