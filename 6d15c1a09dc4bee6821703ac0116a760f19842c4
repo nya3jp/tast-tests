@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bac99a89_9291daaa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/virtual_desks_tablet_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1539397
+      },
+      "writtenOn": "2022-09-30T00:22:02Z",
+      "side": 1,
+      "message": "Thanks for the information.",
+      "parentUuid": "4de7963f_aeb67ace",
+      "range": {
+        "startLine": 45,
+        "startChar": 1,
+        "endLine": 51,
+        "endChar": 2
+      },
+      "revId": "6d15c1a09dc4bee6821703ac0116a760f19842c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "66582662_b4878a26",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-09-29T22:47:16Z",
       "side": 1,
       "message": "nit: create spelled incorrectly here",
+      "range": {
+        "startLine": 73,
+        "startChar": 21,
+        "endLine": 73,
+        "endChar": 26
+      },
+      "revId": "6d15c1a09dc4bee6821703ac0116a760f19842c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5929094_6108ee0a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/virtual_desks_tablet_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1539397
+      },
+      "writtenOn": "2022-09-30T00:22:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "66582662_b4878a26",
       "range": {
         "startLine": 73,
         "startChar": 21,
@@ -64,6 +112,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "20b541fd_4a6f9222",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/virtual_desks_tablet_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1539397
+      },
+      "writtenOn": "2022-09-30T00:22:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb77538e_3f9d47bf",
+      "revId": "6d15c1a09dc4bee6821703ac0116a760f19842c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "26bea586_09b4d497",
@@ -77,6 +143,30 @@
       "writtenOn": "2022-09-29T22:47:16Z",
       "side": 1,
       "message": "Please change this check to `dc !\u003d 1` to be clear about what you are testing here",
+      "range": {
+        "startLine": 87,
+        "startChar": 4,
+        "endLine": 87,
+        "endChar": 10
+      },
+      "revId": "6d15c1a09dc4bee6821703ac0116a760f19842c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0eecb5b_0f9d779d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/virtual_desks_tablet_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1539397
+      },
+      "writtenOn": "2022-09-30T00:22:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "26bea586_09b4d497",
       "range": {
         "startLine": 87,
         "startChar": 4,
@@ -110,6 +200,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3b77362_9be41968",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/virtual_desks_tablet_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1539397
+      },
+      "writtenOn": "2022-09-30T00:22:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a326a152_acffad2e",
+      "range": {
+        "startLine": 106,
+        "startChar": 1,
+        "endLine": 106,
+        "endChar": 63
+      },
+      "revId": "6d15c1a09dc4bee6821703ac0116a760f19842c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ba473ed7_77289e59",
@@ -123,6 +237,24 @@
       "writtenOn": "2022-09-29T22:47:16Z",
       "side": 1,
       "message": "Add a comment for this function please",
+      "revId": "6d15c1a09dc4bee6821703ac0116a760f19842c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "148ca724_9d8d0ed4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/virtual_desks_tablet_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1539397
+      },
+      "writtenOn": "2022-09-30T00:22:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ba473ed7_77289e59",
       "revId": "6d15c1a09dc4bee6821703ac0116a760f19842c4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -152,6 +284,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "eab36da9_849641f0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/virtual_desks_tablet_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1539397
+      },
+      "writtenOn": "2022-09-30T00:22:02Z",
+      "side": 1,
+      "message": "Do you mean `2 desks` should be `2 desk`?",
+      "parentUuid": "57d1bc70_2067a4de",
+      "range": {
+        "startLine": 141,
+        "startChar": 79,
+        "endLine": 141,
+        "endChar": 84
+      },
+      "revId": "6d15c1a09dc4bee6821703ac0116a760f19842c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b0e212e4_3e31a245",
         "filename": "src/chromiumos/tast/local/bundles/cros/wmp/virtual_desks_tablet_mode.go",
         "patchSetId": 1
@@ -163,6 +319,30 @@
       "writtenOn": "2022-09-29T22:47:16Z",
       "side": 1,
       "message": "Is this a typo?",
+      "range": {
+        "startLine": 146,
+        "startChar": 50,
+        "endLine": 146,
+        "endChar": 55
+      },
+      "revId": "6d15c1a09dc4bee6821703ac0116a760f19842c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7dca4fc_35320146",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/virtual_desks_tablet_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1539397
+      },
+      "writtenOn": "2022-09-30T00:22:02Z",
+      "side": 1,
+      "message": "yes. Already delete it.",
+      "parentUuid": "b0e212e4_3e31a245",
       "range": {
         "startLine": 146,
         "startChar": 50,
@@ -198,6 +378,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a1fa099f_0c9ce285",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/virtual_desks_tablet_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1539397
+      },
+      "writtenOn": "2022-09-30T00:22:02Z",
+      "side": 1,
+      "message": "When we create the Desk3 in overview mode, we should be stay in overview mode. In overview mode, we have desk mini view for each desk. This is my consideration. Do you think it\u0027s better to replace the `ash.FindDeskMiniViews()` with the `ash.GetDeskCount()`?",
+      "parentUuid": "efec354a_d38a8009",
+      "range": {
+        "startLine": 150,
+        "startChar": 1,
+        "endLine": 150,
+        "endChar": 57
+      },
+      "revId": "6d15c1a09dc4bee6821703ac0116a760f19842c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6e245c3c_30a9bd13",
         "filename": "src/chromiumos/tast/local/bundles/cros/wmp/virtual_desks_tablet_mode.go",
         "patchSetId": 1
@@ -209,6 +413,30 @@
       "writtenOn": "2022-09-29T22:47:16Z",
       "side": 1,
       "message": "Since this is used twice, please make this a global var",
+      "range": {
+        "startLine": 163,
+        "startChar": 1,
+        "endLine": 163,
+        "endChar": 72
+      },
+      "revId": "6d15c1a09dc4bee6821703ac0116a760f19842c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2532d34a_115956b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/virtual_desks_tablet_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1539397
+      },
+      "writtenOn": "2022-09-30T00:22:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e245c3c_30a9bd13",
       "range": {
         "startLine": 163,
         "startChar": 1,
