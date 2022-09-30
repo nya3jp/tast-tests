@@ -48,6 +48,13 @@ func init() {
 				ExtraHardwareDeps: crostini.CrostiniUnstable,
 				Fixture:           "crostiniBullseye",
 				Timeout:           7 * time.Minute,
+			}, {
+				Name:              "buster_stable_manatee",
+				ExtraAttr:         []string{"informational"},
+				ExtraSoftwareDeps: []string{"dlc", "vm_host_manatee"},
+				ExtraHardwareDeps: crostini.CrostiniStable,
+				Fixture:           "crostiniBuster",
+				Timeout:           7 * time.Minute,
 			},
 		},
 	})
