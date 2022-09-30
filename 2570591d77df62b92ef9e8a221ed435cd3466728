@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc46f273_c1bbff24",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/feature_vpd_fields.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1543127
+      },
+      "writtenOn": "2022-09-30T12:11:35Z",
+      "side": 1,
+      "message": "Maybe change to \"exist\"",
+      "revId": "2570591d77df62b92ef9e8a221ed435cd3466728",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
