@@ -21,7 +21,6 @@ import (
 var testFilesFix = []string{
 	"audio_basic.go",
 	"audio_playback_configurations.go",
-	"basic.go",
 	"command_cd.go",
 	"command_ps.go",
 	"command_vim.go",
@@ -104,6 +103,21 @@ func TestLacrosTestParams(t *testing.T) {
 			UseFixture: true,
 			TestLacros: true,
 			Val:        "browser.TypeAsh",
+		}})
+		genparams.Ensure(t, filename, params)
+	}
+}
+
+var manateeTests = []string{
+	"basic.go",
+}
+
+func TestManateeTestParams(t *testing.T) {
+	for _, filename := range manateeTests {
+		params := crostini.MakeTestParamsFromList(t, []crostini.Param{{
+			UseFixture:        true,
+			TestManatee:       true,
+			ExtraSoftwareDeps: []string{"vm_host"},
 		}})
 		genparams.Ensure(t, filename, params)
 	}

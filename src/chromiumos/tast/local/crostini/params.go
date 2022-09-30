@@ -164,6 +164,10 @@ type Param struct {
 	// be added to all params of the test case as well.
 	TestLacros bool
 
+	// TestManatee controls whether the test case tests Manatee.
+	// If yes, an extra software dependency to "vm_host_manatee" will be added.
+	TestManatee bool
+
 	// DeviceMode indicates whether the tests explicitly use use tablet mode
 	// or clamshell mode.
 	// The fixtures will force enable the given display mode in PreTest and
@@ -251,7 +255,7 @@ func MakeTestParamsFromList(t genparams.TestingT, baseCases []Param) string {
 			}
 		}
 
-		iterate := func(i iterator, bt browser.Type) {
+		iterate := func(i iterator, bt browser.Type, isManatee bool) {
 
 			if (testCase.IsNotMainline || testCase.OnlyStableBoards) && !i.stable {
 				// The stable/unstable distinction is only important for mainline tests
@@ -391,6 +395,12 @@ func MakeTestParamsFromList(t genparams.TestingT, baseCases []Param) string {
 				testParam.Val = "browser.TypeLacros"
 			}
 
+			if isManatee {
+				testParam.Name = combineName(name, "manatee")
+				testParam.ExtraAttr = append(testParam.ExtraAttr, "informational")
+				testParam.ExtraSoftwareDeps = append(extraSoftwareDeps, "manatee")
+			}
+
 			if testCase.UseFixture {
 				testParam.Fixture = fixture
 			} else {
@@ -400,11 +410,19 @@ func MakeTestParamsFromList(t genparams.TestingT, baseCases []Param) string {
 		}
 
 		for _, i := range itChrome {
-			iterate(i, "")
+			iterate(i, "", false)
 		}
+
 		if testCase.TestLacros {
 			for _, i := range itLacros {
-				iterate(i, browser.TypeLacros)
+				iterate(i, browser.TypeLacros, false)
+			}
+		}
+
+		var itManatee = []iterator{{debianVersion: vm.DebianBuster, stable: true}}
+		if testCase.TestManatee {
+			for _, i := range itManatee {
+				iterate(i, "", true)
 			}
 		}
 	}
