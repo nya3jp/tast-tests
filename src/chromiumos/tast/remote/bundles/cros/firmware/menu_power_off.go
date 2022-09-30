@@ -19,11 +19,11 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         MenuPowerOff,
-		Desc:         "Test power off from UI menu in developer and recovery screen (the test is skipped for DUTs that do not have such menu)",
+		Desc:         "Test power off from developer and recovery screen using power button and UI menu if exists",
 		Contacts:     []string{"tj@semihalf.com", "chromeos-firmware@google.com"},
 		Attr:         []string{"group:firmware", "firmware_unstable"},
 		Fixture:      fixture.DevMode,
-		Timeout:      5 * time.Minute,
+		Timeout:      8 * time.Minute,
 		HardwareDeps: hwdep.D(hwdep.ChromeEC()),
 	})
 }
@@ -37,33 +37,64 @@ func MenuPowerOff(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create config: ", err)
 	}
 
-	if switcher := h.Config.ModeSwitcherType; switcher != "menu_switcher" && switcher != "tablet_detachable_switcher" {
-		s.Log("Test skipped for menuless UI, DUT's mode-switcher type is: ", switcher)
-		return
+	// disable USB to avoid booting in recovery mode
+	s.Logf("Setting USBMux to %s", servo.USBMuxOff)
+	if err := h.Servo.SetUSBMuxState(ctx, servo.USBMuxOff); err != nil {
+		s.Fatal("Failed to set USBMux: ", err)
 	}
-	if err := h.Servo.SetPowerState(ctx, servo.PowerStateRec); err != nil {
-		s.Fatal("Failed to restart to recovery mode: ", err)
-	}
-	s.Logf("Sleeping %s (FirmwareScreen)", h.Config.FirmwareScreen)
-	if err := testing.Sleep(ctx, h.Config.FirmwareScreen); err != nil {
-		s.Fatal("Failed to sleep: ", err)
-	}
-	if err := powerOffFromUIMenu(ctx, h, "rec"); err != nil {
-		s.Fatal("Failed to power off from recovery screen: ", err)
-	}
-	if err := h.Servo.SetPowerState(ctx, servo.PowerStateOn); err != nil {
-		s.Fatal("Failed to restart: ", err)
-	}
-	s.Logf("Sleeping %s (FirmwareScreen)", h.Config.FirmwareScreen)
-	if err := testing.Sleep(ctx, h.Config.FirmwareScreen); err != nil {
-		s.Fatal("Failed to sleep: ", err)
-	}
-	s.Log("Waiting for S0 powerstate")
-	if err := h.WaitForPowerStates(ctx, firmware.PowerStateInterval, firmware.PowerStateTimeout, "S0"); err != nil {
-		s.Fatal("Failed to get S0 powerstate: ", err)
-	}
-	if err := powerOffFromUIMenu(ctx, h, "dev"); err != nil {
-		s.Fatal("Failed to power off from developer screen: ", err)
+
+	for _, steps := range []struct {
+		useUIMenu string
+		powerOff  func(context.Context, *firmware.Helper, string) error
+	}{
+		{
+			useUIMenu: "no",
+			powerOff: func(ctx context.Context, h *firmware.Helper, mode string) error {
+				s.Log("Pressing power key")
+				if err := h.Servo.KeypressWithDuration(ctx, servo.PowerKey, servo.DurTab); err != nil {
+					return errors.Wrap(err, "failed to press power key on DUT")
+				}
+				s.Log("Waiting for power state to become G3 or S5")
+				if err := h.WaitForPowerStates(ctx, firmware.PowerStateInterval, firmware.PowerStateTimeout, "G3", "S5"); err != nil {
+					return errors.Wrap(err, "failed to get G3 or S5 powerstate")
+				}
+				return nil
+			},
+		},
+		{
+			useUIMenu: "yes",
+			powerOff: func(ctx context.Context, h *firmware.Helper, mode string) error {
+				if err := powerOffFromUIMenu(ctx, h, mode); err != nil {
+					return errors.Wrapf(err, "failed to power off from %s screen", mode)
+				}
+				return nil
+			},
+		},
+	} {
+		if switcher := h.Config.ModeSwitcherType; switcher != "menu_switcher" && switcher != "tablet_detachable_switcher" && steps.useUIMenu == "yes" {
+			s.Logf("Power off from menu skipped for %s", switcher)
+		} else {
+			if err := h.Servo.SetPowerState(ctx, servo.PowerStateRec); err != nil {
+				s.Fatal("Failed to enter recovery mode: ", err)
+			}
+			s.Logf("Sleeping %s (FirmwareScreen)", h.Config.FirmwareScreen)
+			if err := testing.Sleep(ctx, h.Config.FirmwareScreen); err != nil {
+				s.Fatal("Failed to sleep: ", err)
+			}
+			steps.powerOff(ctx, h, "rec")
+			if err := h.Servo.SetPowerState(ctx, servo.PowerStateOn); err != nil {
+				s.Fatal("Failed to restart: ", err)
+			}
+			s.Logf("Sleeping %s (FirmwareScreen)", h.Config.FirmwareScreen)
+			if err := testing.Sleep(ctx, h.Config.FirmwareScreen); err != nil {
+				s.Fatal("Failed to sleep: ", err)
+			}
+			s.Log("Waiting for S0 powerstate")
+			if err := h.WaitForPowerStates(ctx, firmware.PowerStateInterval, firmware.PowerStateTimeout, "S0"); err != nil {
+				s.Fatal("Failed to get S0 powerstate: ", err)
+			}
+			steps.powerOff(ctx, h, "dev")
+		}
 	}
 }
 
@@ -100,6 +131,9 @@ func nTimeKeyPress(ctx context.Context, h *firmware.Helper, key string, n int) e
 	for i := 0; i < n; i++ {
 		if err := h.Servo.ECPressKey(ctx, key); err != nil {
 			return err
+		}
+		if err := testing.Sleep(ctx, h.Config.KeypressDelay); err != nil {
+			return errors.Wrapf(err, "sleeping for %s (KeypressDelay)", h.Config.KeypressDelay)
 		}
 	}
 	return nil
