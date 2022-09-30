@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "021812b7_d3fd2412",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-09-30T03:14:12Z",
+      "side": 1,
+      "message": "Probably best not to have google-only accessible files in the commit message. Feel free to put this in the comments tho IMO",
+      "revId": "eb9f305a48a89722d952f6faa6204c6cd2ee8a97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "130c30ef_932a33a9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-09-30T03:14:12Z",
+      "side": 1,
+      "message": "overall lgtm but some concerns about the implementation",
+      "revId": "eb9f305a48a89722d952f6faa6204c6cd2ee8a97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "463761a0_6068c110",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacros.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-09-30T03:14:12Z",
+      "side": 1,
+      "message": "If lacros is run multiple times, this will overwrite the existing log. IMO we should create lacros.log.n for subsequent files or something like that.",
+      "revId": "eb9f305a48a89722d952f6faa6204c6cd2ee8a97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07eac832_2bc9c079",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacros.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-09-30T03:14:12Z",
+      "side": 1,
+      "message": "If you\u0027re using no-offset logmarker, is there any point in saving it in the struct? Could just construct it here. Can you just use fsutil.CopyFile?",
+      "revId": "eb9f305a48a89722d952f6faa6204c6cd2ee8a97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b34cd8f_fa4e6499",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacros.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-09-30T03:14:12Z",
+      "side": 1,
+      "message": "This log is run even if the log file is not saved. IMO just get rid of it.",
+      "revId": "eb9f305a48a89722d952f6faa6204c6cd2ee8a97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af42f085_324887f7",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/launch.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-09-30T03:14:12Z",
+      "side": 1,
+      "message": "I think it\u0027s okay to get rid of this member and make lacrosLogPath here public and use it: https://crsrc.org/o/src/platform/tast-tests/src/chromiumos/tast/local/chrome/lacros/lacrosfaillog/faillog.go;l\u003d25?q\u003d%22lacros.log%22",
+      "revId": "eb9f305a48a89722d952f6faa6204c6cd2ee8a97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
