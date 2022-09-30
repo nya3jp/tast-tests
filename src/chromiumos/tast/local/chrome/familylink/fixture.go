@@ -300,12 +300,16 @@ func (f *familyLinkFixture) SetUp(ctx context.Context, s *testing.FixtState) int
 
 		if isChildLogin {
 			f.policyUser = s.RequiredVar(f.childUser)
+			// Family Link users look like consumer users
+			// with @gmail.com emails but require policy.
+			// Since policy key verification doesn't work
+			// for gmail users, disable it.
+			f.opts = append(f.opts, chrome.DisablePolicyKeyVerification())
 		} else {
 			f.policyUser = parentUser
 		}
 
 		f.opts = append(f.opts, chrome.DMSPolicy(fdms.URL))
-		f.opts = append(f.opts, chrome.DisablePolicyKeyVerification())
 	}
 
 	if f.isLacros {

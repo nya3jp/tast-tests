@@ -9,10 +9,12 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/common/fixture"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/familylink"
 	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/testing"
 )
@@ -64,6 +66,44 @@ func init() {
 		TearDownTimeout: resetTimeout,
 		PreTestTimeout:  resetTimeout,
 		PostTestTimeout: resetTimeout,
+	})
+
+	// Identical to the familyLinkUnicornLogin fixture, but uses a
+	// different test account and isolates sessions for Projector
+	// tests.
+	testing.AddFixture(&testing.Fixture{
+		Name:     "projectorUnicornLogin",
+		Desc:     "Supervised Family Link user login with Unicorn account for Projector tests",
+		Contacts: []string{"tobyhuang@chromium.org", "cros-families-eng+test@google.com"},
+		Impl:     familylink.NewFamilyLinkFixture("projector.parentEmail", "projector.parentPassword", "projector.childEmail", "projector.childPassword", true /*isOwner*/),
+		Vars: []string{
+			"projector.parentEmail",
+			"projector.parentPassword",
+			"projector.childEmail",
+			"projector.childPassword",
+		},
+		SetUpTimeout:    chrome.GAIALoginChildTimeout,
+		ResetTimeout:    resetTimeout,
+		TearDownTimeout: resetTimeout,
+		PreTestTimeout:  resetTimeout,
+		PostTestTimeout: resetTimeout,
+	})
+
+	testing.AddFixture(&testing.Fixture{
+		Name:     "projectorEduLogin",
+		Desc:     "Managed EDU user login with fakeDMS policy setup for Projector tests",
+		Contacts: []string{"tobyhuang@chromium.org", "cros-families-eng+test@google.com"},
+		Impl:     familylink.NewFamilyLinkFixture("projector.eduEmail", "projector.eduPassword", "", "", true /*isOwner*/),
+		Vars: []string{
+			"projector.eduEmail",
+			"projector.eduPassword",
+		},
+		SetUpTimeout:    chrome.ManagedUserLoginTimeout,
+		ResetTimeout:    resetTimeout,
+		TearDownTimeout: resetTimeout,
+		PreTestTimeout:  resetTimeout,
+		PostTestTimeout: resetTimeout,
+		Parent:          fixture.PersistentProjectorEDU,
 	})
 }
 
