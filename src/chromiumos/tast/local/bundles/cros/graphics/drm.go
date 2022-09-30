@@ -61,7 +61,7 @@ func init() {
 			Name:              "atomic_test_fullscreen_video",
 			Val:               []string{"atomictest", "-a", "-t", "fullscreen_video"},
 			Timeout:           1 * time.Minute,
-			ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
+			ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay(), hwdep.SupportsVideoOverlays()),
 			ExtraSoftwareDeps: []string{"drm_atomic", "no_qemu"},
 			ExtraAttr:         []string{"graphics_weekly"},
 		}, {
@@ -145,14 +145,14 @@ func init() {
 			Name:              "atomic_test_video_overlay",
 			Val:               []string{"atomictest", "-a", "-t", "video_overlay"},
 			Timeout:           1 * time.Minute,
-			ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
+			ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay(), hwdep.SupportsVideoOverlays()),
 			ExtraSoftwareDeps: []string{"drm_atomic", "no_qemu"},
 			ExtraAttr:         []string{"graphics_weekly"},
 		}, {
 			Name:              "atomic_test_video_underlay",
 			Val:               []string{"atomictest", "-a", "-t", "video_underlay"},
 			Timeout:           1 * time.Minute,
-			ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
+			ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay(), hwdep.SupportsVideoOverlays()),
 			ExtraSoftwareDeps: []string{"drm_atomic", "no_qemu"},
 			ExtraAttr:         []string{"graphics_weekly"},
 		}, {
