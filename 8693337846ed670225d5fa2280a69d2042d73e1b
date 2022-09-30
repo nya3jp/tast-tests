@@ -51,6 +51,24 @@
       "message": "This is the change I told you about recently.\n\nThings I\u0027m not sure about:\n- Name of the internal package.\n- How to avoid duplicated documentation.",
       "revId": "8693337846ed670225d5fa2280a69d2042d73e1b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65fc7a0e_1455c0a1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-09-30T08:11:00Z",
+      "side": 1,
+      "message": "I was also thinking about if lacrosinfo can be moved to internal. But if it is there, it should only be used from the lacros and chrome packages. But it provides functionalities that are useful from the outside as well.\nI think it is good for now, but there should be a whiteboarding session to see if we can come up with a logical and intuitive split and dependency graph for these packages.",
+      "parentUuid": "2c31d3bb_077b19b8",
+      "revId": "8693337846ed670225d5fa2280a69d2042d73e1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
