@@ -11,6 +11,64 @@ import (
 	"strings"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/crosconfig"
+)
+
+var (
+	deviceVariant = ""
+)
+
+type deviceInfo struct {
+	ModemVariant string
+	Board        string
+}
+
+var (
+	knownVariants = map[string]deviceInfo{
+		"anahera_l850":     {"anahera_l850", "brya"},
+		"brya_fm350":       {"brya_fm350", "brya"},
+		"brya_l850":        {"brya_l850", "brya"},
+		"crota_fm101":      {"crota_fm101", "brya"},
+		"primus_l850":      {"primus_l850", "brya"},
+		"redrix_fm350":     {"redrix_fm350", "brya"},
+		"redrix_l850":      {"redrix_l850", "brya"},
+		"vell_fm350":       {"vell_fm350", "brya"},
+		"krabby_fm101":     {"krabby_fm101", "corsola"},
+		"rusty_fm101":      {"rusty_fm101", "corsola"},
+		"steelix_fm101":    {"steelix_fm101", "corsola"},
+		"beadrix_nl668am":  {"beadrix_nl668am", "dedede"},
+		"boten":            {"boten", "dedede"},
+		"bugzzy_l850gl":    {"bugzzy_l850gl", "dedede"},
+		"bugzzy_nl668am":   {"bugzzy_nl668am", "dedede"},
+		"cret":             {"cret", "dedede"},
+		"drawper_l850gl":   {"drawper_l850gl", "dedede"},
+		"kracko":           {"kracko", "dedede"},
+		"metaknight":       {"metaknight", "dedede"},
+		"sasuke":           {"sasuke", "dedede"},
+		"sasuke_nl668am":   {"sasuke_nl668am", "dedede"},
+		"sasukette":        {"sasukette", "dedede"},
+		"storo360_l850gl":  {"storo360_l850gl", "dedede"},
+		"storo360_nl668am": {"storo360_nl668am", "dedede"},
+		"storo_l850gl":     {"storo_l850gl", "dedede"},
+		"storo_nl668am":    {"storo_nl668am", "dedede"},
+		"guybrush360_l850": {"guybrush360_l850", "guybrush"},
+		"guybrush_fm350":   {"guybrush_fm350", "guybrush"},
+		"nipperkin":        {"nipperkin", "guybrush"},
+		"evoker":           {"evoker", "herobrine"},
+		"herobrine":        {"herobrine", "herobrine"},
+		"hoglin":           {"hoglin", "herobrine"},
+		"piglin":           {"piglin", "herobrine"},
+		"villager":         {"villager", "herobrine"},
+		"gooey":            {"gooey", "keeby"},
+		"craask_fm101":     {"craask_fm101", "nissa"},
+		"nivviks_fm101":    {"nivviks_fm101", "nissa"},
+		"pujjo":            {"pujjo", "nissa"},
+		"skyrim_fm101":     {"skyrim_fm101", "skyrim"},
+		"volteer":          {"volteer", "volteer"},
+		"volteer2":         {"volteer2", "volteer"},
+		"vilboz":           {"vilboz", "zork"},
+		"vilboz360":        {"vilboz360", "zork"},
+	}
 )
 
 func assignLastIntValueAndDropKey(d LabelMap, to *int, key string) LabelMap {
@@ -163,4 +221,46 @@ func GetLabelsAsStringArray(ctx context.Context, cmd func(name string) (val stri
 	}
 
 	return labels, nil
+}
+
+// GetDeviceVariant gets the variant of the device using cros config.
+func GetDeviceVariant(ctx context.Context) (string, error) {
+	if deviceVariant != "" {
+		return deviceVariant, nil
+	}
+	tempDutVariant, err := crosconfig.Get(ctx, "/modem", "firmware-variant")
+	if crosconfig.IsNotFound(err) {
+		return "", errors.Wrap(err, "firmware-variant doesn't exist")
+	} else if err != nil {
+		return "", errors.Wrap(err, "failed to execute cros_config")
+	}
+	deviceVariant = tempDutVariant
+	return deviceVariant, nil
+}
+
+// TagKnownBugOnVariant adds a tag to the error code if any of the |variants| matches the DUT's variant.
+func TagKnownBugOnVariant(ctx context.Context, errIn error, bugNumber string, variants []string) error {
+	dutVariant, err := GetDeviceVariant(ctx)
+	if err == nil {
+		for _, variant := range variants {
+			if dutVariant == variant {
+				return errors.Wrapf(err, "known bug on variant: %q bug: %q", variant, bugNumber)
+			}
+		}
+	}
+	return errIn
+}
+
+// TagKnownBugOnBoard adds a tag to the error code if any of the |boards| matches the DUT's board.
+func TagKnownBugOnBoard(ctx context.Context, errIn error, bugNumber string, boards []string) error {
+	dutVariant, err := GetDeviceVariant(ctx)
+	device, ok := knownVariants[dutVariant]
+	if err == nil && ok {
+		for _, board := range boards {
+			if device.Board == board {
+				return errors.Wrapf(errIn, "known bug on board: %q bug: %q", board, bugNumber)
+			}
+		}
+	}
+	return errIn
 }
