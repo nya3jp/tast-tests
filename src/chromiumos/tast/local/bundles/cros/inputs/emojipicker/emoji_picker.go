@@ -6,6 +6,7 @@
 package emojipicker
 
 import (
+	"regexp"
 	"time"
 
 	"chromiumos/tast/local/chrome"
@@ -18,7 +19,7 @@ import (
 var (
 	RootFinder                    = nodewith.Name("Emoji Picker").Role(role.RootWebArea)
 	NodeFinder                    = nodewith.Ancestor(RootFinder)
-	SearchFieldFinder             = NodeFinder.Name("Search").Role(role.SearchBox)
+	SearchFieldFinder             = NodeFinder.NameRegex(regexp.MustCompile("[sS]earch( [eE]mojis)?")).Role(role.SearchBox)
 	RecentUsedHeading             = NodeFinder.Name("Recently used").Role(role.Heading)
 	RecentUsedMenu                = nodewith.Role(role.Button).Ancestor(RecentUsedHeading)
 	ClearRecentlyUsedButtonFinder = NodeFinder.Name("Clear recently used emojis").Role(role.Button)
