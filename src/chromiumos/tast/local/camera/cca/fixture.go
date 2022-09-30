@@ -9,6 +9,7 @@ import (
 	"context"
 	"os"
 	"path/filepath"
+	"strconv"
 	"time"
 
 	"chromiumos/tast/common/android/ui"
@@ -23,6 +24,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/ssh"
 	"chromiumos/tast/testing"
 )
@@ -39,6 +41,14 @@ type feature string
 
 const (
 	multiPageDocScan feature = "CameraAppMultiPageDocScan"
+)
+
+var (
+	recordScreen = testing.RegisterVarString(
+		"cca.record_screen",
+		"false",
+		`Whether to record screen while running tests.
+		 Make sure the fixture has sufficient PreTestTimeout / PostTestTimeout to process screen recording`)
 )
 
 func init() {
@@ -257,6 +267,7 @@ type fixture struct {
 	launchCCAInCameraBox bool
 	debugParams          DebugParams
 	features             []feature
+	screenRecorder       *uiauto.ScreenRecorder
 }
 
 func (f *fixture) cameraType() testutil.UseCameraType {
@@ -418,6 +429,24 @@ func (f *fixture) Reset(ctx context.Context) error {
 
 func (f *fixture) PreTest(ctx context.Context, s *testing.FixtTestState) {
 	f.outDir = s.OutDir()
+
+	shouldRecordScreen, err := strconv.ParseBool(recordScreen.Value())
+	if err != nil {
+		s.Errorf("Unexpected value for `%v`: %v", recordScreen.Name(), recordScreen.Value())
+		shouldRecordScreen = false
+	}
+
+	if shouldRecordScreen {
+		tconn, err := f.cr.TestAPIConn(ctx)
+		if err != nil {
+			s.Fatal("Failed to get test API: ", err)
+		}
+		f.screenRecorder = uiauto.CreateAndStartScreenRecorder(ctx, tconn)
+		if f.screenRecorder == nil {
+			s.Fatal("Failed to create screen recorder")
+		}
+	}
+
 	if f.launchCCA {
 		app, err := f.startApp(ctx)
 		if err != nil {
@@ -431,6 +460,19 @@ func (f *fixture) PostTest(ctx context.Context, s *testing.FixtTestState) {
 	defer func() {
 		f.debugParams = DebugParams{}
 	}()
+
+	if f.screenRecorder != nil {
+		if s.HasError() {
+			uiauto.ScreenRecorderStopSaveRelease(ctx, f.screenRecorder, filepath.Join(f.outDir, "record.webm"))
+		} else {
+			// If the test passes, stops the recorder without saving the file.
+			if err := f.screenRecorder.Stop(ctx); err != nil {
+				testing.ContextLogf(ctx, "Failed to stop recording: %s", err)
+			}
+			f.screenRecorder.Release(ctx)
+		}
+		f.screenRecorder = nil
+	}
 
 	if f.chart != nil {
 		if err := f.chart.Close(ctx, f.outDir); err != nil {
