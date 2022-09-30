@@ -51,6 +51,23 @@
       "message": "Yes, let\u0027s add tast-owners too.",
       "revId": "a768fe3e290ba9b7c77ac9726179fbcb5326c0a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7bd974da_2083270b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1551729
+      },
+      "writtenOn": "2022-09-30T23:19:40Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "a768fe3e290ba9b7c77ac9726179fbcb5326c0a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
