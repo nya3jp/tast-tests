@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2653876_6047ee5f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-09-30T19:03:22Z",
+      "side": 1,
+      "message": "Hello all! Debugging that issue ended up with b/250010880 being reported. I updated the SetToggleOption method to use a different method implemented in part of the uiauto package, please take a look whenever you have a moment!",
+      "revId": "75fea383b359cb065b46852ad913ad5e0a274aef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
