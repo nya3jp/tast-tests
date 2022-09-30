@@ -98,7 +98,36 @@ var CrostiniAppStable = hwdep.D(hwdep.Model("hatch", "eve", "atlas", "nami", "dr
 
 // CrostiniAppUnstable is a hardware dependency in addition to CrostiniAppStable.
 // These models are expected to merge with CrostiniAppStable once approved stable.
-var CrostiniAppUnstable = hwdep.D(hwdep.Model("akemi", "helios", "jinlon", "kled", "kohaku", "nightfury"), CrostiniMinDiskSizeCond)
+var CrostiniAppUnstable = hwdep.D(hwdep.Model(
+	// hatch board.
+	"akemi",
+	"helios",
+	"jinlon",
+	"kled",
+	"kohaku",
+	"nightfury",
+	// voleer board.
+	"volteer",
+	"chronicler",
+	"collis",
+	"copano",
+	"delbin",
+	"delbing",
+	"drobit",
+	"eldrid",
+	"elemi",
+	"halvor",
+	"lillipup",
+	"lindar",
+	"malefor",
+	"terrador",
+	"todor",
+	"trondo",
+	"voema",
+	"volet",
+	"volta",
+	"voxel",
+), CrostiniMinDiskSizeCond)
 
 // interface defined for GetInstallerOptions to allow both
 // testing.State and testing.PreState to be passed in as the first
