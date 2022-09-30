@@ -157,6 +157,24 @@
       "message": "Georg, who should +2 the CL?",
       "revId": "1d76b9c393f71db699dcdff8b825a36696689dd4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "278f4ca2_7de7ce9a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-09-30T08:14:05Z",
+      "side": 1,
+      "message": "One of the reviewers :)",
+      "parentUuid": "5a50195d_9296a26e",
+      "revId": "1d76b9c393f71db699dcdff8b825a36696689dd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
