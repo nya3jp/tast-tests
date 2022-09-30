@@ -71,6 +71,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "edb144c2_5a8537fd",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacros.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-09-30T04:03:46Z",
+      "side": 1,
+      "message": "Looks like we will soon have log rotation enabled for lacros ( https://chromium-review.googlesource.com/c/chromium/src/+/3793529/23/chrome/common/logging_chrome.cc ). I recommend copying all lacros.log* paths over.",
+      "parentUuid": "463761a0_6068c110",
+      "revId": "eb9f305a48a89722d952f6faa6204c6cd2ee8a97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "07eac832_2bc9c079",
         "filename": "src/chromiumos/tast/local/chrome/lacros/lacros.go",
         "patchSetId": 8
