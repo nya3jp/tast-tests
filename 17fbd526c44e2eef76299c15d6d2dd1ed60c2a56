@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6a06f5a_fc4d0852",
+        "filename": "src/chromiumos/tast/local/assistant/assistant.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1121230
+      },
+      "writtenOn": "2022-09-30T17:36:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ba40dc22_6b22fc08",
+      "range": {
+        "startLine": 103,
+        "startChar": 2,
+        "endLine": 103,
+        "endChar": 26
+      },
+      "revId": "17fbd526c44e2eef76299c15d6d2dd1ed60c2a56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2aedc65a_7764f83a",
@@ -71,6 +95,30 @@
       "writtenOn": "2022-09-30T00:44:22Z",
       "side": 1,
       "message": "Lets use :\u003d to declare a new variable inside the function to avoid messing with err outside.",
+      "range": {
+        "startLine": 110,
+        "startChar": 6,
+        "endLine": 110,
+        "endChar": 7
+      },
+      "revId": "17fbd526c44e2eef76299c15d6d2dd1ed60c2a56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d6b2167_da983cc5",
+        "filename": "src/chromiumos/tast/local/assistant/assistant.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1121230
+      },
+      "writtenOn": "2022-09-30T17:36:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2aedc65a_7764f83a",
       "range": {
         "startLine": 110,
         "startChar": 6,
