@@ -62,6 +62,7 @@ var boardArchMapping = map[string]string{
 	// The test is not enabled in the lab yet.
 	"jacuzzi": "arm",
 	"cherry":  "arm",
+	"herobrine": "aarch64",
 }
 
 // dutConfig represents information related to the DUT configuration;
