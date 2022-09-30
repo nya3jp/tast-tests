@@ -18,7 +18,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         MenuPowerOff,
+		Func:         FwScreenPowerOff,
 		Desc:         "Test power off from developer and recovery screen using power button and UI menu if exists",
 		Contacts:     []string{"tj@semihalf.com", "chromeos-firmware@google.com"},
 		Attr:         []string{"group:firmware", "firmware_unstable"},
@@ -28,7 +28,7 @@ func init() {
 	})
 }
 
-func MenuPowerOff(ctx context.Context, s *testing.State) {
+func FwScreenPowerOff(ctx context.Context, s *testing.State) {
 	h := s.FixtValue().(*fixture.Value).Helper
 	if err := h.RequireServo(ctx); err != nil {
 		s.Fatal("Failed to connect to servod")
