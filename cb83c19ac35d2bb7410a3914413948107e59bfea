@@ -67,6 +67,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6a134d86_36c51ec0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2022-09-30T20:58:52Z",
+      "side": 1,
+      "message": "Let\u0027s get some feedback from Jao-ke on this. \n\nSometimes she already has this plan, but she suggests to do at certain time due to dependencies and amount of works needed. \n\nBut, I agree, we should do it as Nathan suggested.",
+      "parentUuid": "791e8eda_ce9f9f0a",
+      "range": {
+        "startLine": 39,
+        "startChar": 4,
+        "endLine": 39,
+        "endChar": 16
+      },
+      "revId": "cb83c19ac35d2bb7410a3914413948107e59bfea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "984e7e87_affec05f",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding_test.go",
         "patchSetId": 4
