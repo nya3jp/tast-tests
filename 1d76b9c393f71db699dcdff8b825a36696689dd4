@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc1b25ef_fe4f4e22",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-09-30T08:05:53Z",
+      "side": 1,
+      "message": "It is good now. Maybe it was something in Gerrit.",
+      "parentUuid": "538602b8_2a5b2b1d",
+      "range": {
+        "startLine": 21,
+        "startChar": 16,
+        "endLine": 21,
+        "endChar": 32
+      },
+      "revId": "1d76b9c393f71db699dcdff8b825a36696689dd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0703c2b6_ff5dbb15",
@@ -72,6 +96,24 @@
       "writtenOn": "2022-09-30T08:05:13Z",
       "side": 1,
       "message": "seems good modulo discussion with Gabor",
+      "revId": "1d76b9c393f71db699dcdff8b825a36696689dd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dbe66b33_3f6e3e20",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-09-30T08:05:53Z",
+      "side": 1,
+      "message": "You are right. `ResetState` should be in chrome. I\u0027d rather have the lacros package split than the chrome package.",
+      "parentUuid": "05ee46d1_4209fef1",
       "revId": "1d76b9c393f71db699dcdff8b825a36696689dd4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
