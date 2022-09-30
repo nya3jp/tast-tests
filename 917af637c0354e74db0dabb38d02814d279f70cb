@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "673445fe_9f30fc7f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_http.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-09-30T19:31:37Z",
+      "side": 1,
+      "message": "`params.ProxyConfig`or else other tests will fail when this needs to be set to nil. Could also have a check for nil before setting, i.e.:\n```\nif params.ProxyConfig !\u003d nil {\n    if err :\u003d service.SetProperty(ctx, shillconst.ServicePropertyProxyConfig, params.ProxyConfig); err !\u003d nil {\n        s.Fatal(\"Portal detection disabled by ProxyConfig service: \", err)\n    }\n}\n```",
+      "range": {
+        "startLine": 163,
+        "startChar": 75,
+        "endLine": 163,
+        "endChar": 81
+      },
+      "revId": "917af637c0354e74db0dabb38d02814d279f70cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
