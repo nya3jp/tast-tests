@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "92a57285_b7a00f60",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1237531
+      },
+      "writtenOn": "2022-09-30T13:36:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c7eee362_7e2807b8",
+      "range": {
+        "startLine": 9,
+        "startChar": 69,
+        "endLine": 9,
+        "endChar": 74
+      },
+      "revId": "00aa4047b5a45de4f3564a2098c533a21ba0add5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "c5a2bd4e_ffcba8aa",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -37,6 +61,24 @@
       "writtenOn": "2022-09-30T07:33:53Z",
       "side": 1,
       "message": "ALso you\u0027re relying on autotestPrivate APIs. This requires chrome to uprev into tast first before landing this change. You can see this at go/pupr- to track the current version in chromeos and you can see the version your change (i.e. CL:3925348) with the autotestPrivate updates ends up in. Then once the uprev has happened, you can land this change.",
+      "revId": "00aa4047b5a45de4f3564a2098c533a21ba0add5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9b31bda_e57555f4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1237531
+      },
+      "writtenOn": "2022-09-30T13:36:44Z",
+      "side": 1,
+      "message": "Ack.",
+      "parentUuid": "c5a2bd4e_ffcba8aa",
       "revId": "00aa4047b5a45de4f3564a2098c533a21ba0add5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -54,6 +96,30 @@
       "writtenOn": "2022-09-30T07:33:53Z",
       "side": 1,
       "message": "This should probably not be in platform anymore, platform is reserved for tast tests that don\u0027t use chrome. Can you move this to `filemanager` package instead?",
+      "range": {
+        "startLine": 5,
+        "startChar": 8,
+        "endLine": 5,
+        "endChar": 16
+      },
+      "revId": "00aa4047b5a45de4f3564a2098c533a21ba0add5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f080abec_900c8c2e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/fusebox.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1237531
+      },
+      "writtenOn": "2022-09-30T13:36:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "32969fbe_f954d8c8",
       "range": {
         "startLine": 5,
         "startChar": 8,
@@ -87,6 +153,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aedbe778_68f3dbe7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/fusebox.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1237531
+      },
+      "writtenOn": "2022-09-30T13:36:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d10644c2_d817d405",
+      "range": {
+        "startLine": 30,
+        "startChar": 25,
+        "endLine": 30,
+        "endChar": 41
+      },
+      "revId": "00aa4047b5a45de4f3564a2098c533a21ba0add5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b2e376b4_99c7e097",
@@ -100,6 +190,30 @@
       "writtenOn": "2022-09-30T07:33:53Z",
       "side": 1,
       "message": "is it possible a successful read will result in anything other than \"ok\\n\" ? if not, you might want to `testing.PollBreak` here to break out of the loop in that condition instead of returning an error as that will keep reading the file",
+      "range": {
+        "startLine": 52,
+        "startChar": 3,
+        "endLine": 52,
+        "endChar": 53
+      },
+      "revId": "00aa4047b5a45de4f3564a2098c533a21ba0add5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0849271d_110649fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/fusebox.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1237531
+      },
+      "writtenOn": "2022-09-30T13:36:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b2e376b4_99c7e097",
       "range": {
         "startLine": 52,
         "startChar": 3,
@@ -133,6 +247,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ef1e219_5a9f4045",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/fusebox.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1237531
+      },
+      "writtenOn": "2022-09-30T13:36:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a4cacff8_9ac959e4",
+      "range": {
+        "startLine": 70,
+        "startChar": 18,
+        "endLine": 70,
+        "endChar": 21
+      },
+      "revId": "00aa4047b5a45de4f3564a2098c533a21ba0add5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7e0e77d3_58d308a3",
@@ -146,6 +284,30 @@
       "writtenOn": "2022-09-30T07:33:53Z",
       "side": 1,
       "message": "nit: maybe make this a const as well?",
+      "range": {
+        "startLine": 77,
+        "startChar": 60,
+        "endLine": 77,
+        "endChar": 71
+      },
+      "revId": "00aa4047b5a45de4f3564a2098c533a21ba0add5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c4b862e_fc2c5b09",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/fusebox.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1237531
+      },
+      "writtenOn": "2022-09-30T13:36:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7e0e77d3_58d308a3",
       "range": {
         "startLine": 77,
         "startChar": 60,
