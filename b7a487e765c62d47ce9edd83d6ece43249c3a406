@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "62de8a55_941518c0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1542652
+      },
+      "writtenOn": "2022-09-30T18:12:15Z",
+      "side": 1,
+      "message": "Does this one need Lacros variant? If so, feel free to add in next CL.",
+      "revId": "b7a487e765c62d47ce9edd83d6ece43249c3a406",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
