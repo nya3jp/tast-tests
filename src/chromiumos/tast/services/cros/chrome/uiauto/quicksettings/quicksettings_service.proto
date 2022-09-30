@@ -1,0 +1,18 @@
+// Copyright 2022 The ChromiumOS Authors
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package tast.cros.chrome.uiauto.quicksettings;
+
+import "google/protobuf/empty.proto";
+
+option go_package = "chromiumos/tast/services/cros/chrome/uiauto/quicksettings";
+
+// QuickSettingsService provides functions for interacting with the Quick
+// Settings on ChromeOS devices.
+service QuickSettingsService {
+  rpc NavigateToNetworkDetailedView(google.protobuf.Empty) returns (google.protobuf.Empty) {}
+}
+
