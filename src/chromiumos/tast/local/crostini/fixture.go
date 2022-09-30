@@ -518,7 +518,7 @@ func checkKeepState(s *testing.FixtState) bool {
 
 // generateChromeOpts generates common chrome options for crostini fixtures.
 func generateChromeOpts(s *testing.FixtState) []chrome.Option {
-	opts := []chrome.Option{chrome.EnableFeatures("TerminalSSH"), chrome.ExtraArgs("--vmodule=crostini*=1")}
+	opts := []chrome.Option{chrome.ExtraArgs("--vmodule=crostini*=1")}
 
 	useLocalImage := checkKeepState(s) && terminaDLCAvailable()
 	if useLocalImage {
