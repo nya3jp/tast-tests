@@ -114,6 +114,11 @@ func (y *YtWeb) OpenAndPlayVideo(ctx context.Context) (err error) {
 		return errors.Wrap(err, "failed to pause and play before switching quality")
 	}
 
+	// Sometimes prompts to grant permission appears after opening a video for a while.
+	if err := clearNotificationPrompts(ctx, y.ui); err != nil {
+		return errors.Wrap(err, "failed to clear notification prompts")
+	}
+
 	// Default expected display is main display.
 	if err := cuj.SwitchWindowToDisplay(ctx, y.tconn, y.kb, y.extendedDisplay)(ctx); err != nil {
 		if y.extendedDisplay {
