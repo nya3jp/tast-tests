@@ -356,7 +356,6 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 		}
 		opts = append(opts, chrome.ExtraArgs(arc.DisableSyncFlags()...))
 	}
-	opts = append(opts, chrome.EnableFeatures("TerminalSSH"))
 	opts = append(opts, chrome.ExtraArgs("--vmodule=crostini*=1"))
 
 	opts = append(opts, chrome.EnableFeatures("KernelnextVMs"))

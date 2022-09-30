@@ -37,8 +37,7 @@ func SSH(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
 
-	// Start Chrome with TerminalSSH flag.
-	cr, err := chrome.New(ctx, chrome.EnableFeatures("TerminalSSH"))
+	cr, err := chrome.New(ctx)
 	if err != nil {
 		s.Fatal("Cannot start Chrome: ", err)
 	}
