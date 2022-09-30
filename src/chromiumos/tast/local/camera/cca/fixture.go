@@ -23,6 +23,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/ssh"
 	"chromiumos/tast/testing"
 )
@@ -257,6 +258,12 @@ type fixture struct {
 	launchCCAInCameraBox bool
 	debugParams          DebugParams
 	features             []feature
+
+	// For local debug usages. If you enable this for your fixture, please make
+	// sure the set-up/tear-down timeout is sufficient for screen recording to
+	// process.
+	recordScreen   bool
+	screenRecorder *uiauto.ScreenRecorder
 }
 
 func (f *fixture) cameraType() testutil.UseCameraType {
@@ -418,6 +425,14 @@ func (f *fixture) Reset(ctx context.Context) error {
 
 func (f *fixture) PreTest(ctx context.Context, s *testing.FixtTestState) {
 	f.outDir = s.OutDir()
+	if f.recordScreen {
+		tconn, err := f.cr.TestAPIConn(ctx)
+		if err != nil {
+			s.Fatal("Failed to get test API: ", err)
+		}
+		f.screenRecorder = uiauto.CreateAndStartScreenRecorder(ctx, tconn)
+	}
+
 	if f.launchCCA {
 		app, err := f.startApp(ctx)
 		if err != nil {
@@ -431,6 +446,11 @@ func (f *fixture) PostTest(ctx context.Context, s *testing.FixtTestState) {
 	defer func() {
 		f.debugParams = DebugParams{}
 	}()
+
+	if f.screenRecorder != nil {
+		uiauto.ScreenRecorderStopSaveRelease(ctx, f.screenRecorder, filepath.Join(f.outDir, "record.webm"))
+		f.screenRecorder = nil
+	}
 
 	if f.chart != nil {
 		if err := f.chart.Close(ctx, f.outDir); err != nil {
