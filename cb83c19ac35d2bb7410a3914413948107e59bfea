@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "791e8eda_ce9f9f0a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1551017
+      },
+      "writtenOn": "2022-09-30T18:21:22Z",
+      "side": 1,
+      "message": "I think I can file a bug/CL to rename the list of AV1 test vectors since it might require updating it in 2-3 test generators in `platform_decoding_test.go` and running the command to generate \"new\" test cases in `platform_decoding.go` but the only change should be in `platform_decoding_test.go`. \nIf you think it is better to achieve it in this CL, I can make that change. Please let me know. \nThank you for pointing it out, Nathan.",
+      "parentUuid": "21e0b4f0_050db71f",
+      "range": {
+        "startLine": 39,
+        "startChar": 4,
+        "endLine": 39,
+        "endChar": 16
+      },
+      "revId": "cb83c19ac35d2bb7410a3914413948107e59bfea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "984e7e87_affec05f",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding_test.go",
         "patchSetId": 4
@@ -54,6 +78,30 @@
       "writtenOn": "2022-09-30T05:15:00Z",
       "side": 1,
       "message": "My guess is that the filmgrain file will cause problems since the film grain synthesis feature in AV1 introduces noise to the decoded image and will most likely not match the MD5 checksum verification. I\u0027d suggest removing it from this list.",
+      "range": {
+        "startLine": 1379,
+        "startChar": 98,
+        "endLine": 1379,
+        "endChar": 107
+      },
+      "revId": "cb83c19ac35d2bb7410a3914413948107e59bfea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "31cb965d_db91dda2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1379,
+      "author": {
+        "id": 1551017
+      },
+      "writtenOn": "2022-09-30T18:21:22Z",
+      "side": 1,
+      "message": "It makes senses that the filmgrain test vector file is likely to have the MD5 checksum mismatch and fail the tests. \nI removed it from the list.\nThank you, Nathan.",
+      "parentUuid": "984e7e87_affec05f",
       "range": {
         "startLine": 1379,
         "startChar": 98,
