@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7bc0615_04500fa8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2537,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2022-09-30T20:56:55Z",
+      "side": 1,
+      "message": "Hang, I am opposed to this idea as we haven\u0027t tested any of them yet. This would be too much noise for now. Let\u0027s just have 10 tests at least for this CL.\n\nAs you know, infra team is also careful not to have too many tests which we don\u0027t have plan to fix it right away.\n\nDid someone suggest to do this?\n\nEven if we decide to do this, we probably want to do it in a separate CL.",
+      "parentUuid": "75fc565c_19c602db",
+      "revId": "68cdd8d851ab4cb7e85acd16e6a4845f653ebb1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "68500948_15a432f9",

@@ -110,6 +110,30 @@
       },
       "revId": "cb83c19ac35d2bb7410a3914413948107e59bfea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d0a83b9_37310c2c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1379,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2022-09-30T20:56:55Z",
+      "side": 1,
+      "message": "Thanks Nathan. Yes, film grain feature was de-prioritized and not available at the moment.",
+      "parentUuid": "31cb965d_db91dda2",
+      "range": {
+        "startLine": 1379,
+        "startChar": 98,
+        "endLine": 1379,
+        "endChar": 107
+      },
+      "revId": "cb83c19ac35d2bb7410a3914413948107e59bfea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
