@@ -10,7 +10,9 @@ import (
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/arc"
+	"chromiumos/tast/local/arc/apputil"
 	"chromiumos/tast/local/arc/playstore"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
@@ -42,7 +44,7 @@ type appInfo struct {
 	arcAppPkgName string
 }
 
-const installationTimeout = cws.InstallationTimeout
+const installationTimeout = apputil.InstallationTimeout
 
 func init() {
 	testing.AddTest(&testing.Test{
@@ -89,11 +91,11 @@ func init() {
 			{
 				Name: "arc",
 				Val: &appInfo{
-					name:          "VLC",
-					id:            "faabdppbcbmkemcigbhofgomflchgocl",
+					name:          apps.Chat.Name,
+					id:            apps.Chat.ID,
 					source:        fromPlayStore,
 					isTabletMode:  false,
-					arcAppPkgName: "org.videolan.vlc",
+					arcAppPkgName: "com.google.android.apps.dynamite",
 				},
 				Fixture:           "arcBootedWithPlayStore",
 				ExtraSoftwareDeps: []string{"arc"},
@@ -101,11 +103,11 @@ func init() {
 			{
 				Name: "arc_tablet",
 				Val: &appInfo{
-					name:          "VLC",
-					id:            "faabdppbcbmkemcigbhofgomflchgocl",
+					name:          apps.Chat.Name,
+					id:            apps.Chat.ID,
 					source:        fromPlayStore,
 					isTabletMode:  true,
-					arcAppPkgName: "org.videolan.vlc",
+					arcAppPkgName: "com.google.android.apps.dynamite",
 				},
 				Fixture:           "arcBootedWithPlayStore",
 				ExtraSoftwareDeps: []string{"arc"},
