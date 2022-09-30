@@ -5,6 +5,7 @@
 package fingerprint
 
 import (
+	"bytes"
 	"context"
 	"encoding/binary"
 	"io/ioutil"
@@ -232,6 +233,15 @@ func createVersionStringWithSuffix(suffix string, version []byte) ([]byte, error
 
 	if end < 0 {
 		return nil, errors.Errorf("suffix %q is too long for version len: %d", suffix, len(version))
+	}
+	// Check for first null terminator and use that as end.
+	idx := bytes.Index(version, []byte("\x00"))
+	if idx > -1 && idx < end {
+		diff := end - idx
+		end = idx
+		for i := 0; i < diff; i++ {
+			suffix += "\x00"
+		}
 	}
 
 	copy(newVersion, version[0:end])
