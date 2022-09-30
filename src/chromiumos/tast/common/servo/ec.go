@@ -158,6 +158,19 @@ const (
 	UseConsole HibernationOpt = "console"
 )
 
+// USBPdDualRoleValue contains a gettable/settable string accepted by
+// the ec command, 'pd <port> dualrole'.
+type USBPdDualRoleValue string
+
+// These are acceptable states for the USB PD dual-role.
+const (
+	USBPdDualRoleOn     USBPdDualRoleValue = "on"
+	USBPdDualRoleOff    USBPdDualRoleValue = "off"
+	USBPdDualRoleFreeze USBPdDualRoleValue = "freeze"
+	USBPdDualRoleSink   USBPdDualRoleValue = "force sink"
+	USBPdDualRoleSource USBPdDualRoleValue = "force source"
+)
+
 // RunECCommand runs the given command on the EC on the device.
 func (s *Servo) RunECCommand(ctx context.Context, cmd string) error {
 	if err := s.SetString(ctx, ECUARTRegexp, "None"); err != nil {
@@ -379,6 +392,48 @@ func (s *Servo) OpenCCD(ctx context.Context) error {
 			return errors.Wrap(err, "failed to get gsc_ccd_level after unlocking CCD")
 		}
 		testing.ContextLogf(ctx, "CCD State: %q", checkedVal)
+	}
+	return nil
+}
+
+// CheckUSBPdStatus accepts a port ID and checks for the pd status of this port.
+func (s *Servo) CheckUSBPdStatus(ctx context.Context, portID int, expectedStatus USBPdDualRoleValue) error {
+	// Some DUTs use a different format in checking for pd: 'pd dualrole'.
+	// This format was found on a few models, such as eve, nautilus, soraka,
+	// kench, teemo, and sion. Check for the format that works. This list can be
+	// further expanded using new test results.
+	possibleCmds := []string{fmt.Sprintf("pd %d dualrole", portID), "pd dualrole"}
+	matchList := []string{`dual-role toggling: ([^\n\r]*)`}
+	checkPdCmd := func() string {
+		for _, val := range possibleCmds {
+			_, err := s.RunECCommandGetOutput(ctx, val, matchList)
+			if err != nil {
+				testing.ContextLog(ctx, err.Error())
+				continue
+			}
+			return val
+		}
+		return ""
+	}
+	cmd := checkPdCmd()
+	if cmd == "" {
+		return errors.New("no command found to check for pd")
+	}
+	// Poll on pd cmd to avoid char lost.
+	testing.ContextLog(ctx, "Checking for usb pd status")
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		out, err := s.RunECCommandGetOutput(ctx, cmd, matchList)
+		if err != nil {
+			return errors.Wrapf(err, "failed to run cmd %s", cmd)
+		}
+		portStatus := USBPdDualRoleValue(out[0][1])
+		if portStatus != expectedStatus {
+			failStr := fmt.Sprintf("port %d dual-role: %s, expected: %s", portID, portStatus, expectedStatus)
+			return errors.New(failStr)
+		}
+		return nil
+	}, &testing.PollOptions{Interval: 1 * time.Second, Timeout: 10 * time.Second}); err != nil {
+		return err
 	}
 	return nil
 }
