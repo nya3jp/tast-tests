@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0125a59b_6a0b3c4a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/shill_cellular_custom_apn.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-09-30T14:34:07Z",
+      "side": 1,
+      "message": "this should probably be above the `defer cancel()` line so that the shortened context is canceled before we clean up",
+      "revId": "95eaf401868a01f7ce9d7444bbf0f69c40772cdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
