@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f0b62d2_707ff817",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-09-30T08:26:01Z",
+      "side": 1,
+      "message": "Thanks!",
+      "revId": "f040f22e8cc7a32b0ee1c23e8a9b9ca72bf1f506",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4923ac67_f3f7bdda",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-09-30T08:26:01Z",
+      "side": 1,
+      "message": "Thanks!",
+      "revId": "f040f22e8cc7a32b0ee1c23e8a9b9ca72bf1f506",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7be3b783_4efb8ee5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cross_version_login.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 462,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-09-30T08:26:01Z",
+      "side": 1,
+      "message": "Maybe extracting this into separate helpers would help keep code maintainable? But LGTM anyway.",
+      "revId": "f040f22e8cc7a32b0ee1c23e8a9b9ca72bf1f506",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
