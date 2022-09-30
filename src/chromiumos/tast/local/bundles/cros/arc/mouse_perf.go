@@ -19,24 +19,31 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         MousePerf,
-		LacrosStatus: testing.LacrosVariantNeeded,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Test ARC mouse system performance",
-		Contacts:     []string{"arc-performance@google.com", "wvk@google.com"},
+		Contacts:     []string{"arc-performance@google.com"},
 		// Disabled due to <1% pass rate over 30 days. See b/241943132
 		//Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},
 		Data:         inputlatency.AndroidData(),
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
+			Fixture:           "arcBooted",
+		}, {
+			Name:              "lacros",
+			ExtraSoftwareDeps: []string{"android_p", "lacros"},
+			Fixture:           "lacrosWithArcBooted",
 		},
-		/* Disabled due to <1% pass rate over 30 days. See b/241943132
-		{
-			Name:              "vm",
-			ExtraSoftwareDeps: []string{"android_vm"},
-		}
-		*/
+		/*		{
+					Name:              "vm",
+					ExtraSoftwareDeps: []string{"android_vm"},
+					Fixture: "arcBooted",
+				}, {
+					Name:              "vm_lacros",
+					ExtraSoftwareDeps: []string{"android_vm", "lacros"},
+					Fixture: "lacrosWithArcBooted",
+				}*/
 		},
-		Fixture: "arcBooted",
 		Timeout: 2 * time.Minute,
 	})
 }
