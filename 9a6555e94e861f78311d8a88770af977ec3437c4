@@ -282,6 +282,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b398adb4_cd575f47",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/expectations/expectations.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1498402
+      },
+      "writtenOn": "2022-09-30T22:06:21Z",
+      "side": 1,
+      "message": "I adjusted the file structure so the test case is part of every expectations file regardless of whether or not it has parameters. The test name is not part of the in-memory |expectations.Expectation| structure since it would only be duplicated from the |testing.State| structure.\n\nThis simplifies YAML generation and should make the YAML files for a non-parameterized test more self-documenting.",
+      "parentUuid": "e22e38ab_d02919c1",
+      "range": {
+        "startLine": 175,
+        "startChar": 0,
+        "endLine": 175,
+        "endChar": 25
+      },
+      "revId": "9a6555e94e861f78311d8a88770af977ec3437c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7547fbc4_2d2030e9",

@@ -50,6 +50,24 @@
       "message": "I am a little unsure whether this is a guarantee we want or need to make, if we adjust the test name hierarchies, which is something we\u0027ve discussed might help before. (Isn\u0027t the main point is that the test case, the last token, forms the contents of the file? If that\u0027s the case we can probably actually do a `[path.]filepath.Join`.)\n\nIn the near term this should be fine though! (Tast is unlikely to make this change any time soon)",
       "revId": "f19a1cc4b2cc2df2a0a6fa540c0bd522148bd609",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "800a36af_c7d1b739",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/expectations/expectations.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1498402
+      },
+      "writtenOn": "2022-09-30T22:06:21Z",
+      "side": 1,
+      "message": "One reason for this function is to omit the \"test case\" from the directory for parameterized tests.\n\nI refactored this function so it will return an error if Tast adds more levels of dpeth to a test name, so it will be obvious for test writers.",
+      "parentUuid": "81aab2b1_4e7ce03a",
+      "revId": "f19a1cc4b2cc2df2a0a6fa540c0bd522148bd609",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
