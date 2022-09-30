@@ -16,6 +16,29 @@
       "message": "Thanks for the review!",
       "revId": "cd775149762bd29e0e95f6f5babda4124eff9600",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1c8f2e2_ce9d6a9d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterpriseconnectors/test_file_attached.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 402,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-09-30T10:11:21Z",
+      "side": 1,
+      "message": "What\u0027s the point of specifying the interval here?\nIf the dialog closes automatically too quickly, wouldn\u0027t WaitUntilGone return immediately?",
+      "range": {
+        "startLine": 402,
+        "startChar": 77,
+        "endLine": 402,
+        "endChar": 90
+      },
+      "revId": "cd775149762bd29e0e95f6f5babda4124eff9600",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
