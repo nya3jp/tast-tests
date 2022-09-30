@@ -133,6 +133,12 @@ func runSetup(ctx context.Context, s *testing.State) (*tabSwitchVariables, error
 		}
 	}
 
+	// The test runs for 10 minutes + time to open the browser. Thus,
+	// take a screenshot every 2 minutes, with a max of 6 screenshots.
+	if err := vars.recorder.AddScreenshotRecorder(ctx, 2*time.Minute, 6); err != nil {
+		s.Fatal("Failed to add screenshot recorder: ", err)
+	}
+
 	metricsSuccessfullyAdded = true
 	return &vars, nil
 }
