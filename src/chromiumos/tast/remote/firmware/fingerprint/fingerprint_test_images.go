@@ -224,19 +224,13 @@ func createVersionStringWithSuffix(suffix string, version []byte) ([]byte, error
 	if len(version) != versionStringLenBytes {
 		return nil, errors.Errorf("incorrect version size, actual: %d, expected: %d", len(version), versionStringLenBytes)
 	}
-
-	newVersion := make([]byte, versionStringLenBytes)
-	// golang strings are not NUL terminated, so add one
-	suffix += "\x00"
-	end := versionStringLenBytes - len(suffix)
-
-	if end < 0 {
-		return nil, errors.Errorf("suffix %q is too long for version len: %d", suffix, len(version))
+	if len(suffix) >= versionStringLenBytes {
+		return nil, errors.Errorf("suffix %q is too long for version len: %d", suffix, versionStringLenBytes)
 	}
-
-	copy(newVersion, version[0:end])
-	copy(newVersion[end:], suffix)
-
+	versionStr := string(version)[:versionStringLenBytes-len(suffix)-1]
+	versionStr = strings.TrimRight(versionStr, "\x00")
+	newVersion := make([]byte, versionStringLenBytes)
+	copy(newVersion[:], versionStr+suffix)
 	return newVersion, nil
 }
 
