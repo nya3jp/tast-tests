@@ -84,3 +84,8 @@ func (a *ARC) ReverseTCP(ctx context.Context, hostPort int) (int, error) {
 func (a *ARC) RemoveReverseTCP(ctx context.Context, androidPort int) error {
 	return a.device.RemoveReverseTCP(ctx, androidPort)
 }
+
+// GrantPermission grants the requested permission to the specified app package.
+func (a *ARC) GrantPermission(ctx context.Context, pkg, permission string) error {
+	return a.device.GrantPermission(ctx, pkg, permission)
+}
