@@ -354,6 +354,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3bba22de_1688b29c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/virtual_desks_tablet_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1510647
+      },
+      "writtenOn": "2022-09-30T18:14:24Z",
+      "side": 1,
+      "message": "Synced with Hongyu offlice, since in other go file we use `new desk`, we can use the same here as well.",
+      "parentUuid": "1ecf73e7_ff8c8bf8",
+      "range": {
+        "startLine": 141,
+        "startChar": 79,
+        "endLine": 141,
+        "endChar": 84
+      },
+      "revId": "6d15c1a09dc4bee6821703ac0116a760f19842c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b0e212e4_3e31a245",
