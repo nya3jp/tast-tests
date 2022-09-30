@@ -97,12 +97,10 @@ func (g *GoogleSheets) CreatePivotTable() uiauto.Action {
 	pivotTable := nodewith.Name("Pivot table p").Role(role.MenuItem)
 	createPivotDialog := nodewith.Name("Create pivot table").Role(role.Dialog)
 
-	insertTable := func() uiauto.Action {
-		return uiauto.Combine("create pivot table",
-			g.uiHdl.ClickUntil(insert, g.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(insertExpanded)),
-			g.uiHdl.ClickUntil(pivotTable, g.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(createPivotDialog)),
-		)
-	}
+	insertTable := uiauto.Combine("create pivot table",
+		g.uiHdl.ClickUntil(insert, g.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(insertExpanded)),
+		g.uiHdl.ClickUntil(pivotTable, g.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(createPivotDialog)),
+	)
 
 	radioGroup := nodewith.Name("Insert to").Role(role.RadioGroup).Ancestor(createPivotDialog)
 	existingSheet := nodewith.Name("Existing sheet").Role(role.RadioButton).Ancestor(radioGroup)
@@ -110,7 +108,7 @@ func (g *GoogleSheets) CreatePivotTable() uiauto.Action {
 	pivotTableRangeFocused := pivotTableRange.Focused()
 	createButton := nodewith.Name("Create").Role(role.Button).Ancestor(createPivotDialog)
 	return uiauto.Combine("insert the pivot table to existing spreadsheet",
-		insertTable(),
+		insertTable,
 		g.fillInPivotRange(),
 		g.uiHdl.Click(existingSheet),
 		g.uiHdl.ClickUntil(pivotTableRange, g.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(pivotTableRangeFocused)),
@@ -132,13 +130,11 @@ func (g *GoogleSheets) EditPivotTable() uiauto.Action {
 
 	pivotTableEditor := nodewith.Name("Pivot table editor").Role(role.Complementary)
 	close := nodewith.Name("Close").Role(role.Button).Ancestor(pivotTableEditor)
-	return uiauto.NamedAction("close the pivot table editor",
-		uiauto.Combine("close the pivot table editor",
-			g.editPivotTableEditor(rowsAddButtonName, rowName),
-			g.editPivotTableEditor(columnsAddButtonName, columnName),
-			g.editPivotTableEditor(valuesAddButtonName, valueName),
-			uiauto.IfSuccessThen(g.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(pivotTableEditor), g.uiHdl.Click(close)),
-		),
+	return uiauto.NamedCombine("close the pivot table editor",
+		g.editPivotTableEditor(rowsAddButtonName, rowName),
+		g.editPivotTableEditor(columnsAddButtonName, columnName),
+		g.editPivotTableEditor(valuesAddButtonName, valueName),
+		uiauto.IfSuccessThen(g.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(pivotTableEditor), g.uiHdl.Click(close)),
 	)
 }
 
@@ -337,15 +333,13 @@ func (g *GoogleSheets) selectCell(cell string) uiauto.Action {
 	nameBox := nodewith.Name("Name box (Ctrl + J)").Role(role.GenericContainer)
 	nameField := nodewith.Role(role.TextField).FinalAncestor(nameBox)
 	nameFieldFocused := nameField.Focused()
-	return uiauto.NamedAction(fmt.Sprintf("to select cell %q", cell),
-		uiauto.Combine("click the name box and name a range",
-			g.uiHdl.ClickUntil(nameField, g.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(nameFieldFocused)),
-			g.kb.TypeAction(cell),
-			g.kb.AccelAction("Enter"),
-			// Given time to jump to the specific cell and select it.
-			// And because we cannot be sure whether the target cell is focused, we have to wait a short time.
-			uiauto.Sleep(500*time.Millisecond),
-		),
+	return uiauto.NamedCombine(fmt.Sprintf("select cell %q", cell),
+		g.uiHdl.ClickUntil(nameField, g.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(nameFieldFocused)),
+		g.kb.TypeAction(cell),
+		g.kb.AccelAction("Enter"),
+		// Given time to jump to the specific cell and select it.
+		// And because we cannot be sure whether the target cell is focused, we have to wait a short time.
+		uiauto.Sleep(500*time.Millisecond),
 	)
 }
 

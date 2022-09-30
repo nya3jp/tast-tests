@@ -70,12 +70,10 @@ func (g *GoogleChat) Launch(ctx context.Context) (err error) {
 	installAlertDialog := nodewith.Name("Install app?").Role(role.AlertDialog).Focused()
 	installButton := nodewith.Name("Install").Role(role.Button).Ancestor(installAlertDialog).Default()
 
-	installGoogleChat := func(ctx context.Context) error {
-		return uiauto.Combine("install Google Chat app",
-			uiauto.IfSuccessThen(g.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(installGoogleChatButton), g.uiHdl.Click(installGoogleChatButton)),
-			g.uiHdl.Click(installButton),
-		)(ctx)
-	}
+	installGoogleChat := uiauto.Combine("install Google Chat app",
+		uiauto.IfSuccessThen(g.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(installGoogleChatButton), g.uiHdl.Click(installGoogleChatButton)),
+		g.uiHdl.Click(installButton),
+	)
 
 	openLinkButton := nodewith.Name("To open this link, choose an app").Role(role.Button).Focusable()
 	chooseAppDialog := nodewith.Name("To open this link, choose an app").Role(role.Dialog).Focusable()
