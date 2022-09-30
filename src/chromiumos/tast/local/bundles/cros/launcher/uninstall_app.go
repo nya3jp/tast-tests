@@ -11,6 +11,7 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
+	"chromiumos/tast/local/arc/apputil"
 	"chromiumos/tast/local/arc/playstore"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
@@ -42,7 +43,7 @@ type appInfo struct {
 	arcAppPkgName string
 }
 
-const installationTimeout = cws.InstallationTimeout
+const installationTimeout = apputil.InstallationTimeout
 
 func init() {
 	testing.AddTest(&testing.Test{

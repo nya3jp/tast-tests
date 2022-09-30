@@ -57,7 +57,7 @@ func NewApp(ctx context.Context, kb *input.KeyboardEventWriter, tconn *chrome.Te
 }
 
 // InstallationTimeout defines the maximum time duration to install an app from the play store.
-const InstallationTimeout = 5 * time.Minute
+const InstallationTimeout = 10 * time.Minute
 
 // Install installs the ARC app with the package name.
 func (app *App) Install(ctx context.Context) error {
@@ -66,11 +66,7 @@ func (app *App) Install(ctx context.Context) error {
 		return errors.Errorf("there are no time to install ARC app %q", app.AppName)
 	}
 
-	// Limit the installation time with a new context.
-	installCtx, cancel := context.WithTimeout(ctx, InstallationTimeout)
-	defer cancel()
-
-	if err := playstore.InstallOrUpdateAppAndClose(installCtx, app.Tconn, app.ARC, app.Device, app.PkgName, &playstore.Options{TryLimit: -1}); err != nil {
+	if err := playstore.InstallOrUpdateAppAndClose(ctx, app.Tconn, app.ARC, app.Device, app.PkgName, &playstore.Options{TryLimit: -1, InstallationTimeout: InstallationTimeout}); err != nil {
 		return errors.Wrapf(err, "failed to install %s", app.PkgName)
 	}
 	return nil
