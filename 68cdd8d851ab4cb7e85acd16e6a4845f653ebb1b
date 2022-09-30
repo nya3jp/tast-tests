@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "75fc565c_19c602db",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2537,
+      "author": {
+        "id": 1551017
+      },
+      "writtenOn": "2022-09-30T04:57:22Z",
+      "side": 1,
+      "message": "I added the failed test vectors along with the ones from av1AomFiles.\nI updated the bug with test results. PTAL.\nThank you Steve.",
+      "parentUuid": "352dcd99_4917d75b",
+      "revId": "68cdd8d851ab4cb7e85acd16e6a4845f653ebb1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "68500948_15a432f9",
@@ -48,6 +66,24 @@
       "writtenOn": "2022-09-29T19:02:41Z",
       "side": 1,
       "message": "Is there a reason for defining a short list rather than files from `av1AomFiles[\"8bit\"]`? If so, please add a code comment or TODO explaining why. \n\nIf not, please create test cases for the different categories of clips in `av1AomFiles`. My guess is that we don\u0027t want the `filmgrain` files in an MD5-based decode test, though, since the film grain makes the decoder non-deterministic.\n\nOther reviewers, LMK if that sounds unreasonable. Thanks.",
+      "revId": "68cdd8d851ab4cb7e85acd16e6a4845f653ebb1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f16df32f_a556ea5b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1551017
+      },
+      "writtenOn": "2022-09-30T04:57:22Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "68500948_15a432f9",
       "revId": "68cdd8d851ab4cb7e85acd16e6a4845f653ebb1b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
