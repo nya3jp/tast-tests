@@ -14,6 +14,8 @@ import (
 var stableModelList = []string{
 	// HP models:
 	"vell",
+	"dojo",
+	"redrix",
 }
 
 // StableModels returns hardwareDeps condition with list of stable models.
