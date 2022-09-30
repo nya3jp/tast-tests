@@ -136,7 +136,7 @@ func (i *impl) PostTest(ctx context.Context, s *testing.FixtTestState) {
 
 	if i.v.keepaliveEn {
 		if err := svo.SetOnOff(ctx, servo.CCDKeepaliveEn, servo.On); err != nil {
-			s.Error("Unable to enable CCD keepalive: ", err)
+			s.Log("Unable to enable CCD keepalive: ", err)
 		}
 	}
 }
