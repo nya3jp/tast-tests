@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb5378ca_406cde29",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/transcript_translation.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-09-30T04:51:34Z",
+      "side": 1,
+      "message": "Done. Nice, good catch!",
+      "parentUuid": "f060d55b_d56c8b24",
+      "range": {
+        "startLine": 94,
+        "startChar": 12,
+        "endLine": 94,
+        "endChar": 27
+      },
+      "revId": "fc4777161ea6a1b61cc96cdb1741a97d0716fb2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "07070333_7403b562",
@@ -71,6 +95,30 @@
       "writtenOn": "2022-09-28T21:22:56Z",
       "side": 1,
       "message": "Cam you move those fixtures to projector code?",
+      "range": {
+        "startLine": 160,
+        "startChar": 0,
+        "endLine": 163,
+        "endChar": 20
+      },
+      "revId": "fc4777161ea6a1b61cc96cdb1741a97d0716fb2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cce2b1db_36c2b02f",
+        "filename": "src/chromiumos/tast/local/chrome/familylink/fixture.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-09-30T04:51:34Z",
+      "side": 1,
+      "message": "Done, moved to projector/fixture.go [1] in crrev.com/c/3928210, but they still use NewFamilyLinkFixture() from this file so it\u0027s confusing to separate the implementation from the fixture.\n\n[1] src/platform/tast-tests/src/chromiumos/tast/local/chrome/projector/fixture.go",
+      "parentUuid": "07070333_7403b562",
       "range": {
         "startLine": 160,
         "startChar": 0,
@@ -104,6 +152,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0cf01810_e3a5c976",
+        "filename": "src/chromiumos/tast/local/chrome/familylink/fixture.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-09-30T04:51:34Z",
+      "side": 1,
+      "message": "After refactoring fixtures to use a common HasChrome() and HasTestConn() interface, I was able to remove projectorRegularLogin and recycle the existing projectorLogin fixture [1] instead for regular users.\n\nThe projectorEduLogin fixture uses NewFamilyLinkFixture() because it needs fakeDMS to work, and I don\u0027t want to duplicate the SetUp() code into projector/fixture.go.\n\n[1] https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/projector/fixture.go;l\u003d30?q\u003df:tast%20f:projector%20f:fixture.go",
+      "parentUuid": "08ee3b04_064e66b7",
+      "range": {
+        "startLine": 186,
+        "startChar": 12,
+        "endLine": 186,
+        "endChar": 32
+      },
+      "revId": "fc4777161ea6a1b61cc96cdb1741a97d0716fb2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3763e0ad_4d6d804b",
@@ -117,6 +189,30 @@
       "writtenOn": "2022-09-28T21:53:10Z",
       "side": 1,
       "message": "Maybe reserve 5s and do this and conn.close below with cleanupCtx?",
+      "range": {
+        "startLine": 234,
+        "startChar": 1,
+        "endLine": 234,
+        "endChar": 24
+      },
+      "revId": "fc4777161ea6a1b61cc96cdb1741a97d0716fb2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "77196655_da9e8ea7",
+        "filename": "src/chromiumos/tast/local/chrome/projector/projector.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-09-30T04:51:34Z",
+      "side": 1,
+      "message": "Done, conn.Close() doesn\u0027t require a context.",
+      "parentUuid": "3763e0ad_4d6d804b",
       "range": {
         "startLine": 234,
         "startChar": 1,
