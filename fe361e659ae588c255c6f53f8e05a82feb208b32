@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b5233f3_1ea6cbd2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 12
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1547842
+      },
+      "writtenOn": "2022-09-30T09:28:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "36b1591e_4eb60047",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 117
+      },
+      "revId": "fe361e659ae588c255c6f53f8e05a82feb208b32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f00ef8a6_eee0b5f2",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-09-29T12:00:25Z",
       "side": 1,
       "message": "nit: add line bread after needed.",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 84
+      },
+      "revId": "fe361e659ae588c255c6f53f8e05a82feb208b32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7aecd7f1_9c95c855",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 12
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1547842
+      },
+      "writtenOn": "2022-09-30T09:28:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f00ef8a6_eee0b5f2",
       "range": {
         "startLine": 11,
         "startChar": 0,
@@ -121,6 +169,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1015d1f3_2f5f1bdc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/print_to_pdf.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1547842
+      },
+      "writtenOn": "2022-09-30T09:28:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "23bc4315_caac9feb",
+      "range": {
+        "startLine": 73,
+        "startChar": 1,
+        "endLine": 73,
+        "endChar": 34
+      },
+      "revId": "fe361e659ae588c255c6f53f8e05a82feb208b32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5058bc6a_2a61f441",
@@ -144,6 +216,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "22526a16_fead8794",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/print_to_pdf.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1547842
+      },
+      "writtenOn": "2022-09-30T09:28:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5058bc6a_2a61f441",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 69
+      },
+      "revId": "fe361e659ae588c255c6f53f8e05a82feb208b32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f952e68f_75cfaf6c",
@@ -157,6 +253,30 @@
       "writtenOn": "2022-09-28T16:04:43Z",
       "side": 1,
       "message": "nit: move closer to use :)",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 31
+      },
+      "revId": "fe361e659ae588c255c6f53f8e05a82feb208b32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c27e3bd8_977f3bbc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/print_to_pdf.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1547842
+      },
+      "writtenOn": "2022-09-30T09:28:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f952e68f_75cfaf6c",
       "range": {
         "startLine": 102,
         "startChar": 0,
