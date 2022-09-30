@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a18bcd8_4e0be4b2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_http.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-09-30T21:36:55Z",
+      "side": 1,
+      "message": "This needs to stay as empty string \"\"",
+      "range": {
+        "startLine": 66,
+        "startChar": 26,
+        "endLine": 66,
+        "endChar": 41
+      },
+      "revId": "af0408875abc80ba5ab03f13e4a962452d9f2eb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
