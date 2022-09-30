@@ -87,15 +87,24 @@ func (cli *WifiClient) AssureDisconnect(ctx context.Context, servicePath string,
 	return nil
 }
 
-// QueryService queries shill information of selected service.
-func (cli *WifiClient) QueryService(ctx context.Context) (*wifi.QueryServiceResponse, error) {
-	selectedSvcResp, err := cli.ShillServiceClient.SelectedService(ctx, &empty.Empty{})
+// GetServicePath returns the object path of the service matching the properties in request.
+func (cli *WifiClient) GetServicePath(ctx context.Context, props map[string]interface{}) (string, error) {
+	propsEnc, err := protoutil.EncodeToShillValMap(props)
 	if err != nil {
-		return nil, errors.Wrap(err, "failed to get selected service")
+		return "", errors.Wrap(err, "failed to encode shill properties")
 	}
+	req := &wifi.ServicePathRequest{Props: propsEnc}
+	rsp, err := cli.ShillServiceClient.GetServicePath(ctx, req)
+	if err != nil {
+		return "", err
+	}
+	return rsp.ServicePath, nil
+}
 
+// QueryServiceWithPath queries shill information about service pointed by the servicePath.
+func (cli *WifiClient) QueryServiceWithPath(ctx context.Context, servicePath string) (*wifi.QueryServiceResponse, error) {
 	req := &wifi.QueryServiceRequest{
-		Path: selectedSvcResp.ServicePath,
+		Path: servicePath,
 	}
 	resp, err := cli.ShillServiceClient.QueryService(ctx, req)
 	if err != nil {
@@ -103,6 +112,16 @@ func (cli *WifiClient) QueryService(ctx context.Context) (*wifi.QueryServiceResp
 	}
 
 	return resp, nil
+}
+
+// QueryService queries shill information of selected service.
+func (cli *WifiClient) QueryService(ctx context.Context) (*wifi.QueryServiceResponse, error) {
+	selectedSvcResp, err := cli.ShillServiceClient.SelectedService(ctx, &empty.Empty{})
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get selected service")
+	}
+
+	return cli.QueryServiceWithPath(ctx, selectedSvcResp.ServicePath)
 }
 
 // Interface returns the WiFi interface name of the DUT.

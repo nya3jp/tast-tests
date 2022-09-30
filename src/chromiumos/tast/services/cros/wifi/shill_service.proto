@@ -83,6 +83,9 @@ service ShillService {
   // SelectedService returns the object path of selected service of WiFi service.
   rpc SelectedService(google.protobuf.Empty) returns (SelectedServiceResponse) {}
 
+  // GetServicePath returns the object path of the service matching the properties in request.
+  rpc GetServicePath(ServicePathRequest) returns (ServicePathResponse) {}
+
   // ExpectShillProperty is a streaming gRPC, takes a shill service path, expects a list of property
   // criteria in order, and takes a list of shill properties to monitor. When a property's value is
   // expected, it responds the property's (key, value) pair. The method sends an empty response as the
@@ -589,4 +592,12 @@ message TetheringResponse {
   string uplink_tech = 1;
   string downlink_tech = 2;
   uint32 channel = 3;
+}
+
+message ServicePathRequest {
+  map<string, ShillVal> props = 1;
+}
+
+message ServicePathResponse {
+  string service_path = 1;
 }
