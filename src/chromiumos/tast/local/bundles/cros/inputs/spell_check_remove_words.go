@@ -10,6 +10,7 @@ import (
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/bundles/cros/inputs/fixture"
+	"chromiumos/tast/local/bundles/cros/inputs/spellcheck"
 	"chromiumos/tast/local/bundles/cros/inputs/testserver"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
@@ -73,6 +74,10 @@ func SpellCheckRemoveWords(ctx context.Context, s *testing.State) {
 	}
 
 	const customizedWord = "newword"
+	if err := spellcheck.SetOneTimeMarkerWithWord(ctx, tconn, customizedWord); err != nil {
+		s.Fatal("Failed to observe spelling marker changes: ", err)
+	}
+
 	s.Log("Adding customized word: ", customizedWord)
 	if err := settings.AddCustomizedSpellCheck(cr, kb, customizedWord)(ctx); err != nil {
 		s.Fatal("Failed to add customized word: ", err)
@@ -88,6 +93,7 @@ func SpellCheckRemoveWords(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to launch inputs test server: ", err)
 	}
 	defer its.CloseAll(cleanupCtx)
+	defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "ui_dump_browser")
 
 	s.Logf("Typing a misspelling word %q and checks the spelling suggestion", customizedWord)
 	inputField := testserver.TextInputField
@@ -97,7 +103,7 @@ func SpellCheckRemoveWords(ctx context.Context, s *testing.State) {
 		its.Clear(inputField),
 		its.ClickFieldAndWaitForActive(inputField),
 		kb.TypeAction(customizedWord),
-		kb.AccelAction("Ctrl+A"),
+		spellcheck.WaitUntilMarkerExists(tconn, customizedWord),
 		its.RightClickFieldAndWaitForActive(inputField),
 		ui.WaitUntilExists(addToDictionary),
 	)(ctx); err != nil {
