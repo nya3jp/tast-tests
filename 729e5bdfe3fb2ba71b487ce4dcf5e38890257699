@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "19971788_e09df53d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/iioservice/query.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1537719
+      },
+      "writtenOn": "2022-09-30T03:11:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "757b0d8f_a2ad5640",
+      "revId": "729e5bdfe3fb2ba71b487ce4dcf5e38890257699",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ffad9d12_a12d23ea",
@@ -48,6 +66,30 @@
       "writtenOn": "2022-09-29T13:07:10Z",
       "side": 1,
       "message": "nit: make it const",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 3
+      },
+      "revId": "729e5bdfe3fb2ba71b487ce4dcf5e38890257699",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "61017628_57ceb564",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/iioservice/query_test.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1537719
+      },
+      "writtenOn": "2022-09-30T03:11:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ffad9d12_a12d23ea",
       "range": {
         "startLine": 14,
         "startChar": 0,
