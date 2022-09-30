@@ -137,6 +137,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "21451758_4f5b1f4a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1498402
+      },
+      "writtenOn": "2022-09-30T22:55:52Z",
+      "side": 1,
+      "message": "Thanks for cleaning up the duplicate list and the name.",
+      "parentUuid": "c4a37d99_28a5b52a",
+      "range": {
+        "startLine": 39,
+        "startChar": 4,
+        "endLine": 39,
+        "endChar": 16
+      },
+      "revId": "cb83c19ac35d2bb7410a3914413948107e59bfea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "984e7e87_affec05f",

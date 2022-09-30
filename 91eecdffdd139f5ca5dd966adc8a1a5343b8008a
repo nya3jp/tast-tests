@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9313e517_9fb40f15",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1367,
+      "author": {
+        "id": 1498402
+      },
+      "writtenOn": "2022-09-30T22:55:52Z",
+      "side": 0,
+      "message": "Nit: Could you add back the empty line here? Thanks.",
+      "revId": "91eecdffdd139f5ca5dd966adc8a1a5343b8008a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
