@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4010abb5_21ca91df",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1151324
+      },
+      "writtenOn": "2022-09-30T16:47:35Z",
+      "side": 1,
+      "message": "It is a bit hard to review this code given that gerrit lost the fact that there was a rename, so none of the \"diff\"ing is working.\n\nAre you willing to split up the CLs into a CL which just moves the file (and makes no functional changes) and follow up with a CL which makes interesting changes? (or, in the other order if that\u0027s better for some reason.) That will make it much easier for us to review.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 68
+      },
+      "revId": "5ccc497906d4a15ad04a421fd775c9105f5e109c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
