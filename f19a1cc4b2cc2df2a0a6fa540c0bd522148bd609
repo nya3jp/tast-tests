@@ -20,6 +20,23 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "ae35074a_6acb444e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-09-30T18:40:44Z",
+      "side": 1,
+      "message": "Looks great to me, thank you!",
+      "revId": "f19a1cc4b2cc2df2a0a6fa540c0bd522148bd609",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "81aab2b1_4e7ce03a",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/expectations/expectations.go",
         "patchSetId": 15
