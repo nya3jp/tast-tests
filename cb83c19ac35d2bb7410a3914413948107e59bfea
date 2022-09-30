@@ -16,6 +16,52 @@
       "message": "Added Av1AomFiles test vectors. PTAL.",
       "revId": "cb83c19ac35d2bb7410a3914413948107e59bfea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21e0b4f0_050db71f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1498402
+      },
+      "writtenOn": "2022-09-30T05:15:00Z",
+      "side": 1,
+      "message": "If we don\u0027t see a strong reason to duplicate `vaapiAv1Files`, it would be cleaner to rename `vaapiAv1Files` to remove the \"VA-API\"-ness of the variable name. Maybe just `av1Files`?\n\nThen use the same list for VA-API and V4L2 Stateless tests.\n\nIf you do end up renaming the variable, I don\u0027t think it would be necessary to perform the rename in a separate, preceding commit. However, other reviewers may have different opinions about splitting the commit.",
+      "range": {
+        "startLine": 39,
+        "startChar": 4,
+        "endLine": 39,
+        "endChar": 16
+      },
+      "revId": "cb83c19ac35d2bb7410a3914413948107e59bfea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "984e7e87_affec05f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1379,
+      "author": {
+        "id": 1498402
+      },
+      "writtenOn": "2022-09-30T05:15:00Z",
+      "side": 1,
+      "message": "My guess is that the filmgrain file will cause problems since the film grain synthesis feature in AV1 introduces noise to the decoded image and will most likely not match the MD5 checksum verification. I\u0027d suggest removing it from this list.",
+      "range": {
+        "startLine": 1379,
+        "startChar": 98,
+        "endLine": 1379,
+        "endChar": 107
+      },
+      "revId": "cb83c19ac35d2bb7410a3914413948107e59bfea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
