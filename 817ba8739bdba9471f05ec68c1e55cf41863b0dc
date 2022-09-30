@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5a842ea_e9138eda",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-09-30T18:25:05Z",
+      "side": 1,
+      "message": "Also the tast test passes I assume. Can you add that here?",
+      "range": {
+        "startLine": 17,
+        "startChar": 5,
+        "endLine": 17,
+        "endChar": 46
+      },
+      "revId": "817ba8739bdba9471f05ec68c1e55cf41863b0dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
