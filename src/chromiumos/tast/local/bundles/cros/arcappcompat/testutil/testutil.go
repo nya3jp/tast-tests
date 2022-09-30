@@ -1657,6 +1657,7 @@ var ClamshellOnlyModels = []string{
 	"elemi",
 	"berknip",
 	"dratini",
+	"atlas",
 
 	// grunt:
 	"careena",
