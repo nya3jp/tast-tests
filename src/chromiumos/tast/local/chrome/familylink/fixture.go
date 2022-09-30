@@ -305,6 +305,10 @@ func (f *familyLinkFixture) SetUp(ctx context.Context, s *testing.FixtState) int
 		}
 
 		f.opts = append(f.opts, chrome.DMSPolicy(fdms.URL))
+		// Family Link users look like consumer users with
+		// @gmail.com emails but require policy. Since policy
+		// key verification doesn't work for gmail users,
+		// disable it.
 		f.opts = append(f.opts, chrome.DisablePolicyKeyVerification())
 	}
 
