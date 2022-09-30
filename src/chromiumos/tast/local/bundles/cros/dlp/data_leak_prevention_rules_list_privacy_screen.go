@@ -6,6 +6,9 @@ package dlp
 
 import (
 	"context"
+	"fmt"
+	"net/http"
+	"net/http/httptest"
 	"strings"
 	"time"
 
@@ -59,6 +62,11 @@ func DataLeakPreventionRulesListPrivacyScreen(ctx context.Context, s *testing.St
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
 
+	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		fmt.Fprintln(w, "Hello DLP client you navigated to ", r.URL.Path)
+	}))
+	defer server.Close()
+
 	// DLP policy with privacy screen blocked restriction.
 	policyDLP := []policy.Policy{&policy.DataLeakPreventionRulesList{
 		Val: []*policy.DataLeakPreventionRulesListValue{
@@ -67,7 +75,7 @@ func DataLeakPreventionRulesListPrivacyScreen(ctx context.Context, s *testing.St
 				Description: "Privacy screen should be enabled when on restricted site",
 				Sources: &policy.DataLeakPreventionRulesListValueSources{
 					Urls: []string{
-						"example.com",
+						server.URL + "/blocked",
 					},
 				},
 				Restrictions: []*policy.DataLeakPreventionRulesListValueRestrictions{
@@ -102,14 +110,14 @@ func DataLeakPreventionRulesListPrivacyScreen(ctx context.Context, s *testing.St
 		url         string
 	}{
 		{
-			name:        "example",
+			name:        "blocked",
 			wantAllowed: false,
-			url:         "www.example.com",
+			url:         server.URL + "/blocked",
 		},
 		{
-			name:        "chromium",
+			name:        "allowed",
 			wantAllowed: true,
-			url:         "www.chromium.org",
+			url:         server.URL + "/allowed",
 		},
 	} {
 		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
@@ -121,7 +129,7 @@ func DataLeakPreventionRulesListPrivacyScreen(ctx context.Context, s *testing.St
 
 			ui := uiauto.New(tconn)
 
-			conn, err := br.NewConn(ctx, "https://"+param.url)
+			conn, err := br.NewConn(ctx, param.url)
 			if err != nil {
 				s.Fatal("Failed to open page: ", err)
 			}
