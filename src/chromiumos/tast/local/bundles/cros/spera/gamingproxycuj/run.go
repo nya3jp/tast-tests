@@ -187,7 +187,7 @@ func Run(ctx context.Context, cr *chrome.Chrome, outDir string, tabletMode bool,
 		Direction: perf.SmallerIsBetter,
 	}, droppedFrames)
 	pv.Set(perf.Metric{
-		Name:      "TPS.AppSpot.DroppedFramesPer",
+		Name:      "TPS.CrosVideo.DroppedFramesPct",
 		Unit:      "percent",
 		Direction: perf.SmallerIsBetter,
 	}, droppedFramesPer)
