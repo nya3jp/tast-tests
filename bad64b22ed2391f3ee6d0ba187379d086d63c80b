@@ -34,6 +34,24 @@
       "parentUuid": "1fdb0b0d_b65cab5f",
       "revId": "bad64b22ed2391f3ee6d0ba187379d086d63c80b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "274ad6ee_67d97bcb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-09-30T18:27:47Z",
+      "side": 1,
+      "message": "\u003e so the error should not happen.\n\nWe will not know until we tests. \n\nPlease, at least test it on a models that have problem before.\n\n\u003e the manual steps involved is too many and ROI is low.\n\nI do not understand this statement. If it is about servo, you can use crosfleet to test it.",
+      "parentUuid": "60163d1d_04e9301e",
+      "revId": "bad64b22ed2391f3ee6d0ba187379d086d63c80b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
