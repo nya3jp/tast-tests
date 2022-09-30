@@ -166,6 +166,8 @@ type Recorder struct {
 	// screenRecorderCleanup cleans up the screen recorder, if present.
 	screenRecorderCleanup func(ctx context.Context)
 
+	screenshotRecorder uiauto.ScreenshotRecorder
+
 	tpsTimeline        *perf.Timeline
 	powerTimeline      *perf.Timeline
 	gpuDataSource      *perfSrc.GPUDataSource
@@ -283,6 +285,19 @@ func (r *Recorder) AddScreenRecorder(ctx context.Context, tconn *chrome.TestConn
 	}
 	r.screenRecorderCleanup = func(ctx context.Context) {
 		uiauto.ScreenRecorderStopSaveRelease(ctx, screenRecorder, filepath.Join(dir, fmt.Sprintf("%s-record.webm", testName)))
+	}
+	return nil
+}
+
+// AddScreenshotRecorder creates a screenshot recorder that takes
+// screenshots at every |interval| while executing recorder.Run.
+// |maxImages| is the maximum number of images the screenshot recorder
+// is allowed to take.
+func (r *Recorder) AddScreenshotRecorder(ctx context.Context, interval time.Duration, maxImages int) error {
+	var err error
+	r.screenshotRecorder, err = uiauto.NewScreenshotRecorder(ctx, interval, maxImages)
+	if err != nil {
+		return errors.Wrap(err, "failed to setup new screenshot recorder")
 	}
 	return nil
 }
@@ -523,6 +538,12 @@ func (r *Recorder) startRecording(ctx context.Context) (runCtx context.Context, 
 		}
 	}
 
+	if r.screenshotRecorder != nil {
+		if err := r.screenshotRecorder.Start(ctx); err != nil {
+			return nil, errors.Wrap(err, "failed to start screenshot recorder")
+		}
+	}
+
 	if r.traceDir != "" && r.perfettoCfgPath != "" {
 		sess, err := tracing.StartSession(ctx, r.perfettoCfgPath)
 		testing.ContextLog(ctx, "Starting system tracing session")
@@ -627,6 +648,12 @@ func (r *Recorder) stopRecording(ctx, runCtx context.Context) (e error) {
 
 	if r.screenRecorderCleanup != nil {
 		r.screenRecorderCleanup(ctx)
+	}
+
+	if r.screenshotRecorder != nil {
+		if err := r.screenshotRecorder.Stop(ctx); err != nil {
+			testing.ContextLog(ctx, "Failed to stop screenshot recorder: ", err)
+		}
 	}
 
 	// Collects metrics per browser type.
