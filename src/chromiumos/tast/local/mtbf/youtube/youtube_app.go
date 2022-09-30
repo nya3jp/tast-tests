@@ -14,6 +14,7 @@ import (
 	androidui "chromiumos/tast/common/android/ui"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
+	"chromiumos/tast/local/arc/playstore"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/cuj"
@@ -39,25 +40,71 @@ var appStartTime time.Duration
 
 // YtApp defines the members related to youtube app.
 type YtApp struct {
-	tconn   *chrome.TestConn
-	kb      *input.KeyboardEventWriter
-	a       *arc.ARC
-	d       *androidui.Device
-	act     *arc.Activity
-	outDir  string
-	premium bool // Indicate if the account is premium.
+	tconn          *chrome.TestConn
+	kb             *input.KeyboardEventWriter
+	a              *arc.ARC
+	d              *androidui.Device
+	act            *arc.Activity
+	outDir         string
+	youtubeApkPath string
+	premium        bool // Indicate if the account is premium.
 }
 
 // NewYtApp creates an instance of YtApp.
-func NewYtApp(tconn *chrome.TestConn, kb *input.KeyboardEventWriter, a *arc.ARC, d *androidui.Device, outDir string) *YtApp {
+func NewYtApp(tconn *chrome.TestConn, kb *input.KeyboardEventWriter, a *arc.ARC, d *androidui.Device, outDir, youtubeApkPath string) *YtApp {
 	return &YtApp{
-		tconn:   tconn,
-		kb:      kb,
-		a:       a,
-		d:       d,
-		outDir:  outDir,
-		premium: true,
+		tconn:          tconn,
+		kb:             kb,
+		a:              a,
+		d:              d,
+		outDir:         outDir,
+		youtubeApkPath: youtubeApkPath,
+		premium:        true,
 	}
+}
+
+// Install installs the Youtube app using the apk.
+func (y *YtApp) Install(ctx context.Context) error {
+	// If youtubeApkPath is an empty string, it means install the latest youtube app from the play store.
+	if y.youtubeApkPath == "" {
+		if err := playstore.InstallOrUpdateAppAndClose(ctx, y.tconn, y.a, y.d, youtubePkg, &playstore.Options{TryLimit: -1}); err != nil {
+			return errors.Wrap(err, "failed to install Youtube app from playstore")
+		}
+		appVersion, err := dumpAppInfo(ctx, y.a, y.d, youtubePkg)
+		if err != nil {
+			return errors.Wrapf(err, "failed to get %s version: %v", youtubePkg, appVersion)
+		}
+		return nil
+	}
+	isKnownGoodVersion := false
+	installed, err := y.a.PackageInstalled(ctx, youtubePkg)
+	if err != nil {
+		return err
+	}
+	var appVersion string
+	if installed {
+		appVersion, err = dumpAppInfo(ctx, y.a, y.d, youtubePkg)
+		if err != nil {
+			return errors.Wrapf(err, "failed to get %s version", youtubePkg)
+		}
+		for _, version := range knownGoodVersions {
+			if appVersion == version {
+				isKnownGoodVersion = true
+				break
+			}
+		}
+		if !isKnownGoodVersion {
+			testing.ContextLog(ctx, "Uninstall the Youtube app")
+			if err := y.a.Uninstall(ctx, youtubePkg); err != nil {
+				return errors.Wrapf(err, "failed to uninstall %s version", youtubePkg)
+			}
+			installed = false
+		}
+	}
+	if !installed {
+		return y.a.Install(ctx, y.youtubeApkPath)
+	}
+	return nil
 }
 
 // OpenAndPlayVideo opens a video on youtube app.
@@ -68,10 +115,11 @@ func (y *YtApp) OpenAndPlayVideo(video VideoSrc) uiauto.Action {
 		const (
 			youtubeApp              = "Youtube App"
 			youtubeAct              = "com.google.android.apps.youtube.app.WatchWhileActivity"
+			noThanksText            = "NO THANKS"
+			androidUpdateID         = "com.android.vending:id/0_resource_name_obfuscated"
 			closeDescription        = "Close"
 			youtubeLogoDescription  = "YouTube Premium"
 			accountImageDescription = "Account"
-			noThanksText            = "NO THANKS"
 			skipTrialText           = "SKIP TRIAL"
 			accountImageID          = youtubePkg + ":id/image"
 			searchButtonID          = youtubePkg + ":id/menu_item_1"
@@ -82,6 +130,12 @@ func (y *YtApp) OpenAndPlayVideo(video VideoSrc) uiauto.Action {
 
 		if appStartTime, y.act, err = cuj.OpenAppAndGetStartTime(ctx, y.tconn, y.a, youtubePkg, youtubeApp, youtubeAct); err != nil {
 			return errors.Wrap(err, "failed to get app start time")
+		}
+
+		// Skip the "Update Youtube?" popup since the last known good version might not be the latest version.
+		noThanksButton := y.d.Object(androidui.ID(androidUpdateID), androidui.Text(noThanksText))
+		if err := cuj.ClickIfExist(noThanksButton, 5*time.Second)(ctx); err != nil {
+			return errors.Wrap(err, "failed to click 'NO THANKS' to clear notification prompt")
 		}
 
 		skipTrial := y.d.Object(androidui.ID(dismissID), androidui.Text(skipTrialText))
@@ -183,6 +237,7 @@ func (y *YtApp) switchQuality(ctx context.Context, resolution string) error {
 	const (
 		qualityText       = "Quality"
 		advancedText      = "Advanced"
+		qualityClassName  = "android.view.ViewGroup"
 		moreOptions       = youtubePkg + ":id/player_overflow_button"
 		touchOutsideID    = youtubePkg + ":id/touch_outside"
 		barRootID         = youtubePkg + ":id/action_bar_root"
@@ -229,10 +284,15 @@ func (y *YtApp) switchQuality(ctx context.Context, resolution string) error {
 			return errors.Wrap(err, "failed to capture screenshot before clicking 'Quality' option")
 		}
 
-		testing.ContextLogf(ctx, "Select %q option", qualityText)
-		qualityButton := y.d.Object(androidui.ClassName("android.view.ViewGroup"), androidui.Clickable(true), androidui.Index(qualityButtonIndex))
+		// There might be two different arc dump hierarchies that affect how nodes are captured.
+		testing.ContextLogf(ctx, "Select %q option with resource id: %v", qualityText, qualityListItemID)
+		qualityButton := y.d.Object(androidui.ID(qualityListItemID), androidui.Text(qualityText))
 		if err := cuj.FindAndClick(qualityButton, uiWaitTime)(ctx); err != nil {
-			return err
+			testing.ContextLogf(ctx, "Select %q option with class name: %v", qualityText, qualityClassName)
+			qualityButton = y.d.Object(androidui.ClassName(qualityClassName), androidui.Clickable(true), androidui.Index(qualityButtonIndex))
+			if err := cuj.FindAndClick(qualityButton, uiWaitTime)(ctx); err != nil {
+				return err
+			}
 		}
 
 		// Capture screenshots after clicking the "Quality" option.
@@ -241,7 +301,7 @@ func (y *YtApp) switchQuality(ctx context.Context, resolution string) error {
 		}
 
 		advancedButton := y.d.Object(androidui.Text(advancedText))
-		if err := cuj.FindAndClick(advancedButton, uiWaitTime)(ctx); err != nil {
+		if err := cuj.ClickIfExist(advancedButton, uiWaitTime)(ctx); err != nil {
 			return errors.Wrap(err, "failed to find/click the advanced option")
 		}
 

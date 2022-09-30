@@ -23,6 +23,8 @@ import (
 	"chromiumos/tast/testing/hwdep"
 )
 
+const youtubeApkName = "youtube_1531188672.apk"
+
 type videoCUJParam struct {
 	tier        cuj.Tier
 	app         string
@@ -38,6 +40,7 @@ func init() {
 		SoftwareDeps: []string{"chrome", "arc"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		Vars: []string{
+			"spera.install_apk",  // Optional. Whether to install the youtube app via apk, the default is "false".
 			"spera.cuj_mode",     // Optional. Expecting "tablet" or "clamshell". Other values will be be taken as "clamshell".
 			"spera.collectTrace", // Optional. Expecting "enable" or "disable", default is "disable".
 			"spera.checkPIP",
@@ -101,9 +104,10 @@ func init() {
 					app:  youtube.YoutubeWeb,
 				},
 			}, {
-				Name:    "basic_youtube_app",
-				Fixture: "loggedInAndKeepState",
-				Timeout: 10 * time.Minute,
+				Name:      "basic_youtube_app",
+				Fixture:   "loggedInAndKeepState",
+				Timeout:   10 * time.Minute,
+				ExtraData: []string{youtubeApkName},
 				Val: videoCUJParam{
 					tier: cuj.Basic,
 					app:  youtube.YoutubeApp,
@@ -112,6 +116,7 @@ func init() {
 				Name:              "basic_lacros_youtube_app",
 				Fixture:           "loggedInAndKeepStateLacros",
 				Timeout:           10 * time.Minute,
+				ExtraData:         []string{youtubeApkName},
 				ExtraSoftwareDeps: []string{"lacros"},
 				Val: videoCUJParam{
 					tier:        cuj.Basic,
@@ -129,9 +134,10 @@ func init() {
 					app:  youtube.YoutubeApp,
 				},
 			}, {
-				Name:    "premium_youtube_app",
-				Fixture: "loggedInAndKeepState",
-				Timeout: 10 * time.Minute,
+				Name:      "premium_youtube_app",
+				Fixture:   "loggedInAndKeepState",
+				Timeout:   10 * time.Minute,
+				ExtraData: []string{youtubeApkName},
 				Val: videoCUJParam{
 					tier: cuj.Premium,
 					app:  youtube.YoutubeApp,
@@ -140,6 +146,7 @@ func init() {
 				Name:              "premium_lacros_youtube_app",
 				Fixture:           "loggedInAndKeepStateLacros",
 				Timeout:           10 * time.Minute,
+				ExtraData:         []string{youtubeApkName},
 				ExtraSoftwareDeps: []string{"lacros"},
 				Val: videoCUJParam{
 					tier:        cuj.Premium,
@@ -182,11 +189,22 @@ func VideoCUJ2(ctx context.Context, s *testing.State) {
 	}
 	defer kb.Close()
 
+	youtubeApkPath := ""
+	if v, ok := s.Var("spera.install_apk"); ok {
+		installApk, err := strconv.ParseBool(v)
+		if err != nil {
+			s.Fatalf("Failed to parse spera.installApk value %v: %v", v, err)
+		}
+		if installApk {
+			youtubeApkPath = s.DataPath(youtubeApkName)
+		}
+	}
+
 	var checkPIP bool
 	if v, ok := s.Var("spera.checkPIP"); ok {
 		checkPIP, err = strconv.ParseBool(v)
 		if err != nil {
-			s.Fatalf("Failed to parse ui.checkPIP value %v: %v", v, err)
+			s.Fatalf("Failed to parse spera.checkPIP value %v: %v", v, err)
 		}
 	}
 	var tabletMode bool
@@ -243,6 +261,7 @@ func VideoCUJ2(ctx context.Context, s *testing.State) {
 		ExtendedDisplay: false,
 		CheckPIP:        checkPIP,
 		TraceConfigPath: traceConfigPath,
+		YoutubeApkPath:  youtubeApkPath,
 	}
 
 	if err := youtube.Run(ctx, testResources, testParams); err != nil {
