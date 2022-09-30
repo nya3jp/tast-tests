@@ -16,6 +16,24 @@
       "message": "I am not sure if we actually need this test. The FeatureAPIAvailableRoutines checks whether this routine is available and the Platform test checks whether routines can be called in general. IMO it doesn\u0027t give benefits over FeatureAPIAvailableRoutines,",
       "revId": "10e05e7133d1d61a51ad516ceffe41b3a4f17cdf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d685a9c_c5f84aa7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/feature_api_battery_capacity_routine.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-09-30T10:56:23Z",
+      "side": 1,
+      "message": "Yeah, makes sense to remove it. I\u0027ll create a follow-up CL for that.",
+      "parentUuid": "ca2f13d5_43f65418",
+      "revId": "10e05e7133d1d61a51ad516ceffe41b3a4f17cdf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
