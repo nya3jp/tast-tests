@@ -115,6 +115,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c4a37d99_28a5b52a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2022-09-30T22:43:34Z",
+      "side": 1,
+      "message": "Side note: these test vectors came from various different places https://chromium.googlesource.com/chromiumos/platform/tast-tests/+/HEAD/src/chromiumos/tast/local/bundles/cros/video/data/test_vectors/README.md, which is why we don\u0027t have a clean name for them like `av1AomFiles`. I think the majority of them come from dav1d though (?)",
+      "parentUuid": "09d6e48f_a1347825",
+      "range": {
+        "startLine": 39,
+        "startChar": 4,
+        "endLine": 39,
+        "endChar": 16
+      },
+      "revId": "cb83c19ac35d2bb7410a3914413948107e59bfea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "984e7e87_affec05f",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding_test.go",
         "patchSetId": 4
