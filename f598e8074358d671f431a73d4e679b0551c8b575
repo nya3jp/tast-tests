@@ -16,6 +16,23 @@
       "message": "Patchset 6 is for merge conflict resolve.",
       "revId": "f598e8074358d671f431a73d4e679b0551c8b575",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4a4e02d_94d80803",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 2535,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2022-09-30T23:06:37Z",
+      "side": 1,
+      "message": "hevc change came in probably after resolving merge conflict. \n\nusually, this change will show purple color as it is not part of this CL. \n\nBut I do see it with green color some reason: either gerritt is confused with something, or resolving conflict might not have done correctly. \n\nStill, I do see that correct change when comparing base vs. patchset 7.",
+      "revId": "f598e8074358d671f431a73d4e679b0551c8b575",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
