@@ -22,6 +22,30 @@
       },
       "revId": "2773af5a5479e1b778b22c53bd639023b74cd4e7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b22d0368_195461f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/emojipicker/emoji_picker.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1552438
+      },
+      "writtenOn": "2022-09-30T03:21:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7827a12e_2ab26ddd",
+      "range": {
+        "startLine": 22,
+        "startChar": 74,
+        "endLine": 22,
+        "endChar": 80
+      },
+      "revId": "2773af5a5479e1b778b22c53bd639023b74cd4e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
