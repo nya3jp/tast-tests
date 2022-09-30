@@ -133,6 +133,12 @@ func runSetup(ctx context.Context, s *testing.State) (*tabSwitchVariables, error
 		}
 	}
 
+	// Meet call runs for 10 minutes, but give some extra leeway for
+	// max number of images due to setup and cleanup of the call.
+	if err := vars.recorder.AddScreenshotRecorder(ctx, 2*time.Minute, 6); err != nil {
+		s.Fatal("Failed to add screenshot recorder: ", err)
+	}
+
 	metricsSuccessfullyAdded = true
 	return &vars, nil
 }
