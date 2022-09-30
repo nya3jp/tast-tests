@@ -61,6 +61,11 @@ func NewYtWeb(br *browser.Browser, tconn *chrome.TestConn, kb *input.KeyboardEve
 	}
 }
 
+// Install installs the Youtube app with apk.
+func (y *YtWeb) Install(ctx context.Context) error {
+	return nil
+}
+
 // OpenAndPlayVideo opens a youtube video on chrome.
 func (y *YtWeb) OpenAndPlayVideo(video VideoSrc) uiauto.Action {
 	return func(ctx context.Context) (err error) {

@@ -15,7 +15,6 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
-	"chromiumos/tast/local/arc/playstore"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
@@ -58,10 +57,13 @@ type TestParams struct {
 	ExtendedDisplay bool
 	CheckPIP        bool
 	TraceConfigPath string
+	YoutubeApkPath  string
 }
 
 // VideoApp declares video operation.
 type VideoApp interface {
+	// Install installs the Youtube app with apk.
+	Install(ctx context.Context) error
 	// OpenAndPlayVideo opens a video.
 	OpenAndPlayVideo(video VideoSrc) uiauto.Action
 	// EnterFullscreen switches video to fullscreen.
@@ -109,6 +111,9 @@ var premiumVideoSrc = []VideoSrc{
 	},
 }
 
+// knownGoodVersions represents relatively stable versions of the YouTube app.
+var knownGoodVersions = []string{"16.35.38", "17.33.42"}
+
 // Run runs the VideoCUJ test.
 func Run(ctx context.Context, resources TestResources, param TestParams) error {
 	var (
@@ -124,6 +129,7 @@ func Run(ctx context.Context, resources TestResources, param TestParams) error {
 		tier            = param.Tier
 		extendedDisplay = param.ExtendedDisplay
 		traceConfigPath = param.TraceConfigPath
+		youtubeApkPath  = param.YoutubeApkPath
 	)
 
 	testing.ContextLogf(ctx, "Run app appName: %s tabletMode: %t, extendedDisplay: %t", appName, tabletMode, extendedDisplay)
@@ -190,17 +196,6 @@ func Run(ctx context.Context, resources TestResources, param TestParams) error {
 		}
 	}(cleanupDeviceCtx)
 
-	if appName == YoutubeApp {
-		if err := playstore.InstallOrUpdateAppAndClose(ctx, tconn, a, d, youtubePkg, &playstore.Options{TryLimit: -1}); err != nil {
-			return errors.Wrapf(err, "failed to install %s", youtubePkg)
-		}
-		appVersion, err := dumpAppInfo(ctx, a, d, youtubePkg)
-		if err != nil {
-			return errors.Wrapf(err, "failed to get %s version", youtubePkg)
-		}
-		testing.ContextLog(ctx, "Youtube app version: ", appVersion)
-	}
-
 	// Give 5 seconds to cleanup recorder.
 	cleanupRecorderCtx := ctx
 	ctx, cancel = ctxutil.Shorten(ctx, 5*time.Second)
@@ -224,7 +219,10 @@ func Run(ctx context.Context, resources TestResources, param TestParams) error {
 	case YoutubeWeb:
 		videoApp = NewYtWeb(br, tconn, kb, extendedDisplay, ui, uiHandler)
 	case YoutubeApp:
-		videoApp = NewYtApp(tconn, kb, a, d, outDir)
+		videoApp = NewYtApp(tconn, kb, a, d, outDir, youtubeApkPath)
+		if err := videoApp.Install(ctx); err != nil {
+			return errors.Wrap(err, "failed to install Youtube app")
+		}
 	}
 
 	run := func(ctx context.Context, videoSource VideoSrc) (retErr error) {
