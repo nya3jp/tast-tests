@@ -8,6 +8,7 @@ package imesettings
 import (
 	"context"
 	"fmt"
+	"regexp"
 	"time"
 
 	"chromiumos/tast/errors"
@@ -40,6 +41,7 @@ const (
 	KoreanKeyboardLayout    settingOption = "Korean keyboard layout"
 	VKAutoCorrection        settingOption = "Auto-correction"
 	SpellingGrammarCheck    settingOption = "Spelling and grammar check"
+	SpellCheck              settingOption = "Spell check"
 )
 
 // IMESettings is a wrapper around the settings app used to control the inputs settings page.
@@ -128,9 +130,19 @@ func (i *IMESettings) ToggleAutoCap(cr *chrome.Chrome, expected bool) uiauto.Act
 	return i.SetToggleOption(cr, string(AutoCapitalization), expected)
 }
 
-// SetSpellingAndGrammarCheck clicks the 'spelling and grammar check' toggle button to enable/disable the setting.
+// SetSpellingAndGrammarCheck clicks the spell check toggle button to enable/disable the setting.
 func (i *IMESettings) SetSpellingAndGrammarCheck(cr *chrome.Chrome, expected bool) uiauto.Action {
-	return i.SetToggleOption(cr, string(SpellingGrammarCheck), expected)
+	return func(ctx context.Context) error {
+		// The name of this option could be "Spelling and grammar check" or "Spell check", retrieves its name first is essential.
+		nameRegex := regexp.MustCompile(fmt.Sprintf("(%s)|(%s)", SpellCheck, SpellingGrammarCheck))
+		spellChecToggleButton := nodewith.NameRegex(nameRegex).Role(role.ToggleButton)
+		info, err := i.Info(ctx, spellChecToggleButton)
+		if err != nil {
+			return errors.Wrap(err, "failed to check node info")
+		}
+
+		return i.SetToggleOption(cr, info.Name, expected)(ctx)
+	}
 }
 
 // AddCustomizedSpellCheck adds customized word to spelling check dictionary.
