@@ -109,6 +109,21 @@ func TestLacrosTestParams(t *testing.T) {
 	}
 }
 
+var manateeTests = []string{
+	"basic.go",
+}
+
+func TestManateeTestParams(t *testing.T) {
+	for _, filename := range manateeTests {
+		params := crostini.MakeTestParamsFromList(t, []crostini.Param{{
+			UseFixture:        true,
+			TestManatee:       true,
+			ExtraSoftwareDeps: []string{"vm_host"},
+		}})
+		genparams.Ensure(t, filename, params)
+	}
+}
+
 var perfTests = map[string]time.Duration{
 	"cpu_perf.go":      12 * time.Minute,
 	"disk_io_perf.go":  60 * time.Minute,
