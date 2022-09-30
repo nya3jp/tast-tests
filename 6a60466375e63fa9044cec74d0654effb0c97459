@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8d72e56_8575b1e7",
+        "filename": "src/chromiumos/tast/local/cpu/idle.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2022-09-30T00:54:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e670ee60_2667ee4e",
+      "range": {
+        "startLine": 20,
+        "startChar": 20,
+        "endLine": 20,
+        "endChar": 42
+      },
+      "revId": "6a60466375e63fa9044cec74d0654effb0c97459",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0fb8ccff_f9f89467",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eeaedddc_75b6109a",
+        "filename": "src/chromiumos/tast/local/cpu/idle.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2022-09-30T00:54:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0fb8ccff_f9f89467",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 30
+      },
+      "revId": "6a60466375e63fa9044cec74d0654effb0c97459",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c89ff7df_ef18aa06",
@@ -77,6 +125,30 @@
       "writtenOn": "2022-09-29T23:05:58Z",
       "side": 1,
       "message": "This is not well defined if config.Steps \u003c 2. We could change the API to something like config.intermediateSteps, but I think it\u0027s probably just fine to return an error and document that Steps must be \u003e\u003d 2 in the IdleConfig comment.",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 103
+      },
+      "revId": "6a60466375e63fa9044cec74d0654effb0c97459",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b68cd977_4e2fb6d7",
+        "filename": "src/chromiumos/tast/local/cpu/idle.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2022-09-30T00:54:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c89ff7df_ef18aa06",
       "range": {
         "startLine": 54,
         "startChar": 0,
