@@ -399,7 +399,7 @@ func verifyUIForFileAttached(
 			// 1. Wait until scanning started.
 			ui.WithTimeout(2*time.Second).WithInterval(10*time.Millisecond).WaitUntilExists(scanningLabelFinder),
 			// 2. Wait until scanning finished.
-			ui.WithTimeout(helpers.ScanningTimeOut).WaitUntilGone(scanningLabelFinder),
+			ui.WithTimeout(helpers.ScanningTimeOut).WithInterval(10*time.Millisecond).WaitUntilGone(scanningLabelFinder),
 		)(ctx); err != nil {
 			s.Error("Did not show scanning dialog: ", err)
 		}
@@ -422,7 +422,7 @@ func verifyUIForFileAttached(
 		} else {
 			// Check that an allowed verdict is shown.
 			allowedLabelTextFinder := nodewith.Role(role.StaticText).HasClass("Label").Ancestor(scanningDialogFinder).NameContaining("file will be uploaded")
-			if err := ui.WithTimeout(5 * time.Second).WithInterval(25 * time.Millisecond).WaitUntilExists(allowedLabelTextFinder)(ctx); err != nil {
+			if err := ui.WithTimeout(5 * time.Second).WithInterval(10 * time.Millisecond).WaitUntilExists(allowedLabelTextFinder)(ctx); err != nil {
 				s.Error("Did not show scan success message: ", err)
 			}
 			// For allowed, the dialog should be closed automatically.
