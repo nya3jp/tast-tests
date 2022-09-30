@@ -21,17 +21,26 @@ func init() {
 		Func:         KeyboardPerf,
 		LacrosStatus: testing.LacrosVariantNeeded,
 		Desc:         "Test ARC keyboard system performance",
-		Contacts:     []string{"arc-performance@google.com", "wvk@google.com"},
+		Contacts:     []string{"arc-performance@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},
 		Data:         inputlatency.AndroidData(),
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
+			Fixture:           "arcBooted",
+		}, {
+			Name:              "lacros",
+			ExtraSoftwareDeps: []string{"android_p", "lacros"},
+			Fixture:           "lacrosWithArcBooted",
 		}, {
 			Name:              "vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
+			Fixture:           "arcBooted",
+		}, {
+			Name:              "vm_lacros",
+			ExtraSoftwareDeps: []string{"android_vm", "lacros"},
+			Fixture:           "lacrosWithArcBooted",
 		}},
-		Fixture: "arcBooted",
 		Timeout: 2 * time.Minute,
 	})
 }
