@@ -16,6 +16,29 @@
       "message": "Set as WIP due to b:249164846",
       "revId": "496e7798a08b731c05ce895626e9554eab0f7059",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7881fd05_057610ac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/proxy_setting_service.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-09-30T15:52:49Z",
+      "side": 1,
+      "message": "As suggested in b/249164846, let\u0027s disable the Quick Settings revamp feature flag here until a fix is landed for the issue related to the Settings button. Could we also include a TODO comment to come back and re-enable the flag?\n\n    // TODO(b/249164846): Stop disabling the Quick Settings revamp feature flag\n    // when the Settings button can be clicked when signed-out.",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 2
+      },
+      "revId": "496e7798a08b731c05ce895626e9554eab0f7059",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
