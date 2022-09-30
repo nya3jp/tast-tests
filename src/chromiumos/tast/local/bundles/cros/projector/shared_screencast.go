@@ -7,13 +7,11 @@ package projector
 
 import (
 	"context"
-	"fmt"
 	"time"
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/browser"
-	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/local/chrome/familylink"
 	"chromiumos/tast/local/chrome/projector"
 	"chromiumos/tast/local/chrome/uiauto"
@@ -51,7 +49,7 @@ func init() {
 }
 
 func SharedScreencast(ctx context.Context, s *testing.State) {
-	// Leave 10 seconds to close the browser and Projector connection.
+	// Leave 10 seconds for dumping the UI tree.
 	ctxForCleanUp := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
@@ -63,28 +61,8 @@ func SharedScreencast(ctx context.Context, s *testing.State) {
 
 	defer faillog.DumpUITreeOnError(ctxForCleanUp, s.OutDir(), s.HasError, tconn)
 
-	// Set up browser.
-	br, closeBrowser, err := browserfixt.SetUp(ctx, cr, s.Param().(browser.Type))
-	if err != nil {
-		s.Fatal("Failed to set up browser: ", err)
-	}
-	defer closeBrowser(ctxForCleanUp)
-
-	// Open a new window.
-	conn, err := br.NewConn(ctx, "" /*url=*/)
-	if err != nil {
-		s.Fatal("Failed to navigate to Projector landing page: ", err)
-	}
-	defer conn.Close()
-
-	// Open the screencast.
-	if err := conn.Eval(ctx, fmt.Sprintf("window.location.href = '%s';", sharedScreencast), nil); err != nil {
-		s.Fatal("Failed to open the screenshot: ", err)
-	}
-
-	// TODO(b/244787719): Ensure this doesn't cause flakiness to this test.
-	if err := projector.DismissOnboardingDialog(ctx, tconn); err != nil {
-		s.Fatal("Failed to close the onboarding dialog: ", err)
+	if err := projector.OpenSharedScreencast(ctx, tconn, cr, s.Param().(browser.Type), sharedScreencast); err != nil {
+		s.Fatal("Failed to open shared screencast: ", err)
 	}
 
 	// Set timeout to one minute to allow the shared screencast to load over the network.
