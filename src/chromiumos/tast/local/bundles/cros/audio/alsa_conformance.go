@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/audio"
+	"chromiumos/tast/local/crosconfig"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -43,6 +44,9 @@ import (
 // TODO(b/249207920) : remove "astronaut", "blacktip", "blacktip360", "epaulette", "lava", "nasher360", "rabbid", "robo", "robo360", "santa", "whitetip" when b/249207920 is fixed.
 var unstableModels = []string{"chronicler", "nautilus", "nautiluslte", "soraka", "karma", "beetley", "redrix", "gimble", "primus", "anahera", "babymega", "babytiger", "blacktiplte", "taniks", "bob", "dumo", "dru", "nasher", "sasukette", "kevin", "vell", "astronaut", "blacktip", "blacktip360", "epaulette", "lava", "nasher360", "rabbid", "robo", "robo360", "santa", "whitetip"}
 
+// TODO(b/136614687): Relex the criteria for grunt devices, the audio still sounds fine as CRAS can compensate the rate, if the rate error is not huge.
+var relexedCriteriaModels = []string{"aleena", "barla", "careena", "kasumi", "kasumi360", "liara", "treeya360", "treeya"}
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ALSAConformance,
@@ -64,12 +68,36 @@ func init() {
 	})
 }
 
+func isInRelexedCriteriaModel(ctx context.Context) (bool, error) {
+	model, err := crosconfig.Get(ctx, "/", "name")
+	if err != nil {
+		return false, err
+	}
+
+	for _, name := range relexedCriteriaModels {
+		if name == model {
+			return true, nil
+		}
+	}
+	return false, nil
+
+}
+
 func ALSAConformance(ctx context.Context, s *testing.State) {
 	// TODO(yuhsuan): Tighten the ratio if the current version is stable. (b/136614687)
-	const (
-		rateCriteria    = 0.1
+	useRelexedCriteria, err := isInRelexedCriteriaModel(ctx)
+	if err != nil {
+		s.Fatal("Failed query model: ", err)
+	}
+
+	var rateCriteria, rateErrCriteria float32
+	if !useRelexedCriteria {
+		rateCriteria = 0.1
 		rateErrCriteria = 100.0
-	)
+	} else {
+		rateCriteria = 0.15
+		rateErrCriteria = 100.0
+	}
 
 	// Stop UI in advance for this test to avoid the node being selected by UI.
 	if err := upstart.StopJob(ctx, "ui"); err != nil {
