@@ -562,15 +562,7 @@ func checkInstancesCoexistence(ctx context.Context, cr *chrome.Chrome, a *arc.AR
 func checkTestAppResult(ctx context.Context, a *arc.ARC, uiDevice *ui.Device, shouldFinished bool) error {
 	textField := uiDevice.Object(ui.ID(testAppTextFieldID))
 	if err := textField.WaitForExists(ctx, 5*time.Second); err != nil {
-		// TODO(b/148995660): These lines are added since the test app sometimes will be minimized after
-		// launching CCA. Remove these lines once the issue is resolved.
-		args := []string{"start", "--activity-brought-to-front", "-n", fmt.Sprintf("%s/%s", testAppPkg, testAppActivity)}
-		if _, err := a.Command(ctx, "am", args...).Output(testexec.DumpLogOnError); err != nil {
-			return err
-		}
-		if err := textField.WaitForExists(ctx, 5*time.Second); err != nil {
-			return err
-		}
+		return errors.Wrap(err, "the test app UI is not shown within the timeout")
 	}
 
 	text, err := textField.GetText(ctx)
