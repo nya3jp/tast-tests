@@ -536,6 +536,21 @@ func (s *ShillService) SelectedService(ctx context.Context, _ *empty.Empty) (*wi
 	}, nil
 }
 
+// GetServicePath returns the object path of the service matching the properties in request.
+func (s *ShillService) GetServicePath(ctx context.Context, request *wifi.ServicePathRequest) (*wifi.ServicePathResponse, error) {
+	m, err := shill.NewManager(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create a manager object")
+	}
+	props, err := protoutil.DecodeFromShillValMap(request.Props)
+	var servicePath string
+	if err := m.Call(ctx, "FindMatchingService", props).Store(&servicePath); err != nil {
+		return nil, err
+	}
+
+	return &wifi.ServicePathResponse{ServicePath: servicePath}, nil
+}
+
 // Disconnect disconnects from a WiFi service.
 // This is the implementation of wifi.ShillService/Disconnect gRPC.
 func (s *ShillService) Disconnect(ctx context.Context, request *wifi.DisconnectRequest) (ret *empty.Empty, retErr error) {
