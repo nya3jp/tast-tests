@@ -130,3 +130,51 @@ func ClipboardBlockPolicy(source, destination string) []policy.Policy {
 	},
 	}
 }
+
+// PrintingBlockPolicy returns policy that blocks printing based on given url
+func PrintingBlockPolicy(url string) []policy.Policy {
+	return []policy.Policy{&policy.DataLeakPreventionRulesList{
+		Val: []*policy.DataLeakPreventionRulesListValue{
+			{
+				Name:        "Disable printing of confidential content",
+				Description: "User should not be able to print confidential content",
+				Sources: &policy.DataLeakPreventionRulesListValueSources{
+					Urls: []string{
+						url,
+					},
+				},
+				Restrictions: []*policy.DataLeakPreventionRulesListValueRestrictions{
+					{
+						Class: "PRINTING",
+						Level: "BLOCK",
+					},
+				},
+			},
+		},
+	},
+	}
+}
+
+// PrintingWarnPolicy returns policy that warns in case of printing based on given url
+func PrintingWarnPolicy(url string) []policy.Policy {
+	return []policy.Policy{&policy.DataLeakPreventionRulesList{
+		Val: []*policy.DataLeakPreventionRulesListValue{
+			{
+				Name:        "Warn before printing confidential content",
+				Description: "User should be warned before printing confidential content",
+				Sources: &policy.DataLeakPreventionRulesListValueSources{
+					Urls: []string{
+						url,
+					},
+				},
+				Restrictions: []*policy.DataLeakPreventionRulesListValueRestrictions{
+					{
+						Class: "PRINTING",
+						Level: "WARN",
+					},
+				},
+			},
+		},
+	},
+	}
+}
