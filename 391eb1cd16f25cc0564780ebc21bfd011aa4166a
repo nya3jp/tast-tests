@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8e53940_37db0709",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-09-30T00:48:03Z",
+      "side": 1,
+      "message": "Hi Aga, this CL is ready for review. It\u0027s the most upstream CL in the chain.",
+      "revId": "391eb1cd16f25cc0564780ebc21bfd011aa4166a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
