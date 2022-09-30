@@ -311,6 +311,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4d2f792_a9cb46e1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1001410
+      },
+      "writtenOn": "2022-09-30T20:15:21Z",
+      "side": 1,
+      "message": "Done\n\nNote: If someone adds a new state and it is not used here it is useless. But sure.",
+      "parentUuid": "f0cb6701_bc1ff73c",
+      "revId": "de09962075f5795aad81446a2b7d09ee8b8c0789",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "18ddd977_e92aef04",
@@ -448,6 +466,24 @@
       "side": 1,
       "message": "I took a closer look but I don\u0027t understand why the sleep here makes a difference. The main test code calls navigateSingleTabToURLInLacros and then it already waits for whatever window/target it expects (depending on the mode), doesn\u0027t it?",
       "parentUuid": "78aab096_6d786acd",
+      "revId": "de09962075f5795aad81446a2b7d09ee8b8c0789",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "39f805fd_60b365fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1001410
+      },
+      "writtenOn": "2022-09-30T20:15:21Z",
+      "side": 1,
+      "message": "There are some cases which can be explicitly checked for - and there was one case we could not check for as we did not know what might go wrong.\n\nAs I do not like this particular sleep here either (even though I have seen it in e.g. memory.go being used as well), I have moved all checks into individual timed poll mechanisms per case. Makes the code longer and more complex - but it should alleviate the concerns.\n\nTo avoid the last failure for the unknown wait, I changed the test somewhat to also check there for the title. I fear that title checking might be a maintenance nightmare over time, but for now this works.",
+      "parentUuid": "b843224d_28158bc1",
       "revId": "de09962075f5795aad81446a2b7d09ee8b8c0789",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },

@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6cc94029_8a65c89d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1001410
+      },
+      "writtenOn": "2022-09-30T20:15:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a3c2852_cdb597a6",
+      "revId": "f81156c25e7d5761a6ff2c5e99fa08fb5df556ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5cb76bc8_ff575479",
@@ -48,6 +66,24 @@
       "writtenOn": "2022-09-28T03:52:56Z",
       "side": 1,
       "message": "Please print err too.",
+      "revId": "f81156c25e7d5761a6ff2c5e99fa08fb5df556ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ad90236_2620c9e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1001410
+      },
+      "writtenOn": "2022-09-30T20:15:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5cb76bc8_ff575479",
       "revId": "f81156c25e7d5761a6ff2c5e99fa08fb5df556ff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -69,6 +105,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "481ad8aa_b0cc836b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1001410
+      },
+      "writtenOn": "2022-09-30T20:15:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b67842c4_5cad1b96",
+      "revId": "f81156c25e7d5761a6ff2c5e99fa08fb5df556ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "35735410_be8f6de4",
@@ -86,6 +140,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ddd7050_eca7088e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1001410
+      },
+      "writtenOn": "2022-09-30T20:15:21Z",
+      "side": 1,
+      "message": "Please see comment of line 359, but basically done (slightly differently).",
+      "parentUuid": "35735410_be8f6de4",
+      "revId": "f81156c25e7d5761a6ff2c5e99fa08fb5df556ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a1bf9381_bf72b60a",
@@ -99,6 +171,24 @@
       "writtenOn": "2022-09-28T03:52:56Z",
       "side": 1,
       "message": "This is not the correct app type:foo as it should have been:bar\n\nLooks confusing, I think. How about: \ns.Fatalf(\"Incorrect app type: got %s, want %s\", title, params.appTitleInAsh)",
+      "revId": "f81156c25e7d5761a6ff2c5e99fa08fb5df556ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "224d7e17_389d395f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1001410
+      },
+      "writtenOn": "2022-09-30T20:15:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a1bf9381_bf72b60a",
       "revId": "f81156c25e7d5761a6ff2c5e99fa08fb5df556ff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -122,6 +212,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "506eafd3_5467c725",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1001410
+      },
+      "writtenOn": "2022-09-30T20:15:21Z",
+      "side": 1,
+      "message": "No. I actually used this to show that something has been found for better analyzing in case of a problem. (So that one knows if something has been found). I think this is useful - but if this violates a Go or implicit rule which everyone is following by avoiding to output stuff then I can remove it. Maintenance of the tests will however get harder then. Your choice.",
+      "parentUuid": "0fab6c2a_c586d9f6",
+      "revId": "f81156c25e7d5761a6ff2c5e99fa08fb5df556ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6a6ccfa6_12334bf9",
         "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
         "patchSetId": 10
@@ -133,6 +241,24 @@
       "writtenOn": "2022-09-28T03:52:56Z",
       "side": 1,
       "message": "Please propagate any error. Or am I missing something and an error is expected sometimes?",
+      "revId": "f81156c25e7d5761a6ff2c5e99fa08fb5df556ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "239d7f2e_e5263f9c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1001410
+      },
+      "writtenOn": "2022-09-30T20:15:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6a6ccfa6_12334bf9",
       "revId": "f81156c25e7d5761a6ff2c5e99fa08fb5df556ff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -154,6 +280,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4f26f72_e330be23",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1001410
+      },
+      "writtenOn": "2022-09-30T20:15:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "43402b88_f32da293",
+      "revId": "f81156c25e7d5761a6ff2c5e99fa08fb5df556ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "75c7dccc_af4ee3fe",
@@ -167,6 +311,24 @@
       "writtenOn": "2022-09-28T03:52:56Z",
       "side": 1,
       "message": "Please move this before the use of targets (it doesn\u0027t matter here I think but that\u0027s the idiomatic way).",
+      "revId": "f81156c25e7d5761a6ff2c5e99fa08fb5df556ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eedab621_47516c3d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1001410
+      },
+      "writtenOn": "2022-09-30T20:15:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "75c7dccc_af4ee3fe",
       "revId": "f81156c25e7d5761a6ff2c5e99fa08fb5df556ff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -188,6 +350,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c13a929_82e919ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1001410
+      },
+      "writtenOn": "2022-09-30T20:15:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "faf11d8c_bfc3d48b",
+      "revId": "f81156c25e7d5761a6ff2c5e99fa08fb5df556ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a3afba7b_e20bbd15",
@@ -201,6 +381,24 @@
       "writtenOn": "2022-09-28T03:52:56Z",
       "side": 1,
       "message": "Please print err too.",
+      "revId": "f81156c25e7d5761a6ff2c5e99fa08fb5df556ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "82fb2a5d_24476fe9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1001410
+      },
+      "writtenOn": "2022-09-30T20:15:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a3afba7b_e20bbd15",
       "revId": "f81156c25e7d5761a6ff2c5e99fa08fb5df556ff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
