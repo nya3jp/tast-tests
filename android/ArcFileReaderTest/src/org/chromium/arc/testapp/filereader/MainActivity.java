@@ -47,10 +47,14 @@ public class MainActivity extends Activity {
     private void processIntent() {
         Log.i(LOG_TAG, "Processing intent");
         Intent intent = getIntent();
-        String action = intent.getAction();
-        Uri uri = intent.getData();
 
+        String action = intent.getAction();
         mAction.setText(action);
+
+        Uri uri = intent.getData();
+        if (uri == null) {
+          return;
+        }
         mUri.setText(uri.toString());
 
         try (InputStream input = getContentResolver().openInputStream(uri);
