@@ -290,6 +290,7 @@ func launchAppForAmazonPrimeVideo(ctx context.Context, s *testing.State, tconn *
 		signInText           = "Sign-In"
 		sendOTPText          = "Send OTP"
 		notNowID             = "android:id/autofill_save_no"
+		neverButtonID        = "com.google.android.gms:id/credential_save_reject"
 		importantMessageText = "Important"
 	)
 
@@ -360,28 +361,24 @@ func launchAppForAmazonPrimeVideo(ctx context.Context, s *testing.State, tconn *
 	}
 	s.Log("Entered password")
 
-	// Check for signIn Button.
-	signInButton := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.Text(signInText))
-	if err := signInButton.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
-		s.Fatal("signInButton does not exist: ", err)
-	}
-	// Click on signIn Button until notNow Button exist.
-	signInButton = d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.Text(signInText))
+	// Click on not now button until sign in page is visible.
+	signInPage := d.Object(ui.PackageName(appPkgName))
 	notNowButton := d.Object(ui.ID(notNowID))
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		if err := notNowButton.Exists(ctx); err != nil {
-			signInButton.Click(ctx)
-			return err
-		}
-		return nil
-	}, &testing.PollOptions{Timeout: testutil.LongUITimeout}); err != nil {
-		s.Log(" notNowButtondoesn't exist: ", err)
-	} else if err := notNowButton.Click(ctx); err != nil {
-		s.Fatal("Failed to click on notNowButton: ", err)
+	testutil.ClickUntilButtonExists(ctx, s, tconn, a, d, notNowButton, signInPage)
+
+	// Press enter button to click on sign in button.
+	d.WaitForIdle(ctx, testutil.ShortUITimeout)
+	if err := d.PressKeyCode(ctx, ui.KEYCODE_ENTER, 0); err != nil {
+		s.Log("Failed to enter KEYCODE_ENTER: ", err)
+	} else {
+		s.Log("Entered KEYCODE_ENTER")
 	}
+	// Click on never button until home page is visible
+	neverButton := d.Object(ui.ID(neverButtonID))
+	letsGoButton := d.Object(ui.ID(letsGoButtonID))
+	testutil.ClickUntilButtonExists(ctx, s, tconn, a, d, neverButton, letsGoButton)
 
 	// Click on lets go button.
-	letsGoButton := d.Object(ui.ID(letsGoButtonID))
 	if err := letsGoButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
 		s.Log("LetsGo Button doesn't exists: ", err)
 	} else if err := letsGoButton.Click(ctx); err != nil {
