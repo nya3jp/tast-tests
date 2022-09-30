@@ -41,6 +41,7 @@ type simpleConnectParams struct {
 	Val                  []simpleConnectParamsVal
 	ExtraHardwareDeps    string
 	ExtraHardwareDepsDoc []string
+	ExtraRequirements    []string
 }
 
 func simpleConnectDocPref(text string) []string {
@@ -75,17 +76,20 @@ func simpleConnect80211abg() []simpleConnectParams {
 		return p
 	}
 	return []simpleConnectParams{{
-		Name: "80211a",
-		Doc:  simpleConnectDocPref("an open 802.11a network on channels 48, 64."),
-		Val:  mkOps("a", 48, 64),
+		Name:              "80211a",
+		Doc:               simpleConnectDocPref("an open 802.11a network on channels 48, 64."),
+		Val:               mkOps("a", 48, 64),
+		ExtraRequirements: []string{"wifi-gen-0004-v01"},
 	}, {
-		Name: "80211b",
-		Doc:  simpleConnectDocPref("an open 802.11b network on channels 1, 6, 11."),
-		Val:  mkOps("b", 1, 6, 11),
+		Name:              "80211b",
+		Doc:               simpleConnectDocPref("an open 802.11b network on channels 1, 6, 11."),
+		Val:               mkOps("b", 1, 6, 11),
+		ExtraRequirements: []string{"wifi-gen-0004-v01"},
 	}, {
-		Name: "80211g",
-		Doc:  simpleConnectDocPref("an open 802.11g network on channels 1, 6, 11."),
-		Val:  mkOps("g", 1, 6, 11),
+		Name:              "80211g",
+		Doc:               simpleConnectDocPref("an open 802.11g network on channels 1, 6, 11."),
+		Val:               mkOps("g", 1, 6, 11),
+		ExtraRequirements: []string{"wifi-gen-0004-v01"},
 	}}
 }
 
@@ -98,22 +102,26 @@ func simpleConnect80211n() []simpleConnectParams {
 		return p
 	}
 	return []simpleConnectParams{{
-		Name: "80211n24ht20",
-		Doc:  simpleConnectDocPref("an open 802.11n network on 2.4GHz channels 1, 6, 11 with a channel width of 20MHz."),
-		Val:  mkOps("HT20", 1, 6, 11),
+		Name:              "80211n24ht20",
+		Doc:               simpleConnectDocPref("an open 802.11n network on 2.4GHz channels 1, 6, 11 with a channel width of 20MHz."),
+		Val:               mkOps("HT20", 1, 6, 11),
+		ExtraRequirements: []string{"wifi-gen-0004-v01"},
 	}, {
-		Name: "80211n24ht40",
-		Doc:  simpleConnectDocPref("an open 802.11n network on 2.4GHz channel 6 with a channel width of 40MHz."),
-		Val:  mkOps("HT40", 6),
+		Name:              "80211n24ht40",
+		Doc:               simpleConnectDocPref("an open 802.11n network on 2.4GHz channel 6 with a channel width of 40MHz."),
+		Val:               mkOps("HT40", 6),
+		ExtraRequirements: []string{"wifi-gen-0004-v01"},
 	}, {
-		Name: "80211n5ht20",
-		Doc:  simpleConnectDocPref("an open 802.11n network on 5GHz channel 48 with a channel width of 20MHz."),
-		Val:  mkOps("HT20", 48),
+		Name:              "80211n5ht20",
+		Doc:               simpleConnectDocPref("an open 802.11n network on 5GHz channel 48 with a channel width of 20MHz."),
+		Val:               mkOps("HT20", 48),
+		ExtraRequirements: []string{"wifi-gen-0004-v01"},
 	}, {
 		Name: "80211n5ht40",
 		Doc: append(simpleConnectDocPref("an open 802.11n network on 5GHz channel 48"),
 			"(40MHz channel with the second 20MHz chunk of the 40MHz channel on the channel below the center channel)."),
-		Val: mkOps("HT40Minus", 48),
+		Val:               mkOps("HT40Minus", 48),
+		ExtraRequirements: []string{"wifi-gen-0004-v01"},
 	}}
 }
 
@@ -125,7 +133,7 @@ func simpleConnect80211nsgi() simpleConnectParams {
 		Val: []simpleConnectParamsVal{
 			{APOpts: "ap.Mode(ap.Mode80211nPure), ap.Channel(48), ap.HTCaps(ap.HTCapHT20, ap.HTCapSGI20)"},
 			{APOpts: "ap.Mode(ap.Mode80211nPure), ap.Channel(48), ap.HTCaps(ap.HTCapHT40Minus, ap.HTCapSGI40)"},
-		},
+		}, ExtraRequirements: []string{"wifi-gen-0004-v01"},
 	}
 }
 
@@ -137,6 +145,7 @@ func simpleConnect80211ac() []simpleConnectParams {
 			ap.Mode(ap.Mode80211acPure), ap.Channel(60), ap.HTCaps(ap.HTCapHT20), ap.SpectrumManagement(),
 			ap.VHTChWidth(ap.VHTChWidth20Or40),
 		`}},
+		ExtraRequirements: []string{"wifi-gen-0004-v01"},
 	}, {
 		Name: "80211acvht40",
 		Doc:  simpleConnectDocPref("an open 802.11ac network on channel 48 with a channel width of 40MHz."),
@@ -144,6 +153,7 @@ func simpleConnect80211ac() []simpleConnectParams {
 			ap.Mode(ap.Mode80211acPure), ap.Channel(48), ap.HTCaps(ap.HTCapHT40),
 			ap.VHTChWidth(ap.VHTChWidth20Or40),
 		`}},
+		ExtraRequirements: []string{"wifi-gen-0004-v01"},
 	}, {
 		Name: "80211acvht80mixed",
 		Doc:  simpleConnectDocPref("an open 802.11ac network on 5GHz channel 36 with center channel of 42 and channel width of 80MHz."),
@@ -151,6 +161,7 @@ func simpleConnect80211ac() []simpleConnectParams {
 			ap.Mode(ap.Mode80211acMixed), ap.Channel(36), ap.HTCaps(ap.HTCapHT40Plus),
 			ap.VHTCaps(ap.VHTCapSGI80), ap.VHTCenterChannel(42), ap.VHTChWidth(ap.VHTChWidth80),
 		`}},
+		ExtraRequirements: []string{"wifi-gen-0004-v01"},
 	}, {
 		Name: "80211acvht80pure",
 		Doc: append(simpleConnectDocPref("an open 802.11ac network on channel 157 with center channel of 155 and channel width of 80MHz."),
@@ -159,6 +170,7 @@ func simpleConnect80211ac() []simpleConnectParams {
 			ap.Mode(ap.Mode80211acPure), ap.Channel(157), ap.HTCaps(ap.HTCapHT40Plus),
 			ap.VHTCaps(ap.VHTCapSGI80), ap.VHTCenterChannel(155), ap.VHTChWidth(ap.VHTChWidth80),
 		`}},
+		ExtraRequirements: []string{"wifi-gen-0004-v01"},
 	}}
 }
 
@@ -759,5 +771,10 @@ func TestSimpleConnect(t *testing.T) {
 	{{ end }}
 	ExtraHardwareDeps: {{ .ExtraHardwareDeps }},
 	{{ end }}
+	{{ if .ExtraRequirements }}
+	ExtraRequirements: {{ .ExtraRequirements | fmt }},
+	{{ end }}
+	
+
 },{{ end }}`, ps))
 }
