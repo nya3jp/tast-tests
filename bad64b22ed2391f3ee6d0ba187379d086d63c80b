@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1fdb0b0d_b65cab5f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-09-30T18:04:10Z",
+      "side": 1,
+      "message": "Please don\u0027t count on CQ tests. The CQ tests didn\u0027t catch the problem last time. Please check out a few kinds of models and test it out. Then, update the TEST\u003d section.\n\nAlso, please run tast unit tests: fast_build.sh -T\n\nThen, add this line to commit log\n\nTEST\u003dtast unit passed.\n\nThanks.\n\nP.S. CL owner should not give CR+1 to the CL.",
+      "revId": "bad64b22ed2391f3ee6d0ba187379d086d63c80b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
