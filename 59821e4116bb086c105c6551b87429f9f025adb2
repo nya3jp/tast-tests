@@ -1,0 +1,135 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d18db2c_e09cffd7",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/screenshot_recorder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2022-09-30T21:35:21Z",
+      "side": 1,
+      "message": "cuj?",
+      "range": {
+        "startLine": 20,
+        "startChar": 17,
+        "endLine": 20,
+        "endChar": 21
+      },
+      "revId": "59821e4116bb086c105c6551b87429f9f025adb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d43206f5_e89d33c3",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/screenshot_recorder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2022-09-30T21:35:21Z",
+      "side": 1,
+      "message": "seems unnecessarily confusing. Why not use maxImages - 1 on line 105?",
+      "range": {
+        "startLine": 45,
+        "startChar": 21,
+        "endLine": 45,
+        "endChar": 48
+      },
+      "revId": "59821e4116bb086c105c6551b87429f9f025adb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4c421fd_2ae77bd8",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/screenshot_recorder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2022-09-30T21:35:21Z",
+      "side": 1,
+      "message": "comment here would be useful as well. these are for synchronization, right?",
+      "revId": "59821e4116bb086c105c6551b87429f9f025adb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11fe424f_4d4fde0a",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/screenshot_recorder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2022-09-30T21:35:21Z",
+      "side": 1,
+      "message": "you don\u0027t think we should keep going?",
+      "revId": "59821e4116bb086c105c6551b87429f9f025adb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc065ece_8474aadd",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/screenshot_recorder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2022-09-30T21:35:21Z",
+      "side": 1,
+      "message": "Don\u0027t we have 1 more at the end?",
+      "revId": "59821e4116bb086c105c6551b87429f9f025adb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "853b2204_395a97ac",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/screenshot_recorder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2022-09-30T21:35:21Z",
+      "side": 1,
+      "message": "What\u0027s iteration? Is this the sequence number of screenshots?",
+      "revId": "59821e4116bb086c105c6551b87429f9f025adb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4dac5f07_a03de212",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/screenshot_recorder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2022-09-30T21:35:21Z",
+      "side": 1,
+      "message": "What does the final filename look like?",
+      "revId": "59821e4116bb086c105c6551b87429f9f025adb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
