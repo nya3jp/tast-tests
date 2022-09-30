@@ -39,6 +39,30 @@
       },
       "revId": "be96efc77d1dc06be1d0096cf409dec08bed5e53",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e5ddd63_c0e6c365",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/supported_protocols.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1518777
+      },
+      "writtenOn": "2022-09-30T00:07:59Z",
+      "side": 1,
+      "message": "yes I should not, thank you for your reminder, I forgot to change this back",
+      "parentUuid": "204e1446_63ffcc52",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "be96efc77d1dc06be1d0096cf409dec08bed5e53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
