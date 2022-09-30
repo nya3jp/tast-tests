@@ -16,6 +16,40 @@
       "message": "Hi Jeremy,\n\nPlease review it. Thanks.",
       "revId": "8f5c5c32252597927a111c239c0c3c28461cb248",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1a3156c_15c092c5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/dev_mode_fw_screen.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1545397
+      },
+      "writtenOn": "2022-09-30T13:37:03Z",
+      "side": 1,
+      "message": "We need to add:\n```\nelse {\n\t\ts.Logf(\"Setting USBMux to %s\", servo.USBMuxOff)\n\t\tif err :\u003d h.Servo.SetUSBMuxState(ctx, servo.USBMuxOff); err !\u003d nil {\n\t\t\ts.Fatal(\"Failed to set USBMux: \", err)\n\t\t}\n\t}\n```\nOtherwise, the behavior depends on the current setting which is unknown.",
+      "revId": "8f5c5c32252597927a111c239c0c3c28461cb248",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c540bac9_0fa8cf83",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/dev_mode_fw_screen.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1545397
+      },
+      "writtenOn": "2022-09-30T13:37:03Z",
+      "side": 1,
+      "message": "2 minutes is not enough time for some DUTs to boot from USB as I can see in Stainless results.",
+      "revId": "8f5c5c32252597927a111c239c0c3c28461cb248",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
