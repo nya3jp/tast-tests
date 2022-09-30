@@ -39,6 +39,30 @@
       },
       "revId": "cd775149762bd29e0e95f6f5babda4124eff9600",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7cb5869_d0ec83c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterpriseconnectors/test_file_attached.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 402,
+      "author": {
+        "id": 1528043
+      },
+      "writtenOn": "2022-09-30T10:54:11Z",
+      "side": 1,
+      "message": "This is the previous dialog which is replaced by the one we don\u0027t catch.\nReducing the interval here makes it more likely to catch the next one.",
+      "parentUuid": "c1c8f2e2_ce9d6a9d",
+      "range": {
+        "startLine": 402,
+        "startChar": 77,
+        "endLine": 402,
+        "endChar": 90
+      },
+      "revId": "cd775149762bd29e0e95f6f5babda4124eff9600",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
