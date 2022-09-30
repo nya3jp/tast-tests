@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/arc/apploading"
 	"chromiumos/tast/local/bundles/cros/arc/nethelper"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/power/setup"
 	"chromiumos/tast/local/sysutil"
 	"chromiumos/tast/testing"
@@ -31,6 +32,9 @@ var (
 	// arcAppLoadingBooted is a precondition similar to arc.Booted() with no opt-in and disables some heavy Android activities that use system resources.
 	arcAppLoadingBooted = arc.NewPrecondition("arcapploading_booted", nil /* GAIAVARS */, nil /* GAIALOGINPOOLVARS */, false /* O_DIRECT */, append(arc.DisableSyncFlags(), "--disable-features=FirmwareUpdaterApp")...)
 
+	// arcAppLoadingBootedLacros is a precondition similar arcAppLoadingBooted but with Lacros enabled.
+	arcAppLoadingBootedLacros = arc.NewPreconditionWithBrowserType("arcapploading_booted_lacros", browser.TypeLacros, nil /* GAIAVARS */, nil /* GAIALOGINPOOLVARS */, false /* O_DIRECT */, append(arc.DisableSyncFlags(), "--disable-features=FirmwareUpdaterApp")...)
+
 	// arcAppLoadingVirtioBlkVMBooted adds feature to boot ARC with virtio-blk /data is enabled.
 	arcAppLoadingVirtioBlkVMBooted = arc.NewPrecondition("arcapploading_virtio_blk_vmbooted", nil /* GAIAVARS */, nil /* GAIALOGINPOOLVARS */, false /* O_DIRECT */, append(arc.DisableSyncFlags(), "--enable-features=ArcEnableVirtioBlkForData", "--disable-features=FirmwareUpdaterApp")...)
 )
@@ -38,7 +42,7 @@ var (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         AppLoadingPerf,
-		LacrosStatus: testing.LacrosVariantNeeded,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Captures set of apploading performance metrics and uploads them as perf metrics",
 		Contacts: []string{
 			"alanding@chromium.org",
@@ -56,12 +60,26 @@ func init() {
 			},
 			Pre: arcAppLoadingBooted,
 		}, {
+			Name:              "lacros",
+			ExtraSoftwareDeps: []string{"android_p", "lacros"},
+			Val: testParameters{
+				binaryTranslation: false,
+			},
+			Pre: arcAppLoadingBootedLacros,
+		}, {
 			Name:              "vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
 			Val: testParameters{
 				binaryTranslation: false,
 			},
 			Pre: arcAppLoadingBooted,
+		}, {
+			Name:              "vm_lacros",
+			ExtraSoftwareDeps: []string{"android_vm", "lacros"},
+			Val: testParameters{
+				binaryTranslation: false,
+			},
+			Pre: arcAppLoadingBootedLacros,
 		}, {
 			Name:              "virtio_blk_vm",
 			ExtraSoftwareDeps: []string{"android_vm"},

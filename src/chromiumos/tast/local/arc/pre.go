@@ -12,6 +12,9 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc/optin"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/browser/browserfixt"
+	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/timing"
 )
@@ -58,17 +61,23 @@ var bootedPre = &preImpl{
 
 // NewPrecondition creates a new arc precondition for tests that need different args.
 func NewPrecondition(name string, gaia *GaiaVars, gaiaPool *GaiaLoginPoolVars, oDirect bool, extraArgs ...string) testing.Precondition {
+	return NewPreconditionWithBrowserType(name, browser.TypeAsh, gaia, gaiaPool, oDirect, extraArgs...)
+}
+
+// NewPreconditionWithBrowserType creates a new arc precondition for tests that need different args and browser types.
+func NewPreconditionWithBrowserType(name string, browserType browser.Type, gaia *GaiaVars, gaiaPool *GaiaLoginPoolVars, oDirect bool, extraArgs ...string) testing.Precondition {
 	timeout := ResetTimeout + chrome.LoginTimeout + BootTimeout
 	if gaia != nil || gaiaPool != nil {
 		timeout = ResetTimeout + chrome.GAIALoginTimeout + BootTimeout + optin.OptinTimeout
 	}
 	pre := &preImpl{
-		name:      name,
-		timeout:   timeout,
-		gaia:      gaia,
-		gaiaPool:  gaiaPool,
-		extraArgs: extraArgs,
-		oDirect:   oDirect,
+		name:        name,
+		browserType: browserType,
+		timeout:     timeout,
+		gaia:        gaia,
+		gaiaPool:    gaiaPool,
+		extraArgs:   extraArgs,
+		oDirect:     oDirect,
 	}
 	return pre
 }
@@ -86,7 +95,9 @@ type GaiaLoginPoolVars struct {
 
 // preImpl implements testing.Precondition.
 type preImpl struct {
-	name    string        // testing.Precondition.String
+	name        string       // testing.Precondition.String
+	browserType browser.Type // type of browser to use
+
 	timeout time.Duration // testing.Precondition.Timeout
 
 	extraArgs []string           // passed to Chrome on initialization
@@ -166,12 +177,30 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 			// Login into the device, using GAIA login.
 			username := s.RequiredVar(p.gaia.UserVar)
 			password := s.RequiredVar(p.gaia.PassVar)
-			p.cr, err = chrome.New(ctx, chrome.GAIALogin(chrome.Creds{User: username, Pass: password}), chrome.ARCSupported(), chrome.ExtraArgs(extraArgs...))
+
+			p.cr, err = browserfixt.NewChrome(
+				ctx,
+				p.browserType,
+				lacrosfixt.NewConfig(),
+				chrome.GAIALogin(chrome.Creds{User: username, Pass: password}),
+				chrome.ARCSupported(),
+				chrome.ExtraArgs(extraArgs...))
 		} else if p.gaiaPool != nil {
 			// Login into the device, using GAIA login pool.
-			p.cr, err = chrome.New(ctx, chrome.GAIALoginPool(s.RequiredVar(p.gaiaPool.PoolVar)), chrome.ARCSupported(), chrome.ExtraArgs(extraArgs...))
+			p.cr, err = browserfixt.NewChrome(
+				ctx,
+				p.browserType,
+				lacrosfixt.NewConfig(),
+				chrome.GAIALoginPool(s.RequiredVar(p.gaiaPool.PoolVar)),
+				chrome.ARCSupported(),
+				chrome.ExtraArgs(extraArgs...))
 		} else {
-			p.cr, err = chrome.New(ctx, chrome.ARCEnabled(), chrome.ExtraArgs(extraArgs...))
+			p.cr, err = browserfixt.NewChrome(
+				ctx,
+				p.browserType,
+				lacrosfixt.NewConfig(),
+				chrome.ARCEnabled(),
+				chrome.ExtraArgs(extraArgs...))
 		}
 		if err != nil {
 			s.Fatal("Failed to start Chrome: ", err)
