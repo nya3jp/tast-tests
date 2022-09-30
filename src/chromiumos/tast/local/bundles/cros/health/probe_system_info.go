@@ -51,6 +51,7 @@ func ProbeSystemInfo(ctx context.Context, s *testing.State) {
 type osVersion struct {
 	ReleaseMilestone string `json:"release_milestone"`
 	BuildNumber      string `json:"build_number"`
+	BranchNumber     string `json:"branch_number"`
 	PatchNumber      string `json:"patch_number"`
 	ReleaseChannel   string `json:"release_channel"`
 }
@@ -101,6 +102,7 @@ func expectedOSVersion(ctx context.Context) (osVersion, error) {
 	return osVersion{
 		ReleaseMilestone: lsb[lsbrelease.Milestone],
 		BuildNumber:      lsb[lsbrelease.BuildNumber],
+		BranchNumber:     lsb[lsbrelease.BranchNumber],
 		PatchNumber:      lsb[lsbrelease.PatchNumber],
 		ReleaseChannel:   lsb[lsbrelease.ReleaseTrack],
 	}, nil
