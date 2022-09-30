@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c95d5ca_b002a1f3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-09-30T07:42:28Z",
+      "side": 1,
+      "message": "LGTM % nit\nThe test change is a little bigger now than it is mentioned in the commit me.",
+      "revId": "e536361e7bf9772cf626cb94c46ae63a62b4ed21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74751c11_0a5d36d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/add_remove_pin.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-09-30T07:42:28Z",
+      "side": 1,
+      "message": "These new additions remained `pin`. Please change these as well.",
+      "range": {
+        "startLine": 172,
+        "startChar": 48,
+        "endLine": 172,
+        "endChar": 51
+      },
+      "revId": "e536361e7bf9772cf626cb94c46ae63a62b4ed21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
