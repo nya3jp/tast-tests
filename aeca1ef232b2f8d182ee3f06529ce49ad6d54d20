@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f00d3b2_9c713023",
+        "filename": "src/chromiumos/tast/local/cellular/cellular_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-09-30T15:29:45Z",
+      "side": 1,
+      "message": "need to change this for the new function",
+      "revId": "aeca1ef232b2f8d182ee3f06529ce49ad6d54d20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e21b787_67c41e24",
+        "filename": "src/chromiumos/tast/local/cellular/cellular_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-09-30T15:29:45Z",
+      "side": 1,
+      "message": "Don\u0027t we already wait for it to be connected during ConnectToDefault? Or does that not handle the Portaled state properly?",
+      "revId": "aeca1ef232b2f8d182ee3f06529ce49ad6d54d20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
