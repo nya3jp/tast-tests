@@ -20,6 +20,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "757b0d8f_a2ad5640",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/iioservice/query.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2022-09-30T01:09:38Z",
+      "side": 1,
+      "message": "Not sure if you want to add \"Magn\" in this CL for CL:3923488.",
+      "revId": "729e5bdfe3fb2ba71b487ce4dcf5e38890257699",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ffad9d12_a12d23ea",
         "filename": "src/chromiumos/tast/local/bundles/cros/health/iioservice/query_test.go",
         "patchSetId": 8
