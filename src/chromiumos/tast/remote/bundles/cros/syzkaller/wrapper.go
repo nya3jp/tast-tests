@@ -60,8 +60,9 @@ var boardArchMapping = map[string]string{
 	"kukui": "arm",
 	// b/242131739: Jacuzzi and Cherry are for local testing at the moment.
 	// The test is not enabled in the lab yet.
-	"jacuzzi": "arm",
-	"cherry":  "arm",
+	"jacuzzi":   "arm",
+	"cherry":    "arm",
+	"herobrine": "aarch64",
 }
 
 // dutConfig represents information related to the DUT configuration;
