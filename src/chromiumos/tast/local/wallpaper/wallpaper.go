@@ -203,7 +203,7 @@ func CurrentWallpaperFinder() *nodewith.Finder {
 
 // CurrentWallpaperWithSpecificNameFinder find currently set wallpaper with an exact match name.
 func CurrentWallpaperWithSpecificNameFinder(wallpaperName string) *nodewith.Finder {
-	return nodewith.Role(role.Heading).Name(fmt.Sprintf("Currently set %v", wallpaperName))
+	return nodewith.Role(role.Heading).Name(fmt.Sprintf("Currently set %v", wallpaperName)).Name(fmt.Sprintf("Currently set Daily Refresh %v", wallpaperName))
 }
 
 // CurrentWallpaper gets the name of the current wallpaper.
