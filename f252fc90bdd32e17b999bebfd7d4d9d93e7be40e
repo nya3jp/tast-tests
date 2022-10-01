@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "527342f9_7f254d0e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/fixtures/services_on_boot_fixt.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-10-01T00:44:25Z",
+      "side": 1,
+      "message": "what\u0027s this line for?",
+      "revId": "f252fc90bdd32e17b999bebfd7d4d9d93e7be40e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ef0efdd4_bf5fdbef",
         "filename": "src/chromiumos/tast/remote/bundles/cros/platform/fixtures/services_on_boot_fixt.go",
         "patchSetId": 4
@@ -251,6 +268,30 @@
       "side": 1,
       "message": "(Sorry, perhaps a comment like this should have had a clearer direction/AI on it.) Your 3 points/goals are reasonable, and I guess what I was hoping for was simply clarification.\n\nMaybe that also deserves a comment, if this \"weird use of fixtures\" is the best solution.",
       "parentUuid": "c400499c_e1ea75ef",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 44
+      },
+      "revId": "f252fc90bdd32e17b999bebfd7d4d9d93e7be40e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9559d924_adb2e345",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/services_on_boot.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-10-01T00:44:25Z",
+      "side": 1,
+      "message": "A table-driven test might be a good way to go here to avoid awkward fixture usage:\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#table_driven-tests\n\nUsing a fixture could be misleading if others decide to use it and introduce some behavior that breaks existing tests (due to lack of `PostTest`/`Reset` behaviors that restore the fixture to the proper starting state).\n\nI think a table-driven test achieves your goals:\n1. Before running the table of test cases, you can do all of your setup (rebooting, collecting service stasuses, etc.)\n2. Each entry in the table-driven test is treated as a separate entry in stainless/tastboard/etc\n3. You could have 2 parameterized tests, 1 for stable subtests and 1 for unstable subtests, so you can move test cases around between them if you need to remove things from critical suites (I\u0027ve seen this pattern around quite a bit)\n\nI think this would align well with Tast style and how fixtures are intended to be used, but if you prefer the fixture approach that\u0027s understandable. In that case it would be important to very clearly document how it\u0027s intended to be used and the criteria for adding new tests that use it. The table-driven design would probably be safer against unintentional breaking changes though",
+      "parentUuid": "843e8208_be9edcd0",
       "range": {
         "startLine": 24,
         "startChar": 0,
