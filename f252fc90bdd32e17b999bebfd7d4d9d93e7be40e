@@ -304,6 +304,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "386b305f_ac2d2133",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/services_on_boot.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-10-01T00:50:01Z",
+      "side": 1,
+      "message": "oh wait my bad, the subtests in a table-driven test are not actually surfaced separately in stainless/tast. for some reason I thought they were, I guess I was imagining things :)\n\nit could still be a good way to go for this test, but if you want to see a separate result for each test then the fixture+subtest way is your best bet",
+      "parentUuid": "9559d924_adb2e345",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 44
+      },
+      "revId": "f252fc90bdd32e17b999bebfd7d4d9d93e7be40e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d058194d_ed57f71b",
         "filename": "src/chromiumos/tast/remote/bundles/cros/platform/services_on_boot.go",
         "patchSetId": 4
