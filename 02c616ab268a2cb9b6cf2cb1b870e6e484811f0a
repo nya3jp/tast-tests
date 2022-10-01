@@ -51,6 +51,24 @@
       "parentUuid": "608e7a74_052328f2",
       "revId": "02c616ab268a2cb9b6cf2cb1b870e6e484811f0a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9794405_12e53203",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1191,
+      "author": {
+        "id": 1427116
+      },
+      "writtenOn": "2022-10-01T00:11:58Z",
+      "side": 1,
+      "message": "Removed. The cl that disables the nudge is this (https://chromium-review.googlesource.com/c/chromium/src/+/3931193)",
+      "parentUuid": "22a914c3_42e099f3",
+      "revId": "02c616ab268a2cb9b6cf2cb1b870e6e484811f0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
