@@ -22,6 +22,30 @@
       },
       "revId": "66b37e3a4874f82275c64e82fabcc0c8e30d9db9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1aa63d5b_4d16b52c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/tts_cache_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1537589
+      },
+      "writtenOn": "2022-10-01T00:44:51Z",
+      "side": 0,
+      "message": "The new feature ArcEnableTTSCacheSetup overrides ArcEnableTTSCaching value to make it easier to run experiments when the cache is enabled together with the setup (the cache setup also doesn\u0027t really do anything without TTS caching enabled).",
+      "parentUuid": "164f7074_b16284d0",
+      "range": {
+        "startLine": 49,
+        "startChar": 37,
+        "endLine": 49,
+        "endChar": 56
+      },
+      "revId": "66b37e3a4874f82275c64e82fabcc0c8e30d9db9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
