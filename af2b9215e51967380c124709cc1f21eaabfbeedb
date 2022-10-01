@@ -22,6 +22,29 @@
       },
       "revId": "af2b9215e51967380c124709cc1f21eaabfbeedb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba621314_c651272d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/config_verify.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1544064
+      },
+      "writtenOn": "2022-10-01T17:15:22Z",
+      "side": 1,
+      "message": "The testcase need not contain logic. \nIf you keep ConfigVerify for ChromeOS, and add a new testcase for ChromiumOS, then this part of logic isn\u0027t needed. The code here can doesn\u0027t need to check for if it is chromeOS or ChromiumOS",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 35
+      },
+      "revId": "af2b9215e51967380c124709cc1f21eaabfbeedb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
