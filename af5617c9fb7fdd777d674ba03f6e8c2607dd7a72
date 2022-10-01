@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55cb9743_239bed3c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2022-10-01T01:16:02Z",
+      "side": 1,
+      "message": "You should add here a Cq-Depend: line [1] to make\nsure the previous CLs land first. Otherwise this could\nland  before the CL introducing SupportsVideoOverlays()\nand break the Tast build.\n\n\n[1] https://chromium.googlesource.com/chromiumos/docs/+/HEAD/contributing.md#cq-depend",
+      "revId": "af5617c9fb7fdd777d674ba03f6e8c2607dd7a72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
