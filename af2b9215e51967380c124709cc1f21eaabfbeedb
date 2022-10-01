@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "527d9385_607cc1b8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/config_verify.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1544064
+      },
+      "writtenOn": "2022-10-01T17:12:16Z",
+      "side": 1,
+      "message": "It s probably better to just create a new testcase:\nConfigVerifyChromiumOS()\n\nand keep ConfigVerify() for ChromeOS()\n\nyou can then refactor the code to share the common part.",
+      "range": {
+        "startLine": 32,
+        "startChar": 12,
+        "endLine": 32,
+        "endChar": 19
+      },
+      "revId": "af2b9215e51967380c124709cc1f21eaabfbeedb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
