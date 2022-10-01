@@ -89,6 +89,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "01e0cc5f_73358778",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2537,
+      "author": {
+        "id": 1551017
+      },
+      "writtenOn": "2022-10-01T00:22:59Z",
+      "side": 1,
+      "message": "The team agreed that having more signal by enabling the test cases for the Aom test vectors is better than having none. So I\u0027ll have them enabled as they are at this current state. \nThank you Steve for the input!",
+      "parentUuid": "2937a95f_27a42991",
+      "revId": "68cdd8d851ab4cb7e85acd16e6a4845f653ebb1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "68500948_15a432f9",

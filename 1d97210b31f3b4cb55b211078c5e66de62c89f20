@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "61be22a2_0b1c0900",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1551017
+      },
+      "writtenOn": "2022-10-01T00:22:59Z",
+      "side": 1,
+      "message": "Added unintentionally omitted empty lines from merge conflict resolve.",
+      "revId": "1d97210b31f3b4cb55b211078c5e66de62c89f20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
