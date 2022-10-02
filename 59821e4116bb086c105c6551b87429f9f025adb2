@@ -202,6 +202,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "564b7db4_5f520d49",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/screenshot_recorder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2022-10-02T18:46:01Z",
+      "side": 1,
+      "message": "Oh, that wasn\u0027t clear. I guess we could also consider compressing each image as it\u0027s created, but we should probably try to do the compression outside of the recorder? Are we concerned about the impact to CPU during compression?\n\nI don\u0027t think we should be too worried about optimizing the error scenario because it\u0027s just an error scenario. Obviously we don\u0027t want to do something really bad like upload a gig of screenshots.",
+      "parentUuid": "536a30b2_209331ad",
+      "revId": "59821e4116bb086c105c6551b87429f9f025adb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "853b2204_395a97ac",
         "filename": "src/chromiumos/tast/local/chrome/uiauto/screenshot_recorder.go",
         "patchSetId": 2
@@ -231,6 +249,24 @@
       "side": 1,
       "message": "Sorry, I had trouble thinking of a succinct word. I updated it to `number of screenshots` which is what I was going for. I did it so we can easily have an ordering of the screenshots if we had it in a list, and quickly see how many screenshots were taken in the test.",
       "parentUuid": "853b2204_395a97ac",
+      "revId": "59821e4116bb086c105c6551b87429f9f025adb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "47c9ae0a_072073f6",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/screenshot_recorder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2022-10-02T18:46:01Z",
+      "side": 1,
+      "message": "I think \"sequence\" is fine, but whatever works. Iteration is confusing because some tests also have iterations, right?",
+      "parentUuid": "45638693_a4d4c4e5",
       "revId": "59821e4116bb086c105c6551b87429f9f025adb2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -266,6 +302,24 @@
       "side": 1,
       "message": "`cuj-tests.zip` -- this is the only file added to stainless.\n\nand after unzipping that file, you\u0027d see\n1-10.jpg\n2-20.jpg\n3-30.jpg\n4-35-end.jpg\n\nThe names were supposed to be succinct, because they would be housed in the test folder anyways, so it felt redundant to put the test name. \n\nI added a reference to the final file name to the `compress` function.",
       "parentUuid": "4dac5f07_a03de212",
+      "revId": "59821e4116bb086c105c6551b87429f9f025adb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ff35be1_cc6423d4",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/screenshot_recorder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2022-10-02T18:46:01Z",
+      "side": 1,
+      "message": "I think something like cuj-1-10.jpg would be nice because sometimes these screenshots will be shared.",
+      "parentUuid": "16722e57_426111eb",
       "revId": "59821e4116bb086c105c6551b87429f9f025adb2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
