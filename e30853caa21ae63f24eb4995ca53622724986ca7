@@ -16,6 +16,24 @@
       "message": "The guidance for adding a new test to critical mainline is to have 20 green builds, this test is only showing 4?",
       "revId": "e30853caa21ae63f24eb4995ca53622724986ca7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c20feef_a4eca2a1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2022-10-02T04:51:39Z",
+      "side": 1,
+      "message": "Understood. I will add you back when it gets to 20.",
+      "parentUuid": "e70a9afb_27c09634",
+      "revId": "e30853caa21ae63f24eb4995ca53622724986ca7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
