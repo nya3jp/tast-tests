@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72e67c7e_9827ced8",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint_test_images.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-10-02T03:14:10Z",
+      "side": 1,
+      "message": "I don\u0027t understand line 231 line 250.\n\nWill the following do the same thing?\n\n```\nversionWithSuffix :\u003d string(version) + suffix\ncopy(newVersion[:], versionWithSuffix)\nreturn newVersion, nil\n```\n\nIf so, I think the above code is simpler.",
+      "revId": "7823aa84c63a6b3228f5a789c560ec8f71979bf4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
