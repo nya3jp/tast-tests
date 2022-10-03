@@ -142,6 +142,30 @@
       },
       "revId": "ca3f77670b8608e533ca627570edb7925d908782",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0fb9f9a_2c0df41e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/tablet_mode_check.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-10-03T09:42:33Z",
+      "side": 1,
+      "message": "Ah, I see what you meant.\n\nThen, I think it\u0027s better to avoid evtest at all.\n\nsrc/platform/tast-tests/src/chromiumos/tast/local/input/device.go\n\nis the parsing code. it needs to expose a few members, but we can reuse the library.",
+      "parentUuid": "792c02ae_2a5ca968",
+      "range": {
+        "startLine": 134,
+        "startChar": 36,
+        "endLine": 134,
+        "endChar": 52
+      },
+      "revId": "ca3f77670b8608e533ca627570edb7925d908782",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
