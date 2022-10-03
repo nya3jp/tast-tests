@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9859132_2652e869",
+        "filename": "src/chromiumos/tast/local/quickanswers/quickanswers.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1211724
+      },
+      "writtenOn": "2022-10-03T18:53:15Z",
+      "side": 1,
+      "message": "We already have https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/quickanswers/doc.go",
+      "parentUuid": "5987742d_5bfb9e8a",
+      "revId": "de05b286c45bd7593a2dbc6aa08828a4c1421ea3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "63696b0b_c7afd076",
@@ -58,6 +76,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a61489f_c6b5ff81",
+        "filename": "src/chromiumos/tast/local/quickanswers/quickanswers.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1211724
+      },
+      "writtenOn": "2022-10-03T18:53:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "63696b0b_c7afd076",
+      "range": {
+        "startLine": 15,
+        "startChar": 16,
+        "endLine": 15,
+        "endChar": 43
+      },
+      "revId": "de05b286c45bd7593a2dbc6aa08828a4c1421ea3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "49f6b655_aa74fd10",
@@ -71,6 +113,30 @@
       "writtenOn": "2022-10-03T04:20:27Z",
       "side": 1,
       "message": "I have a question: the helper function refactors the code of setting prefs. However, the original callers have different tast.promisify(). Is it okay to use this instead?",
+      "range": {
+        "startLine": 19,
+        "startChar": 45,
+        "endLine": 19,
+        "endChar": 75
+      },
+      "revId": "de05b286c45bd7593a2dbc6aa08828a4c1421ea3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "569a081f_6964666f",
+        "filename": "src/chromiumos/tast/local/quickanswers/quickanswers.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1211724
+      },
+      "writtenOn": "2022-10-03T18:53:15Z",
+      "side": 1,
+      "message": "This is intended, the two approaches should be equivalent and we want to unify the use cases.",
+      "parentUuid": "49f6b655_aa74fd10",
       "range": {
         "startLine": 19,
         "startChar": 45,
