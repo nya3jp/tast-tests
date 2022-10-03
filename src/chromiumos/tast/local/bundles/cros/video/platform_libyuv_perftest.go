@@ -17,6 +17,7 @@ import (
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 const libyuvUnitTestBin = "libyuv_perftest"
@@ -36,6 +37,14 @@ func init() {
 		}, {
 			Name: "nv12scale",
 			Val:  "LibYUVScaleTest.NV12ScaleDownBy2_Bilinear",
+		}, {
+			Name:              "mm21tonv12",
+			Val:               "LibYUVConvertTest.MM21ToNV12_Opt",
+			ExtraHardwareDeps: hwdep.D(hwdep.SupportsV4L2StatelessVideoDecoding(), hwdep.SkipOnPlatform("bob", "gru", "kevin")),
+		}, {
+			Name:              "mm21toi420",
+			Val:               "LibYUVConvertTest.MM21ToI420_Opt",
+			ExtraHardwareDeps: hwdep.D(hwdep.SupportsV4L2StatelessVideoDecoding(), hwdep.SkipOnPlatform("bob", "gru", "kevin")),
 		}},
 	})
 }
