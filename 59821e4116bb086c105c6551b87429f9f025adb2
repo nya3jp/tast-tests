@@ -274,6 +274,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1ca1a4f7_d5afb8a0",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/screenshot_recorder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2022-10-03T21:11:54Z",
+      "side": 1,
+      "message": "I\u0027m not convinced that leaving them unzipped in their own directory would be worse - you can actually look at the screenshots on the web without being forced to download and unzip first - maybe you only want to see one. I think we should skip the compression part, and probably the zip part too",
+      "parentUuid": "0282ccca_33b10941",
+      "revId": "59821e4116bb086c105c6551b87429f9f025adb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "853b2204_395a97ac",
         "filename": "src/chromiumos/tast/local/chrome/uiauto/screenshot_recorder.go",
         "patchSetId": 2

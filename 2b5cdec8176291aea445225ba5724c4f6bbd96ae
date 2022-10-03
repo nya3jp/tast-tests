@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "722a0c77_3ffef1cd",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/screenshot_recorder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2022-10-03T21:11:54Z",
+      "side": 1,
+      "message": "call this zip, but imo we should just not do this",
+      "range": {
+        "startLine": 180,
+        "startChar": 29,
+        "endLine": 180,
+        "endChar": 37
+      },
+      "revId": "2b5cdec8176291aea445225ba5724c4f6bbd96ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3fd65e73_668d672e",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/screenshot_recorder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2022-10-03T21:11:54Z",
+      "side": 1,
+      "message": "let\u0027s drop this",
+      "revId": "2b5cdec8176291aea445225ba5724c4f6bbd96ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9fb3f6cb_37e7041d",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/screenshot_recorder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2022-10-03T21:11:54Z",
+      "side": 1,
+      "message": "Not sure important, but doesn\u0027t Go have libraries to zip, instead of escaping to shell like this?",
+      "revId": "2b5cdec8176291aea445225ba5724c4f6bbd96ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38dc2b50_1975b77f",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/screenshot_recorder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2022-10-03T21:11:54Z",
+      "side": 1,
+      "message": "Not a Go expert, but isn\u0027t nil better here?",
+      "revId": "2b5cdec8176291aea445225ba5724c4f6bbd96ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
