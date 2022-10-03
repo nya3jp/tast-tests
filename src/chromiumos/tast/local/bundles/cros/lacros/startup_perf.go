@@ -413,7 +413,7 @@ func setAlwaysRestoreSettings(ctx context.Context, tconn *chrome.TestConn) error
 	}
 
 	if err := uiauto.Combine("set 'Always restore' Settings",
-		uiauto.New(tconn).LeftClick(nodewith.Name("Restore apps on startup").Role(role.PopUpButton)),
+		uiauto.New(tconn).LeftClick(nodewith.Name("Restore apps on startup").Role(role.ComboBoxSelect)),
 		uiauto.New(tconn).LeftClick(nodewith.Name("Always restore").Role(role.ListBoxOption)))(ctx); err != nil {
 		return errors.Wrap(err, "failed to set 'Always restore' Settings")
 	}
