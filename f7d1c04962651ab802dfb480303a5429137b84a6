@@ -46,6 +46,30 @@
       },
       "revId": "f7d1c04962651ab802dfb480303a5429137b84a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13f0c8f7_6acbd4e2",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/ossettings/ossettings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-10-03T12:49:30Z",
+      "side": 1,
+      "message": "Did this get resolved?",
+      "parentUuid": "dfa9b1a5_54a20147",
+      "range": {
+        "startLine": 363,
+        "startChar": 23,
+        "endLine": 363,
+        "endChar": 49
+      },
+      "revId": "f7d1c04962651ab802dfb480303a5429137b84a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
