@@ -26,7 +26,7 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Verify artificial early crash creates crash files",
 		Contacts:     []string{"mutexlox@chromium.org", "cros-telemetry@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"reboot"},
 		ServiceDeps:  []string{"tast.cros.crash.FixtureService"},
 		Params: []testing.Param{{
