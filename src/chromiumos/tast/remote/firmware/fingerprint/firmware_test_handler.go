@@ -91,22 +91,6 @@ func NewFirmwareTest(ctx context.Context, d *rpcdut.RPCDUT, servoSpec, outDir st
 		}
 	}
 
-	// Disable DBus bus activation for fwupd. It will prevent fwupd and
-	// finally powerd from starting when Chrome tries to get information
-	// from fwupd, see b/243645924 for more details.
-	testing.ContextLog(ctx, "Disabling the DBus bus activation for fwupd service")
-	if _, err := t.DbusService().DisableDbusActivation(ctx, &platform.DisableDbusActivationRequest{ServiceName: fwupdServiceName}); err != nil {
-		return nil, errors.Wrap(err, "failed to disable DBus bus activation for fwupd")
-	}
-	defer func() {
-		if initError != nil {
-			testing.ContextLog(ctx, "NewFirmwareTest failed, let's re-enable DBus activation for fwupd")
-			if _, err := t.DbusService().EnableDbusActivation(ctx, &platform.EnableDbusActivationRequest{ServiceName: fwupdServiceName}); err != nil {
-				testing.ContextLog(ctx, "Failed to re-enable DBus activation for fwupd: ", err)
-			}
-		}
-	}()
-
 	t.daemonState, err = stopDaemons(ctx, t.UpstartService(), []string{
 		biodUpstartJobName,
 		// TODO(b/183123775): Remove when bug is fixed.
@@ -262,18 +246,6 @@ func (t *FirmwareTest) Close(ctx context.Context) error {
 		firstErr = err
 	}
 
-	// Enable DBus bus activation for fwupd.
-	dbusService := t.DbusService()
-	resp, err := dbusService.IsDbusActivationEnabled(ctx, &platform.IsDbusActivationEnabledRequest{ServiceName: fwupdServiceName})
-	if err == nil && !resp.Enabled {
-		testing.ContextLog(ctx, "Enabling the DBus bus activation for fwupd service")
-		if _, err := dbusService.EnableDbusActivation(ctx, &platform.EnableDbusActivationRequest{ServiceName: fwupdServiceName}); err != nil && firstErr == nil {
-			firstErr = err
-		}
-	} else if err != nil && firstErr == nil {
-		firstErr = err
-	}
-
 	return firstErr
 }
 
@@ -290,11 +262,6 @@ func (t *FirmwareTest) Servo() *servo.Proxy {
 // RPCClient gets the RPC client.
 func (t *FirmwareTest) RPCClient() *rpc.Client {
 	return t.d.RPC()
-}
-
-// DbusService gets the DBus service client.
-func (t *FirmwareTest) DbusService() platform.DbusServiceClient {
-	return platform.NewDbusServiceClient(t.RPCClient().Conn)
 }
 
 // UpstartService gets the upstart service client.
