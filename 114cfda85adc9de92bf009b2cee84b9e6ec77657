@@ -226,6 +226,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6abc769e_50e96d54",
+        "filename": "src/chromiumos/tast/local/demomode/fixture/fixture.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1465072
+      },
+      "writtenOn": "2022-10-03T17:13:01Z",
+      "side": 1,
+      "message": "So Demo Mode currently gets policies from real DMServer (set via real DPanel). My initial reasoning for not using a FakeDMS is that part of the final testable Demo Mode product _is_ the policies: we want these Tast tests to be as close to automated E2E versions of the current manual tests as possible - and this somewhat includes testing that the policies are set right and that interacting with real DMServer works as expected. \n\nI do understand that this can be a problem, though, because indirectly testing real server components with Tast can cause false-negative CQ failures for things that aren\u0027t actually client-side issues.\n\nMaybe it\u0027s possible we still do want to use a fake policy test server, and just return exactly the same policies (except for DeveloperToolsAvailability) that the real domain would return. This would solve the problem of prod policy changes potentially breaking Demo Mode tests (since prod policy changes wouldn\u0027t be synchronized with landing Tast changes).\n\nHow does enrollment work though? This setup code enrolls the device into the managed demo mode domain - we can\u0027t fake enrollment right? So the device would enroll against real DMServer but talk to FakeDMS for policies?",
+      "parentUuid": "d12680cd_ec870b9f",
+      "range": {
+        "startLine": 201,
+        "startChar": 23,
+        "endLine": 201,
+        "endChar": 56
+      },
+      "revId": "114cfda85adc9de92bf009b2cee84b9e6ec77657",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "80831988_c34d0c9e",
         "filename": "src/chromiumos/tast/local/demomode/fixture/fixture.go",
         "patchSetId": 6
