@@ -31,7 +31,7 @@ func init() {
 		Timeout:      6 * time.Minute,
 		SoftwareDeps: []string{"crossystem"},
 		HardwareDeps: hwdep.D(hwdep.Fingerprint()),
-		ServiceDeps:  []string{"tast.cros.platform.DbusService", "tast.cros.platform.UpstartService", "tast.cros.baserpc.FileSystem"},
+		ServiceDeps:  []string{"tast.cros.platform.UpstartService", "tast.cros.baserpc.FileSystem"},
 		Vars:         []string{"servo"},
 	})
 }
