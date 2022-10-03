@@ -6,8 +6,9 @@ package arc
 
 import (
 	"context"
-	"syscall"
 	"time"
+
+	"golang.org/x/sys/unix"
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
@@ -104,7 +105,7 @@ func ChromeCrash(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to get chrome proc: ", err)
 	}
-	if err := proc.SendSignalWithContext(ctx, syscall.SIGSEGV); err != nil {
+	if err := proc.SendSignalWithContext(ctx, unix.SIGSEGV); err != nil {
 		s.Fatal("Failed to crash chrome: ", err)
 	}
 
