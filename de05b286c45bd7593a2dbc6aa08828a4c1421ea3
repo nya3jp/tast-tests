@@ -16,6 +16,69 @@
       "message": "friendly ping",
       "revId": "de05b286c45bd7593a2dbc6aa08828a4c1421ea3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5987742d_5bfb9e8a",
+        "filename": "src/chromiumos/tast/local/quickanswers/quickanswers.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-10-03T04:20:27Z",
+      "side": 1,
+      "message": "This a new package, right? New package should also have a doc.go for package description. See tast/local/cpu/doc.go",
+      "revId": "de05b286c45bd7593a2dbc6aa08828a4c1421ea3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63696b0b_c7afd076",
+        "filename": "src/chromiumos/tast/local/quickanswers/quickanswers.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-10-03T04:20:27Z",
+      "side": 1,
+      "message": "sets",
+      "range": {
+        "startLine": 15,
+        "startChar": 16,
+        "endLine": 15,
+        "endChar": 43
+      },
+      "revId": "de05b286c45bd7593a2dbc6aa08828a4c1421ea3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49f6b655_aa74fd10",
+        "filename": "src/chromiumos/tast/local/quickanswers/quickanswers.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-10-03T04:20:27Z",
+      "side": 1,
+      "message": "I have a question: the helper function refactors the code of setting prefs. However, the original callers have different tast.promisify(). Is it okay to use this instead?",
+      "range": {
+        "startLine": 19,
+        "startChar": 45,
+        "endLine": 19,
+        "endChar": 75
+      },
+      "revId": "de05b286c45bd7593a2dbc6aa08828a4c1421ea3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
