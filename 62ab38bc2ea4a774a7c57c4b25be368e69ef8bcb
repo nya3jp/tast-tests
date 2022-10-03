@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e409811c_baeb501d",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacros.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-10-03T04:32:56Z",
+      "side": 1,
+      "message": "That\u0027s lacros.UserDataDir.",
+      "revId": "62ab38bc2ea4a774a7c57c4b25be368e69ef8bcb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "257ca316_42da7ecd",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacros.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-10-03T04:32:56Z",
+      "side": 1,
+      "message": "This will look into subdirectories too, which is unnecessary. I think it\u0027s worth avoiding.",
+      "revId": "62ab38bc2ea4a774a7c57c4b25be368e69ef8bcb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb0e71e5_75072e2c",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacros.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-10-03T04:32:56Z",
+      "side": 1,
+      "message": "lacros log files",
+      "range": {
+        "startLine": 104,
+        "startChar": 66,
+        "endLine": 104,
+        "endChar": 74
+      },
+      "revId": "62ab38bc2ea4a774a7c57c4b25be368e69ef8bcb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
