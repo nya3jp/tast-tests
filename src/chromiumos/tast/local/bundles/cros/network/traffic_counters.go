@@ -40,6 +40,7 @@ type tcParams struct {
 	users bool
 	vpn   bool
 	cros  bool
+	arc   bool
 }
 
 func init() {
@@ -67,6 +68,11 @@ func init() {
 				crostini.GetContainerMetadataArtifact("buster", false),
 				crostini.GetContainerRootfsArtifact("buster", false),
 			},
+		}, {
+			Name:              "arc",
+			Val:               tcParams{arc: true},
+			Pre:               multivm.ArcStarted(),
+			ExtraSoftwareDeps: []string{"chrome", "arc"},
 		}}})
 }
 
@@ -282,11 +288,7 @@ func TrafficCounters(ctx context.Context, s *testing.State) {
 			})
 	}
 
-	// Test traffic originating from Crostini.
-	if param.cros {
-		pre := s.PreValue().(*multivm.PreData)
-		cros := multivm.CrostiniFromPre(pre)
-
+	vmTest := func(srcs []pp.TrafficCounter_Source, f func() error) {
 		handler := func(resp http.ResponseWriter, req *http.Request) {
 			if _, err := ioutil.ReadAll(req.Body); err != nil {
 				testing.ContextLog(ctx, "Failed to read HTTP request: ", err)
@@ -298,24 +300,16 @@ func TrafficCounters(ctx context.Context, s *testing.State) {
 			}
 		}
 
-		expected := counterKeys([]pp.TrafficCounter_Source{pp.TrafficCounter_CROSVM})
+		expected := counterKeys(srcs)
 
-		// Spin up an HTTP server to handle the curl request.
+		// Spin up an HTTP server to handle the request.
 		for _, svr := range svrs {
 			if err := svr.rt.StartServer(ctx, "http", httpserver.New("80", handler, nil)); err != nil {
 				s.Fatal("Failed to start HTTP server: ", err)
 			}
 			test(expected,
 				func() map[string]*counters {
-					// Use curl to generate some traffic to/from the HTTP server.
-					args := []string{
-						"curl",
-						"-X", "PUT",
-						"http://example.com",
-						"--connect-timeout", "5",
-						"-d", fmt.Sprintf(`{"msg":%s}`, msg),
-					}
-					if err := cros.Command(ctx, args...).Run(testexec.DumpLogOnError); err != nil {
+					if err := f(); err != nil {
 						s.Errorf("Failed to run HTTP i/o test for %v:%v: %v", svr.fam.String(), svr.dst(), err)
 					}
 					return getCounters(expected)
@@ -323,6 +317,44 @@ func TrafficCounters(ctx context.Context, s *testing.State) {
 			// Teardown the HTTP server.
 			svr.cleanup(ctx)
 		}
+	}
+
+	// Test traffic originating from Crostini.
+	if param.cros {
+		pre := s.PreValue().(*multivm.PreData)
+		cros := multivm.CrostiniFromPre(pre)
+
+		vmTest(
+			[]pp.TrafficCounter_Source{pp.TrafficCounter_CROSVM},
+			func() error {
+				// Use curl to generate some traffic to/from the HTTP server.
+				args := []string{
+					"curl",
+					"-X", "PUT",
+					"http://example.com",
+					"--connect-timeout", "5",
+					"-d", fmt.Sprintf(`{"msg":%s}`, msg),
+				}
+				return cros.Command(ctx, args...).Run(testexec.DumpLogOnError)
+			})
+	}
+
+	// Test traffic originating from ARC++.
+	if param.arc {
+		pre := s.PreValue().(*multivm.PreData)
+		a := multivm.ARCFromPre(pre)
+
+		vmTest(
+			[]pp.TrafficCounter_Source{pp.TrafficCounter_ARC},
+			func() error {
+				// Use dumpsys to generate some traffic to/from the HTTP server.
+				args := []string{
+					"wifi",
+					"tools", "http",
+					"http://example.com",
+				}
+				return a.Command(ctx, "dumpsys", args...).Run(testexec.DumpLogOnError)
+			})
 	}
 }
 
