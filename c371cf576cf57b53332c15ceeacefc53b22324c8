@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b4adc579_bfb4f04c",
+        "filename": "src/chromiumos/tast/local/cellular/cellular_helper.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1251,
+      "author": {
+        "id": 1487102
+      },
+      "writtenOn": "2022-10-03T21:20:38Z",
+      "side": 1,
+      "message": "If OOBE is not completed before the test is run, even if AutoConnect is true, cellular will not connect by itself. In that case, we have to force ConnectToDefault(). Is that okay?",
+      "parentUuid": "a9f7be16_9a912d20",
+      "revId": "c371cf576cf57b53332c15ceeacefc53b22324c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f66f3869_b5e8ddaf",
         "filename": "src/chromiumos/tast/local/cellular/cellular_helper.go",
         "patchSetId": 3
@@ -31,6 +49,24 @@
       "writtenOn": "2022-09-29T22:59:56Z",
       "side": 1,
       "message": "While debugging an issue in the past, I have noticed that there is a brief time after connect where the signal strength is reported as 0.\n\nI would suggest we add a pool with timeout (timeout being set to 2 x the poll interval in shill for signal strength)",
+      "revId": "c371cf576cf57b53332c15ceeacefc53b22324c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8efde7f0_f06ce8f0",
+        "filename": "src/chromiumos/tast/local/cellular/cellular_helper.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1287,
+      "author": {
+        "id": 1487102
+      },
+      "writtenOn": "2022-10-03T21:20:38Z",
+      "side": 1,
+      "message": "I think that is a bug on modem messaging side. I have a bug open for that.",
+      "parentUuid": "f66f3869_b5e8ddaf",
       "revId": "c371cf576cf57b53332c15ceeacefc53b22324c8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
