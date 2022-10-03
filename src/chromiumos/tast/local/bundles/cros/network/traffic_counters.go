@@ -23,6 +23,7 @@ import (
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/network/vpn"
 	"chromiumos/tast/local/crostini"
 	patchpanel "chromiumos/tast/local/network/patchpanel_client"
@@ -39,6 +40,7 @@ type tcParams struct {
 	users bool
 	vpn   bool
 	cros  bool
+	arc   bool
 }
 
 func init() {
@@ -60,6 +62,10 @@ func init() {
 			Name:    "crostini",
 			Val:     tcParams{cros: true},
 			Fixture: "crostiniBuster",
+		}, {
+			Name:    "arc",
+			Val:     tcParams{arc: true},
+			Fixture: "arcBooted",
 		}}})
 }
 
@@ -272,10 +278,7 @@ func TrafficCounters(ctx context.Context, s *testing.State) {
 			})
 	}
 
-	// Test traffic originating from Crostini.
-	if param.cros {
-		cros := s.FixtValue().(crostini.FixtureData).Cont
-
+	vmTest := func(srcs []pp.TrafficCounter_Source, f func() error) {
 		handler := func(resp http.ResponseWriter, req *http.Request) {
 			// Request payload is unused. Log any error on failure though to help
 			// debug if the test fails.
@@ -289,29 +292,59 @@ func TrafficCounters(ctx context.Context, s *testing.State) {
 			}
 		}
 
-		expected := counterKeys([]pp.TrafficCounter_Source{pp.TrafficCounter_CROSVM})
+		expected := counterKeys(srcs)
 
-		// Spin up an HTTP server to handle the curl request.
+		// Spin up an HTTP server to handle the request.
 		for _, svr := range svrs {
 			if err := svr.rt.StartServer(ctx, "http", httpserver.New("80", handler, nil)); err != nil {
 				s.Fatal("Failed to start HTTP server: ", err)
 			}
 			test(expected,
 				func() map[string]*counters {
-					// Use curl to generate some traffic to/from the HTTP server.
-					args := []string{
-						"curl",
-						"-X", "PUT",
-						"http://foo.bar",
-						"--connect-timeout", "5",
-						"-d", fmt.Sprintf(`{"msg":%s}`, msg),
-					}
-					if err := cros.Command(ctx, args...).Run(testexec.DumpLogOnError); err != nil {
+					if err := f(); err != nil {
 						s.Errorf("Failed to run HTTP i/o test for %v:%v: %v", svr.fam.String(), svr.dst(), err)
 					}
 					return getCounters(expected)
 				})
 		}
+	}
+
+	const targetURL = "http://foo.bar"
+
+	// Test traffic originating from Crostini.
+	if param.cros {
+		cros := s.FixtValue().(crostini.FixtureData).Cont
+
+		vmTest(
+			[]pp.TrafficCounter_Source{pp.TrafficCounter_CROSVM},
+			func() error {
+				// Use curl to generate some traffic to/from the HTTP server.
+				args := []string{
+					"curl",
+					"-X", "PUT",
+					targetURL,
+					"--connect-timeout", "5",
+					"-d", fmt.Sprintf(`{"msg":%s}`, msg),
+				}
+				return cros.Command(ctx, args...).Run(testexec.DumpLogOnError)
+			})
+	}
+
+	// Test traffic originating from ARC++.
+	if param.arc {
+		a := s.FixtValue().(*arc.PreData).ARC
+
+		vmTest(
+			[]pp.TrafficCounter_Source{pp.TrafficCounter_ARC},
+			func() error {
+				// Use dumpsys to generate some traffic to/from the HTTP server.
+				args := []string{
+					"wifi",
+					"tools", "http",
+					targetURL,
+				}
+				return a.Command(ctx, "dumpsys", args...).Run(testexec.DumpLogOnError)
+			})
 	}
 }
 
