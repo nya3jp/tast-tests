@@ -89,6 +89,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "73ae377d_720acf59",
+        "filename": "src/chromiumos/tast/local/bundles/cros/biod/device_permissions.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-10-03T15:36:03Z",
+      "side": 1,
+      "message": "Yep, probably would be better formatted as `\"Unexpected permissions for /dev/cros_fp: got %o, want %o\"` and similarly for the below erorrs",
+      "parentUuid": "65d80623_08ee8d56",
+      "range": {
+        "startLine": 52,
+        "startChar": 53,
+        "endLine": 52,
+        "endChar": 68
+      },
+      "revId": "dcc5d4595f3e48241b53cef1ede8a1b8802ee427",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2d9e5501_a890b0cc",
         "filename": "src/chromiumos/tast/local/bundles/cros/biod/device_permissions.go",
         "patchSetId": 2
