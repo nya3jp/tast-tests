@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d13a8624_6c75e408",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/view_ppd.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2022-10-03T23:57:58Z",
+      "side": 1,
+      "message": "Is Lacros needed?  The OS settings only exist in ash, so I would have expected that no lacros version is needed.",
+      "revId": "634fcab6eec272556920f01d9e6beaf8afbd21c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ae61a8a_e071dffa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/view_ppd.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2022-10-03T23:57:58Z",
+      "side": 1,
+      "message": "Out of curiosity, does the printer need to work at all?  If you set up an appsocket printer pointing to `localhost:9100`, you might be able to view the PPD without ever connecting to the printer.  That would avoid any flakiness from USB setup.",
+      "revId": "634fcab6eec272556920f01d9e6beaf8afbd21c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b765224_fe91d20d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/view_ppd.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2022-10-03T23:57:58Z",
+      "side": 1,
+      "message": "Are IPP attributes needed at all?  If you\u0027re going to push a USB PPD and usb:// URL, I don\u0027t think these will be used.",
+      "revId": "634fcab6eec272556920f01d9e6beaf8afbd21c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df9f1e14_10ec292c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/view_ppd.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2022-10-03T23:57:58Z",
+      "side": 1,
+      "message": "This seems a bit fragile since it\u0027s dependent on the tab order staying the same.  Is it feasible to define a few more matchers and click the appropriate buttons instead?",
+      "revId": "634fcab6eec272556920f01d9e6beaf8afbd21c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3081e74_e511543d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/view_ppd.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2022-10-03T23:57:58Z",
+      "side": 1,
+      "message": "Same here.  If somebody adds a future menu item that changes the order, this will break.  Is it possible to select the exact menu item desired instead?",
+      "revId": "634fcab6eec272556920f01d9e6beaf8afbd21c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25e169d0_2d4fff51",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/view_ppd.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2022-10-03T23:57:58Z",
+      "side": 1,
+      "message": "1. This should probably also verify that the tab contents contain something other than the error message.\n\n2. What about testing for the EULA link?  It would be beneficial to test both scenarios since the link isn\u0027t always present.",
+      "revId": "634fcab6eec272556920f01d9e6beaf8afbd21c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
