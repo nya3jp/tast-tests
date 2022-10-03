@@ -54,6 +54,23 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "7cde5784_46acc4a6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115680
+      },
+      "writtenOn": "2022-10-03T16:19:28Z",
+      "side": 1,
+      "message": "Oh, I\u0027m missing an owner: kyleshima@ PTAL",
+      "revId": "1018b78f170a9e9483ec18612a7c8e6781f4828a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "681fa2c1_b23f8fbf",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/chrome_stack_decoder.go",
         "patchSetId": 1
