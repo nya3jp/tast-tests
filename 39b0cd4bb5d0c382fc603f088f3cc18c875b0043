@@ -16,6 +16,40 @@
       "message": "tast-owners@, this is a test fix of shelf.AppWindowOnShelf. Please take a look. Thanks!",
       "revId": "39b0cd4bb5d0c382fc603f088f3cc18c875b0043",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b383bfbd_82a86507",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/app_window_on_shelf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-10-03T18:06:38Z",
+      "side": 1,
+      "message": "nit: missing period at end of comment.",
+      "revId": "39b0cd4bb5d0c382fc603f088f3cc18c875b0043",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "264bc067_0cc37a08",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/app_window_on_shelf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-10-03T18:06:38Z",
+      "side": 1,
+      "message": "nit: missing period at end of comment.",
+      "revId": "39b0cd4bb5d0c382fc603f088f3cc18c875b0043",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
