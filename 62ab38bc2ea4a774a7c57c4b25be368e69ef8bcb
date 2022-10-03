@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c06bfb9f_ed46ad78",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacros.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-10-03T06:58:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e409811c_baeb501d",
+      "revId": "62ab38bc2ea4a774a7c57c4b25be368e69ef8bcb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0c48c36c_7c3143df",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-10-03T04:33:23Z",
       "side": 1,
       "message": "nit: imo get rid of this srcDir and just reference it directly",
+      "revId": "62ab38bc2ea4a774a7c57c4b25be368e69ef8bcb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b53fcee_f21b49e5",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacros.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-10-03T06:58:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0c48c36c_7c3143df",
       "revId": "62ab38bc2ea4a774a7c57c4b25be368e69ef8bcb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "705d07ec_b1d37974",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacros.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-10-03T06:58:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "257ca316_42da7ecd",
+      "revId": "62ab38bc2ea4a774a7c57c4b25be368e69ef8bcb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bcadf414_05103f6c",
@@ -65,6 +119,24 @@
       "writtenOn": "2022-10-03T04:33:23Z",
       "side": 1,
       "message": "probably also want to check it\u0027s a file and not directory just in case",
+      "revId": "62ab38bc2ea4a774a7c57c4b25be368e69ef8bcb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "08c75ec4_a33e9a8e",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacros.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-10-03T06:58:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bcadf414_05103f6c",
       "revId": "62ab38bc2ea4a774a7c57c4b25be368e69ef8bcb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -92,6 +164,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "279495bb_d41c0ec5",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacros.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-10-03T06:58:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c5441b2b_b162b6d2",
+      "range": {
+        "startLine": 94,
+        "startChar": 5,
+        "endLine": 94,
+        "endChar": 39
+      },
+      "revId": "62ab38bc2ea4a774a7c57c4b25be368e69ef8bcb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eb0e71e5_75072e2c",
@@ -105,6 +201,30 @@
       "writtenOn": "2022-10-03T04:32:56Z",
       "side": 1,
       "message": "lacros log files",
+      "range": {
+        "startLine": 104,
+        "startChar": 66,
+        "endLine": 104,
+        "endChar": 74
+      },
+      "revId": "62ab38bc2ea4a774a7c57c4b25be368e69ef8bcb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "268ec9db_959504b8",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacros.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-10-03T06:58:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eb0e71e5_75072e2c",
       "range": {
         "startLine": 104,
         "startChar": 66,

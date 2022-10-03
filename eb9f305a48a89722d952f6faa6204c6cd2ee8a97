@@ -244,6 +244,24 @@
       "parentUuid": "92ad5146_058e70a1",
       "revId": "eb9f305a48a89722d952f6faa6204c6cd2ee8a97",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8675e62_103f8343",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/launch.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-10-03T06:58:59Z",
+      "side": 1,
+      "message": "Using lacros.UserDataDir instead as Georg suggested.",
+      "parentUuid": "70b608c9_a624b1d5",
+      "revId": "eb9f305a48a89722d952f6faa6204c6cd2ee8a97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
