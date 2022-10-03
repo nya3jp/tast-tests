@@ -248,6 +248,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cca7d1d6_efcc592a",
+        "filename": "src/chromiumos/tast/local/demomode/fixture/fixture.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1465072
+      },
+      "writtenOn": "2022-10-03T17:15:24Z",
+      "side": 1,
+      "message": "Yep, chatting about this above with vsavu@. I see that this only works when rootFS verification is disabled, so it looks like we\u0027ll have to use FakeDMS for policies.",
+      "parentUuid": "0aaa06ca_bfec5137",
+      "revId": "114cfda85adc9de92bf009b2cee84b9e6ec77657",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "80831988_c34d0c9e",
