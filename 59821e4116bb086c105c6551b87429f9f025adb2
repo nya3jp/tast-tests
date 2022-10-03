@@ -256,6 +256,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0282ccca_33b10941",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/screenshot_recorder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-03T20:49:51Z",
+      "side": 1,
+      "message": "I agree that compressing jpg doesn\u0027t do much, but I do think that there\u0027s a benefit to zipping. Basically, I want to group all the screenshots in a single zip file, so we can have stainless look significantly neater, and not have to scroll through a bunch of screenshots to find the info you want. There\u0027s even a flag to the linux zip cmd to skip compressing altogether and just zip it, which if you\u0027re worried about CPU usage, would help. \n\nScreenshots could be pretty big on my volteer, ranging from 1-3mb each. On lower end devices I see things all less than 1 mb. Thus, we really should limit how many screenshots are taken throughout the test / how often they are taken.\n\nnote: I started with png files, and compressing didn\u0027t do anything either. But those files were 2-3 times the size of the jpg files anyways.",
+      "parentUuid": "14b03abe_e2f4f2c2",
+      "revId": "59821e4116bb086c105c6551b87429f9f025adb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "853b2204_395a97ac",
         "filename": "src/chromiumos/tast/local/chrome/uiauto/screenshot_recorder.go",
         "patchSetId": 2
