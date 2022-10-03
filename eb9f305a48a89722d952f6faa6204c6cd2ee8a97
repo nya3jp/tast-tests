@@ -226,6 +226,24 @@
       "parentUuid": "af42f085_324887f7",
       "revId": "eb9f305a48a89722d952f6faa6204c6cd2ee8a97",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70b608c9_a624b1d5",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/launch.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-10-03T04:33:23Z",
+      "side": 1,
+      "message": "Remove the new instance here, make the one in faillog.go public and reference it (unless there\u0027s some import cycle - LMK please).",
+      "parentUuid": "92ad5146_058e70a1",
+      "revId": "eb9f305a48a89722d952f6faa6204c6cd2ee8a97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
