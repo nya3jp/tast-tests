@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab65e7e3_0b8aec6e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-10-03T01:26:51Z",
+      "side": 1,
+      "message": "shadow reviewer lgtm with nits",
+      "revId": "dcc5d4595f3e48241b53cef1ede8a1b8802ee427",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ff9434b_aa53773e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/biod/device_permissions.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-10-03T01:26:51Z",
+      "side": 1,
+      "message": "dup?",
+      "range": {
+        "startLine": 4,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 29
+      },
+      "revId": "dcc5d4595f3e48241b53cef1ede8a1b8802ee427",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6233b78a_2a3ec5fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/biod/device_permissions.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-10-03T01:26:51Z",
+      "side": 1,
+      "message": "nit: merge these two lines:\n```\nif err :\u003d ...; err !\u003d nil {\n  ...\n}\n```",
+      "range": {
+        "startLine": 41,
+        "startChar": 1,
+        "endLine": 42,
+        "endChar": 16
+      },
+      "revId": "dcc5d4595f3e48241b53cef1ede8a1b8802ee427",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65d80623_08ee8d56",
+        "filename": "src/chromiumos/tast/local/bundles/cros/biod/device_permissions.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-10-03T01:26:51Z",
+      "side": 1,
+      "message": "nit: using word \"want\" should be more common in golang and tast.\n\nAlso see https://github.com/golang/go/wiki/TestComments#got-before-want",
+      "range": {
+        "startLine": 52,
+        "startChar": 53,
+        "endLine": 52,
+        "endChar": 68
+      },
+      "revId": "dcc5d4595f3e48241b53cef1ede8a1b8802ee427",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d9e5501_a890b0cc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/biod/device_permissions.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-10-03T01:26:51Z",
+      "side": 1,
+      "message": "if there any reason to not just `info.Uid !\u003d 0`? Same below for gid",
+      "range": {
+        "startLine": 55,
+        "startChar": 4,
+        "endLine": 55,
+        "endChar": 27
+      },
+      "revId": "dcc5d4595f3e48241b53cef1ede8a1b8802ee427",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
