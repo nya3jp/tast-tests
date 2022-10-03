@@ -189,6 +189,29 @@ func NeedsRebootAfterFlashing(ctx context.Context, d *rpcdut.RPCDUT) (bool, erro
 	return BoardTransportIsUART(ctx, d)
 }
 
+func getDUTModel(ctx context.Context, d *rpcdut.RPCDUT) (string, error) {
+	// Model comes from "cros_config / name"
+	model, err := reporters.New(d.DUT()).Model(ctx)
+	if err != nil {
+		return "", errors.Wrap(err, "failed to query DUT model")
+	}
+	return model, nil
+}
+
+// DUTModelIsInList returns true if DUT model is present in the modelList.
+func DUTModelIsInList(ctx context.Context, d *rpcdut.RPCDUT, modelList []string) (bool, error) {
+	actualModel, err := getDUTModel(ctx, d)
+	if err != nil {
+		return false, err
+	}
+	for _, model := range modelList {
+		if model == actualModel {
+			return true, nil
+		}
+	}
+	return false, nil
+}
+
 // getExpectedFwInfo returns expected firmware info for a given firmware file name.
 func getExpectedFwInfo(fpBoard fp.BoardName, buildFwFile string, infoType fwInfoType) (string, error) {
 	boardExpectedFwInfo, ok := firmwareVersionMap[fpBoard]
