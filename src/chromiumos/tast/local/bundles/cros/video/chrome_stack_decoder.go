@@ -29,6 +29,8 @@ func init() {
 			"chromeos-gfx-video@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
+		// TODO(b/185790070): Reenable when MTK8173 (hana, oak, elm) is migrated to the direct VD.
+		HardwareDeps: hwdep.D(hwdep.SkipOnModel("hana", "elm")),
 		Timeout:      4 * time.Minute,
 		Fixture:      "graphicsNoChrome",
 		Attr:         []string{"group:graphics", "graphics_video", "graphics_perbuild", "graphics_video_decodeaccel"},
