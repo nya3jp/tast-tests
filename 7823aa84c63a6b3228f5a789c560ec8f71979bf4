@@ -3,6 +3,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8e74d38c_0ee310b4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2022-10-03T10:57:53Z",
+      "side": 1,
+      "message": "Please add unit tests for the `nami_fp_v2.2.144-7a08e07eb` case. After adding the test, run `./tast/fast_build -T` and put `TEST\u003dTAST unit tests passed` in the commit log.",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 4
+      },
+      "revId": "7823aa84c63a6b3228f5a789c560ec8f71979bf4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46c4402f_c7eca4c4",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint_test_images.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2022-10-03T10:57:53Z",
+      "side": 1,
+      "message": "I think there is no need to place more `\\x00` to the suffix, because `newVersion` was filled with `\\x00` by `make`. I\u0027ve checked that in a playground https://go.dev/play/p/HBP9amjUZuf",
+      "range": {
+        "startLine": 242,
+        "startChar": 0,
+        "endLine": 244,
+        "endChar": 3
+      },
+      "revId": "7823aa84c63a6b3228f5a789c560ec8f71979bf4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "72e67c7e_9827ced8",
         "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint_test_images.go",
         "patchSetId": 1
@@ -14,6 +60,24 @@
       "writtenOn": "2022-10-02T03:14:10Z",
       "side": 1,
       "message": "I don\u0027t understand line 231 line 250.\n\nWill the following do the same thing?\n\n```\nversionWithSuffix :\u003d string(version) + suffix\ncopy(newVersion[:], versionWithSuffix)\nreturn newVersion, nil\n```\n\nIf so, I think the above code is simpler.",
+      "revId": "7823aa84c63a6b3228f5a789c560ec8f71979bf4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "11e1768e_2b7fdbff",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint_test_images.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2022-10-03T10:57:53Z",
+      "side": 1,
+      "message": "This won\u0027t work. `version` and `newVersion` need to have exactly `versionStringLenBytes` size. If there is no place for `suffix` we need to overwrite `version`.\n\nExample:\nFor \"nami_fp_v2.2.144-7a08e07eb\" `version` will be `nami_fp_v2.2.144-7a08e07eb\\x00\\x00\\x00\\x00\\x00\\x00` and `newVersion` will be `nami_fp_v2.2.144-7a08e07eb.dev\\x00\\x00`. This is the case in which there is enough space for the suffix.\n\nFor \"bloonchipper_v2.0.14348-e5fb0b9\" `version` will be `bloonchipper_v2.0.14348-e5fb0b9\\x00` and `newVersion` will be `bloonchipper_v2.0.14348-e5f.dev\\x00`. In this case `b0b9` was overwritten by `.dev`",
+      "parentUuid": "72e67c7e_9827ced8",
       "revId": "7823aa84c63a6b3228f5a789c560ec8f71979bf4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
