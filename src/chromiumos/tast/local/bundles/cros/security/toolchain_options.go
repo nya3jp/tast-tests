@@ -85,7 +85,11 @@ var pieAllowlist []string
 
 var textrelAllowlist []string
 
-var stackAllowlist []string
+var stackAllowlist = []string{
+	// Skip Lacros's nacl binary, which is currently compiled with the Chrome toolchain.
+	"/run/lacros/nacl_irt_arm.nexe",
+	"/run/lacros/nacl_irt_x86_64.nexe",
+}
 
 var loadwxAllowlist []string
 
