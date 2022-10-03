@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3bed83e2_3c2b1612",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-10-03T18:28:05Z",
+      "side": 1,
+      "message": "Thanks for implementing this!",
+      "revId": "5625f8a653f870887c68b9c491adf51c7ec4362e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c9a4d24_c20499a6",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_client.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-10-03T18:28:05Z",
+      "side": 1,
+      "message": "I don\u0027t think this has an impact. On new user creation AuthSession is already in the \"authenticated\" state. This state is set with the \"OnUserCreated()\" function which is called from CreatePersistentUSer",
+      "range": {
+        "startLine": 416,
+        "startChar": 0,
+        "endLine": 418,
+        "endChar": 2
+      },
+      "revId": "5625f8a653f870887c68b9c491adf51c7ec4362e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72ec321c_1b62e834",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_client.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 421,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-10-03T18:28:05Z",
+      "side": 1,
+      "message": "I think AddAuthFactor only calls the AddAuthFactor on cryptohome binary",
+      "range": {
+        "startLine": 420,
+        "startChar": 1,
+        "endLine": 421,
+        "endChar": 13
+      },
+      "revId": "5625f8a653f870887c68b9c491adf51c7ec4362e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ba8b89e_3db8e0be",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_client.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 424,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-10-03T18:28:05Z",
+      "side": 1,
+      "message": "This should be moved to up, to be the first function call in here",
+      "range": {
+        "startLine": 422,
+        "startChar": 0,
+        "endLine": 424,
+        "endChar": 2
+      },
+      "revId": "5625f8a653f870887c68b9c491adf51c7ec4362e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c25e4a7_aebfe055",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_client.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 446,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-10-03T18:28:05Z",
+      "side": 1,
+      "message": "I don\u0027t think we need this function. We already have AuthenticateAuthFactor() in the cryptohome_client code and adding one more is really too many indirection.  We should also remove the similar function authenticateWithAuthSession(). (not in this CL)",
+      "range": {
+        "startLine": 446,
+        "startChar": 27,
+        "endLine": 446,
+        "endChar": 53
+      },
+      "revId": "5625f8a653f870887c68b9c491adf51c7ec4362e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "316dd0a1_1689d222",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_client.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 505,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-10-03T18:28:05Z",
+      "side": 1,
+      "message": "A suggestion: I think we don\u0027t need the extra functions createUserWithAuthFActor and authenticateWithAuthFActor. Just start an AuthSession and use the AuthSession ID in the CreatePersistentUSer, AddAuthFactor, AuthenticateAuthFActor calls:\n\nAuthSessionID \u003d StartAuthSession()\n\nif create: CreatePersistentUser(AuthSessionID) + AddAuthFactor(AuthSessionID)\nelse : AuthenticateAuthFactor(AuthSessionID)\nthen\nPreparePersistentVault/PrepareEphemeralVault\n\nIf we have fewer functions we won\u0027t need to jump from one function to another when reading a test code.",
+      "range": {
+        "startLine": 495,
+        "startChar": 0,
+        "endLine": 505,
+        "endChar": 2
+      },
+      "revId": "5625f8a653f870887c68b9c491adf51c7ec4362e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0865e698_408562f1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/login_during_taking_ownership.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-10-03T18:28:05Z",
+      "side": 1,
+      "message": "Can you change this with MountVaultWithAuthSessionAPI and MountVaultWithAuthFactorAPI? You could parametrize it. And I don\u0027t think we should keep the legacy MountVault() as a third parameter.",
+      "range": {
+        "startLine": 46,
+        "startChar": 13,
+        "endLine": 46,
+        "endChar": 31
+      },
+      "revId": "5625f8a653f870887c68b9c491adf51c7ec4362e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
