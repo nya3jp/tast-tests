@@ -1,0 +1,74 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a517eaa7_6ea68d43",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-10-03T17:00:16Z",
+      "side": 1,
+      "message": "\u003e \"actiavtion\" is a possible misspelling of \"activation\".\n\nPlease fix.",
+      "parentUuid": "ae874905_fad756cd",
+      "range": {
+        "startLine": 18,
+        "startChar": 19,
+        "endLine": 18,
+        "endChar": 29
+      },
+      "revId": "8191ed658c3bfb1b2d78ddd9ca65274189bc7175",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f891e02f_fd127c99",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-10-03T17:00:16Z",
+      "side": 1,
+      "message": "Can you add a link to the bug?",
+      "range": {
+        "startLine": 20,
+        "startChar": 46,
+        "endLine": 21,
+        "endChar": 27
+      },
+      "revId": "8191ed658c3bfb1b2d78ddd9ca65274189bc7175",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3655c18e_76aff05a",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/firmware_test_handler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-10-03T17:00:16Z",
+      "side": 1,
+      "message": "Can we make this only run on devices with the bug? (e.g., dragonair).",
+      "range": {
+        "startLine": 111,
+        "startChar": 1,
+        "endLine": 116,
+        "endChar": 2
+      },
+      "revId": "8191ed658c3bfb1b2d78ddd9ca65274189bc7175",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
