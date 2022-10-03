@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ffaf80b_72f5c0f6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2022-10-03T03:56:21Z",
+      "side": 1,
+      "message": "1. Please ignore *-kernel-next build as they are non-critical builds.\n2. grunt failures can be fixed by https://crrev.com/c/3921096.\n3. hana is skipped in https://crrev.com/c/3932372.",
+      "revId": "28d02e9b269f446707214e203a9cb46c900f087d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
