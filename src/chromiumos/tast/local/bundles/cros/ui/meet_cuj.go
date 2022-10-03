@@ -212,7 +212,6 @@ func init() {
 			// Even bigger meeting.
 			Name:      "49p",
 			Timeout:   defaultTestTimeout,
-			ExtraAttr: []string{"group:cuj"},
 			Val: meetTest{
 				num:         48,
 				layout:      meetLayoutTiled,
@@ -223,7 +222,6 @@ func init() {
 		}, {
 			Name:      "lacros_49p",
 			Timeout:   defaultTestTimeout,
-			ExtraAttr: []string{"group:cuj"},
 			Val: meetTest{
 				num:         48,
 				layout:      meetLayoutTiled,
@@ -275,7 +273,6 @@ func init() {
 			// 49p with vp8 video codec.
 			Name:      "49p_vp8",
 			Timeout:   defaultTestTimeout,
-			ExtraAttr: []string{"group:cuj"},
 			Val: meetTest{
 				num:         48,
 				layout:      meetLayoutTiled,
