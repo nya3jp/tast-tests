@@ -21,6 +21,7 @@ import (
 	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/mouse"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/policyutil"
@@ -200,7 +201,7 @@ func AppRearrangement(ctx context.Context, s *testing.State) {
 	case chromeAppTest, fileAppTest:
 		options := s.FixtValue().([]chrome.Option)
 		if isunderRTL {
-			options = append(options, chrome.ExtraArgs("--lang=ar"))
+			options = append(options, chrome.ExtraArgs("--force-ui-direction=rtl"))
 		}
 		cr, _, closeBrowser, err = browserfixt.SetUpWithNewChrome(ctx, bt, lacrosfixt.NewConfig(), options...)
 		if err != nil {
@@ -238,6 +239,8 @@ func AppRearrangement(ctx context.Context, s *testing.State) {
 	}
 	defer resetPinState(ctx)
 
+	defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "ui_tree")
+
 	items, err := ash.ShelfItems(ctx, tconn)
 	if err != nil {
 		s.Fatal("Failed to get shelf items: ", err)
@@ -270,6 +273,10 @@ func AppRearrangement(ctx context.Context, s *testing.State) {
 	// The updated app ids by pin order after dragging the target app from the last slot to the first slot.
 	var updatedAppIDsInPinOrder []string
 
+	// The app ids by pin order after dragging a pinned app from the first slot across the separator to the last slot.
+	// Note that the Settings app would be unpinned before the drag.
+	var draggedToUnpinAppIDsInPinOrder []string
+
 	// Update appIDsToPin based on the test type.
 	switch testAppType {
 	case chromeAppTest:
@@ -285,6 +292,7 @@ func AppRearrangement(ctx context.Context, s *testing.State) {
 		appIDsToPin = []string{apps.Settings.ID, fakeAppIDs[1], fakeAppIDs[0]}
 		defaultAppIDsInPinOrder = []string{browserApp.ID, apps.Settings.ID, fakeAppIDs[1], fakeAppIDs[0]}
 		updatedAppIDsInPinOrder = []string{fakeAppIDs[0], browserApp.ID, apps.Settings.ID, fakeAppIDs[1]}
+		draggedToUnpinAppIDsInPinOrder = []string{browserApp.ID, fakeAppIDs[1], apps.Settings.ID, fakeAppIDs[0]}
 
 	case fileAppTest:
 		fakeAppIDs, err := fakeAppIDs(ctx, tconn)
@@ -299,6 +307,7 @@ func AppRearrangement(ctx context.Context, s *testing.State) {
 		appIDsToPin = []string{apps.Settings.ID, fakeAppIDs[1], apps.FilesSWA.ID}
 		defaultAppIDsInPinOrder = []string{browserApp.ID, apps.Settings.ID, fakeAppIDs[1], apps.FilesSWA.ID}
 		updatedAppIDsInPinOrder = []string{apps.FilesSWA.ID, browserApp.ID, apps.Settings.ID, fakeAppIDs[1]}
+		draggedToUnpinAppIDsInPinOrder = []string{browserApp.ID, fakeAppIDs[1], apps.Settings.ID, apps.FilesSWA.ID}
 
 	case pwaAppTest:
 		fdms := s.FixtValue().(fakedms.HasFakeDMS).FakeDMS()
@@ -311,6 +320,7 @@ func AppRearrangement(ctx context.Context, s *testing.State) {
 		appIDsToPin = []string{apps.Settings.ID, apps.FilesSWA.ID, pwaAppID}
 		defaultAppIDsInPinOrder = []string{browserApp.ID, apps.Settings.ID, apps.FilesSWA.ID, pwaAppID}
 		updatedAppIDsInPinOrder = []string{pwaAppID, browserApp.ID, apps.Settings.ID, apps.FilesSWA.ID}
+		draggedToUnpinAppIDsInPinOrder = []string{browserApp.ID, apps.FilesSWA.ID, apps.Settings.ID, pwaAppID}
 
 		// Use a shortened context for test operations to reserve time for cleanup.
 		cleanupCtx := ctx
@@ -337,6 +347,7 @@ func AppRearrangement(ctx context.Context, s *testing.State) {
 		appIDsToPin = []string{apps.Settings.ID, apps.FilesSWA.ID, installedArcAppID}
 		defaultAppIDsInPinOrder = []string{browserApp.ID, apps.Settings.ID, apps.FilesSWA.ID, installedArcAppID}
 		updatedAppIDsInPinOrder = []string{installedArcAppID, browserApp.ID, apps.Settings.ID, apps.FilesSWA.ID}
+		draggedToUnpinAppIDsInPinOrder = []string{browserApp.ID, apps.FilesSWA.ID, apps.Settings.ID, installedArcAppID}
 	}
 
 	// Pin additional apps to create a more complex scenario for testing.
@@ -477,17 +488,77 @@ func AppRearrangement(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to verify shelf icon indices after moving the target app with the activated window from the first slot to the last slot: ", err)
 	}
 
+	// Start testing the behavior that dragging an unpinned app across the separator can pin the app
 	if err := ash.UnpinApps(ctx, tconn, []string{targetAppID}); err != nil {
 		s.Fatalf("Failed to unpin %s(%s): %v", targetAppName, targetAppID, err)
 	}
+
+	var pinnedApps []string
+	var numPinnedApps int
+
+	if pinnedApps, err = ash.GetPinnedAppIds(ctx, tconn); err != nil {
+		s.Fatal("Failed to get the pinned app ids before dragging the unpinned app: ", err)
+	}
+
+	numPinnedApps = len(pinnedApps)
 
 	if err := getDragAndDropAction(tconn, "move the unpinned app with the activated window from the last slot to the first slot", lastSlotCenter, firstSlotCenter)(ctx); err != nil {
 		s.Fatal("Failed to move the unpinned app from the last slot to the first slot: ", err)
 	}
 
-	// Verify that an unpinned app with the activated window should not be able to be placed in front of the pinned apps.
-	if err := ash.VerifyShelfIconIndices(ctx, tconn, defaultAppIDsInPinOrder); err != nil {
+	// Verify that an unpinned app can be moved across the separator to the pinned apps and pin the app.
+	if err := ash.VerifyShelfIconIndices(ctx, tconn, updatedAppIDsInPinOrder); err != nil {
 		s.Fatal("Failed to verify shelf icon indices after the unpinned app is dragged then dropped: ", err)
+	}
+
+	if pinnedApps, err = ash.GetPinnedAppIds(ctx, tconn); err != nil {
+		s.Fatal("Failed to get the pinned app ids after dragging the unpinned app: ", err)
+	}
+
+	// The number of pinned apps should be increased by 1 after pinning the unpinned app by dragging.
+	if len(pinnedApps) != numPinnedApps+1 {
+		s.Fatal("Failed to pin the dragged unpinned app")
+	}
+
+	// Start testing the behavior that dragging a pinned app across the separator can unpin the app.
+
+	// To have an unpinned app on the shelf and make the separator visible, we have to first launch an instance of the app "A" and unpin it, then we can drag another pinned app "B" to unpin.
+	// To prevent fake apps using the same window and fail to launch the app on different windows, the Settings app is chosen here as the app "A" to be unpinned.
+	unpinAppName := apps.Settings.Name
+	unpinAppID := apps.Settings.ID
+
+	// Launch the Settings app that will be unpinned later.
+	if err := ash.LaunchAppFromShelf(ctx, tconn, unpinAppName, unpinAppID); err != nil {
+		s.Fatalf("Failed to launch %s(%s) from the shelf: %v", unpinAppName, unpinAppID, err)
+	}
+
+	// Unpin the Settings app first to make sure there is an unpinned app and the separator exists on the shelf.
+	if err := ash.UnpinApps(ctx, tconn, []string{unpinAppID}); err != nil {
+		s.Fatalf("Failed to unpin %s(%s): %v", unpinAppName, unpinAppID, err)
+	}
+
+	if pinnedApps, err = ash.GetPinnedAppIds(ctx, tconn); err != nil {
+		s.Fatal("Failed to get the pinned app ids before dragging the unpinned app: ", err)
+	}
+
+	numPinnedApps = len(pinnedApps)
+
+	// Drag the target app (app "B") at the first slot to the last slot where the app will be unpinned.
+	if err := getDragAndDropAction(tconn, "move the target app with the activated window from the first slot to the last slot", firstSlotCenter, lastSlotCenter)(ctx); err != nil {
+		s.Fatal("Failed to move the target app with the activated window from the first slot to the last slot")
+	}
+
+	if err := ash.VerifyShelfIconIndices(ctx, tconn, draggedToUnpinAppIDsInPinOrder); err != nil {
+		s.Fatal("Failed to verify shelf icon indices after dragging the pinned app to unpin from the first slot to the last slot: ", err)
+	}
+
+	if pinnedApps, err = ash.GetPinnedAppIds(ctx, tconn); err != nil {
+		s.Fatal("Failed to get the pinned app ids after dragging the unpinned app: ", err)
+	}
+
+	// The number of pinned apps should be reduced by 1 after unpinning the pinned app "B" by dragging.
+	if len(pinnedApps) != numPinnedApps-1 {
+		s.Fatal("Failed to pin the dragged unpinned app")
 	}
 
 	// Cleanup.
