@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "889d3ae9_6cfed7aa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-10-03T16:53:42Z",
+      "side": 1,
+      "message": "Please also run tast unit test: fast_build.sh -T\n\nThanks.",
+      "revId": "01ac9f1e14d2fb00ac21fbbabb9445601357d45a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
