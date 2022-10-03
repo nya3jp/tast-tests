@@ -33,6 +33,46 @@
       "message": "LGTM",
       "revId": "1018b78f170a9e9483ec18612a7c8e6781f4828a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "59a780d1_1b8fd9ba",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1498402
+      },
+      "writtenOn": "2022-10-03T15:44:13Z",
+      "side": 1,
+      "message": "LGTM.",
+      "revId": "1018b78f170a9e9483ec18612a7c8e6781f4828a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "681fa2c1_b23f8fbf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/chrome_stack_decoder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1498402
+      },
+      "writtenOn": "2022-10-03T15:44:13Z",
+      "side": 1,
+      "message": "An ancient bug number! Some day. 😊",
+      "range": {
+        "startLine": 32,
+        "startChar": 10,
+        "endLine": 32,
+        "endChar": 21
+      },
+      "revId": "1018b78f170a9e9483ec18612a7c8e6781f4828a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
