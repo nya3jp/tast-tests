@@ -80,6 +80,24 @@
       "parentUuid": "72e67c7e_9827ced8",
       "revId": "7823aa84c63a6b3228f5a789c560ec8f71979bf4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7cbfa0bc_0eb430a6",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint_test_images.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-10-03T19:01:32Z",
+      "side": 1,
+      "message": "Then, how about this? I think it is much more readable.\n \n ```\n        // Truncate string to leave space for suffix + null character.\n        versionStr :\u003d string(version)[:versionStringLenBytes-len(suffix)-1]\n        newVersion :\u003d make([]byte, versionStringLenBytes)\n        copy(newVersion[:], versionStr+suffix)\n        return newVersion, nil\n```\n\nI tested it myself\n\n\n```\nfunc addSuffix(version []byte, suffix string) ([]byte, error) {\n        const versionStringLenBytes \u003d 32\n        // Truncate string to leave space for suffix + null character\n        versionStr :\u003d string(version)[:versionStringLenBytes-len(suffix)-1]\n        newVersion :\u003d make([]byte, versionStringLenBytes)\n        copy(newVersion[:], versionStr+suffix)\n        return newVersion, nil\n}\n\n        version :\u003d make([]byte, 32)\n        copy(version[:], \"nami_fp_v2.2.144-7a08e07eb\")\n        filePath, _ :\u003d addSuffix(version, \".dev\")\n        fmt.Printf(\"%v \u003d\u003e %v, %v\\n\", string(version), string(filePath), filePath)\n\n        copy(version[:], \"bloonchipper_v2.0.14348-e5fb0b9\")\n        filePath, _ \u003d addSuffix(version, \".dev\")\n        fmt.Printf(\"%v \u003d\u003e %v, %v\\n\", string(version), string(filePath), filePath)\n\n```\n\nOutput:\n\n```\nnami_fp_v2.2.144-7a08e07eb \u003d\u003e nami_fp_v2.2.144-7a08e07eb.dev, [110 97 109 105 95 102 112 95 118 50 46 50 46 49 52 52 45 55 97 48 56 101 48 55 101 98 0 46 100 101 118 0]\nbloonchipper_v2.0.14348-e5fb0b9 \u003d\u003e bloonchipper_v2.0.14348-e5f.dev, [98 108 111 111 110 99 104 105 112 112 101 114 95 118 50 46 48 46 49 52 51 52 56 45 101 53 102 46 100 101 118 0]\n\n```",
+      "parentUuid": "11e1768e_2b7fdbff",
+      "revId": "7823aa84c63a6b3228f5a789c560ec8f71979bf4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
