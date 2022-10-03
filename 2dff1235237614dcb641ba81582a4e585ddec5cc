@@ -143,6 +143,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd8954eb_7d092ea8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/traffic_counters.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-10-03T08:23:59Z",
+      "side": 1,
+      "message": "that sounds not correct... does it seems like a routing issue or counter issue?",
+      "parentUuid": "a1e6477c_9f70379c",
+      "range": {
+        "startLine": 55,
+        "startChar": 22,
+        "endLine": 55,
+        "endChar": 44
+      },
+      "revId": "2dff1235237614dcb641ba81582a4e585ddec5cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "61aeadf4_9b3d21a7",

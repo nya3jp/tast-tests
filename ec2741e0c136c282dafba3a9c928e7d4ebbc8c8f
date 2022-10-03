@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eddc10c0_2687c34f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/traffic_counters.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-10-03T08:23:59Z",
+      "side": 1,
+      "message": "Do we really need this map? It seems to me that for both `counterKeys()` and `runIO()`, only either user or source is used? Maybe just passing in a \"set\" should be simpler?\n\n(I spent some time on imagining how this map will be used in that two functions...)",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 52
+      },
+      "revId": "ec2741e0c136c282dafba3a9c928e7d4ebbc8c8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b399d3fb_69221030",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/traffic_counters.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-10-03T08:23:59Z",
+      "side": 1,
+      "message": "nit: maybe add a comment mentioning that we don\u0027t support IPv6 for VPN now.",
+      "range": {
+        "startLine": 126,
+        "startChar": 0,
+        "endLine": 128,
+        "endChar": 2
+      },
+      "revId": "ec2741e0c136c282dafba3a9c928e7d4ebbc8c8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51237880_4599812a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/traffic_counters.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-10-03T08:23:59Z",
+      "side": 1,
+      "message": "devices/interfaces?",
+      "range": {
+        "startLine": 172,
+        "startChar": 60,
+        "endLine": 172,
+        "endChar": 65
+      },
+      "revId": "ec2741e0c136c282dafba3a9c928e7d4ebbc8c8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50cfb9d2_7df7f76c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/traffic_counters.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-10-03T08:23:59Z",
+      "side": 1,
+      "message": "should we also add another line to include the (physical_if, SOURCE_VPN)?\n(or is it already included?)",
+      "range": {
+        "startLine": 255,
+        "startChar": 2,
+        "endLine": 255,
+        "endChar": 74
+      },
+      "revId": "ec2741e0c136c282dafba3a9c928e7d4ebbc8c8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
