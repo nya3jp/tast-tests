@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a2f7753_e1434270",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1427116
+      },
+      "writtenOn": "2022-10-03T17:58:52Z",
+      "side": 1,
+      "message": "tast-owners@, this is a test fix of shelf.AppWindowOnShelf. Please take a look. Thanks!",
+      "revId": "39b0cd4bb5d0c382fc603f088f3cc18c875b0043",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
