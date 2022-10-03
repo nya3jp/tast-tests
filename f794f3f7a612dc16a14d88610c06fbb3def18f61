@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "231d4d87_98a50b23",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1427116
+      },
+      "writtenOn": "2022-10-03T22:57:19Z",
+      "side": 1,
+      "message": "Hi Toni, this cl fixed the test that failed after the shelf-drag-to-pin feature was landed. Please take a look. Thanks!",
+      "revId": "f794f3f7a612dc16a14d88610c06fbb3def18f61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
