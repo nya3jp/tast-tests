@@ -220,6 +220,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0080c8f1_3d58cea3",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/screenshot_recorder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-03T17:46:33Z",
+      "side": 1,
+      "message": "Note: compressing a jpg file doesn\u0027t shave off much of anything. If we really needed to lessen the space we\u0027d need to resize the image, which would be a CPU heavy op, and there\u0027s no easy way of doing that without other libraries I think. Zipping the file is mainly going to be useful for not having long lists of screenshots for each test when you open stainless, which could be very beneficial.\n\n_Practically_, I\u0027m not worried about the issue of CPU usage during compression, because we set the max number of images, and compressing 10 pictures is basically instantaneous. However, if we were compressing a gig of screenshots, we should be pretty worried, but we\u0027d probably never set the number of screenshots to be above 10 for any test, so we should be ok. \n\nI currently removed the compression from inside the recorder, bc I don\u0027t ever want to try to compress a massive amount of screenshots, since that for sure would affect the CPU. But, we should probably discuss the merits of compressing after each shot, even if we don\u0027t actually do it (which I\u0027m totally ok with!). First, it\u0027d be cheap (I can\u0027t imagine how compressing a single picture, which does very little, would change CPU usage in any way). Second, we\u0027d guarantee that every shot would be in the zip file in stainless. But I\u0027m 100% open in either direction, and currently this CL compresses outside the recorder.",
+      "parentUuid": "564b7db4_5f520d49",
+      "revId": "59821e4116bb086c105c6551b87429f9f025adb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "853b2204_395a97ac",
         "filename": "src/chromiumos/tast/local/chrome/uiauto/screenshot_recorder.go",
         "patchSetId": 2
@@ -267,6 +285,24 @@
       "side": 1,
       "message": "I think \"sequence\" is fine, but whatever works. Iteration is confusing because some tests also have iterations, right?",
       "parentUuid": "45638693_a4d4c4e5",
+      "revId": "59821e4116bb086c105c6551b87429f9f025adb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "506edca3_37edc671",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/screenshot_recorder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-03T17:46:33Z",
+      "side": 1,
+      "message": "Agreed, \"iteration\" is ambiguous. Updated the comment.",
+      "parentUuid": "47c9ae0a_072073f6",
       "revId": "59821e4116bb086c105c6551b87429f9f025adb2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -320,6 +356,24 @@
       "side": 1,
       "message": "I think something like cuj-1-10.jpg would be nice because sometimes these screenshots will be shared.",
       "parentUuid": "16722e57_426111eb",
+      "revId": "59821e4116bb086c105c6551b87429f9f025adb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "06d76379_dd20cad8",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/screenshot_recorder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-03T17:46:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8ff35be1_cc6423d4",
       "revId": "59821e4116bb086c105c6551b87429f9f025adb2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
