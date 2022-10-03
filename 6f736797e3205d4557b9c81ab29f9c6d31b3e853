@@ -46,6 +46,30 @@
       },
       "revId": "6f736797e3205d4557b9c81ab29f9c6d31b3e853",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c943d67f_cb84f9fc",
+        "filename": "src/chromiumos/tast/local/wallpaper/wallpaper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1537587
+      },
+      "writtenOn": "2022-10-03T22:42:31Z",
+      "side": 1,
+      "message": "I was worried about `NameContaining` not being strict enough, but it works in this case.\n\n\u003e the method\u0027s description needs to be updated\n\nDone.",
+      "parentUuid": "382b2ee9_46c27aab",
+      "range": {
+        "startLine": 206,
+        "startChar": 36,
+        "endLine": 206,
+        "endChar": 155
+      },
+      "revId": "6f736797e3205d4557b9c81ab29f9c6d31b3e853",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
