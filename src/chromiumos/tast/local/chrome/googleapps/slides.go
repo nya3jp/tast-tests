@@ -82,6 +82,7 @@ func RenameSlide(tconn *chrome.TestConn, kb *input.KeyboardEventWriter, title st
 	return uiauto.NamedAction("rename the slide",
 		ui.Retry(5, uiauto.Combine("rename slide",
 			ui.WaitUntilExists(slideWebArea),
+			showTheSlideMenu(tconn),
 			ui.LeftClickUntil(renameTextbox, ui.WithTimeout(5*time.Second).WaitUntilExists(renameTextbox.State("focused", true))),
 			kb.AccelAction("Ctrl+A"),
 			kb.TypeAction(title),
@@ -100,6 +101,7 @@ func PresentSlide(tconn *chrome.TestConn, kb *input.KeyboardEventWriter, slideCo
 	presentFromBeginningButton := nodewith.NameRegex(regexp.MustCompile("(Present|Start) from beginning.*")).Role(role.MenuItem).First()
 	menuBar := nodewith.Name("Menu bar").Role(role.Banner).Ancestor(slideWebArea).First()
 	return uiauto.NamedCombine("present slide",
+		showTheSlideMenu(tconn),
 		ui.WaitUntilExists(presentationOptionsButton),
 		ui.DoDefaultUntil(presentationOptionsButton, ui.WithTimeout(5*time.Second).WaitUntilExists(presentFromBeginningButton)),
 		ui.DoDefault(presentFromBeginningButton),
@@ -170,6 +172,7 @@ func DeleteSlide(tconn *chrome.TestConn) action.Action {
 	goToSlidesHome := nodewith.Name("Go to Slides home screen").Role(role.Button)
 	leaveButton := nodewith.Name("Leave").Role(role.Button)
 	return uiauto.NamedCombine("delete slide",
+		showTheSlideMenu(tconn),
 		cuj.ExpandMenu(tconn, fileButton, menu, 482),
 		ui.DoDefault(moveToTrash),
 		ui.DoDefault(goToSlidesHome),
@@ -184,4 +187,13 @@ func DeleteSlide(tconn *chrome.TestConn) action.Action {
 // waitForSlideSaved waits for the slide document state to be saved.
 func waitForSlideSaved(tconn *chrome.TestConn) action.Action {
 	return waitForDocumentSaved(tconn, slideName)
+}
+
+// showTheSlideMenu shows the hidden Slide menu.
+func showTheSlideMenu(tconn *chrome.TestConn) action.Action {
+	ui := uiauto.New(tconn)
+	showTheMenusButton := nodewith.NameContaining("Show the menus").Role(role.Button)
+	hideTheMenusButton := nodewith.NameContaining("Hide the menus").Role(role.Button)
+	return uiauto.IfSuccessThen(ui.Exists(showTheMenusButton),
+		ui.LeftClickUntil(showTheMenusButton, ui.WithTimeout(shortUITimeout).WaitUntilExists(hideTheMenusButton)))
 }
