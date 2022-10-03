@@ -7,8 +7,10 @@ package arcappcompat
 
 import (
 	"context"
+	"strings"
 	"time"
 
+	"chromiumos/tast/common/action"
 	"chromiumos/tast/common/android/ui"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
@@ -158,7 +160,6 @@ func Discord(ctx context.Context, s *testing.State) {
 // verify Discord reached main activity page of the app.
 func launchAppForDiscord(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
 	const (
-		signInText             = "Login"
 		textEditClassName      = "android.widget.EditText"
 		enterEmailText         = "Email"
 		emailOrPhoneNumberText = "Email or Phone Number"
@@ -169,13 +170,20 @@ func launchAppForDiscord(ctx context.Context, s *testing.State, tconn *chrome.Te
 		loginID                = "login_submit_button"
 		neverButtonID          = "com.google.android.gms:id/credential_save_reject"
 		captchaWord            = "skip"
+		loginText              = "Log In"
+		// The inputs rendered by Discord are not immediately active after being clicked
+		// so wait a moment for the engine to make the input active before interacting with it.
+		waitForActiveInputTime = time.Second * 10
 	)
 
-	loginButton := d.Object(ui.ClassName("android.widget.TextView"), ui.Text(signInText))
-	if err := loginButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
-		s.Error("Login Button doesn't exist: ", err)
-	} else if err := loginButton.Click(ctx); err != nil {
-		s.Fatal("Failed to click on loginButton: ", err)
+	loginBtn := uidetection.TextBlock(strings.Split(loginText, " "))
+	ud := uidetection.NewDefault(tconn).WithTimeout(time.Minute).WithScreenshotStrategy(uidetection.ImmediateScreenshot)
+	if err := uiauto.Combine("Check for login button",
+		ud.WaitUntilExists(loginBtn),
+		ud.Tap(loginBtn),
+		action.Sleep(waitForActiveInputTime),
+	)(ctx); err != nil {
+		s.Fatal("Failed to find login button: ", err)
 	}
 
 	// Click on emailid text field until the emailid text field is focused.
@@ -236,7 +244,7 @@ func launchAppForDiscord(ctx context.Context, s *testing.State, tconn *chrome.Te
 	s.Log("Entered password")
 
 	// Click on login button.
-	loginButton = d.Object(ui.ID(loginID))
+	loginButton := d.Object(ui.ID(loginID))
 	if err := loginButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
 		s.Error("Login Button doesn't exist: ", err)
 	} else if err := loginButton.Click(ctx); err != nil {
@@ -258,7 +266,7 @@ func launchAppForDiscord(ctx context.Context, s *testing.State, tconn *chrome.Te
 	}
 
 	// Check for captcha.
-	ud := uidetection.NewDefault(tconn).WithTimeout(time.Minute).WithScreenshotStrategy(uidetection.ImmediateScreenshot)
+	ud = uidetection.NewDefault(tconn).WithTimeout(time.Minute).WithScreenshotStrategy(uidetection.ImmediateScreenshot)
 	captchaPage := uidetection.Word(captchaWord).First()
 	if err := uiauto.Combine("Check for captcha page",
 		ud.WithTimeout(testutil.ShortUITimeout).WaitUntilExists(captchaPage),
