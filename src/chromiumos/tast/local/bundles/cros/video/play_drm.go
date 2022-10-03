@@ -31,6 +31,13 @@ func init() {
 			ExtraSoftwareDeps: []string{caps.HWDecodeCTRV1H264, "proprietary_codecs"},
 			Fixture:           "chromeVideoWithDistinctiveIdentifier",
 		}, {
+			Name:              "cencv1_h264_multislice_ctr",
+			Val:               "tulip_480p_h264_multislice_cencv1_ctr.mpd",
+			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
+			ExtraData:         append(play.DRMDataFiles(), "tulip_480p_h264_multislice_cencv1_ctr.mp4", "tulip_audio_aac_cencv1_ctr.mp4", "tulip_480p_h264_multislice_cencv1_ctr.mpd"),
+			ExtraSoftwareDeps: []string{caps.HWDecodeCTRV1H264, "proprietary_codecs"},
+			Fixture:           "chromeVideoWithDistinctiveIdentifier",
+		}, {
 			Name:              "cencv3_h264_cbc",
 			Val:               "tulip_480p_h264_cencv3_cbc.mpd",
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
