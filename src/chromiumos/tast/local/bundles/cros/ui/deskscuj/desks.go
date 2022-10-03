@@ -90,6 +90,11 @@ func setUpDesks(ctx context.Context, tconn, bTconn *chrome.TestConn, cs ash.Conn
 		return nil, 0, errors.Wrap(err, "failed to get Google Doc URL")
 	}
 
+	slidesURL, err := cuj.GetTestSlidesURL()
+	if err != nil {
+		return nil, 0, errors.Wrap(err, "failed to get Google Slides URL")
+	}
+
 	// Open additional tabs for RAM pressure.
 	tabs, err := cuj.NewTabs(ctx, cs, false, 3)
 	if err != nil {
@@ -114,7 +119,7 @@ func setUpDesks(ctx context.Context, tconn, bTconn *chrome.TestConn, cs ash.Conn
 				"https://bugs.chromium.org/p/chromium/issues/list",
 				"https://docs.google.com/document",
 				"https://news.google.com/?hl=en-US&gl=US&ceid=US:en",
-				"https://docs.google.com/presentation/d/1lItrhkgBqXF_bsP-tOqbjcbBFa86--m3DT5cLxegR2k/edit?usp=sharing&resourcekey=0-FmuN4N-UehRS2q4CdQzRXA",
+				slidesURL,
 			},
 			onVisitAction: func(ctx context.Context) error {
 				if err := inputsimulations.RunDragMouseCycle(ctx, tconn, info); err != nil {
