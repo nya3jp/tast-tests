@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0fc9015c_bc9bb69e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/typecd.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2022-10-03T01:56:33Z",
+      "side": 1,
+      "message": "https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/code_reviews.md#verify-need-for-lacros-variant\n\u003e New tests should never be set to ‘LacrosVariantUnknown’. Either the Lacros variant of the test should be added, or value set to ‘LacrosVariantUnneeded’.\n\nI don\u0027t think this test is dependent on chrome/lacros, therefore \"LacrosVariantUnneeded\", or evenly, this field might be omitted as this test does not depend on \"chrome\" software dependency, I guess.",
+      "revId": "9e965a0e4e4838de9578a394f41ef4250fad31f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
