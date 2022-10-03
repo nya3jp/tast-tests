@@ -67,18 +67,16 @@ func NewFirmwareTest(ctx context.Context, d *rpcdut.RPCDUT, servoSpec, outDir st
 		return nil, errors.Wrap(err, "failed to determine if reboot is needed")
 	}
 
-	// Disable rootfs verification. It's necessary in order to:
-	// - Disable DBus activation for fwupd service.
-	// - Disable FP updater and biod upstart job if board needs reboot after
-	//   flashing.
-	// Since MakeRootfsWritable will reboot the device, we must call
-	// RPCClose/RPCDial before/after calling MakeRootfsWritable.
+	// Disable rootfs verification. It's necessary in order to disable
+	// FP updater and biod upstart job if board needs reboot after flashing.
 	rootfsIsWritable, err := sysutil.IsRootfsWritable(ctx, t.d.RPC())
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to check if rootfs is writable")
 	}
-	if !rootfsIsWritable {
+	if !rootfsIsWritable && t.needsRebootAfterFlashing {
 		testing.ContextLog(ctx, "Making rootfs writable")
+		// Since MakeRootfsWritable will reboot the device, we must call
+		// RPCClose/RPCDial before/after calling MakeRootfsWritable.
 		if err := t.d.RPCClose(ctx); err != nil {
 			return nil, errors.Wrap(err, "failed to close rpc")
 		}
@@ -89,6 +87,8 @@ func NewFirmwareTest(ctx context.Context, d *rpcdut.RPCDUT, servoSpec, outDir st
 		if err := t.d.RPCDial(ctx); err != nil {
 			return nil, errors.Wrap(err, "failed to redial rpc")
 		}
+	} else if rootfsIsWritable && !t.needsRebootAfterFlashing {
+		testing.ContextLog(ctx, "WARNING: The rootfs is writable")
 	}
 
 	t.daemonState, err = stopDaemons(ctx, t.UpstartService(), []string{
