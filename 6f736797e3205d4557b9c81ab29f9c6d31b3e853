@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f133e03f_746cddfe",
+        "filename": "src/chromiumos/tast/local/wallpaper/wallpaper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1228419
+      },
+      "writtenOn": "2022-10-03T16:54:49Z",
+      "side": 1,
+      "message": "nit: this is too long. Could we extract the two names to two variables?",
+      "range": {
+        "startLine": 206,
+        "startChar": 36,
+        "endLine": 206,
+        "endChar": 155
+      },
+      "revId": "6f736797e3205d4557b9c81ab29f9c6d31b3e853",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
