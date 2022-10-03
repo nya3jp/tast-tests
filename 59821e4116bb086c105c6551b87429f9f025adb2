@@ -238,6 +238,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "14b03abe_e2f4f2c2",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/screenshot_recorder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2022-10-03T20:13:12Z",
+      "side": 1,
+      "message": "I was under the impression these were uncompressed pngs, which would be juicy compression targets. I don\u0027t think it makes sense to compress jpg, so I think we should just skip compression. How big are these screenshots on high end devices with high screen resolutions?",
+      "parentUuid": "0080c8f1_3d58cea3",
+      "revId": "59821e4116bb086c105c6551b87429f9f025adb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "853b2204_395a97ac",
         "filename": "src/chromiumos/tast/local/chrome/uiauto/screenshot_recorder.go",
         "patchSetId": 2
