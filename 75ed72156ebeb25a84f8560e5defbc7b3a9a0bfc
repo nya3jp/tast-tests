@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf20c973_30efff33",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/sata_storage.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-10-03T08:18:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dd3d3ed9_f96cd1cc",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 0
+      },
+      "revId": "75ed72156ebeb25a84f8560e5defbc7b3a9a0bfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3b21d25f_7e8ba610",
@@ -37,6 +61,24 @@
       "writtenOn": "2022-09-29T01:25:52Z",
       "side": 1,
       "message": "I think \"expected\" in this class name is confusing because this just represents a hardware node information structure but not limited to expected values by the test. I suggest something like \"hardwareNode\".",
+      "revId": "75ed72156ebeb25a84f8560e5defbc7b3a9a0bfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "67ee96d9_27342a07",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/sata_storage.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-10-03T08:18:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3b21d25f_7e8ba610",
       "revId": "75ed72156ebeb25a84f8560e5defbc7b3a9a0bfc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -58,6 +100,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f1ebf35_fdd223ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/sata_storage.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-10-03T08:18:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "05cdf06f_6380bcaf",
+      "revId": "75ed72156ebeb25a84f8560e5defbc7b3a9a0bfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "727ab870_25fb3321",
@@ -71,6 +131,30 @@
       "writtenOn": "2022-09-29T01:25:52Z",
       "side": 1,
       "message": "What is the expectation of this test?\nIt looks like the test passes even when the expected field values are found in different children, and I am not sure if it is intended.\nFor example:\n```\n  \"children\" : [{\n    \"description\" : \"SATA controller\",\n    \"vendor\" : \"another product\",\n  }, {\n    \"description\" : \"another device\",\n    \"vendor\" : \"Intel Corporation\",\n  }\n```",
+      "range": {
+        "startLine": 226,
+        "startChar": 0,
+        "endLine": 228,
+        "endChar": 2
+      },
+      "revId": "75ed72156ebeb25a84f8560e5defbc7b3a9a0bfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "96649260_a1309d9a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/sata_storage.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-10-03T08:18:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "727ab870_25fb3321",
       "range": {
         "startLine": 226,
         "startChar": 0,
