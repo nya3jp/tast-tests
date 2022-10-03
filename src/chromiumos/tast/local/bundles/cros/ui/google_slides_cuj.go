@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/cuj"
 	"chromiumos/tast/local/chrome/cuj/inputsimulations"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/lacros"
@@ -53,10 +54,7 @@ func init() {
 }
 
 func GoogleSlidesCUJ(ctx context.Context, s *testing.State) {
-	const (
-		slidesURL           = "https://docs.google.com/presentation/d/1lItrhkgBqXF_bsP-tOqbjcbBFa86--m3DT5cLxegR2k/edit?usp=sharing&resourcekey=0-FmuN4N-UehRS2q4CdQzRXA"
-		slidesScrollTimeout = 10 * time.Minute
-	)
+	const slidesScrollTimeout = 10 * time.Minute
 
 	// Shorten context a bit to allow for cleanup.
 	closeCtx := ctx
@@ -120,6 +118,11 @@ func GoogleSlidesCUJ(ctx context.Context, s *testing.State) {
 	info, err := display.GetPrimaryInfo(ctx, tconn)
 	if err != nil {
 		s.Fatal("Failed to get the primary display info: ", err)
+	}
+
+	slidesURL, err := cuj.GetDriveURL(cuj.DriveTypeSlides)
+	if err != nil {
+		s.Fatal("Failed to get Google Slides URL: ", err)
 	}
 
 	if err := recorder.Run(ctx, func(ctx context.Context) (retErr error) {
