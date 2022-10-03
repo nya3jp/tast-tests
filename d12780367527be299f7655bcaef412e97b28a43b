@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "87083015_0b036acb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-10-03T20:56:28Z",
+      "side": 1,
+      "message": "tast-wise: +2\n\nplease, add a reviewer from your team as well. don\u0027t land until you get a +1 from them. ty",
+      "revId": "d12780367527be299f7655bcaef412e97b28a43b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
