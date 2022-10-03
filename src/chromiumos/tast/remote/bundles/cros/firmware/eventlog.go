@@ -62,9 +62,10 @@ func init() {
 		Params: []testing.Param{
 			// Test eventlog upon normal->normal reboot.
 			{
-				Name:              "normal",
-				ExtraAttr:         []string{"firmware_unstable"},
-				ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel("leona")),
+				Name:      "normal",
+				ExtraAttr: []string{"firmware_ec"},
+				// Disable on leona (b/184778308) and coral (b/250684696)
+				ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel("leona", "astronaut", "babymega", "babytiger", "blacktiplte", "nasher", "robo360")),
 				Fixture:           fixture.NormalMode,
 				Val: eventLogParams{
 					resetType:         firmware.WarmReset,
