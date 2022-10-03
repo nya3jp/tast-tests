@@ -43,6 +43,7 @@ func CCAUICameraBoxDocumentScanning(ctx context.Context, s *testing.State) {
 	if err := prepareChart(ctx, s.RequiredVar("chart"), s.DataPath("testing_rsa"), s.DataPath("document_scene.jpg")); err != nil {
 		s.Fatal("Failed to prepare chart: ", err)
 	}
+	s.FixtValue().(cca.FixtureData).SetDebugParams(cca.DebugParams{SaveScreenshotWhenFail: true})
 
 	app := s.FixtValue().(cca.FixtureData).App()
 	facing := s.Param().(cca.Facing)
@@ -71,6 +72,13 @@ func CCAUICameraBoxDocumentScanning(ctx context.Context, s *testing.State) {
 	// Switch to scan mode.
 	if err := app.SwitchMode(ctx, cca.Scan); err != nil {
 		s.Fatal("Failed to switch to scan mode: ", err)
+	}
+
+	// Dismiss document dialog.
+	if err := app.WaitForVisibleState(ctx, cca.DocumentDialogButton, true); err == nil {
+		if err := app.Click(ctx, cca.DocumentDialogButton); err != nil {
+			s.Fatal(err, "failed to click the document dialog button")
+		}
 	}
 
 	// Verify that document corners are shown in the preview.
