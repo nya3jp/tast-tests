@@ -33,6 +33,23 @@
       "message": "tast side lgtm, but has this been looked at by any security folk? adding test owners",
       "revId": "894fd85725aa1d3eef87e3d389e99c1347b41bf2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8cc6912d_8a513b89",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-10-03T07:29:46Z",
+      "side": 1,
+      "message": "jorgelo@, friendly ping?",
+      "revId": "894fd85725aa1d3eef87e3d389e99c1347b41bf2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
