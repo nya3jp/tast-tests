@@ -63,6 +63,8 @@ var prunePaths = []string{
 	// Skip vdso .so files which are built together with the kernel without RELRO
 	"/lib/modules/*/vdso",
 	"/lib/modules/*/vdso32",
+	// Skip /run/lacros, as the nacl binary is currently compiled with the Chrome toolchain.
+	"/run/lacros",
 }
 
 // Allowed files for the BIND_NOW condition.
