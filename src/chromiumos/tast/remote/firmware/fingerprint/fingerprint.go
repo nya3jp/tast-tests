@@ -76,8 +76,6 @@ const (
 	powerdUpstartJobName = "powerd"
 	disableFpUpdaterFile = ".disable_fp_updater"
 	dutTempPathPattern   = "fp_test_*"
-	// Fwupd service name used to enable/disable DBus bus activation.
-	fwupdServiceName = "org.freedesktop.fwupd"
 )
 
 // Map from signing key ID to type of signing key.

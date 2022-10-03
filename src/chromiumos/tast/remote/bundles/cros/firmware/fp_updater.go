@@ -43,7 +43,7 @@ func init() {
 		Timeout:      7 * time.Minute,
 		SoftwareDeps: []string{"biometrics_daemon"},
 		HardwareDeps: hwdep.D(hwdep.Fingerprint()),
-		ServiceDeps:  []string{"tast.cros.firmware.FpUpdaterService", "tast.cros.platform.DbusService", "tast.cros.platform.UpstartService", dutfs.ServiceName},
+		ServiceDeps:  []string{"tast.cros.firmware.FpUpdaterService", "tast.cros.platform.UpstartService", dutfs.ServiceName},
 		Vars:         []string{"servo"},
 		Data: []string{"nocturne_fp_v2.0.3266-99b5e2c98_20201214.bin",
 			"nami_fp_v2.0.3266-99b5e2c98_20201214.bin",
