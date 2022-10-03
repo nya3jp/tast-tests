@@ -35,6 +35,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "99e2ee7a_7ee4600d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108259
+      },
+      "writtenOn": "2022-10-03T01:45:41Z",
+      "side": 1,
+      "message": "Thinking of the next steps, I think you want to create manatee variant for all tests, and then after a while of informational, in order to be able to promote to critical (and update the vm_host condition).",
+      "revId": "f40caaf443022b49b595b9c41a273bf0bc911eb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "14acf49e_3c397bbf",

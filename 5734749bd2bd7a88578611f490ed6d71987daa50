@@ -46,6 +46,75 @@
       },
       "revId": "5734749bd2bd7a88578611f490ed6d71987daa50",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f35192d_73c1d90e",
+        "filename": "src/chromiumos/tast/local/crostini/params.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1108259
+      },
+      "writtenOn": "2022-10-03T01:45:41Z",
+      "side": 1,
+      "message": "iterate isManatee between false and true.",
+      "range": {
+        "startLine": 230,
+        "startChar": 0,
+        "endLine": 230,
+        "endChar": 96
+      },
+      "revId": "5734749bd2bd7a88578611f490ed6d71987daa50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43a82ce9_f0b09bec",
+        "filename": "src/chromiumos/tast/local/crostini/params.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 415,
+      "author": {
+        "id": 1108259
+      },
+      "writtenOn": "2022-10-03T01:45:41Z",
+      "side": 1,
+      "message": "isManatee instead of false",
+      "range": {
+        "startLine": 415,
+        "startChar": 0,
+        "endLine": 415,
+        "endChar": 24
+      },
+      "revId": "5734749bd2bd7a88578611f490ed6d71987daa50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9a5c5b5_c6dae2bb",
+        "filename": "src/chromiumos/tast/local/crostini/params.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 1108259
+      },
+      "writtenOn": "2022-10-03T01:45:41Z",
+      "side": 1,
+      "message": "isManatee instead of false",
+      "range": {
+        "startLine": 420,
+        "startChar": 0,
+        "endLine": 420,
+        "endChar": 41
+      },
+      "revId": "5734749bd2bd7a88578611f490ed6d71987daa50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
