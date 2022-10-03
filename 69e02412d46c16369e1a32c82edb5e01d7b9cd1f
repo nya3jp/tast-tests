@@ -16,6 +16,24 @@
       "message": "What about using filepath.Glob instead of this? Seems simpler",
       "revId": "69e02412d46c16369e1a32c82edb5e01d7b9cd1f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "77a16286_89b0af7a",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacros.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-10-03T07:43:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3088fb55_1229d600",
+      "revId": "69e02412d46c16369e1a32c82edb5e01d7b9cd1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
