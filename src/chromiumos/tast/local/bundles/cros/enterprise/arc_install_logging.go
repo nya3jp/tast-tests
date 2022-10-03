@@ -35,7 +35,7 @@ func init() {
 		Func:         ARCInstallLogging,
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Checks that log is uploaded after forced app installation in ARC",
-		Contacts:     []string{"yixie@chromium.org", "mhasank@chromium.org", "arc-commercial@google.com"},
+		Contacts:     []string{"mhasank@chromium.org", "arc-commercial@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      arcInstallLoggingTestTimeout,
