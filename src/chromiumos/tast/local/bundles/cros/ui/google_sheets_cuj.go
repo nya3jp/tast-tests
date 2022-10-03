@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/cuj"
 	"chromiumos/tast/local/chrome/cuj/inputsimulations"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/lacros"
@@ -56,7 +57,6 @@ func init() {
 func GoogleSheetsCUJ(ctx context.Context, s *testing.State) {
 	const (
 		timeout                 = 10 * time.Second
-		sheetURL                = "https://docs.google.com/spreadsheets/d/1I9jmmdWkBaH6Bdltc2j5KVSyrJYNAhwBqMmvTdmVOgM/edit?usp=sharing&resourcekey=0-60wBsoTfOkoQ6t4yx2w7FQ"
 		overallScrollTimeout    = 10 * time.Minute
 		individualScrollTimeout = overallScrollTimeout / 4
 	)
@@ -168,6 +168,11 @@ func GoogleSheetsCUJ(ctx context.Context, s *testing.State) {
 	info, err := display.GetPrimaryInfo(ctx, tconn)
 	if err != nil {
 		s.Fatal("Failed to get the primary display info: ", err)
+	}
+
+	sheetURL, err := cuj.GetDriveURL(cuj.DriveTypeSheets)
+	if err != nil {
+		s.Fatal("Failed to get Google Sheets URL: ", err)
 	}
 
 	if err := recorder.Run(ctx, func(ctx context.Context) error {

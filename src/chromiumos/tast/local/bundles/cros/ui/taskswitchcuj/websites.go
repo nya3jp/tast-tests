@@ -19,12 +19,10 @@ import (
 // 1. WebGL Aquarium -- considerable load on graphics.
 // 2. Chromium issue tracker -- considerable amount of elements.
 // 3. CrosVideo -- customizable video player.
-// 4. Google Slides -- large slide deck for RAM pressure.
 var simpleWebsites = []string{
 	"https://bugs.chromium.org/p/chromium/issues/list",
 	"https://crosvideo.appspot.com/?codec=h264_60&loop=true&mute=true",
 	"https://webglsamples.org/aquarium/aquarium.html?numFish=1000",
-	"https://docs.google.com/presentation/d/1lItrhkgBqXF_bsP-tOqbjcbBFa86--m3DT5cLxegR2k/edit?usp=sharing&resourcekey=0-FmuN4N-UehRS2q4CdQzRXA",
 }
 
 // openChromeTabs opens Chrome tabs and returns the number of windows
@@ -59,6 +57,13 @@ func openChromeTabs(ctx context.Context, tconn, bTconn *chrome.TestConn, cs ash.
 			return 0, errors.Wrap(err, `failed to close "New Tab" tab`)
 		}
 	}
+
+	// Also open a large slide deck for RAM pressure.
+	slidesURL, err := cuj.GetDriveURL(cuj.DriveTypeSlides)
+	if err != nil {
+		return 0, errors.Wrap(err, "failed to get Google Slides URL")
+	}
+	simpleWebsites := append(simpleWebsites, slidesURL)
 
 	// Open up individual window for each website in simpleWebsites.
 	taskSwitchTabs, err := cuj.NewTabsByURLs(ctx, cs, true, simpleWebsites)
