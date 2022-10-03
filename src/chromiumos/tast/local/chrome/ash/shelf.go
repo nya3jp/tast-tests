@@ -710,6 +710,23 @@ func VerifyShelfIconIndices(ctx context.Context, tconn *chrome.TestConn, expecte
 	return nil
 }
 
+// VerifyPinnedAppIndices checks whether the pinned apps are ordered as expected.
+func VerifyPinnedAppIndices(ctx context.Context, tconn *chrome.TestConn, expectedApps []string) error {
+	pinnedIds, err := GetPinnedAppIds(ctx, tconn)
+
+	if err != nil {
+		return errors.Wrap(err, "failed to get pinned app ids")
+	}
+
+	for index, id := range pinnedIds {
+		if expectedApps[index] != id {
+			return errors.Errorf("unexpected id at the index(%d) on the shelf: got %s; want %s", index, id, expectedApps[index])
+		}
+	}
+
+	return nil
+}
+
 // ShelfAppBoundsForNames returns the screen bounds of the apps specified by appNames.
 func ShelfAppBoundsForNames(ctx context.Context, tconn *chrome.TestConn, ui *uiauto.Context, appNames []string) ([]*coords.Rect, error) {
 	boundsArray := make([]*coords.Rect, len(appNames))
