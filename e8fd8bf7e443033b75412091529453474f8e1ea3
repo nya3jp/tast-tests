@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd20e556_3e1b7649",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1427116
+      },
+      "writtenOn": "2022-10-03T18:10:47Z",
+      "side": 1,
+      "message": "Fixed all the nits. Thanks for reviewing!",
+      "revId": "e8fd8bf7e443033b75412091529453474f8e1ea3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
