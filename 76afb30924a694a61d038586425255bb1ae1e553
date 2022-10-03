@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "059d2b4e_5aef25a8",
+        "filename": "helpers/local/featured.FeatureLibrary.check.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2022-10-03T20:54:10Z",
+      "side": 1,
+      "message": "Maybe add some logging to these methods, too, in case we crash inside one of them?",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 0
+      },
+      "revId": "76afb30924a694a61d038586425255bb1ae1e553",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
