@@ -93,10 +93,6 @@ func NewFirmwareTest(ctx context.Context, d *rpcdut.RPCDUT, servoSpec, outDir st
 
 	t.daemonState, err = stopDaemons(ctx, t.UpstartService(), []string{
 		biodUpstartJobName,
-		// TODO(b/183123775): Remove when bug is fixed.
-		//  Disabling powerd to prevent the display from turning off, which kills
-		//  USB on some platforms.
-		powerdUpstartJobName,
 	})
 	// Start daemons when this function is going to return an error.
 	defer func() {
@@ -110,6 +106,13 @@ func NewFirmwareTest(ctx context.Context, d *rpcdut.RPCDUT, servoSpec, outDir st
 	// Check if daemons were stopped correctly.
 	if err != nil {
 		return nil, err
+	}
+
+	// TODO(b/183123775): Remove when bug is fixed.
+	// Turning off a display can kill USB on some platforms (dragonair).
+	// Ask powerd to keep the display on and prevent it from screen dimming.
+	if err := t.d.Conn().CommandContext(ctx, "set_power_policy", "--dim_wake_lock=1", "--screen_wake_lock=1").Run(ssh.DumpLogOnError); err != nil {
+		return errors.Wrap(err, "failed to disable screen dimming ")
 	}
 
 	t.cleanupTime = timeForCleanup
