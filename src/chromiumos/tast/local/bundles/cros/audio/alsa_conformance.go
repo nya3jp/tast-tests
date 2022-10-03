@@ -53,7 +53,7 @@ func init() {
 		Func:         ALSAConformance,
 		Desc:         "Runs alsa_conformance_test to test basic functions of ALSA",
 		Contacts:     []string{"yuhsuan@chromium.org", "cychiang@chromium.org"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		HardwareDeps: hwdep.D(hwdep.Speaker(), hwdep.Microphone()),
 		Timeout:      10 * time.Minute,
 		Params: []testing.Param{
@@ -64,6 +64,7 @@ func init() {
 			{
 				Name:              "unstable",
 				ExtraHardwareDeps: hwdep.D(hwdep.Model(unstableModels...)),
+				ExtraAttr:         []string{"informational"},
 			},
 		},
 	})
