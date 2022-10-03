@@ -119,6 +119,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1e6477c_9f70379c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/traffic_counters.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2022-10-03T00:29:53Z",
+      "side": 1,
+      "message": "I don\u0027t see the rx traffic for l2tp either, so I\u0027d like to keep wg",
+      "parentUuid": "68dbf714_04f11074",
+      "range": {
+        "startLine": 55,
+        "startChar": 22,
+        "endLine": 55,
+        "endChar": 44
+      },
+      "revId": "2dff1235237614dcb641ba81582a4e585ddec5cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "61aeadf4_9b3d21a7",
@@ -180,6 +204,30 @@
       "side": 1,
       "message": "I mean this test verified VPN as the SOURCE but we also want to verify VPN as the DEVICE?",
       "parentUuid": "8351b30a_83df7ec6",
+      "range": {
+        "startLine": 227,
+        "startChar": 3,
+        "endLine": 227,
+        "endChar": 36
+      },
+      "revId": "2dff1235237614dcb641ba81582a4e585ddec5cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "47db53f2_7e32d7bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/traffic_counters.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2022-10-03T00:29:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1ef0150f_e43751af",
       "range": {
         "startLine": 227,
         "startChar": 3,
