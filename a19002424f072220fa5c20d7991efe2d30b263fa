@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3ac925d_f6eec37e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/biod/device_access.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-10-03T15:10:56Z",
+      "side": 1,
+      "message": "You can make these into a table-driven test and use `s.Run` if you want to be able to use s.Fatal without breaking other subtests. Each subtest can also be assigned a name in those cases which will get logged by tast when it is started.",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 77
+      },
+      "revId": "a19002424f072220fa5c20d7991efe2d30b263fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
