@@ -23,25 +23,9 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Runs Speedtest on cellular interface",
 		Contacts:     []string{"madhavadas@google.com", "chromeos-cellular-team@google.com"},
-		Attr:         []string{"group:cellular_crosbolt", "cellular_crosbolt_unstable", "cellular_crosbolt_sim_active", "cellular_crosbolt_perf_nightly"},
+		Attr:         []string{"group:cellular_crosbolt", "cellular_crosbolt_perf_nightly"},
 		HardwareDeps: hwdep.D(hwdep.Cellular()),
 		Timeout:      4 * time.Minute,
-		Params: []testing.Param{{
-			ExtraAttr: []string{"cellular_crosbolt_carrier_local"},
-		},
-			{
-				Name:      "att",
-				ExtraAttr: []string{"cellular_crosbolt_carrier_att"},
-			},
-			{
-				Name:      "tmobile",
-				ExtraAttr: []string{"cellular_crosbolt_carrier_tmobile"},
-			},
-			{
-				Name:      "verizon",
-				ExtraAttr: []string{"cellular_crosbolt_carrier_verizon"},
-			},
-		},
 	})
 }
 
