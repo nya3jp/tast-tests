@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f02af85f_f9deba14",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2022-10-03T06:51:38Z",
+      "side": 1,
+      "message": "Robert,\n\nI\u0027m having trouble verifying that power.SuspendConsumption.s0ix still works, I keep getting the following error on hatch/helios.\n\n```\nError at suspend_consumption.go:110: Failed to determine support for S0ix: failed to get power state S0ix: failed to get one of [S0ix] power state: context deadline exceeded during a poll with timeout 1m0s; last error follows: Power state \u003d S0\n2022-10-03T06:49:35.335195Z [06:49:35.334] Stack trace:\nFailed to determine support for S0ix: failed to get power state S0ix: failed to get one of [S0ix] power state: context deadline exceeded during a poll with timeout 1m0s; last error follows: Power state \u003d S0\n\tat chromiumos/tast/remote/bundles/cros/power.SuspendConsumption (suspend_consumption.go:110)\n\tat chromiumos/tast/internal/planner.runTestWithConfig.func3.1 (run.go:824)\n\tat chromiumos/tast/internal/usercode.SafeCall.func2 (usercode.go:112)\n\tat runtime.goexit (asm_amd64.s:1571)\n```\n\nWhat board was this originally developed for?",
+      "revId": "922dedbb4c987ab0f4f4269d21af841cb9d54210",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
