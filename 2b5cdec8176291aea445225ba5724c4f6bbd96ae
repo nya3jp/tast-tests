@@ -3,6 +3,305 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d4d5f37f_048b123c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-03T22:19:00Z",
+      "side": 1,
+      "message": "The words `of the` do not need to be repeated.",
+      "range": {
+        "startLine": 9,
+        "startChar": 51,
+        "endLine": 9,
+        "endChar": 64
+      },
+      "revId": "2b5cdec8176291aea445225ba5724c4f6bbd96ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8dd687e2_3cb14fb8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-03T22:19:00Z",
+      "side": 1,
+      "message": "Just `file size` because `Each screenshot` is singular. `All screenshots` would be plural.",
+      "range": {
+        "startLine": 13,
+        "startChar": 35,
+        "endLine": 13,
+        "endChar": 51
+      },
+      "revId": "2b5cdec8176291aea445225ba5724c4f6bbd96ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e80cbd4_60159fef",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-03T22:19:00Z",
+      "side": 1,
+      "message": "It looks like this line is 73 characters long. Wrap at 72.",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 73
+      },
+      "revId": "2b5cdec8176291aea445225ba5724c4f6bbd96ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3bbdefd3_c521e5de",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/screenshot_recorder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-03T22:19:00Z",
+      "side": 1,
+      "message": "nit: Just describe it as the output file name and do not go into implementation detail. This file name will be significant to people who don\u0027t necessarily care about all the implementation details, and on the flip side, someone could change the implementation details and not update this comment.",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 71
+      },
+      "revId": "2b5cdec8176291aea445225ba5724c4f6bbd96ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "edd45f08_164afc6d",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/screenshot_recorder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-03T22:19:00Z",
+      "side": 1,
+      "message": "`screenshots`",
+      "range": {
+        "startLine": 28,
+        "startChar": 34,
+        "endLine": 28,
+        "endChar": 49
+      },
+      "revId": "2b5cdec8176291aea445225ba5724c4f6bbd96ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2364fcdc_deb90880",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/screenshot_recorder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-03T22:19:00Z",
+      "side": 1,
+      "message": "You can call `testing.ContextOutDir` anywhere, so I don\u0027t think the output directory needs to be stored here.",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 14
+      },
+      "revId": "2b5cdec8176291aea445225ba5724c4f6bbd96ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fcc1e802_70d0166b",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/screenshot_recorder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-03T22:19:00Z",
+      "side": 1,
+      "message": "Just use `len(uncompressed)`.",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 14
+      },
+      "revId": "2b5cdec8176291aea445225ba5724c4f6bbd96ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e02c6187_65c0fb65",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/screenshot_recorder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-03T22:19:00Z",
+      "side": 1,
+      "message": "nit: This leaves open the possibility of code outside of `uiauto` creating an invalid screenshot recorder by writing `uiauto.ScreenshotRecorder{}` or `new(uiauto.ScreenshotRecorder)`. I would avoid that like so:\n\n\t// ScreenshotRecorder is an interface used to take screenshots at\n\t// specified intervals during a test.\n\ttype ScreenshotRecorder interface {\n\t\t// Start starts the screenshot recorder. The first screenshot is taken\n\t\t// after |interval| has passed. This function cannot be called on an\n\t\t// already started recorder without |Stop| being called first.\n\t\tStart(ctx context.Context) error\n\n\t\t// Stop stops the screenshot recorder. It takes one last screenshot to\n\t\t// capture the device at its end state. It also compresses any\n\t\t// uncompressed screenshots into a zip file, and removes the originals.\n\t\t// This function can only be called after |Start| has been called.\n\t\tStop(ctx context.Context) error\n\t}\n\t\n\t// screenshotRecorderImpl is used to implement ScreenshotRecorder.\n\ttype screenshotRecorderImpl struct {\n\t\t// recording is whether or not the recorder has started recording.\n\t\trecording bool\n\n\t\t// interval is the delay between each screenshot.\n\t\tinterval time.Duration\n\n\t\t// lastErr is the most recent error that occurred in the recorder.\n\t\tlastErr error\n\n\t\t// startTime is the time the |Start| function is called.\n\t\tstartTime time.Time\n\n\t\t// numImages is the number of images that have already been taken.\n\t\tnumImages int\n\n\t\t// maxImages is the maximum number of images this recorder is\n\t\t// allowed to take. Setting this value is important to ensure\n\t\t// tests that are hanging for much longer than expected don\u0027t take\n\t\t// unexpected number of screenshots.\n\t\tmaxImages int\n\n\t\t// stopc is the channel for the foreground task to stop the\n\t\t// background task.\n\t\tstopc chan struct{}\n\n\t\t// stopackc is the channel for the background task to tell the\n\t\t// foreground task that it is done.\n\t\tstopackc chan struct{}\n\t}",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 1
+      },
+      "revId": "2b5cdec8176291aea445225ba5724c4f6bbd96ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "976702ee_ef40a05c",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/screenshot_recorder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-03T22:19:00Z",
+      "side": 1,
+      "message": "optional nit: Consider writing `!time.Before(r.interval)` to include the case where exactly `r.interval` has passed.",
+      "range": {
+        "startLine": 102,
+        "startChar": 10,
+        "endLine": 102,
+        "endChar": 32
+      },
+      "revId": "2b5cdec8176291aea445225ba5724c4f6bbd96ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4fc5ff4d_5f22f724",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/screenshot_recorder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-03T22:19:00Z",
+      "side": 1,
+      "message": "optional nit: Add a comment explaining that we subtract one to reserve one for `Stop` where we take one last screenshot even though `r.interval` probably hasn\u0027t passed.",
+      "range": {
+        "startLine": 109,
+        "startChar": 21,
+        "endLine": 109,
+        "endChar": 34
+      },
+      "revId": "2b5cdec8176291aea445225ba5724c4f6bbd96ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc69fb72_0ccdc67c",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/screenshot_recorder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-03T22:19:00Z",
+      "side": 1,
+      "message": "This function should set `r.recording` to false.",
+      "range": {
+        "startLine": 134,
+        "startChar": 0,
+        "endLine": 134,
+        "endChar": 60
+      },
+      "revId": "2b5cdec8176291aea445225ba5724c4f6bbd96ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b854387a_c2ded237",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/screenshot_recorder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-03T22:19:00Z",
+      "side": 1,
+      "message": "No need to `break` at the end of the `case`.",
+      "range": {
+        "startLine": 149,
+        "startChar": 2,
+        "endLine": 149,
+        "endChar": 7
+      },
+      "revId": "2b5cdec8176291aea445225ba5724c4f6bbd96ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f1ed434_1e13dfa8",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/screenshot_recorder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-03T22:19:00Z",
+      "side": 1,
+      "message": "No need to `break` at the end of the `case`.",
+      "range": {
+        "startLine": 152,
+        "startChar": 2,
+        "endLine": 152,
+        "endChar": 7
+      },
+      "revId": "2b5cdec8176291aea445225ba5724c4f6bbd96ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "722a0c77_3ffef1cd",
         "filename": "src/chromiumos/tast/local/chrome/uiauto/screenshot_recorder.go",
         "patchSetId": 6
@@ -71,6 +370,64 @@
       "writtenOn": "2022-10-03T21:11:54Z",
       "side": 1,
       "message": "Not a Go expert, but isn\u0027t nil better here?",
+      "revId": "2b5cdec8176291aea445225ba5724c4f6bbd96ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5ba633c_81fa0fb3",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/screenshot_recorder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-03T22:19:00Z",
+      "side": 1,
+      "message": "+1\n\nSee: https://github.com/golang/go/wiki/CodeReviewComments#declaring-empty-slices",
+      "parentUuid": "38dc2b50_1975b77f",
+      "revId": "2b5cdec8176291aea445225ba5724c4f6bbd96ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b77af81_20ad00c5",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/screenshot_recorder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-03T22:19:00Z",
+      "side": 1,
+      "message": "Put this after `cmd.Run` so that `r.uncompressed` will not include files that were not successfully created.",
+      "range": {
+        "startLine": 215,
+        "startChar": 0,
+        "endLine": 215,
+        "endChar": 46
+      },
+      "revId": "2b5cdec8176291aea445225ba5724c4f6bbd96ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a915d2a1_532c2815",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/recorder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 545,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-03T22:19:00Z",
+      "side": 1,
+      "message": "I would not put a blank line here.",
       "revId": "2b5cdec8176291aea445225ba5724c4f6bbd96ae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
