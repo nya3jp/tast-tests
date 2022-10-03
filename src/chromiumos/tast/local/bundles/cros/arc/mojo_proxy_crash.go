@@ -6,8 +6,9 @@ package arc
 
 import (
 	"context"
-	"syscall"
 	"time"
+
+	"golang.org/x/sys/unix"
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
@@ -65,7 +66,7 @@ func MojoProxyCrash(ctx context.Context, s *testing.State) {
 	const mojoProxyPath = "/usr/bin/arcvm_server_proxy"
 	if proc, err := procutil.FindUnique(procutil.ByExe(mojoProxyPath)); err != nil {
 		s.Fatal("Failed to find MojoProxy process: ", err)
-	} else if err := proc.SendSignal(syscall.SIGABRT); err != nil {
+	} else if err := proc.SendSignal(unix.SIGABRT); err != nil {
 		s.Fatal("Failed to kill MojoProxy: ", err)
 	}
 
