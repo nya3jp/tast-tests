@@ -46,6 +46,30 @@
       },
       "revId": "486af665dd033b9fe28b9928ca8eb5acc06acf0a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "458beaa0_7710885f",
+        "filename": "src/chromiumos/tast/local/cellular/cellular_helper_utils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-10-03T15:37:28Z",
+      "side": 1,
+      "message": "I\u0027m not sure it\u0027s worth the optimization given that this is test code, but YMMV",
+      "parentUuid": "f6d2d6c4_8834c4bb",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 1
+      },
+      "revId": "486af665dd033b9fe28b9928ca8eb5acc06acf0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
