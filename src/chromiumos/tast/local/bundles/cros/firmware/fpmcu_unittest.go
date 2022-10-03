@@ -68,6 +68,10 @@ func init() {
 			Val:       testMetadata{name: "bloonchipper/test-aes.bin"},
 		}, {
 			ExtraAttr: []string{"fingerprint-mcu_dragonclaw"},
+			Name:      "bloonchipper_always_memset",
+			Val:       testMetadata{name: "bloonchipper/test-always_memset.bin"},
+		}, {
+			ExtraAttr: []string{"fingerprint-mcu_dragonclaw"},
 			Name:      "bloonchipper_cec",
 			Val:       testMetadata{name: "bloonchipper/test-cec.bin"},
 		}, {
