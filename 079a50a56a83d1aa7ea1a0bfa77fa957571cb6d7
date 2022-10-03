@@ -16,6 +16,24 @@
       "message": "I don\u0027t see any non_chromiumos_kernel in https://chromium-review.googlesource.com/3912903. Also, I think it will be better to call new software dependencis kernalci and no_kernelci.",
       "revId": "079a50a56a83d1aa7ea1a0bfa77fa957571cb6d7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef902a37_c74a850c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/config_verify.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2022-10-03T01:49:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d0d2f35_d68ee785",
+      "revId": "079a50a56a83d1aa7ea1a0bfa77fa957571cb6d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

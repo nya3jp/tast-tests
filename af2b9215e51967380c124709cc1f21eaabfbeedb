@@ -45,6 +45,30 @@
       },
       "revId": "af2b9215e51967380c124709cc1f21eaabfbeedb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b25acf9c_6c7961c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/config_verify.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2022-10-03T01:49:46Z",
+      "side": 1,
+      "message": "The code here has no logic (i.e. no branches).  It calls a function (from the testing parameter data) for initializing (for either ChromeOS or ChromeOS KernelCI).",
+      "parentUuid": "ba621314_c651272d",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 35
+      },
+      "revId": "af2b9215e51967380c124709cc1f21eaabfbeedb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
