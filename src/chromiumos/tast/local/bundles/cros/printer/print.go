@@ -11,6 +11,7 @@ import (
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/bundles/cros/printer/uinames"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto"
@@ -44,11 +45,6 @@ func init() {
 }
 
 func Print(ctx context.Context, s *testing.State) {
-	const (
-		settingsLabel = "Printers"
-		settingsPage  = "osPrinting"
-	)
-
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
 	defer cancel()
@@ -85,8 +81,8 @@ func Print(ctx context.Context, s *testing.State) {
 
 	// Open OS Settings and navigate to the Printing page.
 	ui := uiauto.New(tconn)
-	entryFinder := nodewith.Name(settingsLabel).Role(role.Link).Ancestor(ossettings.WindowFinder)
-	if _, err := ossettings.LaunchAtPageURL(ctx, tconn, cr, settingsPage, ui.Exists(entryFinder)); err != nil {
+	entryFinder := nodewith.Name(uinames.PrintersName).Role(role.Link).Ancestor(ossettings.WindowFinder)
+	if _, err := ossettings.LaunchAtPageURL(ctx, tconn, cr, uinames.SettingsPageName, ui.Exists(entryFinder)); err != nil {
 		s.Fatal("Failed to launch Settings page: ", err)
 	}
 
