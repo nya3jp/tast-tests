@@ -16,6 +16,210 @@
       "message": "Addressed. Please have another look.",
       "revId": "57e4a3e3f52f468897793dd8314e0a1a6029a02a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0b11f90_12ee213b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-10-03T06:05:36Z",
+      "side": 1,
+      "message": "Something is wrong here. Your poll function never returns a regular error, so Poll will only run it once.\n\nIf \"wins \u003d\u003d 1 \u0026\u0026 title \u003d\u003d params.appTitleInAsh\" is the expected condition in the success case, then you should return nil in line 232 and a regular error (not PollBreak) in line 234.",
+      "revId": "57e4a3e3f52f468897793dd8314e0a1a6029a02a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82e22a74_1bde81e7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-10-03T06:05:36Z",
+      "side": 1,
+      "message": "err here is the one from line 222, which was already handled.\nAny polling error is handled in 235.",
+      "revId": "57e4a3e3f52f468897793dd8314e0a1a6029a02a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad3fc3b9_c46f93e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-10-03T06:05:36Z",
+      "side": 1,
+      "message": "There\u0027s no need to check \"conn \u003d\u003d nil\".",
+      "revId": "57e4a3e3f52f468897793dd8314e0a1a6029a02a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5af68d65_b5755fbd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-10-03T06:05:36Z",
+      "side": 1,
+      "message": "See comment on the other Poll usage above.",
+      "revId": "57e4a3e3f52f468897793dd8314e0a1a6029a02a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8c766bf_9d79b36b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-10-03T06:05:36Z",
+      "side": 1,
+      "message": "See comment on the other error handling above.",
+      "revId": "57e4a3e3f52f468897793dd8314e0a1a6029a02a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e387deff_a9d01ded",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-10-03T06:05:36Z",
+      "side": 1,
+      "message": "See comment on the other Poll usage above.",
+      "revId": "57e4a3e3f52f468897793dd8314e0a1a6029a02a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8221f95a_6b59ca96",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-10-03T06:05:36Z",
+      "side": 1,
+      "message": "See comment on the other error handling above.",
+      "revId": "57e4a3e3f52f468897793dd8314e0a1a6029a02a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5695504c_a2ac98ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-10-03T06:05:36Z",
+      "side": 1,
+      "message": "Please print err.",
+      "revId": "57e4a3e3f52f468897793dd8314e0a1a6029a02a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f350bd36_751a0b12",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-10-03T06:05:36Z",
+      "side": 1,
+      "message": "No need to check this.",
+      "revId": "57e4a3e3f52f468897793dd8314e0a1a6029a02a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b91b3020_982c1719",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-10-03T06:05:36Z",
+      "side": 1,
+      "message": "\"There should have been at least one suitable target\"",
+      "revId": "57e4a3e3f52f468897793dd8314e0a1a6029a02a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "813a6d7c_e346d69c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-10-03T06:05:36Z",
+      "side": 1,
+      "message": "See comment on the other Poll usage above.",
+      "revId": "57e4a3e3f52f468897793dd8314e0a1a6029a02a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2cbabef8_c05c69d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-10-03T06:05:36Z",
+      "side": 1,
+      "message": "See comment on the other error handling above.",
+      "revId": "57e4a3e3f52f468897793dd8314e0a1a6029a02a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
