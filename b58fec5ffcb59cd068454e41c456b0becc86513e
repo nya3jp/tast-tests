@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b951160_6a9eb506",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413870
+      },
+      "writtenOn": "2022-10-03T02:35:00Z",
+      "side": 1,
+      "message": "LGTM from ARC perspective. Please add tast-owners@ for tast/golang review😊",
+      "revId": "b58fec5ffcb59cd068454e41c456b0becc86513e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7c6b30da_25f7a856",
@@ -49,6 +66,24 @@
       "side": 1,
       "message": "I can\u0027t really figure out a clean way to do that, since the two `traverse()`\u0027s I added(for `root_display_area` and `task_fragment`) are not really under `window_container.children`. You can check my [comment](https://b.corp.google.com/issues/245647771#comment2) in the bug to see a simplied structure of the proto.\n\nThings we are traversing in this block should be all listed [here](https://source.corp.google.com/android/frameworks/base/core/proto/android/server/windowmanagerservice.proto;l\u003d514?q\u003dcore%2Fproto%2Fandroid%2Fserver%2Fwindowmanagerservice.proto\u0026ct\u003dos\u0026sq\u003dpackage:android) that\u0027s why I added `traverse(c.GetTaskFragment())`.\n\nIf we want to put all the `traverse()`\u0027s around the same place, the only way seems to be adding another two blocks:\n```\ntraverse \u003d func(wc windowContainer) { // [base L247]\n\tif d, ok :\u003d wc.(*server.DisplayContentProto); ok \u0026\u0026 d !\u003d nil {\n\t\tfocusedActivity \u003d d.GetFocusedApp()\n\t}\n\n\tif t, ok :\u003d wc.(*server.TaskProto); ok \u0026\u0026 t !\u003d nil {\n\t\t// generate basic taskinfo ..\n\n\t\tvar ac windowContainer\n\t\tif t.GetTaskFragment() !\u003d nil {\n\t\t\tac \u003d t.GetTaskFragment()\n\t\t} else {\n\t\t\tac \u003d t\n\t\t}\n\t\t// go through ac to extract activities ..\n\t}\n\t\n\tfor _, c :\u003d range wc.GetWindowContainer().GetChildren() {// [base L290]\n\t        // traverse the windowContainerChildren\n\t}\n\n\tif d, ok :\u003d wc.(*server.DisplayContentProto); ok \u0026\u0026 d !\u003d nil {\n\t\tif rda :\u003d d.GetRootDisplayArea(); rda !\u003d nil {\n\t\t\ttraverse(rda)\n\t\t}\n\t}\n\tif t, ok :\u003d wc.(*server.TaskProto); ok \u0026\u0026 t !\u003d nil {\n\t\tif t.GetTaskFragment() !\u003d nil {\n\t\t\ttraverse(t.GetTaskFragment())\n\t\t}\n\t}\n} // [base L298]\n```\n\nI kinda prefer the current way though, since it separetes the handling of the cases when wc is a display_content or when wc is a task, then traverse the wc\u0027s windowContainerChildren.\n\nWhat do you think?",
       "parentUuid": "7c6b30da_25f7a856",
+      "revId": "b58fec5ffcb59cd068454e41c456b0becc86513e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e6afb97_110d60ea",
+        "filename": "src/chromiumos/tast/local/arc/dumpsys.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1413870
+      },
+      "writtenOn": "2022-10-03T02:35:00Z",
+      "side": 1,
+      "message": "Thank you for the explanation! Either way looks good to me without any strong reason. Please go ahead!",
+      "parentUuid": "3233afca_a4c44b4e",
       "revId": "b58fec5ffcb59cd068454e41c456b0becc86513e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
