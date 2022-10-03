@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a3ef4b2_82fcd832",
+        "filename": "src/chromiumos/tast/local/cellular/cellular_helper.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1251,
+      "author": {
+        "id": 1487102
+      },
+      "writtenOn": "2022-10-03T23:03:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b4adc579_bfb4f04c",
+      "revId": "c371cf576cf57b53332c15ceeacefc53b22324c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f66f3869_b5e8ddaf",
@@ -67,6 +85,24 @@
       "side": 1,
       "message": "I think that is a bug on modem messaging side. I have a bug open for that.",
       "parentUuid": "f66f3869_b5e8ddaf",
+      "revId": "c371cf576cf57b53332c15ceeacefc53b22324c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d58214a9_275f3213",
+        "filename": "src/chromiumos/tast/local/cellular/cellular_helper.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1287,
+      "author": {
+        "id": 1487102
+      },
+      "writtenOn": "2022-10-03T23:03:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8efde7f0_f06ce8f0",
       "revId": "c371cf576cf57b53332c15ceeacefc53b22324c8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
