@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ea29625_f3794bfd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-03T18:09:33Z",
+      "side": 1,
+      "message": "lgtm, but we still have a ton of Meet tests with their usefulness in question. Hopefully we can thin out the herd of tests in a more sustainable way by removing them altogether or combining tests soon.",
+      "revId": "67ef95c684c435c3d52c7b59b6c44e9b61f157e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
