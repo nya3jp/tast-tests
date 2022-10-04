@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19c82ae1_7ddec91d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/identifiers.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1425417
+      },
+      "writtenOn": "2022-10-04T22:50:14Z",
+      "side": 1,
+      "message": "Curious to know why this Connect was required. Personally, I would keep this as one of our simplest tests. Currently, we use autotest\u0027s identifiers as our actual \"health check\" test, and my concern is that a Connect might make the test flaky.",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 47
+      },
+      "revId": "70e65d1bca726d4f4613a8380a4b3e24f6c1087c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
