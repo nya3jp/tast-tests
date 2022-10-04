@@ -306,6 +306,14 @@ var (
 			return clickButtonWithName(ctx, oobeCtx, "Skip")
 		},
 	}
+	// FingerprintScreen goes through fingerprint screen with skipping it.
+	FingerprintScreen = OOBEScreen{
+		oobeAPIName:  "FingerprintScreen",
+		preCondition: isVisible,
+		action: func(ctx context.Context, _ *OOBEScreen, oobeCtx *OOBEContext) error {
+			return clickButtonWithName(ctx, oobeCtx, "Skip")
+		},
+	}
 	// AssistantScreenRelatedInfoAgree goes through an Assistant related info screen with clicking
 	// an agree button.
 	AssistantScreenRelatedInfoAgree = OOBEScreen{
@@ -386,6 +394,15 @@ func headingExists(ctx context.Context, oobeCtx *OOBEContext, headingName string
 	// Screen transition in Assistant screen can take long as it might make a network request.
 	// Extend timeout to 1 min from uiauto default 15 seconds.
 	return uiauto.New(oobeCtx.TConn).WithTimeout(1 * time.Minute).WaitUntilExists(heading)(ctx)
+}
+
+func shouldSkip(ctx context.Context, oobeScreen *OOBEScreen, oobeCtx *OOBEContext) (bool, error) {
+	expr := fmt.Sprintf("OobeAPI.screens.%s.shouldSkip()", oobeScreen.oobeAPIName)
+	var r bool
+	if err := oobeCtx.OOBEConn.Eval(ctx, expr, &r); err != nil {
+		return false, errors.Wrapf(err, "failed to evaluate %s", expr)
+	}
+	return r, nil
 }
 
 func isVisible(ctx context.Context, oobeScreen *OOBEScreen, oobeCtx *OOBEContext) error {

@@ -590,6 +590,18 @@ func (f *oobeFixture) PreTest(ctx context.Context, s *testing.FixtTestState) {
 	if err := GoThroughOOBEScreen(ctx, &SyncScreen, &oobeCtx); err != nil {
 		s.Fatal("Failed to go through sync screen: ", err)
 	}
+
+	// FingerprintScreen appears only on a device which has a fingerprint scanner.
+	skipFingerprintScreen, err := shouldSkip(ctx, &FingerprintScreen, &oobeCtx)
+	if err != nil {
+		s.Fatal("Failed to evaluate whether to skip fingerprint screen or not: ", err)
+	}
+	if !skipFingerprintScreen {
+		if err := GoThroughOOBEScreen(ctx, &FingerprintScreen, &oobeCtx); err != nil {
+			s.Fatal("Failed to go through fingerprint screen: ", err)
+		}
+	}
+
 	if err := GoThroughOOBEScreen(ctx, &PinSetupScreen, &oobeCtx); err != nil {
 		s.Fatal("Failed to go through pin setup screen: ", err)
 	}
