@@ -51,40 +51,6 @@ const (
 
 func init() {
 	testing.AddFixture(&testing.Fixture{
-		Name: "chromeLoggedInWithBluetoothRevampEnabled",
-		Desc: "Logs into a user session with the BluetoothRevamp feature flag enabled",
-		Contacts: []string{
-			"chadduffin@chromium.org",
-			"cros-connectivity@google.com",
-		},
-		Impl: newFixture(&fixtureFeatures{
-			EnableFeatures:  []string{"BluetoothRevamp"},
-			DisableFeatures: []string{},
-			LoginMode:       chromeService.LoginMode_LOGIN_MODE_FAKE_LOGIN,
-		}),
-		SetUpTimeout:    setUpTimeout,
-		ResetTimeout:    resetTimeout,
-		TearDownTimeout: tearDownTimeout,
-		ServiceDeps:     []string{serviceDepBTTestService, serviceDepChromeService},
-	})
-	testing.AddFixture(&testing.Fixture{
-		Name: "chromeLoggedInWithBluetoothRevampDisabled",
-		Desc: "Logs into a user session with the BluetoothRevamp feature flag disabled",
-		Contacts: []string{
-			"chadduffin@chromium.org",
-			"cros-connectivity@google.com",
-		},
-		Impl: newFixture(&fixtureFeatures{
-			EnableFeatures:  []string{},
-			DisableFeatures: []string{"BluetoothRevamp"},
-			LoginMode:       chromeService.LoginMode_LOGIN_MODE_FAKE_LOGIN,
-		}),
-		SetUpTimeout:    setUpTimeout,
-		ResetTimeout:    resetTimeout,
-		TearDownTimeout: tearDownTimeout,
-		ServiceDeps:     []string{serviceDepBTTestService, serviceDepChromeService},
-	})
-	testing.AddFixture(&testing.Fixture{
 		Name: "chromeLoggedInWithBluetoothEnabled",
 		Desc: "Logs into a user session and enables Bluetooth during set up and disables it during tear down",
 		Contacts: []string{
@@ -93,7 +59,7 @@ func init() {
 		},
 		Impl: newFixture(&fixtureFeatures{
 			BluetoothAdapterEnabled: true,
-			EnableFeatures:          []string{"BluetoothRevamp"},
+			EnableFeatures:          []string{},
 			DisableFeatures:         []string{},
 			LoginMode:               chromeService.LoginMode_LOGIN_MODE_FAKE_LOGIN,
 		}),
@@ -112,7 +78,7 @@ func init() {
 		Impl: newFixture(&fixtureFeatures{
 			BTPeerCount:             1,
 			BluetoothAdapterEnabled: true,
-			EnableFeatures:          []string{"BluetoothRevamp"},
+			EnableFeatures:          []string{},
 			DisableFeatures:         []string{},
 			LoginMode:               chromeService.LoginMode_LOGIN_MODE_FAKE_LOGIN,
 		}),
@@ -132,7 +98,7 @@ func init() {
 		Impl: newFixture(&fixtureFeatures{
 			BTPeerCount:             2,
 			BluetoothAdapterEnabled: true,
-			EnableFeatures:          []string{"BluetoothRevamp"},
+			EnableFeatures:          []string{},
 			DisableFeatures:         []string{},
 			LoginMode:               chromeService.LoginMode_LOGIN_MODE_FAKE_LOGIN,
 		}),
@@ -152,7 +118,7 @@ func init() {
 		Impl: newFixture(&fixtureFeatures{
 			BTPeerCount:             3,
 			BluetoothAdapterEnabled: true,
-			EnableFeatures:          []string{"BluetoothRevamp"},
+			EnableFeatures:          []string{},
 			DisableFeatures:         []string{},
 			LoginMode:               chromeService.LoginMode_LOGIN_MODE_FAKE_LOGIN,
 		}),
@@ -172,7 +138,7 @@ func init() {
 		Impl: newFixture(&fixtureFeatures{
 			BTPeerCount:             4,
 			BluetoothAdapterEnabled: true,
-			EnableFeatures:          []string{"BluetoothRevamp"},
+			EnableFeatures:          []string{},
 			DisableFeatures:         []string{},
 			LoginMode:               chromeService.LoginMode_LOGIN_MODE_FAKE_LOGIN,
 		}),
@@ -192,7 +158,7 @@ func init() {
 		Impl: newFixture(&fixtureFeatures{
 			BTPeerCount:             1,
 			BluetoothAdapterEnabled: true,
-			EnableFeatures:          []string{"BluetoothRevamp", "OobeHidDetectionRevamp"},
+			EnableFeatures:          []string{"OobeHidDetectionRevamp"},
 			DisableFeatures:         []string{},
 			LoginMode:               chromeService.LoginMode_LOGIN_MODE_NO_LOGIN,
 		}),
