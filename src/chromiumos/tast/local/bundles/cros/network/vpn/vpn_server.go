@@ -326,12 +326,13 @@ const (
 	wgServerPublicKey         = "VL4pfwqKV4pWX1xJRmvceOZLTftNKi2PrFoBbJWNKXw="
 	wgServerOverlayIP         = "10.12.14.1"
 	wgServerOverlayIPv6       = "fc00:caab:0:1:1::"
+	wgSecondServerOverlayIPv6 = "fc00:caab:0:1:3::"
 	wgServerAllowedIPs        = "10.12.0.0/16,fc00:caab:0:1:1::/128"
 	wgServerListenPort        = "12345"
 	wgSecondServerPrivateKey  = "MKLi0UPHP09PwZDH0EPVd2mMTeGi98NDR8dfkzPuQHs="
 	wgSecondServerPublicKey   = "wJXMGS2jhLPy4x75yev7oh92OwjHFcSWio4U/pWLYzg="
 	wgSecondServerOverlayIP   = "10.14.16.1"
-	wgSecondServerAllowedIPs  = "10.14.0.0/16"
+	wgSecondServerAllowedIPs  = "10.14.0.0/16,fc00:caab:0:1:3::/128"
 	wgSecondServerListenPort  = "54321"
 	wgPresharedKey            = "LqgZ5/qyT8J8nr25n9IEcUi+vOBkd3sphGn1ClhkHw0="
 	wgConfigFile              = "tmp/wg.conf"
@@ -582,6 +583,9 @@ func StartWireGuardServer(ctx context.Context, env *env.Env, clientPublicKey str
 		configValues["server_private_key"] = wgSecondServerPrivateKey
 		configValues["server_listen_port"] = wgSecondServerListenPort
 		server.OverlayIP = wgSecondServerOverlayIP
+	}
+	if isSecondServer && useIPv6 {
+		server.OverlayIP = wgSecondServerOverlayIPv6
 	}
 	if !isSecondServer {
 

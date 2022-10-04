@@ -223,8 +223,9 @@ func init() {
 			Name: "wireguard_ipv4",
 			Val: vpnTestParams{
 				config: vpn.Config{
-					Type:   vpn.TypeWireGuard,
-					WGIPv4: true,
+					Type:       vpn.TypeWireGuard,
+					WGIPv4:     true,
+					WGTwoPeers: true,
 				},
 			},
 			ExtraSoftwareDeps: []string{"wireguard"},
@@ -232,8 +233,9 @@ func init() {
 			Name: "wireguard_ipv6",
 			Val: vpnTestParams{
 				config: vpn.Config{
-					Type:   vpn.TypeWireGuard,
-					WGIPv6: true,
+					Type:       vpn.TypeWireGuard,
+					WGIPv6:     true,
+					WGTwoPeers: true,
 				},
 			},
 			ExtraSoftwareDeps: []string{"wireguard"},
@@ -243,6 +245,7 @@ func init() {
 				config: vpn.Config{
 					Type:          vpn.TypeWireGuard,
 					WGIPv4AndIPv6: true,
+					WGTwoPeers:    true,
 				},
 			},
 			ExtraSoftwareDeps: []string{"wireguard"},
