@@ -16,6 +16,40 @@
       "message": "Please review, thanks!",
       "revId": "41d8c4dea6eae993014a11d6d4bbf70198a1aa46",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "67060747_62a88d9a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2022-10-04T00:56:17Z",
+      "side": 1,
+      "message": "xiyuan for thoughts",
+      "revId": "41d8c4dea6eae993014a11d6d4bbf70198a1aa46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "291b374e_b9325def",
+        "filename": "src/chromiumos/tast/local/chrome/cuj/get_drive_url.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2022-10-04T00:56:17Z",
+      "side": 1,
+      "message": "I know this isn\u0027t new code, but I wonder if we can use some pseudo random algorithm instead, like hashing the device name. Randomness could add flake instead of persistent failures if something goes wrong with 1 copy perhaps?\n\nA stable pseudo-random number generator function would be generally useful as well.",
+      "revId": "41d8c4dea6eae993014a11d6d4bbf70198a1aa46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
