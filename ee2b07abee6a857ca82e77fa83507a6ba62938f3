@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f968ad4b_4e857ed1",
+        "filename": "src/chromiumos/tast/local/chrome/projector/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1248360
+      },
+      "writtenOn": "2022-10-04T19:13:23Z",
+      "side": 1,
+      "message": "Can you use other fixture to that, we should not maintain general managed user support in FamilyLink fixture.",
+      "range": {
+        "startLine": 96,
+        "startChar": 23,
+        "endLine": 96,
+        "endChar": 43
+      },
+      "revId": "ee2b07abee6a857ca82e77fa83507a6ba62938f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
