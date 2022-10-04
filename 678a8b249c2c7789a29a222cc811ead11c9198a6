@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7931c086_cb36375a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1248360
+      },
+      "writtenOn": "2022-10-04T19:51:45Z",
+      "side": 1,
+      "message": "Deferring the code review to Li and Xiqi as they are familiar with Projector.",
+      "revId": "678a8b249c2c7789a29a222cc811ead11c9198a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5c715a6_94bf2c52",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/transcript_translation.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1248360
+      },
+      "writtenOn": "2022-10-04T19:51:45Z",
+      "side": 1,
+      "message": "Does this still depend on FamilyLink fixture?",
+      "range": {
+        "startLine": 61,
+        "startChar": 25,
+        "endLine": 61,
+        "endChar": 35
+      },
+      "revId": "678a8b249c2c7789a29a222cc811ead11c9198a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
