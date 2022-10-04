@@ -142,6 +142,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c5c0ce9_1b3f68b9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/traffic_counters.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-10-04T04:11:45Z",
+      "side": 1,
+      "message": "Could you leave some comments in the code? The future readers may have the same questions :)",
+      "parentUuid": "88c93365_3a8ba284",
+      "range": {
+        "startLine": 291,
+        "startChar": 1,
+        "endLine": 291,
+        "endChar": 2
+      },
+      "revId": "5cfeb4299950dc0fbdaa212b0917984dfa695e77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e90306f2_43d66678",
