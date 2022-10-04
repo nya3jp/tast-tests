@@ -51,6 +51,24 @@
       "parentUuid": "4c172101_105155cd",
       "revId": "b97e18ae5b9b36185356d93d9a3d77f40aea617d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e7e8acd_f3030e32",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/auto_framing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1535837
+      },
+      "writtenOn": "2022-10-04T03:26:40Z",
+      "side": 1,
+      "message": "(I happened to learn this because `gtestExecutable` conflicted)",
+      "parentUuid": "4dc54fa4_a7fd1d98",
+      "revId": "b97e18ae5b9b36185356d93d9a3d77f40aea617d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
