@@ -16,6 +16,91 @@
       "message": "This test fails for me with https://paste.googleplex.com/6641923790995456 - am I doing something wrong?",
       "revId": "516af262b0c62c99295c64ea980184fb8230aa2a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad16eacf_3405bd6a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-10-04T16:10:48Z",
+      "side": 1,
+      "message": "some minor changes. Looks good otherwise",
+      "revId": "516af262b0c62c99295c64ea980184fb8230aa2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7825dfaa_45794983",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/remove_password.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-10-04T16:10:48Z",
+      "side": 1,
+      "message": "you are not reusing this AuthSessionId anywhere -- its okay to not return it here. Just invalidate the session in this function as a defer",
+      "revId": "516af262b0c62c99295c64ea980184fb8230aa2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7741d103_4600baa4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/remove_password.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-10-04T16:10:48Z",
+      "side": 1,
+      "message": "kill this AuthSession -- looks like you are starting fresh",
+      "revId": "516af262b0c62c99295c64ea980184fb8230aa2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8824bfb_9e1fe918",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/remove_password.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-10-04T16:10:48Z",
+      "side": 1,
+      "message": "defer Invalididate -- AuthSession is still running",
+      "revId": "516af262b0c62c99295c64ea980184fb8230aa2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99b0c0bd_67c62965",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/remove_password.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-10-04T16:10:48Z",
+      "side": 1,
+      "message": "defer Invalididate -- AuthSession is still running",
+      "revId": "516af262b0c62c99295c64ea980184fb8230aa2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
