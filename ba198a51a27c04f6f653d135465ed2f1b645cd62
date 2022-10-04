@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c16d55b_f64864cc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-10-04T09:19:11Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "ba198a51a27c04f6f653d135465ed2f1b645cd62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96ab66c7_9214a0e2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/choose_to_share_selected_file_or_not.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-10-04T09:19:11Z",
+      "side": 1,
+      "message": "nit: don\u0027t ignore error",
+      "range": {
+        "startLine": 93,
+        "startChar": 39,
+        "endLine": 93,
+        "endChar": 43
+      },
+      "revId": "ba198a51a27c04f6f653d135465ed2f1b645cd62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "704bf3e5_7c6ff724",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/choose_to_share_selected_file_or_not.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-10-04T09:19:11Z",
+      "side": 1,
+      "message": "nit: i\u0027d check whether you can cast s.Params() to bool, i.e.\n\n```\nshareSelectedFile, ok :\u003d s.Param().(bool)\nif !ok {\n  s.Fatal(...)\n}\n```",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 38
+      },
+      "revId": "ba198a51a27c04f6f653d135465ed2f1b645cd62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
