@@ -6,6 +6,7 @@ package arc
 
 import (
 	"context"
+	"regexp"
 	"time"
 
 	"chromiumos/tast/errors"
@@ -141,12 +142,16 @@ func AccessibilityTree(ctx context.Context, s *testing.State) {
 						Role: role.Slider,
 					},
 					{
-						Name: "ANNOUNCE",
 						Role: role.Button,
+						Attributes: map[string]interface{}{
+							"name": regexp.MustCompile(`(ANNOUNCE|Announce)`),
+						},
 					},
 					{
-						Name: "CLICK TO SHOW TOAST",
 						Role: role.Button,
+						Attributes: map[string]interface{}{
+							"name": regexp.MustCompile(`(CLICK TO SHOW TOAST|Click to show toast)`),
+						},
 					},
 					{
 						Role: role.GenericContainer,
@@ -196,12 +201,20 @@ func AccessibilityTree(ctx context.Context, s *testing.State) {
 						Role: role.StaticText,
 					},
 					{
-						Name: "CHANGE POLITE LIVE REGION",
 						Role: role.Button,
+						Attributes: map[string]interface{}{
+							"name": regexp.MustCompile(
+								`(CHANGE POLITE LIVE REGION|Change Polite Live Region)`,
+							),
+						},
 					},
 					{
-						Name: "CHANGE ASSERTIVE LIVE REGION",
 						Role: role.Button,
+						Attributes: map[string]interface{}{
+							"name": regexp.MustCompile(
+								`(CHANGE ASSERTIVE LIVE REGION|Change Assertive Live Region)`,
+							),
+						},
 					},
 					{
 						Name: "Initial text",

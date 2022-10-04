@@ -6,6 +6,7 @@ package arc
 
 import (
 	"context"
+	"regexp"
 	"time"
 
 	"chromiumos/tast/errors"
@@ -217,10 +218,12 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 		{
 			"Tab",
 			a11y.FindParams{
-				Name: "CHANGE POLITE LIVE REGION",
 				Role: role.Button,
 				Attributes: map[string]interface{}{
 					"className": arca11y.Button,
+					"name": regexp.MustCompile(
+						`(CHANGE POLITE LIVE REGION|Change Polite Live Region)`,
+					),
 				},
 			},
 			event.Focus,
@@ -238,10 +241,12 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 		}, {
 			"Tab",
 			a11y.FindParams{
-				Name: "CHANGE ASSERTIVE LIVE REGION",
 				Role: role.Button,
 				Attributes: map[string]interface{}{
 					"className": arca11y.Button,
+					"name": regexp.MustCompile(
+						`(CHANGE ASSERTIVE LIVE REGION|Change Assertive Live Region)`,
+					),
 				},
 			},
 			event.Focus,
