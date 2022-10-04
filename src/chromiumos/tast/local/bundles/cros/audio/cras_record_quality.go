@@ -12,6 +12,7 @@ import (
 
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/local/audio"
+	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -41,6 +42,12 @@ func init() {
 
 func CrasRecordQuality(ctx context.Context, s *testing.State) {
 	const duration = 2 * time.Second
+
+	// Stop UI in advance for this test to avoid the node being selected by UI.
+	if err := upstart.StopJob(ctx, "ui"); err != nil {
+		s.Fatal("Failed to stop ui: ", err)
+	}
+	defer upstart.EnsureJobRunning(ctx, "ui")
 
 	cras, err := audio.NewCras(ctx)
 	if err != nil {
