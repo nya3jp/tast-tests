@@ -25,13 +25,12 @@ func init() {
 		HardwareDeps: hwdep.D(hwdep.Microphone()),
 		Attr:         []string{"group:mainline"},
 		Params: []testing.Param{{
-			// TODO(b/240269271): remove "octopus" and "hatch" when b/240269271 is fixed.
-			// TODO(b/240271671): remove "nocturne" when b/240271671 is fixed.
 			// TODO(b/244254621) : remove "sasukette" when b/244254621 is fixed.
-			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform("octopus", "hatch", "nocturne"), hwdep.SkipOnModel("sasukette")),
+			ExtraSoftwareDeps: []string{"audio_stable"},
+			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel("sasukette")),
 		}, {
 			Name:              "unstable_platform",
-			ExtraHardwareDeps: hwdep.D(hwdep.Platform("octopus", "hatch", "nocturne")),
+			ExtraSoftwareDeps: []string{"audio_unstable"},
 			ExtraAttr:         []string{"informational"},
 		}, {
 			Name:              "unstable_model",
