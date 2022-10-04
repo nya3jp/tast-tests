@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14960e12_85d6abff",
+        "filename": "src/chromiumos/tast/common/policy/policy_blob.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1153089
+      },
+      "writtenOn": "2022-10-04T10:02:58Z",
+      "side": 1,
+      "message": "Is there a reason we keep this field public if policies are to be added via AddPolicies? They also don\u0027t appear to be serialized directly. Same for device, public account and extension policies below.",
+      "range": {
+        "startLine": 27,
+        "startChar": 69,
+        "endLine": 27,
+        "endChar": 115
+      },
+      "revId": "465917e10bd191270ffaa329f03f4997ee85708f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ec337d6_bbf4f290",
+        "filename": "src/chromiumos/tast/common/policy/policy_blob.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1153089
+      },
+      "writtenOn": "2022-10-04T10:02:58Z",
+      "side": 1,
+      "message": "nit: IMHO this line is now too long. Perhaps a shorter comment would work:\n\n```\n// Use DeviceProto to manually set legacy device policies.\n```",
+      "range": {
+        "startLine": 28,
+        "startChar": 69,
+        "endLine": 28,
+        "endChar": 191
+      },
+      "revId": "465917e10bd191270ffaa329f03f4997ee85708f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0de087c_7d288715",
+        "filename": "src/chromiumos/tast/common/policy/policy_blob.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1153089
+      },
+      "writtenOn": "2022-10-04T10:02:58Z",
+      "side": 1,
+      "message": "nit: \"are\", as it is shorter and usually we use present tense to describe what functions do. Same below.",
+      "range": {
+        "startLine": 140,
+        "startChar": 58,
+        "endLine": 140,
+        "endChar": 65
+      },
+      "revId": "465917e10bd191270ffaa329f03f4997ee85708f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3866b53_908ba34f",
+        "filename": "src/chromiumos/tast/common/policy/policy_blob.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1153089
+      },
+      "writtenOn": "2022-10-04T10:02:58Z",
+      "side": 1,
+      "message": "nit: too long, please break over multiple lines. Same below",
+      "range": {
+        "startLine": 174,
+        "startChar": 0,
+        "endLine": 174,
+        "endChar": 174
+      },
+      "revId": "465917e10bd191270ffaa329f03f4997ee85708f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36eef014_26a59133",
+        "filename": "src/chromiumos/tast/common/policy/policy_blob.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1153089
+      },
+      "writtenOn": "2022-10-04T10:02:58Z",
+      "side": 1,
+      "message": "nit: you could also initialize this field to an empty list in NewBlob to avoid this check",
+      "range": {
+        "startLine": 189,
+        "startChar": 1,
+        "endLine": 189,
+        "endChar": 35
+      },
+      "revId": "465917e10bd191270ffaa329f03f4997ee85708f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

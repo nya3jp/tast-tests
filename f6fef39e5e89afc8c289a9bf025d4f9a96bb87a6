@@ -191,6 +191,47 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "95994acc_fa1f3eea",
+        "filename": "src/chromiumos/tast/common/policy/policy_blob.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1153089
+      },
+      "writtenOn": "2022-10-04T10:02:58Z",
+      "side": 1,
+      "message": "I don\u0027t see the added comment. Where is it?",
+      "parentUuid": "e1be9d8d_db970b52",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 90
+      },
+      "revId": "f6fef39e5e89afc8c289a9bf025d4f9a96bb87a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2f66d4c_d982d642",
+        "filename": "src/chromiumos/tast/common/policy/policy_blob.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1153089
+      },
+      "writtenOn": "2022-10-04T10:02:58Z",
+      "side": 1,
+      "message": "Why remove initialization of RequestErrors? This forces anyone who needs to add an error to first check and then initialize this map (as you do in a test). By keeping it here, you make using the interface simpler.",
+      "revId": "f6fef39e5e89afc8c289a9bf025d4f9a96bb87a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2e6aa191_7ef6ba99",
         "filename": "src/chromiumos/tast/common/policy/policy_blob.go",
         "patchSetId": 16
