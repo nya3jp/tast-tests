@@ -50,6 +50,24 @@
       "message": "I know this isn\u0027t new code, but I wonder if we can use some pseudo random algorithm instead, like hashing the device name. Randomness could add flake instead of persistent failures if something goes wrong with 1 copy perhaps?\n\nA stable pseudo-random number generator function would be generally useful as well.",
       "revId": "41d8c4dea6eae993014a11d6d4bbf70198a1aa46",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09b7312e_2ced72d4",
+        "filename": "src/chromiumos/tast/local/chrome/cuj/get_drive_url.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-10-04T16:49:13Z",
+      "side": 1,
+      "message": "Agree. Let\u0027s make this deterministic instead of random. One possibility is that we hash (md5, or sha) on sku (or model), convert that into an int (e.g. using `binary.BigEndian.Uint64`, then mod by `len(file.ids)` .\n\nsku-id via crosconfig, not sure whether sku-id is the same as sku string though.\nhttps://source.corp.google.com/chromeos_public/src/platform/dev/src/chromiumos/test/dut/internal/dutidentity.go;rcl\u003d8b0fc37c66d7260fab6f2e8f1b57bedb4b6cc253;l\u003d45\n\nsku_number from vpd:\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/telemetryextension/hp_compliance.go;rcl\u003d268acae4a21843a4944af5feff733bfb325c8b72;l\u003d64\n\nmodel from crosconfig\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/audio/alsa_conformance.go;rcl\u003d6067a81d6dd8795353b8e831d9e3f4a7996c88ae;l\u003d74\n\n\ncrosconfig doc in case we want to check what else could be used:\nhttps://chromium.googlesource.com/chromiumos/platform2/+/HEAD/chromeos-config/README.md",
+      "parentUuid": "291b374e_b9325def",
+      "revId": "41d8c4dea6eae993014a11d6d4bbf70198a1aa46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
