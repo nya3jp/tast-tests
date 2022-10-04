@@ -16,6 +16,24 @@
       "message": "Ah shoot I forgot, we should do this for enterprise too, as redundant as it seems.",
       "revId": "803c975803c4b4b600a7123f8a4e7316176d8a44",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b28673f_2f44c0fc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/fgsec_wpa_change.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-10-04T21:48:59Z",
+      "side": 1,
+      "message": "This looks done.",
+      "parentUuid": "e5eb0183_5f8b5b3e",
+      "revId": "803c975803c4b4b600a7123f8a4e7316176d8a44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
