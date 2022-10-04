@@ -16,6 +16,52 @@
       "message": "Hi Aga, this CL is ready for review. It\u0027s the most upstream CL in the chain.",
       "revId": "391eb1cd16f25cc0564780ebc21bfd011aa4166a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9939be06_32d58f95",
+        "filename": "src/chromiumos/tast/local/chrome/familylink/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1248360
+      },
+      "writtenOn": "2022-10-04T19:44:55Z",
+      "side": 1,
+      "message": "Is there a style guideline for that?",
+      "range": {
+        "startLine": 215,
+        "startChar": 0,
+        "endLine": 225,
+        "endChar": 18
+      },
+      "revId": "391eb1cd16f25cc0564780ebc21bfd011aa4166a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84f42599_b4e2923b",
+        "filename": "src/chromiumos/tast/local/chrome/familylink/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1248360
+      },
+      "writtenOn": "2022-10-04T19:44:55Z",
+      "side": 1,
+      "message": "Why is this needed? And why is the pattern not consistent for PolicyUser()?",
+      "range": {
+        "startLine": 231,
+        "startChar": 0,
+        "endLine": 231,
+        "endChar": 52
+      },
+      "revId": "391eb1cd16f25cc0564780ebc21bfd011aa4166a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
