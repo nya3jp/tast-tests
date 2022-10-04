@@ -165,7 +165,6 @@ func (uiHelper *UIHelper) FirmwareInstallationPageOperation(ctx context.Context)
 
 	return action.Combine("Firmware Installation page operation",
 		uiHelper.waitForPageToLoad("Install complete", timeInSecondToLoadPage),
-		uiHelper.waitAndClickButton("Next", longTimeInSecondToEnableButton),
 	)(ctx)
 }
 
