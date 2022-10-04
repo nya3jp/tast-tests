@@ -330,7 +330,7 @@ var vp9SVCFiles = []string{
 	"test_vectors/vp9/kSVC/ksvc_3sl_3tl_key100.ivf",
 }
 
-var hevcCommonFiles = []string{
+var hevcMainFiles = []string{
 	"test_vectors/hevc/main/AMP_A_Samsung_7.hevc",
 	"test_vectors/hevc/main/AMP_B_Samsung_7.hevc",
 	"test_vectors/hevc/main/AMP_D_Hisilicon.hevc",
@@ -451,6 +451,43 @@ var hevcCommonFiles = []string{
 	"test_vectors/hevc/main/WPP_E_ericsson_MAIN_2.hevc",
 	"test_vectors/hevc/main/WPP_F_ericsson_MAIN_2.hevc",
 	"test_vectors/hevc/main_still_picture/IPRED_B_Nokia_3.hevc",
+}
+
+var hevcMainBug239819547Files = []string{
+	"test_vectors/hevc/main/BUMPING_A_ericsson_1.hevc",
+	"test_vectors/hevc/main/NoOutPrior_B_Qualcomm_1.hevc",
+}
+var hevcMainBug239927523Files = []string{
+	"test_vectors/hevc/main/NUT_A_ericsson_5.hevc",
+	"test_vectors/hevc/main/RAP_A_docomo_6.hevc",
+	"test_vectors/hevc/main/RAP_B_Bossen_2.hevc",
+}
+var hevcMainBug239936640Files = []string{
+	"test_vectors/hevc/main/SLIST_A_Sony_5.hevc",
+	"test_vectors/hevc/main/SLIST_B_Sony_9.hevc",
+	"test_vectors/hevc/main/SLIST_C_Sony_4.hevc",
+	"test_vectors/hevc/main/SLIST_D_Sony_9.hevc",
+}
+var hevcMainBug241775056Files = []string{
+	"test_vectors/hevc/main/POC_A_Bossen_3.hevc",
+}
+var hevcMainBug241731431Files = []string{
+	"test_vectors/hevc/main/RPS_D_ericsson_6.hevc",
+}
+var hevcMainBug241733687Files = []string{
+	"test_vectors/hevc/main/CONFWIN_A_Sony_1.hevc",
+}
+var hevcMainBug241727534Files = []string{
+	"test_vectors/hevc/main/RPLM_B_qualcomm_4.hevc",
+}
+var hevcMainBug241731425Files = []string{
+	"test_vectors/hevc/main/VPSSPSPPS_A_MainConcept_1.hevc",
+}
+var hevcMainBug241772308Files = []string{
+	"test_vectors/hevc/main/NoOutPrior_A_Qualcomm_1.hevc",
+}
+var hevcMainBug242708185Files = []string{
+	"test_vectors/hevc/main/RPS_C_ericsson_5.hevc",
 }
 
 func appendJSONFiles(videoFiles []string) []string {
@@ -755,9 +792,119 @@ func init() {
 				Name:              "hevc_main",
 				ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild", "graphics_video_chromestackdecoding"},
 				ExtraSoftwareDeps: []string{caps.HWDecodeHEVC},
-				ExtraData:         appendJSONFiles(hevcCommonFiles),
+				ExtraData:         appendJSONFiles(hevcMainFiles),
 				Val: chromeStackDecoderVerificationTestParam{
-					videoFiles:    hevcCommonFiles,
+					videoFiles:    hevcMainFiles,
+					validatorType: decoding.MD5,
+					mustFail:      false,
+				},
+			},
+			{
+				Name:              "hevc_main_bug_239819547",
+				ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild", "graphics_video_chromestackdecoding"},
+				ExtraSoftwareDeps: []string{caps.HWDecodeHEVC},
+				ExtraData:         appendJSONFiles(hevcMainBug239819547Files),
+				Val: chromeStackDecoderVerificationTestParam{
+					videoFiles:    hevcMainBug239819547Files,
+					validatorType: decoding.MD5,
+					mustFail:      false,
+				},
+			},
+			{
+				Name:              "hevc_main_bug_239927523",
+				ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild", "graphics_video_chromestackdecoding"},
+				ExtraSoftwareDeps: []string{caps.HWDecodeHEVC},
+				ExtraData:         appendJSONFiles(hevcMainBug239927523Files),
+				Val: chromeStackDecoderVerificationTestParam{
+					videoFiles:    hevcMainBug239927523Files,
+					validatorType: decoding.MD5,
+					mustFail:      false,
+				},
+			},
+			{
+				Name:              "hevc_main_bug_239936640",
+				ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild", "graphics_video_chromestackdecoding"},
+				ExtraSoftwareDeps: []string{caps.HWDecodeHEVC},
+				ExtraData:         appendJSONFiles(hevcMainBug239936640Files),
+				Val: chromeStackDecoderVerificationTestParam{
+					videoFiles:    hevcMainBug239936640Files,
+					validatorType: decoding.MD5,
+					mustFail:      false,
+				},
+			},
+			{
+				Name:              "hevc_main_bug_241775056",
+				ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild", "graphics_video_chromestackdecoding"},
+				ExtraSoftwareDeps: []string{caps.HWDecodeHEVC},
+				ExtraData:         appendJSONFiles(hevcMainBug241775056Files),
+				Val: chromeStackDecoderVerificationTestParam{
+					videoFiles:    hevcMainBug241775056Files,
+					validatorType: decoding.MD5,
+					mustFail:      false,
+				},
+			},
+			{
+				Name:              "hevc_main_bug_241731431",
+				ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild", "graphics_video_chromestackdecoding"},
+				ExtraSoftwareDeps: []string{caps.HWDecodeHEVC},
+				ExtraData:         appendJSONFiles(hevcMainBug241731431Files),
+				Val: chromeStackDecoderVerificationTestParam{
+					videoFiles:    hevcMainBug241731431Files,
+					validatorType: decoding.MD5,
+					mustFail:      false,
+				},
+			},
+			{
+				Name:              "hevc_main_bug_241733687",
+				ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild", "graphics_video_chromestackdecoding"},
+				ExtraSoftwareDeps: []string{caps.HWDecodeHEVC},
+				ExtraData:         appendJSONFiles(hevcMainBug241733687Files),
+				Val: chromeStackDecoderVerificationTestParam{
+					videoFiles:    hevcMainBug241733687Files,
+					validatorType: decoding.MD5,
+					mustFail:      false,
+				},
+			},
+			{
+				Name:              "hevc_main_bug_241727534",
+				ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild", "graphics_video_chromestackdecoding"},
+				ExtraSoftwareDeps: []string{caps.HWDecodeHEVC},
+				ExtraData:         appendJSONFiles(hevcMainBug241727534Files),
+				Val: chromeStackDecoderVerificationTestParam{
+					videoFiles:    hevcMainBug241727534Files,
+					validatorType: decoding.MD5,
+					mustFail:      false,
+				},
+			},
+			{
+				Name:              "hevc_main_bug_241731425",
+				ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild", "graphics_video_chromestackdecoding"},
+				ExtraSoftwareDeps: []string{caps.HWDecodeHEVC},
+				ExtraData:         appendJSONFiles(hevcMainBug241731425Files),
+				Val: chromeStackDecoderVerificationTestParam{
+					videoFiles:    hevcMainBug241731425Files,
+					validatorType: decoding.MD5,
+					mustFail:      false,
+				},
+			},
+			{
+				Name:              "hevc_main_bug_241772308",
+				ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild", "graphics_video_chromestackdecoding"},
+				ExtraSoftwareDeps: []string{caps.HWDecodeHEVC},
+				ExtraData:         appendJSONFiles(hevcMainBug241772308Files),
+				Val: chromeStackDecoderVerificationTestParam{
+					videoFiles:    hevcMainBug241772308Files,
+					validatorType: decoding.MD5,
+					mustFail:      false,
+				},
+			},
+			{
+				Name:              "hevc_main_bug_242708185",
+				ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild", "graphics_video_chromestackdecoding"},
+				ExtraSoftwareDeps: []string{caps.HWDecodeHEVC},
+				ExtraData:         appendJSONFiles(hevcMainBug242708185Files),
+				Val: chromeStackDecoderVerificationTestParam{
+					videoFiles:    hevcMainBug242708185Files,
 					validatorType: decoding.MD5,
 					mustFail:      false,
 				},
