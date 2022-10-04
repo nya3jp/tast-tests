@@ -69,6 +69,6 @@ func LTS(ctx context.Context, s *testing.State) {
 	}
 
 	if minorVersion < state.Config.CurrentChromeOSLTSMinor {
-		s.Errorf("Minor version %d not an LTS minor version (>=%d)", minorVersion, state.Config.CurrentChromeOSLTSMinor)
+		s.Errorf("Unexpected LTS version; got %s, expected minor >= %d", chromeOSVersion, state.Config.CurrentChromeOSLTSMinor)
 	}
 }
