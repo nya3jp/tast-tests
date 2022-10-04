@@ -40,7 +40,6 @@ type YtWeb struct {
 	br      *browser.Browser
 	tconn   *chrome.TestConn
 	kb      *input.KeyboardEventWriter
-	video   VideoSrc
 	ui      *uiauto.Context
 	ytConn  *chrome.Conn
 	ytWinID int
@@ -50,13 +49,11 @@ type YtWeb struct {
 }
 
 // NewYtWeb creates an instance of YtWeb.
-func NewYtWeb(br *browser.Browser, tconn *chrome.TestConn, kb *input.KeyboardEventWriter, video VideoSrc,
-	extendedDisplay bool, ui *uiauto.Context, uiHdl cuj.UIActionHandler) *YtWeb {
+func NewYtWeb(br *browser.Browser, tconn *chrome.TestConn, kb *input.KeyboardEventWriter, extendedDisplay bool, ui *uiauto.Context, uiHdl cuj.UIActionHandler) *YtWeb {
 	return &YtWeb{
 		br:    br,
 		tconn: tconn,
 		kb:    kb,
-		video: video,
 		ui:    ui,
 		uiHdl: uiHdl,
 
@@ -65,83 +62,85 @@ func NewYtWeb(br *browser.Browser, tconn *chrome.TestConn, kb *input.KeyboardEve
 }
 
 // OpenAndPlayVideo opens a youtube video on chrome.
-func (y *YtWeb) OpenAndPlayVideo(ctx context.Context) (err error) {
-	testing.ContextLog(ctx, "Open Youtube web")
+func (y *YtWeb) OpenAndPlayVideo(video VideoSrc) uiauto.Action {
+	return func(ctx context.Context) (err error) {
+		testing.ContextLog(ctx, "Open Youtube web")
 
-	y.ytConn, err = y.uiHdl.NewChromeTab(ctx, y.br, y.video.URL, true)
-	if err != nil {
-		return errors.Wrap(err, "failed to open youtube tab")
-	}
-	// Lacros will focus on the search bar after navigating, press Enter to make sure the focus is on the webarea.
-	searchBar := nodewith.Role(role.TextField).Name("Address and search bar").Focused()
-	if err := uiauto.IfSuccessThen(y.ui.Exists(searchBar), y.kb.AccelAction("Enter"))(ctx); err != nil {
-		return err
-	}
-	if err := webutil.WaitForYoutubeVideo(ctx, y.ytConn, 0); err != nil {
-		return errors.Wrap(err, "failed to wait for video element")
-	}
-	// If prompted to open in YouTube app, instruct device to stay in Chrome.
-	stayInChrome := nodewith.Name("Stay in Chrome").Role(role.Button)
-	if err := uiauto.IfSuccessThen(
-		y.ui.WithTimeout(shortUITimeout).WaitUntilExists(stayInChrome),
-		func(ctx context.Context) error {
-			testing.ContextLog(ctx, "dialog popped up and asked whether to switch to YouTube app")
-			rememberReg := regexp.MustCompile("Remember (my|this) choice")
-			rememberChoice := nodewith.NameRegex(rememberReg).Role(role.CheckBox)
-			if err := y.uiHdl.Click(rememberChoice)(ctx); err != nil {
-				return err
-			}
-			if err := y.uiHdl.Click(stayInChrome)(ctx); err != nil {
-				return err
-			}
-			testing.ContextLog(ctx, "instructed device to stay on YouTube web")
-			return nil
-		},
-	)(ctx); err != nil {
-		return errors.Wrap(err, "failed to instruct device to stay on YouTube web")
-	}
-
-	if err := clearNotificationPrompts(ctx, y.ui); err != nil {
-		return errors.Wrap(err, "failed to clear notification prompts")
-	}
-
-	// Use keyboard to play/pause video and ensure PageLoad.PaintTiming.NavigationToLargestContentfulPaint2
-	// can be generated correctly. See b/240998447.
-	if err := uiauto.Combine("pause and play with keyboard",
-		y.Pause(),
-		y.Play(),
-	)(ctx); err != nil {
-		return errors.Wrap(err, "failed to pause and play before switching quality")
-	}
-
-	// Sometimes prompts to grant permission appears after opening a video for a while.
-	if err := clearNotificationPrompts(ctx, y.ui); err != nil {
-		return errors.Wrap(err, "failed to clear notification prompts")
-	}
-
-	// Default expected display is main display.
-	if err := cuj.SwitchWindowToDisplay(ctx, y.tconn, y.kb, y.extendedDisplay)(ctx); err != nil {
-		if y.extendedDisplay {
-			return errors.Wrap(err, "failed to switch Youtube to the extended display")
+		y.ytConn, err = y.uiHdl.NewChromeTab(ctx, y.br, video.URL, true)
+		if err != nil {
+			return errors.Wrap(err, "failed to open youtube tab")
 		}
-		return errors.Wrap(err, "failed to switch Youtube to the main display")
-	}
+		// Lacros will focus on the search bar after navigating, press Enter to make sure the focus is on the webarea.
+		searchBar := nodewith.Role(role.TextField).Name("Address and search bar").Focused()
+		if err := uiauto.IfSuccessThen(y.ui.Exists(searchBar), y.kb.AccelAction("Enter"))(ctx); err != nil {
+			return err
+		}
+		if err := webutil.WaitForYoutubeVideo(ctx, y.ytConn, 0); err != nil {
+			return errors.Wrap(err, "failed to wait for video element")
+		}
+		// If prompted to open in YouTube app, instruct device to stay in Chrome.
+		stayInChrome := nodewith.Name("Stay in Chrome").Role(role.Button)
+		if err := uiauto.IfSuccessThen(
+			y.ui.WithTimeout(shortUITimeout).WaitUntilExists(stayInChrome),
+			func(ctx context.Context) error {
+				testing.ContextLog(ctx, "dialog popped up and asked whether to switch to YouTube app")
+				rememberReg := regexp.MustCompile("Remember (my|this) choice")
+				rememberChoice := nodewith.NameRegex(rememberReg).Role(role.CheckBox)
+				if err := y.uiHdl.Click(rememberChoice)(ctx); err != nil {
+					return err
+				}
+				if err := y.uiHdl.Click(stayInChrome)(ctx); err != nil {
+					return err
+				}
+				testing.ContextLog(ctx, "instructed device to stay on YouTube web")
+				return nil
+			},
+		)(ctx); err != nil {
+			return errors.Wrap(err, "failed to instruct device to stay on YouTube web")
+		}
 
-	if err := y.SkipAd()(ctx); err != nil {
-		return errors.Wrap(err, "failed to click 'Skip Ad' button")
-	}
+		if err := clearNotificationPrompts(ctx, y.ui); err != nil {
+			return errors.Wrap(err, "failed to clear notification prompts")
+		}
 
-	if err := y.SwitchQuality(y.video.Quality)(ctx); err != nil {
-		return errors.Wrapf(err, "failed to switch resolution to %s", y.video.Quality)
-	}
+		// Use keyboard to play/pause video and ensure PageLoad.PaintTiming.NavigationToLargestContentfulPaint2
+		// can be generated correctly. See b/240998447.
+		if err := uiauto.Combine("pause and play with keyboard",
+			y.Pause(),
+			y.Play(),
+		)(ctx); err != nil {
+			return errors.Wrap(err, "failed to pause and play before switching quality")
+		}
 
-	y.ytWinID, err = getFirstWindowID(ctx, y.tconn)
-	if err != nil {
-		return errors.Wrap(err, "failed to get window ID")
-	}
+		// Sometimes prompts to grant permission appears after opening a video for a while.
+		if err := clearNotificationPrompts(ctx, y.ui); err != nil {
+			return errors.Wrap(err, "failed to clear notification prompts")
+		}
 
-	// Ensure the video is playing.
-	return uiauto.IfFailThen(y.IsPlaying(), y.Play())(ctx)
+		// Default expected display is main display.
+		if err := cuj.SwitchWindowToDisplay(ctx, y.tconn, y.kb, y.extendedDisplay)(ctx); err != nil {
+			if y.extendedDisplay {
+				return errors.Wrap(err, "failed to switch Youtube to the extended display")
+			}
+			return errors.Wrap(err, "failed to switch Youtube to the main display")
+		}
+
+		if err := y.SkipAd()(ctx); err != nil {
+			return errors.Wrap(err, "failed to click 'Skip Ad' button")
+		}
+
+		if err := y.SwitchQuality(video.Quality)(ctx); err != nil {
+			return errors.Wrapf(err, "failed to switch resolution to %s", video.Quality)
+		}
+
+		y.ytWinID, err = getFirstWindowID(ctx, y.tconn)
+		if err != nil {
+			return errors.Wrap(err, "failed to get window ID")
+		}
+
+		// Ensure the video is playing.
+		return uiauto.IfFailThen(y.IsPlaying(), y.Play())(ctx)
+	}
 }
 
 // SwitchQuality switches youtube quality.

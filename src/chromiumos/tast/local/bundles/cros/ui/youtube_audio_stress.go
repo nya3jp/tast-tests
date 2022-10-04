@@ -133,10 +133,10 @@ func YoutubeAudioStress(ctx context.Context, s *testing.State) {
 		Quality: "1080p60",
 	}
 	// Create an instance of YtWeb to perform actions on youtube web.
-	ytbWeb := youtube.NewYtWeb(cr.Browser(), tconn, kb, videoSource, extendedDisplay, ui, uiHandler)
+	ytbWeb := youtube.NewYtWeb(cr.Browser(), tconn, kb, extendedDisplay, ui, uiHandler)
 	defer ytbWeb.Close(cleanupCtx)
 
-	if err := ytbWeb.OpenAndPlayVideo(ctx); err != nil {
+	if err := ytbWeb.OpenAndPlayVideo(videoSource)(ctx); err != nil {
 		s.Fatalf("Failed to open %s: %v", videoSource.URL, err)
 	}
 	if err = ytbWeb.Play()(ctx); err != nil {

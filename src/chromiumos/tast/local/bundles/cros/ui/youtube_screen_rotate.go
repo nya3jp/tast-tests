@@ -129,9 +129,8 @@ func YoutubeScreenRotate(ctx context.Context, s *testing.State) {
 	}(cleanupCtx)
 
 	extendedDisplay := false
-	videoApp := youtube.NewYtWeb(cr.Browser(), tconn, kb, videoSource, extendedDisplay, ui, uiHandler)
-
-	if err := videoApp.OpenAndPlayVideo(ctx); err != nil {
+	videoApp := youtube.NewYtWeb(cr.Browser(), tconn, kb, extendedDisplay, ui, uiHandler)
+	if err := videoApp.OpenAndPlayVideo(videoSource)(ctx); err != nil {
 		s.Fatalf("Failed to open %s: %v", videoSource.URL, err)
 	}
 	defer videoApp.Close(cleanupCtx)

@@ -143,8 +143,8 @@ func SetScreensaver(ctx context.Context, s *testing.State) {
 	// Open up an arbitrary Youtube video to test "media string". The name of
 	// the media playing should be displayed in the screensaver.
 	const extendedDisplay = false
-	videoApp := youtube.NewYtWeb(cr.Browser(), tconn, kb, ambient.TestVideoSrc, extendedDisplay, ui, uiHandler)
-	if err := videoApp.OpenAndPlayVideo(ctx); err != nil {
+	videoApp := youtube.NewYtWeb(cr.Browser(), tconn, kb, extendedDisplay, ui, uiHandler)
+	if err := videoApp.OpenAndPlayVideo(ambient.TestVideoSrc)(ctx); err != nil {
 		s.Fatalf("Failed to open %s: %v", ambient.TestVideoSrc.URL, err)
 	}
 	defer videoApp.Close(cleanupCtx)

@@ -231,8 +231,8 @@ func ThunderboltDockStationFunctionality(ctx context.Context, s *testing.State) 
 
 	cui := uiauto.New(tconn)
 	isExternalDisplay := false
-	videoApp := youtube.NewYtWeb(cr.Browser(), tconn, vkb, videoSource, isExternalDisplay, cui, uiHandler)
-	if err := videoApp.OpenAndPlayVideo(ctx); err != nil {
+	videoApp := youtube.NewYtWeb(cr.Browser(), tconn, vkb, isExternalDisplay, cui, uiHandler)
+	if err := videoApp.OpenAndPlayVideo(videoSource)(ctx); err != nil {
 		s.Fatalf("Failed to open %s: %v", videoSource.URL, err)
 	}
 	defer videoApp.Close(cleanupCtx)

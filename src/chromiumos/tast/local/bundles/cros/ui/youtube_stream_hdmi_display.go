@@ -151,8 +151,8 @@ func YoutubeStreamHDMIDisplay(ctx context.Context, s *testing.State) {
 	}
 	defer uiHandler.Close()
 
-	videoApp := youtube.NewYtWeb(cr.Browser(), tconn, kb, videoSource, true, cui, uiHandler)
-	if err := videoApp.OpenAndPlayVideo(ctx); err != nil {
+	videoApp := youtube.NewYtWeb(cr.Browser(), tconn, kb, true, cui, uiHandler)
+	if err := videoApp.OpenAndPlayVideo(videoSource)(ctx); err != nil {
 		s.Fatalf("Failed to open %s: %v", videoSource.URL, err)
 	}
 	defer videoApp.Close(cleanupCtx)
