@@ -69,6 +69,24 @@
       "parentUuid": "b8e8f774_71837bc5",
       "revId": "e56a85f4b65e53374f111e14e04cbd181e158242",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61a55c7f_9bf4832f",
+        "filename": "src/chromiumos/tast/local/mtbf/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-10-04T09:51:22Z",
+      "side": 1,
+      "message": "Copy that, thank you very much, will file a bug and submit another PS soon.",
+      "parentUuid": "c17db9f0_0931a354",
+      "revId": "e56a85f4b65e53374f111e14e04cbd181e158242",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
