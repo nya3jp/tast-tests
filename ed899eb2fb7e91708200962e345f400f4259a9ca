@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad9ea5f8_279d7956",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550137
+      },
+      "writtenOn": "2022-10-04T22:38:29Z",
+      "side": 1,
+      "message": "Hi! I\u0027m a member of the HW security firmware team working on improving CCD capability testing. I\u0027m pretty new to Tast/Go so any feedback on this CL would be much appreciated. Happy to answer any questions and/or make any updates. Thanks in advance!",
+      "revId": "ed899eb2fb7e91708200962e345f400f4259a9ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
