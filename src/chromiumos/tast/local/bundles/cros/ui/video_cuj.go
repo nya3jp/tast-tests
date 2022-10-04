@@ -34,9 +34,8 @@ import (
 )
 
 type videoCUJTestParam struct {
-	bt       browser.Type
-	duration time.Duration // How long the overall test should take.
-	tablet   bool
+	bt     browser.Type
+	tablet bool
 }
 
 func init() {
@@ -62,8 +61,7 @@ func init() {
 			Name:    "clamshell",
 			Fixture: "loggedInToCUJUser",
 			Val: videoCUJTestParam{
-				bt:       browser.TypeAsh,
-				duration: 30 * time.Minute,
+				bt: browser.TypeAsh,
 			},
 		}, {
 			Name:    "tablet",
@@ -109,12 +107,8 @@ func VideoCUJ(ctx context.Context, s *testing.State) {
 
 	testParam := s.Param().(videoCUJTestParam)
 
-	// Determines the overall test duration. Defaults to 10 minutes
-	// if the test does not specify a test duration.
-	testDuration := 10 * time.Minute
-	if testParam.duration != 0 {
-		testDuration = testParam.duration
-	}
+	// Determines the overall test duration.
+	const testDuration = 10 * time.Minute
 
 	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 
