@@ -81,6 +81,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "389fd163_941d186d",
+        "filename": "src/chromiumos/tast/local/chrome/cuj/get_drive_url.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-04T20:55:56Z",
+      "side": 1,
+      "message": "Disregard this comment. I was in the middle of code review and only meant to reply to Xiyuan for now.",
+      "parentUuid": "895a6227_bd4cc4ff",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 1
+      },
+      "revId": "41d8c4dea6eae993014a11d6d4bbf70198a1aa46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "291b374e_b9325def",
