@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf3e04dd_3d54425b",
+        "filename": "src/chromiumos/tast/common/servo/ec.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-10-04T17:11:46Z",
+      "side": 1,
+      "message": "Add a \\r\\n to the end of this regex, to make sure that it doesn\u0027t return a partial string. That might mean you could avoid the testing.Poll below.",
+      "range": {
+        "startLine": 406,
+        "startChar": 24,
+        "endLine": 406,
+        "endChar": 54
+      },
+      "revId": "93c664baf8411e52ee4f075da1e6a26758501716",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
