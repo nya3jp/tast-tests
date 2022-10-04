@@ -187,6 +187,17 @@ func init() {
 		ResetTimeout:    testBridgeSetUpTimeout,
 		TearDownTimeout: tearDownTimeout,
 	})
+
+	testing.AddFixture(&testing.Fixture{
+		Name:            "ccaTestBridgeReadyWithAutoFramingForceEnabled",
+		Desc:            "Set up test bridge for CCA with Auto Framing force enabled",
+		Contacts:        []string{"kamesan@chromium.org", "chromeos-camera-eng@google.com"},
+		Data:            []string{"cca_ui.js"},
+		Impl:            &fixture{forceEnableAutoFraming: true},
+		SetUpTimeout:    setUpTimeout,
+		ResetTimeout:    testBridgeSetUpTimeout,
+		TearDownTimeout: tearDownTimeout,
+	})
 }
 
 // DebugParams defines some useful flags for debug CCA tests.
@@ -256,19 +267,20 @@ type fixture struct {
 	cameraScene   string
 	brightnessVal string
 
-	lacros               bool
-	scriptPaths          []string
-	fakeCamera           bool
-	fakeScene            bool
-	arcBooted            bool
-	launchCCA            bool
-	bypassPermission     bool
-	forceClamshell       bool
-	guestMode            bool
-	launchCCAInCameraBox bool
-	debugParams          DebugParams
-	features             []feature
-	screenRecorder       *uiauto.ScreenRecorder
+	lacros                 bool
+	scriptPaths            []string
+	fakeCamera             bool
+	fakeScene              bool
+	arcBooted              bool
+	launchCCA              bool
+	bypassPermission       bool
+	forceClamshell         bool
+	guestMode              bool
+	launchCCAInCameraBox   bool
+	forceEnableAutoFraming bool
+	debugParams            DebugParams
+	features               []feature
+	screenRecorder         *uiauto.ScreenRecorder
 }
 
 func (f *fixture) cameraType() testutil.UseCameraType {
@@ -316,6 +328,9 @@ func (f *fixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
 	}
 	if f.forceClamshell {
 		chromeOpts = append(chromeOpts, chrome.ExtraArgs("--force-tablet-mode=clamshell"))
+	}
+	if f.forceEnableAutoFraming {
+		chromeOpts = append(chromeOpts, chrome.ExtraArgs("--auto-framing-override=force-enabled"))
 	}
 
 	// Enable assistant verbose logging for the CCAUIAssistant test. Since
