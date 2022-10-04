@@ -28,7 +28,7 @@ func init() {
 			"billyzhao@google.com",            // Test author
 			"chromeos-wifi-champs@google.com", // WiFi oncall rotation; or http://b/new?component=893827
 		},
-		Attr: []string{"group:wificell", "wificell_func", "wificell_unstable"},
+		Attr: []string{"group:wificell", "wificell_func"},
 		// Jacuzzi devices are prone to becoming inaccessible over ethernet on reboot which impacts future tests in the test suite (b/178529170).
 		// We will disable the persistence tests on jacuzzi devices as these tests perform a reboot (b:181057823).
 		// We choose not to use hwdep.SkipOnPlatform as the filter relies on an identifier internal to mosys.
