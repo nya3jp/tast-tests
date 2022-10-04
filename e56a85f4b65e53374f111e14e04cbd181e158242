@@ -51,6 +51,24 @@
       "parentUuid": "9c46573a_e260b2e4",
       "revId": "e56a85f4b65e53374f111e14e04cbd181e158242",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c17db9f0_0931a354",
+        "filename": "src/chromiumos/tast/local/mtbf/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-10-04T09:41:02Z",
+      "side": 1,
+      "message": "Lacros can be launched anytime, independent of KeepAlive. KeepAlive is needed for app-service (and maybe similar things). Please file a bug if there\u0027s an issue with launching (it sounds like there is one). You can assign it to me.",
+      "parentUuid": "b8e8f774_71837bc5",
+      "revId": "e56a85f4b65e53374f111e14e04cbd181e158242",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
