@@ -13,29 +13,47 @@ import (
 	"time"
 
 	"chromiumos/tast/common/android/ui"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/local/chrome/ime"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/local/chrome/webutil"
 	"chromiumos/tast/testing"
 )
 
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         AndroidIMEInBrowser,
-		LacrosStatus: testing.LacrosVariantNeeded,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Checks Android IME in a browser window",
 		Contacts:     []string{"yhanada@chromium.org", "arc-framework+tast@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
-		Fixture:      "arcBootedInTabletMode",
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
+			Fixture:           "arcBootedInTabletMode",
+			Val:               browser.TypeAsh,
+		}, {
+			Name:              "lacros",
+			ExtraSoftwareDeps: []string{"android_p", "lacros"},
+			Fixture:           "lacrosWithArcBootedInTabletMode",
+			Val:               browser.TypeLacros,
 		}, {
 			Name:              "vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
+			Fixture:           "arcBootedInTabletMode",
+			Val:               browser.TypeAsh,
+		}, {
+			Name:              "lacros_vm",
+			ExtraSoftwareDeps: []string{"android_vm", "lacros"},
+			Fixture:           "lacrosWithArcBootedInTabletMode",
+			Val:               browser.TypeLacros,
 		}},
 	})
 }
@@ -59,6 +77,10 @@ func AndroidIMEInBrowser(ctx context.Context, s *testing.State) {
 		pkg         = "org.chromium.arc.testapp.ime"
 		settingsPkg = "com.android.settings"
 	)
+
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
 
 	p := s.FixtValue().(*arc.PreData)
 	cr := p.Chrome
@@ -125,30 +147,39 @@ func AndroidIMEInBrowser(ctx context.Context, s *testing.State) {
 
 	// Show a page with a text field that autofocuses. Turn off autocorrect as it
 	// can interfere with the test.
-	const html = `<input type="text" id="text" autocorrect="off" autofocus/>`
+	const html = `<input type="text" class="text" autocorrect="off" autofocus/>`
 	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Add("Content-Type", "text/html")
 		io.WriteString(w, html)
 	}))
 	defer server.Close()
 
-	conn, err := cr.NewConn(ctx, server.URL)
+	br, closeBrowser, err := browserfixt.SetUp(ctx, cr, s.Param().(browser.Type))
+	if err != nil {
+		s.Fatal("Failed to open the browser: ", err)
+	}
+	defer closeBrowser(cleanupCtx)
+
+	conn, err := br.NewConn(ctx, server.URL)
 	if err != nil {
 		s.Fatal("Creating renderer for test page failed: ", err)
 	}
 	defer conn.Close()
 
+	if err := webutil.WaitForQuiescence(ctx, conn, 10*time.Second); err != nil {
+		s.Fatal("Failed to wait for the page loaded: ", err)
+	}
+
 	s.Log("Waiting for the text field to focus")
-	if err := conn.WaitForExpr(ctx,
-		`document.getElementById('text') === document.activeElement`); err != nil {
+	uia := uiauto.New(tconn)
+	finder := nodewith.Role(role.TextField).HasClass("text").First()
+	if err := uia.EnsureFocused(finder)(ctx); err != nil {
 		s.Fatal("Failed to wait for text field to focus: ", err)
 	}
 
 	s.Log("Showing the virtual keyboard")
-	uia := uiauto.New(tconn)
 	keyboard := nodewith.ClassName("ExoInputMethodSurface")
 	showVirtualKeyboardIfEnabled := func(ctx context.Context) error {
-
 		// Repeatedly call showVirtualKeyboardIfEnabled until isKeyboardShown returns true.
 		// Usually it requires only one call of showVirtualKeyboardIfEnabled, but on rare occasions it requires
 		// multiple ones e.g. the function was called right in the middle of IME switch.
@@ -175,12 +206,12 @@ func AndroidIMEInBrowser(ctx context.Context, s *testing.State) {
 
 	s.Log("Waiting for the text field to have the correct contents")
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		var actual string
-		if err := conn.Eval(ctx, `document.getElementById('text').value`, &actual); err != nil {
+		nodeInfo, err := uia.Info(ctx, finder)
+		if err != nil {
 			return err
 		}
-		if actual != expected {
-			return errors.Errorf("got input %q from field after typing %q", actual, expected)
+		if nodeInfo.Value != expected {
+			return errors.Errorf("got input %q from field after typing %q", nodeInfo.Value, expected)
 		}
 		return nil
 	}, &testing.PollOptions{Interval: time.Second}); err != nil {
