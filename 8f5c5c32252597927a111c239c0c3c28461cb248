@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "46ae1460_eb8e5075",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/dev_mode_fw_screen.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1532302
+      },
+      "writtenOn": "2022-10-04T06:44:12Z",
+      "side": 1,
+      "message": "Done. Thank you.",
+      "parentUuid": "f1a3156c_15c092c5",
+      "revId": "8f5c5c32252597927a111c239c0c3c28461cb248",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c540bac9_0fa8cf83",
@@ -65,6 +83,24 @@
       "writtenOn": "2022-09-30T13:37:03Z",
       "side": 1,
       "message": "2 minutes is not enough time for some DUTs to boot from USB as I can see in Stainless results.",
+      "revId": "8f5c5c32252597927a111c239c0c3c28461cb248",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9daee419_aa56b708",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/dev_mode_fw_screen.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1532302
+      },
+      "writtenOn": "2022-10-04T06:44:12Z",
+      "side": 1,
+      "message": "Ok. Currently, RebootToMode() used 8 minutes to wait for \nbooting from the usb/internal disk. \nSo, I set 10 minutes for booting from usb for each round.\nIf it\u0027s not enough, we will extend it in the future.",
+      "parentUuid": "c540bac9_0fa8cf83",
       "revId": "8f5c5c32252597927a111c239c0c3c28461cb248",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

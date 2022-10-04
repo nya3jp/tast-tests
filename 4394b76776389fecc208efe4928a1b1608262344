@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "28f22301_105efb14",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1532302
+      },
+      "writtenOn": "2022-10-04T06:44:12Z",
+      "side": 1,
+      "message": "Hi @tj@semihalf.com,\n\nI modified some contents and has replied to your comments.\nThanks.",
+      "revId": "4394b76776389fecc208efe4928a1b1608262344",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
