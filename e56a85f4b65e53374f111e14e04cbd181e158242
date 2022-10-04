@@ -16,6 +16,23 @@
       "message": "Thanks!",
       "revId": "e56a85f4b65e53374f111e14e04cbd181e158242",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c46573a_e260b2e4",
+        "filename": "src/chromiumos/tast/local/mtbf/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-10-04T04:05:36Z",
+      "side": 1,
+      "message": "Oh I didn\u0027t see this earlier. Please remove this as well. KeepAlive should not be needed just because you launch via UI (the comment you are referring to was removed recently).",
+      "revId": "e56a85f4b65e53374f111e14e04cbd181e158242",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
