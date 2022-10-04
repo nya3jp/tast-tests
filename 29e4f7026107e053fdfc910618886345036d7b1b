@@ -16,6 +16,24 @@
       "message": "Link to test results.",
       "revId": "29e4f7026107e053fdfc910618886345036d7b1b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "31f13a67_88974ffa",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2022-10-04T21:19:41Z",
+      "side": 1,
+      "message": "I adjusted the comment to explicitly state that comment 4 in the bug has the test results and the breakdown. You cannot exclude boards in the stainless link.",
+      "parentUuid": "4463cf6b_50c6d464",
+      "revId": "29e4f7026107e053fdfc910618886345036d7b1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
