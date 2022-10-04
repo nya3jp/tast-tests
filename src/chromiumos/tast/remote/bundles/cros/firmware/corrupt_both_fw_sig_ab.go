@@ -65,7 +65,7 @@ func CorruptBothFWSigAB(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Backup firmware A/B signatures")
-	FWSignABkp, err := h.BiosServiceClient.BackupImageSection(ctx, &pb.FWBackUpSection{Section: pb.ImageSection_FWSignAImageSection, Programmer: pb.Programmer_BIOSProgrammer})
+	FWSignABkp, err := h.BiosServiceClient.BackupImageSection(ctx, &pb.FWSectionInfo{Section: pb.ImageSection_FWSignAImageSection, Programmer: pb.Programmer_BIOSProgrammer})
 	if err != nil {
 		s.Fatal("Failed to backup current FW Sign A region: ", err)
 	}
@@ -74,7 +74,7 @@ func CorruptBothFWSigAB(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to delete FW Sign A backup: ", err)
 		}
 	}()
-	FWSignBBkp, err := h.BiosServiceClient.BackupImageSection(ctx, &pb.FWBackUpSection{Section: pb.ImageSection_FWSignBImageSection, Programmer: pb.Programmer_BIOSProgrammer})
+	FWSignBBkp, err := h.BiosServiceClient.BackupImageSection(ctx, &pb.FWSectionInfo{Section: pb.ImageSection_FWSignBImageSection, Programmer: pb.Programmer_BIOSProgrammer})
 	if err != nil {
 		s.Fatal("Failed to backup current FW Sign B region: ", err)
 	}
@@ -184,12 +184,12 @@ func CorruptBothFWSigAB(ctx context.Context, s *testing.State) {
 	}()
 
 	s.Log("Corrupt Firmware A Sign")
-	if _, err := h.BiosServiceClient.CorruptFWSection(ctx, &pb.CorruptSection{Section: pb.ImageSection_FWSignAImageSection, Programmer: pb.Programmer_BIOSProgrammer}); err != nil {
+	if _, err := h.BiosServiceClient.CorruptFWSection(ctx, &pb.FWSectionInfo{Section: pb.ImageSection_FWSignAImageSection, Programmer: pb.Programmer_BIOSProgrammer}); err != nil {
 		s.Fatal("Failed to corrupt Firmware A Sign (VBOOTA) section: ", err)
 	}
 
 	s.Log("Corrupt Firmware B Sign")
-	if _, err := h.BiosServiceClient.CorruptFWSection(ctx, &pb.CorruptSection{Section: pb.ImageSection_FWSignBImageSection, Programmer: pb.Programmer_BIOSProgrammer}); err != nil {
+	if _, err := h.BiosServiceClient.CorruptFWSection(ctx, &pb.FWSectionInfo{Section: pb.ImageSection_FWSignBImageSection, Programmer: pb.Programmer_BIOSProgrammer}); err != nil {
 		s.Fatal("Failed to corrupt Firmware B Sign (VBOOTB) section: ", err)
 	}
 

@@ -76,7 +76,7 @@ func SoftwareSync(ctx context.Context, s *testing.State) {
 		}
 	}
 
-	backup, err := bs.BackupImageSection(ctx, &pb.FWBackUpSection{Section: pb.ImageSection_ECRWImageSection, Programmer: pb.Programmer_ECProgrammer})
+	backup, err := bs.BackupImageSection(ctx, &pb.FWSectionInfo{Section: pb.ImageSection_ECRWImageSection, Programmer: pb.Programmer_ECProgrammer})
 	if err != nil {
 		s.Fatal("Could not backup EC firmware: ", err)
 	}
@@ -147,7 +147,7 @@ func SoftwareSync(ctx context.Context, s *testing.State) {
 			s.Fatalf("EC active copy incorrect, got %q want RW", activeCopy)
 		}
 	}(cleanupContext)
-	if _, err = bs.CorruptFWSection(ctx, &pb.CorruptSection{Section: ecSection, Programmer: pb.Programmer_ECProgrammer}); err != nil {
+	if _, err = bs.CorruptFWSection(ctx, &pb.FWSectionInfo{Section: ecSection, Programmer: pb.Programmer_ECProgrammer}); err != nil {
 		s.Fatal("Failed to corrupt EC: ", err)
 	}
 

@@ -86,7 +86,7 @@ func CorruptFWBody(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Backup firmware body")
-	FWBodyBkp, err := h.BiosServiceClient.BackupImageSection(ctx, &pb.FWBackUpSection{Section: sectionVariant, Programmer: pb.Programmer_BIOSProgrammer})
+	FWBodyBkp, err := h.BiosServiceClient.BackupImageSection(ctx, &pb.FWSectionInfo{Section: sectionVariant, Programmer: pb.Programmer_BIOSProgrammer})
 	if err != nil {
 		s.Fatal("Failed to backup current FW Body region: ", err)
 	}
@@ -153,7 +153,7 @@ func CorruptFWBody(ctx context.Context, s *testing.State) {
 	}()
 
 	s.Log("Corrupt Firmware Body")
-	if _, err := h.BiosServiceClient.CorruptFWSection(ctx, &pb.CorruptSection{Section: sectionVariant, Programmer: pb.Programmer_BIOSProgrammer}); err != nil {
+	if _, err := h.BiosServiceClient.CorruptFWSection(ctx, &pb.FWSectionInfo{Section: sectionVariant, Programmer: pb.Programmer_BIOSProgrammer}); err != nil {
 		s.Fatalf("Failed to corrupt Firmware Body %s section: %v", fwVariant, err)
 	}
 

@@ -119,7 +119,7 @@ func APROBootabilityPerformance(ctx context.Context, s *testing.State) {
 
 	s.Log("Disabling AP software write protect")
 	bs := fwpb.NewBiosServiceClient(h.RPCClient.Conn)
-	if _, err := bs.DisableAPSoftwareWriteProtect(ctx, &empty.Empty{}); err != nil {
+	if _, err := bs.SetAPSoftwareWriteProtect(ctx, &fwpb.WPRequest{Enable: false}); err != nil {
 		s.Fatal("Failed to disable AP software write protection: ", err)
 	}
 
@@ -177,7 +177,7 @@ func APROBootabilityPerformance(ctx context.Context, s *testing.State) {
 
 	// Create a copy of the RW_new firmware.
 	s.Log("Backing up AP firmware")
-	newRWfwFile, err := bs.BackupImageSection(ctx, &fwpb.FWBackUpSection{Section: fwpb.ImageSection_EmptyImageSection, Programmer: fwpb.Programmer_BIOSProgrammer})
+	newRWfwFile, err := bs.BackupImageSection(ctx, &fwpb.FWSectionInfo{Section: fwpb.ImageSection_EmptyImageSection, Programmer: fwpb.Programmer_BIOSProgrammer})
 	if err != nil {
 		s.Fatal("Failed to backup current AP firmware: ", err)
 	}
@@ -343,7 +343,7 @@ func flashDUTAndReboot(ctx context.Context, h *firmware.Helper, conn *ssh.Conn, 
 
 	testing.ContextLogf(ctx, "Flashing DUT with file: %s using section: %v", fwid, section)
 	bs := fwpb.NewBiosServiceClient(h.RPCClient.Conn)
-	if _, err := bs.WriteImageFromMultiSectionFile(ctx, &fwpb.FWBackUpInfo{Programmer: fwpb.Programmer_BIOSProgrammer, Path: "/tmp/" + fwid, Section: section}); err != nil {
+	if _, err := bs.WriteImageFromMultiSectionFile(ctx, &fwpb.FWSectionInfo{Programmer: fwpb.Programmer_BIOSProgrammer, Path: "/tmp/" + fwid, Section: section}); err != nil {
 		return errors.Wrap(err, "failed to flash DUT with the multi-section bin file")
 	}
 
