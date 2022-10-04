@@ -98,14 +98,20 @@ func HidScreen(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to find the text indicating that no mouse is detected: ", err)
 		}
 
-		// Check that no keyboard is detected.
-		var keyboardNotDetectedText string
-		if err := oobeConn.Eval(ctx, "OobeAPI.screens.HIDDetectionScreen.getKeyboardNotDetectedText()", &keyboardNotDetectedText); err != nil {
-			s.Fatal("Failed to get the text to be shown when no keyboard is detected: ", err)
+		// Check that no keyboard is detected, when no physical keyboard is connected to the device.
+		foundKeyboard, _, err := input.FindPhysicalKeyboard(ctx)
+		if err != nil {
+			s.Fatal("Failed to check the existence of a physical keyboard: ", err)
 		}
-		keyboardNotDetectedTextNode := nodewith.Role(role.StaticText).Name(keyboardNotDetectedText)
-		if err := ui.WaitUntilExists(keyboardNotDetectedTextNode)(ctx); err != nil {
-			s.Fatal("Failed to find the text indicating that no keyboard is detected: ", err)
+		if !foundKeyboard {
+			var keyboardNotDetectedText string
+			if err := oobeConn.Eval(ctx, "OobeAPI.screens.HIDDetectionScreen.getKeyboardNotDetectedText()", &keyboardNotDetectedText); err != nil {
+				s.Fatal("Failed to get the text to be shown when no keyboard is detected: ", err)
+			}
+			keyboardNotDetectedTextNode := nodewith.Role(role.StaticText).Name(keyboardNotDetectedText)
+			if err := ui.WaitUntilExists(keyboardNotDetectedTextNode)(ctx); err != nil {
+				s.Fatal("Failed to find the text indicating that no keyboard is detected: ", err)
+			}
 		}
 
 		// Create a virtual mouse.
