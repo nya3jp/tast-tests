@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "45a822d1_298caee4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-10-04T21:47:39Z",
+      "side": 1,
+      "message": "Nice, lgtm % the shill fix for wpawpa2 enterprise.",
+      "revId": "b9e97147d377209055c9449f1d0c1d915f2f99c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75116ce5_2c8e3582",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/fgsec_multi_connect.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-10-04T21:47:39Z",
+      "side": 1,
+      "message": "Can you update this to reflect that we do this one by one and check the security after each one?",
+      "revId": "b9e97147d377209055c9449f1d0c1d915f2f99c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
