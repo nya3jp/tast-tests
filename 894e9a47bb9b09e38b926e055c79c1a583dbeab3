@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e51cb60_ac774fc9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzkaller/wrapper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1263546
+      },
+      "writtenOn": "2022-10-04T13:59:02Z",
+      "side": 1,
+      "message": "Is this only for local fuzzing of herobrine devices. If so, please add a comment similar to line 61 for herobrine.",
+      "revId": "894e9a47bb9b09e38b926e055c79c1a583dbeab3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
