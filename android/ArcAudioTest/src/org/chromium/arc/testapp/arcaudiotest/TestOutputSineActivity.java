@@ -16,7 +16,7 @@ import android.util.Log;
  * Activity for ChromeOS ARC++/ARCVM audio output sine test.
  */
 public class TestOutputSineActivity extends MainActivity {
-    private static final int DURATION = 2000; // 2 seconds
+    private static final int DURATION = 4000; // 4 seconds
 
     private static final String KEY_ENCODING_FORMAT = "encoding_format";
     private static final String KEY_SAMPLE_RATE = "sample_rate";

@@ -6,10 +6,11 @@ package arc
 
 import (
 	"context"
+	"encoding/binary"
+	"io"
 	"math"
+	"os"
 	"path/filepath"
-	"regexp"
-	"strconv"
 	"time"
 
 	"chromiumos/tast/common/testexec"
@@ -160,66 +161,127 @@ func init() {
 	})
 }
 
-// captureOutputAndGetFrequencies captures audio data and get the frequency stat of each channel.
-func captureOutputAndGetFrequencies(ctx context.Context, output audio.TestRawData) ([]int, error) {
+// captureOutputAndReadData captures audio data and read the captured data
+// The return data is a 2d array, where arr[i] is the audio data of
+// i-th channel (out of total `output.Channels`)
+func captureOutputAndReadData(ctx context.Context, output audio.TestRawData) ([][]int64, error) {
 	if _, err := crastestclient.WaitForStreams(ctx, 5*time.Second); err != nil {
 		return nil, errors.Wrap(err, "failed to wait for streams")
 	}
 
 	testing.ContextLog(ctx, "Capture output to ", output.Path)
-	captureErr := crastestclient.CaptureFileCommand(
+	if err := crastestclient.CaptureFileCommand(
 		ctx, output.Path,
 		output.Duration,
 		output.Channels,
-		output.Rate).Run(testexec.DumpLogOnError)
-	if captureErr != nil {
-		return nil, errors.Wrap(captureErr, "capture data failed")
+		output.Rate).Run(testexec.DumpLogOnError); err != nil {
+		return nil, errors.Wrap(err, "failed to capture data")
 	}
 
-	// Get frequency for each channel
-	re := regexp.MustCompile("Rough   frequency:\\s+(-?\\d+)")
-	var outputFreqs []int
-	for channel := 1; channel <= output.Channels; channel++ {
-		out, err := testexec.CommandContext(ctx, "sox",
-			"-r", strconv.Itoa(output.Rate), // Sample rate
-			"-b", strconv.Itoa(output.BitsPerSample), // Bits per sample
-			"-c", strconv.Itoa(output.Channels), // Number of channels
-			"-e", "signed", // Encoding type: signed integer
-			"-t", "raw", // File type: raw
-			output.Path,                    // Input file
-			"-n",                           // Output file: Null
-			"remix", strconv.Itoa(channel), // Extract audio from a specific channel
-			"stat", // Get stat of the audio data
-		).CombinedOutput(testexec.DumpLogOnError)
-		if err != nil {
-			return nil, errors.Wrapf(err, "sox stat failed on channel %d", channel)
-		}
+	// Read file
+	f, err := os.Open(output.Path)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to open file")
+	}
+	defer f.Close()
 
-		freq := re.FindStringSubmatch(string(out))
-		if freq == nil {
-			testing.ContextLog(ctx, "sox stat: ", string(out))
-			return nil, errors.Errorf("could not find frequency info from the sox result on channel %d", channel)
+	// Data type is 16-bit signed integer.
+	//
+	// Data order:
+	// <channel 1 sample 1>
+	// <channel 2 sample 1>
+	// ...
+	// <channel 8 sample 1>
+	// <channel 1 sample 2>
+	// <channel 2 sample 2>
+	// ...
+	arr := make([][]int64, output.Channels)
+	channel := 0
+	for {
+		var samp int16
+		if err := binary.Read(f, binary.LittleEndian, &samp); err != nil {
+			if err == io.EOF {
+				break
+			}
+			return nil, errors.Wrap(err, "error while reading file")
 		}
-
-		outputFreq, err := strconv.Atoi(freq[1])
-		if err != nil {
-			return nil, errors.Wrapf(err, "atoi failed on channel %d", channel)
-		}
-
-		outputFreqs = append(outputFreqs, outputFreq)
+		arr[channel] = append(arr[channel], int64(samp))
+		channel = (channel + 1) % output.Channels
 	}
 
-	return outputFreqs, nil
+	return arr, nil
+}
+
+// analyzeData analyzes single channel audio data by slicing it into smaller slices, then check the frequency
+// of each slice. There must be no more than `incorrectLimit` slices that have incorrect frequency for the test
+// to pass.
+//
+// Also ignore slices in the beginning that contain only zero data and ignore the first slice with non-zero data.
+// The number of these slices must be less than `startingSlicesLimit`, or the test will fail.
+func analyzeData(ctx context.Context, data []int64, sampleRate, expectedFreq float64, incorrectLimit int) error {
+	const (
+		samplesPerSlice     = 1000 // Number of samples per slice. 1000 on 48kHz = 21ms slice
+		startingSlicesLimit = 24   // Max slices allowed in starting phase. 24 on 48kHz sample rate = 500ms
+		freqTolerance       = 10
+	)
+
+	isAnyNonZeroData := func(data []int64) bool {
+		for _, d := range data {
+			if d != 0 {
+				return true
+			}
+		}
+		return false
+	}
+
+	isStarting := true
+	startingSlices := 0
+	incorrectSlices := 0
+
+	// Loop through each slice of data. Ignore the last slice if there is not enough data.
+	for i := 0; i+samplesPerSlice <= len(data); i += samplesPerSlice {
+		dataSlice := data[i : i+samplesPerSlice]
+		if isStarting {
+			if isAnyNonZeroData(dataSlice) {
+				// First slice with non-zero data, still ignore this slice and start checking at the next slice.
+				isStarting = false
+			} else {
+				startingSlices++
+				if startingSlices > startingSlicesLimit {
+					return errors.New("reached starting slices limit")
+				}
+			}
+		} else {
+			dataFloat := make([]float64, samplesPerSlice)
+			for i := range dataSlice {
+				dataFloat[i] = float64(dataSlice[i])
+			}
+
+			freq := arcaudio.GetFrequencyFromData(dataFloat, sampleRate)
+			if math.Abs(freq-expectedFreq) > freqTolerance {
+				testing.ContextLogf(ctx, "Slice %d frequency incorrect. expect:%.2f got:%.2f", i/samplesPerSlice, expectedFreq, freq)
+				incorrectSlices++
+			}
+		}
+	}
+
+	if isStarting {
+		return errors.New("not enough data to get out of starting phase")
+	}
+	if incorrectSlices > incorrectLimit {
+		return errors.Errorf("incorrect slices count over limit, incorrect slices: %v, limit: %v", incorrectSlices, incorrectLimit)
+	}
+	return nil
 }
 
 // AudioLoopbackCorrectness plays sine wave with different config in ARC.
 // Captures output audio via loopback and verifies the frequency of each channel.
 func AudioLoopbackCorrectness(ctx context.Context, s *testing.State) {
 	const (
-		cleanupTime     = 30 * time.Second
-		captureDuration = 1 // second(s)
-		captureRate     = 48000
-		freqTolerance   = 10
+		cleanupTime          = 30 * time.Second
+		captureDuration      = 3 // second(s)
+		captureRate          = 48000
+		incorrectSlicesLimit = 10
 
 		keySampleRate      = "sample_rate"
 		keyChannelConfig   = "channel_config"
@@ -318,7 +380,8 @@ func AudioLoopbackCorrectness(ctx context.Context, s *testing.State) {
 		Rate:          captureRate,
 		Duration:      captureDuration,
 	}
-	outputFreqs, err := captureOutputAndGetFrequencies(ctx, output)
+
+	capturedData, err := captureOutputAndReadData(ctx, output)
 	if err != nil {
 		s.Fatal("Failed to capture output: ", err)
 	}
@@ -335,9 +398,8 @@ func AudioLoopbackCorrectness(ctx context.Context, s *testing.State) {
 
 	for channel := 0; channel < len(expectedFreqs); channel++ {
 		expectedFreq := expectedFreqs[channel]
-		outputFreq := outputFreqs[channel]
-		if math.Abs(float64(expectedFreq-outputFreq)) > freqTolerance {
-			s.Errorf("channel %d frequency not matched. got: %d, expect: %d, tolerance: %d", channel+1, outputFreq, expectedFreq, freqTolerance)
+		if err := analyzeData(ctx, capturedData[channel], float64(captureRate), float64(expectedFreq), incorrectSlicesLimit); err != nil {
+			s.Errorf("channel %d failed: %v", channel+1, err)
 		}
 	}
 }
