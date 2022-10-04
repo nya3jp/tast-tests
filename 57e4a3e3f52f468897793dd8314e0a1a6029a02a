@@ -18,6 +18,92 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6469d2b6_ac6580dd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-10-04T14:37:03Z",
+      "side": 1,
+      "message": "Sorry for delay. Back from OOO. Here\u0027s my initial scan.",
+      "revId": "57e4a3e3f52f468897793dd8314e0a1a6029a02a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "816d52cc_95b4301f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-10-04T14:37:03Z",
+      "side": 1,
+      "message": "tabTitleInLacros (typo)",
+      "range": {
+        "startLine": 49,
+        "startChar": 7,
+        "endLine": 49,
+        "endChar": 8
+      },
+      "revId": "57e4a3e3f52f468897793dd8314e0a1a6029a02a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49ab8dd7_03da51cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-10-04T14:37:03Z",
+      "side": 1,
+      "message": "in this case, I think table-driven test with s.Run is better to manage the test results.\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Table_driven-tests",
+      "range": {
+        "startLine": 63,
+        "startChar": 2,
+        "endLine": 144,
+        "endChar": 3
+      },
+      "revId": "57e4a3e3f52f468897793dd8314e0a1a6029a02a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a90eaa45_3995ef3b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-10-04T14:37:03Z",
+      "side": 1,
+      "message": "chrome.MatchTargetURL is enough?",
+      "range": {
+        "startLine": 199,
+        "startChar": 1,
+        "endLine": 203,
+        "endChar": 0
+      },
+      "revId": "57e4a3e3f52f468897793dd8314e0a1a6029a02a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b0b11f90_12ee213b",
@@ -31,6 +117,29 @@
       "writtenOn": "2022-10-03T06:05:36Z",
       "side": 1,
       "message": "Something is wrong here. Your poll function never returns a regular error, so Poll will only run it once.\n\nIf \"wins \u003d\u003d 1 \u0026\u0026 title \u003d\u003d params.appTitleInAsh\" is the expected condition in the success case, then you should return nil in line 232 and a regular error (not PollBreak) in line 234.",
+      "revId": "57e4a3e3f52f468897793dd8314e0a1a6029a02a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a2eb032_54a831e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-10-04T14:37:03Z",
+      "side": 1,
+      "message": "this err is just overwriting the one defined at L229.\nInstead, I\u0027d recommend to merge this and if stmt at L238.\nDitto for below.",
+      "range": {
+        "startLine": 236,
+        "startChar": 3,
+        "endLine": 236,
+        "endChar": 6
+      },
       "revId": "57e4a3e3f52f468897793dd8314e0a1a6029a02a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -65,6 +174,46 @@
       "writtenOn": "2022-10-03T06:05:36Z",
       "side": 1,
       "message": "There\u0027s no need to check \"conn \u003d\u003d nil\".",
+      "revId": "57e4a3e3f52f468897793dd8314e0a1a6029a02a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "998dbf88_517def21",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-10-04T14:37:03Z",
+      "side": 1,
+      "message": "you need to return. Ditto for below.",
+      "revId": "57e4a3e3f52f468897793dd8314e0a1a6029a02a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c021d4c0_e16006e2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-10-04T14:37:03Z",
+      "side": 1,
+      "message": "style: let\u0027s use common pattern. Ditto for below.\n\nnumber of lacros window mismatched: got %d, want 1",
+      "range": {
+        "startLine": 254,
+        "startChar": 63,
+        "endLine": 254,
+        "endChar": 96
+      },
       "revId": "57e4a3e3f52f468897793dd8314e0a1a6029a02a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -218,6 +367,69 @@
       "writtenOn": "2022-10-03T06:05:36Z",
       "side": 1,
       "message": "See comment on the other error handling above.",
+      "revId": "57e4a3e3f52f468897793dd8314e0a1a6029a02a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "584f7866_dd66be5f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-10-04T14:37:03Z",
+      "side": 1,
+      "message": "a",
+      "range": {
+        "startLine": 368,
+        "startChar": 42,
+        "endLine": 368,
+        "endChar": 44
+      },
+      "revId": "57e4a3e3f52f468897793dd8314e0a1a6029a02a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b7d85d9_d31a7054",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 415,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-10-04T14:37:03Z",
+      "side": 1,
+      "message": "often drops getter prefixes as stop word. just \"navigationUnreachable\".",
+      "range": {
+        "startLine": 415,
+        "startChar": 5,
+        "endLine": 415,
+        "endChar": 7
+      },
+      "revId": "57e4a3e3f52f468897793dd8314e0a1a6029a02a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04ccb19e_1471dee3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 421,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-10-04T14:37:03Z",
+      "side": 1,
+      "message": "ditto: \"navigationBlocked\"",
       "revId": "57e4a3e3f52f468897793dd8314e0a1a6029a02a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
