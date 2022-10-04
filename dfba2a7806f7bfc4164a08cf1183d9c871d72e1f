@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db784f97_72ab1749",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_process_info.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-10-04T10:06:37Z",
+      "side": 1,
+      "message": "could you take outdir, instead of testing.State to minimize the dependency?",
+      "range": {
+        "startLine": 80,
+        "startChar": 52,
+        "endLine": 80,
+        "endChar": 68
+      },
+      "revId": "dfba2a7806f7bfc4164a08cf1183d9c871d72e1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0963ae5_0a30e9f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_process_info.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-10-04T10:06:37Z",
+      "side": 1,
+      "message": "could you use\n\nerrors.Wrap(err, \"failed ...\")\n\nDitto for below.",
+      "revId": "dfba2a7806f7bfc4164a08cf1183d9c871d72e1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
