@@ -33,6 +33,24 @@
       "message": "We don\u0027t need play video, record audio/video in order to verify network switching with docks.  A simple ping to www.google.com will work.\n\nCouple things to worry in the current Google/Chromebook DUT setup:\n\n1) Servo will be connected to DUT and Ethernet will issued to DUTs as well. The Ethernet should be disconnected/disabled in order to verify the Ethernet from dock works\n\n2) WiFi should be disabled or disconnected to verify dock network switching.\n\nPlease modify your steps.",
       "revId": "977d848fa55beb891500455be8fe230fb0db52c5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7bd6d69e_b7b4f42e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1545162
+      },
+      "writtenOn": "2022-10-04T05:09:31Z",
+      "side": 1,
+      "message": "Got it. I would modify.",
+      "parentUuid": "f44f7ccf_5b94d137",
+      "revId": "977d848fa55beb891500455be8fe230fb0db52c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
