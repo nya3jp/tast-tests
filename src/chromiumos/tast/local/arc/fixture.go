@@ -290,6 +290,20 @@ func init() {
 		TearDownTimeout: ResetTimeout,
 	})
 
+	// lacrosWithArcBootedInTabletMode is a fixture similar to lacrosWithArcBooted. The only difference is that Chrome is launched in tablet mode in this fixture.
+	testing.AddFixture(&testing.Fixture{
+		Name:     "lacrosWithArcBootedInTabletMode",
+		Desc:     "Lacros Chrome from a pre-built image with ARC booted in tablet mode",
+		Contacts: []string{"amusbach@chromium.org", "xiyuan@chromium.org"},
+		Impl: NewArcBootedFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			return lacrosfixt.NewConfig(lacrosfixt.ChromeOptions(chrome.ARCEnabled(), chrome.UnRestrictARCCPU(), chrome.ExtraArgs("--force-tablet-mode=touch_view", "--enable-virtual-keyboard"))).Opts()
+		}),
+		SetUpTimeout:    chrome.LoginTimeout + BootTimeout + ui.StartTimeout,
+		ResetTimeout:    ResetTimeout,
+		PostTestTimeout: PostTestTimeout,
+		TearDownTimeout: ResetTimeout,
+	})
+
 	// arcBootedInClamshellMode is a fixture similar to arcBooted. The only difference from arcBooted is that Chrome is launched in clamshell mode with Touch Mode Mouse compat features enabled in this fixture.
 	testing.AddFixture(&testing.Fixture{
 		Name: "arcBootedWithTouchModeMouse",
