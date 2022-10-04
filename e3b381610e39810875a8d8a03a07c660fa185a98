@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1e0d7d4_cda902c1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-10-04T05:34:43Z",
+      "side": 1,
+      "message": "I would use \"network:\" as the prefix here.\n\nFor changes under platform2, there is a rule that we use the affected package/folder name as the prefix, but I think we don\u0027t have any rules for tast-tests. I will just use the package name here (note that this \"package\" is different with the former one: this one is the go package, the former one means the ebuild package).\n\nWhen you\u0027re unsure on how to write the title commit message, another way is to check the commit history of the file/folder you are changing (use `git log`).",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 5
+      },
+      "revId": "e3b381610e39810875a8d8a03a07c660fa185a98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "cc0fab3b_b2ba4484",
