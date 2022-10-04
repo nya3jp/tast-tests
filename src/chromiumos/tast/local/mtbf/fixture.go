@@ -54,10 +54,10 @@ func LoginReuseOptions(accountPool string) []chrome.Option {
 // LoginReuseLacrosOptions returns the login option for MTBF lacros tests.
 func LoginReuseLacrosOptions(accountPool string) ([]chrome.Option, error) {
 	lacrosOpts, err := lacrosfixt.NewConfig(
-		lacrosfixt.Mode(lacros.LacrosPrimary),
-		// According to fixture: "lacrosKeepAlive", KeepAlive should be used by tests
-		// that will launch lacros from the ChromeOS UI (e.g shelf) instead of by command line.
-		// Lacros will be launched by ChromeOS UI in MTBF tests.
+		// Consecutive calls the lacros.Launch/lacros.Connect -> (*lacros.Lacros).Close -> lacros.Launch is flaky,
+		// also, MTBF tests reuse last session and depend on browser tabs being cleared,
+		// which requires calling lacros.Launch/lacros.Connect -> (*lacros.Lacros).Close in PreTest, making the following test unable to launch Lacros.
+		// We enable KeepAlive to ensure Lacros keeps running in the background to make it be able to launch anytime.
 		lacrosfixt.KeepAlive(true),
 		lacrosfixt.ChromeOptions(chrome.ExtraArgs("--lacros-availability-ignore")),
 	).Opts()
