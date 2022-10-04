@@ -1,0 +1,176 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c52e6d5_607845fc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1409038
+      },
+      "writtenOn": "2022-10-04T14:13:49Z",
+      "side": 1,
+      "message": "Thanks!",
+      "revId": "226603d3ac64acb9cbfe9ad3ae493c21ba692982",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c79ef97a_fa42872a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_printing.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1409038
+      },
+      "writtenOn": "2022-10-04T14:13:49Z",
+      "side": 1,
+      "message": "Is it needed in addition to the logging we have on line #167?",
+      "range": {
+        "startLine": 170,
+        "startChar": 1,
+        "endLine": 170,
+        "endChar": 48
+      },
+      "revId": "226603d3ac64acb9cbfe9ad3ae493c21ba692982",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf30d5db_ef86288e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_printing.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1409038
+      },
+      "writtenOn": "2022-10-04T14:13:49Z",
+      "side": 1,
+      "message": "Construct*",
+      "range": {
+        "startLine": 178,
+        "startChar": 4,
+        "endLine": 178,
+        "endChar": 13
+      },
+      "revId": "226603d3ac64acb9cbfe9ad3ae493c21ba692982",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bbda46fc_20bb59ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_printing.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1409038
+      },
+      "writtenOn": "2022-10-04T14:13:49Z",
+      "side": 1,
+      "message": "Please add [.] in the end",
+      "revId": "226603d3ac64acb9cbfe9ad3ae493c21ba692982",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56aae5cc_c92de003",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_printing.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1409038
+      },
+      "writtenOn": "2022-10-04T14:13:49Z",
+      "side": 1,
+      "message": "testUrl*",
+      "range": {
+        "startLine": 179,
+        "startChar": 1,
+        "endLine": 179,
+        "endChar": 8
+      },
+      "revId": "226603d3ac64acb9cbfe9ad3ae493c21ba692982",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06f037b8_01d68d0e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_printing.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1409038
+      },
+      "writtenOn": "2022-10-04T14:13:49Z",
+      "side": 1,
+      "message": "Is it needed?",
+      "range": {
+        "startLine": 186,
+        "startChar": 0,
+        "endLine": 186,
+        "endChar": 92
+      },
+      "revId": "226603d3ac64acb9cbfe9ad3ae493c21ba692982",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cdb32ac1_52d44b26",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_printing.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1409038
+      },
+      "writtenOn": "2022-10-04T14:13:49Z",
+      "side": 1,
+      "message": "Can you add the comment before this if that here we\u0027re waiting for the dialog",
+      "range": {
+        "startLine": 217,
+        "startChar": 1,
+        "endLine": 217,
+        "endChar": 76
+      },
+      "revId": "226603d3ac64acb9cbfe9ad3ae493c21ba692982",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7edb8c10_378d2493",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/policy/policy.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1409038
+      },
+      "writtenOn": "2022-10-04T14:13:49Z",
+      "side": 1,
+      "message": "Can we move it to the printing test as they are only used there?",
+      "range": {
+        "startLine": 134,
+        "startChar": 0,
+        "endLine": 180,
+        "endChar": 1
+      },
+      "revId": "226603d3ac64acb9cbfe9ad3ae493c21ba692982",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
