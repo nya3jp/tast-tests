@@ -9,6 +9,7 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/common/action"
 	"chromiumos/tast/common/android/ui"
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/local/arc"
@@ -16,30 +17,32 @@ import (
 	"chromiumos/tast/local/bundles/cros/arcappcompat/testutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/uidetection"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
 
 // clamshellLaunchForHulu launches Hulu in clamshell mode.
 var clamshellLaunchForHulu = []testutil.TestCase{
-	{Name: "Launch app in Clamshell", Fn: launchAppForHulu},
+	{Name: "Launch app in Clamshell", Fn: launchAppForHulu, Timeout: testutil.LaunchTestCaseTimeout},
 }
 
 // touchviewLaunchForHulu launches Hulu in tablet mode.
 var touchviewLaunchForHulu = []testutil.TestCase{
-	{Name: "Launch app in Touchview", Fn: launchAppForHulu},
+	{Name: "Launch app in Touchview", Fn: launchAppForHulu, Timeout: testutil.LaunchTestCaseTimeout},
 }
 
 // clamshellAppSpecificTestsForHulu are placed here.
 var clamshellAppSpecificTestsForHulu = []testutil.TestCase{
 	{Name: "Clamshell: Video Playback", Fn: testutil.TouchAndPlayVideo},
-	{Name: "Clamshell: Signout app", Fn: signOutOfHulu},
+	{Name: "Clamshell: Signout app", Fn: signOutOfHulu, Timeout: testutil.SignoutTestCaseTimeout},
 }
 
 // touchviewAppSpecificTestsForHulu are placed here.
 var touchviewAppSpecificTestsForHulu = []testutil.TestCase{
 	{Name: "Touchview: Video Playback", Fn: testutil.TouchAndPlayVideo},
-	{Name: "Touchview: Signout app", Fn: signOutOfHulu},
+	{Name: "Touchview: Signout app", Fn: signOutOfHulu, Timeout: testutil.SignoutTestCaseTimeout},
 }
 
 func init() {
@@ -179,8 +182,6 @@ func launchAppForHulu(ctx context.Context, s *testing.State, tconn *chrome.TestC
 		allowButtonText           = "ALLOW"
 		continueText              = "CONTINUE"
 		enableLocationServiceText = "SHARE LOCATION"
-		locationTimeoutID         = "com.hulu.plus:id/title"
-		locationTimeoutText       = "Location Timeout"
 		loginText                 = "LOG IN"
 		enterEmailID              = "com.hulu.plus:id/email"
 		enterPasswordID           = "com.hulu.plus:id/password"
@@ -190,11 +191,9 @@ func launchAppForHulu(ctx context.Context, s *testing.State, tconn *chrome.TestC
 		neverButtonID             = "com.google.android.gms:id/credential_save_reject"
 		homeIconID                = "com.hulu.plus:id/menu_home"
 		OTPPageID                 = "com.hulu.plus:id/verification_title"
-		retryButtonID             = "com.hulu.plus:id/btn_primary_action"
-		retryText                 = "RETRY"
 		selectUserID              = "com.hulu.plus:id/tile_title"
 		selectUserText            = "appcompatautomation"
-		locationTimeout           = 2 * time.Minute
+		waitForActiveInputTime    = time.Second * 20
 	)
 
 	loginButton := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.TextMatches("(?i)"+loginText))
@@ -337,12 +336,14 @@ func launchAppForHulu(ctx context.Context, s *testing.State, tconn *chrome.TestC
 		s.Fatal("Failed to start Hulu app: ", err)
 	}
 
-	// Check for location time out error page.
-	checkForLocationTimeout := d.Object(ui.ID(locationTimeoutID))
-	if err := checkForLocationTimeout.WaitForExists(ctx, locationTimeout); err == nil {
-		s.Fatal("Location time out error does exist")
-	} else {
-		s.Log("Location time out error does not exist")
+	// Check for location timeout error page.
+	locationTimeoutError := uidetection.TextBlock([]string{"Location", "Timeout"})
+	ud := uidetection.NewDefault(tconn).WithTimeout(time.Minute).WithScreenshotStrategy(uidetection.ImmediateScreenshot)
+	if err := uiauto.Combine("Check for location timeout",
+		ud.WaitUntilExists(locationTimeoutError),
+		action.Sleep(time.Minute),
+	)(ctx); err == nil {
+		s.Fatal("Location Timeout error does exist")
 	}
 
 	testutil.HandleDialogBoxes(ctx, s, d, appPkgName)
@@ -357,16 +358,11 @@ func launchAppForHulu(ctx context.Context, s *testing.State, tconn *chrome.TestC
 // signOutOfHulu verifies app is signed out.
 func signOutOfHulu(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
 	const (
-		accountIconID       = "com.hulu.plus:id/menu_profile"
-		logoutText          = "Log Out"
-		logOutOfHuluText    = "LOG OUT"
-		loginText           = "LOG IN"
-		locationTimeoutID   = "com.hulu.plus:id/title"
-		locationTimeoutText = "Location Timeout"
-		homeIconID          = "com.hulu.plus:id/menu_home"
-		retryText           = "RETRY"
-		retryButtonID       = "com.hulu.plus:id/btn_primary_action"
-		locationTimeout     = 2 * time.Minute
+		accountIconID    = "com.hulu.plus:id/menu_profile"
+		logoutText       = "Log Out"
+		logOutOfHuluText = "LOG OUT"
+		loginText        = "LOG IN"
+		homeIconID       = "com.hulu.plus:id/menu_home"
 	)
 
 	// Check for login button.
@@ -375,10 +371,15 @@ func signOutOfHulu(ctx context.Context, s *testing.State, tconn *chrome.TestConn
 		s.Log("LoginButton does exist")
 		return
 	}
-	// Check for location time out error page.
-	checkForLocationTimeout := d.Object(ui.ID(locationTimeoutID))
-	if err := checkForLocationTimeout.WaitForExists(ctx, locationTimeout); err == nil {
-		s.Log("Location time out ID error does exist and skipped sign out")
+
+	// Check for location timeout error page.
+	locationTimeoutError := uidetection.TextBlock([]string{"Location", "Timeout"})
+	ud := uidetection.NewDefault(tconn).WithTimeout(time.Minute).WithScreenshotStrategy(uidetection.ImmediateScreenshot)
+	if err := uiauto.Combine("Check for location time out error",
+		ud.WaitUntilExists(locationTimeoutError),
+		action.Sleep(time.Minute),
+	)(ctx); err == nil {
+		s.Log("Location Timeout error does exist and skipped sign out")
 		return
 	}
 
