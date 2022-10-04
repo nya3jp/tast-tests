@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d73e370e_cfab55c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-10-04T08:24:01Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "534e67b2_eb5efb11",
+      "range": {
+        "startLine": 224,
+        "startChar": 20,
+        "endLine": 224,
+        "endChar": 31
+      },
+      "revId": "715f944242d956f9d20d0aae5fc7ed87d1f6818b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "56603123_3b7d5dc2",
@@ -61,6 +85,30 @@
       "writtenOn": "2022-10-04T07:33:11Z",
       "side": 1,
       "message": "Maybe switch to using \"(?i)\" ?",
+      "range": {
+        "startLine": 147,
+        "startChar": 22,
+        "endLine": 147,
+        "endChar": 33
+      },
+      "revId": "715f944242d956f9d20d0aae5fc7ed87d1f6818b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0eae26c2_990a5a6e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-10-04T08:24:01Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "56603123_3b7d5dc2",
       "range": {
         "startLine": 147,
         "startChar": 22,
