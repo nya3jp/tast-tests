@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a38ccd07_c4ffd2f9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/traffic_counters.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2022-10-04T05:20:00Z",
+      "side": 1,
+      "message": "I think so... for arc-vpn.",
+      "parentUuid": "271f939b_b6d22202",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 0
+      },
+      "revId": "92f6c90fac1fb54e67805223d2ac855ae42bd9ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8b12addc_d1764ca2",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-10-04T05:01:47Z",
       "side": 1,
       "message": "nit: maybe make this as a constant so that can be shared with the next test.",
+      "range": {
+        "startLine": 321,
+        "startChar": 6,
+        "endLine": 321,
+        "endChar": 20
+      },
+      "revId": "92f6c90fac1fb54e67805223d2ac855ae42bd9ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "711f8955_09882e61",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/traffic_counters.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2022-10-04T05:20:00Z",
+      "side": 1,
+      "message": "that was an oversight. done.",
+      "parentUuid": "8b12addc_d1764ca2",
       "range": {
         "startLine": 321,
         "startChar": 6,
