@@ -73,6 +73,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dc33bf4b_dc21a6d7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/view_ppd.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2022-10-04T14:57:16Z",
+      "side": 1,
+      "message": "Yeah, you could entirely avoid both of those as well as the part that waits for the Chrome notification.  Since we have a certain amount of flakiness in the USB setup steps, that would make your test less likely to see unrelated failures.",
+      "parentUuid": "e9cd5987_337c3b9c",
+      "revId": "634fcab6eec272556920f01d9e6beaf8afbd21c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9b765224_fe91d20d",
         "filename": "src/chromiumos/tast/local/bundles/cros/printer/view_ppd.go",
         "patchSetId": 1
