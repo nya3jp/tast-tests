@@ -16,6 +16,23 @@
       "message": "Thank you for the reviews. Please check this version.\nThis is the patch for testing crrev.com/c/3907310.",
       "revId": "e3b381610e39810875a8d8a03a07c660fa185a98",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5266aa93_23b9ef0b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-10-04T03:13:49Z",
+      "side": 1,
+      "message": "(cc -pihsun@)\n\nI guess you used `git commit --amend` to create this commit so that the information of this patch is not correct (e.g., Author). You can start a new branch (`repo start .`) and apply the change in this patch manually (exclude those not related, e.g., cca_ui_guest.go) and upload it again",
+      "revId": "e3b381610e39810875a8d8a03a07c660fa185a98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
