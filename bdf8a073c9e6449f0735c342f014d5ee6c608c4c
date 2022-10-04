@@ -171,6 +171,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "78f97684_ebd5f054",
+        "filename": "src/chromiumos/tast/local/bundles/cros/intel/bt_connection_stability_with_wifi.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-10-04T04:20:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6f026289_9ba5fe82",
+      "revId": "bdf8a073c9e6449f0735c342f014d5ee6c608c4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "693592c9_1190ef7c",
