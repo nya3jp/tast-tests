@@ -23,6 +23,19 @@ func init() {
 		Contacts:     []string{"yuhsuan@chromium.org", "cychiang@chromium.org"},
 		HardwareDeps: hwdep.D(hwdep.Microphone()),
 		Attr:         []string{"group:mainline", "informational"},
+		Params: []testing.Param{{
+			SoftwareDeps: []string{"audio_stable"},
+			// TODO(b/244254621) : remove "sasukette" when b/244254621 is fixed.
+			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel("sasukette")),
+		}, {
+			Name:         "unstable_platform",
+			SoftwareDeps: []string{"audio_unstable"},
+			ExtraAttr:    []string{"informational"},
+		}, {
+			Name:              "unstable_model",
+			ExtraHardwareDeps: hwdep.D(hwdep.Model("sasukette")),
+			ExtraAttr:         []string{"informational"},
+		}},
 	})
 }
 
