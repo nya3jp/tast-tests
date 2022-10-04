@@ -56,6 +56,30 @@
       },
       "revId": "63e73cbcdcf016d2716400d69a5b019f59bf5568",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "23d10de6_83aa7730",
+        "filename": "src/chromiumos/tast/local/kioskmode/kiosk_mode.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 481,
+      "author": {
+        "id": 1368301
+      },
+      "writtenOn": "2022-10-04T10:26:40Z",
+      "side": 1,
+      "message": "Yes it does. The Chrome OS shell should always run in Ash.",
+      "parentUuid": "d49680c4_92b64b4c",
+      "range": {
+        "startLine": 481,
+        "startChar": 13,
+        "endLine": 481,
+        "endChar": 50
+      },
+      "revId": "63e73cbcdcf016d2716400d69a5b019f59bf5568",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
