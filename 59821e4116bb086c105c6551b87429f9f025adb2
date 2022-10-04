@@ -290,6 +290,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "38b8ec0c_2e8876f5",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/screenshot_recorder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-04T01:10:02Z",
+      "side": 1,
+      "message": "Got it, done -- removed compression/zip.",
+      "parentUuid": "1ca1a4f7_d5afb8a0",
+      "revId": "59821e4116bb086c105c6551b87429f9f025adb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "853b2204_395a97ac",
