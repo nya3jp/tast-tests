@@ -171,10 +171,11 @@ func prepareScreensaver(ctx context.Context, tconn *chrome.TestConn, ui *uiauto.
 					return errors.Errorf("Google Photos album %d should be unselected", i)
 				}
 				selectedAlbumNode := nodewith.HasClass("album-selected").Name(album.Name)
-				if err := ui.RetryUntil(uiauto.Combine("select Google Photo album",
+				if err := uiauto.Retry(3, uiauto.Combine("select Google Photo album",
 					ui.Gone(selectedAlbumNode),
-					ui.MouseClickAtLocation(0, album.Location.CenterPoint())),
-					ui.WaitUntilExists(selectedAlbumNode))(ctx); err != nil {
+					ui.MouseClickAtLocation(0, album.Location.CenterPoint()),
+					ui.WithTimeout(3*time.Second).WaitUntilExists(selectedAlbumNode),
+				))(ctx); err != nil {
 					return errors.Wrapf(err, "failed to select Google Photos album %d", i)
 				}
 			}
@@ -185,10 +186,11 @@ func prepareScreensaver(ctx context.Context, tconn *chrome.TestConn, ui *uiauto.
 					return errors.Errorf("Art album %d should be selected", i)
 				}
 				selectedAlbumNode := nodewith.HasClass("album-selected").Name(album.Name)
-				if err := ui.RetryUntil(uiauto.Combine("deselect Art Gallery album",
+				if err := uiauto.Retry(3, uiauto.Combine("deselect Art Gallery album",
 					ui.Exists(selectedAlbumNode),
-					ui.MouseClickAtLocation(0, album.Location.CenterPoint())),
-					ui.WaitUntilGone(selectedAlbumNode))(ctx); err != nil {
+					ui.MouseClickAtLocation(0, album.Location.CenterPoint()),
+					ui.WithTimeout(3*time.Second).WaitUntilGone(selectedAlbumNode),
+				))(ctx); err != nil {
 					return errors.Wrapf(err, "failed to deselect Art Gallery album %d", i)
 				}
 			}
