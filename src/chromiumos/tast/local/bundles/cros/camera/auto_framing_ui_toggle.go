@@ -6,13 +6,16 @@ package camera
 
 import (
 	"context"
+	"os"
 	"time"
 
 	"chromiumos/tast/common/media/caps"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/camera/cca"
+	"chromiumos/tast/local/camera/features"
 	"chromiumos/tast/local/camera/histogramutil"
 	"chromiumos/tast/local/chrome/uiauto/quicksettings"
+	"chromiumos/tast/local/crosconfig"
 	"chromiumos/tast/testing"
 )
 
@@ -24,12 +27,36 @@ func init() {
 		Contacts:     []string{"kamesan@chromium.org", "chromeos-camera-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"camera_feature_auto_framing", "chrome", caps.BuiltinCamera},
-		Fixture:      "ccaTestBridgeReady",
+		Fixture:      "ccaTestBridgeReadyWithAutoFramingForceEnabled",
 		Timeout:      7 * time.Minute,
 	})
 }
 
 func AutoFramingUIToggle(ctx context.Context, s *testing.State) {
+	model, err := crosconfig.Get(ctx, "/", "name")
+	if err != nil {
+		s.Fatal("Failed to get device model: ", err)
+	}
+	if modelConf, err := features.NewModelConfig(model); err == nil {
+		conf := features.NewFeatureConfig()
+		if err := modelConf.FeatureConfig("auto_framing", conf); err != nil {
+			s.Fatal("Failed to get feature config: ", err)
+		}
+		s.Log("Feature config: ", conf)
+	} else {
+		// Put an empty feature config for Auto Framing to work.
+		const overrideConfigFilePath = "/run/camera/auto_framing_config.json"
+		if err := features.WriteFeatureConfig(ctx, features.NewFeatureConfig(), overrideConfigFilePath, true); err != nil {
+			s.Fatalf("Failed to write feature config to %v: %v", overrideConfigFilePath, err)
+		}
+		s.Log("Wrote empty feature config to ", overrideConfigFilePath)
+		defer func() {
+			if err := os.Remove(overrideConfigFilePath); err != nil {
+				s.Errorf("Failed to remove %v: %v", overrideConfigFilePath, err)
+			}
+		}()
+	}
+
 	cr := s.FixtValue().(cca.FixtureData).Chrome
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
