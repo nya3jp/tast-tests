@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d43d5ce8_97281765",
+        "filename": "src/chromiumos/tast/remote/cellular/callbox/manager/obj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1487102
+      },
+      "writtenOn": "2022-10-04T20:59:00Z",
+      "side": 1,
+      "message": "Is it possible to map these to the exact dBm numbers? Or do they vary based on Band and CA configs?",
+      "revId": "4e51f9c36c3300743a220aa8afc1ef13e300030f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17c4027e_ff014d41",
+        "filename": "src/chromiumos/tast/remote/cellular/callbox/manager/obj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1487102
+      },
+      "writtenOn": "2022-10-04T20:59:00Z",
+      "side": 1,
+      "message": "Exact value, as in the dBm value?",
+      "revId": "4e51f9c36c3300743a220aa8afc1ef13e300030f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
