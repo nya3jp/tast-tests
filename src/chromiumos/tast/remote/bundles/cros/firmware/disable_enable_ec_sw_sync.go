@@ -1,4 +1,4 @@
-// Copyright 2022 The ChromiumOS Authors.
+// Copyright 2022 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -63,7 +63,7 @@ func DisableEnableECSWSync(ctx context.Context, s *testing.State) {
 	bs := h.BiosServiceClient
 
 	s.Log("Backing up current EC_RW region for safety")
-	ecPath, err := h.BiosServiceClient.BackupImageSection(ctx, &fwpb.FWBackUpSection{
+	ecPath, err := h.BiosServiceClient.BackupImageSection(ctx, &fwpb.FWSectionInfo{
 		Programmer: fwpb.Programmer_ECProgrammer,
 		Section:    fwpb.ImageSection_ECRWImageSection,
 	})

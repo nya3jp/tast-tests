@@ -11,6 +11,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"os"
+	"regexp"
 	"sort"
 	"strconv"
 	"strings"
@@ -19,6 +20,7 @@ import (
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	pb "chromiumos/tast/services/cros/firmware"
+	"chromiumos/tast/testing"
 )
 
 // ImageSection is the name of sections supported by this package.
@@ -72,6 +74,9 @@ const (
 
 	// APRWBImageSection is the named section B for AP writable data as output from dump_fmap.
 	APRWBImageSection ImageSection = "RW_SECTION_B"
+
+	// APWPROImageSection is the the entire RO space of the flash chip.
+	APWPROImageSection ImageSection = "WP_RO"
 
 	// RecoveryMode is the named chromeOS Firmware Updater to perform firmware recovery mode.
 	RecoveryMode FirmwareUpdateMode = "--mode=recovery"
@@ -163,26 +168,55 @@ func NewImage(ctx context.Context, section ImageSection, programmer FlashromProg
 }
 
 // NewImageToFile creates a file representing the desired section of currently loaded firmware image.
-func NewImageToFile(ctx context.Context, section ImageSection, programmer FlashromProgrammer) (string, error) {
-	tmpFile, err := ioutil.TempFile("/var/tmp", "")
+func NewImageToFile(ctx context.Context, section ImageSection, programmer FlashromProgrammer, dirpath string) (string, error) {
+	fileDir := dirpath
+	if dirpath == "" {
+		fileDir = "/var/tmp"
+	}
+	tmpFile, err := ioutil.TempFile(fileDir, "")
 	if err != nil {
 		return "", errors.Wrap(err, "creating tmpfile for image contents")
 	}
 
 	frArgs := []string{"-p", string(programmer), "-r"}
-	isOneSection := section != ""
+	isOneSection := section != "" && section != EmptyImageSection
 	if isOneSection {
 		frArgs = append(frArgs, "-i", fmt.Sprintf("%s:%s", section, tmpFile.Name()))
 	} else {
 		frArgs = append(frArgs, tmpFile.Name())
 	}
 
-	if err = testexec.CommandContext(ctx, "flashrom", frArgs...).Run(testexec.DumpLogOnError); err != nil {
+	if out, err := testexec.CommandContext(ctx, "flashrom", frArgs...).Output(testexec.DumpLogOnError); err != nil {
 		os.Remove(tmpFile.Name())
-		return "", errors.Wrap(err, "could not read firmware host image")
+		return "", errors.Wrapf(err, "could not read firmware host image: %v", string(out))
 	}
 
 	return tmpFile.Name(), nil
+}
+
+// WriteImageToFile writes image data to a file to use for flashrom command.
+func (i *Image) WriteImageToFile(ctx context.Context, sec ImageSection, dirpath string) (string, error) {
+	dataRange, ok := i.Sections[sec]
+	if !ok {
+		return "", errors.Errorf("section %q is not recognized", string(sec))
+	}
+
+	fileDir := dirpath
+	if dirpath == "" {
+		fileDir = "/var/tmp"
+	}
+	imgFile, err := ioutil.TempFile(fileDir, "")
+	if err != nil {
+		return "", errors.Wrap(err, "creating tmpfile for image contents")
+	}
+
+	dataToWrite := i.Data[dataRange.Start : dataRange.Start+dataRange.Length]
+
+	if err := ioutil.WriteFile(imgFile.Name(), dataToWrite, 0644); err != nil {
+		return "", errors.Wrap(err, "writing image contents to tmpfile")
+	}
+
+	return imgFile.Name(), nil
 }
 
 // GetGBBFlags returns the list of cleared and list of set flags.
@@ -212,26 +246,16 @@ func (i *Image) ClearAndSetGBBFlags(clearFlags, setFlags []pb.GBBFlag) error {
 
 // WriteFlashrom writes the current data in the specified section into flashrom.
 func (i *Image) WriteFlashrom(ctx context.Context, sec ImageSection, programmer FlashromProgrammer) error {
-	dataRange, ok := i.Sections[sec]
-	if !ok {
-		return errors.Errorf("section %q is not recognized", string(sec))
-	}
-
-	imgTmp, err := ioutil.TempFile("", "")
+	// dirpath arg is irrelevant here since file gets deleted in the defer call.
+	imgTmp, err := i.WriteImageToFile(ctx, sec, "")
 	if err != nil {
-		return errors.Wrap(err, "creating tmpfile for image contents")
-	}
-	defer os.Remove(imgTmp.Name())
-
-	dataToWrite := i.Data[dataRange.Start : dataRange.Start+dataRange.Length]
-
-	if err := ioutil.WriteFile(imgTmp.Name(), dataToWrite, 0644); err != nil {
 		return errors.Wrap(err, "writing image contents to tmpfile")
 	}
+	defer os.Remove(imgTmp)
 
 	// -N == no verify all. Verify is slow.
-	if err = testexec.CommandContext(ctx, "flashrom", "-N", "-p", string(programmer), "-i", fmt.Sprintf("%s:%s", sec, imgTmp.Name()), "-w").Run(testexec.DumpLogOnError); err != nil {
-		return errors.Wrap(err, "could not write host image")
+	if out, err := testexec.CommandContext(ctx, "flashrom", "-N", "-p", string(programmer), "-i", fmt.Sprintf("%s:%s", sec, imgTmp), "-w").Output(testexec.DumpLogOnError); err != nil {
+		return errors.Wrapf(err, "could not write host image, flashrom output: %s", string(out))
 	}
 
 	return nil
@@ -266,7 +290,7 @@ func WriteImageFromMultiSectionFile(ctx context.Context, path string, sec ImageS
 	case EmptyImageSection:
 		frArgs = append(frArgs, "-w", path)
 	default:
-		frArgs = append(frArgs, "-i", string(sec), "-w", path)
+		frArgs = append(frArgs, "-i", fmt.Sprintf("%s:%s", sec, path), "-w")
 	}
 
 	if err := testexec.CommandContext(ctx, "flashrom", frArgs...).Run(testexec.DumpLogOnError); err != nil {
@@ -374,49 +398,78 @@ func (i *Image) GetLayout() []byte {
 	return []byte(strings.Join(data, "\n") + "\n")
 }
 
-// EnableAPSoftwareWriteProtect enables and specifies the RO region for the AP.
-func EnableAPSoftwareWriteProtect(ctx context.Context) error {
-	tmpFile, err := ioutil.TempFile("/var/tmp", "")
-	if err != nil {
-		return errors.Wrap(err, "creating tmpfile to enable AP write protect")
-	}
-	defer os.Remove(tmpFile.Name())
-
-	// Check AP firmware WP range.
-	if err := testexec.CommandContext(ctx, "flashrom", "-p", "host", "-r", "-i", "FMAP:"+tmpFile.Name()).Run(testexec.DumpLogOnError); err != nil {
-		return errors.Wrap(err, "failed to read the bios file")
-	}
-
-	out, err := testexec.CommandContext(ctx, "fmap_decode", tmpFile.Name()).Output(testexec.DumpLogOnError)
-	if err != nil {
-		return errors.Wrap(err, "failed to decode the bios file")
-	}
-
-	// Parse the output to get the areaOffset and areaSize values for write protection.
-	stringv := strings.Split(string(out), "\n")
-	var areaOffset string
-	var areaSize string
-	for _, line := range stringv {
-		if strings.Contains(line, "WP_RO") {
-			values := strings.Split(line, "\"")
-			areaOffset = values[1]
-			areaSize = values[3]
-			break
-		}
-	}
-
-	// Declare the starting and ending range to run in the flashrom command for write protection.
-	command := fmt.Sprintf("%v,%v", areaOffset, areaSize)
-	if err = testexec.CommandContext(ctx, "flashrom", "-p", "host", "--wp-enable", "--wp-range", command).Run(testexec.DumpLogOnError); err != nil {
-		return errors.Wrap(err, "unable to run the declared write protection range in flashrom")
-	}
-	return nil
+// WPArgs struct holds the optional arguments to SetAPSoftwareWriteProtect.
+type WPArgs struct {
+	WPRangeStart  int64
+	WPRangeLength int64
+	WPSection     ImageSection
 }
 
-// DisableAPSoftwareWriteProtect disables the AP write protection.
-func DisableAPSoftwareWriteProtect(ctx context.Context) error {
-	if err := testexec.CommandContext(ctx, "flashrom", "-p", "host", "--wp-disable").Run(testexec.DumpLogOnError); err != nil {
-		return errors.Wrap(err, "failed to disable AP software write protection")
+// SetAPSoftwareWriteProtect sets write protect using flashrom.
+func SetAPSoftwareWriteProtect(ctx context.Context, enable bool, args *WPArgs) error {
+	// If disabling, set range to start=0, len=0. Otherwise use args to determine enable range.
+	rangeStr := "--wp-range=0,0"
+	enableStr := "--wp-disable"
+	expState := "disabled"
+	if enable {
+		enableStr = "--wp-enable"
+		expState = "enabled"
+	}
+
+	testing.ContextLogf(ctx, "Running flashrom with %s flag", enableStr)
+	wpCmd := []string{"-p", "host", enableStr}
+
+	if args != nil && args.WPRangeStart != -1 && args.WPRangeLength != -1 {
+		rangeStr = fmt.Sprintf("--wp-range=%x,%x", args.WPRangeStart, args.WPRangeLength)
+		testing.ContextLogf(ctx, "Attempting to set ap write protect on range %s", rangeStr)
+		wpCmd = append(wpCmd, rangeStr)
+	} else if args != nil && args.WPSection != EmptyImageSection {
+		// TODO(b/247055486): There is an ongoing issue with --wp-region argument resulting
+		// in segfaults and other errors, refer to bug for more details.
+		tmpFile, err := ioutil.TempFile("/var/tmp", "")
+		if err != nil {
+			return errors.Wrap(err, "creating tmpfile to enable AP write protect")
+		}
+		defer os.Remove(tmpFile.Name())
+
+		regionName := string(args.WPSection)
+		regionStr := fmt.Sprintf("%s:%s", regionName, tmpFile.Name())
+
+		// Check AP firmware WP range.
+		if err := testexec.CommandContext(ctx, "flashrom", "-p", "host", "-r", "-i", regionStr).Run(testexec.DumpLogOnError); err != nil {
+			return errors.Wrap(err, "failed to read the file")
+		}
+
+		wpCmd = append(wpCmd, "-i", regionStr, fmt.Sprintf("--wp-region=%s", regionName))
+	} else if enable {
+		// If enabling write protect with with no range or region, enable for largest available region.
+		out, err := testexec.CommandContext(ctx, "flashrom", "-p", "host", "--wp-list").Output(testexec.DumpLogOnError)
+		if err != nil {
+			return errors.Wrapf(err, "failed to read wp-list output: %v", string(out))
+		}
+
+		// Match output for "all" range e.g. `start=0x00000000 length=0x01000000 (all)`
+		maxRange := regexp.MustCompile(`start=(0[xX][0-9a-fA-F]+)\s*length=(0[xX][0-9a-fA-F]+)\s*\(all\)`)
+		if match := maxRange.FindSubmatch(out); match == nil {
+			return errors.Wrapf(err, "failed to find all range in --wp-list output: %v", string(out))
+		} else if len(match) < 3 {
+			return errors.Wrapf(err, "failed to parse --wp-list output: %v", match)
+		} else {
+			rangeStr = fmt.Sprintf("--wp-range=%s,%s", match[1], match[2])
+		}
+		wpCmd = append(wpCmd, rangeStr)
+	}
+
+	// wpCmd = append(wpCmd, rangeStr)
+	if out, err := testexec.CommandContext(ctx, "flashrom", wpCmd...).Output(testexec.DumpLogOnError); err != nil {
+		return errors.Wrapf(err, "unable to set write protection range with flashrom: %s", string(out))
+	}
+
+	// Verify new wp status is as expected.
+	if out, err := testexec.CommandContext(ctx, "flashrom", "-p", "host", "--wp-status").Output(testexec.DumpLogOnError); err != nil {
+		return errors.Wrapf(err, "unable verify write protection status with flashrom: %s", string(out))
+	} else if ok := strings.Contains(string(out), fmt.Sprintf("WP: write protect is %s.", expState)); !ok {
+		return errors.Errorf("expected wp status to be %q, but output was: %s", expState, string(out))
 	}
 	return nil
 }
