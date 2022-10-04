@@ -125,6 +125,7 @@ func init() {
 	})
 
 	// lacrosPrimary is a fixture to bring up Lacros as a primary browser from the rootfs partition by default.
+	// This is DEPRECATED. Use the "lacros" fixture instead.
 	testing.AddFixture(&testing.Fixture{
 		Name:     "lacrosPrimary",
 		Desc:     "Lacros Chrome from rootfs as a primary browser",
