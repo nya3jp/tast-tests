@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd9ee720_eb4dc80c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-10-04T01:58:30Z",
+      "side": 1,
+      "message": "Jesse, do you want to give this a look-over from a Tast Framework owner perspective? This is changing some files in tast/common/.\n\n(Craig - Please wait until Jesse approves before submitting. Thanks.)",
+      "revId": "33bdbf6e2e6b3f21b410dd20c55ad44db1ddbf33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3511104b_187fe873",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/command_context_user.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-10-04T01:58:30Z",
+      "side": 1,
+      "message": "Please put got before want, and make sure to indicate in the message which is which:\nhttps://github.com/golang/go/wiki/CodeReviewComments#useful-test-failures\n(See also internal ref: go/go-style/decisions#got-before-want)",
+      "range": {
+        "startLine": 79,
+        "startChar": 12,
+        "endLine": 79,
+        "endChar": 73
+      },
+      "revId": "33bdbf6e2e6b3f21b410dd20c55ad44db1ddbf33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
