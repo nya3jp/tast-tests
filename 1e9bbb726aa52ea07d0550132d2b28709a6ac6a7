@@ -51,6 +51,24 @@
       "parentUuid": "8e3d1f7d_76a25400",
       "revId": "1e9bbb726aa52ea07d0550132d2b28709a6ac6a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3fee7bb4_2a0f4321",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/command_context_user.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-10-04T23:56:48Z",
+      "side": 1,
+      "message": "Sorry, I don\u0027t understand why you need s.Run() here? I am thinking you can just do this\n\n```\nfunc CommandContextUser(ctx context.Context, s *testing.State) {\n    flags :\u003d []string{ \"--user\", \"--group\", \"--groups\" }\n    for _, f :\u003d range flags {\n        if err :\u003d verifyId(f); err !\u003d nil {\n            s.Fatal(\"Fail to verify CommandContextUser: \", err)\n        }\n    }\n}\n```",
+      "parentUuid": "d9ea12ca_b0f8cf0f",
+      "revId": "1e9bbb726aa52ea07d0550132d2b28709a6ac6a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
