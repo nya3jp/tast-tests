@@ -124,13 +124,13 @@ func AccessibilitySpeech(ctx context.Context, s *testing.State) {
 			s.Param().(expectedSpeechLog).Slider,
 		}, {
 			"Search+Right",
-			[]a11y.SpeechExpectation{a11y.NewStringExpectation("ANNOUNCE"), a11y.NewStringExpectation("Button"), a11y.NewStringExpectation("Press Search plus Space to activate")},
+			[]a11y.SpeechExpectation{a11y.NewRegexExpectation("(?i)ANNOUNCE"), a11y.NewStringExpectation("Button"), a11y.NewStringExpectation("Press Search plus Space to activate")},
 		}, {
 			"Search+Space",
 			[]a11y.SpeechExpectation{a11y.NewStringExpectation("test announcement")},
 		}, {
 			"Search+Right",
-			[]a11y.SpeechExpectation{a11y.NewStringExpectation("CLICK TO SHOW TOAST"), a11y.NewStringExpectation("Button"), a11y.NewStringExpectation("Press Search plus Space to activate")},
+			[]a11y.SpeechExpectation{a11y.NewRegexExpectation("(?i)CLICK TO SHOW TOAST"), a11y.NewStringExpectation("Button"), a11y.NewStringExpectation("Press Search plus Space to activate")},
 		}, {
 			"Search+Space",
 			[]a11y.SpeechExpectation{a11y.NewStringExpectation("test toast")},
@@ -144,7 +144,7 @@ func AccessibilitySpeech(ctx context.Context, s *testing.State) {
 		}, {
 			"Search+Right",
 			[]a11y.SpeechExpectation{
-				a11y.NewStringExpectation("CHANGE POLITE LIVE REGION"),
+				a11y.NewRegexExpectation("(?i)CHANGE POLITE LIVE REGION"),
 				a11y.NewStringExpectation("Button"),
 				a11y.NewStringExpectation("Press Search plus Space to activate"),
 			},
@@ -156,7 +156,7 @@ func AccessibilitySpeech(ctx context.Context, s *testing.State) {
 		}, {
 			"Search+Right",
 			[]a11y.SpeechExpectation{
-				a11y.NewStringExpectation("CHANGE ASSERTIVE LIVE REGION"),
+				a11y.NewRegexExpectation("(?i)CHANGE ASSERTIVE LIVE REGION"),
 				a11y.NewStringExpectation("Button"),
 				a11y.NewStringExpectation("Press Search plus Space to activate"),
 			},
