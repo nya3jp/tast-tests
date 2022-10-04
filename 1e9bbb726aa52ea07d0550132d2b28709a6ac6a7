@@ -16,6 +16,23 @@
       "message": "Adding Seewai to review from Tast perspective",
       "revId": "1e9bbb726aa52ea07d0550132d2b28709a6ac6a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e3d1f7d_76a25400",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/command_context_user.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-10-04T21:02:16Z",
+      "side": 1,
+      "message": "Why don\u0027t we just test one command at a time? Something like\n\n```\nfunc verifyId(flag string) error {\n\tcmd :\u003d testexec.CommandContext(ctx,\n\t\t\"bash\", \"-c\",\n\t\tfmt.Sprint(\"id %s chronos\", flag)\n\t)\n\texpectedOut, err :\u003d cmd.Output()\n\tif err !\u003d nil {\n\t\treturn err // or something more descriptive.\n\t}\n\n\tcmd, err \u003d testexec.CommandContextUser(ctx, \"chronos\",\n\t\t\"bash\", \"-c\",\n\t\t\"fmt.Sprint(\"id %s\", flag)\",\n\t)\n\tif err !\u003d nil {\n\t\treturn errors.Wrap(err, \"failed to setup CommandContextUser\")\n\t}\n\ttestOut, err :\u003d cmd.Output()\n\tif err !\u003d nil {\n\t\treturn errors.Wrap(err, \"failed to run id as chronos\")\n\t}\n\tif expectedOut !\u003d testOut {\n\t\treturn errors.Errorf(\"failed to get expected output from id; got %q, wanted %q\", testOut, expectedOut)\n\n\t}\n\treturn nil\n}\n```\n\nI think it is much more readable and we can avoid dealing with multiple line output. BTW, the error return in my example is not really descriptive. Please change it to something more descriptive.\n\nThanks.",
+      "revId": "1e9bbb726aa52ea07d0550132d2b28709a6ac6a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
