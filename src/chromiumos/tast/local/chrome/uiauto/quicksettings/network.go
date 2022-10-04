@@ -33,7 +33,7 @@ var (
 	NetworkDetailedViewWifiToggleButtonRevamp = nodewith.HasClass("TrayToggleButton").NameContaining("Wi-Fi").Ancestor(NetworkDetailedViewRevamp)
 
 	// NetworkDetailedViewMobileDataToggle is the switch to enable/disable Mobile data within network quick settings
-	NetworkDetailedViewMobileDataToggle = nodewith.Name("Mobile data").HasClass("TrayToggleButton").Ancestor(NetworkDetailedView)
+	NetworkDetailedViewMobileDataToggle = nodewith.Name("Mobile data").HasClass("TrayToggleButton").Ancestor(NetworkDetailedViewRevamp)
 
 	// AddCellularButton is the finder for adding new SIM profiles in Quick Settings.
 	AddCellularButton = nodewith.Name("Add new cellular network").Role(role.Button)
