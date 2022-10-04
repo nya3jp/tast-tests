@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "534e67b2_eb5efb11",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1412928
+      },
+      "writtenOn": "2022-10-04T07:51:17Z",
+      "side": 1,
+      "message": "Actual match is performed in javascript.\nWe are converting Regexp in go lang to RegExp in javascript in rawAttributes function in automation.go\nhttp://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/a11y/automation.go;l\u003d72;rcl\u003d8502d3575d609739f06771d8b15f0690ea1bfcdf\nThis conversion is very primitive and doesn\u0027t support flags like `(?i)exp` in go lang to /exp/i in javascript.\nSupporting flag conversion seems to be not easy, so I want to skip implementing this test using flag (?i).",
+      "parentUuid": "4bbdc2c7_17da0dc0",
+      "range": {
+        "startLine": 224,
+        "startChar": 20,
+        "endLine": 224,
+        "endChar": 31
+      },
+      "revId": "715f944242d956f9d20d0aae5fc7ed87d1f6818b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "56603123_3b7d5dc2",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
         "patchSetId": 2
