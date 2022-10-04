@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62d3fc09_931a1231",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-04T21:17:09Z",
+      "side": 1,
+      "message": "nit: a bit weird you changed VideoCUJ.clamshell but you are testing the .lacros variant but otherwise lgtm :)",
+      "revId": "f6b45a17a45efd722da9f4b3c10885175626f57e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
