@@ -52,6 +52,91 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "44090f47_5abd971e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-10-04T07:22:49Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "f040f22e8cc7a32b0ee1c23e8a9b9ca72bf1f506",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "236c6dae_8399359c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cross_version_login.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-10-04T07:22:49Z",
+      "side": 1,
+      "message": "nit: end with .\n\nSame for all comments (maybe do a general cleanup)",
+      "revId": "f040f22e8cc7a32b0ee1c23e8a9b9ca72bf1f506",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "089c8fdf_695c804a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cross_version_login.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 424,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-10-04T07:22:49Z",
+      "side": 1,
+      "message": "nit: end with .",
+      "revId": "f040f22e8cc7a32b0ee1c23e8a9b9ca72bf1f506",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0cb26de_67dfbf7e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cross_version_login.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 433,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-10-04T07:22:49Z",
+      "side": 1,
+      "message": "nit: end with .",
+      "revId": "f040f22e8cc7a32b0ee1c23e8a9b9ca72bf1f506",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b75597d5_88a021bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cross_version_login.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 461,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-10-04T07:22:49Z",
+      "side": 1,
+      "message": "nit: end with .",
+      "revId": "f040f22e8cc7a32b0ee1c23e8a9b9ca72bf1f506",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7be3b783_4efb8ee5",
@@ -83,6 +168,40 @@
       "side": 1,
       "message": "I would consider that in the future changes.",
       "parentUuid": "7be3b783_4efb8ee5",
+      "revId": "f040f22e8cc7a32b0ee1c23e8a9b9ca72bf1f506",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34cbf2bf_52e4b055",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cross_version_login.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 467,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-10-04T07:22:49Z",
+      "side": 1,
+      "message": "nit: add comments on why there are 2 almost identical calls.",
+      "revId": "f040f22e8cc7a32b0ee1c23e8a9b9ca72bf1f506",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c40ff2f_61012177",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cross_version_login.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 469,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-10-04T07:22:49Z",
+      "side": 1,
+      "message": "minor nit: newline before",
       "revId": "f040f22e8cc7a32b0ee1c23e8a9b9ca72bf1f506",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
