@@ -16,6 +16,23 @@
       "message": "All recent failures appear to be external causes, and the tests appear otherwise stable",
       "revId": "c0c052d5e2f0434778adee4dcba069ab0fb05718",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bea07fb9_11bdc82d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-10-04T08:42:25Z",
+      "side": 1,
+      "message": "LGTM.",
+      "revId": "c0c052d5e2f0434778adee4dcba069ab0fb05718",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
