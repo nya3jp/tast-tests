@@ -39,6 +39,23 @@
       "message": "LGTM, don\u0027t wait shadow since CL is trivial",
       "revId": "a3552b6a71727a04c20453346f3ba2c641da77a4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7de4569f_b84d95fe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-10-04T09:25:26Z",
+      "side": 1,
+      "message": "shadow reviewer lgtm for tast",
+      "revId": "a3552b6a71727a04c20453346f3ba2c641da77a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
