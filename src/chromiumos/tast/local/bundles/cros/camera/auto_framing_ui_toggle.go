@@ -25,6 +25,7 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"camera_feature_auto_framing", "chrome", caps.BuiltinCamera},
 		Fixture:      "ccaTestBridgeReady",
+		Timeout:      7 * time.Minute,
 	})
 }
 
@@ -104,14 +105,24 @@ func AutoFramingUIToggle(ctx context.Context, s *testing.State) {
 	}
 
 	runTestWithApp := s.FixtValue().(cca.FixtureData).RunTestWithApp
-	subTestTimeout := 60 * time.Second
-	actionInterval := 3 * time.Second
+	subTestTimeout := 120 * time.Second
+	actionInterval := 4 * time.Second
 	for _, tc := range []struct {
 		name           string
 		mode           cca.Mode
 		actions        []Action
 		histogramTests histogramutil.HistogramTests
 	}{
+		{
+			// Warm-up session to stabilize the timing checks in the following tests.
+			name: "warmUp",
+			mode: cca.Photo,
+			actions: []Action{
+				toggleFraming(true),
+				sleep(4 * time.Second),
+			},
+			histogramTests: nil,
+		},
 		{
 			name: "testTogglingFraming",
 			mode: cca.Photo,
@@ -199,7 +210,10 @@ func AutoFramingUIToggle(ctx context.Context, s *testing.State) {
 				if err = app.Close(ctx); err != nil {
 					return errors.Wrap(err, "failed to close Chrome Camera App")
 				}
-				return tc.histogramTests.Verify(ctx, tconn, recorder)
+				if tc.histogramTests != nil {
+					return tc.histogramTests.Verify(ctx, tconn, recorder)
+				}
+				return nil
 			}, cca.TestWithAppParams{StopAppOnlyIfExist: true}); err != nil {
 				s.Errorf("Failed to pass %v subtest: %v", tc.name, err)
 			}
