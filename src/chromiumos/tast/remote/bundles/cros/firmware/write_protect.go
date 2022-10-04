@@ -113,7 +113,7 @@ func WriteProtect(ctx context.Context, s *testing.State) {
 
 	// Back up EC_RW.
 	s.Log("Back up current EC_RW region")
-	ecrwPath, err := h.BiosServiceClient.BackupImageSection(ctx, &pb.FWBackUpSection{Section: pb.ImageSection_ECRWImageSection, Programmer: pb.Programmer_ECProgrammer})
+	ecrwPath, err := h.BiosServiceClient.BackupImageSection(ctx, &pb.FWSectionInfo{Section: pb.ImageSection_ECRWImageSection, Programmer: pb.Programmer_ECProgrammer})
 	if err != nil {
 		s.Fatal("Failed to backup current EC_RW region: ", err)
 	}

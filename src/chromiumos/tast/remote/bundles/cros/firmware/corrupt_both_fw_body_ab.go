@@ -69,7 +69,7 @@ func CorruptBothFWBodyAB(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 15*time.Minute)
 	defer cancel()
 	s.Log("Backup firmware A/B body")
-	FWBodyABkp, err := h.BiosServiceClient.BackupImageSection(ctx, &pb.FWBackUpSection{Section: pb.ImageSection_FWBodyAImageSection, Programmer: pb.Programmer_BIOSProgrammer})
+	FWBodyABkp, err := h.BiosServiceClient.BackupImageSection(ctx, &pb.FWSectionInfo{Section: pb.ImageSection_FWBodyAImageSection, Programmer: pb.Programmer_BIOSProgrammer})
 	if err != nil {
 		s.Fatal("Failed to backup current FW Body A region: ", err)
 	}
@@ -78,7 +78,7 @@ func CorruptBothFWBodyAB(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to delete FW Body A backup: ", err)
 		}
 	}(cleanupContext)
-	FWBodyBBkp, err := h.BiosServiceClient.BackupImageSection(ctx, &pb.FWBackUpSection{Section: pb.ImageSection_FWBodyBImageSection, Programmer: pb.Programmer_BIOSProgrammer})
+	FWBodyBBkp, err := h.BiosServiceClient.BackupImageSection(ctx, &pb.FWSectionInfo{Section: pb.ImageSection_FWBodyBImageSection, Programmer: pb.Programmer_BIOSProgrammer})
 	if err != nil {
 		s.Fatal("Failed to backup current FW Body B region: ", err)
 	}
@@ -192,12 +192,12 @@ func CorruptBothFWBodyAB(ctx context.Context, s *testing.State) {
 	}(cleanupContext)
 
 	s.Log("Corrupt Firmware A Body")
-	if _, err := h.BiosServiceClient.CorruptFWSection(ctx, &pb.CorruptSection{Section: pb.ImageSection_FWBodyAImageSection, Programmer: pb.Programmer_BIOSProgrammer}); err != nil {
+	if _, err := h.BiosServiceClient.CorruptFWSection(ctx, &pb.FWSectionInfo{Section: pb.ImageSection_FWBodyAImageSection, Programmer: pb.Programmer_BIOSProgrammer}); err != nil {
 		s.Fatal("Failed to corrupt Firmware A Body (FVMAIN) section: ", err)
 	}
 
 	s.Log("Corrupt Firmware B Body")
-	if _, err := h.BiosServiceClient.CorruptFWSection(ctx, &pb.CorruptSection{Section: pb.ImageSection_FWBodyBImageSection, Programmer: pb.Programmer_BIOSProgrammer}); err != nil {
+	if _, err := h.BiosServiceClient.CorruptFWSection(ctx, &pb.FWSectionInfo{Section: pb.ImageSection_FWBodyBImageSection, Programmer: pb.Programmer_BIOSProgrammer}); err != nil {
 		s.Fatal("Failed to corrupt Firmware B Body (FVMAINB) section: ", err)
 	}
 
