@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "068f514a_f6f23197",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1551887
+      },
+      "writtenOn": "2022-10-04T07:43:40Z",
+      "side": 1,
+      "message": "Changed to check the case that wireguard that has IPv6 address has only one peer. (removed the variables related to the second server using IPv6) \nThis patch(crrev.com/c/3932534) checks the case wireguard has many peers.",
+      "revId": "bebfdb38f10bcefeb03dacebe9dc4d412ed17aea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
