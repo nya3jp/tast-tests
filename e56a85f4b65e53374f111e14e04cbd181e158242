@@ -33,6 +33,24 @@
       "message": "Oh I didn\u0027t see this earlier. Please remove this as well. KeepAlive should not be needed just because you launch via UI (the comment you are referring to was removed recently).",
       "revId": "e56a85f4b65e53374f111e14e04cbd181e158242",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8e8f774_71837bc5",
+        "filename": "src/chromiumos/tast/local/mtbf/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-10-04T09:35:55Z",
+      "side": 1,
+      "message": "Sorry, we correct the explanation here.\n\nWe enable KeepAlive to ensure Lacros can be launched anytime, especially when we have `browserfixt.SetUp` being called in advance, in `PreTest`.\n\nIs this considered a bug and we should report one and add TODO here?",
+      "parentUuid": "9c46573a_e260b2e4",
+      "revId": "e56a85f4b65e53374f111e14e04cbd181e158242",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
