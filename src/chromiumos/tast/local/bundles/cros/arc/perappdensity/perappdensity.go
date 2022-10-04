@@ -83,8 +83,10 @@ func confirmPixelCountInScreenshot(ctx context.Context, cr *chrome.Chrome, a *ar
 	}
 	n := imgcmp.CountPixels(img, clr)
 	diff := math.Abs(float64(wantPixelCount-n) / float64(wantPixelCount))
-	// Allow a small epsilon as wantPixelCount is computed as a float.
-	if diff > 0.01 {
+	// Allow a small epsilon from wantPixelCount.  Non-integer scaling
+	// could result in color bleed, so expect 99% correct in each dimension
+	// min 0.99^2 = 0.9801 or max 1.01^2 = 1.0201.  Allow a 2.1% max diff.
+	if diff > 0.021 {
 		return errors.Errorf("wrong number of %+v pixels, got: %d, want: %d", clr, n, wantPixelCount)
 	}
 	return nil
