@@ -63,7 +63,7 @@ type TestParams struct {
 // VideoApp declares video operation.
 type VideoApp interface {
 	// OpenAndPlayVideo opens a video.
-	OpenAndPlayVideo(ctx context.Context) error
+	OpenAndPlayVideo(video VideoSrc) uiauto.Action
 	// EnterFullscreen switches video to fullscreen.
 	EnterFullscreen(ctx context.Context) error
 	// PauseAndPlayVideo verifies video playback.
@@ -218,15 +218,16 @@ func Run(ctx context.Context, resources TestResources, param TestParams) error {
 	if traceConfigPath != "" {
 		recorder.EnableTracing(outDir, traceConfigPath)
 	}
-	run := func(ctx context.Context, videoSource VideoSrc) error {
-		var videoApp VideoApp
-		switch appName {
-		case YoutubeWeb:
-			videoApp = NewYtWeb(br, tconn, kb, videoSource, extendedDisplay, ui, uiHandler)
-		case YoutubeApp:
-			videoApp = NewYtApp(tconn, kb, a, d, videoSource, outDir)
-		}
 
+	var videoApp VideoApp
+	switch appName {
+	case YoutubeWeb:
+		videoApp = NewYtWeb(br, tconn, kb, extendedDisplay, ui, uiHandler)
+	case YoutubeApp:
+		videoApp = NewYtApp(tconn, kb, a, d, outDir)
+	}
+
+	run := func(ctx context.Context, videoSource VideoSrc) error {
 		// Give time to cleanup videoApp resources.
 		cleanupResourceCtx := ctx
 		ctx, cancel = ctxutil.Shorten(ctx, 5*time.Second)
@@ -268,7 +269,7 @@ func Run(ctx context.Context, resources TestResources, param TestParams) error {
 				}
 			}(cleanupCtx)
 
-			return videoScenario(ctx, resources, param, bTconn, br, videoApp, tabChecker)
+			return videoScenario(ctx, resources, param, bTconn, br, videoApp, videoSource, tabChecker)
 		})
 	}
 
@@ -312,7 +313,7 @@ func Run(ctx context.Context, resources TestResources, param TestParams) error {
 }
 
 func videoScenario(ctx context.Context, resources TestResources, param TestParams, bTconn *chrome.TestConn,
-	br *browser.Browser, videoApp VideoApp, tabChecker *cuj.TabCrashChecker) error {
+	br *browser.Browser, videoApp VideoApp, videoSrc VideoSrc, tabChecker *cuj.TabCrashChecker) error {
 
 	var (
 		appName         = param.App
@@ -358,7 +359,7 @@ func videoScenario(ctx context.Context, resources TestResources, param TestParam
 		return conn, nil
 	}
 
-	if err := videoApp.OpenAndPlayVideo(ctx); err != nil {
+	if err := videoApp.OpenAndPlayVideo(videoSrc)(ctx); err != nil {
 		return errors.Wrapf(err, "failed to open %s", appName)
 	}
 

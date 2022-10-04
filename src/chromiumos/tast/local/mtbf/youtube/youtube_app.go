@@ -43,135 +43,135 @@ type YtApp struct {
 	kb      *input.KeyboardEventWriter
 	a       *arc.ARC
 	d       *androidui.Device
-	video   VideoSrc
 	act     *arc.Activity
 	outDir  string
 	premium bool // Indicate if the account is premium.
 }
 
 // NewYtApp creates an instance of YtApp.
-func NewYtApp(tconn *chrome.TestConn, kb *input.KeyboardEventWriter, a *arc.ARC, d *androidui.Device, video VideoSrc, outDir string) *YtApp {
+func NewYtApp(tconn *chrome.TestConn, kb *input.KeyboardEventWriter, a *arc.ARC, d *androidui.Device, outDir string) *YtApp {
 	return &YtApp{
 		tconn:   tconn,
 		kb:      kb,
 		a:       a,
 		d:       d,
-		video:   video,
 		outDir:  outDir,
 		premium: true,
 	}
 }
 
 // OpenAndPlayVideo opens a video on youtube app.
-func (y *YtApp) OpenAndPlayVideo(ctx context.Context) (err error) {
-	testing.ContextLog(ctx, "Open Youtube app")
+func (y *YtApp) OpenAndPlayVideo(video VideoSrc) uiauto.Action {
+	return func(ctx context.Context) (err error) {
+		testing.ContextLog(ctx, "Open Youtube app")
 
-	const (
-		youtubeApp              = "Youtube App"
-		youtubeAct              = "com.google.android.apps.youtube.app.WatchWhileActivity"
-		closeDescription        = "Close"
-		youtubeLogoDescription  = "YouTube Premium"
-		accountImageDescription = "Account"
-		noThanksText            = "NO THANKS"
-		skipTrialText           = "SKIP TRIAL"
-		accountImageID          = youtubePkg + ":id/image"
-		searchButtonID          = youtubePkg + ":id/menu_item_1"
-		searchEditTextID        = youtubePkg + ":id/search_edit_text"
-		resultsViewID           = youtubePkg + ":id/results"
-		dismissID               = youtubePkg + ":id/dismiss"
-	)
+		const (
+			youtubeApp              = "Youtube App"
+			youtubeAct              = "com.google.android.apps.youtube.app.WatchWhileActivity"
+			closeDescription        = "Close"
+			youtubeLogoDescription  = "YouTube Premium"
+			accountImageDescription = "Account"
+			noThanksText            = "NO THANKS"
+			skipTrialText           = "SKIP TRIAL"
+			accountImageID          = youtubePkg + ":id/image"
+			searchButtonID          = youtubePkg + ":id/menu_item_1"
+			searchEditTextID        = youtubePkg + ":id/search_edit_text"
+			resultsViewID           = youtubePkg + ":id/results"
+			dismissID               = youtubePkg + ":id/dismiss"
+		)
 
-	if appStartTime, y.act, err = cuj.OpenAppAndGetStartTime(ctx, y.tconn, y.a, youtubePkg, youtubeApp, youtubeAct); err != nil {
-		return errors.Wrap(err, "failed to get app start time")
-	}
-
-	skipTrial := y.d.Object(androidui.ID(dismissID), androidui.Text(skipTrialText))
-	if err := cuj.ClickIfExist(skipTrial, 5*time.Second)(ctx); err != nil {
-		return errors.Wrap(err, "failed to click 'SKIP TRIAL' to skip premium trial")
-	}
-
-	closeButton := y.d.Object(androidui.Description(closeDescription))
-	if err := cuj.ClickIfExist(closeButton, 5*time.Second)(ctx); err != nil {
-		return errors.Wrap(err, "failed to click 'Close' to the close premium trial prompt")
-	}
-
-	accountImage := y.d.Object(androidui.ID(accountImageID), androidui.DescriptionContains(accountImageDescription))
-	if err := accountImage.WaitForExists(ctx, uiWaitTime); err != nil {
-		return errors.Wrap(err, "failed to check for Youtube app launched")
-	}
-
-	premiumLogo := y.d.Object(androidui.Description(youtubeLogoDescription))
-	if err := premiumLogo.WaitForExists(ctx, uiWaitTime); err != nil {
-		y.premium = false
-		testing.ContextLog(ctx, "Current account is free account")
-	}
-
-	// Clear notification prompt if it exists.
-	noThanksEle := y.d.Object(androidui.ID(dismissID), androidui.Text(noThanksText))
-	if err := cuj.ClickIfExist(noThanksEle, 5*time.Second)(ctx); err != nil {
-		return errors.Wrap(err, "failed to click 'NO THANKS' to clear notification prompt")
-	}
-
-	playVideo := func() error {
-		testing.ContextLog(ctx, "Search and play video")
-
-		searchButton := y.d.Object(androidui.ID(searchButtonID))
-		if err := searchButton.Click(ctx); err != nil {
-			return err
+		if appStartTime, y.act, err = cuj.OpenAppAndGetStartTime(ctx, y.tconn, y.a, youtubePkg, youtubeApp, youtubeAct); err != nil {
+			return errors.Wrap(err, "failed to get app start time")
 		}
 
-		searchEditText := y.d.Object(androidui.ID(searchEditTextID))
-		if err := cuj.FindAndClick(searchEditText, uiWaitTime)(ctx); err != nil {
-			return errors.Wrap(err, "failed to find 'searchTextfield'")
+		skipTrial := y.d.Object(androidui.ID(dismissID), androidui.Text(skipTrialText))
+		if err := cuj.ClickIfExist(skipTrial, 5*time.Second)(ctx); err != nil {
+			return errors.Wrap(err, "failed to click 'SKIP TRIAL' to skip premium trial")
 		}
 
-		if err := uiauto.Combine("type video url",
-			y.kb.TypeAction(y.video.URL),
-			y.kb.AccelAction("enter"),
-		)(ctx); err != nil {
-			return err
+		closeButton := y.d.Object(androidui.Description(closeDescription))
+		if err := cuj.ClickIfExist(closeButton, 5*time.Second)(ctx); err != nil {
+			return errors.Wrap(err, "failed to click 'Close' to the close premium trial prompt")
 		}
 
-		resultsView := y.d.Object(androidui.ID(resultsViewID))
-		if err := resultsView.WaitForExists(ctx, uiWaitTime); err != nil {
-			return errors.Wrap(err, "failed to find the results from video URL")
+		accountImage := y.d.Object(androidui.ID(accountImageID), androidui.DescriptionContains(accountImageDescription))
+		if err := accountImage.WaitForExists(ctx, uiWaitTime); err != nil {
+			return errors.Wrap(err, "failed to check for Youtube app launched")
 		}
 
-		firstVideo := y.d.Object(androidui.DescriptionContains(y.video.Title))
-		startTime := time.Now()
-		if err := testing.Poll(ctx, func(ctx context.Context) error {
+		premiumLogo := y.d.Object(androidui.Description(youtubeLogoDescription))
+		if err := premiumLogo.WaitForExists(ctx, uiWaitTime); err != nil {
+			y.premium = false
+			testing.ContextLog(ctx, "Current account is free account")
+		}
 
-			if err := cuj.FindAndClick(firstVideo, uiWaitTime)(ctx); err != nil {
-				if strings.Contains(err.Error(), "click") {
-					return testing.PollBreak(err)
-				}
-				return errors.Wrap(err, "failed to find 'First Video'")
+		// Clear notification prompt if it exists.
+		noThanksEle := y.d.Object(androidui.ID(dismissID), androidui.Text(noThanksText))
+		if err := cuj.ClickIfExist(noThanksEle, 5*time.Second)(ctx); err != nil {
+			return errors.Wrap(err, "failed to click 'NO THANKS' to clear notification prompt")
+		}
+
+		playVideo := func() error {
+			testing.ContextLog(ctx, "Search and play video")
+
+			searchButton := y.d.Object(androidui.ID(searchButtonID))
+			if err := searchButton.Click(ctx); err != nil {
+				return err
 			}
 
-			testing.ContextLogf(ctx, "Elapsed time when waiting the video list: %.3f s", time.Since(startTime).Seconds())
+			searchEditText := y.d.Object(androidui.ID(searchEditTextID))
+			if err := cuj.FindAndClick(searchEditText, uiWaitTime)(ctx); err != nil {
+				return errors.Wrap(err, "failed to find 'searchTextfield'")
+			}
+
+			if err := uiauto.Combine("type video url",
+				y.kb.TypeAction(video.URL),
+				y.kb.AccelAction("enter"),
+			)(ctx); err != nil {
+				return err
+			}
+
+			resultsView := y.d.Object(androidui.ID(resultsViewID))
+			if err := resultsView.WaitForExists(ctx, uiWaitTime); err != nil {
+				return errors.Wrap(err, "failed to find the results from video URL")
+			}
+
+			firstVideo := y.d.Object(androidui.DescriptionContains(video.Title))
+			startTime := time.Now()
+			if err := testing.Poll(ctx, func(ctx context.Context) error {
+
+				if err := cuj.FindAndClick(firstVideo, uiWaitTime)(ctx); err != nil {
+					if strings.Contains(err.Error(), "click") {
+						return testing.PollBreak(err)
+					}
+					return errors.Wrap(err, "failed to find 'First Video'")
+				}
+
+				testing.ContextLogf(ctx, "Elapsed time when waiting the video list: %.3f s", time.Since(startTime).Seconds())
+				return nil
+			}, &testing.PollOptions{Interval: 3 * time.Second, Timeout: 30 * time.Second}); err != nil {
+				return errors.Wrap(err, "failed to click first video")
+			}
 			return nil
-		}, &testing.PollOptions{Interval: 3 * time.Second, Timeout: 30 * time.Second}); err != nil {
-			return errors.Wrap(err, "failed to click first video")
 		}
+
+		if err := playVideo(); err != nil {
+			return errors.Wrap(err, "failed to play video")
+		}
+
+		// It has been seen that low-end DUTs sometimes can take as much as 10-20 seconds to finish loading after clicking
+		// on a video from the search results. Logic is added here to wait for the loading to complete before proceeding to
+		// prevent unexpected errors.
+		if err := y.waitForLoadingComplete(ctx); err != nil {
+			return errors.Wrap(err, "failed to wait for loading to complete")
+		}
+
+		if err := y.switchQuality(ctx, video.Quality); err != nil {
+			return errors.Wrap(err, "failed to switch Quality")
+		}
+
 		return nil
 	}
-
-	if err := playVideo(); err != nil {
-		return errors.Wrap(err, "failed to play video")
-	}
-
-	// It has been seen that low-end DUTs sometimes can take as much as 10-20 seconds to finish loading after clicking
-	// on a video from the search results. Logic is added here to wait for the loading to complete before proceeding to
-	// prevent unexpected errors.
-	if err := y.waitForLoadingComplete(ctx); err != nil {
-		return errors.Wrap(err, "failed to wait for loading to complete")
-	}
-
-	if err := y.switchQuality(ctx, y.video.Quality); err != nil {
-		return errors.Wrap(err, "failed to switch Quality")
-	}
-
-	return nil
 }
 
 // switchQuality switches the video quality by continuous action.

@@ -191,7 +191,7 @@ func EDUCastToClass(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to find the primary browser: ", err)
 	}
 
-	youtubeWeb := youtube.NewYtWeb(br, tconn, kb, videoSrc, false, ac, uiHandler)
+	youtubeWeb := youtube.NewYtWeb(br, tconn, kb, false, ac, uiHandler)
 	defer youtubeWeb.Close(ctx)
 
 	// Shorten the context to clean up the Google Slides created in the test case.
@@ -236,7 +236,7 @@ func EDUCastToClass(ctx context.Context, s *testing.State) {
 			return err
 		}
 		castYoutubeVideo := uiauto.NamedCombine("cast youtube video",
-			youtubeWeb.OpenAndPlayVideo,
+			youtubeWeb.OpenAndPlayVideo(videoSrc),
 			youtubeWeb.SwitchQuality(targetResolution),
 			youtubeWeb.StartCast(accessCode),
 		)
