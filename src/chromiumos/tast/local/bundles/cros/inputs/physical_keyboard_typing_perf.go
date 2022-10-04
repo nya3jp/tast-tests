@@ -54,7 +54,7 @@ func init() {
 		Params: []testing.Param{
 			{
 				Name:    "en_us",
-				Fixture: fixture.ClamshellNonVK,
+				Fixture: fixture.ClamshellNonVKRestart,
 				Val: typingPerfTestParam{
 					inputMethod: ime.EnglishUS,
 					keys:        enUSTestData,
@@ -62,7 +62,7 @@ func init() {
 			},
 			{
 				Name:    "en_us_lacros",
-				Fixture: fixture.LacrosClamshellNonVK,
+				Fixture: fixture.LacrosClamshellNonVKRestart,
 				Val: typingPerfTestParam{
 					inputMethod: ime.EnglishUS,
 					keys:        enUSTestData,
@@ -71,7 +71,7 @@ func init() {
 			},
 			{
 				Name:    "pinyin",
-				Fixture: fixture.ClamshellNonVK,
+				Fixture: fixture.ClamshellNonVKRestart,
 				Val: typingPerfTestParam{
 					inputMethod: ime.ChinesePinyin,
 					keys:        pinyinTestData,
@@ -79,7 +79,7 @@ func init() {
 			},
 			{
 				Name:    "pinyin_lacros",
-				Fixture: fixture.LacrosClamshellNonVK,
+				Fixture: fixture.LacrosClamshellNonVKRestart,
 				Val: typingPerfTestParam{
 					inputMethod: ime.ChinesePinyin,
 					keys:        pinyinTestData,
@@ -88,7 +88,7 @@ func init() {
 			},
 			{
 				Name:    "ja",
-				Fixture: fixture.ClamshellNonVK,
+				Fixture: fixture.ClamshellNonVKRestart,
 				Val: typingPerfTestParam{
 					inputMethod: ime.Japanese,
 					keys:        japaneseTestData,
