@@ -73,6 +73,30 @@
       },
       "revId": "cee163f79672a8163327a633d2c9429c3c09ac3f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0699a998_6fc55ab5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1412928
+      },
+      "writtenOn": "2022-10-04T07:19:02Z",
+      "side": 1,
+      "message": "To do this, we need to change the type of Name in axTreeNode from string to interface{}.\nThis causes type change in FindParams, too.\nThat will be a too big change to just fixing tast failure.",
+      "parentUuid": "3143007c_3cd77ed4",
+      "range": {
+        "startLine": 146,
+        "startChar": 6,
+        "endLine": 147,
+        "endChar": 13
+      },
+      "revId": "cee163f79672a8163327a633d2c9429c3c09ac3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
