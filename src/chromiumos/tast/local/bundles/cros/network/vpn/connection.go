@@ -57,6 +57,11 @@ type Config struct {
 	// the client side.
 	WGAutoGenKey bool
 
+	//Checks if IPv4 address, IPv6 address or IPv4 and IPv6 address for wireguard interface can be configured
+	WGIPv4        bool
+	WGIPv6        bool
+	WGIPv4AndIPv6 bool
+
 	// CertVals contains necessary values to setup a cert-based VPN service. This
 	// is only used by cert-based VPNs (e.g., L2TP/IPsec-cert, OpenVPN, etc.).
 	CertVals CertVals
@@ -245,10 +250,18 @@ func (c *Connection) startServer(ctx context.Context) error {
 				return errors.Wrap(err, "failed to get public key")
 			}
 		}
-		c.Server, err = StartWireGuardServer(ctx, c.routingEnv.BaseRouter, clientKey, c.config.AuthType == AuthTypePSK, false /*isSecondServer*/)
-		if err == nil && c.config.WGTwoPeers {
-			// Always sets preshared key for the second peer.
-			c.SecondServer, err = StartWireGuardServer(ctx, c.routingEnv.BaseServer, clientKey, true /*usePSK*/, true /*isSecondServer*/)
+		if c.config.WGIPv6 || c.config.WGIPv4AndIPv6 {
+			c.Server, err = StartWireGuardServer(ctx, c.routingEnv.BaseRouter, clientKey, c.config.AuthType == AuthTypePSK, true /*isIPv6*/, false /*isSecondServer*/)
+			if err == nil && c.config.WGTwoPeers {
+				// Always sets preshared key for the second peer.
+				c.SecondServer, err = StartWireGuardServer(ctx, c.routingEnv.BaseServer, clientKey, true /*usePSK*/, true /*isIPv6*/, true /*isSecondServer*/)
+			}
+		} else {
+			c.Server, err = StartWireGuardServer(ctx, c.routingEnv.BaseRouter, clientKey, c.config.AuthType == AuthTypePSK, false /*isIPv6*/, false /*isSecondServer*/)
+			if err == nil && c.config.WGTwoPeers {
+				// Always sets preshared key for the second peer.
+				c.SecondServer, err = StartWireGuardServer(ctx, c.routingEnv.BaseServer, clientKey, true /*usePSK*/, false /*isIPv6*/, true /*isSecondServer*/)
+			}
 		}
 	default:
 		return errors.Errorf("unexpected VPN type %s", c.config.Type)
@@ -472,7 +485,7 @@ func (c *Connection) createWireGuardProperties() map[string]interface{} {
 		peer := map[string]string{
 			"PublicKey":  wgServerPublicKey,
 			"Endpoint":   c.Server.UnderlayIP + ":" + wgServerListenPort,
-			"AllowedIPs": "0.0.0.0/0",
+			"AllowedIPs": "0.0.0.0/0,::/0",
 		}
 		if c.config.AuthType == AuthTypePSK {
 			peer["PresharedKey"] = wgPresharedKey
@@ -497,16 +510,24 @@ func (c *Connection) createWireGuardProperties() map[string]interface{} {
 		"Address": wgClientOverlayIP,
 	}
 	properties := map[string]interface{}{
-		"Name":            "test-vpn-wg",
-		"Provider.Host":   "wireguard",
-		"Provider.Type":   "wireguard",
-		"Type":            "vpn",
-		"WireGuard.Peers": peers,
-		"StaticIPConfig":  staticIPConfig,
-		"SaveCredentials": true, // Not required, just to avoid a WARNING log in shill
+		"Name":                "test-vpn-wg",
+		"Provider.Host":       "wireguard",
+		"Provider.Type":       "wireguard",
+		"Type":                "vpn",
+		"WireGuard.Peers":     peers,
+		"StaticIPConfig":      staticIPConfig,
+		"SaveCredentials":     true, // Not required, just to avoid a WARNING log in shill
+		"WireGuard.IPAddress": wgClientOverlayIPv4List,
 	}
 	if !c.config.WGAutoGenKey {
 		properties["WireGuard.PrivateKey"] = wgClientPrivateKey
+	}
+	if c.config.WGIPv6 {
+		properties["WireGuard.IPAddress"] = wgClientOverlayIPv6List
+	}
+
+	if c.config.WGIPv4AndIPv6 {
+		properties["WireGuard.IPAddress"] = wgClientOverlayIPv4AndIPv6List
 	}
 	return properties
 }
