@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aca7d8f5_ba4590f6",
+        "filename": "src/chromiumos/tast/remote/cellular/callbox/manager/obj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1541462
+      },
+      "writtenOn": "2022-10-04T22:59:00Z",
+      "side": 1,
+      "message": "The value\u0027s are given in RS EPRE so they aren\u0027t impacted by the band or CA configuration. Instead, I think the idea was that each RAT type would have its own pre-defined values for `excellent` - `disconnected`.\n\n\nI think you\u0027re right though, it makes more sense though to define them here for visibility. I added the exact values here to make it clearer and changed the names to `LteRxPowerXXYY` to be RAT specific.",
+      "parentUuid": "d43d5ce8_97281765",
+      "revId": "4e51f9c36c3300743a220aa8afc1ef13e300030f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "17c4027e_ff014d41",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-10-04T20:59:00Z",
       "side": 1,
       "message": "Exact value, as in the dBm value?",
+      "revId": "4e51f9c36c3300743a220aa8afc1ef13e300030f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7669be13_58e89031",
+        "filename": "src/chromiumos/tast/remote/cellular/callbox/manager/obj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1541462
+      },
+      "writtenOn": "2022-10-04T22:59:00Z",
+      "side": 1,
+      "message": "Yes, so the power level can either be set by providing one of the pre-defined values `excellent` - `disconnected` or by giving an exact floating value. \n\nUpdated a comment to note units in dBM.",
+      "parentUuid": "17c4027e_ff014d41",
       "revId": "4e51f9c36c3300743a220aa8afc1ef13e300030f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
