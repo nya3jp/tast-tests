@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "10e82a82_1491f2d1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-10-04T16:31:38Z",
+      "side": 1,
+      "message": "So If you unmount and mount again after creating a fresh user, this test should pass. Let me see if we want this to be a bug tho",
+      "parentUuid": "eb709639_49ff6f5a",
+      "revId": "516af262b0c62c99295c64ea980184fb8230aa2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7825dfaa_45794983",
         "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/remove_password.go",
         "patchSetId": 1
