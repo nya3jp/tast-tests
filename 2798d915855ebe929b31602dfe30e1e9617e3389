@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35ced1b5_e675a099",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/flashrom_tester.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-10-04T05:38:31Z",
+      "side": 1,
+      "message": "nit: apSoftwareWriteProtectDisable. (capitalization) Ditto for below.",
+      "range": {
+        "startLine": 188,
+        "startChar": 5,
+        "endLine": 188,
+        "endChar": 34
+      },
+      "revId": "2798d915855ebe929b31602dfe30e1e9617e3389",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab271b93_8fc91c65",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/flashrom_tester.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-10-04T05:38:31Z",
+      "side": 1,
+      "message": "could you take conn to minimize the dependency? Ditto for below.",
+      "range": {
+        "startLine": 188,
+        "startChar": 56,
+        "endLine": 188,
+        "endChar": 74
+      },
+      "revId": "2798d915855ebe929b31602dfe30e1e9617e3389",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3442200_09741a12",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/flashrom_tester.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-10-04T05:38:31Z",
+      "side": 1,
+      "message": "could you document that path is the one on DUT, not on host?",
+      "range": {
+        "startLine": 193,
+        "startChar": 61,
+        "endLine": 193,
+        "endChar": 72
+      },
+      "revId": "2798d915855ebe929b31602dfe30e1e9617e3389",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
