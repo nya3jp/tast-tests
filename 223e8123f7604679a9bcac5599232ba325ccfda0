@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1928ca7_0d259957",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/check_signal_quality.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1441092
+      },
+      "writtenOn": "2022-10-04T22:28:03Z",
+      "side": 1,
+      "message": "nit: Do we need to log this?",
+      "revId": "223e8123f7604679a9bcac5599232ba325ccfda0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "564193e3_3fd0ea9e",
+        "filename": "src/chromiumos/tast/local/cellular/cellular_helper.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1256,
+      "author": {
+        "id": 1441092
+      },
+      "writtenOn": "2022-10-04T22:28:03Z",
+      "side": 1,
+      "message": "I\u0027ve recently added a new helper to connect to default service, https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3928374/4/src/chromiumos/tast/local/cellular/cellular_helper.go \nWhich should help you replace lines 1256 - 1283 with h.Connect(ctx)",
+      "revId": "223e8123f7604679a9bcac5599232ba325ccfda0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22d037b0_3fcfa620",
+        "filename": "src/chromiumos/tast/local/cellular/cellular_helper.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1265,
+      "author": {
+        "id": 1441092
+      },
+      "writtenOn": "2022-10-04T22:28:03Z",
+      "side": 1,
+      "message": "Do we need this here?",
+      "revId": "223e8123f7604679a9bcac5599232ba325ccfda0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ece78b6a_4a583dbb",
+        "filename": "src/chromiumos/tast/local/cellular/cellular_helper.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1297,
+      "author": {
+        "id": 1441092
+      },
+      "writtenOn": "2022-10-04T22:28:03Z",
+      "side": 1,
+      "message": "Any particular reason for polling once every 10 seconds, can we poll faster and exit earlier?",
+      "revId": "223e8123f7604679a9bcac5599232ba325ccfda0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
