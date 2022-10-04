@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6bbff93f_0298134e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-04T17:48:45Z",
+      "side": 1,
+      "message": "nit: You might as well watch the DUT and verify that the screenshots match what you saw.",
+      "range": {
+        "startLine": 19,
+        "startChar": 48,
+        "endLine": 20,
+        "endChar": 53
+      },
+      "revId": "d6ea2522b3f87f0289de88fddb8c7e8f18d9a3c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "efcc37e7_828ba5df",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/screenshot_recorder.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-04T17:48:45Z",
+      "side": 1,
+      "message": "nit: to avoid ending a sentence with a preposition, write \"where the screenshots will be saved\"",
+      "range": {
+        "startLine": 20,
+        "startChar": 47,
+        "endLine": 21,
+        "endChar": 19
+      },
+      "revId": "d6ea2522b3f87f0289de88fddb8c7e8f18d9a3c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "892ff52d_47767448",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/screenshot_recorder.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-04T17:48:45Z",
+      "side": 1,
+      "message": "Why the last error? I would have thought we would track the first error. Many functions don\u0027t even continue past the first error, so of course they return the first error. Here is an example of a function that continues past the first error, but even then, it finally returns the first error (not the last error):\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/chrome.go;drc\u003d69a41a16971beee6765d1950a5001d7a45c02f79;l\u003d378",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 14
+      },
+      "revId": "d6ea2522b3f87f0289de88fddb8c7e8f18d9a3c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d51148dd_e870dd95",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/screenshot_recorder.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-04T17:48:45Z",
+      "side": 1,
+      "message": "If you check this, then you probably should also check if `interval` is zero.",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 2
+      },
+      "revId": "d6ea2522b3f87f0289de88fddb8c7e8f18d9a3c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7ec2943_5b09956b",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/screenshot_recorder.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-04T17:48:45Z",
+      "side": 1,
+      "message": "nit: I would use `Mkdir` rather than `MkdirAll`.",
+      "range": {
+        "startLine": 89,
+        "startChar": 14,
+        "endLine": 89,
+        "endChar": 22
+      },
+      "revId": "d6ea2522b3f87f0289de88fddb8c7e8f18d9a3c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47eeb741_172fc047",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/screenshot_recorder.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-04T17:48:45Z",
+      "side": 1,
+      "message": "`\u0026`",
+      "range": {
+        "startLine": 93,
+        "startChar": 7,
+        "endLine": 93,
+        "endChar": 8
+      },
+      "revId": "d6ea2522b3f87f0289de88fddb8c7e8f18d9a3c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9225407_3d9ecd32",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/screenshot_recorder.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-04T17:48:45Z",
+      "side": 1,
+      "message": "`*`",
+      "range": {
+        "startLine": 102,
+        "startChar": 7,
+        "endLine": 102,
+        "endChar": 8
+      },
+      "revId": "d6ea2522b3f87f0289de88fddb8c7e8f18d9a3c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9990aedb_60834353",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/screenshot_recorder.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-04T17:48:45Z",
+      "side": 1,
+      "message": "`*`",
+      "range": {
+        "startLine": 148,
+        "startChar": 7,
+        "endLine": 148,
+        "endChar": 8
+      },
+      "revId": "d6ea2522b3f87f0289de88fddb8c7e8f18d9a3c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24ec3e8e_039c28a0",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/screenshot_recorder.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-04T17:48:45Z",
+      "side": 1,
+      "message": "`*`",
+      "range": {
+        "startLine": 191,
+        "startChar": 7,
+        "endLine": 191,
+        "endChar": 8
+      },
+      "revId": "d6ea2522b3f87f0289de88fddb8c7e8f18d9a3c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
