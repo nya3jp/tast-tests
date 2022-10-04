@@ -44,7 +44,7 @@ func init() {
 		Func:         SearchSections,
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Search with keywords and verify the related results from OS Settings",
-		Contacts:     []string{"tim.chang@cienet.com", "cienet-development@googlegroups.com, chromeos-sw-engprod@google.com"},
+		Contacts:     []string{"tim.chang@cienet.com", "cienet-development@googlegroups.com", "chromeos-sw-engprod@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "arc"},
 		Params: []testing.Param{
