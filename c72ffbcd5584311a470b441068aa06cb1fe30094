@@ -33,6 +33,24 @@
       "message": "Since the entire test is disabled, no need to disable individual test cases.",
       "revId": "c72ffbcd5584311a470b441068aa06cb1fe30094",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2eac98e7_d6360a9e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/mouse_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2022-10-04T16:10:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d052b8b_822bf790",
+      "revId": "c72ffbcd5584311a470b441068aa06cb1fe30094",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
