@@ -207,7 +207,7 @@ func init() {
 				s.Log("Setting fake-variations-channel to ", val)
 				channel = val
 			}
-			return NewConfig(Mode(lacros.LacrosPrimary), ChromeOptions(
+			return NewConfig(ChromeOptions(
 				chrome.LacrosExtraArgs("--fake-variations-channel="+channel),
 				chrome.LacrosExtraArgs("--variations-server-url=https://clients4.google.com/chrome-variations/seed"))).Opts()
 		}),
