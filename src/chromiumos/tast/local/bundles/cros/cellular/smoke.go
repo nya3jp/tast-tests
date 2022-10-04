@@ -21,7 +21,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: ShillCellularSmoke,
+		Func: Smoke,
 		Desc: "Verifies that traffic can be sent over the Cellular network",
 		Contacts: []string{
 			"stevenjb@google.com",
@@ -29,11 +29,11 @@ func init() {
 		},
 		Attr:    []string{"group:cellular", "cellular_unstable", "cellular_sim_active"},
 		Fixture: "cellular",
-		Timeout: 1 * time.Minute,
+		Timeout: 5 * time.Minute,
 	})
 }
 
-func ShillCellularSmoke(ctx context.Context, s *testing.State) {
+func Smoke(ctx context.Context, s *testing.State) {
 	if _, err := modemmanager.NewModemWithSim(ctx); err != nil {
 		s.Fatal("Could not find MM dbus object with a valid sim: ", err)
 	}
@@ -42,9 +42,8 @@ func ShillCellularSmoke(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to create cellular.Helper: ", err)
 	}
-	// Enable and get service to set autoconnect based on test parameters.
-	if _, err := helper.Enable(ctx); err != nil {
-		s.Fatal("Failed to enable modem")
+	if _, err := helper.Connect(ctx); err != nil {
+		s.Fatal("Failed to connect to cellular service: ", err)
 	}
 
 	verifyNetworkConnectivity := func(ctx context.Context) error {
