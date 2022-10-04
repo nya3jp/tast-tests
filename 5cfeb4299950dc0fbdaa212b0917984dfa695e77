@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce9a2adb_cbba2ff8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/traffic_counters.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-10-04T03:05:55Z",
+      "side": 1,
+      "message": "just curious, do we have corresponding fixture for crostini? I think we prefer fixture to pre now.",
+      "range": {
+        "startLine": 63,
+        "startChar": 3,
+        "endLine": 63,
+        "endChar": 48
+      },
+      "revId": "5cfeb4299950dc0fbdaa212b0917984dfa695e77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9101483b_cb78915a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/traffic_counters.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-10-04T03:05:55Z",
+      "side": 1,
+      "message": "update this comment now that we also don\u0027t verify IPv6 for crostini?",
+      "range": {
+        "startLine": 143,
+        "startChar": 1,
+        "endLine": 143,
+        "endChar": 37
+      },
+      "revId": "5cfeb4299950dc0fbdaa212b0917984dfa695e77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e03b732_2692ad99",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/traffic_counters.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-10-04T03:05:55Z",
+      "side": 1,
+      "message": "Just curious, why not also use this http server in other tests?",
+      "range": {
+        "startLine": 291,
+        "startChar": 1,
+        "endLine": 291,
+        "endChar": 2
+      },
+      "revId": "5cfeb4299950dc0fbdaa212b0917984dfa695e77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e90306f2_43d66678",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/traffic_counters.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-10-04T03:05:55Z",
+      "side": 1,
+      "message": "Does it make sense to just use the ip addr here?\nThis looks like a real website so it might be confuse the reader of this code.\nAnd it could be better if we can compelely avoid sending traffic to the real one by chance (e.g., some bug in the test code).",
+      "range": {
+        "startLine": 314,
+        "startChar": 7,
+        "endLine": 314,
+        "endChar": 25
+      },
+      "revId": "5cfeb4299950dc0fbdaa212b0917984dfa695e77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9034cbbc_3becfd90",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/traffic_counters.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-10-04T03:05:55Z",
+      "side": 1,
+      "message": "why do we need to do this explicitly instead of relying on the deferred cleanup?",
+      "range": {
+        "startLine": 323,
+        "startChar": 3,
+        "endLine": 324,
+        "endChar": 19
+      },
+      "revId": "5cfeb4299950dc0fbdaa212b0917984dfa695e77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
