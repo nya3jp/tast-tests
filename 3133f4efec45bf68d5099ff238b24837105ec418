@@ -39,6 +39,30 @@
       },
       "revId": "3133f4efec45bf68d5099ff238b24837105ec418",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe6168a4_34ad0aab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/traffic_counters.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2022-10-04T05:09:04Z",
+      "side": 1,
+      "message": "I think it\u0027s fine as a log. It will provide context if somehow this causes the test to fail.",
+      "parentUuid": "061c140d_fbf405f0",
+      "range": {
+        "startLine": 280,
+        "startChar": 3,
+        "endLine": 282,
+        "endChar": 4
+      },
+      "revId": "3133f4efec45bf68d5099ff238b24837105ec418",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
