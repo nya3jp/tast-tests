@@ -50,6 +50,24 @@
       "message": "This looks like it belongs in a separate patch. Also maybe this is intended? Not really sure, but let\u0027s move this out.",
       "revId": "8723d6df311ca24398aa300302b112d823d7cb34",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd0824c3_77f3db3a",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-10-04T11:28:59Z",
+      "side": 1,
+      "message": "This mimics behaviour of attenuator checks. In some cases (some cloudtop instances IIRC??) .cros is not in the search domain, we need to check it as well as purely auto-generated name. I can remove it if you insist.",
+      "parentUuid": "e4244404_2942ab17",
+      "revId": "8723d6df311ca24398aa300302b112d823d7cb34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
