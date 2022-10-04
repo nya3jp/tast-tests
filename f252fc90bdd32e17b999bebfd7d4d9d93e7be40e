@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cdc39203_dfd99af1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/fixtures/services_on_boot_fixt.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1512777
+      },
+      "writtenOn": "2022-10-04T16:43:56Z",
+      "side": 1,
+      "message": "It\u0027s a check that `servicesOnBootFixt` implements the `testing.FixtureImpl` interface.\nhttps://go.dev/doc/faq#guarantee_satisfies_interface",
+      "parentUuid": "527342f9_7f254d0e",
+      "revId": "f252fc90bdd32e17b999bebfd7d4d9d93e7be40e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ef0efdd4_bf5fdbef",
@@ -79,6 +97,30 @@
       "side": 1,
       "message": "Sure. Could have a comment for that?",
       "parentUuid": "881c1849_a407ff46",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 2
+      },
+      "revId": "f252fc90bdd32e17b999bebfd7d4d9d93e7be40e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb20ffa3_2632262c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/fixtures/services_on_boot_fixt.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1512777
+      },
+      "writtenOn": "2022-10-04T16:43:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4f498eca_68df8b36",
       "range": {
         "startLine": 58,
         "startChar": 0,
@@ -197,6 +239,30 @@
       "side": 1,
       "message": "I think a reboot is still needed (see above), but the suggestion of croslog and remote fixture + local test sounds interesting.",
       "parentUuid": "002dcd7d_35becf1d",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 86,
+        "endChar": 33
+      },
+      "revId": "f252fc90bdd32e17b999bebfd7d4d9d93e7be40e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d664ca4_1f33d972",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/fixtures/services_on_boot_fixt.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1512777
+      },
+      "writtenOn": "2022-10-04T16:43:56Z",
+      "side": 1,
+      "message": "Switched to croslog.",
+      "parentUuid": "5054b17a_ab346ded",
       "range": {
         "startLine": 84,
         "startChar": 0,
@@ -326,6 +392,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b9bb8bc_8e0f32bb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/services_on_boot.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1512777
+      },
+      "writtenOn": "2022-10-04T16:43:56Z",
+      "side": 1,
+      "message": "Added comment to explain why a fixture is used this way.",
+      "parentUuid": "386b305f_ac2d2133",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 44
+      },
+      "revId": "f252fc90bdd32e17b999bebfd7d4d9d93e7be40e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d058194d_ed57f71b",
@@ -387,6 +477,30 @@
       "side": 1,
       "message": "Simple example: this already caused me to pay attention to this one:\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform2/+/3928609\n\nHere\u0027s another older one, with some real impacts: https://b.corp.google.com/issues/240492701\n\nThere\u0027s a constant stream of new services like this (or new buggy shell logic added to old ones), and I think it would be good to pay attention to them. There are real bugs hiding in many of those.\n\nWe\u0027d likely need an allow-list for some things (e.g., you already noticed \u0027failsafe-delay\u0027), but I suspect we could get it stable, after which it should provide long-term value.",
       "parentUuid": "c5aa8af4_75df1d08",
+      "range": {
+        "startLine": 27,
+        "startChar": 2,
+        "endLine": 27,
+        "endChar": 8
+      },
+      "revId": "f252fc90bdd32e17b999bebfd7d4d9d93e7be40e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f12596e3_9a3fa206",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/services_on_boot.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1512777
+      },
+      "writtenOn": "2022-10-04T16:43:56Z",
+      "side": 1,
+      "message": "Added the `.all` variant.",
+      "parentUuid": "bd76da27_1228de36",
       "range": {
         "startLine": 27,
         "startChar": 2,

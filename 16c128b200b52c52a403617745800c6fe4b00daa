@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "775abbbc_ddfe612e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1512777
+      },
+      "writtenOn": "2022-10-04T16:43:56Z",
+      "side": 1,
+      "message": "Hi reviewers, thanks for the feedback. Here\u0027s the summary of changes in PS5:\n- The fixture does not collect the upstart logs anymore, and only does the reboot+wait+sleep. Instead we collect and parse them in each parameterized test.\n- The test itself is now a local test.\n- Use `croslog` instead of `dmesg` to get logs.\n- Moved `src/chromiumos/tast/remote/bundles/cros/platform/fixtures/services_on_boot_fixt.go` one level up, because otherwise tast attempts to run it as a local fixture (not 100% sure, I might have messed something else up instead).",
+      "revId": "16c128b200b52c52a403617745800c6fe4b00daa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
