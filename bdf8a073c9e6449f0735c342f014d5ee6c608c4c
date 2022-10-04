@@ -209,6 +209,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "27830bc9_7ebb2ac9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/intel/bt_connection_stability_with_wifi.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-10-04T23:52:51Z",
+      "side": 1,
+      "message": "Yes, I don\u0027t think it test WIFI at all. The file is downloaded before the test starts.\n\nI have not problem with wget. I am having problem downldoading from an external website. Since the author is from Intel, I guess the author can use either an Intel site or Google site. Thanks.",
+      "parentUuid": "a829fc5a_9ea78d44",
+      "revId": "bdf8a073c9e6449f0735c342f014d5ee6c608c4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "693592c9_1190ef7c",
         "filename": "src/chromiumos/tast/local/bundles/cros/intel/bt_connection_stability_with_wifi.go",
         "patchSetId": 1
