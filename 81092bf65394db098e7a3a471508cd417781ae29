@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d0c145c_032847cc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/multivm/memory_allocation_canary_health_perf.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2022-10-04T02:03:24Z",
+      "side": 1,
+      "message": "I think as long as the Desc is reasonable, it should be OK.",
+      "parentUuid": "b060a83b_e70e1f27",
+      "revId": "81092bf65394db098e7a3a471508cd417781ae29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "57c3f752_35224ab4",
@@ -119,6 +137,24 @@
       "side": 1,
       "message": "Really, after I ran the test script once, at least `prlimit --pid $PID --nofile`\u0027s output for the next run did not change. I think the value set by `prlimit` is reset when the process is killed.",
       "parentUuid": "d07ba222_80524e5f",
+      "revId": "81092bf65394db098e7a3a471508cd417781ae29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1deeef67_a4483e75",
+        "filename": "src/chromiumos/tast/local/bundles/cros/multivm/memory_allocation_canary_health_perf.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2022-10-04T02:03:24Z",
+      "side": 1,
+      "message": "But I think that\u0027s the Tast process, which executes many tests in a single test run.",
+      "parentUuid": "551bf5ee_1612e1f6",
       "revId": "81092bf65394db098e7a3a471508cd417781ae29",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -265,6 +301,30 @@
       "side": 1,
       "message": "They are used in the main test file. It gets the variant name (like `.app_host`) and store corresponding `CanaryType` value. I think it is reasonable to have the type definition in canary.go even if the type itself is not used in the other part of the file. How do you think?",
       "parentUuid": "3b01bf38_c73780f8",
+      "range": {
+        "startLine": 17,
+        "startChar": 1,
+        "endLine": 26,
+        "endChar": 1
+      },
+      "revId": "81092bf65394db098e7a3a471508cd417781ae29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d02a139_32ca6875",
+        "filename": "src/chromiumos/tast/local/memory/memoryuser/canary.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2022-10-04T02:03:24Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2b36b6fe_7db31400",
       "range": {
         "startLine": 17,
         "startChar": 1,
@@ -481,6 +541,24 @@
       "side": 1,
       "message": "`cdputil` is in the internal tast repository (\"chromiumos/tast/local/chrome/internal/cdputil\") so this module does not have access (I do not know why \"chromiumos/tast/local/chrome\" can access it though...)",
       "parentUuid": "e1ce7834_759c186b",
+      "revId": "81092bf65394db098e7a3a471508cd417781ae29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "979cdd4c_7d4cac60",
+        "filename": "src/chromiumos/tast/local/memory/memoryuser/memory_stress_task.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2022-10-04T02:03:24Z",
+      "side": 1,
+      "message": "Ah, probably some specific rule that only certain modules are allowed to access things.",
+      "parentUuid": "555af24f_75db0b81",
       "revId": "81092bf65394db098e7a3a471508cd417781ae29",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
