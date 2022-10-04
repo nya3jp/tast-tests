@@ -46,8 +46,14 @@ type impl struct {
 
 func (i *impl) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
 	d := s.DUT()
+
+	// Attempt to connect to those DUTs that aren't already connected.
 	if !d.Connected(ctx) {
-		s.Fatal("Failed DUT connection check at the beginning")
+		if err := testing.Poll(ctx, func(ctx context.Context) error {
+			return d.Connect(ctx)
+		}, &testing.PollOptions{Timeout: 30 * time.Second}); err != nil {
+			s.Fatal("Failed to connect to DUT: ", err)
+		}
 	}
 
 	pxy, err := servo.NewProxy(ctx, s.RequiredVar("servo"), d.KeyFile(), d.KeyDir())
