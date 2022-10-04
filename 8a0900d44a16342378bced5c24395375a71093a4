@@ -16,6 +16,24 @@
       "message": "Hey ... This landed as part of https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3928374 yesterday",
       "revId": "8a0900d44a16342378bced5c24395375a71093a4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "310573d3_4fb4c7a6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1425417
+      },
+      "writtenOn": "2022-10-04T22:52:25Z",
+      "side": 1,
+      "message": "Thanks. I didn\u0027t see it in my repo and didn\u0027t see it in the last tast run, so ended up creating the patch.",
+      "parentUuid": "4b453a40_0991f4ee",
+      "revId": "8a0900d44a16342378bced5c24395375a71093a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
