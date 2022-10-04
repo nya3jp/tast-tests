@@ -42,40 +42,6 @@ const (
 
 func init() {
 	testing.AddFixture(&testing.Fixture{
-		Name: "chromeLoggedInWithBluetoothRevampEnabled",
-		Desc: "Logs into a user session with the BluetoothRevamp feature flag enabled",
-		Contacts: []string{
-			"chadduffin@chromium.org",
-			"cros-connectivity@google.com",
-		},
-		Impl: newFixture(&fixtureFeatures{
-			EnableFeatures:  []string{"BluetoothRevamp"},
-			DisableFeatures: []string{},
-			NoLogin:         false,
-		}),
-		SetUpTimeout:    setUpTimeout,
-		ResetTimeout:    resetTimeout,
-		TearDownTimeout: tearDownTimeout,
-		ServiceDeps:     []string{serviceDepBTTestService},
-	})
-	testing.AddFixture(&testing.Fixture{
-		Name: "chromeLoggedInWithBluetoothRevampDisabled",
-		Desc: "Logs into a user session with the BluetoothRevamp feature flag disabled",
-		Contacts: []string{
-			"chadduffin@chromium.org",
-			"cros-connectivity@google.com",
-		},
-		Impl: newFixture(&fixtureFeatures{
-			EnableFeatures:  []string{},
-			DisableFeatures: []string{"BluetoothRevamp"},
-			NoLogin:         false,
-		}),
-		SetUpTimeout:    setUpTimeout,
-		ResetTimeout:    resetTimeout,
-		TearDownTimeout: tearDownTimeout,
-		ServiceDeps:     []string{serviceDepBTTestService},
-	})
-	testing.AddFixture(&testing.Fixture{
 		Name: "chromeLoggedInWithBluetoothEnabled",
 		Desc: "Logs into a user session and enables Bluetooth during set up and disables it during tear down",
 		Contacts: []string{
@@ -84,7 +50,7 @@ func init() {
 		},
 		Impl: newFixture(&fixtureFeatures{
 			BluetoothAdapterEnabled: true,
-			EnableFeatures:          []string{"BluetoothRevamp"},
+			EnableFeatures:          []string{},
 			DisableFeatures:         []string{},
 			NoLogin:                 false,
 		}),
@@ -103,7 +69,7 @@ func init() {
 		Impl: newFixture(&fixtureFeatures{
 			BTPeerCount:             1,
 			BluetoothAdapterEnabled: true,
-			EnableFeatures:          []string{"BluetoothRevamp"},
+			EnableFeatures:          []string{},
 			DisableFeatures:         []string{},
 			NoLogin:                 false,
 		}),
@@ -123,7 +89,7 @@ func init() {
 		Impl: newFixture(&fixtureFeatures{
 			BTPeerCount:             2,
 			BluetoothAdapterEnabled: true,
-			EnableFeatures:          []string{"BluetoothRevamp"},
+			EnableFeatures:          []string{},
 			DisableFeatures:         []string{},
 			NoLogin:                 false,
 		}),
@@ -143,7 +109,7 @@ func init() {
 		Impl: newFixture(&fixtureFeatures{
 			BTPeerCount:             3,
 			BluetoothAdapterEnabled: true,
-			EnableFeatures:          []string{"BluetoothRevamp"},
+			EnableFeatures:          []string{},
 			DisableFeatures:         []string{},
 			NoLogin:                 false,
 		}),
@@ -163,7 +129,7 @@ func init() {
 		Impl: newFixture(&fixtureFeatures{
 			BTPeerCount:             4,
 			BluetoothAdapterEnabled: true,
-			EnableFeatures:          []string{"BluetoothRevamp"},
+			EnableFeatures:          []string{},
 			DisableFeatures:         []string{},
 			NoLogin:                 false,
 		}),
@@ -183,7 +149,7 @@ func init() {
 		Impl: newFixture(&fixtureFeatures{
 			BTPeerCount:             1,
 			BluetoothAdapterEnabled: true,
-			EnableFeatures:          []string{"BluetoothRevamp", "OobeHidDetectionRevamp"},
+			EnableFeatures:          []string{"OobeHidDetectionRevamp"},
 			DisableFeatures:         []string{},
 			NoLogin:                 true,
 		}),

@@ -29,7 +29,7 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{
 			Name:    "floss_disabled",
-			Fixture: "chromeLoggedInWithBluetoothEnabled",
+			Fixture: "bluetoothEnabledWithBlueZ",
 		}},
 	})
 }
