@@ -145,6 +145,30 @@
       },
       "revId": "de05b286c45bd7593a2dbc6aa08828a4c1421ea3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca380941_158f7a32",
+        "filename": "src/chromiumos/tast/local/quickanswers/quickanswers.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-10-04T00:24:44Z",
+      "side": 1,
+      "message": "Thanks for the clarification. I don\u0027t have further questions.",
+      "parentUuid": "569a081f_6964666f",
+      "range": {
+        "startLine": 19,
+        "startChar": 45,
+        "endLine": 19,
+        "endChar": 75
+      },
+      "revId": "de05b286c45bd7593a2dbc6aa08828a4c1421ea3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
