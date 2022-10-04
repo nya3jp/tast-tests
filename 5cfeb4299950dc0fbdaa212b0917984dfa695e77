@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9c75def_1ba78c85",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/traffic_counters.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2022-10-04T03:52:20Z",
+      "side": 1,
+      "message": "oh ok thanks. never used them - was just copying the dnsproxy tast",
+      "parentUuid": "ce9a2adb_cbba2ff8",
+      "range": {
+        "startLine": 63,
+        "startChar": 3,
+        "endLine": 63,
+        "endChar": 48
+      },
+      "revId": "5cfeb4299950dc0fbdaa212b0917984dfa695e77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9101483b_cb78915a",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-10-04T03:05:55Z",
       "side": 1,
       "message": "update this comment now that we also don\u0027t verify IPv6 for crostini?",
+      "range": {
+        "startLine": 143,
+        "startChar": 1,
+        "endLine": 143,
+        "endChar": 37
+      },
+      "revId": "5cfeb4299950dc0fbdaa212b0917984dfa695e77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3649fb5_e2729923",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/traffic_counters.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2022-10-04T03:52:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9101483b_cb78915a",
       "range": {
         "startLine": 143,
         "startChar": 1,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "88c93365_3a8ba284",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/traffic_counters.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2022-10-04T03:52:20Z",
+      "side": 1,
+      "message": "Originally I tried but couldn\u0027t get it working because of DNS issues for IPv6. Using a raw IP address didn\u0027t work as I recall.",
+      "parentUuid": "4e03b732_2692ad99",
+      "range": {
+        "startLine": 291,
+        "startChar": 1,
+        "endLine": 291,
+        "endChar": 2
+      },
+      "revId": "5cfeb4299950dc0fbdaa212b0917984dfa695e77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e90306f2_43d66678",
@@ -93,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "262ff85e_34878c34",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/traffic_counters.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2022-10-04T03:52:20Z",
+      "side": 1,
+      "message": "This doesn\u0027t work - curl fails with network unreachable.\nChanged to a nonsense URL.",
+      "parentUuid": "e90306f2_43d66678",
+      "range": {
+        "startLine": 314,
+        "startChar": 7,
+        "endLine": 314,
+        "endChar": 25
+      },
+      "revId": "5cfeb4299950dc0fbdaa212b0917984dfa695e77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9034cbbc_3becfd90",
@@ -106,6 +202,30 @@
       "writtenOn": "2022-10-04T03:05:55Z",
       "side": 1,
       "message": "why do we need to do this explicitly instead of relying on the deferred cleanup?",
+      "range": {
+        "startLine": 323,
+        "startChar": 3,
+        "endLine": 324,
+        "endChar": 19
+      },
+      "revId": "5cfeb4299950dc0fbdaa212b0917984dfa695e77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "df5abd12_fb04b0f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/traffic_counters.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2022-10-04T03:52:20Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9034cbbc_3becfd90",
       "range": {
         "startLine": 323,
         "startChar": 3,
