@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e64e58cf_538d9909",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-10-04T05:01:47Z",
+      "side": 1,
+      "message": "(don\u0027t have to be in this patch) do you plan to add test for the (crostini/arc, vpn) case?",
+      "revId": "92f6c90fac1fb54e67805223d2ac855ae42bd9ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "271f939b_b6d22202",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/traffic_counters.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-10-04T05:01:47Z",
+      "side": 1,
+      "message": "just curious, do you plan to combine different arguments? Why not just an enum?",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 0
+      },
+      "revId": "92f6c90fac1fb54e67805223d2ac855ae42bd9ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b12addc_d1764ca2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/traffic_counters.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-10-04T05:01:47Z",
+      "side": 1,
+      "message": "nit: maybe make this as a constant so that can be shared with the next test.",
+      "range": {
+        "startLine": 321,
+        "startChar": 6,
+        "endLine": 321,
+        "endChar": 20
+      },
+      "revId": "92f6c90fac1fb54e67805223d2ac855ae42bd9ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
