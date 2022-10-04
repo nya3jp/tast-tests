@@ -39,6 +39,7 @@ const (
 	ClamshellNonVKWithDiacriticsOnPKLongpress = "clamshellWithDiacriticsOnPKLongpress"
 	ClamshellNonVK                            = "clamshellNonVK"
 	ClamshellNonVKInGuest                     = "clamshellNonVKInGuest"
+	ClamshellNonVKRestart                     = "clamshellNonVKRestart"
 	ClamshellNonVKWithMultiwordSuggest        = "clamshellNonVKWithMultiwordSuggest"
 	TabletVK                                  = "tabletVK"
 	TabletVKRestart                           = "tabletVKRestart"
@@ -50,6 +51,7 @@ const (
 	LacrosClamshellVK                               = "lacrosClamshellVK"
 	LacrosClamshellNonVK                            = "lacrosClamshellNonVK"
 	LacrosClamshellNonVKInGuest                     = "lacrosClamshellNonVKInGuest"
+	LacrosClamshellNonVKRestart                     = "lacrosClamshellNonVKRestart"
 	LacrosClamshellNonVKWithMultiwordSuggest        = "lacrosClamshellNonVKWithMultiwordSuggest"
 	LacrosClamshellNonVKWithDiacriticsOnPKLongpress = "lacrosClamshellWithDiacriticsOnPKLongpress"
 	LacrosTabletVK                                  = "lacrosTabletVK"
@@ -128,6 +130,21 @@ func init() {
 			"essential-inputs-team@google.com",
 		},
 		Impl:            inputsFixture(clamshellMode, false, false, browser.TypeAsh),
+		SetUpTimeout:    chrome.LoginTimeout,
+		PreTestTimeout:  preTestTimeout,
+		PostTestTimeout: postTestTimeout,
+		ResetTimeout:    resetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+	})
+	testing.AddFixture(&testing.Fixture{
+		Name: ClamshellNonVKRestart,
+		Desc: "Clamshell mode with VK disabled, restarting chrome session for every test",
+		Contacts: []string{
+			"alvinjia@google.com",
+			"shengjun@chromium.org",
+			"essential-inputs-team@google.com",
+		},
+		Impl:            inputsFixture(clamshellMode, false, true, browser.TypeAsh),
 		SetUpTimeout:    chrome.LoginTimeout,
 		PreTestTimeout:  preTestTimeout,
 		PostTestTimeout: postTestTimeout,
@@ -293,6 +310,21 @@ func init() {
 			"essential-inputs-team@google.com",
 		},
 		Impl:            inputsFixture(clamshellMode, false, false, browser.TypeLacros),
+		SetUpTimeout:    chrome.LoginTimeout,
+		PreTestTimeout:  preTestTimeout,
+		PostTestTimeout: postTestTimeout,
+		ResetTimeout:    resetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+	})
+	testing.AddFixture(&testing.Fixture{
+		Name: LacrosClamshellNonVKRestart,
+		Desc: "Lacros variant: clamshell mode with VK disabled, restarting chrome session for every test",
+		Contacts: []string{
+			"alvinjia@google.com",
+			"shengjun@chromium.org",
+			"essential-inputs-team@google.com",
+		},
+		Impl:            inputsFixture(clamshellMode, false, true, browser.TypeLacros),
 		SetUpTimeout:    chrome.LoginTimeout,
 		PreTestTimeout:  preTestTimeout,
 		PostTestTimeout: postTestTimeout,
