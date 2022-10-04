@@ -16,18 +16,16 @@ service BiosService {
   rpc GetGBBFlags (google.protobuf.Empty) returns (GBBFlagsState) {}
   // ClearAndSetGBBFlags modifies the specified flags, leaving the rest unchanged.
   rpc ClearAndSetGBBFlags (GBBFlagsState) returns (google.protobuf.Empty) {}
-  // EnableAPSoftwareWriteProtect enables the AP software write protect.
-  rpc EnableAPSoftwareWriteProtect (google.protobuf.Empty) returns (google.protobuf.Empty) {}
-  // DisableAPSoftwareWriteProtect disables the AP software write protect.
-  rpc DisableAPSoftwareWriteProtect (google.protobuf.Empty) returns (google.protobuf.Empty) {}
+  // SetAPSoftwareWriteProtect sets the software AP write protect.
+  rpc SetAPSoftwareWriteProtect (WPRequest) returns (google.protobuf.Empty) {}
   // CorruptFWSection writes garbage bytes to the entire section specified.
-  rpc CorruptFWSection (CorruptSection) returns (google.protobuf.Empty) {}
+  rpc CorruptFWSection (FWSectionInfo) returns (FWSectionInfo) {}
   // BackupImageSection backs up the current fw region locally and returns its path.
-  rpc BackupImageSection (FWBackUpSection) returns (FWBackUpInfo) {}
+  rpc BackupImageSection (FWSectionInfo) returns (FWSectionInfo) {}
   // RestoreImageSection restores the fw region from path.
-  rpc RestoreImageSection (FWBackUpInfo) returns (google.protobuf.Empty) {}
+  rpc RestoreImageSection (FWSectionInfo) returns (google.protobuf.Empty) {}
   // WriteImageFromMultiSectionFile writes the provided multi section file in the specified section.
-  rpc WriteImageFromMultiSectionFile (FWBackUpInfo) returns (google.protobuf.Empty) {}
+  rpc WriteImageFromMultiSectionFile (FWSectionInfo) returns (google.protobuf.Empty) {}
   // ChromeosFirmwareUpdate will perform the firmware update in the desired mode.
   rpc ChromeosFirmwareUpdate (FirmwareUpdateModeRequest) returns (google.protobuf.Empty) {}
 }
@@ -59,7 +57,7 @@ enum GBBFlag {
   // Disable shutdown on lid closed
   DISABLE_LID_SHUTDOWN = 12;
   FORCE_DEV_BOOT_FASTBOOT_FULL_CAP = 13 [deprecated = true];
-  // Recovery mode always assumes manual recovery, even if EC_IN_RW=1 
+  // Recovery mode always assumes manual recovery, even if EC_IN_RW=1
   FORCE_MANUAL_RECOVERY = 14;
   // Disable FWMP
   DISABLE_FWMP = 15;
@@ -69,18 +67,19 @@ enum GBBFlag {
 
 // Programmers enum for flashrom programmers
 enum Programmer {
-  BIOSProgrammer = 0;
+  PROGRAMMER_UNDEFINED = 0;
   ECProgrammer = 1;
+  BIOSProgrammer = 2;
 }
 
 // ImageSections enum for fw ImageSections
 enum ImageSection {
-  BOOTSTUBImageSection = 0;
+  EmptyImageSection = 0;
   COREBOOTImageSection = 1;
   GBBImageSection = 2;
   ECRWImageSection = 3;
   ECRWBImageSection = 4;
-  EmptyImageSection = 5;
+  reserved 5;
   ROVPDImageSection = 6;
   RWVPDImageSection = 7;
   RECOVERYMRCCACHEImageSection = 8;
@@ -91,6 +90,8 @@ enum ImageSection {
   FWBodyBImageSection = 13;
   APRWAImageSection = 14;
   APRWBImageSection = 15;
+  APWPROImageSection = 16;
+  BOOTSTUBImageSection = 17;
 }
 
 enum UpdateMode {
@@ -103,23 +104,13 @@ message GBBFlagsState {
   repeated GBBFlag Set = 2;
 }
 
-// FWBackUpInfo represents the path, programmer, and section of image backup.
-message FWBackUpInfo {
+// FWSectionInfo represents the programmer, and section of a firmware section.
+// The Path in a request refers to an optional temp dir to save an image to.
+// The Path in a response refers to the exact location of the image file.
+message FWSectionInfo {
   string Path = 1;
   ImageSection Section = 2;
   Programmer Programmer = 3;
-}
-
-// FWBackUpSection represents the string containing the image section to back up and the programmer to use.
-message FWBackUpSection {
-  ImageSection Section = 1;
-  Programmer Programmer = 2;
-}
-
-// CorruptSection selects the section to corrupt.
-message CorruptSection {
-  ImageSection Section = 1;
-  Programmer Programmer = 2;
 }
 
 // FirmwareUpdateModeRequest represents the string containing the mode and options to performe the update.
@@ -127,3 +118,15 @@ message FirmwareUpdateModeRequest {
   UpdateMode Mode = 1;
   string Options = 2;
 }
+
+// WPRequest provides args for enabling/disabling software write protect.
+message WPRequest {
+  bool enable = 1;
+  message Range { // Skip instantiating this message to use default values.
+    int64 start = 1;
+    int64 length = 2;
+  }
+  Range range = 2;
+  ImageSection section = 3;  // Don't set to use default value.
+}
+
