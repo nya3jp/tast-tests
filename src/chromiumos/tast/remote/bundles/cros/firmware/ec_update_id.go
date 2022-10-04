@@ -87,7 +87,7 @@ func ECUpdateID(ctx context.Context, s *testing.State) {
 		s.Fatal("Requiring BiosServiceClient: ", err)
 	}
 	s.Log("Back up EC_RW firmware")
-	ecrwPath, err := h.BiosServiceClient.BackupImageSection(ctx, &pb.FWBackUpSection{Section: pb.ImageSection_ECRWImageSection, Programmer: pb.Programmer_ECProgrammer})
+	ecrwPath, err := h.BiosServiceClient.BackupImageSection(ctx, &pb.FWSectionInfo{Section: pb.ImageSection_ECRWImageSection, Programmer: pb.Programmer_ECProgrammer})
 	if err != nil {
 		s.Fatal("Failed to backup current EC_RW region: ", err)
 	}
@@ -100,7 +100,7 @@ func ECUpdateID(ctx context.Context, s *testing.State) {
 	}(cleanupContext)
 
 	s.Log("Back up EC_RW_B firmware")
-	ecrwbPath, err := h.BiosServiceClient.BackupImageSection(ctx, &pb.FWBackUpSection{Section: pb.ImageSection_ECRWBImageSection, Programmer: pb.Programmer_ECProgrammer})
+	ecrwbPath, err := h.BiosServiceClient.BackupImageSection(ctx, &pb.FWSectionInfo{Section: pb.ImageSection_ECRWBImageSection, Programmer: pb.Programmer_ECProgrammer})
 	if err != nil {
 		s.Fatal("Failed to backup current EC_RW_B region: ", err)
 	}

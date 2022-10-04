@@ -10,8 +10,6 @@ import (
 	"strings"
 	"time"
 
-	"github.com/golang/protobuf/ptypes/empty"
-
 	"chromiumos/tast/common/servo"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
@@ -208,12 +206,13 @@ func BootBatteryCutoff(ctx context.Context, s *testing.State) {
 		}
 		if *apSoftwareWPEnabled {
 			s.Log("Disabling ap software write protect")
-			if err := h.RequireRPCClient(ctx); err != nil {
-				s.Fatal("Failed to connect to the RPC service on the DUT: ", err)
+			if err := h.RequireBiosServiceClient(ctx); err != nil {
+				s.Fatal("Failed to connect to the bios service on the DUT: ", err)
 			}
-			bios := pb.NewBiosServiceClient(h.RPCClient.Conn)
-			if _, err := bios.DisableAPSoftwareWriteProtect(ctx, &empty.Empty{}); err != nil {
-				s.Fatal("Failed to disable AP write protect: ", err)
+			if _, err := h.BiosServiceClient.SetAPSoftwareWriteProtect(ctx, &pb.WPRequest{
+				Enable: false,
+			}); err != nil {
+				s.Fatal("Failed to disable AP write protection: ", err)
 			}
 		}
 		if *ecSoftwareWPEnabled {
@@ -241,7 +240,9 @@ func BootBatteryCutoff(ctx context.Context, s *testing.State) {
 				ecSoftwareWPEnabled = true
 			case "host":
 				bs := pb.NewBiosServiceClient(h.RPCClient.Conn)
-				if _, err := bs.EnableAPSoftwareWriteProtect(ctx, &empty.Empty{}); err != nil {
+				if _, err := bs.SetAPSoftwareWriteProtect(ctx, &pb.WPRequest{
+					Enable: true,
+				}); err != nil {
 					s.Fatal("Failed to enable AP write protection: ", err)
 				}
 				apSoftwareWPEnabled = true

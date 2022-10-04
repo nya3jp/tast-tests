@@ -51,7 +51,7 @@ func FWCorruptRecoveryCache(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Backing up current RECOVERY_MRC_CACHE section for safety")
-	rmcPath, err := h.BiosServiceClient.BackupImageSection(ctx, &pb.FWBackUpSection{
+	rmcPath, err := h.BiosServiceClient.BackupImageSection(ctx, &pb.FWSectionInfo{
 		Programmer: pb.Programmer_BIOSProgrammer,
 		Section:    pb.ImageSection_RECOVERYMRCCACHEImageSection,
 	})
@@ -97,7 +97,7 @@ func FWCorruptRecoveryCache(ctx context.Context, s *testing.State) {
 
 	s.Log("Corrupting RECOVERY_MRC_CACHE section")
 	if _, err := h.BiosServiceClient.CorruptFWSection(ctx,
-		&pb.CorruptSection{
+		&pb.FWSectionInfo{
 			Section:    pb.ImageSection_RECOVERYMRCCACHEImageSection,
 			Programmer: pb.Programmer_BIOSProgrammer,
 		}); err != nil {
