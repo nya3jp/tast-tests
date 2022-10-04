@@ -89,6 +89,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e474dbf_be998539",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/view_ppd.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1545249
+      },
+      "writtenOn": "2022-10-04T23:39:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dc33bf4b_dc21a6d7",
+      "revId": "634fcab6eec272556920f01d9e6beaf8afbd21c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9b765224_fe91d20d",
@@ -159,6 +177,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a2f0239_ad51961c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/view_ppd.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1545249
+      },
+      "writtenOn": "2022-10-04T23:39:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c55bc549_521380cc",
+      "revId": "634fcab6eec272556920f01d9e6beaf8afbd21c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f3081e74_e511543d",
@@ -176,6 +212,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "212e7f17_49e15abe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/view_ppd.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1545249
+      },
+      "writtenOn": "2022-10-04T23:39:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f3081e74_e511543d",
+      "revId": "634fcab6eec272556920f01d9e6beaf8afbd21c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "25e169d0_2d4fff51",
@@ -189,6 +243,24 @@
       "writtenOn": "2022-10-03T23:57:58Z",
       "side": 1,
       "message": "1. This should probably also verify that the tab contents contain something other than the error message.\n\n2. What about testing for the EULA link?  It would be beneficial to test both scenarios since the link isn\u0027t always present.",
+      "revId": "634fcab6eec272556920f01d9e6beaf8afbd21c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "60448848_4ff8acf1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/view_ppd.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1545249
+      },
+      "writtenOn": "2022-10-04T23:39:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "25e169d0_2d4fff51",
       "revId": "634fcab6eec272556920f01d9e6beaf8afbd21c5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
