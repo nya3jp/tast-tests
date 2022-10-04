@@ -261,6 +261,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ed3a147_236af075",
+        "filename": "src/chromiumos/tast/common/policy/policy_blob.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-10-04T16:04:52Z",
+      "side": 1,
+      "message": "I removed them. If they are needed later then we can add them again.",
+      "parentUuid": "c0204265_44856d5e",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 90
+      },
+      "revId": "f6fef39e5e89afc8c289a9bf025d4f9a96bb87a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a2f66d4c_d982d642",
