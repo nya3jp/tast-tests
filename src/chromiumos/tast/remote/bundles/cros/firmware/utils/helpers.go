@@ -101,11 +101,11 @@ func CheckRecReason(ctx context.Context, h *firmware.Helper, ms *firmware.ModeSw
 func CheckCrossystemWPSW(ctx context.Context, h *firmware.Helper, expectedWPSW int) error {
 	r := reporters.New(h.DUT)
 	testing.ContextLog(ctx, "Check crossystem for write protect state param")
-	paramMap, err := r.Crossystem(ctx, reporters.CrossystemParamWpswCur)
+	strWPSW, err := r.CrossystemParam(ctx, reporters.CrossystemParamWpswCur)
 	if err != nil {
 		return errors.Wrapf(err, "failed to get crossystem %v value", reporters.CrossystemParamWpswCur)
 	}
-	currWPSW, err := strconv.Atoi(paramMap[reporters.CrossystemParamWpswCur])
+	currWPSW, err := strconv.Atoi(strWPSW)
 	if err != nil {
 		return errors.Wrap(err, "failed to convert crossystem wpsw value to integer value")
 	}

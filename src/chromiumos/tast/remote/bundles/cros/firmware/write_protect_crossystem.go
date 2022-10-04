@@ -1,4 +1,4 @@
-// Copyright 2022 The ChromiumOS Authors.
+// Copyright 2022 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -23,13 +23,18 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"crossystem", "flashrom"},
 		HardwareDeps: hwdep.D(hwdep.ChromeEC()),
-		Timeout:      2 * time.Minute,
+		Timeout:      5 * time.Minute,
 		Fixture:      fixture.NormalMode,
 	})
 }
 
 func WriteProtectCrossystem(ctx context.Context, s *testing.State) {
 	h := s.FixtValue().(*fixture.Value).Helper
+
+	// Might potentially fix issues with servod stopping during execution.
+	if err := h.Servo.WatchdogRemove(ctx, servo.WatchdogCCD); err != nil {
+		s.Fatal("Failed to remove CCD watchdog: ", err)
+	}
 
 	if err := h.RequireServo(ctx); err != nil {
 		s.Fatal("Failed to connect to servo: ", err)
@@ -49,5 +54,10 @@ func WriteProtectCrossystem(ctx context.Context, s *testing.State) {
 
 	if err := fwUtils.CheckCrossystemWPSW(ctx, h, 1); err != nil {
 		s.Fatal("Failed to confirm WP is on: ", err)
+	}
+
+	// Reset FWWP state to off before test end.
+	if err := h.Servo.SetFWWPState(ctx, servo.FWWPStateOff); err != nil {
+		s.Fatal("Failed to disable WP: ", err)
 	}
 }
