@@ -64,6 +64,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d85fddc_0fe092ab",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint_test_images.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2022-10-04T17:30:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "46c4402f_c7eca4c4",
+      "range": {
+        "startLine": 242,
+        "startChar": 0,
+        "endLine": 244,
+        "endChar": 3
+      },
+      "revId": "7823aa84c63a6b3228f5a789c560ec8f71979bf4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "72e67c7e_9827ced8",
@@ -149,6 +173,24 @@
       "side": 1,
       "message": "I hitnk Patryk\u0027s suggestions looking good and intuitive. I think we should use Patryk\u0027s suggestion.",
       "parentUuid": "6f9a20db_f4d50124",
+      "revId": "7823aa84c63a6b3228f5a789c560ec8f71979bf4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e099a5d_b85885d8",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint_test_images.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2022-10-04T17:30:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aaacb8f6_3d17e0c5",
       "revId": "7823aa84c63a6b3228f5a789c560ec8f71979bf4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
