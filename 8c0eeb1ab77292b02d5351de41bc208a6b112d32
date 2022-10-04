@@ -1,0 +1,52 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67f956ea_bb237254",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/shill_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 539,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-10-04T21:48:09Z",
+      "side": 1,
+      "message": "\u003e \"mathing\" is a possible misspelling of \"matching\".\n\nPlease fix.",
+      "parentUuid": "1acce572_ae33dd7b",
+      "range": {
+        "startLine": 539,
+        "startChar": 57,
+        "endLine": 539,
+        "endChar": 64
+      },
+      "revId": "8c0eeb1ab77292b02d5351de41bc208a6b112d32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6d90376_d5ba184d",
+        "filename": "src/chromiumos/tast/services/cros/wifi/shill_service.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-10-04T21:48:09Z",
+      "side": 1,
+      "message": "\u003e \"mathing\" is a possible misspelling of \"matching\".\n\nPlease fix.",
+      "parentUuid": "af81584a_6c4ce9c4",
+      "range": {
+        "startLine": 86,
+        "startChar": 59,
+        "endLine": 86,
+        "endChar": 66
+      },
+      "revId": "8c0eeb1ab77292b02d5351de41bc208a6b112d32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
