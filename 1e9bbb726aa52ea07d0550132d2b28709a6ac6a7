@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "23e89da1_ae4f6fcd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1518298
+      },
+      "writtenOn": "2022-10-04T16:42:44Z",
+      "side": 1,
+      "message": "Adding Seewai to review from Tast perspective",
+      "revId": "1e9bbb726aa52ea07d0550132d2b28709a6ac6a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
