@@ -213,6 +213,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "09960f4f_9691100b",
+        "filename": "src/chromiumos/tast/common/policy/policy_blob.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-10-04T13:01:36Z",
+      "side": 1,
+      "message": "It was for an old patchset, I removed this because now we\u0027re supporting these fields https://chromium-review.googlesource.com/c/chromium/src/+/3918338.\nand I removed only 2 fields that aren\u0027t used by both servers and not used by any tests.",
+      "parentUuid": "95994acc_fa1f3eea",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 90
+      },
+      "revId": "f6fef39e5e89afc8c289a9bf025d4f9a96bb87a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a2f66d4c_d982d642",
@@ -226,6 +250,24 @@
       "writtenOn": "2022-10-04T10:02:58Z",
       "side": 1,
       "message": "Why remove initialization of RequestErrors? This forces anyone who needs to add an error to first check and then initialize this map (as you do in a test). By keeping it here, you make using the interface simpler.",
+      "revId": "f6fef39e5e89afc8c289a9bf025d4f9a96bb87a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "77c94f78_a432e890",
+        "filename": "src/chromiumos/tast/common/policy/policy_blob.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-10-04T13:01:36Z",
+      "side": 1,
+      "message": "added it back and initialized the other maps, pointers fields to make it consistent.",
+      "parentUuid": "a2f66d4c_d982d642",
       "revId": "f6fef39e5e89afc8c289a9bf025d4f9a96bb87a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },

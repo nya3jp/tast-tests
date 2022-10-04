@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f38a350_72d542cc",
+        "filename": "src/chromiumos/tast/common/policy/policy_blob.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-10-04T13:01:36Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "14960e12_85d6abff",
+      "range": {
+        "startLine": 27,
+        "startChar": 69,
+        "endLine": 27,
+        "endChar": 115
+      },
+      "revId": "465917e10bd191270ffaa329f03f4997ee85708f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5ec337d6_bbf4f290",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-10-04T10:02:58Z",
       "side": 1,
       "message": "nit: IMHO this line is now too long. Perhaps a shorter comment would work:\n\n```\n// Use DeviceProto to manually set legacy device policies.\n```",
+      "range": {
+        "startLine": 28,
+        "startChar": 69,
+        "endLine": 28,
+        "endChar": 191
+      },
+      "revId": "465917e10bd191270ffaa329f03f4997ee85708f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "49518d14_b90f0f57",
+        "filename": "src/chromiumos/tast/common/policy/policy_blob.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-10-04T13:01:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ec337d6_bbf4f290",
       "range": {
         "startLine": 28,
         "startChar": 69,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3c22a3c_1ab94874",
+        "filename": "src/chromiumos/tast/common/policy/policy_blob.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-10-04T13:01:36Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a0de087c_7d288715",
+      "range": {
+        "startLine": 140,
+        "startChar": 58,
+        "endLine": 140,
+        "endChar": 65
+      },
+      "revId": "465917e10bd191270ffaa329f03f4997ee85708f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f3866b53_908ba34f",
@@ -93,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6485a454_9f39dba6",
+        "filename": "src/chromiumos/tast/common/policy/policy_blob.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-10-04T13:01:36Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f3866b53_908ba34f",
+      "range": {
+        "startLine": 174,
+        "startChar": 0,
+        "endLine": 174,
+        "endChar": 174
+      },
+      "revId": "465917e10bd191270ffaa329f03f4997ee85708f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "36eef014_26a59133",
@@ -106,6 +202,30 @@
       "writtenOn": "2022-10-04T10:02:58Z",
       "side": 1,
       "message": "nit: you could also initialize this field to an empty list in NewBlob to avoid this check",
+      "range": {
+        "startLine": 189,
+        "startChar": 1,
+        "endLine": 189,
+        "endChar": 35
+      },
+      "revId": "465917e10bd191270ffaa329f03f4997ee85708f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "07205024_cd062cab",
+        "filename": "src/chromiumos/tast/common/policy/policy_blob.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-10-04T13:01:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "36eef014_26a59133",
       "range": {
         "startLine": 189,
         "startChar": 1,
