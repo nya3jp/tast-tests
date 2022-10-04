@@ -86,6 +86,24 @@
       "parentUuid": "09b7312e_2ced72d4",
       "revId": "41d8c4dea6eae993014a11d6d4bbf70198a1aa46",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "423a83e1_f4f8c637",
+        "filename": "src/chromiumos/tast/local/chrome/cuj/get_drive_url.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-10-04T20:52:41Z",
+      "side": 1,
+      "message": "I would think that hash such as md5, sha256 should have uniformity. Otherwise, they would have good chance to be broken that people could use the unbalanced distribution to reverse something have the same hash.\n\nIt is not necessary to go through a random number generator when we would only use it to generate only one number.",
+      "parentUuid": "c24d89db_e1f5340d",
+      "revId": "41d8c4dea6eae993014a11d6d4bbf70198a1aa46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
