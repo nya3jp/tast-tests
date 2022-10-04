@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "171af43b_bca1d5bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/view_ppd.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1545249
+      },
+      "writtenOn": "2022-10-04T00:17:29Z",
+      "side": 1,
+      "message": "Yup - good catch.  Copy-paste error.  Thanks.",
+      "parentUuid": "d13a8624_6c75e408",
+      "revId": "634fcab6eec272556920f01d9e6beaf8afbd21c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1ae61a8a_e071dffa",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-10-03T23:57:58Z",
       "side": 1,
       "message": "Out of curiosity, does the printer need to work at all?  If you set up an appsocket printer pointing to `localhost:9100`, you might be able to view the PPD without ever connecting to the printer.  That would avoid any flakiness from USB setup.",
+      "revId": "634fcab6eec272556920f01d9e6beaf8afbd21c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9cd5987_337c3b9c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/view_ppd.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1545249
+      },
+      "writtenOn": "2022-10-04T00:17:29Z",
+      "side": 1,
+      "message": "No, the printer does not need to be set up.  In fact, in all my manual testing, I do what you suggest - use an appsocket at localhost.  I guess I hadn\u0027t thought about that for this - I\u0027ll look into doing that here if it makes the tests more stable.  Are you suggesting, then, to not even use usbprinter.Start and lp.CupsAddPrinter?  I can just do all that through the GUI - create a new printer of appsocket type?",
+      "parentUuid": "1ae61a8a_e071dffa",
       "revId": "634fcab6eec272556920f01d9e6beaf8afbd21c5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "af04088e_96b23089",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/view_ppd.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1545249
+      },
+      "writtenOn": "2022-10-04T00:17:29Z",
+      "side": 1,
+      "message": "Yeah I guess I don\u0027t need these attributes.  May get rid of this whole thing anyhow...",
+      "parentUuid": "9b765224_fe91d20d",
+      "revId": "634fcab6eec272556920f01d9e6beaf8afbd21c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "df9f1e14_10ec292c",
@@ -65,6 +119,24 @@
       "writtenOn": "2022-10-03T23:57:58Z",
       "side": 1,
       "message": "This seems a bit fragile since it\u0027s dependent on the tab order staying the same.  Is it feasible to define a few more matchers and click the appropriate buttons instead?",
+      "revId": "634fcab6eec272556920f01d9e6beaf8afbd21c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c55bc549_521380cc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/view_ppd.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1545249
+      },
+      "writtenOn": "2022-10-04T00:17:29Z",
+      "side": 1,
+      "message": "I was having troubles finding the buttons I wanted with the matchers, so tried this to get it to work.  I\u0027ll look more into this - I do like the idea of calling out specific items.",
+      "parentUuid": "df9f1e14_10ec292c",
       "revId": "634fcab6eec272556920f01d9e6beaf8afbd21c5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
