@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a2c6ef7_adcf0236",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/write_protect.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-10-04T17:22:48Z",
+      "side": 1,
+      "message": "Can you skip the restore if the test passed and we never wrote to the firmware?  I.e. set a variable \"needsRestore :\u003d true\" and then when we verify that the image is still good, then set needsRestore \u003d false, and check it in this defer call.",
+      "range": {
+        "startLine": 158,
+        "startChar": 2,
+        "endLine": 174,
+        "endChar": 80
+      },
+      "revId": "97759e6dddf736c71d5bcf3418b10f8245fa3532",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4f39019_e467d952",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/write_protect.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-10-04T17:22:48Z",
+      "side": 1,
+      "message": "Isn\u0027t this the same thing that the defer call above is doing?  Also at this point we just compared the images and we know they didn\u0027t change.",
+      "range": {
+        "startLine": 254,
+        "startChar": 1,
+        "endLine": 263,
+        "endChar": 0
+      },
+      "revId": "97759e6dddf736c71d5bcf3418b10f8245fa3532",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
