@@ -16,6 +16,29 @@
       "message": "thanks for the review",
       "revId": "3133f4efec45bf68d5099ff238b24837105ec418",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "061c140d_fbf405f0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/traffic_counters.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-10-04T04:55:54Z",
+      "side": 1,
+      "message": "Sorry for another question -- do we want to treat this as an error instead of only a log?",
+      "range": {
+        "startLine": 280,
+        "startChar": 3,
+        "endLine": 282,
+        "endChar": 4
+      },
+      "revId": "3133f4efec45bf68d5099ff238b24837105ec418",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
