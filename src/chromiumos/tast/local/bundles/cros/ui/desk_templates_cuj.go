@@ -120,6 +120,9 @@ func DeskTemplatesCUJ(ctx context.Context, s *testing.State) {
 			if err := apps.Launch(ctx, tconn, app.ID); err != nil {
 				return errors.Wrapf(err, "failed to open %s", app.Name)
 			}
+		}
+
+		for _, app := range appsList {
 			if err := ash.WaitForApp(ctx, tconn, app.ID, time.Minute); err != nil {
 				return errors.Wrapf(err, "%s did not appear in shelf after launch", app.Name)
 			}
@@ -133,7 +136,7 @@ func DeskTemplatesCUJ(ctx context.Context, s *testing.State) {
 		if err := ash.SetOverviewModeAndWait(ctx, tconn, true); err != nil {
 			return errors.Wrap(err, "error in setting overview mode")
 		}
-		if err := ac.WithInterval(5*time.Second).WaitUntilNoEvent(nodewith.Root(), event.LocationChanged)(ctx); err != nil {
+		if err := ac.WithInterval(2*time.Second).WaitUntilNoEvent(nodewith.Root(), event.LocationChanged)(ctx); err != nil {
 			return errors.Wrap(err, "failed to wait for overview animation to be completed")
 		}
 		defer ash.SetOverviewModeAndWait(cleanupCtx, tconn, false)
@@ -160,14 +163,8 @@ func DeskTemplatesCUJ(ctx context.Context, s *testing.State) {
 		}
 
 		// Close all existing windows.
-		ws, err := ash.GetAllWindows(ctx, tconn)
-		if err != nil {
-			return errors.Wrap(err, "unable to get all open windows")
-		}
-		for _, w := range ws {
-			if err := w.CloseWindow(ctx, tconn); err != nil {
-				return errors.Wrapf(err, "unable to close window (%+v)", w)
-			}
+		if err := ash.CloseAllWindows(ctx, tconn); err != nil {
+			s.Fatal("Failed to close all windows: ", err)
 		}
 
 		// Enter overview mode, and launch the saved desk template.
@@ -222,7 +219,7 @@ func DeskTemplatesCUJ(ctx context.Context, s *testing.State) {
 		}
 
 		// Verify that there are the app windows.
-		ws, err = ash.GetAllWindows(ctx, tconn)
+		ws, err := ash.GetAllWindows(ctx, tconn)
 		if err != nil {
 			return errors.Wrap(err, "unable to get all open windows")
 		}
