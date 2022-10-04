@@ -69,6 +69,24 @@
       "parentUuid": "ea259e36_493d7b4c",
       "revId": "f49ee90ab087b043fa919aa39d6c5aef660eacd4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d2e714f_cea82075",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/fgsec_multi_connect.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1496163
+      },
+      "writtenOn": "2022-10-04T18:09:55Z",
+      "side": 1,
+      "message": "I think I\u0027ve found a way.  Please take a look at the earlier CL in this chain and the latest changes here.",
+      "parentUuid": "4ac092a5_b1da17c5",
+      "revId": "f49ee90ab087b043fa919aa39d6c5aef660eacd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
