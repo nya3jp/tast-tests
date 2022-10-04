@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e71d888f_0444304c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1551433
+      },
+      "writtenOn": "2022-10-04T17:21:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9f26b5f7_31c49d06",
+      "range": {
+        "startLine": 7,
+        "startChar": 10,
+        "endLine": 7,
+        "endChar": 16
+      },
+      "revId": "3efe31101046cfebaec5eac92bbe377e3987d328",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "23d74418_35d2b873",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "14ad48dc_2be64d3a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1551433
+      },
+      "writtenOn": "2022-10-04T17:21:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "23d74418_35d2b873",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 222
+      },
+      "revId": "3efe31101046cfebaec5eac92bbe377e3987d328",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "19f52bf6_273b69b5",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-10-03T20:47:12Z",
       "side": 1,
       "message": "It looks like these are alphabetized by path, so this one belongs above `{Path: \"/etc/group\", Context: \"cros_passwd_file\"}`.",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 74
+      },
+      "revId": "3efe31101046cfebaec5eac92bbe377e3987d328",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ed4f9d2_dc55114e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_system.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1551433
+      },
+      "writtenOn": "2022-10-04T17:21:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "19f52bf6_273b69b5",
       "range": {
         "startLine": 50,
         "startChar": 0,
