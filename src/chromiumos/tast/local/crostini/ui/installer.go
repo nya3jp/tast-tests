@@ -25,7 +25,6 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/vkb"
 	"chromiumos/tast/local/crostini/lxd"
 	"chromiumos/tast/local/crostini/ui/settings"
-	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/local/vm"
 	"chromiumos/tast/testing"
@@ -61,7 +60,7 @@ func New(tconn *chrome.TestConn) *Installer {
 // size to the specified disk size.
 // If targetSize is smaller/greater than the possible minimum/maximum size, use
 // the extremum size if IsSoftExtremum=true, or return an error otherwise.
-func (p *Installer) SetDiskSize(ctx context.Context, targetSize uint64, IsSoftExtremum bool) (uint64, error) {
+func (p *Installer) SetDiskSize(ctx context.Context, cr *chrome.Chrome, targetSize uint64, IsSoftExtremum bool) (uint64, error) {
 	radioGroup := nodewith.Role(role.RadioGroup).Ancestor(InstallWindow)
 	customStaticText := nodewith.Name("Custom").Role(role.StaticText).Ancestor(radioGroup)
 	slider := nodewith.Role(role.Slider).Ancestor(InstallWindow)
@@ -82,34 +81,17 @@ func (p *Installer) SetDiskSize(ctx context.Context, targetSize uint64, IsSoftEx
 		return 0, err
 	}
 
-	defaultSize, maxSize, minSize, err := settings.SliderDiskSizes(ctx, p.tconn, slider)
+	const installerURL = "chrome://crostini-installer/"
+	f := func(t *chrome.Target) bool { return strings.HasPrefix(t.URL, installerURL) }
+	conn, err := cr.NewConnForTarget(ctx, f)
 	if err != nil {
-		return 0, errors.Wrap(err, "failed to get the initial disk size")
+		return 0, errors.Wrapf(err, "failed to connect to installer page %s", installerURL)
 	}
-	if defaultSize == targetSize {
-		return targetSize, nil
-	}
-	if targetSize > maxSize {
-		if !IsSoftExtremum {
-			return 0, errors.Errorf("Target size %d is greater than the possible maximum %d, consider set IsSoftExtremum=0 to use the posible maximum", targetSize, maxSize)
-		}
-		targetSize = maxSize
-	}
-	if targetSize < minSize {
-		if !IsSoftExtremum {
-			return 0, errors.Errorf("Target size %d is smaller than the possible minimum %d, consider set IsSoftExtremum=0 to use the posible minimum", targetSize, minSize)
-		}
-		targetSize = minSize
-	}
+	defer conn.Close()
 
-	// Use keyboard to manipulate the slider rather than writing
-	// custom mouse code to click on exact locations on the slider.
-	kb, err := input.Keyboard(ctx)
-	if err != nil {
-		return 0, errors.Wrap(err, "error in SetDiskSize: error opening keyboard")
-	}
-	defer kb.Close()
-	return settings.ChangeDiskSize(ctx, p.tconn, kb, slider, targetSize)
+	const crostiniInstaller = "crostini-installer-app"
+	return settings.UpdateDiskSizeSliderWithJS(ctx, conn, crostiniInstaller, targetSize, IsSoftExtremum)
+
 }
 
 // checkErrorMessage checks to see if an error message is currently displayed in the
@@ -224,7 +206,7 @@ func InstallCrostini(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chr
 	installer := New(tconn)
 	var resultDiskSize uint64
 	if iOptions.MinDiskSize != 0 {
-		resultDiskSize, err = installer.SetDiskSize(ctx, iOptions.MinDiskSize, iOptions.IsSoftMinimum)
+		resultDiskSize, err = installer.SetDiskSize(ctx, cr, iOptions.MinDiskSize, iOptions.IsSoftMinimum)
 		if err != nil {
 			return 0, errors.Wrap(err, "failed to set disk size in installation dialog")
 		}
