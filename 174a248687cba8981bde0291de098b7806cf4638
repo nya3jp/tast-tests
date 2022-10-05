@@ -16,6 +16,24 @@
       "message": "This intentionally only gets the service path from the first AP?\n\n(I guess we expect all of them to have the same value from L384-386?)",
       "revId": "174a248687cba8981bde0291de098b7806cf4638",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd0a3419_dd2f3482",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/fgsec_multi_connect.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1496163
+      },
+      "writtenOn": "2022-10-05T16:32:45Z",
+      "side": 1,
+      "message": "Correct.  All endpoints should be added to the same service and this service should be changing its Security accordingly.  This is intended - I don\u0027t know how would I test which service given endpoint has been added to since there is no property of service that would give a hint for that.  So the query in getServicePath is just SSID and SecurityClass (+ that it is WiFi).",
+      "parentUuid": "4ebecd86_b2aebe45",
+      "revId": "174a248687cba8981bde0291de098b7806cf4638",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
