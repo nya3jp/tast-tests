@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa772390_e8dc3a2b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1441092
+      },
+      "writtenOn": "2022-10-05T23:46:11Z",
+      "side": 1,
+      "message": "This cl only includes the change to new tast infra, does not cover sms deletion.",
+      "revId": "2fb73a0b0b70ed838491a5e94df69b84a63477d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
