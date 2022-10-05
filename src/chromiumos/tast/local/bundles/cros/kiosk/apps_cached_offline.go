@@ -6,19 +6,14 @@ package kiosk
 
 import (
 	"context"
-	"net/url"
-	"strconv"
 	"time"
 
 	"chromiumos/tast/common/fixture"
-	"chromiumos/tast/common/network/firewall"
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/ctxutil"
-	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/kioskmode"
-	"chromiumos/tast/local/network"
-	local_firewall "chromiumos/tast/local/network/firewall"
+	"chromiumos/tast/local/shill"
 	"chromiumos/tast/local/syslog"
 	"chromiumos/tast/testing"
 )
@@ -69,70 +64,58 @@ func AppsCachedOffline(ctx context.Context, s *testing.State) {
 		s.Fatal("Kiosk crx is not cached: ", err)
 	}
 
-	s.Log("Trying to launch Kiosk app offline")
-	restartAndLaunchKiosk := func(ctx context.Context) error {
-		reader, err := syslog.NewReader(ctx, syslog.Program("chrome"))
-		if err != nil {
-			return errors.Wrap(err, "failed to start log reader")
-		}
-		defer reader.Close()
-
-		// Additionally block access to FakeDMS to make Chrome think it's offline.
-		firewallRunner := local_firewall.NewLocalRunner()
-		fdmsURL, err := url.Parse(fdms.URL)
-		if err != nil {
-			return errors.Wrap(err, "failed to parse FakeDMS URL")
-		}
-		fdmsPort, err := strconv.Atoi(fdmsURL.Port())
-		if err != nil {
-			return errors.Wrap(err, "failed to parse port from FakeDMS URL")
-		}
-
-		commonRuleArgs := []firewall.RuleOption{
-			firewall.OptionProto(firewall.L4ProtoTCP),
-			firewall.OptionUIDOwner("chronos"),
-			firewall.OptionDPort(fdmsPort),
-			firewall.OptionJumpTarget(firewall.TargetDrop),
-		}
-		ruleArgs := []firewall.RuleOption{firewall.OptionAppendRule(firewall.OutputChain)}
-		ruleArgs = append(ruleArgs, commonRuleArgs...)
-		if err := firewallRunner.ExecuteCommand(ctx, ruleArgs...); err != nil {
-			return errors.Wrap(err, "failed to block access to FakeDMS")
-		}
-
-		// Reserve 3 seconds to resume firewall settings.
-		cleanupCtx := ctx
-		ctx, cancel := ctxutil.Shorten(ctx, 3*time.Second)
-		defer cancel()
-
-		defer func(cleanupCtx context.Context) {
-			ruleArgs := []firewall.RuleOption{firewall.OptionDeleteRule(firewall.OutputChain)}
-			ruleArgs = append(ruleArgs, commonRuleArgs...)
-			if err := firewallRunner.ExecuteCommand(ctx, ruleArgs...); err != nil {
-				s.Fatal("Failed to restore access to FakeDMS: ", err)
-			}
-		}(cleanupCtx)
-
-		_, err = kiosk.RestartChromeWithOptions(
-			ctx,
-			chrome.DMSPolicy(fdms.URL),
-			chrome.NoLogin(),
-			chrome.KeepState(),
-			chromeOptions,
-		)
-		if err != nil {
-			return errors.Wrap(err, "failed to restart Chrome")
-		}
-
-		if err := kioskmode.ConfirmKioskStarted(ctx, reader); err != nil {
-			return errors.Wrap(err, "kiosk is not started after restarting Chrome")
-		}
-
-		return nil
+	manager, err := shill.NewManager(ctx)
+	if err != nil {
+		s.Fatal("Failed to create shill manager proxy: ", err)
 	}
 
-	// Launch kiosk in offline mode.
-	if err := network.ExecFuncOnChromeOffline(ctx, restartAndLaunchKiosk); err != nil {
-		s.Fatal("Failed to launch kiosk app offline: ", err)
+	technologies, err := manager.GetEnabledTechnologies(ctx)
+	if err != nil {
+		s.Fatal("Failed to get enabled technologies: ", err)
+	}
+
+	// Reserve 5 seconds to restore connection settings.
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
+	defer cancel()
+
+	var enableFuncs []func(context.Context)
+	defer func(cleanupCtx context.Context) {
+		//for _, enableFunc := range enableFuncs {
+		//	enableFunc(cleanupCtx)
+		//}
+	}(cleanupCtx)
+
+	// Disable all connection technologies
+	for _, t := range technologies {
+		enableFunc, err := manager.DisableTechnologyForTesting(ctx, t)
+		if err != nil {
+			s.Fatalf("Failed to disable %v technology: %s", t, err)
+		}
+		testing.ContextLog(ctx, "Disabled connection technology: ", t)
+		enableFuncs = append(enableFuncs, enableFunc)
+	}
+
+	s.Log("Trying to launch Kiosk app offline")
+
+	reader, err := syslog.NewReader(ctx, syslog.Program("chrome"))
+	if err != nil {
+		s.Fatal("Failed to start log reader: ", err)
+	}
+	defer reader.Close()
+
+	_, err = kiosk.RestartChromeWithOptions(
+		ctx,
+		chrome.DMSPolicy(fdms.URL),
+		chrome.NoLogin(),
+		chrome.KeepState(),
+		chromeOptions,
+	)
+	if err != nil {
+		s.Fatal("Failed to restart Chrome: ", err)
+	}
+
+	if err := kioskmode.ConfirmKioskStarted(ctx, reader); err != nil {
+		s.Fatal("Kiosk is not started after restarting Chrome: ", err)
 	}
 }
