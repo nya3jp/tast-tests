@@ -16,6 +16,23 @@
       "message": "Added the part of test that checks unpinning the apps.",
       "revId": "a92daead0eb3fdec8008551c618e8021c78703b9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11128b02_1b72d12c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/app_rearrangement.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 513,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-10-05T22:43:01Z",
+      "side": 1,
+      "message": "can we just use the app that already has an open window (so we don\u0027t have to launch it from shelf at all)?",
+      "revId": "a92daead0eb3fdec8008551c618e8021c78703b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
