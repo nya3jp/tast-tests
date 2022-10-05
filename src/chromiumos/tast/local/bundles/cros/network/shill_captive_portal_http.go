@@ -24,12 +24,14 @@ type params struct {
 	httpResponseHandler  func(rw http.ResponseWriter, req *http.Request)
 	httpsResponseHandler func(rw http.ResponseWriter, req *http.Request)
 	proxyConfig          string
+	checkPortal          string
 }
 
-var (
+const (
 	redirectURL     = "http://www.example.com"
 	httpsPortalURL  = "https://www.example.com"
 	testProxyConfig = "test proxy config"
+	testCheckPortal = "false"
 )
 
 func redirectHandler(url string) func(http.ResponseWriter, *http.Request) {
@@ -62,50 +64,66 @@ func init() {
 		Params: []testing.Param{{
 			Name: "redirectfound",
 			Val: &params{
-				ServiceState:         shillconst.ServiceStateRedirectFound,
-				HTTPResponseHandler:  redirectHandler(redirectURL),
-				HTTPSResponseHandler: nil,
-				ProxyConfig:          "",
+				serviceState:         shillconst.ServiceStateRedirectFound,
+				httpResponseHandler:  redirectHandler(redirectURL),
+				httpsResponseHandler: nil,
+				proxyConfig:          "",
+				checkPortal:          "",
 			},
 		}, {
 			Name: "proxyconfig",
 			Val: &params{
-				ServiceState:         shillconst.ServiceStateOnline,
-				HTTPResponseHandler:  redirectHandler(redirectURL),
-				HTTPSResponseHandler: nil,
-				ProxyConfig:          testProxyConfig,
+				serviceState:         shillconst.ServiceStateOnline,
+				httpResponseHandler:  redirectHandler(redirectURL),
+				httpsResponseHandler: nil,
+				proxyConfig:          testProxyConfig,
+				checkPortal:          "",
 			},
 		}, {
+			Name: "checkportal",
+			Val: &params{
+				ServiceState:         shillconst.ServiceStateOnline,
+				httpResponseHandler:  redirectHandler(redirectURL),
+				httpsResponseHandler: nil,
+				proxyConfig:          "",
+				checkPortal:          "false",
+			},
+		}, {
+
 			Name: "portalsuspected",
 			Val: &params{
 				ServiceState:         shillconst.ServiceStatePortalSuspected,
-				HTTPResponseHandler:  redirectWithNoLocationHandler,
-				HTTPSResponseHandler: nil,
-				ProxyConfig:          "",
+				httpResponseHandler:  redirectWithNoLocationHandler,
+				httpsResponseHandler: nil,
+				proxyConfig:          "",
+				checkPortal:          "",
 			},
 		}, {
 			Name: "online",
 			Val: &params{
 				ServiceState:         shillconst.ServiceStateOnline,
-				HTTPResponseHandler:  noContentHandler,
-				HTTPSResponseHandler: noContentHandler,
-				ProxyConfig:          "",
+				httpResponseHandler:  noContentHandler,
+				httpsResponseHandler: noContentHandler,
+				proxyConfig:          "",
+				checkPortal:          "",
 			},
 		}, {
 			Name: "noconnectivity",
 			Val: &params{
 				ServiceState:         shillconst.ServiceStateNoConnectivity,
-				HTTPResponseHandler:  nil,
-				HTTPSResponseHandler: nil,
-				ProxyConfig:          "",
+				httpResponseHandler:  nil,
+				httpsResponseHandler: nil,
+				proxyConfig:          "",
+				checkPortal:          "",
 			},
 		}, {
 			Name: "redirectfoundtempredirect",
 			Val: &params{
 				ServiceState:         shillconst.ServiceStateRedirectFound,
-				HTTPResponseHandler:  tempRedirectHandler(redirectURL),
-				HTTPSResponseHandler: nil,
-				ProxyConfig:          "",
+				httpResponseHandler:  tempRedirectHandler(redirectURL),
+				httpsResponseHandler: nil,
+				proxyConfig:          "",
+				checkPortal:          "",
 			},
 		}},
 	})
@@ -166,10 +184,17 @@ func ShillCaptivePortalHTTP(ctx context.Context, s *testing.State) {
 	}
 	defer pw.Close(cleanupCtx)
 
-	//testing for ProxyConfig - no portal state to send in this case
-	if params.ProxyConfig != "" {
-		if err := service.SetProperty(ctx, shillconst.ServicePropertyProxyConfig, params.ProxyConfig); err != nil {
+	//testing for ProxyConfig  - no portal state to send in this case
+	if params.proxyConfig != "" {
+		if err := service.SetProperty(ctx, shillconst.ServicePropertyProxyConfig, params.proxyConfig); err != nil {
 			s.Fatal("Portal detection disabled by ProxyConfig service: ", err)
+		}
+	}
+
+	//testing for CheckPortal
+	if params.checkPortal != "" {
+		if err := service.SetProperty(ctx, shillconst.ServicePropertyCheckPortal, params.checkPortal); err != nil {
+			s.Fatal("Portal detection disabled by CheckPortal service: ", err)
 		}
 	}
 
