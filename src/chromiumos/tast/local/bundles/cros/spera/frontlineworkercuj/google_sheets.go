@@ -12,6 +12,7 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/cuj"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
@@ -31,30 +32,32 @@ const (
 	rangeOfSampleData = 10
 	// rangeOfDataset indicates the total number of rows in the dataset spreadsheet.
 	rangeOfDataset = 1000
+	// retryTimes indicates the maximum number of times the action will be retried.
+	retryTime = 3
 )
 
 // GoogleSheets holds the information used to do Google Sheets testing.
 type GoogleSheets struct {
-	cr           *chrome.Chrome
 	tconn        *chrome.TestConn
 	ui           *uiauto.Context
 	uiHdl        cuj.UIActionHandler
 	kb           *input.KeyboardEventWriter
 	conn         *chrome.Conn
+	br           *browser.Browser
 	account      string
 	password     string
 	sheetCreated bool
 }
 
 // NewGoogleSheets returns the the manager of Google Sheets, caller will able to control Google Sheets app through this object.
-func NewGoogleSheets(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn, ui *uiauto.Context,
+func NewGoogleSheets(ctx context.Context, tconn *chrome.TestConn, br *browser.Browser, ui *uiauto.Context,
 	uiHdl cuj.UIActionHandler, kb *input.KeyboardEventWriter, account, password string) *GoogleSheets {
 	return &GoogleSheets{
-		cr:       cr,
 		tconn:    tconn,
 		ui:       ui,
 		uiHdl:    uiHdl,
 		kb:       kb,
+		br:       br,
 		account:  account,
 		password: password,
 	}
@@ -62,29 +65,23 @@ func NewGoogleSheets(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestC
 
 // CopySpreadSheet copies the sample spreadsheet.
 func (g *GoogleSheets) CopySpreadSheet(ctx context.Context, sampleSheetURL string) (sheetName string, err error) {
-	g.conn, err = g.cr.NewConn(ctx, sampleSheetURL+"/copy")
+	g.conn, err = g.br.NewConn(ctx, sampleSheetURL+"/copy")
 	if err != nil {
 		return "", errors.Wrapf(err, "failed to open URL: %s", sampleSheetURL)
 	}
 
-	if err := g.login()(ctx); err != nil {
-		return "", errors.Wrap(err, "failed to login to the Chrome browser")
-	}
-
 	copy := nodewith.Name("Make a copy").Role(role.Button)
-	if err := g.uiHdl.Click(copy)(ctx); err != nil {
-		return "", errors.Wrap(err, "failed to open the copied data spreadsheet")
-	}
-
-	if err := g.validateEditMode()(ctx); err != nil {
-		return "", errors.Wrap(err, "failed to enter edit mode")
-	}
-
 	timestamp := time.Now().Local().Format("2006-01-02")
 	sheetName = fmt.Sprintf("%s-%s", sheetNamePrefix, timestamp)
-	if err := g.renameFile(sheetName)(ctx); err != nil {
+	if err := uiauto.Combine("copy spreadsheet",
+		g.login(),
+		g.ui.DoDefault(copy),
+		g.validateEditMode(),
+		g.renameFile(sheetName),
+	)(ctx); err != nil {
 		return "", err
 	}
+
 	g.sheetCreated = true
 	return sheetName, nil
 }
@@ -98,8 +95,8 @@ func (g *GoogleSheets) CreatePivotTable() uiauto.Action {
 	createPivotDialog := nodewith.Name("Create pivot table").Role(role.Dialog)
 
 	insertTable := uiauto.Combine("create pivot table",
-		g.uiHdl.ClickUntil(insert, g.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(insertExpanded)),
-		g.uiHdl.ClickUntil(pivotTable, g.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(createPivotDialog)),
+		g.ui.DoDefaultUntil(insert, g.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(insertExpanded)),
+		g.ui.DoDefaultUntil(pivotTable, g.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(createPivotDialog)),
 	)
 
 	radioGroup := nodewith.Name("Insert to").Role(role.RadioGroup).Ancestor(createPivotDialog)
@@ -110,10 +107,12 @@ func (g *GoogleSheets) CreatePivotTable() uiauto.Action {
 	return uiauto.Combine("insert the pivot table to existing spreadsheet",
 		insertTable,
 		g.fillInPivotRange(),
-		g.uiHdl.Click(existingSheet),
-		g.uiHdl.ClickUntil(pivotTableRange, g.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(pivotTableRangeFocused)),
+		g.ui.DoDefaultUntil(
+			existingSheet,
+			g.ui.WithTimeout(defaultUIWaitTime).WaitUntilCheckedState(existingSheet, true)),
+		g.ui.DoDefaultUntil(pivotTableRange, g.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(pivotTableRangeFocused)),
 		g.kb.TypeAction(existingSheetRange),
-		g.uiHdl.Click(createButton),
+		g.ui.DoDefault(createButton),
 	)
 }
 
@@ -134,7 +133,9 @@ func (g *GoogleSheets) EditPivotTable() uiauto.Action {
 		g.editPivotTableEditor(rowsAddButtonName, rowName),
 		g.editPivotTableEditor(columnsAddButtonName, columnName),
 		g.editPivotTableEditor(valuesAddButtonName, valueName),
-		uiauto.IfSuccessThen(g.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(pivotTableEditor), g.uiHdl.Click(close)),
+		uiauto.IfSuccessThen(
+			g.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(pivotTableEditor),
+			g.ui.DoDefault(close)),
 	)
 }
 
@@ -151,8 +152,8 @@ func (g *GoogleSheets) editPivotTableEditor(buttonName, itemName string) uiauto.
 			g.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(buttonCollapsed),
 			g.ui.EnsureFocused(button),
 		),
-		g.uiHdl.ClickUntil(button, g.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(buttonExpanded)),
-		g.uiHdl.Click(menuItem),
+		g.ui.DoDefaultUntil(button, g.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(buttonExpanded)),
+		g.ui.DoDefault(menuItem),
 	)
 }
 
@@ -166,19 +167,29 @@ func (g *GoogleSheets) ValidatePivotTable() uiauto.Action {
 	}
 	return func(ctx context.Context) error {
 		// Calculate the total cost of each buyer.
+		var clipboardData int
 		for i := 3; i < 6; i++ {
 			grandTotal := 0
 			for j := 0; j < 3; j++ {
-				cell := fmt.Sprintf("%c%d", 'G'+j, i)
-				v, err := g.getCellValue(ctx, cell)
-				if err != nil {
+				if err := uiauto.Retry(retryTime, func(ctx context.Context) error {
+					cell := fmt.Sprintf("%c%d", 'G'+j, i)
+					v, err := g.getCellValue(ctx, cell)
+					if err != nil {
+						return err
+					}
+					value, err := strconv.Atoi(v)
+					if err != nil {
+						return err
+					}
+					if value == clipboardData {
+						return errors.New("the value of the clipboard has not updated")
+					}
+					clipboardData = value
+					grandTotal += value
+					return nil
+				})(ctx); err != nil {
 					return err
 				}
-				value, err := strconv.Atoi(v)
-				if err != nil {
-					return err
-				}
-				grandTotal += value
 			}
 			totalAmountCell := fmt.Sprintf("J%d", i)
 			expectedValue, err := strconv.Atoi(mapPivotTable[totalAmountCell])
@@ -200,7 +211,7 @@ func (g *GoogleSheets) RemoveFile(ctx context.Context, sheetName *string) error 
 		return nil
 	}
 
-	conn, err := g.cr.NewConn(ctx, cuj.GoogleSheetsURL)
+	conn, err := g.br.NewConn(ctx, cuj.GoogleSheetsURL)
 	if err != nil {
 		return errors.Wrapf(err, "failed to open URL: %s", cuj.GoogleSheetsURL)
 	}
@@ -214,9 +225,9 @@ func (g *GoogleSheets) RemoveFile(ctx context.Context, sheetName *string) error 
 	moveToTrashDialog := nodewith.Name("Move to trash?").Role(role.Dialog)
 	moveToTrashButton := nodewith.Name("MOVE TO TRASH").Role(role.Button).Ancestor(moveToTrashDialog)
 	return uiauto.Combine("remove the spreadsheet",
-		g.uiHdl.ClickUntil(moreAction, g.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(moreActionExpanded)),
-		g.uiHdl.Click(remove),
-		g.uiHdl.ClickUntil(moveToTrashButton, g.ui.WithTimeout(defaultUIWaitTime).WaitUntilGone(moveToTrashDialog)),
+		g.ui.DoDefaultUntil(moreAction, g.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(moreActionExpanded)),
+		g.ui.DoDefault(remove),
+		g.ui.DoDefaultUntil(moveToTrashButton, g.ui.WithTimeout(defaultUIWaitTime).WaitUntilGone(moveToTrashDialog)),
 	)(ctx)
 }
 
@@ -230,7 +241,11 @@ func (g *GoogleSheets) login() uiauto.Action {
 	confirmInput := func(finder *nodewith.Finder, input string) uiauto.Action {
 		return func(ctx context.Context) error {
 			return testing.Poll(ctx, func(ctx context.Context) error {
-				if err := g.kb.TypeAction(input)(ctx); err != nil {
+				if err := uiauto.Combine("type input",
+					g.ui.DoDefault(finder),
+					g.kb.AccelAction("Ctrl+A"),
+					g.kb.TypeAction(input),
+				)(ctx); err != nil {
 					return err
 				}
 				node, err := g.ui.Info(ctx, finder)
@@ -239,9 +254,6 @@ func (g *GoogleSheets) login() uiauto.Action {
 				}
 				if node.Value == input {
 					return nil
-				}
-				if err := g.kb.AccelAction("Ctrl+A")(ctx); err != nil {
-					return err
 				}
 				return errors.Errorf("%s is incorrect: got: %v; want: %v", node.Name, node.Value, input)
 			}, &testing.PollOptions{Timeout: 30 * time.Second})
@@ -272,8 +284,7 @@ func (g *GoogleSheets) login() uiauto.Action {
 		confirmInput(account, g.account),
 		g.kb.AccelAction("Enter"),
 		g.ui.WaitUntilExists(password),
-		g.ui.LeftClick(showPassword),
-		g.ui.LeftClick(password),
+		g.ui.DoDefault(showPassword),
 		confirmInput(password, g.password),
 		g.kb.AccelAction("Enter"),
 		uiauto.IfSuccessThen(g.ui.WaitUntilExists(warning), uiauto.NamedAction(`click the "CONFIRM" button`, g.uiHdl.Click(confirm))),
@@ -315,10 +326,10 @@ func (g *GoogleSheets) renameFile(sheetName string) uiauto.Action {
 	renameItem := nodewith.Name("Rename r").Role(role.MenuItem).Ancestor(fileMenu)
 	renameField := nodewith.Name("Rename").Role(role.TextField).Editable().Focused()
 	closeButton := nodewith.Name("Close sidebar").Role(role.Button)
-	return uiauto.Retry(3, uiauto.Combine("rename the file",
+	return uiauto.Retry(retryTime, uiauto.Combine("rename the file",
 		g.ui.WaitUntilExists(menuBar),
-		g.uiHdl.ClickUntil(fileItem, g.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(fileMenu)),
-		g.uiHdl.Click(renameItem),
+		g.ui.DoDefaultUntil(fileItem, g.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(fileMenu)),
+		g.ui.DoDefault(renameItem),
 		// If the Approval sidebar appears, it means that the UI is still unstable, causing the error to click "Rename" to "Approvals".
 		uiauto.IfSuccessThen(g.ui.WaitUntilExists(closeButton), g.uiHdl.Click(closeButton)),
 		g.ui.WaitUntilExists(renameField),
@@ -334,7 +345,8 @@ func (g *GoogleSheets) selectCell(cell string) uiauto.Action {
 	nameField := nodewith.Role(role.TextField).FinalAncestor(nameBox)
 	nameFieldFocused := nameField.Focused()
 	return uiauto.NamedCombine(fmt.Sprintf("select cell %q", cell),
-		g.uiHdl.ClickUntil(nameField, g.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(nameFieldFocused)),
+		g.ui.DoDefaultUntil(nameField, g.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(nameFieldFocused)),
+		g.kb.AccelAction("Ctrl+A"),
 		g.kb.TypeAction(cell),
 		g.kb.AccelAction("Enter"),
 		// Given time to jump to the specific cell and select it.
