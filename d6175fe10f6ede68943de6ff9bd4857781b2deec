@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a656966_bde2dae7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/fixture/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2022-10-05T17:52:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "183bc2a3_1470e5fd",
+      "revId": "d6175fe10f6ede68943de6ff9bd4857781b2deec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fe3e5afc_49e15063",
@@ -48,6 +66,24 @@
       "writtenOn": "2022-10-05T10:43:36Z",
       "side": 1,
       "message": "What do you think about adding an interval as well, e.g. 1 second?",
+      "revId": "d6175fe10f6ede68943de6ff9bd4857781b2deec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "36cb235c_bc9b752e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/fixture/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2022-10-05T17:52:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fe3e5afc_49e15063",
       "revId": "d6175fe10f6ede68943de6ff9bd4857781b2deec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
