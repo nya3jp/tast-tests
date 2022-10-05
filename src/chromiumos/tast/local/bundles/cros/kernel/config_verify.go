@@ -359,6 +359,12 @@ func newKernelConfigCheck(ver *sysutil.KernelVersion, arch string) *kernelConfig
 		builtin = append(builtin, "SET_FS")
 	}
 
+	if ver.IsOrLater(5, 10) {
+		module = append(module, "EXFAT_FS")
+	} else {
+		// EXFAT is still experimental in 5.4.
+		missing = append(missing, "EXFAT_FS")
+	}
 	isX86Family := regexp.MustCompile(`^i\d86$`).MatchString(arch) || arch == "x86_64"
 	if isX86Family {
 		// Kernel: make sure port 0xED is the one used for I/O delay.
