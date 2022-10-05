@@ -16,6 +16,24 @@
       "message": "LGTM with a question.\n\nWhat would happen when all our devices have a keyboard connected to them? Then the test would pass but we would skip one part of the test which wouldn\u0027t be reflected anywhere in the test results. So we might end up in a situation where the test doesn\u0027t cover everything it should without knowing it.\nWould the actual correct way be to skip the test for all devices that have a keyboard connected to them? I don\u0027t think we can do that currently but it might be a good idea to add a TODO for that.",
       "revId": "75f4d15f5ebbc983bd6fbd012d6c12c7f9a4d8bd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "db12be77_a7f3a7e1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1451097
+      },
+      "writtenOn": "2022-10-05T12:22:32Z",
+      "side": 1,
+      "message": "The screen should be shown even if a keyboard is a connected (assuming that no mouse is connected). so, skipping the test for devices with a keyboard connected would mean less test coverage.\n\nThis test is mainly about users being able to proceed to the next screen after the HID screen is shown.\n\n@chadduffin@chromium.org @gordonseto@google.com , fyi.",
+      "parentUuid": "194e3c47_0ec2f5c9",
+      "revId": "75f4d15f5ebbc983bd6fbd012d6c12c7f9a4d8bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
