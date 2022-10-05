@@ -1,6 +1,98 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "059b22fb_96b88340",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-05T14:59:46Z",
+      "side": 1,
+      "message": "No trailing punctuation in the subject line.\n\nhttps://chromium.googlesource.com/chromiumos/docs/+/HEAD/contributing.md#Commit-messages",
+      "range": {
+        "startLine": 7,
+        "startChar": 55,
+        "endLine": 7,
+        "endChar": 56
+      },
+      "revId": "15d816e6a410f8337b2a8630e4f7902f9805466c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1679058_601f776a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-05T14:59:46Z",
+      "side": 1,
+      "message": "nit: `arc`",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 10
+      },
+      "revId": "15d816e6a410f8337b2a8630e4f7902f9805466c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7099022_416ce4f2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-05T14:59:46Z",
+      "side": 1,
+      "message": "nit: Wrap at 72 characters.\n\nhttps://chromium.googlesource.com/chromiumos/docs/+/HEAD/contributing.md#Commit-messages",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 28
+      },
+      "revId": "15d816e6a410f8337b2a8630e4f7902f9805466c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d94e961d_b194a106",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-05T14:59:46Z",
+      "side": 1,
+      "message": "`tablet`",
+      "range": {
+        "startLine": 12,
+        "startChar": 16,
+        "endLine": 12,
+        "endChar": 22
+      },
+      "revId": "15d816e6a410f8337b2a8630e4f7902f9805466c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "edbd672f_984ea2c9",
@@ -14,6 +106,41 @@
       "writtenOn": "2022-10-05T00:40:46Z",
       "side": 1,
       "message": "+amusbach and +xiyuan, I put your name into Contacts of the new lacros fixture because you are the contacts of \u0027lacrosWithArcBooted\u0027 already. Are you okay with it?",
+      "revId": "15d816e6a410f8337b2a8630e4f7902f9805466c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f520087e_6e0e0e3c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-05T14:59:46Z",
+      "side": 1,
+      "message": "👍",
+      "parentUuid": "edbd672f_984ea2c9",
+      "revId": "15d816e6a410f8337b2a8630e4f7902f9805466c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8b46680_5ecc260d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-05T14:59:46Z",
+      "side": 1,
+      "message": "You can add `lacrosWithArcBootedInClamshellMode` in the same CL. Be aware that `lacrosWithArcBooted` doesn\u0027t always default to clamshell mode. For example, on a nocturne with the keyboard detached, `lacrosWithArcBooted` will have tablet mode.",
       "revId": "15d816e6a410f8337b2a8630e4f7902f9805466c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
