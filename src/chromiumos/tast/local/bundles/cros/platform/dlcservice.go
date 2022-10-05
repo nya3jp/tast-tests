@@ -21,7 +21,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         DLCService,
 		Desc:         "Verifies that DLC D-Bus API (install, uninstall, purge, etc.) works",
-		Contacts:     []string{"kimjae@chromium.org", "ahassani@chromium.org", "chromeos-core-services@google.com"},
+		Contacts:     []string{"kimjae@chromium.org", "chromeos-core-services@google.com"},
 		SoftwareDeps: []string{"dlc"},
 		Attr:         []string{"group:mainline"},
 		Timeout:      5 * time.Minute,
