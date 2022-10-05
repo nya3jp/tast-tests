@@ -2530,9 +2530,16 @@ func (s *ShillService) ResetTest(ctx context.Context, req *wifi.ResetTestRequest
 		return "", errors.New("not a wcn3990 device")
 	}
 	ath10kWCN3990Reset := func(ctx context.Context, resetPath string) error {
-		return assertIdleAndConnect(ctx, func(ctx context.Context) error {
-			return ath10kReset(ctx, resetPath)
-		})
+		if err := ath10kReset(ctx, resetPath); err != nil {
+			return err
+		}
+
+		// Ath10k on 5.15 does not explicitly disconnect/reconnect during simulated FW crash.
+		// This will cause ping to start right after simulated FW crash, causing ping pkt drops.
+		// Allow 20 secs sleep (FW takes approx ~12 for complete initialization/full scan).
+		// TODO(b/230656342): Handle no disconnection/connection during simulated FW crash.
+		testing.Sleep(ctx, 10*time.Second)
+		return nil
 	}
 	iwlwifiResetPath := func(ctx context.Context, iface string) (string, error) {
 		par, err := network_iface.NewInterface(iface).ParentDeviceName(ctx)
