@@ -41,24 +41,6 @@ func checkPidExists(pidFile string) (bool, error) {
 	return err == nil, nil
 }
 
-// waitForCharonStop waits until the charon process stopped after the
-// disconnection of an strongswan-based connection. Otherwise, the next
-// connecting attempt (perhaps in another subtest) may fail if the charon is
-// still running at that time. If the connection is not strongswan-based,
-// returns immediately.
-func waitForCharonStop(ctx context.Context) error {
-	return testing.Poll(ctx, func(ctx context.Context) error {
-		isRunning, err := checkPidExists("/run/ipsec/charon.pid")
-		if err != nil {
-			return errors.Wrap(err, "failed to check process by pid file")
-		}
-		if !isRunning {
-			return nil
-		}
-		return errors.New("charon is still running")
-	}, &testing.PollOptions{Timeout: 5 * time.Second})
-}
-
 // RemoveVPNProfile removes the VPN service with |name| if it exists in a
 // best-effort way.
 func RemoveVPNProfile(ctx context.Context, name string) error {
@@ -111,9 +93,6 @@ func VerifyVPNServiceConnect(ctx context.Context, m *shill.Manager, service *shi
 	defer func() {
 		if err = service.Disconnect(ctx); err != nil {
 			testing.ContextLog(ctx, "Failed to disconnect service ", service)
-		}
-		if err := waitForCharonStop(ctx); err != nil {
-			testing.ContextLog(ctx, "Failed to stop charon: ", err)
 		}
 	}()
 
