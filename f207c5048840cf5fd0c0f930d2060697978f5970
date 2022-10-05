@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5f57d21_8550c832",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_client.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 964,
+      "author": {
+        "id": 1430007
+      },
+      "writtenOn": "2022-10-05T23:51:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "05520606_532c4af4",
+      "revId": "f207c5048840cf5fd0c0f930d2060697978f5970",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7655ac18_267343d1",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-10-05T17:25:33Z",
       "side": 1,
       "message": "Is returning 3 values here the idiomatic way to do this in Go? I\u0027m not sure. I guess the tast owners can weigh in on that.\n\nI kind of want to suggest that it would be better to just return the reply message, but I guess forcing all the callers to do the hex encode of the session so that they can pass it into other functions is pretty tedious.",
+      "revId": "f207c5048840cf5fd0c0f930d2060697978f5970",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "43f00078_755b9602",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_client.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 965,
+      "author": {
+        "id": 1430007
+      },
+      "writtenOn": "2022-10-05T23:51:58Z",
+      "side": 1,
+      "message": "In the intrest of keeping the legacy behaviour of StartAuthSession, I\u0027d rather keep it as is. Returning 3 values is idiomatic, or at least accepted Go - GetTokenInfoForUser() in this cryptohome_client.go returns 4 values for example.",
+      "parentUuid": "7655ac18_267343d1",
       "revId": "f207c5048840cf5fd0c0f930d2060697978f5970",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
