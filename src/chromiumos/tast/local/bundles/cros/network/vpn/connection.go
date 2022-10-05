@@ -197,14 +197,6 @@ func (c *Connection) Cleanup(ctx context.Context) error {
 		}
 	}
 
-	// Wait for charon to stop if service was strongswan-based.
-	switch c.config.Type {
-	case TypeIKEv2, TypeL2TPIPsec:
-		if err := waitForCharonStop(ctx); err != nil {
-			lastErr = err
-		}
-	}
-
 	// Shuts down server.
 	if c.Server != nil {
 		if err := c.Server.Exit(ctx); err != nil {
