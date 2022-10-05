@@ -98,11 +98,9 @@ func (yt *Youtube) Play(ctx context.Context, media *apputil.Media) error {
 		apputil.FindAndClick(searchButton, defaultUITimeout),
 		apputil.FindAndClick(searchEditText, defaultUITimeout),
 		yt.KB.TypeAction(media.Query),
-		// Press "enter" until the search layout is gone.
-		uiauto.New(yt.Tconn).RetryUntil(
-			yt.KB.AccelAction("enter"),
-			apputil.WaitUntilGone(searchLayoutView, shortTimeout),
-		),
+		// Sending keyboard event via ChromeOS can be influenced by pop-up views in ARC while the Android key event KEYCODE_ENTER won't have such issue.
+		func(ctx context.Context) error { return yt.Device.PressKeyCode(ctx, ui.KEYCODE_ENTER, 0) },
+		apputil.WaitUntilGone(searchLayoutView, shortTimeout),
 	)(ctx); err != nil {
 		return err
 	}
