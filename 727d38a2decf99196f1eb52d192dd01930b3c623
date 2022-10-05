@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4191fd0_bfe77e08",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 456,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2022-10-05T13:11:11Z",
+      "side": 1,
+      "message": "Mostyl lgtm, but I\u0027m a bit concerned that this will be a different value to what we get from calling `ParseDiskSize` on the text label.",
+      "range": {
+        "startLine": 456,
+        "startChar": 0,
+        "endLine": 456,
+        "endChar": 53
+      },
+      "revId": "727d38a2decf99196f1eb52d192dd01930b3c623",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
