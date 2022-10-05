@@ -66,6 +66,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "96243377_bd0a038f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/ccd_capabilities_gsc_full_console.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2022-10-05T19:08:00Z",
+      "side": 1,
+      "message": "if err :\u003d ...; err !\u003d nil {...}, here and elsewhere.",
+      "revId": "ed899eb2fb7e91708200962e345f400f4259a9ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1b580e5c_0041bee1",
         "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/ccd_capabilities_gsc_full_console.go",
         "patchSetId": 5
@@ -89,6 +106,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "babac896_a68f4f99",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/ccd_capabilities_gsc_full_console.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2022-10-05T19:08:00Z",
+      "side": 1,
+      "message": "Consider using table driven test pattern for these: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#table_driven-tests",
+      "revId": "ed899eb2fb7e91708200962e345f400f4259a9ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d06dbb78_a38258f7",
         "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/ccd_capabilities_gsc_full_console.go",
         "patchSetId": 5
@@ -106,6 +140,40 @@
         "endLine": 63,
         "endChar": 2
       },
+      "revId": "ed899eb2fb7e91708200962e345f400f4259a9ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a344cfa_b742a496",
+        "filename": "src/chromiumos/tast/remote/firmware/helper.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1187,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2022-10-05T19:08:00Z",
+      "side": 1,
+      "message": "Is this wrapper even needed?  I don\u0027t see callers checking for zero len matches.",
+      "revId": "ed899eb2fb7e91708200962e345f400f4259a9ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83d5e39c_d5c4f3eb",
+        "filename": "src/chromiumos/tast/remote/firmware/helper.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1201,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2022-10-05T19:08:00Z",
+      "side": 1,
+      "message": "I think this is better put into: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/common/servo/cr50.go and tests should use h.Servo.LockCCD(...).",
       "revId": "ed899eb2fb7e91708200962e345f400f4259a9ca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
