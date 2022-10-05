@@ -63,6 +63,30 @@
       },
       "revId": "1d2c6f8062b67329b1f4fa9a93df4349d49b56a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cab4b478_e08df9f9",
+        "filename": "src/chromiumos/tast/local/bluetooth/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1458367
+      },
+      "writtenOn": "2022-10-05T23:12:55Z",
+      "side": 1,
+      "message": "Oh got it, this is a different parameter from below. I guess we don\u0027t do parameter annotations in Go?",
+      "parentUuid": "6c569505_1530c1b3",
+      "range": {
+        "startLine": 25,
+        "startChar": 68,
+        "endLine": 25,
+        "endChar": 73
+      },
+      "revId": "1d2c6f8062b67329b1f4fa9a93df4349d49b56a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
