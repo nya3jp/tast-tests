@@ -1,6 +1,69 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7332baa_31af87c2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-10-05T17:07:08Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "40884afc61adb7254f94e8f8ead8e778150d795f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7966e952_f3690cb4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_http.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-10-05T17:07:08Z",
+      "side": 1,
+      "message": "If these values aren\u0027t used outside this file, they should be properly scoped with lowercase instead of uppercase",
+      "range": {
+        "startLine": 23,
+        "startChar": 1,
+        "endLine": 27,
+        "endChar": 0
+      },
+      "revId": "40884afc61adb7254f94e8f8ead8e778150d795f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f22dfe7_dda46ac0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_http.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-10-05T17:07:08Z",
+      "side": 1,
+      "message": "Do these values ever get changed? If not, it would make more sense to define them as `const` instead of `var`",
+      "range": {
+        "startLine": 30,
+        "startChar": 1,
+        "endLine": 32,
+        "endChar": 38
+      },
+      "revId": "40884afc61adb7254f94e8f8ead8e778150d795f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "891dbe1f_a11a3a88",
