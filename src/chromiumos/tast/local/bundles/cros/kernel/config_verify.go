@@ -192,6 +192,7 @@ func newKernelConfigCheck(ver *sysutil.KernelVersion, arch string) *kernelConfig
 		// Useful modules for users that should not be removed.
 		"USB_SERIAL_OTI6858",
 
+		"EXFAT_FS",
 		"FAT_FS",
 		"FUSE_FS",
 		"HFSPLUS_FS",
