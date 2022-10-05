@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ed3616d_a567bf34",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2022-10-05T15:52:26Z",
+      "side": 1,
+      "message": "audio.DevicePlay and audio.DeviceRecord are stable after skipping unstable models and boards：\n\nhttps://stainless.corp.google.com/search?view\u003dmatrix\u0026row\u003dboard_model\u0026col\u003dbuild\u0026first_date\u003d2022-09-22\u0026last_date\u003d2022-10-05\u0026test\u003daudio.DevicePlay\u0026status\u003dGOOD\u0026status\u003dFAIL\u0026status\u003dERROR\u0026exclude_cts\u003dfalse\u0026exclude_not_run\u003dfalse\u0026exclude_non_release\u003dtrue\u0026exclude_au\u003dtrue\u0026exclude_acts\u003dtrue\u0026exclude_retried\u003dfalse\u0026exclude_non_production\u003dfalse\u0026exclude_non_critical\u003dtrue\n\nhttps://stainless.corp.google.com/search?view\u003dmatrix\u0026row\u003dboard_model\u0026col\u003dbuild\u0026first_date\u003d2022-09-22\u0026last_date\u003d2022-10-05\u0026test\u003daudio.DeviceRecord\u0026status\u003dGOOD\u0026status\u003dFAIL\u0026status\u003dERROR\u0026exclude_cts\u003dfalse\u0026exclude_not_run\u003dfalse\u0026exclude_non_release\u003dtrue\u0026exclude_au\u003dtrue\u0026exclude_acts\u003dtrue\u0026exclude_retried\u003dfalse\u0026exclude_non_production\u003dfalse\u0026exclude_non_critical\u003dtrue",
+      "revId": "d37b40f1e8ae97edf2a7f523cfc940268b0f43e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
