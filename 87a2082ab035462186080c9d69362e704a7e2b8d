@@ -16,6 +16,24 @@
       "message": "I\u0027d like to keep one test owned by the team to make sure user policies are working as expected.\n\nThe test is small enough for that and does not flake.",
       "revId": "87a2082ab035462186080c9d69362e704a7e2b8d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "51b07e5d_18bf4903",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_dinosaur_easter_egg.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1414062
+      },
+      "writtenOn": "2022-10-05T08:56:42Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "359ef136_165d9df3",
+      "revId": "87a2082ab035462186080c9d69362e704a7e2b8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
