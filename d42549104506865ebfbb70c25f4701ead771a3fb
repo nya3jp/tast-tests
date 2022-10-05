@@ -82,6 +82,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae72e13b_91359657",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/parental_controls_link.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-10-05T09:37:02Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "af44f3b5_e2fc22d4",
+      "range": {
+        "startLine": 25,
+        "startChar": 2,
+        "endLine": 25,
+        "endChar": 46
+      },
+      "revId": "d42549104506865ebfbb70c25f4701ead771a3fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a7834f7b_2728b999",
@@ -128,6 +152,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c69b5f0_dc9b393f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/parental_controls_link.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-10-05T09:37:02Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "a7834f7b_2728b999",
+      "range": {
+        "startLine": 26,
+        "startChar": 16,
+        "endLine": 26,
+        "endChar": 88
+      },
+      "revId": "d42549104506865ebfbb70c25f4701ead771a3fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4173bea7_b7e8ac76",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/parental_controls_link.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-10-05T09:37:02Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "e816c270_26e32a19",
+      "range": {
+        "startLine": 26,
+        "startChar": 24,
+        "endLine": 26,
+        "endChar": 43
+      },
+      "revId": "d42549104506865ebfbb70c25f4701ead771a3fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "21fbbdd2_799ec77e",
@@ -145,6 +217,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2a5fb26_a72cac2e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/parental_controls_link.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-10-05T09:37:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "21fbbdd2_799ec77e",
+      "revId": "d42549104506865ebfbb70c25f4701ead771a3fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "22d62351_92966e72",
@@ -158,6 +248,30 @@
       "writtenOn": "2022-09-27T15:38:34Z",
       "side": 1,
       "message": "Nit: Maybe add a comment that it is expected for ARC to be disabled in this fixture.",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 40
+      },
+      "revId": "d42549104506865ebfbb70c25f4701ead771a3fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "32b17922_c69170dc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/parental_controls_link.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-10-05T09:37:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "22d62351_92966e72",
       "range": {
         "startLine": 35,
         "startChar": 0,
@@ -191,6 +305,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "10565326_1c622b1b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/parental_controls_link.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-10-05T09:37:02Z",
+      "side": 1,
+      "message": "Fixed, one more faillog is added to capture the detail when the test fails before opening the parental controls.",
+      "parentUuid": "a361614e_e2003e46",
+      "range": {
+        "startLine": 63,
+        "startChar": 2,
+        "endLine": 63,
+        "endChar": 34
+      },
+      "revId": "d42549104506865ebfbb70c25f4701ead771a3fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3cefa0a8_1fa2e58a",
@@ -214,6 +352,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1cb522f4_40f98ab9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/parental_controls_link.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-10-05T09:37:02Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "3cefa0a8_1fa2e58a",
+      "range": {
+        "startLine": 71,
+        "startChar": 14,
+        "endLine": 71,
+        "endChar": 29
+      },
+      "revId": "d42549104506865ebfbb70c25f4701ead771a3fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6d490fc2_19b9df2d",
@@ -227,6 +389,30 @@
       "writtenOn": "2022-09-27T22:48:55Z",
       "side": 1,
       "message": "Nit: no need for else. This test will terminate if the previous condition failed.",
+      "range": {
+        "startLine": 82,
+        "startChar": 3,
+        "endLine": 82,
+        "endChar": 7
+      },
+      "revId": "d42549104506865ebfbb70c25f4701ead771a3fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "32f512aa_3c5c631d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/parental_controls_link.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-10-05T09:37:02Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "6d490fc2_19b9df2d",
       "range": {
         "startLine": 82,
         "startChar": 3,
