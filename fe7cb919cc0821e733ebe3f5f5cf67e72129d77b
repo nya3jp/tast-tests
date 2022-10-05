@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73595509_b1150a09",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-10-05T08:55:12Z",
+      "side": 1,
+      "message": "I didn\u0027t how to verify that regex properly using some tast tests. Only tried to use some online regex tester, and verified that all the 3 formats can be parsed properly.",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 39
+      },
+      "revId": "fe7cb919cc0821e733ebe3f5f5cf67e72129d77b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "26174bf5_807a9929",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-10-05T08:55:12Z",
+      "side": 1,
+      "message": "+yich@ for the owner of the affected file and +allenwebb@ for the author of https://crrev.com/c/3057689\n\nHere is a list of the failures in last 15 days [1]. Mostly VPN tests but there are still some other tests.\n\nPlease take a look. Thanks!\n\n[1] https://stainless.corp.google.com/search?view\u003dlist\u0026first_date\u003d2022-09-22\u0026last_date\u003d2022-10-05\u0026reason\u003dunexpected+format+in\u0026exclude_cts\u003dtrue\u0026exclude_not_run\u003dtrue\u0026exclude_non_release\u003dfalse\u0026exclude_au\u003dtrue\u0026exclude_acts\u003dtrue\u0026exclude_retried\u003dfalse\u0026exclude_non_production\u003dfalse\u0026exclude_non_critical\u003dfalse",
+      "revId": "fe7cb919cc0821e733ebe3f5f5cf67e72129d77b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
