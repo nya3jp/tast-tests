@@ -16,63 +16,51 @@ import (
 
 func init() {
 	testing.AddFixture(&testing.Fixture{
-		Name: "chromeLoggedInWithBluetoothRevampEnabled",
-		Desc: "Logs into a user session with the BluetoothRevamp feature flag enabled",
+		Name: "chromeLoggedInWithBlueZ",
+		Desc: "Logs into a user session with the Floss feature flag disabled",
 		Contacts: []string{
 			"chadduffin@chromium.org",
 			"cros-connectivity@google.com",
 		},
-		Impl:            chromeLoggedInWithFeatures([]string{"BluetoothRevamp"}, []string{}),
+		Impl:            chromeLoggedInWithFeatures([]string{}, []string{"Floss"}),
 		SetUpTimeout:    chrome.LoginTimeout,
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
 	})
 	testing.AddFixture(&testing.Fixture{
-		Name: "chromeLoggedInWithFlossEnabled",
-		Desc: "Logs into a user session with the BluetoothRevamp and Floss feature flags enabled",
+		Name: "chromeLoggedInWithFloss",
+		Desc: "Logs into a user session with the Floss feature flag enabled",
 		Contacts: []string{
 			"chadduffin@chromium.org",
 			"cros-connectivity@google.com",
 		},
-		Impl:            chromeLoggedInWithFeatures([]string{"BluetoothRevamp", "Floss"}, []string{}),
+		Impl:            chromeLoggedInWithFeatures([]string{"Floss"}, []string{}),
 		SetUpTimeout:    chrome.LoginTimeout,
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
 	})
 	testing.AddFixture(&testing.Fixture{
-		Name: "chromeLoggedInWithBluetoothRevampDisabled",
-		Desc: "Logs into a user session with the BluetoothRevamp feature flag disabled",
-		Contacts: []string{
-			"chadduffin@chromium.org",
-			"cros-connectivity@google.com",
-		},
-		Impl:            chromeLoggedInWithFeatures([]string{}, []string{"BluetoothRevamp"}),
-		SetUpTimeout:    chrome.LoginTimeout,
-		ResetTimeout:    chrome.ResetTimeout,
-		TearDownTimeout: chrome.ResetTimeout,
-	})
-	testing.AddFixture(&testing.Fixture{
-		Name: "chromeLoggedInWithBluetoothEnabled",
-		Desc: "Logs into a user session and enables Bluetooth during set up and tear down",
+		Name: "bluetoothEnabledWithBlueZ",
+		Desc: "Logs into Chrome with Floss disabled, and enables Bluetooth during set up and tear down",
 		Contacts: []string{
 			"chadduffin@chromium.org",
 			"cros-connectivity@google.com",
 		},
 		Impl:            &ChromeLoggedInWithBluetoothEnabled{Impl: &bluez.BlueZ{}},
-		Parent:          "chromeLoggedInWithBluetoothRevampEnabled",
+		Parent:          "chromeLoggedInWithBlueZ",
 		SetUpTimeout:    chrome.LoginTimeout,
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
 	})
 	testing.AddFixture(&testing.Fixture{
-		Name: "chromeLoggedInWithFlossAndBluetoothEnabled",
-		Desc: "Logs into a user session and enables Bluetooth during set up and tear down",
+		Name: "bluetoothEnabledWithFloss",
+		Desc: "Logs into Chrome with Floss enabled, and enables Bluetooth during set up and tear down",
 		Contacts: []string{
 			"chadduffin@chromium.org",
 			"cros-connectivity@google.com",
 		},
 		Impl:            &ChromeLoggedInWithBluetoothEnabled{Impl: &floss.Floss{}},
-		Parent:          "chromeLoggedInWithFlossEnabled",
+		Parent:          "chromeLoggedInWithFloss",
 		SetUpTimeout:    chrome.LoginTimeout,
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
