@@ -1,0 +1,5 @@
+{
+  "sha256sum": "436a8cc1e49e6eea4dc1f79f49bd90b255320734f020fc4ad8900d4e81fecaaf",
+  "size": 2249371,
+  "url": "gs://chromiumos-test-assets-public/tast/cros/video/perf/vp9/4320p_60fps_600frames_20221005.vp9.webm"
+}

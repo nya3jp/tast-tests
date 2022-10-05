@@ -13,6 +13,9 @@ import (
 	"chromiumos/tast/local/bundles/cros/video/playback"
 )
 
+// To regenerate the test parameters by running the following in a chroot:
+// TAST_GENERATE_UPDATE=1 ~/trunk/src/platform/tast/tools/go.sh test -count=1 chromiumos/tast/local/bundles/cros/video
+
 // codec
 var playbackPerfLongFile = map[string]string{
 	"h264": "crosvideo/1080.mp4",
@@ -139,13 +142,17 @@ func TestPlaybackPerfParams(t *testing.T) {
 
 	codecs := []string{"h264", "vp8", "vp9", "av1", "hevc"}
 	for _, codec := range codecs {
-		for _, resolution := range []int{720, 1080, 2160} {
+		for _, resolution := range []int{720, 1080, 2160, 4320} {
+			if resolution >= 4320 && codec == "vp8" {
+				// VP8 does not support 8K.
+				continue
+			}
 			fpss := []int{30}
 			if resolution >= 1080 {
 				fpss = append(fpss, 60)
 			}
 			decs := []string{"hw"}
-			if codec != "hevc" {
+			if codec != "hevc" && resolution <= 2160 {
 				decs = append(decs, "sw")
 			}
 			for _, fps := range fpss {
@@ -159,11 +166,13 @@ func TestPlaybackPerfParams(t *testing.T) {
 	}
 	// HEVC10
 	for _, fps := range []int{30, 60} {
-		codec, resolution, dec := "hevc10", 2160, "hw"
-		params = append(params,
-			genPlaybackParam(codec, genPlaybackPerfDataPath(codec, resolution, fps),
-				resolution, fps, dec,
-				"", "", []string{}))
+		for _, resolution := range []int{2160, 4320} {
+			codec, dec := "hevc10", "hw"
+			params = append(params,
+				genPlaybackParam(codec, genPlaybackPerfDataPath(codec, resolution, fps),
+					resolution, fps, dec,
+					"", "", []string{}))
+		}
 	}
 	// Alt
 	for _, codec := range []string{"h264", "vp8", "vp9"} {
