@@ -191,10 +191,13 @@ func (h *UIHelper) ValidateMessage(ctx context.Context, messageSent string) erro
 	}
 
 	testing.ContextLog(ctx, "alert dialog data: ", smsDetails)
-	strPattern := regexp.MustCompile(`\\s+`)
+	strPattern := regexp.MustCompile(`\s+`)
 	smsReceived := strPattern.ReplaceAllString(smsDetails.Name, " ")
+	smsSent := strPattern.ReplaceAllString(messageSent, " ")
 
-	if strings.Contains(smsReceived, messageSent) {
+	testing.ContextLog(ctx, "smsReceived: ", smsReceived)
+	testing.ContextLog(ctx, "messageSent: ", smsSent)
+	if strings.Contains(smsReceived, smsSent) {
 		testing.ContextLog(ctx, "success message received")
 		return nil
 	}

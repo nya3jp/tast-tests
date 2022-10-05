@@ -40,7 +40,20 @@ func init() {
 
 // UIOtaBasicSms validates MT SMS, uses google voice to send SMS.
 func UIOtaBasicSms(ctx context.Context, s *testing.State) {
+	modem, err := modemmanager.NewModemWithSim(ctx)
+	if err != nil {
+		s.Fatal("Could not find MM dbus object with a valid sim: ", err)
+	}
 
+	helper, err := cellular.NewHelper(ctx)
+	if err != nil {
+		s.Fatal("Failed to create cellular.Helper: ", err)
+	}
+
+	// Enable and get service to set autoconnect based on test parameters.
+	if _, err := helper.Connect(ctx); err != nil {
+		s.Fatal("Failed to connect to cellular service")
+	}
 	/* a) Check cellular connection and get mobile number on dut
 	   b) Create and send SMS on google voice ui from chrome web interface
 	   c) Check UI notifications for SMS, verify SMS content
@@ -48,22 +61,6 @@ func UIOtaBasicSms(ctx context.Context, s *testing.State) {
 	*/
 
 	messageToSend := "Hello " + time.Now().Format(time.UnixDate)
-
-	helper, err := cellular.NewHelper(ctx)
-	if err != nil {
-		s.Fatal("Failed to create cellular.Helper: ", err)
-	}
-
-	// Ensure that a Cellular Service was created.
-	if _, err := helper.FindService(ctx); err != nil {
-		s.Fatal("Unable to find Cellular Service: ", err)
-	}
-
-	// Read modem property OwnNumbers.
-	modem, err := modemmanager.NewModem(ctx)
-	if err != nil {
-		s.Fatal("Failed to create modem: ", err)
-	}
 
 	props, err := modem.GetProperties(ctx)
 	if err != nil {
