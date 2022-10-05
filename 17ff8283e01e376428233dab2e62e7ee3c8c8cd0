@@ -22,6 +22,30 @@
       },
       "revId": "17ff8283e01e376428233dab2e62e7ee3c8c8cd0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef405d21_665a2e8a",
+        "filename": "src/chromiumos/tast/local/camera/cca/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1318626
+      },
+      "writtenOn": "2022-10-05T08:46:06Z",
+      "side": 1,
+      "message": "Do you mean we want to deprecate feature flags over time?\n\nSetting `/run/camera/force_enable_auto_framing` in the test is too late since Chrome checks whether auto-framing is supported at starting and enable/disable UI. I think I can do this after we made the check more dynamic, which is also needed for DLC.",
+      "parentUuid": "288d67c1_d2283474",
+      "range": {
+        "startLine": 320,
+        "startChar": 0,
+        "endLine": 322,
+        "endChar": 2
+      },
+      "revId": "17ff8283e01e376428233dab2e62e7ee3c8c8cd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
