@@ -22,6 +22,30 @@
       },
       "revId": "727d38a2decf99196f1eb52d192dd01930b3c623",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eab0b1f2_a64f9b54",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 456,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-10-05T21:57:38Z",
+      "side": 1,
+      "message": "Could you help me understand how this will be different from `ParseDiskSize` on the text label, which should be the same as `diskSizeTicks[slider.value].label`? I am assuming `diskSizeTicks[slider.value].value` and `diskSizeTicks[slider.value].label` can always be parsed to the same value?",
+      "parentUuid": "f4191fd0_bfe77e08",
+      "range": {
+        "startLine": 456,
+        "startChar": 0,
+        "endLine": 456,
+        "endChar": 53
+      },
+      "revId": "727d38a2decf99196f1eb52d192dd01930b3c623",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
