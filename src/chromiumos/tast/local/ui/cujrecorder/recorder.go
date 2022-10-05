@@ -282,6 +282,9 @@ func (r *Recorder) AddScreenRecorder(ctx context.Context, tconn *chrome.TestConn
 		return screenRecorder.Start(ctx, tconn)
 	}
 	r.screenRecorderCleanup = func(ctx context.Context) {
+		if err := testing.Sleep(ctx, 2*time.Second); err != nil {
+			testing.ContextLog(ctx, "Failed to sleep")
+		}
 		uiauto.ScreenRecorderStopSaveRelease(ctx, screenRecorder, filepath.Join(dir, fmt.Sprintf("%s-record.webm", testName)))
 	}
 	return nil
