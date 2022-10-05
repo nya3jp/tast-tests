@@ -30,8 +30,17 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{
 			Name:    "floss_disabled",
+<<<<<<< PATCH SET (2c2023 [TAST] Enable Bluetooth UI tests with Floss.)
+			Fixture: "chromeLoggedInWithBluetoothEnabled",
+		},
+			{
+				Name:    "floss_enabled",
+				Fixture: "bluetoothEnabledWithFloss",
+			}},
+=======
 			Fixture: "bluetoothEnabledWithBlueZ",
 		}},
+>>>>>>> BASE      (1d2c6f [TAST] Remove BluetoothRevamp usage in Tast.)
 	})
 }
 
