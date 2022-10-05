@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "684b48f6_6ed9b438",
+        "filename": "src/chromiumos/tast/local/bundles/cros/spera/frontline_worker_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-10-05T09:39:55Z",
+      "side": 1,
+      "message": "Is this possible that err \u003d\u003d nil and l is nil?",
+      "range": {
+        "startLine": 179,
+        "startChar": 1,
+        "endLine": 179,
+        "endChar": 14
+      },
+      "revId": "0a5820eaf5b1f343bb45fb7b07d8d805666902da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
