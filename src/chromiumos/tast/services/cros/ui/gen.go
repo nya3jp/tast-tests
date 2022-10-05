@@ -7,6 +7,7 @@
 //go:generate protoc -I . --go_out=plugins=grpc:../../../../.. check_power_menu_service.proto
 //go:generate protoc -I . --go_out=plugins=grpc:../../../../.. check_virtual_keyboard_service.proto
 //go:generate protoc -I . --go_out=plugins=grpc:../../../../.. chrome_service.proto
+//go:generate protoc -I . --go_out=plugins=grpc:../../../../.. chrome_ui_service.proto
 //go:generate protoc -I . --go_out=plugins=grpc:../../../../.. screen_recorder_service.proto
 //go:generate protoc -I . --go_out=plugins=grpc:../../../../.. screenlock_service.proto
 //go:generate protoc -I . --go_out=plugins=grpc:../../../../.. tconn_service.proto
