@@ -270,6 +270,7 @@ var vp8IntraSegmentFiles = []string{
 
 var vp9FilesFromBugs = []string{
 	"test_vectors/vp9/files_from_bugs/b_177839888__rk3399_vp9_artifacts_with_video_decoder_japanews24.ivf",
+	"test_vectors/vp9/files_from_bugs/b_251040563_webrtc_libvpx.vp9.ivf",
 }
 
 var vp90Group1Buf = []string{
