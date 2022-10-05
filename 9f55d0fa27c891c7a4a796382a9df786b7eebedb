@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6afe2273_0bc7d6bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/biod/device_access.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-10-05T21:10:18Z",
+      "side": 1,
+      "message": "I think this answers the question I was going to ask.\n\nHowever, on a fairly recent build (`R108-15150.0.0`), I\u0027m seeing:\n\n```\nls -lah /dev/cros_fp \ncrw-rw----. 1 root biod 10, 60 Sep 30 11:37 /dev/cros_fp\n```\n\nLooks like `/dev/cros_fp` is owned by the `biod` group, so you could check the group id on the `/dev/cros_fp` and the group permissions?",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 14
+      },
+      "revId": "9f55d0fa27c891c7a4a796382a9df786b7eebedb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
