@@ -81,6 +81,30 @@
       },
       "revId": "cf16c98781296d5ec8ec53187d17aa675d5eb496",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b33423a_26b4fa02",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-10-05T18:49:25Z",
+      "side": 1,
+      "message": "Ack. This might mean the `testing.Sleep` gets cut short I guess?",
+      "parentUuid": "daf6a52d_8793a547",
+      "range": {
+        "startLine": 136,
+        "startChar": 0,
+        "endLine": 138,
+        "endChar": 3
+      },
+      "revId": "cf16c98781296d5ec8ec53187d17aa675d5eb496",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
