@@ -22,6 +22,30 @@
       },
       "revId": "4ab16f93679870dc7a96b4dbfffac23b07e2ce73",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "20db652c_e887b0ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/personalization/set_screensaver.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1537587
+      },
+      "writtenOn": "2022-10-05T17:35:21Z",
+      "side": 1,
+      "message": "We can, but I think `Retry(3, action)` is pretty self-explanatory.",
+      "parentUuid": "9930fd4a_5cc6688e",
+      "range": {
+        "startLine": 174,
+        "startChar": 27,
+        "endLine": 174,
+        "endChar": 29
+      },
+      "revId": "4ab16f93679870dc7a96b4dbfffac23b07e2ce73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
