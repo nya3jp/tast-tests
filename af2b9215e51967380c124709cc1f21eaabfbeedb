@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fb188671_1f655d79",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/config_verify.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2022-10-05T01:48:57Z",
+      "side": 1,
+      "message": "We are not separating ChromeOS vs. ChromiumOS anymore.  Instead, we introduce a SoftwareDeps for \"ChromeOS KernelCI\" (see https://crrev.com/c/3912903).",
+      "parentUuid": "527d9385_607cc1b8",
+      "range": {
+        "startLine": 32,
+        "startChar": 12,
+        "endLine": 32,
+        "endChar": 19
+      },
+      "revId": "af2b9215e51967380c124709cc1f21eaabfbeedb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ba621314_c651272d",
         "filename": "src/chromiumos/tast/local/bundles/cros/kernel/config_verify.go",
         "patchSetId": 5
