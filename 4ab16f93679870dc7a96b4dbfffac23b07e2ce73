@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9930fd4a_5cc6688e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/personalization/set_screensaver.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1536317
+      },
+      "writtenOn": "2022-10-05T16:03:48Z",
+      "side": 1,
+      "message": "nit: Does it make sense to extract this to a constant meaning \"default retry count\" or similar?",
+      "range": {
+        "startLine": 174,
+        "startChar": 27,
+        "endLine": 174,
+        "endChar": 29
+      },
+      "revId": "4ab16f93679870dc7a96b4dbfffac23b07e2ce73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
