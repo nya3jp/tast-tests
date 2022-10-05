@@ -20,15 +20,13 @@ type Configuration struct {
 	// ChromeOSVersionFromMilestone maps Chrome milestones to ChromeOS version prefixes.
 	ChromeOSVersionFromMilestone map[int]int
 
+	// ChromeOSLTRMilestoneWithMininumMinor lists the LTS milestones and maps them to the a minor version that is LTS only.
+	ChromeOSLTRMilestoneWithMininumMinor map[int]int
+
 	// CurrentStableChrome is the current stable milestone of ChromeOS.
 	CurrentStableChrome int
 	// CurrentStableChrome is the next stable milestone of ChromeOS.
 	NextStableChrome int
-
-	// CurrentChromeOSLTS is the current ChromeOS LTS milestone.
-	CurrentChromeOSLTS int
-	// CurrentChromeOSLTSMinor is the first LTS only minor version.
-	CurrentChromeOSLTSMinor int
 }
 
 // DumpToFile writes the device parameters to a file.
