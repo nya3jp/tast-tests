@@ -30,6 +30,8 @@ const (
 	HWDecodeH264_60   = Prefix + "hw_dec_h264_1080_60"
 	HWDecodeH264_4K   = Prefix + "hw_dec_h264_2160_30"
 	HWDecodeH264_4K60 = Prefix + "hw_dec_h264_2160_60"
+	HWDecodeH264_8K   = Prefix + "hw_dec_h264_4320_30"
+	HWDecodeH264_8K60 = Prefix + "hw_dec_h264_4320_60"
 
 	HWDecodeVP8      = Prefix + "hw_dec_vp8_1080_30"
 	HWDecodeVP8_60   = Prefix + "hw_dec_vp8_1080_60"
@@ -40,31 +42,43 @@ const (
 	HWDecodeVP9_60   = Prefix + "hw_dec_vp9_1080_60"
 	HWDecodeVP9_4K   = Prefix + "hw_dec_vp9_2160_30"
 	HWDecodeVP9_4K60 = Prefix + "hw_dec_vp9_2160_60"
+	HWDecodeVP9_8K   = Prefix + "hw_dec_vp9_4320_30"
+	HWDecodeVP9_8K60 = Prefix + "hw_dec_vp9_4320_60"
 
 	HWDecodeVP9_2      = Prefix + "hw_dec_vp9-2_1080_30"
 	HWDecodeVP9_2_60   = Prefix + "hw_dec_vp9-2_1080_60"
 	HWDecodeVP9_2_4K   = Prefix + "hw_dec_vp9-2_2160_30"
 	HWDecodeVP9_2_4K60 = Prefix + "hw_dec_vp9-2_2160_60"
+	HWDecodeVP9_2_8K   = Prefix + "hw_dec_vp9-2_4320_30"
+	HWDecodeVP9_2_8K60 = Prefix + "hw_dec_vp9-2_4320_60"
 
 	HWDecodeAV1      = Prefix + "hw_dec_av1_1080_30"
 	HWDecodeAV1_60   = Prefix + "hw_dec_av1_1080_60"
 	HWDecodeAV1_4K   = Prefix + "hw_dec_av1_2160_30"
 	HWDecodeAV1_4K60 = Prefix + "hw_dec_av1_2160_60"
+	HWDecodeAV1_8K   = Prefix + "hw_dec_av1_4320_30"
+	HWDecodeAV1_8K60 = Prefix + "hw_dec_av1_4320_60"
 
 	HWDecodeAV1_10BPP      = Prefix + "hw_dec_av1_1080_30_10bpp"
 	HWDecodeAV1_60_10BPP   = Prefix + "hw_dec_av1_1080_60_10bpp"
 	HWDecodeAV1_4K10BPP    = Prefix + "hw_dec_av1_2160_30_10bpp"
 	HWDecodeAV1_4K60_10BPP = Prefix + "hw_dec_av1_2160_60_10bpp"
+	HWDecodeAV1_8K10BPP    = Prefix + "hw_dec_av1_4320_30_10bpp"
+	HWDecodeAV1_8K60_10BPP = Prefix + "hw_dec_av1_4320_60_10bpp"
 
 	HWDecodeHEVC     = Prefix + "hw_dec_hevc_1080_30"
 	HWDecodeHEVC60   = Prefix + "hw_dec_hevc_1080_60"
 	HWDecodeHEVC4K   = Prefix + "hw_dec_hevc_2160_30"
 	HWDecodeHEVC4K60 = Prefix + "hw_dec_hevc_2160_60"
+	HWDecodeHEVC8K   = Prefix + "hw_dec_hevc_4320_30"
+	HWDecodeHEVC8K60 = Prefix + "hw_dec_hevc_4320_60"
 
 	HWDecodeHEVC10BPP      = Prefix + "hw_dec_hevc_1080_30_10bpp"
 	HWDecodeHEVC60_10BPP   = Prefix + "hw_dec_hevc_1080_60_10bpp"
 	HWDecodeHEVC4K10BPP    = Prefix + "hw_dec_hevc_2160_30_10bpp"
 	HWDecodeHEVC4K60_10BPP = Prefix + "hw_dec_hevc_2160_60_10bpp"
+	HWDecodeHEVC8K10BPP    = Prefix + "hw_dec_hevc_4320_30_10bpp"
+	HWDecodeHEVC8K60_10BPP = Prefix + "hw_dec_hevc_4320_60_10bpp"
 
 	// Protected Video Decoding
 	HWDecodeCBCV1H264 = Prefix + "hw_video_prot_cencv1_h264_cbc"

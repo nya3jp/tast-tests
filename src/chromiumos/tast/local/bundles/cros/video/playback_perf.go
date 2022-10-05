@@ -164,6 +164,28 @@ func init() {
 				Fixture:           "chromeVideoWithSWDecoding",
 			},
 			{
+				Name: "h264_4320p_30fps_hw",
+				Val: playbackPerfParams{
+					fileName:    "perf/h264/4320p_30fps_300frames.h264.mp4",
+					decoderType: 0,
+					browserType: browser.TypeAsh,
+				},
+				ExtraSoftwareDeps: []string{"proprietary_codecs", "autotest-capability:hw_dec_h264_4320_30"},
+				ExtraData:         []string{"perf/h264/4320p_30fps_300frames.h264.mp4"},
+				Fixture:           "chromeVideo",
+			},
+			{
+				Name: "h264_4320p_60fps_hw",
+				Val: playbackPerfParams{
+					fileName:    "perf/h264/4320p_60fps_600frames.h264.mp4",
+					decoderType: 0,
+					browserType: browser.TypeAsh,
+				},
+				ExtraSoftwareDeps: []string{"proprietary_codecs", "autotest-capability:hw_dec_h264_4320_60"},
+				ExtraData:         []string{"perf/h264/4320p_60fps_600frames.h264.mp4"},
+				Fixture:           "chromeVideo",
+			},
+			{
 				Name: "vp8_720p_30fps_hw",
 				Val: playbackPerfParams{
 					fileName:    "perf/vp8/720p_30fps_300frames.vp8.webm",
@@ -374,6 +396,28 @@ func init() {
 				Fixture:   "chromeVideoWithSWDecoding",
 			},
 			{
+				Name: "vp9_4320p_30fps_hw",
+				Val: playbackPerfParams{
+					fileName:    "perf/vp9/4320p_30fps_300frames.vp9.webm",
+					decoderType: 0,
+					browserType: browser.TypeAsh,
+				},
+				ExtraSoftwareDeps: []string{"autotest-capability:hw_dec_vp9_4320_30"},
+				ExtraData:         []string{"perf/vp9/4320p_30fps_300frames.vp9.webm"},
+				Fixture:           "chromeVideo",
+			},
+			{
+				Name: "vp9_4320p_60fps_hw",
+				Val: playbackPerfParams{
+					fileName:    "perf/vp9/4320p_60fps_600frames.vp9.webm",
+					decoderType: 0,
+					browserType: browser.TypeAsh,
+				},
+				ExtraSoftwareDeps: []string{"autotest-capability:hw_dec_vp9_4320_60"},
+				ExtraData:         []string{"perf/vp9/4320p_60fps_600frames.vp9.webm"},
+				Fixture:           "chromeVideo",
+			},
+			{
 				Name: "av1_720p_30fps_hw",
 				Val: playbackPerfParams{
 					fileName:    "perf/av1/720p_30fps_300frames.av1.mp4",
@@ -479,6 +523,28 @@ func init() {
 				Fixture:   "chromeVideoWithSWDecoding",
 			},
 			{
+				Name: "av1_4320p_30fps_hw",
+				Val: playbackPerfParams{
+					fileName:    "perf/av1/4320p_30fps_300frames.av1.mp4",
+					decoderType: 0,
+					browserType: browser.TypeAsh,
+				},
+				ExtraSoftwareDeps: []string{"autotest-capability:hw_dec_av1_4320_30"},
+				ExtraData:         []string{"perf/av1/4320p_30fps_300frames.av1.mp4"},
+				Fixture:           "chromeVideoWithHWAV1Decoding",
+			},
+			{
+				Name: "av1_4320p_60fps_hw",
+				Val: playbackPerfParams{
+					fileName:    "perf/av1/4320p_60fps_600frames.av1.mp4",
+					decoderType: 0,
+					browserType: browser.TypeAsh,
+				},
+				ExtraSoftwareDeps: []string{"autotest-capability:hw_dec_av1_4320_60"},
+				ExtraData:         []string{"perf/av1/4320p_60fps_600frames.av1.mp4"},
+				Fixture:           "chromeVideoWithHWAV1Decoding",
+			},
+			{
 				Name: "hevc_720p_30fps_hw",
 				Val: playbackPerfParams{
 					fileName:    "perf/hevc/720p_30fps_300frames.hevc.mp4",
@@ -534,6 +600,28 @@ func init() {
 				Fixture:           "chromeVideo",
 			},
 			{
+				Name: "hevc_4320p_30fps_hw",
+				Val: playbackPerfParams{
+					fileName:    "perf/hevc/4320p_30fps_300frames.hevc.mp4",
+					decoderType: 0,
+					browserType: browser.TypeAsh,
+				},
+				ExtraSoftwareDeps: []string{"proprietary_codecs", "autotest-capability:hw_dec_hevc_4320_30"},
+				ExtraData:         []string{"perf/hevc/4320p_30fps_300frames.hevc.mp4"},
+				Fixture:           "chromeVideo",
+			},
+			{
+				Name: "hevc_4320p_60fps_hw",
+				Val: playbackPerfParams{
+					fileName:    "perf/hevc/4320p_60fps_600frames.hevc.mp4",
+					decoderType: 0,
+					browserType: browser.TypeAsh,
+				},
+				ExtraSoftwareDeps: []string{"proprietary_codecs", "autotest-capability:hw_dec_hevc_4320_60"},
+				ExtraData:         []string{"perf/hevc/4320p_60fps_600frames.hevc.mp4"},
+				Fixture:           "chromeVideo",
+			},
+			{
 				Name: "hevc10_2160p_30fps_hw",
 				Val: playbackPerfParams{
 					fileName:    "perf/hevc10/2160p_30fps_300frames.hevc10.mp4",
@@ -545,6 +633,17 @@ func init() {
 				Fixture:           "chromeVideo",
 			},
 			{
+				Name: "hevc10_4320p_30fps_hw",
+				Val: playbackPerfParams{
+					fileName:    "perf/hevc10/4320p_30fps_300frames.hevc10.mp4",
+					decoderType: 0,
+					browserType: browser.TypeAsh,
+				},
+				ExtraSoftwareDeps: []string{"proprietary_codecs", "autotest-capability:hw_dec_hevc_4320_30_10bpp"},
+				ExtraData:         []string{"perf/hevc10/4320p_30fps_300frames.hevc10.mp4"},
+				Fixture:           "chromeVideo",
+			},
+			{
 				Name: "hevc10_2160p_60fps_hw",
 				Val: playbackPerfParams{
 					fileName:    "perf/hevc10/2160p_60fps_600frames.hevc10.mp4",
@@ -553,6 +652,17 @@ func init() {
 				},
 				ExtraSoftwareDeps: []string{"proprietary_codecs", "autotest-capability:hw_dec_hevc_2160_60_10bpp"},
 				ExtraData:         []string{"perf/hevc10/2160p_60fps_600frames.hevc10.mp4"},
+				Fixture:           "chromeVideo",
+			},
+			{
+				Name: "hevc10_4320p_60fps_hw",
+				Val: playbackPerfParams{
+					fileName:    "perf/hevc10/4320p_60fps_600frames.hevc10.mp4",
+					decoderType: 0,
+					browserType: browser.TypeAsh,
+				},
+				ExtraSoftwareDeps: []string{"proprietary_codecs", "autotest-capability:hw_dec_hevc_4320_60_10bpp"},
+				ExtraData:         []string{"perf/hevc10/4320p_60fps_600frames.hevc10.mp4"},
 				Fixture:           "chromeVideo",
 			},
 			{
