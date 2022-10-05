@@ -35,27 +35,19 @@ import (
 // UnstableModels is list of models on which the Crostini tests are flaky.
 // Use the guide at go/crostini-unstable-devices for when to add a device.
 var UnstableModels = []string{
-	// b/241027994
+	// Deprecated models.
 	"wizpig",
 	"cyan",
 	"edgar",
+	"basking",
 	// Platform coral
-	"astronaut",
-	"blacktip360",
-	"blacktiplte",
-	"lava",
 	"nasher",
-	// Platform fizz
-	"jax",
 	// Platform kevin
 	"kevin", // crbug.com/1140145
 	// Platform kukui
 	"krane",
 	// Platform nocturne
 	"nocturne",
-	// Platform reef
-	"basking",
-	"electro",
 	// Platform trogdor
 	"pompom",
 	// http://b/233817342
