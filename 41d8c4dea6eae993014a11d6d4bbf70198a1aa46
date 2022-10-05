@@ -265,6 +265,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c3ec8f5b_21dfd606",
+        "filename": "src/chromiumos/tast/local/chrome/cuj/get_drive_url.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-10-05T00:55:04Z",
+      "side": 1,
+      "message": "Avery is correct. Mod removes the uniformity. Let\u0027s go with Avery\u0027s suggestion.",
+      "parentUuid": "d1b82a95_aec33bb2",
+      "revId": "41d8c4dea6eae993014a11d6d4bbf70198a1aa46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "16b99001_581e8775",
         "filename": "src/chromiumos/tast/local/chrome/cuj/get_drive_url.go",
         "patchSetId": 2
