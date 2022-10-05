@@ -343,7 +343,7 @@ func attemptWrongPIN(ctx, ctxForCleanUp context.Context, testUser string, r *hws
 	// Supply invalid credentials five times to trigger firmware lockout of the credential.
 	for i := 0; i < numberOfWrongAttempts; i++ {
 		if userParam.useAuthFactor {
-			err = cryptohomeHelper.AuthenticatePinAuthFactor(ctx, authSessionID, authFactorLabelPIN, incorrectPINSecret)
+			_, err = cryptohomeHelper.AuthenticatePinAuthFactor(ctx, authSessionID, authFactorLabelPIN, incorrectPINSecret)
 		} else {
 			err = cryptohomeHelper.AuthenticatePinWithAuthSession(ctx, incorrectPINSecret, authFactorLabelPIN, authSessionID)
 		}
@@ -366,7 +366,7 @@ func authenticateWithCorrectPIN(ctx, ctxForCleanUp context.Context, testUser str
 	defer cryptohomeHelper.InvalidateAuthSession(ctxForCleanUp, authSessionID)
 
 	if userParam.useAuthFactor {
-		err = cryptohomeHelper.AuthenticatePinAuthFactor(ctx, authSessionID, authFactorLabelPIN, correctPINSecret)
+		_, err = cryptohomeHelper.AuthenticatePinAuthFactor(ctx, authSessionID, authFactorLabelPIN, correctPINSecret)
 	} else {
 		err = cryptohomeHelper.AuthenticatePinWithAuthSession(ctx, correctPINSecret, authFactorLabelPIN, authSessionID)
 	}
