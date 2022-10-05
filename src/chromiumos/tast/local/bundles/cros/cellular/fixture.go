@@ -13,6 +13,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/cellular"
 	"chromiumos/tast/local/hermes"
+	"chromiumos/tast/local/modemmanager"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
@@ -30,7 +31,7 @@ func init() {
 		SetUpTimeout:    3 * time.Minute,
 		ResetTimeout:    5 * time.Second,
 		PreTestTimeout:  1 * time.Second,
-		PostTestTimeout: 1 * time.Second,
+		PostTestTimeout: 3 * time.Minute,
 		TearDownTimeout: 5 * time.Second,
 		Impl:            &cellularFixture{modemfwdStopped: false},
 	})
@@ -44,7 +45,7 @@ func init() {
 		SetUpTimeout:    3 * time.Minute,
 		ResetTimeout:    5 * time.Second,
 		PreTestTimeout:  1 * time.Second,
-		PostTestTimeout: 1 * time.Second,
+		PostTestTimeout: 3 * time.Minute,
 		TearDownTimeout: 5 * time.Second,
 		Impl:            &cellularFixture{modemfwdStopped: false, useFakeDMS: true},
 		Parent:          fixture.FakeDMSEnrolled,
@@ -70,8 +71,12 @@ func (fd FixtData) FakeDMS() *fakedms.FakeDMS {
 	return fd.fdms
 }
 
-const modemfwdJobName = "modemfwd"
 const hermesJobName = "hermes"
+const modemfwdJobName = "modemfwd"
+const modemManagerJobName = "modemmanager"
+const shillJobName = "shill"
+
+const uptimeBeforeTest = 2 * time.Minute
 
 func (f *cellularFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
 	var fdms *fakedms.FakeDMS
@@ -84,7 +89,7 @@ func (f *cellularFixture) SetUp(ctx context.Context, s *testing.FixtState) inter
 	}
 
 	// Give some time for cellular daemons to perform any modem operations. Stopping them via upstart might leave the modem in a bad state.
-	if err := cellular.EnsureUptime(ctx, 2*time.Minute); err != nil {
+	if err := cellular.EnsureUptime(ctx, uptimeBeforeTest); err != nil {
 		s.Fatal("Failed to wait for system uptime: ", err)
 	}
 
@@ -112,7 +117,29 @@ func (f *cellularFixture) Reset(ctx context.Context) error { return nil }
 
 func (f *cellularFixture) PreTest(ctx context.Context, s *testing.FixtTestState) {}
 
-func (f *cellularFixture) PostTest(ctx context.Context, s *testing.FixtTestState) {}
+func (f *cellularFixture) PostTest(ctx context.Context, s *testing.FixtTestState) {
+	if s.HasError() {
+		testing.ContextLog(ctx, "Fixture detected a test failure, restarting MM and Shill")
+		// stop and start jobs instead of upstart.Restart to emulate a reboot.
+		if _, err := stopJob(ctx, shillJobName); err != nil {
+			testing.ContextLogf(ctx, "Failed to stop job: %q, %s", shillJobName, err)
+		}
+		if _, err := stopJob(ctx, modemManagerJobName); err != nil {
+			testing.ContextLogf(ctx, "Failed to stop job: %q, %s", modemManagerJobName, err)
+		}
+		if err := upstart.StartJob(ctx, shillJobName); err != nil {
+			testing.ContextLogf(ctx, "Failed to restart job: %q, %s", shillJobName, err)
+		}
+		if err := upstart.StartJob(ctx, modemManagerJobName); err != nil {
+			testing.ContextLogf(ctx, "Failed to restart job: %q, %s", modemManagerJobName, err)
+		}
+		if _, err := modemmanager.NewModem(ctx); err != nil {
+			testing.ContextLog(ctx, "Could not find MM dbus object after restarting ModemManager: ", err)
+		}
+		// Delay starting the next test to avoid any transients caused by restarting MM and shill.
+		testing.Sleep(ctx, uptimeBeforeTest)
+	}
+}
 
 func (f *cellularFixture) TearDown(ctx context.Context, s *testing.FixtState) {
 	if f.modemfwdStopped {
