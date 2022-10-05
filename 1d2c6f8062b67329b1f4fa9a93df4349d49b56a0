@@ -16,6 +16,29 @@
       "message": "Hello all! Whenever you have a moment could you take a look at this change? Thank you for your help! :)",
       "revId": "1d2c6f8062b67329b1f4fa9a93df4349d49b56a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd9857d7_6d0e700c",
+        "filename": "src/chromiumos/tast/local/bluetooth/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1458367
+      },
+      "writtenOn": "2022-10-05T22:35:10Z",
+      "side": 1,
+      "message": "Should this be here? I thought Floss is supposed to be disabled?",
+      "range": {
+        "startLine": 25,
+        "startChar": 68,
+        "endLine": 25,
+        "endChar": 73
+      },
+      "revId": "1d2c6f8062b67329b1f4fa9a93df4349d49b56a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
