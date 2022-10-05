@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c4c3125_c6fc36cd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-10-05T10:43:36Z",
+      "side": 1,
+      "message": "LGTM % comments",
+      "revId": "d6175fe10f6ede68943de6ff9bd4857781b2deec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "183bc2a3_1470e5fd",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/fixture/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-10-05T10:43:36Z",
+      "side": 1,
+      "message": "Please add some logs before and after the poll, so you can check how long it takes to set up the connection if it is not there already.",
+      "revId": "d6175fe10f6ede68943de6ff9bd4857781b2deec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe3e5afc_49e15063",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/fixture/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-10-05T10:43:36Z",
+      "side": 1,
+      "message": "What do you think about adding an interval as well, e.g. 1 second?",
+      "revId": "d6175fe10f6ede68943de6ff9bd4857781b2deec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
