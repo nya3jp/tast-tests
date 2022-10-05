@@ -27,6 +27,16 @@ func ExpectAuthIntents(intents, expectedIntents []uda.AuthIntent) error {
 	return errors.New(diff)
 }
 
+// ExpectContainsAuthIntent checks whether the intents set contains the given value.
+func ExpectContainsAuthIntent(intents []uda.AuthIntent, expectedIntent uda.AuthIntent) error {
+	for _, intent := range intents {
+		if intent == expectedIntent {
+			return nil
+		}
+	}
+	return errors.Errorf("expected to contain %v, got %v", expectedIntent, intents)
+}
+
 // ExpectAuthFactorTypes checks whether two given sets of types are equal, and
 // in case they're not returns an error containing the formatted difference.
 func ExpectAuthFactorTypes(types, expectedTypes []uda.AuthFactorType) error {
