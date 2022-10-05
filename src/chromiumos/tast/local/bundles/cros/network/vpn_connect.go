@@ -30,7 +30,9 @@ func init() {
 		// services with certificates, Chrome may change the cert properties of them
 		// proactively, and thus we need Chrome is logged-in as the same user with
 		// our fake TPM. Also see b/192425378#comment5.
-		Fixture: "vpnShillResetWithChromeLoggedIn",
+		SoftwareDeps: []string{"chrome"},
+		Fixture:      "vpnShillResetWithChromeLoggedIn",
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Params: []testing.Param{{
 			Name: "ikev2_psk",
 			Val: vpnTestParams{
