@@ -34,6 +34,24 @@
       "parentUuid": "0e51cb60_ac774fc9",
       "revId": "894e9a47bb9b09e38b926e055c79c1a583dbeab3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8508976_49b0b6e6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzkaller/wrapper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1263546
+      },
+      "writtenOn": "2022-10-05T14:54:43Z",
+      "side": 1,
+      "message": "Sounds good, please feel free to go ahead and submit this CL. DKT would need to be enabled for herobrine boards in the lab. Currently, it is not enabled.",
+      "parentUuid": "a5b88b1e_f1465251",
+      "revId": "894e9a47bb9b09e38b926e055c79c1a583dbeab3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
