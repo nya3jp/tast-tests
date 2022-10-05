@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eac06521_65e2eb5f",
+        "filename": "src/chromiumos/tast/local/arc/apputil/apputil.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-10-05T20:20:38Z",
+      "side": 1,
+      "message": "I wonder if we should try selecting a smaller app instead?",
+      "revId": "d1db8b48531adc617ad8046a494fe29ab151a161",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
