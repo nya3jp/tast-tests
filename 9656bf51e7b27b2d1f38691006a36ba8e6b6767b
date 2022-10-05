@@ -51,6 +51,24 @@
       "parentUuid": "5f58910c_3b6c17ff",
       "revId": "9656bf51e7b27b2d1f38691006a36ba8e6b6767b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63d5de56_b61cea95",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2022-10-05T19:36:35Z",
+      "side": 1,
+      "message": "Ah i see it now. Even then, given our discussion on auditing wifi_unstable, do we want to block this cl on the feature that shill supports WPA-PSK-SHA256? I don\u0027t think it makes sense to land this test if we don\u0027t have a task or effort to support this in shill since it will just keep failing in unstable anyways until then and not really provide signal.",
+      "parentUuid": "b28d7407_64fbd6b9",
+      "revId": "9656bf51e7b27b2d1f38691006a36ba8e6b6767b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
