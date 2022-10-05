@@ -98,9 +98,9 @@ var Docs = App{
 	Name: "Docs",
 }
 
-// Drive has details about the Google Drive app.
+// Drive has details about the Google Drive Web app.
 var Drive = App{
-	ID:   "apdfllckaahabafndbhieahigkjlhalf",
+	ID:   "aghbiahbpaijignceidepookljebhfak",
 	Name: "Google Drive",
 }
 
