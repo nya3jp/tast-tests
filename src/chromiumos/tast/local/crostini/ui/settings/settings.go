@@ -7,6 +7,7 @@ package settings
 
 import (
 	"context"
+	"fmt"
 	"regexp"
 	"strconv"
 	"strings"
@@ -21,8 +22,8 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/ossettings"
 	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/local/chrome/webutil"
 	"chromiumos/tast/local/crostini/faillog"
-	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/vm"
 	"chromiumos/tast/testing"
 )
@@ -88,6 +89,7 @@ var (
 type Settings struct {
 	ui    *uiauto.Context
 	tconn *chrome.TestConn
+	cr    *chrome.Chrome
 }
 
 // OpenLinuxSubpage opens Linux subpage on Settings page. If Linux is not installed, it opens the installer.
@@ -109,7 +111,7 @@ func OpenLinuxSubpage(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Ch
 	// devices. Add a sleep for the node to be stable.
 	testing.Sleep(ctx, time.Second)
 
-	return &Settings{tconn: tconn, ui: ui}, nil
+	return &Settings{tconn: tconn, ui: ui, cr: cr}, nil
 }
 
 // OpenLinuxSettings opens Settings app and navigate to Linux Settings and its sub settings if any.
@@ -417,41 +419,85 @@ func ParseDiskSize(sizeString string) (uint64, error) {
 	return uint64(num * units), nil
 }
 
+// UpdateDiskSizeSliderWithJS uses JS function to change the disk size slider
+// value. sliderContainerName is the name of a JSObject that has field
+// "diskSizeTicks_" and shadowRoot that contains the slider.
+// E.g., sliderContainerName is "settings-crostini-disk-resize-dialog" if
+// resizing in the crostini settings page, and "crostini-installer-app" if
+// resizing in the crostini installer.
+func UpdateDiskSizeSliderWithJS(ctx context.Context, conn *chrome.Conn, sliderContainerName string, targetDiskSize uint64, isSoftExtremum bool) (uint64, error) {
+	const query = `
+			(sliderContainer, targetDiskSize, IsSoftExtremum=false) => {
+				const diskSizeTicks = sliderContainer.diskSizeTicks_;
+				const slider = sliderContainer.shadowRoot?.querySelector('#diskSlider');
+
+				if (!(slider&&diskSizeTicks)) {
+					throw 'Cannot find diskSizeTicks or slider with the given query.'
+				}
+
+				const minSize = Number(diskSizeTicks[0].value);
+				const maxSize = Number(diskSizeTicks[diskSizeTicks.length-1].value);
+
+				if ((targetDiskSize > maxSize || targetDiskSize < minSize) && !IsSoftExtremum) {
+				    throw 'Target size '+ targetDiskSize +' is outside the valid range ['+ minSize +','+ maxSize +'], consider set IsSoftExtremum=true to use the posible extremum.';
+				}
+
+				targetDiskSize = Math.max(Math.min(targetDiskSize,maxSize),minSize);
+
+				let targetSliderValue = 0;
+				while (diskSizeTicks[targetSliderValue].value < targetDiskSize) {
+					targetSliderValue++;
+				}
+				
+				slider.value = targetSliderValue;
+				// Number is needed for Tast to parse Bigint that has 'n' suffix.
+				// It may lose a little precision if the value is bigger than 9007199254740991,
+				// which is approximately 8388608 GB. 
+				return Number(diskSizeTicks[slider.value].value);
+			}`
+
+	var sizeOnSlider uint64
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		sliderContainer := &chrome.JSObject{}
+		if err := webutil.EvalWithShadowPiercer(ctx, conn, fmt.Sprintf(`shadowPiercingQuery('%s')`, sliderContainerName), sliderContainer); err != nil {
+			return errors.Wrap(err, "failed to find the slider container object")
+		}
+		defer sliderContainer.Release(ctx)
+		return conn.Call(ctx, &sizeOnSlider, query, sliderContainer, targetDiskSize, isSoftExtremum)
+	}, &testing.PollOptions{Timeout: 15 * time.Second}); err != nil {
+		return 0, errors.Wrap(err, "failed to set disk size via JS")
+	}
+
+	return sizeOnSlider, nil
+}
+
 // ChangeDiskSize changes the disk size to targetDiskSize through moving the slider.
 // If the target disk size is bigger, set increase to true, otherwise set it to false.
 // The method will return if it reaches the target or the end of the slider.
 // The real size might not be exactly equal to the target because the increment changes depending on the range.
 // FocusAndWait(slider) should be called before calling this method.
-func ChangeDiskSize(ctx context.Context, tconn *chrome.TestConn, kb *input.KeyboardEventWriter, slider *nodewith.Finder, targetDiskSize uint64) (uint64, error) {
-	curSize, maxSize, minSize, err := SliderDiskSizes(ctx, tconn, slider)
+func ChangeDiskSize(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn, targetDiskSize uint64) (uint64, error) {
+	const crostiniSettingsURL = "chrome://os-settings/crostini"
+	const diskResizeDialogName = "settings-crostini-disk-resize-dialog"
+	targetMatcher := func(t *chrome.Target) bool { return strings.HasPrefix(t.URL, crostiniSettingsURL) }
+	conn, err := cr.NewConnForTarget(ctx, targetMatcher)
 	if err != nil {
-		return 0, errors.Wrap(err, "failed to get disk size")
+		return 0, errors.Wrapf(err, "failed to connect to installer page %s", crostiniSettingsURL)
 	}
+	defer conn.Close()
 
-	if targetDiskSize > maxSize || targetDiskSize < minSize {
-		return 0, errors.Errorf("invalid target size %d, outside of range [%d, %d]", targetDiskSize, minSize, maxSize)
+	curSize, err := UpdateDiskSizeSliderWithJS(ctx, conn, diskResizeDialogName, targetDiskSize, false)
+	if err != nil {
+		return 0, err
 	}
-
-	increase := curSize < targetDiskSize
-
-	direction := "right"
-	if !increase {
-		direction = "left"
-	}
-
-	for ; (increase && curSize < targetDiskSize) || (!increase && curSize > targetDiskSize); curSize, _, _, err = SliderDiskSizes(ctx, tconn, slider) {
-		if kb.AccelAction(direction)(ctx); err != nil {
-			return 0, errors.Wrapf(err, "failed to move slider to %s", direction)
-		}
-		if tconn.ResetAutomation(ctx); err != nil {
-			return 0, errors.Wrap(err, "failed to call ResetAutomation to refresh the accessibility tree")
-		}
+	if tconn.ResetAutomation(ctx); err != nil {
+		return 0, errors.Wrap(err, "failed to call ResetAutomation to refresh the accessibility tree")
 	}
 	return curSize, nil
 }
 
 // GetCurAndTargetDiskSize gets the current disk size and calculates a target disk size to resize.
-func (s *Settings) GetCurAndTargetDiskSize(ctx context.Context, keyboard *input.KeyboardEventWriter) (curSize, targetSize uint64, err error) {
+func (s *Settings) GetCurAndTargetDiskSize(ctx context.Context) (curSize, targetSize uint64, err error) {
 	if err := uiauto.Combine("launch resize dialog and focus on the slider",
 		s.ClickChange(),
 		s.ui.FocusAndWait(ResizeDiskDialog.Slider))(ctx); err != nil {
@@ -485,7 +531,7 @@ func (s *Settings) GetCurAndTargetDiskSize(ctx context.Context, keyboard *input.
 
 // Resize changes the disk size to the target size.
 // It returns the size on the slider as string and the result size as uint64.
-func (s *Settings) Resize(ctx context.Context, keyboard *input.KeyboardEventWriter, targetSize uint64) (string, uint64, error) {
+func (s *Settings) Resize(ctx context.Context, targetSize uint64) (string, uint64, error) {
 	if err := uiauto.Combine("launch resize dialog and focus on the slider",
 		s.ClickChange(),
 		// TODO (crbug/1232877): remove this line when crbug/1232877 is resolved.
@@ -495,7 +541,7 @@ func (s *Settings) Resize(ctx context.Context, keyboard *input.KeyboardEventWrit
 	}
 
 	// Resize to the target size.
-	size, err := ChangeDiskSize(ctx, s.tconn, keyboard, ResizeDiskDialog.Slider, targetSize)
+	size, err := ChangeDiskSize(ctx, s.cr, s.tconn, targetSize)
 	if err != nil {
 		return "", 0, errors.Wrapf(err, "failed to resize to %d: ", targetSize)
 	}

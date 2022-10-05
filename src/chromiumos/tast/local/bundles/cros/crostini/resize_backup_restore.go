@@ -184,7 +184,7 @@ func ResizeBackupRestore(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to open Linux Settings: ", err)
 	}
 	const targetDiskSizeBytes uint64 = 6 << 30
-	if _, _, err = st.Resize(ctx, keyboard, targetDiskSizeBytes); err != nil {
+	if _, _, err = st.Resize(ctx, targetDiskSizeBytes); err != nil {
 		s.Fatal("Failed to resize disk: ", err)
 	}
 
