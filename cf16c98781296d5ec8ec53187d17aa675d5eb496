@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aac26d8d_d46b803a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1425417
+      },
+      "writtenOn": "2022-10-05T18:27:34Z",
+      "side": 1,
+      "message": "There is no harm in changing the autoconnect test, but I would like to check the behavior upon boot for all of our devices. If the scheduler changes the order of aautoconnect, there should be no issue.",
+      "parentUuid": "49222c72_c9e990e4",
+      "revId": "cf16c98781296d5ec8ec53187d17aa675d5eb496",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cb7838c5_7d2bf817",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-10-05T17:21:19Z",
       "side": 1,
       "message": "How long does this wait for?",
+      "range": {
+        "startLine": 136,
+        "startChar": 0,
+        "endLine": 138,
+        "endChar": 3
+      },
+      "revId": "cf16c98781296d5ec8ec53187d17aa675d5eb496",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "daf6a52d_8793a547",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1425417
+      },
+      "writtenOn": "2022-10-05T18:27:34Z",
+      "side": 1,
+      "message": "60s",
+      "parentUuid": "cb7838c5_7d2bf817",
       "range": {
         "startLine": 136,
         "startChar": 0,
