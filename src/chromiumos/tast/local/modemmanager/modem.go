@@ -89,6 +89,58 @@ func (m *Modem) GetSARInterface(ctx context.Context) (*Modem, error) {
 	return &Modem{ph}, nil
 }
 
+// GetMessagingInterface creates a PropertyHolder for the SAR object.
+func (m *Modem) GetMessagingInterface(ctx context.Context) (*Modem, error) {
+	modemPath := dbus.ObjectPath(m.String())
+	ph, err := dbusutil.NewPropertyHolder(ctx, DBusModemmanagerService, DBusModemmanagerMessageInterface, modemPath)
+	if err != nil {
+		return nil, err
+	}
+	return &Modem{ph}, nil
+}
+
+// GetMessagesList Retrieve all SMS messages.
+func (m *Modem) GetMessagesList(ctx context.Context) ([]dbus.ObjectPath, error) {
+	msgProps, err := m.GetProperties(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to call Messages.GetProperties")
+	}
+	msgList, err := msgProps.GetObjectPaths(mmconst.ModemPropertyMessages)
+	if err != nil {
+		return nil, errors.Wrap(err, "missing Messages.SimSlots property")
+	}
+
+	return msgList, nil
+}
+
+// DeleteMessage delete an sms message specified by path.
+func (m *Modem) DeleteMessage(ctx context.Context, path dbus.ObjectPath) error {
+	err := m.Call(ctx, mmconst.MessagesDelete, path).Err
+	if err != nil {
+		return errors.Wrapf(err, "failed to delete message with path: %s", path)
+	}
+	return nil
+}
+
+// DeleteAllMessages delete all sms messages
+func (m *Modem) DeleteAllMessages(ctx context.Context) error {
+	msgInterface, err := m.GetMessagingInterface(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to get messaging interface")
+	}
+	msgList, err := msgInterface.GetMessagesList(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to get list of messages")
+	}
+	for _, path := range msgList {
+		testing.ContextLog(ctx, "path: ", path)
+		if err := msgInterface.DeleteMessage(ctx, path); err != nil {
+			return errors.Wrap(err, "failed to delete message")
+		}
+	}
+	return nil
+}
+
 // IsSAREnabled - checks if SAR is enabled
 func (m *Modem) IsSAREnabled(ctx context.Context) (bool, error) {
 	sarProps, err := m.GetProperties(ctx)
