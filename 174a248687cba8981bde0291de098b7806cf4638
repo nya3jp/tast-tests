@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ebecd86_b2aebe45",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/fgsec_multi_connect.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-10-05T16:23:10Z",
+      "side": 1,
+      "message": "This intentionally only gets the service path from the first AP?\n\n(I guess we expect all of them to have the same value from L384-386?)",
+      "revId": "174a248687cba8981bde0291de098b7806cf4638",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
