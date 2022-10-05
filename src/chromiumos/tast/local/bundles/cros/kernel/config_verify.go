@@ -166,6 +166,7 @@ func newKernelConfigCheck(ver *sysutil.KernelVersion, arch string) *kernelConfig
 		// Filesystem formats.
 		"DEBUG_FS",
 		"ECRYPT_FS",
+		"EXFAT_FS",
 		"EXT4_FS",
 		"PROC_FS",
 		"SCSI_PROC_FS",
