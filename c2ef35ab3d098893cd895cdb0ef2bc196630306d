@@ -16,6 +16,24 @@
       "message": "can we move this into a helper function?",
       "revId": "c2ef35ab3d098893cd895cdb0ef2bc196630306d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "827fd868_f0ded308",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 578,
+      "author": {
+        "id": 1496163
+      },
+      "writtenOn": "2022-10-05T11:47:51Z",
+      "side": 1,
+      "message": "Fixed now.",
+      "parentUuid": "6229c2e9_fb250629",
+      "revId": "c2ef35ab3d098893cd895cdb0ef2bc196630306d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
