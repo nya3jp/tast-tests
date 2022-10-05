@@ -8,12 +8,16 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
@@ -29,15 +33,29 @@ func init() {
 		Timeout:      4 * time.Minute,
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
+			Fixture:           "arcBooted",
+			Val:               browser.TypeAsh,
+		}, {
+			Name:              "lacros",
+			ExtraSoftwareDeps: []string{"android_p", "lacros"},
+			Fixture:           "lacrosWithArcBooted",
+			Val:               browser.TypeLacros,
 		}, {
 			Name:              "vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
+			Fixture:           "arcBooted",
+			Val:               browser.TypeAsh,
+		}, {
+			Name:              "lacros_vm",
+			ExtraSoftwareDeps: []string{"android_vm", "lacros"},
+			Fixture:           "lacrosWithArcBooted",
+			Val:               browser.TypeLacros,
 		}},
 	})
 }
 
 // deskContainsWindow returns true if a window whose name is windowName was found as a child of the desk container whose name is deskContainerName.
-func deskContainsWindow(ctx context.Context, tconn *chrome.TestConn, deskContainerName, windowName string) (bool, error) {
+func deskContainsWindow(ctx context.Context, tconn *chrome.TestConn, deskContainerName string, finder *nodewith.Finder) (bool, error) {
 	// Find the given desk container first.
 	deskContainer := nodewith.HasClass(deskContainerName)
 	ui := uiauto.New(tconn)
@@ -45,37 +63,37 @@ func deskContainsWindow(ctx context.Context, tconn *chrome.TestConn, deskContain
 		return false, errors.Wrapf(err, "failed to locate the given desk container: %s", deskContainerName)
 	}
 
-	// Find the given window inside the desk container.
-	window := nodewith.HasClass(windowName).Ancestor(deskContainer)
-	return ui.IsNodeFound(ctx, window)
+	// Find the given finder inside the desk container.
+	return ui.IsNodeFound(ctx, finder.Ancestor(deskContainer))
 }
 
 func VirtualDesks(ctx context.Context, s *testing.State) {
-	cr, err := chrome.New(ctx, chrome.ARCEnabled(), chrome.UnRestrictARCCPU(),
-		chrome.EnableFeatures("VirtualDesks"))
-	if err != nil {
-		s.Fatal("Failed to connect to Chrome: ", err)
-	}
-	defer cr.Close(ctx)
+	// Reserve few seconds for various cleanup
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
+
+	a := s.FixtValue().(*arc.PreData).ARC
+	cr := s.FixtValue().(*arc.PreData).Chrome
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to create Test API connection: ", err)
 	}
 
-	a, err := arc.New(ctx, s.OutDir())
-	if err != nil {
-		s.Fatal("Failed to start ARC: ", err)
-	}
-	defer a.Close(ctx)
-
 	// Explicitly start a browser window to test that switching to a new desk
 	// doesn't cause it to change desks.
-	if conn, err := cr.NewConn(ctx, ""); err != nil {
-		s.Fatal("Failed to create a Chrome window: ", err)
-	} else {
-		defer conn.Close()
+	br, closeBrowser, err := browserfixt.SetUp(ctx, cr, s.Param().(browser.Type))
+	if err != nil {
+		s.Fatal("Failed to open the browser: ", err)
 	}
+	defer closeBrowser(cleanupCtx)
+
+	conn, err := br.NewConn(ctx, "about:blank")
+	if err != nil {
+		s.Fatal("Could not open the browser window: ", err)
+	}
+	defer conn.Close()
 
 	ki, err := input.Keyboard(ctx)
 	if err != nil {
@@ -115,7 +133,7 @@ func VirtualDesks(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to get the window info of the ARC app: ", err)
 	}
-	windowName := window.Name
+	windowFinder := nodewith.HasClass(window.Name).Role(role.Window)
 
 	s.Log("Test setup complete. Beginning to verify desk window hierarchy")
 
@@ -123,32 +141,32 @@ func VirtualDesks(ctx context.Context, s *testing.State) {
 	// should be on the first desk.
 	for _, tc := range []struct {
 		desk   string
-		window string
+		finder *nodewith.Finder
 		want   bool
 	}{
 		{
 			desk:   "Desk_Container_B",
-			window: windowName,
+			finder: windowFinder,
 			want:   true,
 		},
 		{
 			desk:   "Desk_Container_A",
-			window: "BrowserFrame",
+			finder: nodewith.NameContaining("about:blank").First(),
 			want:   true,
 		},
 		{
 			desk:   "Desk_Container_A",
-			window: windowName,
+			finder: windowFinder,
 			want:   false,
 		},
 	} {
-		if found, err := deskContainsWindow(ctx, tconn, tc.desk, tc.window); err != nil {
+		if found, err := deskContainsWindow(ctx, tconn, tc.desk, tc.finder); err != nil {
 			s.Error("deskContainsWindow Failed: ", err)
 		} else if found != tc.want {
 			if tc.want {
-				s.Errorf("Failed to find %s under %s", tc.window, tc.desk)
+				s.Errorf("Failed to find %s under %s", tc.finder.Pretty(), tc.desk)
 			} else {
-				s.Errorf("%s should not be under %s", tc.window, tc.desk)
+				s.Errorf("%s should not be under %s", tc.finder.Pretty(), tc.desk)
 			}
 		}
 	}
