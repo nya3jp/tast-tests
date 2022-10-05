@@ -26,7 +26,6 @@ func init() {
 			ExtraSoftwareDeps: []string{"audio_stable"},
 			// TODO(b/244254621) : remove "sasukette" when b/244254621 is fixed.
 			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel("sasukette")),
-			ExtraAttr:         []string{"informational"},
 		}, {
 			Name:              "unstable_platform",
 			ExtraSoftwareDeps: []string{"audio_unstable"},
