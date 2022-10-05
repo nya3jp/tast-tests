@@ -30,9 +30,6 @@ type testParameters struct {
 var (
 	// arcAppLoadingBooted is a precondition similar to arc.Booted() with no opt-in and disables some heavy Android activities that use system resources.
 	arcAppLoadingBooted = arc.NewPrecondition("arcapploading_booted", nil /* GAIAVARS */, nil /* GAIALOGINPOOLVARS */, false /* O_DIRECT */, append(arc.DisableSyncFlags(), "--disable-features=FirmwareUpdaterApp")...)
-
-	// arcAppLoadingVirtioBlkVMBooted adds feature to boot ARC with virtio-blk /data is enabled.
-	arcAppLoadingVirtioBlkVMBooted = arc.NewPrecondition("arcapploading_virtio_blk_vmbooted", nil /* GAIAVARS */, nil /* GAIALOGINPOOLVARS */, false /* O_DIRECT */, append(arc.DisableSyncFlags(), "--enable-features=ArcEnableVirtioBlkForData", "--disable-features=FirmwareUpdaterApp")...)
 )
 
 func init() {
@@ -62,13 +59,6 @@ func init() {
 				binaryTranslation: false,
 			},
 			Pre: arcAppLoadingBooted,
-		}, {
-			Name:              "virtio_blk_vm",
-			ExtraSoftwareDeps: []string{"android_vm"},
-			Val: testParameters{
-				binaryTranslation: false,
-			},
-			Pre: arcAppLoadingVirtioBlkVMBooted,
 		}, {
 			Name:              "binarytranslation",
 			ExtraSoftwareDeps: []string{"android_p"},
