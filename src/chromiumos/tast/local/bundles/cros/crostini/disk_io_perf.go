@@ -233,7 +233,6 @@ func runFIOJob(ctx context.Context, s *testing.State, guestEnv, hostEnv runEnv, 
 // DiskIOPerf runs disk IO performance tests by running the tool "fio".
 func DiskIOPerf(ctx context.Context, s *testing.State) {
 	tconn := s.FixtValue().(crostini.FixtureData).Tconn
-	kb := s.FixtValue().(crostini.FixtureData).KB
 	cont := s.FixtValue().(crostini.FixtureData).Cont
 	cr := s.FixtValue().(crostini.FixtureData).Chrome
 
@@ -241,7 +240,7 @@ func DiskIOPerf(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to open Linux settings: ", err)
 	}
-	if _, _, err := settingsApp.Resize(ctx, kb, 16*settings.SizeGB); err != nil {
+	if _, _, err := settingsApp.Resize(ctx, 16*settings.SizeGB); err != nil {
 		s.Fatal("Failed to resize VM disk: ", err)
 	}
 
