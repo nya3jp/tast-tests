@@ -260,6 +260,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa46733f_db4dca86",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_perf_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2022-10-05T12:42:13Z",
+      "side": 1,
+      "message": "I\u0027ve updated WaitForCharge to fail early if it looks like we won\u0027t charge enough before the timeout.",
+      "parentUuid": "9ce27d5f_d5e6b1fe",
+      "range": {
+        "startLine": 101,
+        "startChar": 56,
+        "endLine": 101,
+        "endChar": 70
+      },
+      "revId": "45460cf15165ffc2772b15eb7be9d5eaa021f7e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aa24a5e2_5a49c214",
