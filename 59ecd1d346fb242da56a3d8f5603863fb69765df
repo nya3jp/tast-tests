@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "922010f4_da57ae41",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1531792
+      },
+      "writtenOn": "2022-10-05T00:11:13Z",
+      "side": 1,
+      "message": "Have you run the test on any DUT? You can verify your change before merging your code. See local test in go/shimlessrma_satlab_setup",
+      "revId": "59ecd1d346fb242da56a3d8f5603863fb69765df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb38db1e_b5a56c56",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/rmaweb/ui.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1531792
+      },
+      "writtenOn": "2022-10-05T00:11:13Z",
+      "side": 1,
+      "message": "Since `Install Complete` will be auto-transitioning, the auto test may not be able to catch this page/title at all. I\u0027d suggest moving `Install complete` verification before USB removal (line 162). Then it gives us enough time to verify the title first.",
+      "revId": "59ecd1d346fb242da56a3d8f5603863fb69765df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
