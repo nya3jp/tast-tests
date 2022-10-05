@@ -31,11 +31,12 @@ const (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     HidWake,
-		Desc:     "Checks that HID events correctly wake the DUT",
-		Contacts: []string{"jthies@google.com", "chromeos-power@google.com"},
-		Attr:     []string{"group:mainline", "informational"},
-		Vars:     []string{"servo"},
+		Func:         HidWake,
+		Desc:         "Checks that HID events correctly wake the DUT",
+		Contacts:     []string{"jthies@google.com", "chromeos-power@google.com"},
+		Attr:         []string{"group:mainline", "informational"},
+		SoftwareDeps: []string{"usb_hid_wake"},
+		Vars:         []string{"servo"},
 	})
 }
 
