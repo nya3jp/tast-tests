@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d85edae_d7a8353f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2022-10-05T11:29:03Z",
+      "side": 1,
+      "message": "reven-vmtest-cq fails because TAST unit test doesn\u0027t pass, but it was not caused by this patch:\n```\n--- FAIL: TestConnectedPort (0.00s)\n    connected_port_test.go:22: Error creating pty:  could not start process\nFAIL\nFAIL\tchromiumos/tast/common/firmware/serial\t0.459s\n```",
+      "revId": "46afd607511610e3f8b4f2fd43679f91b35ab7cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
