@@ -24,12 +24,14 @@ type params struct {
 	httpResponseHandler  func(rw http.ResponseWriter, req *http.Request)
 	httpsResponseHandler func(rw http.ResponseWriter, req *http.Request)
 	proxyConfig          string
+	checkPortal          bool
 }
 
-var (
+const (
 	redirectURL     = "http://www.example.com"
 	httpsPortalURL  = "https://www.example.com"
 	testProxyConfig = "test proxy config"
+	noCheckPortal   = "false"
 )
 
 func redirectHandler(url string) func(http.ResponseWriter, *http.Request) {
@@ -62,50 +64,66 @@ func init() {
 		Params: []testing.Param{{
 			Name: "redirectfound",
 			Val: &params{
-				ServiceState:         shillconst.ServiceStateRedirectFound,
-				HTTPResponseHandler:  redirectHandler(redirectURL),
-				HTTPSResponseHandler: nil,
-				ProxyConfig:          "",
+				serviceState:         shillconst.ServiceStateRedirectFound,
+				httpResponseHandler:  redirectHandler(redirectURL),
+				httpsResponseHandler: nil,
+				proxyConfig:          "",
+				checkPortal:          true,
 			},
 		}, {
 			Name: "proxyconfig",
 			Val: &params{
-				ServiceState:         shillconst.ServiceStateOnline,
-				HTTPResponseHandler:  redirectHandler(redirectURL),
-				HTTPSResponseHandler: nil,
-				ProxyConfig:          testProxyConfig,
+				serviceState:         shillconst.ServiceStateOnline,
+				httpResponseHandler:  redirectHandler(redirectURL),
+				httpsResponseHandler: nil,
+				proxyConfig:          testProxyConfig,
+				checkPortal:          true,
 			},
 		}, {
+			Name: "checkportal",
+			Val: &params{
+				serviceState:         shillconst.ServiceStateOnline,
+				httpResponseHandler:  redirectHandler(redirectURL),
+				httpsResponseHandler: nil,
+				proxyConfig:          "",
+				checkPortal:          false,
+			},
+		}, {
+
 			Name: "portalsuspected",
 			Val: &params{
-				ServiceState:         shillconst.ServiceStatePortalSuspected,
-				HTTPResponseHandler:  redirectWithNoLocationHandler,
-				HTTPSResponseHandler: nil,
-				ProxyConfig:          "",
+				serviceState:         shillconst.ServiceStatePortalSuspected,
+				httpResponseHandler:  redirectWithNoLocationHandler,
+				httpsResponseHandler: nil,
+				proxyConfig:          "",
+				checkPortal:          true,
 			},
 		}, {
 			Name: "online",
 			Val: &params{
-				ServiceState:         shillconst.ServiceStateOnline,
-				HTTPResponseHandler:  noContentHandler,
-				HTTPSResponseHandler: noContentHandler,
-				ProxyConfig:          "",
+				serviceState:         shillconst.ServiceStateOnline,
+				httpResponseHandler:  noContentHandler,
+				httpsResponseHandler: noContentHandler,
+				proxyConfig:          "",
+				checkPortal:          true,
 			},
 		}, {
 			Name: "noconnectivity",
 			Val: &params{
-				ServiceState:         shillconst.ServiceStateNoConnectivity,
-				HTTPResponseHandler:  nil,
-				HTTPSResponseHandler: nil,
-				ProxyConfig:          "",
+				serviceState:         shillconst.ServiceStateNoConnectivity,
+				httpResponseHandler:  nil,
+				httpsResponseHandler: nil,
+				proxyConfig:          "",
+				checkPortal:          true,
 			},
 		}, {
 			Name: "redirectfoundtempredirect",
 			Val: &params{
-				ServiceState:         shillconst.ServiceStateRedirectFound,
-				HTTPResponseHandler:  tempRedirectHandler(redirectURL),
-				HTTPSResponseHandler: nil,
-				ProxyConfig:          "",
+				serviceState:         shillconst.ServiceStateRedirectFound,
+				httpResponseHandler:  tempRedirectHandler(redirectURL),
+				httpsResponseHandler: nil,
+				proxyConfig:          "",
+				checkPortal:          true,
 			},
 		}},
 	})
@@ -134,7 +152,7 @@ func ShillCaptivePortalHTTP(ctx context.Context, s *testing.State) {
 	params := s.Param().(*params)
 
 	var httpsCerts *certs.Certs
-	if params.HTTPSResponseHandler != nil {
+	if params.httpsResponseHandler != nil {
 		httpsCerts = certs.New(certs.SSLCrtPath, certificate.TestCert3())
 		cleanupCerts, err := httpsCerts.InstallTestCerts(ctx)
 		if err != nil {
@@ -149,8 +167,8 @@ func ShillCaptivePortalHTTP(ctx context.Context, s *testing.State) {
 		EnableDHCP:                 true,
 		EnableDNS:                  true,
 		RAServer:                   false,
-		HTTPSServerResponseHandler: params.HTTPSResponseHandler,
-		HTTPServerResponseHandler:  params.HTTPResponseHandler,
+		HTTPSServerResponseHandler: params.httpsResponseHandler,
+		HTTPServerResponseHandler:  params.httpResponseHandler,
 		HTTPSCerts:                 httpsCerts,
 	}
 	pool := subnet.NewPool()
@@ -167,9 +185,16 @@ func ShillCaptivePortalHTTP(ctx context.Context, s *testing.State) {
 	defer pw.Close(cleanupCtx)
 
 	//testing for ProxyConfig - no portal state to send in this case
-	if params.ProxyConfig != "" {
-		if err := service.SetProperty(ctx, shillconst.ServicePropertyProxyConfig, params.ProxyConfig); err != nil {
+	if params.proxyConfig != "" {
+		if err := service.SetProperty(ctx, shillconst.ServicePropertyProxyConfig, params.proxyConfig); err != nil {
 			s.Fatal("Failed to set ProxyConfig: ", err)
+		}
+	}
+
+	//testing for CheckPortal - no portal state to send in this case
+	if !params.checkPortal {
+		if err := service.SetProperty(ctx, shillconst.ServicePropertyCheckPortal, noCheckPortal); err != nil {
+			s.Fatal("Failed to invoke CheckPortal service: ", err)
 		}
 	}
 
@@ -181,9 +206,9 @@ func ShillCaptivePortalHTTP(ctx context.Context, s *testing.State) {
 	timeoutCtx, cancel := context.WithTimeout(ctx, 30*time.Second)
 	defer cancel()
 
-	s.Logf("Check if service state is %q", params.ServiceState)
+	s.Logf("Check if service state is %q", params.serviceState)
 	var expectedServiceState = []interface{}{
-		params.ServiceState,
+		params.serviceState,
 	}
 	_, err = pw.ExpectIn(timeoutCtx, shillconst.ServicePropertyState, expectedServiceState)
 	if err != nil {
