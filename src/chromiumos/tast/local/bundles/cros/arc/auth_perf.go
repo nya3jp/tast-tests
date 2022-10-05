@@ -27,7 +27,6 @@ import (
 	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/local/cpu"
-	"chromiumos/tast/local/disk"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/lsbrelease"
 	"chromiumos/tast/testing"
@@ -40,8 +39,6 @@ type testParam struct {
 	// maxErrorBootCount is the number of maximum allowed boot errors.
 	maxErrorBootCount int
 	chromeArgs        []string
-	dropCaches        bool
-	oDirect           bool
 }
 
 var resultPropRegexp = regexp.MustCompile(`OK,(\d+)`)
@@ -91,39 +88,6 @@ func init() {
 			Val: testParam{
 				browserType:       browser.TypeLacros,
 				maxErrorBootCount: 1,
-			},
-		}, {
-			Name:              "unmanaged_o_direct_vm",
-			ExtraSoftwareDeps: []string{"android_vm"},
-			Val: testParam{
-				browserType:       browser.TypeAsh,
-				dropCaches:        true,
-				maxErrorBootCount: 3,
-				oDirect:           true,
-			},
-		}, {
-			Name:              "unmanaged_rt_vcpu_vm",
-			ExtraSoftwareDeps: []string{"android_vm"},
-			Val: testParam{
-				browserType:       browser.TypeAsh,
-				maxErrorBootCount: 3,
-				chromeArgs:        []string{"--enable-features=ArcRtVcpuDualCore,ArcRtVcpuQuadCore"},
-			},
-		}, {
-			Name:              "unmanaged_dalvik_memory_profile_vm",
-			ExtraSoftwareDeps: []string{"android_vm"},
-			Val: testParam{
-				browserType:       browser.TypeAsh,
-				maxErrorBootCount: 3,
-				chromeArgs:        []string{"--enable-features=ArcUseDalvikMemoryProfile"},
-			},
-		}, {
-			Name:              "unmanaged_virtio_blk_vm",
-			ExtraSoftwareDeps: []string{"android_vm"},
-			Val: testParam{
-				browserType:       browser.TypeAsh,
-				maxErrorBootCount: 3,
-				chromeArgs:        []string{"--enable-features=ArcEnableVirtioBlkForData"},
 			},
 		}, {
 			Name:              "unmanaged_vm",
@@ -384,25 +348,6 @@ func bootARC(ctx context.Context, s *testing.State, cr *chrome.Chrome, tconn *ch
 	s.Log("Waiting for ARC to stop")
 	if err := waitForARCStopped(ctx); err != nil {
 		return v, err
-	}
-
-	// Enable O_DIRECT on ARCVM block device
-	if s.Param().(testParam).oDirect {
-		if err := arc.WriteArcvmDevConf(ctx, "O_DIRECT=true"); err != nil {
-			return v, err
-		}
-	} else {
-		if err := arc.WriteArcvmDevConf(ctx, ""); err != nil {
-			return v, err
-		}
-	}
-	defer arc.RestoreArcvmDevConf(ctx)
-
-	// Drop host OS caches if test config requires it for predictable results.
-	if s.Param().(testParam).dropCaches {
-		if err := disk.DropCaches(ctx); err != nil {
-			return v, errors.Wrap(err, "failed to drop caches")
-		}
 	}
 
 	if err := cpu.WaitUntilStabilized(ctx, coolDownConfig()); err != nil {

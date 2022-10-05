@@ -34,9 +34,6 @@ var (
 
 	// arcAppLoadingBootedLacros is a precondition similar arcAppLoadingBooted but with Lacros enabled.
 	arcAppLoadingBootedLacros = arc.NewPreconditionWithBrowserType("arcapploading_booted_lacros", browser.TypeLacros, nil /* GAIAVARS */, nil /* GAIALOGINPOOLVARS */, false /* O_DIRECT */, append(arc.DisableSyncFlags(), "--disable-features=FirmwareUpdaterApp")...)
-
-	// arcAppLoadingVirtioBlkVMBooted adds feature to boot ARC with virtio-blk /data is enabled.
-	arcAppLoadingVirtioBlkVMBooted = arc.NewPrecondition("arcapploading_virtio_blk_vmbooted", nil /* GAIAVARS */, nil /* GAIALOGINPOOLVARS */, false /* O_DIRECT */, append(arc.DisableSyncFlags(), "--enable-features=ArcEnableVirtioBlkForData", "--disable-features=FirmwareUpdaterApp")...)
 )
 
 func init() {
@@ -80,13 +77,6 @@ func init() {
 				binaryTranslation: false,
 			},
 			Pre: arcAppLoadingBootedLacros,
-		}, {
-			Name:              "virtio_blk_vm",
-			ExtraSoftwareDeps: []string{"android_vm"},
-			Val: testParameters{
-				binaryTranslation: false,
-			},
-			Pre: arcAppLoadingVirtioBlkVMBooted,
 		}, {
 			Name:              "binarytranslation",
 			ExtraSoftwareDeps: []string{"android_p"},
