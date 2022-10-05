@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "400a8400_392eb9d5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2022-10-05T23:05:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "551a6c1d_924eb2c1",
+      "range": {
+        "startLine": 11,
+        "startChar": 60,
+        "endLine": 11,
+        "endChar": 65
+      },
+      "revId": "01fafb43a872e3c81c12db334c4dd7079a4e8f6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "6213a35f_a07e1435",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -54,6 +78,30 @@
       "writtenOn": "2022-10-05T16:53:13Z",
       "side": 1,
       "message": "Why do we need to start chrome in tablet mode instead of going through `ash.SetTabletModeEnabled`? The switch is meant for devs and its behavior is slightly different from production, or from autotest api.\n\nIs it very important that chrome started in the forced tablet mode? Could the relevant tests use `ash.SetTabletModeEnabled` ?",
+      "range": {
+        "startLine": 299,
+        "startChar": 122,
+        "endLine": 299,
+        "endChar": 152
+      },
+      "revId": "01fafb43a872e3c81c12db334c4dd7079a4e8f6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ed83a54_e36326b5",
+        "filename": "src/chromiumos/tast/local/arc/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2022-10-05T23:05:43Z",
+      "side": 1,
+      "message": "The difference is \u0027--enable-virtual-keyboard\u0027. Some ARC++ tests which don\u0027t need VK use `ash.EnsureTabletModeEnabled` actually. We may be able to add new chrome.autotestPrivate API to enable VK forcibly though.",
+      "parentUuid": "ffcee35d_0bd084cd",
       "range": {
         "startLine": 299,
         "startChar": 122,
