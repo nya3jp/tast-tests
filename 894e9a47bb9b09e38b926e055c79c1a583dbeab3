@@ -16,6 +16,24 @@
       "message": "Is this only for local fuzzing of herobrine devices. If so, please add a comment similar to line 61 for herobrine.",
       "revId": "894e9a47bb9b09e38b926e055c79c1a583dbeab3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5b88b1e_f1465251",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzkaller/wrapper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2022-10-05T04:32:14Z",
+      "side": 1,
+      "message": "Thanks. I would like to enable the continuous fuzzing in the lab.",
+      "parentUuid": "0e51cb60_ac774fc9",
+      "revId": "894e9a47bb9b09e38b926e055c79c1a583dbeab3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
