@@ -89,6 +89,8 @@ type FixtData struct {
 	chrome *chrome.Chrome
 	// loginTime is the time duration about session login time.
 	loginTime time.Duration
+	// bt describes what type of browser this fixture should use.
+	bt browser.Type
 }
 
 // Chrome returns the chrome instance.
@@ -107,12 +109,20 @@ func (f FixtData) LoginTime() time.Duration {
 	return f.loginTime
 }
 
+// BrowserType returns what type of browser this fixture use.
+func (f FixtData) BrowserType() browser.Type {
+	if f.bt == "" {
+		panic("BrowserType has not been recorded")
+	}
+	return f.bt
+}
+
 type guestSessionFixture struct {
 	// MGS holds chrome and fakedms instances.
 	mgs *MGS
 	// webApps contains web apps to be installed to the session.
 	webApps []*policy.WebAppInstallForceListValue
-	// bt describes what type of browser this fixture should use
+	// bt describes what type of browser this fixture should use.
 	bt                  browser.Type
 	keepState           bool
 	chromeExtraOpts     []chrome.Option
@@ -215,7 +225,7 @@ func (g *guestSessionFixture) SetUp(ctx context.Context, s *testing.FixtState) i
 
 	chrome.Lock()
 
-	return &FixtData{cr, loginTime}
+	return &FixtData{cr, loginTime, g.bt}
 }
 
 func (g *guestSessionFixture) TearDown(ctx context.Context, s *testing.FixtState) {
