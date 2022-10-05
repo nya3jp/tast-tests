@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "69de8420_ff72ac48",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-10-05T22:49:21Z",
+      "side": 1,
+      "message": "Thanks for reviewing.",
+      "revId": "ee2b07abee6a857ca82e77fa83507a6ba62938f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f968ad4b_4e857ed1",
@@ -14,6 +31,30 @@
       "writtenOn": "2022-10-04T19:13:23Z",
       "side": 1,
       "message": "Can you use other fixture to that, we should not maintain general managed user support in FamilyLink fixture.",
+      "range": {
+        "startLine": 96,
+        "startChar": 23,
+        "endLine": 96,
+        "endChar": 43
+      },
+      "revId": "ee2b07abee6a857ca82e77fa83507a6ba62938f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bfcdf737_79bafc95",
+        "filename": "src/chromiumos/tast/local/chrome/projector/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-10-05T22:49:21Z",
+      "side": 1,
+      "message": "Done using NewProjectorFixture, but I had to duplicate a lot of code from FamilyLinkFixture to make it work. As mentioned in this comment [1], managed user login requires fakeDMS to work. FamilyLinkFixture already supports fakeDMS, so I copied the code into ProjectorFixture in crrev.com/c/3928209.\n\n[1] https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3908211/comment/08ee3b04_064e66b7/",
+      "parentUuid": "f968ad4b_4e857ed1",
       "range": {
         "startLine": 96,
         "startChar": 23,
