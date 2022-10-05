@@ -16,6 +16,23 @@
       "message": "LGTM.",
       "revId": "9656bf51e7b27b2d1f38691006a36ba8e6b6767b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f58910c_3b6c17ff",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2022-10-05T17:59:56Z",
+      "side": 1,
+      "message": "re the TEST line:\n```\nTEST\u003dwifi.SimpleConnect.wpa2pmfsha256 is expected to fail because \\\n     shill hasn\u0027t supported WPA-PSK-SHA256. The rest should pass.\n```\n\nIf we land this, won\u0027t this add red to our dashboards since the test should fail? Simpleconnect is a stable test that champs monitor so special considerations should be taken to land test cases for features that aren\u0027t currently supported.",
+      "revId": "9656bf51e7b27b2d1f38691006a36ba8e6b6767b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
