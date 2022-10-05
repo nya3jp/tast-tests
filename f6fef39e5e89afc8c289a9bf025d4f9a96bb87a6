@@ -285,6 +285,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8fd8494e_7a5015b1",
+        "filename": "src/chromiumos/tast/common/policy/policy_blob.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1153089
+      },
+      "writtenOn": "2022-10-05T09:36:18Z",
+      "side": 1,
+      "message": "Ah, sorry, I must have looked at the wrong patchset. They were gone already when I left my last comment.",
+      "parentUuid": "0ed3a147_236af075",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 90
+      },
+      "revId": "f6fef39e5e89afc8c289a9bf025d4f9a96bb87a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a2f66d4c_d982d642",

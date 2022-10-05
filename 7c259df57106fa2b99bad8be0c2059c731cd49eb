@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "55181f4b_2e0027a8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 23
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1153089
+      },
+      "writtenOn": "2022-10-05T09:36:18Z",
+      "side": 1,
+      "message": "Congrats on merging this! Let\u0027s hope nothing breaks and we can finally delete the last cope of the Python server.",
+      "revId": "7c259df57106fa2b99bad8be0c2059c731cd49eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
