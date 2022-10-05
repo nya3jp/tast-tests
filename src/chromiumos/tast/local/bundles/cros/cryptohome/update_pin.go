@@ -153,7 +153,7 @@ func UpdatePin(ctx context.Context, s *testing.State) {
 		if err != nil {
 			return "", errors.Wrap(err, "failed to start auth session for re-mounting")
 		}
-		if err := client.AuthenticatePinAuthFactor(ctx, authSessionID, pinLabel, pin); err != nil {
+		if _, err := client.AuthenticatePinAuthFactor(ctx, authSessionID, pinLabel, pin); err != nil {
 			return authSessionID, errors.Wrap(err, "failed to authenticate with auth session")
 		}
 		if err := client.PreparePersistentVault(ctx, authSessionID, false /*ecryptfs*/); err != nil {

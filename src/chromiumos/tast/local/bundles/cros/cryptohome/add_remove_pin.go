@@ -88,7 +88,7 @@ func AddRemovePIN(ctx context.Context, s *testing.State) {
 		if err != nil {
 			return errors.Wrap(err, "failed to start auth session for re-mounting")
 		}
-		if err := client.AuthenticatePinAuthFactor(ctx, authSessionID, pinLabel, userPIN); err != nil {
+		if _, err := client.AuthenticatePinAuthFactor(ctx, authSessionID, pinLabel, userPIN); err != nil {
 			return errors.Wrap(err, "failed to authenticate with auth session")
 		}
 		defer client.InvalidateAuthSession(ctx, authSessionID)
@@ -111,7 +111,7 @@ func AddRemovePIN(ctx context.Context, s *testing.State) {
 		if err != nil {
 			return errors.Wrap(err, "failed to start auth session for re-mounting")
 		}
-		if err := client.AuthenticatePinAuthFactor(ctx, authSessionID, pinLabel, userPIN); err != nil {
+		if _, err := client.AuthenticatePinAuthFactor(ctx, authSessionID, pinLabel, userPIN); err != nil {
 			return errors.Wrap(err, "failed to authenticate with PIN")
 		}
 		if err := client.InvalidateAuthSession(ctx, authSessionID); err != nil {
@@ -150,7 +150,7 @@ func AddRemovePIN(ctx context.Context, s *testing.State) {
 	}
 	// Attempt PIN Authfactor right after removal.
 	var exitErr *hwsec.CmdExitError
-	err = client.AuthenticatePinAuthFactor(ctx, authSessionID, pinLabel, userPIN)
+	_, err = client.AuthenticatePinAuthFactor(ctx, authSessionID, pinLabel, userPIN)
 	if !errors.As(err, &exitErr) {
 		s.Fatalf("Unexpected error during authentication with PIN: got %q; want *hwsec.CmdExitError", err)
 	}
@@ -167,7 +167,7 @@ func AddRemovePIN(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to start auth session: ", err)
 	}
-	err = client.AuthenticatePinAuthFactor(ctx, authSessionID, pinLabel, userPIN)
+	_, err = client.AuthenticatePinAuthFactor(ctx, authSessionID, pinLabel, userPIN)
 	if !errors.As(err, &exitErr) {
 		s.Fatalf("Unexpected error during unlock with PIN: got %q; want *hwsec.CmdExitError", err)
 	}
@@ -188,7 +188,7 @@ func AddRemovePIN(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to start auth session: ", err)
 	}
-	err = client.AuthenticatePinAuthFactor(ctx, authSessionID, pinLabel, userPIN)
+	_, err = client.AuthenticatePinAuthFactor(ctx, authSessionID, pinLabel, userPIN)
 	if !errors.As(err, &exitErr) {
 		s.Fatalf("Unexpected error during authentication with pin: got %q; want *hwsec.CmdExitError", err)
 	}

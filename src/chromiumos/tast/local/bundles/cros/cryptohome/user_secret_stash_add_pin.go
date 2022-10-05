@@ -118,7 +118,7 @@ func UserSecretStashAddPin(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to start auth session for re-mounting: ", err)
 	}
-	if err := client.AuthenticatePinAuthFactor(ctx, authSessionID, pinLabel, userPin); err != nil {
+	if _, err := client.AuthenticatePinAuthFactor(ctx, authSessionID, pinLabel, userPin); err != nil {
 		s.Fatal("Failed to authenticate with auth session: ", err)
 	}
 	if err := client.PreparePersistentVault(ctx, authSessionID /*ecryptfs=*/, false); err != nil {

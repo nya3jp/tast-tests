@@ -1028,9 +1028,17 @@ func (u *CryptohomeClient) RemoveAuthFactor(ctx context.Context, authSessionID, 
 }
 
 // AuthenticatePinAuthFactor authenticates an AuthSession with a given authSessionID via pin.
-func (u *CryptohomeClient) AuthenticatePinAuthFactor(ctx context.Context, authSessionID, label, pin string) error {
-	_, err := u.binary.authenticatePinAuthFactor(ctx, authSessionID, label, pin)
-	return err
+func (u *CryptohomeClient) AuthenticatePinAuthFactor(ctx context.Context, authSessionID, label, pin string) (*uda.AuthenticateAuthFactorReply, error) {
+	binaryMsg, err := u.binary.authenticatePinAuthFactor(ctx, authSessionID, label, pin)
+	if err != nil {
+		return nil, errors.Wrap(err, "AuthenticateAuthFactor failed")
+	}
+
+	reply := &uda.AuthenticateAuthFactorReply{}
+	if err := proto.Unmarshal(binaryMsg, reply); err != nil {
+		return nil, errors.Wrap(err, "failed to unmarshal AuthenticateAuthFactor reply")
+	}
+	return reply, nil
 }
 
 // AuthenticateKioskAuthFactor authenticates an AuthSession with a given authSessionID via a kiosk authfactor.
