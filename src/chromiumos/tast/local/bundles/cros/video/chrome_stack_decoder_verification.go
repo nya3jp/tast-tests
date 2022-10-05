@@ -450,7 +450,8 @@ var hevcCommonFiles = []string{
 	"test_vectors/hevc/main/WPP_D_ericsson_MAIN_2.hevc",
 	"test_vectors/hevc/main/WPP_E_ericsson_MAIN_2.hevc",
 	"test_vectors/hevc/main/WPP_F_ericsson_MAIN_2.hevc",
-	"test_vectors/hevc/main_still_picture/IPRED_B_Nokia_3.hevc",
+	// Disabled since Chrome doesn't support HEVCPROFILE_MAIN_STILL_PICTURE.
+	// "test_vectors/hevc/main_still_picture/IPRED_B_Nokia_3.hevc",
 }
 
 func appendJSONFiles(videoFiles []string) []string {
