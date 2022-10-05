@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b31e588c_06662989",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/auto_framing_ui_toggle.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2022-10-05T15:39:32Z",
+      "side": 1,
+      "message": "small nit: Swap so that defer function is right behind the logic that writes the file.",
+      "range": {
+        "startLine": 52,
+        "startChar": 2,
+        "endLine": 53,
+        "endChar": 16
+      },
+      "revId": "17ff8283e01e376428233dab2e62e7ee3c8c8cd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "288d67c1_d2283474",
         "filename": "src/chromiumos/tast/local/camera/cca/fixture.go",
         "patchSetId": 1
@@ -110,6 +133,30 @@
       "side": 1,
       "message": "I see. I think we can add the flag now and refactor later.",
       "parentUuid": "66e3a6f7_994eca91",
+      "range": {
+        "startLine": 320,
+        "startChar": 0,
+        "endLine": 322,
+        "endChar": 2
+      },
+      "revId": "17ff8283e01e376428233dab2e62e7ee3c8c8cd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "744cb013_69f90c25",
+        "filename": "src/chromiumos/tast/local/camera/cca/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2022-10-05T15:39:32Z",
+      "side": 1,
+      "message": "Agree that we can land it first but might need to refactor later.",
+      "parentUuid": "2d5d72cc_35f3cefc",
       "range": {
         "startLine": 320,
         "startChar": 0,
