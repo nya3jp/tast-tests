@@ -18,6 +18,11 @@ import (
 	"chromiumos/tast/testing/hwdep"
 )
 
+const (
+	wipeLogFile     = "wipe_in_ramfs.log"
+	wipeLogFilePath = "/tmp/" + wipeLogFile
+)
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         Finalize,
@@ -96,12 +101,15 @@ func cleanup(ctx context.Context, s *testing.State) {
 	if err := d.GetFile(ctx, "/tmp/wipe_init.log", filepath.Join(s.OutDir(), "wipe_init.log")); err != nil {
 		s.Error("Dump wipe_init.log fail: ", err)
 	}
-	if err := d.GetFile(ctx, "/old_root/tmp/wipe_in_tmpfs.log", filepath.Join(s.OutDir(), "wipe_in_tmpfs.log")); err != nil {
-		s.Log("Dump wipe_in_tmpfs.log (after pivot root) fail: ", err)
+
+	oldWipeLogFilePath := filepath.Join("/old", wipeLogFilePath)
+	hostWipeLogFilePath = filepath.Join(s.OutDir(), wipeLogFile)
+	if err := d.GetFile(ctx, oldWipeLogFilePath, hostWipeLogFilePath); err != nil {
+		s.Logf("Dump %s (after pivot root) fail: %v", wipeLogFile, err)
 
 		// Re-try the path before pivot root
-		if err := d.GetFile(ctx, "/tmp/wipe_in_tmpfs.log", filepath.Join(s.OutDir(), "wipe_in_tmpfs.log")); err != nil {
-			s.Error("Dump wipe_in_tmpfs.log (before pivot root) fail: ", err)
+		if err := d.GetFile(ctx, wipeLogFilePath, hostWipeLogFilePath); err != nil {
+			s.Errorf("Dump %s (before pivot root) fail: %v", wipeLogFile, err)
 		}
 	}
 
