@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "77f8239c_3d580ded",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/write_protect.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1427718
+      },
+      "writtenOn": "2022-10-05T03:36:43Z",
+      "side": 1,
+      "message": "Only one of the test cases even attempts to modify the fw, so I removed the backup/restore from the main function and just kept the defer in the helper function. Additionally added the `needRestore` flag to only restore if an error occurred.",
+      "parentUuid": "3a2c6ef7_adcf0236",
+      "range": {
+        "startLine": 158,
+        "startChar": 2,
+        "endLine": 174,
+        "endChar": 80
+      },
+      "revId": "97759e6dddf736c71d5bcf3418b10f8245fa3532",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a4f39019_e467d952",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-10-04T17:22:48Z",
       "side": 1,
       "message": "Isn\u0027t this the same thing that the defer call above is doing?  Also at this point we just compared the images and we know they didn\u0027t change.",
+      "range": {
+        "startLine": 254,
+        "startChar": 1,
+        "endLine": 263,
+        "endChar": 0
+      },
+      "revId": "97759e6dddf736c71d5bcf3418b10f8245fa3532",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e473c174_8701c63f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/write_protect.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1427718
+      },
+      "writtenOn": "2022-10-05T03:36:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a4f39019_e467d952",
       "range": {
         "startLine": 254,
         "startChar": 1,
