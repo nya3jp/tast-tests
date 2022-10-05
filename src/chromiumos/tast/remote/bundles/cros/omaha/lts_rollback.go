@@ -34,14 +34,27 @@ func init() {
 func LTSRollback(ctx context.Context, s *testing.State) {
 	state := s.FixtValue().(*params.FixtData)
 
+	// Get the current LTS milestone.
+	currentChromeOSLTS := -1
+	for n := range state.Config.ChromeOSLTRMilestoneWithMinimumMinor {
+		if n > currentChromeOSLTS {
+			currentChromeOSLTS = n
+		}
+	}
+
+	if currentChromeOSLTS < 0 {
+		s.Fatal("Failed to find the current LTS milestone in the current config: ", state.Config.ChromeOSLTRMilestoneWithMinimumMinor)
+	}
+
 	chromeOSStableInt := state.Config.ChromeOSVersionFromMilestone[state.Config.NextStableChrome]
 	chromeOSStable := strconv.FormatInt(int64(chromeOSStableInt), 10) + ".0.0"
 
 	req := request.New()
 	req.GenSP(state.Device, chromeOSStable)
 
-	ltsChromeOsVersion := state.Config.ChromeOSVersionFromMilestone[state.Config.CurrentChromeOSLTS]
+	ltsChromeOsVersion := state.Config.ChromeOSVersionFromMilestone[currentChromeOSLTS]
 	ltsPrefix := strconv.FormatInt(int64(ltsChromeOsVersion), 10)
+	currentChromeOSLTSMinor := state.Config.ChromeOSLTRMilestoneWithMinimumMinor[currentChromeOSLTS]
 
 	requestApp := request.GenerateRequestApp(state.Device, chromeOSStable, request.Stable)
 	requestApp.UpdateCheck.LTSTag = "lts"
@@ -71,7 +84,7 @@ func LTSRollback(ctx context.Context, s *testing.State) {
 		s.Fatalf("Failed to read the minor version from %q: %v", chromeOSVersion, err)
 	}
 
-	if minorVersion < state.Config.CurrentChromeOSLTSMinor {
-		s.Errorf("Minor version %d not an LTS minor version (>=%d)", minorVersion, state.Config.CurrentChromeOSLTSMinor)
+	if minorVersion < currentChromeOSLTSMinor {
+		s.Errorf("Unexpected LTS version; got %s, expected minor >= %d", chromeOSVersion, currentChromeOSLTSMinor)
 	}
 }
