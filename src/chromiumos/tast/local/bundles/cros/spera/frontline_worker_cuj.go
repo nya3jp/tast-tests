@@ -31,12 +31,11 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         FrontlineWorkerCUJ,
-		LacrosStatus: testing.LacrosVariantUnneeded,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Measures the performance of Frontline Worker CUJ",
 		Contacts:     []string{"xliu@cienet.com", "alston.huang@cienet.com", "cienet-development@googlegroups.com"},
 		SoftwareDeps: []string{"chrome"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
-		Fixture:      fixture.ManagedGuestSessionWithPWA,
 		Vars: []string{
 			"spera.username",       // Required. It is necessary to have account to use Google Sheets.
 			"spera.password",       // Required. It is necessary to have account to use Google Sheets.
@@ -47,17 +46,41 @@ func init() {
 			{
 				Name:    "basic_browsing",
 				Timeout: 10 * time.Minute,
+				Fixture: fixture.ManagedGuestSessionWithPWA,
 				Val: frontlineWorkerParam{
-					Workload: browsering,
-					Tier:     cuj.Basic,
+					workload: browsering,
+					tier:     cuj.Basic,
+					bt:       browser.TypeAsh,
+				},
+			},
+			{
+				Name:    "basic_lacros_browsing",
+				Timeout: 10 * time.Minute,
+				Fixture: fixture.ManagedGuestSessionWithPWALacros,
+				Val: frontlineWorkerParam{
+					workload: browsering,
+					tier:     cuj.Basic,
+					bt:       browser.TypeLacros,
 				},
 			},
 			{
 				Name:    "basic_collaborating",
 				Timeout: 10 * time.Minute,
+				Fixture: fixture.ManagedGuestSessionWithPWA,
 				Val: frontlineWorkerParam{
-					Workload: collaborating,
-					Tier:     cuj.Basic,
+					workload: collaborating,
+					tier:     cuj.Basic,
+					bt:       browser.TypeAsh,
+				},
+			},
+			{
+				Name:    "basic_lacros_collaborating",
+				Timeout: 10 * time.Minute,
+				Fixture: fixture.ManagedGuestSessionWithPWALacros,
+				Val: frontlineWorkerParam{
+					workload: collaborating,
+					tier:     cuj.Basic,
+					bt:       browser.TypeLacros,
 				},
 			},
 		},
@@ -65,8 +88,9 @@ func init() {
 }
 
 type frontlineWorkerParam struct {
-	Workload workload
-	Tier     cuj.Tier
+	workload workload
+	tier     cuj.Tier
+	bt       browser.Type
 }
 
 // Workload indicates the workload of the case.
@@ -85,7 +109,7 @@ var searchTerms = []string{"Amazon", "CNN", "Disney", "Disney+", "ESPN", "Flickr
 func FrontlineWorkerCUJ(ctx context.Context, s *testing.State) {
 	cr := s.FixtValue().(*mgs.FixtData).Chrome()
 	loginTime := s.FixtValue().(*mgs.FixtData).LoginTime()
-	workload := s.Param().(frontlineWorkerParam).Workload
+	workload := s.Param().(frontlineWorkerParam).workload
 
 	sampleSheetURL, ok := s.Var("spera.sampleSheetURL")
 	if !ok {
@@ -142,11 +166,23 @@ func FrontlineWorkerCUJ(ctx context.Context, s *testing.State) {
 	}
 	defer kb.Close()
 
+	bt := s.Param().(frontlineWorkerParam).bt
+
 	var browserStartTime, appStartTime time.Duration
 	testing.ContextLog(ctx, "Start to get browser start time")
-	_, browserStartTime, err = cuj.GetBrowserStartTime(ctx, tconn, false, tabletMode, browser.TypeAsh)
+	l, browserStartTime, err := cuj.GetBrowserStartTime(ctx, tconn, false, tabletMode, bt)
 	if err != nil {
 		s.Fatal("Failed to get browser start time: ", err)
+	}
+	br := cr.Browser()
+	var bTconn *chrome.TestConn
+	if l != nil {
+		defer l.Close(ctx)
+		br = l.Browser()
+		bTconn, err = l.TestAPIConn(ctx)
+		if err != nil {
+			s.Fatal("Failed to create a TestConn instance for lacros: ", err)
+		}
 	}
 
 	// Give 10 seconds to set initial settings. It is critical to ensure
@@ -168,8 +204,8 @@ func FrontlineWorkerCUJ(ctx context.Context, s *testing.State) {
 	outDir := s.OutDir()
 	account, password := s.RequiredVar("spera.username"), s.RequiredVar("spera.password")
 
-	googleChatPWA := frontlineworkercuj.NewGoogleChat(ctx, cr, tconn, ui, uiHdl, kb)
-	googleSheets := frontlineworkercuj.NewGoogleSheets(ctx, cr, tconn, ui, uiHdl, kb, account, password)
+	googleChatPWA := frontlineworkercuj.NewGoogleChat(ctx, br, ui, uiHdl, kb)
+	googleSheets := frontlineworkercuj.NewGoogleSheets(ctx, tconn, br, ui, uiHdl, kb, account, password)
 
 	var sheetName string
 	// Shorten the context to clean up the files created in the test case.
@@ -178,7 +214,7 @@ func FrontlineWorkerCUJ(ctx context.Context, s *testing.State) {
 	defer cancel()
 	defer googleSheets.RemoveFile(cleanUpResourceCtx, &sheetName)
 
-	defer faillog.DumpUITreeWithScreenshotOnError(ctx, outDir, func() bool { return err != nil }, cr, "ui_dump")
+	defer faillog.DumpUITreeWithScreenshotOnError(ctx, outDir, s.HasError, cr, "ui_dump")
 
 	// Shorten the context to cleanup recorder.
 	cleanupRecorderCtx := ctx
@@ -186,12 +222,12 @@ func FrontlineWorkerCUJ(ctx context.Context, s *testing.State) {
 	defer cancel()
 
 	options := cujrecorder.NewPerformanceCUJOptions()
-	recorder, err := cujrecorder.NewRecorder(ctx, cr, tconn, nil, options)
+	recorder, err := cujrecorder.NewRecorder(ctx, cr, bTconn, nil, options)
 	if err != nil {
 		s.Fatal("Failed to create the recorder: ", err)
 	}
 	defer recorder.Close(cleanupRecorderCtx)
-	if err := cuj.AddPerformanceCUJMetrics(tconn, nil, recorder); err != nil {
+	if err := cuj.AddPerformanceCUJMetrics(tconn, bTconn, recorder); err != nil {
 		s.Fatal("Failed to add metrics to recorder: ", err)
 	}
 
@@ -201,9 +237,12 @@ func FrontlineWorkerCUJ(ctx context.Context, s *testing.State) {
 	}
 
 	pv := perf.NewValues()
-	if err := recorder.Run(ctx, func(ctx context.Context) error {
-		if err := openGoogleTabs(ctx, cr, tconn, uiHdl, numberOfTabs); err != nil {
+	if err := recorder.Run(ctx, func(ctx context.Context) (retErr error) {
+		if err := openGoogleTabs(ctx, br, uiHdl, numberOfTabs); err != nil {
 			return errors.Wrap(err, "failed to open google tabs")
+		}
+		if err := cuj.MaximizeBrowserWindow(ctx, tconn, tabletMode, "Google"); err != nil {
+			return errors.Wrap(err, "failed to maximize the window")
 		}
 		if workload == browsering {
 			if len(searchTerms) > numberOfTabs {
@@ -215,9 +254,9 @@ func FrontlineWorkerCUJ(ctx context.Context, s *testing.State) {
 		}
 
 		if workload == collaborating {
-			for _, idx := range []int{1, 2} {
-				if err := scrollTabPage(ctx, uiHdl, idx); err != nil {
-					return errors.Wrapf(err, "failed to scroll page within tab index %d", idx)
+			for i := 0; i < 2; i++ {
+				if err := scrollTabPage(ctx, uiHdl); err != nil {
+					return errors.Wrapf(err, "failed to scroll page within tab index %d", i)
 				}
 			}
 		}
@@ -236,14 +275,14 @@ func FrontlineWorkerCUJ(ctx context.Context, s *testing.State) {
 		googleSheets.Close(ctx)
 
 		if workload == browsering {
-			var appGoogleDrive *frontlineworkercuj.GoogleDrive
-			if appGoogleDrive, err = frontlineworkercuj.NewGoogleDrive(ctx, tconn, ui, kb); err != nil {
-				return errors.Wrap(err, "failed to create Google Drive instance")
-			}
+			appGoogleDrive := frontlineworkercuj.NewGoogleDrive(ctx, tconn, ui)
 			appStartTime, err = appGoogleDrive.Launch(ctx, tconn)
 			if err != nil {
 				return errors.Wrap(err, "failed to launch Google Drive")
 			}
+			defer appGoogleDrive.Close(ctx)
+			defer faillog.DumpUITreeWithScreenshotOnError(ctx, outDir, func() bool { return retErr != nil }, cr, "ui_dump_google_drive")
+
 			if err := appGoogleDrive.OpenSpreadSheet(ctx, sheetName); err != nil {
 				return errors.Wrap(err, "failed to open the spreadsheet through Google Drive")
 			}
@@ -287,10 +326,17 @@ func FrontlineWorkerCUJ(ctx context.Context, s *testing.State) {
 	}
 }
 
-func openGoogleTabs(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn, uiHdl cuj.UIActionHandler, numberOfTabs int) error {
+func openGoogleTabs(ctx context.Context, br *browser.Browser, uiHdl cuj.UIActionHandler, numberOfTabs int) (err error) {
+	googleURL := cuj.GoogleURL + "/?hl=en"
 	for i := 0; i < numberOfTabs; i++ {
-		testing.ContextLog(ctx, "Opening tab ", i+1)
-		conn, err := cr.NewConn(ctx, cuj.GoogleURL+"/?hl=en")
+		testing.ContextLog(ctx, "Opening tab ", i)
+		var conn *chrome.Conn
+		if i == 0 {
+			conn, err = uiHdl.NewChromeTab(ctx, br, googleURL, false)
+		} else {
+			// uiHdl.NewChromeTab will fail to open new tab in lacros on tablet due to the clicking wrong location issue.
+			conn, err = br.NewConn(ctx, googleURL)
+		}
 		if err != nil {
 			return errors.Wrapf(err, "the current tab index: %d, failed to open URL: %s", i, cuj.GoogleURL)
 		}
@@ -303,13 +349,7 @@ func openGoogleTabs(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestCo
 
 func enterSearchTerms(ctx context.Context, uiHdl cuj.UIActionHandler, kb *input.KeyboardEventWriter, searchTerms []string) error {
 	for i := 0; i < len(searchTerms); i++ {
-		if i == 0 {
-			// The first tab will be an empty tab. Therefore, the operation needs to start from the second tab.
-			if err := uiHdl.SwitchToNextChromeTab()(ctx); err != nil {
-				return err
-			}
-		}
-		testing.ContextLog(ctx, "Switching to chrome tab index: ", i+1)
+		testing.ContextLog(ctx, "Switching to chrome tab index: ", i)
 		if err := uiauto.Combine("enter search term",
 			uiHdl.SwitchToNextChromeTab(),
 			kb.TypeAction(string(searchTerms[i])),
@@ -321,10 +361,10 @@ func enterSearchTerms(ctx context.Context, uiHdl cuj.UIActionHandler, kb *input.
 	return nil
 }
 
-func scrollTabPage(ctx context.Context, uiHdl cuj.UIActionHandler, idx int) error {
+func scrollTabPage(ctx context.Context, uiHdl cuj.UIActionHandler) error {
 	scrollActions := uiHdl.ScrollChromePage(ctx)
-	if err := uiHdl.SwitchToChromeTabByIndex(idx)(ctx); err != nil {
-		return errors.Wrap(err, "failed to switch tab")
+	if err := uiHdl.SwitchToNextChromeTab()(ctx); err != nil {
+		return err
 	}
 	for _, act := range scrollActions {
 		if err := act(ctx); err != nil {
