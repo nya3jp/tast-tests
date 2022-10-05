@@ -1,0 +1,75 @@
+// Copyright 2022 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package tast.cros.firmware;
+
+import "google/protobuf/empty.proto";
+
+option go_package = "chromiumos/tast/services/cros/firmware";
+
+service CgptService {
+    // GetCgptTable returns structure containing metadata with CGPT partitions
+    rpc GetCgptTable (GetCgptTableRequest) returns (GetCgptTableResponse) {}
+
+    // GetRawHeader returns the raw header of CGPT partition (first 4096 bytes)
+    rpc GetRawHeader (GetRawHeaderRequest) returns (GetRawHeaderResponse) {}
+
+    // WriteRawHeader writes the raw CGPT header into chosen partitionpartition
+    rpc WriteRawHeader (WriteRawHeaderRequest) returns (google.protobuf.Empty) {}
+
+    // RestoreCgptAttributes restores CGPT partition attributes directly dumped from GetCgptTable
+    rpc RestoreCgptAttributes (RestoreCgptAttributesRequest) returns (google.protobuf.Empty) {}
+}
+
+enum CgptKernel {
+    KERNEL_A = 0;
+    KERNEL_B = 1;
+}
+
+message CgptPartitionAttribute {
+    string Name = 1;
+    int32 Value = 2;
+}
+
+message CgptPartition {
+    string PartitionPath = 1;
+    int32 PartitionNumber = 2;
+    int32 Start = 3;
+    int32 Size = 4;
+    string Label = 5;
+    string Type = 6;
+    string UUID = 7;
+    repeated CgptPartitionAttribute Attrs = 8;
+}
+
+message GetCgptTableRequest {
+    string BlockDevice = 1;
+}
+
+message GetCgptTableResponse {
+    repeated CgptPartition CgptTable = 1;
+}
+
+// GetRawHeaderRequest specifies the partition to return its raw header
+message GetRawHeaderRequest {
+    string PartitionPath = 1;
+}
+
+// GetRawHeaderResponse provides the actual raw header of specified partition
+message GetRawHeaderResponse {
+    bytes RawHeader = 1;
+}
+
+// WriteHeaderRequest provides the partition and raw header being written to it 
+message WriteRawHeaderRequest {
+    string PartitionPath = 1;
+    bytes RawHeader = 2;
+}
+
+message RestoreCgptAttributesRequest {
+    string BlockDevice = 1;
+    repeated CgptPartition CgptTable = 2;
+}

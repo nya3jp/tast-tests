@@ -39,28 +39,34 @@ import (
 // Helper tracks several firmware-related objects. The recommended way to initialize the helper is to use firmware.fixture:
 //
 // import (
+//
 //	...
 //	"chromiumos/tast/remote/firmware/fixture"
+//
 // )
 //
-// func init() {
-//	testing.AddTest(&testing.Test{
-//		...
-//              Fixture: fixture.NormalMode,
-//	})
-// }
+//	func init() {
+//		testing.AddTest(&testing.Test{
+//			...
+//	             Fixture: fixture.NormalMode,
+//		})
+//	}
 //
-// func MyTest(ctx context.Context, s *testing.State) {
-// 	h := s.FixtValue().(*fixture.Value).Helper
+//	func MyTest(ctx context.Context, s *testing.State) {
+//		h := s.FixtValue().(*fixture.Value).Helper
 //
-// 	if err := h.RequireServo(ctx); err != nil {
-// 		s.Fatal("Failed to init servo: ", err)
-// 	}
+//			if err := h.RequireServo(ctx); err != nil {
+//				s.Fatal("Failed to init servo: ", err)
+//			}
+//
 // ...
 // }
 type Helper struct {
 	// BiosServiceClient provides bios related services such as GBBFlags manipulation.
 	BiosServiceClient fwpb.BiosServiceClient
+
+	// CgptServiceClient provides cgpt related services such as reading CGPT table.
+	CgptServiceClient fwpb.CgptServiceClient
 
 	// Board contains the DUT's board, as reported by the Platform RPC.
 	// Currently, this is based on /etc/lsb-release's CHROMEOS_RELEASE_BOARD.
@@ -293,6 +299,18 @@ func (h *Helper) RequireRPCUtils(ctx context.Context) error {
 		return errors.Wrap(err, "requiring RPC client")
 	}
 	h.RPCUtils = fwpb.NewUtilsServiceClient(h.RPCClient.Conn)
+	return nil
+}
+
+// RequireCgptServiceClient creates a firmware.CgptServiceClient, unless one already exists.
+func (h *Helper) RequireCgptServiceClient(ctx context.Context) error {
+	if h.CgptServiceClient != nil {
+		return nil
+	}
+	if err := h.RequireRPCClient(ctx); err != nil {
+		return errors.Wrap(err, "requiring RPC client")
+	}
+	h.CgptServiceClient = fwpb.NewCgptServiceClient(h.RPCClient.Conn)
 	return nil
 }
 
