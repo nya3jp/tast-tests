@@ -36,17 +36,9 @@ func init() {
 		Timeout:      25 * time.Minute,
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
-			Val:               []string{},
 		}, {
 			Name:              "vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
-			Val:               []string{},
-		}, {
-			Name:              "dalvik_memory_profile_vm",
-			ExtraSoftwareDeps: []string{"android_vm"},
-			Val: []string{
-				"--enable-features=ArcUseDalvikMemoryProfile",
-			},
 		}},
 		VarDeps: []string{
 			"arc.perfAccountPool",
@@ -64,7 +56,7 @@ func RegularBoot(ctx context.Context, s *testing.State) {
 	const iterationCount = 5
 	perfValues := perf.NewValues()
 	for i := 0; i < iterationCount; i++ {
-		appLaunchDuration, appShownDuration, enabledScreenDuration, err := performArcRegularBoot(ctx, s.OutDir(), creds, s.Param().([]string))
+		appLaunchDuration, appShownDuration, enabledScreenDuration, err := performArcRegularBoot(ctx, s.OutDir(), creds)
 		if err != nil {
 			s.Fatal("Failed to do regular boot: ", err)
 		}
@@ -141,7 +133,7 @@ func performArcInitialBoot(ctx context.Context, credPool string) (chrome.Creds, 
 // This also resets system caches before login to simulate scenario when user uses Chromebook after
 // reboot.
 // TODO (khmel): Change return value as a struct.
-func performArcRegularBoot(ctx context.Context, testDir string, creds chrome.Creds, chromeArgs []string) (time.Duration, time.Duration, time.Duration, error) {
+func performArcRegularBoot(ctx context.Context, testDir string, creds chrome.Creds) (time.Duration, time.Duration, time.Duration, error) {
 	// Use custom cooling config that is bit relaxed from default implementation
 	// in order to reduce failure rate especially on AMD low-end devices.
 	coolDownConfig := cpu.CoolDownConfig{
@@ -164,7 +156,7 @@ func performArcRegularBoot(ctx context.Context, testDir string, creds chrome.Cre
 		chrome.ARCSupported(),
 		chrome.GAIALogin(creds),
 		chrome.KeepState(),
-		chrome.ExtraArgs(append(arc.DisableSyncFlags(), chromeArgs...)...)}
+		chrome.ExtraArgs(append(arc.DisableSyncFlags())...)}
 
 	testing.ContextLog(ctx, "Create Chrome")
 	cr, err := chrome.New(ctx, opts...)
