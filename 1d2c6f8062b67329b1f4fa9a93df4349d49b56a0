@@ -39,6 +39,30 @@
       },
       "revId": "1d2c6f8062b67329b1f4fa9a93df4349d49b56a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c569505_1530c1b3",
+        "filename": "src/chromiumos/tast/local/bluetooth/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-10-05T23:01:11Z",
+      "side": 1,
+      "message": "Good eye! Yes, this is actually the list of features we explicitly disable for this fixture :)",
+      "parentUuid": "dd9857d7_6d0e700c",
+      "range": {
+        "startLine": 25,
+        "startChar": 68,
+        "endLine": 25,
+        "endChar": 73
+      },
+      "revId": "1d2c6f8062b67329b1f4fa9a93df4349d49b56a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
