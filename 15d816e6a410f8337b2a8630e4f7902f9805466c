@@ -47,6 +47,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f0e1331_ec239905",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2022-10-05T16:39:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f1679058_601f776a",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 10
+      },
+      "revId": "15d816e6a410f8337b2a8630e4f7902f9805466c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7f074e2_499d6442",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2022-10-05T16:39:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "059b22fb_96b88340",
+      "range": {
+        "startLine": 7,
+        "startChar": 55,
+        "endLine": 7,
+        "endChar": 56
+      },
+      "revId": "15d816e6a410f8337b2a8630e4f7902f9805466c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b7099022_416ce4f2",
@@ -83,6 +131,54 @@
       "writtenOn": "2022-10-05T14:59:46Z",
       "side": 1,
       "message": "`tablet`",
+      "range": {
+        "startLine": 12,
+        "startChar": 16,
+        "endLine": 12,
+        "endChar": 22
+      },
+      "revId": "15d816e6a410f8337b2a8630e4f7902f9805466c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4914e5e7_107db973",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2022-10-05T16:39:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b7099022_416ce4f2",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 28
+      },
+      "revId": "15d816e6a410f8337b2a8630e4f7902f9805466c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "816fa74e_588122b5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2022-10-05T16:39:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d94e961d_b194a106",
       "range": {
         "startLine": 12,
         "startChar": 16,
@@ -141,6 +237,24 @@
       "writtenOn": "2022-10-05T14:59:46Z",
       "side": 1,
       "message": "You can add `lacrosWithArcBootedInClamshellMode` in the same CL. Be aware that `lacrosWithArcBooted` doesn\u0027t always default to clamshell mode. For example, on a nocturne with the keyboard detached, `lacrosWithArcBooted` will have tablet mode.",
+      "revId": "15d816e6a410f8337b2a8630e4f7902f9805466c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9ceb6f0_a8405bae",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2022-10-05T16:39:43Z",
+      "side": 1,
+      "message": "So far, I cannot find any test with arcBootedInClamshellMode which needs the lacros variants because they all seems not to interact with any browser window.\nI\u0027ll add it once it\u0027s needed.",
+      "parentUuid": "b8b46680_5ecc260d",
       "revId": "15d816e6a410f8337b2a8630e4f7902f9805466c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
