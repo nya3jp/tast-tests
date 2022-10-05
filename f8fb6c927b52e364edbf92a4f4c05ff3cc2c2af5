@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1419c8e7_6091b7cb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-10-05T17:28:15Z",
+      "side": 1,
+      "message": "Seems fine. Are there any other tests this could simplify?",
+      "revId": "f8fb6c927b52e364edbf92a4f4c05ff3cc2c2af5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
