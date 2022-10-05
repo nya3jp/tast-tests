@@ -35,6 +35,10 @@ func init() {
 		Params: []testing.Param{{
 			Name:    "floss_disabled",
 			Fixture: "bluetoothEnabledWithBlueZ",
+		},
+		{
+			Name:    "floss_enabled",
+			Fixture: "bluetoothEnabledWithFloss",
 		}},
 	})
 }
