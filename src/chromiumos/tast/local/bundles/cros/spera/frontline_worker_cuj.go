@@ -36,7 +36,7 @@ func init() {
 		Contacts:     []string{"xliu@cienet.com", "alston.huang@cienet.com", "cienet-development@googlegroups.com"},
 		SoftwareDeps: []string{"chrome"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
-		Fixture:      fixture.ManagedGuestSessionWithExtensions,
+		Fixture:      fixture.ManagedGuestSessionWithPWA,
 		Vars: []string{
 			"spera.username",       // Required. It is necessary to have account to use Google Sheets.
 			"spera.password",       // Required. It is necessary to have account to use Google Sheets.

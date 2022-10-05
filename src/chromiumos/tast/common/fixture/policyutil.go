@@ -40,8 +40,8 @@ const (
 
 // Fixtures defined in chromiumos/tast/local/mgs/fixture.go.
 const (
-	ManagedGuestSession               = "managedGuestSession"
-	ManagedGuestSessionWithExtensions = "managedGuestSessionWithExtensions"
+	ManagedGuestSessionWithPWA       = "managedGuestSessionWithPWA"
+	ManagedGuestSessionWithPWALacros = "managedGuestSessionWithPWALacros"
 )
 
 // Fixtures defined in chromiumos/tast/local/policyutil/fixtures/lacros.go.
