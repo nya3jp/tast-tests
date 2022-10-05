@@ -22,6 +22,30 @@
       },
       "revId": "0a5820eaf5b1f343bb45fb7b07d8d805666902da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "64b57a32_a3b5ab81",
+        "filename": "src/chromiumos/tast/local/bundles/cros/spera/frontline_worker_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2022-10-05T10:07:23Z",
+      "side": 1,
+      "message": "No, `err` and `l` will not both be nil.",
+      "parentUuid": "684b48f6_6ed9b438",
+      "range": {
+        "startLine": 179,
+        "startChar": 1,
+        "endLine": 179,
+        "endChar": 14
+      },
+      "revId": "0a5820eaf5b1f343bb45fb7b07d8d805666902da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
