@@ -16,6 +16,29 @@
       "message": "Friendly ping @tomhughes",
       "revId": "9e22edb50027dc5089ed8c0fb32c9bdbd598763a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06110ae0_83ac7b9f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/biod/cros_config_matches_device.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-10-05T21:43:31Z",
+      "side": 1,
+      "message": "We concluded this won\u0027t cause any issues when `biod` is running, right?",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 44
+      },
+      "revId": "9e22edb50027dc5089ed8c0fb32c9bdbd598763a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
