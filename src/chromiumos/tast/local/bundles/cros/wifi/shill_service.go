@@ -2477,7 +2477,7 @@ func (s *ShillService) ResetTest(ctx context.Context, req *wifi.ResetTestRequest
 		}
 		return resetPath, nil
 	}
-	ath10kReset := func(_ context.Context, resetPath string) error {
+	ath10kReset := func(ctx context.Context, resetPath string) error {
 		// Simulate ath10k firmware crash. mac80211 handles firmware crashes transparently, so we don't expect a full disconnect/reconnet event.
 		// From ath10k debugfs:
 		//   To simulate firmware crash write one of the keywords to this file:
@@ -2530,9 +2530,16 @@ func (s *ShillService) ResetTest(ctx context.Context, req *wifi.ResetTestRequest
 		return "", errors.New("not a wcn3990 device")
 	}
 	ath10kWCN3990Reset := func(ctx context.Context, resetPath string) error {
-		return assertIdleAndConnect(ctx, func(ctx context.Context) error {
-			return ath10kReset(ctx, resetPath)
-		})
+		if err := ath10kReset(ctx, resetPath); err != nil {
+			return err
+		}
+
+		// Ath11k does not explicitly disconnect/reconnect during simulated FW crash.
+		// This will cause ping to start right after simulated FW crash, causing ping pkt drops.
+		// Allow 20 secs sleep (FW takes approx ~12 for complete initialization/full scan).
+		// TODO(b/230656342): Handle no disconnection/connection during simulated FW crash.
+		testing.Sleep(ctx, 20*time.Second)
+		return nil
 	}
 	iwlwifiResetPath := func(ctx context.Context, iface string) (string, error) {
 		par, err := network_iface.NewInterface(iface).ParentDeviceName(ctx)
