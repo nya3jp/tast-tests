@@ -154,6 +154,8 @@ const (
 	DevicePropertyCellularAPNInfoApnAttach         = "attach"
 	DevicePropertyCellularAPNInfoApnIPType         = "ip_type"
 	DevicePropertyCellularAPNInfoApnAuthentication = "authentication"
+	DevicePropertyCellularAPNInfoApnUsername       = "username"
+	DevicePropertyCellularAPNInfoApnPassword       = "password"
 
 	// APN related enums
 	DevicePropertyCellularAPNInfoApnIPTypeIPv4         = "ipv4"

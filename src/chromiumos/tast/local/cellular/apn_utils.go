@@ -30,7 +30,7 @@ const (
 	carrierDocomo
 	carrierRakuten
 	carrierEEUK
-	carrierVodaphoneUK
+	carrierVodafoneUK
 )
 
 const (
@@ -45,6 +45,8 @@ const (
 	auth       = shillconst.DevicePropertyCellularAPNInfoApnAuthentication
 	chap       = shillconst.DevicePropertyCellularAPNInfoApnAuthenticationCHAP
 	pap        = shillconst.DevicePropertyCellularAPNInfoApnAuthenticationPAP
+	username   = shillconst.DevicePropertyCellularAPNInfoApnUsername
+	password   = shillconst.DevicePropertyCellularAPNInfoApnPassword
 )
 
 var (
@@ -52,6 +54,8 @@ var (
 	// and regenerate the *.pbf files by following the directions in cellular/data/README.md.
 	carrierMapping = map[string]carrier{
 		"00101":  carrierAmarisoft,
+		"001010": carrierAmarisoft,
+		"23415":  carrierVodafoneUK,
 		"310260": carrierTmobile,
 		"310280": carrierAtt,
 		"310410": carrierAtt,
@@ -62,8 +66,8 @@ var (
 		carrierAmarisoft: []KnownAPN{
 			KnownAPN{Optional: false, APNInfo: map[string]string{apn: "callbox-ipv4", attach: attachTrue, ipType: ipv4}},
 			KnownAPN{Optional: false, APNInfo: map[string]string{apn: "callbox-ipv4", ipType: ipv4}},
-			KnownAPN{Optional: false, APNInfo: map[string]string{apn: "callbox-ipv4-chap", attach: attachTrue, ipType: ipv4, "username": "username", "password": "password"}},
-			KnownAPN{Optional: false, APNInfo: map[string]string{apn: "callbox-ipv4-pap", attach: attachTrue, ipType: ipv4, "username": "username", "password": "password"}},
+			KnownAPN{Optional: false, APNInfo: map[string]string{apn: "callbox-ipv4-chap", attach: attachTrue, ipType: ipv4, username: "username", password: "password"}},
+			KnownAPN{Optional: false, APNInfo: map[string]string{apn: "callbox-ipv4-pap", attach: attachTrue, ipType: ipv4, username: "username", password: "password", auth: pap}},
 			KnownAPN{Optional: false, APNInfo: map[string]string{apn: "callbox-ipv6", attach: attachTrue, ipType: ipv6}},
 			KnownAPN{Optional: false, APNInfo: map[string]string{apn: "callbox-ipv4v6", attach: attachTrue, ipType: ipv4v6}},
 		},
@@ -79,6 +83,10 @@ var (
 		carrierVerizon: []KnownAPN{
 			KnownAPN{Optional: false, APNInfo: map[string]string{apn: "vzwinternet", attach: attachTrue, ipType: ipv4v6}},
 			KnownAPN{Optional: false, APNInfo: map[string]string{apn: "vzwinternet"}},
+		},
+		carrierVodafoneUK: []KnownAPN{
+			KnownAPN{Optional: true, APNInfo: map[string]string{apn: "wap.vodafone.co.uk", ipType: ipv4v6, username: "wap", password: "wap"}},
+			KnownAPN{Optional: true, APNInfo: map[string]string{apn: "pp.vodafone.co.uk", username: "web", password: "web"}},
 		},
 	}
 )
