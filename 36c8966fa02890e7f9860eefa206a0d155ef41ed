@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad0fb96f_9a7d64e1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-10-05T23:42:00Z",
+      "side": 1,
+      "message": "Hi Prashant and Seewai,\nthe initial results for HidWake are here (https://tastboard.corp.google.com/test/power.HidWake). There is a lot of flakiness, but octopus is the main board that is almost entirely failing. On first look, the HID events do wake octopus as expected, but the wake event gets attributed to an ACPI device. While I debug this, there is no need to continue running HidWake on octopus. Can you take a look at this CL to skip HidWake on octopus?",
+      "revId": "36c8966fa02890e7f9860eefa206a0d155ef41ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
