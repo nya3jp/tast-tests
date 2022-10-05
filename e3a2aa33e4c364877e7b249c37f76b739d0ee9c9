@@ -16,6 +16,29 @@
       "message": "Hi Judy, please help review the audio functionality of the test. Thanks!",
       "revId": "e3a2aa33e4c364877e7b249c37f76b739d0ee9c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7cb5850_ff29717b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio_oboetester_glitch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-10-05T18:23:33Z",
+      "side": 1,
+      "message": "Any specific reason for use a different name here? I\u0027d stick to use the package name \"audio\" as it is easier for reader to follow the package.",
+      "range": {
+        "startLine": 19,
+        "startChar": 1,
+        "endLine": 19,
+        "endChar": 9
+      },
+      "revId": "e3a2aa33e4c364877e7b249c37f76b739d0ee9c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
