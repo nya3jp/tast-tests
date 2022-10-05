@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2fe2edeb_36cdfac5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/launch_feedback_from_settings_search.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-10-05T22:52:10Z",
+      "side": 1,
+      "message": "nit: rename to `continueButton`",
+      "range": {
+        "startLine": 103,
+        "startChar": 1,
+        "endLine": 103,
+        "endChar": 7
+      },
+      "revId": "ddc74a0dddd20609f180d4078c118e9d09c257a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74898434_15bb50bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/launch_feedback_from_settings_search.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-10-05T22:52:10Z",
+      "side": 1,
+      "message": "it may be useful to log `i` in the error message?",
+      "range": {
+        "startLine": 117,
+        "startChar": 3,
+        "endLine": 117,
+        "endChar": 51
+      },
+      "revId": "ddc74a0dddd20609f180d4078c118e9d09c257a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
