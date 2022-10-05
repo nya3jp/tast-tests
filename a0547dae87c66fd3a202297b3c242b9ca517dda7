@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6eb160f2_a40d471c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/cloud_gaming_marketing_opt_in.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-10-05T18:06:24Z",
+      "side": 1,
+      "message": "Looks like it is configured via src/project/*/config.star.. So SoftwareDeps might not going to help here.\n\nI don\u0027t know much about the config but it looks like delbin/mithraxhas  clound_gaming_devices\u003dTrue as well?\n\nhttps://source.corp.google.com/search?q\u003dcloud_gaming_device%20f:config.star%20-f:fake\u0026sq\u003dpackage:%5Echromeos_(internal%7Cpublic)$",
+      "parentUuid": "b9f847da_984c6a13",
+      "range": {
+        "startLine": 36,
+        "startChar": 37,
+        "endLine": 36,
+        "endChar": 55
+      },
+      "revId": "a0547dae87c66fd3a202297b3c242b9ca517dda7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "41c5e5fd_b193e589",
         "filename": "src/chromiumos/tast/local/bundles/cros/oobe/cloud_gaming_marketing_opt_in.go",
         "patchSetId": 2
