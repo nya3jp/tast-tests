@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67b8fd61_af978eaa",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-05T21:07:24Z",
+      "side": 1,
+      "message": "nit: Wrap at 72 characters, meaning there is no need for the line ending behind the word `map`.\n\nhttps://chromium.googlesource.com/chromiumos/docs/+/HEAD/contributing.md#Commit-messages",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 24
+      },
+      "revId": "f755120c7e278a6f6e23394bcf8e65b45721995c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb89ade3_d5dac1ad",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/omaha/lts.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-05T21:07:24Z",
+      "side": 1,
+      "message": "nit: I would put this after `ltsPrefix`.",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 97
+      },
+      "revId": "f755120c7e278a6f6e23394bcf8e65b45721995c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e4864f7_72a4e1c5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/omaha/lts_rollback.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-05T21:07:24Z",
+      "side": 1,
+      "message": "nit: I would put this after `ltsPrefix`.",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 97
+      },
+      "revId": "f755120c7e278a6f6e23394bcf8e65b45721995c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0cfdf1e_e86b568e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/omaha/params/configuration.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-05T21:07:24Z",
+      "side": 1,
+      "message": "Should this be `LTS`? What is `LTR`?",
+      "range": {
+        "startLine": 23,
+        "startChar": 12,
+        "endLine": 23,
+        "endChar": 15
+      },
+      "revId": "f755120c7e278a6f6e23394bcf8e65b45721995c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e12442c0_e7d9ec87",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/omaha/params/configuration.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-05T21:07:24Z",
+      "side": 1,
+      "message": "nit: `// ChromeOSLTRMilestoneWithMininumMinor maps LTS milestones to LTS-only minor versions.`",
+      "range": {
+        "startLine": 23,
+        "startChar": 1,
+        "endLine": 23,
+        "endChar": 120
+      },
+      "revId": "f755120c7e278a6f6e23394bcf8e65b45721995c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dae31698_9db1fbf6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/omaha/params/configuration.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-05T21:07:24Z",
+      "side": 1,
+      "message": "Should this be `LTS`? What is `LTR`?",
+      "range": {
+        "startLine": 24,
+        "startChar": 9,
+        "endLine": 24,
+        "endChar": 12
+      },
+      "revId": "f755120c7e278a6f6e23394bcf8e65b45721995c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8345d91c_7425dcfb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/omaha/params/data/configuration.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-05T21:07:24Z",
+      "side": 1,
+      "message": "Should this be `LTS`? What is `LTR`?",
+      "range": {
+        "startLine": 22,
+        "startChar": 10,
+        "endLine": 22,
+        "endChar": 13
+      },
+      "revId": "f755120c7e278a6f6e23394bcf8e65b45721995c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
