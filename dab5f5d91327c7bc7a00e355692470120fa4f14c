@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a70ebfb2_f0b7b4f8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-10-05T15:57:21Z",
+      "side": 1,
+      "message": "LGTM, also will be good to have LGTM from your teammates.",
+      "revId": "dab5f5d91327c7bc7a00e355692470120fa4f14c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
