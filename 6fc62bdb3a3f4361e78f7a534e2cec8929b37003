@@ -1,0 +1,158 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f05b1b6_f93143d9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/view_ppd.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2022-10-05T19:39:28Z",
+      "side": 1,
+      "message": "These two are just used for bringing up the os settings page.  If you don\u0027t need to launch the page for each printer, would it make sense to pass that in instead?",
+      "range": {
+        "startLine": 44,
+        "startChar": 58,
+        "endLine": 45,
+        "endChar": 23
+      },
+      "revId": "6fc62bdb3a3f4361e78f7a534e2cec8929b37003",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb0f641e_b3d55f3d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/view_ppd.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2022-10-05T19:39:28Z",
+      "side": 1,
+      "message": "Did this formatting come from gofmt?  I don\u0027t usually see go wrap parameter lists.",
+      "revId": "6fc62bdb3a3f4361e78f7a534e2cec8929b37003",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50b880f5_1cf7d818",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/view_ppd.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2022-10-05T19:39:28Z",
+      "side": 1,
+      "message": "We already have constants for these two settings strings in print.go.  Can you pull those out and reuse them?",
+      "revId": "6fc62bdb3a3f4361e78f7a534e2cec8929b37003",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02638fe4_d4ca464b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/view_ppd.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2022-10-05T19:39:28Z",
+      "side": 1,
+      "message": "Can you define constants for all these so they can be reused if needed?",
+      "range": {
+        "startLine": 61,
+        "startChar": 54,
+        "endLine": 61,
+        "endChar": 65
+      },
+      "revId": "6fc62bdb3a3f4361e78f7a534e2cec8929b37003",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "996f8c70_0ac824be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/view_ppd.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2022-10-05T19:39:28Z",
+      "side": 1,
+      "message": "Can some of these be more tightly scoped to the edit dialog?  Otherwise it seems like there\u0027s a risk of these names showing up in more than one place.",
+      "revId": "6fc62bdb3a3f4361e78f7a534e2cec8929b37003",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd8fcc32_91e9fab8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/view_ppd.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2022-10-05T19:39:28Z",
+      "side": 1,
+      "message": "I would suggest breaking this into a couple of logical steps so you get a clearer error message if something goes wrong.  For example, \"open add printer\", \"enter basic info\", \"choose model\".",
+      "revId": "6fc62bdb3a3f4361e78f7a534e2cec8929b37003",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6e136f1_700ab185",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/view_ppd.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2022-10-05T19:39:28Z",
+      "side": 1,
+      "message": "Is a minute realistic for all these?  For any of them that don\u0027t have to hit the network, it seems like a few seconds should be plenty.",
+      "range": {
+        "startLine": 74,
+        "startChar": 17,
+        "endLine": 74,
+        "endChar": 28
+      },
+      "revId": "6fc62bdb3a3f4361e78f7a534e2cec8929b37003",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d4708e6_94ae3d66",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/view_ppd.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2022-10-05T19:39:28Z",
+      "side": 1,
+      "message": "Maybe also check for the element containing the PPD text so that this doesn\u0027t pass if it\u0027s merely slow to generate the page.",
+      "revId": "6fc62bdb3a3f4361e78f7a534e2cec8929b37003",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
