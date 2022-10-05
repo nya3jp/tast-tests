@@ -16,6 +16,23 @@
       "message": "PTAL",
       "revId": "7286668398451910a0b9ec1c30e874079af3d3c4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dfcb933f_47e45ff9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2022-10-05T18:27:47Z",
+      "side": 1,
+      "message": "Matthew, gentle ping, ty",
+      "revId": "7286668398451910a0b9ec1c30e874079af3d3c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
