@@ -61,7 +61,6 @@ func ResizeRestart(ctx context.Context, s *testing.State) {
 	pre := s.FixtValue().(crostini.FixtureData)
 	cr := pre.Chrome
 	tconn := pre.Tconn
-	keyboard := pre.KB
 	cont := pre.Cont
 
 	// Open the Linux settings.
@@ -79,13 +78,13 @@ func ResizeRestart(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to shutdown crostini: ", err)
 	}
 
-	curSize, targetSize, err := st.GetCurAndTargetDiskSize(ctx, keyboard)
+	curSize, targetSize, err := st.GetCurAndTargetDiskSize(ctx)
 	if err != nil {
 		s.Fatal("Failed to get current or target size: ", err)
 	}
 
 	// Resize.
-	sizeOnSlider, size, err := st.Resize(ctx, keyboard, targetSize)
+	sizeOnSlider, size, err := st.Resize(ctx, targetSize)
 	if err != nil {
 		s.Fatal("Failed to resize through moving slider: ", err)
 	}
@@ -103,7 +102,7 @@ func ResizeRestart(ctx context.Context, s *testing.State) {
 	}
 
 	// Resize back to the default value.
-	sizeOnSlider, size, err = st.Resize(ctx, keyboard, curSize)
+	sizeOnSlider, size, err = st.Resize(ctx, curSize)
 	if err != nil {
 		s.Fatal("Failed to resize back to the default value: ", err)
 	}

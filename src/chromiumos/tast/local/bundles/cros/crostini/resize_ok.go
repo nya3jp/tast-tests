@@ -8,7 +8,6 @@ import (
 	"context"
 	"time"
 
-	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/local/crostini/ui/settings"
@@ -60,7 +59,6 @@ func ResizeOk(ctx context.Context, s *testing.State) {
 	pre := s.FixtValue().(crostini.FixtureData)
 	cr := pre.Chrome
 	tconn := pre.Tconn
-	keyboard := pre.KB
 	cont := pre.Cont
 
 	// Open the Linux settings.
@@ -69,21 +67,15 @@ func ResizeOk(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to open Linux Settings: ", err)
 	}
 
-	if err := uiauto.StartRecordFromKB(ctx, tconn, keyboard, pre.DownloadsPath); err != nil {
-		s.Log("Failed to start recording: ", err)
-	}
-
-	defer uiauto.StopRecordFromKBAndSaveOnError(ctx, tconn, s.HasError, s.OutDir(), pre.DownloadsPath)
-
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
-	curSize, targetSize, err := st.GetCurAndTargetDiskSize(ctx, keyboard)
+	curSize, targetSize, err := st.GetCurAndTargetDiskSize(ctx)
 	if err != nil {
 		s.Fatal("Failed to get current or target size: ", err)
 	}
 
 	// Resize.
-	sizeOnSlider, size, err := st.Resize(ctx, keyboard, targetSize)
+	sizeOnSlider, size, err := st.Resize(ctx, targetSize)
 	if err != nil {
 		s.Fatal("Failed to resize through moving slider: ", err)
 	}
@@ -93,7 +85,7 @@ func ResizeOk(ctx context.Context, s *testing.State) {
 	}
 
 	// Resize back to the default value.
-	sizeOnSlider, size, err = st.Resize(ctx, keyboard, curSize)
+	sizeOnSlider, size, err = st.Resize(ctx, curSize)
 	if err != nil {
 		s.Fatal("Failed to resize back to the default value: ", err)
 	}
