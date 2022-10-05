@@ -61,11 +61,13 @@ const (
 	killedState DaemonState = "killed"
 	// postStopState indicates that a job's post-stop section is running.
 	postStopState DaemonState = "post-stop"
+	// tmpfilesState is a state added on CrOS. See https://crbug.com/1235329.
+	tmpfilesState DaemonState = "tmpfiles"
 )
 
 var (
-	// Matches a leading line of e.g. "ui start/running, process 3182" or "boot-splash stop/waiting".
-	statusRegexp = regexp.MustCompile(`(?m)^[^ ]+ ([-a-z]+)/([-a-z]+)(?:, process (\d+))?$`)
+	// Matches a leading line of e.g. "ui start/running, process 3182", "ui start/tmpfiles, (tmpfiles) process 3182" or "boot-splash stop/waiting".
+	statusRegexp = regexp.MustCompile(`(?m)^[^ ]+ ([-a-z]+)/([-a-z]+)(?:, (?:\([-a-z]+\) )?process (\d+))?$`)
 
 	// A set of all daemon goals
 	allGoals = map[DaemonGoal]struct{}{
@@ -87,6 +89,7 @@ var (
 		stoppingState:  {},
 		killedState:    {},
 		postStopState:  {},
+		tmpfilesState:  {},
 	}
 )
 
