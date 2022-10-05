@@ -34,6 +34,24 @@
       "parentUuid": "f02af85f_f9deba14",
       "revId": "922dedbb4c987ab0f4f4269d21af841cb9d54210",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d4eb61f_eb49ed39",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2022-10-05T12:41:00Z",
+      "side": 1,
+      "message": "OK, it\u0027s passing (well, not passing, but failing because it uses too much power during sleep) on a nipperkin I got from crosfleet. After adding ppvar_vbat, which may be why it\u0027s failing, since ppvar_vbat might not be very accurate.",
+      "parentUuid": "8258d61c_0d50916e",
+      "revId": "922dedbb4c987ab0f4f4269d21af841cb9d54210",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
