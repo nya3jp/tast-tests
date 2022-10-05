@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "edbd672f_984ea2c9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2022-10-05T00:40:46Z",
+      "side": 1,
+      "message": "+amusbach and +xiyuan, I put your name into Contacts of the new lacros fixture because you are the contacts of \u0027lacrosWithArcBooted\u0027 already. Are you okay with it?",
+      "revId": "15d816e6a410f8337b2a8630e4f7902f9805466c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
