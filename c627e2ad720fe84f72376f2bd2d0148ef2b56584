@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e9b0875_52edc8cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/quickstart/single_account_onboarding.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1529147
+      },
+      "writtenOn": "2022-10-05T20:57:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bc815279_bec8f5de",
+      "revId": "c627e2ad720fe84f72376f2bd2d0148ef2b56584",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f4e51561_991869d3",
@@ -69,6 +87,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba8c8f81_abe9e116",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/android_fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1529147
+      },
+      "writtenOn": "2022-10-05T20:57:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f4e51561_991869d3",
+      "revId": "c627e2ad720fe84f72376f2bd2d0148ef2b56584",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e0c0c338_d481c9ab",
@@ -82,6 +118,30 @@
       "writtenOn": "2022-09-27T23:37:15Z",
       "side": 1,
       "message": "we should make a struct for these options since it keeps growing. not strictly necessary for this CL but it might be nice while you\u0027re here :)",
+      "range": {
+        "startLine": 38,
+        "startChar": 29,
+        "endLine": 38,
+        "endChar": 89
+      },
+      "revId": "c627e2ad720fe84f72376f2bd2d0148ef2b56584",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "08be0f0d_bf917f5f",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1529147
+      },
+      "writtenOn": "2022-10-05T20:57:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e0c0c338_d481c9ab",
       "range": {
         "startLine": 38,
         "startChar": 29,
@@ -115,6 +175,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0bca849_c019392a",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1529147
+      },
+      "writtenOn": "2022-10-05T20:57:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fcb87edb_a87f33e0",
+      "range": {
+        "startLine": 105,
+        "startChar": 1,
+        "endLine": 105,
+        "endChar": 29
+      },
+      "revId": "c627e2ad720fe84f72376f2bd2d0148ef2b56584",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "21868797_cca490b1",
@@ -128,6 +212,24 @@
       "writtenOn": "2022-09-27T23:37:15Z",
       "side": 1,
       "message": "FYI you might need to include the `ui.signinProfileTestExtensionManifestKey` private var here once you start adding OOBE automation. I forget what exactly it\u0027s required for (maybe `autotestPrivate` calls and `uiauto` usage), but might be worth adding now to prevent you from getting stuck on some mysterious errors later on",
+      "revId": "c627e2ad720fe84f72376f2bd2d0148ef2b56584",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3203e8af_60d79eba",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1529147
+      },
+      "writtenOn": "2022-10-05T20:57:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "21868797_cca490b1",
       "revId": "c627e2ad720fe84f72376f2bd2d0148ef2b56584",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -149,6 +251,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "71058266_1e8cc170",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1529147
+      },
+      "writtenOn": "2022-10-05T20:57:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "af8bbdb3_252e79b1",
+      "revId": "c627e2ad720fe84f72376f2bd2d0148ef2b56584",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cf5a8fda_238b968d",
@@ -162,6 +282,24 @@
       "writtenOn": "2022-09-27T23:37:15Z",
       "side": 1,
       "message": "might be worth double-checking that all the logs get saved as expected here even when we\u0027re not signed in",
+      "revId": "c627e2ad720fe84f72376f2bd2d0148ef2b56584",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "03fc4f37_58c23e93",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 462,
+      "author": {
+        "id": 1529147
+      },
+      "writtenOn": "2022-10-05T20:57:32Z",
+      "side": 1,
+      "message": "Looks like the logs are getting recorded and saved correctly.",
+      "parentUuid": "cf5a8fda_238b968d",
       "revId": "c627e2ad720fe84f72376f2bd2d0148ef2b56584",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
