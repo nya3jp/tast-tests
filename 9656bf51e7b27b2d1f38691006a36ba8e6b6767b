@@ -69,6 +69,24 @@
       "parentUuid": "b28d7407_64fbd6b9",
       "revId": "9656bf51e7b27b2d1f38691006a36ba8e6b6767b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e3231f8_51e8d388",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-10-05T19:48:41Z",
+      "side": 1,
+      "message": "https://chromium-review.googlesource.com/c/chromiumos/platform2/+/3932137",
+      "parentUuid": "63d5de56_b61cea95",
+      "revId": "9656bf51e7b27b2d1f38691006a36ba8e6b6767b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
