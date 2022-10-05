@@ -16,6 +16,24 @@
       "message": "Why do we need 2 minutes here?",
       "revId": "5406eade7fa23073127be3764468da677e5d2068",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "617a2833_f6bdfbe1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/idle.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-10-05T16:46:12Z",
+      "side": 1,
+      "message": "It\u0027s just a timeout to wait till we get a stable board. The default is 5 minutes which I think is too long for a CQ candidate test.\n\nNote that I make this call non-fatal, so even if we failed to get a stable machine(CPU/temperature wise), we will still run the verify functions.\n\nI think we can possibly remove the 2 minute wait here and totally rely on the testing.Poll. But then the test may be harmed by any run-away tests from previous testing.",
+      "parentUuid": "3a7db47d_8fc9b6af",
+      "revId": "5406eade7fa23073127be3764468da677e5d2068",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
