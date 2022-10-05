@@ -16,6 +16,24 @@
       "message": "Should the commented code be left here?",
       "revId": "a416eebf70ed04aeb1addbc038ed0a9fe7c10529",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6841ec59_285b68d2",
+        "filename": "src/chromiumos/tast/remote/firmware/helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1518072
+      },
+      "writtenOn": "2022-10-05T21:33:41Z",
+      "side": 1,
+      "message": "VSCode somehow went on its own in terms of reformatting comments, didn\u0027t notice that before committing, thanks!",
+      "parentUuid": "860589d2_a913f911",
+      "revId": "a416eebf70ed04aeb1addbc038ed0a9fe7c10529",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
