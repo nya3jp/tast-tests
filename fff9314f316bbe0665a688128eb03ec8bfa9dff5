@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "486a3169_c0f94e20",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-10-05T12:56:45Z",
+      "side": 1,
+      "message": "shadow reviewer lgtm for tast",
+      "revId": "fff9314f316bbe0665a688128eb03ec8bfa9dff5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "919d15d3_06fa821c",
+        "filename": "src/chromiumos/tast/local/accountmanager/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-10-05T12:56:45Z",
+      "side": 1,
+      "message": "nit: \"fixture\"?",
+      "range": {
+        "startLine": 143,
+        "startChar": 28,
+        "endLine": 143,
+        "endChar": 36
+      },
+      "revId": "fff9314f316bbe0665a688128eb03ec8bfa9dff5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
