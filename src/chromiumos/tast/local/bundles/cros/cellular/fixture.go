@@ -6,10 +6,13 @@ package cellular
 
 import (
 	"context"
+	"os"
+	"path/filepath"
 	"time"
 
 	"chromiumos/tast/common/fixture"
 	"chromiumos/tast/common/policy/fakedms"
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/cellular"
 	"chromiumos/tast/local/hermes"
@@ -30,7 +33,7 @@ func init() {
 		},
 		SetUpTimeout:    3 * time.Minute,
 		ResetTimeout:    5 * time.Second,
-		PreTestTimeout:  1 * time.Second,
+		PreTestTimeout:  3 * time.Second,
 		PostTestTimeout: 3 * time.Minute,
 		TearDownTimeout: 5 * time.Second,
 		Impl:            &cellularFixture{modemfwdStopped: false},
@@ -44,7 +47,7 @@ func init() {
 		},
 		SetUpTimeout:    3 * time.Minute,
 		ResetTimeout:    5 * time.Second,
-		PreTestTimeout:  1 * time.Second,
+		PreTestTimeout:  3 * time.Second,
 		PostTestTimeout: 3 * time.Minute,
 		TearDownTimeout: 5 * time.Second,
 		Impl:            &cellularFixture{modemfwdStopped: false, useFakeDMS: true},
@@ -115,7 +118,30 @@ func (f *cellularFixture) SetUp(ctx context.Context, s *testing.FixtState) inter
 
 func (f *cellularFixture) Reset(ctx context.Context) error { return nil }
 
-func (f *cellularFixture) PreTest(ctx context.Context, s *testing.FixtTestState) {}
+func (f *cellularFixture) PreTest(ctx context.Context, s *testing.FixtTestState) {
+	// Run modem status before starting the test
+	outDir, ok := testing.ContextOutDir(ctx)
+	if !ok {
+		testing.ContextLog(ctx, "Failed to get out dir")
+		return
+	}
+
+	outFile, err := os.Create(filepath.Join(outDir, "modem-status.txt"))
+	if err != nil || outFile == nil {
+		return
+	}
+
+	cmd := testexec.CommandContext(ctx, "modem", "status")
+	cmd.Stdout = outFile
+	cmd.Stderr = outFile
+
+	if err := cmd.Run(); err != nil {
+		testing.ContextLog(ctx, "Failed to run modem status: ", err)
+	}
+	if err := outFile.Close(); err != nil {
+		testing.ContextLog(ctx, "Failed to close modem-status.txt: ", err)
+	}
+}
 
 func (f *cellularFixture) PostTest(ctx context.Context, s *testing.FixtTestState) {
 	if s.HasError() {
