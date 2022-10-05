@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ac72d12_cfe1d2a1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/shill_service.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 2541,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2022-10-05T23:47:56Z",
+      "side": 1,
+      "message": "Instead of having the sleeps in these functions (ath10kWCN3990Reset, ath11kReset), what do you think about having a testing.Poll in the ping test instead (or polling for complete initialization/full scan state somehow here)? This way, we aren\u0027t suspectible to timing flakiness and we can restart the ping test in case we start it when the fw isn\u0027t ready.\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#contexts-and-timeouts\n\n\u003e Sleeping without polling for a condition is discouraged, since it makes tests flakier (when the sleep duration isn\u0027t long enough) or slower (when the duration is too long). If you really need to do so, use testing.Sleep to honor the context timeout.",
+      "range": {
+        "startLine": 2541,
+        "startChar": 0,
+        "endLine": 2541,
+        "endChar": 36
+      },
+      "revId": "d357460202f8f876adbdaaeb853139be9e127986",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
