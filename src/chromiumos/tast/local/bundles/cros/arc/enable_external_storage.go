@@ -140,6 +140,9 @@ func EnableExternalStorage(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to wait for the volume to be mounted in ARC: ", err)
 	}
 
+	// Need to wait more for media volume to be mounted.
+	testing.Sleep(ctx, 5*time.Second)
+
 	s.Log("Restarting app")
 	if err = act.StartWithDefaultOptions(ctx, tconn); err != nil {
 		s.Fatal("Failed to start app: ", err)
