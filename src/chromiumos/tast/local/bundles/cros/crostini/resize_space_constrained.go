@@ -13,7 +13,6 @@ import (
 	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/local/crostini/ui/settings"
 	"chromiumos/tast/local/disk"
-	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/vm"
 	"chromiumos/tast/testing"
 )
@@ -63,7 +62,6 @@ func ResizeSpaceConstrained(ctx context.Context, s *testing.State) {
 	pre := s.FixtValue().(crostini.FixtureData)
 	cr := pre.Chrome
 	tconn := pre.Tconn
-	keyboard := pre.KB
 	cont := pre.Cont
 
 	cleanupCtx := ctx
@@ -87,18 +85,18 @@ func ResizeSpaceConstrained(ctx context.Context, s *testing.State) {
 	}
 
 	defer func(ctx context.Context, targetSize uint64) {
-		if _, _, err := st.Resize(ctx, keyboard, targetSize); err != nil {
+		if _, _, err := st.Resize(ctx, targetSize); err != nil {
 			s.Logf("Failed to resize to the original disk size: %d", targetSize)
 		}
 	}(cleanupCtx, currSizeBytes)
 
 	for _, tBytes := range targetDiskSizeBytes {
-		testResize(ctx, s, cont, keyboard, st, currSizeBytes, tBytes)
+		testResize(ctx, s, cont, st, currSizeBytes, tBytes)
 		currSizeBytes = tBytes
 	}
 }
 
-func testResize(ctx context.Context, s *testing.State, cont *vm.Container, keyboard *input.KeyboardEventWriter, st *settings.Settings, currSizeBytes, targetSizeBytes uint64) error {
+func testResize(ctx context.Context, s *testing.State, cont *vm.Container, st *settings.Settings, currSizeBytes, targetSizeBytes uint64) error {
 	const fillPath = "/home/user/"
 	freeSpace, err := disk.FreeSpace(fillPath)
 	if err != nil {
@@ -120,7 +118,7 @@ func testResize(ctx context.Context, s *testing.State, cont *vm.Container, keybo
 	}()
 
 	s.Logf("Resizing from %v to %v", currSizeBytes, targetSizeBytes)
-	sizeOnSlider, sizeInCont, err := st.Resize(ctx, keyboard, targetSizeBytes)
+	sizeOnSlider, sizeInCont, err := st.Resize(ctx, targetSizeBytes)
 	if err != nil {
 		s.Fatal("Failed to resize back to the default value: ", err)
 	}
