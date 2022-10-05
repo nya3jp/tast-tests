@@ -46,6 +46,30 @@
       },
       "revId": "0a5820eaf5b1f343bb45fb7b07d8d805666902da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "701325ba_fe5ad491",
+        "filename": "src/chromiumos/tast/local/bundles/cros/spera/frontline_worker_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-10-05T11:28:49Z",
+      "side": 1,
+      "message": "In that case, why do you have this if condition? Have I missed anything?",
+      "parentUuid": "64b57a32_a3b5ab81",
+      "range": {
+        "startLine": 179,
+        "startChar": 1,
+        "endLine": 179,
+        "endChar": 14
+      },
+      "revId": "0a5820eaf5b1f343bb45fb7b07d8d805666902da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
