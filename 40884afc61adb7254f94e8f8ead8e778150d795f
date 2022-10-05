@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "891dbe1f_a11a3a88",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_http.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-10-05T16:42:44Z",
+      "side": 1,
+      "message": "Delete this one. Thats for the next CL in the chain.",
+      "range": {
+        "startLine": 79,
+        "startChar": 3,
+        "endLine": 85,
+        "endChar": 5
+      },
+      "revId": "40884afc61adb7254f94e8f8ead8e778150d795f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "beab0337_5d809f19",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_http.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-10-05T16:42:44Z",
+      "side": 1,
+      "message": "delete this too, just checking for proxyconfig here",
+      "range": {
+        "startLine": 177,
+        "startChar": 27,
+        "endLine": 177,
+        "endChar": 41
+      },
+      "revId": "40884afc61adb7254f94e8f8ead8e778150d795f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
