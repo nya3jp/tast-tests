@@ -55,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "341e293b_0688e13d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1425417
+      },
+      "writtenOn": "2022-10-05T23:49:58Z",
+      "side": 1,
+      "message": "NewModemWithSim throws an error if a SIM is not found. I wonder if there might be DUT\u0027s where there are no SIM\u0027s. I also didn\u0027t want to change the slot at the end of the test since it could take significant time and could be flaky.",
+      "parentUuid": "98b6e113_22774761",
+      "revId": "cf16c98781296d5ec8ec53187d17aa675d5eb496",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cb7838c5_7d2bf817",
         "filename": "src/chromiumos/tast/local/bundles/cros/cellular/fixture.go",
         "patchSetId": 1
