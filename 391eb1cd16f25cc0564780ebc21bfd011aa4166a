@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6210c44_d090cd72",
+        "filename": "src/chromiumos/tast/local/chrome/familylink/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-10-05T17:12:35Z",
+      "side": 1,
+      "message": "In Golang, upper case members are public while lower case is private [1]. I\u0027m making these members private and exposing them through an interface instead.\n\n[1] https://go.dev/doc/effective_go#names",
+      "parentUuid": "9939be06_32d58f95",
+      "range": {
+        "startLine": 215,
+        "startChar": 0,
+        "endLine": 225,
+        "endChar": 18
+      },
+      "revId": "391eb1cd16f25cc0564780ebc21bfd011aa4166a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "84f42599_b4e2923b",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-10-04T19:44:55Z",
       "side": 1,
       "message": "Why is this needed? And why is the pattern not consistent for PolicyUser()?",
+      "range": {
+        "startLine": 231,
+        "startChar": 0,
+        "endLine": 231,
+        "endChar": 52
+      },
+      "revId": "391eb1cd16f25cc0564780ebc21bfd011aa4166a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad455475_a6bdda51",
+        "filename": "src/chromiumos/tast/local/chrome/familylink/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-10-05T17:12:35Z",
+      "side": 1,
+      "message": "Done. I added a check for the empty string to PolicyUser().\n\nEvery implementation of the HasChrome interface has this check [1], [2], and [3]. The pattern for PolicyUser() is different because it is a string, not a pointer, and can\u0027t be nullptr.\n\n[1] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/policyutil/fixtures/chrome.go;l\u003d194?q\u003d%22Chrome%20implements%20the%20HasChrome%20interface%22\n[2] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/inputs/fixture/kiosk.go;l\u003d117?q\u003d%22Chrome%20implements%20the%20HasChrome%20interface%22\n[3] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/kioskmode/fixtures/kiosk.go;l\u003d91?q\u003d%22Chrome%20implements%20the%20HasChrome%20interface%22",
+      "parentUuid": "84f42599_b4e2923b",
       "range": {
         "startLine": 231,
         "startChar": 0,
