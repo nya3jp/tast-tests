@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05520606_532c4af4",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_client.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 964,
+      "author": {
+        "id": 1546868
+      },
+      "writtenOn": "2022-10-05T17:25:33Z",
+      "side": 1,
+      "message": "Probably should mention what the function returns. It probably already should\u0027ve mentioned that it returns the encoded session ID, but now that it has multiple values it definitely should.",
+      "revId": "f207c5048840cf5fd0c0f930d2060697978f5970",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7655ac18_267343d1",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_client.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 965,
+      "author": {
+        "id": 1546868
+      },
+      "writtenOn": "2022-10-05T17:25:33Z",
+      "side": 1,
+      "message": "Is returning 3 values here the idiomatic way to do this in Go? I\u0027m not sure. I guess the tast owners can weigh in on that.\n\nI kind of want to suggest that it would be better to just return the reply message, but I guess forcing all the callers to do the hex encode of the session so that they can pass it into other functions is pretty tedious.",
+      "revId": "f207c5048840cf5fd0c0f930d2060697978f5970",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
