@@ -6,11 +6,15 @@ package perf
 
 import (
 	"context"
+	"time"
 
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/testing"
 )
+
+const frameDataFetchInterval = time.Minute
 
 // FrameDataTracker is helper to get animation frame data from Chrome.
 type FrameDataTracker struct {
@@ -18,6 +22,8 @@ type FrameDataTracker struct {
 	animationData []DisplayFrameData
 	dsData        *DisplayFrameData
 	dsTracker     *DisplaySmoothnessTracker
+	collecting    chan bool
+	collectingErr chan error
 }
 
 // Close ensures that the browser state (display smoothness tracking) is cleared.
@@ -27,6 +33,10 @@ func (t *FrameDataTracker) Close(ctx context.Context, tconn *chrome.TestConn) er
 
 // Start starts the animation data collection.
 func (t *FrameDataTracker) Start(ctx context.Context, tconn *chrome.TestConn) error {
+	if t.collecting != nil {
+		return errors.New("already started")
+	}
+
 	if err := tconn.Call(ctx, nil, `tast.promisify(chrome.autotestPrivate.startThroughputTrackerDataCollection)`); err != nil {
 		return errors.Wrap(err, "failed to start data collection")
 	}
@@ -34,20 +44,65 @@ func (t *FrameDataTracker) Start(ctx context.Context, tconn *chrome.TestConn) er
 	if err := t.dsTracker.Start(ctx, tconn, ""); err != nil {
 		return errors.Wrap(err, "failed to start display smoothness tracking")
 	}
+
+	t.collecting = make(chan bool)
+	t.collectingErr = make(chan error, 1)
+
+	go func() {
+		testing.ContextLog(ctx, "FrameDataTracker: Collecting frame data in background")
+		for {
+			select {
+			case <-t.collecting:
+				close(t.collectingErr)
+				return
+			case <-time.After(frameDataFetchInterval):
+				var data []DisplayFrameData
+				if err := tconn.Call(ctx, &data, `tast.promisify(chrome.autotestPrivate.getThroughputTrackerData)`); err != nil {
+					t.collectingErr <- errors.Wrap(err, "failed to get collected data")
+					return
+				}
+				t.animationData = append(t.animationData, data...)
+			case <-ctx.Done():
+				t.collectingErr <- ctx.Err()
+				return
+			}
+		}
+	}()
+
 	return nil
 }
 
 // Stop stops the animation data collection and stores the collected data.
 func (t *FrameDataTracker) Stop(ctx context.Context, tconn *chrome.TestConn) error {
+	if t.collecting == nil {
+		return errors.New("not started")
+	}
+	close(t.collecting)
+
+	var firstErr error
+	select {
+	case firstErr = <-t.collectingErr:
+	case <-ctx.Done():
+		return ctx.Err()
+	}
+
 	var dsData *DisplayFrameData
 	var err error
 	if dsData, err = t.dsTracker.Stop(ctx, tconn, ""); err != nil {
-		return errors.Wrap(err, "failed to stop display smoothness tracking")
+		if firstErr == nil {
+			firstErr = errors.Wrap(err, "failed to stop display smoothness tracking")
+		}
 	}
 
 	var data []DisplayFrameData
 	if err := tconn.Call(ctx, &data, `tast.promisify(chrome.autotestPrivate.stopThroughputTrackerDataCollection)`); err != nil {
-		return errors.Wrap(err, "failed to stop data collection")
+		if firstErr == nil {
+			firstErr = errors.Wrap(err, "failed to stop data collection")
+		}
+	}
+
+	if firstErr != nil {
+		return firstErr
 	}
 
 	t.dsData = dsData
