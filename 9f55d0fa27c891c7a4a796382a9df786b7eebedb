@@ -22,6 +22,30 @@
       },
       "revId": "9f55d0fa27c891c7a4a796382a9df786b7eebedb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea129e29_07555759",
+        "filename": "src/chromiumos/tast/local/bundles/cros/biod/device_access.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2022-10-06T03:29:13Z",
+      "side": 1,
+      "message": "We could do a manual group traversal check. I though just testing the permissions as the `biod` user was simpler. Retrospectively, the two implementations might be similar in complexity, given that I had to implement crrev.com/c/3926253.\n\nFor context, this test would check the changes in crrev.com/c/3912395 / crrev.com/c/3910092 and crrev.com/c/3868999. The first two changes would change the group of /dev/cros_fp.",
+      "parentUuid": "6afe2273_0bc7d6bf",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 14
+      },
+      "revId": "9f55d0fa27c891c7a4a796382a9df786b7eebedb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
