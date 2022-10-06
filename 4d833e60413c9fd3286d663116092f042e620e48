@@ -16,6 +16,24 @@
       "message": "This code looks to be mostly copied from existing tests. Have you talked to scan app owners about exposing reusable APIs for this or adding a test in the scanapp package so that existing logic can be reused?",
       "revId": "4d833e60413c9fd3286d663116092f042e620e48",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87ff7a81_a0401238",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/scan_app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535227
+      },
+      "writtenOn": "2022-10-06T00:05:52Z",
+      "side": 1,
+      "message": "They do not want to add a holdingspace test in the scanapp package and want me to make the reuseable APIs that they can use too like SetupPrinter(), LaunchScanApp(), StartScan(). I\u0027m guessing I should make those functions in platform/tast-tests/src/chromiumos/tast/local/chrome/uiauto/scanapp/scanapp.go?",
+      "parentUuid": "8ab09857_51aeb69f",
+      "revId": "4d833e60413c9fd3286d663116092f042e620e48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
