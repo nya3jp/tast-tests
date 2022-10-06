@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "689ea4cf_2cde12a7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-10-06T13:44:22Z",
+      "side": 1,
+      "message": "Looks much better!",
+      "revId": "c99e0607e3e1642f87c8f6d11669be4182287ed2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ebc6f8b_db85fa56",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/tablet_mode_check.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-10-06T13:44:22Z",
+      "side": 1,
+      "message": "maybe:\nkeyboardAvailable",
+      "range": {
+        "startLine": 40,
+        "startChar": 1,
+        "endLine": 40,
+        "endChar": 18
+      },
+      "revId": "c99e0607e3e1642f87c8f6d11669be4182287ed2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0bdf1a4_7c4c82c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/tablet_mode_check.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-10-06T13:44:22Z",
+      "side": 1,
+      "message": "touchpadAvailable",
+      "range": {
+        "startLine": 49,
+        "startChar": 1,
+        "endLine": 49,
+        "endChar": 11
+      },
+      "revId": "c99e0607e3e1642f87c8f6d11669be4182287ed2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e876960c_bd384436",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/tablet_mode_check.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-10-06T13:44:22Z",
+      "side": 1,
+      "message": "const devRoot \u003d \"/dev\"\n\nthen\n\nfilepath.Rel(devRoot, keyboardDevPath)\n\nditto for below.",
+      "range": {
+        "startLine": 64,
+        "startChar": 29,
+        "endLine": 64,
+        "endChar": 70
+      },
+      "revId": "c99e0607e3e1642f87c8f6d11669be4182287ed2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
