@@ -475,10 +475,14 @@ func (a *App) WaitForVideoActive(ctx context.Context) error {
 	return a.checkVideoState(ctx, true, time.Second)
 }
 
-// WaitForFileSaved waits for the presence of the captured file with file name matching the specified
-// pattern, size larger than zero, and modified time after the specified timestamp.
+// WaitForFileSaved calls WaitForFileSavedFor with 5 second timeout.
 func (a *App) WaitForFileSaved(ctx context.Context, dir string, pat *regexp.Regexp, ts time.Time) (os.FileInfo, error) {
-	const timeout = 5 * time.Second
+	return a.WaitForFileSavedFor(ctx, dir, pat, ts, 5*time.Second)
+}
+
+// WaitForFileSavedFor waits for the presence of the captured file with file name matching the specified
+// pattern, size larger than zero, and modified time after the specified timestamp.
+func (a *App) WaitForFileSavedFor(ctx context.Context, dir string, pat *regexp.Regexp, ts time.Time, timeout time.Duration) (os.FileInfo, error) {
 	var result os.FileInfo
 	seen := make(map[string]struct{})
 	if err := testing.Poll(ctx, func(ctx context.Context) error {

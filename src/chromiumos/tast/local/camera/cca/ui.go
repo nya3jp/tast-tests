@@ -338,8 +338,13 @@ func (a *App) CheckVisible(ctx context.Context, ui UIComponent, expected bool) e
 	return nil
 }
 
-// WaitForVisibleState waits until the visibility of ui becomes expected.
+// WaitForVisibleState calls WaitForVisibleStateFor with 5 second timeout.
 func (a *App) WaitForVisibleState(ctx context.Context, ui UIComponent, expected bool) error {
+	return a.WaitForVisibleStateFor(ctx, ui, expected, 5*time.Second)
+}
+
+// WaitForVisibleStateFor waits until the visibility of ui becomes expected for specified time.
+func (a *App) WaitForVisibleStateFor(ctx context.Context, ui UIComponent, expected bool, timeout time.Duration) error {
 	return testing.Poll(ctx, func(ctx context.Context) error {
 		visible, err := a.Visible(ctx, ui)
 		if err != nil {
@@ -349,7 +354,7 @@ func (a *App) WaitForVisibleState(ctx context.Context, ui UIComponent, expected 
 			return errors.Errorf("failed to wait visibility state for %v: got %v, want %v", ui.Name, visible, expected)
 		}
 		return nil
-	}, &testing.PollOptions{Timeout: 5 * time.Second})
+	}, &testing.PollOptions{Timeout: timeout})
 }
 
 // Disabled returns disabled attribute of HTMLElement of |ui|.

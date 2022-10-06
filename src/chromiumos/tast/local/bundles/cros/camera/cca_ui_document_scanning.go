@@ -9,6 +9,7 @@ import (
 	"io/ioutil"
 	"math"
 	"os"
+	"regexp"
 	"time"
 
 	"chromiumos/tast/common/media/caps"
@@ -225,14 +226,10 @@ func runTakeDocumentPhoto(ctx context.Context, app *cca.App, reviewChoices []rev
 	}
 
 	for _, reviewChoice := range reviewChoices {
-		if err := app.ClickShutter(ctx); err != nil {
-			return errors.Wrap(err, "failed to click the shutter button")
+		if err := clickShutterAndWaitFor(ctx, app, cca.ReviewView); err != nil {
+			return errors.Wrap(err, "failed to wait for review UI to show up")
 		}
-
 		// In review mode. Click the button according to the output type.
-		if err := app.WaitForVisibleState(ctx, cca.ReviewView, true); err != nil {
-			return errors.Wrap(err, "failed to wait for review UI show up")
-		}
 		var button cca.UIComponent
 		switch reviewChoice {
 		case pdf:
@@ -255,22 +252,23 @@ func runTakeDocumentPhoto(ctx context.Context, app *cca.App, reviewChoices []rev
 		}
 
 		// Ensure that the result is successfully saved.
-		dir, err := app.SavedDir(ctx)
-		if err != nil {
-			return errors.Wrap(err, "failed to get CCA default saved path")
-		}
 		switch reviewChoice {
 		case pdf:
-			if _, err := app.WaitForFileSaved(ctx, dir, cca.DocumentPDFPattern, start); err != nil {
+			if err := waitForFileSaved(ctx, app, cca.DocumentPDFPattern, start); err != nil {
 				return errors.Wrap(err, "failed to wait for document PDF file")
 			}
 		case photo:
-			if _, err := app.WaitForFileSaved(ctx, dir, cca.DocumentPhotoPattern, start); err != nil {
+			if err := waitForFileSaved(ctx, app, cca.DocumentPhotoPattern, start); err != nil {
 				return errors.Wrap(err, "failed to wait for document photo file")
 			}
 		case retake:
-			// When users click the "Retake" button, the captured data should be
+			// When users click the "Retake" button, the ClickShutterd data should be
 			// dropped and no files should be saved.
+			dir, err := app.SavedDir(ctx)
+			if err != nil {
+				return errors.Wrap(err, "failed to get CCA default saved path")
+			}
+
 			if _, err := os.Stat(dir); err != nil {
 				if os.IsNotExist(err) {
 					return nil
@@ -299,26 +297,17 @@ func testMultiplePageSavePhoto(ctx context.Context, app *cca.App) (retErr error)
 		return errors.Wrap(err, "failed to enter document mode")
 	}
 
-	if err := app.ClickShutter(ctx); err != nil {
-		return errors.Wrap(err, "failed to click the shutter button")
-	}
-
-	if err := app.WaitForVisibleState(ctx, cca.DocumentReview, true); err != nil {
+	if err := clickShutterAndWaitFor(ctx, app, cca.DocumentReview); err != nil {
 		return errors.Wrap(err, "failed to wait for review UI to show")
 	}
 
 	start := time.Now()
 
-	dir, err := app.SavedDir(ctx)
-	if err != nil {
-		return errors.Wrap(err, "failed to get CCA default saved path")
-	}
-
 	if err := app.Click(ctx, cca.DocumentSaveAsPhotoButton); err != nil {
 		return errors.Wrap(err, "failed to click save as photo button")
 	}
 
-	if _, err := app.WaitForFileSaved(ctx, dir, cca.DocumentPhotoPattern, start); err != nil {
+	if err := waitForFileSaved(ctx, app, cca.DocumentPhotoPattern, start); err != nil {
 		return errors.Wrap(err, "failed to wait for the photo")
 	}
 
@@ -331,11 +320,7 @@ func testMultiplePageSavePdf(ctx context.Context, app *cca.App) (retErr error) {
 		return errors.Wrap(err, "failed to enter document mode")
 	}
 
-	if err := app.ClickShutter(ctx); err != nil {
-		return errors.Wrap(err, "failed to click the shutter button")
-	}
-
-	if err := app.WaitForVisibleState(ctx, cca.DocumentReview, true); err != nil {
+	if err := clickShutterAndWaitFor(ctx, app, cca.DocumentReview); err != nil {
 		return errors.Wrap(err, "failed to wait for review UI to show")
 	}
 
@@ -347,26 +332,17 @@ func testMultiplePageSavePdf(ctx context.Context, app *cca.App) (retErr error) {
 		return errors.Wrap(err, "failed to wait for camera-configuring state to turn off")
 	}
 
-	if err := app.ClickShutter(ctx); err != nil {
-		return errors.Wrap(err, "failed to click the shutter button")
-	}
-
-	if err := app.WaitForVisibleState(ctx, cca.DocumentReview, true); err != nil {
+	if err := clickShutterAndWaitFor(ctx, app, cca.DocumentReview); err != nil {
 		return errors.Wrap(err, "failed to wait for review UI to show")
 	}
 
 	start := time.Now()
 
-	dir, err := app.SavedDir(ctx)
-	if err != nil {
-		return errors.Wrap(err, "failed to get CCA default saved path")
-	}
-
 	if err := app.Click(ctx, cca.DocumentSaveAsPdfButton); err != nil {
 		return errors.Wrap(err, "failed to click save as PDF button")
 	}
 
-	if _, err := app.WaitForFileSaved(ctx, dir, cca.DocumentPDFPattern, start); err != nil {
+	if err := waitForFileSaved(ctx, app, cca.DocumentPDFPattern, start); err != nil {
 		return errors.Wrap(err, "failed to wait for the PDF file")
 	}
 
@@ -380,11 +356,7 @@ func testMultiPageUIChangeWithDifferentPageCount(ctx context.Context, app *cca.A
 	}
 
 	// 1 page
-	if err := app.ClickShutter(ctx); err != nil {
-		return errors.Wrap(err, "failed to click the shutter button")
-	}
-
-	if err := app.WaitForVisibleState(ctx, cca.DocumentReview, true); err != nil {
+	if err := clickShutterAndWaitFor(ctx, app, cca.DocumentReview); err != nil {
 		return errors.Wrap(err, "failed to wait for review UI to show")
 	}
 
@@ -421,11 +393,7 @@ func testMultiPageUIChangeWithDifferentPageCount(ctx context.Context, app *cca.A
 	}
 
 	// 2 pages
-	if err := app.ClickShutter(ctx); err != nil {
-		return errors.Wrap(err, "failed to click the shutter button")
-	}
-
-	if err := app.WaitForVisibleState(ctx, cca.DocumentReview, true); err != nil {
+	if err := clickShutterAndWaitFor(ctx, app, cca.DocumentReview); err != nil {
 		return errors.Wrap(err, "failed to wait for review UI to show")
 	}
 
@@ -454,12 +422,8 @@ func testFixCropArea(ctx context.Context, app *cca.App, cr *chrome.Chrome) error
 		return errors.Wrap(err, "failed to enter document mode")
 	}
 
-	if err := app.ClickShutter(ctx); err != nil {
-		return errors.Wrap(err, "failed to click the shutter button")
-	}
-
-	if err := app.WaitForVisibleState(ctx, cca.ReviewView, true); err != nil {
-		return errors.Wrap(err, "failed to wait for review UI show up")
+	if err := clickShutterAndWaitFor(ctx, app, cca.ReviewView); err != nil {
+		return errors.Wrap(err, "failed to wait for review UI to show")
 	}
 
 	reviewElSize, err := app.Size(ctx, cca.ReviewImage)
@@ -559,12 +523,8 @@ func testMultiPageFixCropArea(ctx context.Context, app *cca.App, cr *chrome.Chro
 		return errors.Wrap(err, "failed to enter document mode")
 	}
 
-	if err := app.ClickShutter(ctx); err != nil {
-		return errors.Wrap(err, "failed to click the shutter button")
-	}
-
-	if err := app.WaitForVisibleState(ctx, cca.DocumentReview, true); err != nil {
-		return errors.Wrap(err, "failed to wait for review UI to show up")
+	if err := clickShutterAndWaitFor(ctx, app, cca.DocumentReview); err != nil {
+		return errors.Wrap(err, "failed to wait for review UI to show")
 	}
 
 	if visible, err := app.Visible(ctx, cca.DocumentPreviewModeImage); err != nil {
@@ -667,6 +627,32 @@ func testMultiPageFixCropArea(ctx context.Context, app *cca.App, cr *chrome.Chro
 	}
 	if imageElSize.Width >= imageElSize.Height {
 		return errors.Errorf("should crop the longer document after fix crop area, got document width: %v, height: %v", imageElSize.Width, imageElSize.Height)
+	}
+
+	return nil
+}
+
+// clickShutterAndWaitFor click shutter button and wait for 10 seconds
+func clickShutterAndWaitFor(ctx context.Context, app *cca.App, ui cca.UIComponent) error {
+	if err := app.ClickShutter(ctx); err != nil {
+		return errors.Wrap(err, "failed to click the shutter button")
+	}
+
+	if err := app.WaitForVisibleStateFor(ctx, ui, true, 10*time.Second); err != nil {
+		return errors.Wrap(err, "failed to wait for UI")
+	}
+
+	return nil
+}
+
+func waitForFileSaved(ctx context.Context, app *cca.App, pat *regexp.Regexp, start time.Time) error {
+	dir, err := app.SavedDir(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to get CCA default saved path")
+	}
+
+	if _, err := app.WaitForFileSavedFor(ctx, dir, pat, start, 10*time.Second); err != nil {
+		return errors.Wrap(err, "failed to wait for the file")
 	}
 
 	return nil
