@@ -16,6 +16,24 @@
       "message": "I think adding a runtime variable would be more appropriate, since then you wouldn\u0027t have to modify any files, adjust timeouts, etc.\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#global-runtime-variables-recommended-for-new-code",
       "revId": "e90c3167ecf0577fb05858dbced2788312884d2b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0f867dc_34a4abc3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2022-10-06T06:30:12Z",
+      "side": 1,
+      "message": "Thanks for the suggestion. But since we want to start/stop the screen recorder in PreTest/PostTest stages, we still need to make sure the timeout of these stages are sufficient. Mentioned it in the variable description.",
+      "parentUuid": "3219f370_30acfb21",
+      "revId": "e90c3167ecf0577fb05858dbced2788312884d2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
