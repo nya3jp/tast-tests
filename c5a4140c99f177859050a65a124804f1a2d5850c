@@ -22,6 +22,30 @@
       },
       "revId": "c5a4140c99f177859050a65a124804f1a2d5850c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "edd81e6a_19948b32",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1425417
+      },
+      "writtenOn": "2022-10-06T18:09:17Z",
+      "side": 1,
+      "message": "Yes, doing so before every test seemed spammy.",
+      "parentUuid": "e2167779_feb8ea48",
+      "range": {
+        "startLine": 133,
+        "startChar": 0,
+        "endLine": 136,
+        "endChar": 21
+      },
+      "revId": "c5a4140c99f177859050a65a124804f1a2d5850c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
