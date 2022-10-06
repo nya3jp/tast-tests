@@ -16,6 +16,24 @@
       "message": "Should this be two separate apps, rather than installing a second one? This will change all existing tests to use the web app",
       "revId": "8eb48c5659c40b8f04a0ec1f574c57ba03242fd6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "846daf4b_b435579b",
+        "filename": "src/chromiumos/tast/local/apps/apps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2022-10-06T05:24:57Z",
+      "side": 1,
+      "message": "\"Google Drive App\" only be used in `spera.FrontlineWorkerCUJ` test case, therefore, change it to \"Google Drive Web App\" directly.",
+      "parentUuid": "051e1313_3c383b9a",
+      "revId": "8eb48c5659c40b8f04a0ec1f574c57ba03242fd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
