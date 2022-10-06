@@ -69,6 +69,30 @@
       },
       "revId": "d357460202f8f876adbdaaeb853139be9e127986",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "781c22d7_574359db",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/shill_service.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 2541,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2022-10-06T23:42:26Z",
+      "side": 1,
+      "message": "Can we then instead have a testing.Poll loop on the ping test so that it keeps attempting the whole ping test until no packet loss is experienced (until a timeout) and not have a sleep at all?\n\nThe only consideration with this mechanism is that it may hide any transitory ping flake, but that\u0027s debatably a good thing as it may remove a lot of test flake too.",
+      "parentUuid": "4a489e94_ef8be3cb",
+      "range": {
+        "startLine": 2541,
+        "startChar": 0,
+        "endLine": 2541,
+        "endChar": 36
+      },
+      "revId": "d357460202f8f876adbdaaeb853139be9e127986",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
