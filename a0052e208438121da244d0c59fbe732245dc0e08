@@ -16,6 +16,24 @@
       "message": "LGTM, but would suggest you also verify VM results (I don\u0027t think they show up on tastboard).\n\namd64-generic looks good (http://shortn/_HIHJE2jGpg), but I don\u0027t see any runs for betty, so might be good to do a manual check of those before promoting to make sure it doesn\u0027t get instantly kicked back down :)",
       "revId": "a0052e208438121da244d0c59fbe732245dc0e08",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "446cf685_07ca2dde",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003214
+      },
+      "writtenOn": "2022-10-06T05:14:06Z",
+      "side": 1,
+      "message": "Ack, https://dashboards.corp.google.com/_5020378e_c912_4a86_a101_13fddc6350a1 shows betty result for various CCA test, and seems that these two tests are passing consistently (except that one build where every CCA test breaks)",
+      "parentUuid": "7bf24831_e37ff928",
+      "revId": "a0052e208438121da244d0c59fbe732245dc0e08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
