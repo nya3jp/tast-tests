@@ -119,12 +119,22 @@ func openAndroidSettings(ctx context.Context, cr *chrome.Chrome, tconn *chrome.T
 func addAndroidAccount(ctx context.Context, arcDevice *androidui.Device, cr *chrome.Chrome, tconn *chrome.TestConn, parentPassword, gellerParentUser, gellerParentPass string) error {
 	ui := uiauto.New(tconn)
 
-	if err := arc.ClickAddAccountInSettings(ctx, arcDevice, tconn); err != nil {
-		return errors.Wrap(err, "failed to open Add account dialog from ARC")
-	}
+	if err := uiauto.Retry(3, func(ctx context.Context) error {
+		// Press escape key before move to testing in case there's An error occurred left by last try
+		if err := arcDevice.PressKeyCode(ctx, androidui.KEYCODE_ESCAPE, 0); err != nil {
+			return errors.Wrap(err, "failed to close the An error occurred pop-up")
+		}
 
-	if err := familylink.NavigateEduCoexistenceFlow(ctx, cr, tconn, parentPassword, gellerParentUser, gellerParentPass); err != nil {
-		return errors.Wrap(err, "failed entering geller account details in add school acount flow")
+		if err := arc.ClickAddAccountInSettings(ctx, arcDevice, tconn); err != nil {
+			return errors.Wrap(err, "failed to open Add account dialog from ARC")
+		}
+
+		if err := familylink.NavigateEduCoexistenceFlow(ctx, cr, tconn, parentPassword, gellerParentUser, gellerParentPass); err != nil {
+			return errors.Wrap(err, "failed entering geller account details in add school acount flow")
+		}
+		return nil
+	})(ctx); err != nil {
+		return errors.Wrap(err, "failed to click add account in settings and entering geller account details")
 	}
 
 	if err := ui.WaitUntilExists(nodewith.Name("Can’t add account").Role(role.Heading))(ctx); err != nil {
