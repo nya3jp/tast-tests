@@ -1,0 +1,187 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa13623d_6468355a",
+        "filename": "android/ArcAccessibilityTest/src/org/chromium/arc/testapp/accessibilitytest/ActionActivity.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2022-10-06T05:58:57Z",
+      "side": 1,
+      "message": "Can you make indentation consistent with other files? This file is 2 spaces, but other clesses in ArcAccessibilityTest use 4 spaces.\n\n`google-java-format` with `-a` option can do it.",
+      "revId": "9242e5711cf48d7f081c31462771bbe5e2b30d17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e86b7c7a_c2403ef4",
+        "filename": "src/chromiumos/tast/local/a11y/automation.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2022-10-06T05:58:57Z",
+      "side": 1,
+      "message": "let;s declare `ret` just before we uses it, line 322.\nAlso let\u0027s rename to `actions` to make it more clear.",
+      "revId": "9242e5711cf48d7f081c31462771bbe5e2b30d17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f22c02ca_7c2f8a57",
+        "filename": "src/chromiumos/tast/local/a11y/automation.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2022-10-06T05:58:57Z",
+      "side": 1,
+      "message": "nit: \"standard actions\u0027.",
+      "range": {
+        "startLine": 326,
+        "startChar": 58,
+        "endLine": 326,
+        "endChar": 76
+      },
+      "revId": "9242e5711cf48d7f081c31462771bbe5e2b30d17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "373df43a_e2f26606",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2022-10-06T05:58:57Z",
+      "side": 1,
+      "message": "Can you add a comment why we\u0027re doing like this?",
+      "revId": "9242e5711cf48d7f081c31462771bbe5e2b30d17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd4fc866_cc05a529",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2022-10-06T05:58:57Z",
+      "side": 1,
+      "message": "let\u0027s say `expected` to keep variable names shorter.",
+      "range": {
+        "startLine": 38,
+        "startChar": 2,
+        "endLine": 38,
+        "endChar": 25
+      },
+      "revId": "9242e5711cf48d7f081c31462771bbe5e2b30d17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea92a0cf_2bba3a32",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2022-10-06T05:58:57Z",
+      "side": 1,
+      "message": "ditto, `actual`",
+      "range": {
+        "startLine": 39,
+        "startChar": 2,
+        "endLine": 39,
+        "endChar": 23
+      },
+      "revId": "9242e5711cf48d7f081c31462771bbe5e2b30d17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b1a8693_df974c8c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2022-10-06T05:58:57Z",
+      "side": 1,
+      "message": "maybe `matched` is unnecessary. jsut do `if standardActionsMatches(ctx, expected, actual)`",
+      "range": {
+        "startLine": 43,
+        "startChar": 2,
+        "endLine": 44,
+        "endChar": 66
+      },
+      "revId": "9242e5711cf48d7f081c31462771bbe5e2b30d17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e41c68a_57e56dad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2022-10-06T05:58:57Z",
+      "side": 1,
+      "message": "This is not checking strict equaliness, but just checking if the given actions exist in the actual list.\nCould you rename it and add comment to clarify it?",
+      "revId": "9242e5711cf48d7f081c31462771bbe5e2b30d17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "884e992f_cbcd4e07",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2022-10-06T05:58:57Z",
+      "side": 1,
+      "message": "we output a detailed log in line 47, do we need this...?",
+      "range": {
+        "startLine": 68,
+        "startChar": 3,
+        "endLine": 69,
+        "endChar": 18
+      },
+      "revId": "9242e5711cf48d7f081c31462771bbe5e2b30d17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
