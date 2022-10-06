@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e69d818e_f4b04df1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/cloud_gaming_marketing_opt_in.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1528608
+      },
+      "writtenOn": "2022-10-06T17:12:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "784e793b_8c23f809",
+      "range": {
+        "startLine": 31,
+        "startChar": 15,
+        "endLine": 31,
+        "endChar": 35
+      },
+      "revId": "0af34e78683ad723372d789df2bd70c5b0c051a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "17401cee_d26cd85b",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-10-06T07:28:30Z",
       "side": 1,
       "message": "nice!",
+      "range": {
+        "startLine": 222,
+        "startChar": 13,
+        "endLine": 222,
+        "endChar": 35
+      },
+      "revId": "0af34e78683ad723372d789df2bd70c5b0c051a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6503d94_1704b7a9",
+        "filename": "src/chromiumos/tast/local/chrome/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1528608
+      },
+      "writtenOn": "2022-10-06T17:12:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "17401cee_d26cd85b",
       "range": {
         "startLine": 222,
         "startChar": 13,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2279f405_51baac34",
+        "filename": "src/chromiumos/tast/local/chrome/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1528608
+      },
+      "writtenOn": "2022-10-06T17:12:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "83c358c1_af864017",
+      "range": {
+        "startLine": 224,
+        "startChar": 22,
+        "endLine": 224,
+        "endChar": 41
+      },
+      "revId": "0af34e78683ad723372d789df2bd70c5b0c051a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "63f1d35d_351c3701",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-10-06T07:28:30Z",
       "side": 1,
       "message": "hm, but how we\u0027re gonna pass the command-line switch now? If it\u0027s gonna be too hard we might consider returning back to the js call instead.",
+      "range": {
+        "startLine": 226,
+        "startChar": 0,
+        "endLine": 226,
+        "endChar": 49
+      },
+      "revId": "0af34e78683ad723372d789df2bd70c5b0c051a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb379d72_c0257f0b",
+        "filename": "src/chromiumos/tast/local/chrome/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1528608
+      },
+      "writtenOn": "2022-10-06T17:12:29Z",
+      "side": 1,
+      "message": "Discussed offline, we will add new fixtures based on `chromeLoggedIn` for each set of options that we might need for the OOBE tests.",
+      "parentUuid": "63f1d35d_351c3701",
       "range": {
         "startLine": 226,
         "startChar": 0,
