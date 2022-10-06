@@ -47,6 +47,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c46ea17b_d2280149",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/omaha/lts.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-10-06T12:32:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bb89ade3_d5dac1ad",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 97
+      },
+      "revId": "f755120c7e278a6f6e23394bcf8e65b45721995c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8e4864f7_72a4e1c5",
@@ -60,6 +84,30 @@
       "writtenOn": "2022-10-05T21:07:24Z",
       "side": 1,
       "message": "nit: I would put this after `ltsPrefix`.",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 97
+      },
+      "revId": "f755120c7e278a6f6e23394bcf8e65b45721995c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ed7cf56_d68aa5d0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/omaha/lts_rollback.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-10-06T12:32:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8e4864f7_72a4e1c5",
       "range": {
         "startLine": 49,
         "startChar": 0,
@@ -116,6 +164,78 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f8e0038_6a8d7a97",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/omaha/params/configuration.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-10-06T12:32:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e12442c0_e7d9ec87",
+      "range": {
+        "startLine": 23,
+        "startChar": 1,
+        "endLine": 23,
+        "endChar": 120
+      },
+      "revId": "f755120c7e278a6f6e23394bcf8e65b45721995c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9979616_1141cfa0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/omaha/params/configuration.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-10-06T12:32:22Z",
+      "side": 1,
+      "message": "\u003e \"Mininum\" is a possible misspelling of \"Minimum\".\n\nDone",
+      "parentUuid": "2bb9ea81_ea563f69",
+      "range": {
+        "startLine": 23,
+        "startChar": 28,
+        "endLine": 23,
+        "endChar": 35
+      },
+      "revId": "f755120c7e278a6f6e23394bcf8e65b45721995c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe691d7c_184acb15",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/omaha/params/configuration.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-10-06T12:32:22Z",
+      "side": 1,
+      "message": "Explained in configuration.json",
+      "parentUuid": "d0cfdf1e_e86b568e",
+      "range": {
+        "startLine": 23,
+        "startChar": 12,
+        "endLine": 23,
+        "endChar": 15
+      },
+      "revId": "f755120c7e278a6f6e23394bcf8e65b45721995c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dae31698_9db1fbf6",
@@ -139,6 +259,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "80755fa0_88f0a78a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/omaha/params/configuration.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-10-06T12:32:22Z",
+      "side": 1,
+      "message": "Explained in configuration.json",
+      "parentUuid": "dae31698_9db1fbf6",
+      "range": {
+        "startLine": 24,
+        "startChar": 9,
+        "endLine": 24,
+        "endChar": 12
+      },
+      "revId": "f755120c7e278a6f6e23394bcf8e65b45721995c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8345d91c_7425dcfb",
@@ -152,6 +296,30 @@
       "writtenOn": "2022-10-05T21:07:24Z",
       "side": 1,
       "message": "Should this be `LTS`? What is `LTR`?",
+      "range": {
+        "startLine": 22,
+        "startChar": 10,
+        "endLine": 22,
+        "endChar": 13
+      },
+      "revId": "f755120c7e278a6f6e23394bcf8e65b45721995c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7927375e_27c36460",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/omaha/params/data/configuration.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-10-06T12:32:22Z",
+      "side": 1,
+      "message": "LTS \u003d LTC (C\u003dcandidate) + LTR(R\u003drelease).\n\nhttps://moma.corp.google.com/glossary?entity\u003d/g/11jq7hpkt_\u0026q\u003dltr\n\nLTR is a term we use internally to differentiate between builds. It\u0027s not mentioned publicly.",
+      "parentUuid": "8345d91c_7425dcfb",
       "range": {
         "startLine": 22,
         "startChar": 10,
