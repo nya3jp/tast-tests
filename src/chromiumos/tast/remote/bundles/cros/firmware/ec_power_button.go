@@ -5,7 +5,9 @@
 package firmware
 
 import (
+	"bufio"
 	"context"
+	"fmt"
 	"strings"
 	"time"
 
@@ -13,7 +15,6 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/firmware"
 	"chromiumos/tast/remote/firmware/fixture"
-	"chromiumos/tast/ssh"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -201,56 +202,54 @@ func shutdownAndWake(ctx context.Context, h *firmware.Helper, shutDownDur time.D
 	return nil
 }
 
-func testPowerdPowerOff(ctx context.Context, h *firmware.Helper) (reterr error) {
-	enablePowerd := func(ctx context.Context, status bool) error {
-		startOrStop := "start"
-		if !status {
-			startOrStop = "stop"
-		}
+func enablePowerd(ctx context.Context, h *firmware.Helper, status bool) error {
+	startOrStop := "start"
+	if !status {
+		startOrStop = "stop"
+	}
 
-		if status {
-			if out, err := h.DUT.Conn().CommandContext(ctx, "status", "powerd").Output(ssh.DumpLogOnError); err != nil {
-				return errors.Wrap(err, "failed to check powerd status")
-			} else if !strings.Contains(string(out), "start/running,") {
-				testing.ContextLog(ctx, "Setting powerd to start")
-				if err := h.DUT.Conn().CommandContext(ctx, "start", "powerd").Run(ssh.DumpLogOnError); err != nil {
-					return errors.Wrap(err, "failed to start powerd")
-				}
-			} else {
-				testing.ContextLog(ctx, "powerd is already started")
-			}
+	startStopJob := func(ctx context.Context, job string) error {
+		cmd := h.DUT.Conn().CommandContext(ctx, startOrStop, job)
+		stderr, _ := cmd.StderrPipe()
+		if err := cmd.Start(); err != nil {
+			return errors.Wrapf(err, "failed to run '%s %s' cmd on DUT", startOrStop, job)
 		}
-
-		if out, err := h.DUT.Conn().CommandContext(ctx, "status", "fwupd").Output(ssh.DumpLogOnError); err != nil {
-			return errors.Wrap(err, "failed to check fwupd status")
-		} else if strings.Contains(string(out), "start/running,") != status {
-			testing.ContextLogf(ctx, "Setting fwupd to %q", startOrStop)
-			if err := h.DUT.Conn().CommandContext(ctx, startOrStop, "fwupd").Run(ssh.DumpLogOnError); err != nil {
-				return errors.Wrapf(err, "failed to %s fwupd", startOrStop)
-			}
-		} else {
-			testing.ContextLogf(ctx, "fwupd status is already %q", startOrStop)
+		scanner := bufio.NewScanner(stderr)
+		errMsg := ""
+		for scanner.Scan() {
+			errMsg = fmt.Sprintf("%s\n%s", errMsg, scanner.Text())
 		}
-
-		if !status {
-			if out, err := h.DUT.Conn().CommandContext(ctx, "status", "powerd").Output(ssh.DumpLogOnError); err != nil {
-				return errors.Wrap(err, "failed to check powerd status")
-			} else if strings.Contains(string(out), "start/running,") != status {
-				testing.ContextLog(ctx, "Setting powerd to stop")
-				if err := h.DUT.Conn().CommandContext(ctx, "stop", "powerd").Run(ssh.DumpLogOnError); err != nil {
-					return errors.Wrap(err, "failed to stop powerd")
-				}
-			} else {
-				testing.ContextLog(ctx, "powerd is already stopped")
-			}
+		testing.ContextLogf(ctx, "Error message from %v %v cmd: %v", startOrStop, job, errMsg)
+		if errMsg != "" && !strings.Contains(errMsg, "Job is already running") {
+			return errors.Errorf("failed to %s job %v, got error: %s", startOrStop, job, errMsg)
 		}
-
 		return nil
 	}
 
+	if status {
+		if err := startStopJob(ctx, "powerd"); err != nil {
+			return errors.Wrap(err, "failed to start powerd")
+		}
+	}
+
+	if err := startStopJob(ctx, "fwupd"); err != nil {
+		return errors.Wrapf(err, "failed to %v fwupd", startOrStop)
+	}
+
+	if !status {
+		if err := startStopJob(ctx, "powerd"); err != nil {
+			return errors.Wrap(err, "failed to stop powerd")
+		}
+	}
+
+	return nil
+}
+
+func testPowerdPowerOff(ctx context.Context, h *firmware.Helper) (reterr error) {
+
 	// Make sure fwupd and powerd are running again after test.
 	defer func() {
-		if err := enablePowerd(ctx, true); err != nil {
+		if err := enablePowerd(ctx, h, true); err != nil {
 			reterr = errors.Wrap(err, "failed to restart powerd after test end")
 		}
 	}()
@@ -259,7 +258,7 @@ func testPowerdPowerOff(ctx context.Context, h *firmware.Helper) (reterr error) 
 	noPowerdDur := h.Config.HoldPwrButtonNoPowerdShutdown
 
 	testing.ContextLog(ctx, "starting powerd")
-	if err := enablePowerd(ctx, true); err != nil {
+	if err := enablePowerd(ctx, h, true); err != nil {
 		return errors.Wrap(err, "failed to start powerd")
 	}
 
@@ -267,8 +266,12 @@ func testPowerdPowerOff(ctx context.Context, h *firmware.Helper) (reterr error) 
 		return errors.Wrap(err, "failed shut down and wake with powerd")
 	}
 
+	if err := h.WaitConnect(ctx); err != nil {
+		return errors.Wrap(err, "failed to reconnect to DUT")
+	}
+
 	testing.ContextLog(ctx, "stopping powerd")
-	if err := enablePowerd(ctx, false); err != nil {
+	if err := enablePowerd(ctx, h, false); err != nil {
 		return errors.Wrap(err, "failed to stop powerd")
 	}
 
@@ -276,8 +279,12 @@ func testPowerdPowerOff(ctx context.Context, h *firmware.Helper) (reterr error) 
 		return errors.Wrap(err, "failed shut down and wake with no powerd")
 	}
 
+	if err := h.WaitConnect(ctx); err != nil {
+		return errors.Wrap(err, "failed to reconnect to DUT")
+	}
+
 	testing.ContextLog(ctx, "starting powerd")
-	if err := enablePowerd(ctx, true); err != nil {
+	if err := enablePowerd(ctx, h, true); err != nil {
 		return errors.Wrap(err, "failed to start powerd")
 	}
 
@@ -285,8 +292,12 @@ func testPowerdPowerOff(ctx context.Context, h *firmware.Helper) (reterr error) 
 		return errors.Wrap(err, "failed shut down and wake with powerd")
 	}
 
+	if err := h.WaitConnect(ctx); err != nil {
+		return errors.Wrap(err, "failed to reconnect to DUT")
+	}
+
 	testing.ContextLog(ctx, "stopping powerd")
-	if err := enablePowerd(ctx, false); err != nil {
+	if err := enablePowerd(ctx, h, false); err != nil {
 		return errors.Wrap(err, "failed to stop powerd")
 	}
 
