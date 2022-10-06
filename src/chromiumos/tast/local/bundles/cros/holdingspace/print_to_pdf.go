@@ -98,15 +98,13 @@ func PrintToPDF(ctx context.Context, s *testing.State) {
 			expectedTabTitle, err)
 	}
 
-	const fileName = "download"
-	// .pdf is automatically appended to the filename when saving.
-	const fullFileName = fileName + ".pdf"
 	// Defer cleanup of the downloaded PDF file.
 	downloadsPath, err := cryptohome.DownloadsPath(ctx, cr.NormalizedUser())
 	if err != nil {
 		s.Fatal("Failed to get user's Download path: ", err)
 	}
-	downloadLocation := filepath.Join(downloadsPath, fullFileName)
+	const fileName = "download.pdf"
+	downloadLocation := filepath.Join(downloadsPath, fileName)
 	defer os.Remove(downloadLocation)
 
 	ui := uiauto.New(tconn)
@@ -127,6 +125,7 @@ func PrintToPDF(ctx context.Context, s *testing.State) {
 
 		// Download file window will popup, enter a filename for the PDF and click "Save".
 		ui.EnsureFocused(nodewith.Name("File name").Role(role.TextField)),
+		kb.AccelAction("Ctrl+A"),
 		kb.TypeAction(fileName),
 		ui.LeftClick(nodewith.Name("Save").
 			Role(role.Button).
@@ -134,7 +133,7 @@ func PrintToPDF(ctx context.Context, s *testing.State) {
 
 		// Left click the tray to open the bubble.
 		ui.LeftClick(holdingspace.FindTray()),
-		ui.WaitUntilExists(holdingspace.FindChip().Name(fullFileName)),
+		ui.WaitUntilExists(holdingspace.FindChip().Name(fileName)),
 	)(ctx); err != nil {
 		s.Fatal("Failed to save as PDF and verify presence in holding space: ", err)
 	}
