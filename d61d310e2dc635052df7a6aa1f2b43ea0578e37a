@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "e02a7d6d_1d2fe148",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-10-06T07:43:22Z",
+      "side": 1,
+      "message": "nit: Start the commit message with either\nprivacyhub: Extend timeout for SettingsPage test\nor\ntast-tests: Extend timeout for privacyhub.SettingsPage test\n\nA rule of thumb - if change is about one test or is contained in one package - use the former. If the change is across various packages use the latter.",
+      "revId": "d61d310e2dc635052df7a6aa1f2b43ea0578e37a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "4cb8bcd5_30af4bad",
@@ -14,6 +31,23 @@
       "writtenOn": "2022-10-04T15:27:10Z",
       "side": 1,
       "message": "Hi Kamil, can you please review this?",
+      "revId": "d61d310e2dc635052df7a6aa1f2b43ea0578e37a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "42c77ce3_447365d6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-10-06T07:43:22Z",
+      "side": 1,
+      "message": "LGTM % nit.",
       "revId": "d61d310e2dc635052df7a6aa1f2b43ea0578e37a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
