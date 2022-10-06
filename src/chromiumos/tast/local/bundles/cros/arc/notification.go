@@ -30,25 +30,22 @@ func init() {
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      4 * time.Minute,
+		Fixture:      "arcBooted",
 		Params: []testing.Param{{
 			ExtraAttr:         []string{"group:arc-functional"},
 			ExtraSoftwareDeps: []string{"android_p"},
-			Fixture:           "arcBooted",
 		}, {
 			Name:              "vm",
 			ExtraAttr:         []string{"group:arc-functional"},
 			ExtraSoftwareDeps: []string{"android_vm"},
-			Fixture:           "arcBooted",
 		}, {
 			Name:              "refresh",
 			ExtraAttr:         []string{"informational"},
 			ExtraSoftwareDeps: []string{"android_p"},
-			Fixture:           "arcBootedWithNotificationRefresh",
 		}, {
 			Name:              "refresh_vm",
 			ExtraAttr:         []string{"informational"},
 			ExtraSoftwareDeps: []string{"android_vm"},
-			Fixture:           "arcBootedWithNotificationRefresh",
 		}},
 	})
 }
