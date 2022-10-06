@@ -312,29 +312,6 @@ func init() {
 		TearDownTimeout: ResetTimeout,
 	})
 
-	// TODO(b/216709995): Remove this after the feature is launched.
-	// arcBootedWithNotificationRefresh is a fixture similar to arcBooted but with notification-refresh flag enabled.
-	testing.AddFixture(&testing.Fixture{
-		Name: "arcBootedWithNotificationRefresh",
-		Desc: "ARC is booted with the notification-refresh flag enabled",
-		Contacts: []string{
-			"toshikikikuchi@chromium.org",
-			"niwa@chromium.org",
-			"arcvm-eng-team@google.com",
-		},
-		Impl: NewArcBootedFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
-			return []chrome.Option{
-				chrome.ARCEnabled(),
-				chrome.UnRestrictARCCPU(),
-				chrome.EnableFeatures("NotificationsRefresh"),
-			}, nil
-		}),
-		SetUpTimeout:    chrome.LoginTimeout + BootTimeout + ui.StartTimeout,
-		ResetTimeout:    ResetTimeout,
-		PostTestTimeout: PostTestTimeout,
-		TearDownTimeout: ResetTimeout,
-	})
-
 	// arcBootedWithInputOverlay is a fixture similar to arcBooted but with the input overlay flag enabled.
 	testing.AddFixture(&testing.Fixture{
 		Name: "arcBootedWithInputOverlay",

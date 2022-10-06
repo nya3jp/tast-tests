@@ -61,7 +61,7 @@ func init() {
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		Data:         []string{arcNotificationTest2ApkFilename},
-		Fixture:      "arcBootedWithNotificationRefresh",
+		Fixture:      "arcBooted",
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      4 * time.Minute,
 		Params: []testing.Param{{
