@@ -16,6 +16,46 @@
       "message": "LGTM Thank you!",
       "revId": "d8ef16405c5e96c8f584539acd61e29bcfcea23e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0565a6b9_f1a0db10",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-10-06T21:06:00Z",
+      "side": 1,
+      "message": "LGTM % one nit.",
+      "revId": "d8ef16405c5e96c8f584539acd61e29bcfcea23e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6815d46b_5daa881a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/parental_controls_link.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-10-06T21:06:00Z",
+      "side": 1,
+      "message": "Could you add more details to this TODO comment? \"Verify \u0027Parental controls\" setting opens the Lacros browser in Lacros mode\".",
+      "range": {
+        "startLine": 25,
+        "startChar": 2,
+        "endLine": 25,
+        "endChar": 78
+      },
+      "revId": "d8ef16405c5e96c8f584539acd61e29bcfcea23e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
