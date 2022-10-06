@@ -40,9 +40,7 @@ func init() {
 			"drivefs",
 		},
 		Attr: []string{
-			// TODO: promote to "group:drivefs-cq"
-			// TODO(https://crbug.com/1355719): reduce the boards this runs on workspace
-			// on it, we should probably consider reducing the boards instead.
+			"group:drivefs-cq",
 			"informational",
 			"group:mainline",
 		},
@@ -54,7 +52,6 @@ func init() {
 			"filemanager.DrivefsPooledStorage.WarnUsername",
 			"filemanager.DrivefsPooledStorage.WarnPassword",
 		},
-		// TODO(https://crbug.com/1355708): avoid hardcoding i18n strings.
 		Params: []testing.Param{{
 			Name: "low",
 			Val: testCase{
