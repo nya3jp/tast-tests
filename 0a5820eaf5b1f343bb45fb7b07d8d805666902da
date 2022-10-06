@@ -70,6 +70,30 @@
       },
       "revId": "0a5820eaf5b1f343bb45fb7b07d8d805666902da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "87cfd15e_d4ef0d5c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/spera/frontline_worker_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2022-10-06T02:00:24Z",
+      "side": 1,
+      "message": "Sorry, please ignore comment #2.\n`l` will only be assigned in `lacros` Chrome. \nPlease refer to \"src/chromiumos/tast/local/chrome/cuj/ui.go\" line 128.\n`l, err \u003d lacros.Connect(ctx, tconn)`\nBoth `l` and `err` could be nil in `ash` Chrome.",
+      "parentUuid": "701325ba_fe5ad491",
+      "range": {
+        "startLine": 179,
+        "startChar": 1,
+        "endLine": 179,
+        "endChar": 14
+      },
+      "revId": "0a5820eaf5b1f343bb45fb7b07d8d805666902da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
