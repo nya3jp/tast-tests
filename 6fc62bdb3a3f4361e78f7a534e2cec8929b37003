@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5aea705e_65e59e40",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/view_ppd.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1545249
+      },
+      "writtenOn": "2022-10-06T00:15:26Z",
+      "side": 1,
+      "message": "My idea was to have this be more self-contained... so if we eventually make this more public, a user could simply call createPrinter and not have to create/launch the settings page themselves.  I was guessing the Chrome and TestConn might have already been created for a test so they would be readily available, but maybe that\u0027s not true?  Thoughts?",
+      "parentUuid": "2f05b1b6_f93143d9",
+      "range": {
+        "startLine": 44,
+        "startChar": 58,
+        "endLine": 45,
+        "endChar": 23
+      },
+      "revId": "6fc62bdb3a3f4361e78f7a534e2cec8929b37003",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bb0f641e_b3d55f3d",
         "filename": "src/chromiumos/tast/local/bundles/cros/printer/view_ppd.go",
         "patchSetId": 5
@@ -37,6 +61,24 @@
       "writtenOn": "2022-10-05T19:39:28Z",
       "side": 1,
       "message": "Did this formatting come from gofmt?  I don\u0027t usually see go wrap parameter lists.",
+      "revId": "6fc62bdb3a3f4361e78f7a534e2cec8929b37003",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a7b9a79_255a4209",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/view_ppd.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1545249
+      },
+      "writtenOn": "2022-10-06T00:15:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bb0f641e_b3d55f3d",
       "revId": "6fc62bdb3a3f4361e78f7a534e2cec8929b37003",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -54,6 +96,24 @@
       "writtenOn": "2022-10-05T19:39:28Z",
       "side": 1,
       "message": "We already have constants for these two settings strings in print.go.  Can you pull those out and reuse them?",
+      "revId": "6fc62bdb3a3f4361e78f7a534e2cec8929b37003",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7217181b_8cf6e281",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/view_ppd.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1545249
+      },
+      "writtenOn": "2022-10-06T00:15:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "50b880f5_1cf7d818",
       "revId": "6fc62bdb3a3f4361e78f7a534e2cec8929b37003",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -81,6 +141,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "083e6d93_2acd04ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/view_ppd.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1545249
+      },
+      "writtenOn": "2022-10-06T00:15:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "02638fe4_d4ca464b",
+      "range": {
+        "startLine": 61,
+        "startChar": 54,
+        "endLine": 61,
+        "endChar": 65
+      },
+      "revId": "6fc62bdb3a3f4361e78f7a534e2cec8929b37003",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "996f8c70_0ac824be",
@@ -98,6 +182,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1bbdb73a_8e926dfa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/view_ppd.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1545249
+      },
+      "writtenOn": "2022-10-06T00:15:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "996f8c70_0ac824be",
+      "revId": "6fc62bdb3a3f4361e78f7a534e2cec8929b37003",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dd8fcc32_91e9fab8",
@@ -111,6 +213,24 @@
       "writtenOn": "2022-10-05T19:39:28Z",
       "side": 1,
       "message": "I would suggest breaking this into a couple of logical steps so you get a clearer error message if something goes wrong.  For example, \"open add printer\", \"enter basic info\", \"choose model\".",
+      "revId": "6fc62bdb3a3f4361e78f7a534e2cec8929b37003",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "14fc13bc_62fc1112",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/view_ppd.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1545249
+      },
+      "writtenOn": "2022-10-06T00:15:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dd8fcc32_91e9fab8",
       "revId": "6fc62bdb3a3f4361e78f7a534e2cec8929b37003",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -138,6 +258,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a5d66aa_011de7a3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/view_ppd.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1545249
+      },
+      "writtenOn": "2022-10-06T00:15:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d6e136f1_700ab185",
+      "range": {
+        "startLine": 74,
+        "startChar": 17,
+        "endLine": 74,
+        "endChar": 28
+      },
+      "revId": "6fc62bdb3a3f4361e78f7a534e2cec8929b37003",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2d4708e6_94ae3d66",
@@ -151,6 +295,24 @@
       "writtenOn": "2022-10-05T19:39:28Z",
       "side": 1,
       "message": "Maybe also check for the element containing the PPD text so that this doesn\u0027t pass if it\u0027s merely slow to generate the page.",
+      "revId": "6fc62bdb3a3f4361e78f7a534e2cec8929b37003",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c135ea39_952bc810",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/view_ppd.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1545249
+      },
+      "writtenOn": "2022-10-06T00:15:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d4708e6_94ae3d66",
       "revId": "6fc62bdb3a3f4361e78f7a534e2cec8929b37003",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
