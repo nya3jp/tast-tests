@@ -11,10 +11,6 @@ mno {
       ip_type: IPV6
       is_attach_apn: true
     }
-    mobile_apn {
-      apn : "callbox-ipv4"
-      ip_type: IPV4
-      is_attach_apn: true
-    }
+
   }
 }
