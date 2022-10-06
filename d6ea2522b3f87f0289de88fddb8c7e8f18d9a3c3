@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c7587e9_c66e22af",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-06T21:12:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6bbff93f_0298134e",
+      "range": {
+        "startLine": 19,
+        "startChar": 48,
+        "endLine": 20,
+        "endChar": 53
+      },
+      "revId": "d6ea2522b3f87f0289de88fddb8c7e8f18d9a3c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "efcc37e7_828ba5df",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-10-04T17:48:45Z",
       "side": 1,
       "message": "nit: to avoid ending a sentence with a preposition, write \"where the screenshots will be saved\"",
+      "range": {
+        "startLine": 20,
+        "startChar": 47,
+        "endLine": 21,
+        "endChar": 19
+      },
+      "revId": "d6ea2522b3f87f0289de88fddb8c7e8f18d9a3c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cae4cc85_32045ee8",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/screenshot_recorder.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-06T21:12:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "efcc37e7_828ba5df",
       "range": {
         "startLine": 20,
         "startChar": 47,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "46ca9013_beaa7c8b",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/screenshot_recorder.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-06T21:12:46Z",
+      "side": 1,
+      "message": "I don\u0027t have that much of a preference, so I changed it to the first err. I was following mem_tracker.go, which used last err. (Although you can see a bug on line 99 where they log the wrong err!)\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/perf/mem_tracker.go;l\u003d97",
+      "parentUuid": "892ff52d_47767448",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 14
+      },
+      "revId": "d6ea2522b3f87f0289de88fddb8c7e8f18d9a3c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d51148dd_e870dd95",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-10-04T17:48:45Z",
       "side": 1,
       "message": "If you check this, then you probably should also check if `interval` is zero.",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 2
+      },
+      "revId": "d6ea2522b3f87f0289de88fddb8c7e8f18d9a3c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "56ca249f_da7a3a15",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/screenshot_recorder.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-06T21:12:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d51148dd_e870dd95",
       "range": {
         "startLine": 79,
         "startChar": 0,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2fc2d30_f32a1edb",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/screenshot_recorder.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-06T21:12:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b7ec2943_5b09956b",
+      "range": {
+        "startLine": 89,
+        "startChar": 14,
+        "endLine": 89,
+        "endChar": 22
+      },
+      "revId": "d6ea2522b3f87f0289de88fddb8c7e8f18d9a3c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "47eeb741_172fc047",
@@ -129,6 +249,30 @@
       "writtenOn": "2022-10-04T17:48:45Z",
       "side": 1,
       "message": "`\u0026`",
+      "range": {
+        "startLine": 93,
+        "startChar": 7,
+        "endLine": 93,
+        "endChar": 8
+      },
+      "revId": "d6ea2522b3f87f0289de88fddb8c7e8f18d9a3c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "65550ded_a5ade32f",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/screenshot_recorder.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-06T21:12:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "47eeb741_172fc047",
       "range": {
         "startLine": 93,
         "startChar": 7,
@@ -162,6 +306,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a570d5f_3a3c3898",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/screenshot_recorder.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-06T21:12:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c9225407_3d9ecd32",
+      "range": {
+        "startLine": 102,
+        "startChar": 7,
+        "endLine": 102,
+        "endChar": 8
+      },
+      "revId": "d6ea2522b3f87f0289de88fddb8c7e8f18d9a3c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9990aedb_60834353",
@@ -185,6 +353,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4c82678_e5a7488f",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/screenshot_recorder.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-06T21:12:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9990aedb_60834353",
+      "range": {
+        "startLine": 148,
+        "startChar": 7,
+        "endLine": 148,
+        "endChar": 8
+      },
+      "revId": "d6ea2522b3f87f0289de88fddb8c7e8f18d9a3c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "24ec3e8e_039c28a0",
@@ -198,6 +390,30 @@
       "writtenOn": "2022-10-04T17:48:45Z",
       "side": 1,
       "message": "`*`",
+      "range": {
+        "startLine": 191,
+        "startChar": 7,
+        "endLine": 191,
+        "endChar": 8
+      },
+      "revId": "d6ea2522b3f87f0289de88fddb8c7e8f18d9a3c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fbad5aa4_db87e591",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/screenshot_recorder.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-06T21:12:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "24ec3e8e_039c28a0",
       "range": {
         "startLine": 191,
         "startChar": 7,
