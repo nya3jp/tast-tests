@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9b644201_221b83db",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/cloud_gaming_marketing_opt_in.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1528608
+      },
+      "writtenOn": "2022-10-06T17:14:12Z",
+      "side": 1,
+      "message": "Will discuss offline.",
+      "parentUuid": "6eb160f2_a40d471c",
+      "range": {
+        "startLine": 36,
+        "startChar": 37,
+        "endLine": 36,
+        "endChar": 55
+      },
+      "revId": "a0547dae87c66fd3a202297b3c242b9ca517dda7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "41c5e5fd_b193e589",
         "filename": "src/chromiumos/tast/local/bundles/cros/oobe/cloud_gaming_marketing_opt_in.go",
         "patchSetId": 2
