@@ -519,6 +519,17 @@ func (f *loggedInToCUJUserFixture) Reset(ctx context.Context) error {
 }
 
 func (f *loggedInToCUJUserFixture) PreTest(ctx context.Context, s *testing.FixtTestState) {
+	arcLogOutDir := filepath.Join(s.OutDir(), "arc_logs")
+	if err := os.MkdirAll(arcLogOutDir, 0755); err != nil {
+		s.Log("Error creating arc_logs directory: ", err)
+		arcLogOutDir = s.OutDir()
+	} else {
+		s.Log("Created arc_logs directory successfully")
+	}
+	if err := f.arc.ResetOutDir(ctx, arcLogOutDir); err != nil {
+		s.Log("Failed to reset outDir field of ARC object: ", err)
+	}
+
 	if f.logMarker != nil {
 		s.Log("A log marker is already created but not cleaned up")
 	}
@@ -550,6 +561,14 @@ func (f *loggedInToCUJUserFixture) PostTest(ctx context.Context, s *testing.Fixt
 			s.Log("Failed to store per-test log data: ", err)
 		}
 		f.logMarker = nil
+	}
+
+	if f.arc != nil {
+		if err := f.arc.SaveLogFiles(ctx); err != nil {
+			s.Log("Failed to save ARC-related log files: ", err)
+		} else {
+			s.Log("ARC-related log files saved successfully")
+		}
 	}
 
 	webRTCLogs, err := filepath.Glob(webRTCEventLogFilePattern)
