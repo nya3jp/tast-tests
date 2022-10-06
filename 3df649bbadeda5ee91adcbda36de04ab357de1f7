@@ -69,6 +69,40 @@
       "parentUuid": "eef1606f_4927890a",
       "revId": "3df649bbadeda5ee91adcbda36de04ab357de1f7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7111f95_7885132c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/fgsec_wpa_change.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 415,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-10-06T17:30:34Z",
+      "side": 1,
+      "message": "micro nit/YMMV: If you do end up making all of the errors in here Fatal, it might be good to instead return an error from this function and s.Fatal it from the caller, just so you don\u0027t have to pass in/close over the State.",
+      "revId": "3df649bbadeda5ee91adcbda36de04ab357de1f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4bc84588_4a500971",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/fgsec_wpa_change.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 434,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-10-06T17:30:34Z",
+      "side": 1,
+      "message": "Will this interfere with future connectAP calls? (i.e. should this be Fatal instead of Error?)",
+      "revId": "3df649bbadeda5ee91adcbda36de04ab357de1f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
