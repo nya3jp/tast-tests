@@ -70,6 +70,30 @@
       },
       "revId": "b7ae6d4eeec0cb1e12c1c4583204ea97863d1ddf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b114a24_2e651d11",
+        "filename": "src/chromiumos/tast/local/demomode/fixture/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1465072
+      },
+      "writtenOn": "2022-10-06T19:01:15Z",
+      "side": 1,
+      "message": "You probably didn\u0027t see the Play Store because I forgot to include chrome.ArcSupported() in the options we pass to chrome.New in the ChromeApps test. Fixed :)",
+      "parentUuid": "bdf28606_849a0e2c",
+      "range": {
+        "startLine": 196,
+        "startChar": 1,
+        "endLine": 199,
+        "endChar": 2
+      },
+      "revId": "b7ae6d4eeec0cb1e12c1c4583204ea97863d1ddf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
