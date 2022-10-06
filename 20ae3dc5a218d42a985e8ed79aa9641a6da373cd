@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a9bf0f3_27cd60b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/sata_storage.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2022-10-06T09:06:06Z",
+      "side": 1,
+      "message": "Is the Children in the JSON ensured to be a null (or missing field) rather than an emtpy list?\n\nIf not, `len(node.Children) \u003d\u003d 0` may be safer.",
+      "revId": "20ae3dc5a218d42a985e8ed79aa9641a6da373cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "624f3b56_33239105",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/sata_storage.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2022-10-06T09:06:06Z",
+      "side": 1,
+      "message": "```\nif \u003c\u003cnegated condition\u003e\u003e {\n  continue\n}\n```\nwould be preferred for reducing number of indents,\nbut in this case especially, `for _, node1 :\u003d range node.Children {` would also work fine with an empty/nil slice, so this conditional would be unneeded.",
+      "revId": "20ae3dc5a218d42a985e8ed79aa9641a6da373cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86b4eb7f_1fa8face",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/sata_storage.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2022-10-06T09:06:06Z",
+      "side": 1,
+      "message": "How about using `continue` with the negated condition to reduce indent depth?",
+      "revId": "20ae3dc5a218d42a985e8ed79aa9641a6da373cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31362563_54418f5d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/sata_storage.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2022-10-06T09:06:06Z",
+      "side": 1,
+      "message": "Should the test pass when multiple matching nodes were found?",
+      "revId": "20ae3dc5a218d42a985e8ed79aa9641a6da373cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
