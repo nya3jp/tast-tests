@@ -50,6 +50,24 @@
       "message": "Don\u0027t use SkipOnPlatform. It is not reliable for newer models. See b/216651709.  Please create a new Software Dependency for hid_test.\n\nHere is an example:\n\nhttps://source.corp.google.com/chromeos_public/src/platform/tast/src/chromiumos/tast/internal/crosbundle/software_defs.go;rcl\u003dd5f05fd63070a953304166ba1872173bf270f01f;l\u003d73\n\nPlease let me know if you have any questions.\n\nThanks.",
       "revId": "36c8966fa02890e7f9860eefa206a0d155ef41ed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "78919ca5_29f34e40",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/hid_wake.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-10-06T17:48:06Z",
+      "side": 1,
+      "message": "Thanks for the feedback. I\u0027ve changed this CL to use a software dependency. It now depends on https://chromium-review.googlesource.com/c/chromiumos/platform/tast/+/3935658.",
+      "parentUuid": "f2772670_df983c2b",
+      "revId": "36c8966fa02890e7f9860eefa206a0d155ef41ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
