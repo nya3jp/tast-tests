@@ -16,6 +16,23 @@
       "message": "This cl only includes the change to new tast infra, does not cover sms deletion.",
       "revId": "2fb73a0b0b70ed838491a5e94df69b84a63477d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5557c231_d3ea8d27",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550898
+      },
+      "writtenOn": "2022-10-06T08:13:38Z",
+      "side": 1,
+      "message": "Hey Madhav! See also https://buganizer.corp.google.com/issues/248221881 Most of the failed tests in UIOta*Sms tests were due to the SMS not being received properly, which I believe happened because of the SMS storage getting full in the modem. In theory it should be Chrome deleting the SMS after it is shown in the UI, and for some reason that is not happening.",
+      "revId": "2fb73a0b0b70ed838491a5e94df69b84a63477d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
