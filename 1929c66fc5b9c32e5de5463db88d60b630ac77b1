@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2bb73bb1_466a152e",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/screenshot_recorder.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-06T23:36:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5e5e19fb_4f6b79b6",
+      "range": {
+        "startLine": 120,
+        "startChar": 0,
+        "endLine": 128,
+        "endChar": 5
+      },
+      "revId": "1929c66fc5b9c32e5de5463db88d60b630ac77b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ed63fefc_704a4450",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "85730090_a453ac8e",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/screenshot_recorder.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-06T23:36:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ed63fefc_704a4450",
+      "range": {
+        "startLine": 194,
+        "startChar": 3,
+        "endLine": 194,
+        "endChar": 47
+      },
+      "revId": "1929c66fc5b9c32e5de5463db88d60b630ac77b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "caff5bc9_def2fe5c",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-10-06T22:52:44Z",
       "side": 1,
       "message": "nit: Give an example with a failed screenshot, and explain that example. If the second screenshot fails, then the third one will be cuj-2-30.jpg.",
+      "range": {
+        "startLine": 196,
+        "startChar": 0,
+        "endLine": 198,
+        "endChar": 37
+      },
+      "revId": "1929c66fc5b9c32e5de5463db88d60b630ac77b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5886967e_de983941",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/screenshot_recorder.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-10-06T23:36:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "caff5bc9_def2fe5c",
       "range": {
         "startLine": 196,
         "startChar": 0,
