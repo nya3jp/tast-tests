@@ -16,6 +16,24 @@
       "message": "I meant to add the logs around the poll, but still inside the if branch when the DUT is not connected.\nThis way the logs are only there when there is problem with the connection.",
       "revId": "c033961539332c158f270b08f063cead11f174eb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "106773a5_b836017b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/fixture/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2022-10-06T20:27:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ff317f44_2769321b",
+      "revId": "c033961539332c158f270b08f063cead11f174eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
