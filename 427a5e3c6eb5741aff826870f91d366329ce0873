@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0655fc8_cc4e6037",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_client.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1430007
+      },
+      "writtenOn": "2022-10-06T22:26:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "629879f6_3700a8e9",
+      "range": {
+        "startLine": 56,
+        "startChar": 23,
+        "endLine": 56,
+        "endChar": 53
+      },
+      "revId": "427a5e3c6eb5741aff826870f91d366329ce0873",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1efd0045_109f0a2d",
@@ -54,6 +78,24 @@
       "writtenOn": "2022-10-06T01:51:49Z",
       "side": 1,
       "message": "optional: Add comment\n// u.mountAPI \u003d\u003d OldCryptohomeMountAPI ?\n\nOr convert into a switch statement that panics if the u.mountAPI is not one of the three known values?",
+      "revId": "427a5e3c6eb5741aff826870f91d366329ce0873",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "96fac7a6_aa244661",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_client.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 488,
+      "author": {
+        "id": 1430007
+      },
+      "writtenOn": "2022-10-06T22:26:37Z",
+      "side": 1,
+      "message": "The switch statement seems to be the more robust.",
+      "parentUuid": "1efd0045_109f0a2d",
       "revId": "427a5e3c6eb5741aff826870f91d366329ce0873",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
