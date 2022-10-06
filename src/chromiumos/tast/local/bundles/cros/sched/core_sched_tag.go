@@ -111,17 +111,19 @@ func getThreadsFromProcess(p *process.Process) ([]*process.Process, error) {
 func verifyTags(ctx context.Context, tconn *chrome.TestConn, browserType browser.Type) error {
 	cookieMap := make(map[int64]bool)
 
-	procs, err := chromeproc.GetRendererProcesses()
-	if err != nil {
-		return errors.Wrap(err, "failed to get renderer processes")
-	}
-
+	var procs []*process.Process
 	if browserType == browser.TypeLacros {
-		lacrosProcs, err := lacrosproc.RendererProcesses(ctx, tconn)
+		var err error
+		procs, err = lacrosproc.RendererProcesses(ctx, tconn)
 		if err != nil {
 			return errors.Wrap(err, "failed to get lacros renderers")
 		}
-		procs = append(procs, lacrosProcs...)
+	} else {
+		var err error
+		procs, err = chromeproc.GetRendererProcesses()
+		if err != nil {
+			return errors.Wrap(err, "failed to get renderer processes")
+		}
 	}
 
 	for _, proc := range procs {
