@@ -22,6 +22,7 @@ import (
 	"chromiumos/tast/common/android/adb"
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/fsutil"
 	localadb "chromiumos/tast/local/android/adb"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash/ashproc"
@@ -46,6 +47,7 @@ const (
 	pstoreCommandPath                 = "/usr/bin/vm_pstore_dump"
 	pstoreCommandExitCodeFileNotFound = 2
 	arcvmConsoleName                  = "messages-arcvm"
+	arcLogPath                        = "/var/log/arc.log"
 
 	//ARCPath is the path where the container images are installed in the rootfs.
 	ARCPath = "/opt/google/containers/android"
@@ -808,6 +810,10 @@ func (a *ARC) SaveLogFiles(ctx context.Context) error {
 
 	if err := saveARCVMConsole(ctx, filepath.Join(a.outDir, arcvmConsoleName)); err != nil {
 		return errors.Wrap(err, "failed to save the messages-arcvm")
+	}
+
+	if err := fsutil.CopyFile(arcLogPath, filepath.Join(a.outDir, "arc.log")); err != nil {
+		return errors.Wrap(err, "failed to save arc.log")
 	}
 
 	// Reset outDir to avoid saving the same files twice at ARC.Close().

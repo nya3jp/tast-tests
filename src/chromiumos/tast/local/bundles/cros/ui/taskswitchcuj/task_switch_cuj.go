@@ -49,6 +49,9 @@ func Run(ctx context.Context, s *testing.State) {
 
 	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 	a := s.FixtValue().(cuj.FixtureData).ARC
+	if err := a.SaveLogFiles(ctx); err != nil {
+		s.Log("Failed to to save ARC-related log files: ", err)
+	}
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
