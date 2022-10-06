@@ -265,11 +265,14 @@ func PerformAndClose(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestC
 
 // ClosePlayStore closes the Play Store app.
 func ClosePlayStore(ctx context.Context, tconn *chrome.TestConn) error {
-
+	// Attempt to find the Play Store window by it's package name, or ID
+	// since the package name may not always be set.
 	var window *ash.Window
-	var err error
-	testing.Poll(ctx, func(ctx context.Context) error {
-		if window, err = ash.GetARCAppWindowInfo(ctx, tconn, "com.android.vending"); err != nil {
+	err := testing.Poll(ctx, func(ctx context.Context) error {
+		var findWindowErr error
+		if window, findWindowErr = ash.FindWindow(ctx, tconn, func(w *ash.Window) bool {
+			return w.ARCPackageName == "com.android.vending" || w.AppID == apps.PlayStore.ID
+		}); findWindowErr != nil {
 			return errors.New("Play Store window is not yet open")
 		}
 		return nil
@@ -280,7 +283,7 @@ func ClosePlayStore(ctx context.Context, tconn *chrome.TestConn) error {
 	if err == nil {
 		testing.ContextLog(ctx, "Play store window is open and hence closing")
 		if err := window.CloseWindow(ctx, tconn); err != nil {
-			errors.Wrap(err, "failed to close app window")
+			return errors.Wrap(err, "failed to close app window")
 		}
 	}
 	return nil
