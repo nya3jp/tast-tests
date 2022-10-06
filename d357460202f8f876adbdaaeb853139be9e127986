@@ -22,6 +22,30 @@
       },
       "revId": "d357460202f8f876adbdaaeb853139be9e127986",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a489e94_ef8be3cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/shill_service.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 2541,
+      "author": {
+        "id": 1426782
+      },
+      "writtenOn": "2022-10-06T16:55:50Z",
+      "side": 1,
+      "message": "That is a good point you are making and we have thought about it. Unfortunately, we do not have any mechanism to basically add that instrumentation in kernel. This needs to be added and some way needs to be exposed to the userspace to be notified about FW recovery. This is what is captured in the TODO task. I will see this feature gets implemented soon, but until then we cannot do any polling.",
+      "parentUuid": "3ac72d12_cfe1d2a1",
+      "range": {
+        "startLine": 2541,
+        "startChar": 0,
+        "endLine": 2541,
+        "endChar": 36
+      },
+      "revId": "d357460202f8f876adbdaaeb853139be9e127986",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
