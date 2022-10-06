@@ -32,9 +32,8 @@ func init() {
 		Desc: "Verify the support for nl80211 station information",
 		Contacts: []string{
 			"chromeos-wifi-champs@google.com", // WiFi oncall rotation; or http://b/new?component=893827
-			"kaidong@google.com",
 		},
-		Attr:        []string{"group:wificell", "wificell_func", "wificell_unstable"},
+		Attr:        []string{"group:wificell", "wificell_func"},
 		ServiceDeps: []string{wificell.TFServiceName},
 		// Marvell chips don't support all the attributes
 		HardwareDeps: hwdep.D(hwdep.WifiNotMarvell()),
