@@ -20,6 +20,138 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "69a10a01_f557351c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/cgpt_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2022-10-06T01:47:59Z",
+      "side": 1,
+      "message": "This is the old copyright format. I\u0027m surprised the repo upload hooks didn\u0027t complain.",
+      "revId": "a416eebf70ed04aeb1addbc038ed0a9fe7c10529",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eebbc67e_163860e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/cgpt_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2022-10-06T01:47:59Z",
+      "side": 1,
+      "message": "Rather than nesting everything within this condition, I think it would be cleaner to do\n\n```\nif !string.Contains(line, \"Label:\") {\n  continue\n}\n```",
+      "range": {
+        "startLine": 49,
+        "startChar": 2,
+        "endLine": 49,
+        "endChar": 39
+      },
+      "revId": "a416eebf70ed04aeb1addbc038ed0a9fe7c10529",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bff74b1c_db5b6853",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/cgpt_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2022-10-06T01:47:59Z",
+      "side": 1,
+      "message": "What guarantees should a well formatted cgpt output have about the presence of Type/UUID/Attr lines after a Label line?\n\nIf they\u0027re optional, then there should be a bounds check before trying to access `idx + X` in the array. If they\u0027re expected, then we should return an error if the line doesn\u0027t match.",
+      "range": {
+        "startLine": 74,
+        "startChar": 23,
+        "endLine": 74,
+        "endChar": 42
+      },
+      "revId": "a416eebf70ed04aeb1addbc038ed0a9fe7c10529",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7212fcab_47b556ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/cgpt_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2022-10-06T01:47:59Z",
+      "side": 1,
+      "message": "nit: this is in `/tmp`, but I think it would be a little nicer to delete it ourselves with `defer os.Remove(\"/tmp/cgpt-header\")`",
+      "range": {
+        "startLine": 125,
+        "startChar": 75,
+        "endLine": 125,
+        "endChar": 91
+      },
+      "revId": "a416eebf70ed04aeb1addbc038ed0a9fe7c10529",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9630207_38f0e360",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/cgpt_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2022-10-06T01:47:59Z",
+      "side": 1,
+      "message": "nit: same comment as above",
+      "range": {
+        "startLine": 139,
+        "startChar": 25,
+        "endLine": 139,
+        "endChar": 41
+      },
+      "revId": "a416eebf70ed04aeb1addbc038ed0a9fe7c10529",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3f2c917_6da651d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/cgpt_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2022-10-06T01:47:59Z",
+      "side": 1,
+      "message": "You can remove a level of testing with\n\n```\nif len(part.Attrs) \u003d\u003d 0 {\n  continue\n}\n```",
+      "range": {
+        "startLine": 152,
+        "startChar": 2,
+        "endLine": 152,
+        "endChar": 26
+      },
+      "revId": "a416eebf70ed04aeb1addbc038ed0a9fe7c10529",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "860589d2_a913f911",
         "filename": "src/chromiumos/tast/remote/firmware/helper.go",
         "patchSetId": 1
@@ -49,6 +181,75 @@
       "side": 1,
       "message": "VSCode somehow went on its own in terms of reformatting comments, didn\u0027t notice that before committing, thanks!",
       "parentUuid": "860589d2_a913f911",
+      "revId": "a416eebf70ed04aeb1addbc038ed0a9fe7c10529",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67d11451_3b01374a",
+        "filename": "src/chromiumos/tast/services/cros/firmware/cgpt_service.pb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2022-10-06T01:47:59Z",
+      "side": 1,
+      "message": "Old copyright format",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 63
+      },
+      "revId": "a416eebf70ed04aeb1addbc038ed0a9fe7c10529",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c7fcc07_17f6ade7",
+        "filename": "src/chromiumos/tast/services/cros/firmware/cgpt_service.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2022-10-06T01:47:59Z",
+      "side": 1,
+      "message": "Old copyright format",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 63
+      },
+      "revId": "a416eebf70ed04aeb1addbc038ed0a9fe7c10529",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "449c3b4a_c4ae3c86",
+        "filename": "src/chromiumos/tast/services/cros/firmware/cgpt_service.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2022-10-06T01:47:59Z",
+      "side": 1,
+      "message": "Trailing whitespace",
+      "range": {
+        "startLine": 66,
+        "startChar": 79,
+        "endLine": 66,
+        "endChar": 80
+      },
       "revId": "a416eebf70ed04aeb1addbc038ed0a9fe7c10529",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
