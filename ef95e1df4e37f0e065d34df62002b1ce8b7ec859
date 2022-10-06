@@ -16,6 +16,46 @@
       "message": "Hello Hsin-chen and Kyle! Whenever y\u0027all have a moment could you take a look at this change? Thank you! :)",
       "revId": "ef95e1df4e37f0e065d34df62002b1ce8b7ec859",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe17ef64_59e5d3a1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1525637
+      },
+      "writtenOn": "2022-10-06T06:00:18Z",
+      "side": 1,
+      "message": "Only one nit. Thanks!",
+      "revId": "ef95e1df4e37f0e065d34df62002b1ce8b7ec859",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c98202c8_c473b56e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/open_bluetooth_settings_from_quick_settings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1525637
+      },
+      "writtenOn": "2022-10-06T06:00:18Z",
+      "side": 1,
+      "message": "nit: I think we usually just `}, {`",
+      "range": {
+        "startLine": 34,
+        "startChar": 2,
+        "endLine": 35,
+        "endChar": 3
+      },
+      "revId": "ef95e1df4e37f0e065d34df62002b1ce8b7ec859",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
