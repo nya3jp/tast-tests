@@ -35,7 +35,7 @@ interface {{.ifname}} {
 
 // Paths in chroot.
 const (
-	radvdPath = "/usr/local/sbin/radvd"
+	radvdPath = "/usr/local/radvd"
 	confPath  = "/tmp/radvd.conf"
 	pidPath   = "/tmp/radvd.pid"
 	logPath   = "/tmp/radvd.log"
