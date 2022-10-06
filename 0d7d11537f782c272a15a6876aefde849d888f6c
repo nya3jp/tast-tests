@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2b4a76f_4808dc99",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/write_protect.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-10-06T18:34:09Z",
+      "side": 1,
+      "message": "This is redundant now.",
+      "range": {
+        "startLine": 226,
+        "startChar": 2,
+        "endLine": 226,
+        "endChar": 21
+      },
+      "revId": "0d7d11537f782c272a15a6876aefde849d888f6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e82ba9a_1ea9f390",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/write_protect.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-10-06T18:34:09Z",
+      "side": 1,
+      "message": "Put needsRestore \u003d false right before this return",
+      "range": {
+        "startLine": 237,
+        "startChar": 1,
+        "endLine": 237,
+        "endChar": 11
+      },
+      "revId": "0d7d11537f782c272a15a6876aefde849d888f6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
