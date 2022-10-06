@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "76238bd6_721a7d4c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/write_protect.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1427718
+      },
+      "writtenOn": "2022-10-06T01:04:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e554c74c_b115bc42",
+      "range": {
+        "startLine": 194,
+        "startChar": 1,
+        "endLine": 194,
+        "endChar": 19
+      },
+      "revId": "ee68a76c1b22ea83af04ffe3cfdc27ceeb475670",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2305cedc_ba4d9bde",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-10-05T18:20:45Z",
       "side": 1,
       "message": "Right now if the error code is something other than 1 or 2, this will succeed and return nil, which is wrong. Change to if errCode \u003d\u003d 1 \u0026\u0026 ok, followed with a an else for everything else.",
+      "range": {
+        "startLine": 223,
+        "startChar": 2,
+        "endLine": 227,
+        "endChar": 3
+      },
+      "revId": "ee68a76c1b22ea83af04ffe3cfdc27ceeb475670",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2bd90c8_232c6199",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/write_protect.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1427718
+      },
+      "writtenOn": "2022-10-06T01:04:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2305cedc_ba4d9bde",
       "range": {
         "startLine": 223,
         "startChar": 2,
