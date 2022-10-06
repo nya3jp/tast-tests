@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1aa83d12_2c5f5785",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2022-10-06T13:17:27Z",
+      "side": 1,
+      "message": "The CQ failures seem transient. Let me retry.",
+      "revId": "1ff51fd4114c103f20eb2bfb53fea04b7868e611",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
