@@ -37,6 +37,7 @@ func init() {
 		PostTestTimeout: 3 * time.Minute,
 		TearDownTimeout: 5 * time.Second,
 		Impl:            &cellularFixture{modemfwdStopped: false},
+		Parent:          "cellularRemote",
 	})
 	testing.AddFixture(&testing.Fixture{
 		Name: "cellularWithFakeDMSEnrolled",
@@ -90,7 +91,12 @@ func (f *cellularFixture) SetUp(ctx context.Context, s *testing.FixtState) inter
 			s.Fatal("Parent is not a fakeDMSEnrolled fixture")
 		}
 	}
+	f.SetUpAfterReboot(ctx, s)
 
+	return &FixtData{fdms}
+}
+
+func (f *cellularFixture) SetUpAfterReboot(ctx context.Context, s *testing.FixtState) {
 	// Give some time for cellular daemons to perform any modem operations. Stopping them via upstart might leave the modem in a bad state.
 	if err := cellular.EnsureUptime(ctx, uptimeBeforeTest); err != nil {
 		s.Fatal("Failed to wait for system uptime: ", err)
@@ -106,14 +112,12 @@ func (f *cellularFixture) SetUp(ctx context.Context, s *testing.FixtState) inter
 		s.Logf("%q not running", modemfwdJobName)
 	}
 	if !upstart.JobExists(ctx, hermesJobName) {
-		return &FixtData{fdms}
+		return 
 	}
 	// Hermes is usually idle 2 minutes after boot, so go on with the test even if we cannot be sure.
 	if err := hermes.WaitForHermesIdle(ctx, 30*time.Second); err != nil {
 		s.Logf("Could not confirm if Hermes is idle: %s", err)
 	}
-
-	return &FixtData{fdms}
 }
 
 func (f *cellularFixture) Reset(ctx context.Context) error { return nil }
