@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7a35593_d839d235",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/marketing_opt_in.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1528608
+      },
+      "writtenOn": "2022-10-06T17:05:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "87e899a7_98e77c65",
+      "range": {
+        "startLine": 24,
+        "startChar": 49,
+        "endLine": 24,
+        "endChar": 72
+      },
+      "revId": "3112a759dff7acfc65cc15d33bbcf0128c3c83c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "774d9654_e676abd1",
@@ -58,6 +82,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ffe1baae_01b1dd2a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/marketing_opt_in.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1528608
+      },
+      "writtenOn": "2022-10-06T17:05:37Z",
+      "side": 1,
+      "message": "Switched to the ash.EnsureTabletModeEnabled, there are no exta code that could be reused in the other places.",
+      "parentUuid": "774d9654_e676abd1",
+      "revId": "3112a759dff7acfc65cc15d33bbcf0128c3c83c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5ba5ad6e_4128d926",
@@ -71,6 +113,24 @@
       "writtenOn": "2022-09-08T15:20:35Z",
       "side": 1,
       "message": "Why do you need to have a new chrome session twice?",
+      "revId": "3112a759dff7acfc65cc15d33bbcf0128c3c83c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b0f3ffe_5d9a8520",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/marketing_opt_in.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1528608
+      },
+      "writtenOn": "2022-10-06T17:05:37Z",
+      "side": 1,
+      "message": "Added fixtures that will be used for both tablet/laptop modes.",
+      "parentUuid": "5ba5ad6e_4128d926",
       "revId": "3112a759dff7acfc65cc15d33bbcf0128c3c83c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
