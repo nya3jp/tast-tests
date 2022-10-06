@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e5e19fb_4f6b79b6",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/screenshot_recorder.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-06T22:52:44Z",
+      "side": 1,
+      "message": "nit: It would be a bit simpler this way:\n\n\tif err :\u003d r.captureDisplay(ctx, \"\"); err !\u003d nil {\n\t\ttesting.ContextLog(ctx, \"screenshot_recorder: Failed to take screenshot: \", err)\n\t\tif r.firstErr \u003d\u003d nil {\n\t\t\tr.firstErr \u003d err\n\t\t}\n\t\tbreak\n\t}",
+      "range": {
+        "startLine": 120,
+        "startChar": 0,
+        "endLine": 128,
+        "endChar": 5
+      },
+      "revId": "1929c66fc5b9c32e5de5463db88d60b630ac77b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed63fefc_704a4450",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/screenshot_recorder.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-06T22:52:44Z",
+      "side": 1,
+      "message": "nit: Explain that the numbering counts successful screenshots only.",
+      "range": {
+        "startLine": 194,
+        "startChar": 3,
+        "endLine": 194,
+        "endChar": 47
+      },
+      "revId": "1929c66fc5b9c32e5de5463db88d60b630ac77b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "caff5bc9_def2fe5c",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/screenshot_recorder.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-06T22:52:44Z",
+      "side": 1,
+      "message": "nit: Give an example with a failed screenshot, and explain that example. If the second screenshot fails, then the third one will be cuj-2-30.jpg.",
+      "range": {
+        "startLine": 196,
+        "startChar": 0,
+        "endLine": 198,
+        "endChar": 37
+      },
+      "revId": "1929c66fc5b9c32e5de5463db88d60b630ac77b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
