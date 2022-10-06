@@ -158,6 +158,30 @@
       },
       "revId": "01fafb43a872e3c81c12db334c4dd7079a4e8f6e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c2db381_88252b37",
+        "filename": "src/chromiumos/tast/local/arc/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-10-06T16:11:26Z",
+      "side": 1,
+      "message": "SG.",
+      "parentUuid": "165e6689_92385141",
+      "range": {
+        "startLine": 299,
+        "startChar": 122,
+        "endLine": 299,
+        "endChar": 152
+      },
+      "revId": "01fafb43a872e3c81c12db334c4dd7079a4e8f6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
