@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "495f765f_6b21833e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/view_ppd.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2022-10-06T15:54:10Z",
+      "side": 1,
+      "message": "That\u0027s reasonable.  It just seems like there\u0027s a ton of stuff getting passed here when a lot of it should be derivable.  Let\u0027s leave it for now and we can rethink if we refactor to make this shareable.",
+      "parentUuid": "5aea705e_65e59e40",
+      "range": {
+        "startLine": 44,
+        "startChar": 58,
+        "endLine": 45,
+        "endChar": 23
+      },
+      "revId": "6fc62bdb3a3f4361e78f7a534e2cec8929b37003",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bb0f641e_b3d55f3d",
