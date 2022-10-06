@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c5af2d2_e21fb997",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/launch_feedback_from_essential_apps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1485520
+      },
+      "writtenOn": "2022-10-06T16:51:44Z",
+      "side": 1,
+      "message": "I do not understand this part. Is this the same as finding the feedback app from the launcher and then launching it? If yes, then I believe it is done already.\n\nThe test should be: open an essential app (say Camera app), find the link (\"report an issue\") and open the feedback app.",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 0
+      },
+      "revId": "d0f4cf945f5b4b2cd78a9c5680613c76c0954302",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
