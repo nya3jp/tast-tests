@@ -64,6 +64,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "15d5a297_68eb80ba",
+        "filename": "android/ArcAccessibilityTest/AndroidManifest.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1412928
+      },
+      "writtenOn": "2022-10-06T04:48:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cae000e9_4ea60015",
+      "range": {
+        "startLine": 34,
+        "startChar": 12,
+        "endLine": 34,
+        "endChar": 50
+      },
+      "revId": "f86408e8528e6f4e3d10856494a6a71f1f0c8a3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "70c0a771_8233ab2a",
@@ -77,6 +101,30 @@
       "writtenOn": "2022-09-13T07:45:04Z",
       "side": 1,
       "message": "addAction internally removes the action with the same id:\nhttps://cs.android.com/android/platform/superproject/+/master:frameworks/base/core/java/android/view/accessibility/AccessibilityNodeInfo.java;l\u003d1452;drc\u003d484f7b4d64b2ad72c2d6ed9dfe831c57049cca80\n\nThus only addAction is needed.",
+      "range": {
+        "startLine": 40,
+        "startChar": 12,
+        "endLine": 40,
+        "endChar": 64
+      },
+      "revId": "f86408e8528e6f4e3d10856494a6a71f1f0c8a3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d031e69_87c3336d",
+        "filename": "android/ArcAccessibilityTest/src/org/chromium/arc/testapp/accessibilitytest/ActionActivity.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1412928
+      },
+      "writtenOn": "2022-10-06T04:48:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "70c0a771_8233ab2a",
       "range": {
         "startLine": 40,
         "startChar": 12,
@@ -110,6 +158,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ee7da12_df68b16d",
+        "filename": "android/ArcAccessibilityTest/src/org/chromium/arc/testapp/accessibilitytest/ActionActivity.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1412928
+      },
+      "writtenOn": "2022-10-06T04:48:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d484de13_b65fd728",
+      "range": {
+        "startLine": 44,
+        "startChar": 20,
+        "endLine": 44,
+        "endChar": 33
+      },
+      "revId": "f86408e8528e6f4e3d10856494a6a71f1f0c8a3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bd77bcf4_e100e4bd",
@@ -123,6 +195,24 @@
       "writtenOn": "2022-09-13T09:05:13Z",
       "side": 1,
       "message": "just curious, Java files didn\u0027t get warning on copyright notice?",
+      "revId": "f86408e8528e6f4e3d10856494a6a71f1f0c8a3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1511452_2f35041b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/a11y/a11y.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1412928
+      },
+      "writtenOn": "2022-10-06T04:48:30Z",
+      "side": 1,
+      "message": "I needed this change to upload this CL",
+      "parentUuid": "bd77bcf4_e100e4bd",
       "revId": "f86408e8528e6f4e3d10856494a6a71f1f0c8a3a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
