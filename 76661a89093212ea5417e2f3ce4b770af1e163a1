@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1eec766_fd5d24b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/command_context_user.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-10-06T03:25:40Z",
+      "side": 1,
+      "message": "I still don\u0027t undestand why do you need to make it so complicate? Can you simple compare the output?\n\n```\nif string(testOut) !\u003d string(expectedOut) {\n    ...\n} \n```\n\nIs the output for the 2 commands different? I ran the two command manually. The output seems the same to me.",
+      "revId": "76661a89093212ea5417e2f3ce4b770af1e163a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
