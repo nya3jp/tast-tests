@@ -73,6 +73,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e4ff0a66_17793940",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2022-10-06T16:19:59Z",
+      "side": 1,
+      "message": "Test has step to clear the SMS(once SMS notification dialog clicked it\u0027s treated as message read and cleared from SMS store), SMS store not full and SMS not received in most of the cases. Doubting on modem state -\u003e Registered.\n\nAdding message clearing also at test start should be considered, as more SMS tests arrive other SMS test failure will not have any impact on the next test.",
+      "parentUuid": "dde25177_addb2604",
+      "revId": "2fb73a0b0b70ed838491a5e94df69b84a63477d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c9698471_bf68406a",
         "filename": "src/chromiumos/tast/local/cellular/ui_helper.go",
         "patchSetId": 1
