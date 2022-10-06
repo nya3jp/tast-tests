@@ -39,6 +39,30 @@
       },
       "revId": "678a8b249c2c7789a29a222cc811ead11c9198a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "97b339a0_b426c729",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/transcript_translation.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-10-06T01:38:19Z",
+      "side": 1,
+      "message": "Yes, the HasTestConn interface is defined in familylink/fixture.go from crrev.com/c/3928209.",
+      "parentUuid": "d5c715a6_94bf2c52",
+      "range": {
+        "startLine": 61,
+        "startChar": 25,
+        "endLine": 61,
+        "endChar": 35
+      },
+      "revId": "678a8b249c2c7789a29a222cc811ead11c9198a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
