@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f5146ca_c99c5da6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1244248
+      },
+      "writtenOn": "2022-10-06T13:30:12Z",
+      "side": 1,
+      "message": "Hidehiko: It looks like the code changed and now the problem is with an import: https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3928610. Is there a way to apply the same trick now?",
+      "revId": "cb05f30a01852a3f2fd958742f16efb9c71aaf5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
