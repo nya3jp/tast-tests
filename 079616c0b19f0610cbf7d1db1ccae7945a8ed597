@@ -16,6 +16,75 @@
       "message": "Please review, thanks!",
       "revId": "079616c0b19f0610cbf7d1db1ccae7945a8ed597",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ba130bc_e766454d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/taskswitchcuj/task_switch_cuj.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-06T22:30:35Z",
+      "side": 1,
+      "message": "`window`",
+      "range": {
+        "startLine": 275,
+        "startChar": 31,
+        "endLine": 275,
+        "endChar": 37
+      },
+      "revId": "079616c0b19f0610cbf7d1db1ccae7945a8ed597",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08be939e_901f2852",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/taskswitchcuj/task_switch_cuj.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-06T22:30:35Z",
+      "side": 1,
+      "message": "`window`",
+      "range": {
+        "startLine": 278,
+        "startChar": 64,
+        "endLine": 278,
+        "endChar": 70
+      },
+      "revId": "079616c0b19f0610cbf7d1db1ccae7945a8ed597",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78bea01d_12f1bdd6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/taskswitchcuj/task_switch_cuj.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-10-06T22:30:35Z",
+      "side": 1,
+      "message": "nit: comma",
+      "range": {
+        "startLine": 296,
+        "startChar": 48,
+        "endLine": 296,
+        "endChar": 56
+      },
+      "revId": "079616c0b19f0610cbf7d1db1ccae7945a8ed597",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
