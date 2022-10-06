@@ -22,6 +22,23 @@
       },
       "revId": "fe197b4c3878cb910fd3a89783dcda2b68ae7119",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c509ef6c_e7b1c747",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/chrome_stack_decoder_verification.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-10-06T19:32:03Z",
+      "side": 1,
+      "message": "If we plan to add more, I think it is a good time to split vp9_files_from_bugs into multiple subtests so it is easier for the guards to monitor.\n\nWDYT?",
+      "revId": "fe197b4c3878cb910fd3a89783dcda2b68ae7119",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
