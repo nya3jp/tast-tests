@@ -16,6 +16,24 @@
       "message": "Note that I think these messages would be somewhat more useful if they were more unique, so that if you get a failure it\u0027s easier to tell if it\u0027s the first or second StartAuthSession that\u0027s failing.\n\nHowever, this isn\u0027t a new problem for this test, just something I wanted to note.",
       "revId": "15278b036471b50926933684396cd51710384430",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "35c1e31b_7c96765a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver_with_auth_api.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1430007
+      },
+      "writtenOn": "2022-10-06T22:06:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ccd5f6ce_fedb4aac",
+      "revId": "15278b036471b50926933684396cd51710384430",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
