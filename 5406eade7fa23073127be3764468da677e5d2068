@@ -3,6 +3,86 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7f212d21_35484e78",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/idle.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-10-06T05:05:59Z",
+      "side": 1,
+      "message": "Log into Chrome, request nothing to be on the desktop, wait, verify there are moments where the GPU has nothing to do. If the GPU stays continuously busy system power usage will be unacceptably high.",
+      "range": {
+        "startLine": 26,
+        "startChar": 9,
+        "endLine": 26,
+        "endChar": 57
+      },
+      "revId": "5406eade7fa23073127be3764468da677e5d2068",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28ec5943_a880588f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/idle.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-10-06T05:05:59Z",
+      "side": 1,
+      "message": "This should be Intel.",
+      "range": {
+        "startLine": 51,
+        "startChar": 30,
+        "endLine": 51,
+        "endChar": 41
+      },
+      "revId": "5406eade7fa23073127be3764468da677e5d2068",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "118d4cfa_f6edf7a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/idle.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-10-06T05:05:59Z",
+      "side": 1,
+      "message": "I think it is ok to use fixture chromeGraphics. But also restart ui/Chrome.\nThinking about this longer this is the reason why this should not be parameterized tests in tast, unfortunately. Only arc/normal should be parameterized tests. Like in the original autotests. Fixtures are not as useful as I would have hoped. We can discuss this in person.\n\nPlease leave a comment:\n// This test needs to restart Chrome and log in each time it runs to get a clean instance. It also needs to close open browser windows to hide the Google doodle and other possible active graphic content.\n\nThis is why the original test navigated to the chrome://version page.",
+      "revId": "5406eade7fa23073127be3764468da677e5d2068",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6fb1eed_c3950306",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/idle.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-10-06T05:05:59Z",
+      "side": 1,
+      "message": "Notice we still need at least 2 versions of this test, one with ARC disabled and one default. I don\u0027t think we need versions for crostini/borealis as they should not start on their own.",
+      "revId": "5406eade7fa23073127be3764468da677e5d2068",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3a7db47d_8fc9b6af",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/idle.go",
         "patchSetId": 1
@@ -32,6 +112,228 @@
       "side": 1,
       "message": "It\u0027s just a timeout to wait till we get a stable board. The default is 5 minutes which I think is too long for a CQ candidate test.\n\nNote that I make this call non-fatal, so even if we failed to get a stable machine(CPU/temperature wise), we will still run the verify functions.\n\nI think we can possibly remove the 2 minute wait here and totally rely on the testing.Poll. But then the test may be harmed by any run-away tests from previous testing.",
       "parentUuid": "3a7db47d_8fc9b6af",
+      "revId": "5406eade7fa23073127be3764468da677e5d2068",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bebe7874_941966ee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/idle.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-10-06T05:05:59Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "617a2833_f6bdfbe1",
+      "revId": "5406eade7fa23073127be3764468da677e5d2068",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9be4b076_9d4bc70b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/idle.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-10-06T05:05:59Z",
+      "side": 1,
+      "message": "Lets set this higher, this is not a performance test, just should not be hot. How about 55C?",
+      "revId": "5406eade7fa23073127be3764468da677e5d2068",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a02f493_35029fa4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/idle.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-10-06T05:05:59Z",
+      "side": 1,
+      "message": "Lets please keep the original comment:\n\nOn systems which support DVFS, check that we get into the lowest clock frequency.",
+      "revId": "5406eade7fa23073127be3764468da677e5d2068",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "068767f4_759ae684",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/idle.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-10-06T05:05:59Z",
+      "side": 1,
+      "message": "Please also handle rockchip bob/scarlet\n\nrk3399_node \u003d \u0027/sys/devices/platform/ff9a0000.gpu/\u0027",
+      "revId": "5406eade7fa23073127be3764468da677e5d2068",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73f6cb91_a54b2d9f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/idle.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-10-06T05:05:59Z",
+      "side": 1,
+      "message": "On systems which support FBC, check that we can get into FBC.",
+      "revId": "5406eade7fa23073127be3764468da677e5d2068",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd1fd415_98aa1477",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/idle.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-10-06T05:05:59Z",
+      "side": 1,
+      "message": "Ok, but obviously Intel.",
+      "revId": "5406eade7fa23073127be3764468da677e5d2068",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc0c24a0_749d5616",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/idle.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-10-06T05:05:59Z",
+      "side": 1,
+      "message": "On systems which support PSR, check that we can get into PSR.",
+      "revId": "5406eade7fa23073127be3764468da677e5d2068",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "040293e7_b37b8984",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/idle.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-10-06T05:05:59Z",
+      "side": 1,
+      "message": "Please copy full original comment:\n\nOn systems which have i915, check that we can get all gem objects to become idle (i.e. the i915_gem_active list or i915_gem_objects client/process gem object counts need to go to 0);",
+      "revId": "5406eade7fa23073127be3764468da677e5d2068",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5dc7e04e_6cca629d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/idle.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-10-06T05:05:59Z",
+      "side": 1,
+      "message": "ok",
+      "revId": "5406eade7fa23073127be3764468da677e5d2068",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe0b8e81_bd86de09",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/idle.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-10-06T05:05:59Z",
+      "side": 1,
+      "message": "no gem paths found",
+      "revId": "5406eade7fa23073127be3764468da677e5d2068",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c10d4ba_6ed3c220",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/idle.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-10-06T05:05:59Z",
+      "side": 1,
+      "message": "mostly ok",
+      "revId": "5406eade7fa23073127be3764468da677e5d2068",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28ba0c2c_2e47b7be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/idle.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-10-06T05:05:59Z",
+      "side": 1,
+      "message": "// TODO(marcheu): remove if this is not available/used anymore.\n\nI think it is gone, but not sure.",
+      "revId": "5406eade7fa23073127be3764468da677e5d2068",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "959e666b_cf7c1910",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/idle.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-10-06T05:05:59Z",
+      "side": 1,
+      "message": "ok",
       "revId": "5406eade7fa23073127be3764468da677e5d2068",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
