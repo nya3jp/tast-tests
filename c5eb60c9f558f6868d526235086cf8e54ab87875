@@ -39,6 +39,30 @@
       },
       "revId": "c5eb60c9f558f6868d526235086cf8e54ab87875",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5fcf4f1_3b66f820",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wallpaper/set_and_clear_guest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1429709
+      },
+      "writtenOn": "2022-10-06T19:38:14Z",
+      "side": 1,
+      "message": "this does kill the previous session. However, I realized there was a potential race condition here:\n\n1. Logout kills chrome session A where wallpaper is non-default\n2. chrome session B starts\n3. chrome session C created with chrome.New, kills B\n\nto make sure that 3 always happens after 2 I added some extra code that waits for process A to exit",
+      "parentUuid": "787e58db_a70519b4",
+      "range": {
+        "startLine": 71,
+        "startChar": 14,
+        "endLine": 71,
+        "endChar": 25
+      },
+      "revId": "c5eb60c9f558f6868d526235086cf8e54ab87875",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
