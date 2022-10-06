@@ -69,6 +69,24 @@
       "parentUuid": "7655ac18_267343d1",
       "revId": "f207c5048840cf5fd0c0f930d2060697978f5970",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "79b3351c_822babff",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_client.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 965,
+      "author": {
+        "id": 1546868
+      },
+      "writtenOn": "2022-10-06T14:22:28Z",
+      "side": 1,
+      "message": "Yeah I think my worry is not necessarily returning 3 values, so much as returning 3 values where one of the returns is derived from another one. But I don\u0027t have an alternate suggestion.",
+      "parentUuid": "43f00078_755b9602",
+      "revId": "f207c5048840cf5fd0c0f930d2060697978f5970",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
