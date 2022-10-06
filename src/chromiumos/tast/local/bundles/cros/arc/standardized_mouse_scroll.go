@@ -31,6 +31,7 @@ func init() {
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome", "no_chrome_dcheck"},
 		Timeout:      10 * time.Minute,
+		Fixture:      "arcBooted",
 		Params: []testing.Param{
 			{
 				Val: &standardizedMouseScrollArgs{
@@ -38,7 +39,6 @@ func init() {
 					resizeLockEnabled: false,
 				},
 				ExtraSoftwareDeps: []string{"android_p"},
-				Fixture:           "arcBooted",
 				ExtraHardwareDeps: hwdep.D(standardizedtestutil.ClamshellHardwareDep),
 			},
 			{
@@ -48,7 +48,6 @@ func init() {
 					resizeLockEnabled: false,
 				},
 				ExtraSoftwareDeps: []string{"android_vm"},
-				Fixture:           "arcBooted",
 				ExtraHardwareDeps: hwdep.D(standardizedtestutil.ClamshellHardwareDep),
 			},
 			{
@@ -65,7 +64,6 @@ func init() {
 				},
 				ExtraAttr:         []string{"informational"},
 				ExtraSoftwareDeps: []string{"android_vm"},
-				Fixture:           "arcBootedWithTouchModeMouse",
 				ExtraHardwareDeps: hwdep.D(standardizedtestutil.ClamshellHardwareDep),
 			},
 		},

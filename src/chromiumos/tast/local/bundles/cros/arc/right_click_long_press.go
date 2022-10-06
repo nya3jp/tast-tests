@@ -26,12 +26,16 @@ func init() {
 		Contacts:     []string{"yhanada@chromium.org", "arc-framework+tast@google.com"},
 		SoftwareDeps: []string{"chrome", "android_vm"},
 		Attr:         []string{"group:mainline", "informational"},
-		Fixture:      "arcBootedWithTouchModeMouse",
+		Fixture:      "arcBooted",
 		Timeout:      4 * time.Minute,
 	})
 }
 
 func RightClickLongPress(ctx context.Context, s *testing.State) {
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
+	defer cancel()
+
 	a := s.FixtValue().(*arc.PreData).ARC
 	cr := s.FixtValue().(*arc.PreData).Chrome
 	d := s.FixtValue().(*arc.PreData).UIDevice
@@ -46,6 +50,12 @@ func RightClickLongPress(ctx context.Context, s *testing.State) {
 		activityName = ".MainActivity"
 	)
 
+	cleanupTabletMode, err := ash.EnsureTabletModeEnabled(ctx, tconn, false)
+	if err != nil {
+		s.Fatal("Failed to set clamshell mode: ", err)
+	}
+	defer cleanupTabletMode(cleanupCtx)
+
 	if err := a.Install(ctx, arc.APKPath(apk), adb.InstallOptionFromPlayStore); err != nil {
 		s.Fatal("Failed to install the app: ", err)
 	}
@@ -55,9 +65,6 @@ func RightClickLongPress(ctx context.Context, s *testing.State) {
 		s.Fatalf("Failed to create a new activity %q: %v", activityName, err)
 	}
 	defer act.Close()
-	cleanupCtx := ctx
-	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
-	defer cancel()
 	if err := act.StartWithDefaultOptions(ctx, tconn); err != nil {
 		s.Fatalf("Failed to start the activity %q", activityName)
 	}
