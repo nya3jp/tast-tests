@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce790942_d85e861b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/chrome_stack_decoder_verification.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2022-10-06T14:16:36Z",
+      "side": 1,
+      "message": "One note is that the h264 bugs from files were splitted\ninto individual test cases (see h264_files_from_bugs_* below).\nDoesn\u0027t need to happen now though.",
+      "range": {
+        "startLine": 273,
+        "startChar": 1,
+        "endLine": 273,
+        "endChar": 3
+      },
+      "revId": "fe197b4c3878cb910fd3a89783dcda2b68ae7119",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
