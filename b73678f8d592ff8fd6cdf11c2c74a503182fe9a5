@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb752db5_2de39e9b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-10-06T12:12:51Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "b73678f8d592ff8fd6cdf11c2c74a503182fe9a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c100116b_22ebd5ed",
+        "filename": "src/chromiumos/tast/local/camera/cca/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-10-06T12:12:51Z",
+      "side": 1,
+      "message": "Please also add your team as contacts.",
+      "range": {
+        "startLine": 183,
+        "startChar": 2,
+        "endLine": 183,
+        "endChar": 52
+      },
+      "revId": "b73678f8d592ff8fd6cdf11c2c74a503182fe9a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
